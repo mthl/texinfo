@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CVS--Concurrent Versions System v1.11.5.1: 6. Recursive behavior</title>
+
+<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: 6. Recursive behavior">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: 6. Recursive behavior">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD65"></a>
+<a name="SEC65"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="cvs_5.html#SEC64" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_7.html#SEC66" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs_5.html#SEC54" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_7.html#SEC66" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 6. Recursive behavior </h1>
+
+<p>Almost all of the subcommands of <small>CVS</small> work
+recursively when you specify a directory as an
+argument.  For instance, consider this directory
+structure:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+      <code>$HOME</code>
+        |
+        +--<tt>tc</tt>
+        |   |
+            +--<tt>CVS</tt>
+            |      (internal CVS files)
+            +--<tt>Makefile</tt>
+            +--<tt>backend.c</tt>
+            +--<tt>driver.c</tt>
+            +--<tt>frontend.c</tt>
+            +--<tt>parser.c</tt>
+            +--<tt>man</tt>
+            |    |
+            |    +--<tt>CVS</tt>
+            |    |  (internal CVS files)
+            |    +--<tt>tc.1</tt>
+            |
+            +--<tt>testing</tt>
+                 |
+                 +--<tt>CVS</tt>
+                 |  (internal CVS files)
+                 +--<tt>testpgm.t</tt>
+                 +--<tt>test2.t</tt>
+</pre></td></tr></table>
+<p>If `<tt>tc</tt>' is the current working directory, the
+following is true:
+</p><ul>
+<li><p>
+`<samp>cvs update testing</samp>' is equivalent to
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+cvs update testing/testpgm.t testing/test2.t
+</pre></td></tr></table>
+</li><li><p>
+`<samp>cvs update testing man</samp>' updates all files in the
+subdirectories
+</p></li><li><p>
+`<samp>cvs update .</samp>' or just `<samp>cvs update</samp>' updates
+all files in the <code>tc</code> directory
+</p></li></ul>
+
+<p>If no arguments are given to <code>update</code> it will
+update all files in the current working directory and
+all its subdirectories.  In other words, `<tt>.</tt>' is a
+default argument to <code>update</code>.  This is also true
+for most of the <small>CVS</small> subcommands, not only the
+<code>update</code> command.
+</p><p>The recursive behavior of the <small>CVS</small> subcommands can be
+turned off with the `<samp>-l</samp>' option.
+Conversely, the `<samp>-R</samp>' option can be used to force recursion if
+`<samp>-l</samp>' is specified in `<tt>~/.cvsrc</tt>' (see section <a href="cvs_16.html#SEC116">Default options and the ~/.cvsrc file</a>).
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+$ cvs update -l         # Don't update files in subdirectories
+</pre></td></tr></table>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="cvs_5.html#SEC54" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_7.html#SEC66" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

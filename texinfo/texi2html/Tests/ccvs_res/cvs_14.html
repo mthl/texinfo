@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CVS--Concurrent Versions System v1.11.5.1: 14. How your build system interacts with CVS</title>
+
+<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: 14. How your build system interacts with CVS">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: 14. How your build system interacts with CVS">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD111"></a>
+<a name="SEC111"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="cvs_13.html#SEC110" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_15.html#SEC112" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_15.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 14. How your build system interacts with CVS </h1>
+
+<p>As mentioned in the introduction, <small>CVS</small> does not
+contain software for building your software from source
+code.  This section describes how various aspects of
+your build system might interact with <small>CVS</small>.
+</p><p>One common question, especially from people who are
+accustomed to <small>RCS</small>, is how to make their build get
+an up to date copy of the sources.  The answer to this
+with <small>CVS</small> is two-fold.  First of all, since
+<small>CVS</small> itself can recurse through directories, there
+is no need to modify your `<tt>Makefile</tt>' (or whatever
+configuration file your build tool uses) to make sure
+each file is up to date.  Instead, just use two
+commands, first <code>cvs -q update</code> and then
+<code>make</code> or whatever the command is to invoke your
+build tool.  Secondly, you do not necessarily
+<em>want</em> to get a copy of a change someone else made
+until you have finished your own work.  One suggested
+approach is to first update your sources, then
+implement, build and
+test the change you were thinking of, and then commit
+your sources (updating first if necessary).  By
+periodically (in between changes, using the approach
+just described) updating your entire tree, you ensure
+that your sources are sufficiently up to date.
+</p><a name="IDX200"></a>
+<p>One common need is to record which versions of which
+source files went into a particular build.  This kind
+of functionality is sometimes called <em>bill of
+materials</em> or something similar.  The best way to do
+this with <small>CVS</small> is to use the <code>tag</code> command to
+record which versions went into a given build
+(see section <a href="cvs_4.html#SEC48">Tags--Symbolic revisions</a>).
+</p><p>Using <small>CVS</small> in the most straightforward manner
+possible, each developer will have a copy of the entire
+source tree which is used in a particular build.  If
+the source tree is small, or if developers are
+geographically dispersed, this is the preferred
+solution.  In fact one approach for larger projects is
+to break a project down into smaller
+separately-compiled subsystems, and arrange a way of
+releasing them internally so that each developer need
+check out only those subsystems which are they are
+actively working on.
+</p><p>Another approach is to set up a structure which allows
+developers to have their own copies of some files, and
+for other files to access source files from a central
+location.  Many people have come up with some such a
+system using features such as the symbolic link feature
+found in many operating systems, or the <code>VPATH</code>
+feature found in many versions of <code>make</code>.  One build
+tool which is designed to help with this kind of thing
+is Odin (see
+<code>ftp://ftp.cs.colorado.edu/pub/distribs/odin</code>).
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_15.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

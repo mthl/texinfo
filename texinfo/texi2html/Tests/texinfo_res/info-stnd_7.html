@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Info 4.2: 7. Selecting Cross References</title>
+
+<meta name="description" content="GNU Info 4.2: 7. Selecting Cross References">
+<meta name="keywords" content="GNU Info 4.2: 7. Selecting Cross References">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD8"></a>
+<a name="SEC7"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_6.html#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd_6.html#SEC6" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_8.html#SEC10" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 7. Selecting Cross References </h1>
+
+<p>We have already discussed the `<samp>Next</samp>', `<samp>Prev</samp>', and `<samp>Up</samp>'
+pointers which appear at the top of a node.  In addition to these
+pointers, a node may contain other pointers which refer you to a
+different node, perhaps in another Info file.  Such pointers are called
+<em>cross references</em>, or <em>xrefs</em> for short.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC8">7.1 Parts of an Xref</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a cross reference is made of.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC9">7.2 Selecting Xrefs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for selecting menu or note items.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD9"></a>
+<a name="SEC8"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_8.html#SEC10" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.1 Parts of an Xref </h2>
+
+<p>Cross references have two major parts: the first part is called the
+<em>label</em>; it is the name that you can use to refer to the cross
+reference, and the second is the <em>target</em>; it is the full name of
+the node that the cross reference points to.
+</p><p>The target is separated from the label by a colon `<samp>:</samp>'; first the
+label appears, and then the target.  For example, in the sample menu
+cross reference below, the single colon separates the label from the
+target.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Foo Label: Foo Target.        More information about Foo.
+</pre></td></tr></table>
+<p>Note the `<samp>.</samp>' which ends the name of the target.  The `<samp>.</samp>' is
+not part of the target; it serves only to let Info know where the target
+name ends.
+</p><p>A shorthand way of specifying references allows two adjacent colons to
+stand for a target name which is the same as the label name:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Foo Commands::                Commands pertaining to Foo.
+</pre></td></tr></table>
+<p>In the above example, the name of the target is the same as the name of
+the label, in this case <code>Foo Commands</code>.
+</p><p>You will normally see two types of cross reference while viewing nodes:
+<em>menu</em> references, and <em>note</em> references.  Menu references
+appear within a node's menu; they begin with a `<samp>*</samp>' at the beginning
+of a line, and continue with a label, a target, and a comment which
+describes what the contents of the node pointed to contains.
+</p><p>Note references appear within the body of the node text; they begin with
+<code>*Note</code>, and continue with a label and a target.
+</p><p>Like `<samp>Next</samp>', `<samp>Prev</samp>', and `<samp>Up</samp>' pointers, cross references
+can point to any valid node.  They are used to refer you to a place
+where more detailed information can be found on a particular subject.
+Here is a cross reference which points to a node within the Texinfo
+documentation:  See section `Writing an Xref' in <cite>the Texinfo Manual</cite>, for more information on creating your own texinfo cross
+references.
+</p><hr size="6">
+<a name="NOD10"></a>
+<a name="SEC9"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_8.html#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_8.html#SEC10" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.2 Selecting Xrefs </h2>
+
+<p>The following table lists the Info commands which operate on menu items.
+</p><dl compact="compact">
+<dt> <kbd>1</kbd> (<code>menu-digit</code>)
+</dt>
+<dt> <kbd>2</kbd> <small>...</small> <kbd>9</kbd>
+</dt>
+<dt> <kbd>M-1</kbd>, vi-like operation
+</dt>
+<dt> <kbd>M-2</kbd> <small>...</small> <kbd>M-9</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX192"></a>
+<a name="IDX193"></a>
+<a name="IDX194"></a>
+<a name="IDX195"></a>
+<a name="IDX196"></a>
+Within an Info window, pressing a single digit, (such as `<samp>1</samp>'),
+selects that menu item, and places its node in the current window.
+For convenience, there is one exception; pressing `<samp>0</samp>' selects the
+<em>last</em> item in the node's menu.  When `<samp>--vi-keys</samp>' is in
+effect, digits set the numeric argument, so these commands are remapped
+to their `<samp>M-</samp>' varieties.  For example, to select the last menu
+item, press <kbd>M-0</kbd>.
+</p></dd>
+<dt> <kbd>0</kbd> (<code>last-menu-item</code>)
+</dt>
+<dt> <kbd>M-0</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX197"></a>
+<a name="IDX198"></a>
+<a name="IDX199"></a>
+Select the last item in the current node's menu.
+</p></dd>
+<dt> <kbd>m</kbd> (<code>menu-item</code>)
+</dt>
+<dd><p><a name="IDX200"></a>
+<a name="IDX201"></a>
+Reads the name of a menu item in the echo area and selects its node.
+Completion is available while reading the menu label.  See section <a href="info-stnd_8.html#SEC13">completion</a>.
+</p></dd>
+<dt> <kbd>M-x find-menu</kbd>
+</dt>
+<dd><p><a name="IDX202"></a>
+Move the cursor to the start of this node's menu.
+</p></dd>
+</dl>
+
+<p>This table lists the Info commands which operate on cross references.
+</p><dl compact="compact">
+<dt> <kbd>f</kbd> (<code>xref-item</code>)
+</dt>
+<dt> <kbd>r</kbd>
+</dt>
+<dt> <kbd>M-f</kbd>, vi-like operation
+</dt>
+<dt> <kbd>C-x <kbd>r</kbd></kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX203"></a>
+<a name="IDX204"></a>
+<a name="IDX205"></a>
+<a name="IDX206"></a>
+<a name="IDX207"></a>
+Reads the name of a note cross reference in the echo area and selects
+its node.  Completion is available while reading the cross reference
+label.  See section <a href="info-stnd_8.html#SEC13">completion</a>.
+</p></dd>
+</dl>
+
+<p>Finally, the next few commands operate on menu or note references alike:
+</p><dl compact="compact">
+<dt> <kbd>TAB</kbd> (<code>move-to-next-xref</code>)
+</dt>
+<dd><p><a name="IDX208"></a>
+<a name="IDX209"></a>
+Move the cursor to the start of the next nearest menu item or note
+reference in this node.  You can then use <kbd>RET</kbd>
+(<code>select-reference-this-line</code>) to select the menu or note reference.
+</p></dd>
+<dt> <kbd>M-TAB</kbd> (<code>move-to-prev-xref</code>)
+</dt>
+<dt> <kbd>Shift-<kbd>TAB</kbd></kbd> (on DOS/Windows only)
+</dt>
+<dd><p><a name="IDX210"></a>
+<a name="IDX211"></a>
+Move the cursor the start of the nearest previous menu item or note
+reference in this node.
+</p><a name="IDX212"></a>
+<a name="IDX213"></a>
+<p>On DOS/Windows only, the <kbd>Shift-<kbd>TAB</kbd></kbd> key is an alias for
+<kbd>M-<kbd>TAB</kbd></kbd>.  This key is sometimes called `<samp>BackTab</samp>'.
+</p></dd>
+<dt> <kbd>RET</kbd> (<code>select-reference-this-line</code>)
+</dt>
+<dt> <kbd>M-g</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX214"></a>
+<a name="IDX215"></a>
+<a name="IDX216"></a>
+Select the menu item or note reference appearing on this line.
+</p></dd>
+</dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_8.html#SEC10" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

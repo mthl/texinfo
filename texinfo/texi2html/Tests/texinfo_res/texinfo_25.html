@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: D. Include Files</title>
+
+<meta name="description" content="GNU Texinfo 4.2: D. Include Files">
+<meta name="keywords" content="GNU Texinfo 4.2: D. Include Files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD268"></a>
+<a name="SEC297"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_24.html#SEC296" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC298" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo_24.html#SEC294" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> D. Include Files </h1>
+
+<p>When TeX or an Info formatting command sees an <code>@include</code>
+command in a Texinfo file, it processes the contents of the file named
+by the command and incorporates them into the DVI or Info file being
+created.  Index entries from the included file are incorporated into
+the indices of the output file.
+</p><p>Include files let you keep a single large document as a collection of
+conveniently small parts.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC298">D.1 How to Use Include Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to use the <code>@include</code> command.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC299">D.2 <code>texinfo-multiple-files-update</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to create and update nodes and
+                                  menus when using included files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC300">D.3 Include File Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What <code>texinfo-multiple-files-update</code> expects.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC301">D.4 Sample File with <code>@include</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A sample outer file with included files
+                                  within it; and a sample included file.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC302">D.5 Evolution of Include Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How use of the <code>@include</code> command
+                                  has changed over time.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD269"></a>
+<a name="SEC298"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC297" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC299" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC297" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> D.1 How to Use Include Files </h2>
+
+<p>To include another file within a Texinfo file, write the
+<code>@include</code> command at the beginning of a line and follow it on
+the same line by the name of a file to be included.  For
+example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@include buffers.texi
+</pre></td></tr></table>
+<p>An included file should simply be a segment of text that you expect to
+be included as is into the overall or <em>outer</em> Texinfo file; it
+should not contain the standard beginning and end parts of a Texinfo
+file.  In particular, you should not start an included file with a
+line saying `<samp>\input texinfo</samp>'; if you do, that phrase is inserted
+into the output file as is.  Likewise, you should not end an included
+file with an <code>@bye</code> command; nothing after <code>@bye</code> is
+formatted.</p><p>In the past, you were required to write an <code>@setfilename</code> line at the
+beginning of an included file, but no longer.  Now, it does not matter
+whether you write such a line.  If an <code>@setfilename</code> line exists
+in an included file, it is ignored.</p><p>Conventionally, an included file begins with an <code>@node</code> line that
+is followed by an <code>@chapter</code> line.  Each included file is one
+chapter.  This makes it easy to use the regular node and menu creating
+and updating commands to create the node pointers and menus within the
+included file.  However, the simple Emacs node and menu creating and
+updating commands do not work with multiple Texinfo files.  Thus you
+cannot use these commands to fill in the `Next', `Previous', and `Up'
+pointers of the <code>@node</code> line that begins the included file.  Also,
+you cannot use the regular commands to create a master menu for the
+whole file.  Either you must insert the menus and the `Next',
+`Previous', and `Up' pointers by hand, or you must use the GNU Emacs
+Texinfo mode command, <code>texinfo-multiple-files-update</code>, that is
+designed for <code>@include</code> files.</p><hr size="6">
+<a name="NOD270"></a>
+<a name="SEC299"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC298" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC300" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC297" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> D.2 <code>texinfo-multiple-files-update</code> </h2>
+
+<p>GNU Emacs Texinfo mode provides the <code>texinfo-multiple-files-update</code>
+command.  This command creates or updates `Next', `Previous', and `Up'
+pointers of included files as well as those in the outer or overall
+Texinfo file, and it creates or updates a main menu in the outer file.
+Depending whether you call it with optional arguments, the command
+updates only the pointers in the first <code>@node</code> line of the
+included files or all of them:</p><dl compact="compact">
+<dt><kbd> M-x texinfo-multiple-files-update
+</kbd></dt>
+<dd><p>Called without any arguments:</p><ul>
+<li><p>
+Create or update the `Next', `Previous', and `Up' pointers of the
+first <code>@node</code> line in each file included in an outer or overall
+Texinfo file.</p></li><li><p>
+Create or update the `Top' level node pointers of the outer or
+overall file.</p></li><li><p>
+Create or update a main menu in the outer file.</p></li></ul>
+
+</dd>
+<dt><kbd> C-u M-x texinfo-multiple-files-update
+</kbd></dt>
+<dd><p>Called with <kbd>C-u</kbd> as a prefix argument:
+</p><ul>
+<li><p>
+Create or update pointers in the first <code>@node</code> line in each
+included file.
+</p></li><li><p>
+Create or update the `Top' level node pointers of the outer file.
+</p></li><li><p>
+Create and insert a master menu in the outer file.  The master menu
+is made from all the menus in all the included files.</p></li></ul>
+
+</dd>
+<dt><kbd> C-u 8 M-x texinfo-multiple-files-update
+</kbd></dt>
+<dd><p>Called with a numeric prefix argument, such as <kbd>C-u 8</kbd>:
+</p><ul>
+<li><p>
+Create or update <strong>all</strong> the `Next', `Previous', and `Up' pointers
+of all the included files.</p></li><li><p>
+Create or update <strong>all</strong> the menus of all the included
+files.</p></li><li><p>
+Create or update the `Top' level node pointers of the outer or
+overall file.</p></li><li><p>
+And then create a master menu in the outer file.  This is similar to
+invoking <code>texinfo-master-menu</code> with an argument when you are
+working with just one file.</p></li></ul>
+</dd>
+</dl>
+
+<p>Note the use of the prefix argument in interactive use: with a regular
+prefix argument, just <kbd>C-u</kbd>, the
+<code>texinfo-multiple-files-update</code> command inserts a master menu;
+with a numeric prefix argument, such as <kbd>C-u 8</kbd>, the command
+updates <strong>every</strong> pointer and menu in <strong>all</strong> the files and then inserts a
+master menu.</p><hr size="6">
+<a name="NOD271"></a>
+<a name="SEC300"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC299" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC301" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC297" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> D.3 Include File Requirements </h2>
+
+<p>If you plan to use the <code>texinfo-multiple-files-update</code> command,
+the outer Texinfo file that lists included files within it should
+contain nothing but the beginning and end parts of a Texinfo file, and
+a number of <code>@include</code> commands listing the included files.  It
+should not even include indices, which should be listed in an included
+file of their own.</p><p>Moreover, each of the included files must contain exactly one highest
+level node (conventionally, <code>@chapter</code> or equivalent),
+and this node must be the first node in the included file.
+Furthermore, each of these highest level nodes in each included file
+must be at the same hierarchical level in the file structure.
+Usually, each is an <code>@chapter</code>, an <code>@appendix</code>, or an
+<code>@unnumbered</code> node.  Thus, normally, each included file contains
+one, and only one, chapter or equivalent-level node.</p><p>The outer file should contain only <em>one</em> node, the `Top' node.  It
+should <em>not</em> contain any nodes besides the single `Top' node.  The
+<code>texinfo-multiple-files-update</code> command will not process
+them.</p><hr size="6">
+<a name="NOD272"></a>
+<a name="SEC301"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC300" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC302" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC297" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> D.4 Sample File with <code>@include</code> </h2>
+
+<p>Here is an example of a complete outer Texinfo file with <code>@include</code> files
+within it before running <code>texinfo-multiple-files-update</code>, which
+would insert a main or master menu:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo @c -*-texinfo-*-
+@setfilename  include-example.info
+@settitle Include Example
+
+@setchapternewpage odd
+@titlepage
+@sp 12
+@center @titlefont{Include Example}
+@sp 2
+@center by Whom Ever
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+@end titlepage
+
+@ifinfo
+@node Top, First, , (dir)
+@top Master Menu
+@end ifinfo
+
+@include foo.texinfo
+@include bar.texinfo
+@include concept-index.texinfo
+
+@summarycontents
+@contents
+
+@bye
+</pre></td></tr></table>
+<p>An included file, such as `<tt>foo.texinfo</tt>', might look like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@node First, Second, , Top
+@chapter First Chapter
+
+Contents of first chapter ...
+</pre></td></tr></table>
+<p>The full contents of `<tt>concept-index.texinfo</tt>' might be as simple as this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+</pre></td></tr></table>
+<p>The outer Texinfo source file for <cite>The GNU Emacs Lisp Reference
+Manual</cite> is named `<tt>elisp.texi</tt>'.  This outer file contains a master
+menu with 417 entries and a list of 41 <code>@include</code>
+files.</p><hr size="6">
+<a name="NOD273"></a>
+<a name="SEC302"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC301" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC297" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> D.5 Evolution of Include Files </h2>
+
+<p>When Info was first created, it was customary to create many small
+Info files on one subject.  Each Info file was formatted from its own
+Texinfo source file.  This custom meant that Emacs did not need to
+make a large buffer to hold the whole of a large Info file when
+someone wanted information; instead, Emacs allocated just enough
+memory for the small Info file that contained the particular
+information sought.  This way, Emacs could avoid wasting memory.</p><p>References from one file to another were made by referring to the file
+name as well as the node name. (See section <a href="texinfo_8.html#SEC103">Referring to Other Info Files</a>.  Also, see <a href="texinfo_9.html#SEC113"><code>@xref</code> with Four and Five Arguments</a>.)</p><p>Include files were designed primarily as a way to create a single,
+large printed manual out of several smaller Info files.  In a printed
+manual, all the references were within the same document, so TeX
+could automatically determine the references' page numbers.  The Info
+formatting commands used include files only for creating joint
+indices; each of the individual Texinfo files had to be formatted for
+Info individually.  (Each, therefore, required its own
+<code>@setfilename</code> line.)</p><p>However, because large Info files are now split automatically, it is
+no longer necessary to keep them small.</p><p>Nowadays, multiple Texinfo files are used mostly for large documents,
+such as <cite>The GNU Emacs Lisp Reference Manual</cite>, and for projects
+in which several different people write different sections of a
+document simultaneously.</p><p>In addition, the Info formatting commands have been extended to work
+with the <code>@include</code> command so as to create a single large Info
+file that is split into smaller files if necessary.  This means that
+you can write menus and cross references without naming the different
+Texinfo files.</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_26.html#SEC303" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

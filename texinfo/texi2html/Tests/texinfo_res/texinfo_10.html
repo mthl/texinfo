@@ -1,0 +1,1020 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 9. Marking Words and Phrases</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 9. Marking Words and Phrases">
+<meta name="keywords" content="GNU Texinfo 4.2: 9. Marking Words and Phrases">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD105"></a>
+<a name="SEC119"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_9.html#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 9. Marking Words and Phrases </h1>
+
+<p>In Texinfo, you can mark words and phrases in a variety of ways.
+The Texinfo formatters use this information to determine how to
+highlight the text.
+You can specify, for example, whether a word or phrase is a
+defining occurrence, a metasyntactic variable, or a symbol used in a
+program.  Also, you can emphasize text, in several different ways.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC120">9.1 Indicating Definitions, Commands, etc.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate definitions, files, etc.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC137">9.2 Emphasizing Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to emphasize text.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD106"></a>
+<a name="SEC120"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC119" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.1 Indicating Definitions, Commands, etc. </h2>
+
+<p>Texinfo has commands for indicating just what kind of object a piece of
+text refers to.  For example, metasyntactic variables are marked by
+<code>@var</code>, and code by <code>@code</code>.  Since the pieces of text are
+labelled by commands that tell what kind of object they are, it is easy
+to change the way the Texinfo formatters prepare such text.  (Texinfo is
+an <em>intentional</em> formatting language rather than a <em>typesetting</em>
+formatting language.)</p><p>For example, in a printed manual,
+code is usually illustrated in a typewriter font;
+<code>@code</code> tells TeX to typeset this text in this font.  But it
+would be easy to change the way TeX highlights code to use another
+font, and this change would not affect how keystroke examples are
+highlighted.  If straight typesetting commands were used in the body
+of the file and you wanted to make a change, you would need to check
+every single occurrence to make sure that you were changing code and
+not something else that should not be changed.</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#NOD107">Useful Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Highlighting provides useful information.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC122">9.1.1 <code>@code</code>{<var>sample-code</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating program code.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC123">9.1.2 <code>@kbd</code>{<var>keyboard-characters</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Showing keyboard input.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC124">9.1.3 <code>@key</code>{<var>key-name</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying keys.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC125">9.1.4 <code>@samp</code>{<var>text</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A literal sequence of characters.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC126">9.1.5 <code>@verb</code>{&lt;char&gt;<var>text</var>&lt;char&gt;}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A verbatim sequence of characters.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC127">9.1.6 <code>@var</code>{<var>metasyntactic-variable</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating metasyntactic variables.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC128">9.1.7 <code>@env</code>{<var>environment-variable</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating environment variables.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC129">9.1.8 <code>@file</code>{<var>file-name</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating file names.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC130">9.1.9 <code>@command</code>{<var>command-name</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating command names.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC131">9.1.10 <code>@option</code>{<var>option-name</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating option names.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC132">9.1.11 <code>@dfn</code>{<var>term</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying definitions.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC133">9.1.12 <code>@cite</code>{<var>reference</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Referring to books not in the  Info system.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC134">9.1.13 <code>@acronym</code>{<var>acronym</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating acronyms.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC135">9.1.14 <code>@url</code>{<var>uniform-resource-locator</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating a World Wide Web reference.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC136">9.1.15 <code>@email</code>{<var>email-address</var>[, <var>displayed-text</var>]}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating an electronic mail address.</td></tr>
+</table>
+
+<a name="NOD107"></a>
+<a name="SEC121"></a>
+<h3> Highlighting Commands are Useful </h3>
+
+<p>The highlighting commands can be used to extract useful information
+from the file, such as lists of functions or file names.  It is
+possible, for example, to write a program in Emacs Lisp (or a keyboard
+macro) to insert an index entry after every paragraph that contains
+words or phrases marked by a specified command.  You could do this to
+construct an index of functions if you had not already made the
+entries.</p><p>The commands serve a variety of purposes:</p><dl compact="compact">
+<dt><code> @code{<var>sample-code</var>}
+</code></dt>
+<dd><p>Indicate text that is a literal example of a piece of a program.</p></dd>
+<dt><code> @kbd{<var>keyboard-characters</var>}
+</code></dt>
+<dd><p>Indicate keyboard input.</p></dd>
+<dt><code> @key{<var>key-name</var>}
+</code></dt>
+<dd><p>Indicate the conventional name for a key on a keyboard.</p></dd>
+<dt><code> @samp{<var>text</var>}
+</code></dt>
+<dd><p>Indicate text that is a literal example of a sequence of characters.</p></dd>
+<dt><code> @var{<var>metasyntactic-variable</var>}
+</code></dt>
+<dd><p>Indicate a metasyntactic variable.</p></dd>
+<dt><code> @env{<var>environment-variable</var>}
+</code></dt>
+<dd><p>Indicate an environment variable.</p></dd>
+<dt><code> @file{<var>file-name</var>}
+</code></dt>
+<dd><p>Indicate the name of a file.</p></dd>
+<dt><code> @command{<var>command-name</var>}
+</code></dt>
+<dd><p>Indicate the name of a command.</p></dd>
+<dt><code> @option{<var>option</var>}
+</code></dt>
+<dd><p>Indicate a command-line option.</p></dd>
+<dt><code> @dfn{<var>term</var>}
+</code></dt>
+<dd><p>Indicate the introductory or defining use of a term.</p></dd>
+<dt><code> @cite{<var>reference</var>}
+</code></dt>
+<dd><p>Indicate the name of a book.</p></dd>
+<dt><code> @acronym{<var>acronym</var>}
+</code></dt>
+<dd><p>Indicate an acronym.</p></dd>
+<dt><code> @url{<var>uniform-resource-locator</var>}
+</code></dt>
+<dd><p>Indicate a uniform resource locator for the World Wide Web.
+</p></dd>
+<dt><code> @email{<var>email-address</var>[, <var>displayed-text</var>]}
+</code></dt>
+<dd><p>Indicate an electronic mail address.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD108"></a>
+<a name="SEC122"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.1 <code>@code</code>{<var>sample-code</var>} </h3>
+
+<p>Use the <code>@code</code> command to indicate text that is a piece of a
+program and which consists of entire syntactic tokens.  Enclose the
+text in braces.
+</p><a name="IDX116"></a>
+<a name="IDX117"></a>
+<a name="IDX118"></a>
+<p>Thus, you should use <code>@code</code> for an expression in a program, for
+the name of a variable or function used in a program, or for a
+keyword in a programming language.
+</p><p>Use <code>@code</code> for command names in languages that resemble
+programming languages, such as Texinfo.  For example, <code>@code</code> and
+<code>@samp</code> are produced by writing `<samp>@code{@@code}</samp>' and
+`<samp>@code{@@samp}</samp>' in the Texinfo source, respectively.
+</p><a name="IDX119"></a>
+<p>It is incorrect to alter the case of a word inside an <code>@code</code>
+command when it appears at the beginning of a sentence.  Most computer
+languages are case sensitive.  In C, for example, <code>Printf</code> is
+different from the identifier <code>printf</code>, and most likely is a
+misspelling of it.  Even in languages which are not case sensitive, it
+is confusing to a human reader to see identifiers spelled in different
+ways.  Pick one spelling and always use that.  If you do not want to
+start a sentence with a command name written all in lower case, you
+should rearrange the sentence.
+</p><p>In the printed manual, <code>@code</code> causes TeX to typeset the
+argument in a typewriter face.  In the Info file, it causes the Info
+formatting commands to use single quotation marks around the text.
+</p><p>For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The function returns @code{nil}.
+</pre></td></tr></table>
+<p>produces this in the printed manual:
+</p><blockquote>
+
+<p>The function returns <code>nil</code>.
+</p></blockquote>
+
+<p>Here are some cases for which it is preferable not to use <code>@code</code>:
+</p><ul>
+<li><p>
+For shell command names such as <code>ls</code> (use <code>@command</code>).
+</p></li><li><p>
+For shell options such as `<samp>-c</samp>' when such options stand alone (use
+<code>@option</code>).
+</p></li><li><p>
+Also, an entire shell command often looks better if written using
+<code>@samp</code> rather than <code>@code</code>.  In this case, the rule is to
+choose the more pleasing format.
+</p></li><li><p>
+For environment variable such as <code>TEXINPUTS</code> (use <code>@env</code>).
+</p></li><li><p>
+For a string of characters shorter than a syntactic token.  For example,
+if you are writing about `<samp>goto-ch</samp>', which is just a part of the
+name for the <code>goto-char</code> Emacs Lisp function, you should use
+<code>@samp</code>.
+</p></li><li><p>
+In general, when writing about the characters used in a token; for
+example, do not use <code>@code</code> when you are explaining what letters
+or printable symbols can be used in the names of functions.  (Use
+<code>@samp</code>.)  Also, you should not use <code>@code</code> to mark text
+that is considered input to programs unless the input is written in a
+language that is like a programming language.  For example, you should
+not use <code>@code</code> for the keystroke commands of GNU Emacs (use
+<code>@kbd</code> instead) although you may use <code>@code</code> for the names
+of the Emacs Lisp functions that the keystroke commands invoke.
+</p></li></ul>
+
+<p>Since <code>@command</code>, <code>@option</code>, and <code>@env</code> were
+introduced relatively recently, it is acceptable to use <code>@code</code> or
+<code>@samp</code> for command names, options, and environment variables.
+The new commands allow you to express the markup more precisely, but
+there is no real harm in using the older commands, and of course the
+long-standing manuals do so.
+</p><hr size="6">
+<a name="NOD109"></a>
+<a name="SEC123"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.2 <code>@kbd</code>{<var>keyboard-characters</var>} </h3>
+
+<p>Use the <code>@kbd</code> command for characters of input to be typed by
+users.  For example, to refer to the characters <kbd>M-a</kbd>,
+write</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@kbd{M-a}
+</pre></td></tr></table>
+<p>and to refer to the characters <kbd>M-x shell</kbd>, write</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@kbd{M-x shell}
+</pre></td></tr></table>
+<a name="IDX120"></a>
+<a name="IDX121"></a>
+<p>The <code>@kbd</code> command has the same effect as <code>@code</code> in Info,
+but by default produces a different font (slanted typewriter instead of
+normal typewriter) in the printed manual, so users can distinguish the
+characters they are supposed to type from those the computer outputs.
+</p><a name="IDX122"></a>
+<p>Since the usage of <code>@kbd</code> varies from manual to manual, you can
+control the font switching with the <code>@kbdinputstyle</code> command.
+This command has no effect on Info output.  Write this command at the
+beginning of a line with a single word as an argument, one of the
+following:
+<a name="IDX123"></a>
+<a name="IDX124"></a>
+<a name="IDX125"></a>
+</p><dl compact="compact">
+<dt>`<samp> code
+</samp>'</dt>
+<dd><p>Always use the same font for <code>@kbd</code> as <code>@code</code>.
+</p></dd>
+<dt>`<samp> example
+</samp>'</dt>
+<dd><p>Use the distinguishing font for <code>@kbd</code> only in <code>@example</code>
+and similar environments.
+</p></dd>
+<dt>`<samp> distinct
+</samp>'</dt>
+<dd><p>(the default) Always use the distinguishing font for <code>@kbd</code>.
+</p></dd>
+</dl>
+
+<p>You can embed another @-command inside the braces of an <code>@kbd</code>
+command.  Here, for example, is the way to describe a command that
+would be described more verbosely as &quot;press an `<samp>r</samp>' and then
+press the <kbd>RET</kbd> key&quot;:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@kbd{r @key{RET}}
+</pre></td></tr></table>
+<p>This produces: <kbd>r <kbd>RET</kbd></kbd>
+</p><p>You also use the <code>@kbd</code> command if you are spelling out the letters
+you type; for example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+To give the @code{logout} command,
+type the characters @kbd{l o g o u t @key{RET}}.
+</pre></td></tr></table>
+<p>This produces:
+</p><blockquote>
+
+<p>To give the <code>logout</code> command,
+type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
+</p></blockquote>
+
+<p>(Also, this example shows that you can add spaces for clarity.  If you
+really want to mention a space character as one of the characters of
+input, write <kbd>@key{SPC}</kbd> for it.)</p><hr size="6">
+<a name="NOD110"></a>
+<a name="SEC124"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.3 <code>@key</code>{<var>key-name</var>} </h3>
+
+<p>Use the <code>@key</code> command for the conventional name for a key on a
+keyboard, as in:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@key{RET}
+</pre></td></tr></table>
+<p>You can use the <code>@key</code> command within the argument of an
+<code>@kbd</code> command when the sequence of characters to be typed
+includes one or more keys that are described by name.</p><p>For example, to produce <kbd>C-x <kbd>ESC</kbd></kbd> you would type:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@kbd{C-x @key{ESC}}
+</pre></td></tr></table>
+<p>Here is a list of the recommended names for keys:
+<a name="IDX126"></a>
+<a name="IDX127"></a>
+<a name="IDX128"></a>
+<a name="IDX129"></a>
+</p><blockquote>
+
+<dl compact="compact">
+<dt><tt> SPC
+</tt></dt>
+<dd><p>Space
+</p></dd>
+<dt><tt> RET
+</tt></dt>
+<dd><p>Return
+</p></dd>
+<dt><tt> LFD
+</tt></dt>
+<dd><p>Linefeed (however, since most keyboards nowadays do not have a Linefeed key,
+it might be better to call this character <kbd>C-j</kbd>.
+</p></dd>
+<dt><tt> TAB
+</tt></dt>
+<dd><p>Tab
+</p></dd>
+<dt><tt> BS
+</tt></dt>
+<dd><p>Backspace
+</p></dd>
+<dt><tt> ESC
+</tt></dt>
+<dd><p>Escape
+</p></dd>
+<dt><tt> DEL
+</tt></dt>
+<dd><p>Delete
+</p></dd>
+<dt><tt> SHIFT
+</tt></dt>
+<dd><p>Shift
+</p></dd>
+<dt><tt> CTRL
+</tt></dt>
+<dd><p>Control
+</p></dd>
+<dt><tt> META
+</tt></dt>
+<dd><p>Meta
+</p></dd>
+</dl>
+</blockquote>
+
+<a name="IDX130"></a>
+<p>There are subtleties to handling words like `meta' or `ctrl' that are
+names of modifier keys.  When mentioning a character in which the
+modifier key is used, such as <kbd>Meta-a</kbd>, use the <code>@kbd</code> command
+alone; do not use the <code>@key</code> command; but when you are referring
+to the modifier key in isolation, use the <code>@key</code> command.  For
+example, write `<samp>@kbd{Meta-a}</samp>' to produce <kbd>Meta-a</kbd> and
+`<samp>@key{META}</samp>' to produce <kbd>META</kbd>.
+</p><hr size="6">
+<a name="NOD111"></a>
+<a name="SEC125"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.4 <code>@samp</code>{<var>text</var>} </h3>
+
+<p>Use the <code>@samp</code> command to indicate text that is a literal example
+or `sample' of a sequence of characters in a file, string, pattern, etc.
+Enclose the text in braces.  The argument appears within single
+quotation marks in both the Info file and the printed manual; in
+addition, it is printed in a fixed-width font.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+To match @samp{foo} at the end of the line,
+use the regexp @samp{foo$}.
+</pre></td></tr></table>
+<p>produces
+</p><blockquote>
+
+<p>To match `<samp>foo</samp>' at the end of the line, use the regexp
+`<samp>foo$</samp>'.</p></blockquote>
+
+<p>Any time you are referring to single characters, you should use
+<code>@samp</code> unless <code>@kbd</code> or <code>@key</code> is more appropriate.
+Also, you may use <code>@samp</code> for entire statements in C and for entire
+shell commands--in this case, <code>@samp</code> often looks better than
+<code>@code</code>.  Basically, <code>@samp</code> is a catchall for whatever is
+not covered by <code>@code</code>, <code>@kbd</code>, or <code>@key</code>.</p><p>Only include punctuation marks within braces if they are part of the
+string you are specifying.  Write punctuation marks outside the braces
+if those punctuation marks are part of the English text that surrounds
+the string.  In the following sentence, for example, the commas and
+period are outside of the braces:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+In English, the vowels are @samp{a}, @samp{e},
+@samp{i}, @samp{o}, @samp{u}, and sometimes
+@samp{y}.
+</pre></td></tr></table>
+<p>This produces:
+</p><blockquote>
+
+<p>In English, the vowels are `<samp>a</samp>', `<samp>e</samp>',
+`<samp>i</samp>', `<samp>o</samp>', `<samp>u</samp>',  and sometimes
+`<samp>y</samp>'.
+</p></blockquote>
+
+<hr size="6">
+<a name="NOD112"></a>
+<a name="SEC126"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.5 <code>@verb</code>{&lt;char&gt;<var>text</var>&lt;char&gt;} </h3>
+
+<p>Use the <code>@verb</code> command to print a verbatim sequence of
+characters.
+</p><p>Like LaTeX's <code>\verb</code> command, the verbatim text can be quoted using
+any unique delimiter character.  Enclose the verbatim text, including the
+delimiters, in braces.  Text is printed in a fixed-width font:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+How many @verb{|@|}-escapes does one need to print this
+@verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
+</pre></td></tr></table>
+<p>produces
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+How many <tt>@ </tt>-escapes does one need to print this
+<tt>@a @b @c</tt> string or these <tt>@'e?`{}!`\</tt> this?
+</pre></td></tr></table>
+<p>This is in contrast to <code>@samp</code> (see the previous
+section), whose argument is normal Texinfo text, where the characters
+<code>@{}</code> are special; with <code>@verb</code>, nothing is special except
+the delimiter character you choose.
+</p><hr size="6">
+<a name="NOD113"></a>
+<a name="SEC127"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC126" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC128" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.6 <code>@var</code>{<var>metasyntactic-variable</var>} </h3>
+
+<p>Use the <code>@var</code> command to indicate metasyntactic variables.  A
+<em>metasyntactic variable</em> is something that stands for another piece of
+text.  For example, you should use a metasyntactic variable in the
+documentation of a function to describe the arguments that are passed
+to that function.</p><p>Do not use <code>@var</code> for the names of particular variables in
+programming languages.  These are specific names from a program, so
+<code>@code</code> is correct for them (see section <a href="#SEC122"><code>@code</code>{<var>sample-code</var>}</a>).  For example, the
+Emacs Lisp variable <code>texinfo-tex-command</code> is not a metasyntactic
+variable; it is properly formatted using <code>@code</code>.
+</p><p>Do not use <code>@var</code> for environment variables either; <code>@env</code>
+is correct for them (see the next section).
+</p><p>The effect of <code>@var</code> in the Info file is to change the case of the
+argument to all upper case.  In the printed manual and HTML output, the
+argument is printed in slanted type.  
+</p><p>For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+To delete file @var{filename},
+type @samp{rm @var{filename}}.
+</pre></td></tr></table>
+<p>produces
+</p><blockquote>
+
+<p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
+</p></blockquote>
+
+<p>(Note that <code>@var</code> may appear inside <code>@code</code>,
+<code>@samp</code>, <code>@file</code>, etc.)</p><p>Write a metasyntactic variable all in lower case without spaces, and
+use hyphens to make it more readable.  Thus, the Texinfo source for
+the illustration of how to begin a Texinfo manual looks like
+this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo
+@@setfilename @var{info-file-name}
+@@settitle @var{name-of-manual}
+</pre></td></tr></table>
+<p>This produces:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo
+@setfilename <var>info-file-name</var>
+@settitle <var>name-of-manual</var>
+</pre></td></tr></table>
+<p>In some documentation styles, metasyntactic variables are shown with
+angle brackets, for example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+..., type rm &lt;filename&gt;
+</pre></td></tr></table>
+<p>However, that is not the style that Texinfo uses.  (You can, of
+course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
+to output the <code>&lt;<small>...</small>&gt;</code> format if you wish.)</p><hr size="6">
+<a name="NOD114"></a>
+<a name="SEC128"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC129" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.7 <code>@env</code>{<var>environment-variable</var>} </h3>
+
+<p>Use the <code>@env</code> command to indicate environment variables, as used
+by many operating systems, including GNU.  Do not use it for
+metasyntactic variables; use <code>@var</code> instead (see the previous
+section).
+</p><p><code>@env</code> is equivalent to <code>@code</code> in its effects.
+For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The @env{PATH} environment variable ...
+</pre></td></tr></table><p>produces
+</p><blockquote>
+ 
+<p>The <code>PATH</code> environment variable <small>...</small>
+</p></blockquote>
+
+<hr size="6">
+<a name="NOD115"></a>
+<a name="SEC129"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC128" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC130" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.8 <code>@file</code>{<var>file-name</var>} </h3>
+
+<p>Use the <code>@file</code> command to indicate text that is the name of a
+file, buffer, or directory, or is the name of a node in Info.  You can
+also use the command for file name suffixes.  Do not use <code>@file</code>
+for symbols in a programming language; use <code>@code</code>.
+</p><p>Currently, <code>@file</code> is equivalent to <code>@samp</code> in its effects.
+For example,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The @file{.el} files are in
+the @file{/usr/local/emacs/lisp} directory.
+</pre></td></tr></table>
+<p>produces
+</p><blockquote>
+
+<p>The `<tt>.el</tt>' files are in
+the `<tt>/usr/local/emacs/lisp</tt>' directory.
+</p></blockquote>
+
+<hr size="6">
+<a name="NOD116"></a>
+<a name="SEC130"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC129" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC131" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.9 <code>@command</code>{<var>command-name</var>} </h3>
+
+<p>Use the <code>@command</code> command to indicate command names, such as
+<code>ls</code> or <code>cc</code>.
+</p><p><code>@command</code> is equivalent to <code>@code</code> in its effects.
+For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The command @command{ls} lists directory contents.
+</pre></td></tr></table><p>produces
+</p><blockquote>
+ 
+<p>The command <code>ls</code> lists directory contents.
+</p></blockquote>
+
+<p>You should write the name of a program in the ordinary text font, rather
+than using <code>@command</code>, if you regard it as a new English word,
+such as `Emacs' or `Bison'.
+</p><p>When writing an entire shell command invocation, as in `<samp>ls -l</samp>',
+you should use either <code>@samp</code> or <code>@code</code> at your discretion.
+</p><hr size="6">
+<a name="NOD117"></a>
+<a name="SEC131"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC130" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC132" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.10 <code>@option</code>{<var>option-name</var>} </h3>
+
+<p>Use the <code>@option</code> command to indicate a command-line option; for
+example, `<samp>-l</samp>' or `<samp>--version</samp>' or
+`<samp>--output=<var>filename</var></samp>'.
+</p><p><code>@option</code> is equivalent to <code>@samp</code> in its effects.
+For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The option @option{-l} produces a long listing.
+</pre></td></tr></table><p>produces
+</p><blockquote>
+ 
+<p>The option `<samp>-l</samp>' produces a long listing.
+</p></blockquote>
+
+<p>In tables, putting options inside <code>@code</code> produces a
+more pleasing effect.
+</p><hr size="6">
+<a name="NOD118"></a>
+<a name="SEC132"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC131" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC133" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.11 <code>@dfn</code>{<var>term</var>} </h3>
+
+<p>Use the <code>@dfn</code> command to identify the introductory or defining
+use of a technical term.  Use the command only in passages whose
+purpose is to introduce a term which will be used again or which the
+reader ought to know.  Mere passing mention of a term for the first
+time does not deserve <code>@dfn</code>.  The command generates italics in
+the printed manual, and double quotation marks in the Info file.  For
+example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+Getting rid of a file is called @dfn{deleting} it.
+</pre></td></tr></table>
+<p>produces
+</p><blockquote>
+
+<p>Getting rid of a file is called <em>deleting</em> it.
+</p></blockquote>
+
+<p>As a general rule, a sentence containing the defining occurrence of a
+term should be a definition of the term.  The sentence does not need
+to say explicitly that it is a definition, but it should contain the
+information of a definition--it should make the meaning clear.
+</p><hr size="6">
+<a name="NOD119"></a>
+<a name="SEC133"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC132" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC134" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.12 <code>@cite</code>{<var>reference</var>} </h3>
+
+<p>Use the <code>@cite</code> command for the name of a book that lacks a
+companion Info file.  The command produces italics in the printed
+manual, and quotation marks in the Info file.
+</p><p>If a book is written in Texinfo, it is better to use a cross reference
+command since a reader can easily follow such a reference in Info.
+See section <a href="texinfo_9.html#SEC108"><code>@xref</code></a>.
+</p><hr size="6">
+<a name="NOD120"></a>
+<a name="SEC134"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.13 <code>@acronym</code>{<var>acronym</var>} </h3>
+
+<p>Use the <code>@acronym</code> command for abbreviations written in all
+capital letters, such as `NASA'.  The abbreviation is given as
+the single argument in braces, as in `<samp>@acronym{NASA}</samp>'.  As
+a matter of style, or for particular abbreviations, you may prefer to
+use periods, as in `<samp>@acronym{F.B.I.}</samp>'.
+</p><p>In TeX and HTML, the argument is printed in a slightly smaller font
+size.  In Info or plain text output, this command changes nothing.
+</p><hr size="6">
+<a name="NOD121"></a>
+<a name="SEC135"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.14 <code>@url</code>{<var>uniform-resource-locator</var>} </h3>
+
+<p>Use the <code>@url</code> command to indicate a uniform resource locator on
+the World Wide Web.  This is analogous to <code>@file</code>, <code>@var</code>,
+etc., and is purely for markup purposes.  It does not produce a link you
+can follow in HTML output (use the <code>@uref</code> command for that,
+see section <a href="texinfo_9.html#SEC118"><code>@uref</code></a>).  It is useful for url's which do
+not actually exist.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+For example, the url might be @url{http://example.org/path}.
+</pre></td></tr></table>
+<p>which produces:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+For example, the url might be <a href="http://example.org/path">http://example.org/path</a>.
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD122"></a>
+<a name="SEC136"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.15 <code>@email</code>{<var>email-address</var>[, <var>displayed-text</var>]} </h3>
+
+<p>Use the <code>@email</code> command to indicate an electronic mail address.
+It takes one mandatory argument, the address, and one optional argument, the
+text to display (the default is the address itself).
+</p><a name="IDX131"></a>
+<p>In Info and TeX, the address is shown in angle brackets, preceded by
+the text to display if any.  In HTML output, <code>@email</code> produces a
+`<samp>mailto</samp>' link that usually brings up a mail composition window.
+For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+Send bug reports to @email{bug-texinfo@@gnu.org},
+suggestions to the @email{bug-texinfo@@gnu.org, same place}.
+</pre></td></tr></table><p>produces
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
+suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD123"></a>
+<a name="SEC137"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC119" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.2 Emphasizing Text </h2>
+
+<p>Usually, Texinfo changes the font to mark words in the text according to
+what category the words belong to; an example is the <code>@code</code> command.
+Most often, this is the best way to mark words.
+However, sometimes you will want to emphasize text without indicating a
+category.  Texinfo has two commands to do this.  Also, Texinfo has
+several commands that specify the font in which TeX will typeset
+text.  These commands have no effect on Info and only one of them,
+the <code>@r</code> command, has any regular use.</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC138">9.2.1 <code>@emph</code>{<var>text</var>} and <code>@strong</code>{<var>text</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to emphasize text in Texinfo.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC139">9.2.2 <code>@sc</code>{<var>text</var>}: The Small Caps Font</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to use the small caps font.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC140">9.2.3 Fonts for Printing, Not Info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various font commands for printed output.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD124"></a>
+<a name="SEC138"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.2.1 <code>@emph</code>{<var>text</var>} and <code>@strong</code>{<var>text</var>} </h3>
+
+<p>The <code>@emph</code> and <code>@strong</code> commands are for emphasis;
+<code>@strong</code> is stronger.  In printed output, <code>@emph</code> produces
+<em>italics</em> and <code>@strong</code> produces <strong>bold</strong>.
+</p><p>For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@quotation
+@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
+files in the directory.
+@end quotation
+</pre></td></tr></table>
+<p>produces:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+     *Caution*: `rm * .[^.]*' removes _all_
+     files in the directory.
+</pre></td></tr></table>
+<p>The <code>@strong</code> command is seldom used except to mark what is, in
+effect, a typographical element, such as the word `Caution' in the
+preceding example.
+</p><p>In the Info output, <code>@emph</code> surrounds the text with underscores
+(`<samp>_</samp>'), and <code>@strong</code> puts asterisks around the text.
+</p><blockquote>
+
+<p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
+Info will mistake the combination for a cross reference.  Use a phrase
+such as <strong>Please note</strong> or <strong>Caution</strong> instead.
+</p></blockquote>
+
+<hr size="6">
+<a name="NOD125"></a>
+<a name="SEC139"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.2.2 <code>@sc</code>{<var>text</var>}: The Small Caps Font </h3>
+
+<p>Use the `<samp>@sc</samp>' command to set text in the printed and the HTML
+output in <small>A SMALL CAPS FONT</small> and set text in the Info file in upper
+case letters.  Write the text you want to be in small caps (where
+possible) between braces in lower case, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The @sc{acm} and @sc{ieee} are technical societies.
+</pre></td></tr></table>
+<p>This produces:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+The ACM and IEEE are technical societies.
+</pre></td></tr></table>
+<p>TeX typesets the small caps font in a manner that prevents the
+letters from `jumping out at you on the page'.  This makes small caps
+text easier to read than text in all upper case--but it's usually
+better to use regular mixed case anyway.  The Info formatting commands
+set all small caps text in upper case.  In HTML, the text is upper-cased
+and a smaller font is used to render it.
+</p><p>If the text between the braces of an <code>@sc</code> command is uppercase,
+TeX typesets in FULL-SIZE CAPITALS.  Use full-size capitals
+sparingly, if ever, and since it's redundant to mark all-uppercase text
+with <code>@sc</code>, <code>makeinfo</code> warns about such usage.
+</p><p>You may also use the small caps font for a jargon word such as
+<small>ATO</small> (a <small>NASA</small> word meaning `abort to orbit').
+</p><p>There are subtleties to using the small caps font with a jargon word
+such as <small>CDR</small>, a word used in Lisp programming.  In this case, you
+should use the small caps font when the word refers to the second and
+subsequent elements of a list (the <small>CDR</small> of the list), but you
+should use `<samp>@code</samp>' when the word refers to the Lisp function of
+the same spelling.
+</p><hr size="6">
+<a name="NOD126"></a>
+<a name="SEC140"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.2.3 Fonts for Printing, Not Info </h3>
+
+<p>Texinfo provides four font commands that specify font changes in the
+printed manual but have no effect in the Info file.  <code>@i</code>
+requests <i>italic</i> font (in some versions of TeX, a slanted font
+is used), <code>@b</code> requests <b>bold</b> face, <code>@t</code> requests the
+<tt>fixed-width</tt>, typewriter-style font used by <code>@code</code>, and <code>@r</code> requests a
+roman font, which is the usual font in which text is printed.  All
+four commands apply to an argument that follows, surrounded by
+braces.</p><p>Only the <code>@r</code> command has much use: in example programs, you
+can use the <code>@r</code> command to convert code comments from the
+fixed-width font to a roman font.  This looks better in printed
+output.</p><p>For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@lisp
+(+ 2 2)    ; @r{Add two plus two.}
+@end lisp
+</pre></td></tr></table>
+<p>produces
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+(+ 2 2)    ; Add two plus two.
+</pre></td></tr></table>
+<p>If possible, you should avoid using the other three font commands.  If
+you need to use one, it probably indicates a gap in the Texinfo
+language.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

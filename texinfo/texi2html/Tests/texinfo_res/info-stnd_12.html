@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Info 4.2: 12. Customizing Key Bindings and Variables</title>
+
+<meta name="description" content="GNU Info 4.2: 12. Customizing Key Bindings and Variables">
+<meta name="keywords" content="GNU Info 4.2: 12. Customizing Key Bindings and Variables">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD18"></a>
+<a name="SEC17"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_11.html#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd_11.html#SEC16" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 12. Customizing Key Bindings and Variables </h1>
+
+<p>For those whose editor/pager of choice is not Emacs and who are not
+entirely satisfied with the --vi-keys option (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>), GNU
+Info provides a way to define different key-to-command bindings and
+variable settings from the defaults described in this document.
+</p><p>On startup, GNU Info looks for a configuration file in the invoker's
+HOME directory called `<tt>.info</tt>'<a name="DOCF7" href="info-stnd_fot.html#FOOT7">(7)</a>.  If it is present, and
+appears to contain Info configuration data, and was created with the
+current version of the <code>infokey</code> command, then Info adopts the
+key bindings and variable settings contained therein.
+</p><p>The `<tt>.info</tt>' file contains compact, non-textual data for reasons of
+efficiency and because its design was lifted wholesale from the GNU Less
+program, which also does it that way.  It must be created by compiling a
+textual source file using the <code>infokey</code> command.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC18">12.1 Invoking <code>infokey</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC19">12.2 <code>infokey</code> source format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD19"></a>
+<a name="SEC18"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 12.1 Invoking <code>infokey</code> </h2>
+
+<p><code>infokey</code> compiles a source file
+(`<tt>$HOME/.infokey</tt>'<a name="DOCF8" href="info-stnd_fot.html#FOOT8">(8)</a> by default) containing Info customizations
+into a binary format (`<tt>$HOME/.info</tt>' by default).  GNU Info reads
+the binary file at startup to override the default key bindings and
+variable definitions.  Synopsis:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+infokey [<var>option</var>...] [<var>input-file</var>]
+</pre></td></tr></table>
+<p>Besides the standard `<samp>--help</samp>' and `<samp>--version</samp>', the only
+option is `<samp>--output <var>file</var></samp>'.  This tells <code>infokey</code> to
+write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
+</p><hr size="6">
+<a name="NOD20"></a>
+<a name="SEC19"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 12.2 <code>infokey</code> source format </h2>
+
+<p>The format of the source file read by <code>infokey</code> is most easily
+illustrated by example.  For instance, here is a sample `<tt>.infokey</tt>'
+source file suitable for aficionados of <code>vi</code> or <code>less</code>:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+#info
+j       next-line
+k       prev-line
+l       forward-char
+h       backward-char
+\kd     next-line
+\ku     prev-line
+\kr     forward-char
+\kl     backward-char
+\       scroll-forward
+\kD     scroll-forward-page-only
+b       scroll-backward
+\kU     scroll-backward-page-only
+g       beginning-of-node
+\kh     beginning-of-node
+G       end-of-node
+\ke     end-of-node
+\t      select-reference-this-line
+-       history-node
+n       next-node
+p       prev-node
+u       up-node
+t       top-node
+d       dir-node
+#var
+scroll-step=1
+</pre></td></tr></table>
+<p>The source file consists of one or more <em>sections</em>.
+Each section starts with a line that identifies the type of section.
+Possible sections are:
+</p><dl compact="compact">
+<dt><code> #info
+</code></dt>
+<dd><p>Key bindings for Info windows.
+The start of this section is indicated by a line containing just
+<code>#info</code> by itself.  If this is the first section in the source
+file, the <code>#info</code> line can be omitted.  The rest of this section
+consists of lines of the form:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
+</pre></td></tr></table>
+<p>Whitespace is any sequence of one or more spaces and/or tabs.  Comment
+is any sequence of any characters, excluding newline.  <var>string</var> is
+the key sequence which invokes the action.  <var>action</var> is the name of
+an Info command.  The characters in <var>string</var> are interpreted
+literally or prefixed by a caret (<code>^</code>) to indicate a control
+character.  A backslash followed by certain characters specifies input
+keystrokes as follows:
+</p><dl compact="compact">
+<dt><code> \b
+</code></dt>
+<dd><p>Backspace
+</p></dd>
+<dt><code> \e
+</code></dt>
+<dd><p>Escape (ESC)
+</p></dd>
+<dt><code> \n
+</code></dt>
+<dd><p>Newline
+</p></dd>
+<dt><code> \r
+</code></dt>
+<dd><p>Return
+</p></dd>
+<dt><code> \t
+</code></dt>
+<dd><p>Tab
+</p></dd>
+<dt><code> \ku
+</code></dt>
+<dd><p>Up arrow
+</p></dd>
+<dt><code> \kd
+</code></dt>
+<dd><p>Down arrow
+</p></dd>
+<dt><code> \kl
+</code></dt>
+<dd><p>Left arrow
+</p></dd>
+<dt><code> \kr
+</code></dt>
+<dd><p>Right arrow
+</p></dd>
+<dt><code> \kU
+</code></dt>
+<dd><p>Page Up
+</p></dd>
+<dt><code> \kD
+</code></dt>
+<dd><p>Page Down
+</p></dd>
+<dt><code> \kh
+</code></dt>
+<dd><p>HOME
+</p></dd>
+<dt><code> \ke
+</code></dt>
+<dd><p>END
+</p></dd>
+<dt><code> \kx
+</code></dt>
+<dd><p>Delete (DEL)
+</p></dd>
+<dt><code> \m<var>x</var>
+</code></dt>
+<dd><p>Meta-<var>x</var> where <var>x</var> is any character as described above.
+</p></dd>
+</dl>
+
+<p>Backslash followed by any other character indicates that character is to
+be taken literally.  Characters which must be preceded by a backslash
+include caret, space, tab, and backslash itself.
+</p></dd>
+<dt><code> #echo-area
+</code></dt>
+<dd><p>Key bindings for the echo area.
+The start of this section is indicated by a line containing just
+<code>#echo-area</code> by itself.  The rest of this section has a syntax
+identical to that for the key definitions for the Info area, described
+above.
+</p></dd>
+<dt><code> #var
+</code></dt>
+<dd><p>Variable initializations.
+The start of this section is indicated by a line containing just
+<code>#var</code> by itself.  Following this line is a list of variable
+assignments, one per line.  Each line consists of a variable name
+(See section <a href="info-stnd_11.html#SEC16">Manipulating Variables</a>,) followed by <code>=</code> followed by a value.
+There may be no white space between the variable name and the <code>=</code>,
+and all characters following the <code>=</code>, including white space,
+are included in the value.
+</p></dd>
+</dl>
+
+<p>Blank lines and lines starting with <code>#</code> are ignored, except for
+the special section header lines.
+</p><p>Key bindings defined in the `<tt>.info</tt>' file take precedence over GNU
+Info's default key bindings, whether or not `<samp>--vi-keys</samp>' is used.  A
+default key binding may be disabled by overriding it in the `<tt>.info</tt>'
+file with the action <code>invalid</code>.  In addition, <em>all</em> default
+key bindings can be disabled by adding this line <em>anywhere</em> in the
+relevant section:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+#stop
+</pre></td></tr></table>
+<p>This will cause GNU Info to ignore all the default key commands for that
+section.
+</p><p>Beware: <code>#stop</code> can be dangerous.  Since it disables all default
+key bindings, you must supply enough new key bindings to enable all
+necessary actions.  Failure to bind any key to the <code>quit</code> command,
+for example, can lead to frustration.
+</p><p>The order in which key bindings are defined in the `<tt>.info</tt>' file is
+not important, except that the command summary produced by the
+<code>get-help-window</code> command only displays the <em>first</em> key that
+is bound to each command.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

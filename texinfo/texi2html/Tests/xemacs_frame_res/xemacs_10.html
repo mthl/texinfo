@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: 7. Running Commands by Name</title>
+
+<meta name="description" content="XEmacs User's Manual: 7. Running Commands by Name">
+<meta name="keywords" content="XEmacs User's Manual: 7. Running Commands by Name">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD62"></a>
+<a name="SEC70"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC69" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_11.html#SEC71" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_11.html#SEC71" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 7. Running Commands by Name </h1>
+
+<p>  The Emacs commands that are used often or that must be quick to type are
+bound to keys--short sequences of characters--for convenient use.  Other
+Emacs commands that are used more rarely are not bound to keys; to run
+them, you must refer to them by name.
+</p><p>  A command name consists, by convention, of one or more words,
+separated by hyphens: for example, <code>auto-fill-mode</code> or
+<code>manual-entry</code>.  The use of English words makes the command name
+easier to remember than a key made up of obscure characters, even though
+it results in more characters to type.  You can run any command by name,
+even if it can be run by keys as well. 
+</p><a name="IDX246"></a>
+<a name="IDX247"></a>
+<p> To run a command by name, start with <kbd>M-x</kbd>, then type the
+command name, and finish with <kbd>RET</kbd>.  <kbd>M-x</kbd> uses the minibuffer
+to read the command name.  <kbd>RET</kbd> exits the minibuffer and runs the
+command.
+</p><p>  Emacs uses the minibuffer for reading input for many different purposes;
+on this occasion, the string `<samp>M-x</samp>' is displayed at the beginning of
+the minibuffer as a <em>prompt</em> to remind you that your input should be
+the name of a command to be run.  See section <a href="xemacs_9.html#SEC60">The Minibuffer</a>, for full information
+on the features of the minibuffer.
+</p><p>  You can use completion to enter a command name.  For example, to
+invoke the command <code>forward-char</code>, type:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+M-x forward-char <kbd>RET</kbd>
+</pre></td></tr></table><p>or
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+M-x fo <kbd>TAB</kbd> c <kbd>RET</kbd>
+</pre></td></tr></table>
+<p>After you type in <code>M-x fo TAB</code> emacs will give you a possible list of 
+completions from which you can choose. Note that <code>forward-char</code> is the 
+same command that you invoke with the key <kbd>C-f</kbd>.  You can call any 
+command (interactively callable function) defined in Emacs by its name 
+using <kbd>M-x</kbd> regardless of whether or not any keys are bound to it.
+</p><p>  If you type <kbd>C-g</kbd> while Emacs reads the command name, you cancel
+the <kbd>M-x</kbd> command and get out of the minibuffer, ending up at top level.
+</p><p>  To pass a numeric argument to a command you are invoking with
+<kbd>M-x</kbd>, specify the numeric argument before the <kbd>M-x</kbd>.  <kbd>M-x</kbd>
+passes the argument along to the function that it calls.  The argument
+value appears in the prompt while the command name is being read.
+</p><a name="IDX248"></a>
+<p>You can use the command <code>M-x interactive</code> to specify a way of
+parsing arguments for interactive use of a function.  For example, write:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
+</pre></td></tr></table>
+<p>to make <code>arg</code> be the prefix argument when <code>foo</code> is called as a
+command.  The call to <code>interactive</code> is actually a declaration
+rather than a function; it tells <code>call-interactively</code> how to read
+arguments to pass to the function.  When actually called, <code>interactive</code>
+returns <code>nil</code>.
+</p><p>The argument of <var>interactive</var> is usually a string containing a code
+letter followed by a prompt.  Some code letters do not use I/O to get
+the argument and do not need prompts.  To prompt for multiple arguments,
+you must provide a code letter, its prompt, a newline, and another code
+letter, and so forth.  If the argument is not a string, it is evaluated 
+to get a list of arguments to pass to the function.  If you do not provide an
+argument to <code>interactive</code>, no arguments are passed when calling
+interactively.
+</p><p>Available code letters are:
+</p><dl compact="compact">
+<dt><code> a
+</code></dt>
+<dd><p>Function name: symbol with a function definition
+</p></dd>
+<dt><code> b
+</code></dt>
+<dd><p>Name of existing buffer
+</p></dd>
+<dt><code> B
+</code></dt>
+<dd><p>Name of buffer, possibly nonexistent
+</p></dd>
+<dt><code> c
+</code></dt>
+<dd><p>Character
+</p></dd>
+<dt><code> C
+</code></dt>
+<dd><p>Command name: symbol with interactive function definition
+</p></dd>
+<dt><code> d
+</code></dt>
+<dd><p>Value of point as number (does not do I/O)
+</p></dd>
+<dt><code> D
+</code></dt>
+<dd><p>Directory name
+</p></dd>
+<dt><code> e
+</code></dt>
+<dd><p>Last mouse event
+</p></dd>
+<dt><code> f
+</code></dt>
+<dd><p>Existing file name
+</p></dd>
+<dt><code> F
+</code></dt>
+<dd><p>Possibly nonexistent file name
+</p></dd>
+<dt><code> k
+</code></dt>
+<dd><p>Key sequence (string)
+</p></dd>
+<dt><code> m
+</code></dt>
+<dd><p>Value of mark as number (does not do I/O)
+</p></dd>
+<dt><code> n
+</code></dt>
+<dd><p>Number read using minibuffer
+</p></dd>
+<dt><code> N
+</code></dt>
+<dd><p>Prefix arg converted to number, or if none, do like code <code>n</code>
+</p></dd>
+<dt><code> p
+</code></dt>
+<dd><p>Prefix arg converted to number (does not do I/O)
+</p></dd>
+<dt><code> P
+</code></dt>
+<dd><p>Prefix arg in raw form (does not do I/O)
+</p></dd>
+<dt><code> r
+</code></dt>
+<dd><p>Region: point and mark as two numeric arguments, smallest first (does
+not do I/O)
+</p></dd>
+<dt><code> s
+</code></dt>
+<dd><p>Any string
+</p></dd>
+<dt><code> S
+</code></dt>
+<dd><p>Any symbol
+</p></dd>
+<dt><code> v
+</code></dt>
+<dd><p>Variable name: symbol that is <code>user-variable-p</code>
+</p></dd>
+<dt><code> x
+</code></dt>
+<dd><p>Lisp expression read but not evaluated
+</p></dd>
+<dt><code> X
+</code></dt>
+<dd><p>Lisp expression read and evaluated
+</p></dd>
+</dl>
+
+<p>In addition, if the string begins with `<samp>*</samp>', an error is
+signaled if the buffer is read-only.  This happens before reading any
+arguments.  If the string begins with `<samp>@</samp>', the window the mouse is
+over is selected before anything else is done.  You may use both
+`<samp>@</samp>' and `<samp>*</samp>'; they are processed in the order that they appear.
+</p><p>Normally, when describing a command that is run by name, we omit the
+<kbd>RET</kbd> that is needed to terminate the name.  Thus we may refer to
+<kbd>M-x auto-fill-mode</kbd> rather than <kbd>M-x auto-fill-mode</kbd> <kbd>RET</kbd>.
+We mention the <kbd>RET</kbd> only when it is necessary to emphasize its
+presence, for example, when describing a sequence of input that contains
+a command name and arguments that follow it.
+</p><a name="IDX249"></a>
+<p>  <kbd>M-x</kbd> is defined to run the command <code>execute-extended-command</code>,
+which is responsible for reading the name of another command and invoking
+it.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_11.html#SEC71" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

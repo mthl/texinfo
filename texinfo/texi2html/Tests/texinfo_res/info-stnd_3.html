@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Info 4.2: 3. Moving the Cursor</title>
+
+<meta name="description" content="GNU Info 4.2: 3. Moving the Cursor">
+<meta name="keywords" content="GNU Info 4.2: 3. Moving the Cursor">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD4"></a>
+<a name="SEC3"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_2.html#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_4.html#SEC4" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_4.html#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 3. Moving the Cursor </h1>
+
+<p>Many people find that reading screens of text page by page is made
+easier when one is able to indicate particular pieces of text with some
+kind of pointing device.  Since this is the case, GNU Info (both the
+Emacs and standalone versions) have several commands which allow you to
+move the cursor about the screen.  The notation used in this manual to
+describe keystrokes is identical to the notation used within the Emacs
+manual, and the GNU Readline manual.  See section `Character Conventions' in <cite>the GNU Emacs Manual</cite>, if you are unfamiliar with the
+notation<a name="DOCF4" href="info-stnd_fot.html#FOOT4">(4)</a>.
+</p><p>The following table lists the basic cursor movement commands in Info.
+Each entry consists of the key sequence you should type to execute the
+cursor movement, the <code>M-x</code><a name="DOCF5" href="info-stnd_fot.html#FOOT5">(5)</a> command name (displayed in parentheses), and a short
+description of what the command does.  All of the cursor motion commands
+can take a <em>numeric</em> argument (see <a href="info-stnd_10.html#SEC15">to find out how to supply them</a>.  With a
+numeric argument, the motion commands are simply executed that
+many times; for example, a numeric argument of 4 given to
+<code>next-line</code> causes the cursor to move down 4 lines.  With a
+negative numeric argument, the motion is reversed; an argument of -4
+given to the <code>next-line</code> command would cause the cursor to move
+<em>up</em> 4 lines.
+</p><dl compact="compact">
+<dt> <kbd>C-n</kbd> (<code>next-line</code>)
+</dt>
+<dt> <kbd>DOWN</kbd> (an arrow key)
+</dt>
+<dd><p><a name="IDX30"></a>
+<a name="IDX31"></a>
+<a name="IDX32"></a>
+Move the cursor down to the next line.
+</p></dd>
+<dt> <kbd>C-p</kbd> (<code>prev-line</code>)
+</dt>
+<dt> <kbd>UP</kbd> (an arrow key)
+</dt>
+<dd><p><a name="IDX33"></a>
+<a name="IDX34"></a>
+<a name="IDX35"></a>
+Move the cursor up to the previous line.
+</p></dd>
+<dt> <kbd>C-a</kbd> (<code>beginning-of-line</code>)
+</dt>
+<dt> <kbd>Home</kbd> (on DOS/Windows only)
+</dt>
+<dd><p><a name="IDX36"></a>
+<a name="IDX37"></a>
+<a name="IDX38"></a>
+Move the cursor to the start of the current line.
+</p></dd>
+<dt> <kbd>C-e</kbd> (<code>end-of-line</code>)
+</dt>
+<dt> <kbd>End</kbd> (on DOS/Windows only)
+</dt>
+<dd><p><a name="IDX39"></a>
+<a name="IDX40"></a>
+<a name="IDX41"></a>
+Move the cursor to the end of the current line.
+</p></dd>
+<dt> <kbd>C-f</kbd> (<code>forward-char</code>)
+</dt>
+<dt> <kbd>RIGHT</kbd> (an arrow key)
+</dt>
+<dd><p><a name="IDX42"></a>
+<a name="IDX43"></a>
+<a name="IDX44"></a>
+Move the cursor forward a character.
+</p></dd>
+<dt> <kbd>C-b</kbd> (<code>backward-char</code>)
+</dt>
+<dt> <kbd>LEFT</kbd> (an arrow key)
+</dt>
+<dd><p><a name="IDX45"></a>
+<a name="IDX46"></a>
+<a name="IDX47"></a>
+Move the cursor backward a character.
+</p></dd>
+<dt> <kbd>M-f</kbd> (<code>forward-word</code>)
+</dt>
+<dt> <kbd>C-<kbd>RIGHT</kbd></kbd> (on DOS/Windows only)
+</dt>
+<dd><p><a name="IDX48"></a>
+<a name="IDX49"></a>
+<a name="IDX50"></a>
+Move the cursor forward a word.
+</p></dd>
+<dt> <kbd>M-b</kbd> (<code>backward-word</code>)
+</dt>
+<dt> <kbd>C-<kbd>LEFT</kbd></kbd> (on DOS/Windows only)
+</dt>
+<dd><p><a name="IDX51"></a>
+<a name="IDX52"></a>
+<a name="IDX53"></a>
+Move the cursor backward a word.
+</p></dd>
+<dt> <kbd>M-&lt;</kbd> (<code>beginning-of-node</code>)
+</dt>
+<dt> <kbd>C-<kbd>Home</kbd></kbd> (on DOS/Windows only)
+</dt>
+<dt> <kbd>b</kbd>
+</dt>
+<dt> <kbd>M-b</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX54"></a>
+<a name="IDX55"></a>
+<a name="IDX56"></a>
+<a name="IDX57"></a>
+<a name="IDX58"></a>
+Move the cursor to the start of the current node.
+</p></dd>
+<dt> <kbd>M-&gt;</kbd> (<code>end-of-node</code>)
+</dt>
+<dt> <kbd>C-<kbd>End</kbd></kbd> (on DOS/Windows only)
+</dt>
+<dt> <kbd>e</kbd>
+</dt>
+<dd><p><a name="IDX59"></a>
+<a name="IDX60"></a>
+<a name="IDX61"></a>
+<a name="IDX62"></a>
+Move the cursor to the end of the current node.
+</p></dd>
+<dt> <kbd>M-r</kbd> (<code>move-to-window-line</code>)
+</dt>
+<dd><p><a name="IDX63"></a>
+<a name="IDX64"></a>
+Move the cursor to a specific line of the window.  Without a numeric
+argument, <code>M-r</code> moves the cursor to the start of the line in the
+center of the window.  With a numeric argument of <var>n</var>, <code>M-r</code>
+moves the cursor to the start of the <var>n</var>th line in the window.
+</p></dd>
+</dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_4.html#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

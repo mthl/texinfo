@@ -1,0 +1,24 @@
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+before syncodeindex 
+syncodeindex on its line
+line following syncodeindex
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+double documentlanguage on its line
+line following documentlanguage
+
+after documentlanguage
+
+Before bye 

@@ -1,0 +1,172 @@
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+* name:Second node.    node 2
+@end menu
+@node First node
+@chapter first node chapter
+
+@cindex elem
+@node Second node
+@chapter second
+
+Some text
+
+@deffn Function buffer-end flag
+A nice function
+
+makeinfo accepts a menu within defun but it isn't possible
+to follow it
+
+@menu
+* node within defun menu::
+@end menu
+
+end of the function
+@end deffn
+
+@node node within defun menu
+@section the node is within menu
+
+@table @bullet
+@item item
+@end table
+
+@example
+
+an example
+@end example
+
+@cindex other entry
+@example
+@html
+<hr/>
+@end html
+after html in example
+
+
+two line breaks
+Tex doesn't like math in @@example
+@cindex index in example
+
+Now a content within example
+
+
+@printindex cp
+printindex  works but cannot be followed in info, in TeX
+the result is quite strange.
+
+and now yes---now and ``so''.
+
+@end example
+after example and now yes---now and ``so''.
+@flushright
+
+is the text
+flushed right ?
+
+@end flushright
+
+@flushright
+@example
+example text flushed  right
+
+it is
+@end example
+@end flushright
+
+@display
+simple displayed text
+@end display
+
+a display within example
+@example
+example
+@display
+display
+@end display
+@end example
+
+@example
+a table within example
+@table @bullet
+@item item
+text
+@end table
+a multitable
+@multitable {a} {b}
+@item beginnin
+
+@item @dots{}
+@tab 
+
+a new column                          no splitting ???????????????????                             
+@end multitable
+
+a menu
+@menu
+* node menu::      a node in menu
+
+in menu comment
+html
+@html
+<cite>cite me</cite> a cite in html
+@end html
+
+* a menu name:other node. 
+      description of other
+      node
+
+@end menu
+
+A quotation
+@quotation
+This is a pre
+quotation
+
+@end quotation
+
+Enumerate
+
+@enumerate
+@item first item
+@item second  item
+
+still second
+@end enumerate
+
+@end example
+
+@example
+deffs
+@defun {my def} args @var{arg} @dots{}
+@defunx {other def} no args
+@deffnx {type} {name} and now the args
+@defvar {variables} variable-name
+
+@defvarx {variables too} other-variable
+THis is the defvar
+
+A table within the def
+@table @asis
+@item item
+text
+
+more text
+@item second item
+@end table
+
+explanation
+@end defvar
+@end deffn
+@end defun
+
+@end example
+
+@node  node menu
+@unnumberedsubsec
+@node other node
+@unnumberedsubsec
+

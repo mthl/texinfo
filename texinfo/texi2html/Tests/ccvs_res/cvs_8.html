@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CVS--Concurrent Versions System v1.11.5.1: 8. History browsing</title>
+
+<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: 8. History browsing">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: 8. History browsing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD75"></a>
+<a name="SEC75"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="cvs_7.html#SEC74" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC76" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs_7.html#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 8. History browsing </h1>
+
+<p>Once you have used <small>CVS</small> to store a version control
+history--what files have changed when, how, and by
+whom, there are a variety of mechanisms for looking
+through the history.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC76">8.1 Log messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC77">8.2 The history database</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC78">8.3 User-defined logging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC79">8.4 Annotate command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What revision modified each line of a file?</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD76"></a>
+<a name="SEC76"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC75" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC77" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.1 Log messages </h2>
+
+<p>Whenever you commit a file you specify a log message.
+</p><p>To look through the log messages which have been
+specified for every revision which has been committed,
+use the <code>cvs log</code> command (see section <a href="cvs_16.html#SEC142">log--Print out log information for files</a>).
+</p><hr size="6">
+<a name="NOD77"></a>
+<a name="SEC77"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC76" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC78" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.2 The history database </h2>
+
+<p>You can use the history file (see section <a href="cvs_18.html#SEC177">The history file</a>) to
+log various <small>CVS</small> actions.  To retrieve the
+information from the history file, use the <code>cvs
+history</code> command (see section <a href="cvs_16.html#SEC136">history--Show status of files and users</a>).
+</p><p>Note: you can control what is logged to this file by using the
+`<samp>LogHistory</samp>' keyword in the `<tt>CVSROOT/config</tt>' file
+(see section <a href="cvs_18.html#SEC179">The CVSROOT/config configuration file</a>).
+</p><hr size="6">
+<a name="NOD78"></a>
+<a name="SEC78"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC77" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.3 User-defined logging </h2>
+
+<p>You can customize <small>CVS</small> to log various kinds of
+actions, in whatever manner you choose.  These
+mechanisms operate by executing a script at various
+times.  The script might append a message to a file
+listing the information and the programmer who created
+it, or send mail to a group of developers, or, perhaps,
+post a message to a particular newsgroup.  To log
+commits, use the `<tt>loginfo</tt>' file (see section <a href="cvs_18.html#SEC171">Loginfo</a>).
+To log commits, checkouts, exports, and tags,
+respectively, you can also use the `<samp>-i</samp>',
+`<samp>-o</samp>', `<samp>-e</samp>', and `<samp>-t</samp>' options in the
+modules file.  For a more flexible way of giving
+notifications to various users, which requires less in
+the way of keeping centralized scripts up to date, use
+the <code>cvs watch add</code> command (see section <a href="cvs_10.html#SEC91">Telling CVS to notify you</a>); this command is useful even if you are not
+using <code>cvs watch on</code>.
+</p><a name="IDX135"></a>
+<a name="IDX136"></a>
+<p>The `<tt>taginfo</tt>' file defines programs to execute
+when someone executes a <code>tag</code> or <code>rtag</code>
+command.  The `<tt>taginfo</tt>' file has the standard form
+for administrative files (see section <a href="cvs_18.html#SEC156">Reference manual for Administrative files</a>), where each line is a regular expression
+followed by a command to execute.  The arguments passed
+to the command are, in order, the <var>tagname</var>,
+<var>operation</var> (<code>add</code> for <code>tag</code>,
+<code>mov</code> for <code>tag -F</code>, and <code>del</code> for
+<code>tag -d</code>), <var>repository</var>, and any remaining are
+pairs of <var>filename</var> <var>revision</var>.  A non-zero
+exit of the filter program will cause the tag to be
+aborted.
+</p><p>Here is an example of using taginfo to log tag and rtag
+commands.  In the taginfo file put:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+ALL /usr/local/cvsroot/CVSROOT/loggit
+</pre></td></tr></table>
+<p>Where `<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>' contains the
+following script:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+#!/bin/sh
+echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD79"></a>
+<a name="SEC79"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC78" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.4 Annotate command </h2>
+
+<dl>
+<dt><u>Command:</u> <b>cvs annotate</b> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files <small>...</small>
+<a name="IDX137"></a>
+</dt>
+<dd><p>For each file in <var>files</var>, print the head revision
+of the trunk, together with information on the last
+modification for each line.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+$ cvs annotate ssfile
+Annotations for ssfile
+***************
+1.1          (mary     27-Mar-96): ssfile line 1
+1.2          (joe      28-Mar-96): ssfile line 2
+</pre></td></tr></table>
+<p>The file `<tt>ssfile</tt>' currently contains two lines.
+The <code>ssfile line 1</code> line was checked in by
+<code>mary</code> on March 27.  Then, on March 28, <code>joe</code>
+added a line <code>ssfile line 2</code>, without modifying
+the <code>ssfile line 1</code> line.  This report doesn't
+tell you anything about lines which have been deleted
+or replaced; you need to use <code>cvs diff</code> for that
+(see section <a href="cvs_16.html#SEC129">diff--Show differences between revisions</a>).
+</p></dd></dl>
+
+<p>The options to <code>cvs annotate</code> are listed in
+<a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>, and can be used to select the files
+and revisions to annotate.  The options are described
+in more detail there and in <a href="cvs_16.html#SEC118">Common command options</a>.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

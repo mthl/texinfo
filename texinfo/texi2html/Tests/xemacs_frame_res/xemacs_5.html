@@ -1,0 +1,1247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: 2. Keystrokes, Key Sequences, and Key Bindings</title>
+
+<meta name="description" content="XEmacs User's Manual: 2. Keystrokes, Key Sequences, and Key Bindings">
+<meta name="keywords" content="XEmacs User's Manual: 2. Keystrokes, Key Sequences, and Key Bindings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD19"></a>
+<a name="SEC21"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_4.html#SEC20" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_4.html#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 2. Keystrokes, Key Sequences, and Key Bindings </h1>
+
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC22">2.1 Keystrokes as Building Blocks of Key Sequences</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keystrokes as building blocks of key sequences.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC23">2.1.1 Representing Keystrokes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using lists of modifiers and keysyms to
+                             represent keystrokes.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC24">2.1.2 Representing Key Sequences</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Combine key strokes into key sequences you can
+                             bind to commands.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC25">2.1.3 String Key Sequences</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Available for upward compatibility.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC26">2.1.4 Assignment of the <kbd>META</kbd> Key</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using <kbd>ESC</kbd> to represent <kbd>Meta</kbd></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC27">2.1.5 Assignment of the <kbd>SUPER</kbd> and <kbd>HYPER</kbd> Keys</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding modifier keys on certain keyboards.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC28">2.2 Representation of Characters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How characters appear in Emacs buffers.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC29">2.3 Keys and Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How commands are bound to key sequences.</td></tr>
+</table>
+ 
+<hr size="6">
+<a name="NOD20"></a>
+<a name="SEC22"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC21" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC21" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 2.1 Keystrokes as Building Blocks of Key Sequences </h2>
+
+<p>      Earlier versions of Emacs used only the ASCII character set,
+which defines 128 different character codes.  Some of these codes are
+assigned graphic symbols like `<samp>a</samp>' and `<samp>=</samp>'; the rest are
+control characters, such as <kbd>Control-a</kbd> (also called <kbd>C-a</kbd>).
+<kbd>C-a</kbd> means you hold down the <kbd>CTRL</kbd> key and then press
+<kbd>a</kbd>.</p><p>   Keybindings in XEmacs are not restricted to the set of
+keystrokes that can be represented in ASCII.  XEmacs can tell the
+difference between, for example, <kbd>Control-h</kbd>, <kbd>Control-Shift-h</kbd>,
+and <kbd>Backspace</kbd>.
+</p><a name="IDX18"></a>
+<a name="IDX19"></a>
+<a name="IDX20"></a>
+<a name="IDX21"></a>
+<a name="IDX22"></a>
+<a name="IDX23"></a>
+<a name="IDX24"></a>
+<a name="IDX25"></a>
+<a name="IDX26"></a>
+<a name="IDX27"></a>
+<a name="IDX28"></a>
+<a name="IDX29"></a>
+<a name="IDX30"></a>
+<p>  A keystroke is like a piano chord: you get it by simultaneously
+striking several keys.  To be more precise, a keystroke consists
+of a possibly empty set of modifiers followed by a single
+<em>keysym</em>.  The set of modifiers is small; it consists of
+<kbd>Control</kbd>, <kbd>Meta</kbd>, <kbd>Super</kbd>, <kbd>Hyper</kbd>, and <kbd>Shift</kbd>.
+</p><p>  The rest of the keys on your keyboard, along with the mouse buttons,
+make up the set of keysyms.  A keysym is usually what is printed on the
+keys on your keyboard.  Here is a table of some of the symbolic names
+for keysyms:
+</p><dl compact="compact">
+<dt><kbd> a,b,c...
+</kbd></dt>
+<dd><p>alphabetic keys
+</p></dd>
+<dt><kbd> f1,f2...
+</kbd></dt>
+<dd><p>function keys
+</p></dd>
+<dt><kbd> button1
+</kbd></dt>
+<dd><p>left mouse button
+</p></dd>
+<dt><kbd> button2
+</kbd></dt>
+<dd><p>middle mouse button
+</p></dd>
+<dt><kbd> button3
+</kbd></dt>
+<dd><p>right mouse button
+</p></dd>
+<dt><kbd> button1up 
+</kbd></dt>
+<dd><p>upstroke on the left mouse button
+</p></dd>
+<dt><kbd> button2up
+</kbd></dt>
+<dd><p>upstroke on the middle mouse button
+</p></dd>
+<dt><kbd> button3up
+</kbd></dt>
+<dd><p>upstroke on the right mouse button
+</p></dd>
+<dt><kbd> return
+</kbd></dt>
+<dd><p>Return key
+</p></dd>
+</dl>
+
+<a name="IDX31"></a>
+<p>Use the variable <code>keyboard-translate-table</code> only if you are on a
+dumb tty, as it cannot handle input that cannot be represented as ASCII.
+The value of this variable is a string used as a translate table for
+keyboard input or <code>nil</code>.  Each character is looked up in this
+string and the contents used instead.  If the string is of length
+<code>n</code>, character codes <code>N</code> and up are untranslated.  If you are
+running Emacs under X, you should do the translations with the
+<code>xmodmap</code> program instead.
+</p><hr size="6">
+<a name="NOD21"></a>
+<a name="SEC23"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC22" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC24" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.1.1 Representing Keystrokes </h3>
+
+<p>  XEmacs represents keystrokes as lists. Each list consists of
+an arbitrary combination of modifiers followed by a single keysym at the
+end of the list.  If the keysym corresponds to an ASCII character, you
+can use its character code.  (A keystroke may also be represented by an
+event object, as returned by the <code>read-key-sequence</code> function;
+non-programmers need not worry about this.)
+</p><p>The following table gives some examples of how to list representations
+for keystrokes.  Each list consists of sets of modifiers followed by
+keysyms:
+</p><dl compact="compact">
+<dt><kbd> (control a)
+</kbd></dt>
+<dd><p>Pressing <kbd>CTRL</kbd> and <kbd>a</kbd> simultaneously.
+</p></dd>
+<dt><kbd> (control ?a)
+</kbd></dt>
+<dd><p>Another way of writing the keystroke <kbd>C-a</kbd>.
+</p></dd>
+<dt><kbd> (control 65)
+</kbd></dt>
+<dd><p>Yet another way of writing the keystroke <kbd>C-a</kbd>.
+</p></dd>
+<dt><kbd> (break)
+</kbd></dt>
+<dd><p>Pressing the <kbd>BREAK</kbd> key.
+</p></dd>
+<dt><kbd> (control meta button2up)
+</kbd></dt>
+<dd><p>Release the middle mouse button, while pressing <kbd>CTRL</kbd> and
+<kbd>META</kbd>. 
+</p></dd>
+</dl>
+<a name="IDX32"></a>
+<p>  Note: As you define keystrokes, you can use the <kbd>shift</kbd> key only
+as a modifier with characters that do not have a second keysym on the
+same key, such as <kbd>backspace</kbd> and <kbd>tab</kbd>.  It is an error to
+define a keystroke using the <kbd>shift</kbd> modifier with keysyms such as
+<kbd>a</kbd> and <kbd>=</kbd>.  The correct forms are <kbd>A</kbd> and <kbd>+</kbd>.
+</p><hr size="6">
+<a name="NOD22"></a>
+<a name="SEC24"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC25" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.1.2 Representing Key Sequences </h3>
+
+<p>  A <em>complete key sequence</em> is a sequence of keystrokes that Emacs
+understands as a unit.  Key sequences are significant because you can
+bind them to commands.  Note that not all sequences of keystrokes are
+possible key sequences.  In particular, the initial keystrokes in a key
+sequence must make up a <em>prefix key sequence</em>.
+</p><p>  Emacs represents a key sequence as a vector of keystrokes.  Thus, the
+schematic representation of a complete key sequence is as follows:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+  [(modifier .. modifier keysym) ... (modifier .. modifier keysym)]
+</pre></td></tr></table>
+<p>  Here are some examples of complete key sequences:
+</p><dl compact="compact">
+<dt><kbd> [(control c) (control a)]
+</kbd></dt>
+<dd><p>Typing <kbd>C-c</kbd> followed by <kbd>C-a</kbd>
+</p></dd>
+<dt><kbd> [(control c) (control 65)]
+</kbd></dt>
+<dd><p>Typing <kbd>C-c</kbd> followed by <kbd>C-a</kbd>. (Using the ASCII code
+for the character `a')</p></dd>
+<dt><kbd> [(control c) (break)]
+</kbd></dt>
+<dd><p>Typing <kbd>C-c</kbd> followed by the <kbd>break</kbd> character.</p></dd>
+</dl>
+
+<a name="IDX33"></a>
+<a name="IDX34"></a>
+<a name="IDX35"></a>
+<a name="IDX36"></a>
+<a name="IDX37"></a>
+<p>  A <em>prefix key sequence</em> is the beginning of a series of longer
+sequences that are valid key sequences; adding any single keystroke to
+the end of a prefix results in a valid key sequence.  For example,
+<kbd>control-x</kbd> is standardly defined as a prefix.  Thus there is a
+two-character key sequence starting with <kbd>C-x</kbd> for each valid
+keystroke, giving numerous possibilities.  Here are some samples:
+</p><ul>
+<li><p>
+<kbd>[(control x) (c)]</kbd>
+</p></li><li><p>
+<kbd>[(control x) (control c)]</kbd>
+</p></li></ul>
+
+<p>  Adding one character to a prefix key does not have to form a complete
+key.  It could make another, longer prefix.  For example, <kbd>[(control
+x) (\4)]</kbd> is itself a prefix that leads to any number of different
+three-character keys, including <kbd>[(control x) (\4) (f)]</kbd>,
+<kbd>[(control x) (\4) (b)]</kbd> and so on.  It would be possible to define
+one of those three-character sequences as a prefix, creating a series of
+four-character keys, but we did not define any of them this way.</p><p>  By contrast, the two-character sequence <kbd>[(control f) (control
+k)]</kbd> is not a key, because the <kbd>(control f)</kbd> is a complete key
+sequence in itself.  You cannot give <kbd>[(control f (control k)]</kbd> an
+independent meaning as a command while <kbd>(control f)</kbd> is a complete
+sequence, because Emacs would understand <kbd>C-f C-k</kbd> as two
+commands.</p><p> The predefined prefix key sequences in Emacs are <kbd>(control c)</kbd>,
+<kbd>(control x)</kbd>, <kbd>(control h)</kbd>, <kbd>[(control x) (\4)]</kbd>, and
+<kbd>escape</kbd>.  You can customize Emacs and could make new prefix keys or
+eliminate the default key sequences.  See section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>.  For example,
+if you redefine <kbd>(control f)</kbd> as a prefix, <kbd>[(control f)
+(control k)]</kbd> automatically becomes a valid key sequence (complete,
+unless you define it as a prefix as well).  Conversely, if you remove
+the prefix definition of <kbd>[(control x) (\4)]</kbd>, <kbd>[(control x)
+(\4) (f)]</kbd> (or <kbd>[(control x) (\4) <var>anything</var>]</kbd>) is no longer a
+valid key sequence.
+</p><p>Note that the above paragraphs uses \4 instead of simply 4, because \4
+is the symbol whose name is &quot;4&quot;, and plain 4 is the integer 4, which
+would have been interpreted as the ASCII value.  Another way of
+representing the symbol whose name is &quot;4&quot; is to write ?4, which would be
+interpreted as the number 52, which is the ASCII code for the character
+&quot;4&quot;.  We could therefore actually have written 52 directly, but that is
+far less clear.
+</p><hr size="6">
+<a name="NOD23"></a>
+<a name="SEC25"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC24" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC26" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.1.3 String Key Sequences </h3>
+<p>For backward compatibility, you may also represent a key sequence using
+strings.  For example, we have the following equivalent representations:
+</p><dl compact="compact">
+<dt><kbd> &quot;\C-c\C-c&quot;
+</kbd></dt>
+<dd><p><code>[(control c) (control c)]</code>
+</p></dd>
+<dt><kbd> &quot;\e\C-c&quot;
+</kbd></dt>
+<dd><p><code>[(meta control c)]</code>
+</p></dd>
+</dl>
+
+<a name="IDX38"></a>
+<a name="IDX39"></a>
+<hr size="6">
+<a name="NOD24"></a>
+<a name="SEC26"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC25" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC27" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.1.4 Assignment of the <kbd>META</kbd> Key </h3>
+ 
+<p>  Not all terminals have the complete set of modifiers.  
+Terminals that have a <kbd>Meta</kbd> key allow you to type Meta characters
+by just holding that key down.  To type <kbd>Meta-a</kbd>, hold down
+<kbd>META</kbd> and press <kbd>a</kbd>.  On those terminals, the <kbd>META</kbd> key
+works like the <kbd>SHIFT</kbd> key.  Such a key is not always labeled
+<kbd>META</kbd>, however, as this function is often a special option for a
+key with some other primary purpose.</p><p>  If there is no <kbd>META</kbd> key, you can still type Meta characters
+using two-character sequences starting with <kbd>ESC</kbd>.  To enter
+<kbd>M-a</kbd>, you could type <kbd><kbd>ESC</kbd> a</kbd>.  To enter <kbd>C-M-a</kbd>, you
+would type <kbd>ESC C-a</kbd>.  <kbd>ESC</kbd> is allowed on terminals with
+Meta keys, too, in case you have formed a habit of using it.</p><p>If you are running under X and do not have a <kbd>META</kbd> key, it 
+is possible to reconfigure some other key to be a <kbd>META</kbd> 
+key.  See section <a href="#SEC27">Assignment of the <kbd>SUPER</kbd> and <kbd>HYPER</kbd> Keys</a>. </p><a name="IDX40"></a>
+<p>  Emacs believes the terminal has a <kbd>META</kbd> key if the variable
+<code>meta-flag</code> is non-<code>nil</code>.  Normally this is set automatically
+according to the termcap entry for your terminal type.  However, sometimes
+the termcap entry is wrong, and then it is useful to set this variable
+yourself.  See section <a href="xemacs_30.html#SEC353">Variables</a>, for how to do this.
+</p><p>Note: If you are running under the X window system, the setting of
+the <code>meta-flag</code> variable is irrelevant. 
+</p><hr size="6">
+<a name="NOD25"></a>
+<a name="SEC27"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC26" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.1.5 Assignment of the <kbd>SUPER</kbd> and <kbd>HYPER</kbd> Keys </h3>
+
+<p>  Most keyboards do not, by default, have <kbd>SUPER</kbd> or <kbd>HYPER</kbd>
+modifier keys.  Under X, you can simulate the <kbd>SUPER</kbd> or
+<kbd>HYPER</kbd> key if you want to bind keys to sequences using <kbd>super</kbd>
+and <kbd>hyper</kbd>.  You can use the <code>xmodmap</code> program to do this.
+</p><p>  For example, to turn your <kbd>CAPS-LOCK</kbd> key into a <kbd>SUPER</kbd> key,
+do the following:
+</p><p>  Create a file called <code>~/.xmodmap</code>.  In this file, place the lines
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+        remove Lock = Caps_Lock
+        keysym Caps_Lock = Super_L
+        add Mod2 = Super_L
+</pre></td></tr></table>
+<p>The first line says that the key that is currently called <code>Caps_Lock</code>
+should no longer behave as a &quot;lock&quot; key.  The second line says that
+this should now be called <code>Super_L</code> instead.  The third line says that 
+the key called <code>Super_L</code> should be a modifier key, which produces the
+<code>Mod2</code> modifier.
+</p><p>To create a <kbd>META</kbd> or <kbd>HYPER</kbd> key instead of a <kbd>SUPER</kbd> key,
+replace the word <code>Super</code> above with <code>Meta</code> or <code>Hyper</code>.
+</p><p>Just after you start up X, execute the command <code>xmodmap /.xmodmap</code>.
+You can add this command to the appropriate initialization file to have
+the command executed automatically.</p><p>If you have problems, see the documentation for the <code>xmodmap</code>
+program.  The X keyboard model is quite complicated, and explaining
+it is beyond the scope of this manual.  However, we reprint the 
+following description from the X Protocol document for your convenience:
+</p><a name="IDX41"></a>
+<a name="IDX42"></a>
+<p> A list of keysyms is associated with each keycode. If that list
+(ignoring trailing <code>NoSymbol</code> entries) is a single keysym `<samp>K</samp>',
+then the list is treated as if it were the list 
+<code>&quot;K NoSymbol K NoSymbol&quot;</code>. If the list (ignoring trailing 
+<code>NoSymbol</code> entries) is a pair of keysyms `<samp>K1 K2</samp>', then the 
+list is treated as if it were the list <code>&quot;K1 K2 K1 K2&quot;</code>. If the 
+list (ignoring trailing <code>NoSymbol</code> entries) is a triple of keysyms 
+`<samp>K1 K2 K3</samp>', then the list is treated as if it were the list 
+<code>&quot;K1 K2 K3 NoSymbol&quot;</code>.
+</p><p> The first four elements of the list are split into two groups of 
+keysyms. Group 1 contains the first and second keysyms; Group 2 contains
+third and fourth keysyms. Within each group, if the second element of
+the group is NoSymbol, then the group should be treated as if the second
+element were the same as the first element, except when the first
+element is an alphabetic keysym `<samp>K</samp>' for which both lowercase and 
+uppercase forms are defined. In that case, the group should be treated 
+as if the first element were the lowercase form of `<samp>K</samp>' and the second 
+element were the uppercase form of `<samp>K</samp>'.
+</p><p> The standard rules for obtaining a keysym from a KeyPress event make use of 
+only the Group 1 and Group 2 keysyms; no interpretation of other keysyms in 
+the list is given here. (That is, the last four keysyms are unused.)
+</p><p> Which group to use is determined by modifier state. Switching between
+groups is controlled by the keysym named <code>Mode_switch</code>. Attach that
+keysym to some keycode and attach that keycode to any one of the
+modifiers Mod1 through Mod5. This modifier is called the <em>group
+modifier</em>. For any keycode, Group 1 is used when the group modifier is
+off, and Group 2 is used when the group modifier is on.
+</p><p> Within a group, which keysym to use is also determined by modifier
+state. The first keysym is used when the <code>Shift</code> and <code>Lock</code> 
+modifiers are off. The second keysym is used when the <code>Shift</code> 
+modifier is on, or when the <code>Lock</code> modifier is on and the second 
+keysym is uppercase alphabetic, or when the <code>Lock</code> modifier is on 
+and is interpreted as <code>ShiftLock</code>. Otherwise, when the <code>Lock</code> 
+modifier is on and is interpreted as <code>CapsLock</code>, the state of the 
+<code>Shift</code> modifier is applied first to select a keysym, 
+but if that keysym is lower-case alphabetic, then the corresponding 
+upper-case keysym is used instead.
+</p><p> In addition to the above information on keysyms, we also provide the 
+following description of modifier mapping from the InterClient 
+Communications Conventions Manual:
+</p><a name="IDX43"></a>
+<p> X11 supports 8 modifier bits, of which 3 are pre-assigned to 
+<code>Shift</code>, <code>Lock</code>, and <code>Control</code>. Each modifier bit is 
+controlled by the state of a set of keys, and these sets are specified 
+in a table accessed by <code>GetModifierMapping()</code> and 
+<code>SetModifierMapping()</code>.
+</p><p> A client needing to use one of the pre-assigned modifiers should assume
+that the modifier table has been set up correctly to control these
+modifiers. The <code>Lock</code> modifier should be interpreted as <code>Caps
+Lock</code> or <code>Shift Lock</code> according to whether the keycodes in its
+controlling set include <code>XK_Caps_Lock</code> or <code>XK_Shift_Lock</code>.
+</p><p> Clients should determine the meaning of a modifier bit from the keysyms 
+being used to control it.
+</p><p>A client needing to use an extra modifier, for example <code>Meta</code>, should:
+</p><ol>
+<li><p>
+Scan the existing modifier mappings.
+</p><ol>
+<li><p>
+If it finds a modifier that contains a keycode whose set of keysyms 
+includes <code>XK_Meta_L</code> or <code>XK_Meta_R</code>, it should use that 
+modifier bit.
+</p></li><li><p>
+If there is no existing modifier controlled by <code>XK_Meta_L</code> or 
+<code>XK_Meta_R</code>, it should select an unused modifier bit (one with 
+an empty controlling set) and:
+</p></li></ol>
+
+</li><li><p>
+If there is a keycode with <code>XL_Meta_L</code> in its set of keysyms, 
+add that keycode to the set for the chosen modifier, and then:
+</p><ol>
+<li><p>
+If there is a keycode with <code>XL_Meta_R</code> in its set of keysyms, 
+add that keycode to the set for the chosen modifier, and then:
+</p></li><li><p>
+If the controlling set is still empty, interact with the user to 
+select one or more keys to be <code>Meta</code>.
+</p></li></ol>
+
+</li><li><p>
+If there are no unused modifier bits, ask the user to take corrective action.
+</p></li></ol>
+
+<p> This means that the <code>Mod1</code> modifier does not necessarily mean 
+<code>Meta</code>, although some applications (such as twm and emacs 18) 
+assume that. Any of the five unassigned modifier bits could mean 
+<code>Meta</code>; what matters is that a modifier bit is generated by a 
+keycode which is bound to the keysym <code>Meta_L</code> or <code>Meta_R</code>.
+</p><p> Therefore, if you want to make a <kbd>META</kbd> key, the right way 
+is to make the keycode in question generate both a <code>Meta</code> keysym 
+and some previously-unassigned modifier bit.
+</p><hr size="6">
+<a name="NOD26"></a>
+<a name="SEC28"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC27" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC29" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC21" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 2.2 Representation of Characters </h2>
+
+<p>This section briefly discusses how characters are represented in Emacs
+buffers.  See section <a href="#SEC24">Representing Key Sequences</a>, for information on representing key
+sequences to create key bindings. 
+</p><p>  ASCII graphic characters in Emacs buffers are displayed with their
+graphics.  <kbd>LFD</kbd> is the same as a newline character; it is displayed
+by starting a new line.  <kbd>TAB</kbd> is displayed by moving to the next
+tab stop column (usually every 8 spaces).  Other control characters are
+displayed as a caret (`<samp>^</samp>') followed by the non-control version of
+the character; thus, <kbd>C-a</kbd> is displayed as `<samp>^A</samp>'.  Non-ASCII
+characters 128 and up are displayed with octal escape sequences; thus,
+character code 243 (octal), also called <kbd>M-#</kbd> when used as an input
+character, is displayed as `<samp>\243</samp>'.
+</p><p>The variable <code>ctl-arrow</code> may be used to alter this behavior.
+See section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>.
+</p><hr size="6">
+<a name="NOD27"></a>
+<a name="SEC29"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC28" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC21" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 2.3 Keys and Commands </h2>
+
+<p>  This manual is full of passages that tell you what particular keys do.
+But Emacs does not assign meanings to keys directly.  Instead, Emacs
+assigns meanings to <em>functions</em>, and then gives keys their meanings
+by <em>binding</em> them to functions.
+</p><p> A function is a Lisp object that can be executed as a program.  Usually
+it is a Lisp symbol that has been given a function definition; every
+symbol has a name, usually made of a few English words separated by
+dashes, such as <code>next-line</code> or <code>forward-word</code>.  It also has a
+<em>definition</em>, which is a Lisp program.  Only some functions can be the
+bindings of keys; these are functions whose definitions use
+<code>interactive</code> to specify how to call them interactively.  Such
+functions are called <em>commands</em>, and their names are <em>command
+names</em>.  More information on this subject will appear in the <i>XEmacs
+Lisp Reference Manual</i>.
+</p><p>  The bindings between keys and functions are recorded in various tables
+called <em>keymaps</em>.  See section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>, for more information on key
+sequences you can bind commands to.  See section <a href="xemacs_30.html#SEC368">Keymaps</a>, for information on
+creating keymaps.
+</p><p>  When we say  &quot;<kbd>C-n</kbd> moves down vertically one line&quot; we are
+glossing over a distinction that is irrelevant in ordinary use but is
+vital in understanding how to customize Emacs.  The function
+<code>next-line</code> is programmed to move down vertically.  <kbd>C-n</kbd>
+has this effect <i>because</i> it is bound to that function.  If you rebind
+<kbd>C-n</kbd> to the function <code>forward-word</code> then <kbd>C-n</kbd> will move
+forward by words instead.  Rebinding keys is a common method of
+customization.</p><p>   The rest of this manual usually ignores this subtlety to keep
+things simple.  To give the customizer the information needed, we often
+state the name of the command that really does the work in parentheses
+after mentioning the key that runs it.  For example, we will say that
+&quot;The command <kbd>C-n</kbd> (<code>next-line</code>) moves point vertically
+down,&quot; meaning that <code>next-line</code> is a command that moves vertically
+down and <kbd>C-n</kbd> is a key that is standardly bound to it.
+</p><a name="IDX44"></a>
+<p>  While we are on the subject of information for customization only,
+it's a good time to tell you about <em>variables</em>.  Often the
+description of a command will say, &quot;To change this, set the variable
+<code>mumble-foo</code>.&quot;  A variable is a name used to remember a value.
+Most of the variables documented in this manual exist just to facilitate
+customization: some command or other part of Emacs uses the variable
+and behaves differently depending on its setting.  Until you are interested in
+customizing, you can ignore the information about variables.  When you
+are ready to be interested, read the basic information on variables, and 
+then the information on individual variables will make sense.
+See section <a href="xemacs_30.html#SEC353">Variables</a>.
+</p><hr size="6">
+<a name="NOD28"></a>
+<a name="SEC30"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC29" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC31" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC21" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 2.4 XEmacs Pull-down Menus </h2>
+
+<p>If you are running XEmacs under X, a menu bar on top of the
+Emacs frame provides access to pull-down menus of file, edit, and
+help-related commands. The menus provide convenient shortcuts and an
+easy interface for novice users.  They do not provide additions to the
+functionality available via key commands; you can still invoke commands
+from the keyboard as in previous versions of Emacs.
+</p><dl compact="compact">
+<dt><b> File
+</b></dt>
+<dd><p>Perform file and buffer-related operations, such as opening and closing
+files, saving and printing buffers, as well as exiting Emacs.
+<a name="IDX45"></a>
+</p></dd>
+<dt><b> Edit
+</b></dt>
+<dd><p>Perform standard editing operations, such as 
+cutting, copying, pasting, and killing selected text.
+<a name="IDX46"></a>
+</p></dd>
+<dt><b> Apps
+</b></dt>
+<dd><p>Access to sub-applications implemented within XEmacs, such as the mail
+reader, the World Wide Web browser, the spell-checker, and the calendar
+program.
+<a name="IDX47"></a>
+</p></dd>
+<dt><b> Options
+</b></dt>
+<dd><p>Control various options regarding the way XEmacs works, such as controlling
+which elements of the frame are visible, selecting the fonts to be used for
+text, specifying whether searches are case-sensitive, etc.
+<a name="IDX48"></a>
+</p></dd>
+<dt><b> Buffers
+</b></dt>
+<dd><p>Present a menu of buffers for selection as well as the option to display
+a buffer list.
+<a name="IDX49"></a>
+</p></dd>
+<dt><b> Tools
+</b></dt>
+<dd><p>Perform various actions designed to automate software development and
+similar technical work, such as searching through many files, compiling
+a program, and comparing or merging two or three files.
+<a name="IDX50"></a>
+</p></dd>
+<dt><b> Help
+</b></dt>
+<dd><p>Access to Emacs Info.
+<a name="IDX51"></a>
+</p></dd>
+</dl>
+<a name="IDX52"></a>
+<a name="IDX53"></a>
+
+<p>There are two ways of selecting an item from a pull-down menu:
+</p><ul>
+<li><p>
+Select an item in the menu bar by moving the cursor over it and click the
+left mouse-button.  Then move the cursor over the menu item you want to choose
+and click left again.
+</p></li><li><p>
+Select an item in the menu bar by moving the cursor over it and click and
+hold the left mouse-button.  With the mouse-button depressed, move the
+cursor over the menu item you want, then release it to make your selection. 
+</p></li></ul>
+
+<p>If a command in the pull-down menu is not applicable in a given
+situation, the command is disabled and its name appears faded.  You
+cannot invoke items that are faded.  For example, many commands on the
+<b>Edit</b> menu appear faded until you select text on which they are to
+operate; after you select a block of text, edit commands are enabled.
+See section <a href="xemacs_12.html#SEC85">Selecting Text with the Mouse</a>, for information on using the mouse to select
+text.  See section <a href="xemacs_12.html#SEC95">Using X Selections</a>, for related information.
+</p><p>There are also <kbd>M-x</kbd> equivalents for each menu item.  To find the
+equivalent for any left-button menu item, do the following:
+</p><ol>
+<li><p>
+Type <kbd>C-h k</kbd> to get the <code>Describe Key</code> prompt. 
+</p></li><li><p>
+Select the menu item and click. 
+</p></li></ol>
+
+<p>Emacs displays the function associated with the menu item in a separate
+window, usually together with some documentation. 
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC31">2.4.1 The File Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the File menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC32">2.4.2 The Edit Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the Edit menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC33">2.4.3 The Apps Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the Apps menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC34">2.4.4 The Options Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the Options menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC35">2.4.5 The Buffers Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Information about the Buffers menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC36">2.4.6 The Tools Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the Tools menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC37">2.4.7 The Help Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Items on the Help menu.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC38">2.4.8 Customizing XEmacs Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding and removing menu items and related
+                        operations.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD29"></a>
+<a name="SEC31"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC30" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC32" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.1 The File Menu </h3>
+
+<p>The <b>File</b> menu bar item contains the items <b>New Frame</b>, <b>Open
+File...</b>, <b>Save Buffer</b>, <b>Save Buffer As...</b>, <b>Revert Buffer</b>,
+<b>Print Buffer</b>, <b>Delete Frame</b>, <b>Kill Buffer</b> and <b>Exit Emacs</b>
+on the pull-down menu.  If you select a menu item, Emacs executes the
+equivalent command.
+</p><a name="IDX54"></a>
+<a name="IDX55"></a>
+<a name="IDX56"></a>
+<a name="IDX57"></a>
+<a name="IDX58"></a>
+<a name="IDX59"></a>
+<a name="IDX60"></a>
+<a name="IDX61"></a>
+<a name="IDX62"></a>
+<a name="IDX63"></a>
+<a name="IDX64"></a>
+<a name="IDX65"></a>
+<a name="IDX66"></a>
+<a name="IDX67"></a>
+<dl compact="compact">
+<dt><b> Open File, New Frame...
+</b></dt>
+<dd><p>Prompts you for a filename and loads that file into a new buffer in a
+new Emacs frame, that is, a new X window running under the same Emacs
+process.  You can remove the frame using the <b>Delete Frame</b> menu
+item.  When you remove the last frame, you exit Emacs and are prompted
+for confirmation. </p></dd>
+<dt><b> Open File...
+</b></dt>
+<dd><p>Prompts you for a filename and loads that file into a new buffer. 
+<b>Open File...</b> is equivalent to the Emacs command <code>find-file</code> (<kbd>C-x
+C-f</kbd>).</p></dd>
+<dt><b> Insert File...
+</b></dt>
+<dd><p>Prompts you for a filename and inserts the contents of that file into
+the current buffer.  The file associated with the current buffer is
+not changed by this command.  This is equivalent to the Emacs command
+<code>insert-file</code> (<kbd>C-x i</kbd>).</p></dd>
+<dt><b> Save Buffer 
+</b></dt>
+<dd><p>Writes and saves the current Emacs buffer as the latest
+version of the current visited file.  <b>Save Buffer</b> is equivalent to the
+Emacs command <code>save-buffer</code> (<kbd>C-x C-s</kbd>).</p></dd>
+<dt><b> Save Buffer As... 
+</b></dt>
+<dd><p>Writes and saves the current Emacs buffer to the filename you specify.
+<b>Save Buffer As...</b> is equivalent to the Emacs command
+<code>write-file</code> (<kbd>C-x C-w</kbd>).</p></dd>
+<dt><b> Revert Buffer
+</b></dt>
+<dd><p>Restores the last saved version of the file to the current buffer.  When
+you edit a buffer containing a text file, you must save the buffer
+before your changes become effective.  Use <b>Revert Buffer</b> if you do
+not want to keep the changes you have made in the buffer.  <b>Revert
+Buffer</b> is equivalent to the Emacs command <code>revert-file</code> (<kbd>M-x
+revert-buffer</kbd>).</p></dd>
+<dt><b> Kill Buffer
+</b></dt>
+<dd><p>Kills the current buffer, prompting you first if there are unsaved
+changes.  This is roughly equivalent to the Emacs command 
+<code>kill-buffer</code> (<kbd>C-x k</kbd>), except that <code>kill-buffer</code> 
+prompts for the name of a buffer to kill. </p></dd>
+<dt><b> Print Buffer
+</b></dt>
+<dd><p>Prints a hardcopy of the current buffer.  Equivalent
+to the Emacs command <code>print-buffer</code> (<kbd>M-x print-buffer</kbd>).</p></dd>
+<dt><b> New Frame
+</b></dt>
+<dd><p>Creates a new Emacs frame displaying the <code>*scratch*</code> buffer.  This
+is like the <b>Open File, New Frame...</b> menu item, except that it does
+not prompt for or load a file.</p></dd>
+<dt><b> Delete Frame 
+</b></dt>
+<dd><p>Allows you to close all but one of the frames created by <b>New Frame</b>.
+If you created several Emacs frames belonging to the same Emacs
+process, you can close all but one of them.  When you attempt to close the
+last frame, Emacs informs you that you are attempting to delete the
+last frame.  You have to choose <b>Exit Emacs</b> for that.</p></dd>
+<dt><b> Split Frame
+</b></dt>
+<dd><p>Divides the current window on the current frame into two equal-sized
+windows, both displaying the same buffer.  Equivalent to the Emacs
+command <code>split-window-vertically</code> (<kbd>C-x 2</kbd>).</p></dd>
+<dt><b> Un-split (Keep This)
+</b></dt>
+<dd><p>If the frame is divided into multiple windows, this removes all windows
+other than the selected one.  Equivalent to the Emacs command
+<code>delete-other-windows</code> (<kbd>C-x 1</kbd>).</p></dd>
+<dt><b> Un-split (Keep Others)
+</b></dt>
+<dd><p>If the frame is divided into multiple windows, this removes the
+selected window from the frame, giving the space back to one of the
+other windows.  Equivalent to the Emacs command <code>delete-window</code>
+(<kbd>C-x 0</kbd>).</p></dd>
+<dt><b> Exit Emacs
+</b></dt>
+<dd><p>Shuts down (kills) the Emacs process.  Equivalent to the Emacs command
+<code>save-buffers-kill-emacs</code> (<kbd>C-x C-c</kbd>).  Before killing the
+Emacs process, the system asks which unsaved buffers to save by going through
+the list of all buffers in that Emacs process.</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD30"></a>
+<a name="SEC32"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC31" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC33" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.2 The Edit Menu </h3>
+
+<p>The <b>Edit</b> pull-down menu contains the <b>Undo</b>, <b>Cut</b>, <b>Copy</b>,
+<b>Paste</b>, and <b>Clear</b> menu items.  When you select a menu item, Emacs
+executes the equivalent command.  Most commands on the <b>Edit</b> menu
+work on a block of text, the X selection.  They appear faded until you
+select a block of text (activate a region) with the mouse.  See section <a href="xemacs_12.html#SEC95">Using X Selections</a>, see section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, and see section <a href="xemacs_12.html#SEC91">Yanking</a> for more
+information.</p><a name="IDX68"></a>
+<a name="IDX69"></a>
+<a name="IDX70"></a>
+<a name="IDX71"></a>
+<a name="IDX72"></a>
+<a name="IDX73"></a>
+<a name="IDX74"></a>
+<a name="IDX75"></a>
+<dl compact="compact">
+<dt><b> Undo 
+</b></dt>
+<dd><p>Undoes the previous command.  <b>Undo</b> is equivalent to
+the Emacs command <code>undo</code> (<kbd>C-x u</kbd>).</p></dd>
+<dt><b> Cut
+</b></dt>
+<dd><p>Removes the selected text block from the current buffer, makes it the X
+clipboard selection, and places it in the kill ring.  Before executing
+this command, you have to select a region using Emacs region selection
+commands or with the mouse.</p></dd>
+<dt><b> Copy 
+</b></dt>
+<dd><p>Makes a selected text block the X clipboard selection, and places it in
+the kill ring.  You can select text using one of the Emacs region
+selection commands or by selecting a text region with the mouse.</p></dd>
+<dt><b> Paste 
+</b></dt>
+<dd><p>Inserts the current value of the X clipboard selection in the current
+buffer.  Note that this is not necessarily the same as the Emacs
+<code>yank</code> command, because the Emacs kill ring and the X clipboard
+selection are not the same thing.  You can paste in text you
+have placed in the clipboard using <b>Copy</b> or <b>Cut</b>.  You can also
+use <b>Paste</b> to insert text that was pasted into the clipboard from other
+applications.
+</p></dd>
+<dt><b> Clear
+</b></dt>
+<dd><p>Removes the selected text block from the current buffer but does not
+place it in the kill ring or the X clipboard selection. 
+</p></dd>
+<dt><b> Start Macro Recording
+</b></dt>
+<dd><p>After selecting this, Emacs will remember every keystroke you type until
+<b>End Macro Recording</b> is selected.  This is the same as the Emacs 
+command <code>start-kbd-macro</code> (<kbd>C-x (</kbd>).
+</p></dd>
+<dt><b> End Macro Recording
+</b></dt>
+<dd><p>Selecting this tells emacs to stop remembering your keystrokes.  This is
+the same as the Emacs command <code>end-kbd-macro</code> (<kbd>C-x )</kbd>).
+</p></dd>
+<dt><b> Execute Last Macro
+</b></dt>
+<dd><p>Selecting this item will cause emacs to re-interpret all of the
+keystrokes which were saved between selections of the <b>Start Macro
+Recording</b> and <b>End Macro Recording</b> menu items.  This is the same
+as the Emacs command <code>call-last-kbd-macro</code> (<kbd>C-x e</kbd>).
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD31"></a>
+<a name="SEC33"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC32" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC34" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.3 The Apps Menu </h3>
+
+<p>The <b>Apps</b> pull-down menu contains the <b>Read Mail (VM)...</b>, <b>Read
+Mail (MH)...</b>, <b>Send Mail...</b>, <b>Usenet News</b>, <b>Browse the Web</b>,
+<b>Gopher</b>, <b>Spell-Check Buffer</b> and <b>Emulate VI</b> menu items,
+and the <b>Calendar</b> and <b>Games</b> sub-menus.  When you select a menu
+item, Emacs executes the equivalent command.  For some of the menu
+items, there are sub-menus which you will need to select.
+</p><hr size="6">
+<a name="NOD32"></a>
+<a name="SEC34"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC33" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC35" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.4 The Options Menu </h3>
+
+<p>The <b>Options</b> pull-down menu contains the <b>Read Only</b>, <b>Case 
+Sensitive Search</b>, <b>Overstrike</b>, <b>Auto Delete Selection</b>, 
+<b>Teach Extended Commands</b>, <b>Syntax Highlighting</b>, <b>Paren 
+Highlighting</b>, <b>Font</b>, <b>Size</b>, <b>Weight</b>, <b>Buffers Menu 
+Length...</b>, <b>Buffers Sub-Menus</b> and <b>Save Options</b> menu items. 
+When you select a menu item, Emacs executes the equivalent command. 
+For some of the menu items, there are sub-menus which you will need 
+to select.
+</p><a name="IDX76"></a>
+<a name="IDX77"></a>
+<a name="IDX78"></a>
+<a name="IDX79"></a>
+<a name="IDX80"></a>
+<a name="IDX81"></a>
+<a name="IDX82"></a>
+<a name="IDX83"></a>
+<a name="IDX84"></a>
+<a name="IDX85"></a>
+<a name="IDX86"></a>
+<a name="IDX87"></a>
+<a name="IDX88"></a>
+<dl compact="compact">
+<dt><b> Read Only
+</b></dt>
+<dd><p>Selecting this item will cause the buffer to visit the file in a 
+read-only mode. Changes to the file will not be allowed. This is 
+equivalent to the Emacs command <code>toggle-read-only</code> 
+(<kbd>C-x C-q</kbd>).
+</p></dd>
+<dt><b> Case Sensitive Search
+</b></dt>
+<dd><p>Selecting this item will cause searches to be case-sensitive. If 
+its not selected then searches will ignore case. This option is 
+local to the buffer.
+</p></dd>
+<dt><b> Overstrike
+</b></dt>
+<dd><p>After selecting this item, when you type letters they will replace 
+existing text on a one-to-one basis, rather than pushing it to the 
+right. At the end of a line, such characters extend the line. Before 
+a tab, such characters insert until the tab is filled in. This is the 
+same as Emacs command <code>quoted-insert</code> (<kbd>C-q</kbd>).
+</p></dd>
+<dt><b> Auto Delete Selection
+</b></dt>
+<dd><p>Selecting this item will cause automatic deletion of the selected 
+region. The typed text will replace the selection if the selection 
+is active (i.e. if its highlighted). If the option is not selected 
+then the typed text is just inserted at the point.
+</p></dd>
+<dt><b> Teach Extended Commands
+</b></dt>
+<dd><p>After you  select this item, any time you execute a command with 
+<kbd>M-x</kbd>which has a shorter keybinding, you will be shown the 
+alternate binding before the command executes.
+</p></dd>
+<dt><b> Syntax Highlighting
+</b></dt>
+<dd><p>You can customize your init file to include the font-lock mode so that
+when you select this item, the comments will be displayed in one face,
+strings in another, reserved words in another, and so on. See section <a href="xemacs_30.html#SEC377">The Init File</a>.  When <b>Fonts</b> is selected, different parts of the program will
+appear in different Fonts. When <b>Colors</b> is selected, then the program
+will be displayed in different colors. Selecting <b>None</b> causes the
+program to appear in just one Font and Color. Selecting <b>Less</b> resets
+the Fonts and Colors to a fast, minimal set of decorations. Selecting
+<b>More</b> resets the Fonts and Colors to a larger set of decorations. For
+example, if <b>Less</b> is selected (which is the default setting) then you
+might have all comments in green color.  Whereas, if <b>More</b> is
+selected then a function name in the comments themselves might appear in
+a different Color or Font.</p></dd>
+<dt><b> Paren Highlighting
+</b></dt>
+<dd><p>After selecting <b>Blink</b> from this item, if you place the cursor 
+on a parenthesis, the matching parenthesis will blink. If you select 
+<b>Highlight</b> and place the cursor on a parenthesis, the whole 
+expression of the parenthesis under the cursor will be highlighted. 
+Selecting <b>None</b> will turn off the options (regarding <b>Paren 
+Highlighting</b>) which you had selected earlier.</p></dd>
+<dt><b> Font
+</b></dt>
+<dd><p>You can select any Font for your program by choosing from one of the 
+available Fonts.
+</p></dd>
+<dt><b> Size
+</b></dt>
+<dd><p>You can select any size ranging from <b>2</b> to <b>24</b> by selecting the 
+appropriate option.</p></dd>
+<dt><b> Weight
+</b></dt>
+<dd><p>You can choose either <b>Bold</b> or <b>Medium</b> for the weight.</p></dd>
+<dt><b> Buffers Menu Length...
+</b></dt>
+<dd><p>Prompts you for the number of buffers to display. Then it will display 
+that number of most recently selected buffers.
+</p></dd>
+<dt><b> Buffers Sub-Menus
+</b></dt>
+<dd><p>After selection of this item the Buffers menu will contain several 
+commands, as submenus of each buffer line. If this item is unselected, 
+then there are no submenus for each buffer line, the only command 
+available will be selecting that buffer.
+</p></dd>
+<dt><b> Save Options
+</b></dt>
+<dd><p>Selecting this item will save the current settings of your Options 
+menu to your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD33"></a>
+<a name="SEC35"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC34" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC36" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.5 The Buffers Menu </h3>
+<p>The <b>Buffers</b> menu provides a selection of up to ten buffers and the
+item <b>List All Buffers</b>, which provides a Buffer List. See section <a href="xemacs_18.html#SEC171">Listing Existing Buffers</a>, for more information.  
+</p><hr size="6">
+<a name="NOD34"></a>
+<a name="SEC36"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC35" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC37" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.6 The Tools Menu </h3>
+
+<p>The <b>Tools</b> pull-down menu contains the <b>Grep...</b>, <b>Compile...</b>,
+<b>Shell Command...</b>, <b>Shell Command on Region...</b>, <b>Debug(GDB)...</b>
+and <b>Debug(DBX)...</b> menu items, and the <b>Compare</b>, <b>Merge</b>,
+<b>Apply Patch</b> and <b>Tags</b> sub-menus.  When you select a menu item,
+Emacs executes the equivalent command.  For some of the menu items,
+there are sub-menus which you will need to select.
+</p><hr size="6">
+<a name="NOD35"></a>
+<a name="SEC37"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC36" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC38" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.7 The Help Menu </h3>
+
+<p>The Help Menu gives you access to Emacs Info and provides a menu
+equivalent for each of the choices you have when using <kbd>C-h</kbd>. 
+See section <a href="xemacs_11.html#SEC71">Help</a>, for more information. 
+</p><p>The Help menu also gives access to UNIX online manual pages via the
+<b>UNIX Manual Page</b> option.  
+</p><hr size="6">
+<a name="NOD36"></a>
+<a name="SEC38"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC37" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 2.4.8 Customizing XEmacs Menus </h3>
+
+<p>You can customize any of the pull-down menus by adding or removing menu
+items and disabling or enabling existing menu items.
+</p><p>The following functions are available: 
+</p><dl compact="compact">
+<dt><kbd> add-menu: (<var>menu-path</var> <var>menu-name</var> <var>menu-items</var> &amp;optional <var>before</var>)
+</kbd></dt>
+<dd><p>Add a menu to the menu bar or one of its submenus.
+</p></dd>
+<dt><kbd> add-menu-item: (<var>menu-path</var> <var>item-name</var> <var>function</var>
+</kbd></dt>
+<dd><p><var>enabled-p</var> &amp;optional <var>before</var>)
+Add a menu item to a menu, creating the menu first if necessary.
+</p></dd>
+<dt><kbd> delete-menu-item: (<var>path</var>)
+</kbd></dt>
+<dd><p>Remove the menu item defined by <var>path</var> from the menu hierarchy.
+</p></dd>
+<dt><kbd> disable-menu-item: (<var>path</var>)
+</kbd></dt>
+<dd><p>Disable the specified menu item.
+</p></dd>
+<dt><kbd> enable-menu-item: (<var>path</var>)
+</kbd></dt>
+<dd><p>Enable the specified previously disabled menu item.
+</p></dd>
+<dt><kbd> relabel-menu-item: (<var>path</var> <var>new-name</var>)
+</kbd></dt>
+<dd><p>Change the string of the menu item specified by <var>path</var> to
+<var>new-name</var>.
+</p></dd>
+</dl>
+
+<a name="IDX89"></a>
+<a name="IDX90"></a>
+<p>Use the function <code>add-menu</code> to add a new menu or submenu.
+If a menu or submenu of the given name exists already, it is changed.
+</p><p><var>menu-path</var> identifies the menu under which the new menu should be
+inserted.  It is a list of strings; for example, <code>(&quot;File&quot;)</code> names
+the top-level <b>File</b> menu.  <code>(&quot;File&quot; &quot;Foo&quot;)</code> names a hypothetical
+submenu of <b>File</b>.  If <var>menu-path</var> is <code>nil</code>, the menu is
+added to the menu bar itself.
+</p><p><var>menu-name</var> is the string naming the menu to be added.  
+</p><p><var>menu-items</var> is a list of menu item descriptions.  Each menu item
+should be a vector of three elements:
+</p><ul>
+<li><p> 
+A string, which is the name of the menu item
+</p></li><li><p> 
+A symbol naming a command, or a form to evaluate
+</p></li><li><p> 
+<code>t</code> or <code>nil</code> to indicate whether the item is selectable
+</p></li></ul>
+
+<p>The optional argument <var>before</var> is the name of the menu before which
+the new menu or submenu should be added.  If the menu is already
+present, it is not moved.
+</p><a name="IDX91"></a>
+<a name="IDX92"></a>
+<p>The function <code>add-menu-item</code> adds a menu item to the specified
+menu, creating the menu first if necessary.  If the named item already
+exists, the menu remains unchanged.
+</p><p><var>menu-path</var> identifies the menu into which the new menu item should
+be inserted.  It is a list of strings; for example, <code>(&quot;File&quot;)</code>
+names the top-level <b>File</b> menu.  <code>(&quot;File&quot; &quot;Foo&quot;)</code> names a
+hypothetical submenu of <b>File</b>.
+</p><p><var>item-name</var> is the string naming the menu item to add.
+</p><p><var>function</var> is the command to invoke when this menu item is selected.
+If it is a symbol, it is invoked with <code>call-interactively</code>, in the
+same way that functions bound to keys are invoked.  If it is a list, the
+list is simply evaluated.
+</p><p><var>enabled-p</var> controls whether the item is selectable or not.
+It should be <code>t</code>, <code>nil</code>, or a form to evaluate to decide.  
+This form will be evaluated just before the menu is displayed, and 
+the menu item will be selectable if that form returns non-<code>nil</code>.
+</p><p>For example, to make the <code>rename-file</code> command available from the
+<b>File</b> menu, use the following code:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+(add-menu-item '(&quot;File&quot;) &quot;Rename File&quot; 'rename-file t)
+</pre></td></tr></table>
+<p>To add a submenu of file management commands using a <b>File Management</b>
+item, use the following code: 
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+(add-menu-item '(&quot;File&quot; &quot;File Management&quot;) &quot;Copy File&quot; 'copy-file t)
+(add-menu-item '(&quot;File&quot; &quot;File Management&quot;) &quot;Delete File&quot; 'delete-file t)
+(add-menu-item '(&quot;File&quot; &quot;File Management&quot;) &quot;Rename File&quot; 'rename-file t)
+</pre></td></tr></table>
+<p>The optional <var>before</var> argument is the name of a menu item before
+which the new item should be added.  If the item is already present, it
+is not moved.
+</p><a name="IDX93"></a>
+<a name="IDX94"></a>
+<p>To remove a specified menu item from the menu hierarchy, use
+<code>delete-menu-item</code>.
+</p><p><var>path</var> is a list of strings that identify the position of the menu
+item in the menu hierarchy.  <code>(&quot;File&quot; &quot;Save&quot;)</code> means the menu item
+called <b>Save</b> under the top level <b>File</b> menu.  <code>(&quot;Menu&quot; &quot;Foo&quot;
+&quot;Item&quot;)</code> means the menu item called <b>Item</b> under the <b>Foo</b> submenu
+of <b>Menu</b>.
+</p><a name="IDX95"></a>
+<a name="IDX96"></a>
+<a name="IDX97"></a>
+<a name="IDX98"></a>
+<p>To disable a menu item, use <code>disable-menu-item</code>.  The disabled
+menu item is grayed and can no longer be selected.  To make the
+item selectable again, use <code>enable-menu-item</code>.
+<code>disable-menu-item</code> and <code>enable-menu-item</code> both have the
+argument <var>path</var>.
+</p><a name="IDX99"></a>
+<a name="IDX100"></a>
+<p>To change the string of the specified menu item, use
+<code>relabel-menu-item</code>. This function also takes the argument <var>path</var>.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC30" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

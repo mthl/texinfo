@@ -1,0 +1,1428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: 9. Selecting Text</title>
+
+<meta name="description" content="XEmacs User's Manual: 9. Selecting Text">
+<meta name="keywords" content="XEmacs User's Manual: 9. Selecting Text">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD71"></a>
+<a name="SEC79"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_11.html#SEC78" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_11.html#SEC71" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 9. Selecting Text </h1>
+
+<p>  Many Emacs commands operate on an arbitrary contiguous
+part of the current buffer. You can select text in two ways:
+</p><ul>
+<li><p>
+You use special keys to select text by defining a region between point
+and the mark. 
+</p></li><li><p>
+If you are running XEmacs under X, you can also select text
+with the mouse. 
+</p></li></ul>
+
+<hr size="6">
+<a name="SEC80"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC79" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.1 The Mark and the Region </h2>
+<p> To specify the text for a command to operate on, set <em>the
+mark</em> at one end of it, and move point to the other end.  The text
+between point and the mark is called <em>the region</em>.  You can move
+point or the mark to adjust the boundaries of the region.  It doesn't
+matter which one is set first chronologically, or which one comes
+earlier in the text.
+</p><p>  Once the mark has been set, it remains until it is set again at
+another place.  The mark remains fixed with respect to the preceding
+character if text is inserted or deleted in a buffer.  Each Emacs
+buffer has its own mark; when you return to a buffer that had been
+selected previously, it has the same mark it had before.
+</p><p>  Many commands that insert text, such as <kbd>C-y</kbd> (<code>yank</code>) and
+<kbd>M-x insert-buffer</kbd>, position the mark at one end of the inserted
+text--the opposite end from where point is positioned, so that the region
+contains the text just inserted.
+</p><p>  Aside from delimiting the region, the mark is useful for marking
+a spot that you may want to go back to.  To make this feature more useful,
+Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC81">9.1.1 Setting the Mark</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to set the mark.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC82">9.1.2 Operating on the Region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of ways to operate on contents of the region.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC83">9.1.3 Commands to Mark Textual Objects</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to put region around textual units.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC84">9.1.4 The Mark Ring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Previous mark positions saved so you can go back there.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD72"></a>
+<a name="SEC81"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC80" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC82" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.1 Setting the Mark </h3>
+
+<p>  Here are some commands for setting the mark:
+</p><dl compact="compact">
+<dt><kbd> C-<kbd>SPC</kbd>
+</kbd></dt>
+<dd><p>Set the mark where point is (<code>set-mark-command</code>).
+</p></dd>
+<dt><kbd> C-@
+</kbd></dt>
+<dd><p>The same.
+</p></dd>
+<dt><kbd> C-x C-x
+</kbd></dt>
+<dd><p>Interchange mark and point (<code>exchange-point-and-mark</code>).
+</p></dd>
+<dt><kbd> C-&lt;
+</kbd></dt>
+<dd><p>Pushes a mark at the beginning of the buffer.
+</p></dd>
+<dt><kbd> C-&gt;
+</kbd></dt>
+<dd><p>Pushes a mark at the end of the buffer.
+</p></dd>
+</dl>
+
+<p>  For example, to convert part of the buffer to all
+upper-case, you can use the <kbd>C-x C-u</kbd> (<code>upcase-region</code>)
+command, which operates on the text in the region.  First go to the
+beginning of the text you want to capitalize and type <kbd>C-<kbd>SPC</kbd></kbd> to
+put the mark there, then move to the end, and then type <kbd>C-x C-u</kbd> to
+capitalize the selected region.  You can also set the mark at the end of the
+text, move to the beginning, and then type <kbd>C-x C-u</kbd>.  Most commands
+that operate on the text in the region have the word <code>region</code> in
+their names.
+</p><a name="IDX284"></a>
+<a name="IDX285"></a>
+<p>  The most common way to set the mark is with the <kbd>C-<kbd>SPC</kbd></kbd>
+command (<code>set-mark-command</code>).  This command sets the mark where
+point is. You can then move point away, leaving the mark behind.  It is
+actually incorrect to speak of the character <kbd>C-<kbd>SPC</kbd></kbd>; there is
+no such character.  When you type <kbd>SPC</kbd> while holding down
+<kbd>CTRL</kbd>, you get the character <kbd>C-@</kbd> on most terminals. This
+character is actually bound to <code>set-mark-command</code>.  But unless you are
+unlucky enough to have a terminal where typing <kbd>C-<kbd>SPC</kbd></kbd> does
+not produce <kbd>C-@</kbd>, you should think of this character as
+<kbd>C-<kbd>SPC</kbd></kbd>.
+</p><a name="IDX286"></a>
+<a name="IDX287"></a>
+<p>  Since terminals have only one cursor, Emacs cannot show you where the
+mark is located. Most people use the mark soon after they set it, before
+they forget where it is. But you can see where the mark is with the
+command <kbd>C-x C-x</kbd> (<code>exchange-point-and-mark</code>) which puts the
+mark where point was and point where the mark was.  The extent of the
+region is unchanged, but the cursor and point are now at the previous
+location of the mark. 
+</p><a name="IDX288"></a>
+<a name="IDX289"></a>
+<a name="IDX290"></a>
+<a name="IDX291"></a>
+<p> Another way to set the mark is to push the mark to the beginning of a
+buffer while leaving point at its original location. If you supply an
+argument to <kbd>C-&lt;</kbd> (<code>mark-beginning-of-buffer</code>), the mark is pushed
+<var>n</var>/10 of the way from the true beginning of the buffer. You can
+also set the mark at the end of a buffer with <kbd>C-&gt;</kbd>
+(<code>mark-end-of-buffer</code>). It pushes the mark to the end of the buffer, 
+leaving point alone. Supplying an argument to the command pushes the mark
+<var>n</var>/10 of the way from the true end of the buffer.
+</p><p>If you are using XEmacs under the X window system, you can set
+the variable <code>zmacs-regions</code> to <code>t</code>. This makes the current
+region (defined by point and mark) highlight and makes it available as
+the X clipboard selection, which means you can use the menu bar items on
+it.  See section <a href="#SEC99">Active Regions</a>, for more information.
+</p><p>  <kbd>C-x C-x</kbd> is also useful when you are satisfied with the location of
+point but want to move the mark; do <kbd>C-x C-x</kbd> to put point there and
+then you can move it.  A second use of <kbd>C-x C-x</kbd>, if necessary, puts
+the mark at the new location with point back at its original location.
+</p><hr size="6">
+<a name="NOD73"></a>
+<a name="SEC82"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC81" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC83" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.2 Operating on the Region </h3>
+
+<p>  Once you have created an active region, you can do many things to
+the text in it:
+</p><ul>
+<li><p>
+Kill it with <kbd>C-w</kbd> (see section <a href="#SEC87">Deletion and Killing</a>).
+</p></li><li><p>
+Save it in a register with <kbd>C-x r s</kbd> (see section <a href="xemacs_13.html#SEC102">Registers</a>).
+</p></li><li><p>
+Save it in a buffer or a file (see section <a href="#SEC100">Accumulating Text</a>).
+</p></li><li><p>
+Convert case with <kbd>C-x C-l</kbd> or <kbd>C-x C-u</kbd> <br>(see section <a href="xemacs_23.html#SEC214">Case Conversion Commands</a>).
+</p></li><li><p>
+Evaluate it as Lisp code with <kbd>M-x eval-region</kbd> (see section <a href="xemacs_25.html#SEC258">Evaluating Emacs-Lisp Expressions</a>).
+</p></li><li><p>
+Fill it as text with <kbd>M-q</kbd> (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
+</p></li><li><p>
+Print hardcopy with <kbd>M-x print-region</kbd> (see section <a href="xemacs_29.html#SEC345">Hardcopy Output</a>).
+</p></li><li><p>
+Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a href="xemacs_22.html#SEC192">Indentation</a>).
+</p></li></ul>
+
+<hr size="6">
+<a name="NOD74"></a>
+<a name="SEC83"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC82" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC84" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.3 Commands to Mark Textual Objects </h3>
+
+<p>  There are commands for placing point and the mark around a textual
+object such as a word, list, paragraph or page.
+</p><dl compact="compact">
+<dt><kbd> M-@
+</kbd></dt>
+<dd><p>Set mark after end of next word (<code>mark-word</code>).  This command and
+the following one do not move point.
+</p></dd>
+<dt><kbd> C-M-@
+</kbd></dt>
+<dd><p>Set mark after end of next Lisp expression (<code>mark-sexp</code>).
+</p></dd>
+<dt><kbd> M-h
+</kbd></dt>
+<dd><p>Put region around current paragraph (<code>mark-paragraph</code>).
+</p></dd>
+<dt><kbd> C-M-h
+</kbd></dt>
+<dd><p>Put region around current Lisp defun (<code>mark-defun</code>).
+</p></dd>
+<dt><kbd> C-x h
+</kbd></dt>
+<dd><p>Put region around entire buffer (<code>mark-whole-buffer</code>).
+</p></dd>
+<dt><kbd> C-x C-p
+</kbd></dt>
+<dd><p>Put region around current page (<code>mark-page</code>).
+</p></dd>
+</dl>
+
+<a name="IDX292"></a>
+<a name="IDX293"></a>
+<a name="IDX294"></a>
+<a name="IDX295"></a>
+<p><kbd>M-@</kbd> (<code>mark-word</code>) puts the mark at the end of the next word,
+while <kbd>C-M-@</kbd> (<code>mark-sexp</code>) puts it at the end of the next Lisp
+expression. These characters sometimes save you some typing.
+</p><a name="IDX296"></a>
+<a name="IDX297"></a>
+<a name="IDX298"></a>
+<a name="IDX299"></a>
+<a name="IDX300"></a>
+<a name="IDX301"></a>
+<a name="IDX302"></a>
+<a name="IDX303"></a>
+<p>   A number of commands are available that set both point and mark and
+thus delimit an object in the buffer.  <kbd>M-h</kbd> (<code>mark-paragraph</code>)
+moves point to the beginning of the paragraph that surrounds or follows
+point, and puts the mark at the end of that paragraph
+(see section <a href="xemacs_23.html#SEC208">Paragraphs</a>).  You can then indent, case-convert, or kill the
+whole paragraph.  In the same fashion, <kbd>C-M-h</kbd> (<code>mark-defun</code>)
+puts point before and the mark after the current or following defun
+(see section <a href="xemacs_24.html#SEC218">Defuns</a>).  <kbd>C-x C-p</kbd> (<code>mark-page</code>) puts point before
+the current page (or the next or previous, depending on the argument),
+and mark at the end (see section <a href="xemacs_23.html#SEC209">Pages</a>).  The mark goes after the
+terminating page delimiter (to include it), while point goes after the
+preceding page delimiter (to exclude it).  Finally, <kbd>C-x h</kbd>
+(<code>mark-whole-buffer</code>) sets up the entire buffer as the region by
+putting point at the beginning and the mark at the end.
+</p><hr size="6">
+<a name="NOD75"></a>
+<a name="SEC84"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC83" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC85" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.1.4 The Mark Ring </h3>
+
+<p>  Aside from delimiting the region, the mark is also useful for marking
+a spot that you may want to go back to.  To make this feature more
+useful, Emacs remembers 16 previous locations of the mark in the
+<em>mark ring</em>.  Most commands that set the mark push the old mark onto
+this ring.  To return to a marked location, use <kbd>C-u C-<kbd>SPC</kbd></kbd>
+(or <kbd>C-u C-@</kbd>); this is the command <code>set-mark-command</code> given a
+numeric argument.  The command moves point to where the mark was, and
+restores the mark from the ring of former marks. Repeated use of this
+command moves point to all the old marks on the ring, one by one.
+The marks you have seen go to the end of the ring, so no marks are lost.
+</p><p>  Each buffer has its own mark ring.  All editing commands use the current
+buffer's mark ring.  In particular, <kbd>C-u C-<kbd>SPC</kbd></kbd> always stays in
+the same buffer.
+</p><p>  Many commands that can move long distances, such as <kbd>M-&lt;</kbd>
+(<code>beginning-of-buffer</code>), start by setting the mark and saving the
+old mark on the mark ring.  This makes it easier for you to move back
+later.  Searches set the mark, unless they do not actually move point.
+When a command sets the mark, `<samp>Mark Set</samp>' is printed in the
+echo area.
+</p><a name="IDX304"></a>
+<p>  The variable <code>mark-ring-max</code> is the maximum number of entries to
+keep in the mark ring.  If that many entries exist and another entry is
+added, the last entry in the list is discarded.  Repeating <kbd>C-u
+C-<kbd>SPC</kbd></kbd> circulates through the entries that are currently in the
+ring.
+</p><a name="IDX305"></a>
+<p>  The variable <code>mark-ring</code> holds the mark ring itself, as a list of
+marker objects in the order most recent first.  This variable is local
+in every buffer.
+</p><hr size="6">
+<a name="NOD76"></a>
+<a name="SEC85"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC84" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC86" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC86" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.2 Selecting Text with the Mouse </h2>
+
+<p>  If you are using XEmacs under X, you can use the mouse pointer
+to select text. (The normal mouse pointer is an I-beam, the same
+pointer that <code>xterm</code> uses.)
+</p><a name="IDX306"></a>
+<a name="IDX307"></a>
+<a name="IDX308"></a>
+<p>The glyph variable <code>text-pointer-glyph</code> controls the shape of
+the mouse pointer when over text.  You can also control the shape
+of the mouse pointer when over nontext using <code>nontext-pointer-glyph</code>,
+and the shape of the mouse pointer when over the modeline using
+<code>modeline-pointer-glyph</code>. (Remember, you should use
+<code>set-glyph-image</code>, not <code>setq</code>, to set one of these
+variables.)
+</p><a name="IDX309"></a>
+<p>If you want to get fancy, you can set the foreground and background
+colors of the mouse pointer by setting the <code>pointer</code> face.
+</p><p>There are two ways to select a region of text with the mouse:
+</p><p>  To select a word in text, double-click with the left mouse button
+while the mouse cursor is over the word.  The word is highlighted when
+selected. On monochrome monitors, a stippled background indicates that a
+region of text has been highlighted. On color monitors, a color
+background indicates highlighted text. You can triple-click to select
+whole lines. 
+</p><p>To select an arbitrary region of text:
+</p><ol>
+<li><p>
+Move the mouse cursor over the character at the beginning of the region of
+text you want to select.
+</p></li><li><p>
+Press and hold the left mouse button. 
+</p></li><li><p>
+While holding the left mouse button down, drag the cursor to the
+character at the end of the region of text you want to select.
+</p></li><li><p>
+Release the left mouse button.
+</p></li></ol>
+<p>The selected region of text is highlighted.
+</p><p>  Once a region of text is selected, it becomes the primary X selection
+(see section <a href="#SEC95">Using X Selections</a>) as well as the Emacs selected region. You
+can paste it into other X applications and use the options from the
+<b>Edit</b> pull-down menu on it.  Since it is also the Emacs region, you
+can use Emacs region commands on it.
+</p><hr size="6">
+<a name="NOD77"></a>
+<a name="SEC86"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC85" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC85" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.3 Additional Mouse Operations </h2>
+
+<p>XEmacs also provides the following mouse functions.  Most of these are
+not bound to mouse gestures by default, but they are provided for your
+customization pleasure.  For example, if you wanted <kbd>shift-left</kbd>
+(that is, holding down the <kbd>Shift</kbd> key and clicking the left mouse
+button) to delete the character at which you are pointing, then you
+could do this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+(global-set-key '(shift button1) 'mouse-del-char)
+</pre></td></tr></table>
+<a name="IDX310"></a>
+<a name="IDX311"></a>
+<a name="IDX312"></a>
+<a name="IDX313"></a>
+<a name="IDX314"></a>
+<a name="IDX315"></a>
+<a name="IDX316"></a>
+<a name="IDX317"></a>
+<a name="IDX318"></a>
+<a name="IDX319"></a>
+<a name="IDX320"></a>
+<a name="IDX321"></a>
+<a name="IDX322"></a>
+<a name="IDX323"></a>
+<dl compact="compact">
+<dt><kbd> mouse-del-char
+</kbd></dt>
+<dd><p>Delete the character pointed to by the mouse.
+</p></dd>
+<dt><kbd> mouse-delete-window
+</kbd></dt>
+<dd><p>Delete the Emacs window that the mouse is on.
+</p></dd>
+<dt><kbd> mouse-keep-one-window
+</kbd></dt>
+<dd><p>Select the Emacs window that the mouse is on, then delete all other
+windows on this frame.
+</p></dd>
+<dt><kbd> mouse-kill-line
+</kbd></dt>
+<dd><p>Kill the line pointed to by the mouse.
+</p></dd>
+<dt><kbd> mouse-line-length
+</kbd></dt>
+<dd><p>Print the length of the line indicated by the pointer.
+</p></dd>
+<dt><kbd> mouse-scroll
+</kbd></dt>
+<dd><p>Scroll point to the mouse position.
+</p></dd>
+<dt><kbd> mouse-select
+</kbd></dt>
+<dd><p>Select the Emacs window the mouse is on.
+</p></dd>
+<dt><kbd> mouse-select-and-split
+</kbd></dt>
+<dd><p>Select the Emacs window mouse is on, then split it vertically in half.
+</p></dd>
+<dt><kbd> mouse-set-mark
+</kbd></dt>
+<dd><p>Select the Emacs window the mouse is on and set the mark at the mouse 
+position.  Display the cursor at that position for a second.
+</p></dd>
+<dt><kbd> mouse-set-point
+</kbd></dt>
+<dd><p>Select the Emacs window that the mouse is on and move point to the
+mouse position.
+</p></dd>
+<dt><kbd> mouse-track
+</kbd></dt>
+<dd><p>Make a selection with the mouse.   This is the default binding of 
+the left mouse button (<kbd>button1</kbd>).
+</p></dd>
+<dt><kbd> mouse-track-adjust
+</kbd></dt>
+<dd><p>Extend the existing selection.  This is the default binding of
+<kbd>Shift-button1</kbd>.
+</p></dd>
+<dt><kbd> mouse-track-and-copy-to-cutbuffer
+</kbd></dt>
+<dd><p>Make a selection like <code>mouse-track</code>, but also copy it to the cut buffer.
+</p></dd>
+<dt><kbd> mouse-track-delete-and-insert
+</kbd></dt>
+<dd><p>Make a selection with the mouse and insert it at point.  This is the
+default binding of <kbd>control-shift-button1</kbd>.
+</p></dd>
+<dt><kbd> mouse-track-insert
+</kbd></dt>
+<dd><p>Make a selection with the mouse and insert it at point.
+This is the default binding of <kbd>control-button1</kbd>.
+</p></dd>
+<dt><kbd> mouse-window-to-region
+</kbd></dt>
+<dd><p>Narrow a window to the region between the cursor and the mouse pointer.
+</p></dd>
+</dl>
+
+<p>The <kbd>M-x mouse-track</kbd> command should be bound to a mouse button.  If
+you click-and-drag, the selection is set to the region between the
+point of the initial click and the point at which you release the
+button.  These positions do not need to be ordered. 
+</p><p>If you click-and-release without moving the mouse, the point is moved,
+and the selection is disowned (there will be no selection owner.)  The
+mark will be set to the previous position of point.
+</p><p>If you double-click, the selection will extend by symbols instead of by
+characters.  If you triple-click, the selection will extend by lines.
+</p><p>If you drag the mouse off the top or bottom of the window, you can
+select pieces of text that are larger than the visible part of the
+buffer; the buffer will scroll as necessary.
+</p><p>The selected text becomes the current X selection, and is also copied to
+the top of the kill ring.  Point will be left at the position at
+which you released the button and the mark will be left at the initial
+click position.  Bind a mouse click to
+<kbd>mouse-track-and-copy-to-cutbuffer</kbd> to copy selections to the cut buffer.
+(See also the <code>mouse-track-adjust</code> command, on <kbd>Shift-button1</kbd>.)
+</p><p>The <kbd>M-x mouse-track-adjust</kbd> command should be bound to a mouse
+button.  The selection will be enlarged or shrunk so that the point of
+the mouse click is one of its endpoints.  This is only meaningful
+after the <code>mouse-track</code> command (<kbd>button1</kbd>) has been executed.
+</p><p>The <kbd>M-x mouse-track-delete-and-insert</kbd> command is exactly the same
+as the <code>mouse-track</code> command on <kbd>button1</kbd>, except that point is
+not moved; the selected text is immediately inserted after being
+selected; and the text of the selection is deleted.
+</p><p>The <kbd>M-x mouse-track-insert</kbd> command is exactly the same as the
+<code>mouse-track</code> command on <kbd>button1</kbd>, except that point is not moved;
+the selected text is immediately inserted after being selected; and the
+selection is immediately disowned afterwards.
+</p><hr size="6">
+<a name="NOD78"></a>
+<a name="SEC87"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC86" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC88" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC86" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.4 Deletion and Killing </h2>
+
+<p>  Most commands that erase text from the buffer save it. You can get
+the text back if you change your mind, or you can move or copy it to
+other parts of the buffer.  Commands which erase text and save it in the
+kill ring are known as <em>kill</em> commands.  Some other commands erase
+text but do not save it; they are known as <em>delete</em> commands.  (This
+distinction is made only for erasing text in the buffer.)
+</p><p>The commands' names and individual descriptions use the words
+`<samp>kill</samp>' and `<samp>delete</samp>' to indicate what they do.  If you perform
+a kill or delete command by mistake, use the <kbd>C-x u</kbd> (<code>undo</code>)
+command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a>). The delete commands include <kbd>C-d</kbd>
+(<code>delete-char</code>) and <kbd>DEL</kbd> (<code>delete-backward-char</code>), which
+delete only one character at a time, and those commands that delete only
+spaces or newlines.  Commands that can destroy significant amounts of
+nontrivial data usually kill.</p><hr size="6">
+<a name="SEC88"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC87" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC89" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC87" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.4.1 Deletion </h3>
+
+<dl compact="compact">
+<dt><kbd> C-d
+</kbd></dt>
+<dd><p>Delete next character (<code>delete-char</code>).
+</p></dd>
+<dt><kbd> <kbd>DEL</kbd>
+</kbd></dt>
+<dd><p>Delete previous character (<code>delete-backward-char</code>).
+</p></dd>
+<dt><kbd> M-\
+</kbd></dt>
+<dd><p>Delete spaces and tabs around point (<code>delete-horizontal-space</code>).
+</p></dd>
+<dt><kbd> M-<kbd>SPC</kbd>
+</kbd></dt>
+<dd><p>Delete spaces and tabs around point, leaving one space
+(<code>just-one-space</code>).
+</p></dd>
+<dt><kbd> C-x C-o
+</kbd></dt>
+<dd><p>Delete blank lines around the current line (<code>delete-blank-lines</code>).
+</p></dd>
+<dt><kbd> M-^
+</kbd></dt>
+<dd><p>Join two lines by deleting the intervening newline, and any indentation
+following it (<code>delete-indentation</code>).
+</p></dd>
+</dl>
+
+<p>  The most basic delete commands are <kbd>C-d</kbd> (<code>delete-char</code>) and
+<kbd>DEL</kbd> (<code>delete-backward-char</code>).  <kbd>C-d</kbd> deletes the
+character after point, the one the cursor is &quot;on top of&quot;.  Point
+doesn't move.  <kbd>DEL</kbd> deletes the character before the cursor, and
+moves point back.  You can delete newlines like any other characters in
+the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
+<kbd>DEL</kbd> aren't always delete commands; if you give them an argument,
+they kill instead, since they can erase more than one character this
+way.
+</p><a name="IDX324"></a>
+<a name="IDX325"></a>
+<a name="IDX326"></a>
+<a name="IDX327"></a>
+<a name="IDX328"></a>
+<a name="IDX329"></a>
+<a name="IDX330"></a>
+<a name="IDX331"></a>
+<p>  The other delete commands delete only formatting characters: spaces,
+tabs and newlines.  <kbd>M-\</kbd> (<code>delete-horizontal-space</code>) deletes
+all spaces and tab characters before and after point.
+<kbd>M-<kbd>SPC</kbd></kbd> (<code>just-one-space</code>) does the same but leaves a
+single space after point, regardless of the number of spaces that
+existed previously (even zero).
+</p><p>  <kbd>C-x C-o</kbd> (<code>delete-blank-lines</code>) deletes all blank lines after
+the current line. If the current line is blank, it deletes all blank lines
+preceding the current line as well as leaving one blank line, the current
+line.  <kbd>M-^</kbd> (<code>delete-indentation</code>) joins the current line and
+the previous line, or, if given an argument, joins the current line and 
+the next line by deleting a newline and all surrounding spaces, possibly
+leaving a single space.  See section <a href="xemacs_22.html#SEC192">M-^</a>.
+</p><hr size="6">
+<a name="SEC89"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC88" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC90" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC87" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.4.2 Killing by Lines </h3>
+
+<dl compact="compact">
+<dt><kbd> C-k
+</kbd></dt>
+<dd><p>Kill rest of line or one or more lines (<code>kill-line</code>).
+</p></dd>
+</dl>
+
+<a name="IDX332"></a>
+<a name="IDX333"></a>
+<p>  The simplest kill command is <kbd>C-k</kbd>.  If given at the beginning of
+a line, it kills all the text on the line, leaving the line blank.  If
+given on a blank line, the blank line disappears.  As a consequence, a
+line disappears completely if you go to the front of a non-blank line
+and type <kbd>C-k</kbd> twice.
+</p><p>  More generally, <kbd>C-k</kbd> kills from point up to the end of the line,
+unless it is at the end of a line.  In that case, it kills the newline
+following the line, thus merging the next line into the current one.
+Emacs ignores invisible spaces and tabs at the end of the line when deciding
+which case applies: if point appears to be at the end of the line, you
+can be sure the newline will be killed.
+</p><p>  If you give <kbd>C-k</kbd> a positive argument, it kills that many lines
+and the newlines that follow them (however, text on the current line
+before point is not killed).  With a negative argument, <kbd>C-k</kbd> kills
+back to a number of line beginnings.  An argument of -2 means
+kill back to the second line beginning.  If point is at the beginning of
+a line, that line beginning doesn't count, so <kbd>C-u - 2 C-k</kbd> with
+point at the front of a line kills the two previous lines.
+</p><p>  <kbd>C-k</kbd> with an argument of zero kills all the text before point on the
+current line.
+</p><hr size="6">
+<a name="SEC90"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC89" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC87" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.4.3 Other Kill Commands </h3>
+
+<dl compact="compact">
+<dt><kbd> C-w
+</kbd></dt>
+<dd><p>Kill region (from point to the mark) (<code>kill-region</code>).
+See section <a href="xemacs_23.html#SEC206">Words</a>.
+</p></dd>
+<dt><kbd> M-d
+</kbd></dt>
+<dd><p>Kill word (<code>kill-word</code>).
+</p></dd>
+<dt><kbd> M-<kbd>DEL</kbd>
+</kbd></dt>
+<dd><p>Kill word backwards (<code>backward-kill-word</code>).
+</p></dd>
+<dt><kbd> C-x <kbd>DEL</kbd>
+</kbd></dt>
+<dd><p>Kill back to beginning of sentence (<code>backward-kill-sentence</code>).
+See section <a href="xemacs_23.html#SEC207">Sentences</a>.
+</p></dd>
+<dt><kbd> M-k
+</kbd></dt>
+<dd><p>Kill to end of sentence (<code>kill-sentence</code>).
+</p></dd>
+<dt><kbd> C-M-k
+</kbd></dt>
+<dd><p>Kill sexp (<code>kill-sexp</code>).  See section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>.
+</p></dd>
+<dt><kbd> M-z <var>char</var>
+</kbd></dt>
+<dd><p>Kill up to next occurrence of <var>char</var> (<code>zap-to-char</code>).
+</p></dd>
+</dl>
+
+<p>   <kbd>C-w</kbd> (<code>kill-region</code>) is a very general kill command; it
+kills everything between point and the mark. You can use this command to
+kill any contiguous sequence of characters by first setting the mark at
+one end of a sequence of characters, then going to the other end and
+typing <kbd>C-w</kbd>.
+</p><a name="IDX334"></a>
+<a name="IDX335"></a>
+<p>  A convenient way of killing is combined with searching: <kbd>M-z</kbd>
+(<code>zap-to-char</code>) reads a character and kills from point up to (but not
+including) the next occurrence of that character in the buffer.  If there
+is no next occurrence, killing goes to the end of the buffer.  A numeric
+argument acts as a repeat count.  A negative argument means to search
+backward and kill text before point.
+</p><p>  Other syntactic units can be killed: words, with <kbd>M-<kbd>DEL</kbd></kbd> and
+<kbd>M-d</kbd> (see section <a href="xemacs_23.html#SEC206">Words</a>); sexps, with <kbd>C-M-k</kbd> (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>); and
+sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
+(see section <a href="xemacs_23.html#SEC207">Sentences</a>).</p><hr size="6">
+<a name="NOD79"></a>
+<a name="SEC91"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC90" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC92" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC87" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.5 Yanking </h2>
+
+<p>  <em>Yanking</em> means getting back text which was killed. Some systems
+call this &quot;pasting&quot;.  The usual way to move or copy text is to kill it
+and then yank it one or more times.
+</p><dl compact="compact">
+<dt><kbd> C-y
+</kbd></dt>
+<dd><p>Yank last killed text (<code>yank</code>).
+</p></dd>
+<dt><kbd> M-y
+</kbd></dt>
+<dd><p>Replace re-inserted killed text with the previously killed text
+(<code>yank-pop</code>).
+</p></dd>
+<dt><kbd> M-w
+</kbd></dt>
+<dd><p>Save region as last killed text without actually killing it
+(<code>copy-region-as-kill</code>).
+</p></dd>
+<dt><kbd> C-M-w
+</kbd></dt>
+<dd><p>Append next kill to last batch of killed text (<code>append-next-kill</code>).
+</p></dd>
+</dl>
+
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC92">9.5.1 The Kill Ring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where killed text is stored.  Basic yanking.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC93">9.5.2 Appending Kills</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Several kills in a row all yank together.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC94">9.5.3 Yanking Earlier Kills</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Yanking something killed some time ago.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD80"></a>
+<a name="SEC92"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC91" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC93" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC91" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.5.1 The Kill Ring </h3>
+
+<p>  All killed text is recorded in the <em>kill ring</em>, a list of blocks of
+text that have been killed.  There is only one kill ring, used in all
+buffers, so you can kill text in one buffer and yank it in another buffer.
+This is the usual way to move text from one file to another.
+(See section <a href="#SEC100">Accumulating Text</a>, for some other ways.)
+</p><p>  If you have two separate Emacs processes, you cannot use the kill ring
+to move text. If you are using XEmacs under X, however, you can
+use the X selection mechanism to move text from one to another.
+</p><p>If you are using XEmacs under X and have one Emacs process with
+multiple frames, they do share the same kill ring.  You can kill or
+copy text in one Emacs frame, then yank it in the other frame
+belonging to the same process.
+</p><p>  The command <kbd>C-y</kbd> (<code>yank</code>) reinserts the text of the most recent
+kill.  It leaves the cursor at the end of the text and sets the mark at
+the beginning of the text.  See section <a href="#SEC79">Selecting Text</a>.
+</p><p>  <kbd>C-u C-y</kbd> yanks the text, leaves the cursor in front of the text,
+and sets the mark after it, if the argument is with just a <kbd>C-u</kbd>.
+Any other argument, including <kbd>C-u</kbd> and digits, has different
+results, described below, under &quot;Yanking Earlier Kills&quot;.
+</p><a name="IDX336"></a>
+<a name="IDX337"></a>
+<p> To copy a block of text, you can also use <kbd>M-w</kbd>
+(<code>copy-region-as-kill</code>), which copies the region into the kill ring
+without removing it from the buffer. <kbd>M-w</kbd> is similar to <kbd>C-w</kbd>
+followed by <kbd>C-y</kbd> but does not mark the buffer as &quot;modified&quot; and
+does not actually cut anything.
+</p><hr size="6">
+<a name="NOD81"></a>
+<a name="SEC93"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC92" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC94" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC91" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.5.2 Appending Kills </h3>
+
+<p>  Normally, each kill command pushes a new block onto the kill ring.
+However, two or more kill commands in a row combine their text into a
+single entry, so that a single <kbd>C-y</kbd> yanks it all back. This means
+you don't have to kill all the text you want to yank in one command; you
+can kill line after line, or word after word, until you have killed what
+you want, then get it all back at once using <kbd>C-y</kbd>. (Thus we join
+television in leading people to kill thoughtlessly.)
+</p><p>  Commands that kill forward from point add onto the end of the previous
+killed text.  Commands that kill backward from point add onto the
+beginning.  This way, any sequence of mixed forward and backward kill
+commands puts all the killed text into one entry without rearrangement.
+Numeric arguments do not break the sequence of appending kills.  For
+example, suppose the buffer contains:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+This is the first
+line of sample text
+and here is the third.
+</pre></td></tr></table>
+<p>with point at the beginning of the second line.  If you type <kbd>C-k C-u 2
+M-<kbd>DEL</kbd> C-k</kbd>, the first <kbd>C-k</kbd> kills the text `<samp>line of sample
+text</samp>', <kbd>C-u 2 M-<kbd>DEL</kbd></kbd> kills `<samp>the first</samp>' with the newline that
+followed it, and the second <kbd>C-k</kbd> kills the newline after the second
+line.  The result is that the buffer contains `<samp>This is and here is the
+third.</samp>' and a single kill entry contains `<samp>the first<kbd>RET</kbd>line of
+sample text<kbd>RET</kbd></samp>'--all the killed text, in its original order.
+</p><a name="IDX338"></a>
+<a name="IDX339"></a>
+<p>  If a kill command is separated from the last kill command by other
+commands (not just numeric arguments), it starts a new entry on the kill
+ring.  To force a kill command to append, first type the command <kbd>C-M-w</kbd>
+(<code>append-next-kill</code>). <kbd>C-M-w</kbd> tells the following command,
+if it is a kill command, to append the text it kills to the last killed
+text, instead of starting a new entry.  With <kbd>C-M-w</kbd>, you can kill
+several separated pieces of text and accumulate them to be yanked back
+in one place.</p><hr size="6">
+<a name="NOD82"></a>
+<a name="SEC94"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC93" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC91" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.5.3 Yanking Earlier Kills </h3>
+
+<p>  To recover killed text that is no longer the most recent kill, you need
+the <kbd>Meta-y</kbd> (<code>yank-pop</code>) command.  You can use <kbd>M-y</kbd> only
+after a <kbd>C-y</kbd> or another <kbd>M-y</kbd>.  It takes the text previously
+yanked and replaces it with the text from an earlier kill.  To recover
+the text of the next-to-the-last kill, first use <kbd>C-y</kbd> to recover
+the last kill, then <kbd>M-y</kbd> to replace it with the previous
+kill.</p><p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
+in the kill ring.  Each time you kill, the &quot;last yank&quot; pointer moves to
+the new item at the front of the ring.  <kbd>C-y</kbd> yanks the item
+which the &quot;last yank&quot; pointer points to.  <kbd>M-y</kbd> moves the &quot;last
+yank&quot; pointer to a different item, and the text in the buffer changes to
+match.  Enough <kbd>M-y</kbd> commands can move the pointer to any item in the
+ring, so you can get any item into the buffer.  Eventually the pointer
+reaches the end of the ring; the next <kbd>M-y</kbd> moves it to the first item
+again.
+</p><p>  Yanking moves the &quot;last yank&quot; pointer around the ring, but does not
+change the order of the entries in the ring, which always runs from the
+most recent kill at the front to the oldest one still remembered.
+</p><p>  Use <kbd>M-y</kbd> with a numeric argument to advance the &quot;last
+yank&quot; pointer by the specified number of items.  A negative argument
+moves the pointer toward the front of the ring; from the front of the
+ring, it moves to the last entry and starts moving forward from there.
+</p><p>  Once the text you are looking for is brought into the buffer, you can
+stop doing <kbd>M-y</kbd> commands and the text will stay there. Since the
+text is just a copy of the kill ring item, editing it in the buffer does
+not change what's in the ring.  As long you don't kill additional text,
+the &quot;last yank&quot; pointer remains at the same place in the kill ring:
+repeating <kbd>C-y</kbd> will yank another copy of the same old kill.
+</p><p>  If you know how many <kbd>M-y</kbd> commands it would take to find the
+text you want, you can yank that text in one step using <kbd>C-y</kbd> with
+a numeric argument.  <kbd>C-y</kbd> with an argument greater than one
+restores the text the specified number of entries back in the kill
+ring.  Thus, <kbd>C-u 2 C-y</kbd> gets the next to the last block of killed
+text.  It is equivalent to <kbd>C-y M-y</kbd>.  <kbd>C-y</kbd> with a numeric
+argument starts counting from the &quot;last yank&quot; pointer, and sets the
+&quot;last yank&quot; pointer to the entry that it yanks.
+</p><a name="IDX340"></a>
+<p>  The variable <code>kill-ring-max</code> controls the length of the kill
+ring; no more than that many blocks of killed text are saved.
+</p><hr size="6">
+<a name="NOD83"></a>
+<a name="SEC95"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC94" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC96" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC91" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.6 Using X Selections </h2>
+
+<p>In the X window system, mouse selections provide a simple mechanism for
+text transfer between different applications.  In a typical X
+application, you can select text by pressing the left mouse button and
+dragging the cursor over the text you want to copy.  The text becomes the
+primary X selection and is highlighted.  The highlighted region is also
+the Emacs selected region.
+</p><ul>
+<li><p>
+Since the region is the primary X selection, you can go to a different X
+application and click the middle mouse button: the text that you selected in
+the previous application is pasted into the current application.
+</p></li><li><p>
+Since the region is the Emacs selected region, you can use all region
+commands (<kbd>C-w, M-w</kbd> etc.) as well as the options of the <b>Edit</b>
+menu to manipulate the selected text.
+</p></li></ul>
+
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC96">9.6.1 The Clipboard Selection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Pasting to the X clipboard.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC97">9.6.2 Miscellaneous X Selection Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Other operations on the selection.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC98">9.6.3 X Cut Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">X cut buffers are available for compatibility.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC99">9.6.4 Active Regions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using zmacs-style highlighting of the
+                        	 selected region.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD84"></a>
+<a name="SEC96"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC95" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.6.1 The Clipboard Selection </h3>
+
+<p>There are other kinds of X selections besides the <b>Primary</b> selection; one
+common one is the <b>Clipboard</b> selection.  Some applications prefer to
+transfer data using this selection in preference to the <b>Primary</b>.
+One can transfer text from the <b>Primary</b> selection to the  <b>Clipboard</b>
+selection with the <b>Copy</b> command under the <b>Edit</b> menu in the menubar.
+</p><p>Usually, the clipboard selection is not visible.  However, if you run the
+`<tt>xclipboard</tt>' application, the text most recently copied to the clipboard
+(with the <b>Copy</b> command) is displayed in a window.  Any time new text is
+thus copied, the `<tt>xclipboard</tt>' application makes a copy of it and displays
+it in its window.  The value of the clipboard can survive the lifetime of the
+running Emacs process.  The <code>xclipboard</code> man page provides more details.
+</p><p>Warning: If you use the `<tt>xclipboard</tt>' application, remember that it
+maintains a list of all things that have been pasted to the clipboard (that
+is, copied with the <b>Copy</b> command).  If you don't manually delete elements
+from this list by clicking on the <b>Delete</b> button in the <code>xclipboard</code>
+window, the clipboard will eventually consume a lot of memory.
+</p><p>In summary, some X applications (such as `<tt>xterm</tt>') allow one to paste
+text in them from XEmacs in the following way:
+</p><ul>
+<li><p>
+Drag out a region of text in Emacs with the left mouse button,
+making that text be the <b>Primary</b> selection.
+</p></li><li><p>
+Click the middle button in the other application, pasting the <b>Primary</b>
+selection. 
+</p></li></ul>
+
+<p>With some other applications (notably, the OpenWindows and Motif tools) you
+must use this method instead:
+</p><ul>
+<li><p>
+Drag out a region of text in Emacs with the left mouse button,
+making that text be the <b>Primary</b> selection.
+</p></li><li><p>
+Copy the selected text to the <b>Clipboard</b> selection by selecting the
+<b>Copy</b> menu item from the <b>Edit</b> menu, or by hitting the <b>Copy</b>
+key on your keyboard.
+</p></li><li><p>
+Paste the text in the other application by selecting <b>Paste</b> from its
+menu, or by hitting the <b>Paste</b> key on your keyboard.
+</p></li></ul>
+
+<hr size="6">
+<a name="NOD85"></a>
+<a name="SEC97"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC96" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC98" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.6.2 Miscellaneous X Selection Commands </h3>
+
+<dl compact="compact">
+<dt><kbd> M-x x-copy-primary-selection
+</kbd></dt>
+<dd><p>Copy the primary selection to both the kill ring and the Clipboard.
+</p></dd>
+<dt><kbd> M-x x-insert-selection
+</kbd></dt>
+<dd><p>Insert the current selection into the buffer at point.
+</p></dd>
+<dt><kbd> M-x x-delete-primary-selection
+</kbd></dt>
+<dd><p>Deletes the text in the primary selection without copying it to the kill
+ring or the Clipboard.
+</p></dd>
+<dt><kbd> M-x x-kill-primary-selection
+</kbd></dt>
+<dd><p>Deletes the text in the primary selection and copies it to 
+both the kill ring and the Clipboard.
+</p></dd>
+<dt><kbd> M-x x-mouse-kill
+</kbd></dt>
+<dd><p>Kill the text between point and the mouse and copy it to 
+the clipboard and to the cut buffer.
+</p></dd>
+<dt><kbd> M-x x-own-secondary-selection
+</kbd></dt>
+<dd><p>Make a secondary X selection of the given argument. 
+</p></dd>
+<dt><kbd> M-x x-own-selection
+</kbd></dt>
+<dd><p>Make a primary X selection of the given argument.  
+</p></dd>
+<dt><kbd> M-x x-set-point-and-insert-selection
+</kbd></dt>
+<dd><p>Set point where clicked and insert the primary selection or the
+cut buffer.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD86"></a>
+<a name="SEC98"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC97" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC99" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.6.3 X Cut Buffers </h3>
+
+<p>X cut buffers are a different, older way of transferring text between
+applications.  XEmacs supports cut buffers for compatibility
+with older programs, even though selections are now the preferred way of
+transferring text.
+</p><p>X has a concept of applications &quot;owning&quot; selections.  When you select
+text by clicking and dragging inside an application, the application
+tells the X server that it owns the selection.  When another
+application asks the X server for the value of the selection, the X
+server requests the information from the owner. When you use
+selections, the selection data is not actually transferred unless
+someone wants it; the act of making a selection doesn't transfer data.
+Cut buffers are different: when you &quot;own&quot; a cut buffer, the data is
+actually transferred to the X server immediately, and survives the
+lifetime of the application.
+</p><p>Any time a region of text becomes the primary selection in Emacs,
+Emacs also copies that text to the cut buffer.  This makes it possible
+to copy text from an XEmacs buffer and paste it into an older,
+non-selection-based application (such as Emacs 18).
+</p><p>Note: Older versions of Emacs could not access the X selections, only
+the X cut buffers.
+</p><hr size="6">
+<a name="NOD87"></a>
+<a name="SEC99"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC98" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 9.6.4 Active Regions </h3>
+
+<p>  By default, both the text you select in an Emacs buffer using the
+click-and-drag mechanism and text you select by setting point and the
+mark is highlighted. You can use Emacs region commands as well as the
+<b>Cut</b> and <b>Copy</b> commands on the highlighted region you selected
+with the mouse.
+</p><p>If you prefer, you can make a distinction between text selected with the
+mouse and text selected with point and the mark by setting the variable
+<code>zmacs-regions</code> to <code>nil</code>.  In that case:
+</p><ul>
+<li><p>
+The text selected with the mouse becomes both the X selection and the
+Emacs selected region. You can use menu-bar commands as well as Emacs
+region commands on it. 
+</p></li><li><p>
+The text selected with point and the mark is not highlighted. You can
+only use Emacs region commands on it, not the menu-bar items. 
+</p></li></ul>
+
+<p>  Active regions originally come from Zmacs, the Lisp Machine editor.
+The idea behind them is that commands can only operate on a region when
+the region is in an &quot;active&quot; state.  Put simply, you can only operate on
+a region that is highlighted.
+</p><a name="IDX341"></a>
+<p>The variable <code>zmacs-regions</code> checks whether LISPM-style active
+regions should be used.  This means that commands that operate on the
+region (the area between point and the mark) only work while
+the region is in the active state, which is indicated by highlighting.
+Most commands causes the region to not be in the active state;
+for example, <kbd>C-w</kbd> only works immediately after activating the
+region.
+</p><p>More specifically:
+</p><ul>
+<li><p>
+Commands that operate on the region only work if the region is active.
+</p></li><li><p>
+Only a very small set of commands causes the region to become active--
+those commands whose semantics are to mark an area, such as <code>mark-defun</code>.
+</p></li><li><p>
+The region is deactivated after each command that is executed, except that
+motion commands do not change whether the region is active or not.
+</p></li></ul>
+
+
+<p><code>set-mark-command</code> (<kbd>C-SPC</kbd>) pushes a mark and activates the
+region.  Moving the cursor with normal motion commands (<kbd>C-n</kbd>,
+<kbd>C-p</kbd>, etc.) will cause the region between point and the
+recently-pushed mark to be highlighted.  It will remain highlighted
+until some non-motion command is executed.
+</p><p><code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>) activates the region.
+So if you mark a region and execute a command that operates on it, you
+can reactivate the same region with <kbd>C-x C-x</kbd> (or perhaps <kbd>C-x
+C-x C-x C-x</kbd>) to operate on it again.
+</p><p>Generally, commands that push marks as a means of navigation, such as
+<code>beginning-of-buffer</code> (<kbd>M-&lt;</kbd>) and <code>end-of-buffer</code>
+(<kbd>M-&gt;</kbd>), do not activate the region.  However, commands that push
+marks as a means of marking an area of text, such as <code>mark-defun</code>
+(<kbd>M-C-h</kbd>), <code>mark-word</code> (<kbd>M-@</kbd>), and <code>mark-whole-buffer</code>
+(<kbd>C-x h</kbd>), do activate the region.
+</p><p>When <code>zmacs-regions</code> is <code>t</code>, there is no distinction between
+the primary X selection and the active region selected by point and the
+mark.  To see this, set the mark (<kbd>C-SPC</kbd>) and move the cursor
+with any cursor-motion command: the region between point and mark is
+highlighted, and you can watch it grow and shrink as you move the
+cursor.
+</p><p>Any other commands besides cursor-motion commands (such as inserting or
+deleting text) will cause the region to no longer be active; it will no
+longer be highlighted, and will no longer be the primary selection.
+Region can be explicitly deactivated with <kbd>C-g</kbd>.
+</p><p>Commands that require a region (such as <kbd>C-w</kbd>) signal an error if
+the region is not active.  Certain commands cause the region to be in
+its active state.  The most common ones are <code>push-mark</code>
+(<kbd>C-SPC</kbd>) and <code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>).
+</p><a name="IDX342"></a>
+<p>When <code>zmacs-regions</code> is <code>t</code>, programs can be non-intrusive
+on the state of the region by setting the variable <code>zmacs-region-stays</code>
+to a non-<code>nil</code> value.  If you are writing a new Emacs command that
+is conceptually a &quot;motion&quot; command and should not interfere with the
+current highlightedness of the region, then you may set this variable.
+It is reset to <code>nil</code> after each user command is executed.
+</p><a name="IDX343"></a>
+<p>When <code>zmacs-regions</code> is <code>t</code>, programs can make the region between
+point and mark go into the active (highlighted) state by using the
+function <code>zmacs-activate-region</code>. Only a small number of commands
+should ever do this. 
+</p><a name="IDX344"></a>
+<p>When <code>zmacs-regions</code> is <code>t</code>, programs can deactivate the region
+between point and the mark by using <code>zmacs-deactivate-region</code>.
+Note: you should not have to call this function; the command loop calls
+it when appropriate. 
+</p><hr size="6">
+<a name="NOD88"></a>
+<a name="SEC100"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC99" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC101" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC101" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.7 Accumulating Text </h2>
+
+<p>  Usually you copy or move text by killing it and yanking it, but there are
+other ways that are useful for copying one block of text in many places, or
+for copying many scattered blocks of text into one place.
+</p><p>  If you like, you can accumulate blocks of text from scattered
+locations either into a buffer or into a file.  The relevant commands
+are described here.  You can also use Emacs registers for storing and
+accumulating text.  See section <a href="xemacs_13.html#SEC102">Registers</a>.
+</p><dl compact="compact">
+<dt><kbd> M-x append-to-buffer
+</kbd></dt>
+<dd><p>Append region to contents of specified buffer (<code>append-to-buffer</code>).
+</p></dd>
+<dt><kbd> M-x prepend-to-buffer
+</kbd></dt>
+<dd><p>Prepend region to contents of specified buffer.
+</p></dd>
+<dt><kbd> M-x copy-to-buffer
+</kbd></dt>
+<dd><p>Copy region into specified buffer, deleting that buffer's old contents.
+</p></dd>
+<dt><kbd> M-x insert-buffer
+</kbd></dt>
+<dd><p>Insert contents of specified buffer into current buffer at point.
+</p></dd>
+<dt><kbd> M-x append-to-file
+</kbd></dt>
+<dd><p>Append region to the end of the contents of specified file.
+</p></dd>
+</dl>
+
+<p>  To accumulate text into a buffer, use the command <kbd>M-x
+append-to-buffer</kbd>, which inserts a copy of the region into the buffer
+<var>buffername</var>, at the location of point in that buffer.  If there is
+no buffer with the given name, one is created.
+</p><p>  If you append text to a buffer that has been used for editing, the
+copied text goes to the place where point is.  Point in that buffer is
+left at the end of the copied text, so successive uses of
+<code>append-to-buffer</code> accumulate the text in the specified buffer in
+the same order as they were copied.  Strictly speaking, this command does
+not always append to the text already in the buffer; but if this command
+is the only command used to alter a buffer, it does always append to the
+existing text because point is always at the end.
+</p><p>  <kbd>M-x prepend-to-buffer</kbd> is similar to <code>append-to-buffer</code>, but
+point in the other buffer is left before the copied text, so successive
+prependings add text in reverse order.  <kbd>M-x copy-to-buffer</kbd> is
+similar, except that any existing text in the other buffer is deleted,
+so the buffer is left containing just the text newly copied into it.
+</p><p>  You can retrieve the accumulated text from that buffer with <kbd>M-x
+insert-buffer</kbd>, which takes <var>buffername</var> as an argument.  It inserts
+a copy of the text in buffer <var>buffername</var> into the selected buffer.
+You could alternatively select the other buffer for editing, perhaps moving
+text from it by killing or with <code>append-to-buffer</code>.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>, for
+background information on buffers.
+</p><p>  Instead of accumulating text within Emacs in a buffer, you can append
+text directly into a file with <kbd>M-x append-to-file</kbd>, which takes
+<var>file-name</var> as an argument.  It adds the text of the region to the
+end of the specified file.  The file is changed immediately on disk.
+This command is normally used with files that are <i>not</i> being visited
+in Emacs.  Using it on a file that Emacs is visiting can produce
+confusing results, because the file's text inside Emacs does not change
+while the file itself changes.
+</p><hr size="6">
+<a name="NOD89"></a>
+<a name="SEC101"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC100" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC100" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC79" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC101" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 9.8 Rectangles </h2>
+
+<p>  The rectangle commands affect rectangular areas of text: all
+characters between a certain pair of columns, in a certain range of lines.
+Commands are provided to kill rectangles, yank killed rectangles, clear
+them out, or delete them.  Rectangle commands are useful with text in
+multicolumnar formats, like code with comments at the right,
+or for changing text into or out of such formats.
+</p><p>  To specify the rectangle a command should work on, put the mark at one
+corner and point at the opposite corner.  The specified rectangle is
+called the <em>region-rectangle</em> because it is controlled about the
+same way the region is controlled.  Remember that a given
+combination of point and mark values can be interpreted either as
+specifying a region or as specifying a rectangle; it is up to the
+command that uses them to choose the interpretation.
+</p><dl compact="compact">
+<dt><kbd> M-x delete-rectangle
+</kbd></dt>
+<dd><p>Delete the text of the region-rectangle, moving any following text on
+each line leftward to the left edge of the region-rectangle.
+</p></dd>
+<dt><kbd> M-x kill-rectangle
+</kbd></dt>
+<dd><p>Similar, but also save the contents of the region-rectangle as the
+&quot;last killed rectangle&quot;.
+</p></dd>
+<dt><kbd> M-x yank-rectangle
+</kbd></dt>
+<dd><p>Yank the last killed rectangle with its upper left corner at point.
+</p></dd>
+<dt><kbd> M-x open-rectangle
+</kbd></dt>
+<dd><p>Insert blank space to fill the space of the region-rectangle.
+The previous contents of the region-rectangle are pushed rightward.
+</p></dd>
+<dt><kbd> M-x clear-rectangle
+</kbd></dt>
+<dd><p>Clear the region-rectangle by replacing its contents with spaces.
+</p></dd>
+</dl>
+
+<p>  The rectangle operations fall into two classes: commands deleting and
+moving rectangles, and commands for blank rectangles.
+</p><a name="IDX345"></a>
+<a name="IDX346"></a>
+<p>  There are two ways to get rid of the text in a rectangle: you can discard
+the text (delete it) or save it as the &quot;last killed&quot; rectangle.  The
+commands for these two ways are <kbd>M-x delete-rectangle</kbd> and <kbd>M-x
+kill-rectangle</kbd>.  In either case, the portion of each line that falls inside
+the rectangle's boundaries is deleted, causing following text (if any) on
+the line to move left.
+</p><p>  Note that &quot;killing&quot; a rectangle is not killing in the usual sense; the
+rectangle is not stored in the kill ring, but in a special place that
+only records the most recently killed rectangle (that is, does not
+append to a killed rectangle).  Different yank commands
+have to be used and only one rectangle is stored, because yanking
+a rectangle is quite different from yanking linear text and yank-popping
+commands are difficult to make sense of.
+</p><p>  Inserting a rectangle is the opposite of deleting one.  You specify
+where to put the upper left corner by putting point there.  The
+rectangle's first line is inserted at point, the rectangle's second line
+is inserted at a point one line vertically down, and so on.  The number
+of lines affected is determined by the height of the saved rectangle.
+</p><a name="IDX347"></a>
+<p>  To insert the last killed rectangle, type <kbd>M-x yank-rectangle</kbd>.
+This can be used to convert single-column lists into double-column
+lists; kill the second half of the list as a rectangle and then
+yank it beside the first line of the list.
+</p><a name="IDX348"></a>
+<a name="IDX349"></a>
+<p>  There are two commands for working with blank rectangles: <kbd>M-x
+clear-rectangle</kbd> erases existing text, and <kbd>M-x open-rectangle</kbd>
+inserts a blank rectangle.  Clearing a rectangle is equivalent to
+deleting it and then inserting a blank rectangle of the same size.
+</p><p>  Rectangles can also be copied into and out of registers.
+See section <a href="xemacs_13.html#SEC105">Rectangle Registers</a>.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC100" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC101" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

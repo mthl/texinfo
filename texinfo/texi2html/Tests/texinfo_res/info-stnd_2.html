@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Info 4.2: 2. Invoking Info</title>
+
+<meta name="description" content="GNU Info 4.2: 2. Invoking Info">
+<meta name="keywords" content="GNU Info 4.2: 2. Invoking Info">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD3"></a>
+<a name="SEC2"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_1.html#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 2. Invoking Info </h1>
+
+<p>GNU Info accepts several options to control the initial node being
+viewed, and to specify which directories to search for Info files.  Here
+is a template showing an invocation of GNU Info from the shell:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+info [<var>option</var>]... [<var>menu-item</var>...]
+</pre></td></tr></table>
+<p>The program accepts the following options:
+</p><dl compact="compact">
+<dd><p>
+<a name="ANC1"></a>
+</p></dd>
+<dt><code> --apropos=<var>string</var>
+</code></dt>
+<dd><p><a name="IDX1"></a>
+<a name="IDX2"></a>
+<a name="IDX3"></a>
+Specify a string to search in every index of every Info file installed
+on your system.  Info looks up the named <var>string</var> in all the indices
+it can find, prints the results to standard output, and then exits.  If
+you are not sure which Info file explains certain issues, this option is
+your friend.  Note that if your system has a lot of Info files
+installed, searching all of them might take some time.
+</p><p>You can invoke the apropos command from inside Info; see
+<a href="info-stnd_6.html#SEC6">Searching an Info File</a>.
+</p><a name="IDX4"></a>
+</dd>
+<dt><code> --directory <var>directory-path</var>
+</code></dt>
+<dt><code> -d <var>directory-path</var>
+</code></dt>
+<dd><p>Prepend <var>directory-path</var> to the list of directory paths searched
+when Info needs to find a file.  You may issue <code>--directory</code>
+multiple times; once for each directory which contains Info files.  The
+list of directories searched by Info is constructed from the value of
+the environment variable <code>INFOPATH</code>; <code>--directory</code> causes the
+named <var>directory-path</var> to be prepended to that list.  The value of
+<code>INFOPATH</code> is a list of directories usually separated by a colon;
+on MS-DOS/MS-Windows systems, the semicolon is used.  If you do not
+define <code>INFOPATH</code>, Info uses a default path defined when Info was
+built as the initial list of directories.  If the value of
+<code>INFOPATH</code> ends with a colon (or semicolon on MS-DOS/MS-Windows),
+the initial list of directories is constructed by appending the
+build-time default to the value of <code>INFOPATH</code>.
+</p><a name="IDX5"></a>
+<a name="IDX6"></a>
+</dd>
+<dt><code> --dribble=<var>dribble-file</var>
+</code></dt>
+<dd><p>Specify a file where all user keystrokes will be recorded.  This file
+can be used later to replay the same sequence of commands, see the
+`<samp>--restore</samp>' option below.
+</p></dd>
+<dt><code> --file <var>filename</var>
+</code></dt>
+<dt><code> -f <var>filename</var>
+</code></dt>
+<dd><p><a name="IDX7"></a>
+Specify a particular Info file to visit.  By default, Info visits
+the file <code>dir</code>; if you use this option, Info will start with
+<code>(<var>filename</var>)Top</code> as the first file and node.
+</p><a name="IDX8"></a>
+<a name="IDX9"></a>
+<a name="IDX10"></a>
+<p>If <var>filename</var> is an absolute file name, or begins with `<tt>./</tt>' or
+`<tt>../</tt>', Info looks for <var>filename</var> only in the directory of the
+specified <var>filename</var>, and adds the directory of <var>filename</var> to
+the value of <code>INFOPATH</code>.  In contrast, if <var>filename</var> is in the
+form of a relative file name, but without the `<tt>./</tt>' or `<tt>../</tt>'
+prefix, Info will only look for it in the directories specified in
+<code>INFOPATH</code>.  In other words, Info does <em>not</em> treat file names
+which lack `<tt>./</tt>' and `<tt>../</tt>' prefix as relative to the current
+directory.
+</p><a name="IDX11"></a>
+<a name="IDX12"></a>
+<a name="IDX13"></a>
+<p>In every directory Info tries, if <var>filename</var> is not found, Info
+looks for it with a number of known extensions of Info files<a name="DOCF1" href="info-stnd_fot.html#FOOT1">(1)</a>.  For every
+known extension, Info looks for a compressed file, if a regular file
+isn't found.  Info supports files compressed with <code>gzip</code>,
+<code>bzip2</code>, <code>compress</code> and <code>yabba</code> programs; it calls
+<code>gunzip</code>, <code>bunzip2</code>, <code>uncompress</code> and <code>unyabba</code>,
+accordingly, to decompress such files.  Compressed Info files are
+assumed to have `<tt>.z</tt>', `<tt>.gz</tt>', `<tt>.bz2</tt>', `<tt>.Z</tt>', or
+`<tt>.Y</tt>' extensions, possibly in addition to one of the known Info
+files extensions<a name="DOCF2" href="info-stnd_fot.html#FOOT2">(2)</a>.
+</p></dd>
+<dt><code> --help
+</code></dt>
+<dt><code> -h
+</code></dt>
+<dd><p>Produces a relatively brief description of the available Info options.
+</p></dd>
+<dt><code> --index-search <var>string</var>
+</code></dt>
+<dd><p><a name="IDX14"></a>
+<a name="IDX15"></a>
+After processing all command-line arguments, go to the index in the Info
+file and search for index entries which matche <var>string</var>.  If such an
+entry is found, the Info session begins with displaying the node pointed
+to by the first matching index entry; press <kbd>,</kbd> to step through the
+rest of the matching entries.  If no such entry exists, print `<samp>no
+entries found</samp>' and exit with nonzero status.  This can be used from
+another program as a way to provide online help, or as a quick way of
+starting to read an Info file at a certain node when you don't know the
+exact name of that node.
+</p><p>This command can also be invoked from inside Info; see <a href="info-stnd_6.html#SEC6">Searching an Info File</a>.
+</p></dd>
+<dt><code> --node <var>nodename</var>
+</code></dt>
+<dt><code> -n <var>nodename</var>
+</code></dt>
+<dd><p><a name="IDX16"></a>
+Specify a particular node to visit in the initial file that Info
+loads.  This is especially useful in conjunction with
+<code>--file</code><a name="DOCF3" href="info-stnd_fot.html#FOOT3">(3)</a>.  You may specify <code>--node</code> multiple times; for
+an interactive Info, each <var>nodename</var> is visited in its own window,
+for a non-interactive Info (such as when <code>--output</code> is given) each
+<var>nodename</var> is processed sequentially.
+</p></dd>
+<dt><code> --output <var>filename</var>
+</code></dt>
+<dt><code> -o <var>filename</var>
+</code></dt>
+<dd><p><a name="IDX17"></a>
+<a name="IDX18"></a>
+Specify <var>filename</var> as the name of a file to which to direct output.
+Each node that Info visits will be output to <var>filename</var> instead of
+interactively viewed.  A value of <code>-</code> for <var>filename</var> specifies
+the standard output.
+</p><a name="IDX19"></a>
+<a name="IDX20"></a>
+</dd>
+<dt><code> --raw-escapes
+</code></dt>
+<dt><code> -R
+</code></dt>
+<dd><p>Do not remove ANSI escape sequences from man pages.  Some versions of
+Groff, the GNU document formatter, produce man pages with ANSI escape
+sequences for bold, italics, and underlined characters, and for
+colorized text.  By default, Info removes those escape sequences
+before it displays the man page.  If your terminal supports these
+escapes, use <code>--raw-escapes</code> to let the terminal handle them and
+display the man pages with those attributes.
+</p><a name="IDX21"></a>
+</dd>
+<dt><code> --restore=<var>dribble-file</var>
+</code></dt>
+<dd><p>Read keystrokes from <var>dribble-file</var>, presumably recorded during
+previous Info session (see the description of the `<samp>--dribble</samp>'
+option above).  When the keystrokes in the files are all read, Info
+reverts its input to the usual interactive operation.
+</p><p><a name="ANC2"></a>
+<a name="IDX22"></a>
+<a name="IDX23"></a>
+</p></dd>
+<dt><code> --show-options
+</code></dt>
+<dt><code> --usage
+</code></dt>
+<dt><code> -O
+</code></dt>
+<dd><p>This option causes Info to look for the node that describes how to
+invoke the program and its command-line options, and begin the session
+by displaying that node.  It is provided to make it easier to find the
+most important usage information in a manual without the need to wade
+through complex menu hierarchies.  The effect is similar to the
+<code>M-x goto-invocation</code> command (see <a href="info-stnd_5.html#ANC6">goto-invocation</a>) from inside
+Info.
+</p><a name="IDX24"></a>
+</dd>
+<dt><code> --speech-friendly
+</code></dt>
+<dt><code> -b
+</code></dt>
+<dd><p>On MS-DOS/MS-Windows only, this option causes Info to use standard file
+I/O functions for screen writes.  (By default, Info uses direct writes
+to the video memory on these systems, for faster operation and colored
+display support.)  This allows the speech synthesizers used by blind
+persons to catch the output and convert it to audible speech.
+</p></dd>
+<dt><code> --subnodes
+</code></dt>
+<dd><p><a name="IDX25"></a>
+This option only has meaning when given in conjunction with
+<code>--output</code>.  It means to recursively output the nodes appearing in
+the menus of each node being output.  Menu items which resolve to
+external Info files are not output, and neither are menu items which are
+members of an index.  Each node is only output once.
+</p></dd>
+<dt><code> --version
+</code></dt>
+<dd><p><a name="IDX26"></a>
+Prints the version information of Info and exits.
+</p><p><a name="ANC3"></a>
+<a name="IDX27"></a>
+<a name="IDX28"></a>
+</p></dd>
+<dt><code> --vi-keys
+</code></dt>
+<dd><p>This option binds functions to keys differently, to emulate the key
+bindings of <code>vi</code> and Less.  The default key bindings are generally
+modeled after Emacs.
+(See section <a href="info-stnd_12.html#SEC17">Customizing Key Bindings and Variables</a>,
+for a more general way of altering GNU Info's key bindings.)
+</p></dd>
+<dt><code> <var>menu-item</var>
+</code></dt>
+<dd><p><a name="IDX29"></a>
+<a name="ANC4"></a>
+Info treats its remaining arguments as the names of menu items.  The
+first argument is a menu item in the initial node visited (generally
+<code>dir</code>), the second argument is a menu item in the first argument's
+node, etc.  You can easily move to the node of your choice by specifying
+the menu names which describe the path to that node.  For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+info emacs buffers
+</pre></td></tr></table>
+<p>first selects the menu item `<samp>Emacs</samp>' in the node `<samp>(dir)Top</samp>',
+and then selects the menu item `<samp>Buffers</samp>' in the node
+`<samp>(emacs)Top</samp>'.
+</p></dd>
+</dl>
+
+<p>To avoid searching the `<tt>dir</tt>' files and just show some arbitrary
+file, use `<samp>-f</samp>' and the filename, as in `<samp>info -f ./foo.info</samp>'.
+</p><p>The index search and the search for the node which describes program
+invocation and command-line options begins <em>after</em> processing all
+the command-line menu items.  Therefore, the Info file searched for the
+index or the invocation node is the file where Info finds itself after
+following all the menu items given on the command line.  This is so
+`<samp>info emacs --show-options</samp>' does what you'd expect.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

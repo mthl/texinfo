@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Info 4.2: 4. Moving Text Within a Window</title>
+
+<meta name="description" content="GNU Info 4.2: 4. Moving Text Within a Window">
+<meta name="keywords" content="GNU Info 4.2: 4. Moving Text Within a Window">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD5"></a>
+<a name="SEC4"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_5.html#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_5.html#SEC5" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 4. Moving Text Within a Window </h1>
+
+<p>Sometimes you are looking at a screenful of text, and only part of the
+current paragraph you are reading is visible on the screen.  The
+commands detailed in this section are used to shift which part of the
+current node is visible on the screen.
+</p><p>Scrolling commands are bound differently when `<samp>--vi-keys</samp>' operation
+(see <a href="info-stnd_2.html#ANC3">--vi-keys</a>) is in effect.  These key bindings are designated
+with &quot;vi-like operation&quot;.
+</p><dl compact="compact">
+<dt> <kbd>SPC</kbd> (<code>scroll-forward</code>)
+</dt>
+<dd><p><a name="IDX65"></a>
+<a name="IDX66"></a>
+Shift the text in this window up.  That is, show more of the node which
+is currently below the bottom of the window.  With a numeric argument,
+show that many more lines at the bottom of the window; a numeric
+argument of 4 would shift all of the text in the window up 4 lines
+(discarding the top 4 lines), and show you four new lines at the bottom
+of the window.  Without a numeric argument, <kbd>SPC</kbd> takes the bottom
+two lines of the window and places them at the top of the window,
+redisplaying almost a completely new screenful of lines.  If you are at
+the end of a node, <kbd>SPC</kbd> takes you to the &quot;next&quot; node, so that you can
+read an entire manual from start to finish by repeating <kbd>SPC</kbd>.
+</p><p>The default scroll size is one screen-full, but it can be changed by
+invoking the (<code>scroll-forward-page-only-set-window</code>) command,
+`<samp>z</samp>' under `<samp>--vi-keys</samp>', with a numeric argument.
+</p></dd>
+<dt> <kbd>NEXT</kbd> (an arrow key) (<code>scroll-forward-page-only</code>)
+</dt>
+<dt> <kbd>C-v</kbd>
+</dt>
+<dt> <kbd>C-f</kbd>, vi-like operation
+</dt>
+<dt> <kbd>f</kbd>, vi-like operation
+</dt>
+<dt> <kbd>M-SPC</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX67"></a>
+<a name="IDX68"></a>
+<a name="IDX69"></a>
+<a name="IDX70"></a>
+<a name="IDX71"></a>
+<a name="IDX72"></a>
+Shift the text in this window up.  This is identical to the <kbd>SPC</kbd>
+operation above, except that it never scrolls beyond the end of the
+current node.
+</p><a name="IDX73"></a>
+<p>The <kbd>NEXT</kbd> key is known as the <kbd>PageDown</kbd> key on some
+keyboards.
+</p></dd>
+<dt> <kbd>z</kbd> (<code>scroll-forward-page-only-set-window</code>, vi-like operation)
+</dt>
+<dd><p><a name="IDX74"></a>
+<a name="IDX75"></a>
+Scroll forward, like with <kbd>NEXT</kbd>, but if a numeric argument is
+specified, it becomes the default scroll size for subsequent
+<code>scroll-forward</code> and <code>scroll-backward</code> commands and their
+ilk.
+</p></dd>
+<dt> <kbd>DEL</kbd> (<code>scroll-backward</code>)
+</dt>
+<dd><p><a name="IDX76"></a>
+<a name="IDX77"></a>
+Shift the text in this window down.  The inverse of
+<code>scroll-forward</code>.
+If you are at the start of a node, <kbd>DEL</kbd> takes you to the
+&quot;previous&quot; node, so that you can read an entire manual from finish to
+start by repeating <kbd>DEL</kbd>.  The default scroll size can be changed by
+invoking the (<code>scroll-backward-page-only-set-window</code>) command,
+`<samp>w</samp>' under `<samp>--vi-keys</samp>', with a numeric argument.
+</p></dd>
+<dt> <kbd>PREVIOUS</kbd> (arrow key) (<code>scroll-backward-page-only</code>)
+</dt>
+<dt> <kbd>PRIOR</kbd> (arrow key)
+</dt>
+<dt> <kbd>M-v</kbd>
+</dt>
+<dt> <kbd>b</kbd>, vi-like operation
+</dt>
+<dt> <kbd>C-b</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX78"></a>
+<a name="IDX79"></a>
+<a name="IDX80"></a>
+<a name="IDX81"></a>
+<a name="IDX82"></a>
+Shift the text in this window down.  The inverse of
+<code>scroll-forward-page-only</code>.  Does not scroll beyond the start of
+the current node.  The default scroll size can be changed by invoking
+the(<code>scroll-backward-page-only-set-window</code>) command, `<samp>w</samp>' under
+`<samp>--vi-keys</samp>', with a numeric argument.
+</p></dd>
+<dt> <kbd>w</kbd> (<code>scroll-backward-page-only-set-window</code>, vi-like operation)
+</dt>
+<dd><p><a name="IDX83"></a>
+<a name="IDX84"></a>
+Scroll backward, like with <kbd>PREVIOUS</kbd>, but if a numeric argument is
+specified, it becomes the default scroll size for subsequent
+<code>scroll-forward</code> and <code>scroll-backward</code> commands.
+</p></dd>
+<dt> <kbd>C-n</kbd> (<code>down-line</code>, vi-like operation)
+</dt>
+<dt> <kbd>C-e</kbd>, vi-like operation
+</dt>
+<dt> <kbd>RET</kbd>, vi-like operation
+</dt>
+<dt> <kbd>LFD</kbd>, vi-like operation
+</dt>
+<dt> <kbd>DOWN</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX85"></a>
+<a name="IDX86"></a>
+<a name="IDX87"></a>
+<a name="IDX88"></a>
+<a name="IDX89"></a>
+<a name="IDX90"></a>
+Scroll forward by one line.  With a numeric argument, scroll forward
+that many lines.
+</p></dd>
+<dt> <kbd>C-p</kbd> (<code>up-line</code>, vi-like operation)
+</dt>
+<dt> <kbd>UP</kbd>, vi-like operation
+</dt>
+<dt> <kbd>y</kbd>, vi-like operation
+</dt>
+<dt> <kbd>k</kbd>, vi-like operation
+</dt>
+<dt> <kbd>C-k</kbd>, vi-like operation
+</dt>
+<dt> <kbd>C-y</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX91"></a>
+<a name="IDX92"></a>
+<a name="IDX93"></a>
+<a name="IDX94"></a>
+<a name="IDX95"></a>
+<a name="IDX96"></a>
+<a name="IDX97"></a>
+Scroll backward one line.  With a numeric argument, scroll backward that
+many lines.
+</p></dd>
+<dt> <kbd>d</kbd> (<code>scroll-half-screen-down</code>, vi-like operation)
+</dt>
+<dt> <kbd>C-d</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX98"></a>
+<a name="IDX99"></a>
+<a name="IDX100"></a>
+Scroll forward by half of the screen size.  With a numeric argument,
+scroll that many lines.  If an argument is specified, it becomes the new
+default number of lines to scroll for subsequent `<samp>d</samp>' and `<samp>u</samp>'
+commands.
+</p></dd>
+<dt> <kbd>u</kbd> (<code>scroll-half-screen-up</code>, vi-like operation)
+</dt>
+<dt> <kbd>C-u</kbd>, vi-like operation
+</dt>
+<dd><p><a name="IDX101"></a>
+<a name="IDX102"></a>
+<a name="IDX103"></a>
+Scroll back by half of the screen size.  With a numeric argument,
+scroll that many lines.  If an argument is specified, it becomes the new
+default number of lines to scroll for subsequent `<samp>u</samp>' and `<samp>d</samp>'
+commands.
+</p></dd>
+</dl>
+
+<a name="IDX104"></a>
+<p>The <code>scroll-forward</code> and <code>scroll-backward</code> commands can also
+move forward and backward through the node structure of the file.  If
+you press <kbd>SPC</kbd> while viewing the end of a node, or <kbd>DEL</kbd> while
+viewing the beginning of a node, what happens is controlled by the
+variable <code>scroll-behavior</code>.  See section <a href="info-stnd_11.html#SEC16"><code>scroll-behavior</code></a>, for more information.
+</p><p>The <code>scroll-forward-page-only</code> and <code>scroll-backward-page-only</code>
+commands never scroll beyond the current node.
+</p><a name="IDX105"></a>
+<p>The <kbd>PREVIOUS</kbd> key is the <kbd>PageUp</kbd> key on many keyboards.  Emacs
+refers to it by the name <kbd>PRIOR</kbd>.  When you use <kbd>PRIOR</kbd> or
+<kbd>PageUp</kbd> to scroll, Info never scrolls beyond the beginning of the
+current node.
+</p><a name="IDX106"></a>
+<p>If your keyboard lacks the <kbd>DEL</kbd> key, look for a key called
+<kbd>BS</kbd>, or `<samp>BackSpace</samp>', sometimes designated with an arrow which
+points to the left, which should perform the same function.
+</p><dl compact="compact">
+<dt> <kbd>C-l</kbd> (<code>redraw-display</code>)
+</dt>
+<dd><p><a name="IDX107"></a>
+<a name="IDX108"></a>
+Redraw the display from scratch, or shift the line containing the cursor
+to a specified location.  With no numeric argument, `<samp>C-l</samp>' clears
+the screen, and then redraws its entire contents.  Given a numeric
+argument of <var>n</var>, the line containing the cursor is shifted so that
+it is on the <var>n</var>th line of the window.
+</p></dd>
+<dt> <kbd>C-x <kbd>w</kbd></kbd> (<code>toggle-wrap</code>)
+</dt>
+<dd><p><a name="IDX109"></a>
+<a name="IDX110"></a>
+Toggles the state of line wrapping in the current window.  Normally,
+lines which are longer than the screen width <em>wrap</em>, i.e., they are
+continued on the next line.  Lines which wrap have a `<samp>\</samp>' appearing
+in the rightmost column of the screen.  You can cause such lines to be
+terminated at the rightmost column by changing the state of line
+wrapping in the window with <code>C-x w</code>.  When a line which needs more
+space than one screen width to display is displayed, a `<samp>$</samp>' appears
+in the rightmost column of the screen, and the remainder of the line is
+invisible.  When long lines are truncated, the modeline displays the
+`<samp>$</samp>' character near its left edge.
+</p></dd>
+</dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_5.html#SEC5" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

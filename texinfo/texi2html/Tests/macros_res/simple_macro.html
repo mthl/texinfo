@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>Untitled Document: </title>
+
+<meta name="description" content="Untitled Document: ">
+<meta name="keywords" content="Untitled Document: ">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD1"></a>
+<a name="SEC_Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>Untitled Document</h1>
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
+</table>
+
+<hr size="1">
+<a name="NOD2"></a>
+<a name="SEC1"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[ &lt;&lt; ]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 1. first node chapter </h1>
+
+<p>Define a  simple macro
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro macro1 {arg1, arg2 }
+result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
+@end macro
+</pre></td></tr></table>
+<p>before macro after end macro
+</p><p>Calling (normal)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+the @macro1 { @samp{f\irst arg}, second arg } after macro
+</pre></td></tr></table><p>==================================
+</p><p>the result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg </em>
+ after macro
+</p><p>------------------------
+</p><p>the result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg </em>
+after macro
+</p><p>====================================
+</p><p>Calling (one arg)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro1 { @samp{f\irst arg}}
+</pre></td></tr></table><p>==================================
+</p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em></em>
+</p><p>------------------------
+</p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em></em>
+</p><p>====================================
+</p><p>Calling (no args)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro1 @samp{f\irst arg}, second arg
+</pre></td></tr></table><p>==================================
+</p><p>result: <em></em> protected \ -&gt; \arg1\ <em></em>
+ `<samp>f\irst arg</samp>', second arg
+</p><p>------------------------
+</p><p>result: <em></em> protected \ -&gt; \arg1\ <em></em> 
+`<samp>f\irst arg</samp>', second arg
+</p><p>====================================
+</p><p>Calling (three args)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro1 { @samp{f\irst arg}, second arg, third arg}
+</pre></td></tr></table><p>==================================
+</p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg</em>
+</p><p>------------------------
+</p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg</em>
+</p><p>====================================
+</p><p>define a macro with one arg
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro macro2 { arg }
+we get \arg\ and another \arg\
+and a last one on another line \arg\
+
+and a last in another paragraph
+@end macro
+</pre></td></tr></table>
+<p>Calling
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro2 { arg, comma \, }
+</pre></td></tr></table><p>==================================
+</p><p>we get arg, comma ,  and another arg, comma , 
+and another one on another line arg, comma , 
+</p><p>and a last in another paragraph
+</p><p>------------------------
+</p><p>we get arg, comma , and another arg, comma ,
+and another one another line arg, comma ,
+</p><p>and a last in another paragraph
+</p><p>==================================
+</p><p>Calling
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro2  arg,  comma \, 
+</pre></td></tr></table><p>==================================
+</p><p>we get   arg,  comma \, and another   arg,  comma \,
+and another one on another line   arg,  comma \,
+</p><p>and a last in another paragraph
+</p><p>------------------------
+</p><p>we get arg, comma \, and another arg, comma \,
+and another one on another line arg, comma \,
+</p><p>and a last in another paragraph
+</p><p>==================================
+</p><p>now @set comma ,  
+</p><p>@set flagab @ab 
+</p><p>the values:
+</p><p>======================================
+</p><p>flagab: a
+</p><p>b
+</p><p>--------------------------
+</p><p>makeinfo result (the macro in set is expanded and all the resulting lines
+are replaced):
+</p><p>flagab: a
+</p><p>b
+</p><p>======================================
+</p><p>comma: ,
+</p><p>Calling macro1 with value
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro1 { arg1 @value{comma} arg2 }
+</pre></td></tr></table><p>=======================================
+</p><p>result: <em>arg1 , arg2 </em> protected \ -&gt; \arg1\ <em></em>
+</p><p>--------------------------
+</p><p>makeinfo result (the comma don't separate args ; the value is expanded after
+arguments parsing):
+</p><p>result: <em>arg1 , arg2 </em> protected \ -&gt; \arg1\ <em></em>
+</p><p>=======================================
+</p><p>In verbatim
+</p><pre> 
+comma: @value{comma}
+@macro1{ bidule, truc}
+</pre>
+
+<p>Define macro
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro testvaluebody { arg }
+result: @emph{\@value{bodyarg}\  } 
+@end macro
+</pre></td></tr></table>
+<p>==================================
+</p><p>result: <em>\\arg\   </em>
+</p><p>-----------------------
+</p><p>makeinfo result (according to error message, the value isn't expanded
+when the body is expanded; it is kept, but the second \ isn't):
+</p><p>result: <em>\\arg\  </em>
+</p><p>==================================
+</p><p>Define macro
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+@macro testvalue { arg , the@value{argument} }
+result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
+@end macro
+</pre></td></tr></table>
+<p>==================================
+</p><p>result: <em>macro_arg1</em> the \the thearg \thearg with value \thearg 
+</p><p>-----------------------
+</p><p>makeinfo (breaks) result:
+</p><p>result: <em>macro_arg1</em> the \the thearg \thearg with value \thearg
+</p><p>==================================
+</p><hr size="6">
+<a name="SEC_Contents"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>Table of Contents</h1>
+
+<ul style="list-style: none">
+  <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
+</ul>
+<hr size="1">
+<a name="SEC_About"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>About This Document</h1>
+<p>
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+</p>
+<p>
+  The buttons in the navigation panels have the following meaning:
+</p>
+<table border="1">
+  <tr>
+    <th> Button </th>
+    <th> Name </th>
+    <th> Go to </th>
+    <th> From 1.2.3 go to</th>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>next section in reading order</td>
+    <td>1.2.4</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt;&lt; ] </td>
+    <td align="center">FastBack</td>
+    <td>beginning of this chapter or previous chapter</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td align="center"> [ Up ] </td>
+    <td align="center">Up</td>
+    <td>up section</td>
+    <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt;&gt; ] </td>
+    <td align="center">FastForward</td>
+    <td>next chapter</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td align="center"> [Top] </td>
+    <td align="center">Top</td>
+    <td>cover (top) of document</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Contents] </td>
+    <td align="center">Contents</td>
+    <td>table of contents</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Index] </td>
+    <td align="center">Index</td>
+    <td>concept index</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [ ? ] </td>
+    <td align="center">About</td>
+    <td>about (this page)</td>
+    <td> &nbsp; </td>
+  </tr>
+</table>
+
+<p>
+  where the <strong> Example </strong> assumes that the current position
+  is at <strong> Subsubsection One-Two-Three </strong> of a document of
+  the following structure:
+</p>
+
+<ul>
+  <li> 1. Section One
+    <ul>
+      <li>1.1 Subsection One-One
+        <ul>
+          <li>...</li>
+        </ul>
+      <li>1.2 Subsection One-Two
+        <ul>
+          <li>1.2.1 Subsubsection One-Two-One</li>
+          <li>1.2.2 Subsubsection One-Two-Two</li>
+          <li>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
+            <strong>&lt;== Current Position </strong></li>
+          <li>1.2.4 Subsubsection One-Two-Four</li>
+        </ul>
+      </li>
+      <li>1.3 Subsection One-Three
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.4 Subsection One-Four</li>
+    </ul>
+  </li>
+</ul>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

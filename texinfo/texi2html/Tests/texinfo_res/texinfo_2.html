@@ -1,0 +1,894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 1. Overview of Texinfo</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 1. Overview of Texinfo">
+<meta name="keywords" content="GNU Texinfo 4.2: 1. Overview of Texinfo">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD3"></a>
+<a name="SEC2"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_1.html#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 1. Overview of Texinfo </h1>
+
+<p><em>Texinfo</em><a name="DOCF1" href="texinfo_fot.html#FOOT1">(1)</a>  is a documentation system that uses a single
+source file to produce both online information and printed output.  This
+means that instead of writing two different documents, one for the
+online information and the other for a printed work, you need write only
+one document.  Therefore, when the work is revised, you need revise only
+that one document.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC3">1.1 Reporting Bugs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Submitting effective bug reports.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC4">1.2 Using Texinfo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Create printed or online output.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC5">1.3 Info files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What is an Info file?</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC6">1.4 Printed Books</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Characteristics of a printed book or manual.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC7">1.5 @-commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">@-commands are used for formatting.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC8">1.6 General Syntactic Conventions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">General rules for writing a Texinfo file.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC9">1.7 Comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing comments and ignored text in general.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC10">1.8 What a Texinfo File Must Have</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a Texinfo file must have.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC11">1.9 Six Parts of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Usually, a Texinfo file has six parts.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC12">1.10 A Short Sample Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A short sample Texinfo file.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC20">1.11 History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Acknowledgements, contributors and genesis.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD4"></a>
+<a name="SEC3"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.1 Reporting Bugs </h2>
+
+<p>We welcome bug reports and suggestions for any aspect of the Texinfo system,
+programs, documentation, installation, anything.  Please email them to
+<a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>.  You can get the latest version of Texinfo
+from <a href="ftp://ftp.gnu.org/gnu/texinfo/">ftp://ftp.gnu.org/gnu/texinfo/</a> and its mirrors worldwide.
+</p><a name="IDX1"></a>
+<p>For bug reports, please include enough information for the maintainers
+to reproduce the problem.  Generally speaking, that means:
+</p><ul>
+<li><p> the version number of Texinfo and the program(s) or manual(s) involved.
+</p></li><li><p> hardware and operating system names and versions.
+</p></li><li><p> the contents of any input files necessary to reproduce the bug.
+</p></li><li><p> a description of the problem and samples of any erroneous output.
+</p></li><li><p> any unusual options you gave to <code>configure</code>.
+</p></li><li><p> anything else that you think would be helpful.
+</p></li></ul>
+
+<p>When in doubt whether something is needed or not, include it.  It's
+better to include too much than to leave out something important.
+</p><a name="IDX2"></a>
+<p>Patches are most welcome; if possible, please make them with
+`<samp>diff -c</samp>' (see section `Overview' in <cite>Comparing and Merging Files</cite>) and include `<tt>ChangeLog</tt>' entries (see section `Change Log' in <cite>The GNU Emacs Manual</cite>).
+</p><p>When sending patches, if possible please do not encode or split them in
+any way; it's much easier to deal with one plain text message, however
+large, than many small ones.  <a href="ftp://ftp.gnu.org/gnu/sharutils/">GNU shar</a> is a convenient way of packaging multiple and/or binary files
+for email.
+</p><hr size="6">
+<a name="NOD5"></a>
+<a name="SEC4"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.2 Using Texinfo </h2>
+
+<p>Using Texinfo, you can create a printed document with the normal
+features of a book, including chapters, sections, cross references, and
+indices.  From the same Texinfo source file, you can create a
+menu-driven, online Info file with nodes, menus, cross references, and
+indices.  You can also create from that same source file an HTML output
+file suitable for use with a web browser, or an XML file.  <cite>The GNU
+Emacs Manual</cite> is a good example of a Texinfo file, as is this manual.
+</p><p>To make a printed document, you process a Texinfo source file with the
+TeX typesetting program (but the Texinfo language is very different
+and much stricter than TeX's usual language, plain TeX).  This
+creates a DVI file that you can typeset and print as a book or report
+(see section <a href="texinfo_20.html#SEC244">Formatting and Printing Hardcopy</a>).
+</p><a name="IDX3"></a>
+<p>To output an Info file, process your Texinfo source with the
+<code>makeinfo</code> utility or Emacs's <code>texinfo-format-buffer</code> command.
+You can install the result in your Info tree (see section <a href="texinfo_21.html#SEC271">Installing an Info File</a>).
+</p><p>To output an HTML file, run <code>makeinfo --html</code> on your Texinfo
+source.  You can (for example) install the result on your web site.
+</p><a name="IDX4"></a>
+<a name="IDX5"></a>
+<p>To output an XML file, run <code>makeinfo --xml</code> on your Texinfo source.
+To output DocBook (a particular form of XML), run <code>makeinfo
+--docbook</code>.  If you want to convert from Docbook <em>to</em> Texinfo,
+please see <a href="http://docbook2X.sourceforge.net/">http://docbook2X.sourceforge.net/</a>.
+</p><a name="IDX6"></a>
+<a name="IDX7"></a>
+<p>If you are a programmer and would like to contribute to the GNU project
+by implementing additional output formats for Texinfo, that would be
+excellent.  But please do not write a separate translator texi2foo for
+your favorite format foo!  That is the hard way to do the job, and makes
+extra work in subsequent maintenance, since the Texinfo language is
+continually being enhanced and updated.  Instead, the best approach is
+modify <code>makeinfo</code> to generate the new format, as it does now for
+Info, plain text, HTML, XML, and DocBook.
+</p><p>TeX works with virtually all printers; Info works with virtually all
+computer terminals; the HTML output works with virtually all web
+browsers.  Thus Texinfo can be used by almost any computer user.
+</p><a name="IDX8"></a>
+<p>A Texinfo source file is a plain <small>ASCII</small> file containing text and
+<em>@-commands</em> (words preceded by an `<samp>@</samp>') that tell the
+typesetting and formatting programs what to do.  You may edit a Texinfo
+file with any text editor; but it is especially convenient to use GNU
+Emacs since that editor has a special mode, called Texinfo mode, that
+provides various Texinfo-related features.  (See section <a href="texinfo_3.html#SEC21">Using Texinfo Mode</a>.)
+</p><p>Before writing a Texinfo source file, you should learn about nodes,
+menus, cross references, and the rest, for example by reading this
+manual.
+</p><p>You can use Texinfo to create both online help and printed manuals;
+moreover, Texinfo is freely redistributable.  For these reasons, Texinfo
+is the official documentation format of the GNU project.  More
+information is available at the <a href="http://www.gnu.org/doc/">GNU
+documentation web page</a>.
+</p><a name="IDX9"></a>
+<p>From time to time, proposals are made to generate traditional Unix man
+pages from Texinfo source.  This is not likely to ever be supported,
+because man pages have a very strict conventional format.  Merely
+enhancing <code>makeinfo</code> to output troff format would be
+insufficient.  Generating a good man page therefore requires a
+completely different source than the typical Texinfo applications of
+writing a good user tutorial or a good reference manual.  This makes
+generating man pages incompatible with the Texinfo design goal of not
+having to document the same information in different ways for different
+output formats.  You might as well just write the man page directly.
+</p><a name="IDX10"></a>
+<a name="IDX11"></a>
+<p>Man pages still have their place, and if you wish to support them, the
+program <code>help2man</code> may be useful; it generates a traditional man
+page from the `<samp>--help</samp>' output of a program.  In fact, this is
+currently used to generate man pages for the Texinfo programs
+themselves.  It is GNU software written by Brendan O'Dea, available from
+<a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
+</p><hr size="6">
+<a name="NOD6"></a>
+<a name="SEC5"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.3 Info files </h2>
+
+<p>An Info file is a Texinfo file formatted so that the Info documentation
+reading program can operate on it.  (<code>makeinfo</code>
+and <code>texinfo-format-buffer</code> are two commands that convert a Texinfo file
+into an Info file.)
+</p><p>Info files are divided into pieces called <em>nodes</em>, each of which
+contains the discussion of one topic.  Each node has a name, and
+contains both text for the user to read and pointers to other nodes,
+which are identified by their names.  The Info program displays one node
+at a time, and provides commands with which the user can move to other
+related nodes.
+</p><p>See Info `info', node `Top', for more information about using Info.
+</p><p>Each node of an Info file may have any number of child nodes that
+describe subtopics of the node's topic.  The names of child
+nodes are listed in a <em>menu</em> within the parent node; this
+allows you to use certain Info commands to move to one of the child
+nodes.  Generally, an Info file is organized like a book.  If a node
+is at the logical level of a chapter, its child nodes are at the level
+of sections; likewise, the child nodes of sections are at the level
+of subsections.
+</p><p>All the children of any one parent are linked together in a
+bidirectional chain of `Next' and `Previous' pointers.  The `Next'
+pointer provides a link to the next section, and the `Previous' pointer
+provides a link to the previous section.  This means that all the nodes
+that are at the level of sections within a chapter are linked together.
+Normally the order in this chain is the same as the order of the
+children in the parent's menu.  Each child node records the parent node
+name as its `Up' pointer.  The last child has no `Next' pointer, and the
+first child has the parent both as its `Previous' and as its `Up'
+pointer.<a name="DOCF2" href="texinfo_fot.html#FOOT2">(2)</a>
+</p><p>The book-like structuring of an Info file into nodes that correspond
+to chapters, sections, and the like is a matter of convention, not a
+requirement.  The `Up', `Previous', and `Next' pointers of a node can
+point to any other nodes, and a menu can contain any other nodes.
+Thus, the node structure can be any directed graph.  But it is usually
+more comprehensible to follow a structure that corresponds to the
+structure of chapters and sections in a printed book or report.</p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
+provides pointers of another kind, called references, that can be
+sprinkled throughout the text.  This is usually the best way to
+represent links that do not fit a hierarchical structure.</p><p>Usually, you will design a document so that its nodes match the
+structure of chapters and sections in the printed output.  But
+occasionally there are times when this is not right for the material
+being discussed.  Therefore, Texinfo uses separate commands to specify
+the node structure for the Info file and the section structure for the
+printed output.</p><p>Generally, you enter an Info file through a node that by convention is
+named `Top'.  This node normally contains just a brief summary of the
+file's purpose, and a large menu through which the rest of the file is
+reached.  From this node, you can either traverse the file
+systematically by going from node to node, or you can go to a specific
+node listed in the main menu, or you can search the index menus and then
+go directly to the node that has the information you want.  Alternatively,
+with the standalone Info program, you can specify specific menu items on
+the command line (see section `Top' in <cite>Info</cite>).
+</p><p>If you want to read through an Info file in sequence, as if it were a
+printed manual, you can hit <kbd>SPC</kbd> repeatedly, or you get the whole
+file with the advanced Info command <kbd>g *</kbd>.  (See Info `info', node `Expert'.)</p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
+departure point for the whole Info system.  From it, you can reach the
+`Top' nodes of each of the documents in a complete Info system.</p><a name="IDX12"></a>
+<p>If you wish to refer to an Info file in a URI, you can use the
+(unofficial) syntax exemplified in the following.  This works with
+Emacs/W3, for example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+info:///usr/info/emacs#Dissociated%20Press
+info:emacs#Dissociated%20Press
+info://localhost/usr/info/emacs#Dissociated%20Press
+</pre></td></tr></table>
+<p>The <code>info</code> program itself does not follow URI's of any kind.
+</p><hr size="6">
+<a name="NOD7"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.4 Printed Books </h2>
+
+<p>A Texinfo file can be formatted and typeset as a printed book or manual.
+To do this, you need TeX, a powerful, sophisticated typesetting
+program written by Donald Knuth.<a name="DOCF3" href="texinfo_fot.html#FOOT3">(3)</a>
+</p><p>A Texinfo-based book is similar to any other typeset, printed work: it
+can have a title page, copyright page, table of contents, and preface,
+as well as chapters, numbered or unnumbered sections and subsections,
+page headers, cross references, footnotes, and indices.</p><p>You can use Texinfo to write a book without ever having the intention
+of converting it into online information.  You can use Texinfo for
+writing a printed novel, and even to write a printed memo, although
+this latter application is not recommended since electronic mail is so
+much easier.</p><p>TeX is a general purpose typesetting program.  Texinfo provides a
+file `<tt>texinfo.tex</tt>' that contains information (definitions or
+<em>macros</em>) that TeX uses when it typesets a Texinfo file.
+(`<tt>texinfo.tex</tt>' tells TeX how to convert the Texinfo @-commands
+to TeX commands, which TeX can then process to create the typeset
+document.)  `<tt>texinfo.tex</tt>' contains the specifications for printing
+a document.  You can get the latest version of `<tt>texinfo.tex</tt>' from
+<a href="ftp://ftp.gnu.org/gnu/texinfo.tex">ftp://ftp.gnu.org/gnu/texinfo.tex</a>.
+</p><p>In the United States, documents are most often printed on 8.5 inch by 11
+inch pages (216mm by 280mm); this is the default size.  But
+you can also print for 7 inch by 9.25 inch pages (178mm by
+235mm, the <code>@smallbook</code> size; or on A4 or A5 size paper
+(<code>@afourpaper</code>, <code>@afivepaper</code>).  (See section <a href="texinfo_20.html#SEC255">Printing &quot;Small&quot; Books</a>.  Also, see <a href="texinfo_20.html#SEC256">Printing on A4 Paper</a>.)
+</p><p>By changing the parameters in `<tt>texinfo.tex</tt>', you can change the
+size of the printed document.  In addition, you can change the style in
+which the printed document is formatted; for example, you can change the
+sizes and fonts used, the amount of indentation for each paragraph, the
+degree to which words are hyphenated, and the like.  By changing the
+specifications, you can make a book look dignified, old and serious, or
+light-hearted, young and cheery.
+</p><p>TeX is freely distributable.  It is written in a superset of Pascal
+called WEB and can be compiled either in Pascal or (by using a
+conversion program that comes with the TeX distribution) in C.
+(See section `TeX Mode' in <cite>The GNU Emacs Manual</cite>, for information
+about TeX.)</p><p>TeX is very powerful and has a great many features.  Because a
+Texinfo file must be able to present information both on a
+character-only terminal in Info form and in a typeset book, the
+formatting commands that Texinfo supports are necessarily limited.
+</p><p>To get a copy of TeX, see
+<a href="texinfo_30.html#SEC321">How to Obtain TeX</a>.
+</p><hr size="6">
+<a name="NOD8"></a>
+<a name="SEC7"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.5 @-commands </h2>
+
+<p>In a Texinfo file, the commands that tell TeX how to typeset the
+printed manual and tell <code>makeinfo</code> and
+<code>texinfo-format-buffer</code> how to create an Info file are preceded
+by `<samp>@</samp>'; they are called <em>@-commands</em>.  For example,
+<code>@node</code> is the command to indicate a node and <code>@chapter</code>
+is the command to indicate the start of a chapter.</p><blockquote>
+
+<p><strong>Please note:</strong> All the @-commands, with the exception of the
+<code>@TeX{}</code> command, must be written entirely in lower case.
+</p></blockquote>
+
+<p>The Texinfo @-commands are a strictly limited set of constructs.  The
+strict limits make it possible for Texinfo files to be understood both
+by TeX and by the code that converts them into Info files.  You can
+display Info files on any terminal that displays alphabetic and
+numeric characters.  Similarly, you can print the output generated by
+TeX on a wide variety of printers.</p><p>Depending on what they do or what arguments<a name="DOCF4" href="texinfo_fot.html#FOOT4">(4)</a> they take, you
+need to write @-commands on lines of their own or as part of
+sentences:
+</p><ul>
+<li><p>
+Write a command such as <code>@noindent</code> at the beginning of a line as
+the only text on the line.  (<code>@noindent</code> prevents the beginning of
+the next line from being indented as the beginning of a
+paragraph.)</p></li><li><p>
+Write a command such as <code>@chapter</code> at the beginning of a line
+followed by the command's arguments, in this case the chapter title, on
+the rest of the line.  (<code>@chapter</code> creates chapter titles.)</p></li><li><p>
+Write a command such as <code>@dots{}</code> wherever you wish but usually
+within a sentence. (<code>@dots{}</code> creates dots <small>...</small>)</p></li><li><p>
+Write a command such as <code>@code{<var>sample-code</var>}</code> wherever you
+wish (but usually within a sentence) with its argument,
+<var>sample-code</var> in this example, between the braces.  (<code>@code</code>
+marks text as being code.)</p></li><li><p>
+Write a command such as <code>@example</code> on a line of its own; write the
+body-text on following lines; and write the matching <code>@end</code>
+command, <code>@end example</code> in this case, at the on a line of its own
+after the body-text. (<code>@example</code> <small>...</small> <code>@end example</code>
+indents and typesets body-text as an example.)  It's usually ok to
+indent environment commands like this, but in complicated and
+hard-to-define circumstances the extra spaces cause extra space to
+appear in the output, so beware.
+</p></li></ul>
+
+<a name="IDX14"></a>
+<p>As a general rule, a command requires braces if it mingles among other
+text; but it does not need braces if it starts a line of its own.  The
+non-alphabetic commands, such as <code>@:</code>, are exceptions to the rule;
+they do not need braces.</p><p>As you gain experience with Texinfo, you will rapidly learn how to
+write the different commands: the different ways to write commands
+make it easier to write and read Texinfo files than if all commands
+followed exactly the same syntax.  (For details about @-command
+syntax, see <a href="texinfo_29.html#SEC320">@-Command Syntax</a>.)</p><hr size="6">
+<a name="NOD9"></a>
+<a name="SEC8"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.6 General Syntactic Conventions </h2>
+
+<p>This section describes the general conventions used in all Texinfo documents.
+</p><ul>
+<li><p>
+All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
+`<samp>}</samp>' can appear in a Texinfo file and stand for themselves.
+`<samp>@</samp>' is the escape character which introduces commands, while
+`<samp>{</samp>' and `<samp>}</samp>' are used to surround arguments to certain
+commands.  To put one of these special characters into the document, put
+an `<samp>@</samp>' character in front of it, like this: `<samp>@@</samp>',
+`<samp>@{</samp>', and `<samp>@}</samp>'.
+</p></li><li><p>
+It is customary in TeX to use doubled single-quote characters to
+begin and end quotations: <tt>``<small>...</small>''</tt>.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled
+quotation marks, 
+and Info converts doubled single-quote characters to <small>ASCII</small>
+double-quotes: <tt>``<small>...</small>''</tt> becomes <tt>&quot;<small>...</small>&quot;</tt>.
+</p></li><li><p>
+Use three hyphens in a row, `<samp>--</samp>', for a dash--like this.  In
+TeX, a single or double hyphen produces a printed dash that is
+shorter than the usual typeset dash. Info reduces three hyphens to two
+for display on the screen.
+</p></li><li><p>
+To prevent a paragraph from being indented in the printed manual, put
+the command <code>@noindent</code> on a line by itself before the
+paragraph.
+</p></li><li><p>
+If you mark off a region of the Texinfo file with the <code>@iftex</code>
+and <code>@end iftex</code> commands, that region will appear only in
+the printed copy; in that region, you can use certain commands
+borrowed from plain TeX that you cannot use in Info.  Conversely,
+text surrounded by <code>@ifnottex</code> and <code>@end ifnottex</code> will
+appear in all output formats <em>except</em> TeX.
+</p><p>Each of the other output formats (<code>html</code>, <code>info</code>,
+<code>plaintext</code>) have an analogous pair of commands.  See section <a href="texinfo_17.html#SEC227">Conditionally Visible Text</a>.
+</p></li></ul>
+
+<a name="IDX15"></a>
+<blockquote>
+
+<p><strong>Caution:</strong> Do not use tab characters in a Texinfo file (except in
+verbatim modes)!  TeX uses variable-width fonts, which means that it
+is impractical at best to define a tab to work in all circumstances.
+Consequently, TeX treats tabs like single spaces, and that is not
+what they look like.  Furthermore, <code>makeinfo</code> does nothing special
+with tabs, and thus a tab character in your input file may appear
+differently in the output, for example, in indented text.
+</p><p>To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
+spaces when you press the <kbd>TAB</kbd> key.
+</p><p>Also, you can run <code>untabify</code> in Emacs to convert tabs in a region
+to multiple spaces.
+</p></blockquote>
+
+<hr size="6">
+<a name="NOD10"></a>
+<a name="SEC9"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.7 Comments </h2>
+
+<p>You can write comments in a Texinfo file that will not appear in
+either the Info file or the printed manual by using the
+<code>@comment</code> command (which may be abbreviated to <code>@c</code>).
+Such comments are for the person who revises the Texinfo file.  All the
+text on a line that follows either <code>@comment</code> or <code>@c</code> is a
+comment; the rest of the line does not appear in either the Info file
+or the printed manual.
+</p><p>Often, you can write the <code>@comment</code> or <code>@c</code> in the middle of
+a line, and only the text that follows after the <code>@comment</code> or
+<code>@c</code> command does not appear; but some commands, such as
+<code>@settitle</code> and <code>@setfilename</code>, work on a whole line.  You
+cannot use <code>@comment</code> or <code>@c</code> in a line beginning with such
+a command.
+</p><a name="IDX16"></a>
+<a name="IDX17"></a>
+<a name="IDX18"></a>
+<p>You can write long stretches of text that will not appear in either
+the Info file or the printed manual by using the <code>@ignore</code> and
+<code>@end ignore</code> commands.  Write each of these commands on a line
+of its own, starting each command at the beginning of the line.  Text
+between these two commands does not appear in the processed output.
+You can use <code>@ignore</code> and <code>@end ignore</code> for writing
+comments.
+</p><p>Text enclosed by <code>@ignore</code> or by failing <code>@ifset</code> or
+<code>@ifclear</code> conditions is ignored in the sense that it will not
+contribute to the formatted output.  However, TeX and makeinfo must
+still parse the ignored text, in order to understand when to <em>stop</em>
+ignoring text from the source file; that means that you may still get
+error messages if you have invalid Texinfo commands within ignored text.
+</p><hr size="6">
+<a name="NOD11"></a>
+<a name="SEC10"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.8 What a Texinfo File Must Have </h2>
+
+<p>By convention, the namea of a Texinfo file ends with (in order of
+preference) one of the extensions `<tt>.texinfo</tt>', `<tt>.texi</tt>',
+`<tt>.txi</tt>', or `<tt>.tex</tt>'.  The longer extensions are preferred since
+they describe more clearly to a human reader the nature of the file.
+The shorter extensions are for operating systems that cannot handle long
+file names.
+</p><p>In order to be made into a printed manual and an Info file, a Texinfo
+file <strong>must</strong> begin with lines like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo
+@setfilename <var>info-file-name</var>
+@settitle <var>name-of-manual</var>
+</pre></td></tr></table>
+<p>The contents of the file follow this beginning, and then you
+<strong>must</strong> end a Texinfo file with a line like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@bye
+</pre></td></tr></table>
+<a name="IDX19"></a>
+<p>Here's an explanation:
+</p><ul>
+<li><p>
+The `<samp>\input texinfo</samp>' line tells TeX to use the
+`<tt>texinfo.tex</tt>' file, which tells TeX how to translate the Texinfo
+@-commands into TeX typesetting commands.  (Note the use of the
+backslash, `<samp>\</samp>'; this is correct for TeX.)
+</p></li><li><p>
+The <code>@setfilename</code> line provides a name for the Info file and
+tells TeX to open auxiliary files.  <strong>All text before
+<code>@setfilename</code> is ignored!</strong>
+</p></li><li><p>
+The <code>@settitle</code> line specifies a title for the page headers (or
+footers) of the printed manual, and the default document description for
+the `<samp>&lt;head&gt;</samp>' in HTML format.  Strictly speaking, <code>@settitle</code>
+is optional--if you don't mind your document being titled `Untitled'.
+</p></li><li><p>
+The <code>@bye</code> line at the end of the file on a line of its own tells
+the formatters that the file is ended and to stop formatting.
+</p></li></ul>
+
+<p>Typically, you will not use quite such a spare format, but will include
+mode setting and start-of-header and end-of-header lines at the
+beginning of a Texinfo file, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename <var>info-file-name</var>
+@settitle <var>name-of-manual</var>
+@c %**end of header
+</pre></td></tr></table>
+<p>In the first line, `<samp>-*-texinfo-*-</samp>' causes Emacs to switch into
+Texinfo mode when you edit the file.
+</p><p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
+<code>@settitle</code> lines are optional, but you need them in order to
+run TeX or Info on just part of the file.  (See section <a href="texinfo_4.html#SEC45">Start of Header</a>.)
+</p><p>Furthermore, you will usually provide a Texinfo file with a title page,
+indices, and the like, all of which are explained in this manual.  But
+the minimum, which can be useful for short documents, is just the three
+lines at the beginning and the one line at the end.
+</p><hr size="6">
+<a name="NOD12"></a>
+<a name="SEC11"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.9 Six Parts of a Texinfo File </h2>
+
+<p>Generally, a Texinfo file contains more than the minimal beginning and
+end described in the previous section--it usually contains the six
+parts listed below.  These are described fully in the following sections.
+</p><dl compact="compact">
+<dt> 1. Header
+</dt>
+<dd><p>The <em>Header</em> names the file, tells TeX which definitions file to
+use, and other such housekeeping tasks.
+</p></dd>
+<dt> 2. Summary and Copyright
+</dt>
+<dd><p>The <em>Summary and Copyright</em> segment describes the document and
+contains the copyright notice and copying permissions.  This is done
+with the <code>@copying</code> command.
+</p></dd>
+<dt> 3. Title and Copyright
+</dt>
+<dd><p>The <em>Title and Copyright</em> segment contains the title and copyright
+pages for the printed manual.  The segment must be enclosed between
+<code>@titlepage</code> and <code>@end titlepage</code> commands.  The title and
+copyright page appear only in the printed manual.
+</p></dd>
+<dt> 4. `Top' Node and Master Menu
+</dt>
+<dd><p>The `Top' node starts off the online output; it does not appear in the
+printed manual.  We recommend including the copying permissions here as
+well as the segments above.  And it contains at least a top-level menu
+listing the chapters, and possibly a <em>Master Menu</em> listing all the
+nodes in the entire document.
+</p></dd>
+<dt> 5. Body
+</dt>
+<dd><p>The <em>Body</em> of the document is typically structured like a
+traditional book or encyclopedia, but it may be free form.
+</p></dd>
+<dt> 6. End
+</dt>
+<dd><p>The <em>End</em> segment contains commands for printing indices and
+generating the table of contents, and the <code>@bye</code> command on a line
+of its own.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="NOD13"></a>
+<a name="SEC12"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.10 A Short Sample Texinfo File </h2>
+
+<p>Here is a very short but complete Texinfo file, in the six conventional
+parts enumerated in the previous section, so you can see how Texinfo
+source appears in practice.  The first three parts of the file, from
+`<samp>\input texinfo</samp>' through to `<samp>@end titlepage</samp>', look more
+intimidating than they are: most of the material is standard
+boilerplate; when writing a manual, you simply change the names as
+appropriate.
+</p><p>See section <a href="texinfo_4.html#SEC41">Beginning a Texinfo File</a>, for full documentation on the commands listed
+here.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>, for the full texts to be used in GNU manuals.
+</p><p>In the following, the sample text is <em>indented</em>; comments on it are
+not.  The complete file, without interspersed comments, is shown in
+<a href="texinfo_24.html#SEC295">Short Sample</a>.
+</p><a name="SEC13"></a>
+<h3> Part 1: Header </h3>
+
+<p>The header does not appear in either the Info file or the
+printed output.  It sets various parameters, including the
+name of the Info file and the title used in the header.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample.info
+@settitle Sample Manual 1.0
+@c %**end of header
+</pre></td></tr></table>
+<a name="SEC14"></a>
+<h3> Part 2: Summary Description and Copyright </h3>
+
+<p>A real manual includes more text here, according to the license under
+which it is distributed.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@copying
+This is a short example of a complete Texinfo file, version 1.0.
+
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+@end copying
+</pre></td></tr></table>
+<a name="SEC15"></a>
+<h3> Part 3: Titlepage, Contents, Copyright </h3>
+
+<p>The titlepage segment does not appear in the online output, only in the
+printed manual.  We use the <code>@insertcopying</code> command to
+include the permission text from the previous section, instead of
+writing it out again; it is output on the back of the title page.  The
+<code>@contents</code> command generates a table of contents.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@titlepage
+@title Sample Title
+
+@c The following two commands start the copyright page.
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Output the table of contents at the beginning.
+@contents
+</pre></td></tr></table>
+<a name="SEC16"></a>
+<h3> Part 4: `Top' Node and Master Menu </h3>
+
+<p>The `Top' node contains the master menu for the Info file.  Since a
+printed manual uses a table of contents rather than a menu, the master
+menu appears only in online output.  We also include the copying text
+again for the benefit of online readers.  And since the copying text
+begins with a brief description of the manual, no other text is needed.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@ifnottex
+@node Top
+@end ifnottex
+</pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td class="example"><pre>
+@insertcopying
+
+@menu
+* First Chapter::    The first chapter is the
+                       only chapter in this sample.
+* Index::            Complete index.
+@end menu
+</pre></td></tr></table>
+<a name="SEC17"></a>
+<h3> Part 5: The Body of the Document </h3>
+
+<p>The body segment contains all the text of the document, but not the
+indices or table of contents.  This example illustrates a node and a
+chapter containing an enumerated list.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@node First Chapter
+@chapter First Chapter
+
+@cindex chapter, first
+
+This is the first chapter.
+@cindex index entry, another
+
+Here is a numbered list.
+
+@enumerate
+@item
+This is the first item.
+
+@item
+This is the second item.
+@end enumerate
+</pre></td></tr></table>
+<a name="SEC18"></a>
+<h3> Part 6: The End of the Document </h3>
+
+<p>The end segment contains commands for generating an index in a node and
+unnumbered chapter of its own, and the <code>@bye</code> command that marks
+the end of the document.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye
+</pre></td></tr></table>
+<a name="SEC19"></a>
+<h3> Some Results </h3>
+
+<p>Here is what the contents of the first chapter of the sample look like:
+</p><blockquote>
+
+<p>This is the first chapter.
+</p><p>Here is a numbered list.
+</p><ol>
+<li><p>
+This is the first item.
+</p></li><li><p>
+This is the second item.
+</p></li></ol>
+</blockquote>
+
+<hr size="6">
+<a name="NOD14"></a>
+<a name="SEC20"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.11 History </h2>
+
+<p>Richard M. Stallman invented the Texinfo format, wrote the initial
+processors, and created Edition 1.0 of this manual.  Robert J.
+Chassell greatly revised and extended the manual, starting with Edition
+1.1.  Brian Fox was responsible for the standalone Texinfo distribution
+until version 3.8, and wrote the standalone <code>makeinfo</code> and
+<code>info</code> programs.  Karl Berry has continued maintenance since
+Texinfo 3.8 (manual edition 2.22).
+</p><a name="IDX20"></a>
+<a name="IDX21"></a>
+<a name="IDX22"></a>
+<a name="IDX23"></a>
+<a name="IDX24"></a>
+<a name="IDX25"></a>
+<p>Our thanks go out to all who helped improve this work, particularly the
+indefatigable Eli Zaretskii and Andreas Schwab, who have provided
+patches beyond counting.  Fran&ccedil;ois Pinard and David D. Zuhn,
+tirelessly recorded and reported mistakes and obscurities.  Zack
+Weinberg did the impossible by implementing the macro syntax in
+`<tt>texinfo.tex</tt>'.  Special thanks go to Melissa Weisshaus for her
+frequent reviews of nearly similar editions.  Dozens of others have
+contributed patches and suggestions, they are gratefully acknowledged in
+the `<tt>ChangeLog</tt>' file.  Our mistakes are our own.
+</p><a name="IDX26"></a>
+<a name="IDX27"></a>
+<a name="IDX28"></a>
+<a name="IDX29"></a>
+<p>A bit of history: in the 1970's at CMU, Brian Reid developed a program
+and format named Scribe to mark up documents for printing.  It used the
+<code>@</code> character to introduce commands, as Texinfo does.  Much more
+consequentially, it strived to describe document contents rather than
+formatting, an idea wholeheartedly adopted by Texinfo.
+</p><a name="IDX30"></a>
+<a name="IDX31"></a>
+<p>Meanwhile, people at MIT developed another, not too dissimilar format
+called Bolio.  This then was converted to using TeX as its typesetting
+language: BoTeX.  The earliest BoTeX version seems to have been
+0.02 on October 31, 1984.
+</p><p>BoTeX could only be used as a markup language for documents to be
+printed, not for online documents.  Richard Stallman (RMS) worked on
+both Bolio and BoTeX.  He also developed a nifty on-line help format
+called Info, and then combined BoTeX and Info to create Texinfo, a
+mark up language for text that is intended to be read both online and
+as printed hard copy.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

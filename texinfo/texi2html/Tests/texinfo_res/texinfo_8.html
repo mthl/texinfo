@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 7. Menus</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 7. Menus">
+<meta name="keywords" content="GNU Texinfo 4.2: 7. Menus">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD83"></a>
+<a name="SEC97"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_7.html#SEC96" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC99" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo_7.html#SEC85" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 7. Menus </h1>
+
+<p><em>Menus</em> contain pointers to subordinate nodes.<a name="DOCF6" href="texinfo_fot.html#FOOT6">(6)</a> In
+Info, you use menus to go to such nodes.  Menus have no effect in
+printed manuals and do not appear in them.
+</p><p>By convention, a menu is put at the end of a node since a reader who
+uses the menu may not see text that follows it.  Furthermore, a node
+that has a menu should not contain much text. If you have a lot of text
+and a menu, move most of the text into a new subnode--all but a few
+lines.  Otherwise, a reader with a terminal that displays only a few
+lines may miss the menu and its associated text.  As a practical matter,
+you should locate a menu within 20 lines of the beginning of the
+node.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#NOD84">Menu Location</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Put a menu in a short node.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC99">7.1 Writing a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What is a menu?</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC100">7.2 The Parts of a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A menu entry has three parts.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC101">7.3 Less Cluttered Menu Entry</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two part menu entry.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC102">7.4 A Menu Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two and three part menu entries.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC103">7.5 Referring to Other Info Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to refer to a different Info file.</td></tr>
+</table>
+
+<a name="NOD84"></a>
+<a name="SEC98"></a>
+<h2> Menus Need Short Nodes </h2>
+
+<p>The short text before a menu may look awkward in a printed manual.  To
+avoid this, you can write a menu near the beginning of its node and
+follow the menu by an <code>@node</code> line, and then an <code>@heading</code>
+line located within <code>@ifinfo</code> and <code>@end ifinfo</code>.  This way,
+the menu, <code>@node</code> line, and title appear only in the Info file,
+not the printed document.
+</p><p>For example, the preceding two paragraphs follow an Info-only menu,
+<code>@node</code> line, and heading, and look like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+* Menu Location::             Put a menu in a short node.
+* Writing a Menu::            What is a menu?
+* Menu Parts::                A menu entry has three parts.
+* Less Cluttered Menu Entry:: Two part menu entry.
+* Menu Example::              Two and three part entries.
+* Other Info Files::          How to refer to a different
+                                Info file.
+@end menu
+
+@node Menu Location, Writing a Menu, , Menus
+@ifinfo
+@heading Menus Need Short Nodes
+@end ifinfo
+</pre></td></tr></table>
+<p>The Texinfo file for this document contains a number of
+examples of this procedure; one is at the beginning of this chapter.
+</p><hr size="6">
+<a name="NOD85"></a>
+<a name="SEC99"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC97" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC100" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.1 Writing a Menu </h2>
+
+<p>A menu consists of an <code>@menu</code> command on a line by
+itself followed by menu entry lines or menu comment lines
+and then by an <code>@end menu</code> command on a line by
+itself.</p><p>A menu looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+</pre></td></tr></table>
+<p>In a menu, every line that begins with an `<samp>* </samp>' is a <em>menu
+entry</em>.  (Note the space after the asterisk.)  A line that does not
+start with an `<samp>* </samp>' may also appear in a menu.  Such a line is
+not a menu entry but is a menu comment line that appears in the Info
+file.  In the example above, the line `<samp>Larger Units of Text</samp>' is a
+menu comment line; the two lines starting with `<samp>* </samp>' are menu
+<a name="IDX110"></a>
+entries.  Space characters in a menu are preserved as-is; this allows
+you to format the menu as you wish.
+</p><hr size="6">
+<a name="NOD86"></a>
+<a name="SEC100"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC99" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC101" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.2 The Parts of a Menu </h2>
+
+<p>A menu entry has three parts, only the second of which is required:
+</p><ol>
+<li><p>
+The menu entry name (optional).
+</p></li><li><p>
+The name of the node (required).
+</p></li><li><p>
+A description of the item (optional).
+</p></li></ol>
+
+<p>The template for a menu entry looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* <var>menu-entry-name</var>: <var>node-name</var>.   <var>description</var>
+</pre></td></tr></table>
+<p>Follow the menu entry name with a single colon and follow the node name
+with tab, comma, period, or newline.</p><p>In Info, a user selects a node with the <kbd>m</kbd> (<code>Info-menu</code>)
+command.  The menu entry name is what the user types after the <kbd>m</kbd>
+command.</p><p>The third part of a menu entry is a descriptive phrase or sentence.
+Menu entry names and node names are often short; the description
+explains to the reader what the node is about.  A useful description
+complements the node name rather than repeats it.  The description,
+which is optional, can spread over two or more lines; if it does, some
+authors prefer to indent the second line while others prefer to align it
+with the first (and all others).  It's up to you.
+</p><hr size="6">
+<a name="NOD87"></a>
+<a name="SEC101"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC100" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC102" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.3 Less Cluttered Menu Entry </h2>
+
+<p>When the menu entry name and node name are the same, you can write
+the name immediately after the asterisk and space at the beginning of
+the line and follow the name with two colons.</p><p>For example, write
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Name::                                    <var>description</var>
+</pre></td></tr></table>
+<p>instead of
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Name: Name.                               <var>description</var>
+</pre></td></tr></table>
+<p>You should use the node name for the menu entry name whenever possible,
+since it reduces visual clutter in the menu.</p><hr size="6">
+<a name="NOD88"></a>
+<a name="SEC102"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC101" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC103" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.4 A Menu Example </h2>
+
+<p>A menu looks like this in Texinfo:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+@end menu
+</pre></td></tr></table>
+<p>This produces:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* menu:
+
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+</pre></td></tr></table>
+<p>Here is an example as you might see it in a Texinfo file:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+</pre></td></tr></table>
+<p>This produces:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* menu:
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+</pre></td></tr></table>
+<p>In this example, the menu has two entries.  `<samp>Files</samp>' is both a menu
+entry name and the name of the node referred to by that name.
+`<samp>Multiples</samp>' is the menu entry name; it refers to the node named
+`<samp>Buffers</samp>'. The line `<samp>Larger Units of Text</samp>' is a comment; it
+appears in the menu, but is not an entry.</p><p>Since no file name is specified with either `<samp>Files</samp>' or
+`<samp>Buffers</samp>', they must be the names of nodes in the same Info file
+(see section <a href="#SEC103">Referring to Other Info Files</a>).</p><hr size="6">
+<a name="NOD89"></a>
+<a name="SEC103"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC102" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.5 Referring to Other Info Files </h2>
+
+<p>You can create a menu entry that enables a reader in Info to go to a
+node in another Info file by writing the file name in parentheses just
+before the node name.  In this case, you should use the three-part menu
+entry format, which saves the reader from having to type the file
+name.</p><p>The format looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+* <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
+* <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
+@end menu
+</pre></td></tr></table>
+<p>For example, to refer directly to the `<samp>Outlining</samp>' and
+`<samp>Rebinding</samp>' nodes in the <cite>Emacs Manual</cite>, you would write a
+menu like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@menu
+* Outlining: (emacs)Outline Mode. The major mode for
+                                  editing outlines.
+* Rebinding: (emacs)Rebinding.    How to redefine the
+                                  meaning of a key.
+@end menu
+</pre></td></tr></table>
+<p>If you do not list the node name, but only name the file, then Info
+presumes that you are referring to the `Top' node.</p><p>The `<tt>dir</tt>' file that contains the main menu for Info has menu
+entries that list only file names.  These take you directly to the `Top'
+nodes of each Info document.  (See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>.)
+</p><p>For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Info: (info).         Documentation browsing system.
+* Emacs: (emacs).       The extensible, self-documenting
+                        text editor.
+</pre></td></tr></table>
+<p>(The `<tt>dir</tt>' top level directory for the Info system is an Info file,
+not a Texinfo file, but a menu entry looks the same in both types of
+file.)</p><p>The GNU Emacs Texinfo mode menu updating commands only work with nodes
+within the current buffer, so you cannot use them to create menus that
+refer to other files.  You must write such menus by hand.
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC97" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_9.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

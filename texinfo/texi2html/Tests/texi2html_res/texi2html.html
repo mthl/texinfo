@@ -1,0 +1,2357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>Texinfo to HTML: Texi2html</title>
+
+<meta name="description" content="Texinfo to HTML: Texi2html">
+<meta name="keywords" content="Texinfo to HTML: Texi2html">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD1"></a>
+<a name="SEC_Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>Texi2html</h1>
+<h1> Texi2html </h1>
+
+<p>This Manual (Edition 0.21, last updated at
+14. August 2000) describes the <code>texi2html</code> Perl
+script which converters
+<a href="http://www.texinfo.org">Texinfo</a>
+into HTML.
+</p><p>Please send bug reports about this manual to Karl Heinz
+Marbaise <a href="mailto:khmarbaise@gmx.de">khmarbaise@gmx.de</a>. Please state exact
+version/edition of the manual (can be found at start of
+Texinfo source file; use the entry Id under Revisions).
+</p><p>Please note:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+This manual is currently under
+construction and of course incomplete ;-)
+</pre></td></tr></table>
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC1">1. Overview about <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC5">3. Customizing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC6">4. Customizing what gets expanded</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC7">5. Customizing page layout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC17">6. Customizing HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC23">7. Initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Initialization files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC28">7.5 Initialization file options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC39">8. Command Line Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC67">A. Function Reference</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reference Manual of functions.</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+/// The Detailed Node Listing ///
+
+--- Overview ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+--- Installation process ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+--- Initialization file options ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Number sectioning.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC31">7.5.3 Center Image</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC32">7.5.4 Example Indent Cell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC33">7.5.5 Small Example Indent</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Sample Indent Cell.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC34">7.5.6 Small Font Size</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC35">7.5.7 Top Heading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC37">7.5.9 Split Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">HREF Dir Instead file.</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+--- Command Line Options ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC41">8.2 DocType</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">DocType (HTML)</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC42">8.3 Check</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checking files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC43">8.4 Expand</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expanding info, tex areas etc.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC44">8.5 Glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC45">8.6 Invisible</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC46">8.7 Iso</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC47">8.8 Include Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Include directories.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC48">8.9 Top File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC49">8.10 Table Of content File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Table of content File.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC50">8.11 Frames</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC51">8.12 Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC52">8.13 Number sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC53">8.14 Split</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Splitting.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC54">8.15 Section navigation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Navigation.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC55">8.16 Subdirectory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC56">8.17 Short extension</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC57">8.18 Prefix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC58">8.19 Output filename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Output.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC59">8.20 Short Cross References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Short Ref.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC60">8.21 Index Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC61">8.22 Verbose output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Verbose.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC62">8.23 Language Support</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Language.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">LaTeX2HTML.</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+--- LaTeX2HTML for <code>@math</code> and <code>@tex</code> ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to find LaTeX2HTML.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+--- Indices ---
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC70">B. Indices</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Command Line Option Index.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC72">B.2 Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC73">B.3 Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+<hr size="1">
+<a name="NOD2"></a>
+<a name="SEC1"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[ &lt;&lt; ]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 1. Overview about <code>texi2html</code> </h1>
+<p><a href="http://www.texinfo.org">Texinfo</a> is the official
+documentation format of the <a href="http://www.gnu.org">GNU</a>
+project. It uses a single source file to produce both
+online information and printed output.
+</p><p>It is often proposed to have a way to produce
+HTML from Texinfo sources, like the GNU-Info
+format. It is much simpler to create one converter instead
+of writing all documentation new in HTML, cause
+there is so much documentation in Texinfo all over
+the world.
+</p><p>A few time ago <code>makeinfo</code> wasn't able to produce
+HTML output format, but there are needth to have
+HTML. This was the borning hour for
+<code>texi2html</code>. The basic purpose of `<tt>texi2html</tt>'
+is to convert Texinfo documents into HTML.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC2">1.1 Ways to get HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Ways to get HTML files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Why texi2html and not makeinfo?.</td></tr>
+</table>
+<hr size="6">
+<a name="NOD3"></a>
+<a name="SEC2"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.1 Ways to get HTML </h2>
+<p>You would like to HTML files out of your Texinfo
+files? There exist two ways which you can go.
+This first is to use <code>makeinfo</code> itself to produce
+HTML output. The second is to use
+<code>texi2html</code>.
+</p><hr size="6">
+<a name="NOD4"></a>
+<a name="SEC3"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'? </h2>
+<p>The basic idea of <code>makeinfo</code>'s HTML
+output was to get an readable HTML output.
+Nothing sophisticated nor good styling just readable.
+</p><p>The current development of texi2html is going into
+different direction.
+</p><p>The main purpose is to get better styling, better design
+etc. of the created HTML pages. This way is
+supported using differnt command line options and of course
+possible changings of the initialization file to fit your
+own needs.
+</p><p>The main disadvantage of makeinfo's
+HTML output is your getting only one big file.
+This is of course readable but not very usable. The problem
+of this is, while you like to have splitted chapters or
+nodes the Texinfo source has to be read at minimum twice
+times. This makes it impossible to implement this in
+<code>makeinfo</code>. This would result in complete new
+implementation of <code>makeinfo</code>'s source.
+</p><p>In contrast to the HTML produced by <code>makeinfo
+--html</code> (the <code>makeinfo</code> program is part of the
+Texinfo distribution), the HTML output of `<tt>texi2html</tt>'
+is highly configurable. Among other differences, with
+<code>texi2html</code> allows you to customize your entire
+page layout (like headers, footers, style sheets, etc),
+split documents at various levels, and use
+<code>latex2html</code> to convert <code>@tex</code> sections.
+</p><p><code>texi2html</code> should reasonably convert all Texinfo
+4.0 constructs. If not, please send a bug report to
+<a href="mailto:texi2html@mathematik.uni-kl.de">texi2html@mathematik.uni-kl.de</a>.
+</p><hr size="6">
+<a name="NOD5"></a>
+<a name="SEC4"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC5" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 2. Installation of <code>texi2html</code> </h1>
+<p>description of the installation process.
+What do you need?
+How?
+</p><hr size="6">
+<a name="NOD6"></a>
+<a name="SEC5"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC6" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 3. Customizing files </h1>
+<p>Result based on using `<samp>-frames</samp>'
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+texi2html -V -frames texi2html.texi
+</pre></td></tr></table><p>Explanation of the output differences against default,
+whatever this is ;-)
+</p><hr size="6">
+<a name="NOD7"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 4. Customizing what gets expanded </h1>
+<p>Test starting.
+</p><p>`<samp>-expand info</samp>'
+`<samp>-expand tex</samp>'
+Take a look at optionexpand.
+</p><hr size="6">
+<a name="NOD8"></a>
+<a name="SEC7"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC6" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 5. Customizing page layout </h1>
+<p>This chapter is designed to help you to change the
+complete layout of the HTML output if you like to
+do so.
+</p><p>a) General: Philosophy, and how it works<br>
+aa) Navigation panels<br>
+b) Top page<br>
+c) Section pages<br>
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC8">5.1 Tips how to create a new site design</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC9">5.2 Page Layout and the philosophy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC10">5.2.1 Navigation panels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC11">5.3 Top Page</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC12">5.4 Section Pages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC13">5.5 Misc pages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+</table>
+<hr size="6">
+<a name="NOD9"></a>
+<a name="SEC8"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 5.1 Tips how to create a new site design </h2>
+
+<p>Here you can find information how you should work to pick
+up a new design with <code>texi2html</code>.
+</p><hr size="6">
+<a name="NOD10"></a>
+<a name="SEC9"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 5.2 Page Layout and the philosophy </h2>
+
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC10">5.2.1 Navigation panels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+<hr size="6">
+<a name="NOD11"></a>
+<a name="SEC10"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 5.2.1 Navigation panels </h3>
+
+<p>Head and foot Navigation panels.
+</p><hr size="6">
+<a name="NOD12"></a>
+<a name="SEC11"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 5.3 Top Page </h2>
+<hr size="6">
+<a name="NOD13"></a>
+<a name="SEC12"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC13" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 5.4 Section Pages </h2>
+<hr size="6">
+<a name="NOD14"></a>
+<a name="SEC13"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC14" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 5.5 Misc pages </h2>
+<p>Here you can find information about the creation of the
+<em>ToC</em> (<i>Table Of content</i>), About--Page
+etc. and specialy how to change them to get your own
+design.
+</p><p>ToC <code>T2H_DEFAULT_print_toc_frame</code> in
+`<tt>texi2html.init</tt>'
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC14">5.5.1 Table Of Contents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC15">5.5.2 Page header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC16">5.5.3 Page footer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD15"></a>
+<a name="SEC14"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC13" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 5.5.1 Table Of Contents </h3>
+
+<p>The following code is the original code out of the
+initialization file (see section <a href="#SEC23">Initialization file</a>).
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+sub T2H_DEFAULT_print_toc_frame
+{
+  my $fh = shift;
+  &amp;$T2H_print_page_head($fh);
+  print $fh &lt;&lt;EOT;
+&lt;H2&gt;Content&lt;/H2&gt;
+EOT
+  print $fh map {s/HREF=/target=\&quot;main\&quot; HREF=/; $_;} @stoc_lines;
+  print $fh &quot;&lt;/BODY&gt;&lt;/HTML&gt;\n&quot;;
+}
+</pre></td></tr></table>
+<p>As you can see it is very simple Perl Code, which can
+be changed more or less simple to fit you requirements
+(see section <a href="#SEC15">T2H_DEFAULT_print_page_head</a>).
+</p><hr size="6">
+<a name="NOD16"></a>
+<a name="SEC15"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC13" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 5.5.2 Page header </h3>
+<p>Page Head <code>T2H_DEFAULT_print_page_head</code>
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+sub T2H_DEFAULT_print_page_head
+{
+  my $fh = shift; 
+  my $longtitle = &quot;$T2H_THISDOC{title}: $T2H_NAME{This}&quot;;
+  print $fh &lt;&lt;EOT;
+&lt;HTML&gt;
+$T2H_DOCTYPE
+&lt;!-- Created on $T2H_TODAY by $THISPROG --&gt;
+&lt;!-- 
+$T2H_AUTHORS 
+--&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;$longtitle&lt;/TITLE&gt;
+
+&lt;META NAME=&quot;description&quot; CONTENT=&quot;$longtitle&quot;&gt;
+&lt;META NAME=&quot;keywords&quot; CONTENT=&quot;$longtitle&quot;&gt;
+&lt;META NAME=&quot;resource-type&quot; CONTENT=&quot;document&quot;&gt;
+&lt;META NAME=&quot;distribution&quot; CONTENT=&quot;global&quot;&gt;
+&lt;META NAME=&quot;Generator&quot; CONTENT=&quot;$THISPROG&quot;&gt;
+$T2H_EXTRA_HEAD
+&lt;/HEAD&gt;
+
+&lt;BODY $T2H_BODYTEXT&gt;
+$T2H_AFTER_BODY_OPEN
+EOT
+}
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD17"></a>
+<a name="SEC16"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC13" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 5.5.3 Page footer </h3>
+
+<hr size="6">
+<a name="NOD18"></a>
+<a name="SEC17"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 6. Customizing HTML </h1>
+<p>Page Foot <code>T2H_DEFAULT_print_page_foot</code>
+</p><p>If you like to read the following section, it is assumed
+you are famillar with HTML. If not, you shouldn't
+read this, cause you don't know what we are talking about.
+</p><p>Here you can find information how to change the
+HTML parts of a document. These are the
+header, body etc.
+</p><p>These are the defaults which are
+part of the distribution as `<tt>texi2html.init</tt>'.
+</p><p>How to do changes of the customization...
+needed steps.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC18">6.1 Body</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing BODY Text.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC22">6.2 Head</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing Head.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC19">6.1.1 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing Head.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC20">6.1.2 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing Head.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC21">6.1.3 After Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing Head.</td></tr>
+</table>
+<hr size="6">
+<a name="NOD19"></a>
+<a name="SEC18"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.1 Body </h2>
+
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC19">6.1.1 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC20">6.1.2 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">PRE Body Text.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC21">6.1.3 After Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+<hr size="6">
+<a name="NOD20"></a>
+<a name="SEC19"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC18" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.1.1 Body Text </h3>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>
+$T2H_BODYTEXT =
+    . 'LANG=&quot;' . $T2H_LANG . '&quot; BGCOLOR=&quot;#FFFFFF&quot; '
+    . 'TEXT=&quot;#000000&quot; LINK=&quot;#0000FF&quot; '
+    . 'VLINK=&quot;#800080&quot; ALINK=&quot;#FF0000&quot;';
+</pre></td></tr></table>
+<p>If you like to change the basic color combination, you can
+change the entry <var>T2H_BODYTEXT</var>.
+</p><hr size="6">
+<a name="NOD21"></a>
+<a name="SEC20"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC21" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC18" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.1.2 Body Text </h3>
+<hr size="6">
+<a name="NOD22"></a>
+<a name="SEC21"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC20" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC22" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC18" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.1.3 After Body Text </h3>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>
+# text inserted after &lt;BODY ...&gt;
+$T2H_AFTER_BODY_OPEN = '';
+
+#text inserted before &lt;/BODY&gt;
+$T2H_PRE_BODY_CLOSE = '';
+
+# this is used in footer
+$T2H_ADDRESS = &quot;by &lt;I&gt;$T2H_USER&lt;/I&gt; &quot; if $T2H_USER;
+$T2H_ADDRESS .= &quot;on &lt;I&gt;$T2H_TODAY&lt;/I&gt;&quot;;
+
+# this is added inside &lt;HEAD&gt;&lt;/HEAD&gt; after &lt;TITLE&gt; and some META NAME stuff
+# can be used for &lt;style&gt; &lt;script&gt;, &lt;meta&gt; tags
+$T2H_EXTRA_HEAD = '';
+</pre></td></tr></table>
+<p>The default output into the HTML file.
+See section <a href="#SEC41">DocType</a>.
+</p><p>The following code is produced by
+<code>T2H_DEFAULT_print_page_head</code>.
+</p><p>Detailed information can be found at
+<a href="#SEC15">Page header</a>.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+&lt;HTML&gt;
+$T2H_DOCTYPE
+&lt;!-- Created on $T2H_TODAY by $THISPROG --&gt;
+&lt;!-- 
+$T2H_AUTHORS
+--&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;$longtitle&lt;/TITLE&gt;
+
+&lt;META NAME=&quot;description&quot; CONTENT=&quot;$longtitle&quot;&gt;
+&lt;META NAME=&quot;keywords&quot; CONTENT=&quot;$longtitle&quot;&gt;
+&lt;META NAME=&quot;resource-type&quot; CONTENT=&quot;document&quot;&gt;
+&lt;META NAME=&quot;distribution&quot; CONTENT=&quot;global&quot;&gt;
+&lt;META NAME=&quot;Generator&quot; CONTENT=&quot;$THISPROG&quot;&gt;
+$T2H_EXTRA_HEAD
+&lt;/HEAD&gt;
+
+&lt;BODY $T2H_BODYTEXT&gt;
+$T2H_AFTER_BODY_OPEN
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD23"></a>
+<a name="SEC22"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC21" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC17" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.2 Head </h2>
+<hr size="6">
+<a name="NOD24"></a>
+<a name="SEC23"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC22" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC24" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 7. Initialization file </h1>
+<p>`<tt>texi2html.init</tt>'
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC24">7.1 The basics about init files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The basics about
+                         initialization files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC25">7.2 Global initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC26">7.3 User initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC27">7.4 Loadable initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD25"></a>
+<a name="SEC24"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC25" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.1 The basics about init files </h2>
+
+<p>Initialization options are read first from
+`<tt>/usr/local/etc/texi2htmlrc</tt>' (the exact location being
+changeable with the `<samp>--sysconfdir=dir</samp>' option to the
+<code>configure</code> script), then from
+`<tt>$HOME/.texi2htmlrc</tt>', then any command-line options
+including `<samp>-init_file</samp>' option; with later settings
+overriding earlier ones.
+</p><p>The default initialization options are defined in the
+`<tt>texi2html.init</tt>' file contained in the <b>Texi2html</b>
+distribution (which gets included near the beginning of the
+<code>texi2html</code> script that gets installed).
+</p><p>To customize `<tt>texi2html</tt>' it is best if you copy the
+appropriate sections from the `<tt>texi2html.init</tt>'
+contents into an appropriate local initialization file,
+make the necessary changes there, and then have
+<code>texi2html</code> read this initialization file by one of
+the means described above.
+</p><p>For an example on what you can produces with
+<code>texi2html</code> have a look at the following sites:
+<a href="http://www.singular.uni-kl.de/Manual/html/">http://www.singular.uni-kl.de/Manual/html/</a>
+</p><hr size="6">
+<a name="NOD26"></a>
+<a name="SEC25"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC24" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC26" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.2 Global initialization file </h2>
+<hr size="6">
+<a name="NOD27"></a>
+<a name="SEC26"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC25" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC27" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.3 User initialization file </h2>
+<hr size="6">
+<a name="NOD28"></a>
+<a name="SEC27"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC26" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.4 Loadable initialization file </h2>
+<p>`<samp>-init_file</samp>'
+</p><hr size="6">
+<a name="NOD29"></a>
+<a name="SEC28"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC27" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC29" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC23" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 7.5 Initialization file options </h2>
+<p>This section describes in detail all options that can be used
+only in the initialization file (`<tt>texi2html.init</tt>'),
+and cannot be specified on the command line.
+This means the only way to change those
+options is first to copy the original `<tt>texi2html.init</tt>'
+to e.g. `<tt>texi2html.init.myown</tt>' and make changes to fit
+your needs.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Number sectioning.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC31">7.5.3 Center Image</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC32">7.5.4 Example Indent Cell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC33">7.5.5 Small Example Indent</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Sample Indent Cell.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC34">7.5.6 Small Font Size</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC35">7.5.7 Top Heading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC37">7.5.9 Split Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">HREF Dir Instead file.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD30"></a>
+<a name="SEC29"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC28" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC30" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.1 Number sections. </h3>
+<p>if set, and <var>$T2H_NUMBER_SECTIONS</var> is set, then use node
+names in menu entries, instead of section names
+</p><p><var>$T2H_NODE_NAME_IN_MENU</var> = 0;
+</p><hr size="6">
+<a name="NOD31"></a>
+<a name="SEC30"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC29" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC31" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.2 Avoid menu redundancy </h3>
+<p>If set, and menu entry equals menu description, then do not print
+menu description.  Likewise, if node name equals entry name, do
+not print entry name.
+<var>$T2H_AVOID_MENU_REDUNDANCY</var> = 1;
+</p><hr size="6">
+<a name="NOD32"></a>
+<a name="SEC31"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC30" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC32" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.3 Center Image </h3>
+<p>if set, center @image by default
+otherwise, do not center by default
+<var>$T2H_CENTER_IMAGE</var> = 1;
+</p><hr size="6">
+<a name="NOD33"></a>
+<a name="SEC32"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC31" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC33" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.4 Example Indent Cell </h3>
+<p>used as indentation for block enclosing command
+<code>@example</code>, etc If not empty, must be enclosed in
+<code>&lt;td&gt;&lt;/td&gt;</code>
+<var>$T2H_EXAMPLE_INDENT_CELL</var> = '&lt;td&gt;&amp;nbsp;&lt;/td&gt;';
+</p><hr size="6">
+<a name="NOD34"></a>
+<a name="SEC33"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC32" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC34" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.5 Small Example Indent </h3>
+<p>same as above, only for <code>@small</code>
+$T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
+</p><hr size="6">
+<a name="NOD35"></a>
+<a name="SEC34"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC33" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC35" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.6 Small Font Size </h3>
+<p># font size for @small
+$T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
+</p><hr size="6">
+<a name="NOD36"></a>
+<a name="SEC35"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC34" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC36" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.7 Top Heading </h3>
+<p>if non-empty, and no <code>@..heading</code> appeared in Top
+node, then use this as header for top node/section,
+otherwise use value of  <code>@settitle</code> or
+<code>@shorttitle</code> (in that order)
+$T2H_TOP_HEADING = &quot;&quot;;
+</p><hr size="6">
+<a name="NOD37"></a>
+<a name="SEC36"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC35" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC37" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.8 Index Chapter </h3>
+<p>if set, use this chapter for <strong>Index</strong> button, else
+use first chapter whose name matches <strong>index</strong> (case insensitive)
+$T2H_INDEX_CHAPTER = &quot;&quot;;
+</p><hr size="6">
+<a name="NOD38"></a>
+<a name="SEC37"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC36" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC38" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.9 Split Index </h3>
+<p>if set and <var>$T2H_SPLIT</var> is set, then split index pages
+at the next letter after they have more than that many
+entries
+</p><p>$T2H_SPLIT_INDEX = 100;
+</p><hr size="6">
+<a name="NOD39"></a>
+<a name="SEC38"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC37" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC28" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC28" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 7.5.10 HREF Dir Instead File. </h3>
+<p>if set (e.g., to `<tt>index.html</tt>') replace <strong>HREF</strong>'s
+to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
+</p><hr size="6">
+<a name="NOD40"></a>
+<a name="SEC39"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC38" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC40" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC23" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 8. Command Line Options </h1>
+<p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
+</p>
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC41">8.2 DocType</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">DocType (HTML)</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC42">8.3 Check</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checking files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC43">8.4 Expand</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expanding info, tex areas etc.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC44">8.5 Glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC45">8.6 Invisible</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC46">8.7 Iso</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC47">8.8 Include Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Include directories.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC48">8.9 Top File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC49">8.10 Table Of content File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Table of content File.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC50">8.11 Frames</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC51">8.12 Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC52">8.13 Number sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC53">8.14 Split</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Splitting.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC54">8.15 Section navigation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Navigation.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC55">8.16 Subdirectory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC56">8.17 Short extension</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC57">8.18 Prefix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC58">8.19 Output filename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Output.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC59">8.20 Short Cross References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Short Ref.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC60">8.21 Index Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC61">8.22 Verbose output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Verbose.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC62">8.23 Language Support</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Language.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">LaTeX2HTML.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD41"></a>
+<a name="SEC40"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC39" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC41" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.1 Debugging </h2>
+
+<p>`<samp>-debug</samp>'
+</p><p>debugging: 0 -- no debugging; other values; see beginning
+of texi2html
+</p><p><var>$DEBUG_TOC</var>   =  1;
+<var>$DEBUG_INDEX</var> =  2;
+<var>$DEBUG_BIB</var>   =  4;
+<var>$DEBUG_GLOSS</var> =  8;
+<var>$DEBUG_DEF</var>   = 16;
+<var>$DEBUG_HTML</var>  = 32;
+<var>$DEBUG_USER</var>  = 64;
+<var>$DEBUG_L2H</var>   = 128;
+</p><hr size="6">
+<a name="NOD42"></a>
+<a name="SEC41"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC40" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC42" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.2 DocType </h2>
+<p>`<samp>-doctype</samp>'
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD43"></a>
+<a name="SEC42"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC41" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC43" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.3 Check </h2>
+<p>`<samp>-check</samp>'
+if set, only check files and give the list of all things
+that look like untranslated Texinfo commands
+</p><hr size="6">
+<a name="NOD44"></a>
+<a name="SEC43"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC42" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC44" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.4 Expand </h2>
+<p>`<samp>-expand</samp>'
+if set to <strong>tex</strong> (or, <strong>info</strong>) expand
+<code>@iftex</code> and <code>@tex</code> (or, <code>@ifinfo</code>)
+sections else, neither expand <code>@iftex</code>, <code>@tex</code>,
+nor <code>@ifinfo</code> sections
+</p><hr size="6">
+<a name="NOD45"></a>
+<a name="SEC44"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC43" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC45" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.5 Glossary </h2>
+<p>`<samp>-glossary</samp>'
+if set, uses section named <strong>Footnotes</strong> for glossary
+</p><hr size="6">
+<a name="NOD46"></a>
+<a name="SEC45"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC44" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC46" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.6 Invisible </h2>
+<p>`<samp>-invisible</samp>'
+<var>$T2H_INVISIBLE_MARK</var> is the text used to create
+invisible destination anchors for index links (you can for
+instance use the `<tt>invisible.xbm</tt>' file shipped with
+this program). This is a workaround for a known bug of many
+WWW browsers, including Netscape. For me, it
+works fine without it -- on the contrary: if there, it
+inserts space between headers and start of text (obachman
+3/99)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+$T2H_INVISIBLE_MARK = &quot;&quot;;
+# $T2H_INVISIBLE_MARK = '&amp;#160;';
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD47"></a>
+<a name="SEC46"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC45" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC47" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.7 Iso </h2>
+<p>`<samp>-iso</samp>'
+</p><p>if set, ISO8859 characters are used for special symbols
+(like Copyright <code>&copy;</code>, etc)
+</p><p>$T2H_USE_ISO = 0;
+</p><hr size="6">
+<a name="NOD48"></a>
+<a name="SEC47"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC46" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC48" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.8 Include Directory </h2>
+<p>`<samp>-I</samp>'
+</p><p>list directories where <code>@include</code> files are searched for
+(besides the directory of the doc file) additional
+`<samp>-I</samp>' args are add to this list.
+</p><p>@T2H_INCLUDE_DIRS = (&quot;.&quot;);
+</p><hr size="6">
+<a name="NOD49"></a>
+<a name="SEC48"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC47" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC49" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.9 Top File </h2>
+<p>`<samp>-top_file</samp>'
+uses file of this name for top-level file
+extension is manipulated appropriately, if necessary.
+If empty, `<tt>&lt;basename of document&gt;.html</tt>' is used.
+Typically, you would set this to `<tt>index.html</tt>'.
+</p><p>$T2H_TOP_FILE = &quot;&quot;;
+</p><hr size="6">
+<a name="NOD50"></a>
+<a name="SEC49"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC48" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC50" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.10 Table Of content File </h2>
+<p>`<samp>-toc_file</samp>'
+uses file of this name for table of contents.  File extension
+is manipulated appropriately, if necessary. If empty,
+`<tt>&lt;basename of document&gt;_toc.html</tt>' is used.
+</p><p>$T2H_TOC_FILE = &quot;&quot;;
+</p><hr size="6">
+<a name="NOD51"></a>
+<a name="SEC50"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC49" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC51" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.11 Frames </h2>
+<p>`<samp>-frames</samp>'
+if set, output two additional files which use HTML 4.0
+<b>frames</b>.
+</p><p>$T2H_FRAMES = 0;
+</p><hr size="6">
+<a name="NOD52"></a>
+<a name="SEC51"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC50" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC52" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.12 Menus </h2>
+<p>`<samp>-menu</samp>' or `<samp>-nomenu</samp>' if set, show the Texinfo
+menus
+</p><p>$T2H_SHOW_MENU = 1;
+</p><hr size="6">
+<a name="NOD53"></a>
+<a name="SEC52"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC51" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC53" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.13 Number sections </h2>
+<p>`<samp>-number</samp>' `<samp>-nonumber</samp>'
+if set, number sections and show section names and numbers
+in references and menus
+</p><hr size="6">
+<a name="NOD54"></a>
+<a name="SEC53"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC52" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC54" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.14 Split </h2>
+<p>`<samp>-split section|chapter|none</samp>'
+if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
+HTML file per (sub)section (resp. chapter) and
+separate pages for Top, ToC, Overview, Index, Glossary,
+About.  Otherwise, create a monolithic HTML file that
+contains the whole document.
+</p><p>#$T2H_SPLIT = 'section';
+$T2H_SPLIT = undef;
+</p><hr size="6">
+<a name="NOD55"></a>
+<a name="SEC54"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC53" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC55" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.15 Section navigation </h2>
+<p>`<samp>-section_navigation</samp>'|
+`<samp>-no-section_navigation</samp>'
+</p><p>if set, then navigation panels are printed at the beginning
+of each section and, possibly at the end (depending on
+whether or not there were more than 
+<var>$T2H_WORDS_IN_PAGE</var> words on page). This is most useful
+if you do not want to have section navigation on
+`<samp>-split chapter</samp>'
+</p><hr size="6">
+<a name="NOD56"></a>
+<a name="SEC55"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC54" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC56" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.16 Subdirectory </h2>
+<p>`<samp>-subdir</samp>'
+If set, then put result files in the specified directory.
+If not set, then result files are put into the current directory.
+</p><p><var>$T2H_SUBDIR</var> = undef;
+</p><hr size="6">
+<a name="NOD57"></a>
+<a name="SEC56"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC55" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC57" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.17 Short extension </h2>
+<p>`<samp>-short_extn</samp>'
+If this is set, then all HTML files will have extension
+`<tt>.htm</tt>' instead of `<tt>.html</tt>'. This is helpful when
+shipping the document to DOS-based systems.
+<var>$T2H_SHORTEXTN</var> = 0;
+</p><hr size="6">
+<a name="NOD58"></a>
+<a name="SEC57"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC56" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC58" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.18 Prefix </h2>
+<p>`<samp>-prefix</samp>'
+Set the output file prefix, prepended to all `<tt>.html</tt>',
+`<tt>.gif</tt>' and `<tt>.pl</tt>' files.
+By default, this is the basename of the document
+</p><p><var>$T2H_PREFIX</var> = &quot;&quot;;
+</p><hr size="6">
+<a name="NOD59"></a>
+<a name="SEC58"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC57" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC59" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.19 Output filename </h2>
+
+<p>`<samp>-o filename</samp>'|`<samp>-out_file</samp>'
+If set, generate monolithic document output HTML
+into `<tt>filename</tt>'.
+</p><hr size="6">
+<a name="NOD60"></a>
+<a name="SEC59"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC58" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC60" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.20 Short Cross References </h2>
+<p>`<samp>-short_ref</samp>'
+if set cross-references are given without section numbers
+</p><hr size="6">
+<a name="NOD61"></a>
+<a name="SEC60"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC59" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC61" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.21 Index Summary </h2>
+<p>`<samp>-idx_sum</samp>'
+If value is set, then for each <code>@prinindex $what</code>
+`<tt>$docu_name_$what.idx</tt>' is created which contains lines of the
+form <strong>$key\t$ref</strong> sorted alphabetically (case
+matters).
+</p><hr size="6">
+<a name="NOD62"></a>
+<a name="SEC61"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC60" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC62" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.22 Verbose output </h2>
+<p>`<samp>-verbose</samp>'
+if set, chatter about what we are doing.
+</p><hr size="6">
+<a name="NOD63"></a>
+<a name="SEC62"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC61" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC63" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.23 Language Support </h2>
+<p>`<samp>-lang</samp>'
+For page titles, use
+<code>$T2H_WORDS-&gt;{$T2H_LANG}-&gt;{...}</code> as title. To add
+a new language, supply list of titles (see <var>$T2H_WORDS</var>),
+and use ISO 639 language codes (see e.g. perl module
+`<tt>Locale-Codes-1.02.tar.gz</tt>' for definitions).
+</p><hr size="6">
+<a name="NOD64"></a>
+<a name="SEC63"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC62" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC64" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC39" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code> </h2>
+<p>If you don't give a `<samp>-lang</samp>' then we got it from the
+Texinfo source file (@documentlanguage
+see Info `Texinfo', node `documentlanguage'). If there is no
+<code>@documentlanguage</code> we use the default <code>en</code> for
+the language.
+</p><p>`<samp>-l2h</samp>'
+if set, uses <code>latex2html</code> for generation of math
+content.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to find LaTeX2HTML.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD65"></a>
+<a name="SEC64"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC63" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC65" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 8.24.1 Where to find <code>latex2html</code> </h3>
+<p>`<samp>-l2h_l2h</samp>'
+name/location of <code>latex2html</code> program.
+</p><hr size="6">
+<a name="NOD66"></a>
+<a name="SEC65"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC64" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC66" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 8.24.2 Skip calling LaTeX2HTML </h3>
+<p>`<samp>-l2h_skip</samp>'
+If set, skips actual call to <code>latex2html</code>: tries to
+reuse previously generated content, instead.
+</p><hr size="6">
+<a name="NOD67"></a>
+<a name="SEC66"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC65" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 8.24.3 Temporary files for LaTeX2HTML </h3>
+<hr size="6">
+<a name="NOD68"></a>
+<a name="SEC67"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC66" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC68" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> A. Function Reference </h1>
+<p>`<samp>-l2h_tmp</samp>'
+If set, l2h uses this directory for temporary files.  The
+path leading to this directory may not contain a dot (i.e.,
+a `<samp>.</samp>'); otherwise, l2h will fail.
+</p>
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC68">A.1 Print ToC Frame</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC69">A.2 Print Page Head</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Print page head.</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD69"></a>
+<a name="SEC68"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC67" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC69" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC67" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> A.1 Print ToC Frame </h2>
+
+<dl>
+<dt><u>Function:</u> <b>T2H_DEFAULT_print_toc_frame</b> (FileName)
+<a name="IDX1"></a>
+</dt>
+<dd><p>Description of the subroutine.
+What does it do? Which parameters it needs etc.
+</p></dd></dl>
+
+<hr size="6">
+<a name="NOD70"></a>
+<a name="SEC69"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC68" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC67" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC67" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> A.2 Print Page Head </h2>
+<dl>
+<dt><u>Function:</u> <b>T2H_DEFAULT_print_page_head</b> (FileName)
+<a name="IDX2"></a>
+</dt>
+<dd><p>Description of the subroutine.
+What does it do? Which parameters it needs etc.
+</p></dd></dl>
+<hr size="6">
+<a name="NOD71"></a>
+<a name="SEC70"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC69" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC71" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC67" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> B. Indices </h1>
+<hr size="6">
+<a name="SEC71"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC70" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC72" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC70" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> B.1 Command Line Option Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_C" style="text-decoration: none"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC71_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC71_E" style="text-decoration: none"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC71_F" style="text-decoration: none"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC71_G" style="text-decoration: none"><b>G</b></a>
+ &nbsp; 
+<a href="#SEC71_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC71_L" style="text-decoration: none"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC71_M" style="text-decoration: none"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC71_N" style="text-decoration: none"><b>N</b></a>
+ &nbsp; 
+<a href="#SEC71_O" style="text-decoration: none"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC71_P" style="text-decoration: none"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC71_S" style="text-decoration: none"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC71_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC71_V" style="text-decoration: none"><b>V</b></a>
+ &nbsp; 
+</td></tr></table><table border="0">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC42"><code>check</code></a></td><td valign="top"><a href="#SEC42">8.3 Check</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>debug</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC41"><code>doctype</code></a></td><td valign="top"><a href="#SEC41">8.2 DocType</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC43"><code>expand</code></a></td><td valign="top"><a href="#SEC43">8.4 Expand</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC5"><code>frames</code></a></td><td valign="top"><a href="#SEC5">3. Customizing files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC50"><code>frames</code></a></td><td valign="top"><a href="#SEC50">8.11 Frames</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_G">G</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC44"><code>glossary</code></a></td><td valign="top"><a href="#SEC44">8.5 Glossary</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC47"><code>I</code></a></td><td valign="top"><a href="#SEC47">8.8 Include Directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC60"><code>idx_sum</code></a></td><td valign="top"><a href="#SEC60">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23"><code>init_file</code></a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC27"><code>init_file</code></a></td><td valign="top"><a href="#SEC27">7.4 Loadable initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC45"><code>invisible</code></a></td><td valign="top"><a href="#SEC45">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC46"><code>iso</code></a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63"><code>l2h</code></a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC64"><code>l2h_l2h</code></a></td><td valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC65"><code>l2h_skip</code></a></td><td valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC66"><code>l2h_tmp</code></a></td><td valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC62"><code>lang</code></a></td><td valign="top"><a href="#SEC62">8.23 Language Support</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_M">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC51"><code>menu</code></a></td><td valign="top"><a href="#SEC51">8.12 Menus</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC54"><code>no-section_navigation</code></a></td><td valign="top"><a href="#SEC54">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC51"><code>nomenu</code></a></td><td valign="top"><a href="#SEC51">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC52"><code>nonumber</code></a></td><td valign="top"><a href="#SEC52">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC52"><code>number</code></a></td><td valign="top"><a href="#SEC52">8.13 Number sections</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC58"><code>o</code></a></td><td valign="top"><a href="#SEC58">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC58"><code>out_file</code></a></td><td valign="top"><a href="#SEC58">8.19 Output filename</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC57"><code>prefix</code></a></td><td valign="top"><a href="#SEC57">8.18 Prefix</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_S">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC54"><code>section_navigation</code></a></td><td valign="top"><a href="#SEC54">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56"><code>short_extn</code></a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC59"><code>short_ref</code></a></td><td valign="top"><a href="#SEC59">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC53"><code>split</code></a></td><td valign="top"><a href="#SEC53">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23"><code>sysconfdir</code></a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC49"><code>toc_file</code></a></td><td valign="top"><a href="#SEC49">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC48"><code>top_file</code></a></td><td valign="top"><a href="#SEC48">8.9 Top File</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC71_V">V</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC61"><code>verbose</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_C" style="text-decoration: none"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC71_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC71_E" style="text-decoration: none"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC71_F" style="text-decoration: none"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC71_G" style="text-decoration: none"><b>G</b></a>
+ &nbsp; 
+<a href="#SEC71_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC71_L" style="text-decoration: none"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC71_M" style="text-decoration: none"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC71_N" style="text-decoration: none"><b>N</b></a>
+ &nbsp; 
+<a href="#SEC71_O" style="text-decoration: none"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC71_P" style="text-decoration: none"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC71_S" style="text-decoration: none"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC71_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC71_V" style="text-decoration: none"><b>V</b></a>
+ &nbsp; 
+</td></tr></table><hr size="6">
+<a name="NOD72"></a>
+<a name="SEC72"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC71" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC73" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC70" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC73" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> B.2 Variable Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_$" style="text-decoration: none"><b>$</b></a>
+ &nbsp; 
+<br>
+<a href="#SEC72_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC72_H" style="text-decoration: none"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC72_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC72_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+</td></tr></table><table border="0">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC72_$">$</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC62"><code>$T2H_LANG</code></a></td><td valign="top"><a href="#SEC62">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC62"><code>$T2H_WORDS</code></a></td><td valign="top"><a href="#SEC62">8.23 Language Support</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC72_D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_BIB</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_DEF</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_GLOSS</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_HTML</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_INDEX</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_L2H</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_TOC</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40"><code>DEBUG_USER</code></a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC72_H">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC50"><code>HTML 4.0, frames</code></a></td><td valign="top"><a href="#SEC50">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC50"><code>HTML, frames</code></a></td><td valign="top"><a href="#SEC50">8.11 Frames</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC72_I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC47"><code>Include directories</code></a></td><td valign="top"><a href="#SEC47">8.8 Include Directory</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC72_T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC21"><code>T2H_AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#SEC21">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC30"><code>T2H_AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC19"><code>T2H_BODYTEXT</code></a></td><td valign="top"><a href="#SEC19">6.1.1 Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC31"><code>T2H_CENTER_IMAGE</code></a></td><td valign="top"><a href="#SEC31">7.5.3 Center Image</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC42"><code>T2H_CHECK</code></a></td><td valign="top"><a href="#SEC42">8.3 Check</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC41"><code>T2H_DOCTYPE</code></a></td><td valign="top"><a href="#SEC41">8.2 DocType</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC32"><code>T2H_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#SEC32">7.5.4 Example Indent Cell</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC43"><code>T2H_EXPAND</code></a></td><td valign="top"><a href="#SEC43">8.4 Expand</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC21"><code>T2H_EXTRA_HEAD</code></a></td><td valign="top"><a href="#SEC21">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC50"><code>T2H_FRAMES</code></a></td><td valign="top"><a href="#SEC50">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC38"><code>T2H_HREF_DIR_INSTEAD_FILE</code></a></td><td valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC60"><code>T2H_IDX_SUMMARY</code></a></td><td valign="top"><a href="#SEC60">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC47"><code>T2H_INCLUDE_DIRS</code></a></td><td valign="top"><a href="#SEC47">8.8 Include Directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC36"><code>T2H_INDEX_CHAPTER</code></a></td><td valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC45"><code>T2H_INVISIBLE_MARK</code></a></td><td valign="top"><a href="#SEC45">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63"><code>T2H_L2H</code></a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC64"><code>T2H_L2H_L2H</code></a></td><td valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC65"><code>T2H_L2H_SKIP</code></a></td><td valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC66"><code>T2H_L2H_TMP</code></a></td><td valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC29"><code>T2H_NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC29"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC52"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#SEC52">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC58"><code>T2H_OUT</code></a></td><td valign="top"><a href="#SEC58">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC21"><code>T2H_PRE_BODY_CLOSE</code></a></td><td valign="top"><a href="#SEC21">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC57"><code>T2H_PREFIX</code></a></td><td valign="top"><a href="#SEC57">8.18 Prefix</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC54"><code>T2H_SECTION_NAVIGATION</code></a></td><td valign="top"><a href="#SEC54">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC59"><code>T2H_SHORT_REF</code></a></td><td valign="top"><a href="#SEC59">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56"><code>T2H_SHORTEXTN</code></a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC51"><code>T2H_SHOW_MENU</code></a></td><td valign="top"><a href="#SEC51">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC33"><code>T2H_SMALL_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#SEC33">7.5.5 Small Example Indent</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC34"><code>T2H_SMALL_FONT_SIZE</code></a></td><td valign="top"><a href="#SEC34">7.5.6 Small Font Size</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC53"><code>T2H_SPLIT</code></a></td><td valign="top"><a href="#SEC53">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC37"><code>T2H_SPLIT_INDEX</code></a></td><td valign="top"><a href="#SEC37">7.5.9 Split Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC55"><code>T2H_SUBDIR</code></a></td><td valign="top"><a href="#SEC55">8.16 Subdirectory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC49"><code>T2H_TOC_FILE</code></a></td><td valign="top"><a href="#SEC49">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC48"><code>T2H_TOP_FILE</code></a></td><td valign="top"><a href="#SEC48">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC35"><code>T2H_TOP_HEADING</code></a></td><td valign="top"><a href="#SEC35">7.5.7 Top Heading</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC44"><code>T2H_USE_GLOSSARY</code></a></td><td valign="top"><a href="#SEC44">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC46"><code>T2H_USE_ISO</code></a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC61"><code>T2H_VERBOSE</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_$" style="text-decoration: none"><b>$</b></a>
+ &nbsp; 
+<br>
+<a href="#SEC72_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC72_H" style="text-decoration: none"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC72_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC72_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+</td></tr></table><hr size="6">
+<a name="NOD73"></a>
+<a name="SEC73"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC72" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC73" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC73" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> B.3 Concept Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_." style="text-decoration: none"><b>.</b></a>
+ &nbsp; 
+<a href="#SEC73_@" style="text-decoration: none"><b>@</b></a>
+ &nbsp; 
+<br>
+<a href="#SEC73_C" style="text-decoration: none"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC73_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC73_E" style="text-decoration: none"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC73_F" style="text-decoration: none"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC73_H" style="text-decoration: none"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC73_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC73_L" style="text-decoration: none"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC73_M" style="text-decoration: none"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC73_O" style="text-decoration: none"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC73_P" style="text-decoration: none"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC73_R" style="text-decoration: none"><b>R</b></a>
+ &nbsp; 
+<a href="#SEC73_S" style="text-decoration: none"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC73_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC73_V" style="text-decoration: none"><b>V</b></a>
+ &nbsp; 
+</td></tr></table><table border="0">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_.">.</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23">.texi2htmlrc, user initialization</a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_@">@</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63">@math</a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63">@tex</a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC36">Chapter, Index</a></td><td valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23">configure</a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63">Conversion of @math and @tex</a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC46">Copyright</a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC40">Debugging</a></td><td valign="top"><a href="#SEC40">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC61">Debugging, verbose output</a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC32">example, indentation</a></td><td valign="top"><a href="#SEC32">7.5.4 Example Indent Cell</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC33">example, small indent</a></td><td valign="top"><a href="#SEC33">7.5.5 Small Example Indent</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56">extension, .htm</a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56">extension, .html</a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC53">File, split</a></td><td valign="top"><a href="#SEC53">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC58">Filename, output</a></td><td valign="top"><a href="#SEC58">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC34">Font Size, small</a></td><td valign="top"><a href="#SEC34">7.5.6 Small Font Size</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_H">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC38">HREF Dir instead file</a></td><td valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56">HTML, .htm extension</a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC56">HTML, .html extension</a></td><td valign="top"><a href="#SEC56">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC41">HTML, Doc Type</a></td><td valign="top"><a href="#SEC41">8.2 DocType</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC44">HTML, Glossary</a></td><td valign="top"><a href="#SEC44">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC60">HTML, Index</a></td><td valign="top"><a href="#SEC60">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC48">HTML, index.html</a></td><td valign="top"><a href="#SEC48">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC51">HTML, menu</a></td><td valign="top"><a href="#SEC51">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC54">HTML, Navigation</a></td><td valign="top"><a href="#SEC54">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC53">HTML, split</a></td><td valign="top"><a href="#SEC53">8.14 Split</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC31">images, center</a></td><td valign="top"><a href="#SEC31">7.5.3 Center Image</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC37">Index, split</a></td><td valign="top"><a href="#SEC37">7.5.9 Split Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC60">Index, Summary</a></td><td valign="top"><a href="#SEC60">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC4">Installation</a></td><td valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC5">Installation</a></td><td valign="top"><a href="#SEC5">3. Customizing files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC45">invisible, Mark</a></td><td valign="top"><a href="#SEC45">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC46">ISO8859</a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC62">Language Support</a></td><td valign="top"><a href="#SEC62">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC63">LaTeX2HTML</a></td><td valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC64">LaTeX2HTML, location</a></td><td valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC65">LaTeX2HTML, skip calling</a></td><td valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC66">LaTeX2HTML, Temporary files</a></td><td valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC64">location, LaTeX2HTML</a></td><td valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_M">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC45">Mark, invisible</a></td><td valign="top"><a href="#SEC45">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC30">menu, redundancy</a></td><td valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC58">Output filename</a></td><td valign="top"><a href="#SEC58">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC61">Output, verbose</a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC57">Prefix</a></td><td valign="top"><a href="#SEC57">8.18 Prefix</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_R">R</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC59">References, short</a></td><td valign="top"><a href="#SEC59">8.20 Short Cross References</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_S">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC52">Section numbering</a></td><td valign="top"><a href="#SEC52">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC59">sections without numbers</a></td><td valign="top"><a href="#SEC59">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC55">Subdirectory</a></td><td valign="top"><a href="#SEC55">8.16 Subdirectory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC60">Summary Index</a></td><td valign="top"><a href="#SEC60">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC62">Support different languages</a></td><td valign="top"><a href="#SEC62">8.23 Language Support</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC49">Table of content file</a></td><td valign="top"><a href="#SEC49">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC66">Temporary, LaTeX2HTML</a></td><td valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23">texi2html.init</a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC23">texi2htmlrc, global initialization</a></td><td valign="top"><a href="#SEC23">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC42">Texinfo, checking</a></td><td valign="top"><a href="#SEC42">8.3 Check</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC44">Texinfo, Glossary</a></td><td valign="top"><a href="#SEC44">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC51">Texinfo, menu</a></td><td valign="top"><a href="#SEC51">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC48">Top Level file</a></td><td valign="top"><a href="#SEC48">8.9 Top File</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC73_V">V</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC61">Verbose output</a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_." style="text-decoration: none"><b>.</b></a>
+ &nbsp; 
+<a href="#SEC73_@" style="text-decoration: none"><b>@</b></a>
+ &nbsp; 
+<br>
+<a href="#SEC73_C" style="text-decoration: none"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC73_D" style="text-decoration: none"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC73_E" style="text-decoration: none"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC73_F" style="text-decoration: none"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC73_H" style="text-decoration: none"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC73_I" style="text-decoration: none"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC73_L" style="text-decoration: none"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC73_M" style="text-decoration: none"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC73_O" style="text-decoration: none"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC73_P" style="text-decoration: none"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC73_R" style="text-decoration: none"><b>R</b></a>
+ &nbsp; 
+<a href="#SEC73_S" style="text-decoration: none"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC73_T" style="text-decoration: none"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC73_V" style="text-decoration: none"><b>V</b></a>
+ &nbsp; 
+</td></tr></table><hr size="6">
+<a name="SEC_Contents"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>Table of Contents</h1>
+
+<ul style="list-style: none">
+  <li><a name="TOC1" href="#SEC1">1. Overview about <code>texi2html</code></a>
+  <ul style="list-style: none">
+    <li><a name="TOC2" href="#SEC2">1.1 Ways to get HTML</a></li>
+    <li><a name="TOC3" href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></li>
+  </ul></li>
+  <li><a name="TOC4" href="#SEC4">2. Installation of <code>texi2html</code></a></li>
+  <li><a name="TOC5" href="#SEC5">3. Customizing files</a></li>
+  <li><a name="TOC6" href="#SEC6">4. Customizing what gets expanded</a></li>
+  <li><a name="TOC7" href="#SEC7">5. Customizing page layout</a>
+  <ul style="list-style: none">
+    <li><a name="TOC8" href="#SEC8">5.1 Tips how to create a new site design</a></li>
+    <li><a name="TOC9" href="#SEC9">5.2 Page Layout and the philosophy</a>
+    <ul style="list-style: none">
+      <li><a name="TOC10" href="#SEC10">5.2.1 Navigation panels</a></li>
+    </ul></li>
+    <li><a name="TOC11" href="#SEC11">5.3 Top Page</a></li>
+    <li><a name="TOC12" href="#SEC12">5.4 Section Pages</a></li>
+    <li><a name="TOC13" href="#SEC13">5.5 Misc pages</a>
+    <ul style="list-style: none">
+      <li><a name="TOC14" href="#SEC14">5.5.1 Table Of Contents</a></li>
+      <li><a name="TOC15" href="#SEC15">5.5.2 Page header</a></li>
+      <li><a name="TOC16" href="#SEC16">5.5.3 Page footer</a></li>
+    </ul></li>
+</li>
+  </ul></li>
+  <li><a name="TOC17" href="#SEC17">6. Customizing HTML</a>
+  <ul style="list-style: none">
+    <li><a name="TOC18" href="#SEC18">6.1 Body</a>
+    <ul style="list-style: none">
+      <li><a name="TOC19" href="#SEC19">6.1.1 Body Text</a></li>
+      <li><a name="TOC20" href="#SEC20">6.1.2 Body Text</a></li>
+      <li><a name="TOC21" href="#SEC21">6.1.3 After Body Text</a></li>
+    </ul></li>
+    <li><a name="TOC22" href="#SEC22">6.2 Head</a></li>
+  </ul></li>
+  <li><a name="TOC23" href="#SEC23">7. Initialization file</a>
+  <ul style="list-style: none">
+    <li><a name="TOC24" href="#SEC24">7.1 The basics about init files</a></li>
+    <li><a name="TOC25" href="#SEC25">7.2 Global initialization file</a></li>
+    <li><a name="TOC26" href="#SEC26">7.3 User initialization file</a></li>
+    <li><a name="TOC27" href="#SEC27">7.4 Loadable initialization file</a></li>
+    <li><a name="TOC28" href="#SEC28">7.5 Initialization file options</a>
+    <ul style="list-style: none">
+      <li><a name="TOC29" href="#SEC29">7.5.1 Number sections.</a></li>
+      <li><a name="TOC30" href="#SEC30">7.5.2 Avoid menu redundancy</a></li>
+      <li><a name="TOC31" href="#SEC31">7.5.3 Center Image</a></li>
+      <li><a name="TOC32" href="#SEC32">7.5.4 Example Indent Cell</a></li>
+      <li><a name="TOC33" href="#SEC33">7.5.5 Small Example Indent</a></li>
+      <li><a name="TOC34" href="#SEC34">7.5.6 Small Font Size</a></li>
+      <li><a name="TOC35" href="#SEC35">7.5.7 Top Heading</a></li>
+      <li><a name="TOC36" href="#SEC36">7.5.8 Index Chapter</a></li>
+      <li><a name="TOC37" href="#SEC37">7.5.9 Split Index</a></li>
+      <li><a name="TOC38" href="#SEC38">7.5.10 HREF Dir Instead File.</a></li>
+    </ul></li>
+</li>
+  </ul></li>
+  <li><a name="TOC39" href="#SEC39">8. Command Line Options</a>
+  <ul style="list-style: none">
+    <li><a name="TOC40" href="#SEC40">8.1 Debugging</a></li>
+    <li><a name="TOC41" href="#SEC41">8.2 DocType</a></li>
+    <li><a name="TOC42" href="#SEC42">8.3 Check</a></li>
+    <li><a name="TOC43" href="#SEC43">8.4 Expand</a></li>
+    <li><a name="TOC44" href="#SEC44">8.5 Glossary</a></li>
+    <li><a name="TOC45" href="#SEC45">8.6 Invisible</a></li>
+    <li><a name="TOC46" href="#SEC46">8.7 Iso</a></li>
+    <li><a name="TOC47" href="#SEC47">8.8 Include Directory</a></li>
+    <li><a name="TOC48" href="#SEC48">8.9 Top File</a></li>
+    <li><a name="TOC49" href="#SEC49">8.10 Table Of content File</a></li>
+    <li><a name="TOC50" href="#SEC50">8.11 Frames</a></li>
+    <li><a name="TOC51" href="#SEC51">8.12 Menus</a></li>
+    <li><a name="TOC52" href="#SEC52">8.13 Number sections</a></li>
+    <li><a name="TOC53" href="#SEC53">8.14 Split</a></li>
+    <li><a name="TOC54" href="#SEC54">8.15 Section navigation</a></li>
+    <li><a name="TOC55" href="#SEC55">8.16 Subdirectory</a></li>
+    <li><a name="TOC56" href="#SEC56">8.17 Short extension</a></li>
+    <li><a name="TOC57" href="#SEC57">8.18 Prefix</a></li>
+    <li><a name="TOC58" href="#SEC58">8.19 Output filename</a></li>
+    <li><a name="TOC59" href="#SEC59">8.20 Short Cross References</a></li>
+    <li><a name="TOC60" href="#SEC60">8.21 Index Summary</a></li>
+    <li><a name="TOC61" href="#SEC61">8.22 Verbose output</a></li>
+    <li><a name="TOC62" href="#SEC62">8.23 Language Support</a></li>
+    <li><a name="TOC63" href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a>
+    <ul style="list-style: none">
+      <li><a name="TOC64" href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></li>
+      <li><a name="TOC65" href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></li>
+      <li><a name="TOC66" href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></li>
+    </ul></li>
+</li>
+  </ul></li>
+  <li><a name="TOC67" href="#SEC67">A. Function Reference</a>
+  <ul style="list-style: none">
+    <li><a name="TOC68" href="#SEC68">A.1 Print ToC Frame</a></li>
+    <li><a name="TOC69" href="#SEC69">A.2 Print Page Head</a></li>
+  </ul></li>
+  <li><a name="TOC70" href="#SEC70">B. Indices</a>
+  <ul style="list-style: none">
+    <li><a name="TOC71" href="#SEC71">B.1 Command Line Option Index</a></li>
+    <li><a name="TOC72" href="#SEC72">B.2 Variable Index</a></li>
+    <li><a name="TOC73" href="#SEC73">B.3 Concept Index</a></li>
+  </ul>
+</li>
+</ul>
+<hr size="1">
+<a name="SEC_Overview"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>Short Table of Contents</h1>
+<ul style="list-style: none">
+<li><a name="TOC1" href="#SEC1">1. Overview about <code>texi2html</code></a></li>
+<li><a name="TOC4" href="#SEC4">2. Installation of <code>texi2html</code></a></li>
+<li><a name="TOC5" href="#SEC5">3. Customizing files</a></li>
+<li><a name="TOC6" href="#SEC6">4. Customizing what gets expanded</a></li>
+<li><a name="TOC7" href="#SEC7">5. Customizing page layout</a></li>
+<li><a name="TOC17" href="#SEC17">6. Customizing HTML</a></li>
+<li><a name="TOC23" href="#SEC23">7. Initialization file</a></li>
+<li><a name="TOC39" href="#SEC39">8. Command Line Options</a></li>
+<li><a name="TOC67" href="#SEC67">A. Function Reference</a></li>
+<li><a name="TOC70" href="#SEC70">B. Indices</a></li>
+</ul>
+<hr size="1">
+<a name="SEC_About"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1>About This Document</h1>
+<p>
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+</p>
+<p>
+  The buttons in the navigation panels have the following meaning:
+</p>
+<table border="1">
+  <tr>
+    <th> Button </th>
+    <th> Name </th>
+    <th> Go to </th>
+    <th> From 1.2.3 go to</th>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>next section in reading order</td>
+    <td>1.2.4</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt;&lt; ] </td>
+    <td align="center">FastBack</td>
+    <td>beginning of this chapter or previous chapter</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td align="center"> [ Up ] </td>
+    <td align="center">Up</td>
+    <td>up section</td>
+    <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt;&gt; ] </td>
+    <td align="center">FastForward</td>
+    <td>next chapter</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td align="center"> [Top] </td>
+    <td align="center">Top</td>
+    <td>cover (top) of document</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Contents] </td>
+    <td align="center">Contents</td>
+    <td>table of contents</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Index] </td>
+    <td align="center">Index</td>
+    <td>concept index</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [ ? ] </td>
+    <td align="center">About</td>
+    <td>about (this page)</td>
+    <td> &nbsp; </td>
+  </tr>
+</table>
+
+<p>
+  where the <strong> Example </strong> assumes that the current position
+  is at <strong> Subsubsection One-Two-Three </strong> of a document of
+  the following structure:
+</p>
+
+<ul>
+  <li> 1. Section One
+    <ul>
+      <li>1.1 Subsection One-One
+        <ul>
+          <li>...</li>
+        </ul>
+      <li>1.2 Subsection One-Two
+        <ul>
+          <li>1.2.1 Subsubsection One-Two-One</li>
+          <li>1.2.2 Subsubsection One-Two-Two</li>
+          <li>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
+            <strong>&lt;== Current Position </strong></li>
+          <li>1.2.4 Subsubsection One-Two-Four</li>
+        </ul>
+      </li>
+      <li>1.3 Subsection One-Three
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.4 Subsection One-Four</li>
+    </ul>
+  </li>
+</ul>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
