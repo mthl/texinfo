@@ -1,5 +1,10 @@
 2004-12-29  Derek Price  <derek@ximbiot.com>
 
+	* README: Remove obsolete note about using shar for binary attachments
+	to mailing lists.
+
+2004-12-29  Derek Price  <derek@ximbiot.com>
+
 	* config.guess, config.sub: New files from Automake.
 
 2004-12-13  Patrice Dumas  <dumas@centre-cired.fr>
