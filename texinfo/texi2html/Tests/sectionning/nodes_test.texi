@@ -4,6 +4,8 @@
 
 Garbage
 
+@titlefont{A title font in the text before a node}
+
 @node first,node1,lop,lop
 @c @subsection s1
 node in first but not the first...

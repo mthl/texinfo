@@ -1,3 +1,8 @@
+2003-08-01  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl: add option '-noexpand' as a synonym for '-no-expand'
+	like Derek suggested.
+
 2003-07-31  Derek Price  <derek@ximbiot.com>
 
 	* texi2html.pl (T2H_OPTIONS->{'no-expand'}): Remove useless linkage.

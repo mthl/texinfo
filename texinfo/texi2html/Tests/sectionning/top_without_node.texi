@@ -1,0 +1,31 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename top_without_node
+
+Garbage
+
+@node a node,,,(dir)
+@unnumbered unnumbered
+
+in unnumbered
+
+@top top section
+Top section
+
+@titlefont{The top section, no top node}
+
+@node second,,,(dir)
+@section second
+
+second node
+
+@chapter Chapter
+
+Text of chapter
+
+@chapter Chapter 2
+
+
+Text of chapter 2
+
+@bye

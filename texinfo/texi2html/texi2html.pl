@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.56 2003-07-31 16:40:17 dprice Exp $
+# $Id: texi2html.pl,v 1.57 2003-08-01 15:35:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -784,6 +784,14 @@ $T2H_OPTIONS -> {'no-expand'} =
  type => '=s',
  linkage => sub {@Texi2HTML::Config::EXPAND = grep {$_ ne $_[1]} @Texi2HTML::Config::EXPAND;},
  verbose => 'Don\'t expand the given section of texinfo source',
+};
+
+$T2H_OPTIONS -> {'noexpand'} = 
+{
+ type => '=s',
+ linkage => $T2H_OPTIONS->{'no-expand'}->{'linkage'},
+ verbose => $T2H_OPTIONS->{'no-expand'}->{'verbose'},
+ noHelp  => 1,
 };
 
 
@@ -2637,7 +2645,7 @@ sub menu_entry_texi($$)
     }
     else
     {
-        warn "$WARN menu without previous node\n" unless $node =~ /\(.+\)/;
+        warn "$WARN menu entry without previous node: $node\n" unless $node =~ /\(.+\)/;
     }
     return if ($state->{'detailmenu'});
     if ($state->{'prev_menu_node'})
@@ -2645,7 +2653,7 @@ sub menu_entry_texi($$)
         $node_menu_ref->{'menu_prev'} = $state->{'prev_menu_node'};
         $state->{'prev_menu_node'}->{'menu_next'} = $node_menu_ref;
     }
-    else
+    elsif ($state->{'node_ref'})
     {
         $state->{'node_ref'}->{'menu_child'} = $node_menu_ref;
     }
