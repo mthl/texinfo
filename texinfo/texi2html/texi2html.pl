@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.4 2001-09-18 22:25:46 dprice Exp $
+# $Id: texi2html.pl,v 1.5 2001-09-19 21:12:27 reiter Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = <<EOT;
@@ -3675,22 +3675,40 @@ sub pass5
 
 
     #############################################################################
+    # Monolithic beginning.
+    #
+    unless ($T2H_SPLIT)
+    {
+        open(FILE, "> $docu_doc_file")
+            || die "$ERROR: Can't open $docu_doc_file for writing: $!\n";
+        &$T2H_print_page_head(\*FILE);
+    }
+
+
+    #############################################################################
     # print Top
     #
-    open(FILE, "> $docu_top_file")
-        || die "$ERROR: Can't open $docu_top_file for writing: $!\n";
-    &$T2H_print_page_head(\*FILE) unless ($T2H_SPLIT);
-
     if ($has_top)
     {
+        if ($T2H_SPLIT)
+        {
+            open(FILE, "> $docu_top_file")
+                || die "$ERROR: Can't open $docu_top_file for writing: $!\n";
+        }
+
         print "# Creating Top in $docu_top_file ...\n" if $T2H_VERBOSE;
         $T2H_THIS_SECTION = $T2H_TOP;
         $T2H_HREF{This} = $T2H_HREF{Top};
         $T2H_NAME{This} = $T2H_NAME{Top};
         &$T2H_print_Top(\*FILE);
+
+        if ($T2H_SPLIT)
+        {
+            close(FILE)
+                || die "$ERROR: Error occurred when closing $docu_top_file: $!\n";
+        }
     }
 
-    close(FILE) if $T2H_SPLIT;
 
     #############################################################################
     # Print sections
