@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.20 2003-02-25 13:56:50 karl Exp $
+$Id: dir-example,v 1.21 2003-02-27 13:43:48 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -21,6 +21,7 @@ A few useful Info commands:
 Not all of the topics shown below may be available on this system.
 
 * Menu:
+
 Basics
 * Bash: (bash).                 Bourne-Again SHell.
 * BC: (bc).                     Arbitrary precision calculator language.
@@ -36,8 +37,6 @@ Basics
 
 GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
-* Groff: (groff).               The GNU troff document formatting system.
-* Gzip: (gzip).                 General (de)compression.
 * Identifier DB: (id-utils).    Identifier database utilities.
 * Ispell: (ispell).             Interactive spelling corrector.
 * Make: (make).                 Remake files automatically.
@@ -69,6 +68,13 @@ Texinfo documentation system
 * makeinfo: (texinfo)makeinfo options.          Translate Texinfo source.
 * texi2dvi: (texinfo)Format with texi2dvi.      Printing Texinfo documentation.
 * texindex: (texinfo)Format with tex/texindex.  Sorting Texinfo index files.
+
+Compression:
+* bzip2: (bzip2).               General (de)compression of files (blocksort).
+* Gzip: (gzip).                 General (de)compression of files (lzw).
+
+Typesetting
+* Groff: (groff).               The GNU troff document formatting system.
 
 Printing Tools
 * a2ps: (a2ps).                    PostScript Generating Utility
@@ -208,7 +214,7 @@ DOS
 * GNUish: (gnuish).             GNU utilities for DOS.
 * Mtools: (mtools).             Access DOS disks from Unix.
 
-Graphics
+Font related software
 * Font utilities: (fontu).      Programs for font manipulation.
 
 Science
@@ -248,7 +254,6 @@ Individual utilities
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
 * basename: (sh-utils)basename invocation.      Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
-* bzip2: (bzip2).                               (de)compression.
 * c++filt: (binutils)c++filt.                   Demangle C++ symbols.
 * cat: (textutils)cat invocation.               Concatenate and write files.
 * chgrp: (fileutils)chgrp invocation.           Change file groups.
@@ -302,6 +307,7 @@ Individual utilities
 * gid: (id-utils)gid invocation.                Listing all matching lines.
 * git: (git).                                   GNU interactive tools.
 * groups: (sh-utils)groups invocation.          Print group names a user is in.
+* gzexe: (gzip)Overview.			Compress executables.
 * gunzip: (gzip)Overview.                       Decompression.
 * head: (textutils)head invocation.             Output the first part of files.
 * hostname: (sh-utils)hostname invocation.      Print or set system name.
@@ -419,4 +425,8 @@ Individual utilities
 * xargs: (find)Invoking xargs.                  Operating on many files.
 * yes: (sh-utils)yes invocation.                Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
+* zdiff: (gzip)Overview.                        Compare compressed files.
+* zforce: (gzip)Overview.                       Force .gz extension on files.
+* zgrep: (gzip)Overview.                        Search compressed files.
+* zmore: (gzip)Overview.                        Decompression output by pages.
 * zsh: (zsh).                                   An enhanced Bourne shell.
