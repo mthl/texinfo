@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.10 2003-05-12 13:12:32 karl Exp $
+   $Id: makeinfo.h,v 1.11 2003-10-29 18:32:16 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -154,6 +154,9 @@ DECLARE (char *, current_node, NULL);
 /* Command name in the process of being hacked. */
 DECLARE (char *, command, NULL);
 
+/* Nonzero if we are inside an @titlepage block.  */
+DECLARE (int, inside_titlepage_cmd, 0);
+
 /* @copying ... @end copying. */
 DECLARE (char *, copying_text, NULL);
 
@@ -185,6 +188,9 @@ DECLARE (char *, css_include, NULL);
 /* Nonzero means do not output "Node: Foo" for node separations, that
    is, generate plain text.  (--no-headers) */
 DECLARE (int, no_headers, 0);
+
+/* Nonzero means that we process @docbook and @ifdocbook.  (--ifdocbook) */
+DECLARE (int, process_docbook, 0);
 
 /* Nonzero means that we process @html and @rawhtml even when not
    generating HTML.  (--ifhtml) */

@@ -1,3 +1,77 @@
+2003-10-28  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/cmds.c: output correct elements for @command,
+	@env, @file, @option and @samp commands, and also handle
+	@titlepage in xml output.  New commands: @docbook,
+	@ifdocbook and @ifnotdocbook for conditional docbook output.
+
+	* makeinfo/defun.c (args_from_string): allow comma to be
+	recognized as a separate token to help XML side of things.
+	(process_defun_args): let xml.c handle xml output.
+
+	* makeinfo/insertion.c: handle @verbatim properly when
+	outputting xml.  This means: surround data with a <verbatim>
+	block, use <![[CDATA ... ]]> and disable escaping.
+	Recognize @titlepage, @docbook, @ifdocbook and
+	@ifnotdocbook.
+	(cm_insert_copying): do not trust the consistency of
+	copying_text, because full_expansion doesn't let open
+	docbook elements to be closed.
+	(cm_item): generate correct index entries in xml output.
+
+	* makeinfo/insertion.h: new insertion types: ifdocbook,
+	ifnotdocbook, titlepage.
+
+	* makeinfo/lang.c: notify language changes with
+	@documentlanguage in xml output, using <documentlanguage
+	xml:lang=".." /> elements.
+
+	* makeinfo/makeinfo.c: trailing encoding settings in html
+	output are commented.  Do not append any encoding settings
+	to xml and docbook outputs.  Set process_docbook variable
+	for @docbook, etc. and updated --help about it.
+	(set):
+	(clear): Output @set and @clear in xml so it's possible to
+	pass variables to further processors.
+
+	* makeinfo/makeinfo.h: process_docbook and
+	inside_titlepage_cmd (to check validity of @author, @title,
+	@subtitle, etc.)
+
+	* makeinfo/sectioning.c: heading-only commands (@chaphading,
+	etc.) do not start/end sections in xml output.  They are now
+	equivalents of the title element.
+
+	* makeinfo/toc.c: @contents and @shortcontents now appear in
+	the output.
+
+	* makeinfo/xml.c: changed element_list typedefs to also note
+	whether an element is filled.  Prefilled elements get
+	xml:space="preserve" attribute.  Added xml prolog.  Root element
+	in xml output gets the document language like it does in
+	docbook, but with xml:lang.  Removed indentation for xml
+	output.  Also lines in paragraphs are joined.
+	(xml_process_defun_args):
+	(xml_begin_definition):
+	(xml_end_definition):
+	(xml_begin_def_term):
+	(xml_end_def_term): functions to handle @def environments.
+
+	* makeinfo/xml.h: new elements in xml_element enum:
+	TITLEPAGE, AUTHOR, BOOKTITLE, BOOKSUBTITLE, COMMAND_TAG,
+	ENV, FILE_TAG, OPTION, SAMP, CONTENTS, SHORTCONTENTS,
+	DOCUMENTLANGUAGE, VERBATIM, SETVALUE, CLEARVALUE, DEF*.
+	(Suffices of COMMAND_TAG and FILE_TAG are to avoid variable
+	name clashes.)
+
+	* makeinfo/texinfo.dtd: updated to reflect changes.
+
+	* doc/texinfo.tex: skip @docbook and @ifdocbook.
+
+2003-10-28  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: new -o option to specify output directory.
+
 2003-10-27  Karl Berry  <karl@gnu.org>
 
 	* lib/system.h (LC_MESSAGES): no longer needed according to

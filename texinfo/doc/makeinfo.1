@@ -110,6 +110,9 @@ prepend DIR to the @include search path.
 undefine the variable VAR, as with @clear.
 .SS "Conditional processing in input:"
 .TP
+\fB\-\-ifdocbook\fR
+process @ifdocbook and @docbook even if not generating Docbook.
+.TP
 \fB\-\-ifhtml\fR
 process @ifhtml and @html even if not generating HTML.
 .TP
@@ -124,6 +127,9 @@ process @iftex and @tex; implies \fB\-\-no\-split\fR.
 .TP
 \fB\-\-ifxml\fR
 process @ifxml and @xml.
+.TP
+\fB\-\-no\-ifdocbook\fR
+do not process @ifdocbook and @docbook text.
 .TP
 \fB\-\-no\-ifhtml\fR
 do not process @ifhtml and @html text.

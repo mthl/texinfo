@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.36 2003-10-26 15:12:06 karl Exp $
+   $Id: makeinfo.c,v 1.37 2003-10-29 18:32:16 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -447,11 +447,13 @@ Input file options:\n\
 
     puts (_("\
 Conditional processing in input:\n\
+  --ifdocbook       process @ifdocbook and @docbook even if not generating Docbook.\n\
   --ifhtml          process @ifhtml and @html even if not generating HTML.\n\
   --ifinfo          process @ifinfo even if not generating Info.\n\
   --ifplaintext     process @ifplaintext even if not generating plain text.\n\
   --iftex           process @iftex and @tex; implies --no-split.\n\
   --ifxml           process @ifxml and @xml.\n\
+  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n\
   --no-ifhtml       do not process @ifhtml and @html text.\n\
   --no-ifinfo       do not process @ifinfo text.\n\
   --no-ifplaintext  do not process @ifplaintext text.\n\
@@ -502,6 +504,7 @@ struct option long_options[] =
   { "force", 0, &force, 1 },
   { "help", 0, 0, 'h' },
   { "html", 0, 0, 'w' },
+  { "ifdocbook", 0, &process_docbook, 1 },
   { "ifhtml", 0, &process_html, 1 },
   { "ifinfo", 0, &process_info, 1 },
   { "ifplaintext", 0, &process_plaintext, 1 },
@@ -509,6 +512,7 @@ struct option long_options[] =
   { "ifxml", 0, &process_xml, 1 },
   { "macro-expand", 1, 0, 'E' },
   { "no-headers", 0, &no_headers, 1 },
+  { "no-ifdocbook", 0, &process_docbook, 0 },
   { "no-ifhtml", 0, &process_html, 0 },
   { "no-ifinfo", 0, &process_info, 0 },
   { "no-ifplaintext", 0, &process_plaintext, 0 },
@@ -579,6 +583,7 @@ main (argc, argv)
           splitting = 0;
           xml = 1;
           docbook = 1;
+	  process_docbook = 1;
           break;
 
         case 'e': /* --error-limit */
@@ -1641,11 +1646,18 @@ finished:
       /* maybe we want local variables in info output.  */
       {
         char *trailer = info_trailer ();
-        if (trailer)
-          {
-            insert_string (trailer);
-            free (trailer);
-          }
+	if (!xml && !docbook)
+	  {
+	    if (html)
+	      insert_string ("<!--");
+	    if (trailer)
+	      {
+		insert_string (trailer);
+		free (trailer);
+	      }
+	    if (html)
+	      insert_string ("\n-->\n");
+	  }
       }
 
       flush_output ();          /* in case there was no @bye */
@@ -1897,7 +1909,7 @@ read_command ()
 
         return 1;
       }
-    }
+  }
 
   if (only_macro_expansion)
     {
@@ -3686,6 +3698,13 @@ set (name, value)
   temp->name = xstrdup (name);
   temp->value = xstrdup (value);
   defines = temp;
+
+  if (xml && !docbook)
+    {
+      xml_insert_element_with_attribute (SETVALUE, START, "name=\"%s\"", name);
+      execute_string ("%s", value);
+      xml_insert_element (SETVALUE, END);
+    }
 }
 
 /* Remove NAME from the list of `set' defines. */
@@ -3714,6 +3733,12 @@ clear (name)
         }
       last = temp;
       temp = temp->next;
+    }
+
+  if (xml && !docbook)
+    {
+      xml_insert_element_with_attribute (CLEARVALUE, START, "name=\"%s\"", name);
+      xml_insert_element (CLEARVALUE, END);
     }
 }
 

@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.20 2003-10-20 22:29:44 karl Exp $
+   $Id: cmds.c,v 1.21 2003-10-29 18:32:15 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -68,6 +68,7 @@ void
   cm_print (), cm_error (), cm_point (), cm_today (), cm_flushleft (),
   cm_flushright (), cm_finalout (), cm_cartouche (), cm_detailmenu (),
   cm_multitable (), cm_settitle (), cm_titlefont (), cm_titlepage (), 
+  cm_titlepage_cmds (),
   cm_tie (), cm_tt (),
   cm_verbatim (), cm_verbatiminclude ();
 
@@ -133,6 +134,7 @@ COMMAND command_table[] = {
   { "appendixsubsec", cm_appendixsubsec, NO_BRACE_ARGS },
   { "appendixsubsubsec", cm_appendixsubsubsec, NO_BRACE_ARGS },
   { "asis", cm_no_op, BRACE_ARGS },
+  { "author", cm_titlepage_cmds, NO_BRACE_ARGS },
   { "b", cm_b, BRACE_ARGS },
   { "bullet", cm_bullet, BRACE_ARGS },
   { "bye", cm_bye, NO_BRACE_ARGS },
@@ -199,6 +201,7 @@ COMMAND command_table[] = {
   { "direntry", cm_direntry, NO_BRACE_ARGS },
   { "display", cm_display, NO_BRACE_ARGS },
   { "dmn", cm_no_op, BRACE_ARGS },
+  { "docbook", cm_docbook, NO_BRACE_ARGS },
   { "documentdescription", cm_documentdescription, NO_BRACE_ARGS },
   { "documentencoding", cm_documentencoding, NO_BRACE_ARGS },
   { "documentlanguage", cm_documentlanguage, NO_BRACE_ARGS },
@@ -240,8 +243,10 @@ COMMAND command_table[] = {
   { "i", cm_i, BRACE_ARGS },
   { "ifclear", cm_ifclear, NO_BRACE_ARGS },
   { "ifeq", cm_ifeq, NO_BRACE_ARGS },
+  { "ifdocbook", cm_ifdocbook, NO_BRACE_ARGS },
   { "ifhtml", cm_ifhtml, NO_BRACE_ARGS },
   { "ifinfo", cm_ifinfo, NO_BRACE_ARGS },
+  { "ifnotdocbook", cm_ifnotdocbook, NO_BRACE_ARGS },
   { "ifnothtml", cm_ifnothtml, NO_BRACE_ARGS },
   { "ifnotinfo", cm_ifnotinfo, NO_BRACE_ARGS },
   { "ifnotplaintext", cm_ifnotplaintext, NO_BRACE_ARGS },
@@ -325,6 +330,7 @@ COMMAND command_table[] = {
   { "subsection", cm_subsection, NO_BRACE_ARGS },
   { "subsubheading", cm_subsubheading, NO_BRACE_ARGS },
   { "subsubsection", cm_subsubsection, NO_BRACE_ARGS },
+  { "subtitle", cm_titlepage_cmds, NO_BRACE_ARGS },
   { "summarycontents", cm_shortcontents, NO_BRACE_ARGS },
   { "syncodeindex", cm_synindex, NO_BRACE_ARGS },
   { "synindex", cm_synindex, NO_BRACE_ARGS },
@@ -335,6 +341,7 @@ COMMAND command_table[] = {
   { "tie", cm_tie, BRACE_ARGS },
   { "tieaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "tindex", cm_tindex, NO_BRACE_ARGS },
+  { "title", cm_titlepage_cmds, NO_BRACE_ARGS },
   { "titlefont", cm_titlefont, BRACE_ARGS },
   { "titlepage", cm_titlepage, NO_BRACE_ARGS },
   { "today", cm_today, BRACE_ARGS },
@@ -357,6 +364,7 @@ COMMAND command_table[] = {
   { "verbatiminclude", cm_verbatiminclude, NO_BRACE_ARGS },
   { "vindex", cm_vindex, NO_BRACE_ARGS },
   { "vtable", cm_vtable, NO_BRACE_ARGS },
+  { "vskip", cm_ignore_line, NO_BRACE_ARGS },
   { "w", cm_w, BRACE_ARGS },
   { "xml", cm_html, NO_BRACE_ARGS },
   { "xref", cm_xref, BRACE_ARGS },
@@ -566,7 +574,20 @@ cm_code (arg)
      int arg;
 {
   if (xml)
-    xml_insert_element (CODE, arg);
+    {
+      if (STREQ (command, "command"))
+	xml_insert_element (COMMAND_TAG, arg);
+      else if (STREQ (command, "env"))
+	xml_insert_element (ENV, arg);
+      else if (STREQ (command, "file"))
+	xml_insert_element (FILE_TAG, arg);
+      else if (STREQ (command, "option"))
+	xml_insert_element (OPTION, arg);
+      else if (STREQ (command, "samp"))
+	xml_insert_element (SAMP, arg);
+      else
+	xml_insert_element (CODE, arg);
+    }
   else
     {
       extern int printing_index;
@@ -936,6 +957,8 @@ cm_titlefont (arg)
    }
 }
 
+/* Title page commands. */
+
 int titlepage_cmd_present = 0;
 
 void
@@ -943,7 +966,39 @@ cm_titlepage (arg)
      int arg;
 {
   titlepage_cmd_present = 1;
-  command_name_condition ();
+  if (xml && !docbook)
+    begin_insertion (titlepage);
+  else
+    command_name_condition ();
+}
+
+void
+cm_titlepage_cmds ()
+{
+  char *rest;
+
+  if (!inside_titlepage_cmd)
+    line_error (_("Must be in `%ctitlepage' environment to use `%c%s'"), COMMAND_PREFIX, COMMAND_PREFIX, command);
+
+  if (xml && !docbook)
+    {
+      int elt;
+
+      if (strcmp (command, "author") == 0)
+	elt = AUTHOR;
+      else if (strcmp (command, "title") == 0)
+	elt = BOOKTITLE;
+      else if (strcmp (command, "subtitle") == 0)
+	elt = BOOKSUBTITLE;
+
+      get_rest_of_line (1, &rest);
+      xml_insert_element (elt, START);
+      add_word (rest);
+      xml_insert_element (elt, END);
+      free (rest);
+    }
+  else
+    cm_ignore_line ();
 }
 
 /* Various commands are no-op's. */

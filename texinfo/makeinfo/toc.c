@@ -1,5 +1,5 @@
 /* toc.c -- table of contents handling.
-   $Id: toc.c,v 1.3 2002-11-07 16:13:59 karl Exp $
+   $Id: toc.c,v 1.4 2003-10-29 18:32:17 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -30,6 +30,7 @@
 #include "makeinfo.h"
 #include "sectioning.h"
 #include "toc.h"
+#include "xml.h"
 
 
 
@@ -500,6 +501,14 @@ cm_contents (arg)
           insert_string (contents_placebo); /* just mark it, for now */
         }
     }
+  else
+    {
+      if (xml && arg == START)
+	{
+	  xml_insert_element (CONTENTS, START);
+	  xml_insert_element (CONTENTS, END);
+	}
+    }
 }
 
 void
@@ -528,5 +537,13 @@ cm_shortcontents (arg)
           shortcontents_filename = xstrdup (current_output_filename);
           insert_string (shortcontents_placebo); /* just mark it, for now */
         }
+    }
+  else
+    {
+      if (xml && arg == START)
+	{
+	  xml_insert_element (SHORTCONTENTS, START);
+	  xml_insert_element (SHORTCONTENTS, END);
+	}
     }
 }

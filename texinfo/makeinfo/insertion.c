@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.31 2003-10-26 15:12:45 karl Exp $
+   $Id: insertion.c,v 1.32 2003-10-29 18:32:15 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -34,12 +34,12 @@ static char *insertion_type_names[] =
   "deftypefun", "deftypeivar", "deftypemethod", "deftypeop",
   "deftypevar", "deftypevr", "defun", "defvar", "defvr", "detailmenu",
   "direntry", "display", "documentdescription", "enumerate", "example",
-  "flushleft", "flushright", "format", "ftable", "group", "ifclear",
-  "ifhtml", "ifinfo", "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex", "ifnotxml",
-  "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp", "menu",
-  "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
+  "flushleft", "flushright", "format", "ftable", "group", "ifclear", "ifdocbook",
+  "ifhtml", "ifinfo", "ifnotdocbook", "ifnothtml", "ifnotinfo", "ifnotplaintext",
+  "ifnottex", "ifnotxml", "ifplaintext", "ifset", "iftex", "ifxml", "itemize",
+  "lisp", "menu", "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
   "smallexample", "smallformat", "smalllisp", "verbatim", "table",
-  "tex", "vtable", "bad_type"
+  "tex", "vtable", "titlepage", "bad_type"
 };
 
 /* All nested environments.  */
@@ -228,6 +228,8 @@ find_type_from_name (name)
       if (index == rawhtml && STREQ (name, "html"))
         return rawhtml;
       if (index == rawhtml && STREQ (name, "xml"))
+        return rawhtml;
+      if (index == rawhtml && STREQ (name, "docbook"))
         return rawhtml;
       if (index == rawtex && STREQ (name, "tex"))
         return rawtex;
@@ -502,7 +504,7 @@ begin_insertion (type)
 	    }
 	}
       if (!html && !no_headers)
-        cm_insert_copying ();
+        cm_insert_copying (1);
       if (docbook && xml_in_abstract)
 	{
 	  xml_insert_element (ABSTRACT, END);
@@ -667,8 +669,10 @@ begin_insertion (type)
 
       /* Insertions that are no-ops in info, but do something in TeX. */
     case ifclear:
+    case ifdocbook:
     case ifhtml:
     case ifinfo:
+    case ifnotdocbook:
     case ifnothtml:
     case ifnotinfo:
     case ifnotplaintext:
@@ -710,6 +714,8 @@ begin_insertion (type)
       filling_enabled = indented_fill = 1;
       current_indent += default_indentation_increment;
       no_indent = 0;
+      if (xml && !docbook)
+	xml_begin_definition ();
       break;
 
     case flushleft:
@@ -727,6 +733,11 @@ begin_insertion (type)
       force_flush_right++;
       if (html)
         add_word ("<div align=\"right\">");
+      break;
+
+    case titlepage:
+      xml_insert_element (TITLEPAGE, START);
+      inside_titlepage_cmd = 1;
       break;
 
     default:
@@ -823,6 +834,9 @@ end_insertion (type)
         case group:
           xml_insert_element (GROUP, END);
           break;
+	case titlepage:
+	  xml_insert_element (TITLEPAGE, END);
+	  break;
         }
     }
   switch (type)
@@ -831,8 +845,10 @@ end_insertion (type)
     case copying:
     case documentdescription:
     case ifclear:
+    case ifdocbook:
     case ifinfo:
     case ifhtml:
+    case ifnotdocbook:
     case ifnothtml:
     case ifnotinfo:
     case ifnotplaintext:
@@ -843,6 +859,10 @@ end_insertion (type)
     case iftex:
     case ifxml:
     case rawtex:
+      break;
+
+    case titlepage:
+      inside_titlepage_cmd = 0;
       break;
 
     case rawhtml:
@@ -975,6 +995,8 @@ end_insertion (type)
             if (html)
               /* close the tables which has been opened in defun.c */
               add_word ("</td></tr>\n</table>\n");
+	    if (xml && !docbook)
+	      xml_end_definition ();
             break;
           } /* switch (base_type)... */
   
@@ -1085,12 +1107,15 @@ cm_copying ()
 
 /* Not an insertion, despite the name, but it goes with cm_copying.  */
 void
-cm_insert_copying ()
+cm_insert_copying (docbook_dont_fix_tags)
+  int docbook_dont_fix_tags;
 {
   if (copying_text)
     { /* insert_string rather than add_word because we've already done
          full expansion on copying_text when we saved it.  */
       insert_string (copying_text);
+      if (docbook && !docbook_dont_fix_tags)
+	insert_string ("</para></abstract>");
       insert ('\n');
       
       /* Update output_position so that the node positions in the tag
@@ -1217,6 +1242,7 @@ handle_verbatim_environment (find_end_verbatim)
   int seen_end = 0;
   int save_filling_enabled = filling_enabled;
   int save_inhibit_paragraph_indentation = inhibit_paragraph_indentation;
+  int save_escape_html = escape_html;
 
   if (!insertion_stack)
     close_single_paragraph (); /* no blank lines if not at outer level */
@@ -1240,6 +1266,12 @@ handle_verbatim_environment (find_end_verbatim)
       add_word ("<pre class=\"verbatim\">");
       for (i = current_indent; i > 0; i--)
         add_char (' ');
+    }
+  else if (xml && !docbook)
+    {
+      escape_html = 0;
+      xml_insert_element (VERBATIM, START);
+      add_word ("<![CDATA[");
     }
 
   while (input_text_offset < input_text_length)
@@ -1277,6 +1309,12 @@ handle_verbatim_environment (find_end_verbatim)
     { /* See comments in example case above.  */
       kill_self_indent (default_indentation_increment);
       add_word ("</pre>");
+    }
+  else if (xml && !docbook)
+    {
+      add_word ("]]>");
+      xml_insert_element (VERBATIM, END);
+      escape_html = save_escape_html;
     }
   
   in_fixed_width_font--;
@@ -1326,6 +1364,33 @@ cm_html (arg)
 {
   if (process_html || process_xml)
     begin_insertion (rawhtml);
+  else
+    command_name_condition ();
+}
+
+void
+cm_docbook (arg)
+{
+  if (process_docbook)
+    begin_insertion (rawhtml);
+  else
+    command_name_condition ();
+}
+
+void
+cm_ifdocbook ()
+{
+  if (process_docbook)
+    begin_insertion (ifdocbook);
+  else
+    command_name_condition ();
+}
+
+void
+cm_ifnotdocbook ()
+{
+  if (!process_docbook)
+    begin_insertion (ifnotdocbook);
   else
     command_name_condition ();
 }
@@ -1713,6 +1778,13 @@ cm_item ()
           else if (xml) /* && docbook)*/ /* 05-08 */
             {
               xml_begin_table_item ();
+
+              if (!docbook && current_insertion_type () == ftable)
+                execute_string ("%cfindex %s\n", COMMAND_PREFIX, rest_of_line);
+
+              if (!docbook && current_insertion_type () == vtable)
+                execute_string ("%cvindex %s\n", COMMAND_PREFIX, rest_of_line);
+
               if (item_func && *item_func)
                 execute_string ("%s{%s}", item_func, rest_of_line);
               else

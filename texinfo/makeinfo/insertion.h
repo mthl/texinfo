@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.2 2002-09-29 19:15:20 karl Exp $
+   $Id: insertion.h,v 1.3 2003-10-29 18:32:16 karl Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002 Free Software Foundation, Inc.
 
@@ -27,11 +27,11 @@ enum insertion_type
   defopt, defspec, deftp, deftypefn, deftypefun, deftypeivar,
   deftypemethod, deftypeop, deftypevar, deftypevr, defun, defvar, defvr,
   detailmenu, direntry, display, documentdescription, enumerate,
-  example, flushleft, flushright, format, ftable, group, ifclear,
-  ifhtml, ifinfo, ifnothtml, ifnotinfo, ifnotplaintext, ifnottex, ifnotxml, 
-  ifplaintext, ifset, iftex, ifxml, itemize, lisp, menu, multitable, quotation,
-  rawhtml, rawtex, smalldisplay, smallexample, smallformat, smalllisp,
-  verbatim, table, tex, vtable, bad_type
+  example, flushleft, flushright, format, ftable, group, ifclear, ifdocbook,
+  ifhtml, ifinfo, ifnotdocbook, ifnothtml, ifnotinfo, ifnotplaintext, ifnottex,
+  ifnotxml, ifplaintext, ifset, iftex, ifxml, itemize, lisp, menu, multitable,
+  quotation, rawhtml, rawtex, smalldisplay, smallexample, smallformat, smalllisp,
+  verbatim, table, tex, vtable, titlepage, bad_type
 };
 
 typedef struct istack_elt
@@ -56,6 +56,7 @@ extern int had_menu_commentary;
 extern int in_paragraph;
 
 extern void command_name_condition ();
+extern void cm_ifdocbook (), cm_ifnotdocbook(), cm_docbook ();
 extern void cm_ifhtml (), cm_ifnothtml(), cm_html ();
 extern void cm_ifinfo (), cm_ifnotinfo ();
 extern void cm_ifplaintext (), cm_ifnotplaintext();

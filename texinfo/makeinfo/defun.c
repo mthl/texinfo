@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.8 2003-08-20 19:12:26 karl Exp $
+   $Id: defun.c,v 1.9 2003-10-29 18:32:15 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -176,6 +176,15 @@ args_from_string (string)
           token_end = balanced ? (scan_string - 1) : scan_string;
         }
 
+      /* Make commas separate tokens so to differentiate them from
+         parameter types in XML output. */
+      else if (*scan_string == ',')
+	{
+          token_start = scan_string;
+          scan_string += 1;
+          token_end = scan_string;
+	}
+
       /* Otherwise a token is delimited by whitespace, parentheses,
          brackets, or braces.  A token is also ended by a command. */
       else
@@ -197,6 +206,14 @@ args_from_string (string)
                   scan_string--;
                   break;
                 }
+
+	      /* End token if we are looking at a comma, as commas are
+		 delimiters too. */
+	      if (c == ',')
+		{
+		  scan_string--;
+		  break;
+		}
 
               /* If we encounter a command embedded within a token,
                  then end the token. */
@@ -221,6 +238,12 @@ process_defun_args (defun_args, auto_var_p)
      int auto_var_p;
 {
   int pending_space = 0;
+
+  if (xml && !docbook)
+    {
+      xml_process_defun_args (defun_args, auto_var_p);
+      return;
+    }
 
   for (;;)
     {
@@ -462,7 +485,7 @@ defun_internal (type, x_p)
       add_word ("<p>\n");
   }
 
-  if (!html && !docbook)
+  if (!html && !xml)
     switch (base_type)
       {
       case deffn:
@@ -582,6 +605,10 @@ defun_internal (type, x_p)
 
     } /* if (docbook)... */
 
+  if (xml && !docbook)
+    xml_begin_def_term (base_type, category, defined_name, type_name,
+	type_name2);
+
   current_indent += default_indentation_increment;
 
   /* Now process the function arguments, if any.  If these carry onto
@@ -677,29 +704,34 @@ defun_internal (type, x_p)
     } /* if (html)... */
 
   /* Make an entry in the appropriate index. */
-  switch (base_type)
-    {
-    case deffn:
-    case deftypefn:
-      execute_string ("@findex %s\n", defined_name);
-      break;
-    case defvr:
-    case deftypevr:
-    case defcv:
-      execute_string ("@vindex %s\n", defined_name);
-      break;
-    case deftypeivar:
-      execute_string ("@vindex %s %s %s\n", defined_name, _("of"), type_name);
-      break;
-    case defop:
-    case deftypeop:
-    case deftypemethod:
-      execute_string ("@findex %s %s %s\n", defined_name, _("on"), type_name);
-      break;
-    case deftp:
-      execute_string ("@tindex %s\n", defined_name);
-      break;
-    }
+  /* (XML already got its index entry so skip it.) */
+  if (!xml || docbook)
+    switch (base_type)
+      {
+      case deffn:
+      case deftypefn:
+	execute_string ("@findex %s\n", defined_name);
+	break;
+      case defvr:
+      case deftypevr:
+      case defcv:
+	execute_string ("@vindex %s\n", defined_name);
+	break;
+      case deftypeivar:
+	execute_string ("@vindex %s %s %s\n", defined_name, _("of"), type_name);
+	break;
+      case defop:
+      case deftypeop:
+      case deftypemethod:
+	execute_string ("@findex %s %s %s\n", defined_name, _("on"), type_name);
+	break;
+      case deftp:
+	execute_string ("@tindex %s\n", defined_name);
+	break;
+      }
+
+  if (xml && !docbook)
+    xml_end_def_term ();
 
   /* Deallocate the token list. */
   scan_args = defun_args;

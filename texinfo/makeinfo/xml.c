@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.19 2003-05-13 16:37:54 karl Exp $
+   $Id: xml.c,v 1.20 2003-10-29 18:32:17 karl Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -39,286 +39,353 @@ typedef struct _element
   char name[32];
   int contains_para;
   int contained_in_para;
+  int keep_space;
 } element;
 
 element texinfoml_element_list [] = {
-  { "texinfo",             1, 0 },
-  { "setfilename",         0, 0 },
-  { "titlefont",           0, 0 },
-  { "settitle",            0, 0 },
+  { "texinfo",             1, 0, 0 },
+  { "setfilename",         0, 0, 0 },
+  { "titlefont",           0, 0, 0 },
+  { "settitle",            0, 0, 0 },
 
-  { "node",                1, 0 },
-  { "nodenext",            0, 0 },
-  { "nodeprev",            0, 0 },
-  { "nodeup",              0, 0 },
+  { "node",                1, 0, 0 },
+  { "nodenext",            0, 0, 0 },
+  { "nodeprev",            0, 0, 0 },
+  { "nodeup",              0, 0, 0 },
 
-  { "chapter",             1, 0 },
-  { "section",             1, 0 },
-  { "subsection",          1, 0 },
-  { "subsubsection",       1, 0 },
+  { "chapter",             1, 0, 0 },
+  { "section",             1, 0, 0 },
+  { "subsection",          1, 0, 0 },
+  { "subsubsection",       1, 0, 0 },
 
-  { "top",                 1, 0 },
-  { "unnumbered",          1, 0 },
-  { "unnumberedsec",       1, 0 },
-  { "unnumberedsubsec",    1, 0 },
-  { "unnumberedsubsubsec", 1, 0 },
+  { "top",                 1, 0, 0 },
+  { "unnumbered",          1, 0, 0 },
+  { "unnumberedsec",       1, 0, 0 },
+  { "unnumberedsubsec",    1, 0, 0 },
+  { "unnumberedsubsubsec", 1, 0, 0 },
 
-  { "appendix",            1, 0 },
-  { "appendixsec",         1, 0 },
-  { "appendixsubsec",      1, 0 },
-  { "appendixsubsubsec",   1, 0 },
+  { "appendix",            1, 0, 0 },
+  { "appendixsec",         1, 0, 0 },
+  { "appendixsubsec",      1, 0, 0 },
+  { "appendixsubsubsec",   1, 0, 0 },
 
-  { "majorheading",        1, 0 },
-  { "chapheading",         1, 0 },
-  { "heading",             1, 0 },
-  { "subheading",          1, 0 },
-  { "subsubheading",       1, 0 },
+  { "majorheading",        0, 0, 0 },
+  { "chapheading",         0, 0, 0 },
+  { "heading",             0, 0, 0 },
+  { "subheading",          0, 0, 0 },
+  { "subsubheading",       0, 0, 0 },
 
-  { "menu",                1, 0 },
-  { "menuentry",           1, 0 },
-  { "menutitle",           0, 0 },
-  { "menucomment",         1, 0 },
-  { "menunode",            0, 0 },
-  { "nodename",            0, 0 },
+  { "titlepage",           1, 0, 0 },
+  { "author",              0, 0, 0 },
+  { "booktitle",           0, 0, 0 },
+  { "booksubtitle",        0, 0, 0 },
 
-  { "acronym",             0, 1 },
-  { "tt",                  0, 1 },
-  { "code",                0, 1 },
-  { "kbd",                 0, 1 },
-  { "url",                 0, 1 },
-  { "key",                 0, 1 },
-  { "var",                 0, 1 },
-  { "sc",                  0, 1 },
-  { "dfn",                 0, 1 },
-  { "emph",                0, 1 },
-  { "strong",              0, 1 },
-  { "cite",                0, 1 },
-  { "notfixedwidth",       0, 1 },
-  { "i",                   0, 1 },
-  { "b",                   0, 1 },
-  { "r",                   0, 1 },
+  { "menu",                1, 0, 0 },
+  { "menuentry",           1, 0, 0 },
+  { "menutitle",           0, 0, 0 },
+  { "menucomment",         1, 0, 0 },
+  { "menunode",            0, 0, 0 },
+  { "nodename",            0, 0, 0 },
 
-  { "title",               0, 0 },
-  { "ifinfo",              1, 0 },
-  { "sp",                  0, 0 },
-  { "center",              1, 0 },
-  { "dircategory",         0, 0 },
-  { "quotation",           0, 0 },
-  { "example",             0, 0 },
-  { "smallexample",        0, 0 },
-  { "lisp",                0, 0 },
-  { "smalllisp",           0, 0 },
-  { "cartouche",           1, 0 },
-  { "copying",             1, 0 },
-  { "format",              0, 0 },
-  { "smallformat",         0, 0 },
-  { "display",             0, 0 },
-  { "smalldisplay",        0, 0 },
-  { "footnote",            0, 1 },
+  { "acronym",             0, 1, 0 },
+  { "tt",                  0, 1, 0 },
+  { "code",                0, 1, 0 },
+  { "command",             0, 1, 0 },
+  { "env",                 0, 1, 0 },
+  { "file",                0, 1, 0 },
+  { "option",              0, 1, 0 },
+  { "samp",                0, 1, 0 },
+  { "kbd",                 0, 1, 0 },
+  { "url",                 0, 1, 0 },
+  { "key",                 0, 1, 0 },
+  { "var",                 0, 1, 0 },
+  { "sc",                  0, 1, 0 },
+  { "dfn",                 0, 1, 0 },
+  { "emph",                0, 1, 0 },
+  { "strong",              0, 1, 0 },
+  { "cite",                0, 1, 0 },
+  { "notfixedwidth",       0, 1, 0 },
+  { "i",                   0, 1, 0 },
+  { "b",                   0, 1, 0 },
+  { "r",                   0, 1, 0 },
 
-  { "itemize",             0, 0 },
-  { "itemfunction",        0, 0 },
-  { "item",                1, 0 },
-  { "enumerate",           0, 0 },
-  { "table",               0, 0 },
-  { "tableitem",           0, 0 }, /* not used */ /* TABLEITEM */
-  { "tableterm",           0, 0 }, /* not used */ /* TABLETERM */
+  { "title",               0, 0, 0 },
+  { "ifinfo",              1, 0, 0 },
+  { "sp",                  0, 0, 0 },
+  { "center",              1, 0, 0 },
+  { "dircategory",         0, 0, 0 },
+  { "quotation",           1, 0, 0 },
+  { "example",             0, 0, 1 },
+  { "smallexample",        0, 0, 1 },
+  { "lisp",                0, 0, 1 },
+  { "smalllisp",           0, 0, 1 },
+  { "cartouche",           1, 0, 0 },
+  { "copying",             1, 0, 0 },
+  { "format",              0, 0, 1 },
+  { "smallformat",         0, 0, 1 },
+  { "display",             0, 0, 1 },
+  { "smalldisplay",        0, 0, 1 },
+  { "footnote",            0, 1, 0 },
 
-  { "indexterm",           0, 1 },
+  { "itemize",             0, 0, 0 },
+  { "itemfunction",        0, 0, 0 },
+  { "item",                1, 0, 0 },
+  { "enumerate",           0, 0, 0 },
+  { "table",               0, 0, 0 },
+  { "tableitem",           0, 0, 0 }, /* not used */ /* TABLEITEM */
+  { "tableterm",           0, 0, 0 }, /* not used */ /* TABLETERM */
 
-  { "xref",                0, 1 },
-  { "xrefnodename",        0, 1 },
-  { "xrefinfoname",        0, 1 },
-  { "xrefprinteddesc",     0, 1 },
-  { "xrefinfofile",        0, 1 },
-  { "xrefprintedname",     0, 1 },
+  { "indexterm",           0, 1, 0 },
 
-  { "inforef",             0, 1 },
-  { "inforefnodename",     0, 1 },
-  { "inforefrefname",      0, 1 },
-  { "inforefinfoname",     0, 1 },
+  { "xref",                0, 1, 0 },
+  { "xrefnodename",        0, 1, 0 },
+  { "xrefinfoname",        0, 1, 0 },
+  { "xrefprinteddesc",     0, 1, 0 },
+  { "xrefinfofile",        0, 1, 0 },
+  { "xrefprintedname",     0, 1, 0 },
 
-  { "uref",                0, 1 },
-  { "urefurl",             0, 1 },
-  { "urefdesc",            0, 1 },
-  { "urefreplacement",     0, 1 },
+  { "inforef",             0, 1, 0 },
+  { "inforefnodename",     0, 1, 0 },
+  { "inforefrefname",      0, 1, 0 },
+  { "inforefinfoname",     0, 1, 0 },
 
-  { "email",               0, 1 },
-  { "emailaddress",        0, 1 },
-  { "emailname",           0, 1 },
+  { "uref",                0, 1, 0 },
+  { "urefurl",             0, 1, 0 },
+  { "urefdesc",            0, 1, 0 },
+  { "urefreplacement",     0, 1, 0 },
 
-  { "group",               0, 0 },
+  { "email",               0, 1, 0 },
+  { "emailaddress",        0, 1, 0 },
+  { "emailname",           0, 1, 0 },
 
-  { "printindex",          0, 0 },
-  { "anchor",              0, 1 },
-  { "image",               0, 1 },
-  { "",                    0, 1 }, /* PRIMARY (docbook) */
-  { "",                    0, 1 }, /* SECONDARY (docbook) */
-  { "",                    0, 0 }, /* INFORMALFIGURE (docbook) */
-  { "",                    0, 0 }, /* MEDIAOBJECT (docbook) */
-  { "",                    0, 0 }, /* IMAGEOBJECT (docbook) */
-  { "",                    0, 0 }, /* IMAGEDATA (docbook) */
-  { "",                    0, 0 }, /* TEXTOBJECT (docbook) */
-  { "",                    0, 0 }, /* INDEXENTRY (docbook) */
-  { "",                    0, 0 }, /* PRIMARYIE (docbook) */
-  { "",                    0, 0 }, /* SECONDARYIE (docbook) */
-  { "",                    0, 0 }, /* INDEXDIV (docbook) */
-  { "multitable",          0, 0 },
-  { "",                    0, 0 }, /* TGROUP (docbook) */
-  { "columnfraction",      0, 0 },
-  { "",                    0, 0 }, /* TBODY (docbook) */
-  { "entry",               0, 0 }, /* ENTRY (docbook) */
-  { "row",                 0, 0 }, /* ROW (docbook) */
-  { "",                    0, 0 }, /* BOOKINFO (docbook) */
-  { "",                    0, 0 }, /* ABSTRACT (docbook) */
-  { "",                    0, 0 }, /* REPLACEABLE (docbook) */
-  { "",                    0, 0 }, /* ENVAR (docbook) */
-  { "",                    0, 0 }, /* COMMENT (docbook) */
-  { "",                    0, 0 }, /* FUNCTION (docbook) */
-  { "",                    0, 0 }, /* LEGALNOTICE (docbook) */
+  { "group",               0, 0, 0 },
 
-  { "para",                0, 0 } /* Must be last */
-  /* name / contains para / contained in para */
+  { "printindex",          0, 0, 0 },
+  { "anchor",              0, 1, 0 },
+  { "image",               0, 1, 0 },
+  { "",                    0, 1, 0 }, /* PRIMARY (docbook) */
+  { "",                    0, 1, 0 }, /* SECONDARY (docbook) */
+  { "",                    0, 0, 0 }, /* INFORMALFIGURE (docbook) */
+  { "",                    0, 0, 0 }, /* MEDIAOBJECT (docbook) */
+  { "",                    0, 0, 0 }, /* IMAGEOBJECT (docbook) */
+  { "",                    0, 0, 0 }, /* IMAGEDATA (docbook) */
+  { "",                    0, 0, 0 }, /* TEXTOBJECT (docbook) */
+  { "",                    0, 0, 0 }, /* INDEXENTRY (docbook) */
+  { "",                    0, 0, 0 }, /* PRIMARYIE (docbook) */
+  { "",                    0, 0, 0 }, /* SECONDARYIE (docbook) */
+  { "",                    0, 0, 0 }, /* INDEXDIV (docbook) */
+  { "multitable",          0, 0, 0 },
+  { "",                    0, 0, 0 }, /* TGROUP (docbook) */
+  { "columnfraction",      0, 0, 0 },
+  { "",                    0, 0, 0 }, /* TBODY (docbook) */
+  { "entry",               0, 0, 0 }, /* ENTRY (docbook) */
+  { "row",                 0, 0, 0 }, /* ROW (docbook) */
+  { "",                    0, 0, 0 }, /* BOOKINFO (docbook) */
+  { "",                    0, 0, 0 }, /* ABSTRACT (docbook) */
+  { "",                    0, 0, 0 }, /* REPLACEABLE (docbook) */
+  { "",                    0, 0, 0 }, /* ENVAR (docbook) */
+  { "",                    0, 0, 0 }, /* COMMENT (docbook) */
+  { "",                    0, 0, 0 }, /* FUNCTION (docbook) */
+  { "",                    0, 0, 0 }, /* LEGALNOTICE (docbook) */
+
+  { "contents",            0, 0, 0 },
+  { "shortcontents",       0, 0, 0 },
+  { "documentlanguage",    0, 1, 0 },
+  { "verbatim",            0, 0, 1 },
+
+  { "setvalue",            0, 0, 0 },
+  { "clearvalue",          0, 0, 0 },
+
+  { "definition",          0, 0, 0 },
+  { "definitionterm",      0, 0, 0 },
+  { "definitionitem",      1, 0, 0 },
+  { "defcategory",         0, 0, 0 },
+  { "deffunction",         0, 0, 0 },
+  { "defvariable",         0, 0, 0 },
+  { "defparam",            0, 0, 0 },
+  { "defdelimiter",        0, 0, 0 },
+  { "deftype",             0, 0, 0 },
+  { "defparamtype",        0, 0, 0 },
+  { "defdatatype",         0, 0, 0 },
+  { "defclass",            0, 0, 0 },
+  { "defclassvar",         0, 0, 0 },
+  { "defoperation",        0, 0, 0 },
+
+  { "para",                0, 0, 0 } /* Must be last */
+  /* name / contains para / contained in para / preserve space */
 };
 
 element docbook_element_list [] = {
-  { "book",                0, 0 }, /* TEXINFO */
-  { "",                    0, 0 }, /* SETFILENAME */
-  { "",                    0, 0 }, /* TITLEINFO */
-  { "title",               0, 0 }, /* SETTITLE */
+  { "book",                0, 0, 0 }, /* TEXINFO */
+  { "",                    0, 0, 0 }, /* SETFILENAME */
+  { "",                    0, 0, 0 }, /* TITLEINFO */
+  { "title",               0, 0, 0 }, /* SETTITLE */
 
-  { "",                    1, 0 }, /* NODE */
-  { "",                    0, 0 }, /* NODENEXT */
-  { "",                    0, 0 }, /* NODEPREV */
-  { "",                    0, 0 }, /* NODEUP */
+  { "",                    1, 0, 0 }, /* NODE */
+  { "",                    0, 0, 0 }, /* NODENEXT */
+  { "",                    0, 0, 0 }, /* NODEPREV */
+  { "",                    0, 0, 0 }, /* NODEUP */
 
-  { "chapter",             1, 0 },
-  { "sect1",               1, 0 }, /* SECTION */
-  { "sect2",               1, 0 }, /* SUBSECTION */
-  { "sect3",               1, 0 }, /* SUBSUBSECTION */
+  { "chapter",             1, 0, 0 },
+  { "sect1",               1, 0, 0 }, /* SECTION */
+  { "sect2",               1, 0, 0 }, /* SUBSECTION */
+  { "sect3",               1, 0, 0 }, /* SUBSUBSECTION */
 
-  { "chapter",             1, 0 }, /* TOP */
-  { "chapter",             1, 0 }, /* UNNUMBERED */
-  { "sect1",               1, 0 }, /* UNNUMBEREDSEC */
-  { "sect2",               1, 0 }, /* UNNUMBEREDSUBSEC */
-  { "sect3",               1, 0 }, /* UNNUMBEREDSUBSUBSEC */
+  { "chapter",             1, 0, 0 }, /* TOP */
+  { "chapter",             1, 0, 0 }, /* UNNUMBERED */
+  { "sect1",               1, 0, 0 }, /* UNNUMBEREDSEC */
+  { "sect2",               1, 0, 0 }, /* UNNUMBEREDSUBSEC */
+  { "sect3",               1, 0, 0 }, /* UNNUMBEREDSUBSUBSEC */
 
-  { "appendix",            1, 0 },
-  { "sect1",               1, 0 }, /* APPENDIXSEC */
-  { "sect2",               1, 0 }, /* APPENDIXSUBSEC */
-  { "sect3",               1, 0 }, /* APPENDIXSUBSUBSEC */
+  { "appendix",            1, 0, 0 },
+  { "sect1",               1, 0, 0 }, /* APPENDIXSEC */
+  { "sect2",               1, 0, 0 }, /* APPENDIXSUBSEC */
+  { "sect3",               1, 0, 0 }, /* APPENDIXSUBSUBSEC */
 
-  { "chapter",             1, 0 }, /* MAJORHEADING */
-  { "chapter",             1, 0 }, /* CHAPHEADING */
-  { "sect1",               1, 0 }, /* HEADING */
-  { "sect2",               1, 0 }, /* SUBHEADING */
-  { "simplesect",               1, 0 }, /* SUBSUBHEADING */
+  { "chapter",             1, 0, 0 }, /* MAJORHEADING */
+  { "chapter",             1, 0, 0 }, /* CHAPHEADING */
+  { "sect1",               1, 0, 0 }, /* HEADING */
+  { "sect2",               1, 0, 0 }, /* SUBHEADING */
+  { "simplesect",          1, 0, 0 }, /* SUBSUBHEADING */
 
-  { "",                    1, 0 }, /* MENU */
-  { "",                    1, 0 }, /* MENUENTRY */
-  { "",                    0, 0 }, /* MENUTITLE */
-  { "",                    1, 0 }, /* MENUCOMMENT */
-  { "",                    0, 0 }, /* MENUNODE */
-  { "anchor",              0, 0 }, /* NODENAME */
+  { "",                    0, 0, 0 }, /* TITLEPAGE */
+  { "",                    0, 0, 0 }, /* AUTHOR */
+  { "",                    0, 0, 0 }, /* BOOKTITLE */
+  { "",                    0, 0, 0 }, /* BOOKSUBTITLE */
 
-  { "acronym",             0, 1 },
-  { "wordasword",          0, 1 }, /* TT */
-  { "command",             0, 1 }, /* CODE */
-  { "userinput",           0, 1 }, /* KBD */
-  { "wordasword",          0, 1 }, /* URL */
-  { "keycap",              0, 1 }, /* KEY */
-  { "varname",             0, 1 }, /* VAR */
-  { "",                    0, 1 }, /* SC */
-  { "firstterm",           0, 1 }, /* DFN */
-  { "emphasis",            0, 1 }, /* EMPH */
-  { "emphasis",            0, 1 }, /* STRONG */
-  { "citation",            0, 1 }, /* CITE */
-  { "",                    0, 1 },  /* NOTFIXEDWIDTH */
-  { "wordasword",          0, 1 }, /* I */
-  { "wordasword",          0, 1 }, /* B */
-  { "",                    0, 1 }, /* R */
+  { "",                    1, 0, 0 }, /* MENU */
+  { "",                    1, 0, 0 }, /* MENUENTRY */
+  { "",                    0, 0, 0 }, /* MENUTITLE */
+  { "",                    1, 0, 0 }, /* MENUCOMMENT */
+  { "",                    0, 0, 0 }, /* MENUNODE */
+  { "anchor",              0, 0, 0 }, /* NODENAME */
 
-  { "title",               0, 0 },
-  { "",                    1, 0 }, /* IFINFO */
-  { "",                    0, 0 }, /* SP */
-  { "",                    1, 0 }, /* CENTER */
-  { "",                    0, 0 }, /* DIRCATEGORY */
-  { "blockquote",          1, 0 }, /* QUOTATION */
-  { "screen",              0, 1 },
-  { "screen",              0, 1 }, /* SMALLEXAMPLE */
-  { "screen",              0, 1 }, /* LISP */
-  { "screen",              0, 1 }, /* SMALLLISP */
-  { "",                    1, 0 }, /* CARTOUCHE */
-  { "",                    1, 0 }, /* COPYING */
-  { "screen",              0, 1 }, /* FORMAT */
-  { "screen",              0, 1 }, /* SMALLFORMAT */
-  { "screen",              0, 1 }, /* DISPLAY */
-  { "screen",              0, 1 }, /* SMALLDISPLAY */
-  { "footnote",            0, 1 },
+  { "acronym",             0, 1, 0 },
+  { "wordasword",          0, 1, 0 }, /* TT */
+  { "command",             0, 1, 0 }, /* CODE */
+  { "command",             0, 1, 0 }, /* COMMAND */
+  { "command",             0, 1, 0 }, /* ENV */
+  { "command",             0, 1, 0 }, /* FILE */
+  { "command",             0, 1, 0 }, /* OPTION */
+  { "command",             0, 1, 0 }, /* SAMP */
+  { "userinput",           0, 1, 0 }, /* KBD */
+  { "wordasword",          0, 1, 0 }, /* URL */
+  { "keycap",              0, 1, 0 }, /* KEY */
+  { "varname",             0, 1, 0 }, /* VAR */
+  { "",                    0, 1, 0 }, /* SC */
+  { "firstterm",           0, 1, 0 }, /* DFN */
+  { "emphasis",            0, 1, 0 }, /* EMPH */
+  { "emphasis",            0, 1, 0 }, /* STRONG */
+  { "citation",            0, 1, 0 }, /* CITE */
+  { "",                    0, 1, 0 },  /* NOTFIXEDWIDTH */
+  { "wordasword",          0, 1, 0 }, /* I */
+  { "wordasword",          0, 1, 0 }, /* B */
+  { "",                    0, 1, 0 }, /* R */
 
-  { "itemizedlist",        0, 0 }, /* ITEMIZE */
-  { "",                    0, 0 }, /* ITEMFUNCTION */
-  { "listitem",            1, 0 }, /* ITEM */
-  { "orderedlist",         0, 0 }, /* ENUMERATE */
-  { "variablelist",        0, 0 }, /* TABLE */
-  { "varlistentry",        0, 0 }, /* TABLEITEM */
-  { "term",                0, 0 }, /* TABLETERM */
+  { "title",               0, 0, 0 },
+  { "",                    1, 0, 0 }, /* IFINFO */
+  { "",                    0, 0, 0 }, /* SP */
+  { "",                    1, 0, 0 }, /* CENTER */
+  { "",                    0, 0, 0 }, /* DIRCATEGORY */
+  { "blockquote",          1, 0, 0 }, /* QUOTATION */
+  { "screen",              0, 1, 0 },
+  { "screen",              0, 1, 0 }, /* SMALLEXAMPLE */
+  { "screen",              0, 1, 0 }, /* LISP */
+  { "screen",              0, 1, 0 }, /* SMALLLISP */
+  { "",                    1, 0, 0 }, /* CARTOUCHE */
+  { "",                    1, 0, 0 }, /* COPYING */
+  { "screen",              0, 1, 0 }, /* FORMAT */
+  { "screen",              0, 1, 0 }, /* SMALLFORMAT */
+  { "screen",              0, 1, 0 }, /* DISPLAY */
+  { "screen",              0, 1, 0 }, /* SMALLDISPLAY */
+  { "footnote",            0, 1, 0 },
 
-  { "indexterm",           0, 1 }, /* INDEXTERM */
+  { "itemizedlist",        0, 0, 0 }, /* ITEMIZE */
+  { "",                    0, 0, 0 }, /* ITEMFUNCTION */
+  { "listitem",            1, 0, 0 }, /* ITEM */
+  { "orderedlist",         0, 0, 0 }, /* ENUMERATE */
+  { "variablelist",        0, 0, 0 }, /* TABLE */
+  { "varlistentry",        0, 0, 0 }, /* TABLEITEM */
+  { "term",                0, 0, 0 }, /* TABLETERM */
 
-  { "xref",                0, 1 }, /* XREF */
-  { "link",                0, 1 }, /* XREFNODENAME */
-  { "",                    0, 1 }, /* XREFINFONAME */
-  { "",                    0, 1 }, /* XREFPRINTEDDESC */
-  { "",                    0, 1 }, /* XREFINFOFILE */
-  { "",                    0, 1 }, /* XREFPRINTEDNAME */
+  { "indexterm",           0, 1, 0 }, /* INDEXTERM */
 
-  { "",                    0, 1 }, /* INFOREF */
-  { "",                    0, 1 }, /* INFOREFNODENAME */
-  { "",                    0, 1 }, /* INFOREFREFNAME */
-  { "",                    0, 1 }, /* INFOREFINFONAME */
+  { "xref",                0, 1, 0 }, /* XREF */
+  { "link",                0, 1, 0 }, /* XREFNODENAME */
+  { "",                    0, 1, 0 }, /* XREFINFONAME */
+  { "",                    0, 1, 0 }, /* XREFPRINTEDDESC */
+  { "",                    0, 1, 0 }, /* XREFINFOFILE */
+  { "",                    0, 1, 0 }, /* XREFPRINTEDNAME */
 
-  { "",                    0, 1 }, /* UREF */
-  { "",                    0, 1 }, /* UREFURL */
-  { "",                    0, 1 }, /* UREFDESC */
-  { "",                    0, 1 }, /* UREFREPLACEMENT */
+  { "",                    0, 1, 0 }, /* INFOREF */
+  { "",                    0, 1, 0 }, /* INFOREFNODENAME */
+  { "",                    0, 1, 0 }, /* INFOREFREFNAME */
+  { "",                    0, 1, 0 }, /* INFOREFINFONAME */
 
-  { "ulink",               0, 1 }, /* EMAIL */
-  { "",                    0, 1 }, /* EMAILADDRESS */
-  { "",                    0, 1 }, /* EMAILNAME */
+  { "",                    0, 1, 0 }, /* UREF */
+  { "",                    0, 1, 0 }, /* UREFURL */
+  { "",                    0, 1, 0 }, /* UREFDESC */
+  { "",                    0, 1, 0 }, /* UREFREPLACEMENT */
 
-  { "",                    0, 0 }, /* GROUP */
+  { "ulink",               0, 1, 0 }, /* EMAIL */
+  { "",                    0, 1, 0 }, /* EMAILADDRESS */
+  { "",                    0, 1, 0 }, /* EMAILNAME */
 
-  { "index",               0, 1 }, /* PRINTINDEX */
-  { "",                    0, 1 }, /* ANCHOR */
-  { "",                    0, 1 }, /* IMAGE */
-  { "primary",             0, 1 }, /* PRIMARY */
-  { "secondary",           0, 1 },
-  { "informalfigure",      0, 0 },
-  { "mediaobject",         0, 0 },
-  { "imageobject",         0, 0 },
-  { "imagedata",           0, 0 },
-  { "textobject",          0, 0 },
-  { "indexentry",          0, 0 },
-  { "primaryie",           0, 0 },
-  { "secondaryie",         0, 0 },
-  { "indexdiv",            0, 0 },
-  { "informaltable",       0, 0 },
-  { "tgroup",              0, 0 },
-  { "colspec",             0, 0 },
-  { "tbody",               0, 0 },
-  { "entry",               0, 0 },
-  { "row",                 0, 0 },
-  { "bookinfo",            0, 0 },
-  { "abstract",            1, 0 },
-  { "replaceable",         0, 0 },
-  { "envar",               0, 1 },
-  { "comment",             0, 0 },
-  { "function",            0, 1 },
-  { "legalnotice",         1, 0 },
+  { "",                    0, 0, 0 }, /* GROUP */
 
-  { "para",                0, 0 } /* Must be last */
-  /* name / contains para / contained in para */
+  { "index",               0, 1, 0 }, /* PRINTINDEX */
+  { "",                    0, 1, 0 }, /* ANCHOR */
+  { "",                    0, 1, 0 }, /* IMAGE */
+  { "primary",             0, 1, 0 }, /* PRIMARY */
+  { "secondary",           0, 1, 0 },
+  { "informalfigure",      0, 0, 0 },
+  { "mediaobject",         0, 0, 0 },
+  { "imageobject",         0, 0, 0 },
+  { "imagedata",           0, 0, 0 },
+  { "textobject",          0, 0, 0 },
+  { "indexentry",          0, 0, 0 },
+  { "primaryie",           0, 0, 0 },
+  { "secondaryie",         0, 0, 0 },
+  { "indexdiv",            0, 0, 0 },
+  { "informaltable",       0, 0, 0 },
+  { "tgroup",              0, 0, 0 },
+  { "colspec",             0, 0, 0 },
+  { "tbody",               0, 0, 0 },
+  { "entry",               0, 0, 0 },
+  { "row",                 0, 0, 0 },
+  { "bookinfo",            0, 0, 0 },
+  { "abstract",            1, 0, 0 },
+  { "replaceable",         0, 0, 0 },
+  { "envar",               0, 1, 0 },
+  { "comment",             0, 0, 0 },
+  { "function",            0, 1, 0 },
+  { "legalnotice",         1, 0, 0 },
+
+  { "",                    0, 0, 0 }, /* CONTENTS (xml) */
+  { "",                    0, 0, 0 }, /* SHORTCONTENTS (xml) */
+  { "",                    0, 0, 0 }, /* DOCUMENT LANGUAGE (xml) */
+  { "",                    0, 0, 0 }, /* VERBATIM (xml) */
+
+  { "",                    0, 0, 0 }, /* SETVALUE (xml) */
+  { "",                    0, 0, 0 }, /* CLEARVALUE (xml) */
+
+  { "",                    0, 0, 0 }, /* DEFINITION (xml) */
+  { "",                    0, 0, 0 }, /* DEFINITIONTERM (xml) */
+  { "",                    0, 0, 0 }, /* DEFINITIONITEM (xml) */
+  { "",                    0, 0, 0 }, /* DEFCATEGORY (xml) */
+  { "",                    0, 0, 0 }, /* DEFFUNCTION (xml) */
+  { "",                    0, 0, 0 }, /* DEFVARIABLE (xml) */
+  { "",                    0, 0, 0 }, /* DEFPARAM (xml) */
+  { "",                    0, 0, 0 }, /* DEFDELIMITER (xml) */
+  { "",                    0, 0, 0 }, /* DEFTYPE (xml) */
+  { "",                    0, 0, 0 }, /* DEFPARAMTYPE (xml) */
+  { "",                    0, 0, 0 }, /* DEFDATATYPE (xml) */
+  { "",                    0, 0, 0 }, /* DEFCLASS (xml) */
+  { "",                    0, 0, 0 }, /* DEFCLASSVAR (xml) */
+  { "",                    0, 0, 0 }, /* DEFOPERATION (xml) */
+
+  { "para",                0, 0, 0 } /* Must be last */
+  /* name / contains para / contained in para / preserve space */
 };
 
 element *xml_element_list = NULL;
@@ -364,6 +431,7 @@ int xml_node_open = 0;
 int xml_node_level = -1;
 int xml_in_para = 0;
 int xml_just_after_element = 0;
+int xml_keep_space = 0;
 
 int xml_no_para = 0;
 char *xml_node_id = NULL;
@@ -380,6 +448,10 @@ static int first_section_opened = 0;
 
 static int xml_in_item[256];
 static int xml_table_level = 0;
+
+static int xml_in_def_item[256];
+static int xml_definition_level = 0;
+int xml_after_def_term = 0;
 
 static int in_table_title = 0;
 
@@ -444,16 +516,16 @@ xml_begin_document (output_filename)
     }
   else
     {
-      insert_string ("<!DOCTYPE texinfo SYSTEM \"texinfo.dtd\">");
+      insert_string ("<?xml version=\"1.0\"?><!DOCTYPE texinfo SYSTEM \"texinfo.dtd\">");
       xml_element_list = texinfoml_element_list;
     }
-  if (docbook)
+  if (language_code != last_language_code)
     {
-      if (language_code != last_language_code)
+      if (docbook)
         xml_insert_element_with_attribute (TEXINFO, START, "lang=\"%s\"", language_table[language_code].abbrev);
+      else
+	xml_insert_element_with_attribute (TEXINFO, START, "xml:lang=\"%s\"", language_table[language_code].abbrev);
     }
-  else
-    xml_insert_element (TEXINFO, START);
   if (!docbook)
     {
       xml_insert_element (SETFILENAME, START);
@@ -590,12 +662,19 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   if (!book_started)
-      return;
+    return;
 
   if (xml_after_table_term && elt != TABLETERM)
     {
       xml_after_table_term = 0;
       xml_insert_element (ITEM, START);
+    }
+
+  if (xml_after_def_term && elt != DEFINITIONTERM && arg == START)
+    {
+      xml_after_def_term = 0;
+      xml_insert_element (DEFINITIONITEM, START);
+      xml_in_def_item[xml_definition_level] = 1;
     }
 
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
@@ -611,7 +690,8 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
       && xml_element_list[elt].contained_in_para
       && xml_element_list[xml_current_element()].contains_para )
     {
-      xml_indent ();
+      if (docbook)
+	xml_indent ();
       insert_string ("<para>");
       xml_in_para = 1;
     }
@@ -619,19 +699,21 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
 
   if (arg == START && xml_in_para && !xml_element_list[elt].contained_in_para)
     {
-      xml_indent_end_para ();
+      if (docbook)
+	xml_indent_end_para ();
       insert_string ("</para>");
       xml_in_para = 0;
     }
 
   if (arg == END && xml_in_para && !xml_element_list[elt].contained_in_para)
     {
-      xml_indent_end_para ();
+      if (docbook)
+	xml_indent_end_para ();
       insert_string ("</para>");
       xml_in_para = 0;
     }
 
-  if (arg == START && !xml_in_para && !xml_element_list[elt].contained_in_para)
+  if (arg == START && docbook && !xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_indent ();
 
   if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title
@@ -680,6 +762,17 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
       insert_string ("\"");
       free (xml_node_id);
       xml_node_id = NULL;
+    }
+
+  if (xml_element_list[elt].keep_space)
+    {
+      if (arg == START)
+	{
+	  insert_string (" xml:space=\"preserve\"");
+	  xml_keep_space++;
+	}
+      else
+	xml_keep_space--;
     }
 
   insert ('>');
@@ -875,6 +968,8 @@ void
 xml_add_char (character)
     int character;
 {
+  int xml_skip_newline = 0;
+
   if (!book_started)
       return;
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
@@ -905,6 +1000,13 @@ xml_add_char (character)
       xml_insert_element (ITEM, START);
     }
 
+  if (xml_after_def_term && !xml_sort_index && !xml_in_xref_token)
+    {
+      xml_after_def_term = 0;
+      xml_insert_element (DEFINITIONITEM, START);
+      xml_in_def_item[xml_definition_level] = 1;
+    }
+
   if (xml_just_after_element && !xml_in_para && !inhibit_paragraph_indentation)
     {
       if (character == '\r' || character == '\n' || character == '\t' || character == ' ')
@@ -916,8 +1018,13 @@ xml_add_char (character)
       && !xml_in_para && !only_macro_expansion && !xml_no_para
       && !cr_or_whitespace (character) && !in_fixed_width_font)
     {
-      xml_indent ();
-      insert_string ("<para>\n");
+      if (docbook)
+	{
+	  xml_indent ();
+	  insert_string ("<para>\n");
+	}
+      else
+	insert_string ("<para>");
       xml_in_para = 1;
     }
 
@@ -928,10 +1035,12 @@ xml_add_char (character)
           if (xml_last_character == '\n' && !only_macro_expansion && !xml_no_para
               && xml_element_list[xml_current_element()].contains_para )
             {
-              xml_indent_end_para ();
+	      if (docbook)
+		xml_indent_end_para ();
               insert_string ("</para>");
               xml_in_para = 0;
               xml_just_after_element = 1;
+	      xml_skip_newline = 1;
               if (xml_in_menu_entry_comment)
                 {
                   xml_insert_element (MENUCOMMENT, END);
@@ -948,10 +1057,20 @@ xml_add_char (character)
 
   xml_last_character = character;
 
+  if (xml_skip_newline && !docbook)
+    return;
+
   if (character == '&' && escape_html)
       insert_string ("&amp;");
   else if (character == '<' && escape_html)
       insert_string ("&lt;");
+  else if (character == '\n' && !xml_keep_space && !docbook)
+    {
+      if (!xml_in_para && xml_just_after_element)
+	return;
+      else
+	insert_string (" ");
+    }
   else
     insert (character);
 
@@ -1510,4 +1629,228 @@ xml_end_multitable ()
       xml_insert_element (MULTITABLE, END);
       xml_no_para = 0;
     }
+}
+
+/*
+ * Parameters in @def definitions
+ */
+
+#define DEFUN_SELF_DELIMITING(c) \
+  ((c) == '(' || (c) == ')' || (c) == '[' || (c) == ']')
+
+void
+xml_process_defun_args (defun_args, auto_var_p)
+     char **defun_args;
+     int auto_var_p;
+{
+  int pending_space = 0;
+  int just_after_paramtype = 0;
+
+  for (;;)
+    {
+      char *defun_arg = *defun_args++;
+
+      if (defun_arg == NULL)
+        break;
+
+      if (defun_arg[0] == ' ')
+        {
+          pending_space = 1;
+          continue;
+        }
+
+      if (pending_space)
+        {
+          add_char (' ');
+          pending_space = 0;
+        }
+
+      if (DEFUN_SELF_DELIMITING (defun_arg[0]))
+        {
+	  xml_insert_element (DEFDELIMITER, START);
+          add_char (defun_arg[0]);
+	  xml_insert_element (DEFDELIMITER, END);
+	  just_after_paramtype = 0;
+        }
+      else if (defun_arg[0] == '&')
+	{
+	  xml_insert_element (DEFPARAM, START);
+	  add_word (defun_arg);
+	  xml_insert_element (DEFPARAM, END);
+	  just_after_paramtype = 0;
+	}
+      else if (defun_arg[0] == COMMAND_PREFIX || just_after_paramtype)
+	{
+	  xml_insert_element (DEFPARAM, START);
+	  execute_string ("%s", defun_arg);
+	  xml_insert_element (DEFPARAM, END);
+	  just_after_paramtype = 0;
+	}
+      else if (defun_arg[0] == ',' || defun_arg[0] == ';')
+	{
+	  xml_insert_element (DEFDELIMITER, START);
+	  add_word (defun_arg);
+	  xml_insert_element (DEFDELIMITER, END);
+	  just_after_paramtype = 0;
+	}
+      else if (auto_var_p)
+	{
+	  xml_insert_element (DEFPARAM, START);
+	  add_word (defun_arg);
+	  xml_insert_element (DEFPARAM, END);
+	  just_after_paramtype = 0;
+	}
+      else
+	{
+	  xml_insert_element (DEFPARAMTYPE, START);
+	  add_word (defun_arg);
+	  xml_insert_element (DEFPARAMTYPE, END);
+	  just_after_paramtype = 1;
+	}
+    }
+}
+
+void
+xml_begin_definition ()
+{
+  xml_insert_element (DEFINITION, START);
+  xml_definition_level ++;
+  xml_in_def_item[xml_definition_level] = 0;
+}
+
+void
+xml_end_definition ()
+{
+  if (xml_in_def_item[xml_definition_level])
+    {
+      xml_insert_element (DEFINITIONITEM, END);
+      xml_in_def_item[xml_definition_level] = 0;
+    }
+  xml_after_def_term = 0;
+  xml_insert_element (DEFINITION, END);
+  xml_definition_level --;
+}
+
+void
+xml_begin_def_term (base_type, category, defined_name,
+    type_name, type_name2)
+  int base_type;
+  char *category;
+  char *defined_name;
+  char *type_name;
+  char *type_name2;
+{
+  xml_after_def_term = 0;
+  xml_insert_element (DEFINITIONTERM, START);
+
+  /* Index entry */
+  switch (base_type)
+    {
+    case deffn:
+    case deftypefn:
+      execute_string ("@findex %s\n", defined_name);
+      break;
+    case defvr:
+    case deftypevr:
+    case defcv:
+      execute_string ("@vindex %s\n", defined_name);
+      break;
+    case deftypeivar:
+      execute_string ("@vindex %s %s %s\n", defined_name, _("of"), type_name);
+      break;
+    case defop:
+    case deftypeop:
+    case deftypemethod:
+      execute_string ("@findex %s %s %s\n", defined_name, _("on"), type_name);
+      break;
+    case deftp:
+      execute_string ("@tindex %s\n", defined_name);
+      break;
+    }
+
+  /* Start with category.  */
+  xml_insert_element (DEFCATEGORY, START);
+  execute_string ("%s", category);
+  xml_insert_element (DEFCATEGORY, END);
+  add_char(' ');
+
+  /* Output type name first for typed definitions.  */
+  switch (base_type)
+    {
+    case deffn:
+    case defvr:
+    case deftp:
+      break;
+
+    case deftypefn:
+    case deftypevr:
+      xml_insert_element (DEFTYPE, START);
+      execute_string ("%s", type_name);
+      xml_insert_element (DEFTYPE, END);
+      add_char (' ');
+      break;
+
+    case deftypemethod:
+    case deftypeop:
+    case deftypeivar:
+      xml_insert_element (DEFTYPE, START);
+      execute_string ("%s", type_name2);
+      xml_insert_element (DEFTYPE, END);
+      add_char (' ');
+      break;
+
+    default:
+      xml_insert_element (DEFCLASS, START);
+      execute_string ("%s", type_name);
+      xml_insert_element (DEFCLASS, END);
+      add_char (' ');
+      break;
+    }
+
+  /* Categorize rest of the definitions.  */
+  switch (base_type)
+    {
+    case deffn:
+    case deftypefn:
+      xml_insert_element (DEFFUNCTION, START);
+      execute_string ("%s", defined_name);
+      xml_insert_element (DEFFUNCTION, END);
+      break;
+
+    case defvr:
+    case deftypevr:
+      xml_insert_element (DEFVARIABLE, START);
+      execute_string ("%s", defined_name);
+      xml_insert_element (DEFVARIABLE, END);
+      break;
+
+    case deftp:
+      xml_insert_element (DEFDATATYPE, START);
+      execute_string ("%s", defined_name);
+      xml_insert_element (DEFDATATYPE, END);
+      break;
+
+    case defcv:
+    case deftypeivar:
+      xml_insert_element (DEFCLASSVAR, START);
+      execute_string ("%s", defined_name);
+      xml_insert_element (DEFCLASSVAR, END);
+      break;
+
+    case defop:
+    case deftypeop:
+    case deftypemethod:
+      /* Operation / Method */
+      xml_insert_element (DEFOPERATION, START);
+      execute_string ("%s", defined_name);
+      xml_insert_element (DEFOPERATION, END);
+      break;
+    }
+}
+
+void
+xml_end_def_term ()
+{
+  xml_insert_element (DEFINITIONTERM, END);
+  xml_after_def_term = 1;
 }

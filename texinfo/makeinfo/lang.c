@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.10 2003-10-13 00:23:24 karl Exp $
+   $Id: lang.c,v 1.11 2003-10-29 18:32:16 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -428,6 +428,11 @@ language_type language_table[] = {
 
 /* @documentlanguage.  Maybe we'll do something useful with this in the
    future.  For now, we just recognize it.  */
+
+/* XML documents can make use of this data.  Unfortunately, it clashes with
+   the structure currently used.  So instead of enclosing content into
+   a language block, we just output an empty element.  Anyways, a stream based
+   parser can make good use of it.  */
 void
 cm_documentlanguage ()
 {
@@ -450,6 +455,12 @@ cm_documentlanguage ()
   /* If we didn't find this code, complain.  */
   if (c == last_language_code)
     warning (_("%s is not a valid ISO 639 language code"), lang_arg);
+
+  if (xml && !docbook)
+    {
+      xml_insert_element_with_attribute (DOCUMENTLANGUAGE, START, "xml:lang=\"%s\"", lang_arg);
+      xml_insert_element (DOCUMENTLANGUAGE, END);
+    }
 
   free (lang_arg);
 }
