@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.11 2003-05-01 00:05:27 karl Exp $
+   $Id: node.c,v 1.12 2003-05-01 00:30:07 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1662,7 +1662,7 @@ split_file (filename, size)
     TAG_ENTRY *tags = tag_table;
     char *indirect_info = NULL;
 
-    /* Maybe we want a Local Variables: section.  */
+    /* Maybe we want a Local Variables section.  */
     char *trailer = info_trailer ();
     int trailer_len = trailer ? strlen (trailer) : 0;
 
@@ -1837,7 +1837,7 @@ split_file (filename, size)
       /* Write the indirect tag table.  */
       write_tag_table_indirect ();
 
-      /* preserve local variables: in info output.  */
+      /* preserve local variables in info output.  */
       if (trailer)
         {
           insert_string (trailer);

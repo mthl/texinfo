@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.8 2003-05-01 00:05:27 karl Exp $
+   $Id: makeinfo.h,v 1.9 2003-05-01 00:30:07 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -293,7 +293,7 @@ DECLARE (int, splitting, 1);    /* Defaults to true for now. */
 #define looking_at(string) \
   (strncmp (input_text + input_text_offset, string, strlen (string)) == 0)
 
-/* Possibly return Local Variables: trailer for Info output.  */
+/* Possibly return Local Variables trailer for Info output.  */
 extern char *info_trailer ();
 
 #endif /* not MAKEINFO_H */
