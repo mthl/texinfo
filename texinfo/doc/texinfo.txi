@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.67 2003-09-09 14:31:57 karl Exp $
+@c $Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7623,7 +7623,7 @@ The @code{@@noindent} command may be used after one of the above
 constructs to prevent the following text from being indented as a new
 paragraph.
 
-You can use the @code{@@cartouche} command within one of the above
+You can use the @code{@@cartouche} environment around one of the above
 constructs to highlight the example or quotation by drawing a box with
 rounded corners around it.  @xref{cartouche, , Drawing Cartouches Around
 Examples}.
@@ -8160,20 +8160,18 @@ further highlight an example or quotation.  For instance, you could
 write a manual in which one type of example is surrounded by a cartouche
 for emphasis.
 
-@code{@@cartouche} affects only the printed manual; it has no effect in
-other output files.
+@code{@@cartouche} has no effect in Info output.
 
-@need 1500
 For example,
 
 @example
 @group
-@@example
 @@cartouche
+@@example
 % pwd
 /usr/local/share/emacs
-@@end cartouche
 @@end example
+@@end cartouche
 @end group
 @end example
 
@@ -8181,18 +8179,21 @@ For example,
 surrounds the two-line example with a box with rounded corners, in the
 printed manual.
 
-@iftex
-In a printed manual, the example looks like this:@refill
+In a printed manual or in HTML output, the example looks like this (if
+you're reading this in Info, you'll see the @code{@@cartouche} had no effect):
 
-@example
 @group
 @cartouche
+@example
 % pwd
 /usr/local/lib/emacs/info
+@end example
 @end cartouche
 @end group
-@end example
-@end iftex
+
+For proper output in HTML, it's necessary to put the
+@code{@@cartouche} around the @code{@@example}, and not the other way
+around.  This limitation of @command{makeinfo} may be removed one day.
 
 
 @node Lists and Tables
@@ -17234,7 +17235,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.67 2003-09-09 14:31:57 karl Exp $
+$Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17297,7 +17298,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.67 2003-09-09 14:31:57 karl Exp $
+@comment $Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -19203,7 +19204,7 @@ Format blocks of text.
 
 @table @kbd
 @item @@cartouche
-Draw rounded box surrounding text (not in Info).
+Draw rounded box surrounding text (no effect in Info).
 
 @item @@enumerate @var{optional-arg}
 Enumerate a list with letters or numbers.

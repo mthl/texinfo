@@ -1,3 +1,11 @@
+2003-09-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Cartouche): document that @cartouche needs to
+		be outside the @example for HTML output to work.  This
+		is painful to fix in the current makeinfo.
+	Report from: Simon Josefsson <jas@extundo.com>,
+	11 Sep 2003 15:21:44 +0200.
+
 2003-09-10  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/sectioning.c (section_alist): add entry for centerchap,
