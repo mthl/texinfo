@@ -165,7 +165,7 @@ libintl.la libgnuintl.la: $(OBJECTS)
 # Maintainers of other packages that include the intl directory must *not*
 # change these values.
 LTV_CURRENT=7
-LTV_REVISION=1
+LTV_REVISION=2
 LTV_AGE=4
 
 .SUFFIXES:
@@ -485,7 +485,7 @@ dist distdir: Makefile
 	  $(MAKE) $(DISTFILES.common) $(DISTFILES.generated) $$additional; \
 	  for file in ChangeLog $(DISTFILES.common) $(DISTFILES.generated) $$additional; do \
 	    if test -f $$file; then dir=.; else dir=$(srcdir); fi; \
-	    cp -p $$dir/$$file $(distdir); \
+	    cp -p $$dir/$$file $(distdir) || test $$file = Makefile.in || exit 1; \
 	  done; \
 	fi
 

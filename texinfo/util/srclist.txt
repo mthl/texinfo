@@ -91,9 +91,7 @@ $GNULIBSRC/lib/strerror.c	lib
 $GNULIBSRC/lib/strncasecmp.c	lib
 $GNULIBSRC/lib/tempname.c	lib
 $GNULIBSRC/lib/xalloc.h		lib
-$GNULIBSRC/lib/xstrdup.c	lib
 #
-$GNULIBSRC/m4/check-decl.m4	m4
 $GNULIBSRC/m4/codeset.m4	m4
 $GNULIBSRC/m4/gettext.m4	m4
 $GNULIBSRC/m4/glibc21.m4	m4
@@ -111,7 +109,6 @@ $GNULIBSRC/m4/lib-prefix.m4	m4
 $GNULIBSRC/m4/longlong.m4	m4
 $GNULIBSRC/m4/mkstemp.m4	m4
 $GNULIBSRC/m4/onceonly_2_57.m4	m4
-$GNULIBSRC/m4/prereq.m4		m4
 $GNULIBSRC/m4/progtest.m4	m4
 $GNULIBSRC/m4/stdint_h.m4	m4
 $GNULIBSRC/m4/uintmax_t.m4	m4

@@ -1,6 +1,6 @@
-2005-03-13  Karl Berry  <karl@gnu.org>
+2005-03-15  gettextize  <bug-gnu-gettext@gnu.org>
 
-	* util/texi2dvi: invoke 
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.14.3.
 
 2005-03-12  gettextize  <bug-gnu-gettext@gnu.org>
 
