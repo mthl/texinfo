@@ -1,3 +1,10 @@
+2003-07-25    <karl@gnu.org>
+
+	* doc/texinfo.txi (Raise/lower sections): mention difficulties with
+	node pointer creation and top nodes.
+	Report from: Dumas Patrice <dumas@centre-cired.fr>,
+	22 Jul 2003 13:08:24 +0200.
+
 2003-07-24    <karl@gnu.org>
 
 	* makeinfo/sectioning.c (what_section): take additional SECNAME
