@@ -1,3 +1,12 @@
+2005-03-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (allowcodebreaks): new node.
+	* makeinfo/cmds.c: define @allowcodebreaks (as a no-op).
+	* doc/texinfo.tex (\allowcodebreaks): new macro.
+	(\code): use it.
+	(\realunder, \keywordtrue, \keywordfalse, \ifallowcodebreaks):
+	helpers.
+
 2005-03-15  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.14.3.

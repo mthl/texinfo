@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
+@c $Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -498,6 +498,7 @@ Forcing and Preventing Breaks
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
 * - and hyphenation::           Helping @TeX{} with hyphenation points.
+* allowcodebreaks::             Controlling line breaks within @@code text.
 * w::                           Preventing unwanted line breaks in text.
 * tie::                         Inserting an unbreakable but varying space.
 * sp::                          Inserting blank lines.
@@ -6806,7 +6807,7 @@ The function returns `nil'.
 @end example
 @end iftex
 
-Here are some cases for which it is preferable not to use @code{@@code}:
+Here are some cases for which it is preferable @emph{not} to use @code{@@code}:
 
 @itemize @bullet
 @item
@@ -6849,6 +6850,11 @@ introduced relatively recently, it is acceptable to use @code{@@code} or
 The new commands allow you to express the markup more precisely, but
 there is no real harm in using the older commands, and of course the
 long-standing manuals do so.
+
+Ordinarily, @TeX{} will consider breaking lines at @samp{-} and
+@samp{_} characters within @code{@@code} and related commands.  This
+can be controlled with @code{@@allowcodebreaks}
+(@pxref{allowcodebreaks,,@code{@@allowcodebreaks}}).
 
 
 @node kbd
@@ -11112,6 +11118,7 @@ commands.
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
 * - and hyphenation::           Helping @TeX{} with hyphenation points.
+* allowcodebreaks::             Controlling line breaks within @@code text.
 * w::                           Preventing unwanted line breaks in text.
 * tie::                         Inserting an unbreakable but varying space.
 * sp::                          Inserting blank lines.
@@ -11244,10 +11251,51 @@ put a @samp{-} at each hyphenation point.  For example:
 @@hyphenation@{man-u-script man-u-scripts@}
 @end example
 @noindent @TeX{} only uses the specified hyphenation points when the
-words match exactly, so give all necessary variants.
+words match exactly, so give all necessary variants, such as plurals.
 @end table
 
-Info output is not hyphenated, so these commands have no effect there.
+Info, HTML, and other non-@TeX{} output is not hyphenated, so none of
+these commands have any effect there.
+
+
+@node allowcodebreaks
+@section @code{@@allowcodebreaks}: Control line breaks in @code{@@code}
+
+@findex allowcodebreaks
+@cindex Breaks, within @code{@@code}
+@cindex -, breakpoint within @code{@@code}
+@cindex Hyphen, breakpoint within @code{@@code}
+@cindex Dash, breakpoint within @code{@@code}
+@cindex _, breakpoint within @code{@@code}
+@cindex Underscore, breakpoint within @code{@@code}
+
+Ordinarily, @TeX{} will consider breaking lines at @samp{-} and
+@samp{_} characters within @code{@@code} and related commands
+(@pxref{code,,@code{@@code}}), more or less as if they were ``empty''
+hyphenation points.
+
+This is necessary as many manuals, especially for Lisp-family
+languages, must document very long identifiers.  On the other hand,
+other manuals don't have this problems, and you may not wish to allow
+a line break at the underscore in, for example, @code{SIZE_MAX}, or
+even worse, after any of the four underscores in @code{__typeof__}.
+
+So Texinfo provides this command:
+
+@example
+@@allowcodebreaks false
+@end example
+
+@noindent to prevent @TeX{} from breaking at @samp{-} or @samp{_} within
+@code{@@code}.  You can go back to allowing such breaks with
+@code{@@allowcodebreaks true}.  Write these commands on lines by
+themselves.
+
+These commands can be given anywhere in the document.  For example,
+you may have just one problematic paragraph where you need to turn off
+the breaks, but want them in general, or vice versa.
+
+This command has no effect in Info, HTML, and other non-@TeX{} output.
 
 
 @node w
@@ -18534,7 +18582,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
+$Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18600,7 +18648,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
+@comment $Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.57 2005-02-14 00:20:27 karl Exp $
+   $Id: cmds.c,v 1.58 2005-03-22 01:29:05 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free
    Software Foundation, Inc.
@@ -91,6 +91,7 @@ COMMAND command_table[] = {
   { "afourpaper", cm_ignore_line, NO_BRACE_ARGS },
   { "afourwide", cm_ignore_line, NO_BRACE_ARGS },
   { "alias", cm_alias, NO_BRACE_ARGS },
+  { "allowcodebreaks", cm_ignore_line, NO_BRACE_ARGS },
   { "anchor", cm_anchor, BRACE_ARGS },
   { "appendix", cm_appendix, NO_BRACE_ARGS },
   { "appendixsection", cm_appendixsec, NO_BRACE_ARGS },
