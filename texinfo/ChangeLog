@@ -1,3 +1,10 @@
+2005-01-20  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: Have a consistent function declaration style.
+	(verbose, absolute_filenames): New functions.
+	Use them.
+	Report TEXINPUTS and INDEXSTYLE when verbose.
+
 2005-01-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.5, doc/info.5: define and use .EX/.EE instead of

@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.36 2005-01-20 14:43:30 karl Exp $
+# $Id: texi2dvi,v 1.37 2005-01-20 22:45:52 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003, 2004 Free Software Foundation, Inc.
+# 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.36 $'
+rcs_revision='$Revision: 1.37 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -117,7 +117,8 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 
 # return true if program $1 is somewhere in PATH, else false.
 #
-findprog () {
+findprog ()
+{
   foundprog=false
   for dir in `echo $PATH | tr "$path_sep" " "`; do
     # use test -x rather than test -f for DJGPP, where test -x checks
@@ -131,9 +132,16 @@ findprog () {
   $foundprog
 }
 
+# Report some verbose information.
+verbose ()
+{
+  $verbose >&2 "$0: $@"
+}
+
 # Report an error and exit with failure.
-fatal () {
-  echo "$0: $*" >&2
+fatal ()
+{
+  echo >&2 "$0: $*"
   exit 1
 }
 
@@ -343,6 +351,39 @@ get_xref_files ()
   echo "$xref_files"
 }
 
+# Convert relative paths to absolute paths, so we can run in another
+# directory (e.g., in --clean mode, or during the macro-support detection.)
+#
+# Empty path components are meaningful to tex.  We rewrite them
+# as `EMPTY' so they don't get lost when we split on $path_sep.
+# Hopefully no one will have an actual directory named EMPTY.
+absolute_filenames ()
+{
+  replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
+                 -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                 -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+  _res=`echo "$1" | eval sed $replace_empty`
+  save_IFS=$IFS
+  IFS=$path_sep
+  set x $_res; shift
+  _res=.
+  for dir
+  do
+    case $dir in
+      EMPTY)
+        _res=$_res$path_sep
+        ;;
+      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expanded.
+        _res=$_res$path_sep$dir
+        ;;
+      *)
+        abs=`cd "$dir" && pwd` && _res=$_res$path_sep$abs
+        ;;
+    esac
+  done
+  echo "$_res"
+}
+
 # File descriptor usage:
 # 0 standard input
 # 1 standard output (--verbose messages)
@@ -370,7 +411,7 @@ fi
 # TeXify files.
 
 for command_line_filename in ${1+"$@"}; do
-  $verbose "Processing $command_line_filename ..."
+  verbose "Processing $command_line_filename ..."
 
   # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
   # prepend `./' in order to avoid that the tools take it as an option.
@@ -434,50 +475,10 @@ for command_line_filename in ${1+"$@"}; do
 
   # Convert relative paths to absolute paths, so we can run in another
   # directory (e.g., in --clean mode, or during the macro-support detection.)
-  #
-  # Empty path components are meaningful to tex.  We rewrite them
-  # as `EMPTY' so they don't get lost when we split on $path_sep.
-  # Hopefully no one will have an actual directory named EMPTY.
-  replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
-                 -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                 -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
-   TEXINPUTS=`echo $TEXINPUTS  | eval sed $replace_empty`
-  INDEXSTYLE=`echo $INDEXSTYLE | eval sed $replace_empty`
-  save_IFS=$IFS
-  IFS=$path_sep
-  set x $TEXINPUTS; shift
-  TEXINPUTS=.
-  for dir
-  do
-    case $dir in
-      EMPTY)
-        TEXINPUTS=$TEXINPUTS$path_sep
-        ;;
-      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expanded.
-        TEXINPUTS=$TEXINPUTS$path_sep$dir
-        ;;
-      *)
-        abs=`cd "$dir" && pwd` && TEXINPUTS=$TEXINPUTS$path_sep$abs
-        ;;
-    esac
-  done
-  set x $INDEXSTYLE; shift
-  INDEXSTYLE=.
-  for dir
-  do
-    case $dir in
-      EMPTY)
-        INDEXSTYLE=$INDEXSTYLE$path_sep
-        ;;
-      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expansed.
-        INDEXSTYLE=$INDEXSTYLE$path_sep$dir
-        ;;
-      *)
-        abs=`cd "$dir" && pwd` && INDEXSTYLE=$INDEXSTYLE$path_sep$abs
-        ;;
-    esac
-  done
-  IFS=$save_IFS
+  TEXINPUTS=`absolute_filenames "$TEXINPUTS"`
+  verbose "TEXINPUTS: $TEXINPUTS"
+  INDEXSTYLE=`absolute_filenames "$INDEXSTYLE"`
+  verbose "INDEXSTYLE: $INDEXSTYLE"
 
   # If the user explicitly specified the language, use that.
   # Otherwise, if the first line is \input texinfo, assume it's texinfo.
@@ -550,7 +551,7 @@ for command_line_filename in ${1+"$@"}; do
 	  fatal "texinfo.tex appears to be broken, quitting."
         fi
 	eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $tmpdir/txiversion.out`
-        $verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
+        verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
         if test "$txiprereq" -le "$txiversion" >/dev/null 2>&1; then
           makeinfo=
         else
@@ -582,7 +583,7 @@ for command_line_filename in ${1+"$@"}; do
   #   generates different output (arguably this is a bug in -E).
   # Discard main info output, the user asked to run TeX, not makeinfo.
   if test -n "$makeinfo"; then
-    $verbose "Macro-expanding $command_line_filename to $filename_src ..."
+    verbose "Macro-expanding $command_line_filename to $filename_src ..."
     sed -f $comment_iftex_sed "$command_line_filename" \
       | $makeinfo --footnote-style=end -I "$filename_dir" $miincludes \
         -o /dev/null --macro-expand=- \
@@ -593,13 +594,13 @@ for command_line_filename in ${1+"$@"}; do
   # If makeinfo failed (or was not even run), use the original file as input.
   if test $? -ne 0 \
      || test ! -r "$filename_src"; then
-    $verbose "Reverting to $command_line_filename ..."
+    verbose "Reverting to $command_line_filename ..."
     filename_input=$filename_dir/$filename_ext
   fi
 
   # Used most commonly for @finalout, @smallbook, etc.
   if test -n "$textra"; then
-    $verbose "Inserting extra commands: $textra"
+    verbose "Inserting extra commands: $textra"
     sed "$textra_cmd\\
 $textra" "$filename_input" >"$filename_xtr"
     filename_input=$filename_xtr
@@ -608,26 +609,26 @@ $textra" "$filename_input" >"$filename_xtr"
   # If this is a Texinfo file with a specified input encoding, and
   # recode is available, then recode to plain 7 bit Texinfo.
   if test $language = texinfo; then
-    pgm='s/\(^\|.* \)@documentencoding  *\([^ ][^ ]*\)\( .*\|$\)/\2/  
-	t found                                                
-	d                                                     
-	:found                                               
+    pgm='s/\(^\|.* \)@documentencoding  *\([^ ][^ ]*\)\( .*\|$\)/\2/
+	t found
+	d
+	:found
 	q'
     encoding=`sed -e "$pgm" "$filename_input"`
     if $recode && test -n "$encoding" && findprog recode; then
-      $verbose "Recoding from $encoding to Texinfo."
+      verbose "Recoding from $encoding to Texinfo."
       if recode "$encoding"..texinfo <"$filename_input" >"$filename_rcd" \
          && test -s "$filename_rcd"; then
         filename_input=$filename_rcd
       else
-        $verbose "Recoding failed, using original input."
+        verbose "Recoding failed, using original input."
       fi
     fi
   fi
 
   # If clean mode was specified, then move to the temporary directory.
   if test "$clean" = t; then
-    $verbose "cd $tmpdir_src"
+    verbose "cd $tmpdir_src"
     cd "$tmpdir_src" || exit 1
   fi
 
@@ -636,7 +637,7 @@ $textra" "$filename_input" >"$filename_xtr"
 
     # Save copies of originals for later comparison.
     if test -n "$orig_xref_files"; then
-      $verbose "Backing up xref files: `echo $orig_xref_files | sed 's|\./||g'`"
+      verbose "Backing up xref files: `echo $orig_xref_files | sed 's|\./||g'`"
       cp $orig_xref_files $tmpdir_bak
     fi
 
@@ -665,7 +666,7 @@ $textra" "$filename_input" >"$filename_xtr"
                || grep 'No file .*\.bbl\.' "$filename_noext.log")) \
           >&6 2>&1; \
     then
-      $verbose "Running $bibtex $filename_noext ..."
+      verbose "Running $bibtex $filename_noext ..."
       $bibtex "$filename_noext" >&5 ||
         fatal "$bibtex exited with bad status, quitting."
     fi
@@ -687,14 +688,14 @@ $textra" "$filename_input" >"$filename_xtr"
     # But we won't know that if the index files are out of date or
     # nonexistent.
     if test -n "$texindex" && test -n "$index_files"; then
-      $verbose "Running $texindex $index_files ..."
+      verbose "Running $texindex $index_files ..."
       $texindex $index_files 2>&5 1>&2 ||
          fatal "$texindex exited with bad status, quitting."
     fi
 
     # Finally, run TeX.
     cmd="$tex $tex_args"
-    $verbose "Running $cmd $filename_input ..."
+    verbose "Running $cmd $filename_input ..."
     if $cmd "$filename_input" >&5; then :; else
       echo "$0: $tex exited with bad status, quitting." >&2
       echo "$0: see $filename_noext.log for errors." >&2
@@ -718,8 +719,8 @@ $textra" "$filename_input" >"$filename_xtr"
 
     # Check if xref files changed.
     new_xref_files=`get_xref_files "$filename_noext"`
-    $verbose "Original xref files = `echo $orig_xref_files | sed 's|\./||g'`"
-    $verbose "New xref files      = `echo $new_xref_files | sed 's|\./||g'`"
+    verbose "Original xref files = `echo $orig_xref_files | sed 's|\./||g'`"
+    verbose "New xref files      = `echo $new_xref_files | sed 's|\./||g'`"
 
     # If old and new lists don't at least have the same file list,
     # then one file or another has definitely changed.
@@ -729,14 +730,14 @@ $textra" "$filename_input" >"$filename_xtr"
     # a difference.
     if test -n "$finished"; then
       for this_file in $new_xref_files; do
-        $verbose "Comparing xref file `echo $this_file | sed 's|\./||g'` ..."
+        verbose "Comparing xref file `echo $this_file | sed 's|\./||g'` ..."
         # cmp -s returns nonzero exit status if files differ.
         if cmp -s "$this_file" "$tmpdir_bak/$this_file"; then :; else
           # We only need to keep comparing until we find one that
           # differs, because we'll have to run texindex & tex again no
           # matter how many more there might be.
           finished=
-          $verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
+          verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
           test "$debug" = t && diff -c "$tmpdir_bak/$this_file" "$this_file"
           break
         fi
@@ -753,11 +754,11 @@ $textra" "$filename_input" >"$filename_xtr"
      && test -r "$filename_noext.log" \
      && grep 'thumbpdf\.sty'  "$filename_noext.log" >&6 2>&1; \
   then
-    $verbose "Running $thumbpdf $filename_noext ..."
+    verbose "Running $thumbpdf $filename_noext ..."
     $thumbpdf "$filename_noext" >&5 ||
       fatal "$thumbpdf exited with bad status, quitting."
 
-    $verbose "Running $cmd $filename_input..."
+    verbose "Running $cmd $filename_input..."
     if $cmd "$filename_input" >&5; then :; else
       echo "$0: $tex exited with bad status, quitting." >&2
       echo "$0: see $filename_noext.log for errors." >&2
@@ -780,7 +781,7 @@ $textra" "$filename_input" >"$filename_xtr"
     else
        dest=$orig_pwd
     fi
-    $verbose "Copying $oformat file from `pwd` to $dest"
+    verbose "Copying $oformat file from `pwd` to $dest"
     cp -p "./$filename_noext.$oformat" "$dest"
     cd / # in case $orig_pwd is on a different drive (for DOS)
     cd $orig_pwd || exit 1
@@ -788,11 +789,11 @@ $textra" "$filename_input" >"$filename_xtr"
 
   # Remove temporary files.
   if test "x$debug" = "x"; then
-    $verbose "Removing $tmpdir_src $tmpdir_xtr $tmpdir_bak ..."
+    verbose "Removing $tmpdir_src $tmpdir_xtr $tmpdir_bak ..."
     cd /
     rm -rf $tmpdir_src $tmpdir_xtr $tmpdir_bak
   fi
 done
 
-$verbose "$0: done."
+verbose "done."
 exit 0 # exit successfully, not however we ended the loop.
