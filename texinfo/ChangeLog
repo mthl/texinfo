@@ -1,7 +1,10 @@
 2003-08-05  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Beginning a File, title, titlefont): more
+	clarifications.  Suggestions from Patrice.
+
 	* doc/texinfo.txi (emph & strong): inconsistent source & example.
-		From Jesper Harder.
+	From Jesper Harder.
 
 2003-08-04  Karl Berry  <karl@gnu.org>
 
