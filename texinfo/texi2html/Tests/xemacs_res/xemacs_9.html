@@ -1,0 +1,851 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: Minibuffer</title>
+
+<meta name="description" content="XEmacs User's Manual: Minibuffer">
+<meta name="keywords" content="XEmacs User's Manual: Minibuffer">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC60"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC61" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 6. The Minibuffer </h1>
+<!--docid::SEC60::-->
+<p>
+
+  The <em>minibuffer</em> is the facility used by XEmacs commands to read
+arguments more complicated than a single number.  Minibuffer arguments
+can be file names, buffer names, Lisp function names, XEmacs command
+names, Lisp expressions, and many other things, depending on the command
+reading the argument.  You can use the usual XEmacs editing commands in
+the minibuffer to edit the argument text.
+</p>
+<p>
+
+<a name="IDX242"></a>
+  When the minibuffer is in use, it appears in the echo area, and the
+cursor moves there.  The beginning of the minibuffer line displays a
+<em>prompt</em> which says what kind of input you should supply and how it
+will be used.  Often this prompt is derived from the name of the command
+that the argument is for.  The prompt normally ends with a colon.
+</p>
+<p>
+
+<a name="IDX243"></a>
+  Sometimes a <em>default argument</em> appears in parentheses after the
+colon; it, too, is part of the prompt.  The default is used as the
+argument value if you enter an empty argument (e.g., by just typing <kbd>RET</kbd>).
+For example, commands that read buffer names always show a default, which
+is the name of the buffer that will be used if you type just <kbd>RET</kbd>.
+</p>
+<p>
+
+<a name="IDX244"></a>
+  The simplest way to enter a minibuffer argument is to type the text
+you want, terminated by <kbd>RET</kbd> which exits the minibuffer.  You can
+cancel the command that wants the argument, and get out of the
+minibuffer, by typing <kbd>C-g</kbd>.
+</p>
+<p>
+
+  Since the minibuffer uses the screen space of the echo area, it can
+conflict with other ways XEmacs customarily uses the echo area.  Here is
+how XEmacs handles such conflicts:
+</p>
+<p>
+
+<ul>
+<li>
+If a command gets an error while you are in the minibuffer, this does
+not cancel the minibuffer.  However, the echo area is needed for the
+error message and therefore the minibuffer itself is hidden for a
+while.  It comes back after a few seconds, or as soon as you type
+anything.
+<p>
+
+</p>
+<li>
+If in the minibuffer you use a command whose purpose is to print a
+message in the echo area, such as <kbd>C-x =</kbd>, the message is printed
+normally, and the minibuffer is hidden for a while.  It comes back
+after a few seconds, or as soon as you type anything.
+<p>
+
+</p>
+<li>
+Echoing of keystrokes does not take place while the minibuffer is in
+use.
+</ul>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC61">6.1 Minibuffers for File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering file names with the minibuffer.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC62">6.2 Editing in the Minibuffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit in the minibuffer.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC63">6.3 Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An abbreviation facility for minibuffer input.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC68">6.4 Minibuffer History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reusing recent minibuffer arguments.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC69">6.5 Repeating Minibuffer Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Re-executing commands that used the minibuffer.</td></tr>
+</table>
+<p>
+
+<a name="NODE_Minibuffer File"></a>
+<hr size="6">
+<a name="SEC61"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC62" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.1 Minibuffers for File Names </h2>
+<!--docid::SEC61::-->
+<p>
+
+  Sometimes the minibuffer starts out with text in it.  For example, when
+you are supposed to give a file name, the minibuffer starts out containing
+the <em>default directory</em>, which ends with a slash.  This is to inform
+you which directory the file will be found in if you do not specify a
+directory.
+</p>
+<p>
+
+  For example, the minibuffer might start out with these contents:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>Find File: /u2/emacs/src/
+</pre></td></tr></table><p>
+
+where `<samp>Find File: </samp>' is the prompt.  Typing <kbd>buffer.c</kbd>
+specifies the file `<tt>/u2/emacs/src/buffer.c</tt>'.  To find files in
+nearby directories, use <kbd>..</kbd>; thus, if you type
+<kbd>../lisp/simple.el</kbd>, you will get the file named
+`<tt>/u2/emacs/lisp/simple.el</tt>'.  Alternatively, you can kill with
+<kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">20.2 Words</a>).
+</p>
+<p>
+
+  If you don't want any of the default, you can kill it with <kbd>C-a
+C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
+Insert an absolute file name, one starting with a slash or a tilde,
+after the default directory.  For example, to specify the file
+`<tt>/etc/termcap</tt>', just insert that name, giving these minibuffer
+contents:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>Find File: /u2/emacs/src//etc/termcap
+</pre></td></tr></table><p>
+
+<a name="IDX245"></a>
+<a name="IDX246"></a>
+<a name="IDX247"></a>
+XEmacs gives a special meaning to a double slash (which is not normally
+a useful thing to write): it means, &quot;ignore everything before the
+second slash in the pair.&quot;  Thus, `<samp>/u2/emacs/src/</samp>' is ignored in
+the example above, and you get the file `<tt>/etc/termcap</tt>'.
+</p>
+<p>
+
+<a name="IDX248"></a>
+If you set <code>insert-default-directory</code> to <code>nil</code>, the default
+directory is not inserted in the minibuffer.  This way, the minibuffer
+starts out empty.  But the name you type, if relative, is still
+interpreted with respect to the same default directory.
+</p>
+<p>
+
+<a name="NODE_Minibuffer Edit"></a>
+<hr size="6">
+<a name="SEC62"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC61" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.2 Editing in the Minibuffer </h2>
+<!--docid::SEC62::-->
+<p>
+
+  The minibuffer is an XEmacs buffer (albeit a peculiar one), and the
+usual XEmacs commands are available for editing the text of an argument
+you are entering.
+</p>
+<p>
+
+  Since <kbd>RET</kbd> in the minibuffer is defined to exit the minibuffer,
+you can't use it to insert a newline in the minibuffer.  To do that,
+type <kbd>C-o</kbd> or <kbd>C-q C-j</kbd>.  (Recall that a newline is really the
+character control-J.)
+</p>
+<p>
+
+  The minibuffer has its own window which always has space on the screen
+but acts as if it were not there when the minibuffer is not in use.
+When the minibuffer is in use, its window is just like the others; you
+can switch to another window with <kbd>C-x o</kbd>, edit text in other
+windows and perhaps even visit more files, before returning to the
+minibuffer to submit the argument.  You can kill text in another window,
+return to the minibuffer window, and then yank the text to use it in the
+argument.  See section <a href="xemacs_19.html#SEC175">16. Multiple Windows</a>.
+</p>
+<p>
+
+  There are some restrictions on the use of the minibuffer window,
+however.  You cannot switch buffers in it--the minibuffer and its
+window are permanently attached.  Also, you cannot split or kill the
+minibuffer window. But you can make it taller in the normal fashion with
+<kbd>C-x ^</kbd>.  If you enable Resize-Minibuffer mode, then the
+minibuffer window expands vertically as necessary to hold the text that
+you put in the minibuffer.  Use <kbd>M-x resize-minibuffer-mode</kbd> to
+enable or disable this minor mode (see section <a href="xemacs_30.html#SEC352">27.1 Minor Modes</a>).
+</p>
+<p>
+
+<a name="IDX249"></a>
+  If while in the minibuffer you issue a command that displays help text
+of any sort in another window, you can use the <kbd>C-M-v</kbd> command while
+in the minibuffer to scroll the help text.  This lasts until you exit
+the minibuffer.  This feature is especially useful if a completing
+minibuffer gives you a list of possible completions.  See section <a href="xemacs_19.html#SEC178">16.3 Using Other Windows</a>.
+</p>
+<p>
+
+<a name="IDX250"></a>
+If the variable <code>minibuffer-confirm-incomplete</code> is <code>t</code>, you
+are asked for confirmation if there is no known completion for the text
+you typed. For example, if you attempted to visit a non-existent file,
+the minibuffer might read:
+<table><tr><td>&nbsp;</td><td class="example"><pre>        Find File: chocolate_bar.c [no completions, confirm]
+</pre></td></tr></table>If you press <kbd>Return</kbd> again, that confirms the filename. Otherwise,
+you can continue editing it. 
+<p>
+
+ XEmacs supports recursive use of the minibuffer.  However, it is easy
+to do this by accident (because of autorepeating keyboards, for example)
+and get confused.  Therefore, most XEmacs commands that use the
+minibuffer refuse to operate if the minibuffer window is selected.  If
+the minibuffer is active but you have switched to a different window,
+recursive use of the minibuffer is allowed--if you know enough to try
+to do this, you probably will not get confused.
+</p>
+<p>
+
+<a name="IDX251"></a>
+  If you set the variable <code>enable-recursive-minibuffers</code> to a
+non-<code>nil</code>, recursive use of the minibuffer is always allowed.
+</p>
+<p>
+
+<a name="NODE_Completion"></a>
+<hr size="6">
+<a name="SEC63"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC62" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC64" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.3 Completion </h2>
+<!--docid::SEC63::-->
+<p>
+
+  For certain kinds of arguments, you can use <em>completion</em> to enter
+the argument value.  Completion means that you type part of the
+argument, then XEmacs visibly fills in the rest, or as much as
+can be determined from the part you have typed.
+</p>
+<p>
+
+  When completion is available, certain keys---<kbd>TAB</kbd>, <kbd>RET</kbd>, and
+<kbd>SPC</kbd>---are rebound to complete the text present in the
+minibuffer into a longer string that it stands for, by matching it
+against a set of <em>completion alternatives</em> provided by the command
+reading the argument.  <kbd>?</kbd> is defined to display a list of possible
+completions of what you have inserted.
+</p>
+<p>
+
+  For example, when <kbd>M-x</kbd> uses the minibuffer to read the name of a
+command, it provides a list of all available XEmacs command names to
+complete against.  The completion keys match the text in the minibuffer
+against all the command names, find any additional name characters
+implied by the ones already present in the minibuffer, and add those
+characters to the ones you have given.  This is what makes it possible
+to type <kbd>M-x inse <kbd>SPC</kbd> b <kbd>RET</kbd></kbd> instead of <kbd>M-x
+insert-buffer <kbd>RET</kbd></kbd> (for example).
+</p>
+<p>
+
+  Case is normally significant in completion because it is significant
+in most of the names that you can complete (buffer names, file names and
+command names).  Thus, `<samp>fo</samp>' does not complete to `<samp>Foo</samp>'.  When
+you are completing a name in which case does not matter, case may be
+ignored for completion's sake if specified by program.
+</p>
+<p>
+
+When a completion list is displayed, the completions will highlight as
+you move the mouse over them.  Clicking the middle mouse button on any 
+highlighted completion will &quot;select&quot; it just as if you had typed it in
+and hit <kbd>RET</kbd>.
+</p>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC64">6.3.1 Completion Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC65">6.3.2 Completion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC66">6.3.3 Strict Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_9.html#SEC67">6.3.4 Completion Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+<p>
+
+<a name="NODE_Completion Example"></a>
+<hr size="6">
+<a name="SEC64"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC65" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.3.1 Completion Example </h3>
+<!--docid::SEC64::-->
+<p>
+
+<a name="IDX252"></a>
+<a name="IDX253"></a>
+  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
+the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
+start with `<samp>au</samp>'.  There are several, including
+<code>auto-fill-mode</code> and <code>auto-save-mode</code>---but they are all the
+same as far as <code>auto</code>, so the `<samp>au</samp>' in the minibuffer changes
+to `<samp>auto</samp>'.
+</p>
+<p>
+
+  If you type <kbd>TAB</kbd> again immediately, there are multiple
+possibilities for the very next character--it could be any of
+`<samp>c-</samp>'---so no more characters are added; instead, <kbd>TAB</kbd>
+displays a list of all possible completions in another window.
+</p>
+<p>
+
+  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
+`<samp>auto-f</samp>'.  The only command name starting this way is
+<code>auto-fill-mode</code>, so completion fills in the rest of that.  You now
+have `<samp>auto-fill-mode</samp>' in the minibuffer after typing just <kbd>au
+<kbd>TAB</kbd> f <kbd>TAB</kbd></kbd>.  Note that <kbd>TAB</kbd> has this effect because in
+the minibuffer it is bound to the command <code>minibuffer-complete</code>
+when completion is available.
+</p>
+<p>
+
+<a name="NODE_Completion Commands"></a>
+<hr size="6">
+<a name="SEC65"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC64" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC66" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.3.2 Completion Commands </h3>
+<!--docid::SEC65::-->
+<p>
+
+  Here is a list of the completion commands defined in the minibuffer
+when completion is available.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd><kbd>TAB</kbd></kbd>
+<dd>Complete the text in the minibuffer as much as possible
+(<code>minibuffer-complete</code>).
+<dt><kbd><kbd>SPC</kbd></kbd>
+<dd>Complete the minibuffer text, but don't go beyond one word
+(<code>minibuffer-complete-word</code>).
+<dt><kbd><kbd>RET</kbd></kbd>
+<dd>Submit the text in the minibuffer as the argument, possibly completing
+first as described below (<code>minibuffer-complete-and-exit</code>).
+<dt><kbd>?</kbd>
+<dd>Print a list of all possible completions of the text in the minibuffer
+(<code>minibuffer-list-completions</code>).
+<dt><kbd><kbd>button2</kbd></kbd>
+<dd>Select the highlighted text under the mouse as a minibuffer response.
+When the minibuffer is being used to prompt the user for a completion,
+any valid completions which are visible on the screen will be highlighted
+when the mouse moves over them.  Clicking <kbd>button2</kbd> will select the
+highlighted completion and exit the minibuffer.  
+(<code>minibuf-select-highlighted-completion</code>).
+</dl>
+<p>
+
+<a name="IDX254"></a>
+<a name="IDX255"></a>
+  <kbd>SPC</kbd> completes much like <kbd>TAB</kbd>, but never goes beyond the
+next hyphen or space.  If you have `<samp>auto-f</samp>' in the minibuffer and
+type <kbd>SPC</kbd>, it finds that the completion is `<samp>auto-fill-mode</samp>',
+but it stops completing after `<samp>fill-</samp>'.  This gives
+`<samp>auto-fill-</samp>'.  Another <kbd>SPC</kbd> at this point completes all the
+way to `<samp>auto-fill-mode</samp>'.  <kbd>SPC</kbd> in the minibuffer when
+completion is available runs the command
+<code>minibuffer-complete-word</code>.
+</p>
+<p>
+
+  Here are some commands you can use to choose a completion from a
+window that displays a list of completions:
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<a name="IDX256"></a>
+<dt><kbd>button2up</kbd>
+<dd>Clicking mouse button 2 on a completion in the list of possible
+completions chooses that completion (<code>mouse-choose-completion</code>).
+You normally use this command while point is in the minibuffer; but you
+must click in the list of completions, not in the minibuffer itself.
+<p>
+
+<a name="IDX257"></a>
+</p>
+<dt><kbd><kbd>PRIOR</kbd></kbd>
+<dd><dt><kbd>M-v</kbd>
+<dd>Typing <kbd>PRIOR</kbd> or <kbd>M-v</kbd>, while in the minibuffer, selects the
+window showing the completion list buffer
+(<code>switch-to-completions</code>).  This paves the way for using the
+commands below.  (Selecting that window in the usual ways has the same
+effect, but this way is more convenient.)
+<p>
+
+<a name="IDX258"></a>
+</p>
+<dt><kbd><kbd>RET</kbd></kbd>
+<dd>Typing <kbd>RET</kbd> <em>in the completion list buffer</em> chooses the
+completion that point is in or next to (<code>choose-completion</code>).  To
+use this command, you must first switch windows to the window that shows
+the list of completions.
+<p>
+
+<a name="IDX259"></a>
+</p>
+<dt><kbd><kbd>RIGHT</kbd></kbd>
+<dd><dt><kbd><kbd>TAB</kbd></kbd>
+<dd><dt><kbd>C-f</kbd>
+<dd>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
+the completion list buffer</em> moves point to the following completion
+(<code>next-list-mode-item</code>).
+<p>
+
+<a name="IDX260"></a>
+</p>
+<dt><kbd><kbd>LEFT</kbd></kbd>
+<dd><dt><kbd>C-b</kbd>
+<dd>Typing the left-arrow key <kbd>LEFT</kbd> or <kbd>C-b</kbd> <em>in the
+completion list buffer</em> moves point toward the beginning of the buffer,
+to the previous completion (<code>previous-list-mode-item</code>).
+</dl>
+<p>
+
+<a name="NODE_Strict Completion"></a>
+<hr size="6">
+<a name="SEC66"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC65" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC67" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.3.3 Strict Completion </h3>
+<!--docid::SEC66::-->
+<p>
+
+  There are three different ways that <kbd>RET</kbd> can work in completing
+minibuffers, depending on how the argument will be used.
+</p>
+<p>
+
+<ul>
+<li>
+<em>Strict</em> completion is used when it is meaningless to give any
+argument except one of the known alternatives.  For example, when
+<kbd>C-x k</kbd> reads the name of a buffer to kill, it is meaningless to
+give anything but the name of an existing buffer.  In strict
+completion, <kbd>RET</kbd> refuses to exit if the text in the minibuffer
+does not complete to an exact match.
+<p>
+
+</p>
+<li>
+<em>Cautious</em> completion is similar to strict completion, except that
+<kbd>RET</kbd> exits only if the text was an exact match already, not
+needing completion.  If the text is not an exact match, <kbd>RET</kbd> does
+not exit, but it does complete the text.  If it completes to an exact
+match, a second <kbd>RET</kbd> will exit.
+<p>
+
+Cautious completion is used for reading file names for files that must
+already exist.
+</p>
+<p>
+
+</p>
+<li>
+<em>Permissive</em> completion is used when any string whatever is
+meaningful, and the list of completion alternatives is just a guide.
+For example, when <kbd>C-x C-f</kbd> reads the name of a file to visit, any
+file name is allowed, in case you want to create a file.  In
+permissive completion, <kbd>RET</kbd> takes the text in the minibuffer
+exactly as given, without completing it.
+</ul>
+<p>
+
+  The completion commands display a list of all possible completions in
+a window whenever there is more than one possibility for the very next
+character.  Also, typing <kbd>?</kbd> explicitly requests such a list.  If
+the list of completions is long, you can scroll it with <kbd>C-M-v</kbd>
+(see section <a href="xemacs_19.html#SEC178">16.3 Using Other Windows</a>).
+</p>
+<p>
+
+<a name="NODE_Completion Options"></a>
+<hr size="6">
+<a name="SEC67"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC66" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC68" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC63" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> 6.3.4 Completion Options </h3>
+<!--docid::SEC67::-->
+<p>
+
+<a name="IDX261"></a>
+  When completion is done on file names, certain file names are usually
+ignored.  The variable <code>completion-ignored-extensions</code> contains a
+list of strings; a file whose name ends in any of those strings is
+ignored as a possible completion.  The standard value of this variable
+has several elements including <code>&quot;.o&quot;</code>, <code>&quot;.elc&quot;</code>, <code>&quot;.dvi&quot;</code>
+and <code>&quot;~&quot;</code>.  The effect is that, for example, `<samp>foo</samp>' can
+complete to `<samp>foo.c</samp>' even though `<samp>foo.o</samp>' exists as well.
+However, if <em>all</em> the possible completions end in &quot;ignored&quot;
+strings, then they are not ignored.  Ignored extensions do not apply to
+lists of completions--those always mention all possible completions.
+</p>
+<p>
+
+<a name="IDX262"></a>
+  If a completion command finds the next character is undetermined, it
+automatically displays a list of all possible completions.  If the variable
+<code>completion-auto-help</code> is set to <code>nil</code>, this does not happen,
+and you must type <kbd>?</kbd> to display the possible completions.
+</p>
+<p>
+
+<a name="IDX263"></a>
+If the variable <code>minibuffer-confirm-incomplete</code> is set to <code>t</code>,
+then in contexts where <code>completing-read</code> allows answers that are
+not valid completions, an extra <kbd>RET</kbd> must be typed to confirm the
+response.  This is helpful for catching typos.
+</p>
+<p>
+
+<a name="IDX264"></a>
+  Icomplete mode presents a constantly-updated display that tells you
+what completions are available for the text you've entered so far.  The
+command to enable or disable this minor mode is <kbd>M-x
+icomplete-mode</kbd>.
+</p>
+<p>
+
+<a name="NODE_Minibuffer History"></a>
+<hr size="6">
+<a name="SEC68"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC67" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC69" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.4 Minibuffer History </h2>
+<!--docid::SEC68::-->
+<p>
+
+  Every argument that you enter with the minibuffer is saved on a
+<em>minibuffer history list</em> so that you can use it again later in
+another argument.  Special commands load the text of an earlier argument
+in the minibuffer.  They discard the old minibuffer contents, so you can
+think of them as moving through the history of previous arguments.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd><kbd>UP</kbd></kbd>
+<dd><dt><kbd>M-p</kbd>
+<dd>Move to the next earlier argument string saved in the minibuffer history
+(<code>previous-history-element</code>).
+<dt><kbd><kbd>DOWN</kbd></kbd>
+<dd><dt><kbd>M-n</kbd>
+<dd>Move to the next later argument string saved in the minibuffer history
+(<code>next-history-element</code>).
+<dt><kbd>M-r <var>regexp</var> <kbd>RET</kbd></kbd>
+<dd>Move to an earlier saved argument in the minibuffer history that has a
+match for <var>regexp</var> (<code>previous-matching-history-element</code>).
+<dt><kbd>M-s <var>regexp</var> <kbd>RET</kbd></kbd>
+<dd>Move to a later saved argument in the minibuffer history that has a
+match for <var>regexp</var> (<code>next-matching-history-element</code>).
+</dl>
+<p>
+
+<a name="IDX265"></a>
+<a name="IDX266"></a>
+<a name="IDX267"></a>
+<a name="IDX268"></a>
+  The simplest way to reuse the saved arguments in the history list is
+to move through the history list one element at a time.  While in the
+minibuffer, use <kbd>M-p</kbd> or up-arrow (<code>previous-history-element</code>)
+to &quot;move to&quot; the next earlier minibuffer input, and use <kbd>M-n</kbd> or
+down-arrow (<code>next-history-element</code>) to &quot;move to&quot; the next later
+input.
+</p>
+<p>
+
+  The previous input that you fetch from the history entirely replaces
+the contents of the minibuffer.  To use it as the argument, exit the
+minibuffer as usual with <kbd>RET</kbd>.  You can also edit the text before
+you reuse it; this does not change the history element that you
+&quot;moved&quot; to, but your new argument does go at the end of the history
+list in its own right.
+</p>
+<p>
+
+  For many minibuffer arguments there is a &quot;default&quot; value.  In some
+cases, the minibuffer history commands know the default value.  Then you
+can insert the default value into the minibuffer as text by using
+<kbd>M-n</kbd> to move &quot;into the future&quot; in the history.
+</p>
+<p>
+
+<a name="IDX269"></a>
+<a name="IDX270"></a>
+<a name="IDX271"></a>
+<a name="IDX272"></a>
+  There are also commands to search forward or backward through the
+history; they search for history elements that match a regular
+expression that you specify with the minibuffer.  <kbd>M-r</kbd>
+(<code>previous-matching-history-element</code>) searches older elements in
+the history, while <kbd>M-s</kbd> (<code>next-matching-history-element</code>)
+searches newer elements.  By special dispensation, these commands can
+use the minibuffer to read their arguments even though you are already
+in the minibuffer when you issue them.  As with incremental searching,
+an uppercase letter in the regular expression makes the search
+case-sensitive (see section <a href="xemacs_15.html#SEC122">12.6 Searching and Case</a>).
+</p>
+<p>
+
+  All uses of the minibuffer record your input on a history list, but
+there are separate history lists for different kinds of arguments.  For
+example, there is a list for file names, used by all the commands that
+read file names.
+</p>
+<p>
+
+  There are several other very specific history lists, including one for
+command names read by <kbd>M-x</kbd>, one for buffer names, one for arguments
+of commands like <code>query-replace</code>, and one for compilation commands
+read by <code>compile</code>.  Finally, there is one &quot;miscellaneous&quot; history
+list that most minibuffer arguments use.
+</p>
+<p>
+
+<a name="NODE_Repetition"></a>
+<hr size="6">
+<a name="SEC69"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC68" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 6.5 Repeating Minibuffer Commands </h2>
+<!--docid::SEC69::-->
+<p>
+
+  Every command that uses the minibuffer at least once is recorded on a
+special history list, together with the values of its arguments, so that
+you can repeat the entire command.  In particular, every use of
+<kbd>M-x</kbd> is recorded there, since <kbd>M-x</kbd> uses the minibuffer to read
+the command name.
+</p>
+<p>
+
+<a name="IDX273"></a>
+</p>
+<dl compact="compact">
+<dt><kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>
+<dd>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
+<dt><kbd>M-p</kbd>
+<dd>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to previous recorded command
+(<code>previous-history-element</code>).
+<dt><kbd>M-n</kbd>
+<dd>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to the next (more recent)
+recorded command (<code>next-history-element</code>).
+<dt><kbd>M-x list-command-history</kbd>
+<dd>Display the entire command history, showing all the commands
+<kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> can repeat, most recent first.
+</dl>
+<p>
+
+<a name="IDX274"></a>
+<a name="IDX275"></a>
+  <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> is used to re-execute a recent
+minibuffer-using command.  With no argument, it repeats the last such
+command.  A numeric argument specifies which command to repeat; one
+means the last one, and larger numbers specify earlier ones.
+</p>
+<p>
+
+  <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> works by turning the previous command
+into a Lisp expression and then entering a minibuffer initialized with
+the text for that expression.  If you type just <kbd>RET</kbd>, the command
+is repeated as before.  You can also change the command by editing the
+Lisp expression.  Whatever expression you finally submit is what will be
+executed.  The repeated command is added to the front of the command
+history unless it is identical to the most recently executed command
+already there.
+</p>
+<p>
+
+  Even if you don't understand Lisp syntax, it will probably be obvious
+which command is displayed for repetition.  If you do not change the text,
+you can be sure the command will repeat exactly as before.
+</p>
+<p>
+
+<a name="IDX276"></a>
+<a name="IDX277"></a>
+<a name="IDX278"></a>
+<a name="IDX279"></a>
+  If you are in the minibuffer for <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> and the
+command shown to you is not the one you want to repeat, you can move
+around the list of previous commands using <kbd>M-n</kbd> and <kbd>M-p</kbd>.
+<kbd>M-p</kbd> replaces the contents of the minibuffer with the next earlier
+recorded command, and <kbd>M-n</kbd> replaces it with the next later command.
+After finding the desired previous command, you can edit its expression
+and then resubmit it by typing <kbd>RET</kbd>.  Any editing you have done on
+the command to be repeated is lost if you use <kbd>M-n</kbd> or <kbd>M-p</kbd>.
+</p>
+<p>
+
+<kbd>M-n</kbd> and <kbd>M-p</kbd> are specially defined within <kbd>C-x <kbd>ESC</kbd>
+<kbd>ESC</kbd></kbd> to run the commands <code>previous-history-element</code> and
+<code>next-history-element</code>.
+</p>
+<p>
+
+<a name="IDX280"></a>
+  The list of previous commands using the minibuffer is stored as a Lisp
+list in the variable <code>command-history</code>.  Each element of the list
+is a Lisp expression which describes one command and its arguments.
+Lisp programs can reexecute a command by feeding the corresponding
+<code>command-history</code> element to <code>eval</code>.
+</p>
+<p>
+
+<a name="NODE_M-x"></a>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_9.html#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

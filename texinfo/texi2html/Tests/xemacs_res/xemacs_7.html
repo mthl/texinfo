@@ -1,0 +1,925 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: Basic</title>
+
+<meta name="description" content="XEmacs User's Manual: Basic">
+<meta name="keywords" content="XEmacs User's Manual: Basic">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC49"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_6.html#SEC48" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC50" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 4. Basic Editing Commands </h1>
+<!--docid::SEC49::-->
+<p>
+
+<a name="IDX142"></a>
+<a name="IDX143"></a>
+  We now give the basics of how to enter text, make corrections, and
+save the text in a file.  If this material is new to you, you might
+learn it more easily by running the Emacs learn-by-doing tutorial.  To
+use the tutorial, run Emacs and type <kbd>Control-h t</kbd>
+(<code>help-with-tutorial</code>).  You can also use <b>Tutorials</b> item from
+the <b>Help</b> menu.
+</p>
+<p>
+
+XEmacs comes with many translations of tutorial.  If your XEmacs is with
+MULE and you set up language environment correctly, XEmacs chooses right
+tutorial when available (see section <a href="xemacs_20.html#SEC183">17.2 Language Environments</a>).  If you want
+specific translation, give <kbd>C-h t</kbd> a prefix argument, like <kbd>C-u
+C-h t</kbd>.
+</p>
+<p>
+
+  To clear the screen and redisplay, type <kbd>C-l</kbd> (<code>recenter</code>).
+</p>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><th colspan="3" align="left" valign="top">
+</th></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC50">4.1 Inserting Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting text by simply typing it.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC51">4.2 Changing the Location of Point</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to move the cursor to the place where you want to
+			  change something.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC52">4.3 Erasing Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Deleting and killing text.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC53">4.4 Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Visiting, creating, and saving files.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC54">4.5 Help</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Asking what a character does.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC55">4.6 Blank Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to make or delete blank lines.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC56">4.7 Continuation Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Lines too wide for the screen.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC57">4.8 Cursor Position Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What page, line, row, or column is point on?</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_7.html#SEC58">4.9 Numeric Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Numeric arguments for repeating a command.</td></tr>
+</table>
+<p>
+
+<a name="NODE_Inserting Text"></a>
+<hr size="6">
+<a name="SEC50"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC51" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.1 Inserting Text </h2>
+<!--docid::SEC50::-->
+<p>
+
+<a name="IDX144"></a>
+<a name="IDX145"></a>
+<a name="IDX146"></a>
+<a name="IDX147"></a>
+  To insert printing characters into the text you are editing, just type
+them.  This inserts the characters you type into the buffer at the
+cursor (that is, at <em>point</em>; see section <a href="xemacs_4.html#SEC8">1.1 Point</a>).  The cursor moves
+forward, and any text after the cursor moves forward too.  If the text
+in the buffer is `<samp>FOOBAR</samp>', with the cursor before the `<samp>B</samp>',
+then if you type <kbd>XX</kbd>, you get `<samp>FOOXXBAR</samp>', with the cursor
+still before the `<samp>B</samp>'.
+</p>
+<p>
+
+<a name="IDX148"></a>
+<a name="IDX149"></a>
+   To <em>delete</em> text you have just inserted, use <kbd>BS</kbd>.  <kbd>BS</kbd>
+deletes the character <em>before</em> the cursor (not the one that the
+cursor is on top of or under; that is the character <var>after</var> the
+cursor).  The cursor and all characters after it move backwards.
+Therefore, if you type a printing character and then type <kbd>BS</kbd>, they
+cancel out.
+</p>
+<p>
+
+<a name="IDX150"></a>
+<a name="IDX151"></a>
+   To end a line and start typing a new one, type <kbd>RET</kbd>.  This
+inserts a newline character in the buffer.  If point is in the middle of
+a line, <kbd>RET</kbd> splits the line.  Typing <kbd>DEL</kbd> when the cursor is
+at the beginning of a line deletes the preceding newline, thus joining
+the line with the preceding line.
+</p>
+<p>
+
+  Emacs can split lines automatically when they become too long, if you
+turn on a special minor mode called <em>Auto Fill</em> mode.
+See section <a href="xemacs_23.html#SEC210">20.6 Filling Text</a>, for how to use Auto Fill mode.
+</p>
+<p>
+
+  If you prefer to have text characters replace (overwrite) existing
+text rather than shove it to the right, you can enable Overwrite mode,
+a minor mode.  See section <a href="xemacs_30.html#SEC352">27.1 Minor Modes</a>.
+</p>
+<p>
+
+<a name="IDX152"></a>
+<a name="IDX153"></a>
+<a name="IDX154"></a>
+  Direct insertion works for printing characters and <kbd>SPC</kbd>, but other
+characters act as editing commands and do not insert themselves.  If you
+need to insert a control character or a character whose code is above 200
+octal, you must <em>quote</em> it by typing the character <kbd>Control-q</kbd>
+(<code>quoted-insert</code>) first.  (This character's name is normally written
+<kbd>C-q</kbd> for short.)  There are two ways to use <kbd>C-q</kbd>:
+</p>
+<p>
+
+<ul>
+<li>
+<kbd>C-q</kbd> followed by any non-graphic character (even <kbd>C-g</kbd>)
+inserts that character.
+<p>
+
+</p>
+<li>
+<kbd>C-q</kbd> followed by a sequence of octal digits inserts the character
+with the specified octal character code.  You can use any number of
+octal digits; any non-digit terminates the sequence.  If the terminating
+character is <kbd>RET</kbd>, it serves only to terminate the sequence; any
+other non-digit is itself used as input after terminating the sequence.
+(The use of octal sequences is disabled in ordinary non-binary Overwrite
+mode, to give you a convenient way to insert a digit instead of
+overwriting with it.)
+</ul>
+<p>
+
+A numeric argument to <kbd>C-q</kbd> specifies how many copies of the quoted
+character should be inserted (see section <a href="xemacs_7.html#SEC58">4.9 Numeric Arguments</a>).
+</p>
+<p>
+
+<a name="IDX155"></a>
+<a name="IDX156"></a>
+<a name="IDX157"></a>
+  Customization information: <kbd>DEL</kbd>, in most modes, runs the command
+<code>backward-or-forward-delete-char</code>; <kbd>RET</kbd> runs the command
+<code>newline</code>, and self-inserting printing characters run the command
+<code>self-insert</code>, which inserts whatever character was typed to invoke
+it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
+</p>
+<p>
+
+<a name="NODE_Moving Point"></a>
+<hr size="6">
+<a name="SEC51"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC50" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC52" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.2 Changing the Location of Point </h2>
+<!--docid::SEC51::-->
+<p>
+
+<a name="IDX158"></a>
+<a name="IDX159"></a>
+<a name="IDX160"></a>
+<a name="IDX161"></a>
+<a name="IDX162"></a>
+<a name="IDX163"></a>
+<a name="IDX164"></a>
+<a name="IDX165"></a>
+<a name="IDX166"></a>
+  To do more than insert characters, you have to know how to move point
+(see section <a href="xemacs_4.html#SEC8">1.1 Point</a>).  The simplest way to do this is with arrow keys, or by
+clicking the left mouse button where you want to move to.
+</p>
+<p>
+
+  NOTE: Many of the following commands have two versions, one that uses
+the function keys (e.g. <kbd>LEFT</kbd> or <kbd>END</kbd>) and one that doesn't.
+The former versions may only be available on X terminals (i.e. not on
+TTY's), but the latter are available on all terminals.
+</p>
+<p>
+
+<a name="IDX167"></a>
+<a name="IDX168"></a>
+<a name="IDX169"></a>
+<a name="IDX170"></a>
+<a name="IDX171"></a>
+<a name="IDX172"></a>
+<a name="IDX173"></a>
+<a name="IDX174"></a>
+<a name="IDX175"></a>
+<a name="IDX176"></a>
+<a name="IDX177"></a>
+<a name="IDX178"></a>
+<a name="IDX179"></a>
+<a name="IDX180"></a>
+<a name="IDX181"></a>
+<a name="IDX182"></a>
+<a name="IDX183"></a>
+<a name="IDX184"></a>
+<a name="IDX185"></a>
+<a name="IDX186"></a>
+<a name="IDX187"></a>
+<a name="IDX188"></a>
+<a name="IDX189"></a>
+<a name="IDX190"></a>
+<a name="IDX191"></a>
+<a name="IDX192"></a>
+<a name="IDX193"></a>
+<a name="IDX194"></a>
+<a name="IDX195"></a>
+<a name="IDX196"></a>
+<a name="IDX197"></a>
+<a name="IDX198"></a>
+<a name="IDX199"></a>
+<a name="IDX200"></a>
+<a name="IDX201"></a>
+<a name="IDX202"></a>
+<a name="IDX203"></a>
+<a name="IDX204"></a>
+</p>
+<dl compact="compact">
+<dt><kbd>C-a</kbd>
+<dd><dt><kbd>HOME</kbd>
+<dd>Move to the beginning of the line (<code>beginning-of-line</code>).
+<dt><kbd>C-e</kbd>
+<dd><dt><kbd>END</kbd>
+<dd>Move to the end of the line (<code>end-of-line</code>).
+<dt><kbd>C-f</kbd>
+<dd><dt><kbd>RIGHT</kbd>
+<dd>Move forward one character (<code>forward-char</code>).
+<dt><kbd>C-b</kbd>
+<dd><dt><kbd>LEFT</kbd>
+<dd>Move backward one character (<code>backward-char</code>).
+<dt><kbd>M-f</kbd>
+<dd><dt><kbd>C-RIGHT</kbd>
+<dd>Move forward one word (<code>forward-word</code>).
+<dt><kbd>M-b</kbd>
+<dd><dt><kbd>C-LEFT</kbd>
+<dd>Move backward one word (<code>backward-word</code>).
+<dt><kbd>C-n</kbd>
+<dd><dt><kbd>DOWN</kbd>
+<dd>Move down one line, vertically (<code>next-line</code>).  This command
+attempts to keep the horizontal position unchanged, so if you start in
+the middle of one line, you end in the middle of the next.  When on the
+last line of text, <kbd>C-n</kbd> creates a new line and moves onto it.
+<dt><kbd>C-p</kbd>
+<dd><dt><kbd>UP</kbd>
+<dd>Move up one line, vertically (<code>previous-line</code>).
+<dt><kbd>C-v</kbd>
+<dd><dt><kbd>PGDN</kbd>
+<dd>Move down one page, vertically (<code>scroll-up</code>).
+<dt><kbd>M-v</kbd>
+<dd><dt><kbd>PGUP</kbd>
+<dd>Move up one page, vertically (<code>scroll-down</code>).
+<dt><kbd>C-l</kbd>
+<dd>Clear the frame and reprint everything (<code>recenter</code>).  Text moves
+on the frame to bring point to the center of the window.
+<dt><kbd>M-r</kbd>
+<dd>Move point to left margin, vertically centered in the window
+(<code>move-to-window-line</code>).  Text does not move on the screen.
+<p>
+
+A numeric argument says which screen line to place point on.  It counts
+screen lines down from the top of the window (zero for the top line).  A
+negative argument counts lines from the bottom (-1 for the bottom
+line).
+</p>
+<dt><kbd>C-t</kbd>
+<dd>Transpose two characters, the ones before and after the cursor
+(<code>transpose-chars</code>).
+<dt><kbd>M-&lt;</kbd>
+<dd><dt><kbd>C-HOME</kbd>
+<dd>Move to the top of the buffer (<code>beginning-of-buffer</code>).  With
+numeric argument <var>n</var>, move to <var>n</var>/10 of the way from the top.
+See section <a href="xemacs_7.html#SEC58">4.9 Numeric Arguments</a>, for more information on numeric arguments.<dt><kbd>M-&gt;</kbd>
+<dd><dt><kbd>C-END</kbd>
+<dd>Move to the end of the buffer (<code>end-of-buffer</code>).
+<dt><kbd>M-x goto-char</kbd>
+<dd>Read a number <var>n</var> and move point to buffer position <var>n</var>.
+Position 1 is the beginning of the buffer.
+<dt><kbd>M-g</kbd>
+<dd>Read a number <var>n</var> and move point to line number <var>n</var>
+(<code>goto-line</code>).  Line 1 is the beginning of the buffer.
+<dt><kbd>M-x set-goal-column</kbd>
+<dd><a name="IDX205"></a>
+Use the current column of point as the <em>semi-permanent goal column</em> for
+<kbd>C-n</kbd> and <kbd>C-p</kbd> (<code>set-goal-column</code>).  Henceforth, those
+commands always move to this column in each line moved into, or as
+close as possible given the contents of the line.  This goal column remains
+in effect until canceled.
+<dt><kbd>C-u M-x set-goal-column</kbd>
+<dd>Cancel the goal column.  Henceforth, <kbd>C-n</kbd> and <kbd>C-p</kbd> once
+again try to avoid changing the horizontal position, as usual.
+</dl>
+<p>
+
+<a name="IDX206"></a>
+  If you set the variable <code>track-eol</code> to a non-<code>nil</code> value,
+then <kbd>C-n</kbd> and <kbd>C-p</kbd> when at the end of the starting line move
+to the end of another line.  Normally, <code>track-eol</code> is <code>nil</code>.
+See section <a href="xemacs_30.html#SEC353">27.2 Variables</a>, for how to set variables such as <code>track-eol</code>.
+</p>
+<p>
+
+<a name="IDX207"></a>
+  Normally, <kbd>C-n</kbd> on the last line of a buffer appends a newline to
+it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, then
+<kbd>C-n</kbd> gets an error instead (like <kbd>C-p</kbd> on the first line).
+</p>
+<p>
+
+<a name="NODE_Erasing"></a>
+<hr size="6">
+<a name="SEC52"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC51" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC53" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.3 Erasing Text </h2>
+<!--docid::SEC52::-->
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd><kbd>DEL</kbd></kbd>
+<dd>Delete the character before or after point
+(<code>backward-or-forward-delete-char</code>).  You can customize
+this behavior by setting the variable <code>delete-key-deletes-forward</code>.
+<dt><kbd>C-d</kbd>
+<dd>Delete the character after point (<code>delete-char</code>).
+<dt><kbd>C-k</kbd>
+<dd>Kill to the end of the line (<code>kill-line</code>).
+<dt><kbd>M-d</kbd>
+<dd>Kill forward to the end of the next word (<code>kill-word</code>).
+<dt><kbd>M-<kbd>DEL</kbd></kbd>
+<dd>Kill back to the beginning of the previous word
+(<code>backward-kill-word</code>).
+</dl>
+<p>
+
+<a name="IDX208"></a>
+<a name="IDX209"></a>
+<a name="IDX210"></a>
+  You already know about the <kbd>DEL</kbd> key which deletes the character
+before point (that is, before the cursor).  Another key, <kbd>Control-d</kbd>
+(<kbd>C-d</kbd> for short), deletes the character after point (that is, the
+character that the cursor is on).  This shifts the rest of the text on
+the line to the left.  If you type <kbd>C-d</kbd> at the end of a line, it
+joins together that line and the next line.
+</p>
+<p>
+
+  To erase a larger amount of text, use the <kbd>C-k</kbd> key, which kills a
+line at a time.  If you type <kbd>C-k</kbd> at the beginning or middle of a
+line, it kills all the text up to the end of the line.  If you type
+<kbd>C-k</kbd> at the end of a line, it joins that line and the next line.
+</p>
+<p>
+
+  See section <a href="xemacs_12.html#SEC87">9.4 Deletion and Killing</a>, for more flexible ways of killing text.
+</p>
+<p>
+
+<a name="NODE_Basic Files"></a>
+<hr size="6">
+<a name="SEC53"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC52" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC54" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.4 Files </h2>
+<!--docid::SEC53::-->
+<p>
+
+<a name="IDX211"></a>
+  The commands described above are sufficient for creating and altering
+text in an Emacs buffer; the more advanced Emacs commands just make
+things easier.  But to keep any text permanently you must put it in a
+<em>file</em>.  Files are named units of text which are stored by the
+operating system for you to retrieve later by name.  To look at or use
+the contents of a file in any way, including editing the file with
+Emacs, you must specify the file name.
+</p>
+<p>
+
+  Consider a file named `<tt>/usr/rms/foo.c</tt>'.  To begin editing
+this file from Emacs, type:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
+</pre></td></tr></table><p>
+
+Here the file name is given as an <em>argument</em> to the command <kbd>C-x
+C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
+read the argument, and you type <kbd>RET</kbd> to terminate the argument
+(see section <a href="xemacs_9.html#SEC60">6. The Minibuffer</a>).
+</p>
+<p>
+
+  You can also use the <b>Open...</b> menu item from the <b>File</b> menu, then
+type the name of the file to the prompt.
+</p>
+<p>
+
+  Emacs obeys the command by <em>visiting</em> the file: creating a buffer,
+copying the contents of the file into the buffer, and then displaying
+the buffer for you to edit.  If you alter the text, you can <em>save</em>
+the new text in the file by typing <kbd>C-x C-s</kbd> (<code>save-buffer</code>) or
+choosing <b>Save Buffer</b> from the <b>File</b> menu.  This makes the changes
+permanent by copying the altered buffer contents back into the file
+`<tt>/usr/rms/foo.c</tt>'.  Until you save, the changes exist only inside
+Emacs, and the file `<tt>foo.c</tt>' is unaltered.
+</p>
+<p>
+
+  To create a file, visit the file with <kbd>C-x C-f</kbd> as if it already
+existed or choose <b>Open...</b> from the <b>File</b> menu and provide the
+name for the new file.  Emacs will create an empty buffer in which you
+can insert the text you want to put in the file.  When you save the
+buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
+<b>File</b> menu, the file is created.
+</p>
+<p>
+
+  To learn more about using files, See section <a href="xemacs_17.html#SEC134">14. File Handling</a>.
+</p>
+<p>
+
+<a name="NODE_Basic Help"></a>
+<hr size="6">
+<a name="SEC54"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC53" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC55" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.5 Help </h2>
+<!--docid::SEC54::-->
+<p>
+
+<a name="IDX212"></a>
+  If you forget what a key does, you can find out with the Help
+character, which is <kbd>C-h</kbd> (or <kbd>F1</kbd>, which is an alias for
+<kbd>C-h</kbd>).  Type <kbd>C-h k</kbd> followed by the key you want to know
+about; for example, <kbd>C-h k C-n</kbd> tells you all about what <kbd>C-n</kbd>
+does.  <kbd>C-h</kbd> is a prefix key; <kbd>C-h k</kbd> is just one of its
+subcommands (the command <code>describe-key</code>).  The other subcommands of
+<kbd>C-h</kbd> provide different kinds of help.  Type <kbd>C-h</kbd> twice to get
+a description of all the help facilities.  See section <a href="xemacs_11.html#SEC71">8. Help</a>.
+</p>
+<p>
+
+<a name="NODE_Blank Lines"></a>
+<hr size="6">
+<a name="SEC55"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC54" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC56" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.6 Blank Lines </h2>
+<!--docid::SEC55::-->
+<p>
+
+<a name="IDX213"></a>
+<a name="IDX214"></a>
+  Here are special commands and techniques for putting in and taking out
+blank lines.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-o</kbd>
+<dd>Insert one or more blank lines after the cursor (<code>open-line</code>).
+<dt><kbd>C-x C-o</kbd>
+<dd>Delete all but one of many consecutive blank lines
+(<code>delete-blank-lines</code>).
+</dl>
+<p>
+
+<a name="IDX215"></a>
+<a name="IDX216"></a>
+<a name="IDX217"></a>
+<a name="IDX218"></a>
+<a name="IDX219"></a>
+  When you want to insert a new line of text before an existing line, you
+can do it by typing the new line of text, followed by <kbd>RET</kbd>.
+However, it may be easier to see what you are doing if you first make a
+blank line and then insert the desired text into it.  This is easy to do
+using the key <kbd>C-o</kbd> (<code>open-line</code>), which inserts a newline
+after point but leaves point in front of the newline.  After <kbd>C-o</kbd>,
+type the text for the new line.  <kbd>C-o F O O</kbd> has the same effect as
+<kbd>F O O <kbd>RET</kbd></kbd>, except for the final location of point.
+</p>
+<p>
+
+  You can make several blank lines by typing <kbd>C-o</kbd> several times, or
+by giving it a numeric argument to tell it how many blank lines to make.
+See section <a href="xemacs_7.html#SEC58">4.9 Numeric Arguments</a>, for how.  If you have a fill prefix, then <kbd>C-o</kbd>
+command inserts the fill prefix on the new line, when you use it at the
+beginning of a line.  See section <a href="xemacs_23.html#SEC213">20.6.3 The Fill Prefix</a>.
+</p>
+<p>
+
+  The easy way to get rid of extra blank lines is with the command
+<kbd>C-x C-o</kbd> (<code>delete-blank-lines</code>).  <kbd>C-x C-o</kbd> in a run of
+several blank lines deletes all but one of them.  <kbd>C-x C-o</kbd> on a
+solitary blank line deletes that blank line.  When point is on a
+nonblank line, <kbd>C-x C-o</kbd> deletes any blank lines following that
+nonblank line.
+</p>
+<p>
+
+<a name="NODE_Continuation Lines"></a>
+<hr size="6">
+<a name="SEC56"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC55" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC57" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.7 Continuation Lines </h2>
+<!--docid::SEC56::-->
+<p>
+
+<a name="IDX220"></a>
+<a name="IDX221"></a>
+<a name="IDX222"></a>
+  If you add too many characters to one line without breaking it with
+<kbd>RET</kbd>, the line will grow to occupy two (or more) lines on the
+screen, with a curved arrow at the extreme right margin of all but the
+last of them.  The curved arrow says that the following screen line is
+not really a distinct line in the text, but just the <em>continuation</em>
+of a line too long to fit the screen.  Continuation is also called
+<em>line wrapping</em>.
+</p>
+<p>
+
+  Sometimes it is nice to have Emacs insert newlines automatically when
+a line gets too long.  Continuation on the screen does not do that.  Use
+Auto Fill mode (see section <a href="xemacs_23.html#SEC210">20.6 Filling Text</a>) if that's what you want.
+</p>
+<p>
+
+<a name="IDX223"></a>
+<a name="IDX224"></a>
+  Instead of continuation, long lines can be displayed by <em>truncation</em>.
+This means that all the characters that do not fit in the width of the
+frame or window do not appear at all.  They remain in the buffer,
+temporarily invisible.  Right arrow in the last column (instead of the
+curved arrow) inform you that truncation is in effect.
+</p>
+<p>
+
+  Truncation instead of continuation happens whenever horizontal
+scrolling is in use, and optionally in all side-by-side windows
+(see section <a href="xemacs_19.html#SEC175">16. Multiple Windows</a>).  You can enable truncation for a particular buffer by
+setting the variable <code>truncate-lines</code> to non-<code>nil</code> in that
+buffer.  (See section <a href="xemacs_30.html#SEC353">27.2 Variables</a>.)  Altering the value of
+<code>truncate-lines</code> makes it local to the current buffer; until that
+time, the default value is in effect.  The default is initially
+<code>nil</code>.  See section <a href="xemacs_30.html#SEC361">27.2.4 Local Variables</a>.
+</p>
+<p>
+
+  See section <a href="xemacs_14.html#SEC114">11.4 Variables Controlling Display</a>, for additional variables that affect how text is
+displayed.
+</p>
+<p>
+
+<a name="NODE_Position Info"></a>
+<hr size="6">
+<a name="SEC57"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC56" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC58" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.8 Cursor Position Information </h2>
+<!--docid::SEC57::-->
+<p>
+
+  If you are accustomed to other display editors, you may be surprised
+that Emacs does not always display the page number or line number of
+point in the mode line.  In Emacs, this information is only rarely
+needed, and a number of commands are available to compute and print it.
+Since text is stored in a way that makes it difficult to compute the
+information, it is not displayed all the time.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>M-x what-page</kbd>
+<dd>Print page number of point, and line number within page.
+<dt><kbd>M-x what-line</kbd>
+<dd>Print line number of point in the buffer.
+<dt><kbd>M-x line-number-mode</kbd>
+<dd>Toggle automatic display of current line number.
+<dt><kbd>M-=</kbd>
+<dd>Print number of lines and characters in the current region
+(<code>count-lines-region</code>).  See section <a href="xemacs_12.html#SEC79">9. Selecting Text</a>, for information about the
+region.
+<dt><kbd>C-x =</kbd>
+<dd>Print character code of character after point, character position of
+point, and column of point (<code>what-cursor-position</code>).
+</dl>
+<p>
+
+<a name="IDX225"></a>
+<a name="IDX226"></a>
+<a name="IDX227"></a>
+<a name="IDX228"></a>
+<a name="IDX229"></a>
+<a name="IDX230"></a>
+</p>
+<p>
+
+  There are several commands for printing line numbers:
+</p>
+<p>
+
+<ul>
+<li>
+<kbd>M-x what-line</kbd> counts lines from the beginning of the file and
+prints the line number point is on.  The first line of the file is line
+number 1.  You can use these numbers as arguments to <kbd>M-x
+goto-line</kbd>.
+<li>
+<kbd>M-x what-page</kbd> counts pages from the beginning of the file, and
+counts lines within the page, printing both of them.  See section <a href="xemacs_23.html#SEC209">20.5 Pages</a>, for
+the command <kbd>C-x l</kbd>, which counts the lines in the current page.
+<li>
+<kbd>M-=</kbd> (<code>count-lines-region</code>) prints the number of lines in the
+region (see section <a href="xemacs_12.html#SEC79">9. Selecting Text</a>).  See section <a href="xemacs_23.html#SEC209">20.5 Pages</a>, for the command <kbd>C-x l</kbd> which
+counts the lines in the
+</ul>
+<p>
+
+<a name="IDX231"></a>
+<a name="IDX232"></a>
+  The command <kbd>C-x =</kbd> (<code>what-cursor-position</code>) can be used to find out
+the column that the cursor is in, and other miscellaneous information about
+point.  It prints a line in the echo area that looks like this:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
+</pre></td></tr></table><p>
+
+(In fact, this is the output produced when point is before `<samp>column
+53</samp>' in the example.)
+</p>
+<p>
+
+  The four values after `<samp>Char:</samp>' describe the character that follows
+point, first by showing it and then by giving its character code in
+octal, decimal and hex. 
+</p>
+<p>
+
+  `<samp>point=</samp>' is followed by the position of point expressed as a character
+count.  The front of the buffer counts as position 1, one character later
+as 2, and so on.  The next, larger number is the total number of characters
+in the buffer.  Afterward in parentheses comes the position expressed as a
+percentage of the total size.
+</p>
+<p>
+
+  `<samp>column</samp>' is followed by the horizontal position of point, in
+columns from the left edge of the window.
+</p>
+<p>
+
+  If the buffer has been narrowed, making some of the text at the
+beginning and the end temporarily invisible, <kbd>C-x =</kbd> prints
+additional text describing the current visible range.  For example, it
+might say:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
+</font></pre></td></tr></table><p>
+
+where the two extra numbers give the smallest and largest character position
+that point is allowed to assume.  The characters between those two positions
+are the visible ones.  See section <a href="xemacs_29.html#SEC344">26.8 Narrowing</a>.
+</p>
+<p>
+
+  If point is at the end of the buffer (or the end of the visible part),
+<kbd>C-x =</kbd> omits any description of the character after point.
+The output looks like
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">point=563026 of 563025(100%)  column 0
+</font></pre></td></tr></table><p>
+
+<a name="NODE_Arguments"></a>
+<hr size="6">
+<a name="SEC58"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC57" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 4.9 Numeric Arguments </h2>
+<!--docid::SEC58::-->
+<p>
+
+  In mathematics and computer usage, the word <em>argument</em> means
+&quot;data provided to a function or operation.&quot;  Any Emacs command can be
+given a <em>numeric argument</em> (also called a <em>prefix argument</em>).
+Some commands interpret the argument as a repetition count.  For
+example, giving an argument of ten to the key <kbd>C-f</kbd> (the command
+<code>forward-char</code>, move forward one character) moves forward ten
+characters.  With these commands, no argument is equivalent to an
+argument of one.  Negative arguments are allowed.  Often they tell a
+command to move or act  in the opposite direction.
+</p>
+<p>
+
+<a name="IDX233"></a>
+<a name="IDX234"></a>
+<a name="IDX235"></a>
+<a name="IDX236"></a>
+  If your keyboard has a <kbd>META</kbd> key (labelled with a diamond on
+Sun-type keyboards and labelled `<samp>Alt</samp>' on some other keyboards), the
+easiest way to specify a numeric argument is to type digits and/or a
+minus sign while holding down the <kbd>META</kbd> key.  For example,
+<table><tr><td>&nbsp;</td><td class="example"><pre>M-5 C-n
+</pre></td></tr></table>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,
+and so on, as well as <kbd>Meta--</kbd>, do this because they are keys bound
+to commands (<code>digit-argument</code> and <code>negative-argument</code>) that
+are defined to contribute to an argument for the next command.  Digits
+and <kbd>-</kbd> modified with Control, or Control and Meta, also specify
+numeric arguments.
+<p>
+
+<a name="IDX237"></a>
+<a name="IDX238"></a>
+  Another way of specifying an argument is to use the <kbd>C-u</kbd>
+(<code>universal-argument</code>) command followed by the digits of the
+argument.  With <kbd>C-u</kbd>, you can type the argument digits without
+holding down modifier keys; <kbd>C-u</kbd> works on all terminals.  To type a
+negative argument, type a minus sign after <kbd>C-u</kbd>.  Just a minus sign
+without digits normally means -1.
+</p>
+<p>
+
+  <kbd>C-u</kbd> followed by a character which is neither a digit nor a minus
+sign has the special meaning of &quot;multiply by four&quot;.  It multiplies the
+argument for the next command by four.  <kbd>C-u</kbd> twice multiplies it by
+sixteen.  Thus, <kbd>C-u C-u C-f</kbd> moves forward sixteen characters.  This
+is a good way to move forward &quot;fast&quot;, since it moves about 1/5 of a line
+in the usual size frame.  Other useful combinations are <kbd>C-u C-n</kbd>,
+<kbd>C-u C-u C-n</kbd> (move down a good fraction of a frame), <kbd>C-u C-u
+C-o</kbd> (make &quot;a lot&quot; of blank lines), and <kbd>C-u C-k</kbd> (kill four
+lines).
+</p>
+<p>
+
+  Some commands care only about whether there is an argument and not about
+its value.  For example, the command <kbd>M-q</kbd> (<code>fill-paragraph</code>) with
+no argument fills text; with an argument, it justifies the text as well.
+(See section <a href="xemacs_23.html#SEC210">20.6 Filling Text</a>, for more information on <kbd>M-q</kbd>.)  Just <kbd>C-u</kbd> is a
+handy way of providing an argument for such commands.
+</p>
+<p>
+
+  Some commands use the value of the argument as a repeat count, but do
+something peculiar when there is no argument.  For example, the command
+<kbd>C-k</kbd> (<code>kill-line</code>) with argument <var>n</var> kills <var>n</var> lines,
+including their terminating newlines.  But <kbd>C-k</kbd> with no argument is
+special: it kills the text up to the next newline, or, if point is right at
+the end of the line, it kills the newline itself.  Thus, two <kbd>C-k</kbd>
+commands with no arguments can kill a non-blank line, just like <kbd>C-k</kbd>
+with an argument of one.  (See section <a href="xemacs_12.html#SEC87">9.4 Deletion and Killing</a>, for more information on
+<kbd>C-k</kbd>.)
+</p>
+<p>
+
+  A few commands treat a plain <kbd>C-u</kbd> differently from an ordinary
+argument.  A few others may treat an argument of just a minus sign
+differently from an argument of -1.  These unusual cases are
+described when they come up; they are always for reasons of convenience
+of use of the individual command.
+</p>
+<p>
+
+  You can use a numeric argument to insert multiple copies of a
+character.  This is straightforward unless the character is a digit; for
+example, <kbd>C-u 6 4 a</kbd> inserts 64 copies of the character `<samp>a</samp>'.
+But this does not work for inserting digits; <kbd>C-u 6 4 1</kbd> specifies
+an argument of 641, rather than inserting anything.  To separate the
+digit to insert from the argument, type another <kbd>C-u</kbd>; for example,
+<kbd>C-u 6 4 C-u 1</kbd> does insert 64 copies of the character `<samp>1</samp>'.
+</p>
+<p>
+
+  We use the term &quot;prefix argument&quot; as well as &quot;numeric argument&quot; to
+emphasize that you type the argument before the command, and to
+distinguish these arguments from minibuffer arguments that come after
+the command.
+</p>
+<p>
+
+<a name="NODE_Undo"></a>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_7.html#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

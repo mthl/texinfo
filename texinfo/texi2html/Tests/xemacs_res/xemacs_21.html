@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: Major Modes</title>
+
+<meta name="description" content="XEmacs User's Manual: Major Modes">
+<meta name="keywords" content="XEmacs User's Manual: Major Modes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC190"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC189" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC191" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 18. Major Modes </h1>
+<!--docid::SEC190::-->
+<p>
+
+  Emacs has many different <em>major modes</em>, each of which customizes
+Emacs for editing text of a particular sort.  The major modes are mutually
+exclusive;  at any time, each buffer has one major mode.  The mode line
+normally contains the name of the current major mode in parentheses.
+See section <a href="xemacs_4.html#SEC10">1.3 The Mode Line</a>.
+</p>
+<p>
+
+  The least specialized major mode is called <em>Fundamental mode</em>.  This
+mode has no mode-specific redefinitions or variable settings.  Each
+Emacs command behaves in its most general manner, and each option is in its
+default state.  For editing any specific type of text, such as Lisp code or
+English text, you should switch to the appropriate major mode, such as Lisp
+mode or Text mode.
+</p>
+<p>
+
+  Selecting a major mode changes the meanings of a few keys to become
+more specifically adapted to the language being edited.  <kbd>TAB</kbd>,
+<kbd>DEL</kbd>, and <kbd>LFD</kbd> are changed frequently.  In addition, commands
+which handle comments use the mode to determine how to delimit comments.
+Many major modes redefine the syntactical properties of characters
+appearing in the buffer.  See section <a href="xemacs_30.html#SEC374">27.5 The Syntax Table</a>.
+</p>
+<p>
+
+  The major modes fall into three major groups.  Lisp mode (which has
+several variants), C mode, and Muddle mode are for specific programming
+languages.  Text mode, Nroff mode, TeX mode, and Outline mode are for
+editing English text.  The remaining major modes are not intended for use
+on users' files; they are used in buffers created by Emacs for specific
+purposes and include Dired mode for buffers made by Dired (see section <a href="xemacs_17.html#SEC163">14.9 Dired, the Directory Editor</a>),
+Mail mode for buffers made by <kbd>C-x m</kbd> (see section <a href="xemacs_28.html#SEC296">25. Sending Mail</a>), and Shell
+mode for buffers used for communicating with an inferior shell process
+(see section <a href="xemacs_29.html#SEC339">26.7.2 Interactive Inferior Shell</a>).
+</p>
+<p>
+
+  Most programming language major modes specify that only blank lines
+separate paragraphs.  This is so that the paragraph commands remain useful.
+See section <a href="xemacs_23.html#SEC208">20.4 Paragraphs</a>.  They also cause Auto Fill mode to use the definition of
+<kbd>TAB</kbd> to indent the new lines it creates.  This is because most lines
+in a program are usually indented.  See section <a href="xemacs_22.html#SEC192">19. Indentation</a>.
+</p>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="xemacs_21.html#SEC191">18.1 Choosing Major Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How major modes are specified or chosen.</td></tr>
+</table>
+<p>
+
+<a name="NODE_Choosing Modes"></a>
+<hr size="6">
+<a name="SEC191"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 18.1 Choosing Major Modes </h2>
+<!--docid::SEC191::-->
+<p>
+
+  You can select a major mode explicitly for the current buffer, but
+most of the time Emacs determines which mode to use based on the file
+name or some text in the file.
+</p>
+<p>
+
+  Use a <kbd>M-x</kbd> command to explicitly select a new major mode.  Add
+<code>-mode</code> to the name of a major mode to get the name of a command to
+select that mode.  For example, to enter Lisp mode, execute <kbd>M-x
+lisp-mode</kbd>.
+</p>
+<p>
+
+<a name="IDX848"></a>
+  When you visit a file, Emacs usually chooses the right major mode
+based on the file's name.  For example, files whose names end in
+<code>.c</code> are edited in C mode.  The variable <code>auto-mode-alist</code>
+controls the correspondence between file names and major mode.  Its value
+is a list in which each element has the form:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>(<var>regexp</var> . <var>mode-function</var>)
+</pre></td></tr></table><p>
+
+For example, one element normally found in the list has the form
+<code>(<tt>&quot;\\.c$&quot;</tt> . c-mode)</code>. It is responsible for selecting C mode
+for files whose names end in `<tt>.c</tt>'.  (Note that `<samp>\\</samp>' is needed in
+Lisp syntax to include a `<samp>\</samp>' in the string, which is needed to
+suppress the special meaning of `<samp>.</samp>' in regexps.)  The only practical
+way to change this variable is with Lisp code.
+</p>
+<p>
+
+  You can specify which major mode should be used for editing a certain
+file by a special sort of text in the first non-blank line of the file.
+The mode name should appear in this line both preceded and followed by
+`<samp>-*-</samp>'.  Other text may appear on the line as well.  For example,
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>;-*-Lisp-*-
+</pre></td></tr></table><p>
+
+tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
+treat this line as a comment.  Such an explicit specification overrides any
+default mode based on the file name.
+</p>
+<p>
+
+  Another format of mode specification is:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>-*-Mode: <var>modename</var>;-*-
+</pre></td></tr></table><p>
+
+which allows other things besides the major mode name to be specified.
+However, Emacs does not look for anything except the mode name.
+</p>
+<p>
+
+The major mode can also be specified in a local variables list.
+See section <a href="xemacs_30.html#SEC362">27.2.5 Local Variables in Files</a>.
+</p>
+<p>
+
+<a name="IDX849"></a>
+  When you visit a file that does not specify a major mode to use, or
+when you create a new buffer with <kbd>C-x b</kbd>, Emacs uses the major mode
+specified by the variable <code>default-major-mode</code>.  Normally this
+value is the symbol <code>fundamental-mode</code>, which specifies Fundamental
+mode.  If <code>default-major-mode</code> is <code>nil</code>, the major mode is
+taken from the previously selected buffer.
+</p>
+<p>
+
+<a name="NODE_Indentation"></a>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

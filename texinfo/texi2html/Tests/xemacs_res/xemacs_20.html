@@ -1,0 +1,999 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: Mule</title>
+
+<meta name="description" content="XEmacs User's Manual: Mule">
+<meta name="keywords" content="XEmacs User's Manual: Mule">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC181"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_19.html#SEC180" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC182" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 17. World Scripts Support </h1>
+<!--docid::SEC181::-->
+<p>
+
+<a name="IDX802"></a>
+<a name="IDX803"></a>
+<a name="IDX804"></a>
+<a name="IDX805"></a>
+<a name="IDX806"></a>
+<a name="IDX807"></a>
+<a name="IDX808"></a>
+  If you compile XEmacs with Mule option, it supports a wide variety of
+world scripts, including Latin script, as well as Arabic script,
+Simplified Chinese script (for mainland of China), Traditional Chinese
+script (for Taiwan and Hong-Kong), Greek script, Hebrew script, IPA
+symbols, Japanese scripts (Hiragana, Katakana and Kanji), Korean scripts
+(Hangul and Hanja) and Cyrillic script (for Byelorussian, Bulgarian,
+Russian, Serbian and Ukrainian).  These features have been merged from
+the modified version of Emacs known as MULE (for &quot;MULti-lingual
+Enhancement to GNU Emacs&quot;).
+</p>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC182">17.1 What is Mule?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic concepts of Mule.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC183">17.2 Language Environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Setting things up for the language you use.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC184">17.3 Input Methods</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering text characters not on your keyboard.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC185">17.4 Selecting an Input Method</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying your choice of input methods.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC186">17.5 Mule and Fonts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Additional font-related issues</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC187">17.6 Coding Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Character set conversion when you read and
+                              write files, and so on.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC188">17.7 Recognizing Coding Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How XEmacs figures out which conversion to use.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_20.html#SEC189">17.8 Specifying a Coding System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various ways to choose which conversion to use.</td></tr>
+</table>
+<p>
+
+<a name="NODE_Mule Intro"></a>
+<hr size="6">
+<a name="SEC182"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC183" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.1 What is Mule? </h2>
+<!--docid::SEC182::-->
+<p>
+
+Mule is the MUltiLingual Extension to XEmacs.  It provides facilities
+not only for handling text written in many different languages, but in
+fact multilingual texts containing several languages in the same buffer.
+This goes beyond the simple facilities offered by Unicode for
+representation of multilingual text.  Mule also supports input methods,
+composing display using fonts in various different encodings, changing
+character syntax and other editing facilities to correspond to local
+language usage, and more.
+</p>
+<p>
+
+The most obvious problem is that of the different character coding
+systems used by different languages.  ASCII supplies all the characters
+needed for most computer programming languages and US English (it lacks
+the currency symbol for British English), but other Western European
+languages (French, Spanish, German) require more than 96 code positions
+for accented characters.  In fact, even with 8 bits to represent 96 more
+character (including accented characters and symbols such as currency
+symbols), some languages' alphabets remain incomplete (Croatian,
+Polish).  (The 64 &quot;missing characters&quot; are reserved for control
+characters.)  Furthermore, many European languages have their own
+alphabets, which must conflict with the accented characters since the
+ASCII characters are needed for computer interaction (error and log
+messages are typically in ASCII).
+</p>
+<p>
+
+For economy of space, historical practice has been for each language to
+establish its own encoding for the characters it needs.  This allows
+most European languages to represented with one octet (byte) per
+character.  However, many Asian languages have thousands of characters
+and require two or more octets per character.  For multilingual
+purposes, the ISO 2022 standard establishes escape codes that allow
+switching encodings in midstream.  (It's also ISO 2022 that establishes
+the standard that code points 0-31 and 128-159 are control codes.)
+</p>
+<p>
+
+However, this is error-prone and complex for internal processing.  For
+this reason XEmacs uses an internal coding system which can encode all
+of the world's scripts.  Unfortunately, for historical reasons, this
+code is not Unicode, although we are moving in that direction.
+</p>
+<p>
+
+XEmacs translates between the internal character encoding and various
+other coding systems when reading and writing files, when exchanging
+data with subprocesses, and (in some cases) in the <kbd>C-q</kbd> command
+(see below).  The internal encoding is never visible to the user in a
+production XEmacs, but unfortunately the process cannot be completely
+transparent to the user.  This is because the same ranges of octets may
+represent 1-octet ISO-8859-1 (which is satisfactory for most Western
+European use prior to the introduction of the Euro currency), 1-octet
+ISO-8859-15 (which substitutes the Euro for the rarely used &quot;generic
+currency&quot; symbol), 1-octet ISO-8859-5 (Cyrillic), or multioctet EUC-JP
+(Japanese).  There's no way to tell without being able to read!
+</p>
+<p>
+
+A number of heuristics are incorporated in Mule for automatic
+recognition, there are facilities for the user to set defaults, and
+where necessary (rarely, we hope) to set coding systems directly.
+</p>
+<p>
+
+<a name="IDX809"></a>
+<a name="IDX810"></a>
+  The command <kbd>C-h h</kbd> (<code>view-hello-file</code>) displays the file
+`<tt>etc/HELLO</tt>', which shows how to say &quot;hello&quot; in many languages.
+This illustrates various scripts.
+</p>
+<p>
+
+  Keyboards, even in the countries where these character sets are used,
+generally don't have keys for all the characters in them.  So XEmacs
+supports various <em>input methods</em>, typically one for each script or
+language, to make it convenient to type them.
+</p>
+<p>
+
+<a name="IDX811"></a>
+  The prefix key <kbd>C-x <kbd>RET</kbd></kbd> is used for commands that pertain
+to world scripts, coding systems, and input methods.
+</p>
+<p>
+
+<a name="NODE_Language Environments"></a>
+<hr size="6">
+<a name="SEC183"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC182" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC184" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.2 Language Environments </h2>
+<!--docid::SEC183::-->
+<p>
+
+  All supported character sets are supported in XEmacs buffers if it is
+compiled with Mule; there is no need to select a particular language in
+order to display its characters in an XEmacs buffer.  However, it is
+important to select a <em>language environment</em> in order to set various
+defaults.  The language environment really represents a choice of
+preferred script (more or less) rather that a choice of language.
+</p>
+<p>
+
+  The language environment controls which coding systems to recognize
+when reading text (see section <a href="xemacs_20.html#SEC188">17.7 Recognizing Coding Systems</a>).  This applies to files,
+incoming mail, netnews, and any other text you read into XEmacs.  It may
+also specify the default coding system to use when you create a file.
+Each language environment also specifies a default input method.
+</p>
+<p>
+
+<a name="IDX812"></a>
+  The command to select a language environment is <kbd>M-x
+set-language-environment</kbd>.  It makes no difference which buffer is
+current when you use this command, because the effects apply globally to
+the XEmacs session.  The supported language environments include:
+</p>
+<p>
+
+<blockquote>
+ASCII, Chinese-BIG5, Chinese-GB, Croatian, Cyrillic-ALT, Cyrillic-ISO, 
+Cyrillic-KOI8, Cyrillic-Win, Czech, English, Ethiopic, French, German,
+Greek, Hebrew, IPA, Japanese, Korean, Latin-1, Latin-2, Latin-3, Latin-4,
+Latin-5, Norwegian, Polish, Romanian, Slovenian, Thai-XTIS, Vietnamese.
+</blockquote>
+<p>
+
+  Some operating systems let you specify the language you are using by
+setting locale environment variables.  XEmacs handles one common special
+case of this: if your locale name for character types contains the
+string `<samp>8859-<var>n</var></samp>', XEmacs automatically selects the
+corresponding language environment.
+</p>
+<p>
+
+<a name="IDX813"></a>
+<a name="IDX814"></a>
+  To display information about the effects of a certain language
+environment <var>lang-env</var>, use the command <kbd>C-h L <var>lang-env</var>
+<kbd>RET</kbd></kbd> (<code>describe-language-environment</code>).  This tells you which
+languages this language environment is useful for, and lists the
+character sets, coding systems, and input methods that go with it.  It
+also shows some sample text to illustrate scripts used in this language
+environment.  By default, this command describes the chosen language
+environment.
+</p>
+<p>
+
+<a name="NODE_Input Methods"></a>
+<hr size="6">
+<a name="SEC184"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC183" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC185" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.3 Input Methods </h2>
+<!--docid::SEC184::-->
+<p>
+
+<a name="IDX815"></a>
+  An <em>input method</em> is a kind of character conversion designed
+specifically for interactive input.  In XEmacs, typically each language
+has its own input method; sometimes several languages which use the same
+characters can share one input method.  A few languages support several
+input methods.
+</p>
+<p>
+
+  The simplest kind of input method works by mapping ASCII letters into
+another alphabet.  This is how the Greek and Russian input methods work.
+</p>
+<p>
+
+  A more powerful technique is composition: converting sequences of
+characters into one letter.  Many European input methods use composition
+to produce a single non-ASCII letter from a sequence that consists of a
+letter followed by accent characters.  For example, some methods convert
+the sequence <kbd>'a</kbd> into a single accented letter.
+</p>
+<p>
+
+  The input methods for syllabic scripts typically use mapping followed
+by composition.  The input methods for Thai and Korean work this way.
+First, letters are mapped into symbols for particular sounds or tone
+marks; then, sequences of these which make up a whole syllable are
+mapped into one syllable sign.
+</p>
+<p>
+
+  Chinese and Japanese require more complex methods.  In Chinese input
+methods, first you enter the phonetic spelling of a Chinese word (in
+input method <code>chinese-py</code>, among others), or a sequence of portions
+of the character (input methods <code>chinese-4corner</code> and
+<code>chinese-sw</code>, and others).  Since one phonetic spelling typically
+corresponds to many different Chinese characters, you must select one of
+the alternatives using special XEmacs commands.  Keys such as <kbd>C-f</kbd>,
+<kbd>C-b</kbd>, <kbd>C-n</kbd>, <kbd>C-p</kbd>, and digits have special definitions in
+this situation, used for selecting among the alternatives.  <kbd>TAB</kbd>
+displays a buffer showing all the possibilities.
+</p>
+<p>
+
+   In Japanese input methods, first you input a whole word using
+phonetic spelling; then, after the word is in the buffer, XEmacs
+converts it into one or more characters using a large dictionary.  One
+phonetic spelling corresponds to many differently written Japanese
+words, so you must select one of them; use <kbd>C-n</kbd> and <kbd>C-p</kbd> to
+cycle through the alternatives.
+</p>
+<p>
+
+  Sometimes it is useful to cut off input method processing so that the
+characters you have just entered will not combine with subsequent
+characters.  For example, in input method <code>latin-1-postfix</code>, the
+sequence <kbd>e '</kbd> combines to form an `<samp>e</samp>' with an accent.  What if
+you want to enter them as separate characters?
+</p>
+<p>
+
+  One way is to type the accent twice; that is a special feature for
+entering the separate letter and accent.  For example, <kbd>e ' '</kbd> gives
+you the two characters `<samp>e'</samp>'.  Another way is to type another letter
+after the <kbd>e</kbd>---something that won't combine with that--and
+immediately delete it.  For example, you could type <kbd>e e <kbd>DEL</kbd>
+'</kbd> to get separate `<samp>e</samp>' and `<samp>'</samp>'.
+</p>
+<p>
+
+  Another method, more general but not quite as easy to type, is to use
+<kbd>C-\ C-\</kbd> between two characters to stop them from combining.  This
+is the command <kbd>C-\</kbd> (<code>toggle-input-method</code>) used twice.
+See section <a href="xemacs_20.html#SEC185">17.4 Selecting an Input Method</a>.
+</p>
+<p>
+
+  <kbd>C-\ C-\</kbd> is especially useful inside an incremental search,
+because stops waiting for more characters to combine, and starts
+searching for what you have already entered.
+</p>
+<p>
+
+<a name="IDX816"></a>
+<a name="IDX817"></a>
+  The variables <code>input-method-highlight-flag</code> and
+<code>input-method-verbose-flag</code> control how input methods explain what
+is happening.  If <code>input-method-highlight-flag</code> is non-<code>nil</code>,
+the partial sequence is highlighted in the buffer.  If
+<code>input-method-verbose-flag</code> is non-<code>nil</code>, the list of possible
+characters to type next is displayed in the echo area (but not when you
+are in the minibuffer).
+</p>
+<p>
+
+<a name="NODE_Select Input Method"></a>
+<hr size="6">
+<a name="SEC185"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC184" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC186" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.4 Selecting an Input Method </h2>
+<!--docid::SEC185::-->
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-\</kbd>
+<dd>Enable or disable use of the selected input method.
+<p>
+
+</p>
+<dt><kbd>C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd></kbd>
+<dd>Select a new input method for the current buffer.
+<p>
+
+</p>
+<dt><kbd>C-h I <var>method</var> <kbd>RET</kbd></kbd>
+<dd><dt><kbd>C-h C-\ <var>method</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX818"></a>
+<a name="IDX819"></a>
+<a name="IDX820"></a>
+Describe the input method <var>method</var> (<code>describe-input-method</code>).
+By default, it describes the current input method (if any).
+<p>
+
+</p>
+<dt><kbd>M-x list-input-methods</kbd>
+<dd>Display a list of all the supported input methods.
+</dl>
+<p>
+
+<a name="IDX821"></a>
+<a name="IDX822"></a>
+<a name="IDX823"></a>
+  To choose an input method for the current buffer, use <kbd>C-x
+<kbd>RET</kbd> C-\</kbd> (<code>select-input-method</code>).  This command reads the
+input method name with the minibuffer; the name normally starts with the
+language environment that it is meant to be used with.  The variable
+<code>current-input-method</code> records which input method is selected.
+  
+<a name="IDX824"></a>
+<a name="IDX825"></a>
+  Input methods use various sequences of ASCII characters to stand for
+non-ASCII characters.  Sometimes it is useful to turn off the input
+method temporarily.  To do this, type <kbd>C-\</kbd>
+(<code>toggle-input-method</code>).  To reenable the input method, type
+<kbd>C-\</kbd> again.
+</p>
+<p>
+
+  If you type <kbd>C-\</kbd> and you have not yet selected an input method,
+it prompts for you to specify one.  This has the same effect as using
+<kbd>C-x <kbd>RET</kbd> C-\</kbd> to specify an input method.
+</p>
+<p>
+
+<a name="IDX826"></a>
+  Selecting a language environment specifies a default input method for
+use in various buffers.  When you have a default input method, you can
+select it in the current buffer by typing <kbd>C-\</kbd>.  The variable
+<code>default-input-method</code> specifies the default input method
+(<code>nil</code> means there is none).
+</p>
+<p>
+
+<a name="IDX827"></a>
+  Some input methods for alphabetic scripts work by (in effect)
+remapping the keyboard to emulate various keyboard layouts commonly used
+for those scripts.  How to do this remapping properly depends on your
+actual keyboard layout.  To specify which layout your keyboard has, use
+the command <kbd>M-x quail-set-keyboard-layout</kbd>.
+</p>
+<p>
+
+<a name="IDX828"></a>
+  To display a list of all the supported input methods, type <kbd>M-x
+list-input-methods</kbd>.  The list gives information about each input
+method, including the string that stands for it in the mode line.
+</p>
+<p>
+
+<a name="NODE_Mule and Fonts"></a>
+<hr size="6">
+<a name="SEC186"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC185" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC187" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.5 Mule and Fonts </h2>
+<!--docid::SEC186::-->
+<p>
+
+(This section is X11-specific.)
+</p>
+<p>
+
+Text in XEmacs buffers is displayed using various faces.  In addition to
+specifying properties of a face, such as font and color, there are some
+additional properties of Mule charsets that are used in text.
+</p>
+<p>
+
+There is currently two properties of a charset that could be adjusted by
+user: font registry and so called <em>ccl-program</em>.
+</p>
+<p>
+
+Font registry is a regular expression matching the font registry field
+for this character set.  For example, both the <code>ascii</code> and
+<code>latin-iso8859-1</code> charsets use the registry <code>&quot;ISO8859-1&quot;</code>.
+This field is used to choose an appropriate font when the user gives a
+general font specification such as `<samp>-*-courier-medium-r-*-140-*</samp>',
+i.e. a 14-point upright medium-weight Courier font.
+</p>
+<p>
+
+You can set font registry for a charset using
+`<samp>set-charset-registry</samp>' function in one of your startup files.  This
+function takes two arguments: character set (as a symbol) and font
+registry (as a string).
+</p>
+<p>
+
+E. g., for Cyrillic texts Mule uses <code>cyrillic-iso8859-5</code>
+charset with `<samp>&quot;ISO8859-5&quot;</samp>' as a default registry, and we want to
+use `<samp>&quot;koi8-r&quot;</samp>' instead, because fonts in that encoding are
+installed on our system.  Use:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
+</pre></td></tr></table><p>
+
+(Please note that you probably also want to set font registry for
+`<samp>ascii</samp>' charset so that mixed English/Cyrillic texts be displayed
+using the same font.)
+</p>
+<p>
+
+&quot;CCL-programs&quot; are a little special-purpose scripts defined within
+XEmacs or in some package.  Those scripts allow XEmacs to use fonts that
+are in different encoding from the encoding that is used by Mule for
+text in buffer.  Returning to the above example, we need to somehow tell
+XEmacs that we have different encodings of fonts and text and so it
+needs to convert characters between those encodings when displaying.
+That's what `<samp>set-charset-ccl-program</samp>' function is used for.  There
+are quite a few various CCL programs defined within XEmacs, and there is
+no comprehensive list of them, so you currently have to consult sources.
+</p>
+<p>
+
+We know that there is a CCL program called `<samp>ccl-encode-koi8-r-font</samp>'
+that is used exactly for needed purpose: to convert characters between
+`<samp>ISO8859-5</samp>' encoding and `<samp>koi8-r</samp>'.  Use:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="example"><pre>(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
+</pre></td></tr></table><p>
+
+There are several more uses for CCL programs, not related to fonts, but
+those uses are not described here.
+</p>
+<p>
+
+<a name="NODE_Coding Systems"></a>
+<hr size="6">
+<a name="SEC187"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC186" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC188" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.6 Coding Systems </h2>
+<!--docid::SEC187::-->
+<p>
+
+  Users of various languages have established many more-or-less standard
+coding systems for representing them.  XEmacs does not use these coding
+systems internally; instead, it converts from various coding systems to
+its own system when reading data, and converts the internal coding
+system to other coding systems when writing data.  Conversion is
+possible in reading or writing files, in sending or receiving from the
+terminal, and in exchanging data with subprocesses.
+</p>
+<p>
+
+  XEmacs assigns a name to each coding system.  Most coding systems are
+used for one language, and the name of the coding system starts with the
+language name.  Some coding systems are used for several languages;
+their names usually start with `<samp>iso</samp>'.  There are also special
+coding systems <code>binary</code> and <code>no-conversion</code> which do not
+convert printing characters at all.
+</p>
+<p>
+
+  In addition to converting various representations of non-ASCII
+characters, a coding system can perform end-of-line conversion.  XEmacs
+handles three different conventions for how to separate lines in a file:
+newline, carriage-return linefeed, and just carriage-return.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-h C <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Describe coding system <var>coding</var>.
+<p>
+
+</p>
+<dt><kbd>C-h C <kbd>RET</kbd></kbd>
+<dd>Describe the coding systems currently in use.
+<p>
+
+</p>
+<dt><kbd>M-x list-coding-systems</kbd>
+<dd>Display a list of all the supported coding systems.
+<p>
+
+</p>
+<dt><kbd>C-u M-x list-coding-systems</kbd>
+<dd>Display comprehensive list of specific details of all supported coding
+systems.
+</dl>
+<p>
+
+<a name="IDX829"></a>
+<a name="IDX830"></a>
+  The command <kbd>C-x RET C</kbd> (<code>describe-coding-system</code>) displays
+information about particular coding systems.  You can specify a coding
+system name as argument; alternatively, with an empty argument, it
+describes the coding systems currently selected for various purposes,
+both in the current buffer and as the defaults, and the priority list
+for recognizing coding systems (see section <a href="xemacs_20.html#SEC188">17.7 Recognizing Coding Systems</a>).
+</p>
+<p>
+
+<a name="IDX831"></a>
+  To display a list of all the supported coding systems, type <kbd>M-x
+list-coding-systems</kbd>.  The list gives information about each coding
+system, including the letter that stands for it in the mode line
+(see section <a href="xemacs_4.html#SEC10">1.3 The Mode Line</a>).
+</p>
+<p>
+
+  Each of the coding systems that appear in this list--except for
+<code>binary</code>, which means no conversion of any kind--specifies how and
+whether to convert printing characters, but leaves the choice of
+end-of-line conversion to be decided based on the contents of each file.
+For example, if the file appears to use carriage-return linefeed between
+lines, that end-of-line conversion will be used.
+</p>
+<p>
+
+  Each of the listed coding systems has three variants which specify
+exactly what to do for end-of-line conversion:
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><code><small>...</small>-unix</code>
+<dd>Don't do any end-of-line conversion; assume the file uses
+newline to separate lines.  (This is the convention normally used
+on Unix and GNU systems.)
+<p>
+
+</p>
+<dt><code><small>...</small>-dos</code>
+<dd>Assume the file uses carriage-return linefeed to separate lines,
+and do the appropriate conversion.  (This is the convention normally used
+on Microsoft systems.)
+<p>
+
+</p>
+<dt><code><small>...</small>-mac</code>
+<dd>Assume the file uses carriage-return to separate lines, and do the
+appropriate conversion.  (This is the convention normally used on the
+Macintosh system.)
+</dl>
+<p>
+
+  These variant coding systems are omitted from the
+<code>list-coding-systems</code> display for brevity, since they are entirely
+predictable.  For example, the coding system <code>iso-8859-1</code> has
+variants <code>iso-8859-1-unix</code>, <code>iso-8859-1-dos</code> and
+<code>iso-8859-1-mac</code>.
+</p>
+<p>
+
+  In contrast, the coding system <code>binary</code> specifies no character
+code conversion at all--none for non-Latin-1 byte values and none for
+end of line.  This is useful for reading or writing binary files, tar
+files, and other files that must be examined verbatim.
+</p>
+<p>
+
+  The easiest way to edit a file with no conversion of any kind is with
+the <kbd>M-x find-file-literally</kbd> command.  This uses <code>binary</code>, and
+also suppresses other XEmacs features that might convert the file
+contents before you see them.  See section <a href="xemacs_17.html#SEC136">14.2 Visiting Files</a>.
+</p>
+<p>
+
+  The coding system <code>no-conversion</code> means that the file contains
+non-Latin-1 characters stored with the internal XEmacs encoding.  It
+handles end-of-line conversion based on the data encountered, and has
+the usual three variants to specify the kind of end-of-line conversion.
+</p>
+<p>
+
+<a name="NODE_Recognize Coding"></a>
+<hr size="6">
+<a name="SEC188"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC187" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC189" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.7 Recognizing Coding Systems </h2>
+<!--docid::SEC188::-->
+<p>
+
+  Most of the time, XEmacs can recognize which coding system to use for
+any given file--once you have specified your preferences.
+</p>
+<p>
+
+  Some coding systems can be recognized or distinguished by which byte
+sequences appear in the data.  However, there are coding systems that
+cannot be distinguished, not even potentially.  For example, there is no
+way to distinguish between Latin-1 and Latin-2; they use the same byte
+values with different meanings.
+</p>
+<p>
+
+  XEmacs handles this situation by means of a priority list of coding
+systems.  Whenever XEmacs reads a file, if you do not specify the coding
+system to use, XEmacs checks the data against each coding system,
+starting with the first in priority and working down the list, until it
+finds a coding system that fits the data.  Then it converts the file
+contents assuming that they are represented in this coding system.
+</p>
+<p>
+
+  The priority list of coding systems depends on the selected language
+environment (see section <a href="xemacs_20.html#SEC183">17.2 Language Environments</a>).  For example, if you use
+French, you probably want XEmacs to prefer Latin-1 to Latin-2; if you
+use Czech, you probably want Latin-2 to be preferred.  This is one of
+the reasons to specify a language environment.
+</p>
+<p>
+
+<a name="IDX832"></a>
+  However, you can alter the priority list in detail with the command
+<kbd>M-x prefer-coding-system</kbd>.  This command reads the name of a coding
+system from the minibuffer, and adds it to the front of the priority
+list, so that it is preferred to all others.  If you use this command
+several times, each use adds one element to the front of the priority
+list.
+</p>
+<p>
+
+<a name="IDX833"></a>
+  Sometimes a file name indicates which coding system to use for the
+file.  The variable <code>file-coding-system-alist</code> specifies this
+correspondence.  There is a special function
+<code>modify-coding-system-alist</code> for adding elements to this list.  For
+example, to read and write all `<samp>.txt</samp>' using the coding system
+<code>china-iso-8bit</code>, you can execute this Lisp expression:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
+</font></pre></td></tr></table><p>
+
+The first argument should be <code>file</code>, the second argument should be
+a regular expression that determines which files this applies to, and
+the third argument says which coding system to use for these files.
+</p>
+<p>
+
+<a name="IDX834"></a>
+  You can specify the coding system for a particular file using the
+`<samp>-*-<small>...</small>-*-</samp>' construct at the beginning of a file, or a local
+variables list at the end (see section <a href="xemacs_30.html#SEC362">27.2.5 Local Variables in Files</a>).  You do this by
+defining a value for the &quot;variable&quot; named <code>coding</code>.  XEmacs does
+not really have a variable <code>coding</code>; instead of setting a variable,
+it uses the specified coding system for the file.  For example,
+`<samp>-*-mode: C; coding: iso-8859-1;-*-</samp>' specifies use of the
+iso-8859-1 coding system, as well as C mode.
+</p>
+<p>
+
+<a name="IDX835"></a>
+  Once XEmacs has chosen a coding system for a buffer, it stores that
+coding system in <code>buffer-file-coding-system</code> and uses that coding
+system, by default, for operations that write from this buffer into a
+file.  This includes the commands <code>save-buffer</code> and
+<code>write-region</code>.  If you want to write files from this buffer using
+a different coding system, you can specify a different coding system for
+the buffer using <code>set-buffer-file-coding-system</code> (see section <a href="xemacs_20.html#SEC189">17.8 Specifying a Coding System</a>).
+</p>
+<p>
+
+<a name="NODE_Specify Coding"></a>
+<hr size="6">
+<a name="SEC189"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC188" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 17.8 Specifying a Coding System </h2>
+<!--docid::SEC189::-->
+<p>
+
+  In cases where XEmacs does not automatically choose the right coding
+system, you can use these commands to specify one:
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Use coding system <var>coding</var> for the visited file
+in the current buffer.
+<p>
+
+</p>
+<dt><kbd>C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Specify coding system <var>coding</var> for the immediately following
+command.
+<p>
+
+</p>
+<dt><kbd>C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Use coding system <var>coding</var> for keyboard input.  (This feature is
+non-functional and is temporarily disabled.)
+<p>
+
+</p>
+<dt><kbd>C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Use coding system <var>coding</var> for terminal output.
+<p>
+
+</p>
+<dt><kbd>C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd></kbd>
+<dd>Use coding system <var>coding</var> for subprocess input and output
+in the current buffer.
+</dl>
+<p>
+
+<a name="IDX836"></a>
+<a name="IDX837"></a>
+  The command <kbd>C-x RET f</kbd> (<code>set-buffer-file-coding-system</code>)
+specifies the file coding system for the current buffer--in other
+words, which coding system to use when saving or rereading the visited
+file.  You specify which coding system using the minibuffer.  Since this
+command applies to a file you have already visited, it affects only the
+way the file is saved.
+</p>
+<p>
+
+<a name="IDX838"></a>
+<a name="IDX839"></a>
+  Another way to specify the coding system for a file is when you visit
+the file.  First use the command <kbd>C-x <kbd>RET</kbd> c</kbd>
+(<code>universal-coding-system-argument</code>); this command uses the
+minibuffer to read a coding system name.  After you exit the minibuffer,
+the specified coding system is used for <em>the immediately following
+command</em>.
+</p>
+<p>
+
+  So if the immediately following command is <kbd>C-x C-f</kbd>, for example,
+it reads the file using that coding system (and records the coding
+system for when the file is saved).  Or if the immediately following
+command is <kbd>C-x C-w</kbd>, it writes the file using that coding system.
+Other file commands affected by a specified coding system include
+<kbd>C-x C-i</kbd> and <kbd>C-x C-v</kbd>, as well as the other-window variants of
+<kbd>C-x C-f</kbd>.
+</p>
+<p>
+
+  In addition, if you run some file input commands with the precedent
+<kbd>C-u</kbd>, you can specify coding system to read from minibuffer.  So if
+the immediately following command is <kbd>C-x C-f</kbd>, for example, it
+reads the file using that coding system (and records the coding system
+for when the file is saved).  Other file commands affected by a
+specified coding system include <kbd>C-x C-i</kbd> and <kbd>C-x C-v</kbd>, as well
+as the other-window variants of <kbd>C-x C-f</kbd>.
+</p>
+<p>
+
+<a name="IDX840"></a>
+  The variable <code>default-buffer-file-coding-system</code> specifies the
+choice of coding system to use when you create a new file.  It applies
+when you find a new file, and when you create a buffer and then save it
+in a file.  Selecting a language environment typically sets this
+variable to a good choice of default coding system for that language
+environment.
+</p>
+<p>
+
+<a name="IDX841"></a>
+<a name="IDX842"></a>
+  The command <kbd>C-x <kbd>RET</kbd> t</kbd> (<code>set-terminal-coding-system</code>)
+specifies the coding system for terminal output.  If you specify a
+character code for terminal output, all characters output to the
+terminal are translated into that coding system.
+</p>
+<p>
+
+  This feature is useful for certain character-only terminals built to
+support specific languages or character sets--for example, European
+terminals that support one of the ISO Latin character sets.
+</p>
+<p>
+
+  By default, output to the terminal is not translated at all.
+</p>
+<p>
+
+<a name="IDX843"></a>
+<a name="IDX844"></a>
+  The command <kbd>C-x <kbd>RET</kbd> k</kbd> (<code>set-keyboard-coding-system</code>)
+specifies the coding system for keyboard input.  Character-code
+translation of keyboard input is useful for terminals with keys that
+send non-ASCII graphic characters--for example, some terminals designed
+for ISO Latin-1 or subsets of it.
+</p>
+<p>
+
+  By default, keyboard input is not translated at all.
+</p>
+<p>
+
+  There is a similarity between using a coding system translation for
+keyboard input, and using an input method: both define sequences of
+keyboard input that translate into single characters.  However, input
+methods are designed to be convenient for interactive use by humans, and
+the sequences that are translated are typically sequences of ASCII
+printing characters.  Coding systems typically translate sequences of
+non-graphic characters.
+</p>
+<p>
+
+(This feature is non-functional and is temporarily disabled.)
+</p>
+<p>
+
+<a name="IDX845"></a>
+<a name="IDX846"></a>
+  The command <kbd>C-x <kbd>RET</kbd> p</kbd> (<code>set-buffer-process-coding-system</code>)
+specifies the coding system for input and output to a subprocess.  This
+command applies to the current buffer; normally, each subprocess has its
+own buffer, and thus you can use this command to specify translation to
+and from a particular subprocess by giving the command in the
+corresponding buffer.
+</p>
+<p>
+
+  By default, process input and output are not translated at all.
+</p>
+<p>
+
+<a name="IDX847"></a>
+  The variable <code>file-name-coding-system</code> specifies a coding system
+to use for encoding file names.  If you set the variable to a coding
+system name (as a Lisp symbol or a string), XEmacs encodes file names
+using that coding system for all file operations.  This makes it
+possible to use non-Latin-1 characters in file names--or, at least,
+those non-Latin-1 characters which the specified coding system can
+encode.  By default, this variable is <code>nil</code>, which implies that you
+cannot use non-Latin-1 characters in file names.
+</p>
+<p>
+
+<a name="NODE_Major Modes"></a>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

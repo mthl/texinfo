@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>XEmacs User's Manual: Registers</title>
+
+<meta name="description" content="XEmacs User's Manual: Registers">
+<meta name="keywords" content="XEmacs User's Manual: Registers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC102"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_12.html#SEC101" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC103" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_12.html#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h1> 10. Registers </h1>
+<!--docid::SEC102::-->
+<p>
+
+  XEmacs <em>registers</em> are places in which you can save text or
+positions for later use.  Once you save text or a rectangle in a
+register, you can copy it into the buffer once or many times; a position
+saved in a register is used by moving point to that position.
+Rectangles can also be copied into and out of registers
+(see section <a href="xemacs_12.html#SEC101">9.8 Rectangles</a>).
+</p>
+<p>
+
+<a name="IDX422"></a>
+  Each register has a name which is a single character.  A register can
+store a piece of text, a rectangle, a position, a window configuration,
+or a file name, but only one thing at any given time.  Whatever you
+store in a register remains there until you store something else in that
+register.  To see what a register <var>r</var> contains, use <kbd>M-x
+view-register</kbd>.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>M-x view-register <kbd>RET</kbd> <var>r</var></kbd>
+<dd>Display a description of what register <var>r</var> contains.
+</dl>
+<p>
+
+<a name="IDX423"></a>
+  <kbd>M-x view-register</kbd> reads a register name as an argument and then
+displays the contents of the specified register.
+</p>
+<p>
+
+<table border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC103">10.1 Saving Positions in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving positions in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC104">10.2 Saving Text in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving text in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC105">10.3 Saving Rectangles in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving rectangles in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC106">10.4 Saving Window Configurations in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving window configurations in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC108">10.6 Keeping File Names in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">File names in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC107">10.5 Keeping Numbers in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Numbers in registers.</td></tr>
+<tr><td align="left" valign="top"><a href="xemacs_13.html#SEC109">10.7 Bookmarks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bookmarks are like registers, but persistent.</td></tr>
+</table>
+<p>
+
+<a name="NODE_RegPos"></a>
+<hr size="6">
+<a name="SEC103"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC104" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.1 Saving Positions in Registers </h2>
+<!--docid::SEC103::-->
+<p>
+
+  Saving a position records a place in a buffer so that you can move
+back there later.  Moving to a saved position switches to that buffer
+and moves point to that place in it.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-x r <kbd>SPC</kbd> <var>r</var></kbd>
+<dd>Save position of point in register <var>r</var> (<code>point-to-register</code>).
+<dt><kbd>C-x r j <var>r</var></kbd>
+<dd>Jump to the position saved in register <var>r</var> (<code>jump-to-register</code>).
+</dl>
+<p>
+
+<a name="IDX424"></a>
+<a name="IDX425"></a>
+  To save the current position of point in a register, choose a name
+<var>r</var> and type <kbd>C-x r <kbd>SPC</kbd> <var>r</var></kbd>.  The register <var>r</var>
+retains the position thus saved until you store something else in that
+register.
+</p>
+<p>
+
+<a name="IDX426"></a>
+<a name="IDX427"></a>
+  The command <kbd>C-x r j <var>r</var></kbd> moves point to the position recorded
+in register <var>r</var>.  The register is not affected; it continues to
+record the same location.  You can jump to the same position using the
+same register as often as you want.
+</p>
+<p>
+
+  If you use <kbd>C-x r j</kbd> to go to a saved position, but the buffer it
+was saved from has been killed, <kbd>C-x r j</kbd> tries to create the buffer
+again by visiting the same file.  Of course, this works only for buffers
+that were visiting files.
+</p>
+<p>
+
+<a name="NODE_RegText"></a>
+<hr size="6">
+<a name="SEC104"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC103" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC105" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.2 Saving Text in Registers </h2>
+<!--docid::SEC104::-->
+<p>
+
+  When you want to insert a copy of the same piece of text many times, it
+can be impractical to use the kill ring, since each subsequent kill moves
+the piece of text further down on the ring.  It becomes hard to keep
+track of the argument needed to retrieve the same text with <kbd>C-y</kbd>.  An
+alternative is to store the text in a register with <kbd>C-x r s</kbd>
+(<code>copy-to-register</code>) and then retrieve it with <kbd>C-x r i</kbd>
+(<code>insert-register</code>).
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-x r s <var>r</var></kbd>
+<dd>Copy region into register <var>r</var> (<code>copy-to-register</code>).
+<dt><kbd>C-x r g <var>r</var></kbd>
+<dd><dt><kbd>C-x r i <var>r</var></kbd>
+<dd>Insert text contents of register <var>r</var> (<code>insert-register</code>).
+</dl>
+<p>
+
+<a name="IDX428"></a>
+<a name="IDX429"></a>
+<a name="IDX430"></a>
+<a name="IDX431"></a>
+<a name="IDX432"></a>
+  <kbd>C-x r s <var>r</var></kbd> stores a copy of the text of the region into the
+register named <var>r</var>.  Given a numeric argument, <kbd>C-x r s <var>r</var></kbd>
+deletes the text from the buffer as well.
+</p>
+<p>
+
+  <kbd>C-x r i <var>r</var></kbd> inserts the text from register <var>r</var> in the buffer.
+By default it leaves point before the text and places the mark after
+it. With a numeric argument (<kbd>C-u</kbd>), it puts point after the text
+and the mark before it.
+</p>
+<p>
+
+<a name="NODE_RegRect"></a>
+<hr size="6">
+<a name="SEC105"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC104" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC106" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.3 Saving Rectangles in Registers </h2>
+<!--docid::SEC105::-->
+<p>
+
+  A register can contain a rectangle instead of lines of text.  The rectangle
+is represented as a list of strings.  See section <a href="xemacs_12.html#SEC101">9.8 Rectangles</a>, for basic
+information on rectangles and how to specify rectangles in a buffer.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<a name="IDX433"></a>
+<a name="IDX434"></a>
+<dt><kbd>C-x r r <var>r</var></kbd>
+<dd>Copy the region-rectangle into register <var>r</var>
+(<code>copy-rectangle-to-register</code>).  With a numeric argument, delete it
+as well.
+<dt><kbd>C-x r g <var>r</var></kbd>
+<dd><dt><kbd>C-x r i <var>r</var></kbd>
+<dd>Insert the rectangle stored in register <var>r</var> (if it contains a
+rectangle) (<code>insert-register</code>).
+</dl>
+<p>
+
+  The <kbd>C-x r i <var>r</var></kbd> command inserts linear text if the register
+  contains
+that, or inserts a rectangle if the register contains one.
+</p>
+<p>
+
+  See also the command <code>sort-columns</code>, which you can think of
+as sorting a rectangle.  See section <a href="xemacs_29.html#SEC336">26.6 Sorting Text</a>.
+</p>
+<p>
+
+<a name="NODE_RegConfig"></a>
+<hr size="6">
+<a name="SEC106"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC105" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC107" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.4 Saving Window Configurations in Registers </h2>
+<!--docid::SEC106::-->
+<p>
+
+<a name="IDX435"></a>
+<a name="IDX436"></a>
+<a name="IDX437"></a>
+  You can save the window configuration of the selected frame in a
+register, or even the configuration of all windows in all frames, and
+restore the configuration later.
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-x r w <var>r</var></kbd>
+<dd>Save the state of the selected frame's windows in register <var>r</var>
+(<code>window-configuration-to-register</code>).
+<dt><kbd>M-x frame-configuration-to-register <kbd>RET</kbd> <var>r</var></kbd>
+<dd>Save the state of all frames, including all their windows, in register
+<var>r</var> (<code>frame-configuration-to-register</code>).
+</dl>
+<p>
+
+  Use <kbd>C-x r j <var>r</var></kbd> to restore a window or frame configuration.
+This is the same command used to restore a cursor position.  When you
+restore a frame configuration, any existing frames not included in the
+configuration become invisible.  If you wish to delete these frames
+instead, use <kbd>C-u C-x r j <var>r</var></kbd>.
+</p>
+<p>
+
+<a name="NODE_RegNumbers"></a>
+<hr size="6">
+<a name="SEC107"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC106" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC108" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.5 Keeping Numbers in Registers </h2>
+<!--docid::SEC107::-->
+<p>
+
+  There are commands to store a number in a register, to insert
+the number in the buffer in decimal, and to increment it.  These commands
+can be useful in keyboard macros (see section <a href="xemacs_30.html#SEC363">27.3 Keyboard Macros</a>).
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-u <var>number</var> C-x r n <var>reg</var></kbd>
+<dd><a name="IDX438"></a>
+<a name="IDX439"></a>
+Store <var>number</var> into register <var>reg</var> (<code>number-to-register</code>).
+<dt><kbd>C-u <var>number</var> C-x r + <var>reg</var></kbd>
+<dd><a name="IDX440"></a>
+<a name="IDX441"></a>
+Increment the number in register <var>reg</var> by <var>number</var>
+(<code>increment-register</code>).
+<dt><kbd>C-x r g <var>reg</var></kbd>
+<dd>Insert the number from register <var>reg</var> into the buffer.
+</dl>
+<p>
+
+  <kbd>C-x r g</kbd> is the same command used to insert any other
+sort of register contents into the buffer.
+</p>
+<p>
+
+<a name="NODE_RegFiles"></a>
+<hr size="6">
+<a name="SEC108"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC107" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC109" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.6 Keeping File Names in Registers </h2>
+<!--docid::SEC108::-->
+<p>
+
+  If you visit certain file names frequently, you can visit them more
+conveniently if you put their names in registers.  Here's the Lisp code
+used to put a file name in a register:
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(set-register ?<var>r</var> '(file . <var>name</var>))
+</font></pre></td></tr></table><p>
+
+For example,
+</p>
+<p>
+
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
+</font></pre></td></tr></table><p>
+
+puts the file name shown in register `<samp>z</samp>'.
+</p>
+<p>
+
+  To visit the file whose name is in register <var>r</var>, type <kbd>C-x r j
+<var>r</var></kbd>.  (This is the same command used to jump to a position or
+restore a frame configuration.)
+</p>
+<p>
+
+<a name="NODE_Bookmarks"></a>
+<hr size="6">
+<a name="SEC109"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC108" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 10.7 Bookmarks </h2>
+<!--docid::SEC109::-->
+<p>
+
+  <em>Bookmarks</em> are somewhat like registers in that they record
+positions you can jump to.  Unlike registers, they have long names, and
+they persist automatically from one Emacs session to the next.  The
+prototypical use of bookmarks is to record &quot;where you were reading&quot; in
+various files.
+</p>
+<p>
+
+  Note: bookmark.el is distributed in edit-utils package.  You need to
+install that to use bookmark facility (see section <a href="xemacs_25.html#SEC262">22.8 Packages</a>).
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>C-x r m <kbd>RET</kbd></kbd>
+<dd>Set the bookmark for the visited file, at point.
+<p>
+
+</p>
+<dt><kbd>C-x r m <var>bookmark</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX442"></a>
+Set the bookmark named <var>bookmark</var> at point (<code>bookmark-set</code>).
+<p>
+
+</p>
+<dt><kbd>C-x r b <var>bookmark</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX443"></a>
+Jump to the bookmark named <var>bookmark</var> (<code>bookmark-jump</code>).
+<p>
+
+</p>
+<dt><kbd>C-x r l</kbd>
+<dd><a name="IDX444"></a>
+List all bookmarks (<code>list-bookmarks</code>).
+<p>
+
+</p>
+<dt><kbd>M-x bookmark-save</kbd>
+<dd><a name="IDX445"></a>
+Save all the current bookmark values in the default bookmark file.
+</dl>
+<p>
+
+<a name="IDX446"></a>
+<a name="IDX447"></a>
+<a name="IDX448"></a>
+<a name="IDX449"></a>
+  The prototypical use for bookmarks is to record one current position
+in each of several files.  So the command <kbd>C-x r m</kbd>, which sets a
+bookmark, uses the visited file name as the default for the bookmark
+name.  If you name each bookmark after the file it points to, then you
+can conveniently revisit any of those files with <kbd>C-x r b</kbd>, and move
+to the position of the bookmark at the same time.
+</p>
+<p>
+
+<a name="IDX450"></a>
+  To display a list of all your bookmarks in a separate buffer, type
+<kbd>C-x r l</kbd> (<code>list-bookmarks</code>).  If you switch to that buffer,
+you can use it to edit your bookmark definitions or annotate the
+bookmarks.  Type <kbd>C-h m</kbd> in that buffer for more information about
+its special editing commands.
+</p>
+<p>
+
+  When you kill XEmacs, XEmacs offers to save your bookmark values in
+your default bookmark file, `<tt>~/.emacs.bmk</tt>', if you have changed any
+bookmark values.  You can also save the bookmarks at any time with the
+<kbd>M-x bookmark-save</kbd> command.  The bookmark commands load your
+default bookmark file automatically.  This saving and loading is how
+bookmarks persist from one XEmacs session to the next.
+</p>
+<p>
+
+<a name="IDX451"></a>
+  If you set the variable <code>bookmark-save-flag</code> to 1, then each
+command that sets a bookmark will also save your bookmarks; this way,
+you don't lose any bookmark values even if XEmacs crashes.  (The value,
+if a number, says how many bookmark modifications should go by between
+saving.)
+</p>
+<p>
+
+<a name="IDX452"></a>
+  Bookmark position values are saved with surrounding context, so that
+<code>bookmark-jump</code> can find the proper position even if the file is
+modified slightly.  The variable <code>bookmark-search-size</code> says how
+many characters of context to record, on each side of the bookmark's
+position.
+</p>
+<p>
+
+  Here are some additional commands for working with bookmarks:
+</p>
+<p>
+
+</p>
+<dl compact="compact">
+<dt><kbd>M-x bookmark-load <kbd>RET</kbd> <var>filename</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX453"></a>
+Load a file named <var>filename</var> that contains a list of bookmark
+values.  You can use this command, as well as <code>bookmark-write</code>, to
+work with other files of bookmark values in addition to your default
+bookmark file.
+<p>
+
+</p>
+<dt><kbd>M-x bookmark-write <kbd>RET</kbd> <var>filename</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX454"></a>
+Save all the current bookmark values in the file <var>filename</var>.
+<p>
+
+</p>
+<dt><kbd>M-x bookmark-delete <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX455"></a>
+Delete the bookmark named <var>bookmark</var>.
+<p>
+
+</p>
+<dt><kbd>M-x bookmark-insert-location <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX456"></a>
+Insert in the buffer the name of the file that bookmark <var>bookmark</var>
+points to.
+<p>
+
+</p>
+<dt><kbd>M-x bookmark-insert <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd>
+<dd><a name="IDX457"></a>
+Insert in the buffer the <em>contents</em> of the file that bookmark
+<var>bookmark</var> points to.
+</dl>
+<p>
+
+<a name="NODE_Display"></a>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
