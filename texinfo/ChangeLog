@@ -1,11 +1,16 @@
 2005-03-25  Stepan Kasal  <kasal@ucw.cz>
 
-	* doc/Makefile.am: help2man should use the binaries in the build tree,
-	  not the one found on $PATH; thanks to Thomas Schwinge for reporting
-	  the problem.  The rules also make sure the binaries are up-to-date,
-	  and generate the man pages in the source tree, not build tree.
+	* doc/Makefile.am: help2man should use the native binaries in the
+	  build tree, not the one found on $PATH; thanks to Thomas Schwinge
+	  for reporting the problem.
+	  The rules also make sure the binaries are up-to-date, and generate
+	  the man pages in the source tree, not build tree.
 	  There is no need to depend on MAINTAINER_MODE, because help2man is
 	  handled by the `missing' script.
+	(INSTALL_INFO): Comment out; it's not used.
+	* Makefile.am (distcleancheck_listfiles): Removed this variable, it
+	  doesn't seem to be needed.
+	* configure.ac (AC_INIT): Add our bug report address.
 
 2005-03-21  Karl Berry  <karl@gnu.org>
 
