@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.49 2003-11-21 05:37:45 dirt Exp $
+   $Id: makeinfo.c,v 1.50 2003-11-21 06:48:02 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3718,7 +3718,7 @@ cm_image (arg)
               add_word ("\010]");
             }
           else
-            line_error (_("@image file `%s' (for text) unreadable: %s"),
+            warning (_("@image file `%s' (for text) unreadable: %s"),
                         txtname, strerror (errno));
         }
 
