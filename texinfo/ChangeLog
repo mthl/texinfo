@@ -1,3 +1,11 @@
+2003-09-04  Karl Berry  <karl@gnu.org>
+
+	* texinfo.txi (Conventions): say more about quotations and dashes,
+	based on a report to help-texinfo from
+        David.Billinghurst@riotinto.com, 18 Jul 2003 16:07:00 +1000.
+
+	* NEWS: mention @tex/@iftex are executed in a group.
+
 2003-09-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro Details): mention some makeinfo
