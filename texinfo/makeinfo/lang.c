@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.8 2003-05-01 00:05:27 karl Exp $
+   $Id: lang.c,v 1.9 2003-08-30 18:23:26 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -262,21 +262,21 @@ static iso_map_type iso8859_2_map [] = {
 encoding_type encoding_table[] = {
   { no_encoding, "(no encoding)", NULL },
   { US_ASCII,    "US-ASCII",    us_ascii_map },
-  { ISO_8859_1,  "ISO-8859-1",  (iso_map_type *) iso8859_1_map },
-  { ISO_8859_2,  "ISO-8859-2",  (iso_map_type *) iso8859_2_map },
-  { ISO_8859_3,  "ISO-8859-3",  NULL },
-  { ISO_8859_4,  "ISO-8859-4",  NULL },
-  { ISO_8859_5,  "ISO-8859-5",  NULL },
-  { ISO_8859_6,  "ISO-8859-6",  NULL },
-  { ISO_8859_7,  "ISO-8859-7",  NULL },
-  { ISO_8859_8,  "ISO-8859-8",  NULL },
-  { ISO_8859_9,  "ISO-8859-9",  NULL },
-  { ISO_8859_10, "ISO-8859-10", NULL },
-  { ISO_8859_11, "ISO-8859-11", NULL },
-  { ISO_8859_12, "ISO-8859-12", NULL },
-  { ISO_8859_13, "ISO-8859-13", NULL },
-  { ISO_8859_14, "ISO-8859-14", NULL },
-  { ISO_8859_15, "ISO-8859-15", NULL },
+  { ISO_8859_1,  "iso-8859-1",  (iso_map_type *) iso8859_1_map },
+  { ISO_8859_2,  "iso-8859-2",  (iso_map_type *) iso8859_2_map },
+  { ISO_8859_3,  "iso-8859-3",  NULL },
+  { ISO_8859_4,  "iso-8859-4",  NULL },
+  { ISO_8859_5,  "iso-8859-5",  NULL },
+  { ISO_8859_6,  "iso-8859-6",  NULL },
+  { ISO_8859_7,  "iso-8859-7",  NULL },
+  { ISO_8859_8,  "iso-8859-8",  NULL },
+  { ISO_8859_9,  "iso-8859-9",  NULL },
+  { ISO_8859_10, "iso-8859-10", NULL },
+  { ISO_8859_11, "iso-8859-11", NULL },
+  { ISO_8859_12, "iso-8859-12", NULL },
+  { ISO_8859_13, "iso-8859-13", NULL },
+  { ISO_8859_14, "iso-8859-14", NULL },
+  { ISO_8859_15, "iso-8859-15", NULL },
   { last_encoding_code, NULL, NULL }
 };
 
