@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.46 2004-04-20 00:30:48 karl Exp $
+   $Id: cmds.c,v 1.47 2004-04-26 13:56:12 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1084,11 +1084,15 @@ cm_strong (int arg, int start_pos, int end_pos)
   if (!xml && !html && !docbook && !no_headers
       && arg == END
       && end_pos - start_pos >= 6
-      && strncmp ((char *) output_paragraph + start_pos, "*Note:*", 6) == 0)
-    /* Translators: "Note:" is literal here and should not be
-       translated.  @strong{Nota}, say, does not cause the problem.  */
-    warning (_("@strong{Note:} produces a spurious cross-reference in Info; reword to avoid that"));
-
+      && (STRNCASEEQ ((char *) output_paragraph + start_pos, "*Note:", 6)
+          || STRNCASEEQ ((char *) output_paragraph + start_pos, "*Note ", 6)))
+    {
+      /* Translators: "Note:" is literal here and should not be
+         translated.  @strong{Nota}, say, does not cause the problem.  */
+      warning (_("@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"));
+      /* Adjust the output to avoid writing the bad xref.  */
+      output_paragraph[start_pos + 5] = '_';
+    }
 }
 
 void
