@@ -1,5 +1,40 @@
 2003-01-12    <karl@gnu.org>
 
+	* doc/texinfo.tex (\dounmacro): simplify method for removing from
+	macro list.  From Stepan.  (Also rename from \unmacroxxx.)
+	(\unmacrodo): new macro, called with new method.
+
+	* doc/texinfo.tex (\dotChar, questChar, exclamChar, colonChar,
+	semiChar, commaChar, underChar): names for catcode chars, defined using
+	\chardef.  From Stepan.
+
+	* doc/texinfo.tex (\conditionalsucceed): back to the easy
+	definition, since @set is global now.  From Stepan.
+
+	* doc/texinfo.tex (\doifclear,\doifset): use \let\next instead of
+	\expandafter, so that we'll succeed on no
+	conditional text.  From Stepan.
+	Also rename from \ifclearxxx and \ifsetxxx.
+
+	* doc/texinfo.tex (\expandablevalue): give a \message if the
+	variable is not set.  Based on patch from Stepan.
+
+	* doc/texinfo.tex (\setuptable): insert an actual \space after
+	\unskip.  From Stepan.
+
+	* doc/texinfo.tex (\kbdinputstyle): give error if unknown argument,
+	and call the macro to set the default.  From Stepan.
+
+	* doc/texinfo.tex: typo from Stepan.
+
+	* doc/texinfo.tex (\docenter): rename from \centerzzz and do \hfil
+	instead of using plain's \centerline and \hss.  Also force line
+	breaks before and after in horizontal mode.
+	Based on patch from Stepan, 11 Apr 2000 19:44:31 +0200.
+
+	* doc/texinfo.tex: use \other and \active consistently.
+	From: Stepan Kasal <kasal@suse.cz>, 11 Apr 2000 19:44:31 +0200.
+
 	* makeinfo/cmds.c (handle_include): call text_expansion on the
 	filename, so @value constructs are expanded.
 
