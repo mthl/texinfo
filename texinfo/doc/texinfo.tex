@@ -2721,13 +2721,14 @@ width0pt\relax} \fi
 % @ifset VAR ... @end ifset reads the `...' iff VAR has been defined
 % with @set.
 %
-\def\ifset{\parsearg\ifsetxxx}
-\def\ifsetxxx #1{%
+\def\ifset{\parsearg\doifset}
+\def\doifset#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
-    \expandafter\ifsetfail
+    \let\next=\ifsetfail
   \else
-    \expandafter\ifsetsucceed
+    \let\next=\ifsetsucceed
   \fi
+  \next
 }
 \def\ifsetsucceed{\conditionalsucceed{ifset}}
 \def\ifsetfail{\nestedignore{ifset}}
@@ -2736,13 +2737,14 @@ width0pt\relax} \fi
 % @ifclear VAR ... @end ifclear reads the `...' iff VAR has never been
 % defined with @set, or has been undefined with @clear.
 %
-\def\ifclear{\parsearg\ifclearxxx}
-\def\ifclearxxx #1{%
+\def\ifclear{\parsearg\doifclear}
+\def\doifclear#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
-    \expandafter\ifclearsucceed
+    \let\next=\ifclearsucceed
   \else
-    \expandafter\ifclearfail
+    \let\next=\ifclearfail
   \fi
+  \next
 }
 \def\ifclearsucceed{\conditionalsucceed{ifclear}}
 \def\ifclearfail{\nestedignore{ifclear}}
