@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.83 2004-04-26 13:09:03 karl Exp $
+$Id: NEWS,v 1.84 2004-05-18 12:18:31 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -22,7 +22,7 @@ convenience, here's a url to one of the relevant sections:
 
 -------------------------------------------------------------------------------
 * Distribution:
-  . automake 1.8.4.
+  . automake 1.8.5.
 
 4.7 (9 April 2004)
 * Language:
