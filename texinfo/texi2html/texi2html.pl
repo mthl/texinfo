@@ -72,7 +72,6 @@ use vars qw(
             $NO_SUBDIR
             $PAPERSIZE
             $PREFIX
-            $PROTECTTAG
             $PS_IMAGES
             $REUSE
             $SCALABLE_FONTS
@@ -145,7 +144,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.25 2003-02-13 11:58:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.26 2003-02-18 18:50:42 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -238,8 +237,6 @@ my $ERROR = "***";                 # prefix for errors
 my $WARN  = "**";                  # prefix for warnings
 
                                 # program home page
-my $PROTECTTAG = "_ThisIsProtected_"; # tag to recognize protected sections
-
 my $CHAPTEREND = "<!-- End chapter -->\n"; # to know where a chpater ends
 my $SECTIONEND = "<!-- End section -->\n"; # to know where section ends
 my $TOPEND     = "<!-- End top     -->\n"; # to know where top ends
@@ -1527,7 +1524,6 @@ sub pass1
     my $in_top = 0;             # am I inside the top node
     my $in_pre = 0;             # am I inside a preformatted section
     my $in_list = 0;            # am I inside a list
-    my $in_html = 0;            # am I inside an HTML section
     my $first_line = 1;         # is it the first line
     my $toplevel;
     my $dont_html = 0;          # don't protect HTML on this line
@@ -1562,24 +1558,12 @@ sub pass1
             $tag = $1;
         }
         #
-        # handle @html / @end html
+        # handle @html / @end html and @verbatim / @end verbatim
         #
-        if ($in_html)
+        if ($tag eq 'html' or $tag eq 'verbatim')
         {
-            if ($end_tag eq 'html')
-            {
-                $in_html = 0;
-            }
-            else
-            {
-                $tag2pro{$in_html} .= $_;
-            }
-            next;
-        }
-        elsif ($tag eq 'html')
-        {
-            $in_html = $PROTECTTAG . ++$html_num;
-            push(@lines, $in_html);
+            push @lines, $_;
+            push @lines, push_until ($tag, undef, \@lines);
             next;
         }
 
@@ -1670,7 +1654,7 @@ sub pass1
                 }
                 $args =~ s|\\\\|\\|g;
                 $args =~ s|\\{|{|g;
-                                $args =~ s|\\}|}|g;
+                $args =~ s|\\}|}|g;
                 if (@{$macros->{$name}->{Args}} > 1)
                 {
                     $args =~ s/(^|[^\\]),/$1$;/g ;
@@ -2698,10 +2682,8 @@ sub pass1
                         }
                         push(@lines, "<dd>");
                         html_push('dd') unless $html_element eq 'dd';
-                        if ($table_type)
-                        {       # add also an index
-                            unshift(@input_spool, "\@${table_type}index $what\n");
-                        }
+                        #pertusus: FIXME if there is an @itemx there is also 
+                        # an empty <dd>
                     }
                     elsif ($html_element eq 'table')
                     {
@@ -3104,11 +3086,17 @@ sub pass2
     {
         $_ = shift(@lines);
         #
-        # special case (protected sections)
+        # handle @html / @end html and @verbatim / @end verbatim
         #
-        if (/^$PROTECTTAG/o)
+        my $tag = '';
+        if (/^\s*\@(\w+)\b/)
         {
-            push(@lines2, $_);
+            $tag = $1;
+        }
+        if ($tag eq 'html' or $tag eq 'verbatim')
+        {
+            push @lines2, $_;
+            push @lines2, push_until ($tag, \@lines, \@lines2);
             next;
         }
         #
@@ -3387,6 +3375,21 @@ sub pass3
     {
         $_ = shift(@lines2);
 
+        #
+        # handle @html / @end html and @verbatim / @end verbatim
+        #
+        my $tag = '';
+        if (/^\s*\@(\w+)\b/)
+        {
+            $tag = $1;
+        }
+        if ($tag eq 'html' or $tag eq 'verbatim')
+        {
+            push @lines3, $_;
+            push @lines3, push_until ($tag, \@lines2, \@lines3);
+            next;
+        }
+	
         if (/<!--docid::SEC(\d+)::-->/)
         {
             if ($sec2index{$seccount2sec{$1}})
@@ -3399,11 +3402,8 @@ sub pass3
             }
         }
 
-        #
-        # special case (protected sections)
-        #
-        if (/^$PROTECTTAG/o || $in_index)
-        {
+        if ($in_index)
+	{
             push(@lines3, $_);
             next;
         }
@@ -3429,7 +3429,7 @@ sub pass3
                 {
                     $before = $before_brace . '{';
                     warn "$ERROR '{' without macro near $before_brace";
-                    $before .= '<!-- brace without macro --!>';
+                    $before .= '<!-- brace without macro -->';
                 }
                 if (@style_stack)
                 {
@@ -3507,6 +3507,8 @@ sub pass4
     my $text;
     my $name;
     my $end_of_para = 0;        # true if last line is <p>
+    my $in_html = 0;            # am I inside an HTML section
+    my $in_verbatim = 0;        # am I inside a verbatim section
 
     # APA: There aint no paragraph before the first one!
     # This fixes a HTML validation error.
@@ -3515,11 +3517,43 @@ sub pass4
     {
         $_ = shift(@lines3);
         #
-        # special case (protected sections)
+        # handle @html / @end html and @verbatim / @end verbatim
         #
-        if (/^$PROTECTTAG/o)
+        if ($in_html)
         {
-            push(@doc_lines, $_);
+            if(/^\@end\s+html\s*$/)
+	    {
+                $in_html = 0;
+            }
+            else
+            {
+                push(@doc_lines, $_);
+            }
+            next;
+        }
+        if ($in_verbatim)
+        {
+            if(/^\@end\s+verbatim\s*$/)
+	    {
+	        push(@doc_lines, "</pre>\n");
+                $in_verbatim = 0;
+            }
+            else
+            {
+                push(@doc_lines, protect_html($_));
+            }
+            next;
+        }
+        if (/^\@verbatim\s*/)
+        {
+            $in_verbatim = 1;
+            $end_of_para = 0;
+	    push(@doc_lines, "<pre>\n");
+            next;
+        }
+        if (/^\@html\s*/)
+        {
+            $in_html = 1;
             $end_of_para = 0;
             next;
         }
@@ -4231,6 +4265,34 @@ sub next_line
     return(undef);
 }
 
+# shift lines from @$ref_from_lines and push them to @$ref_to_lines until 
+# @end $tag is found. If $ref_from_lines is undef, next_line is used.
+#
+# returns the line with the @end $tag
+sub push_until($$$)
+{
+    my $tag = shift;
+    my $ref_from_lines = shift;
+    my $ref_to_lines = shift;
+    my $line;
+    
+    while (1)
+    {
+        if (!defined($ref_from_lines))
+        {
+             $line = next_line();
+        }
+        else
+        {
+             $line = shift @$ref_from_lines;
+        }
+        last if (!defined($line));
+        return $line if ($line =~ /^\@end\s+$tag\s*$/);
+        push @$ref_to_lines, $line; 
+    }
+    die "* Failed to find '$tag' after: " . $ref_to_lines->[$#$ref_to_lines];
+}
+
 # used in pass 1, use &next_line
 sub skip_until($)
 {
@@ -4640,14 +4702,7 @@ sub t2h_print_lines($$)
     for my $line (@$lines)
     {
         $line = l2h_FromHtml($line) if ($T2H_L2H);
-        if (/^$PROTECTTAG/o)
-        {
-            $line = $tag2pro{$line};
-        }
-        else
-        {
-            $line =  unprotect_texi ($line);
-        }
+        $line =  unprotect_texi ($line);
         print $fh $line;
         @cnt = split(/\W*\s+\W*/);
         $cnt += scalar(@cnt);

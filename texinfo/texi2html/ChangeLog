@@ -1,3 +1,10 @@
+2003-02-18  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: handle @verbatim, and @html differently. Added 
+	push_until function which shift from a lines array and push to another 
+	array until @end tag. Remove PROTECTTAG
+	remove unneeded push of index entry for vtable or ftable which
+	created 2 indices entry
+
 2003-02-13  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl: avoid using $_ in functions, as it is a global
