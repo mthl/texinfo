@@ -1,9 +1,17 @@
+2003-07-11  Patrice Dumas <dumas@centre-cired.fr>
+
+	* Tests/ccvs: update cvs manual. This should fixe the issue of rcs 
+	tags expanding in html manual files in ccvs_res.
+	* Tests/*: sync with code. Add missing test result files.
+	* Tests/Makefile.am: add new test subdirs. Better cleaning.
+	* l2h.init: add init file for latex2html.
+
 2003-07-10  Derek Price  <derek@ximbiot.com>
 
 	* Tests/nodes_texinfo/--and-hyphenation.html: Removed this accidentally
 	added file at Pat's request.
 
-2003-07-03  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-10  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl, Tests/test.sh: command line option names use '-' 
 	instead of '_' between words (for example dump_texi becomes dump-texi).

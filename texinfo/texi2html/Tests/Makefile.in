@@ -82,7 +82,8 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
-     viper_monolithic texi2html xemacs_frame index_table formatting macros
+     viper_monolithic texi2html xemacs_frame index_table formatting macros \
+     nodes_texinfo
 
 subdir = Tests
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -214,9 +215,12 @@ regenerate:
 
 clean-local:
 	for dir in ${SUBDIR_TESTS}; do \
-	(cd $$dir && $(RM) $$dir $$dir-* *.toc *.aux *.log *.op *.cp *.cps \
+	(cd $$dir && $(RM) -- $$dir $$dir-* *.toc *.aux *.log *.op *.cp *.cps \
 	*.fn *.fns *.ky *.kys *.pg *.pgs *.tp *.tps *.vr *.vrs \
-	*.dvi *.html *.info *.html_tempnotag *.2 *.passfirst ) ; \
+	*.dvi *.html *.info *.info-? *.info-?? *.info-??? *.html_tempnotag \
+	*.2  *.passfirst *.passtexi \
+	*_?.png *_l2h.tex *_l2h.css *_l2h_images.pl *_l2h_images.tex \
+	*_l2h_labels.pl l2h_cache.pm) ; \
 	done
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

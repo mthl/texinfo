@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: A. Guide to CVS commands</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: A. Guide to CVS commands</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: A. Guide to CVS commands">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: A. Guide to CVS commands">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: A. Guide to CVS commands">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: A. Guide to CVS commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -24,22 +24,22 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD113"></a>
-<a name="SEC113"></a>
+<a name="NOD114"></a>
+<a name="SEC114"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_15.html#SEC112" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC114" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_15.html#SEC113" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC115" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_15.html#SEC112" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_15.html#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> A. Guide to CVS commands </h1>
@@ -47,44 +47,44 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
-reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>).
+reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>).
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC114">A.1 Overall structure of CVS commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC115">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS's success or failure</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC116">A.3 Default options and the ~/.cvsrc file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Default options with the ~/.csvrc file</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC117">A.4 Global options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the left of cvs_command</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC118">A.5 Common command options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the right of cvs_command</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC119">A.6 admin--Administration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Administration</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC121">A.7 checkout--Check out sources for editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checkout sources for editing</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC124">A.8 commit--Check files into the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Check files into the repository</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC129">A.9 diff--Show differences between revisions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show differences between revisions</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC134">A.10 export--Export sources from CVS, similar to checkout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Export sources from CVS, similar to checkout</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC136">A.11 history--Show status of files and users</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show status of files and users</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC138">A.12 import--Import sources into CVS, using vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Import sources into CVS, using vendor branches</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC142">A.13 log--Print out log information for files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show log messages for files</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC145">A.14 rdiff--'patch' format diffs between releases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">'patch' format diffs between releases</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC148">A.15 release--Indicate that a Module is no longer in use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicate that a directory is no longer in use</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC152">A.16 update--Bring work tree in sync with repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bring work tree in sync with repository</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC115">A.1 Overall structure of CVS commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC116">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS's success or failure</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC117">A.3 Default options and the ~/.cvsrc file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Default options with the ~/.csvrc file</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC118">A.4 Global options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the left of cvs_command</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC119">A.5 Common command options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the right of cvs_command</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC120">A.6 admin--Administration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Administration</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC122">A.7 checkout--Check out sources for editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checkout sources for editing</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC125">A.8 commit--Check files into the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Check files into the repository</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC130">A.9 diff--Show differences between revisions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show differences between revisions</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC135">A.10 export--Export sources from CVS, similar to checkout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Export sources from CVS, similar to checkout</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC137">A.11 history--Show status of files and users</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show status of files and users</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC139">A.12 import--Import sources into CVS, using vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Import sources into CVS, using vendor branches</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC143">A.13 log--Print out log information for files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show log messages for files</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC146">A.14 rdiff--'patch' format diffs between releases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">'patch' format diffs between releases</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC149">A.15 release--Indicate that a Module is no longer in use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicate that a directory is no longer in use</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC153">A.16 update--Bring work tree in sync with repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bring work tree in sync with repository</td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD114"></a>
-<a name="SEC114"></a>
+<a name="NOD115"></a>
+<a name="SEC115"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC113" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC116" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.1 Overall structure of CVS commands </h2>
@@ -131,22 +131,22 @@ is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
 </p><hr size="6">
-<a name="NOD115"></a>
-<a name="SEC115"></a>
+<a name="NOD116"></a>
+<a name="SEC116"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC116" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC117" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.2 CVS's exit status </h2>
@@ -169,22 +169,22 @@ way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
 </p><hr size="6">
-<a name="NOD116"></a>
-<a name="SEC116"></a>
+<a name="NOD117"></a>
+<a name="SEC117"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC116" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC118" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.3 Default options and the ~/.cvsrc file </h2>
@@ -231,29 +231,29 @@ complicated, because <code>diff</code> doesn't have an option
 to specify use of the &quot;old&quot; format, so you would need
 `<samp>cvs -f diff foobar</samp>'.
 </p><p>In place of the command name you can use <code>cvs</code> to
-specify global options (see section <a href="#SEC117">Global options</a>).  For
+specify global options (see section <a href="#SEC118">Global options</a>).  For
 example the following line in `<tt>.cvsrc</tt>'
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 cvs -z6
 </pre></td></tr></table>
 <p>causes <small>CVS</small> to use compression level 6.
 </p><hr size="6">
-<a name="NOD117"></a>
-<a name="SEC117"></a>
+<a name="NOD118"></a>
+<a name="SEC118"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC116" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC118" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC119" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.4 Global options </h2>
@@ -265,8 +265,8 @@ left of `<samp>cvs_command</samp>') are:
 </code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
 <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>.
-</p><a name="IDX208"></a>
-<a name="IDX209"></a>
+</p><a name="IDX202"></a>
+<a name="IDX203"></a>
 </dd>
 <dt><code> -a
 </code></dt>
@@ -277,8 +277,8 @@ a GSSAPI connection (see section <a href="cvs_2.html#SEC33">Direct connection wi
 Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
-</p><a name="IDX210"></a>
-<a name="IDX211"></a>
+</p><a name="IDX204"></a>
+<a name="IDX205"></a>
 </dd>
 <dt><code> -b <var>bindir</var>
 </code></dt>
@@ -287,8 +287,8 @@ Enabling authentication does not enable encryption.
 Current versions of <small>CVS</small> do not run <small>RCS</small>
 programs; for compatibility this option is accepted,
 but it does nothing.
-</p><a name="IDX212"></a>
-<a name="IDX213"></a>
+</p><a name="IDX206"></a>
+<a name="IDX207"></a>
 </dd>
 <dt><code> -T <var>tempdir</var>
 </code></dt>
@@ -299,16 +299,16 @@ specified as an absolute pathname.
 (When running client/server, `<samp>-T</samp>' affects only the local process;
 specifying `<samp>-T</samp>' for the client has no effect on the server and
 vice versa.)
-</p><a name="IDX214"></a>
-<a name="IDX215"></a>
+</p><a name="IDX208"></a>
+<a name="IDX209"></a>
 </dd>
 <dt><code> -d <var>cvs_root_directory</var>
 </code></dt>
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
 the <code>$CVSROOT</code> environment variable.  See section <a href="cvs_2.html#SEC9">The Repository</a>.
-</p><a name="IDX216"></a>
-<a name="IDX217"></a>
+</p><a name="IDX210"></a>
+<a name="IDX211"></a>
 </dd>
 <dt><code> -e <var>editor</var>
 </code></dt>
@@ -340,8 +340,8 @@ a command name, `<samp>cvs -H</samp>' displays overall help for
 <dt><code> -l
 </code></dt>
 <dd><p>Do not log the `<samp>cvs_command</samp>' in the command history (but execute it
-anyway).  See section <a href="#SEC136">history--Show status of files and users</a>, for information on command history.
-</p><a name="IDX218"></a>
+anyway).  See section <a href="#SEC137">history--Show status of files and users</a>, for information on command history.
+</p><a name="IDX212"></a>
 </dd>
 <dt><code> -R
 </code></dt>
@@ -351,7 +351,7 @@ repository.
 </p><p>Same effect as if the <code>CVSREADONLYFS</code> environment
 variable is set. Using `<samp>-R</samp>' can also considerably
 speed up checkout's over NFS.
-</p><a name="IDX219"></a>
+</p><a name="IDX213"></a>
 </dd>
 <dt><code> -n
 </code></dt>
@@ -374,20 +374,20 @@ generate output for serious problems.
 <dd><p>Cause the command to be somewhat quiet; informational messages,
 such as reports of recursion through subdirectories, are
 suppressed.
-</p><a name="IDX220"></a>
+</p><a name="IDX214"></a>
 </dd>
 <dt><code> -r
 </code></dt>
 <dd><p>Make new working files read-only.  Same effect
 as if the <code>$CVSREAD</code> environment variable is set
-(see section <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>).  The default is to
+(see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).  The default is to
 make working files writable, unless watches are on
 (see section <a href="cvs_10.html#SEC89">Mechanisms to track who is editing files</a>).
 </p></dd>
 <dt><code> -s <var>variable</var>=<var>value</var>
 </code></dt>
-<dd><p>Set a user variable (see section <a href="cvs_18.html#SEC178">Expansions in administrative files</a>).
-</p><a name="IDX221"></a>
+<dd><p>Set a user variable (see section <a href="cvs_18.html#SEC179">Expansions in administrative files</a>).
+</p><a name="IDX215"></a>
 </dd>
 <dt><code> -t
 </code></dt>
@@ -400,8 +400,8 @@ potential impact of an unfamiliar command.
 <dt><code> --version
 </code></dt>
 <dd><p>Display version and copyright information for <small>CVS</small>.
-</p><a name="IDX222"></a>
-<a name="IDX223"></a>
+</p><a name="IDX216"></a>
+<a name="IDX217"></a>
 </dd>
 <dt><code> -w
 </code></dt>
@@ -412,7 +412,7 @@ set or `<samp>-r</samp>' is given.
 </p></dd>
 <dt><code> -x
 </code></dt>
-<dd><p><a name="IDX224"></a>
+<dd><p><a name="IDX218"></a>
 Encrypt all communication between the client and the
 server.  Only has an effect on the <small>CVS</small> client.  As
 of this writing, this is only implemented when using a
@@ -426,8 +426,8 @@ when you build <small>CVS</small>.
 </p></dd>
 <dt><code> -z <var>gzip-level</var>
 </code></dt>
-<dd><p><a name="IDX225"></a>
-<a name="IDX226"></a>
+<dd><p><a name="IDX219"></a>
+<a name="IDX220"></a>
 Set the compression level.
 Valid levels are 1 (high speed, low compression) to
 9 (low speed, high compression), or 0 to disable
@@ -437,22 +437,22 @@ Only has an effect on the <small>CVS</small> client.
 </dl>
 
 <hr size="6">
-<a name="NOD118"></a>
-<a name="SEC118"></a>
+<a name="NOD119"></a>
+<a name="SEC119"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC119" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.5 Common command options </h2>
@@ -472,9 +472,9 @@ different behavior from one <small>CVS</small> command to the other).
 many options that conflict even with these standard options.
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX227"></a>
-<a name="IDX228"></a>
-<a name="IDX229"></a>
+<a name="IDX221"></a>
+<a name="IDX222"></a>
+<a name="IDX223"></a>
 </p></dd>
 <dt><code> -D <var>date_spec</var>
 </code></dt>
@@ -490,9 +490,9 @@ further updates in the same directory will use the same date
 <code>diff</code>, <code>export</code>, <code>history</code>,
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
-slightly different way; see section <a href="#SEC137">history options</a>).
-</p><a name="IDX230"></a>
-<a name="IDX231"></a>
+slightly different way; see section <a href="#SEC138">history options</a>).
+</p><a name="IDX224"></a>
+<a name="IDX225"></a>
 <p>A wide variety of date formats are supported by
 <small>CVS</small>.  The most standard ones are ISO8601 (from the
 International Standards Organization) and the Internet
@@ -534,7 +534,7 @@ flag can look like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </pre></td></tr></table>
-<a name="IDX232"></a>
+<a name="IDX226"></a>
 </dd>
 <dt><code> -f
 </code></dt>
@@ -554,7 +554,7 @@ give an error if you mistype a tag name.
 </p><p><strong>Warning:</strong>  The <code>commit</code> and <code>remove</code>
 commands also have a
 `<samp>-f</samp>' option, but it has a different behavior for
-those commands.  See <a href="#SEC125">commit options</a>, and
+those commands.  See <a href="#SEC126">commit options</a>, and
 <a href="cvs_7.html#SEC68">Removing files</a>.
 </p></dd>
 <dt><code> -k <var>kflag</var>
@@ -584,8 +584,8 @@ left of a cvs command!
 <code>log</code>, <code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
 <code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
 and <code>watchers</code>.
-</p><a name="IDX233"></a>
-<a name="IDX234"></a>
+</p><a name="IDX227"></a>
+<a name="IDX228"></a>
 </dd>
 <dt><code> -m <var>message</var>
 </code></dt>
@@ -598,7 +598,7 @@ invoking an editor.
 </code></dt>
 <dd><p>Do not run any checkout/commit/tag program.  (A program can be
 specified to run on each of these activities, in the modules
-database (see section <a href="cvs_18.html#SEC157">The modules file</a>); this option bypasses it).
+database (see section <a href="cvs_18.html#SEC158">The modules file</a>); this option bypasses it).
 </p><p><strong>Warning:</strong> this is not the same as the overall `<samp>cvs -n</samp>'
 option, which you can specify to the left of a cvs command!
 </p><p>Available with the <code>checkout</code>, <code>commit</code>, <code>export</code>,
@@ -625,8 +625,8 @@ and <code>watchers</code>.
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
-<dd><p><a name="IDX235"></a>
-<a name="IDX236"></a>
+<dd><p><a name="IDX229"></a>
+<a name="IDX230"></a>
 Use the revision specified by the <var>tag</var> argument instead of the
 default <em>head</em> revision.  As well as arbitrary tags defined
 with the <code>tag</code> or <code>rtag</code> command, two special tags are
@@ -663,22 +663,22 @@ and <code>update</code>.
 </dl>
 
 <hr size="6">
-<a name="NOD119"></a>
-<a name="SEC119"></a>
+<a name="NOD120"></a>
+<a name="SEC120"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC121" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.6 admin--Administration </h2>
@@ -699,15 +699,15 @@ historical purposes.  Some of the questionable options
 are likely to disappear in the future.  This command
 <em>does</em> work recursively, so extreme care should be
 used.
-</p><a name="IDX237"></a>
-<a name="IDX238"></a>
+</p><a name="IDX231"></a>
+<a name="IDX232"></a>
 <p>On unix, if there is a group named <code>cvsadmin</code>,
 only members of that group can run <code>cvs admin</code>
 commands, except for those specified using the
 <code>UserAdminOptions</code> configuration option in the
 `<tt>CVSROOT/config</tt>' file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
-<a href="cvs_18.html#SEC179">The CVSROOT/config configuration file</a> for more on <code>UserAdminOptions</code>.
+<a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a> for more on <code>UserAdminOptions</code>.
 </p><p>The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.
 To disallow <code>cvs admin</code> for all users, create a
@@ -716,26 +716,26 @@ feature does not exist and all users
 can run <code>cvs admin</code>.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC120">A.6.1 admin options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC121">A.6.1 admin options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD120"></a>
-<a name="SEC120"></a>
+<a name="NOD121"></a>
+<a name="SEC121"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC121" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC119" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.6.1 admin options </h3>
@@ -764,9 +764,9 @@ normally do not manipulate default branches; sticky
 tags (see section <a href="cvs_4.html#SEC53">Sticky tags</a>) are a better way to decide
 which branch you want to work on.  There is one reason
 to run <code>cvs admin -b</code>: to revert to the vendor's
-version when using vendor branches (see section <a href="cvs_13.html#SEC107">Reverting to the latest vendor release</a>).
+version when using vendor branches (see section <a href="cvs_13.html#SEC108">Reverting to the latest vendor release</a>).
 There can be no space between `<samp>-b</samp>' and its argument.
-</p><a name="IDX239"></a>
+</p><a name="IDX233"></a>
 </dd>
 <dt><code> -c<var>string</var>
 </code></dt>
@@ -827,11 +827,11 @@ file, locking must set to strict (which is the default).
 owner of an RCS file is not exempt from locking for
 checkin.  For use with <small>CVS</small>, strict locking must be
 set; see the discussion under the `<samp>-l</samp>' option above.
-</p><a name="IDX240"></a>
-<a name="IDX241"></a>
-<a name="IDX242"></a>
-<a name="IDX243"></a>
-<a name="IDX244"></a>
+</p><a name="IDX234"></a>
+<a name="IDX235"></a>
+<a name="IDX236"></a>
+<a name="IDX237"></a>
+<a name="IDX238"></a>
 </dd>
 <dt><code> -m<var>rev</var>:<var>msg</var>
 </code></dt>
@@ -864,9 +864,9 @@ this contrasts with `<samp>cvs admin -n<var>name</var>:$</samp>' which
 associates <var>name</var> with the revision numbers
 extracted from keyword strings in the corresponding
 working files.
-</p><a name="IDX245"></a>
-<a name="IDX246"></a>
-<a name="IDX247"></a>
+</p><a name="IDX239"></a>
+<a name="IDX240"></a>
+<a name="IDX241"></a>
 </dd>
 <dt><code> -o<var>range</var>
 </code></dt>
@@ -991,8 +991,8 @@ acceptable for <var>state</var>.  A useful set of states is
 stable), and `<samp>Rel</samp>' (for released).  By default,
 the state of a new revision is set to `<samp>Exp</samp>' when
 it is created.  The state is visible in the output from
-<var>cvs log</var> (see section <a href="#SEC142">log--Print out log information for files</a>), and in the
-`<samp>$Log$</samp>' and `<samp>$State$</samp>' keywords
+<var>cvs log</var> (see section <a href="#SEC143">log--Print out log information for files</a>), and in the
+`<samp>$<i></i>Log$</samp>' and `<samp>$<i></i>State$</samp>' keywords
 (see section <a href="cvs_12.html#SEC98">Keyword substitution</a>).  Note that <small>CVS</small>
 uses the <code>dead</code> state for its own purposes; to
 take a file to or from the <code>dead</code> state use
@@ -1005,7 +1005,7 @@ commands like <code>cvs remove</code> and <code>cvs add</code>, not
 contents of the named <var>file</var> into the RCS file,
 deleting the existing text.  The <var>file</var> pathname
 may not begin with `<samp>-</samp>'.  The descriptive text can be seen in the
-output from `<samp>cvs log</samp>' (see section <a href="#SEC142">log--Print out log information for files</a>).
+output from `<samp>cvs log</samp>' (see section <a href="#SEC143">log--Print out log information for files</a>).
 There can be no space between `<samp>-t</samp>' and its argument.
 </p><p>If <var>file</var> is omitted,
 obtain the text from standard input, terminated by
@@ -1059,22 +1059,22 @@ this option has never done anything useful.
 </dl>
 
 <hr size="6">
-<a name="NOD121"></a>
-<a name="SEC121"></a>
+<a name="NOD122"></a>
+<a name="SEC122"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC121" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.7 checkout--Check out sources for editing </h2>
@@ -1100,7 +1100,7 @@ symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the `<samp>modules</samp>' file.
-See section <a href="cvs_18.html#SEC157">The modules file</a>.
+See section <a href="cvs_18.html#SEC158">The modules file</a>.
 </p><p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
 the appropriate source files.  You can then edit these
@@ -1121,9 +1121,9 @@ each file as it is extracted into your private work
 area (unless you specify the `<samp>-Q</samp>' global option).
 </p><p>The files created by <code>checkout</code> are created
 read-write, unless the `<samp>-r</samp>' option to <small>CVS</small>
-(see section <a href="#SEC117">Global options</a>) is specified, the
+(see section <a href="#SEC118">Global options</a>) is specified, the
 <code>CVSREAD</code> environment variable is specified
-(see section <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>), or a watch is in
+(see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>), or a watch is in
 effect for that file (see section <a href="cvs_10.html#SEC89">Mechanisms to track who is editing files</a>).
 </p><p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.
@@ -1140,36 +1140,36 @@ top level directory (where you originally ran
 forget to change your directory to the top level
 directory.
 </p><p>For the output produced by the <code>checkout</code> command
-see <a href="#SEC154">update output</a>.
+see <a href="#SEC155">update output</a>.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC122">A.7.1 checkout options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC123">A.7.2 checkout examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC123">A.7.1 checkout options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC124">A.7.2 checkout examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD122"></a>
-<a name="SEC122"></a>
+<a name="NOD123"></a>
+<a name="SEC123"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC121" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC121" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC122" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.7.1 checkout options </h3>
 
 <p>These standard options are supported by <code>checkout</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
@@ -1192,7 +1192,7 @@ the file).
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See <a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>, for
+to see the sticky options.  See <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, for
 more information on the <code>status</code> command.
 </p></dd>
 <dt><code> -l
@@ -1203,7 +1203,7 @@ more information on the <code>status</code> command.
 </code></dt>
 <dd><p>Do not run any checkout program (as specified
 with the `<samp>-o</samp>' option in the modules file;
-see section <a href="cvs_18.html#SEC157">The modules file</a>).
+see section <a href="cvs_18.html#SEC158">The modules file</a>).
 </p></dd>
 <dt><code> -P
 </code></dt>
@@ -1297,29 +1297,29 @@ discussion.
 <dt><code> -s
 </code></dt>
 <dd><p>Like `<samp>-c</samp>', but include the status of all modules,
-and sort it by the status string.  See section <a href="cvs_18.html#SEC157">The modules file</a>, for
+and sort it by the status string.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for
 info about the `<samp>-s</samp>' option that is used inside the
 modules file to set the module status.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD123"></a>
-<a name="SEC123"></a>
+<a name="NOD124"></a>
+<a name="SEC124"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC121" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC122" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.7.2 checkout examples </h3>
@@ -1334,22 +1334,22 @@ ago:
 $ cvs checkout -D yesterday tc
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD124"></a>
-<a name="SEC124"></a>
+<a name="NOD125"></a>
+<a name="SEC125"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.8 commit--Check files into the repository </h2>
@@ -1382,58 +1382,54 @@ current directory only.
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
-current first with <code>update</code> (see section <a href="#SEC152">update--Bring work tree in sync with repository</a>).
+current first with <code>update</code> (see section <a href="#SEC153">update--Bring work tree in sync with repository</a>).
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
 </p><p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
-logging programs (see section <a href="cvs_18.html#SEC157">The modules file</a>, and see section <a href="cvs_18.html#SEC171">Loginfo</a>)
+logging programs (see section <a href="cvs_18.html#SEC158">The modules file</a>, and see section <a href="cvs_18.html#SEC172">Loginfo</a>)
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
-<code>log</code> command; see <a href="#SEC142">log--Print out log information for files</a>.  You can specify the
+<code>log</code> command; see <a href="#SEC143">log--Print out log information for files</a>.  You can specify the
 log message on the command line with the `<samp>-m
 <var>message</var></samp>' option, and thus avoid the editor invocation,
 or use the `<samp>-F <var>file</var></samp>' option to specify
 that the argument file contains the log message.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC125">A.8.1 commit options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC126">A.8.2 commit examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC126">A.8.1 commit options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC127">A.8.2 commit examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD125"></a>
-<a name="SEC125"></a>
+<a name="NOD126"></a>
+<a name="SEC126"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC124" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC125" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.8.1 commit options </h3>
 
 <p>These standard options are supported by <code>commit</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.
-</p></dd>
-<dt><code> -n
-</code></dt>
-<dd><p>Do not run any module program.
 </p></dd>
 <dt><code> -R
 </code></dt>
@@ -1459,7 +1455,7 @@ of invoking an editor.
 <dt><code> -f
 </code></dt>
 <dd><p>Note that this is not the standard behavior of
-the `<samp>-f</samp>' option as defined in <a href="#SEC118">Common command options</a>.
+the `<samp>-f</samp>' option as defined in <a href="#SEC119">Common command options</a>.
 </p><p>Force <small>CVS</small> to commit a new revision even if you haven't
 made any changes to the file.  If the current revision
 of <var>file</var> is 1.7, then the following two commands
@@ -1481,42 +1477,42 @@ invoking an editor.
 </dl>
 
 <hr size="6">
-<a name="NOD126"></a>
-<a name="SEC126"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC124" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h3> A.8.2 commit examples </h3>
-
-<hr size="6">
+<a name="NOD127"></a>
 <a name="SEC127"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC126" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC128" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC125" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> A.8.2 commit examples </h3>
+
+<hr size="6">
+<a name="SEC128"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC129" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC127" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> A.8.2.1 Committing to a branch </h4>
@@ -1544,21 +1540,21 @@ $ cvs commit
 <p>This works automatically since the `<samp>-r</samp>' option is
 sticky.
 </p><hr size="6">
-<a name="SEC128"></a>
+<a name="SEC129"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC129" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC128" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC130" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC127" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> A.8.2.2 Creating the branch after editing </h4>
@@ -1600,22 +1596,22 @@ would simply do
 $ cvs checkout -r EXPR1 whatever_module
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD127"></a>
-<a name="SEC129"></a>
+<a name="NOD128"></a>
+<a name="SEC130"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC128" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC130" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC129" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC131" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.9 diff--Show differences between revisions </h2>
@@ -1637,36 +1633,36 @@ on, and report any differences that are found.
 compared.  If any directories are given, all files
 under them will be compared.
 </p><p>The exit status for diff is different than for other
-<small>CVS</small> commands; for details <a href="#SEC115">CVS's exit status</a>.
+<small>CVS</small> commands; for details <a href="#SEC116">CVS's exit status</a>.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC130">A.9.1 diff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC133">A.9.2 diff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC131">A.9.1 diff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC134">A.9.2 diff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD128"></a>
-<a name="SEC130"></a>
+<a name="NOD129"></a>
+<a name="SEC131"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC129" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC131" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC130" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC132" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC129" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC130" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.9.1 diff options </h3>
 
 <p>These standard options are supported by <code>diff</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
@@ -1755,7 +1751,7 @@ context.
 <dt>`<samp> --changed-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line group containing differing lines from
-both files in if-then-else format.  See section <a href="#SEC131">Line group formats</a>.
+both files in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
 </p></dd>
 <dt>`<samp> -d
 </samp>'</dt>
@@ -1855,7 +1851,7 @@ and unified format headers.
 <dt>`<samp> --line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output all input lines in if-then-else format.
-See section <a href="#SEC132">Line formats</a>.
+See section <a href="#SEC133">Line formats</a>.
 </p></dd>
 <dt>`<samp> --minimal
 </samp>'</dt>
@@ -1877,22 +1873,22 @@ treat it as present but empty in the other directory.
 <dt>`<samp> --new-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the second
-file in if-then-else format.  See section <a href="#SEC131">Line group formats</a>.
+file in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
 </p></dd>
 <dt>`<samp> --new-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the second file in
-if-then-else format.  See section <a href="#SEC132">Line formats</a>.
+if-then-else format.  See section <a href="#SEC133">Line formats</a>.
 </p></dd>
 <dt>`<samp> --old-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the first
-file in if-then-else format.  See section <a href="#SEC131">Line group formats</a>.
+file in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
 </p></dd>
 <dt>`<samp> --old-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the first file in
-if-then-else format.  See section <a href="#SEC132">Line formats</a>.
+if-then-else format.  See section <a href="#SEC133">Line formats</a>.
 </p></dd>
 <dt>`<samp> -p
 </samp>'</dt>
@@ -1954,12 +1950,12 @@ do not appear to be text.
 <dt>`<samp> --unchanged-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of common lines taken from both files
-in if-then-else format.  See section <a href="#SEC131">Line group formats</a>.
+in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
 </p></dd>
 <dt>`<samp> --unchanged-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line common to both files in if-then-else
-format.  See section <a href="#SEC132">Line formats</a>.
+format.  See section <a href="#SEC133">Line formats</a>.
 </p></dd>
 <dt>`<samp> -U <var>lines</var>
 </samp>'</dt>
@@ -1988,27 +1984,27 @@ context.
 
 <table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC131">A.9.1.1 Line group formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC132">A.9.1.2 Line formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC132">A.9.1.1 Line group formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC133">A.9.1.2 Line formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD129"></a>
-<a name="SEC131"></a>
+<a name="NOD130"></a>
+<a name="SEC132"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC130" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC132" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC131" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC133" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC130" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC131" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> A.9.1.1 Line group formats </h4>
@@ -2078,7 +2074,7 @@ it is specified; otherwise it is a format that outputs the line group as-is.
 <dt>`<samp> --new-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>These line groups are hunks containing only lines from the second
-file.  The default new group format is same as the the changed group
+file.  The default new group format is same as the changed group
 format if it is specified; otherwise it is a format that outputs the
 line group as-is.
 </p></dd>
@@ -2102,7 +2098,7 @@ following forms.
 <dt>`<samp> %&lt;
 </samp>'</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see section <a href="#SEC132">Line formats</a>).
+Each line is formatted according to the old line format (see section <a href="#SEC133">Line formats</a>).
 </p></dd>
 <dt>`<samp> %&gt;
 </samp>'</dt>
@@ -2183,29 +2179,29 @@ or a single letter interpreted as above.
 This format spec is equivalent to <var>T</var> if
 <var>A</var>'s value equals <var>B</var>'s; otherwise it is equivalent to <var>E</var>.
 </p><p>For example, `<samp>%(N=0?no:%dN) line%(N=1?:s)</samp>' is equivalent to
-`<samp>no lines</samp>' if <var>N</var> (the number of lines in the group in the the
+`<samp>no lines</samp>' if <var>N</var> (the number of lines in the group in the
 new file) is 0, to `<samp>1 line</samp>' if <var>N</var> is 1, and to `<samp>%dN lines</samp>'
 otherwise.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD130"></a>
-<a name="SEC132"></a>
+<a name="NOD131"></a>
+<a name="SEC133"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC131" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC133" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC132" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC134" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC130" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC131" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> A.9.1.2 Line formats </h4>
@@ -2254,12 +2250,12 @@ following forms.
 </p><dl compact="compact">
 <dt>`<samp> %l
 </samp>'</dt>
-<dd><p>stands for the the contents of the line, not counting its trailing
+<dd><p>stands for the contents of the line, not counting its trailing
 newline (if any).  This format ignores whether the line is incomplete.
 </p></dd>
 <dt>`<samp> %L
 </samp>'</dt>
-<dd><p>stands for the the contents of the line, including its trailing newline
+<dd><p>stands for the contents of the line, including its trailing newline
 (if any).  If a line is incomplete, this format preserves its
 incompleteness.
 </p></dd>
@@ -2284,7 +2280,7 @@ For example, `<samp>%c'\0'</samp>' stands for a null character.
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
 stands for the line number formatted with <var>F</var>.
 For example, `<samp>%.5dn</samp>' prints the line number using the
-<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section <a href="#SEC131">Line group formats</a>, for
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section <a href="#SEC132">Line group formats</a>, for
 more about printf conversion specifications.
 </p></dd>
 </dl>
@@ -2316,22 +2312,22 @@ cvs diff \
    myfile
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD131"></a>
-<a name="SEC133"></a>
+<a name="NOD132"></a>
+<a name="SEC134"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC132" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC129" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC130" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.9.2 diff examples </h3>
@@ -2363,22 +2359,22 @@ not yet been committed will be printed.
 $ cvs diff -u | less
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD132"></a>
-<a name="SEC134"></a>
+<a name="NOD133"></a>
+<a name="SEC135"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.10 export--Export sources from CVS, similar to checkout </h2>
@@ -2413,32 +2409,32 @@ you want to be able to use <code>ident</code> you must not
 use `<samp>-kv</samp>'.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC135">A.10.1 export options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC136">A.10.1 export options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD133"></a>
-<a name="SEC135"></a>
+<a name="NOD134"></a>
+<a name="SEC136"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC135" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.10.1 export options </h3>
 
 <p>These standard options are supported by <code>export</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
@@ -2475,7 +2471,7 @@ recent revision (instead of ignoring the file).
 </code></dt>
 <dd><p>Create a directory called <var>dir</var> for the working
 files, instead of using the module name.
-See section <a href="#SEC122">checkout options</a>, for complete details on how
+See section <a href="#SEC123">checkout options</a>, for complete details on how
 <small>CVS</small> handles this flag.
 </p></dd>
 <dt><code> -k <var>subst</var>
@@ -2485,28 +2481,28 @@ See section <a href="#SEC122">checkout options</a>, for complete details on how
 <dt><code> -N
 </code></dt>
 <dd><p>Only useful together with `<samp>-d <var>dir</var></samp>'.
-See section <a href="#SEC122">checkout options</a>, for complete details on how
+See section <a href="#SEC123">checkout options</a>, for complete details on how
 <small>CVS</small> handles this flag.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD134"></a>
-<a name="SEC136"></a>
+<a name="NOD135"></a>
+<a name="SEC137"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.11 history--Show status of files and users </h2>
@@ -2529,29 +2525,29 @@ various formats.
 `<tt>$CVSROOT/CVSROOT/history</tt>'.
 </p><p><strong>Warning:</strong> <code>history</code> uses `<samp>-f</samp>', `<samp>-l</samp>',
 `<samp>-n</samp>', and `<samp>-p</samp>' in ways that conflict with the
-normal use inside <small>CVS</small> (see section <a href="#SEC118">Common command options</a>).
+normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC137">A.11.1 history options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC138">A.11.1 history options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD135"></a>
-<a name="SEC137"></a>
+<a name="NOD136"></a>
+<a name="SEC138"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.11.1 history options </h3>
@@ -2729,22 +2725,22 @@ time zone instead of UTC.
 </dl>
 
 <hr size="6">
-<a name="NOD136"></a>
-<a name="SEC138"></a>
+<a name="NOD137"></a>
+<a name="SEC139"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.12 import--Import sources into CVS, using vendor branches </h2>
@@ -2763,7 +2759,7 @@ distribution from an outside source (e.g., a source
 vendor) into your source repository directory.  You can
 use this command both for initial creation of a
 repository, and for wholesale updates to the module
-from the outside source.  See section <a href="cvs_13.html#SEC104">Tracking third-party sources</a>, for
+from the outside source.  See section <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, for
 a discussion on this subject.
 </p><p>The <var>repository</var> argument gives a directory name
 (or a path to a directory) under the <small>CVS</small> root directory
@@ -2776,14 +2772,14 @@ in the two branches of development; use `<samp>checkout
 -j</samp>' to reconcile the differences, as import instructs
 you to do.
 </p><p>If <small>CVS</small> decides a file should be ignored
-(see section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>), it does not import it and prints
-`<samp>I </samp>' followed by the filename (see section <a href="#SEC140">import output</a>, for a
+(see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>), it does not import it and prints
+`<samp>I </samp>' followed by the filename (see section <a href="#SEC141">import output</a>, for a
 complete description of the output).
 </p><p>If the file `<tt>$CVSROOT/CVSROOT/cvswrappers</tt>' exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
-before being imported.  See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
+before being imported.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 </p><p>The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
 branch; for example, files from the first imported
@@ -2804,34 +2800,34 @@ them first and then check them out into a different
 directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC139">A.12.1 import options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC140">A.12.2 import output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC141">A.12.3 import examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC140">A.12.1 import options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC141">A.12.2 import output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC142">A.12.3 import examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD137"></a>
-<a name="SEC139"></a>
+<a name="NOD138"></a>
+<a name="SEC140"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC141" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.12.1 import options </h3>
 
 <p>This standard option is supported by <code>import</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description):
+(see section <a href="#SEC119">Common command options</a>, for a complete description):
 </p><dl compact="compact">
 <dt><code> -m <var>message</var>
 </code></dt>
@@ -2844,7 +2840,7 @@ invoking an editor.
 </p><dl compact="compact">
 <dt><code> -b <var>branch</var>
 </code></dt>
-<dd><p>See <a href="cvs_13.html#SEC110">Multiple vendor branches</a>.
+<dd><p>See <a href="cvs_13.html#SEC111">Multiple vendor branches</a>.
 </p></dd>
 <dt><code> -k <var>subst</var>
 </code></dt>
@@ -2862,7 +2858,7 @@ ignoring any files at all (even those ignored by
 default), specify `-I !'.
 </p><p><var>name</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvsignore</tt>' file.
-See section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>.
+See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>.
 </p></dd>
 <dt><code> -W <var>spec</var>
 </code></dt>
@@ -2870,27 +2866,27 @@ See section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>.
 import.  You can use this option repeatedly.
 </p><p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvswrappers</tt>'
-file. See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
+file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD138"></a>
-<a name="SEC140"></a>
+<a name="NOD139"></a>
+<a name="SEC141"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC141" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC142" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.12.2 import output </h3>
@@ -2914,9 +2910,9 @@ you will have to merge the changes.
 </p></dd>
 <dt><code> I <var>file</var>
 </code></dt>
-<dd><p>The file is being ignored (see section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>).
-</p><a name="IDX248"></a>
-<a name="IDX249"></a>
+<dd><p>The file is being ignored (see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>).
+</p><a name="IDX242"></a>
+<a name="IDX243"></a>
 </dd>
 <dt><code> L <var>file</var>
 </code></dt>
@@ -2926,49 +2922,49 @@ be changed, but if there is a consensus on what it
 should be changed to, it is not apparent.
 (Various options in the `<tt>modules</tt>' file can be used
 to recreate symbolic links on checkout, update, etc.;
-see section <a href="cvs_18.html#SEC157">The modules file</a>.)
+see section <a href="cvs_18.html#SEC158">The modules file</a>.)
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD139"></a>
-<a name="SEC141"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC142" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h3> A.12.3 import examples </h3>
-
-<p>See <a href="cvs_13.html#SEC104">Tracking third-party sources</a>, and <a href="cvs_3.html#SEC40">Creating a directory tree from a number of files</a>.
-</p><hr size="6">
 <a name="NOD140"></a>
 <a name="SEC142"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC143" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> A.12.3 import examples </h3>
+
+<p>See <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, and <a href="cvs_3.html#SEC40">Creating a directory tree from a number of files</a>.
+</p><hr size="6">
+<a name="NOD141"></a>
+<a name="SEC143"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC144" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.13 log--Print out log information for files </h2>
@@ -2988,8 +2984,8 @@ is no longer true in the current sources, this history
 determines the format of the output and the options,
 which are not quite in the style of the other <small>CVS</small>
 commands.
-</p><a name="IDX250"></a>
-<a name="IDX251"></a>
+</p><a name="IDX244"></a>
+<a name="IDX245"></a>
 <p>The output includes the location of the <small>RCS</small> file,
 the <em>head</em> revision (the latest revision on the
 trunk), all symbolic names (tags) and some other
@@ -2999,30 +2995,30 @@ message are printed.  All times are displayed in
 Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p><p><strong>Warning:</strong> <code>log</code> uses `<samp>-R</samp>' in a way that conflicts
-with the normal use inside <small>CVS</small> (see section <a href="#SEC118">Common command options</a>).
+with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC143">A.13.1 log options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC144">A.13.2 log examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC144">A.13.1 log options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC145">A.13.2 log examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD141"></a>
-<a name="SEC143"></a>
+<a name="NOD142"></a>
+<a name="SEC144"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC145" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC142" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC143" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.13.1 log options </h3>
@@ -3041,7 +3037,7 @@ branch, normally the highest branch on the trunk.
 date/time in the range given by the
 semicolon-separated list of dates.  The date formats
 accepted are those accepted by the `<samp>-D</samp>' option to
-many other <small>CVS</small> commands (see section <a href="#SEC118">Common command options</a>).
+many other <small>CVS</small> commands (see section <a href="#SEC119">Common command options</a>).
 Dates can be combined into ranges as follows:
 </p><dl compact="compact">
 <dt><code> <var>d1</var>&lt;<var>d2</var>
@@ -3184,44 +3180,44 @@ selected with the options `<samp>-d</samp>', `<samp>-s</samp>', and
 `<samp>-w</samp>', intersected with the union of the revisions
 selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
 </p><hr size="6">
-<a name="NOD142"></a>
-<a name="SEC144"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC145" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC142" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h3> A.13.2 log examples </h3>
-
-<p>Contributed examples are gratefully accepted.
-</p><hr size="6">
 <a name="NOD143"></a>
 <a name="SEC145"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC144" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC146" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC143" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3> A.13.2 log examples </h3>
+
+<p>Contributed examples are gratefully accepted.
+</p><hr size="6">
+<a name="NOD144"></a>
+<a name="SEC146"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC145" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC147" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.14 rdiff--'patch' format diffs between releases </h2>
@@ -3257,33 +3253,33 @@ patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC146">A.14.1 rdiff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC147">A.14.2 rdiff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC147">A.14.1 rdiff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC148">A.14.2 rdiff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD144"></a>
-<a name="SEC146"></a>
+<a name="NOD145"></a>
+<a name="SEC147"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC145" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC147" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC146" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC148" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC145" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC146" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.14.1 rdiff options </h3>
 
 <p>These standard options are supported by <code>rdiff</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
@@ -3349,22 +3345,22 @@ way that <small>RCS</small> version 5 does.
 </dl>
 
 <hr size="6">
-<a name="NOD145"></a>
-<a name="SEC147"></a>
+<a name="NOD146"></a>
+<a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC146" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC147" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC149" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC145" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC146" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.14.2 rdiff examples </h3>
@@ -3390,22 +3386,22 @@ File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
 File bar.h,v changed from revision 1.29.2.1 to 1.2
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD146"></a>
-<a name="SEC148"></a>
+<a name="NOD147"></a>
+<a name="SEC149"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC147" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC149" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC150" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.15 release--Indicate that a Module is no longer in use </h2>
@@ -3425,7 +3421,7 @@ isn't strictly necessary to use this command.  You can
 always simply delete your working directory, if you
 like; but you risk losing changes you may have
 forgotten, and you leave no trace in the <small>CVS</small> history
-file (see section <a href="cvs_18.html#SEC177">The history file</a>) that you've abandoned your
+file (see section <a href="cvs_18.html#SEC178">The history file</a>) that you've abandoned your
 checkout.
 </p><p>Use `<samp>cvs release</samp>' to avoid these problems.  This
 command checks that no uncommitted changes are
@@ -3439,28 +3435,28 @@ intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC149">A.15.1 release options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC150">A.15.2 release output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC151">A.15.3 release examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC150">A.15.1 release options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC151">A.15.2 release output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC152">A.15.3 release examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD147"></a>
-<a name="SEC149"></a>
+<a name="NOD148"></a>
+<a name="SEC150"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC150" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC151" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC149" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.15.1 release options </h3>
@@ -3483,22 +3479,22 @@ if it is non-empty!
 </dl>
 
 <hr size="6">
-<a name="NOD148"></a>
-<a name="SEC150"></a>
+<a name="NOD149"></a>
+<a name="SEC151"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC151" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC152" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC149" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.15.2 release output </h3>
@@ -3532,7 +3528,7 @@ this file will be lost.
 <dd><p>The file has been removed from your private copy of the
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
-removal.  See section <a href="#SEC124">commit--Check files into the repository</a>.
+removal.  See section <a href="#SEC125">commit--Check files into the repository</a>.
 </p></dd>
 <dt><code> M <var>file</var>
 </code></dt>
@@ -3545,28 +3541,28 @@ might also be a newer revision inside the repository.
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the `<samp>-I</samp>' option, and
-see section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>).  If you remove your working
+see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>).  If you remove your working
 sources, this file will be lost.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD149"></a>
-<a name="SEC151"></a>
+<a name="NOD150"></a>
+<a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC152" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC151" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC153" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC149" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.15.3 release examples </h3>
@@ -3582,22 +3578,22 @@ Are you sure you want to release (and delete) directory `tc': y
 $
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD150"></a>
-<a name="SEC152"></a>
+<a name="NOD151"></a>
+<a name="SEC153"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC151" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC153" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC154" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> A.16 update--Bring work tree in sync with repository </h2>
@@ -3625,33 +3621,33 @@ into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC153">A.16.1 update options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC154">A.16.2 update output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC154">A.16.1 update options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC155">A.16.2 update output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD151"></a>
-<a name="SEC153"></a>
+<a name="NOD152"></a>
+<a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC154" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC153" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC155" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC152" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC153" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.16.1 update options </h3>
 
 <p>These standard options are available with <code>update</code>
-(see section <a href="#SEC118">Common command options</a>, for a complete description of
+(see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
 </p><dl compact="compact">
 <dt><code> -D date
@@ -3674,7 +3670,7 @@ the file).
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See <a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>, for
+to see the sticky options.  See <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, for
 more information on the <code>status</code> command.
 </p></dd>
 <dt><code> -l
@@ -3737,7 +3733,7 @@ those directories, which may not be what you want.
 working directory) during the update.  You can specify
 `<samp>-I</samp>' more than once on the command line to specify
 several files to ignore.  Use `<samp>-I !</samp>' to avoid
-ignoring any files at all.  See section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>, for other
+ignoring any files at all.  See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>, for other
 ways to make <small>CVS</small> ignore some files.
 </p></dd>
 <dt><code> -W<var>spec</var>
@@ -3746,7 +3742,7 @@ ways to make <small>CVS</small> ignore some files.
 update.  You can use this option repeatedly.
 </p><p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvswrappers</tt>'
-file. See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
+file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 </p></dd>
 <dt><code> -j<var>revision</var>
 </code></dt>
@@ -3775,22 +3771,22 @@ date.  An optional date is specified by adding a colon
 </dl>
 
 <hr size="6">
-<a name="NOD152"></a>
-<a name="SEC154"></a>
+<a name="NOD153"></a>
+<a name="SEC155"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC153" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC154" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC152" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC153" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> A.16.2 update output </h3>
@@ -3843,8 +3839,8 @@ name of that file is printed while <code>update</code> runs.
 </p></dd>
 <dt><code> C <var>file</var>
 </code></dt>
-<dd><p><a name="IDX252"></a>
-<a name="IDX253"></a>
+<dd><p><a name="IDX246"></a>
+<a name="IDX247"></a>
 A conflict was detected while trying to merge your
 changes to <var>file</var> with changes from the source
 repository.  <var>file</var> (the copy in your working
@@ -3868,14 +3864,14 @@ it.)  Under <small>VMS</small>, the file name starts with
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the `<samp>-I</samp>' option, and
-see section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>).
+see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>).
 </p></dd>
 </dl>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC113" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_17.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC114" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_17.html#SEC156" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -3883,7 +3879,7 @@ see section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>).
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

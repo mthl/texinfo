@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 7. Adding, removing, and renaming files and directories</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 7. Adding, removing, and renaming files and directories</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 7. Adding, removing, and renaming files and directories">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 7. Adding, removing, and renaming files and directories">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 7. Adding, removing, and renaming files and directories">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 7. Adding, removing, and renaming files and directories">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -39,7 +39,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 7. Adding, removing, and renaming files and directories </h1>
@@ -77,7 +77,7 @@ this in <small>CVS</small> vary depending on the situation.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 7.1 Adding files to a directory </h2>
@@ -108,17 +108,17 @@ foo/bar</samp>'!  Instead, you have to
 $ cd foo
 $ cvs add bar
 </pre></td></tr></table>
-<a name="IDX137"></a>
+<a name="IDX129"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs add</b> [<code>-k</code> kflag] [<code>-m</code> message] files <small>...</small>
-<a name="IDX138"></a>
+<a name="IDX130"></a>
 </dt>
 <dd><p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See section <a href="cvs_16.html#SEC138">import--Import sources into CVS, using vendor branches</a>.
+the <code>import</code> command instead.  See section <a href="cvs_16.html#SEC139">import--Import sources into CVS, using vendor branches</a>.
 </p><p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
@@ -131,11 +131,11 @@ this file will be checked out; for more information see
 <a href="cvs_12.html#SEC102">Substitution modes</a>.
 </p><p>The `<samp>-m</samp>' option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see section <a href="cvs_18.html#SEC177">The history file</a>).  It will also be
+it is enabled, see section <a href="cvs_18.html#SEC178">The history file</a>).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-`<samp>admin -t</samp>'.  See section <a href="cvs_16.html#SEC119">admin--Administration</a>.  If you omit the
+`<samp>admin -t</samp>'.  See section <a href="cvs_16.html#SEC120">admin--Administration</a>.  If you omit the
 `<samp>-m <var>description</var></samp>' flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -166,7 +166,7 @@ later merge the additions to another branch if you want
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 7.2 Removing files </h2>
@@ -203,17 +203,17 @@ not on others, or to re-add another file with the same
 name later.  <small>CVS</small> will correctly create or not create
 the file, based on the `<samp>-r</samp>' and `<samp>-D</samp>' options
 specified to <code>checkout</code> or <code>update</code>.
-</p><a name="IDX139"></a>
+</p><a name="IDX131"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs remove</b> [options] files <small>...</small>
-<a name="IDX140"></a>
+<a name="IDX132"></a>
 </dt>
 <dd><p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see <a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>.
+options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -286,7 +286,7 @@ later merge the removals to another branch if you want
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 7.3 Removing directories </h2>
@@ -330,7 +330,7 @@ are checking out contains any files in that directory.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 7.4 Moving and renaming files </h2>
@@ -364,7 +364,7 @@ directory is even harder.  See section <a href="#SEC74">Moving and renaming dire
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 7.4.1 The Normal way to Rename </h3>
@@ -406,7 +406,7 @@ information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 7.4.2 Moving the history file </h3>
@@ -456,7 +456,7 @@ commands while you move it.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 7.4.3 Copying the history file </h3>
@@ -515,7 +515,7 @@ You cannot easily see the history of the file across the rename.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 7.5 Moving and renaming directories </h2>
@@ -566,7 +566,7 @@ name of the directories.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

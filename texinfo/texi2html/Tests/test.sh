@@ -43,12 +43,12 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html $basename*.htm $basename*.png $basename.passfirst $basename.2) > /dev/null 2>&1
+(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html $basename*.htm $basename*.png $basename.passfirst  $basename.passtexi $basename.2) > /dev/null 2>&1
 export T2H_HOME=../..
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
-(cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
+(cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -58,8 +58,8 @@ fi
 
 # generate a dump of the first pass
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file)
-(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
 #(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
+(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
 	echo "  stderr line count:"
@@ -153,7 +153,7 @@ if [ ! -z $1 ]; then
 fi
 
 test_texi GermanNodeTest nodetest.texi
-test_texi GermanNodeTest nodetest_for_makeinfo.texi
+test_texi GermanNodeTest nodetest_for_makeinfo.texi "" 5
 test_texi index_table
 test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init"
 test_texi index_table index_split.texi "-split chapter -init index_test.init"
@@ -190,17 +190,17 @@ test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting tex.texi "-l2h -expand tex" "no"
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
-test_texi formatting formats_not_closed.texi ""
-test_texi formatting not_closed_in_menu.texi "" 
-test_texi formatting macro_call_not_closed.texi "" 
-test_texi formatting macro_def_not_closed.texi "" 
-test_texi formatting ignored_not_closed.texi "" 
-test_texi formatting verb_not_closed.texi "" 
-test_texi formatting tex_not_closed.texi "-l2h -expand tex " 
-test_texi formatting html_not_closed.texi "" 
-test_texi formatting verbatim_not_closed.texi "" 
-test_texi formatting copying_not_closed.texi "" 
-test_texi formatting titlepage_not_closed.texi "" 
+test_texi formatting formats_not_closed.texi "" 12
+test_texi formatting not_closed_in_menu.texi "" 7
+test_texi formatting macro_call_not_closed.texi "" 1
+test_texi formatting macro_def_not_closed.texi "" 1
+test_texi formatting ignored_not_closed.texi "" 1
+test_texi formatting verb_not_closed.texi "" 1
+test_texi formatting tex_not_closed.texi "-l2h -expand tex " 2
+test_texi formatting html_not_closed.texi "" 1
+test_texi formatting verbatim_not_closed.texi "" 1
+test_texi formatting copying_not_closed.texi "" 1
+test_texi formatting titlepage_not_closed.texi "" 1
 test_texi texi2html 
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"

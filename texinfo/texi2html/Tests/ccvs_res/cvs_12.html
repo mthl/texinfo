@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 12. Keyword substitution</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 12. Keyword substitution</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 12. Keyword substitution">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 12. Keyword substitution">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -32,14 +32,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 12. Keyword substitution </h1>
@@ -64,7 +64,8 @@ a new revision of the file.
 <tr><td align="left" valign="top"><a href="#SEC100">12.2 Using keywords</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC101">12.3 Avoiding substitution</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC102">12.4 Substitution modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC103">12.5 Problems with the $Log$ keyword.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC103">12.5 Configuring Keyord Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Configuring keyword expansion</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC104">12.6 Problems with the $<i></i>Log$ keyword.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
@@ -76,14 +77,14 @@ a new revision of the file.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 12.1 Keyword List </h2>
@@ -91,61 +92,78 @@ a new revision of the file.
 <p>This is a list of the keywords:
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX190"></a>
+<a name="IDX182"></a>
 </p></dd>
-<dt><code> $Author$
+<dt><code> $<i></i>Author$
 </code></dt>
 <dd><p>The login name of the user who checked in the revision.
-</p><a name="IDX191"></a>
+</p><a name="IDX183"></a>
 </dd>
-<dt><code> $Date$
+<dt><code> $<i></i>CVSHeader
+</code></dt>
+<dd><p>A standard header (similar to $<i></i>Header$, but with
+the CVS root stripped off). It contains the relative
+pathname of the <small>RCS</small> file to the CVS root, the
+revision number, the date (UTC), the author, the state,
+and the locker (if locked). Files will normally never
+be locked when you use <small>CVS</small>.
+</p><p>Note that this keyword has only been recently
+introduced to <small>CVS</small> and may cause problems with
+existing installations if $<i></i>CVSHeader$ is already
+in the files for a different purpose. This keyword may
+be excluded using the <code>KeywordExpansion=eCVSHeader</code>
+in the `<tt>CVSROOT/config</tt>' file. 
+See <a href="#SEC103">Configuring Keyord Expansion</a> for more details.
+</p><a name="IDX184"></a>
+</dd>
+<dt><code> $<i></i>Date$
 </code></dt>
 <dd><p>The date and time (UTC) the revision was checked in.
-</p><a name="IDX192"></a>
+</p><a name="IDX185"></a>
 </dd>
-<dt><code> $Header$
+<dt><code> $<i></i>Header$
 </code></dt>
 <dd><p>A standard header containing the full pathname of the
 <small>RCS</small> file, the revision number, the date (UTC), the
 author, the state, and the locker (if locked).  Files
 will normally never be locked when you use <small>CVS</small>.
-</p><a name="IDX193"></a>
+</p><a name="IDX186"></a>
 </dd>
-<dt><code> $Id$
+<dt><code> $<i></i>Id$
 </code></dt>
-<dd><p>Same as <code>$Header$</code>, except that the <small>RCS</small>
+<dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
 filename is without a path.
-</p><a name="IDX194"></a>
+</p><a name="IDX187"></a>
 </dd>
-<dt><code> $Name$
+<dt><code> $<i></i>Name$
 </code></dt>
 <dd><p>Tag name used to check out this file.  The keyword is
 expanded only if one checks out with an explicit tag
 name.  For example, when running the command <code>cvs
 co -r first</code>, the keyword expands to `<samp>Name: first</samp>'.
-</p><a name="IDX195"></a>
+</p><a name="IDX188"></a>
 </dd>
-<dt><code> $Locker$
+<dt><code> $<i></i>Locker$
 </code></dt>
 <dd><p>The login name of the user who locked the revision
 (empty if not locked, which is the normal case unless
 <code>cvs admin -l</code> is in use).
-</p><a name="IDX196"></a>
+</p><a name="IDX189"></a>
 </dd>
-<dt><code> $Log$
+<dt><code> $<i></i>Log$
 </code></dt>
 <dd><p>The log message supplied during commit, preceded by a
 header containing the <small>RCS</small> filename, the revision
 number, the author, and the date (UTC).  Existing log
 messages are <em>not</em> replaced.  Instead, the new log
-message is inserted after <code>$Log$</code>.
+message is inserted after <code>$<i></i>Log:<small>...</small>$</code>.
 Each new line is prefixed with the same string which
 precedes the <code>$Log</code> keyword.  For example, if the
 file contains:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
   /* Here is what people have been up to:
    *
-   * $Log$
+   * $<i></i>Log: frob.c,v $
    * Revision 1.1  1997/01/03 14:23:51  joe
    * Add the superfrobnicate option
    *
@@ -158,28 +176,72 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section <a href="#SEC103">Problems with the $Log$ keyword.</a>.
-</p><a name="IDX197"></a>
+See section <a href="#SEC104">Problems with the $<i></i>Log$ keyword.</a>.
+</p><a name="IDX190"></a>
 </dd>
-<dt><code> $RCSfile$
+<dt><code> $<i></i>RCSfile$
 </code></dt>
 <dd><p>The name of the RCS file without a path.
-</p><a name="IDX198"></a>
+</p><a name="IDX191"></a>
 </dd>
-<dt><code> $Revision$
+<dt><code> $<i></i>Revision$
 </code></dt>
 <dd><p>The revision number assigned to the revision.
-</p><a name="IDX199"></a>
+</p><a name="IDX192"></a>
 </dd>
-<dt><code> $Source$
+<dt><code> $<i></i>Source$
 </code></dt>
 <dd><p>The full pathname of the RCS file.
-</p><a name="IDX200"></a>
+</p><a name="IDX193"></a>
 </dd>
-<dt><code> $State$
+<dt><code> $<i></i>State$
 </code></dt>
 <dd><p>The state assigned to the revision.  States can be
-assigned with <code>cvs admin -s</code>--see <a href="cvs_16.html#SEC120">admin options</a>.
+assigned with <code>cvs admin -s</code>--see <a href="cvs_16.html#SEC121">admin options</a>.
+</p><a name="IDX194"></a>
+</dd>
+<dt><code> Local keyword
+</code></dt>
+<dd><p>The <code>LocalKeyword</code> option in the `<tt>CVSROOT/config</tt>' file
+may be used to specify a local keyword which is to be
+used as an alias for one of the other keywords. For
+example, if the `<tt>CVSROOT/config</tt>' file contains
+a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a
+file with the local keyword $<i></i>MYBSD$ will be
+expanded as if it were a $<i></i>CVSHeader$ keyword. If
+the src/frob.c file contained this keyword, it might
+look something like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+  /*
+   * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
+   */
+</pre></td></tr></table>
+<p>Many repositories make use of a such a &quot;local
+keyword&quot; feature. An old patch to <small>CVS</small> provided
+the <code>LocalKeyword</code> feature using a <code>tag=</code>
+option and called this the &quot;custom tag&quot; or &quot;local
+tag&quot; feature. It was used in conjunction with the
+what they called the <code>tagexpand=</code> option. In
+<small>CVS</small> this other option is known as the
+<code>KeywordExpand</code> option. 
+See <a href="#SEC103">Configuring Keyord Expansion</a> for more
+details.
+</p><p>Examples from popular projects include:
+$<i></i>FreeBSD$, $<i></i>NetBSD$,
+$<i></i>OpenBSD$, $<i></i>XFree86$,
+$<i></i>Xorg$.
+</p><p>The advantage of this is that you can include your
+local version information in a file using this local
+keyword without disrupting the upstream version
+information (which may be a different local keyword or
+a standard keyword). Allowing bug reports and the like
+to more properly identify the source of the original
+bug to the third-party and reducing the number of
+conflicts that arise during an import of a new version.
+</p><p>All keyword expansion except the local keyword may be
+disabled using the <code>KeywordExpansion</code> option in
+the `<tt>CVSROOT/config</tt>' file--see 
+<a href="#SEC103">Configuring Keyord Expansion</a> for more details.
 </p></dd>
 </dl>
 
@@ -192,23 +254,23 @@ assigned with <code>cvs admin -s</code>--see <a href="cvs_16.html#SEC120">admin 
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 12.2 Using keywords </h2>
 
 <p>To include a keyword string you simply include the
-relevant text string, such as <code>$Id$</code>, inside the
+relevant text string, such as <code>$<i></i>Id$</code>, inside the
 file, and commit the file.  <small>CVS</small> will automatically
 expand the string as part of the commit operation.
-</p><p>It is common to embed the <code>$Id$</code> string in
+</p><p>It is common to embed the <code>$<i></i>Id$</code> string in
 the source files so that it gets passed through to
 generated files.  For example, if you are managing
 computer program source code, you might include a
@@ -217,7 +279,7 @@ Or some C compilers may provide a <code>#pragma ident</code>
 directive.  Or a document management system might
 provide a way to pass a string through to generated
 files.
-</p><a name="IDX201"></a>
+</p><a name="IDX195"></a>
 <p>The <code>ident</code> command (which is part of the <small>RCS</small>
 package) can be used to extract keywords and their
 values from a file.  This can be handy for text files,
@@ -226,13 +288,13 @@ binary files.
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 $ ident samp.c
 samp.c:
-     $Id$
+     $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 $ gcc samp.c
 $ ident a.out
 a.out:
-     $Id$
+     $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </pre></td></tr></table>
-<a name="IDX202"></a>
+<a name="IDX196"></a>
 <p>S<small>CCS</small> is another popular revision control system.
 It has a command, <code>what</code>, which is very similar to
 <code>ident</code> and used for the same purpose.  Many sites
@@ -242,7 +304,7 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
-static char *id=&quot;@(#) $Id$&quot;;
+static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD101"></a>
@@ -253,23 +315,23 @@ static char *id=&quot;@(#) $Id$&quot;;
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 12.3 Avoiding substitution </h2>
 
 <p>Keyword substitution has its disadvantages.  Sometimes
 you might want the literal text string
-`<samp>$Author$</samp>' to appear inside a file without
+`<samp>$<i></i>Author$</samp>' to appear inside a file without
 <small>CVS</small> interpreting it as a keyword and expanding it
-into something like `<samp>$Author$</samp>'.
+into something like `<samp>$<i></i>Author: ceder $</samp>'.
 </p><p>There is unfortunately no way to selectively turn off
 keyword substitution.  You can use `<samp>-ko</samp>'
 (see section <a href="#SEC102">Substitution modes</a>) to turn off keyword
@@ -278,9 +340,16 @@ substitution entirely.
 the source, even though they appear in the final
 product.  For example, the source for this manual
 contains `<samp>$@asis{}Author$</samp>' whenever the text
-`<samp>$Author$</samp>' should appear.  In <code>nroff</code>
+`<samp>$<i></i>Author$</samp>' should appear.  In <code>nroff</code>
 and <code>troff</code> you can embed the null-character
 <code>\&amp;</code> inside the keyword for a similar effect.
+</p><p>It is also possible to specify an explicit list of
+keywords to include or exclude using the
+<code>KeywordExpand</code> option in the
+`<tt>CVSROOT/config</tt>' file--see <a href="#SEC103">Configuring Keyord Expansion</a>
+for more details. This feature is intended primarily
+for use with the <code>LocalKeyword</code> option--see
+<a href="#SEC99">Keyword List</a>.
 </p><hr size="6">
 <a name="NOD102"></a>
 <a name="SEC102"></a>
@@ -290,14 +359,14 @@ and <code>troff</code> you can embed the null-character
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 12.4 Substitution modes </h2>
@@ -315,7 +384,7 @@ see <a href="cvs_9.html#SEC80">Handling binary files</a>, and <a href="cvs_5.htm
 <dt>`<samp> -kkv
 </samp>'</dt>
 <dd><p>Generate keyword strings using the default form, e.g.
-<code>$Revision$</code> for the <code>Revision</code>
+<code>$<i></i>Revision: 5.7 $</code> for the <code>Revision</code>
 keyword.
 </p></dd>
 <dt>`<samp> -kkvl
@@ -329,8 +398,8 @@ The locker's name is only relevant if <code>cvs admin
 </samp>'</dt>
 <dd><p>Generate only keyword names in keyword strings; omit
 their values.  For example, for the <code>Revision</code>
-keyword, generate the string <code>$Revision$</code>
-instead of <code>$Revision$</code>.  This option
+keyword, generate the string <code>$<i></i>Revision$</code>
+instead of <code>$<i></i>Revision: 5.7 $</code>.  This option
 is useful to ignore differences due to keyword
 substitution when comparing different revisions of a
 file (see section <a href="cvs_5.html#SEC64">Merging and keywords</a>).
@@ -340,8 +409,8 @@ file (see section <a href="cvs_5.html#SEC64">Merging and keywords</a>).
 <dd><p>Generate the old keyword string, present in the working
 file just before it was checked in.  For example, for
 the <code>Revision</code> keyword, generate the string
-<code>$Revision$</code> instead of
-<code>$Revision$</code> if that is how the
+<code>$<i></i>Revision: 1.1 $</code> instead of
+<code>$<i></i>Revision: 5.7 $</code> if that is how the
 string appeared when the file was checked in.
 </p></dd>
 <dt>`<samp> -kb
@@ -359,15 +428,15 @@ only to terminate lines, this is the same as
 </samp>'</dt>
 <dd><p>Generate only keyword values for keyword strings.  For
 example, for the <code>Revision</code> keyword, generate the string
-<code>5.7</code> instead of <code>$Revision$</code>.
+<code>5.7</code> instead of <code>$<i></i>Revision: 5.7 $</code>.
 This can help generate files in programming languages
 where it is hard to strip keyword delimiters like
-<code>$Revision$</code> from a string.  However,
+<code>$<i></i>Revision: $</code> from a string.  However,
 further keyword substitution cannot be performed once
 the keyword names are removed, so this option should be
 used with care.
 </p><p>One often would like to use `<samp>-kv</samp>' with <code>cvs
-export</code>--see section <a href="cvs_16.html#SEC134">export--Export sources from CVS, similar to checkout</a>.  But be aware that doesn't
+export</code>--see section <a href="cvs_16.html#SEC135">export--Export sources from CVS, similar to checkout</a>.  But be aware that doesn't
 handle an export containing binary files correctly.
 </p></dd>
 </dl>
@@ -377,31 +446,126 @@ handle an export containing binary files correctly.
 <a name="SEC103"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC102" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC104" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.5 Problems with the $Log$ keyword. </h2>
+<h2> 12.5 Configuring Keyord Expansion </h2>
 
-<p>The <code>$Log$</code> keyword is somewhat
+<p>In a repository that includes third-party software on
+vendor branches, it is sometimes helpful to configure
+CVS to use a local keyword instead of the standard
+$<i></i>Id$ or $<i></i>Header$ keywords. Examples from
+real projects includ, $<i></i>Xorg$, $<i></i>XFree86$,
+$<i></i>FreeBSD$, $<i></i>NetBSD$,
+$<i></i>OpenBSD$, and even $<i></i>dotat$.
+The advantage of this is that
+you can include your local version information in a
+file using this local keyword (sometimes called a
+&quot;custom tag&quot; or a &quot;local tag&quot;) without disrupting
+the upstream version information (which may be a
+different local keyword or a standard keyword). In
+these cases, it is typically desirable to disable the
+expansion of all keywords except the configured local
+keyword.
+</p><p>The <code>KeywordExpansion</code> option in the
+`<tt>CVSROOT/config</tt>' file is intended to allow for the
+either the explicit exclusion of a keyword or list of
+keywords, or for the explicit inclusion of a keyword or
+a list of keywords. This list may include the
+<code>LocalKeyword</code> that has been configured.
+</p><p>The <code>KeywordExpansion</code> option is followed by
+<code>=</code> and the next character may either be <code>i</code>
+to start an inclusion list or <code>e</code> to start an
+exclusion list. If the following lines were added to
+the `<tt>CVSROOT/config</tt>' file:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+        # Add a &quot;MyBSD&quot; keyword and restrict keyword
+        # expansion
+        LocalKeyword=MyBSD=CVSHeader
+        KeywordExpand=iMyBSD
+</pre></td></tr></table>
+<p>then only the $<i></i>MyBSD$ keyword would be expanded.
+A list may be used. The this example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+        # Add a &quot;MyBSD&quot; keyword and restrict keyword
+        # expansion to the MyBSD, Name and Date keywords.
+        LocalKeyword=MyBSD=CVSHeader
+        KeywordExpand=iMyBSD,Name,Date
+</pre></td></tr></table>
+<p>would allow $<i></i>MyBSD$, $<i></i>Name$, and
+$<i></i>Date$ to be expanded.
+</p><p>It is also possible to configure an exclusion list
+using the following:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+        # Do not expand the non-RCS keyword CVSHeader
+        KeywordExpand=eCVSHeader
+</pre></td></tr></table>
+<p>This allows <small>CVS</small> to ignore the recently introduced
+$<i></i>CVSHeader$ keyword and retain all of the
+others. The exclusion entry could also contain the
+standard RCS keyword list, but this could be confusing
+to users that expect RCS keywords to be expanded, so
+ycare should be taken to properly set user expectations
+for a repository that is configured in that manner.
+</p><p>If there is a desire to not have any RCS keywords
+expanded and not use the <code>-ko</code> flags everywhere,
+an administrator may disable all keyword expansion
+using the `<tt>CVSROOT/config</tt>' line:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+	# Do not expand any RCS keywords
+	KeywordExpand=i
+</pre></td></tr></table>
+<p>this could be confusing to users that expect RCS
+keywords like $<i></i>Id$ to be expanded properly,
+so care should be taken to properly set user
+expectations for a repository so configured.
+</p><p>It should be noted that a patch to provide both the
+<code>KeywordExpand</code> and <code>LocalKeyword</code> features
+has been around a long time. However, that patch
+implemented these features using <code>tag=</code> and
+<code>tagexpand=</code> keywords and those keywords are NOT
+recognized.
+</p><hr size="6">
+<a name="NOD104"></a>
+<a name="SEC104"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC103" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC98" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 12.6 Problems with the $<i></i>Log$ keyword. </h2>
+
+<p>The <code>$<i></i>Log$</code> keyword is somewhat
 controversial.  As long as you are working on your
 development system the information is easily accessible
-even if you do not use the <code>$Log$</code>
+even if you do not use the <code>$<i></i>Log$</code>
 keyword--just do a <code>cvs log</code>.  Once you export
 the file the history information might be useless
 anyhow.
 </p><p>A more serious concern is that <small>CVS</small> is not good at
-handling <code>$Log$</code> entries when a branch is
+handling <code>$<i></i>Log$</code> entries when a branch is
 merged onto the main trunk.  Conflicts often result
 from the merging operation.
 </p><p>People also tend to &quot;fix&quot; the log entries in the file
@@ -410,7 +574,7 @@ errors).  If that is done the information from
 <code>cvs log</code> will not be consistent with the
 information inside the file.  This may or may not be a
 problem in real life.
-</p><p>It has been suggested that the <code>$Log$</code>
+</p><p>It has been suggested that the <code>$<i></i>Log$</code>
 keyword should be inserted <em>last</em> in the file, and
 not in the files header, if it is to be used at all.
 That way the long list of change messages will not
@@ -418,7 +582,7 @@ interfere with everyday source file browsing.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_13.html#SEC104" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_13.html#SEC105" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -426,7 +590,7 @@ interfere with everyday source file browsing.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 9. Handling binary files</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 9. Handling binary files</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 9. Handling binary files">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 9. Handling binary files">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 9. Handling binary files">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 9. Handling binary files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -39,7 +39,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 9. Handling binary files </h1>
@@ -74,7 +74,7 @@ including both text files and binary images.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 9.1 The issues with binary files </h2>
@@ -138,7 +138,7 @@ resulting from branches, restrict use of branches.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 9.2 How to store binary files </h2>
@@ -159,7 +159,7 @@ nor keyword expansion will be done.
 </p><p>Here is an example of how you can create a new file
 using the `<samp>-kb</samp>' flag:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
-$ echo '$Id$' &gt; kotest
+$ echo '$<i></i>Id$' &gt; kotest
 $ cvs add -kb -m&quot;A test file&quot; kotest
 $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 </pre></td></tr></table>
@@ -167,7 +167,7 @@ $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 one can use the <code>cvs admin</code> command to recover.
 For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
-$ echo '$Id$' &gt; kotest
+$ echo '$<i></i>Id$' &gt; kotest
 $ cvs add -m&quot;A test file&quot; kotest
 $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 $ cvs admin -kb kotest
@@ -199,7 +199,7 @@ problem.
 </p><p>You can also set a default for whether <code>cvs add</code>
 and <code>cvs import</code> treat a file as binary based on
 its name; for example you could say that files who
-names end in `<samp>.exe</samp>' are binary.  See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
+names end in `<samp>.exe</samp>' are binary.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 There is currently no way to have <small>CVS</small> detect
 whether a file is binary based on its contents.  The
 main difficulty with designing such a feature is that
@@ -217,7 +217,7 @@ considerably with the operating system.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

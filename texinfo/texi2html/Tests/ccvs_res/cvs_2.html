@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 2. The Repository</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 2. The Repository</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 2. The Repository">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 2. The Repository">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 2. The Repository">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 2. The Repository">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -39,7 +39,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 2. The Repository </h1>
@@ -116,7 +116,7 @@ user-defined modules.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.1 Telling CVS where your repository is </h2>
@@ -177,7 +177,7 @@ should be two ways of referring to the same repository.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.2 How data is stored in the repository </h2>
@@ -220,7 +220,7 @@ the file permissions appropriate for the repository.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.1 Where files are stored within the repository </h3>
@@ -327,7 +327,7 @@ rules see <a href="cvs_4.html#SEC48">Tags--Symbolic revisions</a>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.2 File permissions </h3>
@@ -351,7 +351,7 @@ out files, because <small>CVS</small> needs to create lock files
 (see section <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>).  You can use LockDir in CVSROOT/config
 to put the lock files somewhere other than in the repository
 if you want to allow read-only access to some directories
-(see section <a href="cvs_18.html#SEC179">The CVSROOT/config configuration file</a>).
+(see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p><p>Also note that users must have write access to the
 `<tt>CVSROOT/val-tags</tt>' file.  <small>CVS</small> uses it to keep
 track of what tags are valid tag names (it is sometimes
@@ -374,7 +374,7 @@ not affect the file permissions in the working
 directory; such files have the permissions which are
 typical for newly created files, except that sometimes
 <small>CVS</small> creates them read-only (see the sections on
-watches, <a href="cvs_10.html#SEC90">Telling CVS to watch certain files</a>; -r, <a href="cvs_16.html#SEC117">Global options</a>; or <code>CVSREAD</code>, <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>).
+watches, <a href="cvs_10.html#SEC90">Telling CVS to watch certain files</a>; -r, <a href="cvs_16.html#SEC118">Global options</a>; or <code>CVSREAD</code>, <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).
 </p><p>Note that using the client/server <small>CVS</small>
 (see section <a href="#SEC26">Remote repositories</a>), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
@@ -425,7 +425,7 @@ carefully if you are considering this option
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.3 File Permission issues specific to Windows </h3>
@@ -445,7 +445,7 @@ implications of enabling that option, nor do I know
 whether there is something which <small>CVS</small> could be doing
 differently in order to avoid the problem.  If you find
 something out, please let us know as described in
-<a href="cvs_23.html#SEC187">Dealing with bugs in CVS or this manual</a>.
+<a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
 </p><hr size="6">
 <a name="NOD16"></a>
 <a name="SEC15"></a>
@@ -462,7 +462,7 @@ something out, please let us know as described in
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.4 The attic </h3>
@@ -508,7 +508,7 @@ non-<code>dead</code> state.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.5 The CVS directory in the repository </h3>
@@ -605,7 +605,7 @@ there must be a single tab character there and no spaces.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.6 CVS locks in the repository </h3>
@@ -614,7 +614,7 @@ there must be a single tab character there and no spaces.
 user-visible behavior, see <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>.  The
 following section is aimed at people who are writing
 tools which want to access a <small>CVS</small> repository without
-interfering with other tools acessing the same
+interfering with other tools accessing the same
 repository.  If you find yourself confused by concepts
 described here, like <em>read lock</em>, <em>write lock</em>,
 and <em>deadlock</em>, you might consult the literature on
@@ -689,7 +689,7 @@ further discussion/rationale.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.2.7 How files are stored in the CVSROOT directory </h3>
@@ -713,10 +713,10 @@ cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
 <p>and update the checked out copy in
 `<tt>$CVSROOT/CVSROOT</tt>'.  If it does not, there is
-something wrong (see section <a href="cvs_23.html#SEC187">Dealing with bugs in CVS or this manual</a>).  To add your own files
+something wrong (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).  To add your own files
 to the files to be updated in this fashion, you can add
 them to the `<tt>checkoutlist</tt>' administrative file
-(see section <a href="cvs_18.html#SEC176">The checkoutlist file</a>).
+(see section <a href="cvs_18.html#SEC177">The checkoutlist file</a>).
 </p><a name="IDX30"></a>
 <a name="IDX31"></a>
 <a name="IDX32"></a>
@@ -733,7 +733,7 @@ db or GDBM.  If this option is in use, then the modules
 database will be stored in the files `<tt>modules.db</tt>',
 `<tt>modules.pag</tt>', and/or `<tt>modules.dir</tt>'.
 </p><p>For information on the meaning of the various
-administrative files, see <a href="cvs_18.html#SEC156">Reference manual for Administrative files</a>.
+administrative files, see <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>.
 </p><hr size="6">
 <a name="NOD20"></a>
 <a name="SEC19"></a>
@@ -750,7 +750,7 @@ administrative files, see <a href="cvs_18.html#SEC156">Reference manual for Admi
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.3 How data is stored in the working directory </h2>
@@ -965,22 +965,6 @@ individual files.  For general information on sticky
 tags and dates, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 </p><a name="IDX49"></a>
 <a name="IDX50"></a>
-<a name="IDX51"></a>
-<a name="IDX52"></a>
-<a name="IDX53"></a>
-<a name="IDX54"></a>
-<a name="IDX55"></a>
-<a name="IDX56"></a>
-</dd>
-<dt>`<tt> Checkin.prog
-</tt>'</dt>
-<dt>`<tt> Update.prog
-</tt>'</dt>
-<dd><p>These files store the programs specified by the
-`<samp>-i</samp>' and `<samp>-u</samp>' options in the modules file,
-respectively.  See <a href="cvs_18.html#SEC162">Module options</a> for more.
-</p><a name="IDX57"></a>
-<a name="IDX58"></a>
 </dd>
 <dt>`<tt> Notify
 </tt>'</dt>
@@ -988,8 +972,8 @@ respectively.  See <a href="cvs_18.html#SEC162">Module options</a> for more.
 <code>edit</code> or <code>unedit</code>) which have not yet been
 sent to the server.  Its format is not yet documented
 here.
-</p><a name="IDX59"></a>
-<a name="IDX60"></a>
+</p><a name="IDX51"></a>
+<a name="IDX52"></a>
 </dd>
 <dt>`<tt> Notify.tmp
 </tt>'</dt>
@@ -998,8 +982,8 @@ is to `<tt>Entries</tt>'.  That is, to write `<tt>Notify</tt>',
 first write the new contents to `<tt>Notify.tmp</tt>' and
 then (atomically where possible), rename it to
 `<tt>Notify</tt>'.
-</p><a name="IDX61"></a>
-<a name="IDX62"></a>
+</p><a name="IDX53"></a>
+<a name="IDX54"></a>
 </dd>
 <dt>`<tt> Base
 </tt>'</dt>
@@ -1008,8 +992,8 @@ stores the original copy of the file in the `<tt>Base</tt>'
 directory.  This allows the <code>unedit</code> command to
 operate even if it is unable to communicate with the
 server.
-</p><a name="IDX63"></a>
-<a name="IDX64"></a>
+</p><a name="IDX55"></a>
+<a name="IDX56"></a>
 </dd>
 <dt>`<tt> Baserev
 </tt>'</dt>
@@ -1020,8 +1004,8 @@ B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </pre></td></tr></table>
 <p>where <var>expansion</var> should be ignored, to allow for
 future expansion.
-</p><a name="IDX65"></a>
-<a name="IDX66"></a>
+</p><a name="IDX57"></a>
+<a name="IDX58"></a>
 </dd>
 <dt>`<tt> Baserev.tmp
 </tt>'</dt>
@@ -1030,13 +1014,13 @@ is to `<tt>Entries</tt>'.  That is, to write `<tt>Baserev</tt>',
 first write the new contents to `<tt>Baserev.tmp</tt>' and
 then (atomically where possible), rename it to
 `<tt>Baserev</tt>'.
-</p><a name="IDX67"></a>
-<a name="IDX68"></a>
+</p><a name="IDX59"></a>
+<a name="IDX60"></a>
 </dd>
 <dt>`<tt> Template
 </tt>'</dt>
 <dd><p>This file contains the template specified by the
-`<tt>rcsinfo</tt>' file (see section <a href="cvs_18.html#SEC174">Rcsinfo</a>).  It is only used
+`<tt>rcsinfo</tt>' file (see section <a href="cvs_18.html#SEC175">Rcsinfo</a>).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
 `<tt>rcsinfo</tt>' directly.
 </p></dd>
@@ -1058,13 +1042,13 @@ by the client; the non-client/server <small>CVS</small> consults
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.4 The administrative files </h2>
 
 <p>The directory `<tt>$CVSROOT/CVSROOT</tt>' contains some <em>administrative
-files</em>.  See section <a href="cvs_18.html#SEC156">Reference manual for Administrative files</a>, for a complete description.
+files</em>.  See section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>, for a complete description.
 You can use <small>CVS</small> without any of these files, but
 some commands work better when at least the
 `<tt>modules</tt>' file is properly set up.
@@ -1087,7 +1071,7 @@ resides.  The directory is a path relative to
 above are examples of such lines.
 </p><p>The line that defines the module called `<samp>modules</samp>'
 uses features that are not explained here.
-See section <a href="cvs_18.html#SEC157">The modules file</a>, for a full explanation of all the
+See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full explanation of all the
 available features.
 </p><hr size="6">
 <a name="SEC21"></a>
@@ -1104,7 +1088,7 @@ available features.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.4.1 Editing administrative files </h3>
@@ -1133,7 +1117,7 @@ revisions.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.5 Multiple repositories </h2>
@@ -1185,7 +1169,7 @@ and server1, to update everything else.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.6 Creating a repository </h2>
@@ -1216,7 +1200,7 @@ it other than via the <small>CVS</small> protocol.  It is not
 possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
 able to create lock files (see section <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>).
-</p><a name="IDX69"></a>
+</p><a name="IDX61"></a>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
@@ -1230,7 +1214,7 @@ you run <code>cvs init</code> on an already set-up
 repository.
 </p><p><code>cvs init</code> will enable history logging; if you
 don't want that, remove the history file after running
-<code>cvs init</code>.  See section <a href="cvs_18.html#SEC177">The history file</a>.
+<code>cvs init</code>.  See section <a href="cvs_18.html#SEC178">The history file</a>.
 </p><hr size="6">
 <a name="NOD24"></a>
 <a name="SEC24"></a>
@@ -1247,7 +1231,7 @@ don't want that, remove the history file after running
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.7 Backing up a repository </h2>
@@ -1256,8 +1240,8 @@ don't want that, remove the history file after running
 in the repository; for the most part it is possible to
 back them up just like any other files.  However, there
 are a few issues to consider.
-</p><a name="IDX70"></a>
-<a name="IDX71"></a>
+</p><a name="IDX62"></a>
+<a name="IDX63"></a>
 <p>The first is that to be paranoid, one should either not
 use <small>CVS</small> during the backup, or have the backup
 program lock <small>CVS</small> while doing the backup.  To not
@@ -1312,7 +1296,7 @@ the changes into the repository.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.8 Moving a repository </h2>
@@ -1352,7 +1336,7 @@ isn't worth it.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.9 Remote repositories </h2>
@@ -1406,7 +1390,7 @@ described in <a href="#SEC28">Connecting with rsh</a>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.1 Server requirements </h3>
@@ -1421,7 +1405,7 @@ should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
-<a href="cvs_23.html#SEC187">Dealing with bugs in CVS or this manual</a>, so we can update this documentation).
+<a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>, so we can update this documentation).
 </p><p>The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server
 consists of two processes for each client that it is
@@ -1473,7 +1457,7 @@ trouble.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.2 Connecting with rsh </h3>
@@ -1496,7 +1480,7 @@ toe.example.com  mozart
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 rsh -l bach faun.example.org 'echo $PATH'
 </pre></td></tr></table>
-<a name="IDX72"></a>
+<a name="IDX64"></a>
 <p>Next you have to make sure that <code>rsh</code> will be able
 to find the server.  Make sure that the path which
 <code>rsh</code> printed in the above example includes the
@@ -1509,11 +1493,11 @@ machine to the filename of the server you want to use,
 for example `<tt>/usr/local/bin/cvs-1.6</tt>'.
 </p><p>There is no need to edit `<tt>inetd.conf</tt>' or start a
 <small>CVS</small> server daemon.
-</p><a name="IDX73"></a>
-<a name="IDX74"></a>
-<a name="IDX75"></a>
-<a name="IDX76"></a>
-<a name="IDX77"></a>
+</p><a name="IDX65"></a>
+<a name="IDX66"></a>
+<a name="IDX67"></a>
+<a name="IDX68"></a>
+<a name="IDX69"></a>
 <p>There are two access methods that you use in <code>CVSROOT</code>
 for rsh.  <code>:server:</code> specifies an internal rsh
 client, which is supported only by some <small>CVS</small> ports.
@@ -1561,7 +1545,7 @@ the same on both the local and remote hosts.)
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.3 Direct connection with password authentication </h3>
@@ -1596,7 +1580,7 @@ some adjustments on both the server and client sides.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> 2.9.3.1 Setting up the server for password authentication </h4>
@@ -1604,18 +1588,18 @@ some adjustments on both the server and client sides.
 <p>First of all, you probably want to tighten the
 permissions on the `<tt>$CVSROOT</tt>' and
 `<tt>$CVSROOT/CVSROOT</tt>' directories.  See <a href="#SEC32">Security considerations with password authentication</a>, for more details.
-</p><a name="IDX78"></a>
+</p><a name="IDX70"></a>
+<a name="IDX71"></a>
+<a name="IDX72"></a>
+<a name="IDX73"></a>
+<a name="IDX74"></a>
+<a name="IDX75"></a>
+<a name="IDX76"></a>
+<a name="IDX77"></a>
+<a name="IDX78"></a>
 <a name="IDX79"></a>
 <a name="IDX80"></a>
 <a name="IDX81"></a>
-<a name="IDX82"></a>
-<a name="IDX83"></a>
-<a name="IDX84"></a>
-<a name="IDX85"></a>
-<a name="IDX86"></a>
-<a name="IDX87"></a>
-<a name="IDX88"></a>
-<a name="IDX89"></a>
 <p>On the server side, the file `<tt>/etc/inetd.conf</tt>'
 needs to be edited so <code>inetd</code> knows to run the
 command <code>cvs pserver</code> when it receives a
@@ -1624,7 +1608,7 @@ number is 2401; it would be different if your client
 were compiled with <code>CVS_AUTH_PORT</code> defined to
 something else, though.  This can also be specified in the CVSROOT variable
 (see section <a href="#SEC26">Remote repositories</a>) or overridden with the CVS_CLIENT_PORT
-environment variable (see section <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>).
+environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).
 </p><p>        If your <code>inetd</code> allows raw port numbers in
 `<tt>/etc/inetd.conf</tt>', then the following (all on a
 single line in `<tt>inetd.conf</tt>') should be sufficient:
@@ -1673,9 +1657,9 @@ the <code>port</code> line.)
 <code>inetd</code>, or do whatever is necessary to force it
 to reread its initialization files.
 </p><p>If you are having trouble setting this up, see
-<a href="cvs_21.html#SEC184">Trouble making a connection to a CVS server</a>.
-</p><a name="IDX90"></a>
-<a name="IDX91"></a>
+<a href="cvs_21.html#SEC185">Trouble making a connection to a CVS server</a>.
+</p><a name="IDX82"></a>
+<a name="IDX83"></a>
 <p>Because the client stores and transmits passwords in
 cleartext (almost--see <a href="#SEC32">Security considerations with password authentication</a>, for details), a separate <small>CVS</small> password
 file is generally used, so people don't compromise
@@ -1708,7 +1692,7 @@ information on how to do the &quot;read-only&quot; part, see
 </p><p>The second and third lines will grant access to
 <code>bach</code> and <code>spwang</code> if they supply their
 respective plaintext passwords.
-</p><a name="IDX92"></a>
+</p><a name="IDX84"></a>
 <p>The fourth line will grant access to <code>melissa</code>, if
 she supplies the correct password, but her <small>CVS</small>
 operations will actually run on the server side under
@@ -1765,7 +1749,7 @@ does not exist, then the server can try to authenticate
 the username and password using the operating system's
 user-lookup routines (this &quot;fallback&quot; behavior can be
 disabled by setting <code>SystemAuth=no</code> in the
-<small>CVS</small> `<tt>config</tt>' file, see section <a href="cvs_18.html#SEC179">The CVSROOT/config configuration file</a>).  Be
+<small>CVS</small> `<tt>config</tt>' file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).  Be
 aware, however, that falling back to system
 authentication might be a security risk: <small>CVS</small>
 operations would then be authenticated with that user's
@@ -1781,7 +1765,7 @@ rather than via <small>CVS</small>.  This is because of the
 possible security risks of having the `<tt>passwd</tt>'
 file checked out to people's working copies.  If you do
 want to include the `<tt>passwd</tt>' file in checkouts of
-`<tt>$CVSROOT/CVSROOT</tt>', see <a href="cvs_18.html#SEC176">The checkoutlist file</a>.
+`<tt>$CVSROOT/CVSROOT</tt>', see <a href="cvs_18.html#SEC177">The checkoutlist file</a>.
 </p><hr size="6">
 <a name="NOD31"></a>
 <a name="SEC31"></a>
@@ -1798,7 +1782,7 @@ want to include the `<tt>passwd</tt>' file in checkouts of
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> 2.9.3.2 Using the client with password authentication </h4>
@@ -1845,7 +1829,7 @@ cleartext--they are trivially encoded to protect them
 from &quot;innocent&quot; compromise (i.e., inadvertent viewing
 by a system administrator or other non-malicious
 person).
-</p><a name="IDX93"></a>
+</p><a name="IDX85"></a>
 <p>You can change the default location of this file by
 setting the <code>CVS_PASSFILE</code> environment variable.
 If you use this variable, make sure you set it
@@ -1871,7 +1855,7 @@ are running <small>CVS</small> commands from within it, there is
 no longer any need to specify the repository
 explicitly, because <small>CVS</small> can deduce the repository
 from the working copy's `<tt>CVS</tt>' subdirectory.
-</p><a name="IDX94"></a>
+</p><a name="IDX86"></a>
 <p>The password for a given remote repository can be
 removed from the <code>CVS_PASSFILE</code> by using the
 <code>cvs logout</code> command.
@@ -1891,7 +1875,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h4> 2.9.3.3 Security considerations with password authentication </h4>
@@ -1945,7 +1929,7 @@ security, get Kerberos.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.4 Direct connection with GSSAPI </h3>
@@ -1978,7 +1962,7 @@ will probably want to disable the ability to
 authenticate via cleartext passwords.  To do so, create
 an empty `<tt>CVSROOT/passwd</tt>' password file, and set
 <code>SystemAuth=no</code> in the config file
-(see section <a href="cvs_18.html#SEC179">The CVSROOT/config configuration file</a>).
+(see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p><p>The GSSAPI server uses a principal name of
 cvs/<var>hostname</var>, where <var>hostname</var> is the
 canonical name of the server host.  You will have to
@@ -2004,7 +1988,7 @@ cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.5 Direct connection with kerberos </h3>
@@ -2030,14 +2014,14 @@ the client and server; use the
 `<tt>--enable-encryption</tt>' configure option to turn it
 on.  You must then use the <code>-x</code> global option to
 request encryption.
-</p><a name="IDX95"></a>
+</p><a name="IDX87"></a>
 <p>You need to edit `<tt>inetd.conf</tt>' on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
 specify it in the <code>CVSROOT</code> (see section <a href="#SEC26">Remote repositories</a>)
 or the <code>CVS_CLIENT_PORT</code> environment variable
-(see section <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>) on the client.
-</p><a name="IDX96"></a>
+(see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>) on the client.
+</p><a name="IDX88"></a>
 <p>When you want to use <small>CVS</small>, get a ticket in the
 usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
@@ -2063,7 +2047,7 @@ connection via rsh; this version will not do so.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 2.9.6 Connecting with fork </h3>
@@ -2089,7 +2073,7 @@ repository.  For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 cvs -d :fork:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
-<a name="IDX97"></a>
+<a name="IDX89"></a>
 <p>As with <code>:ext:</code>, the server is called `<samp>cvs</samp>'
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
@@ -2109,7 +2093,7 @@ environment variable.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.10 Read-only repository access </h2>
@@ -2197,7 +2181,7 @@ read-only access.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 2.11 Temporary directories for the server </h2>
@@ -2210,8 +2194,8 @@ cvs-serv<var>pid</var>
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the `<samp>-T</samp>' global option (see section <a href="cvs_16.html#SEC117">Global options</a>), 
-the <code>TMPDIR</code> environment variable (see section <a href="cvs_19.html#SEC180">All environment variables which affect CVS</a>), 
+the `<samp>-T</samp>' global option (see section <a href="cvs_16.html#SEC118">Global options</a>), 
+the <code>TMPDIR</code> environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>), 
 or, failing that, `<tt>/tmp</tt>'.
 </p><p>In most cases the server will remove the temporary
 directory when it is done, whether it finishes normally
@@ -2245,7 +2229,7 @@ number <var>pid</var>, it is safe to do so.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

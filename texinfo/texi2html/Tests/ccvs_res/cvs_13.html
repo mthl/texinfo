@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 13. Tracking third-party sources</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 13. Tracking third-party sources</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 13. Tracking third-party sources">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 13. Tracking third-party sources">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 13. Tracking third-party sources">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 13. Tracking third-party sources">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -24,22 +24,22 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD104"></a>
-<a name="SEC104"></a>
+<a name="NOD105"></a>
+<a name="SEC105"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_12.html#SEC103" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC105" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_12.html#SEC104" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC106" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs_12.html#SEC98" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 13. Tracking third-party sources </h1>
@@ -48,9 +48,9 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 probably want to include your modifications when the next
 release of the program arrives.  <small>CVS</small> can help you with
 this task.
-</p><a name="IDX203"></a>
-<a name="IDX204"></a>
-<a name="IDX205"></a>
+</p><a name="IDX197"></a>
+<a name="IDX198"></a>
+<a name="IDX199"></a>
 <p>In the terminology used in <small>CVS</small>, the supplier of the
 program is called a <em>vendor</em>.  The unmodified
 distribution from the vendor is checked in on its own
@@ -69,31 +69,31 @@ placed on the main trunk, and made the `head'
 revision.
 </p><table border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC105">13.1 Importing for the first time</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC106">13.2 Updating with the import command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC107">13.3 Reverting to the latest vendor release</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC108">13.4 How to handle binary files with cvs import</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Binary files require special handling</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC109">13.5 How to handle keyword substitution with cvs import</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keyword substitution might be undesirable</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC110">13.6 Multiple vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What if you get sources from several places?</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC106">13.1 Importing for the first time</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC107">13.2 Updating with the import command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC108">13.3 Reverting to the latest vendor release</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC109">13.4 How to handle binary files with cvs import</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Binary files require special handling</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC110">13.5 How to handle keyword substitution with cvs import</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keyword substitution might be undesirable</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC111">13.6 Multiple vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What if you get sources from several places?</td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD105"></a>
-<a name="SEC105"></a>
+<a name="NOD106"></a>
+<a name="SEC106"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC104" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC106" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC105" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC107" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 13.1 Importing for the first time </h2>
@@ -104,7 +104,7 @@ command to track third-party sources, the <em>vendor
 tag</em> and <em>release tags</em> are useful.  The
 <em>vendor tag</em> is a symbolic name for the branch
 (which is always 1.1.1, unless you use the `<samp>-b
-<var>branch</var></samp>' flag--see <a href="#SEC110">Multiple vendor branches</a>.).  The
+<var>branch</var></samp>' flag--see <a href="#SEC111">Multiple vendor branches</a>.).  The
 <em>release tags</em> are symbolic names for a particular
 release, such as `<samp>FSF_0_04</samp>'.
 </p><p>Note that <code>import</code> does <em>not</em> change the
@@ -113,7 +113,7 @@ does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
-</p><a name="IDX206"></a>
+</p><a name="IDX200"></a>
 <p>Suppose you have the sources to a program called
 <code>wdiff</code> in a directory `<tt>wdiff-0.04</tt>',
 and are going to make private modifications that you
@@ -128,22 +128,22 @@ $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 example, and the only release tag assigned is
 `<samp>WDIFF_0_04</samp>'.
 </p><hr size="6">
-<a name="NOD106"></a>
-<a name="SEC106"></a>
+<a name="NOD107"></a>
+<a name="SEC107"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC105" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC107" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC106" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC108" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 13.2 Updating with the import command </h2>
@@ -181,22 +181,22 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn't tell you to.
 </p><hr size="6">
-<a name="NOD107"></a>
-<a name="SEC107"></a>
+<a name="NOD108"></a>
+<a name="SEC108"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC106" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC108" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC107" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC109" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 13.3 Reverting to the latest vendor release </h2>
@@ -213,30 +213,7 @@ $ cd ~/work.d/wdiff
 $ cvs admin -bWDIFF .
 </pre></td></tr></table>
 <p>You must specify the `<samp>-bWDIFF</samp>' without any space
-after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC120">admin options</a>.
-</p><hr size="6">
-<a name="NOD108"></a>
-<a name="SEC108"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC107" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC109" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h2> 13.4 How to handle binary files with cvs import </h2>
-
-<p>Use the `<samp>-k</samp>' wrapper option to tell import which
-files are binary.  See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
+after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC121">admin options</a>.
 </p><hr size="6">
 <a name="NOD109"></a>
 <a name="SEC109"></a>
@@ -244,16 +221,39 @@ files are binary.  See section <a href="cvs_18.html#SEC164">The cvswrappers file
 <tr><td valign="middle" align="left">[<a href="#SEC108" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC110" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2> 13.4 How to handle binary files with cvs import </h2>
+
+<p>Use the `<samp>-k</samp>' wrapper option to tell import which
+files are binary.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
+</p><hr size="6">
+<a name="NOD110"></a>
+<a name="SEC110"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC109" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC111" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 13.5 How to handle keyword substitution with cvs import </h2>
@@ -278,22 +278,22 @@ selective you'll have to think about what you want
 and use the `<samp>-k</samp>' option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 </p><hr size="6">
-<a name="NOD110"></a>
-<a name="SEC110"></a>
+<a name="NOD111"></a>
+<a name="SEC111"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC109" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC110" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC105" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 13.6 Multiple vendor branches </h2>
@@ -335,8 +335,8 @@ discover such a use, don't.  <small>CVS</small> is likely to make this
 an error in some future release.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_14.html#SEC111" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -344,7 +344,7 @@ an error in some future release.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS---Concurrent Versions System v1.12.0.1: 10. Multiple developers</title>
+<title>CVS---Concurrent Versions System v1.12.1.1: 10. Multiple developers</title>
 
-<meta name="description" content="CVS---Concurrent Versions System v1.12.0.1: 10. Multiple developers">
-<meta name="keywords" content="CVS---Concurrent Versions System v1.12.0.1: 10. Multiple developers">
+<meta name="description" content="CVS---Concurrent Versions System v1.12.1.1: 10. Multiple developers">
+<meta name="keywords" content="CVS---Concurrent Versions System v1.12.1.1: 10. Multiple developers">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -39,7 +39,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 10. Multiple developers </h1>
@@ -52,7 +52,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see section <a href="cvs_16.html#SEC120">admin options</a>).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see section <a href="cvs_16.html#SEC121">admin options</a>).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -103,7 +103,7 @@ choosing between them.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.1 File status </h2>
@@ -115,7 +115,7 @@ classify a file in a number of states.  The states, as
 reported by the <code>status</code> command, are:
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX144"></a>
+<a name="IDX136"></a>
 </p></dd>
 <dt> Up-to-date
 </dt>
@@ -124,24 +124,24 @@ repository for the branch in use.
 </p></dd>
 <dt> Locally Modified
 </dt>
-<dd><p><a name="IDX145"></a>
+<dd><p><a name="IDX137"></a>
 You have edited the file, and not yet committed your changes.
 </p></dd>
 <dt> Locally Added
 </dt>
-<dd><p><a name="IDX146"></a>
+<dd><p><a name="IDX138"></a>
 You have added the file with <code>add</code>, and not yet
 committed your changes.
 </p></dd>
 <dt> Locally Removed
 </dt>
-<dd><p><a name="IDX147"></a>
+<dd><p><a name="IDX139"></a>
 You have removed the file with <code>remove</code>, and not yet
 committed your changes.
 </p></dd>
 <dt> Needs Checkout
 </dt>
-<dd><p><a name="IDX148"></a>
+<dd><p><a name="IDX140"></a>
 Someone else has committed a newer revision to the
 repository.  The name is slightly misleading; you will
 ordinarily use <code>update</code> rather than
@@ -149,27 +149,27 @@ ordinarily use <code>update</code> rather than
 </p></dd>
 <dt> Needs Patch
 </dt>
-<dd><p><a name="IDX149"></a>
+<dd><p><a name="IDX141"></a>
 Like Needs Checkout, but the <small>CVS</small> server will send
 a patch rather than the entire file.  Sending a patch or
 sending an entire file accomplishes the same thing.
 </p></dd>
 <dt> Needs Merge
 </dt>
-<dd><p><a name="IDX150"></a>
+<dd><p><a name="IDX142"></a>
 Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
 </p></dd>
 <dt> Unresolved Conflict
 </dt>
-<dd><p><a name="IDX151"></a>
+<dd><p><a name="IDX143"></a>
 A file with the same name as this new file has been added to the repository
 from a second workspace.  This file will need to be moved out of the way
 to allow an <code>update</code> to complete.
 </p></dd>
 <dt> File had conflicts on merge
 </dt>
-<dd><p><a name="IDX152"></a>
+<dd><p><a name="IDX144"></a>
 This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
@@ -177,7 +177,7 @@ resolve the conflict as described in <a href="#SEC86">Conflicts example</a>.
 </p></dd>
 <dt> Unknown
 </dt>
-<dd><p><a name="IDX153"></a>
+<dd><p><a name="IDX145"></a>
 <small>CVS</small> doesn't know anything about this file.  For
 example, you have created a new file and have not run
 <code>add</code>.
@@ -191,10 +191,10 @@ from, and the <code>Repository revision</code> which is the
 latest revision in the repository for the branch in
 use.
 </p><p>The options to <code>status</code> are listed in
-<a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
+<a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
 and <code>Sticky date</code> output, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 For information on its <code>Sticky options</code> output,
-see the `<samp>-k</samp>' option in <a href="cvs_16.html#SEC153">update options</a>.
+see the `<samp>-k</samp>' option in <a href="cvs_16.html#SEC154">update options</a>.
 </p><p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
 <code>update</code> to bring your files up to date, and you
@@ -204,7 +204,7 @@ repository might change before you actually run
 <code>update</code>).  In fact, if you want a command to
 display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
-</p><a name="IDX154"></a>
+</p><a name="IDX146"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
 $ cvs -n -q update
 </pre></td></tr></table>
@@ -212,7 +212,7 @@ $ cvs -n -q update
 update, but merely to display statuses; the `<samp>-q</samp>'
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see <a href="cvs_17.html#SEC155">Quick reference to CVS commands</a>.
+these options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
 </p><hr size="6">
 <a name="NOD85"></a>
 <a name="SEC85"></a>
@@ -229,7 +229,7 @@ these options, see <a href="cvs_17.html#SEC155">Quick reference to CVS commands<
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.2 Bringing a file up to date </h2>
@@ -248,14 +248,14 @@ editing it.  In the meantime someone else committed revision 1.5, and
 shortly after that revision 1.6.  If you run <code>update</code> on the file
 now, <small>CVS</small> will incorporate all changes between revision 1.4 and 1.6 into
 your file.
-</p><a name="IDX155"></a>
+</p><a name="IDX147"></a>
 <p>If any of the changes between 1.4 and 1.6 were made too
 close to any of the changes you have made, an
 <em>overlap</em> occurs.  In such cases a warning is
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See section <a href="cvs_16.html#SEC152">update--Bring work tree in sync with repository</a>, for a complete description of the
+See section <a href="cvs_16.html#SEC153">update--Bring work tree in sync with repository</a>, for a complete description of the
 <code>update</code> command.
 </p><hr size="6">
 <a name="NOD86"></a>
@@ -273,7 +273,7 @@ See section <a href="cvs_16.html#SEC152">update--Bring work tree in sync with re
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.3 Conflicts example </h2>
@@ -340,7 +340,7 @@ rcsmerge warning: overlaps during merge
 cvs update: conflicts found in driver.c
 C driver.c
 </pre></td></tr></table>
-<a name="IDX156"></a>
+<a name="IDX148"></a>
 <p><small>CVS</small> tells you that there were some conflicts.
 Your original working file is saved unmodified in
 `<tt>.#driver.c.1.4</tt>'.  The new version of
@@ -370,16 +370,16 @@ int main(int argc,
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
 }
 </pre></td></tr></table>
-<a name="IDX157"></a>
-<a name="IDX158"></a>
-<a name="IDX159"></a>
-<a name="IDX160"></a>
-<a name="IDX161"></a>
+<a name="IDX149"></a>
+<a name="IDX150"></a>
+<a name="IDX151"></a>
+<a name="IDX152"></a>
+<a name="IDX153"></a>
 <p>Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
 `<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>', `<samp>=======</samp>' and `<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>'.
-</p><a name="IDX162"></a>
-<a name="IDX163"></a>
+</p><a name="IDX154"></a>
+<a name="IDX155"></a>
 <p>You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
@@ -423,7 +423,7 @@ is, occurrences of `<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>' at the start of 
 line that don't mark a conflict), the current
 version of <small>CVS</small> will print a warning and proceed to
 check in the file.
-</p><a name="IDX164"></a>
+</p><a name="IDX156"></a>
 <p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
 Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
@@ -444,7 +444,7 @@ See the documentation for pcl-cvs.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.4 Informing others about commits </h2>
@@ -452,8 +452,8 @@ See the documentation for pcl-cvs.
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The `<samp>-i</samp>' option of the
 `<tt>modules</tt>' file, or the `<tt>loginfo</tt>' file, can be
-used to automate this process.  See section <a href="cvs_18.html#SEC157">The modules file</a>.
-See section <a href="cvs_18.html#SEC171">Loginfo</a>.  You can use these features of <small>CVS</small>
+used to automate this process.  See section <a href="cvs_18.html#SEC158">The modules file</a>.
+See section <a href="cvs_18.html#SEC172">Loginfo</a>.  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
@@ -473,7 +473,7 @@ newsgroup.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.5 Several developers simultaneously attempting to run CVS </h2>
@@ -483,9 +483,9 @@ time, one may get the following message:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 [11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
 </pre></td></tr></table>
-<a name="IDX165"></a>
-<a name="IDX166"></a>
-<a name="IDX167"></a>
+<a name="IDX157"></a>
+<a name="IDX158"></a>
+<a name="IDX159"></a>
 <p><small>CVS</small> will try again every 30 seconds, and either
 continue with the operation or print the message again,
 if it still needs to wait.  If a lock seems to stick
@@ -504,8 +504,8 @@ the word <em>lock</em> in the sense used by
 </p><p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
 the locks prevent other people from reading or writing.
-</p><a name="IDX168"></a>
-<a name="IDX169"></a>
+</p><a name="IDX160"></a>
+<a name="IDX161"></a>
 <p>One might hope for the following property:
 </p><blockquote>
 
@@ -546,7 +546,7 @@ the change to `<tt>b/three.c</tt>' and not the change to
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.6 Mechanisms to track who is editing files </h2>
@@ -593,19 +593,19 @@ but <small>CVS</small> is not able to enforce this behavior.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 10.6.1 Telling CVS to watch certain files </h3>
 
 <p>To enable the watch features, you first specify that
 certain files are to be watched.
-</p><a name="IDX170"></a>
+</p><a name="IDX162"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs watch on</b> [<code>-lR</code>] [<var>files</var>]<small>...</small>
-<a name="IDX171"></a>
+<a name="IDX163"></a>
 </dt>
-<dd><a name="IDX172"></a>
+<dd><a name="IDX164"></a>
 <p>Specify that developers should run <code>cvs edit</code>
 before editing <var>files</var>.  <small>CVS</small> will create working
 copies of <var>files</var> read-only, to remind developers
@@ -619,14 +619,14 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in `<tt>~/.cvsrc</tt>' (see section <a href="cvs_16.html#SEC116">Default options and the ~/.cvsrc file</a>).
+option is set in `<tt>~/.cvsrc</tt>' (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
 </p><p>If <var>files</var> is omitted, it defaults to the current directory.
-</p><a name="IDX173"></a>
+</p><a name="IDX165"></a>
 </dd></dl>
 
 <dl>
 <dt><u>Command:</u> <b>cvs watch off</b> [<code>-lR</code>] [<var>files</var>]<small>...</small>
-<a name="IDX174"></a>
+<a name="IDX166"></a>
 </dt>
 <dd><p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
@@ -651,7 +651,7 @@ watch on</code>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 10.6.2 Telling CVS to notify you </h3>
@@ -662,10 +662,10 @@ You can do this without using <code>cvs watch on</code> for
 the file, but generally you will want to use <code>cvs
 watch on</code>, to remind developers to use the <code>cvs edit</code>
 command.
-</p><a name="IDX175"></a>
+</p><a name="IDX167"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs watch add</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small>...</small> [<var>files</var>]<small>...</small>
-<a name="IDX176"></a>
+<a name="IDX168"></a>
 </dt>
 <dd><p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -689,7 +689,7 @@ They can do this in several ways, by:
 <li><p>
 applying the <code>cvs unedit</code> command (described below) to the file
 </p></li><li><p>
-applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC148">release--Indicate that a Module is no longer in use</a>) to the file's parent directory
+applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC149">release--Indicate that a Module is no longer in use</a>) to the file's parent directory
 (or recursively to a directory more than one level up)
 </p></li><li><p>
 deleting the file and allowing <code>cvs update</code> to recreate it
@@ -713,23 +713,23 @@ omitted, the action defaults to <code>all</code>.
 <code>cvs watch on</code>.
 </p></dd></dl>
 
-<a name="IDX177"></a>
+<a name="IDX169"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs watch remove</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small>...</small> [<var>files</var>]<small>...</small>
-<a name="IDX178"></a>
+<a name="IDX170"></a>
 </dt>
 <dd><p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
 watches for the specified actions are removed.
 </p></dd></dl>
 
-<a name="IDX179"></a>
+<a name="IDX171"></a>
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the `<tt>notify</tt>' administrative file.  Edit
 `<tt>notify</tt>' as one edits the other administrative
 files (see section <a href="cvs_2.html#SEC20">The administrative files</a>).  This
 file follows the usual conventions for administrative
-files (see section <a href="cvs_18.html#SEC166">The common syntax</a>), where each line is a regular
+files (see section <a href="cvs_18.html#SEC167">The common syntax</a>), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of `<samp>%s</samp>'
 which will be replaced by the user to notify; the rest
@@ -741,7 +741,7 @@ single line:
 ALL mail %s -s &quot;CVS notification&quot;
 </pre></td></tr></table>
 <p>This causes users to be notified by electronic mail.
-</p><a name="IDX180"></a>
+</p><a name="IDX172"></a>
 <p>Note that if you set this up in the straightforward
 way, users receive notifications on the server machine.
 One could of course write a `<tt>notify</tt>' script which
@@ -778,7 +778,7 @@ changing.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 10.6.3 How to edit a file which is being watched </h3>
@@ -790,10 +790,10 @@ edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
 for obtaining a copy of the sources (see section <a href="cvs_1.html#SEC5">Getting the source</a>), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
-</p><a name="IDX181"></a>
+</p><a name="IDX173"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs edit</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small>...</small> [<var>files</var>]<small>...</small>
-<a name="IDX182"></a>
+<a name="IDX174"></a>
 </dt>
 <dd><p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
@@ -813,12 +813,12 @@ changes and returns the watched files to their usual
 read-only state.  But if you instead decide to abandon
 your changes, or not to make any changes, you can use
 the <code>cvs unedit</code> command.
-</p><a name="IDX183"></a>
-<a name="IDX184"></a>
-<a name="IDX185"></a>
+</p><a name="IDX175"></a>
+<a name="IDX176"></a>
+<a name="IDX177"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs unedit</b> [<code>-lR</code>] [<var>files</var>]<small>...</small>
-<a name="IDX186"></a>
+<a name="IDX178"></a>
 </dt>
 <dd><p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
@@ -830,7 +830,7 @@ notification for any of <var>files</var>.
 </p><p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see section <a href="cvs_16.html#SEC152">update--Bring work tree in sync with repository</a>).
+(see section <a href="cvs_16.html#SEC153">update--Bring work tree in sync with repository</a>).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -858,14 +858,14 @@ successful <small>CVS</small> command.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 10.6.4 Information about who is watching and editing </h3>
 
 <dl>
 <dt><u>Command:</u> <b>cvs watchers</b> [<code>-lR</code>] [<var>files</var>]<small>...</small>
-<a name="IDX187"></a>
+<a name="IDX179"></a>
 </dt>
 <dd><p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
@@ -873,10 +873,10 @@ includes the files being watched, and the mail address of each watcher.
 <code>cvs watch</code> commands.
 </p></dd></dl>
 
-<a name="IDX188"></a>
+<a name="IDX180"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs editors</b> [<code>-lR</code>] [<var>files</var>]<small>...</small>
-<a name="IDX189"></a>
+<a name="IDX181"></a>
 </dt>
 <dd><p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
@@ -902,7 +902,7 @@ containing the file.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 10.6.5 Using watches with old versions of CVS </h3>
@@ -940,7 +940,7 @@ that will restore the repository to a state which
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 10.7 Choosing between reserved or unreserved checkouts </h2>
@@ -1003,7 +1003,7 @@ checkout worlds.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC188" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>
