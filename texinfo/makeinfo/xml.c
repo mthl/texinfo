@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.53 2005-01-17 00:25:15 karl Exp $
+   $Id: xml.c,v 1.54 2005-02-05 17:44:01 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -329,6 +329,8 @@ element docbook_element_list [] = {
   { "wordasword",          0, 1, 0 }, /* I */
   { "emphasis",            0, 1, 0 }, /* B */
   { "",                    0, 1, 0 }, /* R */
+  { "",                    0, 1, 0 }, /* SLANTED */
+  { "",                    0, 1, 0 }, /* SANSSERIF */
 
   { "",                    0, 0, 0 }, /* EXDENT */
 
@@ -635,6 +637,13 @@ xml_begin_document (char *output_filename)
       insert_string ("/texinfo.dtd\">");
       xml_element_list = texinfoml_element_list;
     }
+
+  if (strcmp (xml_element_list[PARA].name, "para"))
+    {
+      printf ("internal error: xml_element_list table inconsistent");
+      xexit (-1);
+    }
+
   if (language_code != last_language_code)
     {
       if (docbook)

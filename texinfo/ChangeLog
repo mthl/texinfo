@@ -1,5 +1,14 @@
 2005-02-05  Per Bothner  <per@bothner.com>
 
+	* makeinfo/xml.c (docbook_element_list): Add two missing entries.
+
+	* makeinfo/xml.c (xml_begin_document): Check for mipatch between
+	enum xml_element and texinfoml_element_list/docbook_element_list.
+
+	bug-texinfo-mail, 05 Feb 2005 00:13:44 -0800.
+
+2005-02-05  Per Bothner  <per@bothner.com>
+
 	* makeinfo/xref.c (cm_uref): Ulink urls in Docbook need to be
 		html-escaped.  bug-texinfo mail, 05 Feb 2005 00:57:55 -0800.
 
