@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Texinfo 4.0i\n"
-"POT-Creation-Date: 2002-10-04 08:35-0700\n"
+"POT-Creation-Date: 2002-10-15 15:02-0700\n"
 "PO-Revision-Date: 2002-02-25 23:06+01:00\n"
 "Last-Translator: Trond Endrestøl <trond@ramstind.gtf.ol.no>\n"
 "Language-Team: Norwegian-bokmål <no@li.org>\n"
@@ -229,7 +229,7 @@ msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mer informasjon.\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1249 util/texindex.c:338
+#: util/install-info.c:1250 util/texindex.c:341
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -327,7 +327,7 @@ msgstr ""
 "generelle spørsmål og diskusjoner til help-texinfo@gnu.org.\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:427 util/texindex.c:286
+#: util/install-info.c:428 util/texindex.c:289
 #, fuzzy
 msgid ""
 "\n"
@@ -1745,97 +1745,97 @@ msgstr "%s: valget «-W %s» er flertydig\n"
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: valget «-W %s» tillater ikke et argument\n"
 
-#: makeinfo/cmds.c:518
+#: makeinfo/cmds.c:521
 msgid "January"
 msgstr "januar"
 
-#: makeinfo/cmds.c:518
+#: makeinfo/cmds.c:521
 msgid "February"
 msgstr "februar"
 
-#: makeinfo/cmds.c:518
+#: makeinfo/cmds.c:521
 msgid "March"
 msgstr "mars"
 
-#: makeinfo/cmds.c:518
+#: makeinfo/cmds.c:521
 msgid "April"
 msgstr "april"
 
-#: makeinfo/cmds.c:518
+#: makeinfo/cmds.c:521
 msgid "May"
 msgstr "mai"
 
-#: makeinfo/cmds.c:519
+#: makeinfo/cmds.c:522
 msgid "June"
 msgstr "juni"
 
-#: makeinfo/cmds.c:519
+#: makeinfo/cmds.c:522
 msgid "July"
 msgstr "juli"
 
-#: makeinfo/cmds.c:519
+#: makeinfo/cmds.c:522
 msgid "August"
 msgstr "august"
 
-#: makeinfo/cmds.c:519
+#: makeinfo/cmds.c:522
 msgid "September"
 msgstr "september"
 
-#: makeinfo/cmds.c:519
+#: makeinfo/cmds.c:522
 msgid "October"
 msgstr "oktober"
 
-#: makeinfo/cmds.c:520
+#: makeinfo/cmds.c:523
 msgid "November"
 msgstr "november"
 
-#: makeinfo/cmds.c:520
+#: makeinfo/cmds.c:523
 msgid "December"
 msgstr "desember"
 
-#: makeinfo/cmds.c:661
+#: makeinfo/cmds.c:664
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "usannsynlig tegn %c i @var"
 
-#: makeinfo/cmds.c:704
+#: makeinfo/cmds.c:707
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc-argument med store bokstaver, dermed ingen effekt"
 
-#: makeinfo/cmds.c:762
+#: makeinfo/cmds.c:765
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "«{» forventet, men så «%c»"
 
-#: makeinfo/cmds.c:792
+#: makeinfo/cmds.c:795
 msgid "end of file inside verb block"
 msgstr "slutt-på-fila inne i verb-blokk"
 
-#: makeinfo/cmds.c:800
+#: makeinfo/cmds.c:803
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "«{» forventet, men så «%c»"
 
-#: makeinfo/cmds.c:945
+#: makeinfo/cmds.c:964
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s er utgått"
 
-#: makeinfo/cmds.c:1017
+#: makeinfo/cmds.c:1036
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
 
-#: makeinfo/cmds.c:1352 makeinfo/cmds.c:1378 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1371 makeinfo/cmds.c:1397 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Ugyldig argument til %c%s"
 
-#: makeinfo/cmds.c:1362 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1381 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1364 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1383 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr "none"
 
@@ -1918,7 +1918,7 @@ msgstr "Fotnoter"
 msgid "Untitled"
 msgstr "Uten navn"
 
-#: makeinfo/html.c:298
+#: makeinfo/html.c:300
 #, c-format
 msgid "Invalid node name: `%s'"
 msgstr "Ugyldig nodenavn: «%s»"
@@ -1975,65 +1975,65 @@ msgstr "bokstavoverflyt, starter på nytt ved %c"
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s krever et argument: formattereren for %citem"
 
-#: makeinfo/insertion.c:710
+#: makeinfo/insertion.c:713
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end' forventet «%s», men så «%s»"
 
-#: makeinfo/insertion.c:950
+#: makeinfo/insertion.c:953
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "Ingen tilsvarende «%cend %s»"
 
-#: makeinfo/insertion.c:1103
+#: makeinfo/insertion.c:1106
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s krever en bokstav eller et siffer"
 
-#: makeinfo/insertion.c:1183
+#: makeinfo/insertion.c:1186
 msgid "end of file inside verbatim block"
 msgstr "slutt-på-filen inne i verbatimblokk"
 
-#: makeinfo/insertion.c:1362
+#: makeinfo/insertion.c:1365
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu sett før første @node, oppretter «Top»-noden"
 
-#: makeinfo/insertion.c:1363
+#: makeinfo/insertion.c:1366
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "kanskje burde din @top-node bli pakket inn i @ifnottex istedet for @ifinfo?"
 
-#: makeinfo/insertion.c:1375
+#: makeinfo/insertion.c:1378
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu sett før første node, oppretter «Top»-noden"
 
-#: makeinfo/insertion.c:1390
+#: makeinfo/insertion.c:1393
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Umatchet «%c%s»"
 
-#: makeinfo/insertion.c:1397
+#: makeinfo/insertion.c:1400
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "«%c%s» trenger noe etter den"
 
-#: makeinfo/insertion.c:1403
+#: makeinfo/insertion.c:1406
 #, c-format
 msgid "Bad argument to `%s', `%s', using `%s'"
 msgstr "Ugyldig argument til «%s», «%s», bruker «%s»"
 
-#: makeinfo/insertion.c:1499
+#: makeinfo/insertion.c:1502
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s er meningsløs innenfor en «%s»-blokk"
 
-#: makeinfo/insertion.c:1508
+#: makeinfo/insertion.c:1511
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx er meningsløs innenfor en «%s»-blokk"
 
-#: makeinfo/insertion.c:1692
+#: makeinfo/insertion.c:1695
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s funnet utenfor en innsettingsblokk"
@@ -2698,26 +2698,26 @@ msgstr "%s: TOC burde være her, men ble ikke funnet"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image-fil «%s» er uleselig: %s"
 
-#: util/install-info.c:152
+#: util/install-info.c:153
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: advarsel: "
 
-#: util/install-info.c:177 util/install-info.c:190
+#: util/install-info.c:178 util/install-info.c:191
 msgid "virtual memory exhausted"
 msgstr "virtuelt minne uttømt"
 
-#: util/install-info.c:233
+#: util/install-info.c:234
 #, c-format
 msgid " for %s"
 msgstr " for %s"
 
-#: util/install-info.c:387
+#: util/install-info.c:388
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPrøv «%s --help» for en komplett liste over valg.\n"
 
-#: util/install-info.c:395
+#: util/install-info.c:396
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2790,7 +2790,7 @@ msgstr ""
 "Send bugrapporter til bug-texinfo@gnu.org,\n"
 "generelle spørsmål og diskusjoner til help-texinfo@gnu.org.\n"
 
-#: util/install-info.c:450
+#: util/install-info.c:451
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2826,98 +2826,98 @@ msgstr ""
 "\n"
 "* Menu:\n"
 
-#: util/install-info.c:473
+#: util/install-info.c:474
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: kunne ikke lese (%s) og kunne ikke opprette (%s)\n"
 
-#: util/install-info.c:564
+#: util/install-info.c:565
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tom fil"
 
-#: util/install-info.c:891 util/install-info.c:931
+#: util/install-info.c:892 util/install-info.c:932
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY uten tilhørende END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:926
+#: util/install-info.c:927
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY uten tilhørende START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1175 util/install-info.c:1185
+#: util/install-info.c:1176 util/install-info.c:1186
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Spesifiser infokatalogen bare en gang.\n"
 
-#: util/install-info.c:1220
+#: util/install-info.c:1221
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Spesifiser infofilen bare en gang.\n"
 
-#: util/install-info.c:1269
+#: util/install-info.c:1270
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "overflødig argument på kommandolinjen «%s»"
 
-#: util/install-info.c:1273
+#: util/install-info.c:1274
 msgid "No input file specified; try --help for more information."
 msgstr "Ingen innfil angitt; prøv --help for mer informasjon."
 
-#: util/install-info.c:1276
+#: util/install-info.c:1277
 msgid "No dir file specified; try --help for more information."
 msgstr "Ingen dir-fil angitt; prøv --help for mer informasjon."
 
-#: util/install-info.c:1298
+#: util/install-info.c:1299
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "ingen info-dir-oppføring i «%s»"
 
-#: util/install-info.c:1413
+#: util/install-info.c:1414
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "menypunktet «%s» eksisterer allerede for filen «%s»"
 
-#: util/install-info.c:1436
+#: util/install-info.c:1437
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "fant ingen oppføringer for «%s»; ingenting slettet"
 
-#: util/texindex.c:245
+#: util/texindex.c:248
 msgid "display this help and exit"
 msgstr "vise denne hjelpen og avslutte"
 
-#: util/texindex.c:247
+#: util/texindex.c:250
 msgid "keep temporary files around after processing"
 msgstr "bevar midlertidige filer etter behandling"
 
-#: util/texindex.c:249
+#: util/texindex.c:252
 msgid "do not keep temporary files around after processing (default)"
 msgstr "ikke bevar midlertidige filer etter behandling (standard)"
 
-#: util/texindex.c:251
+#: util/texindex.c:254
 msgid "send output to FILE"
 msgstr "sende utdata til FILE"
 
-#: util/texindex.c:253
+#: util/texindex.c:256
 msgid "display version information and exit"
 msgstr "vise programversjon og avslutte"
 
-#: util/texindex.c:264
+#: util/texindex.c:267
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Bruksmåte: %s [VALG]... FIL...\n"
 
-#: util/texindex.c:265
+#: util/texindex.c:268
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "Generere en sortert indeks for hver TeX-outputfil.\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:271
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr ""
 "Vanligvis er FIL... angitt som «foo.%c%c» for et dokument «foo.texi».\n"
 
-#: util/texindex.c:270
+#: util/texindex.c:273
 msgid ""
 "\n"
 "Options:\n"
@@ -2925,28 +2925,28 @@ msgstr ""
 "\n"
 "Valg:\n"
 
-#: util/texindex.c:886 util/texindex.c:920 util/texindex.c:996
-#: util/texindex.c:1024
+#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
+#: util/texindex.c:1027
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: ikke en texinfo-indeksfil"
 
-#: util/texindex.c:981
+#: util/texindex.c:984
 #, c-format
 msgid "failure reopening %s"
 msgstr "feil ved gjenåpning av %s"
 
-#: util/texindex.c:1223
+#: util/texindex.c:1226
 #, c-format
 msgid "No page number in %s"
 msgstr "Ingen sidenummer i %s"
 
-#: util/texindex.c:1294
+#: util/texindex.c:1297
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "oppføring %s følger en oppføring med et annet navn"
 
-#: util/texindex.c:1632
+#: util/texindex.c:1635
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; for filen %s.\n"

@@ -1,5 +1,7 @@
 2002-10-15    <karl@gnu.org>
 
+	* configure.ac: pretest version 4.2b.
+
 	* makeinfo/cmds.c (cm_dots, cm_enddots): don't use small if
 	in_fixed_width_fonts; this violates the html specs, which don't
 	want you to change fonts within <pre>. (Argh.) 
