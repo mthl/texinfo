@@ -1,3 +1,24 @@
+2003-11-09  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/xml.c:
+	* makeinfo/xml.h: new Docbook elements for quotation: tip, note,
+	important, warning, caution.
+
+	* makeinfo/xml.c: better font tags for Docbook.
+	(xml_insert_quotation): new function that is aware of specialized
+	Docbook elements for quotation.
+	(xml_insert_entity): use add_char() instead of insert() for correct
+	paragraph handling.
+
+	* makeinfo/insertion.c (begin_insertion, end_insertion): use
+	xml_insert_quotation() for quotations.
+	(cm_quotation): removed quotation element insertion.
+	(cm_insert_copying): also work around xml tags.
+
+	* makeinfo/cmds.c (cm_b): really use bold with Docbook.
+
+	* NEWS: @quotation changes.
+
 2003-11-08  Karl Berry  <karl@gnu.org>
 
         * doc/texinfo.txi (registeredsymbol): new node.

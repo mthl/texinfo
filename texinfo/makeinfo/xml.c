@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.24 2003-11-08 04:01:51 dirt Exp $
+   $Id: xml.c,v 1.25 2003-11-09 15:03:03 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -128,6 +128,12 @@ element texinfoml_element_list [] = {
   { "verbatim",            0, 0, 1 },
   { "footnote",            0, 1, 0 },
   { "",                    0, 1, 0 }, /* LINEANNOTATION (docbook) */
+
+  { "",                    1, 0, 0 }, /* TIP (docbook)       */
+  { "",                    1, 0, 0 }, /* NOTE (docbook)      */
+  { "",                    1, 0, 0 }, /* IMPORTANT (docbook) */
+  { "",                    1, 0, 0 }, /* WARNING (docbook)   */
+  { "",                    1, 0, 0 }, /* CAUTION (docbook)   */
 
   { "itemize",             0, 0, 0 },
   { "itemfunction",        0, 0, 0 },
@@ -262,7 +268,7 @@ element docbook_element_list [] = {
   { "anchor",              0, 0, 0 }, /* NODENAME */
 
   { "acronym",             0, 1, 0 },
-  { "wordasword",          0, 1, 0 }, /* TT */
+  { "literal",             0, 1, 0 }, /* TT */
   { "literal",             0, 1, 0 }, /* CODE */
   { "command",             0, 1, 0 }, /* COMMAND */
   { "envar",               0, 1, 0 }, /* ENV */
@@ -280,7 +286,7 @@ element docbook_element_list [] = {
   { "citation",            0, 1, 0 }, /* CITE */
   { "",                    0, 1, 0 }, /* NOTFIXEDWIDTH */
   { "wordasword",          0, 1, 0 }, /* I */
-  { "wordasword",          0, 1, 0 }, /* B */
+  { "emphasis",            0, 1, 0 }, /* B */
   { "",                    0, 1, 0 }, /* R */
 
   { "title",               0, 0, 0 },
@@ -302,6 +308,12 @@ element docbook_element_list [] = {
   { "screen",              0, 0, 0 }, /* VERBATIM */
   { "footnote",            0, 1, 0 },
   { "lineannotation",      0, 1, 0 },
+
+  { "tip",                 1, 0, 0 },
+  { "note",                1, 0, 0 },
+  { "important",           1, 0, 0 },
+  { "warning",             1, 0, 0 },
+  { "caution",             1, 0, 0 },
 
   { "itemizedlist",        0, 0, 0 }, /* ITEMIZE */
   { "",                    0, 0, 0 }, /* ITEMFUNCTION */
@@ -823,10 +835,10 @@ xml_insert_entity (char *entity_name)
     xml_start_para ();
 
   escape_html = 0;
-  insert ('&');
+  add_char ('&');
   escape_html = saved_escape_html;
   insert_string (entity_name);
-  insert (';');
+  add_char (';');
 }
 
 typedef struct _xml_section xml_section;
@@ -1093,6 +1105,60 @@ xml_insert_footnote (note)
   xml_insert_element (FOOTNOTE, END);
 }
 
+/* We need to keep the quotation stack ourself, because insertion_stack
+   loses item_function when we are closing the block, so we don't know
+   what to close then.  */
+static char *quotation_stack[] = { NULL };
+static int quotation_level = 0;
+
+void
+xml_insert_quotation (type, arg)
+  char *type;
+  int arg;
+{
+  int quotation_started = 0;
+
+  if (arg == START)
+    quotation_stack[quotation_level] = xstrdup(type);
+  else
+    type = quotation_stack[quotation_level-1];
+
+  /* Make use of special quotation styles of Docbook if we can.  */
+  if (docbook && strlen(type))
+    {
+      /* Let's assume it started.  */
+      quotation_started = 1;
+
+      if (strcasecmp (type, "tip") == 0)
+        xml_insert_element (TIP, arg);
+      else if (strcasecmp (type, "note") == 0)
+        xml_insert_element (NOTE, arg);
+      else if (strcasecmp (type, "important") == 0)
+        xml_insert_element (IMPORTANT, arg);
+      else if (strcasecmp (type, "warning") == 0)
+        xml_insert_element (WARNING, arg);
+      else if (strcasecmp (type, "caution") == 0)
+        xml_insert_element (CAUTION, arg);
+      else
+        /* Didn't find a known quotation type :\ */
+        quotation_started = 0;
+    }
+
+  if (!quotation_started)
+    {
+      xml_insert_element (QUOTATION, arg);
+      if (strlen(type) && arg == START)
+        execute_string ("@b{%s:} ", type);
+    }
+
+  if (arg == START)
+    quotation_level ++;
+  else
+    free (quotation_stack[--quotation_level]);
+
+  if (quotation_level < 0)
+    printf ("*** quotation stack underflow (%d) ***\n", quotation_level);
+}
 
 /*
  * Lists and Tables

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.33 2003-10-31 18:03:18 karl Exp $
+   $Id: insertion.c,v 1.34 2003-11-09 15:03:03 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -526,6 +526,10 @@ begin_insertion (type)
           inhibit_paragraph_indentation = 1;
         }
       current_indent += default_indentation_increment;
+      if (xml)
+        xml_insert_quotation (insertion_stack->item_function, START);
+      else if (strlen(insertion_stack->item_function))
+        execute_string ("@b{%s:} ", insertion_stack->item_function);
       break;
 
     case example:
@@ -787,7 +791,7 @@ end_insertion (type)
           xml_insert_element (COPYING, END);
           break;
         case quotation:
-          xml_insert_element (QUOTATION, END);
+          xml_insert_quotation ("", END);
           break;
         case example:
           xml_insert_element (EXAMPLE, END);
@@ -1052,8 +1056,7 @@ discard_insertions (specials_ok)
 void
 cm_quotation ()
 {
-  if (xml)
-    xml_insert_element (QUOTATION, START);
+  /* We start the blockquote element in the insertion.  */
   begin_insertion (quotation);
 }
 
@@ -1116,6 +1119,8 @@ cm_insert_copying (docbook_dont_fix_tags)
       insert_string (copying_text);
       if (docbook && !docbook_dont_fix_tags)
 	insert_string ("</para></abstract>");
+      else if (xml && !docbook_dont_fix_tags)
+	insert_string ("</para>");
       insert ('\n');
       
       /* Update output_position so that the node positions in the tag
