@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.54 2005-03-16 13:08:36 karl Exp $
+$Id: dir-example,v 1.55 2005-03-22 13:46:57 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -36,6 +36,7 @@ Basics
 * File permissions: (coreutils)File permissions.  Access modes.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
+* Hello: (hello).               Hello, GNU world.
 * Time: (time).                 Measuring program resource usage.
 
 Text creation and manipulation
