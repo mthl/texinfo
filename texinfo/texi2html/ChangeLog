@@ -1,5 +1,13 @@
 2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl, texi2html.init: call the $index_summary_file_* 
+	function references for all the indices, even those not printed. 
+	* examples/chm.init: enhancements based on the Peter Verhás
+	implementation (t2h.pl) and languages codes based on the docbook 
+	xslt.
+
+2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: add $EXTENSION variable, holding
 	the extension for files.
 	Add $Texi2HTML::THISDOC{'file_base_name'} and

@@ -1798,17 +1798,20 @@ Within the document, @code{@@printindex} commands are expanded as explained
 in @ref{Index list}. In case you want to do something special with index 
 entries, outside of the document, you should first set the variable
 @variable{$IDX_SUMMARY} true. After that some function reference will be called
-for each non empty @code{@@printindex}. For each index there are 3 function 
+for each non empty index. For each index there are 3 function 
 references, one called for initialization, one called for each index entry
 and the last one called for finalazation.
 
-@deffn {Function Reference} index_summary_file_begin $index_name
-@var{$index_name} is the two letters name for the index. This function
-is called for each @code{@@printindex} appearing in the document, before 
+@deffn {Function Reference} index_summary_file_begin $index_name $is_printed
+@var{$index_name} is the two letters name for the index. 
+This function
+is called for each index 
+appearing in the document, before 
 @code{index_summary_file_entry}.
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
 @end deffn
 
-@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header 
+@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed
 This function is called for each entry of an index. @var{index_name} is the
 name of the index. @var{$entry_text} is the entry in plain text,
 @var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
@@ -1818,12 +1821,14 @@ at the index entry place, in the form @samp{file#id}.
 the index entry. @var{entry_element_header} is the reference to the
 beginning of the element containing the index entry, in the form
 @samp{file#id}. 
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
 @end deffn
 
-@deffn {Function Reference} index_summary_file_end $index_name
+@deffn {Function Reference} index_summary_file_end $index_name $is_printed
 @var{$index_name} is the two letters name for the index. This function
-is called for each @code{@@printindex} appearing in the document, after
+is called for each index appearing in the document, after
 @code{index_summary_file_entry}.
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
 @end deffn
 
 @c ========================================================

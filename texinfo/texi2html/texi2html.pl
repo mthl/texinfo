@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.101 2004-02-03 01:32:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.102 2004-02-03 22:35:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -752,7 +752,7 @@ $index_properties =
 
 #
 # commands with ---, -- '' and `` preserved
-# #FIXME in first arg of email uref this should be preserved too
+# usefull with the old interface
 
 %code_style_map = (
            'code'    => 1,
@@ -765,12 +765,14 @@ $index_properties =
            'verb'    => 1,
 );
 
+# delete from hash if we are using te new interface
 foreach my $code (keys(%code_style_map))
 {
     delete ($code_style_map{$code}) 
        if (ref($Texi2HTML::Config::style_map{$code}) eq 'HASH');
 }
-            
+
+# no paragraph in these commands
 our %no_paragraph_macro = (
            'xref'         => 1,
            'ref'          => 1,
@@ -794,6 +796,7 @@ our %special_style = (
            'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
 );
 
+# @image is replaced by the first arg in strings
 $Texi2HTML::Config::style_map_texi{'image'} = { 'args' => ['keep'],
        'function' => \&Texi2HTML::Config::t2h_default_no_texi_image }
     unless (defined($Texi2HTML::Config::style_map_texi{'image'}));
@@ -878,9 +881,11 @@ $sec2level{'appendixsection'} = 2;
 # sec2level{'majorheading'} is also 1 and not 0
 $sec2level{'majorheading'} = 1;
 $sec2level{'chapheading'} = 1;
-# this one could be centered...
+# FIXME this one could be centered...
 $sec2level{'centerchap'} = 1;
 
+# regions treated especially. The text for these regions is collected in the
+# corresponding array 
 %region_lines = (
           'titlepage'            => [ ],
           'documentdescription'  => [ ],
@@ -922,6 +927,7 @@ $format_type{'cartouche'} = 'cartouche';
 $format_type{'noformat'} = '';
 
 # fake formats are formats used internally within other formats
+# we associate them with a real format, for the error messages
 my %fake_format = (
      'line' => 'table',
      'term' => 'table',
@@ -939,6 +945,8 @@ foreach my $key (keys(%fake_format))
     $format_type{$key} = 'fake';
 }
 
+# A hash associating style @-comand with the type, 'accent', real 'style',
+# 'simple' style, or 'special'.
 our %style_type = (); 
 foreach my $style (keys(%Texi2HTML::Config::style_map))
 {
@@ -968,6 +976,7 @@ my @raw_regions = ('html', 'verbatim', 'tex', 'xml');
 # precedence over raw_regions.
 my @special_regions = ();
 
+# regions expanded or not depending on the value of this hash
 my %text_macros = (
      'iftex' => 0, 
      'ignore' => 0, 
@@ -1041,11 +1050,13 @@ foreach my $key (keys(%text_macros))
     }
 }
 
+# The css formats are associated with complex format commands, and associated
+# with the 'pre_style' key
 foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 {
+    next if (defined($Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'}));
     $Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'} = '';
     $Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'} = $Texi2HTML::Config::css_map{"pre.$complex_format"} if (exists($Texi2HTML::Config::css_map{"pre.$complex_format"}));
-#    $Texi2HTML::Config::css_map{"pre.$complex_format"} = "$Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'}";
 }
 
 #+++############################################################################
@@ -1062,6 +1073,7 @@ $| = 1;
 select(STDOUT);
 $| = 1;
 
+#FIXME my or our ?
 my $I = \&Texi2HTML::I18n::get_string;
 
 my $T2H_TODAY; # date set by pretty_date
@@ -1073,6 +1085,9 @@ my $T2H_VERBOSE;
 
 #print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
+# file:      file name to locate. It can be a file path.
+# all_files: if true collect all the files with that name, otherwise stop
+#            at first match.
 sub locate_init_file($;$)
 {
     my $file = shift;
@@ -1152,7 +1167,6 @@ sub set_document_language ($;$$)
     else
     {
         echo_error ("Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::Config::LANG'", $line_nr);
-        #warn "$ERROR Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::Config::LANG'\n";
     }
 }
 
@@ -1840,6 +1854,7 @@ $T2H_OBSOLETE_OPTIONS -> {verbose} =
 };
 
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc
+# obsolete.
 my @rc_files = ();
 push @rc_files, "$sysconfdir/texi2htmlrc" if defined($sysconfdir);
 push @rc_files, "$ENV{'HOME'}/.texi2htmlrc" if (defined($ENV{HOME}));
@@ -1854,6 +1869,7 @@ foreach my $i (@rc_files)
     }
 }
 
+# read initialization files
 foreach my $file (locate_init_file($conf_file_name, 1))
 {
 	print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
@@ -1861,7 +1877,7 @@ foreach my $file (locate_init_file($conf_file_name, 1))
 }
     
 #
-# %value hold texinfo variables, see also -D, -U
+# %value hold texinfo variables, see also -D, -U, @set and @clear.
 # we predefine html (the output format) and texi2html (the translator)
 %value = 
       ( 
@@ -1895,7 +1911,7 @@ my $Configure_failed = $@ && <<EOT;
            version 5.005 or higher.
 EOT
 # FIXME getOptions is called 2 times, and thus adds 2 times the default 
-# help and version 
+# help and version and after that warns.
 if (! $options->getOptions($T2H_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
 {
     print STDERR "$Configure_failed" if $Configure_failed;
@@ -1923,6 +1939,8 @@ $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 # retro compatibility for $Texi2HTML::Config::EXPAND
 push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Config::EXPAND);
 
+# correct %text_macros and @special_regions based on command line and init
+# variables
 $text_macros{'menu'} = 1 if ($Texi2HTML::Config::SHOW_MENU);
 
 push @special_regions, 'tex' if ($Texi2HTML::Config::L2H);
@@ -2005,7 +2023,7 @@ unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 $docu_name =~ s/\.te?x(i|info)?$//;
 $docu_name = $Texi2HTML::Config::PREFIX if ($Texi2HTML::Config::PREFIX);
 
-# result files
+# resulting files splitting
 if ($Texi2HTML::Config::SPLIT =~ /section/i)
 {
     $Texi2HTML::Config::SPLIT = 'section';
@@ -2048,16 +2066,13 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
         else
         {
             die "$ERROR can't create directory $Texi2HTML::Config::OUT\n";
-            #warn "$ERROR can't create directory $Texi2HTML::Config::OUT Put results into current directory\n";
-            #$Texi2HTML::Config::OUT = '';
-            #$docu_rdir = './';
         }
     }
 }
 elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
     if ($Texi2HTML::Config::OUT =~ m|(.*)/|)
-    {
+    {# there is a leading directories
         $docu_rdir = "$1/";
         unless (-d $docu_rdir)
         {
@@ -2068,9 +2083,6 @@ elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
             else
             {
                 die "$ERROR can't create directory $docu_rdir\n";
-                #warn "$ERROR can't create directory $docu_rdir Put results into current directory\n";
-                #$Texi2HTML::Config::OUT = '';
-                #$docu_rdir = './';
             }
         }
         print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
@@ -2083,8 +2095,8 @@ elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 }
 
 # We don't use "./" as $docu_rdir when $docu_rdir is the current directory
-# because it is problematic for matex2html. To test with -w, however we need 
-# a real directory.
+# because it is problematic for latex2html. To test writability with -w, 
+# however we need a real directory.
 my $result_rdir = $docu_rdir;
 $result_rdir = "." if ($docu_rdir eq '');
 unless (-w $result_rdir)
@@ -2106,9 +2118,10 @@ if ($Texi2HTML::Config::TOP_FILE =~ s/\..*$//)
 $docu_doc = "$docu_name.$docu_ext"; # document's contents
 if ($Texi2HTML::Config::SPLIT)
 {
-    # FIXME if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
-    # ${docu_name}_ovr... there is trouble. This is fixable, but is it worth
-    # fixing it ?
+    # if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
+    # ${docu_name}_ovr... there may be trouble with the old naming scheme in
+    # very rare circumstances. This won't be fixed, the new scheme will be used
+    # soon.
     $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc.$docu_ext";
     $docu_stoc  = "${docu_name}_ovr.$docu_ext";
     $docu_foot  = "${docu_name}_fot.$docu_ext";
@@ -2125,6 +2138,7 @@ else
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
 
+# For use in init files
 $Texi2HTML::Config::TOP_FILE = $docu_top;
 $Texi2HTML::Config::TOC_FILE = $docu_toc;
 
@@ -2146,7 +2160,7 @@ foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
 {
     $value{$key} = '';            # prevent -w warnings
 }
-my $index;                        # ref on a hash for the index entries
+my $index;                         # ref on a hash for the index entries
 my %indices = ();                  # hash of indices names containing 
                                    #[ $Pages, $Entries ] (page indices and 
                                    # raw index entries)
@@ -2212,7 +2226,7 @@ sub process_css_file ($$)
                  }
              }
              elsif (!$in_string and s/^\///)
-	     { # what do '\' do here ?
+             { # what do '\' do here ?
                  if (s/^\*//)
                  {
                      $text .= '/*';
@@ -2251,11 +2265,11 @@ sub process_css_file ($$)
                  $in_import = 0;
              }
              elsif (($in_import or $in_string) and s/^(.)//)
-	     {
+             {
                   $text .= $1;
              }
              elsif (!$in_import and s/^([^\s])//)
-	     { 
+             { 
                   push (@$imports, $text. "\n") if ($text ne '');
                   push (@$rules, $1 . $_);
                   $in_rules = 1;
@@ -4820,18 +4834,11 @@ sub enter_index_entry($$$$$$)
     if (!exists($element->{'tag'}) and !$element->{'footnote'})
     {
         echo_warn ("Index entry before document: \@${prefix}index $key", $line_nr); 
-        #warn "$WARN Index entry before document: \@${prefix}index $key\n"; 
-	#return 0; 
     }
     $key =~ s/\s+$//;
     $key =~ s/^\s*//;
-    # done later, during index writing.
-    #my $entry = substitute_line($key);
     my $entry = $key;
-    # The $key is only usefull for alphabetical sorting
-    # FIXME if the index is a code index we should have $state->{'code_style'}=1
-    # or add @code{} to the $key, otherwise --- will be changed to -- and more
-    # importantly `` to "
+    # The $key is mostly usefull for alphabetical sorting
     $key = remove_texi($key);
     return if ($key =~ /^\s*$/);
     while (exists $index->{$prefix}->{$key})
@@ -6988,7 +6995,7 @@ sub do_index_summary_file($)
 {
     my $name = shift;
     my ($Pages, $Entries) = get_index($name);
-    &$Texi2HTML::Config::index_summary_file_begin ($name);
+    &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name});
     #open(FHIDX, ">$docu_rdir$docu_name" . "_$name.idx")
     #   || die "Can't open > $docu_rdir$docu_name" . "_$name.idx for writing: $!\n";
     #print STDERR "# writing $name index summary in $docu_rdir$docu_name" . "_$name.idx...\n" if $T2H_VERBOSE;
@@ -7035,9 +7042,10 @@ sub do_index_summary_file($)
           $key, $origin_href, 
           substitute_line($entry->{'entry'}), $entry->{'entry'},
           href($entry_element, ''),
-          $entry_element->{'text'});
+          $entry_element->{'text'},
+          $printed_indices{$name});
     }
-    &$Texi2HTML::Config::index_summary_file_end ($name);
+    &$Texi2HTML::Config::index_summary_file_end ($name, $printed_indices{$name});
 }
 
 sub do_index_page($$;$)
@@ -10460,9 +10468,11 @@ pass_text();
 #do_node_files() if ($Texi2HTML::Config::SPLIT ne 'node' and $Texi2HTML::Config::NODE_FILES);
 if ($Texi2HTML::Config::IDX_SUMMARY)
 {
-    foreach my $name (keys(%printed_indices))
+    foreach my $entry (keys(%$index_properties))
     {
-        do_index_summary_file($name);
+         my $name = $index_properties->{$entry}->{'name'};
+         do_index_summary_file($name) 
+            unless ($empty_indices{$name});
     }
 }
 do_node_files() if ($Texi2HTML::Config::NODE_FILES);

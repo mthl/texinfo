@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.65 2004-02-03 01:32:36 pertusus Exp $
+# $Id: texi2html.init,v 1.66 2004-02-03 22:35:57 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3447,7 +3447,7 @@ sub t2h_default_cartouche($$)
 # texi entry: 
 # element_href: 
 # element_text: 
-sub t2h_default_index_summary_file_entry ($$$$$$$)
+sub t2h_default_index_summary_file_entry ($$$$$$$$)
 {
     my $index_name = shift;
     my $key = shift;
@@ -3456,21 +3456,24 @@ sub t2h_default_index_summary_file_entry ($$$$$$$)
     my $texi_entry = shift;
     my $element_href = shift;
     my $element_text = shift;
+    my $is_printed = shift;
     print IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
       . "  texi_entry: $texi_entry\n"
       . "  element_href: $element_href\n  element_text: $element_text\n";
 }
 
-sub t2h_default_index_summary_file_begin($)
+sub t2h_default_index_summary_file_begin($$)
 {
     my $name = shift;
+    my $is_printed = shift;
     open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
        || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
 }
 
-sub t2h_default_index_summary_file_end($)
+sub t2h_default_index_summary_file_end($$)
 {
     my $name = shift;
+    my $is_printed = shift;
     close (IDXFILE);
 }
 

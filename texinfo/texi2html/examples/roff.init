@@ -11,6 +11,7 @@ $DEFAULT_RULE = '';
 $MIDDLE_RULE = '';
 $BIG_RULE = '';
 $NODE_FILE_EXTENSION = "roff";
+$EXTENSION = "roff";
 $MENU_SYMBOL = '*';
 $AVOID_MENU_REDUNDANCY = 0;
 
