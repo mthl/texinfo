@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.2 2003-01-24 18:51:49 karl Exp $
+   $Id: filesys.c,v 1.3 2003-01-31 19:18:11 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003 Free Software
    Foundation, Inc.
@@ -287,7 +287,7 @@ extract_colon_unit (string, idx)
   while (string[i] && string[i] != PATH_SEP[0])
     i++;
 
-  if (!string[i]) /* end of string */
+  if (!string[i] && i == start) /* end of string, and didn't advance */
     return NULL;
 
   {
