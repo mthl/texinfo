@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.21 2003-01-31 16:48:57 karl Exp $
+dnl $Id: configure.ac,v 1.22 2003-02-05 00:40:19 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -11,7 +11,7 @@ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 dnl
 AC_PREREQ(2.57)dnl Minimum Autoconf version required.
 dnl
-AC_INIT([GNU Texinfo], [4.4])
+AC_INIT([GNU Texinfo], [4.5])
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_CONFIG_HEADER(config.h:config.in)dnl Keep filename to 8.3 for MS-DOS.
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -41,7 +41,15 @@ AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
   termcap.h termio.h termios.h unistd.h \
-  sys/fcntl.h sys/file.h sys/ptem.h sys/time.h sys/ttold.h sys/wait.h)
+  sys/fcntl.h sys/file.h sys/stream.h sys/time.h sys/ttold.h sys/wait.h)
+
+dnl sys/ptem.h requires sys/stream.h for mblk_t on Solaris.
+AC_CHECK_HEADERS([sys/ptem.h],,,
+[#if HAVE_SYS_STREAM_H
+#include <sys/stream.h>
+#endif
+])
+
 AC_SYS_POSIX_TERMIOS
 AC_HEADER_TIOCGWINSZ
 
