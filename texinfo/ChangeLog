@@ -1,3 +1,9 @@
+2005-03-08  Karl Berry  <karl@gnu.org>
+
+	* info/filesys.h (DEFAULT_INFOPATH): make . first in the path,
+	instead of last.  That way info -f foo/bar finds foo/bar.info.
+	From: Bruno Haible <bruno@clisp.org>, 8 Mar 2005 13:45:28 +0100.
+
 2005-03-07  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Fix -o when -c is not passed.
