@@ -471,9 +471,9 @@
 \let\}=\myrbrace
 \begingroup
   % Definitions to produce actual \{ & \} command in an index.
-  \catcode`\{ = 12 \catcode`\} = 12
+  \catcode`\{ = \other \catcode`\} = \other
   \catcode`\[ = 1 \catcode`\] = 2
-  \catcode`\@ = 0 \catcode`\\ = 12
+  \catcode`\@ = 0 \catcode`\\ = \other
   @gdef@lbracecmd[\{]%
   @gdef@rbracecmd[\}]%
 @endgroup
@@ -758,14 +758,14 @@ where each line of input produces a line of output.}
 % @include file    insert text of that file as input.
 % Allow normal characters that  we make active in the argument (a file name).
 \def\include{\begingroup
-  \catcode`\\=12
-  \catcode`~=12
-  \catcode`^=12
-  \catcode`_=12
-  \catcode`|=12
-  \catcode`<=12
-  \catcode`>=12
-  \catcode`+=12
+  \catcode`\\=\other
+  \catcode`~=\other
+  \catcode`^=\other
+  \catcode`_=\other
+  \catcode`|=\other
+  \catcode`<=\other
+  \catcode`>=\other
+  \catcode`+=\other
   \parsearg\includezzz}
 % Restore active chars for included file.
 \def\includezzz#1{\endgroup\begingroup
@@ -2685,7 +2685,7 @@ width0pt\relax} \fi
   % we're called from @code, as @code{@value{foo-bar_}}.  So \let any
   % such active characters to their normal equivalents.
   \gdef\value{\begingroup
-    \catcode`\-=12 \catcode`\_=12
+    \catcode`\-=\other \catcode`\_=\other
     \indexbreaks \let_\normalunderscore
     \valuexxx}
 }
@@ -4287,14 +4287,14 @@ width0pt\relax} \fi
 \def\tex{\begingroup
   \catcode `\\=0 \catcode `\{=1 \catcode `\}=2
   \catcode `\$=3 \catcode `\&=4 \catcode `\#=6
-  \catcode `\^=7 \catcode `\_=8 \catcode `\~=13 \let~=\tie
+  \catcode `\^=7 \catcode `\_=8 \catcode `\~=\active \let~=\tie
   \catcode `\%=14
-  \catcode 43=12 % plus
-  \catcode`\"=12
-  \catcode`\==12
-  \catcode`\|=12
-  \catcode`\<=12
-  \catcode`\>=12
+  \catcode `\+=\other
+  \catcode `\"=\other
+  \catcode `\==\other
+  \catcode `\|=\other
+  \catcode `\<=\other
+  \catcode `\>=\other
   \escapechar=`\\
   %
   \let\b=\ptexb
@@ -4864,7 +4864,7 @@ width0pt\relax} \fi
 
 % Active &'s sneak into the index arguments, so make sure it's defined.
 {
-  \catcode`& = 13
+  \catcode`& = \active
   \global\let& = \ampnr
 }
 
@@ -5378,7 +5378,7 @@ width0pt\relax} \fi
  \def\scanmacro#1{%
    \begingroup \newlinechar`\^^M
    % Undo catcode changes of \startcontents and \doprintindex
-   \catcode`\@=0 \catcode`\\=12 \escapechar=`\@
+   \catcode`\@=0 \catcode`\\=\other \escapechar=`\@
    % Append \endinput to make sure that TeX does not see the ending newline.
    \toks0={#1\endinput}%
    \immediate\openout\macscribble=\jobname.tmp
@@ -5392,7 +5392,7 @@ width0pt\relax} \fi
 \def\scanmacro#1{%
 \begingroup \newlinechar`\^^M
 % Undo catcode changes of \startcontents and \doprintindex
-\catcode`\@=0 \catcode`\\=12 \escapechar=`\@
+\catcode`\@=0 \catcode`\\=\other \escapechar=`\@
 \let\xeatspaces\eatspaces\scantokens{#1\endinput}\endgroup}
 \fi
 
@@ -5422,7 +5422,7 @@ width0pt\relax} \fi
 }
 
 % Trim a single trailing ^^M off a string.
-{\catcode`\^^M=12\catcode`\Q=3%
+{\catcode`\^^M=\other \catcode`\Q=3%
 \gdef\eatcr #1{\eatcra #1Q^^MQ}%
 \gdef\eatcra#1^^MQ{\eatcrb#1Q}%
 \gdef\eatcrb#1Q#2Q{#1}%
@@ -5437,29 +5437,29 @@ width0pt\relax} \fi
 % body, and then making it the \newlinechar in \scanmacro.
 
 \def\macrobodyctxt{%
-  \catcode`\~=12
-  \catcode`\^=12
-  \catcode`\_=12
-  \catcode`\|=12
-  \catcode`\<=12
-  \catcode`\>=12
-  \catcode`\+=12
-  \catcode`\{=12
-  \catcode`\}=12
-  \catcode`\@=12
-  \catcode`\^^M=12
+  \catcode`\~=\other
+  \catcode`\^=\other
+  \catcode`\_=\other
+  \catcode`\|=\other
+  \catcode`\<=\other
+  \catcode`\>=\other
+  \catcode`\+=\other
+  \catcode`\{=\other
+  \catcode`\}=\other
+  \catcode`\@=\other
+  \catcode`\^^M=\other
   \usembodybackslash}
 
 \def\macroargctxt{%
-  \catcode`\~=12
-  \catcode`\^=12
-  \catcode`\_=12
-  \catcode`\|=12
-  \catcode`\<=12
-  \catcode`\>=12
-  \catcode`\+=12
-  \catcode`\@=12
-  \catcode`\\=12}
+  \catcode`\~=\other
+  \catcode`\^=\other
+  \catcode`\_=\other
+  \catcode`\|=\other
+  \catcode`\<=\other
+  \catcode`\>=\other
+  \catcode`\+=\other
+  \catcode`\@=\other
+  \catcode`\\=\other}
 
 % \mbodybackslash is the definition of \ in @macro bodies.
 % It maps \foo\ => \csname macarg.foo\endcsname => #N
