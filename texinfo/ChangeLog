@@ -1,5 +1,22 @@
 2002-11-25    <karl@gnu.org>
 
+	* makeinfo/cmds.c (cm_verb): use <tt> not <pre>, as this is an
+	inline construct.  Also, decrement
+	in_fixed_width_font, else the next paragraph does
+	not get a <p>.
+	Report from: Torsten Bronger <bronger@physik.rwth-aachen.de>
+	26 Nov 2002 00:37:35 +0100.
+
+	* doc/texinfo.tex (\dospecials): must include all other characters
+	that we set active, namely <>|_", or they got
+	mysteriously lost as the first character on a
+	verbatim line.
+	Report from: Torsten Bronger <bronger@physik.rwth-aachen.de>
+	25 Nov 2002 18:26:12 +0100.
+	
+	(\doverbatim): ignore everything up to the first
+	^^M, to avoid an extra blank line in the output.
+
 	* lib/getopt*, strdup.c, tempname.c: update from gnulib (bruno
 	changes + gpl).
 
@@ -35,7 +52,7 @@
 
 2002-11-14    <karl@gnu.org>
 
-	* configure.ac, util/texi2dvi, NEWS: version 4.3.
+	* configure.ac, util/texi2dvi, NEWS: release version 4.3.
 
 	* util/texi2dvi, mkinstalldirs: use `for var<newline>do"' instead
 	 of  `for var; do', for Solaris.

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.19 2002-11-14 22:19:37 karl Exp $
+$Id: NEWS,v 1.20 2002-11-26 00:40:45 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -22,6 +22,19 @@ convenience, here's a url to one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* makeinfo:
+  . bug fix: html @verb arg is quoted properly, and does not imply
+    a paragraph break.
+* texinfo.tex:
+  . bug fix: <>| and other characters do not disappear when they are
+    first on a line in @verbatim.
+* install-info:
+  . bug fix: don't translate the `* Menu' info keyword.
+* Distribution:
+  . getopt and other common library files updated from gnulib
+    (http://savannah.gnu.org/projects/gnulib/).
+  . autoconf 2.56.
+  
 4.3 (14 November 2002)
 * Language:
   . new command @tie{} to do a real tie (unbreakable interword space).
