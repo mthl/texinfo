@@ -67,16 +67,19 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <p>It is not always easy to keep track of the nodes, chapters, sections, and
 subsections of a Texinfo file.  This is especially true if you are revising
-or adding to a Texinfo file that someone else has written.</p><p>In GNU Emacs, in Texinfo mode, the <code>texinfo-show-structure</code>
+or adding to a Texinfo file that someone else has written.
+</p><p>In GNU Emacs, in Texinfo mode, the <code>texinfo-show-structure</code>
 command lists all the lines that begin with the @-commands that
 specify the structure: <code>@chapter</code>, <code>@section</code>,
 <code>@appendix</code>, and so on.  With an argument (<kbd>C-u</kbd>
 as prefix argument, if interactive),
 the command also shows the <code>@node</code> lines.  The
 <code>texinfo-show-structure</code> command is bound to <kbd>C-c C-s</kbd> in
-Texinfo mode, by default.</p><p>The lines are displayed in a buffer called the `<samp>*Occur*</samp>' buffer,
+Texinfo mode, by default.
+</p><p>The lines are displayed in a buffer called the `<samp>*Occur*</samp>' buffer,
 indented by hierarchical level.  For example, here is a part of what was
-produced by running <code>texinfo-show-structure</code> on this manual:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+produced by running <code>texinfo-show-structure</code> on this manual:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
  Lines matching &quot;^@\\(chapter \\|sect\\|subs\\|subh\\|
  unnum\\|major\\|chapheading \\|heading \\|appendix\\)&quot;
  in buffer texinfo.texi.
@@ -96,22 +99,27 @@ commands respectively.  If you move your cursor into the `<samp>*Occur*</samp>'
 window, you can position the cursor over one of the lines and use the
 <kbd>C-c C-c</kbd> command (<code>occur-mode-goto-occurrence</code>), to jump to
 the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>, for more
-information about <code>occur-mode-goto-occurrence</code>.</p><p>The first line in the `<samp>*Occur*</samp>' window describes the <em>regular
+information about <code>occur-mode-goto-occurrence</code>.
+</p><p>The first line in the `<samp>*Occur*</samp>' window describes the <em>regular
 expression</em> specified by <var>texinfo-heading-pattern</var>.  This regular
 expression is the pattern that <code>texinfo-show-structure</code> looks for.
 See <a href="../emacs/Regexps.html">(emacs)Regexps</a> section `Using Regular Expressions' in <cite>The GNU Emacs Manual</cite>,
-for more information.</p><p>When you invoke the <code>texinfo-show-structure</code> command, Emacs will
+for more information.
+</p><p>When you invoke the <code>texinfo-show-structure</code> command, Emacs will
 display the structure of the whole buffer.  If you want to see the
 structure of just a part of the buffer, of one chapter, for example,
 use the <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command to mark the
 region.  (See <a href="../emacs/Narrowing.html">(emacs)Narrowing</a> section `Narrowing' in <cite>The GNU Emacs Manual</cite>.)  This is
 how the example used above was generated.  (To see the whole buffer
-again, use <kbd>C-x n w</kbd> (<code>widen</code>).)</p><p>If you call <code>texinfo-show-structure</code> with a prefix argument by
+again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
+</p><p>If you call <code>texinfo-show-structure</code> with a prefix argument by
 typing <kbd>C-u C-c C-s</kbd>, it will list lines beginning with
 <code>@node</code> as well as the lines beginning with the @-sign commands
-for <code>@chapter</code>, <code>@section</code>, and the like.</p><p>You can remind yourself of the structure of a Texinfo file by looking at
+for <code>@chapter</code>, <code>@section</code>, and the like.
+</p><p>You can remind yourself of the structure of a Texinfo file by looking at
 the list in the `<samp>*Occur*</samp>' window; and if you have mis-named a node
-or left out a section, you can correct the mistake.</p><hr size="1">
+or left out a section, you can correct the mistake.
+</p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Debugging-with-TeX.html#SEC311" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Using-occur.html#SEC313" title="Next section in reading order"> &gt; </a>]</td>

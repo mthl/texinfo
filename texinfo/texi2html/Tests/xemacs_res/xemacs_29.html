@@ -58,6 +58,15 @@ MH are also designed to integrate well with the shell and with
 shell scripts.  Keep in mind, however, that in order to use mh-e
 you must have the MH mail-processing system installed on your
 computer.
+</p><p>Finally, XEmacs provides the Rmail package.  Rmail is (currently) the
+only mail reading package distributed with FSF GNU Emacs, and is
+powerful in its own right.  However, it stores mail folders in a special
+format called `<samp>Babyl</samp>', that is incompatible with all other
+frequently-used mail programs.  A utility program is provided for
+converting Babyl folders to standard Unix-mail format; however, unless
+you already have mail in Babyl-format folders, you should consider
+using VM or mh-e instead. (If at times you have to use FSF Emacs, it
+is not hard to obtain and install VM for that editor.)
 </p><hr size="6">
 <a name="NOD275"></a>
 <a name="SEC301"></a>
@@ -78,16 +87,7 @@ computer.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 26.1 Calendar Mode and the Diary </h2>
-<p>Finally, XEmacs provides the Rmail package.  Rmail is (currently) the
-only mail reading package distributed with FSF GNU Emacs, and is
-powerful in its own right.  However, it stores mail folders in a special
-format called `<samp>Babyl</samp>', that is incompatible with all other
-frequently-used mail programs.  A utility program is provided for
-converting Babyl folders to standard Unix-mail format; however, unless
-you already have mail in Babyl-format folders, you should consider
-using VM or mh-e instead. (If at times you have to use FSF Emacs, it
-is not hard to obtain and install VM for that editor.)
-</p>
+
 <p>  Emacs provides the functions of a desk calendar, with a diary of
 planned or past events.  To enter the calendar, type <kbd>M-x calendar</kbd>;
 this displays a three-month calendar centered on the current month, with
@@ -987,7 +987,11 @@ and from several other calendars.
 <tr><td align="left" valign="top"><a href="#SEC317">26.5.1 Converting from the Mayan Calendar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving to a date specified in a Mayan calendar.</td></tr>
 </table>
 
-<hr size="6">
+<p>  If you are interested in these calendars, you can convert dates one at a
+time.  Put point on the desired date of the Gregorian calendar and press the
+appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Emacs
+&quot;prints' the equivalent date in the echo area.
+</p><hr size="6">
 <a name="NOD288"></a>
 <a name="SEC314"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1007,11 +1011,7 @@ and from several other calendars.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 26.3 Supported Calendar Systems </h2>
-<p>  If you are interested in these calendars, you can convert dates one at a
-time.  Put point on the desired date of the Gregorian calendar and press the
-appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Emacs
-&quot;prints' the equivalent date in the echo area.
-</p>
+
 <p>  The ISO commercial calendar is used largely in Europe.
 </p><a name="IDX1229"></a>
 <p>  The Julian calendar, named after Julius Caesar, was the one used in Europe
@@ -1873,7 +1873,8 @@ that applies to the last Thursday in November:
 month can be a single month or a list of months.  Thus you could change
 the 11 above to `<samp>'(1 2 3)</samp>' and have the entry apply to the last
 Thursday of January, February, and March.  If the month is <code>t</code>, the
-entry applies to all months of the year.</p><p>  The sexp feature of the diary allows you to specify diary entries
+entry applies to all months of the year.
+</p><p>  The sexp feature of the diary allows you to specify diary entries
 based on any Emacs Lisp expression.  You can use the library of built-in
 functions or you can write your own functions.  The built-in functions
 include the ones shown in this section, plus a few others (see section <a href="#SEC334">Sexp Entries and the Fancy Diary Display</a>).
@@ -1957,7 +1958,8 @@ diary suit your personal tastes.
 <code>t</code>, calling up the calendar automatically displays the diary
 entries for the current date as well.  The diary dates appear only if
 the current date is visible.  If you add both of the following lines to
-your init file:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+your init file:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 (setq view-diary-entries-initially t)
 (calendar)
 </pre></td></tr></table>
@@ -1998,7 +2000,8 @@ the calendar).
 <p>  Starting the calendar runs the normal hook
 <code>initial-calendar-window-hook</code>.  Recomputation of the calendar
 display does not run this hook.  But if you leave the calendar with the
-<kbd>q</kbd> command and reenter it, the hook runs again.</p><a name="IDX1316"></a>
+<kbd>q</kbd> command and reenter it, the hook runs again.
+</p><a name="IDX1316"></a>
 <p>  The variable <code>today-visible-calendar-hook</code> is a normal hook run
 after the calendar buffer has been prepared with the calendar when the
 current date is visible in the window.  One use of this hook is to
@@ -2072,7 +2075,8 @@ all) of the variables <code>all-christian-calendar-holidays</code>,
 <code>all-islamic-calendar-holidays</code> to <code>t</code>.  If you want to
 eliminate the religious holidays, set any or all of the corresponding
 variables <code>christian-holidays</code>, <code>hebrew-holidays</code>, and
-<code>islamic-holidays</code> to <code>nil</code>.</p><a name="IDX1326"></a>
+<code>islamic-holidays</code> to <code>nil</code>.
+</p><a name="IDX1326"></a>
 <p>  You can set the variable <code>other-holidays</code> to any list of
 holidays.  This list, normally empty, is intended for individual use.
 </p><a name="IDX1327"></a>
@@ -2135,18 +2139,18 @@ arguments <var>args</var>.
 <p>  For example, suppose you want to add Bastille Day, celebrated in
 France on July 14.  You can do this by adding the following line
 to your init file:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p><p>The holiday form <code>(holiday-fixed 7 14 &quot;Bastille Day&quot;)</code> specifies the
 fourteenth day of the seventh month (July).
 </p><p>  Many holidays occur on a specific day of the week, at a specific time
 of month.  Here is a holiday form describing Hurricane Supplication Day,
 celebrated in the Virgin Islands on the fourth Monday in August:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (holiday-float 8 1 4 &quot;Hurricane Supplication Day&quot;)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Here the 8 specifies August, the 1 specifies Monday (Sunday is 0,
 Tuesday is 2, and so on), and the 4 specifies the fourth occurrence in
 the month (1 specifies the first occurrence, 2 the second occurrence,
@@ -2154,12 +2158,12 @@ the month (1 specifies the first occurrence, 2 the second occurrence,
 so on).
 </p><p>  You can specify holidays that occur on fixed days of the Hebrew,
 Islamic, and Julian calendars too.  For example,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (setq other-holidays
       '((holiday-hebrew 10 2 &quot;Last day of Hanukkah&quot;)
         (holiday-islamic 3 12 &quot;Mohammed's Birthday&quot;)
         (holiday-julian 4 2 &quot;Jefferson's Birthday&quot;)))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>adds the last day of Hanukkah (since the Hebrew months are numbered with
 1 starting from Nisan), the Islamic feast celebrating Mohammed's
 birthday (since the Islamic months are numbered from 1 starting with
@@ -2169,16 +2173,16 @@ Julian calendar.
 <code>holiday-sexp</code> form.  For example, American presidential elections
 occur on the first Tuesday after the first Monday in November of years
 divisible by 4:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (holiday-sexp (if (= 0 (% year 4))
                    (calendar-gregorian-from-absolute
                  (1+ (calendar-dayname-on-or-before
                        1 (+ 6 (calendar-absolute-from-gregorian
                                 (list 11 1 year))))))
               &quot;US Presidential Election&quot;))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (if (= 0 (% displayed-year 4))
     (fixed 11
            (extract-calendar-day
@@ -2187,7 +2191,7 @@ divisible by 4:
                      1 (+ 6 (calendar-absolute-from-gregorian
                               (list 11 1 displayed-year)))))))
            &quot;US Presidential Election&quot;))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Some holidays just don't fit into any of these forms because special
 calculations are involved in their determination.  In such cases you
 must write a Lisp function to do the calculation.  To include eclipses,
@@ -2195,9 +2199,9 @@ for example, add <code>(eclipses)</code> to <code>other-holidays</code>
 and write an Emacs Lisp function <code>eclipses</code> that returns a
 (possibly empty) list of the relevant Gregorian dates among the range
 visible in the calendar window, with descriptive strings, like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <hr size="6">
 <a name="NOD301"></a>
 <a name="SEC327"></a>
@@ -2226,21 +2230,22 @@ This variable holds a list of expressions that can involve the variables
 string form, and <code>monthname</code> and <code>dayname</code>, which are both
 alphabetic strings.  In the American style, the default value of this
 list is as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 ((if dayname (concat dayname &quot;, &quot;)) monthname &quot; &quot; day &quot;, &quot; year)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>while in the European style this value is the default:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 ((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
-</pre></font></td></tr></table>
-<p>+The ISO standard date representation is this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</pre></td></tr></table>
+<p>+
+The ISO standard date representation is this:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (year &quot;-&quot; month &quot;-&quot; day)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>This specifies a typical American format:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (month &quot;/&quot; day &quot;/&quot; (substring year -2))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <hr size="6">
 <a name="NOD302"></a>
 <a name="SEC328"></a>
@@ -2272,15 +2277,15 @@ variable is a list of expressions that can involve the variables
 numbers in string form, and <code>am-pm</code> and <code>time-zone</code>, which are
 both alphabetic strings.  The default value of
 <code>calendar-time-display-form</code> is as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (12-hours &quot;:&quot; minutes am-pm
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Here is a value that provides European style times:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (24-hours &quot;:&quot; minutes
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>gives military-style times like `<samp>21:07 (UT)</samp>' if time zone names are
 defined, and times like `<samp>21:07</samp>' if they are not.
 </p><hr size="6">
@@ -2393,7 +2398,8 @@ checking for holidays can take several seconds, so including holiday
 information delays the display of the diary buffer noticeably.  If you'd
 prefer to have a faster display of the diary buffer but without the
 holiday information, set the variable <code>holidays-in-diary-buffer</code> to
-<code>nil</code>.</p><a name="IDX1332"></a>
+<code>nil</code>.
+</p><a name="IDX1332"></a>
 <p>  The variable <code>number-of-diary-entries</code> controls the number of
 days of diary entries to be displayed at one time.  It affects the
 initial display when <code>view-diary-entries-initially</code> is <code>t</code>, as
@@ -2449,7 +2455,8 @@ this:
 <p>Emacs matches of the diary entries with the date forms is done with the
 standard syntax table from Fundamental mode
 (see <a href="../lispref/Syntax-Tables.html">(lispref)Syntax Tables</a> section `Syntax Tables' in <cite>XEmacs Lisp Reference Manual</cite>),
-but with the `<samp>*</samp>' changed so that it is a word constituent.</p><p>  The date patterns in the list must be <em>mutually exclusive</em> and
+but with the `<samp>*</samp>' changed so that it is a word constituent.
+</p><p>  The date patterns in the list must be <em>mutually exclusive</em> and
 must not match any portion of the diary entry itself, just the date and
 one character of whitespace.  If, to be mutually exclusive, the pattern
 must match a portion of the diary entry text--beyond the whitespace
@@ -2501,32 +2508,32 @@ you must do this:
 <a name="IDX1337"></a>
 <a name="IDX1338"></a>
 <a name="IDX1339"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>If you want Islamic-date entries, do this:
 </p><a name="IDX1340"></a>
 <a name="IDX1341"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Hebrew- and Islamic-date diary entries have the same formats as
 Gregorian-date diary entries, except that `<samp>H</samp>' precedes a Hebrew
 date and `<samp>I</samp>' precedes an Islamic date.  Moreover, because the
 Hebrew and Islamic month names are not uniquely specified by the first
 three letters, you may not abbreviate them.  For example, a diary entry
 for the Hebrew date Heshvan 25 could look like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 HHeshvan 25 Happy Hebrew birthday!
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>and would appear in the diary for any date that corresponds to Heshvan 25
 on the Hebrew calendar.  And here is  Islamic-date diary entry  that matches
 Dhu al-Qada 25:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 IDhu al-Qada 25 Happy Islamic birthday!
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>and would appear in the diary for any date that corresponds to Dhu al-Qada 25
 on the Islamic calendar.
 </p><p>  As with Gregorian-date diary entries, Hebrew- and Islamic-date entries
@@ -2628,7 +2635,8 @@ things up by setting the variable <code>holidays-in-diary-buffer</code> to
 <p>  Ordinarily, the fancy diary buffer does not show days for which there are
 no diary entries, even if that day is a holiday.  If you want such days to be
 shown in the fancy diary buffer, set the variable
-<code>diary-list-include-blanks</code> to <code>t</code>.</p><a name="IDX1351"></a>
+<code>diary-list-include-blanks</code> to <code>t</code>.
+</p><a name="IDX1351"></a>
 <p>  If you use the fancy diary display, you can use the normal hook
 <code>list-diary-entries-hook</code> to sort each day's diary entries by their
 time of day.  Add this line to your init file:
@@ -2664,9 +2672,9 @@ first within each day.
 <p>  Fancy diary display also has the ability to process included diary
 files.  This permits a group of people to share a diary file for events
 that apply to all of them.  Lines in the diary file of this form:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 #include &quot;<var>filename</var>&quot;
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>includes the diary entries from the file <var>filename</var> in the fancy
 diary buffer.  The include mechanism is recursive, so that included files
 can include other files, and so on; you must be careful not to have a
@@ -2676,10 +2684,10 @@ facility:
 <a name="IDX1354"></a>
 <a name="IDX1355"></a>
 <a name="IDX1356"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>The include mechanism works only with the fancy diary display, because
 ordinary diary display shows the entries directly from your diary file.
 </p><hr size="6">
@@ -2710,32 +2718,32 @@ on the date itself.  For example, an anniversary diary entry can insert
 the number of years since the anniversary date into the text of the
 diary entry.  Thus the `<samp>%d</samp>' in this dairy entry:
 </p><a name="IDX1357"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 %%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>gets replaced by the age, so on October 31, 1990 the entry appears in
 the fancy diary buffer like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Arthur's birthday (42 years old)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>If the diary file instead contains this entry:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 %%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>the entry in the fancy diary buffer for October 31, 1990 appears like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Arthur's 42nd birthday
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Similarly, cyclic diary entries can interpolate the number of repetitions
 that have occurred:
 </p><a name="IDX1358"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 %%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Renew medication (5th time)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>in the fancy diary display on September 8, 1990.
 </p><p>  The generality of sexp diary entries lets you specify any diary entry
 that you can describe algorithmically.  A sexp diary entry contains an
@@ -2747,13 +2755,13 @@ to find the date being considered; its value is a list (<var>month</var>
 </p><p>  Suppose you get paid on the 21st of the month if it is a weekday, and
 on the Friday before if the 21st is on a weekend.  Here is how to write
 a sexp diary entry that matches those dates:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 &amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
           (and (memq day '(19 20)) (= dayname 5)))
          ) Pay check deposited
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>applies to just those dates.  This example illustrates how the sexp can
 depend on the variable <code>date</code>; this variable is a list (<var>month</var>
 <var>day</var> <var>year</var>) that gives the Gregorian date for which the diary
@@ -2818,9 +2826,9 @@ calendar.
 </dl>
 
 <p>Thus including the diary entry
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 &amp;%%(diary-hebrew-date)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>causes every day's diary display to contain the equivalent date on the
 Hebrew calendar, if you are using the fancy diary display.  (With simple
 diary display, the line `<samp>&amp;%%(diary-hebrew-date)</samp>' appears in the
@@ -3015,32 +3023,33 @@ is given below.
 </dl>
 
 <p>For example, if the buffer contains:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 whether the file has changed on disk since it was last visited or
 saved.  If it has, you are asked to confirm that you want to change
 the buffer.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>then if you apply <kbd>M-x sort-lines</kbd> to the entire buffer you get:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 saved.  If it has, you are asked to confirm that you want to change
 the buffer.
 whether the file has changed on disk since it was last visited or
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>where the upper case `O' comes before all lower case letters.  If you apply
 instead <kbd>C-u 2 M-x sort-fields</kbd> you get:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 saved.  If it has, you are asked to confirm that you want to change
 implemented, XEmacs also checks the first time you modify a buffer
 the buffer.
 On systems where clash detection (locking of files being edited) is
 whether the file has changed on disk since it was last visited or
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>where the sort keys were `<samp>If</samp>', `<samp>XEmacs</samp>', `<samp>buffer</samp>',
-`<samp>systems</samp>', and `<samp>the</samp>'.</p><a name="IDX1390"></a>
+`<samp>systems</samp>', and `<samp>the</samp>'.
+</p><a name="IDX1390"></a>
 <p>  <kbd>M-x sort-columns</kbd> requires more explanation.  You specify the
 columns by putting point at one of the columns and the mark at the other
 column.  Because this means you cannot put point or the mark at the
@@ -3150,7 +3159,8 @@ before the output and the mark is set after the output.
 the contents of the region as input to the shell command, instead of no
 input.  If a numeric argument is used to direct  output to the current
 buffer, then the old region is deleted first and the output replaces it as
-the contents of the region.</p><a name="IDX1393"></a>
+the contents of the region.
+</p><a name="IDX1393"></a>
 <a name="IDX1394"></a>
 <p>  Both <kbd>M-!</kbd> and <kbd>M-|</kbd> use <code>shell-file-name</code> to specify the
 shell to use.  This variable is initialized based on your <code>SHELL</code>
@@ -3158,7 +3168,8 @@ environment variable when you start XEmacs.  If the file name does not
 specify a directory, the directories in the list <code>exec-path</code> are
 searched; this list is initialized based on the <code>PATH</code> environment
 variable when you start XEmacs.  You can override either or both of these
-default initializations in your init file. See section <a href="xemacs_30.html#SEC377">The Init File</a>.</p><p>  When you use <kbd>M-!</kbd> and <kbd>M-|</kbd>, XEmacs has to wait until the
+default initializations in your init file. See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+</p><p>  When you use <kbd>M-!</kbd> and <kbd>M-|</kbd>, XEmacs has to wait until the
 shell command completes.  You can quit with <kbd>C-g</kbd>; that terminates
 the shell command.
 </p><hr size="6">
@@ -3205,11 +3216,13 @@ one, and so on.  All the subshells run independently and in parallel.
 environment variable <code>ESHELL</code> is used, or the environment variable
 <code>SHELL</code> if there is no <code>ESHELL</code>.  If the file name specified
 is relative, the directories in the list <code>exec-path</code> are searched
-(see section <a href="#SEC338">Single Shell Commands</a>).</p><p>  As soon as the subshell is started, it is sent as input the contents of
+(see section <a href="#SEC338">Single Shell Commands</a>).
+</p><p>  As soon as the subshell is started, it is sent as input the contents of
 the file `<tt>~/.emacs_<var>shellname</var></tt>', if that file exists, where
 <var>shellname</var> is the name of the file that the shell was loaded from.
 For example, if you use <code>csh</code>, the file sent to it is
-`<tt>~/.emacs_csh</tt>'.</p><a name="IDX1396"></a>
+`<tt>~/.emacs_csh</tt>'.
+</p><a name="IDX1396"></a>
 <a name="IDX1397"></a>
 <a name="IDX1398"></a>
 <p>  <code>cd</code>, <code>pushd</code>, and <code>popd</code> commands given to the inferior
@@ -3222,7 +3235,8 @@ recognize them also.  For example, if the value of the variable
 that line is regarded as a <code>pushd</code> command.  Change this variable when
 you add aliases for `<samp>pushd</samp>'.  Likewise, <code>shell-popd-regexp</code> and
 <code>shell-cd-regexp</code> are used to recognize commands with the meaning of
-`<samp>popd</samp>' and `<samp>cd</samp>'.</p><p><kbd>M-x shell-resync-dirs</kbd> queries the shell and resynchronizes XEmacs'
+`<samp>popd</samp>' and `<samp>cd</samp>'.
+</p><p><kbd>M-x shell-resync-dirs</kbd> queries the shell and resynchronizes XEmacs'
 idea of what the current directory stack is.  <kbd>M-x
 shell-dirtrack-toggle</kbd> turns directory tracking on and off.
 </p><a name="IDX1399"></a>

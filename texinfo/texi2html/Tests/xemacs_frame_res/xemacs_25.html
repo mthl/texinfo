@@ -138,7 +138,8 @@ line of the `<samp>*compilation*</samp>' buffer changes to say `<samp>signal</sa
 instead of `<samp>run</samp>'.  Starting a new compilation also kills any
 running compilation, as only one can occur at any time.  Starting a new
 compilation prompts for confirmation before actually killing a
-compilation that is running.</p><a name="IDX1023"></a>
+compilation that is running.
+</p><a name="IDX1023"></a>
 <a name="IDX1024"></a>
 <p>  To parse the compiler error messages, type <kbd>C-x `</kbd>
 (<code>next-error</code>).  The character following <kbd>C-x</kbd> is the grave
@@ -628,7 +629,8 @@ non-<code>nil</code>.  Quitting with <kbd>C-g</kbd> is not considered an error, 
 However, if you set <code>debug-on-quit</code> to be non-<code>nil</code>, <kbd>C-g</kbd> will
 invoke the debugger.  This can be useful for debugging an infinite loop;
 type <kbd>C-g</kbd> once the loop has had time to reach its steady state.
-<code>debug-on-quit</code> has no effect on errors.</p><a name="IDX1048"></a>
+<code>debug-on-quit</code> has no effect on errors.
+</p><a name="IDX1048"></a>
 <a name="IDX1049"></a>
 <a name="IDX1050"></a>
 <p>  You can make Emacs enter the debugger when a specified function
@@ -639,7 +641,8 @@ debugger as soon as <var>fun-name</var> is called. Use
 debugger when called.  (Redefining the function also does this.)  To enter
 the debugger from some other place in Lisp code, you must insert the
 expression <code>(debug)</code> there and install the changed code with
-<kbd>C-M-x</kbd>.  See section <a href="#SEC258">Evaluating Emacs-Lisp Expressions</a>.</p><p>  When the debugger is entered, it displays the previously selected buffer
+<kbd>C-M-x</kbd>.  See section <a href="#SEC258">Evaluating Emacs-Lisp Expressions</a>.
+</p><p>  When the debugger is entered, it displays the previously selected buffer
 in one window and a buffer named `<samp>*Backtrace*</samp>' in another window.  The
 backtrace buffer contains one line for each level of Lisp function
 execution currently going on.  At the beginning of the buffer is a message
@@ -812,6 +815,12 @@ way to send the changed definition to the inferior Lisp process is the key
 which finds the defun around or following point and sends it as input to
 the Lisp process.  (Emacs can send input to any inferior process regardless
 of what buffer is current.)
+</p><p>  Contrast the meanings of <kbd>C-M-x</kbd> in Lisp mode (for editing programs
+to be run in another Lisp system) and Emacs-Lisp mode (for editing Lisp
+programs to be run in Emacs): in both modes it has the effect of installing
+the function definition that point is in, but the way of doing so is
+different according to where the relevant Lisp environment is found.
+See section <a href="#SEC253">Major Modes for Lisp</a>.
 </p><hr size="6">
 <a name="NOD247"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -830,13 +839,7 @@ of what buffer is current.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<p>  Contrast the meanings of <kbd>C-M-x</kbd> in Lisp mode (for editing programs
-to be run in another Lisp system) and Emacs-Lisp mode (for editing Lisp
-programs to be run in Emacs): in both modes it has the effect of installing
-the function definition that point is in, but the way of doing so is
-different according to where the relevant Lisp environment is found.
-See section <a href="#SEC253">Major Modes for Lisp</a>.
-</p>
+
 <a name="SEC262"></a>
 <h2> 22.8 Packages </h2>
 
@@ -965,6 +968,8 @@ hierarchy.
 in regular packages) source code plus all of the files necessary to
 build distribution tarballs (Unix Tar format files, gzipped for space
 savings).
+</p><p>Currently, source packages are only available via CVS.  See
+<a href="http://cvs.xemacs.org/">http://cvs.xemacs.org/</a> for details.
 </p><hr size="6">
 <a name="NOD249"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -983,9 +988,7 @@ savings).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<p>Currently, source packages are only available via CVS.  See
-<a href="http://cvs.xemacs.org/">http://cvs.xemacs.org/</a> for details.
-</p><a name="SEC268"></a>
+<a name="SEC268"></a>
 <h2> Installing Packages: </h2>
 <a name="SEC269"></a>
 <h3> 22.8.5 Getting Started </h3>

@@ -613,7 +613,8 @@ command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a
 (<code>delete-char</code>) and <kbd>DEL</kbd> (<code>delete-backward-char</code>), which
 delete only one character at a time, and those commands that delete only
 spaces or newlines.  Commands that can destroy significant amounts of
-nontrivial data usually kill.</p><hr size="6">
+nontrivial data usually kill.
+</p><hr size="6">
 <a name="SEC88"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC87" title="Previous section in reading order"> &lt; </a>]</td>
@@ -810,7 +811,8 @@ backward and kill text before point.
 </p><p>  Other syntactic units can be killed: words, with <kbd>M-<kbd>DEL</kbd></kbd> and
 <kbd>M-d</kbd> (see section <a href="xemacs_23.html#SEC206">Words</a>); sexps, with <kbd>C-M-k</kbd> (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>); and
 sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
-(see section <a href="xemacs_23.html#SEC207">Sentences</a>).</p><hr size="6">
+(see section <a href="xemacs_23.html#SEC207">Sentences</a>).
+</p><hr size="6">
 <a name="NOD79"></a>
 <a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -964,7 +966,8 @@ ring.  To force a kill command to append, first type the command <kbd>C-M-w</kbd
 if it is a kill command, to append the text it kills to the last killed
 text, instead of starting a new entry.  With <kbd>C-M-w</kbd>, you can kill
 several separated pieces of text and accumulate them to be yanked back
-in one place.</p><hr size="6">
+in one place.
+</p><hr size="6">
 <a name="NOD82"></a>
 <a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -991,7 +994,8 @@ after a <kbd>C-y</kbd> or another <kbd>M-y</kbd>.  It takes the text previously
 yanked and replaces it with the text from an earlier kill.  To recover
 the text of the next-to-the-last kill, first use <kbd>C-y</kbd> to recover
 the last kill, then <kbd>M-y</kbd> to replace it with the previous
-kill.</p><p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
+kill.
+</p><p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
 in the kill ring.  Each time you kill, the &quot;last yank&quot; pointer moves to
 the new item at the front of the ring.  <kbd>C-y</kbd> yanks the item
 which the &quot;last yank&quot; pointer points to.  <kbd>M-y</kbd> moves the &quot;last

@@ -66,7 +66,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <h3> 15.4.1 Functions and Similar Entities </h3>
 
 <p>This section describes the commands for describing functions and similar
-entities:</p><dl compact="compact">
+entities:
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX266"></a>
 </p></dd>
@@ -80,7 +81,8 @@ a function.  The <code>@deffn</code> command is written at the beginning of a
 line and is followed on the same line by the category of entity being
 described, the name of this particular entity, and its arguments, if
 any.  Terminate the definition with <code>@end deffn</code> on a line of its
-own.</p><p>For example, here is a definition:
+own.
+</p><p>For example, here is a definition:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
@@ -106,7 +108,8 @@ the example above, we used `<samp>@var{nchars}</samp>' in this way.
 </code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
-<small>...</small></samp>'.</p><p>For example,
+<small>...</small></samp>'.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun set symbol new-value
 Change the value of the symbol @var{symbol}
@@ -117,7 +120,8 @@ to @var{new-value}.
 arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
 the <code>@defun</code> line automatically appear in italics or upper case as
 if they were enclosed in <code>@var</code>.  Terminate the definition with
-<code>@end defun</code> on a line of its own.</p><p>The template is:
+<code>@end defun</code> on a line of its own.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun <var>function-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
@@ -130,7 +134,8 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
 <code>@defmac</code> is equivalent to `<samp>@deffn Macro <small>...</small></samp>' and
-works like <code>@defun</code>.</p><a name="IDX269"></a>
+works like <code>@defun</code>.
+</p><a name="IDX269"></a>
 </dd>
 <dt><code> @defspec <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
@@ -138,7 +143,8 @@ works like <code>@defun</code>.</p><a name="IDX269"></a>
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to `<samp>@deffn {Special Form}
-<small>...</small></samp>' and works like <code>@defun</code>.</p></dd>
+<small>...</small></samp>' and works like <code>@defun</code>.
+</p></dd>
 </dl>
 
 <hr size="1">

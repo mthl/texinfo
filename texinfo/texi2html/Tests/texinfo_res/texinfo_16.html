@@ -67,7 +67,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <p>The <code>@deffn</code> command and the other <em>definition commands</em>
 enable you to describe functions, variables, macros, commands, user
 options, special forms and other such artifacts in a uniform
-format.</p><p>In the Info file, a definition causes the entity
+format.
+</p><p>In the Info file, a definition causes the entity
 category--`Function', `Variable', or whatever--to appear at the
 beginning of the first line of the definition, followed by the
 entity's name and arguments.  In the printed manual, the command
@@ -77,9 +78,11 @@ output formats, the body of the definition is indented.  Also, the
 name of the entity is entered into the appropriate index:
 <code>@deffn</code> enters the name into the index of functions,
 <code>@defvr</code> enters it into the index of variables, and so
-on.</p><p>A manual need not and should not contain more than one definition for
+on.
+</p><p>A manual need not and should not contain more than one definition for
 a given name.  An appendix containing a summary should use
-<code>@table</code> rather than the definition commands.</p><table border="0" cellspacing="0">
+<code>@table</code> rather than the definition commands.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC215">15.1 The Template for a Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to structure a description using a
                                   definition command.</td></tr>
@@ -119,7 +122,8 @@ of the entity itself, and its arguments (if any).  Then write the body
 of the definition on succeeding lines.  (You may embed examples in the
 body.)  Finally, end the definition with an <code>@end deffn</code> command
 written on a line of its own.  (The other definition commands follow
-the same format.)</p><p>The template for a definition looks like this:
+the same format.)
+</p><p>The template for a definition looks like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn <var>category</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
@@ -146,13 +150,15 @@ This command moves point forward @var{count} words
 
 <p>Capitalize the category name like a title.  If the name of the
 category contains spaces, as in the phrase `Interactive Command',
-write braces around it.  For example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+write braces around it.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn {Interactive Command} isearch-forward
 ...
 @end deffn
 </pre></td></tr></table>
 <p>Otherwise, the second word will be mistaken for the name of the
-entity.</p><p>Some of the definition commands are more general than others.  The
+entity.
+</p><p>Some of the definition commands are more general than others.  The
 <code>@deffn</code> command, for example, is the general definition command
 for functions and the like--for entities that may take arguments.  When
 you use this command, you specify the category to which the entity
@@ -162,9 +168,11 @@ specialized variations, <code>@defun</code>, <code>@defmac</code>, and
 &quot;Macro&quot;, and &quot;Special Form&quot; respectively.  (In Lisp, a special form
 is an entity much like a function.)  The <code>@defvr</code> command also is
 accompanied by several predefined, specialized variations for describing
-particular kinds of variables.</p><p>The template for a specialized definition, such as <code>@defun</code>, is
+particular kinds of variables.
+</p><p>The template for a specialized definition, such as <code>@defun</code>, is
 similar to the template for a generalized definition, except that you
-do not need to specify the category:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+do not need to specify the category:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defun
@@ -191,7 +199,9 @@ is less than 1, @code{(point-max)} otherwise.
 
 <p>See section <a href="#SEC226">A Sample Function Definition</a>, for a more detailed example of a function
 definition, including the use of <code>@example</code> inside the
-definition.</p><p>The other specialized commands work like <code>@defun</code>.</p><a name="IDX262"></a>
+definition.
+</p><p>The other specialized commands work like <code>@defun</code>.
+</p><a name="IDX262"></a>
 <p>Note that, due to implementation difficulties, macros are not expanded
 in <code>@deffn</code> and all the other definition commands.
 </p><hr size="6">
@@ -219,7 +229,8 @@ in <code>@deffn</code> and all the other definition commands.
 specified by a distinctive glyph that uses square brackets and
 ellipses.  For example, a special form often breaks its argument list
 into separate arguments in more complicated ways than a
-straightforward function.</p><p>An argument enclosed within square brackets is optional.
+straightforward function.
+</p><p>An argument enclosed within square brackets is optional.
 Thus, [<var>optional-arg</var>] means that <var>optional-arg</var> is optional.
 An argument followed by an ellipsis is optional
 and may be repeated more than once.
@@ -227,7 +238,8 @@ Thus, <var>repeated-args</var><small>...</small> stands for zero or more argumen
 Parentheses are used when several arguments are grouped
 into additional levels of list structure in Lisp.
 </p><p>Here is the <code>@defspec</code> line of an example of an imaginary
-special form:</p><blockquote>
+special form:
+</p><blockquote>
 
 <dl>
 <dt><u>Special Form:</u> <b>foobar</b> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var><small>...</small>
@@ -241,14 +253,17 @@ but must both be present or both absent.  If they are present,
 <var>inc</var> may optionally be specified as well.  These arguments are
 grouped with the argument <var>var</var> into a list, to distinguish them
 from <var>body</var>, which includes all remaining elements of the
-form.</p><p>In a Texinfo source file, this <code>@defspec</code> line is written like
+form.
+</p><p>In a Texinfo source file, this <code>@defspec</code> line is written like
 this (except it would not be split over two lines, as it is in this
-example).</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+example).
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defspec foobar (@var{var} [@var{from} @var{to}
      [@var{inc}]]) @var{body}@dots{}
 </pre></td></tr></table>
 <p>The function is listed in the Command and Variable Index under
-`<samp>foobar</samp>'.</p><hr size="6">
+`<samp>foobar</samp>'.
+</p><hr size="6">
 <a name="NOD203"></a>
 <a name="SEC217"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -273,7 +288,8 @@ example).</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 the first <code>@deffn</code> line by a line beginning with <code>@deffnx</code>.
 The <code>@deffnx</code> command works exactly like <code>@deffn</code>
 except that it does not generate extra vertical white space between it
-and the preceding line.</p><p>For example,
+and the preceding line.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn {Interactive Command} isearch-forward
 @deffnx {Interactive Command} isearch-backward
@@ -316,12 +332,15 @@ These two search commands are similar except ...
 <h2> 15.4 The Definition Commands </h2>
 
 <p>Texinfo provides more than a dozen definition commands, all of which
-are described in this section.</p><p>The definition commands automatically enter the name of the entity in
+are described in this section.
+</p><p>The definition commands automatically enter the name of the entity in
 the appropriate index: for example, <code>@deffn</code>, <code>@defun</code>,
 and <code>@defmac</code> enter function names in the index of functions;
 <code>@defvr</code> and <code>@defvar</code> enter variable names in the index
-of variables.</p><p>Although the examples that follow mostly illustrate Lisp, the commands
-can be used for other programming languages.</p><table border="0" cellspacing="0">
+of variables.
+</p><p>Although the examples that follow mostly illustrate Lisp, the commands
+can be used for other programming languages.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC219">15.4.1 Functions and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for functions and similar entities.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC220">15.4.2 Variables and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for variables and similar entities.</td></tr>
@@ -353,7 +372,8 @@ can be used for other programming languages.</p><table border="0" cellspacing="0
 <h3> 15.4.1 Functions and Similar Entities </h3>
 
 <p>This section describes the commands for describing functions and similar
-entities:</p><dl compact="compact">
+entities:
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX266"></a>
 </p></dd>
@@ -367,7 +387,8 @@ a function.  The <code>@deffn</code> command is written at the beginning of a
 line and is followed on the same line by the category of entity being
 described, the name of this particular entity, and its arguments, if
 any.  Terminate the definition with <code>@end deffn</code> on a line of its
-own.</p><p>For example, here is a definition:
+own.
+</p><p>For example, here is a definition:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
@@ -393,7 +414,8 @@ the example above, we used `<samp>@var{nchars}</samp>' in this way.
 </code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
-<small>...</small></samp>'.</p><p>For example,
+<small>...</small></samp>'.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun set symbol new-value
 Change the value of the symbol @var{symbol}
@@ -404,7 +426,8 @@ to @var{new-value}.
 arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
 the <code>@defun</code> line automatically appear in italics or upper case as
 if they were enclosed in <code>@var</code>.  Terminate the definition with
-<code>@end defun</code> on a line of its own.</p><p>The template is:
+<code>@end defun</code> on a line of its own.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun <var>function-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
@@ -417,7 +440,8 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
 <code>@defmac</code> is equivalent to `<samp>@deffn Macro <small>...</small></samp>' and
-works like <code>@defun</code>.</p><a name="IDX269"></a>
+works like <code>@defun</code>.
+</p><a name="IDX269"></a>
 </dd>
 <dt><code> @defspec <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
@@ -425,7 +449,8 @@ works like <code>@defun</code>.</p><a name="IDX269"></a>
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to `<samp>@deffn {Special Form}
-<small>...</small></samp>' and works like <code>@defun</code>.</p></dd>
+<small>...</small></samp>' and works like <code>@defun</code>.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -450,7 +475,8 @@ see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Spec
 <h3> 15.4.2 Variables and Similar Entities </h3>
 
 <p>Here are the commands for defining variables and similar
-entities:</p><dl compact="compact">
+entities:
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX270"></a>
 </p></dd>
@@ -475,7 +501,8 @@ the maximum width of filled lines.
 @end defvr
 </pre></td></tr></table>
 <p>Terminate the definition with <code>@end defvr</code> on a line of its
-own.</p><p>The template is:
+own.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defvr <var>category</var> <var>name</var>
 <var>body-of-definition</var>
@@ -488,7 +515,8 @@ own.</p><p>The template is:
 </code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
 <code>@defvar</code> is equivalent to `<samp>@defvr Variable
-<small>...</small></samp>'.</p><p>For example:
+<small>...</small></samp>'.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defvar kill-ring
 ...
@@ -501,7 +529,8 @@ own.</p><p>The template is:
 @end defvar
 </pre></td></tr></table>
 <p><code>@defvar</code> creates an entry in the index of variables for
-<var>name</var>.</p><a name="IDX272"></a>
+<var>name</var>.
+</p><a name="IDX272"></a>
 </dd>
 <dt><code> @defopt <var>name</var>
 </code></dt>
@@ -509,7 +538,8 @@ own.</p><p>The template is:
 The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
 taste; Emacs has many such (see <a href="../emacs/Variables.html">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to `<samp>@defvr {User
-Option} <small>...</small></samp>' and works like <code>@defvar</code>.</p></dd>
+Option} <small>...</small></samp>' and works like <code>@defvar</code>.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -547,7 +577,8 @@ functions and similar entities that may take arguments and that are
 typed.  The <code>@deftypefn</code> command is written at the beginning of
 a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
-particular entity, and its arguments, if any.</p><p>For example,
+particular entity, and its arguments, if any.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
@@ -557,27 +588,32 @@ particular entity, and its arguments, if any.</p><p>For example,
 <p>(where the text before the &quot;<small>...</small>&quot;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 -- Library Function: int foobar (int FOO, float BAR)
 ...
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
-<var>bar</var> (a <code>float</code>).</p><p>The argument names that you write in <code>@deftypefn</code> are not subject
+<var>bar</var> (a <code>float</code>).
+</p><p>The argument names that you write in <code>@deftypefn</code> are not subject
 to an implicit <code>@var</code>--since the actual names of the arguments in
 <code>@deftypefn</code> are typically scattered among data type names and
 keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example
-above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.</p><p>The template for <code>@deftypefn</code> is:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.
+</p><p>The template for <code>@deftypefn</code> is:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
 <var>body-of-description</var>
 @end deftypefn
 </pre></td></tr></table>
 <p>Note that if the <var>category</var> or <var>data type</var> is more than one
-word then it must be enclosed in braces to make it a single argument.</p><p>If you are describing a procedure in a language that has packages,
+word then it must be enclosed in braces to make it a single argument.
+</p><p>If you are describing a procedure in a language that has packages,
 such as Ada, you might consider using <code>@deftypefn</code> in a manner
 somewhat contrary to the convention described in the preceding
-paragraphs.</p><p>For example:
+paragraphs.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftypefn stacks private push
         (@var{s}:in out stack;
@@ -590,19 +626,22 @@ would be a single line in a real Texinfo file.)
 </p><p>In this instance, the procedure is classified as belonging to the
 package <code>stacks</code> rather than classified as a `procedure' and its
 data type is described as <code>private</code>.  (The name of the procedure
-is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)</p><p><code>@deftypefn</code> creates an entry in the index of functions for
-<var>name</var>.</p></dd>
+is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
+</p><p><code>@deftypefn</code> creates an entry in the index of functions for
+<var>name</var>.
+</p></dd>
 <dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
 <dd><p><a name="IDX275"></a>
 The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
-`<samp>@deftypefn Function <small>...</small></samp>'.</p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+`<samp>@deftypefn Function <small>...</small></samp>'.
+</p><p>Thus,
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 @deftypefun int foobar (int @var{foo}, float @var{bar})
 ...
 @end deftypefun
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>produces the following in Info:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 -- Function: int foobar (int FOO, float BAR)
@@ -615,7 +654,8 @@ for functions in typed languages.  The command is equivalent to
 @end deftypefun
 </pre></td></tr></table>
 <p><code>@deftypefun</code> creates an entry in the index of functions for
-<var>name</var>.</p></dd>
+<var>name</var>.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -643,7 +683,8 @@ for functions in typed languages.  The command is equivalent to
 functions in typed languages.  See section <a href="#SEC221">Functions in Typed Languages</a>.  The general
 definition command <code>@deftypevr</code> corresponds to
 <code>@deftypefn</code> and the specialized definition command
-<code>@deftypevar</code> corresponds to <code>@deftypefun</code>.</p><dl compact="compact">
+<code>@deftypevar</code> corresponds to <code>@deftypefun</code>.
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX276"></a>
 </p></dd>
@@ -653,10 +694,12 @@ definition command <code>@deftypevr</code> corresponds to
 something like a variable in a typed language--an entity that records
 a value.  You must choose a term to describe the category of the
 entity being defined; for example, &quot;Variable&quot; could be used if the
-entity is a variable.</p><p>The <code>@deftypevr</code> command is written at the beginning of a line
+entity is a variable.
+</p><p>The <code>@deftypevr</code> command is written at the beginning of a line
 and is followed on the same line by the category of the entity
 being described, the data type, and the name of this particular
-entity.</p><p>For example:
+entity.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftypevr {Global Flag} int enable
 ...
@@ -674,13 +717,15 @@ entity.</p><p>For example:
 @end deftypevr
 </pre></td></tr></table>
 <p><code>@deftypevr</code> creates an entry in the index of variables for
-<var>name</var>.</p><a name="IDX277"></a>
+<var>name</var>.
+</p><a name="IDX277"></a>
 </dd>
 <dt><code> @deftypevar <var>data-type</var> <var>name</var>
 </code></dt>
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
-to `<samp>@deftypevr Variable <small>...</small></samp>'.</p><p>For example:
+to `<samp>@deftypevr Variable <small>...</small></samp>'.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftypevar int fubar
 ...
@@ -698,7 +743,8 @@ to `<samp>@deftypevr Variable <small>...</small></samp>'.</p><p>For example:
 @end deftypevar
 </pre></td></tr></table>
 <p><code>@deftypevar</code> creates an entry in the index of variables for
-<var>name</var>.</p></dd>
+<var>name</var>.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -727,9 +773,11 @@ objects, such as are used in object-oriented programming.  A class is
 a defined type of abstract object.  An instance of a class is a
 particular object that has the type of the class.  An instance
 variable is a variable that belongs to the class but for which each
-instance has its own value.</p><p>In a definition, if the name of a class is truly a name defined in the
+instance has its own value.
+</p><p>In a definition, if the name of a class is truly a name defined in the
 programming system for a class, then you should write an <code>@code</code>
-around it.  Otherwise, it is printed in the usual text font.</p><dl compact="compact">
+around it.  Otherwise, it is printed in the usual text font.
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX278"></a>
 </p></dd>
@@ -739,13 +787,15 @@ around it.  Otherwise, it is printed in the usual text font.</p><dl compact="com
 variables associated with classes in object-oriented programming.  The
 <code>@defcv</code> command is followed by three arguments: the category of
 thing being defined, the class to which it belongs, and its
-name.  Thus,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+name.  Thus,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defcv {Class Option} Window border-pattern
 ...
 @end defcv
 </pre></td></tr></table>
 <p>illustrates how you would write the first line of a definition of the
-<code>border-pattern</code> class option of the class <code>Window</code>.</p><p>The template is:
+<code>border-pattern</code> class option of the class <code>Window</code>.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defcv <var>category</var> <var>class</var> <var>name</var>
 ...
@@ -758,7 +808,8 @@ name.  Thus,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 </code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
-equivalent to `<samp>@defcv {Instance Variable} <small>...</small></samp>'</p><p>The template is:
+equivalent to `<samp>@defcv {Instance Variable} <small>...</small></samp>'
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defivar <var>class</var> <var>instance-variable-name</var>
 <var>body-of-definition</var>
@@ -781,10 +832,12 @@ entry in the index of variables.
 <dd><p>The <code>@defop</code> command is the general definition command for
 entities that may resemble methods in object-oriented programming.
 These entities take arguments, as functions do, but are associated with
-particular classes of objects.</p><p>For example, some systems have constructs called <em>wrappers</em> that
+particular classes of objects.
+</p><p>For example, some systems have constructs called <em>wrappers</em> that
 are associated with classes as methods are, but that act more like
 macros than like functions.  You could use <code>@defop Wrapper</code> to
-describe one of these.</p><p>Sometimes it is useful to distinguish methods and <em>operations</em>.
+describe one of these.
+</p><p>Sometimes it is useful to distinguish methods and <em>operations</em>.
 You can think of an operation as the specification for a method.
 Thus, a window system might specify that all window classes have a
 method named <code>expose</code>; we would say that this window system
@@ -792,24 +845,28 @@ defines an <code>expose</code> operation on windows in general.  Typically,
 the operation has a name and also specifies the pattern of arguments;
 all methods that implement the operation must accept the same
 arguments, since applications that use the operation do so without
-knowing which method will implement it.</p><p>Often it makes more sense to document operations than methods.  For
+knowing which method will implement it.
+</p><p>Often it makes more sense to document operations than methods.  For
 example, window application developers need to know about the
 <code>expose</code> operation, but need not be concerned with whether a
 given class of windows has its own method to implement this operation.
-To describe this operation, you would write:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+To describe this operation, you would write:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defop Operation windows expose
 </pre></td></tr></table>
 <p>The <code>@defop</code> command is written at the beginning of a line and
 is followed on the same line by the overall name of the category of
 operation, the name of the class of the operation, the name of the
-operation, and its arguments, if any.</p><p>The template is:
+operation, and its arguments, if any.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defop
 </pre></td></tr></table>
 <p><code>@defop</code> creates an entry, such as `<code>expose</code> on
-<code>windows</code>', in the index of functions.</p><a name="IDX282"></a>
+<code>windows</code>', in the index of functions.
+</p><a name="IDX282"></a>
 </dd>
 <dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
@@ -829,21 +886,24 @@ subclasses.
 </p><p><code>@defmethod</code> is equivalent to `<samp>@defop Method <small>...</small></samp>'.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
-arguments, if any.</p><p>For example:
+arguments, if any.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defmethod <code>bar-class</code> bar-method argument
 ...
 @end defmethod
 </pre></td></tr></table>
 <p>illustrates the definition for a method called <code>bar-method</code> of
-the class <code>bar-class</code>.  The method takes an argument.</p><p>The template is:
+the class <code>bar-class</code>.  The method takes an argument.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defmethod <var>class</var> <var>method-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defmethod
 </pre></td></tr></table>
 <p><code>@defmethod</code> creates an entry, such as `<code>bar-method</code> on
-<code>bar-class</code>', in the index of functions.</p></dd>
+<code>bar-class</code>', in the index of functions.
+</p></dd>
 <dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
 <dd><p><a name="IDX284"></a>
@@ -875,7 +935,8 @@ to the <code>@defmethod</code> command with the addition of the
 </tr></table>
 <h3> 15.4.6 Data Types </h3>
 
-<p>Here is the command for data types:</p><dl compact="compact">
+<p>Here is the command for data types:
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX285"></a>
 </p></dd>
@@ -889,10 +950,12 @@ attributes of objects of that type.  Thus, you could use this command
 for describing <code>int</code> or <code>float</code>, in which case you could use
 <code>data type</code> as the category.  (A data type is a category of
 certain objects for purposes of deciding which operations can be
-performed on them.)</p><p>In Lisp, for example,  <em>pair</em> names a particular data
+performed on them.)
+</p><p>In Lisp, for example,  <em>pair</em> names a particular data
 type, and an object of that type has two slots called the
 <small>CAR</small> and the <small>CDR</small>.  Here is how you would write the first line
-of a definition of <code>pair</code>.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+of a definition of <code>pair</code>.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deftp {Data type} pair car cdr
 ...
 @end deftp
@@ -933,7 +996,8 @@ one of the other definition commands, please take care to use
 arguments that indicate the meaning, as with the <var>count</var> argument
 to the <code>forward-word</code> function.  Also, if the name of an argument
 contains the name of a type, such as <var>integer</var>, take care that the
-argument actually is of that type.</p><hr size="6">
+argument actually is of that type.
+</p><hr size="6">
 <a name="NOD212"></a>
 <a name="SEC226"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -957,7 +1021,8 @@ argument actually is of that type.</p><hr size="6">
 <p>A function definition uses the <code>@defun</code> and <code>@end defun</code>
 commands.  The name of the function follows immediately after the
 <code>@defun</code> command and it is followed, on the same line, by the
-parameter list.</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
+parameter list.
+</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
 </p><blockquote>
 
 <dl>
@@ -987,7 +1052,8 @@ error--&gt; Wrong type argument: listp, z
      =&gt; (a b c x y z)
 </pre></td></tr></table>
 <p>An interesting example of using <code>apply</code> is found in the description
-of <code>mapcar</code>.</p></dd></dl>
+of <code>mapcar</code>.
+</p></dd></dl>
 </blockquote>
 
 <p>In the Texinfo source file, this example looks like this:
@@ -1025,7 +1091,8 @@ in the description of @code{mapcar}.
 @end defun
 </pre></td></tr></table>
 <p>In this manual, this function is listed in the Command and Variable
-Index under <code>apply</code>.</p><p>Ordinary variables and user options are described using a format like
+Index under <code>apply</code>.
+</p><p>Ordinary variables and user options are described using a format like
 that for functions except that variables do not take arguments.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

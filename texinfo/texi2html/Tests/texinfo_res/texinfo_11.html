@@ -66,7 +66,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <p>Quotations and examples are blocks of text consisting of one or more
 whole paragraphs that are set off from the bulk of the text and
-treated differently.  They are usually indented.</p><p>In Texinfo, you always begin a quotation or example by writing an
+treated differently.  They are usually indented.
+</p><p>In Texinfo, you always begin a quotation or example by writing an
 @-command at the beginning of a line by itself, and end it by writing
 an <code>@end</code> command that is also at the beginning of a line by
 itself.  For instance, you begin an example by writing <code>@example</code>
@@ -150,7 +151,8 @@ text is printed in a fixed-width font, and indented but not filled.
 <dt><code> @display
 </code></dt>
 <dd><p>Display illustrative text.  The text is indented but not filled, and
-no font is selected (so, by default, the font is roman).</p></dd>
+no font is selected (so, by default, the font is roman).
+</p></dd>
 <dt><code> @smalldisplay
 </code></dt>
 <dd><p>Is to <code>@display</code> as <code>@smallexample</code> is to <code>@example</code>.
@@ -169,7 +171,8 @@ but the text is not indented.
 <p>The <code>@exdent</code> command is used within the above constructs to
 undo the indentation of a line.
 </p><p>The <code>@flushleft</code> and <code>@flushright</code> commands are used to line
-up the left or right margins of unfilled text.</p><p>The <code>@noindent</code> command may be used after one of the above
+up the left or right margins of unfilled text.
+</p><p>The <code>@noindent</code> command may be used after one of the above
 constructs to prevent the following text from being indented as a new
 paragraph.
 </p><p>You can use the <code>@cartouche</code> command within one of the above
@@ -200,23 +203,28 @@ rounded corners around it.  See section <a href="#SEC154">Drawing Cartouches Aro
 </p><ul>
 <li><p>
 the margins are closer to the center of the page, so the whole of the
-quotation is indented;</p></li><li><p>
+quotation is indented;
+</p></li><li><p>
 the first lines of paragraphs are indented no more than other
-lines;</p></li><li><p>
-in the printed output, interparagraph spacing is reduced.</p></li></ul>
+lines;
+</p></li><li><p>
+in the printed output, interparagraph spacing is reduced.
+</p></li></ul>
 
 <blockquote>
 
 <p>This is an example of text written between an <code>@quotation</code>
 command and an <code>@end quotation</code> command.  An <code>@quotation</code>
 command is most often used to indicate text that is excerpted from
-another (real or hypothetical) printed work.</p></blockquote>
+another (real or hypothetical) printed work.
+</p></blockquote>
 
 <p>Write an <code>@quotation</code> command as text on a line by itself.  This
 line will disappear from the output.  Mark the end of the quotation
 with a line beginning with and containing only <code>@end quotation</code>.
 The <code>@end quotation</code> line will likewise disappear from the
-output.  Thus, the following,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+output.  Thus, the following,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @quotation
 This is
 a foo.
@@ -265,7 +273,8 @@ obtained by indenting each line with five spaces.
 <p>Write an <code>@example</code> command at the beginning of a line by itself.
 Mark the end of the example
 with an <code>@end example</code> command, also written at the beginning of a
-line by itself.</p><p>For example,
+line by itself.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @example
 mv foo bar
@@ -282,13 +291,15 @@ you should put a blank line before the
 <code>@example</code> and another blank line after the <code>@end example</code>.
 Note that blank lines inside the beginning
 <code>@example</code> and the ending <code>@end example</code> will appear in
-the output.</p><blockquote>
+the output.
+</p><blockquote>
 
 <p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
 else in Texinfo (except in verbatim environments)!  The TeX
 implementation of Texinfo treats tabs as single spaces, and that is not
 what they look like.  (If necessary, in Emacs, you can use <kbd>M-x
-untabify</kbd> to convert tabs in a region to multiple spaces.)</p></blockquote>
+untabify</kbd> to convert tabs in a region to multiple spaces.)
+</p></blockquote>
 
 <p>Examples are often, logically speaking, &quot;in the middle&quot; of a
 paragraph, and the text that continues after an example should not be
@@ -421,7 +432,8 @@ you write a function that evaluates only and all the Lisp code in a
 Texinfo file.  Then you can use the Texinfo file as a Lisp
 library.<a name="DOCF7" href="texinfo_fot.html#FOOT7">(7)</a>
 </p><p>Mark the end of <code>@lisp</code> with <code>@end lisp</code> on a line by
-itself.</p><hr size="6">
+itself.
+</p><hr size="6">
 <a name="NOD134"></a>
 <a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -454,11 +466,11 @@ non-small companion commands.
 </p><p>Mark the end of an <code>@small<small>...</small></code> block with a corresponding
 <code>@end small<small>...</small></code>.  For example, pair <code>@smallexample</code> with
 <code>@end smallexample</code>.
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 This is an example of text written between <code>@smallexample</code> and
 <code>@end smallexample</code>.  In Info this text appears in its normal size;
 but in a 7 by 9.25 inch manual, this text appears in a smaller font.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>The <code>@small<small>...</small></code> commands make it easier to prepare manuals
 without forcing you to edit examples by hand to fit them onto narrower
 pages.
@@ -495,7 +507,8 @@ except that, in
 a printed manual, <code>@display</code> does not select the fixed-width
 font.  In fact, it does not specify the font at all, so that the text
 appears in the same font it would have appeared in without the
-<code>@display</code> command.</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+<code>@display</code> command.
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
 This is an example of text written between an <code>@display</code> command
 and an <code>@end display</code> command.  The <code>@display</code> command
 indents the text, but does not fill it.
@@ -527,7 +540,8 @@ See section <a href="#SEC148"><code>@small<small>...</small></code> Block Comman
 
 <p>The <code>@format</code> command is similar to <code>@example</code> except
 that, in the printed manual, <code>@format</code> does not select the
-fixed-width font and does not narrow the margins.</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+fixed-width font and does not narrow the margins.
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
 This is an example of text written between an <code>@format</code> command
 and an <code>@end format</code> command.  As you can see
 from this example,
@@ -562,7 +576,9 @@ See section <a href="#SEC148"><code>@small<small>...</small></code> Block Comman
 The command is written at the beginning of a line and applies only to
 the text that follows the command that is on the same line.  Do not use
 braces around the text.  In a printed manual, the text on an
-<code>@exdent</code> line is printed in the roman font.</p><p><code>@exdent</code> is usually used within examples.  Thus,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<code>@exdent</code> line is printed in the roman font.
+</p><p><code>@exdent</code> is usually used within examples.  Thus,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @example
 This line follows an @@example command.
 @exdent This line is exdented.
@@ -579,7 +595,8 @@ The @end example comes on the next line.
 </pre></td></tr></table>
 <p>In practice, the <code>@exdent</code> command is rarely used.
 Usually, you un-indent text by ending the example and
-returning the page to its normal width.</p><hr size="6">
+returning the page to its normal width.
+</p><hr size="6">
 <a name="NOD138"></a>
 <a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -605,7 +622,8 @@ ends of lines on the left and right margins of a page,
 but do not fill the text.  The commands are written on lines of their
 own, without braces.  The <code>@flushleft</code> and <code>@flushright</code>
 commands are ended by <code>@end flushleft</code> and <code>@end
-flushright</code> commands on lines of their own.</p><p>For example,
+flushright</code> commands on lines of their own.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @flushleft
 This text is
@@ -662,7 +680,8 @@ left end ragged.
 Ordinarily, the formatters indent text that follows an example as a new
 paragraph.  However, you can prevent this by writing <code>@noindent</code>
 at the beginning of a line by itself preceding the continuation
-text.</p><p>For example:
+text.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @example
 This is an example
@@ -679,6 +698,7 @@ that follows after it.  (This whole example is between
 </pre><table><tr><td>&nbsp;</td><td class="example"><pre> 
 This is an example
 </pre></td></tr></table><pre style="font-family: serif">
+
 This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
@@ -686,10 +706,13 @@ that follows after it.  (This whole example is between
 </pre></td></tr></table>
 <p>To adjust the number of blank lines properly in the Info file output,
 remember that the line containing <code>@noindent</code> does not generate a
-blank line, and neither does the <code>@end example</code> line.</p><p>In the Texinfo source file for this manual, each line that says
-`produces' is preceded by a line containing <code>@noindent</code>.</p><p>Do not put braces after an <code>@noindent</code> command; they are not
+blank line, and neither does the <code>@end example</code> line.
+</p><p>In the Texinfo source file for this manual, each line that says
+`produces' is preceded by a line containing <code>@noindent</code>.
+</p><p>Do not put braces after an <code>@noindent</code> command; they are not
 necessary, since <code>@noindent</code> is a command used outside of
-paragraphs (see section <a href="texinfo_29.html#SEC320">@-Command Syntax</a>).</p><hr size="6">
+paragraphs (see section <a href="texinfo_29.html#SEC320">@-Command Syntax</a>).
+</p><hr size="6">
 <a name="NOD140"></a>
 <a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">

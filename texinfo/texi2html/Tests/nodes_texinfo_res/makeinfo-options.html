@@ -69,16 +69,20 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 options are used to set the value of the fill column and specify the
 footnote style.  Each command line option is a word preceded by
 `<samp>--</samp>' or a letter preceded by `<samp>-</samp>'.  You can use abbreviations
-for the long option names as long as they are unique.</p><p>For example, you could use the following shell command to create an Info
+for the long option names as long as they are unique.
+</p><p>For example, you could use the following shell command to create an Info
 file for `<tt>bison.texinfo</tt>' in which each line is filled to only 68
-columns:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+columns:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 makeinfo --fill-column=68 bison.texinfo
 </pre></td></tr></table>
-<p>You can write two or more options in sequence, like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<p>You can write two or more options in sequence, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 makeinfo --no-split --fill-column=70 ...
 </pre></td></tr></table>
 <p>This would keep the Info file together as one possibly very long
-file and would also set the fill column to 70.</p><p>The options are:
+file and would also set the fill column to 70.
+</p><p>The options are:
 </p><dl compact="compact">
 <dt><code> -D <var>var</var>
 </code></dt>

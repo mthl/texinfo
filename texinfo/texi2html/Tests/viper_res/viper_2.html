@@ -94,17 +94,20 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
+See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.
+</p><p>A buffer has a distinguished position called the <em>point</em>.
 A <em>point</em> is always between 2 characters, and is <em>looking at</em>
 the right hand character.  The cursor is positioned on the right hand
 character.  Thus, when the <em>point</em> is looking at the end-of-line,
 the cursor is on the end-of-line character, i.e. beyond the last
-character on the line.  This is the default Emacs behavior.</p><p>The default settings of Viper try to mimic the behavior of Vi, preventing
+character on the line.  This is the default Emacs behavior.
+</p><p>The default settings of Viper try to mimic the behavior of Vi, preventing
 the cursor from going beyond the last character on the line.  By using
 Emacs commands directly (such as those bound to arrow keys), it is possible
 to get the cursor beyond the end-of-line.  However, this won't (or
 shouldn't) happen if you restrict yourself to standard Vi keys, unless you
-modify the default editing style.  See section <a href="viper_4.html#SEC25">Customization</a>.</p><p>In addition to the <em>point</em>, there is another distinguished buffer
+modify the default editing style.  See section <a href="viper_4.html#SEC25">Customization</a>.
+</p><p>In addition to the <em>point</em>, there is another distinguished buffer
 position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a--z, there
@@ -120,7 +123,8 @@ typing <kbd>1:</kbd> will propmt you with something like <em>:123,135</em>,
 assuming that the current region starts at line 123 and ends at line
 135.  There is no need to type the line numbers, since Viper inserts them
 automatically in front of the Ex command.
-</p><p>See section <a href="viper_3.html#SEC15">Basics</a>, for more info.</p><a name="IDX1"></a>
+</p><p>See section <a href="viper_3.html#SEC15">Basics</a>, for more info.
+</p><a name="IDX1"></a>
 <a name="IDX2"></a>
 <a name="IDX3"></a>
 <a name="IDX4"></a>
@@ -140,7 +144,8 @@ show the buffer name and current major and minor modes (see below).
 A special buffer called <em>Minibuffer</em> is displayed as the last line
 in a Minibuffer window.  The Minibuffer window is used for command input
 output.  Viper uses Minibuffer window for <kbd>/</kbd> and <kbd>:</kbd>
-commands.</p><a name="IDX7"></a>
+commands.
+</p><a name="IDX7"></a>
 <a name="IDX8"></a>
 <a name="IDX9"></a>
 <a name="IDX10"></a>
@@ -156,19 +161,22 @@ buffers.  Additionally, each buffer has its <em>local keymap</em> that determine
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
+will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.
+</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
 you can use or not.  A buffer in <code>text-mode</code> can have
 <code>auto-fill-mode</code> as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
+more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
 are involved when Viper emulates Vi command mode, Vi insert mode, etc.
 You can also turn Viper on and off at any time while in Vi command mode.
 See section <a href="#SEC6">States in Viper</a>, for
-more information.</p><p>Emacs uses Control and Meta modifiers.  These are denoted as C and M,
+more information.
+</p><p>Emacs uses Control and Meta modifiers.  These are denoted as C and M,
 e.g. <kbd>^Z</kbd> as <kbd>C-z</kbd> and <kbd>Meta-x</kbd> as <kbd>M-x</kbd>.  The Meta key is
 usually located on each side of the Space bar; it is used in a manner
 similar to the Control key, e.g., <kbd>M-x</kbd> means typing <kbd>x</kbd> while
@@ -176,7 +184,8 @@ holding the Meta key down.  For keyboards that do not have a Meta key,
 <kbd>ESC</kbd> is used as Meta.  Thus <kbd>M-x</kbd> is typed as <kbd><kbd>ESC</kbd>
 x</kbd>.  Viper uses <kbd>ESC</kbd> to switch from Insert state to Vi state.  Therefore
 Viper defines <kbd>C-\</kbd> as its Meta key in Vi state.  See section <a href="#SEC8">Vi State</a>, for
-more info.</p><p>Emacs is structured as a lisp interpreter around a C core.  Emacs keys
+more info.
+</p><p>Emacs is structured as a lisp interpreter around a C core.  Emacs keys
 cause lisp functions to be called.  It is possible to call these
 functions directly, by typing <kbd>M-x function-name</kbd>.
 </p><hr size="6">
@@ -236,7 +245,8 @@ command line, it will show the `<samp>*scratch*</samp>' buffer, in the
 editing files by using <kbd>:e</kbd>, <kbd>:vi</kbd>, or <kbd>v</kbd> commands.
 (See section <a href="viper_5.html#SEC44">File and Buffer Handling</a>, for more information on <kbd>v</kbd> and other
 new commands that, in many cases, are more convenient than <kbd>:e</kbd>,
-<kbd>:vi</kbd>, and similar old-style Vi commands.)</p><p>Finally, if at some point you would want to de-Viperize your running
+<kbd>:vi</kbd>, and similar old-style Vi commands.)
+</p><p>Finally, if at some point you would want to de-Viperize your running
 copy of Emacs after Viper has been loaded, the command <kbd>M-x
 viper-go-away</kbd> will do it for you.  The function <code>toggle-viper-mode</code>
 toggles Viperization of Emacs on and off.
@@ -269,7 +279,8 @@ toggles Viperization of Emacs on and off.
 Viper, <kbd>C-z</kbd> will normally take you to Vi command state.  Another
 <kbd>C-z</kbd> will take you back to Emacs state.  This toggle key can be
 changed, see section <a href="viper_4.html#SEC25">Customization</a> You can also type <kbd>M-x viper-mode</kbd> to
-change to Vi state.</p><p>For users who chose to set their user level to 1 at Viper setup time,
+change to Vi state.
+</p><p>For users who chose to set their user level to 1 at Viper setup time,
 switching to Emacs state is deliberately made harder in order to not
 confuse the novice user.  In this case, <kbd>C-z</kbd> will either iconify Emacs
 (if Emacs runs as an application under X) or it will stop Emacs (if
@@ -306,7 +317,8 @@ boundary of a replacement region (usually designated via a `<samp>$</samp>' sign
 it will automatically change to Insert state.  You do not have to worry
 about it.  The key bindings remain practically the same as in Insert
 state.  If you type <kbd>ESC</kbd>, Viper will switch to Vi command mode, terminating the
-replacement state.</p></dd>
+replacement state.
+</p></dd>
 </dl>
 
 <a name="IDX16"></a>
@@ -379,7 +391,8 @@ can have several modes, such as C mode for editing C programs, LaTeX mode
 for editing LaTeX documents, Dired for directory editing, etc.  These are
 major modes, each with a different set of key-bindings.  Viper states are
 orthogonal to these Emacs major modes.  The presence of these language
-sensitive and other modes is a major win over Vi.  See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more.</p><p>The bindings for these modes can be made available in the Viper Insert state
+sensitive and other modes is a major win over Vi.  See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more.
+</p><p>The bindings for these modes can be made available in the Viper Insert state
 as well as in Emacs state.  Unless you specify your user level as 1 (a
 novice), all major mode key sequences that start with <kbd>C-x</kbd> and
 <kbd>C-c</kbd> are also available in Vi state.  This is important because major
@@ -466,6 +479,7 @@ binding.  However, it is still possible to switch the input method by typing
 Or you can use the MULE menu in the menubar.
 </p></dd>
 </dl>
+
 <p>Other differences are mostly improvements.  The ones you should know
 about are:
 </p><dl compact="compact">
@@ -552,6 +566,7 @@ alone as a default is meaningless, since this command requires a file
 argument.
 </p></dd>
 </dl>
+
 <p>As Vi, Viper's destructive commands can be re-executed by typing `<kbd>.</kbd>'.
 However, in addition, Viper keeps track of the history of such commands.  This
 history can be perused by typing <kbd>C-c M-p</kbd> and <kbd>C-c M-n</kbd>.
@@ -585,7 +600,8 @@ Emacs major modes cannot be used in Insert state.
 It is strongly recommended that as soon as you are comfortable, make the
 Emacs state bindings visible (by changing your user level to 3 or higher).
 See section <a href="viper_4.html#SEC25">Customization</a>,
-to see how to do this.</p><p>Once this is done, it is possible to do quite a bit of editing in
+to see how to do this.
+</p><p>Once this is done, it is possible to do quite a bit of editing in
 Insert state.  For instance, Emacs has a <em>yank</em> command, <kbd>C-y</kbd>,
 which is similar to Vi's <kbd>p</kbd>.  However, unlike <kbd>p</kbd>, <kbd>C-y</kbd> can be
 used in Insert state of Viper.  Emacs also has a kill ring where it keeps
@@ -772,14 +788,16 @@ If you set marker `<samp>a</samp>' in
 file `<tt>foo</tt>', start editing file `<tt>bar</tt>' and type <kbd>'a</kbd>, then
 <em>YOU WILL SWITCH TO FILE `<tt>foo</tt>'</em>.  You can see the contents of a
 textmarker using the Viper command <kbd>[&lt;a-z&gt;</kbd> where &lt;a-z&gt; are the
-textmarkers, e.g., <kbd>[a</kbd> to view marker `<samp>a</samp>' .</p></dd>
+textmarkers, e.g., <kbd>[a</kbd> to view marker `<samp>a</samp>' .
+</p></dd>
 <dt>`<samp> Repeated Commands
 </samp>'</dt>
 <dd><p>Command repetitions are common over files.  Typing <kbd>!!</kbd> will repeat the
 last <kbd>!</kbd> command whichever file it was issued from.
 Typing <kbd>.</kbd> will repeat the last command from any file, and
 searches will repeat the last search.  Ex commands can be repeated by typing
-<kbd>: <kbd>RET</kbd></kbd>.Note: in some rare cases, that <kbd>: <kbd>RET</kbd></kbd> may do something dangerous.
+<kbd>: <kbd>RET</kbd></kbd>.
+Note: in some rare cases, that <kbd>: <kbd>RET</kbd></kbd> may do something dangerous.
 However, usually its effect can be undone by typing <kbd>u</kbd>.
 </p></dd>
 <dt>`<samp> Registers
@@ -863,7 +881,8 @@ more powerful facilities for defining abbreviations.
 it is not implemented.
 A useful alternative is <code>cat -t -e file</code>.  Unfortunately, it cannot
 be used directly inside Emacs, since Emacs will obdurately change `<samp>^I</samp>'
-back to normal tabs.</p></li></ul>
+back to normal tabs.
+</p></li></ul>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

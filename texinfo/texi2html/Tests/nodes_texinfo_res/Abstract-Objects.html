@@ -70,9 +70,11 @@ objects, such as are used in object-oriented programming.  A class is
 a defined type of abstract object.  An instance of a class is a
 particular object that has the type of the class.  An instance
 variable is a variable that belongs to the class but for which each
-instance has its own value.</p><p>In a definition, if the name of a class is truly a name defined in the
+instance has its own value.
+</p><p>In a definition, if the name of a class is truly a name defined in the
 programming system for a class, then you should write an <code>@code</code>
-around it.  Otherwise, it is printed in the usual text font.</p><dl compact="compact">
+around it.  Otherwise, it is printed in the usual text font.
+</p><dl compact="compact">
 <dd><p>
 <a name="IDX278"></a>
 </p></dd>
@@ -82,13 +84,15 @@ around it.  Otherwise, it is printed in the usual text font.</p><dl compact="com
 variables associated with classes in object-oriented programming.  The
 <code>@defcv</code> command is followed by three arguments: the category of
 thing being defined, the class to which it belongs, and its
-name.  Thus,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+name.  Thus,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defcv {Class Option} Window border-pattern
 ...
 @end defcv
 </pre></td></tr></table>
 <p>illustrates how you would write the first line of a definition of the
-<code>border-pattern</code> class option of the class <code>Window</code>.</p><p>The template is:
+<code>border-pattern</code> class option of the class <code>Window</code>.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defcv <var>category</var> <var>class</var> <var>name</var>
 ...
@@ -101,7 +105,8 @@ name.  Thus,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 </code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
-equivalent to `<samp>@defcv {Instance Variable} <small>...</small></samp>'</p><p>The template is:
+equivalent to `<samp>@defcv {Instance Variable} <small>...</small></samp>'
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defivar <var>class</var> <var>instance-variable-name</var>
 <var>body-of-definition</var>
@@ -124,10 +129,12 @@ entry in the index of variables.
 <dd><p>The <code>@defop</code> command is the general definition command for
 entities that may resemble methods in object-oriented programming.
 These entities take arguments, as functions do, but are associated with
-particular classes of objects.</p><p>For example, some systems have constructs called <em>wrappers</em> that
+particular classes of objects.
+</p><p>For example, some systems have constructs called <em>wrappers</em> that
 are associated with classes as methods are, but that act more like
 macros than like functions.  You could use <code>@defop Wrapper</code> to
-describe one of these.</p><p>Sometimes it is useful to distinguish methods and <em>operations</em>.
+describe one of these.
+</p><p>Sometimes it is useful to distinguish methods and <em>operations</em>.
 You can think of an operation as the specification for a method.
 Thus, a window system might specify that all window classes have a
 method named <code>expose</code>; we would say that this window system
@@ -135,24 +142,28 @@ defines an <code>expose</code> operation on windows in general.  Typically,
 the operation has a name and also specifies the pattern of arguments;
 all methods that implement the operation must accept the same
 arguments, since applications that use the operation do so without
-knowing which method will implement it.</p><p>Often it makes more sense to document operations than methods.  For
+knowing which method will implement it.
+</p><p>Often it makes more sense to document operations than methods.  For
 example, window application developers need to know about the
 <code>expose</code> operation, but need not be concerned with whether a
 given class of windows has its own method to implement this operation.
-To describe this operation, you would write:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+To describe this operation, you would write:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defop Operation windows expose
 </pre></td></tr></table>
 <p>The <code>@defop</code> command is written at the beginning of a line and
 is followed on the same line by the overall name of the category of
 operation, the name of the class of the operation, the name of the
-operation, and its arguments, if any.</p><p>The template is:
+operation, and its arguments, if any.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defop
 </pre></td></tr></table>
 <p><code>@defop</code> creates an entry, such as `<code>expose</code> on
-<code>windows</code>', in the index of functions.</p><a name="IDX282"></a>
+<code>windows</code>', in the index of functions.
+</p><a name="IDX282"></a>
 </dd>
 <dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
@@ -172,21 +183,24 @@ subclasses.
 </p><p><code>@defmethod</code> is equivalent to `<samp>@defop Method <small>...</small></samp>'.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
-arguments, if any.</p><p>For example:
+arguments, if any.
+</p><p>For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 @defmethod <code>bar-class</code> bar-method argument
 ...
 @end defmethod
 </pre></td></tr></table>
 <p>illustrates the definition for a method called <code>bar-method</code> of
-the class <code>bar-class</code>.  The method takes an argument.</p><p>The template is:
+the class <code>bar-class</code>.  The method takes an argument.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defmethod <var>class</var> <var>method-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defmethod
 </pre></td></tr></table>
 <p><code>@defmethod</code> creates an entry, such as `<code>bar-method</code> on
-<code>bar-class</code>', in the index of functions.</p></dd>
+<code>bar-class</code>', in the index of functions.
+</p></dd>
 <dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
 </code></dt>
 <dd><p><a name="IDX284"></a>

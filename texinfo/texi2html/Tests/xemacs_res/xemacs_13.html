@@ -343,13 +343,13 @@ sort of register contents into the buffer.
 <p>  If you visit certain file names frequently, you can visit them more
 conveniently if you put their names in registers.  Here's the Lisp code
 used to put a file name in a register:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (set-register ?<var>r</var> '(file . <var>name</var>))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>puts the file name shown in register `<samp>z</samp>'.
 </p><p>  To visit the file whose name is in register <var>r</var>, type <kbd>C-x r j
 <var>r</var></kbd>.  (This is the same command used to jump to a position or

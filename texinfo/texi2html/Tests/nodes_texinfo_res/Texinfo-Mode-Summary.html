@@ -68,13 +68,15 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <p>In Texinfo mode, each set of commands has default keybindings that
 begin with the same keys.  All the commands that are custom-created
 for Texinfo mode begin with <kbd>C-c</kbd>.  The keys are somewhat
-mnemonic.</p><a name="SEC33"></a>
+mnemonic.
+</p><a name="SEC33"></a>
 <h3> Insert Commands </h3>
 
 <p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
 first letter of the @-command to be inserted.  (It might make more
 sense mnemonically to use <kbd>C-c C-i</kbd>, for `custom insert', but
-<kbd>C-c C-c</kbd> is quick to type.)</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<kbd>C-c C-c</kbd> is quick to type.)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-c c       Insert `<samp>@code</samp>'.
 C-c C-c d       Insert `<samp>@dfn</samp>'.
 C-c C-c e       Insert `<samp>@end</samp>'.
@@ -94,14 +96,16 @@ C-c C-c C-d     Insert a node's section title
 <h3> Show Structure </h3>
 
 <p>The <code>texinfo-show-structure</code> command is often used within a
-narrowed region.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+narrowed region.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-s         List all the headings.
 </pre></td></tr></table>
 <a name="SEC35"></a>
 <h3> The Master Update Command </h3>
 
 <p>The <code>texinfo-master-menu</code> command creates a master menu; and can
-be used to update every node and menu in a file as well.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+be used to update every node and menu in a file as well.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-u m
 M-x texinfo-master-menu
                 Create or update a master menu.
@@ -115,7 +119,8 @@ C-u C-c C-u m   With <kbd>C-u</kbd> as a prefix argument, first
 
 <p>The update pointer commands are invoked by typing <kbd>C-c C-u</kbd> and
 then either <kbd>C-n</kbd> for <code>texinfo-update-node</code> or <kbd>C-e</kbd> for
-<code>texinfo-every-node-update</code>.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<code>texinfo-every-node-update</code>.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-u C-n     Update a node.
 C-c C-u C-e     Update every node in the buffer.
 </pre></td></tr></table>
@@ -126,7 +131,8 @@ C-c C-u C-e     Update every node in the buffer.
 and then either <kbd>C-m</kbd> for <code>texinfo-make-menu</code> or
 <kbd>C-a</kbd> for <code>texinfo-all-menus-update</code>.  To update
 both nodes and menus at the same time, precede <kbd>C-c C-u
-C-a</kbd> with <kbd>C-u</kbd>.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+C-a</kbd> with <kbd>C-u</kbd>.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-u C-m     Make or update a menu.
 
 C-c C-u C-a     Make or update all
@@ -141,9 +147,11 @@ C-u C-c C-u C-a With <kbd>C-u</kbd> as a prefix argument,
 
 <p>The Info formatting commands that are written in Emacs Lisp are
 invoked by typing <kbd>C-c C-e</kbd> and then either <kbd>C-r</kbd> for a region
-or <kbd>C-b</kbd> for the whole buffer.</p><p>The Info formatting commands that are written in C and based on the
+or <kbd>C-b</kbd> for the whole buffer.
+</p><p>The Info formatting commands that are written in C and based on the
 <code>makeinfo</code> program are invoked by typing <kbd>C-c C-m</kbd> and then
-either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.</p><p>Use the <code>texinfo-format<small>...</small></code> commands:
+either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.
+</p><p>Use the <code>texinfo-format<small>...</small></code> commands:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-e C-r     Format the region.
 C-c C-e C-b     Format the buffer.
@@ -161,7 +169,8 @@ C-c C-m C-k     Kill the <code>makeinfo</code> formatting job.
 <p>The TeX typesetting and printing commands are invoked by typing
 <kbd>C-c C-t</kbd> and then another control command: <kbd>C-r</kbd> for
 <code>texinfo-tex-region</code>, <kbd>C-b</kbd> for <code>texinfo-tex-buffer</code>,
-and so on.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+and so on.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-t C-r     Run TeX on the region.
 C-c C-t C-b     Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-i     Run <code>texindex</code>.

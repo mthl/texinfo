@@ -309,7 +309,8 @@ line).
 </kbd></dt>
 <dd><p>Move to the top of the buffer (<code>beginning-of-buffer</code>).  With
 numeric argument <var>n</var>, move to <var>n</var>/10 of the way from the top.
-See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments.</p></dd>
+See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments.
+</p></dd>
 <dt><kbd> M-&gt;
 </kbd></dt>
 <dt><kbd> C-END
@@ -702,18 +703,18 @@ columns from the left edge of the window.
 beginning and the end temporarily invisible, <kbd>C-x =</kbd> prints
 additional text describing the current visible range.  For example, it
 might say:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>where the two extra numbers give the smallest and largest character position
 that point is allowed to assume.  The characters between those two positions
 are the visible ones.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>.
 </p><p>  If point is at the end of the buffer (or the end of the visible part),
 <kbd>C-x =</kbd> omits any description of the character after point.
 The output looks like
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 point=563026 of 563025(100%)  column 0
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <hr size="6">
 <a name="NOD50"></a>
 <a name="SEC58"></a>
@@ -754,7 +755,8 @@ easiest way to specify a numeric argument is to type digits and/or a
 minus sign while holding down the <kbd>META</kbd> key.  For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 M-5 C-n
-</pre></td></tr></table><p>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,
+</pre></td></tr></table>
+<p>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,
 and so on, as well as <kbd>Meta--</kbd>, do this because they are keys bound
 to commands (<code>digit-argument</code> and <code>negative-argument</code>) that
 are defined to contribute to an argument for the next command.  Digits

@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename first_section_no_node
+@setfilename no_node
 
 Garbage
 
@@ -19,5 +19,10 @@ second node
 @chapter Chapter
 
 Text of chapter
+
+@chapter Chapter 2
+
+
+Text of chapter 2
 
 @bye

@@ -87,17 +87,21 @@ places to which cross references can refer.
 <p>Often, but not always, a printed document should be designed so that
 it can be read sequentially.  People tire of flipping back and forth
 to find information that should be presented to them as they need
-it.</p><p>However, in any document, some information will be too detailed for
+it.
+</p><p>However, in any document, some information will be too detailed for
 the current context, or incidental to it; use cross references to
 provide access to such information.  Also, an online help system or a
 reference manual is not like a novel; few read such documents in
 sequence from beginning to end.  Instead, people look up what they
 need.  For this reason, such creations should contain many cross
 references to help readers find other information that they may not
-have read.</p><p>In a printed manual, a cross reference results in a page reference,
+have read.
+</p><p>In a printed manual, a cross reference results in a page reference,
 unless it is to another manual altogether, in which case the cross
-reference names that manual.</p><p>In Info, a cross reference results in an entry that you can follow using
-the Info `<samp>f</samp>' command.  (See <a href="../info/Help-Adv.html">Some advanced Info commands: (info)Help-Adv</a>.)</p><p>The various cross reference commands use nodes (or anchors,
+reference names that manual.
+</p><p>In Info, a cross reference results in an entry that you can follow using
+the Info `<samp>f</samp>' command.  (See <a href="../info/Help-Adv.html">Some advanced Info commands: (info)Help-Adv</a>.)
+</p><p>The various cross reference commands use nodes (or anchors,
 see section <a href="texinfo_7.html#SEC96"><code>@anchor</code></a>) to define cross reference locations.
 This is evident in Info, in which a cross reference takes you to the
 specified location.  TeX also uses nodes to define cross reference
@@ -106,7 +110,8 @@ file, it records each node's page number and uses the page numbers in making
 references.  Thus, if you are writing a manual that will only be
 printed, and will not be used online, you must nonetheless write
 <code>@node</code> lines to name the places to which you make cross
-references.</p><hr size="6">
+references.
+</p><hr size="6">
 <a name="NOD92"></a>
 <a name="SEC106"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -127,7 +132,8 @@ references.</p><hr size="6">
 </tr></table>
 <h2> 8.1 Different Cross Reference Commands </h2>
 
-<p>There are four different cross reference commands:</p><dl compact="compact">
+<p>There are four different cross reference commands:
+</p><dl compact="compact">
 <dt><code> @xref
 </code></dt>
 <dd><p>Used to start a sentence in the printed manual saying `See <small>...</small>'
@@ -137,21 +143,25 @@ or an Info cross-reference saying `<samp>*Note <var>name</var>: <var>node</var>.
 </code></dt>
 <dd><p>Used within or, more often, at the end of a sentence; same as
 <code>@xref</code> for Info; produces just the reference in the printed
-manual without a preceding `See'.</p></dd>
+manual without a preceding `See'.
+</p></dd>
 <dt><code> @pxref
 </code></dt>
 <dd><p>Used within parentheses to make a reference that suits both an Info
 file and a printed book.  Starts with a lower case `see' within the
-printed manual. (`<samp>p</samp>' is for `parenthesis'.)</p></dd>
+printed manual. (`<samp>p</samp>' is for `parenthesis'.)
+</p></dd>
 <dt><code> @inforef
 </code></dt>
 <dd><p>Used to make a reference to an Info file for which there is no printed
-manual.</p></dd>
+manual.
+</p></dd>
 </dl>
 
 <p>(The <code>@cite</code> command is used to make references to books and
 manuals for which there is no corresponding Info file and, therefore,
-no node to which to point.   See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.)</p><hr size="6">
+no node to which to point.   See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.)
+</p><hr size="6">
 <a name="NOD93"></a>
 <a name="SEC107"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -178,7 +188,9 @@ may contain up to four additional arguments.  By using these
 arguments, you can provide a cross reference name for Info, a topic
 description or section title for the printed output, the name of a
 different Info file, and the name of a different printed
-manual.</p><p>Here is a simple cross reference example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+manual.
+</p><p>Here is a simple cross reference example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Node name}.
 </pre></td></tr></table>
 <p>which produces
@@ -191,7 +203,8 @@ manual.</p><p>Here is a simple cross reference example:</p><table><tr><td>&nbsp;
 <p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
 </p></blockquote>
 
-<p>Here is an example of a full five-part cross reference:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<p>Here is an example of a full five-part cross reference:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Node name, Cross Reference Name, Particular Topic,
 info-file-name, A Printed Manual}, for details.
 </pre></td></tr></table>
@@ -207,37 +220,46 @@ for details.
 </p></blockquote>
 
 <p>in a printed book.
-</p><p>The five possible arguments for a cross reference are:</p><ol>
+</p><p>The five possible arguments for a cross reference are:
+</p><ol>
 <li><p>
 The node or anchor name (required).  This is the location to which the
 cross reference takes you.  In a printed document, the location of the
 node provides the page reference only for references within the same
-document.</p></li><li><p>
+document.
+</p></li><li><p>
 The cross reference name for the Info reference, if it is to be different
 from the node name.  If you include this argument, it becomes
-the first part of the cross reference.  It is usually omitted.</p></li><li><p>
+the first part of the cross reference.  It is usually omitted.
+</p></li><li><p>
 A topic description or section name.  Often, this is the title of the
 section.  This is used as the name of the reference in the printed
-manual.  If omitted, the node name is used.</p></li><li><p>
+manual.  If omitted, the node name is used.
+</p></li><li><p>
 The name of the Info file in which the reference is located, if it is
 different from the current file.  You need not include any `<samp>.info</samp>'
 suffix on the file name, since Info readers try appending it
 automatically.
 </p></li><li><p>
-The name of a printed manual from a different Texinfo file.</p></li></ol>
+The name of a printed manual from a different Texinfo file.
+</p></li></ol>
 
 <p>The template for a full five argument cross reference looks like
-this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
 </pre></td></tr></table>
 <p>Cross references with one, two, three, four, and five arguments are
-described separately following the description of <code>@xref</code>.</p><p>Write a node name in a cross reference in exactly the same way as in
+described separately following the description of <code>@xref</code>.
+</p><p>Write a node name in a cross reference in exactly the same way as in
 the <code>@node</code> line, including the same capitalization; otherwise, the
-formatters may not find the reference.</p><p>You can write cross reference commands within a paragraph, but note
+formatters may not find the reference.
+</p><p>You can write cross reference commands within a paragraph, but note
 how Info and TeX format the output of each of the various commands:
 write <code>@xref</code> at the beginning of a sentence; write
-<code>@pxref</code> only within parentheses, and so on.</p><hr size="6">
+<code>@pxref</code> only within parentheses, and so on.
+</p><hr size="6">
 <a name="NOD94"></a>
 <a name="SEC108"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -263,7 +285,8 @@ beginning of a sentence.  The Info formatting commands convert it into
 an Info cross reference, which the Info `<samp>f</samp>' command can use to
 bring you directly to another node.  The TeX typesetting commands
 convert it into a page reference, or a reference to another book or
-manual.</p><table border="0" cellspacing="0">
+manual.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD95">* Reference Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a reference looks like and requires.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC110">8.3.1 <code>@xref</code> with One Argument</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>@xref</code> with one argument.</td></tr>
@@ -276,7 +299,8 @@ manual.</p><table border="0" cellspacing="0">
 <a name="SEC109"></a>
 <h3> What a Reference Looks Like and Requires </h3>
 
-<p>Most often, an Info cross reference looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<p>Most often, an Info cross reference looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 *Note <var>node-name</var>::.
 </pre></td></tr></table>
 <p>or like this
@@ -299,22 +323,28 @@ manual.</p><table border="0" cellspacing="0">
 the cross reference in either the Info file or the printed output.
 You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
-differently.  See section <a href="#SEC116"><code>@pxref</code></a>.)</p><blockquote>
+differently.  See section <a href="#SEC116"><code>@pxref</code></a>.)
+</p><blockquote>
 
 <p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
-the Info file and in the printed manual.</p></blockquote>
+the Info file and in the printed manual.
+</p></blockquote>
 
 <p><code>@xref</code> must refer to an Info node by name.  Use <code>@node</code>
-to define the node (see section <a href="texinfo_7.html#SEC90">How to Write an <code>@node</code> Line</a>).</p><p><code>@xref</code> is followed by several arguments inside braces, separated by
-commas.  Whitespace before and after these commas is ignored.</p><p>A cross reference requires only the name of a node; but it may contain
+to define the node (see section <a href="texinfo_7.html#SEC90">How to Write an <code>@node</code> Line</a>).
+</p><p><code>@xref</code> is followed by several arguments inside braces, separated by
+commas.  Whitespace before and after these commas is ignored.
+</p><p>A cross reference requires only the name of a node; but it may contain
 up to four additional arguments.  Each of these variations produces a
-cross reference that looks somewhat different.</p><blockquote>
+cross reference that looks somewhat different.
+</p><blockquote>
 
 <p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
-mistake them for separators.</p></blockquote>
+mistake them for separators.
+</p></blockquote>
 
 <hr size="6">
 <a name="NOD96"></a>
@@ -340,7 +370,8 @@ mistake them for separators.</p></blockquote>
 <p>The simplest form of <code>@xref</code> takes one argument, the name of
 another node in the same Info file.    The Info formatters produce
 output that the Info readers can use to jump to the reference; TeX
-produces output that specifies the page and section number for you.</p><p>For example,
+produces output that specifies the page and section number for you.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Tropical Storms}.
 </pre></td></tr></table>
@@ -355,7 +386,9 @@ produces output that specifies the page and section number for you.</p><p>For ex
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
-period.)</p><p>You can write a clause after the cross reference, like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+period.)
+</p><p>You can write a clause after the cross reference, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Tropical Storms}, for more info.
 </pre></td></tr></table>
 <p>which produces
@@ -369,7 +402,8 @@ period.)</p><p>You can write a clause after the cross reference, like this:</p><
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
-comma, and then by the clause, which is followed by a period.)</p><hr size="6">
+comma, and then by the clause, which is followed by a period.)
+</p><hr size="6">
 <a name="NOD97"></a>
 <a name="SEC111"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -392,7 +426,8 @@ comma, and then by the clause, which is followed by a period.)</p><hr size="6">
 
 <p>With two arguments, the second is used as the name of the Info cross
 reference, while the first is still the name of the node to which the
-cross reference points.</p><p>The template is like this:
+cross reference points.
+</p><p>The template is like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{<var>node-name</var>, <var>cross-reference-name</var>}.
 </pre></td></tr></table>
@@ -412,7 +447,8 @@ cross reference points.</p><p>The template is like this:
 
 <p>(Note that in the preceding example the closing brace is followed by a
 period; and that the node name is printed, not the cross reference name.)
-</p><p>You can write a clause after the cross reference, like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><p>You can write a clause after the cross reference, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Electrical Effects, Lightning}, for more info.
 </pre></td></tr></table>
 <p>which produces
@@ -426,7 +462,8 @@ period; and that the node name is printed, not the cross reference name.)
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
-comma, and then by the clause, which is followed by a period.)</p><hr size="6">
+comma, and then by the clause, which is followed by a period.)
+</p><hr size="6">
 <a name="NOD98"></a>
 <a name="SEC112"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -452,14 +489,17 @@ argument should be the name of the section in the printed output, or
 else state the topic discussed by that section.  Often, you will want to
 use initial upper case letters so it will be easier to read when the
 reference is printed.  Use a third argument when the node name is
-unsuitable because of syntax or meaning.</p><p>Remember to avoid placing a comma within the title or topic section of
+unsuitable because of syntax or meaning.
+</p><p>Remember to avoid placing a comma within the title or topic section of
 a cross reference, or within any other section.  The formatters divide
 cross references into arguments according to the commas; a comma
 within a title or other section will divide it into two arguments.  In
 a reference, you need to write a title such as &quot;Clouds, Mist, and
-Fog&quot; without the commas.</p><p>Also, remember to write a comma or period after the closing brace of an
+Fog&quot; without the commas.
+</p><p>Also, remember to write a comma or period after the closing brace of an
 <code>@xref</code> to terminate the cross reference.  In the following
-examples, a clause follows a terminating comma.</p><p>The template is like this:
+examples, a clause follows a terminating comma.
+</p><p>The template is like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>}.
 </pre></td></tr></table>
@@ -480,7 +520,8 @@ for details.
 
 <p>If a third argument is given and the second one is empty, then the
 third argument serves both.  (Note how two commas, side by side, mark
-the empty second argument.)</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+the empty second argument.)
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Electrical Effects, , Thunder and Lightning},
 for details.
 </pre></td></tr></table>
@@ -497,14 +538,16 @@ for details.
 <p>As a practical matter, it is often best to write cross references with
 just the first argument if the node name and the section title are the
 same, and with the first and third arguments if the node name and title
-are different.</p><p>Here are several examples from <cite>The GNU Awk User's Guide</cite>:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+are different.
+</p><p>Here are several examples from <cite>The GNU Awk User's Guide</cite>:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 @xref{Sample Program}.
 @xref{Glossary}.
 @xref{Case-sensitivity, ,Case-sensitivity in Matching}.
 @xref{Close Output, , Closing Output Files and Pipes},
    for more information.
 @xref{Regexp, , Regular Expressions as Patterns}.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <hr size="6">
 <a name="NOD99"></a>
 <a name="SEC113"></a>
@@ -528,9 +571,11 @@ are different.</p><p>Here are several examples from <cite>The GNU Awk User's Gui
 
 <p>In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
-a fifth argument specifies its title as a printed manual.</p><p>Remember that a comma or period must follow the closing brace of an
+a fifth argument specifies its title as a printed manual.
+</p><p>Remember that a comma or period must follow the closing brace of an
 <code>@xref</code> command to terminate the cross reference.  In the
-following examples, a clause follows a terminating comma.</p><p>The template is:
+following examples, a clause follows a terminating comma.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
@@ -546,7 +591,8 @@ weather, An Introduction to Meteorology}, for details.
 </pre></td></tr></table>
 <p>The name of the Info file is enclosed in parentheses and precedes
 the name of the node.
-</p><p>In a printed manual, the reference looks like this:</p><blockquote>
+</p><p>In a printed manual, the reference looks like this:
+</p><blockquote>
 
 <p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
 Meteorology</i>, for details.
@@ -554,9 +600,11 @@ Meteorology</i>, for details.
 
 <p>The title of the printed manual is typeset in italics; and the
 reference lacks a page number since TeX cannot know to which page a
-reference refers when that reference is to another manual.</p><p>Often, you will leave out the second argument when you use the long
+reference refers when that reference is to another manual.
+</p><p>Often, you will leave out the second argument when you use the long
 version of <code>@xref</code>.  In this case, the third argument, the topic
-description, will be used as the cross reference name in Info.</p><p>The template looks like this:
+description, will be used as the cross reference name in Info.
+</p><p>The template looks like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
 <var>printed-manual-title</var>}, for details.
@@ -592,7 +640,8 @@ Meteorology</i>, for details.
 is within a single printed manual--when multiple Texinfo files are
 incorporated into the same TeX run but make separate Info files.
 In this case, you need to specify only the fourth argument, and not
-the fifth.</p><hr size="6">
+the fifth.
+</p><hr size="6">
 <a name="NOD100"></a>
 <a name="SEC114"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -621,7 +670,8 @@ provide a meaningful section topic or title in the printed cross
 reference (instead of the word `Top'), you must write an appropriate
 entry for the third argument to the <code>@xref</code> command.
 </p><p>Thus, to make a cross reference to <cite>The GNU Make Manual</cite>,
-write:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+write:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @xref{Top, , Overview, make, The GNU Make Manual}.
 </pre></td></tr></table>
 <p>which produces
@@ -634,7 +684,9 @@ write:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 <p>See section &quot;Overview&quot; in <i>The GNU Make Manual</i>.
 </p></blockquote>
 
-<hr size="6">
+<p>In this example, `<samp>Top</samp>' is the name of the first node, and
+`<samp>Overview</samp>' is the name of the first section of the manual.
+</p><hr size="6">
 <a name="NOD101"></a>
 <a name="SEC115"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -654,11 +706,11 @@ write:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 8.5 <code>@ref</code> </h2>
-<p>In this example, `<samp>Top</samp>' is the name of the first node, and
-`<samp>Overview</samp>' is the name of the first section of the manual.</p>
+
 <p><code>@ref</code> is nearly the same as <code>@xref</code> except that it does
 not generate a `See' in the printed output, just the reference itself.
-This makes it useful as the last part of a sentence.</p><p>For example,
+This makes it useful as the last part of a sentence.
+</p><p>For example,
 </p><a name="IDX111"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
 For more information, see @ref{Hurricanes}.
@@ -676,7 +728,8 @@ For more information, see *Note Hurricanes::.
 <p>The <code>@ref</code> command sometimes leads writers to express themselves
 in a manner that is suitable for a printed manual but looks awkward
 in the Info format.  Bear in mind that your audience will be using
-both the printed and the Info format.</p><p>For example,
+both the printed and the Info format.
+</p><p>For example,
 </p><a name="IDX112"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
 Sea surges are described in @ref{Hurricanes}.
@@ -699,7 +752,8 @@ arguments.  Otherwise, Info will not find the end of the cross reference
 entry and its attempt to follow the cross reference will fail.  As a
 general rule, you should write a period or comma after every
 <code>@ref</code> command.  This looks best in both the printed and the Info
-output.</p></blockquote>
+output.
+</p></blockquote>
 
 <hr size="6">
 <a name="NOD102"></a>
@@ -726,26 +780,32 @@ output.</p></blockquote>
 same as <code>@xref</code>, but you use it <em>only</em> inside parentheses
 and you do <em>not</em> type a comma or period after the command's
 closing brace.  The command differs from <code>@xref</code> in two
-ways:</p><ol>
+ways:
+</p><ol>
 <li><p>
 TeX typesets the reference for the printed manual with a lower case
-`see' rather than an upper case `See'.</p></li><li><p>
+`see' rather than an upper case `See'.
+</p></li><li><p>
 The Info formatting commands automatically end the reference with a
-closing colon or period.</p></li></ol>
+closing colon or period.
+</p></li></ol>
 
 <p>Because one type of formatting automatically inserts closing
 punctuation and the other does not, you should use <code>@pxref</code>
 <em>only</em> inside parentheses as part of another sentence.  Also, you
 yourself should not insert punctuation after the reference, as you do
-with <code>@xref</code>.</p><p><code>@pxref</code> is designed so that the output looks right and works
+with <code>@xref</code>.
+</p><p><code>@pxref</code> is designed so that the output looks right and works
 right between parentheses both in printed output and in an Info file.
 In a printed manual, a closing comma or period should not follow a
 cross reference within parentheses; such punctuation is wrong.  But in
 an Info file, suitable closing punctuation must follow the cross
 reference so Info can recognize its end.  <code>@pxref</code> spares you
 the need to use complicated methods to put a terminator into one form
-of the output and not the other.</p><p>With one argument, a parenthetical cross reference looks like
-this:</p><a name="IDX113"></a>
+of the output and not the other.
+</p><p>With one argument, a parenthetical cross reference looks like
+this:
+</p><a name="IDX113"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
 ... storms cause flooding (@pxref{Hurricanes}) ...
 </pre></td></tr></table>
@@ -760,7 +820,8 @@ this:</p><a name="IDX113"></a>
 </p></blockquote>
 
 <p>With two arguments, a parenthetical cross reference has this
-template:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+template:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 ... (@pxref{<var>node-name</var>, <var>cross-reference-name</var>}) ...
 </pre></td></tr></table>
 <p>which produces
@@ -774,14 +835,17 @@ template:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 </p></blockquote>
 
 <p><code>@pxref</code> can be used with up to five arguments just like
-<code>@xref</code> (see section <a href="#SEC108"><code>@xref</code></a>).</p><blockquote>
+<code>@xref</code> (see section <a href="#SEC108"><code>@xref</code></a>).
+</p><blockquote>
 
 <p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
 reference.  Do not try to use <code>@pxref</code> as a clause in a sentence.
 It will look bad in either the Info file, the printed output, or
-both.</p><p>Also, parenthetical cross references look best at the ends of sentences.
+both.
+</p><p>Also, parenthetical cross references look best at the ends of sentences.
 Although you may write them in the middle of a sentence, that location
-breaks up the flow of text.</p></blockquote>
+breaks up the flow of text.
+</p></blockquote>
 
 <hr size="6">
 <a name="NOD103"></a>
@@ -807,8 +871,10 @@ breaks up the flow of text.</p></blockquote>
 <p><code>@inforef</code> is used for cross references to Info files for which
 there are no printed manuals.  Even in a printed manual,
 <code>@inforef</code> generates a reference directing the user to look in
-an Info file.</p><p>The command takes either two or three arguments, in the following
-order:</p><ol>
+an Info file.
+</p><p>The command takes either two or three arguments, in the following
+order:
+</p><ol>
 <li><p>
 The node name.
 </p></li><li><p>
@@ -819,7 +885,8 @@ The Info file name.
 
 <p>Separate the arguments with commas, as with <code>@xref</code>.  Also, you
 must terminate the reference with a comma or period after the
-`<samp>}</samp>', as you do with <code>@xref</code>.</p><p>The template is:
+`<samp>}</samp>', as you do with <code>@xref</code>.
+</p><p>The template is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @inforef{<var>node-name</var>, <var>cross-reference-name</var>, <var>info-file-name</var>},
 </pre></td></tr></table>
@@ -854,7 +921,8 @@ for more information.
 </p></blockquote>
 
 <p>The converse of <code>@inforef</code> is <code>@cite</code>, which is used to
-refer to printed works for which no Info form exists.  See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.</p><hr size="6">
+refer to printed works for which no Info form exists.  See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.
+</p><hr size="6">
 <a name="NOD104"></a>
 <a name="SEC118"></a>
 <table cellpadding="1" cellspacing="1" border="0">

@@ -67,16 +67,19 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <p>The <em>chapter structuring</em> commands divide a document into a hierarchy of
 chapters, sections, subsections, and subsubsections.  These commands
 generate large headings; they also provide information for the table
-of contents of a printed manual (see section <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>).</p><p>The chapter structuring commands do not create an Info node structure,
+of contents of a printed manual (see section <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>).
+</p><p>The chapter structuring commands do not create an Info node structure,
 so normally you should put an <code>@node</code> command immediately before
 each chapter structuring command (see section <a href="texinfo_7.html#SEC85">Nodes</a>).  The only time you
 are likely to use the chapter structuring commands without using the
 node structuring commands is if you are writing a document that
 contains no cross references and will never be transformed into Info
-format.</p><p>It is unlikely that you will ever write a Texinfo file that is
+format.
+</p><p>It is unlikely that you will ever write a Texinfo file that is
 intended only as an Info file and not as a printable document.  If you
 do, you might still use chapter structuring commands to create a
-heading at the top of each node--but you don't need to.</p><table border="0" cellspacing="0">
+heading at the top of each node--but you don't need to.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC73">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A manual is like an upside down tree <small>...</small></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC74">5.2 Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to divide a manual into parts.</td></tr>
@@ -117,8 +120,10 @@ heading at the top of each node--but you don't need to.</p><table border="0" cel
 sections, subsections, and the like.  This structure can be visualized
 as a tree (or rather as an upside-down tree) with the root at the top
 and the levels corresponding to chapters, sections, subsection, and
-subsubsections.</p><p>Here is a diagram that shows a Texinfo file with three chapters,
-each of which has two sections.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+subsubsections.
+</p><p>Here is a diagram that shows a Texinfo file with three chapters,
+each of which has two sections.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
                           Top
                            |
          -------------------------------------
@@ -132,13 +137,15 @@ each of which has two sections.</p><table><tr><td>&nbsp;</td><td class="example"
 
 </pre></td></tr></table>
 <p>In a Texinfo file that has this structure, the beginning of Chapter 2
-looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @node    Chapter 2,  Chapter 3, Chapter 1, top
 @chapter Chapter 2
 </pre></td></tr></table>
 <p>The chapter structuring commands are described in the sections that
 follow; the <code>@node</code> and <code>@menu</code> commands are described in
-following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and see <a href="texinfo_8.html#SEC97">Menus</a>.)</p><hr size="6">
+following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and see <a href="texinfo_8.html#SEC97">Menus</a>.)
+</p><hr size="6">
 <a name="NOD60"></a>
 <a name="SEC74"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -162,30 +169,38 @@ following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and s
 <p>The chapter structuring commands fall into four groups or series, each
 of which contains structuring commands corresponding to the
 hierarchical levels of chapters, sections, subsections, and
-subsubsections.</p><p>The four groups are the <code>@chapter</code> series, the
+subsubsections.
+</p><p>The four groups are the <code>@chapter</code> series, the
 <code>@unnumbered</code> series, the <code>@appendix</code> series, and the
-<code>@heading</code> series.</p><p>Each command produces titles that have a different appearance on the
+<code>@heading</code> series.
+</p><p>Each command produces titles that have a different appearance on the
 printed page or Info file; only some of the commands produce
 titles that are listed in the table of contents of a printed book or
-manual.</p><ul>
+manual.
+</p><ul>
 <li><p>
 The <code>@chapter</code> and <code>@appendix</code> series of commands produce
 numbered or lettered entries both in the body of a printed work and in
-its table of contents.</p></li><li><p>
+its table of contents.
+</p></li><li><p>
 The <code>@unnumbered</code> series of commands produce unnumbered entries
 both in the body of a printed work and in its table of contents.  The
 <code>@top</code> command, which has a special use, is a member of this
-series (see section <a href="#SEC75"><code>@top</code></a>).</p></li><li><p>
+series (see section <a href="#SEC75"><code>@top</code></a>).
+</p></li><li><p>
 The <code>@heading</code> series of commands produce unnumbered headings
 that do not appear in a table of contents.  The heading commands never
-start a new page.</p></li><li><p>
+start a new page.
+</p></li><li><p>
 The <code>@majorheading</code> command produces results similar to using
 the <code>@chapheading</code> command but generates a larger vertical
-whitespace before the heading.</p></li><li><p>
+whitespace before the heading.
+</p></li><li><p>
 When an <code>@setchapternewpage</code> command says to do so, the
 <code>@chapter</code>, <code>@unnumbered</code>, and <code>@appendix</code> commands
 start new pages in the printed manual; the <code>@heading</code> commands
-do not.</p></li></ul>
+do not.
+</p></li></ul>
 
 <p>Here are the four groups of chapter structuring commands:
 </p><table>
@@ -260,15 +275,19 @@ HTML output, not TeX.
 
 <p><code>@chapter</code> identifies a chapter in the document.  Write the
 command at the beginning of a line and follow it on the same line by
-the title of the chapter.</p><p>For example, this chapter in this manual is entitled &quot;Chapter
-Structuring&quot;; the <code>@chapter</code> line looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+the title of the chapter.
+</p><p>For example, this chapter in this manual is entitled &quot;Chapter
+Structuring&quot;; the <code>@chapter</code> line looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @chapter Chapter Structuring
 </pre></td></tr></table>
 <p>In TeX, the <code>@chapter</code> command creates a chapter in the
 document, specifying the chapter title.  The chapter is numbered
-automatically.</p><p>In Info, the <code>@chapter</code> command causes the title to appear on a
+automatically.
+</p><p>In Info, the <code>@chapter</code> command causes the title to appear on a
 line by itself, with a line of asterisks inserted underneath.  Thus,
-in Info, the above example produces the following output:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+in Info, the above example produces the following output:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 Chapter Structuring
 *******************
 </pre></td></tr></table>
@@ -300,12 +319,15 @@ This kind of stylistic choice is not usually offered by Texinfo.
 <p>Use the <code>@unnumbered</code> command to create a chapter that appears
 in a printed manual without chapter numbers of any kind.  Use the
 <code>@appendix</code> command to create an appendix in a printed manual
-that is labelled by letter instead of by number.</p><p>For Info file output, the <code>@unnumbered</code> and <code>@appendix</code>
+that is labelled by letter instead of by number.
+</p><p>For Info file output, the <code>@unnumbered</code> and <code>@appendix</code>
 commands are equivalent to <code>@chapter</code>: the title is printed on a
-line by itself with a line of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a>.)</p><p>To create an appendix or an unnumbered chapter, write an
+line by itself with a line of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a>.)
+</p><p>To create an appendix or an unnumbered chapter, write an
 <code>@appendix</code> or <code>@unnumbered</code> command at the beginning of a
 line and follow it on the same line by the title, as you would if you
-were creating a chapter.</p><hr size="6">
+were creating a chapter.
+</p><hr size="6">
 <a name="NOD64"></a>
 <a name="SEC78"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -327,15 +349,19 @@ were creating a chapter.</p><hr size="6">
 <h2> 5.6 <code>@majorheading</code>, <code>@chapheading</code> </h2>
 
 <p>The <code>@majorheading</code> and <code>@chapheading</code> commands put
-chapter-like headings in the body of a document.</p><p>However, neither command causes TeX to produce a numbered heading
+chapter-like headings in the body of a document.
+</p><p>However, neither command causes TeX to produce a numbered heading
 or an entry in the table of contents; and neither command causes
-TeX to start a new page in a printed manual.</p><p>In TeX, an <code>@majorheading</code> command generates a larger vertical
+TeX to start a new page in a printed manual.
+</p><p>In TeX, an <code>@majorheading</code> command generates a larger vertical
 whitespace before the heading than an <code>@chapheading</code> command but
-is otherwise the same.</p><p>In Info,
+is otherwise the same.
+</p><p>In Info,
 the <code>@majorheading</code> and
 <code>@chapheading</code> commands are equivalent to
 <code>@chapter</code>: the title is printed on a line by itself with a line
-of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a>.)</p><hr size="6">
+of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a>.)
+</p><hr size="6">
 <a name="NOD65"></a>
 <a name="SEC79"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -359,13 +385,16 @@ of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a
 <p>In a printed manual, an <code>@section</code> command identifies a
 numbered section within a chapter.  The section title appears in the
 table of contents.  In Info, an <code>@section</code> command provides a
-title for a segment of text, underlined with `<samp>=</samp>'.</p><p>This section is headed with an <code>@section</code> command and looks like
-this in the Texinfo file:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+title for a segment of text, underlined with `<samp>=</samp>'.
+</p><p>This section is headed with an <code>@section</code> command and looks like
+this in the Texinfo file:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @section @code{@@section}
 </pre></td></tr></table>
 <p>To create a section, write the <code>@section</code> command at the
 beginning of a line and follow it on the same line by the section
-title.</p><p>Thus,
+title.
+</p><p>Thus,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @section This is a section
 </pre></td></tr></table>
@@ -399,24 +428,29 @@ This is a section
 <p>The <code>@unnumberedsec</code>, <code>@appendixsec</code>, and <code>@heading</code>
 commands are, respectively, the unnumbered, appendix-like, and
 heading-like equivalents of the <code>@section</code> command.
-(See section <a href="#SEC79"><code>@section</code></a>.)</p><dl compact="compact">
+(See section <a href="#SEC79"><code>@section</code></a>.)
+</p><dl compact="compact">
 <dt><code> @unnumberedsec
 </code></dt>
 <dd><p>The <code>@unnumberedsec</code> command may be used within an
 unnumbered chapter or within a regular chapter or appendix to
-provide an unnumbered section.</p></dd>
+provide an unnumbered section.
+</p></dd>
 <dt><code> @appendixsec
 </code></dt>
 <dt><code> @appendixsection
 </code></dt>
 <dd><p><code>@appendixsection</code> is a longer spelling of the
-<code>@appendixsec</code> command; the two are synonymous.<a name="IDX92"></a>
+<code>@appendixsec</code> command; the two are synonymous.
+<a name="IDX92"></a>
 </p><p>Conventionally, the <code>@appendixsec</code> or <code>@appendixsection</code>
-command is used only within appendices.</p></dd>
+command is used only within appendices.
+</p></dd>
 <dt><code> @heading
 </code></dt>
 <dd><p>You may use the <code>@heading</code> command anywhere you wish for a
-section-style heading that will not appear in the table of contents.</p></dd>
+section-style heading that will not appear in the table of contents.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -442,7 +476,8 @@ section-style heading that will not appear in the table of contents.</p></dd>
 
 <p>Subsections are to sections as sections are to chapters.
 (See section <a href="#SEC79"><code>@section</code></a>.)  In Info, subsection titles are
-underlined with `<samp>-</samp>'.  For example,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+underlined with `<samp>-</samp>'.  For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @subsection This is a subsection
 </pre></td></tr></table>
 <p>produces
@@ -451,7 +486,8 @@ This is a subsection
 --------------------
 </pre></td></tr></table>
 <p>In a printed manual, subsections are listed in the table of contents
-and are numbered three levels deep.</p><hr size="6">
+and are numbered three levels deep.
+</p><hr size="6">
 <a name="NOD68"></a>
 <a name="SEC82"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -475,7 +511,8 @@ and are numbered three levels deep.</p><hr size="6">
 <p>The <code>@unnumberedsubsec</code>, <code>@appendixsubsec</code>, and
 <code>@subheading</code> commands are, respectively, the unnumbered,
 appendix-like, and heading-like equivalents of the <code>@subsection</code>
-command.  (See section <a href="#SEC81"><code>@subsection</code></a>.)</p><p>In Info, the <code>@subsection</code>-like commands generate a title
+command.  (See section <a href="#SEC81"><code>@subsection</code></a>.)
+</p><p>In Info, the <code>@subsection</code>-like commands generate a title
 underlined with hyphens.  In a printed manual, an <code>@subheading</code>
 command produces a heading like that of a subsection except that it is
 not numbered and does not appear in the table of contents.  Similarly,
@@ -483,7 +520,8 @@ an <code>@unnumberedsubsec</code> command produces an unnumbered heading like
 that of a subsection and an <code>@appendixsubsec</code> command produces a
 subsection-like heading labelled with a letter and numbers; both of
 these commands produce headings that appear in the table of
-contents.</p><hr size="6">
+contents.
+</p><hr size="6">
 <a name="NOD69"></a>
 <a name="SEC83"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -505,35 +543,41 @@ contents.</p><hr size="6">
 <h2> 5.11 The `subsub' Commands </h2>
 
 <p>The fourth and lowest level sectioning commands in Texinfo are the
-`subsub' commands.  They are:</p><dl compact="compact">
+`subsub' commands.  They are:
+</p><dl compact="compact">
 <dt><code> @subsubsection
 </code></dt>
 <dd><p>Subsubsections are to subsections as subsections are to sections.
 (See section <a href="#SEC81"><code>@subsection</code></a>.)  In a printed manual,
 subsubsection titles appear in the table of contents and are numbered
-four levels deep.</p></dd>
+four levels deep.
+</p></dd>
 <dt><code> @unnumberedsubsubsec
 </code></dt>
 <dd><p>Unnumbered subsubsection titles appear in the table of contents of a
 printed manual, but lack numbers.  Otherwise, unnumbered
 subsubsections are the same as subsubsections.  In Info, unnumbered
-subsubsections look exactly like ordinary subsubsections.</p></dd>
+subsubsections look exactly like ordinary subsubsections.
+</p></dd>
 <dt><code> @appendixsubsubsec
 </code></dt>
 <dd><p>Conventionally, appendix commands are used only for appendices and are
 lettered and numbered appropriately in a printed manual.  They also
 appear in the table of contents.  In Info, appendix subsubsections look
-exactly like ordinary subsubsections.</p></dd>
+exactly like ordinary subsubsections.
+</p></dd>
 <dt><code> @subsubheading
 </code></dt>
 <dd><p>The <code>@subsubheading</code> command may be used anywhere that you need
 a small heading that will not appear in the table of contents.  In
 Info, subsubheadings look exactly like ordinary subsubsection
-headings.</p></dd>
+headings.
+</p></dd>
 </dl>
 
 <p>In Info,  `subsub' titles are underlined with periods.
-For example,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @subsubsection This is a subsubsection
 </pre></td></tr></table>
 <p>produces
@@ -576,7 +620,8 @@ formatted as if they were <code>@section</code> commands, all your
 <code>@section</code> command are formatted as if they were
 <code>@subsection</code> commands, and so on.
 </p><p><code>@raisesections</code> raises a command one level in the chapter
-structuring hierarchy:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+structuring hierarchy:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
   Change           To
 
 @subsection     @section,
@@ -585,7 +630,8 @@ structuring hierarchy:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
           etc.
 </pre></td></tr></table>
 <p><code>@lowersections</code> lowers a command one level in the chapter
-structuring hierarchy:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+structuring hierarchy:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
   Change           To
 
 @chapter        @section,

@@ -226,7 +226,8 @@ line following point.
 
 <p>  TeX is a powerful text formatter written by Donald Knuth; like GNU
 Emacs, it is free.  LaTeX is a simplified input format for TeX,
-implemented by TeX macros.  It is part of TeX.</p><p>  Emacs has a special TeX mode for editing TeX input files.
+implemented by TeX macros.  It is part of TeX.
+</p><p>  Emacs has a special TeX mode for editing TeX input files.
 It provides facilities for checking the balance of delimiters and for
 invoking TeX on all or part of the file.
 </p><p>  TeX mode has two variants, Plain TeX mode and LaTeX mode,
@@ -239,7 +240,8 @@ the buffer is empty), the variable <code>tex-default-mode</code> controls
 which mode is used.
 </p><p>  The commands <kbd>M-x plain-tex-mode</kbd> and <kbd>M-x latex-mode</kbd>
 explicitly select one of the variants of TeX mode.  Use these
-commands when <kbd>M-x tex-mode</kbd> does not guess right.</p><table border="0" cellspacing="0">
+commands when <kbd>M-x tex-mode</kbd> does not guess right.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC200">20.1.2.1 TeX Editing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special commands for editing in TeX mode.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC201">20.1.2.2 TeX Printing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for printing part of a file with TeX.</td></tr>
@@ -369,7 +371,8 @@ automatic match display to work with them.
 After you insert a `<samp>\begin</samp>', use <kbd>C-c C-f</kbd>
 (<code>tex-close-latex-block</code>) to insert automatically a matching
 `<samp>\end</samp>' (on a new line following the `<samp>\begin</samp>').  A blank line is
-inserted between the two, and point is left there.</p><hr size="6">
+inserted between the two, and point is left there.
+</p><hr size="6">
 <a name="NOD188"></a>
 <a name="SEC201"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -446,7 +449,8 @@ see section <a href="xemacs_29.html#SEC339">Interactive Inferior Shell</a>).  Wi
 it so that its last line is visible by typing <kbd>C-c C-l</kbd>.
 </p><p>  Type <kbd>C-c C-k</kbd> (<code>tex-kill-job</code>) to kill the TeX process if
 you see that its output is no longer useful.  Using <kbd>C-c C-b</kbd> or
-<kbd>C-c C-r</kbd> also kills any TeX process still running.</p><a name="IDX791"></a>
+<kbd>C-c C-r</kbd> also kills any TeX process still running.
+</p><a name="IDX791"></a>
 <a name="IDX792"></a>
 <p>  You can pass an arbitrary region through an inferior TeX by typing
 <kbd>C-c C-r</kbd> (<code>tex-region</code>).  This is tricky, however, because
@@ -662,7 +666,8 @@ heading line.  <kbd>C-c C-p</kbd> (<code>previous-visible-heading</code>) moves
 similarly backward.  Both accept numeric arguments as repeat counts.  The
 names emphasize that invisible headings are skipped, but this is not really
 a special feature.  All editing commands that look for lines ignore the
-invisible lines automatically.</p><a name="IDX803"></a>
+invisible lines automatically.
+</p><a name="IDX803"></a>
 <a name="IDX804"></a>
 <a name="IDX805"></a>
 <a name="IDX806"></a>
@@ -760,7 +765,8 @@ on a heading line, and both apply to all the lines of that heading's
 <em>subtree</em>: its body, all its subheadings, both direct and indirect, and
 all of their bodies.  In other words, the subtree contains everything
 following this heading line, up to and not including the next heading of
-the same or higher rank.</p><a name="IDX816"></a>
+the same or higher rank.
+</p><a name="IDX816"></a>
 <a name="IDX817"></a>
 <p>  Intermediate between a visible subtree and an invisible one is having
 all the subheadings visible but none of the body.  There are two commands
@@ -772,7 +778,8 @@ makes the subheadings visible.  They are <kbd>M-x hide-leaves</kbd> and
 <p>  A little weaker than <code>show-branches</code> is <kbd>C-c C-i</kbd>
 (<code>show-children</code>).  It makes just the direct subheadings
 visible--those one level down.  Deeper subheadings remain
-invisible.</p><a name="IDX820"></a>
+invisible.
+</p><a name="IDX820"></a>
 <a name="IDX821"></a>
 <p>  Two commands have a blanket effect on the whole file.  <kbd>M-x
 hide-body</kbd> makes all body lines invisible, so that you see just the
@@ -837,7 +844,8 @@ or backward across other words (<code>transpose-words</code>).
 <p>  Notice how these keys form a series that parallels the
 character-based <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-d</kbd>, <kbd>C-t</kbd> and
 <kbd>DEL</kbd>.  <kbd>M-@</kbd> is related to <kbd>C-@</kbd>, which is an alias for
-<kbd>C-<kbd>SPC</kbd></kbd>.</p><a name="IDX823"></a>
+<kbd>C-<kbd>SPC</kbd></kbd>.
+</p><a name="IDX823"></a>
 <a name="IDX824"></a>
 <a name="IDX825"></a>
 <a name="IDX826"></a>
@@ -848,7 +856,8 @@ characters.  Like their <kbd>Control-</kbd> analogues, <kbd>Meta-f</kbd> and
 <kbd>Meta-b</kbd> move several words if given an argument.  <kbd>Meta-f</kbd> with a
 negative argument moves backward, and <kbd>Meta-b</kbd> with a negative argument
 moves forward.  Forward motion stops after the last letter of the
-word, while backward motion stops before the first letter.</p><a name="IDX827"></a>
+word, while backward motion stops before the first letter.
+</p><a name="IDX827"></a>
 <a name="IDX828"></a>
 <p>  <kbd>Meta-d</kbd> (<code>kill-word</code>) kills the word after point.  To be
 precise, it kills everything from point to the place <kbd>Meta-f</kbd> would
@@ -941,7 +950,8 @@ the typist's convention is followed, and thus considers a sentence to
 end wherever there is a `<samp>.</samp>', `<samp>?</samp>', or `<samp>!</samp>' followed by the
 end of a line or two spaces, with any number of `<samp>)</samp>', `<samp>]</samp>',
 `<samp>'</samp>', or `<samp>&quot;</samp>' characters allowed in between.  A sentence also
-begins or ends wherever a paragraph begins or ends.</p><p>  Neither <kbd>M-a</kbd> nor <kbd>M-e</kbd> moves past the newline or spaces beyond
+begins or ends wherever a paragraph begins or ends.
+</p><p>  Neither <kbd>M-a</kbd> nor <kbd>M-e</kbd> moves past the newline or spaces beyond
 the sentence edge at which it is stopping.
 </p><a name="IDX841"></a>
 <a name="IDX842"></a>
@@ -951,10 +961,12 @@ the sentence edge at which it is stopping.
 <kbd>C-a</kbd> and <kbd>C-e</kbd> have <kbd>C-k</kbd>.  The command is  <kbd>M-k</kbd>
 (<code>kill-sentence</code>) which kills from point to the end of the
 sentence.  With minus one as an argument it kills back to the beginning
-of the sentence.  Larger arguments serve as repeat counts.</p><p>  There is a special command, <kbd>C-x <kbd>DEL</kbd></kbd>
+of the sentence.  Larger arguments serve as repeat counts.
+</p><p>  There is a special command, <kbd>C-x <kbd>DEL</kbd></kbd>
 (<code>backward-kill-sentence</code>), for killing back to the beginning of a
 sentence, which is useful when you change your mind in the middle of
-composing text.</p><a name="IDX845"></a>
+composing text.
+</p><a name="IDX845"></a>
 <p>  The variable <code>sentence-end</code> controls recognition of the end of a
 sentence.  It is a regexp that matches the last few characters of a
 sentence, together with the whitespace following the sentence.  Its
@@ -1030,7 +1042,8 @@ either starts or separates paragraphs.  The value of
 that separate paragraphs without being part of any paragraph.  Lines that
 start a new paragraph and are contained in it must match both regexps.  For
 example, normally <code>paragraph-start</code> is <code>&quot;^[ <tt>\</tt>t<tt>\</tt>n<tt>\</tt>f]&quot;</code>
-and <code>paragraph-separate</code> is <code>&quot;^[ <tt>\</tt>t<tt>\</tt>f]*$&quot;</code>.</p><p>  Normally it is desirable for page boundaries to separate paragraphs.
+and <code>paragraph-separate</code> is <code>&quot;^[ <tt>\</tt>t<tt>\</tt>f]*$&quot;</code>.
+</p><p>  Normally it is desirable for page boundaries to separate paragraphs.
 The default values of these variables recognize the usual separator for
 pages.
 </p><hr size="6">
@@ -1267,7 +1280,8 @@ permanently for yourself.  See section <a href="xemacs_30.html#SEC377">The Init 
 (<code>fill-paragraph</code>).  It causes the paragraph containing point, or
 the one after point if point is between paragraphs, to be refilled.  All
 line breaks are removed, and new ones are inserted where necessary.
-<kbd>M-q</kbd> can be undone with <kbd>C-_</kbd>.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.</p><a name="IDX862"></a>
+<kbd>M-q</kbd> can be undone with <kbd>C-_</kbd>.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.
+</p><a name="IDX862"></a>
 <a name="IDX863"></a>
 <p>  To refill many paragraphs, use <kbd>M-g</kbd> (<code>fill-region</code>), which
 divides the region into paragraphs and fills each of them.
@@ -1276,11 +1290,13 @@ divides the region into paragraphs and fills each of them.
 finding paragraph boundaries (see section <a href="#SEC208">Paragraphs</a>).  For more control, you
 can use <kbd>M-x fill-region-as-paragraph</kbd>, which refills everything
 between point and mark.  This command recognizes only blank lines as
-paragraph separators.</p><a name="IDX865"></a>
+paragraph separators.
+</p><a name="IDX865"></a>
 <p>  A numeric argument to <kbd>M-g</kbd> or <kbd>M-q</kbd> causes it to
 <em>justify</em> the text as well as filling it.  Extra spaces are inserted
 to make the right margin line up exactly at the fill column.  To remove
-the extra spaces, use <kbd>M-q</kbd> or <kbd>M-g</kbd> with no argument.</p><a name="IDX866"></a>
+the extra spaces, use <kbd>M-q</kbd> or <kbd>M-g</kbd> with no argument.
+</p><a name="IDX866"></a>
 <p>The variable <code>auto-fill-inhibit-regexp</code> takes as a value a regexp to
 match lines that should not be auto-filled.
 </p><a name="IDX867"></a>
@@ -1348,7 +1364,8 @@ new paragraph.
 prefix, put point at the end of the prefix, and give the command
 <kbd>C-x .</kbd> (<code>set-fill-prefix</code>).  That's a period after the
 <kbd>C-x</kbd>.  To turn off the fill prefix, specify an empty prefix: type
-<kbd>C-x .</kbd> with point at the beginning of a line.</p><p>  When a fill prefix is in effect, the fill commands remove the fill
+<kbd>C-x .</kbd> with point at the beginning of a line.
+</p><p>  When a fill prefix is in effect, the fill commands remove the fill
 prefix from each line before filling and insert it on each line after
 filling.  Auto Fill mode also inserts the fill prefix inserted on new
 lines it creates.  Lines that do not start with the fill prefix are
@@ -1448,7 +1465,8 @@ case conversion applies only to the part of the word before point.
 <p>  The other case conversion commands are <kbd>C-x C-u</kbd>
 (<code>upcase-region</code>) and <kbd>C-x C-l</kbd> (<code>downcase-region</code>), which
 convert everything between point and mark to the specified case.  Point and
-mark do not move.</p><hr size="6">
+mark do not move.
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC196" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_24.html#SEC215" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -118,7 +118,8 @@ which can either insert spaces or convert tabs as necessary to make sure
 that point stays in exactly the same column.  <kbd>C-e</kbd> runs
 <code>picture-end-of-line</code>, which moves to after the last non-blank
 character on the line.  There was no need to change <kbd>C-a</kbd>, as the choice
-of screen model does not affect beginnings of lines.</p><a name="IDX1091"></a>
+of screen model does not affect beginnings of lines.
+</p><a name="IDX1091"></a>
 <p>  Insertion of text is adapted to the quarter-plane screen model through
 the use of Overwrite mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  Self-inserting characters
 replace existing text, column by column, rather than pushing existing text
@@ -133,13 +134,15 @@ line.
 with a space rather than removing it.  <kbd>C-d</kbd>
 (<code>picture-clear-column</code>) does the same in a forward direction.
 <kbd>C-k</kbd> (<code>picture-clear-line</code>) really kills the contents of lines,
-but never removes the newlines from a buffer.</p><a name="IDX1095"></a>
+but never removes the newlines from a buffer.
+</p><a name="IDX1095"></a>
 <p>  To do actual insertion, you must use special commands.  <kbd>C-o</kbd>
 (<code>picture-open-line</code>) creates a blank line, but does so after
 the current line; it never splits a line.  <kbd>C-M-o</kbd>, <code>split-line</code>,
 makes sense in Picture mode, so it remains unchanged.  <kbd>LFD</kbd>
 (<code>picture-duplicate-line</code>) inserts another line
-with the same contents below the current line.</p><a name="IDX1096"></a>
+with the same contents below the current line.
+</p><a name="IDX1096"></a>
 <a name="IDX1097"></a>
 <p>  To actually delete parts of the picture, use <kbd>C-w</kbd>, or with
 <kbd>C-c C-d</kbd> (which is defined as <code>delete-char</code>, as <kbd>C-d</kbd> is
@@ -249,7 +252,8 @@ interesting character in the current line.  <kbd>M-<kbd>TAB</kbd></kbd> does not
 change the text; it only moves point.  &quot;Interesting&quot; characters are
 defined by the variable <code>picture-tab-chars</code>, which contains a string
 of characters considered interesting.  Its default value is
-<code>&quot;!-~&quot;</code>.</p><a name="IDX1102"></a>
+<code>&quot;!-~&quot;</code>.
+</p><a name="IDX1102"></a>
 <p>  <kbd>TAB</kbd> itself runs <code>picture-tab</code>, which operates based on the
 current tab stop settings; it is the Picture mode equivalent of
 <code>tab-to-tab-stop</code>.  Without arguments it just moves point, but with
@@ -319,7 +323,8 @@ insert instead.
 (<code>picture-clear-rectangle-to-register</code>) differ from the standard
 rectangle commands in that they normally clear the rectangle instead of
 deleting it; this is analogous with the way <kbd>C-d</kbd> is changed in Picture
-mode.</p><p>  However, deletion of rectangles can be useful in Picture mode, so these
+mode.
+</p><p>  However, deletion of rectangles can be useful in Picture mode, so these
 commands delete the rectangle if given a numeric argument.
 </p><a name="IDX1109"></a>
 <a name="IDX1110"></a>

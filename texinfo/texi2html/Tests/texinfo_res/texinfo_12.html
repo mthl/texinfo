@@ -82,17 +82,22 @@ the first column; multi-column tables are also supported.
 
 <p>Texinfo automatically indents the text in lists or tables, and numbers
 an enumerated list.  This last feature is useful if you modify the
-list, since you do not need to renumber it yourself.</p><p>Numbered lists and tables begin with the appropriate @-command at the
+list, since you do not need to renumber it yourself.
+</p><p>Numbered lists and tables begin with the appropriate @-command at the
 beginning of a line, and end with the corresponding <code>@end</code>
 command on a line by itself.  The table and itemized-list commands
 also require that you write formatting information on the same line as
-the beginning @-command.</p><p>Begin an enumerated list, for example, with an <code>@enumerate</code>
+the beginning @-command.
+</p><p>Begin an enumerated list, for example, with an <code>@enumerate</code>
 command and end the list with an <code>@end enumerate</code> command.
 Begin an itemized list with an <code>@itemize</code> command, followed on
 the same line by a formatting command such as <code>@bullet</code>, and end
-the list with an <code>@end itemize</code> command.<a name="IDX135"></a>
+the list with an <code>@end itemize</code> command.
+<a name="IDX135"></a>
 </p><p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
-command.</p><p>Here is an itemized list of the different kinds of table and lists:</p><ul>
+command.
+</p><p>Here is an itemized list of the different kinds of table and lists:
+</p><ul>
 <li><p>
 Itemized lists with and without bullets.
 </p></li><li><p>
@@ -101,7 +106,8 @@ Enumerated lists, using numbers or letters.
 Two-column tables with highlighting.
 </p></li></ul>
 
-<p>Here is an enumerated list with the same items:</p><ol>
+<p>Here is an enumerated list with the same items:
+</p><ol>
 <li><p>
 Itemized lists with and without bullets.
 </p></li><li><p>
@@ -111,7 +117,8 @@ Two-column tables with highlighting.
 </p></li></ol>
 
 <p>And here is a two-column table with the same items and their
-@-commands:</p><dl compact="compact">
+@-commands:
+</p><dl compact="compact">
 <dt><code> @itemize
 </code></dt>
 <dd><p>Itemized lists with and without bullets.
@@ -153,7 +160,8 @@ Two-column tables with highlighting.
 
 <p>The <code>@itemize</code> command produces sequences of indented
 paragraphs, with a bullet or other mark inside the left margin
-at the beginning of each paragraph for which such a mark is desired.</p><a name="IDX136"></a>
+at the beginning of each paragraph for which such a mark is desired.
+</p><a name="IDX136"></a>
 <p>Begin an itemized list by writing <code>@itemize</code> at the beginning of
 a line.  Follow the command, on the same line, with a character or a
 Texinfo command that generates a mark.  Usually, you will write
@@ -166,14 +174,16 @@ character in the Info file.  If you don't want any mark at all, use
 <code>@bullet</code>.
 </p><p>Write the text of the indented paragraphs themselves after the
 <code>@itemize</code>, up to another line that says <code>@end
-itemize</code>.</p><a name="IDX137"></a>
+itemize</code>.
+</p><a name="IDX137"></a>
 <p>Before each paragraph for which a mark in the margin is desired, write a
 line that says just <code>@item</code>.  It is ok to have text following the
 <code>@item</code>.
 </p><p>Usually, you should put a blank line before an <code>@item</code>.  This
 puts a blank line in the Info file. (TeX inserts the proper
 interline whitespace in either case.)  Except when the entries are
-very brief, these blank lines make the list look better.</p><p>Here is an example of the use of <code>@itemize</code>, followed by the
+very brief, these blank lines make the list look better.
+</p><p>Here is an example of the use of <code>@itemize</code>, followed by the
 output it produces.  <code>@bullet</code> produces an `<samp>*</samp>' in Info and a
 round dot in TeX.
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
@@ -199,7 +209,8 @@ for bar.
 </blockquote>
 
 <p>Itemized lists may be embedded within other itemized lists.  Here is a
-list marked with dashes embedded in a list marked with bullets:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+list marked with dashes embedded in a list marked with bullets:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @itemize @bullet
 @item
 First item.
@@ -287,7 +298,9 @@ Underlying causes.
 </p></li><li><p>
 Proximate causes.
 </p></li></ol>
-<p>Here is an example with an argument of <kbd>3</kbd>:</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+
+<p>Here is an example with an argument of <kbd>3</kbd>:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @enumerate 3
 @item
 Predisposing causes.
@@ -309,27 +322,34 @@ Precipitating causes.
 </p></li><li><p>
 Perpetuating causes.
 </p></li></ol>
+
 <p>Here is a brief summary of the alternatives.  The summary is constructed
-using <code>@enumerate</code> with an argument of <kbd>a</kbd>.</p><ol>
-<li><p>  a
+using <code>@enumerate</code> with an argument of <kbd>a</kbd>.
+</p><ol>
+<li><p> a
 </p></li><li><p>
 <code>@enumerate</code>
 </p><p>Without an argument, produce a numbered list, starting with the number
-1.</p></li><li><p>
+1.
+</p></li><li><p>
 <code>@enumerate <var>positive-integer</var></code>
 </p><p>With a (positive) numeric argument, start a numbered list with that
 number.  You can use this to continue a list that you interrupted with
-other text.</p></li><li><p>
+other text.
+</p></li><li><p>
 <code>@enumerate <var>upper-case-letter</var></code>
 </p><p>With an upper case letter as argument, start a list
 in which each item is marked
-by a letter, beginning with that upper case letter.</p></li><li><p>
+by a letter, beginning with that upper case letter.
+</p></li><li><p>
 <code>@enumerate <var>lower-case-letter</var></code>
 </p><p>With a lower case letter as argument, start a list
 in which each item is marked by
-a letter, beginning with that lower case letter.</p></li></ol>
+a letter, beginning with that lower case letter.
+</p></li></ol>
 
-<p>You can also nest enumerated lists, as in an outline.</p><hr size="6">
+<p>You can also nest enumerated lists, as in an outline.
+</p><hr size="6">
 <a name="NOD145"></a>
 <a name="SEC159"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -365,7 +385,8 @@ exhibits, and command-line option summaries.
 <a name="SEC160"></a>
 <h3> Using the <code>@table</code> Command </h3>
 
-<p>Use the <code>@table</code> command to produce two-column tables.</p><p>Write the <code>@table</code> command at the beginning of a line and follow
+<p>Use the <code>@table</code> command to produce two-column tables.
+</p><p>Write the <code>@table</code> command at the beginning of a line and follow
 it on the same line with an argument that is a Texinfo &quot;indicating&quot;
 command such as <code>@code</code>, <code>@samp</code>, <code>@var</code>, or
 <code>@kbd</code> (see section <a href="texinfo_10.html#SEC120">Indicating Definitions, Commands, etc.</a>).  Although these commands are usually
@@ -381,9 +402,11 @@ with an <code>@code</code> command.  (We recommend <code>@code</code> for
 <code>@table</code>.  <code>@asis</code> is a command that does nothing; if you
 use this command after <code>@table</code>, TeX and the Info formatting
 commands output the first column entries without added highlighting
-(&quot;as is&quot;).</p><p>(The <code>@table</code> command may work with other commands besides those
+(&quot;as is&quot;).
+</p><p>(The <code>@table</code> command may work with other commands besides those
 listed here.  However, you can only use commands that normally take
-arguments in braces.)</p><a name="IDX139"></a>
+arguments in braces.)
+</p><a name="IDX139"></a>
 <p>Begin each table entry with an <code>@item</code> command at the beginning
 of a line.  Write the first column text on the same line as the
 <code>@item</code> command.  Write the second column text on the line
@@ -394,8 +417,10 @@ paragraphs.  But only text on the same line as the <code>@item</code> will
 be placed in the first column, including any footnote.
 </p><p>Normally, you should put a blank line before an <code>@item</code> line.
 This puts a blank like in the Info file.  Except when the entries are
-very brief, a blank line looks better.</p><p>The following table, for example, highlights the text in the first
-column with an <code>@samp</code> command:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+very brief, a blank line looks better.
+</p><p>The following table, for example, highlights the text in the first
+column with an <code>@samp</code> command:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @table @samp
 @item foo
 This is the text for
@@ -419,7 +444,8 @@ Text for @samp{bar}.
 </dl>
 
 <p>If you want to list two or more named items with a single block of
-text, use the <code>@itemx</code> command.  (See section <a href="#SEC162"><code>@itemx</code></a>.)</p><hr size="6">
+text, use the <code>@itemx</code> command.  (See section <a href="#SEC162"><code>@itemx</code></a>.)
+</p><hr size="6">
 <a name="NOD147"></a>
 <a name="SEC161"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -448,7 +474,8 @@ the first column of the table into the index of variables.  This
 simplifies the task of creating indices.  Only the items on the same
 line as the <code>@item</code> commands are indexed, and they are indexed in
 exactly the form that they appear on that line.  See section <a href="texinfo_13.html#SEC166">Indices</a>,
-for more information about indices.</p><p>Begin a two-column table using <code>@ftable</code> or <code>@vtable</code> by
+for more information about indices.
+</p><p>Begin a two-column table using <code>@ftable</code> or <code>@vtable</code> by
 writing the @-command at the beginning of a line, followed on the same
 line by an argument that is a Texinfo command such as <code>@code</code>,
 exactly as you would for an <code>@table</code> command; and end the table
@@ -500,11 +527,13 @@ case) character or string.
 </code></dt>
 <dd><p>These two functions accept a character or a string as
 argument, and return the corresponding upper case (lower
-case) character or string.</p></dd>
+case) character or string.
+</p></dd>
 </dl>
 
 <p>(Note also that this example illustrates multi-line supporting text in
-a two-column table.)</p><hr size="6">
+a two-column table.)
+</p><hr size="6">
 <a name="NOD149"></a>
 <a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">

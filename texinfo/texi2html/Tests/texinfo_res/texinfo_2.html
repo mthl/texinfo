@@ -279,15 +279,18 @@ requirement.  The `Up', `Previous', and `Next' pointers of a node can
 point to any other nodes, and a menu can contain any other nodes.
 Thus, the node structure can be any directed graph.  But it is usually
 more comprehensible to follow a structure that corresponds to the
-structure of chapters and sections in a printed book or report.</p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
+structure of chapters and sections in a printed book or report.
+</p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
 provides pointers of another kind, called references, that can be
 sprinkled throughout the text.  This is usually the best way to
-represent links that do not fit a hierarchical structure.</p><p>Usually, you will design a document so that its nodes match the
+represent links that do not fit a hierarchical structure.
+</p><p>Usually, you will design a document so that its nodes match the
 structure of chapters and sections in the printed output.  But
 occasionally there are times when this is not right for the material
 being discussed.  Therefore, Texinfo uses separate commands to specify
 the node structure for the Info file and the section structure for the
-printed output.</p><p>Generally, you enter an Info file through a node that by convention is
+printed output.
+</p><p>Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
 file's purpose, and a large menu through which the rest of the file is
 reached.  From this node, you can either traverse the file
@@ -298,9 +301,11 @@ with the standalone Info program, you can specify specific menu items on
 the command line (see <a href="../info/index.html">(info)Top</a> section `Top' in <cite>Info</cite>).
 </p><p>If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit <kbd>SPC</kbd> repeatedly, or you get the whole
-file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html">Advanced Info commands: (info)Expert</a>.)</p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
+file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html">Advanced Info commands: (info)Expert</a>.)
+</p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
 departure point for the whole Info system.  From it, you can reach the
-`Top' nodes of each of the documents in a complete Info system.</p><a name="IDX12"></a>
+`Top' nodes of each of the documents in a complete Info system.
+</p><a name="IDX12"></a>
 <p>If you wish to refer to an Info file in a URI, you can use the
 (unofficial) syntax exemplified in the following.  This works with
 Emacs/W3, for example:
@@ -337,11 +342,13 @@ program written by Donald Knuth.<a name="DOCF3" href="texinfo_fot.html#FOOT3">(3
 </p><p>A Texinfo-based book is similar to any other typeset, printed work: it
 can have a title page, copyright page, table of contents, and preface,
 as well as chapters, numbered or unnumbered sections and subsections,
-page headers, cross references, footnotes, and indices.</p><p>You can use Texinfo to write a book without ever having the intention
+page headers, cross references, footnotes, and indices.
+</p><p>You can use Texinfo to write a book without ever having the intention
 of converting it into online information.  You can use Texinfo for
 writing a printed novel, and even to write a printed memo, although
 this latter application is not recommended since electronic mail is so
-much easier.</p><p>TeX is a general purpose typesetting program.  Texinfo provides a
+much easier.
+</p><p>TeX is a general purpose typesetting program.  Texinfo provides a
 file `<tt>texinfo.tex</tt>' that contains information (definitions or
 <em>macros</em>) that TeX uses when it typesets a Texinfo file.
 (`<tt>texinfo.tex</tt>' tells TeX how to convert the Texinfo @-commands
@@ -365,7 +372,8 @@ light-hearted, young and cheery.
 called WEB and can be compiled either in Pascal or (by using a
 conversion program that comes with the TeX distribution) in C.
 (See <a href="../emacs/TeX-Mode.html">(emacs)TeX Mode</a> section `TeX Mode' in <cite>The GNU Emacs Manual</cite>, for information
-about TeX.)</p><p>TeX is very powerful and has a great many features.  Because a
+about TeX.)
+</p><p>TeX is very powerful and has a great many features.  Because a
 Texinfo file must be able to present information both on a
 character-only terminal in Info form and in a typeset book, the
 formatting commands that Texinfo supports are necessarily limited.
@@ -397,7 +405,8 @@ printed manual and tell <code>makeinfo</code> and
 <code>texinfo-format-buffer</code> how to create an Info file are preceded
 by `<samp>@</samp>'; they are called <em>@-commands</em>.  For example,
 <code>@node</code> is the command to indicate a node and <code>@chapter</code>
-is the command to indicate the start of a chapter.</p><blockquote>
+is the command to indicate the start of a chapter.
+</p><blockquote>
 
 <p><strong>Please note:</strong> All the @-commands, with the exception of the
 <code>@TeX{}</code> command, must be written entirely in lower case.
@@ -408,7 +417,8 @@ strict limits make it possible for Texinfo files to be understood both
 by TeX and by the code that converts them into Info files.  You can
 display Info files on any terminal that displays alphabetic and
 numeric characters.  Similarly, you can print the output generated by
-TeX on a wide variety of printers.</p><p>Depending on what they do or what arguments<a name="DOCF4" href="texinfo_fot.html#FOOT4">(4)</a> they take, you
+TeX on a wide variety of printers.
+</p><p>Depending on what they do or what arguments<a name="DOCF4" href="texinfo_fot.html#FOOT4">(4)</a> they take, you
 need to write @-commands on lines of their own or as part of
 sentences:
 </p><ul>
@@ -416,16 +426,20 @@ sentences:
 Write a command such as <code>@noindent</code> at the beginning of a line as
 the only text on the line.  (<code>@noindent</code> prevents the beginning of
 the next line from being indented as the beginning of a
-paragraph.)</p></li><li><p>
+paragraph.)
+</p></li><li><p>
 Write a command such as <code>@chapter</code> at the beginning of a line
 followed by the command's arguments, in this case the chapter title, on
-the rest of the line.  (<code>@chapter</code> creates chapter titles.)</p></li><li><p>
+the rest of the line.  (<code>@chapter</code> creates chapter titles.)
+</p></li><li><p>
 Write a command such as <code>@dots{}</code> wherever you wish but usually
-within a sentence. (<code>@dots{}</code> creates dots <small>...</small>)</p></li><li><p>
+within a sentence. (<code>@dots{}</code> creates dots <small>...</small>)
+</p></li><li><p>
 Write a command such as <code>@code{<var>sample-code</var>}</code> wherever you
 wish (but usually within a sentence) with its argument,
 <var>sample-code</var> in this example, between the braces.  (<code>@code</code>
-marks text as being code.)</p></li><li><p>
+marks text as being code.)
+</p></li><li><p>
 Write a command such as <code>@example</code> on a line of its own; write the
 body-text on following lines; and write the matching <code>@end</code>
 command, <code>@end example</code> in this case, at the on a line of its own
@@ -440,11 +454,13 @@ appear in the output, so beware.
 <p>As a general rule, a command requires braces if it mingles among other
 text; but it does not need braces if it starts a line of its own.  The
 non-alphabetic commands, such as <code>@:</code>, are exceptions to the rule;
-they do not need braces.</p><p>As you gain experience with Texinfo, you will rapidly learn how to
+they do not need braces.
+</p><p>As you gain experience with Texinfo, you will rapidly learn how to
 write the different commands: the different ways to write commands
 make it easier to write and read Texinfo files than if all commands
 followed exactly the same syntax.  (For details about @-command
-syntax, see <a href="texinfo_29.html#SEC320">@-Command Syntax</a>.)</p><hr size="6">
+syntax, see <a href="texinfo_29.html#SEC320">@-Command Syntax</a>.)
+</p><hr size="6">
 <a name="NOD9"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">

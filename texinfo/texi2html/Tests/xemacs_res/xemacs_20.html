@@ -601,9 +601,9 @@ correspondence.  There is a special function
 <code>modify-coding-system-alist</code> for adding elements to this list.  For
 example, to read and write all `<samp>.txt</samp>' using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 (modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>The first argument should be <code>file</code>, the second argument should be
 a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.

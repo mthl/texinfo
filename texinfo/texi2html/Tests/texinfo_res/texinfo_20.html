@@ -160,7 +160,8 @@ command automatically generates indices; see section <a href="#SEC247">Format wi
 running the <code>tex</code> command, you first need a sorted index to work
 from.  The <code>texindex</code> command sorts indices.  (The source file
 `<tt>texindex.c</tt>' comes as part of the standard Texinfo distribution,
-among other places.)</p><a name="IDX321"></a>
+among other places.)
+</p><a name="IDX321"></a>
 <a name="IDX322"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
@@ -382,7 +383,8 @@ Emacs.  To create a shell within Emacs, type <kbd>M-x shell</kbd>.  In this
 shell, you can format and print the document.  See section <a href="#SEC244">Format and Print Hardcopy</a>, for details.
 </p><p>You can switch to and from the shell buffer while <code>tex</code> is
 running and do other editing.  If you are formatting a long document
-on a slow machine, this can be very convenient.</p><p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
+on a slow machine, this can be very convenient.
+</p><p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
 here is how to use <code>texi2dvi</code> to format and print <cite>Using and
 Porting GNU CC</cite> from a shell within Emacs:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
@@ -390,7 +392,8 @@ texi2dvi gcc.texinfo
 lpr -d gcc.dvi
 </pre></td></tr></table>
 <p>See section <a href="#SEC250">Formatting and Printing in Texinfo Mode</a>, for more information about formatting
-and printing in Texinfo mode.</p><hr size="6">
+and printing in Texinfo mode.
+</p><hr size="6">
 <a name="NOD236"></a>
 <a name="SEC250"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -415,65 +418,76 @@ and printing in Texinfo mode.</p><hr size="6">
 formatting and printing.  These include commands for sorting indices,
 looking at the printer queue, killing the formatting job, and
 recentering the display of the buffer in which the operations
-occur.</p><dl compact="compact">
+occur.
+</p><dl compact="compact">
 <dt><kbd> C-c C-t C-b
 </kbd></dt>
 <dt><kbd> M-x texinfo-tex-buffer
 </kbd></dt>
-<dd><p>Run <code>texi2dvi</code> on the current buffer.</p></dd>
+<dd><p>Run <code>texi2dvi</code> on the current buffer.
+</p></dd>
 <dt><kbd> C-c C-t C-r
 </kbd></dt>
 <dt><kbd> M-x texinfo-tex-region
 </kbd></dt>
-<dd><p>Run TeX on the current region.</p></dd>
+<dd><p>Run TeX on the current region.
+</p></dd>
 <dt><kbd> C-c C-t C-i
 </kbd></dt>
 <dt><kbd> M-x texinfo-texindex
 </kbd></dt>
 <dd><p>Sort the indices of a Texinfo file formatted with
-<code>texinfo-tex-region</code>.</p></dd>
+<code>texinfo-tex-region</code>.
+</p></dd>
 <dt><kbd> C-c C-t C-p
 </kbd></dt>
 <dt><kbd> M-x texinfo-tex-print
 </kbd></dt>
 <dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
-<code>texinfo-tex-buffer</code>.</p></dd>
+<code>texinfo-tex-buffer</code>.
+</p></dd>
 <dt><kbd> C-c C-t C-q
 </kbd></dt>
 <dt><kbd> M-x tex-show-print-queue
 </kbd></dt>
-<dd><p>Show the print queue.</p></dd>
+<dd><p>Show the print queue.
+</p></dd>
 <dt><kbd> C-c C-t C-d
 </kbd></dt>
 <dt><kbd> M-x texinfo-delete-from-print-queue
 </kbd></dt>
 <dd><p>Delete a job from the print queue; you will be prompted for the job
 number shown by a preceding <kbd>C-c C-t C-q</kbd> command
-(<code>texinfo-show-tex-print-queue</code>).</p></dd>
+(<code>texinfo-show-tex-print-queue</code>).
+</p></dd>
 <dt><kbd> C-c C-t C-k
 </kbd></dt>
 <dt><kbd> M-x tex-kill-job
 </kbd></dt>
 <dd><p>Kill the currently running TeX job started by either
 <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
-process running in the Texinfo shell buffer.</p></dd>
+process running in the Texinfo shell buffer.
+</p></dd>
 <dt><kbd> C-c C-t C-x
 </kbd></dt>
 <dt><kbd> M-x texinfo-quit-job
 </kbd></dt>
 <dd><p>Quit a TeX formatting job that has stopped because of an error by
 sending an <kbd>x</kbd> to it.  When you do this, TeX preserves a record
-of what it did in a `<tt>.log</tt>' file.</p></dd>
+of what it did in a `<tt>.log</tt>' file.
+</p></dd>
 <dt><kbd> C-c C-t C-l
 </kbd></dt>
 <dt><kbd> M-x tex-recenter-output-buffer
 </kbd></dt>
 <dd><p>Redisplay the shell buffer in which the TeX printing and formatting
-commands are run to show its most recent output.</p></dd>
+commands are run to show its most recent output.
+</p></dd>
 </dl>
 
 <p>Thus, the usual sequence of commands for formatting a buffer is as
-follows (with comments to the right):</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+follows (with comments to the right):
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
@@ -484,8 +498,10 @@ called the `<tt>*tex-shell*</tt>'.  The <code>texinfo-tex-command</code>,
 commands are all run in this shell.
 </p><p>You can watch the commands operate in the `<samp>*tex-shell*</samp>' buffer,
 and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
-as you would any other shell buffer.</p><p>The formatting and print commands depend on the values of several variables.
-The default values are:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+as you would any other shell buffer.
+</p><p>The formatting and print commands depend on the values of several variables.
+The default values are:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
      Variable                              Default value
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
@@ -501,7 +517,8 @@ tex-show-queue-command                    &quot;lpq&quot;
 <p>You can change the values of these variables with the <kbd>M-x
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
 (see <a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
-(see <a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).</p><a name="IDX333"></a>
+(see <a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
+</p><a name="IDX333"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
@@ -535,13 +552,15 @@ commands as a <code>compile-command</code> and have Emacs run it by typing
 <kbd>M-x compile</kbd>.  This creates a special shell called the
 `<tt>*compilation*</tt>' buffer in which Emacs runs the compile command.
 For example, at the end of the `<tt>gdb.texinfo</tt>' file, after the
-<code>@bye</code>, you could put the following:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<code>@bye</code>, you could put the following:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
 </pre></td></tr></table>
 <p>This technique is most often used by programmers who also compile programs
-this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.</p><hr size="6">
+this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.
+</p><hr size="6">
 <a name="NOD238"></a>
 <a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -672,7 +691,8 @@ export TEXINPUTS
 set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>It is customary for DOS/Windows users to put such commands in the
-`<tt>autoexec.bat</tt>' file, or in the Windows Registry.</p><p>These settings would cause TeX to look for `<tt>\input</tt>' file first
+`<tt>autoexec.bat</tt>' file, or in the Windows Registry.
+</p><p>These settings would cause TeX to look for `<tt>\input</tt>' file first
 in the current directory, indicated by the `<samp>.</samp>', then in a
 hypothetical user's `<tt>me/mylib</tt>' directory, and finally in a system
 directory `<tt>/usr/lib/tex/macros</tt>'.
@@ -784,7 +804,8 @@ before the <code>@titlepage</code> command:
 format.  However, you can direct TeX to typeset a document in a 7 by
 9.25 inch format that is suitable for bound books by inserting the
 following command on a line by itself at the beginning of the Texinfo
-file, before the title page:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+file, before the title page:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @smallbook
 </pre></td></tr></table>
 <p>(Since many books are about 7 by 9.25 inches, this command might better
@@ -793,7 +814,8 @@ called the <code>@smallbook</code> command by comparison to the 8.5 by 11 inch f
 </p><p>If you write the <code>@smallbook</code> command between the
 start-of-header and end-of-header lines, the Texinfo mode TeX
 region formatting command, <code>texinfo-tex-region</code>, will format the
-region in &quot;small&quot; book size (see section <a href="texinfo_4.html#SEC45">Start of Header</a>).</p><p>See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>, for information about
+region in &quot;small&quot; book size (see section <a href="texinfo_4.html#SEC45">Start of Header</a>).
+</p><p>See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>, for information about
 commands that make it easier to produce examples for a smaller manual.
 </p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format with <code>@smallbook</code> that do not
 require changing the source file.
@@ -865,11 +887,9 @@ on a line by itself near the beginning of the Texinfo file, before the
 title page.  The height comes first, then the width if desired,
 separated by a comma.  Examples:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
-@pagesizes 200mm,150mm  
-</pre></td></tr></table><p>and
+@pagesizes 200mm,150mm  </pre></td></tr></table><p>and
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
-@pagesizes 11.5in      
-</pre></td></tr></table>
+@pagesizes 11.5in      </pre></td></tr></table>
 <a name="IDX352"></a>
 <a name="IDX353"></a>
 <p>This would be reasonable for printing on B5-size paper.  To emphasize,
@@ -907,7 +927,8 @@ require changing the source file.
 pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</code>
 command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
-page, like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+page, like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @iftex
 @cropmarks
 @end iftex

@@ -67,22 +67,26 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <p>Texinfo mode provides commands to insert various frequently used
 @-commands into the buffer.  You can use these commands to save
-keystrokes.</p><p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
-first letter of the @-command:</p><dl compact="compact">
+keystrokes.
+</p><p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
+first letter of the @-command:
+</p><dl compact="compact">
 <dt><kbd>  C-c C-c c
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@code
 </kbd></dt>
 <dd><p><a name="IDX32"></a>
 Insert <code>@code{}</code> and put the
-cursor between the braces.</p></dd>
+cursor between the braces.
+</p></dd>
 <dt><kbd>  C-c C-c d
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@dfn
 </kbd></dt>
 <dd><p><a name="IDX33"></a>
 Insert <code>@dfn{}</code> and put the
-cursor between the braces.</p></dd>
+cursor between the braces.
+</p></dd>
 <dt><kbd>  C-c C-c e
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@end
@@ -91,21 +95,24 @@ cursor between the braces.</p></dd>
 Insert <code>@end</code> and attempt to insert the correct following word,
 such as `<samp>example</samp>' or `<samp>table</samp>'.  (This command does not handle
 nested lists correctly, but inserts the word appropriate to the
-immediately preceding list.)</p></dd>
+immediately preceding list.)
+</p></dd>
 <dt><kbd>  C-c C-c i
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@item
 </kbd></dt>
 <dd><p><a name="IDX35"></a>
 Insert <code>@item</code> and put the
-cursor at the beginning of the next line.</p></dd>
+cursor at the beginning of the next line.
+</p></dd>
 <dt><kbd>  C-c C-c k
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@kbd
 </kbd></dt>
 <dd><p><a name="IDX36"></a>
 Insert <code>@kbd{}</code> and put the
-cursor between the braces.</p></dd>
+cursor between the braces.
+</p></dd>
 <dt><kbd>  C-c C-c n
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@node
@@ -114,48 +121,55 @@ cursor between the braces.</p></dd>
 Insert <code>@node</code> and a comment line
 listing the sequence for the `Next',
 `Previous', and `Up' nodes.
-Leave point after the <code>@node</code>.</p></dd>
+Leave point after the <code>@node</code>.
+</p></dd>
 <dt><kbd>  C-c C-c o
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@noindent
 </kbd></dt>
 <dd><p><a name="IDX38"></a>
 Insert <code>@noindent</code> and put the
-cursor at the beginning of the next line.</p></dd>
+cursor at the beginning of the next line.
+</p></dd>
 <dt><kbd>  C-c C-c s
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@samp
 </kbd></dt>
 <dd><p><a name="IDX39"></a>
 Insert <code>@samp{}</code> and put the
-cursor between the braces.</p></dd>
+cursor between the braces.
+</p></dd>
 <dt><kbd>  C-c C-c t
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@table
 </kbd></dt>
 <dd><p><a name="IDX40"></a>
 Insert <code>@table</code> followed by a <kbd>SPC</kbd>
-and leave the cursor after the <kbd>SPC</kbd>.</p></dd>
+and leave the cursor after the <kbd>SPC</kbd>.
+</p></dd>
 <dt><kbd>  C-c C-c v
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@var
 </kbd></dt>
 <dd><p><a name="IDX41"></a>
 Insert <code>@var{}</code> and put the
-cursor between the braces.</p></dd>
+cursor between the braces.
+</p></dd>
 <dt><kbd>  C-c C-c x
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-@example
 </kbd></dt>
 <dd><p><a name="IDX42"></a>
 Insert <code>@example</code> and put the
-cursor at the beginning of the next line.</p></dd>
+cursor at the beginning of the next line.
+</p></dd>
 <dt><kbd> C-c C-c {
 </kbd></dt>
 <dt><kbd> M-x texinfo-insert-braces
 </kbd></dt>
 <dd><p><a name="IDX43"></a>
-Insert <code>{}</code> and put the cursor between the braces.</p></dd>
+Insert <code>{}</code> and put the cursor between the braces.
+</p></dd>
 <dt><kbd> C-c C-c }
 </kbd></dt>
 <dt><kbd> C-c C-c ]
@@ -166,7 +180,8 @@ Insert <code>{}</code> and put the cursor between the braces.</p></dd>
 Move from between a pair of braces forward past the closing brace.
 Typing <kbd>C-c C-c ]</kbd> is easier than typing <kbd>C-c C-c }</kbd>, which
 is, however, more mnemonic; hence the two keybindings.  (Also, you can
-move out from between braces by typing <kbd>C-f</kbd>.)</p></dd>
+move out from between braces by typing <kbd>C-f</kbd>.)
+</p></dd>
 </dl>
 
 <p>To put a command such as <code>@code{<small>...</small>}</code> around an
@@ -178,11 +193,13 @@ two words, and so on.  Use a negative argument to enclose the previous
 word or words.  If you do not specify a prefix argument, Emacs inserts
 the @-command string and positions the cursor between the braces.  This
 feature works only for those @-commands that operate on a word or words
-within one line, such as <code>@kbd</code> and <code>@var</code>.</p><p>This set of insert commands was created after analyzing the frequency
+within one line, such as <code>@kbd</code> and <code>@var</code>.
+</p><p>This set of insert commands was created after analyzing the frequency
 with which different @-commands are used in the <cite>GNU Emacs
 Manual</cite> and the <cite>GDB Manual</cite>.  If you wish to add your own insert
 commands, you can bind a keyboard macro to a key, use abbreviations,
-or extend the code in `<tt>texinfo.el</tt>'.</p><a name="IDX45"></a>
+or extend the code in `<tt>texinfo.el</tt>'.
+</p><a name="IDX45"></a>
 <a name="IDX46"></a>
 <a name="IDX47"></a>
 <p><kbd>C-c C-c C-d</kbd> (<code>texinfo-start-menu-description</code>) is an insert
@@ -191,15 +208,18 @@ inserts a node's section or chapter title in the space for the
 description in a menu entry line.  (A menu entry has three parts, the
 entry name, the node name, and the description.  Only the node name is
 required, but a description helps explain what the node is about.
-See section <a href="Menu-Parts.html#SEC100">The Parts of a Menu</a>.)</p><p>To use <code>texinfo-start-menu-description</code>, position point in a menu
+See section <a href="Menu-Parts.html#SEC100">The Parts of a Menu</a>.)
+</p><p>To use <code>texinfo-start-menu-description</code>, position point in a menu
 entry line and type <kbd>C-c C-c C-d</kbd>.  The command looks for and copies
 the title that goes with the node name, and inserts the title as a
 description; it positions point at beginning of the inserted text so you
 can edit it.  The function does not insert the title if the menu entry
-line already contains a description.</p><p>This command is only an aid to writing descriptions; it does not do the
+line already contains a description.
+</p><p>This command is only an aid to writing descriptions; it does not do the
 whole job.  You must edit the inserted text since a title tends to use
 the same words as a node name but a useful description uses different
-words.</p><hr size="1">
+words.
+</p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Emacs-Editing.html#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Showing-the-Structure.html#SEC25" title="Next section in reading order"> &gt; </a>]</td>

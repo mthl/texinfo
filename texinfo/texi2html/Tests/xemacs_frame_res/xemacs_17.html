@@ -671,7 +671,8 @@ non-<code>nil</code>, copying is used.  Otherwise, if the variable
 done for files that have multiple names, but renaming may still be done when
 the file being edited has only one name.  If the variable
 <code>backup-by-copying-when-mismatch</code> is non-<code>nil</code>, copying is
-done if renaming would cause the file's owner or group to change.  </p><hr size="6">
+done if renaming would cause the file's owner or group to change.  
+</p><hr size="6">
 <a name="NOD129"></a>
 <a name="SEC142"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -754,7 +755,8 @@ has already taken place is to list the directory with <kbd>C-u C-x C-d</kbd>
 author.  You should attempt to contact that person and ask him not to
 continue editing.  Often the next step is to save the contents of your
 Emacs buffer under a different name, and use <code>diff</code> to compare the
-two files.</p><p>  Simultaneous editing checks are also made when you visit a file that
+two files.
+</p><p>  Simultaneous editing checks are also made when you visit a file that
 is already visited with <kbd>C-x C-f</kbd> and when you start to modify a
 file.  This is not strictly necessary, but it is useful to find out
 about such a problem as early as possible, when corrective action takes
@@ -984,7 +986,8 @@ loss of data, use the command <kbd>M-x recover-file <kbd>RET</kbd> <var>file</va
 restores the contents from the auto-save file `<tt>#<var>file</var>#</tt>'.  You
 can then save the file with <kbd>C-x C-s</kbd> to put the recovered text into
 <var>file</var> itself.  For example, to recover file `<tt>foo.c</tt>' from its
-auto-save file `<tt>#foo.c#</tt>', do:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+auto-save file `<tt>#foo.c#</tt>', do:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 M-x recover-file <kbd>RET</kbd> foo.c <kbd>RET</kbd>
 C-x C-s
 </pre></td></tr></table>
@@ -1371,11 +1374,11 @@ April 1992, and that the only check-in since then was by Nathaniel
 Bowditch to `<tt>rcs2log</tt>' on 8 May 1992 with log text `<samp>Ignore log
 messages that start with `#'.</samp>'.  Then <kbd>C-x v a</kbd> visits
 `<tt>ChangeLog</tt>' and inserts text like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * rcs2log: Ignore log messages that start with `#'.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>You can then edit the new change log entry further as you wish.
 </p><p>  Normally, the log entry for file `<tt>foo</tt>' is displayed as `<samp>*
 foo: <var>text of log entry</var></samp>'.  The `<samp>:</samp>' after `<tt>foo</tt>' is omitted
@@ -1383,11 +1386,11 @@ if the text of the log entry starts with `<samp>(<var>functionname</var>):
 </samp>'.  For example, if the log entry for `<tt>vc.el</tt>' is
 `<samp>(vc-do-command): Check call-process status.</samp>', then the text in
 `<tt>ChangeLog</tt>' looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.el (vc-do-command): Check call-process status.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  When <kbd>C-x v a</kbd> adds several change log entries at once, it groups
 related log entries together if they all are checked in by the same
 author at nearly the same time.  If the log entries for several such
@@ -1403,13 +1406,13 @@ For `<tt>vc-hooks.el</tt>':
 Don't call expand-file-name.
 </pre></td></tr></table>
 <p>  They appear like this in `<tt>ChangeLog</tt>':
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
 
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Normally, <kbd>C-x v a</kbd> separates log entries by a blank line, but you
 can mark several related log entries to be clumped together (without an
 intervening blank line) by starting the text of each related log entry
@@ -1425,12 +1428,12 @@ For `<tt>vc-hooks.el</tt>':
 {expand} Don't call expand-file-name.
 </pre></td></tr></table>
 <p>Then the text in `<tt>ChangeLog</tt>' looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  A log entry whose text begins with `<samp>#</samp>' is not copied to
 `<tt>ChangeLog</tt>'.  For example, if you merely fix some misspellings in
 comments, you can log the change with an entry beginning with `<samp>#</samp>'
@@ -2020,7 +2023,8 @@ at the beginning of the line.
 </p><p>  For extra convenience, <kbd>SPC</kbd> and <kbd>n</kbd> in Dired are equivalent to
 <kbd>C-n</kbd>.  <kbd>p</kbd> is equivalent to <kbd>C-p</kbd>.  Moving by lines is done so
 often in Dired that it deserves to be easy to type.  <kbd>DEL</kbd> (move up and
-unflag) is often useful simply for moving up.</p><p>  The <kbd>g</kbd> command in Dired runs <code>revert-buffer</code> to reinitialize
+unflag) is often useful simply for moving up.
+</p><p>  The <kbd>g</kbd> command in Dired runs <code>revert-buffer</code> to reinitialize
 the buffer from the actual disk directory and show any changes made in the
 directory by programs other than Dired.  All deletion flags in the Dired
 buffer are lost when this is done.
@@ -2101,7 +2105,8 @@ files actually deleted.
 </p><p>  The <kbd>#</kbd>, <kbd>~</kbd>, and <kbd>.</kbd> commands flag many files for
 deletion, based on their names.  These commands are useful precisely
 because they do not actually delete any files; you can remove the
-deletion flags from any flagged files that you really wish to keep.</p><p>  <kbd>#</kbd> flags for deletion all files that appear to have been made by
+deletion flags from any flagged files that you really wish to keep.
+</p><p>  <kbd>#</kbd> flags for deletion all files that appear to have been made by
 auto-saving (that is, files whose names begin and end with `<samp>#</samp>').
 <kbd>~</kbd> flags for deletion all files that appear to have been made as
 backups for files that were edited (that is, files whose names end with
@@ -2117,7 +2122,8 @@ Period with a positive numeric argument, as in <kbd>C-u 3 .</kbd>, specifies the
 number of newest versions to keep, overriding <code>dired-kept-versions</code>.
 A negative numeric argument overrides <code>kept-old-versions</code>, using minus
 the value of the argument to specify the number of oldest versions of each
-file to keep.</p><hr size="6">
+file to keep.
+</p><hr size="6">
 <a name="NOD154"></a>
 <a name="SEC167"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2169,7 +2175,8 @@ name to rename to, using the minibuffer.
 <dd><p>Views the file described on this line using <kbd>M-x view-file</kbd>.  Viewing a
 file is like visiting it, but is slanted toward moving around in the file
 conveniently and does not allow changing the file.  See section <a href="#SEC168">View File</a>.  Viewing a file that is a directory runs Dired on that
-directory.</p></dd>
+directory.
+</p></dd>
 </dl>
 
 <hr size="6">

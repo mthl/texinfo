@@ -156,7 +156,8 @@ that value exists and is non-<code>nil</code>.  Mode hook variables for other
 programming language modes include <code>lisp-mode-hook</code>,
 <code>emacs-lisp-mode-hook</code>, <code>lisp-interaction-mode-hook</code>,
 <code>scheme-mode-hook</code>, and <code>muddle-mode-hook</code>.  The mode hook
-function receives no arguments.</p><hr size="6">
+function receives no arguments.
+</p><hr size="6">
 <a name="NOD204"></a>
 <a name="SEC217"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -260,7 +261,8 @@ symbol, string, or number, <kbd>C-M-f</kbd> moves over that.  If the character
 after point is a closing delimiter, <kbd>C-M-f</kbd> just moves past it.  (This
 last is not really moving across an sexp; it is an exception which is
 included in the definition of <kbd>C-M-f</kbd> because it is as useful a
-behavior as anyone can think of for that situation.)</p><p>  The command <kbd>C-M-b</kbd> (<code>backward-sexp</code>) moves backward over a
+behavior as anyone can think of for that situation.)
+</p><p>  The command <kbd>C-M-b</kbd> (<code>backward-sexp</code>) moves backward over a
 sexp.  The detailed rules are like those above for <kbd>C-M-f</kbd>, but with
 directions reversed.  If there are any prefix characters (single quote,
 back quote, and comma, in Lisp) preceding the sexp, <kbd>C-M-b</kbd> moves back
@@ -287,7 +289,8 @@ were code.
 commands but skip over any number of other kinds of sexps (symbols,
 strings, etc).  In some situations, these commands are useful because
 they usually ignore comments, since the comments usually do not contain
-any lists.</p><a name="IDX911"></a>
+any lists.
+</p><a name="IDX911"></a>
 <a name="IDX912"></a>
 <a name="IDX913"></a>
 <a name="IDX914"></a>
@@ -297,7 +300,8 @@ that is possible.  To move <i>up</i> one (or <var>n</var>) levels, use <kbd>C-M-
 <kbd>C-M-u</kbd> moves backward up past one unmatched opening delimiter.  A
 positive argument serves as a repeat count; a negative argument reverses
 direction of motion and also requests repetition, so it moves forward and
-up one or more levels.</p><p>  To move <i>down</i> in list structure, use <kbd>C-M-d</kbd>
+up one or more levels.
+</p><p>  To move <i>down</i> in list structure, use <kbd>C-M-d</kbd>
 (<code>down-list</code>).  In Lisp mode, where `<samp>(</samp>' is the only opening
 delimiter, this is nearly the same as searching for a `<samp>(</samp>'.  An
 argument specifies the number of levels of parentheses to go down.
@@ -646,6 +650,7 @@ beginning of this line.
 <dd><p>The position at which the line being indented begins.
 </p></dd>
 </dl>
+
 <p>It should return either a number, which is the number of columns of
 indentation for that line, or a list whose first element is such a
 number.  The difference between returning a number and returning a list
@@ -1226,7 +1231,7 @@ line.  This is convenient for entering the contents of an entry, which must
 be indented.  See section <a href="xemacs_23.html#SEC197">Text Mode</a>.
 </p><p>  Here is an example of the formatting conventions used in the change log
 for Emacs:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
 
         * xdisp.c (try_window_id):
@@ -1247,7 +1252,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
         permanently.  If display_text_line sets point position wrong
         (case where line is killed, point is at eob and that line is
         not displayed), set it again in final compute_motion.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <hr size="6">
 <a name="NOD217"></a>
 <a name="SEC232"></a>
@@ -1353,7 +1358,8 @@ In LaTeX text, the argument of any of the commands <code>\chapter</code>,
 <code>\section</code>, <code>\subsection</code>, <code>\subsubsection</code>,
 <code>\eqno</code>, <code>\label</code>, <code>\ref</code>, <code>\cite</code>, <code>\bibitem</code>,
 <code>\part</code>, <code>\appendix</code>, <code>\entry</code>, or <code>\index</code>, is a
-tag.</p><p>Other commands can make tags as well, if you specify them in the
+tag.
+</p><p>Other commands can make tags as well, if you specify them in the
 environment variable <code>TEXTAGS</code> before invoking <code>etags</code>.  The
 value of this environment variable should be a colon-separated list of
 command names.  For example,
@@ -1528,9 +1534,9 @@ may have problems listing them on the command line, because some systems
 have a limit on its length.  The simplest way to circumvent this limit
 is to tell <code>etags</code> to read the file names from its standard input,
 by typing a dash in place of the file names, like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 find . -name &quot;*.[chCH]&quot; -print | etags -
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Use the option `<samp>--language=<var>name</var></samp>' to specify the language
 explicitly.  You can intermix these options with file names; each one
 applies to the file names that follow it.  Specify
@@ -1568,9 +1574,9 @@ explanation.
 based on regexp matching.  You can freely intermix it with file names.
 Each `<samp>--regex</samp>' option adds to the preceding ones, and applies only
 to the following files.  The syntax is:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 --regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>where <var>tagregexp</var> is used to match the lines to tag.  It is always
 anchored, that is, it behaves as if preceded by `<samp>^</samp>'.  If you want
 to account for indentation, just match any initial number of blanks by
@@ -1598,10 +1604,10 @@ programming languages.
 </p><p>  The `<samp>-R</samp>' option deletes all the regexps defined with
 `<samp>--regex</samp>' options.  It applies to the file names following it, as
 you can see from the following example:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Here <code>etags</code> chooses the parsing language for `<tt>voo.doo</tt>' and
 `<tt>bar.ber</tt>' according to their contents.  <code>etags</code> also uses
 <var>reg1</var> to recognize additional tags in `<tt>voo.doo</tt>', and both
@@ -1614,17 +1620,17 @@ regular expression only for files of that language.  `<samp>etags --help</samp>'
 prints the list of languages recognised by <code>etags</code>.  The following
 example tags the <code>DEFVAR</code> macros in the Emacs source files.
 <code>etags</code> applies this regular expression to C files only:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 --regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>This feature is particularly useful when storing a list of regular
 expressions in a file.  The following option syntax instructs
 <code>etags</code> to read two files of regular expressions.  The regular
 expressions contained in the second file are matched without regard to
 case.
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 --regex=@first-file --ignore-case-regex=@second-file
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>A regex file contains one regular expressions per line.  Empty lines,
 and lines beginning with space or tab are ignored.  When the first
 character in a line is `<samp>@</samp>', <code>etags</code> assumes that the rest of
@@ -1633,42 +1639,42 @@ such files can be nested.  All the other lines are taken to be regular
 expressions.  For example, one can create a file called
 `<samp>emacs.tags</samp>' with the following contents (the first line in the
 file is a comment):
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
         -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>and then use it like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 etags --regex=@emacs.tags *.[ch] */*.[ch]
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Here are some more examples.  The regexps are quoted to protect them
 from shell interpretation.
 </p><ul>
 <li><p>
 Tag Octave files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
       --regex='/###key \(.*\)/\1/' \
       --regex='/[ \t]*global[ \t].*/' \
       *.m
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
 to it.
 </p></li><li><p>
 Tag Tcl files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 </li><li><p>
 Tag VHDL files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 --language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
 \( BODY\)?\|PROCEDURE\|PROCESS\|TYPE\)[ \t]+\([^ \t(]+\)/\3/'
-</pre></font></td></tr></table></li></ul>
+</pre></td></tr></table></li></ul>
 
 <hr size="6">
 <a name="NOD221"></a>
@@ -1927,7 +1933,8 @@ can follow its progress.  As soon as it finds an occurrence,
 <p>  Having found one match, you probably want to find all the rest.  To find
 one more match, type <kbd>M-,</kbd> (<code>tags-loop-continue</code>) to resume the
 <code>tags-search</code>.  This searches the rest of the current buffer, followed
-by the remaining files of the tags table.</p><a name="IDX985"></a>
+by the remaining files of the tags table.
+</p><a name="IDX985"></a>
 <p>  <kbd>M-x tags-query-replace</kbd> performs a single
 <code>query-replace-regexp</code> through all the files in the tags table.  It
 reads a regexp to search for and a string to replace with, just like
@@ -2526,7 +2533,8 @@ constituent&quot;.
 </p><p>  For example, one built-in Fortran abbrev is `<samp>;c</samp>' for
 `<samp>continue</samp>'.  If you insert `<samp>;c</samp>' and then insert a punctuation
 character such as a space or a newline, the `<samp>;c</samp>' changes
-automatically to `<samp>continue</samp>', provided Abbrev mode is enabled.</p><p>  Type `<samp>;?</samp>' or `<samp>;C-h</samp>' to display a list of all built-in
+automatically to `<samp>continue</samp>', provided Abbrev mode is enabled.
+</p><p>  Type `<samp>;?</samp>' or `<samp>;C-h</samp>' to display a list of all built-in
 Fortran abbrevs and what they stand for.
 </p><hr size="6">
 <a name="NOD235"></a>

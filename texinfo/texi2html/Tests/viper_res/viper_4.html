@@ -58,7 +58,8 @@ Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
 'viper)</code> line.  This method is <em>not</em> recommended, unless you know what
 you are doing.  Only two variables, <code>viper-mode</code> and
 <code>viper-custom-file-name</code>, are supposed to be customized in `<tt>.emacs</tt>',
-prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.</p></li><li><p>
+prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.
+</p></li><li><p>
 <a name="IDX132"></a>
 By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
 customization widget, which lets you change the values of Viper
@@ -503,6 +504,7 @@ to Emacs state.
 the last chance to do customization before Viper is up and running.
 </p></dd>
 </dl>
+
 <p>You can reset some of these constants in Viper with the Ex command <kbd>:set</kbd>
 (when so indicated in the table).  Or you
 can include a line like this in your `<tt>.viper</tt>' file:
@@ -625,17 +627,20 @@ page down and to make <kbd>0</kbd> display information on the current buffer,
 putting this in `<tt>.viper</tt>' will do the trick in Vi state:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-vi-global-user-map &quot;\C-v&quot; 'scroll-down)
-</pre></td></tr></table><p>To set a key globally,
+</pre></td></tr></table>
+<p>To set a key globally,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
 (define-key viper-vi-global-user-map &quot;0&quot; 'viper-info-on-file)
-</pre></td></tr></table><p>Note, however, that this binding may be overwritten by other keymaps, since
+</pre></td></tr></table>
+<p>Note, however, that this binding may be overwritten by other keymaps, since
 the global keymap has the lowest priority.
 To make sure that nothing will override a binding in Emacs state, you
 can write this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
-</pre></td></tr></table><p>To customize the binding for <kbd>C-h</kbd> in Insert state:
+</pre></td></tr></table>
+<p>To customize the binding for <kbd>C-h</kbd> in Insert state:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-insert-global-user-map &quot;\C-h&quot; 'my-del-backwards-function)
 </pre></td></tr></table>
@@ -713,7 +718,8 @@ state.  For instance,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-add-local-keys 'vi-state '((&quot;ZZ&quot; . TeX-command-master)
                                  (&quot;ZQ&quot; . viper-save-kill-buffer)))
-</pre></td></tr></table><p>redefines <kbd>ZZ</kbd> to invoke <code>TeX-command-master</code> in <code>vi-state</code>
+</pre></td></tr></table>
+<p>redefines <kbd>ZZ</kbd> to invoke <code>TeX-command-master</code> in <code>vi-state</code>
 and <kbd>ZQ</kbd> to save-then-kill the current buffer.  These bindings take
 effect only in the buffer where this command is executed.  The typical use
 of this function is to execute the above expression from within a function
@@ -723,7 +729,8 @@ could be called from a function, <code>my-tex-init</code>, which may be added to
 <code>tex-mode-hook</code> as follows:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (add-hook 'tex-mode-hook 'my-tex-init)
-</pre></td></tr></table><p>When TeX mode starts, the hook is executed and the above Lisp expression is
+</pre></td></tr></table>
+<p>When TeX mode starts, the hook is executed and the above Lisp expression is
 evaluated.  Then, the bindings for <kbd>ZZ</kbd> and <kbd>ZQ</kbd> are changed in Vi
 command mode for all buffers in TeX mode.
 </p><p>Another useful application is to bind <kbd>ZZ</kbd> to <code>send-mail</code>
@@ -855,7 +862,8 @@ is usually not necessary.  If you find that some minor mode, e.g.,
 `<tt>.viper</tt>' should fix the problem:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-harness-minor-mode &quot;nasty-mode&quot;)
-</pre></td></tr></table><p>The argument to <code>viper-harness-minor-mode</code> is the name of the file for the
+</pre></td></tr></table>
+<p>The argument to <code>viper-harness-minor-mode</code> is the name of the file for the
 offending minor mode with the suffixes `<tt>.el</tt>' and `<tt>.elc</tt>' removed.
 </p><p>It may not be always obvious which minor mode is at fault.  The only
 guidance here is to look into the file that defines the minor mode you are
@@ -863,7 +871,8 @@ suspecting, say <code>nasty-mode.el</code>, and see if it has a variable called
 <code>nasty-mode-map</code>.  Then check if there is a statement of the form
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key nasty-mode-map key function)
-</pre></td></tr></table><p>that binds the misbehaving
+</pre></td></tr></table>
+<p>that binds the misbehaving
 keys.  If so, use the above line to harness <code>nasty-mode</code>.  If your
 suspicion is wrong, no harm is done if you harness a minor mode that
 doesn't need to be harnessed.
@@ -1109,7 +1118,8 @@ master and put the following at the end of that file:
 ;;; Local Variables:
 ;;; eval: (viper-setup-master-buffer &quot;file1&quot; &quot;file2&quot; &quot;file3&quot; &quot;file4&quot;)
 ;;; End:
-</pre></td></tr></table><p>where <code>file1</code> to <code>file4</code> are names of files related to the master
+</pre></td></tr></table>
+<p>where <code>file1</code> to <code>file4</code> are names of files related to the master
 file.  Next time, when the master file is visited, the command
 <code>viper-setup-master-buffer</code> will be evaluated and the above files will
 be associated with the master file.  Then, the new Ex command
@@ -1342,7 +1352,8 @@ definitions.
 macros) lets the user define keyboard macros that ask for confirmation or
 even prompt the user for input and then continue.  To do this, one should
 type <kbd>C-x q</kbd> (for confirmation) or <kbd>C-u C-x q</kbd> (for prompt).
-For details, see <a href="../emacs/Kbd-Macro-Query.html">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> </p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
+For details, see <a href="../emacs/Kbd-Macro-Query.html">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> 
+</p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
 a departure from Vi), you will be asked whether you want this
 macro to be global, mode-specific, or buffer-specific.  You will also be
 given a chance to save the macro in your `<tt>~/.viper</tt>' file.
@@ -1396,7 +1407,8 @@ The syntax is:
 <a name="IDX231"></a>
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-unrecord-kbd-macro macro state)
-</pre></td></tr></table><p>The second argument must be <code>vi-state</code>, <code>insert-state</code>, or
+</pre></td></tr></table>
+<p>The second argument must be <code>vi-state</code>, <code>insert-state</code>, or
 <code>emacs-state</code>.  The first argument is a name of a macro.  To avoid
 mistakes in specifying names of existing macros, type <kbd>M-x
 viper-describe-kbd-macros</kbd> and use a name from the list displayed by this

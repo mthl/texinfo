@@ -69,10 +69,12 @@ collate entries manually.  In an index, the entries are listed in
 alphabetical order, together with information on how to find the
 discussion of each entry.  In a printed manual, this information
 consists of page numbers.  In an Info file, this information is a menu
-entry leading to the first node referenced.</p><p>Texinfo provides several predefined kinds of index: an index
+entry leading to the first node referenced.
+</p><p>Texinfo provides several predefined kinds of index: an index
 for functions, an index for variables, an index for concepts, and so
 on.  You can combine indices or use them for other than their
-canonical purpose.  If you wish, you can define your own indices.</p><table border="0" cellspacing="0">
+canonical purpose.  If you wish, you can define your own indices.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC167">12.1 Making Index Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Choose different words for index entries.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC168">12.2 Predefined Indices</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Use different indices for different kinds
@@ -113,10 +115,13 @@ two-letter names&quot;, since the word &quot;Index&quot; is the general concept.
 But another reader may remember the specific concept of two-letter
 names and search for the entry listed as &quot;Two letter names for
 indices&quot;.  A good index will have both entries and will help both
-readers.</p><p>Like typesetting, the construction of an index is a highly skilled,
+readers.
+</p><p>Like typesetting, the construction of an index is a highly skilled,
 professional art, the subtleties of which are not appreciated until you
-need to do it yourself.</p><p>See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>, for information about printing an index
-at the end of a book or creating an index menu in an Info file.</p><hr size="6">
+need to do it yourself.
+</p><p>See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+</p><hr size="6">
 <a name="NOD154"></a>
 <a name="SEC168"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -137,24 +142,32 @@ at the end of a book or creating an index menu in an Info file.</p><hr size="6">
 </tr></table>
 <h2> 12.2 Predefined Indices </h2>
 
-<p>Texinfo provides six predefined indices:</p><ul>
+<p>Texinfo provides six predefined indices:
+</p><ul>
 <li><p>
-A <em>concept index</em> listing concepts that are discussed.</p></li><li><p>
+A <em>concept index</em> listing concepts that are discussed.
+</p></li><li><p>
 A <em>function index</em> listing functions (such as entry points of
-libraries).</p></li><li><p>
+libraries).
+</p></li><li><p>
 A <em>variables index</em> listing variables (such as global variables
-of libraries).</p></li><li><p>
-A <em>keystroke index</em> listing keyboard commands.</p></li><li><p>
-A <em>program index</em> listing names of programs.</p></li><li><p>
+of libraries).
+</p></li><li><p>
+A <em>keystroke index</em> listing keyboard commands.
+</p></li><li><p>
+A <em>program index</em> listing names of programs.
+</p></li><li><p>
 A <em>data type index</em> listing data types (such as structures defined in
-header files).</p></li></ul>
+header files).
+</p></li></ul>
 
 <p>Not every manual needs all of these, and most manuals use two or three
 of them.  This manual has two indices: a
 concept index and an @-command index (that is actually the function
 index but is called a command index in the chapter heading).  Two or
 more indices can be combined into one using the <code>@synindex</code> or
-<code>@syncodeindex</code> commands.  See section <a href="#SEC170">Combining Indices</a>.</p><hr size="6">
+<code>@syncodeindex</code> commands.  See section <a href="#SEC170">Combining Indices</a>.
+</p><hr size="6">
 <a name="NOD155"></a>
 <a name="SEC169"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -178,9 +191,12 @@ more indices can be combined into one using the <code>@synindex</code> or
 <p>The data to make an index come from many individual indexing commands
 scattered throughout the Texinfo source file.  Each command says to add
 one entry to a particular index; after formatting, the index will give
-the current page number or node name as the reference.</p><p>An index entry consists of an indexing command at the beginning of a
-line followed, on the rest of the line, by the entry.</p><p>For example, this section begins with the following five entries for
-the concept index:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+the current page number or node name as the reference.
+</p><p>An index entry consists of an indexing command at the beginning of a
+line followed, on the rest of the line, by the entry.
+</p><p>For example, this section begins with the following five entries for
+the concept index:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @cindex Defining indexing entries
 @cindex Index entries
 @cindex Entries for an index
@@ -189,7 +205,8 @@ the concept index:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 </pre></td></tr></table>
 <p>Each predefined index has its own indexing command--<code>@cindex</code>
 for the concept index, <code>@findex</code> for the function index, and so
-on.</p><a name="IDX143"></a>
+on.
+</p><a name="IDX143"></a>
 <a name="IDX144"></a>
 <p>Concept index entries consist of text.  The best way to write an index
 is to choose entries that are terse yet clear.  If you can do this,
@@ -212,7 +229,8 @@ case-sensitive, so use upper and lower case as required for them.
 font and entries for the other indices are printed in a small
 <code>@code</code> font.  You may change the way part of an entry is
 printed with the usual Texinfo commands, such as <code>@file</code> for
-file names and <code>@emph</code> for emphasis (see section <a href="texinfo_10.html#SEC119">Marking Words and Phrases</a>).<a name="IDX145"></a>
+file names and <code>@emph</code> for emphasis (see section <a href="texinfo_10.html#SEC119">Marking Words and Phrases</a>).
+<a name="IDX145"></a>
 </p><a name="IDX146"></a>
 <a name="IDX147"></a>
 <p>The six indexing commands for predefined indices are:
@@ -220,27 +238,33 @@ file names and <code>@emph</code> for emphasis (see section <a href="texinfo_10.
 <dt><code> @cindex <var>concept</var>
 </code></dt>
 <dd><p><a name="IDX148"></a>
-Make an entry in the concept index for <var>concept</var>.</p></dd>
+Make an entry in the concept index for <var>concept</var>.
+</p></dd>
 <dt><code> @findex <var>function</var>
 </code></dt>
 <dd><p><a name="IDX149"></a>
-Make an entry in the function index for <var>function</var>.</p></dd>
+Make an entry in the function index for <var>function</var>.
+</p></dd>
 <dt><code> @vindex <var>variable</var>
 </code></dt>
 <dd><p><a name="IDX150"></a>
-Make an entry in the variable index for <var>variable</var>.</p></dd>
+Make an entry in the variable index for <var>variable</var>.
+</p></dd>
 <dt><code> @kindex <var>keystroke</var>
 </code></dt>
 <dd><p><a name="IDX151"></a>
-Make an entry in the key index for <var>keystroke</var>.</p></dd>
+Make an entry in the key index for <var>keystroke</var>.
+</p></dd>
 <dt><code> @pindex <var>program</var>
 </code></dt>
 <dd><p><a name="IDX152"></a>
-Make an entry in the program index for <var>program</var>.</p></dd>
+Make an entry in the program index for <var>program</var>.
+</p></dd>
 <dt><code> @tindex <var>data type</var>
 </code></dt>
 <dd><p><a name="IDX153"></a>
-Make an entry in the data type index for <var>data type</var>.</p></dd>
+Make an entry in the data type index for <var>data type</var>.
+</p></dd>
 </dl>
 
 <blockquote>
@@ -259,7 +283,8 @@ chapter, you could give it the title `Function and Macro Index' and
 all will be consistent for the reader.  Or you could put the macros in
 with the data types by writing <code>@tindex</code> commands for them, and
 give that index a suitable title so the reader will understand.
-(See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>.)</p><hr size="6">
+(See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>.)
+</p><hr size="6">
 <a name="NOD156"></a>
 <a name="SEC170"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -282,7 +307,8 @@ give that index a suitable title so the reader will understand.
 
 <p>Sometimes you will want to combine two disparate indices such as functions
 and concepts, perhaps because you have few enough of one of them that
-a separate index for them would look silly.</p><p>You could put functions into the concept index by writing
+a separate index for them would look silly.
+</p><p>You could put functions into the concept index by writing
 <code>@cindex</code> commands for them instead of <code>@findex</code> commands,
 and produce a consistent manual by printing the concept index with the
 title `Function and Concept Index' and not printing the `Function
@@ -293,7 +319,8 @@ document were to be included with such a document, the functions from
 your document and those from the other would not end up together.
 Also, to make your function names appear in the right font in the
 concept index, you would need to enclose every one of them between
-the braces of <code>@code</code>.</p><table border="0" cellspacing="0">
+the braces of <code>@code</code>.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC171">12.4.1 <code>@syncodeindex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to merge two indices, using <code>@code</code>
                                   font for the merged-from index.</td></tr>
@@ -325,17 +352,20 @@ the braces of <code>@code</code>.</p><table border="0" cellspacing="0">
 <p>When you want to combine functions and concepts into one index, you
 should index the functions with <code>@findex</code> and index the concepts
 with <code>@cindex</code>, and use the <code>@syncodeindex</code> command to
-redirect the function index entries into the concept index.<a name="IDX154"></a>
+redirect the function index entries into the concept index.
+<a name="IDX154"></a>
 </p><p>The <code>@syncodeindex</code> command takes two arguments; they are the name
 of the index to redirect, and the name of the index to redirect it to.
-The template looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The template looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @syncodeindex <var>from</var> <var>to</var>
 </pre></td></tr></table>
 <a name="IDX155"></a>
 <a name="IDX156"></a>
 <a name="IDX157"></a>
 <a name="IDX158"></a>
-<p>For this purpose, the indices are given two-letter names:</p><dl compact="compact">
+<p>For this purpose, the indices are given two-letter names:
+</p><dl compact="compact">
 <dt>`<samp> cp
 </samp>'</dt>
 <dd><p>concept index
@@ -365,12 +395,15 @@ The template looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><
 <p>Write an <code>@syncodeindex</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  For example,
 to merge a function index with a concept index, write the
-following:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+following:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @syncodeindex fn cp
 </pre></td></tr></table>
 <p>This will cause all entries designated for the function index to merge
-in with the concept index instead.</p><p>To merge both a variables index and a function index into a concept
-index, write the following:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+in with the concept index instead.
+</p><p>To merge both a variables index and a function index into a concept
+index, write the following:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @syncodeindex vr cp
 @syncodeindex fn cp
 </pre></td></tr></table>
@@ -380,7 +413,8 @@ index (the redirected index) into the <code>@code</code> font, overriding
 whatever default font is used by the index to which the entries are
 now directed.  This way, if you direct function names from a function
 index into a concept index, all the function names are printed in the
-<code>@code</code> font as you would expect.</p><hr size="6">
+<code>@code</code> font as you would expect.
+</p><hr size="6">
 <a name="NOD158"></a>
 <a name="SEC172"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -405,8 +439,10 @@ index into a concept index, all the function names are printed in the
 <code>@syncodeindex</code> command, except that it does not put the
 `from' index  entries into the <code>@code</code> font; rather it puts
 them in the roman font.  Thus, you use <code>@synindex</code> when you
-merge a concept index into a function index.</p><p>See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>, for information about printing an index
-at the end of a book or creating an index menu in an Info file.</p><hr size="6">
+merge a concept index into a function index.
+</p><p>See section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+</p><hr size="6">
 <a name="NOD159"></a>
 <a name="SEC173"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -431,18 +467,22 @@ at the end of a book or creating an index menu in an Info file.</p><hr size="6">
 <code>@defindex</code> and <code>@defcodeindex</code> commands to define new
 indices.  These commands create new indexing @-commands with which
 you mark index entries.  The <code>@defindex </code>command is used like
-this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defindex <var>name</var>
 </pre></td></tr></table>
 <p>The name of an index should be a two letter word, such as `<samp>au</samp>'.
-For example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defindex au
 </pre></td></tr></table>
 <p>This defines a new index, called the `<samp>au</samp>' index.  At the same
 time, it creates a new indexing command, <code>@auindex</code>, that you
 can use to make index entries.  Use the new indexing command just as
-you would use a predefined indexing command.</p><p>For example, here is a section heading followed by a concept index
-entry and two `<samp>au</samp>' index entries.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+you would use a predefined indexing command.
+</p><p>For example, here is a section heading followed by a concept index
+entry and two `<samp>au</samp>' index entries.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @section Cognitive Semantics
 @cindex kinesthetic image schemas
 @auindex Johnson, Mark
@@ -451,8 +491,10 @@ entry and two `<samp>au</samp>' index entries.</p><table><tr><td>&nbsp;</td><td 
 <p>(Evidently, `<samp>au</samp>' serves here as an abbreviation for &quot;author&quot;.)
 Texinfo constructs the new indexing command by concatenating the name
 of the index with `<samp>index</samp>'; thus, defining an `<samp>au</samp>' index
-leads to the automatic creation of an <code>@auindex</code> command.</p><p>Use the <code>@printindex</code> command to print the index, as you do with
-the predefined indices.  For example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+leads to the automatic creation of an <code>@auindex</code> command.
+</p><p>Use the <code>@printindex</code> command to print the index, as you do with
+the predefined indices.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @node Author Index, Subject Index, , Top
 @unnumbered Author Index
 
@@ -461,7 +503,8 @@ the predefined indices.  For example:</p><table><tr><td>&nbsp;</td><td class="ex
 <p>The <code>@defcodeindex</code> is like the <code>@defindex</code> command, except
 that, in the printed output, it prints entries in an <code>@code</code> font
 instead of a roman font.  Thus, it parallels the <code>@findex</code> command
-rather than the <code>@cindex</code> command.</p><p>You should define new indices within or right after the end-of-header
+rather than the <code>@cindex</code> command.
+</p><p>You should define new indices within or right after the end-of-header
 line of a Texinfo file, before any <code>@synindex</code> or
 <code>@syncodeindex</code> commands (see section <a href="texinfo_4.html#SEC43">Texinfo File Header</a>).
 </p><hr size="6">

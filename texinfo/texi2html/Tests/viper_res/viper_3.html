@@ -87,7 +87,8 @@ the facilities provided by Emacs.
 with other commands.  The motion command is used as a text region
 specifier for other commands.
 We classify motion commands into <em>point commands</em> and
-<em>line commands</em>.</p><a name="IDX37"></a>
+<em>line commands</em>.
+</p><a name="IDX37"></a>
 <p>The point commands are:
 </p><blockquote>
 
@@ -171,7 +172,8 @@ direction.
 <a name="IDX46"></a>
 <p>Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
-to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX47"></a>
+to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX47"></a>
 <a name="IDX48"></a>
 <a name="IDX49"></a>
 <a name="IDX50"></a>
@@ -268,7 +270,8 @@ where `<samp>register</samp>' is any character from `<samp>a</samp>' through `<s
 you can execute this macro using <kbd>@register</kbd>.  It is, of course,
 possible to yank some text into a register and execute it using
 <kbd>@register</kbd>.  Typing <kbd>@@</kbd>, <kbd>@RET</kbd>, or <kbd>@C-j</kbd> will
-execute the last macro that was executed using <kbd>@register</kbd>.</p><p>Viper will automatically lowercase the register, so that pressing the
+execute the last macro that was executed using <kbd>@register</kbd>.
+</p><p>Viper will automatically lowercase the register, so that pressing the
 <kbd>SHIFT</kbd> key for <kbd>@</kbd> will not create problems.  This is for
 <kbd>@</kbd> macros and <kbd>&quot;p</kbd> <em>only</em>.  In the case of <kbd>y</kbd>,
 <kbd>&quot;Ayy</kbd> will append to <em>register a</em>.  For <kbd>[,],',`</kbd>, it
@@ -282,7 +285,8 @@ will show the contents of a textmarker).
 This is useful for Emacs style keyboard macros defined using <kbd>C-x(</kbd>
 and <kbd>C-x)</kbd>.  Emacs keyboard macros have more capabilities.
 See <a href="../emacs/Keyboard-Macros.html">(emacs)Keyboard Macros</a> section `Keyboard Macros' in <cite>The GNU Emacs Manual</cite>, for
-details.</p><p>Keyboard Macros allow an interesting form of Query-Replace:
+details.
+</p><p>Keyboard Macros allow an interesting form of Query-Replace:
 <kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
 Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </p><p>Viper also provides Vi-style macros.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for details.
@@ -355,7 +359,8 @@ cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
 <kbd>C-r</kbd>.  See section <a href="viper_4.html#SEC25">Customization</a>, to find out how to change the bindings
 of <kbd>C-r or C-s</kbd>.
-For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX54"></a>
+For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX54"></a>
 <p>Viper also provides a query replace function that prompts through the
 Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
 </p><a name="IDX55"></a>
@@ -368,6 +373,7 @@ variable that controls how search patterns are highlighted is
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (copy-face 'default 'viper-search-face)
 </pre></td></tr></table><a name="IDX56"></a>
+
 <p>in `<tt>~/.viper</tt>'.  If you want to change how patterns are highlighted, you
 will have to change <code>viper-search-face</code> to your liking.  The easiest
 way to do this is to use Emacs customization widget, which is accessible
@@ -524,7 +530,8 @@ into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
 command from the current major mode.  <kbd>ESC</kbd> will do the same, if you
 configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> to nil
 in `<tt>.viper</tt>'.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
-states will make Emacs think <kbd>Meta</kbd> has been hit.</p></dd>
+states will make Emacs think <kbd>Meta</kbd> has been hit.
+</p></dd>
 <dt><kbd> \
 </kbd></dt>
 <dd><p><a name="IDX64"></a>
@@ -564,7 +571,8 @@ argument is the region determined by the motion command that follows
 (indicated as &lt;move&gt;).
 Currently, <var>ch</var> can be one of <kbd>c</kbd>, <kbd>C</kbd>, <kbd>g</kbd>, <kbd>q</kbd>, and
 <kbd>s</kbd>.  For instance, <kbd>#qr</kbd> will prompt you for a string and then
-prepend this string to each line in the buffer.</p></dd>
+prepend this string to each line in the buffer.
+</p></dd>
 <dt><kbd> # c
 </kbd></dt>
 <dd><p><a name="IDX71"></a>
@@ -585,7 +593,8 @@ Emacs command <kbd>M-u</kbd> does the same for words.
 </kbd></dt>
 <dd><p><a name="IDX74"></a>
 Execute last keyboard macro for each line in the region
-(<code>viper-global-execute</code>).</p></dd>
+(<code>viper-global-execute</code>).
+</p></dd>
 <dt><kbd> # q
 </kbd></dt>
 <dd><p><a name="IDX75"></a>
@@ -653,7 +662,8 @@ Go to end of heading.
 </kbd></dt>
 <dd><p>Search buffer for text delimited by movement command.  The canonical
 example is <kbd>gw</kbd> to search for the word under the cursor.
-See section <a href="#SEC20">Improved Search</a>, for details.</p></dd>
+See section <a href="#SEC20">Improved Search</a>, for details.
+</p></dd>
 <dt><kbd> C-g and C-]
 </kbd></dt>
 <dd><p><a name="IDX87"></a>
@@ -842,7 +852,8 @@ patches.
 
 <p>Emacs Lisp archives exist on
 `<samp>archive.cis.ohio-state.edu</samp>'
-and `<samp>wuarchive.wustl.edu</samp>'</p><hr size="6">
+and `<samp>wuarchive.wustl.edu</samp>'
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>

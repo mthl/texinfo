@@ -111,7 +111,8 @@ familiarity with Emacs Lisp is a plus.
 be visited as needed.
 </p><p>Comments and bug reports are welcome.
 <code>kifer@cs.stonybrook.edu</code> is the current address for Viper bug reports.
-Please use the Ex command <kbd>:submitReport</kbd> for this purpose.</p><table border="0" cellspacing="0">
+Please use the Ex command <kbd>:submitReport</kbd> for this purpose.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC3">1. Overview of Viper</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Read for a smoother start</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC14">2. Improvements over Vi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">New features, Improvements</td></tr>
@@ -198,17 +199,20 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
+See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.
+</p><p>A buffer has a distinguished position called the <em>point</em>.
 A <em>point</em> is always between 2 characters, and is <em>looking at</em>
 the right hand character.  The cursor is positioned on the right hand
 character.  Thus, when the <em>point</em> is looking at the end-of-line,
 the cursor is on the end-of-line character, i.e. beyond the last
-character on the line.  This is the default Emacs behavior.</p><p>The default settings of Viper try to mimic the behavior of Vi, preventing
+character on the line.  This is the default Emacs behavior.
+</p><p>The default settings of Viper try to mimic the behavior of Vi, preventing
 the cursor from going beyond the last character on the line.  By using
 Emacs commands directly (such as those bound to arrow keys), it is possible
 to get the cursor beyond the end-of-line.  However, this won't (or
 shouldn't) happen if you restrict yourself to standard Vi keys, unless you
-modify the default editing style.  See section <a href="#SEC25">Customization</a>.</p><p>In addition to the <em>point</em>, there is another distinguished buffer
+modify the default editing style.  See section <a href="#SEC25">Customization</a>.
+</p><p>In addition to the <em>point</em>, there is another distinguished buffer
 position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a--z, there
@@ -224,7 +228,8 @@ typing <kbd>1:</kbd> will propmt you with something like <em>:123,135</em>,
 assuming that the current region starts at line 123 and ends at line
 135.  There is no need to type the line numbers, since Viper inserts them
 automatically in front of the Ex command.
-</p><p>See section <a href="#SEC15">Basics</a>, for more info.</p><a name="IDX1"></a>
+</p><p>See section <a href="#SEC15">Basics</a>, for more info.
+</p><a name="IDX1"></a>
 <a name="IDX2"></a>
 <a name="IDX3"></a>
 <a name="IDX4"></a>
@@ -244,7 +249,8 @@ show the buffer name and current major and minor modes (see below).
 A special buffer called <em>Minibuffer</em> is displayed as the last line
 in a Minibuffer window.  The Minibuffer window is used for command input
 output.  Viper uses Minibuffer window for <kbd>/</kbd> and <kbd>:</kbd>
-commands.</p><a name="IDX7"></a>
+commands.
+</p><a name="IDX7"></a>
 <a name="IDX8"></a>
 <a name="IDX9"></a>
 <a name="IDX10"></a>
@@ -260,19 +266,22 @@ buffers.  Additionally, each buffer has its <em>local keymap</em> that determine
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
+will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.
+</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
 you can use or not.  A buffer in <code>text-mode</code> can have
 <code>auto-fill-mode</code> as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
+more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
 are involved when Viper emulates Vi command mode, Vi insert mode, etc.
 You can also turn Viper on and off at any time while in Vi command mode.
 See section <a href="#SEC6">States in Viper</a>, for
-more information.</p><p>Emacs uses Control and Meta modifiers.  These are denoted as C and M,
+more information.
+</p><p>Emacs uses Control and Meta modifiers.  These are denoted as C and M,
 e.g. <kbd>^Z</kbd> as <kbd>C-z</kbd> and <kbd>Meta-x</kbd> as <kbd>M-x</kbd>.  The Meta key is
 usually located on each side of the Space bar; it is used in a manner
 similar to the Control key, e.g., <kbd>M-x</kbd> means typing <kbd>x</kbd> while
@@ -280,7 +289,8 @@ holding the Meta key down.  For keyboards that do not have a Meta key,
 <kbd>ESC</kbd> is used as Meta.  Thus <kbd>M-x</kbd> is typed as <kbd><kbd>ESC</kbd>
 x</kbd>.  Viper uses <kbd>ESC</kbd> to switch from Insert state to Vi state.  Therefore
 Viper defines <kbd>C-\</kbd> as its Meta key in Vi state.  See section <a href="#SEC8">Vi State</a>, for
-more info.</p><p>Emacs is structured as a lisp interpreter around a C core.  Emacs keys
+more info.
+</p><p>Emacs is structured as a lisp interpreter around a C core.  Emacs keys
 cause lisp functions to be called.  It is possible to call these
 functions directly, by typing <kbd>M-x function-name</kbd>.
 </p><hr size="6">
@@ -340,7 +350,8 @@ command line, it will show the `<samp>*scratch*</samp>' buffer, in the
 editing files by using <kbd>:e</kbd>, <kbd>:vi</kbd>, or <kbd>v</kbd> commands.
 (See section <a href="#SEC44">File and Buffer Handling</a>, for more information on <kbd>v</kbd> and other
 new commands that, in many cases, are more convenient than <kbd>:e</kbd>,
-<kbd>:vi</kbd>, and similar old-style Vi commands.)</p><p>Finally, if at some point you would want to de-Viperize your running
+<kbd>:vi</kbd>, and similar old-style Vi commands.)
+</p><p>Finally, if at some point you would want to de-Viperize your running
 copy of Emacs after Viper has been loaded, the command <kbd>M-x
 viper-go-away</kbd> will do it for you.  The function <code>toggle-viper-mode</code>
 toggles Viperization of Emacs on and off.
@@ -373,7 +384,8 @@ toggles Viperization of Emacs on and off.
 Viper, <kbd>C-z</kbd> will normally take you to Vi command state.  Another
 <kbd>C-z</kbd> will take you back to Emacs state.  This toggle key can be
 changed, see section <a href="#SEC25">Customization</a> You can also type <kbd>M-x viper-mode</kbd> to
-change to Vi state.</p><p>For users who chose to set their user level to 1 at Viper setup time,
+change to Vi state.
+</p><p>For users who chose to set their user level to 1 at Viper setup time,
 switching to Emacs state is deliberately made harder in order to not
 confuse the novice user.  In this case, <kbd>C-z</kbd> will either iconify Emacs
 (if Emacs runs as an application under X) or it will stop Emacs (if
@@ -410,7 +422,8 @@ boundary of a replacement region (usually designated via a `<samp>$</samp>' sign
 it will automatically change to Insert state.  You do not have to worry
 about it.  The key bindings remain practically the same as in Insert
 state.  If you type <kbd>ESC</kbd>, Viper will switch to Vi command mode, terminating the
-replacement state.</p></dd>
+replacement state.
+</p></dd>
 </dl>
 
 <a name="IDX16"></a>
@@ -483,7 +496,8 @@ can have several modes, such as C mode for editing C programs, LaTeX mode
 for editing LaTeX documents, Dired for directory editing, etc.  These are
 major modes, each with a different set of key-bindings.  Viper states are
 orthogonal to these Emacs major modes.  The presence of these language
-sensitive and other modes is a major win over Vi.  See section <a href="#SEC14">Improvements over Vi</a>, for more.</p><p>The bindings for these modes can be made available in the Viper Insert state
+sensitive and other modes is a major win over Vi.  See section <a href="#SEC14">Improvements over Vi</a>, for more.
+</p><p>The bindings for these modes can be made available in the Viper Insert state
 as well as in Emacs state.  Unless you specify your user level as 1 (a
 novice), all major mode key sequences that start with <kbd>C-x</kbd> and
 <kbd>C-c</kbd> are also available in Vi state.  This is important because major
@@ -570,6 +584,7 @@ binding.  However, it is still possible to switch the input method by typing
 Or you can use the MULE menu in the menubar.
 </p></dd>
 </dl>
+
 <p>Other differences are mostly improvements.  The ones you should know
 about are:
 </p><dl compact="compact">
@@ -656,6 +671,7 @@ alone as a default is meaningless, since this command requires a file
 argument.
 </p></dd>
 </dl>
+
 <p>As Vi, Viper's destructive commands can be re-executed by typing `<kbd>.</kbd>'.
 However, in addition, Viper keeps track of the history of such commands.  This
 history can be perused by typing <kbd>C-c M-p</kbd> and <kbd>C-c M-n</kbd>.
@@ -689,7 +705,8 @@ Emacs major modes cannot be used in Insert state.
 It is strongly recommended that as soon as you are comfortable, make the
 Emacs state bindings visible (by changing your user level to 3 or higher).
 See section <a href="#SEC25">Customization</a>,
-to see how to do this.</p><p>Once this is done, it is possible to do quite a bit of editing in
+to see how to do this.
+</p><p>Once this is done, it is possible to do quite a bit of editing in
 Insert state.  For instance, Emacs has a <em>yank</em> command, <kbd>C-y</kbd>,
 which is similar to Vi's <kbd>p</kbd>.  However, unlike <kbd>p</kbd>, <kbd>C-y</kbd> can be
 used in Insert state of Viper.  Emacs also has a kill ring where it keeps
@@ -876,14 +893,16 @@ If you set marker `<samp>a</samp>' in
 file `<tt>foo</tt>', start editing file `<tt>bar</tt>' and type <kbd>'a</kbd>, then
 <em>YOU WILL SWITCH TO FILE `<tt>foo</tt>'</em>.  You can see the contents of a
 textmarker using the Viper command <kbd>[&lt;a-z&gt;</kbd> where &lt;a-z&gt; are the
-textmarkers, e.g., <kbd>[a</kbd> to view marker `<samp>a</samp>' .</p></dd>
+textmarkers, e.g., <kbd>[a</kbd> to view marker `<samp>a</samp>' .
+</p></dd>
 <dt>`<samp> Repeated Commands
 </samp>'</dt>
 <dd><p>Command repetitions are common over files.  Typing <kbd>!!</kbd> will repeat the
 last <kbd>!</kbd> command whichever file it was issued from.
 Typing <kbd>.</kbd> will repeat the last command from any file, and
 searches will repeat the last search.  Ex commands can be repeated by typing
-<kbd>: <kbd>RET</kbd></kbd>.Note: in some rare cases, that <kbd>: <kbd>RET</kbd></kbd> may do something dangerous.
+<kbd>: <kbd>RET</kbd></kbd>.
+Note: in some rare cases, that <kbd>: <kbd>RET</kbd></kbd> may do something dangerous.
 However, usually its effect can be undone by typing <kbd>u</kbd>.
 </p></dd>
 <dt>`<samp> Registers
@@ -967,7 +986,8 @@ more powerful facilities for defining abbreviations.
 it is not implemented.
 A useful alternative is <code>cat -t -e file</code>.  Unfortunately, it cannot
 be used directly inside Emacs, since Emacs will obdurately change `<samp>^I</samp>'
-back to normal tabs.</p></li></ul>
+back to normal tabs.
+</p></li></ul>
 
 <hr size="6">
 <a name="NOD13"></a>
@@ -1033,7 +1053,8 @@ the facilities provided by Emacs.
 with other commands.  The motion command is used as a text region
 specifier for other commands.
 We classify motion commands into <em>point commands</em> and
-<em>line commands</em>.</p><a name="IDX37"></a>
+<em>line commands</em>.
+</p><a name="IDX37"></a>
 <p>The point commands are:
 </p><blockquote>
 
@@ -1117,7 +1138,8 @@ direction.
 <a name="IDX46"></a>
 <p>Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
-to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX47"></a>
+to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX47"></a>
 <a name="IDX48"></a>
 <a name="IDX49"></a>
 <a name="IDX50"></a>
@@ -1214,7 +1236,8 @@ where `<samp>register</samp>' is any character from `<samp>a</samp>' through `<s
 you can execute this macro using <kbd>@register</kbd>.  It is, of course,
 possible to yank some text into a register and execute it using
 <kbd>@register</kbd>.  Typing <kbd>@@</kbd>, <kbd>@RET</kbd>, or <kbd>@C-j</kbd> will
-execute the last macro that was executed using <kbd>@register</kbd>.</p><p>Viper will automatically lowercase the register, so that pressing the
+execute the last macro that was executed using <kbd>@register</kbd>.
+</p><p>Viper will automatically lowercase the register, so that pressing the
 <kbd>SHIFT</kbd> key for <kbd>@</kbd> will not create problems.  This is for
 <kbd>@</kbd> macros and <kbd>&quot;p</kbd> <em>only</em>.  In the case of <kbd>y</kbd>,
 <kbd>&quot;Ayy</kbd> will append to <em>register a</em>.  For <kbd>[,],',`</kbd>, it
@@ -1228,7 +1251,8 @@ will show the contents of a textmarker).
 This is useful for Emacs style keyboard macros defined using <kbd>C-x(</kbd>
 and <kbd>C-x)</kbd>.  Emacs keyboard macros have more capabilities.
 See <a href="../emacs/Keyboard-Macros.html">(emacs)Keyboard Macros</a> section `Keyboard Macros' in <cite>The GNU Emacs Manual</cite>, for
-details.</p><p>Keyboard Macros allow an interesting form of Query-Replace:
+details.
+</p><p>Keyboard Macros allow an interesting form of Query-Replace:
 <kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
 Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </p><p>Viper also provides Vi-style macros.  See section <a href="#SEC30">Vi Macros</a>, for details.
@@ -1301,7 +1325,8 @@ cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
 <kbd>C-r</kbd>.  See section <a href="#SEC25">Customization</a>, to find out how to change the bindings
 of <kbd>C-r or C-s</kbd>.
-For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX54"></a>
+For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> 
+</p><a name="IDX54"></a>
 <p>Viper also provides a query replace function that prompts through the
 Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
 </p><a name="IDX55"></a>
@@ -1314,6 +1339,7 @@ variable that controls how search patterns are highlighted is
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (copy-face 'default 'viper-search-face)
 </pre></td></tr></table><a name="IDX56"></a>
+
 <p>in `<tt>~/.viper</tt>'.  If you want to change how patterns are highlighted, you
 will have to change <code>viper-search-face</code> to your liking.  The easiest
 way to do this is to use Emacs customization widget, which is accessible
@@ -1470,7 +1496,8 @@ into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
 command from the current major mode.  <kbd>ESC</kbd> will do the same, if you
 configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> to nil
 in `<tt>.viper</tt>'.  See section <a href="#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
-states will make Emacs think <kbd>Meta</kbd> has been hit.</p></dd>
+states will make Emacs think <kbd>Meta</kbd> has been hit.
+</p></dd>
 <dt><kbd> \
 </kbd></dt>
 <dd><p><a name="IDX64"></a>
@@ -1510,7 +1537,8 @@ argument is the region determined by the motion command that follows
 (indicated as &lt;move&gt;).
 Currently, <var>ch</var> can be one of <kbd>c</kbd>, <kbd>C</kbd>, <kbd>g</kbd>, <kbd>q</kbd>, and
 <kbd>s</kbd>.  For instance, <kbd>#qr</kbd> will prompt you for a string and then
-prepend this string to each line in the buffer.</p></dd>
+prepend this string to each line in the buffer.
+</p></dd>
 <dt><kbd> # c
 </kbd></dt>
 <dd><p><a name="IDX71"></a>
@@ -1531,7 +1559,8 @@ Emacs command <kbd>M-u</kbd> does the same for words.
 </kbd></dt>
 <dd><p><a name="IDX74"></a>
 Execute last keyboard macro for each line in the region
-(<code>viper-global-execute</code>).</p></dd>
+(<code>viper-global-execute</code>).
+</p></dd>
 <dt><kbd> # q
 </kbd></dt>
 <dd><p><a name="IDX75"></a>
@@ -1599,7 +1628,8 @@ Go to end of heading.
 </kbd></dt>
 <dd><p>Search buffer for text delimited by movement command.  The canonical
 example is <kbd>gw</kbd> to search for the word under the cursor.
-See section <a href="#SEC20">Improved Search</a>, for details.</p></dd>
+See section <a href="#SEC20">Improved Search</a>, for details.
+</p></dd>
 <dt><kbd> C-g and C-]
 </kbd></dt>
 <dd><p><a name="IDX87"></a>
@@ -1788,7 +1818,8 @@ patches.
 
 <p>Emacs Lisp archives exist on
 `<samp>archive.cis.ohio-state.edu</samp>'
-and `<samp>wuarchive.wustl.edu</samp>'</p><hr size="6">
+and `<samp>wuarchive.wustl.edu</samp>'
+</p><hr size="6">
 <a name="NOD24"></a>
 <a name="SEC25"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1823,7 +1854,8 @@ Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
 'viper)</code> line.  This method is <em>not</em> recommended, unless you know what
 you are doing.  Only two variables, <code>viper-mode</code> and
 <code>viper-custom-file-name</code>, are supposed to be customized in `<tt>.emacs</tt>',
-prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.</p></li><li><p>
+prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.
+</p></li><li><p>
 <a name="IDX132"></a>
 By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
 customization widget, which lets you change the values of Viper
@@ -2268,6 +2300,7 @@ to Emacs state.
 the last chance to do customization before Viper is up and running.
 </p></dd>
 </dl>
+
 <p>You can reset some of these constants in Viper with the Ex command <kbd>:set</kbd>
 (when so indicated in the table).  Or you
 can include a line like this in your `<tt>.viper</tt>' file:
@@ -2390,17 +2423,20 @@ page down and to make <kbd>0</kbd> display information on the current buffer,
 putting this in `<tt>.viper</tt>' will do the trick in Vi state:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-vi-global-user-map &quot;\C-v&quot; 'scroll-down)
-</pre></td></tr></table><p>To set a key globally,
+</pre></td></tr></table>
+<p>To set a key globally,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
 (define-key viper-vi-global-user-map &quot;0&quot; 'viper-info-on-file)
-</pre></td></tr></table><p>Note, however, that this binding may be overwritten by other keymaps, since
+</pre></td></tr></table>
+<p>Note, however, that this binding may be overwritten by other keymaps, since
 the global keymap has the lowest priority.
 To make sure that nothing will override a binding in Emacs state, you
 can write this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
-</pre></td></tr></table><p>To customize the binding for <kbd>C-h</kbd> in Insert state:
+</pre></td></tr></table>
+<p>To customize the binding for <kbd>C-h</kbd> in Insert state:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key viper-insert-global-user-map &quot;\C-h&quot; 'my-del-backwards-function)
 </pre></td></tr></table>
@@ -2478,7 +2514,8 @@ state.  For instance,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-add-local-keys 'vi-state '((&quot;ZZ&quot; . TeX-command-master)
                                  (&quot;ZQ&quot; . viper-save-kill-buffer)))
-</pre></td></tr></table><p>redefines <kbd>ZZ</kbd> to invoke <code>TeX-command-master</code> in <code>vi-state</code>
+</pre></td></tr></table>
+<p>redefines <kbd>ZZ</kbd> to invoke <code>TeX-command-master</code> in <code>vi-state</code>
 and <kbd>ZQ</kbd> to save-then-kill the current buffer.  These bindings take
 effect only in the buffer where this command is executed.  The typical use
 of this function is to execute the above expression from within a function
@@ -2488,7 +2525,8 @@ could be called from a function, <code>my-tex-init</code>, which may be added to
 <code>tex-mode-hook</code> as follows:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (add-hook 'tex-mode-hook 'my-tex-init)
-</pre></td></tr></table><p>When TeX mode starts, the hook is executed and the above Lisp expression is
+</pre></td></tr></table>
+<p>When TeX mode starts, the hook is executed and the above Lisp expression is
 evaluated.  Then, the bindings for <kbd>ZZ</kbd> and <kbd>ZQ</kbd> are changed in Vi
 command mode for all buffers in TeX mode.
 </p><p>Another useful application is to bind <kbd>ZZ</kbd> to <code>send-mail</code>
@@ -2620,7 +2658,8 @@ is usually not necessary.  If you find that some minor mode, e.g.,
 `<tt>.viper</tt>' should fix the problem:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-harness-minor-mode &quot;nasty-mode&quot;)
-</pre></td></tr></table><p>The argument to <code>viper-harness-minor-mode</code> is the name of the file for the
+</pre></td></tr></table>
+<p>The argument to <code>viper-harness-minor-mode</code> is the name of the file for the
 offending minor mode with the suffixes `<tt>.el</tt>' and `<tt>.elc</tt>' removed.
 </p><p>It may not be always obvious which minor mode is at fault.  The only
 guidance here is to look into the file that defines the minor mode you are
@@ -2628,7 +2667,8 @@ suspecting, say <code>nasty-mode.el</code>, and see if it has a variable called
 <code>nasty-mode-map</code>.  Then check if there is a statement of the form
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (define-key nasty-mode-map key function)
-</pre></td></tr></table><p>that binds the misbehaving
+</pre></td></tr></table>
+<p>that binds the misbehaving
 keys.  If so, use the above line to harness <code>nasty-mode</code>.  If your
 suspicion is wrong, no harm is done if you harness a minor mode that
 doesn't need to be harnessed.
@@ -2874,7 +2914,8 @@ master and put the following at the end of that file:
 ;;; Local Variables:
 ;;; eval: (viper-setup-master-buffer &quot;file1&quot; &quot;file2&quot; &quot;file3&quot; &quot;file4&quot;)
 ;;; End:
-</pre></td></tr></table><p>where <code>file1</code> to <code>file4</code> are names of files related to the master
+</pre></td></tr></table>
+<p>where <code>file1</code> to <code>file4</code> are names of files related to the master
 file.  Next time, when the master file is visited, the command
 <code>viper-setup-master-buffer</code> will be evaluated and the above files will
 be associated with the master file.  Then, the new Ex command
@@ -3107,7 +3148,8 @@ definitions.
 macros) lets the user define keyboard macros that ask for confirmation or
 even prompt the user for input and then continue.  To do this, one should
 type <kbd>C-x q</kbd> (for confirmation) or <kbd>C-u C-x q</kbd> (for prompt).
-For details, see <a href="../emacs/Kbd-Macro-Query.html">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> </p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
+For details, see <a href="../emacs/Kbd-Macro-Query.html">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> 
+</p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
 a departure from Vi), you will be asked whether you want this
 macro to be global, mode-specific, or buffer-specific.  You will also be
 given a chance to save the macro in your `<tt>~/.viper</tt>' file.
@@ -3161,7 +3203,8 @@ The syntax is:
 <a name="IDX231"></a>
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
 (viper-unrecord-kbd-macro macro state)
-</pre></td></tr></table><p>The second argument must be <code>vi-state</code>, <code>insert-state</code>, or
+</pre></td></tr></table>
+<p>The second argument must be <code>vi-state</code>, <code>insert-state</code>, or
 <code>emacs-state</code>.  The first argument is a name of a macro.  To avoid
 mistakes in specifying names of existing macros, type <kbd>M-x
 viper-describe-kbd-macros</kbd> and use a name from the list displayed by this
@@ -3303,7 +3346,8 @@ currently defined.  To see all macros along with their definitions, type
 
 <p>This section is a semi-automatically bowdlerized version of the Vi
 reference created by <br> `<samp>maart@cs.vu.nl</samp>' and others.  It can be
-found on the Vi archives.  This reference has been adapted for Viper.</p><table border="0" cellspacing="0">
+found on the Vi archives.  This reference has been adapted for Viper.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC32">4.1 Groundwork</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Textual Conventions and Viper basics</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC33">4.2 Text Handling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving, Editing, Undoing.</td></tr>
@@ -3341,7 +3385,8 @@ found on the Vi archives.  This reference has been adapted for Viper.</p><table 
 with other commands.  The motion command is used as a text region
 specifier for other commands.
 We classify motion commands into <em>point commands</em> and
-<em>line commands</em>.</p><a name="IDX233"></a>
+<em>line commands</em>.
+</p><a name="IDX233"></a>
 <p>The point commands are:
 </p><blockquote>
 
@@ -5098,7 +5143,8 @@ the whole file.
 <a name="IDX493"></a>
 Similarly, `<samp>#</samp>' expands to the previous file.  The previous file is the
 first file in <kbd>:args</kbd> listing.  This defaults to the previous file in
-the VI sense if you have one window.</p><p>Symbols `<samp>%</samp>' and `<samp>#</samp>' are also used in the Ex commands <kbd>:e</kbd> and
+the VI sense if you have one window.
+</p><p>Symbols `<samp>%</samp>' and `<samp>#</samp>' are also used in the Ex commands <kbd>:e</kbd> and
 <kbd>:r &lt;shell-cmd&gt;</kbd>.  The commands <kbd>:w</kbd> and the regular <kbd>:r
 &lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
 better mechanism.
@@ -5489,7 +5535,8 @@ a region under the mouse pointer.
 This command can take a prefix argument.  Note: Viper sets this
 binding only if this mouse action is not
 already bound to something else.
-See section <a href="#SEC29">Viper Specials</a>, for more information.</p></dd>
+See section <a href="#SEC29">Viper Specials</a>, for more information.
+</p></dd>
 <dt><kbd> S-Mouse-2 (Emacs)
 </kbd></dt>
 <dt><kbd> meta button2up (XEmacs)
@@ -5499,7 +5546,8 @@ insert a region surrounding the mouse pointer.
 This command can also take a prefix argument.
 Note: Viper sets this binding only if this mouse action is not
 already bound to something else.
-See section <a href="#SEC29">Viper Specials</a>, for more details.</p></dd>
+See section <a href="#SEC29">Viper Specials</a>, for more details.
+</p></dd>
 </dl>
 <a name="IDX553"></a>
 <a name="IDX554"></a>
@@ -6939,6 +6987,8 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <a href="#SEC55_25" style="text-decoration: none"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
+
+
 <hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">

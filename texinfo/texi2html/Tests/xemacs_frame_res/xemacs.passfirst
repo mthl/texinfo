@@ -25,6 +25,7 @@ into another language, under the above conditions for modified versions,
 except that the sections entitled ``The GNU Manifesto'',
 ``Distribution'' and ``GNU General Public License'' may be included in a
 translation approved by the author instead of in the original English.
+
 @node Top, License,, (dir)
 @top The XEmacs Editor
 
@@ -925,6 +926,7 @@ literally takes up the whole screen.  If you are
 running XEmacs in a multi-window system like the X Window System, the
 XEmacs frame takes up one X window.  @xref{XEmacs under X}, for more
 information.
+
 @item Window
 No matter what environment you are running in, XEmacs allows you to look
 at several buffers at the same time by having several windows be part of
@@ -934,6 +936,7 @@ running XEmacs under the X window system, that means you can have several
 @dfn{XEmacs windows} inside the X window that contains the XEmacs frame.
 You can even have multiple frames in different X windows, each with
 their own set of subwindows.
+
 @end table
 
 Each XEmacs frame displays a variety of information:
@@ -1126,11 +1129,13 @@ completely visible on the screen, @var{pos} is @samp{All}.  Otherwise,
 @samp{Bot} if you are looking at the end of the file, or
 @samp{@var{nn}%}, where @var{nn} is the percentage of the file above the
 top of the screen.
+
   @var{major} is the name of the @dfn{major mode} in effect in the buffer.  At
 any time, each buffer is in one and only one major mode.
 The available major modes include Fundamental mode (the least specialized),
 Text mode, Lisp mode, and C mode.  @xref{Major Modes}, for details
 on how the modes differ and how you select one.
+
   @var{minor} is a list of some of the @dfn{minor modes} that are turned on
 in the window's chosen buffer.  For example, @samp{Fill} means that Auto
 Fill mode is on.  @code{Abbrev} means that Word Abbrev mode is on.
@@ -1152,6 +1157,7 @@ double square brackets appear, and so on.  Since information on
 recursive editing applies to XEmacs in general and not to any one buffer,
 the square brackets appear in every mode line on the screen or not in
 any of them.  @xref{Recursive Edit}.
+
 @findex display-time
   XEmacs can optionally display the time and system load in all mode lines.
 To enable this feature, type @kbd{M-x display-time}.  The information added
@@ -1493,6 +1499,7 @@ assigned graphic symbols like @samp{a} and @samp{=}; the rest are
 control characters, such as @kbd{Control-a} (also called @kbd{C-a}).
 @kbd{C-a} means you hold down the @key{CTRL} key and then press
 @kbd{a}.
+
    Keybindings in XEmacs are not restricted to the set of
 keystrokes that can be represented in ASCII.  XEmacs can tell the
 difference between, for example, @kbd{Control-h}, @kbd{Control-Shift-h},
@@ -1612,8 +1619,10 @@ schematic representation of a complete key sequence is as follows:
 Typing @kbd{C-c} followed by @kbd{C-a}
 @item [(control c) (control 65)]
 Typing @kbd{C-c} followed by @kbd{C-a}. (Using the ASCII code
-for the character `a')@item [(control c) (break)]
-Typing @kbd{C-c} followed by the @kbd{break} character.@end table
+for the character `a')
+@item [(control c) (break)]
+Typing @kbd{C-c} followed by the @kbd{break} character.
+@end table
 
 @kindex C-c
 @kindex C-x
@@ -1641,12 +1650,14 @@ three-character keys, including @kbd{[(control x) (\4) (f)]},
 @kbd{[(control x) (\4) (b)]} and so on.  It would be possible to define
 one of those three-character sequences as a prefix, creating a series of
 four-character keys, but we did not define any of them this way.
+
   By contrast, the two-character sequence @kbd{[(control f) (control
 k)]} is not a key, because the @kbd{(control f)} is a complete key
 sequence in itself.  You cannot give @kbd{[(control f (control k)]} an
 independent meaning as a command while @kbd{(control f)} is a complete
 sequence, because Emacs would understand @key{C-f C-k} as two
 commands.
+
  The predefined prefix key sequences in Emacs are @kbd{(control c)},
 @kbd{(control x)}, @kbd{(control h)}, @kbd{[(control x) (\4)]}, and
 @kbd{escape}.  You can customize Emacs and could make new prefix keys or
@@ -1692,14 +1703,17 @@ by just holding that key down.  To type @kbd{Meta-a}, hold down
 works like the @key{SHIFT} key.  Such a key is not always labeled
 @key{META}, however, as this function is often a special option for a
 key with some other primary purpose.
+
   If there is no @key{META} key, you can still type Meta characters
 using two-character sequences starting with @key{ESC}.  To enter
 @kbd{M-a}, you could type @kbd{@key{ESC} a}.  To enter @kbd{C-M-a}, you
 would type @kbd{ESC C-a}.  @key{ESC} is allowed on terminals with
 Meta keys, too, in case you have formed a habit of using it.
+
 If you are running under X and do not have a @key{META} key, it 
 is possible to reconfigure some other key to be a @key{META} 
 key.  @xref{Super and Hyper Keys}. 
+
 @vindex meta-flag
   Emacs believes the terminal has a @key{META} key if the variable
 @code{meta-flag} is non-@code{nil}.  Normally this is set automatically
@@ -1743,6 +1757,7 @@ replace the word @code{Super} above with @code{Meta} or @code{Hyper}.
 Just after you start up X, execute the command @code{xmodmap /.xmodmap}.
 You can add this command to the appropriate initialization file to have
 the command executed automatically.
+
 If you have problems, see the documentation for the @code{xmodmap}
 program.  The X keyboard model is quite complicated, and explaining
 it is beyond the scope of this manual.  However, we reprint the 
@@ -1915,6 +1930,7 @@ has this effect @i{because} it is bound to that function.  If you rebind
 @kbd{C-n} to the function @code{forward-word} then @kbd{C-n} will move
 forward by words instead.  Rebinding keys is a common method of
 customization.
+
    The rest of this manual usually ignores this subtlety to keep
 things simple.  To give the customizer the information needed, we often
 state the name of the command that really does the work in parentheses
@@ -2064,23 +2080,28 @@ new Emacs frame, that is, a new X window running under the same Emacs
 process.  You can remove the frame using the @b{Delete Frame} menu
 item.  When you remove the last frame, you exit Emacs and are prompted
 for confirmation. 
+
 @item Open File...
 Prompts you for a filename and loads that file into a new buffer. 
 @b{Open File...} is equivalent to the Emacs command @code{find-file} (@kbd{C-x
-C-f}).
+C-f}). 
+
 @item Insert File...
 Prompts you for a filename and inserts the contents of that file into
 the current buffer.  The file associated with the current buffer is
 not changed by this command.  This is equivalent to the Emacs command
-@code{insert-file} (@kbd{C-x i}).
+@code{insert-file} (@kbd{C-x i}). 
+
 @item Save Buffer 
 Writes and saves the current Emacs buffer as the latest
 version of the current visited file.  @b{Save Buffer} is equivalent to the
 Emacs command @code{save-buffer} (@kbd{C-x C-s}).
+
 @item Save Buffer As... 
 Writes and saves the current Emacs buffer to the filename you specify.
 @b{Save Buffer As...} is equivalent to the Emacs command
 @code{write-file} (@kbd{C-x C-w}).
+
 @item Revert Buffer
 Restores the last saved version of the file to the current buffer.  When
 you edit a buffer containing a text file, you must save the buffer
@@ -2088,42 +2109,51 @@ before your changes become effective.  Use @b{Revert Buffer} if you do
 not want to keep the changes you have made in the buffer.  @b{Revert
 Buffer} is equivalent to the Emacs command @code{revert-file} (@kbd{M-x
 revert-buffer}).
+
 @item Kill Buffer
 Kills the current buffer, prompting you first if there are unsaved
 changes.  This is roughly equivalent to the Emacs command 
 @code{kill-buffer} (@kbd{C-x k}), except that @code{kill-buffer} 
 prompts for the name of a buffer to kill. 
+
 @item Print Buffer
 Prints a hardcopy of the current buffer.  Equivalent
 to the Emacs command @code{print-buffer} (@kbd{M-x print-buffer}).
+
 @item New Frame
 Creates a new Emacs frame displaying the @code{*scratch*} buffer.  This
 is like the @b{Open File, New Frame...} menu item, except that it does
 not prompt for or load a file.
+
 @item Delete Frame 
 Allows you to close all but one of the frames created by @b{New Frame}.
 If you created several Emacs frames belonging to the same Emacs
 process, you can close all but one of them.  When you attempt to close the
 last frame, Emacs informs you that you are attempting to delete the
 last frame.  You have to choose @b{Exit Emacs} for that.
+
 @item Split Frame
 Divides the current window on the current frame into two equal-sized
 windows, both displaying the same buffer.  Equivalent to the Emacs
 command @code{split-window-vertically} (@kbd{C-x 2}).
+
 @item Un-split (Keep This)
 If the frame is divided into multiple windows, this removes all windows
 other than the selected one.  Equivalent to the Emacs command
 @code{delete-other-windows} (@kbd{C-x 1}).
+
 @item Un-split (Keep Others)
 If the frame is divided into multiple windows, this removes the
 selected window from the frame, giving the space back to one of the
 other windows.  Equivalent to the Emacs command @code{delete-window}
 (@kbd{C-x 0}).
+
 @item Exit Emacs
 Shuts down (kills) the Emacs process.  Equivalent to the Emacs command
 @code{save-buffers-kill-emacs} (@kbd{C-x C-c}).  Before killing the
 Emacs process, the system asks which unsaved buffers to save by going through
-the list of all buffers in that Emacs process.@end table
+the list of all buffers in that Emacs process.
+@end table
 
 @node Edit Menu
 @subsection The Edit Menu
@@ -2136,6 +2166,7 @@ work on a block of text, the X selection.  They appear faded until you
 select a block of text (activate a region) with the mouse.  @xref{Using
 X Selections}, @pxref{Killing}, and @pxref{Yanking} for more
 information.
+
 @cindex Undo menu item
 @cindex Cut menu item
 @cindex Copy menu item
@@ -2148,15 +2179,18 @@ information.
 @item Undo 
 Undoes the previous command.  @b{Undo} is equivalent to
 the Emacs command @code{undo} (@kbd{C-x u}).
+
 @item Cut
 Removes the selected text block from the current buffer, makes it the X
 clipboard selection, and places it in the kill ring.  Before executing
 this command, you have to select a region using Emacs region selection
-commands or with the mouse.
+commands or with the mouse. 
+
 @item Copy 
 Makes a selected text block the X clipboard selection, and places it in
 the kill ring.  You can select text using one of the Emacs region
 selection commands or by selecting a text region with the mouse.
+
 @item Paste 
 Inserts the current value of the X clipboard selection in the current
 buffer.  Note that this is not necessarily the same as the Emacs
@@ -2267,6 +2301,7 @@ example, if @b{Less} is selected (which is the default setting) then you
 might have all comments in green color.  Whereas, if @b{More} is
 selected then a function name in the comments themselves might appear in
 a different Color or Font.
+
 @item Paren Highlighting
 After selecting @b{Blink} from this item, if you place the cursor 
 on a parenthesis, the matching parenthesis will blink. If you select 
@@ -2274,6 +2309,7 @@ on a parenthesis, the matching parenthesis will blink. If you select
 expression of the parenthesis under the cursor will be highlighted. 
 Selecting @b{None} will turn off the options (regarding @b{Paren 
 Highlighting}) which you had selected earlier.
+
 @item Font
 You can select any Font for your program by choosing from one of the 
 available Fonts.
@@ -2281,8 +2317,10 @@ available Fonts.
 @item Size
 You can select any size ranging from @b{2} to @b{24} by selecting the 
 appropriate option.
+
 @item Weight
 You can choose either @b{Bold} or @b{Medium} for the weight.
+
 @item Buffers Menu Length...
 Prompts you for the number of buffers to display. Then it will display 
 that number of most recently selected buffers.
@@ -3330,7 +3368,8 @@ Transpose two characters, the ones before and after the cursor
 @itemx C-HOME
 Move to the top of the buffer (@code{beginning-of-buffer}).  With
 numeric argument @var{n}, move to @var{n}/10 of the way from the top.
-@xref{Arguments}, for more information on numeric arguments.@item M->
+@xref{Arguments}, for more information on numeric arguments.
+@item M->
 @itemx C-END
 Move to the end of the buffer (@code{end-of-buffer}).
 @item M-x goto-char
@@ -3659,6 +3698,7 @@ minus sign while holding down the @key{META} key.  For example,
 @example
 M-5 C-n
 @end example
+
 would move down five lines.  The characters @kbd{Meta-1}, @kbd{Meta-2},
 and so on, as well as @kbd{Meta--}, do this because they are keys bound
 to commands (@code{digit-argument} and @code{negative-argument}) that
@@ -5332,6 +5372,7 @@ command to undo it (@pxref{Undo}). The delete commands include @kbd{C-d}
 delete only one character at a time, and those commands that delete only
 spaces or newlines.  Commands that can destroy significant amounts of
 nontrivial data usually kill.
+
 @subsection Deletion
 
 @table @kbd
@@ -5469,6 +5510,7 @@ backward and kill text before point.
 @kbd{M-d} (@pxref{Words}); sexps, with @kbd{C-M-k} (@pxref{Lists}); and
 sentences, with @kbd{C-x @key{DEL}} and @kbd{M-k}
 (@pxref{Sentences}).
+
 @node Yanking, Using X Selections, Killing, Top
 @section Yanking
 @cindex moving text
@@ -5580,6 +5622,7 @@ if it is a kill command, to append the text it kills to the last killed
 text, instead of starting a new entry.  With @kbd{C-M-w}, you can kill
 several separated pieces of text and accumulate them to be yanked back
 in one place.
+
 @node Earlier Kills,, Appending Kills, Yanking
 @subsection Yanking Earlier Kills
 
@@ -5592,6 +5635,7 @@ yanked and replaces it with the text from an earlier kill.  To recover
 the text of the next-to-the-last kill, first use @kbd{C-y} to recover
 the last kill, then @kbd{M-y} to replace it with the previous
 kill.
+
   You can think in terms of a ``last yank'' pointer which points at an item
 in the kill ring.  Each time you kill, the ``last yank'' pointer moves to
 the new item at the front of the ring.  @kbd{C-y} yanks the item
@@ -6431,6 +6475,7 @@ the text and point up together as @kbd{C-l} might.  @kbd{C-v} with a
 negative argument shows you more lines at the top of the window.
 @kbd{Meta-v} (@code{scroll-down}) is like @kbd{C-v}, but moves in the
 opposite direction.
+
 @vindex next-screen-context-lines
   To read the buffer a windowful at a time, use @kbd{C-v} with no
 argument.  @kbd{C-v} takes the last two lines at the bottom of the
@@ -6522,6 +6567,7 @@ the argument.)  Lines with at least @var{n} columns of indentation
 disappear from the screen.  The only indication of their presence are
 three dots (@samp{@dots{}}), which appear at the end of each visible
 line that is followed by one or more invisible ones.
+
   The invisible lines are still present in the buffer, and most editing
 commands see them as usual, so it is very easy to put point in the middle
 of invisible text.  When this happens, the cursor appears at the end of the
@@ -6644,6 +6690,7 @@ the cursor move to after the first @samp{FO}.  After another @kbd{O}, the
 cursor is after the first @samp{FOO} after the place where you started the
 search.  Meanwhile, the search string @samp{FOO} has been echoed in the
 echo area.
+
   The echo area display ends with three dots when actual searching is going
 on.  When search is waiting for more input, the three dots are removed.
 (On slow terminals, the three dots are not displayed.)
@@ -6654,6 +6701,7 @@ search string.  This does not happen until Emacs is ready to read another
 input character; first it must either find, or fail to find, the character
 you want to erase.  If you do not want to wait for this to happen, use
 @kbd{C-g} as described below.
+
   When you are satisfied with the place you have reached, you can type
 @key{RET} (or @key{C-m}), which stops searching, leaving the cursor where 
 the search brought it.  Any command not specially meaningful in searches also
@@ -6979,10 +7027,12 @@ therefore @samp{f} is a regular expression that matches the string
 @samp{f} and no other string.  (It does @emph{not} match the string
 @samp{ff}.)  Likewise, @samp{o} is a regular expression that matches
 only @samp{o}.
+
 Any two regular expressions @var{a} and @var{b} can be concatenated.  The
 result is a regular expression that matches a string if @var{a} matches
 some amount of the beginning of that string and @var{b} matches the rest of
 the string.
+
 As a simple example, we can concatenate the regular expressions @samp{f}
 and @samp{o} to get the regular expression @samp{fo}, which matches only
 the string @samp{fo}.  Still trivial.  To do something more powerful, you
@@ -6995,6 +7045,7 @@ is a special character that matches any single character except a newline.
 Using concatenation, we can make regular expressions like @samp{a.b}, which
 matches any three-character string that begins with @samp{a} and ends with
 @samp{b}.
+
 @item *
 @cindex @samp{*} in regexp
 is not a construct by itself; it is a quantifying suffix operator that
@@ -7003,9 +7054,11 @@ possible.  In @samp{fo*}, the @samp{*} applies to the @samp{o}, so
 @samp{fo*} matches one @samp{f} followed by any number of @samp{o}s.
 The case of zero @samp{o}s is allowed: @samp{fo*} does match
 @samp{f}.
+
 @samp{*} always applies to the @emph{smallest} possible preceding
 expression.  Thus, @samp{fo*} has a repeating @samp{o}, not a
 repeating @samp{fo}.
+
 The matcher processes a @samp{*} construct by matching, immediately, as
 many repetitions as can be found; it is "greedy".  Then it continues
 with the rest of the pattern.  If that fails, backtracking occurs,
@@ -7017,6 +7070,7 @@ pattern is @samp{ar} and there is only @samp{r} left to match, so this
 try fails.  The next alternative is for @samp{a*} to match only two
 @samp{a}s.  With this choice, the rest of the regexp matches
 successfully.
+
 Nested repetition operators can be extremely slow if they specify
 backtracking loops.  For example, it could take hours for the regular
 expression @samp{\(x+y*\)*a} to match the sequence
@@ -7083,14 +7137,17 @@ form the set.  Thus, @samp{[ad]} matches either one @samp{a} or one
 and @samp{d}s (including the empty string), from which it follows that
 @samp{c[ad]*r} matches @samp{cr}, @samp{car}, @samp{cdr},
 @samp{caddaar}, etc.
+
 The usual regular expression special characters are not special inside a
 character set.  A completely different set of special characters exists
 inside character sets: @samp{]}, @samp{-} and @samp{^}.
+
 @samp{-} is used for ranges of characters.  To write a range, write two
 characters with a @samp{-} between them.  Thus, @samp{[a-z]} matches any
 lower case letter.  Ranges may be intermixed freely with individual
 characters, as in @samp{[a-z$%.]}, which matches any lower case letter
 or @samp{$}, @samp{%}, or a period.
+
 To include a @samp{]} in a character set, make it the first character.
 For example, @samp{[]a]} matches @samp{]} or @samp{a}.  To include a
 @samp{-}, write @samp{-} as the first character in the set, or put it
@@ -7107,6 +7164,7 @@ the set.
 @samp{[^} begins a @dfn{complement character set}, which matches any
 character except the ones specified.  Thus, @samp{[^a-z0-9A-Z]}
 matches all characters @emph{except} letters and digits.
+
 @samp{^} is not special in a character set unless it is the first
 character.  The character following the @samp{^} is treated as if it
 were first (thus, @samp{-} and @samp{]} are not special there).
@@ -7150,6 +7208,7 @@ meanings make no sense.  For example, @samp{*foo} treats @samp{*} as
 ordinary since there is no preceding expression on which the @samp{*}
 can act.  It is poor practice to depend on this behavior; quote the
 special character anyway, regardless of where it appears.
+
 For the most part, @samp{\} followed by any character matches only
 that character.  However, there are several exceptions: characters
 that, when preceded by @samp{\}, are special constructs.  Such
@@ -7164,11 +7223,14 @@ specifies an alternative.
 Two regular expressions @var{a} and @var{b} with @samp{\|} in
 between form an expression that matches anything that either @var{a} or
 @var{b} matches.
+
 Thus, @samp{foo\|bar} matches either @samp{foo} or @samp{bar}
 but no other string.
+
 @samp{\|} applies to the largest possible surrounding expressions.  Only a
 surrounding @samp{\( @dots{} \)} grouping can limit the grouping power of
 @samp{\|}.
+
 Full backtracking capability exists to handle multiple uses of @samp{\|}.
 
 @item \( @dots{} \)
@@ -7186,6 +7248,7 @@ Thus, @samp{\(foo\|bar\)x} matches either @samp{foox} or @samp{barx}.
 To enclose an expression for a suffix operator such as @samp{*} to act
 on.  Thus, @samp{ba\(na\)*} matches @samp{bananana}, etc., with any
 (zero or more) number of @samp{na} strings.
+
 @item
 To record a matched substring for future reference.
 @end enumerate
@@ -7287,6 +7350,7 @@ matches the empty string, but only at the beginning or
 end of a word.  Thus, @samp{\bfoo\b} matches any occurrence of
 @samp{foo} as a separate word.  @samp{\bballs?\b} matches
 @samp{ball} or @samp{balls} as a separate word.
+
 @item \B
 @cindex @samp{\B} in regexp
 matches the empty string, but @emph{not} at the beginning or
@@ -7329,6 +7393,7 @@ are searching through; if you specify searching for @samp{FOO},
 @samp{Foo} and @samp{foo} are also considered a match.  Regexps, and in
 particular character sets, are included: @samp{[aB]} matches @samp{a}
 or @samp{A} or @samp{b} or @samp{B}.
+
   If you want a case-sensitive search, set the variable
 @code{case-fold-search} to @code{nil}.  Then all letters must match
 exactly, including case. @code{case-fold-search} is a per-buffer
@@ -7402,6 +7467,7 @@ in @var{newstring} stands for the entire text being replaced.
 @samp{\@var{d}} in @var{newstring}, where @var{d} is a digit, stands for
 whatever matched the @var{d}'th parenthesized grouping in @var{regexp}.
 For example,
+
 @example
 M-x replace-regexp @key{RET} c[ad]+r @key{RET} \&-safe @key{RET}
 @end example
@@ -7459,10 +7525,12 @@ Replace some matches for @var{regexp} with @var{newstring}.
 displays each occurrence, and asks you whether to replace it.  A numeric
 argument to @code{query-replace} tells it to consider only occurrences
 that are bounded by word-delimiter characters.
+
 @findex query-replace-regexp
   Aside from querying, @code{query-replace} works just like
 @code{replace-string}, and @code{query-replace-regexp} works
 just like @code{replace-regexp}.
+
   The things you can type when you are shown an occurrence of @var{string}
 or a match for @var{regexp} are:
 
@@ -7481,6 +7549,7 @@ or a match for @var{regexp} are:
 to replace the occurrence with @var{newstring}.  This preserves case, just
 like @code{replace-string}, provided @code{case-replace} is non-@code{nil},
 as it normally is.
+
 @item @key{DEL}
 to skip to the next occurrence without replacing this one.
 
@@ -7620,6 +7689,7 @@ convenient to use @kbd{M-@key{DEL}} or @kbd{C-x @key{DEL}}.
 you type it, in case you change your mind about phrasing.
 @kbd{M-@key{DEL}} and @kbd{C-x @key{DEL}} save the killed text for
 @kbd{C-y} and @kbd{M-y} to retrieve.  @xref{Yanking}.
+
   @kbd{M-@key{DEL}} is often useful even when you have typed only a few
 characters wrong, if you know you are confused in your typing and aren't
 sure exactly what you typed.  At such a time, you cannot correct with
@@ -7681,6 +7751,7 @@ across three other characters.  This is equivalent to repeating @kbd{C-t}
 three times.  @kbd{C-u - 4 M-t} moves the word before point backward across
 four words.  @kbd{C-u - C-M-t} would cancel the effect of plain
 @kbd{C-M-t}.
+
   A numeric argument of zero transposes the character (word, sexp, line)
 ending after point with the one ending after the mark (otherwise a
 command with a repeat count of zero would do nothing).
@@ -7710,6 +7781,7 @@ the word case-conversion commands @kbd{M-l}, @kbd{M-u}, and @kbd{M-c} do
 not move the cursor when used with a negative argument.
 As soon as you see you have mistyped the last word, you can simply
 case-convert it and continue typing.  @xref{Case}.
+
 @node Spelling,, Fixing Case, Fixit
 @section Checking and Correcting Spelling
 @cindex spelling
@@ -7743,6 +7815,7 @@ means you do not want to do anything to that word.  In that case, the
   @kbd{M-x spell-buffer} checks each word in the buffer the same way that
 @code{spell-word} does, doing a @code{query-replace} for
 every incorrect word if appropriate.
+
 @findex spell-region
   @kbd{M-x spell-region} is similar to @code{spell-buffer} but operates
 only on the region, not the entire buffer.
@@ -8299,6 +8372,7 @@ done for files that have multiple names, but renaming may still be done when
 the file being edited has only one name.  If the variable
 @code{backup-by-copying-when-mismatch} is non-@code{nil}, copying is
 done if renaming would cause the file's owner or group to change.  
+
 @node Interlocking,  , Backup, Saving
 @subsection Protection Against Simultaneous Editing
 
@@ -8366,6 +8440,7 @@ author.  You should attempt to contact that person and ask him not to
 continue editing.  Often the next step is to save the contents of your
 Emacs buffer under a different name, and use @code{diff} to compare the
 two files.
+
   Simultaneous editing checks are also made when you visit a file that
 is already visited with @kbd{C-x C-f} and when you start to modify a
 file.  This is not strictly necessary, but it is useful to find out
@@ -8532,6 +8607,7 @@ restores the contents from the auto-save file @file{#@var{file}#}.  You
 can then save the file with @kbd{C-x C-s} to put the recovered text into
 @var{file} itself.  For example, to recover file @file{foo.c} from its
 auto-save file @file{#foo.c#}, do:
+
 @example
 M-x recover-file @key{RET} foo.c @key{RET}
 C-x C-s
@@ -9349,6 +9425,7 @@ at the beginning of the line.
 @kbd{C-n}.  @kbd{p} is equivalent to @kbd{C-p}.  Moving by lines is done so
 often in Dired that it deserves to be easy to type.  @key{DEL} (move up and
 unflag) is often useful simply for moving up.
+
   The @kbd{g} command in Dired runs @code{revert-buffer} to reinitialize
 the buffer from the actual disk directory and show any changes made in the
 directory by programs other than Dired.  All deletion flags in the Dired
@@ -9404,6 +9481,7 @@ files actually deleted.
 deletion, based on their names.  These commands are useful precisely
 because they do not actually delete any files; you can remove the
 deletion flags from any flagged files that you really wish to keep.
+
   @kbd{#} flags for deletion all files that appear to have been made by
 auto-saving (that is, files whose names begin and end with @samp{#}).
 @kbd{~} flags for deletion all files that appear to have been made as
@@ -9422,6 +9500,7 @@ number of newest versions to keep, overriding @code{dired-kept-versions}.
 A negative numeric argument overrides @code{kept-old-versions}, using minus
 the value of the argument to specify the number of oldest versions of each
 file to keep.
+
 @node Dired Immed,  , Dired Deletion, Dired
 @subsection Immediate File Operations in Dired
 
@@ -9449,7 +9528,8 @@ Views the file described on this line using @kbd{M-x view-file}.  Viewing a
 file is like visiting it, but is slanted toward moving around in the file
 conveniently and does not allow changing the file.  @xref{Misc File
 Ops,View File}.  Viewing a file that is a directory runs Dired on that
-directory.@end table
+directory.
+@end table
 
 @node Misc File Ops,  , Dired, Files
 @section Miscellaneous File Operations
@@ -9586,6 +9666,7 @@ Switch to the previous buffer.
 name you want (@pxref{Completion}).  An empty argument to @kbd{C-x b}
 specifies the most recently selected buffer that is not displayed in any
 window.
+
   Most buffers are created when you visit files, or use Emacs commands
 that display text.  You can also create a buffer explicitly by typing
 @kbd{C-x b @var{bufname} @key{RET}}, which creates a new, empty buffer
@@ -9625,6 +9706,7 @@ A @samp{*} at the beginning of a line indicates the buffer has been
 some with @kbd{C-x s} (@pxref{Saving}).  A @samp{%} indicates a read-only
 buffer.  A @samp{.} marks the selected buffer.  Here is an example of a
 buffer list:
+
 @smallexample
  MR Buffer         Size  Mode           File
  -- ------         ----  ----           ----
@@ -9692,6 +9774,7 @@ remains in effect.
 To copy text from one buffer to another, use the commands @kbd{M-x
 append-to-buffer} and @kbd{M-x insert-buffer}.  @xref{Accumulating
 Text}.
+
 @node Kill Buffer, Several Buffers, Misc Buffer, Buffers
 @section Killing Buffers
 
@@ -9910,6 +9993,7 @@ variable @code{truncate-partial-width-windows} to non-@code{nil} to
 force truncation in all windows less than the full width of the frame,
 independent of the buffer and its value for @code{truncate-lines}.
 @xref{Continuation Lines}.
+
   Horizontal scrolling is often used in side-by-side windows.
 @xref{Display}.
 
@@ -10966,6 +11050,7 @@ character appears in that column.  @kbd{C-x @key{TAB}}
 (@code{indent-rigidly}) moves all the lines in the region right by its
 argument (left, for negative arguments).  The whole group of lines moves
 rigidly sideways, which is how the command gets its name.
+
 @findex indent-relative
   @kbd{M-x indent-relative} indents at point based on the previous line
 (actually, the last non-empty line.)  It inserts whitespace at point, moving
@@ -11194,6 +11279,7 @@ line following point.
   @TeX{} is a powerful text formatter written by Donald Knuth; like GNU
 Emacs, it is free.  La@TeX{} is a simplified input format for @TeX{},
 implemented by @TeX{} macros.  It is part of @TeX{}.
+
   Emacs has a special @TeX{} mode for editing @TeX{} input files.
 It provides facilities for checking the balance of delimiters and for
 invoking @TeX{} on all or part of the file.
@@ -11210,6 +11296,7 @@ which mode is used.
   The commands @kbd{M-x plain-tex-mode} and @kbd{M-x latex-mode}
 explicitly select one of the variants of @TeX{} mode.  Use these
 commands when @kbd{M-x tex-mode} does not guess right.
+
 @menu
 * Editing: TeX Editing.   Special commands for editing in TeX mode.
 * Printing: TeX Print.    Commands for printing part of a file with TeX.
@@ -11321,6 +11408,7 @@ After you insert a @samp{\begin}, use @kbd{C-c C-f}
 (@code{tex-close-latex-block}) to insert automatically a matching
 @samp{\end} (on a new line following the @samp{\begin}).  A blank line is
 inserted between the two, and point is left there.
+
 @node TeX Print,,TeX Editing,TeX Mode
 @subsubsection @TeX{} Printing Commands
 
@@ -11372,6 +11460,7 @@ it so that its last line is visible by typing @kbd{C-c C-l}.
   Type @kbd{C-c C-k} (@code{tex-kill-job}) to kill the @TeX{} process if
 you see that its output is no longer useful.  Using @kbd{C-c C-b} or
 @kbd{C-c C-r} also kills any @TeX{} process still running.
+
 @findex tex-region
 @kindex C-c C-r (TeX mode)
   You can pass an arbitrary region through an inferior @TeX{} by typing
@@ -11543,6 +11632,7 @@ similarly backward.  Both accept numeric arguments as repeat counts.  The
 names emphasize that invisible headings are skipped, but this is not really
 a special feature.  All editing commands that look for lines ignore the
 invisible lines automatically.
+
 @findex outline-up-heading
 @findex outline-forward-same-level
 @findex outline-backward-same-level
@@ -11609,6 +11699,7 @@ on a heading line, and both apply to all the lines of that heading's
 all of their bodies.  In other words, the subtree contains everything
 following this heading line, up to and not including the next heading of
 the same or higher rank.
+
 @findex hide-leaves
 @findex show-branches
   Intermediate between a visible subtree and an invisible one is having
@@ -11623,6 +11714,7 @@ makes the subheadings visible.  They are @kbd{M-x hide-leaves} and
 (@code{show-children}).  It makes just the direct subheadings
 visible---those one level down.  Deeper subheadings remain
 invisible.
+
 @findex hide-body
 @findex show-all
   Two commands have a blanket effect on the whole file.  @kbd{M-x
@@ -11664,6 +11756,7 @@ or backward across other words (@code{transpose-words}).
 character-based @kbd{C-f}, @kbd{C-b}, @kbd{C-d}, @kbd{C-t} and
 @key{DEL}.  @kbd{M-@@} is related to @kbd{C-@@}, which is an alias for
 @kbd{C-@key{SPC}}.
+
 @kindex M-f
 @kindex M-b
 @findex forward-word
@@ -11676,6 +11769,7 @@ characters.  Like their @kbd{Control-} analogues, @kbd{Meta-f} and
 negative argument moves backward, and @kbd{Meta-b} with a negative argument
 moves forward.  Forward motion stops after the last letter of the
 word, while backward motion stops before the first letter.
+
 @kindex M-d
 @findex kill-word
   @kbd{Meta-d} (@code{kill-word}) kills the word after point.  To be
@@ -11751,6 +11845,7 @@ end wherever there is a @samp{.}, @samp{?}, or @samp{!} followed by the
 end of a line or two spaces, with any number of @samp{)}, @samp{]},
 @samp{'}, or @samp{"} characters allowed in between.  A sentence also
 begins or ends wherever a paragraph begins or ends.
+
   Neither @kbd{M-a} nor @kbd{M-e} moves past the newline or spaces beyond
 the sentence edge at which it is stopping.
 
@@ -11763,10 +11858,12 @@ the sentence edge at which it is stopping.
 (@code{kill-sentence}) which kills from point to the end of the
 sentence.  With minus one as an argument it kills back to the beginning
 of the sentence.  Larger arguments serve as repeat counts.
+
   There is a special command, @kbd{C-x @key{DEL}}
 (@code{backward-kill-sentence}), for killing back to the beginning of a
 sentence, which is useful when you change your mind in the middle of
 composing text.
+
 @vindex sentence-end
   The variable @code{sentence-end} controls recognition of the end of a
 sentence.  It is a regexp that matches the last few characters of a
@@ -11833,6 +11930,7 @@ that separate paragraphs without being part of any paragraph.  Lines that
 start a new paragraph and are contained in it must match both regexps.  For
 example, normally @code{paragraph-start} is @code{"^[ @t{\}t@t{\}n@t{\}f]"}
 and @code{paragraph-separate} is @code{"^[ @t{\}t@t{\}f]*$"}.
+
   Normally it is desirable for page boundaries to separate paragraphs.
 The default values of these variables recognize the usual separator for
 pages.
@@ -11995,6 +12093,7 @@ Center a line.
 the one after point if point is between paragraphs, to be refilled.  All
 line breaks are removed, and new ones are inserted where necessary.
 @kbd{M-q} can be undone with @kbd{C-_}.  @xref{Undo}.
+
 @kindex M-g
 @findex fill-region
   To refill many paragraphs, use @kbd{M-g} (@code{fill-region}), which
@@ -12006,11 +12105,13 @@ finding paragraph boundaries (@pxref{Paragraphs}).  For more control, you
 can use @kbd{M-x fill-region-as-paragraph}, which refills everything
 between point and mark.  This command recognizes only blank lines as
 paragraph separators.
+
 @cindex justification
   A numeric argument to @kbd{M-g} or @kbd{M-q} causes it to
 @dfn{justify} the text as well as filling it.  Extra spaces are inserted
 to make the right margin line up exactly at the fill column.  To remove
 the extra spaces, use @kbd{M-q} or @kbd{M-g} with no argument.
+
 @vindex auto-fill-inhibit-regexp
 The variable @code{auto-fill-inhibit-regexp} takes as a value a regexp to
 match lines that should not be auto-filled.
@@ -12062,6 +12163,7 @@ prefix, put point at the end of the prefix, and give the command
 @w{@kbd{C-x .}}@: (@code{set-fill-prefix}).  That's a period after the
 @kbd{C-x}.  To turn off the fill prefix, specify an empty prefix: type
 @w{@kbd{C-x .}}@: with point at the beginning of a line.
+
   When a fill prefix is in effect, the fill commands remove the fill
 prefix from each line before filling and insert it on each line after
 filling.  Auto Fill mode also inserts the fill prefix inserted on new
@@ -12143,6 +12245,7 @@ case conversion applies only to the part of the word before point.
 (@code{upcase-region}) and @kbd{C-x C-l} (@code{downcase-region}), which
 convert everything between point and mark to the specified case.  Point and
 mark do not move.
+
 @node Programs, Running, Text, Top
 @chapter Editing Programs
 @cindex Lisp
@@ -12253,6 +12356,7 @@ programming language modes include @code{lisp-mode-hook},
 @code{emacs-lisp-mode-hook}, @code{lisp-interaction-mode-hook},
 @code{scheme-mode-hook}, and @code{muddle-mode-hook}.  The mode hook
 function receives no arguments.
+
 @node Lists, Defuns, Program Modes, Programs
 @section Lists and Sexps
 
@@ -12329,6 +12433,7 @@ after point is a closing delimiter, @kbd{C-M-f} just moves past it.  (This
 last is not really moving across an sexp; it is an exception which is
 included in the definition of @kbd{C-M-f} because it is as useful a
 behavior as anyone can think of for that situation.)
+
   The command @kbd{C-M-b} (@code{backward-sexp}) moves backward over a
 sexp.  The detailed rules are like those above for @kbd{C-M-f}, but with
 directions reversed.  If there are any prefix characters (single quote,
@@ -12361,6 +12466,7 @@ commands but skip over any number of other kinds of sexps (symbols,
 strings, etc).  In some situations, these commands are useful because
 they usually ignore comments, since the comments usually do not contain
 any lists.
+
 @kindex C-M-u
 @kindex C-M-d
 @findex backward-up-list
@@ -12372,6 +12478,7 @@ that is possible.  To move @i{up} one (or @var{n}) levels, use @kbd{C-M-u}
 positive argument serves as a repeat count; a negative argument reverses
 direction of motion and also requests repetition, so it moves forward and
 up one or more levels.
+
   To move @i{down} in list structure, use @kbd{C-M-d}
 (@code{down-list}).  In Lisp mode, where @samp{(} is the only opening
 delimiter, this is nearly the same as searching for a @samp{(}.  An
@@ -12632,6 +12739,7 @@ beginning of this line.
 @item @var{pos}
 The position at which the line being indented begins.
 @end table
+
 It should return either a number, which is the number of columns of
 indentation for that line, or a list whose first element is such a
 number.  The difference between returning a number and returning a list
@@ -13209,6 +13317,7 @@ In La@TeX{} text, the argument of any of the commands @code{\chapter},
 @code{\eqno}, @code{\label}, @code{\ref}, @code{\cite}, @code{\bibitem},
 @code{\part}, @code{\appendix}, @code{\entry}, or @code{\index}, is a
 tag.
+
 Other commands can make tags as well, if you specify them in the
 environment variable @code{TEXTAGS} before invoking @code{etags}.  The
 value of this environment variable should be a colon-separated list of
@@ -13745,6 +13854,7 @@ can follow its progress.  As soon as it finds an occurrence,
 one more match, type @kbd{M-,} (@code{tags-loop-continue}) to resume the
 @code{tags-search}.  This searches the rest of the current buffer, followed
 by the remaining files of the tags table.
+
 @findex tags-query-replace
   @kbd{M-x tags-query-replace} performs a single
 @code{query-replace-regexp} through all the files in the tags table.  It
@@ -14147,6 +14257,7 @@ constituent''.
 @samp{continue}.  If you insert @samp{;c} and then insert a punctuation
 character such as a space or a newline, the @samp{;c} changes
 automatically to @samp{continue}, provided Abbrev mode is enabled.
+
   Type @samp{;?} or @samp{;C-h} to display a list of all built-in
 Fortran abbrevs and what they stand for.
 
@@ -14250,6 +14361,7 @@ instead of @samp{run}.  Starting a new compilation also kills any
 running compilation, as only one can occur at any time.  Starting a new
 compilation prompts for confirmation before actually killing a
 compilation that is running.
+
 @kindex C-x `
 @findex next-error
   To parse the compiler error messages, type @kbd{C-x `}
@@ -14617,6 +14729,7 @@ However, if you set @code{debug-on-quit} to be non-@code{nil}, @kbd{C-g} will
 invoke the debugger.  This can be useful for debugging an infinite loop;
 type @kbd{C-g} once the loop has had time to reach its steady state.
 @code{debug-on-quit} has no effect on errors.
+
 @findex debug-on-entry
 @findex cancel-debug-on-entry
 @findex debug
@@ -14629,6 +14742,7 @@ debugger when called.  (Redefining the function also does this.)  To enter
 the debugger from some other place in Lisp code, you must insert the
 expression @code{(debug)} there and install the changed code with
 @kbd{C-M-x}.  @xref{Lisp Eval}.
+
   When the debugger is entered, it displays the previously selected buffer
 in one window and a buffer named @samp{*Backtrace*} in another window.  The
 backtrace buffer contains one line for each level of Lisp function
@@ -15887,6 +16001,7 @@ instead of @kbd{C-x a g}, or use @kbd{C-x a i l}
 (@code{inverse-add-mode-abbrev}) instead of @kbd{C-x a l}.  These commands
 are called ``inverse'' because they invert the meaning of the argument
 found in the buffer and the argument read using the minibuffer.
+
   To change the definition of an abbrev, just add the new definition.  You
 will be asked to confirm if the abbrev has a prior definition.  To remove
 an abbrev definition, give a negative argument to @kbd{C-x a g} or @kbd{C-x
@@ -15911,6 +16026,7 @@ outer otter}, @samp{Foo} into @samp{Find outer otter}, and @samp{FOO} into
 @samp{FIND OUTER OTTER} or @samp{Find Outer Otter} according to the
 variable @code{abbrev-all-caps} (a non-@code{nil} value chooses the first
 of the two expansions).
+
    Two commands are available to control abbrev expansion:
 
 @table @kbd
@@ -15941,6 +16057,7 @@ now contains @samp{re-cnst}.  Now insert a punctuation character to
 expand the abbrev @samp{cnst} into @samp{construction}.  The minus sign
 is deleted at this point by @kbd{M-'}.  The resulting text is the
 desired @samp{reconstruction}.
+
   If you actually want the text of the abbrev in the buffer, rather than
 its expansion, insert the following punctuation with @kbd{C-q}.  Thus,
 @kbd{foo C-q -} leaves @samp{foo-} in the buffer.
@@ -16061,6 +16178,7 @@ similar to the previous commands but work on text in an Emacs buffer.
 @kbd{M-x insert-abbrevs} inserts text into the current buffer before point,
 describing all current abbrev definitions; @kbd{M-x define-abbrevs} parses
 the entire current buffer and defines abbrevs accordingly.
+
 @node Dynamic Abbrevs,, Saving Abbrevs, Abbrevs
 @section Dynamic Abbrev Expansion
 
@@ -16163,6 +16281,7 @@ that point stays in exactly the same column.  @kbd{C-e} runs
 @code{picture-end-of-line}, which moves to after the last non-blank
 character on the line.  There was no need to change @kbd{C-a}, as the choice
 of screen model does not affect beginnings of lines.
+
 @findex picture-newline
   Insertion of text is adapted to the quarter-plane screen model through
 the use of Overwrite mode (@pxref{Minor Modes}).  Self-inserting characters
@@ -16180,6 +16299,7 @@ with a space rather than removing it.  @kbd{C-d}
 (@code{picture-clear-column}) does the same in a forward direction.
 @kbd{C-k} (@code{picture-clear-line}) really kills the contents of lines,
 but never removes the newlines from a buffer.
+
 @findex picture-open-line
   To do actual insertion, you must use special commands.  @kbd{C-o}
 (@code{picture-open-line}) creates a blank line, but does so after
@@ -16187,6 +16307,7 @@ the current line; it never splits a line.  @kbd{C-M-o}, @code{split-line},
 makes sense in Picture mode, so it remains unchanged.  @key{LFD}
 (@code{picture-duplicate-line}) inserts another line
 with the same contents below the current line.
+
 @kindex C-c C-d (Picture mode)
 @findex delete-char
   To actually delete parts of the picture, use @kbd{C-w}, or with
@@ -16268,6 +16389,7 @@ change the text; it only moves point.  ``Interesting'' characters are
 defined by the variable @code{picture-tab-chars}, which contains a string
 of characters considered interesting.  Its default value is
 @code{"!-~"}.
+
 @findex picture-tab
   @key{TAB} itself runs @code{picture-tab}, which operates based on the
 current tab stop settings; it is the Picture mode equivalent of
@@ -16317,6 +16439,7 @@ Similar, but use the rectangle in register @var{r}@*
 rectangle commands in that they normally clear the rectangle instead of
 deleting it; this is analogous with the way @kbd{C-d} is changed in Picture
 mode.
+
   However, deletion of rectangles can be useful in Picture mode, so these
 commands delete the rectangle if given a numeric argument.
 
@@ -16365,6 +16488,7 @@ In Mail mode, send the message and switch to another buffer
 @samp{*mail*} and initializes it with the skeleton of an outgoing message.
 @kbd{C-x 4 m} (@code{mail-other-window}) selects the @samp{*mail*} buffer
 in a different window, leaving the previous current buffer visible.
+
   Because the buffer for mail composition is an ordinary Emacs buffer, you can
 switch to other buffers while in the middle of composing mail, and switch
 back later (or never).  If you use the @kbd{C-x m} command again when you
@@ -16481,6 +16605,7 @@ The @samp{To}, @samp{CC}, and @samp{BCC}, fields can have continuation
 lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
 example,
+
 @example
 To: foo@@here, this@@there,
   me@@gnu.cambridge.mass.usa.earth.spiral3281
@@ -16662,6 +16787,7 @@ anything.  @kbd{C-c C-y} always uses the current message from the
 @samp{RMAIL} buffer, so you can insert several old messages by selecting
 one in @samp{RMAIL}, switching to @samp{*mail*} and yanking it, then
 switching back to @samp{RMAIL} to select another.
+
 @kindex C-c C-q (Mail mode)
 @findex mail-fill-yanked-message
   After using @kbd{C-c C-y}, you can use the command @kbd{C-c C-q}
@@ -18045,6 +18171,7 @@ month can be a single month or a list of months.  Thus you could change
 the 11 above to @samp{'(1 2 3)} and have the entry apply to the last
 Thursday of January, February, and March.  If the month is @code{t}, the
 entry applies to all months of the year.
+
   The sexp feature of the diary allows you to specify diary entries
 based on any Emacs Lisp expression.  You can use the library of built-in
 functions or you can write your own functions.  The built-in functions
@@ -18100,6 +18227,7 @@ diary suit your personal tastes.
 entries for the current date as well.  The diary dates appear only if
 the current date is visible.  If you add both of the following lines to
 your init file:
+
 @example
 (setq view-diary-entries-initially t)
 (calendar)
@@ -18149,6 +18277,7 @@ the calendar).
 @code{initial-calendar-window-hook}.  Recomputation of the calendar
 display does not run this hook.  But if you leave the calendar with the
 @kbd{q} command and reenter it, the hook runs again.
+
 @vindex today-visible-calendar-hook
   The variable @code{today-visible-calendar-hook} is a normal hook run
 after the calendar buffer has been prepared with the calendar when the
@@ -18219,6 +18348,7 @@ all) of the variables @code{all-christian-calendar-holidays},
 eliminate the religious holidays, set any or all of the corresponding
 variables @code{christian-holidays}, @code{hebrew-holidays}, and
 @code{islamic-holidays} to @code{nil}.
+
 @vindex other-holidays
   You can set the variable @code{other-holidays} to any list of
 holidays.  This list, normally empty, is intended for individual use.
@@ -18377,7 +18507,8 @@ while in the European style this value is the default:
 ((if dayname (concat dayname ", ")) day " " monthname " " year)
 @end smallexample
 
-+The ISO standard date representation is this:
++
+The ISO standard date representation is this:
 
 @smallexample
 (year "-" month "-" day)
@@ -18510,6 +18641,7 @@ information delays the display of the diary buffer noticeably.  If you'd
 prefer to have a faster display of the diary buffer but without the
 holiday information, set the variable @code{holidays-in-diary-buffer} to
 @code{nil}.
+
 @vindex number-of-diary-entries
   The variable @code{number-of-diary-entries} controls the number of
 days of diary entries to be displayed at one time.  It affects the
@@ -18574,6 +18706,7 @@ Emacs matches of the diary entries with the date forms is done with the
 standard syntax table from Fundamental mode
 (@pxref{Syntax Tables,,,lispref,XEmacs Lisp Reference Manual}),
 but with the @samp{*} changed so that it is a word constituent.
+
   The date patterns in the list must be @emph{mutually exclusive} and
 must not match any portion of the diary entry itself, just the date and
 one character of whitespace.  If, to be mutually exclusive, the pattern
@@ -18727,6 +18860,7 @@ things up by setting the variable @code{holidays-in-diary-buffer} to
 no diary entries, even if that day is a holiday.  If you want such days to be
 shown in the fancy diary buffer, set the variable
 @code{diary-list-include-blanks} to @code{t}.
+
 @cindex sorting diary entries
   If you use the fancy diary display, you can use the normal hook
 @code{list-diary-entries-hook} to sort each day's diary entries by their
@@ -19062,6 +19196,7 @@ whether the file has changed on disk since it was last visited or
 
 where the sort keys were @samp{If}, @samp{XEmacs}, @samp{buffer},
 @samp{systems}, and @samp{the}.
+
 @findex sort-columns
   @kbd{M-x sort-columns} requires more explanation.  You specify the
 columns by putting point at one of the columns and the mark at the other
@@ -19137,6 +19272,7 @@ the contents of the region as input to the shell command, instead of no
 input.  If a numeric argument is used to direct  output to the current
 buffer, then the old region is deleted first and the output replaces it as
 the contents of the region.
+
 @vindex shell-file-name
 @cindex environment
   Both @kbd{M-!} and @kbd{M-|} use @code{shell-file-name} to specify the
@@ -19146,6 +19282,7 @@ specify a directory, the directories in the list @code{exec-path} are
 searched; this list is initialized based on the @code{PATH} environment
 variable when you start XEmacs.  You can override either or both of these
 default initializations in your init file. @xref{Init File}.
+
   When you use @kbd{M-!} and @kbd{M-|}, XEmacs has to wait until the
 shell command completes.  You can quit with @kbd{C-g}; that terminates
 the shell command.
@@ -19181,11 +19318,13 @@ environment variable @code{ESHELL} is used, or the environment variable
 @code{SHELL} if there is no @code{ESHELL}.  If the file name specified
 is relative, the directories in the list @code{exec-path} are searched
 (@pxref{Single Shell,Single Shell Commands}).
+
   As soon as the subshell is started, it is sent as input the contents of
 the file @file{~/.emacs_@var{shellname}}, if that file exists, where
 @var{shellname} is the name of the file that the shell was loaded from.
 For example, if you use @code{csh}, the file sent to it is
 @file{~/.emacs_csh}.
+
 @vindex shell-pushd-regexp
 @vindex shell-popd-regexp
 @vindex shell-cd-regexp
@@ -19200,6 +19339,7 @@ that line is regarded as a @code{pushd} command.  Change this variable when
 you add aliases for @samp{pushd}.  Likewise, @code{shell-popd-regexp} and
 @code{shell-cd-regexp} are used to recognize commands with the meaning of
 @samp{popd} and @samp{cd}.
+
 @kbd{M-x shell-resync-dirs} queries the shell and resynchronizes XEmacs'
 idea of what the current directory stack is.  @kbd{M-x
 shell-dirtrack-toggle} turns directory tracking on and off.
@@ -19784,6 +19924,7 @@ becoming too long.  @xref{Filling}.
 text instead of moving it to the right.  For example, if point is in
 front of the @samp{B} in @samp{FOOBAR}, and you type a @kbd{G} in Overwrite
 mode, it changes to @samp{FOOGAR}, instead of @samp{FOOGBAR}.
+
 @cindex Abbrev mode
 @findex abbrev-mode
   Abbrev mode allows you to define abbreviations that automatically expand
@@ -20346,6 +20487,7 @@ include @code{abbrev-mode}, @code{auto-fill-function},
 @code{tab-width}, and @code{truncate-lines}.  Some other variables are
 always local in every buffer, but they are used for internal
 purposes.
+
 Note: the variable @code{auto-fill-function} was formerly named
 @code{auto-fill-hook}.
 
@@ -20408,6 +20550,7 @@ The prefix and suffix are included to disguise the local variables list
 as a comment so the compiler or text formatter  will ignore it.
 If you do not need to disguise the local variables list as a comment in
 this way, there is no need to include a prefix or a suffix.
+
   Two ``variable'' names are special in a local variables list: a value
 for the variable @code{mode} sets the major mode, and a value for the
 variable @code{eval} is simply evaluated as an expression and the value
@@ -20638,6 +20781,7 @@ you are asked again how to continue with the keyboard macro.  If you
 type a @key{SPC} at this time, the rest of the macro definition is
 executed.  It is up to you to leave point and the text in a state such
 that the rest of the macro will do what you want.
+
   @kbd{C-u C-x q}, which is @kbd{C-x q} with a numeric argument, performs a
 different function.  It enters a recursive edit reading input from the
 keyboard, both when you type it during the definition of the macro and
@@ -20753,12 +20897,14 @@ you can use as a description of what the prefix key is for.  Thus the
 binding of @kbd{C-x} is the symbol @code{Ctl-X-Prefix}, whose function
 definition is the keymap for @kbd{C-x} commands, the value of
 @code{ctl-x-map}.
+
   Prefix key definitions can appear in either the global
 map or a local map.  The definitions of @kbd{C-c}, @kbd{C-x}, @kbd{C-h},
 and @key{ESC} as prefix keys appear in the global map, so these prefix
 keys are always available.  Major modes can locally redefine a key as a
 prefix by putting a prefix key definition for it in the local
 map.
+
   A mode can also put a prefix definition of a global prefix character such
 as @kbd{C-x} into its local map.  This is how major modes override the
 definitions of certain keys that start with @kbd{C-x}.  This case is
@@ -20770,6 +20916,7 @@ definition overriding the global one.  The character after the
 @kbd{C-x} commands and in @code{ctl-x-map}.  If the major mode's own keymap
 for @kbd{C-x} commands contains @code{nil}, the definition from the global
 keymap for @kbd{C-x} commands is used.
+
 @node Rebinding
 @subsection Changing Key Bindings
 @cindex key rebinding, this session
@@ -20829,6 +20976,7 @@ Thus, if you type @kbd{C-f} for @var{key}, Emacs enters
 the minibuffer immediately to read @var{cmd}.  But if you type
 @kbd{C-x}, another character is read; if that character is @kbd{4},
 another character is read, and so on.  For example,
+
 @example
 M-x global-set-key @key{RET} C-x 4 $ spell-other-window @key{RET}
 @end example
@@ -21282,6 +21430,7 @@ You can use @samp{\C-} as a prefix for a control character, as in
 @samp{\C-s} for ASCII Control-S, and @samp{\M-} as a prefix for
 a Meta character, as in @samp{\M-a} for Meta-A or @samp{\M-\C-a} for
 Control-Meta-A.
+
 @item Characters
 Lisp character constant syntax consists of a @samp{?} followed by
 either a character or an escape sequence starting with @samp{\}.
@@ -21472,15 +21621,18 @@ found by searching the directories @code{load-path} as usual and trying the
 suffixes @samp{.elc} and @samp{.el}.  Normally it appears in the
 subdirectory @file{term} of the directory where most Emacs libraries are
 kept.
+
   The usual purpose of the terminal-specific library is to define the
 escape sequences used by the terminal's function keys using the library
 @file{keypad.el}.  See the file
 @file{term/vt100.el} for an example of how this is done.
+
   When the terminal type contains a hyphen, only the part of the name
 before the first hyphen is significant in choosing the library name.
 Thus, terminal types @samp{aaa-48} and @samp{aaa-30-rv} both use
 the library @file{term/aaa}.  The code in the library can use
 @code{(getenv "TERM")} to find the full terminal type name.
+
 @vindex term-file-prefix
   The library's name is constructed by concatenating the value of the
 variable @code{term-file-prefix} and the terminal type.  Your init
@@ -21494,6 +21646,7 @@ after both your init file and any terminal-specific library have been
 read.  @xref{Init File}.  You can set the value in the init file to
 override part of any of the terminal-specific libraries and to define
 initializations for terminals that do not have a library.
+
 @node Audible Bell
 @section Changing the Bell Sound
 @cindex audible bell, changing
@@ -21512,7 +21665,8 @@ standard beep.  This only works if you are logged in on the console of a
 machine with audio hardware. To listen to a sound of the provided type,
 call the function @code{play-sound} with the argument @var{sound}. You
 can also set the volume of the sound with the optional argument 
-@var{volume}.@cindex ding
+@var{volume}.
+@cindex ding
 
 Each element of @code{sound-alist} is a list describing a sound.
 The first element of the list is the name of the sound being defined.
@@ -22511,6 +22665,7 @@ you @i{know} that it makes no difference which visiting command is used.
 Similarly, rather than saying ``if I have three characters on the line,''
 say ``after I type @kbd{@key{RET} A B C @key{RET} C-p},'' if that is
 the way you entered the text.
+
   If you are not in Fundamental mode when the problem occurs, you should
 say what mode you are in.
 
@@ -22582,6 +22737,7 @@ will be open when Emacs displays the screen for the first time.
 @xref{Init File}. Be warned: it is often difficult, and sometimes
 impossible, to fix a terminal-dependent bug without access to a terminal
 of the type that stimulates the bug.
+
 The newsgroup @samp{comp.emacs.xemacs} may be used for bug reports,
 other discussions and requests for assistance.  
 
@@ -22718,6 +22874,7 @@ minibuffer (q.v.@:) arguments when the set of possible valid inputs is
 known; for example, on command names, buffer names, and file names.
 Completion occurs when you type @key{TAB}, @key{SPC}, or @key{RET}.
 @xref{Completion}.
+
 @item Continuation Line
 When a line of text is longer than the width of the frame, it
 takes up more than one screen line when displayed.  We say that the
@@ -22732,6 +22889,7 @@ characters.  Any control character can be typed by holding down the
 @key{CTRL} key and typing some other character; some have special keys
 on the keyboard.  @key{RET}, @key{TAB}, @key{ESC}, @key{LFD}, and
 @key{DEL} are all control characters.  @xref{Keystrokes}.
+
 @item Copyleft
 A copyleft is a notice giving the public legal permission to redistribute
 a program or other work of art.  Copylefts are used by leftists to enrich
@@ -23587,6 +23745,7 @@ On the other hand, if many people get GNU from their friends, and such
 companies don't succeed, this will show that advertising was not really
 necessary to spread GNU.  Why is it that free market advocates don't want
 to let the free market decide this?
+
 @quotation
 ``My company needs a proprietary operating system
 to get a competitive edge.''
@@ -23748,6 +23907,7 @@ For more than ten years, many of the world's best programmers worked at the
 Artificial Intelligence Lab for far less money than they could have had
 anywhere else.  They got many kinds of non-monetary rewards: fame and
 appreciation, for example.  And creativity is also fun, a reward in itself.
+
 Then most of them left when offered a chance to do the same interesting
 work for a lot of money.
 
@@ -23800,6 +23960,7 @@ But if the computer buyer makes a donation to software development
 himself, he can take a credit against the tax.  He can donate to
 the project of his own choosing---often, chosen because he hopes to
 use the results when
+ 
 it is done.  He can take a credit for any amount
 of donation up to the total tax he had to pay.
 
@@ -23851,4 +24012,7 @@ to translate into less work for us.
 @node Concept Index, Frame, Variable Index, Top
 @unnumbered Concept Index
 @printindex cp
+
+
+
 

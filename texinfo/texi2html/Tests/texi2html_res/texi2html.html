@@ -597,7 +597,8 @@ EOT
 </tr></table>
 <h3> 5.5.3 Page footer </h3>
 
-<hr size="6">
+<p>Page Foot <code>T2H_DEFAULT_print_page_foot</code>
+</p><hr size="6">
 <a name="NOD18"></a>
 <a name="SEC17"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -617,8 +618,7 @@ EOT
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 6. Customizing HTML </h1>
-<p>Page Foot <code>T2H_DEFAULT_print_page_foot</code>
-</p><p>If you like to read the following section, it is assumed
+<p>If you like to read the following section, it is assumed
 you are famillar with HTML. If not, you shouldn't
 read this, cause you don't know what we are talking about.
 </p><p>Here you can find information how to change the
@@ -1200,6 +1200,7 @@ entries
 <h3> 7.5.10 HREF Dir Instead File. </h3>
 <p>if set (e.g., to `<tt>index.html</tt>') replace <strong>HREF</strong>'s
 to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
+</p><p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
 </p><hr size="6">
 <a name="NOD40"></a>
 <a name="SEC39"></a>
@@ -1220,8 +1221,7 @@ to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> 8. Command Line Options </h1>
-<p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
-</p>
+
 <table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1828,6 +1828,11 @@ For page titles, use
 a new language, supply list of titles (see <var>$T2H_WORDS</var>),
 and use ISO 639 language codes (see e.g. perl module
 `<tt>Locale-Codes-1.02.tar.gz</tt>' for definitions).
+</p><p>If you don't give a `<samp>-lang</samp>' then we got it from the
+Texinfo source file (@documentlanguage
+see <a href="../Texinfo/documentlanguage.html">(Texinfo)documentlanguage</a>). If there is no
+<code>@documentlanguage</code> we use the default <code>en</code> for
+the language.
 </p><hr size="6">
 <a name="NOD64"></a>
 <a name="SEC63"></a>
@@ -1848,12 +1853,7 @@ and use ISO 639 language codes (see e.g. perl module
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2> 8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code> </h2>
-<p>If you don't give a `<samp>-lang</samp>' then we got it from the
-Texinfo source file (@documentlanguage
-see <a href="../Texinfo/documentlanguage.html">(Texinfo)documentlanguage</a>). If there is no
-<code>@documentlanguage</code> we use the default <code>en</code> for
-the language.
-</p><p>`<samp>-l2h</samp>'
+<p>`<samp>-l2h</samp>'
 if set, uses <code>latex2html</code> for generation of math
 content.
 </p><table border="0" cellspacing="0">
@@ -1928,7 +1928,11 @@ reuse previously generated content, instead.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3> 8.24.3 Temporary files for LaTeX2HTML </h3>
-<hr size="6">
+<p>`<samp>-l2h_tmp</samp>'
+If set, l2h uses this directory for temporary files.  The
+path leading to this directory may not contain a dot (i.e.,
+a `<samp>.</samp>'); otherwise, l2h will fail.
+</p><hr size="6">
 <a name="NOD68"></a>
 <a name="SEC67"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1948,11 +1952,7 @@ reuse previously generated content, instead.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1> A. Function Reference </h1>
-<p>`<samp>-l2h_tmp</samp>'
-If set, l2h uses this directory for temporary files.  The
-path leading to this directory may not contain a dot (i.e.,
-a `<samp>.</samp>'); otherwise, l2h will fail.
-</p>
+
 <table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC68">A.1 Print ToC Frame</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -2463,7 +2463,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC73_15" style="text-decoration: none"><b>V</b></a>
  &nbsp; 
-</td></tr></table><hr size="6">
+</td></tr></table>
+<hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>

@@ -103,7 +103,8 @@ text refers to.  For example, metasyntactic variables are marked by
 labelled by commands that tell what kind of object they are, it is easy
 to change the way the Texinfo formatters prepare such text.  (Texinfo is
 an <em>intentional</em> formatting language rather than a <em>typesetting</em>
-formatting language.)</p><p>For example, in a printed manual,
+formatting language.)
+</p><p>For example, in a printed manual,
 code is usually illustrated in a typewriter font;
 <code>@code</code> tells TeX to typeset this text in this font.  But it
 would be easy to change the way TeX highlights code to use another
@@ -111,7 +112,8 @@ font, and this change would not affect how keystroke examples are
 highlighted.  If straight typesetting commands were used in the body
 of the file and you wanted to make a change, you would need to check
 every single occurrence to make sure that you were changing code and
-not something else that should not be changed.</p><table border="0" cellspacing="0">
+not something else that should not be changed.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD107">* Useful Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Highlighting provides useful information.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC122">9.1.1 <code>@code</code>{<var>sample-code</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating program code.</td></tr>
@@ -141,43 +143,57 @@ possible, for example, to write a program in Emacs Lisp (or a keyboard
 macro) to insert an index entry after every paragraph that contains
 words or phrases marked by a specified command.  You could do this to
 construct an index of functions if you had not already made the
-entries.</p><p>The commands serve a variety of purposes:</p><dl compact="compact">
+entries.
+</p><p>The commands serve a variety of purposes:
+</p><dl compact="compact">
 <dt><code> @code{<var>sample-code</var>}
 </code></dt>
-<dd><p>Indicate text that is a literal example of a piece of a program.</p></dd>
+<dd><p>Indicate text that is a literal example of a piece of a program.
+</p></dd>
 <dt><code> @kbd{<var>keyboard-characters</var>}
 </code></dt>
-<dd><p>Indicate keyboard input.</p></dd>
+<dd><p>Indicate keyboard input.
+</p></dd>
 <dt><code> @key{<var>key-name</var>}
 </code></dt>
-<dd><p>Indicate the conventional name for a key on a keyboard.</p></dd>
+<dd><p>Indicate the conventional name for a key on a keyboard.
+</p></dd>
 <dt><code> @samp{<var>text</var>}
 </code></dt>
-<dd><p>Indicate text that is a literal example of a sequence of characters.</p></dd>
+<dd><p>Indicate text that is a literal example of a sequence of characters.
+</p></dd>
 <dt><code> @var{<var>metasyntactic-variable</var>}
 </code></dt>
-<dd><p>Indicate a metasyntactic variable.</p></dd>
+<dd><p>Indicate a metasyntactic variable.
+</p></dd>
 <dt><code> @env{<var>environment-variable</var>}
 </code></dt>
-<dd><p>Indicate an environment variable.</p></dd>
+<dd><p>Indicate an environment variable.
+</p></dd>
 <dt><code> @file{<var>file-name</var>}
 </code></dt>
-<dd><p>Indicate the name of a file.</p></dd>
+<dd><p>Indicate the name of a file.
+</p></dd>
 <dt><code> @command{<var>command-name</var>}
 </code></dt>
-<dd><p>Indicate the name of a command.</p></dd>
+<dd><p>Indicate the name of a command.
+</p></dd>
 <dt><code> @option{<var>option</var>}
 </code></dt>
-<dd><p>Indicate a command-line option.</p></dd>
+<dd><p>Indicate a command-line option.
+</p></dd>
 <dt><code> @dfn{<var>term</var>}
 </code></dt>
-<dd><p>Indicate the introductory or defining use of a term.</p></dd>
+<dd><p>Indicate the introductory or defining use of a term.
+</p></dd>
 <dt><code> @cite{<var>reference</var>}
 </code></dt>
-<dd><p>Indicate the name of a book.</p></dd>
+<dd><p>Indicate the name of a book.
+</p></dd>
 <dt><code> @acronym{<var>acronym</var>}
 </code></dt>
-<dd><p>Indicate an acronym.</p></dd>
+<dd><p>Indicate an acronym.
+</p></dd>
 <dt><code> @url{<var>uniform-resource-locator</var>}
 </code></dt>
 <dd><p>Indicate a uniform resource locator for the World Wide Web.
@@ -304,10 +320,12 @@ long-standing manuals do so.
 
 <p>Use the <code>@kbd</code> command for characters of input to be typed by
 users.  For example, to refer to the characters <kbd>M-a</kbd>,
-write</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+write
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @kbd{M-a}
 </pre></td></tr></table>
-<p>and to refer to the characters <kbd>M-x shell</kbd>, write</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<p>and to refer to the characters <kbd>M-x shell</kbd>, write
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @kbd{M-x shell}
 </pre></td></tr></table>
 <a name="IDX120"></a>
@@ -344,12 +362,14 @@ and similar environments.
 <p>You can embed another @-command inside the braces of an <code>@kbd</code>
 command.  Here, for example, is the way to describe a command that
 would be described more verbosely as &quot;press an `<samp>r</samp>' and then
-press the <kbd>RET</kbd> key&quot;:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+press the <kbd>RET</kbd> key&quot;:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @kbd{r @key{RET}}
 </pre></td></tr></table>
 <p>This produces: <kbd>r <kbd>RET</kbd></kbd>
 </p><p>You also use the <code>@kbd</code> command if you are spelling out the letters
-you type; for example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+you type; for example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 To give the @code{logout} command,
 type the characters @kbd{l o g o u t @key{RET}}.
 </pre></td></tr></table>
@@ -362,7 +382,8 @@ type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
 
 <p>(Also, this example shows that you can add spaces for clarity.  If you
 really want to mention a space character as one of the characters of
-input, write <kbd>@key{SPC}</kbd> for it.)</p><hr size="6">
+input, write <kbd>@key{SPC}</kbd> for it.)
+</p><hr size="6">
 <a name="NOD110"></a>
 <a name="SEC124"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -384,12 +405,15 @@ input, write <kbd>@key{SPC}</kbd> for it.)</p><hr size="6">
 <h3> 9.1.3 <code>@key</code>{<var>key-name</var>} </h3>
 
 <p>Use the <code>@key</code> command for the conventional name for a key on a
-keyboard, as in:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+keyboard, as in:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @key{RET}
 </pre></td></tr></table>
 <p>You can use the <code>@key</code> command within the argument of an
 <code>@kbd</code> command when the sequence of characters to be typed
-includes one or more keys that are described by name.</p><p>For example, to produce <kbd>C-x <kbd>ESC</kbd></kbd> you would type:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+includes one or more keys that are described by name.
+</p><p>For example, to produce <kbd>C-x <kbd>ESC</kbd></kbd> you would type:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @kbd{C-x @key{ESC}}
 </pre></td></tr></table>
 <p>Here is a list of the recommended names for keys:
@@ -477,7 +501,8 @@ example, write `<samp>@kbd{Meta-a}</samp>' to produce <kbd>Meta-a</kbd> and
 or `sample' of a sequence of characters in a file, string, pattern, etc.
 Enclose the text in braces.  The argument appears within single
 quotation marks in both the Info file and the printed manual; in
-addition, it is printed in a fixed-width font.</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+addition, it is printed in a fixed-width font.
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 To match @samp{foo} at the end of the line,
 use the regexp @samp{foo$}.
 </pre></td></tr></table>
@@ -485,18 +510,21 @@ use the regexp @samp{foo$}.
 </p><blockquote>
 
 <p>To match `<samp>foo</samp>' at the end of the line, use the regexp
-`<samp>foo$</samp>'.</p></blockquote>
+`<samp>foo$</samp>'.
+</p></blockquote>
 
 <p>Any time you are referring to single characters, you should use
 <code>@samp</code> unless <code>@kbd</code> or <code>@key</code> is more appropriate.
 Also, you may use <code>@samp</code> for entire statements in C and for entire
 shell commands--in this case, <code>@samp</code> often looks better than
 <code>@code</code>.  Basically, <code>@samp</code> is a catchall for whatever is
-not covered by <code>@code</code>, <code>@kbd</code>, or <code>@key</code>.</p><p>Only include punctuation marks within braces if they are part of the
+not covered by <code>@code</code>, <code>@kbd</code>, or <code>@key</code>.
+</p><p>Only include punctuation marks within braces if they are part of the
 string you are specifying.  Write punctuation marks outside the braces
 if those punctuation marks are part of the English text that surrounds
 the string.  In the following sentence, for example, the commas and
-period are outside of the braces:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+period are outside of the braces:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 In English, the vowels are @samp{a}, @samp{e},
 @samp{i}, @samp{o}, @samp{u}, and sometimes
 @samp{y}.
@@ -573,7 +601,8 @@ the delimiter character you choose.
 <em>metasyntactic variable</em> is something that stands for another piece of
 text.  For example, you should use a metasyntactic variable in the
 documentation of a function to describe the arguments that are passed
-to that function.</p><p>Do not use <code>@var</code> for the names of particular variables in
+to that function.
+</p><p>Do not use <code>@var</code> for the names of particular variables in
 programming languages.  These are specific names from a program, so
 <code>@code</code> is correct for them (see section <a href="#SEC122"><code>@code</code>{<var>sample-code</var>}</a>).  For example, the
 Emacs Lisp variable <code>texinfo-tex-command</code> is not a metasyntactic
@@ -595,10 +624,12 @@ type @samp{rm @var{filename}}.
 </p></blockquote>
 
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
-<code>@samp</code>, <code>@file</code>, etc.)</p><p>Write a metasyntactic variable all in lower case without spaces, and
+<code>@samp</code>, <code>@file</code>, etc.)
+</p><p>Write a metasyntactic variable all in lower case without spaces, and
 use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
-this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 \input texinfo
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
@@ -610,12 +641,14 @@ this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
 <p>In some documentation styles, metasyntactic variables are shown with
-angle brackets, for example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+angle brackets, for example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 ..., type rm &lt;filename&gt;
 </pre></td></tr></table>
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
-to output the <code>&lt;<small>...</small>&gt;</code> format if you wish.)</p><hr size="6">
+to output the <code>&lt;<small>...</small>&gt;</code> format if you wish.)
+</p><hr size="6">
 <a name="NOD114"></a>
 <a name="SEC128"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -676,7 +709,8 @@ file, buffer, or directory, or is the name of a node in Info.  You can
 also use the command for file name suffixes.  Do not use <code>@file</code>
 for symbols in a programming language; use <code>@code</code>.
 </p><p>Currently, <code>@file</code> is equivalent to <code>@samp</code> in its effects.
-For example,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 The @file{.el} files are in
 the @file{/usr/local/emacs/lisp} directory.
 </pre></td></tr></table>
@@ -788,7 +822,8 @@ purpose is to introduce a term which will be used again or which the
 reader ought to know.  Mere passing mention of a term for the first
 time does not deserve <code>@dfn</code>.  The command generates italics in
 the printed manual, and double quotation marks in the Info file.  For
-example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 Getting rid of a file is called @dfn{deleting} it.
 </pre></td></tr></table>
 <p>produces
@@ -955,7 +990,8 @@ However, sometimes you will want to emphasize text without indicating a
 category.  Texinfo has two commands to do this.  Also, Texinfo has
 several commands that specify the font in which TeX will typeset
 text.  These commands have no effect on Info and only one of them,
-the <code>@r</code> command, has any regular use.</p><table border="0" cellspacing="0">
+the <code>@r</code> command, has any regular use.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC138">9.2.1 <code>@emph</code>{<var>text</var>} and <code>@strong</code>{<var>text</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to emphasize text in Texinfo.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC139">9.2.2 <code>@sc</code>{<var>text</var>}: The Small Caps Font</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to use the small caps font.</td></tr>
@@ -1088,10 +1124,12 @@ is used), <code>@b</code> requests <b>bold</b> face, <code>@t</code> requests th
 <tt>fixed-width</tt>, typewriter-style font used by <code>@code</code>, and <code>@r</code> requests a
 roman font, which is the usual font in which text is printed.  All
 four commands apply to an argument that follows, surrounded by
-braces.</p><p>Only the <code>@r</code> command has much use: in example programs, you
+braces.
+</p><p>Only the <code>@r</code> command has much use: in example programs, you
 can use the <code>@r</code> command to convert code comments from the
 fixed-width font to a roman font.  This looks better in printed
-output.</p><p>For example,
+output.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @lisp
 (+ 2 2)    ; @r{Add two plus two.}

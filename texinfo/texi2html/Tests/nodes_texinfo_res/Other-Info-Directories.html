@@ -66,7 +66,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <h3> 20.2.3 Info Files in Other Directories </h3>
 
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
-ways to specify its location:</p><ol>
+ways to specify its location:
+</p><ol>
 <li><p>
 Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
 </p></li><li><p>
@@ -78,7 +79,8 @@ initialization file.
 must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
 each of the listed directories.  (In Emacs version 18, you can set the
 <code>Info-directory</code> variable to the name of only one
-directory.)</p></li><li><p>
+directory.)
+</p></li><li><p>
 Specify the Info directory name in the <code>INFOPATH</code> environment
 variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
 (Only you and others who set this environment variable will be able to
@@ -87,11 +89,13 @@ find Info files whose location is specified this way.)
 
 <p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
 directory, you could add an entry like this to the menu in the
-standard `<tt>dir</tt>' file:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+standard `<tt>dir</tt>' file:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 * Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
-written as the second part of the menu entry.</p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
+written as the second part of the menu entry.
+</p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
 </p><a name="IDX413"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
 (require 'info)
@@ -121,21 +125,23 @@ uses a different syntax.
 </p><ul>
 <li><p>
 In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
-variable as follows:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+variable as follows:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 setenv INFOPATH .:~/info:/usr/local/emacs/info
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 </li><li><p>
 In a `<tt>.profile</tt>' file, you would achieve the same effect by
-writing:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+writing:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 </li><li><p>
 <a name="IDX415"></a>
 In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
-</pre></font></td></tr></table></li></ul>
+</pre></td></tr></table></li></ul>
 
 <p>The `<samp>.</samp>' indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's

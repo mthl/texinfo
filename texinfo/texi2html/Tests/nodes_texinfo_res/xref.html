@@ -70,7 +70,8 @@ beginning of a sentence.  The Info formatting commands convert it into
 an Info cross reference, which the Info `<samp>f</samp>' command can use to
 bring you directly to another node.  The TeX typesetting commands
 convert it into a page reference, or a reference to another book or
-manual.</p><table border="0" cellspacing="0">
+manual.
+</p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="Reference-Syntax.html#NOD95">* Reference Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a reference looks like and requires.</td></tr>
 <tr><td align="left" valign="top"><a href="One-Argument.html#SEC110">8.3.1 <code>@xref</code> with One Argument</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>@xref</code> with one argument.</td></tr>
@@ -83,7 +84,8 @@ manual.</p><table border="0" cellspacing="0">
 <a name="SEC109"></a>
 <h3> What a Reference Looks Like and Requires </h3>
 
-<p>Most often, an Info cross reference looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<p>Most often, an Info cross reference looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 *Note <var>node-name</var>::.
 </pre></td></tr></table>
 <p>or like this
@@ -106,22 +108,28 @@ manual.</p><table border="0" cellspacing="0">
 the cross reference in either the Info file or the printed output.
 You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
-differently.  See section <a href="pxref.html#SEC116"><code>@pxref</code></a>.)</p><blockquote>
+differently.  See section <a href="pxref.html#SEC116"><code>@pxref</code></a>.)
+</p><blockquote>
 
 <p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
-the Info file and in the printed manual.</p></blockquote>
+the Info file and in the printed manual.
+</p></blockquote>
 
 <p><code>@xref</code> must refer to an Info node by name.  Use <code>@node</code>
-to define the node (see section <a href="Writing-a-Node.html#SEC90">How to Write an <code>@node</code> Line</a>).</p><p><code>@xref</code> is followed by several arguments inside braces, separated by
-commas.  Whitespace before and after these commas is ignored.</p><p>A cross reference requires only the name of a node; but it may contain
+to define the node (see section <a href="Writing-a-Node.html#SEC90">How to Write an <code>@node</code> Line</a>).
+</p><p><code>@xref</code> is followed by several arguments inside braces, separated by
+commas.  Whitespace before and after these commas is ignored.
+</p><p>A cross reference requires only the name of a node; but it may contain
 up to four additional arguments.  Each of these variations produces a
-cross reference that looks somewhat different.</p><blockquote>
+cross reference that looks somewhat different.
+</p><blockquote>
 
 <p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
-mistake them for separators.</p></blockquote>
+mistake them for separators.
+</p></blockquote>
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -120,7 +120,8 @@ becoming too long.  See section <a href="xemacs_23.html#SEC210">Filling Text</a>
 <p>  Overwrite mode causes ordinary printing characters to replace existing
 text instead of moving it to the right.  For example, if point is in
 front of the `<samp>B</samp>' in `<samp>FOOBAR</samp>', and you type a <kbd>G</kbd> in Overwrite
-mode, it changes to `<samp>FOOGAR</samp>', instead of `<samp>FOOGBAR</samp>'.</p><a name="IDX1470"></a>
+mode, it changes to `<samp>FOOGAR</samp>', instead of `<samp>FOOGBAR</samp>'.
+</p><a name="IDX1470"></a>
 <a name="IDX1471"></a>
 <p>  Abbrev mode allows you to define abbreviations that automatically expand
 as you type them.  For example, `<samp>amd</samp>' might expand to `<samp>abbrev
@@ -223,13 +224,13 @@ documentation of the variable.
 C-h v fill-column <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>prints something like:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 fill-column's value is 75
 
 Documentation:
 *Column beyond which automatic line-wrapping should happen.
 Automatically becomes local when set in any fashion.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <a name="IDX1475"></a>
 <p>The star at the beginning of the documentation indicates that this variable
 is an option.  <kbd>C-h v</kbd> is not restricted to options; it allows any
@@ -311,7 +312,7 @@ groups, all the way up to a master group called <code>Emacs</code>.
 </p><p>  <kbd>M-x customize</kbd> (or <kbd>C-h C</kbd>) creates a customization buffer that
 shows the top-level <code>Emacs</code> group and the second-level groups immediately
 under it.  It looks like this, in part:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 /- Emacs group: ---------------------------------------------------\
       [State]: visible group members are all at standard settings.
    Customization of the One True Editor.
@@ -327,7 +328,7 @@ Interfacing to external utilities.
 
 \- Emacs group end ------------------------------------------------/
 
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>This says that the buffer displays the contents of the <code>Emacs</code>
 group.  The other groups are listed because they are its contents.  But
 they are listed differently, without indentation and dashes, because
@@ -385,11 +386,11 @@ This is the way to set values in it.
 
 <p>  Here is an example of what a user option looks like in the
 customization buffer:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Kill Ring Max: [Hide] 30
    [State]: this option is unchanged from its standard setting.
 Maximum length of kill ring before oldest elements are thrown away.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  The text following `<samp>[Hide]</samp>', `<samp>30</samp>' in this case, indicates
 the current value of the option.  If you see `<samp>[Show]</samp>' instead of
 `<samp>[Hide]</samp>', it means that the value is hidden; the customization
@@ -410,17 +411,17 @@ and edit it textually.  For example, you can type <kbd>M-d</kbd>, then insert
 another number.
 </p><p>  When you begin to alter the text, you will see the `<samp>[State]</samp>' line
 change to say that you have edited the value:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 [State]: you have edited the value as text, but not set the option.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <a name="IDX1480"></a>
 <p>  Editing the value does not actually set the option variable.  To do
 that, you must <em>set</em> the option.  To do this, invoke the word
 `<samp>[State]</samp>' and choose `<samp>Set for Current Session</samp>'.
 </p><p>  The state of the option changes visibly when you set it:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 [State]: you have set this option, but not saved it for future sessions.
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>   You don't have to worry about specifying a value that is not valid;
 setting the option checks for validity and will not really install an
 unacceptable value.
@@ -439,7 +440,7 @@ take effect when you use the `<samp>Set for Current Session</samp>' operation.
 </p><p>  Some options have values with complex structure.  For example, the
 value of <code>load-path</code> is a list of directories.  Here is how it
 appears in the customization buffer:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Load Path:
 [INS] [DEL] [Current dir?]: /usr/local/share/emacs/19.34.94/site-lisp
 [INS] [DEL] [Current dir?]: /usr/local/share/emacs/site-lisp
@@ -450,7 +451,7 @@ Load Path:
 [INS]
    [State]: this item has been changed outside the customization buffer.
 List of directories to search for files to load....
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Each directory in the list appears on a separate line, and each line has
 several editable or active fields.
 </p><p>  You can edit any of the directory names.  To delete a directory from
@@ -511,9 +512,9 @@ operation for the group; these operations on the group apply to all
 options in the group and its subgroups.
 </p><p>  Near the top of the customization buffer there are two lines
 containing several active fields:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
  [Set] [Save] [Reset]  [Done]
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>Invoking `<samp>[Done]</samp>' buries this customization buffer.  Each of the
 other fields performs an operation--set, save or reset--on each of the
 items in the buffer that could meaningfully be set, saved or reset.
@@ -542,7 +543,7 @@ items in the buffer that could meaningfully be set, saved or reset.
 faces.  When you show the contents of a group, both the user options and
 the faces in the group appear in the customization buffer.  Here is an
 example of how a face looks:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 Custom Changed Face: (sample)
    [State]: this face is unchanged from its standard setting.
 Face used when the customize item has been changed.
@@ -557,7 +558,7 @@ Attributes: [ ] Bold: [Toggle]  off (nil)
             [ ] Font Family: 
             [ ] Size: 
             [ ] Strikethru: off
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>  Each face attribute has its own line.  The `<samp>[<var>x</var>]</samp>' field
 before the attribute name indicates whether the attribute is
 <em>enabled</em>; `<samp>X</samp>' means that it is.  You can enable or disable the
@@ -693,7 +694,7 @@ faces that you have set but not saved.
 an Emacs buffer named `<samp>*List Options*</samp>'.  Each option is shown with its
 documentation and its current value.  Here is what a portion of it might
 look like:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 ;; exec-path:
 (&quot;.&quot; &quot;/usr/local/bin&quot; &quot;/usr/ucb&quot; &quot;/bin&quot; &quot;/usr/bin&quot; &quot;/u2/emacs/etc&quot;)
 *List of directories to search programs to run in subprocesses.
@@ -705,7 +706,7 @@ or nil (try the default directory).
 *Column beyond which automatic line-wrapping should happen.
 Automatically becomes local when set in any fashion.
 ;;
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <a name="IDX1495"></a>
 <p>  <kbd>M-x edit-options</kbd> goes one step further and immediately selects the
 `<samp>*List Options*</samp>' buffer; this buffer uses the major mode Options mode,
@@ -805,7 +806,8 @@ include <code>abbrev-mode</code>, <code>auto-fill-function</code>,
 <code>selective-display-ellipses</code>, <br><code>selective-display</code>,
 <code>tab-width</code>, and <code>truncate-lines</code>.  Some other variables are
 always local in every buffer, but they are used for internal
-purposes.</p><p>Note: the variable <code>auto-fill-function</code> was formerly named
+purposes.
+</p><p>Note: the variable <code>auto-fill-function</code> was formerly named
 <code>auto-fill-hook</code>.
 </p><a name="IDX1500"></a>
 <p>  If you want a variable to cease to be local to the current buffer,
@@ -874,7 +876,8 @@ before it and the suffix after it.  This includes the `<samp>End:</samp>' line.
 The prefix and suffix are included to disguise the local variables list
 as a comment so the compiler or text formatter  will ignore it.
 If you do not need to disguise the local variables list as a comment in
-this way, there is no need to include a prefix or a suffix.</p><p>  Two &quot;variable&quot; names are special in a local variables list: a value
+this way, there is no need to include a prefix or a suffix.
+</p><p>  Two &quot;variable&quot; names are special in a local variables list: a value
 for the variable <code>mode</code> sets the major mode, and a value for the
 variable <code>eval</code> is simply evaluated as an expression and the value
 is ignored.  These are not real variables; setting them in any other
@@ -1151,7 +1154,8 @@ part of the macro.  When you exit the recursive edit using <kbd>C-M-c</kbd>,
 you are asked again how to continue with the keyboard macro.  If you
 type a <kbd>SPC</kbd> at this time, the rest of the macro definition is
 executed.  It is up to you to leave point and the text in a state such
-that the rest of the macro will do what you want.</p><p>  <kbd>C-u C-x q</kbd>, which is <kbd>C-x q</kbd> with a numeric argument, performs a
+that the rest of the macro will do what you want.
+</p><p>  <kbd>C-u C-x q</kbd>, which is <kbd>C-x q</kbd> with a numeric argument, performs a
 different function.  It enters a recursive edit reading input from the
 keyboard, both when you type it during the definition of the macro and
 when it is executed from the macro.  During definition, the editing you do
@@ -1292,12 +1296,14 @@ effect is the same, but it provides a command name for the prefix key that
 you can use as a description of what the prefix key is for.  Thus the
 binding of <kbd>C-x</kbd> is the symbol <code>Ctl-X-Prefix</code>, whose function
 definition is the keymap for <kbd>C-x</kbd> commands, the value of
-<code>ctl-x-map</code>.</p><p>  Prefix key definitions can appear in either the global
+<code>ctl-x-map</code>.
+</p><p>  Prefix key definitions can appear in either the global
 map or a local map.  The definitions of <kbd>C-c</kbd>, <kbd>C-x</kbd>, <kbd>C-h</kbd>,
 and <kbd>ESC</kbd> as prefix keys appear in the global map, so these prefix
 keys are always available.  Major modes can locally redefine a key as a
 prefix by putting a prefix key definition for it in the local
-map.</p><p>  A mode can also put a prefix definition of a global prefix character such
+map.
+</p><p>  A mode can also put a prefix definition of a global prefix character such
 as <kbd>C-x</kbd> into its local map.  This is how major modes override the
 definitions of certain keys that start with <kbd>C-x</kbd>.  This case is
 special, because the local definition does not entirely replace the global
@@ -1307,7 +1313,8 @@ definition overriding the global one.  The character after the
 <kbd>C-x</kbd> is looked up in both the major mode's own keymap for redefined
 <kbd>C-x</kbd> commands and in <code>ctl-x-map</code>.  If the major mode's own keymap
 for <kbd>C-x</kbd> commands contains <code>nil</code>, the definition from the global
-keymap for <kbd>C-x</kbd> commands is used.</p><hr size="6">
+keymap for <kbd>C-x</kbd> commands is used.
+</p><hr size="6">
 <a name="NOD343"></a>
 <a name="SEC369"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1397,7 +1404,8 @@ one until they amount to a complete key (that is, not a prefix key).
 Thus, if you type <kbd>C-f</kbd> for <var>key</var>, Emacs enters
 the minibuffer immediately to read <var>cmd</var>.  But if you type
 <kbd>C-x</kbd>, another character is read; if that character is <kbd>4</kbd>,
-another character is read, and so on.  For example,</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+another character is read, and so on.  For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 M-x global-set-key <kbd>RET</kbd> C-x 4 $ spell-other-window <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>redefines <kbd>C-x 4 $</kbd> to run the (fictitious) command
@@ -1975,7 +1983,8 @@ the only characters for which backslash sequences are mandatory.
 </p><p>You can use `<samp>\C-</samp>' as a prefix for a control character, as in
 `<samp>\C-s</samp>' for ASCII Control-S, and `<samp>\M-</samp>' as a prefix for
 a Meta character, as in `<samp>\M-a</samp>' for Meta-A or `<samp>\M-\C-a</samp>' for
-Control-Meta-A.</p></dd>
+Control-Meta-A.
+</p></dd>
 <dt> Characters
 </dt>
 <dd><p>Lisp character constant syntax consists of a `<samp>?</samp>' followed by
@@ -2165,14 +2174,17 @@ it is run on that type of terminal.  For a terminal type named
 found by searching the directories <code>load-path</code> as usual and trying the
 suffixes `<samp>.elc</samp>' and `<samp>.el</samp>'.  Normally it appears in the
 subdirectory `<tt>term</tt>' of the directory where most Emacs libraries are
-kept.</p><p>  The usual purpose of the terminal-specific library is to define the
+kept.
+</p><p>  The usual purpose of the terminal-specific library is to define the
 escape sequences used by the terminal's function keys using the library
 `<tt>keypad.el</tt>'.  See the file
-`<tt>term/vt100.el</tt>' for an example of how this is done.</p><p>  When the terminal type contains a hyphen, only the part of the name
+`<tt>term/vt100.el</tt>' for an example of how this is done.
+</p><p>  When the terminal type contains a hyphen, only the part of the name
 before the first hyphen is significant in choosing the library name.
 Thus, terminal types `<samp>aaa-48</samp>' and `<samp>aaa-30-rv</samp>' both use
 the library `<tt>term/aaa</tt>'.  The code in the library can use
-<code>(getenv &quot;TERM&quot;)</code> to find the full terminal type name.</p><a name="IDX1532"></a>
+<code>(getenv &quot;TERM&quot;)</code> to find the full terminal type name.
+</p><a name="IDX1532"></a>
 <p>  The library's name is constructed by concatenating the value of the
 variable <code>term-file-prefix</code> and the terminal type.  Your init
 file can prevent the loading of the terminal-specific library by setting
@@ -2183,7 +2195,8 @@ called as a function of no arguments at the end of Emacs initialization,
 after both your init file and any terminal-specific library have been
 read.  See section <a href="#SEC377">The Init File</a>.  You can set the value in the init file to
 override part of any of the terminal-specific libraries and to define
-initializations for terminals that do not have a library.</p><hr size="6">
+initializations for terminals that do not have a library.
+</p><hr size="6">
 <a name="NOD355"></a>
 <a name="SEC381"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2213,7 +2226,8 @@ standard beep.  This only works if you are logged in on the console of a
 machine with audio hardware. To listen to a sound of the provided type,
 call the function <code>play-sound</code> with the argument <var>sound</var>. You
 can also set the volume of the sound with the optional argument 
-<var>volume</var>.<a name="IDX1534"></a>
+<var>volume</var>.
+<a name="IDX1534"></a>
 </p><p>Each element of <code>sound-alist</code> is a list describing a sound.
 The first element of the list is the name of the sound being defined.
 Subsequent elements of the list are alternating keyword/value pairs:
@@ -3557,7 +3571,8 @@ characters you typed since starting to use Emacs.
 you <i>know</i> that it makes no difference which visiting command is used.
 Similarly, rather than saying &quot;if I have three characters on the line,&quot;
 say &quot;after I type <kbd><kbd>RET</kbd> A B C <kbd>RET</kbd> C-p</kbd>,&quot; if that is
-the way you entered the text.</p><p>  If you are not in Fundamental mode when the problem occurs, you should
+the way you entered the text.
+</p><p>  If you are not in Fundamental mode when the problem occurs, you should
 say what mode you are in.
 </p><p>  If the manifestation of the bug is an Emacs error message, it is
 important to report not just the text of the error message but a backtrace
@@ -3617,7 +3632,8 @@ up, put this expression into your init file so that the termscript file
 will be open when Emacs displays the screen for the first time.
 See section <a href="#SEC377">The Init File</a>. Be warned: it is often difficult, and sometimes
 impossible, to fix a terminal-dependent bug without access to a terminal
-of the type that stimulates the bug.</p><p>The newsgroup `<samp>comp.emacs.xemacs</samp>' may be used for bug reports,
+of the type that stimulates the bug.
+</p><p>The newsgroup `<samp>comp.emacs.xemacs</samp>' may be used for bug reports,
 other discussions and requests for assistance.  
 </p><p>If you don't have access to this newgroup, you can subscribe to the
 mailing list version: the newsgroup is bidirectionally gatewayed into

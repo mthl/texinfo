@@ -100,15 +100,18 @@ requirement.  The `Up', `Previous', and `Next' pointers of a node can
 point to any other nodes, and a menu can contain any other nodes.
 Thus, the node structure can be any directed graph.  But it is usually
 more comprehensible to follow a structure that corresponds to the
-structure of chapters and sections in a printed book or report.</p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
+structure of chapters and sections in a printed book or report.
+</p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
 provides pointers of another kind, called references, that can be
 sprinkled throughout the text.  This is usually the best way to
-represent links that do not fit a hierarchical structure.</p><p>Usually, you will design a document so that its nodes match the
+represent links that do not fit a hierarchical structure.
+</p><p>Usually, you will design a document so that its nodes match the
 structure of chapters and sections in the printed output.  But
 occasionally there are times when this is not right for the material
 being discussed.  Therefore, Texinfo uses separate commands to specify
 the node structure for the Info file and the section structure for the
-printed output.</p><p>Generally, you enter an Info file through a node that by convention is
+printed output.
+</p><p>Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
 file's purpose, and a large menu through which the rest of the file is
 reached.  From this node, you can either traverse the file
@@ -119,9 +122,11 @@ with the standalone Info program, you can specify specific menu items on
 the command line (see <a href="../info/index.html">(info)Top</a> section `Top' in <cite>Info</cite>).
 </p><p>If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit <kbd>SPC</kbd> repeatedly, or you get the whole
-file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html">Advanced Info commands: (info)Expert</a>.)</p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
+file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html">Advanced Info commands: (info)Expert</a>.)
+</p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
 departure point for the whole Info system.  From it, you can reach the
-`Top' nodes of each of the documents in a complete Info system.</p><a name="IDX12"></a>
+`Top' nodes of each of the documents in a complete Info system.
+</p><a name="IDX12"></a>
 <p>If you wish to refer to an Info file in a URI, you can use the
 (unofficial) syntax exemplified in the following.  This works with
 Emacs/W3, for example:

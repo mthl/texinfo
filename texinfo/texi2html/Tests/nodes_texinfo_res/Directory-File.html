@@ -72,7 +72,8 @@ within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
 <kbd>C-x C-f</kbd> to see the pathname to the `<tt>info</tt>' directory.)
 </p><p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
-this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 * Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
@@ -85,11 +86,14 @@ this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 <p>Each of these menu entries points to the `Top' node of the Info file
 that is named in parentheses.  (The menu entry does not need to
 specify the `Top' node, since Info goes to the `Top' node if no node
-name is mentioned.  See section <a href="Other-Info-Files.html#SEC103">Nodes in Other Info Files</a>.)</p><p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
+name is mentioned.  See section <a href="Other-Info-Files.html#SEC103">Nodes in Other Info Files</a>.)
+</p><p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
 `<tt>info</tt>' file and the `<samp>Emacs</samp>' entry points to the `Top' node
-of the `<tt>emacs</tt>' file.</p><p>In each of the Info files, the `Up' pointer of the `Top' node refers
+of the `<tt>emacs</tt>' file.
+</p><p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
-node of the Emacs manual looks like this in Info:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+node of the Emacs manual looks like this in Info:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 <p>In this case, the `<tt>dir</tt>' file name is written in upper case

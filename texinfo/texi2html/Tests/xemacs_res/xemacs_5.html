@@ -84,7 +84,8 @@ which defines 128 different character codes.  Some of these codes are
 assigned graphic symbols like `<samp>a</samp>' and `<samp>=</samp>'; the rest are
 control characters, such as <kbd>Control-a</kbd> (also called <kbd>C-a</kbd>).
 <kbd>C-a</kbd> means you hold down the <kbd>CTRL</kbd> key and then press
-<kbd>a</kbd>.</p><p>   Keybindings in XEmacs are not restricted to the set of
+<kbd>a</kbd>.
+</p><p>   Keybindings in XEmacs are not restricted to the set of
 keystrokes that can be represented in ASCII.  XEmacs can tell the
 difference between, for example, <kbd>Control-h</kbd>, <kbd>Control-Shift-h</kbd>,
 and <kbd>Backspace</kbd>.
@@ -257,10 +258,12 @@ schematic representation of a complete key sequence is as follows:
 <dt><kbd> [(control c) (control 65)]
 </kbd></dt>
 <dd><p>Typing <kbd>C-c</kbd> followed by <kbd>C-a</kbd>. (Using the ASCII code
-for the character `a')</p></dd>
+for the character `a')
+</p></dd>
 <dt><kbd> [(control c) (break)]
 </kbd></dt>
-<dd><p>Typing <kbd>C-c</kbd> followed by the <kbd>break</kbd> character.</p></dd>
+<dd><p>Typing <kbd>C-c</kbd> followed by the <kbd>break</kbd> character.
+</p></dd>
 </dl>
 
 <a name="IDX33"></a>
@@ -287,12 +290,14 @@ x) (\4)]</kbd> is itself a prefix that leads to any number of different
 three-character keys, including <kbd>[(control x) (\4) (f)]</kbd>,
 <kbd>[(control x) (\4) (b)]</kbd> and so on.  It would be possible to define
 one of those three-character sequences as a prefix, creating a series of
-four-character keys, but we did not define any of them this way.</p><p>  By contrast, the two-character sequence <kbd>[(control f) (control
+four-character keys, but we did not define any of them this way.
+</p><p>  By contrast, the two-character sequence <kbd>[(control f) (control
 k)]</kbd> is not a key, because the <kbd>(control f)</kbd> is a complete key
 sequence in itself.  You cannot give <kbd>[(control f (control k)]</kbd> an
 independent meaning as a command while <kbd>(control f)</kbd> is a complete
 sequence, because Emacs would understand <kbd>C-f C-k</kbd> as two
-commands.</p><p> The predefined prefix key sequences in Emacs are <kbd>(control c)</kbd>,
+commands.
+</p><p> The predefined prefix key sequences in Emacs are <kbd>(control c)</kbd>,
 <kbd>(control x)</kbd>, <kbd>(control h)</kbd>, <kbd>[(control x) (\4)]</kbd>, and
 <kbd>escape</kbd>.  You can customize Emacs and could make new prefix keys or
 eliminate the default key sequences.  See section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>.  For example,
@@ -371,13 +376,16 @@ by just holding that key down.  To type <kbd>Meta-a</kbd>, hold down
 <kbd>META</kbd> and press <kbd>a</kbd>.  On those terminals, the <kbd>META</kbd> key
 works like the <kbd>SHIFT</kbd> key.  Such a key is not always labeled
 <kbd>META</kbd>, however, as this function is often a special option for a
-key with some other primary purpose.</p><p>  If there is no <kbd>META</kbd> key, you can still type Meta characters
+key with some other primary purpose.
+</p><p>  If there is no <kbd>META</kbd> key, you can still type Meta characters
 using two-character sequences starting with <kbd>ESC</kbd>.  To enter
 <kbd>M-a</kbd>, you could type <kbd><kbd>ESC</kbd> a</kbd>.  To enter <kbd>C-M-a</kbd>, you
 would type <kbd>ESC C-a</kbd>.  <kbd>ESC</kbd> is allowed on terminals with
-Meta keys, too, in case you have formed a habit of using it.</p><p>If you are running under X and do not have a <kbd>META</kbd> key, it 
+Meta keys, too, in case you have formed a habit of using it.
+</p><p>If you are running under X and do not have a <kbd>META</kbd> key, it 
 is possible to reconfigure some other key to be a <kbd>META</kbd> 
-key.  See section <a href="#SEC27">Assignment of the <kbd>SUPER</kbd> and <kbd>HYPER</kbd> Keys</a>. </p><a name="IDX40"></a>
+key.  See section <a href="#SEC27">Assignment of the <kbd>SUPER</kbd> and <kbd>HYPER</kbd> Keys</a>. 
+</p><a name="IDX40"></a>
 <p>  Emacs believes the terminal has a <kbd>META</kbd> key if the variable
 <code>meta-flag</code> is non-<code>nil</code>.  Normally this is set automatically
 according to the termcap entry for your terminal type.  However, sometimes
@@ -427,7 +435,8 @@ the key called <code>Super_L</code> should be a modifier key, which produces the
 replace the word <code>Super</code> above with <code>Meta</code> or <code>Hyper</code>.
 </p><p>Just after you start up X, execute the command <code>xmodmap /.xmodmap</code>.
 You can add this command to the appropriate initialization file to have
-the command executed automatically.</p><p>If you have problems, see the documentation for the <code>xmodmap</code>
+the command executed automatically.
+</p><p>If you have problems, see the documentation for the <code>xmodmap</code>
 program.  The X keyboard model is quite complicated, and explaining
 it is beyond the scope of this manual.  However, we reprint the 
 following description from the X Protocol document for your convenience:
@@ -606,7 +615,8 @@ vital in understanding how to customize Emacs.  The function
 has this effect <i>because</i> it is bound to that function.  If you rebind
 <kbd>C-n</kbd> to the function <code>forward-word</code> then <kbd>C-n</kbd> will move
 forward by words instead.  Rebinding keys is a common method of
-customization.</p><p>   The rest of this manual usually ignores this subtlety to keep
+customization.
+</p><p>   The rest of this manual usually ignores this subtlety to keep
 things simple.  To give the customizer the information needed, we often
 state the name of the command that really does the work in parentheses
 after mentioning the key that runs it.  For example, we will say that
@@ -791,28 +801,33 @@ equivalent command.
 new Emacs frame, that is, a new X window running under the same Emacs
 process.  You can remove the frame using the <b>Delete Frame</b> menu
 item.  When you remove the last frame, you exit Emacs and are prompted
-for confirmation. </p></dd>
+for confirmation. 
+</p></dd>
 <dt><b> Open File...
 </b></dt>
 <dd><p>Prompts you for a filename and loads that file into a new buffer. 
 <b>Open File...</b> is equivalent to the Emacs command <code>find-file</code> (<kbd>C-x
-C-f</kbd>).</p></dd>
+C-f</kbd>). 
+</p></dd>
 <dt><b> Insert File...
 </b></dt>
 <dd><p>Prompts you for a filename and inserts the contents of that file into
 the current buffer.  The file associated with the current buffer is
 not changed by this command.  This is equivalent to the Emacs command
-<code>insert-file</code> (<kbd>C-x i</kbd>).</p></dd>
+<code>insert-file</code> (<kbd>C-x i</kbd>). 
+</p></dd>
 <dt><b> Save Buffer 
 </b></dt>
 <dd><p>Writes and saves the current Emacs buffer as the latest
 version of the current visited file.  <b>Save Buffer</b> is equivalent to the
-Emacs command <code>save-buffer</code> (<kbd>C-x C-s</kbd>).</p></dd>
+Emacs command <code>save-buffer</code> (<kbd>C-x C-s</kbd>).
+</p></dd>
 <dt><b> Save Buffer As... 
 </b></dt>
 <dd><p>Writes and saves the current Emacs buffer to the filename you specify.
 <b>Save Buffer As...</b> is equivalent to the Emacs command
-<code>write-file</code> (<kbd>C-x C-w</kbd>).</p></dd>
+<code>write-file</code> (<kbd>C-x C-w</kbd>).
+</p></dd>
 <dt><b> Revert Buffer
 </b></dt>
 <dd><p>Restores the last saved version of the file to the current buffer.  When
@@ -820,51 +835,60 @@ you edit a buffer containing a text file, you must save the buffer
 before your changes become effective.  Use <b>Revert Buffer</b> if you do
 not want to keep the changes you have made in the buffer.  <b>Revert
 Buffer</b> is equivalent to the Emacs command <code>revert-file</code> (<kbd>M-x
-revert-buffer</kbd>).</p></dd>
+revert-buffer</kbd>).
+</p></dd>
 <dt><b> Kill Buffer
 </b></dt>
 <dd><p>Kills the current buffer, prompting you first if there are unsaved
 changes.  This is roughly equivalent to the Emacs command 
 <code>kill-buffer</code> (<kbd>C-x k</kbd>), except that <code>kill-buffer</code> 
-prompts for the name of a buffer to kill. </p></dd>
+prompts for the name of a buffer to kill. 
+</p></dd>
 <dt><b> Print Buffer
 </b></dt>
 <dd><p>Prints a hardcopy of the current buffer.  Equivalent
-to the Emacs command <code>print-buffer</code> (<kbd>M-x print-buffer</kbd>).</p></dd>
+to the Emacs command <code>print-buffer</code> (<kbd>M-x print-buffer</kbd>).
+</p></dd>
 <dt><b> New Frame
 </b></dt>
 <dd><p>Creates a new Emacs frame displaying the <code>*scratch*</code> buffer.  This
 is like the <b>Open File, New Frame...</b> menu item, except that it does
-not prompt for or load a file.</p></dd>
+not prompt for or load a file.
+</p></dd>
 <dt><b> Delete Frame 
 </b></dt>
 <dd><p>Allows you to close all but one of the frames created by <b>New Frame</b>.
 If you created several Emacs frames belonging to the same Emacs
 process, you can close all but one of them.  When you attempt to close the
 last frame, Emacs informs you that you are attempting to delete the
-last frame.  You have to choose <b>Exit Emacs</b> for that.</p></dd>
+last frame.  You have to choose <b>Exit Emacs</b> for that.
+</p></dd>
 <dt><b> Split Frame
 </b></dt>
 <dd><p>Divides the current window on the current frame into two equal-sized
 windows, both displaying the same buffer.  Equivalent to the Emacs
-command <code>split-window-vertically</code> (<kbd>C-x 2</kbd>).</p></dd>
+command <code>split-window-vertically</code> (<kbd>C-x 2</kbd>).
+</p></dd>
 <dt><b> Un-split (Keep This)
 </b></dt>
 <dd><p>If the frame is divided into multiple windows, this removes all windows
 other than the selected one.  Equivalent to the Emacs command
-<code>delete-other-windows</code> (<kbd>C-x 1</kbd>).</p></dd>
+<code>delete-other-windows</code> (<kbd>C-x 1</kbd>).
+</p></dd>
 <dt><b> Un-split (Keep Others)
 </b></dt>
 <dd><p>If the frame is divided into multiple windows, this removes the
 selected window from the frame, giving the space back to one of the
 other windows.  Equivalent to the Emacs command <code>delete-window</code>
-(<kbd>C-x 0</kbd>).</p></dd>
+(<kbd>C-x 0</kbd>).
+</p></dd>
 <dt><b> Exit Emacs
 </b></dt>
 <dd><p>Shuts down (kills) the Emacs process.  Equivalent to the Emacs command
 <code>save-buffers-kill-emacs</code> (<kbd>C-x C-c</kbd>).  Before killing the
 Emacs process, the system asks which unsaved buffers to save by going through
-the list of all buffers in that Emacs process.</p></dd>
+the list of all buffers in that Emacs process.
+</p></dd>
 </dl>
 
 <hr size="6">
@@ -893,7 +917,8 @@ the list of all buffers in that Emacs process.</p></dd>
 executes the equivalent command.  Most commands on the <b>Edit</b> menu
 work on a block of text, the X selection.  They appear faded until you
 select a block of text (activate a region) with the mouse.  See section <a href="xemacs_12.html#SEC95">Using X Selections</a>, see section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, and see section <a href="xemacs_12.html#SEC91">Yanking</a> for more
-information.</p><a name="IDX68"></a>
+information.
+</p><a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
 <a name="IDX71"></a>
@@ -905,18 +930,21 @@ information.</p><a name="IDX68"></a>
 <dt><b> Undo 
 </b></dt>
 <dd><p>Undoes the previous command.  <b>Undo</b> is equivalent to
-the Emacs command <code>undo</code> (<kbd>C-x u</kbd>).</p></dd>
+the Emacs command <code>undo</code> (<kbd>C-x u</kbd>).
+</p></dd>
 <dt><b> Cut
 </b></dt>
 <dd><p>Removes the selected text block from the current buffer, makes it the X
 clipboard selection, and places it in the kill ring.  Before executing
 this command, you have to select a region using Emacs region selection
-commands or with the mouse.</p></dd>
+commands or with the mouse. 
+</p></dd>
 <dt><b> Copy 
 </b></dt>
 <dd><p>Makes a selected text block the X clipboard selection, and places it in
 the kill ring.  You can select text using one of the Emacs region
-selection commands or by selecting a text region with the mouse.</p></dd>
+selection commands or by selecting a text region with the mouse.
+</p></dd>
 <dt><b> Paste 
 </b></dt>
 <dd><p>Inserts the current value of the X clipboard selection in the current
@@ -1069,7 +1097,8 @@ the Fonts and Colors to a fast, minimal set of decorations. Selecting
 example, if <b>Less</b> is selected (which is the default setting) then you
 might have all comments in green color.  Whereas, if <b>More</b> is
 selected then a function name in the comments themselves might appear in
-a different Color or Font.</p></dd>
+a different Color or Font.
+</p></dd>
 <dt><b> Paren Highlighting
 </b></dt>
 <dd><p>After selecting <b>Blink</b> from this item, if you place the cursor 
@@ -1077,7 +1106,8 @@ on a parenthesis, the matching parenthesis will blink. If you select
 <b>Highlight</b> and place the cursor on a parenthesis, the whole 
 expression of the parenthesis under the cursor will be highlighted. 
 Selecting <b>None</b> will turn off the options (regarding <b>Paren 
-Highlighting</b>) which you had selected earlier.</p></dd>
+Highlighting</b>) which you had selected earlier.
+</p></dd>
 <dt><b> Font
 </b></dt>
 <dd><p>You can select any Font for your program by choosing from one of the 
@@ -1086,10 +1116,12 @@ available Fonts.
 <dt><b> Size
 </b></dt>
 <dd><p>You can select any size ranging from <b>2</b> to <b>24</b> by selecting the 
-appropriate option.</p></dd>
+appropriate option.
+</p></dd>
 <dt><b> Weight
 </b></dt>
-<dd><p>You can choose either <b>Bold</b> or <b>Medium</b> for the weight.</p></dd>
+<dd><p>You can choose either <b>Bold</b> or <b>Medium</b> for the weight.
+</p></dd>
 <dt><b> Buffers Menu Length...
 </b></dt>
 <dd><p>Prompts you for the number of buffers to display. Then it will display 
@@ -1316,6 +1348,7 @@ argument <var>path</var>.
 <a name="IDX100"></a>
 <p>To change the string of the specified menu item, use
 <code>relabel-menu-item</code>. This function also takes the argument <var>path</var>.
+</p><p><var>new-name</var> is the string to which the menu item will be changed.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
