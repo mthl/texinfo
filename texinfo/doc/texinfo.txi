@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
+@c $Id: texinfo.txi,v 1.12 2002-11-14 16:46:38 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9606,7 +9606,9 @@ command.  Write the mathematical expression between braces, like this:
 (a + b)(a + b) = a^2 + 2ab + b^2
 @end example
 
-Thus, the @code{@@math} command has no effect on the Info output.
+Thus, the @code{@@math} command has no effect on the Info output;
+@program{makeinfo} just reproduces the input, it does not try to
+interpret the mathematics in any way.
 
 @code{@@math} implies @code{@@tex}.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
@@ -16784,7 +16786,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
+$Id: texinfo.txi,v 1.12 2002-11-14 16:46:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16849,7 +16851,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
+@@comment $Id: texinfo.txi,v 1.12 2002-11-14 16:46:38 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
