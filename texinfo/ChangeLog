@@ -1,3 +1,25 @@
+2004-07-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (verb): explicitly warn that @verb cannot be
+	used in xref contexts.
+
+2004-07-27  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\float): The parameters for @float are
+	  separated by commas; allow a space after each of the commas.
+
+	The TeX code for @caption, @shortcaption and @copying now uses
+	a similar mechanism to macro definitions.  In detail:
+
+	* doc/texinfo.tex (\macrobodyctxt, \macroargctxt): Generalize, ...
+	  (\scanctxt, \scanargctxt): ... and introduce new variants.
+	  (\scanexp): New macro--expand the parameter and call \scantokens.
+	  (\copying, \docopying, \insertcopying): Use \scanargctxt and
+	  \scanexp--this simplifies things a lot.
+	  (\caption, \shortcaption): Redefine, using \scanargctxt via ...
+	  (\docaption, \defcaption): ... these new macros.
+	  (\appendtomacro): Simplify code, using \expandafter.
+
 2004-07-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/files.c (find_and_load): introduce second parameter
