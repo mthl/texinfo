@@ -1,3 +1,13 @@
+2005-03-31  ezra peisach <epeisach@med-xtal.bu.edu>  (tiny change)
+
+	(bug-texinfo mail 30 Mar 2005 16:40:24 -0500.)
+	* defun.h (get_base_type): now takes an enum insertion_type.
+	  defun.c (get_base_type): use enum instead of int internally.
+	  (defun_internal): takes enum insertion_type instead of int and use
+			  enum internally.
+	 (cm_defun): ditto.
+	* insertion.c (do_enumeration, end_insertion, cm_end): ditto.
+
 2005-03-27  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd: remove -- and ^L from inside comments, since

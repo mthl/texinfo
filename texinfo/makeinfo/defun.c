@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.11 2004-04-11 17:56:46 karl Exp $
+   $Id: defun.c,v 1.12 2005-03-31 16:56:48 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -299,9 +299,9 @@ next_nonwhite_defun_arg (char ***arg_pointer)
 /* This is needed also in insertion.c.  */
 
 enum insertion_type
-get_base_type (int type)
+get_base_type (enum insertion_type type)
 {
-  int base_type;
+  enum insertion_type base_type;
   switch (type)
     {
     case defivar:	base_type = defcv; break;
@@ -329,9 +329,9 @@ get_base_type (int type)
    TYPE says which insertion this is.
    X_P, if nonzero, says not to start a new insertion. */
 static void
-defun_internal (int type, int x_p)
+defun_internal (enum insertion_type type, int x_p)
 {
-  int base_type;
+  enum insertion_type base_type;
   char **defun_args, **scan_args;
   const char *category;
   char *defined_name;
@@ -688,7 +688,7 @@ defun_internal (int type, int x_p)
 void
 cm_defun (void)
 {
-  int type;
+  enum insertion_type type;
   char *base_command = xstrdup (command);  /* command with any `x' removed */
   int x_p = (command[strlen (command) - 1] == 'x');
 
