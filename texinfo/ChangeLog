@@ -1,5 +1,7 @@
 2003-11-28  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Abstract Objects): class names are no longer
+	printed in rm by default.
 	* doc/texinfo.tex (\cite): redefine to always use \sl, never \ttsl.
 	* doc/texinfo.tex (\ttslanted): new macro.
 	(\normaldefunargs): use it for @var; go back to
