@@ -1,7 +1,7 @@
 /* pc_term.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: pcterm.c,v 1.2 2003-03-22 17:43:05 karl Exp $
 
-   Copyright (C) 1998, 99 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,15 +36,6 @@
 #include "variables.h"
 
 extern int speech_friendly;	/* defined in info.c */
-
-#ifdef max
-# undef max
-#endif
-#ifdef min
-# undef min
-#endif
-#define max(x,y) ((x)>(y) ? (x) : (y))
-#define min(x,y) ((x)<(y) ? (x) : (y))
 
 /* **************************************************************** */
 /*                                                                  */
@@ -86,7 +77,7 @@ pc_down_line (void)
 {
   int x, y;
   ScreenGetCursor (&y, &x);
-  ScreenSetCursor (min (screenheight-1, y+1), x);
+  ScreenSetCursor (MIN (screenheight-1, y+1), x);
 }
 
 /* Clear the entire terminal screen. */
