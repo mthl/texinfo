@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.104 2004-07-25 00:13:56 wl Exp $
+@c $Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7100,7 +7100,10 @@ normal Texinfo text, where the three characters @code{@@@{@}} are
 special.  With @code{@@verb}, nothing is special except the delimiter
 character you choose.
 
-It is not reliable to use @code{@@verb} inside other Texinfo constructs.
+It is not reliable to use @code{@@verb} inside other Texinfo
+constructs.  In particular, it does not work to use @code{@@verb} in
+anything related to cross-referencing, such as section titles or
+figure captions.
 
 
 @node var
@@ -18215,7 +18218,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.104 2004-07-25 00:13:56 wl Exp $
+$Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18281,7 +18284,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.104 2004-07-25 00:13:56 wl Exp $
+@comment $Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
