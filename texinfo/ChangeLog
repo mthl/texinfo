@@ -1,10 +1,15 @@
+2003-04-27    <karl@gnu.org>
+
+	* util/dir-example (mailutils): more from Wojciech Polak.
+	(autoconf): align/edit/sort entries.
+
 2003-04-26    <karl@gnu.org>
 
 	* doc/texinfo.txi (Image Syntax): second and following @image args
 	 optional. Report from: Max Techter <mtechter@gmx.de>, 26 Apr 2003
 	15:50:02 +0200.
 
-	* util/dir-example (anubis): add for polak.
+	* util/dir-example (anubis): request from Wojciech Polak.
 
 2003-04-25    <karl@gnu.org>
 

@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.25 2003-04-26 13:06:59 karl Exp $
+$Id: dir-example,v 1.26 2003-04-27 14:00:47 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -70,6 +70,7 @@ Compression
 
 Email
 * Anubis: (anubis).             The GNU outgoing mail processor.
+* Mailutils: (mailutils).       Utilities & library for mailboxes, protocols.
 
 Typesetting
 * Groff: (groff).               The GNU troff document formatting system.
@@ -86,12 +87,11 @@ Printing Tools
 
 Software development
 * As: (as).                     Assembler.
-* Autoconf: (autoconf).         Create source code configuration scripts
+* Autoconf: (autoconf).         Create source code configuration scripts.
 * automake: (automake).		Making Makefile.in's.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * bison: (bison).               GNU parser generator (Yacc replacement).
 * CVS: (cvs).                   Concurrent versions system for source control.
-* Configure: (configure).       Cygnus configure.
 * Cpp: (cpp).                   The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
@@ -263,10 +263,9 @@ Individual utilities
 * cksum: (textutils)cksum invocation.           Print POSIX CRC checksum.
 * cmp: (diff)Invoking cmp.                      Character-by-character diff.
 * comm: (textutils)comm invocation.             Compare sorted files by line.
-* config.status: (autoconf)config.status Invocation.
-                                Recreating a configuration
-* configure: (autoconf)configure Invocation.
-                                Configuring a package
+* comsatd: (mailutils)comsatd.                  Comsat daemon.
+* config.status: (autoconf)config.status Invocation. Recreating configurations.
+* configure: (autoconf)configure Invocation.    Configuring a package.
 * cp: (fileutils)cp invocation.                 Copy files.
 * csplit: (textutils)csplit invocation.         Split by context.
 * cut: (textutils)cut invocation.               Print selected parts of lines.
@@ -297,6 +296,7 @@ Individual utilities
 * find: (find)Invoking find.                    Finding and acting on files.
 * fmt: (textutils)fmt invocation.               Reformat paragraph text.
 * fold: (textutils)fold invocation.             Wrap long input lines.
+* frm: (mailutils)frm.                          List headers from a mailbox.
 * gcal2txt: (gcal)Invoking gcal2txt.            Calendar resource to text file.
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
 * gftopk: (web2c)GFtoPK invocation.             Generic to packed fonts.
@@ -304,14 +304,16 @@ Individual utilities
 * gid: (id-utils)gid invocation.                Listing all matching lines.
 * git: (git).                                   GNU interactive tools.
 * groups: (sh-utils)groups invocation.          Print group names a user is in.
-* gzexe: (gzip)Overview.			Compress executables.
+* guimb: (mailutils)guimb.                      Mailbox processing language.
 * gunzip: (gzip)Overview.                       Decompression.
+* gzexe: (gzip)Overview.			Compress executables.
 * head: (textutils)head invocation.             Output the first part of files.
 * hostname: (sh-utils)hostname invocation.      Print or set system name.
 * id: (sh-utils)id invocation.                  Print real/effective uid/gid.
 * idx: (id-utils)idx invocation.                Testing mkid scanners.
 * ifnames: (autoconf)ifnames Invocation.        Listing conditionals in source.
 * iid: (id-utils)iid invocation.                Interactive complex queries.
+* imap4d: (mailutils)imap4d.                    IMAP4 daemon.
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
 * initex: (web2c)initex invocation.             Initial TeX.
@@ -325,6 +327,8 @@ Individual utilities
 * logname: (sh-utils)logname invocation.        Print current login name.
 * ls: (fileutils)ls invocation.                 List directory contents.
 * mail-files: (sharutils)mail-files invocation. Send files to remote site.
+* mail.local: (mailutils)mail.local.            Deliver mail to local mailbox.
+* mail: (mailutils)mail.                        Send and receive mail.
 * mailshar: (sharutils)mailshar invocation.     Make and send a shell archive.
 * makempx: (web2c)MakeMPX invocation.           MetaPost label typesetting.
 * maketexmf: (kpathsea)MakeTeX scripts.         MF source generation.
@@ -332,6 +336,7 @@ Individual utilities
 * maketextex: (kpathsea)MakeTeX scripts.        TeX source generation.
 * maketextfm: (kpathsea)MakeTeX scripts.        TeX font metric generation.
 * md5sum: (textutils)md5sum invocation.         Print or check message-digests.
+* messages: (mailutils)messages.                Count messages in mailbox.
 * mf: (web2c)mf invocation.                     Creating typeface families.
 * mft: (web2c)MFT invocation.                   Prettyprinting Metafont source.
 * mgetty: (mgetty).                             Faxes, voicemail and more.
@@ -360,6 +365,7 @@ Individual utilities
 * pktype: (web2c)PKtype invocation.             PK to human-readable text.
 * pltotf: (web2c)PLtoTF invocation.             Property list to TFM.
 * pooltype: (web2c)Pooltype invocation.         Display WEB pool files.
+* pop3d: (mailutils)pop3d.                      POP3 daemon.
 * pr-addr: (gnats)pr-addr.                      Bug report address retrieval.
 * pr-edit: (gnats)pr-edit.                      The edit-pr driver.
 * pr: (textutils)pr invocation.                 Paginate or columnate files.
@@ -369,12 +375,14 @@ Individual utilities
 * query-pr: (gnats)Invoking query-pr.           Bug searching/reporting.
 * queue-pr: (gnats)queue-pr.                    Handling incoming traffic.
 * ranlib: (binutils)ranlib.                     Index archive file contents.
+* readmsg: (mailutils)readmsg.                  Extract messages from a folder.
 * rm: (fileutils)rm invocation.                 Remove files.
 * rmdir: (fileutils)rmdir invocation.           Remove empty directories.
 * sdiff: (diff)Invoking sdiff.                  Interactively merge files.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (sh-utils)seq invocation.                Print numeric sequences
 * shar: (sharutils)shar invocation.             Create shell archive.
+* sieve: (mailutils)sieve.                      Mail filtering utility.
 * size: (binutils)size.                         List object file section sizes.
 * sleep: (sh-utils)sleep invocation.            Delay for a specified time.
 * sort: (textutils)sort invocation.             Sort text files.
