@@ -1,3 +1,10 @@
+2003-08-29 Reiner Steib <Reiner.Steib@gmx.de>
+	
+	* makeinfo/lang.c (encoding_table): Downcase coding system
+	names, since Emacs does not recognize the uppercase names.
+
+	* makeinfo/lang.h: doc fixes.
+
 2003-08-28  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: new file (cvs only).
