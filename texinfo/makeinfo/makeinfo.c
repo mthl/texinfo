@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.20 2003-03-05 23:59:02 karl Exp $
+   $Id: makeinfo.c,v 1.21 2003-03-06 14:05:30 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3437,6 +3437,8 @@ cm_image (arg)
 
   if (*name_arg)
     {
+      struct stat file_info;
+      char *pathname = NULL;
       char *fullname = xmalloc (strlen (name_arg)
                        + (ext_arg && *ext_arg ? strlen (ext_arg) + 1 : 4) + 1);
 
@@ -3446,25 +3448,53 @@ cm_image (arg)
             {
               sprintf (fullname, "%s.%s", name_arg, ext_arg);
               if (access (fullname, R_OK) != 0)
-                {
-                  line_error(_("@image file `%s' (for HTML) not readable: %s"),
-                             fullname, strerror (errno));
-                  return;
-                }
+		{
+		  pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
+		  if (pathname != NULL && access (pathname, R_OK) != 0)
+		    {
+		      line_error(_("@image file `%s' (for HTML) not readable: %s"),
+				 fullname, strerror (errno));
+		      return;
+		    }
+		  else if (pathname == NULL)
+		    {
+		      line_error (_("No such file `%s'"),
+				  fullname);
+		      return;
+		    }
+		}
             }
           else
             {
-          sprintf (fullname, "%s.png", name_arg);
-          if (access (fullname, R_OK) != 0)
-            {
-              sprintf (fullname, "%s.jpg", name_arg);
-              if (access (fullname, R_OK) != 0)
-                {
-             line_error (_("No `%s.png' or `.jpg', and no extension supplied"),
-                              name_arg);
-                  return;
-                }
-          }
+	      sprintf (fullname, "%s.png", name_arg);
+	      if (access (fullname, R_OK) != 0)
+		{
+		  pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
+		  if (pathname != NULL && access (pathname, R_OK) != 0)
+		    {
+		      line_error(_("@image file `%s' (for HTML) not readable: %s"),
+				 fullname, strerror (errno));
+		      return;
+		    }
+
+		  sprintf (fullname, "%s.jpg", name_arg);
+		  if (access (fullname, R_OK) != 0)
+		    {
+		      pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
+		      if (pathname != NULL && access (pathname, R_OK) != 0)
+			{
+			  line_error(_("@image file `%s' (for HTML) not readable: %s"),
+				     fullname, strerror (errno));
+			  return;
+			}
+		      else if (pathname == NULL)
+			{
+			  line_error (_("No `%s.png' or `.jpg', and no extension supplied"),
+				      name_arg);
+			  return;
+			}
+		    }
+		}
             }
 
           add_html_elt ("<img src=");
@@ -3486,6 +3516,12 @@ cm_image (arg)
           strcpy (fullname, name_arg);
           strcat (fullname, ".txt");
           image_file = fopen (fullname, "r");
+	  if (image_file == NULL)
+	    {
+	      pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
+	      if (pathname != NULL)
+		image_file = fopen (pathname, "r");
+	    }
           if (image_file)
             {
               int ch;
@@ -3515,6 +3551,8 @@ cm_image (arg)
         }
 
       free (fullname);
+      if (pathname)
+	free (pathname);
     }
   else
     line_error (_("@image missing filename argument"));
