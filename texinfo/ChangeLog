@@ -1,3 +1,7 @@
+2004-04-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: remove trailing blanks.  suggestion from Jim.
+
 2004-04-12  Paul Eggert  <eggert@twinsun.com>
 
 	* doc/Makefile.am (info.1, infokey.1, install-info.1,
