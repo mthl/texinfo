@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.97 2004-04-11 17:56:45 karl Exp $
+@c $Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -856,7 +856,7 @@ files.  @xref{Creating and Installing Info Files}.
 @cindex Plain text output
 (Generated via @command{makeinfo --no-headers}.)  This is almost the
 same as Info output, except the navigational control characters are
-omitted.
+omitted.  Also, standard output is used by default.
 
 @item HTML
 @cindex HTML output
@@ -14863,17 +14863,19 @@ file.  Normally, the results of macro expansion are used internally by
 @command{texi2dvi}.
 
 @item --no-headers
+@item --plaintext
 @opindex --no-headers
+@opindex --plaintext
 @cindex Plain text output
 @cindex ASCII text output
 @cindex Generating plain text files
 @cindex @file{INSTALL} file, generating
 @cindex Node separators, omitting
 @cindex Menus, omitting
-For Info output, do not include menus or node separator lines in the
-output, and implicitly @option{--enable-encoding} (see above).  This
-results in a simple plain text file that you can (for example) send in
-email without complications, or include in a distribution (as in an
+Do not include menus or node separator lines in the output, and
+implicitly @option{--enable-encoding} (see above).  This results in a
+simple plain text file that you can (for example) send in email
+without complications, or include in a distribution (as in an
 @file{INSTALL} file).
 
 @cindex Navigation links, omitting
@@ -18170,7 +18172,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.97 2004-04-11 17:56:45 karl Exp $
+$Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18236,7 +18238,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.97 2004-04-11 17:56:45 karl Exp $
+@comment $Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
