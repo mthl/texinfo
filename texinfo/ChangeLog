@@ -1,3 +1,17 @@
+2003-11-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\defttsl): new font.
+	(\df): set ttsl too.
+	(\deffngeneral,\deftypefngeneral,\deftypecvgeneral,
+	 \deftypheader): call \ampdefunargs or \normaldefunargs.
+	(\normaldefunargs): new macro, typesetting defun
+	 args in ttsl (instead of sl).
+	(\ampdefunargs): treat & specially and then call \normaldefunargs.
+	(\defname): typeset defun name in tt (instead of bf).
+
+	* doc/texinfo.tex: uniformly comment out eol with {% at macro
+	starts.
+
 2003-11-23  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/insertion.c (is_in_insertion_of_type): return the level
