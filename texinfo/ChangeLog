@@ -1,3 +1,16 @@
+2003-01-19    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.3b.
+
+	* makeinfo/tests/include-value: need -I $srcdir.
+
+	* util/texindex.c:
+	* util/install-info.c:
+	* info/infokey.c:
+	* info/info.c:
+	* makeinfo/makeinfo.c:
+	* util/texi2dvi: 2003.
+
 2003-01-18    <karl@gnu.org>
 
 	* makeinfo/node.c: add `(perhaps incorrect sectioning?)' to some of
