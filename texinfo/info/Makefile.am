@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.6 2004-10-08 22:05:51 karl Exp $
+# $Id: Makefile.am,v 1.7 2004-10-20 17:47:11 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -29,16 +29,18 @@ DEFS += -DLOCALEDIR=\"$(localedir)\" -DINFODIR=\"$(infodir)\" \
 	-DINFODIR2=\"$(infodir2)\"
 LDADD = ../lib/libtxi.a $(TERMLIBS) $(LIBINTL)
 
-# The files `doc.c' and `funs.h' are created by ./makedoc run over the source
-# files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
+# The files `doc.c', `key.c' and `funs.h' are created by ./makedoc run over the
+# source files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
 # listing the functions found.  `doc.c' is a structure containing pointers
 # to those functions along with completable names and documentation strings.
-BUILT_SOURCES = doc.c funs.h key.c
 
-# We distribute the BUILT_SOURCES even though they get rebuilt by
-# installers, just in case something goes wrong.  Then installers have
-# the intended sources there to use or debug with.
-EXTRA_DIST = README pcterm.c $(BUILT_SOURCES)
+generated_sources = doc.c key.c funs.h
+
+# The following hack is necessary to hint make before the automatic
+# dependencies are built.
+BUILT_SOURCES = funs.h
+
+EXTRA_DIST = README pcterm.c
 
 makedoc_SOURCES = makedoc.c
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
@@ -48,9 +50,10 @@ ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   infomap.c infomap.h m-x.c man.c man.h nodemenu.c nodes.c nodes.h \
   search.c search.h session.c session.h signals.c signals.h \
   termdep.h terminal.c terminal.h tilde.c tilde.h \
-  variables.c variables.h window.c window.h \
-  $(BUILT_SOURCES)
-infokey_SOURCES = infokey.c infokey.h key.c key.h
+  variables.c variables.h window.c window.h
+nodist_ginfo_SOURCES = doc.c funs.h
+infokey_SOURCES = infokey.c infokey.h key.h
+nodist_infokey_SOURCES = key.c funs.h
 
 # Files with Info commands defined that makedoc should read.
 cmd_sources = $(srcdir)/session.c $(srcdir)/echo-area.c $(srcdir)/infodoc.c \
@@ -58,6 +61,9 @@ cmd_sources = $(srcdir)/session.c $(srcdir)/echo-area.c $(srcdir)/infodoc.c \
   $(srcdir)/footnotes.c $(srcdir)/variables.c
 
 # The $(EXEEXT) should be added by Automake, but isn't. Fine.
-$(BUILT_SOURCES): makedoc$(EXEEXT) $(cmd_sources)
-	rm -f $(BUILT_SOURCES)
+$(generated_sources): makedoc$(EXEEXT) $(cmd_sources)
+	rm -f $(generated_sources)
 	$(top_builddir)/$(native_tools)/info/makedoc $(cmd_sources)
+
+# These files are not distributed.
+DISTCLEANFILES = $(generated_sources)

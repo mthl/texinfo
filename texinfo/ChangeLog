@@ -1,3 +1,32 @@
+2004-10-20  Stepan Kasal  <kasal@ucw.cz>
+
+	* info/Makefile.am (doc.c, key.c, funs.h): Don't distribute them.
+	  of these three files.
+	(ginfo_SOURCES, nodist_ginfo_SOURCES): Move files.
+	(infokey_SOURCES, nodist_infokey_SOURCES): Likewise.
+	(DISTCLEANFILES): Include generated_sources.
+
+2004-10-20  Stepan Kasal  <kasal@ucw.cz>
+
+	BUILT_SOURCES is a special variable for a hack to supplement
+	  the automatic dependency tracking; we need it for funs.h only.
+	  See the explanation in the automake manual.
+
+	* info/Makefile.am (BUILT_SOURCES): All occurences replaced by ...
+	(generated_sources): ... this new variable.
+	(BUILT_SOURCES): set to ``funs.h''.
+
+2004-10-20  Stepan Kasal  <kasal@ucw.cz>
+
+	* info/Makefile.am (ginfo_SOURCES): replace $(BUILT_SOURCES)
+	  with ``doc.c funs.h''; this reflects the true situation.
+	(infokey_SOURCES): Add funs.h.
+
+2004-10-20  Stepan Kasal  <kasal@ucw.cz>
+
+	* info/Makefile.am (EXTRA_DIST): No need to mention the generated
+	  sources here, they are in ginfo_SOURCES or infokey_SOURCES.
+
 2004-10-19  Stepan Kasal  <kasal@ucw.cz>
 
 	* configure.ac: When cross compiling, we have to remove
