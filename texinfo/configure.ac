@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.39 2004-10-01 18:04:46 karl Exp $
+# $Id: configure.ac,v 1.40 2004-10-08 22:01:14 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -78,6 +78,24 @@ gl_STRCASE
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.
 AC_CANONICAL_BUILD
+
+if test "$cross_compiling" = no; then
+    native_tools=
+else
+    # Make twice, once locally, then with host compiler.
+    native_tools=tools
+    test -d "$native_tools" || mkdir "$native_tools"
+    confdir=`(cd "$srcdir";pwd)`
+    rm -f config.status
+    # Make sure the secondary configure won't complain
+    # that it's "already configured."
+    cd "$native_tools"
+    tools_only=1 $confdir/configure --build=${build} --host=${build} \
+	--disable-rpath --disable-nls
+    cd ..
+fi
+AC_SUBST(native_tools)
+AM_CONDITIONAL(TOOLS_ONLY, [[test "x$tools_only" = x1]])
 
 # Some GNU/Linux systems (e.g., SuSE 4.3, 1996) don't have curses, but
 # rather ncurses.  So we check for it.

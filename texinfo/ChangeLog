@@ -1,3 +1,18 @@
+2004-10-08  Stepan Kasal  <kasal@ucw.cz>
+
+	Support cross compiling.  Based on research by Mark Fortescue.
+	Maciej W. Rozycki pointed out this issue previously.
+
+	* configure.ac: If cross compiling, run second configure script
+	  in a subdirectory ${native_tools}.  New automake conditional
+	  TOOLS_ONLY is set inside that subdirectory.
+	* Makefile.am (SUBDIRS): Add $(native_tools); restrict the
+	  SUBDIRS to minimum, if we are inside the $(native_toos) dir.
+	(distclean-local): Remove directory $(native_tools).
+	* doc/Makefile.am: If necessary, use makeinfo and install-info
+	  from $(native_tools).
+	* info/Makefile.am: Similarily with the ``makedoc'' program.
+
 2004-10-07  Stepan Kasal  <kasal@ucw.cz>
 
 	@table command doesn't work inside environment @display.

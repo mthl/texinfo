@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.10 2004-04-11 17:56:45 karl Exp $
+# $Id: Makefile.am,v 1.11 2004-10-08 22:01:14 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -21,11 +21,16 @@ EXTRA_DIST = INSTALL.generic INTRODUCTION config.rpath \
 # distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
-# All subdirectories.
-# Do intl, m4, and lib first since the C programs depend on them.
-# Do doc last so makeinfo will be built when we get there.
-# Others are alphabetical.
-SUBDIRS = intl m4 lib info makeinfo po util doc
+if TOOLS_ONLY
+  # Build native tools only.
+  SUBDIRS = lib info makeinfo util
+else
+  # All subdirectories.
+  # Do intl, m4, and lib first since the C programs depend on them.
+  # Do doc last so makeinfo will be built when we get there.
+  # Others are alphabetical.
+  SUBDIRS = $(native_tools) intl m4 lib info makeinfo po util doc
+endif
 
 # for gettext.
 ACLOCAL_AMFLAGS = -I m4
@@ -38,3 +43,12 @@ distcleancheck_listfiles = \
 # One special target for installers to use by hand if desired.
 install-tex:
 	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
+
+distclean-local:
+	-test -d "$(native_tools)" && rm -rf "$(native_tools)"
+
+# Don't install native tools for cross compile.
+if TOOLS_ONLY
+install:
+
+endif

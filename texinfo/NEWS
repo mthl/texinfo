@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.92 2004-09-23 13:18:08 karl Exp $
+$Id: NEWS,v 1.93 2004-10-08 22:01:14 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -28,6 +28,7 @@ convenience, here's a url to one of the relevant sections:
   . calls recode if installed and @documentencoding is specified.
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
+  . some cross-compiling support in configure && make.
   . automake 1.9.2.
 
 4.7 (9 April 2004)

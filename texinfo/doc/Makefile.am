@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.18 2004-04-13 00:07:51 karl Exp $
+# $Id: Makefile.am,v 1.19 2004-10-08 22:01:14 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -17,9 +17,10 @@ DISTCLEANFILES = texinfo texinfo-* info*.info*
 man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 \
            info.5 texinfo.5
 
-# Use the programs built in our distribution.
-MAKEINFO = ../makeinfo/makeinfo
-INSTALL_INFO = ../util/install-info
+# Use the programs built in our distribution, taking account of possible
+# cross-compiling.
+MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
+INSTALL_INFO = $(top_builddir)/$(native_tools)/util/install-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
 	    txi-it.tex txi-nl.tex txi-no.tex txi-pl.tex txi-pt.tex txi-tr.tex
