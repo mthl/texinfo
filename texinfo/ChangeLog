@@ -1,3 +1,10 @@
+2005-03-12  Karl Berry  <karl@gnu.org>
+
+	* process_css_file: fclose the file when we're through with it,
+	to avoid fd leaks.
+	From: Matthias Kilian <kili@outback.escape.de>,
+	11 Mar 2005 19:42:27 +0100.
+
 2005-03-08  Keith Marshall  <keith.d.marshall@ntlworld.com>
 
 	* makeinfo/tests/no-headers: ($nulldev): new variable.
