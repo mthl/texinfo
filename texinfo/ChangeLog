@@ -1,3 +1,8 @@
+2004-10-06  Karl Berry  <karl@gnu.org>
+
+	* doc/*.texi: more consistent use of dashes.
+	From Stepan and Benno Schulenberg <benno@nietvergeten.nl>.
+ 
 2004-10-04  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (cm_value): increment and restore
