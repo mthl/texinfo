@@ -1,3 +1,7 @@
+2003-10-14  Derek Price  <derek@ximbiot.com>
+
+	* doc/.cvsignore: Add texinfo.info-? files.
+
 2003-10-33  Patrice Dumas <dumas@centre-cired.fr>
 
 	* Tests/formatting/formatting.texi: test for --- and `` in various
