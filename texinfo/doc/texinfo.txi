@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
+@c $Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6265,19 +6265,20 @@ This makes it useful as the last part of a sentence.
 
 @cindex Hurricanes
 @example
-For more information, see @@ref@{Hurricanes@}.
+For more information, @@pxref@{This@}, and @@ref@{That@}.
 @end example
 
-@noindent produces (in Info):
+@noindent produces in Info:
 
 @example
-For more information, see *Note Hurricanes::.
+For more information, *note This::, and *note That::.
 @end example
 
-@noindent and (in printed output):
+@noindent and in printed output:
 
 @quotation
-For more information, see Section 8.2 [Hurricanes], page 123.
+For more information, see Section 1.1 [This], page 1,
+and Section 1.2 [That], page 2.
 @end quotation
 
 The @code{@@ref} command sometimes tempts writers to express
@@ -6296,19 +6297,21 @@ Sea surges are described in @@ref@{Hurricanes@}.
 Sea surges are described in Section 6.7 [Hurricanes], page 72.
 @end quotation
 
-@noindent but is awkward to read in Info:
+@noindent but is awkward to read in Info, ``note'' being a verb:
 
 @example
-Sea surges are described in *Note Hurricanes::.
+Sea surges are described in *note Hurricanes::.
 @end example
 
-As a general rule, you should write a period or comma immediately
-after an @code{@@ref} command with two or more arguments.
+You should write a period or comma immediately after an @code{@@ref}
+command with two or more arguments.  If there is no such following
+punctuation, @command{makeinfo} will generate a (grammatically
+incorrect) period in the Info output; otherwise, the cross-reference
+would fail completely, due to the current syntax of Info format.
 
-If there is no such following punctuation, @command{makeinfo} will
-generate a (grammatically incorrect) period in the Info output;
-otherwise, the cross-reference would fail completely, due to the
-current syntax of Info format.
+In general, it is best to use @code{@@ref} only when you need some
+word other than ``see'' to precede the reference.  When ``see'' (or
+``See'') is ok, @code{@@xref} and @code{@@pxref} are preferable.
 
 
 @node pxref
@@ -6318,40 +6321,32 @@ current syntax of Info format.
 @findex pxref
 
 The parenthetical reference command, @code{@@pxref}, is nearly the
-same as @code{@@xref}, but you use it @emph{only} inside parentheses
-and you do @emph{not} type a comma or period (or anything else) after
-the command's closing brace.  The command differs from @code{@@xref}
+same as @code{@@xref}, but it is best used at the end of a sentence or
+before a closing parenthesis.  The command differs from @code{@@xref}
 in two ways:
 
 @enumerate
 @item
 @TeX{} typesets the reference for the printed manual with a lower case
-`see' rather than an upper case `See'.@refill
+`see' rather than an upper case `See'.
 
 @item
 The Info formatting commands automatically end the reference with a
-closing colon or period.@refill
+closing colon or period, if necessary.
 @end enumerate
 
-Because one type of formatting automatically inserts closing
-punctuation and the other does not, you should use @code{@@pxref}
-@emph{only} inside parentheses as part of another sentence.  Also, you
-yourself should not insert punctuation after the reference (or any
-other text), as you do with @code{@@xref}.  In the Info
-output, such text would follow a period, which is grammatically wrong.
-
 @code{@@pxref} is designed so that the output looks right and works
-right between parentheses both in printed output and in an Info file.
-In a printed manual, a closing comma or period should not follow a
-cross reference within parentheses; such punctuation is wrong.  But in
-an Info file, suitable closing punctuation must follow the cross
-reference so Info can recognize its end.  @code{@@pxref} spares you
-the need to use complicated methods to put a terminator into one form
-of the output and not the other.@refill
+right at the end of a sentence or parenthetical phrase, both in
+printed output and in an Info file.  In a printed manual, a closing
+comma or period should not follow a cross reference within
+parentheses; such punctuation is wrong.  But in an Info file, suitable
+closing punctuation must follow the cross reference so Info can
+recognize its end.  @code{@@pxref} spares you the need to use
+complicated methods to put a terminator into one form of the output
+and not the other.
 
 @noindent
-With one argument, a parenthetical cross reference looks like
-this:@refill
+With one argument, a parenthetical cross reference looks like this:
 
 @cindex Flooding
 @example
@@ -6364,7 +6359,7 @@ which produces
 
 @example
 @group
-@dots{} storms cause flooding (*Note Hurricanes::) @dots{}
+@dots{} storms cause flooding (*note Hurricanes::) @dots{}
 @end group
 @end example
 
@@ -6375,8 +6370,7 @@ and
 @dots{} storms cause flooding (see Section 6.7 [Hurricanes], page 72) @dots{}
 @end quotation
 
-With two arguments, a parenthetical cross reference has this
-template:@refill
+With two arguments, a parenthetical cross reference has this template:
 
 @example
 @dots{} (@@pxref@{@var{node-name}, @var{cross-reference-name}@}) @dots{}
@@ -6386,30 +6380,45 @@ template:@refill
 which produces
 
 @example
-@dots{} (*Note @var{cross-reference-name}: @var{node-name}.) @dots{}
+@dots{} (*note @var{cross-reference-name}: @var{node-name}.) @dots{}
 @end example
 
 @noindent
 and
 
-@need 1500
 @quotation
 @dots{} (see Section @var{nnn} [@var{node-name}], page @var{ppp}) @dots{}
 @end quotation
 
-@code{@@pxref} can be used with up to five arguments just like
-@code{@@xref} (@pxref{xref, , @code{@@xref}}).@refill
+@code{@@pxref} can be used with up to five arguments, just like
+@code{@@xref} (@pxref{xref, , @code{@@xref}}).
 
-@quotation Caution
-Use @code{@@pxref} only as a parenthetical
-reference.  Do not try to use @code{@@pxref} as a clause in a sentence.
-It will look bad in either the Info file, the printed output, or
-both.@refill
-@end quotation
+In past versions of Texinfo, it was not allowed to write punctuation
+after a @code{@@pxref}, so it could be used @emph{only} before a right
+parenthesis.  This is no longer the case, so now it can be used (for
+example) at the end of a sentence, where a lowercase ``see'' works
+best.  For instance:
 
-Parenthetical cross references look best at the ends of sentences.
-Although they technically work in the middle of a sentence, that
-location breaks up the flow of reading.
+@example
+@dots{} For more information, @@pxref@{More@}.
+@end example
+
+@noindent
+which outputs (in Info):
+
+@example
+@dots{} For more information, *note More::.
+@end example
+
+@noindent
+This works fine.  @code{@@pxref} should only be followed by a comma,
+period, or right parenthesis; in other cases, @command{makeinfo} has
+to insert a period to make the cross-reference work correctly in Info,
+and that period looks wrong.
+
+As a matter of general style, @code{@@pxref} is best used at the ends
+of sentences.  Although it technically works in the middle of a
+sentence, that location breaks up the flow of reading.
 
 
 @node inforef
@@ -18451,7 +18460,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
+$Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18517,7 +18526,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
+@comment $Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

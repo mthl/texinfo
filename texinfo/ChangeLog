@@ -1,3 +1,11 @@
+2005-01-15  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xref.c (cm_xref): output *note for @ref, instead of
+		*Note.  @ref is always used in the middle of a sentence.
+	* doc/texinfo.txi (pxref): rewrite, since now it can be used at
+	the ends of sentences.
+	(ref): likewise rewrite.
+
 2005-01-11  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: eval $cmd instead of just $cmd, so allow for

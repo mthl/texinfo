@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.4 2004-12-21 17:28:35 karl Exp $
+   $Id: xref.c,v 1.5 2005-01-15 23:30:07 karl Exp $
 
    Copyright (C) 2004 Free Software Foundation, Inc.
 
@@ -206,7 +206,7 @@ cm_xref (int arg)
             add_word_args ("%s", px_ref_flag ? _("see ") : _("See "));
         }
       else
-        add_word_args ("%s", px_ref_flag ? "*note " : "*Note ");
+        add_word_args ("%s", px_ref_flag || ref_flag ? "*note " : "*Note ");
 
       if (!xml)
         {
