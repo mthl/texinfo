@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.14 2003-01-02 23:46:29 karl Exp $
+   $Id: insertion.c,v 1.15 2003-02-07 19:03:50 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -643,8 +643,14 @@ begin_insertion (type)
         close_single_paragraph ();
       break;
 
-      /* Insertions that are no-ops in info, but do something in TeX. */
     case cartouche:
+      if (html)
+	add_word ("<table border=1><tr><td>\n");
+      if (in_menu)
+        no_discard++;
+      break;
+
+      /* Insertions that are no-ops in info, but do something in TeX. */
     case ifclear:
     case ifhtml:
     case ifinfo:
@@ -869,8 +875,13 @@ end_insertion (type)
       close_insertion_paragraph ();
       break;
 
-    case group:
     case cartouche:
+      if (html)
+	add_word ("</td></tr></table>\n");
+      close_insertion_paragraph ();
+      break;
+
+    case group:
       close_insertion_paragraph ();
       break;
 
