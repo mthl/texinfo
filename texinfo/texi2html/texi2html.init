@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.22 2003-04-10 13:08:24 pertusus Exp $
+# $Id: texi2html.init,v 1.23 2003-04-10 14:31:17 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -1072,9 +1072,9 @@ $simple_map_pre{'*'} = "\n";
                'aa', '&aring;',
                'AA', '&Aring;',
                'ae', '&aelig;',
-               'oe', '&#156;',
+               'oe', '&oelig;', #pertusus: also &#156; which one is better ?
                'AE', '&AElig;',
-               'OE', '&#140;',
+               'OE', '&OElig;', #pertusus: also &#140; which one is better ?
                'o',  '&oslash;',
                'O',  '&Oslash;',
                'ss', '&szlig;',
