@@ -1,3 +1,8 @@
+2002-11-25    <karl@gnu.org>
+
+	* lib/getopt*, strdup.c, tempname.c: update from gnulib (bruno
+	changes + gpl).
+
 2002-11-24    <karl@gnu.org>
 
 	* doc/texinfo.txi (Multiple Spaces): xref tie rather w for
