@@ -1,5 +1,12 @@
 2003-04-28    <karl@gnu.org>
 
+	* makeinfo/makeinfo.c: whitespace cleanup.
+
+	* doc/texinfo.tex (\doprintindex): don't \kern-\parindent, it makes
+	the first index entry stick out to the left.
+	Report from: Jesper Harder <harder@ifa.au.dk>,
+	28 Apr 2003 03:10:36 +0200.
+
 	From Akim Demaille  <akim@epita.fr>:
 	* makeinfo/makeinfo.c (cm_value): Warn for undefined flags.
 
@@ -209,7 +216,7 @@
 	* info/session.c (nearest_xref): new fn.
 	(info_menu_or_ref_item): call it when we are
 	searching for xrefs, instead of just looking on
-	the current line.  
+	the current line.
 	* info/info-utils.c (info_copy_reference): new fn.
 	* info/info-utils.h (info_copy_reference): declare.
 	Bug report from: rich@phekda.freeserve.co.uk,
@@ -250,7 +257,7 @@
 2003-02-19    <karl@gnu.org>
 
 	* doc/info-stnd.texi: omit all node pointers.
-	
+
 2003-02-18    <karl@gnu.org>
 
 	* util/texindex.c (maketempname): use already-set `tempdir' instead
@@ -440,7 +447,7 @@
 	(info_signal_proc): reread window size in case it has changed
 	while we were suspended.
 
-	Mon Jan 27 08:09:07 CET 2003 Stepan Kasal <kasal@math.cas.cz> 
+	Mon Jan 27 08:09:07 CET 2003 Stepan Kasal <kasal@math.cas.cz>
 	* doc/texinfo.tex (\acuteaccent): the workaround is no longer needed.
 	(\xrefX): \normalturnoffactive changed to \turnoffactive, since
 	we \otherbackslash right afterwards anyway.
@@ -646,7 +653,7 @@ Wed Jan 22 14:25:39 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
 	Fri Jan 10 07:12:23 CET 2003 Stepan Kasal <kasal@math.cas.cz>
         * texinfo.tex (\writetocentry): The
           common work on building the line for \write\tocfile was
-          moved into the macro itself and thus all callers has been changed. 
+          moved into the macro itself and thus all callers has been changed.
 
 2003-01-09    <karl@gnu.org>
 
@@ -814,7 +821,7 @@ Wed Jan 22 14:25:39 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
 	verbatim line.
 	Report from: Torsten Bronger <bronger@physik.rwth-aachen.de>
 	25 Nov 2002 18:26:12 +0100.
-	
+
 	(\doverbatim): ignore everything up to the first
 	^^M, to avoid an extra blank line in the output.
 
@@ -1010,7 +1017,7 @@ Wed Jan 22 14:25:39 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
 2002-11-04    <karl@gnu.org>
 
 	* doc/texinfo.txi (File End): grammar.
-        
+
         These changes from gildea:
 	* makeinfo/cmds.c (cm_titlepage): new fn, and use it for @titlepage.
 
@@ -1081,7 +1088,7 @@ Wed Jan 22 14:25:39 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
         regular line spacing a long time ago to not be double-spaced.
         In @smallbook mode, it ironically caused excessive line spacing.
 	(\nonfillstart, \quotation): don't call it.
-        
+
 	* doc/texinfo.tex (\smartslanted, \smartitalic): use \ttsl if in
 	typewriter.
 	From: Bob Wilson <bwilson@tensilica.com>.
