@@ -1,3 +1,15 @@
+2003-10-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: document hyphen -> dash suppression in literal
+	contexts, and verbatim commands not working inside other commands.
+	Report from: Luc Teirlinck <teirllm@dms.auburn.edu>, 2 Oct 2003
+	22:45:14 -0500,
+
+	* doc/texinfo.tex (\commondummies,\indexnofonts): no-op @verb; I
+	doubt this is sufficient to make @verb work in index entries etc.,
+	but it's a start.  Analysis from: Andreas Schwab <schwab@suse.de>,
+	02 Oct 2003 18:54:40 +0200.
+
 2003-09-28  Karl Berry  <karl@gnu.org>
 
 	* TODO: add item for conversion of non-texinfo manuals.
