@@ -1,4 +1,10 @@
+2002-11-14    <karl@gnu.org>
+
+	* config.{guess,sub}: update from prep.
+
 2002-11-13    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.2f.
 
 	* makeinfo/xml.c (INDEX_SEP): define as a string that will never
 	appear, so that we don't try to break index terms
@@ -7,8 +13,6 @@
 	Fonseca <j_r_fonseca@yahoo.co.uk>.
 
 2002-11-12    <karl@gnu.org>
-
-	* configure.ac: pretest version 4.2f.
 
 	* makeinfo/makeinfo.c: make sure command is non-null, for sake of bogus
 	input (\def\x{}).  Report from
