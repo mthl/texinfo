@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $
+@c $Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6883,7 +6883,7 @@ How many @@verb@{|@@|@}-escapes does one need to print this
 produces
 
 @example
-How many @verb{|@|}-escapes does one need to print this
+How many @verb{|@ |}-escapes does one need to print this
 @verb{.@a @b @c.} string or these @verb{+@'e?`{}!`\+} this?
 @end example
 
@@ -16643,14 +16643,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $ comment
+@cindex CVS $Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $, in Texinfo
+@cindex RCS $Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $, in Texinfo
+The @samp{$Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $
+$Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16699,7 +16699,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.1 2003-02-03 16:10:29 pertusus Exp $
+@@comment $Id: texinfo.txi,v 1.2 2003-02-24 18:17:06 pertusus Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi

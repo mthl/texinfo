@@ -28,6 +28,10 @@ require 5.0;
 
 # Perl pragma to restrict unsafe constructs
 use strict;
+# for POSIX::setlocale
+require 5.004;
+# used in case of tests, to revert to "C" locale.
+use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #
 # According to
 # larry.jones@sdrc.com (Larry Jones)
@@ -219,7 +223,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.29 2003-02-21 12:53:19 pertusus Exp $
+# $Id: texi2html.pl,v 1.30 2003-02-24 18:17:05 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -483,6 +487,7 @@ $index_properties =
 	      'uref',       '&do_uref',   # insert a clickable URL
 	      'url',        '&do_url',    # insert a clickable URL
 	      'var',        'var',
+              'verb',       'tt',
 	      'w',          '',           # unsupported
 	      'H',          '&do_accent',
 	      'dotaccent',  '&do_accent',
@@ -504,7 +509,8 @@ $index_properties =
 	       # lists
 	       'itemize',    'ul',
 	       'enumerate',  'ol',
-	       # poorly supported
+	       # poorly supported 
+               # pertusus: FIXME it enters pre but doesn't flush anything ?
 	       'flushleft',  'pre',
 	       'flushright', 'pre',
               );
@@ -930,9 +936,9 @@ if ($T2H_SHORTEXTN)
 {
     $docu_ext = "htm";
 }
-if ($T2H_TOP_FILE =~ /\..*$/)
+if ($T2H_TOP_FILE =~ s/\..*$//)
 {
-    $T2H_TOP_FILE = $`.".$docu_ext";
+    $T2H_TOP_FILE .= ".$docu_ext";
 }
 
 # result files
@@ -1637,7 +1643,31 @@ sub pass1
         }
         #
         # handle @html / @end html and @verbatim / @end verbatim
+        # 
+        # as texinfo 4.5
+        # verbatim might begin at another position than beginning
+        # of line, and end verbatim might too. To end a verbatim section
+        # @end verbatim must have exactly one space between end and verbatim
+        # things following end verbatim are not ignored.
         #
+        # html might begin at another position than beginning
+        # of line, but @end html must begin the line, and have
+        # exactly one space. Things following end html are ignored.
+        # tex and ignore works like html
+        #
+        # ifnothtml might begin at another position than beginning
+        # of line, and @end  ifnothtml might too, there might be more
+        # than one space between @end and ifnothtml but nothing more on 
+        # the line. 
+        # itemize, ftable works like ifnothtml.
+        # text right after the itemize before an item is displayed.
+        # @item might be somewhere in a line. 
+        # strangely @item on the same line than @end vtable doesn't work
+        # and makeinfo segfaults with 
+        # @itemize @w @item on
+        #
+        # see more examples in formatting directory
+
         if ($tag eq 'html' or $tag eq 'verbatim')
         {
             push @lines, $_;
@@ -1792,6 +1822,7 @@ sub pass1
         if ($tag)
         {
             # skip lines
+            # FIXME add ifplaintext
             (skip_until($tag), next) if $tag eq 'ignore';
             (skip_until($tag), next) if $tag eq 'ifnothtml';
             if ($tag eq 'ifinfo')
@@ -2107,7 +2138,7 @@ sub pass1
                 }
                 next;
             }
-            elsif (/^\@printindex/)
+            elsif (s/^\@printindex\s+//)
             {
                 # APA: HTML generated for @printindex contains <table>
                 # which implicitly ends paragraph, so let's do it
@@ -2117,7 +2148,9 @@ sub pass1
                     push(@lines, debug("</p>\n", __LINE__));
                     html_pop();
                 }
-                push (@lines, "<!--::${section}::-->$_");
+                my $append = '_ ';
+                $append = "_$sec_num " if defined($sec_num);
+                push (@lines, "\@printindex" . $append . $_);
                 next;
             }
             elsif ($tag eq 'sp')
@@ -2214,10 +2247,9 @@ sub pass1
                 # process definition commands
                 s/^\@$tag\s+//;
                 my $is_extra = 0;
-                if ($tag =~ /x$/)
+                if ($tag =~ s/x$//)
                 {
                     # extra definition line
-                    $tag = $`;
                     $is_extra = 1;
                 }
                 while (/\{([^\{\}]*)\}/)
@@ -2466,7 +2498,7 @@ sub pass1
         s/\@refill\s+//go;
         # other substitutions
         $_ = simple_substitutions($_);
-        s/\@footnote\{/\@footnote$docu_doc\{/g; # mark footnotes, cf. pass 4
+        s/\@footnote\{/\@footnote_$doc_num\{/g; # mark footnotes, cf. do_footnote
 
         # handle multitables. Transform @tab and @item into html, and
         # ignore if out of bounds.
@@ -2606,7 +2638,7 @@ sub pass1
                         }
                         $name .= ' ' while ($sec2node{$name});
                         $section = $name;
-                        $node2sec{$node} = $name;
+                        $node2sec{$node} = substitute_style($name);
                         $sec2node{$name} = $node;
 			$sec2seccount{$name} = $sec_num;
 			$seccount2sec{$sec_num} = $name;
@@ -3162,16 +3194,20 @@ sub PrintIndex
 
 #+++############################################################################
 #                                                                              #
-# Pass 2/3: handle style, menu, index, cross-reference                         #
+# Pass 2: handle style, menu,  cross-reference, index, footnoter               #
 #                                                                              #
 #---############################################################################
 my @lines2 = ();               # whole document (2nd pass)
-my @lines3 = ();               # whole document (3rd pass)
+my @foot_lines = ();           # footnotes
 
 sub pass2
 {
     my $sec;
     my $href;
+    my @style_stack=();
+    my %state = ();
+    my $in_verbatim = 0;        # am I inside a verbatim section
+    my $text = '';
     my $in_menu = 0;            # am I inside a menu
     my $in_menu_listing;
 
@@ -3181,15 +3217,29 @@ sub pass2
         #
         # handle @html / @end html and @verbatim / @end verbatim
         #
-        my $tag = '';
-        if (/^\s*\@(\w+)\b/)
+        if (/^\@html\s*/)
         {
-            $tag = $1;
+            push_until ('html', \@lines, \@lines2);
+            next;
         }
-        if ($tag eq 'html' or $tag eq 'verbatim')
+
+        if ($in_verbatim)
         {
-            push @lines2, $_;
-            push @lines2, push_until ($tag, \@lines, \@lines2);
+            if(/^\@end verbatim\s*$/)
+	    {
+	        push(@lines2, "</pre>\n");
+                $in_verbatim = 0;
+            }
+            else
+            {
+                push(@lines2, protect_html($_));
+            }
+            next;
+        }
+        if (/^\@verbatim\s*/)
+        {
+            $in_verbatim = 1;
+	    push(@lines2, "<pre>\n");
             next;
         }
         #
@@ -3221,17 +3271,15 @@ sub pass2
         }
         if ($in_menu)
         {
-            my ($node, $name, $descr);
-            if (/^\*\s+($NODERE)::/o)
+            my ($node, $name);
+            if (s/^\*\s+($NODERE):://o)
             {
                 $node = $1;
-                $descr = $';
             }
-            elsif (/^\*\s+(.+):\s+([^\t,\.\n]+)[\t,\.\n]/)
+            elsif (s/^\*\s+(.+):\s+([^\t,\.\n]+)[\t,\.\n]//)
             {
                 $name = $1;
                 $node = $2;
-                $descr = $';
             }
                 #pertusus: makeinfo doesn't complain here
             #elsif (/^\*/)
@@ -3244,12 +3292,14 @@ sub pass2
                 {
                     # APA: Handle menu comment lines. These don't end the menu!
                     # $in_menu_listing = 0;
-                    push(@lines2, debug('<tr><th colspan="3" align="left" valign="top">' . $_ . '</th></tr>
+                    # pertusus FIXME for styles split accross lines
+                    push(@lines2, debug('<tr><th colspan="3" align="left" valign="top">' . substitute_style($_) . '</th></tr>
 ', __LINE__));
                 }
             }
             if ($node)
             {
+                my $descr = $_;
                 if (! $in_menu_listing)
                 {
                     $in_menu_listing = 1;
@@ -3260,151 +3310,22 @@ sub pass2
                 {
                     $descr .= shift(@lines);
                 }
-                menu_entry($node, $name, $descr);
+                menu_entry($node, $name, substitute_style($descr));
             }
             next;
         }
         #
         # printindex
         #
-        PrintIndex(\@lines2, $2, $1), next
-            if (/^<!--::(.*)::-->\@printindex\s+(\w+)/);
+        PrintIndex(\@lines2, $2, $seccount2sec{$1}), next
+            if (/^\@printindex_(\d+|)\s+(\w+)/);
         #
-        # simple style substitutions
+        # split style substitutions, footnotes
         #
-        $_ = substitute_style($_);
-        #
-        # xref
-        #
-        while (/\@(x|px|info|)ref{([^{}]+)(}?)/)
-        {
-            # note: Texinfo may accept other characters
-            my ($type, $nodes, $full) = ($1, $2, $3);
-            my ($before, $after) = ($`, $');
-            if (! $full && $after)
-            {
-                warn "$ERROR Bad xref (no ending } on line): $_";
-                $_ = "$before$;0${type}ref\{$nodes$after";
-                next;           # while xref
-            }
-            if ($type eq 'x')
-            {
-                $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} ";
-            }
-            elsif ($type eq 'px')
-            {
-                $type = "$T2H_WORDS->{$T2H_LANG}->{'see'} ";
-            }
-            elsif ($type eq 'info')
-            {
-                $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} Info";
-            }
-            else
-            {
-                $type = '';
-            }
-            unless ($full)
-            {
-                my $next = shift(@lines);
-                $next = substitute_style($next);
-                chop($nodes);   # remove final newline
-                if ($next =~ /\}/)
-                {               # split on 2 lines
-                    $nodes .= " $`";
-                    $after = $';
-                }
-                else
-                {
-                    $nodes .= " $next";
-                    $next = shift(@lines);
-                    $next = substitute_style($next);
-                    chop($nodes);
-                    if ($next =~ /\}/)
-                    {           # split on 3 lines
-                        $nodes .= " $`";
-                        $after = $';
-                    }
-                    else
-                    {
-                        warn "$ERROR Bad xref (no ending }): $_";
-                        $_ = "$before$;0xref\{$nodes$after";
-                        unshift(@lines, $next);
-                        next;   # while xref
-                    }
-                }
-            }
-            $nodes =~ s/\s+/ /go; # remove useless spaces
-            my @args = split(/\s*,\s*/, $nodes);
-            my $node = $args[0];   # the node is always the first arg
-            $node = normalise_space_style($node);
-            if ($node =~ s/^\(([^\s\(\)]+)\)\s*//)
-            {
-                $args[3] = $1 unless ($args[3]);
-                $args[0] = $node;
-            }
-            my $sec = $args[2] || $args[1] || $node2sec{$node};
-            my $href = $node2href{$node};
-            if (@args == 5)
-            {                   # reference to another manual
-                $sec = $args[2] || $node;
-                my $man = $args[4] || $args[3];
-                $_ = "${before}${type}$T2H_WORDS->{$T2H_LANG}->{'section'} `$sec' in \@cite{$man}$after";
-            }
-            elsif ($type =~ /Info/)
-            {                   # inforef 
-                warn "$ERROR Wrong number of arguments: $_" unless @args == 3;
-                my ($nn, $in_file);
-                ($nn, $_, $in_file) = @args;
-                $_ = "${before}${type} file `$in_file', node `$nn'$after";
-            }
-            elsif (@args == 4)
-            {        # ref to info file        
-                my ($dummy, $nn, $in_file);
-                ($nn, $dummy, $dummy, $in_file) = @args;
-                if ($nn)
-                {
-                    $_ = "${before}${type}Info `$in_file', node `$nn'$after";
-                }
-                else 
-                {
-                    $_ = "${before}${type}${in_file}$after";
-                }
-            }
-            
-            elsif ($sec && $href && ! $T2H_SHORT_REF)
-            {
-                $_  = "${before}${type}";
-                $_ .= "$T2H_WORDS->{$T2H_LANG}->{'section'} " if $type;
-                $_ .= t2h_anchor('', $href, $sec, 0, '', 1) . $after;
-            }
-            elsif ($href)
-            {
-                $_ = "${before}${type} " .
-                    t2h_anchor('', $href, $args[2] || $args[1] || $node, 0, '', 1) .
-                        $after;
-            }
-            else
-            {
-                warn "$ERROR Undefined node ($node): $_";
-                $_ = "$before$;0xref{$nodes}$after";
-            }
-        }
-
-        # replace images
-        s[\@image\s*{(.+?)}]
-        {
-         my @args = split (/\s*,\s*/, $1);
-         my $base = $args[0];
-         my $image =
-         LocateIncludeFile("$base.png") ||
-         LocateIncludeFile("$base.jpg") ||
-         LocateIncludeFile("$base.gif");
-         warn "$ERROR no image file for $base: $_" unless ($image && -e $image);
-         ($T2H_CENTER_IMAGE ?
-          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"></div>" :
-          "<img src=\"$image\" alt=\"$base\">");
-        }eg;
-
+        scan_line ($_, \$text, \@style_stack, \%state);
+        next if (@style_stack);
+        $_ = $text;
+        $text = '';
         #
         # try to guess bibliography references or glossary terms
         #
@@ -3455,160 +3376,24 @@ sub pass2
     print "# end of pass 2\n" if $T2H_VERBOSE;
 }
 
-sub pass3
-{
-    #
-    # split style substitutions
-    #
-    my @style_stack=();
-    my %state = ();
-    my $in_index = 0;
-    my $text = '';
-
-    while (@lines2)
-    {
-        $_ = shift(@lines2);
-
-        #
-        # handle @html / @end html and @verbatim / @end verbatim
-        #
-        my $tag = '';
-        if (/^\s*\@(\w+)\b/)
-        {
-            $tag = $1;
-        }
-        if ($tag eq 'html' or $tag eq 'verbatim')
-        {
-            push @lines3, $_;
-            push @lines3, push_until ($tag, \@lines2, \@lines3);
-            next;
-        }
-	
-        if (/<!--docid::SEC(\d+)::-->/)
-        {
-            if ($sec2index{$seccount2sec{$1}})
-            {
-                $in_index = 1;
-            }
-            else 
-            {
-                $in_index = 0;
-            }
-        }
-
-        if ($in_index)
-	{
-            push(@lines3, $_);
-            next;
-        }
-        #
-        # split style substitutions
-        #
-
-        scan_line ($_, \$text, \@style_stack, \%state);
-        unless (@style_stack)
-        {
-            push (@lines3, $text);
-            $text = '';
-        }
-    }
-    print "# end of pass 3\n" if $T2H_VERBOSE;
-}
-
 #+++############################################################################
 #                                                                              #
-# Pass 4: foot notes, final cleanup                                            #
+# Pass 3: final cleanup                                                        #
 #                                                                              #
 #---############################################################################
 
-my @foot_lines = ();           # footnotes
 my @doc_lines = ();            # final document
 
-sub pass4
+sub pass3
 {
-    my $text;
-    my $name;
     my $end_of_para = 0;        # true if last line is <p>
-    my $in_verbatim = 0;        # am I inside a verbatim section
 
     # APA: There aint no paragraph before the first one!
     # This fixes a HTML validation error.
-    $lines3[0] =~ s|^</p>\n|\n|;
-    while (@lines3)
+    $lines2[0] =~ s|^</p>\n|\n|;
+    while (@lines2)
     {
-        $_ = shift(@lines3);
-        #
-        # handle @html / @end html and @verbatim / @end verbatim
-        #
-        if (/^\@html\s*/)
-        {
-            $end_of_para = 0;
-            push_until ('html', \@lines3, \@doc_lines);
-            next;
-        }
-
-        if ($in_verbatim)
-        {
-            if(/^\@end\s+verbatim\s*$/)
-	    {
-	        push(@doc_lines, "</pre>\n");
-                $in_verbatim = 0;
-            }
-            else
-            {
-                push(@doc_lines, protect_html($_));
-            }
-            next;
-        }
-        if (/^\@verbatim\s*/)
-        {
-            $in_verbatim = 1;
-            $end_of_para = 0;
-	    push(@doc_lines, "<pre>\n");
-            next;
-        }
-        #
-        # footnotes
-        #
-        my ($before, $d, $after);
-        while (/\@footnote([^\{\s]+)\{/)
-        {
-            my ($before, $d, $after) = ($`, $1, $');
-            $_ = $after;
-            my $text = '';
-            $after = '';
-            my $failed = 1;
-            while (@lines3)
-            {
-                if (/\}/)
-                {
-                    $text .= $`;
-                    $after = $';
-                    $failed = 0;
-                    last;
-                }
-                else
-                {
-                    $text .= $_;
-                    $_ = shift(@lines3);
-                }
-            }
-            if ($failed)
-            {
-                die "* Bad syntax (\@footnote) after: $before\n";
-            }
-            else
-            {
-                $foot_num++;
-                my $docid  = "DOCF$foot_num";
-                my $footid = "FOOT$foot_num";
-                my $foot = "($foot_num)";
-                push(@foot_lines, "<h3>" . t2h_anchor($footid, "$d#$docid", $foot) . "</h3>\n");
-                $text = "<p>$text" unless $text =~ /^\s*<p>/;
-                push(@foot_lines, "$text\n");
-                $_ = $before . t2h_anchor($docid, "$docu_foot#$footid", $foot) . $after;
-            }
-        }
+        $_ = shift(@lines2);
         #
         # remove unnecessary <p>
         #
@@ -3624,16 +3409,16 @@ sub pass4
         push(@doc_lines, $_);
     }
 
-    print "# end of pass 4\n" if $T2H_VERBOSE;
+    print "# end of pass 3\n" if $T2H_VERBOSE;
 }
 
 
 #+++############################################################################
 #                                                                              #
-# Pass 5: print things                                                         #
+# Pass 4: print things                                                         #
 #                                                                              #
 #---############################################################################
-sub pass5
+sub pass4
 {
     $T2H_L2H = l2h_FinishToLatex() if ($T2H_L2H);
     $T2H_L2H = l2h_ToHtml()        if ($T2H_L2H);
@@ -4330,7 +4115,7 @@ sub string_until
 
     while ($line = next_line())
     {
-        return $string if ($line =~ /^\@end\s+$tag\s*$/);
+        return $string if ($line =~ /^\@end\s+$tag\s.*$/);
         #	$_ =~ s/hbox/mbox/g;
         $string = $string.$line;
     }
@@ -4456,7 +4241,6 @@ sub menu_entry ($$$)
     {
         $descr =~ s/^\s+//;
         $descr =~ s/\s*$//;
-        $descr = substitute_style($descr);
         if ($T2H_NUMBER_SECTIONS && !$T2H_NODE_NAME_IN_MENU && $node2sec{$node})
         {
             $entry = $node2sec{$node};
@@ -4564,6 +4348,130 @@ sub do_accent($$)
     return undef;
 }
 
+#
+# xref
+#
+sub do_ref
+{
+    my $macro = shift;
+    my $text = shift;
+    my $type = $macro;    
+
+    my $result = '';
+    # note: Texinfo may accept other characters
+    if ($type eq 'xref')
+    {
+        $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} ";
+    }
+    elsif ($type eq 'pxref')
+    {
+        $type = "$T2H_WORDS->{$T2H_LANG}->{'see'} ";
+    }
+    elsif ($type eq 'inforef')
+    {
+         $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} Info";
+    }
+    else
+    {
+         $type = '';
+    }
+    #chop($text);   # remove final newline
+    $text =~ s/\s+/ /gos; # remove useless spaces and newlines
+    my @args = split(/\s*,\s*/, $text);
+    my $node = $args[0];   # the node is always the first arg
+    $node = normalise_space($node);
+    if ($node =~ s/^\(([^\s\(\)]+)\)\s*//)
+    {
+         $args[3] = $1 unless ($args[3]);
+         $args[0] = $node;
+    }
+    my $sec = $args[2] || $args[1] || $node2sec{$node};
+    my $href = $node2href{$node};
+    if (@args == 5)
+    {                   # reference to another manual
+         $sec = $args[2] || $node;
+         my $man = $args[4] || $args[3];
+         $result = "${type}$T2H_WORDS->{$T2H_LANG}->{'section'} `$sec' in " . apply_style ('cite', $man);
+    }
+    elsif ($type =~ /Info/)
+    {                   # inforef 
+        warn "$ERROR Wrong number of arguments: \@$macro" ."$text" unless @args == 3;
+        my $in_file = $args[2];
+        $result = "${type} file `$in_file', node `$node'";
+    }
+    elsif (@args == 4)
+    {        # ref to info file        
+        my $in_file = $args[3];
+        if ($node)
+        {
+             $result = "${type}Info `$in_file', node `$node'";
+        }
+        else 
+        {
+             $result = "${type}${in_file}";
+        }
+    }
+    elsif ($sec && $href && ! $T2H_SHORT_REF)
+    {
+        $result  = "$type";
+        $result .= "$T2H_WORDS->{$T2H_LANG}->{'section'} " if $type;
+        $result .= t2h_anchor('', $href, $sec, 0, '', 1);
+    }
+    elsif ($href)
+    {
+        $result = "${type} " .
+            t2h_anchor('', $href, $args[2] || $args[1] || $node, 0, '', 1);
+    }
+    else
+    {
+        warn "$ERROR Undefined node ($node) in $macro: $text";
+        $result = "\@$macro"."{${text}}";
+    }
+    return $result;
+}
+
+sub do_footnote($$)
+{
+    my $command = shift;
+    my $text = shift;
+
+    if ($command =~ /^footnote_(\d+)$/)
+    {
+        my $docu = doc_href($1);
+        $foot_num++;
+        my $docid  = "DOCF$foot_num";
+        my $footid = "FOOT$foot_num";
+        my $foot = "($foot_num)";
+        push(@foot_lines, "<h3>" . t2h_anchor($footid, "$docu#$docid", $foot) . "</h3>\n");
+        $text = "<p>$text" unless $text =~ /^\s*<p>/;
+        push(@foot_lines, "$text\n");
+        return t2h_anchor($docid, "$docu_foot#$footid", $foot);
+    }
+    else
+    {
+        die "Bug, bad footnote command $command";
+    }
+}
+
+sub do_image
+{
+    # replace images
+    my $macro = shift;
+    my $text = shift;
+    $text =~ s/\s+/ /gos; # remove useless spaces and newlines
+    my @args = split (/\s*,\s*/, $text);
+    my $base = $args[0];
+    my $image =
+         LocateIncludeFile("$base.$args[4]") if ($args[4]) ||
+         LocateIncludeFile("$base.png") ||
+         LocateIncludeFile("$base.jpg") ||
+         LocateIncludeFile("$base.gif");
+    warn "$ERROR no image file for $base: $text" unless ($image && -e $image);
+    return ($T2H_CENTER_IMAGE ?
+          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"></div>" :
+          "<img src=\"$image\" alt=\"$base\">");
+}
+
 sub apply_style($$)
 {
     my($texi_style, $text) = @_;
@@ -4627,10 +4535,11 @@ sub substitute_style($)
     {
         $changed = 0;
         $done = '';
-        while (($line =~ /\@(\w+){([^\{\}]+)}/) || ($line =~ /\@(,){([^\{\}]+)}/))
+        while (($line =~ /\@(\w+){([^\{\}]*)}/) || ($line =~ /\@(,){([^\{\}]+)}/))
         {
+            $2 = '' if (!defined($2));
             $text = apply_style($1, $2);
-            if ($text)
+            if (defined($text))
             {
                 $line = "$`$text$'";
                 $changed = 1;
@@ -4665,9 +4574,7 @@ sub scan_line($$$$)
         if (defined($state->{'verb'}))
         {
             my $char = quotemeta($state->{'verb'});
-	    sleep 1;
-	    
-            if (s/^(.*?)$char\}//)
+            if (s/^(.*?)$char\}/\}/)
             {
                  add_prev($prev, $1);
                  $state->{'verb'} = undef;
@@ -4678,12 +4585,6 @@ sub scan_line($$$$)
                  add_prev($prev, $_);
                  last;
             }
-        }
-        if (s/^([^{}@]*)\@(footnote[^\s]*?){//)
-        {
-            add_prev($prev, protect_htm($1));
-            push (@$stack, { 'style' => $2, 'text' => '' });
-            next;
         }
 	if (s/^([^{}@]*)\@([a-zA-Z]\w*|["'@}{,.!?\s*-^`=])//)
         {
@@ -4706,7 +4607,6 @@ sub scan_line($$$$)
                     {
                         s/^(.)//;
                         $state->{'verb'} = $1;
-                        next;
                     }
                 }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
@@ -4736,7 +4636,7 @@ sub scan_line($$$$)
         }
 	elsif(s/^([^{}@]*)\@(.)//)
 	{
-            warn "$ERROR Unkown command: `$2'";
+            warn "$ERROR Unkown command: `$2', line: $line";
             add_prev($prev, protect_htm("\@$2"));
             next;
         }
@@ -4756,7 +4656,23 @@ sub scan_line($$$$)
                     my $result;
                     if ($style->{'style'})
                     {
-                        $result = apply_style($style->{'style'}, $style->{'text'});
+                        if ($style->{'style'} =~ /^footnote_\d+$/)
+                        {
+                            $result = do_footnote($style->{'style'}, $style->{'text'});
+                        }
+                        elsif ($style->{'style'} =~ /^(x|px|info|)ref$/)
+                        {
+                            $result = do_ref($style->{'style'}, $style->{'text'});
+                        }
+                        elsif ($style->{'style'} eq 'image')
+                        {
+                            $result = do_image($style->{'style'}, $style->{'text'});
+                        }
+                        else
+                        {
+                             $result = apply_style($style->{'style'}, $style->{'text'});
+                        }
+
                         if (!defined($result))
                         {
                             $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
@@ -4805,7 +4721,7 @@ sub add_prev ($$)
          {
               $$prev = $text;
          }
-    else
+         else
          {
              $$prev .= $text;
          }
@@ -4859,6 +4775,7 @@ sub doc_href($)
 {
     my $num = shift;
 
+    return "$docu_name.$docu_ext" if ($num == 0);
     return("${docu_name}_$num.$docu_ext");
 }
 
@@ -4990,6 +4907,7 @@ if ($T2H_TEST)
     $T2H_TODAY = 'a sunny day';
     $T2H_USER = 'a tester';
     $THISPROG = 'texi2html';
+    setlocale( LC_ALL, "C" );
 } 
 else
 { 
@@ -5016,7 +4934,6 @@ pass1();
 pass2();
 pass3();
 pass4();
-pass5();
 
 
 ##############################################################################

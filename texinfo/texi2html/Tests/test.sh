@@ -20,11 +20,16 @@ wc=$1; shift
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
 echo "making test: $dir/$texi_file"
+if [ ! -d $dir ]; then
+	echo "  !!! no dir $dir"
+	return
+fi
 if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && perl -w ../../texi2html -test $options $texi_file) 2>res.2 > /dev/null
+(cd $dir && rm *.html *.htm) > /dev/null 2>&1
+(cd $dir && perl -w ../../texi2html -test $options $texi_file) 2>$dir/res.2 > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -34,7 +39,7 @@ fi
 
 if [ $wc != 'no' ]; then
 echo "  stderr line count:"
-res_wc=`<res.2 wc -l`
+res_wc=`<$dir/res.2 wc -l`
 if [ $res_wc != $wc ]; then echo "    !!! bad line count: $res_wc != $wc"
 else echo "    passed"
 fi
@@ -113,6 +118,7 @@ fi
 
 test_texi GermanNodeTest nodetest.texi
 test_texi sectionning
+test_texi formatting verbatim_html.texi
 test_texi texi2html
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"

@@ -9,6 +9,19 @@
 @node First node,,Top,Top
 @chapter first node chapter
 
+@c makeinfo doesn't like:
+@c a new macro: @@<: @< !!!
+
+@c makeinfo doesn't like:
+@c @@aa without brace @aa
+
+
+     a lone @@ at the end     @
+     of the line
+
+     now a bad accent    @`
+ at the end of line
+
 @macro macro1 {arg1, arg2 }
 result of a macro with \arg1\ and 
 @include file.texi

@@ -1,3 +1,24 @@
+2003-02-24  Patrice Dumas <dumas@centre-cired.fr>
+	* Tests: small fixes, more tests showing brokeness of texi2html
+	for some features and info and tex differences. 
+	A change in texinfo.txi to permit handling of verb despite some 
+	substitutions have allready been done
+	* texi2html.pl: add comment about the formats in texinfo 4.5
+	setlocale is used in case of tests to avoid change in ordering of 
+	indices while testing against a reference file
+	footnotes refs and image handled by parse_line, which calls a 
+        sub routine (do_footnote, do_ref or do_image).
+        for footnotes, _$doc_num instead of $docu_doc
+	appended tp keep track of the file of the footnote, such that it 
+	is easier to match. 
+	instead of <!--::${section}::--> added before printindex, _$sec_num 
+	is appended to printindex, to keep track of the
+	section number.
+        images extention is taken from the @image tag if available
+        everything which was splitted accross pass2, pass3 and pass4 is
+        now done in pass2.
+        in pass3 only very little cleaning is done, pass4 is removed.
+        
 2003-02-21  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: added handling of overbar accent @= is transformed
 	in =

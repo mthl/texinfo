@@ -82,7 +82,7 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
-     viper_monolithic texi2html xemacs_frame
+     viper_monolithic texi2html xemacs_frame index_table formatting macros
 
 subdir = Tests
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
