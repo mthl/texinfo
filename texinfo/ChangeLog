@@ -1,3 +1,7 @@
+2003-01-21    <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Formats): new section.
+
 2003-01-19    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.3b.

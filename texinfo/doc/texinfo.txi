@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
+@c $Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -871,7 +871,7 @@ invocation,,, dvips, Dvips}) and Xdvi for viewing on an X display
 (Generated via @command{texi2dvi --pdf}.)  This is a format developed
 by Adobe which is intended to be platform-independent and easily
 viewable, among other design goals; for a discussion, see
-@uref{http://tug.org/tugboat/Articles/tb22-3/beebeI.pdf}.  Texinfo
+@uref{http://tug.org/tugboat/Articles/tb22-3/tb72beebeI.pdf}.  Texinfo
 uses the @command{pdftex} program to output pdf; see
 @uref{http://tug.org/applications/pdftex}.
 
@@ -16876,7 +16876,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
+$Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16941,7 +16941,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
