@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
+@c $Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2981,13 +2981,13 @@ itself, like this:
 @@insertcopying
 @end example
 
-It inserts the text previously defined by @code{@@copying}.  Legally, it
-must be used on the copyright page in the printed manual
-(@pxref{Copyright}).
+This inserts the text previously defined by @code{@@copying}.  To meet
+legal requirements, it must be used on the copyright page in the printed
+manual (@pxref{Copyright}).
 
-Although it is not a legal requirement, we also strongly recommend using
-@code{@@insertcopying} in the Top node of your manual (@pxref{The Top
-Node}).  Here's why:
+We also strongly recommend using @code{@@insertcopying} in the Top node
+of your manual (@pxref{The Top Node}), although it is not required
+legally.  Here's why:
 
 The @code{@@copying} command itself causes the permissions text to
 appear in an Info file @emph{before} the first node.  The text is also
@@ -14874,11 +14874,12 @@ each usage specifies the `current' category; any subsequent
 @cindex Free Software Directory
 @cindex Dir categories, choosing
 @cindex Categories, choosing
-When choosing the @code{@@dircategory} categories, please consult
-the @uref{Free Sofware Directory, http://www.gnu.org/directory}.  If
-your program is not listed there, or listed incorrectly, please report
-that to the directory maintainers (@email{bug-directory@@gnu.org}) so
-that things can be kept in sync.
+When choosing the categories for @code{@@dircategory}, we recommend
+consulting the @uref{Free Sofware Directory,
+http://www.gnu.org/directory}.  If your program is not listed there, or
+listed incorrectly or incompletely, please report the situation to the
+directory maintainers (@email{bug-directory@@gnu.org}) so that the
+category names can be kept in sync.
 
 Here are a few examples:
 @display
@@ -16684,7 +16685,7 @@ The @samp{$Id:} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
+$Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16742,7 +16743,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
+@@comment $Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
