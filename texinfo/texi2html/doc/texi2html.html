@@ -136,7 +136,7 @@ by the Free Software Foundation.
 <a name="SEC_Top"></a>
 
 
-<p>This manual, last updated 1 February 2005, describes version 1.77
+<p>This manual, last updated 6 February 2005, describes version 1.77
 of the <code>texi2html</code> Perl script which converts
 <a href="http://www.texinfo.org">Texinfo</a> into <a href="http://w3c.org">HTML</a>.
 </p>
@@ -343,8 +343,12 @@ available from <a href="http://texi2html.cvshome.org">texi2html.cvshome.org</a>.
 source distribution.  See section <a href="#SEC3">Obtaining <code>texi2html</code></a>.
 </p>
 <p><code>texi2html</code> also requires <code>perl</code> version 
-5.004 or above.  The current version has not been tested
-extensively on versions of <code>perl</code> below 5.6, however.
+5.00405 or above. An older perl 5 version with <code>File::Spec</code> is also
+likely to work.  The current version has 
+been lightly tested on a wide range of perl, but has not been 
+tested extensively on versions of <code>perl</code> below 5.6.
+To play nice with encodings you 
+also need the <code>Encode</code> and <code>Unicode::Normalize</code> modules.
 </p>
 <p><code>texi2html</code> is a standard Automake-based distribution.
 If you have a source version, you should run <code>./configure</code>
@@ -5250,6 +5254,7 @@ strings.
 <h2 class="appendixsec"> A.1 Translating strings </h2>
 
 
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC86">A.1.1 Contributing to existing translations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -5379,11 +5384,15 @@ directory. This is achieved with
 <table><tr><td>&nbsp;</td><td><pre class="example">./manage_i18n.pl template
 ./manage_i18n.pl update
 </pre></td></tr></table>
-<p>And to merge the new translation files in <tt>`translations.pl'</tt>, do
+<p>These two commands won't work if you don't have the 
+<code>Data::Dumper</code> module installed.
+And to merge the new translation files in <tt>`translations.pl'</tt>, do
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">./manage_i18n.pl merge
 </pre></td></tr></table>
-
+<p>All these steps may be performed by <code>make</code>, once the language file
+is added to <tt>`Makefile.am'</tt>.
+</p>
 <hr size="6">
 <a name="Indexop"></a>
 <a name="SEC89"></a>

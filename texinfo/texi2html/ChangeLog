@@ -1,5 +1,16 @@
 2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* Makefile.am: manage_i18n.pl is created by ./configure therefore
+	at $(top_builddir).
+	add html-local and dist-local such that the texi2html script is
+	built with make html or make dist.
+	* doc/Makefile.am: texi2html.html depends on the texi2html sources, 
+	not on the script.
+	* README, doc/texi2html.texi: advertise the required perl version
+	and the modules used in the scripts.
+
+2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: fix broken detection of USE_UNICODE.
 
 2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
@@ -69,7 +80,7 @@
 	old perl. Report from Sven de Vries.
 	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
 	Report from ezra peisach.
-	* Tests/*: remove some $Id: ChangeLog,v 1.188 2005-02-06 17:14:07 pertusus Exp $ rcs tags
+	* Tests/*: remove some $Id: ChangeLog,v 1.189 2005-02-06 21:59:20 pertusus Exp $ rcs tags
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 

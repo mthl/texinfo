@@ -349,8 +349,12 @@ To install @command{texi2html}, you must first obtain a copy of the
 source distribution.  @xref{Obtaining texi2html}.
 
 @command{texi2html} also requires @command{perl} version 
-5.004 or above.  The current version has not been tested
-extensively on versions of @command{perl} below 5.6, however.
+5.00405 or above. An older perl 5 version with @code{File::Spec} is also
+likely to work.  The current version has 
+been lightly tested on a wide range of perl, but has not been 
+tested extensively on versions of @command{perl} below 5.6.
+To play nice with encodings you 
+also need the @code{Encode} and @code{Unicode::Normalize} modules.
 
 @command{texi2html} is a standard Automake-based distribution.
 If you have a source version, you should run @command{./configure}
@@ -3349,6 +3353,7 @@ strings.
 @vindex $LANGUAGES
 @vindex $T2H_OBSOLETE_STRINGS
 
+
 @menu
 * Supported language::
 * New language::
@@ -3429,12 +3434,16 @@ directory. This is achieved with
 ./manage_i18n.pl update
 @end example
 
+These two commands won't work if you don't have the 
+@code{Data::Dumper} module installed.
 And to merge the new translation files in @file{translations.pl}, do
 
 @example
 ./manage_i18n.pl merge
 @end example
 
+All these steps may be performed by @command{make}, once the language file
+is added to @file{Makefile.am}.
 
 @c --------------------------------------------------------
 @c commandline option index.

@@ -20,11 +20,11 @@ EXTRA_DIST = \
 
 CLEANFILES = texi2html.1
 
-texi2html.html: texi2html.texi $(srcdir)/version.texi \
-  $(TEXI2HTML)
 #texi2html.html: texi2html.texi $(srcdir)/version.texi \
-#  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
-#  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm
+#  $(TEXI2HTML)
+texi2html.html: texi2html.texi $(srcdir)/version.texi \
+  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
+  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
 

@@ -6,8 +6,10 @@ For generic installation instructions on compiling and installing this
 Automake-based distribution, please read the file `INSTALL'.
 Installation notes specific to Texi2html:
 * Installation is fairly simple, no compilers are required.
-* You need to have perl version 5 or higher installed on your system
-  to run 'texi2html'.
+* You need to have perl version 5.00405, or higher installed 
+  on your system to run 'texi2html'. To play nice with encodings you 
+  need the Encode and Unicode::Normalize modules. It is likely that an
+  older perl 5 version also works if File::Spec is present.
 * To generate Makefile.in etc., run `./autogen.sh'
 
 This distribution includes the following files, among others:
