@@ -2,6 +2,10 @@
 
 	* configure.ac: pretest version 4.2f.
 
+	* makeinfo/makeinfo.c: make sure command is non-null, for sake of bogus
+	input (\def\x{}).  Report from
+	Neil.Turton@broadcom.com, debian bug#168689.
+
 	* makeinfo/Makefile.am (makeinfo_SOURCES): remove docbook.[ch],
 	per feloy the docbook stuff is in xml.[ch] now.
 
