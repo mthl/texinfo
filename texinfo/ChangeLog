@@ -1,9 +1,6 @@
-2004-12-28  Karl Berry  <karl@gnu.org>
+2004-12-31  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (pxref): rewrite, since now it can be used at
-	the ends of sentences.
-	(ref): likewise rewrite.
-	Also fix various underfull boxes.
+	* Version 4.8.
 
 2004-12-21  Karl Berry  <karl@gnu.org>
 

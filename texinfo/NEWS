@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.103 2004-12-24 16:43:58 karl Exp $
+$Id: NEWS,v 1.104 2004-12-31 21:43:12 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -22,6 +22,8 @@ convenience, here's a url to one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+
+4.8 (31 December 2004)
 * Language:
   . new command @euro for the Euro currency symbol, and
     @documentencoding has some support for ISO-8859-15.
@@ -47,6 +49,7 @@ convenience, here's a url to one of the relevant sections:
     distributions which do have the files installed.
   . automake 1.9.4.
 
+
 4.7 (9 April 2004)
 * Language:
   . new commands @float, @caption, @shortcaption, @listoffloats for

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.50 2004-12-22 13:29:44 karl Exp $
+# $Id: configure.ac,v 1.51 2004-12-31 21:43:12 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -11,7 +11,7 @@
 #
 AC_PREREQ(2.59)# Minimum Autoconf version required.
 #
-AC_INIT([GNU Texinfo], [4.7.94])
+AC_INIT([GNU Texinfo], [4.8])
 AC_CONFIG_HEADERS(config.h:config.in)# Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_INIT_AUTOMAKE([dist-bzip2])

@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.51 2004-12-18 02:11:43 karl Exp $
+$Id: dir-example,v 1.52 2004-12-31 21:43:12 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -39,7 +39,7 @@ Basics
 * Time: (time).                 Measuring program resource usage.
 
 Text creation and manipulation
-* Diff: (diff).                 Comparing and merging files.
+* Diffutils: (diff).            Comparing and merging files.
 * Ed: (ed).                     Line editor.
 * Gawk: (gawk).                 A text scanning and processing language.
 * grep: (grep).                 Print lines matching a pattern.
@@ -49,6 +49,7 @@ Text creation and manipulation
 
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
+* Texi2HTML: (texi2html).  Texinfo to HTML Converter.
 * Texinfo: (texinfo).           The GNU documentation format.
 * info standalone: (info-stnd).                 Standalone Info reader.
 * infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
