@@ -327,6 +327,7 @@ use vars qw(
             @lines3
             @normal_sec_num
             @sections
+            @nodes_and_anchors
             @stoc_lines
             @tables
             @toc_lines
@@ -342,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.9 2003-01-08 18:25:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.10 2003-01-09 18:02:45 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1622,6 +1623,7 @@ sub pass1
     @lines = ();                # whole document
     @toc_lines = ();            # table of contents
     @stoc_lines = ();           # table of contents
+    @nodes_and_anchors = ();    # all nodes and anchors
     $curlevel = 0;              # current level in TOC
     $node = '';                 # current node name
     $node_next = '';            # current node next name
@@ -1678,6 +1680,10 @@ sub pass1
             elsif ($_ eq "'")
             {
                 $subst_command .= "s/$;4";
+            }
+            elsif ($_ eq '"')
+            {
+                $subst_command .= "s/$;5";
             }
             else
             {
@@ -1938,11 +1944,19 @@ sub pass1
                 warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODESRE$/o;
                 # request of "Richard Y. Kim" <ryk@ap.com>
                 s/^\@node\s+//;
-                $_ = &protect_html($_); # if node contains '&' for instance
                 ($node, $node_next, $node_prev, $node_up) = split(/,/);
                 if ($node)
                 {
                     &normalise_node($node);
+                    if (grep {$node eq $_} @nodes_and_anchors)
+                    {
+                        warn "$ERROR Duplicate node found: $node\n"
+                    }
+                    else
+                    {
+                        push @nodes_and_anchors, $node;
+                    }
+                    $node2href{$node} = "$docu_doc#NODE_$node";
                 }
                 else
                 {
@@ -1960,9 +1974,7 @@ sub pass1
                 {
                     &normalise_node($node_up);
                 }
-                $node =~ /\"/ ?
-                    push @lines, &html_debug("<a name='".protect_html($node)."'></a>\n", __LINE__) :
-                        push @lines, &html_debug("<a name=\"".protect_html($node)."\"></a>\n", __LINE__);
+                push @lines, &html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
                 next;
             }
             elsif ($tag eq 'include')
@@ -2481,8 +2493,16 @@ sub pass1
             $_ = $`.$';
             my $anchor = $1;
             $anchor = &normalise_node($anchor);
-            push @lines, &html_debug("<a name=\"".protect_html($anchor)."\"></a>\n");
-            $node2href{$anchor} = "$docu_doc#$anchor";
+            if (grep {$anchor eq $_} @nodes_and_anchors)
+            {
+                warn "$ERROR Duplicate node found: $anchor\n"
+            }
+            else
+            {
+                push @nodes_and_anchors, $anchor;
+            }
+            push @lines, &html_debug("<a name=\""."ANC_".$anchor."\"></a>\n");
+            $node2href{$anchor} = "$docu_doc#ANC_$anchor";
             next INPUT_LINE if $_ =~ /^\s*$/;
         }
         #############################################################
@@ -2566,12 +2586,7 @@ sub pass1
                         $in_bibliography = ($name =~ /^([A-Z]|\d+)?(\.\d+)*\s*bibliography$/i);
                         $in_glossary = ($name =~ /^([A-Z]|\d+)?(\.\d+)*\s*glossary$/i);
                         # check node
-                        if ($node)
-                        {
-                            warn "$ERROR Duplicate node found: $node\n"
-                                if ($node2sec{$node});
-                        }
-                        else
+                        unless ($node)
                         {
                             $name .= ' ' while ($node2sec{$name});
                             $node = $name;
@@ -3317,12 +3332,12 @@ sub pass2
             {
                 $_  = "${before}${type}";
                 $_ .= "$T2H_WORDS->{$T2H_LANG}->{'section'} " if $type;
-                $_ .= &t2h_anchor('', $href, $sec) . $after;
+                $_ .= &t2h_anchor('', $href, $sec, 0, '', 1) . $after;
             }
             elsif ($href)
             {
                 $_ = "${before}${type} " .
-                    &t2h_anchor('', $href, $args[2] || $args[1] || $node) .
+                    &t2h_anchor('', $href, $args[2] || $args[1] || $node, 0, '', 1) .
                         $after;
             }
             else
@@ -4340,7 +4355,7 @@ sub menu_entry
             $descr = '' if ($clean_entry eq $clean_descr)
         }
         push(@lines2,&debug('<tr><td align="left" valign="top">' .
-                            &t2h_anchor('', $href, $entry) .
+                            &t2h_anchor('', $href, $entry, 0, '', 1) .
                             '</td><td>&nbsp;&nbsp;</td>' .
                             '<td align="left" valign="top">' . $descr .
                             "</td></tr>\n", __LINE__));
@@ -4504,16 +4519,33 @@ sub substitute_style
 
 sub t2h_anchor
 {
-    my($name, $href, $text, $newline, $extra_attribs) = @_;
+    my($name, $href, $text, $newline, $extra_attribs, $dont_html) = @_;
     my @result = ();
 
     push(@result, '<a');
-    push(@result, ' name="', protect_html($name), '"') if $name;
+    if ($name)
+    {
+        if ($dont_html)
+        {
+            push(@result, ' name="', $name, '"') if $name;
+        }
+        else
+        {
+            push(@result, ' name="', protect_html($name), '"') if $name;
+        }
+    }
     if ($href)
     {
         $href =~ s|^$T2H_HREF_DIR_INSTEAD_FILE|./|
             if ($T2H_HREF_DIR_INSTEAD_FILE);
-        push(@result, ' href="', protect_html($href), '"');
+        if ($dont_html)
+        {
+            push(@result, ' href="', $href, '"');
+        }
+        else
+        {
+            push(@result, ' href="', protect_html($href), '"');
+        }
     }
     push(@result, ' ', $extra_attribs) if $extra_attribs;
     push(@result, '>');
@@ -4579,6 +4611,7 @@ sub protect_texi
     s/\@\}/$;2/go;
     s/\@\`/$;3/go;
     s/\@\'/$;4/go;
+    s/\@\"/$;5/go;
 }
 
 sub protect_html
@@ -4603,6 +4636,7 @@ sub unprotect_texi
     s/$;2/\}/go;
     s/$;3/\`/go;
     s/$;4/\'/go;
+    s/$;5/\"/go;
 }
 
 sub Unprotect_texi
