@@ -1,3 +1,15 @@
+2002-10-04    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.2a.
+
+	* TODO: more info on dir categories.
+
+2002-10-02    <karl@gnu.org>
+
+	* doc/.cvsignore: ignore tex output files.
+
+	* util/dir-example: remove unused categories, etc.
+
 2002-10-01    <karl@gnu.org>
 
 	* doc/texinfo.tex (\xml,\ifxml): more \doignore's.
@@ -37,7 +49,7 @@
 		no more TEXINFO_MAINT.  We handle it in the top-level
 		Makefile.am by defining distcleancheck_listfiles.
 
-	* acinclude.m4: can't have $Id: ChangeLog,v 1.13 2002-10-02 17:34:22 karl Exp $, then it gets propagated to
+	* acinclude.m4: can't have $Id, then it gets propagated to
 		aclocal.m4.
 
     From: Philippe Martin <feloy@free.fr>, 11 Aug 2002 20:17:44 +0200.

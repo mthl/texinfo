@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
+@c $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -99,6 +99,7 @@ Software Foundation raise funds for GNU development.''
 @vskip 0pt plus 1filll
 @insertcopying
 
+@sp 1
 Published by the Free Software Foundation @*
 59 Temple Place Suite 330 @*
 Boston, MA 02111-1307 @*
@@ -108,6 +109,7 @@ ISBN 1-882114-67-1 @c for version 4.0, September 1999.
 @c ISBN 1-882114-64-7 is for edition 2.24 of November 1996.
 @c ISBN 1-882114-63-9 is for edition 2.20 of 28 February 1995
 
+@sp 1
 Cover art by Etienne Suvasa.
 @end titlepage
 
@@ -16666,14 +16668,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $ comment
+@cindex CVS $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $, in Texinfo
+@cindex RCS $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $, in Texinfo
+The @samp{$Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
+$Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16731,7 +16733,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
+@@comment $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
