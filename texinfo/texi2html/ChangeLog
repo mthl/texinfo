@@ -1,3 +1,8 @@
+2003-12-16 Peter Pentchev <roam@ringlet.net>
+
+	* texi2html.pl: don't use symbolic refs at all, instead eval the
+	code (for the style functions) or use a local glob for the filehandle.
+
 2003-12-15  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: add hashes for the ascii

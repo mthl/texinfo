@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.93 2003-12-15 22:59:19 pertusus Exp $
+# $Id: texi2html.pl,v 1.94 2003-12-16 14:18:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -444,10 +444,8 @@ sub T2H_GPL_style($$$$$)
     }
     if ($style =~ s/^\&//)
     {                       # custom
-        no strict "refs";
         $style = 'Texi2HTML::Config::' . $style;
-        $text = &$style($text, $texi_style, $style_stack);
-        use strict "refs";
+        eval "\$text = &$style(\$text, \$texi_style, \$style_stack)";
     }
     elsif ($style ne '')
     {                       # good style
@@ -2786,7 +2784,6 @@ sub to_cache($$)
 
 my @fhs = ();			# hold the file handles to read
 my $input_spool;		# spooled lines to read
-my $fh_name = 'FH000';
 my @lines = ();             # whole document
 my @lines_numbers = ();     # line number, originating file associated with 
                             # whole document 
@@ -5741,11 +5738,10 @@ sub open_file($$)
 {
     my $name = shift;
     my $line_number = shift;
-    ++$fh_name;
-    no strict "refs";
-    if (open($fh_name, $name))
+    local *FH;
+    if (open(*FH, $name))
     { 
-        my $file = { 'fh' => $fh_name, 
+        my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 
                               'macro' => '' },
            'name' => $name, 
@@ -5759,7 +5755,6 @@ sub open_file($$)
     {
         warn "$ERROR Can't read file $name: $!\n";
     }
-    use strict "refs";
 }
 
 sub open_out($)
