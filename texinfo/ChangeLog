@@ -1,3 +1,14 @@
+2003-10-12  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/insertion.c (begin_insertion,end_insertion): in rawhtml
+		case(also used for rawxml), increment and decrement
+	xml_no_para.
+
+	* makeinfo/lang.c (cm_documentencoding): force the normal (info)
+	expansion when reading the arg, even when parsing xml/html/docbook.
+	Report from: Kevin Ryde <user42@zip.com.au>,
+	13 Oct 2003 10:02:23 +1000.
+
 2003-10-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\chapterzzz,...,\unnumberedsubsubseczzz): make
