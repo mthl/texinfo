@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-13.15}
+\def\texinfoversion{2003-11-15.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -2426,12 +2426,16 @@ where each line of input produces a line of output.}
   \go
 }
 
+\def\headitem{\errmessage{@headitem outside of @multitable}}
+
 % @multitable ... @end multitable definitions:
 %
 \def\multitable{\parsearg\dotable}
 \def\dotable#1{\bgroup
   \vskip\parskip
   \let\item=\crcrwithfootnotes
+  % FIXXME, @headitem should change the font for its row to bold.
+  \let\headitem=\crcrwithfootnotes
   % A \tab used to include \hskip1sp.  But then the space in a template
   % line is not enough.  That is bad.  So let's go back to just & until
   % we encounter the problem it was intended to solve again.  --karl,
