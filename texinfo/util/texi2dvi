@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.27 2003-10-27 00:12:15 karl Exp $
+# $Id: texi2dvi,v 1.28 2003-11-15 14:43:21 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.27 $'
+rcs_revision='$Revision: 1.28 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.6) $rcs_version
@@ -112,6 +112,13 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 
 # In case someone crazy insists on using grep -E.
 : ${EGREP=egrep}
+
+
+# Report an error and exit with failure.
+fatal () {
+  echo "$0: $*" >&2
+  exit 1
+}
 
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
 # Unfortunately bibtex and makeindex do not read TEXINPUTS.
@@ -251,7 +258,7 @@ mkdir $utildir || exit 1
 # comment @macro/@end macro so that makeinfo does propagate them.
 # Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
 # (yet), makeinfo can't parse the TeX commands, so work around with sed.
-# 
+#
 comment_iftex_sed=$utildir/comment.sed
 cat <<EOF >$comment_iftex_sed
 /^@tex/,/^@end tex/{
@@ -491,12 +498,20 @@ for command_line_filename in ${1+"$@"}; do
         # We don't need to use [0-9] to match the digits since anyway
         # the comparison with $txiprereq, a number, will fail with non
         # digits.
-        txiversion_tex=txiversion.tex
-        echo '\input texinfo.tex @bye' >$tmpdir/$txiversion_tex
         # Run in the tmpdir to avoid leaving files.
-        eval `cd $tmpdir >/dev/null &&
-              $tex $txiversion_tex 2>/dev/null |
-              sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p'`
+	(
+           cd $tmpdir
+	   echo '\input texinfo.tex @bye' >txiversion.tex
+	   # Be sure that if tex wants to fail, it is not interactive:
+	   # close stdin.
+           $tex txiversion.tex </dev/null
+	) >$tmpdir/txiversion.out 2>$tmpdir/txiversion.err
+	if test $? != 0; then
+	  cat $tmpdir/txiversion.out
+	  cat $tmpdir/txiversion.err >&2
+	  fatal "texinfo.tex appears to be broken, quitting."
+        fi
+	eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $tmpdir/txiversion.out`
         $verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
         if test "$txiprereq" -le "$txiversion" >/dev/null 2>&1; then
           makeinfo=
@@ -593,10 +608,8 @@ $textra" "$filename_input" >$filename_xtr
           >&6 2>&1; \
     then
       $verbose "Running $bibtex $filename_noext ..."
-      if $bibtex "$filename_noext" >&5; then :; else
-        echo "$0: $bibtex exited with bad status, quitting." >&2
-        exit 1
-      fi
+      $bibtex "$filename_noext" >&5 ||
+        fatal "$bibtex exited with bad status, quitting."
     fi
 
     # What we'll run texindex on -- exclude non-index files.
@@ -617,10 +630,8 @@ $textra" "$filename_input" >$filename_xtr
     # nonexistent.
     if test -n "$texindex" && test -n "$index_files"; then
       $verbose "Running $texindex $index_files ..."
-      if $texindex $index_files 2>&5 1>&2; then :; else
-         echo "$0: $texindex exited with bad status, quitting." >&2
-         exit 1
-      fi
+      $texindex $index_files 2>&5 1>&2 ||
+         fatal "$texindex exited with bad status, quitting."
     fi
 
     # Finally, run TeX.
@@ -685,10 +696,9 @@ $textra" "$filename_input" >$filename_xtr
      && grep 'thumbpdf\.sty'  "$filename_noext.log" >&6 2>&1; \
   then
     $verbose "Running $thumbpdf $filename_noext ..."
-    if $thumbpdf "$filename_noext" >&5; then :; else
-      echo "$0: $thumbpdf exited with bad status, quitting." >&2
-      exit 1
-    fi
+    $thumbpdf "$filename_noext" >&5 ||
+      fatal "$thumbpdf exited with bad status, quitting."
+
     $verbose "Running $cmd ..."
     if $cmd >&5; then :; else
       echo "$0: $tex exited with bad status, quitting." >&2
@@ -726,5 +736,5 @@ $textra" "$filename_input" >$filename_xtr
   fi
 done
 
-$verbose "$0 done."
+$verbose "$0: done."
 exit 0 # exit successfully, not however we ended the loop.
