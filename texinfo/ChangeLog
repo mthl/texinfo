@@ -1,3 +1,8 @@
+2004-07-30  Karl Berry  <karl@gnu.org>
+
+	* info/infomap.c (initialize_vi_like_keymaps): bind j to
+	info_next_line and k to info_prev_line.  From Eli.
+
 2004-07-30  Maciej W. Rozycki  <macro@linux-mips.org>
 
 	* info/filesys.c (extract_colon_unit): Clean up handling of the 
