@@ -1,3 +1,8 @@
+2004-12-15  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd: merge with makeinfo/texinfo.dtd.
+	* makeinfo/texinfo.dtd, makeinfo/texinfo.xsl: remove.
+
 2004-12-15  Stepan Kasal  <kasal@ucw.cz>
 
 	* Makefile.am (EXTRA_DIST): Removed po/Makevars.template, sorry.
