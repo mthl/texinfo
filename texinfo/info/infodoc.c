@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.3 2002-09-28 21:08:10 karl Exp $
+   $Id: infodoc.c,v 1.4 2002-11-06 00:39:38 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
    Foundation, Inc.
@@ -67,12 +67,12 @@ static char *info_internal_help_text[] = {
   "\n",
   N_("Moving within a node:\n\
 ---------------------\n"),
-  N_("\\%-10[scroll-forward]  Scroll forward a page.\n"),
-  N_("\\%-10[scroll-backward]  Scroll backward a page.\n"),
   N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
   N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
-  N_("\\%-10[scroll-forward]  Scroll forward 1 line.\n"),
-  N_("\\%-10[scroll-backward]  Scroll backward 1 line.\n"),
+  N_("\\%-10[next-line]  Scroll forward 1 line.\n"),
+  N_("\\%-10[prev-line]  Scroll backward 1 line.\n"),
+  N_("\\%-10[scroll-forward]  Scroll forward a page.\n"),
+  N_("\\%-10[scroll-backward]  Scroll backward a page.\n"),
   "\n",
   N_("Other commands:\n\
 ---------------\n"),
