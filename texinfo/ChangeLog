@@ -1,3 +1,8 @@
+2004-08-13  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: check for -file-line-error, since -style is no
+		longer part of the name.
+
 2004-08-07  Karl Berry  <karl@gnu.org>
 
 	* info/echo-area.c (inform_in_echo_area): avoid buffer overrun.
