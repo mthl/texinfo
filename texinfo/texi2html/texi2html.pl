@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.112 2004-04-26 00:21:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.113 2004-04-28 01:05:32 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -345,6 +345,7 @@ our $cartouche;
 our $sp;
 our $definition_category;
 our $table_list;
+our $copying_comment;
 our $index_summary_file_entry;
 our $index_summary_file_end;
 our $index_summary_file_begin;
@@ -369,6 +370,9 @@ our %simple_map_texi;
 our %style_map;
 our %style_map_pre;
 our %style_map_texi;
+our %unformatted_text_simple_map_texi;
+our %unformatted_text_style_map_texi;
+our %unformatted_text_texi_map;
 our %paragraph_style;
 our %things_map;
 our %pre_map;
@@ -482,7 +486,7 @@ sub T2H_GPL_style($$$$$$$$$)
     my $use_begin_end = 0;
     if (ref($style) eq 'HASH')
     {
-        #print STDERR "GPL_STYLE $command";
+        #print STDERR "GPL_STYLE $command\n";
         #print STDERR " @$args\n";
         $do_quotes = $style->{'quote'};
         if ((@{$style->{'args'}} == 1) and defined($style->{'attribute'}))
@@ -582,7 +586,7 @@ require "$ENV{T2H_HOME}/$translation_file"
 # @T2H_TRANSLATIONS_FILE@
 my $index_name = -1;
 my @index_to_hash = ('style_map', 'style_map_pre', 'style_map_texi');
-foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi)
+foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%unformatted_text_style_map_texi)
 {
     $index_name++;
     my $name = $index_to_hash[$index_name];
@@ -594,38 +598,6 @@ foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi)
 #print STDERR "DEFAULT($name, $hash) add normal as arg for $style ($hash->{$style}), $hash->{$style}->{'args'}\n";
     }
 }
-
-my %special_style = (
-           #'xref'      => ['keep','normal','normal','keep','normal'],
-           'xref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'ref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'pxref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'inforef'      => { 'args' => ['keep','keep','keep'], 
-               'function' => \&main::do_xref },
-           'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
-           'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
-           'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
-);
-
-# @image is replaced by the first arg in strings
-$style_map_texi{'image'} = { 'args' => ['keep'],
-       'function' => \&t2h_default_no_texi_image }
-    unless (defined($style_map_texi{'image'}));
-
-foreach my $special (keys(%special_style))
-{
-    $style_map{$special} = $special_style{$special}
-          unless (defined($style_map{$special}));
-    $style_map_pre{$special} = $special_style{$special}
-          unless (defined($style_map_pre{$special}));
-    $style_map_texi{$special} = { 'args' => ['keep'],
-        'function' => \&t2h_remove_command }
-          unless (defined($style_map_texi{$special}));
-}
-
 
 sub t2h_utf8_accent($$)
 {
@@ -709,7 +681,6 @@ sub t2h_nounicode_cross_manual_accent($$)
         if (defined($unicode_diacritical{$accent}));
     return ascii_accents($text, $accent);
 }
-
 
 $USE_UNICODE = '@USE_UNICODE@';
 if ($USE_UNICODE eq '@USE_UNICODE@')
@@ -1399,10 +1370,10 @@ sub cross_manual_links($$)
 
 sub unicode_to_protected($)
 {
-   my $text = shift;
-   my $result = '';
-   while ($text ne '')
-   {
+    my $text = shift;
+    my $result = '';
+    while ($text ne '')
+    {
         if ($text =~ s/^([A-Za-z0-9_\-]+)//o)
         {
              $result .= $1;
@@ -1416,9 +1387,9 @@ sub unicode_to_protected($)
              print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
              sleep 1;
         }    
-   }
+    }
    
-   return $result;
+    return $result;
 }
 
 sub cross_manual_line($)
@@ -2271,7 +2242,7 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
 
 foreach my $key (keys(%cross_ref_style_map_texi))
 {
-    if (($Texi2HTML::Config::unicode_accents{$key} or ($key eq 'tieaccent') or ($key eq 'dotless')) 
+    if ($style_type{$key} eq 'accent' 
         and (ref($cross_ref_style_map_texi{$key}) eq 'HASH'))
     {
         if ($Texi2HTML::Config::USE_UNICODE)
@@ -5111,6 +5082,7 @@ sub do_names()
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
         $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($nodes{$node}->{'texi'}));
+        $nodes{$node}->{'unformatted'} = unformatted_text ($nodes{$node}->{'texi'});
         if ($nodes{$node}->{'external_node'} and !$nodes{$node}->{'seen'})
         {
             $nodes{$node}->{'file'} = do_external_ref($node);
@@ -5124,6 +5096,8 @@ sub do_names()
         $section->{'text'} =~ s/^\s*//;
         $section->{'no_texi'} = &$Texi2HTML::Config::protect_text($section->{'number'} . " " .remove_texi($section->{'texi'}));
         $section->{'no_texi'} =~ s/^\s*//;
+        $section->{'unformatted'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .unformatted_text($section->{'texi'});
+        $section->{'unformatted'} =~ s/^\s*//;
     }
     my $tocnr = 1;
     foreach my $element (@elements_list)
@@ -5142,11 +5116,13 @@ sub do_names()
                 "$sec_name: $page->{First} -- $page->{Last}" :
                 "$sec_name: $page->{First}");
             $sec_name = $element->{'element_ref'}->{'no_texi'};
-	    #$sec_name = $element->{'element_ref'}->{'number'} . " " .$sec_name if (defined($element->{'element_ref'}->{'number'}));
-	    #$sec_name =~ s/^\s*//;
             $element->{'no_texi'} = &$Texi2HTML::Config::protect_text($page->{First} ne $page->{Last} ?
                 "$sec_name: $page->{First} -- $page->{Last}" :
                 "$sec_name: $page->{First}");
+            $sec_name = $element->{'element_ref'}->{'unformatted'};
+            $element->{'unformatted'} = $page->{First} ne $page->{Last} ?
+                "$sec_name: " . &$Texi2HTML::Config::protect_text("$page->{First} -- $page->{Last}") :
+                "$sec_name: " . &$Texi2HTML::Config::protect_text("$page->{First}");
         }
     }
 }
@@ -5442,16 +5418,22 @@ sub pass_text()
     $Texi2HTML::THISDOC{'subtitle'} = substitute_line($value{'_subtitle'});
 
     $Texi2HTML::THISDOC{'title_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
+    $Texi2HTML::THISDOC{'unformatted_title'} = unformatted_text($Texi2HTML::THISDOC{'title_texi'});
+    $Texi2HTML::THISDOC{'shorttitle_unformatted'} =  unformatted_text($value{'_shorttitle'});
     $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_titlefont'}));
     $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitle'}));
 
     my $top_no_texi = '';
+    my $top_unformatted = '';
     if ($element_top and $element_top->{'no_texi'}  and (!$node_top or ($element_top ne $node_top)))
     {
         $top_no_texi = $element_top->{'no_texi'};
+        $top_unformatted =  $element_top->{'unformatted'};
     }
 
     $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top');
+    $top_unformatted = $top_unformatted || $Texi2HTML::THISDOC{'title_unformatted'} || $Texi2HTML::THISDOC{'shorttitle_unformatted'} || &$I('Top');
+    $Texi2HTML::THISDOC{'unformatted_title'} = $Texi2HTML::THISDOC{'unformatted_title'} || &$I('Untitled Document');
     $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I('Untitled Document');
 
     for my $key (keys %Texi2HTML::THISDOC)
@@ -5515,6 +5497,8 @@ sub pass_text()
         (
          'First',   $element_first->{'no_texi'},
          'Last',    $element_last->{'no_texi'},
+#FIXME this is not really NO_TEXI as there may be some formatting expanded
+# in &$I, using substitute_line
          'About',    &$I('About This Document'),
          'Contents', &$I('Table of Contents'),
          'Overview', &$I('Short Table of Contents'),
@@ -5522,6 +5506,19 @@ sub pass_text()
          'Footnotes', &$I('Footnotes'),
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
+    %Texi2HTML::UNFORMATTED =
+        (
+         'First',   $element_first->{'unformatted'},
+         'Last',    $element_last->{'unformatted'},
+#FIXME this is not really UNFORMATTED as there may be some formatting expanded
+# in &$I, using substitute_line
+         'About',    &$I('About This Document'),
+         'Contents', &$I('Table of Contents'),
+         'Overview', &$I('Short Table of Contents'),
+         'Top',      $top_unformatted,
+         'Footnotes', &$I('Footnotes'),
+        );
+    $Texi2HTML::UNFORMATTED{'Index'} = $element_chapter_index->{'unformatted'} if (defined($element_chapter_index));
     $Texi2HTML::TITLEPAGE = '';
     $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
         if (@{$region_lines{'titlepage'}});
@@ -5738,6 +5735,7 @@ sub pass_text()
                         }
                         $Texi2HTML::NAME{$direction} = $elem->{'text'};
                         $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
+                        $Texi2HTML::UNFORMATTED{$direction} = $elem->{'unformatted'};
                     }
                     #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     $files{$element->{'file'}}->{'counter'}--;
@@ -5881,6 +5879,7 @@ sub pass_text()
         # (we could do both)
         $Texi2HTML::NAME{$direction} = undef;
         $Texi2HTML::NO_TEXI{$direction} = undef;
+        $Texi2HTML::UNFORMATTED{$direction} = undef;
         $Texi2HTML::NODE{$direction} = undef;
 
         $Texi2HTML::THIS_ELEMENT = undef;
@@ -5895,6 +5894,7 @@ sub pass_text()
         $Texi2HTML::HREF{'Footnotes'} = '#' . $footnote_element->{'id'};
         $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Footnotes'};
         $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Footnotes'};
+        $Texi2HTML::UNFORMATTED{'This'} = $Texi2HTML::UNFORMATTED{'Footnotes'};
         $Texi2HTML::THIS_SECTION = \@foot_lines;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($footnote_element->{'id'}) . "\n" ];
         #&$Texi2HTML::Config::print_Footnotes(\*FILE);
@@ -5916,6 +5916,7 @@ sub pass_text()
         $Texi2HTML::HREF{'Contents'} = "#SEC_Contents";
         $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Contents'};
         $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Contents'};
+        $Texi2HTML::UNFORMATTED{'This'} = $Texi2HTML::UNFORMATTED{'Contents'};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::TOC_LINES;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Contents") . "\n" ];
         #&$Texi2HTML::Config::print_Toc(\*FILE);
@@ -5937,6 +5938,7 @@ sub pass_text()
         $Texi2HTML::HREF{Overview} = "#SEC_Overview";
         $Texi2HTML::NAME{This} = $Texi2HTML::NAME{Overview};
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{Overview};
+        $Texi2HTML::UNFORMATTED{This} = $Texi2HTML::UNFORMATTED{Overview};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::OVERVIEW;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Overview") . "\n" ];
         #&$Texi2HTML::Config::print_Overview(\*FILE);
@@ -5959,6 +5961,7 @@ sub pass_text()
         $Texi2HTML::HREF{About} = "#SEC_About";
         $Texi2HTML::NAME{This} = $Texi2HTML::NAME{About};
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{About};
+        $Texi2HTML::UNFORMATTED{This} = $Texi2HTML::UNFORMATTED{About};
         $Texi2HTML::THIS_SECTION = [$about_body];
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_About") . "\n" ];
         #&$Texi2HTML::Config::print_About(\*FILE);
@@ -6069,6 +6072,7 @@ sub do_node_files()
         my $file = "${docu_rdir}$node->{'node_file'}";
         $Texi2HTML::NODE{'This'} = $node->{'text'};
         $Texi2HTML::NO_TEXI{'This'} = $node->{'no_texi'};
+        $Texi2HTML::UNFORMATTED{'This'} = $node->{'no_texi'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
         $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
         open (NODEFILE, "> $file") || die "$ERROR Can't open $file for writing: $!\n";
@@ -6925,7 +6929,7 @@ sub do_text($;$)
         # (see texinfo.txi, @node Conventions)
         $text = &$Texi2HTML::Config::normal_text($text);
     }
-    if ($state->{'remove_texi'})
+    if ($state->{'no_protection'})
     {
         return $text;
     }
@@ -7564,7 +7568,20 @@ sub do_index_entries($$$)
 # Doesn't protect html
 sub remove_texi(@)
 {
-    return substitute_text ({ 'remove_texi' => 1 }, @_);
+    return substitute_text ({ 'remove_texi' => 1, 'no_protection' => 1 }, @_);
+}
+
+# Same as remove texi but protect text and use special maps for @-commands
+sub unformatted_text(@)
+{
+    $simple_map_texi_ref = \%Texi2HTML::Config::unformatted_text_simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::unformatted_text_style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::unformatted_text_texi_map;
+    my $text = substitute_text ({ 'remove_texi' => 1 }, @_);
+    $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::texi_map;
+    return $text;
 }
 
 sub enter_table_index_entry($$$$)
@@ -10860,12 +10877,9 @@ if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DO
 # do copyright notice inserted in comment at the begining of the files
 if (@{$region_lines{'copying'}})
 {
-    $copying_comment = remove_texi(@{$region_lines{'copying'}});
-    while ($copying_comment =~ /-->/) # --> ends an html comment !
-    { 
-        $copying_comment =~ s/-->/->/go;
-    }
-    $copying_comment = &$Texi2HTML::Config::comment($copying_comment) . "\n";
+    $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'});
+    #$copying_comment = remove_texi(@{$region_lines{'copying'}});
+    #$copying_comment = &$Texi2HTML::Config::comment($copying_comment);
 }
 &$Texi2HTML::Config::toc_body(\@elements_list);
 #&$Texi2HTML::Config::toc_body(\@elements_list, $do_contents, $do_scontents);

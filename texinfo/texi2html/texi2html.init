@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.73 2004-04-26 00:21:01 pertusus Exp $
+# $Id: texi2html.init,v 1.74 2004-04-28 01:05:32 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -891,8 +891,10 @@ sub T2H_DEFAULT_print_section_header
 sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
-    $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
+    my $longtitle = "$Texi2HTML::THISDOC{'unformatted_title'}";
+    $longtitle .= ": $Texi2HTML::UNFORMATTED{'This'}" if exists $Texi2HTML::UNFORMATTED{'This'};
+    #my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
+    #$longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
     my $description = $DOCUMENT_DESCRIPTION;
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
@@ -2153,7 +2155,8 @@ our %old_style_map = (
       '"'          => 'aeiouyAEIOU',
 );
 
-foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
+#foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
      $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
      $old_style_map{$accent_command} = '&default_accent';
@@ -2404,6 +2407,44 @@ $style_map_pre{'titlefont'} = {};
 
 $style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
+
+####### special styles. You shouldn't need to change them
+my %special_style = (
+           #'xref'      => ['keep','normal','normal','keep','normal'],
+           'xref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'ref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'pxref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'inforef'      => { 'args' => ['keep','keep','keep'], 
+               'function' => \&main::do_xref },
+           'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
+           'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
+           'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
+);
+
+# FIXME the unless defined(.... are now unusefull because the user can
+# overwrite.
+
+# @image is replaced by the first arg in strings
+$style_map_texi{'image'} = { 'args' => ['keep'],
+       'function' => \&t2h_default_no_texi_image }
+    unless (defined($style_map_texi{'image'}));
+
+foreach my $special (keys(%special_style))
+{
+    $style_map{$special} = $special_style{$special}
+          unless (defined($style_map{$special}));
+    $style_map_pre{$special} = $special_style{$special}
+          unless (defined($style_map_pre{$special}));
+    $style_map_texi{$special} = { 'args' => ['keep'],
+        'function' => \&t2h_remove_command }
+          unless (defined($style_map_texi{$special}));
+}
+####### end special styles.
+
+
 #foreach my $command (keys(%style_map))
 #{
 #    print STDERR "STYLE_MAP_TEXI $command($style_map_texi{$command}) ";
@@ -2415,6 +2456,29 @@ $style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
 # uncomment to use the old interface
 #%style_map = %old_style_map;
 #%style_map_pre = %old_style_map_pre;
+
+#FIXME USE_ISO ?
+%unformatted_text_simple_map_texi = %simple_map_pre;
+%unformatted_text_texi_map = %pre_map;
+%unformatted_text_style_map_texi = ();
+
+foreach my $command (keys(%style_map_texi))
+{
+    #$unformatted_text_style_map_texi{$command} = {};
+    foreach my $key (keys (%{$style_map_texi{$command}}))
+    {
+    #print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
+        $unformatted_text_style_map_texi{$command}->{$key} = 
+             $style_map_texi{$command}->{$key};
+    }
+    $unformatted_text_style_map_texi{$command} = {} if (!defined($unformatted_text_style_map_texi{$command}));
+}
+
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
+{
+#    $unformatted_text_style_map_texi{$accent_command}->{'args'} = ['normal'];
+    $unformatted_text_style_map_texi{$accent_command}->{'function'} = \&t2h_default_accent;
+}
 
 %format_map = (
        'quotation'   =>  'blockquote',
@@ -2629,6 +2693,7 @@ $complex_format    = \&t2h_default_complex_format;
 $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
 $definition_category      = \&t2h_default_definition_category;
+$copying_comment          = \&t2h_default_copying_comment;
 $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
 $index_summary_file_end   = \&t2h_default_index_summary_file_end;
 $index_summary_file_begin = \&t2h_default_index_summary_file_begin;
@@ -3152,7 +3217,11 @@ sub t2h_default_table_list($$$$$$)
 sub t2h_default_comment($)
 {
     my $text = shift;
-    return '<!--' . $text . '-->';
+    while ($text =~ /-->/) # --> ends an html comment !
+    { 
+        $text =~ s/-->/->/go;
+    }
+    return '<!--' . $text . '-->' . "\n";
 }
 
 # a paragraph
@@ -3570,6 +3639,13 @@ sub t2h_default_index_entry($$$$)
     . "</td></tr>\n";
 }
 
+
+sub t2h_default_copying_comment($)
+{
+    my $copying_lines = shift;
+    my $text = &$comment(main::remove_texi(@$copying_lines));
+    return $text;
+}
 # format a letter appearing in a summary for an index. The letter links to
 # the place where the index elements beginning with this letter are (called
 # a letter entry).

@@ -1,3 +1,11 @@
+2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
+	
+	* texi2html.init, texi2html.pl: generate unformatted text with 
+	text protected and %unformatted_text_* hashs used.
+	use unformatted text in <title> element.
+	put preparation of special styles in texi2html.init.
+	copying_comment formats the copying comment.
+
 2004-04-26  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* example/book.init: stick to the same style for manual not split at
