@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.3 2004-04-11 17:56:45 karl Exp $
+   $Id: echo-area.c,v 1.4 2004-07-24 18:12:38 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004 Free Software
    Foundation, Inc.
@@ -936,7 +936,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       printf_to_message_buffer (completions_found_index == 1
                                 ? (char *) _("One completion:\n")
                                 : (char *) _("%d completions:\n"),
-				(void *) completions_found_index, NULL, NULL);
+				(void*)((intptr_t)completions_found_index), NULL, NULL);
 
       /* Find the maximum length of a label. */
       for (i = 0; i < completions_found_index; i++)
