@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.37 2003-02-22 02:08:34 karl Exp $
+$Id: NEWS,v 1.38 2003-03-06 23:25:57 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -23,7 +23,11 @@ convenience, here's a url to one of the relevant sections:
 -------------------------------------------------------------------------------
 
 * makeinfo:
-  . under --html, @cartouche outputs a <table> with a border.
+  . search for image files in the include file search path.
+  . under --html, @cartouche now outputs a <table> with a border.
+* info:
+  . RET now goes to the nearest xref (rather like Emacs Info),
+    instead of the next xref starting on the current line.
 * Distribution:
   . automake 1.7.3.
 

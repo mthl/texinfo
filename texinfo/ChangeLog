@@ -1,3 +1,32 @@
+2003-03-06    <karl@gnu.org>
+
+	* info/session.c (nearest_xref): new fn.
+	(info_menu_or_ref_item): call it when we are
+	searching for xrefs, instead of just looking on
+	the current line.  
+	* info/info-utils.c (info_copy_reference): new fn.
+	* info/info-utils.h (info_copy_reference): declare.
+	Bug report from: rich@phekda.freeserve.co.uk,
+	04 Mar 2003 17:51:47 +0000.
+
+	* */.gdbinit: set env MALLOC_CHECK_.
+
+	2003-03-06  Ralph Schleicher  <rs@nunatak.allgaeu.org>
+	* makeinfo/files.h (get_file_info_in_path): Declare function.
+	* makeinfo/files.c (get_file_info_in_path): Remove static keyword.
+	* makeinfo/makeinfo.c (cm_image): Lookup image file name in the
+	search path for include files.
+
+2003-03-05    <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (insert_toplevel_subdirectory): always make
+	subdirectory for html. Before, if the current directory happened
+	to be named `foo' and the @setfilename was foo.info, we would
+	write the split html files into the current directory.  Reported
+	by rich@phekda.freeserve.co.uk, 01 Mar 2003 12:03:13 +0000.
+
+	* makeinfo/files.c (filename_part): simplify assignment.
+
 2003-02-24    <karl@gnu.org>
 
 	* makeinfo/insertion.c (get_item_function): check for @item in
