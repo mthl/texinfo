@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.2 2002-10-26 23:12:28 karl Exp $
+   $Id: defun.c,v 1.3 2002-11-11 00:57:49 feloy Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -19,7 +19,7 @@
 
 #include "system.h"
 #include "defun.h"
-#include "docbook.h"
+#include "xml.h"
 #include "insertion.h"
 #include "makeinfo.h"
 #include "cmds.h"
@@ -454,8 +454,6 @@ defun_internal (type, x_p)
     /* Start the definition on new paragraph.  */
     if (html)
       add_word ("<p>\n");
-    if (docbook)
-      docbook_begin_paragraph ();
   }
 
   if (!html && !docbook)
@@ -555,19 +553,24 @@ defun_internal (type, x_p)
         case deftp:
         case defcv:
         case defop:
-          add_word_args ("<%s>%s</%s>", DB_FUNCTION, defined_name,
-                                        DB_FUNCTION);
+	  xml_insert_element (FUNCTION, START);
+          execute_string ("%s", defined_name);
+	  xml_insert_element (FUNCTION, END);
           break;
         case deftypefn:
         case deftypevr:
-          add_word_args ("%s <%s>%s</%s>", type_name, DB_FUNCTION,
-                                           defined_name, DB_FUNCTION);
+          execute_string ("%s", type_name);
+	  xml_insert_element (FUNCTION, START);
+          execute_string ("%s", defined_name);
+	  xml_insert_element (FUNCTION, END);
           break;
         case deftypemethod:
         case deftypeop:
         case deftypeivar:
-          add_word_args ("%s <%s>%s</%s>", type_name2, DB_FUNCTION,
-                                           defined_name, DB_FUNCTION);
+          execute_string ("%s", type_name2);
+	  xml_insert_element (FUNCTION, START);
+          execute_string ("%s", defined_name);
+	  xml_insert_element (FUNCTION, END);
           break;
         }
 

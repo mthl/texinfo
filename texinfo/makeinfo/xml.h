@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.4 2002-11-10 22:31:04 feloy Exp $
+   $Id: xml.h,v 1.5 2002-11-11 00:57:49 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -73,7 +73,7 @@ enum xml_element
     IMAGEDATA, TEXTOBJECT,  
   INDEXENTRY, PRIMARYIE, SECONDARYIE, INDEXDIV,
   MULTITABLE, TGROUP, COLSPEC, TBODY, ENTRY, ROW,
-  BOOKINFO, ABSTRACT, REPLACEABLE, ENVAR, COMMENT,
+  BOOKINFO, ABSTRACT, REPLACEABLE, ENVAR, COMMENT, FUNCTION,
   PARA
 };
 
