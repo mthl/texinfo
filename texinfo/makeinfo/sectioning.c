@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.21 2003-11-23 10:53:34 dirt Exp $
+   $Id: sectioning.c,v 1.22 2003-11-25 09:51:38 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -707,9 +707,10 @@ cm_unnumberedsubsubsec ()
 void
 cm_appendix ()
 {
-  enum_marker = APPENDIX_MAGIC;
   /* Reset top level number so we start from Appendix A */
-  numbers [0] = 0;
+  if (enum_marker != APPENDIX_MAGIC)
+    numbers [0] = 0;
+  enum_marker = APPENDIX_MAGIC;
   sectioning_underscore ("appendix");
 }
 
