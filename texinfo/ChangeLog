@@ -1,3 +1,10 @@
+2004-10-19  Stepan Kasal  <kasal@ucw.cz>
+
+	* configure.ac: When cross compiling, we have to remove
+	  ./config.status, not "$native_tools"/config.status.
+	  Replace ``echo'' with AC_MSG_NOTICE.  Quote the variable
+	  values passed to ``env.''
+
 2004-10-17  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/node.c (cm_node): don't output <br> after the
