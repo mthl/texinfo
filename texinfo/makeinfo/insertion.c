@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.22 2003-07-01 23:36:09 karl Exp $
+   $Id: insertion.c,v 1.23 2003-07-16 22:26:28 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -531,8 +531,9 @@ begin_insertion (type)
     case lisp:
     case smalllisp:
       in_fixed_width_font++;
+      /* fall through */
 
-      /* Like @example but no fixed width font.
+      /* Like @example but no fixed width font. */
     case display:
     case smalldisplay:
       /* Like @display but without indentation. */
@@ -731,7 +732,6 @@ begin_insertion (type)
 
     default:
       line_error ("begin_insertion internal error: type=%d", type);
-
     }
 
   if (!no_discard)
