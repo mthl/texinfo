@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
+@c $Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10432,12 +10432,7 @@ in two places.
 @end group
 @end example
 
-@noindent
-(Note that the space after the first @code{@@*} command is faithfully
-carried down to the next line.)@refill
-
-@need 800
-The @code{@@*} command is often used in a file's copyright page:@refill
+The @code{@@*} command is often used in a file's copyright page:
 
 @example
 @group
@@ -10448,17 +10443,12 @@ and is for @dots{}
 
 @noindent
 In this case, the @code{@@*} command keeps @TeX{} from stretching the
-line across the whole page in an ugly manner.@refill
-
-@quotation
-@strong{Please note:} Do not write braces after an @code{@@*} command;
-they are not needed.@refill
+line across the whole page in an ugly manner.
 
 Do not write an @code{@@refill} command at the end of a paragraph
 containing an @code{@@*} command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
 break.@refill
-@end quotation
 
 
 @node - and hyphenation
@@ -16796,7 +16786,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
+$Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16861,7 +16851,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
+@@comment $Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
