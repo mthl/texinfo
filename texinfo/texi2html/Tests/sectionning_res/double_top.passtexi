@@ -1,0 +1,17 @@
+double_top.texi(,2) 
+double_top.texi(,3) @setfilename double_top
+double_top.texi(,4) 
+double_top.texi(,5) @node ToP, top
+double_top.texi(,6) Top node
+double_top.texi(,7) 
+double_top.texi(,8) @menu
+double_top.texi(,9) * top::
+double_top.texi(,10) * TOP:: myself
+double_top.texi(,11) @end menu
+double_top.texi(,12) 
+double_top.texi(,13) @node top,,ToP,Top
+double_top.texi(,14) second node (@@node top,,ToP,Top).
+double_top.texi(,15) anchor@{TOP@} @anchor{TOP}.
+double_top.texi(,16) ref to TOP: @ref{TOP}.
+double_top.texi(,17) 
+double_top.texi(,18) 

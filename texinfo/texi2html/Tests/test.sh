@@ -167,6 +167,7 @@ test_texi index_table more_before_top_section.texi "-prefix monolithic_more_befo
 test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi
+test_texi macros truc_machin.texi
 test_texi sectionning
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
@@ -189,6 +190,8 @@ test_texi sectionning lower_subsub.texi
 test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
+test_texi formatting formatting.texi
+test_texi formatting simplest.texi "-css-file file.css"
 test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting imbrications.texi "" 2
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
@@ -216,5 +219,5 @@ test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
 test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
 #test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
 test_texi ccvs cvs.texinfo "-split chapter -ignore-preamble-text" 0 texinfo
-#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm" 0 tex sing
+#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

@@ -1,27 +1,27 @@
-
-
-Garbage
-ref to Top @ref{Top}.
-@cindex index entry before anything 
-Hey@footnote{a footnote}.
-An anchor @anchor{anchor1}.
-
-@menu
-* node1::
-@end menu
-
-@node Top
-@top top @@top section
-Node top
-
-ref to anchor1@footnote{another footnote}, which is before @@node Top: @ref{anchor1}.
-@menu
-* node1::
-@end menu
-
-@node node1
-@chapter node1 chapter
-
-@printindex cp
-
-
+before_node_and_section.texi(,2) 
+before_node_and_section.texi(,4) 
+before_node_and_section.texi(,5) Garbage
+before_node_and_section.texi(,6) ref to Top @ref{Top}.
+before_node_and_section.texi(,7) @cindex index entry before anything 
+before_node_and_section.texi(,8) Hey@footnote{a footnote}.
+before_node_and_section.texi(,9) An anchor @anchor{anchor1}.
+before_node_and_section.texi(,10) 
+before_node_and_section.texi(,11) @menu
+before_node_and_section.texi(,12) * node1::
+before_node_and_section.texi(,13) @end menu
+before_node_and_section.texi(,14) 
+before_node_and_section.texi(,15) @node Top
+before_node_and_section.texi(,16) @top top @@top section
+before_node_and_section.texi(,17) Node top
+before_node_and_section.texi(,18) 
+before_node_and_section.texi(,19) ref to anchor1@footnote{another footnote}, which is before @@node Top: @ref{anchor1}.
+before_node_and_section.texi(,20) @menu
+before_node_and_section.texi(,21) * node1::
+before_node_and_section.texi(,22) @end menu
+before_node_and_section.texi(,23) 
+before_node_and_section.texi(,24) @node node1
+before_node_and_section.texi(,25) @chapter node1 chapter
+before_node_and_section.texi(,26) 
+before_node_and_section.texi(,27) @printindex cp
+before_node_and_section.texi(,28) 
+before_node_and_section.texi(,29) 

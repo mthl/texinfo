@@ -5,6 +5,11 @@
 @node ToP
 Top node
 
+@samp{Closing} @samp{ @} without opening macro }.}
+
 anchor{truc@} @anchor{truc}.
+
+Some text @|.
+More text
 
 @bye

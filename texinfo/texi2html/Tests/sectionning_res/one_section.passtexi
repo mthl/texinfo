@@ -1,0 +1,19 @@
+one_section.texi(,2) 
+one_section.texi(,3) @setfilename one_section
+one_section.texi(,4) 
+one_section.texi(,5) Garbage
+one_section.texi(,6) 
+one_section.texi(,7) @subsection The subsection
+one_section.texi(,8) 
+one_section.texi(,9) anchor ref @anchor{ref}.
+one_section.texi(,10) 
+one_section.texi(,11) @menu
+one_section.texi(,12) * (gcc):: ref to gcc
+one_section.texi(,13) @end menu
+one_section.texi(,14) 
+one_section.texi(,15) 
+one_section.texi(,16) ref to ref @ref{ref}.
+one_section.texi(,17) 
+one_section.texi(,18) Some text.
+one_section.texi(,19) 
+one_section.texi(,20) 

@@ -1,0 +1,41 @@
+rec_nodes.texi(,2) 
+rec_nodes.texi(,3) @setfilename rec_nodes
+rec_nodes.texi(,4) 
+rec_nodes.texi(,5) 
+rec_nodes.texi(,6) @node ToP
+rec_nodes.texi(,7) Top node
+rec_nodes.texi(,8) 
+rec_nodes.texi(,9) @menu
+rec_nodes.texi(,10) * second node::
+rec_nodes.texi(,11) * node following second::
+rec_nodes.texi(,12) @end menu
+rec_nodes.texi(,13) 
+rec_nodes.texi(,14) @node second node,,Top,Top
+rec_nodes.texi(,15) second node (@@node second node,,top,TOP).
+rec_nodes.texi(,17) 
+rec_nodes.texi(,18) @menu
+rec_nodes.texi(,19) * other node::
+rec_nodes.texi(,20) * second node::
+rec_nodes.texi(,21) @end menu
+rec_nodes.texi(,22) 
+rec_nodes.texi(,23) @node other node,,,second node
+rec_nodes.texi(,26) 
+rec_nodes.texi(,27) @menu 
+rec_nodes.texi(,28) * other node::
+rec_nodes.texi(,29) @end menu
+rec_nodes.texi(,30) 
+rec_nodes.texi(,31) @node node up node following second,,,node following second
+rec_nodes.texi(,32) @menu
+rec_nodes.texi(,33) * node following second::
+rec_nodes.texi(,34) @end menu
+rec_nodes.texi(,35) 
+rec_nodes.texi(,36) in node up node following second
+rec_nodes.texi(,37) 
+rec_nodes.texi(,38) @node node following second,,,node up node following second
+rec_nodes.texi(,39) 
+rec_nodes.texi(,40) in node following second
+rec_nodes.texi(,41) @menu
+rec_nodes.texi(,42) * node up node following second::
+rec_nodes.texi(,43) @end menu
+rec_nodes.texi(,44) 
+rec_nodes.texi(,45) 

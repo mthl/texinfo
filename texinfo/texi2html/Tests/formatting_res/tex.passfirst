@@ -1,16 +1,16 @@
-
-@node Top
-@top Tests
-
-Now tex on the same line @tex_0 bidule
-Some text one the line following @@end tex
-
-Now tex on the following line, valid fot tex (with @@end tex on a line).
-@tex_1 
-
-Same that @@html (but empty following line not ignored).
-
-Test of @@math
-Here some @tex_2 .
-
-
+tex.texi(,2) 
+tex.texi(,3) @node Top
+tex.texi(,4) @top Tests
+tex.texi(,5) 
+tex.texi(,14) Now tex on the same line @tex_0 bidule
+tex.texi(,15) Some text one the line following @@end tex
+tex.texi(,17) 
+tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).
+tex.texi(,22) @tex_1 
+tex.texi(,23) 
+tex.texi(,24) Same that @@html (but empty following line not ignored).
+tex.texi(,25) 
+tex.texi(,26) Test of @@math
+tex.texi(,27) Here some @tex_2 .
+tex.texi(,28) 
+tex.texi(,29) 

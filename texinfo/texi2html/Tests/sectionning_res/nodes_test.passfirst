@@ -1,34 +1,34 @@
-
-
-Garbage
-
-@titlefont{A title font in the text before a node}
-
-@node first,node1,lop,lop
-node in first but not the first...
-
-@node lop, first,nonexistant node in prev for @@top,(texinfo) Copying 
-@top
-
-@menu
-* first::
-* node1::
-* node inexistant in menu:: non existing
-* (info)::
-@end menu
-
-@node Top
-This is the top node...
-
-@node node1
-
-
-@unnumbered
-node1 text
-
-@node node below node1,,,node1
-
-Should be a warning for not being in menus and not having a menu entry in
-node1
-
-
+nodes_test.texi(,2) 
+nodes_test.texi(,4) 
+nodes_test.texi(,5) Garbage
+nodes_test.texi(,6) 
+nodes_test.texi(,7) @titlefont{A title font in the text before a node}
+nodes_test.texi(,8) 
+nodes_test.texi(,9) @node first,node1,lop,lop
+nodes_test.texi(,11) node in first but not the first...
+nodes_test.texi(,12) 
+nodes_test.texi(,13) @node lop, first,nonexistant node in prev for @@top,(texinfo) Copying 
+nodes_test.texi(,14) @top
+nodes_test.texi(,15) 
+nodes_test.texi(,16) @menu
+nodes_test.texi(,17) * first::
+nodes_test.texi(,18) * node1::
+nodes_test.texi(,19) * node inexistant in menu:: non existing
+nodes_test.texi(,20) * (info)::
+nodes_test.texi(,21) @end menu
+nodes_test.texi(,22) 
+nodes_test.texi(,23) @node Top
+nodes_test.texi(,24) This is the top node...
+nodes_test.texi(,25) 
+nodes_test.texi(,26) @node node1
+nodes_test.texi(,27) 
+nodes_test.texi(,29) 
+nodes_test.texi(,30) @unnumbered
+nodes_test.texi(,31) node1 text
+nodes_test.texi(,32) 
+nodes_test.texi(,33) @node node below node1,,,node1
+nodes_test.texi(,34) 
+nodes_test.texi(,35) Should be a warning for not being in menus and not having a menu entry in
+nodes_test.texi(,36) node1
+nodes_test.texi(,37) 
+nodes_test.texi(,38) 

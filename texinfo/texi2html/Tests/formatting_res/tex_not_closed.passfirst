@@ -1,6 +1,6 @@
-
-@node Top
-
-texte
-
-@tex_0 
+tex_not_closed.texi(,2) 
+tex_not_closed.texi(,3) @node Top
+tex_not_closed.texi(,4) 
+tex_not_closed.texi(,5) texte
+tex_not_closed.texi(,6) 
+(,) @tex_0 

@@ -61,7 +61,7 @@ text @item more
 text
 @end itemize
 
-@ifnottex
+@ifhtml
 a verbatim, not first on the line @verbatim text following @verbatim
 
 text
@@ -70,7 +70,7 @@ text
 @@@@ @ text before @end  verbatim @end verbatim Text following end verbatim, must be exactly one space 
 between end and verbatim. @@end verbatim doesn't need to begin at beginning 
 of line.
-@end ifnottex
+@end ifhtml
 
 In tex, @@end verbatim must be on its own on a line.
 
@@ -81,7 +81,7 @@ verbatim @samp{item}
 @end verbatim
 
 
-@ifnottex
+@ifhtml
 Now html  @html 
 <b>
 some html </b> 
@@ -90,7 +90,7 @@ some html </b>
 @@end html begins the line, and there must be exactly one space between @@end
 and html and thing following @@end html are ignored in info. Strangely
 the empty line following @@end html is ignored but spaces are inserted.
-@end ifnottex
+@end ifhtml
 
 Now html valid for @TeX{}  @html 
 <b>
@@ -110,11 +110,11 @@ A sc: @sc{ieee}, and another one in example:
 @sc{aeei}
 @end example
 
-@ifnottex
+@ifhtml
 ignore @ignore ignored
 
 @end ignore bidule ignore
-@end ifnottex
+@end ifhtml
 
 Ignore is the same than @@html.
 
@@ -146,14 +146,14 @@ Text on the line following empty ifnothtml
 
 @TeX{} has problems with the ftable.
 
-@ifnottex
+@ifhtml
 an ftable on same line @ftable @bullet
 @item fun1
 @itemx fun2
 fun1 et fun2 @item more fun
 text on the same line than end   @end  ftable
 works like @@ifnothtml
-@end ifnottex
+@end ifhtml
 
 @item outside format.
 
@@ -226,7 +226,7 @@ before before}
 
 Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
 in that case in info. tex doesn't like the paragraph break in the ref
-@ifnottex
+@ifhtml
 @ref{First 
 node, within ref a footnote @footnote{with empty line
 
@@ -245,10 +245,10 @@ An example
 @end example
 }
 
-@end ifnottex
+@end ifhtml
 
 Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
-@ifnottex
+@ifhtml
 @xref{First node, 
 @verbatim
 
@@ -274,7 +274,7 @@ ignore me causing problems to makeinfo
 @end ignore
 
 }.
-@end ifnottex
+@end ifhtml
 
 @xref{First node,
 no verb}.

@@ -1,0 +1,107 @@
+comments.texi(,2) 
+comments.texi(,3) @node Top
+comments.texi(,4) @top
+comments.texi(,5) @subheading Comment like:
+comments.texi(,6) 
+comments.texi(,10) Text line followed by a comment on the same line and another below comments.texi(,10) Text line after the comment followed by a comment comments.texi(,10) Text line after the text line followed by the comment.
+comments.texi(,11) 
+comments.texi(,12) Example with comments 2 lines
+comments.texi(,13) @example 
+comments.texi(,16) line comments.texi(,16) second line comments.texi(,16) @end example
+comments.texi(,17) 
+comments.texi(,18) Example with comments 1 line
+comments.texi(,19) @example
+comments.texi(,21) line comments.texi(,21) @end example
+comments.texi(,22) 
+comments.texi(,23) No comments
+comments.texi(,24) @example
+comments.texi(,25) line 
+comments.texi(,26) @end example
+comments.texi(,27) 
+comments.texi(,28) The same but with oddfooting instead of comment:
+comments.texi(,32) Text line followed by a comment on the same line and another below comments.texi(,32) Text line after the comment followed by a comment comments.texi(,32) Text line after the text line followed by the comment.
+comments.texi(,33) 
+comments.texi(,45) @@afourpaper comments.texi(,45) @@smallbook comments.texi(,45) @@headings comments.texi(,45) @@oddfooting comments.texi(,45) @@everyheading comments.texi(,45) @@everyfooting comments.texi(,45) @@evenheading comments.texi(,45) @@evenfooting comments.texi(,45) @@oddheading comments.texi(,45) @@need comments.texi(,45) @@setchapternewpage comments.texi(,45) @@raisesections @raisesections on line following raisesections
+comments.texi(,46) @@lowersections @lowersections on line following lowersections
+comments.texi(,47) 
+comments.texi(,48) 
+comments.texi(,49) @subheading ignore arg
+comments.texi(,50) 
+comments.texi(,52) Commands doesn't accept anything after the arg on the line
+comments.texi(,53) 
+comments.texi(,60) @@paragraphindent asis comments.texi(,60) @@paragraphindent 0 comments.texi(,60) @@paragraphindent none comments.texi(,60) @@paragraphindent 4 comments.texi(,60) @@footnotestyle comments.texi(,60) @@footnotestyle comments.texi(,60) 
+comments.texi(,67) 
+comments.texi(,68) @subheading command removed
+comments.texi(,69) 
+comments.texi(,70) And now finalout:
+comments.texi(,71) Text line followed by finalout on the same line and another below 
+comments.texi(,72) 
+comments.texi(,73) Text line after the finalout followed by a fianlout 
+comments.texi(,74) Text line after the text line followed by the finalout.
+comments.texi(,75) 
+comments.texi(,76) Test text after finalout
+comments.texi(,77)  a word after finalout
+comments.texi(,78) Line after finalout
+comments.texi(,79) 
+comments.texi(,80) @@page  @@noindent  @@refill  something
+comments.texi(,81) 
+comments.texi(,82) noindent at beginning of line
+comments.texi(,83)   
+comments.texi(,84) noindent on the preceding line
+comments.texi(,85)   noindent after space at beginning of line
+comments.texi(,86)          page at beginning of line
+comments.texi(,87) 
+comments.texi(,88) After page on it's own line.
+comments.texi(,89) 
+comments.texi(,90) @@page    @@noindent     @@refill    something 
+comments.texi(,91) 
+comments.texi(,92) @@contents @contents something
+comments.texi(,93) 
+comments.texi(,100) 
+comments.texi(,101) @subheading special
+comments.texi(,102) 
+comments.texi(,103) Only valid between iftex:
+comments.texi(,105) Unknown ???
+comments.texi(,107) 
+comments.texi(,108) @@exdent  line after exdent
+comments.texi(,109) 
+comments.texi(,110) And now sp:
+comments.texi(,111) Text line followed by a comment on the same line and another below 
+comments.texi(,112) 
+comments.texi(,113) Text line after the comment followed by a comment 
+comments.texi(,114) Text line after the text line followed by the comment.
+comments.texi(,115)  a number after sp
+comments.texi(,116) 
+comments.texi(,117) Menu:
+comments.texi(,118) @menu
+comments.texi(,119) * node::
+comments.texi(,120) * bidule::
+comments.texi(,121) * bidule2::
+comments.texi(,122) @end menu
+comments.texi(,123) 
+comments.texi(,124) @node node
+comments.texi(,125) @chapter chapter
+comments.texi(,126) @menu
+comments.texi(,127) * truc::
+comments.texi(,128) @end menu
+comments.texi(,129) 
+comments.texi(,130) @node truc
+comments.texi(,131) @section section
+comments.texi(,132) 
+comments.texi(,133) first @@contents @contents line following first content
+comments.texi(,134) second @@contents @contents line following second content
+comments.texi(,135) Third content on the following line on his own
+comments.texi(,136) @contents
+comments.texi(,137) Line following contents
+comments.texi(,138) 
+comments.texi(,139) @node bidule
+comments.texi(,140) @chapter bidule
+comments.texi(,141) 
+comments.texi(,142) @@shortcontents @shortcontents eol
+comments.texi(,143) @@shortcontents @shortcontents eol
+comments.texi(,144) @@summarycontents @summarycontents line following summarycontents
+comments.texi(,145) 
+comments.texi(,146) @node bidule2
+comments.texi(,147) @chapter last
+comments.texi(,148) 
+comments.texi(,149) 

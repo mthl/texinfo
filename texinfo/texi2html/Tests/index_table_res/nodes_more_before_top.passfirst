@@ -1,72 +1,72 @@
-
-
-
-@node first before top, Top, ,(dir)
-@cindex first before top
-@printindex cp
-in first node
-@menu
-* node in menu before top::
-@end menu
-
-@node node in menu before top,,,first before top
-
-@cindex node in menu before top
-@printindex cp
-node in menu before top text
-
-@cindex printindex node in menu before top
-
-
-@node Top, ,first before top
-@cindex entry a
-
-@printindex cp
-
-@printindex fn
-
-And one one more index
-
-@printindex cp
-
-@menu
-* first::
-@end menu
-
-@node first,,Top, Top
-Text and then index entries
-@cindex ! entry in node
-@findex fun in node
-@cindex entry in node
-
-@printindex cp
-
-@menu
-* second::
-@end menu
-
-@node second,,,first
-@menu
-* a node::
-* another::
-@end menu
-
-@printindex fn
-
-@node another, , a node, second
-
-@cindex something
-@findex somewhere
-@cindex another
-
-@node a node, another, ,second
-@cindex entry after printindex
-
-@printindex cp
-
-@findex a function
-@cindex a concept a node
-
-@printindex cp
-
-
+more_before_top.texi(,2) 
+more_before_top.texi(,4) 
+more_before_top.texi(,5) 
+more_before_top.texi(,6) @node first before top, Top, ,(dir)
+more_before_top.texi(,7) @cindex first before top
+more_before_top.texi(,8) @printindex cp
+more_before_top.texi(,9) in first node
+more_before_top.texi(,10) @menu
+more_before_top.texi(,11) * node in menu before top::
+more_before_top.texi(,12) @end menu
+more_before_top.texi(,13) 
+more_before_top.texi(,14) @node node in menu before top,,,first before top
+more_before_top.texi(,15) 
+more_before_top.texi(,16) @cindex node in menu before top
+more_before_top.texi(,17) @printindex cp
+more_before_top.texi(,18) node in menu before top text
+more_before_top.texi(,19) 
+more_before_top.texi(,20) @cindex printindex node in menu before top
+more_before_top.texi(,21) 
+more_before_top.texi(,22) 
+more_before_top.texi(,23) @node Top, ,first before top
+more_before_top.texi(,24) @cindex entry a
+more_before_top.texi(,25) 
+more_before_top.texi(,26) @printindex cp
+more_before_top.texi(,27) 
+more_before_top.texi(,28) @printindex fn
+more_before_top.texi(,29) 
+more_before_top.texi(,30) And one one more index
+more_before_top.texi(,31) 
+more_before_top.texi(,32) @printindex cp
+more_before_top.texi(,33) 
+more_before_top.texi(,34) @menu
+more_before_top.texi(,35) * first::
+more_before_top.texi(,36) @end menu
+more_before_top.texi(,37) 
+more_before_top.texi(,38) @node first,,Top, Top
+more_before_top.texi(,39) Text and then index entries
+more_before_top.texi(,40) @cindex ! entry in node
+more_before_top.texi(,41) @findex fun in node
+more_before_top.texi(,42) @cindex entry in node
+more_before_top.texi(,43) 
+more_before_top.texi(,44) @printindex cp
+more_before_top.texi(,45) 
+more_before_top.texi(,46) @menu
+more_before_top.texi(,47) * second::
+more_before_top.texi(,48) @end menu
+more_before_top.texi(,49) 
+more_before_top.texi(,50) @node second,,,first
+more_before_top.texi(,51) @menu
+more_before_top.texi(,52) * a node::
+more_before_top.texi(,53) * another::
+more_before_top.texi(,54) @end menu
+more_before_top.texi(,55) 
+more_before_top.texi(,56) @printindex fn
+more_before_top.texi(,57) 
+more_before_top.texi(,58) @node another, , a node, second
+more_before_top.texi(,59) 
+more_before_top.texi(,60) @cindex something
+more_before_top.texi(,61) @findex somewhere
+more_before_top.texi(,62) @cindex another
+more_before_top.texi(,63) 
+more_before_top.texi(,64) @node a node, another, ,second
+more_before_top.texi(,65) @cindex entry after printindex
+more_before_top.texi(,66) 
+more_before_top.texi(,67) @printindex cp
+more_before_top.texi(,68) 
+more_before_top.texi(,69) @findex a function
+more_before_top.texi(,70) @cindex a concept a node
+more_before_top.texi(,71) 
+more_before_top.texi(,72) @printindex cp
+more_before_top.texi(,73) 
+more_before_top.texi(,74) 

@@ -1,9 +1,9 @@
-
-
-@node Top
-Top node
-
-anchor@{TOP@} @anchor{TOP @ref{Top}}.
-ref to TOP @@ref@{Top@}: @ref{TOP @ref{Top}}.
-
-
+ref_in_anchor.texi(,2) 
+ref_in_anchor.texi(,4) 
+ref_in_anchor.texi(,5) @node Top
+ref_in_anchor.texi(,6) Top node
+ref_in_anchor.texi(,7) 
+ref_in_anchor.texi(,8) anchor@{TOP@} @anchor{TOP @ref{Top}}.
+ref_in_anchor.texi(,9) ref to TOP @@ref@{Top@}: @ref{TOP @ref{Top}}.
+ref_in_anchor.texi(,10) 
+ref_in_anchor.texi(,11) 

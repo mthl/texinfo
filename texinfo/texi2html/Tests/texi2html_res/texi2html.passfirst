@@ -1,1049 +1,1049 @@
-
-This file documents the texi2html script which converts
-Texinfo into HTML.
-
-Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-
-This edition is for texi2html version 1.67,
-15 September 2001.
-
-Permission is granted to make and distribute verbatim
-copies of this manual provided the copyright notice and
-this permission notice are preserved on all copies.
-
-Permission is granted to copy and distribute modified
-versions of this manual under the conditions for verbatim
-copying, provided that the entire resulting derived work is
-distributed under the terms of a permission notice
-identical to this one.
-
-Permission is granted to copy and distribute translations
-of this manual into another language, under the above
-conditions for modified versions, except that this
-permission notice may be stated in a translation approved
-by the Free Software Foundation.
-
-
-@node Top, Overview, (dir), (dir)
-@top Texi2html
-
-This Manual (Edition 0.21, last updated at
-14. August 2000) describes the @command{texi2html} Perl
-script which converters
-@uref{http://www.texinfo.org,Texinfo}
-into @acronym{HTML}.
-
-
-Please send bug reports about this manual to Karl Heinz
-Marbaise @email{khmarbaise@@gmx.de}. Please state exact
-version/edition of the manual (can be found at start of
-Texinfo source file; use the entry Id under Revisions).
-
-Please note:
-@example
-This manual is currently under
-construction and of course incomplete ;-)
-@end example
-
-@menu
-* Overview::                  Overview about @command{texi2html}.
-* Installation::              Installation process.
-* Customizing::               Customizing.
-* CustomizingExpand::         Customizing what gets expanded.
-* CustomizingPage::           Customizing page layout.
-* CustHTML::                  Customizing HTML.
-* InitFile::                  Initialization files.
-* IFOs::                      Initialization file options
-* Options::                   Command Line Options.
-
-* Reference::                 Reference Manual of functions.
-
-
-/// The Detailed Node Listing ///
-
---- Overview ---
-
-* whytexi2html::              Why @file{texi2html} and
-                                not @file{makeinfo}?.
-
-
---- Installation process ---
-
-* Installation::             Installation process.
-
-
---- Initialization file options ---
-
-* IFOnumber::                 Number sectioning.
-* IFOmenu::                   Avoid menu redundancy.
-* IFOCenterImage::            Center Image.
-* IFOExampleIndentCell::      Example Indent Cell.
-* IFOSampleIndentCell::       Sample Indent Cell.
-* IFOSmallFontSize::          Small Font Size.
-* IFOTopHeading::             Top Heading.
-* IFOIndexChapter::           Index Chapter.
-* IFOSplitIndex::             Split Index.
-* IFOhrefDirInsteadFile::     HREF Dir Instead file.
-
-
---- Command Line Options ---
-
-* OptionDebug::               Debugging.
-* OptionDocType::             DocType (HTML)
-* OptionCheck::               Checking files.
-* OptionExpand::              Expanding info, tex areas etc.
-* OptionGlossary::            Glossary.
-* OptionInvisible::           Invisible.
-* OptionIso::                 Iso.
-* OptionInclude::             Include directories.
-* OptionTopFile::             Top File.
-* OptionTocFile::             Table of content File.
-* OptionFrames::              Frames.
-* OptionMenu::                Menus.
-* OptionNumber::              Number sections.
-* OptionSplit::               Splitting.
-* OptionSectionNavigation::   Navigation.
-* OptionSubDir::              Subdirectory.
-* OptionShortExt::            Short extension.
-* OptionPrefix::              Prefix.
-* OptionOutput::              Output.
-* OptionShortRef::            Short Ref.
-* OptionIndexSummary::        Index Summary.
-* OptionVerbose::             Verbose.
-* OptionLanguage::            Language.
-* OptionL2H::                 La@TeX{}2HTML.
-
-
---- La@TeX{}2HTML for @code{@@math} and @code{@@tex} ---
-
-* OptionL2HL2H::              Where to find La@TeX{}2HTML.
-* OptionL2HSkip::             Skip calling La@TeX{}2HTML.
-* OptionL2Htmp::              Temporary files for La@TeX{}2HTML.
-
-
---- Indices ---
-
-* Indexop::                   Command Line Option Index.
-* Indexvr::                   Variable Index.
-* Indexcp::                   Concept Index.
-@end menu
-@node Overview, HowToGetHTML, Top, Top
-@chapter Overview about @command{texi2html}
-@uref{http://www.texinfo.org,Texinfo} is the official
-documentation format of the @uref{http://www.gnu.org,GNU}
-project. It uses a single source file to produce both
-online information and printed output.
-
-It is often proposed to have a way to produce
-@acronym{HTML} from Texinfo sources, like the GNU-Info
-format. It is much simpler to create one converter instead
-of writing all documentation new in @acronym{HTML}, cause
-there is so much documentation in Texinfo all over
-the world.
-
-A few time ago @command{makeinfo} wasn't able to produce
-@acronym{HTML} output format, but there are needth to have
-@acronym{HTML}. This was the borning hour for
-@command{texi2html}. The basic purpose of @file{texi2html}
-is to convert Texinfo documents into HTML.
-
-
-@menu
-* HowToGetHTML::       Ways to get HTML files.
-* whytexi2html::       Why texi2html and not makeinfo?.
-@end menu
-@node HowToGetHTML, whytexi2html, Overview, Overview
-@section Ways to get HTML
-You would like to @acronym{HTML} files out of your Texinfo
-files? There exist two ways which you can go.
-This first is to use @command{makeinfo} itself to produce
-@acronym{HTML} output. The second is to use
-@command{texi2html}.
-
-@node whytexi2html, Installation, HowToGetHTML, Overview
-@section Why @file{texi2html} and not @file{makeinfo}?
-The basic idea of @command{makeinfo}'s @acronym{HTML}
-output was to get an readable @acronym{HTML} output.
-Nothing sophisticated nor good styling just readable.
-
-The current development of texi2html is going into
-different direction.
-
-The main purpose is to get better styling, better design
-etc. of the created @acronym{HTML} pages. This way is
-supported using differnt command line options and of course
-possible changings of the initialization file to fit your
-own needs.
-
-The main disadvantage of @acronym{makeinfo}'s
-@acronym{HTML} output is your getting only one big file.
-This is of course readable but not very usable. The problem
-of this is, while you like to have splitted chapters or
-nodes the Texinfo source has to be read at minimum twice
-times. This makes it impossible to implement this in
-@command{makeinfo}. This would result in complete new
-implementation of @command{makeinfo}'s source.
-
-In contrast to the HTML produced by @command{makeinfo
---html} (the @command{makeinfo} program is part of the
-Texinfo distribution), the HTML output of @file{texi2html}
-is highly configurable. Among other differences, with
-@command{texi2html} allows you to customize your entire
-page layout (like headers, footers, style sheets, etc),
-split documents at various levels, and use
-@command{latex2html} to convert @code{@@tex} sections.
-
-@command{texi2html} should reasonably convert all Texinfo
-4.0 constructs. If not, please send a bug report to
-@email{texi2html@@mathematik.uni-kl.de}.
-
-@node Installation, Customizing, whytexi2html, Top
-@chapter Installation of @command{texi2html}
-@cindex Installation
-description of the installation process.
-What do you need?
-How?
-
-@node Customizing, CustomizingExpand, Installation, Top
-@chapter Customizing files
-@cindex Installation
-@opindex frames
-Result based on using @option{-frames}
-
-@example
-texi2html -V -frames texi2html.texi
-@end example
-Explanation of the output differences against default,
-whatever this is ;-)
-
-
-@node CustomizingExpand, CustomizingPage, Customizing, Top
-@chapter Customizing what gets expanded
-Test starting.
-
-@option{-expand info}
-@option{-expand tex}
-Take a look at optionexpand.
-
-@node CustomizingPage, CustHTML, CustomizingExpand, Top
-
-@chapter Customizing page layout
-This chapter is designed to help you to change the
-complete layout of the @acronym{HTML} output if you like to
-do so.
-
-
-a) General: Philosophy, and how it works@*
-aa) Navigation panels@*
-b) Top page@*
-c) Section pages@*
-
-
-
-
-@menu
-* TipsNewDesign::           .
-* CustPagePhil::            .
-* CustPagePhilNav::         .
-* CustPageTopPage::         .
-* CustPageSectionPages::    .
-* CustPageMiscPage::        .
-@end menu
-@node TipsNewDesign,CustPagePhil,CustomizingPage,CustomizingPage
-@section Tips how to create a new site design
-
-Here you can find information how you should work to pick
-up a new design with @command{texi2html}.
-
-
-@node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
-@section Page Layout and the philosophy
-
-@menu
-* CustPagePhilNav:: Navigation panels.
-@end menu
-@node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
-@subsection Navigation panels
-
-Head and foot Navigation panels.
-
-@node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
-@section Top Page
-@node CustPageSectionPages,CustPageMiscPage,CustPageTopPage,CustomizingPage
-@section Section Pages
-@node CustPageMiscPage,CustPagePageHeadToc,CustPageSectionPages,CustomizingPage
-@section Misc pages
-Here you can find information about the creation of the
-@dfn{ToC} (@i{Table Of content}), About---Page
-etc. and specialy how to change them to get your own
-design.
-
-@acronym{ToC} @code{T2H_DEFAULT_print_toc_frame} in
-@file{texi2html.init}
-
-@menu
-* CustPagePageHeadToc:: .
-* CustPagePageHead::    .
-* CustPagePageFoot::    .
-@end menu
-
-@node CustPagePageHeadToc,CustPagePageHead,CustPageMiscPage,CustPageMiscPage
-@subsection Table Of Contents
-
-The following code is the original code out of the
-initialization file (@pxref{InitFile,Initialization file}).
-
-@example
-sub T2H_DEFAULT_print_toc_frame
-@{
-  my $fh = shift;
-  &$T2H_print_page_head($fh);
-  print $fh <<EOT;
-<H2>Content</H2>
-EOT
-  print $fh map @{s/HREF=/target=\"main\" HREF=/; $_;@} @@stoc_lines;
-  print $fh "</BODY></HTML>\n";
-@}
-@end example
-
-As you can see it is very simple Perl Code, which can
-be changed more or less simple to fit you requirements
-(@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
-
-
-@node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
-@subsection Page header
-Page Head @code{T2H_DEFAULT_print_page_head}
-
-@example
-sub T2H_DEFAULT_print_page_head
-@{
-  my $fh = shift; 
-  my $longtitle = "$T2H_THISDOC@{title@}: $T2H_NAME@{This@}";
-  print $fh <<EOT;
-<HTML>
-$T2H_DOCTYPE
-<!-- Created on $T2H_TODAY by $THISPROG -->
-<!-- 
-$T2H_AUTHORS 
--->
-<HEAD>
-<TITLE>$longtitle</TITLE>
-
-<META NAME="description" CONTENT="$longtitle">
-<META NAME="keywords" CONTENT="$longtitle">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="$THISPROG">
-$T2H_EXTRA_HEAD
-</HEAD>
-
-<BODY $T2H_BODYTEXT>
-$T2H_AFTER_BODY_OPEN
-EOT
-@}
-@end example
-
-@node CustPagePageFoot, ,CustPagePageHead,CustPageMiscPage
-@subsection Page footer
-
-Page Foot @code{T2H_DEFAULT_print_page_foot}
-@node CustHTML, InitFile, CustomizingPage, Top
-
-@chapter Customizing HTML
-If you like to read the following section, it is assumed
-you are famillar with @acronym{HTML}. If not, you shouldn't
-read this, cause you don't know what we are talking about.
-
-Here you can find information how to change the
-@acronym{HTML} parts of a document. These are the
-header, body etc.
-
-These are the defaults which are
-part of the distribution as @file{texi2html.init}.
-
-
-How to do changes of the customization...
-needed steps.
-
-@menu
-* CustHTMLBody::        Customizing BODY Text.
-* CustHTMLHead::        Customizing Head.
-* CustHTMLBodyText::    Customizing Head.
-* CustHTMLPreBodyText:: Customizing Head.
-* CustHTMLAfterBody::   Customizing Head.
-@end menu
-@node CustHTMLBody,CustHTMLBodyText,,CustHTML
-@section Body
-
-@menu
-* CustHTMLBodyText::    Body Text.
-* CustHTMLPreBodyText:: PRE Body Text.
-* CustHTMLAfterBody::   After Body Text.
-@end menu
-@node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
-@subsection Body Text
-
-
-@vindex T2H_BODYTEXT
-
-@example
-$T2H_BODYTEXT =
-    . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
-    . 'TEXT="#000000" LINK="#0000FF" '
-    . 'VLINK="#800080" ALINK="#FF0000"';
-@end example
-
-If you like to change the basic color combination, you can
-change the entry @var{T2H_BODYTEXT}.
-
-@node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
-@subsection Body Text
-@node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
-@subsection After Body Text
-
-@vindex T2H_AFTER_BODY_OPEN
-@vindex T2H_PRE_BODY_CLOSE
-
-@vindex T2H_EXTRA_HEAD
-
-@example
-# text inserted after <BODY ...>
-$T2H_AFTER_BODY_OPEN = '';
-
-#text inserted before </BODY>
-$T2H_PRE_BODY_CLOSE = '';
-
-# this is used in footer
-$T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
-$T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
-
-# this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
-# can be used for <style> <script>, <meta> tags
-$T2H_EXTRA_HEAD = '';
-@end example
-
-The default output into the @acronym{HTML} file.
-@xref{OptionDocType}.
-
-
-The following code is produced by
-@code{T2H_DEFAULT_print_page_head}.
-
-Detailed information can be found at
-@ref{CustPagePageHead}.
-
-@example
-
-<HTML>
-$T2H_DOCTYPE
-<!-- Created on $T2H_TODAY by $THISPROG -->
-<!-- 
-$T2H_AUTHORS
--->
-<HEAD>
-<TITLE>$longtitle</TITLE>
-
-<META NAME="description" CONTENT="$longtitle">
-<META NAME="keywords" CONTENT="$longtitle">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="$THISPROG">
-$T2H_EXTRA_HEAD
-</HEAD>
-
-<BODY $T2H_BODYTEXT>
-$T2H_AFTER_BODY_OPEN
-@end example
-
-@node CustHTMLHead,,CustHTMLAfterBody,CustHTML
-@section Head
-@node InitFile, IFOs, CustHTML, Top
-
-@chapter Initialization file
-@cindex configure
-@cindex texi2html.init
-@cindex texi2htmlrc, global initialization
-@cindex .texi2htmlrc, user initialization
-@opindex sysconfdir
-@opindex init_file
-@file{texi2html.init}
-
-
-@menu
-* InitFileBasics::     The basics about
-                         initialization files.
-* InitFileGlobal::     Global initialization file.
-* InitFileUser::       User initialization file.
-* InitFileLoad::       Loadable initialization file.
-@end menu
-
-@node InitFileBasics,InitFileGlobal,InitFile,InitFile
-@section The basics about init files
-
-Initialization options are read first from
-@file{/usr/local/etc/texi2htmlrc} (the exact location being
-changeable with the @option{--sysconfdir=dir} option to the
-@command{configure} script), then from
-@file{$HOME/.texi2htmlrc}, then any command-line options
-including @option{-init_file} option; with later settings
-overriding earlier ones.
-
-The default initialization options are defined in the
-@file{texi2html.init} file contained in the @b{Texi2html}
-distribution (which gets included near the beginning of the
-@command{texi2html} script that gets installed).
-
-To customize @file{texi2html} it is best if you copy the
-appropriate sections from the @file{texi2html.init}
-contents into an appropriate local initialization file,
-make the necessary changes there, and then have
-@command{texi2html} read this initialization file by one of
-the means described above.
-
-For an example on what you can produces with
-@command{texi2html} have a look at the following sites:
-@uref{http://www.singular.uni-kl.de/Manual/html/}
-
-
-@node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
-@section Global initialization file
-@node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
-@section User initialization file
-@node InitFileLoad,,InitFileUser,InitFile
-@section Loadable initialization file
-@opindex init_file
-@option{-init_file}
-
-
-@node IFOs, Options, InitFile, Top
-
-@section Initialization file options
-This section describes in detail all options that can be used
-only in the initialization file (@file{texi2html.init}),
-and cannot be specified on the command line.
-This means the only way to change those
-options is first to copy the original @file{texi2html.init}
-to e.g.@: @file{texi2html.init.myown} and make changes to fit
-your needs.
-
-@menu
-* IFOnumber::             Number sectioning.
-* IFOmenu::               Avoid menu redundancy.
-* IFOCenterImage::        Center Image.
-* IFOExampleIndentCell::  Example Indent Cell.
-* IFOSampleIndentCell::   Sample Indent Cell.
-* IFOSmallFontSize::      Small Font Size.
-* IFOTopHeading::         Top Heading.
-* IFOIndexChapter::       Index Chapter.
-* IFOSplitIndex::         Split Index.
-* IFOhrefDirInsteadFile:: HREF Dir Instead file.
-@end menu
-
-@node IFOnumber, IFOmenu, IFOs, IFOs
-@subsection Number sections.
-@vindex T2H_NUMBER_SECTIONS
-@vindex T2H_NODE_NAME_IN_MENU
-if set, and @var{$T2H_NUMBER_SECTIONS} is set, then use node
-names in menu entries, instead of section names
-
-@var{$T2H_NODE_NAME_IN_MENU} = 0;
-
-@node IFOmenu, IFOCenterImage, IFOnumber, IFOs
-@subsection Avoid menu redundancy
-@cindex menu, redundancy
-@vindex T2H_AVOID_MENU_REDUNDANCY
-If set, and menu entry equals menu description, then do not print
-menu description.  Likewise, if node name equals entry name, do
-not print entry name.
-@var{$T2H_AVOID_MENU_REDUNDANCY} = 1;
-
-@node IFOCenterImage, IFOExampleIndentCell, IFOmenu, IFOs
-@subsection Center Image
-@cindex images, center
-@vindex T2H_CENTER_IMAGE
-if set, center @@image by default
-otherwise, do not center by default
-@var{$T2H_CENTER_IMAGE} = 1;
-
-@node IFOExampleIndentCell, IFOSampleIndentCell, IFOCenterImage, IFOs
-@subsection Example Indent Cell
-@cindex example, indentation
-@vindex T2H_EXAMPLE_INDENT_CELL
-used as indentation for block enclosing command
-@code{@@example}, etc If not empty, must be enclosed in
-@code{<td></td>}
-@var{$T2H_EXAMPLE_INDENT_CELL} = '<td>&nbsp;</td>';
-
-@node IFOSampleIndentCell, IFOSmallFontSize, IFOExampleIndentCell, IFOs
-@subsection Small Example Indent
-@cindex example, small indent
-@vindex T2H_SMALL_EXAMPLE_INDENT_CELL
-same as above, only for @code{@@small}
-$T2H_SMALL_EXAMPLE_INDENT_CELL = "<td>&nbsp;</td>";
-
-@node IFOSmallFontSize, IFOTopHeading, IFOSampleIndentCell, IFOs
-@subsection Small Font Size
-@cindex Font Size, small
-@vindex T2H_SMALL_FONT_SIZE
-# font size for @@small
-$T2H_SMALL_FONT_SIZE = "-1";
-
-@node IFOTopHeading, IFOIndexChapter, IFOSmallFontSize, IFOs
-@subsection Top Heading
-@vindex T2H_TOP_HEADING
-if non-empty, and no @code{@@..heading} appeared in Top
-node, then use this as header for top node/section,
-otherwise use value of  @code{@@settitle} or
-@code{@@shorttitle} (in that order)
-$T2H_TOP_HEADING = "";
-
-@node IFOIndexChapter, IFOSplitIndex, IFOTopHeading, IFOs
-@subsection Index Chapter
-@cindex Chapter, Index
-@vindex T2H_INDEX_CHAPTER
-if set, use this chapter for @strong{Index} button, else
-use first chapter whose name matches @strong{index} (case insensitive)
-$T2H_INDEX_CHAPTER = "";
-
-@node IFOSplitIndex, IFOhrefDirInsteadFile, IFOIndexChapter, IFOs
-@subsection Split Index
-@cindex Index, split
-@vindex T2H_SPLIT_INDEX
-if set and @var{$T2H_SPLIT} is set, then split index pages
-at the next letter after they have more than that many
-entries
-
-$T2H_SPLIT_INDEX = 100;
-
-@node IFOhrefDirInsteadFile, , IFOSplitIndex, IFOs
-@subsection HREF Dir Instead File.
-@cindex HREF Dir instead file
-@vindex T2H_HREF_DIR_INSTEAD_FILE
-if set (e.g., to @file{index.html}) replace @strong{HREF}'s
-to this file  (i.e., to @file{index.html}) by @file{./}
-
-$T2H_HREF_DIR_INSTEAD_FILE = "";
-@node Options, Reference, IFOs, Top
-
-@chapter Command Line Options
-
-@menu
-* OptionDebug::               Debugging.
-* OptionDocType::             DocType (HTML)
-* OptionCheck::               Checking files.
-* OptionExpand::              Expanding info, tex areas etc.
-* OptionGlossary::            Glossary.
-* OptionInvisible::           Invisible.
-* OptionIso::                 Iso.
-* OptionInclude::             Include directories.
-* OptionTopFile::             Top File.
-* OptionTocFile::             Table of content File.
-* OptionFrames::              Frames.
-* OptionMenu::                Menus.
-* OptionNumber::              Number sections.
-* OptionSplit::               Splitting.
-* OptionSectionNavigation::   Navigation.
-* OptionSubDir::              Subdirectory.
-* OptionShortExt::            Short extension.
-* OptionPrefix::              Prefix.
-* OptionOutput::              Output.
-* OptionShortRef::            Short Ref.
-* OptionIndexSummary::        Index Summary.
-* OptionVerbose::             Verbose.
-* OptionLanguage::            Language.
-* OptionL2H::                 La@TeX{}2HTML.
-@end menu
-
-
-@node OptionDebug, OptionDocType, Options, Options
-@section Debugging
-@cindex Debugging
-@vindex DEBUG_TOC
-@vindex DEBUG_INDEX
-@vindex DEBUG_BIB
-@vindex DEBUG_GLOSS
-@vindex DEBUG_DEF
-@vindex DEBUG_HTML
-@vindex DEBUG_USER
-@vindex DEBUG_L2H
-@opindex debug
-
-@option{-debug}
-
-debugging: 0 --- no debugging; other values; see beginning
-of texi2html
-
-@var{$DEBUG_TOC}   =  1;
-@var{$DEBUG_INDEX} =  2;
-@var{$DEBUG_BIB}   =  4;
-@var{$DEBUG_GLOSS} =  8;
-@var{$DEBUG_DEF}   = 16;
-@var{$DEBUG_HTML}  = 32;
-@var{$DEBUG_USER}  = 64;
-@var{$DEBUG_L2H}   = 128;
-
-@node OptionDocType, OptionCheck, OptionDebug, Options
-@section DocType
-@cindex HTML, Doc Type
-@opindex doctype
-@vindex T2H_DOCTYPE
-@option{-doctype}
-
-@example
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-@end example
-
-@node OptionCheck, OptionExpand, OptionDocType, Options
-@section Check
-@cindex Texinfo, checking
-@opindex check
-@vindex T2H_CHECK
-@option{-check}
-if set, only check files and give the list of all things
-that look like untranslated Texinfo commands
-
-@node OptionExpand, OptionGlossary, OptionCheck, Options
-@section Expand
-@opindex expand
-@vindex T2H_EXPAND
-@option{-expand}
-if set to @strong{tex} (or, @strong{info}) expand
-@code{@@iftex} and @code{@@tex} (or, @code{@@ifinfo})
-sections else, neither expand @code{@@iftex}, @code{@@tex},
-nor @code{@@ifinfo} sections
-
-
-@node OptionGlossary, OptionInvisible, OptionExpand, Options
-@section Glossary
-@cindex HTML, Glossary
-@cindex Texinfo, Glossary
-@opindex glossary
-@vindex T2H_USE_GLOSSARY
-@option{-glossary}
-if set, uses section named @strong{Footnotes} for glossary
-
-@node OptionInvisible, OptionIso, OptionGlossary, Options
-@section Invisible
-@cindex Mark, invisible
-@cindex invisible, Mark
-@opindex invisible
-@vindex T2H_INVISIBLE_MARK
-@option{-invisible}
-@var{$T2H_INVISIBLE_MARK} is the text used to create
-invisible destination anchors for index links (you can for
-instance use the @file{invisible.xbm} file shipped with
-this program). This is a workaround for a known bug of many
-@acronym{WWW} browsers, including Netscape. For me, it
-works fine without it --- on the contrary: if there, it
-inserts space between headers and start of text (obachman
-3/99)
-
-@example
-$T2H_INVISIBLE_MARK = "";
-# $T2H_INVISIBLE_MARK = '&#160;';
-@end example
-
-@node OptionIso, OptionInclude, OptionInvisible, Options
-@section Iso
-@cindex ISO8859
-@cindex Copyright
-@opindex iso
-@vindex T2H_USE_ISO
-@option{-iso}
-
-if set, ISO8859 characters are used for special symbols
-(like Copyright @code{@copyright{}}, etc)
-
-$T2H_USE_ISO = 0;
-
-@node OptionInclude, OptionTopFile, OptionIso, Options
-@section Include Directory
-@vindex Include directories
-@opindex I
-@vindex T2H_INCLUDE_DIRS
-@option{-I}
-
-list directories where @code{@@include} files are searched for
-(besides the directory of the doc file) additional
-@option{-I} args are add to this list.
-
-@@T2H_INCLUDE_DIRS = (".");
-
-@node OptionTopFile, OptionTocFile, OptionInclude, Options
-@section Top File
-@cindex Top Level file
-@cindex HTML, index.html
-@opindex top_file
-@vindex T2H_TOP_FILE
-@option{-top_file}
-uses file of this name for top-level file
-extension is manipulated appropriately, if necessary.
-If empty, @file{<basename of document>.html} is used.
-Typically, you would set this to @file{index.html}.
-
-$T2H_TOP_FILE = "";
-
-@node OptionTocFile, OptionFrames, OptionTopFile, Options
-@section Table Of content File
-@cindex Table of content file
-@opindex toc_file
-@vindex T2H_TOC_FILE
-@option{-toc_file}
-uses file of this name for table of contents.  File extension
-is manipulated appropriately, if necessary. If empty,
-@file{<basename of document>_toc.html} is used.
-
-$T2H_TOC_FILE = "";
-
-@node OptionFrames, OptionMenu, OptionTocFile, Options
-@section Frames
-@vindex HTML, frames
-@vindex HTML 4.0, frames
-@opindex frames
-@vindex T2H_FRAMES
-@option{-frames}
-if set, output two additional files which use HTML 4.0
-@b{frames}.
-
-$T2H_FRAMES = 0;
-
-@node OptionMenu, OptionNumber, OptionFrames, Options
-@section Menus
-@cindex HTML, menu
-@cindex Texinfo, menu
-@opindex menu
-@opindex nomenu
-@vindex T2H_SHOW_MENU
-@option{-menu} or @option{-nomenu} if set, show the Texinfo
-menus
-
-$T2H_SHOW_MENU = 1;
-
-@node OptionNumber, OptionSplit, OptionMenu, Options
-@section Number sections
-@cindex Section numbering
-@opindex number
-@opindex nonumber
-@vindex T2H_NUMBER_SECTIONS
-@option{-number} @option{-nonumber}
-if set, number sections and show section names and numbers
-in references and menus
-
-
-@node OptionSplit, OptionSectionNavigation, OptionNumber, Options
-@section Split
-@cindex HTML, split
-@cindex File, split
-@opindex split
-@vindex T2H_SPLIT
-@option{-split section|chapter|none}
-if set to @strong{section} (resp. @strong{chapter}) create one
-@acronym{HTML} file per (sub)section (resp. chapter) and
-separate pages for Top, ToC, Overview, Index, Glossary,
-About.  Otherwise, create a monolithic @acronym{HTML} file that
-contains the whole document.
-
-#$T2H_SPLIT = 'section';
-$T2H_SPLIT = undef;
-
-@node OptionSectionNavigation, OptionSubDir, OptionSplit, Options
-@section Section navigation
-@cindex HTML, Navigation
-@opindex section_navigation
-@opindex no-section_navigation
-@vindex T2H_SECTION_NAVIGATION
-@option{-section_navigation}|
-@option{-no-section_navigation}
-
-if set, then navigation panels are printed at the beginning
-of each section and, possibly at the end (depending on
-whether or not there were more than 
-@var{$T2H_WORDS_IN_PAGE} words on page). This is most useful
-if you do not want to have section navigation on
-@option{-split chapter}
-
-
-@node OptionSubDir, OptionShortExt, OptionSectionNavigation, Options
-@section Subdirectory
-@cindex Subdirectory
-@vindex T2H_SUBDIR
-@option{-subdir}
-If set, then put result files in the specified directory.
-If not set, then result files are put into the current directory.
-
-@var{$T2H_SUBDIR} = undef;
-
-@node OptionShortExt, OptionPrefix, OptionSubDir, Options
-@section Short extension
-@cindex HTML, .htm extension
-@cindex HTML, .html extension
-@cindex extension, .html
-@cindex extension, .htm
-@vindex T2H_SHORTEXTN
-@opindex short_extn
-@option{-short_extn}
-If this is set, then all @acronym{HTML} files will have extension
-@file{.htm} instead of @file{.html}. This is helpful when
-shipping the document to DOS-based systems.
-@var{$T2H_SHORTEXTN} = 0;
-
-@node OptionPrefix, OptionOutput, OptionShortExt, Options
-@section Prefix
-@cindex Prefix
-@vindex T2H_PREFIX
-@opindex prefix
-@option{-prefix}
-Set the output file prefix, prepended to all @file{.html},
-@file{.gif} and @file{.pl} files.
-By default, this is the basename of the document
-
-@var{$T2H_PREFIX} = "";
-
-@node OptionOutput, OptionShortRef, OptionPrefix, Options
-@section Output filename
-@cindex Output filename
-@cindex Filename, output
-@vindex T2H_OUT
-@opindex o
-@opindex out_file
-
-@option{-o filename}|@option{-out_file}
-If set, generate monolithic document output @acronym{HTML}
-into @file{filename}.
-
-@node OptionShortRef, OptionIndexSummary, OptionOutput, Options
-@section Short Cross References
-@cindex References, short
-@cindex sections without numbers
-@vindex T2H_SHORT_REF
-@opindex short_ref
-@option{-short_ref}
-if set cross-references are given without section numbers
-
-@node OptionIndexSummary, OptionVerbose, OptionShortRef, Options
-@section Index Summary
-@cindex Index, Summary
-@cindex Summary Index
-@cindex HTML, Index
-@vindex T2H_IDX_SUMMARY
-@opindex idx_sum
-@option{-idx_sum}
-If value is set, then for each @code{@@prinindex $what}
-@file{$docu_name_$what.idx} is created which contains lines of the
-form @strong{$key\t$ref} sorted alphabetically (case
-matters).
-
-@node OptionVerbose, OptionLanguage, OptionIndexSummary, Options
-@section Verbose output
-@cindex Output, verbose
-@cindex Verbose output
-@cindex Debugging, verbose output
-@vindex T2H_VERBOSE
-@opindex verbose
-@option{-verbose}
-if set, chatter about what we are doing.
-
-@node OptionLanguage, OptionL2H, OptionVerbose, Options
-@section Language Support
-@cindex Language Support
-@cindex Support different languages
-@vindex $T2H_LANG
-@vindex $T2H_WORDS
-@opindex lang
-@option{-lang}
-For page titles, use
-@code{$T2H_WORDS->@{$T2H_LANG@}->@{...@}} as title. To add
-a new language, supply list of titles (see @var{$T2H_WORDS}),
-and use ISO 639 language codes (see e.g.@: perl module
-@file{Locale-Codes-1.02.tar.gz} for definitions).
-
-If you don't give a @option{-lang} then we got it from the
-Texinfo source file (@@documentlanguage
-@pxref{documentlanguage,,,Texinfo}). If there is no
-@code{@@documentlanguage} we use the default @code{en} for
-the language.
-@node OptionL2H, , OptionLanguage, Options
-@section La@TeX{}2HTML for @code{@@math} and @code{@@tex}
-@cindex La@TeX{}2HTML
-@cindex Conversion of @@math and @@tex
-@cindex @@tex
-@cindex @@math
-@vindex T2H_L2H
-@opindex l2h
-@option{-l2h}
-if set, uses @command{latex2html} for generation of math
-content.
-
-@menu
-* OptionL2HL2H::    Where to find La@TeX{}2HTML.
-* OptionL2HSkip::   Skip calling La@TeX{}2HTML.
-* OptionL2Htmp::    Temporary files for La@TeX{}2HTML.
-@end menu
-
-@node OptionL2HL2H, OptionL2HSkip, OptionL2H, OptionL2H
-@subsection Where to find @command{latex2html}
-@cindex location, La@TeX{}2HTML
-@cindex La@TeX{}2HTML, location
-@vindex T2H_L2H_L2H
-@opindex l2h_l2h
-@option{-l2h_l2h}
-name/location of @command{latex2html} program.
-
-@node OptionL2HSkip, OptionL2Htmp, OptionL2HL2H, OptionL2H
-@subsection Skip calling La@TeX{}2HTML
-@cindex La@TeX{}2HTML, skip calling
-@vindex T2H_L2H_SKIP
-@opindex l2h_skip
-@option{-l2h_skip}
-If set, skips actual call to @command{latex2html}: tries to
-reuse previously generated content, instead.
-
-@node OptionL2Htmp, , OptionL2HSkip, OptionL2H
-@subsection Temporary files for La@TeX{}2HTML
-@cindex Temporary, La@TeX{}2HTML
-@cindex La@TeX{}2HTML, Temporary files
-@vindex T2H_L2H_TMP
-@opindex l2h_tmp
-@option{-l2h_tmp}
-If set, l2h uses this directory for temporary files.  The
-path leading to this directory may not contain a dot (i.e.,
-a @samp{.}); otherwise, l2h will fail.
-@node Reference, Indexop, Options, Top
-
-@appendix Function Reference
-
-@menu
-* Refptocframe::           Print ToC Frame.
-* Refpphead::              Print page head.
-@end menu
-
-@node Refptocframe,Refpphead,,Reference
-@appendixsec Print ToC Frame
-
-
-@defun T2H_DEFAULT_print_toc_frame (FileName)
-
-Description of the subroutine.
-What does it do? Which parameters it needs etc.
-@end defun
-
-
-@node Refpphead,,Refptocframe,Reference
-@appendixsec Print Page Head
-@defun T2H_DEFAULT_print_page_head (FileName)
-
-Description of the subroutine.
-What does it do? Which parameters it needs etc.
-@end defun
-@node Indexop, Indexvr, Reference, Top
-@appendix Indices
-@appendixsec Command Line Option Index
-@printindex op
-@node Indexvr, Indexcp, Indexop, Top
-@appendixsec Variable Index
-@printindex vr
-@node Indexcp, , Indexvr, Top
-@appendixsec Concept Index
-@printindex cp
-
+./version.texi(,1) 
+texi2html.texi(,87) This file documents the texi2html script which converts
+texi2html.texi(,88) Texinfo into HTML.
+texi2html.texi(,89) 
+texi2html.texi(,90) Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+texi2html.texi(,91) 
+texi2html.texi(,92) This edition is for texi2html version 1.67,
+texi2html.texi(,93) 15 September 2001.
+texi2html.texi(,94) 
+texi2html.texi(,95) Permission is granted to make and distribute verbatim
+texi2html.texi(,96) copies of this manual provided the copyright notice and
+texi2html.texi(,97) this permission notice are preserved on all copies.
+texi2html.texi(,98) 
+texi2html.texi(,107) Permission is granted to copy and distribute modified
+texi2html.texi(,108) versions of this manual under the conditions for verbatim
+texi2html.texi(,109) copying, provided that the entire resulting derived work is
+texi2html.texi(,110) distributed under the terms of a permission notice
+texi2html.texi(,111) identical to this one.
+texi2html.texi(,112) 
+texi2html.texi(,113) Permission is granted to copy and distribute translations
+texi2html.texi(,114) of this manual into another language, under the above
+texi2html.texi(,115) conditions for modified versions, except that this
+texi2html.texi(,116) permission notice may be stated in a translation approved
+texi2html.texi(,117) by the Free Software Foundation.
+texi2html.texi(,157) 
+texi2html.texi(,158) 
+texi2html.texi(,161) @node Top, Overview, (dir), (dir)
+texi2html.texi(,162) @top Texi2html
+texi2html.texi(,168) 
+texi2html.texi(,169) This Manual (Edition 0.21, last updated at
+texi2html.texi(,170) 14. August 2000) describes the @command{texi2html} Perl
+texi2html.texi(,171) script which converters
+texi2html.texi(,176) @uref{http://www.texinfo.org,Texinfo}
+texi2html.texi(,181) into @acronym{HTML}.
+texi2html.texi(,182) 
+texi2html.texi(,186) 
+texi2html.texi(,187) Please send bug reports about this manual to Karl Heinz
+texi2html.texi(,188) Marbaise @email{khmarbaise@@gmx.de}. Please state exact
+texi2html.texi(,189) version/edition of the manual (can be found at start of
+texi2html.texi(,190) Texinfo source file; use the entry Id under Revisions).
+texi2html.texi(,191) 
+texi2html.texi(,192) Please note:
+texi2html.texi(,193) @example
+texi2html.texi(,194) This manual is currently under
+texi2html.texi(,195) construction and of course incomplete ;-)
+texi2html.texi(,196) @end example
+texi2html.texi(,197) 
+texi2html.texi(,201) @menu
+texi2html.texi(,203) * Overview::                  Overview about @command{texi2html}.
+texi2html.texi(,204) * Installation::              Installation process.
+texi2html.texi(,205) * Customizing::               Customizing.
+texi2html.texi(,206) * CustomizingExpand::         Customizing what gets expanded.
+texi2html.texi(,207) * CustomizingPage::           Customizing page layout.
+texi2html.texi(,208) * CustHTML::                  Customizing HTML.
+texi2html.texi(,209) * InitFile::                  Initialization files.
+texi2html.texi(,211) * IFOs::                      Initialization file options
+texi2html.texi(,212) * Options::                   Command Line Options.
+texi2html.texi(,213) 
+texi2html.texi(,214) * Reference::                 Reference Manual of functions.
+texi2html.texi(,215) 
+texi2html.texi(,217) 
+texi2html.texi(,218) /// The Detailed Node Listing ///
+texi2html.texi(,219) 
+texi2html.texi(,220) --- Overview ---
+texi2html.texi(,221) 
+texi2html.texi(,222) * whytexi2html::              Why @file{texi2html} and
+texi2html.texi(,223)                                 not @file{makeinfo}?.
+texi2html.texi(,224) 
+texi2html.texi(,225) 
+texi2html.texi(,226) --- Installation process ---
+texi2html.texi(,227) 
+texi2html.texi(,228) * Installation::             Installation process.
+texi2html.texi(,229) 
+texi2html.texi(,230) 
+texi2html.texi(,231) --- Initialization file options ---
+texi2html.texi(,232) 
+texi2html.texi(,233) * IFOnumber::                 Number sectioning.
+texi2html.texi(,234) * IFOmenu::                   Avoid menu redundancy.
+texi2html.texi(,235) * IFOCenterImage::            Center Image.
+texi2html.texi(,236) * IFOExampleIndentCell::      Example Indent Cell.
+texi2html.texi(,237) * IFOSampleIndentCell::       Sample Indent Cell.
+texi2html.texi(,238) * IFOSmallFontSize::          Small Font Size.
+texi2html.texi(,239) * IFOTopHeading::             Top Heading.
+texi2html.texi(,240) * IFOIndexChapter::           Index Chapter.
+texi2html.texi(,241) * IFOSplitIndex::             Split Index.
+texi2html.texi(,242) * IFOhrefDirInsteadFile::     HREF Dir Instead file.
+texi2html.texi(,243) 
+texi2html.texi(,244) 
+texi2html.texi(,245) --- Command Line Options ---
+texi2html.texi(,246) 
+texi2html.texi(,247) * OptionDebug::               Debugging.
+texi2html.texi(,248) * OptionDocType::             DocType (HTML)
+texi2html.texi(,249) * OptionCheck::               Checking files.
+texi2html.texi(,250) * OptionExpand::              Expanding info, tex areas etc.
+texi2html.texi(,251) * OptionGlossary::            Glossary.
+texi2html.texi(,252) * OptionInvisible::           Invisible.
+texi2html.texi(,253) * OptionIso::                 Iso.
+texi2html.texi(,254) * OptionInclude::             Include directories.
+texi2html.texi(,255) * OptionTopFile::             Top File.
+texi2html.texi(,256) * OptionTocFile::             Table of content File.
+texi2html.texi(,257) * OptionFrames::              Frames.
+texi2html.texi(,258) * OptionMenu::                Menus.
+texi2html.texi(,259) * OptionNumber::              Number sections.
+texi2html.texi(,260) * OptionSplit::               Splitting.
+texi2html.texi(,261) * OptionSectionNavigation::   Navigation.
+texi2html.texi(,262) * OptionSubDir::              Subdirectory.
+texi2html.texi(,263) * OptionShortExt::            Short extension.
+texi2html.texi(,264) * OptionPrefix::              Prefix.
+texi2html.texi(,265) * OptionOutput::              Output.
+texi2html.texi(,266) * OptionShortRef::            Short Ref.
+texi2html.texi(,267) * OptionIndexSummary::        Index Summary.
+texi2html.texi(,268) * OptionVerbose::             Verbose.
+texi2html.texi(,269) * OptionLanguage::            Language.
+texi2html.texi(,270) * OptionL2H::                 La@TeX{}2HTML.
+texi2html.texi(,271) 
+texi2html.texi(,272) 
+texi2html.texi(,273) --- La@TeX{}2HTML for @code{@@math} and @code{@@tex} ---
+texi2html.texi(,274) 
+texi2html.texi(,275) * OptionL2HL2H::              Where to find La@TeX{}2HTML.
+texi2html.texi(,276) * OptionL2HSkip::             Skip calling La@TeX{}2HTML.
+texi2html.texi(,277) * OptionL2Htmp::              Temporary files for La@TeX{}2HTML.
+texi2html.texi(,278) 
+texi2html.texi(,279) 
+texi2html.texi(,280) --- Indices ---
+texi2html.texi(,281) 
+texi2html.texi(,282) * Indexop::                   Command Line Option Index.
+texi2html.texi(,283) * Indexvr::                   Variable Index.
+texi2html.texi(,284) * Indexcp::                   Concept Index.
+texi2html.texi(,286) @end menu
+texi2html.texi(,290) @node Overview, HowToGetHTML, Top, Top
+texi2html.texi(,291) @chapter Overview about @command{texi2html}
+texi2html.texi(,292) @uref{http://www.texinfo.org,Texinfo} is the official
+texi2html.texi(,293) documentation format of the @uref{http://www.gnu.org,GNU}
+texi2html.texi(,294) project. It uses a single source file to produce both
+texi2html.texi(,295) online information and printed output.
+texi2html.texi(,296) 
+texi2html.texi(,298) It is often proposed to have a way to produce
+texi2html.texi(,299) @acronym{HTML} from Texinfo sources, like the GNU-Info
+texi2html.texi(,300) format. It is much simpler to create one converter instead
+texi2html.texi(,301) of writing all documentation new in @acronym{HTML}, cause
+texi2html.texi(,302) there is so much documentation in Texinfo all over
+texi2html.texi(,303) the world.
+texi2html.texi(,304) 
+texi2html.texi(,305) A few time ago @command{makeinfo} wasn't able to produce
+texi2html.texi(,306) @acronym{HTML} output format, but there are needth to have
+texi2html.texi(,307) @acronym{HTML}. This was the borning hour for
+texi2html.texi(,308) @command{texi2html}. The basic purpose of @file{texi2html}
+texi2html.texi(,309) is to convert Texinfo documents into HTML.
+texi2html.texi(,310) 
+texi2html.texi(,311) 
+texi2html.texi(,312) @menu
+texi2html.texi(,313) * HowToGetHTML::       Ways to get HTML files.
+texi2html.texi(,314) * whytexi2html::       Why texi2html and not makeinfo?.
+texi2html.texi(,315) @end menu
+texi2html.texi(,317) @node HowToGetHTML, whytexi2html, Overview, Overview
+texi2html.texi(,318) @section Ways to get HTML
+texi2html.texi(,319) You would like to @acronym{HTML} files out of your Texinfo
+texi2html.texi(,320) files? There exist two ways which you can go.
+texi2html.texi(,321) This first is to use @command{makeinfo} itself to produce
+texi2html.texi(,322) @acronym{HTML} output. The second is to use
+texi2html.texi(,323) @command{texi2html}.
+texi2html.texi(,324) 
+texi2html.texi(,326) @node whytexi2html, Installation, HowToGetHTML, Overview
+texi2html.texi(,327) @section Why @file{texi2html} and not @file{makeinfo}?
+texi2html.texi(,328) The basic idea of @command{makeinfo}'s @acronym{HTML}
+texi2html.texi(,329) output was to get an readable @acronym{HTML} output.
+texi2html.texi(,330) Nothing sophisticated nor good styling just readable.
+texi2html.texi(,331) 
+texi2html.texi(,332) The current development of texi2html is going into
+texi2html.texi(,333) different direction.
+texi2html.texi(,334) 
+texi2html.texi(,335) The main purpose is to get better styling, better design
+texi2html.texi(,336) etc. of the created @acronym{HTML} pages. This way is
+texi2html.texi(,337) supported using differnt command line options and of course
+texi2html.texi(,338) possible changings of the initialization file to fit your
+texi2html.texi(,339) own needs.
+texi2html.texi(,340) 
+texi2html.texi(,341) The main disadvantage of @acronym{makeinfo}'s
+texi2html.texi(,342) @acronym{HTML} output is your getting only one big file.
+texi2html.texi(,343) This is of course readable but not very usable. The problem
+texi2html.texi(,344) of this is, while you like to have splitted chapters or
+texi2html.texi(,345) nodes the Texinfo source has to be read at minimum twice
+texi2html.texi(,346) times. This makes it impossible to implement this in
+texi2html.texi(,347) @command{makeinfo}. This would result in complete new
+texi2html.texi(,348) implementation of @command{makeinfo}'s source.
+texi2html.texi(,349) 
+texi2html.texi(,351) In contrast to the HTML produced by @command{makeinfo
+texi2html.texi(,352) --html} (the @command{makeinfo} program is part of the
+texi2html.texi(,353) Texinfo distribution), the HTML output of @file{texi2html}
+texi2html.texi(,354) is highly configurable. Among other differences, with
+texi2html.texi(,355) @command{texi2html} allows you to customize your entire
+texi2html.texi(,356) page layout (like headers, footers, style sheets, etc),
+texi2html.texi(,357) split documents at various levels, and use
+texi2html.texi(,358) @command{latex2html} to convert @code{@@tex} sections.
+texi2html.texi(,359) 
+texi2html.texi(,360) @command{texi2html} should reasonably convert all Texinfo
+texi2html.texi(,361) 4.0 constructs. If not, please send a bug report to
+texi2html.texi(,362) @email{texi2html@@mathematik.uni-kl.de}.
+texi2html.texi(,363) 
+texi2html.texi(,365) @node Installation, Customizing, whytexi2html, Top
+texi2html.texi(,366) @chapter Installation of @command{texi2html}
+texi2html.texi(,367) @cindex Installation
+texi2html.texi(,368) description of the installation process.
+texi2html.texi(,369) What do you need?
+texi2html.texi(,370) How?
+texi2html.texi(,371) 
+texi2html.texi(,373) @node Customizing, CustomizingExpand, Installation, Top
+texi2html.texi(,374) @chapter Customizing files
+texi2html.texi(,375) @cindex Installation
+texi2html.texi(,376) @opindex frames
+texi2html.texi(,379) Result based on using @option{-frames}
+texi2html.texi(,380) 
+texi2html.texi(,381) @example
+texi2html.texi(,382) texi2html -V -frames texi2html.texi
+texi2html.texi(,383) @end example
+texi2html.texi(,384) Explanation of the output differences against default,
+texi2html.texi(,385) whatever this is ;-)
+texi2html.texi(,386) 
+texi2html.texi(,387) 
+texi2html.texi(,389) @node CustomizingExpand, CustomizingPage, Customizing, Top
+texi2html.texi(,390) @chapter Customizing what gets expanded
+texi2html.texi(,393) Test starting.
+texi2html.texi(,394) 
+texi2html.texi(,395) @option{-expand info}
+texi2html.texi(,396) @option{-expand tex}
+texi2html.texi(,397) Take a look at optionexpand.
+texi2html.texi(,398) 
+texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
+./custpage.texi(,1) 
+./custpage.texi(,37) @chapter Customizing page layout
+./custpage.texi(,38) This chapter is designed to help you to change the
+./custpage.texi(,39) complete layout of the @acronym{HTML} output if you like to
+./custpage.texi(,40) do so.
+./custpage.texi(,41) 
+./custpage.texi(,42) 
+./custpage.texi(,43) a) General: Philosophy, and how it works@*
+./custpage.texi(,44) aa) Navigation panels@*
+./custpage.texi(,45) b) Top page@*
+./custpage.texi(,46) c) Section pages@*
+./custpage.texi(,47) 
+./custpage.texi(,48) 
+./custpage.texi(,49) 
+./custpage.texi(,50) 
+./custpage.texi(,51) @menu
+./custpage.texi(,52) * TipsNewDesign::           .
+./custpage.texi(,53) * CustPagePhil::            .
+./custpage.texi(,54) * CustPagePhilNav::         .
+./custpage.texi(,55) * CustPageTopPage::         .
+./custpage.texi(,56) * CustPageSectionPages::    .
+./custpage.texi(,57) * CustPageMiscPage::        .
+./custpage.texi(,58) @end menu
+./custpage.texi(,60) @node TipsNewDesign,CustPagePhil,CustomizingPage,CustomizingPage
+./custpage.texi(,61) @section Tips how to create a new site design
+./custpage.texi(,62) 
+./custpage.texi(,63) Here you can find information how you should work to pick
+./custpage.texi(,64) up a new design with @command{texi2html}.
+./custpage.texi(,65) 
+./custpage.texi(,66) 
+./custpage.texi(,68) @node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
+./custpage.texi(,69) @section Page Layout and the philosophy
+./custpage.texi(,70) 
+./custpage.texi(,71) @menu
+./custpage.texi(,72) * CustPagePhilNav:: Navigation panels.
+./custpage.texi(,73) @end menu
+./custpage.texi(,75) @node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
+./custpage.texi(,76) @subsection Navigation panels
+./custpage.texi(,77) 
+./custpage.texi(,78) Head and foot Navigation panels.
+./custpage.texi(,79) 
+./custpage.texi(,81) @node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
+./custpage.texi(,82) @section Top Page
+./custpage.texi(,84) @node CustPageSectionPages,CustPageMiscPage,CustPageTopPage,CustomizingPage
+./custpage.texi(,85) @section Section Pages
+./custpage.texi(,87) @node CustPageMiscPage,CustPagePageHeadToc,CustPageSectionPages,CustomizingPage
+./custpage.texi(,88) @section Misc pages
+./custpage.texi(,89) Here you can find information about the creation of the
+./custpage.texi(,90) @dfn{ToC} (@i{Table Of content}), About---Page
+./custpage.texi(,91) etc. and specialy how to change them to get your own
+./custpage.texi(,92) design.
+./custpage.texi(,93) 
+./custpage.texi(,94) @acronym{ToC} @code{T2H_DEFAULT_print_toc_frame} in
+./custpage.texi(,95) @file{texi2html.init}
+./custpage.texi(,96) 
+./custpage.texi(,97) @menu
+./custpage.texi(,98) * CustPagePageHeadToc:: .
+./custpage.texi(,99) * CustPagePageHead::    .
+./custpage.texi(,100) * CustPagePageFoot::    .
+./custpage.texi(,101) @end menu
+./custpage.texi(,102) 
+./custpage.texi(,104) @node CustPagePageHeadToc,CustPagePageHead,CustPageMiscPage,CustPageMiscPage
+./custpage.texi(,105) @subsection Table Of Contents
+./custpage.texi(,106) 
+./custpage.texi(,107) The following code is the original code out of the
+./custpage.texi(,108) initialization file (@pxref{InitFile,Initialization file}).
+./custpage.texi(,109) 
+./custpage.texi(,110) @example
+./custpage.texi(,111) sub T2H_DEFAULT_print_toc_frame
+./custpage.texi(,112) @{
+./custpage.texi(,113)   my $fh = shift;
+./custpage.texi(,114)   &$T2H_print_page_head($fh);
+./custpage.texi(,115)   print $fh <<EOT;
+./custpage.texi(,116) <H2>Content</H2>
+./custpage.texi(,117) EOT
+./custpage.texi(,118)   print $fh map @{s/HREF=/target=\"main\" HREF=/; $_;@} @@stoc_lines;
+./custpage.texi(,119)   print $fh "</BODY></HTML>\n";
+./custpage.texi(,120) @}
+./custpage.texi(,121) @end example
+./custpage.texi(,122) 
+./custpage.texi(,123) As you can see it is very simple Perl Code, which can
+./custpage.texi(,124) be changed more or less simple to fit you requirements
+./custpage.texi(,125) (@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
+./custpage.texi(,126) 
+./custpage.texi(,127) 
+./custpage.texi(,129) @node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
+./custpage.texi(,130) @subsection Page header
+./custpage.texi(,131) Page Head @code{T2H_DEFAULT_print_page_head}
+./custpage.texi(,132) 
+./custpage.texi(,135) @example
+./custpage.texi(,136) sub T2H_DEFAULT_print_page_head
+./custpage.texi(,137) @{
+./custpage.texi(,138)   my $fh = shift; 
+./custpage.texi(,139)   my $longtitle = "$T2H_THISDOC@{title@}: $T2H_NAME@{This@}";
+./custpage.texi(,140)   print $fh <<EOT;
+./custpage.texi(,141) <HTML>
+./custpage.texi(,142) $T2H_DOCTYPE
+./custpage.texi(,143) <!-- Created on $T2H_TODAY by $THISPROG -->
+./custpage.texi(,144) <!-- 
+./custpage.texi(,145) $T2H_AUTHORS 
+./custpage.texi(,146) -->
+./custpage.texi(,147) <HEAD>
+./custpage.texi(,148) <TITLE>$longtitle</TITLE>
+./custpage.texi(,149) 
+./custpage.texi(,150) <META NAME="description" CONTENT="$longtitle">
+./custpage.texi(,151) <META NAME="keywords" CONTENT="$longtitle">
+./custpage.texi(,152) <META NAME="resource-type" CONTENT="document">
+./custpage.texi(,153) <META NAME="distribution" CONTENT="global">
+./custpage.texi(,154) <META NAME="Generator" CONTENT="$THISPROG">
+./custpage.texi(,155) $T2H_EXTRA_HEAD
+./custpage.texi(,156) </HEAD>
+./custpage.texi(,157) 
+./custpage.texi(,158) <BODY $T2H_BODYTEXT>
+./custpage.texi(,159) $T2H_AFTER_BODY_OPEN
+./custpage.texi(,160) EOT
+./custpage.texi(,161) @}
+./custpage.texi(,162) @end example
+./custpage.texi(,163) 
+./custpage.texi(,165) @node CustPagePageFoot, ,CustPagePageHead,CustPageMiscPage
+./custpage.texi(,166) @subsection Page footer
+./custpage.texi(,167) 
+./custpage.texi(,168) Page Foot @code{T2H_DEFAULT_print_page_foot}
+texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
+./custhtml.texi(,1) 
+./custhtml.texi(,37) @chapter Customizing HTML
+./custhtml.texi(,38) If you like to read the following section, it is assumed
+./custhtml.texi(,39) you are famillar with @acronym{HTML}. If not, you shouldn't
+./custhtml.texi(,40) read this, cause you don't know what we are talking about.
+./custhtml.texi(,41) 
+./custhtml.texi(,42) Here you can find information how to change the
+./custhtml.texi(,43) @acronym{HTML} parts of a document. These are the
+./custhtml.texi(,44) header, body etc.
+./custhtml.texi(,45) 
+./custhtml.texi(,46) These are the defaults which are
+./custhtml.texi(,47) part of the distribution as @file{texi2html.init}.
+./custhtml.texi(,48) 
+./custhtml.texi(,49) 
+./custhtml.texi(,50) How to do changes of the customization...
+./custhtml.texi(,51) needed steps.
+./custhtml.texi(,53) 
+./custhtml.texi(,54) @menu
+./custhtml.texi(,55) * CustHTMLBody::        Customizing BODY Text.
+./custhtml.texi(,56) * CustHTMLHead::        Customizing Head.
+./custhtml.texi(,57) * CustHTMLBodyText::    Customizing Head.
+./custhtml.texi(,58) * CustHTMLPreBodyText:: Customizing Head.
+./custhtml.texi(,59) * CustHTMLAfterBody::   Customizing Head.
+./custhtml.texi(,60) @end menu
+./custhtml.texi(,62) @node CustHTMLBody,CustHTMLBodyText,,CustHTML
+./custhtml.texi(,63) @section Body
+./custhtml.texi(,64) 
+./custhtml.texi(,65) @menu
+./custhtml.texi(,66) * CustHTMLBodyText::    Body Text.
+./custhtml.texi(,67) * CustHTMLPreBodyText:: PRE Body Text.
+./custhtml.texi(,68) * CustHTMLAfterBody::   After Body Text.
+./custhtml.texi(,69) @end menu
+./custhtml.texi(,71) @node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
+./custhtml.texi(,72) @subsection Body Text
+./custhtml.texi(,73) 
+./custhtml.texi(,74) 
+./custhtml.texi(,75) @vindex T2H_BODYTEXT
+./custhtml.texi(,76) 
+./custhtml.texi(,77) @example
+./custhtml.texi(,78) $T2H_BODYTEXT =
+./custhtml.texi(,79)     . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
+./custhtml.texi(,80)     . 'TEXT="#000000" LINK="#0000FF" '
+./custhtml.texi(,81)     . 'VLINK="#800080" ALINK="#FF0000"';
+./custhtml.texi(,82) @end example
+./custhtml.texi(,83) 
+./custhtml.texi(,84) If you like to change the basic color combination, you can
+./custhtml.texi(,85) change the entry @var{T2H_BODYTEXT}.
+./custhtml.texi(,86) 
+./custhtml.texi(,88) @node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
+./custhtml.texi(,89) @subsection Body Text
+./custhtml.texi(,91) @node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
+./custhtml.texi(,92) @subsection After Body Text
+./custhtml.texi(,93) 
+./custhtml.texi(,94) @vindex T2H_AFTER_BODY_OPEN
+./custhtml.texi(,95) @vindex T2H_PRE_BODY_CLOSE
+./custhtml.texi(,96) 
+./custhtml.texi(,97) @vindex T2H_EXTRA_HEAD
+./custhtml.texi(,98) 
+./custhtml.texi(,99) @example
+./custhtml.texi(,100) # text inserted after <BODY ...>
+./custhtml.texi(,101) $T2H_AFTER_BODY_OPEN = '';
+./custhtml.texi(,102) 
+./custhtml.texi(,103) #text inserted before </BODY>
+./custhtml.texi(,104) $T2H_PRE_BODY_CLOSE = '';
+./custhtml.texi(,105) 
+./custhtml.texi(,106) # this is used in footer
+./custhtml.texi(,107) $T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
+./custhtml.texi(,108) $T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
+./custhtml.texi(,109) 
+./custhtml.texi(,110) # this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
+./custhtml.texi(,111) # can be used for <style> <script>, <meta> tags
+./custhtml.texi(,112) $T2H_EXTRA_HEAD = '';
+./custhtml.texi(,113) @end example
+./custhtml.texi(,114) 
+./custhtml.texi(,115) The default output into the @acronym{HTML} file.
+./custhtml.texi(,116) @xref{OptionDocType}.
+./custhtml.texi(,117) 
+./custhtml.texi(,118) 
+./custhtml.texi(,119) The following code is produced by
+./custhtml.texi(,120) @code{T2H_DEFAULT_print_page_head}.
+./custhtml.texi(,121) 
+./custhtml.texi(,122) Detailed information can be found at
+./custhtml.texi(,123) @ref{CustPagePageHead}.
+./custhtml.texi(,124) 
+./custhtml.texi(,125) @example
+./custhtml-header.htmltexi(,1) 
+./custhtml-header.htmltexi(,1) <HTML>
+./custhtml-header.htmltexi(,2) $T2H_DOCTYPE
+./custhtml-header.htmltexi(,3) <!-- Created on $T2H_TODAY by $THISPROG -->
+./custhtml-header.htmltexi(,4) <!-- 
+./custhtml-header.htmltexi(,5) $T2H_AUTHORS
+./custhtml-header.htmltexi(,6) -->
+./custhtml-header.htmltexi(,7) <HEAD>
+./custhtml-header.htmltexi(,8) <TITLE>$longtitle</TITLE>
+./custhtml-header.htmltexi(,9) 
+./custhtml-header.htmltexi(,10) <META NAME="description" CONTENT="$longtitle">
+./custhtml-header.htmltexi(,11) <META NAME="keywords" CONTENT="$longtitle">
+./custhtml-header.htmltexi(,12) <META NAME="resource-type" CONTENT="document">
+./custhtml-header.htmltexi(,13) <META NAME="distribution" CONTENT="global">
+./custhtml-header.htmltexi(,14) <META NAME="Generator" CONTENT="$THISPROG">
+./custhtml-header.htmltexi(,15) $T2H_EXTRA_HEAD
+./custhtml-header.htmltexi(,16) </HEAD>
+./custhtml-header.htmltexi(,17) 
+./custhtml-header.htmltexi(,18) <BODY $T2H_BODYTEXT>
+./custhtml-header.htmltexi(,19) $T2H_AFTER_BODY_OPEN
+./custhtml.texi(,127) @end example
+./custhtml.texi(,128) 
+./custhtml.texi(,130) @node CustHTMLHead,,CustHTMLAfterBody,CustHTML
+./custhtml.texi(,131) @section Head
+texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
+./initfile.texi(,1) 
+./initfile.texi(,37) @chapter Initialization file
+./initfile.texi(,39) @cindex configure
+./initfile.texi(,40) @cindex texi2html.init
+./initfile.texi(,41) @cindex texi2htmlrc, global initialization
+./initfile.texi(,42) @cindex .texi2htmlrc, user initialization
+./initfile.texi(,44) @opindex sysconfdir
+./initfile.texi(,45) @opindex init_file
+./initfile.texi(,46) @file{texi2html.init}
+./initfile.texi(,47) 
+./initfile.texi(,48) 
+./initfile.texi(,49) @menu
+./initfile.texi(,50) * InitFileBasics::     The basics about
+./initfile.texi(,51)                          initialization files.
+./initfile.texi(,52) * InitFileGlobal::     Global initialization file.
+./initfile.texi(,53) * InitFileUser::       User initialization file.
+./initfile.texi(,54) * InitFileLoad::       Loadable initialization file.
+./initfile.texi(,55) @end menu
+./initfile.texi(,56) 
+./initfile.texi(,58) @node InitFileBasics,InitFileGlobal,InitFile,InitFile
+./initfile.texi(,59) @section The basics about init files
+./initfile.texi(,60) 
+./initfile.texi(,61) Initialization options are read first from
+./initfile.texi(,62) @file{/usr/local/etc/texi2htmlrc} (the exact location being
+./initfile.texi(,63) changeable with the @option{--sysconfdir=dir} option to the
+./initfile.texi(,64) @command{configure} script), then from
+./initfile.texi(,65) @file{$HOME/.texi2htmlrc}, then any command-line options
+./initfile.texi(,66) including @option{-init_file} option; with later settings
+./initfile.texi(,67) overriding earlier ones.
+./initfile.texi(,68) 
+./initfile.texi(,69) The default initialization options are defined in the
+./initfile.texi(,70) @file{texi2html.init} file contained in the @b{Texi2html}
+./initfile.texi(,71) distribution (which gets included near the beginning of the
+./initfile.texi(,72) @command{texi2html} script that gets installed).
+./initfile.texi(,73) 
+./initfile.texi(,74) To customize @file{texi2html} it is best if you copy the
+./initfile.texi(,75) appropriate sections from the @file{texi2html.init}
+./initfile.texi(,76) contents into an appropriate local initialization file,
+./initfile.texi(,77) make the necessary changes there, and then have
+./initfile.texi(,78) @command{texi2html} read this initialization file by one of
+./initfile.texi(,79) the means described above.
+./initfile.texi(,80) 
+./initfile.texi(,81) For an example on what you can produces with
+./initfile.texi(,82) @command{texi2html} have a look at the following sites:
+./initfile.texi(,83) @uref{http://www.singular.uni-kl.de/Manual/html/}
+./initfile.texi(,84) 
+./initfile.texi(,85) 
+./initfile.texi(,87) @node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
+./initfile.texi(,88) @section Global initialization file
+./initfile.texi(,90) @node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
+./initfile.texi(,91) @section User initialization file
+./initfile.texi(,93) @node InitFileLoad,,InitFileUser,InitFile
+./initfile.texi(,94) @section Loadable initialization file
+./initfile.texi(,95) @opindex init_file
+./initfile.texi(,96) @option{-init_file}
+./initfile.texi(,97) 
+./initfile.texi(,99) 
+texi2html.texi(,409) @node IFOs, Options, InitFile, Top
+./ifo.texi(,1) 
+./ifo.texi(,37) @section Initialization file options
+./ifo.texi(,38) This section describes in detail all options that can be used
+./ifo.texi(,39) only in the initialization file (@file{texi2html.init}),
+./ifo.texi(,40) and cannot be specified on the command line.
+./ifo.texi(,41) This means the only way to change those
+./ifo.texi(,42) options is first to copy the original @file{texi2html.init}
+./ifo.texi(,43) to e.g.@: @file{texi2html.init.myown} and make changes to fit
+./ifo.texi(,44) your needs.
+./ifo.texi(,45) 
+./ifo.texi(,46) @menu
+./ifo.texi(,47) * IFOnumber::             Number sectioning.
+./ifo.texi(,48) * IFOmenu::               Avoid menu redundancy.
+./ifo.texi(,49) * IFOCenterImage::        Center Image.
+./ifo.texi(,50) * IFOExampleIndentCell::  Example Indent Cell.
+./ifo.texi(,51) * IFOSampleIndentCell::   Sample Indent Cell.
+./ifo.texi(,52) * IFOSmallFontSize::      Small Font Size.
+./ifo.texi(,53) * IFOTopHeading::         Top Heading.
+./ifo.texi(,54) * IFOIndexChapter::       Index Chapter.
+./ifo.texi(,55) * IFOSplitIndex::         Split Index.
+./ifo.texi(,56) * IFOhrefDirInsteadFile:: HREF Dir Instead file.
+./ifo.texi(,57) @end menu
+./ifo.texi(,58) 
+./ifo.texi(,60) @node IFOnumber, IFOmenu, IFOs, IFOs
+./ifo.texi(,61) @subsection Number sections.
+./ifo.texi(,62) @vindex T2H_NUMBER_SECTIONS
+./ifo.texi(,63) @vindex T2H_NODE_NAME_IN_MENU
+./ifo.texi(,64) if set, and @var{$T2H_NUMBER_SECTIONS} is set, then use node
+./ifo.texi(,65) names in menu entries, instead of section names
+./ifo.texi(,66) 
+./ifo.texi(,67) @var{$T2H_NODE_NAME_IN_MENU} = 0;
+./ifo.texi(,68) 
+./ifo.texi(,70) @node IFOmenu, IFOCenterImage, IFOnumber, IFOs
+./ifo.texi(,71) @subsection Avoid menu redundancy
+./ifo.texi(,73) @cindex menu, redundancy
+./ifo.texi(,74) @vindex T2H_AVOID_MENU_REDUNDANCY
+./ifo.texi(,75) If set, and menu entry equals menu description, then do not print
+./ifo.texi(,76) menu description.  Likewise, if node name equals entry name, do
+./ifo.texi(,77) not print entry name.
+./ifo.texi(,78) @var{$T2H_AVOID_MENU_REDUNDANCY} = 1;
+./ifo.texi(,79) 
+./ifo.texi(,81) @node IFOCenterImage, IFOExampleIndentCell, IFOmenu, IFOs
+./ifo.texi(,82) @subsection Center Image
+./ifo.texi(,83) @cindex images, center
+./ifo.texi(,84) @vindex T2H_CENTER_IMAGE
+./ifo.texi(,85) if set, center @@image by default
+./ifo.texi(,86) otherwise, do not center by default
+./ifo.texi(,87) @var{$T2H_CENTER_IMAGE} = 1;
+./ifo.texi(,88) 
+./ifo.texi(,90) @node IFOExampleIndentCell, IFOSampleIndentCell, IFOCenterImage, IFOs
+./ifo.texi(,91) @subsection Example Indent Cell
+./ifo.texi(,92) @cindex example, indentation
+./ifo.texi(,93) @vindex T2H_EXAMPLE_INDENT_CELL
+./ifo.texi(,94) used as indentation for block enclosing command
+./ifo.texi(,95) @code{@@example}, etc If not empty, must be enclosed in
+./ifo.texi(,96) @code{<td></td>}
+./ifo.texi(,97) @var{$T2H_EXAMPLE_INDENT_CELL} = '<td>&nbsp;</td>';
+./ifo.texi(,98) 
+./ifo.texi(,100) @node IFOSampleIndentCell, IFOSmallFontSize, IFOExampleIndentCell, IFOs
+./ifo.texi(,101) @subsection Small Example Indent
+./ifo.texi(,102) @cindex example, small indent
+./ifo.texi(,103) @vindex T2H_SMALL_EXAMPLE_INDENT_CELL
+./ifo.texi(,104) same as above, only for @code{@@small}
+./ifo.texi(,105) $T2H_SMALL_EXAMPLE_INDENT_CELL = "<td>&nbsp;</td>";
+./ifo.texi(,106) 
+./ifo.texi(,108) @node IFOSmallFontSize, IFOTopHeading, IFOSampleIndentCell, IFOs
+./ifo.texi(,109) @subsection Small Font Size
+./ifo.texi(,110) @cindex Font Size, small
+./ifo.texi(,111) @vindex T2H_SMALL_FONT_SIZE
+./ifo.texi(,112) # font size for @@small
+./ifo.texi(,113) $T2H_SMALL_FONT_SIZE = "-1";
+./ifo.texi(,114) 
+./ifo.texi(,116) @node IFOTopHeading, IFOIndexChapter, IFOSmallFontSize, IFOs
+./ifo.texi(,117) @subsection Top Heading
+./ifo.texi(,118) @vindex T2H_TOP_HEADING
+./ifo.texi(,119) if non-empty, and no @code{@@..heading} appeared in Top
+./ifo.texi(,122) node, then use this as header for top node/section,
+./ifo.texi(,123) otherwise use value of  @code{@@settitle} or
+./ifo.texi(,124) @code{@@shorttitle} (in that order)
+./ifo.texi(,125) $T2H_TOP_HEADING = "";
+./ifo.texi(,126) 
+./ifo.texi(,128) @node IFOIndexChapter, IFOSplitIndex, IFOTopHeading, IFOs
+./ifo.texi(,129) @subsection Index Chapter
+./ifo.texi(,130) @cindex Chapter, Index
+./ifo.texi(,131) @vindex T2H_INDEX_CHAPTER
+./ifo.texi(,132) if set, use this chapter for @strong{Index} button, else
+./ifo.texi(,133) use first chapter whose name matches @strong{index} (case insensitive)
+./ifo.texi(,134) $T2H_INDEX_CHAPTER = "";
+./ifo.texi(,135) 
+./ifo.texi(,137) @node IFOSplitIndex, IFOhrefDirInsteadFile, IFOIndexChapter, IFOs
+./ifo.texi(,138) @subsection Split Index
+./ifo.texi(,139) @cindex Index, split
+./ifo.texi(,140) @vindex T2H_SPLIT_INDEX
+./ifo.texi(,141) if set and @var{$T2H_SPLIT} is set, then split index pages
+./ifo.texi(,142) at the next letter after they have more than that many
+./ifo.texi(,143) entries
+./ifo.texi(,144) 
+./ifo.texi(,145) $T2H_SPLIT_INDEX = 100;
+./ifo.texi(,146) 
+./ifo.texi(,148) @node IFOhrefDirInsteadFile, , IFOSplitIndex, IFOs
+./ifo.texi(,149) @subsection HREF Dir Instead File.
+./ifo.texi(,151) @cindex HREF Dir instead file
+./ifo.texi(,152) @vindex T2H_HREF_DIR_INSTEAD_FILE
+./ifo.texi(,153) if set (e.g., to @file{index.html}) replace @strong{HREF}'s
+./ifo.texi(,154) to this file  (i.e., to @file{index.html}) by @file{./}
+./ifo.texi(,155) 
+./ifo.texi(,156) $T2H_HREF_DIR_INSTEAD_FILE = "";
+texi2html.texi(,414) @node Options, Reference, IFOs, Top
+./options.texi(,1) 
+./options.texi(,37) @chapter Command Line Options
+./options.texi(,38) 
+./options.texi(,39) @menu
+./options.texi(,40) * OptionDebug::               Debugging.
+./options.texi(,41) * OptionDocType::             DocType (HTML)
+./options.texi(,42) * OptionCheck::               Checking files.
+./options.texi(,43) * OptionExpand::              Expanding info, tex areas etc.
+./options.texi(,44) * OptionGlossary::            Glossary.
+./options.texi(,45) * OptionInvisible::           Invisible.
+./options.texi(,46) * OptionIso::                 Iso.
+./options.texi(,47) * OptionInclude::             Include directories.
+./options.texi(,48) * OptionTopFile::             Top File.
+./options.texi(,49) * OptionTocFile::             Table of content File.
+./options.texi(,50) * OptionFrames::              Frames.
+./options.texi(,51) * OptionMenu::                Menus.
+./options.texi(,52) * OptionNumber::              Number sections.
+./options.texi(,53) * OptionSplit::               Splitting.
+./options.texi(,54) * OptionSectionNavigation::   Navigation.
+./options.texi(,55) * OptionSubDir::              Subdirectory.
+./options.texi(,56) * OptionShortExt::            Short extension.
+./options.texi(,57) * OptionPrefix::              Prefix.
+./options.texi(,58) * OptionOutput::              Output.
+./options.texi(,59) * OptionShortRef::            Short Ref.
+./options.texi(,60) * OptionIndexSummary::        Index Summary.
+./options.texi(,61) * OptionVerbose::             Verbose.
+./options.texi(,62) * OptionLanguage::            Language.
+./options.texi(,63) * OptionL2H::                 La@TeX{}2HTML.
+./options.texi(,64) @end menu
+./options.texi(,65) 
+./options.texi(,66) 
+./options.texi(,68) @node OptionDebug, OptionDocType, Options, Options
+./options.texi(,69) @section Debugging
+./options.texi(,70) @cindex Debugging
+./options.texi(,71) @vindex DEBUG_TOC
+./options.texi(,72) @vindex DEBUG_INDEX
+./options.texi(,73) @vindex DEBUG_BIB
+./options.texi(,74) @vindex DEBUG_GLOSS
+./options.texi(,75) @vindex DEBUG_DEF
+./options.texi(,76) @vindex DEBUG_HTML
+./options.texi(,77) @vindex DEBUG_USER
+./options.texi(,78) @vindex DEBUG_L2H
+./options.texi(,79) @opindex debug
+./options.texi(,80) 
+./options.texi(,81) @option{-debug}
+./options.texi(,82) 
+./options.texi(,83) debugging: 0 --- no debugging; other values; see beginning
+./options.texi(,84) of texi2html
+./options.texi(,85) 
+./options.texi(,86) @var{$DEBUG_TOC}   =  1;
+./options.texi(,87) @var{$DEBUG_INDEX} =  2;
+./options.texi(,88) @var{$DEBUG_BIB}   =  4;
+./options.texi(,89) @var{$DEBUG_GLOSS} =  8;
+./options.texi(,90) @var{$DEBUG_DEF}   = 16;
+./options.texi(,91) @var{$DEBUG_HTML}  = 32;
+./options.texi(,92) @var{$DEBUG_USER}  = 64;
+./options.texi(,93) @var{$DEBUG_L2H}   = 128;
+./options.texi(,94) 
+./options.texi(,96) @node OptionDocType, OptionCheck, OptionDebug, Options
+./options.texi(,97) @section DocType
+./options.texi(,98) @cindex HTML, Doc Type
+./options.texi(,99) @opindex doctype
+./options.texi(,100) @vindex T2H_DOCTYPE
+./options.texi(,101) @option{-doctype}
+./options.texi(,102) 
+./options.texi(,103) @example
+./options.texi(,104) <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+./options.texi(,105) @end example
+./options.texi(,106) 
+./options.texi(,108) @node OptionCheck, OptionExpand, OptionDocType, Options
+./options.texi(,109) @section Check
+./options.texi(,110) @cindex Texinfo, checking
+./options.texi(,111) @opindex check
+./options.texi(,112) @vindex T2H_CHECK
+./options.texi(,113) @option{-check}
+./options.texi(,114) if set, only check files and give the list of all things
+./options.texi(,115) that look like untranslated Texinfo commands
+./options.texi(,116) 
+./options.texi(,118) @node OptionExpand, OptionGlossary, OptionCheck, Options
+./options.texi(,119) @section Expand
+./options.texi(,120) @opindex expand
+./options.texi(,121) @vindex T2H_EXPAND
+./options.texi(,122) @option{-expand}
+./options.texi(,123) if set to @strong{tex} (or, @strong{info}) expand
+./options.texi(,124) @code{@@iftex} and @code{@@tex} (or, @code{@@ifinfo})
+./options.texi(,125) sections else, neither expand @code{@@iftex}, @code{@@tex},
+./options.texi(,126) nor @code{@@ifinfo} sections
+./options.texi(,127) 
+./options.texi(,129) 
+./options.texi(,131) @node OptionGlossary, OptionInvisible, OptionExpand, Options
+./options.texi(,132) @section Glossary
+./options.texi(,133) @cindex HTML, Glossary
+./options.texi(,134) @cindex Texinfo, Glossary
+./options.texi(,135) @opindex glossary
+./options.texi(,136) @vindex T2H_USE_GLOSSARY
+./options.texi(,137) @option{-glossary}
+./options.texi(,138) if set, uses section named @strong{Footnotes} for glossary
+./options.texi(,139) 
+./options.texi(,141) @node OptionInvisible, OptionIso, OptionGlossary, Options
+./options.texi(,142) @section Invisible
+./options.texi(,143) @cindex Mark, invisible
+./options.texi(,144) @cindex invisible, Mark
+./options.texi(,145) @opindex invisible
+./options.texi(,146) @vindex T2H_INVISIBLE_MARK
+./options.texi(,147) @option{-invisible}
+./options.texi(,148) @var{$T2H_INVISIBLE_MARK} is the text used to create
+./options.texi(,149) invisible destination anchors for index links (you can for
+./options.texi(,150) instance use the @file{invisible.xbm} file shipped with
+./options.texi(,151) this program). This is a workaround for a known bug of many
+./options.texi(,152) @acronym{WWW} browsers, including Netscape. For me, it
+./options.texi(,153) works fine without it --- on the contrary: if there, it
+./options.texi(,154) inserts space between headers and start of text (obachman
+./options.texi(,155) 3/99)
+./options.texi(,156) 
+./options.texi(,157) @example
+./options.texi(,158) $T2H_INVISIBLE_MARK = "";
+./options.texi(,159) # $T2H_INVISIBLE_MARK = '&#160;';
+./options.texi(,160) @end example
+./options.texi(,161) 
+./options.texi(,163) @node OptionIso, OptionInclude, OptionInvisible, Options
+./options.texi(,164) @section Iso
+./options.texi(,165) @cindex ISO8859
+./options.texi(,166) @cindex Copyright
+./options.texi(,167) @opindex iso
+./options.texi(,168) @vindex T2H_USE_ISO
+./options.texi(,169) @option{-iso}
+./options.texi(,170) 
+./options.texi(,171) if set, ISO8859 characters are used for special symbols
+./options.texi(,172) (like Copyright @code{@copyright{}}, etc)
+./options.texi(,173) 
+./options.texi(,174) $T2H_USE_ISO = 0;
+./options.texi(,175) 
+./options.texi(,177) @node OptionInclude, OptionTopFile, OptionIso, Options
+./options.texi(,178) @section Include Directory
+./options.texi(,179) @vindex Include directories
+./options.texi(,180) @opindex I
+./options.texi(,181) @vindex T2H_INCLUDE_DIRS
+./options.texi(,182) @option{-I}
+./options.texi(,183) 
+./options.texi(,184) list directories where @code{@@include} files are searched for
+./options.texi(,185) (besides the directory of the doc file) additional
+./options.texi(,186) @option{-I} args are add to this list.
+./options.texi(,187) 
+./options.texi(,188) @@T2H_INCLUDE_DIRS = (".");
+./options.texi(,189) 
+./options.texi(,191) @node OptionTopFile, OptionTocFile, OptionInclude, Options
+./options.texi(,192) @section Top File
+./options.texi(,193) @cindex Top Level file
+./options.texi(,194) @cindex HTML, index.html
+./options.texi(,195) @opindex top_file
+./options.texi(,196) @vindex T2H_TOP_FILE
+./options.texi(,197) @option{-top_file}
+./options.texi(,198) uses file of this name for top-level file
+./options.texi(,199) extension is manipulated appropriately, if necessary.
+./options.texi(,200) If empty, @file{<basename of document>.html} is used.
+./options.texi(,201) Typically, you would set this to @file{index.html}.
+./options.texi(,202) 
+./options.texi(,203) $T2H_TOP_FILE = "";
+./options.texi(,204) 
+./options.texi(,206) @node OptionTocFile, OptionFrames, OptionTopFile, Options
+./options.texi(,207) @section Table Of content File
+./options.texi(,208) @cindex Table of content file
+./options.texi(,209) @opindex toc_file
+./options.texi(,210) @vindex T2H_TOC_FILE
+./options.texi(,211) @option{-toc_file}
+./options.texi(,212) uses file of this name for table of contents.  File extension
+./options.texi(,213) is manipulated appropriately, if necessary. If empty,
+./options.texi(,214) @file{<basename of document>_toc.html} is used.
+./options.texi(,215) 
+./options.texi(,216) $T2H_TOC_FILE = "";
+./options.texi(,217) 
+./options.texi(,219) @node OptionFrames, OptionMenu, OptionTocFile, Options
+./options.texi(,220) @section Frames
+./options.texi(,221) @vindex HTML, frames
+./options.texi(,222) @vindex HTML 4.0, frames
+./options.texi(,223) @opindex frames
+./options.texi(,224) @vindex T2H_FRAMES
+./options.texi(,225) @option{-frames}
+./options.texi(,226) if set, output two additional files which use HTML 4.0
+./options.texi(,227) @b{frames}.
+./options.texi(,228) 
+./options.texi(,229) $T2H_FRAMES = 0;
+./options.texi(,230) 
+./options.texi(,232) @node OptionMenu, OptionNumber, OptionFrames, Options
+./options.texi(,233) @section Menus
+./options.texi(,234) @cindex HTML, menu
+./options.texi(,235) @cindex Texinfo, menu
+./options.texi(,236) @opindex menu
+./options.texi(,237) @opindex nomenu
+./options.texi(,238) @vindex T2H_SHOW_MENU
+./options.texi(,239) @option{-menu} or @option{-nomenu} if set, show the Texinfo
+./options.texi(,240) menus
+./options.texi(,241) 
+./options.texi(,242) $T2H_SHOW_MENU = 1;
+./options.texi(,243) 
+./options.texi(,245) @node OptionNumber, OptionSplit, OptionMenu, Options
+./options.texi(,246) @section Number sections
+./options.texi(,247) @cindex Section numbering
+./options.texi(,248) @opindex number
+./options.texi(,249) @opindex nonumber
+./options.texi(,250) @vindex T2H_NUMBER_SECTIONS
+./options.texi(,251) @option{-number} @option{-nonumber}
+./options.texi(,252) if set, number sections and show section names and numbers
+./options.texi(,253) in references and menus
+./options.texi(,254) 
+./options.texi(,259) 
+./options.texi(,261) @node OptionSplit, OptionSectionNavigation, OptionNumber, Options
+./options.texi(,262) @section Split
+./options.texi(,263) @cindex HTML, split
+./options.texi(,264) @cindex File, split
+./options.texi(,265) @opindex split
+./options.texi(,266) @vindex T2H_SPLIT
+./options.texi(,267) @option{-split section|chapter|none}
+./options.texi(,268) if set to @strong{section} (resp. @strong{chapter}) create one
+./options.texi(,269) @acronym{HTML} file per (sub)section (resp. chapter) and
+./options.texi(,270) separate pages for Top, ToC, Overview, Index, Glossary,
+./options.texi(,271) About.  Otherwise, create a monolithic @acronym{HTML} file that
+./options.texi(,272) contains the whole document.
+./options.texi(,273) 
+./options.texi(,274) #$T2H_SPLIT = 'section';
+./options.texi(,275) $T2H_SPLIT = undef;
+./options.texi(,276) 
+./options.texi(,278) @node OptionSectionNavigation, OptionSubDir, OptionSplit, Options
+./options.texi(,279) @section Section navigation
+./options.texi(,280) @cindex HTML, Navigation
+./options.texi(,281) @opindex section_navigation
+./options.texi(,282) @opindex no-section_navigation
+./options.texi(,283) @vindex T2H_SECTION_NAVIGATION
+./options.texi(,284) @option{-section_navigation}|
+./options.texi(,285) @option{-no-section_navigation}
+./options.texi(,286) 
+./options.texi(,287) if set, then navigation panels are printed at the beginning
+./options.texi(,288) of each section and, possibly at the end (depending on
+./options.texi(,289) whether or not there were more than 
+./options.texi(,290) @var{$T2H_WORDS_IN_PAGE} words on page). This is most useful
+./options.texi(,291) if you do not want to have section navigation on
+./options.texi(,292) @option{-split chapter}
+./options.texi(,293) 
+./options.texi(,298) 
+./options.texi(,300) @node OptionSubDir, OptionShortExt, OptionSectionNavigation, Options
+./options.texi(,301) @section Subdirectory
+./options.texi(,302) @cindex Subdirectory
+./options.texi(,303) @vindex T2H_SUBDIR
+./options.texi(,304) @option{-subdir}
+./options.texi(,305) If set, then put result files in the specified directory.
+./options.texi(,306) If not set, then result files are put into the current directory.
+./options.texi(,307) 
+./options.texi(,309) @var{$T2H_SUBDIR} = undef;
+./options.texi(,310) 
+./options.texi(,312) @node OptionShortExt, OptionPrefix, OptionSubDir, Options
+./options.texi(,313) @section Short extension
+./options.texi(,314) @cindex HTML, .htm extension
+./options.texi(,315) @cindex HTML, .html extension
+./options.texi(,316) @cindex extension, .html
+./options.texi(,317) @cindex extension, .htm
+./options.texi(,318) @vindex T2H_SHORTEXTN
+./options.texi(,319) @opindex short_extn
+./options.texi(,320) @option{-short_extn}
+./options.texi(,321) If this is set, then all @acronym{HTML} files will have extension
+./options.texi(,322) @file{.htm} instead of @file{.html}. This is helpful when
+./options.texi(,323) shipping the document to DOS-based systems.
+./options.texi(,324) @var{$T2H_SHORTEXTN} = 0;
+./options.texi(,325) 
+./options.texi(,327) @node OptionPrefix, OptionOutput, OptionShortExt, Options
+./options.texi(,328) @section Prefix
+./options.texi(,329) @cindex Prefix
+./options.texi(,330) @vindex T2H_PREFIX
+./options.texi(,331) @opindex prefix
+./options.texi(,332) @option{-prefix}
+./options.texi(,333) Set the output file prefix, prepended to all @file{.html},
+./options.texi(,334) @file{.gif} and @file{.pl} files.
+./options.texi(,335) By default, this is the basename of the document
+./options.texi(,336) 
+./options.texi(,337) @var{$T2H_PREFIX} = "";
+./options.texi(,338) 
+./options.texi(,340) @node OptionOutput, OptionShortRef, OptionPrefix, Options
+./options.texi(,341) @section Output filename
+./options.texi(,342) @cindex Output filename
+./options.texi(,343) @cindex Filename, output
+./options.texi(,344) @vindex T2H_OUT
+./options.texi(,345) @opindex o
+./options.texi(,346) @opindex out_file
+./options.texi(,347) 
+./options.texi(,348) @option{-o filename}|@option{-out_file}
+./options.texi(,349) If set, generate monolithic document output @acronym{HTML}
+./options.texi(,350) into @file{filename}.
+./options.texi(,351) 
+./options.texi(,353) @node OptionShortRef, OptionIndexSummary, OptionOutput, Options
+./options.texi(,354) @section Short Cross References
+./options.texi(,355) @cindex References, short
+./options.texi(,356) @cindex sections without numbers
+./options.texi(,357) @vindex T2H_SHORT_REF
+./options.texi(,358) @opindex short_ref
+./options.texi(,359) @option{-short_ref}
+./options.texi(,360) if set cross-references are given without section numbers
+./options.texi(,361) 
+./options.texi(,363) @node OptionIndexSummary, OptionVerbose, OptionShortRef, Options
+./options.texi(,364) @section Index Summary
+./options.texi(,365) @cindex Index, Summary
+./options.texi(,366) @cindex Summary Index
+./options.texi(,367) @cindex HTML, Index
+./options.texi(,368) @vindex T2H_IDX_SUMMARY
+./options.texi(,369) @opindex idx_sum
+./options.texi(,370) @option{-idx_sum}
+./options.texi(,371) If value is set, then for each @code{@@prinindex $what}
+./options.texi(,372) @file{$docu_name_$what.idx} is created which contains lines of the
+./options.texi(,373) form @strong{$key\t$ref} sorted alphabetically (case
+./options.texi(,374) matters).
+./options.texi(,375) 
+./options.texi(,377) @node OptionVerbose, OptionLanguage, OptionIndexSummary, Options
+./options.texi(,378) @section Verbose output
+./options.texi(,379) @cindex Output, verbose
+./options.texi(,380) @cindex Verbose output
+./options.texi(,381) @cindex Debugging, verbose output
+./options.texi(,382) @vindex T2H_VERBOSE
+./options.texi(,383) @opindex verbose
+./options.texi(,384) @option{-verbose}
+./options.texi(,385) if set, chatter about what we are doing.
+./options.texi(,386) 
+./options.texi(,388) @node OptionLanguage, OptionL2H, OptionVerbose, Options
+./options.texi(,389) @section Language Support
+./options.texi(,390) @cindex Language Support
+./options.texi(,391) @cindex Support different languages
+./options.texi(,392) @vindex $T2H_LANG
+./options.texi(,393) @vindex $T2H_WORDS
+./options.texi(,394) @opindex lang
+./options.texi(,395) @option{-lang}
+./options.texi(,396) For page titles, use
+./options.texi(,397) @code{$T2H_WORDS->@{$T2H_LANG@}->@{...@}} as title. To add
+./options.texi(,398) a new language, supply list of titles (see @var{$T2H_WORDS}),
+./options.texi(,399) and use ISO 639 language codes (see e.g.@: perl module
+./options.texi(,400) @file{Locale-Codes-1.02.tar.gz} for definitions).
+./options.texi(,401) 
+./options.texi(,402) If you don't give a @option{-lang} then we got it from the
+./options.texi(,403) Texinfo source file (@@documentlanguage
+./options.texi(,414) @pxref{documentlanguage,,,Texinfo}). If there is no
+./options.texi(,415) @code{@@documentlanguage} we use the default @code{en} for
+./options.texi(,416) the language.
+./options.texi(,423) @node OptionL2H, , OptionLanguage, Options
+./options.texi(,424) @section La@TeX{}2HTML for @code{@@math} and @code{@@tex}
+./options.texi(,425) @cindex La@TeX{}2HTML
+./options.texi(,426) @cindex Conversion of @@math and @@tex
+./options.texi(,427) @cindex @@tex
+./options.texi(,428) @cindex @@math
+./options.texi(,429) @vindex T2H_L2H
+./options.texi(,430) @opindex l2h
+./options.texi(,431) @option{-l2h}
+./options.texi(,432) if set, uses @command{latex2html} for generation of math
+./options.texi(,433) content.
+./options.texi(,434) 
+./options.texi(,435) @menu
+./options.texi(,436) * OptionL2HL2H::    Where to find La@TeX{}2HTML.
+./options.texi(,437) * OptionL2HSkip::   Skip calling La@TeX{}2HTML.
+./options.texi(,438) * OptionL2Htmp::    Temporary files for La@TeX{}2HTML.
+./options.texi(,439) @end menu
+./options.texi(,440) 
+./options.texi(,442) @node OptionL2HL2H, OptionL2HSkip, OptionL2H, OptionL2H
+./options.texi(,443) @subsection Where to find @command{latex2html}
+./options.texi(,444) @cindex location, La@TeX{}2HTML
+./options.texi(,445) @cindex La@TeX{}2HTML, location
+./options.texi(,446) @vindex T2H_L2H_L2H
+./options.texi(,447) @opindex l2h_l2h
+./options.texi(,448) @option{-l2h_l2h}
+./options.texi(,449) name/location of @command{latex2html} program.
+./options.texi(,450) 
+./options.texi(,452) @node OptionL2HSkip, OptionL2Htmp, OptionL2HL2H, OptionL2H
+./options.texi(,453) @subsection Skip calling La@TeX{}2HTML
+./options.texi(,454) @cindex La@TeX{}2HTML, skip calling
+./options.texi(,455) @vindex T2H_L2H_SKIP
+./options.texi(,456) @opindex l2h_skip
+./options.texi(,457) @option{-l2h_skip}
+./options.texi(,458) If set, skips actual call to @command{latex2html}: tries to
+./options.texi(,459) reuse previously generated content, instead.
+./options.texi(,460) 
+./options.texi(,462) @node OptionL2Htmp, , OptionL2HSkip, OptionL2H
+./options.texi(,463) @subsection Temporary files for La@TeX{}2HTML
+./options.texi(,464) @cindex Temporary, La@TeX{}2HTML
+./options.texi(,465) @cindex La@TeX{}2HTML, Temporary files
+./options.texi(,466) @vindex T2H_L2H_TMP
+./options.texi(,467) @opindex l2h_tmp
+./options.texi(,468) @option{-l2h_tmp}
+./options.texi(,469) If set, l2h uses this directory for temporary files.  The
+./options.texi(,470) path leading to this directory may not contain a dot (i.e.,
+./options.texi(,471) a @samp{.}); otherwise, l2h will fail.
+texi2html.texi(,417) @node Reference, Indexop, Options, Top
+./reference.texi(,1) 
+./reference.texi(,37) @appendix Function Reference
+./reference.texi(,38) 
+./reference.texi(,39) @menu
+./reference.texi(,40) * Refptocframe::           Print ToC Frame.
+./reference.texi(,41) * Refpphead::              Print page head.
+./reference.texi(,42) @end menu
+./reference.texi(,43) 
+./reference.texi(,49) @node Refptocframe,Refpphead,,Reference
+./reference.texi(,50) @appendixsec Print ToC Frame
+./reference.texi(,51) 
+./reference.texi(,52) 
+./reference.texi(,53) @defun T2H_DEFAULT_print_toc_frame (FileName)
+./reference.texi(,54) 
+./reference.texi(,55) Description of the subroutine.
+./reference.texi(,56) What does it do? Which parameters it needs etc.
+./reference.texi(,57) @end defun
+./reference.texi(,58) 
+./reference.texi(,59) 
+./reference.texi(,61) @node Refpphead,,Refptocframe,Reference
+./reference.texi(,62) @appendixsec Print Page Head
+./reference.texi(,63) @defun T2H_DEFAULT_print_page_head (FileName)
+./reference.texi(,64) 
+./reference.texi(,65) Description of the subroutine.
+./reference.texi(,66) What does it do? Which parameters it needs etc.
+./reference.texi(,67) @end defun
+texi2html.texi(,421) @node Indexop, Indexvr, Reference, Top
+texi2html.texi(,422) @appendix Indices
+texi2html.texi(,423) @appendixsec Command Line Option Index
+texi2html.texi(,424) @printindex op
+texi2html.texi(,426) @node Indexvr, Indexcp, Indexop, Top
+texi2html.texi(,427) @appendixsec Variable Index
+texi2html.texi(,428) @printindex vr
+texi2html.texi(,430) @node Indexcp, , Indexvr, Top
+texi2html.texi(,431) @appendixsec Concept Index
+texi2html.texi(,432) @printindex cp
+texi2html.texi(,435) 

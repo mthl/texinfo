@@ -1,0 +1,56 @@
+index_nodes.texi(,2) 
+index_nodes.texi(,3) @setfilename index_nodes
+index_nodes.texi(,4) 
+index_nodes.texi(,5) @node Top
+index_nodes.texi(,6) @cindex entry a
+index_nodes.texi(,7) 
+index_nodes.texi(,8) @printindex cp
+index_nodes.texi(,9) 
+index_nodes.texi(,10) @printindex fn
+index_nodes.texi(,11) 
+index_nodes.texi(,12) And one one more index
+index_nodes.texi(,13) 
+index_nodes.texi(,14) @printindex cp
+index_nodes.texi(,15) 
+index_nodes.texi(,16) @menu
+index_nodes.texi(,17) * first::
+index_nodes.texi(,18) @end menu
+index_nodes.texi(,19) 
+index_nodes.texi(,20) @node first,,Top, Top
+index_nodes.texi(,21) Text and then index entries
+index_nodes.texi(,22) @cindex entry in node
+index_nodes.texi(,23) @cindex ! entry in node
+index_nodes.texi(,24) @findex fun in node
+index_nodes.texi(,25) @cindex entry in node
+index_nodes.texi(,26) 
+index_nodes.texi(,27) @printindex cp
+index_nodes.texi(,28) 
+index_nodes.texi(,29) @menu
+index_nodes.texi(,30) * second::
+index_nodes.texi(,31) @end menu
+index_nodes.texi(,32) 
+index_nodes.texi(,33) @node second,,,first
+index_nodes.texi(,34) @menu
+index_nodes.texi(,35) * a node::
+index_nodes.texi(,36) * another::
+index_nodes.texi(,37) @end menu
+index_nodes.texi(,38) 
+index_nodes.texi(,39) @printindex fn
+index_nodes.texi(,40) 
+index_nodes.texi(,41) @node another, , a node, second
+index_nodes.texi(,42) 
+index_nodes.texi(,43) @cindex something
+index_nodes.texi(,44) @findex somewhere
+index_nodes.texi(,45) @cindex another
+index_nodes.texi(,46) 
+index_nodes.texi(,47) @node a node, another, ,second
+index_nodes.texi(,48) @cindex entry after printindex
+index_nodes.texi(,49) 
+index_nodes.texi(,50) @printindex cp
+index_nodes.texi(,51) 
+index_nodes.texi(,52) @findex a function
+index_nodes.texi(,53) @cindex a concept a node
+index_nodes.texi(,54) 
+index_nodes.texi(,55) @printindex cp
+index_nodes.texi(,56) 
+index_nodes.texi(,57) 

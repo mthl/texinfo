@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.58 2003-08-04 18:08:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.59 2003-08-08 14:26:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -178,7 +178,9 @@ our $L2H_FILE;
 our $L2H_HTML_VERSION;
 our $EXTERNAL_DIR;
 our @INCLUDE_DIRS ;
+our @PREPEND_DIRS ;
 our $IGNORE_PREAMBLE_TEXT;
+our @CSS_FILES;
 
 # customization variables
 our $MENU_PRE_STYLE;
@@ -928,7 +930,7 @@ sub t2h_gpl_heading($)
         print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
         $level = 1 if ($level == 0);
     }
-    my $class = $element->{'tag'};
+    my $class = $element->{'tag_level'};
     print STDERR "Bug: $element->{'texi'} class undef\n" if (!defined($class));
     # do like makeinfo
     $class = 'unnumbered' if ($class eq 'top');
@@ -1296,14 +1298,12 @@ $index_properties =
 	      'top', 0,
 	      'chapter', 1,
 	      'unnumbered', 1,
-	      'majorheading', 1,
 	      'chapheading', 1,
 	      'appendix', 1,
 	      'section', 2,
 	      'unnumberedsec', 2,
 	      'heading', 2,
 	      'appendixsec', 2,
-	      'appendixsection', 2,
 	      'subsection', 3,
 	      'unnumberedsubsec', 3,
 	      'subheading', 3,
@@ -1313,6 +1313,47 @@ $index_properties =
 	      'subsubheading', 4,
 	      'appendixsubsubsec', 4,
              );
+
+# the reverse mapping. There is an entry for each sectionning command.
+# The value is a ref on an array containing at each index the corresponding
+# sectionning command name.
+my %level2sec;
+{
+my $sections = [ ];
+my $appendices = [ ];
+my $unnumbered = [ ];
+my $headings = [ ];
+foreach my $command (keys (%sec2level))
+{
+    if ($command =~ /^appendix/)
+    {
+        $level2sec{$command} = $appendices;
+    }
+    elsif ($command =~ /^unnumbered/ or $command eq 'top')
+    {
+        $level2sec{$command} = $unnumbered;
+    }
+    elsif ($command =~ /section$/ or $command eq 'chapter')
+    {
+        $level2sec{$command} = $sections;
+    }
+    else
+    {
+        $level2sec{$command} = $headings;
+    }
+    $level2sec{$command}->[$sec2level{$command}] = $command;
+}
+}
+
+# this is a synonym
+$sec2level{'appendixsection'} = 2;
+# sec2level{'majorheading'} is also 1 and not 0
+$sec2level{'majorheading'} = 1;
+
+#foreach my $command (keys(%level2sec))
+#{
+#   print STDERR "$command: $level2sec{$command}, @{$level2sec{$command}}\n";
+#}
 
 #
 # This map is used when texi elements are removed and replaced 
@@ -1409,10 +1450,10 @@ $format_type{'noformat'} = '';
 my %fake_format = (
      'line' => 'table',
      'term' => 'table',
-     'item' => 'list',
-     'row' => 'multitable',
-     'cell' => 'multitable',
-     'deff_item' => 'deff',
+     'item' => 'list or table',
+     'row' => 'multitable row',
+     'cell' => 'multitable cell',
+     'deff_item' => 'definition command',
      'menu_comment' => 'menu',
      'menu_description' => 'menu',
      'menu_preformatted' => 'menu',
@@ -1424,7 +1465,7 @@ foreach my $key (keys(%fake_format))
 }
  
 # raw formats which are expanded especially
-my @raw_regions = ('html', 'verbatim', 'tex');
+my @raw_regions = ('html', 'verbatim', 'tex', 'xml');
 
 # special raw formats which are expanded between first and second pass
 # and are replaced by specific commands. Currently used for tex. It takes
@@ -1437,14 +1478,17 @@ my %text_macros = (
      'menu' => 0, 
      'ifplaintext' => 0, 
      'ifinfo' => 0,
+     'ifxml' => 0,
      'ifhtml' => 1, 
      'html' => 'raw', 
      'tex' => 0, 
+     'xml' => 'raw',
      'titlepage' => 1, 
      'ifnothtml' => 0, 
      'ifnottex' => 1, 
      'ifnotplaintext' => 1, 
-     'ifnotinfo' => 1, 
+     'ifnotinfo' => 1,
+     'ifnotxml' => 1,
      'direntry' => 0,
      'verbatim' => 'raw', 
      'ifclear' => 'value', 
@@ -1511,6 +1555,30 @@ $| = 1;
 
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
+
+
+sub locate_init_file($)
+{
+    my $file = shift;
+    if ($file =~ /\//)
+    {
+         return $file if (-e $file and -r $file);
+    }
+    else
+    {
+         my @dirs = ('./');
+         push @dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
+         push @dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
+         push @dirs, "$pkgdatadir" if (defined($pkgdatadir));
+         foreach my $dir (@dirs)
+         {
+              next unless (-d "$dir");
+              return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
+         }
+    }
+    return undef;
+}
+
 #
 # called on -init-file
 sub load_init_file
@@ -1537,9 +1605,10 @@ my $lang_set = 0; # set to 1 if lang was succesfully set by the command line
 
 #
 # called on -lang
-sub set_document_language
+sub set_document_language ($;$)
 {
     my $lang = shift;
+    my $line_nr = shift;
     if (Texi2HTML::I18n::set_language($lang))
     {
         print STDERR "# using '$lang' as document language\n" if ($T2H_VERBOSE);
@@ -1548,10 +1617,34 @@ sub set_document_language
     }
     else
     {
-        warn "$ERROR Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::Config::LANG'\n";
+        echo_error ("Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::Config::LANG'", $line_nr);
+        #warn "$ERROR Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::Config::LANG'\n";
     }
 }
 
+sub set_expansion($$)
+{
+    my $region = shift;
+    my $set = shift;
+    $set = 1 if (!defined($set));
+    if ($region ne 'html')
+    {
+         if ($set)
+         {
+             push (@Texi2HTML::Config::EXPAND, $region) unless (grep {$_ eq $region} @Texi2HTML::Config::EXPAND);
+         }
+         else
+         {
+             @Texi2HTML::Config::EXPAND = grep {$_ ne $region} @Texi2HTML::Config::EXPAND;
+         }
+     }
+     else
+     { # special case for html, as it is true by default, removing it from
+       # EXPAND won't change anything
+         $text_macros{'ifhtml'} = $set;
+     }
+}
+	 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
 # command-line options and whose values are a hash with the following keys:
 # type    ==> one of !|=i|:i|=s|:s (see GetOpt::Long for more info)
@@ -1602,14 +1695,14 @@ $T2H_OPTIONS -> {'dump-texi'} =
 $T2H_OPTIONS -> {'expand'} =
 {
  type => '=s',
- linkage => \@Texi2HTML::Config::EXPAND,
+ linkage => sub {set_expansion($_[1], 1);},
  verbose => 'Expand info|tex|none section of texinfo source',
 };
 
 $T2H_OPTIONS -> {'no-expand'} =
 {
  type => '=s',
- linkage => sub {@Texi2HTML::Config::EXPAND = grep {$_ ne $_[1]} @Texi2HTML::Config::EXPAND;},
+ linkage => sub {set_expansion ($_[1], 0);},
  verbose => 'Don\'t expand the given section of texinfo source',
 };
 
@@ -1621,11 +1714,46 @@ $T2H_OPTIONS -> {'noexpand'} =
  noHelp  => 1,
 };
 
+$T2H_OPTIONS -> {'ifhtml'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('html', $_[1]); },
+ verbose => "expand ifhtml and html sections",
+};
+
+$T2H_OPTIONS -> {'ifinfo'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('info', $_[1]); },
+ verbose => "expand ifinfo",
+};
+
+$T2H_OPTIONS -> {'ifxml'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('xml', $_[1]); },
+ verbose => "expand ifxml and xml sections",
+};
+
+$T2H_OPTIONS -> {'iftex'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('tex', $_[1]); },
+ verbose => "expand iftex and tex sections",
+};
+
+$T2H_OPTIONS -> {'ifplaintext'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('ifplaintext', $_[1]); },
+ verbose => "expand ifplaintext sections",
+};
+
 $T2H_OPTIONS -> {'invisible'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::INVISIBLE_MARK,
- verbose => 'use text in invisble anchot',
+ verbose => 'use text in invisble anchor',
  noHelp  => 1,
 };
 
@@ -1642,6 +1770,13 @@ $T2H_OPTIONS -> {'I'} =
  type => '=s',
  linkage => \@Texi2HTML::Config::INCLUDE_DIRS,
  verbose => 'append $s to the @include search path',
+};
+
+$T2H_OPTIONS -> {'P'} =
+{
+ type => '=s',
+ linkage => sub {unshift (@Texi2HTML::Config::PREPEND_DIRS, $_[1]);},
+ verbose => 'prepend $s to the @include search path',
 };
 
 $T2H_OPTIONS -> {'top-file'} =
@@ -1865,6 +2000,13 @@ $T2H_OPTIONS -> {'init-file'} =
  type => '=s',
  linkage => \&load_init_file,
  verbose => 'load init file $s'
+};
+
+$T2H_OPTIONS -> {'css-file'} =
+{
+ type => '=s',
+ linkage => \@Texi2HTML::Config::CSS_FILES,
+ verbose => 'use css file $s'
 };
 
 ##
@@ -2181,6 +2323,25 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     }
 }
 
+# This is usefull in case html isn't expanded
+foreach my $region (@raw_regions, @special_regions)
+{
+    if (exists ($text_macros{"if$region"}) and !$text_macros{"if$region"})
+    {
+         $text_macros{$region} = 0;
+    }
+}
+
+# handle ifnot regions
+foreach my $region (keys (%text_macros))
+{
+    next if ($region =~ /^ifnot/);
+    if ($text_macros{$region} and $region =~ /^if(\w+)$/)
+    {
+        $text_macros{"ifnot$1"} = 0;
+    }
+}
+
 if ($T2H_VERBOSE)
 {
     print STDERR "# Expanded: ";
@@ -2226,6 +2387,7 @@ else
     $docu_name = $docu;
 }
 unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
+unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 $docu_name =~ s/\.te?x(i|info)?$//;
 $docu_name = $Texi2HTML::Config::PREFIX if ($Texi2HTML::Config::PREFIX);
 
@@ -2362,6 +2524,164 @@ if ($Texi2HTML::Config::USE_ISO)
     $Texi2HTML::Config::things_map{'expansion'} = "&rarr;";
     $Texi2HTML::Config::things_map{'point'} = "&lowast;";
     $Texi2HTML::Config::things_map{'result'} = "&rArr;";
+}
+
+# process a css file
+sub process_css_file ($$)
+{
+    my $fh =shift;
+    my $file = shift;
+    my $in_rules = 0;
+    my $in_comment = 0;
+    my $in_import = 0;
+    my $in_string = 0;
+    my $rules = [];
+    my $imports = [];
+    while (<$fh>)
+    {
+	    #print STDERR "Line: $_";
+        if ($in_rules)
+        {
+            push @$rules, $_;
+            next;
+        }
+        my $text = '';
+        while (1)
+        { 
+		#sleep 1;
+		#print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $_";
+             if ($in_comment)
+             {
+                 if (s/^(.*?\*\/)//)
+                 {
+                     $text .= $1;
+                     $in_comment = 0;
+                 }
+                 else
+                 {
+                     push @$imports, $text . $_;
+                     last;
+                 }
+             }
+             elsif (!$in_string and s/^\///)
+	     { # what do '\' do here ?
+                 if (s/^\*//)
+                 {
+                     $text .= '/*';
+                     $in_comment = 1;
+                 }
+                 else
+                 {
+                     push (@$imports, $text. "\n") if ($text ne '');
+                     push (@$rules, '/' . $_);
+                     $in_rules = 1;
+                     last;
+                 }
+             }
+             elsif (!$in_string and $in_import and s/^([\"\'])//)
+             { # strings outside of import start rules
+                 $text .= "$1";
+                 $in_string = quotemeta("$1");
+             }
+             elsif ($in_string and s/^(\\$in_string)//)
+             {
+                 $text .= $1;
+             }
+             elsif ($in_string and s/^($in_string)//)
+             {
+                 $text .= $1;
+                 $in_string = 0;
+             }
+             elsif ((! $in_string and !$in_import) and (s/^([\\]?\@import)$// or s/^([\\]?\@import\s+)//))
+             {
+                 $text .= $1;
+                 $in_import = 1;
+             }
+             elsif (!$in_string and $in_import and s/^\;//)
+             {
+                 $text .= ';';
+                 $in_import = 0;
+             }
+             elsif (($in_import or $in_string) and s/^(.)//)
+	     {
+                  $text .= $1;
+             }
+             elsif (!$in_import and s/^([^\s])//)
+	     { 
+                  push (@$imports, $text. "\n") if ($text ne '');
+                  push (@$rules, $1 . $_);
+                  $in_rules = 1;
+                  last;
+             }
+             elsif (s/^(\s)//)
+             {
+                  $text .= $1;
+             }
+             elsif ($_ eq '')
+             {
+                  push (@$imports, $text);
+                  last;
+             }
+        } 
+    }
+    warn "$WARN string not closed in css file $file\n" if ($in_string);
+    warn "$WARN comment not closed in css file $file\n" if ($in_comment);
+    warn "$WARN \@import not finished in css file $file\n"  if ($in_import and !$in_comment and !$in_string);
+    return ($imports, $rules);
+}
+
+my @css_import_lines;
+my @css_rule_lines;
+
+# process css files
+foreach my $file (@Texi2HTML::Config::CSS_FILES)
+{
+    my $css_file_fh;
+    my $css_file;
+    if ($file eq '-')
+    {
+        $css_file_fh = \*STDIN;
+        $css_file = '-';
+    }
+    else
+    {
+         $css_file = locate_init_file ($file);
+         unless (defined($css_file))
+         {
+             warn "css file $file not found\n";
+             next;
+         }
+         unless (open (CSSFILE, "$css_file"))
+         {
+             warn "Cannot open ${css_file}: $!";
+             next;
+        }
+        $css_file_fh = \*CSSFILE;
+    }
+    my ($import_lines, $rules_lines);
+    ($import_lines, $rules_lines) = process_css_file ($css_file_fh, $css_file);
+    push @css_import_lines, @$import_lines;
+    push @css_rule_lines, @$rules_lines;
+}
+
+if ($T2H_DEBUG & $DEBUG_USER)
+{
+    if (@css_import_lines)
+    {
+        print STDERR "# css import lines\n";
+        foreach my $line (@css_import_lines)
+        {
+            print STDERR "$line";
+        }
+    }
+    if (@css_rule_lines)
+    {
+        print STDERR "# css rule lines\n";
+        foreach my $line (@css_rule_lines)
+        {
+            print STDERR "$line";
+        }
+    }
 }
 
 #
@@ -2930,9 +3250,7 @@ my @lines_numbers = ();     # line number, originating file associated with
                             # whole document 
 my @copying_lines = ();     # lines between @copying and @end copying
 my $macros;                 # macros. reference on a hash
-my $file_name = '';         # current file name
-my $current_macro = '';     # current macro being expanded
-my $line_nr = 0;            # current line number
+my $texi_line_number = { 'file_name' => '', 'line_nr' => 0, 'macro' => '' };
 
 sub initialise_state_texi($)
 {
@@ -2952,9 +3270,8 @@ sub pass_texi()
     my @stack;
     my $text;
 
- INPUT_LINE: while ($_ = next_line())
+ INPUT_LINE: while ($_ = next_line($texi_line_number))
     {
-        #print STDERR "file: $file_name, line: $line_nr, macro ${current_macro}: $_";
         #
         # remove the lines preceding \input or an @-command
         # 
@@ -2974,19 +3291,20 @@ sub pass_texi()
                 next;
             }
         }
-	#print STDERR "PASS_TEXI file: $file_name, line: $line_nr, macro ${current_macro}: $_";
-        if (scan_texi ($_, \$text, \@stack, $state))
+        #print STDERR "line_nr $texi_line_number->{'line_nr'} :$_";
+        if (scan_texi ($_, \$text, \@stack, $state, $texi_line_number) and !$state->{'copying'})
         {
-            push (@lines_numbers, { 'file_name' => $file_name,
-                  'line_nr' => $line_nr,
-                  'macro' => $current_macro });
-  #print STDERR "pushing file: $file_name, line: $line_nr, macro ${current_macro}\n";
+        #print STDERR "scan_texi line_nr $texi_line_number->{'line_nr'}\n";
+            push (@lines_numbers, { 'file_name' => $texi_line_number->{'file_name'},
+                  'line_nr' => $texi_line_number->{'line_nr'},
+                  'macro' => $texi_line_number->{'macro'} });
         }
         
 	#dump_stack (\$text, \@stack, $state);
         if ($state->{'bye'})
         {
-            close_stack(\$text, \@stack, $state);
+            #dump_stack(\$text, \@stack, $state);
+            close_stack(\$text, \@stack, $state, $texi_line_number);
         }
         next if (@stack);
         $_ = $text;
@@ -3005,7 +3323,7 @@ sub pass_texi()
     if (@stack or $state->{'macro'} or $state->{'ignored'} or $state->{'macro_name'} or $state->{'raw'} or $state->{'copying'})
     {
 	    #dump_stack(\$text, \@stack, $state);
-        close_stack(\$text, \@stack, $state);
+        close_stack(\$text, \@stack, $state, $texi_line_number);
         push @lines, split_lines ($text);
     }
     print STDERR "# end of pass texi\n" if $T2H_VERBOSE;
@@ -3076,6 +3394,7 @@ sub initialise_state_structure($)
 }
 
 my @doc_lines = ();         # whole document
+my @doc_numbers = ();       # whole document line numbers and file names
 my @nodes_list = ();        # nodes in document reading order
                             # each member is a reference on a hash
 my @sections_list = ();     # sections in reading order
@@ -3120,12 +3439,18 @@ sub pass_structure()
     $state->{'place'} = $element_before_anything->{'place'};
     my @stack;
     my $text;
+    my $line_nr;
 
     while (@lines)
     {
         $_ = shift @lines;
         my $chomped_line = $_;
-        my $line_number = shift (@lines_numbers) if (chomp($chomped_line));
+        if (!chomp($chomped_line) and @lines)
+        {
+             $lines[0] = $_ . $lines[0];
+             next;
+        }
+        $line_nr = shift (@lines_numbers);
 	#print STDERR "PASS_STRUCTURE: $_";
         if (!$state->{'raw'} and !$state->{'special'} and !$state->{'verb'})
         {
@@ -3143,7 +3468,7 @@ sub pass_structure()
                 $_ = substitute_texi_line($_); #usefull if there is an anchor ???
                 if (@stack and $tag eq 'node' or defined($sec2level{$tag}))
                 {
-                    close_stack (\$text, \@stack, $state);
+                    close_stack(\$text, \@stack, $state, $line_nr);
                     next if $state->{'titlepage'};
                     push @doc_lines, split_lines ($text);
                     $text = '';
@@ -3161,61 +3486,68 @@ sub pass_structure()
                         if (exists($nodes{$node}) and defined($nodes{$node})
                              and $nodes{$node}->{'seen'} )
                         {
-                            warn "$ERROR Duplicate node found: $node\n";
+                            echo_error ("Duplicate node found: $node", $line_nr);
+                            #warn "$ERROR Duplicate node found: $node\n";
                             next;
                         }
-                        elsif (exists($nodes{$node}) and defined($nodes{$node}))
-                        { # node appeared in a menu
-                             $node_ref = $nodes{$node};
-                        }
-                        else
+			else
                         {
-                             my $first;
-                             $first = 1 if (!defined($node_ref));
-                             $node_ref = {};
-                             $node_first = $node_ref if ($first);
-                             $nodes{$node} = $node_ref;
-                        }     
-                        $node_ref->{'node'} = 1;
-                        $node_ref->{'tag'} = 'node';
-                        $node_ref->{'texi'} = $node;
-                        $node_ref->{'seen'} = 1;
-                        $node_ref->{'automatic_directions'} = $auto_directions;
-                        $node_ref->{'place'} = [];
-                        $node_ref->{'current_place'} = [];
-                        merge_element_before_anything($node_ref);
-                        $node_ref->{'index_names'} = [];
-                        $state->{'place'} = $node_ref->{'current_place'};
-                        $state->{'element'} = $node_ref;
-                        $state->{'after_element'} = 1;
-                        $state->{'node_ref'} = $node_ref;
-                        # makeinfo treats differently case variants of
-                        # top in nodes and anchors and in refs commands and 
-                        # refs from nodes. 
-                        if ($node =~ /^top$/i)
-                        {
-                            if (!defined($node_top))
-                            {
-                                $node_top = $node_ref;
-                                $node_top->{'texi'} = 'Top';
-                                delete $nodes{$node};
-                                $nodes{$node_top->{'texi'}} = $node_ref;
+                            if (exists($nodes{$node}) and defined($nodes{$node}))
+                            { # node appeared in a menu
+                                $node_ref = $nodes{$node};
                             }
                             else
-                            { # All the refs are going to point to the first Top
-                                warn "$WARN Top node allready exists\n";
+                            {
+                                my $first;
+                                $first = 1 if (!defined($node_ref));
+                                $node_ref = {};
+                                $node_first = $node_ref if ($first);
+                                $nodes{$node} = $node_ref;
+                            }      
+                            $node_ref->{'node'} = 1;
+                            $node_ref->{'tag'} = 'node';
+                            $node_ref->{'tag_level'} = 'node';
+                            $node_ref->{'texi'} = $node;
+                            $node_ref->{'seen'} = 1;
+                            $node_ref->{'automatic_directions'} = $auto_directions;
+                            $node_ref->{'place'} = [];
+                            $node_ref->{'current_place'} = [];
+                            merge_element_before_anything($node_ref);
+                            $node_ref->{'index_names'} = [];
+                            $state->{'place'} = $node_ref->{'current_place'};
+                            $state->{'element'} = $node_ref;
+                            $state->{'after_element'} = 1;
+                            $state->{'node_ref'} = $node_ref;
+                            # makeinfo treats differently case variants of
+                            # top in nodes and anchors and in refs commands and 
+                            # refs from nodes. 
+                            if ($node =~ /^top$/i)
+                            {
+                                if (!defined($node_top))
+                                {
+                                    $node_top = $node_ref;
+                                    $node_top->{'texi'} = 'Top';
+                                    delete $nodes{$node};
+                                    $nodes{$node_top->{'texi'}} = $node_ref;
+                                }
+                                else
+                                { # All the refs are going to point to the first Top
+                                    echo_warn ("Top node allready exists", $line_nr);
+                                    #warn "$WARN Top node allready exists\n";
+                                }
                             }
+                            unless (@nodes_list)
+                            {
+                                $node_ref->{'first'} = 1;
+                            }
+                            push (@nodes_list, $node_ref);
+                            push @elements_list, $node_ref;
                         }
-                        unless (@nodes_list)
-                        {
-                            $node_ref->{'first'} = 1;
-                        }
-                        push (@nodes_list, $node_ref);
-                        push @elements_list, $node_ref;
                     }
                     else
                     {
-                        warn "$ERROR Node is undefined: $_ (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)";
+                        echo_error ("Node is undefined: $_ (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)", $line_nr);
+                        #warn "$ERROR Node is undefined: $_ (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)";
                         next;
                     }
                 
@@ -3284,7 +3616,8 @@ sub pass_structure()
                             }
                             if (! $name and $level)
                             {
-                               warn "$ERROR $tag without name\n";
+                               echo_warn ("$tag without name", $line_nr);
+                               #warn "$WARN $tag without name\n";
                             }
                             push @sections_list, $section_ref;
                             push @elements_list, $section_ref;
@@ -3307,6 +3640,7 @@ sub pass_structure()
                                 'level' => $level,
                                 'heading' => 1,
                                 'tag' => $tag,
+                                'tag_level' => $tag,
                                 'sec_num' => $sec_num, 
                                 'id' => $docid,
                                 'number' => '' };
@@ -3320,7 +3654,8 @@ sub pass_structure()
                 {
                     unless (@elements_list)
                     {
-                        warn "$WARN Printindex command before document beginning: \@printindex $1\n";
+                        echo_warn ("Printindex before document beginning: \@printindex $1", $line_nr);
+                        #warn "$WARN Printindex before document beginning: \@printindex $1\n";
                         next;
                     }
                     $state->{'after_element'} = 0;
@@ -3334,10 +3669,14 @@ sub pass_structure()
                 }
                 next if ($state->{'titlepage'});
                 push @doc_lines, $_;
+                push @doc_numbers, $line_nr;
                 next;
             }
         }
-        scan_structure ($_, \$text, \@stack, $state);
+        if (scan_structure ($_, \$text, \@stack, $state, $line_nr) and !$state->{'titlepage'})
+        {
+            push (@doc_numbers, $line_nr);
+        }
         next if (@stack);
         $_ = $text;
         $text = '';
@@ -3346,10 +3685,10 @@ sub pass_structure()
     }
     if (@stack)
     {
-        close_stack(\$text, \@stack, $state);
+        close_stack(\$text, \@stack, $state, $line_nr);
         push @doc_lines, split_lines ($text) if ($text and !$state->{'titlepage'});
     }
-    warn "$WARN $state->{'titlepage'} titlepage not closed\n" if ($state->{'titlepage'});
+    echo_warn ("At end of document, $state->{'titlepage'} titlepage not closed") if ($state->{'titlepage'});
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
 }
 
@@ -3454,10 +3793,11 @@ sub merge_element_before_anything($)
 }
 
 # find menu_prev, menu_up... for a node in menu
-sub menu_entry_texi($$)
+sub menu_entry_texi($$$)
 {
     my $node = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $node_menu_ref = {};
     if (exists($nodes{$node}))
     {
@@ -3477,7 +3817,8 @@ sub menu_entry_texi($$)
     }
     else
     {
-        warn "$WARN menu entry without previous node: $node\n" unless $node =~ /\(.+\)/;
+        echo_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
+        #warn "$WARN menu entry without previous node: $node\n" unless ($node =~ /\(.+\)/);
     }
     return if ($state->{'detailmenu'});
     if ($state->{'prev_menu_node'})
@@ -3528,6 +3869,8 @@ sub rearrange_elements()
         }
         $element->{'toc_level'} = $element->{'level'};
         $element->{'toc_level'} = $MIN_LEVEL if ($element->{'level'} < $MIN_LEVEL);
+        # find the new tag corresponding with the level of the section
+        $element->{'tag_level'} = $level2sec{$element->{'tag'}}->[$element->{'level'}] if ($element->{'tag'} !~ /heading/);
         $toplevel = $element->{'level'} if (($element->{'level'} < $toplevel) and ($element->{'level'} > 0 and ($element->{'tag'} !~ /heading/)));
         print STDERR "# section level $level: $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     }
@@ -3668,7 +4011,7 @@ sub rearrange_elements()
                 }
                 else
                 {
-                     warn "$WARN $direction `$node->{$direction}' for `$node->{'texi'}' not found\n";
+                     echo_warn ("$direction `$node->{$direction}' for `$node->{'texi'}' not found");
                      delete $node->{$direction};
                 }
             }
@@ -4260,6 +4603,7 @@ sub rearrange_elements()
                              'texi' => "$element->{'texi'} index $index->{'name'} page $index_num",
                              'level' => $element->{'level'},
                              'tag' => $element->{'tag'},
+                             'tag_level' => $element->{'tag_level'},
                              'toplevel' => $element->{'toplevel'},
                              'up' => $element->{'up'},
                              'element_up' => $element->{'element_up'},
@@ -4405,11 +4749,12 @@ sub rearrange_elements()
             my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
             my $index = 0;
             while ($files{$file})
-            {
+            { # in case more than one node have same file name
                 $index++;
                 $file = "${name}_${index}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
             }
-            $node->{'file'} = $file if ($Texi2HTML::Config::SPLIT eq 'node');
+            $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
+            #$node->{'file'} = $file if ($Texi2HTML::Config::SPLIT eq 'node');
             $node->{'node_file'} = $file;
             if ($node->{'node'})
             {
@@ -4459,6 +4804,7 @@ sub rearrange_elements()
                 unless ($element->{'file'})
                 {
                     my $file = "${docu_name}_$doc_nr.$docu_ext";
+                    # in case a node has allready used that file name
                     while ($files{$file})
                     {
                         $doc_nr++;
@@ -4497,7 +4843,7 @@ sub rearrange_elements()
                 {
                     $element->{'file'} = "$docu_top";
                     # if there is a previous element, we force it to be in 
-                    # an other file than top
+                    # another file than top
                     $doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
                     $top_doc_nr = $doc_nr;
                     $element->{'doc_nr'} = $doc_nr;
@@ -4510,9 +4856,10 @@ sub rearrange_elements()
                 $place->{'file'} = $element->{'file'};
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
-            if (!$element->{'node'} and (!$Texi2HTML::Config::NODE_FILES or ($Texi2HTML::Config::SPLIT ne 'node')))
+            #if (!$element->{'node'} and (!$Texi2HTML::Config::NODE_FILES or ($Texi2HTML::Config::SPLIT ne 'node')))
+            if (!$element->{'node'} and (!$Texi2HTML::Config::USE_NODES))
             { 
-                if (!$Texi2HTML::Config::USE_NODES and $element->{'nodes'})
+                if ($element->{'nodes'})
                 {
                     foreach my $node (@{$element->{'nodes'}})
                     {
@@ -4731,21 +5078,24 @@ sub do_names()
 #                                                                              #
 #---############################################################################
 
-sub enter_index_entry($$$$$)
+sub enter_index_entry($$$$$$)
 {
     my $prefix = shift;
+    my $line_nr = shift;
     my $key = shift;
     my $place = shift;
     my $element = shift;
     my $use_section_id = shift;
     unless (exists ($index_properties->{$prefix}))
     {
-        warn "$ERROR Undefined index command: ${prefix}index\n";
+        echo_error ("Undefined index command: ${prefix}index", $line_nr);
+        #warn "$ERROR Undefined index command: ${prefix}index\n";
         return 0;
     }
     if (!exists($element->{'tag'}) and !$element->{'footnote'})
     {
-        warn "$WARN Index entry before document: \@${prefix}index $key\n"; 
+        echo_warn ("Index entry before document: \@${prefix}index $key", $line_nr); 
+        #warn "$WARN Index entry before document: \@${prefix}index $key\n"; 
 	#return 0; 
     }
     $key =~ s/\s+$//;
@@ -4910,14 +5260,16 @@ sub get_index_pages($)
     return $Pages;
 }
 
-sub get_index($)
+sub get_index($;$)
 {
     my $name = shift;
+    my $line_nr = shift;
     return (@{$indices{$name}}) if ($indices{$name});
     my $prefix = index_name2prefix($name);
     unless ($prefix)
     {
-        warn "$ERROR Bad index name: $name\n";
+        echo_error ("Bad index name: $name", $line_nr);
+        #warn "$ERROR Bad index name: $name\n";
         return;
     }
     if ($index_properties->{$prefix}->{code})
@@ -4963,7 +5315,7 @@ sub pass_text()
     my $doc_nr;
     my $in_doc = 0;
     my $element;
-    my @text_lines = @doc_lines;
+    #my @text_lines = @doc_lines;
     my @text =();
     my @section_lines = ();
     my @head_lines = ();
@@ -5050,11 +5402,6 @@ sub pass_text()
         $Texi2HTML::HREF{'About'} = '#SEC_About' unless $one_section;
     }
     
-    # FIXME in makeinfo, in case the top heading is set by settitle or
-    # titlefont the class "settitle" or "titlefont" is associated with
-    # the Top name. Maybe it would be  simpler to have a title class instead
-    # valid for all titles ?
-
     %Texi2HTML::NAME =
         (
          'First',   $element_first->{'text'},
@@ -5104,10 +5451,22 @@ sub pass_text()
     my $index_pages;
     my $index_pages_nr;
     my $index_nr = 0;
-    while (@text_lines)
+    my $line_nr;
+    while (@doc_lines)
     {
-        $_ = shift @text_lines unless $index_pages;
+        unless ($index_pages)
+        {
+            $_ = shift @doc_lines;
+            my $chomped_line = $_;
+            if (!chomp($chomped_line) and @doc_lines)
+            {
+                 $doc_lines[0] = $_ . $doc_lines[0];
+                 next;
+            }
+            $line_nr = shift (@doc_numbers);
+        }
 	#print STDERR "PASS_TEXT: $_";
+        #dump_stack(\$text, \@stack, \%state);
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
@@ -5117,7 +5476,7 @@ sub pass_text()
             {
                 if (@stack)
                 {
-                    close_stack(\$text, \@stack, \%state);
+                    close_stack(\$text, \@stack, \%state, $line_nr);
                     push @section_lines, $text;
                     $text = '';
                 }
@@ -5150,8 +5509,8 @@ sub pass_text()
                     $current_element = shift (@all_elements);
                     if ($current_element->{'node'})
                     {
-		         print STDERR 'NODE ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-			 print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'} and $T2H_DEBUG & $DEBUG_ELEMENTS);;
+		         print STDERR 'NODE ' . "$current_element->{'texi'}($current_element->{'file'})" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+			 print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'} and ($T2H_DEBUG & $DEBUG_ELEMENTS));
                     }
                     else
                     {
@@ -5312,7 +5671,7 @@ sub pass_text()
                 my $name = $1;
 		print STDERR "print index $name($index_nr) in `$element->{'texi'}', element->{'indices'}: $element->{'indices'},\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
 		print STDERR "element->{'indices'}->[index_nr]: $element->{'indices'}->[$index_nr] (@{$element->{'indices'}->[$index_nr]})\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
-                close_stack(\$text, \@stack, \%state, '');
+                close_stack(\$text, \@stack, \%state, $line_nr, '');
 		#close_paragraph (\$text, \@stack, \%state, '');
                 close_paragraph (\$text, \@stack, \%state);
                 next unless (index_name2prefix($name));
@@ -5333,14 +5692,14 @@ sub pass_text()
                 next;
             }
         }
-        scan_line ($_, \$text, \@stack, \%state);
+        scan_line ($_, \$text, \@stack, \%state, $line_nr);
         next if (@stack);
         push @section_lines, $text;
         $text = '';
     }
     if (@stack)
     {
-        close_stack(\$text, \@stack, \%state);
+        close_stack(\$text, \@stack, \%state, $line_nr);
         push @section_lines, $text;
     }
     print STDERR "\n" if ($T2H_VERBOSE);
@@ -5519,13 +5878,14 @@ sub do_node_files()
     {
         my $node = $nodes{$key};
         next unless ($node->{'node_file'});
+        my $redirection_file = $docu_doc;
+        $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
+        print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" if (!$redirection_file);
+        next if ($redirection_file eq $node->{'node_file'});
         my $file = "${docu_rdir}$node->{'node_file'}";
         $Texi2HTML::NODE{'This'} = $node->{'text'};
         $Texi2HTML::NO_TEXI{'This'} = $node->{'no_texi'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
-        my $redirection_file = $docu_doc;
-        $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
-        print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" if (!$redirection_file);
         $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
         open (NODEFILE, "> $file") || die "$ERROR: Can't open $file for writing: $!\n";
         &$Texi2HTML::Config::print_redirection_page (\*NODEFILE);
@@ -5552,32 +5912,10 @@ sub locate_include_file($)
     return undef;
 }
 
-sub locate_init_file($)
-{
-    my $file = shift;
-    if ($file =~ /\//)
-    {
-         return $file if (-e $file and -r $file);
-    }
-    else
-    {
-         my @dirs = ('./');
-         push @dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
-         push @dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
-         push @dirs, "$pkgdatadir" if (defined($pkgdatadir));
-         foreach my $dir (@dirs)
-         {
-              next unless (-d "$dir");
-              return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
-         }
-    }
-    return undef;
-}
-
-sub open_file($)
+sub open_file($$)
 {
     my $name = shift;
-
+    my $line_number = shift;
     ++$fh_name;
     no strict "refs";
     if (open($fh_name, $name))
@@ -5589,8 +5927,8 @@ sub open_file($)
            'line_nr' => 0 };
         unshift(@fhs, $file);
         $input_spool = $file->{'input_spool'};
-        $file_name = $name;
-        $line_nr = 1;
+        $line_number->{'file_name'} = $name;
+        $line_number->{'line_nr'} = 1;
     }
     else
     {
@@ -5599,17 +5937,18 @@ sub open_file($)
     use strict "refs";
 }
 
-sub next_line()
+sub next_line($)
 {
+    my $line_number = shift;
     while (@fhs)
     {
         my $file = $fhs[0];
-        $file_name = $file->{'name'};
+        $line_number->{'file_name'} = $file->{'name'};
         $input_spool = $file->{'input_spool'};
         if (@{$input_spool->{'spool'}})
         {
-             $current_macro = $file->{'input_spool'}->{'macro'};
-             $line_nr = $file->{'line_nr'};
+             $line_number->{'macro'} = $file->{'input_spool'}->{'macro'};
+             $line_number->{'line_nr'} = $file->{'line_nr'};
              my $line = shift(@{$input_spool->{'spool'}});
              print STDERR "# unspooling $line" if ($T2H_DEBUG & $DEBUG_MACROS);
              return($line);
@@ -5617,14 +5956,14 @@ sub next_line()
         else
         {
              $file->{'input_spool'}->{'macro'} = '';
-             $current_macro = '';
+             $line_number->{'macro'} = '';
         }
         my $fh = $file->{'fh'};
         no strict "refs";
         my $line = <$fh>;
         use strict "refs";
         $file->{'line_nr'}++;
-        $line_nr = $file->{'line_nr'};
+        $line_number->{'line_nr'} = $file->{'line_nr'};
         return($line) if $line;
         no strict "refs";
         close($fh);
@@ -5632,6 +5971,35 @@ sub next_line()
         shift(@fhs);
     }
     return(undef);
+}
+
+# echo a warning
+sub echo_warn($;$)
+{
+    my $text = shift;
+    chomp ($text);
+    my $line_number = shift;
+    warn "$WARN $text " . format_line_number($line_number) . "\n";
+}
+
+sub echo_error($;$)
+{
+    my $text = shift;
+    chomp ($text);
+    my $line_number = shift;
+    warn "$ERROR $text " . format_line_number($line_number) . "\n";
+}
+
+sub format_line_number($)
+{
+    my $line_number = shift;
+    my $macro_text = '';
+    #$line_number = undef;
+    return '' unless (defined($line_number));
+    $macro_text = " in $line_number->{'macro'}" if ($line_number->{'macro'} ne '');
+    my $file_text = '(';
+    $file_text = "(in $line_number->{'file_name'} " if ($line_number->{'file_name'} ne $docu);
+    return "${file_text}l. $line_number->{'line_nr'}" . $macro_text . ')';
 }
 
 # to debug, dump the result of pass_texi and pass_structure in a file
@@ -5661,7 +6029,7 @@ sub dump_texi($$;$)
 sub next_tag ($)
 {
     my $line = shift;
-    if ($line =~ /^\s*\@(\w+)\s/ or $line =~ /^\s*\@(\w+)$/)
+    if ($line =~ /^\s*\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])/o)# or $line =~ /^\s*\@(\w+)$/)
     {
         return ($1);
     }
@@ -5820,11 +6188,12 @@ sub no_line($)
 }
 
 # handle raw formatting, ignored regions...
-sub do_text_macro($$$)
+sub do_text_macro($$$$)
 {
     my $type = shift;
     my $line = shift;
     my $state = shift;
+    my $line_nr = shift;
     #print STDERR "do_text_macro $type\n";
 
     if (not $text_macros{$type})
@@ -5866,7 +6235,8 @@ sub do_text_macro($$$)
         }
         else
         {
-            warn "$ERROR Bad $type line: $line";
+            echo_error ("Bad $type line: $line", $line_nr);
+            #warn "$ERROR Bad $type line: $line";
         }
     }
     else
@@ -5996,6 +6366,7 @@ sub begin_deff_item($$;$)
     # opening
     push @$stack, { 'format' => 'preformatted', 'text' => '' } if ($state->{'preformatted'} and !$no_paragraph);
     delete($state->{'deff'});
+    #dump_stack(undef, $stack, $state);
 }
 
 sub begin_paragraph($$)
@@ -6038,9 +6409,10 @@ sub parse_enumerate($)
     return ($line, $spec);
 }
 
-sub parse_multitable($)
+sub parse_multitable($$)
 {
     my $line = shift;
+    my $line_nr = shift;
     # first find the table width
     my $table_width = 0;
     if ($line =~ s/^\s+\@columnfractions\s+//)
@@ -6052,7 +6424,8 @@ sub parse_multitable($)
             my $fraction = shift @fractions;
             unless ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
             { 
-                warn "$ERROR column fraction not a number: $fraction";
+                echo_error ("column fraction not a number: $fraction", $line_nr);
+                #warn "$ERROR column fraction not a number: $fraction";
             }
         }
     }
@@ -6069,24 +6442,27 @@ sub parse_multitable($)
             }
             else
             {
-                warn "$ERROR garbage in multitable specification: $line_orig";
+                echo_error ("garbage in multitable specification: $element", $line_nr);
+                #warn "$ERROR garbage in multitable specification: $line_orig";
             }
         }
     }
     return ($table_width);
 }
 
-sub end_paragraph_style($$$$)
+sub end_paragraph_style($$$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
     my $end_tag = shift;
+    my $line_nr = shift;
     #print STDERR "PARAGRAPH_STYLE $end_tag\n";
     return 0 if ($format_type{$end_tag} ne 'paragraph_style');
     if ($state->{'paragraph_style'}->[-1] ne $Texi2HTML::Config::paragraph_style{$end_tag})
     {
-        warn "$WARN close $end_tag without corresponding opening element\n";
+        echo_error ("close $end_tag without corresponding opening element", $line_nr);
+        #warn "$WARN close $end_tag without corresponding opening element\n";
         if ($end_tag eq 'center')
         {
             dump_stack ($text, $stack, $state);
@@ -6101,21 +6477,22 @@ sub end_paragraph_style($$$$)
     return 1;
 }
 
-sub end_format($$$$)
+sub end_format($$$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
     my $format = shift;
+    my $line_nr = shift;
     #print STDERR "END FORMAT $format\n";
     #dump_stack($text, $stack, $state);
-    close_menu ($text, $stack, $state) if ($format_type{$format} eq 'menu');
+    close_menu($text, $stack, $state, $line_nr) if ($format_type{$format} eq 'menu');
     if (($format_type{$format} eq 'list') or ($format_type{$format} eq 'table'))
     { # those functions return if they detect an inapropriate context
-        add_item($text, $stack, $state, 1); # handle lists
-        add_term($text, $stack, $state, 1); # handle table
-        add_line($text, $stack, $state, 1); # handle table
-        add_row($text, $stack, $state); # handle multitable
+        add_item($text, $stack, $state, $line_nr, 1); # handle lists
+        add_term($text, $stack, $state, $line_nr, 1); # handle table
+        add_line($text, $stack, $state, $line_nr, 1); # handle table
+        add_row($text, $stack, $state, $line_nr); # handle multitable
     }
 
     my $format_ref = pop @$stack;
@@ -6131,9 +6508,17 @@ sub end_format($$$$)
     
     if (defined($Texi2HTML::Config::def_map{$format}))
     {
-        close_stack($text, $stack, undef, 'deff_item');
+	    #close_stack($text, $stack, undef, $line_nr,  'deff_item');
+        close_stack($text, $stack, $state, $line_nr, undef, 'deff_item') unless ($format_ref->{'format'} eq 'deff_item');
         add_prev($text, $stack, &$Texi2HTML::Config::def_item($format_ref->{'text'}));
-        $format_ref = pop @$stack;
+        $format_ref = pop @$stack; # pop deff
+        if (!defined($format_ref->{'format'}) or !defined($Texi2HTML::Config::def_map{$format_ref->{'format'}}))
+        {
+             print STDERR "Bug: not a def* under deff_item\n";
+             push (@$stack, $format_ref);
+             dump_stack($text, $stack, $state);
+             pop @$stack;  
+        }
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}));
     }
     elsif ($format_type{$format} eq 'cartouche')
@@ -6213,17 +6598,18 @@ sub end_simple_format($$)
     return '';
 }
 
-sub close_menu($$$)
+sub close_menu($$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
-    close_stack ($text, $stack, $state, '');
+    my $line_nr = shift;
+    close_stack($text, $stack, $state, $line_nr, '');
     if ($state->{'menu_comment'})
     {
 	    #print STDERR "Before close_stack\n";
 	    #dump_stack($text, $stack, $state);
-        close_stack ($text, $stack, $state, undef, 'menu_comment');
+        close_stack($text, $stack, $state, $line_nr, undef, 'menu_comment');
         # close_paragraph isn't needed in most cases, but A preformatted may 
         # appear after close_stack if we closed a format, as formats reopen
         # preformatted. However it is empty and close_paragraph will remove it
@@ -6241,7 +6627,7 @@ sub close_menu($$$)
     }
     if ($state->{'menu_entry'})
     {
-        close_stack($text, $stack,$state, undef, 'menu_description');
+        close_stack($text, $stack,$state, $line_nr, undef, 'menu_description');
         my $descr = pop(@$stack);
         print STDERR "# close_menu: close description\n" if ($T2H_DEBUG & $DEBUG_MENU);
         add_prev ($text, $stack, menu_description($descr->{'text'}, $state));
@@ -6249,9 +6635,10 @@ sub close_menu($$$)
     }
 }
 
-sub menu_entry($;$)
+sub menu_entry($$;$)
 {
     my $state = shift;
+    my $line_nr = shift;
     my $simple = shift;
     my $menu_entry = $state->{'menu_entry'};
     my $file = $state->{'element'}->{'file'};
@@ -6311,7 +6698,8 @@ sub menu_entry($;$)
     }
     else
     {
-        warn "$ERROR Unknown node in menu entry `$node_texi'\n";
+        echo_error ("Unknown node in menu entry `$node_texi'", $line_nr);
+        #warn "$ERROR Unknown node in menu entry `$node_texi'\n";
         $entry = $name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node";
     }
     return &$Texi2HTML::Config::menu_entry($entry, $state, $href) unless ($simple);
@@ -6354,11 +6742,12 @@ sub menu_description($$)
     }
 }
 
-sub do_xref($$$)
+sub do_xref($$$$)
 {
     my $macro = shift;
     my $text = shift;
     my $state = shift;
+    my $line_nr = shift;
 
     my $result = '';
     
@@ -6387,7 +6776,8 @@ sub do_xref($$$)
     {
         if (@args != 3)
         {
-            warn "$ERROR Wrong number of arguments: \@$macro" . "{$text}\n";
+            echo_error ("\@$macro needs 3 arguments", $line_nr);
+            #warn "$ERROR Wrong number of arguments: \@$macro" . "{$text}\n";
             $args[2] = '';
             return '' if ($args[0] eq '');
         }
@@ -6439,7 +6829,8 @@ sub do_xref($$$)
             }
             else
             {
-                print STDERR "$WARN \@$macro not in text (in anchor, node, section...)\n";
+                echo_warn ("\@$macro not in text (in anchor, node, section...)", $line_nr);
+                #warn "$WARN \@$macro not in text (in anchor, node, section...)\n";
                 # if Texi2HTML::Config::SPLIT the file is '' which ensures a href with the file
                 # name. if ! Texi2HTML::Config::SPLIT the 2 file will be the same thus there
                 # won't be the file name
@@ -6452,7 +6843,8 @@ sub do_xref($$$)
         }
         else
         {
-           warn "$ERROR Undefined node `$node_texi' in \@$macro: $text\n";
+           echo_error ("Undefined node `$node_texi' in \@$macro", $line_nr);
+           #warn "$ERROR Undefined node `$node_texi' in \@$macro: $text\n";
            $result = "\@$macro"."{${text}}";
         }
     }
@@ -6496,18 +6888,20 @@ sub do_footnote($$$)
     return $foot_label;
 }
 
-sub do_image($$$)
+sub do_image($$$$)
 {
     # replace images
     my $macro = shift;
     my $text = shift;
     my $state = shift;
+    my $line_nr = shift;
     $text =~ s/\s+/ /gos; # remove useless spaces and newlines
     my @args = split (/\s*,\s*/, $text);
     my $base = $args[0];
     if ($base eq '')
     {
-         warn "$ERROR no file argument for \@image\n";
+         echo_error ("no file argument for \@image", $line_nr);
+         #warn "$ERROR no file argument for \@image\n";
          return '';
     }
     my $image =
@@ -6519,8 +6913,9 @@ sub do_image($$$)
     {
         $image = "$base.jpg";
         $image = "$base.$args[4]" if (defined($args[4]) and ($args[4] ne ''));
-        warn "$ERROR no image file for $base, (using $image) : $text\n"; 
-    }
+        echo_error ("no image file for $base, (using $image)", $line_nr); 
+        #warn "$ERROR no image file for $base, (using $image) : $text\n"; 
+    } # FIXME use $args[3], ALTTEXT for alt + else use full file name for alt
     return &$Texi2HTML::Config::image($image, $base, $state->{'preformatted'});
 }
 
@@ -6588,11 +6983,12 @@ sub apply_style($$;$$$)
     return($text);
 }
 
-sub expand_macro($$;$)
+sub expand_macro($$$$)
 {
     my $name = shift;
     my $args = shift;
     my $end_line = shift;
+    my $line_nr = shift;
     my $macrobody = $macros->{$name}->{'Body'};
     my $formal_args = $macros->{$name}->{'Args'};
     my $args_index =  $macros->{$name}->{'Args_index'};
@@ -6605,7 +7001,8 @@ sub expand_macro($$;$)
         $args->[$i] = "" unless (defined($args->[$i]));
         print STDERR "# arg($i): $args->[$i]\n" if ($T2H_DEBUG & $DEBUG_MACROS);
     }
-    warn "$ERROR too much arguments for macro $name" if (defined($args->[$i + 1]));
+    echo_error ("too much arguments for macro $name", $line_nr) if (defined($args->[$i + 1]));
+    #warn "$ERROR too much arguments for macro $name" if (defined($args->[$i + 1]));
     my $result = '';
     while ($macrobody)
     {
@@ -6774,33 +7171,35 @@ sub remove_texi(@)
     return substitute_text ({ 'remove_texi' => 1 }, @_);
 }
 
-sub enter_table_index_entry($$$)
+sub enter_table_index_entry($$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     if ($state->{'item'} and ($state->{'table_stack'}->[-1] =~ /^(v|f)table$/))
     {
         my $index = $1;
         my $macro = $state->{'item'};
         delete $state->{'item'};
-        close_stack($text, $stack, $state, undef, 'index_item');
+        close_stack($text, $stack, $state, $line_nr, undef, 'index_item');
         my $item = pop @$stack;
         my $element = $state->{'element'};
         $element = $state->{'node_ref'} unless ($element);
         #print STDERR "enter_table_index_entry $item->{'text'}";
-        enter_index_entry($index, $item->{'text'}, $state->{'place'}, $element, 0);
+        enter_index_entry($index, $line_nr, $item->{'text'}, $state->{'place'}, $element, 0);
         add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
 }
 
-sub scan_texi($$$$)
+sub scan_texi($$$$;$)
 {
     my $line = shift;
     my $text = shift;
     my $stack = shift;
     my $state = shift;
-
+    my $line_nr = shift;
+    
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
     #print STDERR "SCAN_TEXI: $line";
@@ -6819,7 +7218,7 @@ sub scan_texi($$$$)
         elsif ((/^\@(\w+)/o and $Texi2HTML::Config::to_skip_texi{$1}) or (/^\@end\s+(\w+)/o and $Texi2HTML::Config::to_skip_texi{"end $1"}))
         {
             s/^\@$next_tag//;
-            $_ = skip_texi ($_, $next_tag, $state);
+            $_ = skip_texi($_, $next_tag, $state);
             return unless (defined($_));
         }
     }
@@ -6901,7 +7300,7 @@ sub scan_texi($$$$)
                     if ($state->{'macro_depth'} == 0)
                     {
                         print STDERR "# expanding macro $state->{'macro_name'}\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-                        $_ = expand_macro($state->{'macro_name'}, $state->{'macro_args'}, $_);
+                        $_ = expand_macro($state->{'macro_name'}, $state->{'macro_args'}, $_, $line_nr);
                         delete $state->{'macro_name'};
                         delete $state->{'macro_depth'};
                         delete $state->{'macro_args'};
@@ -7001,7 +7400,8 @@ sub scan_texi($$$$)
             }
             elsif ($text_macros{$end_tag})
             {
-                warn "$ERROR \@end $end_tag without corresponding element.\n";
+                echo_error ("\@end $end_tag without corresponding element", $line_nr);
+                #warn "$ERROR \@end $end_tag without corresponding element\n";
             }
             elsif ($end_tag eq 'copying')
             {
@@ -7012,7 +7412,8 @@ sub scan_texi($$$$)
                 }
                 else
                 {
-                    warn "$ERROR \@end $end_tag but no opening of copying.\n";
+                    echo_error ("\@end $end_tag but no opening of $end_tag", $line_nr);
+                    #warn "$ERROR \@end $end_tag but no opening of $end_tag\n";
                 }
             }
             else
@@ -7029,7 +7430,7 @@ sub scan_texi($$$$)
 	    #print STDERR "MACRO $macro\n";
             if ($Texi2HTML::Config::to_skip_texi{$macro})
             {
-                 $_ = skip_texi ($_, $macro, $state);
+                 $_ = skip_texi($_, $macro, $state);
                  return unless (defined($_));
                  next;
             }
@@ -7086,13 +7487,14 @@ sub scan_texi($$$$)
                 }
                 else
                 {
-                    warn "$ERROR: Bad macro defintion $_";
+                    echo_error ("Bad macro defintion $_", $line_nr);
+                    #warn "$ERROR Bad macro defintion $_";
                 }
                 return;
             }
             elsif (defined($text_macros{$macro}))
             {
-                $_ = do_text_macro ($macro, $_, $state);
+                $_ = do_text_macro ($macro, $_, $state, $line_nr);
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later
                 my $macro_kept;
@@ -7122,7 +7524,8 @@ sub scan_texi($$$$)
                 }
 		else
                 {
-                    warn "$ERROR bad \@value macro";
+                    echo_error ("bad \@value macro", $line_nr);
+                    #warn "$ERROR bad \@value macro";
                 }
             }
             elsif ($macro eq 'include')
@@ -7133,17 +7536,18 @@ sub scan_texi($$$$)
                     my $file = locate_include_file($1);
                     if ($file && -e $file)
                     {
-                        open_file($file);
+                        open_file($file, $line_nr);
                         print STDERR "# including $file\n" if $T2H_VERBOSE;
                     }
                     else
                     {
-                        warn "$ERROR Can't find $1, skipping";
+                        echo_error ("Can't find $1, skipping", $line_nr);
+                        #warn "$ERROR Can't find $1, skipping\n";
                     }
                 }
                 else
                 {
-                    warn "$ERROR Bad include line: $_";
+                    echo_error ("Bad include line: $_", $line_nr);
                     return;
                 } # makeinfo remove the @include but not the end of line
                 # FIXME verify if it is right
@@ -7167,12 +7571,12 @@ sub scan_texi($$$$)
                 }
                 elsif ($#$ref >= 1)
                 { # no brace -> no arg
-                    $_ = expand_macro ($macro, [], $_);
+                    $_ = expand_macro ($macro, [], $_, $line_nr);
                 }
                 else
                 { # macro with one arg on the line
                     chomp $_;
-                    $_ = expand_macro ($macro, [$_], "\n");
+                    $_ = expand_macro ($macro, [$_], "\n", $line_nr);
                 }
             }
             elsif ($macro eq ',')
@@ -7185,7 +7589,8 @@ sub scan_texi($$$$)
                 {
                     if (/^$/)
                     {
-                        warn "$ERROR verb at end of line";
+                        echo_error ("verb at end of line", $line_nr);
+                        #warn "$ERROR verb at end of line";
                     }
                     else
                     {
@@ -7203,10 +7608,8 @@ sub scan_texi($$$$)
         }
         elsif(s/^([^{}@]*)\@(.)//o)
         {
-            my $chomped_line = $line;
-            chomp($chomped_line);
-            warn "$ERROR Unknown command: `$2', line: $chomped_line\n";
-            add_prev($text, $stack, "\@$2");
+            # No need to warn here it is done later
+            add_prev($text, $stack, $1 . "\@$2");
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
@@ -7239,7 +7642,9 @@ sub scan_texi($$$$)
                 }
                 else
                 {
-                    warn "$ERROR '}' without opening '{' line: $line";
+                    # we warn in the last pass
+                    #echo_error ("'}' without opening '{', before: $_", $line_nr);
+                    #warn "$ERROR '}' without opening '{' line: $line";
                     add_prev ($text, $stack, '}');
                 }
             }
@@ -7254,12 +7659,13 @@ sub scan_texi($$$$)
     return 1;
 }
 
-sub scan_structure($$$$)
+sub scan_structure($$$$;$)
 {
     my $line = shift;
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
 
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
@@ -7284,7 +7690,7 @@ sub scan_structure($$$$)
             }
             if ($node)
             {
-                menu_entry_texi(normalise_node($node), $state);
+                menu_entry_texi(normalise_node($node), $state, $line_nr);
 		#add_prev($text, $stack, $menu_line);
 		#return;
             }
@@ -7373,7 +7779,8 @@ sub scan_structure($$$$)
             else
             {
                 add_prev ($text, $stack, $_);
-                last;
+                last unless ($state->{'special'}); 
+                return;
             }
         }
 	
@@ -7429,14 +7836,15 @@ sub scan_structure($$$$)
             }
             elsif ($text_macros{$end_tag})
             {
-                warn "$ERROR \@end $end_tag without corresponding element\n";
+                echo_error ("\@end $end_tag without corresponding element", $line_nr);
+                #warn "$ERROR \@end $end_tag without corresponding element\n";
                 #dump_stack($text, $stack, $state);
             }
             else
             {
                 if ($end_tag eq $state->{'table_stack'}->[-1])
                 {
-                    enter_table_index_entry($text, $stack, $state);
+                    enter_table_index_entry($text, $stack, $state, $line_nr);
                     pop @{$state->{'table_stack'}};
                 }
                 #add end tag
@@ -7502,7 +7910,7 @@ sub scan_structure($$$$)
                 {
                     my $key = $1;
                     $_ = substitute_texi_line($_);
-                    my $index_entry = enter_index_entry($index_prefix, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'});
+                    my $index_entry = enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'});
                     if ($index_entry)
                     {
                         add_prev ($text, $stack, "\@$macro" .  $_);
@@ -7510,12 +7918,14 @@ sub scan_structure($$$$)
                     }
                     elsif (!defined($index_entry))
                     {
-                        warn "$WARN Bad index entry: $_";
+                        echo_warn ("Bad index entry: $_", $line_nr);
+                        #warn "$WARN Bad index entry: $_";
                     }
                 }
                 else
                 {
-                     warn "$WARN empty index entry\n";
+                     echo_warn ("empty index entry", $line_nr);
+                     #warn "$WARN empty index entry\n";
                 }
                 return;
             }
@@ -7565,16 +7975,18 @@ sub scan_structure($$$$)
             }
             elsif ($macro eq 'synindex' || $macro eq 'syncodeindex')
             {
-                if (s/^\s+(\w+)\s+(\w+)\s*//)
+                if (s/^\s+(\w+)\s+(\w+)//)
                 {
                     my $from = $1;
                     my $to = $2;
                     my $prefix_from = index_name2prefix($from);
                     my $prefix_to = index_name2prefix($to);
 
-                    warn("$ERROR unknown from index name $from in syn*index line: $_")
+                    echo_error ("unknown from index name $from in \@$macro", $line_nr)
+                    #warn("$ERROR unknown from index name $from in syn*index line: $_")
                         unless $prefix_from;
-                    warn("$ERROR unknown to index name $to in syn*index line: $_")
+                    echo_error ("unknown to index name $to in \@$macro", $line_nr)
+                    #warn("$ERROR unknown to index name $to in syn*index line: $_")
                         unless $prefix_to;
                     if ($prefix_from and $prefix_to)
                     {
@@ -7591,29 +8003,30 @@ sub scan_structure($$$$)
                 }
                 else
                 {
-                    warn "$ERROR Bad syn*index line: $_";
+                    echo_error ("Bad $macro line: $_", $line_nr);
+                    #warn "$ERROR Bad syn*index line: $_";
                 }
-                return if /^$/;
             }
             elsif ($macro eq 'defindex' || $macro eq 'defcodeindex')
             {
-                if (s/^\s+(\w+)\s*//)
+                if (s/^\s+(\w+)\s*$//)
                 {
                     my $name = $1;
-                    $index_properties->{$name}->{name} = $name;
-                    $index_properties->{$name}->{code} = 1 if $macro eq 'defcodeindex';
+                    $index_properties->{$name}->{'name'} = $name;
+                    $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
                 }
                 else
                 {
-                    warn "$ERROR Bad defindex line: $_";
+                    echo_error ("Bad $macro line: $_", $line_nr);
+                    #warn "$ERROR Bad $macro line: $_";
                 }
-                return if /^$/;
+                return;
             }
             elsif ($macro eq 'documentlanguage')
             {
                 s/\s+(\w+)//;
                 my $lang = $1;
-                set_document_language($lang) if (!$lang_set && $lang);
+                set_document_language($lang, $line_nr) if (!$lang_set && $lang);
                 return if (/^\s*$/);
                 s/^\s*//;
             }
@@ -7621,13 +8034,13 @@ sub scan_structure($$$$)
             {
                 #We must enter the index entries
                 my ($prefix, $entry) = get_deff_index($macro, $_);
-                enter_index_entry($prefix, $entry, $state->{'place'}, $state->{'element'}, 0);
+                enter_index_entry($prefix, $line_nr, $entry, $state->{'place'}, $state->{'element'}, 0);
                 s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
             }
             elsif ($macro =~ /^itemx?$/)
             {
-                enter_table_index_entry($text, $stack, $state);
+                enter_table_index_entry($text, $stack, $state, $line_nr);
                 if ($state->{'table_stack'}->[-1] =~ /^(v|f)table$/)
                 {
                     $state->{'item'} = $macro;
@@ -7650,7 +8063,8 @@ sub scan_structure($$$$)
                 {
                     if (/^$/)
                     {
-                        warn "$ERROR verb at end of line";
+                        # We allready warned in pass texi
+                        #warn "$ERROR verb at end of line";
                     }
                     else
                     {
@@ -7675,7 +8089,7 @@ sub scan_structure($$$$)
         }
         elsif(s/^([^{}@]*)\@(.)//o)
         {
-            add_prev($text, $stack, "\@$2");
+            add_prev($text, $stack, $1 . "\@$2");
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
@@ -7697,7 +8111,8 @@ sub scan_structure($$$$)
                         $anchor = normalise_node($anchor);
                         if ($nodes{$anchor})
                         {
-                            warn "$ERROR Duplicate node for anchor found: $anchor\n";
+                            echo_error ("Duplicate node for anchor found: $anchor", $line_nr);
+                            #warn "$ERROR Duplicate node for anchor found: $anchor\n";
                             next;
                         }
                         $anchor_num++;
@@ -7728,7 +8143,7 @@ sub scan_structure($$$$)
                     else
                     {
                         $result = '{' . $style->{'text'};
-                        # don't close { if we are closing stack as we are not 
+                        # don't close { if we are closing stack as we are not
                         # sure this is a licit { ... } construct.
                         $result .= '}' unless $state->{'close_stack'};
                     }
@@ -7738,7 +8153,9 @@ sub scan_structure($$$$)
                 }
                 else
                 {
-                    warn "$ERROR '}' without opening '{' line: $line";
+                    # We warn in the last pass
+                    #warn "$ERROR '}' without opening '{' line: $line";
+                    #echo_error ("'}' without opening '{' line: $line", $line_nr);
                     add_prev ($text, $stack, '}');
                 }
             }
@@ -7747,23 +8164,25 @@ sub scan_structure($$$$)
         {
             #print STDERR "END_LINE $_";
             add_prev($text, $stack, $_);
-            enter_table_index_entry($text, $stack, $state);
+            enter_table_index_entry($text, $stack, $state, $line_nr);
             last;
         }
     }
-    return undef;
+    return 1;
 }
 
-sub scan_line($$$$)
+sub scan_line($$$$;$)
 {
     my $line = shift;
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
 
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
     #print STDERR "SCAN_LINE: $line";
+    #dump_stack($text, $stack,  $state );
     my $new_menu_entry;
     if (!$state->{'raw'} and !$state->{'verb'} and $state->{'menu'})
     { # new menu entry
@@ -7790,10 +8209,10 @@ sub scan_line($$$$)
                 )
                )
             { # we are in a normal menu state.
-                close_menu($text, $stack, $state);
+                close_menu($text, $stack, $state, $line_nr);
                 $new_menu_entry = 1;
                 $state->{'menu_entry'} = { 'name' => $name, 'node' => $node };
-                add_prev ($text, $stack, menu_entry($state));
+                add_prev ($text, $stack, menu_entry($state, $line_nr));
                 print STDERR "# New menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 push @$stack, {'format' => 'menu_description', 'text' => ''};
             }
@@ -7803,7 +8222,7 @@ sub scan_line($$$$)
               # the context
                 my $menu_entry = $state->{'menu_entry'};
                 $state->{'menu_entry'} = { 'name' => $name, 'node' => $node };
-                add_prev ($text, $stack, menu_entry($state, 1));
+                add_prev ($text, $stack, menu_entry($state, $line_nr, 1));
                 $state->{'menu_entry'} = $menu_entry;
             }
         }
@@ -7868,16 +8287,17 @@ sub scan_line($$$$)
             if ($state->{'paragraph'})
             { # An empty line ends a paragraph
                 my $new_stack;
+                #print STDERR "empty line ends a paragraph\n";
 		#dump_stack ($text, $stack, $state);
                 # We close the stack, duplicating commands still opened
-                ($text, $stack, $state, $new_stack) = close_stack($text, $stack, $state, 1);
+                ($text, $stack, $state, $new_stack) = close_stack($text, $stack, $state, $line_nr, 1);
                 my $paragraph = pop @$stack;
                 if (!$paragraph->{'format'} or ($paragraph->{'format'} ne 'paragraph'))
                 { # After closing the stack, there is no paragraph, it is a bug
                     my $format = "UNDEF";
                     $format = "format $paragraph->{'format'}" if ($paragraph->{'format'});
                     $format = "style $paragraph->{'style'}" if ($paragraph->{'style'});
-                    print STDERR "Bug: paragraph closed but no paragraph ($format) $_\n";
+                    print STDERR "Bug: paragraph closed but no paragraph ($format), line: $_\n";
                     dump_stack ($text, $stack, $state);
                 }
                 add_prev ($text, $stack, do_paragraph($paragraph->{'text'}, $state));
@@ -7895,10 +8315,13 @@ sub scan_line($$$$)
               # a deff macro with x
                 begin_deff_item($stack, $state);
             }
-            if (!$state->{'paragraph'} and !($next_tag =~ /^(\w+?)index$/ and ($1 ne 'print')) and ($next_tag !~ /^itemx?$/) and ($next_tag ne 'html'))
+            #print STDERR "NEXT_TAG $next_tag\n";
+            if (!$state->{'paragraph'} and !($next_tag =~ /^(\w+?)index$/o and ($1 ne 'print')) and ($next_tag !~ /^itemx?$/o) and ($next_tag ne 'html'))
             { # index entries and @html don't trigger new paragraph beginning
               # otherwise we begin a new paragraph
                 begin_paragraph($stack, $state);
+                # if there are macros which weren't closed when the previous 
+                # paragraph was closed we reopen them here
                 push @$stack, @{$state->{'paragraph_macros'}} if $state->{'paragraph_macros'};
                 delete $state->{'paragraph_macros'};
             }
@@ -7920,8 +8343,8 @@ sub scan_line($$$$)
 
     while(1)
     {
-	    #print STDERR "WHILE\n";
-	    #dump_stack($text, $stack, $state);
+    #print STDERR "WHILE\n";
+    #dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
         {
@@ -8026,31 +8449,35 @@ sub scan_line($$$$)
             if (!$top_stack)
             {
                 # paragraph style have a separate stack and can be closed too
-                next if end_paragraph_style($text, $stack, $state, $end_tag);
-                warn "$ERROR \@end $end_tag without corresponding opening element\n";
+                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
+                echo_error ("\@end $end_tag without corresponding opening element", $line_nr);
+                #warn "$ERROR \@end $end_tag without corresponding opening element\n";
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
 
             if (!$top_stack->{'format'})
             {
-                warn "$ERROR waiting for closing of $top_stack->{'style'}, found \@end $end_tag";
+                echo_error ("waiting for closing of $top_stack->{'style'}, found \@end $end_tag", $line_nr);
+                #warn "$ERROR waiting for closing of $top_stack->{'style'}, found \@end $end_tag";
             }
             
             if (!$format_type{$end_tag})
             {
-                warn "$ERROR Unknown \@end $end_tag\n";
+                echo_warn ("Unknown \@end $end_tag", $line_nr);
+                #warn "$ERROR Unknown \@end $end_tag\n";
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
 
             # we close all the macros with braces
-            close_stack($text, $stack, $state, '');
+            close_stack($text, $stack, $state, $line_nr, '');
             $top_stack = top_stack($stack);
             if (!$top_stack)
             {
-                next if end_paragraph_style($text, $stack, $state, $end_tag);
-                warn "$ERROR ended $end_tag without corresponding opening element\n";
+                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
+                echo_error ("ended $end_tag without corresponding opening element", $line_nr);
+                #warn "$ERROR ended $end_tag without corresponding opening element\n";
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
@@ -8060,7 +8487,7 @@ sub scan_line($$$$)
             {
                 my $paragraph = pop @$stack;
                 add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
-                next if end_paragraph_style($text, $stack, $state, $end_tag);
+                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 $_ = "\@end $end_tag " . $_;
                 next;
             }
@@ -8070,75 +8497,71 @@ sub scan_line($$$$)
             {
                 my $paragraph = pop @$stack;
                 add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
-                next if end_paragraph_style($text, $stack, $state, $end_tag);
+                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 $_ = "\@end $end_tag " . $_;
                 next;
             }
             
             # a paragraph style is possibly closed here
-            next if end_paragraph_style($text, $stack, $state, $end_tag);
-	    
-            my $top_not_end_tag; # set to 1 if the format 
-                    #on the stack isn't the closed format
-
+            next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
             # Warn if the format on top of stack is not compatible with the 
             # end tag, and find the end tag.
-            if (
+            unless (
+                ($top_stack->{'format'} eq $end_tag)
+                or
                 ( 
-                 ($format_type{$end_tag} eq 'menu') and 
-                 ($top_stack->{'format'} ne $end_tag and
-                 ($top_stack->{'format'} ne 'menu_preformatted') and
-                 ($top_stack->{'format'} ne 'menu_comment') and
-                 ($top_stack->{'format'} ne 'menu_description'))
+                 ($format_type{$end_tag} eq 'menu') and
+                 (
+                  ($top_stack->{'format'} eq 'menu_preformatted') or
+                  ($top_stack->{'format'} eq 'menu_comment') or
+                  ($top_stack->{'format'} eq 'menu_description')
+                 )
                 ) or
                 ( 
                  ($end_tag eq 'multitable') and 
-                 ($top_stack->{'format'} ne 'cell') and
-                 ($top_stack->{'format'} ne $end_tag) and
-                 ($top_stack->{'format'} ne 'null')
+                 (
+                  ($top_stack->{'format'} eq 'cell') or
+                  ($top_stack->{'format'} eq 'null')
+                 )
                 ) or
                 ( 
                  ($format_type{$end_tag} eq 'list' ) and 
-                 ($top_stack->{'format'} ne 'item') and
-                 ($top_stack->{'format'} ne $end_tag)
+                 ($top_stack->{'format'} eq 'item')
                 ) or
                 (
-                 ($format_type{$end_tag} eq 'table') and 
-                 ($end_tag ne 'multitable') and 
-                 ($top_stack->{'format'} ne 'term') and
-                 ($top_stack->{'format'} ne 'line') and 
-                 ($top_stack->{'format'} ne $end_tag)
+                 (
+                  ($format_type{$end_tag} eq 'table') and 
+                  ($end_tag ne 'multitable')
+                 ) and 
+                 (
+                   ($top_stack->{'format'} eq 'term') or
+                   ($top_stack->{'format'} eq 'line') 
+                 )
                 ) or
                 (
                  (defined($Texi2HTML::Config::def_map{$end_tag})) and 
-                 ($top_stack->{'format'} ne 'deff_item') and
-                 ($top_stack->{'format'} ne $end_tag)
+                 ($top_stack->{'format'} eq 'deff_item')
+                ) or
+                (
+                 ($end_tag eq 'row') and 
+                 ($top_stack->{'format'} eq 'cell')
                 )
                )
             {
-		    #print STDERR "top_stack $top_stack->{'format'}\n";
-                warn  "$WARN \@end $end_tag without opening element\n";
-                $top_not_end_tag = 1;
-            }
-            elsif (($top_stack->{'format'} ne $end_tag) and 
-               ($end_tag ne 'menu') and
-               ($format_type{$end_tag} ne 'table') and ($format_type{$end_tag} ne 'list') and !defined($Texi2HTML::Config::def_map{$end_tag})) 
-            {
-                warn "$ERROR waiting for end of $top_stack->{'format'}, found $end_tag\n";
-                $top_not_end_tag = 1;
-            }
-            if ($top_not_end_tag)
-            {
-                close_stack($text, $stack, $state, undef, $end_tag);
+                my $waited_format = $top_stack->{'format'};
+                $waited_format = $fake_format{$top_stack->{'format'}} if ($format_type{$top_stack->{'format'}} eq 'fake');
+                echo_error ("waiting for end of $waited_format, found \@end $end_tag", $line_nr);
+                close_stack($text, $stack, $state, $line_nr, undef, $end_tag);
                 # an empty preformatted may appear when closing things as
-                # when closed formats reopen the preformatted environment
-                # if there is some text following, which isn't the case here.
+                # when closed, formats reopen the preformatted environment
+                # in case there is some text following, which isn't the case 
+                # here.
                 close_paragraph($text, $stack, $state);
             }
             # We should now be able to handle the format
             if (defined($format_type{$end_tag}) and $format_type{$end_tag} ne 'fake')
             {
-                end_format($text, $stack, $state, $end_tag);
+                end_format($text, $stack, $state, $end_tag, $line_nr);
                 next;
             }
             else 
@@ -8197,7 +8620,8 @@ sub scan_line($$$$)
                 {
                     if (/^$/)
                     {
-                        warn "$ERROR verb at end of line";
+                        # Allready warned ?
+                        #warn "$ERROR verb at end of line";
                     }
                     else
                     {
@@ -8229,11 +8653,8 @@ sub scan_line($$$$)
             {
                 unless ($macro eq 'html')
                 { # close paragraph before verbatim (and tex if !L2H)
-		    #my $result = close_paragraph($text, $stack, $state, $macro);
-                    if (close_paragraph($text, $stack, $state))
-		    #if ($result)
+                    if (close_paragraph($text, $stack, $state, $line_nr))
                     {
-			    #$_ = $result . $_;
                         $_ = "\@$macro " . $_;
                         next;
                     }
@@ -8248,7 +8669,7 @@ sub scan_line($$$$)
             {
                 if (s/^(\S)//o)
                 {
-                    add_prev ($text, $stack, do_simple($macro, $1));
+                    add_prev ($text, $stack, do_simple($macro, $1, $state));
                 }
                 else
                 { # The accent is at end of line
@@ -8259,7 +8680,8 @@ sub scan_line($$$$)
             # a macro which should be like @macroname{}. We handle it...
             if ($Texi2HTML::Config::things_map{$macro})
             {
-                warn "$WARN $macro requires {}\n";
+                echo_warn ("$macro requires {}", $line_nr);
+                #warn "$WARN $macro requires {}\n";
                 add_prev ($text, $stack, do_simple($macro, '', $state));
                 next;
             }
@@ -8280,9 +8702,8 @@ sub scan_line($$$$)
             # a macro which triggers paragraph closing
             if ($macro eq 'insertcopying')
             {
-                if (close_paragraph($text, $stack, $state))
+                if (close_paragraph($text, $stack, $state, $line_nr))
                 {
-			#$_ = $result . $_;
                     $_ = "\@$macro " . $_;
                 }
 		else
@@ -8303,13 +8724,14 @@ sub scan_line($$$$)
 		    #print STDERR "ITEM\n";
 		    #dump_stack($text, $stack, $state);
                 # these functions return trus if the context was their own
-                next if (add_item($text, $stack, $state)); # handle lists
-                next if (add_term($text, $stack, $state)); # handle table
-                next if (add_line($text, $stack, $state)); # handle table
-	        my $format = add_row ($text, $stack, $state); # handle multitable
+                next if (add_item($text, $stack, $state, $line_nr)); # handle lists
+                next if (add_term($text, $stack, $state, $line_nr)); # handle table
+                next if (add_line($text, $stack, $state, $line_nr)); # handle table
+	        my $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
                 unless ($format)
                 {
-                    warn "$WARN \@item outside of table or list\n";
+                    echo_warn ("\@item outside of table or list", $line_nr);
+                    #warn "$WARN \@item outside of table or list\n";
                     next;
                 }
                 push @$stack, {'format' => 'row', 'text' => ''};
@@ -8321,7 +8743,8 @@ sub scan_line($$$$)
                 }
                 else
                 {
-                    warn "$WARN \@$macro in empty multitable\n";
+                    echo_warn ("\@$macro in empty multitable", $line_nr);
+                    #warn "$WARN \@$macro in empty multitable\n";
                 }
                 next;
             }
@@ -8331,12 +8754,20 @@ sub scan_line($$$$)
                 #print STDERR "tab, $format->{'cell'}, max $format->{'max_columns'}\n";
                 unless ($format)
                 {
-                    warn "$WARN \@tab outside of multitable\n";
+                    echo_warn ("\@tab outside of multitable", $line_nr);
+                    #warn "$WARN \@tab outside of multitable\n";
                     next;
                 }
-                if ($format->{'cell'} > $format->{'max_columns'})
+                if (!$format->{'max_columns'})
                 {
-                    warn "$WARN cell over table width\n";
+                    echo_warn ("\@$macro in empty multitable", $line_nr);
+                    #warn "$WARN \@$macro in empty multitable\n";
+                    push @$stack, {'format' => 'null', 'text' => ''};
+                }
+                elsif ($format->{'cell'} > $format->{'max_columns'})
+                {
+                    echo_warn ("too much \@$macro (multitable has only $format->{'max_columns'} column(s))", $line_nr);
+                    #warn "$WARN cell over table width\n";
                     push @$stack, {'format' => 'null', 'text' => ''};
                 }
                 else
@@ -8349,9 +8780,10 @@ sub scan_line($$$$)
             # Macro opening a format (table, list, deff, example...)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
-                # if this is a paragraph style, we don't close allready opened 
-                # paragraph and start a new paragraph in preformatted environment 
-                if (! ($state->{'preformatted'} and ($format_type{$macro} eq 'paragraph_style')) and close_paragraph($text, $stack, $state))
+                # if this is a paragraph style, we close allready opened 
+                # paragraph and start a new paragraph if not in preformatted 
+                # environment 
+                if (! ($state->{'preformatted'} and ($format_type{$macro} eq 'paragraph_style')) and close_paragraph($text, $stack, $state, $line_nr))
                 {
                     $_ = "\@$macro " . $_;
                     next;
@@ -8431,10 +8863,11 @@ sub scan_line($$$$)
                     }
                     elsif ($macro eq 'multitable')
                     {
-                        my $max_columns = parse_multitable ($_);
+                        my $max_columns = parse_multitable ($_, $line_nr);
                         if (!$max_columns)
                         {
-                            warn "$WARN empty multitable\n";
+                            echo_warn ("empty multitable", $line_nr);
+			    #warn "$WARN empty multitable\n";
                             $max_columns = 0;
                         }
                         $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'cell' => 1 };
@@ -8482,16 +8915,16 @@ sub scan_line($$$$)
                 }
                 next;
             }
-            warn "$WARN Unknown macro `$macro' (left as is)\n";
+            #warn "$WARN Unknown macro `$macro' (left as is)\n";
+            echo_warn ("Unknown macro `$macro' (left as is)", $line_nr);
             add_prev ($text, $stack, do_text("\@$macro"));
             next;
         }
         elsif(s/^([^{}@]*)\@(.)//o)
         { # A character which shouldn't appear in macro name
-            my $chomped_line = $line;
-            chomp($chomped_line);
-            warn "$ERROR Unknown command: `$2', line: $chomped_line\n";
-            add_prev($text, $stack, do_text("\@$2"));
+            # FIXME add_prev($text, $stack, do_text($1, $state));
+            echo_error ("Unknown command: `\@$2'", $line_nr);
+            add_prev($text, $stack, do_text($1 ."\@$2", $state));
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
@@ -8506,12 +8939,13 @@ sub scan_line($$$$)
 		else
                 {
                     add_prev($text, $stack, '{<!-- brace without macro -->');
-                    warn "$ERROR '{' without macro line: $line";
+                    #warn "$ERROR '{' without macro line: $line";
+                    echo_error ("'{' without macro before: $_", $line_nr);
                 }
             }
             else
             { # A @macroname{ ...} is closed
-                if (@$stack)
+                if (@$stack and defined($stack->[-1]->{'style'}))
                 {
                     my $style = pop @$stack;
                     my $result;
@@ -8538,7 +8972,7 @@ sub scan_line($$$$)
                         elsif ($style->{'style'} =~ /^(x|px|info|)ref$/o)
                         {
                             $state->{'keep_texi'}--;
-                            $result = do_xref($style->{'style'}, $style->{'text'}, $state);
+                            $result = do_xref($style->{'style'}, $style->{'text'}, $state, $line_nr);
                         }
                         elsif ($style->{'style'} eq 'footnote')
                         {
@@ -8551,23 +8985,26 @@ sub scan_line($$$$)
                         }
                         elsif ($style->{'style'} eq 'image')
                         {
-                            $result = do_image($style->{'style'}, $style->{'text'}, $state);
+                            $result = do_image($style->{'style'}, $style->{'text'}, $state, $line_nr);
                         }
                         else
                         {
-                             $result = do_simple($style->{'style'}, $style->{'text'}, $state, $style->{'no_open'}, $style->{'no_close'});
+				#print STDERR "DO_SIMPLE $style->{'style'}\n";
+                             $result = do_simple($style->{'style'}, $style->{'text'}, $state, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                         }
                     }
                     else
                     {
-                        $result = $style->{'text'} . '}';
+                        #$result = $style->{'text'} . '}';
+                        print STDERR "Bug: empty style in pass_text\n";
                     }
                     add_prev ($text, $stack, $result);
                     next;
                 }
                 else
                 {
-                    warn "$ERROR '}' without opening '{' line: $line";
+                    echo_error ("'}' without opening '{' before: $_", $line_nr);
+                    #warn "$ERROR '}' without opening '{' line: $line";
                     add_prev ($text, $stack, '}') if ($state->{'keep_texi'});
                 }
             }
@@ -8579,7 +9016,7 @@ sub scan_line($$$$)
 	    #dump_stack($text, $stack, $state);
 
             # @item line is closed by end of line
-            add_term($text, $stack, $state);
+            add_term($text, $stack, $state, $line_nr);
             if ($state->{'paragraph_style'}->[-1] eq 'center')
             {
                 $_ = "\@end center\n";
@@ -8588,7 +9025,7 @@ sub scan_line($$$$)
             last;
         }
     }
-    return undef;
+    return 1;
 }
 
 sub get_value($)
@@ -8598,11 +9035,12 @@ sub get_value($)
     return "No value for $value";
 } 
 
-sub add_term($$$;$)
+sub add_term($$$$;$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $end = shift;
     return unless (exists ($state->{'format_stack'}));
     my $format = $state->{'format_stack'}->[-1];
@@ -8625,7 +9063,7 @@ sub add_term($$$;$)
     }
 
     #dump_stack($text, $stack, $state);
-    close_stack($text, $stack, $state, undef, 'term');
+    close_stack($text, $stack, $state, $line_nr, undef, 'term');
     my $term = pop @$stack;
     my $index_entry = ($format->{'format'} =~ /^(f|v)/);
     add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_entry, $state));
@@ -8638,16 +9076,17 @@ sub add_term($$$;$)
     return 1;
 }
 
-sub add_row($$$)
+sub add_row($$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $format = $state->{'format_stack'}->[-1];
     return unless ($format->{'format'} eq 'multitable');
     if ($format->{'cell'} > $format->{'max_columns'})
     {
-        close_stack($text, $stack, $state, undef, 'null');
+        close_stack($text, $stack, $state, $line_nr, undef, 'null');
         pop @$stack;
     }
     unless ($format->{'max_columns'})
@@ -8672,16 +9111,17 @@ sub add_row($$$)
     return $format;
 }
 
-sub add_cell($$$)
+sub add_cell($$$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $format = $state->{'format_stack'}->[-1];
     return unless ($format->{'format'} eq 'multitable');
     if ($format->{'cell'} <= $format->{'max_columns'})
     {
-        close_stack($text, $stack, $state, undef, 'cell');
+        close_stack($text, $stack, $state, $line_nr, undef, 'cell');
         my $cell = pop @$stack;
         add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}));
         $format->{'cell'}++;
@@ -8689,11 +9129,12 @@ sub add_cell($$$)
     return $format;
 }
 
-sub add_line($$$;$)
+sub add_line($$$$;$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $end = shift;
     my $format = $state->{'format_stack'}->[-1]; 
     return unless ($format_type{$format->{'format'}} eq 'table' and ($format->{'format'} ne 'multitable') and ($format->{'term'} == 0));
@@ -8702,7 +9143,7 @@ sub add_line($$$;$)
     # as in pre the end of line are kept, we must explicitely abort empty
     # preformatted, close_stack doesn't abort the empty preformatted regions.
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
-    close_stack($text, $stack, $state, undef, 'line');
+    close_stack($text, $stack, $state, $line_nr, undef, 'line');
     my $line = pop @$stack;
     my $first = 0;
     $first = 1 if ($format->{'first'});
@@ -8730,11 +9171,12 @@ sub add_line($$$;$)
     return 1;
 }
 
-sub add_item($$$;$)
+sub add_item($$$$;$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $end = shift;
     my $format = $state->{'format_stack'}->[-1];
     return unless ($format_type{$format->{'format'}} eq 'list');
@@ -8742,7 +9184,7 @@ sub add_item($$$;$)
     # as in pre the end of line are kept, we must explicitely abort empty
     # preformatted, close_stack doesn't do that.
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
-    close_stack($text, $stack, $state, undef, 'item');
+    close_stack($text, $stack, $state, $line_nr, undef, 'item');
     #dump_stack ($text, $stack, $state);
     my $item = pop @$stack;
     # the element following ol or ul must be li. Thus even though there
@@ -8764,11 +9206,12 @@ sub add_item($$$;$)
     return 1;
 }
 
-sub do_simple($$$;$$)
+sub do_simple($$$;$$$)
 {
     my $macro = shift;
     my $text = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $no_open = shift;
     my $no_close = shift;
     my $result;
@@ -8830,8 +9273,10 @@ sub do_simple($$$;$$)
     # Unknown macro
     $result = '';
     unless ($no_open)
-    {
-        warn "$WARN Unknown macro $macro\n";
+    { # we warn only if no_open is true, i.e. it is the first time we close 
+      # the macro for a multiline macro
+        echo_warn ("Unknown macro $macro", $line_nr);
+        #warn "$WARN Unknown macro $macro\n";
         $result = "\@$macro" . '{' ;
     }
     $result .= $text;
@@ -8901,11 +9346,12 @@ sub add_prev ($$;$)
 # if a $format is given the stack is closed according to $close_paragraph but
 # if $format is encountered the closing stops
 
-sub close_stack($$$;$$)
+sub close_stack($$$$;$$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $close_paragraph = shift;
     my $format = shift;
     my $new_stack;
@@ -8939,22 +9385,26 @@ sub close_stack($$$;$$)
     if ($state->{'ignored'})
     {
         $string .= "\@end $state->{'ignored'} ";
-        warn "$WARN closing $state->{'ignored'}\n"; 
+        echo_warn ("closing $state->{'ignored'}", $line_nr); 
+        #warn "$WARN closing $state->{'ignored'}\n"; 
     }
     if ($state->{'macro'})
     {
         $string .= "\@end macro ";
-        warn "$WARN closing macro\n"; 
+        echo_warn ("closing macro", $line_nr); 
+        #warn "$WARN closing macro\n"; 
     }
     if ($state->{'macro_name'})
     {
         $string .= ('}' x $state->{'macro_depth'}) . " ";
-        warn "$WARN closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)\n"; 
+        echo_warn ("closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)", $line_nr); 
+        #warn "$WARN closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)\n"; 
     }
     if ($state->{'copying'})
     {
         $string .= '@end copying ' x $state->{'copying'};
-        warn "$WARN closing $state->{'copying'} copying\n"; 
+        echo_warn ("closing $state->{'copying'} copying", $line_nr); 
+        #warn "$WARN closing $state->{'copying'} copying\n"; 
     }
     
     #debugging
@@ -8988,7 +9438,8 @@ sub close_stack($$$;$$)
                 }
                 else
                 {
-                    warn "$WARN closing `$stack_format'\n"; 
+                    echo_warn ("closing `$stack_format'", $line_nr); 
+                    #warn "$WARN closing `$stack_format'\n"; 
                 }
                 $string .= "\@end $stack_format ";
             }
@@ -9005,8 +9456,9 @@ sub close_stack($$$;$$)
             else
             {
                 dump_stack ($text, $stack, $state) if (!defined($style)); 
-                $string .= '} ';
-                warn "$WARN closing $style\n" if ($style); 
+                $string .= '}';
+                echo_warn ("closing $style", $line_nr) if ($style); 
+                #warn "$WARN closing $style\n" if ($style); 
             }
         }
     }
@@ -9017,17 +9469,18 @@ sub close_stack($$$;$$)
         if ($state->{'texi'})
         {
 		#print STDERR "scan_texi in close_stack ($string)\n";
-            scan_texi ($string, $text, $stack, $state);
+            scan_texi ($string, $text, $stack, $state, $line_nr);
         }
         elsif ($state->{'structure'})
         {
 		#print STDERR "scan_structure in close_stack ($string)\n";
-            scan_structure ($string, $text, $stack, $state);
+            scan_structure ($string, $text, $stack, $state, $line_nr);
         }
         else
         {
-		#print STDERR "scan_line in close_stack ($string)\n";
-            scan_line ($string, $text, $stack, $state);
+		#print STDERR "scan_line in CLOSE_STACK ($string)\n";
+		#dump_stack ($text, $stack, $state);
+            scan_line ($string, $text, $stack, $state, $line_nr);
         }
     }
     delete $state->{'no_close'};
@@ -9066,15 +9519,16 @@ sub stack_order($@)
 }	
 
 
-sub close_paragraph($$$)
+sub close_paragraph($$$;$)
 {
     my $text = shift;
     my $stack = shift;
     my $state = shift;
+    my $line_nr = shift;
     #my $macro = shift;
     #print STDERR "CLOSE_PARAGRAPH\n";
     #dump_stack($text, $stack, $state);
-    close_stack($text, $stack, $state, '');
+    close_stack($text, $stack, $state, $line_nr, '');
     my $top_stack = top_stack($stack);
     if ($top_stack and $top_stack->{'format'} eq 'paragraph')
     {
@@ -9232,7 +9686,8 @@ sub substitute_text($@)
         $result .= $text;
         $text = '';
     }
-    close_stack (\$text, \@stack, $state);
+    # FIXME could we have the line number ?
+    close_stack(\$text, \@stack, $state, undef);
     #print STDERR "SUBST_TEXT end\n";
     return $result . $text;
 }
@@ -9323,7 +9778,7 @@ unless (defined($Texi2HTML::Config::ADDRESS))
     $Texi2HTML::Config::ADDRESS = &$Texi2HTML::Config::address($T2H_USER, $T2H_TODAY);
 }
 
-open_file($docu);
+open_file($docu, $texi_line_number);
 Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
  if ($Texi2HTML::Config::L2H);
 pass_texi();
@@ -9331,19 +9786,21 @@ dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
 # do copyright notice inserted in comment at the begining of the files
 $copying_comment = &$Texi2HTML::Config::comment(remove_texi(@copying_lines)) . "\n" if (@copying_lines);
 pass_structure();
-dump_texi(\@doc_lines, 'first') if ($T2H_DEBUG & $DEBUG_TEXI);
+dump_texi(\@doc_lines, 'first', \@doc_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
+#dump_texi(\@doc_lines, 'first') if ($T2H_DEBUG & $DEBUG_TEXI);
 exit(0) if $Texi2HTML::Config::DUMP_TEXI;
 rearrange_elements();
 do_names();
 &$Texi2HTML::Config::toc_body(\@elements_list, $do_contents, $do_scontents);
-&$Texi2HTML::Config::css_lines();
+&$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
 $sec_num = 0;
 #$Texi2HTML::Config::L2H = l2h_FinishToLatex() if ($Texi2HTML::Config::L2H);
 #$Texi2HTML::Config::L2H = l2h_ToHtml()        if ($Texi2HTML::Config::L2H);
 #$Texi2HTML::Config::L2H = l2h_InitFromHtml()  if ($Texi2HTML::Config::L2H);
 Texi2HTML::LaTeX2HTML::latex2html();
 pass_text();
-do_node_files() if ($Texi2HTML::Config::SPLIT ne 'node' and $Texi2HTML::Config::NODE_FILES);
+#do_node_files() if ($Texi2HTML::Config::SPLIT ne 'node' and $Texi2HTML::Config::NODE_FILES);
+do_node_files() if ($Texi2HTML::Config::NODE_FILES);
 #l2h_FinishFromHtml() if ($Texi2HTML::Config::L2H);
 #l2h_Finish() if($Texi2HTML::Config::L2H);
 Texi2HTML::LaTeX2HTML::finish();

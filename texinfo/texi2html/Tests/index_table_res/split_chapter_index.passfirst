@@ -1,53 +1,53 @@
-
-
-@node Top
-@top split indices
-@cindex entry a
-
-And one one more index
-
-
-@menu
-* first::
-@end menu
-
-@node first
-@chapter First chapter
-
-Text and then index entries
-@cindex entry in node
-@cindex ! entry in node
-@findex fun in node
-@cindex entry in node
-
-@printindex cp
-
-@cindex entry after printindex
-
-@findex a function
-@cindex a concept in first
-@findex somewhere
-
-@menu
-* section 1::
-@end menu
-
-@node section 1
-@section Section 1
-
-@menu
-*  subsection 1::
-@end menu
-
-@cindex something
-
-@cindex another
-
-@node subsection 1
-@subsection Subsection 1
-
-In subsection 1
-
-@cindex printindex subsection 2
-
-
+split_chapter_index.texi(,2) 
+split_chapter_index.texi(,4) 
+split_chapter_index.texi(,5) @node Top
+split_chapter_index.texi(,6) @top split indices
+split_chapter_index.texi(,7) @cindex entry a
+split_chapter_index.texi(,8) 
+split_chapter_index.texi(,9) And one one more index
+split_chapter_index.texi(,10) 
+split_chapter_index.texi(,11) 
+split_chapter_index.texi(,12) @menu
+split_chapter_index.texi(,13) * first::
+split_chapter_index.texi(,14) @end menu
+split_chapter_index.texi(,15) 
+split_chapter_index.texi(,16) @node first
+split_chapter_index.texi(,17) @chapter First chapter
+split_chapter_index.texi(,18) 
+split_chapter_index.texi(,19) Text and then index entries
+split_chapter_index.texi(,20) @cindex entry in node
+split_chapter_index.texi(,21) @cindex ! entry in node
+split_chapter_index.texi(,22) @findex fun in node
+split_chapter_index.texi(,23) @cindex entry in node
+split_chapter_index.texi(,24) 
+split_chapter_index.texi(,25) @printindex cp
+split_chapter_index.texi(,26) 
+split_chapter_index.texi(,27) @cindex entry after printindex
+split_chapter_index.texi(,28) 
+split_chapter_index.texi(,29) @findex a function
+split_chapter_index.texi(,30) @cindex a concept in first
+split_chapter_index.texi(,31) @findex somewhere
+split_chapter_index.texi(,32) 
+split_chapter_index.texi(,33) @menu
+split_chapter_index.texi(,34) * section 1::
+split_chapter_index.texi(,35) @end menu
+split_chapter_index.texi(,36) 
+split_chapter_index.texi(,37) @node section 1
+split_chapter_index.texi(,38) @section Section 1
+split_chapter_index.texi(,39) 
+split_chapter_index.texi(,40) @menu
+split_chapter_index.texi(,41) *  subsection 1::
+split_chapter_index.texi(,42) @end menu
+split_chapter_index.texi(,43) 
+split_chapter_index.texi(,44) @cindex something
+split_chapter_index.texi(,45) 
+split_chapter_index.texi(,46) @cindex another
+split_chapter_index.texi(,47) 
+split_chapter_index.texi(,48) @node subsection 1
+split_chapter_index.texi(,49) @subsection Subsection 1
+split_chapter_index.texi(,50) 
+split_chapter_index.texi(,51) In subsection 1
+split_chapter_index.texi(,52) 
+split_chapter_index.texi(,53) @cindex printindex subsection 2
+split_chapter_index.texi(,54) 
+split_chapter_index.texi(,55) 

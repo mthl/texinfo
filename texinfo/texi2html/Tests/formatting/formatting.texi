@@ -1,0 +1,392 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename formatting.info
+@node Top
+@top Top section
+
+@menu
+* chapter::               chapter
+
+Menu comment
+
+* chapter2:description.   Chapter 2
+@end menu
+
+@macro mymacro
+
+<
+>
+"
+&
+
+@"u 
+@"{U} 
+@~n
+@^a
+@'e
+@=o
+@`i
+@'{@dotless{i}} 
+
+@dotless{truc}
+@dotless{i}
+
+@*
+@ 
+@	
+@
+@-
+@|
+@:
+@!
+@?
+@.
+@@
+@}
+@{
+@/
+
+
+@TeX{}
+@c @br{}
+@bullet{}
+@copyright{}
+@dots{}
+@enddots{}
+@equiv{}
+@error{}
+@expansion{}
+@minus{}
+@point{}
+@print{}
+@result{}
+@today{}
+@aa{}
+@AA{}
+@ae{}
+@oe{}
+@o{}
+@O{}
+@ss{}
+@l{}
+@L{}
+@exclamdown{}
+@questiondown{}
+@pounds{}
+
+@acronym{a}
+@asis{a}
+@b{a}
+@cite{a}
+@code{a}
+@command{a}
+@ctrl{a}
+@dfn{a}
+@dmn{a}
+@email{a,b}
+@email{,b}
+@email{a}
+@emph{a}
+@env{a}
+@file{a}
+@i{a}
+@kbd{a}
+@key{a}
+@math{a}
+@option{a}
+@r{a}
+@samp{a}
+@sc{a}
+@strong{a}
+@t{a}
+@titlefont{a}
+@uref{a,b}
+@uref{a}
+@uref{,b}
+@url{a,b}
+@url{a,}
+@url{,b}
+@var{a}
+@verb{:a:}
+@w{a}
+@H{a}
+@dotaccent{a}
+@ringaccent{a}
+@tieaccent{a}
+@u{a}
+@ubaraccent{a}
+@udotaccent{a}
+@v{a}
+@,{a}
+@c @m_cedilla{a}
+@dotless{a}
+@footnote{in footnote}
+@footnote{in footnote2}
+
+@image{file,,ext}
+@image{file}
+@image{,,ext}
+@image{,,,ext}
+
+
+@quotation
+a quotation
+@end quotation
+
+@itemize
+@item truc
+@end itemize
+
+@enumerate
+@item truc
+@end enumerate
+
+@multitable @columnfractions 6 7
+@item a @tab b
+@end multitable
+
+@example
+a
+@end example
+
+@smallexample
+a
+@end smallexample
+
+@display 
+a
+@end display
+
+@smalldisplay
+a
+@end smalldisplay
+
+@lisp
+a
+@end lisp
+
+@smalllisp
+a
+@end smalllisp
+
+@format
+a
+@end format
+
+@smallformat
+a
+@end smallformat
+
+@deffn category name arguments...
+a
+@end deffn
+
+@defvr category name
+a
+@end defvr
+
+@deftypefn category type name arguments...
+a
+@end deftypefn
+
+@deftypeop category class type name arguments...
+a
+@end deftypeop
+
+@deftypevr category type name
+a
+@end deftypevr
+
+@defcv category class name
+a
+@end defcv
+
+@defop category class name arguments...
+a
+@end defop
+
+@deftp category name attributes...
+a
+@end deftp
+
+@defun name arguments...
+a
+@end defun
+
+@defmac name arguments...
+a
+@end defmac
+
+@defspec name arguments...
+a
+@end defspec
+
+@defvar name
+a
+@end defvar
+
+@defopt name
+a
+@end defopt
+
+@deftypefun type name arguments...
+a
+@end deftypefun
+
+@deftypevar type name
+a
+@end deftypevar
+
+@defivar class name
+a
+@end defivar
+
+@deftypeivar class type name
+a
+@end deftypeivar
+
+@defmethod class name arguments...
+a
+@end defmethod
+
+@deftypemethod class type name arguments...
+a
+@end deftypemethod
+
+@xref{chapter, cross ref name, title, file name, manual}
+@ref{chapter, cross ref name, title, file name, manual}
+@pxref{chapter, cross ref name, title, file name, manual}
+@inforef{chapter, cross ref name, file name}
+
+@ref{chapter}
+@ref{node}
+@ref{,cross ref name}
+@ref{,,title}
+@ref{,,,file name}
+@ref{,,,,manual}
+@ref{chapter,cross ref name}
+@ref{chapter,,title}
+@ref{chapter,,,file name}
+@ref{chapter,,,,manual}
+@ref{node,cross ref name}
+@ref{node,,title}
+@ref{node,,,file name}
+@ref{node,,,,manual}
+@ref{chapter,cross ref name,title,}
+@ref{chapter,cross ref name,,file name}
+@ref{chapter,cross ref name,,,manual}
+@ref{node,cross ref name,title,}
+@ref{node,cross ref name,,file name}
+@ref{node,cross ref name,,,manual}
+@ref{chapter,cross ref name,title,file name}
+@ref{chapter,cross ref name,title,,manual}
+@ref{node,cross ref name,title,file name}
+@ref{node,cross ref name,title,,manual}
+@ref{chapter,cross ref name,title, file name, manual}
+@ref{node,cross ref name,title, file name, manual}
+@ref{chapter,,title,file name}
+@ref{chapter,,title,,manual}
+@ref{node,,title,file name}
+@ref{node,,title,,manual}
+@ref{chapter,,title, file name, manual}
+@ref{node,,title, file name, manual}
+@ref{chapter,,,file name,manual}
+@ref{node,,,file name,manual}
+@ref{,cross ref name,title,}
+@ref{,cross ref name,,file name}
+@ref{,cross ref name,,,manual}
+@ref{,cross ref name,title,file name}
+@ref{,cross ref name,title,,manual}
+@ref{,cross ref name,title, file name, manual}
+@ref{,,title,file name}
+@ref{,,title,,manual}
+@ref{,,title, file name, manual}
+@ref{,,,file name,manual}
+
+@inforef{chapter, cross ref name, file name}
+@inforef{chapter}
+@inforef{chapter, cross ref name}
+@inforef{chapter,,file name}
+@inforef{node, cross ref name, file name}
+@inforef{node}
+@inforef{node, cross ref name}
+@inforef{node,,file name}
+@inforef{,cross ref name }
+@inforef{,,file name}
+@inforef{,cross ref name, file name}
+
+@table @bullet
+@item a
+line
+@end table
+
+@vtable @asis
+@item a
+line
+@end vtable
+
+@ftable @minus
+@item a
+line
+@end ftable
+
+
+@end macro
+
+@mymacro{}
+
+@example
+@mymacro{}
+@end example
+
+@node chapter
+@chapter chapter
+
+@footnote{in footnote}
+
+@format
+@menu 
+* section:: section
+
+Menu comment
+
+@end menu
+@end format
+
+@node section
+@section A section
+
+@menu
+* subsection:: 
+@end menu
+
+@node subsection
+@subsection subsection
+
+@menu
+* subsubsection::
+@end menu
+
+@cindex truc
+@cindex Truc
+@cindex .
+@cindex ?
+@cindex a
+@findex truc
+@findex Truc
+@findex .
+@findex ?
+@findex a
+
+@anchor{anchor}
+
+@node subsubsection
+@subsubsection subsubsection
+
+@node chapter2
+@chapter chapter 2
+
+@printindex cp
+@printindex fn
+
+@contents
+@shortcontents

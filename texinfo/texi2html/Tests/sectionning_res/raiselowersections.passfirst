@@ -1,47 +1,47 @@
-
-@node Top
-@top
-@menu
-* Chapter::
-* Second chapter::
-@end menu
-
-@node Chapter
-@chapter Chapter
-
-@menu
-* Chapter in included file::
-@end menu
-
-
-
-
-\input texinfo 
-
-@node Chapter in included file
-@chapter Chapter in included file
-
-@menu
-* Section::
-@end menu
-
-@node Section
-@section Section
-
-@menu
-* Subsection::
-@end menu
-
-@node Subsection
-@subsection Subsection
-
-
-
-
-@node Second chapter
-@chapter Second chapter
-
-Second chapter
-
-
-
+raiselowersections.texi(,2) 
+raiselowersections.texi(,3) @node Top
+raiselowersections.texi(,4) @top
+raiselowersections.texi(,5) @menu
+raiselowersections.texi(,6) * Chapter::
+raiselowersections.texi(,7) * Second chapter::
+raiselowersections.texi(,8) @end menu
+raiselowersections.texi(,9) 
+raiselowersections.texi(,10) @node Chapter
+raiselowersections.texi(,11) @chapter Chapter
+raiselowersections.texi(,12) 
+raiselowersections.texi(,13) @menu
+raiselowersections.texi(,15) * Chapter in included file::
+raiselowersections.texi(,17) @end menu
+raiselowersections.texi(,18) 
+raiselowersections.texi(,20) 
+raiselowersections.texi(,22) 
+./section_file.texi(,1) 
+./section_file.texi(,2) \input texinfo 
+./section_file.texi(,11) 
+./section_file.texi(,12) @node Chapter in included file
+./section_file.texi(,13) @chapter Chapter in included file
+./section_file.texi(,14) 
+./section_file.texi(,15) @menu
+./section_file.texi(,16) * Section::
+./section_file.texi(,17) @end menu
+./section_file.texi(,18) 
+./section_file.texi(,19) @node Section
+./section_file.texi(,20) @section Section
+./section_file.texi(,21) 
+./section_file.texi(,22) @menu
+./section_file.texi(,23) * Subsection::
+./section_file.texi(,24) @end menu
+./section_file.texi(,25) 
+./section_file.texi(,26) @node Subsection
+./section_file.texi(,27) @subsection Subsection
+./section_file.texi(,28) 
+./section_file.texi(,37) 
+raiselowersections.texi(,27) 
+raiselowersections.texi(,29) 
+raiselowersections.texi(,30) @node Second chapter
+raiselowersections.texi(,31) @chapter Second chapter
+raiselowersections.texi(,32) 
+raiselowersections.texi(,33) Second chapter
+raiselowersections.texi(,34) 
+raiselowersections.texi(,35) 
+raiselowersections.texi(,36) 

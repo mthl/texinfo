@@ -1,26 +1,26 @@
-
-
-Garbage
-
-@unnumbered unnumbered
-
-in unnumbered
-
-@top top section
-Top node
-
-
-@section second
-
-second node
-
-@chapter Chapter
-
-Text of chapter
-
-@chapter Chapter 2
-
-
-Text of chapter 2
-
-
+no_node.texi(,2) 
+no_node.texi(,4) 
+no_node.texi(,5) Garbage
+no_node.texi(,6) 
+no_node.texi(,7) @unnumbered unnumbered
+no_node.texi(,8) 
+no_node.texi(,9) in unnumbered
+no_node.texi(,10) 
+no_node.texi(,11) @top top section
+no_node.texi(,12) Top node
+no_node.texi(,13) 
+no_node.texi(,14) 
+no_node.texi(,15) @section second
+no_node.texi(,16) 
+no_node.texi(,17) second node
+no_node.texi(,18) 
+no_node.texi(,19) @chapter Chapter
+no_node.texi(,20) 
+no_node.texi(,21) Text of chapter
+no_node.texi(,22) 
+no_node.texi(,23) @chapter Chapter 2
+no_node.texi(,24) 
+no_node.texi(,25) 
+no_node.texi(,26) Text of chapter 2
+no_node.texi(,27) 
+no_node.texi(,28) 

@@ -3,7 +3,7 @@
 @node Top
 @top Tests
 
-@ifnottex
+@ifhtml
 Now tex on the same line @tex some
 
 $$ \chi^2 = \sum_{i=1}^N
@@ -13,7 +13,7 @@ $$ \chi^2 = \sum_{i=1}^N
 
 @end tex bidule
 Some text one the line following @@end tex
-@end ifnottex
+@end ifhtml
 
 Now tex on the following line, valid fot tex (with @@end tex on a line).
 @tex some

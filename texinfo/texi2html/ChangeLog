@@ -1,5 +1,32 @@
 2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
 
+	* texi2html.pl, texi2html.init: pass line numbers to all the 
+	functions echoing error messages and use these line numbers
+	in error messages. Some error messages rewrited.
+	Correct tag for sectionning commands in case raisesection or
+	lowersection were used.
+	-P option prepends before the document directory, and use an
+	array, @Texi2HTML::Config::PREPEND_DIRS.
+	Add options --ifhtml, --ifinfo and so on (similar with makeinfo
+	options). It is also possible not to expand html now.
+	Add entries for xml.
+	when a region is expanded the corresponding ifnot region isn't.
+	Add support for -css-file option which does the same than in 
+	makeinfo (parse the file, and echo the @import part before the
+	texi2html css rules, the rules part after the texi2html css rules).
+	If split at node and NODE_FILES is true but USE_NODES is not,
+	the correct file nema is used for nodes not associated with
+	sections and a redirection file is made.
+	ignore spaces or not for def*index, pagesizes, syn*index properly.
+	bugfixes: line beginning by any command not ignored begins a 
+	paragraph, don't ignore text before macro with unknown character).
+	no empty style in pass_text.
+	misc element have always a navigation printed at foot.
+	* Tests/*: add singular test, test for css files, test all html
+	formatting and macro within another macro.
+
+2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: don't remove empty line in the 
 	second pass, pass_structure.
 	collect line numbers/file name/macro expanding text in pass_texi.

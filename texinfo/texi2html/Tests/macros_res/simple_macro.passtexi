@@ -1,0 +1,220 @@
+simple_macro.texi(,2) 
+simple_macro.texi(,3) @node Top,First node,(dir)
+simple_macro.texi(,4) @top
+simple_macro.texi(,5) @menu
+simple_macro.texi(,6) * First node::    node 1
+simple_macro.texi(,7) @end menu
+simple_macro.texi(,8) 
+simple_macro.texi(,9) @node First node,,Top,Top
+simple_macro.texi(,10) @chapter first node chapter
+simple_macro.texi(,11) 
+simple_macro.texi(,12) Define a  simple macro
+simple_macro.texi(,13) @example
+simple_macro.texi(,14) @@macro macro1 @{arg1, arg2 @}
+simple_macro.texi(,15) result: @@emph@{\arg1\@} protected \\ -> \\arg1\\  @@emp@{\arg2\@}
+simple_macro.texi(,16) @@end macro
+simple_macro.texi(,17) @end example
+simple_macro.texi(,18) 
+simple_macro.texi(,21) before macro simple_macro.texi(,21) after end macro
+simple_macro.texi(,22) 
+simple_macro.texi(,23) Calling (normal)
+simple_macro.texi(,24) @example
+simple_macro.texi(,25) the @@macro1 @{ @@samp@{f\irst arg@}, second arg @} after macro
+simple_macro.texi(,26) @end example
+simple_macro.texi(,27) ==================================
+simple_macro.texi(,28) 
+simple_macro.texi(,29) the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg } after macro
+simple_macro.texi(,30) 
+simple_macro.texi(,31) -----------------------------------
+simple_macro.texi(,32) 
+simple_macro.texi(,33) the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg } after macro
+simple_macro.texi(,34) 
+simple_macro.texi(,35) ====================================
+simple_macro.texi(,36) 
+simple_macro.texi(,37) Calling (one arg)
+simple_macro.texi(,38) @example
+simple_macro.texi(,39) @@macro1 @{ @@samp@{f\irst arg@}@}
+simple_macro.texi(,40) @end example
+simple_macro.texi(,41) ==================================
+simple_macro.texi(,42) 
+simple_macro.texi(,43) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{}
+simple_macro.texi(,44) 
+simple_macro.texi(,45) -----------------------------------
+simple_macro.texi(,46) 
+simple_macro.texi(,47) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{}
+simple_macro.texi(,48) 
+simple_macro.texi(,49) ====================================
+simple_macro.texi(,50) 
+simple_macro.texi(,51) Calling (no args)
+simple_macro.texi(,52) @example
+simple_macro.texi(,53) @@macro1 @@samp@{f\irst arg@}, second arg
+simple_macro.texi(,54) @end example
+simple_macro.texi(,55) ==================================
+simple_macro.texi(,56) 
+simple_macro.texi(,57) result: @emph{} protected \ -> \arg1\ @emph{} @samp{f\irst arg}, second arg
+simple_macro.texi(,58) 
+simple_macro.texi(,59) -----------------------------------
+simple_macro.texi(,60) 
+simple_macro.texi(,61) result: @emph{} protected \ -> \arg1\ @emph{} @samp{f\irst arg}, second arg
+simple_macro.texi(,62) 
+simple_macro.texi(,63) ====================================
+simple_macro.texi(,64) 
+simple_macro.texi(,66) Calling (three args)
+simple_macro.texi(,67) @example
+simple_macro.texi(,68) @@macro1 @{ @@samp@{f\irst arg@}, second arg, third arg@}
+simple_macro.texi(,69) @end example
+simple_macro.texi(,70) ==================================
+simple_macro.texi(,71) 
+simple_macro.texi(,72) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg}
+simple_macro.texi(,73) 
+simple_macro.texi(,74) -----------------------------------
+simple_macro.texi(,75) 
+simple_macro.texi(,76) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg}
+simple_macro.texi(,77) 
+simple_macro.texi(,78) ====================================
+simple_macro.texi(,80) 
+simple_macro.texi(,81) define a macro with one arg
+simple_macro.texi(,82) @example
+simple_macro.texi(,83) @@macro macro2 @{ arg @}
+simple_macro.texi(,84) we get \arg\ and another \arg\
+simple_macro.texi(,85) and a last one on another line \arg\
+simple_macro.texi(,86) 
+simple_macro.texi(,87) and a last in another paragraph
+simple_macro.texi(,88) @@end macro
+simple_macro.texi(,89) @end example
+simple_macro.texi(,90) 
+simple_macro.texi(,97) 
+simple_macro.texi(,98) Calling
+simple_macro.texi(,99) @example
+simple_macro.texi(,100) @@macro2 @{ arg, comma \, @}
+simple_macro.texi(,101) @end example
+simple_macro.texi(,102) ==================================
+simple_macro.texi(,103) 
+simple_macro.texi(,104) we get arg, comma ,  and another arg, comma , 
+simple_macro.texi(macro2,104) and another one on another line arg, comma , 
+simple_macro.texi(macro2,104) 
+simple_macro.texi(macro2,104) and a last in another paragraph
+simple_macro.texi(,105) 
+simple_macro.texi(,106) -----------------------------------
+simple_macro.texi(,107) 
+simple_macro.texi(,108) we get arg, comma , and another arg, comma ,
+simple_macro.texi(,109) and another one another line arg, comma ,
+simple_macro.texi(,110) 
+simple_macro.texi(,111) and a last in another paragraph
+simple_macro.texi(,112) 
+simple_macro.texi(,113) ==================================
+simple_macro.texi(,114) 
+simple_macro.texi(,115) Calling
+simple_macro.texi(,116) @example
+simple_macro.texi(,117) @@macro2  arg,  comma \, 
+simple_macro.texi(,118) @end example
+simple_macro.texi(,119) ==================================
+simple_macro.texi(,120) 
+simple_macro.texi(,121) we get   arg,  comma \, and another   arg,  comma \,
+simple_macro.texi(macro2,121) and another one on another line   arg,  comma \,
+simple_macro.texi(macro2,121) 
+simple_macro.texi(macro2,121) and a last in another paragraph
+simple_macro.texi(,122) 
+simple_macro.texi(,123) -----------------------------------
+simple_macro.texi(,124) 
+simple_macro.texi(,125) we get arg, comma \, and another arg, comma \,
+simple_macro.texi(,126) and another one on another line arg, comma \,
+simple_macro.texi(,127) 
+simple_macro.texi(,128) and a last in another paragraph
+simple_macro.texi(,129) 
+simple_macro.texi(,130) ==================================
+simple_macro.texi(,131) 
+simple_macro.texi(,132) 
+simple_macro.texi(,138) 
+simple_macro.texi(,139) now @@set comma ,  
+simple_macro.texi(,141) 
+simple_macro.texi(,142) @@set flagab @@ab 
+simple_macro.texi(,144) 
+simple_macro.texi(,145) the values:
+simple_macro.texi(,146) 
+simple_macro.texi(,147) ======================================
+simple_macro.texi(,148) 
+simple_macro.texi(,149) flagab: a
+simple_macro.texi(ab,149) 
+simple_macro.texi(ab,149) b
+simple_macro.texi(,150) 
+simple_macro.texi(,151) --------------------------------------
+simple_macro.texi(,152) 
+simple_macro.texi(,153) makeinfo result (the macro in set is expanded and all the resulting lines
+simple_macro.texi(,154) are replaced):
+simple_macro.texi(,155) 
+simple_macro.texi(,156) flagab: a
+simple_macro.texi(,157) 
+simple_macro.texi(,158) b
+simple_macro.texi(,159) 
+simple_macro.texi(,160) ======================================
+simple_macro.texi(,161) 
+simple_macro.texi(,162) comma: ,
+simple_macro.texi(,163) 
+simple_macro.texi(,164) Calling macro1 with value
+simple_macro.texi(,165) @example
+simple_macro.texi(,166) @@macro1 @{ arg1 @@value@{comma@} arg2 @}
+simple_macro.texi(,167) @end example
+simple_macro.texi(,168) =======================================
+simple_macro.texi(,169) 
+simple_macro.texi(,170) result: @emph{arg1 , arg2 } protected \ -> \arg1\ @emph{}
+simple_macro.texi(,171) 
+simple_macro.texi(,172) ---------------------------------------
+simple_macro.texi(,173) 
+simple_macro.texi(,174) makeinfo result (the comma don't separate args ; the value is expanded after
+simple_macro.texi(,175) arguments parsing):
+simple_macro.texi(,176) 
+simple_macro.texi(,177) result: @emph{arg1 , arg2 } protected \ -> \arg1\ @emph{}
+simple_macro.texi(,178) 
+simple_macro.texi(,179) =======================================
+simple_macro.texi(,180) 
+simple_macro.texi(,181) In verbatim
+simple_macro.texi(,182) @verbatim
+simple_macro.texi(,183) comma: @value{comma}
+simple_macro.texi(,184) @macro1{ bidule, truc}
+simple_macro.texi(,185) @end verbatim
+simple_macro.texi(,186) 
+simple_macro.texi(,189) 
+simple_macro.texi(,190) Define macro
+simple_macro.texi(,191) @example
+simple_macro.texi(,192) @@macro testvaluebody @{ arg @}
+simple_macro.texi(,193) result: @@emph@{\@@value@{bodyarg@}\  @} 
+simple_macro.texi(,194) @@end macro
+simple_macro.texi(,195) @end example
+simple_macro.texi(,196) 
+simple_macro.texi(,200) 
+simple_macro.texi(,201) ==================================
+simple_macro.texi(,202) 
+simple_macro.texi(,203) result: @emph{\\arg\   }
+simple_macro.texi(,204) 
+simple_macro.texi(,205) ----------------------------------
+simple_macro.texi(,206) 
+simple_macro.texi(,207) makeinfo result (according to error message, the value isn't expanded
+simple_macro.texi(,208) when the body is expanded; it is kept, but the second \ isn't):
+simple_macro.texi(,209) 
+simple_macro.texi(,210) result: @emph{\\arg\  }
+simple_macro.texi(,211) 
+simple_macro.texi(,212) ==================================
+simple_macro.texi(,213) 
+simple_macro.texi(,214) Define macro
+simple_macro.texi(,215) @example
+simple_macro.texi(,216) @@macro testvalue @{ arg , the@@value@{argument@} @}
+simple_macro.texi(,217) result: @@emph@{\arg\@} the \the\ thearg \thearg\ with value \the@@value@{argument@}\
+simple_macro.texi(,218) @@end macro
+simple_macro.texi(,219) @end example
+simple_macro.texi(,220) 
+simple_macro.texi(,224) 
+simple_macro.texi(,225) ==================================
+simple_macro.texi(,226) 
+simple_macro.texi(,227) result: @emph{macro_arg1} the \the thearg \thearg with value \thearg 
+simple_macro.texi(,228) 
+simple_macro.texi(,229) ----------------------------------
+simple_macro.texi(,230) 
+simple_macro.texi(,231) makeinfo (breaks) result:
+simple_macro.texi(,232) 
+simple_macro.texi(,233) result: @emph{macro_arg1} the \the thearg \thearg with value \thearg
+simple_macro.texi(,234) 
+simple_macro.texi(,235) ==================================
+simple_macro.texi(,236) 
+simple_macro.texi(,237) @contents
+simple_macro.texi(,238) 

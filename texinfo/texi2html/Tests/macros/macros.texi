@@ -35,18 +35,18 @@ result of a macro with \arg1\ and
 Right. @macro1 { @samp{first arg
 
 no ?}, second arg}
-
+Now define macro2
 @macro macro2 { arg }
 With a doubles arg \arg\ and re \arg\
 
 @end macro
-
+Call macro2
 @macro2 { a simple @code{
 arg}
 }
-
+Call macro2 with 2 args
 @macro2 { arg with comma , here }
-
+Define macro3
 @macro macro3 { arg }
 @example 
 /arg/
@@ -55,7 +55,7 @@ arg}
 /arg/
 @end example
 @end macro
-
+Call macro3
 @macro3 { an arg }
 
 @contents

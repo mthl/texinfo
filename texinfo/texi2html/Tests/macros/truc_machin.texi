@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename truc
+
+@node Top
+
+@macro machin{}
+(machin)
+@end macro
+
+@macro truc{}
+@machin
+
+@end macro
+
+Before @truc{} after truc. 
