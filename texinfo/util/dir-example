@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.16 2003-02-11 14:02:33 karl Exp $
+$Id: dir-example,v 1.17 2003-02-14 13:33:21 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -23,6 +23,7 @@ Not all of the topics shown below may be available on this system.
 * Menu:
 Basics
 * Bash: (bash).                 Bourne-Again SHell.
+* BC: (bc).                     Arbitrary precision calculator language.
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * DC: (dc).                     Postfix desk calculator.

@@ -1,3 +1,8 @@
+2003-02-13    <karl@gnu.org>
+
+	* makeinfo/insertion.c (begin_insertion): for html cartouche
+	output, add class="cartouche".  Suggestion from Stephen.
+
 2003-02-11    <karl@gnu.org>
 
 	* Installed patch:
