@@ -1,5 +1,10 @@
 2002-10-24    <karl@gnu.org>
 
+	* m4/{check-decl.m4,mkstemp.m4,prereq.m4}: new files from gnulib.
+	* lib/mkstemp.c, lib/tempname.c: likewise.
+	* aclocal.m4, configure.ac: support for mkstemp instead of mktemp.
+	* util/texindex.c: use mkstemp instead of mktemp.
+
         2002-10-24  Alexandre Duret-Lutz  <adl@gnu.org>
 	* util/texi2dvi: Turn relative entries $TEXINPUTS and $INDEXSTYLE
 	into absolute paths.  (Allows --clean to work with relative dirs
