@@ -1,5 +1,8 @@
 2002-11-14    <karl@gnu.org>
 
+	* configure.ac, util/texi2dvi, NEWS: version 4.3.
+
+	* doc/texinfo.txi: @command not @program.
 	* doc/texinfo.txi (math): emphasize that makeinfo does not interpret
 	the arg.
 
