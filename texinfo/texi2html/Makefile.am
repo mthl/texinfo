@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 
 # breaks with automake version < 1.4
-AUTOMAKE_OPTIONS = 1.4 gnu
+AUTOMAKE_OPTIONS = 1.5 gnu
 #
 SUBDIRS = doc
 #

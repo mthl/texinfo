@@ -1,3 +1,19 @@
+2001-09-18  Derek Price  <dprice@collab.net>
+
+	* configure.in: Bump package version number.
+	* Makefile.am (AUTOMAKE_OPTIONS): Bump required Automake version to
+	1.5.
+	* doc/texinfo.tex: New File.
+	* TODO: Add note about `make distcheck' being broken and about lack of
+	a comprehensive test suite.
+
+	* Makefile.in: Regenerated using Automake 1.5.
+	* aclocal.m4: Ditto.
+	* configure: Ditto.
+	* doc/Makefile.in: Ditto.
+	* doc/stamp-vti: Ditto.
+	* doc/version.texi: Ditto.
+
 2001-09-17  Derek Price  <dprice@collab.net>
 
 	* texi2html.init (T2H_WORDS_FR, MONTH_NAMES_FR): Add French

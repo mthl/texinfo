@@ -19,3 +19,7 @@ important first):
 * Change installation procedure so that init files of the distribution 
   can be loaded in at run-time
 
+* Fix `make distcheck'
+
+* Create more comprehensive test suite.
+
