@@ -1,3 +1,8 @@
+2005-01-20  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (findprog): make sure test -x isn't returning true
+	for a directory.  From Stepan and others, 20 Jan 2005 12:35:08 +0100.
+
 2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
 
 	* makeinfo/insertion.c (handle_verbatim_environment): do HTML
