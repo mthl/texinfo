@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: initfile.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
+@c $Id: initfile.texi,v 1.3 2001-09-15 09:37:50 reiter Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -68,14 +68,14 @@ overriding earlier ones.
 
 The default initialization options are defined in the
 @file{texi2html.init} file contained in the @b{Texi2html}
-distribution (which gets includes near the biginning of the
+distribution (which gets included near the beginning of the
 @command{texi2html} script that gets installed).
 
 To customize @file{texi2html} it is best if you copy the
 appropriate sections from the @file{texi2html.init}
 contents into an appropriate local initialization file,
 make the necessary changes there, and then have
-@command{texi2html} read this inialization file by one of
+@command{texi2html} read this initialization file by one of
 the means described above.
 
 For an example on what you can produces with

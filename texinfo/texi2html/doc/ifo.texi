@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: ifo.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: ifo.texi,v 1.2 2001-09-15 09:37:50 reiter Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -35,12 +35,12 @@
 @c
 @c --------------------------------------------------------
 @section Initialization file options
-This section describes in detail all option which can only
-be used in initialization file (@file{texi2html.init}), but
-not on command line.
-This mean the only way to change those
+This section describes in detail all options that can be used
+only in the initialization file (@file{texi2html.init}),
+and cannot be specified on the command line.
+This means the only way to change those
 options is first to copy the original @file{texi2html.init}
-to e.g. @file{texi2html.init.myown} and do changes to fit
+to e.g.@: @file{texi2html.init.myown} and make changes to fit
 your needs.
 
 @menu
@@ -70,10 +70,10 @@ names in menu entries, instead of section names
 @node IFOmenu, IFOCenterImage, IFOnumber, IFOs
 @subsection Avoid menu redundancy
 @c not sure if correct?
-@cindex menu, redundance
+@cindex menu, redundancy
 @vindex T2H_AVOID_MENU_REDUNDANCY
-if set and menu entry equals menu descr, then do not print
-menu descr. Likewise, if node name equals entry name, do
+If set, and menu entry equals menu description, then do not print
+menu description.  Likewise, if node name equals entry name, do
 not print entry name.
 @var{$T2H_AVOID_MENU_REDUNDANCY} = 1;
 
@@ -89,9 +89,9 @@ otherwise, do not center by default
 @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 @node IFOExampleIndentCell, IFOSampleIndentCell, IFOCenterImage, IFOs
 @subsection Example Indent Cell
-@cindex example, indention
+@cindex example, indentation
 @vindex T2H_EXAMPLE_INDENT_CELL
-used as identation for block enclosing command
+used as indentation for block enclosing command
 @code{@@example}, etc If not empty, must be enclosed in
 @code{<td></td>}
 @var{$T2H_EXAMPLE_INDENT_CELL} = '<td>&nbsp;</td>';
