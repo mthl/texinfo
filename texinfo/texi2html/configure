@@ -273,7 +273,7 @@ PACKAGE_VERSION='1.75'
 PACKAGE_STRING='texi2html 1.75'
 PACKAGE_BUGREPORT='users@texi2html.cvshome.org'
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT PACKAGE_DATE USE_UNICODE PERL INSTALL_INFO TEXI2DVI DVIPS PS2PDF build build_cpu build_vendor build_os host host_cpu host_vendor host_os LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT PACKAGE_DATE USE_UNICODE PERL build build_cpu build_vendor build_os host host_cpu host_vendor host_os LIBOBJS LTLIBOBJS'
 ac_subst_files='INIT MYSIMPLE T2H_I18N T2H_L2H_FILE T2H_TRANSLATIONS_FILE'
 
 # Initialize some variables set by options.
@@ -714,6 +714,10 @@ ac_env_target_alias_set=${target_alias+set}
 ac_env_target_alias_value=$target_alias
 ac_cv_env_target_alias_set=${target_alias+set}
 ac_cv_env_target_alias_value=$target_alias
+ac_env_PERL_set=${PERL+set}
+ac_env_PERL_value=$PERL
+ac_cv_env_PERL_set=${PERL+set}
+ac_cv_env_PERL_value=$PERL
 
 #
 # Report the --help message.
@@ -803,6 +807,12 @@ Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-encode           use encode (default: detected)
+
+Some influential environment variables:
+  PERL        The path to the `perl' executable.
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
 
 Report bugs to <users@texi2html.cvshome.org>.
 _ACEOF
@@ -1745,7 +1755,9 @@ else
 fi;
 
 
-# Extract the first word of "perl", so it can be a program name with args.
+
+if test -z "$PERL"; then
+  # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
 echo "$as_me:$LINENO: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
@@ -1772,7 +1784,7 @@ do
 done
 done
 
-  test -z "$ac_cv_path_PERL" && ac_cv_path_PERL="/usr/bin/env perl"
+  test -z "$ac_cv_path_PERL" && ac_cv_path_PERL="perl"
   ;;
 esac
 fi
@@ -1787,201 +1799,26 @@ echo "${ECHO_T}no" >&6
 fi
 
 
-# Extract the first word of "makeinfo", so it can be a program name with args.
-set dummy makeinfo; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_MAKEINFO+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $MAKEINFO in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_MAKEINFO="$MAKEINFO" # Let the user override the test with a path.
-  ;;
+  case "$PERL" in
+    /*)
+      ;;
+
+    *)
+      { { echo "$as_me:$LINENO: error: No path set for PERL and no \`perl' found in PATH." >&5
+echo "$as_me: error: No path set for PERL and no \`perl' found in PATH." >&2;}
+   { (exit 1); exit 1; }; }
+      ;;
+  esac
+fi
+case "$PERL" in
+  /*)
+    ;;
+
   *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_MAKEINFO="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  ;;
+    { echo "$as_me:$LINENO: WARNING: Relative paths to \`perl' will prevent texi2html from running." >&5
+echo "$as_me: WARNING: Relative paths to \`perl' will prevent texi2html from running." >&2;}
+    ;;
 esac
-fi
-MAKEINFO=$ac_cv_path_MAKEINFO
-
-if test -n "$MAKEINFO"; then
-  echo "$as_me:$LINENO: result: $MAKEINFO" >&5
-echo "${ECHO_T}$MAKEINFO" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-# Extract the first word of "install-info", so it can be a program name with args.
-set dummy install-info; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_INSTALL_INFO+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $INSTALL_INFO in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_INSTALL_INFO="$INSTALL_INFO" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_INSTALL_INFO="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  ;;
-esac
-fi
-INSTALL_INFO=$ac_cv_path_INSTALL_INFO
-
-if test -n "$INSTALL_INFO"; then
-  echo "$as_me:$LINENO: result: $INSTALL_INFO" >&5
-echo "${ECHO_T}$INSTALL_INFO" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-# Extract the first word of "texi2dvi", so it can be a program name with args.
-set dummy texi2dvi; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_TEXI2DVI+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $TEXI2DVI in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_TEXI2DVI="$TEXI2DVI" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_TEXI2DVI="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  ;;
-esac
-fi
-TEXI2DVI=$ac_cv_path_TEXI2DVI
-
-if test -n "$TEXI2DVI"; then
-  echo "$as_me:$LINENO: result: $TEXI2DVI" >&5
-echo "${ECHO_T}$TEXI2DVI" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-# Extract the first word of "dvips", so it can be a program name with args.
-set dummy dvips; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_DVIPS+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $DVIPS in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_DVIPS="$DVIPS" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_DVIPS="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  ;;
-esac
-fi
-DVIPS=$ac_cv_path_DVIPS
-
-if test -n "$DVIPS"; then
-  echo "$as_me:$LINENO: result: $DVIPS" >&5
-echo "${ECHO_T}$DVIPS" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-# Extract the first word of "ps2pdf", so it can be a program name with args.
-set dummy ps2pdf; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_PS2PDF+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $PS2PDF in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PS2PDF="$PS2PDF" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_PS2PDF="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  ;;
-esac
-fi
-PS2PDF=$ac_cv_path_PS2PDF
-
-if test -n "$PS2PDF"; then
-  echo "$as_me:$LINENO: result: $PS2PDF" >&5
-echo "${ECHO_T}$PS2PDF" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
 
 # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
@@ -2814,10 +2651,6 @@ s,@MAINT@,$MAINT,;t t
 s,@PACKAGE_DATE@,$PACKAGE_DATE,;t t
 s,@USE_UNICODE@,$USE_UNICODE,;t t
 s,@PERL@,$PERL,;t t
-s,@INSTALL_INFO@,$INSTALL_INFO,;t t
-s,@TEXI2DVI@,$TEXI2DVI,;t t
-s,@DVIPS@,$DVIPS,;t t
-s,@PS2PDF@,$PS2PDF,;t t
 s,@build@,$build,;t t
 s,@build_cpu@,$build_cpu,;t t
 s,@build_vendor@,$build_vendor,;t t

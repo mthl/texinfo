@@ -1,8 +1,8 @@
 #
 info_TEXINFOS = texi2html.texi
 
-CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
-             texi2html.ascii
+#CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
+#             texi2html.ascii
 #
 texinfodata = $(datadir)/texinfo
 texinfohtmldir = $(texinfodata)/html
@@ -12,27 +12,11 @@ texinfohtml_DATA    = texi2html.html
 # an old one which is installed on the client.
 TEXI2HTML = $(top_builddir)/texi2html
 
-MAINTAINERCLEANFILES = \
-	Makefile.in \
-	texi2thml.html
+EXTRA_DIST = texi2html.html
 
-all: info texi2html.html
-
-texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML) Makefile
+texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML)
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
-	  $(PERL) $(TEXI2HTML) -V $<
-
-texi2html.pdf: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
-	TEXINPUTS=$(srcdir):$$TEXINPUTS \
-	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) --pdf $<
-
-dvi: texi2html.dvi
-
-ps: texi2html.ps
-
-pdf: texi2html.pdf
-
-html: texi2html.html
+	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
 
 txt: texi2html.txt
 

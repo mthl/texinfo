@@ -2,6 +2,12 @@ This file records noteworthy changes.
 
 1.76 ()
 
+* BUG FIXES
+  ---------
+
+* Perl no longer needs to be installed at build time, but when it is not, the
+  path to `perl' that will be used at run time must be passed to the
+  `configure' script.
 
 1.74 (January 31 2005)
 

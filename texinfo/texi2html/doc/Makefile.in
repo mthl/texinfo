@@ -55,9 +55,11 @@ PDFS = texi2html.pdf
 PSS = texi2html.ps
 HTMLS = texi2html.html
 TEXINFOS = texi2html.texi
+TEXI2DVI = texi2dvi
 TEXI2PDF = $(TEXI2DVI) --pdf --batch
 MAKEINFOHTML = $(MAKEINFO) --html
 AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS)
+DVIPS = dvips
 am__installdirs = "$(DESTDIR)$(infodir)" "$(DESTDIR)$(texinfohtmldir)"
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
@@ -76,12 +78,10 @@ AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
-DVIPS = @DVIPS@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 INSTALL_DATA = @INSTALL_DATA@
-INSTALL_INFO = @INSTALL_INFO@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
@@ -101,11 +101,9 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
-PS2PDF = @PS2PDF@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
-TEXI2DVI = @TEXI2DVI@
 USE_UNICODE = @USE_UNICODE@
 VERSION = @VERSION@
 ac_ct_STRIP = @ac_ct_STRIP@
@@ -143,9 +141,9 @@ target_alias = @target_alias@
 
 #
 info_TEXINFOS = texi2html.texi
-CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
-             texi2html.ascii
 
+#CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
+#             texi2html.ascii
 #
 texinfodata = $(datadir)/texinfo
 texinfohtmldir = $(texinfodata)/html
@@ -154,10 +152,7 @@ texinfohtml_DATA = texi2html.html
 # use the script out of the distribution NOT
 # an old one which is installed on the client.
 TEXI2HTML = $(top_builddir)/texi2html
-MAINTAINERCLEANFILES = \
-	Makefile.in \
-	texi2thml.html
-
+EXTRA_DIST = texi2html.html
 SUFFIXES = .txt
 all: all-am
 
@@ -238,6 +233,7 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	fi
 $(srcdir)/texi2html.info: texi2html.texi $(srcdir)/version.texi
 texi2html.dvi: texi2html.texi $(srcdir)/version.texi
+texi2html.pdf: texi2html.texi $(srcdir)/version.texi
 $(srcdir)/version.texi: @MAINTAINER_MODE_TRUE@ $(srcdir)/stamp-vti
 $(srcdir)/stamp-vti: texi2html.texi $(top_srcdir)/configure
 	@(dir=.; test -f ./texi2html.texi || dir=$(srcdir); \
@@ -389,7 +385,6 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -397,7 +392,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-am
 
 clean-am: clean-generic mostlyclean-am
@@ -406,7 +400,11 @@ distclean: distclean-am
 	-rm -f Makefile
 distclean-am: clean-am distclean-generic
 
+dvi: dvi-am
+
 dvi-am: $(DVIS)
+
+html: html-am
 
 html-am: $(HTMLS)
 
@@ -463,7 +461,11 @@ mostlyclean: mostlyclean-am
 
 mostlyclean-am: mostlyclean-aminfo mostlyclean-generic mostlyclean-vti
 
+pdf: pdf-am
+
 pdf-am: $(PDFS)
+
+ps: ps-am
 
 ps-am: $(PSS)
 
@@ -482,23 +484,9 @@ uninstall-am: uninstall-info-am uninstall-texinfohtmlDATA
 	uninstall-texinfohtmlDATA
 
 
-all: info texi2html.html
-
-texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML) Makefile
+texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML)
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
-	  $(PERL) $(TEXI2HTML) -V $<
-
-texi2html.pdf: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
-	TEXINPUTS=$(srcdir):$$TEXINPUTS \
-	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) --pdf $<
-
-dvi: texi2html.dvi
-
-ps: texi2html.ps
-
-pdf: texi2html.pdf
-
-html: texi2html.html
+	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
 
 txt: texi2html.txt
 
