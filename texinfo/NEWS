@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.59 2003-07-02 14:23:27 karl Exp $
+$Id: NEWS,v 1.60 2003-07-27 11:53:38 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -25,7 +25,10 @@ convenience, here's a url to one of the relevant sections:
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.
+* Distribution:
+  . automake 1.7.6.
 
+
 4.6 (10 June 2003)
 * Language:
   . new command @/ specifies an allowable breakpoint within a line.

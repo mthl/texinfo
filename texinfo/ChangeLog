@@ -1,3 +1,14 @@
+2003-07-27  Karl Berry  <karl@gnu.org>
+
+	* util/dir-example: lowercase automake.
+
+2003-07-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/html.c (process_css_file): in null_state, only consider
+	@i to be the start of an @import, since @media can get misparsed.
+	Report from: Dumas Patrice <dumas@centre-cired.fr>, 22 Jul 2003
+	12:13:29 +0200.
+
 2003-07-25    <karl@gnu.org>
 
 	* doc/texinfo.txi (Raise/lower sections): mention difficulties with
