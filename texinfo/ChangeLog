@@ -1,3 +1,28 @@
+2003-07-16    <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo Pointer Creation): must pxref Menus,
+	since Menu Location is not a valid xref point for
+	TeX, because of the special @heading stuff.
+
+	* makeinfo/insertion.c (begin_insertion): lack of */ caused
+	display: and smalldisplay: cases to be ignored.
+
+	* lib/system.h (LC_MESSAGES) [!defined (HAVE_LC_MESSAGES) &&
+	!defined (LC_MESSAGES)]: change conditional.  Report from
+	Christian Krackowizer <ckrackowiz@std.schuler-ag.com>, 16 Jul 2003
+	14:40:30 +0200.
+
+2003-07-14    <karl@gnu.org>
+
+	* util/install-info.c (ensure_dirfile_exists): replace literal ^_ with
+	\x1f.  Report from Trond Endrestøl
+	<trond@ramstind.gtf.ol.no>, 14 Jul 2003 13:31:29 +0200.
+
+	* makeinfo/sectioning.c (sectioning_html): forgot to change closing </hN>
+	to match opening <hN> (that is, maximum h3).
+	Report from: Jesper Harder <harder@ifa.au.dk>,
+	14 Jul 2003 15:04:04 +0200.
+
 2003-07-03    <karl@gnu.org>
 
 	* doc/info.texi: copy from Emacs (with revisions by Luc).

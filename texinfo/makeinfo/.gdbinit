@@ -104,9 +104,6 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 # maybe_brace_args
 #set args -o - $ttests/accent.tex
 
-# seg fault.
-#set args -o /dev/null ../doc/info-stnd.texi
-
 # Error in comment menu items.
 #set args -o /dev/null $ttests/menucomment.tex
 
@@ -199,3 +196,6 @@ set args -o - --html --no-split --css-include=$ttests/test.css $ttests/tbook.tex
 
 # spurious <p> in info output
 set args -o - $ttests/defmacp.tex
+
+set args -o /dev/null -I ../doc ../doc/info-stnd.texi
+set args -o /dev/null $ttests/env.tex
