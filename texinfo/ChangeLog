@@ -1,3 +1,8 @@
+2004-08-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo options): use --no-number-sections
+		with non-hierarchical manuals.
+
 2004-08-13  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: check for -file-line-error, since -style is no
