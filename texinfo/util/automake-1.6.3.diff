@@ -1,0 +1,73 @@
+*** /usr/local/gnu/bin/ORIG/automake	Thu Sep 12 13:30:43 2002
+--- /usr/local/gnu/bin/automake	Thu Sep 12 14:20:14 2002
+***************
+*** 444,450 ****
+     'all'          => 1,
+     'dvi'	  => 1,
+     'info'	  => 1,
+!    'install-info' => 1,
+     'install'      => 1,
+     'install-data' => 1,
+     'install-exec' => 1,
+--- 444,450 ----
+     'all'          => 1,
+     'dvi'	  => 1,
+     'info'	  => 1,
+! #   'install-info' => 1,
+     'install'      => 1,
+     'install-data' => 1,
+     'install-exec' => 1,
+***************
+*** 731,738 ****
+         'install-man'	      => [],
+         'uninstall-man'	      => [],
+  
+!        'install-info'         => [],
+!        'install-info-am'      => [],
+         'uninstall-info'       => [],
+  
+         'installcheck-am'      => [],
+--- 731,738 ----
+         'install-man'	      => [],
+         'uninstall-man'	      => [],
+  
+! #       'install-info'         => [],
+! #       'install-info-am'      => [],
+         'uninstall-info'       => [],
+  
+         'installcheck-am'      => [],
+*** /usr/local/gnu/share/automake-1.6/am/ORIG/texinfos.am	Thu Sep 12 13:30:45 2002
+--- /usr/local/gnu/share/automake-1.6/am/texinfos.am	Thu Sep 12 13:40:55 2002
+***************
+*** 97,103 ****
+  RECURSIVE_TARGETS += install-info-recursive
+  .PHONY install-info: install-info-recursive
+  else !%?SUBDIRS%
+! install-info: install-info-am
+  endif !%?SUBDIRS%
+  endif %?INSTALL-INFO%
+  
+--- 97,103 ----
+  RECURSIVE_TARGETS += install-info-recursive
+  .PHONY install-info: install-info-recursive
+  else !%?SUBDIRS%
+! #install-info: install-info-am
+  endif !%?SUBDIRS%
+  endif %?INSTALL-INFO%
+
+*** /usr/local/gnu/share/automake-1.6/am/ORIG/distdir.am	Thu Sep 12 13:30:45 2002
+--- /usr/local/gnu/share/automake-1.6/am/distdir.am	Thu Sep 12 13:55:21 2002
+***************
+*** 309,313 ****
+  	test `$(distcleancheck_listfiles) | wc -l` -eq 0 \
+  	  || { echo "ERROR: files left after distclean:" ; \
+  	       $(distcleancheck_listfiles) ; \
+! 	       exit 1; } >&2
+  endif %?TOPDIR_P%
+--- 309,313 ----
+  	test `$(distcleancheck_listfiles) | wc -l` -eq 0 \
+  	  || { echo "ERROR: files left after distclean:" ; \
+  	       $(distcleancheck_listfiles) ; \
+! 	       true; } >&2
+  endif %?TOPDIR_P%
+

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.1 2002-08-25 23:38:39 karl Exp $
+# $Id: Makefile.am,v 1.2 2002-09-12 21:27:15 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -18,6 +18,12 @@ INCLUDES = -I$(top_srcdir)/lib -I../intl -DLOCALEDIR=\"$(localedir)\"
 LDADD = ../lib/libtxi.a @LIBINTL@
 
 # Most of these are for fun.  The only one that's really supported is texi2dvi.
-EXTRA_DIST = README deref.c fix-info-dir fixfonts \
+# 
+# automake.diff is necessary to apply if you change configure.ac, are
+# building from cvs, or otherwise need to run automake.  Otherwise
+# install-info will be built on every make, and make distcleancheck will
+# fail.  (These bugs have been reported [several times] to bug-automake.)
+# 
+EXTRA_DIST = README automake.diff deref.c fix-info-dir fixfonts \
   fixref.gawk gen-dir-node install-info-html outline.gawk prepinfo.awk \
   tex3patch texi-docstring-magic.el texi2dvi 

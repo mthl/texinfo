@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.4 2002-09-11 16:32:09 karl Exp $
+$Id: dir-example,v 1.5 2002-09-12 21:27:15 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -60,6 +60,7 @@ GNU programming tools
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
+* automake: (automake).		Making Makefile.in's
 * egcs: (egcs).                 Experimental GNU C compiler.
 * Flex: (flex).                 A fast scanner generator.
 * g77: (g77).                   GNU Fortran 77 compiler.
@@ -207,11 +208,10 @@ Other things
 * Screen: (screen).             Terminal multiplexer.
 
 Individual utilities
-* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
+* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4
 * aid: (id-utils)aid invocation.                Matching strings.
 * ar: (binutils)ar.                             Create/modify/extract archives.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
-* automake: (automake).                         Making Makefile.in's.
 * autoreconf: (autoconf)Invoking autoreconf.    Remake multiple configure's.
 * autoscan: (autoconf)Invoking autoscan.        Automate initial configure.in.
 * awk: (gawk)Invoking gawk.                     Text processing and scanning.
