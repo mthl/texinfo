@@ -1,8 +1,8 @@
-$Id: TODO,v 1.18 2003-11-21 14:53:33 karl Exp $
+$Id: TODO,v 1.19 2003-11-28 16:23:54 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 
+  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
   2001, 2002, 2003 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
@@ -78,6 +78,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     unfortunately.  To do it right requires device driver support.
     wdiff or ediff may be all we can do.
   - @LaTeX{} command to produce the LaTeX logo.
+  - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
 
 * Makeinfo:
   - Support image scaling, at least in HTML.
