@@ -1,5 +1,11 @@
 2002-11-26    <karl@gnu.org>
 
+	* makeinfo/insertion.c (cm_insertion_copying): flush_output, so that
+	output_position gets updated, which in turn makes
+	the tag table positions reflect the copying text.
+	Report from: "W. L. Estes" <wlestes@uncg.edu>, 15
+	Nov 2002 15:57:04 -0500.
+
 	* makeinfo/index.c (init_indices): undefindex after we know
 	name_index_alist[i] is not null.
 	From: "Ronald F. Guilmette" <rfg@monkeys.com>, 26 Nov 2002

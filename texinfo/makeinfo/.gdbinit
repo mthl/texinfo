@@ -158,3 +158,6 @@ set args -o - --html $ttests/macfirst.tex
 
 # crash
 set args -o - --docbook $ttests/idxangle.tex
+
+# node positions in tag table don't reflect copying text.
+set args -o - $ttests/copyinglong.tex
