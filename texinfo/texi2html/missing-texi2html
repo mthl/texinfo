@@ -64,19 +64,36 @@ Supported PROGRAM values:
     exit 1
     ;;
 
-  */texi2html)
+  */perl)
+    case "$2" in
+      */texi2html.pl)
+        ;;
+      *)
+	echo 1>&2 "\
+WARNING: \`$1 $2' is needed, and you do not seem to have it handy on your
+         system.  You might have modified some files without having the
+         proper tools for further handling them.  Check the \`README' file,
+         it often tells you about the needed prerequirements for installing
+         this package.  You may also peek at any GNU archive site, in case
+         some other package would contain this missing \`$1' program."
+	exit 1
+	;;
+    esac
+
     echo 1>&2 "\
-WARNING: \`$1' is missing or broken on your system.  You should only
-         need it if you modified \`texi2html.info'.  You might want to install
-         the \`Perl' package.  Grab it from any GNU archive site."
-    if test -z "$2"; then
+WARNING: \`$1 $2' is missing or broken on your system.
+         You should only need it if you modified \`texi2html.info'.
+         You might want to install the \`Perl' package.  Grab it from
+         any GNU archive site."
+
+    if test -z "$3"; then
 	echo 1>&2 "ERROR: No output file specified!"
 	exit 1
     fi
-    while test -n "$3"; do
+    while test -n "$4"; do
       shift
     done
-    file=`echo "$2" |sed 's/\.texi$/.html/'`
+    file=`echo "$3" |sed 's/\.texi$/.html/'`
     file=`echo "$file" |sed 's/\.texinfo$/.html/'`
     touch "$file"
     ;;

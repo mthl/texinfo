@@ -25,8 +25,9 @@ CLEANFILES = texi2html.1
 texi2html.html: texi2html.texi $(srcdir)/version.texi \
   $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
   $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm
-	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
-	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
+	TEXINPUTS=$(srcdir)::$$TEXINPUTS T2H_HOME=$(top_srcdir) \
+	  $(SHELL) $(top_srcdir)/missing-texi2html --run \
+	    $(PERL) $(top_srcdir)/texi2html.pl -V $<
 
 $(TEXI2HTML):
 	@(cd $(top_builddir) && make texi2html)
@@ -44,7 +45,7 @@ SUFFIXES = .txt
 
 check-local: $(TEXI2HTML) 
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
-	   $(PERL) $(TEXI2HTML) -V $(srcdir)/texi2html.texi
+	   $(TEXI2HTML) -V $(srcdir)/texi2html.texi
 
 # texinfo based targets automake neglects to include
 .texinfo.txt:

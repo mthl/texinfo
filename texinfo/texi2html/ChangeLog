@@ -1,3 +1,11 @@
+2005-02-06  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.pl (#!): Let `perl texi2html.pl' work.
+	* missing-texi2html: Handle `perl texi2html.pl' rather than a single
+	script.
+	* doc/Makefile.am (texi2html.html): Call `$PERL texi2html.pl' to avoid
+	dependency on texi2html.
+
 2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* Makefile.am: manage_i18n.pl is created by ./configure therefore
@@ -80,7 +88,7 @@
 	old perl. Report from Sven de Vries.
 	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
 	Report from ezra peisach.
-	* Tests/*: remove some $Id: ChangeLog,v 1.189 2005-02-06 21:59:20 pertusus Exp $ rcs tags
+	* Tests/*: remove some $Id: ChangeLog,v 1.190 2005-02-07 04:52:46 dprice Exp $ rcs tags
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
