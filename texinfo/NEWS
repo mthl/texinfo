@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.23 2002-12-07 13:11:07 karl Exp $
+$Id: NEWS,v 1.24 2002-12-22 00:03:56 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -33,6 +33,7 @@ convenience, here's a url to one of the relevant sections:
 * install-info:
   . bug fix: don't translate the `* Menu' info keyword.
 * Distribution:
+  . update to GNU FDL 1.2 (http://www.gnu.org/licenses/fdl.html).
   . getopt and other common library files updated from gnulib
     (http://savannah.gnu.org/projects/gnulib/).
   . autoconf 2.57, automake 1.7.2.
