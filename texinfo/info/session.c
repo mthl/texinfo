@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.2 2003-01-09 18:05:45 karl Exp $
+   $Id: session.c,v 1.3 2003-01-24 19:05:53 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -3936,7 +3936,7 @@ incremental_search (window, count, ignore)
       key = info_get_input_char ();
       window_get_state (window, &mystate);
 
-      if (key == DEL)
+      if (key == DEL || key == Control ('h'))
         {
           /* User wants to delete one level of search? */
           if (!isearch_states_index)
