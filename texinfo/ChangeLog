@@ -24,7 +24,7 @@
 2005-04-04  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/Makefile.am: Fix my previous patch, so that the rules work; and
-	  don't modify the path, it's simpler to give help2man the full path.
+	  don't modify $PATH, it's simpler to give help2man the full pathname.
 
 2005-03-31  Per Bothner  <per@bothner.com>
 

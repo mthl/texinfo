@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.78 2005-04-04 21:21:22 kasal Exp $
+   $Id: makeinfo.c,v 1.79 2005-04-12 13:09:28 kasal Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -442,11 +442,11 @@ Conditional processing in input:\n\
 "));
 
     puts (_("\
-  The defaults for the @if... conditionals depend on the output format:\n\
-  if generating HTML, --ifhtml is on and the others are off;\n\
-  if generating Info, --ifinfo is on and the others are off;\n\
-  if generating plain text, --ifplaintext is on and the others are off;\n\
-  if generating XML, --ifxml is on and the others are off.\n\
+The defaults for the @if... conditionals depend on the output format:\n\
+  if generating HTML,         --ifhtml is on and the others are off;\n\
+  if generating Info,         --ifinfo is on and the others are off;\n\
+  if generating plain text,   --ifplaintext is on and the others are off;\n\
+  if generating XML,          --ifxml is on and the others are off.\n\
 "));
 
     fputs (_("\
