@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.27 2005-04-12 13:09:28 kasal Exp $
+# $Id: Makefile.am,v 1.28 2005-04-12 13:12:23 kasal Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -89,8 +89,14 @@ $(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
 	@name="compile customizations for Info" && $(man_rule_bin)
 $(srcdir)/install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
 	@name="update info/dir entries" && $(man_rule_bin)
+
+# Here we need some postprocessing:
 $(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	@name="translate Texinfo documents" && $(man_rule_bin)
+	mv $@ $@.tmp
+	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
+	rm $@.tmp
+	
 $(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
