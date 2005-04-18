@@ -1,3 +1,8 @@
+2005-04-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\smallerbook): new (test) definition for 6x9,
+		which is what lulu.com (print-on-demand) accepts.
+
 2005-04-05  Matthias Kilian  <kili@outback.escape.de>  (tiny changes)
 
 	* makeinfo/html.c (rollback_empty_tag): be sure to avoid negative
