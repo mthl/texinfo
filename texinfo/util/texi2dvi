@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.48 2005-03-07 16:57:54 karl Exp $
+# $Id: texi2dvi,v 1.49 2005-04-21 13:52:40 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.48 $'
+rcs_revision='$Revision: 1.49 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -566,7 +566,7 @@ for command_line_filename in ${1+"$@"}; do
   # Get the type of the file (latex or texinfo) from the given language
   # we just guessed, or from the file extension if not set yet.
   case ${language:-$filename_ext} in
-    [lL]a[tT]e[xX] | *.ltx | *.tex)
+    [lL]a[tT]e[xX] | *.ltx | *.tex | *.drv | *.dtx)
       # Assume a LaTeX file.  LaTeX needs bibtex and uses latex for
       # compilation.  No makeinfo.
       language=latex

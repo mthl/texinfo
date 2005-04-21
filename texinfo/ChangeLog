@@ -1,3 +1,8 @@
+2005-04-21  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: also accept .drv and .dtx as LaTeX.
+	Suggestion from Wybo Dekker.
+
 2005-04-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\smallerbook): new (test) definition for 6x9,
