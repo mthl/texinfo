@@ -1,5 +1,12 @@
 2005-04-22  Per Bothner  <per@bothner.com>
 
+	* makeinfo/xml.c (docbook_element_list): Map EMAILADDARESS to "email".
+	* makeinfo/xref.c (cm_email): For docbook, if there is no name,
+	use <email> tag, rather than <ulink>.  If there is a name, we must use
+	<ulink>, but we need to explicitly escape expansion of addr.	
+
+2005-04-22  Per Bothner  <per@bothner.com>
+
 	* makeinfo/xml.c (docbook_element_list, xml_begin_defterm): Improved
 	docbook translation of definition commands: Use <synopsis> for the
 	summary line, and don't include it (only the body) in a <blockquote>.

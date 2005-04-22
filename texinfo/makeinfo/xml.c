@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.57 2005-04-22 22:14:21 karl Exp $
+   $Id: xml.c,v 1.58 2005-04-22 22:24:26 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -398,7 +398,7 @@ element docbook_element_list [] = {
   { "",                    0, 1, 0 }, /* UREFREPLACEMENT */
 
   { "ulink",               0, 1, 0 }, /* EMAIL */
-  { "",                    0, 1, 0 }, /* EMAILADDRESS */
+  { "email",               0, 1, 0 }, /* EMAILADDRESS */
   { "",                    0, 1, 0 }, /* EMAILNAME */
 
   { "",                    0, 0, 0 }, /* GROUP */
