@@ -1,3 +1,10 @@
+2005-04-22  Per Bothner  <per@bothner.com>
+
+	* makeinfo/xml.c (docbook_element_list, xml_begin_defterm): Improved
+	docbook translation of definition commands: Use <synopsis> for the
+	summary line, and don't include it (only the body) in a <blockquote>.
+	Wrap the whole definition in an <informalfigure>.
+
 2005-04-21  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: also accept .drv and .dtx as LaTeX.

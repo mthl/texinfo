@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.56 2005-04-01 21:30:40 karl Exp $
+   $Id: xml.c,v 1.57 2005-04-22 22:14:21 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -454,13 +454,13 @@ element docbook_element_list [] = {
   { "",                    0, 0, 0 }, /* SETVALUE (xml) */
   { "",                    0, 0, 0 }, /* CLEARVALUE (xml) */
 
-  { "blockquote",          1, 0, 0 }, /* DEFINITION */
-  { "screen",              0, 0, 1 }, /* DEFINITIONTERM */
-  { "",                    0, 0, 0 }, /* DEFINITIONITEM (xml) */
+  { "informalfigure",      1, 0, 0 }, /* DEFINITION */
+  { "synopsis",            0, 0, 1 }, /* DEFINITIONTERM */
+  { "blockquote",          1, 0, 0 }, /* DEFINITIONITEM (xml) */
   { "",                    0, 0, 0 }, /* DEFCATEGORY (xml) */
   { "function",            0, 0, 0 }, /* DEFFUNCTION */
   { "varname",             0, 0, 0 }, /* DEFVARIABLE */
-  { "varname",             0, 0, 0 }, /* DEFPARAM */
+  { "replaceable",         0, 0, 0 }, /* DEFPARAM */
   { "",                    0, 0, 0 }, /* DEFDELIMITER (xml) */
   { "returnvalue",         0, 0, 0 }, /* DEFTYPE */
   { "type",                0, 0, 0 }, /* DEFPARAMTYPE */
@@ -2228,7 +2228,11 @@ xml_begin_def_term (int base_type, const char *category,
     char *defined_name, char *type_name, char *type_name2)
 {
   xml_after_def_term = 0;
-  xml_insert_element (DEFINITIONTERM, START);
+  if (docbook)
+    xml_insert_element_with_attribute (DEFINITIONTERM, START,
+				       "role=\"%s\"", category);
+  else
+    xml_insert_element (DEFINITIONTERM, START);
 
   /* Index entry */
   switch (base_type)
@@ -2257,10 +2261,13 @@ xml_begin_def_term (int base_type, const char *category,
     }
 
   /* Start with category.  */
-  xml_insert_element (DEFCATEGORY, START);
-  execute_string (docbook ? "--- %s:" : "%s", category);
-  xml_insert_element (DEFCATEGORY, END);
-  add_char(' ');
+  if (! docbook)
+    {
+      xml_insert_element (DEFCATEGORY, START);
+      execute_string (docbook ? "[%s]" : "%s", category);
+      xml_insert_element (DEFCATEGORY, END);
+      add_char(' ');
+    }
 
   /* Output type name first for typed definitions.  */
   switch (base_type)
