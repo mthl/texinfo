@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.6 2005-02-05 17:40:59 karl Exp $
+   $Id: xref.c,v 1.7 2005-04-23 12:56:41 karl Exp $
 
    Copyright (C) 2004 Free Software Foundation, Inc.
 
@@ -574,10 +574,20 @@ cm_email (int arg)
 
       if (xml && docbook)
         {
-          xml_insert_element_with_attribute (EMAIL, START, "url=\"mailto:%s\"", addr);
-          if (*name)
+	  if (*name)
+	    {
+	      xml_insert_element_with_attribute (EMAIL, START,
+						 "url=\"mailto:%s\"",
+						 maybe_escaped_expansion (addr, 0, 1));
               execute_string ("%s", name);
-          xml_insert_element (EMAIL, END);
+	      xml_insert_element (EMAIL, END);
+	    }
+	  else
+	    {
+	      xml_insert_element (EMAILADDRESS, START);
+	      execute_string ("%s", addr);
+	      xml_insert_element (EMAILADDRESS, END);
+	    }
         }
       else if (xml)
         {
