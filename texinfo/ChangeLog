@@ -1,3 +1,7 @@
+2005-04-24  Karl Berry  <karl@gnu.org>
+
+	* gettext 0.14.4.
+
 2005-04-22  Per Bothner  <per@bothner.com>
 
 	* makeinfo/xml.c (docbook_element_list): Map EMAILADDARESS to "email".
