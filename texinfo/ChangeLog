@@ -1,5 +1,14 @@
 2005-04-24  Karl Berry  <karl@gnu.org>
 
+	* configure.ac (AM_GNU_GETTEXT): switch to [external], since this
+	seems the most popular method nowadays.
+	(AC_CONFIG_FILES): remove intl/Makefile, also m4/Makefile.
+	* Makefile.am (SUBDIRS): remove intl and m4.
+	* intl/*: remove.
+	* m4/Makefile.am: no longer needed.
+	* lib/system.h (locale.h): unconditionally include, else syntax
+	error from system locale.h.
+
 	* gettext 0.14.4.
 
 2005-04-22  Per Bothner  <per@bothner.com>

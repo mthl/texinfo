@@ -1,8 +1,8 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.12 2004-04-26 13:56:57 karl Exp $
+   $Id: system.h,v 1.13 2005-04-25 00:28:31 karl Exp $
 
-   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,13 +41,7 @@ extern char *substring (const char *, const char *);
 #include <sys/types.h>
 #include <ctype.h>
 
-/* All systems nowadays probably have these functions, but ... */
-#ifdef HAVE_LOCALE_H
 #include <locale.h>
-#endif
-#ifndef HAVE_SETLOCALE
-#define setlocale(category,locale) /* empty */
-#endif
 
 /* For gettext (NLS).  */
 #define const

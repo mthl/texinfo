@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.55 2005-03-27 14:15:59 karl Exp $
+# $Id: configure.ac,v 1.56 2005-04-25 00:28:31 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -208,15 +208,13 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c --intl
 AM_GNU_GETTEXT_VERSION([0.14.3])
-AM_GNU_GETTEXT()
+AM_GNU_GETTEXT([external])
 
 AC_CONFIG_FILES([
   Makefile
   doc/Makefile
   info/Makefile
-  intl/Makefile
   lib/Makefile
-  m4/Makefile
   makeinfo/Makefile
   makeinfo/tests/Makefile
   po/Makefile.in
