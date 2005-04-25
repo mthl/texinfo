@@ -17,40 +17,6 @@ $TEXMFROOT/tex/plain/misc/pdfcolor.tex	doc
 
 
 $GETTEXT/gettext-runtime/ABOUT-NLS		.
-$GETTEXT/gettext-runtime/intl/Makefile.in	intl
-$GETTEXT/gettext-runtime/intl/bindtextdom.c	intl
-$GETTEXT/gettext-runtime/intl/config.charset	intl
-$GETTEXT/gettext-runtime/intl/dcgettext.c	intl
-$GETTEXT/gettext-runtime/intl/dcigettext.c	intl
-$GETTEXT/gettext-runtime/intl/dcngettext.c	intl
-$GETTEXT/gettext-runtime/intl/dgettext.c	intl
-$GETTEXT/gettext-runtime/intl/dngettext.c	intl
-$GETTEXT/gettext-runtime/intl/eval-plural.h	intl
-$GETTEXT/gettext-runtime/intl/explodename.c	intl
-$GETTEXT/gettext-runtime/intl/finddomain.c	intl
-$GETTEXT/gettext-runtime/intl/gettext.c		intl
-$GETTEXT/gettext-runtime/intl/gettextP.h	intl
-$GETTEXT/gettext-runtime/intl/gmo.h		intl
-$GETTEXT/gettext-runtime/intl/hash-string.h	intl
-$GETTEXT/gettext-runtime/intl/intl-compat.c	intl
-$GETTEXT/gettext-runtime/intl/l10nflist.c	intl
-$GETTEXT/gettext-runtime/intl/libgnuintl.h.in	intl
-$GETTEXT/gettext-runtime/intl/loadinfo.h	intl
-$GETTEXT/gettext-runtime/intl/loadmsgcat.c	intl
-$GETTEXT/gettext-runtime/intl/localcharset.c	intl
-$GETTEXT/gettext-runtime/intl/locale.alias	intl
-$GETTEXT/gettext-runtime/intl/localealias.c	intl
-$GETTEXT/gettext-runtime/intl/localename.c	intl
-$GETTEXT/gettext-runtime/intl/ngettext.c	intl
-$GETTEXT/gettext-runtime/intl/os2compat.c	intl
-$GETTEXT/gettext-runtime/intl/os2compat.h	intl
-$GETTEXT/gettext-runtime/intl/osdep.c		intl
-$GETTEXT/gettext-runtime/intl/plural-exp.c	intl
-$GETTEXT/gettext-runtime/intl/plural-exp.h	intl
-$GETTEXT/gettext-runtime/intl/plural.y		intl
-$GETTEXT/gettext-runtime/intl/ref-add.sin	intl
-$GETTEXT/gettext-runtime/intl/ref-del.sin	intl
-$GETTEXT/gettext-runtime/intl/textdomain.c	intl
 #
 $GETTEXT/gettext-tools/po/Makefile.in.in	po
 $GETTEXT/gettext-tools/po/Makevars.template	po
