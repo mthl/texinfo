@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
+@c $Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6511,7 +6511,7 @@ produces a link you can follow.
 had the meaning of @code{@@indicateurl}
 (@pxref{indicateurl,,@code{@@indicateurl}}), but in actual practice it
 was misused the vast majority of the time.  So we've changed the
-definitions.
+meaning.
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
@@ -6569,17 +6569,17 @@ holds programs and texts.
 
 An example of the three-argument form:
 @example
-The @@uref@{/man.cgi/1/ls,,ls(1)@} program @dots{}
+The @@uref@{/man.cgi/1/ls,,ls@} program @dots{}
 @end example
 
 @noindent produces:
 @display
-The @uref{/man.cgi/1/ls,,ls(1)} program @dots{}
+The @uref{/man.cgi/1/ls,,ls} program @dots{}
 @end display
 
 @noindent but with HTML:
 @example
-The <a href="/man.cgi/1/ls">ls(1)</a> program @dots{}
+The <a href="/man.cgi/1/ls">ls</a> program @dots{}
 @end example
 
 To merely indicate a url without creating a link people can follow, use
@@ -18579,10 +18579,11 @@ Here are some notes on the example:
 @cindex Documentation identification
 @cindex Identification of documentation
 The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
-Concurrent Versions System}) or RCS (see rcsintro(1)) version control
-systems, which expand it into a string such as:
+Concurrent Versions System}) or RCS
+(@url{http://www.gnu.org/software/rcs}) version control systems, which
+expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
+$Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18648,7 +18649,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
+@comment $Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

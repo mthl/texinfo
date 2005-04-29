@@ -1,3 +1,8 @@
+2005-04-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: remove ls(1) and rcsintro(1) references at rms'
+	request.  No (n) in GNU.
+
 2005-04-24  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT): switch to [external], since this
