@@ -58,7 +58,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.135 2005-03-29 19:35:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.136 2005-05-02 23:42:42 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2870,6 +2870,7 @@ print STDERR "# reading from $docu\n" if $T2H_VERBOSE;
 {
 
 package Texi2HTML::LaTeX2HTML;
+use Cwd;
 
 #########################################################################
 #

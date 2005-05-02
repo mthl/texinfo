@@ -1,3 +1,7 @@
+2005-05-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use Cwd in package Texi2HTML::LaTeX2HTML;
+
 2005-03-29  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* examples/chm.init: Protect attributes on generated HHC and HHK.
