@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
+@c $Id: texinfo.txi,v 1.140 2005-05-09 18:24:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1809,7 +1809,7 @@ equivalents, such as appendices.  With this value for the page
 delimiter, you can jump from chapter title to chapter title with the
 @kbd{C-x ]} (@code{forward-page}) and @kbd{C-x [}
 (@code{backward-page}) commands and narrow to a chapter with the
-@kbd{C-x p} (@code{narrow-to-page}) command.  (@xref{Pages, , ,emacs,
+@kbd{C-x n p} (@code{narrow-to-page}) command.  (@xref{Pages, , ,emacs,
 The GNU Emacs Manual}, for details about the page commands.)@refill
 
 You may name a Texinfo file however you wish, but the convention is to
@@ -1922,12 +1922,12 @@ cursor at the beginning of the next line.@refill
 @findex texinfo-insert-braces
 Insert @code{@{@}} and put the cursor between the braces.@refill
 
-@item C-c C-c @}
-@itemx C-c C-c ]
+@item C-c @}
+@itemx C-c  ]
 @itemx M-x up-list
 @findex up-list
 Move from between a pair of braces forward past the closing brace.
-Typing @kbd{C-c C-c ]} is easier than typing @kbd{C-c C-c @}}, which
+Typing @kbd{C-c ]} is easier than typing @kbd{C-c @}}, which
 is, however, more mnemonic; hence the two keybindings.  (Also, you can
 move out from between braces by typing @kbd{C-f}.)@refill
 @end table
@@ -2031,7 +2031,7 @@ Texinfo mode sets the value of the page delimiter variable to match
 the chapter-level @@-commands.  This enables you to use the @kbd{C-x
 ]} (@code{forward-page}) and @kbd{C-x [} (@code{backward-page})
 commands to move forward and backward by chapter, and to use the
-@kbd{C-x p} (@code{narrow-to-page}) command to narrow to a chapter.
+@kbd{C-x n p} (@code{narrow-to-page}) command to narrow to a chapter.
 @xref{Pages, , , emacs, The GNU Emacs Manual}, for more information
 about the page commands.@refill
 
@@ -2515,9 +2515,9 @@ C-c C-c i       @r{Insert} @samp{@@item}.
 C-c C-c n       @r{Insert} @samp{@@node}.
 C-c C-c s       @r{Insert} @samp{@@samp}.
 C-c C-c v       @r{Insert} @samp{@@var}.
-C-c C-c @{       @r{Insert braces.}
-C-c C-c ]
-C-c C-c @}       @r{Move out of enclosing braces.}
+C-c @{       @r{Insert braces.}
+C-c ]
+C-c @}       @r{Move out of enclosing braces.}
 
 @group
 C-c C-c C-d     @r{Insert a node's section title}
@@ -18583,7 +18583,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
+$Id: texinfo.txi,v 1.140 2005-05-09 18:24:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18649,7 +18649,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.139 2005-04-29 13:59:19 karl Exp $
+@comment $Id: texinfo.txi,v 1.140 2005-05-09 18:24:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
