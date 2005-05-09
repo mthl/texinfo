@@ -1,3 +1,9 @@
+2005-05-09  Andreas Vögele  <voegelas@gmx.net>  (tiny change)
+
+	* makeinfo/multi.c (output_multitable_row): don't look past
+		beginning of cell memory.  bug-texinfo mail,
+		1 May 2005 10:00:33 +0200.
+
 2005-05-09  Christian von Schultz  <admcvs@Skolwebben.tibro.se>  (tiny change)
 
 	* doc/texinfo.txi (Emacs chapter): wrong key bindings for

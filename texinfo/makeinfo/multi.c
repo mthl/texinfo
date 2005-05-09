@@ -1,8 +1,8 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.9 2005-04-05 21:04:16 karl Exp $
+   $Id: multi.c,v 1.10 2005-05-09 23:53:37 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -430,9 +430,9 @@ output_multitable_row (void)
 
   /* remove trailing whitespace from each column */
   for (i = 1; i <= last_column; i++) {
-    if (envs[i].output_paragraph_offset)
-      while (cr_or_whitespace (CHAR_AT (envs[i].output_paragraph_offset - 1)))
-        envs[i].output_paragraph_offset--;
+    while (envs[i].output_paragraph_offset
+           && cr_or_whitespace (CHAR_AT (envs[i].output_paragraph_offset - 1)))
+      envs[i].output_paragraph_offset--;
 
     if (i == current_env_no)
       output_paragraph_offset = envs[i].output_paragraph_offset;
