@@ -1,7 +1,7 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.6 2004-04-11 17:56:47 karl Exp $
+   $Id: macro.c,v 1.7 2005-05-10 22:54:54 karl Exp $
 
-   Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2002, 2003, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -264,7 +264,8 @@ get_macro_args (MACRO_DEF *def)
               char **arglist;
 
               get_rest_of_line (0, &word);
-              if (input_text[input_text_offset - 1] == '\n')
+              if (input_text_offset > 0
+		  && input_text[input_text_offset - 1] == '\n')
                 {
                   input_text_offset--;
                   line_number--;

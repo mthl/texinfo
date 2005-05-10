@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.57 2005-03-31 16:56:48 karl Exp $
+   $Id: insertion.c,v 1.58 2005-05-10 22:54:53 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free
    Software Foundation, Inc.
@@ -1082,7 +1082,9 @@ end_insertion (enum insertion_type type)
           xml_keep_space--;
         }
 
-      if ((xml || html) && output_paragraph[output_paragraph_offset-1] == '\n')
+      if ((xml || html)
+	  && output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       break;
 
@@ -1361,7 +1363,8 @@ cm_example (void)
     {
       /* Rollback previous newlines.  These occur between
          </para> and <example>.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
 
       xml_insert_element (EXAMPLE, START);
@@ -1384,7 +1387,8 @@ cm_smallexample (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (SMALLEXAMPLE, START);
       if (docbook)
@@ -1403,7 +1407,8 @@ cm_lisp (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (LISP, START);
       if (docbook)
@@ -1422,7 +1427,8 @@ cm_smalllisp (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (SMALLLISP, START);
       if (docbook)
@@ -1483,7 +1489,8 @@ cm_format (void)
       else
         {
           /* See cm_example comments about newlines.  */
-          if (output_paragraph[output_paragraph_offset-1] == '\n')
+          if (output_paragraph_offset > 0
+	      && output_paragraph[output_paragraph_offset-1] == '\n')
             output_paragraph_offset--;
           xml_insert_element (FORMAT, START);
           if (docbook)
@@ -1499,7 +1506,8 @@ cm_smallformat (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (SMALLFORMAT, START);
       if (docbook)
@@ -1515,7 +1523,8 @@ cm_display (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (DISPLAY, START);
       if (docbook)
@@ -1531,7 +1540,8 @@ cm_smalldisplay (void)
   if (xml)
     {
       /* See cm_example comments about newlines.  */
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
       xml_insert_element (SMALLDISPLAY, START);
       if (docbook)

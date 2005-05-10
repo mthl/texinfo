@@ -1,3 +1,9 @@
+2005-05-10  Matthias Kilian  <kili@outback.escape.de>
+
+	* makeinfo/cmds.c, makeinfo/defun.c, makeinfo/insertion.c,
+	makeinfo/lang.c, makeinfo/macro.c, makeinfo/multi.c,
+	makeinfo/node.c, makeinfo/xml.c: More bounds checking.
+
 2005-05-09  Andreas Vögele  <voegelas@gmx.net>  (tiny change)
 
 	* makeinfo/multi.c (output_multitable_row): don't look past

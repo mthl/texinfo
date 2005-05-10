@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.10 2005-05-09 23:53:37 karl Exp $
+   $Id: multi.c,v 1.11 2005-05-10 22:54:54 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005
    Free Software Foundation, Inc.
@@ -348,7 +348,8 @@ do_multitable (void)
   if (xml)
     {
       xml_no_para = 1;
-      if (output_paragraph[output_paragraph_offset-1] == '\n')
+      if (output_paragraph_offset > 0
+	  && output_paragraph[output_paragraph_offset-1] == '\n')
         output_paragraph_offset--;
     }
 

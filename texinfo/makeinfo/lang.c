@@ -1,7 +1,7 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.14 2004-11-22 23:57:33 karl Exp $
+   $Id: lang.c,v 1.15 2005-05-10 22:54:53 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004 Free Software
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,8 @@
 #include "lang.h"
 #include "makeinfo.h"
 #include "xml.h"
+
+#include <assert.h>
 
 /* Current document encoding.  */
 encoding_code_type document_encoding_code = no_encoding;
@@ -801,6 +803,7 @@ cm_accent_generic_no_headers (int arg, int start, int end, int single,
         {
           int rc;
           char *buffer = xmalloc (1 + strlen (html_solo) + 1);
+	  assert (end > 0);
           buffer[0] = output_paragraph[end - 1];
           buffer[1] = 0;
           strcat (buffer, html_solo);

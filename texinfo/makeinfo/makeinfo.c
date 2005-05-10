@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.80 2005-04-12 13:12:23 kasal Exp $
+   $Id: makeinfo.c,v 1.81 2005-05-10 22:54:54 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -2202,6 +2202,7 @@ reader_loop (void)
              menu swallows its newline, so check here instead.  */
           if (!only_macro_expansion && in_menu
               && input_text_offset + 1 < input_text_length
+	      && input_text_offset > 0
               && input_text[input_text_offset-1] == '\n')
             handle_menu_entry ();
           else

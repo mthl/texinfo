@@ -1,8 +1,8 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.12 2005-03-31 16:56:48 karl Exp $
+   $Id: defun.c,v 1.13 2005-05-10 22:54:53 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -368,7 +368,7 @@ defun_internal (enum insertion_type type, int x_p)
       line_continuation:
         i = strlen (line) - 1;
 
-        if (line[i] == '@' && line[i-1] != '@')
+        if (i > 0 && line[i] == '@' && line[i-1] != '@')
           {
             get_rest_of_line (0, &next_line);
             new_line = (char *) xmalloc (i + strlen (next_line) + 2);
@@ -690,6 +690,7 @@ cm_defun (void)
 {
   enum insertion_type type;
   char *base_command = xstrdup (command);  /* command with any `x' removed */
+  /* FIXME: is strlen(command) allways > 0? */
   int x_p = (command[strlen (command) - 1] == 'x');
 
   if (x_p)
