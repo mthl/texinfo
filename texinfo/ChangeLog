@@ -1,3 +1,9 @@
+2005-05-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (First Node): ok for (dir) to be the prev node,
+	and fix missing example.
+	From from Christian von Schultz, 13 May 2005 10:37:26 +0200.
+
 2005-05-10  Matthias Kilian  <kili@outback.escape.de>
 
 	* makeinfo/cmds.c, makeinfo/defun.c, makeinfo/insertion.c,
