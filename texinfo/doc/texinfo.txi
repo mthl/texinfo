@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.141 2005-05-13 17:48:47 karl Exp $
+@c $Id: texinfo.txi,v 1.142 2005-05-14 13:15:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5141,6 +5141,7 @@ The `Prev' node of the Top node should also be your @samp{(dir)} file.
 @item
 @cindex Next node of Top node
 The `Next' node of the Top node should be the first chapter in your
+document.
 
 @end itemize
 
@@ -18575,7 +18576,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.141 2005-05-13 17:48:47 karl Exp $
+$Id: texinfo.txi,v 1.142 2005-05-14 13:15:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18641,7 +18642,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.141 2005-05-13 17:48:47 karl Exp $
+@comment $Id: texinfo.txi,v 1.142 2005-05-14 13:15:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
