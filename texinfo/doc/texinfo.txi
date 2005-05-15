@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.143 2005-05-15 00:00:06 karl Exp $
+@c $Id: texinfo.txi,v 1.144 2005-05-15 00:39:11 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -101,7 +101,7 @@ Software Foundation raise funds for GNU development.''
 
 @sp 1
 Published by the Free Software Foundation @*
-59 Temple Place Suite 330 @*
+51 Franklin St, Fifth Floor @*
 Boston, MA 02110-1301 @*
 USA @*
 ISBN 1-882114-67-1 @c for version 4.0, September 1999.
@@ -14968,7 +14968,7 @@ Code CD-ROM suitable for printing Texinfo manuals.  To order it, contact:
 @display
 @group
 Free Software Foundation, Inc.
-59 Temple Place Suite 330
+51 Franklin St, Fifth Floor
 Boston, MA @ @ 02110-1301
 USA
 Telephone: @w{+1-617-542-5942}
@@ -18576,7 +18576,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.143 2005-05-15 00:00:06 karl Exp $
+$Id: texinfo.txi,v 1.144 2005-05-15 00:39:11 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18642,7 +18642,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.143 2005-05-15 00:00:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.144 2005-05-15 00:39:11 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
