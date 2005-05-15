@@ -1,5 +1,5 @@
 /* html.h -- declarations for html-related utilities.
-   $Id: html.h,v 1.6 2004-11-30 02:03:23 karl Exp $
+   $Id: html.h,v 1.7 2005-05-15 00:00:07 karl Exp $
 
    Copyright (C) 1999, 2000, 2002, 2004 Free Software Foundation, Inc.
 
@@ -15,7 +15,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software Foundation,
-   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 
 #ifndef HTML_H
 #define HTML_H

@@ -1,5 +1,5 @@
 /* footnotes.h -- Some functions for manipulating footnotes.
-   $Id: footnotes.h,v 1.3 2004-04-11 17:56:45 karl Exp $
+   $Id: footnotes.h,v 1.4 2005-05-15 00:00:07 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004 Free Software Foundation, Inc.
 
@@ -15,7 +15,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
    Written by Brian Fox (bfox@ai.mit.edu). */
 

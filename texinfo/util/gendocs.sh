@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.15 2005-02-11 13:33:21 karl Exp $
+# $Id: gendocs.sh,v 1.16 2005-05-15 00:00:08 karl Exp $
 # 
 # Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 #
@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, you can either send email to this
 # program's maintainer or write to: The Free Software Foundation,
-# Inc.; 59 Temple Place, Suite 330; Boston, MA 02111-1307, USA.
+# Inc.; 51 Franklin Street, Fifth Floor; Boston, MA 02110-1301, USA.
 #
 # Original author: Mohit Agarwal.
 # Send bug reports and any other correspondence to bug-texinfo@gnu.org.
@@ -39,7 +39,7 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendoc
 : ${GENDOCS_TEMPLATE_DIR="."}
 unset CDPATH
 
-rcs_revision='$Revision: 1.15 $'
+rcs_revision='$Revision: 1.16 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version

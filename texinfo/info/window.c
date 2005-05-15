@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.4 2004-04-11 17:56:46 karl Exp $
+   $Id: window.c,v 1.5 2005-05-15 00:00:07 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -16,7 +16,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
    Written by Brian Fox (bfox@ai.mit.edu). */
 
