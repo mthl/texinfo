@@ -1,3 +1,10 @@
+2005-05-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (\allowcodebreaks, \kbdinputstyle): use \txiarg
+	instead of \arg; \arg already has a meaning in plain TeX (the
+	complex math function "arg").
+	Report from: Brian Gough, 19 May 2005 19:48:57 +0100.
+
 2005-05-19  Stepan Kasal  <kasal@ucw.cz>
 
 	* configure.ac (AM_GNU_GETTEXT): The comment should not recommend
