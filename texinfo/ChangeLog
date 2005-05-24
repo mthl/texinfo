@@ -1,3 +1,8 @@
+2005-05-24  Stepan Kasal  <kasal@ucw.cz>
+
+	* util/texi2dvi (findprog): Rewrite the test for an executable and
+	the explanation above it.
+
 2005-05-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (\allowcodebreaks, \kbdinputstyle): use \txiarg
