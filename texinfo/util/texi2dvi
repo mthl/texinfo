@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.51 2005-05-24 12:33:40 kasal Exp $
+# $Id: texi2dvi,v 1.52 2005-05-25 09:13:24 kasal Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.51 $'
+rcs_revision='$Revision: 1.52 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -130,20 +130,22 @@ findprog ()
   saveIFS=$IFS
   IFS=$path_sep  # break path components at the path separator
   for dir in $PATH; do
+    IFS=$saveIFS
     # The basic test for an executable is `test -f $f && test -x $f'.
-    # `test -x' is not enough, because it can also be true for directories.
+    # (`test -x' is not enough, because it can also be true for directories.)
+    # We have to try this both for $1 and $1.exe.
     #
-    # On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin, also
-    # `test -f' has this enhancement, bot not on DJGPP.  (Both are design
-    # decisions, so there is little chance to make them consistent.)
-    # Thus we have to try `test -f' twice.
-    if  test -x "$dir/$1" &&
-	{ test -f "$dir/$1" || test -f "$dir/$1.exe"; }; then
+    # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
+    # also `test -f' has this enhancement, bot not on DJGPP.  (Both are
+    # design decisions, so there is little chance to make them consistent.)
+    # Thusly, it seems to be difficult to make use of these enhancements.
+    #
+    if  { test -f "$dir/$1"	&& test -x "$dir/$1"; } ||
+	{ test -f "$dir/$1.exe"	&& test -x "$dir/$1.exe"; }; then
       foundprog=true
       break
     fi
   done
-  IFS=$saveIFS
   $foundprog
 }
 

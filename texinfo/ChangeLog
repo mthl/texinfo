@@ -1,3 +1,8 @@
+2005-05-25  Stepan Kasal  <kasal@ucw.cz>
+
+	* util/texi2dvi (findprog): Rewrite the test for an executable
+	again, per suggestion of Eric Blake.  Restore IFS earlier.
+
 2005-05-24  Stepan Kasal  <kasal@ucw.cz>
 
 	* util/texi2dvi (findprog): Rewrite the test for an executable and
