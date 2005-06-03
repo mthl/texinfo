@@ -1,8 +1,8 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.5 2005-05-15 00:00:07 karl Exp $
+    $Id: man.c,v 1.6 2005-06-03 23:53:20 karl Exp $
 
-   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,10 +15,10 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+   along with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-   Written by Brian Fox Thu May  4 09:17:52 1995 (bfox@ai.mit.edu). */
+   Originally written by Brian Fox Thu May  4 09:17:52 1995. */
 
 #include "info.h"
 #include <sys/ioctl.h>
@@ -290,8 +290,10 @@ get_manpage_contents (char *pagename)
 
   get_page_and_section (pagename);
 
-  if (manpage_section != (char *)NULL)
+  if (manpage_section)
     formatter_args[arg_index++] = manpage_section;
+  else
+    formatter_args[arg_index++] = "-a";    
 
   formatter_args[arg_index++] = manpage_pagename;
   formatter_args[arg_index] = (char *)NULL;
