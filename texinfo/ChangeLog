@@ -1,3 +1,8 @@
+2005-06-05  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* doc/texinfo.txi: typos from Christian von Schultz,
+	5 Jun 2005 16:45:48 +0200.
+
 2005-06-03  Karl Berry  <karl@gnu.org>
 
 	* info/man.c (get_manpage_contents): pass -a to man if no explicit
