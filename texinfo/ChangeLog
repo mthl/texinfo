@@ -1,3 +1,53 @@
+2005-06-09  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: Support --tidy, a new build mode which lets all the
+        compilations happen in a local directory.  This is
+        similar to using --clean, but the files are preserved.  The
+	benefits are:
+	- the output is updated when each tex compilation is completed:
+	  - to allow interactive viewing
+	  - to preserve the previous output is the compilation fails
+	- if the compilation fails, the previous state is preserved.
+	- a fixed set of files to clean in this end (this directory)
+	- complete independence between DVI and PDF compilations.
+
+	(comment_iftex_sed, uncomment_iftex_sed): No
+	longer external files, but simple strings named...
+	(comment_iftex, uncomment_iftex): like this.
+	(utildir): Remove.
+
+	Make the structure clearer by introducing auxiliary functions.
+	* util/texi2dvi (run_bibtex, run_index, insert_commands)
+	(run_recode, run_thumpdf): New.
+	Extracted from the main loop.
+
+	Simplify some variable handling.
+	* util/texi2dvi (clean, debug): Now true/false Booleans.
+	Adjust dependencies.
+
+	Introduce a cycle counter.
+	* util/texi2dvi (cycle): New, to inform the user about the number
+	of compilation cycles.  That's also a nice tool to help debugging:
+	look for "cycle" in the trace to go from cycle to cycle.
+
+	Introduce the work dir, and use it.
+	* util/texi2dvi (ensure_dir, workdir): New.
+	(tmpdir_src, tmpdir_xtr, tmpdir_rcd, tmpdir_bak): Replace with...
+	(work_src, work_xtr, work_rcd, work_bak): these.
+	Adjust dependencies.
+	(filename_src, filename_xtr, filename_rcd, filename_bak): these.
+	(run_tex): Update the output.
+	Remove this task from the core of the loop.
+	(get_xref_files): Simplify by considering all the files around,
+	instead of try to select only those that correspond to a given
+	pattern.
+	Also, there's no reason to build the string result and then echo
+	it, just directly echo all the components.
+	(get_index_files): New.
+	(build_mode): New.
+	Adjust all dependencies (tex_help, command line parsing, clean,
+	tidy).
+
 2005-06-05  Karl Berry  <karl@gnu.org>  (tiny change)
 
 	* doc/texinfo.txi: typos from Christian von Schultz,
