@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.53 2005-06-09 22:07:13 karl Exp $
+# $Id: texi2dvi,v 1.54 2005-06-10 13:44:47 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.53 $'
+rcs_revision='$Revision: 1.54 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -81,12 +81,12 @@ Build modes:
   -c, --clean   same as --build=clean
 
 The MODE specifies where the TeX compilation takes place, and, as a
-consequence, how auxiliary files are treated.  The default build mode
+consequence, how auxiliary files are treated.  The build mode
 can also be set using the environment variable TEXI2DVI_BUILD_MODE.
 
 Valid MODEs are:
   \`local'  compile in the current directory, leaving all the auxiliary
-             files around.  This is the default.
+             files around.
   \`tidy'   compile in a local *.t2d directory, where the auxiliary files
              are left.  Output files are copied back to the original file.
   \`clean'  same as \`tidy', but remove the auxiliary directory afterwards.
@@ -349,12 +349,13 @@ run_tex ()
 
   verbose "Running $cmd ..."
   if eval "$cmd" >&5; then
-    if $tidy; then
-      # Update the actual output.
-      case $oname in
-	'') dest=$orig_pwd;;
-	 *) dest=$oname;;
-      esac
+    # Update the actual output.
+    case $tidy:$oname in
+      true:)  dest=$orig_pwd;;
+      false:) dest=;;
+      *:*)    dest=$oname;;
+    esac
+    if test -n "$dest"; then
       verbose "Copying $oformat file from `pwd` to $dest"
       cp -p "./$filename_noext.$oformat" "$dest"
     fi

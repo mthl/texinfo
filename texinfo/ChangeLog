@@ -1,3 +1,8 @@
+2005-06-10  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (run_tex): Updating the output is also needed when
+	-o is used, not just when $tidy.
+
 2005-06-09  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Support --tidy, a new build mode which lets all the
