@@ -1,3 +1,9 @@
+2005-06-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\., \!, \?): include \space after setting
+	\spacefactor, else all space disappears.
+	Report from Jim Meyering, 09 Jun 2005 23:03:22 +0200.
+
 2005-06-10  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (run_tex): Updating the output is also needed when
