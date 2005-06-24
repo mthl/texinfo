@@ -1,5 +1,8 @@
 2005-06-24  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi: Move the computation of $makeinfo to...
+	(run_makeinfo): here.
+
 	* util/texi2dvi (tex, bibtex, texindex): Move their computation to...
 	(run_tex, run_bibtex, run_texindex): here, to clarify.
 	(move_to_dest): New.
