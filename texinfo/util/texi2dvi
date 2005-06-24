@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.55 2005-06-22 13:08:39 karl Exp $
+# $Id: texi2dvi,v 1.56 2005-06-24 13:01:37 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.55 $'
+rcs_revision='$Revision: 1.56 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -317,6 +317,29 @@ absolute_filenames ()
   echo "$_res"
 }
 
+# move_to_dest FILE
+# -----------------
+# Move the FILE to the place where the user expects it.  FILE can be
+# the principal output (in which case -o directly apply), or an auxiliary
+# file with the same base name.
+move_to_dest ()
+{
+  _file_noext=`echo "$1" | sed 's/\.[^.]*$//'`
+  _file_ext=`echo "$1" | sed 's/^.*\.//'`
+  _out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
+  _out_ext=`echo "$oname" | sed 's/^.*\.//'`
+
+  case $tidy:$oname in
+    true:)  _dest=$orig_pwd;;
+    false:) _dest=;;
+    *:*)    _dest=$_out_noext.$_file_ext;;
+  esac
+  if test -n "$_dest"; then
+    verbose "Copying $1 to $_dest"
+    cp -p "$1" "$_dest"
+  fi
+}
+
 
 ## ----------------------- ##
 ## Running the TeX suite.  ##
@@ -328,6 +351,19 @@ absolute_filenames ()
 # and logs.
 run_tex ()
 {
+  case $language:$oformat in
+    latex:pdf)   tex=${PDFLATEX:-pdflatex};;
+    latex:dvi)   tex=${LATEX:-latex};;
+    texinfo:pdf) tex=$PDFTEX;;
+    texinfo:dvi)
+        # MetaPost also uses the TEX environment variable.  If the user
+        # has set TEX=latex for that reason, don't bomb out.
+        case $TEX in
+	  *latex) tex=tex;; # don't bother trying to find etex
+	       *) tex=$TEX
+        esac
+  esac
+
   # Note that this will be used via an eval: quote properly.
   cmd=$tex
 
@@ -349,21 +385,9 @@ run_tex ()
 
   verbose "Running $cmd ..."
   if eval "$cmd" >&5; then
-    # Update the actual output.
-    case $tidy:$oname in
-      true:)  dest=$orig_pwd;;
-      false:) dest=;;
-      *:*)    dest=$oname;;
-    esac
-    if test -n "$dest"; then
-      verbose "Copying $oformat file from `pwd` to $dest"
-      cp -p "./$filename_noext.$oformat" "$dest"
-    fi
+    move_to_dest "$filename_noext.$oformat"
   else
-    $tidy &&
-      cp "$filename_noext.log" "$orig_pwd"
-    fatal 1 "$tex exited with bad status, quitting." \
-            "see $filename_noext.log for errors."
+    fatal 1 "$tex exited with bad status, quitting."
   fi
 }
 
@@ -389,6 +413,11 @@ run_tex ()
 # easier, though we take the risk to match false messages.
 run_bibtex ()
 {
+  case $language in
+    latex)   bibtex=${BIBTEX:-bibtex};;
+    texinfo) bibtex=;;
+  esac
+
   if test -n "$bibtex" \
      && test -r "$filename_noext.aux" \
      && test -r "$filename_noext.log" \
@@ -420,6 +449,10 @@ run_bibtex ()
 # that if the index files are out of date or nonexistent.
 run_index ()
 {
+  case $language in
+    latex)   texindex=${MAKEINDEX:-makeindex};;
+    texinfo) texindex=${TEXINDEX:-texindex};;
+  esac
   index_files=`get_index_files $orig_xref_files`
   if test -n "$texindex" && test -n "$index_files"; then
     verbose "Running $texindex $index_files ..."
@@ -767,7 +800,7 @@ for command_line_filename in ${1+"$@"}; do
 
   # An auxiliary directory used for all the auxiliary tasks involved
   # in compiling this document.
-  t2ddir=`$clean && echo ${TMPDIR:-/tmp}/`$filename_noext.t2d
+  t2ddir=$filename_noext.t2d
   # Remove it at exit if clean mode.
   $clean &&
     trap "cd / && rm -rf $t2ddir" 0 1 2 15
@@ -832,34 +865,14 @@ for command_line_filename in ${1+"$@"}; do
       # Assume a LaTeX file.  LaTeX needs bibtex and uses latex for
       # compilation.  No makeinfo.
       language=latex
-      bibtex=${BIBTEX:-bibtex}
       makeinfo= # no point in running makeinfo on latex source.
-      texindex=${MAKEINDEX:-makeindex}
       textra_cmd=1i
-      if test $oformat = dvi; then
-        tex=${LATEX:-latex}
-      else
-        tex=${PDFLATEX:-pdflatex}
-      fi
       ;;
 
     *)
-      # Assume a Texinfo file.  Texinfo files need makeinfo, texindex and tex.
+      # Assume a Texinfo file.
       language=texinfo
-      bibtex=
-      texindex=${TEXINDEX:-texindex}
       textra_cmd='/^@setfilename/a'
-      if test $oformat = dvi; then
-        # MetaPost also uses the TEX environment variable.  If the user
-        # has set TEX=latex for that reason, don't bomb out.
-        if echo $TEX | grep 'latex$' >&6; then
-          tex=tex  # don't bother trying to find etex
-        else
-          tex=$TEX
-        fi
-      else
-        tex=$PDFTEX
-      fi
       # Unless required by the user, makeinfo expansion is wanted only
       # if texinfo.tex is too old.
       if test "$expand" = t; then

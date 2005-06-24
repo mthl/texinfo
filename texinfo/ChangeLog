@@ -1,3 +1,11 @@
+2005-06-24  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (tex, bibtex, texindex): Move their computation to...
+	(run_tex, run_bibtex, run_texindex): here, to clarify.
+	(move_to_dest): New.
+	(run_tex): Use it to copy the result back.
+	Don't bother exporting the log.
+
 2005-06-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\., \!, \?): include \space after setting
