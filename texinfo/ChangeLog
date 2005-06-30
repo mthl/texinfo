@@ -1,3 +1,8 @@
+2005-06-30  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\setupverbatim): Use \nonarrowing to declare that
+	we don't want to narrow the environment.
+
 2005-06-24  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Move the computation of $makeinfo to...

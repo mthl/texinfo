@@ -5207,8 +5207,8 @@ where each line of input produces a line of output.}
   }
 \endgroup
 \def\setupverbatim{%
+  \let\nonarrowing = t%
   \nonfillstart
-  \advance\leftskip by -\defbodyindent
   % Easiest (and conventionally used) font for verbatim
   \tt
   \def\par{\leavevmode\egroup\box0\endgraf}%
