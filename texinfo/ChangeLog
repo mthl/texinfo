@@ -1,5 +1,25 @@
 2005-07-01  Stepan Kasal  <kasal@ucw.cz>
 
+	* doc/texinfo.tex: Remove all occurences of \normalturnoffactive or
+	  \turnoffactive attached to \indexdummies or \atdummies, since they
+	  are redundant; \indexdummies and \atdummies both call \commondummies,
+	  which calls \normalturnoffactive, which calls \turnoffactive.
+	(\indexdummies, \atdummies): Move the definitions of \definedummy* ...
+	(\commondummies): ... here; they now take a control sequence as their
+	  parameter; all callers fixed.
+	(\indexnofonts): Fixed the definitions of \definedummy* macros.
+	(\indexdummies): Define \escapechar = `\\ ...
+	(\onepageout): ... thus remove it from here.
+	(\macrolist): Now has the form of \definedummyword\macro1...  It also
+	  gathers user-defined aliases, so there is ...
+	(\addtomacrolist): ... a new macro ...
+	(\macroxxx, \aliasyyy): ... caled from these two.
+	(\unmacro, \unmacrodo): Adapted to the new form of \macrolist.
+	(\turnoffmacros, \emptyusermacros): Removed, mere \macrolist is enough
+	  now.
+
+2005-07-01  Stepan Kasal  <kasal@ucw.cz>
+
 	* doc/texinfo.tex (\nonarrowing): Update the description.
 	(\cartouche): Set \nonarrowing to "t", not \comment.
 	(\nonfillstart, \quotation): Reset \nonarrowing.
