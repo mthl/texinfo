@@ -1,4 +1,4 @@
-$Id: TODO,v 1.27 2005-03-05 22:35:06 karl Exp $
+$Id: TODO,v 1.28 2005-07-02 14:04:33 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -169,7 +169,7 @@ Ideas that will not be implemented:
 - Process Texinfo files directly instead of converting to Info:
   ftp://ftp.cs.berkeley.edu/ucb/people/phelps/tcltk/tkman.tar.Z, which
   uses Tcl/Tk 8.0 from ftp.smli.com in the /pub/tcl directory.
-  From: phelps@ecstasy.CS.Berkeley.EDU (Tom Phelps)
+  From: Tom Phelps @ berkeley
   [This has the disadvantage of needing to be updated when the
   Texinfo language changes, so don't.]
 
@@ -180,4 +180,5 @@ Ideas that will not be implemented:
 - Change bars.  This is difficult or impossible in TeX,
   unfortunately.  To do it right requires device driver support.
   wdiff or ediff may be all we can do.  Merely specifying what should be
-  changed is not obvious.
+  changed is not obvious.  texdiff (http://www.robmar.net/TexDiff) does
+  something reasonable for LaTeX, maybe it can be adapted.
