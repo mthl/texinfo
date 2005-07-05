@@ -1,6 +1,6 @@
 2005-07-04  Stepan Kasal  <kasal@ucw.cz>
 
-	* doc/texinfo.tex (\commondummies): Remove \unsepspaces, it's aleady
+	* doc/texinfo.tex (\commondummies): Remove \unsepspaces, it's already
 	  called by \normalturnoffactive.  Move \normalturnoffactive near the
 	  end of the macro.
 
