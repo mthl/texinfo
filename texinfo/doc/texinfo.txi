@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
+@c $Id: texinfo.txi,v 1.147 2005-07-06 00:34:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -11646,7 +11646,9 @@ enclose it in braces.  For example:
 Otherwise, the second word will be mistaken for the name of the
 entity.  As a general rule, when any of the arguments in the heading
 line @emph{except} the last one are more than one word, you need to
-enclose them in braces.
+enclose them in braces.  This may also be necessary if the text
+contains commands, for example, @samp{@{declaraci@@'on@}} if you are
+writing in Spanish.
 
 Some of the definition commands are more general than others.  The
 @code{@@deffn} command, for example, is the general definition command
@@ -18587,7 +18589,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
+$Id: texinfo.txi,v 1.147 2005-07-06 00:34:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18653,7 +18655,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.147 2005-07-06 00:34:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
