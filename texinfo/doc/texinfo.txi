@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.145 2005-06-05 15:06:17 karl Exp $
+@c $Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7970,20 +7970,13 @@ normal roman font, you can use the @code{@@r} command (@pxref{Fonts}).
 Use the @code{@@verbatim} environment for printing of text that may
 contain special characters or commands that should not be interpreted,
 such as computer input or output (@code{@@example} interprets its text
-as regular Texinfo commands).  This is especially useful for including
-automatically generated output in a Texinfo manual.  Here is an example;
-the output you see is just the same as the input, with a line
-@code{@@verbatim} before and a line @code{@@end verbatim} after.
+as regular Texinfo commands).  This is especially useful for including automatically
+generated files in a Texinfo manual.
 
-@verbatim
-This is an example of text written in a @verbatim
-block.  No character substitutions are made.  All commands
-are ignored, until `<at>end verbatim'.
-
-In the printed manual, the text is typeset in a
-fixed-width font, and not indented or filled.  All
-spaces and blank lines are significant, including tabs.
-@end verbatim
+In general, the output will be just the same as the input.  No
+character substitutions are made, e.g., all spaces and blank lines are
+significant, including tabs.  In the printed manual, the text is
+typeset in a fixed-width font, and not indented or filled.
 
 Write a @code{@@verbatim} command at the beginning of a line by itself.
 This line will disappear from the output.  Mark the end of the verbatim
@@ -8004,7 +7997,7 @@ For example:
 @end example
 
 @noindent
-produces
+This produces:
 
 @verbatim
 {
@@ -8019,7 +8012,22 @@ produce no output, typically you should put a blank line before the
 verbatim}.  Blank lines between the beginning @code{@@verbatim} and
 the ending @code{@@end verbatim} will appear in the output.
 
-It is not reliable to use @code{@@verbatim} inside other Texinfo constructs.
+@cindex Verbatim, small
+@cindex Small verbatim
+You can get a ``small'' verbatim by enclosing the @code{@@verbatim} in
+an @code{@@smallformat} environment, as shown here:
+
+@c more cheating ...
+@smallexample
+@exdent @t{@@smallformat}
+@exdent @t{@@verbatim}
+@exdent @t{... still verbatim, but in a smaller font ...}
+@exdent @t{@@end verbatim}
+@exdent @t{@@end smallformat}
+@end smallexample
+
+Finally, a word of warning: it is not reliable to use
+@code{@@verbatim} inside other Texinfo constructs.
 
 
 @node verbatiminclude
@@ -8044,15 +8052,18 @@ the @code{@@verbatiminclude} within @code{@@example}
 
 The name of the file is taken literally, with a single exception:
 @code{@@value@{@var{var}@}} references are expanded.  This makes it
-possible to reliably include files in other directories in a
-distribution, for instance:
+possible to include files in other directories within a distribution,
+for instance:
 
 @example
-@@include @@value@{top_srcdir@}/NEWS
+@@verbatiminclude @@value@{top_srcdir@}/NEWS
 @end example
 
 @noindent (You still have to get @code{top_srcdir} defined in the
 first place.)
+
+For a method on printing the file contents in a smaller font size, see
+the end of the previous section on @code{@@verbatim}.
 
 
 @node lisp
@@ -18576,7 +18587,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.145 2005-06-05 15:06:17 karl Exp $
+$Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18642,7 +18653,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.145 2005-06-05 15:06:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.146 2005-07-06 00:00:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

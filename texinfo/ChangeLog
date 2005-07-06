@@ -1,3 +1,8 @@
+2005-07-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (verbatim): mention @verbatim inside
+	@smallformat, now that it works.
+
 2005-07-04  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\commondummies): Remove \unsepspaces, it's already
