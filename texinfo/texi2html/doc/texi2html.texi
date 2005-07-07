@@ -5,7 +5,7 @@
 
 @c @macro copyleftnotice
 @copying
-Copyright @copyright{} 1999, 2000, 2001, 2002, 2003
+Copyright @copyright{} 1999, 2000, 2001, 2002, 2003, 2004, 2005
                        Free Software Foundation, Inc.
 
 @multitable @columnfractions .12 .88
@@ -13,15 +13,15 @@ Copyright @copyright{} 1999, 2000, 2001, 2002, 2003
 @item @tab Copyright @copyright{} 1999, 2000 Lionel Cons@*
 @item @tab Copyright @copyright{} 1999, 2000 Karl Berry@*
 @item @tab Copyright @copyright{} 1999, 2000 Olaf Bachmann@*
-@item @tab Copyright @copyright{} 2002, 2003 Patrice Dumas@*
-@item @tab Copyright @copyright{} 2001, 2002, 2003 Derek Price@*
+@item @tab Copyright @copyright{} 2002, 2003, 2004, 2005 Patrice Dumas@*
+@item @tab Copyright @copyright{} 2001, 2002, 2003, 2004, 2005 Derek Price@*
 @item @tab Copyright @copyright{} many others.@*
 @item @tab
 @item @tab
 @item Portions of this manual
 @item @tab Copyright @copyright{} 1999, 2000 Karl Heinz Marbaise (manual)@*
-@item @tab Copyright @copyright{} 2003 Patrice Dumas (manual)@*
 @item @tab Copyright @copyright{} 2003 Derek Price (manual)@*
+@item @tab Copyright @copyright{} 2003, 2004, 2005 Patrice Dumas (manual)@*
 @end multitable
 
 Permission is granted to make and distribute verbatim
@@ -68,7 +68,7 @@ by the Free Software Foundation.
 @c    You should have received a copy of the GNU General
 @c    Public License along with this program; if not, write to
 @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
-@c    330, Boston, MA  02111-1307  USA
+@c    330, Boston, MA  02110-1301  USA
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>

@@ -1,3 +1,13 @@
+2005-07-07  Derek Price  <derek@ximbiot.com>
+
+	* COPYING, T2h_i18n.pm, check_texinfo.pl.in, manage_i18n.pl.in,
+	texi2html.pl, missing-texi2html, doc/texi2html.texi: Update FSF address
+	in Copyright notice and Copyright years.
+	* INSTALL, install-sh, mdate-sh, missing, mkinstalldirs, doc/mdate-sh,
+	doc/texinfo.tex: Update from Automake 1.9.5.
+	* Makefile.in, aclocal.m4, doc/Makefile.in: Regenerated with
+	Automake 1.9.5.
+
 2005-05-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use Cwd in package Texi2HTML::LaTeX2HTML;
