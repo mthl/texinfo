@@ -5,7 +5,10 @@
 #
 # texi2html: Program to transform Texinfo documents to HTML
 #
-#    Copyright (C) 1999-2005  Free Software Foundation, Inc.
+#    Copyright (C) 1999-2005  Patrice Dumas <dumas@centre-cired.fr>,
+#                             Derek Price <derek@ximbiot.com>,
+#                             Adrian Aichner <adrian@xemacs.org>,
+#                           & others.
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -59,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.137 2005-07-07 21:44:55 dprice Exp $
+# $Id: texi2html.pl,v 1.138 2005-07-12 14:59:01 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";

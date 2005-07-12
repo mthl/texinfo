@@ -5,9 +5,6 @@
 
 @c @macro copyleftnotice
 @copying
-Copyright @copyright{} 1999, 2000, 2001, 2002, 2003, 2004, 2005
-                       Free Software Foundation, Inc.
-
 @multitable @columnfractions .12 .88
 @item Portions of @command{texi2html}
 @item @tab Copyright @copyright{} 1999, 2000 Lionel Cons@*

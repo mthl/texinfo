@@ -158,7 +158,11 @@ lists with archives, bug tracking, documentation, and other tools can be found
 at:
 	 http://texi2html.cvshome.org/
 .SH COPYRIGHT
-Copyright \(co 1999, 2000, 2003  Free Software Foundation, Inc.
+Copyright \(co 1999-2005  Patrice Dumas <dumas@centre-cired.fr>,
+                        Derek Price <derek@ximbiot.com>,
+                        Adrian Aichner <adrian@xemacs.org>,
+                      & others.
+
 There is NO warranty.  You may redistribute this software
 under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.

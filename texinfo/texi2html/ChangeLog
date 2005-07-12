@@ -1,8 +1,15 @@
+2005-07-12  Derek Price  <derek@ximbiot.com>
+
+	* T2h_i18n.pm, check_texinfo.pl.in, manage_i18n.pl.in,
+	missing-texi2html, texi2html.pl, doc/stamp-vti, doc/texi2html.1.in,
+	doc/texi2html.html, doc/texi2html.texi, doc/version.texi,
+	images/COPYING: Replace FSF copyright notices.
+
 2005-07-08  Derek Price  <derek@ximbiot.com>
 
 	* images/*.gif: Convert all these files to...
 	* images/*.png: PNG format.
-	* COPYING: Paste in full text of Creative Commons License.
+	* images/COPYING: Paste in full text of Creative Commons License.
 
 2005-07-07  Derek Price  <derek@ximbiot.com>
 

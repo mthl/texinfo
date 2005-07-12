@@ -2,7 +2,10 @@
 #
 # T2h_i18n.pm: Internationalization for texi2html
 #
-#    Copyright (C) 2003-2005  Free Software Foundation, Inc.
+#    Copyright (C) 1999-2005  Patrice Dumas <dumas@centre-cired.fr>,
+#                             Derek Price <derek@ximbiot.com>,
+#                             Adrian Aichner <adrian@xemacs.org>,
+#                           & others.
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
