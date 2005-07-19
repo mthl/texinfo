@@ -15,14 +15,13 @@ This file records noteworthy changes.
 * It is possible to build the translation files from outside of the 
   build directory.
 
-* In case it isn't possible to rebuild cleanly the translation files 
-  (no Data::Dumper), it is detected by configure and the files are simply
-  copied.
+* When configure detects that no Data::Dumper is present, the build scripts
+  will simply copy the files instead of breaking.
 
 * FOR DEVELOPERS
   --------------
 
-* Standardized on Automake 1.9.3
+* Standardized on Automake 1.9.5
 
 1.76 (February  3 2005)
 
