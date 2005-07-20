@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.138 2005-07-12 14:59:01 dprice Exp $
+# $Id: texi2html.pl,v 1.139 2005-07-20 00:42:39 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2393,7 +2393,6 @@ foreach my $key (keys(%cross_ref_style_map_texi))
 my $docu_dir;            # directory of the document
 my $docu_name;           # basename of the document
 my $docu_rdir;           # directory for the output
-#my $docu_ext = "html";   # extension
 my $docu_ext = $Texi2HTML::Config::EXTENSION;   # extension
 my $docu_toc;            # document's table of contents
 my $docu_stoc;           # document's short toc
@@ -2418,7 +2417,7 @@ else
 unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
 unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 $docu_name =~ s/\.te?x(i|info)?$//;
-$docu_name = $Texi2HTML::Config::PREFIX if ($Texi2HTML::Config::PREFIX);
+$docu_name = $Texi2HTML::Config::PREFIX if $Texi2HTML::Config::PREFIX;
 
 # resulting files splitting
 if ($Texi2HTML::Config::SPLIT =~ /section/i)
@@ -2558,23 +2557,24 @@ if ($Texi2HTML::Config::SHORTEXTN)
 {
     $docu_ext = "htm";
 }
-if ($Texi2HTML::Config::TOP_FILE =~ s/\..*$//)
-{
-    $Texi2HTML::Config::TOP_FILE .= ".$docu_ext";
-}
 
-$docu_doc = "$docu_name.$docu_ext"; # document's contents
+$docu_doc = "$docu_name" . ($docu_ext ? ".$docu_ext" : ""); # document's contents
 if ($Texi2HTML::Config::SPLIT)
 {
     # if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
     # ${docu_name}_ovr... there may be trouble with the old naming scheme in
     # very rare circumstances. This won't be fixed, the new scheme will be used
     # soon.
-    $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc.$docu_ext";
-    $docu_stoc  = "${docu_name}_ovr.$docu_ext";
-    $docu_foot  = "${docu_name}_fot.$docu_ext";
-    $docu_about = "${docu_name}_abt.$docu_ext";
-    $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
+    $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc";
+    $docu_toc  .= ".$docu_ext" if $docu_ext;
+    $docu_stoc  = "${docu_name}_ovr";
+    $docu_stoc .= ".$docu_ext" if $docu_ext;
+    $docu_foot  = "${docu_name}_fot";
+    $docu_foot .= ".$docu_ext" if $docu_ext;
+    $docu_about = "${docu_name}_abt";
+    $docu_about .= ".$docu_ext" if $docu_ext;
+    $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_name;
+    $docu_top  .= ".$docu_ext" if $docu_ext;
 }
 else
 {
@@ -2587,6 +2587,7 @@ else
 }
 
 # For use in init files
+# Note that file extension has already been added here.
 $Texi2HTML::Config::TOP_FILE = $docu_top;
 $Texi2HTML::Config::TOC_FILE = $docu_toc;
 
@@ -2597,8 +2598,10 @@ my $docu_foot_file = "$docu_rdir$docu_foot";
 my $docu_about_file = "$docu_rdir$docu_about";
 my $docu_top_file  = "$docu_rdir$docu_top";
 
-my $docu_frame_file =     "$docu_rdir${docu_name}_frame.$docu_ext";
-my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame.$docu_ext";
+my $docu_frame_file =     "$docu_rdir${docu_name}_frame";
+$docu_frame_file .= ".$docu_ext" if $docu_ext;
+my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame";
+$docu_toc_frame_file .= ".$docu_ext" if $docu_ext;
 
 #
 # _foo: internal variables to track @foo
@@ -3371,11 +3374,12 @@ sub to_cache($$)
                 warn "$ERROR: L2h image $src has invalid extension\n";
                 next;
             }
-            while (-e "$docu_rdir${docu_name}_$maximage.$ext")
+            while (-e "$docu_rdir${docu_name}_$maximage"
+	    	      . ($ext ? ".$ext" : ""))
             {
                 $maximage++;
             }
-            $dest = "${docu_name}_$maximage.$ext";
+            $dest = "${docu_name}_$maximage" . ($ext ? ".$ext" : "");
             system("cp -f $docu_rdir$src $docu_rdir$dest");
             $l2h_img{$src} = $dest;
             #unlink "$docu_rdir$src" unless ($T2H_DEBUG & $DEBUG_L2H);
@@ -5371,13 +5375,15 @@ sub rearrange_elements()
                 }
                 unless ($element->{'file'})
                 {
-                    $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                    $element->{'file'} = "${docu_name}_$doc_nr"
+		    			 . ($docu_ext ? ".$docu_ext" : "");
                     $element->{'doc_nr'} = $doc_nr;
                 }
             }
             else
             {
-                $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                $element->{'file'} = "${docu_name}_$doc_nr"
+				     . ($docu_ext ? ".$docu_ext" : "");
                 my $is_top = 0;
                 if (defined($top_doc_nr))
                 {
@@ -5391,7 +5397,9 @@ sub rearrange_elements()
                         {
                             $doc_nr++;
                             $element->{'doc_nr'} = $doc_nr;
-                            $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                            $element->{'file'} = "${docu_name}_$doc_nr"
+			    			 . ($docu_ext
+						    ? ".$docu_ext" : "");
                         }
                     }
                 }
