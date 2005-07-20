@@ -1,5 +1,9 @@
 2005-07-19  Derek Price  <derek@ximbiot.com>
 
+	* Makefile.am (dist_images_DATA): Don't reference missing image files.
+
+2005-07-19  Derek Price  <derek@ximbiot.com>
+
 	* texi2html.pl: Don't add the file extension when it is empty.  Some
 	cleanup.
 
