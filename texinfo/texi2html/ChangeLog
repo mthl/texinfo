@@ -1,5 +1,9 @@
 2005-07-25  Derek Price  <derek@ximbiot.com>
 
+	* examples/mediawiki.init: New file.
+
+2005-07-25  Derek Price  <derek@ximbiot.com>
+
 	* texi2html.pl: Allow substitution of all document file names.
 
 2005-07-19  Derek Price  <derek@ximbiot.com>
