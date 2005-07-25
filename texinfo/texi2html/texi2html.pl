@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.139 2005-07-20 00:42:39 dprice Exp $
+# $Id: texi2html.pl,v 1.140 2005-07-25 13:46:20 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2558,7 +2558,7 @@ if ($Texi2HTML::Config::SHORTEXTN)
     $docu_ext = "htm";
 }
 
-$docu_doc = "$docu_name" . ($docu_ext ? ".$docu_ext" : ""); # document's contents
+$docu_doc = $docu_name . ($docu_ext ? ".$docu_ext" : ""); # document's contents
 if ($Texi2HTML::Config::SPLIT)
 {
     # if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
@@ -2575,6 +2575,19 @@ if ($Texi2HTML::Config::SPLIT)
     $docu_about .= ".$docu_ext" if $docu_ext;
     $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_name;
     $docu_top  .= ".$docu_ext" if $docu_ext;
+
+    if (defined $Texi2HTML::Config::element_file_name)
+    {
+	$docu_toc = &$Texi2HTML::Config::element_file_name
+			(undef, "toc", $docu_name);
+	$docu_stoc = &$Texi2HTML::Config::element_file_name
+			(undef, "stoc", $docu_name);
+	$docu_foot = &$Texi2HTML::Config::element_file_name
+			(undef, "foot", $docu_name);
+	$docu_about = &$Texi2HTML::Config::element_file_name
+			(undef, "about", $docu_name);
+	# $docu_top is handled later.
+    }
 }
 else
 {
@@ -2582,6 +2595,11 @@ else
     {
         $docu_doc = $Texi2HTML::Config::OUT;
         $docu_doc =~ s|.*/||;
+    }
+    if (defined $Texi2HTML::Config::element_file_name)
+    {
+	$docu_doc = &$Texi2HTML::Config::element_file_name
+			(undef, "doc", $docu_name);
     }
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
