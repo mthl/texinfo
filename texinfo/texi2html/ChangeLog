@@ -1,5 +1,10 @@
 2005-07-28  Derek Price  <derek@ximbiot.com>
 
+	* Makefile.am (dist_images_DATA): Restore reference to images/*,
+	reversing change from 2005-07-19.
+
+2005-07-28  Derek Price  <derek@ximbiot.com>
+
 	* NEWS: Note file name override, mediawiki example, and empty file
 	name extension fix.
 
