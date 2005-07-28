@@ -1,3 +1,10 @@
+2005-07-28  Derek Price  <derek@ximbiot.com>
+
+	* images/*.png: Restore these files, reversing change from 2005-07-19,
+	since RMS has declared that any free license is OK for image files and
+	other data that is a secondary part of a program.
+	* NEWS: Remove note about images/* removal.
+
 2005-07-25  Derek Price  <derek@ximbiot.com>
 
 	* examples/mediawiki.init: New file.
