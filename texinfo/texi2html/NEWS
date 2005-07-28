@@ -7,8 +7,17 @@ This file records noteworthy changes.
 
 * Handle @frenchspacing.
 
+* The `examples' directory now contains an init file for Mediawiki output.
+  Mediawiki is the GPL'd wiki used by Wikipedia.
+
+* Init files now have a chance to override all file names, rather than just
+  page names.
+
 * BUG FIXES
   ---------
+
+* When the file extension is set to the empty string, a trailing `.' will not
+  be automatically added to file names.
 
 * The texi2html script is now created by make and not configure. 
 

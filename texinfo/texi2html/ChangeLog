@@ -1,5 +1,10 @@
 2005-07-28  Derek Price  <derek@ximbiot.com>
 
+	* NEWS: Note file name override, mediawiki example, and empty file
+	name extension fix.
+
+2005-07-28  Derek Price  <derek@ximbiot.com>
+
 	* images/*.png: Restore these files, reversing change from 2005-07-19,
 	since RMS has declared that any free license is OK for image files and
 	other data that is a secondary part of a program.
