@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.1 2005-07-25 13:47:22 dprice Exp $
+# $Id: mediawiki.init,v 1.2 2005-08-03 13:55:28 dprice Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -151,6 +151,12 @@ sub mediawiki_anchor($;$$$)
 
 # default is {'args' => ['normal'], 'attribute' => ''},   
 $style_map{'titlefont'} => {'function' => \&mediawiki_titlefont};
+$style_map{'option'} => {'args' => ['code'],
+			 'attribute' => 'samp',
+			 'quote' => '"'};
+$style_map{'samp'} => {'args' => ['code'],
+		       'attribute' => 'samp',
+		       'quote' => '"'};
 
 
 
