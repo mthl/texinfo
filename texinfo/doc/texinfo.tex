@@ -3378,6 +3378,8 @@ where each line of input produces a line of output.}
     \definedummyword\key
     \definedummyword\math
     \definedummyword\option
+    \definedummyword\pxref
+    \definedummyword\ref
     \definedummyword\samp
     \definedummyword\strong
     \definedummyword\tie
@@ -3386,6 +3388,7 @@ where each line of input produces a line of output.}
     \definedummyword\var
     \definedummyword\verb
     \definedummyword\w
+    \definedummyword\xref
   }
 }
 
@@ -6669,13 +6672,6 @@ where each line of input produces a line of output.}
       % caption if specified, else the full caption if specified, else nothing.
       {%
         \atdummies
-        %
-        % seems like we need to list every single command, as a long
-        % caption might well contain environments, etc.?  Or maybe this
-        % should be done in \commondummies?
-        \let\xref=\relax
-        \let\pxref=\relax
-        \let\ref=\relax
         %
         % since we read the caption text in the macro world, where ^^M
         % is turned into a normal character, we have to scan it back, so

@@ -1,3 +1,8 @@
+2005-08-05  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\Efloat): Revert the previous change, ...
+	(\commondummiesnofonts): ... instead, add the three commands here.
+
 2005-08-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\Efloat): make \xref, \pxref, \ref no-ops.
