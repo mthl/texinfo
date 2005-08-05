@@ -1,5 +1,11 @@
 2005-08-05  Stepan Kasal  <kasal@ucw.cz>
 
+	* configure.ac: (auto)update.
+	* info/Makefile.am, makeinfo/Makefile.am, utils/Makefile.am: s/INCLUDES/AM_CPPFLAGS/
+	* lib/Makefile.am (INCLUDES): Remove.
+
+2005-08-05  Stepan Kasal  <kasal@ucw.cz>
+
 	* doc/texinfo.tex (\Efloat): Revert the previous change, ...
 	(\commondummiesnofonts): ... instead, add the three commands here.
 

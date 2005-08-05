@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.7 2004-11-06 22:05:59 karl Exp $
+# $Id: Makefile.am,v 1.8 2005-08-05 09:25:44 kasal Exp $
 # Makefile.am for texinfo/lib.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -11,7 +11,6 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 noinst_LIBRARIES = libtxi.a
-INCLUDES = -I../intl
 
 # Don't need to list alloca.c, etc., Automake includes them.
 libtxi_a_SOURCES = getopt.c getopt.h getopt1.c getopt_.h getopt_int.h \

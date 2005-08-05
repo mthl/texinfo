@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.14 2004-08-26 11:43:18 karl Exp $
+# $Id: Makefile.am,v 1.15 2005-08-05 09:25:44 kasal Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -23,7 +23,7 @@ ginstall_info_SOURCES = install-info.c
 transform = s/ginstall-info/install-info/; $(program_transform_name)
 
 localedir = $(datadir)/locale
-INCLUDES = -I$(top_srcdir)/lib -I../intl -DLOCALEDIR=\"$(localedir)\"
+AM_CPPFLAGS = -I$(top_srcdir)/lib -DLOCALEDIR=\"$(localedir)\"
 LDADD = ../lib/libtxi.a $(LIBINTL)
 
 dist_pkgdata_DATA = texinfo.dtd texinfo.xsl
