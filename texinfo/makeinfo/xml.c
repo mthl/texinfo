@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.60 2005-05-15 00:00:08 karl Exp $
+   $Id: xml.c,v 1.61 2005-08-06 16:04:37 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -31,9 +31,6 @@
 #include "xml.h"
 
 #include <assert.h>
-
-/* Options */
-int xml_index_divisions = 1;
 
 #if !__OPTIMIZE__
 /* To make enum names available to debugger. */
@@ -415,7 +412,7 @@ element docbook_element_list [] = {
   { "example",             1, 1, 0 },
   { "sidebar",             1, 0, 0 },
 
-  { "index",               0, 1, 0 }, /* PRINTINDEX */
+  { "index",               0, 0, 0 }, /* PRINTINDEX */
   { "",                    0, 1, 0 }, /* LISTOFFLOATS */
   { "",                    0, 1, 0 }, /* ANCHOR */
 
@@ -536,6 +533,8 @@ int xml_no_indent = 0;
 
 int xml_no_para = 0;
 char *xml_node_id = NULL;
+
+/* Currently sorting the index. */
 int xml_sort_index = 0;
 
 int xml_in_xref_token = 0;
@@ -656,7 +655,9 @@ xml_begin_document (char *output_filename)
   if (language_code != last_language_code)
     {
       if (docbook)
-        xml_insert_element_with_attribute (TEXINFO, START, "lang=\"%s\"", language_table[language_code].abbrev);
+	/* The toplevel <book> element needs an id attribute if you want to use
+	   the chunk.xml feature of the DocBook-XSL stylesheets. */
+        xml_insert_element_with_attribute (TEXINFO, START, "id=\"book-root\" lang=\"%s\"", language_table[language_code].abbrev);
       else
 	xml_insert_element_with_attribute (TEXINFO, START, "xml:lang=\"%s\"", language_table[language_code].abbrev);
     }
@@ -810,7 +811,7 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   /* Look at the replace_elements table to see if we have to change the element */
   if (xml_sort_index)
       return;
-  if (docbook)
+  if (docbook && element_stack_index > 0)
     {
       replace_element *element_list = replace_elements;
       while (element_list->element_to_replace >= 0)
@@ -1798,94 +1799,16 @@ xml_close_indexentry (void)
 void
 xml_begin_index (void)
 {
-  typedef struct xml_index_title {
-      struct xml_index_title *next;
-      char *title;
-  } XML_INDEX_TITLE;
-
-  static XML_INDEX_TITLE *xml_index_titles = NULL;
-
-  if (!handling_delayed_writes)
-    { /* We assume that we just opened a section, and so that the last output is
-         <SECTION ID="node-name"><TITLE>Title</TITLE>
-         where SECTION can be CHAPTER, ...  */
-
-      XML_INDEX_TITLE *new = xmalloc (sizeof (XML_INDEX_TITLE));
-      xml_section *temp = last_section;
-
-      int l = output_paragraph_offset-xml_last_section_output_position;
-      char *tmp = xmalloc (l+1);
-      char *p = tmp;
-      strncpy (tmp, (char *) output_paragraph, l);
-
-      /* We remove <SECTION */
-      tmp[l] = '\0';
-      while (*p != '<')
-        p++;
-      while (*p != ' ')
-        p++;
-      /* ... and its label attribute.  */
-      if (strncmp (p, " label=", 7) == 0)
-        {
-          p++;
-          while (*p != ' ')
-            p++;
-        }
-
-      output_paragraph_offset = xml_last_section_output_position;
-      xml_last_section_output_position = 0;
-
-      xml_pop_current_element (); /* remove section element from elements stack */
-
-      if (last_section)
-        last_section = last_section->prev; /* remove section from sections stack */
-      if (temp)
-        {
-          free (temp->name);
-          free (temp);
-        }
-
-      new->title = xstrdup (p);
-      new->next = xml_index_titles;
-      xml_index_titles = new;
-    }
-  else
+  if (handling_delayed_writes)
     {
-      static int xml_index_titles_reversed = 0;
-
-      if (!xml_index_titles_reversed)
-        {
-          xml_index_titles = (XML_INDEX_TITLE *) reverse_list
-            ((GENERIC_LIST *) xml_index_titles);
-          xml_index_titles_reversed = 1;
-        }
-
       /* We put <INDEX> */
       xml_insert_element (PRINTINDEX, START);
-      if (xml_index_titles)
-        {
-          /* Remove the final > */
-          output_paragraph_offset--;
-          /* and put  ID="node-name"><TITLE>Title</TITLE> */
-          insert_string (xml_index_titles->title);
-          free (xml_index_titles->title);
-          xml_index_titles = xml_index_titles->next;
-        }
-
-      if (xml_index_divisions)
-        {
-          xml_insert_element (INDEXDIV, START);
-          indexdivempty = 1;
-        }
     }
 }
 
 void
 xml_end_index (void)
 {
-  xml_close_indexentry ();
-  if (xml_index_divisions)
-    xml_insert_element (INDEXDIV, END);
   xml_insert_element (PRINTINDEX, END);
 }
 
@@ -1911,75 +1834,6 @@ xml_index_divide (char *entry)
       insert (toupper (c));
       xml_insert_element (TITLE, END);
     }
-}
-
-void
-xml_insert_indexentry (char *entry, char *node)
-{
-  char *primary = NULL, *secondary;
-  if (xml_index_divisions)
-    xml_index_divide (entry);
-
-  indexdivempty = 0;
-  if (strstr (entry+1, INDEX_SEP))
-    {
-      primary = xmalloc (strlen (entry) + 1);
-      strcpy (primary, entry);
-      secondary = strstr (primary+1, INDEX_SEP);
-      *secondary = '\0';
-      secondary += strlen (INDEX_SEP);
-
-      if (in_secondary && strcmp (primary, index_primary) == 0)
-        {
-          xml_insert_element (SECONDARYIE, END);
-          xml_insert_element (SECONDARYIE, START);
-          execute_string ("%s", secondary);
-        }
-      else
-        {
-          xml_close_indexentry ();
-          xml_insert_element (INDEXENTRY, START);
-          in_indexentry = 1;
-          xml_insert_element (PRIMARYIE, START);
-          execute_string ("%s", primary);
-          xml_insert_element (PRIMARYIE, END);
-          xml_insert_element (SECONDARYIE, START);
-          execute_string ("%s", secondary);
-          in_secondary = 1;
-        }
-    }
-  else
-    {
-      xml_close_indexentry ();
-      xml_insert_element (INDEXENTRY, START);
-      in_indexentry = 1;
-      xml_insert_element (PRIMARYIE, START);
-      execute_string ("%s", entry);
-    }
-  add_word (", ");
-
-  /* Don't link to @unnumbered sections directly.
-     We are disabling warnings temporarily, otherwise these xrefs
-     will cause bogus warnings about missing punctuation.  */
-  {
-    extern int print_warnings;
-    int save_print_warnings = print_warnings;
-    print_warnings = 0;
-    execute_string ("%cxref{%s}", COMMAND_PREFIX, xstrdup (node));
-    print_warnings = save_print_warnings;
-  }
-
-  if (primary)
-    {
-      strcpy (index_primary, primary);
-      /*      xml_insert_element (SECONDARYIE, END);*/
-      /*     *(secondary-1) = ',';*/ /* necessary ? */
-      free (primary);
-    }
-  else
-    xml_insert_element (PRIMARYIE, END);
-
-  /*  xml_insert_element (INDEXENTRY, END); */
 }
 
 void

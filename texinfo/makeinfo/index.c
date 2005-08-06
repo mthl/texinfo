@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.18 2005-05-15 00:00:07 karl Exp $
+   $Id: index.c,v 1.19 2005-08-06 16:04:37 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -869,11 +869,7 @@ cm_printindex (void)
             }
           else if (xml && docbook)
             {
-              /* In the DocBook case, the expanded index entry is not
-                 good for us, since it was expanded for non-DocBook mode
-                 inside sort_index.  So we send the original entry text
-                 to be used with execute_string.  */
-              xml_insert_indexentry (index->entry_text, index_node);
+	      /* Let DocBook processor generate the index. */
             }
           else
             {

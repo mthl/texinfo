@@ -1,3 +1,18 @@
+2005-08-06  Per Bothner  <per@bothner.com>
+
+	* makeinfo/index.c (cm_printindex): Don't xml_insert_indexentry if
+	docbook, since we'll let the doxbook processor generate the index.
+	* makeinfo/xml.h (xml_sort_index, xml_insert_indexentry): Remove.
+	* makeinfo/xml.c (xml_begin_index): Don't actually do any formatting.
+	(xml_end_index):  Don't do anything except close <index>.
+	(xml_insert_indexentry): Remove no-longer-used function.
+
+	* makeinfo/xml.c (element docbook_element_list): The docbook <index>
+	element should *not* be contained_in_para.
+	
+	* makeinfo/xml.c (xml_begin_document): Add id attribute to top-level
+	book if emitting docbook.
+
 2005-08-05  Stepan Kasal  <kasal@ucw.cz>
 
 	* configure.ac: (auto)update.
