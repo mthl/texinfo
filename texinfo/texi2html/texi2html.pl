@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.140 2005-07-25 13:46:20 dprice Exp $
+# $Id: texi2html.pl,v 1.141 2005-08-08 20:46:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2565,16 +2565,8 @@ if ($Texi2HTML::Config::SPLIT)
     # ${docu_name}_ovr... there may be trouble with the old naming scheme in
     # very rare circumstances. This won't be fixed, the new scheme will be used
     # soon.
-    $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc";
-    $docu_toc  .= ".$docu_ext" if $docu_ext;
-    $docu_stoc  = "${docu_name}_ovr";
-    $docu_stoc .= ".$docu_ext" if $docu_ext;
-    $docu_foot  = "${docu_name}_fot";
-    $docu_foot .= ".$docu_ext" if $docu_ext;
-    $docu_about = "${docu_name}_abt";
-    $docu_about .= ".$docu_ext" if $docu_ext;
-    $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_name;
-    $docu_top  .= ".$docu_ext" if $docu_ext;
+    $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
+#    $docu_top  .= ".$docu_ext" if $docu_ext;
 
     if (defined $Texi2HTML::Config::element_file_name)
     {
@@ -2587,6 +2579,27 @@ if ($Texi2HTML::Config::SPLIT)
 	$docu_about = &$Texi2HTML::Config::element_file_name
 			(undef, "about", $docu_name);
 	# $docu_top is handled later.
+    }
+    if (!defined($docu_toc))
+    {
+        my $default_toc = "${docu_name}_toc";
+        $default_toc .= ".$docu_ext" if $docu_ext;
+        $docu_toc   = $Texi2HTML::Config::TOC_FILE || $default_toc;
+    }
+    if (!defined($docu_stoc))
+    {
+        $docu_stoc  = "${docu_name}_ovr";
+        $docu_stoc .= ".$docu_ext" if $docu_ext;
+    }
+    if (!defined($docu_foot))
+    {
+        $docu_foot  = "${docu_name}_fot";
+        $docu_foot .= ".$docu_ext" if $docu_ext;
+    }
+    if (!defined($docu_about))
+    {
+        $docu_about = "${docu_name}_abt";
+        $docu_about .= ".$docu_ext" if $docu_ext;
     }
 }
 else
@@ -5402,7 +5415,7 @@ sub rearrange_elements()
             {
                 $element->{'file'} = "${docu_name}_$doc_nr"
 				     . ($docu_ext ? ".$docu_ext" : "");
-                my $is_top = 0;
+                my $is_top = '';
                 if (defined($top_doc_nr))
                 {
                     if ($doc_nr eq $top_doc_nr)
@@ -5423,7 +5436,7 @@ sub rearrange_elements()
                 }
                 elsif ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and !$element->{'node_ref'}->{'element_added'} and $element->{'node_ref'} eq $element_top))
                 { # the top element
-                    $is_top = 1;
+                    $is_top = "top";
                     $element->{'file'} = "$docu_top";
                     # if there is a previous element, we force it to be in 
                     # another file than top
@@ -10613,7 +10626,7 @@ sub scan_line($$$$;$)
                     {
                          push (@{$style->{'args'}}, $style->{'text'});
                          $style->{'fulltext'} .= $style->{'text'};
-                         my $number = 0;
+                         #my $number = 0;
                          #foreach my $arg(@{$style->{'args'}})
                          #{
                               #print STDERR "  $number: $arg\n";
@@ -10803,6 +10816,8 @@ sub close_arg($$$)
     }
 }
 
+# add a special style on the top of the stack. This is used for commands
+# that extend until the end of the line
 sub open_cmd_line($$$$)
 {
     my $stack = shift;

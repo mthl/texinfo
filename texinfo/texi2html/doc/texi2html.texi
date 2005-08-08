@@ -630,11 +630,12 @@ If the manual is split the files are put in a directory named after the
 manual name. The file name is constructed using the manual name as basename.
 An underscore followed by a number is appended
 to the basename for each files corresponding with sectioning elements, with the
-exception of the top element. For the top element there nothing appended.
+exception of the top element. For the top element there is nothing appended.
 The files containing special elements pages
 have an underscore and a 3 letter code corresponding to their content
 (@samp{toc} for table of contents, @samp{abt} for about, @samp{ovr} for
-overview) appended.  Lastly, an @samp{.html} file extension is appended.
+overview, @samp{fot} for footnotes if they are separated) appended.  
+Lastly, an @samp{.html} file extension is appended.
 
 Thus, if the texinfo file @file{afile.texi} is processed and split at chapters
 into 3 files, the generated files (in directory @file{afile}) will be:
@@ -1860,9 +1861,12 @@ a redirection to the node @var{$redirection_node_file}.
 @end deftypefn
 
 The other is usefull if @code{$NODE_FILES} isn't true. It is used to 
-customize the file associated with each element.
-@deftypefn {Function Reference} $file element_file_name $element $is_top $docu_name
-@var{$element} is a hash reference with the following interesting keys (there
+customize the file names associated with each element, and the 
+name of the file associated with the special elements.
+@deftypefn {Function Reference} $file element_file_name $element $type $docu_name
+@var{$element} is undefined for the special elements (about, overview, 
+table of contents, footnotes).
+Otherwise it is a hash reference with the following interesting keys (there
 are much more keys):
 @table @code
 @item texi
@@ -1877,9 +1881,12 @@ The element text.
 @item name
 The element text without section number.
 @end table
-@var{$is_top} is true if the element is considered as the top element.
+@var{$type} is empty for normal elements. 
+For the top element it is @samp{top}, for the table of contents it 
+is @samp{toc}, for the overview it is @samp{stoc}, for the
+footnotes it is @samp{foot} and for about is @samp{about}.
 @var{$docu_name} is the basename of the texinfo manual.
-The result is the element file name.
+The result is the element or special element file name.
 @end deftypefn
 
 @c --------------------------------------------------------
