@@ -1,3 +1,19 @@
+2005-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl,texi2html.init: don't handle quotation second arg
+	as quotation don't have a second arg.
+	* Tests/formatting/quotation.texi: add tests with ,
+	* doc/texi2html.texi: update
+
+2005-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: set the file name to the default file name if it 
+	is undefined after the possible call to element_file_name. 
+	Set the type to "top" for the top element.
+	Never add an extension to TOC_FILE and TOP_FILE.
+	* examples/book.init: update
+	* doc/texi2html.texi: update
+
 2005-08-03  Derek Price  <derek@ximbiot.com>
 
 	* examples/mediawiki.init: Override use of <samp> with <code> since

@@ -2900,15 +2900,31 @@ The formatting of @code{@@quotation} is controlled by two function references.
 The first one is usefull in case the @code{@@quotation} has an argument, as
 it allows to prepend a string to the quotation text:
 
+@deftypefn {Function Reference} $prepended_string quotation_prepend_text $text
+@var{$text} is the argument of the quotation with @@-commands not 
+interpreted. This function
+can return a string which will be prepended to the quotation text.
+@end deftypefn
+
+@ignore
 @deftypefn {Function Reference} $prepended_string quotation_prepend_text $style $text
 @var{$style} is the first argument of the @code{@@quotation} if there are
 two arguments. @var{$text} is the second argument or the first if there is
 one argument. There are still @@-commands in these strings. This function
 can return a string which will be prepended to the quotation text.
 @end deftypefn
+@end ignore
 
 The whole quotation is formatted by:
 
+@deftypefn {Function Reference} $quotation quotation $quotation_text $argument_text $argument_text_texi
+@var{$quotation_text} is the quotation text, formatted, with the text 
+prepended by the function above. @var{$argument_text} is the argument 
+of the @code{@@quotation}, formatted. @var{$argument_text_texi} is the argument
+of the @code{@@quotation}, unformatted.
+@end deftypefn
+
+@ignore
 @deftypefn {Function Reference} $quotation quotation $quotation_text $argument_text $argument_style_texi $argument_style_id
 @var{$quotation_text} is the quotation text, formatted, with the text 
 prepended by the function above. @var{$argument_text} is the second argument 
@@ -2918,7 +2934,7 @@ The other arguments are defiend if there are two arguments for the
 @@-commands, and  @var{$argument_style_id} is this argument transformed in 
 an identifier which can be used as an @acronym{XML} identifier.
 @end deftypefn
-
+@end ignore
 
 @c --------------------------------------------------------
 @node Menus

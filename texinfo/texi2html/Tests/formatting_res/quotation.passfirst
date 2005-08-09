@@ -40,4 +40,12 @@ quotation.texi(,40) @quotation @@ at the end of line @
 quotation.texi(,41) A @@ at the end of the @@quotation line.
 quotation.texi(,42) @end quotation
 quotation.texi(,43) 
-quotation.texi(,44) @bye
+quotation.texi(,44) @quotation something, other thing
+quotation.texi(,45) something, other thing
+quotation.texi(,46) @end quotation
+quotation.texi(,47) 
+quotation.texi(,48) @quotation Note, the note
+quotation.texi(,49) Note, the note
+quotation.texi(,50) @end quotation
+quotation.texi(,51) 
+quotation.texi(,52) @bye

@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.141 2005-08-08 20:46:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.142 2005-08-09 06:04:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -7652,7 +7652,8 @@ sub end_format($$$$$)
     elsif ($format eq 'quotation')
     {
         my $quotation_args = pop @{$state->{'quotation_stack'}};
-        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'style_texi'}, $quotation_args->{'style_id'}));
+        #add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'style_texi'}, $quotation_args->{'style_id'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
     }
     elsif ($format_type{$format} eq 'paragraph_style')
     {
@@ -8087,37 +8088,41 @@ sub do_float_line($$$$$)
     return '';
 }
 
+# FIXME pat: someone (I believe myself) added a first argument to 
+# a quotation, namely a style. Don't know what it is. 
 sub do_quotation_line($$$$$)
 {
     my $command = shift;
     my $args = shift;
     my @args = @$args;
-    my $style_texi = shift @args;
+#    my $style_texi = shift @args;
     my $text_texi = shift @args;
     my $style_stack = shift;
     my $state = shift;
     my $line_nr = shift;
     my $text;
 
-    $style_texi = undef if (defined($style_texi) and $style_texi=~/^\s*$/);
+#    $style_texi = undef if (defined($style_texi) and $style_texi=~/^\s*$/);
     $text_texi = undef if (defined($text_texi) and $text_texi=~/^\s*$/);
-    if (defined($style_texi) and !defined($text_texi))
-    {
-         $text_texi = $style_texi;
-         $style_texi = undef;
-    }
+#    if (defined($style_texi) and !defined($text_texi))
+#    {
+#         $text_texi = $style_texi;
+#         $style_texi = undef;
+#    }
     if (defined($text_texi))
     {
          $text = substitute_line($text_texi, duplicate_state($state));
          $text =~ s/\s*$//;
     }
-    my $quotation_args = { 'style_texi' => $style_texi, 'text' => $text, 'text_texi' => $text_texi };
-    if (defined($style_texi))
-    {
-         $quotation_args->{'style_id'} = cross_manual_line(normalize_space($style_texi));
-    }
+#    my $quotation_args = { 'style_texi' => $style_texi, 'text' => $text, 'text_texi' => $text_texi };
+    my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
+#    if (defined($style_texi))
+#    {
+#         $quotation_args->{'style_id'} = cross_manual_line(normalize_space($style_texi));
+#    }
     push @{$state->{'quotation_stack'}}, $quotation_args;
-    $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($style_texi, $text_texi);
+    #$state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($style_texi, $text_texi);
+    $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($text_texi);
     return '';
 }
 
@@ -10549,7 +10554,8 @@ sub scan_line($$$$;$)
                     }
                     elsif ($macro eq 'quotation')
                     {
-                         open_cmd_line($stack, $state, ['keep','keep'], \&do_quotation_line);
+                         #open_cmd_line($stack, $state, ['keep','keep'], \&do_quotation_line);
+                         open_cmd_line($stack, $state, ['keep'], \&do_quotation_line);
                     }
                     #print STDERR "Begin cmd_line\n";
                     #dump_stack($text, $stack, $state);

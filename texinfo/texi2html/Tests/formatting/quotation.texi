@@ -41,4 +41,12 @@ The something @'e @TeX{} is here.
 A @@ at the end of the @@quotation line.
 @end quotation
 
+@quotation something, other thing
+something, other thing
+@end quotation
+
+@quotation Note, the note
+Note, the note
+@end quotation
+
 @bye

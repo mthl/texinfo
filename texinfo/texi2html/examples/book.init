@@ -141,7 +141,7 @@ sub book_element_file_name($$$)
     {
         return $previous_file_name;
     }
-    if ($is_top)
+    if ($type)
     {
         $previous_file_name = "${prefix}_top.html";
     }

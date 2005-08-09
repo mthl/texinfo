@@ -27,6 +27,8 @@ This file records noteworthy changes.
 * When configure detects that no Data::Dumper is present, the build scripts
   will simply copy the files instead of breaking.
 
+* remove handling of quotation second arg, quotation has only one arg.
+
 * FOR DEVELOPERS
   --------------
 

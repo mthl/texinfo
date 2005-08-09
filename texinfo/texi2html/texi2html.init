@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.84 2005-03-21 20:36:59 pertusus Exp $
+# $Id: texi2html.init,v 1.85 2005-08-09 06:04:58 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4120,20 +4120,21 @@ sub t2h_default_acronym_like($$$$$$)
     }
 }
 
-sub t2h_default_quotation_prepend_text($$)
+sub t2h_default_quotation_prepend_text($)
 {
-    my $style = shift;
+#    my $style = shift;
     my $text = shift;
     return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1}) if (defined($text));
     return undef;
 }
 
-sub t2h_default_quotation($$$$)
+sub t2h_default_quotation($$$)
 {
     my $text = shift;
     my $argument_text = shift;
-    my $argument_style_texi = shift;
-    my $argument_style_id = shift;
+    my $argument_text_texi = shift;
+#    my $argument_style_texi = shift;
+#    my $argument_style_id = shift;
 #    if (defined($argument_text))
 #    {
 #         return '<blockquote>' . &$I('%{style}:%{quotation}',
