@@ -1,6 +1,6 @@
-This is the README file for the GNU texi2html distribution.
+This is the README file for the texi2html distribution.
 The primary distribution point is
-http://texi2html.cvshome.org/servlets/ProjectDownloadList
+http://savannah.nongnu.org/download/texi2html/
 
 Installation
 ============
@@ -13,7 +13,7 @@ Installation notes specific to Texi2html:
   on your system to run 'texi2html'. To play nice with encodings you 
   need the Encode and Unicode::Normalize modules. It is likely that an
   older perl 5 version also works if File::Spec is present.
-* To generate Makefile.in etc., run `./autogen.sh'
+* To generate Makefile.in etc., run `./autogen.sh' or autoreconf
 
 Getting Started with texi2html
 ==============================
@@ -33,7 +33,7 @@ sheets, etc), split documents at various levels and use 'latex2html' to
 convert @tex sections.
 
 'texi2html' should reasonably convert all Texinfo 4.8 constructs. If
-not, please send a bug report to 'dev@texi2html.cvshome.org'.
+not, please send a bug report to 'texi2html-bug@nongnu.org'.
 
 To create HTML of texinfo documents
 ===================================
@@ -89,24 +89,23 @@ up-to-date) texi2html man page for an overview of texi2html's synopsis.
 More information
 ================
 
-Texi2html's home page can be found at http://texi2html.cvshome.org
+Texi2html's home page can be found at http://www.nongnu.org/texi2html/
+The home for development is at savannah at
+http://savannah.nongnu.org/projects/texi2html
 
 The newest version of Texi2html can be obtained from
-http://texi2html.cvshome.org/servlets/ProjectDownloadList
+http://savannah.nongnu.org/download/texi2html/
 or, via anonymous cvs (see
-http://texi2html.cvshome.org/servlets/ProjectSource for instructions).
+http://savannah.nongnu.org/cvs/?group=texi2html for instructions).
 
-Send email to users@texi2html.cvshome.org for enhancement suggestions, 
+Send email to texi2html@nongnu.org for enhancement suggestions, 
 authoring questions and general discussion.
 
-Send email to dev@texi2html.cvshome.org for bug reports, patches, 
+Send email to texi2html-bug@nongnu.org for bug reports, patches, 
 discussions about code.
 
 To subscribe to these mailinglists, visit
-  http://texi2html.cvshome.org/servlets/ProjectMailingListList
-or send mail to users-subscribe@texi2html.cvshome.org for 
-users@texi2html.cvshome.org, or to dev-subscribe@texi2html.cvshome.org 
-for dev@texi2html.cvshome.org.
+  http://savannah.nongnu.org/mail/?group=texi2html
 There are no corresponding newsgroups. 
 
 Files

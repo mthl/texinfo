@@ -5,13 +5,16 @@ Epoch: 0
 License: GPL
 Group: Applications/Text
 Summary: A highly customizable texinfo to HTML and other formats translator
-Source0: %{name}-%{version}.tar.bz2
-#Source: http://texi2html.cvshome.org/servlets/ProjectDownloadList
-URL: http://texi2html.cvshome.org/
+Source: http://savannah.nongnu.org/download/texi2html/%{name}-%{version}.tar.gz
+URL: http://www.nongnu.org/texi2html/
 
 Requires: perl >= 5.004
-Prefix: %{_prefix}
+Requires(post): /sbin/install-info
+Requires(preun): /sbin/install-info
+# uncomment this if you want to build a relocatable package
+#Prefix: %{_prefix}
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
 
 %description
 The basic purpose of texi2html is to convert Texinfo documents into HTML, 
@@ -38,17 +41,16 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir 2>/dev/null || :
+/sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir || :
 
 %preun
 if [ $1 = 0 ]; then
-  /sbin/install-info --delete %{_infodir}/%{name}.info \
-    %{_infodir}/dir 2>/dev/null || :
+  /sbin/install-info --delete %{_infodir}/%{name}.info %{_infodir}/dir || :
 fi
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS NEWS README ChangeLog TODO %{name}.init
+%doc AUTHORS NEWS README ChangeLog %{name}.init
 %{_bindir}/%{name}
 %{_datadir}/texinfo/html/%{name}.html
 %{_mandir}/man*/%{name}*

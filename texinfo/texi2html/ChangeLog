@@ -1,5 +1,10 @@
 2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl,README,configure.ac,Tests/*_res/,doc: 
+	refer to the web pages and mailing lists at savannah/nongnu.org.
+
+2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: remove section_next as it is not used. Use
 	next when determining what is the following node for a
 	section using up elements. Avoid infinite loops. 

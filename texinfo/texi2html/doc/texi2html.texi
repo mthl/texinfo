@@ -196,7 +196,7 @@ Texinfo (@pxref{Top,,Texinfo,Texinfo}) into @acronym{HTML}.
 @end ifinfo
 
 Please send bug reports concerning this manual to the Texi2HTML developement
-list @email{dev@@texi2html.cvshome.org}. Please state the exact
+list @email{texi2html-bug@@nongnu.org}. Please state the exact
 version of the manual which contains the bug, as given above.
 
 @ifinfo
@@ -324,7 +324,7 @@ provided with the distribution.
 
 @command{texi2html} should reasonably convert all Texinfo
 4.8 constructs.  If you find it does not, please send a bug report to the
-@email{users@@texi2html.cvshome.org} email list.
+@email{texi2html-bug@@nongnu.org} email list.
 
 @c ========================================================
 @node Obtaining texi2html
@@ -334,7 +334,8 @@ provided with the distribution.
 @cindex source code for @command{texi2html}, downloading
 
 The latest version of the source code for @command{texi2html} should be
-available from @uref{http://texi2html.cvshome.org,texi2html.cvshome.org}.
+available from
+@uref{http://www.nongnu.org/texi2html/,www.nongnu.org/texi2html/}.
 @command{texi2html} is also available with 
 @uref{http://www.tug.org/teTeX/,teTeX}.
 

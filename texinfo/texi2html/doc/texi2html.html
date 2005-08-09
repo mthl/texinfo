@@ -31,14 +31,14 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
 -->
-<!-- Created on July, 25 2005 by texi2html @PACKAGE_VERSION@ -->
+<!-- Created on August, 9 2005 by texi2html @PACKAGE_VERSION@ -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
@@ -130,12 +130,12 @@ by the Free Software Foundation.
 <a name="SEC_Top"></a>
 
 
-<p>This manual, last updated 12 July 2005, describes version 1.77
+<p>This manual, last updated 9 August 2005, describes version 1.77
 of the <code>texi2html</code> Perl script which converts
 <a href="http://www.texinfo.org">Texinfo</a> into <a href="http://w3c.org">HTML</a>.
 </p>
 <p>Please send bug reports concerning this manual to the Texi2HTML developement
-list <a href="mailto:dev@texi2html.cvshome.org">dev@texi2html.cvshome.org</a>. Please state the exact
+list <a href="mailto:texi2html-bug@nongnu.org">texi2html-bug@nongnu.org</a>. Please state the exact
 version of the manual which contains the bug, as given above.
 </p>
 
@@ -286,7 +286,7 @@ provided with the distribution.
 </p>
 <p><code>texi2html</code> should reasonably convert all Texinfo
 4.8 constructs.  If you find it does not, please send a bug report to the
-<a href="mailto:users@texi2html.cvshome.org">users@texi2html.cvshome.org</a> email list.
+<a href="mailto:texi2html-bug@nongnu.org">texi2html-bug@nongnu.org</a> email list.
 </p>
 <hr size="6">
 <a name="Obtaining-texi2html"></a>
@@ -310,7 +310,8 @@ provided with the distribution.
 <h1 class="chapter"> 2. Obtaining <code>texi2html</code> </h1>
 
 <p>The latest version of the source code for <code>texi2html</code> should be
-available from <a href="http://texi2html.cvshome.org">texi2html.cvshome.org</a>.
+available from
+<a href="http://www.nongnu.org/texi2html/">www.nongnu.org/texi2html/</a>.
 <code>texi2html</code> is also available with 
 <a href="http://www.tug.org/teTeX/">teTeX</a>.
 </p>
@@ -753,11 +754,12 @@ to the manual name.
 manual name. The file name is constructed using the manual name as basename.
 An underscore followed by a number is appended
 to the basename for each files corresponding with sectioning elements, with the
-exception of the top element. For the top element there nothing appended.
+exception of the top element. For the top element there is nothing appended.
 The files containing special elements pages
 have an underscore and a 3 letter code corresponding to their content
 (<samp>`toc'</samp> for table of contents, <samp>`abt'</samp> for about, <samp>`ovr'</samp> for
-overview) appended.  Lastly, an <samp>`.html'</samp> file extension is appended.
+overview, <samp>`fot'</samp> for footnotes if they are separated) appended.  
+Lastly, an <samp>`.html'</samp> file extension is appended.
 </p>
 <p>Thus, if the texinfo file <tt>`afile.texi'</tt> is processed and split at chapters
 into 3 files, the generated files (in directory <tt>`afile'</tt>) will be:
@@ -2900,12 +2902,15 @@ a redirection to the node <var>$redirection_node_file</var>.
 </p></dd></dl>
 
 <p>The other is usefull if <code>$NODE_FILES</code> isn't true. It is used to 
-customize the file associated with each element.
+customize the file names associated with each element, and the 
+name of the file associated with the special elements.
 </p><dl>
-<dt><u>Function Reference:</u> $file <b>element_file_name</b><i> $element $is_top $docu_name</i>
+<dt><u>Function Reference:</u> $file <b>element_file_name</b><i> $element $type $docu_name</i>
 <a name="IDX180"></a>
 </dt>
-<dd><p><var>$element</var> is a hash reference with the following interesting keys (there
+<dd><p><var>$element</var> is undefined for the special elements (about, overview, 
+table of contents, footnotes).
+Otherwise it is a hash reference with the following interesting keys (there
 are much more keys):
 </p><dl compact="compact">
 <dt> <code>texi</code></dt>
@@ -2925,9 +2930,12 @@ document is split (see section <a href="#SEC10">Specifying where to split the ge
 <dd><p>The element text without section number.
 </p></dd>
 </dl>
-<p><var>$is_top</var> is true if the element is considered as the top element.
+<p><var>$type</var> is empty for normal elements. 
+For the top element it is <samp>`top'</samp>, for the table of contents it 
+is <samp>`toc'</samp>, for the overview it is <samp>`stoc'</samp>, for the
+footnotes it is <samp>`foot'</samp> and for about is <samp>`about'</samp>.
 <var>$docu_name</var> is the basename of the texinfo manual.
-The result is the element file name.
+The result is the element or special element file name.
 </p></dd></dl>
 
 <hr size="6">
@@ -4545,28 +4553,25 @@ The first one is usefull in case the <code>@quotation</code> has an argument, as
 it allows to prepend a string to the quotation text:
 </p>
 <dl>
-<dt><u>Function Reference:</u> $prepended_string <b>quotation_prepend_text</b><i> $style $text</i>
+<dt><u>Function Reference:</u> $prepended_string <b>quotation_prepend_text</b><i> $text</i>
 <a name="IDX241"></a>
 </dt>
-<dd><p><var>$style</var> is the first argument of the <code>@quotation</code> if there are
-two arguments. <var>$text</var> is the second argument or the first if there is
-one argument. There are still @-commands in these strings. This function
+<dd><p><var>$text</var> is the argument of the quotation with @-commands not 
+interpreted. This function
 can return a string which will be prepended to the quotation text.
 </p></dd></dl>
+
 
 <p>The whole quotation is formatted by:
 </p>
 <dl>
-<dt><u>Function Reference:</u> $quotation <b>quotation</b><i> $quotation_text $argument_text $argument_style_texi $argument_style_id</i>
+<dt><u>Function Reference:</u> $quotation <b>quotation</b><i> $quotation_text $argument_text $argument_text_texi</i>
 <a name="IDX242"></a>
 </dt>
 <dd><p><var>$quotation_text</var> is the quotation text, formatted, with the text 
-prepended by the function above. <var>$argument_text</var> is the second argument 
-of the <code>@quotation</code> or the first if there is one argument, formatted.
-The other arguments are defiend if there are two arguments for the 
-<code>@quotation</code>, <var>$argument_style_texi</var> is this argument, with 
-@-commands, and  <var>$argument_style_id</var> is this argument transformed in 
-an identifier which can be used as an <acronym>XML</acronym> identifier.
+prepended by the function above. <var>$argument_text</var> is the argument 
+of the <code>@quotation</code>, formatted. <var>$argument_text_texi</var> is the argument
+of the <code>@quotation</code>, unformatted.
 </p></dd></dl>
 
 
@@ -6193,7 +6198,7 @@ is added to <tt>`Makefile.am'</tt>.
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Derek Price</em> on <em>July, 25 2005</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August, 9 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -6295,7 +6300,7 @@ is added to <tt>`Makefile.am'</tt>.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Derek Price</em> on <em>July, 25 2005</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August, 9 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
  </font>
  <br>
 

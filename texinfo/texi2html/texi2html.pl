@@ -62,10 +62,10 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.143 2005-08-09 10:22:32 pertusus Exp $
+# $Id: texi2html.pl,v 1.144 2005-08-09 17:19:21 pertusus Exp $
 
 # Homepage:
-my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
+my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
 
 # Authors (appears in comments):
 my $T2H_AUTHORS = <<EOT;
@@ -73,8 +73,8 @@ Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
             Olaf Bachmann <obachman\@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev\@texi2html.cvshome.org>
-Send bugs and suggestions to <users\@texi2html.cvshome.org>
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug\@nongnu.org>
 EOT
 
 # Version: set in configure.in
@@ -2233,7 +2233,7 @@ $T2H_OPTIONS -> {'help'} =
  type => ':i', 
  default => '',
  linkage => sub {$options->helpOptions($_[1]); 
-    print "\nSend bugs and suggestions to <users\@texi2html.cvshome.org>\n";
+    print "\nSend bugs and suggestions to <texi2html-bug\@nongnu.org>\n";
     exit (0);},
  verbose => "print help and exit"
 };
