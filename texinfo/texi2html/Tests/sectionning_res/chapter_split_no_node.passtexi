@@ -19,9 +19,15 @@ no_node.texi(,19) @chapter Chapter
 no_node.texi(,20) 
 no_node.texi(,21) Text of chapter
 no_node.texi(,22) 
-no_node.texi(,23) @chapter Chapter 2
+no_node.texi(,23) @section Section of chapter
 no_node.texi(,24) 
-no_node.texi(,25) 
-no_node.texi(,26) Text of chapter 2
-no_node.texi(,27) 
-no_node.texi(,28) @bye
+no_node.texi(,25) @subsection subsection 1
+no_node.texi(,26) 
+no_node.texi(,27) @subsection subsection 2
+no_node.texi(,28) 
+no_node.texi(,29) @chapter Chapter 2
+no_node.texi(,30) 
+no_node.texi(,31) 
+no_node.texi(,32) Text of chapter 2
+no_node.texi(,33) 
+no_node.texi(,34) @bye

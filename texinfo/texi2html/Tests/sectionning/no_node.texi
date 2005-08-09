@@ -20,6 +20,12 @@ second node
 
 Text of chapter
 
+@section Section of chapter
+
+@subsection subsection 1
+
+@subsection subsection 2
+
 @chapter Chapter 2
 
 

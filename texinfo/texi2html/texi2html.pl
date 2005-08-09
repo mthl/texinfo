@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.142 2005-08-09 06:04:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.143 2005-08-09 10:22:32 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2853,6 +2853,7 @@ if ($progdir && ($progdir ne './'))
 my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
 foreach my $file (@texinfo_htmlxref_files)
 {
+    print STDERR "html refs config file: $file\n" if ($T2H_DEBUG);    
     open (HTMLXREF, $file);
     while (<HTMLXREF>)
     {
@@ -4349,6 +4350,7 @@ sub menu_entry_texi($$$)
 # or $novalidate);
     }
     #$node_menu_ref->{'menu_node'} = 1;
+    return if ($state->{'detailmenu'});
     if ($state->{'node_ref'})
     {
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
@@ -4359,7 +4361,6 @@ sub menu_entry_texi($$$)
         echo_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
         #warn "$WARN menu entry without previous node: $node\n" unless ($node =~ /\(.+\)/);
     }
-    return if ($state->{'detailmenu'});
     if ($state->{'prev_menu_node'})
     {
         $node_menu_ref->{'menu_prev'} = $state->{'prev_menu_node'};
@@ -4492,6 +4493,13 @@ sub rearrange_elements()
             my $prev_section = $previous_sections[$section->{'level'}];
             $section->{'section_prev'} = $prev_section;
             $prev_section->{'next'} = $section;
+            #FIXME section_next is not used while element->{'next'} is
+            # And there is also element_next...
+            # Moreover element->{'next'} may not be rightly selected when there 
+            # are lone nodes after sections, athough this may be what we want.
+            # 'section_prev' is used however, while 'prev' for section is
+            # never used. Should be clened somehow.
+            #$prev_section->{'section_next'} = $section;
             $prev_section->{'element_next'} = $section;
         }
         # find the up section
@@ -4616,6 +4624,7 @@ sub rearrange_elements()
         { # special case for the top node if it isn't associated with 
           # a section. The top node element is inserted between the 
           # $section_before_top and the $section_after_top
+            print STDERR "# Top not associated with a section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             $node_top->{'as_section'} = 1;
             $node_top->{'section_ref'} = $node_top;
             my @old_element_lists = @elements_list;
@@ -4746,10 +4755,12 @@ sub rearrange_elements()
         elsif ($node->{'automatic_directions'} and $node->{'section_ref'} and defined($node->{'section_ref'}->{'up'}))
         {
             $node->{'up'} = get_node($node->{'section_ref'}->{'up'});
+            print STDERR "# Deducing from section node_up $node->{'up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         }
         elsif ($node->{'menu_up'})
         {
             $node->{'up'} = $node->{'menu_up'};
+            print STDERR "# Deducing from menu node_up $node->{'menu_up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         }
 
         if ($node->{'up'} and !$node->{'up'}->{'external_node'})
@@ -4890,8 +4901,12 @@ sub rearrange_elements()
     print STDERR "# element first: $element_first->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
     print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
-    # If there is no @top section no top node the first node is the top element
+    # element top is the element with @top.
+    # If the top node is associated with a section it is the top_element 
+    #$element_top = $node_top->{'with_section'} if ((!defined($element_top)) and $node_top->{'with_section'}); 
+    # otherwise element top may be the top node 
     $element_top = $node_top if (!defined($element_top) and defined($node_top));
+    # If there is no @top section no top node the first node is the top element
     $element_top = $element_first unless (defined($element_top));
     $element_top->{'top'} = 1 if ($element_top->{'node'});
     $element_last = $elements_list[-1];
@@ -4903,6 +4918,8 @@ sub rearrange_elements()
     foreach my $element (@elements_list)
     {
         # complete the up for toplevel elements
+        print STDERR "# fwd and back for $element->{'texi'}\n" if ($T2H_DEBUG &
+$DEBUG_ELEMENTS);
         if ($element->{'toplevel'} and !defined($element->{'up'}) and $element ne $element_top)
         {
             $element->{'up'} = $element_top;
@@ -4961,11 +4978,14 @@ sub rearrange_elements()
                 my $up = $element;
                 while ($up->{'up'} and !$element->{'following'})
                 {
+                    print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     $up = $up->{'up'};
-                    if ($up->{'next_section'})
+                    if ($up->{'next'})
                     {
-                        $element->{'following'} = get_node ($up->{'next_section'});
+                        $element->{'following'} = get_node ($up->{'next'});
                     }
+                    # avoid infinite loop if the top is up for itself
+                    last if ($up->{'toplevel'} or $up->{'top'});
                 }
             }
         }
@@ -5450,6 +5470,7 @@ sub rearrange_elements()
                          &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
                 }
             }
+            print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
             $prev_nr = $doc_nr;
             foreach my $place(@{$element->{'place'}})
@@ -5501,13 +5522,13 @@ sub rearrange_elements()
     foreach my $file (keys(%files))
     {
         last unless ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        print STDERR "$file: $files{$file}->{'counter'}\n";
+        print STDERR "$file: counter $files{$file}->{'counter'}\n";
     }
     foreach my $element ((@elements_list, $footnote_element))
     {
         last unless ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        my $is_toplevel = 'not top';
-        $is_toplevel = 'top' if ($element->{'toplevel'});
+        my $is_toplevel = 'not toplevel';
+        $is_toplevel = 'toplevel' if ($element->{'toplevel'});
         print STDERR "$element ";
         if ($element->{'index_page'})
         {
