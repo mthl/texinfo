@@ -1,3 +1,7 @@
+2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* Tests/floats_res/*: Add test results for floats with @-commands.
+
 2005-08-08  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl,texi2html.init: don't handle quotation second arg
