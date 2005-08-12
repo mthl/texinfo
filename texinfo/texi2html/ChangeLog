@@ -1,3 +1,8 @@
+2005-08-12  Derek Price  <derek@ximbiot.com>
+
+	* examples/mediawiki.init: Really override use of <samp> with <code>,
+	correcting commit from the 3rd.
+
 2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl,README,configure.ac,Tests/*_res/,doc: 
