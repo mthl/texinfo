@@ -1,3 +1,12 @@
+2005-08-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\writetocentry, ...): restore calls to
+	\turnoffactive after \atdummies removed in the July 1 change (v.193).
+	\turnoffactive and \normalturnoffactive are not the same -- we need
+	actual backslash characters in the pdf destinations and .aux and
+	index files, not expansions.  (I'm not sure we ever need
+	\normalturnoffactive, actually.)
+
 2005-08-12  Karl Berry  <karl@gnu.org>
 
 	* doc/info.texi: merge changes from Emacs, by Juri.
