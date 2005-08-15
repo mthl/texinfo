@@ -1,3 +1,27 @@
+2005-08-15  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\normalturnoffactive): Now contains the body of
+	\turnoffactive.  Don't explicitly restore the original value of active \
+	---just let it be.
+	(\turnoffactive): Can now be redefined as \normalturnoffactive
+	  \otherbackslash.
+	(\atdummies): All calls were followed by \turnoffactive; remove that
+	  and add \otherbackslash to the definition, since it already calls
+	  \normalturnoffactive indirectly.
+	(\xrefX): One of the calls of \refx missed the second parameter;
+	  fix that.
+	(\commondummiesnofonts): No need to make ~ other for the definition;
+	  it contains only \~ now.
+	(\backChar, \plusChar, \underChar): Nuke.
+	(\colonChar, \commaChar, \dotChar, \exclamChar, \questChar, \semiChar):
+	  Move just before the definition of ...
+	(\plainfrenchspacing): ... since it's the only place where it's used.
+	(\activebackslash): Remove both definitions; the first one was shadowed
+	  by the second one; and the second one can easily be eliminated; it
+	  was used only on one place.
+	(\backslashlparen): No need for this; \realbackslash( is enough.
+	(\backslashrparen): Likewise.
+
 2005-08-14  Per Bothner  <per@bothner.com>
 
 	* makeinfo/index.c (cm_printindex): Don't defer index if docbook,
@@ -13,7 +37,7 @@
 2005-08-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\writetocentry, ...): restore calls to
-	\turnoffactive after \atdummies removed in the July 1 change (v.193).
+	\turnoffactive after \atdummies removed in the July 1 change (v.194).
 	\turnoffactive and \normalturnoffactive are not the same -- we need
 	actual backslash characters in the pdf destinations and .aux and
 	index files, not expansions.  (I'm not sure we ever need
