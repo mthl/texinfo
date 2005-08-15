@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.11 2005-05-15 00:00:07 karl Exp $
+   $Id: insertion.h,v 1.12 2005-08-15 13:05:24 karl Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -34,6 +34,8 @@ enum insertion_type
   rawxml, smalldisplay, smallexample, smallformat, smalllisp, verbatim,
   table, tex, vtable, titlepage, bad_type
 };
+
+extern const char default_item_function[];
 
 typedef struct istack_elt
 {

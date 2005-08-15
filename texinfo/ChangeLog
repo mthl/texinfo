@@ -1,3 +1,15 @@
+2005-08-14  Per Bothner  <per@bothner.com>
+
+	* makeinfo/index.c (cm_printindex): Don't defer index if docbook,
+	since we don't need it and it prevents output to a pipe.
+
+	* makeinfo/insertion.h (default_item_function): New declaration.
+	* makeinfo/insertion.c (default_item_function): New variable.
+	(begin_insertion): Use default_item_function for @bullet default.
+	(pop_insertion): Check if item_function is default_item_function.
+	* makeinfo/xml.c (xml_begin_table): Don't emit mark attribute
+	if the item_function was implied.
+
 2005-08-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\writetocentry, ...): restore calls to
@@ -479,7 +491,7 @@
 
 	* makeinfo/xml.c (docbook_element_list): Add two missing entries.
 
-	* makeinfo/xml.c (xml_begin_document): Check for mipatch between
+	* makeinfo/xml.c (xml_begin_document): Check for mismatch between
 	enum xml_element and texinfoml_element_list/docbook_element_list.
 
 	bug-texinfo-mail, 05 Feb 2005 00:13:44 -0800.

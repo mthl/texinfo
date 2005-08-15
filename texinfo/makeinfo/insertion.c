@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.59 2005-05-15 00:00:07 karl Exp $
+   $Id: insertion.c,v 1.60 2005-08-15 13:05:24 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free
    Software Foundation, Inc.
@@ -79,6 +79,8 @@ static int raw_output_block = 0;
 /* Non-zero if a <dl> element has a <dt> element in it.  We use this when
    deciding whether to insert a <br> or not.  */
 static int html_deflist_has_term = 0;
+
+const char default_item_function[] = { "@bullet" };
 
 void
 init_insertion_stack (void)
@@ -209,7 +211,10 @@ pop_insertion (void)
   inhibit_paragraph_indentation = temp->inhibited;
   filling_enabled = temp->filling_enabled;
   indented_fill = temp->indented_fill;
-  free_and_clear (&(temp->item_function));
+  if (temp->item_function == default_item_function)
+    temp->item_function = NULL;
+  else
+    free_and_clear (&(temp->item_function));
   free_and_clear (&(temp->filename));
   insertion_stack = insertion_stack->next;
   free (temp);
@@ -622,7 +627,7 @@ begin_insertion (enum insertion_type type)
           if (!(*insertion_stack->item_function))
             {
               free (insertion_stack->item_function);
-              insertion_stack->item_function = xstrdup ("@bullet");
+              insertion_stack->item_function = default_item_function;
             }
         }
 

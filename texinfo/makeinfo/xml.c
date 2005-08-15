@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.61 2005-08-06 16:04:37 karl Exp $
+   $Id: xml.c,v 1.62 2005-08-15 13:05:25 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -1424,11 +1424,17 @@ xml_begin_table (int type, char *item_function)
         }
       break;
     case itemize:
+      if (!docbook || item_function==default_item_function)
+	xml_insert_element (ITEMIZE, START);
+      else
+	xml_insert_element_with_attribute (ITEMIZE, START,
+					   "mark=\"%s\"",
+					   (*item_function == COMMAND_PREFIX) ?
+					   &item_function[1] : item_function);
+      xml_table_level ++;
+      xml_in_item[xml_table_level] = 0;
       if (!docbook)
         {
-          xml_insert_element (ITEMIZE, START);
-          xml_table_level ++;
-          xml_in_item[xml_table_level] = 0;
           xml_insert_element (ITEMFUNCTION, START);
           if (*item_function == COMMAND_PREFIX
               && item_function[strlen (item_function) - 1] != '}'
@@ -1437,15 +1443,6 @@ xml_begin_table (int type, char *item_function)
           else
             execute_string ("%s", item_function);
           xml_insert_element (ITEMFUNCTION, END);
-        }
-      else
-        {
-          xml_insert_element_with_attribute (ITEMIZE, START,
-                                             "mark=\"%s\"",
-                                             (*item_function == COMMAND_PREFIX) ?
-                                             &item_function[1] : item_function);
-          xml_table_level ++;
-          xml_in_item[xml_table_level] = 0;
         }
       break;
     }

@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.19 2005-08-06 16:04:37 karl Exp $
+   $Id: index.c,v 1.20 2005-08-15 13:05:24 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -711,10 +711,11 @@ cm_printindex (void)
   if (!handling_delayed_writes)
     line_number--;
 
-  if (xml && !docbook)
+  if (xml)
     {
       xml_insert_element (PRINTINDEX, START);
-      insert_string (index_name);
+      if (! docbook)
+	insert_string (index_name);
       xml_insert_element (PRINTINDEX, END);
     }
   else if (!handling_delayed_writes)
@@ -723,9 +724,6 @@ cm_printindex (void)
       char *index_command = xmalloc (command_len + 1);
 
       close_paragraph ();
-      if (docbook)
-        xml_begin_index ();
-
       sprintf (index_command, "@%s %s", command, index_name);
       register_delayed_write (index_command);
       free (index_command);
