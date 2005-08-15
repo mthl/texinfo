@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.58 2005-05-28 22:33:51 karl Exp $
+$Id: dir-example,v 1.59 2005-08-15 11:45:03 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -419,7 +419,7 @@ Individual utilities
 * sdiff: (diff)Invoking sdiff.                  Merge 2 files side-by-side.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (coreutils)seq invocation.               Print numeric sequences
-* shar: (sharutils)shar invocation.             Create shell archive.
+* shar: (sharutils)shar invocation.             Make a shell archive.
 * shred: (coreutils)shred invocation.           Remove files more securely.
 * sieve: (mailutils)sieve.                      Mail filtering utility.
 * size: (binutils)size.                         List object file section sizes.
@@ -457,9 +457,11 @@ Individual utilities
 * unify: (wdiff)unify invocation.               Diff format converter.
 * uniq: (coreutils)uniq invocation.             Uniquify files.
 * unlink: (coreutils)unlink invocation.         Removal via unlink(2).
-* unshar: (sharutils)unshar invocation.         Extract from shell archive.
+* unshar: (sharutils)unshar invocation.         Explode a shell archive.
 * updatedb: (find)Invoking updatedb.            Building the locate database.
 * users: (coreutils)users invocation.           Print current user names.
+* uudecode: (sharutils)uudecode invocation.     Restore file from 7-bits.
+* uuencode: (sharutils)uuencode invocation.     Force binary file to 7-bits.
 * vdir: (coreutils)vdir invocation.             List directories verbosely.
 * vftovp: (web2c)VFtoVP invocation.             Virtual font -> virtual pl.
 * view-pr: (gnats)Invoking view-pr.             Showing bug reports.
