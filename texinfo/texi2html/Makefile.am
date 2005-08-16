@@ -99,6 +99,9 @@ dist_images_DATA = images/a_begin.png \
 	images/blue_uup.png \
 	images/contents_motif.png \
 	images/COPYING \
+	images/COPYING.Attribution-ShareAlike \
+	images/GPL \
+	images/README \
 	images/index_motif.png \
 	images/Mybg.png \
 	images/next_motif.png \

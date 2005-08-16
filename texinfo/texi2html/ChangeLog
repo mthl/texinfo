@@ -1,3 +1,11 @@
+2005-08-16  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* images/COPYING: replace with the Singular COPYING. Move to ...
+	* images/COPYING.Attribution-ShareAlike: ... add
+	* images/README,images/GPL: add these files to have a double licencing
+	for the images.
+	* Makefile.am: distribute and install the added files.
+
 2005-08-12  Derek Price  <derek@ximbiot.com>
 
 	* examples/mediawiki.init: Really override use of <samp> with <code>,
