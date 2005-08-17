@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.28 2005-04-12 13:12:23 kasal Exp $
+# $Id: Makefile.am,v 1.29 2005-08-17 12:43:06 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -26,7 +26,8 @@ MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
 ## INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-	    txi-it.tex txi-nl.tex txi-no.tex txi-pl.tex txi-pt.tex txi-tr.tex
+	    txi-it.tex txi-nl.tex txi-no.tex txi-pl.tex txi-pt.tex \
+	    txi-sr.tex txi-tr.tex 
 
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex pdfcolor.tex texinfo.tex \

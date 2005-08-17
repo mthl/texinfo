@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.115 2005-06-09 22:07:13 karl Exp $
+$Id: NEWS,v 1.116 2005-08-17 12:43:07 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -25,10 +25,13 @@ convenience, here's a url to one of the relevant sections:
 * Language:
   . new command @allowcodebreaks to control breaks at _ and - within @code.
   . new command @frenchspacing to control spacing after sentences.
+* makeinfo:
+  . improved Docbook output.
 * texi2dvi:
   . new mode --build=tidy which supports compilation in a separate
     directory, where intermediate files are preserved.
 * texinfo.tex:
+  . new Serbian translation file for texinfo.tex, txi-sr.tex.
   . section names with \ characters work properly in pdf outlines.
   . .toc files use @ as the escape character, instead of \.
 * info:
