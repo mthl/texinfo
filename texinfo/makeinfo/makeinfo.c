@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.82 2005-05-15 00:00:07 karl Exp $
+   $Id: makeinfo.c,v 1.83 2005-08-19 22:23:54 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -15,8 +15,8 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+   along with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
    Original author of makeinfo: Brian Fox (bfox@ai.mit.edu).  */
 
@@ -762,10 +762,13 @@ main (int argc, char **argv)
         case 'V': /* --version */
           print_version_info ();
           puts ("");
-          puts ("Copyright (C) 2004 Free Software Foundation, Inc.");
-          printf (_("There is NO warranty.  You may redistribute this software\n\
+      printf (_("\
+Copyright (C) %s Free Software Foundation, Inc.\n\
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n\
+PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n\
 under the terms of the GNU General Public License.\n\
-For more information about these matters, see the files named COPYING.\n"));
+For more information about these matters, see the file named COPYING.\n"),
+              "2005", PACKAGE);
           xexit (0);
           break;
 

@@ -1,8 +1,8 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.12 2005-05-15 00:00:08 karl Exp $
+   $Id: texindex.c,v 1.13 2005-08-19 22:23:54 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
-   2002, 2003, 2004 Free Software Foundation, Inc.
+   2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -339,10 +339,13 @@ decode_command (int argc, char **argv)
             {
               printf ("texindex (GNU %s) %s\n", PACKAGE, VERSION);
               puts ("");
-              puts ("Copyright (C) 2004 Free Software Foundation, Inc.");
-              printf (_("There is NO warranty.  You may redistribute this software\n\
+      printf (_("\
+Copyright (C) %s Free Software Foundation, Inc.\n\
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n\
+PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n\
 under the terms of the GNU General Public License.\n\
-For more information about these matters, see the files named COPYING.\n"));
+For more information about these matters, see the file named COPYING.\n"),
+              "2005", PACKAGE);
               xexit (0);
             }
           else if ((strcmp (arg, "--keep") == 0) ||

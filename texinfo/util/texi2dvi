@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.57 2005-06-24 15:25:41 karl Exp $
+# $Id: texi2dvi,v 1.58 2005-08-19 22:23:54 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,15 +32,17 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.57 $'
+rcs_revision='$Revision: 1.58 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
 
 Copyright (C) 2005 Free Software Foundation, Inc.
-There is NO warranty.  You may redistribute this software
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  You may redistribute copies of GNU texinfo
 under the terms of the GNU General Public License.
-For more information about these matters, see the files named COPYING."
+For more information about these matters, see the file named COPYING.
+"
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
 
