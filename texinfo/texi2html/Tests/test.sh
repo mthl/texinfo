@@ -175,7 +175,10 @@ test_texi macros glossary.texi
 test_texi macros imbricated_macros.texi
 test_texi macros expansion_order.texi
 test_texi macros ifclear_in_macro.texi
+test_texi macros macro_call_in_ifset.texi
 test_texi macros ifset_in_macro.texi
+test_texi macros not_ifset_text.texi
+test_texi macros bib-example.texi
 test_texi sectionning
 test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top novalidate.html -output ."
 test_texi sectionning first_section_no_node.texi "" 1
@@ -208,6 +211,7 @@ test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting simplest.texi "-css-include file.css"
+test_texi formatting commands_in_ifset.texi
 test_texi formatting nodetest.texi "-split chapter -output ."
 test_texi formatting nodetest_latin1.texi 
 test_texi formatting nodetest_utf8.texi 
@@ -234,6 +238,7 @@ test_texi formatting html_not_closed.texi "" 1
 test_texi formatting verbatim_not_closed.texi "" 1
 test_texi formatting copying_not_closed.texi "" 1
 test_texi formatting titlepage_not_closed.texi "" 1
+test_texi formatting nested_ignore.texi
 test_texi formatting test_refs.texi "-init cross_manual.init"
 test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
 test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs

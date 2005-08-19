@@ -18,7 +18,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
-<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -64,10 +64,19 @@ ul.toc {list-style: none}
 <p>The same but with oddfooting instead of comment:
 Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
 </p>
-<p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
+<p>@pagesizes @afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
 @afourpaper @afourlatex @afourwide </p>
 <p>@definfoenclose phoo,//,\\  
 //bar\\
+</p>
+<p>@definfoenclose phi,:,:  
+</p>
+<p>:bar:
+</p>
+<p><strong>very strong</strong>
+</p>
+
+<p>(strong: is it really strong? :)
 </p>
 <p>Makeinfo ignore @kbdinputstyle:
 </p>
@@ -83,9 +92,11 @@ Text line followed by a comment on the same line and another below Text line aft
 <p>Commands doesn't accept anything after a non numerical arg on the line
 and ignore things after a numerical arg
 </p>
-<p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @footnotestyle @footnotestyle </p>
-<p>@frenchspacing 
-@frenchspacing 
+<p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @exampleindent 6 @footnotestyle @footnotestyle </p>
+<p>Special arg for documentencoding. makeinfo complains, not tex
+</p>
+<p>@documentencoding  encoding name
+
 </p>
 
 <a name="SEC3"></a>

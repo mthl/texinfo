@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.85 2005-08-09 06:04:58 pertusus Exp $
+# $Id: texi2html.init,v 1.86 2005-08-19 12:14:46 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1572,6 +1572,7 @@ $simple_map_pre{'*'} = "\n";
                'ordm'         => '&ordm;',
                'comma'        => ',',
                'euro'         => '&euro;',
+               'tie'          => '&nbsp;',
              );
 
 # This map is used in preformatted environments
@@ -1621,8 +1622,8 @@ $pre_map{'enddots'} = '....';
                'oe'           => 'oe', 
                'AE'           => 'AE',
                'OE'           => 'OE',
-               'o'            =>  '/o',
-               'O'            =>  '/O',
+               'o'            => '/o',
+               'O'            => '/O',
                'ss'           => 'ss',
                'l'            => '/l',
                'L'            => '/L',
@@ -1633,6 +1634,7 @@ $pre_map{'enddots'} = '....';
                'ordm'         => 'o',
                'comma'        => ',',
                'euro'         => 'Euro',
+               'tie'          => ' ',
 );
 
 #
@@ -1696,6 +1698,7 @@ $pre_map{'enddots'} = '....';
                'ordm'         => 'o',
                'comma'        => ',',
                'euro'         => 'Euro',
+               'tie'          => ' ',
             );
 
 # taken from
@@ -1741,6 +1744,8 @@ $pre_map{'enddots'} = '....';
                'ordm'         => '00BA',
                'comma'        => '002C',
                'euro'         => '20AC',
+               'tie'          => '0020', # FIXME should be better ro replace
+                                         # with a space
              );
 
 %ascii_character_map = (
@@ -2701,6 +2706,7 @@ foreach my $key (keys(%def_map))
         'dircategory'=> {'skip' => 'line'}, # line. Position with regard 
                          # with direntry is significant
         'pagesizes' => {'skip' => 'line', 'arg' => 2}, # can have 2 args 
+                                 # or one? 200mm,150mm 11.5in
         'finalout' => {}, # no arg
         'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
                              # or a number and forbids anything else on the line
@@ -2753,7 +2759,7 @@ foreach my $key (keys(%def_map))
         # miscalleneous
         'verbatiminclude'=> {'skip' => 'line'},
         'noindent' => {'skip' => 'space'},
-        'documentencoding' => {'arg' => 1},
+        'documentencoding' => {'arg' => 1}, # makeinfo ignore the whole line
         # ???
         'filbreak' => {},
      );

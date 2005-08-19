@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.144 2005-08-09 17:19:21 pertusus Exp $
+# $Id: texi2html.pl,v 1.145 2005-08-19 12:14:46 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2082,6 +2082,14 @@ $T2H_OBSOLETE_OPTIONS -> {glossary} =
  noHelp  => 2,
 };
 
+$T2H_OBSOLETE_OPTIONS -> {check} =
+{
+ type => '!',
+ linkage => sub {exit 0;},
+ verbose => "exit without doing anything",
+ noHelp  => 2,
+};
+
 $T2H_OBSOLETE_OPTIONS -> {dump_texi} =
 {
  type => '!',
@@ -3447,6 +3455,9 @@ sub initialise_state_texi($)
     my $state = shift;
     $state->{'texi'} = 1;           # for substitute_text and close_stack: 
                                     # 1 if pass_texi/scan_texi is to be used
+    $state->{'macro_inside'} = 0 unless(defined($state->{'macro_inside'}));
+    $state->{'ifvalue_inside'} = 0 unless(defined($state->{'ifvalue_inside'}));
+    $state->{'arg_expansion'} = 0 unless(defined($state->{'arg_expansion'}));
 }
 
 my @first_lines = ();
@@ -3483,31 +3494,38 @@ sub pass_texi()
                 next;
             }
         }
-	#print STDERR "line_nr $texi_line_number->{'line_nr'} :$_";
+	#print STDERR "PASS_TEXI($texi_line_number->{'line_nr'})$_";
         my $chomped_line = $_;
         if (scan_texi ($_, \$text, \@stack, $state, $texi_line_number) and chomp($chomped_line))
         {
-        #print STDERR "scan_texi line_nr $texi_line_number->{'line_nr'}\n";
+        #print STDERR "==> new page (line_nr $texi_line_number->{'line_nr'},$texi_line_number->{'file_name'},$texi_line_number->{'macro'})\n";
             push (@lines_numbers, { 'file_name' => $texi_line_number->{'file_name'},
                   'line_nr' => $texi_line_number->{'line_nr'},
                   'macro' => $texi_line_number->{'macro'} });
         }
-        
         #dump_stack (\$text, \@stack, $state);
         if ($state->{'bye'})
         {
             #dump_stack(\$text, \@stack, $state);
             # close stack after bye
+            #print STDERR "close stack after bye\n";
             close_stack_texi_structure(\$text, \@stack, $state, $texi_line_number);
+            #dump_stack(\$text, \@stack, $state);
         }
         next if (@stack);
         $_ = $text;
         $text = '';
-        next if !defined($_);
+        if (!defined($_))
+        {# FIXME: remove the error message if it is reported too often
+            print STDERR "# \$_ undefined after scan_texi. This may be a bug, or not.\n";
+            print STDERR "# Report (with texinfo file) if you want, otherwise ignore that message.\n";
+            next unless ($state->{'bye'});
+        }
         push @lines, split_lines ($_);
         last if ($state->{'bye'});
     }
     # close stack at the end of pass texi
+    #print STDERR "close stack at the end of pass texi\n";
     close_stack_texi_structure(\$text, \@stack, $state, $texi_line_number);
     push @lines, split_lines ($text);
     print STDERR "# end of pass texi\n" if $T2H_VERBOSE;
@@ -7276,24 +7294,24 @@ sub automatic_preformatted($$)
 }
 
 # handle raw formatting, ignored regions...
-sub do_text_macro($$$$)
+sub do_text_macro($$$$$)
 {
     my $type = shift;
     my $line = shift;
     my $state = shift;
+    my $stack = shift;
     my $line_nr = shift;
     my $value;
     #print STDERR "do_text_macro $type\n";
 
-    if (not $text_macros{$type})
-    { # ignored text
-        $state->{'ignored'} = $type;
-        #print STDERR "IGNORED\n";
-    }
-    elsif ($text_macros{$type} eq 'raw' or $text_macros{$type} eq 'special')
+    if ($text_macros{$type} eq 'raw' or $text_macros{$type} eq 'special')
     {
         $state->{'raw'} = $type;
         #print STDERR "RAW\n";
+        if ($state->{'raw'})
+        {
+             push @$stack, { 'style' => $type, 'text' => '' };
+        }
     }
     elsif ($text_macros{$type} eq 'value')
     {
@@ -7301,11 +7319,21 @@ sub do_text_macro($$$$)
         {
             $value = $1 . $2;
             $value .= $3 if defined($3);
+            if ($state->{'ignored'})
+            {
+                if ($type eq $state->{'ignored'})
+                {
+                    $state->{'ifvalue_inside'}++;
+                }
+                # if 'ignored' we don't care about the origninal command
+                return ($line,'');
+            }
+            my $open_ifvalue = 0;
             if ($type eq 'ifclear')
             {
                 if (defined($value{$2}))
                 {
-                    $state->{'ignored'} = $type;
+                    $open_ifvalue = 1;
                 }
                 else
                 {
@@ -7316,23 +7344,43 @@ sub do_text_macro($$$$)
             {
                 unless (defined($value{$2}))
                 {
-                    $state->{'ignored'} = $type;
+                    $open_ifvalue = 1;
                 }
                 else
                 {
                     push @{$state->{'text_macro_stack'}}, $type;
                 }
             }
+            if ($open_ifvalue)
+            {
+                $state->{'ignored'} = $type;
+                $state->{'ifvalue'} = $type;
+                $state->{'ifvalue_inside'} = 1;
+                # We add at the top of the stack to be able to close all
+                # opened comands when closing the ifset/ifclear
+                push @$stack, { 'style' => 'ifvalue', 'text' => '' };
+            }
+            
         }
         else
         {
-            echo_error ("Bad $type line: $line", $line_nr);
+            if ($type eq $state->{'ifvalue'})
+            {
+                $state->{'ifvalue_inside'}++;
+                return ($line,'');
+            }
+            echo_error ("Bad $type line: $line", $line_nr) unless ($state->{'ignored'});
             #warn "$ERROR Bad $type line: $line";
         }
     }
+    elsif (not $text_macros{$type})
+    { # ignored text
+        $state->{'ignored'} = $type;
+        #print STDERR "IGNORED\n";
+    }
     else
     {
-        push @{$state->{'text_macro_stack'}}, $type;
+        push @{$state->{'text_macro_stack'}}, $type unless($state->{'ignored'}) ;
     }
     my $text = "\@$type";
     $text .= $value if defined($value); 
@@ -8282,9 +8330,12 @@ sub expand_macro($$$$$)
     my $line_nr = shift;
     my $state = shift;
 
+    return if ($state->{'ignored'});
     my $index = 0;
     foreach my $arg (@$args)
-    { # expand @macros in arguments
+    { # expand @macros in arguments. It is complicated because we must be
+      # carefull not to expand macros in @ignore section or the like, and 
+      # still keep everything.
         $args->[$index] = substitute_text({'texi' => 1, 'arg_expansion' => 1}, split_lines($arg));
         $index++;
     }
@@ -8574,58 +8625,28 @@ sub scan_texi($$$$;$)
     {
         # scan_texi
         #print STDERR "WHILE:$_";
+        #print STDERR "ARG_EXPANSION: $state->{'arg_expansion'}\n" if ($state->{'arg_expansion'});
         #dump_stack($text, $stack, $state);
+        #print STDERR "ifvalue_inside $state->{'ifvalue_inside'}\n";
 
-        # In ignored region
-        if ($state->{'ignored'})
-        {
-            my $line;
-            if (s/^(.*?\@end\s+$state->{'ignored'})//)
-            {
-                 $line = $1;
-                 if (s/^$// or s/(\s+)//)
-                 {
-                     $line = $line . $1 if (defined($1));
-                 }
-                 elsif (/[^\@]/)
-                 {
-                      $_ .= $line;
-                      $line = undef;
-                 }
-            }
-            if (defined($line))
-            {
-                 delete $state->{'ignored'};
-                 #dump_stack($text, $stack, $state);
-                 # MACRO_ARG => keep ignored text
-                 if ($state->{'arg_expansion'})
-                 {
-                     #add_prev ($text, $stack, $1);
-                     add_prev ($text, $stack, $line);
-                     next;
-                 }
-                 return if /^\s*$/o;
-                 next;
-            }
-            add_prev ($text, $stack, $_) if ($state->{'arg_expansion'});
-            return;
-        }
 
         # in macro definition
-        if (defined($state->{'macro'}))
+        #if (defined($state->{'macro'}))
+        if ($state->{'macro_inside'})
         {
             if (s/^([^\\\@]*\\)//)
-            {# I believe it is correct, although makeinfo don't do that.
-                 $state->{'macro'}->{'Body'} .= $1;
+            {# protected character or @end macro
+                 $state->{'macro'}->{'Body'} .= $1 unless ($state->{'ignored'});
                  if (s/^\\//)
                  {
-                      $state->{'macro'}->{'Body'} .= '\\';
+                      $state->{'macro'}->{'Body'} .= '\\' unless ($state->{'ignored'});
                       next;
                  }
+                 # I believe it is correct, although makeinfo don't do that.
                  elsif (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s)//o
                       or s/^(\@r?macro\s+\w+\s*.*)//o) 
                  {
-                      $state->{'macro'}->{'Body'} .= $1;
+                      $state->{'macro'}->{'Body'} .= $1 unless ($state->{'ignored'});
                       next;
                  }
             }
@@ -8633,6 +8654,7 @@ sub scan_texi($$$$;$)
             if (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s+)//o)
             {
                  $state->{'macro_inside'}--;
+                 next if ($state->{'ignored'});
                  if ($state->{'macro_inside'})
                  {
                      $state->{'macro'}->{'Body'} .= $1;
@@ -8648,23 +8670,28 @@ sub scan_texi($$$$;$)
             }
             elsif(/^(\@r?macro\s+\w+\s*.*)/)
             {
-                 $state->{'macro'}->{'Body'} .= $_;
+                 $state->{'macro'}->{'Body'} .= $_ unless ($state->{'ignored'});
                  $state->{'macro_inside'}++;
                  return;
             }
             elsif (s/^\@(.)//)
             {
-                 $state->{'macro'}->{'Body'} .= '@' . $1;
+                 $state->{'macro'}->{'Body'} .= '@' . $1 unless ($state->{'ignored'});
                  next;
             }
             elsif (s/^\@//)
             {
-                 $state->{'macro'}->{'Body'} .= '@';
+                 $state->{'macro'}->{'Body'} .= '@' unless ($state->{'ignored'});
                  next;
             }
             else
             {
                  s/([^\@\\]*)//;
+                 if ($state->{'ignored'})
+                 {
+                     return if (/^$/);
+                     next;
+                 }
                  $state->{'macro'}->{'Body'} .= $1 if (defined($1));
                  if (/^$/)
                  {
@@ -8740,7 +8767,6 @@ sub scan_texi($$$$;$)
             $state->{'macro_args'}->[-1] .= $_;
             return;
         }
-
         # in a raw format, verbatim, tex or html
         if ($state->{'raw'}) 
         {
@@ -8756,21 +8782,27 @@ sub scan_texi($$$$;$)
             }
 	    
             if (s/^(.*?)(\@end\s$tag)$// or s/^(.*?)(\@end\s$tag\s)//)
-            {
+            {# we add it even if 'ignored', it'll be discarded when there is
+             # the @end
                 add_prev ($text, $stack, $1);
                 my $end = $2;
                 my $style = pop @$stack;
                 if ($style->{'text'} !~ /^\s*$/ or $state->{'arg_expansion'})
-                {
+                # FIXME if 'arg_expansion' and also 'ignored' is true, 
+                # theoretically we should keep
+                # what is in the raw format however
+                # it will be removed later anyway 
+                {# ARG_EXPANSION
                     my $after_macro = '';
                     $after_macro = ' ' unless (/^\s*$/);
-                    add_prev ($text, $stack, $style->{'text'} . $end . $after_macro);
+                    add_prev ($text, $stack, $style->{'text'} . $end . $after_macro) unless ($state->{'ignored'});
                     delete $state->{'raw'};
                 }
                 next;
             }
             else
-            {
+            {# we add it even if 'ignored', it'll be discarded when there is 
+             # the @end
                  add_prev ($text, $stack, $_);
                  last;
             }
@@ -8779,27 +8811,73 @@ sub scan_texi($$$$;$)
         # in a @verb{ .. } macro
         if (defined($state->{'verb'}))
         {
+            #dump_stack($text, $stack, $state);
             my $char = quotemeta($state->{'verb'});
+            #print STDERR "VERB $char\n";
             if (s/^(.*?)$char\}/\}/)
-            {
+            {# we add it even if 'ignored', it'll be discarded when closing
                  add_prev($text, $stack, $1 . $state->{'verb'});
                  $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
                  delete $state->{'verb'};
                  next;
             }
             else
-            {
+            {# we add it even if 'ignored', it'll be discarded when closing
                  add_prev($text, $stack, $_);
                  last;
             }
         }
+        # In ignored region
+        if ($state->{'ignored'})
+        {
+            #print STDERR "IGNORED(ifvalue($state->{'ifvalue_inside'})): $state->{'ignored'}\n";
+            if (/^.*?\@end(\s+)([a-zA-Z]\w+)/)
+            {
+                if ($2 eq $state->{'ignored'})
+                {
+                    s/^(.*?\@end)(\s+)([a-zA-Z]\w+)//; 
+                    my $end_ignore = $1.$2.$3;
+                    if (($state->{'ifvalue_inside'}) and $state->{'ignored'} eq $state->{'ifvalue'})
+                    {
+                         if ($state->{'ifvalue_inside'} == 1)
+                         {# closing still opened @-commands with braces
+                             pop (@$stack) while (@$stack and $stack->[-1]->{'style'} ne 'ifvalue')
+                         }
+                         pop (@$stack);
+                         $state->{'ifvalue_inside'}--;
+                    }
+                    $state->{'ignored'} = undef;
+                    delete $state->{'ignored'};
+                    # We are stil in the ignored ifset or ifclear section
+                    $state->{'ignored'} = $state->{'ifvalue'} if ($state->{'ifvalue_inside'});
+                    #dump_stack($text, $stack, $state);
+                    # MACRO_ARG => keep ignored text
+                    if ($state->{'arg_expansion'})
+                    {# this may not be very usefull as it'll be remove later
+                        add_prev ($text, $stack, $end_ignore);
+                        next;
+                    }
+                    return if /^\s*$/o;
+                    next;
+                }
+            }
+            add_prev ($text, $stack, $_) if ($state->{'arg_expansion'});
+            # we could theoretically continue for ignored commands other
+            # than ifset or ifclear, however it isn't usefull.
+            return unless ($state->{'ifvalue_inside'} and ($state->{'ignored'} eq $state->{'ifvalue'}));
+        }
+
 	
         # an @end tag
         if (s/^([^{}@]*)\@end(\s+)([a-zA-Z]\w*)//)
         {
-            add_prev($text, $stack, $1);
+            my $leading_text = $1;
             my $space = $2;
             my $end_tag = $3;
+            # when 'ignored' we don't open environments that aren't associated
+            # with ignored regions, so we don't need to close them.
+            next if ($state->{'ignored'});# ARG_EXPANSION
+            add_prev($text, $stack, $leading_text);
             if (defined($state->{'text_macro_stack'})
                and @{$state->{'text_macro_stack'}}
                and ($end_tag eq $state->{'text_macro_stack'}->[-1]))
@@ -8822,25 +8900,25 @@ sub scan_texi($$$$;$)
                 echo_error ("\@end $end_tag without corresponding element", $line_nr);
             }
             else
-            {
+            {# ARG_EXPANSION
                 add_prev($text, $stack, "\@end${space}$end_tag");
             }
             next;
         }
         elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
-        {
-            add_prev($text, $stack, $1);
+        {# ARG_EXPANSION
+            add_prev($text, $stack, $1) unless $state->{'ignored'};
             my $macro = $2;
 	    #print STDERR "MACRO $macro\n";
-            $state->{'bye'} = 1 if ($macro eq 'bye');
+            # handle skipped @-commands
+            $state->{'bye'} = 1 if ($macro eq 'bye' and !$state->{'ignored'} and !$state->{'arg_expansion'});
             if (defined($Texi2HTML::Config::misc_command{$macro}) and 
                  !$Texi2HTML::Config::misc_command{$macro}->{'texi'}
                  and $macro ne 'documentencoding')
-            {
+            {# ARG_EXPANSION
                  my ($line, $args);
                  ($_, $line, $args) = preserve_command($_, $macro);
-                 add_prev ($text, $stack, $line); 
-                 next;
+                 add_prev ($text, $stack, $line) unless $state->{'ignored'}; 
             }
             # pertusus: it seems that value substitution are performed after
             # macro argument expansions: if we have 
@@ -8851,49 +8929,65 @@ sub scan_texi($$$$;$)
             # in macro definitions
 
             # track variables
-            my $value_macro = 1;
-            if ($macro eq 'set' and  s/^(\s+)($VARRE)(\s+)(.*)$//o)
+            elsif($macro eq 'set' or $macro eq 'clear')
             {
-                if ($state->{'arg_expansion'})
+                if ($macro eq 'set')
                 {
-                    my $line = "\@$macro" . $1.$2.$3;
-                    $line .= $4 if (defined($4));
-                    add_prev($text, $stack, $line); 
-                    next;
+                    if (s/^(\s+)($VARRE)(\s+)(.*)$//o)
+                    {
+                        if ($state->{'arg_expansion'})
+                        {
+                            my $line = "\@$macro" . $1.$2.$3;
+                            $line .= $4 if (defined($4));
+                            add_prev($text, $stack, $line); 
+                            next;
+                        }
+                        next if $state->{'ignored'};
+                        $value{$2} = $4;
+                    }
+                    else
+                    {
+                        echo_warn ("Missing argument for \@$macro", $line_nr);
+                    }
                 }
-                $value{$2} = $4;
-            }
-            elsif ($macro eq 'clear' and s/^(\s+)($VARRE)//o)
-            {
-                if ($state->{'arg_expansion'})
+                elsif ($macro eq 'clear')
                 {
-                    add_prev($text, $stack, "\@$macro" . $1 . $2);
-                    next; 
+                    if (s/^(\s+)($VARRE)//o)
+                    {
+                        if ($state->{'arg_expansion'})
+                        {
+                            add_prev($text, $stack, "\@$macro" . $1 . $2);
+                            next; 
+                        }
+                        next if $state->{'ignored'};
+                        delete $value{$2};
+                    }
+                    else
+                    {
+                        echo_warn ("Missing argument for \@$macro", $line_nr);
+                    }
                 }
-                delete $value{$2};
-            }
-            else
-            {
-                 $value_macro = 0;
-            }
-            if ($value_macro)
-            {
                 return if (/^\s*$/);
-                next;
-            }
-	    
-            if ($macro =~ /^r?macro$/)
+	    }
+            elsif ($macro =~ /^r?macro$/)
             { #FIXME what to do if 'arg_expansion' is true (ie within another
-              # macro call arguments ?
+              # macro call arguments?
                 if (/^\s+(\w+)\s*(.*)/)
                 {
                     my $name = $1;
-                    if (exists($macros->{$name}))
+                    unless ($state->{'ignored'})
                     {
-                         echo_warn ("macro `$name' allready defined " . 
-                             format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
+                         if (exists($macros->{$name}))
+                         {
+                             echo_warn ("macro `$name' allready defined " . 
+                                 format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
+                         }
+                         
                     }
                     $state->{'macro_inside'} = 1;
+                    next if ($state->{'ignored'});
+                    # if in 'arg_expansion' we really want to take into account
+                    # that we are in an ignored ifclear.
                     my @args = ();
                     @args = split(/\s*,\s*/ , $1)
                        if ($2 =~ /^\s*{\s*(.*?)\s*}\s*/);
@@ -8913,64 +9007,68 @@ sub scan_texi($$$$;$)
                     $macros->{$name}->{'Body'} = '';
                     $state->{'macro'} = $macros->{$name};
                     print STDERR "# macro def $name: $debug_msg\n"
-                     if ($T2H_DEBUG & $DEBUG_MACROS);
+                         if ($T2H_DEBUG & $DEBUG_MACROS);
                 }
                 else
-                {
-                    echo_error ("Bad macro defintion $_", $line_nr);
-                    #warn "$ERROR Bad macro defintion $_";
+                {# it means we have a macro without a name
+                    echo_error ("Macro definition without macro name $_", $line_nr)
+                        unless ($state->{'ignored'});
                 }
                 return;
             }
             elsif (defined($text_macros{$macro}))
             {
                 my $tag;
-                ($_, $tag) = do_text_macro ($macro, $_, $state, $line_nr);
+                ($_, $tag) = do_text_macro ($macro, $_, $state, $stack, $line_nr); 
                 # if it is a raw formatting command or a menu command
-                # we must keep it for later
+                # we must keep it for later, unless we are in an 'ignored'.
+                # if in 'arg_expansion' we keep everything.
                 my $macro_kept;
-                if ($state->{'raw'} or (($macro eq 'menu') and $text_macros{'menu'}) or (exists($region_lines{$macro})) or $state->{'arg_expansion'})
+                if ((($state->{'raw'} or (($macro eq 'menu') and $text_macros{'menu'}) or (exists($region_lines{$macro}))) and !$state->{'ignored'}) or $state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, $tag);
                     $macro_kept = 1;
                 }
-                if ($state->{'raw'})
-                {
-                    push @$stack, { 'style' => $macro, 'text' => '' };
-                }
-                next if $macro_kept;
                 #dump_stack ($text, $stack, $state);
+                next if $macro_kept;
                 return if (/^\s*$/);
             }
-            elsif ($macro eq 'value')
+            elsif ($macro eq 'documentencoding')
             {
-                if (s/^{($VARRE)}//)
+                my $spaces = '';
+                my $encoding = '';
+                if (s/(\s+)([0-9\w\-]+)//)
                 {
-                    if ($state->{'arg_expansion'})
+                    $spaces = $1;
+                    $encoding = $2;
+                    next if ($state->{'ignored'});
+                    if (!$state->{'arg_expansion'} and !$state->{'ignored'})
                     {
-                        add_prev($text, $stack, "\@$macro" . '{' . $1 . '}');
-                        next;
+                        $Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
+                        $from_encoding = set_encoding($encoding);
+                        if (defined($from_encoding))
+                        {
+                            foreach my $file (@fhs)
+                            {
+                                binmode($file->{'fh'}, ":encoding($from_encoding)");
+                            }
+                        }
                     }
-                    $_ = get_value($1) . $_;
-                }
-                else
-                {
-                    if ($state->{'arg_expansion'})
-                    {
-                        add_prev($text, $stack, "\@$macro");
-                        next;
-                    }
-                    echo_error ("bad \@value macro", $line_nr);
-                    #warn "$ERROR bad \@value macro";
-                }
+                }# ARG_EXPANSION
+                add_prev($text, $stack, "\@$macro" . $spaces . $encoding) unless ($state->{'ignored'});
             }
             elsif ($macro eq 'definfoenclose')
             {
+                # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
+                # the args anyway and don't take away the whole line?
+                # as in the makeinf doc 'definfoenclose' may override
+                # texinfo @-commands like @i. It is what we do here.
                 if ($state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, "\@$macro" . $_);
                     return;
                 }
+                return if ($state->{'ignored'});
                 if (s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
                 {
                      $info_enclose{$1} = [ $2, $3 ];
@@ -8989,6 +9087,7 @@ sub scan_texi($$$$;$)
                     add_prev($text, $stack, "\@$macro" . $_);
                     return;
                 }
+                return if ($state->{'ignored'});
                 #if (s/^\s+([\/\w.+-]+)//o)
                 if (s/^(\s+)(.*)//o)
                 {
@@ -9012,35 +9111,55 @@ sub scan_texi($$$$;$)
                 # FIXME verify if it is right
                 #return if (/^\s*$/);
             }
-            elsif ($macro eq 'documentencoding')
+            elsif ($macro eq 'value')
             {
-                if (s/(\s+)([0-9\w\-]+)//)
+                if (s/^{($VARRE)}//)
                 {
-                    my $encoding = $2;
-                    $Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
-                    $from_encoding = set_encoding($encoding);
-                    if (defined($from_encoding))
+                    if ($state->{'arg_expansion'})
                     {
-                        foreach my $file (@fhs)
-                        {
-                            binmode($file->{'fh'}, ":encoding($from_encoding)");
-                        }
+                        add_prev($text, $stack, "\@$macro" . '{' . $1 . '}');
+                        next;
                     }
+                    next if ($state->{'ignored'});
+                    $_ = get_value($1) . $_;
                 }
-                add_prev($text, $stack, "\@$macro" . $1 . $2);
+                else
+                {
+                    if ($state->{'arg_expansion'})
+                    {
+                        add_prev($text, $stack, "\@$macro");
+                        next;
+                    }
+                    next if ($state->{'ignored'});
+                    echo_error ("bad \@value macro", $line_nr);
+                    #warn "$ERROR bad \@value macro";
+                }
             }
             elsif ($macro eq 'unmacro')
             { #FIXME with 'arg_expansion' should it be passed unmodified ?
-                delete $macros->{$1} if (s/^\s+(\w+)//);
+                if ($state->{'ignored'})
+                {
+                     s/^\s+(\w+)//;
+                }
+                else
+                {
+                     delete $macros->{$1} if (s/^\s+(\w+)//);
+                }
                 return if (/^\s*$/);
                 s/^\s*//;
             }
             elsif (exists($macros->{$macro}))
-            {
+            {# it must be before the handling of {, otherwise it is considered
+             # to be regular texinfo @-command. Maybe it could be placed higher
+             # if we want user defined macros to override texinfo @-commands
+
+             # in 'ignored' we parse macro defined args anyway as it removes 
+             # some text, but we don't expand the macro
+
                 my $ref = $macros->{$macro}->{'Args'};
                 # we remove any space/new line before the argument
                 if (s/^\s*{\s*//)
-                {
+                { # the macro has args
                     $state->{'macro_args'} = [ "" ];
                     $state->{'macro_name'} = $macro;
                     $state->{'macro_depth'} = 1;
@@ -9060,14 +9179,18 @@ sub scan_texi($$$$;$)
             elsif ($macro eq ',')
             {# the @, causes problems when `,' separates things (in @node, @ref)
                 $_ = "\@m_cedilla" . $_;
-            }
+            } # handling of @, must be done before handling of {
             elsif (s/^{//)
-            {
+            {# we add nested commands in a stack. verb is also on the stack
+             # but handled specifically.
+             # we add it the comands even in 'ignored' as their result is 
+             # discarded when the closing brace appear, or the ifset or 
+             # iclear is closed.
                 if ($macro eq 'verb')
                 {
                     if (/^$/)
                     {
-                        echo_error ("verb at end of line", $line_nr);
+                        echo_error ("without associated character", $line_nr);
                         #warn "$ERROR verb at end of line";
                     }
                     else
@@ -9080,22 +9203,29 @@ sub scan_texi($$$$;$)
             }
             else
             {
-                add_prev($text, $stack, "\@$macro");
+                add_prev($text, $stack, "\@$macro") unless($state->{'ignored'});
             }
             next;
         }
         #elsif(s/^([^{}@]*)\@(.)//o)
         elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
-        {
-            # No need to warn here it is done later
-            add_prev($text, $stack, $1 . "\@$2");
+        {# ARG_EXPANSION
+            # No need to warn here for @ followed by a character that
+            # is not in any @-command and isn'tit is done later
+            add_prev($text, $stack, $1 . "\@$2") unless($state->{'ignored'});
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
         {
-            add_prev($text, $stack, $1);
+         # in ignored section we cannot be sure that there is an @-command
+         # allready opened so we must discard the text.
+         # ARG_EXPANSION
+            add_prev($text, $stack, $1) unless($state->{'ignored'});
             if ($2 eq '{')
             {
+              # this empty style is for a lone brace.
+              # we add it even in 'ignored' as it is discarded when the closing
+              # brace appear, or the ifset or iclear is closed.
                 push @$stack, { 'style' => '', 'text' => '' };
             }
             else
@@ -9116,29 +9246,36 @@ sub scan_texi($$$$;$)
                     {
                         $result = '{' . $style->{'text'};
                         # don't close { if we are closing stack as we are not 
-                        # sure this is a licit { ... } construct.
+                        # sure this is a licit { ... } construct. i.e. we are
+                        # not sure that the user properly closed it so we don't
+                        # close it ourselves
                         $result .= '}' unless ($state->{'close_stack'} or $state->{'arg_expansion'});
+                    }
+                    if ($state->{'ignored'})
+                    {# ARG_EXPANSION
+                        print STDERR "# Popped `$style->{'style'}' in ifset/ifclear\n" if ($T2H_DEBUG);
+                        next;
                     }
                     add_prev ($text, $stack, $result);
                     #print STDERR "MACRO end $style->{'style'} remaining: $_";
                     next;
                 }
                 else
-                {
-                    # we warn in the last pass
-                    #echo_error ("'}' without opening '{', before: $_", $line_nr);
-                    #warn "$ERROR '}' without opening '{' line: $line";
-                    add_prev ($text, $stack, '}');
+                {# ARG_EXPANSION
+                    # we warn in the last pass that there is a } without open
+                    add_prev ($text, $stack, '}') unless($state->{'ignored'});
                 }
             }
         }
         else
-        {
+        {# ARG_EXPANSION
             #print STDERR "END_LINE $_";
-            add_prev($text, $stack, $_);
+            add_prev($text, $stack, $_) unless($state->{'ignored'});
             last;
         }
     }
+    #return 1 unless ($state->{'ignored'});
+    return undef if ($state->{'ignored'});
     return 1;
 }
 
@@ -11305,6 +11442,7 @@ sub close_stack_texi_structure($$$$)
 
     return undef unless (@$stack or $state->{'raw'} or $state->{'macro'} or $state->{'macro_name'} or $state->{'ignored'});
 
+    #dump_stack ($text, $stack, $state);
     my $stack_level = $#$stack + 1;
     my $string = '';
     
@@ -11337,7 +11475,7 @@ sub close_stack_texi_structure($$$$)
         }
         if ($string ne '')
         {
-            #print STDERR "scan_texi ($string)\n";
+            #print STDERR "close_stack scan_texi ($string)\n";
             scan_texi ($string, $text, $stack, $state, $line_nr);
             $string = '';
         }
@@ -11372,7 +11510,7 @@ sub close_stack_texi_structure($$$$)
                    $stack_text = "\@$style\{" . $stack_text;
               }
               else
-              {
+              {# this is a lone opened brace. We readd it there.
                    $stack_text = "\{" . $stack_text;
               }
          }

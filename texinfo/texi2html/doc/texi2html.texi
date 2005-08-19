@@ -222,6 +222,9 @@ version of the manual which contains the bug, as given above.
 * Customizing HTML::          Fine tuning of the @acronym{HTML} elements
                               associated with the texinfo constructs
 * Internationalization::      Help translating!
+* Incompatibilities::         Incompatibilities with previous versions
+* Specificities::             The minor differences with regard with texinfo
+                              valid for makeinfo or texi2dvi
 * Indexop::                   Command Line Option Index
 * Indexvr::                   Variable Index
 * Indexcp::                   Concept Index
@@ -3534,6 +3537,189 @@ And to merge the new translation files in @file{translations.pl}, do
 
 All these steps may be performed by @command{make}, once the language file
 is added to @file{Makefile.am}.
+
+@c --------------------------------------------------------
+@node Incompatibilities
+@chapter Incompatibilities with previous versions
+
+@command{texi2html} has accumulated a lot of incompatibilities with previous
+versions. They are documented in the @file{NEWS} file, we discuss them
+here nevertheless. most of the incompatibilities were introduced in 
+version 1.68.
+
+@itemize @bullet
+@item When the manual is split the default is to put resulting files in 
+a directory with name the manual file basename (previously they were left in
+ the current directory). To avoid that, call texi2html with 
+@option{-output .}. This has been changed to be compatible with 
+@command{makeinfo} and also because it fits better with the cross
+manuals reference scheme.
+@item The option @option{--output} signification changed. It now
+has the same meaning than for @command{makeinfo}. It seems
+that in 1.66 it was the same than @option{-out-file}. 
+@option{--output} new meaning allows to replace @option{-out-file} and 
+@option{-subdir} with a unique option. 
+
+More precisely @option{-out-file} forces the output to be unsplit 
+while @option{--output} behaves differently when split (it specify 
+the directory
+where the manual files should be outputted) and unsplit (it specify
+the output file). @option{-subdir} is retained for backward compatibility.
+
+If you want a backward compatibility you can use @option{-subdir} 
+for the output directory if the document is split, and @option{-out-file}
+if the document isn't split. This hasn't been tested extensively though.
+@item Many options has been obsoleted but they are retained for
+backward compatibility.
+@item The init files are searched in new directories, however they 
+are still searched for in the old directories for backward
+compatibility.
+@item the option @option{--glossary} doesn't do anything. Likely
+nothing specific is done regarding bibliographies. This has been
+decided because this added some semantics to the texinfo formatting 
+language that weren't part of texinfo. 
+
+It should be possible to do
+something similar with macros. See for example @file{glossary.texi} 
+for glossary and @file{my-bib-macros.texi} for bibliography
+in the directory @file{examples}. In the web2c package there is
+an example of use of BibTeX, see @url{http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/} (the examples for bibliography are taken from the
+texinfo home page @url{http://www.gnu.org/software/texinfo/texinfo.html}).
+@item don't use @code{T2H_CENTER_IMAGE}. @code{@@center} should be used
+insead, it will give the right output for all the formats.
+@item If a directory creation fails the program aborts. This is much safer.
+@item The interface for internationalisation changed, although
+the previous wasn't documented a lot.
+@item the API described in this manual changed a lot. A important
+change was to use the @code{Texi2HTML::Config} names space instead of
+variables prefixed with @samp{T2H_} or  @samp{t2h_}. To cope with
+the change the prefix should be removed from variables in init files.
+Some variables are now in @code{%Texi2HTML::THISDOC}.
+@item @code{@@ifinfo} regions are not expanded by default. This may lead
+to warnings or errors especially if the Top node is enclosed in 
+@code{@@ifinfo}, as some node won't appear in menus. The quick fix
+is to call @command{texi2html} with the option @option{--ifinfo} and
+the right way should be to make more use of @code{@@ifnottex}.
+@item The code appearing before the first node is now outputted, it was
+ignored before. @option{--ignore-preamble-text} revert to the previous
+behaviour. Enclosing in @code{@@ifnothtml} would be much cleaner.
+@end itemize
+
+@c --------------------------------------------------------
+@node Specificities
+@chapter How little texi2html texinfo differs from GNU texinfo
+
+For features documented in the texinfo manual, the texinfo interpretation
+by @command{texi2html} shouldn't differ from the interpretation of
+@command{makeinfo} or @command{texi2dvi}. However for constructs with 
+unspecified behaviour @command{texi2html} often doesn't lead to the 
+same result than @command{makeinfo} or @command{texi2dvi}. @command{makeinfo}
+and @command{texi2dvi} are also inconsistent in most of these cases (or
+broken). You are urged not to use these features unless absolutely necessary.
+This information is only here to help understand why @command{texi2html}
+differ from other texinfo interpreters, it may be inacurate and the 
+@command{texi2html} behaviour may change in the future and was different
+in the past.
+
+@table @asis
+@item @@-commands with text on the line
+In the texinfo manual it is specified that block @@-commands should appear
+on a line without text and the closing @code{@@end} should also be on a 
+line by himself. With @command{texi2html} it is possible to add
+text before and after the command, so the following is right:
+
+@example
+something @@example the example @@end example after the example
+@end example
+
+@command{makeinfo} and @command{texi2dvi} may also accept text before
+the command and text after the @code{@@end} command, sometimes ignoring 
+it after the @code{@@end}.
+
+This is a feature you should especially not rely on.
+
+@item special @@-commands handling
+The special @@-commands are commands like @code{@@pagesizes}, @code{@@sp},
+@code{@@evenheading}, @code{@@raisesections}, @code{@@defindex} and a lot
+more. In many cases @command{makeinfo} and @code{texi2dvi} 
+don't parse those commands the same way too. @command{texi2html} may also
+show some differences in parsing of the arguments of these commands, 
+in case there are wrong arguments, and also ignore differently things
+following those commands. How user defined macros, set and values
+are expanded in those commands may also be different.
+Part of the specification of how these commands are handled is 
+configureable (@pxref{Other and unknown commands}), but not what 
+happens during the beginning of the parsing for some of those commands. 
+
+@item features different between @command{makeinfo} and @command{texi2dvi}
+When @command{makeinfo} or @command{texi2dvi} use a feature which
+is reserved for one or the other translator, @command{texi2html} uses that
+feature. So for example @code{@@definfoenclose} which is ignored by 
+@command{texi2dvi} is taken into account and @code{@@kbdinputstyle} which
+is ignored by @command{makeinfo} is taken into account. 
+
+@item user defined macros and values
+In this area @command{makeinfo} and @command{texi2dvi} also differ a lot.
+The reference implementation is the @command{makeinfo} implementation as
+@command{texi2dvi} is easily broken when macros are not used simply.
+
+@itemize @bullet
+@item @code{@@rmacro} and @code{@@macro} behave exactly the same. In fact
+this goes against a documented behaviour, however if a user don't
+want a recursive macro he can simply avoid reusing the macro in the 
+definition. If somebody report that the feature is usefull we could try
+to implement it.
+@item It is possible to escape the end of a macro definition with
+@example
+\@@end macro
+@end example
+with the @samp{\} being removed after the first expansion. Otherwise
+it is not possible to produce a @code{\@@end macro} in a macro.
+@item @code{@@unmacro} is interpreted during the macro argument expansion.
+Don't know what @command{makeinfo} exactly do.
+@item Some @code{@@value} may be expanded later than the others, those
+that are in special commands, like @code{@@node}.
+@end itemize
+
+@item @code{@@,} in @code{@@node}
+Like @command{texi2dvi} but unlike @command{makeinfo} @code{@@,} don't 
+break @code{@@node} arguments like a regular @samp{,}.
+@item Things before first node or preamble
+Things before the first node or before the preamble may not be exactly 
+interpreted or discarded as @command{makeinfo} or @command{texi2dvi} do.
+@item encodings
+@command{texi2html} knows more encodings, in fact all encodings @command{perl}
+knows about.
+@item commands in @code{@@ifset} and @code{@@ifclear}
+@command{texi2html} doesn't need a proper nesting of internal @code{@@ifset}
+or @code{@@ifclear} if they are in ignored or raw regions (like @code{@@html}
+or @code{@@verbatim}). For example the following is accepted by 
+@command{texi2html} and not by @command{makeinfo}:
+
+@example
+@@ifset notset
+@@ignore
+@@ifset
+@@end ignore
+@@end ifset
+@end example
+
+In @code{@@ifset} and @code{@@ifclear} texi2html also accepts
+a lot more of invalid constructs. For example the following is accepted
+by @command{texi2html} but not by @command{makeinfo}:
+
+@example
+@@set flag
+@@ifset flag
+@@itemize
+@@item my item
+@@end ifset
+text
+@@ifset flag
+@@end itemize
+@@end ifset
+@end example
+@end table
 
 @c --------------------------------------------------------
 @c commandline option index.

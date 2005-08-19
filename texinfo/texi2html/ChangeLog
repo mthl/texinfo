@@ -1,9 +1,21 @@
+2005-08-19  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: Add support for nested ifset and ifclear. Re-add check 
+	option for backward compatibility. Just exit if this option is set.
+	Handle @tie.
+	* Tests/*: more tests, especially for ifset and macros.
+	* doc/texi2html.texi: add a section about differences with 
+	other texinfo interpreters.
+	add a section about the incompatibilities with previous versions.
+	* examples: add my-bib-macros.texi bib-example.texi and glossary.texi.
+	* texi2html.spec: remove the Epoch tag.
+
 2005-08-16  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* images/COPYING: replace with the Singular COPYING. Move to ...
 	* images/COPYING.Attribution-ShareAlike: ... add
 	* images/README,images/GPL: add these files to have a double licencing
-	for the images.
+	for the images. This close #14052.
 	* Makefile.am: distribute and install the added files.
 
 2005-08-12  Derek Price  <derek@ximbiot.com>

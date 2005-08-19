@@ -31,7 +31,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
 -->
-<!-- Created on August, 9 2005 by texi2html @PACKAGE_VERSION@ -->
+<!-- Created on August, 19 2005 by texi2html @PACKAGE_VERSION@ -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -74,7 +74,7 @@ ul.toc {list-style: none}
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="settitle">Texi2HTML</h1>
@@ -130,7 +130,7 @@ by the Free Software Foundation.
 <a name="SEC_Top"></a>
 
 
-<p>This manual, last updated 9 August 2005, describes version 1.77
+<p>This manual, last updated 19 August 2005, describes version 1.77
 of the <code>texi2html</code> Perl script which converts
 <a href="http://www.texinfo.org">Texinfo</a> into <a href="http://w3c.org">HTML</a>.
 </p>
@@ -161,9 +161,13 @@ version of the manual which contains the bug, as given above.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC88">A. Internationalization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Help translating!
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC93">B. Command Line Option Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC94">C. Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC95">D. Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC93">B. Incompatibilities with previous versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC94">C. How little texi2html texinfo differs from GNU texinfo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             The minor differences with regard with texinfo
+                              valid for makeinfo or texi2dvi
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC95">D. Command Line Option Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC96">E. Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC97">F. Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
 <hr size="1">
@@ -182,7 +186,7 @@ version of the manual which contains the bug, as given above.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 1. Overview </h1>
@@ -242,7 +246,7 @@ producing, have a look at the following sites:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.1 Why <code>texi2html</code> and not <code>makeinfo</code>? </h2>
@@ -304,7 +308,7 @@ provided with the distribution.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 2. Obtaining <code>texi2html</code> </h1>
@@ -331,7 +335,7 @@ available from
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 3. Installation of <code>texi2html</code> </h1>
@@ -363,7 +367,7 @@ available from
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.1 Requirements </h2>
@@ -398,7 +402,7 @@ information about advanced build features, see <a href="#SEC8">Advanced build fe
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.2 Configuring the source and rebuilding </h2>
@@ -445,7 +449,7 @@ documents.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.3 Installing </h2>
@@ -482,7 +486,7 @@ of this directory. See section <a href="#SEC17">Use initialization files for fin
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.4 Advanced build features </h2>
@@ -544,7 +548,7 @@ everything needed for the build of the <code>texi2html</code> script.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 4. Invoking <code>texi2html</code> </h1>
@@ -600,7 +604,7 @@ obtained by prepending <samp>`no'</samp> or <samp>`no-'</samp> to the switch nam
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.1 Specifying where to split the generated document </h2>
@@ -737,7 +741,7 @@ chapter text
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.2 Setting output file and directory names </h2>
@@ -838,7 +842,7 @@ target for the cross-references of other manuals generated by
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.3 Specifying which regions get expanded </h2>
@@ -880,7 +884,7 @@ sections.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.4 Command line options related to Texinfo language features </h2>
@@ -942,7 +946,7 @@ empty in the default case).
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.5 Page layout related command line options </h2>
@@ -983,7 +987,7 @@ The default is to have separated footnotes.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.6 Customizing the <acronym>HTML</acronym> and text style </h2>
@@ -1094,7 +1098,7 @@ created (variable <a name="IDX62"></a>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML </h2>
@@ -1141,7 +1145,7 @@ init files (see section <a href="#SEC17">Use initialization files for fine tunin
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.8 Use initialization files for fine tuning </h2>
@@ -1206,7 +1210,7 @@ the means described above.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 5. Overview of initialization files content and loading </h1>
@@ -1263,7 +1267,7 @@ of the main program are still in the <code>main</code> namespace.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 5.1 Redefining functions in initialization files </h2>
@@ -1308,7 +1312,7 @@ sub my_own_function {
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 5.2 Conventions used for function prototypes </h2>
@@ -1359,7 +1363,7 @@ sub my_formatting_function($ $)
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 6. Fine tuning of the page layout </h1>
@@ -1417,7 +1421,7 @@ initialization files.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.1 The different categories of pages and sectioning elements </h2>
@@ -1477,7 +1481,7 @@ or <code>@summarycontents</code> is present.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.2 Page layout and navigation panel overview </h2>
@@ -1612,7 +1616,7 @@ by default.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.3 Customization of the navigation panels buttons </h2>
@@ -1648,7 +1652,7 @@ doing the navigation panel formatting.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.3.1 Controlling the navigation panel panel at a high level </h3>
@@ -1694,7 +1698,7 @@ the beginning and the end of the page (see section <a href="#SEC14">Page layout 
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.3.2 Specifying the buttons formatting </h3>
@@ -1809,7 +1813,7 @@ element the icon links to that element.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.3.3 Changing the navigation panel formatting </h3>
@@ -1845,7 +1849,7 @@ navigation panel should be vertical.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.4 Main program variables and usefull functions </h2>
@@ -1883,7 +1887,7 @@ layout element.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.4.1 Accessing elements informations </h3>
@@ -1930,7 +1934,7 @@ in <a href="#Element-labels">Element labels</a>) and values:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.4.2 Accessing global informations </h3>
@@ -2057,7 +2061,7 @@ command, like <code>@setfilename</code>, or <code>@settitle</code>,
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.4.3 Function usefull in page formatting </h3>
@@ -2094,7 +2098,7 @@ split at nodes and <a name="IDX111"></a>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.5 Preparing the output </h2>
@@ -2153,7 +2157,7 @@ sub makeinfo_like_init_out()
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.6 Finalizing the output </h2>
@@ -2187,7 +2191,7 @@ reference may be redefined:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.7 Customizing the <code>texi2html</code> css lines </h2>
@@ -2240,7 +2244,7 @@ See section <a href="#SEC15">Customizing the <acronym>HTML</acronym> and text st
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.8 Customizing the page header </h2>
@@ -2342,7 +2346,7 @@ This function is called if the document is split at sections, after
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.9 Customizing the sections </h2>
@@ -2386,7 +2390,7 @@ element or is the last one in page, or before the special elements.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.10 Customizing the page footer </h2>
@@ -2467,7 +2471,7 @@ This function is called if the document is split at sections, before
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.11 Special pages formatting </h2>
@@ -2498,7 +2502,7 @@ and the page layout
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.11.1 Customizing the content of the special pages </h3>
@@ -2530,7 +2534,7 @@ and the page layout
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 6.11.1.1 Top element text formatting </h4>
@@ -2584,7 +2588,7 @@ This function should end the Top element.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 6.11.1.2 Table of contents and Short table of contents </h4>
@@ -2705,7 +2709,7 @@ table of contents.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 6.11.1.3 Formatting of footnotes text </h4>
@@ -2729,7 +2733,7 @@ are expanded. See section <a href="#SEC86">Customizing the footnotes formatting<
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 6.11.1.4 Formatting of about text </h4>
@@ -2794,7 +2798,7 @@ function reference:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 6.11.2 Customizing the layout of the special pages </h3>
@@ -2867,7 +2871,7 @@ for the footers.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.12 Customizing the file names </h2>
@@ -2954,7 +2958,7 @@ The result is the element or special element file name.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.13 Generation of external files for index entries </h2>
@@ -3022,7 +3026,7 @@ is called for each index appearing in the document, after
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 7. Customizing <acronym>HTML</acronym> and text style in init files </h1>
@@ -3099,7 +3103,7 @@ be redefined.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.1 Three contexts for expansions: preformatted, normal and string </h2>
@@ -3130,7 +3134,7 @@ in comments or titles for example.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.2 Customizing the formatting of commands without argument </h2>
@@ -3189,7 +3193,7 @@ $simple_map_pre{'-'} = '&amp;shy;';
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.3 Customizing accent, style and other simple commands </h2>
@@ -3251,7 +3255,7 @@ hash <a name="IDX194"></a>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.3.1 An interface for commands formatting with a hash reference </h3>
@@ -3380,7 +3384,7 @@ of the @-command.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.3.2 An interface for commands formatting with a string </h3>
@@ -3455,7 +3459,7 @@ Thus <code>elem class=&quot;elem&quot;</code> leads to
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.3.3 Defining the style and indicatric commands interface </h3>
@@ -3508,7 +3512,7 @@ the @-command being formatted.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.4 Formatting of special simple commands </h2>
@@ -3595,7 +3599,7 @@ attribute.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.5 Processing special characters in text </h2>
@@ -3654,7 +3658,7 @@ text <var>$resulting_text</var>. Empty lines are left as is by default.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.6 Customizing strings written by <code>texi2html</code> </h2>
@@ -3715,7 +3719,7 @@ as <samp>`%'</samp>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.7 References </h2>
@@ -3743,7 +3747,7 @@ as <samp>`%'</samp>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.7.1 Reference to external manual </h3>
@@ -3803,7 +3807,7 @@ This function returns the full formatted text of the external reference.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.7.2 Reference to an internal node </h3>
@@ -3843,7 +3847,7 @@ reference.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.8 Commands used for centering and flushing of text </h2>
@@ -3885,7 +3889,7 @@ The default is to return the text unmodified.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.9 Formatting or not a paragraph or a preformatted region </h2>
@@ -3914,7 +3918,7 @@ The default is to return the text unmodified.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.9.1 Paragraph and preformatted region formatting </h3>
@@ -4006,7 +4010,7 @@ the item in the list, <var>$enumerate_style</var> is the argument of the enumera
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.9.2 Avoiding paragraphs in formats </h3>
@@ -4033,7 +4037,7 @@ hash, <a name="IDX218"></a>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.10 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;) </h2>
@@ -4086,7 +4090,7 @@ This function returns the whole complex format.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.11 Customizing the formatting of lists and tables </h2>
@@ -4122,7 +4126,7 @@ At the level of the individual items, rows or cells of the list or table.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.11.1 Formatting individual table and list items </h3>
@@ -4242,7 +4246,7 @@ the row, such that it is possible to distinguish between <code>@item</code> and
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.11.2 Formatting of a whole table or list </h3>
@@ -4308,7 +4312,7 @@ the default, it is possible to redefine the following function reference:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.12 Definition commands formatting </h2>
@@ -4341,7 +4345,7 @@ and the definition function text.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.12.1 Customizing the interpretation of a definition line </h3>
@@ -4400,7 +4404,7 @@ with the definition line is the variables index.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.12.2 Customization of the definition formatting </h3>
@@ -4470,7 +4474,7 @@ formatted by the above functions are in <var>$text</var>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.13 Customizing headings formatting </h2>
@@ -4520,7 +4524,7 @@ with the sectioning element. The following keys are of interest:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.14 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>) </h2>
@@ -4591,7 +4595,7 @@ of the <code>@quotation</code>, unformatted.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.15 Menu formatting </h2>
@@ -4624,7 +4628,7 @@ of each of these parts.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.15.1 The structure of a menu </h3>
@@ -4677,7 +4681,7 @@ because we are in @emph</em>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.15.2 The formatting of the different menu components </h3>
@@ -4777,7 +4781,7 @@ name of the node, and <var>$ending</var> is the text ending the link entry.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.16 Indices formatting </h2>
@@ -4811,7 +4815,7 @@ appear, and the index list is printed with a <code>@printindex</code> command.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.16.1 Formatting of index entries </h3>
@@ -4847,7 +4851,7 @@ attribute in <acronym>HTML</acronym>).
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.16.2 Customizing the formatting of index lists </h3>
@@ -4947,7 +4951,7 @@ the index, the argument of <code>@printindex</code>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.17 Floats and lists of floats </h2>
@@ -5019,7 +5023,7 @@ or a reference.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.17.1 Formatting a float </h3>
@@ -5068,7 +5072,7 @@ above function and formatted.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.17.2 Formatting lists of floats </h3>
@@ -5150,7 +5154,7 @@ function.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.18 Customizing the footnotes formatting </h2>
@@ -5222,7 +5226,7 @@ formatted as explained above. This function modifies the reference.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.19 Customizing other commands, and unknown commands </h2>
@@ -5359,7 +5363,7 @@ with line number added by <code>texi2html</code>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix"> A. Internationalization </h1>
@@ -5392,7 +5396,7 @@ strings.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec"> A.1 Translating strings </h2>
@@ -5422,7 +5426,7 @@ strings.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec"> A.1.1 Contributing to existing translations </h3>
@@ -5458,7 +5462,7 @@ by <code>make</code>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec"> A.1.2 Contributing translations to another language </h3>
@@ -5500,7 +5504,7 @@ take precedence (see section <a href="#SEC17">Use initialization files for fine 
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec"> A.2 Adding new strings written to document </h2>
@@ -5538,7 +5542,7 @@ And to merge the new translation files in <tt>`translations.pl'</tt>, do
 is added to <tt>`Makefile.am'</tt>.
 </p>
 <hr size="6">
-<a name="Indexop"></a>
+<a name="Incompatibilities"></a>
 <a name="SEC93"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC92" title="Previous section in reading order"> &lt; </a>]</td>
@@ -5553,156 +5557,76 @@ is added to <tt>`Makefile.am'</tt>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="appendix"> B. Command Line Option Index </h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC93_0" class="summary-letter"><b>C</b></a>
- &nbsp; 
-<a href="#SEC93_1" class="summary-letter"><b>D</b></a>
- &nbsp; 
-<a href="#SEC93_2" class="summary-letter"><b>E</b></a>
- &nbsp; 
-<a href="#SEC93_3" class="summary-letter"><b>F</b></a>
- &nbsp; 
-<a href="#SEC93_4" class="summary-letter"><b>H</b></a>
- &nbsp; 
-<a href="#SEC93_5" class="summary-letter"><b>I</b></a>
- &nbsp; 
-<a href="#SEC93_6" class="summary-letter"><b>L</b></a>
- &nbsp; 
-<a href="#SEC93_7" class="summary-letter"><b>M</b></a>
- &nbsp; 
-<a href="#SEC93_8" class="summary-letter"><b>N</b></a>
- &nbsp; 
-<a href="#SEC93_9" class="summary-letter"><b>O</b></a>
- &nbsp; 
-<a href="#SEC93_10" class="summary-letter"><b>P</b></a>
- &nbsp; 
-<a href="#SEC93_11" class="summary-letter"><b>S</b></a>
- &nbsp; 
-<a href="#SEC93_12" class="summary-letter"><b>T</b></a>
- &nbsp; 
-<a href="#SEC93_13" class="summary-letter"><b>U</b></a>
- &nbsp; 
-<a href="#SEC93_14" class="summary-letter"><b>W</b></a>
- &nbsp; 
-</td></tr></table>
-<table border="0" class="index-op">
-<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_0">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX51">css-include=<var>file</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_1">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX55">def-table</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX44">doctype=<var>DTD</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX32">D<var>var</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_2">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX3">enable-translations</a></td><td valign="top"><a href="#SEC8">3.4 Advanced build features</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_3">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX38">frames</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX46">frameset-doctype</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX45">frameset-doctype=<var>DTD</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_4">H</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX53">html-xref-prefix=<var>path</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_5">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX36">I<var>dir</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX25">if&lt;region&gt;</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX123">include-css</a></td><td valign="top"><a href="#SEC38">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX71">init-file</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX72">init-file</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX49">iso</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_6">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX63">l2h</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX68">l2h-file</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX64">l2h-l2h=<var>program</var></a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX66">l2h-tmp</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX74">lang</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX208">lang</a></td><td valign="top"><a href="#SEC60">7.6 Customizing strings written by <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX30">lang=<var>lang</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_7">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX5">menu</a></td><td valign="top"><a href="#SEC9">4. Invoking <code>texi2html</code></a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_8">N</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX26">no-if&lt;region&gt;</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX23">node-files</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX4">nomenu</a></td><td valign="top"><a href="#SEC9">4. Invoking <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX28">nomenu</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX40">nosec-nav</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX59">number</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_9">O</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX12">output</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX14">output</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_10">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX34">P<var>dir</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX1">pkgdatadir=<var>dir</var></a></td><td valign="top"><a href="#SEC7">3.3 Installing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX69">pkgdatadir=dir</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX15">prefix</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_11">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX42">separated-footnotes</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX17">short-ext</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX57">short-ref</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX6">split</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX70">sysconfdir=dir</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_12">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX21">toc-file</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX61">toc-links</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX19">top-file</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_13">U</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX8">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX10">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX11">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX33">U<var>var</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC93_14">W</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX2">with-unicode</a></td><td valign="top"><a href="#SEC8">3.4 Advanced build features</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-</table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC93_0" class="summary-letter"><b>C</b></a>
- &nbsp; 
-<a href="#SEC93_1" class="summary-letter"><b>D</b></a>
- &nbsp; 
-<a href="#SEC93_2" class="summary-letter"><b>E</b></a>
- &nbsp; 
-<a href="#SEC93_3" class="summary-letter"><b>F</b></a>
- &nbsp; 
-<a href="#SEC93_4" class="summary-letter"><b>H</b></a>
- &nbsp; 
-<a href="#SEC93_5" class="summary-letter"><b>I</b></a>
- &nbsp; 
-<a href="#SEC93_6" class="summary-letter"><b>L</b></a>
- &nbsp; 
-<a href="#SEC93_7" class="summary-letter"><b>M</b></a>
- &nbsp; 
-<a href="#SEC93_8" class="summary-letter"><b>N</b></a>
- &nbsp; 
-<a href="#SEC93_9" class="summary-letter"><b>O</b></a>
- &nbsp; 
-<a href="#SEC93_10" class="summary-letter"><b>P</b></a>
- &nbsp; 
-<a href="#SEC93_11" class="summary-letter"><b>S</b></a>
- &nbsp; 
-<a href="#SEC93_12" class="summary-letter"><b>T</b></a>
- &nbsp; 
-<a href="#SEC93_13" class="summary-letter"><b>U</b></a>
- &nbsp; 
-<a href="#SEC93_14" class="summary-letter"><b>W</b></a>
- &nbsp; 
-</td></tr></table>
+<h1 class="chapter"> B. Incompatibilities with previous versions </h1>
+
+<p><code>texi2html</code> has accumulated a lot of incompatibilities with previous
+versions. They are documented in the <tt>`NEWS'</tt> file, we discuss them
+here nevertheless. most of the incompatibilities were introduced in 
+version 1.68.
+</p>
+<ul>
+<li> When the manual is split the default is to put resulting files in 
+a directory with name the manual file basename (previously they were left in
+ the current directory). To avoid that, call texi2html with 
+<samp>`-output .'</samp>. This has been changed to be compatible with 
+<code>makeinfo</code> and also because it fits better with the cross
+manuals reference scheme.
+</li><li> The option <samp>`--output'</samp> signification changed. It now
+has the same meaning than for <code>makeinfo</code>. It seems
+that in 1.66 it was the same than <samp>`-out-file'</samp>. 
+<samp>`--output'</samp> new meaning allows to replace <samp>`-out-file'</samp> and 
+<samp>`-subdir'</samp> with a unique option. 
+
+<p>More precisely <samp>`-out-file'</samp> forces the output to be unsplit 
+while <samp>`--output'</samp> behaves differently when split (it specify 
+the directory
+where the manual files should be outputted) and unsplit (it specify
+the output file). <samp>`-subdir'</samp> is retained for backward compatibility.
+</p>
+<p>If you want a backward compatibility you can use <samp>`-subdir'</samp> 
+for the output directory if the document is split, and <samp>`-out-file'</samp>
+if the document isn't split. This hasn't been tested extensively though.
+</p></li><li> Many options has been obsoleted but they are retained for
+backward compatibility.
+</li><li> The init files are searched in new directories, however they 
+are still searched for in the old directories for backward
+compatibility.
+</li><li> the option <samp>`--glossary'</samp> doesn't do anything. Likely
+nothing specific is done regarding bibliographies. This has been
+decided because this added some semantics to the texinfo formatting 
+language that weren't part of texinfo. 
+
+<p>It should be possible to do
+something similar with macros. See for example <tt>`glossary.texi'</tt> 
+for glossary and <tt>`my-bib-macros.texi'</tt> for bibliography
+in the directory <tt>`examples'</tt>. In the web2c package there is
+an example of use of BibTeX, see <a href="http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/">http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/</a> (the examples for bibliography are taken from the
+texinfo home page <a href="http://www.gnu.org/software/texinfo/texinfo.html">http://www.gnu.org/software/texinfo/texinfo.html</a>).
+</p></li><li> don't use <code>T2H_CENTER_IMAGE</code>. <code>@center</code> should be used
+insead, it will give the right output for all the formats.
+</li><li> If a directory creation fails the program aborts. This is much safer.
+</li><li> The interface for internationalisation changed, although
+the previous wasn't documented a lot.
+</li><li> the API described in this manual changed a lot. A important
+change was to use the <code>Texi2HTML::Config</code> names space instead of
+variables prefixed with <samp>`T2H_'</samp> or  <samp>`t2h_'</samp>. To cope with
+the change the prefix should be removed from variables in init files.
+Some variables are now in <code>%Texi2HTML::THISDOC</code>.
+</li><li> <code>@ifinfo</code> regions are not expanded by default. This may lead
+to warnings or errors especially if the Top node is enclosed in 
+<code>@ifinfo</code>, as some node won't appear in menus. The quick fix
+is to call <code>texi2html</code> with the option <samp>`--ifinfo'</samp> and
+the right way should be to make more use of <code>@ifnottex</code>.
+</li><li> The code appearing before the first node is now outputted, it was
+ignored before. <samp>`--ignore-preamble-text'</samp> revert to the previous
+behaviour. Enclosing in <code>@ifnothtml</code> would be much cleaner.
+</li></ul>
+
 <hr size="6">
-<a name="Indexvr"></a>
+<a name="Specificities"></a>
 <a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC93" title="Previous section in reading order"> &lt; </a>]</td>
@@ -5717,20 +5641,317 @@ is added to <tt>`Makefile.am'</tt>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="appendix"> C. Variable Index </h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC94_0" class="summary-letter"><b>$</b></a>
+<h1 class="chapter"> C. How little texi2html texinfo differs from GNU texinfo </h1>
+
+<p>For features documented in the texinfo manual, the texinfo interpretation
+by <code>texi2html</code> shouldn't differ from the interpretation of
+<code>makeinfo</code> or <code>texi2dvi</code>. However for constructs with 
+unspecified behaviour <code>texi2html</code> often doesn't lead to the 
+same result than <code>makeinfo</code> or <code>texi2dvi</code>. <code>makeinfo</code>
+and <code>texi2dvi</code> are also inconsistent in most of these cases (or
+broken). You are urged not to use these features unless absolutely necessary.
+This information is only here to help understand why <code>texi2html</code>
+differ from other texinfo interpreters, it may be inacurate and the 
+<code>texi2html</code> behaviour may change in the future and was different
+in the past.
+</p>
+<dl compact="compact">
+<dt> @-commands with text on the line</dt>
+<dd><p>In the texinfo manual it is specified that block @-commands should appear
+on a line without text and the closing <code>@end</code> should also be on a 
+line by himself. With <code>texi2html</code> it is possible to add
+text before and after the command, so the following is right:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">something @example the example @end example after the example
+</pre></td></tr></table>
+<p><code>makeinfo</code> and <code>texi2dvi</code> may also accept text before
+the command and text after the <code>@end</code> command, sometimes ignoring 
+it after the <code>@end</code>.
+</p>
+<p>This is a feature you should especially not rely on.
+</p>
+</dd>
+<dt> special @-commands handling</dt>
+<dd><p>The special @-commands are commands like <code>@pagesizes</code>, <code>@sp</code>,
+<code>@evenheading</code>, <code>@raisesections</code>, <code>@defindex</code> and a lot
+more. In many cases <code>makeinfo</code> and <code>texi2dvi</code> 
+don't parse those commands the same way too. <code>texi2html</code> may also
+show some differences in parsing of the arguments of these commands, 
+in case there are wrong arguments, and also ignore differently things
+following those commands. How user defined macros, set and values
+are expanded in those commands may also be different.
+Part of the specification of how these commands are handled is 
+configureable (see section <a href="#SEC87">Customizing other commands, and unknown commands</a>), but not what 
+happens during the beginning of the parsing for some of those commands. 
+</p>
+</dd>
+<dt> features different between <code>makeinfo</code> and <code>texi2dvi</code></dt>
+<dd><p>When <code>makeinfo</code> or <code>texi2dvi</code> use a feature which
+is reserved for one or the other translator, <code>texi2html</code> uses that
+feature. So for example <code>@definfoenclose</code> which is ignored by 
+<code>texi2dvi</code> is taken into account and <code>@kbdinputstyle</code> which
+is ignored by <code>makeinfo</code> is taken into account. 
+</p>
+</dd>
+<dt> user defined macros and values</dt>
+<dd><p>In this area <code>makeinfo</code> and <code>texi2dvi</code> also differ a lot.
+The reference implementation is the <code>makeinfo</code> implementation as
+<code>texi2dvi</code> is easily broken when macros are not used simply.
+</p>
+<ul>
+<li> <code>@rmacro</code> and <code>@macro</code> behave exactly the same. In fact
+this goes against a documented behaviour, however if a user don't
+want a recursive macro he can simply avoid reusing the macro in the 
+definition. If somebody report that the feature is usefull we could try
+to implement it.
+</li><li> It is possible to escape the end of a macro definition with
+<table><tr><td>&nbsp;</td><td><pre class="example">\@end macro
+</pre></td></tr></table><p>with the <samp>`\'</samp> being removed after the first expansion. Otherwise
+it is not possible to produce a <code>\@end macro</code> in a macro.
+</p></li><li> <code>@unmacro</code> is interpreted during the macro argument expansion.
+Don't know what <code>makeinfo</code> exactly do.
+</li><li> Some <code>@value</code> may be expanded later than the others, those
+that are in special commands, like <code>@node</code>.
+</li></ul>
+
+</dd>
+<dt> <code>@,</code> in <code>@node</code></dt>
+<dd><p>Like <code>texi2dvi</code> but unlike <code>makeinfo</code> <code>@,</code> don't 
+break <code>@node</code> arguments like a regular <samp>`,'</samp>.
+</p></dd>
+<dt> Things before first node or preamble</dt>
+<dd><p>Things before the first node or before the preamble may not be exactly 
+interpreted or discarded as <code>makeinfo</code> or <code>texi2dvi</code> do.
+</p></dd>
+<dt> encodings</dt>
+<dd><p><code>texi2html</code> knows more encodings, in fact all encodings <code>perl</code>
+knows about.
+</p></dd>
+<dt> commands in <code>@ifset</code> and <code>@ifclear</code></dt>
+<dd><p><code>texi2html</code> doesn't need a proper nesting of internal <code>@ifset</code>
+or <code>@ifclear</code> if they are in ignored or raw regions (like <code>@html</code>
+or <code>@verbatim</code>). For example the following is accepted by 
+<code>texi2html</code> and not by <code>makeinfo</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@ifset notset
+@ignore
+@ifset
+@end ignore
+@end ifset
+</pre></td></tr></table>
+<p>In <code>@ifset</code> and <code>@ifclear</code> texi2html also accepts
+a lot more of invalid constructs. For example the following is accepted
+by <code>texi2html</code> but not by <code>makeinfo</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@set flag
+@ifset flag
+@itemize
+@item my item
+@end ifset
+text
+@ifset flag
+@end itemize
+@end ifset
+</pre></td></tr></table></dd>
+</dl>
+
+<hr size="6">
+<a name="Indexop"></a>
+<a name="SEC95"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC94" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC96" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC94" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="appendix"> D. Command Line Option Index </h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC95_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC94_1" class="summary-letter"><b>%</b></a>
+<a href="#SEC95_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC94_2" class="summary-letter"><b>@</b></a>
+<a href="#SEC95_2" class="summary-letter"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC95_3" class="summary-letter"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC95_4" class="summary-letter"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC95_5" class="summary-letter"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC95_6" class="summary-letter"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC95_7" class="summary-letter"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC95_8" class="summary-letter"><b>N</b></a>
+ &nbsp; 
+<a href="#SEC95_9" class="summary-letter"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC95_10" class="summary-letter"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC95_11" class="summary-letter"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC95_12" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC95_13" class="summary-letter"><b>U</b></a>
+ &nbsp; 
+<a href="#SEC95_14" class="summary-letter"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+<table border="0" class="index-op">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_0">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX51">css-include=<var>file</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_1">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX55">def-table</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX44">doctype=<var>DTD</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX32">D<var>var</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_2">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX3">enable-translations</a></td><td valign="top"><a href="#SEC8">3.4 Advanced build features</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_3">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX38">frames</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX46">frameset-doctype</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX45">frameset-doctype=<var>DTD</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_4">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX53">html-xref-prefix=<var>path</var></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_5">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX36">I<var>dir</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX25">if&lt;region&gt;</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX123">include-css</a></td><td valign="top"><a href="#SEC38">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX71">init-file</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX72">init-file</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX49">iso</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_6">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX63">l2h</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX68">l2h-file</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX64">l2h-l2h=<var>program</var></a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX66">l2h-tmp</a></td><td valign="top"><a href="#SEC16">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX74">lang</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX208">lang</a></td><td valign="top"><a href="#SEC60">7.6 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX30">lang=<var>lang</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_7">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX5">menu</a></td><td valign="top"><a href="#SEC9">4. Invoking <code>texi2html</code></a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_8">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX26">no-if&lt;region&gt;</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX23">node-files</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX4">nomenu</a></td><td valign="top"><a href="#SEC9">4. Invoking <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX28">nomenu</a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX40">nosec-nav</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX59">number</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_9">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX12">output</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX14">output</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_10">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX34">P<var>dir</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX1">pkgdatadir=<var>dir</var></a></td><td valign="top"><a href="#SEC7">3.3 Installing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX69">pkgdatadir=dir</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX15">prefix</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_11">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX42">separated-footnotes</a></td><td valign="top"><a href="#SEC14">4.5 Page layout related command line options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX17">short-ext</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX57">short-ref</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX6">split</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX70">sysconfdir=dir</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_12">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX21">toc-file</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX61">toc-links</a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX19">top-file</a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_13">U</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX8">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX10">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX11">use-nodes</a></td><td valign="top"><a href="#SEC10">4.1 Specifying where to split the generated document</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX33">U<var>var</var></a></td><td valign="top"><a href="#SEC13">4.4 Command line options related to Texinfo language features</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC95_14">W</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX2">with-unicode</a></td><td valign="top"><a href="#SEC8">3.4 Advanced build features</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC95_0" class="summary-letter"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC95_1" class="summary-letter"><b>D</b></a>
+ &nbsp; 
+<a href="#SEC95_2" class="summary-letter"><b>E</b></a>
+ &nbsp; 
+<a href="#SEC95_3" class="summary-letter"><b>F</b></a>
+ &nbsp; 
+<a href="#SEC95_4" class="summary-letter"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC95_5" class="summary-letter"><b>I</b></a>
+ &nbsp; 
+<a href="#SEC95_6" class="summary-letter"><b>L</b></a>
+ &nbsp; 
+<a href="#SEC95_7" class="summary-letter"><b>M</b></a>
+ &nbsp; 
+<a href="#SEC95_8" class="summary-letter"><b>N</b></a>
+ &nbsp; 
+<a href="#SEC95_9" class="summary-letter"><b>O</b></a>
+ &nbsp; 
+<a href="#SEC95_10" class="summary-letter"><b>P</b></a>
+ &nbsp; 
+<a href="#SEC95_11" class="summary-letter"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC95_12" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+<a href="#SEC95_13" class="summary-letter"><b>U</b></a>
+ &nbsp; 
+<a href="#SEC95_14" class="summary-letter"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr size="6">
+<a name="Indexvr"></a>
+<a name="SEC96"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC95" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC97" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="appendix"> E. Variable Index </h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC96_0" class="summary-letter"><b>$</b></a>
+ &nbsp; 
+<a href="#SEC96_1" class="summary-letter"><b>%</b></a>
+ &nbsp; 
+<a href="#SEC96_2" class="summary-letter"><b>@</b></a>
 </td></tr></table>
 <table border="0" class="index-vr">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC94_0">$</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC96_0">$</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX125"><code>$AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#SEC39">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX155"><code>$AFTER_OVERVIEW</code></a></td><td valign="top"><a href="#SEC45">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX157"><code>$AFTER_TOC_LINES</code></a></td><td valign="top"><a href="#SEC45">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
@@ -5831,7 +6052,7 @@ is added to <tt>`Makefile.am'</tt>.
 <tr><td></td><td valign="top"><a href="#IDX90"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#SEC27">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX111"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#SEC35">6.4.3 Function usefull in page formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC94_1">%</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC96_1">%</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX194"><code>%accent_map</code></a></td><td valign="top"><a href="#SEC54">7.3 Customizing accent, style and other simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX95"><code>%ACTIVE_ICONS</code></a></td><td valign="top"><a href="#SEC27">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX115"><code>%BUTTONS_GOTO</code></a></td><td valign="top"><a href="#SEC36">6.5 Preparing the output</a></td></tr>
@@ -5870,7 +6091,7 @@ is added to <tt>`Makefile.am'</tt>.
 <tr><td></td><td valign="top"><a href="#IDX190"><code>%texi_map</code></a></td><td valign="top"><a href="#SEC53">7.2 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX188"><code>%things_map</code></a></td><td valign="top"><a href="#SEC53">7.2 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC94_2">@</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC96_2">@</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX91"><code>@CHAPTER_BUTTONS</code></a></td><td valign="top"><a href="#SEC27">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX52"><code>@CSS_FILES</code></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX27"><code>@EXPAND</code></a></td><td valign="top"><a href="#SEC12">4.3 Specifying which regions get expanded</a></td></tr>
@@ -5882,20 +6103,20 @@ is added to <tt>`Makefile.am'</tt>.
 <tr><td></td><td valign="top"><a href="#IDX87"><code>@SECTION_FOOTER_BUTTONS</code></a></td><td valign="top"><a href="#SEC27">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC94_0" class="summary-letter"><b>$</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC96_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#SEC94_1" class="summary-letter"><b>%</b></a>
+<a href="#SEC96_1" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC94_2" class="summary-letter"><b>@</b></a>
+<a href="#SEC96_2" class="summary-letter"><b>@</b></a>
 </td></tr></table>
 <hr size="6">
 <a name="Indexcp"></a>
-<a name="SEC95"></a>
+<a name="SEC97"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC94" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC96" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC94" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC96" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -5904,119 +6125,119 @@ is added to <tt>`Makefile.am'</tt>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="appendix"> D. Concept Index </h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC95_0" class="summary-letter"><b>A</b></a>
+<h1 class="appendix"> F. Concept Index </h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC97_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC95_1" class="summary-letter"><b>B</b></a>
+<a href="#SEC97_1" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC95_2" class="summary-letter"><b>C</b></a>
+<a href="#SEC97_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC95_3" class="summary-letter"><b>D</b></a>
+<a href="#SEC97_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC95_4" class="summary-letter"><b>E</b></a>
+<a href="#SEC97_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC95_5" class="summary-letter"><b>F</b></a>
+<a href="#SEC97_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC95_6" class="summary-letter"><b>I</b></a>
+<a href="#SEC97_6" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC95_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC97_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC95_8" class="summary-letter"><b>P</b></a>
+<a href="#SEC97_8" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC95_9" class="summary-letter"><b>R</b></a>
+<a href="#SEC97_9" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC95_10" class="summary-letter"><b>S</b></a>
+<a href="#SEC97_10" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC95_11" class="summary-letter"><b>T</b></a>
+<a href="#SEC97_11" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC95_12" class="summary-letter"><b>U</b></a>
+<a href="#SEC97_12" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_0">A</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_0">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC67">Avoid paragraph opening</a></td><td valign="top"><a href="#SEC67">7.9.2 Avoiding paragraphs in formats</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_1">B</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_1">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top">bug report</a></td><td valign="top"><a href="#SEC_Top">Texi2HTML</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_2">C</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_2">C</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC64">centering</a></td><td valign="top"><a href="#SEC64">7.8 Commands used for centering and flushing of text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC68">complex format</a></td><td valign="top"><a href="#SEC68">7.10 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC17"><tt>`Config'</tt></a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC4">configure</a></td><td valign="top"><a href="#SEC4">3. Installation of <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_3">D</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_3">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC3">downloading <code>texi2html</code> source</a></td><td valign="top"><a href="#SEC3">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_4">E</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_4">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC1">examples of manuals</a></td><td valign="top"><a href="#SEC1">1. Overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC62">external manual</a></td><td valign="top"><a href="#SEC62">7.7.1 Reference to external manual</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_5">F</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_5">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC64">flushing text</a></td><td valign="top"><a href="#SEC64">7.8 Commands used for centering and flushing of text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_6">I</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_6">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC60">i18n</a></td><td valign="top"><a href="#SEC60">7.6 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC89">i18n</a></td><td valign="top"><a href="#SEC89">A.1 Translating strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC4">Installation</a></td><td valign="top"><a href="#SEC4">3. Installation of <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC17">internationalization</a></td><td valign="top"><a href="#SEC17">4.8 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC92">internationalized strings</a></td><td valign="top"><a href="#SEC92">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_7">M</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_7">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC2">makeinfo</a></td><td valign="top"><a href="#SEC2">1.1 Why <code>texi2html</code> and not <code>makeinfo</code>?</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC92"><code>manage_i18n.pl</code></a></td><td valign="top"><a href="#SEC92">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_8">P</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_8">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC66">paragraph</a></td><td valign="top"><a href="#SEC66">7.9.1 Paragraph and preformatted region formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC66">preformatted region</a></td><td valign="top"><a href="#SEC66">7.9.1 Paragraph and preformatted region formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_9">R</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_9">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61">reference</a></td><td valign="top"><a href="#SEC61">7.7 References</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_10">S</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_10">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC87">skipped command</a></td><td valign="top"><a href="#SEC87">7.19 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC3">source code for <code>texi2html</code>, downloading</a></td><td valign="top"><a href="#SEC3">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_11">T</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_11">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC3"><code>texi2html</code> source, downloading</a></td><td valign="top"><a href="#SEC3">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC1">Texinfo</a></td><td valign="top"><a href="#SEC1">1. Overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC64">text alignement</a></td><td valign="top"><a href="#SEC64">7.8 Commands used for centering and flushing of text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC89">Translation</a></td><td valign="top"><a href="#SEC89">A.1 Translating strings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC95_12">U</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC97_12">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC87">unknown command</a></td><td valign="top"><a href="#SEC87">7.19 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC95_0" class="summary-letter"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC97_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC95_1" class="summary-letter"><b>B</b></a>
+<a href="#SEC97_1" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC95_2" class="summary-letter"><b>C</b></a>
+<a href="#SEC97_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC95_3" class="summary-letter"><b>D</b></a>
+<a href="#SEC97_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC95_4" class="summary-letter"><b>E</b></a>
+<a href="#SEC97_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC95_5" class="summary-letter"><b>F</b></a>
+<a href="#SEC97_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC95_6" class="summary-letter"><b>I</b></a>
+<a href="#SEC97_6" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC95_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC97_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC95_8" class="summary-letter"><b>P</b></a>
+<a href="#SEC97_8" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC95_9" class="summary-letter"><b>R</b></a>
+<a href="#SEC97_9" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC95_10" class="summary-letter"><b>S</b></a>
+<a href="#SEC97_10" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC95_11" class="summary-letter"><b>T</b></a>
+<a href="#SEC97_11" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC95_12" class="summary-letter"><b>U</b></a>
+<a href="#SEC97_12" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -6024,7 +6245,7 @@ is added to <tt>`Makefile.am'</tt>.
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
@@ -6159,9 +6380,11 @@ is added to <tt>`Makefile.am'</tt>.
     </ul></li>
     <li><a name="TOC88" href="#SEC92">A.2 Adding new strings written to document</a></li>
   </ul></li>
-  <li><a name="TOC89" href="#SEC93">B. Command Line Option Index</a></li>
-  <li><a name="TOC90" href="#SEC94">C. Variable Index</a></li>
-  <li><a name="TOC91" href="#SEC95">D. Concept Index</a></li>
+  <li><a name="TOC89" href="#SEC93">B. Incompatibilities with previous versions</a></li>
+  <li><a name="TOC90" href="#SEC94">C. How little texi2html texinfo differs from GNU texinfo</a></li>
+  <li><a name="TOC91" href="#SEC95">D. Command Line Option Index</a></li>
+  <li><a name="TOC92" href="#SEC96">E. Variable Index</a></li>
+  <li><a name="TOC93" href="#SEC97">F. Concept Index</a></li>
 </ul>
 </div>
 <hr size="1">
@@ -6169,7 +6392,7 @@ is added to <tt>`Makefile.am'</tt>.
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>Short Table of Contents</h1>
@@ -6183,9 +6406,11 @@ is added to <tt>`Makefile.am'</tt>.
 <li><a name="TOC21" href="#SEC21">6. Fine tuning of the page layout</a></li>
 <li><a name="TOC47" href="#SEC51">7. Customizing <acronym>HTML</acronym> and text style in init files</a></li>
 <li><a name="TOC84" href="#SEC88">A. Internationalization</a></li>
-<li><a name="TOC89" href="#SEC93">B. Command Line Option Index</a></li>
-<li><a name="TOC90" href="#SEC94">C. Variable Index</a></li>
-<li><a name="TOC91" href="#SEC95">D. Concept Index</a></li>
+<li><a name="TOC89" href="#SEC93">B. Incompatibilities with previous versions</a></li>
+<li><a name="TOC90" href="#SEC94">C. How little texi2html texinfo differs from GNU texinfo</a></li>
+<li><a name="TOC91" href="#SEC95">D. Command Line Option Index</a></li>
+<li><a name="TOC92" href="#SEC96">E. Variable Index</a></li>
+<li><a name="TOC93" href="#SEC97">F. Concept Index</a></li>
 </ul>
 </div>
 <hr size="1">
@@ -6193,12 +6418,12 @@ is added to <tt>`Makefile.am'</tt>.
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>August, 9 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August, 19 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -6300,7 +6525,7 @@ is added to <tt>`Makefile.am'</tt>.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>August, 9 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August, 19 2005</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
  </font>
  <br>
 

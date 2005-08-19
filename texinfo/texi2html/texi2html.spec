@@ -1,7 +1,6 @@
 Name: texi2html
 Version: 1.77
 Release: 1
-Epoch: 0
 License: GPL
 Group: Applications/Text
 Summary: A highly customizable texinfo to HTML and other formats translator

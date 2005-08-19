@@ -129,7 +129,7 @@ verbatim_html.texi(,133) @example
 verbatim_html.texi(,134) @sc{aeei}
 verbatim_html.texi(,135) @end example
 verbatim_html.texi(,136) 
-verbatim_html.texi(,140) ignore bidule ignore
+verbatim_html.texi(,140) ignore  bidule ignore
 verbatim_html.texi(,142) 
 verbatim_html.texi(,143) Ignore is the same than @@html.
 verbatim_html.texi(,144) 

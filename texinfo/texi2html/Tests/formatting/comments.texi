@@ -33,6 +33,7 @@ Text line followed by a comment on the same line and another below @oddfooting c
 Text line after the comment followed by a comment @oddfooting c
 Text line after the text line followed by the comment.
 
+@@pagesizes @pagesizes 200mm,150mm following @@pagesizes arg
 @@afourpaper @afourpaper on line following afourpaper
 @@smallbook @smallbook on line following smallbook
 @@headings @headings on line following headings
@@ -42,19 +43,42 @@ Text line after the text line followed by the comment.
 @@evenheading @evenheading on line following evenheading
 @@evenfooting @evenfooting on line following evenfooting
 @@oddheading @oddheading on line following 
+@ifnottex
 @@need @need 0.1 on line following
+@end ifnottex
+@@need @need 0.1 
 @@setchapternewpage @setchapternewpage on line following setchapternewpage
 @@raisesections @raisesections on line following raisesections
 @@lowersections @lowersections on line following lowersections
+@c @@kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
+@ifnottex
 @@kbdinputstyle code @kbdinputstyle code something
+@end ifnottex
 @@afourpaper @afourpaper on line following afourpaper
 @@afourlatex @afourlatex on line following afourlatex
 @@afourwide @afourwide on line following afourwide
-@c @@kbdinputstyle @kbdinputstyle on line following kbdinputstyle
 
+@c tex error: Use of \ doesn't match its definition.
+@ifnottex
 @@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
 
 @phoo{bar}
+@end ifnottex
+
+@@definfoenclose phi,:,:  @definfoenclose phi,:,:
+
+@c this is required
+@iftex
+@global@let@phi=@i
+@end iftex
+
+@phi{bar}
+
+@strong{very strong}
+
+@definfoenclose strong,(strong:,:)
+
+@strong{ is it really strong? }
 
 Makeinfo ignore @@kbdinputstyle:
 
@@ -68,7 +92,6 @@ Makeinfo ignore @@kbdinputstyle:
 
 @subheading ignore arg
 
-@c @@pagesizes @pagesizes arg following @@pagesizes arg
 
 Commands doesn't accept anything after a non numerical arg on the line
 and ignore things after a numerical arg
@@ -78,13 +101,23 @@ and ignore things after a numerical arg
 @@paragraphindent none @paragraphindent none
 @@paragraphindent 4 @paragraphindent 4
 @@firstparagraphindent none @firstparagraphindent none
+@ifnottex
 @@exampleindent 6 @exampleindent 6 on line following exampleindent
+@end ifnottex
+@@exampleindent 6 @exampleindent 6 
 @@footnotestyle @footnotestyle end 
 @@footnotestyle @footnotestyle separate 
 
+Special arg for documentencoding. makeinfo complains, not tex
+
+@documentencoding
+@@documentencoding @documentencoding bad encoding name
+@documentencoding ISO-8859-1
 @c accepts on or off
+@ignore
 @@frenchspacing @frenchspacing on
 @@frenchspacing @frenchspacing off
+@end ignore
 
 @ignore
 @@ @ on line following 
@@ -140,7 +173,9 @@ Text line followed by a comment on the same line and another below @sp 1
 @sp 2
 Text line after the comment followed by a comment @sp 1
 Text line after the text line followed by the comment.
+@ifnottex
 @sp 2 a number after sp
+@end ifnottex
 
 Menu:
 @menu

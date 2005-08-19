@@ -5,13 +5,16 @@ This file records noteworthy changes.
 * NEW FEATURES
   ------------
 
-* Handle @frenchspacing.
+* Handle @frenchspacing and @tie.
 
 * The `examples' directory now contains an init file for Mediawiki output.
   Mediawiki is the GPL'd wiki used by Wikipedia.
 
 * Init files now have a chance to override all file names, rather than just
   page names.
+
+* Put the images under a double licence by adding back their original GPL
+  licence.
 
 * BUG FIXES
   ---------
@@ -28,6 +31,8 @@ This file records noteworthy changes.
   will simply copy the files instead of breaking.
 
 * remove handling of quotation second arg, quotation has only one arg.
+
+* handle nested ifset/ifclear.
 
 * FOR DEVELOPERS
   --------------

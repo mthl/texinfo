@@ -41,7 +41,10 @@ dist_pkgdata_DATA = l2h.init \
 	examples/inlinestyle.init \
 	examples/utf8.init \
 	examples/chm.init \
-	examples/roff.init	
+	examples/roff.init \
+	examples/my-bib-macros.texi \
+	examples/bib-example.texi \
+	examples/glossary.texi 
 
 dist_i18n_DATA = i18n/en \
 	i18n/de \
