@@ -1,3 +1,10 @@
+2005-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, doc/texi2html.texi:
+	add the possibility, with SIMPLE_MENU to have a menu simply enclosed
+	in a preformatted environment. Maybe fixes bug #14233. 
+	* Tests/formatting*, Tests/test.sh: more tests for menus, SIMPLE_MENU. 
+
 2005-08-19  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: Add support for nested ifset and ifclear. Re-add check 

@@ -2533,7 +2533,7 @@ the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 @deftypefn {Function Reference} $preformatted_text preformatted $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format $item_number $enumerate_style $number
 This function formats a preformatted region. @var{$text} is the text of the
 preformatted region, @var{$style} is the css style associated with that
-preformatted region (@xref{css}). @var{$region_name} is the 
+preformatted region (@pxref{css}). @var{$region_name} is the 
 name of the command opening        
 the preformatted region (@code{example}@dots{}, see @ref{Complex formats}) 
 or a identifier for the preformatted context (for example 
@@ -2590,10 +2590,22 @@ of the complex format commands (@code{example}, @code{smallexample},
 @code{lisp}, @code{smalllisp}, @code{display}, @code{smalldisplay}, 
 @code{format}, @code{smallformat}).
 
-The associated value is also a reference on a hash. The keys are @code{begin}
-and @code{end}. An eval of @code{begin} should lead to the beginning of the
-formatted @acronym{HTML}, an eval of @code{end} should lead to the end of the 
-formatted @acronym{HTML}. The enclosed text will be formatted as described in
+The associated value is also a reference on a hash. The keys are:
+
+@table @code
+@item begin
+An eval of @code{begin} should lead to the beginning of the
+formatted @acronym{HTML}.
+@item end
+An eval of @code{end} should lead to the end of the 
+formatted @acronym{HTML}.
+@item class
+The @acronym{HTML} class. If not defined, the command name.
+@item pre_style
+The preformatted style. If not defined the corresponding @acronym{CSS} style
+is used.
+@end table 
+The enclosed text will be formatted as described in
 @ref{Paragraph and preformatted region}, and the name of the complex
 format will be available to the function formatting the text.
 
@@ -2944,14 +2956,30 @@ an identifier which can be used as an @acronym{XML} identifier.
 @node Menus
 @section Menu formatting
 
+There are two possibilities for menu formatting:
+
+@itemize @bullet
+@item format the whole menu in a preformatted environment, like 
+in @ref{Complex formats};
+@item format the menu in table with more specialized formatting for each
+part of the menu; 
+@end itemize
+
+The simple formatting is used if @variable{$SIMPLE_MENU} is true, 
+otherwise the format with tables is used (this is the default).
+
 To understand how the formatting of menus is controlled, the different
 parts of a menu are first described, then how to control the formatting
-of each of these parts.
+of each of these parts, for each possible formatting.
 
 @menu
-* Menu parts::                 A menu consists in menu entry and menu 
-                               comments
-* Menu formatting::
+* Menu parts::                  A menu consists in menu entry and menu 
+                                comments
+* Menu components formatting::  
+* Simple menu formatting::      formatting of a whole menu in a simple 
+                                preformatted environement
+* Table menu formatting::       formatting of a whole menu in a
+                                table environment
 @end menu
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -2961,7 +2989,7 @@ of each of these parts.
 In @command{texi2html}, a menu is considered to be composed of 2 parts, the
 @dfn{menu entries} and the @dfn{menu comments}. Menu entries are further 
 divided in an @dfn{entry link} and optionnaly an @dfn{entry description}.
-The entry link consists in a node name and an optionnal  menu entry
+The entry link consists in a node name and an optionnal menu entry
 name.
 
 A menu entry begins with @samp{*} at the beginning of the line. It begins
@@ -2975,7 +3003,7 @@ Here is an illustration of these rules:
 
 @example
 @@menu
-* node name: entry name.        description begins
+* entry name: node name.        description begins
    description continues
 * another menu entry::
    description begins
@@ -2986,15 +3014,69 @@ Here is an illustration of these rules:
 * node::                        description begins
 A menu comment. The line starts at the first character
 
-* last entry::         description begins @emph{text
+* last entry::         description begins @@emph@{text
 of the description, even if the line begins at the first character,
-because we are in @@emph}.
+because we are in @@emph@}.
 @@end menu
 @end example
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node Menu formatting
+@node Menu components formatting
 @subsection The formatting of the different menu components
+
+Three function references are associated with the formatting of the 
+different parts of a menu:
+@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending
+@var{$section} is the section name corresponding with the link, @var{$href}
+is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
+holds informations about the current context. The only key which could be
+of interest is @code{preformatted}, true if the context is a preformatted
+context. @xref{Three contexts}. 
+@var{$node} is the node name, @var{$name} is the
+name of the node. @var{$ending} is the text ending the link entry, 
+in general @samp{::} followed by some spaces.
+@end deftypefn
+
+@deftypefn {Function Reference} $description menu_description $description_text \%state
+@var{$description_text} is the text of the menu description. @var{\%state}
+should be used similarly than for the menu link.
+@end deftypefn
+
+@deftypefn {Function Reference} $menu_comment menu_comment $text
+@var{$text} is the text of the menu comment. It is always in a preformatted 
+environment.
+@end deftypefn
+
+Another function reference corresponds with a special case. It
+is used when a menu entry appears within another block command, to
+avoid the possibilities of invalid @acronym{HTML} production.
+In that case the menu description and menu comments are not formatted 
+specially, but treated like normal text.
+@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending
+@var{$link_text} is the text corresponding with the link name, @var{$href}
+is the link hypertextual reference.
+@var{$node} is the node name, @var{$name} is the
+name of the node, and @var{$ending} is the text ending the link entry.
+@end deftypefn
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Simple menu formatting
+@subsection  Simple menu formatting in a preformatted environment
+
+If the menu is to be formatted in a single preformatted environment,
+an entry for @samp{menu} should be added to the @code{$complex_format_map}
+hash reference (@pxref{Complex formats}).
+In the default case, if the user didn't add an entry himself, a very simple 
+entry is used, with:
+
+@example
+$complex_format_map->@{'menu'@} = @{ 'begin' => q@{''@} , 'end' => q@{''@},
+    'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' @};
+@end example
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Table menu formatting
+@subsection The formatting of the menu in a table
 
 In the default case, the name of the section corresponding with the 
 node is used instead of the node name. If @variable{$NODE_NAME_IN_MENU} is 
@@ -3014,45 +3096,12 @@ associated with this preformatted text is determined by
 @variable{$MENU_PRE_STYLE}. Default is @samp{font-family: serif}.
 The css class associated with menu comments is @code{menu-comments}.
 
-Three function references are associated with the formatting of the 
-different parts of a menu:
-@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending
-@var{$section} is the section name corresponding with the link, @var{$href}
-is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
-holds informations about the current context. The only key which could be
-of interest is @code{preformatted}, true if the context is a preformatted
-context. @xref{Three contexts}. 
-@var{$node} is the node name, @var{$name} is the
-name of the node, and @var{$ending} is the text ending the link entry.
-@end deftypefn
-
-@deftypefn {Function Reference} $description menu_description $description_text \%state
-@var{$description_text} is the text of the menu description. @var{\%state}
-should be used similarly than for the menu link.
-@end deftypefn
-
-@deftypefn {Function Reference} $menu_comment menu_comment $text
-@var{$text} is the text of the menu comment. It is in a preformatted 
-environment.
-@end deftypefn
-
-The following function reference controls the formatting of a wole menu:
+The following function reference controls the formatting of a wole menu
+in that case:
 
 @deftypefn {Function Reference} $menu menu $menu_components_text
 @var{$menu_components_text} is the formatted menu components text, obtained
 as explained above.
-@end deftypefn
-
-The last function reference corresponds with a special case. It
-is used when a menu entry appears within another block command, to
-avoid the possibilities of invalid @acronym{HTML} production.
-In that case the menu description and menu comments are not formatted 
-specially, but treated like normal text.
-@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending
-@var{$link_text} is the text corresponding with the link name, @var{$href}
-is the link hypertextual reference.
-@var{$node} is the node name, @var{$name} is the
-name of the node, and @var{$ending} is the text ending the link entry.
 @end deftypefn
 
 @c --------------------------------------------------------

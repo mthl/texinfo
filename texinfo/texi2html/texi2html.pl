@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.145 2005-08-19 12:14:46 pertusus Exp $
+# $Id: texi2html.pl,v 1.146 2005-08-21 21:31:55 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -261,6 +261,7 @@ $VERTICAL_HEAD_NAVIGATION
 $WORDS_IN_PAGE
 $ICONS
 $UNNUMBERED_SYMBOL_IN_MENU
+$SIMPLE_MENU
 $MENU_SYMBOL
 $OPEN_QUOTE_SYMBOL
 $CLOSE_QUOTE_SYMBOL
@@ -7611,7 +7612,11 @@ sub end_format($$$$$)
     #print STDERR "END FORMAT $format\n";
     #dump_stack($text, $stack, $state);
     #sleep 1;
-    close_menu($text, $stack, $state, $line_nr) if ($format_type{$format} eq 'menu');
+    if ($format_type{$format} eq 'menu')
+    {
+        $state->{'menu'}--;
+        close_menu($text, $stack, $state, $line_nr); 
+    }
     if (($format_type{$format} eq 'list') or ($format_type{$format} eq 'table'))
     { # those functions return if they detect an inapropriate context
         add_item($text, $stack, $state, $line_nr, '', 1); # handle lists
@@ -7672,19 +7677,7 @@ sub end_format($$$$$)
             delete $state->{'float'};
         }
     }
-    elsif ($format_type{$format} eq 'menu')
-    {
-        if ($state->{'preformatted'})
-        {
-            # end the fake complex format
-            $state->{'preformatted'}--;
-            pop @{$state->{'preformatted_stack'}};
-            pop @$stack;
-        }
-        $state->{'menu'}--;
-        add_prev($text, $stack, &$Texi2HTML::Config::menu($format_ref->{'text'}));
-    }
-    elsif ($format_type{$format} eq 'complex')
+    elsif (exists ($Texi2HTML::Config::complex_format_map->{$format}))
     {
         $state->{'preformatted'}--;
         pop @{$state->{'preformatted_stack'}};
@@ -7718,6 +7711,18 @@ sub end_format($$$$$)
             add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}));
         }
     } 
+    elsif ($format_type{$format} eq 'menu')
+    {
+    # it should be short-circuited if $Texi2HTML::Config::SIMPLE_MENU
+        if ($state->{'preformatted'})
+        {
+            # end the fake complex format
+            $state->{'preformatted'}--;
+            pop @{$state->{'preformatted_stack'}};
+            pop @$stack;
+        }
+        add_prev($text, $stack, &$Texi2HTML::Config::menu($format_ref->{'text'}));
+    }
     elsif ($format eq 'quotation')
     {
         my $quotation_args = pop @{$state->{'quotation_stack'}};
@@ -7803,8 +7808,11 @@ sub close_menu($$$$)
             dump_stack($text, $stack, $state);
         }
         add_prev($text, $stack, &$Texi2HTML::Config::menu_comment($menu_comment->{'text'}));
-        pop @{$state->{'preformatted_stack'}};
-        $state->{'preformatted'}--;
+        unless ($Texi2HTML::Config::SIMPLE_MENU)
+        {
+            pop @{$state->{'preformatted_stack'}};
+            $state->{'preformatted'}--;
+        }
         $state->{'menu_comment'}--;
     }
     if ($state->{'menu_entry'})
@@ -9818,9 +9826,12 @@ sub scan_line($$$$;$)
             {
                 $state->{'menu_comment'}++;
                 push @$stack, {'format' => 'menu_comment', 'text' => ''};
-                push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-comment' };
-                $state->{'preformatted'}++;
-                begin_paragraph($stack, $state);
+                unless ($Texi2HTML::Config::SIMPLE_MENU)
+                {
+                    push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-comment' };
+                    $state->{'preformatted'}++;
+                    begin_paragraph($stack, $state);
+                }
             }
 	    #dump_stack ($text, $stack, $state);
         }
@@ -10021,6 +10032,7 @@ sub scan_line($$$$;$)
             {
                 echo_error ("\@end $end_tag without corresponding opening element", $line_nr);
                 add_prev($text, $stack, "\@end $end_tag");
+                dump_stack ($text, $stack, $state) if ($T2H_DEBUG);
                 next;
             }
             # Warn if the format on top of stack is not compatible with the 
@@ -10534,6 +10546,11 @@ sub scan_line($$$$;$)
                 {
                     close_paragraph($text, $stack, $state, $line_nr);
                 }
+                if ($format_type{$macro} eq 'menu')
+                {
+                    close_menu($text, $stack, $state, $line_nr);
+                    $state->{'menu'}++;
+                }
                 #print STDERR "begin $macro\n";
                 # A deff like macro
                 if (defined($Texi2HTML::Config::def_map{$macro}))
@@ -10597,26 +10614,14 @@ sub scan_line($$$$;$)
                     #add_prev ($text, $stack, &$Texi2HTML::Config::def_line($category, $name, $type, $arguments, $index_label));
                     #return;
                 }
-                elsif ($format_type{$macro} eq 'menu')
-                {
-                    # if we are allready in a menu we must close it first
-                    # in order to close the menu comments and entries
-                    close_menu($text, $stack, $state, $line_nr);
-                    $state->{'menu'}++;
-                    push @$stack, { 'format' => $macro, 'text' => '' };
-                    if ($state->{'preformatted'})
-                    {
-                    # Start a fake complex format in order to have a given pre style
-                        $state->{'preformatted'}++;
-                        push @$stack, { 'format' => 'menu_preformatted', 'text' => '', 'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE };
-                        push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-preformatted' };
-                    }
-                }
                 elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
                 {
                     $state->{'preformatted'}++;
-                    my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'} };
-                    push @{$state->{'preformatted_stack'}}, {'pre_style' =>$Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'}, 'class' => $macro };
+                    my $complex_format =  $Texi2HTML::Config::complex_format_map->{$macro};
+                    my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $complex_format->{'pre_style'} };
+                    my $class = $macro;
+                    $class = $complex_format->{'class'} if (defined($complex_format->{'class'}));
+                    push @{$state->{'preformatted_stack'}}, {'pre_style' =>$complex_format->{'pre_style'}, 'class' => $class };
                     push @$stack, $format;
                     unless ($Texi2HTML::Config::format_in_paragraph{$macro})
                     {
@@ -10636,6 +10641,21 @@ sub scan_line($$$$;$)
                     if (!no_paragraph($state,$_) or automatic_preformatted($state,$macro))
                     {
                         begin_paragraph($stack, $state);
+                    }
+                }
+                elsif ($format_type{$macro} eq 'menu')
+                {
+                    # if we are allready in a menu we must close it first
+                    # in order to close the menu comments and entries
+                    # if $Texi2HTML::Config::SIMPLE_MENU it should be
+                    # short-cicuited as it should be a complex format
+                    push @$stack, { 'format' => $macro, 'text' => '' };
+                    if ($state->{'preformatted'})
+                    {
+                    # Start a fake complex format in order to have a given pre style
+                        $state->{'preformatted'}++;
+                        push @$stack, { 'format' => 'menu_preformatted', 'text' => '', 'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE };
+                        push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-preformatted' };
                     }
                 }
                 elsif (($format_type{$macro} eq 'list') or ($format_type{$macro} eq 'table'))

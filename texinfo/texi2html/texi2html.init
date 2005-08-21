@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.86 2005-08-19 12:14:46 pertusus Exp $
+# $Id: texi2html.init,v 1.87 2005-08-21 21:31:55 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -324,6 +324,8 @@ $SPLIT_INDEX = 100;
 $MENU_SYMBOL = '&bull;';
 #$MENU_SYMBOL = '*';
 
+$SIMPLE_MENU = 0;
+
 $OPEN_QUOTE_SYMBOL = "\`";
 $CLOSE_QUOTE_SYMBOL = "'";
 
@@ -557,6 +559,11 @@ sub t2h_default_init_out()
     }
     # FIXME default might be utf8 ?
     $DOCUMENT_ENCODING = 'us-ascii' if (!defined($DOCUMENT_ENCODING));
+    if ($SIMPLE_MENU and !defined($complex_format_map->{'menu'}))
+    {
+        $complex_format_map->{'menu'} = { 'begin' => q{''} , 'end' => q{''},
+           'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' };
+    }
     
     return $to_encoding;
 };
@@ -3306,6 +3313,7 @@ sub t2h_default_menu_link($$$$$$)
         $entry = "$MENU_SYMBOL$name$node";
     }
     $entry = &$anchor ('', $href, $entry) if (defined($href));
+    return $entry if ($SIMPLE_MENU); 
     if ($state->{'preformatted'})
     {
         return '<tr><td>' . main::do_preformatted($entry . $ending, $state);
@@ -3325,6 +3333,7 @@ sub t2h_default_menu_description($$)
 {
     my $text = shift;
     my $state = shift;
+    return $text if ($SIMPLE_MENU); 
     if ($state->{'preformatted'})
     {
         return main::do_preformatted($text, $state) . '</td></tr>';
@@ -3347,6 +3356,7 @@ sub t2h_default_menu_description($$)
 sub t2h_default_menu_comment($)
 {
    my $text = shift;
+   return $text if ($SIMPLE_MENU); 
    if ($text =~ /\S/)
    {
        return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">$text</th></tr>";

@@ -16,6 +16,9 @@ This file records noteworthy changes.
 * Put the images under a double licence by adding back their original GPL
   licence.
 
+* If SIMPLE_MENU is true the menu is simply enclosed in a preformatted 
+  environment.
+
 * BUG FIXES
   ---------
 
