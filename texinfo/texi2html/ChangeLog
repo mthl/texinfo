@@ -1,3 +1,8 @@
+2005-08-22  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.init (t2h_default_simple_menu_link): Don't add &nbsp; when
+	in preformatted mode.
+
 2005-08-21  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, doc/texi2html.texi:
