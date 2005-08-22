@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.3 2005-08-12 21:20:14 dprice Exp $
+# $Id: mediawiki.init,v 1.4 2005-08-22 19:26:10 dprice Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -48,7 +48,8 @@ $SECTION_AS_FILE_NAME = 1;
 # after they have more than that many entries
 undef $SPLIT_INDEX;
 
-
+# Use preformatted menus.
+$SIMPLE_MENU = 1;
 
 ###################################################################
 # Layout of standard header and footer
@@ -553,4 +554,34 @@ sub mediawiki_index_summary($$)
 	   . "<tr><th valign=\"top\">" . &$I('Jump to') .":</th>\n"
     	   . join ("", map {"<td>$_</td>\n"} @$nonalpha, @$alpha),
 	   . "</tr></table>\n";
+}
+
+
+
+# a simple menu entry ref in case we aren't in a standard menu context
+$simple_menu_link  = \&mediawiki_simple_menu_link;
+
+sub mediawiki_simple_menu_link($$$$$$)
+{
+    my $entry = shift;
+    my $preformatted = shift; # We assume this is true.
+    my $href = shift;
+    my $node = shift;
+    my $name = shift;
+    my $ending = shift;
+    $ending = '' unless defined $ending;
+    $entry = "</nowiki>";
+    $entry .= "$MENU_SYMBOL";
+    if ($href)
+    {
+	$entry .= &$anchor ('', $href, $node);
+    }
+    else
+    {
+	$name .= ":" if $name;
+	$entry .= "$name$node";
+    }
+    $entry .= $ending;
+    $entry .= "<nowiki>";
+    return $entry;
 }
