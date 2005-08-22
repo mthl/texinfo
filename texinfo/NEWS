@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.116 2005-08-17 12:43:07 karl Exp $
+$Id: NEWS,v 1.117 2005-08-22 12:06:45 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -38,7 +38,7 @@ convenience, here's a url to one of the relevant sections:
   . look for info files in the current directory first, by default.
   . when calling man, use -a if no explicit section is found.
 * Distribution:
-  . automake 1.9.5, gettext 0.14.5.
+  . automake 1.9.6, gettext 0.14.5.
   . gettext support now [external].
   . new translation: rw (Kinyarwandan).
 
