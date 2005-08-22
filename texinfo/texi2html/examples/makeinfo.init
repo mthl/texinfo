@@ -7,6 +7,8 @@ $USE_NODES = 1;
 
 $SPLIT = 'node';
 
+$NODE_FILES = 1;
+
 $SECTION_NAVIGATION = 1;
 
 $SHORT_REF = 1;
@@ -145,3 +147,81 @@ sub makeinfo_like_listoffloats($$$)
     }
     return $result . "</ul>\n";
 }
+
+# formats a menu entry link pointing to a node or section 
+#
+# arguments:
+# the entry text
+# the state, a hash reference holding informations about the context, with a 
+#     usefull entry, 'preformatted', true if we are in a preformatted format
+#     (a format keeping space between words). In that case a function
+#     of the main program, main::do_preformatted($text, $state) might 
+#     be used to format the text with the current format style.
+# href is optionnal. It is the reference to the section or the node anchor
+#     which should be used to make the link (typically it is the argument 
+#     of a href= attribute in a <a> element).
+sub makeinfo_like_menu_link($$$$$$)
+{
+    my $entry = shift;
+    my $state = shift;
+    my $href = shift;
+    my $node = shift;
+    my $name = shift;
+    my $ending = shift;
+    if (($entry eq '') or $NODE_NAME_IN_MENU or $state->{'preformatted'})
+    {
+        $name .= ':' if ($name ne '');
+        $entry = "$name$node";
+    }
+    $entry = &$anchor ('', $href, $entry) if (defined($href));
+    return $entry if ($SIMPLE_MENU); 
+#    if ($state->{'preformatted'})
+#    {
+#        return '<li>' . main::do_preformatted($entry . $ending, $state);
+#    }
+    return "<li> $entry";
+}
+
+# formats a menu entry description, ie the text appearing after the node
+# specification in a menu entry an spanning until there is another
+# menu entry, an empty line or some text at the very beginning of the line
+# (we consider that text at the beginning of the line begins a menu comment) 
+#
+# arguments:
+# the description text
+# the state. See menu_entry.
+sub makeinfo_like_menu_description($$)
+{
+    my $text = shift;
+    my $state = shift;
+    return $text if ($SIMPLE_MENU); 
+#    if ($state->{'preformatted'})
+#    {
+#        return main::do_preformatted($text, $state) . '</td></tr>';
+#    }
+    return "$text</li>\n";
+}
+
+# a menu comment (between menu lines)
+# formats the container of a menu comment. A menu comment is any text 
+# appearing between menu lines, either separated by an empty line from
+# the preceding menu entry, or a text beginning at the first character
+# of the line (text not at the very beginning of the line is considered to
+# be the continuation of a menu entry description text).
+#
+# The text itself is considered to be in a preformatted environment
+# with name 'menu-commment' and with style $MENU_PRE_STYLE.
+#
+# argument
+# text contained in the menu comment.
+sub makeinfo_like_menu_comment($)
+{
+   my $text = shift;
+   return $text if ($SIMPLE_MENU); 
+   if ($text =~ /\S/)
+   {
+       return "</ul>$text<ul>";
+   }
+   return '';
+}
+
