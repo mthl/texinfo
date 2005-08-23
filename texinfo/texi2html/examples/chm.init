@@ -180,7 +180,6 @@ my $hhp_lines = '';
 sub chm_init_out()
 {
     my $encoding = &$default_init_out();
-    $TOC_FILE = $Texi2HTML::THISDOC{'file_base_name'}.'.hhc';
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open(IDXFILE, ">:encoding(utf8)", $hhk_file)
         || die "Can't open $file_name for writing: $!\n";
@@ -206,14 +205,14 @@ sub chm_init_out()
         $language = $chm_languages{$LANG};
     }
     my $title = to_utf8($Texi2HTML::THISDOC{'title_texi'});
-
+    my $top_file = $Texi2HTML::THISDOC{'filename'}->{'top'};
     print HHPFILE <<EOT;
 [OPTIONS]
 Compatibility=1.1 or later
 Compiled file=$Texi2HTML::THISDOC{'file_base_name'}.chm
 Contents file=$Texi2HTML::THISDOC{'file_base_name'}.hhc
 Default Window=Default
-Default topic=$TOP_FILE
+Default topic=$top_file
 Display compile progress=No
 Full-text search=Yes
 Index file=$Texi2HTML::THISDOC{'file_base_name'}.hhk
@@ -221,7 +220,7 @@ Language=$language
 Title=$title
 
 [WINDOWS]
-Default=,"$Texi2HTML::THISDOC{'file_base_name'}.hhc","$Texi2HTML::THISDOC{'file_base_name'}.hhk","$TOP_FILE","$TOP_FILE",,,,,0x22520,,0x384e,,,,,,,,0
+Default=,"$Texi2HTML::THISDOC{'file_base_name'}.hhc","$Texi2HTML::THISDOC{'file_base_name'}.hhk","$top_file","$top_file",,,,,0x22520,,0x384e,,,,,,,,0
 
 [FILES]
 EOT

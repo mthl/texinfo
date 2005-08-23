@@ -284,7 +284,7 @@ producing, have a look at the following sites:
 
 You would like to produce @acronym{HTML} files from your existing Texinfo
 files?  There are two programs you can use to do this.  The first is
-@command{makeinfo} (@pxref{Generating HTML,,,texinfo}).
+@command{makeinfo} (@pxref{Generating HTML,,,texinfo,GNU Texinfo}).
 The second is @command{texi2html}.
 
 The design goal of @command{makeinfo}'s @acronym{HTML} output was to produce
@@ -539,7 +539,7 @@ element.
 
 This default behaviour mimics @command{texi2dvi} behaviour, which ignores 
 @code{@@node} commands for the purprose of sectioning, while the second
-looks like @command{makeinfo} behaviour (@pxref{Two Paths,,, texinfo}). 
+looks like @command{makeinfo} behaviour (@pxref{Two Paths,,,texinfo,GNU Texinfo}). 
 
 As an illustration, the following table shows how a sample Texinfo document is
 divided into sectioning elements when @longopt{use-nodes} is used and not:
@@ -796,7 +796,7 @@ specified, and @samp{-} stands for the standard input (array
 @variable{@@CSS_FILES}). 
 
 The option use is the same than for @command{makeinfo} and is described
-extensively in @ref{HTML CSS,,,texinfo}.
+extensively in @ref{HTML CSS,,,texinfo,GNU Texinfo}.
 Briefly, the @acronym{CSS} @code{@@import} lines from the external file
 @acronym{CSS} file are pasted  before the
 @c What does this mean?  I don't think I clarified this one much.  -DRP
@@ -1358,6 +1358,23 @@ Homepage for @command{texi2html}.
 Authors of @command{texi2html}.
 @item file_base_name
 base name of the texinfo manual file.
+@item filename
+This is a reference on a hash that holds the filenames for special elements.
+The keys are
+@table @code
+@item doc
+the document file if not split, if split should be the top element file. 
+@item top
+Top element file name.
+@item toc 
+Table of contents element file name.
+@item stoc
+Overview (also called short table of contents) element file name.
+@item about
+About element file name.
+@item foot
+Footnotes element file name.
+@end table
 @item destination_directory
 Destination directory for the resulting files.
 @item toc_file
@@ -2417,13 +2434,13 @@ external manual.
 node name mapped to an identifier acceptable as a file name. 
 @var{$xml_node_identifier} is the
 node name mapped to an identifier acceptable as an @acronym{XML} identifier.
-Those identifiers are built as explained in @ref{HTML Xref,,,texinfo},
+Those identifiers are built as explained in @ref{HTML Xref,,,texinfo,GNU Texinfo},
 thus allowing for cross references to external manuals. @var{$file} is the
 manual or file name of the external reference. This function should return an
 href leading to the external manual.
 
 The default for this function is to make a reference compatible with 
-@command{makeinfo}  (@pxref{HTML Xref,,,texinfo}).
+@command{makeinfo}  (@pxref{HTML Xref,,,texinfo,GNU Texinfo}).
 @end deftypefn
 
 @deftypefn {Function Reference} $text external_ref $command $section $book $node_and_file $href $cross_ref_name

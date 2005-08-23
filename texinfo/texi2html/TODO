@@ -87,3 +87,10 @@ IMO a good default. In the future you may also add that as an
 option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
+
+* cleanup the use of unformatted. Currently there is no text unformatted,
+  only lines
+
+* normal text should call protect_text himself. 
+
+* no_protection should be the default with 'remove_texi'.

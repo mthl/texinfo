@@ -163,7 +163,7 @@ test_texi index_table split_chapter_index.texi "-split chapter -init index_test.
 test_texi index_table index_split.texi "-split chapter -output . -init index_test.init"
 test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html -output ."
 test_texi index_table no_node.texi "-init index_test.init -split chapter -output ." 3
-test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -output . -prefix nodes_more_before_top -top-file nodes_more_before_top.html" 0 texi nodes_more_before_top
+test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -output . -prefix nodes_more_before_top -top-file nodes_more_before_top.html -no-node-files" 0 texi nodes_more_before_top
 test_texi index_table more_before_top.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
@@ -180,7 +180,10 @@ test_texi macros ifset_in_macro.texi
 test_texi macros not_ifset_text.texi
 test_texi macros bib-example.texi
 test_texi sectionning
-test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top novalidate.html -output ."
+test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -prefix novalidate_split -top novalidate_split.html -no-node-file -output ." 0 texi novalidate_split
+test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -split no -no-node-file"  
+#test_texi sectionning novalidate.texi 
+#test_texi sectionning novalidate.texi "-split node -output ."
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
 test_texi sectionning nodes_test.texi "" 5
@@ -195,7 +198,7 @@ test_texi sectionning one_node_and_section.texi
 test_texi sectionning first_section_and_nodes.texi "" 1
 test_texi sectionning double_top.texi "" 3
 test_texi sectionning rec_nodes.texi
-test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html  -output ." 0 texi makeinfo_rec_nodes
+test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html -no-node-files -output ." 0 texi makeinfo_rec_nodes
 test_texi sectionning ref_in_anchor.texi "" 1
 test_texi sectionning brace_not_closed.texi "" 1
 test_texi sectionning lower_subsub.texi

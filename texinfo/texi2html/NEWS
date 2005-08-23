@@ -19,6 +19,13 @@ This file records noteworthy changes.
 * If SIMPLE_MENU is true the menu is simply enclosed in a preformatted 
   environment.
 
+* COMPATIBILITY
+  -------------
+
+* $TOP_FILE and $TOC_FILE are only set if set by the user. The elements
+  file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
+  for use in init files.
+
 * BUG FIXES
   ---------
 

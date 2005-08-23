@@ -327,49 +327,42 @@ sub get_string($;$$)
         }
     }
     return main::substitute_line($string, $state) unless (defined($arguments) or !keys(%$arguments));
+    # if there are arguments, we must protect the %{arg} constructs before
+    # doing substitute_line. So there is a first pass here to change %{arg} 
+    # to %@{arg@}
     my $result = '';
-    while ($string)
-    {
-        if ($string =~ s/^([^%]*)%//)
-        {
-            $result .= $1 if (defined($1));
-            $result .= '%';
-            if ($string =~ s/^%//)
-            {
-                 $result .= '%';
-            }
-            elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
-            {
-                 $string =~ s/^\{(\w+)\}//;
-                 if (!$state->{'keep_texi'})
-                 {
-                      $result .= "\@\{$1\@\}";
-                 }
-                 else
-                 {
-                      $result .= "\{$1\}";
-                 }
-            }
-            else
-            {
-                 $result .= '%';
-            }
-            next;
-        }
-        else 
-        {   
-            $result .= $string;
-            last;
-        }
-    }
     if (!$state->{'keep_texi'})
     {
-         $string = main::substitute_line($result, $state);
+        while ($string)
+        {
+            if ($string =~ s/^([^%]*)%//)
+            {
+                $result .= $1 if (defined($1));
+                $result .= '%';
+                if ($string =~ s/^%//)
+                {
+                     $result .= '%';
+                }
+                elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
+                {
+                     $string =~ s/^\{(\w+)\}//;
+                     $result .= "\@\{$1\@\}";
+                }
+                else
+                {
+                     $result .= '%';
+                }
+                next;
+            }
+            else 
+            {   
+                $result .= $string;
+                last;
+            }
+        }
+        $string = main::substitute_line($result, $state);
     }
-    else
-    {
-         $string = $result;
-    }
+    # now we substitute the arguments 
     $result = '';
     while ($string)
     {

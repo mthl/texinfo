@@ -1,3 +1,16 @@
+2005-08-22  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: use node_file_name for the top
+	element too. Honor $TOP_FILE in node_file_name.
+	don't set $TOP_FILE and $TOC_FILE if not set by the user. The elements
+	file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
+	for use in init files.
+	* doc/texi2html.texi: document $Texi2HTML::THISDOC{'filename'}.
+	* examples/chm.init: update to the new interface.
+	* examples/makeinfo.init: format the menus like makeinfo do. set
+	NODE_FILES true.
+	* Tests/*: rearrange, update. Test for novalidate split and unsplit.
+
 2005-08-22  Derek Price  <derek@ximbiot.com>
 
 	* examples/mediawiki.init (mediawiki_simple_menu_link): New function.

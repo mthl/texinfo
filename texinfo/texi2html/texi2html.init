@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.88 2005-08-22 19:24:43 dprice Exp $
+# $Id: texi2html.init,v 1.89 2005-08-23 06:58:03 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1442,12 +1442,36 @@ $AFTER_BODY_OPEN
 EOT
 }
 
-sub T2H_DEFAULT_node_file_name($)
+sub T2H_DEFAULT_node_file_name($$)
 {
     my $node = shift;
+    my $type = shift;
     return (undef, undef) if ($node->{'external_node'} or $node->{'index_page'});
     my $file;
     my $node_file;
+    if ($type eq 'top')
+    {
+        my $default_top_file;
+        if ($NEW_CROSSREF_STYLE)
+        {
+             $default_top_file  = "$TOP_NODE_FILE.$NODE_FILE_EXTENSION";
+        }
+        else
+        {
+             $default_top_file  = undef; 
+        }
+        $top_file = $default_top_file;
+        if ($SPLIT eq 'node')
+        {
+            if (defined($TOP_FILE) and ($TOP_FILE ne ''))
+            {
+                $top_file = $TOP_FILE;
+            }
+            $file = $top_file; 
+        }
+        $node_file = $default_top_file;
+        return ($file, $node_file);
+    }
     
     if ($NEW_CROSSREF_STYLE)
     {
@@ -3446,7 +3470,9 @@ sub t2h_default_external_href($$$)
          {
               if (!$SPLIT)
               {
-                   $file = $TOP_FILE;
+              #     $file = $TOP_FILE;
+              # point to the file document itself 
+                    $file = ''; 
               }
          }
     }
