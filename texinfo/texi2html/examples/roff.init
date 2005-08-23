@@ -519,19 +519,31 @@ sub t2h_roff_protect_text($)
 {
    my $text = shift;
    $text =~ s/\\/\\e/g;
-   $text =~ s/$;---$;/\\(em/g;
-   $text =~ s/$;--$;/-/g;
-   $text =~ s/$;-$;/\\-/g;
+#   $text =~ s/$;---$;/\\(em/g;
+#   $text =~ s/$;--$;/-/g;
+#   $text =~ s/$;-$;/\\-/g;
    $text =~ s/^\./\\&./;
    $text =~ s/([\s])\./$1\\&./g;
    return $text;
 }
 
-sub t2h_roff_normal_text($)
+sub t2h_roff_normal_text($$$$)
 {
-    my $text = shift;
+   my $text = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_code =shift;
+   $text = &$protect_text($text) unless($in_raw_text);
+   if (! $in_code and !$in_preformatted and !$in_raw_text)
+   {
+       $text =~ s/---/\\(em/g;
+       $text =~ s/--/\\(en/g;
+       $text =~ s/-/\\-/g;
+       $text =~ s/``/\\(lq/g;
+       $text =~ s/''/\\(rq/g;
+    }
     #$text =~ s/---/\\(em/g;
-    $text =~ s/(--?-?)/$;$1$;/go;
+    #$text =~ s/(--?-?)/$;$1$;/go;
     return $text;
 }
 

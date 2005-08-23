@@ -11,10 +11,10 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
-<title>CVS--Concurrent Versions System v1.12.1.1: 12. Keyword substitution</title>
+<title>CVS&mdash;Concurrent Versions System v1.12.1.1: 12. Keyword substitution</title>
 
-<meta name="description" content="CVS--Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
-<meta name="keywords" content="CVS--Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.12.1.1: 12. Keyword substitution">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -219,7 +219,7 @@ See section <a href="#SEC104">Problems with the $<i></i>Log$ keyword.</a>.
 </dd>
 <dt> <code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
-assigned with <code>cvs admin -s</code>--see <a href="cvs_16.html#SEC121">admin options</a>.
+assigned with <code>cvs admin -s</code>&mdash;see <a href="cvs_16.html#SEC121">admin options</a>.
 </p>
 <a name="IDX194"></a>
 </dd>
@@ -238,11 +238,11 @@ look something like this:
    * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
    */
 </pre></td></tr></table>
-<p>Many repositories make use of a such a &quot;local
-keyword&quot; feature. An old patch to <small>CVS</small> provided
+<p>Many repositories make use of a such a &ldquo;local
+keyword&rdquo; feature. An old patch to <small>CVS</small> provided
 the <code>LocalKeyword</code> feature using a <code>tag=</code>
-option and called this the &quot;custom tag&quot; or &quot;local
-tag&quot; feature. It was used in conjunction with the
+option and called this the &ldquo;custom tag&rdquo; or &ldquo;local
+tag&rdquo; feature. It was used in conjunction with the
 what they called the <code>tagexpand=</code> option. In
 <small>CVS</small> this other option is known as the
 <code>KeywordExpand</code> option. 
@@ -265,7 +265,7 @@ conflicts that arise during an import of a new version.
 </p>
 <p>All keyword expansion except the local keyword may be
 disabled using the <code>KeywordExpansion</code> option in
-the <tt>`CVSROOT/config'</tt> file--see 
+the <tt>`CVSROOT/config'</tt> file&mdash;see 
 <a href="#SEC103">Configuring Keyord Expansion</a> for more details.
 </p>
 </dd>
@@ -378,9 +378,9 @@ and <code>troff</code> you can embed the null-character
 <p>It is also possible to specify an explicit list of
 keywords to include or exclude using the
 <code>KeywordExpand</code> option in the
-<tt>`CVSROOT/config'</tt> file-see <a href="#SEC103">Configuring Keyord Expansion</a>
+<tt>`CVSROOT/config'</tt> file&ndash;see <a href="#SEC103">Configuring Keyord Expansion</a>
 for more details. This feature is intended primarily
-for use with the <code>LocalKeyword</code> option-see
+for use with the <code>LocalKeyword</code> option&ndash;see
 <a href="#SEC99">Keyword List</a>.
 </p>
 <hr size="6">
@@ -474,7 +474,7 @@ the keyword names are removed, so this option should be
 used with care.
 </p>
 <p>One often would like to use <samp>`-kv'</samp> with <code>cvs
-export</code>--see section <a href="cvs_16.html#SEC135">export--Export sources from CVS, similar to checkout</a>.  But be aware that doesn't
+export</code>&mdash;see section <a href="cvs_16.html#SEC135">export&mdash;Export sources from CVS, similar to checkout</a>.  But be aware that doesn't
 handle an export containing binary files correctly.
 </p>
 </dd>
@@ -511,7 +511,7 @@ $<i></i>OpenBSD$, and even $<i></i>dotat$.
 The advantage of this is that
 you can include your local version information in a
 file using this local keyword (sometimes called a
-&quot;custom tag&quot; or a &quot;local tag&quot;) without disrupting
+&ldquo;custom tag&rdquo; or a &ldquo;local tag&rdquo;) without disrupting
 the upstream version information (which may be a
 different local keyword or a standard keyword). In
 these cases, it is typically desirable to disable the
@@ -606,7 +606,7 @@ recognized.
 controversial.  As long as you are working on your
 development system the information is easily accessible
 even if you do not use the <code>$<i></i>Log$</code>
-keyword--just do a <code>cvs log</code>.  Once you export
+keyword&mdash;just do a <code>cvs log</code>.  Once you export
 the file the history information might be useless
 anyhow.
 </p>

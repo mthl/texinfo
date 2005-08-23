@@ -88,9 +88,5 @@ option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
 
-* cleanup the use of unformatted. Currently there is no text unformatted,
-  only lines
-
-* normal text should call protect_text himself. 
-
-* no_protection should be the default with 'remove_texi'.
+* test case for cross refs with @ commands in nodes.
+see info texinfo for the specification of the result 

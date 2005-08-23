@@ -1,3 +1,28 @@
+2005-08-23  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: don't use ucfirst as it relies on the current
+	locale language, not the document language, instead set first 
+	uppercase character in description.
+	Translate button names.
+	* texi2html.pl, texi2html.init: cleanings. Correct overprotection 
+	of alt text for images. Avoid calling protect_text in the main 
+	program for raw text, left it to the formatting functions, but
+	call it for formatted and simply formated text. 
+	More formatting of normal text is done outside of the main program,
+	more context information is given to normal_text and normal_text
+	has to protect whatever needs to be. 
+	properly remove closed @-commands from the style_stack. 
+	unformatted and UNFORMATTED are replaced by simple_format and
+	SIMPLE_TEXT. Still not documented as it may change.
+	Change images formatting function call.
+	Handle @sc in normal_text to avoid upper-casing html entity 
+	characters.
+	Use entities for ``, '', --- and -- if USE_ISO is set.
+	* examples/roff.init: update.
+	* doc/texi2html.texi: update.
+	* Tests/formatting/*: test for translations with icons.
+	
+
 2005-08-22  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: use node_file_name for the top

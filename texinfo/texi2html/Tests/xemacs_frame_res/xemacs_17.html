@@ -69,7 +69,7 @@ buffer back into the file.
 </p>
 <a name="IDX527"></a>
 <a name="IDX528"></a>
-<p>  Emacs is also able to handle &quot;remote files&quot; which are stored on
+<p>  Emacs is also able to handle &ldquo;remote files&rdquo; which are stored on
 other hosts.  Not only is Emacs somewhat aware of the special issues
 involved with network file systems, but it can also use FTP and ssh (or
 rsh) to make local copies of the files, and refresh them on the remote
@@ -100,7 +100,7 @@ and append to files, and operate on file directories.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC162">14.8 Comparing Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Finding where two files differ.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC163">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &quot;Editing&quot; a directory to delete, rename, etc.
+<tr><td align="left" valign="top"><a href="#SEC163">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &ldquo;Editing&rdquo; a directory to delete, rename, etc.
                      the files in it.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC168">14.10 Miscellaneous File Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Other things you can do on files.
@@ -502,7 +502,7 @@ to the file it is now visiting unless the new name is already used by a
 different buffer; in that case, the buffer name is not changed.
 <code>set-visited-file-name</code> does not save the buffer in the newly
 visited file; it just alters the records inside Emacs so that it will
-save the buffer in that file.  It also marks the buffer as &quot;modified&quot;
+save the buffer in that file.  It also marks the buffer as &ldquo;modified&rdquo;
 so that <kbd>C-x C-s</kbd> <i>will</i> save.
 </p>
 <a name="IDX566"></a>
@@ -571,7 +571,7 @@ all the functions to be called after writing out a buffer to a file.
 <p>  Because Unix does not provide version numbers in file names, rewriting a
 file in Unix automatically destroys all record of what the file used to
 contain.  Thus, saving a file from Emacs throws away the old contents of
-the file--or it would, except that Emacs carefully copies the old contents
+the file&mdash;or it would, except that Emacs carefully copies the old contents
 to another file, called the <em>backup</em> file, before actually saving.
 (Make sure that the variable <code>make-backup-files</code> is non-<code>nil</code>.
 Backup files are not written if this variable is <code>nil</code>).
@@ -897,7 +897,7 @@ before.  If you have made more extensive changes, after reversion point
 may be in a totally different context than your last edits before
 reversion.
 </p>
-<p>A buffer reverted from its visited file is marked &quot;not modified&quot; until
+<p>A buffer reverted from its visited file is marked &ldquo;not modified&rdquo; until
 you make a change.  The buffer's modes will also be recalculated, by
 <code>normal-mode</code>.
 </p>
@@ -1287,7 +1287,7 @@ file writable for you (but not for anyone else).
 <p>  When you are finished editing the file, type <kbd>C-x C-q</kbd> again.
 When used on a file that is checked out, this command checks the file
 in.  But check-in does not start immediately; first, you must enter the
-<em>log entry</em>--a description of the changes in the new version.
+<em>log entry</em>&mdash;a description of the changes in the new version.
 <kbd>C-x C-q</kbd> pops up a buffer for you to enter this in.  When you are
 finished typing in the log entry, type <kbd>C-c C-c</kbd> to terminate it; this is
 when actual check-in takes place.
@@ -1309,7 +1309,7 @@ attempt to visit the file with Emacs creates it again.
 </p>
 <p>  It is not impossible to lock a file that someone else has locked.  If
 you try to check out a file that is locked, <kbd>C-x C-q</kbd> asks you
-whether you want to &quot;steal the lock.&quot;  If you say yes, the file
+whether you want to &ldquo;steal the lock.&rdquo;  If you say yes, the file
 becomes locked by you, but a message is sent to the person who had
 formerly locked the file, to inform him of what has happened.  The mode
 line indicates that a file is locked by someone else by displaying the
@@ -1369,7 +1369,7 @@ this source file.
 <a name="IDX600"></a>
 <p>  To specify the version number for a subsequent checkin, use the
 command <kbd>C-u C-x v v</kbd>.  <kbd>C-x v v</kbd> (<code>vc-next-action</code>) is the
-command that <kbd>C-x C-q</kbd> uses to do the &quot;real work&quot; when the visited
+command that <kbd>C-x C-q</kbd> uses to do the &ldquo;real work&rdquo; when the visited
 file uses version control.  When used for checkin, and given a prefix
 argument, it reads the version number with the minibuffer.
 </p>
@@ -1825,7 +1825,7 @@ overwriting work in progress.
 </p></dd>
 </dl>
 
-<p>  A snapshot uses a very small amount of resources--just enough to record
+<p>  A snapshot uses a very small amount of resources&mdash;just enough to record
 the list of file names and which version belongs to the snapshot.  Thus,
 you need not hesitate to create snapshots whenever they are useful.
 </p>
@@ -1939,7 +1939,7 @@ or <code>SCCS</code> and <var>string</var> is the string to use.
 each string in the list is inserted as a separate header on a line of
 its own.
 </p>
-<p>  It is often necessary to use &quot;superfluous&quot; backslashes when writing
+<p>  It is often necessary to use &ldquo;superfluous&rdquo; backslashes when writing
 the strings that you put in this variable.  This is to prevent the
 string in the constant from being interpreted as a header itself if the
 Emacs Lisp file containing it is maintained with version control.
@@ -2081,7 +2081,7 @@ source files.  You can also move to a particular hunk of changes and
 type <kbd>C-c C-c</kbd> to find the corresponding source location.  You can
 also use the other special commands of Compilation mode: <kbd>SPC</kbd> and
 <kbd>DEL</kbd> for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
-See section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>.
+See section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
 </p>
 <a name="IDX626"></a>
 <p>  The command <kbd>M-x diff-backup</kbd> compares a specified file with its most
@@ -2200,11 +2200,11 @@ window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd
 <p>  Once the Dired buffer exists, you can switch freely between it and other
 Emacs buffers.  Whenever the Dired buffer is selected, certain special
 commands are provided that operate on files that are listed.  The Dired
-buffer is &quot;read-only&quot;, and inserting text in it is not useful, so
+buffer is &ldquo;read-only&rdquo;, and inserting text in it is not useful, so
 ordinary printing characters such as <kbd>d</kbd> and <kbd>x</kbd> are used for Dired
 commands.  Most Dired commands operate on the file described by the line
 that point is on.  Some commands perform operations immediately; others
-&quot;flag&quot; a file to be operated on later.
+&ldquo;flag&rdquo; a file to be operated on later.
 </p>
 <p>  Most Dired commands that operate on the current line's file also treat a
 numeric argument as a repeat count, meaning to act on the files of the

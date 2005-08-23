@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.89 2005-08-23 06:58:03 pertusus Exp $
+# $Id: texi2html.init,v 1.90 2005-08-23 23:51:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -478,6 +478,7 @@ $finish_out    = \&t2h_default_finish_out;
 sub t2h_default_init_out()
 {
 # Names of text as alternative for icons
+# FIXME maybe get those in simple_format?
     %NAVIGATION_TEXT =
     (
      'Top',         &$I('Top'),
@@ -491,10 +492,10 @@ sub t2h_default_init_out()
      'Prev',        &$I('Prev'),
      'Up',          &$I(' Up '),
      'Next',        &$I('Next'),
-     'NodeUp',      &$I('node up'),
-     'NodeNext',    &$I('next node'),
-     'NodePrev',    &$I('previous node'),
-     'Following',   &$I('following node'),
+     'NodeUp',      &$I('Node up'),
+     'NodeNext',    &$I('Next node'),
+     'NodePrev',    &$I('Previous node'),
+     'Following',   &$I('Following node'),
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',
@@ -504,26 +505,51 @@ sub t2h_default_init_out()
 
     %BUTTONS_GOTO =
     (
-     'Top',         &$I('cover (top) of document'),
-     'Contents',    &$I('table of contents'),
-     'Overview',    &$I('short table of contents'),
-     'Index',       &$I('index'),
-     'This',        &$I('current section'),
-     'Back',        &$I('previous section in reading order'),
-     'FastBack',    &$I('beginning of this chapter or previous chapter'),
-     'Prev',        &$I('previous section on same level'),
-     'Up',          &$I('up section'),
-     'Next',        &$I('next section on same level'),
-     'NodeUp',      &$I('up node'),
-     'NodeNext',    &$I('next node'),
-     'NodePrev',    &$I('previous node'),
-     'Following',   &$I('node following in node reading order'),
-     'Forward',     &$I('next section in reading order'),
-     'FastForward', &$I('next chapter'),
-     'About' ,      &$I('about (help)'),
-     'First',       &$I('first section in reading order'),
-     'Last',        &$I('last section in reading order'),
+     'Top',         &$I('Cover (top) of document'),
+     'Contents',    &$I('Table of contents'),
+     'Overview',    &$I('Short table of contents'),
+     'Index',       &$I('Index'),
+     'This',        &$I('Current section'),
+     'Back',        &$I('Previous section in reading order'),
+     'FastBack',    &$I('Beginning of this chapter or previous chapter'),
+     'Prev',        &$I('Previous section on same level'),
+     'Up',          &$I('Up section'),
+     'Next',        &$I('Next section on same level'),
+     'NodeUp',      &$I('Up node'),
+     'NodeNext',    &$I('Next node'),
+     'NodePrev',    &$I('Previous node'),
+     'Following',   &$I('Node following in node reading order'),
+     'Forward',     &$I('Next section in reading order'),
+     'FastForward', &$I('Next chapter'),
+     'About' ,      &$I('About (help)'),
+     'First',       &$I('First section in reading order'),
+     'Last',        &$I('Last section in reading order'),
     );
+
+    %BUTTONS_NAME =
+    (
+     'Top',         &$I('Top'),
+     'Contents',    &$I('Contents'),
+     'Overview',    &$I('Overview'),
+     'Index',       &$I('Index'),
+     ' ',           ' ',
+     'This',        &$I('This'),
+     'Back',        &$I('Back'),
+     'FastBack',    &$I('FastBack'),
+     'Prev',        &$I('Prev'),
+     'Up',          &$I('Up'),
+     'Next',        &$I('Next'),
+     'NodeUp',      &$I('NodeUp'),
+     'NodeNext',    &$I('NodeNext'),
+     'NodePrev',    &$I('NodePrev'),
+     'Following',   &$I('Following'),
+     'Forward',     &$I('Forward'),
+     'FastForward', &$I('FastForward'),
+     'About',       &$I('About'),
+     'First',       &$I('First'),
+     'Last',        &$I('Last')
+    );
+
     # Set the default body text, inserted between <body ... >
     $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
     if (!defined($EXTERNAL_CROSSREF_SPLIT))
@@ -603,18 +629,18 @@ $EXTERNAL_CROSSREF_SPLIT = undef;
 # As a general interface, the hashes Texi2HTML::HREF, Texi2HTML::NAME, Texi2HTML::NODE, Texi2HTML::NO_TEXI, hold
 # href, html-name, node-name, name after removal of texi commands of
 # This     -- current section (resp. html page)
-# Top      -- top page FIXME: ($T2H_TOP_FILE)
-# Contents -- Table of contents
-# Overview -- Short table of contents
-# Index    -- Index page
-# About    -- page which explain "navigation buttons"
-# First    -- first node
-# Last     -- last node
+# Top      -- top element
+# Contents -- Table of contents element
+# Overview -- Short table of contents element
+# Index    -- Index page element
+# About    -- page which explain "navigation buttons" element
+# First    -- first node element
+# Last     -- last node element
 #
 # Whether or not the following hash values are set, depends on the context
 # (all values are w.r.t. 'This' section)
-# Next        -- next node of texinfo
-# Prev        -- previous node of texinfo
+# Next        -- next element of texinfo
+# Prev        -- previous element of texinfo
 # NodeUp      -- up node of texinfo
 # Following   -- following node in node reading order, taking menu into account
 # Forward     -- next node in reading order
@@ -655,7 +681,6 @@ $EXTERNAL_CROSSREF_SPLIT = undef;
 # $Texi2HTML::TITLEPAGE     -- lines of title page
 #
 # $Texi2HTML::THIS_ELEMENT  holds the element reference.  
-## FIXME: $T2H_TOP           -- lines of Top texinfo node
 
 #
 # There are the following subs which control the layout:
@@ -909,10 +934,8 @@ sub T2H_DEFAULT_print_section_header
 sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'title_unformatted'}";
-    $longtitle .= ": $Texi2HTML::UNFORMATTED{'This'}" if exists $Texi2HTML::UNFORMATTED{'This'};
-    #my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
-    #$longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
+    my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
     my $description = $DOCUMENT_DESCRIPTION;
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
@@ -1050,16 +1073,25 @@ sub T2H_DEFAULT_button_icon_img
     my $icon = shift;
     my $name = shift;
     return '' if (!defined($icon));
-    if (defined($name) && $name)
+    $button = "" if (!defined ($button));
+    $name = '' if (!defined($name));
+    my $alt = ''; 
+    if ($name ne '')
     {
-        $name = ": $name";
+        if ($button ne '')
+        {
+            $alt = "$button: $name";
+        }
+        else
+        {
+            $alt = $name;
+        }  
     }
     else
     {
-        $name = '';
+        $alt = $button;
     }
-    $button = "" if (!defined ($button));
-    return qq{<img src="$icon" border="0" alt="$button$name" align="middle">};
+    return qq{<img src="$icon" border="0" alt="$alt" align="middle">};
 }
 
 sub T2H_DEFAULT_print_navigation
@@ -1089,6 +1121,7 @@ sub T2H_DEFAULT_print_navigation
         {
             my $text = $button->[1];
             my $button_href = $button->[0];
+            # verify that $button_href is simple text and text is a reference
             if (defined($button_href) and !ref($button_href) 
                and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
             {             # use given text
@@ -1110,24 +1143,23 @@ sub T2H_DEFAULT_print_navigation
         elsif ($button eq ' ')
         {                       # handle space button
             print $fh
-                $ICONS && $ACTIVE_ICONS{' '} ?
-                    &$button_icon_img($button, $ACTIVE_ICONS{' '}) :
+                ($ICONS && $ACTIVE_ICONS{' '}) ?
+                    &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{' '}) :
                         $NAVIGATION_TEXT{' '};
             #next;
         }
         elsif ($Texi2HTML::HREF{$button})
         {                       # button is active
             my $btitle = $BUTTONS_GOTO{$button} ?
-                'title="' . ucfirst($BUTTONS_GOTO{$button}) . '"' : '';
+                'title="' . $BUTTONS_GOTO{$button} . '"' : '';
             if ($ICONS && $ACTIVE_ICONS{$button})
             {                   # use icon
                 print $fh '' .
                     &$anchor('',
                         $Texi2HTML::HREF{$button},
-                        &$button_icon_img($button,
+                        &$button_icon_img($BUTTONS_NAME{$button},
                                    $ACTIVE_ICONS{$button},
-                                   #$Texi2HTML::NAME{$button}),
-                                   $Texi2HTML::NO_TEXI{$button}),
+                                   $Texi2HTML::SIMPLE_TEXT{$button}),
                         $btitle
                       );
             }
@@ -1147,10 +1179,9 @@ sub T2H_DEFAULT_print_navigation
         {                       # button is passive
             print $fh
                 $ICONS && $PASSIVE_ICONS{$button} ?
-                    &$button_icon_img($button,
+                    &$button_icon_img($BUTTONS_NAME{$button},
                                           $PASSIVE_ICONS{$button},
-                                          #$Texi2HTML::NAME{$button}) :
-                                          $Texi2HTML::NO_TEXI{$button}) :
+                                          $Texi2HTML::SIMPLE_TEXT{$button}) :
 
                                               "[" . $NAVIGATION_TEXT{$button} . "]";
         }
@@ -1318,11 +1349,11 @@ EOT
         $about .= "  <tr>\n    <td align=\"center\">";
         $about .=
             ($ICONS && $ACTIVE_ICONS{$button} ?
-             &$button_icon_img($button, $ACTIVE_ICONS{$button}) :
+             &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{$button}) :
              ' [' . $NAVIGATION_TEXT{$button} . '] ');
         $about .= "</td>\n";
         $about .= <<EOT;
-    <td align="center">$button</td>
+    <td align="center">$BUTTONS_NAME{$button}</td>
     <td>$BUTTONS_GOTO{$button}</td>
     <td>$BUTTONS_EXAMPLE{$button}</td>
   </tr>
@@ -1410,8 +1441,8 @@ sub T2H_DEFAULT_titlepage()
 sub T2H_DEFAULT_print_redirection_page($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
-    $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
+    my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
     my $description = $longtitle;
     $description = $Texi2HTML::THISDOC{'documentdescription'} if (defined($Texi2HTML::THISDOC{'documentdescription'}));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
@@ -1894,7 +1925,8 @@ my %old_style_map = (
       'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
       'r',          {},
       'samp',       {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
-      'sc',         {'function' => \&t2h_default_sc},
+#      'sc',         {'function' => \&t2h_default_sc},
+      'sc',         {'attribute' => 'small'},
       'strong',     {'attribute' => 'strong'},
       't',          {'attribute' => 'tt'},
       'uref',       {'function' => \&t2h_default_uref, 
@@ -2316,7 +2348,7 @@ sub default_sc($$)
 }
 
 sub t2h_default_sc($$$)
-{
+{ 
     shift;
     my $args = shift;
     return '<small>' . uc($args->[0]) . '</small>';
@@ -2515,10 +2547,12 @@ foreach my $command (keys(%style_map))
     }
 }
 
-$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
+#$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
+$style_map_pre{'sc'} = '';
 $style_map_pre{'titlefont'} = {};
 
-$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
+#$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
+$style_map_texi{'sc'} = {};
 $style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
 
 ####### special styles. You shouldn't need to change them
@@ -2541,13 +2575,9 @@ my %special_style = (
            'abbr',    {'args' => ['keep','keep'], 'function' => \&main::do_acronym_like},
 );
 
-# FIXME the unless defined(.... are now unusefull because the user can
-# overwrite.
-
 # @image is replaced by the first arg in strings
 $style_map_texi{'image'} = { 'args' => ['keep'],
-       'function' => \&t2h_default_no_texi_image }
-    unless (defined($style_map_texi{'image'}));
+       'function' => \&t2h_default_no_texi_image };
 
 $style_map_texi{'acronym'} = { 'args' => ['keep','keep'],
        'function' => \&t2h_default_no_texi_acronym_like };
@@ -2580,26 +2610,26 @@ foreach my $special (keys(%special_style))
 #%style_map_pre = %old_style_map_pre;
 
 #FIXME USE_ISO ?
-%unformatted_text_simple_map_texi = %simple_map_pre;
-%unformatted_text_texi_map = %pre_map;
-%unformatted_text_style_map_texi = ();
+%simple_format_simple_map_texi = %simple_map_pre;
+%simple_format_texi_map = %pre_map;
+%simple_format_style_map_texi = ();
 
 foreach my $command (keys(%style_map_texi))
 {
-    #$unformatted_text_style_map_texi{$command} = {};
+    #$simple_format_style_map_texi{$command} = {};
     foreach my $key (keys (%{$style_map_texi{$command}}))
     {
     #print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
-        $unformatted_text_style_map_texi{$command}->{$key} = 
+        $simple_format_style_map_texi{$command}->{$key} = 
              $style_map_texi{$command}->{$key};
     }
-    $unformatted_text_style_map_texi{$command} = {} if (!defined($unformatted_text_style_map_texi{$command}));
+    $simple_format_style_map_texi{$command} = {} if (!defined($simple_format_style_map_texi{$command}));
 }
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
-#    $unformatted_text_style_map_texi{$accent_command}->{'args'} = ['normal'];
-    $unformatted_text_style_map_texi{$accent_command}->{'function'} = \&t2h_default_accent;
+#    $simple_format_style_map_texi{$accent_command}->{'args'} = ['normal'];
+    $simple_format_style_map_texi{$accent_command}->{'function'} = \&t2h_default_accent;
 }
 
 %format_map = (
@@ -2924,6 +2954,7 @@ $index_entry       = \&t2h_default_index_entry;
 $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_print_index;
 $protect_text      = \&t2h_default_protect_text;
+$normal_text       = \&t2h_default_normal_text;
 $complex_format    = \&t2h_default_complex_format;
 $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
@@ -3168,6 +3199,69 @@ sub t2h_default_protect_text($)
    $text =~ s/</&lt;/g;
    $text =~ s/>/&gt;/g;
    $text =~ s/\"/&quot;/g;
+   return $text;
+}
+
+
+sub in_small_caps($)
+{
+   my $style_stack = shift;
+   my $in_sc = 0;
+   if ($style_stack and scalar(@{$style_stack}))
+   {
+       my $level = $#$style_stack;
+       #print STDERR ":::$level ::@{$style_stack}\n";
+       while ($level >= 0)
+       {
+           if ($style_stack->[$level] eq 'sc')
+           {
+               $in_sc = 1;
+               last;
+           }
+           $level--;
+       }
+   } 
+   return $in_sc;
+}
+#
+#
+sub t2h_default_normal_text($$$$$)
+{
+   my $text = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_code = shift;
+   my $style_stack = shift;
+   $text = uc($text) if (in_small_caps($style_stack));
+   $text = &$protect_text($text) unless($in_raw_text);
+   if (! $in_code and !$in_preformatted)
+   { 
+       if ($USE_ISO and !$in_raw_text)
+       {
+           $text =~ s/---/\&mdash\;/g;
+           $text =~ s/--/\&ndash\;/g;
+           $text =~ s/``/\&ldquo\;/g;
+           $text =~ s/''/\&rdquo\;/g;
+       }
+       else
+       {   
+            if ($in_raw_text) #FIXME really do that ?
+            {
+                 $text =~ s/``/"/g;
+                 $text =~ s/''/"/g;
+            }
+            else
+            {
+                $text =~ s/``/&quot;/g;
+                $text =~ s/''/&quot;/g;
+            }
+            # temporary reuse '' to store --- !....
+            # FIXME really do that in raw text?
+            $text =~ s/---/''/g; 
+            $text =~ s/--/-/g; 
+            $text =~ s/''/--/g;
+       }
+   }
    return $text;
 }
 
@@ -3964,17 +4058,23 @@ sub t2h_default_foot_section($)
 #
 # arguments:
 # image file name with path
-# image basename or alt text
+# image basename
 # a boolean true if we are in a preformatted format
 # image file name without path
-sub t2h_default_image($$$$)
+# alt text
+sub t2h_default_image($$$$$)
 {
    my $file = shift;
    my $base = shift;
    my $preformatted = shift;
    my $file_name = shift;
-   return "[ $base ]" if ($preformatted);
-   return "<img src=\"$file\" alt=\"$base\">";
+   my $alt = shift;
+   $alt = &$protect_text($base) if (!defined($alt) or ($alt eq ''));
+   return "[ $alt ]" if ($preformatted);
+   # it is possible that $file_name is more correct as it allows the user
+   # to chose the relative path.
+   $file = &$protect_text($file);
+   return "<img src=\"$file\" alt=\"$alt\">";
 }
 
 # address put in footer describing when was generated and who did the manual
@@ -4145,13 +4245,13 @@ sub t2h_default_acronym_like($$$$$$)
     my $with_explanation = shift;
     my $explanation_lines = shift;
     my $explanation_text = shift;
-    my $explanation_unformatted = shift;
+    my $explanation_simply_formatted = shift;
     
     my $attribute = $command;
     my $opening = "<$attribute>";
-    if (defined($explanation_unformatted)) 
+    if (defined($explanation_simply_formatted)) 
     {
-        $opening = "<$attribute title=\"$explanation_unformatted\">";
+        $opening = "<$attribute title=\"$explanation_simply_formatted\">";
     }
     if ($with_explanation)
     {

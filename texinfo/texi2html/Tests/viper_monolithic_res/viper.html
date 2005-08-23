@@ -65,14 +65,14 @@ ul.toc {list-style: none}
 <p>Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
-Invariant Sections, with the Front-Cover texts being &quot;A GNU
-Manual&quot;, and with the Back-Cover Texts as in (a) below.  A copy of the
-license is included in the section entitled &quot;GNU Free Documentation
-License&quot; in the Emacs manual.
+Invariant Sections, with the Front-Cover texts being &ldquo;A GNU
+Manual&rdquo;, and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled &ldquo;GNU Free Documentation
+License&rdquo; in the Emacs manual.
 </p>
-<p>(a) The FSF's Back-Cover Text is: &quot;You have freedom to copy and modify
+<p>(a) The FSF's Back-Cover Text is: &ldquo;You have freedom to copy and modify
 this GNU Manual, like GNU software.  Copies published by the Free
-Software Foundation raise funds for GNU development.&quot;
+Software Foundation raise funds for GNU development.&rdquo;
 </p>
 <p>This document is part of a collection distributed under the GNU Free
 Documentation License.  If you want to distribute this document
@@ -124,7 +124,7 @@ new features of Viper.
 on VIP version 3.5 by Masahiko Sato and VIP version 4.4 by Aamod Sane.
 About 15% of the code still comes from those older packages.
 </p>
-<p>Viper is intended to be usable without reading this manual -- the defaults
+<p>Viper is intended to be usable without reading this manual &mdash; the defaults
 are set to make Viper as close to Vi as possible.  At startup, Viper will
 try to set the most appropriate default environment for you, based on
 your familiarity with Emacs.  It will also tell you the basic GNU Emacs window
@@ -264,7 +264,7 @@ modify the default editing style.  See section <a href="#SEC25">Customization</a
 <p>In addition to the <em>point</em>, there is another distinguished buffer
 position called the <em>mark</em>.  See <a href="emacs.html#Mark">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
-user, this simply means that in addition to the Vi textmarkers a-z, there
+user, this simply means that in addition to the Vi textmarkers a&ndash;z, there
 is another marker called <em>mark</em>.  This is similar to the unnamed Vi
 marker used by the jump commands <kbd>``</kbd> and <kbd>''</kbd>, which move the
 cursor to the position of the last absolute jump.  Viper provides access to
@@ -513,7 +513,7 @@ doing soon!), you should learn about the meaning of the various keys in
 those special modes (typing <kbd>C-h m</kbd> in a buffer provides
 help with key bindings for the major mode of that buffer).
 </p>
-<p>If you switch to Vi in Dired or similar modes--no harm is done.  It is just
+<p>If you switch to Vi in Dired or similar modes&mdash;no harm is done.  It is just
 that the special key bindings provided by those modes will be temporarily
 overshadowed by Viper's bindings.  Switching back to Viper's Emacs state
 will revive the environment provided by the current major mode.
@@ -1372,7 +1372,7 @@ expressions keep a history on those items.
 
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
-remembered (This is called &quot;learn mode&quot; in some editors.)
+remembered (This is called &ldquo;learn mode&rdquo; in some editors.)
 <kbd>@register</kbd> will complete the macro, putting it into <samp>`register'</samp>,
 where <samp>`register'</samp> is any character from <samp>`a'</samp> through <samp>`z'</samp>.  Then
 you can execute this macro using <kbd>@register</kbd>.  It is, of course,
@@ -1575,7 +1575,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 <h2 class="section"> 2.8 Movement and Markers </h2>
 
 
-<p>Viper can be set free from the line-limited movements in Vi, such as <kbd>l</kbd>
+<p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your <tt>`.viper'</tt>
 contains
@@ -2066,7 +2066,7 @@ cases, examples are provided that you can use directly.
 <p>An easy way to customize Viper is to change the values of constants used in
 Viper.  Here is the list of the constants used in Viper and their default
 values.  The corresponding :se command is also indicated.  (The symbols
-<code>t</code> and <code>nil</code> represent &quot;true&quot; and &quot;false&quot; in Lisp).
+<code>t</code> and <code>nil</code> represent &ldquo;true&rdquo; and &ldquo;false&rdquo; in Lisp).
 </p>
 <p>Viper supports both the abbreviated Vi variable names and their full
 names.  Variable completion is done on full names only.  <kbd>TAB</kbd> and
@@ -2075,7 +2075,7 @@ variable names.  Typing `=' will complete the name and then will prompt for
 a value, if applicable.  For instance, <kbd>:se au <kbd>SPC</kbd></kbd> will complete the
 command to <kbd>:set autoindent</kbd>; <kbd>:se ta <kbd>SPC</kbd></kbd> will complete the command
 and prompt further like this: <kbd>:set tabstop = </kbd>.
-However, typing <kbd>:se ts <kbd>SPC</kbd></kbd> will produce a &quot;No match&quot; message
+However, typing <kbd>:se ts <kbd>SPC</kbd></kbd> will produce a &ldquo;No match&rdquo; message
 because <kbd>ts</kbd> is an abbreviation for <kbd>tabstop</kbd> and Viper supports
 completion on full names only.  However, you can still hit <kbd>RET</kbd>
 or <kbd>=</kbd>, which will complete the command like this: <kbd>:set ts = </kbd> and
@@ -2165,7 +2165,7 @@ to bind <code>viper-insert-tab</code> to some other convenient key.
 <dt> <code>viper-search-scroll-threshold 2</code></dt>
 <dd><p>If search lands within this many lines of the window top or bottom, the
 window will be scrolled up or down by about 1/7-th of its size, to reveal
-the context.  If the value is negative--don't scroll.
+the context.  If the value is negative&mdash;don't scroll.
 </p></dd>
 <dt> <code>viper-tags-file-name &quot;TAGS&quot;</code></dt>
 <dd><p>The name of the file used as the tag table.
@@ -2286,7 +2286,7 @@ features provided by the major modes.
 </p></dd>
 <dt> <code>viper-want-emacs-keys-in-vi</code></dt>
 <dd><p>This is set to <code>nil</code> for user
-level 1 and to <code>t</code> for user levels 2-4.
+level 1 and to <code>t</code> for user levels 2&ndash;4.
 At level 5, users are allowed to set this variable as they please (the
 default for this level is <code>t</code>).
 If set to <code>nil</code>, complete Vi compatibility is provided
@@ -2762,7 +2762,7 @@ means that Vi command state is inappropriate for working with these
 packages.  Fortunately, these modes operate on read-only buffers and are
 designed not for editing files, but for special-purpose browsing, reading
 news, mail, etc., and Vi commands are meaningless in these situations.  For
-this reason, Viper doesn't force Vi state on such major modes--it
+this reason, Viper doesn't force Vi state on such major modes&mdash;it
 brings them in Emacs state.  You can switch to Vi state by typing <kbd>C-z</kbd>
 if, for instance, you want to do Vi-style search in a buffer (although,
 usually, incremental search, which is bound to <kbd>C-s</kbd>, is sufficient in
@@ -2879,7 +2879,7 @@ will switch you from vanilla-style search to search via regular expressions.
 If you hit something other than <kbd>/</kbd> after the first <kbd>/</kbd> or if the
 second <kbd>/</kbd> doesn't follow quickly enough, then Viper will issue the
 usual prompt <kbd>/</kbd> and will wait for input, as usual in Vi.
-If you don't like this behavior, you can &quot;unrecord&quot; these macros in your
+If you don't like this behavior, you can &ldquo;unrecord&rdquo; these macros in your
 <tt>`~/.viper'</tt> file.  For instance, if you don't like the above feature, put
 this in <tt>`~/.viper'</tt>:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-searchstyle-toggling-macros 'undefine)
@@ -2897,7 +2897,7 @@ binds `:' to invoke ex-style commands, like in vi-state.  And, as described
 above, `//' and `///' get bound to Vi-style macros that toggle
 case-insensitivity and regexp-search.
 </p>
-<p>If you don't like these features--which I don't really understand--you
+<p>If you don't like these features&mdash;which I don't really understand&mdash;you
 can unbind `/' and `:' in <code>viper-dired-modifier-map</code> (for Dired) or in
 <code>viper-slash-and-colon-map</code>, for other modes.
 <a name="IDX200"></a>
@@ -3119,7 +3119,7 @@ widget of Emacs (type <kbd>:customize</kbd>).
 </p>
 <p>The region that is chosen as a pattern to search for is determined as
 follows.  If search is invoked via a single click, Viper chooses the region
-that lies between the beginning of the &quot;word&quot; under the pointer (&quot;word&quot;
+that lies between the beginning of the &ldquo;word&rdquo; under the pointer (&ldquo;word&rdquo;
 is understood in Vi sense) and the end of that word.  The only difference
 with Vi's words is that in Lisp major modes `-' is considered an
 alphanumeric symbol.  This is done for the convenience of working with Lisp
@@ -3130,8 +3130,8 @@ adjacent (from either side) to an alphanumeric character.  This useful
 feature gives added control over the patterns selected by the mouse click.
 </p>
 <p>On a double-click, the region is determined by the beginning of the current
-Vi's &quot;Word&quot; (i.e., the largest non-separator chunk of text) and the End
-of that &quot;Word&quot; (as determined by the <kbd>E</kbd> command).
+Vi's &ldquo;Word&rdquo; (i.e., the largest non-separator chunk of text) and the End
+of that &ldquo;Word&rdquo; (as determined by the <kbd>E</kbd> command).
 </p>
 <p>On a triple-click, the region consists of the entire line where the click
 occurred with all leading and trailing spaces and tabs removed.
@@ -3188,7 +3188,7 @@ instance, if you are typing in a frame, A, and then move the mouse to frame
 B and click to invoke mouse search, search (or insertion) will be performed
 in frame A.  To perform search/insertion in frame B, you will first have to
 shift focus there, which doesn't happen until you type a character or
-perform some other action in frame B--mouse search doesn't shift focus.
+perform some other action in frame B&mdash;mouse search doesn't shift focus.
 </p>
 <p>If you decide that you don't like the above feature and always want
 search/insertion be performed in the frame where the click occurs, don't
@@ -3305,7 +3305,7 @@ even prompt the user for input and then continue.  To do this, one should
 type <kbd>C-x q</kbd> (for confirmation) or <kbd>C-u C-x q</kbd> (for prompt).
 For details, see <a href="emacs.html#Kbd-Macro-Query">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> 
 </p>
-<p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
+<p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> &mdash;
 a departure from Vi), you will be asked whether you want this
 macro to be global, mode-specific, or buffer-specific.  You will also be
 given a chance to save the macro in your <tt>`~/.viper'</tt> file.
@@ -4792,7 +4792,7 @@ and relative position.<br>
 At user levels 2 and higher, abort the current command.
 </p></dd>
 <dt> <kbd>C-c g</kbd></dt>
-<dd><p>Give file name, status, current line number and relative position - all
+<dd><p>Give file name, status, current line number and relative position &ndash; all
 user levels.
 </p></dd>
 <dt> <kbd>C-l</kbd></dt>
@@ -4945,7 +4945,7 @@ switch to higher user levels as soon as possible.
 <dd><p><kbd>:w![&lt;file&gt;]</kbd> and <kbd>:q</kbd>.
 </p></dd>
 <dt> <kbd>:pre</kbd></dt>
-<dd><p>Preserve the file - autosave buffers.
+<dd><p>Preserve the file &ndash; autosave buffers.
 </p></dd>
 <dt> <kbd>:rec</kbd></dt>
 <dd><p>Recover file from autosave.
@@ -5269,7 +5269,7 @@ current).
 <dt> <kbd>autoindent</kbd></dt>
 <dt> <kbd>ai</kbd></dt>
 <dd><a name="IDX506"></a>
-<p>autoindent - In append mode after a &lt;cr&gt; the
+<p>autoindent &ndash; In append mode after a &lt;cr&gt; the
 cursor will move directly below the first
 character on the previous line.
 This setting affects the current buffer only.
@@ -5289,7 +5289,7 @@ This setting affects the current buffer only.
 <dt> <kbd>ignorecase</kbd></dt>
 <dt> <kbd>ic</kbd></dt>
 <dd><a name="IDX507"></a>
-<p>ignorecase - No distinction between upper and lower cases when searching.
+<p>ignorecase &ndash; No distinction between upper and lower cases when searching.
 </p></dd>
 <dt> <kbd>noignorecase</kbd></dt>
 <dt> <kbd>noic</kbd></dt>
@@ -5307,7 +5307,7 @@ This setting affects the current buffer only.
 <dt> <kbd>readonly</kbd></dt>
 <dt> <kbd>ro</kbd></dt>
 <dd><a name="IDX509"></a>
-<p>readonly - The file is not to be changed.
+<p>readonly &ndash; The file is not to be changed.
 If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
 <dt> <kbd>noreadonly</kbd></dt>
@@ -5317,20 +5317,20 @@ If the user attempts to write to this file, confirmation will be requested.
 <dt> <kbd>shell=&lt;string&gt;</kbd></dt>
 <dt> <kbd>sh=&lt;string&gt;</kbd></dt>
 <dd><a name="IDX510"></a>
-<p>shell - The program to be used for shell escapes
+<p>shell &ndash; The program to be used for shell escapes
 (default <samp>`$SHELL'</samp> (default <tt>`/bin/sh'</tt>)).
 </p></dd>
 <dt> <kbd>shiftwidth=&lt;count&gt;</kbd></dt>
 <dt> <kbd>sw=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX511"></a>
 <a name="IDX512"></a>
-<p>shiftwidth - Gives the shiftwidth (default 8 positions).
+<p>shiftwidth &ndash; Gives the shiftwidth (default 8 positions).
 </p></dd>
 <dt> <kbd>showmatch</kbd></dt>
 <dt> <kbd>sm</kbd></dt>
 <dd><a name="IDX513"></a>
 <a name="IDX514"></a>
-<p>showmatch - Whenever you append a <kbd>)</kbd>, Vi shows
+<p>showmatch &ndash; Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it's on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there's no match, Vi will beep.
 </p></dd>
@@ -5342,7 +5342,7 @@ its match if it's on the same page; also with
 <dt> <kbd>ts=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX515"></a>
 <a name="IDX516"></a>
-<p>tabstop - The length of a &lt;ht&gt;; warning: this is
+<p>tabstop &ndash; The length of a &lt;ht&gt;; warning: this is
 only IN the editor, outside of it &lt;ht&gt;s have
 their normal length (default 8 positions).
 This setting affects the current buffer only.
@@ -5355,14 +5355,14 @@ This setting affects the current buffer only.
 <dt> <kbd>wm=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX517"></a>
 <a name="IDX518"></a>
-<p>wrapmargin - In append mode Vi automatically
+<p>wrapmargin &ndash; In append mode Vi automatically
 puts a &lt;lf&gt; whenever there is a &lt;sp&gt; or &lt;ht&gt;
 within &lt;wm&gt; columns from the right margin.
 </p></dd>
 <dt> <kbd>wrapscan</kbd></dt>
 <dt> <kbd>ws</kbd></dt>
 <dd><a name="IDX519"></a>
-<p>wrapscan - When searching, the end is
+<p>wrapscan &ndash; When searching, the end is
 considered <samp>`stuck'</samp> to the begin of the file.
 </p></dd>
 <dt> <kbd>nowrapscan</kbd></dt>
@@ -7090,55 +7090,55 @@ zapman@cc.gatech.edu (Jason Zapman II),
   <tr>
     <td align="center"> [ &lt; ] </td>
     <td align="center">Back</td>
-    <td>previous section in reading order</td>
+    <td>Previous section in reading order</td>
     <td>1.2.2</td>
   </tr>
   <tr>
     <td align="center"> [ &gt; ] </td>
     <td align="center">Forward</td>
-    <td>next section in reading order</td>
+    <td>Next section in reading order</td>
     <td>1.2.4</td>
   </tr>
   <tr>
     <td align="center"> [ &lt;&lt; ] </td>
     <td align="center">FastBack</td>
-    <td>beginning of this chapter or previous chapter</td>
+    <td>Beginning of this chapter or previous chapter</td>
     <td>1</td>
   </tr>
   <tr>
     <td align="center"> [ Up ] </td>
     <td align="center">Up</td>
-    <td>up section</td>
+    <td>Up section</td>
     <td>1.2</td>
   </tr>
   <tr>
     <td align="center"> [ &gt;&gt; ] </td>
     <td align="center">FastForward</td>
-    <td>next chapter</td>
+    <td>Next chapter</td>
     <td>2</td>
   </tr>
   <tr>
     <td align="center"> [Top] </td>
     <td align="center">Top</td>
-    <td>cover (top) of document</td>
+    <td>Cover (top) of document</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [Contents] </td>
     <td align="center">Contents</td>
-    <td>table of contents</td>
+    <td>Table of contents</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [Index] </td>
     <td align="center">Index</td>
-    <td>index</td>
+    <td>Index</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [ ? ] </td>
     <td align="center">About</td>
-    <td>about (help)</td>
+    <td>About (help)</td>
     <td> &nbsp; </td>
   </tr>
 </table>

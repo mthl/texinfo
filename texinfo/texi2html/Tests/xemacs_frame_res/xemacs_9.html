@@ -176,8 +176,8 @@ contents:
 <a name="IDX214"></a>
 <a name="IDX215"></a>
 <p>XEmacs gives a special meaning to a double slash (which is not normally
-a useful thing to write): it means, &quot;ignore everything before the
-second slash in the pair.&quot;  Thus, <samp>`/u2/emacs/src/'</samp> is ignored in
+a useful thing to write): it means, &ldquo;ignore everything before the
+second slash in the pair.&rdquo;  Thus, <samp>`/u2/emacs/src/'</samp> is ignored in
 the example above, and you get the file <tt>`/etc/termcap'</tt>.
 </p>
 <a name="IDX216"></a>
@@ -226,7 +226,7 @@ return to the minibuffer window, and then yank the text to use it in the
 argument.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
 </p>
 <p>  There are some restrictions on the use of the minibuffer window,
-however.  You cannot switch buffers in it--the minibuffer and its
+however.  You cannot switch buffers in it&mdash;the minibuffer and its
 window are permanently attached.  Also, you cannot split or kill the
 minibuffer window. But you can make it taller in the normal fashion with
 <kbd>C-x ^</kbd>.  If you enable Resize-Minibuffer mode, then the
@@ -255,7 +255,7 @@ to do this by accident (because of autorepeating keyboards, for example)
 and get confused.  Therefore, most XEmacs commands that use the
 minibuffer refuse to operate if the minibuffer window is selected.  If
 the minibuffer is active but you have switched to a different window,
-recursive use of the minibuffer is allowed--if you know enough to try
+recursive use of the minibuffer is allowed&mdash;if you know enough to try
 to do this, you probably will not get confused.
 </p>
 <a name="IDX219"></a>
@@ -288,8 +288,8 @@ the argument value.  Completion means that you type part of the
 argument, then XEmacs visibly fills in the rest, or as much as
 can be determined from the part you have typed.
 </p>
-<p>  When completion is available, certain keys--<kbd>TAB</kbd>, <kbd>RET</kbd>, and
-<kbd>SPC</kbd>--are rebound to complete the text present in the
+<p>  When completion is available, certain keys&mdash;<kbd>TAB</kbd>, <kbd>RET</kbd>, and
+<kbd>SPC</kbd>&mdash;are rebound to complete the text present in the
 minibuffer into a longer string that it stands for, by matching it
 against a set of <em>completion alternatives</em> provided by the command
 reading the argument.  <kbd>?</kbd> is defined to display a list of possible
@@ -312,7 +312,7 @@ ignored for completion's sake if specified by program.
 </p>
 <p>When a completion list is displayed, the completions will highlight as
 you move the mouse over them.  Clicking the middle mouse button on any 
-highlighted completion will &quot;select&quot; it just as if you had typed it in
+highlighted completion will &ldquo;select&rdquo; it just as if you had typed it in
 and hit <kbd>RET</kbd>.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -350,13 +350,13 @@ and hit <kbd>RET</kbd>.
 <p>  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
 the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
 start with <samp>`au'</samp>.  There are several, including
-<code>auto-fill-mode</code> and <code>auto-save-mode</code>--but they are all the
+<code>auto-fill-mode</code> and <code>auto-save-mode</code>&mdash;but they are all the
 same as far as <code>auto</code>, so the <samp>`au'</samp> in the minibuffer changes
 to <samp>`auto'</samp>.
 </p>
 <p>  If you type <kbd>TAB</kbd> again immediately, there are multiple
-possibilities for the very next character--it could be any of
-<samp>`c-'</samp>--so no more characters are added; instead, <kbd>TAB</kbd>
+possibilities for the very next character&mdash;it could be any of
+<samp>`c-'</samp>&mdash;so no more characters are added; instead, <kbd>TAB</kbd>
 displays a list of all possible completions in another window.
 </p>
 <p>  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
@@ -564,9 +564,9 @@ ignored as a possible completion.  The standard value of this variable
 has several elements including <code>&quot;.o&quot;</code>, <code>&quot;.elc&quot;</code>, <code>&quot;.dvi&quot;</code>
 and <code>&quot;~&quot;</code>.  The effect is that, for example, <samp>`foo'</samp> can
 complete to <samp>`foo.c'</samp> even though <samp>`foo.o'</samp> exists as well.
-However, if <em>all</em> the possible completions end in &quot;ignored&quot;
+However, if <em>all</em> the possible completions end in &ldquo;ignored&rdquo;
 strings, then they are not ignored.  Ignored extensions do not apply to
-lists of completions--those always mention all possible completions.
+lists of completions&mdash;those always mention all possible completions.
 </p>
 <a name="IDX227"></a>
 <p>  If a completion command finds the next character is undetermined, it
@@ -641,21 +641,21 @@ match for <var>regexp</var> (<code>next-matching-history-element</code>).
 <p>  The simplest way to reuse the saved arguments in the history list is
 to move through the history list one element at a time.  While in the
 minibuffer, use <kbd>M-p</kbd> or up-arrow (<code>previous-history-element</code>)
-to &quot;move to&quot; the next earlier minibuffer input, and use <kbd>M-n</kbd> or
-down-arrow (<code>next-history-element</code>) to &quot;move to&quot; the next later
+to &ldquo;move to&rdquo; the next earlier minibuffer input, and use <kbd>M-n</kbd> or
+down-arrow (<code>next-history-element</code>) to &ldquo;move to&rdquo; the next later
 input.
 </p>
 <p>  The previous input that you fetch from the history entirely replaces
 the contents of the minibuffer.  To use it as the argument, exit the
 minibuffer as usual with <kbd>RET</kbd>.  You can also edit the text before
 you reuse it; this does not change the history element that you
-&quot;moved&quot; to, but your new argument does go at the end of the history
+&ldquo;moved&rdquo; to, but your new argument does go at the end of the history
 list in its own right.
 </p>
-<p>  For many minibuffer arguments there is a &quot;default&quot; value.  In some
+<p>  For many minibuffer arguments there is a &ldquo;default&rdquo; value.  In some
 cases, the minibuffer history commands know the default value.  Then you
 can insert the default value into the minibuffer as text by using
-<kbd>M-n</kbd> to move &quot;into the future&quot; in the history.
+<kbd>M-n</kbd> to move &ldquo;into the future&rdquo; in the history.
 </p>
 <a name="IDX234"></a>
 <a name="IDX235"></a>
@@ -680,7 +680,7 @@ read file names.
 <p>  There are several other very specific history lists, including one for
 command names read by <kbd>M-x</kbd>, one for buffer names, one for arguments
 of commands like <code>query-replace</code>, and one for compilation commands
-read by <code>compile</code>.  Finally, there is one &quot;miscellaneous&quot; history
+read by <code>compile</code>.  Finally, there is one &ldquo;miscellaneous&rdquo; history
 list that most minibuffer arguments use.
 </p>
 

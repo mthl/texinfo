@@ -90,8 +90,8 @@ lines, unless you give it a numeric argument.
 </p>
 <p>  The commands used in Picture mode all work in other modes (provided the
 <tt>`picture'</tt> library is loaded), but are only  bound to keys in
-Picture mode.  Note that the descriptions below talk of moving &quot;one
-column&quot; and so on, but all the picture mode commands handle numeric
+Picture mode.  Note that the descriptions below talk of moving &ldquo;one
+column&rdquo; and so on, but all the picture mode commands handle numeric
 arguments as their normal equivalents do.
 </p>
 <a name="IDX1090"></a>
@@ -201,10 +201,10 @@ in other modes), or with one of the picture rectangle commands
 </tr></table>
 <h2 class="section"> 24.2 Controlling Motion After Insert </h2>
 
-<p>  Since &quot;self-inserting&quot; characters just overwrite and move point in
+<p>  Since &ldquo;self-inserting&rdquo; characters just overwrite and move point in
 Picture mode, there is no essential restriction on how point should be
 moved.  Normally point moves right, but you can specify any of the eight
-orthogonal or diagonal directions for motion after a &quot;self-inserting&quot;
+orthogonal or diagonal directions for motion after a &ldquo;self-inserting&rdquo;
 character.  This is useful for drawing lines in the buffer.
 </p>
 <dl compact="compact">
@@ -221,18 +221,18 @@ character.  This is useful for drawing lines in the buffer.
 <dd><p>Move down after insertion (<code>picture-movement-down</code>).
 </p></dd>
 <dt> <kbd>C-c `</kbd></dt>
-<dd><p>Move up and left (&quot;northwest&quot;) after insertion <br>(<code>picture-movement-nw</code>).
+<dd><p>Move up and left (&ldquo;northwest&rdquo;) after insertion <br>(<code>picture-movement-nw</code>).
 </p></dd>
 <dt> <kbd>C-c '</kbd></dt>
-<dd><p>Move up and right (&quot;northeast&quot;) after insertion <br>
+<dd><p>Move up and right (&ldquo;northeast&rdquo;) after insertion <br>
 (<code>picture-movement-ne</code>).
 </p></dd>
 <dt> <kbd>C-c /</kbd></dt>
-<dd><p>Move down and left (&quot;southwest&quot;) after insertion
+<dd><p>Move down and left (&ldquo;southwest&rdquo;) after insertion
 <br>(<code>picture-movement-sw</code>).
 </p></dd>
 <dt> <kbd>C-c \</kbd></dt>
-<dd><p>Move down and right (&quot;southeast&quot;) after insertion
+<dd><p>Move down and right (&ldquo;southeast&rdquo;) after insertion
 <br>(<code>picture-movement-se</code>).
 </p></dd>
 </dl>
@@ -243,7 +243,7 @@ character.  This is useful for drawing lines in the buffer.
 <a name="IDX1101"></a>
 <p>  Two motion commands move based on the current Picture insertion
 direction.  The command <kbd>C-c C-f</kbd> (<code>picture-motion</code>) moves in the
-same direction as motion after &quot;insertion&quot; currently does, while <kbd>C-c
+same direction as motion after &ldquo;insertion&rdquo; currently does, while <kbd>C-c
 C-b</kbd> (<code>picture-motion-reverse</code>) moves in the opposite direction.
 </p>
 <hr size="6">
@@ -270,12 +270,12 @@ C-b</kbd> (<code>picture-motion-reverse</code>) moves in the opposite direction.
 <p>  Two kinds of tab-like action are provided in Picture mode.
 Context-based tabbing is done with <kbd>M-<kbd>TAB</kbd></kbd>
 (<code>picture-tab-search</code>).  With no argument, it moves to a point
-underneath the next &quot;interesting&quot; character that follows whitespace in
-the previous non-blank line.  &quot;Next&quot; here means &quot;appearing at a
-horizontal position greater than the one point starts out at&quot;.  With an
+underneath the next &ldquo;interesting&rdquo; character that follows whitespace in
+the previous non-blank line.  &ldquo;Next&rdquo; here means &ldquo;appearing at a
+horizontal position greater than the one point starts out at&rdquo;.  With an
 argument, as in <kbd>C-u M-<kbd>TAB</kbd></kbd>, the command moves to the next such
 interesting character in the current line.  <kbd>M-<kbd>TAB</kbd></kbd> does not
-change the text; it only moves point.  &quot;Interesting&quot; characters are
+change the text; it only moves point.  &ldquo;Interesting&rdquo; characters are
 defined by the variable <code>picture-tab-chars</code>, which contains a string
 of characters considered interesting.  Its default value is
 <code>&quot;!-~&quot;</code>.

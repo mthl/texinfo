@@ -56,8 +56,6 @@ $menu_link          = \&makeinfo_like_menu_link;
 $menu_description   = \&makeinfo_like_menu_description;
 $menu_comment       = \&makeinfo_like_menu_comment;
 $menu               = \&makeinfo_like_menu;
-# this is buggy, see TODO
-#$normal_text        = \&makeinfo_like_normal_text;
 
 sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 {
@@ -246,14 +244,4 @@ sub makeinfo_like_menu_comment($)
        return "</ul>$text<ul>";
    }
    return '';
-}
-
-sub makeinfo_like_normal_text($)
-{
-    my $text = shift;
-    $text =~ s/---/&mdash;/g;
-    $text =~ s/---/&ndash;/g;
-    $text =~ s/``/&ldquo;/g;
-    $text =~ s/''/&rdquo;/g;
-    return $text;
 }

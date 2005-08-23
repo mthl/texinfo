@@ -103,7 +103,7 @@ commands available (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down M
 </li><li>
 Under a graphical windowing system, a
 toolbar at the top of the frame, just under the menu bar if it exists,
-provides &quot;one-touch&quot; shortcuts to several commands.  (Not yet
+provides &ldquo;one-touch&rdquo; shortcuts to several commands.  (Not yet
 documented.)
 </li><li>
 Under a graphical windowing system, a
@@ -183,9 +183,9 @@ end of the line, where the cursor appears after the last character of
 the line.  Where the display is capable, the cursor at the end of the
 line will appear differently from a cursor over whitespace at the end
 of the line.  (In an X Windows frame, the end-of-line cursor is half
-the width of a within-line cursor.)  Sometimes people speak of &quot;the
-cursor&quot; when they mean &quot;point,&quot; or speak of commands that move
-point as &quot;cursor motion&quot; commands.
+the width of a within-line cursor.)  Sometimes people speak of &ldquo;the
+cursor&rdquo; when they mean &ldquo;point,&rdquo; or speak of commands that move
+point as &ldquo;cursor motion&rdquo; commands.
 </p>
 <p> Each XEmacs frame has only one cursor.  When output is in progress, the cursor
 must appear where the typing is being done.  This does not mean that
@@ -309,14 +309,14 @@ text has been changed, and how far down the buffer you are currently
 looking.
 </p>
 <p>  <var>ch</var> contains two stars (<samp>`**'</samp>) if the text in the buffer has been
-edited (the buffer is &quot;modified&quot;), or two dashes (<samp>`--'</samp>) if the
+edited (the buffer is &ldquo;modified&rdquo;), or two dashes (<samp>`--'</samp>) if the
 buffer has not been edited.  Exception: for a read-only buffer, it is
 <samp>`%%'</samp>.
 </p>
 <p>  <var>buf</var> is the name of the window's chosen <em>buffer</em>.  The chosen
 buffer in the selected window (the window that the cursor is in) is also
 XEmacs's selected buffer, the buffer in which editing takes place.  When
-we speak of what some command does to &quot;the buffer&quot;, we mean the
+we speak of what some command does to &ldquo;the buffer&rdquo;, we mean the
 currently selected buffer.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>.
 </p>
 <p>  <var>pos</var> tells you whether there is additional text above the top of
@@ -471,8 +471,8 @@ determined by the current state of XEmacs, and most major modes and many
 minor modes add items to menus and even whole menus to the menubar.  In
 fact, some applications like w3.el and VM provide so many menus that
 they define a whole new menubar and add a button that allows convenient
-switching between the &quot;XEmacs menubar&quot; and the &quot;application
-menubar&quot;.  Such applications normally bind themselves to a particular
+switching between the &ldquo;XEmacs menubar&rdquo; and the &ldquo;application
+menubar&rdquo;.  Such applications normally bind themselves to a particular
 frame, and this switching only takes place on frames where such an
 application is active (ie, the current window of the frame is displaying
 a buffer in the appropriate major mode).

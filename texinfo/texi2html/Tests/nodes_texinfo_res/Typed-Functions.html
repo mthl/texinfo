@@ -104,19 +104,19 @@ particular entity, and its arguments, if any.
 @end deftypefn
 </pre></td></tr></table>
 
-<p>(where the text before the &quot;&hellip;&quot;, shown above as two lines, would
+<p>(where the text before the &ldquo;&hellip;&rdquo;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 &hellip;
 </pre></td></tr></table>
-<p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
+<p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
 <var>bar</var> (a <code>float</code>).
 </p>
 <p>The argument names that you write in <code>@deftypefn</code> are not subject
-to an implicit <code>@var</code>--since the actual names of the arguments in
+to an implicit <code>@var</code>&mdash;since the actual names of the arguments in
 <code>@deftypefn</code> are typically scattered among data type names and
 keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example

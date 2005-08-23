@@ -188,11 +188,11 @@ used.
 <p>  Lisp allows any variable to have any kind of value, but most variables
 that Emacs uses require a value of a certain type.  Often the value has
 to be a string or a number.  Sometimes we say that a certain feature is
-turned on if a variable is &quot;non-<code>nil</code>,&quot; meaning that if the
+turned on if a variable is &ldquo;non-<code>nil</code>,&rdquo; meaning that if the
 variable's value is <code>nil</code>, the feature is off, but the feature is
 on for <i>any</i> other value.  The conventional value to turn on the
-feature--since you have to pick one particular value when you set the
-variable--is <code>t</code>.
+feature&mdash;since you have to pick one particular value when you set the
+variable&mdash;is <code>t</code>.
 </p>
 <p>  Emacs uses many Lisp variables for internal recordkeeping, as any Lisp
 program must, but the most interesting variables for you are the ones that
@@ -497,7 +497,7 @@ type <kbd>M-<kbd>TAB</kbd></kbd> (<code>widget-complete</code>) to do completion
 <p>  Some options have a small fixed set of possible legitimate values.
 These options don't let you edit the value textually.  Instead, an
 active field <samp>`[Value Menu]'</samp> appears before the value; invoke this
-field to edit the value.  For a boolean &quot;on or off&quot; value, the active
+field to edit the value.  For a boolean &ldquo;on or off&rdquo; value, the active
 field says <samp>`[Toggle]'</samp>, and it changes to the other value.
 <samp>`[Value Menu]'</samp> and <samp>`[Toggle]'</samp> edit the buffer; the changes
 take effect when you use the <samp>`Set for Current Session'</samp> operation.
@@ -527,8 +527,8 @@ the list, invoke <samp>`[INS]'</samp> at the point where you want to insert it.
 </p>
 <p>  You can also invoke <samp>`[Current dir?]'</samp> to switch between including
 a specific named directory in the path, and including <code>nil</code> in the
-path.  (<code>nil</code> in a search path means &quot;try the current
-directory.&quot;)
+path.  (<code>nil</code> in a search path means &ldquo;try the current
+directory.&rdquo;)
 </p>
 <a name="IDX1483"></a>
 <a name="IDX1484"></a>
@@ -590,7 +590,7 @@ containing several active fields:
 </pre></td></tr></table>
 
 <p>Invoking <samp>`[Done]'</samp> buries this customization buffer.  Each of the
-other fields performs an operation--set, save or reset--on each of the
+other fields performs an operation&mdash;set, save or reset&mdash;on each of the
 items in the buffer that could meaningfully be set, saved or reset.
 </p>
 <hr size="6">
@@ -706,7 +706,7 @@ have customized but not saved.
 <p>  If you want to alter a particular user option variable with the
 customization buffer, and you know its name, you can use the command
 <kbd>M-x customize-option</kbd> and specify the option name.  This sets up
-the customization buffer with just one option--the one that you asked
+the customization buffer with just one option&mdash;the one that you asked
 for.  Editing, setting and saving the value work as described above, but
 only for the specified option.
 </p>
@@ -959,7 +959,7 @@ as a comment so the compiler or text formatter  will ignore it.
 If you do not need to disguise the local variables list as a comment in
 this way, there is no need to include a prefix or a suffix.
 </p>
-<p>  Two &quot;variable&quot; names are special in a local variables list: a value
+<p>  Two &ldquo;variable&rdquo; names are special in a local variables list: a value
 for the variable <code>mode</code> sets the major mode, and a value for the
 variable <code>eval</code> is simply evaluated as an expression and the value
 is ignored.  These are not real variables; setting them in any other
@@ -1794,7 +1794,7 @@ string quotes, and so on.  Actually, each major mode has its own syntax
 table (though sometimes related major modes use the same one) which it
 installs in each buffer that uses that major mode.  The syntax table
 installed in the current buffer is the one that all commands use, so we
-call it &quot;the&quot; syntax table.  A syntax table is a Lisp object, a vector of
+call it &ldquo;the&rdquo; syntax table.  A syntax table is a Lisp object, a vector of
 length 256 whose elements are numbers.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -3358,7 +3358,7 @@ if it is non-<code>nil</code>.  <kbd>C-g</kbd> is only actually executed as a
 command if it is typed while Emacs is waiting for input.
 </p>
 <p>If you quit twice in a row before the first <kbd>C-g</kbd> is recognized, you
-activate the &quot;emergency escape&quot; feature and return to the shell.
+activate the &ldquo;emergency escape&rdquo; feature and return to the shell.
 See section <a href="#SEC398">Emergency Escape</a>.
 </p>
 <a name="IDX1553"></a>
@@ -3376,7 +3376,7 @@ numeric argument, you can cancel that argument with <kbd>C-g</kbd> and remain in
 the debugger.
 </p>
 <a name="IDX1558"></a>
-<p>  The command <kbd>M-x top-level</kbd> is equivalent to &quot;enough&quot; <kbd>C-]</kbd>
+<p>  The command <kbd>M-x top-level</kbd> is equivalent to &ldquo;enough&rdquo; <kbd>C-]</kbd>
 commands to get you out of all the levels of recursive edits that you are
 in.  <kbd>C-]</kbd> only gets you out one level at a time, but <kbd>M-x top-level</kbd>
 goes out all levels at once.  Both <kbd>C-]</kbd> and <kbd>M-x top-level</kbd> are
@@ -3422,7 +3422,7 @@ and how to recognize them and correct them.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC397">27.12.4 Spontaneous Entry to Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Spontaneous entry to incremental search.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC398">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Emergency escape--
+<tr><td align="left" valign="top"><a href="#SEC398">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Emergency escape&mdash;
                         What to do if Emacs stops responding.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC399">27.12.6 Help for Total Frustration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  When you are at your wits' end.
@@ -3552,7 +3552,7 @@ To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_
 
 <p>  If Emacs spontaneously displays <samp>`I-search:'</samp> at the bottom of the
 screen, it means that the terminal is sending <kbd>C-s</kbd> and <kbd>C-q</kbd>
-according to the poorly designed xon/xoff &quot;flow control&quot; protocol.  You
+according to the poorly designed xon/xoff &ldquo;flow control&rdquo; protocol.  You
 should try to prevent this by putting the terminal in a mode where it will
 not use flow control, or by giving it enough padding that it will never send a
 <kbd>C-s</kbd>.  If that cannot be done, you must tell Emacs to expect flow
@@ -3704,7 +3704,7 @@ to do so effectively, you must know when and how to do it.
 
 <p>  If Emacs executes an illegal instruction, or dies with an operating
 system error message that indicates a problem in the program (as opposed to
-something like &quot;disk full&quot;), then it is certainly a bug.
+something like &ldquo;disk full&rdquo;), then it is certainly a bug.
 </p>
 <p>  If Emacs updates the display in a way that does not correspond to what is
 in the buffer, then it is certainly a bug.  If a command seems to do the
@@ -3786,11 +3786,11 @@ the bug is with a sentence like the preceding one, because it gives all the
 facts and nothing but the facts.
 </p>
 <p>  Do not assume that the problem is due to the size of the file and say,
-&quot;When I visit a large file, Emacs prints out <samp>`I feel pretty today'</samp>.&quot;
-This is what we mean by &quot;guessing explanations&quot;.  The problem is just as
+&ldquo;When I visit a large file, Emacs prints out <samp>`I feel pretty today'</samp>.&rdquo;
+This is what we mean by &ldquo;guessing explanations&rdquo;.  The problem is just as
 likely to be due to the fact that there is a <samp>`z'</samp> in the file name.  If
 this is so, then when we got your report, we would try out the problem with
-some &quot;large file&quot;, probably with no <samp>`z'</samp> in its name, and not find
+some &ldquo;large file&rdquo;, probably with no <samp>`z'</samp> in its name, and not find
 anything wrong.  There is no way in the world that we could guess that we
 should try visiting a file with a <samp>`z'</samp> in its name.
 </p>
@@ -3801,10 +3801,10 @@ bug.  What if the problem only occurs when you have typed the <kbd>C-x a l</kbd>
 command previously?  This is why we ask you to give the exact sequence of
 characters you typed since starting to use Emacs.
 </p>
-<p>  You should not even say &quot;visit a file&quot; instead of <kbd>C-x C-f</kbd> unless
+<p>  You should not even say &ldquo;visit a file&rdquo; instead of <kbd>C-x C-f</kbd> unless
 you <i>know</i> that it makes no difference which visiting command is used.
-Similarly, rather than saying &quot;if I have three characters on the line,&quot;
-say &quot;after I type <kbd><kbd>RET</kbd> A B C <kbd>RET</kbd> C-p</kbd>,&quot; if that is
+Similarly, rather than saying &ldquo;if I have three characters on the line,&rdquo;
+say &ldquo;after I type <kbd><kbd>RET</kbd> A B C <kbd>RET</kbd> C-p</kbd>,&rdquo; if that is
 the way you entered the text.
 </p>
 <p>  If you are not in Fundamental mode when the problem occurs, you should

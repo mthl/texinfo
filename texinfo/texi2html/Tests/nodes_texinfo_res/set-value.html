@@ -84,7 +84,7 @@ ul.toc {list-style: none}
 later expanded by the <code>@value</code> command.
 </p>
 <p>A <em>flag</em> is an identifier.  In general, it is best to use only
-letters and numerals in a flag name, not <samp>`-'</samp> or <samp>`_'</samp>--they
+letters and numerals in a flag name, not <samp>`-'</samp> or <samp>`_'</samp>&mdash;they
 will work in some contexts, but not all, due to limitations in TeX.
 </p>
 <p>The value is the remainder of the input line, and can contain anything.
@@ -94,7 +94,7 @@ will work in some contexts, but not all, due to limitations in TeX.
 <table><tr><td>&nbsp;</td><td><pre class="example">@set foo This is a string.
 </pre></td></tr></table>
 
-<p>This sets the value of the flag <code>foo</code> to &quot;This is a string.&quot;.
+<p>This sets the value of the flag <code>foo</code> to &ldquo;This is a string.&rdquo;.
 </p>
 <p>The Texinfo formatters then replace an <code>@value{<var>flag</var>}</code>
 command with the string to which <var>flag</var> is set.  Thus, when

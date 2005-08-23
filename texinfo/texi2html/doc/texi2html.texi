@@ -1268,7 +1268,11 @@ If icons are used, the button is an image with file determined by
 the value associated with the element label in the @variable{%ACTIVE_ICONS}
 hash if the the link really leads to an element, or in the @variable{%PASSIVE_ICONS}
 hash if there is no element to link to. Of course if there is a link to the 
-element the icon links to that element.
+element the icon links to that element. The button name and 
+the button description are used in HTML attributes to have a textual 
+description of the icon. The corresponding strings are in 
+@variable{%BUTTONS_NAME}  for the button name and  @code{%NAVIGATION_TEXT}
+for the description.
 @end table
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1453,8 +1457,11 @@ output files.
 @end deftypefn
 
 In the default case the @variable{$BODYTEXT} (@pxref{Customizing header}) 
-and the hashes @variable{%NAVIGATION_TEXT} (@pxref{Button specifications}) and  
+and the hashes @variable{%NAVIGATION_TEXT},
+@variable{%BUTTONS_NAME}  (@pxref{Button specifications}),   
 @variable{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
+Indeed the initialization of these variables is dependent upon 
+the document language selection. 
 
 To perform the default initializations and also add more code, you could
 do as in the following example (save the default function reference and call 
@@ -2301,12 +2308,11 @@ It should be reasonable to assume that the attributes are for a @code{<a>}
 @end deftypefn
 
 The formatting of @code{@@image} is controlled by:
-@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name
-@var{$file_path} is the image file name with the path, @var{$basename} is the 
-alternate text or the file name without extension if no alternate text is 
-given. @var{$preformatted} is true if the image 
+@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text
+@var{$file_path} is the image file name with the path, @var{$basename}  
+the file name without extension. @var{$preformatted} is true if the image 
 appears in preformatted text. @var{$file_name} is the file name without path 
-but with extension.
+but with extension. @var{$alt_text} is the alternate text, it may be undefined.
 @end deftypefn
 
 The formatting of @code{@@sp} is controlled by:
@@ -2325,7 +2331,7 @@ the explanation, the second arg of the acronym. @var{$with_explanation} is
 true if the second argument of the acronym command is present. If an
 explanation exists, coming from previous @code{@@acronym} or as an arg of this
 command, the other args are defined: @var{\@@explanation_lines} is a 
-reference on an array containing the unformatted explanation lines, 
+reference on an array containing the simply fomatted explanation lines, 
 @var{$explanation_text} is the explanation text formatted,
 @var{$explanation_simply_formatted} is the explanation with a light formatting,
 unabling in @acronym{HTML} (or @acronym{XML}) the explanation to be in an 
@@ -2339,17 +2345,33 @@ attribute.
 Some characters are processed especially in text: @samp{---}, @samp{--},
 @samp{``} and @samp{''}. This is done only if in normal text and not in 
 some commands (@code{@@code}, @code{@@env}@dots{}). A function reference
-is called to process those characters in text
+is called to process the text and should take care of those constructs.
+It may also be used to transform the text, for example set it in upper
+case if it is in @code{@@sc}. This function should also take care
+of protecting special characters
 
-@deftypefn {Function Reference} $processed_text normal_text $text
-The function processes @samp{---}, @samp{--}, @samp{``} and @samp{''}
-in @var{$text} and returns @var{$processed_text}. The default is to
-change @samp{---} to @samp{--}, @samp{--} to @samp{-}, and @samp{``} and
-@samp{''} to @samp{"}.
+
+@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $style_stack 
+The function processes @var{$text} and returns @var{$processed_text}. 
+The other arguments give some information about the context of the text.
+@var{$in_raw_text} is true if the text appears in special place where
+there is no formatting, typically in comments. @var{$in_preformatted}
+is true if in a preformatted environemnt, and @var{$in_code} is true
+if in a special command like @code{@@code}, @code{@@env} where
+@samp{---}, @samp{--}, @samp{``} and @samp{''} should not be
+touched. @var{$style_stack} is an array containing the name of the 
+formatting @@-command that enclose the text.  
+
+In the default case the @samp{---}, @samp{--}, @samp{``} and @samp{''}
+constructs are expanded if needed and the text is upper-cased if in 
+@code{@@sc}. Special characters (@samp{&}, @samp{"},
+@samp{<} and @samp{>} in @acronym{HTML}) are protected if needed. 
 @end deftypefn
 
-Some characters are special in @acronym{HTML} (@samp{&}, @samp{"}, 
-@samp{<} and @samp{>}) and should be protected.
+Some characters are special, for example we have  @samp{&}, @samp{"}, 
+@samp{<} and @samp{>} in @acronym{HTML}. In some cases some
+pieces of text don't go through the above function, but still 
+needs to be protected to appear in text.
 This is done by the function associated with the function reference
 
 @deftypefn {Function Reference} $protected_text protect_text $text
@@ -2954,7 +2976,7 @@ The whole quotation is formatted by:
 @var{$quotation_text} is the quotation text, formatted, with the text 
 prepended by the function above. @var{$argument_text} is the argument 
 of the @code{@@quotation}, formatted. @var{$argument_text_texi} is the argument
-of the @code{@@quotation}, unformatted.
+of the @code{@@quotation}, simply formatted.
 @end deftypefn
 
 @ignore
@@ -3228,7 +3250,7 @@ formatting functions. The keys are:
 @item caption_texi
 @itemx shortcaption_texi
 A reference on an array containing the caption or shortcaption lines,
-unformatted.
+with texi @@-commands.
 @item style_texi
 The style with texi @@-commands.
 @item style_id

@@ -473,7 +473,7 @@ described above.
 </tr></table>
 <h2 class="section"> 21.4 Indentation for Programs </h2>
 
-<p>  The best way to keep a program properly indented (&quot;ground&quot;) is to
+<p>  The best way to keep a program properly indented (&ldquo;ground&rdquo;) is to
 use Emacs to re-indent it as you change the program.  Emacs has commands
 to indent properly either a single line, a specified number of lines, or
 all of the lines inside a single parenthetical grouping.
@@ -936,8 +936,8 @@ also applies to braces and brackets.  Emacs knows which characters to regard
 as matching delimiters based on the syntax table set by the major
 mode.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p>
-<p>  If the opening delimiter and closing delimiter are mismatched--as
-in <samp>`[x)'</samp>--the echo area displays a warning message.  The
+<p>  If the opening delimiter and closing delimiter are mismatched&mdash;as
+in <samp>`[x)'</samp>&mdash;the echo area displays a warning message.  The
 correct matches are specified in the syntax table.
 </p>
 <a name="IDX948"></a>
@@ -2058,7 +2058,7 @@ function.
 <p>  The commands in this section visit and search all the files listed in the
 selected tags table, one by one.  For these commands, the tags table serves
 only to specify a sequence of files to search.  A related command is
-<kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>).
+<kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>).
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x tags-search <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
@@ -2120,7 +2120,7 @@ continue to exist.
 Emacs and have Emacs show you the matching lines one by one.  This works
 much like running a compilation; finding the source locations of the
 <code>grep</code> matches works like finding the compilation errors.
-See section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>.
+See section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
 </p>
 <p>  If you wish to process all the files in a selected tags table, but
 <kbd>M-x tags-search</kbd> and <kbd>M-x tags-query-replace</kbd> are not giving
@@ -2169,7 +2169,7 @@ file in the tags table and prepare to advance sequentially by files.
 <a name="IDX986"></a>
 <p>  <kbd>M-x list-tags</kbd> reads the name of one of the files described by the
 selected tags table, and displays a list of all the tags defined in that
-file.  The &quot;file name&quot; argument is really just a string to compare
+file.  The &ldquo;file name&rdquo; argument is really just a string to compare
 against the names recorded in the tags table; it is read as a string rather
 than a file name.  Therefore, completion and defaulting are not
 available, and you must enter the string the same way it appears in the tag
@@ -2651,7 +2651,7 @@ which one is referred to.
 
 <dl compact="compact">
 <dt> <kbd>C-c C-r</kbd></dt>
-<dd><p>Displays a &quot;column ruler&quot; momentarily above the current line
+<dd><p>Displays a &ldquo;column ruler&rdquo; momentarily above the current line
 (<code>fortran-column-ruler</code>).
 </p></dd>
 <dt> <kbd>C-c C-w</kbd></dt>
@@ -2711,8 +2711,8 @@ yourself.  To use them, you must turn on Abbrev mode.  see section <a href="xema
 </p>
 <p>  The built-in abbrevs are unusual in one way: they all start with a
 semicolon.  You cannot normally use semicolon in an abbrev, but Fortran
-mode makes this possible by changing the syntax of semicolon to &quot;word
-constituent&quot;.
+mode makes this possible by changing the syntax of semicolon to &ldquo;word
+constituent&rdquo;.
 </p>
 <p>  For example, one built-in Fortran abbrev is <samp>`;c'</samp> for
 <samp>`continue'</samp>.  If you insert <samp>`;c'</samp> and then insert a punctuation

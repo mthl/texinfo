@@ -85,7 +85,7 @@ options, special forms and other such artifacts in a uniform
 format.
 </p>
 <p>In the Info file, a definition causes the entity
-category--`Function', `Variable', or whatever--to appear at the
+category&mdash;`Function', `Variable', or whatever&mdash;to appear at the
 beginning of the first line of the definition, followed by the
 entity's name and arguments.  In the printed manual, the command
 causes TeX to print the entity's name and its arguments on the left
@@ -187,12 +187,12 @@ entity.
 </p>
 <p>Some of the definition commands are more general than others.  The
 <code>@deffn</code> command, for example, is the general definition command
-for functions and the like--for entities that may take arguments.  When
+for functions and the like&mdash;for entities that may take arguments.  When
 you use this command, you specify the category to which the entity
 belongs.  The <code>@deffn</code> command possesses three predefined,
 specialized variations, <code>@defun</code>, <code>@defmac</code>, and
-<code>@defspec</code>, that specify the category for you: &quot;Function&quot;,
-&quot;Macro&quot;, and &quot;Special Form&quot; respectively.  (In Lisp, a special form
+<code>@defspec</code>, that specify the category for you: &ldquo;Function&rdquo;,
+&ldquo;Macro&rdquo;, and &ldquo;Special Form&rdquo; respectively.  (In Lisp, a special form
 is an entity much like a function.)  The <code>@defvr</code> command also is
 accompanied by several predefined, specialized variations for describing
 particular kinds of variables.
@@ -432,7 +432,7 @@ entities:
 <dd><p>The <code>@deffn</code> command is the general definition command for
 functions, interactive commands, and similar entities that may take
 arguments.  You must choose a term to describe the category of entity
-being defined; for example, &quot;Function&quot; could be used if the entity is
+being defined; for example, &ldquo;Function&rdquo; could be used if the entity is
 a function.  The <code>@deffn</code> command is written at the beginning of a
 line and is followed on the same line by the category of entity being
 described, the name of this particular entity, and its arguments, if
@@ -446,12 +446,12 @@ Move point forward @var{nchars} characters.
 @end deffn
 </pre></td></tr></table>
 
-<p>This shows a rather terse definition for a &quot;command&quot; named
+<p>This shows a rather terse definition for a &ldquo;command&rdquo; named
 <code>forward-char</code> with one argument, <var>nchars</var>.
 </p>
 <p><code>@deffn</code> prints argument names such as <var>nchars</var> in italics or
 upper case, as if <code>@var</code> had been used, because we think of these
-names as metasyntactic variables--they stand for the actual argument
+names as metasyntactic variables&mdash;they stand for the actual argument
 values.  Within the text of the description, write an argument name
 explicitly with <code>@var</code> to refer to the value of the argument.  In
 the example above, we used <samp>`@var{nchars}'</samp> in this way.
@@ -539,15 +539,15 @@ entities:
 </dd>
 <dt> <code>@defvr <var>category</var> <var>name</var></code></dt>
 <dd><p>The <code>@defvr</code> command is a general definition command for
-something like a variable--an entity that records a value.  You must
+something like a variable&mdash;an entity that records a value.  You must
 choose a term to describe the category of entity being defined; for
-example, &quot;Variable&quot; could be used if the entity is a variable.
+example, &ldquo;Variable&rdquo; could be used if the entity is a variable.
 Write the <code>@defvr</code> command at the beginning of a line and
 follow it on the same line by the category of the entity and the
 name of the entity.
 </p>
 <p>Capitalize the category name like a title.  If the name of the category
-contains spaces, as in the name &quot;User Option&quot;, enclose it in braces.
+contains spaces, as in the name &ldquo;User Option&rdquo;, enclose it in braces.
 Otherwise, the second word will be mistaken for the name of the entity.
 For example,
 </p>
@@ -647,19 +647,19 @@ particular entity, and its arguments, if any.
 @end deftypefn
 </pre></td></tr></table>
 
-<p>(where the text before the &quot;&hellip;&quot;, shown above as two lines, would
+<p>(where the text before the &ldquo;&hellip;&rdquo;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 &hellip;
 </pre></td></tr></table>
-<p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
+<p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
 <var>bar</var> (a <code>float</code>).
 </p>
 <p>The argument names that you write in <code>@deftypefn</code> are not subject
-to an implicit <code>@var</code>--since the actual names of the arguments in
+to an implicit <code>@var</code>&mdash;since the actual names of the arguments in
 <code>@deftypefn</code> are typically scattered among data type names and
 keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example
@@ -766,9 +766,9 @@ definition command <code>@deftypevr</code> corresponds to
 </dd>
 <dt> <code>@deftypevr <var>category</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevr</code> command is the general definition command for
-something like a variable in a typed language--an entity that records
+something like a variable in a typed language&mdash;an entity that records
 a value.  You must choose a term to describe the category of the
-entity being defined; for example, &quot;Variable&quot; could be used if the
+entity being defined; for example, &ldquo;Variable&rdquo; could be used if the
 entity is a variable.
 </p>
 <p>The <code>@deftypevr</code> command is written at the beginning of a line

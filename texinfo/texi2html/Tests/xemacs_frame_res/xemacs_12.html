@@ -106,7 +106,7 @@ selected previously, it has the same mark it had before.
 </p>
 <p>  Many commands that insert text, such as <kbd>C-y</kbd> (<code>yank</code>) and
 <kbd>M-x insert-buffer</kbd>, position the mark at one end of the inserted
-text--the opposite end from where point is positioned, so that the region
+text&mdash;the opposite end from where point is positioned, so that the region
 contains the text just inserted.
 </p>
 <p>  Aside from delimiting the region, the mark is useful for marking
@@ -693,7 +693,7 @@ following it (<code>delete-indentation</code>).
 
 <p>  The most basic delete commands are <kbd>C-d</kbd> (<code>delete-char</code>) and
 <kbd>DEL</kbd> (<code>delete-backward-char</code>).  <kbd>C-d</kbd> deletes the
-character after point, the one the cursor is &quot;on top of&quot;.  Point
+character after point, the one the cursor is &ldquo;on top of&rdquo;.  Point
 doesn't move.  <kbd>DEL</kbd> deletes the character before the cursor, and
 moves point back.  You can delete newlines like any other characters in
 the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
@@ -864,7 +864,7 @@ sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
 <h2 class="section"> 9.5 Yanking </h2>
 
 <p>  <em>Yanking</em> means getting back text which was killed. Some systems
-call this &quot;pasting&quot;.  The usual way to move or copy text is to kill it
+call this &ldquo;pasting&rdquo;.  The usual way to move or copy text is to kill it
 and then yank it one or more times.
 </p>
 <dl compact="compact">
@@ -936,14 +936,14 @@ the beginning of the text.  See section <a href="#SEC79">Selecting Text</a>.
 <p>  <kbd>C-u C-y</kbd> yanks the text, leaves the cursor in front of the text,
 and sets the mark after it, if the argument is with just a <kbd>C-u</kbd>.
 Any other argument, including <kbd>C-u</kbd> and digits, has different
-results, described below, under &quot;Yanking Earlier Kills&quot;.
+results, described below, under &ldquo;Yanking Earlier Kills&rdquo;.
 </p>
 <a name="IDX336"></a>
 <a name="IDX337"></a>
 <p> To copy a block of text, you can also use <kbd>M-w</kbd>
 (<code>copy-region-as-kill</code>), which copies the region into the kill ring
 without removing it from the buffer. <kbd>M-w</kbd> is similar to <kbd>C-w</kbd>
-followed by <kbd>C-y</kbd> but does not mark the buffer as &quot;modified&quot; and
+followed by <kbd>C-y</kbd> but does not mark the buffer as &ldquo;modified&rdquo; and
 does not actually cut anything.
 </p>
 <hr size="6">
@@ -993,7 +993,7 @@ text'</samp>, <kbd>C-u 2 M-<kbd>DEL</kbd></kbd> kills <samp>`the first'</samp> w
 followed it, and the second <kbd>C-k</kbd> kills the newline after the second
 line.  The result is that the buffer contains <samp>`This is and here is the
 third.'</samp> and a single kill entry contains <samp>`the first<kbd>RET</kbd>line of
-sample text<kbd>RET</kbd>'</samp>--all the killed text, in its original order.
+sample text<kbd>RET</kbd>'</samp>&mdash;all the killed text, in its original order.
 </p>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
@@ -1035,22 +1035,22 @@ the text of the next-to-the-last kill, first use <kbd>C-y</kbd> to recover
 the last kill, then <kbd>M-y</kbd> to replace it with the previous
 kill.
 </p>
-<p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
-in the kill ring.  Each time you kill, the &quot;last yank&quot; pointer moves to
+<p>  You can think in terms of a &ldquo;last yank&rdquo; pointer which points at an item
+in the kill ring.  Each time you kill, the &ldquo;last yank&rdquo; pointer moves to
 the new item at the front of the ring.  <kbd>C-y</kbd> yanks the item
-which the &quot;last yank&quot; pointer points to.  <kbd>M-y</kbd> moves the &quot;last
-yank&quot; pointer to a different item, and the text in the buffer changes to
+which the &ldquo;last yank&rdquo; pointer points to.  <kbd>M-y</kbd> moves the &ldquo;last
+yank&rdquo; pointer to a different item, and the text in the buffer changes to
 match.  Enough <kbd>M-y</kbd> commands can move the pointer to any item in the
 ring, so you can get any item into the buffer.  Eventually the pointer
 reaches the end of the ring; the next <kbd>M-y</kbd> moves it to the first item
 again.
 </p>
-<p>  Yanking moves the &quot;last yank&quot; pointer around the ring, but does not
+<p>  Yanking moves the &ldquo;last yank&rdquo; pointer around the ring, but does not
 change the order of the entries in the ring, which always runs from the
 most recent kill at the front to the oldest one still remembered.
 </p>
-<p>  Use <kbd>M-y</kbd> with a numeric argument to advance the &quot;last
-yank&quot; pointer by the specified number of items.  A negative argument
+<p>  Use <kbd>M-y</kbd> with a numeric argument to advance the &ldquo;last
+yank&rdquo; pointer by the specified number of items.  A negative argument
 moves the pointer toward the front of the ring; from the front of the
 ring, it moves to the last entry and starts moving forward from there.
 </p>
@@ -1058,7 +1058,7 @@ ring, it moves to the last entry and starts moving forward from there.
 stop doing <kbd>M-y</kbd> commands and the text will stay there. Since the
 text is just a copy of the kill ring item, editing it in the buffer does
 not change what's in the ring.  As long you don't kill additional text,
-the &quot;last yank&quot; pointer remains at the same place in the kill ring:
+the &ldquo;last yank&rdquo; pointer remains at the same place in the kill ring:
 repeating <kbd>C-y</kbd> will yank another copy of the same old kill.
 </p>
 <p>  If you know how many <kbd>M-y</kbd> commands it would take to find the
@@ -1067,8 +1067,8 @@ a numeric argument.  <kbd>C-y</kbd> with an argument greater than one
 restores the text the specified number of entries back in the kill
 ring.  Thus, <kbd>C-u 2 C-y</kbd> gets the next to the last block of killed
 text.  It is equivalent to <kbd>C-y M-y</kbd>.  <kbd>C-y</kbd> with a numeric
-argument starts counting from the &quot;last yank&quot; pointer, and sets the
-&quot;last yank&quot; pointer to the entry that it yanks.
+argument starts counting from the &ldquo;last yank&rdquo; pointer, and sets the
+&ldquo;last yank&rdquo; pointer to the entry that it yanks.
 </p>
 <a name="IDX340"></a>
 <p>  The variable <code>kill-ring-max</code> controls the length of the kill
@@ -1354,7 +1354,7 @@ region.
 <li>
 Commands that operate on the region only work if the region is active.
 </li><li>
-Only a very small set of commands causes the region to become active--
+Only a very small set of commands causes the region to become active&mdash;
 those commands whose semantics are to mark an area, such as <code>mark-defun</code>.
 </li><li>
 The region is deactivated after each command that is executed, except that
@@ -1401,7 +1401,7 @@ its active state.  The most common ones are <code>push-mark</code>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can be non-intrusive
 on the state of the region by setting the variable <code>zmacs-region-stays</code>
 to a non-<code>nil</code> value.  If you are writing a new Emacs command that
-is conceptually a &quot;motion&quot; command and should not interfere with the
+is conceptually a &ldquo;motion&rdquo; command and should not interfere with the
 current highlightedness of the region, then you may set this variable.
 It is reset to <code>nil</code> after each user command is executed.
 </p>
@@ -1544,7 +1544,7 @@ each line leftward to the left edge of the region-rectangle.
 </p></dd>
 <dt> <kbd>M-x kill-rectangle</kbd></dt>
 <dd><p>Similar, but also save the contents of the region-rectangle as the
-&quot;last killed rectangle&quot;.
+&ldquo;last killed rectangle&rdquo;.
 </p></dd>
 <dt> <kbd>M-x yank-rectangle</kbd></dt>
 <dd><p>Yank the last killed rectangle with its upper left corner at point.
@@ -1564,13 +1564,13 @@ moving rectangles, and commands for blank rectangles.
 <a name="IDX345"></a>
 <a name="IDX346"></a>
 <p>  There are two ways to get rid of the text in a rectangle: you can discard
-the text (delete it) or save it as the &quot;last killed&quot; rectangle.  The
+the text (delete it) or save it as the &ldquo;last killed&rdquo; rectangle.  The
 commands for these two ways are <kbd>M-x delete-rectangle</kbd> and <kbd>M-x
 kill-rectangle</kbd>.  In either case, the portion of each line that falls inside
 the rectangle's boundaries is deleted, causing following text (if any) on
 the line to move left.
 </p>
-<p>  Note that &quot;killing&quot; a rectangle is not killing in the usual sense; the
+<p>  Note that &ldquo;killing&rdquo; a rectangle is not killing in the usual sense; the
 rectangle is not stored in the kill ring, but in a special place that
 only records the most recently killed rectangle (that is, does not
 append to a killed rectangle).  Different yank commands

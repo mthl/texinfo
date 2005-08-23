@@ -131,11 +131,11 @@ different ways people may look for something.  Different people
 <em>do not</em> think of the same words when they look something up.  A
 helpful index will have items indexed under all the different words
 that people may use.  For example, one reader may think it obvious that
-the two-letter names for indices should be listed under &quot;Indices,
-two-letter names&quot;, since the word &quot;Index&quot; is the general concept.
+the two-letter names for indices should be listed under &ldquo;Indices,
+two-letter names&rdquo;, since the word &ldquo;Index&rdquo; is the general concept.
 But another reader may remember the specific concept of two-letter
-names and search for the entry listed as &quot;Two letter names for
-indices&quot;.  A good index will have both entries and will help both
+names and search for the entry listed as &ldquo;Two letter names for
+indices&rdquo;.  A good index will have both entries and will help both
 readers.
 </p>
 <p>Like typesetting, the construction of an index is a highly skilled,
@@ -237,7 +237,7 @@ the concept index:
 @cindex Specifying index entries
 @cindex Creating index entries
 </pre></td></tr></table>
-<p>Each predefined index has its own indexing command--<code>@cindex</code>
+<p>Each predefined index has its own indexing command&mdash;<code>@cindex</code>
 for the concept index, <code>@findex</code> for the function index, and so
 on.
 </p>
@@ -252,7 +252,7 @@ letters.)  This is the case convention we use in most GNU manuals'
 indices.
 </p>
 <p>If you don't see how to make an entry terse yet clear, make it longer
-and clear--not terse and confusing.  If many of the entries are several
+and clear&mdash;not terse and confusing.  If many of the entries are several
 words long, the index may look better if you use a different convention:
 to capitalize the first word of each entry.  But do not capitalize a
 case-sensitive name such as a C or Lisp function name or a shell
@@ -316,7 +316,7 @@ the entry itself confuses Info.  See section <a href="texinfo_8.html#SEC100">The
 canonical purposes.  For example, suppose you wish to index some C
 preprocessor macros.  You could put them in the function index along
 with actual functions, just by writing <code>@findex</code> commands for
-them; then, when you print the &quot;Function Index&quot; as an unnumbered
+them; then, when you print the &ldquo;Function Index&rdquo; as an unnumbered
 chapter, you could give it the title `Function and Macro Index' and
 all will be consistent for the reader.  Or you could put the macros in
 with the data types by writing <code>@tindex</code> commands for them, and
@@ -533,7 +533,7 @@ entry and two <samp>`au'</samp> index entries.
 @auindex Lakoff, George
 </pre></td></tr></table>
 
-<p>(Evidently, <samp>`au'</samp> serves here as an abbreviation for &quot;author&quot;.)
+<p>(Evidently, <samp>`au'</samp> serves here as an abbreviation for &ldquo;author&rdquo;.)
 Texinfo constructs the new indexing command by concatenating the name
 of the index with <samp>`index'</samp>; thus, defining an <samp>`au'</samp> index
 leads to the automatic creation of an <code>@auindex</code> command.

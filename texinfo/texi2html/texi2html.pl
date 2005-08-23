@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.147 2005-08-23 06:58:03 pertusus Exp $
+# $Id: texi2html.pl,v 1.148 2005-08-23 23:51:08 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -277,6 +277,7 @@ $NEW_CROSSREF_STYLE
 %ACTIVE_ICONS
 %NAVIGATION_TEXT
 %PASSIVE_ICONS
+%BUTTONS_NAME
 %BUTTONS_GOTO
 %BUTTONS_EXAMPLE
 @CHAPTER_BUTTONS
@@ -418,9 +419,9 @@ $complex_format_map
 %style_map
 %style_map_pre
 %style_map_texi
-%unformatted_text_simple_map_texi
-%unformatted_text_style_map_texi
-%unformatted_text_texi_map
+%simple_format_simple_map_texi
+%simple_format_style_map_texi
+%simple_format_texi_map
 %paragraph_style
 %things_map
 %pre_map
@@ -644,7 +645,7 @@ require "$ENV{T2H_HOME}/$translation_file"
 # @T2H_TRANSLATIONS_FILE@
 my $index_name = -1;
 my @index_to_hash = ('style_map', 'style_map_pre', 'style_map_texi');
-foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%unformatted_text_style_map_texi)
+foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%simple_format_style_map_texi)
 {
     $index_name++;
     my $name = $index_to_hash[$index_name];
@@ -657,17 +658,17 @@ foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%unformatted_
     }
 }
 
-sub t2h_utf8_accent($$)
+sub t2h_utf8_accent($$$)
 {
     my $accent = shift;
     my $args = shift;
     my $style_stack = shift;
   
     my $text = $args->[0];
-
+    #print STDERR "$accent\[".scalar(@$style_stack) ."\] (@$style_stack)\n"; 
     if ($accent eq 'dotless')
     { # \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
-        if (($text eq 'i') and (!defined($style_stack->[-2]) or (!defined($unicode_accents{$style_stack->[-2]})) or ($style_stack->[-2] eq 'tieaccent')))
+        if (($text eq 'i') and (!defined($style_stack->[-1]) or (!defined($unicode_accents{$style_stack->[-1]})) or ($style_stack->[-1] eq 'tieaccent')))
         {
              return "\x{0131}";
         }
@@ -680,19 +681,35 @@ sub t2h_utf8_accent($$)
     return ascii_accents($text, $accent);
 }
 
-sub t2h_utf8_normal_text($)
+sub t2h_utf8_normal_text($$$$$)
 {
     my $text = shift;
-    $text =~ s/---/\x{2014}/g;
-    $text =~ s/--/\x{2013}/g;
-    $text =~ s/``/\x{201C}/g;
-    $text =~ s/''/\x{201D}/g;
+    my $in_raw_text = shift;
+    my $in_preformatted = shift;
+    my $in_code =shift;
+    my $style_stack = shift;
+    $text = &$protect_text($text) unless($in_raw_text);
+    $text = uc($text) if (in_small_caps($style_stack));
+
+    if (!$in_code and !$in_preformatted)
+    {
+        $text =~ s/---/\x{2014}/g;
+        $text =~ s/--/\x{2013}/g;
+        $text =~ s/``/\x{201C}/g;
+        $text =~ s/''/\x{201D}/g;
+    }
     return $text;
 }
 
-sub t2h_cross_manual_normal_text($)
+sub t2h_cross_manual_normal_text($$$$$)
 {
    my $text = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_code =shift;
+   my $style_stack = shift;
+
+   $text = uc($text) if (in_small_caps($style_stack));
    $text = main::normalise_space($text);
    my $result = '';
    while ($text ne '')
@@ -922,7 +939,7 @@ my $things_map_ref = \%Texi2HTML::Config::things_map;
 my $pre_map_ref = \%Texi2HTML::Config::pre_map;
 my $texi_map_ref = \%Texi2HTML::Config::texi_map;
 
-# delete from hash if we are using te new interface
+# delete from hash if we are using the new interface
 foreach my $code (keys(%code_style_map))
 {
     delete ($code_style_map{$code}) 
@@ -1224,6 +1241,7 @@ my $documentdescription; # text in @documentdescription
 
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
+my $T2H_DEBUG;
 
 sub echo_warn($;$);
 #print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
@@ -1310,6 +1328,7 @@ sub set_document_language ($;$$)
         $cmd_line_lang = 1 if ($from_command_line);
         if (!$Texi2HTML::Config::TEST)
         {
+            print STDERR "# Setting date in $Texi2HTML::Config::LANG\n" if ($T2H_DEBUG);
             $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20 September 1993";
         }
         else
@@ -1387,6 +1406,8 @@ sub cross_manual_links($$)
     my $nodes_hash = shift;
     my $cross_reference_hash = shift;
 
+    print STDERR "# Doing ".scalar(keys(%$nodes_hash)) . 
+        " cross manual links\n" if ($T2H_DEBUG);
     $simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $style_map_texi_ref = \%cross_ref_style_map_texi;
     $texi_map_ref = \%cross_ref_texi_map;
@@ -2273,7 +2294,7 @@ if (@ARGV > 1)
     }
 }
 # $T2H_DEBUG and $T2H_VERBOSE are shorthands
-my $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
+$T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
 #+++############################################################################
@@ -5712,6 +5733,9 @@ sub get_node($)
 # get the html names from the texi for all elements
 sub do_names()
 {
+    print STDERR "# Doing ". scalar(keys(%nodes)) . " nodes, ".
+        scalar(keys(%sections)) . " sections in ". $#elements_list . 
+        " elements\n" if ($T2H_DEBUG);
     # for nodes and anchors we haven't any state defined
     # This seems right, however, as we don't want @refs or @footnotes
     # or @anchors within nodes, section commands or anchors.
@@ -5720,9 +5744,8 @@ sub do_names()
         next if ($nodes{$node}->{'index_page'}); # some nodes are index pages.
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
-        $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($nodes{$node}->{'texi'}));
-        # FIXME UNFORMATTED: could be a line
-        $nodes{$node}->{'unformatted'} = unformatted_text(undef, $nodes{$node}->{'texi'});
+        $nodes{$node}->{'no_texi'} = remove_texi($nodes{$node}->{'texi'});
+        $nodes{$node}->{'simple_format'} = simple_format(undef, $nodes{$node}->{'texi'});
         # FIXME : what to do if $nodes{$node}->{'external_node'} and
         # $nodes{$node}->{'seen'}
     }
@@ -5730,13 +5753,13 @@ sub do_names()
     {
         my $section = $sections{$number};
         $section->{'name'} = substitute_line($section->{'texi'});
-        $section->{'text'} = $section->{'number'} . " " . $section->{'name'};
+        # FIXME the user should be able to give a raw texinfo himself
+        $section->{'text'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " . $section->{'name'};
         $section->{'text'} =~ s/^\s*//;
-        $section->{'no_texi'} = &$Texi2HTML::Config::protect_text($section->{'number'} . " " .remove_texi($section->{'texi'}));
+        $section->{'no_texi'} = $section->{'number'} . " " .remove_texi($section->{'texi'});
         $section->{'no_texi'} =~ s/^\s*//;
-        # FIXME UNFORMATTED: could be a line
-        $section->{'unformatted'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .unformatted_text(undef,$section->{'texi'});
-        $section->{'unformatted'} =~ s/^\s*//;
+        $section->{'simple_format'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .simple_format(undef,$section->{'texi'});
+        $section->{'simple_format'} =~ s/^\s*//;
     }
     my $tocnr = 1;
     foreach my $element (@elements_list)
@@ -5750,18 +5773,16 @@ sub do_names()
         if ($element->{'index_page'})
         {
             my $page = $element->{'page'};
-            my $sec_name = $element->{'element_ref'}->{'text'};
-            $element->{'text'} = ($page->{First} ne $page->{Last} ?
-                "$sec_name: $page->{First} -- $page->{Last}" :
-                "$sec_name: $page->{First}");
-            $sec_name = $element->{'element_ref'}->{'no_texi'};
-            $element->{'no_texi'} = &$Texi2HTML::Config::protect_text($page->{First} ne $page->{Last} ?
-                "$sec_name: $page->{First} -- $page->{Last}" :
-                "$sec_name: $page->{First}");
-            $sec_name = $element->{'element_ref'}->{'unformatted'};
-            $element->{'unformatted'} = $page->{First} ne $page->{Last} ?
-                "$sec_name: " . &$Texi2HTML::Config::protect_text("$page->{First} -- $page->{Last}") :
-                "$sec_name: " . &$Texi2HTML::Config::protect_text("$page->{First}");
+            # FIXME the user should be able to give a raw texinfo himself
+            my $letter_raw =  ($page->{'first_letter'} ne $page->{'last_letter'} ? 
+                "$page->{'first_letter'} -- $page->{'last_letter'}" :
+                "$page->{'first_letter'}");
+            $element->{'text'} = "$element->{'element_ref'}->{'text'}: "
+                . &$Texi2HTML::Config::protect_text($letter_raw);
+            $element->{'no_texi'} = 
+                "$element->{'element_ref'}->{'no_texi'}: $letter_raw";
+            $element->{'simple_format'} = "$element->{'element_ref'}->{'simple_format'}: "
+                . &$Texi2HTML::Config::protect_text($letter_raw);
         }
     }
 }
@@ -5897,8 +5918,8 @@ sub by_alpha
 
 # returns an array of index entries pages splitted by letters
 # each page has the following members:
-# {First}            first letter on that page
-# {Last}             last letter on that page
+# {'first_letter'}            first letter on that page
+# {'last_letter'}             last letter on that page
 # {Letters}          ref on an array with all the letters for that page
 # {EntriesByLetter}  ref on a hash. Each key is a letter, with value
 #                    a ref on arrays of index entries begining with this letter
@@ -5926,7 +5947,7 @@ sub get_index_pages($)
         {
             if ($i > $Texi2HTML::Config::SPLIT_INDEX)
             {
-                $page->{Last} = $prev_letter;
+                $page->{'last_letter'} = $prev_letter;
                 push @$Pages, $page;
                 $i=0;
             }
@@ -5935,21 +5956,21 @@ sub get_index_pages($)
 		$page = {};
 		$page->{Letters} = [];
 		$page->{EntriesByLetter} = {};
-		$page->{First} = $letter;
+		$page->{'first_letter'} = $letter;
 	    }
             push @{$page->{Letters}}, $letter;
             $page->{EntriesByLetter}->{$letter} = [@{$EntriesByLetter->{$letter}}];
             $i += scalar(@{$EntriesByLetter->{$letter}});
             $prev_letter = $letter;
         }
-        $page->{Last} = $Letters[$#Letters];
+        $page->{'last_letter'} = $Letters[$#Letters];
         push @$Pages, $page;
     }
     else
     {
         warn "$WARN Bad Texi2HTML::Config::SPLIT_INDEX: $Texi2HTML::Config::SPLIT_INDEX\n" if ($Texi2HTML::Config::SPLIT_INDEX);
-        $page->{First} = $Letters[0];
-        $page->{Last} = $Letters[$#Letters];
+        $page->{'first_letter'} = $Letters[0];
+        $page->{'last_letter'} = $Letters[$#Letters];
         $page->{Letters} = \@Letters;
         $page->{EntriesByLetter} = $EntriesByLetter;
         push @$Pages, $page;
@@ -6075,22 +6096,21 @@ sub pass_text()
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
         $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi);
         $Texi2HTML::THISDOC{$doc_thing . '_no_texi'} =
-           &$Texi2HTML::Config::protect_text(remove_texi($thing_texi));
-        # FIXME: UNFORMATTED: could it be a line
-        $Texi2HTML::THISDOC{$doc_thing . '_unformatted'} =
-           unformatted_text(undef, $thing_texi);
+           remove_texi($thing_texi);
+        $Texi2HTML::THISDOC{$doc_thing . '_simple_format'} =
+           simple_format(undef, $thing_texi);
     }
 
     # find Top name
     my $element_top_text = '';
     my $top_no_texi = '';
-    my $top_unformatted = '';
+    my $top_simple_format = '';
     my $top_name;
     if ($element_top and $element_top->{'text'} and (!$node_top or ($element_top ne $node_top)))
     {
         $element_top_text = $element_top->{'text'};
         $top_no_texi = $element_top->{'no_texi'};
-        $top_unformatted =  $element_top->{'unformatted'};
+        $top_simple_format =  $element_top->{'simple_format'};
     }
     foreach my $possible_top_name ($Texi2HTML::Config::TOP_HEADING, 
          $element_top_text, $Texi2HTML::THISDOC{'title'},
@@ -6105,7 +6125,7 @@ sub pass_text()
     foreach my $possible_top_no_texi ($Texi2HTML::Config::TOP_HEADING, 
          $top_no_texi, $Texi2HTML::THISDOC{'title_no_texi'},
          $Texi2HTML::THISDOC{'shorttitle_no_texi'}, 
-         &$I('Top',{},{'remove_texi' => 1, 'no_protection' => 1}))
+         &$I('Top',{},{'remove_texi' => 1}))
     {
          if (defined($possible_top_no_texi) and $possible_top_no_texi ne '')
          {
@@ -6114,15 +6134,14 @@ sub pass_text()
          }
     }
      
-    foreach my $possible_top_unformatted ($top_unformatted,
-         $Texi2HTML::THISDOC{'title_unformatted'},
-         $Texi2HTML::THISDOC{'shorttitle_unformatted'},
-         # FIXME UNFORMATTED
-         &$I('Top',{}, {'unformatted' => 1}))
+    foreach my $possible_top_simple_format ($top_simple_format,
+         $Texi2HTML::THISDOC{'title_simple_format'},
+         $Texi2HTML::THISDOC{'shorttitle_simple_format'},
+         &$I('Top',{}, {'simple_format' => 1}))
     {
-         if (defined($possible_top_unformatted) and $possible_top_unformatted ne '')
+         if (defined($possible_top_simple_format) and $possible_top_simple_format ne '')
          {
-             $top_unformatted = $possible_top_unformatted;
+             $top_simple_format = $possible_top_simple_format;
              last;
          }
     }
@@ -6144,10 +6163,9 @@ sub pass_text()
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
         $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi);
         $Texi2HTML::THISDOC{$doc_thing . '_no_texi'} =
-           &$Texi2HTML::Config::protect_text(remove_texi($thing_texi));
-        # FIXME: UNFORMATTED: could it be a line
-        $Texi2HTML::THISDOC{$doc_thing . '_unformatted'} =
-           unformatted_text(undef, $thing_texi);
+           remove_texi($thing_texi);
+        $Texi2HTML::THISDOC{$doc_thing . '_simple_format'} =
+           simple_format(undef, $thing_texi);
     }
 
     for my $key (keys %Texi2HTML::THISDOC)
@@ -6212,25 +6230,24 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         (
          'First',   $element_first->{'no_texi'},
          'Last',    $element_last->{'no_texi'},
-         'About',    &$I('About This Document', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
-         'Contents', &$I('Table of Contents', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
-         'Overview', &$I('Short Table of Contents', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
+         'About',    &$I('About This Document', {}, {'remove_texi' => 1} ),
+         'Contents', &$I('Table of Contents', {}, {'remove_texi' => 1} ),
+         'Overview', &$I('Short Table of Contents', {}, {'remove_texi' => 1} ),
          'Top',      $top_no_texi,
-         'Footnotes', &$I('Footnotes', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
+         'Footnotes', &$I('Footnotes', {}, {'remove_texi' => 1} ),
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
-     # FIXME UNFORMATTED
-    %Texi2HTML::UNFORMATTED =
+    %Texi2HTML::SIMPLE_TEXT =
         (
-         'First',   $element_first->{'unformatted'},
-         'Last',    $element_last->{'unformatted'},
-         'About',    &$I('About This Document', {}, {'unformatted' => 1}),
-         'Contents', &$I('Table of Contents',{},  {'unformatted' => 1}),
-         'Overview', &$I('Short Table of Contents', {}, {'unformatted' => 1}),
-         'Top',      $top_unformatted,
-         'Footnotes', &$I('Footnotes', {},{'unformatted' => 1}),
+         'First',   $element_first->{'simple_format'},
+         'Last',    $element_last->{'simple_format'},
+         'About',    &$I('About This Document', {}, {'simple_format' => 1}),
+         'Contents', &$I('Table of Contents',{},  {'simple_format' => 1}),
+         'Overview', &$I('Short Table of Contents', {}, {'simple_format' => 1}),
+         'Top',      $top_simple_format,
+         'Footnotes', &$I('Footnotes', {},{'simple_format' => 1}),
         );
-    $Texi2HTML::UNFORMATTED{'Index'} = $element_chapter_index->{'unformatted'} if (defined($element_chapter_index));
+    $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
     $Texi2HTML::TITLEPAGE = '';
     $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
         if (@{$region_lines{'titlepage'}});
@@ -6445,7 +6462,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                         }
                         $Texi2HTML::NAME{$direction} = $elem->{'text'};
                         $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
-                        $Texi2HTML::UNFORMATTED{$direction} = $elem->{'unformatted'};
+                        $Texi2HTML::SIMPLE_TEXT{$direction} = $elem->{'simple_format'};
                         #print STDERR "$direction ($element->{'texi'}): \n  NO_TEXI: $Texi2HTML::NO_TEXI{$direction}\n  NAME $Texi2HTML::NAME{$direction}\n  NODE $Texi2HTML::NODE{$direction}\n  HREF $Texi2HTML::HREF{$direction}\n\n";
                     }
                     #print STDERR "\nDone hrefs for $element->{'texi'}\n";
@@ -6597,7 +6614,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         # (we could do both)
         $Texi2HTML::NAME{$direction} = undef;
         $Texi2HTML::NO_TEXI{$direction} = undef;
-        $Texi2HTML::UNFORMATTED{$direction} = undef;
+        $Texi2HTML::SIMPLE_TEXT{$direction} = undef;
         $Texi2HTML::NODE{$direction} = undef;
 
         $Texi2HTML::THIS_ELEMENT = undef;
@@ -6612,7 +6629,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{'Footnotes'} = '#' . $footnote_element->{'id'};
         $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Footnotes'};
         $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Footnotes'};
-        $Texi2HTML::UNFORMATTED{'This'} = $Texi2HTML::UNFORMATTED{'Footnotes'};
+        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Footnotes'};
         $Texi2HTML::THIS_SECTION = \@foot_lines;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($footnote_element->{'id'}) . "\n" ];
         #&$Texi2HTML::Config::print_Footnotes(\*FILE);
@@ -6634,7 +6651,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{'Contents'} = "#SEC_Contents";
         $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Contents'};
         $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Contents'};
-        $Texi2HTML::UNFORMATTED{'This'} = $Texi2HTML::UNFORMATTED{'Contents'};
+        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Contents'};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::TOC_LINES;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Contents") . "\n" ];
         #&$Texi2HTML::Config::print_Toc(\*FILE);
@@ -6656,7 +6673,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{Overview} = "#SEC_Overview";
         $Texi2HTML::NAME{This} = $Texi2HTML::NAME{Overview};
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{Overview};
-        $Texi2HTML::UNFORMATTED{This} = $Texi2HTML::UNFORMATTED{Overview};
+        $Texi2HTML::SIMPLE_TEXT{This} = $Texi2HTML::SIMPLE_TEXT{Overview};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::OVERVIEW;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Overview") . "\n" ];
         #&$Texi2HTML::Config::print_Overview(\*FILE);
@@ -6679,7 +6696,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{About} = "#SEC_About";
         $Texi2HTML::NAME{This} = $Texi2HTML::NAME{About};
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{About};
-        $Texi2HTML::UNFORMATTED{This} = $Texi2HTML::UNFORMATTED{About};
+        $Texi2HTML::SIMPLE_TEXT{This} = $Texi2HTML::SIMPLE_TEXT{About};
         $Texi2HTML::THIS_SECTION = [$about_body];
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_About") . "\n" ];
         #&$Texi2HTML::Config::print_About(\*FILE);
@@ -6790,7 +6807,7 @@ sub do_node_files()
         my $file = "${docu_rdir}$node->{'node_file'}";
         $Texi2HTML::NODE{'This'} = $node->{'text'};
         $Texi2HTML::NO_TEXI{'This'} = $node->{'no_texi'};
-        $Texi2HTML::UNFORMATTED{'This'} = $node->{'no_texi'};
+        $Texi2HTML::SIMPLE_TEXT{'This'} = $node->{'simple_format'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
         $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
         open (NODEFILE, "> $file") || die "$ERROR Can't open $file for writing: $!\n";
@@ -7738,18 +7755,20 @@ sub do_text($;$)
     my $text = shift;
     my $state = shift;
     return $text if ($state->{'keep_texi'});
-    if (defined($state) and !$state->{'preformatted'} and !$state->{'code_style'})
-    {
+    my $remove_texi = 1 if ($state->{'remove_texi'} and !$state->{'simple_format'});
+    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $state->{'preformatted'}, $state->{'code_style'},$state->{'style_stack'}));
+#    if (defined($state) and !$state->{'preformatted'} and !$state->{'code_style'})
+#    {
         # in normal text `` and '' serve as quotes, --- is for a long dash 
         # and -- for a medium dash.
         # (see texinfo.txi, @node Conventions)
-        $text = &$Texi2HTML::Config::normal_text($text);
-    }
-    if ($state->{'no_protection'})
-    {
-        return $text;
-    }
-    return &$Texi2HTML::Config::protect_text($text);
+#        $text = &$Texi2HTML::Config::normal_text($text);
+#    }
+#    if ($state->{'remove_texi'} and !$state->{'simple_format'})
+#    {
+#        return $text;
+#    }
+#    return &$Texi2HTML::Config::protect_text($text);
 }
 
 sub end_simple_format($$)
@@ -8043,7 +8062,7 @@ sub do_acronym_like($$$$$)
 
     my $explanation_lines;
     my $explanation_text;
-    my $explanation_unformatted;
+    my $explanation_simple_format;
 
     if (defined($explanation))
     {
@@ -8057,7 +8076,7 @@ sub do_acronym_like($$$$$)
     return '' if ($acronym_texi eq '');
     
     my $with_explanation = 0;
-    my $normalized_text =  cross_manual_line (normalise_node($acronym_texi));
+    my $normalized_text =  cross_manual_line(normalise_node($acronym_texi));
     if (defined($explanation))
     {
         $with_explanation = 1;
@@ -8078,14 +8097,12 @@ sub do_acronym_like($$$$$)
               $text .= $line
          }
          $text =~ s/ $//;
-         my $unformatted_state = duplicate_state($state);
-         # FIXME UNFORMATTED
-         $unformatted_state->{'unformatted'} = 1;
-         $explanation_unformatted = substitute_line($text, $unformatted_state);
+         my $simple_format_state = duplicate_state($state);
+         $explanation_simple_format = simple_format($simple_format_state,$text);
          $explanation_text = substitute_line($text, duplicate_state($state));
     }
-    return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line ($acronym_texi, duplicate_state($state)), 
-       $with_explanation, $explanation_lines, $explanation_text, $explanation_unformatted);
+    return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, duplicate_state($state)), 
+       $with_explanation, $explanation_lines, $explanation_text, $explanation_simple_format);
 }
 
 sub do_caption_shortcaption($$$$$)
@@ -8261,6 +8278,7 @@ sub do_image($$$$)
     {
          $file_name = "$base.$args[4]";
     }
+    # FIXME there should instead be a list of file extension to search for.
     elsif ($image = locate_include_file("$base.png"))
     {
          $file_name = "$base.png";
@@ -8278,20 +8296,20 @@ sub do_image($$$$)
         $image = "$base.jpg";
         $image = "$base.$args[4]" if (defined($args[4]) and ($args[4] ne ''));
         $file_name = $image;
+        # FIXME should be a warning
         echo_error ("no image file for $base, (using $image)", $line_nr); 
         #warn "$ERROR no image file for $base, (using $image) : $text\n"; 
-    } # FIXME use full file name for alt instead of base when there is no
-      # alttext ?
+    } 
+    my $alt; 
     if ($args[3] =~ /\S/)
     {
-        # FIXME makeinfo don't do that.
+        # FIXME makeinfo don't do that. Maybe it should be remove_texi or
+        # simple_format?
         $args[3] = do_text($args[3]);
-        $base = $args[3] if ($args[3] =~ /\S/);
+        $alt = $args[3] if ($args[3] =~ /\S/);
     }
-    return &$Texi2HTML::Config::image(
-    &$Texi2HTML::Config::protect_text($path_to_working_dir . $image),
-    &$Texi2HTML::Config::protect_text($base), 
-    $state->{'preformatted'}, &$Texi2HTML::Config::protect_text($file_name));
+    return &$Texi2HTML::Config::image($path_to_working_dir . $image, $base, 
+    $state->{'preformatted'}, $file_name, $alt);
 }
 
 sub duplicate_state($)
@@ -8555,20 +8573,21 @@ sub do_index_entries($$$)
 # Doesn't protect html
 sub remove_texi(@)
 {
-# FIXME default should be not to protect.
-    return substitute_text ({ 'remove_texi' => 1, 'no_protection' => 1 }, @_);
+    return substitute_text ({ 'remove_texi' => 1}, @_);
 }
 
 # Same as remove texi but protect text and use special maps for @-commands
-sub unformatted_text($@)
+sub simple_format($@)
 {
     my $state = shift;
     $state = {} if (!defined($state));
-# FIXME default should be not to protect.
     $state->{'remove_texi'} = 1;
-    $simple_map_texi_ref = \%Texi2HTML::Config::unformatted_text_simple_map_texi;
-    $style_map_texi_ref = \%Texi2HTML::Config::unformatted_text_style_map_texi;
-    $texi_map_ref = \%Texi2HTML::Config::unformatted_text_texi_map;
+    $state->{'simple_format'} = 1;
+# FIXME currently it is only used for lines
+    $state->{'no_paragraph'} = 1;
+    $simple_map_texi_ref = \%Texi2HTML::Config::simple_format_simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::simple_format_style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::simple_format_texi_map;
     my $text = substitute_text($state, @_);
     $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
@@ -9006,7 +9025,7 @@ sub scan_texi($$$$;$)
             elsif (defined($text_macros{$macro}))
             {
                 my $tag;
-                ($_, $tag) = do_text_macro ($macro, $_, $state, $stack, $line_nr); 
+                ($_, $tag) = do_text_macro($macro, $_, $state, $stack, $line_nr); 
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later, unless we are in an 'ignored'.
                 # if in 'arg_expansion' we keep everything.
@@ -10169,53 +10188,25 @@ sub scan_line($$$$;$)
                 if (s/^(\s+)(.*)//o)
                 {
                     my $arg = $2;
-#                    if ($macro eq 'verbatiminclude')
-#                    {
-#                        my $file = locate_include_file($arg);
-#                        if (defined($file))
-#                        {
-#                            if (!open(VERBINCLUDE, $file))
-#                            {
-#                                echo_warn ("Can't read file $file: $!",$line_nr);
-#                            }
-#                            else
-#                            {
-#                                my $verb_text = '';
-#                                while (my $line = <VERBINCLUDE>)
-#                                {
-#                                    $verb_text .= $line;
-#                                }
-#                                add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatim',$verb_text));
-#                                close VERBINCLUDE;
-#                            }
-#                        }
-#                        else
-#                        {
-#                            echo_error ("Can't find $arg, skipping", $line_nr);
-#                        }
-#                    }
-#                    elsif ($macro eq 'listoffloats')
-#                    {
-                         my $style_id = cross_manual_line (normalise_space($arg));
-                         my $style = substitute_line (&$Texi2HTML::Config::listoffloats_style($arg));
-                         if (exists ($floats{$style_id}))
+                    my $style_id = cross_manual_line (normalise_space($arg));
+                    my $style = substitute_line (&$Texi2HTML::Config::listoffloats_style($arg));
+                    if (exists ($floats{$style_id}))
+                    {
+                         close_paragraph($text, $stack, $state, $line_nr);
+                         my @listoffloats_entries = ();
+                         foreach my $float (@{$floats{$style_id}->{'floats'}})
                          {
-                              close_paragraph($text, $stack, $state, $line_nr);
-                              my @listoffloats_entries = ();
-                              foreach my $float (@{$floats{$style_id}->{'floats'}})
-                              {
-                                   my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float));
-                                   my $caption_lines = &$Texi2HTML::Config::listoffloats_caption($float);
-                                   my $caption = substitute_text({ 'multiple_pass' => 1 }, @$caption_lines);
-                                   push @listoffloats_entries, &$Texi2HTML::Config::listoffloats_entry($arg, $float, $float_style, $caption, href($float, $state->{'element'}->{'file'}));
-                              }
-                              add_prev($text, $stack, &$Texi2HTML::Config::listoffloats($arg, $style, \@listoffloats_entries));
+                              my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float));
+                              my $caption_lines = &$Texi2HTML::Config::listoffloats_caption($float);
+                              my $caption = substitute_text({ 'multiple_pass' => 1 }, @$caption_lines);
+                              push @listoffloats_entries, &$Texi2HTML::Config::listoffloats_entry($arg, $float, $float_style, $caption, href($float, $state->{'element'}->{'file'}));
                          }
-                         else
-                         {
-                              echo_warn ("Unknown float style $arg", $line_nr); 
-                         }
-#                    }
+                         add_prev($text, $stack, &$Texi2HTML::Config::listoffloats($arg, $style, \@listoffloats_entries));
+                    }
+                    else
+                    {
+                         echo_warn ("Unknown float style $arg", $line_nr); 
+                    }
                 }
                 else
                 {
@@ -10248,7 +10239,11 @@ sub scan_line($$$$;$)
                 push (@$stack, { 'style' => $macro, 'text' => '', 'arg_nr' => 0 });
                 $state->{'no_paragraph'}++ if ($no_paragraph_macro{$macro});
                 open_arg($macro, 0, $state);
-                push (@{$state->{'style_stack'}}, $macro) if (defined($style_type{$macro}) and (($style_type{$macro} eq 'style') or ($style_type{$macro} eq 'accent')));
+                if (defined($style_type{$macro}) and (($style_type{$macro} eq 'style') or ($style_type{$macro} eq 'accent')))
+                {
+                     push (@{$state->{'style_stack'}}, $macro);
+                     #print STDERR "# Stacked $macro (@{$state->{'style_stack'}})\n" if ($T2H_DEBUG); 
+                }
                 next;
             }
 
@@ -10270,7 +10265,7 @@ sub scan_line($$$$;$)
                      $_ = '';
                      next;
                 }
-                # @ at the end of line may protect te end of line even when
+                # @ at the end of line may protect the end of line even when
                 # keeping texi
                 if ($macro eq "\n")
                 {
@@ -10737,7 +10732,7 @@ sub scan_line($$$$;$)
                 if (@$stack and defined($stack->[-1]->{'style'}))
                 {
                     my $macro = $stack->[-1]->{'style'};
-                    if (($macro eq 'cmd_line') and  $brace and ($brace eq '}'))
+                    if (($macro eq 'cmd_line') and  defined($brace) and ($brace eq '}'))
                     {
                          add_prev($text, $stack, '}');
                          unless ($state->{'keep_texi'} or $state->{'remove_texi'})
@@ -10767,6 +10762,12 @@ sub scan_line($$$$;$)
                     if ($macro)
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
+                        if ($style_map_ref->{$macro} and !$style->{'no_close'} and (defined($style_type{$macro})) and (($style_type{$macro} eq 'style') or ($style_type{$macro} eq 'accent')))
+                        {
+                            my $style = pop @{$state->{'style_stack'}};
+                            print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
+                            #print STDERR "# Unstacked from style_stack $style, remaining: (@{$state->{'style_stack'}})\n" if ($T2H_DEBUG); 
+                        }
                         if ($state->{'keep_texi'})
                         { # don't expand macros in anchor and ref
                             close_arg ($macro, $style->{'arg_nr'}, $state);
@@ -10774,11 +10775,7 @@ sub scan_line($$$$;$)
                         }
                         else
                         {
-                            if ($style_map_ref->{$macro} and !$style->{'no_close'} and (defined($style_type{'$macro'})) and (($style_type{'$macro'} eq 'style') or ($style_type{'$macro'} eq 'accent')))
-                            {
-                                my $style = pop @{$state->{'style_stack'}};
-                                print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
-                            }
+                            #print STDERR "# Unstack from main $macro (@{$state->{'style_stack'}})\n" if ($T2H_DEBUG); 
                             $result = do_simple($macro, $style->{'text'}, $state, $style->{'args'}, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                             if ($state->{'code_style'} < 0)
                             {
@@ -10951,7 +10948,7 @@ sub open_cmd_line($$$$)
     my $args = shift;
     my $function = shift;
     push @$stack, {'style' => 'cmd_line', 'text' => '', 'arg_nr' => 0};
-    foreach my $hash (\%Texi2HTML::Config::style_map, \%Texi2HTML::Config::style_map_pre, \%Texi2HTML::Config::style_map_texi, \%Texi2HTML::Config::unformatted_text_style_map_texi)
+    foreach my $hash (\%Texi2HTML::Config::style_map, \%Texi2HTML::Config::style_map_pre, \%Texi2HTML::Config::style_map_texi, \%Texi2HTML::Config::simple_format_style_map_texi)
     {
          $hash->{'cmd_line'}->{'args'} = $args;
          $hash->{'cmd_line'}->{'function'} = $function;
@@ -11723,12 +11720,21 @@ sub dump_stack($$$)
     {
         print STDERR "text: UNDEF\n";
     }
-    print STDERR "state: ";
+    my $in_remove = 0;
+    my $in_simple_format = 0;
+    my $in_keep = 0;
+    $in_keep = 1 if ($state->{'keep_texi'});
+    if (!$in_keep)
+    {
+        $in_simple_format = 1 if ($state->{'simple_format'});
+        $in_remove = 1 if ($state->{'remove_texi'}  and !$in_simple_format);
+    }
+    print STDERR "state(k${in_keep}s${in_simple_format}r${in_remove}): ";
     foreach my $key (keys(%$state))
     {
         my $value = 'UNDEF';
         $value = $state->{$key} if (defined($state->{$key}));
-        print STDERR "$key: $value ";
+        print STDERR "$key: $value " if (!ref($value));
     }
     print STDERR "\n";
     my $stack_level = $#$stack + 1;
@@ -11750,6 +11756,15 @@ sub dump_stack($$$)
         foreach my $format (@{$state->{'format_stack'}})
         {
             print STDERR "$format->{'format'} ";
+        }
+        print STDERR "\n";
+    }
+    if (defined($state->{'style_stack'})) 
+    {
+        print STDERR "style_stack: ";
+        foreach my $style (@{$state->{'style_stack'}})
+        {
+            print STDERR "($style) ";
         }
         print STDERR "\n";
     }
@@ -11785,8 +11800,8 @@ sub substitute_line($;$)
     my $state = shift;
     $state = {} if (!defined($state));
     $state->{'no_paragraph'} = 1;
-    # FIXME UNFORMATTED
-    return unformatted_text($state, $line) if ($state->{'unformatted'});
+    # this is usefull when called from &$I
+    return simple_format($state, $line) if ($state->{'simple_format'});
     return substitute_text($state, $line);
 }
 

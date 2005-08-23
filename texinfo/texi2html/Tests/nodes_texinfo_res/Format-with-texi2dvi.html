@@ -83,7 +83,7 @@ ul.toc {list-style: none}
 <p>The <code>texi2dvi</code> command automatically runs both <code>tex</code> and
 <code>texindex</code> as many times as necessary to produce a DVI file with
 sorted indices and all cross-references resolved.  It simplifies the
-<code>tex</code>--<code>texindex</code>--<code>tex</code>--<code>tex</code> sequence
+<code>tex</code>&mdash;<code>texindex</code>&mdash;<code>tex</code>&mdash;<code>tex</code> sequence
 described in the previous section.
 </p>
 <p>To run <code>texi2dvi</code> on an input file <tt>`foo.texi'</tt>, do this (where
@@ -101,7 +101,7 @@ the shell on the <samp>`texi2dvi'</samp> script.
 <samp>`--texinfo=<var>cmd</var>'</samp>.  This inserts <var>cmd</var> on a line by itself
 after the <code>@setfilename</code> in a temporary copy of the input file
 before running TeX.  With this, you can specify different printing
-formats, such as <code>@smallbook</code> (see section <a href="smallbook.html#SEC255">Printing &quot;Small&quot; Books</a>),
+formats, such as <code>@smallbook</code> (see section <a href="smallbook.html#SEC255">Printing &ldquo;Small&rdquo; Books</a>),
 <code>@afourpaper</code> (see section <a href="A4-Paper.html#SEC256">Printing on A4 Paper</a>), or <code>@pagesizes</code>
 (see section <a href="pagesizes.html#SEC257"><code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a>), without actually changing the document source.
 (You can also do this on a site-wide basis with <tt>`texinfo.cnf'</tt>;

@@ -168,7 +168,7 @@ characters with <kbd>DEL</kbd>.
 </p>
 <p>  After you exit a search, you can search for the same string again by
 typing just <kbd>C-s C-s</kbd>: the first <kbd>C-s</kbd> is the key that invokes
-incremental search, and the second <kbd>C-s</kbd> means &quot;search again&quot;.
+incremental search, and the second <kbd>C-s</kbd> means &ldquo;search again&rdquo;.
 </p>
 <p>  If the specified string is not found at all, the echo area displays
 the text <samp>`Failing I-Search'</samp>.  The cursor is after the place where
@@ -177,7 +177,7 @@ Emacs found as much of your string as it could.  Thus, if you search for
 <samp>`FOO'</samp> in <samp>`FOOL'</samp>.  At this point there are several things you
 can do.  If you mistyped the search string, correct it.  If you like the
 place you have found, you can type <kbd>RET</kbd> or some other Emacs command
-to &quot;accept what the search offered&quot;.  Or you can type <kbd>C-g</kbd>, which
+to &ldquo;accept what the search offered&rdquo;.  Or you can type <kbd>C-g</kbd>, which
 removes from the search string the characters that could not be found
 (the <samp>`T'</samp> in <samp>`FOOT'</samp>), leaving those that were found (the
 <samp>`FOO'</samp> in <samp>`FOOT'</samp>).  A second <kbd>C-g</kbd> at that point cancels
@@ -191,13 +191,13 @@ is called <em>wrapping around</em>.  <samp>`Wrapped'</samp> appears in the searc
 prompt once this has happened.
 </p>
 <a name="IDX411"></a>
-<p>  The <kbd>C-g</kbd> &quot;quit&quot; character does special things during searches;
+<p>  The <kbd>C-g</kbd> &ldquo;quit&rdquo; character does special things during searches;
 just what it does depends on the status of the search.  If the search has
 found what you specified and is waiting for input, <kbd>C-g</kbd> cancels the
 entire search.  The cursor moves back to where you started the search.  If
 <kbd>C-g</kbd> is typed when there are characters in the search string that have
-not been found--because Emacs is still searching for them, or because it
-has failed to find them--then the search string characters which have not
+not been found&mdash;because Emacs is still searching for them, or because it
+has failed to find them&mdash;then the search string characters which have not
 been found are discarded from the search string.  The
 search is now successful and waiting for more input, so a second <kbd>C-g</kbd>
 cancels the entire search.
@@ -240,7 +240,7 @@ would need to type more to select one.
 <p>  You can change any of the special characters in incremental search via
 the normal keybinding mechanism: simply add a binding to the 
 <code>isearch-mode-map</code>.  For example, to make the character
-<kbd>C-b</kbd> mean &quot;search backwards&quot; while in isearch-mode, do this:
+<kbd>C-b</kbd> mean &ldquo;search backwards&rdquo; while in isearch-mode, do this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
 </pre></td></tr></table>
@@ -508,7 +508,7 @@ also make good use of regular expressions.
 <p> The XEmacs regular expression syntax most closely resembles that of
 <cite>ed</cite>, or <cite>grep</cite>, the GNU versions of which all utilize the GNU
 <cite>regex</cite> library.  XEmacs' version of <cite>regex</cite> has recently been
-extended with some Perl-like capabilities, described in the next
+extended with some Perl&ndash;like capabilities, described in the next
 section.
 </p>
 <p> In XEmacs, you can search for the next match for a regexp either
@@ -854,7 +854,7 @@ the same exact text.
 substring to be recorded for future reference.
 </p>
 <p>This is useful when you need a lot of grouping <samp>`\( &hellip; \)'</samp>
-constructs, but only want to remember one or two - or if you have
+constructs, but only want to remember one or two &ndash; or if you have
 more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
 </p>
@@ -895,8 +895,8 @@ stand for them.
 </p></dd>
 </dl>
 
-<p>  The following regular expression constructs match the empty string--that is,
-they don't use up any characters--but whether they match depends on the
+<p>  The following regular expression constructs match the empty string&mdash;that is,
+they don't use up any characters&mdash;but whether they match depends on the
 context.
 </p>
 <dl compact="compact">
