@@ -1,5 +1,5 @@
 @comment -*-texinfo-*-
-@comment $Id: INSTALL_rpm.texi,v 1.1 2003-08-08 14:27:06 pertusus Exp $
+@comment Id: INSTALL_rpm.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
 @c FILE: INSTALL_rpm.texi
 @c PURPOSE: Installation instruction for Singular on RPM based Linux systems
 @c

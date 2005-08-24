@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.148 2005-08-23 23:51:08 pertusus Exp $
+# $Id: texi2html.pl,v 1.149 2005-08-24 14:33:20 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -447,7 +447,7 @@ $I = \&Texi2HTML::I18n::get_string;
 $toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
-$normal_text              = \&t2h_gpl_normal_text;
+#$normal_text              = \&t2h_gpl_normal_text;
 
 sub T2H_GPL_toc_body($)
 {
@@ -622,14 +622,14 @@ sub T2H_GPL_format($$$)
     return "<${element}$attribute_text>\n" . $text. "</$element>\n";
 }
 
-sub t2h_gpl_normal_text($)
-{
-    my $text = shift;
-    $text =~ s/``/"/go;
-    $text =~ s/''/"/go;
-    $text =~ s/-(--?)/$1/go;
-    return $text;
-}
+#sub t2h_gpl_normal_text($)
+#{
+#    my $text = shift;
+#    $text =~ s/``/"/go;
+#    $text =~ s/''/"/go;
+#    $text =~ s/-(--?)/$1/go;
+#    return $text;
+#}
 # @INIT@
 
 require "$ENV{T2H_HOME}/texi2html.init" 
@@ -1069,32 +1069,22 @@ my %format_type = ();
 foreach my $simple_format (keys(%Texi2HTML::Config::format_map))
 {
    $format_type{$simple_format} = 'simple';
-   $no_line_macros{$simple_format} = 1;
-   $no_line_macros{"end $simple_format"} = 1;
 }
 foreach my $paragraph_style (keys(%Texi2HTML::Config::paragraph_style))
 {
    $format_type{$paragraph_style} = 'paragraph_style';
-   $no_line_macros{$paragraph_style} = 1;
-   $no_line_macros{"end $paragraph_style"} = 1;
 }
 foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 {
    $format_type{$complex_format} = 'complex';
-   $no_line_macros{$complex_format} = 1;
-   $no_line_macros{"end $complex_format"} = 1;
 }
 foreach my $table (('table', 'ftable', 'vtable', 'multitable'))
 {
    $format_type{$table} = 'table';
-   $no_line_macros{$table} = 1;
-   $no_line_macros{"end $table"} = 1;
 }
 foreach my $def_format (keys(%Texi2HTML::Config::def_map))
 {
    $format_type{$def_format} = 'deff';
-   $no_line_macros{$def_format} = 1;
-   $no_line_macros{"end $def_format"} = 1;
 }
 $format_type{'itemize'} = 'list';
 $format_type{'enumerate'} = 'list';
@@ -1109,10 +1099,10 @@ $format_type{'quotation'} = 'quotation';
 
 $format_type{'group'} = 'group';
 
-foreach my $macro (('itemize', 'enumerate', 'menu', 'cartouche', 'float', 'quotation'))
-{ 
-   $no_line_macros{$macro} = 1;
-   $no_line_macros{"end $macro"} = 1;
+foreach my $key (keys(%format_type))
+{
+   $no_line_macros{$key} = 1;
+   $no_line_macros{"end $key"} = 1;
 }
 
 foreach my $macro (keys(%Texi2HTML::Config::format_in_paragraph))
@@ -1166,10 +1156,31 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 # raw formats which are expanded especially
 my @raw_regions = ('html', 'verbatim', 'tex', 'xml', 'docbook');
 
-# special raw formats which are expanded between first and second pass
+# special raw formats which are expanded between second and third pass
 # and are replaced by specific commands. Currently used for tex. It takes
 # precedence over raw_regions.
+# Currently there is no integrated handling of such regions. The collecting
+# of special sections is generic, they are collected by init_special during 
+# the second phase, so calling a user function reference should be trivial.
+# then init_special would remember which @-command is associated with 
+# which user defined function and add a mangled @-command like 
+# @t2h_special_command_nr 
+# remark: this is not problematic, the only gotcha is that it shouldn't
+# intersect with user undefined @-commands (nor with texinfo commands!).
+# However the replacement is done by matching @tex_(\d+). Maybe a generic
+# interface would be to have the @-commands names set by init_special 
+# in a hash and expand them by calling the correponding function.
 my @special_regions = ();
+
+# the handling of @math is ad-hoc, it should be more generic. More
+# precisely this is a special command. The special commands should be
+# collect by init_special and handled like special regions.  
+
+# there should be more hooks for user defined functions, at least
+# one after the first pass with all the possible information (file
+# names), between the pass 2 and 3, that mark that all the special 
+# regions have been collected, and one after the pass 3 for cleaning.
+# This is currently what is done with Latex2HTML.
 
 # regions expanded or not depending on the value of this hash
 my %text_macros = (
@@ -1345,6 +1356,7 @@ sub set_document_language ($;$$)
     }
 }
 
+# used to manage expanded sections from the command line
 sub set_expansion($$)
 {
     my $region = shift;
@@ -1359,7 +1371,8 @@ sub set_expansion($$)
          @Texi2HTML::Config::EXPAND = grep {$_ ne $region} @Texi2HTML::Config::EXPAND;
     }
 }
-	 
+
+
 sub set_encoding($)
 {
     my $encoding = shift;
@@ -4135,7 +4148,7 @@ sub misc_command_structure($$$$)
             $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
         }
         else
-        {# FIXME makeinfo don't warn ?
+        {# FIXME makeinfo don't warn and even accepts index with empty name
             echo_error ("Bad $macro line: $line", $line_nr);
         }
     }
@@ -7381,7 +7394,7 @@ sub do_text_macro($$$$$)
 }
 
 # do regions handled specially, currently only tex, going throug latex2html
-sub do_special ($$)
+sub init_special($$)
 {
     my $style = shift;
     my $text = shift;
@@ -9360,6 +9373,7 @@ sub scan_structure($$$$;$)
         {
             my $tag = $state->{'raw'};
             $tag = $state->{'special'} unless $tag;
+            ################# debug 
             if (! @$stack or ($stack->[-1]->{'style'} ne $tag))
             {
                 print STDERR "Bug: raw or special: $tag but not on top of stack\n";
@@ -9367,16 +9381,17 @@ sub scan_structure($$$$;$)
                 dump_stack($text, $stack, $state);
                 exit 1;
             }
+            ################# end debug 
             if (s/^(.*?)\@end\s$tag$// or s/^(.*?)\@end\s$tag\s//)
             {
                 add_prev ($text, $stack, $1);
                 my $style = pop @$stack;
                 if ($state->{'special'})
-                {
+                { # replace the special region by what init_special give
                     delete $state->{'special'};
                     if ($style->{'text'} !~ /^\s*$/)
                     {
-                        add_prev ($text, $stack, do_special($style->{'style'}, $style->{'text'}));
+                        add_prev ($text, $stack, init_special($style->{'style'}, $style->{'text'}));
                     }
                     
                 }

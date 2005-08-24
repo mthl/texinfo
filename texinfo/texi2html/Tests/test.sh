@@ -218,12 +218,12 @@ test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple
 test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting commands_in_ifset.texi
-test_texi formatting nodetest.texi "-split chapter -output ."
+test_texi formatting ../GermanNodeTest/nodetest.texi "-split chapter -output ."
 test_texi formatting nodetest_latin1.texi 
 test_texi formatting nodetest_utf8.texi 
 test_texi formatting nodetest_utf8.texi "-init no_unicode.init -prefix no_unicode_nodetest_utf8" 0 texi no_unicode_nodetest_utf8
 test_texi formatting nodetest_latin1.texi "-init no_unicode.init -prefix no_unicode_nodetest_latin1" 0 texi no_unicode_nodetest_latin1
-test_texi formatting nodetest.texi "-init no_unicode.init -prefix no_unicode_nodetest" 0 texi no_unicode_nodetest
+test_texi formatting ../GermanNodeTest/nodetest.texi "-init no_unicode.init -prefix no_unicode_nodetest" 0 texi no_unicode_nodetest
 test_texi formatting testkb.texi
 test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
@@ -254,9 +254,9 @@ test_texi viper viper.texi "-split chapter -ifinfo -output ."
 test_texi xemacs xemacs.texi "-split chapter -ifinfo -output ."
 test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo -output ."
 test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
-test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo ignore_tags
-test_texi nodes_texinfo texinfo.txi "-split node -node-files -ifinfo -output ." 0 txi texinfo ignore_tags
+test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
+test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
 #test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing ignore_tags
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

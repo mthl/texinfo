@@ -1,5 +1,5 @@
 @comment -*-texinfo-*-
-@comment $Id: INSTALL_win.texi,v 1.1 2003-08-08 14:27:06 pertusus Exp $
+@comment Id: INSTALL_win.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
 @c FILE:    INSTALL.texi
 @c PURPOSE: Installation instructions for Singular on MSWindows
 @c          This file is displayed during installation and copied to

@@ -1,5 +1,5 @@
 @comment -*-texinfo-*-
-@comment $Id: NEWS.texi,v 1.1 2003-08-08 14:27:06 pertusus Exp $
+@comment Id: NEWS.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
 @comment this file contains the News about Singular versions
 @comment Unix
 @ifclear VERSION

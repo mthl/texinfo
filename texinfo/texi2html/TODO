@@ -1,4 +1,4 @@
-This file contains a list of things yet to be done (see also in doc/IDEAS):
+This file contains a list of things yet to be done (see also in doc/TODO):
 
 * Create detailed texinfo documentation (see in doc)
 
@@ -9,6 +9,8 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
   - xhtml with in line style
   - Singular manual style
   - How complicated could it be to get a creation of XML, what about SGML ?
+  - to LaTeX
+  - to RTF
 
 * document css classes, and have similar classes with makeinfo
 -  makeinfo classes:
@@ -45,8 +47,8 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Test refs with no unicode support.
   Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
-
-* add a configure switch --with-encode
+  test case for cross refs with @ commands in nodes.
+  see info texinfo for the specification of the result 
 
 * don't double in title when the @top and @settitle are the same
 
@@ -88,5 +90,13 @@ option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
 
-* test case for cross refs with @ commands in nodes.
-see info texinfo for the specification of the result 
+
+* test @tex in @copying with -l2h 
+
+* do a generic handling of special regions/special commands. See the comment
+  near 
+my @special_regions 
+
+* handling of images should be more configurable for other formats.
+
+* many FIXME in the code

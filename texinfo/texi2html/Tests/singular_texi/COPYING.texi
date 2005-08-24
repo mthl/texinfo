@@ -1,5 +1,5 @@
 @comment -*-texinfo-*-
-@comment $Id: COPYING.texi,v 1.1 2003-08-08 14:27:06 pertusus Exp $
+@comment Id: COPYING.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
 @comment this file contains the copyright notice on Singular
 @ifclear VERSION
 @include version.texi

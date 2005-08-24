@@ -102,9 +102,9 @@ example.
 <a name="IDX446"></a>
 <a name="IDX447"></a>
 <a name="IDX448"></a>
-The <samp>`$Id$'</samp> comment is for CVS (see <a href="../cvs/index.html#Top">(cvs)Top</a> section `Overview' in <cite>Concurrent Versions System</cite>) or RCS (see rcsintro(1)) version control
+The <samp>`Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $'</samp> comment is for CVS (see <a href="../cvs/index.html#Top">(cvs)Top</a> section `Overview' in <cite>Concurrent Versions System</cite>) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
-<table><tr><td>&nbsp;</td><td><pre class="example">$Id$
+<table><tr><td>&nbsp;</td><td><pre class="example">Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
 </pre></td></tr></table><p>(This is useful in all sources that use version control, not just manuals.)
 </p>
 </li><li>
@@ -146,7 +146,7 @@ details), then don't forget to include them.
 <p>Here is the sample document:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
-@comment $Id$
+@comment Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
