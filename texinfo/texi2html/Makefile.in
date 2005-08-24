@@ -38,7 +38,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 DIST_COMMON = README $(am__configure_deps) $(dist_i18n_DATA) \
-	$(dist_pkgdata_DATA) $(srcdir)/Makefile.am \
+	$(dist_images_DATA) $(dist_pkgdata_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/check_texinfo.pl.in \
 	$(srcdir)/manage_i18n.pl.in $(srcdir)/texi2html.pl \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
@@ -55,7 +55,7 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = texi2html_configured.pl check_texinfo.pl \
 	manage_i18n.pl
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" \
-	"$(DESTDIR)$(pkgdatadir)"
+	"$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(pkgdatadir)"
 binSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
 SOURCES =
@@ -73,8 +73,9 @@ am__vpath_adj = case $$p in \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
 dist_i18nDATA_INSTALL = $(INSTALL_DATA)
+dist_imagesDATA_INSTALL = $(INSTALL_DATA)
 dist_pkgdataDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(dist_i18n_DATA) $(dist_pkgdata_DATA)
+DATA = $(dist_i18n_DATA) $(dist_images_DATA) $(dist_pkgdata_DATA)
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = $(SUBDIRS)
@@ -197,15 +198,91 @@ dist_pkgdata_DATA = l2h.init \
 	examples/inlinestyle.init \
 	examples/utf8.init \
 	examples/chm.init \
-	examples/roff.init	
+	examples/roff.init \
+	examples/my-bib-macros.texi \
+	examples/bib-example.texi \
+	examples/glossary.texi 
 
-dist_i18n_DATA = i18n/en \
-	i18n/de \
+i18n_files = i18n/de \
 	i18n/es \
 	i18n/fr \
 	i18n/nl \
 	i18n/no \
 	i18n/pt 
+
+dist_i18n_DATA = i18n/en \
+	$(i18n_files)
+
+dist_images_DATA = images/a_begin.png \
+	images/a_begin_na.png \
+	images/a_document.png \
+	images/a_document_na.png \
+	images/a_empty.png \
+	images/a_end.png \
+	images/a_end_na.png \
+	images/a_help.png \
+	images/a_help_na.png \
+	images/a_index.png \
+	images/a_index_na.png \
+	images/a_leftdouble.png \
+	images/a_leftdouble_na.png \
+	images/a_left.png \
+	images/a_left_na.png \
+	images/a_page.png \
+	images/a_page_na.png \
+	images/a_rightdouble.png \
+	images/a_rightdouble_na.png \
+	images/a_right.png \
+	images/a_right_na.png \
+	images/a_searchdoc.png \
+	images/a_searchdoc_na.png \
+	images/a_search.png \
+	images/a_search_na.png \
+	images/a_tableofcon.png \
+	images/a_tableofcon_na.png \
+	images/a_top.png \
+	images/a_top_na.png \
+	images/a_up.png \
+	images/a_up_na.png \
+	images/bg.jpg \
+	images/bg_left.png \
+	images/bg_right.png \
+	images/blue_dir.png \
+	images/blue_down.png \
+	images/blue_grab.png \
+	images/blue_help.png \
+	images/blue_next.png \
+	images/blue_nnext.png \
+	images/blue_pprev.png \
+	images/blue_prev.png \
+	images/blue_readme.png \
+	images/blue_top.png \
+	images/blue_up.png \
+	images/blue_uup.png \
+	images/contents_motif.png \
+	images/COPYING \
+	images/COPYING.Attribution-ShareAlike \
+	images/GPL \
+	images/README \
+	images/index_motif.png \
+	images/Mybg.png \
+	images/next_motif.png \
+	images/next_motif_gr.png \
+	images/previous_motif.png \
+	images/previous_motif_gr.png \
+	images/spacer3.png \
+	images/xy_contents.png \
+	images/xy_foot.png \
+	images/xy_next.png \
+	images/xy_next_gr.png \
+	images/xy_nextsection.png \
+	images/xy_nextsection_gr.png \
+	images/xy_previous.png \
+	images/xy_previous_gr.png \
+	images/xy_previoussection.png \
+	images/xy_previoussection_gr.png \
+	images/xy_up.png \
+	images/xy_up_gr.png
 
 all: all-recursive
 
@@ -285,6 +362,23 @@ uninstall-dist_i18nDATA:
 	  f=$(am__strip_dir) \
 	  echo " rm -f '$(DESTDIR)$(i18ndir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(i18ndir)/$$f"; \
+	done
+install-dist_imagesDATA: $(dist_images_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(imagesdir)" || $(mkdir_p) "$(DESTDIR)$(imagesdir)"
+	@list='$(dist_images_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(dist_imagesDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(imagesdir)/$$f'"; \
+	  $(dist_imagesDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(imagesdir)/$$f"; \
+	done
+
+uninstall-dist_imagesDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(dist_images_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(imagesdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(imagesdir)/$$f"; \
 	done
 install-dist_pkgdataDATA: $(dist_pkgdata_DATA)
 	@$(NORMAL_INSTALL)
@@ -439,7 +533,7 @@ distclean-tags:
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/. $(distdir)/examples $(distdir)/i18n
+	$(mkdir_p) $(distdir)/. $(distdir)/examples $(distdir)/i18n $(distdir)/images
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -584,7 +678,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(DATA)
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(pkgdatadir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(pkgdatadir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-recursive
@@ -632,7 +726,8 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-dist_i18nDATA install-dist_pkgdataDATA
+install-data-am: install-dist_i18nDATA install-dist_imagesDATA \
+	install-dist_pkgdataDATA
 
 install-exec-am: install-binSCRIPTS
 
@@ -661,7 +756,8 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-binSCRIPTS uninstall-dist_i18nDATA \
-	uninstall-dist_pkgdataDATA uninstall-info-am
+	uninstall-dist_imagesDATA uninstall-dist_pkgdataDATA \
+	uninstall-info-am
 
 uninstall-info: uninstall-info-recursive
 
@@ -672,14 +768,15 @@ uninstall-info: uninstall-info-recursive
 	distclean-recursive distclean-tags distcleancheck distdir \
 	distuninstallcheck dvi dvi-am html html-am html-local info \
 	info-am install install-am install-binSCRIPTS install-data \
-	install-data-am install-dist_i18nDATA install-dist_pkgdataDATA \
-	install-exec install-exec-am install-info install-info-am \
-	install-man install-strip installcheck installcheck-am \
-	installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic maintainer-clean-recursive \
-	mostlyclean mostlyclean-generic mostlyclean-recursive pdf \
-	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
-	uninstall-binSCRIPTS uninstall-dist_i18nDATA \
+	install-data-am install-dist_i18nDATA install-dist_imagesDATA \
+	install-dist_pkgdataDATA install-exec install-exec-am \
+	install-info install-info-am install-man install-strip \
+	installcheck installcheck-am installdirs installdirs-am \
+	maintainer-clean maintainer-clean-generic \
+	maintainer-clean-recursive mostlyclean mostlyclean-generic \
+	mostlyclean-recursive pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-binSCRIPTS \
+	uninstall-dist_i18nDATA uninstall-dist_imagesDATA \
 	uninstall-dist_pkgdataDATA uninstall-info-am
 
 
@@ -705,10 +802,13 @@ i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
                  examples/noheaders.init
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
 
-i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
+#i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
+
+$(i18n_files): i18n/en
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) update
 
-translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
+#translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
+translations.pl: $(dist_i18n_DATA) 
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 html-local: texi2html

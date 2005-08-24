@@ -46,13 +46,15 @@ dist_pkgdata_DATA = l2h.init \
 	examples/bib-example.texi \
 	examples/glossary.texi 
 
-dist_i18n_DATA = i18n/en \
-	i18n/de \
+i18n_files = i18n/de \
 	i18n/es \
 	i18n/fr \
 	i18n/nl \
 	i18n/no \
 	i18n/pt 
+
+dist_i18n_DATA = i18n/en \
+	$(i18n_files)
 
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \
@@ -147,10 +149,13 @@ i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
                  examples/noheaders.init
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
 
-i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
+#i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
+
+$(i18n_files): i18n/en
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) update
 
-translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
+#translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
+translations.pl: $(dist_i18n_DATA) 
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 html-local: texi2html

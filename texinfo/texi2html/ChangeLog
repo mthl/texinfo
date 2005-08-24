@@ -1,3 +1,10 @@
+2005-08-24  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: better redirection pages formatting. 
+	* Makefile.am: use a variable for the i18n files
+	* */Makefile.in: regenerate
+	* Tests/*: commit forgotten files and update.
+
 2005-08-23  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: don't use ucfirst as it relies on the current

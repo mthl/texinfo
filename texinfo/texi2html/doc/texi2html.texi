@@ -3624,7 +3624,7 @@ And to merge the new translation files in @file{translations.pl}, do
 @end example
 
 All these steps may be performed by @command{make}, once the language file
-is added to @file{Makefile.am}.
+is added to @file{Makefile.am} in the @code{i18n_files} variable.
 
 @c --------------------------------------------------------
 @node Incompatibilities

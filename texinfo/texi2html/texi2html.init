@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.90 2005-08-23 23:51:09 pertusus Exp $
+# $Id: texi2html.init,v 1.91 2005-08-24 09:31:42 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -208,11 +208,13 @@ $DEF_TABLE = 0;
 $VERBOSE = '';
 
 # -lang
-# FIXME this has changed
-# For page titles use $Texi2HTML::I18n::WORDS->{$T2H_LANG}->{...} as title.
-# To add a new language, supply list of titles (see $Texi2HTML::I18n::WORDS).
-# and use ISO 639 language codes (see e.g. perl module Locale-Codes-1.02
-# for  definitions).
+# use &$I('my string') if you want to have translations of 'my string'
+# and provide the translations in $LANGUAGES->{$LANG} with 'my string'
+# as key.
+# To add a new language use ISO 639 language codes (see e.g. perl module 
+# Locale-Codes-1.02 for  definitions). Supply translations in the 
+# $LANGUAGES hash and put it in a file with $LANG as name in an i18n 
+# directory. 
 # Default's to 'en' if not set or no @documentlanguage is specified.
 $LANG = 'en';
 
@@ -940,7 +942,6 @@ sub T2H_DEFAULT_print_page_head($)
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
          ($description ne '');
-    $description = $Texi2HTML::THISDOC{'documentdescription'} if (defined($Texi2HTML::THISDOC{'documentdescription'}));
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
     print $fh <<EOT;
@@ -1437,15 +1438,18 @@ sub T2H_DEFAULT_titlepage()
     $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
 }
 
-# i18n
+# FIXME Honor DOCUMENT_DESCRIPTION? 
 sub T2H_DEFAULT_print_redirection_page($)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
     my $description = $longtitle;
-    $description = $Texi2HTML::THISDOC{'documentdescription'} if (defined($Texi2HTML::THISDOC{'documentdescription'}));
+    my $encoding = '';
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
+    my $string = &$I('The node you are looking for is at %{href}.',
+       { 'href' => $href });
     print $fh <<EOT;
 $DOCTYPE
 <html>
@@ -1461,14 +1465,15 @@ $Texi2HTML::THISDOC{'program_authors'}
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta http-equiv="Refresh" content="0; url=$Texi2HTML::HREF{'This'}">
+$encoding
+$CSS_LINES
+<meta http-equiv="Refresh" content="2; url=$Texi2HTML::HREF{'This'}">
 $EXTRA_HEAD
 </head>
 
 <body $BODYTEXT>
 $AFTER_BODY_OPEN
-<p>The node you are looking for is at $href.</p>
+<p>$string</p>
 </body>
 EOT
 }
@@ -1606,7 +1611,7 @@ $simple_map_pre{'*'} = "\n";
                'dots'         => '<small class="dots">...</small>',
                'enddots'      => '<small class="enddots">....</small>',
                'equiv'        => '==',
-# i18n
+# FIXME i18n
                'error'        => 'error--&gt;',
                'expansion'    => '==&gt;',
                'minus'        => '-',
@@ -1670,7 +1675,7 @@ $pre_map{'enddots'} = '....';
                'dots'         => '...',
                'enddots'      => '....',
                'equiv'        => '==',
-# i18n
+# FIXME i18n
                'error'        => 'error-->',
                'expansion'    => '==>',
                'minus'        => '-',
@@ -2347,6 +2352,7 @@ sub default_sc($$)
     return '<small>' . uc($_[0]) . '</small>';
 }
 
+# now unused, upcasing is done in normal_text
 sub t2h_default_sc($$$)
 { 
     shift;
@@ -2371,6 +2377,7 @@ sub default_sc_pre($$)
     return uc($_[0]);
 }
 
+# now unused, upcasing is done in normal_text
 sub t2h_default_sc_pre($$$)
 {
     shift;
@@ -2384,6 +2391,7 @@ sub default_titlefont($$)
     return '';
 }
 
+# Avoid adding h1 if the text is empty
 sub t2h_default_titlefont($$$)
 {
     shift;
@@ -2392,13 +2400,16 @@ sub t2h_default_titlefont($$$)
     return '';
 }
 
-# According to the texinfo manual this shouldn't lead to a link
-# but rather be formatted like text. If we did like makeinfo do
-# it would be
+# At some point in time (before 4.7?) according to the texinfo 
+# manual, url shouldn't lead to a link but rather be formatted 
+# like text. It is now what indicateurl do, url is the same that
+# uref with one arg. If we did like makeinfo did it would have been
 #sub url($$)
 #{
 #    return '&lt;<code>' . $_[0] . '</code>&gt;';
 #}
+# 
+# This is unused, t2h_default_uref is used instead
 sub t2h_default_url ($$)
 {
     shift;
@@ -2708,7 +2719,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'deftp', [ 't', 'category', 'name', 'arg' ],
     # basic x commands
     # shortcuts
-    # i18n
+    # FIXME i18n
     'defun', 'deffn Function',
     'defmac', 'deffn Macro',
     'defspec', 'deffn {Special Form}',
