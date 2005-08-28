@@ -93,10 +93,11 @@ all the CHM related parameters one can change).
 
 * test @tex in @copying with -l2h 
 
-* do a generic handling of special regions/special commands. See the comment
-  near 
-my @special_regions 
+* add a support for tex4ht to test the handler_
 
 * handling of images should be more configurable for other formats.
+
+* add f--ile to the repository, and do a test in another directory for
+  test of missing files.
 
 * many FIXME in the code

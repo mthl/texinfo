@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.91 2005-08-24 09:31:42 pertusus Exp $
+# $Id: texi2html.init,v 1.92 2005-08-28 08:39:55 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1496,7 +1496,7 @@ sub T2H_DEFAULT_node_file_name($$)
         {
              $default_top_file  = undef; 
         }
-        $top_file = $default_top_file;
+        my $top_file = $default_top_file;
         if ($SPLIT eq 'node')
         {
             if (defined($TOP_FILE) and ($TOP_FILE ne ''))
@@ -2928,6 +2928,24 @@ $css_map{'pre.format'} = $css_map{'pre.display'};
 $css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'}; 
 $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
+# The command_handler arrays are for commands formatted externally.
+# The function references in @command_handler_init are called
+# before the second pass, before the @-commands text collection.
+# Those in @command_handler_process are called between the second pass
+# and the third pass, after collection of @-commands text and before their
+# expansion.
+# Those in @command_handler_process are called after the third pass,
+# after the document generation.
+@command_handler_init = ();
+@command_handler_process = ();
+@command_handler_finish = ();
+
+# the keys of %command_handler are @-command names and the value
+# is a hash reference with the following keys:
+# 'init'          function reference used to collect the @-command text
+# 'expand'        function reference used when expanding the @-command text
+%command_handler = ();
+
 # formatting functions
 
 $anchor            = \&t2h_default_anchor;
@@ -3027,19 +3045,22 @@ sub t2h_default_empty_line($)
     return $text;
 }
 
-sub t2h_default_unknown($$)
+sub t2h_default_unknown($$$$)
 {
     my $macro = shift;
     my $line = shift;
+    my $stack = shift;
+    my $state = shift;
     
     my ($result_line, $result, $result_text, $message);
     return ($line, 0, undef, undef);
 }
 
-sub t2h_default_unknown_style($$)
+sub t2h_default_unknown_style($$$$)
 {
     my $command = shift;
     my $text = shift;
+    my $state = shift;
     
     my ($result, $result_text, $message);
     return (0, undef, undef);

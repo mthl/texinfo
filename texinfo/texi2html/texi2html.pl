@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.149 2005-08-24 14:33:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.150 2005-08-28 08:39:55 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -440,6 +440,10 @@ $complex_format_map
 %accent_letters
 %unicode_accents
 %special_accents
+@command_handler_init
+@command_handler_process
+@command_handler_finish
+%command_handler
 );
 
 $I = \&Texi2HTML::I18n::get_string;
@@ -1157,30 +1161,10 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 my @raw_regions = ('html', 'verbatim', 'tex', 'xml', 'docbook');
 
 # special raw formats which are expanded between second and third pass
-# and are replaced by specific commands. Currently used for tex. It takes
-# precedence over raw_regions.
-# Currently there is no integrated handling of such regions. The collecting
-# of special sections is generic, they are collected by init_special during 
-# the second phase, so calling a user function reference should be trivial.
-# then init_special would remember which @-command is associated with 
-# which user defined function and add a mangled @-command like 
-# @t2h_special_command_nr 
-# remark: this is not problematic, the only gotcha is that it shouldn't
-# intersect with user undefined @-commands (nor with texinfo commands!).
-# However the replacement is done by matching @tex_(\d+). Maybe a generic
-# interface would be to have the @-commands names set by init_special 
-# in a hash and expand them by calling the correponding function.
+# and are replaced by specific commands. It takes precedence over 
+# raw_regions.
+#FIXME it is not modifiable by the user!
 my @special_regions = ();
-
-# the handling of @math is ad-hoc, it should be more generic. More
-# precisely this is a special command. The special commands should be
-# collect by init_special and handled like special regions.  
-
-# there should be more hooks for user defined functions, at least
-# one after the first pass with all the possible information (file
-# names), between the pass 2 and 3, that mark that all the special 
-# regions have been collected, and one after the pass 3 for cleaning.
-# This is currently what is done with Latex2HTML.
 
 # regions expanded or not depending on the value of this hash
 my %text_macros = (
@@ -2310,6 +2294,10 @@ if (@ARGV > 1)
 $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
+$Texi2HTML::LaTeX2HTML::debug = 0;
+$Texi2HTML::LaTeX2HTML::debug = 1 if ($T2H_DEBUG & $DEBUG_L2H);
+
+
 #+++############################################################################
 #                                                                              #
 # evaluation of cmd line options
@@ -2672,6 +2660,10 @@ $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
 $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
 $Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
 $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
+# FIXME document that
+$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
+$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
+
 
 my $docu_doc_file = "$docu_rdir$docu_doc"; 
 my $docu_toc_file  = "$docu_rdir$docu_toc";
@@ -2985,15 +2977,17 @@ my ($l2h_name, $l2h_latex_file, $l2h_cache_file, $l2h_html_file, $l2h_prefix);
 # holds the status of latex2html operations. If 0 it means that there was 
 # an error
 my $status = 0;
+
 my $debug;
 my $docu_rdir;
+my $docu_name;
 
 #if ($Texi2HTML::Config::L2H)
-sub init($$$)
+sub init
 {
-    my $docu_name = shift;
-    $docu_rdir = shift;
-    $debug = shift;
+#    $debug = shift;
+    $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
+    $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
     $l2h_name =  "${docu_name}_l2h";
     $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
     $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
@@ -3030,6 +3024,8 @@ my $l2h_latex_count = 0;     # number of latex texts really stored
 my $l2h_to_latex_count = 0;  # total number of latex texts processed
 my $l2h_cached_count = 0;    # number of cached latex text
 my %l2h_cache = ();          
+
+my %global_count = ();
 #$Texi2HTML::Config::L2H = l2h_InitToLatex() if ($Texi2HTML::Config::L2H);
 
 # return used latex 1, if l2h could be initalized properly, 0 otherwise
@@ -3059,8 +3055,17 @@ sub init_to_latex()
 #sub l2h_ToLatex
 sub to_latex
 {
-    my($text) = @_;
-    my($count);
+    my $command = shift;
+    my $text = shift;
+    my $counter = shift;
+    if ($command eq 'tex')
+    {
+        $text .= ' ';
+    }
+    elsif ($command eq 'math') 
+    {
+        $text = "\$".$text."\$";
+    }
     $l2h_to_latex_count++;
     $text =~ s/(\s*)$//;
     # try whether we can cache it
@@ -3072,7 +3077,8 @@ sub to_latex
         return $cached_text;
     }
     # try whether we have text already on things to do
-    unless ($count = $l2h_to_latex{$text})
+    my $count = $l2h_to_latex{$text};
+    unless ($count)
     {
         $count = $l2h_latex_count;
         $l2h_latex_count++;
@@ -3091,7 +3097,9 @@ sub to_latex
             print L2H_LATEX "\\end{rawhtml}\n";
         }
     }
-    return "\@tex_${count} ";
+    $global_count{"${command}_$counter"} = $count; 
+    #return "\@tex_${count} ";
+    return 1;
 }
 
 # print closing into latex file and close it
@@ -3282,9 +3290,11 @@ sub from_html($)
     return $to_do.$done;
 }
 
-sub do_tex($)
+sub do_tex($$$$)
 {
-    my $count = shift;
+    my $style = shift;
+    my $counter = shift;
+    my $count = $global_count{"${style}_$counter"}; 
     my $result = '';
     $result = "<!-- l2h_begin $l2h_name $count -->"
             #if ($T2H_DEBUG & $DEBUG_L2H);
@@ -3646,7 +3656,7 @@ sub preserve_command($$)
         $text .= $1;
     }
     $line = '' if (!defined($line));
-    return ($line, "\@$macro" . $text, $args);
+    return ($line, $text, $args);
 }
 
 #+++###########################################################################
@@ -3672,7 +3682,7 @@ sub initialise_state_structure($)
                                     # to be used
     $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
-    $state->{'level'} = 0;          # current sectionning level
+    $state->{'sectionning_base'} = 0;         # current base sectionning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
     delete ($state->{'region_lines'}) unless (defined($state->{'region_lines'}));
 }
@@ -3699,6 +3709,8 @@ my $element_index;          # element with first index
 my $element_chapter_index;  # chapter with first index
 my $element_first;          # first element
 my $element_last;           # last element
+my %special_commands;       # hash for the commands specially handled 
+                            # by the user 
 
 # This is a virtual element used to have the right hrefs for index entries
 # and anchors in footnotes
@@ -3751,7 +3763,7 @@ sub pass_structure()
             #
             if ($tag and $tag eq 'node' or defined($sec2level{$tag}) or $tag eq 'printindex' or $tag eq 'float')
             {
-                $_ = substitute_texi_line($_); #usefull if there is an anchor ???
+                $_ = substitute_texi_line($_); 
                 if (@stack and $tag eq 'node' or defined($sec2level{$tag}) or
 $tag eq 'float')
                 {# in pass structure node and float shouldn't appear in formats
@@ -4072,7 +4084,7 @@ sub misc_command_structure($$$$)
         {
             $sec2level{$sec} = $level + 1;
         }
-        $state->{'level'}--;
+        $state->{'sectionning_base'}--;
     }
     elsif ($macro eq 'raisesections')
     {
@@ -4081,7 +4093,7 @@ sub misc_command_structure($$$$)
         {
             $sec2level{$sec} = $level - 1;
         }
-        $state->{'level'}++;
+        $state->{'sectionning_base'}++;
     }
     elsif ($macro eq 'contents')
     {
@@ -4098,6 +4110,7 @@ sub misc_command_structure($$$$)
     elsif ($macro eq 'novalidate')
     {
         $novalidate = 1;
+        $Texi2HTML::THISDOC{$macro} = 1; 
     }
     elsif (grep {$_ eq $macro} ('settitle','setfilename','shortitle','shorttitlepage') 
              and ($line =~ /^\s+(.*)$/))
@@ -4132,6 +4145,7 @@ sub misc_command_structure($$$$)
                 {
                     $index_properties->{$prefix_to}->{'from'}->{$prefix_from} = 1;
                 }
+                push @{$Texi2HTML::THISDOC{$macro}}, [$prefix_from,$prefix_to]; 
             }
         }
         else
@@ -4146,6 +4160,7 @@ sub misc_command_structure($$$$)
             my $name = $1;
             $index_properties->{$name}->{'name'} = $name;
             $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
+            push @{$Texi2HTML::THISDOC{$macro}}, $name; 
         }
         else
         {# FIXME makeinfo don't warn and even accepts index with empty name
@@ -4158,6 +4173,9 @@ sub misc_command_structure($$$$)
         {
             my $lang = $1;
             set_document_language($lang, 0, $line_nr) if (!$cmd_line_lang && $lang);
+            # warning, this is not the language of te document but the one that
+            # appear in the texinfo...
+            $Texi2HTML::THISDOC{$macro} = $lang; 
         }
     }
     elsif ($macro eq 'kbdinputstyle')
@@ -4302,6 +4320,8 @@ sub misc_command_text($$$$$$)
     my $text = shift;
     my $line_nr = shift;
     my ($skipped, $remaining, $args);
+    # if it is true the command args are kept so the user can modify how
+    # they are skipped and handle them as unknown @-commands
     my $keep = $Texi2HTML::Config::misc_command{$macro}->{'keep'};
 
     if ($macro eq 'detailmenu')
@@ -4361,17 +4381,14 @@ sub misc_command_text($$$$$$)
     }
     elsif ($macro eq 'need')
     {
-        unless (($line =~ /\s+([0-9]+(\.[0-9]*)?)[^\w\-]/) or 
-                 ($line =~ /\s+(\.[0-9]+)[^\w\-]/))
+        unless (($line =~ /^\s+([0-9]+(\.[0-9]*)?)[^\w\-]/) or 
+                 ($line =~ /^\s+(\.[0-9]+)[^\w\-]/))
         {
             echo_warn ("Bad \@$macro", $line_nr);
         }
     }
     ($remaining, $skipped, $args) = preserve_command($line, $macro);
-    if ($keep)
-    {
-        $remaining = $args . $remaining;
-    }
+    return ($skipped) if ($keep);
     return $remaining if ($remaining ne '');
     return undef;
 }
@@ -6195,7 +6212,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 
     $Texi2HTML::THISDOC{'toc_file'} = $docu_toc if ($Texi2HTML::Config::SPLIT); 
-    $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
     $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
@@ -7134,8 +7150,8 @@ sub normalise_node($)
 
 sub do_math($;$)
 {
-    #return l2h_ToLatex("\$".$_[0]."\$");
-    return Texi2HTML::LaTeX2HTML::to_latex("\$".$_[0]."\$");
+    #return Texi2HTML::LaTeX2HTML::to_latex("\$".$_[0]."\$");
+    return Texi2HTML::LaTeX2HTML::to_latex('math',$_[0]);
 }
 
 sub do_anchor_label($$$$)
@@ -7393,17 +7409,30 @@ sub do_text_macro($$$$$)
     return ($line, $text);
 }
 
-# do regions handled specially, currently only tex, going throug latex2html
+# do regions handled specially, currently only tex, going through latex2html
 sub init_special($$)
 {
     my $style = shift;
     my $text = shift;
-    if ($style eq 'tex')
+    if (defined($Texi2HTML::Config::command_handler{$style}) and
+       defined($Texi2HTML::Config::command_handler{$style}->{'init'}))
     {
+        $special_commands{$style}->{'count'} = 0 if (!defined($special_commands{$style}));
+        if ($Texi2HTML::Config::command_handler{$style}->{'init'}($style,$text,
+               $special_commands{$style}->{'count'} +1))
+        {
+            $special_commands{$style}->{'count'}++;  
+            return "\@special_${style}_".$special_commands{$style}->{'count'}."{}";
+        }
+        return '';
+    }
+#    if ($style eq 'tex')
+#    {
         # add space to the end -- tex(i2dvi) does this, as well
         #return (l2h_ToLatex($text . " "));
-        return (Texi2HTML::LaTeX2HTML::to_latex($text . " "));
-    }
+#        return (Texi2HTML::LaTeX2HTML::to_latex($style,$text));
+#    }
+    
 }
 
 sub do_insertcopying($)
@@ -8937,7 +8966,7 @@ sub scan_texi($$$$;$)
             {# ARG_EXPANSION
                  my ($line, $args);
                  ($_, $line, $args) = preserve_command($_, $macro);
-                 add_prev ($text, $stack, $line) unless $state->{'ignored'}; 
+                 add_prev ($text, $stack, "\@$macro" . $line) unless $state->{'ignored'}; 
             }
             # pertusus: it seems that value substitution are performed after
             # macro argument expansions: if we have 
@@ -9508,7 +9537,7 @@ sub scan_structure($$$$;$)
                  my $line;
                  ($_, $line) = misc_command_structure($_, $macro, $state, 
                        $line_nr);
-                 add_prev ($text, $stack, $line); 
+                 add_prev ($text, $stack, "\@$macro".$line); 
                  next;
             }
 
@@ -9689,11 +9718,11 @@ sub scan_structure($$$$;$)
                             $state->{'place'} = $state->{'footnote_place'};
                         }
                     }
-                    elsif ($style->{'style'} eq 'math' and $Texi2HTML::Config::L2H)
-                    {
-                        add_prev ($text, $stack, do_math($style->{'text'}));
-                        next;
-                    }
+                    #elsif ($style->{'style'} eq 'math' and $Texi2HTML::Config::L2H)
+                    #{
+                    #    add_prev ($text, $stack, do_math($style->{'text'}));
+                    #    next;
+                    #}
                     elsif ($style->{'style'} eq 'caption' or $style->{'style'}
 eq 'shortcaption' and $state->{'float'})
                     {
@@ -9704,7 +9733,11 @@ eq 'shortcaption' and $state->{'float'})
                     {
                         $state->{'element'}->{'titlefont'} = $style->{'text'} unless ((exists($state->{'region_lines'}) and ($state->{'region_lines'}->{'format'} eq 'titlepage')) or defined($state->{'element'}->{'titlefont'})) ;
                     }
-                    if ($style->{'style'})
+                    if (defined($Texi2HTML::Config::command_handler{$style->{'style'}}))
+                    {
+                         $result = init_special($style->{'style'},$style->{'text'});
+                    }
+                    elsif ($style->{'style'})
                     {
                          $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
                     }
@@ -10126,6 +10159,7 @@ sub scan_line($$$$;$)
             add_prev($text, $stack, do_text($1, $state));
             my $macro = $2;
 	    #print STDERR "MACRO $macro\n";
+	    #print STDERR "LINE $_";
 	    #dump_stack ($text, $stack, $state);
             # This is a macro added by close_stack to mark paragraph end
             if ($macro eq 'end_paragraph')
@@ -10174,7 +10208,7 @@ sub scan_line($$$$;$)
                     ($_, $line, $args) = preserve_command($_, $macro);
                     if ($state->{'keep_texi'})
                     {
-                        add_prev($text, $stack, $line);
+                        add_prev($text, $stack, "\@$macro". $line);
                     }
                     next;
                 }
@@ -10347,11 +10381,11 @@ sub scan_line($$$$;$)
             }
             # the following macros are not modified but just ignored 
             # if we are removing texi
-            if ($macro =~ /^tex_(\d+)$/o)
-            {
-                add_prev($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
-                next;
-            }
+#            if ($macro =~ /^tex_(\d+)$/o)
+#            {
+#                add_prev($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
+#                next;
+#            }
             if ($state->{'remove_texi'})
             {
                  if ((($macro =~ /^(\w+?)index$/) and ($1 ne 'print')) or 
@@ -11219,7 +11253,6 @@ sub do_simple($$$;$$$$)
     my $line_nr = shift;
     my $no_open = shift;
     my $no_close = shift;
-    my $result;
     
     my $arg_nr = 0;
     $arg_nr = @$args - 1 if (defined($args));
@@ -11253,6 +11286,7 @@ sub do_simple($$$;$$$$)
     }
     if (defined($things_map_ref->{$macro}))
     {
+        my $result;
         if ($state->{'keep_texi'})
         {
              $result = "\@$macro" . '{}';
@@ -11276,11 +11310,12 @@ sub do_simple($$$;$$$$)
     {
         if ($state->{'keep_texi'})
         {
-             $result = "\@$macro" . '{' . $text . '}';
+             return "\@$macro" . '{' . $text . '}';
         }
         else 
         {
              my $style;
+             my $result;
              if ($state->{'remove_texi'})
              {
 #print STDERR "REMOVE $macro, $style_map_texi_ref->{$macro}, fun $style_map_texi_ref->{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_ascii_accent;
@@ -11302,12 +11337,38 @@ sub do_simple($$$;$$$$)
              { 
                   close_arg($macro,$arg_nr, $state);
              }
+             return $result;
         }
+    }
+    elsif ($macro =~ /^special_(\w+)_(\d+)$/o)
+    {
+        my $style = $1;
+        my $count = $2;
+        print STDERR "Bug? text in \@$macro not empty.\n" if ($text ne '');  
+        if ($state->{'keep_texi'})
+        {# text should be empty
+             return "\@$macro" . '{' . $text . '}';
+        }
+        if (defined($Texi2HTML::Config::command_handler{$style}) and
+          defined($Texi2HTML::Config::command_handler{$style}->{'expand'}))
+        {
+             if ($count != $special_commands{$style}->{'count'})
+             {
+                  print STDERR "Bug? count in \@special and structure differ\n";
+             }
+             else
+             {
+                  $special_commands{$style}->{'count'}--;  
+             }
+        }
+        my $result = $Texi2HTML::Config::command_handler{$style}->{'expand'}
+              ($style,$count,$state,$text);
+        $result = '' if (!defined($result));
         return $result;
     }
     # Unknown macro
-    $result = '';
-    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text);
+    my $result = '';
+    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text,$state);
     if ($done)
     {
          echo_warn($message, $line_nr) if (defined($message));
@@ -11338,7 +11399,8 @@ sub do_unknown($$$$$$)
     my $stack = shift;
     my $state = shift;
     my $line_nr = shift;
-    my ($result_line, $result, $result_text, $message) = &$Texi2HTML::Config::unknown($macro, $line);
+    #print STDERR "do_unknown: $macro ::: $line"; 
+    my ($result_line, $result, $result_text, $message) = &$Texi2HTML::Config::unknown($macro, $line,$stack,$state);
     if ($result)
     {
          add_prev ($text, $stack, $result_text) if (defined($result_text));
@@ -11883,6 +11945,8 @@ sub substitute_text($@)
     return $result . $text;
 }
 
+# this function does the second pass formatting. It is not obvious that 
+# it is usefull as in that pass the collected things 
 sub substitute_texi_line($)
 {
     my $text = shift;  
@@ -11985,8 +12049,25 @@ else
 }
     
 open_file($docu, $texi_line_number);
-Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
- if ($Texi2HTML::Config::L2H);
+#Texi2HTML::LaTeX2HTML::init() if ($Texi2HTML::Config::L2H);
+if ($Texi2HTML::Config::L2H)
+{
+   push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
+   push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+   push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
+   $Texi2HTML::Config::command_handler{'math'} = 
+     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     };
+   $Texi2HTML::Config::command_handler{'tex'} = 
+     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     };
+}
+foreach my $handler(@Texi2HTML::Config::command_handler_init)
+{
+    &$handler;
+}
 pass_texi();
 dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
 if (defined($Texi2HTML::Config::MACRO_EXPAND))
@@ -12024,19 +12105,25 @@ if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DO
 if (@{$region_lines{'copying'}})
 {
     $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'});
-    #$copying_comment = remove_texi(@{$region_lines{'copying'}});
-    #$copying_comment = &$Texi2HTML::Config::comment($copying_comment);
 }
 &$Texi2HTML::Config::toc_body(\@elements_list);
-#&$Texi2HTML::Config::toc_body(\@elements_list, $do_contents, $do_scontents);
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
 $sec_num = 0;
-#$Texi2HTML::Config::L2H = l2h_FinishToLatex() if ($Texi2HTML::Config::L2H);
-#$Texi2HTML::Config::L2H = l2h_ToHtml()        if ($Texi2HTML::Config::L2H);
-#$Texi2HTML::Config::L2H = l2h_InitFromHtml()  if ($Texi2HTML::Config::L2H);
-Texi2HTML::LaTeX2HTML::latex2html();
+
+#Texi2HTML::LaTeX2HTML::latex2html();
+foreach my $handler(@Texi2HTML::Config::command_handler_process)
+{
+    &$handler;
+}
 pass_text();
-#do_node_files() if ($Texi2HTML::Config::SPLIT ne 'node' and $Texi2HTML::Config::NODE_FILES);
+foreach my $special (keys(%special_commands))
+{
+    my $count = $special_commands{$special}->{'count'};
+    if ($count != 0)
+    {
+         echo_warn ("Still $count special \@$special not processed\n");
+    }
+}
 if ($Texi2HTML::Config::IDX_SUMMARY)
 {
     foreach my $entry (keys(%$index_properties))
@@ -12049,7 +12136,11 @@ if ($Texi2HTML::Config::IDX_SUMMARY)
 do_node_files() if ($Texi2HTML::Config::NODE_FILES);
 #l2h_FinishFromHtml() if ($Texi2HTML::Config::L2H);
 #l2h_Finish() if($Texi2HTML::Config::L2H);
-Texi2HTML::LaTeX2HTML::finish();
+#Texi2HTML::LaTeX2HTML::finish();
+foreach my $handler(@Texi2HTML::Config::command_handler_finish)
+{
+    &$handler;
+}
 &$Texi2HTML::Config::finish_out();
 print STDERR "# that's all folks\n" if $T2H_VERBOSE;
 

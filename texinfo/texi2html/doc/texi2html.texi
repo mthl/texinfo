@@ -1996,6 +1996,7 @@ be redefined.
 * Indices::
 * Floats and lists of floats::   @code{@@float} and @code{@@listoffloats}
 * Footnotes::
+* Bypassing normal formatting:: 
 * Other and unknown commands::   You can handle specifically other commands
 
 @end menu
@@ -3403,8 +3404,95 @@ formatted as explained above. This function modifies the reference.
 
 @c --------------------------------------------------------
 
+@node Bypassing normal formatting
+@section Bypassing normal formatting
+
+It is possible to bypass completely the normal formatting of @@-commands 
+with braces. In that case the @@-commands and the text within 
+are passed to a user defined function early, in a pass when no expansion
+of output takes place, called the collecting pass. Another user defined 
+function is called during the output expansion phase.
+
+Moreover, arbitrary user defined functions may be called between the 
+different texinfo parsing and outputting passes. This could be used, for
+example to initialize some things before collecting the @@-commands and their
+text, expanding them between the collecting and expansion phase and doing
+some cleaning after the expansion pass. These possibilities are used for
+the interface to La@TeX{}2HTML 
+(@pxref{Expanding TeX regions}), and the examples are taken from that use.  
+
+The @@-commands that are keys of the @variable{%command_handler} hash 
+are collected in the collecting pass and expanded in the expansion
+pass using user defined functions. The associated value is a reference on
+a hash used to specify the user defined function references. 
+The key of the hash reference are @code{'init'} for the function
+reference called during the collecting pass, and @code{'expand'}
+during the expansion pass. Here is an example:
+
+@example
+$command_handler@{'math'@} =
+     @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     @};
+@end example
+
+The function references are called like:
+
+@deftypefn {Function Reference} $status $command_handler@{'$command'@}->@{'init'@} $command $text $count
+@var{$command} is the @@-command name, @var{$text} is the text appearing 
+within the @@-command. @var{$count} is a counter counting how many times
+this @@-command appeared. @var{$status} is a boolean which should be true if 
+the collecting was succesfull. If false the @@-command and the text is 
+discarded.
+@end deftypefn
+
+@deftypefn {Function Reference} $result $command_handler@{'$command'@}->@{'expand'@} $command $count $state $text
+@var{$command} is the @@-command name, @var{$count} is a counter counting 
+how many times this @@-command appeared. @var{$state} is a reference on a 
+hash containing many informations about the context. @var{$text} should be
+empty. @var{$result} is the expanded resulting text.
+@end deftypefn
+
+There are three places for user defined functions, associated with arrays:
+@vtable @code
+@item @@command_handler_init
+The function references in that array are called before the collecting pass.
+At that time the information available is essentially the file names.
+@item @@command_handler_process 
+The function references in that array are called between the collecting
+pass and the expansion pass. At that time all the special @@-commands  
+have been collected as explained above but no output has been produced.
+@item @@command_handler_finish
+he function references in that array are called after the end of the
+output generation.
+@end vtable 
+
+Here is an example of these arrays use:
+
+@example
+push @@command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
+push @@command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+push @@command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
+@end example
+
+@c --------------------------------------------------------
+
 @node Other and unknown commands
 @section Customizing other commands, and unknown commands 
+
+@ignore
+# The command_handler arrays are for commands formatted externally.
+# The function references in @command_handler_init are called
+# before the second pass, before the @-commands text collection.
+# Those in @command_handler_process are called between the second pass
+# and the third pass, after collection of @-commands text and before their
+# expansion.
+# Those in @command_handler_process are called after the third pass,
+# after the document generation.
+@command_handler_init = ();
+@command_handler_process = ();
+@command_handler_finish = ();
+@end ignore
 
 @c --------------------------------------------------------
 @c @node Skipped commands

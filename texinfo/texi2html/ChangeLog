@@ -1,3 +1,14 @@
+2005-08-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: better interface for the handling of @commands 
+	and special regions. Use that interface for LaTeX2HTML.
+	It fixes a bug with a space added after @math or @end tex with
+	l2h. 
+	Fix handling of unknwown commands.
+	* doc/* NEWS: document that feature
+	* Tests/formattin_res/*: update. Test for unknown commands
+	handling.
+
 2005-08-24  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: better redirection pages formatting. 

@@ -19,6 +19,10 @@ This file records noteworthy changes.
 * If SIMPLE_MENU is true the menu is simply enclosed in a preformatted 
   environment.
 
+* The user can bypass the texi2html functions and provide his own function
+  to do things similar that what is done for interfacing with LaTeX2HTML
+  in texi2html.
+
 * COMPATIBILITY
   -------------
 

@@ -233,6 +233,7 @@ test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting tex.texi "-l2h -expand tex" "no"
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
+test_texi formatting comments.texi "-init redefine_need.init -prefix comments_redefined" 0 texi  comments_redefined 
 test_texi formatting formats_not_closed.texi "" 12
 test_texi formatting not_closed_in_menu.texi "" 7
 test_texi formatting macro_call_not_closed.texi "" 1
