@@ -1,7 +1,7 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.8 2005-05-15 00:00:08 karl Exp $
+   $Id: xref.c,v 1.9 2005-08-30 13:55:55 karl Exp $
 
-   Copyright (C) 2004 Free Software Foundation, Inc.
+   Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -387,7 +387,11 @@ cm_xref (int arg)
       if (temp == -1)
         warning (_("End of file reached while looking for `.' or `,'"));
       else if (temp != '.' && temp != ',')
-        warning (_("`.' or `,' must follow @%s, not `%c'"), command, temp);
+        {
+          warning (_("`.' or `,' must follow @%s, not `%c'"), command, temp);
+          if (temp == ')')
+            warning (_("for cross-references in parentheses, use @pxref"));
+        }
     }
 }
 
