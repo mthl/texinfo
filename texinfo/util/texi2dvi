@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.58 2005-08-19 22:23:54 karl Exp $
+# $Id: texi2dvi,v 1.59 2005-09-04 13:07:40 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.58 $'
+rcs_revision='$Revision: 1.59 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -127,14 +127,14 @@ expand=         # t for expansion via makeinfo
 miincludes=     # makeinfo include path
 oformat=dvi
 oname=          # --output
-quiet=          # by default let the tools' message be displayed
+quiet=false     # by default let the tools' message be displayed
 recode=false
 set_language=
 textra=         # Extra TeX commands to insert in the input file.
 textra_cmd=     # sed command to insert TEXTRA where appropriate
 txincludes=     # TEXINPUTS extensions, with trailing colon
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
-verb=false      # echo for verbose mode
+verb=false      # true for verbose mode
 
 orig_pwd=`pwd`
 
@@ -157,6 +157,15 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 ## --------------------- ##
 ## Auxiliary functions.  ##
 ## --------------------- ##
+
+# func_dirname FILE
+# -----------------
+# Return the directory part of FILE.
+func_dirname ()
+{
+  dirname "$1" 2>&6 \
+  || { echo "$1" | sed 's!/[^/]*$!!;s!^$!.!'; }
+}
 
 # return true if program $1 is somewhere in PATH, else false.
 #
@@ -200,7 +209,7 @@ report ()
 # Report some verbose information.
 verbose ()
 {
-  $verb >&2 "$0: $@"
+  $verb && echo >&2 "$0: $@"
 }
 
 # fatal EXIT_STATUS LINE1 LINE2...
@@ -349,8 +358,7 @@ move_to_dest ()
 
 # run_tex ()
 # ----------
-# Run TeX as "$tex $tex_args $filename_input", taking care of errors
-# and logs.
+# Run TeX as "$tex $filename_input", taking care of errors and logs.
 run_tex ()
 {
   case $language:$oformat in
@@ -370,7 +378,13 @@ run_tex ()
   cmd=$tex
 
   # If possible, make TeX report error locations in GNU format.
-  tex_args=
+  if test "${tex_help:+set}" != set; then
+    # Go to a temporary directory to try --help, since old versions that
+    # don't accept --help will generate a texput.log.
+    tex_help_dir=$t2ddir/tex_help
+    ensure_dir "$tex_help_dir"
+    tex_help=`cd "$tex_help_dir" >&6 && $tex --help </dev/null 2>&1`
+  fi
   case $tex_help in
     *file-line-error*) cmd="$cmd --file-line-error";;
   esac
@@ -383,7 +397,24 @@ run_tex ()
     cmd="$cmd </dev/null '${escape}nonstopmode' '${escape}input'"
   fi
 
-  cmd="$cmd '$filename_input'"
+  # TeX's \input does not support white spaces in file names.  Our
+  # intensive use of absolute file names makes this worse: the
+  # enclosing directory names may include white spaces.  Improve the
+  # situation using a symbolic link.  Do not alter filename_input.
+  case $tidy:`func_dirname "$filename_input"` in
+    true:*' '*)
+      _run_tex_file_name=`basename "$filename_input"`
+      if test ! -f "$_run_tex_file_name"; then
+	verbose ln -sf "$filename_input"
+        ln -sf "$_run_tex_file_name"
+      fi
+      cmd="$cmd '$_run_tex_file_name'"
+      ;;
+
+    *)
+      cmd="$cmd '$filename_input'"
+      ;;
+  esac
 
   verbose "Running $cmd ..."
   if eval "$cmd" >&5; then
@@ -545,9 +576,9 @@ run_makeinfo ()
       # digits.
       # Run in a temporary directory to avoid leaving files.
       version_test_dir=$t2ddir/version_test
-      ensure_dir $version_test_dir
+      ensure_dir "$version_test_dir"
       (
-         cd $version_test_dir
+         cd "$version_test_dir"
          echo '\input texinfo.tex @bye' >txiversion.tex
          # Be sure that if tex wants to fail, it is not interactive:
          # close stdin.
@@ -602,7 +633,7 @@ insert_commands ()
     # _xtr.  The file with the user's extra commands.
     work_xtr=$workdir/xtr
     filename_xtr=$work_xtr/$filename_noext.$ext
-    ensure_dir $work_xtr
+    ensure_dir "$work_xtr"
     verbose "Inserting extra commands: $textra"
     sed "$textra_cmd\\
 $textra" "$filename_input" >"$filename_xtr"
@@ -626,9 +657,9 @@ run_recode ()
     if $recode && test -n "$encoding" && findprog recode; then
       verbose "Recoding from $encoding to Texinfo."
       # _rcd.  The Texinfo file recoded in 7bit.
-      work_rcd=$workdir/rcd
+      work_rcd=$workdir/recode
       filename_rcd=$work_rcd/$filename_noext.$ext
-      ensure_dir $work_rcd
+      ensure_dir "$work_rcd"
       if recode "$encoding"..texinfo <"$filename_input" >"$filename_rcd" \
          && test -s "$filename_rcd"; then
         filename_input=$filename_rcd
@@ -690,13 +721,13 @@ while test x"$1" != x"$arg_sep"; do
                 *) oname="$orig_pwd/$1";;
       esac;;
     -p | --p*) oformat=pdf;;
-    -q | -s | --q* | --s*) quiet=t; batch=true;;
+    -q | -s | --q* | --s*) quiet=true; batch=true;;
     -r | --r*) recode=true;;
     -t | --tex* | --com* ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
     --tidy) build_mode=tidy;;
     -v | --vers*) echo "$version"; exit 0;;
-    -V | --verb*) verb=echo;;
+    -V | --verb*) verb=true;;
     --) # What remains are not options.
       shift
       while test x"$1" != x"$arg_sep"; do
@@ -715,6 +746,8 @@ done
 # Pop the token
 shift
 
+# clean: remove the t2d directory afterward.
+# tidy:  compile in this t2d directory.
 case $build_mode in
   local) clean=true;  tidy=false;;
   tidy)  clean=false; tidy=true;;
@@ -781,7 +814,7 @@ fi
 # Main tools' output (TeX, etc.) that TeX users are used to seeing.
 #
 # If quiet, discard, else redirect to the message flow.
-if test "$quiet" = t; then
+if $quiet; then
   exec 5>/dev/null
 else
   exec 5>&1
@@ -824,11 +857,12 @@ for command_line_filename in ${1+"$@"}; do
     continue
   fi
 
-  # Get the name of the current directory.  We want the full path
-  # because in clean build mode we are in tmp, in which case a relative
-  # path has no meaning.
-  filename_dir=`echo $command_line_filename | sed 's!/[^/]*$!!;s!^$!.!'`
-  filename_dir=`cd "$filename_dir" >&6 && pwd`
+  # Get the name of the current directory.
+  filename_dir=`func_dirname "$command_line_filename"`
+  # In a clean build, we `cd', so get an absolute file name.
+  case $tidy in
+    true)  filename_dir=`cd "$filename_dir" >&6 && pwd` ;;
+  esac
 
   # Strip directory part but leave extension.
   filename_ext=`basename "$command_line_filename"`
@@ -869,7 +903,7 @@ for command_line_filename in ${1+"$@"}; do
   work_bak=$workdir/bak
 
   # Make those directories.
-  ensure_dir $work_build $work_bak
+  ensure_dir "$work_build" "$work_bak"
 
   # Source file might include additional sources.
   # We want `.:$orig_pwd' before anything else.  (We'll add `.:' later
@@ -885,7 +919,8 @@ for command_line_filename in ${1+"$@"}; do
     # directory (e.g., in clean build mode, or during the macro-support
     # detection).
     val=`absolute_filenames "$val"`
-    eval export $var=$val
+    eval $var="$val"
+    eval export $var
     eval verbose "$var=\'\$${var}\'"
   done
 
@@ -917,12 +952,6 @@ for command_line_filename in ${1+"$@"}; do
       ;;
   esac
 
-  # Go to a temporary directory to try --help, since old versions that
-  # don't accept --help will generate a texput.log.
-  tex_help_dir=$t2ddir/tex_help
-  ensure_dir $tex_help_dir
-  tex_help=`cd $tex_help_dir >&6 && $tex --help </dev/null 2>&1`
-
   # --expand
   run_makeinfo
 
@@ -949,7 +978,7 @@ for command_line_filename in ${1+"$@"}; do
     orig_xref_files=`get_xref_files  "$filename_noext"`
     if test -n "$orig_xref_files"; then
       verbose "Backing up xref files: $orig_xref_files"
-      cp $orig_xref_files $work_bak
+      cp $orig_xref_files "$work_bak"
     fi
 
     run_bibtex
@@ -995,7 +1024,7 @@ for command_line_filename in ${1+"$@"}; do
   # - the next file is processed in correct conditions
   # - the temporary file can be removed
   cd / # in case $orig_pwd is on a different drive (for DOS)
-  cd $orig_pwd || exit 1
+  cd "$orig_pwd" || exit 1
 
   # Remove temporary files.
   if $clean; then

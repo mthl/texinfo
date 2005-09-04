@@ -1,3 +1,19 @@
+2005-08-31  Akim Demaille  <akim@epita.fr>
+
+	* utils/texi2dvi: Fix white space issues.
+	Quote uses of directory and file names.
+	Don't expect "export var=val" to work (e.g., SunOS 5.9): do it in
+	two steps.
+	($tex_help): Compute it where needed (run_tex), in particular so
+	that $tex is defined when used.
+	(func_dirname): New.
+	($quiet, $verb): Now regular true/false variables.
+	(verbose): Adjust.
+	(run_tex): When we introduced white space by making absolute file
+	names, circumvent TeX's phobia of space in file names by
+	introducing a symbolic link.
+	(filename_dir): Keep it relative when not $tidy.
+
 2005-08-30  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xref.c (cm_xref): if the following wrong char is ),
