@@ -1,3 +1,7 @@
+2005-09-05  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex: Fix typo in a comment.
+
 2005-09-05  Karl Berry  <karl@gnu.org>  (tiny change)
 
 	* util/texi2dvi: look for btxmac.tex's "Undefined citation" message.
