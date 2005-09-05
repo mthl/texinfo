@@ -1,6 +1,12 @@
+2005-09-05  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* util/texi2dvi: look for btxmac.tex's "Undefined citation" message.
+	Then texi2dvi works with (e)plain, too, by setting LATEX=tex.
+	From Oleg Katsitadze.
+
 2005-08-31  Akim Demaille  <akim@epita.fr>
 
-	* utils/texi2dvi: Fix white space issues.
+	* util/texi2dvi: Fix white space issues.
 	Quote uses of directory and file names.
 	Don't expect "export var=val" to work (e.g., SunOS 5.9): do it in
 	two steps.
