@@ -6,7 +6,7 @@
 @syncodeindex vr cp
 @syncodeindex ky cp
 @comment %**end of header
-@comment $Id: info-fr.texi,v 1.2 2005-05-15 00:00:05 karl Exp $
+@comment $Id: info-fr.texi,v 1.3 2005-09-19 12:50:55 karl Exp $
 @comment Traduction modifiée le 17/02/2002 Adrien Rebollo
 
 @documentlanguage fr
@@ -26,7 +26,7 @@ Free Software Foundation, Inc.
 
 
 Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.1 or
+under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with no
 Invariant Sections, with the Front-Cover texts being ``A GNU
 Manual'', and with the Back-Cover Texts as in (a) below.  A copy of the
@@ -44,7 +44,7 @@ license to the document, as described in section 6 of the license.
 
 
 Il est permis de copier, distribuer et/ou modifier ce document selon
-les termes de la GNU Free Documentation License, Version 1.1 ou toute
+les termes de la GNU Free Documentation License, Version 1.2 ou toute
 version ultérieure publiée par la Free Software @w{Foundation ;} sans
 Sections Invariantes, avec la Couverture indiquant @w{« Un} Manuel @w{GNU »},
 et avec le Dos de la Couverture comme dans (a) ci-dessous.  Une copie de
@@ -78,7 +78,7 @@ Free Software Foundation, Inc.
 Boston, MA 02110-1301, USA.
 
 Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.1 or
+under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with no
 Invariant Sections, with the Front-Cover texts being ``A GNU
 Manual'', and with the Back-Cover Texts as in (a) below.  A copy of the
@@ -96,7 +96,7 @@ license to the document, as described in section 6 of the license.
 
 
 Il est permis de copier, distribuer et/ou modifier ce document selon
-les termes de la GNU Free Documentation License, Version 1.1 ou toute
+les termes de la GNU Free Documentation License, Version 1.2 ou toute
 version ultérieure publiée par la Free Software @w{Foundation ;} sans
 Sections Invariantes, avec la Couverture indiquant @w{« Un} Manuel @w{GNU »},
 et avec le Dos de la Couverture comme dans (a) ci-dessous.  Une copie de
