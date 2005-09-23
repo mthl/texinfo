@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.61 2005-09-20 09:58:50 kasal Exp $
+# $Id: texi2dvi,v 1.62 2005-09-23 00:05:45 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.61 $'
+rcs_revision='$Revision: 1.62 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -45,6 +45,7 @@ For more information about these matters, see the file named COPYING.
 "
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
+build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
 
 usage="Usage: $program [OPTION]... FILE...
 
@@ -53,6 +54,11 @@ cross-references are resolved, building all indices.  The directory
 containing each FILE is searched for included files.  The suffix of FILE
 is used to determine its language ((La)TeX or Texinfo).  To process
 (e)plain TeX files, set the environment variable LATEX=tex.
+
+In order to make texi2dvi a drop-in replacement of TeX/LaTeX in AUC-TeX,
+the FILE may also be composed of the following simple TeX commands.
+  \`\\input{FILE}'     the actual file to compile
+  \`\\nonstopmode\     same as --batch
 
 Makeinfo is used to perform Texinfo macro expansion before running TeX
 when needed.
@@ -79,23 +85,31 @@ TeX tuning:
    or --texinfo=CMD    multiple values accumulate
 
 Build modes:
-  --build=MODE  specify the treatment of auxiliary files [$build_mode]
-      --tidy    same as --build=tidy
-  -c, --clean   same as --build=clean
+  --build=MODE         specify the treatment of auxiliary files [$build_mode]
+      --tidy           same as --build=tidy
+  -c, --clean          same as --build=clean
+      --build-dir=DIR  specify where the tidy compilation is performed.
+                       implies --tidy
+                       defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
 
 The MODE specifies where the TeX compilation takes place, and, as a
 consequence, how auxiliary files are treated.  The build mode
 can also be set using the environment variable TEXI2DVI_BUILD_MODE.
 
 Valid MODEs are:
-  \`local'  compile in the current directory, leaving all the auxiliary
-             files around.
-  \`tidy'   compile in a local *.t2d directory, where the auxiliary files
-             are left.  Output files are copied back to the original file.
-  \`clean'  same as \`tidy', but remove the auxiliary directory afterwards.
-             Every compilation therefore requires the full cycle.
+  \`local'      compile in the current directory, leaving all the auxiliary
+                 files around.  This is the traditional TeX use.
+  \`tidy'       compile in a local *.t2d directory, where the auxiliary files
+                 are left.  Output files are copied back to the original file.
+  \`clean'      same as \`tidy', but remove the auxiliary directory afterwards.
+                 Every compilation therefore requires the full cycle.
 
 Using the \`tidy' mode brings several advantages:
+  - the current directory is not cluttered with plethora of temporary files.
+  - clutter can be even reduced using --build-dir=dir: all the *.t2d
+    directories are stored there.
+  - clutter can be reduced to zero using --build-dir=/tmp/\$USER.t2d or
+    --build-dir=$HOME/.t2d.
   - the output file is updated after every succesful TeX run, for
     sake of concurrent visualization of the output.  In a \`local' build
     the viewer stops during the whole TeX run.
@@ -121,6 +135,7 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"
 # Initialize variables for option overriding and otherwise.
 # Don't use `unset' since old bourne shells don't have this command.
 # Instead, assign them an empty value.
+line_error=true # Pass --file-line-error to TeX.
 batch=false     # true for batch mode
 debug=false
 escape="\\"
@@ -346,6 +361,9 @@ move_to_dest ()
     false:) _dest=;;
     *:*)    _dest=$_out_noext.$_file_ext;;
   esac
+  if test ! -f "$1"; then
+    fatal 1 "no such file or directory: $1"
+  fi
   if test -n "$_dest"; then
     verbose "Copying $1 to $_dest"
     cp -p "$1" "$_dest"
@@ -386,7 +404,7 @@ run_tex ()
     ensure_dir "$tex_help_dir"
     tex_help=`cd "$tex_help_dir" >&6 && $tex --help </dev/null 2>&1`
   fi
-  case $tex_help in
+  $line_error && case $tex_help in
     *file-line-error*) cmd="$cmd --file-line-error";;
   esac
 
@@ -707,6 +725,7 @@ while test x"$1" != x"$arg_sep"; do
     # Silently and without documentation accept -b and --b[atch] as synonyms.
     -b | --b*) batch=true;;
     -c | --c*) build_mode=clean;;
+         --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -D | --d*) debug=true;;
     -e | -E | --e*) expand=t;;
     -h | --h*) echo "$usage"; exit 0;;
@@ -749,8 +768,8 @@ done
 # Pop the token
 shift
 
-# clean: remove the t2d directory afterward.
-# tidy:  compile in this t2d directory.
+# $tidy:  compile in a t2d directory.
+# $clean: remove the t2d directory afterward.
 case $build_mode in
   local) clean=true;  tidy=false;;
   tidy)  clean=false; tidy=true;;
@@ -851,21 +870,36 @@ for command_line_filename in ${1+"$@"}; do
   echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
   || command_line_filename="./$command_line_filename"
 
+  # See if we are run from within AUC-Tex, in which case we are
+  # passed `\input{FOO.tex}' or even `\nonstopmode\input{FOO.tex}'.
+  case $command_line_filename in
+    *\\nonstopmode*)
+      batch=true;;
+  esac
+  case $command_line_filename in
+    *\\input{*}*)
+      # Let AUC-TeX error parser deal with line numbers.
+      line_error=false
+      command_line_filename=`\
+        expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
+      ;;
+  esac
+
   # See if the file exists.  If it doesn't we're in trouble since, even
   # though the user may be able to reenter a valid filename at the tex
   # prompt (assuming they're attending the terminal), this script won't
   # be able to find the right xref files and so forth.
+  pwd
   if test ! -r "$command_line_filename"; then
-    report "Could not read $command_line_filename, skipping."
+    report "cannot read $command_line_filename, skipping."
     continue
   fi
 
   # Get the name of the current directory.
   filename_dir=`func_dirname "$command_line_filename"`
+  filename_dir_abs=`cd "$filename_dir" >&6 && pwd`
   # In a clean build, we `cd', so get an absolute file name.
-  case $tidy in
-    true)  filename_dir=`cd "$filename_dir" >&6 && pwd` ;;
-  esac
+  $tidy && filename_dir=$filename_dir_abs
 
   # Strip directory part but leave extension.
   filename_ext=`basename "$command_line_filename"`
@@ -879,12 +913,18 @@ for command_line_filename in ${1+"$@"}; do
 
   # An auxiliary directory used for all the auxiliary tasks involved
   # in compiling this document.
-  t2ddir=$filename_noext.t2d
+  case $build_dir in
+      '' | . ) t2ddir=$filename_noext.t2d ;;
+      *) # Avoid collisions between multiple occurrences of the same
+	 # file.
+	 t2ddir=$build_dir/`echo "$filename_dir_abs/" | sed 's,/,!,g'`
+	 t2ddir=$t2ddir$filename_noext.t2d;;
+  esac
   # Remove it at exit if clean mode.
   $clean &&
     trap "cd / && rm -rf $t2ddir" 0 1 2 15
 
-  ensure_dir "$t2ddir"
+  ensure_dir "$build_dir" "$t2ddir"
 
   # We will change directory, better work with an absolute path...
   t2ddir=`cd "$t2ddir" && pwd`

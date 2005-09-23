@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.117 2005-08-22 12:06:45 karl Exp $
+$Id: NEWS,v 1.118 2005-09-23 00:05:43 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -30,6 +30,14 @@ convenience, here's a url to one of the relevant sections:
 * texi2dvi:
   . new mode --build=tidy which supports compilation in a separate
     directory, where intermediate files are preserved.
+  . new option --build-dir, to specify where the tidy build will take
+    place, either locally or globally.  This allows avoiding the clutter
+    while preserving auxiliary files.
+  . new support for AUC-TeX: texi2dvi (weakly) supports arguments a la
+    TeX such as `\nonstopmode\input{file.tex}'.
+  . pdftexi2dvi is a new wrapper to `texi2dvi --pdf', equal to texi2pdf,
+    for sake of AUC-TeX which prepends `pdf' to the compilation command
+    when requested to produce PDF.
 * texinfo.tex:
   . new Serbian translation file for texinfo.tex, txi-sr.tex.
   . section names with \ characters work properly in pdf outlines.

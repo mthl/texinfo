@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.15 2005-08-05 09:25:44 kasal Exp $
+# $Id: Makefile.am,v 1.16 2005-09-23 00:05:45 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -11,7 +11,10 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 bin_PROGRAMS = ginstall-info texindex
-bin_SCRIPTS = texi2dvi texi2pdf
+bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
+
+pdftexi2dvi: texi2dvi
+	cp -f $< $@
 
 # Use `ginstall-info' in the definition of PROGRAMS and in dependencies
 # because automake generates an install-info target in every Makefile (a
