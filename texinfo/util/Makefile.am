@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.18 2005-09-29 12:25:07 karl Exp $
+# $Id: Makefile.am,v 1.19 2005-09-29 21:06:23 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -47,3 +47,21 @@ EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in
 CLEANFILES = $(pkgdata_DATA)
+
+
+## ------- ##
+## Tests.  ##
+## ------- ##
+
+XFAIL_TESTS =
+
+TESTS =	\
+local.test texi2dvi.test
+
+EXTRA_DIST += $(TESTS)
+
+# Each test case depends on defs.
+check_SCRIPTS = defs
+
+distclean-local:
+	-rm -rf testSubDir

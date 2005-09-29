@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.62 2005-09-23 00:05:45 karl Exp $
+# $Id: texi2dvi,v 1.63 2005-09-29 21:06:23 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.62 $'
+rcs_revision='$Revision: 1.63 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -147,7 +147,6 @@ quiet=false     # by default let the tools' message be displayed
 recode=false
 set_language=
 textra=         # Extra TeX commands to insert in the input file.
-textra_cmd=     # sed command to insert TEXTRA where appropriate
 txincludes=     # TEXINPUTS extensions, with trailing colon
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
@@ -174,6 +173,22 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 ## Auxiliary functions.  ##
 ## --------------------- ##
 
+
+# In case `local' is not supported by the shell.
+(
+  foo=bar
+  test_local () {
+    local foo=foo
+  }
+  test_local
+  test $foo = bar
+) || local () {
+  case $1 in
+    *=*) eval "$1";;
+  esac
+}
+
+
 # func_dirname FILE
 # -----------------
 # Return the directory part of FILE.
@@ -183,13 +198,12 @@ func_dirname ()
   || { echo "$1" | sed 's!/[^/]*$!!;s!^$!.!'; }
 }
 
-# return true if program $1 is somewhere in PATH, else false.
-#
+# findprog PROG
+# -------------
+# Return true if PROG is somewhere in PATH, else false.
 findprog ()
 {
-  foundprog=false
-
-  saveIFS=$IFS
+  local saveIFS=$IFS
   IFS=$path_sep  # break path components at the path separator
   for dir in $PATH; do
     IFS=$saveIFS
@@ -204,11 +218,10 @@ findprog ()
     #
     if  { test -f "$dir/$1"	&& test -x "$dir/$1"; } ||
 	{ test -f "$dir/$1.exe"	&& test -x "$dir/$1.exe"; }; then
-      foundprog=true
-      break
+      return 0
     fi
   done
-  $foundprog
+  return 1
 }
 
 # report LINE1 LINE2...
@@ -266,10 +279,91 @@ for var in $tex_envvars; do
 done
 
 
-# get_xref_files FILENAME-NOEXT
+# get_index_files FILE1 FILE2...
+# ------------------------------
+# Select the files that are indexes to run texindex/makeindex onto.
+get_index_files ()
+{
+  for file
+  do
+    case `sed '1q' $file` in
+      "\\entry{"*|"\\indexentry{"*) echo "$file";;
+    esac
+  done
+}
+
+
+# Convert relative paths to absolute paths, so we can run in another
+# directory (e.g., in tidy build mode, or during the macro-support
+# detection).
+#
+# Empty path components are meaningful to tex.  We rewrite them
+# as `EMPTY' so they don't get lost when we split on $path_sep.
+# Hopefully no one will have an actual directory named EMPTY.
+absolute_filenames ()
+{
+  local replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
+                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+  local res=`echo "$1" | eval sed $replace_empty`
+  save_IFS=$IFS
+  IFS=$path_sep
+  set x $res; shift
+  res=.
+  for dir
+  do
+    case $dir in
+      EMPTY)
+        res=$res$path_sep
+        ;;
+      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expanded.
+        test -d $dir && res=$res$path_sep$dir
+        ;;
+      *)
+        test -d $dir && abs=`cd "$dir" && pwd` && res=$res$path_sep$abs
+        ;;
+    esac
+  done
+  echo "$res"
+}
+
+# move_to_dest FILE
+# -----------------
+# Move the FILE to the place where the user expects it.  FILE can be
+# the principal output (in which case -o directly apply), or an auxiliary
+# file with the same base name.
+move_to_dest ()
+{
+  local file_noext=`echo "$1" | sed 's/\.[^.]*$//'`
+  local file_ext=`echo "$1" | sed 's/^.*\.//'`
+  local out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
+  local out_ext=`echo "$oname" | sed 's/^.*\.//'`
+  local dest
+
+  case $tidy:$oname in
+    true:)  dest=$orig_pwd;;
+    false:) dest=;;
+    *:*)    dest=$out_noext.$file_ext;;
+  esac
+  if test ! -f "$1"; then
+    fatal 1 "no such file or directory: $1"
+  fi
+  if test -n "$dest"; then
+    verbose "Copying $1 to $dest"
+    cp -p "$1" "$dest"
+  fi
+}
+
+
+## --------------------- ##
+## Managing xref files.  ##
+## --------------------- ##
+
+
+# xref_files_get FILENAME-NOEXT
 # -----------------------------
 # Compute the list of xref files (indexes, tables and lists).
-get_xref_files ()
+xref_files_get ()
 {
   if $tidy; then
     # In a tidy build, all the files around as actual outputs.
@@ -295,81 +389,55 @@ get_xref_files ()
   done
 }
 
-
-# get_index_files FILE1 FILE2...
-# ------------------------------
-# Select the files that are indexes to run texindex/makeindex onto.
-get_index_files ()
+# xref_files_save
+# ---------------
+# Save the xref files.
+xref_files_save ()
 {
-  for file
-  do
-    case `sed '1q' $file` in
-      "\\entry{"*|"\\indexentry{"*) echo "$file";;
-    esac
-  done
-}
-
-
-# Convert relative paths to absolute paths, so we can run in another
-# directory (e.g., in tidy build mode, or during the macro-support
-# detection).
-#
-# Empty path components are meaningful to tex.  We rewrite them
-# as `EMPTY' so they don't get lost when we split on $path_sep.
-# Hopefully no one will have an actual directory named EMPTY.
-absolute_filenames ()
-{
-  replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
-                 -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                 -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
-  _res=`echo "$1" | eval sed $replace_empty`
-  save_IFS=$IFS
-  IFS=$path_sep
-  set x $_res; shift
-  _res=.
-  for dir
-  do
-    case $dir in
-      EMPTY)
-        _res=$_res$path_sep
-        ;;
-      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expanded.
-        test -d $dir && _res=$_res$path_sep$dir
-        ;;
-      *)
-        test -d $dir && abs=`cd "$dir" && pwd` && _res=$_res$path_sep$abs
-        ;;
-    esac
-  done
-  echo "$_res"
-}
-
-# move_to_dest FILE
-# -----------------
-# Move the FILE to the place where the user expects it.  FILE can be
-# the principal output (in which case -o directly apply), or an auxiliary
-# file with the same base name.
-move_to_dest ()
-{
-  _file_noext=`echo "$1" | sed 's/\.[^.]*$//'`
-  _file_ext=`echo "$1" | sed 's/^.*\.//'`
-  _out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
-  _out_ext=`echo "$oname" | sed 's/^.*\.//'`
-
-  case $tidy:$oname in
-    true:)  _dest=$orig_pwd;;
-    false:) _dest=;;
-    *:*)    _dest=$_out_noext.$_file_ext;;
-  esac
-  if test ! -f "$1"; then
-    fatal 1 "no such file or directory: $1"
-  fi
-  if test -n "$_dest"; then
-    verbose "Copying $1 to $_dest"
-    cp -p "$1" "$_dest"
+  # Save copies of auxiliary files for later comparison.
+  xref_files_orig=`xref_files_get  "$filename_noext"`
+  if test -n "$xref_files_orig"; then
+    verbose "Backing up xref files: $xref_files_orig"
+    cp $xref_files_orig "$work_bak"
   fi
 }
 
+
+# xref_files_changed
+# ------------------
+# Whether the xref files were changed since the previous run.
+xref_files_changed ()
+{
+  # LaTeX (and the package changebar) report in the LOG file if it
+  # should be rerun.  This is needed for files included from
+  # subdirs, since texi2dvi does not try to compare xref files in
+  # subdirs.  Performing xref files test is still good since LaTeX
+  # does not report changes in xref files.
+  grep "Rerun to get" "$filename_noext.log" >&6 2>&1 &&
+    return 0
+
+  # If old and new lists don't at least have the same file list,
+  # then one file or another has definitely changed.
+  xref_files_new=`xref_files_get  "$filename_noext"`
+  verbose "Original xref files = $xref_files_orig"
+  verbose "New xref files      = $xref_files_new"
+  test "x$xref_files_orig" != "x$xref_files_new" &&
+    return 0
+
+  # Compare each file until we find a difference.
+  for this_file in $xref_files_new; do
+    verbose "Comparing xref file `echo $this_file | sed 's|\./||g'` ..."
+    # cmp -s returns nonzero exit status if files differ.
+    if cmp -s "$this_file" "$work_bak/$this_file"; then :; else
+      verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
+      $debug && diff -u "$work_bak/$this_file" "$this_file"
+      return 0
+    fi
+  done
+
+  # No change.
+  return 1
+}
 
 ## ----------------------- ##
 ## Running the TeX suite.  ##
@@ -381,8 +449,8 @@ move_to_dest ()
 run_tex ()
 {
   case $language:$oformat in
-    latex:pdf)   tex=${PDFLATEX:-pdflatex};;
     latex:dvi)   tex=${LATEX:-latex};;
+    latex:pdf)   tex=${PDFLATEX:-pdflatex};;
     texinfo:pdf) tex=$PDFTEX;;
     texinfo:dvi)
         # MetaPost also uses the TEX environment variable.  If the user
@@ -507,7 +575,7 @@ run_index ()
     latex)   texindex=${MAKEINDEX:-makeindex};;
     texinfo) texindex=${TEXINDEX:-texindex};;
   esac
-  index_files=`get_index_files $orig_xref_files`
+  index_files=`get_index_files $xref_files_orig`
   if test -n "$texindex" && test -n "$index_files"; then
     verbose "Running $texindex $index_files ..."
     $texindex $index_files 2>&5 1>&2 ||
@@ -535,6 +603,32 @@ run_thumbpdf ()
   fi
 }
 
+
+# run_tex_suite
+# -------------
+# Run the TeX tools until a fix point is reached.
+run_tex_suite ()
+{
+  # Count the number of cycles.
+  cycle=0
+
+  while :; do
+    cycle=`expr $cycle + 1`
+    verbose "Cycle $cycle for $command_line_filename"
+
+    xref_files_save
+
+    run_bibtex
+    run_index
+    run_tex
+
+    xref_files_changed || break
+  done
+
+  # If we were using thumbpdf and producing PDF, then run thumbpdf
+  # and TeX one last time.
+  run_thumbpdf
+}
 
 ## -------------------------------- ##
 ## TeX processing auxiliary tools.  ##
@@ -650,6 +744,12 @@ run_makeinfo ()
 # Used most commonly for @finalout, @smallbook, etc.
 insert_commands ()
 {
+  local textra_cmd
+  case language in
+    latex)   textra_cmd=1i;;
+    texinfo) textra_cmd='/^@setfilename/a';;
+  esac
+
   if test -n "$textra"; then
     # _xtr.  The file with the user's extra commands.
     work_xtr=$workdir/xtr
@@ -691,6 +791,30 @@ run_recode ()
   fi
 }
 
+# compute_language FILENAME
+# -------------------------
+# Return the short string describing the language in which FILENAME
+# is written: `texinfo' or `latex'.
+compute_language ()
+{
+  # If the user explicitly specified the language, use that.
+  # Otherwise, if the first line is \input texinfo, assume it's texinfo.
+  # Otherwise, guess from the file extension.
+  if test -n "$set_language"; then
+    echo $set_language
+  elif sed 1q "$1" | grep 'input texinfo' >&6; then
+    echo texinfo
+  else
+    # Get the type of the file (latex or texinfo) from the given language
+    # we just guessed, or from the file extension if not set yet.
+    case $1 in
+      *.ltx | *.tex | *.drv | *.dtx) echo latex;;
+      *)                             echo texinfo;;
+    esac
+  fi
+}
+
+
 ## ---------------------- ##
 ## Command line parsing.  ##
 ## ---------------------- ##
@@ -723,29 +847,29 @@ while test x"$1" != x"$arg_sep"; do
   case "$1" in
     -@ ) escape=@;;
     # Silently and without documentation accept -b and --b[atch] as synonyms.
-    -b | --b*) batch=true;;
-    -c | --c*) build_mode=clean;;
+    -b | --batch) batch=true;;
+    -c | --clean) build_mode=clean;;
          --build-dir)  shift; build_dir=$1; build_mode=tidy;;
-    -D | --d*) debug=true;;
-    -e | -E | --e*) expand=t;;
-    -h | --h*) echo "$usage"; exit 0;;
+    -D | --debug) debug=true;;
+    -e | -E | --expand) expand=t;;
+    -h | --help) echo "$usage"; exit 0;;
     -I | --I*)
       shift
       miincludes="$miincludes -I $1"
       txincludes="$txincludes$1$path_sep"
       ;;
-    -l | --l*) shift; set_language=$1;;
-    -o | --o*)
+    -l | --lang | --language) shift; set_language=$1;;
+    -o | --out  | --output)
       shift
       # Make it absolute, just in case we also have --clean, or whatever.
       case "$1" in
         /* | ?:/*) oname=$1;;
                 *) oname="$orig_pwd/$1";;
       esac;;
-    -p | --p*) oformat=pdf;;
-    -q | -s | --q* | --s*) quiet=true; batch=true;;
-    -r | --r*) recode=true;;
-    -t | --tex* | --com* ) shift; textra="$textra\\
+    -p | --pdf) oformat=pdf;;
+    -q | -s | --quiet | --silent) quiet=true; batch=true;;
+    -r | --recode) recode=true;;
+    -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
     --tidy) build_mode=tidy;;
     -v | --vers*) echo "$version"; exit 0;;
@@ -889,7 +1013,6 @@ for command_line_filename in ${1+"$@"}; do
   # though the user may be able to reenter a valid filename at the tex
   # prompt (assuming they're attending the terminal), this script won't
   # be able to find the right xref files and so forth.
-  pwd
   if test ! -r "$command_line_filename"; then
     report "cannot read $command_line_filename, skipping."
     continue
@@ -967,33 +1090,8 @@ for command_line_filename in ${1+"$@"}; do
     eval verbose "$var=\'\$${var}\'"
   done
 
-  # If the user explicitly specified the language, use that.
-  # Otherwise, if the first line is \input texinfo, assume it's texinfo.
-  # Otherwise, guess from the file extension.
-  if test -n "$set_language"; then
-    language=$set_language
-  elif sed 1q "$command_line_filename" | grep 'input texinfo' >&6; then
-    language=texinfo
-  else
-    language=
-  fi
-
-  # Get the type of the file (latex or texinfo) from the given language
-  # we just guessed, or from the file extension if not set yet.
-  case ${language:-$filename_ext} in
-    [lL]a[tT]e[xX] | *.ltx | *.tex | *.drv | *.dtx)
-      # Assume a LaTeX file.  LaTeX needs bibtex and uses latex for
-      # compilation.  No makeinfo.
-      language=latex
-      textra_cmd=1i
-      ;;
-
-    *)
-      # Assume a Texinfo file.
-      language=texinfo
-      textra_cmd='/^@setfilename/a'
-      ;;
-  esac
+  # `texinfo' or `latex'?
+  language=`compute_language $command_line_filename`
 
   # --expand
   run_makeinfo
@@ -1004,64 +1102,14 @@ for command_line_filename in ${1+"$@"}; do
   # --recode
   run_recode
 
-  # Count the number of cycles.
-  cycle=0
-
   # Move to the working directory.
   if $tidy; then
     verbose "cd $work_build"
     cd "$work_build" || exit 1
   fi
 
-  while :; do # will break out of loop below
-    cycle=`expr $cycle + 1`
-    verbose "Cycle $cycle for $command_line_filename"
-
-    # Save copies of auxiliary files for later comparison.
-    orig_xref_files=`get_xref_files  "$filename_noext"`
-    if test -n "$orig_xref_files"; then
-      verbose "Backing up xref files: $orig_xref_files"
-      cp $orig_xref_files "$work_bak"
-    fi
-
-    run_bibtex
-    run_index
-    run_tex
-
-    # LaTeX (and the package changebar) report in the LOG file if it
-    # should be rerun.  This is needed for files included from
-    # subdirs, since texi2dvi does not try to compare xref files in
-    # subdirs.  Performing xref files test is still good since LaTeX
-    # does not report changes in xref files.
-    grep "Rerun to get" "$filename_noext.log" >&6 2>&1 &&
-      continue
-
-    # If old and new lists don't at least have the same file list,
-    # then one file or another has definitely changed.
-    new_xref_files=`get_xref_files  "$filename_noext"`
-    verbose "Original xref files = $orig_xref_files"
-    verbose "New xref files      = $new_xref_files"
-    test "x$orig_xref_files" != "x$new_xref_files" &&
-      continue
-
-    # Compare each file until we find a difference.
-    for this_file in $new_xref_files; do
-      verbose "Comparing xref file `echo $this_file | sed 's|\./||g'` ..."
-      # cmp -s returns nonzero exit status if files differ.
-      if cmp -s "$this_file" "$work_bak/$this_file"; then :; else
-        verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
-        $debug && diff -u "$work_bak/$this_file" "$this_file"
-        continue 2
-      fi
-    done
-
-    # We're done.
-    break
-  done # while :;
-
-  # If we were using thumbpdf and producing PDF, then run thumbpdf
-  # and TeX one last time.
-  run_thumbpdf
+  # Run until a fix point is reached.
+  run_tex_suite
 
   # Both to make sure we can remove $t2ddir (we might have cd'd into
   # it), and in case $orig_pwd is on a different drive (for DOS).

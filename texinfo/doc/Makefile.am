@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.29 2005-08-17 12:43:06 karl Exp $
+# $Id: Makefile.am,v 1.30 2005-09-29 21:06:22 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -27,7 +27,7 @@ MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
 	    txi-it.tex txi-nl.tex txi-no.tex txi-pl.tex txi-pt.tex \
-	    txi-sr.tex txi-tr.tex 
+	    txi-sr.tex txi-tr.tex
 
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex pdfcolor.tex texinfo.tex \
@@ -97,12 +97,22 @@ $(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	mv $@ $@.tmp
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
 	rm $@.tmp
-	
+
 $(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
-$(srcdir)/texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
-	$(HELP2MAN) --name="print Texinfo documents" $(top_srcdir)/util/texi2dvi >$@
+
+common_texi2dvi_deps = $(common_mandeps) \
+                       $(top_srcdir)/util/texi2dvi $(top_srcdir)/util/texi2pdf
+
+$(srcdir)/texi2dvi.1: $(common_texi2dvi_deps)
+	$(HELP2MAN) --name="convert Texinfo documents to DVI" $(top_srcdir)/util/texi2dvi >$@
+
+$(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
+	$(HELP2MAN) --name="convert Texinfo documents to PDF" $(top_srcdir)/util/texi2pdf >$@
+
+$(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
+	$(HELP2MAN) --name="convert Texinfo documents to PDF" $(top_srcdir)/util/pdftexi2dvi >$@
 
 # Do not create info files for distribution.
 dist-info:
