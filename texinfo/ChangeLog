@@ -1,3 +1,35 @@
+2005-10-02  Karl Berry  <karl@gnu.org>
+
+	* util/texindex.c (maketempname): avoid race condition.
+	(concat): now take three args, so rename to concat3.
+	Debian bug 328365.
+
+2005-09-30  Karl Berry  <karl@gnu.org>
+
+	* configure.ac: reenable utils/defs generation, now that we have
+	the files below.
+
+2005-09-29  Akim Demaille  <akim@epita.fr>
+
+	* doc/texinfo.txi: Document pdftexi2dvi.
+	* doc/Makefile.am (common_texi2dvi_deps): New.
+	Handle texi2pdf and pdftexi2dvi.
+	* util/texi2dvi: Stop supporting shortened long options, as it's
+	causing troubles.  Short options are here anyway.
+	(local): Provide a default implementation if not supported by the
+	shell.
+	(findprog): Use return.
+	(get_xref_files): Rename as...
+	(xref_files_get): this.
+	(xref_files_changed, xref_files_save): New.
+	(run_tex_suite): New.
+	(move_to_dest): Use `local'.
+	($textra_cmd): Compute it in...
+	(insert_commands): here.
+
+	* tests/defs.in, tests/texi2dvi.test, tests/local.test: New.
+	* configure.ac, tests/Makefile.am: Adjust.
+
 2005-09-22  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi ($build_dir): New.
