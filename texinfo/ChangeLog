@@ -1,3 +1,8 @@
+2005-10-05  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi.test: Make sure --build=clean passes.
+	* util/texi2dvi: Fix the handling of --build.
+
 2005-10-05  Karl Berry  <karl@gnu.org>
 
 	* util/texindex.c (maketempname): use mode 0600.
