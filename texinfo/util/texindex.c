@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.14 2005-10-03 00:41:26 karl Exp $
+   $Id: texindex.c,v 1.15 2005-10-05 23:21:41 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -406,7 +406,7 @@ maketempname (int count)
 
   sprintf (tempsuffix, ".%d", count);
   name =  concat3 (tempdir, tempbase, tempsuffix);
-  fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0666);
+  fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0600);
   if (fd == -1)
     return NULL;
   else

@@ -1,3 +1,7 @@
+2005-10-05  Karl Berry  <karl@gnu.org>
+
+	* util/texindex.c (maketempname): use mode 0600.
+
 2005-10-02  Karl Berry  <karl@gnu.org>
 
 	* util/texindex.c (maketempname): avoid race condition.
