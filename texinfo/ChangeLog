@@ -1,3 +1,8 @@
+2005-10-23  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (insert_commands): missing $ in case statement;
+	from report by Simon Josefsson.
+
 2005-10-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\doignoretext): ignore characters after
