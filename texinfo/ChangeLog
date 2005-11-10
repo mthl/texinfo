@@ -1,3 +1,8 @@
+2005-11-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Def Cmd Template): mismatched example and output.
+	Report from: Steve Peter, 09 Nov 2005 12:46:02 -0500.
+
 2005-10-23  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (insert_commands): missing $ in case statement;
