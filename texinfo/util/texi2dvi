@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.65 2005-10-24 00:33:43 karl Exp $
+# $Id: texi2dvi,v 1.66 2005-11-11 00:02:31 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.65 $'
+rcs_revision='$Revision: 1.66 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -141,7 +141,7 @@ debug=false
 escape="\\"
 expand=         # t for expansion via makeinfo
 miincludes=     # makeinfo include path
-oformat=dvi
+out_lang=dvi
 oname=          # --output
 quiet=false     # by default let the tools' message be displayed
 recode=false
@@ -327,6 +327,21 @@ absolute_filenames ()
   echo "$res"
 }
 
+
+# output_base_name FILE
+# ---------------------
+# The name of the FILE possibly renamed to satisfy --output.
+output_base_name ()
+{
+  case $oname in
+    '') echo "$1";;
+     *) local out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
+	local file_ext=`echo "$1" | sed 's/^.*\.//'`
+	echo "$out_noext.$file_ext"
+      ;;
+  esac
+}
+
 # move_to_dest FILE
 # -----------------
 # Move the FILE to the place where the user expects it.  FILE can be
@@ -334,16 +349,12 @@ absolute_filenames ()
 # file with the same base name.
 move_to_dest ()
 {
-  local file_noext=`echo "$1" | sed 's/\.[^.]*$//'`
-  local file_ext=`echo "$1" | sed 's/^.*\.//'`
-  local out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
-  local out_ext=`echo "$oname" | sed 's/^.*\.//'`
   local dest
 
   case $tidy:$oname in
     true:)  dest=$orig_pwd;;
     false:) dest=;;
-    *:*)    dest=$out_noext.$file_ext;;
+    *:*)    dest=$(output_base_name "$1");;
   esac
   if test ! -f "$1"; then
     fatal 1 "no such file or directory: $1"
@@ -395,7 +406,7 @@ xref_files_get ()
 xref_files_save ()
 {
   # Save copies of auxiliary files for later comparison.
-  xref_files_orig=`xref_files_get  "$filename_noext"`
+  xref_files_orig=`xref_files_get  "$in_noext"`
   if test -n "$xref_files_orig"; then
     verbose "Backing up xref files: $xref_files_orig"
     cp $xref_files_orig "$work_bak"
@@ -413,12 +424,12 @@ xref_files_changed ()
   # subdirs, since texi2dvi does not try to compare xref files in
   # subdirs.  Performing xref files test is still good since LaTeX
   # does not report changes in xref files.
-  grep "Rerun to get" "$filename_noext.log" >&6 2>&1 &&
+  grep "Rerun to get" "$in_noext.log" >&6 2>&1 &&
     return 0
 
   # If old and new lists don't at least have the same file list,
   # then one file or another has definitely changed.
-  xref_files_new=`xref_files_get  "$filename_noext"`
+  xref_files_new=`xref_files_get  "$in_noext"`
   verbose "Original xref files = $xref_files_orig"
   verbose "New xref files      = $xref_files_new"
   test "x$xref_files_orig" != "x$xref_files_new" &&
@@ -445,24 +456,39 @@ xref_files_changed ()
 
 # run_tex ()
 # ----------
-# Run TeX as "$tex $filename_input", taking care of errors and logs.
+# Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
-  case $language:$oformat in
+  case $language:$out_lang in
     latex:dvi)   tex=${LATEX:-latex};;
     latex:pdf)   tex=${PDFLATEX:-pdflatex};;
-    texinfo:pdf) tex=$PDFTEX;;
     texinfo:dvi)
         # MetaPost also uses the TEX environment variable.  If the user
         # has set TEX=latex for that reason, don't bomb out.
         case $TEX in
 	  *latex) tex=tex;; # don't bother trying to find etex
 	       *) tex=$TEX
-        esac
+        esac;;
+    texinfo:pdf) tex=$PDFTEX;;
+
+    *) fatal 1 "$out_lang not supported for $language";;
+  esac
+
+  # Beware of aux files in subdirectories that require the
+  # subdirectory to exist.
+  case $language:$tidy in
+    latex:true)
+       sed -n 's|^[ ]*\\include{\(.*\)/.*}.*|\1|p' $in_input |
+       sort -u |
+       while read d
+       do
+	 ensure_dir "$work_build/$d"
+       done
+       ;;
   esac
 
   # Note that this will be used via an eval: quote properly.
-  cmd=$tex
+  local cmd=$tex
 
   # If possible, make TeX report error locations in GNU format.
   if test "${tex_help:+set}" != set; then
@@ -487,25 +513,25 @@ run_tex ()
   # TeX's \input does not support white spaces in file names.  Our
   # intensive use of absolute file names makes this worse: the
   # enclosing directory names may include white spaces.  Improve the
-  # situation using a symbolic link.  Do not alter filename_input.
-  case $tidy:`func_dirname "$filename_input"` in
+  # situation using a symbolic link.  Do not alter in_input.
+  case $tidy:`func_dirname "$in_input"` in
     true:*' '*)
-      _run_tex_file_name=`basename "$filename_input"`
+      _run_tex_file_name=`basename "$in_input"`
       if test ! -f "$_run_tex_file_name"; then
-	verbose ln -sf "$filename_input"
+	verbose ln -sf "$in_input"
         ln -sf "$_run_tex_file_name"
       fi
       cmd="$cmd '$_run_tex_file_name'"
       ;;
 
     *)
-      cmd="$cmd '$filename_input'"
+      cmd="$cmd '$in_input'"
       ;;
   esac
 
   verbose "Running $cmd ..."
   if eval "$cmd" >&5; then
-    move_to_dest "$filename_noext.$oformat"
+    move_to_dest "$in_noext.$out_lang"
   else
     fatal 1 "$tex exited with bad status, quitting."
   fi
@@ -535,26 +561,29 @@ run_bibtex ()
 {
   case $language in
     latex)   bibtex=${BIBTEX:-bibtex};;
-    texinfo) bibtex=;;
+    texinfo) return;;
   esac
 
   # "Citation undefined" is for LaTeX, "Undefined citation" for btxmac.tex.
-  if test -n "$bibtex" \
-     && test -r "$filename_noext.aux" \
-     && test -r "$filename_noext.log" \
-     && (grep 'Warning:.*Citation.*undefined' "$filename_noext.log" \
-          || grep '.*Undefined citation' "$filename_noext.log" \
-          || grep 'No file .*\.bbl\.' "$filename_noext.log") \
+  if test -r "$in_noext.aux" \
+     && test -r "$in_noext.log" \
+     && (grep 'Warning:.*Citation.*undefined' "$in_noext.log" \
+          || grep '.*Undefined citation' "$in_noext.log" \
+          || grep 'No file .*\.bbl\.' "$in_noext.log") \
         >&6 2>&1; \
   then
     # If using the bibunits package, we might have to run bibtex
     # on subfiles.
-    for f in "$filename_noext".aux bu[0-9]*.aux
+    for f in "$in_noext".aux bu[0-9]*.aux
     do
       if test -s "$f" && \
          (grep '^\\bibstyle[{]' "$f"   \
           && grep '^\\bibdata[{]' "$f" \
-          && grep '^\\citation[{]' "$f") >&6 2>&1; then
+	  ## The following line is suspicious: fails when there
+	  ## are citations in sub aux files.  We need to be
+	  ## smarter in this case.
+          ## && grep '^\\citation[{]' "$f"
+	  ) >&6 2>&1; then
         verbose "Running $bibtex $f ..."
         $bibtex "$f" >&5 ||
           fatal 1 "$bibtex exited with bad status, quitting."
@@ -588,13 +617,13 @@ run_index ()
 # ---------------
 run_thumbpdf ()
 {
-  if test $oformat = pdf \
-     && test -r "$filename_noext.log" \
-     && grep 'thumbpdf\.sty'  "$filename_noext.log" >&6 2>&1; \
+  if test $out_lang = pdf \
+     && test -r "$in_noext.log" \
+     && grep 'thumbpdf\.sty'  "$in_noext.log" >&6 2>&1; \
   then
     thumbpdf=${THUMBPDF:-thumbpdf}
-    verbose "Running $thumbpdf $filename_noext ..."
-    if $thumbpdf "$filename_noext" >&5; then
+    verbose "Running $thumbpdf $in_noext ..."
+    if $thumbpdf "$in_noext" >&5; then
       run_tex
     else
       report "$thumbpdf exited with bad status." \
@@ -604,13 +633,13 @@ run_thumbpdf ()
 }
 
 
-# run_tex_suite
-# -------------
+# run_tex_suite ()
+# ----------------
 # Run the TeX tools until a fix point is reached.
 run_tex_suite ()
 {
   # Count the number of cycles.
-  cycle=0
+  local cycle=0
 
   while :; do
     cycle=`expr $cycle + 1`
@@ -716,23 +745,23 @@ run_makeinfo ()
     fi
 
     if test -n "$makeinfo"; then
-      # filename_src: the file with macros expanded.
+      # in_src: the file with macros expanded.
       # Use the same basename to generate the same aux file names.
       work_src=$workdir/src
       ensure_dir "$work_src"
-      filename_src=$work_src/$filename_noext.$ext
+      in_src=$work_src/$in_base
 
-      verbose "Macro-expanding $command_line_filename to $filename_src ..."
+      verbose "Macro-expanding $command_line_filename to $in_src ..."
       sed "$comment_iftex" "$command_line_filename" \
-        | $makeinfo --footnote-style=end -I "$filename_dir" $miincludes \
+        | $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
           -o /dev/null --macro-expand=- \
-        | sed "$uncomment_iftex" >"$filename_src"
+        | sed "$uncomment_iftex" >"$in_src"
       # Continue only if everything succeeded.
       if test $? -ne 0 \
-         || test ! -r "$filename_src"; then
+         || test ! -r "$in_src"; then
         verbose "Expansion failed, ignored...";
       else
-        filename_input=$filename_src
+        in_input=$in_src
       fi
     fi
     ;;
@@ -754,12 +783,12 @@ insert_commands ()
   if test -n "$textra"; then
     # _xtr.  The file with the user's extra commands.
     work_xtr=$workdir/xtr
-    filename_xtr=$work_xtr/$filename_noext.$ext
+    in_xtr=$work_xtr/$in_base
     ensure_dir "$work_xtr"
     verbose "Inserting extra commands: $textra"
     sed "$textra_cmd\\
-$textra" "$filename_input" >"$filename_xtr"
-    filename_input=$filename_xtr
+$textra" "$in_input" >"$in_xtr"
+    in_input=$in_xtr
   fi
 }
 
@@ -775,16 +804,16 @@ run_recode ()
 	d
 	:found
 	q'
-    encoding=`sed -e "$pgm" "$filename_input"`
+    encoding=`sed -e "$pgm" "$in_input"`
     if $recode && test -n "$encoding" && findprog recode; then
       verbose "Recoding from $encoding to Texinfo."
       # _rcd.  The Texinfo file recoded in 7bit.
       work_rcd=$workdir/recode
-      filename_rcd=$work_rcd/$filename_noext.$ext
+      in_rcd=$work_rcd/$in_base
       ensure_dir "$work_rcd"
-      if recode "$encoding"..texinfo <"$filename_input" >"$filename_rcd" \
-         && test -s "$filename_rcd"; then
-        filename_input=$filename_rcd
+      if recode "$encoding"..texinfo <"$in_input" >"$in_rcd" \
+         && test -s "$in_rcd"; then
+        in_input=$in_rcd
       else
         verbose "Recoding failed, using original input."
       fi
@@ -815,6 +844,51 @@ compute_language ()
   fi
 }
 
+
+# run_to_html ()
+# --------------
+# Convert to HTML.
+run_to_html ()
+{
+  hevea=${HEVEA:-hevea}
+
+  # Compiling to the tmp directory enables to preserve a previous
+  # successful compilation.  Unfortunately it makes it hard to move
+  # the image back to the destination directory.  So compile to the
+  # actual destination.
+  local to_html="$hevea -fix -noiso -O -o '$out_name' '$in_input'"
+
+  verbose "running $cmd"
+  if eval "$to_html" >&5; then :; else
+    fatal 1 "$hevea exited with bad status, quitting."
+  fi
+}
+
+
+# run_conversion ()
+# -----------------
+# Run the TeX tools until a fix point is reached.
+run_conversion ()
+{
+  # Move to the working directory.
+  if $tidy; then
+    verbose "cd $work_build"
+    cd "$work_build" || exit 1
+  fi
+
+  case $out_lang in
+    dvi|pdf) run_tex_suite;;
+    html   ) run_to_html;;
+  esac
+
+  # In case $orig_pwd is on a different drive (for DOS).
+  cd /
+
+  # Return to the original directory so that
+  # - the next file is processed in correct conditions
+  # - the temporary file can be removed
+  cd "$orig_pwd" || exit 1
+}
 
 ## ---------------------- ##
 ## Command line parsing.  ##
@@ -855,6 +929,7 @@ while test x"$1" != x"$arg_sep"; do
     -D | --debug) debug=true;;
     -e | -E | --expand) expand=t;;
     -h | --help) echo "$usage"; exit 0;;
+         --html) out_lang=html;;
     -I | --I*)
       shift
       miincludes="$miincludes -I $1"
@@ -868,7 +943,7 @@ while test x"$1" != x"$arg_sep"; do
         /* | ?:/*) oname=$1;;
                 *) oname="$orig_pwd/$1";;
       esac;;
-    -p | --pdf) oformat=pdf;;
+    -p | --pdf) out_lang=pdf;;
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
     -t | --texinfo | --command ) shift; textra="$textra\\
@@ -984,18 +1059,23 @@ fi
 
 # 
 
-## -------------- ##
-## TeXify files.  ##
-## -------------- ##
-
-for command_line_filename in ${1+"$@"}; do
-  verbose "Processing $command_line_filename ..."
-
-  # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
-  # prepend `./' in order to avoid that the tools take it as an option.
-  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
-  || command_line_filename="./$command_line_filename"
-
+# input_file_name_decode
+# ----------------------
+# Decode COMMAND_LINE_FILENAME, and compute:
+# - COMMAND_LINE_FILENAME clean of TeX commands
+# - IN_DIR
+#   The directory to the input file, possibly absolute if needed.
+# - IN_DIR_ABS
+#   The absolute directory of the input file.
+# - IN_BASE
+#   The input file base name (no directory part).
+# - IN_NOEXT
+#   The input file name without extensions (nor directory part).
+# - IN_INPUT
+#   Defaults to COMMAND_LINE_FILENAME, but might change if the
+#   input is preprocessed (recode etc.).  With directory, possibly absolute.
+input_file_name_decode ()
+{
   # See if we are run from within AUC-Tex, in which case we are
   # passed `\input{FOO.tex}' or even `\nonstopmode\input{FOO.tex}'.
   case $command_line_filename in
@@ -1011,39 +1091,63 @@ for command_line_filename in ${1+"$@"}; do
       ;;
   esac
 
+  # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
+  # prepend `./' in order to avoid that the tools take it as an option.
+  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
+  || command_line_filename="./$command_line_filename"
+
   # See if the file exists.  If it doesn't we're in trouble since, even
   # though the user may be able to reenter a valid filename at the tex
   # prompt (assuming they're attending the terminal), this script won't
   # be able to find the right xref files and so forth.
-  if test ! -r "$command_line_filename"; then
-    report "cannot read $command_line_filename, skipping."
-    continue
-  fi
+  test  -r "$command_line_filename" ||
+    fatal 1 "cannot read $command_line_filename, skipping."
 
   # Get the name of the current directory.
-  filename_dir=`func_dirname "$command_line_filename"`
-  filename_dir_abs=`cd "$filename_dir" >&6 && pwd`
+  in_dir=`func_dirname "$command_line_filename"`
+  in_dir_abs=`cd "$in_dir" >&6 && pwd`
   # In a clean build, we `cd', so get an absolute file name.
-  $tidy && filename_dir=$filename_dir_abs
+  $tidy && in_dir=$in_dir_abs
 
   # Strip directory part but leave extension.
-  filename_ext=`basename "$command_line_filename"`
+  in_base=`basename "$command_line_filename"`
   # Strip extension.
-  filename_noext=`echo "$filename_ext" | sed 's/\.[^.]*$//'`
-  ext=`echo "$filename_ext" | sed 's/^.*\.//'`
+  in_noext=`echo "$in_base" | sed 's/\.[^.]*$//'`
 
   # The normalized file name to compile.  Must always point to the
   # file to actually compile (in case of recoding, macro-expansion etc.).
-  filename_input=$filename_dir/$filename_ext
+  in_input=$in_dir/$in_base
+
+
+  # Compute the output file name.
+  if test x"$oname" != x; then
+    out_name=$oname
+  else
+    out_name=$in_noext.$out_lang
+  fi
+  out_dir=`func_dirname "$out_name"`
+  out_dir_abs=`cd $out_dir && pwd`
+  out_base=`basename "$out_name"`
+  out_noext=`echo "$out_base" | sed 's/\.[^.]*$//'`
+}
+
+
+## -------------- ##
+## TeXify files.  ##
+## -------------- ##
+
+for command_line_filename in ${1+"$@"}; do
+  verbose "Processing $command_line_filename ..."
+
+  input_file_name_decode
 
   # An auxiliary directory used for all the auxiliary tasks involved
   # in compiling this document.
   case $build_dir in
-      '' | . ) t2ddir=$filename_noext.t2d ;;
+      '' | . ) t2ddir=$out_noext.t2d ;;
       *) # Avoid collisions between multiple occurrences of the same
 	 # file.
-	 t2ddir=$build_dir/`echo "$filename_dir_abs/" | sed 's,/,!,g'`
-	 t2ddir=$t2ddir$filename_noext.t2d;;
+	 t2ddir=$build_dir/`echo "$out_dir_abs/$out_noext.t2d" | sed 's,/,!,g'`
   esac
   # Remove it at exit if clean mode.
   $clean &&
@@ -1056,7 +1160,7 @@ for command_line_filename in ${1+"$@"}; do
   # Sometimes there are incompatibilities between auxiliary files for
   # DVI and PDF.  The contents can also change whether we work on PDF
   # and/or DVI.  So keep separate spaces for each.
-  workdir=$t2ddir/$oformat
+  workdir=$t2ddir/$out_lang
   ensure_dir "$workdir"
 
   # _build.  In a tidy build, where the auxiliary files are output.
@@ -1080,7 +1184,7 @@ for command_line_filename in ${1+"$@"}; do
   # etc. files in ${directory} don't get used in preference to fresher
   # files in `.'.  Include orig_pwd in case we are in clean build mode, where
   # we've cd'd to a temp directory.
-  common="$orig_pwd$path_sep$filename_dir$path_sep$txincludes"
+  common="$orig_pwd$path_sep$in_dir$path_sep$txincludes"
   for var in $tex_envvars; do
     eval val="\$common\$${var}_orig"
     # Convert relative paths to absolute paths, so we can run in another
@@ -1104,29 +1208,14 @@ for command_line_filename in ${1+"$@"}; do
   # --recode
   run_recode
 
-  # Move to the working directory.
-  if $tidy; then
-    verbose "cd $work_build"
-    cd "$work_build" || exit 1
-  fi
-
   # Run until a fix point is reached.
-  run_tex_suite
-
-  # Both to make sure we can remove $t2ddir (we might have cd'd into
-  # it), and in case $orig_pwd is on a different drive (for DOS).
-  cd /
+  run_conversion
 
   # Remove temporary files.
   if $clean; then
     verbose "Removing $t2ddir"
     rm -rf "$t2ddir"
   fi
-
-  # Return to the original directory so that
-  # - the next file is processed in correct conditions
-  # - the temporary file can be removed
-  cd "$orig_pwd" || exit 1
 done
 
 verbose "done."

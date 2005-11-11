@@ -1,3 +1,36 @@
+2005-11-10  Akim Demaille  <akim@epita.fr>
+
+	Make the naming conventions more consistent and shorter.
+	* util/texi2dvi (oformat): Rename as...
+	(out_lang): this.
+	(filename_input, filename_src, filename_xtr, filename_rcd,
+	filename_noext, filename_dir, filename_dir_abs): Rename as...
+	(in_input, in_src, in_xtr, in_rcd, in_noext, in_dir, in_dir_abs)
+	this.
+	(in_base, out_name, out_dir, out_dir_abs, out_base, out_noext): New.
+	(output_base_name): New.
+	(move_to_dest): Use it.
+	(run_tex): Catch invalid calls.
+	Be robust to inclusion in subdirs.
+	(run_bibtex): Simplify when this is not a LaTeX file.
+	(run_tex_suite): cycle is local.
+	(input_file_name_decode): New, extracted from the main loop.
+	Some variables are now local.
+
+	Use the output file name as root for the t2d directory name.
+	* util/texi2dvi (t2ddir): Use $out_noext, no $in_noext.
+	* util/texi2dvi.test: Adjust.
+
+	Be robust to inclusion in subdirs.
+	* util/texi2dvi (run_tex): Look for \include of files in subdirs.
+	(run_bibtex): Citations might be in another aux file.
+
+	Support html.
+	* util/texi2dvi (run_to_html): New.
+	(run_conversion): New, extracted from the main loop.
+	Support --html.
+
+
 2005-11-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Def Cmd Template): mismatched example and output.
