@@ -1,3 +1,9 @@
+2005-11-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Top Node Example): missing @end iffnottex.
+	(The Top Node): @end ifnottex, not ifnottext.
+	From Steve Peter.
+
 2005-11-10  Akim Demaille  <akim@epita.fr>
 
 	Make the naming conventions more consistent and shorter.

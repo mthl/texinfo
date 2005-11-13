@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.150 2005-11-10 23:36:05 karl Exp $
+@c $Id: texinfo.txi,v 1.151 2005-11-13 19:35:34 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3674,7 +3674,7 @@ none of it should appear in printed output, so enclose it between
 @code{@@ifnottex} and @code{@@end ifnottex} commands.  (@TeX{} does not
 print either an @code{@@node} line or a menu; they appear only in Info;
 strictly speaking, you are not required to enclose these parts between
-@code{@@ifnottex} and @code{@@end ifnottext}, but it is simplest to do
+@code{@@ifnottex} and @code{@@end ifnottex}, but it is simplest to do
 so.  @xref{Conditionals, , Conditionally Visible Text}.)
 
 @menu
@@ -3697,6 +3697,7 @@ Here is an example of a Top node.
 @@top Sample Title
 
 @@insertcopying
+@@end ifnottex
 @end group
 
 Additional general information.
@@ -18593,7 +18594,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.150 2005-11-10 23:36:05 karl Exp $
+$Id: texinfo.txi,v 1.151 2005-11-13 19:35:34 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18659,7 +18660,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.150 2005-11-10 23:36:05 karl Exp $
+@comment $Id: texinfo.txi,v 1.151 2005-11-13 19:35:34 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
