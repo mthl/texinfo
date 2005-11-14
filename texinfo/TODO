@@ -1,4 +1,4 @@
-$Id: TODO,v 1.28 2005-07-02 14:04:33 karl Exp $
+$Id: TODO,v 1.29 2005-11-14 23:29:48 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -49,8 +49,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Support reference card creation, perhaps by only paying attention to
     sectioning and @def... commands.
   - Allow @end (and other?) commands to be indented in the source.
-  - Test for memory leaks, e.g., with valgrind:
-    http://developer.kde.org/~sewardj/
   - Extend and improve the tests.
 
 * Language:
