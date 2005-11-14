@@ -1,3 +1,14 @@
+2005-11-14  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: remove the @special_regions array. Special 
+	regions are parsed like raw regions but are handled especially.
+	* texi2html.init: add a space after <!-- for comments.
+	* NEWS, examples/tex4ht.init: new init file. With this init file 
+	httex or htlatex from tex4ht is used to process @tex and @math.
+	* texi2html.spec.in: cleanups.
+	* Tests/*: add forgotten files to cvs. regenerate.
+	* doc/*: document the handling of raw regions as special regions.
+
 2005-08-28  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: better interface for the handling of @commands 
@@ -6,7 +17,7 @@
 	l2h. 
 	Fix handling of unknwown commands.
 	* doc/* NEWS: document that feature
-	* Tests/formattin_res/*: update. Test for unknown commands
+	* Tests/formatting_res/*: update. Test for unknown commands
 	handling.
 
 2005-08-24  Patrice Dumas  <dumas@centre-cired.fr>

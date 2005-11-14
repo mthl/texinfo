@@ -10,6 +10,9 @@ This file records noteworthy changes.
 * The `examples' directory now contains an init file for Mediawiki output.
   Mediawiki is the GPL'd wiki used by Wikipedia.
 
+* new init file tex4ht.init. With this init file, httex or htlatex from 
+  tex4ht is used to format @tex and @math.
+
 * Init files now have a chance to override all file names, rather than just
   page names.
 
@@ -21,7 +24,7 @@ This file records noteworthy changes.
 
 * The user can bypass the texi2html functions and provide his own function
   to do things similar that what is done for interfacing with LaTeX2HTML
-  in texi2html.
+  or tex4ht.
 
 * COMPATIBILITY
   -------------

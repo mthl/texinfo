@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.92 2005-08-28 08:39:55 pertusus Exp $
+# $Id: texi2html.init,v 1.93 2005-11-14 11:13:58 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -937,7 +937,7 @@ sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
-    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if defined ($Texi2HTML::SIMPLE_TEXT{'This'});
     my $description = $DOCUMENT_DESCRIPTION;
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
@@ -3897,7 +3897,7 @@ sub t2h_default_comment($)
     { 
         $text =~ s/-->/->/go;
     }
-    return '<!--' . $text . '-->' . "\n";
+    return '<!-- ' . $text . ' -->' . "\n";
 }
 
 # a paragraph

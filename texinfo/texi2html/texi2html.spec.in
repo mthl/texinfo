@@ -1,20 +1,26 @@
 Name: @PACKAGE_TARNAME@
 Version: @PACKAGE_VERSION@
 Release: 1
-Epoch: 0
+#Epoch: 0
 License: GPL
 Group: Applications/Text
 Summary: A highly customizable texinfo to HTML and other formats translator
 Source: http://savannah.nongnu.org/download/texi2html/%{name}-%{version}.tar.gz
 URL: http://www.nongnu.org/texi2html/
-
-Requires: perl >= 5.004
-Requires(post): /sbin/install-info
-Requires(preun): /sbin/install-info
-# uncomment this if you want to build a relocatable package
-#Prefix: %{_prefix}
+BuildArch: noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+# You may want to uncomment the following
+#BuildRequires: perl
+# perl is picked up automatically in most cases and the package may have 
+# a different name so it is better not to require it. Moreover such old perl
+# is unlikely to show up in a rpm based distribution.
+#Requires: perl >= 5.004
+Requires(post): /sbin/install-info
+Requires(preun): /sbin/install-info
+
+# uncomment this if you want to build a relocatable package
+#Prefix: %{_prefix}
 
 %description
 The basic purpose of texi2html is to convert Texinfo documents into HTML, 
@@ -27,7 +33,6 @@ output not specified in the Texinfo input file to be specified.
 
 %build
 %configure
-make clean
 make %{?_smp_mflags}
 
 %install
@@ -55,13 +60,11 @@ fi
 %{_datadir}/texinfo/html/%{name}.html
 %{_mandir}/man*/%{name}*
 %{_infodir}/%{name}.info*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*.init
-%dir %{_datadir}/%{name}/i18n/
-%{_datadir}/%{name}/i18n/*
-%dir %{_datadir}/%{name}/images/
-%{_datadir}/%{name}/images/*
+%{_datadir}/%{name}/
 
 %changelog
+* Mon Nov 14 2005 Patrice Dumas <pertusus@free.fr> 1.77-1
+- cleanups
+
 * Mon Mar 23 2004 Patrice Dumas <pertusus@free.fr> 0:1.69-0.fdr.1
 - Initial build.

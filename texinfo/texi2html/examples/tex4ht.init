@@ -1,0 +1,214 @@
+# -*-perl-*-
+
+# To customize the command and the options, you could set
+# $Texi2HTML::TeX4HT::STYLE to latex
+# and/or change
+# $Texi2HTML::TeX4HT::tex4ht_command and $Texi2HTML::TeX4HT::tex4ht_options
+
+
+push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
+push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_process;
+push @command_handler_finish, \&Texi2HTML::TeX4HT::tex4ht_finish;
+
+$command_handler{'math'} =
+     { 'init' => \&Texi2HTML::TeX4HT::tex4ht_to_latex,
+       'expand' => \&Texi2HTML::TeX4HT::tex4ht_do_tex
+     };
+$command_handler{'tex'} =
+     { 'init' => \&Texi2HTML::TeX4HT::tex4ht_to_latex,
+       'expand' => \&Texi2HTML::TeX4HT::tex4ht_do_tex
+     };
+
+{
+use Cwd;
+
+package Texi2HTML::TeX4HT;
+
+$STYLE = 'tex' if (!defined($STYLE));
+
+if (!defined($tex4ht_command))
+{
+   $tex4ht_command = 'httex';
+   $tex4ht_command = 'htlatex' if ($STYLE eq 'latex');
+}
+
+my $tex4ht_initial_dir;
+my $tex4ht_out_dir;
+my $tex4ht_basename;
+my $tex4ht_latex_basefile;
+my $tex4ht_html_basefile;
+my $tex4ht_latex_rfile;
+my $tex4ht_latex_failed = 0;
+
+sub tex4ht_init
+{
+  # set file names
+  $tex4ht_initial_dir = Cwd::abs_path;
+  $tex4ht_out_dir = "$Texi2HTML::THISDOC{'out_dir'}";
+  $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
+  $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
+  $tex4ht_latex_basefile = "$tex4ht_basename.tex";
+  $tex4ht_html_basefile = "$tex4ht_basename.html";
+  $tex4ht_latex_rfile = $tex4ht_out_dir . $tex4ht_latex_basefile;
+
+  # begin tex file
+  unless (open (TEX4HT_TEXFILE, ">$tex4ht_latex_rfile"))  
+  {
+     warn "* tex4ht error opening $tex4ht_latex_rfile: $!\n";
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+  print TEX4HT_TEXFILE "% Automatically generated\n";
+  if ($STYLE eq 'latex')
+  {
+     print TEX4HT_TEXFILE "\\documentstyle{article}\n\\begin{document}\n";
+  }
+  else
+  {
+     print TEX4HT_TEXFILE "\\csname tex4ht\\endcsname\n";
+  }
+}
+
+my $tex4ht_counter = 0;
+
+sub tex4ht_to_latex
+{
+  my $command = shift;
+  my $text = shift;
+  my $counter = shift;
+  # write to tex file
+  print TEX4HT_TEXFILE "\\HCode{\\Hnewline <!-- tex4ht_begin $tex4ht_basename $command $counter -->\\Hnewline}\n";
+  if ($command eq 'tex')
+  {
+     print TEX4HT_TEXFILE $text;
+  }
+  elsif ($command eq 'math')
+  {
+     print TEX4HT_TEXFILE "\\IgnorePar \$" . $text . "\$";
+  }
+  print TEX4HT_TEXFILE "\n\\HCode{\\Hnewline <!-- tex4ht_end $tex4ht_basename $command $counter -->\\Hnewline}\n";
+  $tex4ht_counter++;
+  return 1;
+}
+
+my %tex4ht_results;
+
+sub tex4ht_process
+{
+  return if ($tex4ht_latex_failed or (!$tex4ht_counter));
+  # finish the tex file
+  if ($STYLE eq 'latex')
+  {
+     print TEX4HT_TEXFILE "\\end{document}\n";
+  }
+  else
+  {
+     print TEX4HT_TEXFILE "\n\\bye\n";
+  }
+  close (TEX4HT_TEXFILE);
+
+  # now run tex4th
+  unless (chdir $tex4ht_out_dir)
+  {
+     warn "chdir to $tex4ht_out_dir failed\n";
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+  print STDERR "cwd($tex4ht_out_dir):" . cwd() ."\n" if ($VERBOSE);
+  $tex4ht_options = '' if (!defined($tex4ht_options));
+  my $cmd = "$tex4ht_command $tex4ht_latex_basefile $tex4ht_options";
+  print STDERR "$cmd" if ($VERBOSE);
+  if (system($cmd))
+  {
+     warn "* tex4ht command: $cmd failed";
+     tex4ht_return_to_dir();
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+
+  # extract the html from the file created by tex4ht
+  unless (open (TEX4HT_HTMLFILE, $tex4ht_html_basefile))
+  {
+     warn "* tex4ht error opening $tex4ht_html_basefile: $!\n";
+     tex4ht_return_to_dir();
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+  my $got_count = 0;
+  my $line;
+  while ($line = <TEX4HT_HTMLFILE>)
+  {
+     #print STDERR "while $line";
+     if ($line =~ /^<!-- tex4ht_begin $tex4ht_basename (\w+) (\d+) -->\s*$/)
+     {
+        my $command = $1;
+        my $count = $2;
+        my $text = '';
+        my $end_found = 0;
+        while ($line = <TEX4HT_HTMLFILE>)
+        {
+           #print STDERR "while search $command $count $line";
+           if ($line =~ /^<!-- tex4ht_end $tex4ht_basename $command $count -->\s*$/)
+           {
+              $got_count++;
+              chomp($text);
+              $tex4ht_results{"${command}_$count"} = $text;
+              $end_found = 1;
+              last;
+           }
+           else
+           {
+              $text .= $line;
+           }
+        }
+        unless ($end_found)
+        {
+           warn "* tex4ht: end of $command $count not found\n";
+        }
+     }
+  }
+  if ($got_count != $tex4ht_counter and ($Texi2HTML::Config::VERBOSE))
+  {
+     warn "* tex4ht: got $got_count for $tex4ht_counter items entered\n";
+  }
+  close (TEX4HT_HTMLFILE);
+  tex4ht_return_to_dir();
+}
+
+sub tex4ht_return_to_dir
+{
+  unless (chdir $tex4ht_initial_dir)
+  {
+     die "* tex4ht unable to return to the initial dir\n";
+  }
+}
+
+my $tex4ht_output_counter = 0;
+
+sub tex4ht_do_tex
+{
+  my $command = shift;
+  my $counter = shift;
+  # return the resulting html 
+  if (exists ($tex4ht_results{"${command}_$counter"}) and defined($tex4ht_results{"${command}_$counter"}))
+  {
+     $tex4ht_output_counter++;
+     return $tex4ht_results{"${command}_$counter"};
+  }
+  else
+  {
+    warn "tex4ht: cannot find text to output for $command number $counter\n";
+    return '';
+  }
+}
+
+sub tex4ht_finish
+{ 
+  if (($tex4ht_output_counter != $tex4ht_counter) and ($Texi2HTML::Config::VERBOSE))
+  {
+     warn "* tex4ht: output $tex4ht_output_counter for $tex4ht_counter items entered\n";
+  }
+}
+
+}
+1;  

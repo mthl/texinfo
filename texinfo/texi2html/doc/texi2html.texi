@@ -3408,7 +3408,9 @@ formatted as explained above. This function modifies the reference.
 @section Bypassing normal formatting
 
 It is possible to bypass completely the normal formatting of @@-commands 
-with braces. In that case the @@-commands and the text within 
+with braces and raw regions 
+(@code{@@html}, @code{@@tex}, @code{@@xml}@dots{} regions). 
+In that case the @@-commands and the text within 
 are passed to a user defined function early, in a pass when no expansion
 of output takes place, called the collecting pass. Another user defined 
 function is called during the output expansion phase.
@@ -3427,10 +3429,20 @@ pass using user defined functions. The associated value is a reference on
 a hash used to specify the user defined function references. 
 The key of the hash reference are @code{'init'} for the function
 reference called during the collecting pass, and @code{'expand'}
-during the expansion pass. Here is an example:
+during the expansion pass. Here is an example for an @@-command with
+braces:
 
 @example
 $command_handler@{'math'@} =
+     @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     @};
+@end example
+
+And an example for a raw region @@-command:
+
+@example
+$command_handler@{'tex'@} =
      @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
        'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
      @};

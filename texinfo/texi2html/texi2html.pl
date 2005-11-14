@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.150 2005-08-28 08:39:55 pertusus Exp $
+# $Id: texi2html.pl,v 1.151 2005-11-14 11:13:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1159,12 +1159,6 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 
 # raw formats which are expanded especially
 my @raw_regions = ('html', 'verbatim', 'tex', 'xml', 'docbook');
-
-# special raw formats which are expanded between second and third pass
-# and are replaced by specific commands. It takes precedence over 
-# raw_regions.
-#FIXME it is not modifiable by the user!
-my @special_regions = ();
 
 # regions expanded or not depending on the value of this hash
 my %text_macros = (
@@ -2308,21 +2302,15 @@ $Texi2HTML::LaTeX2HTML::debug = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Config::EXPAND);
 
 unshift @texi2html_config_dirs, @Texi2HTML::Config::CONF_DIRS;
-# correct %text_macros and @special_regions based on command line and init
+# correct %text_macros based on command line and init
 # variables
 $text_macros{'menu'} = 1 if ($Texi2HTML::Config::SHOW_MENU);
-
-push @special_regions, 'tex' if ($Texi2HTML::Config::L2H);
 
 foreach my $expanded (@Texi2HTML::Config::EXPAND)
 {
     $text_macros{"if$expanded"} = 1 if (exists($text_macros{"if$expanded"}));
     next unless (exists($text_macros{$expanded}));
-    if (grep {$_ eq $expanded} @special_regions)
-    {
-         $text_macros{$expanded} = 'special'; 
-    }
-    elsif (grep {$_ eq $expanded} @raw_regions)
+    if (grep {$_ eq $expanded} @raw_regions)
     {
          $text_macros{$expanded} = 'raw'; 
     }
@@ -3750,7 +3738,7 @@ sub pass_structure()
         }
         $line_nr = shift (@lines_numbers);
         #print STDERR "PASS_STRUCTURE: $_";
-        if (!$state->{'raw'} and !$state->{'special'} and !$state->{'verb'})
+        if (!$state->{'raw'} and !$state->{'verb'})
         {
             my $tag = '';
             if (/^\s*\@(\w+)\b/)
@@ -7326,7 +7314,7 @@ sub do_text_macro($$$$$)
     my $value;
     #print STDERR "do_text_macro $type\n";
 
-    if ($text_macros{$type} eq 'raw' or $text_macros{$type} eq 'special')
+    if ($text_macros{$type} eq 'raw')
     {
         $state->{'raw'} = $type;
         #print STDERR "RAW\n";
@@ -9339,7 +9327,7 @@ sub scan_structure($$$$;$)
     local $_ = $line;
     #print STDERR "SCAN_STRUCTURE: $line";
     #dump_stack ($text, $stack, $state); 
-    if (!$state->{'raw'} and !$state->{'special'} and (!exists($state->{'region_lines'})))
+    if (!$state->{'raw'} and (!exists($state->{'region_lines'})))
     { 
         if (!$state->{'verb'} and $state->{'menu'} and /^\*/o)
         {
@@ -9398,10 +9386,9 @@ sub scan_structure($$$$;$)
         #
         # see more examples in formatting directory
 
-        if ($state->{'raw'} or $state->{'special'}) 
+        if ($state->{'raw'}) 
         {
             my $tag = $state->{'raw'};
-            $tag = $state->{'special'} unless $tag;
             ################# debug 
             if (! @$stack or ($stack->[-1]->{'style'} ne $tag))
             {
@@ -9414,10 +9401,10 @@ sub scan_structure($$$$;$)
             if (s/^(.*?)\@end\s$tag$// or s/^(.*?)\@end\s$tag\s//)
             {
                 add_prev ($text, $stack, $1);
+                delete $state->{'raw'};
                 my $style = pop @$stack;
-                if ($state->{'special'})
+                if (defined($Texi2HTML::Config::command_handler{$tag})) 
                 { # replace the special region by what init_special give
-                    delete $state->{'special'};
                     if ($style->{'text'} !~ /^\s*$/)
                     {
                         add_prev ($text, $stack, init_special($style->{'style'}, $style->{'text'}));
@@ -9428,8 +9415,7 @@ sub scan_structure($$$$;$)
                 {
                     my $after_macro = '';
                     $after_macro = ' ' unless (/^\s*$/);
-                    add_prev ($text, $stack, $style->{'text'} . "\@end $state->{'raw'}" . $after_macro);
-                    delete $state->{'raw'};
+                    add_prev ($text, $stack, $style->{'text'} . "\@end $tag" . $after_macro);
                 }
                 unless (no_line($_))
                 {
@@ -9440,8 +9426,8 @@ sub scan_structure($$$$;$)
             else
             {
                 add_prev ($text, $stack, $_);
-                last unless ($state->{'special'}); 
-                return;
+                return if (defined($Texi2HTML::Config::command_handler{$tag})); 
+                last;
             }
         }
 	
@@ -9570,11 +9556,7 @@ sub scan_structure($$$$;$)
             elsif (defined($text_macros{$macro}))
             {
 		    #print STDERR "TEXT_MACRO: $macro\n";
-                if ($text_macros{$macro} eq 'special')
-                {
-                     $state->{'special'} = $macro;
-                }
-                elsif ($text_macros{$macro} eq 'raw')
+                if ($text_macros{$macro} eq 'raw')
                 {
                     $state->{'raw'} = $macro;
                     #print STDERR "RAW\n";
@@ -9607,13 +9589,13 @@ sub scan_structure($$$$;$)
                 }
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later
-                my $macro_kept;
-                if ($state->{'raw'} or ($macro eq 'menu'))
+                my $macro_kept; 
+                if (($state->{'raw'} and (!defined($Texi2HTML::Config::command_handler{$macro}))) or ($macro eq 'menu'))
                 {
                     add_prev($text, $stack, "\@$macro");
                     $macro_kept = 1;
                 }
-                if ($state->{'raw'} or $state->{'special'})
+                if ($state->{'raw'})
                 {
                     push @$stack, { 'style' => $macro, 'text' => '' };
                 }
@@ -11352,14 +11334,12 @@ sub do_simple($$$;$$$$)
         if (defined($Texi2HTML::Config::command_handler{$style}) and
           defined($Texi2HTML::Config::command_handler{$style}->{'expand'}))
         {
-             if ($count != $special_commands{$style}->{'count'})
+             my $struct_count = 1+ $special_commands{$style}->{'max'} - $special_commands{$style}->{'count'};
+             if (($count != $struct_count) and $T2H_DEBUG)
              {
-                  print STDERR "Bug? count in \@special and structure differ\n";
+                  print STDERR "count $count in \@special $style and structure $struct_count differ\n";
              }
-             else
-             {
-                  $special_commands{$style}->{'count'}--;  
-             }
+             $special_commands{$style}->{'count'}--;  
         }
         my $result = $Texi2HTML::Config::command_handler{$style}->{'expand'}
               ($style,$count,$state,$text);
@@ -12087,6 +12067,12 @@ if ($T2H_DEBUG & $DEBUG_TEXI)
     }
 }
 exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
+
+foreach my $style (keys(%special_commands))
+{
+  $special_commands{$style}->{'max'} = $special_commands{$style}->{'count'};
+}
+
 rearrange_elements();
 do_names();
 if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENT_DESCRIPTION)))
@@ -12119,9 +12105,9 @@ pass_text();
 foreach my $special (keys(%special_commands))
 {
     my $count = $special_commands{$special}->{'count'};
-    if ($count != 0)
+    if (($count != 0) and $T2H_VERBOSE)
     {
-         echo_warn ("Still $count special \@$special not processed\n");
+         echo_warn ("$count special \@$special were not processed.\n");
     }
 }
 if ($Texi2HTML::Config::IDX_SUMMARY)

@@ -42,6 +42,7 @@ dist_pkgdata_DATA = l2h.init \
 	examples/utf8.init \
 	examples/chm.init \
 	examples/roff.init \
+	examples/tex4ht.init \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
 	examples/glossary.texi 
