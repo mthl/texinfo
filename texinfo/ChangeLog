@@ -1,3 +1,14 @@
+2005-11-18  Akim Demaille  <akim@epita.fr>
+
+	Factor the handling of list of directories.
+	* util/texi2dvi (list_append, list_prefix, list_infix)
+	(list_dir_to_abs, absolute): New.
+	Use them.
+	($miincludes, $txincludes): Remove, replaced by...
+	($includes): this one.
+	(func_dirname): Don't use fd6 that might not be set up yet.
+	(run_to_html): Use $includes.
+
 2005-11-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Top Node Example): missing @end iffnottex.
@@ -217,7 +228,7 @@
 
 	* makeinfo/xml.c (element docbook_element_list): The docbook <index>
 	element should *not* be contained_in_para.
-	
+
 	* makeinfo/xml.c (xml_begin_document): Add id attribute to top-level
 	book if emitting docbook.
 
@@ -446,7 +457,7 @@
 	* makeinfo/xml.c (docbook_element_list): Map EMAILADDARESS to "email".
 	* makeinfo/xref.c (cm_email): For docbook, if there is no name,
 	use <email> tag, rather than <ulink>.  If there is a name, we must use
-	<ulink>, but we need to explicitly escape expansion of addr.	
+	<ulink>, but we need to explicitly escape expansion of addr.
 
 2005-04-22  Per Bothner  <per@bothner.com>
 
@@ -721,7 +732,7 @@
 
 	* doc/info-stnd.texi (Top): per rms, don't use @insertcopying here.
 	* doc/texinfo.txi (Top): Likewise.  Also, remove recommendations
-		to use it.	   
+		to use it.
 
 2005-01-20  Akim Demaille  <akim@epita.fr>
 
@@ -870,7 +881,7 @@
 	intptr_t is not defined with gcc 3.04 on Tru64 Unix V5.1
 	(This whole vararg stuff needs to be redone correctly.)
 	Report from: Svend Tollak Munkejord (via te)
-        8 Dec 2004 17:15:17 +0100.	
+        8 Dec 2004 17:15:17 +0100.
 
 	* doc/texinfo.txi (ref): rewrite last two redundant paragraphs.
 
@@ -885,7 +896,7 @@
 	nodename begins with a nonletter.  Ugh.
 	* doc/texinfo.txi (HTML Xref Node Name Expansion): document this.
 	http://ff0.org/pipermail/texinfo-pretest/2004-December/000210.html
-	
+
 	* doc/texinfo.txi (HTML Xref 8-bit Character Expansion): define
 	behavior for Unicode code points above 0xfff.
 
@@ -910,7 +921,7 @@
 
 	* doc/texinfo.txi (Quotations and Examples): @quotation does not
 	reduce interparagraph spacing.
-	
+
 	* makeinfo/node.c (cm_node) <html>: do not bother calling
 	add_html_nodes in the split case, the filename is wrong.
 
@@ -961,7 +972,7 @@
 	(\textfonts .. \ssecfonts): define \curfontsize.
 	* makeinfo/cmds.c (command_table): add euro.
 	* makeinfo/lang.c (cm_special_char): handle euro.
-	(iso8859_15_map): new global.	
+	(iso8859_15_map): new global.
 
 2004-11-18  Stepan Kasal  <kasal@ucw.cz>
 
@@ -1112,7 +1123,7 @@
 
 	* doc/*.texi: more consistent use of dashes.
 	From Stepan and Benno Schulenberg <benno@nietvergeten.nl>.
- 
+
 2004-10-04  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (cm_value): increment and restore
@@ -1231,7 +1242,7 @@
 2004-08-19  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\scanmacro): Make backslash active, not other,
-	  as this is the default when processing texinfo files. 
+	  as this is the default when processing texinfo files.
 	  Otherwise, a \ inside @copying will eventually print as ``.
 
 2004-08-18  Stepan Kasal  <kasal@ucw.cz>
@@ -1263,14 +1274,14 @@
 	* info/echo-area.c (inform_in_echo_area): avoid buffer overrun.
 	Report from: Roman Werpachowski <rwerp@gazeta.pl>,
 	7 Aug 2004 01:18:32 +0200.
-	
+
 	* info/echo-area.h (inform_in_echo_area): declare arg as const,
 	while we're at it.
 
 2004-08-02  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_acronym_or_abbr): use strchr, not index.
-	Report from: Prof Brian Ripley <ripley@stats.ox.ac.uk>, 
+	Report from: Prof Brian Ripley <ripley@stats.ox.ac.uk>,
 	2 Aug 2004 12:47:36 +0100 (BST)
 
 2004-07-31  Karl Berry  <karl@gnu.org>
@@ -1288,7 +1299,7 @@
 
 2004-07-30  Maciej W. Rozycki  <macro@linux-mips.org>
 
-	* info/filesys.c (extract_colon_unit): Clean up handling of the 
+	* info/filesys.c (extract_colon_unit): Clean up handling of the
 	end of string.
 
 2004-07-27  Karl Berry  <karl@gnu.org>
@@ -1393,11 +1404,11 @@
 		end of input_text.  (Had erroneously put that in the block
 		only if an error was given.)  The result was a null byte
 		after macro expansions.  Report from Werner,
-		10 Jul 2004 15:36:40 +0200.		
+		10 Jul 2004 15:36:40 +0200.
 
 	* makeinfo/node.c (split_file): fwrite Local Variables trailer so
 		it actually gets into the output of the top-level info
-		file; don't just insert_string.  
+		file; don't just insert_string.
 	Report from: Werner LEMBERG, 11 Jul 2004 08:58:13 +0200.
 
 2004-07-10  Karl Berry  <karl@gnu.org>
@@ -1408,7 +1419,7 @@
 
 2004-07-05  Karl Berry  <karl@gnu.org>
 
-	* makeinfo/xref.c (cm_email, cm_uref, et al.): 
+	* makeinfo/xref.c (cm_email, cm_uref, et al.):
 	* makeinfo/xml.c (xml_insert_indexentry, xml_insert_indexterm):
 	* makeinfo/sectioning.c (sectioning_underscore):
 	* makeinfo/makeinfo.c (cm_listoffloats): use %s, don't pass string to
@@ -1528,7 +1539,7 @@
 	* makeinfo/cmds.c (cm_code): use <samp> for commands other than
 	@code, so we get typewriter output; and add `...'
 	for @samp.
-	Report from: John Blevin <blevin@lucent.com>, 
+	Report from: John Blevin <blevin@lucent.com>,
 	16 Apr 2004 11:40:01 -0400.
 
 	* makeinfo/html.c (html_output_head) [CSS_FONT_ROMAN,
@@ -1586,10 +1597,10 @@
 2004-04-07  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.6.95.
-	
+
 	* doc/texinfo.tex (\dodonode): new macro to remove trailing comma.
 	(\donode): call it, after removing space-comma.
-	
+
 	* doc/texinfo.txi (indicateurl): new name for url.
 	(uref): url is now a synonym for uref.
 	* doc/texinfo.tex (\url, \indicateurl): implement.
@@ -1704,9 +1715,9 @@
 
 	All these changes are because strncasecmp is only declared in
 	<strings.h> on IBM AIX 4.2.  (Report from Nelson Beebe.)
-	
+
 	* configure.ac (AC_CHECK_DECLS): add memchr; no need to check for
-	  	     strcasecmp.(gl_STRCASE): call this ... 
+	  	     strcasecmp.(gl_STRCASE): call this ...
 	(AC_REPLACE_FUNCS): ... replacing checks for
 	strcasecmp and strncasecmp here.
 	* lib/system.h (memchr) [!HAVE_DECL_MEMCHR]: add conditional
@@ -2066,7 +2077,7 @@
 	argument even if it's unknown.
 
 	* makeingo/html.c (html_output_head): call current_document_encoding
-	instead of checking document_encoding_code. 
+	instead of checking document_encoding_code.
 
 2004-02-28  Alper Ersoy  <dirt@gtk.org>
 
@@ -2349,7 +2360,7 @@
 	* makeinfo/xml.h:
 	* makeinfo/xml.c (xml_get_assoc_for_id, xml_associate_title_with_id):
 	removed these functions.
-	
+
 	* makeinfo/xref.c (cm_xref): do not call xml_get_assoc_for_id.
 
 	* makeinfo/sectioning.c (sectioning_underscore): added xreflabel
@@ -2651,7 +2662,7 @@
 2004-02-05  Alper Ersoy  <dirt@gtk.org>
 
 	* info/info-utils.c (info_parse_node): look for ``(line '' instead of
-	skipping any non-digit characters. 
+	skipping any non-digit characters.
 
 2004-02-05  Alper Ersoy  <dirt@gtk.org>
 
@@ -2752,7 +2763,7 @@
 	* makeinfo/makeinfo.c (convert_from_file): prepend the loaded file's
 	path to include_files_path in order to make relative include files to
 	be found, then remove afterwards.
-	(main): make use of new functions for -I and -P options. 
+	(main): make use of new functions for -I and -P options.
 
 2004-01-30  Alper Ersoy  <dirt@gtk.org>
 
@@ -2814,7 +2825,7 @@
 	* makeinfo/sectioning.c (sectioning_underscore): removed newline from
 	the end of titles.
 
-	* makeinfo/lang.c (cm_documentencoding): insert encoding attribute 
+	* makeinfo/lang.c (cm_documentencoding): insert encoding attribute
 	into XML and Docbook prologs when handling delayed writes.
 
 	* makeinfo/xml.c (xml_begin_document): register a delayed write for
@@ -2953,7 +2964,7 @@
 	(\tocindent): reduce to 15pt to match \defaultparindent.
 	(\setref): use XR as control sequence prefix
 	instead of just X; seems nicer.  Change calls.
-	
+
 	Finish implementing @listoffloats:
 	(\xrdef): keep lists of each float type.
 	(\dofloat): save the floattype in the aux file.
@@ -2967,7 +2978,7 @@
 	* doc/texinfo.tex (\doitemize): rename from \itemizey.
 	(\itemizeitem): do not set \parskip=0 if the last
 	thing was a \nobreak (e.g., from \sectionheading).
-	Report from: Jesper Harder <harder@ifa.au.dk>, 
+	Report from: Jesper Harder <harder@ifa.au.dk>,
 	17 Jan 2004 22:03:51 +0100.
 
 	* doc/texinfo.txi (email): no angle brackets in TeX output.
@@ -2977,7 +2988,7 @@
 2004-01-17  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/float.c (cm_listoffloats): Prefixed captions with
-	float_type.  For HTML, used an <ul> block.  
+	float_type.  For HTML, used an <ul> block.
 
 2004-01-17  Alper Ersoy  <dirt@gtk.org>
 
@@ -3066,7 +3077,7 @@
 
 2004-01-13  Alper Ersoy  <dirt@gtk.org>
 
-	* makeinfo/float.c (cm_listoffloats): 
+	* makeinfo/float.c (cm_listoffloats):
 	* makeinfo/index.c (cm_printindex): decrement line_number just after
 	get_rest_of_line to make messages refer to the correct line,
 	re-increment it just before returning.
@@ -3150,7 +3161,7 @@
 	* makeinfo/files.c (register_delayed_write): save line number in input
 	document that the calling command is in.
 	(handle_delayed_writes): adjust byte offsets in tag table and output
-	line numbers in all of the indices, 
+	line numbers in all of the indices,
 
 	* makeinfo/makeinfo.c (convert_from_loaded_file): when finished, write
 	the tag table after handling delayed writes.
@@ -3189,7 +3200,7 @@
 	* makeinfo/makeinfo.c (insert): use whitespace macro instead of
 	testing characters manually.
 	(convert_from_loaded_file): call handle_delayed_writes when finished.
-	
+
 	* makeinfo/toc.c (contents_update_html, contents_update_info)
 	(shortcontents_update_html, shortcontents_update_info): changed file
 	read/writes with insert and insert_string.
@@ -3711,7 +3722,7 @@
 	* doc/texinfo.txi (makeinfo options): document TEXINFO_OUTPUT.
 
 	* doc/texinfo.txi (tex): document @LaTeX.
-	
+
 	* doc/texinfo.tex (\loggingall): reduce \errorcontextlines for
 	sake of infinite loops.
 	(\setfontstyle): \def better than \edef?
@@ -4326,7 +4337,7 @@
 	* texinfo.tex (\putwordDeftypevar, \putwordDeftypefun): Remove.
 	* txi-cs.tex, txi-de.tex, txi-en.tex, txi-es.tex, txi-fr.tex,
 	  txi-it.tex. txi-nl.tex, txi-no.tex, txi-pl.tex, txi-pt.tex,
-	  txi-tr.tex: The same. 
+	  txi-tr.tex: The same.
 	[texinfo-20031120-deftype-del.patch]
 
 	* doc/texinfo.tex (\verbatim,\Everbatim): remove one extra level
@@ -4335,7 +4346,7 @@
 	(\doverbatiminclude): just call the new \setupverbatim.
 	(\setupverbatiminclude): remove.
 	[texinfo-20031121-verbatim2.patch]
-	
+
 	* doc/texinfo.tex (\math): no need for \mathcode, and we actually
 		can use $ not \implicitmath.
 	[texinfo-20031121-math.patch]
@@ -4344,46 +4355,46 @@
 	check for true zero skip.
 	(\dosubindsanitize): use it.
 	[texinfo-20031120-zeroskip.patch]
-	
+
 	* doc/texinfo.tex (\doignore): scan in verbatim mode.  Without this,
 	if the last line of ignored text ended with ``@'', the ``@end ifxxx''
 	tag was missed.
 	(\dodoignore): use \_STOP_ instead of \ST@P.
 	[texinfo-20031120-ignore-at.patch]
-	
+
 	* doc/texinfo.tex (\defparsearg): new macro, to simplify places
 	where the user macro just calls \parsearg.  Use it in many places.
 	[texinfo-20031121-defparsearg.patch]
-	
+
 	* doc/texinfo.tex (\begin): remove, this is undocumented
 	and unused.
 	[texinfo-20031121-begin.patch]
-	
+
 	* doc/texinfo.tex (\title,\subtitle,\author,...): move to outer
 	level (was inside \titlepage), it's more readable than nested
 	definitions.
 	[texinfo-20031116-titlepage1.patch]
-	
+
 	* doc/texinfo.tex (\evenheadingxxx,\oddfootingyyy): might as well
 		use \ and avoid changing catcode of @.
 	[texinfo-20031116-catofat.patch]
-	
+
 	* doc/texinfo.tex (\set): use new macros: \parseargusing and
 	\makecsname.
 	[texinfo-20031116-set.patch]
-	
+
 	* doc/texinfo.tex (\cartouche): avoid \par if we are already in
 	vertical mode, in case it has an effect, eg. in an @example;
 	avoid extra space from the @cartouche line itself.
 	(\Ecartouche): force vertical mode, so that the \kern has the desired
 	effect.
 	[texinfo-20031120-cart.patch]
-	
+
 	* doc/texinfo.tex (\ptexfootnote,\ptexinsert): save orig definitions.
 	(\startsavinginserts): new macro (with relatives), call from
 		\cartouche, \group, \table.
 	[texinfo-20031118-saveins.patch]
-	
+
 	* doc/texinfo.tex (\table, \ftable, \vtable, \tablex, \tabley,
 	\tablez): Cleaned up indentation, etc.
 	(\kitem, \kitemx, \xitem, \xtemx, \description): Removed; they
@@ -4395,11 +4406,11 @@
 	(\pushthisfilestack,etc.): implement our own stack of filenames
 	instead of reading the @include argument in a group.
 	[texinfo-20031109-include.patch]
-	
+
 	* doc/texinfo.tex (\indexbreaks): remove, and remove call.
 	(\entry): read arguments on the fly, to avoid fixing catcodes.
 	[texinfo-20031121-indexbreaks.patch]
-	
+
 	* doc/texinfo.tex (\makevalueexpandable): new macro.
 	Change occurrences of \let\value=\expandablevalue to use it,
 	to reduce code duplication.
@@ -4410,21 +4421,21 @@
 	(\parsedefunline): start them off.  This is to support continuations
 	lines for @defun headers.
 	[texinfo-20031108-defun-cont.patch]
-	
+
 	* doc/texinfo.tex (\defun and all related commands):
 	rewrite to use \parsearg and uniform command generation.
 	(\makecsname): New macro, to be used within \edef's only.
 	[texinfo-20031120-defun.patch]
-	
+
 	* doc/texinfo.tex (=, \equalChar): remove active definition of =
 	and hacks that printed = in \tt sometimes.  We want to print
 	everything in \tt anyway, ultimately.
 	[texinfo-20031120-defun-pres3.patch]
-	
+
 	* doc/texinfo.tex (\defopheader,\defcvarheader,defivarheader):
 	use \code for the class name.
 	[texinfo-defun-pres2.patch]
-	
+
 	* doc/texinfo.tex (\parsearg): Reset the catcode of space before
 		we scan the argument; so we don't have to worry about
 		obeyed spaces before and after the argument.
@@ -4701,7 +4712,7 @@
 	* makeinfo/multi.c (multitable_item, end_multitable):
 	* makeinfo/xml.c (xml_end_multitable_row, xml_end_multitable):
 	insert thead element if @headitem is used.
-	
+
 	* makeinfo/xml.h: new element THEAD.
 
 	* makeinfo/texinfo.dtd: updated multitable structure.
@@ -4925,7 +4936,7 @@
 	* makeinfo/node.c (cm_node): escape node names in HTML output.
 
 	* makeinfo/xml.c (xml_id): check to see if the character is allowed.
-	
+
 	* makeinfo/tests/accent-text.txi: new @dotless{j} lines.
 
 	* makeinfo/tests/accent: look for &acute;j instead of &acute;i.
@@ -5116,7 +5127,7 @@
 	* doc/Makefile.am (infokey.1): new target.
 	(man_MANS): include infokey.1.
 	Noticed this in Debian diff.
-	
+
 	* util/texi2dvi: check for tex up front; inspired by Debian diff.
 
 	* TODO: makeinfo -E should do simple macro expansion, not
@@ -5433,7 +5444,7 @@
 	(\doheading,\dosubheading,\dosubsubheading): call
 	\sectionheading directly instead of \plain*secheading.
 	(\chfplain, \sectionheading): take additional section type
-	argument; call \writetocentry and \donoderef.  
+	argument; call \writetocentry and \donoderef.
 	(\unnchfopen): mention this is deprecated.
 	(\writetocentry): handle "omit" case, and
 	\global\pdfmakepagedesttrue.
@@ -5477,7 +5488,7 @@
 
 	* makeinfo/tests/html-manuals: include -I../../doc for case when
 	version-stnd.texi is in build tree.
-	From: ezra peisach <epeisach@med-xtal.bu.edu>, 
+	From: ezra peisach <epeisach@med-xtal.bu.edu>,
 	12 Sep 2003 13:53:32 -0400.
 
 2003-09-11  Karl Berry  <karl@gnu.org>
@@ -5526,7 +5537,7 @@
 	* makeinfo/macro.c (define_macro): "end rmacro" is 10 chars long.
 
 2003-08-29 Reiner Steib <Reiner.Steib@gmx.de>
-	
+
 	* makeinfo/lang.c (encoding_table): Downcase coding system
 	names, since Emacs does not recognize the uppercase names.
 
@@ -5737,7 +5748,7 @@
 	From: Jesper Harder <harder@ifa.au.dk>.
 	(GNU Sample Texts): don't end the $Id index entries with a :.
 	Report from: Luc Teirlinck <teirllm@dms.auburn.edu>.
-	
+
 2003-06-20    <karl@gnu.org>
 
 	* makeinfo/defun.c (process_defun_args): only insert the HTML
