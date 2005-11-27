@@ -51,6 +51,9 @@ my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 # To redefine one word, simply do:
 # $T2h_i18n::T2H_LANGUAGES->{<language>}->{<word>} = 'whatever' in your personal init file.
 #
+
+# Those hashes are obsolete but retained here for reference
+
 my $T2H_WORDS_EN =
 {
  # titles  of pages

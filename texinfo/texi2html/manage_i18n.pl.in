@@ -43,8 +43,8 @@ my $language;
 my $dir = 'i18n'; # name of the directory containing the per language files
 my $output; # file containing all the translations or output directory
 # = 'translations.pl'; # file containing all the translations
-my @known_languages = ('en', 'de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
-                                               # languages
+my @known_languages = ('en', 'de', 'nl', 'es', 'no', 'pt', 'pt_BR',
+  'fr'); # The supported languages
 my @searched_dirs = (); # dir searched for sources and language files
 
 #my $template = 'template';

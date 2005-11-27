@@ -1,3 +1,8 @@
+2005-11-27  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* i18n/,translation.pl,manage_i18n.pl.in: update pt and add 
+	pt_BR translation, from Jorge Barros de Abreu.
+
 2005-11-14  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: remove the @special_regions array. Special 

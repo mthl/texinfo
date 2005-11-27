@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.151 2005-11-14 11:13:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.152 2005-11-27 19:51:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4161,7 +4161,7 @@ sub misc_command_structure($$$$)
         {
             my $lang = $1;
             set_document_language($lang, 0, $line_nr) if (!$cmd_line_lang && $lang);
-            # warning, this is not the language of te document but the one that
+            # warning, this is not the language of the document but the one that
             # appear in the texinfo...
             $Texi2HTML::THISDOC{$macro} = $lang; 
         }
