@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.152 2005-11-27 19:51:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.153 2005-11-29 19:04:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -274,6 +274,8 @@ $AFTER_OVERVIEW
 $BEFORE_TOC_LINES
 $AFTER_TOC_LINES
 $NEW_CROSSREF_STYLE
+$USER
+$DATE
 %ACTIVE_ICONS
 %NAVIGATION_TEXT
 %PASSIVE_ICONS
@@ -1324,6 +1326,8 @@ sub set_document_language ($;$$)
         {
             $Texi2HTML::THISDOC{'today'} = 'a sunny day';
         }
+        $Texi2HTML::THISDOC{'today'} = $Texi2HTML::Config::DATE 
+            if (defined($Texi2HTML::Config::DATE));
         $things_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
         $pre_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
         $texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
@@ -6196,6 +6200,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
+    $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
 #    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 

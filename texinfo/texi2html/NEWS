@@ -26,6 +26,9 @@ This file records noteworthy changes.
   to do things similar that what is done for interfacing with LaTeX2HTML
   or tex4ht.
 
+* Add $USER and $DATE variables to override the defaults detected for the
+  footer.
+
 * COMPATIBILITY
   -------------
 

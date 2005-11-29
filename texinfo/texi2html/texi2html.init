@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.93 2005-11-14 11:13:58 pertusus Exp $
+# $Id: texi2html.init,v 1.94 2005-11-29 19:04:25 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -618,6 +618,10 @@ $DOCUMENT_DESCRIPTION = undef;
 
 # if undef set 1 if SPLIT, to 0 otherwise
 $EXTERNAL_CROSSREF_SPLIT = undef;
+
+$USER = undef;
+$DATE = undef;
+
 
 ########################################################################
 # Control of Page layout:

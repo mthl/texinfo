@@ -1625,6 +1625,10 @@ of the user running @command{texi2html}, @var{$date} is the date of the day.
 @end deftypefn
 @end ignore
 
+A user name and  a date are collected to be output in the footer.
+You can change them by defining @variable{$USER} and @variable{$DATE}
+in the initialization file.
+
 The default functions call the function associated with 
 @variable{$print_foot_navigation} to format the navigation panel for the 
 page footer. Thus you can control parts of the formatting by

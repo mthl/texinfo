@@ -1,3 +1,8 @@
+2005-11-29  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add a possibility to
+	set the user and date with the USER and DATE variables.
+
 2005-11-27  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* i18n/,translation.pl,manage_i18n.pl.in: update pt and add 
