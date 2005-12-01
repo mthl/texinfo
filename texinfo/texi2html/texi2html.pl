@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.153 2005-11-29 19:04:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.154 2005-12-01 08:38:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2807,60 +2807,6 @@ sub process_css_file ($$)
     warn "$WARN comment not closed in css file $file\n" if ($in_comment);
     warn "$WARN \@import not finished in css file $file\n"  if ($in_import and !$in_comment and !$in_string);
     return ($imports, $rules);
-}
-
-my @css_import_lines;
-my @css_rule_lines;
-
-# process css files
-foreach my $file (@Texi2HTML::Config::CSS_FILES)
-{
-    my $css_file_fh;
-    my $css_file;
-    if ($file eq '-')
-    {
-        $css_file_fh = \*STDIN;
-        $css_file = '-';
-    }
-    else
-    {
-         $css_file = locate_init_file ($file);
-         unless (defined($css_file))
-         {
-             warn "css file $file not found\n";
-             next;
-         }
-         unless (open (CSSFILE, "$css_file"))
-         {
-             warn "Cannot open ${css_file}: $!";
-             next;
-        }
-        $css_file_fh = \*CSSFILE;
-    }
-    my ($import_lines, $rules_lines);
-    ($import_lines, $rules_lines) = process_css_file ($css_file_fh, $css_file);
-    push @css_import_lines, @$import_lines;
-    push @css_rule_lines, @$rules_lines;
-}
-
-if ($T2H_DEBUG & $DEBUG_USER)
-{
-    if (@css_import_lines)
-    {
-        print STDERR "# css import lines\n";
-        foreach my $line (@css_import_lines)
-        {
-            print STDERR "$line";
-        }
-    }
-    if (@css_rule_lines)
-    {
-        print STDERR "# css rule lines\n";
-        foreach my $line (@css_rule_lines)
-        {
-            print STDERR "$line";
-        }
-    }
 }
 
 #
@@ -12053,6 +11999,64 @@ foreach my $handler(@Texi2HTML::Config::command_handler_init)
 {
     &$handler;
 }
+
+my @css_import_lines;
+my @css_rule_lines;
+
+# process css files
+foreach my $file (@Texi2HTML::Config::CSS_FILES)
+{
+    my $css_file_fh;
+    my $css_file;
+    if ($file eq '-')
+    {
+        $css_file_fh = \*STDIN;
+        $css_file = '-';
+    }
+    else
+    {
+         $css_file = locate_init_file ($file);
+         unless (defined($css_file))
+         {
+             warn "css file $file not found\n";
+             next;
+         }
+         unless (open (CSSFILE, "$css_file"))
+         {
+             warn "Cannot open ${css_file}: $!";
+             next;
+        }
+        $css_file_fh = \*CSSFILE;
+    }
+    my ($import_lines, $rules_lines);
+    ($import_lines, $rules_lines) = process_css_file ($css_file_fh, $css_file);
+    push @css_import_lines, @$import_lines;
+    push @css_rule_lines, @$rules_lines;
+}
+
+$Texi2HTML::THISDOC{'css_import_lines'} = \@css_import_lines;
+$Texi2HTML::THISDOC{'css_lines'} = \@css_rule_lines;
+
+if ($T2H_DEBUG & $DEBUG_USER)
+{
+    if (@css_import_lines)
+    {
+        print STDERR "# css import lines\n";
+        foreach my $line (@css_import_lines)
+        {
+            print STDERR "$line";
+        }
+    }
+    if (@css_rule_lines)
+    {
+        print STDERR "# css rule lines\n";
+        foreach my $line (@css_rule_lines)
+        {
+            print STDERR "$line";
+        }
+    }
+}
+
 pass_texi();
 dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
 if (defined($Texi2HTML::Config::MACRO_EXPAND))
@@ -12098,7 +12102,6 @@ if (@{$region_lines{'copying'}})
     $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'});
 }
 &$Texi2HTML::Config::toc_body(\@elements_list);
-&$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
 $sec_num = 0;
 
 #Texi2HTML::LaTeX2HTML::latex2html();
@@ -12106,6 +12109,9 @@ foreach my $handler(@Texi2HTML::Config::command_handler_process)
 {
     &$handler;
 }
+
+&$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
+
 pass_text();
 foreach my $special (keys(%special_commands))
 {

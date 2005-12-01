@@ -1,3 +1,12 @@
+2005-11-30  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/tex4ht.init, doc/*: 
+	allows customization of CSS_FILES in init_handler and adding to 
+	css lines by the process handler.
+	* Tests/singular: use png images.
+	* i18n/,translation.pl: updated pt translations from Jorge Barros 
+	de Abreu.
+
 2005-11-29  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: add a possibility to

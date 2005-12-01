@@ -260,4 +260,5 @@ test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo 
 #test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
 test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.94 2005-11-29 19:04:25 pertusus Exp $
+# $Id: texi2html.init,v 1.95 2005-12-01 08:38:40 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -673,6 +673,8 @@ $DATE = undef;
 # $Texi2HTML::THISDOC{destination_directory}
                                  #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script
+# $Texi2HTML::THISDOC{css_import_lines} -- ref on @import lines in css files
+# $Texi2HTML::THISDOC{css_lines}        -- ref on css rules lines
 # other $Texi2HTML::THISDOC keys corresponds with texinfo commands, the value
 # being the command arg, for the following commands:
 # kbdinputstyle, paragraphindent, setchapternewpage, headings, footnotestyle,

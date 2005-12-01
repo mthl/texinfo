@@ -8,7 +8,7 @@
 # all the others we simply "include"
 
 # -prefix
-# Set the output file prefix, prepended to all .html, .gif and .pl files.
+# Set the output file prefix, prepended to all .html, .png and .pl files.
 $PREFIX = 'sing';
 
 # -expand
@@ -28,8 +28,10 @@ $VERBOSE = 1;
 # print index summary for 'cp' index
 $IDX_SUMMARY = 'cp';
 
+my $T2H_SING_base_images = '../singular_images/';
+
 # inside <BODY ..>
-$BODYTEXT = 'lang="en"  background="Mybg.gif"';
+$BODYTEXT = 'lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"';
 
 # after <BODY>
 $AFTER_BODY_OPEN = <<EOT;
@@ -38,6 +40,9 @@ EOT
 # before </BODY>
 $PRE_BODY_CLOSE = <<EOT;
 EOT
+
+# if using tex4ht, must be in latex mode due to \textbf
+$Texi2HTML::TeX4HT::STYLE='latex';
 
 # footer of top_page
 
@@ -104,7 +109,7 @@ sub singular_banner
   my $fh = shift;
   print $fh <<EOT
   <a href="index.htm"><img
-    src="singular-icon-transparent.gif" width="50"
+    src="${T2H_SING_base_images}singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 EOT
 }
@@ -132,71 +137,80 @@ if ($T2H_BLUE_BUTTONS)
   
 %ACTIVE_ICONS =
   (
-   'Top',      'blue_top.gif',
-   'Contents', 'blue_dir.gif',
+   'Top',      'blue_top.png',
+   'Contents', 'blue_dir.png',
    'Overview', '',
-   'Index',    'blue_readme.gif',
-   'Back',     'blue_prev.gif',
-   'FastBack', 'blue_pprev.gif',
-   'Prev',     'blue_pprev.gif',
-   'Up',       'blue_up.gif',
-   'Next',     'blue_nnext.gif',
-   'Forward',  'blue_next.gif',
-   'FastForward', 'blue_nnext.gif',
-   'About' ,    'blue_help.gif',
+   'Index',    'blue_readme.png',
+   'Back',     'blue_prev.png',
+   'FastBack', 'blue_pprev.png',
+   'Prev',     'blue_pprev.png',
+   'Up',       'blue_up.png',
+   'Next',     'blue_nnext.png',
+   'Forward',  'blue_next.png',
+   'FastForward', 'blue_nnext.png',
+   'About' ,    'blue_help.png',
    ' ',        ''
   );
 
 %PASSIVE_ICONS =
   (
-   'Top',      'blue_top.gif',
-   'Contents', 'blue_dir.gif',
+   'Top',      'blue_top.png',
+   'Contents', 'blue_dir.png',
    'Overview', '',
-   'Index',    'blue_readme.gif',
-   'Back',     'blue_prev.gif',
-   'FastBack', 'blue_pprev.gif',
-   'Prev',     'blue_pprev.gif',
-   'Up',       'blue_up.gif',
-   'Next',     'blue_nnext.gif',
-   'Forward',  'blue_next.gif',
-   'FastForward', 'blue_nnext.gif',
-   'About' ,    'blue_help.gif',
+   'Index',    'blue_readme.png',
+   'Back',     'blue_prev.png',
+   'FastBack', 'blue_pprev.png',
+   'Prev',     'blue_pprev.png',
+   'Up',       'blue_up.png',
+   'Next',     'blue_nnext.png',
+   'Forward',  'blue_next.png',
+   'FastForward', 'blue_nnext.png',
+   'About' ,    'blue_help.png',
   );
 }
 else
 {
 %ACTIVE_ICONS =
   (
-   'Top',      'a_top.gif',
-   'Contents', 'a_tableofcon.gif',
+   'Top',      'a_top.png',
+   'Contents', 'a_tableofcon.png',
    'Overview', '',
-   'Index',    'a_index.gif',
-   'Back',     'a_left.gif',
-   'FastBack', 'a_leftdouble.gif',
-   'Prev',     'a_leftdouble.gif',
-   'Up',       'a_up.gif',
-   'Next',     'a_rightdouble.gif',
-   'Forward',  'a_right.gif',
-   'FastForward', 'a_rightdouble.gif',
-   'About' ,    'a_help.gif',
-   ' ',        'a_empty.gif'
+   'Index',    'a_index.png',
+   'Back',     'a_left.png',
+   'FastBack', 'a_leftdouble.png',
+   'Prev',     'a_leftdouble.png',
+   'Up',       'a_up.png',
+   'Next',     'a_rightdouble.png',
+   'Forward',  'a_right.png',
+   'FastForward', 'a_rightdouble.png',
+   'About' ,    'a_help.png',
+   ' ',        'a_empty.png'
   );
 
 %PASSIVE_ICONS =
   (
-   'Top',      'a_top_na.gif',
-   'Contents', 'a_tableofcon_na.gif',
+   'Top',      'a_top_na.png',
+   'Contents', 'a_tableofcon_na.png',
    'Overview', '',
-   'Index',    'a_index_na.gif',
-   'Back',     'a_left_na.gif',
-   'FastBack', 'a_leftdouble_na.gif',
-   'Prev',     'a_leftdouble_na.gif',
-   'Up',       'a_up_na.gif',
-   'Next',     'a_rightdouble_na.gif',
-   'Forward',  'a_right_na.gif',
-   'FastForward', 'a_rightdouble_na.gif',
-   'About' ,    'a_help_na.gif',
+   'Index',    'a_index_na.png',
+   'Back',     'a_left_na.png',
+   'FastBack', 'a_leftdouble_na.png',
+   'Prev',     'a_leftdouble_na.png',
+   'Up',       'a_up_na.png',
+   'Next',     'a_rightdouble_na.png',
+   'Forward',  'a_right_na.png',
+   'FastForward', 'a_rightdouble_na.png',
+   'About' ,    'a_help_na.png',
   );
+}
+
+foreach my $hash_ref((\%ACTIVE_ICONS, \%PASSIVE_ICONS))
+{
+	foreach my $key (keys(%$hash_ref))
+	{
+		next if ($hash_ref->{$key} eq '');
+		$hash_ref->{$key} = $T2H_SING_base_images.$hash_ref->{$key};
+	}
 }
 
 sub T2H_SING_pre_about

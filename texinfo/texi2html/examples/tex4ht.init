@@ -172,6 +172,9 @@ sub tex4ht_process
      warn "* tex4ht: got $got_count for $tex4ht_counter items entered\n";
   }
   close (TEX4HT_HTMLFILE);
+
+  push @{$Texi2HTML::THISDOC{'css_import_lines'}}, "\@import \"$tex4ht_basename.css\";\n";
+
   tex4ht_return_to_dir();
 }
 
