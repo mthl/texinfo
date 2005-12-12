@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-21 16:20-0800\n"
+"POT-Creation-Date: 2005-12-11 14:51-0800\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -223,34 +223,36 @@ msgstr ""
 "\n"
 "* 菜单：其索引含有“%s”的节点：\n"
 
-#: info/info.c:275 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:902
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
-#: info/info.c:295 makeinfo/makeinfo.c:766 util/install-info.c:1266
-#: util/texindex.c:343
+#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:765
+#: util/install-info.c:1265 util/texindex.c:350
 #, fuzzy, c-format
 msgid ""
-"There is NO warranty.  You may redistribute this software\n"
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+"PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
 "under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
+"For more information about these matters, see the file named COPYING.\n"
 msgstr ""
 "版权所有 (C) %s 自由软件基金会。\n"
 "本软件没有任何担保。您可以按照通用\n"
 "公共许可证(GPL)的条款发行本软件。\n"
 "这方面的详情，请阅读名为 COPYING 的文件。\n"
 
-#: info/info.c:498
+#: info/info.c:501
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "找不到含有“%s”的索引\n"
 
-#: info/info.c:590
+#: info/info.c:593
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 
-#: info/info.c:597
+#: info/info.c:600
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -321,8 +323,8 @@ msgstr ""
 "  info --show-options emacs  从 emacs 的命令行选项节点开始\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是搜索目录\n"
 
-#: info/info.c:635 info/infokey.c:918 makeinfo/makeinfo.c:465
-#: util/install-info.c:466 util/texindex.c:292
+#: info/info.c:638 info/infokey.c:921 makeinfo/makeinfo.c:465
+#: util/install-info.c:466 util/texindex.c:300
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -334,72 +336,72 @@ msgstr ""
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:669
+#: info/info.c:672
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "无法找到节点“%s”。"
 
-#: info/info.c:670
+#: info/info.c:673
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:671
+#: info/info.c:674
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:672
+#: info/info.c:675
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:673
+#: info/info.c:676
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:674
+#: info/info.c:677
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:675
+#: info/info.c:678
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:676
+#: info/info.c:679
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:677
+#: info/info.c:680
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:678
+#: info/info.c:681
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:679
+#: info/info.c:682
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:680
+#: info/info.c:683
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:681
+#: info/info.c:684
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:682
+#: info/info.c:685
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:683
+#: info/info.c:686
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:684
+#: info/info.c:687
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 
@@ -820,104 +822,91 @@ msgstr "%s 可以通过 %s 调用。"
 msgid "There is no function named `%s'"
 msgstr "没有名为“%s”的函数"
 
-#: info/infokey.c:145
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
-msgstr ""
-"版权所有 (C) %s 自由软件基金会。\n"
-"本软件没有任何担保。您可以按照通用\n"
-"公共许可证(GPL)的条款发行本软件。\n"
-"这方面的详情，请阅读名为 COPYING 的文件。\n"
-
-#: info/infokey.c:170
+#: info/infokey.c:173
 msgid "incorrect number of arguments"
 msgstr "错误的参数数"
 
-#: info/infokey.c:201
+#: info/infokey.c:204
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "无法打开输入文件“%s”"
 
-#: info/infokey.c:215
+#: info/infokey.c:218
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "无法创建输出文件“%s”"
 
-#: info/infokey.c:226
+#: info/infokey.c:229
 #, c-format
 msgid "error writing to `%s'"
 msgstr "写入“%s”时出错"
 
-#: info/infokey.c:232
+#: info/infokey.c:235
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "关闭输出文件“%s”时出错"
 
-#: info/infokey.c:450
+#: info/infokey.c:453
 msgid "key sequence too long"
 msgstr "按键序列过长"
 
-#: info/infokey.c:529
+#: info/infokey.c:532
 msgid "missing key sequence"
 msgstr "遗漏按键序列"
 
-#: info/infokey.c:610
+#: info/infokey.c:613
 msgid "NUL character (\\000) not permitted"
 msgstr "不允许的空字符 (\\\\000)"
 
-#: info/infokey.c:641
+#: info/infokey.c:644
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "不允许的空字符 (^%c)"
 
-#: info/infokey.c:665
+#: info/infokey.c:668
 msgid "missing action name"
 msgstr "遗漏动作名称"
 
-#: info/infokey.c:681 info/infokey.c:756
+#: info/infokey.c:684 info/infokey.c:759
 msgid "section too long"
 msgstr "节太长"
 
-#: info/infokey.c:688
+#: info/infokey.c:691
 #, c-format
 msgid "unknown action `%s'"
 msgstr "未知的动作“%s”"
 
-#: info/infokey.c:698
+#: info/infokey.c:701
 msgid "action name too long"
 msgstr "动作名过长"
 
-#: info/infokey.c:712
+#: info/infokey.c:715
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "动作“%s”之后出现额外的字符"
 
-#: info/infokey.c:723
+#: info/infokey.c:726
 msgid "missing variable name"
 msgstr "遗漏变量名"
 
-#: info/infokey.c:733
+#: info/infokey.c:736
 msgid "missing `=' immediately after variable name"
 msgstr "变量名之后遗漏了“=”"
 
-#: info/infokey.c:741
+#: info/infokey.c:744
 msgid "variable name too long"
 msgstr "变量名过长"
 
-#: info/infokey.c:765
+#: info/infokey.c:768
 msgid "value too long"
 msgstr "值过长"
 
-#: info/infokey.c:890
+#: info/infokey.c:893
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "“%s”，行 %u："
 
-#: info/infokey.c:906
+#: info/infokey.c:909
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -1092,7 +1081,7 @@ msgstr "移动到行的末尾"
 msgid "Move to the start of the line"
 msgstr "移动到行的开头"
 
-#: info/session.c:860 makeinfo/node.c:1424
+#: info/session.c:860 makeinfo/node.c:1425
 msgid "Next"
 msgstr "下一个"
 
@@ -1716,118 +1705,128 @@ msgstr "%s：选项“-W %s”的含义不清\n"
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s：选项“-W %s”不接受参数\n"
 
-#: makeinfo/cmds.c:520 makeinfo/cmds.c:542
+#: makeinfo/cmds.c:523 makeinfo/cmds.c:545
 #, fuzzy, c-format
 msgid "arguments to @%s ignored"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:588
 msgid "January"
 msgstr "一月"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:588
 msgid "February"
 msgstr "二月"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:588
 msgid "March"
 msgstr "三月"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:588
 msgid "April"
 msgstr "四月"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:588
 msgid "May"
 msgstr "五月"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:589
 msgid "June"
 msgstr "六月"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:589
 msgid "July"
 msgstr "七月"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:589
 msgid "August"
 msgstr "八月"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:589
 msgid "September"
 msgstr "九月"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:589
 msgid "October"
 msgstr "十月"
 
-#: makeinfo/cmds.c:587
+#: makeinfo/cmds.c:590
 msgid "November"
 msgstr "十一月"
 
-#: makeinfo/cmds.c:587
+#: makeinfo/cmds.c:590
 msgid "December"
 msgstr "十二月"
 
-#: makeinfo/cmds.c:936
+#: makeinfo/cmds.c:942
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "@var 中不可靠的字符 %c"
 
-#: makeinfo/cmds.c:979
+#: makeinfo/cmds.c:985
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc 的参数全部为大写，因此无效"
 
-#: makeinfo/cmds.c:1034
+#: makeinfo/cmds.c:1040
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "应为“{”，但看到了“%c”"
 
-#: makeinfo/cmds.c:1074
+#: makeinfo/cmds.c:1080
 msgid "end of file inside verb block"
 msgstr "文件在原文块中结束"
 
-#: makeinfo/cmds.c:1082
+#: makeinfo/cmds.c:1088
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "应为“}”，但看到了“%c”"
 
-#: makeinfo/cmds.c:1112
+#: makeinfo/cmds.c:1118
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: makeinfo/cmds.c:1305
+#: makeinfo/cmds.c:1317
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s 已过时"
 
-#: makeinfo/cmds.c:1414
+#: makeinfo/cmds.c:1426
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp 需要正数参数，而不是“%s”"
 
-#: makeinfo/cmds.c:1763 makeinfo/cmds.c:1819 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1781 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1791 makeinfo/makeinfo.c:4150
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
+#: makeinfo/cmds.c:1793 makeinfo/cmds.c:1823 makeinfo/makeinfo.c:4152
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:1789
+#: makeinfo/cmds.c:1807
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1803
+#: makeinfo/cmds.c:1821
 msgid "insert"
+msgstr ""
+
+#: makeinfo/cmds.c:1837
+#, fuzzy, c-format
+msgid "Bad argument to @%s: %s"
+msgstr "%c%s 的错误参数"
+
+#: makeinfo/cmds.c:1919
+#, c-format
+msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
 #: makeinfo/defun.c:84
@@ -1863,16 +1862,16 @@ msgid "Method"
 msgstr "方法"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2229
+#: makeinfo/defun.c:644 makeinfo/xml.c:2109
 msgid "of"
 msgstr ""
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2114
 msgid "on"
 msgstr ""
 
-#: makeinfo/defun.c:711
+#: makeinfo/defun.c:712
 #, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr ""
@@ -1923,20 +1922,20 @@ msgstr "脚注"
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:172
+#: makeinfo/html.c:175
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:207
+#: makeinfo/html.c:210
 msgid "Untitled"
 msgstr "无标题"
 
-#: makeinfo/html.c:422
+#: makeinfo/html.c:425
 msgid "[unexpected] no html tag to pop"
 msgstr ""
 
-#: makeinfo/html.c:752
+#: makeinfo/html.c:757
 #, fuzzy, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "无效的脚注名：“%s”"
@@ -1970,154 +1969,154 @@ msgstr ""
 msgid "(line %*d)"
 msgstr ""
 
-#: makeinfo/index.c:750
+#: makeinfo/index.c:748
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex 中的未知索引“%s”"
 
-#: makeinfo/index.c:819
+#: makeinfo/index.c:817
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "关于索引“%s”的条目超出了所有节点"
 
-#: makeinfo/index.c:822 makeinfo/index.c:858
+#: makeinfo/index.c:820 makeinfo/index.c:856
 msgid "(outside of any node)"
 msgstr "(超出任何节点)"
 
-#: makeinfo/index.c:919 makeinfo/index.c:925
+#: makeinfo/index.c:913 makeinfo/index.c:919
 msgid "See "
 msgstr "参阅 "
 
-#: makeinfo/insertion.c:160
+#: makeinfo/insertion.c:162
 msgid "@item not allowed in argument to @itemize"
 msgstr ""
 
-#: makeinfo/insertion.c:238
+#: makeinfo/insertion.c:243
 msgid "Broken-Type in insertion_type_pname"
 msgstr "insertion_type_pname 中的错误类型"
 
-#: makeinfo/insertion.c:334
+#: makeinfo/insertion.c:339
 msgid "Enumeration stack overflow"
 msgstr "枚举栈溢出"
 
-#: makeinfo/insertion.c:366
+#: makeinfo/insertion.c:371
 #, c-format
 msgid "lettering overflow, restarting at %c"
 msgstr "字符编号溢出，从 %c 重新开始"
 
-#: makeinfo/insertion.c:631
+#: makeinfo/insertion.c:636
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr ""
 
-#: makeinfo/insertion.c:719
+#: makeinfo/insertion.c:724
 #, c-format
 msgid "%cfloat environments cannot be nested"
 msgstr ""
 
-#: makeinfo/insertion.c:973
+#: makeinfo/insertion.c:978
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "“@end”需要“%s”，但看到“%s”"
 
-#: makeinfo/insertion.c:1337
+#: makeinfo/insertion.c:1344
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "没有匹配的“%cend %s”"
 
-#: makeinfo/insertion.c:1592
+#: makeinfo/insertion.c:1607
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s 需要字母或数字"
 
-#: makeinfo/insertion.c:1687
+#: makeinfo/insertion.c:1700
 msgid "end of file inside verbatim block"
 msgstr "文件在原文块中结束"
 
-#: makeinfo/insertion.c:1913
+#: makeinfo/insertion.c:1924
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "在“@%2$s”块中“@%1$s”是没有意义的"
 
-#: makeinfo/insertion.c:1949
+#: makeinfo/insertion.c:1960
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
-#: makeinfo/insertion.c:1950
+#: makeinfo/insertion.c:1961
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "您的 @top 节点可能应该包含在 @ifnottex 而不是 @ifinfo 中？"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1973
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "在第一个节点之前遇到 @detailmenu，正在创建“顶”节点"
 
-#: makeinfo/insertion.c:2018
+#: makeinfo/insertion.c:2029
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: makeinfo/insertion.c:2032
+#: makeinfo/insertion.c:2043
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "在“@%2$s”块中“@%1$s”是没有意义的"
 
-#: makeinfo/insertion.c:2063
+#: makeinfo/insertion.c:2074
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "未匹配的“%c%s”"
 
-#: makeinfo/insertion.c:2068
+#: makeinfo/insertion.c:2079
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "“%c%s”之后需要有些什么"
 
-#: makeinfo/insertion.c:2074
+#: makeinfo/insertion.c:2085
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "“%s”的错误参数，“%s”，使用“%s”"
 
-#: makeinfo/insertion.c:2171
+#: makeinfo/insertion.c:2182
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "在“@%2$s”块中“@%1$s”是没有意义的"
 
-#: makeinfo/insertion.c:2180
+#: makeinfo/insertion.c:2191
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "在“%s”块中 @itemx 是没有意义的"
 
-#: makeinfo/insertion.c:2356
+#: makeinfo/insertion.c:2367
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "在插入块之外发现了 %c%s"
 
-#: makeinfo/lang.c:580
+#: makeinfo/lang.c:582
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s 在 ISO 639 语言编码中是无效的"
 
-#: makeinfo/lang.c:655
+#: makeinfo/lang.c:657
 #, fuzzy, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "不能识别的编码名称“%s”"
 
-#: makeinfo/lang.c:663
+#: makeinfo/lang.c:665
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "抱歉，不支持编码“%s”"
 
-#: makeinfo/lang.c:715
+#: makeinfo/lang.c:717
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "无效的编码字符“%s”"
 
-#: makeinfo/lang.c:1009
+#: makeinfo/lang.c:1012
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
 
-#: makeinfo/lang.c:1013
+#: makeinfo/lang.c:1016
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s 需要以单个字符“i”或“j”为参数"
@@ -2132,26 +2131,26 @@ msgstr "宏“%s”已在前面定义"
 msgid "here is the previous definition of `%s'"
 msgstr "这里是“%s”前面的定义"
 
-#: makeinfo/macro.c:355
+#: makeinfo/macro.c:356
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgstr ""
 
-#: makeinfo/macro.c:401
+#: makeinfo/macro.c:402
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "在第 %2$d 行中以过多的参数调用宏“%1$s”"
 
-#: makeinfo/macro.c:586
+#: makeinfo/macro.c:587
 #, c-format
 msgid "%cend macro not found"
 msgstr "找不到宏 %cend"
 
-#: makeinfo/macro.c:624
+#: makeinfo/macro.c:625
 msgid "@quote-arg only useful for single-argument macros"
 msgstr "@quote-arg 只对单参数宏有用"
 
-#: makeinfo/macro.c:660
+#: makeinfo/macro.c:661
 #, c-format
 msgid "mismatched @end %s with @%s"
 msgstr "@end %s 和 @%s 不匹配"
@@ -2166,7 +2165,7 @@ msgstr "过多的错误！放弃。\n"
 msgid "%s:%d: warning: "
 msgstr "%s：%d：警告："
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2260
+#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2264
 #, c-format
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
@@ -2217,10 +2216,10 @@ msgstr ""
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
-"      --docbook             output Docbook XML rather than Info.\n"
-"      --html                output HTML rather than Info.\n"
-"      --xml                 output Texinfo XML rather than Info.\n"
-"      --plaintext           output plain text rather than Info.\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
 msgstr ""
 "输出格式选择 (默认生成 Info 文件)：\n"
 "      --docbook             输出 DocBook 而不是 Info。\n"
@@ -2228,19 +2227,22 @@ msgstr ""
 "      --xml                 输出 XML (TexinfoML) 而不是 Info。\n"
 
 #: makeinfo/makeinfo.c:372
+#, fuzzy
 msgid ""
 "General output options:\n"
-"  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
-"                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and "
+"  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
+"                              ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
 "menus\n"
-"                              from Info output (thus producing plain text)\n"
-"                              or from HTML (thus producing shorter output);\n"
-"                              also, write to standard output by default.\n"
-"      --no-split            suppress splitting of Info or HTML output,\n"
-"                            generate only one output file.\n"
-"      --number-sections     output chapter and sectioning numbers.\n"
-"  -o, --output=FILE         output to FILE (directory if split HTML),\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress splitting of Info or HTML output,\n"
+"                              generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (directory if split HTML),\n"
 msgstr ""
 "通用输出选项：\n"
 "  -E, --macro-expand FILE   将宏扩展源输出到文件 FILE。\n"
@@ -2255,7 +2257,7 @@ msgstr ""
 "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目录)，\n"
 
 #: makeinfo/makeinfo.c:386
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
@@ -2264,8 +2266,10 @@ msgid ""
 "d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node\n"
-"                                  in which they are defined (default).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
 "      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
 "d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
@@ -2287,17 +2291,17 @@ msgstr ""
 #: makeinfo/makeinfo.c:403
 msgid ""
 "Options for HTML:\n"
-"      --css-include=FILE        include FILE in HTML <style> output;\n"
-"                                  read stdin if FILE is -.\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
 msgstr ""
 
 #: makeinfo/makeinfo.c:409
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL       indent XML elements by VAL spaces (default %"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
 "d).\n"
-"                                  If VAL is 0, ignorable whitespace is "
+"                                If VAL is 0, ignorable whitespace is "
 "dropped.\n"
 msgstr ""
 
@@ -2366,16 +2370,17 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Examples:\n"
-"  makeinfo foo.texi                     write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi              write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi               write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi        write plain text to standard output\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, "
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
 "menus\n"
-"  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi          write one Info file however big\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "示例：\n"
 "  makeinfo foo.texi                     将 Info 写入到 foo 的 @setfilename\n"
@@ -2421,125 +2426,125 @@ msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: makeinfo/makeinfo.c:806
+#: makeinfo/makeinfo.c:809
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
+#: makeinfo/makeinfo.c:1000 makeinfo/makeinfo.c:3997
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1000
+#: makeinfo/makeinfo.c:1003
 #, c-format
 msgid "Expected `%s'"
 msgstr "应为“%s”"
 
-#: makeinfo/makeinfo.c:1479
+#: makeinfo/makeinfo.c:1482
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: makeinfo/makeinfo.c:1525
+#: makeinfo/makeinfo.c:1528
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:1605
+#: makeinfo/makeinfo.c:1608
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1638
+#: makeinfo/makeinfo.c:1641
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
-#: makeinfo/makeinfo.c:1673
+#: makeinfo/makeinfo.c:1676
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
 
-#: makeinfo/makeinfo.c:1709
+#: makeinfo/makeinfo.c:1712
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1773
+#: makeinfo/makeinfo.c:1776
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:2034
+#: makeinfo/makeinfo.c:2037
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: makeinfo/makeinfo.c:2056
+#: makeinfo/makeinfo.c:2059
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: makeinfo/makeinfo.c:2314
+#: makeinfo/makeinfo.c:2318
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要“{...}”"
 
-#: makeinfo/makeinfo.c:2327
+#: makeinfo/makeinfo.c:2331
 msgid "Unmatched }"
 msgstr "不匹配的 }"
 
-#: makeinfo/makeinfo.c:2375
+#: makeinfo/makeinfo.c:2379
 msgid "NO_NAME!"
 msgstr "无名字！"
 
-#: makeinfo/makeinfo.c:2396
+#: makeinfo/makeinfo.c:2400
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3315
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: makeinfo/makeinfo.c:3315
+#: makeinfo/makeinfo.c:3321
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:3447
+#: makeinfo/makeinfo.c:3453
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image 文件“%s”(对文本)不可读：%s"
 
-#: makeinfo/makeinfo.c:3456
+#: makeinfo/makeinfo.c:3462
 msgid "@image missing filename argument"
 msgstr "@image 遗漏文件名参数"
 
-#: makeinfo/makeinfo.c:3675
+#: makeinfo/makeinfo.c:3681
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3676
+#: makeinfo/makeinfo.c:3682
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{没有“%s”的值}"
 
-#: makeinfo/makeinfo.c:3728
+#: makeinfo/makeinfo.c:3734
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: makeinfo/makeinfo.c:3834
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: makeinfo/makeinfo.c:4082
+#: makeinfo/makeinfo.c:4090
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "“%.40s...”扩展起来太长；未扩展"
@@ -2553,26 +2558,26 @@ msgstr "@multitable 模板中遗漏了 }"
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "忽略 @multitable 之后的过剩文本“%s”"
 
-#: makeinfo/multi.c:393
+#: makeinfo/multi.c:394
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "在多列表格项目中含有太多的列 (最大为 %d)"
 
-#: makeinfo/multi.c:555
+#: makeinfo/multi.c:556
 #, fuzzy, c-format
 msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "无法在多列表格中选择第 %d 列"
 
-#: makeinfo/multi.c:584
+#: makeinfo/multi.c:585
 msgid "ignoring @tab outside of multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: makeinfo/multi.c:632
+#: makeinfo/multi.c:633
 #, c-format
 msgid "** Multicolumn output from last row:\n"
 msgstr "** 最后一行的多列输出：\n"
 
-#: makeinfo/multi.c:635
+#: makeinfo/multi.c:636
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* 列 #%d：输出 = %s\n"
@@ -2592,117 +2597,117 @@ msgstr "正在格式化节点 %s...\n"
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "节点“%s”需要一个节命令 (例如：%c%s)"
 
-#: makeinfo/node.c:879
+#: makeinfo/node.c:880
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "没有为“%c%s”命令指定节名称"
 
-#: makeinfo/node.c:920 makeinfo/node.c:1151
+#: makeinfo/node.c:921 makeinfo/node.c:1152
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Anchor“%s”和节点“%s”映射到同一个文件名"
 
-#: makeinfo/node.c:923
+#: makeinfo/node.c:924
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "忽略该 @anchor 命令；对它的引用将无法工作"
 
-#: makeinfo/node.c:925 makeinfo/node.c:1154
+#: makeinfo/node.c:926 makeinfo/node.c:1155
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "重命名 anchor 或使用“--no-split”选项"
 
-#: makeinfo/node.c:955
+#: makeinfo/node.c:956
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "在分立 HTML 文件“%s”的末尾的意外字符串"
 
-#: makeinfo/node.c:991
+#: makeinfo/node.c:992
 msgid "Next:"
 msgstr "下一个："
 
-#: makeinfo/node.c:1007
+#: makeinfo/node.c:1008
 msgid "Previous:"
 msgstr "上一个："
 
-#: makeinfo/node.c:1021
+#: makeinfo/node.c:1022
 msgid "Up:"
 msgstr "上层："
 
-#: makeinfo/node.c:1148
+#: makeinfo/node.c:1149
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Anchor“%s”和“%s”映射到同一个文件名"
 
-#: makeinfo/node.c:1153
+#: makeinfo/node.c:1154
 msgid "@anchor command ignored; references to it will not work"
 msgstr "忽略 @anchor 命令；对它的引用将不能工作"
 
-#: makeinfo/node.c:1347
+#: makeinfo/node.c:1348
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s引用到不存在的节点“%s”"
 
-#: makeinfo/node.c:1363
+#: makeinfo/node.c:1364
 msgid "Menu"
 msgstr "菜单"
 
-#: makeinfo/node.c:1365
+#: makeinfo/node.c:1366
 msgid "Cross"
 msgstr "交叉引用"
 
-#: makeinfo/node.c:1447
+#: makeinfo/node.c:1448
 #, fuzzy, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr "节点“%s”的下一个域没有指向"
 
-#: makeinfo/node.c:1450
+#: makeinfo/node.c:1451
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "该节点 (%s) 含有错误的上一个"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1463
 msgid "Prev"
 msgstr "上一个"
 
-#: makeinfo/node.c:1505
+#: makeinfo/node.c:1506
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "节点“%s”的上一个域没有指向"
 
-#: makeinfo/node.c:1509
+#: makeinfo/node.c:1510
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "该节点 (%s) 含有错误的下一个"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1522
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1524
+#: makeinfo/node.c:1525
 msgid "Up"
 msgstr "上层"
 
-#: makeinfo/node.c:1590
+#: makeinfo/node.c:1591
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "尽管节点“%s”是“%s”的上层节点，但缺少相关的菜单项"
 
-#: makeinfo/node.c:1619
+#: makeinfo/node.c:1620
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "节点“%s”已被引用了 %d 次"
 
-#: makeinfo/node.c:1633
+#: makeinfo/node.c:1634
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "未引用的节点“%s”"
 
-#: makeinfo/node.c:1723
+#: makeinfo/node.c:1724
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1727
+#: makeinfo/node.c:1728
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "无法创建目录“%s”：%s"
@@ -2750,12 +2755,12 @@ msgstr "目录"
 msgid "Short Contents"
 msgstr "简短目录"
 
-#: makeinfo/xml.c:1605
+#: makeinfo/xml.c:1628
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
-#: makeinfo/xml.c:2097
+#: makeinfo/xml.c:1973
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""
@@ -2905,70 +2910,70 @@ msgstr ""
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s：Info 文件只应该指定一次。\n"
 
-#: util/install-info.c:1284
+#: util/install-info.c:1287
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "多余的命令行参数“%s”"
 
-#: util/install-info.c:1288
+#: util/install-info.c:1291
 msgid "No input file specified; try --help for more information."
 msgstr "没有指定输出文件；试用 --help 以获得更多信息。"
 
-#: util/install-info.c:1291
+#: util/install-info.c:1294
 msgid "No dir file specified; try --help for more information."
 msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 
-#: util/install-info.c:1313
+#: util/install-info.c:1316
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "“%s”中没有 info 目录条目"
 
-#: util/install-info.c:1426
+#: util/install-info.c:1429
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "在文件“%2$s”中菜单项“%1$s”已存在"
 
-#: util/install-info.c:1449
+#: util/install-info.c:1452
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到关于“%s”的条目；未删除"
 
-#: util/texindex.c:252
+#: util/texindex.c:260
 msgid "display this help and exit"
 msgstr "显示该求助信息并退出"
 
-#: util/texindex.c:254
+#: util/texindex.c:262
 msgid "keep temporary files around after processing"
 msgstr "在处理之后保留临时文件"
 
-#: util/texindex.c:256
+#: util/texindex.c:264
 msgid "do not keep temporary files around after processing (default)"
 msgstr "在处理之后删除临时文件 (默认)"
 
-#: util/texindex.c:258
+#: util/texindex.c:266
 msgid "send output to FILE"
 msgstr "将输出送入 FILE"
 
-#: util/texindex.c:260
+#: util/texindex.c:268
 msgid "display version information and exit"
 msgstr "显示版本信息并退出"
 
-#: util/texindex.c:270
+#: util/texindex.c:278
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "用法：%s [选项]... 文件...\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:279
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "为每个 TeX 输出文件生成排序的索引。\n"
 
-#: util/texindex.c:274
+#: util/texindex.c:282
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#: util/texindex.c:276
+#: util/texindex.c:284
 #, c-format
 msgid ""
 "\n"
@@ -2977,26 +2982,37 @@ msgstr ""
 "\n"
 "选项：\n"
 
-#: util/texindex.c:876 util/texindex.c:910 util/texindex.c:983
-#: util/texindex.c:1011
+#: util/texindex.c:886 util/texindex.c:920 util/texindex.c:995
+#: util/texindex.c:1023
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s：不是 texinfo 索引文件"
 
-#: util/texindex.c:968
+#: util/texindex.c:980
 #, c-format
 msgid "failure reopening %s"
 msgstr "重新打开 %s 失败"
 
-#: util/texindex.c:1218
+#: util/texindex.c:1230
 #, c-format
 msgid "No page number in %s"
 msgstr "%s 中没有页码"
 
-#: util/texindex.c:1291
+#: util/texindex.c:1303
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "条目 %s 出现在具有次要名称的条目之后"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "版权所有 (C) %s 自由软件基金会。\n"
+#~ "本软件没有任何担保。您可以按照通用\n"
+#~ "公共许可证(GPL)的条款发行本软件。\n"
+#~ "这方面的详情，请阅读名为 COPYING 的文件。\n"
 
 #~ msgid "%s: Specify the Info directory only once.\n"
 #~ msgstr "%s：Info 目录只应该指定一次。\n"
