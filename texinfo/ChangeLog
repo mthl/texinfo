@@ -1,3 +1,13 @@
+2005-12-19  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (run_conversion): Rename as...
+	(run_core_conversion): this.
+	(compile): New.
+	This is the former main program.
+	(clean): New.
+	Use it.
+	(language): Compute it in the main loop.
+
 2005-11-18  Akim Demaille  <akim@epita.fr>
 
 	Factor the handling of list of directories.
