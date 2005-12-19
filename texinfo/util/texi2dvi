@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.67 2005-11-18 12:58:50 akim Exp $
+# $Id: texi2dvi,v 1.68 2005-12-19 16:58:52 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.67 $'
+rcs_revision='$Revision: 1.68 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -349,7 +349,6 @@ list_dir_to_abs ()
   done
   set X $ld_res; shift
   eval $ld_l=\"$@\"
-  eval echo $ld_l=\$$ld_l
 }
 
 ## ------------------------- ##
@@ -951,10 +950,10 @@ run_to_html ()
 }
 
 
-# run_conversion ()
-# -----------------
+# run_core_conversion ()
+# ----------------------
 # Run the TeX tools until a fix point is reached.
-run_conversion ()
+run_core_conversion ()
 {
   # Move to the working directory.
   if $tidy; then
@@ -975,6 +974,77 @@ run_conversion ()
   # - the temporary file can be removed
   cd "$orig_pwd" || exit 1
 }
+
+
+# compile ()
+# ----------
+# Run the full compilation chain, from pre-processing to installation
+# of the output at its expected location.
+compile ()
+{
+  # Source file might include additional sources.
+  # We want `.:$orig_pwd' before anything else.  (We'll add `.:' later
+  # after all other directories have been turned into absolute paths.)
+  # `.' goes first to ensure that any old .aux, .cps,
+  # etc. files in ${directory} don't get used in preference to fresher
+  # files in `.'.  Include orig_pwd in case we are in clean build mode, where
+  # we've cd'd to a temp directory.
+  txincludes=`list_infix includes $path_sep`
+  common="$orig_pwd$path_sep$in_dir$path_sep$txincludes$path_sep"
+  for var in $tex_envvars; do
+    eval val="\$common\$${var}_orig"
+    # Convert relative paths to absolute paths, so we can run in another
+    # directory (e.g., in clean build mode, or during the macro-support
+    # detection).
+    val=`absolute_filenames "$val"`
+    eval $var="$val"
+    eval export $var
+    eval verbose "$var=\'\$${var}\'"
+  done
+
+  # --expand
+  run_makeinfo
+
+  # --command, --texinfo
+  insert_commands
+
+  # --recode
+  run_recode
+
+  # Run until a fix point is reached.
+  run_core_conversion
+}
+
+
+# clean ()
+# --------
+# Remove auxiliary files.
+clean ()
+{
+  # In case $orig_pwd is on a different drive (for DOS).
+  cd /
+
+  # Return to the original directory so that
+  # - the next file is processed in correct conditions
+  # - the temporary file can be removed
+  cd "$orig_pwd" || exit 1
+
+  if $tidy; then
+    # Simply remove the build dir.
+    verbose "Removing $t2ddir"
+    rm -rf "$t2ddir"
+  else
+    # Find the auxiliary files, and remove them.
+    local log=$work_build/$in_noext.log
+    if test -f "$log"; then
+      local aux=$(sed -n "s,^\\\\openout.* = \`\\(.*\\)'\\.,$work_build/\\1,p" "$log")
+      cp $work_build/$in_noext.log /tmp
+      echo rm $aux
+    fi
+  fi
+}
+
+
 
 ## ---------------------- ##
 ## Command line parsing.  ##
@@ -1225,6 +1295,9 @@ for command_line_filename in ${1+"$@"}; do
 
   input_file_name_decode
 
+  # `texinfo' or `latex'?
+  language=`compute_language $command_line_filename`
+
   # An auxiliary directory used for all the auxiliary tasks involved
   # in compiling this document.
   case $build_dir in
@@ -1235,7 +1308,7 @@ for command_line_filename in ${1+"$@"}; do
   esac
   # Remove it at exit if clean mode.
   $clean &&
-    trap "cd / && rm -rf $t2ddir" 0 1 2 15
+    trap "clean" 0 1 2 15
 
   ensure_dir "$build_dir" "$t2ddir"
 
@@ -1261,46 +1334,11 @@ for command_line_filename in ${1+"$@"}; do
   # Make those directories.
   ensure_dir "$work_build" "$work_bak"
 
-  # Source file might include additional sources.
-  # We want `.:$orig_pwd' before anything else.  (We'll add `.:' later
-  # after all other directories have been turned into absolute paths.)
-  # `.' goes first to ensure that any old .aux, .cps,
-  # etc. files in ${directory} don't get used in preference to fresher
-  # files in `.'.  Include orig_pwd in case we are in clean build mode, where
-  # we've cd'd to a temp directory.
-  txincludes=`list_infix includes $path_sep`
-  common="$orig_pwd$path_sep$in_dir$path_sep$txincludes$path_sep"
-  for var in $tex_envvars; do
-    eval val="\$common\$${var}_orig"
-    # Convert relative paths to absolute paths, so we can run in another
-    # directory (e.g., in clean build mode, or during the macro-support
-    # detection).
-    val=`absolute_filenames "$val"`
-    eval $var="$val"
-    eval export $var
-    eval verbose "$var=\'\$${var}\'"
-  done
-
-  # `texinfo' or `latex'?
-  language=`compute_language $command_line_filename`
-
-  # --expand
-  run_makeinfo
-
-  # --command, --texinfo
-  insert_commands
-
-  # --recode
-  run_recode
-
-  # Run until a fix point is reached.
-  run_conversion
+  # Compile the document.
+  compile
 
   # Remove temporary files.
-  if $clean; then
-    verbose "Removing $t2ddir"
-    rm -rf "$t2ddir"
-  fi
+  $clean && clean
 done
 
 verbose "done."
