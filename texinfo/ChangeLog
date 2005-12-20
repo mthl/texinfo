@@ -1,3 +1,7 @@
+2005-12-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (key): DELETE, not DEL, per rms.
+
 2005-12-19  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (run_conversion): Rename as...
