@@ -1,3 +1,22 @@
+2005-12-22  Akim Demaille  <akim@epita.fr>
+
+	Implement --mostly-clean, improve the detection of aux files.
+	* util/texi2dvi ($action): New.
+	(--mostly-clean): New.
+	(cd_orig): New.
+	(generated_files_get, aux_file_p, index_file_p, xref_files_p):
+	New.
+	(get_index_files): Remove, replaced by the previous functions.
+	(get_xref_files): Rename as...
+	(xref_files_get): this.
+	(run_index): Use generated_files_get.
+	(clean): Rename as...
+	(mostly_clean): this.
+	Strengthen.
+	($t2ddir): Try to have a `local' absolute file name, not a fully
+	absolute one to avoid very very long file names.
+	* util/texi2dvi.test: Exercise --mostly-clean.
+
 2005-12-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (key): DELETE, not DEL, per rms.

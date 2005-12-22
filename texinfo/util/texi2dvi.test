@@ -45,7 +45,9 @@ done
 TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi
 # There should only be the DVI and the TEXI file.
 test "`list_files`" = "input.texi output.dvi output.t2d"
-rm -r output.t2d output.dvi
+TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi --mostly-clean
+test "`list_files`" = "input.texi output.dvi"
+rm output.dvi
 
 cp input.texi input2.texi
 
