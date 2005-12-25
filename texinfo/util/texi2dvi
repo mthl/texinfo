@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.69 2005-12-22 15:15:30 akim Exp $
+# $Id: texi2dvi,v 1.70 2005-12-25 19:13:56 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.69 $'
+rcs_revision='$Revision: 1.70 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -63,12 +63,13 @@ the FILE may also be composed of the following simple TeX commands.
 Makeinfo is used to perform Texinfo macro expansion before running TeX
 when needed.
 
-Operation modes:
+General options:
   -b, --batch         no interaction
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
+      --no-line-error do not pass --file-line-error to TeX
   -o, --output=OFILE  leave output in OFILE (implies --clean);
-                      Only one input FILE may be specified in this case
+                      only one input FILE may be specified in this case
   -q, --quiet         no output unless errors (implies --batch)
   -s, --silent        same as --quiet
   -v, --version       display version information and exit successfully
@@ -144,6 +145,7 @@ escape="\\"
 expand=         # t for expansion via makeinfo
 includes=
 line_error=true # Pass --file-line-error to TeX.
+no_line_error=false  # absolutely do not pass --file-line-error to TeX
 oname=          # --output
 out_lang=dvi
 quiet=false     # by default let the tools' message be displayed
@@ -640,9 +642,13 @@ run_tex ()
     ensure_dir "$tex_help_dir"
     tex_help=`cd "$tex_help_dir" >&6 && $tex --help </dev/null 2>&1`
   fi
-  $line_error && case $tex_help in
-    *file-line-error*) cmd="$cmd --file-line-error";;
-  esac
+  if $no_line_error; then :; else
+    # The mk program and perhaps others want to parse TeX's
+    # original error messages.
+    $line_error && case $tex_help in
+      *file-line-error*) cmd="$cmd --file-line-error";;
+    esac
+  fi
 
   # Tell TeX to be batch if requested.
   if $batch; then
@@ -1133,6 +1139,7 @@ while test x"$1" != x"$arg_sep"; do
       ;;
     -l | --lang | --language) shift; set_language=$1;;
     --mostly-clean) action=mostly-clean;;
+    --no-line-error) no_line_error=true;;
     -o | --out  | --output)
       shift
       # Make it absolute, just in case we also have --clean, or whatever.

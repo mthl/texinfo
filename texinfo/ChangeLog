@@ -1,3 +1,10 @@
+2005-12-25  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (no_file_line_error): new control,
+	with option --no-line-error to set it.  Wybo Dekker's mk program
+	wants to parse TeX's original error messages.
+	(run_tex): obey it.
+
 2005-12-22  Akim Demaille  <akim@epita.fr>
 
 	Implement --mostly-clean, improve the detection of aux files.
