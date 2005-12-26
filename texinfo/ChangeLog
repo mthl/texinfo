@@ -1,3 +1,8 @@
+2005-12-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (node, Node Names): pxref Node Line Requirements,
+	about restrictions on characters in node names.
+
 2005-12-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\pdfurl): make @/ a no-op.

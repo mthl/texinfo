@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.152 2005-12-20 22:29:11 karl Exp $
+@c $Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4881,9 +4881,10 @@ subsubsection.
 To create a node, write an @code{@@node} command at the beginning of a
 line, and follow it with up to four arguments, separated by commas, on
 the rest of the same line.  The first argument is required; it is the
-name of this node.  The subsequent arguments are the names of the
-`Next', `Previous', and `Up' pointers, in that order, and may be omitted
-if your Texinfo document is hierarchically organized (@pxref{makeinfo
+name of this node (for details of node names, @pxref{Node Line
+Requirements}).  The subsequent arguments are the names of the `Next',
+`Previous', and `Up' pointers, in that order, and may be omitted if
+your Texinfo document is hierarchically organized (@pxref{makeinfo
 Pointer Creation}).
 
 You may insert spaces before each name if you wish; the spaces are
@@ -4924,8 +4925,9 @@ see @ref{Cross References}.)
 @subsection Choosing Node and Pointer Names
 
 @cindex Node names, choosing
-The name of a node identifies the node.  The pointers enable
-you to reach other nodes and consist simply of the names of those nodes.
+The name of a node identifies the node (for details of node names,
+@pxref{Node Line Requirements}).  The pointers enable you to reach
+other nodes and consist simply of the names of those nodes.
 
 Normally, a node's `Up' pointer contains the name of the node whose menu
 mentions that node.  The node's `Next' pointer contains the name of the
@@ -18594,7 +18596,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.152 2005-12-20 22:29:11 karl Exp $
+$Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18660,7 +18662,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.152 2005-12-20 22:29:11 karl Exp $
+@comment $Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
