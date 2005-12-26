@@ -1,5 +1,8 @@
 2005-12-25  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\pdfurl): make @/ a no-op.
+	Report from Kurt Hornik, 23 Dec 2005 13:17:56 +0100.
+
 	* util/texi2dvi (no_file_line_error): new control,
 	with option --no-line-error to set it.  Wybo Dekker's mk program
 	wants to parse TeX's original error messages.
