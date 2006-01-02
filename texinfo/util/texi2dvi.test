@@ -1,0 +1,57 @@
+#! /bin/sh
+# Copyright (C) 2003, 2005  Free Software Foundation, Inc.
+#
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#
+# GNU Texinfo is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Texinfo; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301, USA.
+
+. ./defs || exit 1
+
+set -e
+
+cat >>input.texi <<EOF
+@bye
+EOF
+
+
+for mode in --clean --build=clean
+do
+  TEXI2DVI_pass $mode --batch input.texi
+  # There should only be the DVI and the TEXI file.
+  test "`list_files`" = "input.dvi input.texi"
+  rm input.dvi
+
+  TEXI2DVI_pass $mode --batch input.texi -o output.dvi
+  # There should only be the DVI and the TEXI file.
+  test "`list_files`" = "input.texi output.dvi"
+  rm output.dvi
+done
+
+
+
+TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi
+# There should only be the DVI and the TEXI file.
+test "`list_files`" = "input.texi output.dvi output.t2d"
+TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi --mostly-clean
+test "`list_files`" = "input.texi output.dvi"
+rm output.dvi
+
+cp input.texi input2.texi
+
+TEXI2DVI_pass --clean --batch input.texi input2.texi
+# There should only be the DVI and the TEXI file.
+test "`list_files`" = "input2.dvi input2.texi input.dvi input.texi"
+rm input.dvi input2.dvi
