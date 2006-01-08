@@ -1,3 +1,14 @@
+2006-01-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\normalturnoffactive): restore setting of
+	active \ to \normalbackslash.
+	(\onepageout): restore call to \normalturnoffactive.
+	Otherwise, if a page break happens at the wrong time, the active
+	\ will result in writing an actual \ character,
+	instead of {\tt \backslashcurfont }.
+	Report from Kurt.Hornik@wu-wien.ac.at, 6 Jan 2006 14:38:38 +0100.
+	[test idxback-exts]
+
 2005-12-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (node, Node Names): pxref Node Line Requirements,
