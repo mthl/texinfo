@@ -1,3 +1,9 @@
+2006-01-08  Loic Minier  <lool@dooz.org>  (tiny change)
+	
+	* info/display.c (display_update_one_window): systematize
+	check as to whether `entry' is non-null before referring to it.
+	Still some segfaults when resizing the window rapidly.
+	
 2006-01-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\normalturnoffactive): restore setting of
