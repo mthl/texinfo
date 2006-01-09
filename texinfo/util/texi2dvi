@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.70 2005-12-25 19:13:56 karl Exp $
+# $Id: texi2dvi,v 1.71 2006-01-09 09:49:23 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+# 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,8 +31,11 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
   && { RUNNING_KSH=true; export RUNNING_KSH; exec /bin/ksh $0 ${1+"$@"}; }
 unset RUNNING_KSH
 
+# No failure shall remain unpunished.
+set -e
+
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.70 $'
+rcs_revision='$Revision: 1.71 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -275,7 +278,9 @@ report ()
 # Report some verbose information.
 verbose ()
 {
-  $verb && echo >&2 "$0: $@"
+  if $verb; then
+    echo >&2 "$0: $@"
+  fi
 }
 
 # fatal EXIT_STATUS LINE1 LINE2...
@@ -409,7 +414,9 @@ absolute_filenames ()
         res=$res$path_sep
         ;;
       *)
-        test -d $dir && res=$res$path_sep`absolute "$dir"`
+        if test -d $dir; then
+	  res=$res$path_sep`absolute "$dir"`
+	fi
         ;;
     esac
   done
@@ -521,7 +528,9 @@ generated_files_get ()
     case $language in
       (texinfo)
         # texindex: texinfo.cp -> texinfo.cps
-	index_file_p $file && echo ${file}s
+	if index_file_p $file; then
+	  echo ${file}s
+	fi
 	;;
       (latex)
 	# bibtex: *.aux -> *.bbl and *.blg.
@@ -551,7 +560,10 @@ xref_files_save ()
   xref_files_orig=`generated_files_get "$in_noext" xref_file_p`
   if test -n "$xref_files_orig"; then
     verbose "Backing up xref files: $xref_files_orig"
-    cp $xref_files_orig "$work_bak"
+    # The following line improves `cp $xref_files_orig "$work_bak"'
+    # by preserving the directory parts.  Think of
+    # cp chap1/main.aux chap2/main.aux $work_bak.
+    tar cf - $xref_files_orig | (cd "$work_bak" && tar xf -)
   fi
 }
 
@@ -566,16 +578,18 @@ xref_files_changed ()
   # subdirs, since texi2dvi does not try to compare xref files in
   # subdirs.  Performing xref files test is still good since LaTeX
   # does not report changes in xref files.
-  grep "Rerun to get" "$in_noext.log" >&6 2>&1 &&
+  if grep "Rerun to get" "$in_noext.log" >&6 2>&1; then
     return 0
+  fi
 
   # If old and new lists don't at least have the same file list,
   # then one file or another has definitely changed.
   xref_files_new=`generated_files_get "$in_noext" xref_file_p`
   verbose "Original xref files = $xref_files_orig"
   verbose "New xref files      = $xref_files_new"
-  test "x$xref_files_orig" != "x$xref_files_new" &&
+  if test "x$xref_files_orig" != "x$xref_files_new"; then
     return 0
+  fi
 
   # Compare each file until we find a difference.
   for this_file in $xref_files_new; do
@@ -583,7 +597,9 @@ xref_files_changed ()
     # cmp -s returns nonzero exit status if files differ.
     if cmp -s "$this_file" "$work_bak/$this_file"; then :; else
       verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
-      $debug && diff -u "$work_bak/$this_file" "$this_file"
+      if $debug; then
+	diff -u "$work_bak/$this_file" "$this_file"
+      fi
       return 0
     fi
   done
@@ -645,8 +661,8 @@ run_tex ()
   if $no_line_error; then :; else
     # The mk program and perhaps others want to parse TeX's
     # original error messages.
-    $line_error && case $tex_help in
-      *file-line-error*) cmd="$cmd --file-line-error";;
+    case $line_error:$tex_help in
+      true:*file-line-error*) cmd="$cmd --file-line-error";;
     esac
   fi
 
@@ -727,8 +743,8 @@ run_bibtex ()
          (grep '^\\bibstyle[{]' "$f"   \
           && grep '^\\bibdata[{]' "$f" \
 	  ## The following line is suspicious: fails when there
-	  ## are citations in sub aux files.  We need to be
-	  ## smarter in this case.
+          ## are citations in sub aux files.  We need to be
+          ## smarter in this case.
           ## && grep '^\\citation[{]' "$f"
 	  ) >&6 2>&1; then
         verbose "Running $bibtex $f ..."
@@ -888,7 +904,9 @@ run_makeinfo ()
         makeinfo=${MAKEINFO:-makeinfo}
       fi
       # As long as we had to run TeX, offer the user this convenience:
-      test "$txiformat" = Texinfo && escape=@
+      if test "$txiformat" = Texinfo; then
+	escape=@
+      fi
     fi
 
     if test -n "$makeinfo"; then
@@ -897,7 +915,7 @@ run_makeinfo ()
       work_src=$workdir/src
       ensure_dir "$work_src"
       in_src=$work_src/$in_base
-      local $miincludes=`list_prefix includes -I`
+      local miincludes=`list_prefix includes -I`
       verbose "Macro-expanding $command_line_filename to $in_src ..."
       sed "$comment_iftex" "$command_line_filename" \
         | $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
@@ -1308,7 +1326,9 @@ input_file_name_decode ()
   in_dir=`func_dirname "$command_line_filename"`
   in_dir_abs=`absolute "$in_dir"`
   # In a clean build, we `cd', so get an absolute file name.
-  $tidy && in_dir=$in_dir_abs
+  if $tidy; then
+    in_dir=$in_dir_abs
+  fi
 
   # Strip directory part but leave extension.
   in_base=`basename "$command_line_filename"`
@@ -1357,8 +1377,9 @@ for command_line_filename in ${1+"$@"}; do
              sed 's,/,!,g'`
   esac
   # Remove it at exit if clean mode.
-  $clean &&
+  if $clean; then
     trap "mostly_clean" 0 1 2 15
+  fi
 
   ensure_dir "$build_dir" "$t2ddir"
 
@@ -1389,7 +1410,9 @@ for command_line_filename in ${1+"$@"}; do
       # Compile the document.
       compile
       # Remove temporary files.
-      $clean && mostly_clean
+      if $clean; then
+	mostly_clean
+      fi
       ;;
 
     mostly-clean)

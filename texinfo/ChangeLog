@@ -1,9 +1,17 @@
+2006-01-09  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: set -e.
+	Stop using the idiom "test && action" in favor of "if test; then
+	action; fi".
+	(xref_files_save): Use tar instead of cp.
+	(run_makeinfo): Fix a "local" use.
+
 2006-01-08  Loic Minier  <lool@dooz.org>  (tiny change)
-	
+
 	* info/display.c (display_update_one_window): systematize
 	check as to whether `entry' is non-null before referring to it.
 	Still some segfaults when resizing the window rapidly.
-	
+
 2006-01-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\normalturnoffactive): restore setting of
