@@ -1,9 +1,9 @@
-$Id: NEWS,v 1.118 2005-09-23 00:05:43 karl Exp $
+$Id: NEWS,v 1.119 2006-01-13 22:12:16 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+  2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -48,7 +48,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . automake 1.9.6, gettext 0.14.5.
   . gettext support now [external].
-  . new translation: rw (Kinyarwandan).
+  . new translations: rw (Kinyarwandan), vi (Vietnamese).
 
 
 4.8 (31 December 2004)
