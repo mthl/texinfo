@@ -1,5 +1,10 @@
 2006-01-15  Karl Berry  <karl@gnu.org>
 
+	* info/infodoc.c (info_internal_help_text): combine messages
+	which are single sentences into one string.
+	Report from Clytie Siddall, via
+	http://sourceforge.net/tracker/index.php?func=detail&aid=1406541&group_id=40033&atid=426818.
+
 	* po/POTFILES.in: add missing makeinfo/xref.c, makeinfo/float.c.
 	Report from Torsten.
 

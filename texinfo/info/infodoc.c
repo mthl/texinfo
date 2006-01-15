@@ -1,7 +1,7 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.9 2005-05-15 00:00:07 karl Exp $
+   $Id: infodoc.c,v 1.10 2006-01-15 23:20:11 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004 Free Software
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -126,12 +126,14 @@ static char *info_internal_help_text[] = {
 ---------------\n"),
   N_("  %-10s  Pick first ... ninth item in node's menu.\n"),
   N_("  %-10s  Pick last item in node's menu.\n"),
-  N_("  %-10s  Search for a specified string in the index entries of this Info\n"),
-  N_("              file, and select the node referenced by the first entry found.\n"),
+  /* This string and the one below are one sentence, so they need to be
+     kept as one string for the translators.  */
+  N_("  %-10s  Search for a specified string in the index entries of this Info\n\
+              file, and select the node referenced by the first entry found.\n"),
   N_("  %-10s  Move to node specified by name.\n"),
   N_("              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
-  N_("  %-10s  Search forward for a specified string,\n"),
-  N_("              and select the node in which the next occurrence is found.\n"),
+  N_("  %-10s  Search forward for a specified string,\n\
+              and select the node in which the next occurrence is found.\n"),
   N_("  %-10s  Search backward for a specified string\n"),
   N_("              and select the node in which the next occurrence is found.\n"),
   NULL
