@@ -31,6 +31,7 @@ lib/system.h
 makeinfo/cmds.c
 makeinfo/defun.c
 makeinfo/files.c
+makeinfo/float.c
 makeinfo/footnote.c
 makeinfo/html.c
 makeinfo/index.c
@@ -43,5 +44,6 @@ makeinfo/node.c
 makeinfo/sectioning.c
 makeinfo/toc.c
 makeinfo/xml.c
+makeinfo/xref.c
 util/install-info.c
 util/texindex.c

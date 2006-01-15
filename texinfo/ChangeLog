@@ -1,3 +1,8 @@
+2006-01-15  Karl Berry  <karl@gnu.org>
+
+	* po/POTFILES.in: add missing makeinfo/xref.c, makeinfo/float.c.
+	Report from Torsten.
+
 2006-01-09  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: set -e.
