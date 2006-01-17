@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.71 2006-01-09 09:49:23 akim Exp $
+# $Id: texi2dvi,v 1.72 2006-01-17 11:29:27 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.71 $'
+rcs_revision='$Revision: 1.72 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -524,6 +524,8 @@ generated_files_get ()
   ) |
   # Depending on these files, infer outputs from other tools.
   while read file; do
+    test -f $file ||
+      continue
     echo $file
     case $language in
       (texinfo)
@@ -543,7 +545,7 @@ generated_files_get ()
   done |
   # Filter existing files matching the criterion.
   while read file; do
-    if test -f $file && $filter $file; then
+    if $filter $file; then
       echo $file
     fi
   done |

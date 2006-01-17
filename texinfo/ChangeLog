@@ -1,3 +1,8 @@
+2006-01-17  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (generated_files_get): Skip nonexistent files
+	earlier.
+
 2006-01-15  Karl Berry  <karl@gnu.org>
 
 	* info/infodoc.c (info_internal_help_text): combine messages
