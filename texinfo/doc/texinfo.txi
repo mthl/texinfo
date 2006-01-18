@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
+@c $Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -38,7 +38,7 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997, 1998,
-1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -6941,7 +6941,6 @@ input, write @kbd{@@key@{SPC@}} for it.)@refill
 
 
 @node key
-@comment  node-name,  next,  previous,  up
 @subsection @code{@@key}@{@var{key-name}@}
 @findex key
 
@@ -6956,11 +6955,12 @@ You can use the @code{@@key} command within the argument of an
 @code{@@kbd} command when the sequence of characters to be typed
 includes one or more keys that are described by name.@refill
 
-@need 700
-For example, to produce @kbd{C-x @key{ESC}} you would type:@refill
+For example, to produce @kbd{C-x @key{ESC}} and @kbd{M-@key{TAB}} you
+would type:
 
 @example
 @@kbd@{C-x @@key@{ESC@}@}
+@@kbd@{M-@@key@{TAB@}@}
 @end example
 
 Here is a list of the recommended names for keys:
@@ -7004,12 +7004,9 @@ to the modifier key in isolation, use the @code{@@key} command.  For
 example, write @samp{@@kbd@{Meta-a@}} to produce @kbd{Meta-a} and
 @samp{@@key@{META@}} to produce @key{META}.
 
-@c I don't think this is a good explanation.
-@c I think it will puzzle readers more than it clarifies matters.  -- rms.
-@c In other words, use @code{@@kbd} for what you do, and use @code{@@key}
-@c for what you talk about: ``Press @code{@@kbd@{M-a@}} to move point to
-@c the beginning of the sentence.  The @code{@@key@{META@}} key is often in
-@c the lower left of the keyboard.''@refill
+As a convention in GNU manuals, @code{@@key} should not be used in
+index entries.
+
 
 @node samp
 @subsection @code{@@samp}@{@var{text}@}
@@ -18002,14 +17999,12 @@ has four types of @@-command:@refill
 
 @table @asis
 @item 1. Non-alphabetic commands.
-These commands consist of an @@ followed by a punctuation mark or other
-character that is not part of the alphabet.  Non-alphabetic commands are
-almost always part of the text within a paragraph, and never take any
-argument.  The two characters (@@ and the other one) are complete in
-themselves; none is followed by braces.  The non-alphabetic commands
-are: @code{@@.}, @code{@@:}, @code{@@*}, @code{@@@kbd{SPACE}},
-@code{@@@kbd{TAB}}, @code{@@@kbd{NL}}, @code{@@@@}, @code{@@@{}, and
-@code{@@@}}.@refill
+These commands consist of an @@ followed by a punctuation mark or
+other character that is not part of the alphabet.  Non-alphabetic
+commands are almost always part of the text within a paragraph.  The
+non-alphabetic commands include @code{@@@@}, @code{@@@{}, @code{@@@}},
+@code{@@.}, @code{@@@kbd{SPACE}}, most of the accent commands, and
+many more.
 
 @item 2. Alphabetic commands that do not require arguments.
 These commands start with @@ followed by a word followed by left- and
@@ -18596,7 +18591,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
+$Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18662,7 +18657,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.153 2005-12-26 22:05:10 karl Exp $
+@comment $Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

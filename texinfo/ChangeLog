@@ -1,3 +1,7 @@
+2006-01-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (key): more examples.
+
 2006-01-18  Akim Demaille  <akim@epita.fr>
 
 	Sometimes the temporary directory remains.
