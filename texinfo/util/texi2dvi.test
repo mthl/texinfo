@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2003, 2005  Free Software Foundation, Inc.
+# Copyright (C) 2003, 2005, 2006  Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -26,32 +26,43 @@ cat >>input.texi <<EOF
 @bye
 EOF
 
+# Testing the local build mode.
+TEXI2DVI_pass --batch input.texi
+# There should only be the DVI and the TEXI file.
+assert_files input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.texi input.tp input.vr
+rm input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.tp input.vr
 
+TEXI2DVI_pass --batch input.texi -o output.dvi
+# There should only be the DVI and the TEXI file.
+assert_files input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.texi input.tp input.vr output.dvi
+rm input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.tp input.vr output.dvi
+
+# Testing the clean build mode.
 for mode in --clean --build=clean
 do
   TEXI2DVI_pass $mode --batch input.texi
   # There should only be the DVI and the TEXI file.
-  test "`list_files`" = "input.dvi input.texi"
+  assert_files input.dvi input.texi
   rm input.dvi
 
   TEXI2DVI_pass $mode --batch input.texi -o output.dvi
   # There should only be the DVI and the TEXI file.
-  test "`list_files`" = "input.texi output.dvi"
+  assert_files input.texi output.dvi
   rm output.dvi
 done
 
 
-
+# Testing the tidy build mode.
 TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi
 # There should only be the DVI and the TEXI file.
-test "`list_files`" = "input.texi output.dvi output.t2d"
+assert_files input.texi output.dvi output.t2d
 TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi --mostly-clean
-test "`list_files`" = "input.texi output.dvi"
+assert_files input.texi output.dvi
 rm output.dvi
 
 cp input.texi input2.texi
 
 TEXI2DVI_pass --clean --batch input.texi input2.texi
 # There should only be the DVI and the TEXI file.
-test "`list_files`" = "input2.dvi input2.texi input.dvi input.texi"
+assert_files input2.dvi input2.texi input.dvi input.texi
 rm input.dvi input2.dvi

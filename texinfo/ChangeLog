@@ -1,3 +1,17 @@
+2006-01-18  Akim Demaille  <akim@epita.fr>
+
+	Sometimes the temporary directory remains.
+	Reported by Wybo Dekker.
+	* util/defs.in (assert_files): New.
+	* util/texi2dvi.test: Use it.
+	Extend to check the local builds.
+	* util/texi2dvi (aux_file_p, index_file_p, xref_file_p): Check
+	that the file exists.
+	(generated_files_get): Simplify according to these changes.
+	(remove, cleanup): New.
+	Use the latter in the cleaning trap.
+	(mostly_clean): Use them.
+
 2006-01-17  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (generated_files_get): Skip nonexistent files

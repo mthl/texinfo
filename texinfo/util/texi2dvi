@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.72 2006-01-17 11:29:27 akim Exp $
+# $Id: texi2dvi,v 1.73 2006-01-18 11:56:04 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.72 $'
+rcs_revision='$Revision: 1.73 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -471,6 +471,7 @@ move_to_dest ()
 # Return with success with FILE is an aux file.
 aux_file_p ()
 {
+  test -f "$1" || return 1
   case $1 in
     *.aux) return 0;;
     *)     return 1;;
@@ -482,6 +483,7 @@ aux_file_p ()
 # Return with success with FILE is an index file.
 index_file_p ()
 {
+  test -f "$1" || return 1
   case `sed '1q' $1` in
     "\\entry{"*|"\\indexentry{"*) return 0;;
     *) return 1;;
@@ -493,6 +495,7 @@ index_file_p ()
 # Return with success if FILE is an xref file (indexes, tables and lists).
 xref_file_p ()
 {
+  test -f "$1" || return 1
   # If the file is not suitable to be an index or xref file, don't
   # process it.  It's suitable if the first character is a
   # backslash or right quote or at, as long as the first line isn't
@@ -524,8 +527,6 @@ generated_files_get ()
   ) |
   # Depending on these files, infer outputs from other tools.
   while read file; do
-    test -f $file ||
-      continue
     echo $file
     case $language in
       (texinfo)
@@ -1094,9 +1095,17 @@ compile ()
 }
 
 
-# mostly_clean ()
-# ---------------
-# Remove auxiliary files and directories.
+# remove FILES
+# ------------
+remove ()
+{
+  verbose "Removing" "$@"
+  rm -rf "$@"
+}
+
+# mostly_clean
+# ------------
+# Remove auxiliary files and directories.  Changes the current directory.
 mostly_clean ()
 {
   cd_orig
@@ -1105,8 +1114,22 @@ mostly_clean ()
     local log=$work_build/$in_noext.log
     to_remove=$to_remove" $log "$(generated_files_get "$work_build/$in_noext")
   }
-  verbose "Removing" $to_remove
-  rm -rf $to_remove
+  remove $to_remove
+}
+
+
+# cleanup ()
+# ----------
+# Remove what should be removed according to options.
+# Called at the end of each compilation cycle, and at the end of
+# the script.  Changes the current directory.
+cleanup ()
+{
+  case $build_mode in
+    local) cd_orig; remove "$t2ddir";;
+    clean) mostly_clean;;
+    tidy)  ;;
+  esac
 }
 
 
@@ -1379,9 +1402,7 @@ for command_line_filename in ${1+"$@"}; do
              sed 's,/,!,g'`
   esac
   # Remove it at exit if clean mode.
-  if $clean; then
-    trap "mostly_clean" 0 1 2 15
-  fi
+  trap "cleanup" 0 1 2 15
 
   ensure_dir "$build_dir" "$t2ddir"
 
@@ -1411,10 +1432,7 @@ for command_line_filename in ${1+"$@"}; do
     compile)
       # Compile the document.
       compile
-      # Remove temporary files.
-      if $clean; then
-	mostly_clean
-      fi
+      cleanup
       ;;
 
     mostly-clean)
