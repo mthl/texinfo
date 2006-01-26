@@ -1,3 +1,9 @@
+2006-01-25  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/lang.c (cm_accent_generic_no_headers): do nothing
+	if end == 0 (accent command in @menu with --no-headers).
+	Report from Akim Demaille, 23 Jan 2006 16:41:38 +0100.
+
 2006-01-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (key): more examples.

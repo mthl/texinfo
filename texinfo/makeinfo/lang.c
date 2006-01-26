@@ -1,8 +1,8 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.16 2005-05-15 00:00:07 karl Exp $
+   $Id: lang.c,v 1.17 2006-01-26 01:06:05 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software
-   Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
+   Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,8 +15,8 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+   along with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
    Originally written by Karl Heinz Marbaise <kama@hippo.fido.de>.  */
 
@@ -791,11 +791,16 @@ cm_accent_generic_html (int arg, int start, int end, char *html_supported,
 }
 
 
+/* If END is zero, there is nothing in the paragraph to accent.  This
+   can happen when we're in a menu with an accent command and
+   --no-headers is given, so the base character is not added.  In this
+   case we're not producing any output anyway, so just forget it.
+   Otherwise, produce the ASCII version of the accented char.  */
 static void
 cm_accent_generic_no_headers (int arg, int start, int end, int single,
     char *html_solo)
 {
-  if (arg == END)
+  if (arg == END && end > 0)
     {
       if (no_encoding)
         add_char (single);
