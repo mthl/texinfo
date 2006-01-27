@@ -1383,6 +1383,8 @@ Footnotes element file name.
 @end table
 @item destination_directory
 Destination directory for the resulting files.
+@item extension
+Extension for the output files.
 @item toc_file
 The file name of the table of contents.
 @item today

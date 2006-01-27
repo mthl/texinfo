@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.155 2006-01-27 16:42:55 pertusus Exp $
+# $Id: texi2html.pl,v 1.156 2006-01-27 21:33:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2652,6 +2652,7 @@ $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
 $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
 $Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
 $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
+$Texi2HTML::THISDOC{'extension'} = $docu_ext;
 # FIXME document that
 $Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
 $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
@@ -2925,11 +2926,14 @@ my $debug;
 my $verbose;
 my $docu_rdir;
 my $docu_name;
+my $docu_ext;
+my $ERROR = '***';
 
 sub init
 {
     $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
     $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
+    $docu_ext = $Texi2HTML::THISDOC{'extension'};
     $l2h_name =  "${docu_name}_l2h";
     $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
     $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
