@@ -62,7 +62,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.154 2005-12-01 08:38:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.155 2006-01-27 16:42:55 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -716,7 +716,6 @@ sub t2h_cross_manual_normal_text($$$$$)
    my $style_stack = shift;
 
    $text = uc($text) if (in_small_caps($style_stack));
-   $text = main::normalise_space($text);
    my $result = '';
    while ($text ne '')
    {
@@ -1490,6 +1489,7 @@ sub cross_manual_line($)
 {
     my $text = shift;
 #print STDERR "cross_manual_line $text\n";
+#print STDERR "remove_texi text ". remove_texi($text)."\n\n\n";
     $simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $style_map_texi_ref = \%cross_ref_style_map_texi;
     $texi_map_ref = \%cross_ref_texi_map;
@@ -1510,7 +1510,7 @@ sub cross_manual_line($)
     $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $texi_map_ref = \%Texi2HTML::Config::texi_map;
-#print STDERR "cross_ref $cross_ref\n";
+#print STDERR "\n\ncross_ref $cross_ref\n";
     return $cross_ref;
 }
 
@@ -2292,8 +2292,8 @@ if (@ARGV > 1)
 $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
-$Texi2HTML::LaTeX2HTML::debug = 0;
-$Texi2HTML::LaTeX2HTML::debug = 1 if ($T2H_DEBUG & $DEBUG_L2H);
+$Texi2HTML::THISDOC{'debug_l2h'} = 0;
+$Texi2HTML::THISDOC{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
 
 #+++############################################################################
@@ -2837,7 +2837,11 @@ my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_c
 foreach my $file (@texinfo_htmlxref_files)
 {
     print STDERR "html refs config file: $file\n" if ($T2H_DEBUG);    
-    open (HTMLXREF, $file);
+    unless (open (HTMLXREF, $file))
+    {
+         warn "Cannot open html refs config file ${file}: $!";
+         next;
+    }
     while (<HTMLXREF>)
     {
         my $line = $_;
@@ -2906,10 +2910,11 @@ use Cwd;
 
 # init l2h defaults for files and names
 
-# variable which shouldn't be global FIXME
+# global variable used for caching
 use vars qw(
-            %l2h_img
+            %l2h_cache
            );
+
 my ($l2h_name, $l2h_latex_file, $l2h_cache_file, $l2h_html_file, $l2h_prefix);
 
 # holds the status of latex2html operations. If 0 it means that there was 
@@ -2917,13 +2922,12 @@ my ($l2h_name, $l2h_latex_file, $l2h_cache_file, $l2h_html_file, $l2h_prefix);
 my $status = 0;
 
 my $debug;
+my $verbose;
 my $docu_rdir;
 my $docu_name;
 
-#if ($Texi2HTML::Config::L2H)
 sub init
 {
-#    $debug = shift;
     $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
     $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
     $l2h_name =  "${docu_name}_l2h";
@@ -2933,15 +2937,17 @@ sub init
     # as dir of enclosing html document --
     $l2h_html_file = "$docu_rdir${l2h_name}.html";
     $l2h_prefix = "${l2h_name}_";
+    $debug = $Texi2HTML::THISDOC{'debug_l2h'};
+    $verbose = $Texi2HTML::Config::VERBOSE;
     $status = init_to_latex();
 }
 
 ##########################
 #
 # First stage: Generation of Latex file
-# Initialize with: l2h_InitToLatex
-# Add content with: l2h_ToLatex($text) --> HTML placeholder comment
-# Finish with: l2h_FinishToLatex
+# Initialize with: init_to_latex
+# Add content with: to_latex ($text) --> HTML placeholder comment
+# Finish with: finish_to_latex
 #
 
 my $l2h_latex_preamble = <<EOT;
@@ -2956,42 +2962,45 @@ my $l2h_latex_closing = <<EOT;
 \\end{document}
 EOT
 
-my %l2h_to_latex = ();
-my @l2h_to_latex = ();
-my $l2h_latex_count = 0;     # number of latex texts really stored
-my $l2h_to_latex_count = 0;  # total number of latex texts processed
-my $l2h_cached_count = 0;    # number of cached latex text
-my %l2h_cache = ();          
+my %l2h_to_latex = ();         # associate a latex text with the index in the
+                               # html result array.
+my @l2h_to_latex = ();         # array used to associate the index with 
+                               # the original latex text.
+my $latex_count = 0;           # number of latex texts really stored
+my $latex_converted_count = 0; # number of latex texts passed through latex2html
+my $to_latex_count = 0;        # total number of latex texts processed
+my $cached_count = 0;          # number of cached latex texts
+%l2h_cache = ();               # the cache hash. Associate latex text with 
+                               # html from the previous run
+my @l2h_from_html;             # array of resulting html
 
-my %global_count = ();
-#$Texi2HTML::Config::L2H = l2h_InitToLatex() if ($Texi2HTML::Config::L2H);
+my %global_count = ();         # associate a command name and the 
+                               # corresponding counter to the index in the
+                               # html result array
 
-# return used latex 1, if l2h could be initalized properly, 0 otherwise
-#sub l2h_InitToLatex
+# return 1, if l2h could be initalized properly, 0 otherwise
 sub init_to_latex()
 {
     unless ($Texi2HTML::Config::L2H_SKIP)
     {
         unless (open(L2H_LATEX, ">$l2h_latex_file"))
         {
-            warn "$ERROR Error l2h: Can't open latex file '$l2h_latex_file' for writing\n";
+            warn "$ERROR l2h: Can't open latex file '$l2h_latex_file' for writing: $!\n";
             return 0;
         }
-        print STDERR "# l2h: use ${l2h_latex_file} as latex file\n" if ($T2H_VERBOSE);
+        warn "# l2h: use ${l2h_latex_file} as latex file\n" if ($verbose);
         print L2H_LATEX $l2h_latex_preamble;
     }
-    # open database for caching
-    #l2h_InitCache();
+    # open the database that holds cached text
     init_cache();
     return  1;
 }
 
 
-# print text (1st arg) into latex file (if not already there), return
-# @tex_$number which can be later on replaced by the latex2html
-# generated text
-#sub l2h_ToLatex
-sub to_latex
+# print text (2nd arg) into latex file (if not already there nor in cache)
+# which can be later on replaced by the latex2html generated text.
+# 
+sub to_latex($$$)
 {
     my $command = shift;
     my $text = shift;
@@ -3004,57 +3013,58 @@ sub to_latex
     {
         $text = "\$".$text."\$";
     }
-    $l2h_to_latex_count++;
+    $to_latex_count++;
     $text =~ s/(\s*)$//;
-    # try whether we can cache it
-    #my $cached_text = l2h_FromCache($text);
-    my $cached_text = from_cache($text);
-    if ($cached_text)
-    {
-        $l2h_cached_count++;
-        return $cached_text;
-    }
     # try whether we have text already on things to do
     my $count = $l2h_to_latex{$text};
     unless ($count)
     {
-        $count = $l2h_latex_count;
-        $l2h_latex_count++;
-        $l2h_to_latex{$text} = $count;
-        $l2h_to_latex[$count] = $text;
-        unless ($Texi2HTML::Config::L2H_SKIP)
+        $latex_count++;
+        $count = $latex_count;
+        # try whether we can get it from cache
+        my $cached_text = from_cache($text);
+        if (defined($cached_text))
         {
-            print L2H_LATEX "\\begin{rawhtml}\n";
-            print L2H_LATEX "<!-- l2h_begin ${l2h_name} ${count} -->\n";
-            print L2H_LATEX "\\end{rawhtml}\n";
-
-            print L2H_LATEX "$text\n";
-
-            print L2H_LATEX "\\begin{rawhtml}\n";
-            print L2H_LATEX "<!-- l2h_end ${l2h_name} ${count} -->\n";
-            print L2H_LATEX "\\end{rawhtml}\n";
+             $cached_count++;
+             # put the cached result in the html result array
+             $l2h_from_html[$count] = $cached_text;
         }
+        else
+        {
+             $latex_converted_count++;
+             unless ($Texi2HTML::Config::L2H_SKIP)
+             {
+                 print L2H_LATEX "\\begin{rawhtml}\n";
+                 print L2H_LATEX "<!-- l2h_begin $l2h_name $count -->\n";
+                 print L2H_LATEX "\\end{rawhtml}\n";
+
+                 print L2H_LATEX "$text\n";
+
+                 print L2H_LATEX "\\begin{rawhtml}\n";
+                 print L2H_LATEX "<!-- l2h_end $l2h_name $count -->\n";
+                 print L2H_LATEX "\\end{rawhtml}\n";
+            }
+        }
+        $l2h_to_latex[$count] = $text;
+        $l2h_to_latex{$text} = $count;
     }
     $global_count{"${command}_$counter"} = $count; 
-    #return "\@tex_${count} ";
     return 1;
 }
 
 # print closing into latex file and close it
-#sub l2h_FinishToLatex
 sub finish_to_latex()
 {
-    my ($reused);
-    $reused = $l2h_to_latex_count - $l2h_latex_count - $l2h_cached_count;
+    my $reused = $to_latex_count - $latex_converted_count - $cached_count;
     unless ($Texi2HTML::Config::L2H_SKIP)
     {
         print L2H_LATEX $l2h_latex_closing;
-        close(L2H_LATEX);
+        close (L2H_LATEX);
     }
-    print STDERR "# l2h: finished to latex ($l2h_cached_count cached, $reused reused, $l2h_latex_count contents)\n" if ($T2H_VERBOSE);
-    unless ($l2h_latex_count)
+    warn "# l2h: finished to latex ($cached_count cached, $reused reused, $latex_converted_count to process)\n" if ($verbose);
+    unless ($latex_count)
     {
-        #l2h_Finish();
+        # no @tex nor @math
         finish();
         return 0;
     }
@@ -3064,19 +3074,20 @@ sub finish_to_latex()
 ###################################
 # Second stage: Use latex2html to generate corresponding html code and images
 #
-# l2h_ToHtml([$l2h_latex_file, [$l2h_html_dir]]):
+# to_html([$l2h_latex_file, [$l2h_html_dir]]):
 #   Call latex2html on $l2h_latex_file
 #   Put images (prefixed with $l2h_name."_") and html file(s) in $l2h_html_dir
 #   Return 1, on success
 #          0, otherwise
 #
-#sub l2h_ToHtml
 sub to_html()
 {
     my ($call, $dotbug);
-    if ($Texi2HTML::Config::L2H_SKIP)
+    # when there are no tex constructs to convert (happens in case everything
+    # comes from the cache), there is no latex2html run
+    if ($Texi2HTML::Config::L2H_SKIP or ($latex_converted_count == 0))
     {
-        print STDERR "# l2h: skipping latex2html run\n" if ($T2H_VERBOSE);
+        warn "# l2h: skipping latex2html run\n" if ($verbose);
         return 1;
     }
     # Check for dot in directory where dvips will work
@@ -3106,93 +3117,238 @@ sub to_html()
     # set output dir
     $call .=  ($docu_rdir ? " -dir $docu_rdir" : " -no_subdir");
     # use l2h_tmp, if specified
-    $call = $call . " -tmp $Texi2HTML::Config::L2H_TMP" if ($Texi2HTML::Config::L2H_TMP);
+    $call .= " -tmp $Texi2HTML::Config::L2H_TMP" if ($Texi2HTML::Config::L2H_TMP);
     # use a given html version if specified
-    $call = $call . " -html_version $Texi2HTML::Config::L2H_HTML_VERSION" if ($Texi2HTML::Config::L2H_HTML_VERSION);
+    $call .= " -html_version $Texi2HTML::Config::L2H_HTML_VERSION" if ($Texi2HTML::Config::L2H_HTML_VERSION);
     # options we want to be sure of
-    $call = $call ." -address 0 -info 0 -split 0 -no_navigation -no_auto_link";
-    $call = $call ." -prefix ${l2h_prefix} $l2h_latex_file";
+    $call .= " -address 0 -info 0 -split 0 -no_navigation -no_auto_link";
+    $call .= " -prefix $l2h_prefix $l2h_latex_file";
 
-    print STDERR "# l2h: executing '$call'\n" if ($Texi2HTML::Config::VERBOSE);
+    warn "# l2h: executing '$call'\n" if ($verbose);
     if (system($call))
     {
-        warn "l2h ***Error: '${call}' did not succeed\n";
+        warn "$ERROR l2h: '${call}' did not succeed\n";
         return 0;
     }
     else
     {
-        print STDERR "# l2h: latex2html finished successfully\n" if ($Texi2HTML::Config::VERBOSE);
+        warn "# l2h: latex2html finished successfully\n" if ($verbose);
         return 1;
     }
 }
 
 ##########################
 # Third stage: Extract generated contents from latex2html run
-# Initialize with: l2h_InitFromHtml
+# Initialize with: init_from_html
 #   open $l2h_html_file for reading
 #   reads in contents into array indexed by numbers
 #   return 1,  on success -- 0, otherwise
-# Extract Html code with: l2h_FromHtml($text)
-#   replaces in $text all previosuly inserted comments by generated html code
-#   returns (possibly changed) $text
-# Finish with: l2h_FinishFromHtml
+# Finish with: finish
 #   closes $l2h_html_dir/$l2h_name.".$docu_ext"
 
-my $l2h_extract_error = 0;
-my $l2h_range_error = 0;
-my @l2h_from_html;
+# the images generated by latex2html have names like ${docu_name}_l2h_img?.png
+# they are copied to ${docu_name}_?.png, and html is changed accordingly.
+my %l2h_img;            # associate src file to destination file
+                        # such that files are not copied twice
+my $image_count = 1;
+sub change_image_file_names($)
+{
+    my $content = shift;
+    my @images = ($content =~ /SRC="(.*?)"/g);
+    my ($src, $dest);
 
-#sub l2h_InitFromHtml()
+    for $src (@images)
+    {
+        $dest = $l2h_img{$src};
+        unless ($dest)
+        {
+            my $ext = '';
+            if ($src =~ /.*\.(.*)$/ && $1 ne $docu_ext)
+            {
+                $ext = ".$1";
+            }
+            else
+            {
+                warn "$ERROR: L2h image $src has invalid extension\n";
+                next;
+            }
+            while (-e "$docu_rdir${docu_name}_${image_count}$ext")
+            {
+                $image_count++;
+            }
+            $dest = "${docu_name}_${image_count}$ext";
+# FIXME this isn't portable. + error condition not checked.
+            system("cp -f $docu_rdir$src $docu_rdir$dest");
+            $l2h_img{$src} = $dest;
+# FIXME error condition not checked
+            unlink "$docu_rdir$src" unless ($debug);
+        }
+        $content =~ s/SRC="$src"/SRC="$dest"/g;
+    }
+    return $content;
+}
+
+my $extract_error_count = 0;
+my $invalid_counter_count = 0;
+
 sub init_from_html()
 {
-    local(%l2h_img);
-    my ($count, $h_line);
-
-    if (! open(L2H_HTML, "<${l2h_html_file}"))
+    # when there are no tex constructs to convert (happens in case everything
+    # comes from the cache), the html file that was generated by previous
+    # latex2html runs isn't reused.
+    if ($latex_converted_count == 0)
     {
-        print STDERR "$ERROR Error l2h: Can't open ${l2h_html_file} for reading\n";
+        return 1;
+    }
+
+    if (! open(L2H_HTML, "<$l2h_html_file"))
+    {
+        warn "$ERROR l2h: Can't open $l2h_html_file for reading\n";
         return 0;
     }
-    print STDERR "# l2h: use ${l2h_html_file} as html file\n" if ($T2H_VERBOSE);
+    warn "# l2h: use $l2h_html_file as html file\n" if ($verbose);
 
-    my $l2h_html_count = 0;
+    my $html_converted_count = 0;   # number of html resulting texts 
+                                    # retrieved in the file
+
+    my ($count, $h_line);
     while ($h_line = <L2H_HTML>)
     {
         if ($h_line =~ /^<!-- l2h_begin $l2h_name ([0-9]+) -->/)
         {
             $count = $1;
-            my $h_content = "";
+            my $h_content = '';
+            my $h_end_found = 0;
             while ($h_line = <L2H_HTML>)
             {
                 if ($h_line =~ /^<!-- l2h_end $l2h_name $count -->/)
                 {
+                    $h_end_found = 1;
                     chomp $h_content;
                     chomp $h_content;
-                    $l2h_html_count++;
-                    #$h_content = l2h_ToCache($count, $h_content);
-                    $h_content = to_cache($count, $h_content);
+                    $html_converted_count++;
+                    # transform image file names and copy image files
+                    $h_content = change_image_file_names($h_content);
+                    # store result in the html result array
                     $l2h_from_html[$count] = $h_content;
-                    $h_content = '';
+                    # also add the result in cache hash
+                    $l2h_cache{$l2h_to_latex[$count]} = $h_content;
                     last;
                 }
                 $h_content = $h_content.$h_line;
             }
-            if ($h_content)
-            {
-                print STDERR "$ERROR Warning l2h: l2h_end $l2h_name $count not found\n"
-                    if ($Texi2HTML::Config::VERBOSE);
+            unless ($h_end_found)
+            { # couldn't found the closing comment. Certainly  a bug.
+                warn "$ERROR l2h(BUG): l2h_end $l2h_name $count not found\n";
                 close(L2H_HTML);
                 return 0;
             }
         }
     }
-    print STDERR "# l2h: Got $l2h_html_count of $l2h_latex_count html contents\n"
-        if ($Texi2HTML::Config::VERBOSE);
+
+    # Not the same number of converted elements and retrieved elements
+    if ($latex_converted_count != $html_converted_count)
+    {
+        warn "$ERROR l2h(BUG): waiting for $latex_converted_count elements found $html_converted_count\n";
+    }
+
+    warn "# l2h: Got $html_converted_count of $latex_count html contents\n"
+        if ($verbose);
 
     close(L2H_HTML);
     return 1;
 }
 
+my $html_output_count = 0;   # html text outputed in html result file
+
+# called each time a construct handled by latex2html is encountered, should
+# output the corresponding html
+sub do_tex($$$$)
+{
+    my $style = shift;
+    my $counter = shift;
+    my $count = $global_count{"${style}_$counter"}; 
+    # begin debug section (incorrect counts)
+    if (!defined($count))
+    {
+         # counter is undefined
+         $invalid_counter_count++;
+         warn "$ERROR l2h(BUG): undefined count for ${style}_$counter\n";
+         return ("<!-- l2h: ". __LINE__ . " undef count for ${style}_$counter -->")
+                if ($debug);
+         return '';
+    }
+    elsif(($count <= 0) or ($count > $latex_count))
+    {
+        # counter out of range
+        $invalid_counter_count++;
+        warn "$ERROR l2h(BUG): Request of $count content which is out of valide range [0,$latex_count)\n";
+         return ("<!-- l2h: ". __LINE__ . " out of range count $count -->") 
+                if ($debug);
+         return '';
+    }
+    # end debug section (incorrect counts)
+
+    # this seems to be a valid counter
+    my $result = '';
+    $result = "<!-- l2h_begin $l2h_name $count -->" if ($debug);
+    if (defined($l2h_from_html[$count]))
+    {
+         $html_output_count++;
+         $result .= $l2h_from_html[$count];
+    } 
+    else
+    {
+    # if the result is not in @l2h_from_html, there is an error somewhere.
+        $extract_error_count++;
+        warn "$ERROR l2h(BUG): can't extract content $count from html\n";
+        # try simple (ordinary) substitution (without l2h)
+        $result .= "<!-- l2h: ". __LINE__ . " use texi2html -->" if ($debug);
+        $result .= main::substitute_text({}, $l2h_to_latex[$count]);
+    }
+    $result .= "<!-- l2h_end $l2h_name $count -->" if ($debug);
+    return $result;
+}
+
+# store results in the cache and remove temporary files.
+sub finish()
+{
+    return unless($status);
+    if ($verbose)
+    {
+        if ($extract_error_count + $invalid_counter_count)
+        {
+            warn "# l2h: finished from html ($extract_error_count extract and $invalid_counter_count invalid counter errors)\n";
+        }
+        else
+        {
+            warn "# l2h: finished from html (no error)\n";
+        }
+        if ($html_output_count != $latex_converted_count)
+        { # this may happen if @-commands are collected at some places
+          # but @-command at those places are not expanded later. For 
+          # example @math on @multitable lines.
+             warn "# l2h: $html_output_count html outputed for $latex_converted_count converted\n";
+        }
+    }
+    store_cache();
+    if ($Texi2HTML::Config::L2H_CLEAN)
+    {
+        local ($_);
+        warn "# l2h: removing temporary files generated by l2h extension\n"
+            if $verbose;
+        while (<"$docu_rdir$l2h_name"*>)
+        {
+# FIXME error condition not checked
+            unlink $_;
+        }
+    }
+    warn "# l2h: Finished\n" if $verbose;
+    return 1;
+}
+
+# the driver of end of first pass, second pass and beginning of third pass
+#
 sub latex2html()
 {
     return unless($status);
@@ -3201,123 +3357,6 @@ sub latex2html()
     return unless ($status = init_from_html());
 }
 
-# FIXME used ??
-#sub l2h_FromHtml($)
-sub from_html($)
-{
-    my($text) = @_;
-    my($done, $to_do, $count);
-    $to_do = $text;
-    $done = '';
-    while ($to_do =~ /([^\000]*)<!-- l2h_replace $l2h_name ([0-9]+) -->([^\000]*)/)
-    {
-        $to_do = $1;
-        $count = $2;
-        $done = $3.$done;
-        $done = "<!-- l2h_end $l2h_name $count -->".$done
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-
-        #$done = l2h_ExtractFromHtml($count) . $done;
-        $done = extract_from_html($count) . $done;
-
-        $done = "<!-- l2h_begin $l2h_name $count -->".$done
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-    }
-    return $to_do.$done;
-}
-
-sub do_tex($$$$)
-{
-    my $style = shift;
-    my $counter = shift;
-    my $count = $global_count{"${style}_$counter"}; 
-    my $result = '';
-    $result = "<!-- l2h_begin $l2h_name $count -->"
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-    $result .= extract_from_html($count);
-    $result .= "<!-- l2h_end $l2h_name $count -->"
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-    return $result;
-}
-
-#sub l2h_ExtractFromHtml($)
-sub extract_from_html($)
-{
-    my $count = shift;
-    return $l2h_from_html[$count] if ($l2h_from_html[$count]);
-    if ($count >= 0 && $count < $l2h_latex_count)
-    {
-        # now we are in trouble
-        my $line;
-        $l2h_extract_error++;
-        print STDERR "$ERROR l2h: can't extract content $count from html\n"
-            if ($T2H_VERBOSE);
-        # try simple (ordinary) substition (without l2h)
-        #my $l_l2h = $Texi2HTML::Config::L2H;
-        $Texi2HTML::Config::L2H = 0;
-        my $l_l2h = $status;
-        $status = 0;
-        $line = $l2h_to_latex{$count};
-        $line = main::substitute_text({}, $line);
-        $line = "<!-- l2h: ". __LINE__ . " use texi2html -->" . $line
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-        #$Texi2HTML::Config::L2H = $l_l2h;
-        $status = $l_l2h;
-        return $line;
-    }
-    else
-    {
-        # now we have been incorrectly called
-        $l2h_range_error++;
-        print STDERR "$ERROR l2h: Request of $count content which is out of valide range [0,$l2h_latex_count)\n";
-        return "<!-- l2h: ". __LINE__ . " out of range count $count -->"
-            #if ($T2H_DEBUG & $DEBUG_L2H);
-            if ($debug);
-        return "<!-- l2h: out of range count $count -->";
-    }
-}
-
-#sub l2h_FinishFromHtml()
-sub finish_from_html()
-{
-    if ($Texi2HTML::Config::VERBOSE)
-    {
-        if ($l2h_extract_error + $l2h_range_error)
-        {
-            print STDERR "# l2h: finished from html ($l2h_extract_error extract and $l2h_range_error errors)\n";
-        }
-        else
-        {
-            print STDERR "# l2h: finished from html (no errors)\n";
-        }
-    }
-}
-
-#sub l2h_Finish()
-sub finish()
-{
-    return unless($status);
-    finish_from_html();
-    #l2h_StoreCache();
-    store_cache();
-    if ($Texi2HTML::Config::L2H_CLEAN)
-    {
-        local ($_);
-        print STDERR "# l2h: removing temporary files generated by l2h extension\n"
-            if $Texi2HTML::Config::VERBOSE;
-        while (<"$docu_rdir$l2h_name"*>)
-        {
-            unlink $_;
-        }
-    }
-    print STDERR "# l2h: Finished\n" if $Texi2HTML::Config::VERBOSE;
-    return 1;
-}
 
 ##############################
 # stuff for l2h caching
@@ -3325,7 +3364,6 @@ sub finish()
 
 # I tried doing this with a dbm data base, but it did not store all
 # keys/values. Hence, I did as latex2html does it
-#sub l2h_InitCache
 sub init_cache
 {
     if (-r "$l2h_cache_file")
@@ -3336,12 +3374,16 @@ sub init_cache
     }
 }
 
-#sub l2h_StoreCache
+# store all the text obtained through latex2html
 sub store_cache
 {
-    return unless $l2h_latex_count;
+    return unless $latex_count;
     my ($key, $value);
-    open(FH, ">$l2h_cache_file") || return warn"$ERROR l2h Error: could not open $docu_rdir$l2h_cache_file for writing: $!\n";
+    unless (open(FH, ">$l2h_cache_file"))
+    { 
+        warn "$ERROR l2h Error: could not open $docu_rdir$l2h_cache_file for writing: $!\n";
+        return;
+    }
     while (($key, $value) = each %l2h_cache)
     {
         # escape stuff
@@ -3357,17 +3399,16 @@ sub store_cache
         print FH "\$l2h_cache{\$l2h_cache_key} = q|$value|;\n";
     }
     print FH "1;";
-    close(FH);
+    close (FH);
 }
 
 # return cached html, if it exists for text, and if all pictures
 # are there, as well
-#sub l2h_FromCache
-sub from_cache
+sub from_cache($)
 {
     my $text = shift;
     my $cached = $l2h_cache{$text};
-    if ($cached)
+    if (defined($cached))
     {
         while ($cached =~ m/SRC="(.*?)"/g)
         {
@@ -3381,48 +3422,6 @@ sub from_cache
     return undef;
 }
 
-# insert generated html into cache, move away images,
-# return transformed html
-my $maximage = 1;
-#sub l2h_ToCache($$)
-sub to_cache($$)
-{
-    my $count = shift;
-    my $content = shift;
-    my @images = ($content =~ /SRC="(.*?)"/g);
-    my ($src, $dest);
-
-    for $src (@images)
-    {
-        $dest = $l2h_img{$src};
-        unless ($dest)
-        {
-            my $ext;
-            if ($src =~ /.*\.(.*)$/ && $1 ne $docu_ext)
-            {
-                $ext = $1;
-            }
-            else
-            {
-                warn "$ERROR: L2h image $src has invalid extension\n";
-                next;
-            }
-            while (-e "$docu_rdir${docu_name}_$maximage"
-	    	      . ($ext ? ".$ext" : ""))
-            {
-                $maximage++;
-            }
-            $dest = "${docu_name}_$maximage" . ($ext ? ".$ext" : "");
-            system("cp -f $docu_rdir$src $docu_rdir$dest");
-            $l2h_img{$src} = $dest;
-            #unlink "$docu_rdir$src" unless ($T2H_DEBUG & $DEBUG_L2H);
-            unlink "$docu_rdir$src" unless ($debug);
-        }
-        $content =~ s/$src/$dest/g;
-    }
-    $l2h_cache{$l2h_to_latex[$count]} = $content;
-    return $content;
-}
 
 }
 
@@ -5721,7 +5720,8 @@ sub do_names()
     {
         my $section = $sections{$number};
         $section->{'name'} = substitute_line($section->{'texi'});
-        # FIXME the user should be able to give a raw texinfo himself
+        # FIXME the user should be able to give a raw texinfo himself for
+        # section number formatting
         $section->{'text'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " . $section->{'name'};
         $section->{'text'} =~ s/^\s*//;
         $section->{'no_texi'} = $section->{'number'} . " " .remove_texi($section->{'texi'});
@@ -5742,6 +5742,7 @@ sub do_names()
         {
             my $page = $element->{'page'};
             # FIXME the user should be able to give a raw texinfo himself
+            # for additionnal index page section title
             my $letter_raw =  ($page->{'first_letter'} ne $page->{'last_letter'} ? 
                 "$page->{'first_letter'} -- $page->{'last_letter'}" :
                 "$page->{'first_letter'}");
@@ -7087,12 +7088,6 @@ sub normalise_node($)
     return $text;
 }
 
-sub do_math($;$)
-{
-    #return Texi2HTML::LaTeX2HTML::to_latex("\$".$_[0]."\$");
-    return Texi2HTML::LaTeX2HTML::to_latex('math',$_[0]);
-}
-
 sub do_anchor_label($$$$)
 {
     my $command = shift;
@@ -8259,7 +8254,8 @@ sub do_image($$$$)
     {
          $file_name = "$base.$args[4]";
     }
-    # FIXME there should instead be a list of file extension to search for.
+    # FIXME there should instead be a list of file extension to search for,
+    # set by the user.
     elsif ($image = locate_include_file("$base.png"))
     {
          $file_name = "$base.png";
@@ -9651,11 +9647,6 @@ sub scan_structure($$$$;$)
                             $state->{'place'} = $state->{'footnote_place'};
                         }
                     }
-                    #elsif ($style->{'style'} eq 'math' and $Texi2HTML::Config::L2H)
-                    #{
-                    #    add_prev ($text, $stack, do_math($style->{'text'}));
-                    #    next;
-                    #}
                     elsif ($style->{'style'} eq 'caption' or $style->{'style'}
 eq 'shortcaption' and $state->{'float'})
                     {
@@ -10314,11 +10305,6 @@ sub scan_line($$$$;$)
             }
             # the following macros are not modified but just ignored 
             # if we are removing texi
-#            if ($macro =~ /^tex_(\d+)$/o)
-#            {
-#                add_prev($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
-#                next;
-#            }
             if ($state->{'remove_texi'})
             {
                  if ((($macro =~ /^(\w+?)index$/) and ($1 ne 'print')) or 

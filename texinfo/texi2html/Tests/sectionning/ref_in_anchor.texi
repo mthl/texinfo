@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename double_top
+@setfilename ref_in_anchor
 
 @node Top
 Top node

@@ -78,6 +78,16 @@ In the example
 
 * @m_cedilla appears in output with --macro-expand. That's a bug.
 
+* currently the following leads to an error:
+
+@menu
+* @strong{node}::
+@end menu
+
+@node node
+
+Is it a bug or a feature?
+
 * in chm.init (Jose Fonseca)
 
 [WINDOWS]

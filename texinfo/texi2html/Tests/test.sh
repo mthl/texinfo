@@ -177,6 +177,7 @@ test_texi macros expansion_order.texi
 test_texi macros ifclear_in_macro.texi
 test_texi macros macro_call_in_ifset.texi
 test_texi macros ifset_in_macro.texi
+test_texi macros ifset_in_macro.texi "-D notes -prefix set_ifset_in_macro" 0 texi set_ifset_in_macro
 test_texi macros not_ifset_text.texi
 test_texi macros bib-example.texi
 test_texi sectionning
@@ -249,6 +250,7 @@ test_texi formatting nested_ignore.texi
 test_texi formatting test_refs.texi "-init cross_manual.init"
 test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
 test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
+test_texi formatting at_commands_in_refs.texi
 test_texi texi2html 
 test_texi viper_monolithic viper.texi "-ifinfo"
 test_texi viper viper.texi "-split chapter -ifinfo -output ."
