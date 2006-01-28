@@ -26,9 +26,8 @@
 #    02110-1301  USA
 #
 #-##############################################################################
-
-# This requires perl version 5 or higher
-#require 5.0;
+# The man page for this program is included at the end of this file and can be
+# viewed using the command 'nroff -man texi2html'.
 
 # for POSIX::setlocale and File::Spec
 require 5.00405;
@@ -49,20 +48,17 @@ use File::Spec;
 # Perl pragma to control optional warnings
 # use warnings;
 
-# Declarations. Empty lines separate the different classes of variables:
-
-
-#++##############################################################################
+#++##########################################################################
 #
 # NOTE FOR DEBUGGING THIS SCRIPT:
 # You can run 'perl texi2html.pl' directly, provided you have
 # the environment variable T2H_HOME set to the directory containing
 # the texi2html.init file
 #
-#--##############################################################################
+#--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.156 2006-01-27 21:33:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.157 2006-01-28 22:02:26 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -80,6 +76,12 @@ EOT
 # Version: set in configure.in
 my $THISVERSION = '@PACKAGE_VERSION@';
 my $THISPROG = "texi2html $THISVERSION"; # program name and version
+
+#+++########################################################################
+#                                                                          #
+# Paths and file names                                                     #
+#                                                                          #
+#---########################################################################
 
 # set by configure, prefix for the sysconfdir and so on
 my $prefix = '@prefix@';
@@ -109,14 +111,29 @@ else
     $pkgdatadir = "/usr/local/share/texi2html";
     $datadir = "/usr/local/share";
 }
-# The man page for this program is included at the end of this file and can be
-# viewed using the command 'nroff -man texi2html'.
 
-#+++############################################################################
-#                                                                              #
-# Constants                                                                    #
-#                                                                              #
-#---############################################################################
+my $i18n_dir = 'i18n'; # name of the directory containing the per language files
+my $conf_file_name = 'Config' ;
+my $texinfo_htmlxref = 'htmlxref.cnf';
+
+# directories for texi2html init files
+my @texi2html_config_dirs = ('./');
+push @texi2html_config_dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
+push @texi2html_config_dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
+push @texi2html_config_dirs, "$pkgdatadir" if (defined($pkgdatadir));
+
+# directories for texinfo configuration files
+my @texinfo_config_dirs = ('./.texinfo/');
+push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
+push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
+push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
+
+
+#+++########################################################################
+#                                                                          #
+# Constants                                                                #
+#                                                                          #
+#---########################################################################
 
 my $DEBUG_MENU   =  1;
 my $DEBUG_INDEX =  2;
@@ -136,32 +153,14 @@ my $NODERE = '[^:]+';             # RE for node names
 my $MAX_LEVEL = 4;
 my $MIN_LEVEL = 1;
 
-my $i18n_dir = 'i18n'; # name of the directory containing the per language files
-my $conf_file_name = 'Config' ;
-my $texinfo_htmlxref = 'htmlxref.cnf';
-
-# directories for texi2html init files
-my @texi2html_config_dirs = ('./');
-push @texi2html_config_dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
-push @texi2html_config_dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
-push @texi2html_config_dirs, "$pkgdatadir" if (defined($pkgdatadir));
-
-# directories for texinfo configuration files
-my @texinfo_config_dirs = ('./.texinfo/');
-push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
-push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
-push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
-
-#+++############################################################################
-#                                                                              #
-# Initialization                                                               #
-# Pasted content of File $(srcdir)/texi2html.init: Default initializations     #
-#                                                                              #
-#---############################################################################
-
-# leave this within comments, and keep the require statement
-# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/texi2html.init
-# exists.
+#+++###########################################################################
+#                                                                             #
+# Initialization                                                              #
+# Some declarations, some functions that are GPL and therefore cannot be in   #
+# texi2html.init, some functions that are not to be customized.               #
+# Pasted content of File $(srcdir)/texi2html.init: Default initializations    #
+#                                                                             #
+#---###########################################################################
 
 {
 package Texi2HTML::Config;
@@ -448,19 +447,23 @@ $complex_format_map
 %command_handler
 );
 
+# needed in this namespace for translations
 $I = \&Texi2HTML::I18n::get_string;
+
+#
+# Function refs covered by the GPL as part of the texi2html.pl original
+# code. As such they cannot appear in texi2html.init which is public 
+# domain (at least the things coded by me, and, if I'm not wrong also the 
+# things coded by Olaf -- Pat).
+#
 
 $toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
-#$normal_text              = \&t2h_gpl_normal_text;
 
 sub T2H_GPL_toc_body($)
 {
     my $elements_list = shift;
-#    my $do_contents = shift;
-#    my $do_scontents = shift;
-    #return unless ($do_contents or $do_scontents or $FRAMES);
     return unless ($DO_CONTENTS or $DO_SCONTENTS or $FRAMES);
     my $current_level = 0;
     my $ul_style = $NUMBER_SECTIONS ? $TOC_LIST_ATTRIBUTE : ''; 
@@ -510,14 +513,12 @@ sub T2H_GPL_toc_body($)
         my $ind = '  ' x $current_level;
         push(@{$Texi2HTML::TOC_LINES}, "</li>\n$ind</ul>\n");
     }
-    #@{$Texi2HTML::TOC_LINES} = () unless ($do_contents);
     @{$Texi2HTML::TOC_LINES} = () unless ($DO_CONTENTS);
     if (@{$Texi2HTML::TOC_LINES})
     {
         unshift @{$Texi2HTML::TOC_LINES}, $BEFORE_TOC_LINES;
         push @{$Texi2HTML::TOC_LINES}, $AFTER_TOC_LINES;
     }
-    #@{$Texi2HTML::OVERVIEW} = () unless ($do_scontents or $FRAMES);
     @{$Texi2HTML::OVERVIEW} = () unless ($DO_SCONTENTS or $FRAMES);
     if (@{$Texi2HTML::OVERVIEW})
     {
@@ -628,14 +629,10 @@ sub T2H_GPL_format($$$)
     return "<${element}$attribute_text>\n" . $text. "</$element>\n";
 }
 
-#sub t2h_gpl_normal_text($)
-#{
-#    my $text = shift;
-#    $text =~ s/``/"/go;
-#    $text =~ s/''/"/go;
-#    $text =~ s/-(--?)/$1/go;
-#    return $text;
-#}
+# leave this within comments, and keep the require statement
+# This way, you can directly run texi2html.pl, if 
+# $ENV{T2H_HOME}/texi2html.init exists.
+
 # @INIT@
 
 require "$ENV{T2H_HOME}/texi2html.init" 
@@ -644,26 +641,40 @@ require "$ENV{T2H_HOME}/texi2html.init"
 
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
+
+# leave this within comments, and keep the require statement
+# This way, you can directly run texi2html.pl, 
+# if $ENV{T2H_HOME}/translations.pl exists.
+#
+# @T2H_TRANSLATIONS_FILE@
+
 require "$ENV{T2H_HOME}/$translation_file"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
 
-# @T2H_TRANSLATIONS_FILE@
-my $index_name = -1;
-my @index_to_hash = ('style_map', 'style_map_pre', 'style_map_texi');
+# set the default 'args' entry to normal for each style hash (and each command
+# within)
+my $name_index = -1;
+my @hash_names = ('style_map', 'style_map_pre', 'style_map_texi', 'simple_format_style_map_texi');
 foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%simple_format_style_map_texi)
 {
-    $index_name++;
-    my $name = $index_to_hash[$index_name];
+    $name_index++;
+    my $name = $hash_names[$name_index]; # name associated with hash ref
     foreach my $style (keys(%{$hash}))
     {
          next unless (ref($hash->{$style}) eq 'HASH');
          $hash->{$style}->{'args'} = ['normal'] if (!exists($hash->{$style}->{'args'}));
-         die "Bug: args not defined for $style in $name" if (!defined($hash->{$style}->{'args'}));
+         die "Bug: args not defined, but existing, for $style in $name" if (!defined($hash->{$style}->{'args'}));
 #print STDERR "DEFAULT($name, $hash) add normal as arg for $style ($hash->{$style}), $hash->{$style}->{'args'}\n";
     }
 }
 
+#
+# Some functions used to override normal formatting functions in specific 
+# cases. The user shouldn't want to change them, but can use them.
+#
+
+# used to utf8 encode the result
 sub t2h_utf8_accent($$$)
 {
     my $accent = shift;
@@ -672,8 +683,10 @@ sub t2h_utf8_accent($$$)
   
     my $text = $args->[0];
     #print STDERR "$accent\[".scalar(@$style_stack) ."\] (@$style_stack)\n"; 
+
+    # special handling of @dotless{i}
     if ($accent eq 'dotless')
-    { # \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
+    { 
         if (($text eq 'i') and (!defined($style_stack->[-1]) or (!defined($unicode_accents{$style_stack->[-1]})) or ($style_stack->[-1] eq 'tieaccent')))
         {
              return "\x{0131}";
@@ -682,6 +695,7 @@ sub t2h_utf8_accent($$$)
         return $text;
     }
         
+    # FIXME \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
     return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritical{$accent}))) 
         if (defined($unicode_diacritical{$accent}));
     return ascii_accents($text, $accent);
@@ -707,6 +721,8 @@ sub t2h_utf8_normal_text($$$$$)
     return $text;
 }
 
+# these are unlikely to be used by users, as they are essentially
+# used to follow the html external refs specification in texinfo
 sub t2h_cross_manual_normal_text($$$$$)
 {
    my $text = shift;
@@ -773,9 +789,6 @@ use vars qw(
 %value
 );
 
-# This is deprecated
-#our %user_sub;
-
 # variables which might be redefined by the user but aren't likely to be  
 # they seem to be in the main namespace
 use vars qw(
@@ -808,12 +821,12 @@ require "$ENV{T2H_HOME}/MySimple.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/MySimple.pm" && -r "$ENV{T2H_HOME}/MySimple.pm");
 
-#+++############################################################################
-#                                                                              #
-# Initialization                                                               #
-# Pasted content of File $(srcdir)/T2h_i18n.pm: Internationalisation           #
-#                                                                              #
-#---############################################################################
+#+++########################################################################
+#                                                                          #
+# Initialization                                                           #
+# Pasted content of File $(srcdir)/T2h_i18n.pm: Internationalisation       #
+#                                                                          #
+#---########################################################################
 
 # leave this within comments, and keep the require statement
 # This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/T2h_i18n.pm
@@ -824,6 +837,26 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
+
+#########################################################################
+#
+# latex2html stuff
+#
+#---######################################################################
+
+{
+# leave this within comments, and keep the require statement
+# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/T2h_l2h.pm
+# exists.
+
+# @T2H_L2H@
+
+
+require "$ENV{T2H_HOME}/T2h_l2h.pm"
+    if ($0 =~ /\.pl$/ &&
+        -e "$ENV{T2H_HOME}/T2h_l2h.pm" && -r "$ENV{T2H_HOME}/T2h_l2h.pm");
+
+}
 
 {
 package Texi2HTML::LaTeX2HTML::Config;
@@ -960,16 +993,6 @@ my %no_paragraph_macro = (
            'anchor'       => 1,
 );
 
-
-#foreach my $command (keys(%Texi2HTML::Config::style_map))
-#{
-#    next unless (ref($style_map_ref->{$command}) eq 'HASH');
-#    print STDERR "CMD: $command\n";
-#    die "Bug: no args for $command in style_map\n" unless defined($style_map_ref->{$command}->{'args'});
-#    die "Bug: no args for $command in style_map_pre\n" unless defined($style_map_pre_ref->{$command}->{'args'});
-#    die "Bug: non existence of args for $command in style_map_texi\n" unless (exists($style_map_texi_ref->{$command}->{'args'}));
-#    die "Bug: no args for $command in style_map_texi\n" unless defined($style_map_texi_ref->{$command}->{'args'});
-#}
 
 #
 # texinfo section names to level
@@ -1140,6 +1163,7 @@ foreach my $key (keys(%fake_format))
 
 # A hash associating style @-comand with the type, 'accent', real 'style',
 # 'simple' style, or 'special'.
+# 'simple' styles don't extend accross lines.
 my %style_type = (); 
 foreach my $style (keys(%Texi2HTML::Config::style_map))
 {
@@ -1189,8 +1213,6 @@ my %text_macros = (
      'ifset' => 'value' 
      );
     
-
-
 foreach my $key (keys(%text_macros))
 {
     unless ($text_macros{$key} eq 'raw')
@@ -1375,6 +1397,7 @@ sub set_encoding($)
     }
 }
 
+# setup hashes used for html manual cross references in texinfo
 my %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
 my %cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
 my %cross_ref_style_map_texi = ();
@@ -1393,8 +1416,8 @@ foreach my $command (keys(%Texi2HTML::Config::style_map_texi))
 $cross_ref_simple_map_texi{"\n"} = ' ';
 
 
-# This function is used to construct a link name from a node name as 
-# described in the proposal I posted on texinfo-pretest.
+# This function is used to construct link names from node names as
+# specified for texinfo
 sub cross_manual_links($$)
 {
     my $nodes_hash = shift;
@@ -1485,6 +1508,8 @@ sub unicode_to_protected($)
     return $result;
 }
 
+# This function is used to construct a link name from a node name as
+# specified for texinfo
 sub cross_manual_line($)
 {
     my $text = shift;
@@ -1633,46 +1658,6 @@ $T2H_OPTIONS -> {'ifplaintext'} =
  verbose => "expand ifplaintext sections",
 };
 
-#$T2H_OPTIONS -> {'no-ifhtml'} =
-#{
-# type => '!',
-# linkage => sub { set_expansion('html', (! $_[1])); },
-# verbose => "don't expand ifhtml and html sections",
-# noHelp => 1,
-#};
-
-#$T2H_OPTIONS -> {'no-ifinfo'} =
-#{
-# type => '!',
-# linkage => sub { set_expansion('info', (! $_[1])); },
-# verbose => "don't expand ifinfo",
-# noHelp => 1,
-#};
-
-#$T2H_OPTIONS -> {'no-ifxml'} =
-#{
-# type => '!',
-# linkage => sub { set_expansion('xml', (! $_[1])); },
-# verbose => "don't expand ifxml and xml sections",
-# noHelp => 1,
-#};
-
-#$T2H_OPTIONS -> {'no-iftex'} =
-#{
-# type => '!',
-# linkage => sub { set_expansion('tex', (! $_[1])); },
-# verbose => "don't expand iftex and tex sections",
-# noHelp => 1,
-#};
-
-#$T2H_OPTIONS -> {'no-ifplaintext'} =
-#{
-# type => '!',
-# linkage => sub { set_expansion('plaintext', (! $_[1])); },
-# verbose => "don't expand ifplaintext sections",
-# noHelp => 1,
-#};
-
 $T2H_OPTIONS -> {'invisible'} =
 {
  type => '=s',
@@ -1717,7 +1702,6 @@ $T2H_OPTIONS -> {'top-file'} =
  verbose => 'use $s as top file, instead of <docname>.html',
 };
 
-
 $T2H_OPTIONS -> {'toc-file'} =
 {
  type => '=s',
@@ -1740,28 +1724,12 @@ $T2H_OPTIONS -> {'menu'} =
  verbose => 'output Texinfo menus',
 };
 
-#$T2H_OPTIONS -> {'no-menu'} =
-#{
-# type => '!',
-# linkage => sub { $Texi2HTML::Config::SHOW_MENU = (! $_[1]);},
-# verbose => "don't output Texinfo menus",
-# noHelp => 1,
-#};
-
 $T2H_OPTIONS -> {'number'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
  verbose => 'use numbered sections',
 };
-
-#$T2H_OPTIONS -> {'no-number'} =
-#{
-# type => '!',
-# linkage => sub { $Texi2HTML::Config::NUMBER_SECTIONS = (! $_[1]);}, 
-# verbose => 'sections not numbered',
-# noHelp => 1,
-#};
 
 $T2H_OPTIONS -> {'use-nodes'} =
 {
@@ -2094,7 +2062,6 @@ $T2H_OBSOLETE_OPTIONS -> {glossary} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::USE_GLOSSARY,
-# verbose => "if set, uses section named `Footnotes' for glossary",
  verbose => "this does nothing",
  noHelp  => 2,
 };
@@ -2184,7 +2151,7 @@ $T2H_OBSOLETE_OPTIONS -> {output_file} =
 {
  type => '=s',
  linkage => sub {$Texi2HTML::Config::OUT = $_[1]; $Texi2HTML::Config::SPLIT = '';},
- verbose => 'obsolete, use -out_file instead',
+ verbose => 'obsolete, use --out-file instead',
  noHelp => 2
 };
 
@@ -2192,7 +2159,7 @@ $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
- verbose => 'obsolete, use -sec_nav instead',
+ verbose => 'obsolete, use --sec-nav instead',
  noHelp => 2,
 };
 
@@ -2205,7 +2172,7 @@ $T2H_OBSOLETE_OPTIONS -> {verbose} =
 };
 
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc
-# obsolete.
+# (this is obsolete)
 my @rc_files = ();
 push @rc_files, "$sysconfdir/texi2htmlrc" if defined($sysconfdir);
 push @rc_files, "$ENV{'HOME'}/.texi2htmlrc" if (defined($ENV{HOME}));
@@ -2223,7 +2190,7 @@ foreach my $i (@rc_files)
 # read initialization files
 foreach my $file (locate_init_file($conf_file_name, 1))
 {
-	print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
+    print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
     Texi2HTML::Config::load($file);
 }
 
@@ -2409,7 +2376,7 @@ foreach my $key (keys(%cross_ref_style_map_texi))
 }
 
 #
-# file name buisness
+# file name business
 #
 
 
@@ -2589,40 +2556,39 @@ if ($Texi2HTML::Config::SPLIT)
     # very rare circumstances. This won't be fixed, the new scheme will be used
     # soon.
     $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
-#    $docu_top  .= ".$docu_ext" if $docu_ext;
 
     if (defined $Texi2HTML::Config::element_file_name)
     {
-	$docu_toc = &$Texi2HTML::Config::element_file_name
-			(undef, "toc", $docu_name);
-	$docu_stoc = &$Texi2HTML::Config::element_file_name
-			(undef, "stoc", $docu_name);
-	$docu_foot = &$Texi2HTML::Config::element_file_name
-			(undef, "foot", $docu_name);
-	$docu_about = &$Texi2HTML::Config::element_file_name
-			(undef, "about", $docu_name);
-	# $docu_top is handled later.
+        $docu_toc = &$Texi2HTML::Config::element_file_name
+            (undef, "toc", $docu_name);
+        $docu_stoc = &$Texi2HTML::Config::element_file_name
+            (undef, "stoc", $docu_name);
+        $docu_foot = &$Texi2HTML::Config::element_file_name
+            (undef, "foot", $docu_name);
+        $docu_about = &$Texi2HTML::Config::element_file_name
+            (undef, "about", $docu_name);
+	# $docu_top may be overwritten later.
     }
     if (!defined($docu_toc))
     {
         my $default_toc = "${docu_name}_toc";
-        $default_toc .= ".$docu_ext" if $docu_ext;
+        $default_toc .= ".$docu_ext" if (defined($docu_ext));
         $docu_toc   = $Texi2HTML::Config::TOC_FILE || $default_toc;
     }
     if (!defined($docu_stoc))
     {
         $docu_stoc  = "${docu_name}_ovr";
-        $docu_stoc .= ".$docu_ext" if $docu_ext;
+        $docu_stoc .= ".$docu_ext" if (defined($docu_ext));
     }
     if (!defined($docu_foot))
     {
         $docu_foot  = "${docu_name}_fot";
-        $docu_foot .= ".$docu_ext" if $docu_ext;
+        $docu_foot .= ".$docu_ext" if (defined($docu_ext));
     }
     if (!defined($docu_about))
     {
         $docu_about = "${docu_name}_abt";
-        $docu_about .= ".$docu_ext" if $docu_ext;
+        $docu_about .= ".$docu_ext" if (defined($docu_ext));
     }
 }
 else
@@ -2634,16 +2600,13 @@ else
     }
     if (defined $Texi2HTML::Config::element_file_name)
     {
-	$docu_doc = &$Texi2HTML::Config::element_file_name
-			(undef, "doc", $docu_name);
+        $docu_doc = &$Texi2HTML::Config::element_file_name
+           (undef, "doc", $docu_name);
     }
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
 
 # Note that file extension has already been added here.
-# don't use that anymore, only for the user to pass a top/toc file name  
-#$Texi2HTML::Config::TOP_FILE = $docu_top;
-#$Texi2HTML::Config::TOC_FILE = $docu_toc;
 
 # For use in init files
 $Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
@@ -2893,541 +2856,6 @@ if ($T2H_DEBUG)
 }
 
 print STDERR "# reading from $docu\n" if $T2H_VERBOSE;
-
-{
-
-package Texi2HTML::LaTeX2HTML;
-use Cwd;
-
-#########################################################################
-#
-# latex2html stuff
-#
-# latex2html conversions consist of three stages:
-# 1) ToLatex: Put "latex" code into a latex file
-# 2) ToHtml: Use latex2html to generate corresponding html code and images
-# 3) FromHtml: Extract generated code and images from latex2html run
-#
-
-# init l2h defaults for files and names
-
-# global variable used for caching
-use vars qw(
-            %l2h_cache
-           );
-
-my ($l2h_name, $l2h_latex_file, $l2h_cache_file, $l2h_html_file, $l2h_prefix);
-
-# holds the status of latex2html operations. If 0 it means that there was 
-# an error
-my $status = 0;
-
-my $debug;
-my $verbose;
-my $docu_rdir;
-my $docu_name;
-my $docu_ext;
-my $ERROR = '***';
-
-sub init
-{
-    $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
-    $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
-    $docu_ext = $Texi2HTML::THISDOC{'extension'};
-    $l2h_name =  "${docu_name}_l2h";
-    $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
-    $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
-    # destination dir -- generated images are put there, should be the same
-    # as dir of enclosing html document --
-    $l2h_html_file = "$docu_rdir${l2h_name}.html";
-    $l2h_prefix = "${l2h_name}_";
-    $debug = $Texi2HTML::THISDOC{'debug_l2h'};
-    $verbose = $Texi2HTML::Config::VERBOSE;
-    $status = init_to_latex();
-}
-
-##########################
-#
-# First stage: Generation of Latex file
-# Initialize with: init_to_latex
-# Add content with: to_latex ($text) --> HTML placeholder comment
-# Finish with: finish_to_latex
-#
-
-my $l2h_latex_preamble = <<EOT;
-% This document was automatically generated by the l2h extenstion of texi2html
-% DO NOT EDIT !!!
-\\documentclass{article}
-\\usepackage{html}
-\\begin{document}
-EOT
-
-my $l2h_latex_closing = <<EOT;
-\\end{document}
-EOT
-
-my %l2h_to_latex = ();         # associate a latex text with the index in the
-                               # html result array.
-my @l2h_to_latex = ();         # array used to associate the index with 
-                               # the original latex text.
-my $latex_count = 0;           # number of latex texts really stored
-my $latex_converted_count = 0; # number of latex texts passed through latex2html
-my $to_latex_count = 0;        # total number of latex texts processed
-my $cached_count = 0;          # number of cached latex texts
-%l2h_cache = ();               # the cache hash. Associate latex text with 
-                               # html from the previous run
-my @l2h_from_html;             # array of resulting html
-
-my %global_count = ();         # associate a command name and the 
-                               # corresponding counter to the index in the
-                               # html result array
-
-# return 1, if l2h could be initalized properly, 0 otherwise
-sub init_to_latex()
-{
-    unless ($Texi2HTML::Config::L2H_SKIP)
-    {
-        unless (open(L2H_LATEX, ">$l2h_latex_file"))
-        {
-            warn "$ERROR l2h: Can't open latex file '$l2h_latex_file' for writing: $!\n";
-            return 0;
-        }
-        warn "# l2h: use ${l2h_latex_file} as latex file\n" if ($verbose);
-        print L2H_LATEX $l2h_latex_preamble;
-    }
-    # open the database that holds cached text
-    init_cache();
-    return  1;
-}
-
-
-# print text (2nd arg) into latex file (if not already there nor in cache)
-# which can be later on replaced by the latex2html generated text.
-# 
-sub to_latex($$$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $counter = shift;
-    if ($command eq 'tex')
-    {
-        $text .= ' ';
-    }
-    elsif ($command eq 'math') 
-    {
-        $text = "\$".$text."\$";
-    }
-    $to_latex_count++;
-    $text =~ s/(\s*)$//;
-    # try whether we have text already on things to do
-    my $count = $l2h_to_latex{$text};
-    unless ($count)
-    {
-        $latex_count++;
-        $count = $latex_count;
-        # try whether we can get it from cache
-        my $cached_text = from_cache($text);
-        if (defined($cached_text))
-        {
-             $cached_count++;
-             # put the cached result in the html result array
-             $l2h_from_html[$count] = $cached_text;
-        }
-        else
-        {
-             $latex_converted_count++;
-             unless ($Texi2HTML::Config::L2H_SKIP)
-             {
-                 print L2H_LATEX "\\begin{rawhtml}\n";
-                 print L2H_LATEX "<!-- l2h_begin $l2h_name $count -->\n";
-                 print L2H_LATEX "\\end{rawhtml}\n";
-
-                 print L2H_LATEX "$text\n";
-
-                 print L2H_LATEX "\\begin{rawhtml}\n";
-                 print L2H_LATEX "<!-- l2h_end $l2h_name $count -->\n";
-                 print L2H_LATEX "\\end{rawhtml}\n";
-            }
-        }
-        $l2h_to_latex[$count] = $text;
-        $l2h_to_latex{$text} = $count;
-    }
-    $global_count{"${command}_$counter"} = $count; 
-    return 1;
-}
-
-# print closing into latex file and close it
-sub finish_to_latex()
-{
-    my $reused = $to_latex_count - $latex_converted_count - $cached_count;
-    unless ($Texi2HTML::Config::L2H_SKIP)
-    {
-        print L2H_LATEX $l2h_latex_closing;
-        close (L2H_LATEX);
-    }
-    warn "# l2h: finished to latex ($cached_count cached, $reused reused, $latex_converted_count to process)\n" if ($verbose);
-    unless ($latex_count)
-    {
-        # no @tex nor @math
-        finish();
-        return 0;
-    }
-    return 1;
-}
-
-###################################
-# Second stage: Use latex2html to generate corresponding html code and images
-#
-# to_html([$l2h_latex_file, [$l2h_html_dir]]):
-#   Call latex2html on $l2h_latex_file
-#   Put images (prefixed with $l2h_name."_") and html file(s) in $l2h_html_dir
-#   Return 1, on success
-#          0, otherwise
-#
-sub to_html()
-{
-    my ($call, $dotbug);
-    # when there are no tex constructs to convert (happens in case everything
-    # comes from the cache), there is no latex2html run
-    if ($Texi2HTML::Config::L2H_SKIP or ($latex_converted_count == 0))
-    {
-        warn "# l2h: skipping latex2html run\n" if ($verbose);
-        return 1;
-    }
-    # Check for dot in directory where dvips will work
-    if ($Texi2HTML::Config::L2H_TMP)
-    {
-        if ($Texi2HTML::Config::L2H_TMP =~ /\./)
-        {
-            warn "$ERROR Warning l2h: l2h_tmp dir contains a dot. Use /tmp, instead\n";
-            $dotbug = 1;
-        }
-    }
-    else
-    {
-        if (cwd() =~ /\./)
-        {
-            warn "$ERROR Warning l2h: current dir contains a dot. Use /tmp as l2h_tmp dir \n";
-            $dotbug = 1;
-        }
-    }
-    # fix it, if necessary and hope that it works
-    $Texi2HTML::Config::L2H_TMP = "/tmp" if ($dotbug);
-
-    $call = $Texi2HTML::Config::L2H_L2H;
-    # use init file, if specified
-    my $init_file = main::locate_init_file($Texi2HTML::Config::L2H_FILE);
-    $call = $call . " -init_file " . $init_file if ($init_file);
-    # set output dir
-    $call .=  ($docu_rdir ? " -dir $docu_rdir" : " -no_subdir");
-    # use l2h_tmp, if specified
-    $call .= " -tmp $Texi2HTML::Config::L2H_TMP" if ($Texi2HTML::Config::L2H_TMP);
-    # use a given html version if specified
-    $call .= " -html_version $Texi2HTML::Config::L2H_HTML_VERSION" if ($Texi2HTML::Config::L2H_HTML_VERSION);
-    # options we want to be sure of
-    $call .= " -address 0 -info 0 -split 0 -no_navigation -no_auto_link";
-    $call .= " -prefix $l2h_prefix $l2h_latex_file";
-
-    warn "# l2h: executing '$call'\n" if ($verbose);
-    if (system($call))
-    {
-        warn "$ERROR l2h: '${call}' did not succeed\n";
-        return 0;
-    }
-    else
-    {
-        warn "# l2h: latex2html finished successfully\n" if ($verbose);
-        return 1;
-    }
-}
-
-##########################
-# Third stage: Extract generated contents from latex2html run
-# Initialize with: init_from_html
-#   open $l2h_html_file for reading
-#   reads in contents into array indexed by numbers
-#   return 1,  on success -- 0, otherwise
-# Finish with: finish
-#   closes $l2h_html_dir/$l2h_name.".$docu_ext"
-
-# the images generated by latex2html have names like ${docu_name}_l2h_img?.png
-# they are copied to ${docu_name}_?.png, and html is changed accordingly.
-my %l2h_img;            # associate src file to destination file
-                        # such that files are not copied twice
-my $image_count = 1;
-sub change_image_file_names($)
-{
-    my $content = shift;
-    my @images = ($content =~ /SRC="(.*?)"/g);
-    my ($src, $dest);
-
-    for $src (@images)
-    {
-        $dest = $l2h_img{$src};
-        unless ($dest)
-        {
-            my $ext = '';
-            if ($src =~ /.*\.(.*)$/ && $1 ne $docu_ext)
-            {
-                $ext = ".$1";
-            }
-            else
-            {
-                warn "$ERROR: L2h image $src has invalid extension\n";
-                next;
-            }
-            while (-e "$docu_rdir${docu_name}_${image_count}$ext")
-            {
-                $image_count++;
-            }
-            $dest = "${docu_name}_${image_count}$ext";
-# FIXME this isn't portable. + error condition not checked.
-            system("cp -f $docu_rdir$src $docu_rdir$dest");
-            $l2h_img{$src} = $dest;
-# FIXME error condition not checked
-            unlink "$docu_rdir$src" unless ($debug);
-        }
-        $content =~ s/SRC="$src"/SRC="$dest"/g;
-    }
-    return $content;
-}
-
-my $extract_error_count = 0;
-my $invalid_counter_count = 0;
-
-sub init_from_html()
-{
-    # when there are no tex constructs to convert (happens in case everything
-    # comes from the cache), the html file that was generated by previous
-    # latex2html runs isn't reused.
-    if ($latex_converted_count == 0)
-    {
-        return 1;
-    }
-
-    if (! open(L2H_HTML, "<$l2h_html_file"))
-    {
-        warn "$ERROR l2h: Can't open $l2h_html_file for reading\n";
-        return 0;
-    }
-    warn "# l2h: use $l2h_html_file as html file\n" if ($verbose);
-
-    my $html_converted_count = 0;   # number of html resulting texts 
-                                    # retrieved in the file
-
-    my ($count, $h_line);
-    while ($h_line = <L2H_HTML>)
-    {
-        if ($h_line =~ /^<!-- l2h_begin $l2h_name ([0-9]+) -->/)
-        {
-            $count = $1;
-            my $h_content = '';
-            my $h_end_found = 0;
-            while ($h_line = <L2H_HTML>)
-            {
-                if ($h_line =~ /^<!-- l2h_end $l2h_name $count -->/)
-                {
-                    $h_end_found = 1;
-                    chomp $h_content;
-                    chomp $h_content;
-                    $html_converted_count++;
-                    # transform image file names and copy image files
-                    $h_content = change_image_file_names($h_content);
-                    # store result in the html result array
-                    $l2h_from_html[$count] = $h_content;
-                    # also add the result in cache hash
-                    $l2h_cache{$l2h_to_latex[$count]} = $h_content;
-                    last;
-                }
-                $h_content = $h_content.$h_line;
-            }
-            unless ($h_end_found)
-            { # couldn't found the closing comment. Certainly  a bug.
-                warn "$ERROR l2h(BUG): l2h_end $l2h_name $count not found\n";
-                close(L2H_HTML);
-                return 0;
-            }
-        }
-    }
-
-    # Not the same number of converted elements and retrieved elements
-    if ($latex_converted_count != $html_converted_count)
-    {
-        warn "$ERROR l2h(BUG): waiting for $latex_converted_count elements found $html_converted_count\n";
-    }
-
-    warn "# l2h: Got $html_converted_count of $latex_count html contents\n"
-        if ($verbose);
-
-    close(L2H_HTML);
-    return 1;
-}
-
-my $html_output_count = 0;   # html text outputed in html result file
-
-# called each time a construct handled by latex2html is encountered, should
-# output the corresponding html
-sub do_tex($$$$)
-{
-    my $style = shift;
-    my $counter = shift;
-    my $count = $global_count{"${style}_$counter"}; 
-    # begin debug section (incorrect counts)
-    if (!defined($count))
-    {
-         # counter is undefined
-         $invalid_counter_count++;
-         warn "$ERROR l2h(BUG): undefined count for ${style}_$counter\n";
-         return ("<!-- l2h: ". __LINE__ . " undef count for ${style}_$counter -->")
-                if ($debug);
-         return '';
-    }
-    elsif(($count <= 0) or ($count > $latex_count))
-    {
-        # counter out of range
-        $invalid_counter_count++;
-        warn "$ERROR l2h(BUG): Request of $count content which is out of valide range [0,$latex_count)\n";
-         return ("<!-- l2h: ". __LINE__ . " out of range count $count -->") 
-                if ($debug);
-         return '';
-    }
-    # end debug section (incorrect counts)
-
-    # this seems to be a valid counter
-    my $result = '';
-    $result = "<!-- l2h_begin $l2h_name $count -->" if ($debug);
-    if (defined($l2h_from_html[$count]))
-    {
-         $html_output_count++;
-         $result .= $l2h_from_html[$count];
-    } 
-    else
-    {
-    # if the result is not in @l2h_from_html, there is an error somewhere.
-        $extract_error_count++;
-        warn "$ERROR l2h(BUG): can't extract content $count from html\n";
-        # try simple (ordinary) substitution (without l2h)
-        $result .= "<!-- l2h: ". __LINE__ . " use texi2html -->" if ($debug);
-        $result .= main::substitute_text({}, $l2h_to_latex[$count]);
-    }
-    $result .= "<!-- l2h_end $l2h_name $count -->" if ($debug);
-    return $result;
-}
-
-# store results in the cache and remove temporary files.
-sub finish()
-{
-    return unless($status);
-    if ($verbose)
-    {
-        if ($extract_error_count + $invalid_counter_count)
-        {
-            warn "# l2h: finished from html ($extract_error_count extract and $invalid_counter_count invalid counter errors)\n";
-        }
-        else
-        {
-            warn "# l2h: finished from html (no error)\n";
-        }
-        if ($html_output_count != $latex_converted_count)
-        { # this may happen if @-commands are collected at some places
-          # but @-command at those places are not expanded later. For 
-          # example @math on @multitable lines.
-             warn "# l2h: $html_output_count html outputed for $latex_converted_count converted\n";
-        }
-    }
-    store_cache();
-    if ($Texi2HTML::Config::L2H_CLEAN)
-    {
-        local ($_);
-        warn "# l2h: removing temporary files generated by l2h extension\n"
-            if $verbose;
-        while (<"$docu_rdir$l2h_name"*>)
-        {
-# FIXME error condition not checked
-            unlink $_;
-        }
-    }
-    warn "# l2h: Finished\n" if $verbose;
-    return 1;
-}
-
-# the driver of end of first pass, second pass and beginning of third pass
-#
-sub latex2html()
-{
-    return unless($status);
-    return unless ($status = finish_to_latex());
-    return unless ($status = to_html());
-    return unless ($status = init_from_html());
-}
-
-
-##############################
-# stuff for l2h caching
-#
-
-# I tried doing this with a dbm data base, but it did not store all
-# keys/values. Hence, I did as latex2html does it
-sub init_cache
-{
-    if (-r "$l2h_cache_file")
-    {
-        my $rdo = do "$l2h_cache_file";
-        warn("$ERROR l2h Error: could not load $docu_rdir$l2h_cache_file: $@\n")
-            unless ($rdo);
-    }
-}
-
-# store all the text obtained through latex2html
-sub store_cache
-{
-    return unless $latex_count;
-    my ($key, $value);
-    unless (open(FH, ">$l2h_cache_file"))
-    { 
-        warn "$ERROR l2h Error: could not open $docu_rdir$l2h_cache_file for writing: $!\n";
-        return;
-    }
-    while (($key, $value) = each %l2h_cache)
-    {
-        # escape stuff
-        $key =~ s|/|\\/|g;
-        $key =~ s|\\\\/|\\/|g;
-        # weird, a \ at the end of the key results in an error
-        # maybe this also broke the dbm database stuff
-        $key =~ s|\\$|\\\\|;
-        $value =~ s/\|/\\\|/go;
-        $value =~ s/\\\\\|/\\\|/go;
-        $value =~ s|\\\\|\\\\\\\\|g;
-        print FH "\n\$l2h_cache_key = q/$key/;\n";
-        print FH "\$l2h_cache{\$l2h_cache_key} = q|$value|;\n";
-    }
-    print FH "1;";
-    close (FH);
-}
-
-# return cached html, if it exists for text, and if all pictures
-# are there, as well
-sub from_cache($)
-{
-    my $text = shift;
-    my $cached = $l2h_cache{$text};
-    if (defined($cached))
-    {
-        while ($cached =~ m/SRC="(.*?)"/g)
-        {
-            unless (-e "$docu_rdir$1")
-            {
-                return undef;
-            }
-        }
-        return $cached;
-    }
-    return undef;
-}
-
-
-}
 
 #+++###########################################################################
 #                                                                             #
@@ -4368,9 +3796,7 @@ sub menu_entry_texi($$$)
         $nodes{$node} = $node_menu_ref;
         $node_menu_ref->{'texi'} = $node;
         $node_menu_ref->{'external_node'} = 1 if ($node =~ /\(.+\)/);
-# or $novalidate);
     }
-    #$node_menu_ref->{'menu_node'} = 1;
     return if ($state->{'detailmenu'});
     if ($state->{'node_ref'})
     {
@@ -4380,7 +3806,6 @@ sub menu_entry_texi($$$)
     else
     {
         echo_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
-        #warn "$WARN menu entry without previous node: $node\n" unless ($node =~ /\(.+\)/);
     }
     if ($state->{'prev_menu_node'})
     {

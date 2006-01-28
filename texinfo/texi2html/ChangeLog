@@ -1,3 +1,8 @@
+2006-01-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl,Makefile.am,buildt2h.sh: move latex2html stuff
+	out of texi2html.pl, to T2h_l2h.pm.
+
 2006-01-27  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't remove spaces around @-commands in xhtml

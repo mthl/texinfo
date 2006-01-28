@@ -26,6 +26,8 @@ This file records noteworthy changes.
   to do things similar that what is done for interfacing with LaTeX2HTML
   or tex4ht.
 
+* LaTeX2HTML stuff is moved out of texi2html.pl, to T2h_l2h.pm.
+
 * Add $USER and $DATE variables to override the defaults detected for the
   footer.
 

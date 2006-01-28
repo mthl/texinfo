@@ -174,7 +174,8 @@ texi2html_additional_scripts = \
 	T2h_i18n.pm \
 	texi2html.init \
 	translations.pl \
-	l2h.init
+	l2h.init \
+	T2h_l2h.pm
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 noinst_SCRIPTS = manage_i18n.pl buildt2h.sh
@@ -787,7 +788,8 @@ uninstall-info: uninstall-info-recursive
 #	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
 #	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
 #	    -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
-#	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" $< >$@
+#	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" \
+#	    -e "/@T2H_L2H@/r $(srcdir)/T2h_l2h.pm" $< >$@
 #	chmod a+x $@
 texi2html: $(texi2html_sources)
 	$(srcdir)/buildt2h.sh $@ $^ 
