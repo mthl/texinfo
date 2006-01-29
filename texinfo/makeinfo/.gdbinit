@@ -242,3 +242,7 @@ set args -E - $ttests/mac-idx2.tex -o /dev/null
 
 # old-style anchor names
 set args --html --force -o - --no-split $ttests/nodestar.tex
+
+# lang.c:806: cm_accent_generic_no_headers: Assertion `end > 0' failed.
+# so do nothing when end == 0, we're ignoring anywya.
+set args --no-headers accents-in-menu.texi
