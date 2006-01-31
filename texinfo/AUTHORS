@@ -1,29 +1,30 @@
-$Id: AUTHORS,v 1.11 2005-04-24 13:20:10 karl Exp $
+$Id: AUTHORS,v 1.12 2006-01-31 00:36:09 karl Exp $
 Texinfo authors.
 
-  Copyright (C) 2003, 2005 Free Software Foundation, Inc.
+  Copyright (C) 2003, 2005, 2006 Free Software Foundation, Inc.
   
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
+Karl Berry		all files.
+Per Bothner		makeinfo/xml.c, makeinfo/docbook.c updates.
+Torsten Bronger         texinfo.dtd.
+Bob Chassell		texinfo.tex, original texinfo.txi.
 Akim Demaille		texi2dvi.
 Alper Ersoy		makeinfo: enhancements in all files, especially
                           html-, xml-, and docbook-related.
-Andreas Schwab		texinfo.tex, configure.ac, most makeinfo files.
-Bob Chassell		texinfo.tex, original texinfo.txi.
 Brian Fox		all makeinfo/* and info/* files, info-stnd.texi.
-Dave Love		original makeinfo/html.[ch].
-Eli Zaretskii		all files.
-Karl Berry		all files.
-Karl Heinz Marbaise	original makeinfo language support, most files.
 Noah Friedman		original texi2dvi.
-Paul Rubin		original makeinfo/multi.c.
-Per Bothner		makeinfo/xml.c, makeinfo/docbook.c updates.
+Dave Love		original makeinfo/html.[ch].
+Karl Heinz Marbaise	original makeinfo language support, most files.
 Philippe Martin		original makeinfo xml/docbook output.
+Paul Rubin		original makeinfo/multi.c.
+Andreas Schwab		texinfo.tex, configure.ac, most makeinfo files.
 Richard Stallman	original texinfo.tex, install-info.c,
 			texindex.c, texinfo.txi.
 Zack Weinberg		texinfo.tex: @macro implementation.
+Eli Zaretskii		all files.
 
 See http://www.iro.umontreal.ca/contrib/po/HTML/team-LL.html for the
 translation teams for a given language LL.

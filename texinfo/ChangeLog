@@ -1,3 +1,8 @@
+2006-01-30  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd: many additions and fixes from
+	Torsten Bronger.
+
 2006-01-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sectionheading): \nobreak before the \vbox
