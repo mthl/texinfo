@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.73 2006-01-18 11:56:04 akim Exp $
+# $Id: texi2dvi,v 1.74 2006-02-06 01:25:50 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.73 $'
+rcs_revision='$Revision: 1.74 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -920,8 +920,12 @@ run_makeinfo ()
       in_src=$work_src/$in_base
       local miincludes=`list_prefix includes -I`
       verbose "Macro-expanding $command_line_filename to $in_src ..."
+      # eval $makeinfo because it might be defined as something complex
+      # (running missing) and then we end up with things like '"-I"',
+      # and "-I" (including the quotes) is not an option name.  This
+      # happens with gettext 0.14.5, at least.
       sed "$comment_iftex" "$command_line_filename" \
-        | $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
+        | eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
           -o /dev/null --macro-expand=- \
         | sed "$uncomment_iftex" >"$in_src"
       # Continue only if everything succeeded.
