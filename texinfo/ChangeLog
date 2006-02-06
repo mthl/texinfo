@@ -1,3 +1,8 @@
+2006-02-05  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_makeinfo): eval $makeinfo, for gettext
+	0.14.5's complex $MAKEINFO definition.
+
 2006-01-30  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd: many additions and fixes from
