@@ -1,3 +1,8 @@
+2006-02-06  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd: apparently we cannot have -- in an XML
+	comment.  Kludge.
+
 2006-02-05  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_makeinfo): eval $makeinfo, for gettext
