@@ -1,3 +1,9 @@
+2006-02-10  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd (menucomment): more inclusive.
+	(enumerate): allow indexes.
+	From Torsten.
+
 2006-02-06  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd: apparently we cannot have -- in an XML
