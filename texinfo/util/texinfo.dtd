@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.9 2006-02-06 19:47:04 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.10 2006-02-11 00:54:26 karl Exp $
    Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
@@ -235,7 +235,7 @@
 <!ELEMENT menuentry (menunode?, menutitle?, menucomment?)>
 <!ELEMENT menunode (#PCDATA)>
 <!ELEMENT menutitle (#PCDATA)>
-<!ELEMENT menucomment (#PCDATA | para)*>
+<!ELEMENT menucomment (#PCDATA | %Inline.phrase;)*>
 
 <!-- Floating displays -->
 <!ELEMENT float (floattype, floatpos, (%block;)*,
@@ -252,12 +252,11 @@
 
 <!-- Lists -->
 <!ELEMENT itemize (itemfunction, (item | itemize | enumerate | indexterm)*)>
-<!ELEMENT enumerate (enumarg?, (item | itemize | enumerate)*)>
+<!ELEMENT enumerate (item | itemize | enumerate | indexterm)*>
 <!ATTLIST enumerate
           first CDATA #IMPLIED>
 
 <!ELEMENT item (%block;)*>
-<!ELEMENT enumarg (#PCDATA)>
 
 <!ELEMENT itemfunction (#PCDATA | %Inline.phrase;)*>
 
