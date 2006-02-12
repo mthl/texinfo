@@ -1,8 +1,8 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.83 2005-08-19 22:23:54 karl Exp $
+   $Id: makeinfo.c,v 1.84 2006-02-12 01:15:25 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-   2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -164,6 +164,7 @@ static void init_brace_stack (void);
 static void init_internals (void);
 static void pop_and_call_brace (void);
 static void remember_brace (COMMAND_FUNCTION (*proc));
+static void write_trailer (char *filename, char *trailer);
 static int end_of_sentence_p (void);
 
 void maybe_update_execution_strings (char **text, unsigned int new_len);
@@ -1728,25 +1729,12 @@ _("%s: Removing macro output file `%s' due to errors; use --force to preserve.\n
           close_paragraph ();
         }
 
-      /* maybe we want local variables in info output.  */
-      {
-        char *trailer = info_trailer ();
-	if (!xml && !docbook && trailer)
-          {
-            if (html)
-              insert_string ("<!--");
-            insert_string (trailer);
-            free (trailer);
-            if (html)
-              insert_string ("\n-->\n");
-          }
-      }
-
       /* Write stuff makeinfo generates after @bye, ie. info_trailer.  */
       flush_output ();
 
       if (output_stream != stdout)
-        fclose (output_stream);
+        if (fclose (output_stream) != 0)
+          fs_error (real_output_filename);
 
       /* If validating, then validate the entire file right now. */
       if (validating)
@@ -1760,6 +1748,10 @@ _("%s: Removing macro output file `%s' due to errors; use --force to preserve.\n
           if (!no_headers && !html && !STREQ (current_output_filename, "-"))
             write_tag_table (real_output_filename);
         }
+
+      /* Maybe we want local variables in info output.  Must be after
+         tag table, since otherwise usually Emacs will not see it.  */
+      write_trailer (real_output_filename, info_trailer ());
 
       if (splitting && !html && (!errors_printed || force))
         {
@@ -1807,6 +1799,37 @@ info_trailer (void)
   free (encoding);
   return NULL;
 }
+
+/* Append TRAILER to FILENAME for Info and HTML output.  Include HTML
+   comments if needed.  */
+static void
+write_trailer (char *filename, char *trailer)
+{
+  if (!trailer || xml || docbook) 
+    return;
+
+  if (output_stream != stdout)
+    output_stream = fopen (filename, "a");
+  if (!output_stream)
+    {
+      fs_error (filename);
+      return;
+    }
+
+  if (html)
+    fwrite ("<!--", 1, 4, output_stream);
+
+  fwrite (trailer, 1, strlen (trailer), output_stream);
+  free (trailer);
+
+  if (html)
+    fwrite ("\n-->\n", 1, 5, output_stream);
+
+  if (output_stream != stdout)
+    if (fclose (output_stream) != 0)
+      fs_error (filename);
+}
+
 
 void
 free_and_clear (char **pointer)

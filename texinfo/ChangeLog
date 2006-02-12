@@ -1,3 +1,10 @@
+2006-02-11  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (write_trailer): new fn.
+	(convert_from_loaded_file) <finished>: call it *after* the
+	tag table has been written, else Emacs likely won't seeit.
+	Report from: Juri Linkov, 11 Feb 2006 03:11:33 +0200.
+
 2006-02-10  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd (menucomment): more inclusive.
