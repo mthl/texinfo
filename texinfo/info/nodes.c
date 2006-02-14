@@ -1,8 +1,8 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.5 2005-05-15 00:00:07 karl Exp $
+   $Id: nodes.c,v 1.6 2006-02-14 00:25:58 karl Exp $
 
-   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006 Free
+   Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -116,8 +116,11 @@ info_get_node (char *filename, char *nodename)
   /* Look for the node.  */
   node = info_get_node_of_file_buffer (nodename, file_buffer);
 
-  /* If the node not found was "Top", try again with different case.  */
-  if (!node && (nodename == NULL || strcasecmp (nodename, "Top") == 0))
+  /* If the node not found was "Top", try again with different case,
+     unless this was a man page.  */
+  if (!node
+      && strcasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
+      && (nodename == NULL || strcasecmp (nodename, "Top") == 0))
     {
       node = info_get_node_of_file_buffer ("Top", file_buffer);
       if (!node)
