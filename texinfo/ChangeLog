@@ -1,3 +1,7 @@
+2006-02-14  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* util/texi2dvi: New options --translate-file and --recode-from.
+
 2006-02-13  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_enddots): output three dots, not four, for

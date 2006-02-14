@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.74 2006-02-06 01:25:50 karl Exp $
+# $Id: texi2dvi,v 1.75 2006-02-14 19:51:55 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.74 $'
+rcs_revision='$Revision: 1.75 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -70,7 +70,6 @@ General options:
   -b, --batch         no interaction
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
-      --no-line-error do not pass --file-line-error to TeX
   -o, --output=OFILE  leave output in OFILE (implies --clean);
                       only one input FILE may be specified in this case
   -q, --quiet         no output unless errors (implies --batch)
@@ -83,10 +82,13 @@ TeX tuning:
   -e, -E, --expand     force macro expansion using makeinfo
   -I DIR               search DIR for Texinfo files
   -l, --language=LANG  specify the LANG of FILE (LaTeX or Texinfo)
+      --no-line-error  do not pass --file-line-error to TeX
   -p, --pdf            use pdftex or pdflatex for processing
   -r, --recode         call recode before TeX to translate input characters
+  --recode-from=ENC    recode from ENC to the @documentencoding       
   -t, --command=CMD    insert CMD in copy of input file
    or --texinfo=CMD    multiple values accumulate
+  --translate-file=FILE  use given charset translation file for TeX
 
 Build modes:
   --build=MODE         specify the treatment of auxiliary files [$build_mode]
@@ -157,6 +159,8 @@ set_language=
 textra=         # Extra TeX commands to insert in the input file.
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
+translate_file= # name of charset translation file
+recode_from=    # if not empty, recode from this encoding to @documentencoding
 
 orig_pwd=`pwd`
 
@@ -668,6 +672,9 @@ run_tex ()
       true:*file-line-error*) cmd="$cmd --file-line-error";;
     esac
   fi
+  
+  # Tell TeX about TCX file, if specified.
+  test -n "$translate_file" && cmd="$cmd --translate-file=$translate_file"
 
   # Tell TeX to be batch if requested.
   if $batch; then
@@ -970,6 +977,9 @@ $textra" "$in_input" >"$in_xtr"
 # recode is available, then recode to plain 7 bit Texinfo.
 run_recode ()
 {
+  local from
+  local to
+  
   if test $language = texinfo; then
     pgm='s/^ *@documentencoding  *\([^ ][^ ]*\) *$/\1/
 	t found
@@ -978,12 +988,19 @@ run_recode ()
 	q'
     encoding=`sed -e "$pgm" "$in_input"`
     if $recode && test -n "$encoding" && findprog recode; then
-      verbose "Recoding from $encoding to Texinfo."
+      if test -n "$recode_from"; then
+	from=$recode_from
+	to=$encoding
+      else
+        from=$encoding
+	to=$texinfo
+      fi
+      verbose "Recoding from $from to $to."
       # _rcd.  The Texinfo file recoded in 7bit.
       work_rcd=$workdir/recode
       in_rcd=$work_rcd/$in_base
       ensure_dir "$work_rcd"
-      if recode "$encoding"..texinfo <"$in_input" >"$in_rcd" \
+      if recode "$encoding..$to" <"$in_input" >"$in_rcd" \
          && test -s "$in_rcd"; then
         in_input=$in_rcd
       else
@@ -1194,8 +1211,10 @@ while test x"$1" != x"$arg_sep"; do
     -p | --pdf) out_lang=pdf;;
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
+    --recode-from) shift; recode=true; recode_from="$1";;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
+    --translate-file ) shift; translate_file="$1";;    
     --tidy) build_mode=tidy;;
     -v | --vers*) echo "$version"; exit 0;;
     -V | --verb*) verb=true;;
