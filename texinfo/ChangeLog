@@ -1,5 +1,13 @@
 2006-02-13  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\doignore): move \obeylines here.
+	(\dodoignore): from here.  (just putting catcode changes together.)
+	(\doignoretextyyy): revert to previous code, no ##2^^M;
+	that caused blank lines in verbatim envs inside failing conditionals.
+	(\enddoignore): ignore any text after the @end #1 here, instead.
+	Bug report from Bob Wilson, 5 Oct 2005 21:22:33 -0700,
+	amended fix from Stepan, 13 Feb 2006 21:57:07 +0100.
+
 	* info/nodes.c (info_get_node): don't try man Top and man top and
 	man TOP.  Debian bug 234848.
 
