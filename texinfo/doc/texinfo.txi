@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
+@c $Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1185,7 +1185,7 @@ the rest of the line.  (@code{@@chapter} creates chapter titles.)@refill
 
 @item
 Write a command such as @code{@@dots@{@}} wherever you wish but usually
-within a sentence. (@code{@@dots@{@}} creates dots @dots{})@refill
+within a sentence. (@code{@@dots@{@}} creates an ellipsis @dots{})@refill
 
 @item
 Write a command such as @code{@@code@{@var{sample-code}@}} wherever you
@@ -10530,7 +10530,7 @@ end-of-sentence ellipsis, which has different spacing afterwards,
 Here is an ellipsis: @dots{}
 Here are three periods in a row: ...
 
-In printed output, the three periods in a row are closer together than
+In printed output, the three periods in a row are much closer together than
 the dots in the ellipsis.
 @end iftex
 
@@ -18591,7 +18591,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
+$Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18657,7 +18657,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.154 2006-01-18 14:44:43 karl Exp $
+@comment $Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

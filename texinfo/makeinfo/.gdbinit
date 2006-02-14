@@ -139,10 +139,6 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 
 #set args --html tests/html-docdesc.txi
 
-#set args -o - --enable-encoding -I tests --no-headers tests/accentenc.txi
-
-#set args -o /dev/null --no-split --enable-encoding -I ../doc --no-headers texinfo.txi
-
 # permissions output in each split html/info file as a comment, also in xml.
 #set args --force -I ../doc info-stnd.texi
 
@@ -173,76 +169,78 @@ set args -o /dev/null /nonexistent.texinfo tests/html-min.txi
 # infinite error
 set args -o - tests/itemize-extra.txi
 
-# local variables with split files
-set args --no-warn --enable-encoding --split-size=150000 $ttests/xe.tex
-
-# local variables with encoding info
-set args -o - --enable-encoding $ttests/doclatin1.tex
-
 # --xml?
-set args -o /dev/null --xml $ttests/doclatin1.tex
+#set args -o /dev/null --xml $ttests/doclatin1.tex
 
 # seg fault printindex twice
-set args -o - $ttests/index22.tex
+#set args -o - $ttests/index22.tex
 
 # seg fault
-set args -o /dev/null $ttests/lilypond-internals.nexi
+#set args -o /dev/null $ttests/lilypond-internals.nexi
 
 # no <html>
-set args -o $ttests/tbook.html --html --no-split $ttests/tbook.tex
+#set args -o $ttests/tbook.html --html --no-split $ttests/tbook.tex
 
 # long css seg fault
-set args -o - --html --no-split --css-include=$ttests/test.css $ttests/tbook.tex
+#set args -o - --html --no-split --css-include=$ttests/test.css $ttests/tbook.tex
 
 # spurious <p> in info output
-set args -o - $ttests/defmacp.tex
+#set args -o - $ttests/defmacp.tex
 
-set args -o /dev/null -I ../doc ../doc/info-stnd.texi
-set args -o /dev/null $ttests/env.tex
+#set args -o /dev/null -I ../doc ../doc/info-stnd.texi
+#set args -o /dev/null $ttests/env.tex
 
 # css class wrong for lowered sections.
-set args --force -o /tmp/h --html --no-split $ttests/loweraise.tex
+#set args --force -o /tmp/h --html --no-split $ttests/loweraise.tex
 
 # deffnx fails when after conditional.
-set args -o - tests/defxcond.txi
+#set args -o - tests/defxcond.txi
 
 # xml doesn't handle aliases.
-set args --xml -o - $ttests/alias.tex
+#set args --xml -o - $ttests/alias.tex
 
 # warn if @strong{Note:}.
-set args -o - $ttests/markup.tex
+#set args -o - $ttests/markup.tex
 
 # @xml produces <para>.
-set args --xml -o - $ttests/xmlpara.tex
+#set args --xml -o - $ttests/xmlpara.tex
 
 # @example/@verbatim mixup.
-set args --html -o - $ttests/exverb.tex
+#set args --html -o - $ttests/exverb.tex
 
 # no macro expansion in @item of @table.
-set args -E - -o /dev/null $ttests/macitem.tex
+#set args -E - -o /dev/null $ttests/macitem.tex
 
 # akim seg fault
-set args  --commands-in-node-names $ttests/assignments.texi
+#set args  --commands-in-node-names $ttests/assignments.texi
 
 # no error with --html
-set args -o /dev/null $ttests/htmlsec.tex
-
-# no info trailer on main file
-set args -I /u/karl/gnu/src/groff/doc --enable-encoding groff.texinfo
+#set args -o /dev/null $ttests/htmlsec.tex
 
 # stray null bytes
-set args -I /u/karl/gnu/src/groff/doc -o /dev/null -E groff.out groff.texinfo
+#set args -I /u/karl/gnu/src/groff/doc -o /dev/null -E groff.out groff.texinfo
 
 # Unknown command `&quot;urgen'.
-set args --html --force -o /tmp/i.out --no-split $ttests/idxaccent.tex
+#set args --html --force -o /tmp/i.out --no-split $ttests/idxaccent.tex
 #set args --force -o /tmp/i.out --no-split $ttests/idxangle.tex
 
 # extra blank line
-set args -E - $ttests/mac-idx2.tex -o /dev/null
+#set args -E - $ttests/mac-idx2.tex -o /dev/null
 
 # old-style anchor names
-set args --html --force -o - --no-split $ttests/nodestar.tex
+#set args --html --force -o - --no-split $ttests/nodestar.tex
 
 # lang.c:806: cm_accent_generic_no_headers: Assertion `end > 0' failed.
-# so do nothing when end == 0, we're ignoring anywya.
-set args --no-headers accents-in-menu.texi
+# so do nothing when end == 0, we're ignoring anyway.
+#set args --no-headers accents-in-menu.texi
+
+# local variables with encoding info
+set args -o - --enable-encoding $ttests/docenc1.tex
+set args -o - --enable-encoding -I tests --no-headers tests/accentenc.txi
+set args -o /dev/null --no-split --enable-encoding -I ../doc --no-headers texinfo.txi
+
+# local variables with split files
+set args --no-warn --enable-encoding --split-size=150000 $ttests/xe.tex
+
+# no info trailer on main file
+set args -I /usr/local/gnu/src/groff-1.19/doc --enable-encoding groff.texinfo
