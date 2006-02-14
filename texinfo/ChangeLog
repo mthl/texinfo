@@ -1,5 +1,8 @@
 2006-02-13  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/cmds.c (cm_enddots): output three dots, not four, for
+	consistency with texinfo.tex.
+
 	* doc/texinfo.tex (\doignore): move \obeylines here.
 	(\dodoignore): from here.  (just putting catcode changes together.)
 	(\doignoretextyyy): revert to previous code, no ##2^^M;
