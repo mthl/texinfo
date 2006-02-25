@@ -1,3 +1,8 @@
+2006-02-25  Karl Berry  <karl@gnu.org>
+
+	* info/nodes.c (info_get_node_of_file_buffer): try to avoid
+	running man Top, which returns the top(1) man page on Debian.
+
 2006-02-14  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* util/texi2dvi: New options --translate-file and --recode-from.

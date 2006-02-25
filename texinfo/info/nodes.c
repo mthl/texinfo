@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.6 2006-02-14 00:25:58 karl Exp $
+   $Id: nodes.c,v 1.7 2006-02-25 23:08:01 karl Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006 Free
    Software Foundation, Inc.
@@ -140,6 +140,7 @@ NODE *
 info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 {
   NODE *node = NULL;
+  int implicit_nodename = 0;
 
   /* If we are unable to find the file, we have to give up.  There isn't
      anything else we can do. */
@@ -152,7 +153,10 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 
   /* If NODENAME is not specified, it defaults to "Top". */
   if (!nodename)
-    nodename = "Top";
+    {
+      nodename = "Top";
+      implicit_nodename = 1;  /* don't return man page for top */
+    }
 
   /* If the name of the node that we wish to find is exactly "*", then the
      node body is the contents of the entire file.  Create and return such
@@ -171,9 +175,9 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 #if defined (HANDLE_MAN_PAGES)
   /* If the file buffer is the magic one associated with manpages, call
      the manpage node finding function instead. */
-  else if (file_buffer->flags & N_IsManPage)
+  else if (!implicit_nodename && file_buffer->flags & N_IsManPage)
     {
-        node = get_manpage_node (file_buffer, nodename);
+      node = get_manpage_node (file_buffer, nodename);
     }
 #endif /* HANDLE_MAN_PAGES */
   /* If this is the "main" info file, it might contain a tags table.  Search
