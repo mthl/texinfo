@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.75 2006-02-14 19:51:55 karl Exp $
+# $Id: texi2dvi,v 1.76 2006-02-28 16:53:18 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.75 $'
+rcs_revision='$Revision: 1.76 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -234,9 +234,12 @@ absolute ()
       # Absolute paths don't need to be expanded.
       echo "$1"
       ;;
-   *)
-      (cd "$orig_pwd/`func_dirname $1`" 2>/dev/null &&
-       echo `pwd`/`basename "$1"`)
+   *) local rel="$orig_pwd/`func_dirname $1`"
+      if test -d "$rel"; then
+        (cd "$rel" 2>/dev/null && echo `pwd`/`basename "$1"`);
+      else
+        fatal 1 "not a directory: $rel"
+      fi
       ;;
   esac
 }
@@ -645,7 +648,7 @@ run_tex ()
   # subdirectory to exist.
   case $language:$tidy in
     latex:true)
-       sed -n 's|^[ ]*\\include{\(.*\)/.*}.*|\1|p' $in_input |
+       sed -n 's|^[ ]*\\include{\(.*\)/.*}.*|\1|p' "$in_input" |
        sort -u |
        while read d
        do
@@ -1097,7 +1100,7 @@ compile ()
     # directory (e.g., in clean build mode, or during the macro-support
     # detection).
     val=`absolute_filenames "$val"`
-    eval $var="$val"
+    eval $var="\"$val\""
     eval export $var
     eval verbose "$var=\'\$${var}\'"
   done

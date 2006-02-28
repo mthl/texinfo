@@ -1,3 +1,10 @@
+2006-02-28  Akim Demaille  <akim@epita.fr>
+
+	Be robust to spaces in directory names.
+	* util/texi2dvi (absolute): Be robust to non directories.
+	(run_tex): Quote in_input properly.
+	(compile): Quote args of eval properly.
+
 2006-02-25  Karl Berry  <karl@gnu.org>
 
 	* info/nodes.c (info_get_node_of_file_buffer): try to avoid
