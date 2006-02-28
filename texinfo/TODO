@@ -1,9 +1,9 @@
-$Id: TODO,v 1.29 2005-11-14 23:29:48 karl Exp $
+$Id: TODO,v 1.30 2006-02-28 13:47:45 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005 Free Software Foundation.
+  2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -113,7 +113,11 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Use url.sty (or something) to allow linebreak of url's.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
-    From Carsten Dominik <dominik@astro.uva.nl>.
+    From Carsten Dominik.
+  - PDF: use the PageLabels dictionary to allow jumping to logical
+    pages, presumably after xpdf/gv support it.  Section 8.3.1 of the
+    PDF reference.  From Werner Lemberg, texinfo-pretest mail of
+    27 Feb 2006 22:55:13 +0100.
 
 * Doc:
   - Include a complete functional summary, as in a reference card, in
