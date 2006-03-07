@@ -1,3 +1,8 @@
+2006-03-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Writing a Node): show example of specifying
+	some pointers but not others.
+
 2006-02-28  Akim Demaille  <akim@epita.fr>
 
 	Be robust to spaces in directory names.

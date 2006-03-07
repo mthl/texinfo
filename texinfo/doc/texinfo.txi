@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
+@c $Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4929,12 +4929,12 @@ The name of a node identifies the node (for details of node names,
 @pxref{Node Line Requirements}).  The pointers enable you to reach
 other nodes and consist simply of the names of those nodes.
 
-Normally, a node's `Up' pointer contains the name of the node whose menu
-mentions that node.  The node's `Next' pointer contains the name of the
-node that follows that node in that menu and its `Previous' pointer
-contains the name of the node that precedes it in that menu.  When a
-node's `Previous' node is the same as its `Up' node, both node pointers
-name the same node.
+Normally, a node's `Up' pointer contains the name of the node whose
+menu mentions that node.  The node's `Next' pointer contains the name
+of the node that follows the present node in that menu and its
+`Previous' pointer contains the name of the node that precedes it in
+that menu.  When a node's `Previous' node is the same as its `Up'
+node, both node pointers name the same node.
 
 Usually, the first node of a Texinfo file is the `Top' node, and its
 `Up' and `Previous' pointers point to the @file{dir} file, which
@@ -4960,7 +4960,7 @@ in the printed output.
 
 The easiest way to write an @code{@@node} line is to write @code{@@node}
 at the beginning of a line and then the name of the node, like
-this:@refill
+this:
 
 @example
 @@node @var{node-name}
@@ -4970,7 +4970,7 @@ If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let @code{makeinfo}
 insert node pointers into the Info file it creates.  (@xref{Texinfo
-Mode}, and @ref{makeinfo Pointer Creation}.)@refill
+Mode}, and @ref{makeinfo Pointer Creation}.)
 
 Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
@@ -4978,14 +4978,20 @@ Texinfo mode keyboard command @kbd{C-c C-c n}.  This command inserts
 @samp{@@node} and a comment line listing the names of the pointers in
 their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
-if you are not familiar with Texinfo.@refill
+if you are not familiar with Texinfo.
 
 The template for a fully-written-out node line with `Next', `Previous',
-and `Up' pointers looks like this:@refill
+and `Up' pointers looks like this:
 
 @example
 @@node @var{node-name}, @var{next}, @var{previous}, @var{up}
 @end example
+
+The @var{node-name} argument must be present, but the others are
+optional.  If you wish to specify some but not others, just insert
+commas as needed, as in: @samp{@@node mynode,,,uppernode}.  However,
+we recommend leaving off all the pointers and letting @code{makeinfo}
+determine them, as described above.
 
 If you wish, you can ignore @code{@@node} lines altogether in your first
 draft and then use the @code{texinfo-insert-node-lines} command to
@@ -18591,7 +18597,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
+$Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18657,7 +18663,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.155 2006-02-14 15:03:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
