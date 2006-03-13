@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.76 2006-02-28 16:53:18 akim Exp $
+# $Id: texi2dvi,v 1.77 2006-03-13 16:47:33 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.76 $'
+rcs_revision='$Revision: 1.77 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -61,7 +61,7 @@ is used to determine its language ((La)TeX or Texinfo).  To process
 In order to make texi2dvi a drop-in replacement of TeX/LaTeX in AUC-TeX,
 the FILE may also be composed of the following simple TeX commands.
   \`\\input{FILE}'     the actual file to compile
-  \`\\nonstopmode\     same as --batch
+  \`\\nonstopmode'     same as --batch
 
 Makeinfo is used to perform Texinfo macro expansion before running TeX
 when needed.
@@ -71,34 +71,34 @@ General options:
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
   -o, --output=OFILE  leave output in OFILE (implies --clean);
-                      only one input FILE may be specified in this case
+                        only one input FILE may be specified in this case
   -q, --quiet         no output unless errors (implies --batch)
   -s, --silent        same as --quiet
   -v, --version       display version information and exit successfully
   -V, --verbose       report on what is done
 
 TeX tuning:
-  -@                   use @input instead of \input; for preloaded Texinfo
-  -e, -E, --expand     force macro expansion using makeinfo
-  -I DIR               search DIR for Texinfo files
-  -l, --language=LANG  specify the LANG of FILE (LaTeX or Texinfo)
-      --no-line-error  do not pass --file-line-error to TeX
-  -p, --pdf            use pdftex or pdflatex for processing
-  -r, --recode         call recode before TeX to translate input characters
-  --recode-from=ENC    recode from ENC to the @documentencoding       
-  -t, --command=CMD    insert CMD in copy of input file
-   or --texinfo=CMD    multiple values accumulate
-  --translate-file=FILE  use given charset translation file for TeX
+  -@                         use @input instead of \input for preloaded Texinfo
+  -e, -E, --expand           force macro expansion using makeinfo
+  -I DIR                     search DIR for Texinfo files
+  -l, --language=LANG        specify the LANG of FILE (LaTeX or Texinfo)
+      --no-line-error        do not pass --file-line-error to TeX
+  -p, --pdf                  use pdftex or pdflatex for processing
+  -r, --recode               call recode before TeX to translate input
+      --recode-from=ENC      recode from ENC to the @documentencoding       
+  -t, --command=CMD          insert CMD in copy of input file
+   or --texinfo=CMD          multiple values accumulate
+      --translate-file=FILE  use given charset translation file for TeX
 
 Build modes:
   --build=MODE         specify the treatment of auxiliary files [$build_mode]
       --tidy           same as --build=tidy
   -c, --clean          same as --build=clean
-      --build-dir=DIR  specify where the tidy compilation is performed.
-                       implies --tidy
-                       defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
+      --build-dir=DIR  specify where the tidy compilation is performed;
+                         implies --tidy;
+                         defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
   --mostly-clean       remove the auxiliary files and directories
-                       but not the output
+                         but not the output
 
 The MODE specifies where the TeX compilation takes place, and, as a
 consequence, how auxiliary files are treated.  The build mode

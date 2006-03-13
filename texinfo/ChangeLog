@@ -1,3 +1,7 @@
+2006-03-13  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: reindent --help message.
+
 2006-03-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Writing a Node): show example of specifying
