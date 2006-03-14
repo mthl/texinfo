@@ -1,3 +1,11 @@
+2006-03-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\imagexxx): do not center the image by default.
+	The manual says we don't do that, and Lilypond needs
+	left-justification.
+	From: lilydev@muurbloem.xs4all.nl (Han-Wen Nienhuys), 
+	9 Mar 2006 21:08:26 +0000.
+
 2006-03-13  Miloslav Trmac  <mitr@redhat.com>  (tiny changes)
 
         * info/Makefile.am (infokey_LDADD): don't link with curses.
