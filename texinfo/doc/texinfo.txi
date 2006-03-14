@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
+@c $Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4421,17 +4421,11 @@ This kind of stylistic choice is not usually offered by Texinfo.
 Use the @code{@@unnumbered} command to create a chapter that appears
 in a printed manual without chapter numbers of any kind.  Use the
 @code{@@appendix} command to create an appendix in a printed manual
-that is labelled by letter instead of by number.@refill
+that is labelled by letter (`A', `B', @dots{}) instead of by number.
 
-For Info file output, the @code{@@unnumbered} and @code{@@appendix}
-commands are equivalent to @code{@@chapter}: the title is printed on a
-line by itself with a line of asterisks underneath.  (@xref{chapter, ,
-@code{@@chapter}}.)@refill
-
-To create an appendix or an unnumbered chapter, write an
-@code{@@appendix} or @code{@@unnumbered} command at the beginning of a
-line and follow it on the same line by the title, as you would if you
-were creating a chapter.@refill
+Write an @code{@@appendix} or @code{@@unnumbered} command at the
+beginning of a line and follow it on the same line by the title, as
+you would if you were creating a chapter.
 
 
 @node majorheading & chapheading
@@ -4458,17 +4452,19 @@ of asterisks underneath.  (@xref{chapter, , @code{@@chapter}}.)@refill
 
 
 @node section
-@comment  node-name,  next,  previous,  up
 @section @code{@@section}
 @findex section
 
-In a printed manual, an @code{@@section} command identifies a
-numbered section within a chapter.  The section title appears in the
-table of contents.  In Info, an @code{@@section} command provides a
-title for a segment of text, underlined with @samp{=}.@refill
+A @code{@@section} command identifies a section within a chapter unit,
+whether created with @code{@@chapter}, @code{@@unnumbered}, or
+@code{@@appendix}, following the numbering scheme of the chapter-level
+command.  Thus, within a @code{@@chapter} chapter numbered `1', the
+section is numbered like `1.2'; within an @code{@@appendix}
+``chapter'' labeled `A', the section is numbered like `A.2'; within an
+@code{@@unnumbered} chapter, the section gets no number.
 
-This section is headed with an @code{@@section} command and looks like
-this in the Texinfo file:@refill
+For example, this section is headed with an @code{@@section} command
+and looks like this in the Texinfo file:
 
 @example
 @@section @@code@{@@@@section@}
@@ -4476,7 +4472,7 @@ this in the Texinfo file:@refill
 
 To create a section, write the @code{@@section} command at the
 beginning of a line and follow it on the same line by the section
-title.@refill
+title.  The output is underlined with @samp{=} in Info.
 
 Thus,
 
@@ -4485,21 +4481,17 @@ Thus,
 @end example
 
 @noindent
-produces
+might produce the following in Info:
 
 @example
 @group
-This is a section
-=================
+5.7 This is a section
+=====================
 @end group
 @end example
 
-@noindent
-in Info.
-
 
 @node unnumberedsec appendixsec heading
-@comment  node-name,  next,  previous,  up
 @section @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 @findex unnumberedsec
 @findex appendixsec
@@ -4507,8 +4499,8 @@ in Info.
 
 The @code{@@unnumberedsec}, @code{@@appendixsec}, and @code{@@heading}
 commands are, respectively, the unnumbered, appendix-like, and
-heading-like equivalents of the @code{@@section} command.
-(@xref{section, , @code{@@section}}.)@refill
+heading-like equivalents of the @code{@@section} command, as described
+in the previous section.
 
 @table @code
 @item @@unnumberedsec
@@ -4530,15 +4522,19 @@ You may use the @code{@@heading} command anywhere you wish for a
 section-style heading that will not appear in the table of contents.@refill
 @end table
 
+@code{@@unnumberedsec} and @code{@@appendixsec} do not need to be used
+in ordinary circumstances, because @code{@@section} may also be used
+within @code{@@unnumbered} and @code{@@appendix} chapters; again, see
+the previous section.
+
 
 @node subsection
-@comment  node-name,  next,  previous,  up
 @section The @code{@@subsection} Command
 @findex subsection
 
 Subsections are to sections as sections are to chapters.
 (@xref{section, , @code{@@section}}.)  In Info, subsection titles are
-underlined with @samp{-}.  For example,@refill
+underlined with @samp{-}.  For example,
 
 @example
 @@subsection This is a subsection
@@ -4549,16 +4545,16 @@ produces
 
 @example
 @group
-This is a subsection
---------------------
+1.2.3 This is a subsection
+--------------------------
 @end group
 @end example
 
 In a printed manual, subsections are listed in the table of contents
 and are numbered three levels deep.@refill
 
+
 @node unnumberedsubsec appendixsubsec subheading
-@comment  node-name,  next,  previous,  up
 @section The @code{@@subsection}-like Commands
 @cindex Subsection-like commands
 @findex unnumberedsubsec
@@ -4568,7 +4564,7 @@ and are numbered three levels deep.@refill
 The @code{@@unnumberedsubsec}, @code{@@appendixsubsec}, and
 @code{@@subheading} commands are, respectively, the unnumbered,
 appendix-like, and heading-like equivalents of the @code{@@subsection}
-command.  (@xref{subsection, , @code{@@subsection}}.)@refill
+command.  (@xref{subsection, , @code{@@subsection}}.)
 
 In Info, the @code{@@subsection}-like commands generate a title
 underlined with hyphens.  In a printed manual, an @code{@@subheading}
@@ -4578,7 +4574,13 @@ an @code{@@unnumberedsubsec} command produces an unnumbered heading like
 that of a subsection and an @code{@@appendixsubsec} command produces a
 subsection-like heading labelled with a letter and numbers; both of
 these commands produce headings that appear in the table of
-contents.@refill
+contents.
+
+@code{@@unnumberedsubsec} and @code{@@appendixsubsec} do not need to
+be used in ordinary circumstances, because @code{@@subsection} may
+also be used within sections of @code{@@unnumbered} and
+@code{@@appendix} chapters (@pxref{section,,@code{section}}).
+
 
 @node subsubsection
 @section The `subsub' Commands
@@ -4617,6 +4619,13 @@ Info, subsubheadings look exactly like ordinary subsubsection
 headings.@refill
 @end table
 
+@code{@@unnumberedsubsubsec} and @code{@@appendixsubsubsec} do not
+need to be used in ordinary circumstances, because
+@code{@@subsubsection} may also be used within subsections of
+@code{@@unnumbered} and @code{@@appendix} chapters
+(@pxref{section,,@code{section}}).
+
+
 In Info,  `subsub' titles are underlined with periods.
 For example,@refill
 
@@ -4629,8 +4638,8 @@ produces
 
 @example
 @group
-This is a subsubsection
-.......................
+1.2.3.4 This is a subsubsection
+...............................
 @end group
 @end example
 
@@ -9322,9 +9331,9 @@ section.
 For @TeX{} output, if an image is the first thing in a paragraph, for
 example if you want two images side-by-side, you must precede it with
 @code{@@noindent} (@pxref{noindent,,@code{@@noindent}}).  Otherwise it
-will be displayed on a line by itself.  If you want it centered, 
-use @code{@@center} (@pxref{titlefont center sp,,@code{@@titlefont
-@@center @@sp}}).
+will be displayed on a line by itself, left-justified.  If you want it
+centered, use @code{@@center} (@pxref{titlefont center
+sp,,@code{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
@@ -18597,7 +18606,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
+$Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18663,7 +18672,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.156 2006-03-07 23:02:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

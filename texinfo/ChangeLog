@@ -1,10 +1,14 @@
 2006-03-14  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (section, subsection, unnumberedsubsec,
+	subsubsection): make it clear that @section can be used within
+	any chapter unit.
+	Report from: Hynek Hanke, 11 Mar 2006 20:44:34 +0100.
+
 	* doc/texinfo.tex (\imagexxx): do not center the image by default.
 	The manual says we don't do that, and Lilypond needs
 	left-justification.
-	From: lilydev@muurbloem.xs4all.nl (Han-Wen Nienhuys), 
-	9 Mar 2006 21:08:26 +0000.
+	From: Han-Wen Nienhuys, 9 Mar 2006 21:08:26 +0000.
 
 2006-03-13  Miloslav Trmac  <mitr@redhat.com>  (tiny changes)
 
