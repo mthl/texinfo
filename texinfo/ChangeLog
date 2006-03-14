@@ -1,3 +1,10 @@
+2006-03-13  Miloslav Trmac  <mitr@redhat.com>  (tiny changes)
+
+        * info/Makefile.am (infokey_LDADD): don't link with curses.
+
+        * makeinfo/sectioning.c: cast arguments to substring, to placate
+        current gcc.
+
 2006-03-13  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: reindent --help message.

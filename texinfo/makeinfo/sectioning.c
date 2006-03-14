@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.26 2005-05-15 00:00:08 karl Exp $
+   $Id: sectioning.c,v 1.27 2006-03-14 00:29:07 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -491,7 +491,7 @@ insert_and_underscore (int level, char *cmd)
      insert it into the TOC.  */
   ending_pos = output_paragraph + output_paragraph_offset;
   if (section_alist[index].toc == TOC_YES)
-    toc_add_entry (substring (starting_pos, ending_pos - 1),
+    toc_add_entry (substring ((char *)starting_pos, (char *)ending_pos - 1),
                    level, current_node, NULL);
 
   free (temp);
@@ -534,8 +534,9 @@ sectioning_html (int level, char *cmd)
 
       starting_pos = output_paragraph + output_paragraph_offset;
       add_word_args ("%sTOC%d\">", a_name, toc_ref_count++);
-      toc_anchor = substring (starting_pos + sizeof (a_name) - 1,
-                              output_paragraph + output_paragraph_offset);
+      toc_anchor = substring ((char *)starting_pos + sizeof (a_name) - 1,
+                              (char *)output_paragraph
+			      + output_paragraph_offset);
       /* This must be added after toc_anchor is extracted, since
          toc_anchor cannot include the closing </a>.  For details,
          see toc.c:toc_add_entry and toc.c:contents_update_html.
@@ -585,7 +586,7 @@ sectioning_html (int level, char *cmd)
   /* Pluck ``X.Y SECTION-NAME'' from the output buffer and insert it
      into the TOC.  */
   if (section_alist[index].toc == TOC_YES)
-    toc_add_entry (substring (starting_pos, ending_pos),
+    toc_add_entry (substring ((char *)starting_pos, (char *)ending_pos),
                    level, current_node, toc_anchor);
 
   free (temp);
