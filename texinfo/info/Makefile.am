@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.9 2005-08-05 09:25:44 kasal Exp $
+# $Id: Makefile.am,v 1.10 2006-03-14 14:47:09 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -26,6 +26,7 @@ AM_CPPFLAGS = -I. -I$(top_srcdir)/lib -I.. -I$(srcdir)
 DEFS += -DLOCALEDIR=\"$(localedir)\" -DINFODIR=\"$(infodir)\" \
 	-DINFODIR2=\"$(infodir2)\"
 LDADD = ../lib/libtxi.a $(TERMLIBS) $(LIBINTL)
+infokey_LDADD = ../lib/libtxi.a $(LIBINTL)
 
 EXTRA_DIST = README pcterm.c
 
