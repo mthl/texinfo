@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.61 2005-12-11 22:51:01 karl Exp $
+$Id: dir-example,v 1.62 2006-03-20 14:12:33 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -27,7 +27,7 @@ Not all of the topics shown below may be available on this system.
 * Menu:
 
 Basics
-* Bash: (bash).                 The GNU Bourne-Again SHell.
+* Bash: (bash).                     The GNU Bourne-Again SHell.
 * BC: (bc).                     Arbitrary precision calculator language.
 * Common options: (coreutils)Common options.      Common options.
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
@@ -45,8 +45,9 @@ Text creation and manipulation
 * Gawk: (gawk).                 A text scanning and processing language.
 * grep: (grep).                 Print lines matching a pattern.
 * m4: (m4).			General-purpose text macro processor.
-* sed: (sed).                   Stream EDitor.
 * Wdiff: (wdiff).               Word difference finder and related tools.
+* sed: (sed).                   Stream EDitor.
+
 
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
@@ -93,7 +94,7 @@ Software development
 * automake: (automake).         Making Makefile.in's.
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
-* CVS: (cvs).                   Concurrent versions system for source control.
+* CVS: (cvs).                   Concurrent Versions System
 * DejaGnu: (dejagnu).           Testing framework.
 * Gdb: (gdb).                   The GNU debugger.
 * bison: (bison).       GNU parser generator (Yacc replacement).
@@ -192,7 +193,6 @@ GNU Gettext Utilities
 Software libraries
 * Annotate: (annotate).         High-level GDB to GUI's.
 * Bfd: (bfd).                   The Binary File Descriptor library.
-* CVS protocol: (cvsclient).    CVS client/server protocol specification.
 * Gdb-Internals: (gdbint).      The GNU debugger's internals.
 * GDB library: (libgdb).        Application programming interface to GDB.
 * GDBM: (gdbm).                 Hashed databases.
@@ -297,6 +297,8 @@ Individual utilities
 * cp: (coreutils)cp invocation.                 Copy files.
 * csplit: (coreutils)csplit invocation.         Split by context.
 * cut: (coreutils)cut invocation.               Print selected parts of lines.
+* cvs: (cvs)CVS commands.       Concurrent Versions System
+* cvsclient: (cvsclient).      The CVS client/server protocol.
 * date: (coreutils)date invocation.             Print/set system date and time.
 * dd: (coreutils)dd invocation.                 Copy and convert a file.
 * df: (coreutils)df invocation.                 Report file system disk usage.
@@ -365,7 +367,7 @@ Individual utilities
 * maketexpk: (kpathsea)MakeTeX scripts.         PK bitmap generation.
 * maketextex: (kpathsea)MakeTeX scripts.        TeX source generation.
 * maketextfm: (kpathsea)MakeTeX scripts.        TeX font metric generation.
-* md5sum: (coreutils)md5sum invocation.         Print or check MD5 digests.
+* md5sum: (coreutils)md5sum invocation.         Print or check message-digests.
 * mdiff: (wdiff)mdiff invocation.               Line cluster finder.
 * messages: (mailutils)messages.                Count messages in mailbox.
 * mf: (web2c)mf invocation.                     Creating typeface families.
@@ -396,9 +398,9 @@ Individual utilities
 * pltotf: (web2c)PLtoTF invocation.             Property list to TFM.
 * pooltype: (web2c)Pooltype invocation.         Display WEB pool files.
 * pop3d: (mailutils)pop3d.                      POP3 daemon.
+* pr: (coreutils)pr invocation.                 Paginate or columnate files.
 * pr-addr: (gnats)pr-addr.                      Bug report address retrieval.
 * pr-edit: (gnats)pr-edit.                      The edit-pr driver.
-* pr: (coreutils)pr invocation.                 Paginate or columnate files.
 * printenv: (coreutils)printenv invocation.     Print environment variables.
 * printf: (coreutils)printf invocation.         Format and print data.
 * ptx: (coreutils)ptx invocation.               Produce permuted indexes.
@@ -413,8 +415,6 @@ Individual utilities
 * sdiff: (diff)Invoking sdiff.                  Merge 2 files side-by-side.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (coreutils)seq invocation.               Print numeric sequences
-* sha1sum: (coreutils)sha1sum invocation.       Print or check SHA-1 digests.
-* sha2: (coreutils)sha2 utilities.              Print or check SHA-2 digests.
 * shar: (sharutils)shar invocation.             Make a shell archive.
 * shred: (coreutils)shred invocation.           Remove files more securely.
 * sieve: (mailutils)sieve.                      Mail filtering utility.
