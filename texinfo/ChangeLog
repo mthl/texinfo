@@ -1,3 +1,11 @@
+2006-03-21  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\parseargusing, \finishparsearg): Use \argtorun
+	  instead of \next.
+	(\argcheckspacesY): Change the wording of the comment about \next.
+	(\braceorline, \braceorlinexxx): Do not suppose that \next is
+	  preserved during the run of \parsearg, anyway.
+
 2006-03-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (section, subsection, unnumberedsubsec,
