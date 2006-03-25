@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
+@c $Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3099,10 +3099,11 @@ The copyright owner (or owners) is whoever holds legal copyright on the
 work.  In the case of works assigned to the FSF, the owner is `Free
 Software Foundation, Inc.'.
 
-The copyright `line' may actually be split across multiple
-lines, both in the source document and in the output.  This often
-happens for documents with a long history, having many different years
-of publication.
+The copyright `line' may actually be split across multiple lines, both
+in the source document and in the output.  This often happens for
+documents with a long history, having many different years of
+publication.  If you do use several lines, do not indent any of them
+(or anything else in the @code{@@copying} block) in the source file.
 
 @xref{Copyright Notices,,,maintain,GNU Maintenance Instructions}, for
 additional information.
@@ -18606,7 +18607,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
+$Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18672,7 +18673,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.157 2006-03-14 23:44:10 karl Exp $
+@comment $Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
