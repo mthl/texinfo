@@ -1,3 +1,10 @@
+2006-03-24  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/html.c (escape_string): do not free the old string,
+	that is dangerous, only the caller should do it.
+	(add_link): escape the title string.
+	Report from Ralf Wildenhues, 17 Mar 2006 05:08:11 +0100.
+
 2006-03-21  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\parseargusing, \finishparsearg): Use \argtorun
