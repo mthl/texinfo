@@ -1,7 +1,7 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.31 2005-05-15 00:00:07 karl Exp $
+   $Id: html.c,v 1.32 2006-03-25 00:14:37 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -398,7 +398,7 @@ escape_string (char *string)
         }
     }
   while (string[i++]);
-  free (string);
+
   return newstring - newlen;
 }
 
@@ -587,11 +587,15 @@ add_link (char *nodename, char *attributes)
 {
   if (nodename)
     {
+      char *escaped_nodename;
       add_html_elt ("<link ");
       add_word_args ("%s", attributes);
       add_word_args (" href=\"");
       add_anchor_name (nodename, 1);
-      add_word_args ("\" title=\"%s\">\n", nodename);
+      escaped_nodename = escape_string (nodename);
+      add_word_args ("\" title=\"%s\">\n", escaped_nodename);
+      if (escaped_nodename != nodename)
+        free (escaped_nodename);
     }
 }
 
