@@ -244,3 +244,6 @@ set args --no-warn --enable-encoding --split-size=150000 $ttests/xe.tex
 
 # no info trailer on main file
 set args -I /usr/local/gnu/src/groff-1.19/doc --enable-encoding groff.texinfo
+
+# escape & in <link> titles
+set args -o $ttests/titleamp.out --html $ttests/titleamp.tex
