@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.62 2006-03-20 14:12:33 karl Exp $
+$Id: dir-example,v 1.63 2006-03-25 19:22:16 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -133,7 +133,7 @@ Emacs
 * Ebrowse: (ebrowse).   A C++ class browser for Emacs.
 * Ediff: (ediff).       A visual interface for comparing and merging programs.
 * Emacs: (emacs).	The extensible self-documenting text editor.
-* Elisp: (elisp).               GNU Emacs Lisp reference manual.
+* Elisp: (elisp).       The Emacs Lisp Reference Manual.
 * Emacs FAQ: (efaq).	Frequently Asked Questions about Emacs.
 * Emacs MIME: (emacs-mime).   The MIME de/composition library.
 * Eshell: (eshell).     A command shell implemented in Emacs Lisp.
