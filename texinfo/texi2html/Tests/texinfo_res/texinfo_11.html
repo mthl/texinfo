@@ -307,6 +307,7 @@ fixed-width font, and extra spaces and blank lines are
 significant.  In the Info file, an analogous result is
 obtained by indenting each line with five spaces.
 </pre></td></tr></table>
+
 <p>Write an <code>@example</code> command at the beginning of a line by itself.
 Mark the end of the example
 with an <code>@end example</code> command, also written at the beginning of a
@@ -323,6 +324,7 @@ mv foo bar
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">mv foo bar
 </pre></td></tr></table>
+
 <p>The lines containing <code>@example</code> and <code>@end example</code>
 will disappear from the output.
 To make the output look good,
@@ -443,6 +445,7 @@ ending <code>@end verbatim</code> will appear in the output.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@verbatiminclude <var>filename</var>
 </pre></td></tr></table>
+
 <p>The contents of <var>filename</var> is printed in a verbatim environment
 (see section <a href="#SEC145"><code>@verbatim</code></a>).  Generally, the file is printed
 exactly as it is, with all special characters and white space retained.
@@ -475,6 +478,7 @@ with the <code>@example</code> command.
 <table><tr><td>&nbsp;</td><td><pre class="lisp">This is an example of text written between an
 <code>@lisp</code> command and an <code>@end lisp</code> command.
 </pre></td></tr></table>
+
 <p>Use <code>@lisp</code> instead of <code>@example</code> to preserve information
 regarding the nature of the example.  This is useful, for example, if
 you write a function that evaluates only and all the Lisp code in a
@@ -526,6 +530,7 @@ non-small companion commands.
 <code>@end smallexample</code>.  In Info this text appears in its normal size;
 but in a 7 by 9.25 inch manual, this text appears in a smaller font.
 </pre></td></tr></table>
+
 <p>The <code>@small&hellip;</code> commands make it easier to prepare manuals
 without forcing you to edit examples by hand to fit them onto narrower
 pages.
@@ -572,6 +577,7 @@ appears in the same font it would have appeared in without the
 and an <code>@end display</code> command.  The <code>@display</code> command
 indents the text, but does not fill it.
 </pre></td></tr></table>
+
 <a name="IDX133"></a>
 <p>Texinfo also provides a command <code>@smalldisplay</code>, which is like
 <code>@display</code> but uses a smaller font in <code>@smallbook</code> format.
@@ -608,6 +614,7 @@ and an <code>@end format</code> command.  As you can see
 from this example,
 the <code>@format</code> command does not fill the text.
 </pre></td></tr></table>
+
 <a name="IDX134"></a>
 <p>Texinfo also provides a command <code>@smallformat</code>, which is like
 <code>@format</code> but uses a smaller font in <code>@smallbook</code> format.
@@ -659,6 +666,7 @@ This line is exdented.
 This line follows the exdented line.
 The @end example comes on the next line.
 </pre></td></tr></table>
+
 <p>In practice, the <code>@exdent</code> command is rarely used.
 Usually, you un-indent text by ending the example and
 returning the page to its normal width.
@@ -769,13 +777,14 @@ that follows after it.  (This whole example is between
 <p>produces
 </p>
 <table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><pre class="example">This is an example
-</pre></td></tr></table><pre class="display">
-
+</pre></td></tr></table>
+<pre class="display">
 This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
 <code>@display</code> and <code>@end display</code>.)
 </pre></td></tr></table>
+
 <p>To adjust the number of blank lines properly in the Info file output,
 remember that the line containing <code>@noindent</code> does not generate a
 blank line, and neither does the <code>@end example</code> line.

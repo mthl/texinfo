@@ -370,6 +370,7 @@ Emacs/W3, for example:
 info:emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
 </pre></td></tr></table>
+
 <p>The <code>info</code> program itself does not follow URI's of any kind.
 </p>
 
@@ -523,7 +524,6 @@ hard-to-define circumstances the extra spaces cause extra space to
 appear in the output, so beware.
 </li></ul>
 
-
 <a name="IDX14"></a>
 <p>As a general rule, a command requires braces if it mingles among other
 text; but it does not need braces if it starts a line of its own.  The
@@ -611,11 +611,9 @@ what they look like.  Furthermore, <code>makeinfo</code> does nothing special
 with tabs, and thus a tab character in your input file may appear
 differently in the output, for example, in indented text.
 </p>
-
 <p>To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
 spaces when you press the <kbd>TAB</kbd> key.
 </p>
-
 <p>Also, you can run <code>untabify</code> in Emacs to convert tabs in a region
 to multiple spaces.
 </p></blockquote>
@@ -718,8 +716,8 @@ file <strong>must</strong> begin with lines like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@bye
 </pre></td></tr></table>
-<a name="IDX19"></a>
 
+<a name="IDX19"></a>
 <p>Here's an explanation:
 </p>
 <ul>
@@ -874,7 +872,6 @@ not.  The complete file, without interspersed comments, is shown in
 <a name="SEC13"></a>
 <h3 class="subheading"> Part 1: Header </h3>
 
-
 <p>The header does not appear in either the Info file or the
 printed output.  It sets various parameters, including the
 name of the Info file and the title used in the header.
@@ -885,9 +882,9 @@ name of the Info file and the title used in the header.
 @settitle Sample Manual 1.0
 @c %**end of header
 </pre></td></tr></table>
+
 <a name="SEC14"></a>
 <h3 class="subheading"> Part 2: Summary Description and Copyright </h3>
-
 
 <p>A real manual includes more text here, according to the license under
 which it is distributed.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>.
@@ -898,9 +895,9 @@ This is a short example of a complete Texinfo file, version 1.0.
 Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @end copying
 </pre></td></tr></table>
+
 <a name="SEC15"></a>
 <h3 class="subheading"> Part 3: Titlepage, Contents, Copyright </h3>
-
 
 <p>The titlepage segment does not appear in the online output, only in the
 printed manual.  We use the <code>@insertcopying</code> command to
@@ -920,9 +917,9 @@ writing it out again; it is output on the back of the title page.  The
 @c Output the table of contents at the beginning.
 @contents
 </pre></td></tr></table>
+
 <a name="SEC16"></a>
 <h3 class="subheading"> Part 4: `Top' Node and Master Menu </h3>
-
 
 <p>The `Top' node contains the master menu for the Info file.  Since a
 printed manual uses a table of contents rather than a menu, the master
@@ -934,6 +931,7 @@ begins with a brief description of the manual, no other text is needed.
 @node Top
 @end ifnottex
 </pre></td></tr></table>
+
 <table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 
 @menu
@@ -943,9 +941,9 @@ begins with a brief description of the manual, no other text is needed.
 @end menu
 </pre></td></tr></table>
 
+
 <a name="SEC17"></a>
 <h3 class="subheading"> Part 5: The Body of the Document </h3>
-
 
 <p>The body segment contains all the text of the document, but not the
 indices or table of contents.  This example illustrates a node and a
@@ -970,9 +968,9 @@ This is the second item.
 @end enumerate
 </pre></td></tr></table>
 
+
 <a name="SEC18"></a>
 <h3 class="subheading"> Part 6: The End of the Document </h3>
-
 
 <p>The end segment contains commands for generating an index in a node and
 unnumbered chapter of its own, and the <code>@bye</code> command that marks
@@ -985,6 +983,7 @@ the end of the document.
 
 @bye
 </pre></td></tr></table>
+
 
 <a name="SEC19"></a>
 <h3 class="subheading"> Some Results </h3>

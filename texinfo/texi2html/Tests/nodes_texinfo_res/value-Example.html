@@ -95,6 +95,7 @@ Set the flags:
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
 </pre></td></tr></table>
+
 </li><li>
 Write text for the <code>@copying</code> section (see section <a href="copying.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
 
@@ -109,6 +110,7 @@ Copyright &hellip;
 Permission is granted &hellip;
 @end copying
 </pre></td></tr></table>
+
 </li><li>
 Write text for the title page, for people reading the printed manual:
 
@@ -137,12 +139,14 @@ Write text for the Top node, for people reading the Info file:
 &hellip;
 @end ifnottex
 </pre></td></tr></table>
+
 <p>After you format the manual, the <code>@value</code> constructs have been
 expanded, so the output contains text like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
 of `The GNU Make Manual', for `make', Version 3.63 Beta.
-</pre></td></tr></table></li></ol>
+</pre></td></tr></table>
+</li></ol>
 
 <p>When you update the manual, you change only the values of the flags; you
 do not need to edit the three sections.

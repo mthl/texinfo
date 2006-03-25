@@ -124,6 +124,7 @@ written as the second part of the menu entry.
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
 </pre></td></tr></table>
+
 <p>This tells Emacs to merge the system <tt>`dir'</tt> file with the <tt>`dir'</tt>
 file in <tt>`/home/bob/info'</tt>.  Thus, Info will list the
 <tt>`/home/bob/info/info-test'</tt> file as a menu entry in the
@@ -152,6 +153,7 @@ variable as follows:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
+
 </li><li>
 In a <tt>`.profile'</tt> file, you would achieve the same effect by
 writing:
@@ -159,13 +161,14 @@ writing:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
+
 </li><li>
 <a name="IDX415"></a>
 In a <tt>`autoexec.bat'</tt> file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
-</pre></td></tr></table></li></ul>
-
+</pre></td></tr></table>
+</li></ul>
 
 <p>The <samp>`.'</samp> indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's

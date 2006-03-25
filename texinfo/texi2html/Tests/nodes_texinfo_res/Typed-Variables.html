@@ -101,7 +101,6 @@ and is followed on the same line by the category of the entity
 being described, the data type, and the name of this particular
 entity.
 </p>
-
 <p>For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr {Global Flag} int enable
@@ -114,12 +113,14 @@ entity.
 <table><tr><td>&nbsp;</td><td><pre class="example">-- Global Flag: int enable
 &hellip;
 </pre></td></tr></table>
+
 <p>The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevr
 </pre></td></tr></table>
+
 <p><code>@deftypevr</code> creates an entry in the index of variables for
 <var>name</var>.
 </p>
@@ -130,7 +131,6 @@ entity.
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
 to <samp>`@deftypevr Variable &hellip;'</samp>.
 </p>
-
 <p>For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypevar int fubar
@@ -150,6 +150,7 @@ to <samp>`@deftypevr Variable &hellip;'</samp>.
 <var>body-of-description</var>
 @end deftypevar
 </pre></td></tr></table>
+
 <p><code>@deftypevar</code> creates an entry in the index of variables for
 <var>name</var>.
 </p></dd>

@@ -100,36 +100,45 @@ text of the link:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
 </pre></td></tr></table>
+
 
 <p>An example of the two-argument form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>that is, the Info output is this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site (ftp://ftp.gnu.org/gnu)
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>and the HTML output is this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
 holds programs and texts.
 </pre></td></tr></table>
 
+
 <p>An example of the three-argument form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The @uref{/man.cgi/1/ls,,ls(1)} program &hellip;
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The <a href="/man.cgi/1/ls">ls(1)</a> program &hellip;
 </pre></td></tr></table>
+
 <p>but with HTML:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program &hellip;
 </pre></td></tr></table>
+
 <p>To merely indicate a url without creating a link people can follow, use
 <code>@url</code> (see section <a href="url.html#SEC135"><code>@url</code></a>).
 </p>

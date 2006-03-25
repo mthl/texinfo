@@ -188,6 +188,7 @@ occurs, or not long after it.  The buffer will look like this:
 &lowast;
 ---------- Buffer: *Info Region* ----------
 </pre></td></tr></table>
+
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
 odd error messages.  For example, the following cross reference fails to format:
 </p>
@@ -210,11 +211,13 @@ closing parenthesis:
 <p>Formatting produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note for more info.: Catching Mistakes)
 </pre></td></tr></table>
+
 <p>The only way for you to detect this error is to realize that the
 reference should have looked like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(*Note Catching Mistakes::, for more info.)
 </pre></td></tr></table>
+
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
 <kbd>RET</kbd></kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:
@@ -287,6 +290,7 @@ l.27
 ?
 ---------- Buffer: *tex-shell* ----------
 </pre></td></tr></table>
+
 <p>In this case, TeX produced an accurate and
 understandable error message:
 </p>
@@ -416,6 +420,7 @@ produced by running <code>texinfo-show-structure</code> on this manual:
  4469:        @subsection @code{@@node} Line Tips
  &hellip;
 </pre></td></tr></table>
+
 <p>This says that lines 4337, 4393, and 4417 of <tt>`texinfo.texi'</tt> begin
 with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection</code>
 commands respectively.  If you move your cursor into the <samp>`*Occur*'</samp>
@@ -701,6 +706,7 @@ In brief, the steps are:
 M-x Info-tagify
 M-x Info-validate
 </pre></td></tr></table>
+
 <p>After you have validated the node structure, you can rerun
 <code>texinfo-format-buffer</code> in the normal way so it will construct a
 tag table and split the file automatically, or you can make the tag

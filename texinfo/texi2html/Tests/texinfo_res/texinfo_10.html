@@ -383,6 +383,7 @@ write
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@kbd{M-x shell}
 </pre></td></tr></table>
+
 <a name="IDX120"></a>
 <a name="IDX121"></a>
 <p>The <code>@kbd</code> command has the same effect as <code>@code</code> in Info,
@@ -466,6 +467,7 @@ keyboard, as in:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@key{RET}
 </pre></td></tr></table>
+
 <p>You can use the <code>@key</code> command within the argument of an
 <code>@kbd</code> command when the sequence of characters to be typed
 includes one or more keys that are described by name.
@@ -474,6 +476,7 @@ includes one or more keys that are described by name.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@kbd{C-x @key{ESC}}
 </pre></td></tr></table>
+
 <p>Here is a list of the recommended names for keys:
 <a name="IDX126"></a>
 <a name="IDX127"></a>
@@ -625,6 +628,7 @@ delimiters, in braces.  Text is printed in a fixed-width font:
 <table><tr><td>&nbsp;</td><td><pre class="example">How many <tt>@ </tt>-escapes does one need to print this
 <tt>@a @b @c</tt> string or these <tt>@'e?`{}!`\</tt> this?
 </pre></td></tr></table>
+
 <p>This is in contrast to <code>@samp</code> (see the previous
 section), whose argument is normal Texinfo text, where the characters
 <code>@{}</code> are special; with <code>@verb</code>, nothing is special except
@@ -682,7 +686,6 @@ type @samp{rm @var{filename}}.
 <blockquote><p>To delete file <var>filename</var>, type <samp>`rm <var>filename</var>'</samp>.
 </p></blockquote>
 
-
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
 <code>@samp</code>, <code>@file</code>, etc.)
 </p>
@@ -702,6 +705,7 @@ this:
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
+
 <p>In some documentation styles, metasyntactic variables are shown with
 angle brackets, for example:
 </p>
@@ -743,7 +747,8 @@ section).
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The @env{PATH} environment variable &hellip;
-</pre></td></tr></table><p>produces
+</pre></td></tr></table>
+<p>produces
 </p><blockquote><p>The <code>PATH</code> environment variable &hellip;
 </p></blockquote>
 
@@ -816,7 +821,8 @@ the <tt>`/usr/local/emacs/lisp'</tt> directory.
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The command @command{ls} lists directory contents.
-</pre></td></tr></table><p>produces
+</pre></td></tr></table>
+<p>produces
 </p><blockquote><p>The command <code>ls</code> lists directory contents.
 </p></blockquote>
 
@@ -857,7 +863,8 @@ example, <samp>`-l'</samp> or <samp>`--version'</samp> or
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The option @option{-l} produces a long listing.
-</pre></td></tr></table><p>produces
+</pre></td></tr></table>
+<p>produces
 </p><blockquote><p>The option <samp>`-l'</samp> produces a long listing.
 </p></blockquote>
 
@@ -999,10 +1006,12 @@ not actually exist.  For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">For example, the url might be @url{http://example.org/path}.
 </pre></td></tr></table>
+
 <p>which produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">For example, the url might be <a href="http://example.org/path">http://example.org/path</a>.
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="email"></a>
@@ -1037,10 +1046,12 @@ For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Send bug reports to @email{bug-texinfo@@gnu.org},
 suggestions to the @email{bug-texinfo@@gnu.org, same place}.
-</pre></td></tr></table><p>produces
+</pre></td></tr></table>
+<p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="display">Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
 suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="Emphasis"></a>
@@ -1119,6 +1130,7 @@ files in the directory.
 <table><tr><td>&nbsp;</td><td><pre class="example">     *Caution*: `rm * .[^.]*' removes _all_
      files in the directory.
 </pre></td></tr></table>
+
 <p>The <code>@strong</code> command is seldom used except to mark what is, in
 effect, a typographical element, such as the word `Caution' in the
 preceding example.
@@ -1165,6 +1177,7 @@ possible) between braces in lower case, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">The ACM and IEEE are technical societies.
 </pre></td></tr></table>
+
 <p>TeX typesets the small caps font in a manner that prevents the
 letters from `jumping out at you on the page'.  This makes small caps
 text easier to read than text in all upper case&mdash;but it's usually
@@ -1234,6 +1247,7 @@ output.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 2 2)    ; Add two plus two.
 </pre></td></tr></table>
+
 <p>If possible, you should avoid using the other three font commands.  If
 you need to use one, it probably indicates a gap in the Texinfo
 language.

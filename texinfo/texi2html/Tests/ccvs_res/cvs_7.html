@@ -130,6 +130,7 @@ foo/bar'</samp>!  Instead, you have to
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd foo
 $ cvs add bar
 </pre></td></tr></table>
+
 <a name="IDX129"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i>
@@ -171,6 +172,7 @@ be used.  You will not be prompted for a description.
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs add backend.c
 $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </pre></td></tr></table>
+
 <p>When you add a file it is added only on the branch
 which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
 later merge the additions to another branch if you want
@@ -261,6 +263,7 @@ $ cvs ci -m &quot;Removed unneeded files&quot;
 cvs commit: Examining .
 cvs commit: Committing .
 </pre></td></tr></table>
+
 <p>As a convenience you can remove the file and <code>cvs
 remove</code> it in one step, by specifying the <samp>`-f'</samp>
 option.  For example, the above example could also be
@@ -275,6 +278,7 @@ $ cvs ci -m &quot;Removed unneeded files&quot;
 cvs commit: Examining .
 cvs commit: Committing .
 </pre></td></tr></table>
+
 <p>If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
@@ -290,6 +294,7 @@ $ cvs add oj.c
 U oj.c
 cvs add: oj.c, version 1.1.1.1, resurrected
 </pre></td></tr></table>
+
 <p>If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
@@ -299,6 +304,7 @@ $ cvs update oj.c
 cvs update: warning: oj.c was lost
 U oj.c
 </pre></td></tr></table>
+
 <p>When you remove a file it is removed only on the branch
 which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
 later merge the removals to another branch if you want
@@ -421,6 +427,7 @@ $ cvs remove <var>old</var>
 $ cvs add <var>new</var>
 $ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
 </pre></td></tr></table>
+
 <p>This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was
 done.  Note that to access the history of the file you
@@ -472,7 +479,6 @@ The log of changes is maintained intact.
 </li><li>
 The revision numbers are not affected.
 </li></ul>
-
 
 <p>Disadvantages:
 </p>
@@ -530,10 +536,10 @@ $ cvs tag -d <var>tag1</var> <var>new</var>
 $ cvs tag -d <var>tag2</var> <var>new</var>
 &hellip;
 </pre></td></tr></table>
+
 <p>By removing the tags you will be able to check out old
 revisions.
 </p>
-
 <p>Advantages:
 </p>
 <ul>
@@ -548,7 +554,6 @@ The log of changes is maintained intact.
 </li><li>
 The revision numbers are not affected.
 </li></ul>
-
 
 <p>Disadvantages:
 </p>
@@ -601,6 +606,7 @@ Rename the directory inside the repository.
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>parent-dir</var>
 $ mv <var>old-dir</var> <var>new-dir</var>
 </pre></td></tr></table>
+
 </li><li>
 Fix the <small>CVS</small> administrative files, if necessary (for
 instance if you renamed an entire module).

@@ -154,6 +154,7 @@ example, assuming you're in a working copy:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs tag -b rel-1-0-patches
 </pre></td></tr></table>
 
+
 <p>This splits off a branch based on the current revisions
 in the working copy, assigning that branch the name
 <samp>`rel-1-0-patches'</samp>.
@@ -170,6 +171,7 @@ working copy, by using <code>rtag</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </pre></td></tr></table>
+
 <p><samp>`-r rel-1-0'</samp> says that this branch should be
 rooted at the revision that
 corresponds to the tag <samp>`rel-1-0'</samp>.  It need not
@@ -220,6 +222,7 @@ the tag name of the branch (see section <a href="#SEC56">Creating a branch</a>):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -r rel-1-0-patches tc
 </pre></td></tr></table>
+
 <p>Or, if you already have a working copy, you can switch
 it to a given branch with <samp>`update -r'</samp>:
 </p>
@@ -231,6 +234,7 @@ it to a given branch with <samp>`update -r'</samp>:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
 $ cvs update -r rel-1-0-patches
 </pre></td></tr></table>
+
 <p>It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
 command will switch it to the named branch.  And
@@ -280,6 +284,7 @@ File: backend.c         Status: Up-to-date
         rel-0-4                     (revision: 1.4)
 
 </pre></td></tr></table>
+
 <p>Don't be confused by the fact that the branch numbers
 for each file are different (<samp>`1.7.2'</samp> and
 <samp>`1.4.2'</samp> respectively).  The branch tag is the
@@ -321,6 +326,7 @@ series of increments (see section <a href="cvs_4.html#SEC45">Revision numbers</a
        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
        +-----+    +-----+    +-----+    +-----+    +-----+
 </pre></td></tr></table>
+
 <p>However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
 where each branch is a self-maintained line of
@@ -359,6 +365,7 @@ Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
                     +---------+    +---------+    +---------+
 
 </pre></td></tr></table>
+
 
 
 <p>The exact details of how the branch number is
@@ -431,6 +438,7 @@ to be.  If <code>R4patches</code> is assigned to the branch
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs admin -NR4patches:1.4.2 numbers.c
 </pre></td></tr></table>
+
 <p>It only works if at least one revision is already
 committed on the branch.  Be very careful so that you
 do not assign the tag to the wrong number.  (There is
@@ -495,6 +503,7 @@ $ cvs update -j R1fix m.c        # Merge all changes made on the branch,
 
 $ cvs commit -m &quot;Included R1fix&quot; # Create revision 1.5.
 </pre></td></tr></table>
+
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
 new revision.  See section <a href="cvs_10.html#SEC86">Conflicts example</a>.
@@ -509,6 +518,7 @@ same effect as above could be achieved with this:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -j R1fix mod
 $ cvs commit -m &quot;Included R1fix&quot;
 </pre></td></tr></table>
+
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section <a href="#SEC63">Merging can add or remove files</a>, for more.
 </p>
@@ -579,17 +589,20 @@ example, in this case the simplest way would be
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j 1.2.2.2 -j R1fix m.c    # Merge changes from 1.2.2.2 to the
                                       # head of the R1fix branch
 </pre></td></tr></table>
+
 <p>The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j R1fix:yesterday -j R1fix m.c
 </pre></td></tr></table>
+
 <p>Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Merging-two-revisions"></a>
 <a name="SEC62"></a>
@@ -649,6 +662,7 @@ new revision: 1.3; previous revision: 1.2
 done
 $
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Merging-adds-and-removals"></a>
 <a name="SEC63"></a>
@@ -686,6 +700,7 @@ cvs ci -m &quot;added d, removed a&quot;
 cvs update -A
 cvs update -jbranchtag
 </pre></td></tr></table>
+
 <p>After these commands are executed and a <samp>`cvs commit'</samp> is done,
 file <tt>`a'</tt> will be removed and file <tt>`d'</tt> added in the main branch.
 </p>
@@ -766,6 +781,7 @@ key $<i></i>Revision: 1.1.2.1 $
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
 . . .
 </pre></td></tr></table>
+
 <p>What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
 directory.  So, since the keyword changed from
@@ -789,6 +805,7 @@ $ cat file1
 key $<i></i>Revision$
 . . .
 </pre></td></tr></table>
+
 <p>What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore
 merging the changes between them into the working

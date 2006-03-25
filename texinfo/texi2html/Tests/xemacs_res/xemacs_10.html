@@ -89,7 +89,8 @@ on the features of the minibuffer.
 invoke the command <code>forward-char</code>, type:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x forward-char <kbd>RET</kbd>
-</pre></td></tr></table><p>or
+</pre></td></tr></table>
+<p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">M-x fo <kbd>TAB</kbd> c <kbd>RET</kbd>
 </pre></td></tr></table>
 
@@ -113,6 +114,7 @@ parsing arguments for interactive use of a function.  For example, write:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
 </pre></td></tr></table>
+
 <p>to make <code>arg</code> be the prefix argument when <code>foo</code> is called as a
 command.  The call to <code>interactive</code> is actually a declaration
 rather than a function; it tells <code>call-interactively</code> how to read

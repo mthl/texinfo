@@ -143,6 +143,7 @@ customized output in the Info file.
 <var>text</var> &hellip; \<var>param1</var>\ &hellip;
 @end macro
 </pre></td></tr></table>
+
 <p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, &hellip; correspond to
 arguments supplied when the macro is subsequently used in the document
 (described in the next section).
@@ -191,6 +192,7 @@ a\arg\b
 &hellip;
 @rmac{1@rmac{text}2}
 </pre></td></tr></table>
+
 <p>This produces the output `a1atextb2b'.  With <samp>`@macro'</samp> instead of
 <samp>`@rmacro'</samp>, an error message is given.
 </p>
@@ -203,6 +205,7 @@ For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@unmacro foo
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="Invoking-Macros"></a>
@@ -230,6 +233,7 @@ For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@<var>macroname</var> {<var>arg1</var>, <var>arg2</var>, &hellip;}
 </pre></td></tr></table>
+
 <p>and the result will be just as if you typed the body of
 <var>macroname</var> at that spot.  For example:
 </p>
@@ -238,10 +242,12 @@ Together: \p\ &amp; \q\.
 @end macro
 @foo{a, b}
 </pre></td></tr></table>
+
 <p>produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">Together: a &amp; b.
 </pre></td></tr></table>
+
 <a name="IDX315"></a>
 <p>Thus, the arguments and parameters are separated by commas and delimited
 by braces; any whitespace after (but not before) a comma is ignored.
@@ -254,10 +260,12 @@ No arguments here.
 @end macro
 @argless{}
 </pre></td></tr></table>
+
 <p>produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">No arguments here.
 </pre></td></tr></table>
+
 <a name="IDX316"></a>
 <a name="IDX317"></a>
 <p>To insert a comma, brace, or backslash in an argument, prepend a
@@ -279,10 +287,12 @@ Twice: \p\ &amp; \p\.
 @end macro
 @bar aah
 </pre></td></tr></table>
+
 <p>produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">Twice: aah &amp; aah.
 </pre></td></tr></table>
+
 <p>If the macro is defined to take a single argument, and is invoked with
 braces, the braced text is passed as the argument, regardless of
 commas.  For example:
@@ -292,10 +302,12 @@ Twice: \p\ &amp; \p\.
 @end macro
 @bar{a,b}
 </pre></td></tr></table>
+
 <p>produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">Twice: a,b &amp; a,b.
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="Macro-Details"></a>
@@ -352,6 +364,7 @@ something involving \arg\ somehow
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
 </pre></td></tr></table>
+
 </li><li>
 It is best to avoid comments inside macro definitions.
 
@@ -392,6 +405,7 @@ new command name, an equals sign, and the existing command name.
 Whitespace around the equals sign is ignored.  Thus:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@alias <var>new</var> = <var>existing</var>
 </pre></td></tr></table>
+
 <p>For example, if your document contains citations for both books and
 some other media (movies, for example), you might like to define a
 macro <code>@moviecite{}</code> that does the same thing as an ordinary
@@ -400,6 +414,7 @@ You'd do this as follows:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@alias moviecite = cite
 </pre></td></tr></table>
+
 <p>Macros do not always have the same effect due to vagaries of argument
 parsing.  Also, aliases are much simpler to define than macros.  So the
 command is not redundant.  (It was also heavily used in the Jargon File!)

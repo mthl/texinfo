@@ -88,11 +88,13 @@ this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@defindex <var>name</var>
 </pre></td></tr></table>
+
 <p>The name of an index should be a two letter word, such as <samp>`au'</samp>.
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@defindex au
 </pre></td></tr></table>
+
 <p>This defines a new index, called the <samp>`au'</samp> index.  At the same
 time, it creates a new indexing command, <code>@auindex</code>, that you
 can use to make index entries.  Use the new indexing command just as
@@ -120,6 +122,7 @@ the predefined indices.  For example:
 
 @printindex au
 </pre></td></tr></table>
+
 <p>The <code>@defcodeindex</code> is like the <code>@defindex</code> command, except
 that, in the printed output, it prints entries in an <code>@code</code> font
 instead of a roman font.  Thus, it parallels the <code>@findex</code> command

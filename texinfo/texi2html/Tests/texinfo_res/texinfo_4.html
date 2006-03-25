@@ -190,6 +190,7 @@ Published by &hellip;
 &hellip;
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="Texinfo-File-Header"></a>
 <a name="SEC43"></a>
@@ -233,6 +234,7 @@ instance, is another command often included in the header.  See section <a href=
 @settitle Sample Manual 1.0
 @c %**end of header
 </pre></td></tr></table>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC44">3.2.1 The First Line of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The first line of a Texinfo file.
 </td></tr>
@@ -319,6 +321,7 @@ specification tells Emacs to use Texinfo mode.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@c %**start of header
 </pre></td></tr></table>
+
 <p>Write the start-of-header line on the second line of a Texinfo file.
 Follow the start-of-header line with <code>@setfilename</code> and
 <code>@settitle</code> lines and, optionally, with other commands that
@@ -360,6 +363,7 @@ or TeX, a Texinfo file must contain a line that looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@setfilename <var>info-file-name</var>
 </pre></td></tr></table>
+
 <p>Write the <code>@setfilename</code> command at the beginning of a line and
 follow it on the same line by the Info file name.  Do not write anything
 else on the line; anything on the line after the command is considered
@@ -434,6 +438,7 @@ a line that looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@settitle <var>title</var>
 </pre></td></tr></table>
+
 <p>Write the <code>@settitle</code> command at the beginning of a line and
 follow it on the same line by the title.  This tells TeX the title to
 use in a header or footer.  Do not write anything else on the line;
@@ -503,6 +508,7 @@ Texinfo comment that looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@c %**end of header
 </pre></td></tr></table>
+
 <p>See section <a href="#SEC45">Start of Header</a>.
 </p>
 
@@ -579,6 +585,7 @@ Permission is granted to &hellip;
 @end quotation
 @end copying
 </pre></td></tr></table>
+
 <p>The <code>@quotation</code> has no legal significance; it's there to improve
 readability in some contexts.
 </p>
@@ -599,6 +606,7 @@ itself has the following legally defined sequence:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
 </pre></td></tr></table>
+
 <a name="IDX74"></a>
 <p>The word `Copyright' must always be written in English, even if the
 manual is otherwise in another language.  This is due to international
@@ -645,6 +653,7 @@ itself, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 </pre></td></tr></table>
+
 <p>It inserts the text previously defined by <code>@copying</code>.  Legally, it
 must be used on the copyright page in the printed manual
 (see section <a href="#SEC56">Copyright Page</a>).
@@ -838,6 +847,7 @@ have an especially long title.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@titlefont{Texinfo}
 </pre></td></tr></table>
+
 <p>Use the <code>@center</code> command at the beginning of a line to center
 the remaining text on that line.  Thus,
 </p>
@@ -867,6 +877,7 @@ command.)
 &hellip;
 @end titlepage
 </pre></td></tr></table>
+
 <p>The spacing of the example fits an 8.5 by 11 inch manual.
 </p>
 
@@ -946,6 +957,7 @@ an <code>@author</code> command:
 &hellip;
 @end titlepage
 </pre></td></tr></table>
+
 <p>You may also combine the <code>@titlefont</code> method described in the
 previous section and <code>@title</code> method described in this one.  This
 may be useful if you have a very long title.  Here is a real-life example:
@@ -1011,6 +1023,7 @@ next (see section <a href="#SEC49">Document Permissions</a>):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 </pre></td></tr></table>
+
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
 </p>
@@ -1027,6 +1040,7 @@ Published by &hellip;
 Cover art by &hellip;
 @end titlepage
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="end-titlepage"></a>
@@ -1256,6 +1270,7 @@ Additional general information.
 @end menu
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="Master-Menu-Parts"></a>
 <a name="SEC61"></a>
@@ -1335,6 +1350,7 @@ Beginning a Texinfo File
 @end menu
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="Global-Document-Commands"></a>
 <a name="SEC62"></a>
@@ -1409,6 +1425,7 @@ descriptive text.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
 </pre></td></tr></table>
+
 <p><code>@documentdescription</code> must be specified before the first node of
 the document.
 </p>
@@ -1454,6 +1471,7 @@ start on a fresh odd-numbered page:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
 </pre></td></tr></table>
+
 <p>You can specify one of three alternatives with the
 <code>@setchapternewpage</code> command:
 </p>
@@ -1530,6 +1548,7 @@ followed by either <samp>`asis'</samp> or a number:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
 </pre></td></tr></table>
+
 <p>The indentation is according to the value of <var>indent</var>:
 </p>
 <dl compact="compact">
@@ -1590,6 +1609,7 @@ beginning of a line followed by either <samp>`asis'</samp> or a number:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@exampleindent <var>indent</var>
 </pre></td></tr></table>
+
 <p>The indentation is according to the value of <var>indent</var>:
 </p>
 <dl compact="compact">

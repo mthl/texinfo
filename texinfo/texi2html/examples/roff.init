@@ -774,10 +774,11 @@ sub t2h_roff_comment($)
 }
 
 # a paragraph
-sub t2h_roff_paragraph($$$$$$$$$)
+sub t2h_roff_paragraph($$$$$$$$$$)
 {
     my $text = shift;
     my $align = shift;
+    my $indent = shift;
     my $paragraph_command = shift;
     my $paragraph_command_formatted = shift;
     my $paragraph_number = shift;

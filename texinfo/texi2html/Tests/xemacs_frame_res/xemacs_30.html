@@ -269,8 +269,8 @@ Documentation:
 *Column beyond which automatic line-wrapping should happen.
 Automatically becomes local when set in any fashion.
 </pre></td></tr></table>
-<a name="IDX1475"></a>
 
+<a name="IDX1475"></a>
 <p>The star at the beginning of the documentation indicates that this variable
 is an option.  <kbd>C-h v</kbd> is not restricted to options; it allows any
 variable name.
@@ -448,6 +448,7 @@ customization buffer:
    [State]: this option is unchanged from its standard setting.
 Maximum length of kill ring before oldest elements are thrown away.
 </pre></td></tr></table>
+
 <p>  The text following <samp>`[Hide]'</samp>, <samp>`30'</samp> in this case, indicates
 the current value of the option.  If you see <samp>`[Show]'</samp> instead of
 <samp>`[Hide]'</samp>, it means that the value is hidden; the customization
@@ -475,6 +476,7 @@ change to say that you have edited the value:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">[State]: you have edited the value as text, but not set the option.
 </pre></td></tr></table>
+
 <a name="IDX1480"></a>
 <p>  Editing the value does not actually set the option variable.  To do
 that, you must <em>set</em> the option.  To do this, invoke the word
@@ -484,6 +486,7 @@ that, you must <em>set</em> the option.  To do this, invoke the word
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">[State]: you have set this option, but not saved it for future sessions.
 </pre></td></tr></table>
+
 <p>   You don't have to worry about specifying a value that is not valid;
 setting the option checks for validity and will not really install an
 unacceptable value.
@@ -634,6 +637,7 @@ Attributes: [ ] Bold: [Toggle]  off (nil)
             [ ] Size: 
             [ ] Strikethru: off
 </pre></td></tr></table>
+
 <p>  Each face attribute has its own line.  The <samp>`[<var>x</var>]'</samp> field
 before the attribute name indicates whether the attribute is
 <em>enabled</em>; <samp>`X'</samp> means that it is.  You can enable or disable the
@@ -785,6 +789,7 @@ or nil (try the default directory).
 Automatically becomes local when set in any fashion.
 ;;
 </pre></td></tr></table>
+
 <a name="IDX1495"></a>
 <p>  <kbd>M-x edit-options</kbd> goes one step further and immediately selects the
 <samp>`*List Options*'</samp> buffer; this buffer uses the major mode Options mode,
@@ -914,6 +919,7 @@ the case of:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(default-value 'fill-column)
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="File-Variables"></a>
 <a name="SEC362"></a>
@@ -974,6 +980,7 @@ local variables list, it should be the first entry in the list.
 ;;; comment-end:&quot;***&quot; ***
 ;;; End: ***
 </pre></td></tr></table>
+
 <p>  Note that the prefix is <samp>`;;; '</samp> and the suffix is <samp>` ***'</samp>.
 Note also that comments in the file begin with and end with the same
 strings.  Presumably the file contains code in a language which is
@@ -1009,11 +1016,13 @@ mode and variable settings should be.  For example, these are all legal:
         ;;; -*- mode: postscript; version-control: never -*-
         ;;; -*- tags-file-name: &quot;/foo/bar/TAGS&quot; -*-
 </pre></td></tr></table>
+
 <p>For historical reasons, the syntax <code>`-*- modename -*-'</code> is allowed
 as well; for example, you can use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        ;;; -*- emacs-lisp -*-
 </pre></td></tr></table>
+
 <a name="IDX1503"></a>
 <p>The variable <code>enable-local-variables</code> controls the use of local
 variables lists in files you visit.  The value can be <code>t</code>,
@@ -1642,6 +1651,7 @@ abbreviation as an alternate representation.)
 
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="Key-Bindings-Using-Strings"></a>
 <a name="SEC372"></a>
@@ -1669,6 +1679,7 @@ key sequences.  Thus you can use commands like the following:
 <table><tr><td>&nbsp;</td><td><pre class="example">;;; Bind <code>end-of-line</code> to <kbd>C-f</kbd>
 (global-set-key &quot;\C-f&quot; 'end-of-line)
 </pre></td></tr></table>
+
 <p>Note, however, that in some cases you may be binding more than one
 key sequence by using a single command.  This situation can 
 arise because in ASCII, <kbd>C-i</kbd> and <kbd>TAB</kbd> have
@@ -1676,6 +1687,7 @@ the same representation.  Therefore, when Emacs sees:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key &quot;\C-i&quot; 'end-of-line)
 </pre></td></tr></table>
+
 <p>it is unclear whether the user intended to bind <kbd>C-i</kbd> or <kbd>TAB</kbd>.
 The solution XEmacs adopts is to bind both of these key
 sequences.
@@ -1685,11 +1697,13 @@ sequences.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        (define-key global-map &quot;\^X\^I&quot; 'command-1)
 </pre></td></tr></table>
+
 <p>it is possible to redefine only one of those sequences like so:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        (define-key global-map [(control x) (control i)] 'command-2)
         (define-key global-map [(control x) tab] 'command-3)
 </pre></td></tr></table>
+
 <p>This applies only when running under a window system.  If you are
 talking to Emacs through an ASCII-only channel, you do not get any of
 these features.
@@ -1705,6 +1719,7 @@ similar fashion:
         control [      escape
         control @      control space
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Disabling"></a>
 <a name="SEC373"></a>
@@ -1737,6 +1752,7 @@ Lisp expressions such as:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(put 'delete-region 'disabled t)
 </pre></td></tr></table>
+
 <p>See section <a href="#SEC377">The Init File</a>.
 </p>
 <p>  If the value of the <code>disabled</code> property is a string, that string
@@ -1745,6 +1761,7 @@ is included in the message printed when the command is used:
 <table><tr><td>&nbsp;</td><td><pre class="example">(put 'delete-region 'disabled
      &quot;Text deleted this way cannot be yanked back!\n&quot;)
 </pre></td></tr></table>
+
 <a name="IDX1526"></a>
 <a name="IDX1527"></a>
 <p>  You can disable a command either by editing the init file
@@ -2172,6 +2189,7 @@ line.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq c-tab-always-indent nil)
 </pre></td></tr></table>
+
 <p>Here we have a variable whose value is normally <code>t</code> for `true'
 and the alternative is <code>nil</code> for `false'.
 </p>
@@ -2181,6 +2199,7 @@ override this).
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq-default case-fold-search nil)
 </pre></td></tr></table>
+
 <p>This sets the default value, which is effective in all buffers that do
 not have local values for the variable.  Setting <code>case-fold-search</code>
 with <code>setq</code> affects only the current buffer's local value, which
@@ -2191,6 +2210,7 @@ Make Text mode the default mode for new buffers.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq default-major-mode 'text-mode)
 </pre></td></tr></table>
+
 <p>Note that <code>text-mode</code> is used because it is the command for entering
 the mode we want.  A single-quote is written before it to make a symbol
 constant; otherwise, <code>text-mode</code> would be treated as a variable name.
@@ -2201,6 +2221,7 @@ Turn on Auto Fill mode automatically in Text mode and related modes.
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq text-mode-hook
   '(lambda () (auto-fill-mode 1)))
 </pre></td></tr></table>
+
 <p>Here we have a variable whose value should be a Lisp function.  The
 function we supply is a list starting with <code>lambda</code>, and a single
 quote is written in front of it to make it (for the purpose of this
@@ -2212,6 +2233,7 @@ that you like, or with several expressions in a row.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq text-mode-hook 'turn-on-auto-fill)
 </pre></td></tr></table>
+
 <p>This is another way to accomplish the same result.
 <code>turn-on-auto-fill</code> is a symbol whose function definition is
 <code>(lambda () (auto-fill-mode 1))</code>.
@@ -2222,6 +2244,7 @@ Load the installed Lisp library named <tt>`foo'</tt> (actually a file
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;foo&quot;)
 </pre></td></tr></table>
+
 <p>When the argument to <code>load</code> is a relative pathname, not starting
 with <samp>`/'</samp> or <samp>`~'</samp>, <code>load</code> searches the directories in
 <code>load-path</code> (see section <a href="xemacs_25.html#SEC255">Loading Libraries</a>).
@@ -2231,6 +2254,7 @@ Load the compiled Lisp file <tt>`foo.elc'</tt> from your home directory.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;~/foo.elc&quot;)
 </pre></td></tr></table>
+
 <p>Here an absolute file name is used, so no searching is done.
 </p>
 </li><li>
@@ -2238,10 +2262,12 @@ Rebind the key <kbd>C-x l</kbd> to run the function <code>make-symbolic-link</co
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
+
 <p>or
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key global-map &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
+
 <p>Note once again the single-quote used to refer to the symbol
 <code>make-symbolic-link</code> instead of its value as a variable.
 </p>
@@ -2250,17 +2276,20 @@ Do the same thing for C mode only.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
+
 </li><li>
 Bind the function key <kbd>F1</kbd> to a command in C mode.
 Note that the names of function keys must be lower case.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map 'f1 'make-symbolic-link)
 </pre></td></tr></table>
+
 </li><li>
 Bind the shifted version of <kbd>F1</kbd> to a command.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map '(shift f1) 'make-symbolic-link)
 </pre></td></tr></table>
+
 </li><li>
 Redefine all keys which now run <code>next-line</code> in Fundamental mode
 to run <code>forward-line</code> instead.
@@ -2268,11 +2297,13 @@ to run <code>forward-line</code> instead.
 <table><tr><td>&nbsp;</td><td><pre class="example">(substitute-key-definition 'next-line 'forward-line
                            global-map)
 </pre></td></tr></table>
+
 </li><li>
 Make <kbd>C-x C-v</kbd> undefined.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(global-unset-key &quot;\C-x\C-v&quot;)
 </pre></td></tr></table>
+
 <p>One reason to undefine a key is so that you can make it a prefix.
 Simply defining <kbd>C-x C-v <var>anything</var></kbd> would make <kbd>C-x C-v</kbd>
 a prefix, but <kbd>C-x C-v</kbd> must be freed of any non-prefix definition
@@ -2284,11 +2315,13 @@ Note the use of a character constant for <samp>`$'</samp>.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
 </pre></td></tr></table>
+
 </li><li>
 Enable the use of the command <code>eval-expression</code> without confirmation.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(put 'eval-expression 'disabled nil)
-</pre></td></tr></table></li></ul>
+</pre></td></tr></table>
+</li></ul>
 
 <hr size="6">
 <a name="Terminal-Init"></a>
@@ -2406,6 +2439,7 @@ The symbol <code>t</code> here means use the default X beep.
 <table><tr><td>&nbsp;</td><td><pre class="example">( <var>sound-name</var> . <var>&lt;sound&gt;</var> )
 ( <var>sound-name</var> <var>&lt;volume&gt;</var> <var>&lt;sound&gt;</var> )
 </pre></td></tr></table>
+
 <p>You should probably add things to this list by calling the function
 <code>load-sound-file</code>.
 </p>
@@ -3201,6 +3235,7 @@ look like
 fixed
 9x13
 </pre></td></tr></table>
+
 <p>then XEmacs won't be able to guess the names of the bold and italic
 versions.  All X fonts can be referred to via XLFD-style names, so you
 should use those forms.  See the man pages for <samp>`X(1)'</samp>,
@@ -3239,6 +3274,7 @@ follows:
 <table><tr><td>&nbsp;</td><td><pre class="example">INVOCATION-NAME            &quot;shell&quot;       &quot;container&quot;     FRAME-NAME
 x-emacs-application-class  &quot;EmacsShell&quot;  &quot;EmacsManager&quot;  &quot;EmacsFrame&quot;
 </pre></td></tr></table>
+
 <p>where INVOCATION-NAME is the terminal component of the name of the
 XEmacs executable (usually <samp>`xemacs'</samp>), and
 <samp>`x-emacs-application-class'</samp> is generally <samp>`Emacs'</samp>.
@@ -3274,12 +3310,14 @@ then one way to specify the font of the menubar would be
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Emacs*menubar*font: *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
+
 <p>If both the Lucid Motif-lookalike menu widgets and X Font Sets are 
 configured to allow multilingual menubars, then one uses
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">*menubar*FontSet:       -*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*, \
                         -*-*-*-*-*-*-*-120-*-jisx0208.1983-0
 </pre></td></tr></table>
+
 <p>That would specify fonts for a Japanese menubar.  Specifying only one
 XLFD is acceptable; specifying more than one for a given registry
 (language) is also allowed.  When X Font Sets are configured, some .font
@@ -3290,6 +3328,7 @@ resources (eg, menubars) are ignored in favor of the corresponding
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Emacs*menubar*fontList: *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
+
 <p>because the Motif library uses the <code>fontList</code> resource name instead
 of <code>font</code>, which has subtly different semantics.
 </p>
@@ -3866,6 +3905,7 @@ The way to collect this output is to execute the Lisp expression:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(open-termscript &quot;~/termscript&quot;)
 </pre></td></tr></table>
+
 <p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the <samp>`*scratch*'</samp> buffer
 just after starting Emacs.  From then on, all output from Emacs to the
 terminal will be written in the specified termscript file as well, until

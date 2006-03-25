@@ -95,7 +95,6 @@ a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
 particular entity, and its arguments, if any.
 </p>
-
 <p>For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn {Library Function} int foobar
@@ -111,6 +110,7 @@ in Info:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 &hellip;
 </pre></td></tr></table>
+
 <p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
 <var>bar</var> (a <code>float</code>).
@@ -137,7 +137,6 @@ such as Ada, you might consider using <code>@deftypefn</code> in a manner
 somewhat contrary to the convention described in the preceding
 paragraphs.
 </p>
-
 <p>For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn stacks private push
@@ -165,7 +164,6 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 for functions in typed languages.  The command is equivalent to
 <samp>`@deftypefn Function &hellip;'</samp>.
 </p>
-
 <p>Thus,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
@@ -178,12 +176,14 @@ for functions in typed languages.  The command is equivalent to
 <table><tr><td>&nbsp;</td><td><pre class="example">-- Function: int foobar (int FOO, float BAR)
 &hellip;
 </pre></td></tr></table>
+
 <p>The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-description</var>
 @end deftypefun
 </pre></td></tr></table>
+
 <p><code>@deftypefun</code> creates an entry in the index of functions for
 <var>name</var>.
 </p>

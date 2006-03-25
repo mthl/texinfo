@@ -465,6 +465,7 @@ in the echo area saying:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(No changes need to be saved)
 </pre></td></tr></table>
+
 <a name="IDX561"></a>
 <a name="IDX562"></a>
 <p>  The command <kbd>C-x s</kbd> (<code>save-some-buffers</code>) can save any or all
@@ -649,7 +650,6 @@ Otherwise, make single backups.
 <dd><p>Never make numbered backups; always make single backups.
 </p></dd>
 </dl>
-
 
 <p><code>version-control</code> may be set locally in an individual buffer to
 control the making of backups for that buffer's file.  For example,
@@ -1092,6 +1092,7 @@ auto-save file <tt>`#foo.c#'</tt>, do:
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x recover-file <kbd>RET</kbd> foo.c <kbd>RET</kbd>
 C-x C-s
 </pre></td></tr></table>
+
 <p>  Before asking for confirmation, <kbd>M-x recover-file</kbd> displays a
 directory listing describing the specified file and the auto-save file,
 so you can compare their sizes and dates.  If the auto-save file
@@ -1272,7 +1273,6 @@ This undoes your last check-in.
 <dd><p>Register the visited file in version control.
 </p></dd>
 </dl>
-
 
 <p>(<kbd>C-x v</kbd> is the prefix key for version control commands; all of these
 commands except for <kbd>C-x C-q</kbd> start with <kbd>C-x v</kbd>.)
@@ -1541,6 +1541,7 @@ if the text of the log entry starts with <samp>`(<var>functionname</var>):
 
         * vc.el (vc-do-command): Check call-process status.
 </pre></td></tr></table>
+
 <p>  When <kbd>C-x v a</kbd> adds several change log entries at once, it groups
 related log entries together if they all are checked in by the same
 author at nearly the same time.  If the log entries for several such
@@ -1555,6 +1556,7 @@ Don't call expand-file-name.
 For <tt>`vc-hooks.el'</tt>:
 Don't call expand-file-name.
 </pre></td></tr></table>
+
 <p>  They appear like this in <tt>`ChangeLog'</tt>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
@@ -1563,6 +1565,7 @@ Don't call expand-file-name.
 
         * vc.el, vc-hooks.el: Don't call expand-file-name.
 </pre></td></tr></table>
+
 <p>  Normally, <kbd>C-x v a</kbd> separates log entries by a blank line, but you
 can mark several related log entries to be clumped together (without an
 intervening blank line) by starting the text of each related log entry
@@ -1585,6 +1588,7 @@ For <tt>`vc-hooks.el'</tt>:
         * vc.texinfo: Fix expansion typos.
         * vc.el, vc-hooks.el: Don't call expand-file-name.
 </pre></td></tr></table>
+
 <p>  A log entry whose text begins with <samp>`#'</samp> is not copied to
 <tt>`ChangeLog'</tt>.  For example, if you merely fix some misspellings in
 comments, you can log the change with an entry beginning with <samp>`#'</samp>
@@ -1975,6 +1979,7 @@ element.  The default value for <code>vc-static-header-alist</code> is:
 static char vcid[] = &quot;<var>string</var>&quot;;
 #endif /* lint */
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="ListDir"></a>
 <a name="SEC161"></a>
@@ -2025,6 +2030,7 @@ specifying a file name pattern is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/src/*.c <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>  Normally, <kbd>C-x C-d</kbd> prints a brief directory listing containing just
 file names.  A numeric argument (regardless of value) tells it to print a
 verbose listing (like <code>ls -l</code>).

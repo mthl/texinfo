@@ -98,7 +98,6 @@ not.  The complete file, without interspersed comments, is shown in
 <a name="SEC13"></a>
 <h3 class="subheading"> Part 1: Header </h3>
 
-
 <p>The header does not appear in either the Info file or the
 printed output.  It sets various parameters, including the
 name of the Info file and the title used in the header.
@@ -109,9 +108,9 @@ name of the Info file and the title used in the header.
 @settitle Sample Manual 1.0
 @c %**end of header
 </pre></td></tr></table>
+
 <a name="SEC14"></a>
 <h3 class="subheading"> Part 2: Summary Description and Copyright </h3>
-
 
 <p>A real manual includes more text here, according to the license under
 which it is distributed.  See section <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>.
@@ -122,9 +121,9 @@ This is a short example of a complete Texinfo file, version 1.0.
 Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @end copying
 </pre></td></tr></table>
+
 <a name="SEC15"></a>
 <h3 class="subheading"> Part 3: Titlepage, Contents, Copyright </h3>
-
 
 <p>The titlepage segment does not appear in the online output, only in the
 printed manual.  We use the <code>@insertcopying</code> command to
@@ -144,9 +143,9 @@ writing it out again; it is output on the back of the title page.  The
 @c Output the table of contents at the beginning.
 @contents
 </pre></td></tr></table>
+
 <a name="SEC16"></a>
 <h3 class="subheading"> Part 4: `Top' Node and Master Menu </h3>
-
 
 <p>The `Top' node contains the master menu for the Info file.  Since a
 printed manual uses a table of contents rather than a menu, the master
@@ -158,6 +157,7 @@ begins with a brief description of the manual, no other text is needed.
 @node Top
 @end ifnottex
 </pre></td></tr></table>
+
 <table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 
 @menu
@@ -167,9 +167,9 @@ begins with a brief description of the manual, no other text is needed.
 @end menu
 </pre></td></tr></table>
 
+
 <a name="SEC17"></a>
 <h3 class="subheading"> Part 5: The Body of the Document </h3>
-
 
 <p>The body segment contains all the text of the document, but not the
 indices or table of contents.  This example illustrates a node and a
@@ -194,9 +194,9 @@ This is the second item.
 @end enumerate
 </pre></td></tr></table>
 
+
 <a name="SEC18"></a>
 <h3 class="subheading"> Part 6: The End of the Document </h3>
-
 
 <p>The end segment contains commands for generating an index in a node and
 unnumbered chapter of its own, and the <code>@bye</code> command that marks
@@ -209,6 +209,7 @@ the end of the document.
 
 @bye
 </pre></td></tr></table>
+
 
 <a name="SEC19"></a>
 <h3 class="subheading"> Some Results </h3>

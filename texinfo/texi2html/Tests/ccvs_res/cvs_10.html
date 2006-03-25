@@ -235,6 +235,7 @@ displayed by the <code>status</code> command, you can invoke
 <a name="IDX146"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs -n -q update
 </pre></td></tr></table>
+
 <p>The <samp>`-n'</samp> option means to not actually do the
 update, but merely to display statuses; the <samp>`-q'</samp>
 option avoids printing the name of each directory.  For
@@ -450,6 +451,7 @@ Checking in driver.c;
 new revision: 1.7; previous revision: 1.6
 done
 </pre></td></tr></table>
+
 <p>For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved
 the conflict.  Currently to resolve a conflict, you
@@ -525,6 +527,7 @@ time, one may get the following message:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
 </pre></td></tr></table>
+
 <a name="IDX157"></a>
 <a name="IDX158"></a>
 <a name="IDX159"></a>
@@ -557,7 +560,6 @@ the locks prevent other people from reading or writing.
 then an update by someone else will either get all the
 changes, or none of them.
 </p></blockquote>
-
 
 <p>but <small>CVS</small> does <em>not</em> have this property.  For
 example, given the files

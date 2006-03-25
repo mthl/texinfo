@@ -129,7 +129,6 @@ We classify motion commands into <em>point commands</em> and
 <kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
 </p></blockquote>
 
-
 <p>Text Deletion Commands (see section <a href="#SEC38">Deleting Text</a>), Change commands
 (see section <a href="#SEC39">Changing Text</a>), even Shell Commands (see section <a href="#SEC46">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
@@ -208,11 +207,9 @@ in the VI sense if you have one window only.
 <a name="IDX248"></a>
 <a name="IDX249"></a>
 <a name="IDX250"></a>
-
 <p>Others like <samp>`&lt;args&gt; -- arguments'</samp>, <samp>`&lt;cmd&gt; -- command'</samp> etc.
 should be fairly obvious.
 </p>
-
 <p>Common characters referred to include:
 </p>
 <dl compact="compact">
@@ -292,6 +289,7 @@ modes, you should execute, for example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-syntax-preference nil &quot;extended&quot;)
 </pre></td></tr></table>
+
 <p>in the appropriate major mode hooks.
 </p>
 <a name="IDX260"></a>
@@ -551,7 +549,8 @@ This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
 don't want this macro, put
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-parsing-style-toggling-macro 'undefine)
-</pre></td></tr></table><a name="IDX267"></a>
+</pre></td></tr></table>
+<a name="IDX267"></a>
 
 <p>in your <tt>`~/.viper'</tt> file.
 </p>

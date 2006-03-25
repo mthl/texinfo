@@ -105,6 +105,7 @@ structuring hierarchy:
 @heading        @chapheading,
           etc.
 </pre></td></tr></table>
+
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
 </p>
@@ -115,6 +116,7 @@ structuring hierarchy:
 @heading        @subheading,
           etc.
 </pre></td></tr></table>
+
 <p>An <code>@raisesections</code> or <code>@lowersections</code> command changes only
 those structuring commands that follow the command in the Texinfo file.
 Write an <code>@raisesections</code> or <code>@lowersections</code> command on a
@@ -127,6 +129,7 @@ command, and vice versa.  Typically, the commands are used like this:
 @include somefile.texi
 @raisesections
 </pre></td></tr></table>
+
 <p>Without the <code>@raisesections</code>, all the subsequent sections in your
 document will be lowered.
 </p>

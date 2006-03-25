@@ -207,6 +207,7 @@ file for Bison, type the following to the shell:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo bison.texinfo
 </pre></td></tr></table>
+
 <p>(You can run a shell inside Emacs by typing <kbd>M-x shell</kbd>.)
 </p>
 <p>Sometimes you will want to specify options.  For example, if you wish
@@ -215,6 +216,7 @@ type:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --version
 </pre></td></tr></table>
+
 <p>See section <a href="#SEC264">Options for <code>makeinfo</code></a>, for more information.
 </p>
 
@@ -251,6 +253,7 @@ columns:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --fill-column=68 bison.texinfo
 </pre></td></tr></table>
+
 <p>You can write two or more options in sequence, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --no-split --fill-column=70 &hellip;
@@ -685,7 +688,6 @@ output.
 </p></dd>
 </dl>
 
-
 <p>(Note that the parallel commands for killing and recentering a TeX
 job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href="texinfo_20.html#SEC250">Formatting and Printing in Texinfo Mode</a>.)
 </p>
@@ -1051,6 +1053,7 @@ this:
                        @TeX{} or an Info file.
 &hellip;
 </pre></td></tr></table>
+
 <p>Each of these menu entries points to the `Top' node of the Info file
 that is named in parentheses.  (The menu entry does not need to
 specify the `Top' node, since Info goes to the `Top' node if no node
@@ -1179,6 +1182,7 @@ written as the second part of the menu entry.
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
 </pre></td></tr></table>
+
 <p>This tells Emacs to merge the system <tt>`dir'</tt> file with the <tt>`dir'</tt>
 file in <tt>`/home/bob/info'</tt>.  Thus, Info will list the
 <tt>`/home/bob/info/info-test'</tt> file as a menu entry in the
@@ -1207,6 +1211,7 @@ variable as follows:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
+
 </li><li>
 In a <tt>`.profile'</tt> file, you would achieve the same effect by
 writing:
@@ -1214,13 +1219,14 @@ writing:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
+
 </li><li>
 <a name="IDX415"></a>
 In a <tt>`autoexec.bat'</tt> file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
-</pre></td></tr></table></li></ul>
-
+</pre></td></tr></table>
+</li></ul>
 
 <p>The <samp>`.'</samp> indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's
@@ -1294,6 +1300,7 @@ in this manual:
 &hellip;
 @end direntry
 </pre></td></tr></table>
+
 <p>Here's what this produces in the Info file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
@@ -1326,6 +1333,7 @@ GNU libraries
 TeX
 Individual utilities
 </pre></td></tr></table>
+
 <p>The idea is to include the `Invoking' node for every program installed
 by a package under `Individual utilities', and an entry for the manual
 as a whole in the appropriate other category.
@@ -1361,6 +1369,7 @@ for all manuals on a system.  Synopsis:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
 </pre></td></tr></table>
+
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time
 defaults, and standard input is never used.  <code>install-info</code> can

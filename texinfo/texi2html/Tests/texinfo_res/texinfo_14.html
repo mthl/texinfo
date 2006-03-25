@@ -292,7 +292,6 @@ The s.o.p. has three parts &hellip;
 The s.o.p. has three parts &hellip;
 </p></blockquote>
 
-
 <p>(Incidentally, <samp>`s.o.p.'</samp> is an abbreviation for &ldquo;Standard Operating
 Procedure&rdquo;.)
 </p>
@@ -390,10 +389,12 @@ a line.)
 </p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey@ @ @ @
 example.
 </pre></td></tr></table>
+
 <p>produces
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
 </pre></td></tr></table>
+
 <p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
 <code>@multitable</code> (see section <a href="texinfo_12.html#SEC163">Multi-column Tables</a>).
 </p>
@@ -892,10 +893,12 @@ command.  Write the mathematical expression between braces, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
 </pre></td></tr></table>
+
 <p>This produces the following in Info:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
 </pre></td></tr></table>
+
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
 </p>
 <p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
@@ -905,9 +908,11 @@ conventional to use <samp>`\'</samp> instead of <samp>`@'</samp> for these comma
 As in:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
 </pre></td></tr></table>
+
 <p>which looks like the input in Info and HTML:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">\sin 2\pi \equiv \cos 3\pi
 </pre></td></tr></table>
+
 <a name="IDX224"></a>
 <p>Since <samp>`\'</samp> is an escape character inside <code>@math</code>, you can use
 <code>@\</code> to get a literal backslash (<code>\\</code> will work in TeX,
@@ -1126,7 +1131,6 @@ in Info and as a long arrow with a flat base in the printed output.
 the result of evaluating the expression is <code>c</code>.
 </p></blockquote>
 
-
 <p>Often, as in this case, an example looks better if the
 <code>@expansion{}</code> and <code>@result{}</code> commands are indented
 five spaces.
@@ -1180,6 +1184,7 @@ last line.
 @end lisp
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="Error-Glyph"></a>
 <a name="SEC198"></a>
@@ -1226,6 +1231,7 @@ when you evaluate the expression:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="lisp">Wrong type argument: integer-or-marker-p, x
 </pre></td></tr></table>
+
 <p><samp>`error--&gt;'</samp> itself is not part of the error message.
 </p>
 
@@ -1314,6 +1320,7 @@ This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>
+
 <table><tr><td>&nbsp;</td><td><pre class="example">(insert &quot;changed &quot;)
      &rArr; nil
 ---------- Buffer: foo ----------
@@ -1321,6 +1328,7 @@ This is the changed &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>
+
 <p>In a Texinfo source file, the example is written like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@example
@@ -1335,6 +1343,7 @@ This is the changed @point{}contents of foo.
 ---------- Buffer: foo ----------
 @end example
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="Footnotes"></a>
@@ -1397,6 +1406,7 @@ are usually short.  The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
 </pre></td></tr></table>
+
 <p>As shown here, the <code>@footnote</code> command should come right after the
 text being footnoted, with no intervening space; otherwise, the footnote
 marker might end up starting a line.
@@ -1407,6 +1417,7 @@ this:
 <table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source&hellip;
 </pre></td></tr></table>
+
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, <samp>`.};'</samp> is the sequence.  This is normal (the
 first ends the footnote and the second belongs to the sentence being
@@ -1463,13 +1474,13 @@ the rest of the node by a line of dashes with the word
 <samp>`Footnotes'</samp> within it.  Each footnote begins with an
 <samp>`(<var>n</var>)'</samp> reference mark.
 
-
 <p>Here is an example of a single footnote in the end of node style:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 </pre></td></tr></table>
+
 <a name="IDX228"></a>
 </li><li>
 In the `Separate' node style, all the footnotes for a single
@@ -1486,7 +1497,6 @@ node for the <tt>`Footnotes'</tt> node is
 <tt>`Footnotes-Footnotes'</tt>!)  The footnotes' node has an
 `Up' node pointer that leads back to its parent node.
 </p>
-
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
 </p>
@@ -1494,7 +1504,8 @@ formatted for Info in the separate node style:
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
-</pre></td></tr></table></li></ul>
+</pre></td></tr></table>
+</li></ul>
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
 style.
@@ -1512,6 +1523,7 @@ by an argument, either <samp>`end'</samp> for the end node style or
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
 </pre></td></tr></table>
+
 <p>Write an <code>@footnotestyle</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  (If you
 include the <code>@footnotestyle</code> command between the start-of-header
@@ -1553,6 +1565,7 @@ their default style.  Currently, <code>texinfo-format-buffer</code> and
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
 </pre></td></tr></table>
+
 <a name="IDX230"></a>
 <a name="IDX231"></a>
 <p>The <var>filename</var> argument is mandatory, and must not have an
@@ -1648,6 +1661,7 @@ inch vertically, with the width scaled proportionately:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
 </pre></td></tr></table>
+
 <a name="IDX252"></a>
 <p>For <code>@image</code> to work with TeX, the file <tt>`epsf.tex'</tt> must be
 installed somewhere that TeX can find it.  (The standard location is

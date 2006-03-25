@@ -154,6 +154,7 @@ repository on the command line explicitly, with the
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d /usr/local/cvsroot checkout yoyodyne/tc
 </pre></td></tr></table>
+
 <a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
@@ -175,6 +176,7 @@ users should have this line in their <tt>`.cshrc'</tt> or
 <table><tr><td>&nbsp;</td><td><pre class="example">CVSROOT=/usr/local/cvsroot
 export CVSROOT
 </pre></td></tr></table>
+
 <a name="IDX18"></a>
 <a name="IDX19"></a>
 <p>        A repository specified with <code>-d</code> will
@@ -302,6 +304,7 @@ directories):
               |
               +--(other Yoyodyne software)
 </pre></td></tr></table>
+
 <p>With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
 the name of the corresponding file with <samp>`,v'</samp>
@@ -327,6 +330,7 @@ the <tt>`yoyodyne/tc'</tt> directory might look like:
                  +--<tt>testpgm.t,v</tt>
                  +--<tt>test2.t,v</tt>
 </pre></td></tr></table>
+
 <a name="IDX20"></a>
 <a name="IDX21"></a>
 <p>The history files contain, among other things, enough
@@ -898,6 +902,7 @@ example, after the command
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">yoyodyne/tc
 </pre></td></tr></table>
+
 <p>If the particular working directory does not correspond
 to a directory in the repository, then <tt>`Repository'</tt>
 should contain <tt>`CVSROOT/Emptydir'</tt>.
@@ -1156,6 +1161,7 @@ rcs             gnu/rcs
 diff            gnu/diff
 tc              yoyodyne/tc
 </pre></td></tr></table>
+
 <p>The <tt>`modules'</tt> file is line oriented.  In its
 simplest form each line contains the name of the
 module, whitespace, and the directory where the module
@@ -1248,6 +1254,7 @@ cd dir1
 cvs -d server2:/root co sdir
 cvs update
 </pre></td></tr></table>
+
 <p>The <code>cvs co</code> commands set up the working
 directory, and then the <code>cvs update</code> command will
 contact server2, to update the dir1/sdir subdirectory,
@@ -1313,6 +1320,7 @@ command.  It will set up an empty repository in the
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d /usr/local/cvsroot init
 </pre></td></tr></table>
+
 <p><code>cvs init</code> is careful to never overwrite any
 existing files in the repository, so no harm is done if
 you run <code>cvs init</code> on an already set-up
@@ -1468,6 +1476,7 @@ the format of the repository name is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">[:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
 </pre></td></tr></table>
+
 <p>Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
 password in each created directory.  <code>cvs login</code> first instead
@@ -1612,6 +1621,7 @@ faun, put the following line into the file
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">rsh -l bach faun.example.org 'echo $PATH'
 </pre></td></tr></table>
+
 <a name="IDX64"></a>
 <p>Next you have to make sure that <code>rsh</code> will be able
 to find the server.  Make sure that the path which
@@ -1944,11 +1954,13 @@ system <tt>`/etc/passwd'</tt> authentication:
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs	auth	    required	pam_unix.so
 cvs	account	    required	pam_unix.so
 </pre></td></tr></table>
+
 <p>The the equivalent <tt>`/etc/pam.d/cvs'</tt> would contain
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">auth	    required	pam_unix.so
 account	    required	pam_unix.so
 </pre></td></tr></table>
+
 <p>Some systems require a full path to the module so that
 <tt>`pam_unix.so'</tt> (Linux) would become something like 
 <tt>`/usr/lib/security/$ISA/pam_unix.so.1'</tt> (Sun Solaris).
@@ -2046,6 +2058,7 @@ optional port number, and path to the repository.  For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">CVSROOT=:pserver:bach@faun.example.org:2401/usr/local/cvsroot
 cvs checkout someproj
 </pre></td></tr></table>
+
 <p>However, unless you're connecting to a public-access
 repository (i.e., one where that username doesn't
 require a password), you'll need to supply a password or <em>log in</em> first.
@@ -2062,6 +2075,7 @@ CVS password:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :pserver:bach:p4ss30rd@faun.example.org:/usr/local/cvsroot login
 </pre></td></tr></table>
+
 <p>After you enter the password, <small>CVS</small> verifies it with
 the server.  If the verification succeeds, then that
 combination of username, host, repository, and password
@@ -2239,6 +2253,7 @@ example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Kerberos-authenticated"></a>
 <a name="SEC34"></a>
@@ -2301,6 +2316,7 @@ you are ready to go:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
+
 <p>Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
 </p>
@@ -2348,6 +2364,7 @@ repository.  For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :fork:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
+
 <a name="IDX89"></a>
 <p>As with <code>:ext:</code>, the server is called <samp>`cvs'</samp>
 by default, or the value of the <code>CVS_SERVER</code>

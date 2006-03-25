@@ -167,12 +167,14 @@ each of which has two sections.
    1.1      1.2       2.1      2.2       3.1      3.2
 
 </pre></td></tr></table>
+
 <p>In a Texinfo file that has this structure, the beginning of Chapter 2
 looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node    Chapter 2,  Chapter 3, Chapter 1, top
 @chapter Chapter 2
 </pre></td></tr></table>
+
 <p>The chapter structuring commands are described in the sections that
 follow; the <code>@node</code> and <code>@menu</code> commands are described in
 following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and see <a href="texinfo_8.html#SEC97">Menus</a>.)
@@ -328,6 +330,7 @@ Structuring&rdquo;; the <code>@chapter</code> line looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@chapter Chapter Structuring
 </pre></td></tr></table>
+
 <p>In TeX, the <code>@chapter</code> command creates a chapter in the
 document, specifying the chapter title.  The chapter is numbered
 automatically.
@@ -339,6 +342,7 @@ in Info, the above example produces the following output:
 <table><tr><td>&nbsp;</td><td><pre class="example">Chapter Structuring
 *******************
 </pre></td></tr></table>
+
 <a name="IDX91"></a>
 <p>Texinfo also provides a command <code>@centerchap</code>, which is analogous
 to <code>@unnumbered</code>, but centers its argument in the printed output.
@@ -450,6 +454,7 @@ this in the Texinfo file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@section @code{@@section}
 </pre></td></tr></table>
+
 <p>To create a section, write the <code>@section</code> command at the
 beginning of a line and follow it on the same line by the section
 title.
@@ -549,6 +554,7 @@ underlined with <samp>`-'</samp>.  For example,
 <table><tr><td>&nbsp;</td><td><pre class="example">This is a subsection
 --------------------
 </pre></td></tr></table>
+
 <p>In a printed manual, subsections are listed in the table of contents
 and are numbered three levels deep.
 </p>
@@ -653,6 +659,7 @@ For example,
 <table><tr><td>&nbsp;</td><td><pre class="example">This is a subsubsection
 .......................
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Raise_002flower-sections"></a>
 <a name="SEC84"></a>
@@ -699,6 +706,7 @@ structuring hierarchy:
 @heading        @chapheading,
           etc.
 </pre></td></tr></table>
+
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
 </p>
@@ -709,6 +717,7 @@ structuring hierarchy:
 @heading        @subheading,
           etc.
 </pre></td></tr></table>
+
 <p>An <code>@raisesections</code> or <code>@lowersections</code> command changes only
 those structuring commands that follow the command in the Texinfo file.
 Write an <code>@raisesections</code> or <code>@lowersections</code> command on a
@@ -721,6 +730,7 @@ command, and vice versa.  Typically, the commands are used like this:
 @include somefile.texi
 @raisesections
 </pre></td></tr></table>
+
 <p>Without the <code>@raisesections</code>, all the subsequent sections in your
 document will be lowered.
 </p>

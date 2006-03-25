@@ -5,7 +5,7 @@ This file records noteworthy changes.
 * NEW FEATURES
   ------------
 
-* Handle @frenchspacing and @tie.
+* Handle @frenchspacing, @tie and @indent.
 
 * The `examples' directory now contains an init file for Mediawiki output.
   Mediawiki is the GPL'd wiki used by Wikipedia.
@@ -38,7 +38,7 @@ This file records noteworthy changes.
   file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
   for use in init files.
 
-* The API for image and normal_text changed.
+* The API for image and normal_text and paragraph is changed.
 
 * Use entities for ``, '', --- and -- if $USE_ISO is set. 
 

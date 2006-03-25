@@ -2574,11 +2574,13 @@ The default is to return the text unmodified.
 The formatting of a paragraph region or a preformatted region, is controlled
 by function references:
 
-@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number
+@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number
 This function formats a paragraph. @var{$text} is the text of the paragraph,
 @var{$alignement} is the empty string when no alignement command has
 been seen, otherwise it is the current alignement command name.
 @xref{Alignement commands}.
+@var{$indent} holds @samp{noindent} or @samp{indent} if the corresponding 
+@@-command appeared in the paragraph.
 
 The remaining arguments are usefull when the paragraph appears within a
 list or table. It is usefull whenever the paragraph has to be formatted
@@ -3780,9 +3782,9 @@ that in 1.66 it was the same than @option{-out-file}.
 @option{-subdir} with a unique option. 
 
 More precisely @option{-out-file} forces the output to be unsplit 
-while @option{--output} behaves differently when split (it specify 
+while @option{--output} behaves differently when split (it specifies
 the directory
-where the manual files should be outputted) and unsplit (it specify
+where the manual files should be outputted) and unsplit (it specifies
 the output file). @option{-subdir} is retained for backward compatibility.
 
 If you want a backward compatibility you can use @option{-subdir} 
@@ -3814,6 +3816,12 @@ change was to use the @code{Texi2HTML::Config} names space instead of
 variables prefixed with @samp{T2H_} or  @samp{t2h_}. To cope with
 the change the prefix should be removed from variables in init files.
 Some variables are now in @code{%Texi2HTML::THISDOC}.
+@item API changes between 1.76 and 1.78: paragraph has a new argument
+with indentation information, added as the third argument. normal_text 
+changed completely. There
+are much more arguments to give informations about the context, and
+normal_text now does more text manipulation. New argument for image
+(the alt text).
 @item @code{@@ifinfo} regions are not expanded by default. This may lead
 to warnings or errors especially if the Top node is enclosed in 
 @code{@@ifinfo}, as some node won't appear in menus. The quick fix

@@ -53,12 +53,13 @@ use File::Spec;
 # NOTE FOR DEBUGGING THIS SCRIPT:
 # You can run 'perl texi2html.pl' directly, provided you have
 # the environment variable T2H_HOME set to the directory containing
-# the texi2html.init file
+# the texi2html.init, T2h_i18n.pm, translations.pl, l2h.init, 
+# T2h_l2h.pm files
 #
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.157 2006-01-28 22:02:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.158 2006-03-25 13:26:46 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3437,6 +3438,7 @@ sub split_lines($)
    return @result;
 }
 
+# handle misc commands and misc command args
 sub misc_command_structure($$$$)
 {
     my $line = shift;
@@ -3755,6 +3757,10 @@ sub misc_command_text($$$$$$)
         {
             echo_warn ("Bad \@$macro", $line_nr);
         }
+    }
+    elsif ($macro eq 'indent' or $macro eq 'noindent')
+    {
+        $state->{'paragraph_indent'} = $macro;
     }
     ($remaining, $skipped, $args) = preserve_command($line, $macro);
     return ($skipped) if ($keep);
@@ -6565,6 +6571,14 @@ sub do_paragraph($$)
     my ($format, $paragraph_command, $paragraph_number, $term, $item_nr, 
         $enumerate_type, $number) = get_format_command ($state->{'paragraph'});
     delete $state->{'paragraph'};
+
+    my $indent_style = '';
+    if (exists($state->{'paragraph_indent'}))
+    {
+        $indent_style = $state->{'paragraph_indent'};
+        $state->{'paragraph_indent'} = undef;
+        delete $state->{'paragraph_indent'};
+    }
     my $paragraph_command_formatted;
     $state->{'paragraph_nr'}--;
     (print STDERR "Bug text undef in do_paragraph", return '') unless defined($text);
@@ -6585,7 +6599,7 @@ sub do_paragraph($$)
     {
         $paragraph_command_formatted = do_simple($paragraph_command, '', $state);
     }
-    return &$Texi2HTML::Config::paragraph($text, $align, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $item_nr, $enumerate_type, $number);
+    return &$Texi2HTML::Config::paragraph($text, $align, $indent_style, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $item_nr, $enumerate_type, $number);
 }
 
 sub do_preformatted($$)
@@ -11101,7 +11115,6 @@ sub close_paragraph($$$;$)
         add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
         $state->{'paragraph_macros'} = $new_stack;
         return 1;
-	#return "\@$macro ";
     }
     elsif ($top_stack and ($top_stack->{'format'} eq 'preformatted'))
     {
@@ -11109,7 +11122,6 @@ sub close_paragraph($$$;$)
         add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
         $state->{'paragraph_macros'} = $new_stack;
         return 1;
-	#return "\@$macro ";
     }
     return;
 }

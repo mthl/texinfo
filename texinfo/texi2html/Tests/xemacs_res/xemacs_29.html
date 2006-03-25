@@ -1361,9 +1361,9 @@ The <em>long count</em> is a counting of days with these units:
 <table><tr><td>&nbsp;</td><td><pre class="display">1 kin = 1 day&nbsp;&nbsp;&nbsp;1 uinal = 20 kin&nbsp;&nbsp;&nbsp;1 tun = 18 uinal
 1 katun = 20 tun&nbsp;&nbsp;&nbsp;1 baktun = 20 katun
 </pre></td></tr></table>
+
 <a name="IDX1266"></a>
 <a name="IDX1267"></a>
-
 <p>Thus, the long count date 12.16.11.16.6 means 12 baktun, 16 katun, 11
 tun, 16 uinal, and 6 kin.  The Emacs calendar can handle Mayan long
 count dates as early as 7.17.18.13.1, but no earlier.  When you use the
@@ -1697,6 +1697,7 @@ apr. 25  Start tabulating annual results
 */25  Monthly cycle finishes
 Friday  Don't leave without backing up files
 </pre></td></tr></table>
+
 <p>  The first entry appears only once, on April 20, 1993.  The second and
 third appear every year on the specified dates, and the fourth uses a
 wildcard (asterisk) for the month, so it appears on the 25th of every
@@ -2113,7 +2114,6 @@ the default for this variable when Emacs supports multiple faces on your
 terminal.
 </p>
 <a name="IDX1320"></a>
-
 <p>  A similar normal hook, <code>today-invisible-calendar-hook</code> is run if
 the current date is <em>not</em> visible in the window.
 </p>
@@ -2238,9 +2238,9 @@ to your init file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
 </pre></td></tr></table>
+
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p>
-
 <p>The holiday form <code>(holiday-fixed 7 14 &quot;Bastille Day&quot;)</code> specifies the
 fourteenth day of the seventh month (July).
 </p>
@@ -2296,6 +2296,7 @@ divisible by 4:
                               (list 11 1 displayed-year)))))))
            &quot;US Presidential Election&quot;))
 </pre></td></tr></table>
+
 <p>  Some holidays just don't fit into any of these forms because special
 calculations are involved in their determination.  In such cases you
 must write a Lisp function to do the calculation.  To include eclipses,
@@ -2306,6 +2307,7 @@ visible in the calendar window, with descriptive strings, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Date-Display-Format"></a>
 <a name="SEC327"></a>
@@ -2342,8 +2344,8 @@ list is as follows:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
 </pre></td></tr></table>
-<p>+
-The ISO standard date representation is this:
+
+<p>+The ISO standard date representation is this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(year &quot;-&quot; month &quot;-&quot; day)
 </pre></td></tr></table>
@@ -2352,6 +2354,7 @@ The ISO standard date representation is this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(month &quot;/&quot; day &quot;/&quot; (substring year -2))
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Time-Display-Format"></a>
 <a name="SEC328"></a>
@@ -2462,6 +2465,7 @@ changed to start on October 1, you would set
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(list 10 1 year)
 </pre></td></tr></table>
+
 <p>  For a more complex example, suppose daylight savings time begins on
 the first of Nisan on the Hebrew calendar.  You should set
 <code>calendar-daylight-savings-starts</code> to this value:
@@ -2649,6 +2653,7 @@ you must do this:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
 </pre></td></tr></table>
+
 <p>  Hebrew- and Islamic-date diary entries have the same formats as
 Gregorian-date diary entries, except that <samp>`H'</samp> precedes a Hebrew
 date and <samp>`I'</samp> precedes an Islamic date.  Moreover, because the
@@ -2778,9 +2783,9 @@ time of day.  Add this line to your init file:
 <a name="IDX1352"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 </pre></td></tr></table>
+
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p>
-
 <p>For each day, this sorts diary entries that begin with a recognizable
 time of day according to their times.  Diary entries without times come
 first within each day.
@@ -2826,6 +2831,7 @@ facility:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
 </pre></td></tr></table>
+
 <p>The include mechanism works only with the fancy diary display, because
 ordinary diary display shows the entries directly from your diary file.
 </p>
@@ -2876,6 +2882,7 @@ the fancy diary buffer like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Arthur's 42nd birthday
 </pre></td></tr></table>
+
 <p>  Similarly, cyclic diary entries can interpolate the number of repetitions
 that have occurred:
 </p>
@@ -2963,7 +2970,6 @@ calendar.
 <dd><p>Make a diary entry with today's equivalent date on the Mayan calendar.
 </p></dd>
 </dl>
-
 
 <p>Thus including the diary entry
 </p>
@@ -4089,6 +4095,7 @@ the most useful XEmacs commands.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-mode)
 </pre></td></tr></table>
+
 <p>in your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p>
 <p>Viper comes with a separate manual that is provided standard

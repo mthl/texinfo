@@ -187,7 +187,6 @@ manual.
 </p></dd>
 </dl>
 
-
 <p>(The <code>@cite</code> command is used to make references to books and
 manuals for which there is no corresponding Info file and, therefore,
 no node to which to point.   See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.)
@@ -253,7 +252,6 @@ for details.
 <blockquote><p>See section &ldquo;Particular Topic&rdquo; in <i>A Printed Manual</i>, for details.
 </p></blockquote>
 
-
 <p>in a printed book.
 </p>
 <p>The five possible arguments for a cross reference are:
@@ -291,6 +289,7 @@ this:
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
 </pre></td></tr></table>
+
 <p>Cross references with one, two, three, four, and five arguments are
 described separately following the description of <code>@xref</code>.
 </p>
@@ -363,7 +362,6 @@ manual.
 <blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
 </p></blockquote>
 
-
 <p>or like this
 </p>
 <blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
@@ -422,7 +420,6 @@ another node in the same Info file.    The Info formatters produce
 output that the Info readers can use to jump to the reference; TeX
 produces output that specifies the page and section number for you.
 </p>
-
 <p>For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{Tropical Storms}.
@@ -437,7 +434,6 @@ produces output that specifies the page and section number for you.
 </p>
 <blockquote><p>See Section 3.1 [Tropical Storms], page 24.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 period.)
@@ -456,7 +452,6 @@ period.)
 </p>
 <blockquote><p>See Section 3.1 [Tropical Storms], page 24, for more info.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)
@@ -486,7 +481,6 @@ comma, and then by the clause, which is followed by a period.)
 reference, while the first is still the name of the node to which the
 cross reference points.
 </p>
-
 <p>The template is like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>}.
@@ -507,7 +501,6 @@ cross reference points.
 <blockquote><p>See Section 5.2 [Electrical Effects], page 57.
 </p></blockquote>
 
-
 <p>(Note that in the preceding example the closing brace is followed by a
 period; and that the node name is printed, not the cross reference name.)
 </p>
@@ -524,7 +517,6 @@ period; and that the node name is printed, not the cross reference name.)
 </p>
 <blockquote><p>See Section 5.2 [Electrical Effects], page 57, for more info.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)
@@ -568,7 +560,6 @@ Fog&rdquo; without the commas.
 <code>@xref</code> to terminate the cross reference.  In the following
 examples, a clause follows a terminating comma.
 </p>
-
 
 <p>The template is like this:
 </p>
@@ -623,6 +614,7 @@ are different.
    for more information.
 @xref{Regexp, , Regular Expressions as Patterns}.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Four-and-Five-Arguments"></a>
 <a name="SEC113"></a>
@@ -652,7 +644,6 @@ a fifth argument specifies its title as a printed manual.
 <code>@xref</code> command to terminate the cross reference.  In the
 following examples, a clause follows a terminating comma.
 </p>
-
 <p>The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
@@ -673,13 +664,11 @@ weather, An Introduction to Meteorology}, for details.
 <p>The name of the Info file is enclosed in parentheses and precedes
 the name of the node.
 </p>
-
 <p>In a printed manual, the reference looks like this:
 </p>
 <blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
-
 
 <p>The title of the printed manual is typeset in italics; and the
 reference lacks a page number since TeX cannot know to which page a
@@ -689,7 +678,6 @@ reference refers when that reference is to another manual.
 version of <code>@xref</code>.  In this case, the third argument, the topic
 description, will be used as the cross reference name in Info.
 </p>
-
 <p>The template looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
@@ -705,7 +693,6 @@ description, will be used as the cross reference name in Info.
 </p>
 <blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
 </p></blockquote>
-
 
 <p>For example,
 </p>
@@ -761,7 +748,6 @@ reference (instead of the word `Top'), you must write an appropriate
 entry for the third argument to the <code>@xref</code> command.
 
 </p>
-
 <p>Thus, to make a cross reference to <cite>The GNU Make Manual</cite>,
 write:
 </p>
@@ -777,7 +763,6 @@ write:
 </p>
 <blockquote><p>See section &ldquo;Overview&rdquo; in <i>The GNU Make Manual</i>.
 </p></blockquote>
-
 
 <p>In this example, <samp>`Top'</samp> is the name of the first node, and
 <samp>`Overview'</samp> is the name of the first section of the manual.
@@ -806,7 +791,6 @@ write:
 not generate a `See' in the printed output, just the reference itself.
 This makes it useful as the last part of a sentence.
 </p>
-
 <p>For example,
 </p>
 <a name="IDX111"></a>
@@ -828,7 +812,6 @@ in a manner that is suitable for a printed manual but looks awkward
 in the Info format.  Bear in mind that your audience will be using
 both the printed and the Info format.
 </p>
-
 <p>For example,
 </p>
 <a name="IDX112"></a>
@@ -840,11 +823,11 @@ both the printed and the Info format.
 <blockquote><p>Sea surges are described in Section 6.7 [Hurricanes], page 72.
 </p></blockquote>
 
-
 <p>in a printed document, and the following in Info:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Sea surges are described in *Note Hurricanes::.
 </pre></td></tr></table>
+
 <blockquote><p><strong>Caution:</strong> You <em>must</em> write a period, comma, or right
 parenthesis immediately after an <code>@ref</code> command with two or more
 arguments.  Otherwise, Info will not find the end of the cross reference
@@ -906,7 +889,6 @@ reference so Info can recognize its end.  <code>@pxref</code> spares you
 the need to use complicated methods to put a terminator into one form
 of the output and not the other.
 </p>
-
 <p>With one argument, a parenthetical cross reference looks like
 this:
 </p>
@@ -993,12 +975,10 @@ The cross reference name (optional).
 The Info file name.
 </li></ol>
 
-
 <p>Separate the arguments with commas, as with <code>@xref</code>.  Also, you
 must terminate the reference with a comma or period after the
 <samp>`}'</samp>, as you do with <code>@xref</code>.
 </p>
-
 <p>The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@inforef{<var>node-name</var>, <var>cross-reference-name</var>, <var>info-file-name</var>},
@@ -1020,7 +1000,6 @@ for more information.
 </p>
 <blockquote><p>See Info file <tt>`info'</tt>, node <samp>`Expert'</samp>, for more information.
 </p></blockquote>
-
 
 <p>Similarly,
 </p>
@@ -1082,36 +1061,45 @@ text of the link:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
 </pre></td></tr></table>
+
 
 <p>An example of the two-argument form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>that is, the Info output is this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site (ftp://ftp.gnu.org/gnu)
 holds programs and texts.
 </pre></td></tr></table>
+
 <p>and the HTML output is this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
 holds programs and texts.
 </pre></td></tr></table>
 
+
 <p>An example of the three-argument form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The @uref{/man.cgi/1/ls,,ls(1)} program &hellip;
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The <a href="/man.cgi/1/ls">ls(1)</a> program &hellip;
 </pre></td></tr></table>
+
 <p>but with HTML:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program &hellip;
 </pre></td></tr></table>
+
 <p>To merely indicate a url without creating a link people can follow, use
 <code>@url</code> (see section <a href="texinfo_10.html#SEC135"><code>@url</code></a>).
 </p>

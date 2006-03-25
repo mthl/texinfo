@@ -151,6 +151,7 @@ on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 <table><tr><td>&nbsp;</td><td><pre class="example">http://www.cvshome.org/
 http://www.loria.fr/~molli/cvs-index.html
 </pre></td></tr></table>
+
 <a name="IDX6"></a>
 <a name="IDX7"></a>
 <a name="IDX8"></a>
@@ -415,6 +416,7 @@ the source files.
 $ ls
 CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
 </pre></td></tr></table>
+
 <p>The <tt>`CVS'</tt> directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove
 any of the files in it.
@@ -499,6 +501,7 @@ this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Cleaning-up"></a>
 <a name="SEC7"></a>
@@ -537,6 +540,7 @@ You have [1] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': n
 ** `release' aborted by user choice.
 </pre></td></tr></table>
+
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
 history file.  See section <a href="cvs_18.html#SEC178">The history file</a>.
@@ -592,6 +596,7 @@ has happened to that file.
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
 $ cvs diff driver.c
 </pre></td></tr></table>
+
 <p>This command runs <code>diff</code> to compare the version of <tt>`driver.c'</tt>
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
@@ -608,6 +613,7 @@ $ cvs release -d tc
 You have [0] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': y
 </pre></td></tr></table>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

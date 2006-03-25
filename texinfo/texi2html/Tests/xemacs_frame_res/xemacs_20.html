@@ -468,6 +468,7 @@ installed on our system.  Use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
 </pre></td></tr></table>
+
 <p>(Please note that you probably also want to set font registry for
 <samp>`ascii'</samp> charset so that mixed English/Cyrillic texts be displayed
 using the same font.)
@@ -488,6 +489,7 @@ that is used exactly for needed purpose: to convert characters between
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
 </pre></td></tr></table>
+
 <p>There are several more uses for CCL programs, not related to fonts, but
 those uses are not described here.
 </p>

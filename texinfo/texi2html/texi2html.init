@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.95 2005-12-01 08:38:40 pertusus Exp $
+# $Id: texi2html.init,v 1.96 2006-03-25 13:26:46 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2680,28 +2680,27 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 # an eval of these $complex_format_map->{what}->{'begin'} yields beginning
 # an eval of these $complex_format_map->{what}->{'end'} yields end
 # $EXAMPLE_INDENT_CELL and SMALL_EXAMPLE_INDENT_CELL can be usefull here
-# FIXME add \n at the end ?
 $complex_format_map =
 {
  'example' =>
  {
   'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
+  'end' => q{"</td></tr></table>\n"},
  },
  'smallexample' =>
  {
   'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
+  'end' => q{"</td></tr></table>\n"},
  },
  'display' =>
  {
   'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
+  'end' => q{"</td></tr></table>\n"},
  },
  'smalldisplay' =>
  {
   'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
+  'end' => q{"</td></tr></table>\n"},
  }
 };
 
@@ -2828,7 +2827,8 @@ foreach my $key (keys(%def_map))
         # formatting
         'page' => {}, # no arg (pagebreak)
         'refill' => {}, # no arg (obsolete, to be ignored)
-        'noindent' => {'skip' => 'space'}, # no arg
+        'noindent' => {'skip' => 'whitespace'}, # no arg
+        'indent' => {'skip' => 'whitespace'},
         'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
         'exdent' => {'skip' => 'space'},  
         # not valid for info (should be in @iftex)
@@ -2836,7 +2836,6 @@ foreach my $key (keys(%def_map))
         'cropmarks' => {}, # no arg
         # miscalleneous
         'verbatiminclude'=> {'skip' => 'line'},
-        'noindent' => {'skip' => 'space'},
         'documentencoding' => {'arg' => 1}, # makeinfo ignore the whole line
         # ???
         'filbreak' => {},
@@ -3910,16 +3909,18 @@ sub t2h_default_comment($)
 # arguments:
 # $text of the paragraph
 # $align for the alignement
+# $indent for the indent style (indent or noindent)
 # The following is usefull if the paragraph is in an itemize.
 # $paragraph_command is the leading formatting command (like @minus)
 # $paragraph_command_formatted is the leading formatting command formatted
 # $paragraph_number is a reference on the number of paragraphs appearing
 #    in the format. The value should be increased if a paragraph is done
 # $format is the format name (@itemize)
-sub t2h_default_paragraph($$$$$$$$$)
+sub t2h_default_paragraph($$$$$$$$$$)
 {
     my $text = shift;
     my $align = shift;
+    my $indent = shift;
     my $paragraph_command = shift;
     my $paragraph_command_formatted = shift;
     my $paragraph_number = shift;

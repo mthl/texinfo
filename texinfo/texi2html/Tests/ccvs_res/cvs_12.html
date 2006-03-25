@@ -238,6 +238,7 @@ look something like this:
    * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
    */
 </pre></td></tr></table>
+
 <p>Many repositories make use of a such a &ldquo;local
 keyword&rdquo; feature. An old patch to <small>CVS</small> provided
 the <code>LocalKeyword</code> feature using a <code>tag=</code>
@@ -323,6 +324,7 @@ $ ident a.out
 a.out:
      $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </pre></td></tr></table>
+
 <a name="IDX196"></a>
 <p>S<small>CCS</small> is another popular revision control system.
 It has a command, <code>what</code>, which is very similar to
@@ -335,6 +337,7 @@ magic <small>SCCS</small> phrase, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Avoiding-substitution"></a>
 <a name="SEC101"></a>
@@ -536,6 +539,7 @@ the <tt>`CVSROOT/config'</tt> file:
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD
 </pre></td></tr></table>
+
 <p>then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 </p>
@@ -544,6 +548,7 @@ A list may be used. The this example:
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD,Name,Date
 </pre></td></tr></table>
+
 <p>would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
 </p>
@@ -553,6 +558,7 @@ using the following:
 <table><tr><td>&nbsp;</td><td><pre class="example">        # Do not expand the non-RCS keyword CVSHeader
         KeywordExpand=eCVSHeader
 </pre></td></tr></table>
+
 <p>This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
 others. The exclusion entry could also contain the
@@ -569,6 +575,7 @@ using the <tt>`CVSROOT/config'</tt> line:
 <table><tr><td>&nbsp;</td><td><pre class="example">	# Do not expand any RCS keywords
 	KeywordExpand=i
 </pre></td></tr></table>
+
 <p>this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,
 so care should be taken to properly set user

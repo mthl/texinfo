@@ -194,6 +194,7 @@ root.
  Section  Section   Section  Section   Section  Section
    1.1      1.2       2.1      2.2       3.1      3.2
 </pre></td></tr></table>
+
 <p>The fully-written command to start Chapter 2 would be this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
@@ -227,11 +228,13 @@ before the beginning of Section 2.1, like this:
     * Sect. 2.2::
     @end menu
 </pre></td></tr></table>
+
 <p>Write the node for Sect. 2.1 like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
+
 <p>In Info format, the `Next' and `Previous' pointers of a node usually
 lead to other nodes at the same level&mdash;from chapter to chapter or from
 section to section (sometimes, as shown, the `Previous' pointer points
@@ -256,6 +259,7 @@ line, an <code>@chapter</code> line, and then by indexing lines.
 @cindex Texinfo file ending
 @cindex File ending
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="node"></a>
@@ -411,6 +415,7 @@ this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
 </pre></td></tr></table>
+
 <p>If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
@@ -429,6 +434,7 @@ and `Up' pointers looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
+
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first
 draft and then use the <code>texinfo-insert-node-lines</code> command to
 create <code>@node</code> lines for you.  However, we do not recommend this
@@ -548,6 +554,7 @@ this:
 @section @code{@@chapter}
 @findex chapter
 </pre></td></tr></table>
+
 </li><li>
 <a name="IDX98"></a>
 You cannot use parentheses in node names, because a node name such as
@@ -573,6 +580,7 @@ within a node name; these confuse TeX or the Info formatters.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
+
 <a name="IDX105"></a>
 </li><li>
 Case is significant.
@@ -646,6 +654,7 @@ define them.  This is recommended.  Thus:
 <table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 </pre></td></tr></table>
 
+
 <hr size="6">
 <a name="makeinfo-top-command"></a>
 <a name="SEC94"></a>
@@ -693,6 +702,7 @@ create or update pointers and menus.
 <table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 @top Your Manual Title
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="makeinfo-Pointer-Creation"></a>
@@ -774,12 +784,14 @@ normal brace-delimited argument.  For example:
 &hellip;
 @xref{x-spot,,the spot}.
 </pre></td></tr></table>
+
 <p>produces:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
 &hellip;
 See [the spot], page 1.
 </pre></td></tr></table>
+
 <p>As you can see, the <code>@anchor</code> command itself produces no output.
 This example defines an anchor `x-spot' just before the word `spot'.
 You can refer to it later with an <code>@xref</code> or other cross-reference

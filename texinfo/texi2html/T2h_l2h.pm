@@ -57,27 +57,10 @@ my $docu_name;
 my $docu_ext;
 my $ERROR = '***';
 
-sub init
-{
-    $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
-    $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
-    $docu_ext = $Texi2HTML::THISDOC{'extension'};
-    $l2h_name =  "${docu_name}_l2h";
-    $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
-    $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
-    # destination dir -- generated images are put there, should be the same
-    # as dir of enclosing html document --
-    $l2h_html_file = "$docu_rdir${l2h_name}.html";
-    $l2h_prefix = "${l2h_name}_";
-    $debug = $Texi2HTML::THISDOC{'debug_l2h'};
-    $verbose = $Texi2HTML::Config::VERBOSE;
-    $status = init_to_latex();
-}
-
 ##########################
 #
 # First stage: Generation of Latex file
-# Initialize with: init_to_latex
+# Initialize with: init
 # Add content with: to_latex ($text) --> HTML placeholder comment
 # Finish with: finish_to_latex
 #
@@ -110,22 +93,36 @@ my %global_count = ();         # associate a command name and the
                                # corresponding counter to the index in the
                                # html result array
 
-# return 1, if l2h could be initalized properly, 0 otherwise
-sub init_to_latex()
+# set $status to 1, if l2h could be initalized properly, to 0 otherwise
+sub init()
 {
+    $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
+    $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
+    $docu_ext = $Texi2HTML::THISDOC{'extension'};
+    $l2h_name =  "${docu_name}_l2h";
+    $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
+    $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
+    # destination dir -- generated images are put there, should be the same
+    # as dir of enclosing html document --
+    $l2h_html_file = "$docu_rdir${l2h_name}.html";
+    $l2h_prefix = "${l2h_name}_";
+    $debug = $Texi2HTML::THISDOC{'debug_l2h'};
+    $verbose = $Texi2HTML::Config::VERBOSE;
+
     unless ($Texi2HTML::Config::L2H_SKIP)
     {
         unless (open(L2H_LATEX, ">$l2h_latex_file"))
         {
             warn "$ERROR l2h: Can't open latex file '$l2h_latex_file' for writing: $!\n";
-            return 0;
+            $status = 0;
+            return;
         }
         warn "# l2h: use ${l2h_latex_file} as latex file\n" if ($verbose);
         print L2H_LATEX $l2h_latex_preamble;
     }
     # open the database that holds cached text
     init_cache();
-    return  1;
+    $status = 1;
 }
 
 

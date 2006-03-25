@@ -88,7 +88,6 @@ a fifth argument specifies its title as a printed manual.
 <code>@xref</code> command to terminate the cross reference.  In the
 following examples, a clause follows a terminating comma.
 </p>
-
 <p>The template is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
@@ -109,13 +108,11 @@ weather, An Introduction to Meteorology}, for details.
 <p>The name of the Info file is enclosed in parentheses and precedes
 the name of the node.
 </p>
-
 <p>In a printed manual, the reference looks like this:
 </p>
 <blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
-
 
 <p>The title of the printed manual is typeset in italics; and the
 reference lacks a page number since TeX cannot know to which page a
@@ -125,7 +122,6 @@ reference refers when that reference is to another manual.
 version of <code>@xref</code>.  In this case, the third argument, the topic
 description, will be used as the cross reference name in Info.
 </p>
-
 <p>The template looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
@@ -141,7 +137,6 @@ description, will be used as the cross reference name in Info.
 </p>
 <blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
 </p></blockquote>
-
 
 <p>For example,
 </p>

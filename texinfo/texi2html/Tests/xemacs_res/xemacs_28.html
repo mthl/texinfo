@@ -143,8 +143,8 @@ insert or edit any header fields using ordinary editing commands.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">--text follows this line--
 </pre></td></tr></table>
-<a name="IDX1117"></a>
 
+<a name="IDX1117"></a>
 <p>is a special delimiter that separates the headers you have specified from
 the text.  Whatever follows this line is the text of the message; the
 headers precede it.  The delimiter line itself does not appear in the
@@ -160,6 +160,7 @@ Subject: The XEmacs User's Manual
 --Text follows this line--
 Please ignore this message.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Mail-Headers"></a>
 <a name="SEC298"></a>
@@ -240,11 +241,9 @@ to think about it.
 </p></dd>
 </dl>
 
-
 <p>The <samp>`To'</samp>, <samp>`CC'</samp>, <samp>`BCC'</samp> and <samp>`FCC'</samp> fields can appear
 any number of times, to specify many places to send the message.
 </p>
-
 <p>The <samp>`To'</samp>, <samp>`CC'</samp>, and <samp>`BCC'</samp>, fields can have continuation
 lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
@@ -302,6 +301,7 @@ following in your <tt>`.mailrc'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">     alias someone &quot;John Doe &lt;doe@quux.com&gt;&quot;
 </pre></td></tr></table>
+
 <p>That is, if you want an address to have embedded spaces, simply surround
 it with double-quotes.  The quotes are necessary because the format of
 the <tt>`.mailrc'</tt> file uses spaces as address delimiters.  
@@ -312,9 +312,11 @@ you define aliases like:
      alias group2 larry curly moe
      alias everybody group1 group2
 </pre></td></tr></table>
+
 <p>When you now type <samp>`everybody'</samp> on the <samp>`To'</samp> line, it will expand to:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">     fred, ethyl, larry, curly, moe
 </pre></td></tr></table>
+
 <p>Aliases may contain forward references; the alias of <samp>`everybody'</samp> in the
 example above can precede the aliases of <samp>`group1'</samp> and <samp>`group2'</samp>.
 </p>

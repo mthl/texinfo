@@ -92,13 +92,13 @@ the rest of the node by a line of dashes with the word
 <samp>`Footnotes'</samp> within it.  Each footnote begins with an
 <samp>`(<var>n</var>)'</samp> reference mark.
 
-
 <p>Here is an example of a single footnote in the end of node style:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 </pre></td></tr></table>
+
 <a name="IDX228"></a>
 </li><li>
 In the `Separate' node style, all the footnotes for a single
@@ -115,7 +115,6 @@ node for the <tt>`Footnotes'</tt> node is
 <tt>`Footnotes-Footnotes'</tt>!)  The footnotes' node has an
 `Up' node pointer that leads back to its parent node.
 </p>
-
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
 </p>
@@ -123,7 +122,8 @@ formatted for Info in the separate node style:
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
-</pre></td></tr></table></li></ul>
+</pre></td></tr></table>
+</li></ul>
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
 style.
@@ -141,6 +141,7 @@ by an argument, either <samp>`end'</samp> for the end node style or
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
 </pre></td></tr></table>
+
 <p>Write an <code>@footnotestyle</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  (If you
 include the <code>@footnotestyle</code> command between the start-of-header

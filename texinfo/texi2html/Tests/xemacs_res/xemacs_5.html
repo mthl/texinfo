@@ -269,6 +269,7 @@ schematic representation of a complete key sequence is as follows:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">  [(modifier .. modifier keysym) ... (modifier .. modifier keysym)]
 </pre></td></tr></table>
+
 <p>  Here are some examples of complete key sequences:
 </p>
 <dl compact="compact">
@@ -457,6 +458,7 @@ do the following:
         keysym Caps_Lock = Super_L
         add Mod2 = Super_L
 </pre></td></tr></table>
+
 <p>The first line says that the key that is currently called <code>Caps_Lock</code>
 should no longer behave as a &ldquo;lock&rdquo; key.  The second line says that
 this should now be called <code>Super_L</code> instead.  The third line says that 
@@ -1406,6 +1408,7 @@ the menu item will be selectable if that form returns non-<code>nil</code>.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-menu-item '(&quot;File&quot;) &quot;Rename File&quot; 'rename-file t)
 </pre></td></tr></table>
+
 <p>To add a submenu of file management commands using a <b>File Management</b>
 item, use the following code: 
 </p>
@@ -1413,6 +1416,7 @@ item, use the following code:
 (add-menu-item '(&quot;File&quot; &quot;File Management&quot;) &quot;Delete File&quot; 'delete-file t)
 (add-menu-item '(&quot;File&quot; &quot;File Management&quot;) &quot;Rename File&quot; 'rename-file t)
 </pre></td></tr></table>
+
 <p>The optional <var>before</var> argument is the name of a menu item before
 which the new item should be added.  If the item is already present, it
 is not moved.

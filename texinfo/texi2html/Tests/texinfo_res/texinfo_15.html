@@ -263,7 +263,8 @@ word containing <code>@-</code>.
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
 put a <samp>`-'</samp> at each hyphenation point.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@hyphenation{man-u-script man-u-scripts}
-</pre></td></tr></table><p>TeX only uses the specified hyphenation points when the
+</pre></td></tr></table>
+<p>TeX only uses the specified hyphenation points when the
 words match exactly, so give all necessary variants.
 </p></dd>
 </dl>
@@ -313,6 +314,7 @@ line.  For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">None of the formatters will break at this@w{ }space.
 </pre></td></tr></table>
+
 
 <hr size="6">
 <a name="sp"></a>
@@ -472,6 +474,7 @@ inch) remain on the page.  It looks like this:
 <table><tr><td>&nbsp;</td><td><pre class="example">@need 800
 This paragraph is preceded by &hellip;
 </pre></td></tr></table>
+
 <p>The <code>@need</code> command is useful for preventing orphans (single
 lines at the bottoms of printed pages).
 </p>

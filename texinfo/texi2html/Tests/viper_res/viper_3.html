@@ -138,7 +138,6 @@ We classify motion commands into <em>point commands</em> and
 <a name="IDX42"></a>
 <a name="IDX43"></a>
 
-
 <p>If a point command is given as an argument to a modifying command, the
 region determined by the point command will be affected by the modifying
 command.  On the other hand, if a line command is given as an argument to a
@@ -434,8 +433,8 @@ them.  This is done through what is known as <em>faces</em> in Emacs.  The
 variable that controls how search patterns are highlighted is
 <code>viper-search-face</code>.  If you don't want any highlighting at all, put
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(copy-face 'default 'viper-search-face)
-</pre></td></tr></table><a name="IDX56"></a>
-
+</pre></td></tr></table>
+<a name="IDX56"></a>
 <p>in <tt>`~/.viper'</tt>.  If you want to change how patterns are highlighted, you
 will have to change <code>viper-search-face</code> to your liking.  The easiest
 way to do this is to use Emacs customization widget, which is accessible
@@ -559,6 +558,7 @@ the following example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-syntax-preference nil &quot;emacs&quot;)
 </pre></td></tr></table>
+
 <a name="IDX60"></a>
 
 <p>The above discussion of the meaning of Viper's words concerns only Viper's
@@ -901,7 +901,6 @@ using different fonts and colors.
 patches.
 </p></dd>
 </dl>
-
 
 <p>Emacs Lisp archives exist on
 <samp>`archive.cis.ohio-state.edu'</samp>

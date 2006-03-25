@@ -207,6 +207,7 @@ a prompt.  Here's how to do it in <code>csh</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">if ($?prompt) set prompt = ...
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Lisp-Modes"></a>
 <a name="SEC253"></a>
@@ -494,6 +495,7 @@ arguments.  Use a shell command of the form:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -f batch-byte-compile <var>files</var>...
 </pre></td></tr></table>
+
 <p>  Directory names may also be given as arguments; in that case,
 <code>byte-recompile-directory</code> is invoked on each such directory.
 <code>batch-byte-compile</code> uses all remaining command-line arguments as
@@ -1098,10 +1100,12 @@ access it via the menus:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        Tools -&gt; Packages -&gt; List and Install
 </pre></td></tr></table>
+
 <p>Or, you can get to it via the keyboard:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x pui-list-packages
 </pre></td></tr></table>
+
 <p>Hint to system administrators of multi-user systems: it might be a good
 idea to install all packages and not interfere with the wishes of your
 users.
@@ -1112,6 +1116,7 @@ that you need <code>thingatpt</code>, type:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x package-get-package-provider RET thingatpt
 </pre></td></tr></table>
+
 <p>which will return something like (fsf-compat &quot;1.08&quot;). You can the use
 one of the methods above for installing the package you want.
 </p>
@@ -1199,6 +1204,7 @@ Or if you have GNU tar, the last step can be:
 
    tar zxvf /path/to/xemacs-base-1.48-pkg.tar.gz RET
 </pre></td></tr></table>
+
 <p>For MULE related packages, it is best to untar into the mule-packages
 hierarchy, i.e. for the <tt>`mule-base'</tt> package, version 1.37:
 </p>
@@ -1210,6 +1216,7 @@ Or if you have GNU tar, the last step can be:
 
    tar zxvf /path/to/mule-base-1.37-pkg.tar.gz RET
 </pre></td></tr></table>
+
 <a name="Automatically"></a>
 <a name="SEC274"></a>
 <h2 class="heading"> Automatic Package Installation: </h2>
@@ -1229,6 +1236,7 @@ and optionally:
 
    mule-base    - Needed if you want to use XEmacs with MULE.
 </pre></td></tr></table>
+
 <p>After installing these by hand, fire up XEmacs and follow these
 steps.
 </p>
@@ -1344,6 +1352,7 @@ keyb: <kbd>x</kbd>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x package-get-all &lt;return&gt;
 </pre></td></tr></table>
+
 <p>Enter the name of the package (e.g., <code>prog-modes</code>), and XEmacs
 will search for the latest version and install it and any packages that
 it depends upon.
@@ -1534,6 +1543,7 @@ Setting this doesn't work well with 'make bindist'
 want to install. eg:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">      XEMACS_PACKAGES = xemacs-packages/xemacs-base xemacs-packages/bbdb
 </pre></td></tr></table>
+
 </dd>
 <dt> <var>XEMACS_STAGING = ${XEMACS_PACKAGES_BASE}/../Packages</var></dt>
 <dd><p>Set this to where you want normal packages to be
@@ -1555,6 +1565,7 @@ packages.  Set this to 't' if you don't want/have Mule
 packages you want to install here. eg:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">      MULE_PACKAGES = mule-packages/mule-base mule-packages/skk
 </pre></td></tr></table>
+
 </dd>
 <dt> <var>MULE_STAGING = ${XEMACS_PACKAGES_BASE}/../Mule-Packages</var></dt>
 <dd><p>Set this to where you want Mule packages installed
@@ -1619,6 +1630,7 @@ infrastructure.
    type regular
 ))
 </pre></td></tr></table>
+
 <p>You must fill in the four commented lines.  The value of <code>name</code> is
 the name of your package as an unquoted symbol.  Normally it is the name
 of the main Lisp file or principal feature provided.  The allowed values
@@ -1670,6 +1682,7 @@ directory, but not byte-compiled, they can be listed as the value of
 <p>The include is simply
 </p><table><tr><td>&nbsp;</td><td><pre class="example">include ../../XEmacs.rules
 </pre></td></tr></table>
+
 <p>The standard targets follow.  These are
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">all:: $(ELCS) auto-autoloads.elc
@@ -1678,6 +1691,7 @@ srckit: srckit-alias
 
 binkit: binkit-alias
 </pre></td></tr></table>
+
 <p>Other targets (such as Texinfo sources) may need to be added as
 dependencies for the <code>all</code> target.  Dependencies for <code>srckit</code>
 and <code>binkit</code> (that is, values for <var>srckit-alias</var> and

@@ -706,7 +706,6 @@ beginning of this line.
 <dd><p>The position at which the line being indented begins.
 </p></dd>
 </dl>
-
 <p>It should return either a number, which is the number of columns of
 indentation for that line, or a list whose first element is such a
 number.  The difference between returning a number and returning a list
@@ -822,6 +821,7 @@ the variable to 4 and <code>c-indent-level</code> to 0, you can get this style:
     do_it ();
     }
 </pre></td></tr></table>
+
 <p>  When <code>c-indent-level</code> is zero, the statements inside most braces
 line up exactly under the open brace.  An exception are braces in column
 zero, like those surrounding a function's body.  The statements inside
@@ -866,6 +866,7 @@ compare:
 <table><tr><td>&nbsp;</td><td><pre class="example">if (x == y)
       {
 </pre></td></tr></table>
+
 <a name="IDX946"></a>
 <p>  <code>c-argdecl-indent</code> controls the indentation of declarations of the
 arguments of a C function.  It is absolute: argument declarations receive
@@ -877,6 +878,7 @@ index (string, char)
      char *string;
      int char;
 </pre></td></tr></table>
+
 <a name="IDX947"></a>
 <p>  <code>c-label-offset</code> is the extra indentation given to a line that
 contains a label, a case statement, or a <code>default:</code> statement.  Its
@@ -1021,6 +1023,7 @@ and by not changing the indentation of a triple-semicolon comment at all.
   ;; The following line adds one.
   (1+ x))           ; This line adds one.
 </pre></td></tr></table>
+
 <p>  In C code, a comment preceded on its line by nothing but whitespace
 is indented like a line of code.
 </p>
@@ -1343,6 +1346,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
         (case where line is killed, point is at eob and that line is
         not displayed), set it again in final compute_motion.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Tags"></a>
 <a name="SEC232"></a>
@@ -1665,6 +1669,7 @@ by typing a dash in place of the file names, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">find . -name &quot;*.[chCH]&quot; -print | etags -
 </pre></td></tr></table>
+
 <p>  Use the option <samp>`--language=<var>name</var>'</samp> to specify the language
 explicitly.  You can intermix these options with file names; each one
 applies to the file names that follow it.  Specify
@@ -1787,6 +1792,7 @@ file is a comment):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --regex=@emacs.tags *.[ch] */*.[ch]
 </pre></td></tr></table>
+
 <p>  Here are some more examples.  The regexps are quoted to protect them
 from shell interpretation.
 </p>
@@ -1810,6 +1816,7 @@ Tag Tcl files:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
 </pre></td></tr></table>
+
 </li><li>
 Tag VHDL files:
 
@@ -1817,7 +1824,8 @@ Tag VHDL files:
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
 \( BODY\)?\|PROCEDURE\|PROCESS\|TYPE\)[ \t]+\([^ \t(]+\)/\3/'
-</pre></td></tr></table></li></ul>
+</pre></td></tr></table>
+</li></ul>
 
 <hr size="6">
 <a name="Select-Tags-Table"></a>
@@ -1873,6 +1881,7 @@ strings, they are evaluated and must return an appropriate string.
           (&quot;&quot; . &quot;/usr/local/emacs/src/&quot;)
           ))
 </pre></td></tr></table>
+
 <p>The example defines the tags table alist in the following way:
 </p> 
 <ul>
@@ -2458,7 +2467,6 @@ The same character appears in column 5 of all continuation lines.  It
 is the value of the variable <code>fortran-continuation-char</code>.
 By default, this character is <samp>`$'</samp>.
 </li></ul>
-
 
 <p>If you fail to follow these conventions, the indentation commands may
 indent some lines unaesthetically.  However, a correct Fortran program will

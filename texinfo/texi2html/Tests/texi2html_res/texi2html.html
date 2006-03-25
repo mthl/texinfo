@@ -66,6 +66,7 @@ Texinfo source file; use the entry Id under Revisions).
 </p><table><tr><td>&nbsp;</td><td><pre class="example">This manual is currently under
 construction and of course incomplete ;-)
 </pre></td></tr></table>
+
 <hr size="1">
 <a name="Overview"></a>
 <a name="SEC1"></a>
@@ -239,7 +240,8 @@ How?
 <p>Result based on using <samp>`-frames'</samp>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
-</pre></td></tr></table><p>Explanation of the output differences against default,
+</pre></td></tr></table>
+<p>Explanation of the output differences against default,
 whatever this is ;-)
 </p>
 
@@ -501,6 +503,7 @@ EOT
   print $fh &quot;&lt;/BODY&gt;&lt;/HTML&gt;\n&quot;;
 }
 </pre></td></tr></table>
+
 <p>As you can see it is very simple Perl Code, which can
 be changed more or less simple to fit you requirements
 (see section <a href="#SEC15">T2H_DEFAULT_print_page_head</a>).
@@ -555,6 +558,7 @@ $T2H_AFTER_BODY_OPEN
 EOT
 }
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="CustPagePageFoot"></a>
 <a name="SEC16"></a>
@@ -680,6 +684,7 @@ needed steps.
     . 'TEXT=&quot;#000000&quot; LINK=&quot;#0000FF&quot; '
     . 'VLINK=&quot;#800080&quot; ALINK=&quot;#FF0000&quot;';
 </pre></td></tr></table>
+
 <p>If you like to change the basic color combination, you can
 change the entry <var>T2H_BODYTEXT</var>.
 </p>
@@ -740,6 +745,7 @@ $T2H_ADDRESS .= &quot;on &lt;I&gt;$T2H_TODAY&lt;/I&gt;&quot;;
 # can be used for &lt;style&gt; &lt;script&gt;, &lt;meta&gt; tags
 $T2H_EXTRA_HEAD = '';
 </pre></td></tr></table>
+
 <p>The default output into the <acronym>HTML</acronym> file.
 See section <a href="#SEC41">DocType</a>.
 </p>
@@ -771,6 +777,7 @@ $T2H_EXTRA_HEAD
 &lt;BODY $T2H_BODYTEXT&gt;
 $T2H_AFTER_BODY_OPEN
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="CustHTMLHead"></a>
 <a name="SEC22"></a>
@@ -1344,6 +1351,7 @@ of texi2html
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="OptionCheck"></a>
 <a name="SEC42"></a>
@@ -1451,6 +1459,7 @@ inserts space between headers and start of text (obachman
 <table><tr><td>&nbsp;</td><td><pre class="example">$T2H_INVISIBLE_MARK = &quot;&quot;;
 # $T2H_INVISIBLE_MARK = '&amp;#160;';
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="OptionIso"></a>
 <a name="SEC46"></a>

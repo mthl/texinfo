@@ -80,11 +80,13 @@ ul.toc {list-style: none}
 result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
 @end macro
 </pre></td></tr></table>
+
 <p>before macro after end macro
 </p>
 <p>Calling (normal)
 </p><table><tr><td>&nbsp;</td><td><pre class="example">the @macro1 { @samp{f\irst arg}, second arg } after macro
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>the result: <em><samp>`first arg'</samp></em> protected \ -&gt; \arg1\ <em>second arg </em> after macro
 </p>
@@ -96,7 +98,8 @@ result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
 </p>
 <p>Calling (one arg)
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro1 { @samp{f\irst arg}}
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>result: <em><samp>`first arg'</samp></em> protected \ -&gt; \arg1\ <em></em>
 </p>
@@ -108,7 +111,8 @@ result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
 </p>
 <p>Calling (no args)
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro1 @samp{f\irst arg}, second arg
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>result: <em></em> protected \ -&gt; \arg1\ <em></em> <samp>`f\irst arg'</samp>, second arg
 </p>
@@ -120,7 +124,8 @@ result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
 </p>
 <p>Calling (three args)
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro1 { @samp{f\irst arg}, second arg, third arg}
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>result: <em><samp>`first arg'</samp></em> protected \ -&gt; \arg1\ <em>second arg</em>
 </p>
@@ -139,9 +144,11 @@ and a last in another paragraph
 @end macro
 </pre></td></tr></table>
 
+
 <p>Calling
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro2 { arg, comma \, }
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>we get arg, comma ,  and another arg, comma , 
 and another one on another line arg, comma , 
@@ -159,7 +166,8 @@ and another one another line arg, comma ,
 </p>
 <p>Calling
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro2  arg,  comma \, 
-</pre></td></tr></table><p>==================================
+</pre></td></tr></table>
+<p>==================================
 </p>
 <p>we get   arg,  comma \, and another   arg,  comma \,
 and another one on another line   arg,  comma \,
@@ -204,7 +212,8 @@ are replaced):
 </p>
 <p>Calling macro1 with value
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@macro1 { arg1 @value{comma} arg2 }
-</pre></td></tr></table><p>=======================================
+</pre></td></tr></table>
+<p>=======================================
 </p>
 <p>result: <em>arg1 , arg2 </em> protected \ -&gt; \arg1\ <em></em>
 </p>
@@ -228,6 +237,7 @@ result: @emph{\@value{bodyarg}\  }
 @end macro
 </pre></td></tr></table>
 
+
 <p>==================================
 </p>
 <p>result: <em>\\arg\   </em>
@@ -246,6 +256,7 @@ when the body is expanded; it is kept, but the second \ isn't):
 result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
 @end macro
 </pre></td></tr></table>
+
 
 <p>==================================
 </p>

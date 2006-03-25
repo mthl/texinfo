@@ -148,6 +148,7 @@ your repository:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd wdiff-0.04
 $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 </pre></td></tr></table>
+
 <p>The vendor tag is named <samp>`FSF_DIST'</samp> in the above
 example, and the only release tag assigned is
 <samp>`WDIFF_0_04'</samp>.
@@ -182,6 +183,7 @@ specify a different release tag this time:
 $ cd wdiff-0.05
 $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
 </pre></td></tr></table>
+
 <p>For files that have not been modified locally, the newly created
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
@@ -358,6 +360,7 @@ vendor tag BLUE.  So the commands you might use are:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs import dir RED RED_1-0
 $ cvs import -b 1.1.3 dir BLUE BLUE_1-5
 </pre></td></tr></table>
+
 <p>Note that if your vendor tag does not match your
 <samp>`-b'</samp> option, <small>CVS</small> will not detect this case!  For
 example,

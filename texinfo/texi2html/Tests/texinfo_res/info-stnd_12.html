@@ -135,6 +135,7 @@ variable definitions.  Synopsis:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">infokey [<var>option</var>&hellip;] [<var>input-file</var>]
 </pre></td></tr></table>
+
 <p>Besides the standard <samp>`--help'</samp> and <samp>`--version'</samp>, the only
 option is <samp>`--output <var>file</var>'</samp>.  This tells <code>infokey</code> to
 write the binary data to <var>file</var> instead of <tt>`$HOME/.info'</tt>.
@@ -193,6 +194,7 @@ d       dir-node
 #var
 scroll-step=1
 </pre></td></tr></table>
+
 <p>The source file consists of one or more <em>sections</em>.
 Each section starts with a line that identifies the type of section.
 Possible sections are:
@@ -207,6 +209,7 @@ consists of lines of the form:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
 </pre></td></tr></table>
+
 <p>Whitespace is any sequence of one or more spaces and/or tabs.  Comment
 is any sequence of any characters, excluding newline.  <var>string</var> is
 the key sequence which invokes the action.  <var>action</var> is the name of
@@ -300,6 +303,7 @@ relevant section:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#stop
 </pre></td></tr></table>
+
 <p>This will cause GNU Info to ignore all the default key commands for that
 section.
 </p>

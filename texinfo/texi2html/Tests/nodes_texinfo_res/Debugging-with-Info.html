@@ -119,6 +119,7 @@ occurs, or not long after it.  The buffer will look like this:
 &lowast;
 ---------- Buffer: *Info Region* ----------
 </pre></td></tr></table>
+
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
 odd error messages.  For example, the following cross reference fails to format:
 </p>
@@ -141,11 +142,13 @@ closing parenthesis:
 <p>Formatting produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note for more info.: Catching Mistakes)
 </pre></td></tr></table>
+
 <p>The only way for you to detect this error is to realize that the
 reference should have looked like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(*Note Catching Mistakes::, for more info.)
 </pre></td></tr></table>
+
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
 <kbd>RET</kbd></kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:

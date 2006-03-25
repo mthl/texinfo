@@ -175,6 +175,7 @@ number.
   |                       |
 
 </pre></td></tr></table>
+
 <p>The standard format for two-sided printing depends on whether the page
 number is even or odd.  By convention, even-numbered pages are on the
 left- and odd-numbered pages are on the right.  (TeX will adjust the
@@ -260,7 +261,6 @@ the headers format with the <code>@headings double</code> command; see
 <dd><p>Specify the double-sided heading format, with chapters on new pages.
 </p></dd>
 </dl>
-
 
 <p>Texinfo lacks an <code>@setchapternewpage even</code> command.
 </p>
@@ -401,7 +401,6 @@ information about <code>@include</code> files.)
 </p></dd>
 </dl>
 
-
 <p>You can also use the <code>@today{}</code> command, which expands to the
 current date, in `1 Jan 1900' format.
 <a name="IDX461"></a>
@@ -414,6 +413,7 @@ particularly when you are writing drafts:
 @everyheading @emph{Draft!} @| @thispage @| @thischapter
 @everyfooting @| @| Version: 0.27: @today{}
 </pre></td></tr></table>
+
 <p>Beware of overlong titles: they may overlap another part of the
 header or footer and blot it out.
 </p>

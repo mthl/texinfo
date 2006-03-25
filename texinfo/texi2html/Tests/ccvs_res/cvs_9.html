@@ -190,6 +190,7 @@ using the <samp>`-kb'</samp> flag:
 $ cvs add -kb -m&quot;A test file&quot; kotest
 $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 </pre></td></tr></table>
+
 <p>If a file accidentally gets added without <samp>`-kb'</samp>,
 one can use the <code>cvs admin</code> command to recover.
 For example:
@@ -203,6 +204,7 @@ $ cvs update -A kotest
 # Copy in a good copy of the file from outside CVS
 $ cvs commit -m &quot;make it binary&quot; kotest
 </pre></td></tr></table>
+
 <p>When you check in the file <tt>`kotest'</tt> the file is
 not preserved as a binary file, because you did not
 check it in as a binary file.  The <code>cvs

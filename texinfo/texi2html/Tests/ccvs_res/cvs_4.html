@@ -127,6 +127,7 @@ a few revisions, with newer revisions to the right.
        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
        +-----+    +-----+    +-----+    +-----+    +-----+
 </pre></td></tr></table>
+
 <p>It is also possible to end up with numbers containing
 more than one period, for example <samp>`1.3.2.2'</samp>.  Such
 revisions represent revisions on branches
@@ -215,6 +216,7 @@ you might invoke:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -r 3.0
 </pre></td></tr></table>
+
 <p>Note that the number you specify with <samp>`-r'</samp> must be
 larger than any existing revision number.  That is, if
 revision 3.0 exists, you cannot <samp>`cvs commit
@@ -264,6 +266,7 @@ rcslex.c        5.11
 rcsmap.c        5.2
 rcsutil.c       5.10
 </pre></td></tr></table>
+
 <a name="IDX94"></a>
 <a name="IDX95"></a>
 <a name="IDX96"></a>
@@ -320,6 +323,7 @@ File: backend.c         Status: Up-to-date
         rel-0-4                     (revision: 1.4)
 
 </pre></td></tr></table>
+
 <p>For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
 </p>
@@ -373,6 +377,7 @@ files with the following revisions:
                       \-1.5*-   1.5
                         1.6
 </pre></td></tr></table>
+
 <p>At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
 drawn through the tagged revisions.  When you pull on
@@ -392,6 +397,7 @@ like this:
         1.4                     1.4
                                 1.5
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Tagging-the-working-directory"></a>
 <a name="SEC49"></a>
@@ -440,6 +446,7 @@ error before it tags any files:
 cvs tag: backend.c is locally modified
 cvs [tag aborted]: correct the above errors first!
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Tagging-by-date_002ftag"></a>
 <a name="SEC50"></a>
@@ -499,6 +506,7 @@ rtag</code>.  The exceptions might be cases like:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs tag -r 1.4 stable backend.c
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Modifying-tags"></a>
 <a name="SEC51"></a>
@@ -531,7 +539,6 @@ temporarily or accidentally puts one in the wrong
 place.  Therefore, one might delete, move, or rename a
 tag.
 </p>
-
 <p><strong>WARNING: the commands in this section are
 dangerous; they permanently discard historical
 information and it can be difficult or impossible to
@@ -559,7 +566,6 @@ you are doing, the <code>-B</code> option may be specified to allow deletion
 of branch tags.  In that case, any non-branch tags encountered will
 trigger warnings and will not be deleted.
 </p>
-
 <p><strong>WARNING: Moving branch tags is very dangerous!  If you think
 you need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn't you).  There is almost certainly
@@ -588,7 +594,6 @@ wish to move the branch tag, the <code>-B</code> option may be specified.
 In that case, non-branch tags encountered with the given
 name are ignored with a warning message.
 </p>
-
 <p><strong>WARNING: Moving branch tags is very dangerous!  If you think you
 need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn't you).  There is almost certainly
@@ -610,6 +615,7 @@ same files as the old tag.  For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs rtag -r old-name-0-4 rel-0-4 tc
 cvs rtag -d old-name-0-4 tc
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="Tagging-add_002fremove"></a>
 <a name="SEC52"></a>
@@ -713,6 +719,7 @@ File: driver.c          Status: Up-to-date
     Sticky Options:     (none)
 
 </pre></td></tr></table>
+
 <a name="IDX116"></a>
 <a name="IDX117"></a>
 <a name="IDX118"></a>
@@ -756,6 +763,7 @@ VERS: 1.1
 ***************
 $
 </pre></td></tr></table>
+
 <p>However, this isn't the easiest way, if you are asking
 how to undo a previous checkin (in this example, put
 <tt>`file1'</tt> back to the way it was as of revision
