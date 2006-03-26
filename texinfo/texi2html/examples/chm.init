@@ -162,6 +162,7 @@ foreach my $command (keys(%style_map_texi))
 
 foreach my $key (keys(%unicode_accents))
 {
+#    $chm_style_map{$key}->{'function'} = \&t2h_utf8_accent;
     $chm_style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;
 }
 
@@ -169,6 +170,7 @@ foreach my $key (%things_map)
 {
     if (exists($unicode_map{$key}) and ($unicode_map{$key} ne ''))
     {
+#        $chm_things_map{$key} = chr(hex($unicode_map{$key}));
         $chm_texi_map{$key} = chr(hex($unicode_map{$key}));
     }
 }
@@ -179,9 +181,29 @@ my $hhp_lines = '';
 
 sub chm_init_out()
 {
-    my $encoding = &$default_init_out();
+    &$default_init_out();
+# Setting out file encoding to utf8 doesn't work. Seen on the web that 
+# htmlhelp 1.x isn't utf8 aware
+#   $OUT_ENCODING = 'utf8';
+
+# there is a special treatment for @l and @L, as there is no 
+# entity, but they could be readble anyway
+    if ($USE_UNICODE)
+    {
+         foreach my $thing ('l', 'L')
+         {
+              my $encoded_char = 
+                Encode::encode($OUT_ENCODING,chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
+              if ($encoded_char ne '')
+              {
+                  $things_map{$thing} = $encoded_char;
+                  $pre_map{$thing} = $encoded_char;
+                  $simple_format_texi_map{$thing} = $encoded_char;
+              }
+         }
+    } 
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
-    open(IDXFILE, ">:encoding(utf8)", $hhk_file)
+    open(IDXFILE, ">:encoding($OUT_ENCODING)", $hhk_file)
         || die "Can't open $file_name for writing: $!\n";
     print "# writing HTML Help index in $hhk_file...\n" if $VERBOSE;
     print IDXFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
@@ -197,14 +219,14 @@ sub chm_init_out()
 
     my $hhp_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhp";
     print "# writing HTML Help project in $hhp_file...\n" if $VERBOSE;
-    open (HHPFILE, ">:encoding(utf8)", $hhp_file) or 
+    open (HHPFILE, ">:encoding($OUT_ENCODING)", $hhp_file) or 
         die "Can't open $hhp_file for writing: $!\n";
     my $language = $chm_languages{'en'};
     if (exists ($chm_languages{$LANG}))
     {
         $language = $chm_languages{$LANG};
     }
-    my $title = to_utf8($Texi2HTML::THISDOC{'title_texi'});
+    my $title = main::remove_texi($Texi2HTML::THISDOC{'title_texi'});
     my $top_file = $Texi2HTML::THISDOC{'filename'}->{'top'};
     print HHPFILE <<EOT;
 [OPTIONS]
@@ -224,8 +246,8 @@ Default=,"$Texi2HTML::THISDOC{'file_base_name'}.hhc","$Texi2HTML::THISDOC{'file_
 
 [FILES]
 EOT
-    return $encoding;
 }
+
 sub chm_print_page_foot($)
 {
     my $fh = shift;
@@ -238,23 +260,26 @@ $PRE_BODY_CLOSE
 EOT
 }
 
-# Convert texi to string with utf8
-sub to_utf8($)
+# Convert texi to string
+sub chm_text($)
 {
     my $text = shift;
-    $main::simple_map_texi_ref = \%chm_simple_map_texi;
-    $main::style_map_texi_ref = \%chm_style_map_texi;
-    $main::texi_map_ref = \%chm_texi_map;
+    return main::simple_format(undef,$text);
+
+# the following doesn't work as html 1.x doesn't accept utf8
+    $::simple_map_texi_ref = \%chm_simple_map_texi;
+    $::style_map_texi_ref = \%chm_style_map_texi;
+    $::texi_map_ref = \%chm_texi_map;
     my $normal_text_kept = $normal_text;
     $Texi2HTML::Config::normal_text = \&t2h_utf8_normal_text;
     
     $text = main::remove_texi($text);
 
     $normal_text = $normal_text_kept;
-    $main::simple_map_texi_ref = \%simple_map_texi;
-    $style_map_texi_ref = \%style_map_texi;
-    $main::texi_map_ref = \%texi_map;
-    return $text;
+    $::simple_map_texi_ref = \%simple_map_texi;
+    $::style_map_texi_ref = \%style_map_texi;
+    $::texi_map_ref = \%texi_map;
+    return &$protect_text($text);
 }
 
 
@@ -287,7 +312,7 @@ sub chm_toc_body($)
              $text .= $element->{'number'} . " ";
              
         }
-        $text .= &$protect_text(to_utf8($element->{'texi'}));
+        $text .= chm_text($element->{'texi'});
         $text =~ s/^\s*//;
         push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'id'}\">\n</OBJECT> </LI>\n");
         if (!$chm_files{$element->{'file'}})
@@ -321,7 +346,7 @@ sub chm_index_summary_file_entry ($$$$$$$$)
     my $element_href = shift;
     my $element_text = shift;
     my $is_printed = shift;
-    $entry = &$protect_text(to_utf8($texi_entry));
+    $entry = chm_text($texi_entry);
     print IDXFILE "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$entry\">\n<param name=\"Local\" value=\"$origin_href\">\n</OBJECT> </LI>\n";
 }
 
@@ -343,7 +368,7 @@ sub chm_finish_out()
     print IDXFILE "</BODY>\n</HTML>\n";
     close (IDXFILE);
     my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
-    open (HHCFILE, ">:encoding(utf8)", $hhc_file) or 
+    open (HHCFILE, ">:encoding($OUT_ENCODING)", $hhc_file) or 
         die "Can't open $hhc_file for writing: $!\n";
     
     print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";

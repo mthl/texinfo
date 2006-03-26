@@ -40,6 +40,9 @@ This file records noteworthy changes.
 
 * The API for image and normal_text and paragraph is changed.
 
+* The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
+  and $OUT_ENCODING.
+
 * Use entities for ``, '', --- and -- if $USE_ISO is set. 
 
 * BUG FIXES

@@ -39,6 +39,10 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
 @@dotless@{i@} @dotless{i}
 @@dotless@{ij@} @dotless{ij}
+@@`@{@@=E@} @`{@=E} 
+@@l@{@} @l{}
+@@,@{@@'C@} @,{@'C}
+
 
 @@dotless@{truc@} @dotless{truc}
 

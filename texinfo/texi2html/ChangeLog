@@ -1,3 +1,18 @@
+2006-03-26  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init,texi2html.pl: clean the encoding related code by 
+	adding more variables associated with the different encodings.
+	Remove unneeded conversion code, given that the text is allready
+	in the perl internal encoding.
+	* doc/, NEWS: document the changes.
+	* texi2html.pl: put explicitely the ref on hashes in the main 
+	namespace such that they are usable in init files.
+	* Tests/: new tests for the utf8.init file, tests for doubly accented
+	characters.
+	* examples/chm.init: don't try to output utf8 encoded files, as
+	htmlhelp 1.x doesn't seems to be utf8 aware.
+	* examples/utf8.init: encode characters in preformatted environments.
+
 2006-03-25  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: handle @indent. Remove an empty line

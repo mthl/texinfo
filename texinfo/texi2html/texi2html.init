@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.96 2006-03-25 13:26:46 pertusus Exp $
+# $Id: texi2html.init,v 1.97 2006-03-26 14:38:25 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -565,35 +565,75 @@ sub t2h_default_init_out()
             $EXTERNAL_CROSSREF_SPLIT = 0;
         }
     }
-    $ENCODING = $DOCUMENT_ENCODING if (!defined($ENCODING));
-    my $to_encoding;
-    if (defined($ENCODING))
+
+    $ENCODING_NAME = $ENCODING if (!defined($ENCODING_NAME) and 
+         defined($ENCODING));
+
+    if (!defined($OUT_ENCODING) and (defined($ENCODING_NAME)))
     {
-        $to_encoding = main::set_encoding ($ENCODING);
+        $OUT_ENCODING = main::encoding_alias ($ENCODING_NAME);
+        $OUT_ENCODING = $ENCODING_NAME if (!defined($OUT_ENCODING));
+    }
+    if (!defined($OUT_ENCODING) and (defined($IN_ENCODING)))
+    {
+        $OUT_ENCODING = $IN_ENCODING;
+    }
+    if (!defined($OUT_ENCODING) and (defined($DOCUMENT_ENCODING)))
+    {
+        $OUT_ENCODING = main::encoding_alias ($DOCUMENT_ENCODING);
+        $OUT_ENCODING = $DOCUMENT_ENCODING if (!defined($OUT_ENCODING));
+    }
+
+    if (!defined($ENCODING_NAME))
+    {
+         if (defined($OUT_ENCODING) and defined($perl_charset_to_html{$OUT_ENCODING}))
+         {
+             $ENCODING_NAME = $perl_charset_to_html{$OUT_ENCODING};
+         }
+         elsif (defined($IN_ENCODING) and defined($perl_charset_to_html{$IN_ENCODING}))
+         {
+             $ENCODING_NAME = $perl_charset_to_html{$IN_ENCODING};
+         }
+         elsif (defined($DOCUMENT_ENCODING) and defined($perl_charset_to_html{$DOCUMENT_ENCODING}))
+         {
+             $ENCODING_NAME = $perl_charset_to_html{$DOCUMENT_ENCODING};
+         }
+         elsif (defined($OUT_ENCODING))
+         {
+             $ENCODING_NAME = $OUT_ENCODING;
+         }
+         elsif (defined($IN_ENCODING))
+         {
+             $ENCODING_NAME = $IN_ENCODING;
+         }
+         elsif (defined($DOCUMENT_ENCODING))
+         {
+             $ENCODING_NAME = $DOCUMENT_ENCODING;
+         }
+         elsif (defined($perl_charset_to_html{$DEFAULT_ENCODING}))
+         {
+             $ENCODING_NAME = $perl_charset_to_html{$DEFAULT_ENCODING};
+         }
+         else
+         {
+             $ENCODING_NAME = 'us-ascii';
+         }
+    }
+    my $out_encoding = $OUT_ENCODING;
+    $out_encoding = 'UNDEF' if (!defined($out_encoding));
+    my $in_encoding = $IN_ENCODING;
+    $in_encoding = 'UNDEF' if (!defined($in_encoding));
+    my $document_encoding = $DOCUMENT_ENCODING;
+    $document_encoding = 'UNDEF' if (!defined($document_encoding));
+    print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $ENCODING_NAME\n" if ($VERBOSE);
         
-        if (defined($to_encoding) and defined($perl_charset_to_html{$to_encoding}))
-        {# FIXME is this really right ?
-             $ENCODING = $perl_charset_to_html{$to_encoding};
-        }
-        elsif (defined($to_encoding))
-        {# FIXME is this really right ?
-             $ENCODING = $to_encoding;
-        }
-    }
-    else
-    {
-        #$ENCODING = 'iso-8859-1';
-        $ENCODING = 'us-ascii';
-    }
-    # FIXME default might be utf8 ?
-    $DOCUMENT_ENCODING = 'us-ascii' if (!defined($DOCUMENT_ENCODING));
     if ($SIMPLE_MENU and !defined($complex_format_map->{'menu'}))
     {
         $complex_format_map->{'menu'} = { 'begin' => q{''} , 'end' => q{''},
            'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' };
     }
     
-    return $to_encoding;
+    return $OUT_ENCODING;
 };
 
 sub t2h_default_finish_out()
@@ -608,9 +648,22 @@ sub t2h_default_finish_out()
 
 $BODYTEXT = undef;
 
-# Formatted document encoding. If undef set to @documentencoding. If undef and
-# there is no @documentencoding, set in init_out 
-$ENCODING = undef;
+# default used in init_out for the setting of the ENCODING_NAME variable
+$DEFAULT_ENCODING = 'ascii';
+
+# In file encoding. The @documentencoding overrides that variable.
+$DOCUMENT_ENCODING = undef;
+
+# In file encoding, understandable by perl. Set according to DOCUMENT_ENCODING 
+$IN_ENCODING = undef;
+
+# Formatted document encoding name. If undef, set in init_out based on 
+# $OUT_ENCODING or $DOCUMENT_ENCODING if they are defined
+$ENCODING_NAME = undef;
+
+# Out files encoding, understandable by perl. If undef, set in init_out
+# using $ENCODING_NAME or $IN_ENCODING if they are defined
+$OUT_ENCODING = undef;
 
 # if undef set to @documentdescription. If there is no @documentdescription,
 # set in page_head
@@ -949,7 +1002,7 @@ sub T2H_DEFAULT_print_page_head($)
     $description = "<meta name=\"description\" content=\"$description\">" if
          ($description ne '');
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING_NAME\">" if (defined($ENCODING_NAME) and ($ENCODING_NAME ne ''));
     print $fh <<EOT;
 $DOCTYPE
 <html>
@@ -1452,7 +1505,7 @@ sub T2H_DEFAULT_print_redirection_page($)
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
     my $description = $longtitle;
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING_NAME\">" if (defined($ENCODING_NAME) and ($ENCODING_NAME ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
     my $string = &$I('The node you are looking for is at %{href}.',
        { 'href' => $href });
@@ -1817,7 +1870,7 @@ $pre_map{'enddots'} = '....';
                'ordm'         => '00BA',
                'comma'        => '002C',
                'euro'         => '20AC',
-               'tie'          => '0020', # FIXME should be better ro replace
+               'tie'          => '0020', # FIXME should be better to replace
                                          # with a space
              );
 
@@ -1859,6 +1912,7 @@ $pre_map{'enddots'} = '....';
 
 %perl_charset_to_html = (
               'utf8'       => 'utf-8',
+              'utf-8-strict'       => 'utf-8',
               'ascii'      => 'us-ascii',
 );
 
@@ -2333,6 +2387,13 @@ sub t2h_default_accent($$)
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
     return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+# FIXME here there could be a conversion to the character in the right 
+# encoding, like 
+#    if ($USE_UNICODE and exists($unicode_accents{$accent} and  exists($unicode_accents{$accent}->{$text}))
+#    {
+#          my $encoded_char =  Encode::encode($OUT_ENCODING, chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
+#          return $encoded_char if ($encoded_char ne '');
+#    }        
     return ascii_accents($text, $accent);
 }
 
@@ -2626,7 +2687,6 @@ foreach my $special (keys(%special_style))
 #%style_map = %old_style_map;
 #%style_map_pre = %old_style_map_pre;
 
-#FIXME USE_ISO ?
 %simple_format_simple_map_texi = %simple_map_pre;
 %simple_format_texi_map = %pre_map;
 %simple_format_style_map_texi = ();

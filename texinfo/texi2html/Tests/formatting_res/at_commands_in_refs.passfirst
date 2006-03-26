@@ -5,11 +5,11 @@ at_commands_in_refs.texi(,5) @node Top
 at_commands_in_refs.texi(,6) @top Top
 at_commands_in_refs.texi(,7) 
 at_commands_in_refs.texi(,8) @menu
-at_commands_in_refs.texi(,9) * A @sc{sc} node @"i @"{@dotless{i}}::
+at_commands_in_refs.texi(,9) * A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @m_cedilla{@'C}::
 at_commands_in_refs.texi(,10) @end menu
 at_commands_in_refs.texi(,11) 
-at_commands_in_refs.texi(,12) @node A @sc{sc} node @"i @"{@dotless{i}}
-at_commands_in_refs.texi(,13) @chapter chapter @"i @"{@dotless{i}}
+at_commands_in_refs.texi(,12) @node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @m_cedilla{@'C}
+at_commands_in_refs.texi(,13) @chapter  A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @m_cedilla{@'C}
 at_commands_in_refs.texi(,14) 
-at_commands_in_refs.texi(,15) see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}},,,manual}.
+at_commands_in_refs.texi(,15) see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}} @`{@=E},,,manual}.
 at_commands_in_refs.texi(,16) @bye

@@ -929,11 +929,43 @@ are in the @code{Texi2HTML} namespace. Notice that the functions
 of the main program are still in the @code{main} namespace.
 
 @menu
+* Encodings::                 Setting the encodings.
 * Redefining functions::      Function redefinition is achieved with 
                               redefinition of references on functions.
 * Function prototypes::       Conventions used in that manual for function 
                               reference prototypes display.
 @end menu
+
+@c --------------------------------------------------------
+@node Encodings
+@section Setting the encodings
+
+There are four encodings relevant for @command{texi2html}, they are
+associated with corresponding variables:
+@enumerate 
+@item The encoding appearing in @code{@@documentencoding}. The associated 
+value overrides the @variable{$DOCUMENT_ENCODING} variable value.
+@item The texinfo files encoding, associated with the variable
+@variable{$IN_ENCODING}. This variable is overriden when 
+@code{$DOCUMENT_ENCODING} is set, if the encoding is supported by perl.
+@item The out files encoding, associated with the variable
+@variable{$OUT_ENCODING}. If not defined, the value of
+@code{$ENCODING_NAME} 
+or 
+@code{$IN_ENCODING}
+is used if one of these variables is set.
+@item The encoding advertized in out files, associated with the variable
+@variable{$ENCODING_NAME}. If unset the value of this variable is based on the
+other ENCODING variables, and if they are all undefined, the variable
+@variable{$DEFAULT_ENCODING} is used.
+@end enumerate
+
+The values for the encoding related variables are set in the default 
+@code{init_out} function reference (@pxref{Output initialization}).
+
+In general the @code{$DOCUMENT_ENCODING} and @code{$IN_ENCODING} are
+set to the right values, and to force a given encoding for the output, the
+@code{$ENCODING_NAME} value may be set.
 
 @c --------------------------------------------------------
 @node Redefining functions
@@ -1462,10 +1494,11 @@ values set with @code{@@set} or @code{@@setfilename} and other similar
 The following function reference may be redefined to be called after 
 texinfo processing and before document generation:
 
-@deftypefn {Function Reference} $encoding init_out
+@deftypefn {Function Reference} init_out
 This function perform the initialization of variables and any other
-task before document outputting. It returns the encoding used for the
-output files.
+task before document outputting. 
+@c It returns the encoding used for the
+@c output files.
 @end deftypefn
 
 In the default case the @variable{$BODYTEXT} (@pxref{Customizing header}) 
@@ -1484,9 +1517,8 @@ my $default_init_out = $init_out;
 $init_out = \&makeinfo_like_init_out;
 sub makeinfo_like_init_out() 
 @{
-   my $encoding = &$default_init_out();
+   &$default_init_out();
    $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
-   return $encoding;
 @}
 @end example
 
@@ -1558,11 +1590,12 @@ Similarly it is possible to add text just after the @code{<body>}
 element with the variable @variable{$AFTER_BODY_OPEN}.
 These variables are empty by default.
 
-The encoding of the texinfo file is defined by @variable{$DOCUMENT_ENCODING} 
-if no @code{@@documentencoding} appears in the document. 
-The default is a @samp{en-ascii} encoding.
-The encoding of the resulting document is defined by
-@variable{$ENCODING}. The default is the @code{$DOCUMENT_ENCODING}.
+The HTML encoding of the resulting document is defined by
+@variable{$ENCODING_NAME}. If the variable isn't defined,
+the @code{@@documentencoding} value is used, or the 
+@variable{$OUT_ENCODING} value, if set. @code{$ENCODING_NAME} may
+influence the value of @code{$OUT_ENCODING}, which corresponds with
+the encoding used when writing to the resulting files.
 
 The description of the document may be specified in 
 @variable{$DOCUMENT_DESCRIPTION}. If this variable is undef, the text 

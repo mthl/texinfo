@@ -1,8 +1,6 @@
 # -*-perl-*-
 $USE_ISO = 0;
-$ENCODING = 'utf-8';
-
-# if the encoding isn't utf-8, we should convert to utf-8 characters.
+$ENCODING_NAME = 'utf-8';
 
 use Encode;
 use Unicode::Normalize;
@@ -11,6 +9,7 @@ foreach my $key (keys(%unicode_accents))
 {
     $style_map{$key}->{'function'} = \&t2h_utf8_accent;
     $style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;
+    $style_map_pre{$key}->{'function'} = \&t2h_utf8_accent;
 }
 
 foreach my $key (%things_map)
@@ -19,6 +18,7 @@ foreach my $key (%things_map)
     {
         $things_map{$key} = chr(hex($unicode_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key}));
+        $pre_map{$key} = chr(hex($unicode_map{$key}));
     }
 }
 
