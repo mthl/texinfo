@@ -1494,19 +1494,20 @@ values set with @code{@@set} or @code{@@setfilename} and other similar
 The following function reference may be redefined to be called after 
 texinfo processing and before document generation:
 
-@deftypefn {Function Reference} init_out
+@deffn {Function Reference} init_out
 This function perform the initialization of variables and any other
 task before document outputting. 
 @c It returns the encoding used for the
 @c output files.
-@end deftypefn
+@end deffn
 
 In the default case the @variable{$BODYTEXT} (@pxref{Customizing header}) 
 and the hashes @variable{%NAVIGATION_TEXT},
 @variable{%BUTTONS_NAME}  (@pxref{Button specifications}),   
 @variable{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
 Indeed the initialization of these variables is dependent upon 
-the document language selection. 
+the document language selection. Similarly the encoding variables are set
+based on the information now available (@pxref{Encodings}).
 
 To perform the default initializations and also add more code, you could
 do as in the following example (save the default function reference and call 
@@ -1596,6 +1597,7 @@ the @code{@@documentencoding} value is used, or the
 @variable{$OUT_ENCODING} value, if set. @code{$ENCODING_NAME} may
 influence the value of @code{$OUT_ENCODING}, which corresponds with
 the encoding used when writing to the resulting files.
+@xref{Encodings}.
 
 The description of the document may be specified in 
 @variable{$DOCUMENT_DESCRIPTION}. If this variable is undef, the text 
