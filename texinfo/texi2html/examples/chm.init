@@ -188,7 +188,7 @@ sub chm_init_out()
 
 # there is a special treatment for @l and @L, as there is no 
 # entity, but they could be readble anyway
-    if ($USE_UNICODE)
+    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
     {
          foreach my $thing ('l', 'L')
          {
@@ -203,8 +203,13 @@ sub chm_init_out()
          }
     } 
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
-    open(IDXFILE, ">:encoding($OUT_ENCODING)", $hhk_file)
-        || die "Can't open $file_name for writing: $!\n";
+    open (IDXFILE, ">$hhk_file") or
+        die "Can't open $hhk_file for writing: $!\n";
+    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    {
+        binmode(IDXFILE, ":encoding($OUT_ENCODING)");
+    }
+    
     print "# writing HTML Help index in $hhk_file...\n" if $VERBOSE;
     print IDXFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
     print IDXFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
@@ -219,8 +224,12 @@ sub chm_init_out()
 
     my $hhp_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhp";
     print "# writing HTML Help project in $hhp_file...\n" if $VERBOSE;
-    open (HHPFILE, ">:encoding($OUT_ENCODING)", $hhp_file) or 
+    open (HHPFILE, ">$hhp_file") or
         die "Can't open $hhp_file for writing: $!\n";
+    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    {
+        binmode(HHPFILE, ":encoding($OUT_ENCODING)");
+    }
     my $language = $chm_languages{'en'};
     if (exists ($chm_languages{$LANG}))
     {
@@ -368,8 +377,12 @@ sub chm_finish_out()
     print IDXFILE "</BODY>\n</HTML>\n";
     close (IDXFILE);
     my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
-    open (HHCFILE, ">:encoding($OUT_ENCODING)", $hhc_file) or 
+    open (HHCFILE, ">$hhc_file") or
         die "Can't open $hhc_file for writing: $!\n";
+    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    {
+        binmode(HHCFILE, ":encoding($OUT_ENCODING)");
+    }
     
     print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
     print HHCFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
