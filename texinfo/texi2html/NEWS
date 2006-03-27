@@ -7,6 +7,8 @@ This file records noteworthy changes.
 
 * Handle @frenchspacing, @tie and @indent.
 
+* Use more numeric entities, especially for accented letters.
+
 * The `examples' directory now contains an init file for Mediawiki output.
   Mediawiki is the GPL'd wiki used by Wikipedia.
 

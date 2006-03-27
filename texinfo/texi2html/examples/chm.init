@@ -177,6 +177,14 @@ foreach my $key (%things_map)
 
 $chm_simple_map_texi{"\n"} = ' ';
 
+# at least kchmviewer has trouble with the corresponding textual entities
+foreach my $thing ('OE', 'oe', 'euro')
+{
+     $things_map{$thing} = $numeric_entity_map{$thing};
+     $pre_map{$thing} = $numeric_entity_map{$thing};
+     $simple_format_texi_map{$thing} = $numeric_entity_map{$thing};
+}
+
 my $hhp_lines = '';
 
 sub chm_init_out()
@@ -188,20 +196,20 @@ sub chm_init_out()
 
 # there is a special treatment for @l and @L, as there is no 
 # entity, but they could be readble anyway
-    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
-    {
-         foreach my $thing ('l', 'L')
-         {
-              my $encoded_char = 
-                Encode::encode($OUT_ENCODING,chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
-              if ($encoded_char ne '')
-              {
-                  $things_map{$thing} = $encoded_char;
-                  $pre_map{$thing} = $encoded_char;
-                  $simple_format_texi_map{$thing} = $encoded_char;
-              }
-         }
-    } 
+#    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+#    {
+#         foreach my $thing ('l', 'L')
+#         {
+#              my $encoded_char = 
+#                Encode::encode($OUT_ENCODING,chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
+#              if ($encoded_char ne '')
+#              {
+#                  $things_map{$thing} = $encoded_char;
+#                  $pre_map{$thing} = $encoded_char;
+#                  $simple_format_texi_map{$thing} = $encoded_char;
+#              }
+#         }
+#    } 
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open (IDXFILE, ">$hhk_file") or
         die "Can't open $hhk_file for writing: $!\n";

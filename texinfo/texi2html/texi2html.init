@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.97 2006-03-26 14:38:25 pertusus Exp $
+# $Id: texi2html.init,v 1.98 2006-03-27 12:00:31 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -274,8 +274,13 @@ $L2H_CLEAN = 1;
 
 # If true do table of contents even if there is no @content
 $DO_CONTENTS = 0;
+
 # If true do short table of contents even if there is no @shortcontent
 $DO_SCONTENTS = 0;
+
+# if this variable is true, numeric entities are used when there is no
+# corresponding textual entity.
+$USE_NUMERIC_ENTITY = 1;
 
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
@@ -290,6 +295,7 @@ $AVOID_MENU_REDUNDANCY = 1;
 
 # if set, center @image by default
 # otherwise, do not center by default
+# Deprecated and not used anymore
 $CENTER_IMAGE = 1;
 
 # used as identation for block enclosing command @example, etc
@@ -1689,8 +1695,8 @@ $simple_map_pre{'*'} = "\n";
                'o'            =>  '&oslash;',
                'O'            =>  '&Oslash;',
                'ss'           => '&szlig;',
-               'l'            => '/l',
-               'L'            => '/L',
+               'l'            => '&#322;',
+               'L'            => '&#321;',
                'exclamdown'   => '&iexcl;',
                'questiondown' => '&iquest;',
                'pounds'       => '&pound;',
@@ -1916,7 +1922,7 @@ $pre_map{'enddots'} = '....';
               'ascii'      => 'us-ascii',
 );
 
-# symbols used for the commands if $USE-ISO is true.
+# symbols used for the commands if $USE_ISO is true.
 %iso_symbols = (
          'equiv'     => '&equiv;',
          'dots'      => '&hellip;',
@@ -1925,6 +1931,17 @@ $pre_map{'enddots'} = '....';
          'expansion' => '&rarr;',
          'point'     => '&lowast;',
         );
+
+# not used currently for html, but used in chm.init
+%numeric_entity_map = ();
+
+foreach my $symbol (keys(%unicode_map))
+{
+    if ($symbol ne '')
+    {
+        $numeric_entity_map{$symbol} = '&#' . hex($unicode_map{$symbol}) . ';';
+    }
+}
 
 # When the value begins with & the function with that name is used to do the
 # html. The first argument is the text enclosed within {}, the second is the
@@ -2184,8 +2201,8 @@ my %old_style_map = (
         'Y' => '0178',
     },
     'u' => { # breve
-        'A' => '0101',
-        'a' => '0102',
+        'A' => '0102',
+        'a' => '0103',
         'E' => '0114',
         'e' => '0115',
         'G' => '011E',
@@ -2389,11 +2406,19 @@ sub t2h_default_accent($$)
     return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
 # FIXME here there could be a conversion to the character in the right 
 # encoding, like 
-#    if ($USE_UNICODE and exists($unicode_accents{$accent} and  exists($unicode_accents{$accent}->{$text}))
+#    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '' 
+#        and exists($unicode_accents{$accent}) and  exists($unicode_accents{$accent}->{$text}))
 #    {
 #          my $encoded_char =  Encode::encode($OUT_ENCODING, chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
 #          return $encoded_char if ($encoded_char ne '');
-#    }        
+#    }
+    if ($USE_NUMERIC_ENTITY)
+    {
+        if (exists($unicode_accents{$accent}) and exists($unicode_accents{$accent}->{$text}))
+        {
+             return ('&#' . hex($unicode_accents{$accent}->{$text}) . ';');
+        }
+    }
     return ascii_accents($text, $accent);
 }
 

@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.159 2006-03-26 14:38:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.160 2006-03-27 12:00:31 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -281,6 +281,7 @@ $BEFORE_TOC_LINES
 $AFTER_TOC_LINES
 $NEW_CROSSREF_STYLE
 $USER
+$USE_NUMERIC_ENTITY
 $DATE
 %ACTIVE_ICONS
 %NAVIGATION_TEXT
@@ -439,6 +440,7 @@ $complex_format_map
 %ascii_character_map
 %ascii_simple_map
 %ascii_things_map
+%numeric_entity_map
 %perl_charset_to_html
 %iso_symbols
 %misc_command
@@ -725,7 +727,7 @@ sub t2h_utf8_normal_text($$$$$)
         $text =~ s/``/\x{201C}/g;
         $text =~ s/''/\x{201D}/g;
     }
-    return $text;
+    return Unicode::Normalize::NFC($text);
 }
 
 # these are unlikely to be used by users, as they are essentially

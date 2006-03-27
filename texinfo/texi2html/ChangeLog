@@ -2,6 +2,13 @@
 
 	* examples/chm.init: set the encoding conditionnaly on OUT_ENCODING
 	being defined.
+	* texi2html.pl,texi2html.init: add $USE_NUMERIC_ENTITY variable,
+	set to true in the default case. Use numeric entities for accented
+	letters if this variable is true.
+	Use numeric entity for @l{} and @L{} instead of /l and /L.
+	* examples/chm.init: use numerical entities instead of textual
+	entities for @oe, @OE and @euro, some viewers have trouble with
+	the corresponding textual entities.
 
 2006-03-26  Patrice Dumas  <dumas@centre-cired.fr>
 
