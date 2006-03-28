@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
+@c $Id: texinfo.txi,v 1.159 2006-03-28 18:39:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16658,9 +16658,9 @@ according to the other rules.
 @item @code{@@minus}            @tab U+2212
 @item @code{@@ordf}             @tab U+00AA
 @item @code{@@ordm}             @tab U+00BA
-@item @code{@@point}            @tab U+2217
+@item @code{@@point}            @tab U+2605
 @item @code{@@pounds}           @tab U+00A3
-@item @code{@@print}            @tab @samp{-|}
+@item @code{@@print}            @tab U+22A3
 @item @code{@@questiondown}     @tab U+00BF
 @item @code{@@registeredsymbol} @tab U+00AE
 @item @code{@@result}           @tab U+21D2
@@ -18607,7 +18607,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
+$Id: texinfo.txi,v 1.159 2006-03-28 18:39:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18673,7 +18673,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.158 2006-03-25 19:20:49 karl Exp $
+@comment $Id: texinfo.txi,v 1.159 2006-03-28 18:39:38 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
