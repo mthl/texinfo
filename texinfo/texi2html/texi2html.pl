@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.160 2006-03-27 12:00:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.161 2006-03-30 10:05:05 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -208,6 +208,8 @@ $SHOW_MENU
 $NUMBER_SECTIONS
 $USE_NODES
 $USE_UNICODE
+$USE_UNIDECODE
+$TRANSLITERATE_NODE
 $NODE_FILES
 $NODE_NAME_IN_MENU
 $AVOID_MENU_REDUNDANCY
@@ -437,6 +439,9 @@ $complex_format_map
 %texi_map
 %unicode_map
 %unicode_diacritical
+%transliterate_map 
+%transliterate_accent_map
+%no_transliterate_map
 %ascii_character_map
 %ascii_simple_map
 %ascii_things_map
@@ -741,6 +746,9 @@ sub t2h_cross_manual_normal_text($$$$$)
     my $style_stack = shift;
 
     $text = uc($text) if (in_small_caps($style_stack));
+    return $text if ($USE_UNICODE);
+
+    # if there is no unicode support, we do all the transformations here
     my $result = '';
     while ($text ne '')
     {
@@ -756,11 +764,7 @@ sub t2h_cross_manual_normal_text($$$$$)
         {
              if (exists($ascii_character_map{$1}))
              {
-                  $result .= '_' . lc($ascii_character_map{$1});
-             }
-             elsif ($USE_UNICODE) # should allready be in perl internal format
-             {
-                  $result .= $1;
+                 $result .= '_' . lc($ascii_character_map{$1});
              }
              else
              { # wild guess that should work for latin1
@@ -777,18 +781,43 @@ sub t2h_cross_manual_normal_text($$$$$)
     return $result;
 }
 
-sub t2h_nounicode_cross_manual_accent($$)
+sub t2h_nounicode_cross_manual_accent($$$)
+{
+    my $accent = shift;
+    my $args = shift;
+    my $style_stack = shift;
+                                                                                
+    my $text = $args->[0];
+
+    if ($accent eq 'dotless')
+    { 
+        if (($text eq 'i') and (!defined($style_stack->[-1]) or (!defined($unicode_accents{$style_stack->[-1]})) or ($style_stack->[-1] eq 'tieaccent')))
+        {
+             return "_0131";
+        }
+        #return "\x{}" if ($text eq 'j'); # not found !
+        return $text;
+    }
+    return '_' . lc($unicode_accents{$accent}->{$text})
+        if (defined($unicode_accents{$accent}->{$text}));
+    return ($text . '_' . lc($unicode_diacritical{$accent})) 
+        if (defined($unicode_diacritical{$accent}));
+    return ascii_accents($text, $accent);
+}
+
+sub t2h_transliterate_cross_manual_accent($$)
 {
     my $accent = shift;
     my $args = shift;
                                                                                 
     my $text = $args->[0];
 
-    return '_' . lc($unicode_accents{$accent}->{$text})
-        if (defined($unicode_accents{$accent}->{$text}));
-    return ($text . '_' . lc($unicode_diacritical{$accent})) 
-        if (defined($unicode_diacritical{$accent}));
-    return ascii_accents($text, $accent);
+    if (exists($unicode_accents{$accent}->{$text}) and
+        exists ($transliterate_map{$unicode_accents{$accent}->{$text}}))
+    {
+         return $transliterate_map{$unicode_accents{$accent}->{$text}};
+    }
+    return $text;
 }
 
 
@@ -1411,21 +1440,31 @@ sub encoding_alias($)
 
 # setup hashes used for html manual cross references in texinfo
 my %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
+
+$cross_ref_texi_map{'enddots'} = '...';
+
 my %cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
 my %cross_ref_style_map_texi = ();
+my %cross_transliterate_style_map_texi = ();
+
+my %cross_transliterate_texi_map = %cross_ref_texi_map;
 
 foreach my $command (keys(%Texi2HTML::Config::style_map_texi))
 {
     $cross_ref_style_map_texi{$command} = {}; 
+    $cross_transliterate_style_map_texi{$command} = {};
     foreach my $key (keys (%{$Texi2HTML::Config::style_map_texi{$command}}))
     {
 #print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
          $cross_ref_style_map_texi{$command}->{$key} = 
               $Texi2HTML::Config::style_map_texi{$command}->{$key};
+         $cross_transliterate_style_map_texi{$command}->{$key} = 
+              $Texi2HTML::Config::style_map_texi{$command}->{$key};
     }
 }
 
 $cross_ref_simple_map_texi{"\n"} = ' ';
+$cross_ref_simple_map_texi{"*"} = ' ';
 
 
 # This function is used to construct link names from node names as
@@ -1437,10 +1476,10 @@ sub cross_manual_links($$)
 
     print STDERR "# Doing ".scalar(keys(%$nodes_hash)) . 
         " cross manual links\n" if ($T2H_DEBUG);
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $::style_map_texi_ref = \%cross_ref_style_map_texi;
     $::texi_map_ref = \%cross_ref_texi_map;
-    my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
 
     foreach my $key (keys(%$nodes_hash))
@@ -1449,35 +1488,27 @@ sub cross_manual_links($$)
         next if ($node->{'index_page'});
         if (!defined($node->{'texi'}))
         {
-            # begin debug section 
+            ###################### debug section 
             foreach my $key (keys(%$node))
             {
                 #print STDERR "$key:$node->{$key}!!!\n";
             }
-            # end debug section 
+            ###################### end debug section 
         }
         else 
         {
             $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
-            $node->{'cross_manual_target'} = 
-               unicode_to_protected(Unicode::Normalize::NFC($node->{'cross_manual_target'})) if ($Texi2HTML::Config::USE_UNICODE);
-#            if ($Texi2HTML::Config::USE_UNICODE)
-#            {
-#                 my $text = $node->{'texi'};
-# the following block of code is useless, as the text should allready be
-# in internal perl format
-#                 if (defined($Texi2HTML::Config::DOCUMENT_ENCODING) and 
-#                      Encode::resolve_alias($Texi2HTML::Config::DOCUMENT_ENCODING) and
-#                      (Encode::resolve_alias($Texi2HTML::Config::DOCUMENT_ENCODING) ne 'utf8'))
-#                 {
-#                      $text = Encode::decode($Texi2HTML::Config::DOCUMENT_ENCODING, $text);
-#                 }
-#                 $node->{'cross_manual_target'} = unicode_to_protected(Unicode::Normalize::NFC(remove_texi($text)));
-#            }
-#            else
-#            {
-#                 $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
-#            }
+            if ($Texi2HTML::Config::USE_UNICODE)
+            {
+                $node->{'cross_manual_target'} = Unicode::Normalize::NFC($node->{'cross_manual_target'});
+                if ($Texi2HTML::Config::TRANSLITERATE_NODE and  $Texi2HTML::Config::USE_UNIDECODE)
+                {
+                     $node->{'cross_manual_file'} = 
+                       unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_target'}));
+                }
+                $node->{'cross_manual_target'} = 
+                    unicode_to_protected($node->{'cross_manual_target'});
+            }
 #print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
             unless ($node->{'external_node'})
             {
@@ -1494,6 +1525,25 @@ sub cross_manual_links($$)
         }
     }
 
+    
+    if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
+         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
+    {
+         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
+         $::texi_map_ref = \%cross_transliterate_texi_map;
+
+         foreach my $key (keys(%$nodes_hash))
+         {
+             my $node = $nodes_hash->{$key};
+             next if ($node->{'index_page'});
+             if (defined($node->{'texi'}))
+             {
+                  $node->{'cross_manual_file'} = remove_texi($node->{'texi'});
+                  $node->{'cross_manual_file'} = unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_file'})) if ($Texi2HTML::Config::USE_UNICODE);
+             }
+         }
+    }
+
     $Texi2HTML::Config::normal_text = $normal_text_kept;
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
@@ -1506,29 +1556,85 @@ sub unicode_to_protected($)
     my $result = '';
     while ($text ne '')
     {
-        if ($text =~ s/^([A-Za-z0-9_\-]+)//o)
+        if ($text =~ s/^([A-Za-z0-9]+)//o)
         {
              $result .= $1;
         }
+        elsif ($text =~ s/^ //o)
+        {
+             $result .= '-';
+        }
         elsif ($text =~ s/^(.)//o)
         {
-             $result .= '_' . lc(sprintf("%04x",ord($1)));
+             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
+             {
+                 $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$1});
+             }
+             else
+             {
+                 $result .= '_' . lc(sprintf("%04x",ord($1)));
+             }
         }
         else
         {
              print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
              sleep 1;
-        }    
+        }
     }
-   
+    return $result;
+}
+
+sub unicode_to_transliterate($)
+{
+    my $text = shift;
+    my $result = '';
+    while ($text ne '')
+    {
+        if ($text =~ s/^([A-Za-z0-9 ]+)//o)
+        {
+             $result .= $1;
+        }
+        elsif ($text =~ s/^(.)//o)
+        {
+             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
+             {
+                 $result .= $1;
+             }
+             elsif (exists($Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($1)))}))
+             {
+                 $result .= $Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($1)))};
+             }
+             elsif (exists($Texi2HTML::Config::unicode_diacritical{uc(sprintf("%04x",ord($1)))}))
+             {
+                 $result .= '';
+             }
+             else
+             {
+                 if ($Texi2HTML::Config::USE_UNIDECODE)
+                 {
+                      $result .= unidecode($1);
+                 }
+                 else
+                 {
+                      $result .= $1;
+                 }
+             }
+        }
+        else
+        {
+             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
+             sleep 1;
+        }
+    }
     return $result;
 }
 
 # This function is used to construct a link name from a node name as
 # specified for texinfo
-sub cross_manual_line($)
+sub cross_manual_line($;$)
 {
     my $text = shift;
+    my $transliterate = shift;
 #print STDERR "cross_manual_line $text\n";
 #print STDERR "remove_texi text ". remove_texi($text)."\n\n\n";
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
@@ -1537,14 +1643,30 @@ sub cross_manual_line($)
     my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
     
-    my $cross_ref;
+    my ($cross_ref_target, $cross_ref_file);
     if ($Texi2HTML::Config::USE_UNICODE)
     {
-         $cross_ref = unicode_to_protected(Unicode::Normalize::NFC(remove_texi($text)));
+         $cross_ref_target = Unicode::Normalize::NFC(remove_texi($text));
+         if ($transliterate and $Texi2HTML::Config::USE_UNIDECODE)
+         {
+             $cross_ref_file = 
+                unicode_to_protected(unicode_to_transliterate($cross_ref_target));
+         }
+         $cross_ref_target = unicode_to_protected($cross_ref_target);
     }
     else
     {
-         $cross_ref = remove_texi($text);
+         $cross_ref_target = remove_texi($text);
+    }
+    
+    if ($transliterate and 
+         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
+    {
+         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
+         $::texi_map_ref = \%cross_transliterate_texi_map;
+         $cross_ref_file = remove_texi($text);
+         $cross_ref_file = unicode_to_protected(unicode_to_transliterate($cross_ref_file))
+               if ($Texi2HTML::Config::USE_UNICODE);
     }
 
     $Texi2HTML::Config::normal_text = $normal_text_kept;
@@ -1552,7 +1674,12 @@ sub cross_manual_line($)
     $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::texi_map;
 #print STDERR "\n\ncross_ref $cross_ref\n";
-    return $cross_ref;
+    unless ($transliterate)
+    {
+        return $cross_ref_target;
+    }
+#    print STDERR "$text|$cross_ref_target|$cross_ref_file\n";
+    return ($cross_ref_target, $cross_ref_file);
 }
 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
@@ -2357,6 +2484,31 @@ elsif ($Texi2HTML::Config::USE_UNICODE)
     Encode->import('encode');
 }
 
+# no user provided USE_UNIDECODE, use configure provided
+if (!defined($Texi2HTML::Config::USE_UNIDECODE))
+{
+    $Texi2HTML::Config::USE_UNIDECODE = '@USE_UNIDECODE@';
+}
+
+# no user provided nor configured, run time test
+if ($Texi2HTML::Config::USE_UNIDECODE eq '@' .'USE_UNIDECODE@')
+{
+    $Texi2HTML::Config::USE_UNIDECODE = 1;
+    eval {
+        require Text::Unidecode;
+        Text::Unidecode->import('unidecode');
+    };
+    $Texi2HTML::Config::USE_UNIDECODE = 0 if ($@);
+}
+elsif ($Texi2HTML::Config::USE_UNIDECODE)
+{# user provided or set by configure
+    require Text::Unidecode;
+    Text::Unidecode->import('unidecode');
+}
+
+print STDERR "# USE_UNICODE $Texi2HTML::Config::USE_UNICODE, USE_UNIDECODE $Texi2HTML::Config::USE_UNIDECODE \n" 
+  if ($T2H_VERBOSE);
+
 # Construct hashes used for cross references generation
 # Do it now as the user may have changed $USE_UNICODE
 
@@ -2366,12 +2518,37 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
     {
         if ($Texi2HTML::Config::USE_UNICODE)
         {
-             $cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+            $cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+            if (($Texi2HTML::Config::TRANSLITERATE_NODE and !$Texi2HTML::Config::USE_UNIDECODE)
+                and (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}})))
+            {
+                $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
+                 
+            }
         }
         else
         {
-             $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
+            $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
+            if ($Texi2HTML::Config::TRANSLITERATE_NODE)
+            {
+                if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
+                {
+                    $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
+                }
+                else
+                {
+                     $cross_transliterate_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
+                }
+            }
         }
+    }
+}
+if ($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::TRANSLITERATE_NODE
+     and ! $Texi2HTML::Config::USE_UNIDECODE)
+{
+    foreach my $key (keys (%Texi2HTML::Config::transliterate_accent_map))
+    {
+        $Texi2HTML::Config::transliterate_map{$key} = $Texi2HTML::Config::transliterate_accent_map{$key};
     }
 }
 
@@ -2387,6 +2564,11 @@ foreach my $key (keys(%cross_ref_style_map_texi))
         else
         {
              $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_nounicode_cross_manual_accent;
+        }
+        if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
+           !($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::USE_UNIDECODE))
+        {
+             $cross_transliterate_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_transliterate_cross_manual_accent;
         }
     }
 }
@@ -2567,10 +2749,6 @@ if ($Texi2HTML::Config::SHORTEXTN)
 $docu_doc = $docu_name . ($docu_ext ? ".$docu_ext" : ""); # document's contents
 if ($Texi2HTML::Config::SPLIT)
 {
-    # if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
-    # ${docu_name}_ovr... there may be trouble with the old naming scheme in
-    # very rare circumstances. This won't be fixed, the new scheme will be used
-    # soon.
     $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
 
     if (defined $Texi2HTML::Config::element_file_name)
@@ -3346,7 +3524,7 @@ $tag eq 'float')
                     $style_texi = normalise_space($style_texi);
                     $label_texi = undef if (defined($label_texi) and ($label_texi =~ /^\s*$/));
                     if (defined($label_texi))
-                    {
+                    { # The float may be a target for refs if it has a label
                         $label_texi = normalise_node($label_texi);
                         if (exists($nodes{$label_texi}) and defined($nodes{$label_texi})
                              and $nodes{$label_texi}->{'seen'})
@@ -3389,7 +3567,7 @@ $tag eq 'float')
                         echo_warn ("Printindex before document beginning: \@printindex $1", $line_nr);
                         next;
                     }
-                    $state->{'after_element'} = 0;
+                    delete $state->{'after_element'};
                     # $element_index is the first element with index
                     $element_index = $elements_list[-1] unless (defined($element_index));
                     # associate the index to the element such that the page
@@ -5681,20 +5859,14 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     #
     if ( $Texi2HTML::Config::FRAMES )
     {
-        #open(FILE, "> $docu_frame_file")
-        #    || die "$ERROR: Can't open $docu_frame_file for writing: $!\n";
         my $FH = open_out($docu_frame_file);
         print STDERR "# Creating frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
         &$Texi2HTML::Config::print_frame($FH, $docu_toc_frame_file, $docu_top_file);
         close_out($FH, $docu_frame_file);
 
-        #open(FILE, "> $docu_toc_frame_file")
-        #    || die "$ERROR: Can't open $docu_toc_frame_file for writing: $!\n";
         $FH = open_out($docu_toc_frame_file);
         print STDERR "# Creating toc frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
-        #&$Texi2HTML::Config::print_toc_frame(\*FILE, $Texi2HTML::OVERVIEW);
         &$Texi2HTML::Config::print_toc_frame($FH, $Texi2HTML::OVERVIEW);
-        #close(FILE);
         close_out($FH, $docu_toc_frame_file);
     }
 
@@ -5825,7 +5997,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     $Texi2HTML::THIS_HEADER = \@head_lines;
                     if ($element)
                     {
-                        #$FH = finish_element($FH, $element, $new_element, $first_section);
                         finish_element($FH, $element, $new_element, $first_section);
                         $first_section = 0;
                         @section_lines = ();
@@ -5888,7 +6059,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     }
                     #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     $files{$element->{'file'}}->{'counter'}--;
-                    #if (! defined($FH))
                     if (!defined($previous_file) or ($element->{'file'} ne $previous_file))
                     {
                         my $file = $element->{'file'};
@@ -5902,6 +6072,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                         else
                         {
                              $FH = open_out("$docu_rdir$file");
+#print STDERR "OPEN $docu_rdir$file, $FH". scalar($FH)."\n";
                              $files{$file}->{'filehandle'} = $FH;
                              $do_page_head = 1;
                         }
@@ -6043,7 +6214,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     if (@foot_lines)
     {
         print STDERR "# writing Footnotes in $docu_foot_file\n" if $T2H_VERBOSE;
-        #open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
         $FH = open_out ($docu_foot_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'Footnotes'};
@@ -6053,11 +6223,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Footnotes'};
         $Texi2HTML::THIS_SECTION = \@foot_lines;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($footnote_element->{'id'}) . "\n" ];
-        #&$Texi2HTML::Config::print_Footnotes(\*FILE);
         &$Texi2HTML::Config::print_Footnotes($FH);
-        #close(FILE) if $Texi2HTML::Config::SPLIT;
         close_out($FH, $docu_foot_file) 
-            #|| die "$ERROR: Error occurred when closing $docu_foot_file: $!\n"
                if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{'Footnotes'} = $Texi2HTML::HREF{'This'};
     }
@@ -6065,7 +6232,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     if (@{$Texi2HTML::TOC_LINES})
     {
         print STDERR "# writing Toc in $docu_toc_file\n" if $T2H_VERBOSE;
-        #open (FILE, "> $docu_toc_file") || die "$ERROR: Can't open $docu_toc_file for writing: $!\n"
         $FH = open_out ($docu_toc_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'Contents'};
@@ -6075,11 +6241,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Contents'};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::TOC_LINES;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Contents") . "\n" ];
-        #&$Texi2HTML::Config::print_Toc(\*FILE);
-        #close(FILE) if $Texi2HTML::Config::SPLIT;
         &$Texi2HTML::Config::print_Toc($FH);
         close_out($FH, $docu_toc_file) 
-        #|| die "$ERROR: Error occurred when closing $docu_toc_file: $!\n"
                if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{'Contents'} = $Texi2HTML::HREF{'This'};
     }
@@ -6087,7 +6250,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     if (@{$Texi2HTML::OVERVIEW})
     {
         print STDERR "# writing Overview in $docu_stoc_file\n" if $T2H_VERBOSE;
-        #open (FILE, "> $docu_stoc_file") || die "$ERROR: Can't open $docu_stoc_file for writing: $!\n"
         $FH = open_out ($docu_stoc_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{This} = $Texi2HTML::HREF{Overview};
@@ -6097,11 +6259,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::SIMPLE_TEXT{This} = $Texi2HTML::SIMPLE_TEXT{Overview};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::OVERVIEW;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Overview") . "\n" ];
-        #&$Texi2HTML::Config::print_Overview(\*FILE);
-        #close(FILE) if $Texi2HTML::Config::SPLIT;
         &$Texi2HTML::Config::print_Overview($FH);
         close_out($FH,$docu_stoc_file) 
-         #|| die "$ERROR: Error occurred when closing $docu_stoc_file: $!\n"
                if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{Overview} = $Texi2HTML::HREF{This};
     }
@@ -6109,7 +6268,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     if ($about_body = &$Texi2HTML::Config::about_body())
     {
         print STDERR "# writing About in $docu_about_file\n" if $T2H_VERBOSE;
-        #open (FILE, "> $docu_about_file") || die "$ERROR: Can't open $docu_about_file for writing: $!\n"
         $FH = open_out ($docu_about_file)
             if $Texi2HTML::Config::SPLIT;
 
@@ -6120,11 +6278,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::SIMPLE_TEXT{This} = $Texi2HTML::SIMPLE_TEXT{About};
         $Texi2HTML::THIS_SECTION = [$about_body];
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_About") . "\n" ];
-        #&$Texi2HTML::Config::print_About(\*FILE);
-        #close(FILE) if $Texi2HTML::Config::SPLIT;
         &$Texi2HTML::Config::print_About($FH);
         close_out($FH, $docu_stoc_file) 
-           #|| die "$ERROR: Error occurred when closing $docu_stoc_file: $!\n"
                if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{About} = $Texi2HTML::HREF{This};
     }
@@ -6133,11 +6288,10 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     {
         &$Texi2HTML::Config::print_page_foot($FH);
         close_out ($FH);
-          # || die "$ERROR: Error occurred when closing: $!\n";
     }
 }
 
-# print section, close file and undef FH if needed.
+# print section, close file if needed.
 sub finish_element($$$$)
 {
     my $FH = shift;
@@ -6180,9 +6334,8 @@ sub finish_element($$$$)
              }
              else
              {
-                 print STDERR "counter $files{$element->{'file'}}->{'counter'} ne 0, file $element->{'file'}\n";
+                 print STDERR "counter $files{$element->{'file'}}->{'counter'} ne 0, file $element->{'file'}\n" if ($T2H_DEBUG);
              }
-             undef $FH;
         }
         elsif (!defined($new_element))
         {
@@ -6207,7 +6360,6 @@ sub finish_element($$$$)
             &$Texi2HTML::Config::end_section($FH);
         }
     }
-    return $FH;
 }
 
 # write to files with name the node name for cross manual references.
@@ -6231,9 +6383,9 @@ sub do_node_files()
         $Texi2HTML::SIMPLE_TEXT{'This'} = $node->{'simple_format'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
         $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
-        open (NODEFILE, "> $file") || die "$ERROR Can't open $file for writing: $!\n";
-        &$Texi2HTML::Config::print_redirection_page (\*NODEFILE);
-        close NODEFILE || die "$ERROR: Can't close $file: $!\n";
+        my $NODEFILE = open_out ($file);
+        &$Texi2HTML::Config::print_redirection_page ($NODEFILE);
+        close $NODEFILE || die "$ERROR: Can't close $file: $!\n";
     }
 }
 
@@ -6286,6 +6438,7 @@ sub open_file($$)
 sub open_out($)
 {
     my $file = shift;
+    local *FILE;
     if ($file eq '-')
     {
         binmode(STDOUT, ":encoding($to_encoding)") if (defined($to_encoding) and $Texi2HTML::Config::USE_UNICODE);
@@ -6308,9 +6461,10 @@ sub open_out($)
         }
         binmode(FILE, ":encoding($to_encoding)");
     }
-    return \*FILE;
+    return *FILE;
 }
 
+# FIXME not used when split 
 sub close_out($;$)
 {
     my $FH = shift;
@@ -6636,13 +6790,15 @@ sub do_preformatted($$)
 
 sub do_external_href($)
 {
-    my $texi_node = shift;
-    my $file = '';
-    my $node_id = '';
-    my $node_xhtml_id = '';
     # node_id is a unique node identifier with only letters, digits, - and _
     # node_xhtml_id is almost the same, but xhtml id can only begin with
     # letters, so a prefix has to be appended  
+    my $texi_node = shift;
+    my $file = '';
+    my $node_file = '';
+    my $node_id = '';
+    my $node_xhtml_id = '';
+
     if ($texi_node =~ s/^\((.+?)\)//)
     {
          $file = $1;
@@ -6653,14 +6809,26 @@ sub do_external_href($)
          if (exists($nodes{$texi_node}) and ($nodes{$texi_node}->{'cross_manual_target'})) 
          {
                $node_id = $nodes{$texi_node}->{'cross_manual_target'};
+               if ($Texi2HTML::Config::TRANSLITERATE_NODE)
+               {
+                   $node_file = $nodes{$texi_node}->{'cross_manual_file'};
+               }
          }
          else 
          {
-               $node_id = cross_manual_line($texi_node);
+              if ($Texi2HTML::Config::TRANSLITERATE_NODE)
+              {
+                  ($node_id, $node_file) = cross_manual_line($texi_node,1);
+              }
+              else
+              {
+                  $node_id = cross_manual_line($texi_node);
+              }
          }
          $node_xhtml_id = node_to_id($node_id);
+         $node_file = $node_id unless ($Texi2HTML::Config::TRANSLITERATE_NODE);
     }
-    return &$Texi2HTML::Config::external_href($texi_node, $node_id, 
+    return &$Texi2HTML::Config::external_href($texi_node, $node_file, 
         $node_xhtml_id, $file);
 }
 
@@ -7552,6 +7720,8 @@ sub do_caption_shortcaption($$$$$)
     return '';
 }
 
+# function called when a @float is encountered. Don't do any output
+# but prepare $state->{'float'}
 sub do_float_line($$$$$)
 {
     my $command = shift;
@@ -7566,13 +7736,14 @@ sub do_float_line($$$$$)
     $style_texi = undef if (defined($style_texi) and $style_texi=~/^\s*$/);
     $label_texi = undef if (defined($label_texi) and $label_texi=~/^\s*$/);
     if (defined($label_texi))
-    {
-         #my $id = cross_manual_line($label_texi);
+    { # the float is considered as a node as it may be a target for refs.
+      # it was entered as a node in the pass_structure and the float
+      # line was parsed at that time
          $state->{'float'} = $nodes{normalise_node($label_texi)};
          #print STDERR "float: $state->{'float'}, $state->{'float'}->{'texi'}\n";
     }
     else 
-    {
+    { # a float without label. It can't be the target for refs.
          $state->{'float'} = { 'float' => 1 };
          if (defined($style_texi))
          {
@@ -7845,14 +8016,10 @@ sub do_index_summary_file($)
     my $name = shift;
     my ($Pages, $Entries) = get_index($name);
     &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name});
-    #open(FHIDX, ">$docu_rdir$docu_name" . "_$name.idx")
-    #   || die "Can't open > $docu_rdir$docu_name" . "_$name.idx for writing: $!\n";
-    #print STDERR "# writing $name index summary in $docu_rdir$docu_name" . "_$name.idx...\n" if $T2H_VERBOSE;
     print STDERR "# writing $name index summary\n" if $T2H_VERBOSE;
 
     foreach my $key (sort keys %$Entries)
     {
-        #print FHIDX "$key\t$Entries->{$key}->{href}\n";
         my $entry = $Entries->{$key};
         my $label = $entry->{'element'};
         my $entry_element = $label;
@@ -7885,8 +8052,6 @@ sub do_index_summary_file($)
                 $origin_href .= '#' . $entry->{'id'} ;
             }
         }
-        #print STDERR "SUBHREF in index summary file for $entry_element->{'texi'}\n";
-        #print FHIDX '' . 
         &$Texi2HTML::Config::index_summary_file_entry ($name,
           $key, $origin_href, 
           substitute_line($entry->{'entry'}), $entry->{'entry'},
@@ -8748,7 +8913,7 @@ sub scan_structure($$$$;$)
                 menu_entry_texi(normalise_node($node), $state, $line_nr);
             }
         }
-        if (/\S/ and !no_line($_))
+        unless (no_line($_))
         {
             delete $state->{'after_element'};
         }
@@ -8862,12 +9027,13 @@ sub scan_structure($$$$;$)
             {
                 pop @{$state->{'text_macro_stack'}};
                 if (exists($region_lines{$end_tag}))
-                {
+                { # end a region_line macro, like documentdescription, copying
                      print STDERR "Bug: end_tag $end_tag ne $state->{'region_lines'}->{'format'}" 
                          if ( $end_tag ne $state->{'region_lines'}->{'format'});
                      $state->{'region_lines'}->{'number'}--;
                      if ($state->{'region_lines'}->{'number'} == 0)
-                     {
+                     { # restore $state->{'after_element'} and delete the
+                       # structure
                          $state->{'after_element'} = 1;
                          delete $state->{'after_element'} unless 
                              ($state->{'region_lines'}->{'after_element'});

@@ -64,7 +64,7 @@ after footnote @xref{footanchor}.
 @node @"o,,,Umlaut
 @section @"o
 Ref to an anchor at the end of the doc 
-(@pxref{@'o-o, , there is an o-@'o could there be an @^{@dotless{i}}}).
+(@pxref{@'e-o, , there is an o-@'e could there be an @^{@dotless{i}}}).
 @node @"u,,,Umlaut
 @section @"u
 Another ref to an anchor (@pxref{x-spot, ,}).
@@ -135,7 +135,7 @@ With brace @'{a}. Testing ' " ` ^.
 @node @'Y,,,acute accent
 @section @'Y
 This is a ref to @"u (@pxref{@"u, ,@"u}).
-Another one, with node only (@pxref{@"a, ,}).
+Another one, with node only (@pxref{@"u, ,}).
 
 @ignore
 An ignored sentence.
@@ -249,7 +249,7 @@ Test @@^@{@@dotless@{i@}@}.
 @node @~O,,,tilde accent
 @section @~O
 This marks the @anchor{x-spot}spot.
-A second one with accented char @anchor{@'o-o}.
+A second one with accented char @anchor{@'e-o}.
 @c
 @node cedilla accent,,Top,Top
 @chapter cedilla accent

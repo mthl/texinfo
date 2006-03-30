@@ -249,10 +249,15 @@ test_texi formatting verbatim_not_closed.texi "" 1
 test_texi formatting copying_not_closed.texi "" 1
 test_texi formatting titlepage_not_closed.texi "" 1
 test_texi formatting nested_ignore.texi
-test_texi formatting test_refs.texi "-init cross_manual.init"
-test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
-test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
+test_texi formatting test_refs.texi 
+test_texi formatting test_refs.texi "-prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
+test_texi formatting test_refs.texi "-prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
 test_texi formatting at_commands_in_refs.texi
+test_texi node_utf8_translit ../formatting/nodetest_utf8.texi "-node-files -use-nodes -split node -output . -prefix nodetest" 1 texi nodetest
+test_texi node_utf8_translit_no_unidecode ../formatting/nodetest_utf8.texi "-init ../formatting/no_unidecode.init -node-files -use-nodes -split node -output . -prefix nodetest" 1 texi nodetest
+test_texi node_translit ../GermanNodeTest/nodetest.texi "-node-files -use-nodes -split node -output ." 
+test_texi node_translit_no_unicode ../GermanNodeTest/nodetest.texi "-init ../formatting/no_unicode.init -node-files -use-nodes -split node -output ."
+test_texi node_translit_no_unidecode ../GermanNodeTest/nodetest.texi "-init ../formatting/no_unidecode.init -node-files -use-nodes -split node -output ."
 test_texi texi2html 
 test_texi viper_monolithic viper.texi "-ifinfo"
 test_texi viper viper.texi "-split chapter -ifinfo -output ."

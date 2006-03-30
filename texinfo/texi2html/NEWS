@@ -5,6 +5,9 @@ This file records noteworthy changes.
 * NEW FEATURES
   ------------
 
+* Transliterate accented characters in file names. Use Text::Unidecode
+  if detected.
+
 * Handle @frenchspacing, @tie and @indent.
 
 * Use more numeric entities, especially for accented letters.

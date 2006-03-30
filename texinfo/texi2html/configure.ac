@@ -31,7 +31,26 @@ AC_ARG_WITH([encode],
      fi
      ])
 
+AC_ARG_WITH([unidecode],
+    AC_HELP_STRING([--with-unidecode],
+           [use Text::Unidecode (default: detected)]),
+    [if test $withval = 'no'; then
+         USE_UNIDECODE=0
+     else
+         USE_UNIDECODE=1
+     fi],
+    [
+     USE_UNIDECODE=0
+     if test $USE_UNICODE = 1; then
+        if $PERL -e "use Text::Unidecode;" > /dev/null 2>&1; 
+        then USE_UNIDECODE=1
+        fi
+     fi
+     ])
+
+
 AC_SUBST([USE_UNICODE])
+AC_SUBST([USE_UNIDECODE])
 
 t2h_try_translations=
 AC_ARG_ENABLE([translations],

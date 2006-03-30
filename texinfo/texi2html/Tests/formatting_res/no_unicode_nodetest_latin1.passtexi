@@ -263,66 +263,69 @@ nodetest_latin1.texi(,266) * @tieaccent{a}::  @tieaccent{a} tieaccent.
 nodetest_latin1.texi(,267) * @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
 nodetest_latin1.texi(,268) * @dotless{i}::  @dotless{i} dotless i.
 nodetest_latin1.texi(,269) * @dotless{j}::  @dotless{j} dotless j.
-nodetest_latin1.texi(,270) @end menu
-nodetest_latin1.texi(,271) @c
-nodetest_latin1.texi(,272) @node @aa{},,,rest
-nodetest_latin1.texi(,273) @section @aa{}
-nodetest_latin1.texi(,274) @node @ae{},,,rest
-nodetest_latin1.texi(,275) @section @ae{}
-nodetest_latin1.texi(,276) @node @oe{},,,rest
-nodetest_latin1.texi(,277) @section @oe{}
-nodetest_latin1.texi(,278) @node @AA{},,,rest
-nodetest_latin1.texi(,279) @section @AA{}
-nodetest_latin1.texi(,280) @node @AE{},,,rest
-nodetest_latin1.texi(,281) @section @AE{}
-nodetest_latin1.texi(,282) @node @OE{},,,rest
-nodetest_latin1.texi(,283) @section @OE{}
-nodetest_latin1.texi(,284) @node @l{},,,rest
-nodetest_latin1.texi(,285) @section @l{}
-nodetest_latin1.texi(,286) @node @o{},,,rest
-nodetest_latin1.texi(,287) @section @o{}
-nodetest_latin1.texi(,288) @node @L{},,,rest
-nodetest_latin1.texi(,289) @section @L{}
-nodetest_latin1.texi(,290) @node @O{},,,rest
-nodetest_latin1.texi(,291) @section @O{}
-nodetest_latin1.texi(,292) @node @H{a},,,rest
-nodetest_latin1.texi(,293) @section @H{a}
-nodetest_latin1.texi(,294) @node @u{a},,,rest
-nodetest_latin1.texi(,295) @section @u{a}
-nodetest_latin1.texi(,296) @node @v{a},,,rest
-nodetest_latin1.texi(,297) @section @v{a}
-nodetest_latin1.texi(,298) @node @udotaccent{a},,,rest
-nodetest_latin1.texi(,299) @section @udotaccent{a}
-nodetest_latin1.texi(,300) Test udotaccent.
-nodetest_latin1.texi(,301) @node @dotaccent{a},,,rest
-nodetest_latin1.texi(,302) @section @dotaccent{a}
-nodetest_latin1.texi(,303) Test dotaccent.
-nodetest_latin1.texi(,304) @node @ringaccent{a},,,rest
-nodetest_latin1.texi(,305) @section @ringaccent{a}
-nodetest_latin1.texi(,306) @node @tieaccent{a},,,rest
-nodetest_latin1.texi(,307) @section @tieaccent{a}
-nodetest_latin1.texi(,308) @node @ubaraccent{a},,,rest
-nodetest_latin1.texi(,309) @section @ubaraccent{a}
-nodetest_latin1.texi(,310) @node @dotless{i},,,rest
-nodetest_latin1.texi(,311) @section @dotless{i}
-nodetest_latin1.texi(,312) @node @dotless{j},,,rest
-nodetest_latin1.texi(,313) @section @dotless{j}
-nodetest_latin1.texi(,314)         
-nodetest_latin1.texi(,315)         @dots{}
-nodetest_latin1.texi(,316) 
-nodetest_latin1.texi(,317) 	@enddots{}
-nodetest_latin1.texi(,318) 
-nodetest_latin1.texi(,319) 	@exclamdown{}
-nodetest_latin1.texi(,320) 
-nodetest_latin1.texi(,321) 	@questiondown{}
-nodetest_latin1.texi(,322) 
-nodetest_latin1.texi(,323) 	@pounds{}
-nodetest_latin1.texi(,324) 
-nodetest_latin1.texi(,325) 	@@- : @-
-nodetest_latin1.texi(,326) 	@@ followed by end of line: @
-nodetest_latin1.texi(,327) 	@@ followed by tab: @	
-nodetest_latin1.texi(,328) 	@@ followed by space @ 
-nodetest_latin1.texi(,329) 	@@*: @* and text followin @@*.
-nodetest_latin1.texi(,330) 
-nodetest_latin1.texi(,331) @contents
-nodetest_latin1.texi(,332) @bye
+nodetest_latin1.texi(,270) * @comma{}::     @comma{} comma
+nodetest_latin1.texi(,271) @end menu
+nodetest_latin1.texi(,272) @c
+nodetest_latin1.texi(,273) @node @aa{},,,rest
+nodetest_latin1.texi(,274) @section @aa{}
+nodetest_latin1.texi(,275) @node @ae{},,,rest
+nodetest_latin1.texi(,276) @section @ae{}
+nodetest_latin1.texi(,277) @node @oe{},,,rest
+nodetest_latin1.texi(,278) @section @oe{}
+nodetest_latin1.texi(,279) @node @AA{},,,rest
+nodetest_latin1.texi(,280) @section @AA{}
+nodetest_latin1.texi(,281) @node @AE{},,,rest
+nodetest_latin1.texi(,282) @section @AE{}
+nodetest_latin1.texi(,283) @node @OE{},,,rest
+nodetest_latin1.texi(,284) @section @OE{}
+nodetest_latin1.texi(,285) @node @l{},,,rest
+nodetest_latin1.texi(,286) @section @l{}
+nodetest_latin1.texi(,287) @node @o{},,,rest
+nodetest_latin1.texi(,288) @section @o{}
+nodetest_latin1.texi(,289) @node @L{},,,rest
+nodetest_latin1.texi(,290) @section @L{}
+nodetest_latin1.texi(,291) @node @O{},,,rest
+nodetest_latin1.texi(,292) @section @O{}
+nodetest_latin1.texi(,293) @node @H{a},,,rest
+nodetest_latin1.texi(,294) @section @H{a}
+nodetest_latin1.texi(,295) @node @u{a},,,rest
+nodetest_latin1.texi(,296) @section @u{a}
+nodetest_latin1.texi(,297) @node @v{a},,,rest
+nodetest_latin1.texi(,298) @section @v{a}
+nodetest_latin1.texi(,299) @node @udotaccent{a},,,rest
+nodetest_latin1.texi(,300) @section @udotaccent{a}
+nodetest_latin1.texi(,301) Test udotaccent.
+nodetest_latin1.texi(,302) @node @dotaccent{a},,,rest
+nodetest_latin1.texi(,303) @section @dotaccent{a}
+nodetest_latin1.texi(,304) Test dotaccent.
+nodetest_latin1.texi(,305) @node @ringaccent{a},,,rest
+nodetest_latin1.texi(,306) @section @ringaccent{a}
+nodetest_latin1.texi(,307) @node @tieaccent{a},,,rest
+nodetest_latin1.texi(,308) @section @tieaccent{a}
+nodetest_latin1.texi(,309) @node @ubaraccent{a},,,rest
+nodetest_latin1.texi(,310) @section @ubaraccent{a}
+nodetest_latin1.texi(,311) @node @dotless{i},,,rest
+nodetest_latin1.texi(,312) @section @dotless{i}
+nodetest_latin1.texi(,313) @node @dotless{j},,,rest
+nodetest_latin1.texi(,314) @section @dotless{j}
+nodetest_latin1.texi(,315)         
+nodetest_latin1.texi(,316)         @dots{}
+nodetest_latin1.texi(,317) 
+nodetest_latin1.texi(,318) 	@enddots{}
+nodetest_latin1.texi(,319) 
+nodetest_latin1.texi(,320) 	@exclamdown{}
+nodetest_latin1.texi(,321) 
+nodetest_latin1.texi(,322) 	@questiondown{}
+nodetest_latin1.texi(,323) 
+nodetest_latin1.texi(,324) 	@pounds{}
+nodetest_latin1.texi(,325) 
+nodetest_latin1.texi(,326) 	@@- : @-
+nodetest_latin1.texi(,327) 	@@ followed by end of line: @
+nodetest_latin1.texi(,328) 	@@ followed by tab: @	
+nodetest_latin1.texi(,329) 	@@ followed by space @ 
+nodetest_latin1.texi(,330) 	@@*: @* and text followin @@*.
+nodetest_latin1.texi(,331) 
+nodetest_latin1.texi(,332) @node @comma{},,,rest
+nodetest_latin1.texi(,333) @section @comma{}
+nodetest_latin1.texi(,334) @contents
+nodetest_latin1.texi(,335) @bye

@@ -63,7 +63,7 @@
 ../GermanNodeTest/nodetest.texi(,64) @node @"o,,,Umlaut
 ../GermanNodeTest/nodetest.texi(,65) @section @"o
 ../GermanNodeTest/nodetest.texi(,66) Ref to an anchor at the end of the doc 
-../GermanNodeTest/nodetest.texi(,67) (@pxref{@'o-o, , there is an o-@'o could there be an @^{@dotless{i}}}).
+../GermanNodeTest/nodetest.texi(,67) (@pxref{@'e-o, , there is an o-@'e could there be an @^{@dotless{i}}}).
 ../GermanNodeTest/nodetest.texi(,68) @node @"u,,,Umlaut
 ../GermanNodeTest/nodetest.texi(,69) @section @"u
 ../GermanNodeTest/nodetest.texi(,70) Another ref to an anchor (@pxref{x-spot, ,}).
@@ -134,7 +134,7 @@
 ../GermanNodeTest/nodetest.texi(,135) @node @'Y,,,acute accent
 ../GermanNodeTest/nodetest.texi(,136) @section @'Y
 ../GermanNodeTest/nodetest.texi(,137) This is a ref to @"u (@pxref{@"u, ,@"u}).
-../GermanNodeTest/nodetest.texi(,138) Another one, with node only (@pxref{@"a, ,}).
+../GermanNodeTest/nodetest.texi(,138) Another one, with node only (@pxref{@"u, ,}).
 ../GermanNodeTest/nodetest.texi(,139) 
 ../GermanNodeTest/nodetest.texi(,143) 
 ../GermanNodeTest/nodetest.texi(,144) @c
@@ -245,7 +245,7 @@
 ../GermanNodeTest/nodetest.texi(,249) @node @~O,,,tilde accent
 ../GermanNodeTest/nodetest.texi(,250) @section @~O
 ../GermanNodeTest/nodetest.texi(,251) This marks the @anchor{x-spot}spot.
-../GermanNodeTest/nodetest.texi(,252) A second one with accented char @anchor{@'o-o}.
+../GermanNodeTest/nodetest.texi(,252) A second one with accented char @anchor{@'e-o}.
 ../GermanNodeTest/nodetest.texi(,253) @c
 ../GermanNodeTest/nodetest.texi(,254) @node cedilla accent,,Top,Top
 ../GermanNodeTest/nodetest.texi(,255) @chapter cedilla accent

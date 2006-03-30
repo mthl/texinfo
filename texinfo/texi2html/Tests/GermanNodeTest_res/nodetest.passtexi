@@ -63,7 +63,7 @@ nodetest.texi(,63)
 nodetest.texi(,64) @node @"o,,,Umlaut
 nodetest.texi(,65) @section @"o
 nodetest.texi(,66) Ref to an anchor at the end of the doc 
-nodetest.texi(,67) (@pxref{@'o-o, , there is an o-@'o could there be an @^{@dotless{i}}}).
+nodetest.texi(,67) (@pxref{@'e-o, , there is an o-@'e could there be an @^{@dotless{i}}}).
 nodetest.texi(,68) @node @"u,,,Umlaut
 nodetest.texi(,69) @section @"u
 nodetest.texi(,70) Another ref to an anchor (@pxref{x-spot, ,}).
@@ -134,7 +134,7 @@ nodetest.texi(,134) @section @'U
 nodetest.texi(,135) @node @'Y,,,acute accent
 nodetest.texi(,136) @section @'Y
 nodetest.texi(,137) This is a ref to @"u (@pxref{@"u, ,@"u}).
-nodetest.texi(,138) Another one, with node only (@pxref{@"a, ,}).
+nodetest.texi(,138) Another one, with node only (@pxref{@"u, ,}).
 nodetest.texi(,139) 
 nodetest.texi(,143) 
 nodetest.texi(,144) @c
@@ -245,7 +245,7 @@ nodetest.texi(,248) @section @~A
 nodetest.texi(,249) @node @~O,,,tilde accent
 nodetest.texi(,250) @section @~O
 nodetest.texi(,251) This marks the @anchor{x-spot}spot.
-nodetest.texi(,252) A second one with accented char @anchor{@'o-o}.
+nodetest.texi(,252) A second one with accented char @anchor{@'e-o}.
 nodetest.texi(,253) @c
 nodetest.texi(,254) @node cedilla accent,,Top,Top
 nodetest.texi(,255) @chapter cedilla accent

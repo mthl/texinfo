@@ -1,5 +1,18 @@
 2006-03-27  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl,texi2html.init: if $TRANSLITERATE_NODE is set
+	transliterate the non ascii characters in node names as 
+	discussed on the texinfo list. Optionally Use Text::Unidecode
+	to do more transliteration that what is available through the
+	maps ($USE_UNIDECODE set).
+	Some changes for better node targets generation.
+	Really put more than one node in a file if needed.
+	* configure.ac: Text::Unidecode detection.
+	* Tests/formatting/node_*translit*: test for node names
+	transliteration.
+
+2006-03-27  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* examples/chm.init: set the encoding conditionnaly on OUT_ENCODING
 	being defined.
 	* texi2html.pl,texi2html.init: add $USE_NUMERIC_ENTITY variable,

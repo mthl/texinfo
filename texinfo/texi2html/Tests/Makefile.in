@@ -83,6 +83,7 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_DATA_DUMPER = @USE_DATA_DUMPER@
 USE_UNICODE = @USE_UNICODE@
+USE_UNIDECODE = @USE_UNIDECODE@
 VERSION = @VERSION@
 ac_ct_STRIP = @ac_ct_STRIP@
 am__leading_dot = @am__leading_dot@
@@ -118,7 +119,9 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      viper_monolithic texi2html xemacs_frame index_table formatting macros \
-     nodes_texinfo singular floats
+     nodes_texinfo singular floats node_translit node_translit_no_unicode \
+     node_translit_no_unidecode node_utf8_translit \
+     node_utf8_translit_no_unidecode
 
 all: all-am
 

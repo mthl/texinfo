@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.98 2006-03-27 12:00:31 pertusus Exp $
+# $Id: texi2html.init,v 1.99 2006-03-30 10:05:05 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -287,6 +287,9 @@ $NODE_NAME_IN_MENU = 0;
 
 # new style for crossrefs
 $NEW_CROSSREF_STYLE = 1;
+
+# transliterate node names for external refs (and internal if NODE_FILES)
+$TRANSLITERATE_NODE = 1;
 
 # if set and menu entry equals menu description, then do not print 
 # menu description.
@@ -1583,8 +1586,17 @@ sub T2H_DEFAULT_node_file_name($$)
          }
          else
          {
-              $node_file = $node->{'cross_manual_target'} . ".$NODE_FILE_EXTENSION";
-              $file =  $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
+             my $node_file_base;
+             if ($TRANSLITERATE_NODE)
+             {
+                $node_file_base = $node->{'cross_manual_file'};
+             }
+             else
+             {
+                 $node_file_base = $node->{'cross_manual_target'};
+             }
+             $node_file = $node_file_base . ".$NODE_FILE_EXTENSION";
+             $file =  $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
          }
     }
     else
@@ -1843,6 +1855,11 @@ $pre_map{'enddots'} = '....';
 #Latin Extended-B
 #http://www.alanwood.net/unicode/latin_extended_b.html
 #dotless i: 0131
+
+#http://www.alanwood.net/unicode/arrows.html 21**
+#http://www.alanwood.net/unicode/general_punctuation.html 20**
+#http://www.alanwood.net/unicode/mathematical_operators.html 22**
+
 %unicode_map = (
                'bullet'       => '2022',
                'copyright'    => '00A9',
@@ -1854,8 +1871,8 @@ $pre_map{'enddots'} = '....';
                'expansion'    => '2192',
                'minus'        => '2212', # in mathematical operators
 #               'minus'        => '002D', # in latin1
-               'point'        => '2217',
-               'print'        => '',
+               'point'        => '2605',
+               'print'        => '22A3',
                'result'       => '21D2',
                'today'        => '',
                'aa'           => '00E5',
@@ -1876,9 +1893,46 @@ $pre_map{'enddots'} = '....';
                'ordm'         => '00BA',
                'comma'        => '002C',
                'euro'         => '20AC',
-               'tie'          => '0020', # FIXME should be better to replace
-                                         # with a space
+               'tie'          => '',
+#               'tie'          => '0020', 
              );
+
+%transliterate_map = (
+               '00C5'  => 'AA',
+               '00E5'  => 'aa',
+               '00D8'  => 'OE',
+               '00F8'  => 'oe',
+               '00E6' => 'ae',
+               '0153' => 'oe',
+               '00C6' => 'AE',
+               '0152' => 'OE',
+               '00DF' => 'ss',
+               '0141' => 'L',
+               '0142' => 'l',
+               '00D0'  => 'DH',
+               '0415'  => 'E',
+               '0435'  => 'e',
+               '0426'  => 'C',
+               '042A'  => 'W',
+               '044A'  => 'w',
+               '042C'  => 'X',
+               '044C'  => 'x',
+               '042E'  => 'yu',
+               '042F'  => 'YA',
+               '044F'  => 'ya',
+               '0433'  => 'g',
+               '0446'  => 'c',
+               '04D7'  => 'IO',
+               '00DD'  => 'Y', # unidecode gets this wrong ?
+          );
+
+foreach my $symbol(keys(%unicode_map))
+{
+    if ($unicode_map{$symbol} ne '' and !exists($transliterate_map{$symbol}))
+    {
+         $no_transliterate_map{$unicode_map{$symbol}} = 1;
+    }
+}
 
 %ascii_character_map = (
             ' ' => '0020',
@@ -2038,7 +2092,8 @@ my %old_style_map = (
        '"'          => '0308', 
        'udotaccent' => '0323', 
        'ubaraccent' => '0332', 
-       'u'          => '0306'
+       'u'          => '0306',
+       'tieaccent'  => '0361'
 );
 
 %unicode_accents = (
@@ -2083,6 +2138,8 @@ my %old_style_map = (
         'z' => '017C',
     },
     'udotaccent' => { # dot below
+        'A' => '1EA0',
+        'a' => '1EA1',
         'B' => '1E04',
         'b' => '1E05',
         'D' => '1E0C',
@@ -2364,6 +2421,17 @@ my %old_style_map = (
     },
 );
 
+%transliterate_accent_map = ();
+foreach my $command (keys(%unicode_accents))
+{
+    foreach my $letter(keys (%{$unicode_accents{$command}}))
+    {
+        $transliterate_accent_map{$unicode_accents{$command}->{$letter}}
+            = $letter 
+          unless (exists($transliterate_map{$unicode_accents{$command}->{$letter}}));
+    }
+}
+
 %special_accents = (
       'ringaccent' => 'aA',
       "'"          => 'aeiouyAEIOUY',
@@ -2374,7 +2442,6 @@ my %old_style_map = (
       '"'          => 'aeiouyAEIOU',
 );
 
-#foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
      $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
@@ -3607,8 +3674,10 @@ sub t2h_default_menu_comment($)
 
 # Construct a href to an external source of information.
 # node is the node with texinfo @-commands
-# node_id is the node transformed such that it is unique and can be used to 
-#     make an html cross ref as explained in the texinfo manual
+# node_id is the node transliterated and transformed as explained in the
+#         texinfo manual
+# node_xhtml_id is the node transformed such that it is unique and can 
+#     be used to make an html cross ref as explained in the texinfo manual
 # file is the file in '(file)node'
 sub t2h_default_external_href($$$)
 {
@@ -3679,19 +3748,6 @@ sub t2h_default_external_href($$$)
              } 
          }
     }
-    else
-    { # here we necessarily have a ref to a node in the document, but the
-      # node is invalid
-         if ($NEW_CROSSREF_STYLE)
-         {
-              if (!$SPLIT)
-              {
-              #     $file = $TOP_FILE;
-              # point to the file document itself 
-                    $file = ''; 
-              }
-         }
-    }
     if ($node eq '')
     {
          if ($NEW_CROSSREF_STYLE)
@@ -3741,6 +3797,7 @@ sub t2h_default_external_href($$$)
         return $file . $file_basename . ".$NODE_FILE_EXTENSION";
     }
 }
+
 # format a reference external to the generated manual. This produces a full 
 # reference with introductive words and the reference itself.
 #

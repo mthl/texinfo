@@ -430,6 +430,11 @@ A @command{./configure} switch,
 be used or not. The default is to detect it with a test. This
 code requires @code{Encode} and @code{Unicode::Normalize} modules.
 
+A similar @command{./configure} switch, 
+@longopt{with-unidecode} allows to choose whether the perl module
+@code{Text::Unidecode} should be used or not. The default is to detect it 
+with a test. This code requires the @code{Text::Unidecode} module.
+
 @command{perl} isn't 
 needed to build the script. the script is build by @file{./configure} 
 and a shell script launched by @command{make} which is a simple 
