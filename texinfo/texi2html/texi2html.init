@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.100 2006-04-08 11:37:01 pertusus Exp $
+# $Id: texi2html.init,v 1.101 2006-04-08 22:40:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2068,7 +2068,7 @@ my %old_style_map = (
       'key',        {'attribute' => 'kbd'},
       'math',       {'attribute' => 'em'},
       'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
-      'r',          {},
+      'r',          {'attribute' => 'span class="roman"'},
       'samp',       {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
 #      'sc',         {'function' => \&t2h_default_sc},
       'sc',         {'attribute' => 'small'},
@@ -3087,7 +3087,8 @@ my %misc_command_old = (
          'pre.display'            => 'font-family: serif',
          'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
          'pre.smallexample'       => 'font-size: smaller',
-         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal;'
+         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal;',
+         'span.roman'         => 'font-family:serif; font-weight:normal;'
      );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};

@@ -30,6 +30,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -521,17 +522,17 @@ commands while you move it.
 <p>This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"># Copy the RCS file inside the repository
+<table><tr><td>&nbsp;</td><td><pre class="example"># <span class="roman">Copy the RCS file inside the repository</span>
 $ cd $CVSROOT/<var>dir</var>
 $ cp <var>old</var>,v <var>new</var>,v
-# Remove the old file
+# <span class="roman">Remove the old file</span>
 $ cd ~/<var>dir</var>
 $ rm <var>old</var>
 $ cvs remove <var>old</var>
 $ cvs commit <var>old</var>
-# Remove all tags from <var>new</var>
+# <span class="roman">Remove all tags from <var>new</var></span>
 $ cvs update <var>new</var>
-$ cvs log <var>new</var>             # Remember the non-branch tag names
+$ cvs log <var>new</var>             # <span class="roman">Remember the non-branch tag names</span>
 $ cvs tag -d <var>tag1</var> <var>new</var>
 $ cvs tag -d <var>tag2</var> <var>new</var>
 &hellip;

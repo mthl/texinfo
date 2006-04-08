@@ -30,6 +30,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -494,14 +495,14 @@ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
 following example assumes that the module &lsquo;<samp>mod</samp>&rsquo; contains only one
 file, &lsquo;<tt>m.c</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout mod               # Retrieve the latest revision, 1.4
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout mod               # <span class="roman">Retrieve the latest revision, 1.4</span>
 
-$ cvs update -j R1fix m.c        # Merge all changes made on the branch,
-                                 # i.e. the changes between revision 1.2
-                                 # and 1.2.2.2, into your working copy
-                                 # of the file.
+$ cvs update -j R1fix m.c        # <span class="roman">Merge all changes made on the branch,</span>
+                                 # <span class="roman">i.e. the changes between revision 1.2</span>
+                                 # <span class="roman">and 1.2.2.2, into your working copy</span>
+                                 # <span class="roman">of the file.</span>
 
-$ cvs commit -m &quot;Included R1fix&quot; # Create revision 1.5.
+$ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision 1.5.</span>
 </pre></td></tr></table>
 
 <p>A conflict can result from a merge operation.  If that
@@ -586,8 +587,8 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j 1.2.2.2 -j R1fix m.c    # Merge changes from 1.2.2.2 to the
-                                      # head of the R1fix branch
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman">Merge changes from 1.2.2.2 to the</span>
+                                      # <span class="roman">head of the R1fix branch</span>
 </pre></td></tr></table>
 
 <p>The problem with this is that you need to specify the

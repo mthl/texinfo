@@ -49,6 +49,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -699,23 +700,23 @@ formatted as if they were <code>@section</code> commands, all your
 <p><code>@raisesections</code> raises a command one level in the chapter
 structuring hierarchy:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  Change           To
+<table><tr><td>&nbsp;</td><td><pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
 
 @subsection     @section,
 @section        @chapter,
 @heading        @chapheading,
-          etc.
+          <span class="roman">etc.</span>
 </pre></td></tr></table>
 
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  Change           To
+<table><tr><td>&nbsp;</td><td><pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
 
 @chapter        @section,
 @subsection     @subsubsection,
 @heading        @subheading,
-          etc.
+          <span class="roman">etc.</span>
 </pre></td></tr></table>
 
 <p>An <code>@raisesections</code> or <code>@lowersections</code> command changes only

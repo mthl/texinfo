@@ -30,6 +30,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -1857,7 +1858,7 @@ differences.
 </p>
 </dd>
 <dt> &lsquo;<samp>-C <var>lines</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--context[=<var>lines</var>]</samp>&rsquo;</dt>
+<dt> &lsquo;<samp>--context<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
 <dd><p>Use the context output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -2071,7 +2072,7 @@ format.  See section <a href="#SEC133">Line formats</a>.
 </p>
 </dd>
 <dt> &lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--unified[=<var>lines</var>]</samp>&rsquo;</dt>
+<dt> &lsquo;<samp>--unified<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
 <dd><p>Use the unified output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -3705,8 +3706,8 @@ sources, this file will be lost.
 <p>Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
 of the files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..         # You must stand immediately above the
-                # sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..         # <span class="roman">You must stand immediately above the</span>
+                # <span class="roman">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
 $ cvs release -d tc
 You have [0] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': y

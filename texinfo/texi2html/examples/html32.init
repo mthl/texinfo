@@ -37,6 +37,7 @@ $things_map{'dots'} = '<small>...</small>';
 $things_map{'enddots'} = '<small>....</small>';
 $things_map{'euro'} = 'Euro';
 $style_map{'sansserif'} = {};
+$style_map{'r'} = {};
 
 # formatting functions
 

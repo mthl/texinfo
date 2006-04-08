@@ -49,6 +49,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -391,7 +392,7 @@ command with the string to which <var>flag</var> is set.  Thus, when
 <code>foo</code> is set as shown above, the Texinfo formatters convert this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@value{foo}
-to this:
+<span class="roman">to this:</span>
 This is a string.
 </pre></td></tr></table>
 
@@ -416,7 +417,7 @@ subsequent <code>@value{flag}</code> command will report an error.
 <p>then the formatters transform
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
-into
+<span class="roman">into</span>
 It is a very, very, very wet day.
 </pre></td></tr></table>
 
@@ -428,7 +429,7 @@ It is a very, very, very wet day.
 <p>then the formatters transform
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
-into
+<span class="roman">into</span>
 It is a {No value for &quot;how-much&quot;} wet day.
 </pre></td></tr></table>
 

@@ -49,6 +49,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -85,7 +86,7 @@ printed manual but have no effect in the Info file.  <code>@i</code>
 requests <i>italic</i> font (in some versions of TeX, a slanted font
 is used), <code>@b</code> requests <b>bold</b> face, <code>@t</code> requests the
 <tt>fixed-width</tt>, typewriter-style font used by <code>@code</code>, and <code>@r</code> requests a
-roman font, which is the usual font in which text is printed.  All
+<span class="roman">roman</span> font, which is the usual font in which text is printed.  All
 four commands apply to an argument that follows, surrounded by
 braces.
 </p>
@@ -103,7 +104,7 @@ output.
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 2 2)    ; Add two plus two.
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 2 2)    ; <span class="roman">Add two plus two.</span>
 </pre></td></tr></table>
 
 <p>If possible, you should avoid using the other three font commands.  If
