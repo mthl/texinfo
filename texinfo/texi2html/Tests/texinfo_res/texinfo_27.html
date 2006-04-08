@@ -220,16 +220,16 @@ reference should have looked like this:
 </pre></td></tr></table>
 
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
-<kbd>RET</kbd></kbd> (<code>Info-follow-reference</code>), you will generate an error
+&lt;RET&gt;</kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">No such node: &quot;Catching Mistakes) The only way &hellip;
 </pre></td></tr></table>
 
 <p>This is because Info perceives the example of the error as the first
-cross reference in this node and if you type a <kbd>RET</kbd> immediately
+cross reference in this node and if you type a &lt;RET&gt; immediately
 after typing the Info <kbd>f</kbd> command, Info will attempt to go to the
-referenced node.  If you type <kbd>f catch <kbd>TAB</kbd> <kbd>RET</kbd></kbd>, Info
+referenced node.  If you type <kbd>f catch &lt;TAB&gt; &lt;RET&gt;</kbd>, Info
 will complete the node name of the correctly written example and take
 you to the `Catching Mistakes' node.  (If you try this, you can return
 from the `Catching Mistakes' node by typing <kbd>l</kbd>
@@ -312,11 +312,11 @@ things.
 <ol>
 <li>
 You can tell TeX to continue running and ignore just this error by
-typing <kbd>RET</kbd> at the &lsquo;<samp>?</samp>&rsquo; prompt.
+typing &lt;RET&gt; at the &lsquo;<samp>?</samp>&rsquo; prompt.
 
 </li><li>
 You can tell TeX to continue running and to ignore all errors as best
-it can by typing <kbd>r <kbd>RET</kbd></kbd> at the &lsquo;<samp>?</samp>&rsquo; prompt.
+it can by typing <kbd>r &lt;RET&gt;</kbd> at the &lsquo;<samp>?</samp>&rsquo; prompt.
 
 <p>This is often the best thing to do.  However, beware: the one error
 may produce a cascade of additional error messages as its consequences
@@ -325,7 +325,7 @@ producing such an avalanche of error messages, type <kbd>C-c</kbd> (or
 <kbd>C-c C-c</kbd>, if you are running a shell inside Emacs).
 </p>
 </li><li>
-You can tell TeX to stop this run by typing <kbd>x <kbd>RET</kbd></kbd>
+You can tell TeX to stop this run by typing <kbd>x &lt;RET&gt;</kbd>
 at the &lsquo;<samp>?</samp>&rsquo; prompt.
 </li></ol>
 
@@ -364,7 +364,7 @@ The &lsquo;<samp>*</samp>&rsquo; indicates that TeX is waiting for input.
 *
 </pre></td></tr></table>
 
-<p>In this case, simply type <kbd>\end <kbd>RET</kbd></kbd> after the asterisk.  Then
+<p>In this case, simply type <kbd>\end &lt;RET&gt;</kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command
 again. (Note the use of the backslash, &lsquo;<samp>\</samp>&rsquo;.  TeX uses &lsquo;<samp>\</samp>&rsquo;
 instead of &lsquo;<samp>@</samp>&rsquo;; and in this circumstance, you are working

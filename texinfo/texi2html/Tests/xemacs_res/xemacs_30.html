@@ -125,7 +125,7 @@ file to do the customization in each session.  See section <a href="#SEC377">The
 <h2 class="section"> 27.1 Minor Modes </h2>
 
 <p>  Minor modes are options which you can use or not.  For example, Auto
-Fill mode is a minor mode in which <kbd>SPC</kbd> breaks lines between words
+Fill mode is a minor mode in which &lt;SPC&gt; breaks lines between words
 as you type.  All the minor modes are independent of each other and of
 the selected major mode.  Most minor modes inform you in the mode line
 when they are on; for example, &lsquo;<samp>Fill</samp>&rsquo; in the mode line means that
@@ -259,7 +259,7 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 minibuffer, with completion.  It prints both the value and the
 documentation of the variable.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-h v fill-column <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-h v fill-column &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>prints something like:
@@ -282,7 +282,7 @@ set-variable</kbd> to set it.  This prompts for the variable name in the
 minibuffer (with completion), and then prompts for a Lisp expression for the
 new value using the minibuffer a second time.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x set-variable <kbd>RET</kbd> fill-column <kbd>RET</kbd> 75 <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x set-variable &lt;RET&gt; fill-column &lt;RET&gt; 75 &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>sets <code>fill-column</code> to 75, as if you had executed the Lisp expression
@@ -393,7 +393,7 @@ line.
 typically includes some <em>editable fields</em> that you can edit.  There
 are also <em>active fields</em>; this means a field that does something
 when you <em>invoke</em> it.  To invoke an active field, either click on it
-with <kbd>Mouse-1</kbd>, or move point to it and type <kbd>RET</kbd>.
+with <kbd>Mouse-1</kbd>, or move point to it and type &lt;RET&gt;.
 </p>
 <p>  For example, the phrase &lsquo;<samp>[Open]</samp>&rsquo; that appears in a second-level
 group is an active field.  Invoking the &lsquo;<samp>[Open]</samp>&rsquo; field for a group
@@ -460,7 +460,7 @@ buffer initially hides values that take up several lines.  Invoke
 of the option: in the example above, it says you have not changed the
 option yet.  The word &lsquo;<samp>[State]</samp>&rsquo; at the beginning of this line is
 active; you can get a menu of various operations by invoking it with
-<kbd>Mouse-1</kbd> or <kbd>RET</kbd>.  These operations are essential for
+<kbd>Mouse-1</kbd> or &lt;RET&gt;.  These operations are essential for
 customizing the variable.
 </p>
 <p>  The line after the &lsquo;<samp>[State]</samp>&rsquo; line displays the beginning of the
@@ -496,7 +496,7 @@ unacceptable value.
 <a name="IDX1482"></a>
 <p>  While editing a value or field that is a file name, directory name,
 command name, or anything else for which completion is defined, you can
-type <kbd>M-<kbd>TAB</kbd></kbd> (<code>widget-complete</code>) to do completion.
+type <kbd>M-&lt;TAB&gt;</kbd> (<code>widget-complete</code>) to do completion.
 </p>
 <p>  Some options have a small fixed set of possible legitimate values.
 These options don't let you edit the value textually.  Instead, an
@@ -538,15 +538,15 @@ directory.&rdquo;)
 <a name="IDX1484"></a>
 <a name="IDX1485"></a>
 <a name="IDX1486"></a>
-<p>  Two special commands, <kbd>TAB</kbd> and <kbd>S-<kbd>TAB</kbd></kbd>, are useful for
-moving through the customization buffer.  <kbd>TAB</kbd>
+<p>  Two special commands, &lt;TAB&gt; and <kbd>S-&lt;TAB&gt;</kbd>, are useful for
+moving through the customization buffer.  &lt;TAB&gt;
 (<code>widget-forward</code>) moves forward to the next active or editable
-field; <kbd>S-<kbd>TAB</kbd></kbd> (<code>widget-backward</code>) moves backward to the
+field; <kbd>S-&lt;TAB&gt;</kbd> (<code>widget-backward</code>) moves backward to the
 previous active or editable field.
 </p>
-<p>  Typing <kbd>RET</kbd> on an editable field also moves forward, just like
-<kbd>TAB</kbd>.  The reason for this is that people have a tendency to type
-<kbd>RET</kbd> when they are finished editing a field.  If you have occasion
+<p>  Typing &lt;RET&gt; on an editable field also moves forward, just like
+&lt;TAB&gt;.  The reason for this is that people have a tendency to type
+&lt;RET&gt; when they are finished editing a field.  If you have occasion
 to insert a newline in an editable field, use <kbd>C-o</kbd> or <kbd>C-q
 C-j</kbd>,
 </p>
@@ -684,16 +684,16 @@ through the structure of groups, you can specify the particular option,
 face or group that you want to customize.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x customize-option <kbd>RET</kbd> <var>option</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-option &lt;RET&gt; <var>option</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Set up a customization buffer with just one option, <var>option</var>.
 </p></dd>
-<dt> <kbd>M-x customize-face <kbd>RET</kbd> <var>face</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-face &lt;RET&gt; <var>face</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Set up a customization buffer with just one face, <var>face</var>.
 </p></dd>
-<dt> <kbd>M-x customize-group <kbd>RET</kbd> <var>group</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-group &lt;RET&gt; <var>group</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Set up a customization buffer with just one group, <var>group</var>.
 </p></dd>
-<dt> <kbd>M-x customize-apropos <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-apropos &lt;RET&gt; <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Set up a customization buffer with all the options, faces and groups
 that match <var>regexp</var>.
 </p></dd>
@@ -1204,7 +1204,7 @@ macro, Emacs prints an error message and nothing is changed.
 You can then use it in another editing session.  First visit the file
 you want to save the definition in.  Then use the command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x insert-kbd-macro <kbd>RET</kbd> <var>macroname</var> <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x insert-kbd-macro &lt;RET&gt; <var>macroname</var> &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>This inserts some Lisp code that, when executed later, will define the same
@@ -1249,10 +1249,10 @@ definition, the <kbd>C-x q</kbd> does nothing, but when you invoke the macro,
 <kbd>C-x q</kbd> reads a character from the terminal to decide whether to
 continue.
 </p>
-<p>  The special answers to a <kbd>C-x q</kbd> query are <kbd>SPC</kbd>, <kbd>DEL</kbd>,
+<p>  The special answers to a <kbd>C-x q</kbd> query are &lt;SPC&gt;, &lt;DEL&gt;,
 <kbd>C-d</kbd>, <kbd>C-l</kbd>, and <kbd>C-r</kbd>.  Any other character terminates
 execution of the keyboard macro and is then read as a command.
-<kbd>SPC</kbd> means to continue.  <kbd>DEL</kbd> means to skip the remainder of
+&lt;SPC&gt; means to continue.  &lt;DEL&gt; means to skip the remainder of
 this repetition of the macro, starting again from the beginning in the
 next repetition.  <kbd>C-d</kbd> means to skip the remainder of this
 repetition and cancel further repetition.  <kbd>C-l</kbd> redraws the frame
@@ -1260,7 +1260,7 @@ and asks you again for a character to specify what to do.  <kbd>C-r</kbd> enters
 a recursive editing level, in which you can perform editing that is not
 part of the macro.  When you exit the recursive edit using <kbd>C-M-c</kbd>,
 you are asked again how to continue with the keyboard macro.  If you
-type a <kbd>SPC</kbd> at this time, the rest of the macro definition is
+type a &lt;SPC&gt; at this time, the rest of the macro definition is
 executed.  It is up to you to leave point and the text in a state such
 that the rest of the macro will do what you want.
 </p>
@@ -1371,15 +1371,15 @@ completion and exit commands.
 <li>
 <code>minibuffer-local-map</code> is used for ordinary input (no completion).
 </li><li>
-<code>minibuffer-local-ns-map</code> is similar, except that <kbd>SPC</kbd> exits
-just like <kbd>RET</kbd>.  This is used mainly for Mocklisp compatibility.
+<code>minibuffer-local-ns-map</code> is similar, except that &lt;SPC&gt; exits
+just like &lt;RET&gt;.  This is used mainly for Mocklisp compatibility.
 </li><li>
 <code>minibuffer-local-completion-map</code> is for permissive completion.
 </li><li>
 <code>minibuffer-local-must-match-map</code> is for strict completion and
 for cautious completion.
 </li><li>
-<code>repeat-complex-command-map</code> is for use in <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>.
+<code>repeat-complex-command-map</code> is for use in <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>.
 </li><li>
 <code>isearch-mode-map</code> contains the bindings of the special keys which
 are bound in the pseudo-mode entered with <kbd>C-s</kbd> and <kbd>C-r</kbd>.
@@ -1399,7 +1399,7 @@ follow <kbd>C-x</kbd>.
 </li><li>
 <code>help-map</code> is used for characters that follow <kbd>C-h</kbd>.
 </li><li>
-<code>esc-map</code> is for characters that follow <kbd>ESC</kbd>. All Meta
+<code>esc-map</code> is for characters that follow &lt;ESC&gt;. All Meta
 characters are actually defined by this map.
 </li><li>
 <code>ctl-x-4-map</code> is for characters that follow <kbd>C-x 4</kbd>.
@@ -1418,7 +1418,7 @@ definition is the keymap for <kbd>C-x</kbd> commands, the value of
 </p>
 <p>  Prefix key definitions can appear in either the global
 map or a local map.  The definitions of <kbd>C-c</kbd>, <kbd>C-x</kbd>, <kbd>C-h</kbd>,
-and <kbd>ESC</kbd> as prefix keys appear in the global map, so these prefix
+and &lt;ESC&gt; as prefix keys appear in the global map, so these prefix
 keys are always available.  Major modes can locally redefine a key as a
 prefix by putting a prefix key definition for it in the local
 map.
@@ -1490,14 +1490,14 @@ local map, which affects all buffers using the same major mode.
 <h4 class="subsubsection"> 27.4.2.1 Changing Key Bindings Interactively </h4>
 
 <dl compact="compact">
-<dt> <kbd>M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x global-set-key &lt;RET&gt; <var>key</var> <var>cmd</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Defines <var>key</var> globally to run <var>cmd</var>.
 </p></dd>
-<dt> <kbd>M-x local-set-key <kbd>RET</kbd> <var>keys</var> <var>cmd</var> <kbd>RET</kbd></kbd> </dt>
+<dt> <kbd>M-x local-set-key &lt;RET&gt; <var>keys</var> <var>cmd</var> &lt;RET&gt;</kbd> </dt>
 <dd><p>Defines <var>key</var> locally (in the major mode now in effect) to run
 <var>cmd</var>.
 </p></dd>
-<dt> <kbd>M-x local-unset-key <kbd>RET</kbd> <var>keys</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x local-unset-key &lt;RET&gt; <var>keys</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Removes the local binding of <var>key</var>.
 </p></dd>
 </dl>
@@ -1513,7 +1513,7 @@ the same major mode.
 </p>
 <p>The following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x global-set-key <kbd>RET</kbd> C-f next-line <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x global-set-key &lt;RET&gt; C-f next-line &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>redefines <kbd>C-f</kbd> to move down a line.  The fact that <var>cmd</var> is
@@ -1528,7 +1528,7 @@ the minibuffer immediately to read <var>cmd</var>.  But if you type
 <kbd>C-x</kbd>, another character is read; if that character is <kbd>4</kbd>,
 another character is read, and so on.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x global-set-key <kbd>RET</kbd> C-x 4 $ spell-other-window <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x global-set-key &lt;RET&gt; C-x 4 $ spell-other-window &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>redefines <kbd>C-x 4 $</kbd> to run the (fictitious) command
@@ -1634,7 +1634,7 @@ abbreviation as an alternate representation.)
 <p>Here are some examples of programmatically binding keys:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">
-;;;  Bind <code>my-command</code> to <kbd>f1</kbd>
+;;;  Bind <code>my-command</code> to &lt;f1&gt;
 (global-set-key 'f1 'my-command)                
 
 ;;;  Bind <code>my-command</code> to <kbd>Shift-f1</kbd>
@@ -1646,7 +1646,7 @@ abbreviation as an alternate representation.)
 ;;; Bind <code>my-command</code> to the middle mouse button.
 (global-set-key 'button2 'my-command)
 
-;;; Bind <code>my-command</code> to <kbd><kbd>META</kbd> <kbd>CTL</kbd> <kbd>Right Mouse Button</kbd></kbd>
+;;; Bind <code>my-command</code> to <kbd>&lt;META&gt; &lt;CTL&gt; &lt;Right Mouse Button&gt;</kbd>
 ;;; in the keymap that is in force when you are running <code>dired</code>.
 (define-key dired-mode-map '(meta control button3) 'my-command)
 
@@ -1683,13 +1683,13 @@ key sequences.  Thus you can use commands like the following:
 
 <p>Note, however, that in some cases you may be binding more than one
 key sequence by using a single command.  This situation can 
-arise because in ASCII, <kbd>C-i</kbd> and <kbd>TAB</kbd> have
+arise because in ASCII, <kbd>C-i</kbd> and &lt;TAB&gt; have
 the same representation.  Therefore, when Emacs sees:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key &quot;\C-i&quot; 'end-of-line)
 </pre></td></tr></table>
 
-<p>it is unclear whether the user intended to bind <kbd>C-i</kbd> or <kbd>TAB</kbd>.
+<p>it is unclear whether the user intended to bind <kbd>C-i</kbd> or &lt;TAB&gt;.
 The solution XEmacs adopts is to bind both of these key
 sequences.
 </p>
@@ -2185,7 +2185,7 @@ Lisp expressions:
 </p>
 <ul>
 <li>
-Make <kbd>TAB</kbd> in C mode just insert a tab if point is in the middle of a
+Make &lt;TAB&gt; in C mode just insert a tab if point is in the middle of a
 line.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq c-tab-always-indent nil)
@@ -2279,14 +2279,14 @@ Do the same thing for C mode only.
 </pre></td></tr></table>
 
 </li><li>
-Bind the function key <kbd>F1</kbd> to a command in C mode.
+Bind the function key &lt;F1&gt; to a command in C mode.
 Note that the names of function keys must be lower case.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map 'f1 'make-symbolic-link)
 </pre></td></tr></table>
 
 </li><li>
-Bind the shifted version of <kbd>F1</kbd> to a command.
+Bind the shifted version of &lt;F1&gt; to a command.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map '(shift f1) 'make-symbolic-link)
 </pre></td></tr></table>
@@ -3635,7 +3635,7 @@ asks two questions before going back to what it had been doing:
 Abort (and dump core)? (y or n)
 </pre></td></tr></table>
 
-<p>Answer each one with <kbd>y</kbd> or <kbd>n</kbd> followed by <kbd>RET</kbd>.
+<p>Answer each one with <kbd>y</kbd> or <kbd>n</kbd> followed by &lt;RET&gt;.
 </p>
 <p>  Saying <kbd>y</kbd> to &lsquo;<samp>Auto-save?</samp>&rsquo; causes immediate auto-saving of all
 modified buffers in which auto-saving is enabled.
@@ -3687,10 +3687,10 @@ you.
 <kbd>C-g C-g</kbd> to get out of it and then start a new one.
 </p>
 <a name="IDX1559"></a>
-<p>  Second, type <kbd>M-x doctor <kbd>RET</kbd></kbd>.
+<p>  Second, type <kbd>M-x doctor &lt;RET&gt;</kbd>.
 </p>
 <p>  The doctor will make you feel better.  Each time you say something to
-the doctor, you must end it by typing <kbd>RET</kbd> <kbd>RET</kbd>.  This lets the
+the doctor, you must end it by typing &lt;RET&gt; &lt;RET&gt;.  This lets the
 doctor know you are finished.
 </p>
 <hr size="6">
@@ -3819,7 +3819,7 @@ the facts must have been to lead to such speculations.  Sometimes this is
 impossible.  But in any case, it is unnecessary work for us.
 </p>
 <p>  For example, suppose that you type <kbd>C-x C-f /glorp/baz.ugh
-<kbd>RET</kbd></kbd>, visiting a file which (you know) happens to be rather large,
+&lt;RET&gt;</kbd>, visiting a file which (you know) happens to be rather large,
 and Emacs prints out &lsquo;<samp>I feel pretty today</samp>&rsquo;.  The best way to report
 the bug is with a sentence like the preceding one, because it gives all the
 facts and nothing but the facts.
@@ -3843,7 +3843,7 @@ characters you typed since starting to use Emacs.
 <p>  You should not even say &ldquo;visit a file&rdquo; instead of <kbd>C-x C-f</kbd> unless
 you <i>know</i> that it makes no difference which visiting command is used.
 Similarly, rather than saying &ldquo;if I have three characters on the line,&rdquo;
-say &ldquo;after I type <kbd><kbd>RET</kbd> A B C <kbd>RET</kbd> C-p</kbd>,&rdquo; if that is
+say &ldquo;after I type <kbd>&lt;RET&gt; A B C &lt;RET&gt; C-p</kbd>,&rdquo; if that is
 the way you entered the text.
 </p>
 <p>  If you are not in Fundamental mode when the problem occurs, you should
@@ -3891,7 +3891,7 @@ dribble file; execute the Lisp expression:
 <table><tr><td>&nbsp;</td><td><pre class="example">(open-dribble-file &quot;~/dribble&quot;)
 </pre></td></tr></table>
 
-<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the &lsquo;<samp>*scratch*</samp>&rsquo; buffer just after starting
+<p>using <kbd>Meta-&lt;ESC&gt;</kbd> or from the &lsquo;<samp>*scratch*</samp>&rsquo; buffer just after starting
 Emacs.  From then on, all Emacs input will be written in the specified
 dribble file until the Emacs process is killed.
 </p>
@@ -3906,7 +3906,7 @@ The way to collect this output is to execute the Lisp expression:
 <table><tr><td>&nbsp;</td><td><pre class="example">(open-termscript &quot;~/termscript&quot;)
 </pre></td></tr></table>
 
-<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the &lsquo;<samp>*scratch*</samp>&rsquo; buffer
+<p>using <kbd>Meta-&lt;ESC&gt;</kbd> or from the &lsquo;<samp>*scratch*</samp>&rsquo; buffer
 just after starting Emacs.  From then on, all output from Emacs to the
 terminal will be written in the specified termscript file as well, until
 the Emacs process is killed.  If the problem happens when Emacs starts

@@ -439,12 +439,12 @@ the window.
 <dd><p>Scroll calendar one month backward (<code>scroll-calendar-right</code>).
 </p></dd>
 <dt> <kbd>C-v</kbd></dt>
-<dt> <kbd><kbd>NEXT</kbd></kbd></dt>
+<dt> <kbd>&lt;NEXT&gt;</kbd></dt>
 <dd><p>Scroll calendar three months forward
 (<code>scroll-calendar-left-three-months</code>).
 </p></dd>
 <dt> <kbd>M-v</kbd></dt>
-<dt> <kbd><kbd>PRIOR</kbd></kbd></dt>
+<dt> <kbd>&lt;PRIOR&gt;</kbd></dt>
 <dd><p>Scroll calendar three months backward
 (<code>scroll-calendar-right-three-months</code>).
 </p></dd>
@@ -473,7 +473,7 @@ repeat count; in particular, since <kbd>C-u</kbd> multiplies the next command
 by four, typing <kbd>C-u C-v</kbd> scrolls the calendar forward by a year and
 typing <kbd>C-u M-v</kbd> scrolls the calendar backward by a year.
 </p>
-<p>  The function keys <kbd>NEXT</kbd> and <kbd>PRIOR</kbd> are equivalent to
+<p>  The function keys &lt;NEXT&gt; and &lt;PRIOR&gt; are equivalent to
 <kbd>C-v</kbd> and <kbd>M-v</kbd>, just as they are in other modes.
 </p>
 
@@ -789,7 +789,7 @@ marks, type <kbd>u</kbd>, which also erases any diary marks (see section <a href
 <a name="IDX1214"></a>
 <p>  To get even more detailed information, use the <kbd>a</kbd> command, which
 displays a separate buffer containing a list of all holidays in the
-current three-month range.  You can use <kbd>SPC</kbd> in the calendar window
+current three-month range.  You can use &lt;SPC&gt; in the calendar window
 to scroll that list.
 </p>
 <a name="IDX1215"></a>
@@ -3353,7 +3353,7 @@ buffer, use <kbd>M-x shell</kbd>.  This creates (or reuses) a buffer named
 to that buffer.  That is to say, any &ldquo;terminal output&rdquo; from the subshell
 will go into the buffer, advancing point, and any &ldquo;terminal input&rdquo; for
 the subshell comes from text in the buffer.  To give input to the subshell,
-go to the end of the buffer and type the input, terminated by <kbd>RET</kbd>.
+go to the end of the buffer and type the input, terminated by &lt;RET&gt;.
 </p>
 <p>  XEmacs does not wait for the subshell to do anything.  You can switch
 windows or buffers and edit them while the shell is waiting, or while it is
@@ -3403,15 +3403,15 @@ shell-dirtrack-toggle</kbd> turns directory tracking on and off.
 <a name="IDX1399"></a>
 <p>XEmacs keeps a history of the most recent commands you have typed in the
 &lsquo;<samp>*shell*</samp>&rsquo; buffer.  If you are at the beginning of a shell command
-line and type <kbd>M-p</kbd>, the previous shell input is inserted into the
-buffer before point.  Immediately typing <kbd>M-p</kbd> again deletes that
-input and inserts the one before it.  By repeating <kbd>M-p</kbd> you can
+line and type &lt;M-p&gt;, the previous shell input is inserted into the
+buffer before point.  Immediately typing &lt;M-p&gt; again deletes that
+input and inserts the one before it.  By repeating &lt;M-p&gt; you can
 move backward through your commands until you find one you want to
-repeat.  You may then edit the command before typing <kbd>RET</kbd> if you
-wish. <kbd>M-n</kbd> moves forward through the command history, in case you
-moved backward past the one you wanted while using <kbd>M-p</kbd>.  If you
+repeat.  You may then edit the command before typing &lt;RET&gt; if you
+wish. &lt;M-n&gt; moves forward through the command history, in case you
+moved backward past the one you wanted while using &lt;M-p&gt;.  If you
 type the first few characters of a previous command and then type
-<kbd>M-p</kbd>, the most recent shell input starting with those characters is
+&lt;M-p&gt;, the most recent shell input starting with those characters is
 inserted.  This can be very convenient when you are repeating a sequence
 of shell commands.  The variable <code>input-ring-size</code> controls how
 many commands are saved in your input history.  The default is 30.
@@ -3472,7 +3472,7 @@ of the special key bindings of Shell mode:
 <a name="IDX1425"></a>
 <a name="IDX1426"></a>
 <dl compact="compact">
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>At end of buffer send line as input; otherwise, copy current line to end of
 buffer and send it (<code>send-shell-input</code>).  When a line is copied, any
 text at the beginning of the line that matches the variable
@@ -3517,7 +3517,7 @@ end-of-file as input, instead of generating an error as in other modes
 <dd><p>Copy the previous bunch of shell input and insert it into the
 buffer before point (<code>copy-last-shell-input</code>).  No final newline
 is inserted, and the input copied is not resubmitted until you type
-<kbd>RET</kbd>.
+&lt;RET&gt;.
 </p></dd>
 <dt> <kbd>M-p</kbd></dt>
 <dd><p>Move backward through the input history.  Search for a matching command
@@ -3525,10 +3525,10 @@ if you have typed the beginning of a command (<code>comint-previous-input</code>
 </p></dd>
 <dt> <kbd>M-n</kbd></dt>
 <dd><p>Move forward through the input history.  Useful when you are
-using <kbd>M-p</kbd> quickly and go past the desired command 
+using &lt;M-p&gt; quickly and go past the desired command 
 (<code>comint-next-input</code>).
 </p></dd>
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Complete the file name preceding point (<code>comint-dynamic-complete</code>).
 </p></dd>
 </dl>
@@ -3643,11 +3643,11 @@ except for the Term escape character, normally <kbd>C-c</kbd>.
 <p>The following commands are only available in Char mode:
 </p><dl compact="compact">
 <dt> <kbd>C-c C-c</kbd></dt>
-<dd><p>Send a literal <kbd>C-c</kbd> to the sub-shell.
+<dd><p>Send a literal &lt;C-c&gt; to the sub-shell.
 </p>
 </dd>
 <dt> <kbd>C-c C-x</kbd></dt>
-<dd><p>A prefix command to conveniently access the global <kbd>C-x</kbd> commands.
+<dd><p>A prefix command to conveniently access the global &lt;C-x&gt; commands.
 For example, <kbd>C-c C-x o</kbd> invokes the global binding of
 <kbd>C-x o</kbd>, which is normally &lsquo;<samp>other-window</samp>&rsquo;.
 </p></dd>
@@ -4020,7 +4020,7 @@ can generate random sentences by using CONX.
 
 <p>Copy text from a buffer using <kbd>M-x conx-buffer</kbd> or <kbd>M-x conx-region</kbd>
 and then type <kbd>M-x conx</kbd>.  Output is continuously generated until you
-type <kbd>^G</kbd>. You can save the <code>conx</code> database to a file with
+type &lt;^G&gt;. You can save the <code>conx</code> database to a file with
 <kbd>M-x conx-save</kbd>, which you can retrieve with <code>M-x conx-load</code>. 
 To clear the database, use <code>M-x conx-init</code>.
 </p>

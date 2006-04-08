@@ -130,10 +130,10 @@ the value in other buffers.  See section <a href="xemacs_30.html#SEC361">Local V
 <h2 class="section"> 15.1 Creating and Selecting Buffers </h2>
 
 <dl compact="compact">
-<dt> <kbd>C-x b <var>buffer</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x b <var>buffer</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Select or create a buffer named <var>buffer</var> (<code>switch-to-buffer</code>).
 </p></dd>
-<dt> <kbd>C-x 4 b <var>buffer</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x 4 b <var>buffer</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Similar, but select a buffer named <var>buffer</var> in another window
 (<code>switch-to-buffer-other-window</code>).
 </p></dd>
@@ -149,7 +149,7 @@ the value in other buffers.  See section <a href="xemacs_30.html#SEC361">Local V
 <a name="IDX650"></a>
 <a name="IDX651"></a>
 <p>  To select a buffer named <var>bufname</var>, type <kbd>C-x b <var>bufname</var>
-<kbd>RET</kbd></kbd>.  This is the command <code>switch-to-buffer</code> with argument
+&lt;RET&gt;</kbd>.  This is the command <code>switch-to-buffer</code> with argument
 <var>bufname</var>.  You can use completion on an abbreviation for the buffer
 name you want (see section <a href="xemacs_9.html#SEC63">Completion</a>).  An empty argument to <kbd>C-x b</kbd>
 specifies the most recently selected buffer that is not displayed in any
@@ -157,7 +157,7 @@ window.
 </p>
 <p>  Most buffers are created when you visit files, or use Emacs commands
 that display text.  You can also create a buffer explicitly by typing
-<kbd>C-x b <var>bufname</var> <kbd>RET</kbd></kbd>, which creates a new, empty buffer
+<kbd>C-x b <var>bufname</var> &lt;RET&gt;</kbd>, which creates a new, empty buffer
 that is not visiting any file, and selects it for editing.  The new
 buffer's major mode is determined by the value of
 <code>default-major-mode</code> (see section <a href="xemacs_21.html#SEC190">Major Modes</a>).  Buffers not visiting
@@ -339,7 +339,7 @@ longer need.  There are several commands for doing this.
 <a name="IDX663"></a>
  
 <p>  <kbd>C-x k</kbd> (<code>kill-buffer</code>) kills one buffer, whose name you
-specify in the minibuffer.  If you type just <kbd>RET</kbd> in the
+specify in the minibuffer.  If you type just &lt;RET&gt; in the
 minibuffer, the default, killing the current buffer, is used.  If the
 current buffer is killed, the buffer that has been selected recently but
 does not appear in any window now is selected.  If the buffer being
@@ -421,7 +421,7 @@ immediately when typed.
 <dt> <kbd>u</kbd></dt>
 <dd><p>Remove any request made for the current line, and move down.
 </p></dd>
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
 <dd><p>Move to previous line and remove any request made for that line.
 </p></dd>
 </dl>

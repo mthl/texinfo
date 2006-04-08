@@ -62,15 +62,15 @@ ul.toc {list-style: none}
 <h1 class="chapter"> 19. Indentation </h1>
 
 <dl compact="compact">
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Indent current line &ldquo;appropriately&rdquo; in a mode-dependent fashion.
 </p></dd>
-<dt> <kbd><kbd>LFD</kbd></kbd></dt>
-<dd><p>Perform <kbd>RET</kbd> followed by <kbd>TAB</kbd> (<code>newline-and-indent</code>).
+<dt> <kbd>&lt;LFD&gt;</kbd></dt>
+<dd><p>Perform &lt;RET&gt; followed by &lt;TAB&gt; (<code>newline-and-indent</code>).
 </p></dd>
 <dt> <kbd>M-^</kbd></dt>
 <dd><p>Merge two lines (<code>delete-indentation</code>).  This would cancel out
-the effect of <kbd>LFD</kbd>.
+the effect of &lt;LFD&gt;.
 </p></dd>
 <dt> <kbd>C-M-o</kbd></dt>
 <dd><p>Split line at point; text on the line after point becomes a new line
@@ -83,7 +83,7 @@ line (<code>back-to-indentation</code>).
 <dt> <kbd>C-M-\</kbd></dt>
 <dd><p>Indent several lines to same column (<code>indent-region</code>).
 </p></dd>
-<dt> <kbd>C-x <kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;TAB&gt;</kbd></dt>
 <dd><p>Shift block of lines rigidly right or left (<code>indent-rigidly</code>).
 </p></dd>
 <dt> <kbd>M-i</kbd></dt>
@@ -101,16 +101,16 @@ line (<code>back-to-indentation</code>).
 code, lines are indented according to their nesting in parentheses.  The
 same general idea is used for C code, though details differ.
 </p>
-<p>   Use the <kbd>TAB</kbd> command to indent a line whatever the language.
+<p>   Use the &lt;TAB&gt; command to indent a line whatever the language.
 Each major mode defines this command to perform indentation appropriate
-for the particular language.  In Lisp mode, <kbd>TAB</kbd> aligns a line
+for the particular language.  In Lisp mode, &lt;TAB&gt; aligns a line
 according to its depth in parentheses.  No matter where in the line you
-are when you type <kbd>TAB</kbd>, it aligns the line as a whole.  In C mode,
-<kbd>TAB</kbd> implements a subtle and sophisticated indentation style that
+are when you type &lt;TAB&gt;, it aligns the line as a whole.  In C mode,
+&lt;TAB&gt; implements a subtle and sophisticated indentation style that
 knows about many aspects of C syntax.
 </p>
 <a name="IDX740"></a>
-<p>  In Text mode, <kbd>TAB</kbd> runs the command <code>tab-to-tab-stop</code>, which
+<p>  In Text mode, &lt;TAB&gt; runs the command <code>tab-to-tab-stop</code>, which
 indents to the next tab stop column.  You can set the tab stops with
 <kbd>M-x edit-tab-stops</kbd>.
 </p>
@@ -146,7 +146,7 @@ indents to the next tab stop column.  You can set the tab stops with
 <h2 class="section"> 19.1 Indentation Commands and Techniques </h2>
 
 <p>  If you just want to insert a tab character in the buffer, you can type
-<kbd>C-q <kbd>TAB</kbd></kbd>.
+<kbd>C-q &lt;TAB&gt;</kbd>.
 </p>
 <a name="IDX741"></a>
 <a name="IDX742"></a>
@@ -155,8 +155,8 @@ indents to the next tab stop column.  You can set the tab stops with
 positions point at the first non-blank character on the line.
 </p>
 <p>  To insert an indented line before the current line, type <kbd>C-a C-o
-<kbd>TAB</kbd></kbd>.  To make an indented line after the current line, use
-<kbd>C-e <kbd>LFD</kbd></kbd>.
+&lt;TAB&gt;</kbd>.  To make an indented line after the current line, use
+<kbd>C-e &lt;LFD&gt;</kbd>.
 </p>
 <a name="IDX743"></a>
 <a name="IDX744"></a>
@@ -186,10 +186,10 @@ deletes all spaces and tabs around the cursor.
 <a name="IDX752"></a>
 <p>  There are also commands for changing the indentation of several lines at
 once.  <kbd>Control-Meta-\</kbd> (<code>indent-region</code>) gives each line which
-begins in the region the &ldquo;usual&rdquo; indentation by invoking <kbd>TAB</kbd> at the
+begins in the region the &ldquo;usual&rdquo; indentation by invoking &lt;TAB&gt; at the
 beginning of the line.  A numeric argument specifies the column to indent
 to.  Each line is shifted left or right so that its first non-blank
-character appears in that column.  <kbd>C-x <kbd>TAB</kbd></kbd>
+character appears in that column.  <kbd>C-x &lt;TAB&gt;</kbd>
 (<code>indent-rigidly</code>) moves all the lines in the region right by its
 argument (left, for negative arguments).  The whole group of lines moves
 rigidly sideways, which is how the command gets its name.
@@ -204,7 +204,7 @@ previous line, the whitespace before point is deleted and the first
 indentation point then applicable is used.  If no indentation point is
 applicable even then, <code>tab-to-tab-stop</code> is run (see next section).
 </p>
-<p>  <code>indent-relative</code> is the definition of <kbd>TAB</kbd> in Indented Text
+<p>  <code>indent-relative</code> is the definition of &lt;TAB&gt; in Indented Text
 mode.  See section <a href="xemacs_23.html#SEC196">Commands for Human Languages</a>.
 </p>
 <hr size="6">
@@ -228,7 +228,7 @@ mode.  See section <a href="xemacs_23.html#SEC196">Commands for Human Languages<
 </tr></table>
 <h2 class="section"> 19.2 Tab Stops </h2>
 
-<p>  For typing in tables, you can use Text mode's definition of <kbd>TAB</kbd>,
+<p>  For typing in tables, you can use Text mode's definition of &lt;TAB&gt;,
 <code>tab-to-tab-stop</code>.  This command inserts indentation before point,
 enough to reach the next tab stop column.  Even if you are not in Text mode,
 this function is associated with <kbd>M-i</kbd> anyway.

@@ -117,7 +117,7 @@ character of the search string.  As you type in the search string, Emacs
 shows you where the string (as you have typed it so far) is found.
 When you have typed enough characters to identify the place you want, you
 can stop.  Depending on what you do next, you may or may not need to
-terminate the search explicitly with a <kbd>RET</kbd>.
+terminate the search explicitly with a &lt;RET&gt;.
 </p>
 <dl compact="compact">
 <dt> <kbd>C-s</kbd></dt>
@@ -146,26 +146,26 @@ on.  When search is waiting for more input, the three dots are removed.
 (On slow terminals, the three dots are not displayed.)
 </p>
 <p>  If you make a mistake in typing the search string, you can erase
-characters with <kbd>DEL</kbd>.  Each <kbd>DEL</kbd> cancels the last character of the
+characters with &lt;DEL&gt;.  Each &lt;DEL&gt; cancels the last character of the
 search string.  This does not happen until Emacs is ready to read another
 input character; first it must either find, or fail to find, the character
 you want to erase.  If you do not want to wait for this to happen, use
 <kbd>C-g</kbd> as described below.
 </p>
 <p>  When you are satisfied with the place you have reached, you can type
-<kbd>RET</kbd> (or <kbd>C-m</kbd>), which stops searching, leaving the cursor where 
+&lt;RET&gt; (or &lt;C-m&gt;), which stops searching, leaving the cursor where 
 the search brought it.  Any command not specially meaningful in searches also
 stops the search and is then executed.  Thus, typing <kbd>C-a</kbd> exits the
-search and then moves to the beginning of the line.  <kbd>RET</kbd> is necessary
+search and then moves to the beginning of the line.  &lt;RET&gt; is necessary
 only if the next command you want to type is a printing character,
-<kbd>DEL</kbd>, <kbd>ESC</kbd>, or another control character that is special
+&lt;DEL&gt;, &lt;ESC&gt;, or another control character that is special
 within searches (<kbd>C-q</kbd>, <kbd>C-w</kbd>, <kbd>C-r</kbd>, <kbd>C-s</kbd>, or <kbd>C-y</kbd>).
 </p>
 <p>  Sometimes you search for &lsquo;<samp>FOO</samp>&rsquo; and find it, but were actually
 looking for a different occurrence of it.  To move to the next occurrence
 of the search string, type another <kbd>C-s</kbd>.  Do this as often as
 necessary.  If you overshoot, you can cancel some <kbd>C-s</kbd>
-characters with <kbd>DEL</kbd>.
+characters with &lt;DEL&gt;.
 </p>
 <p>  After you exit a search, you can search for the same string again by
 typing just <kbd>C-s C-s</kbd>: the first <kbd>C-s</kbd> is the key that invokes
@@ -177,7 +177,7 @@ Emacs found as much of your string as it could.  Thus, if you search for
 &lsquo;<samp>FOOT</samp>&rsquo;, and there is no &lsquo;<samp>FOOT</samp>&rsquo;, the cursor may be after the
 &lsquo;<samp>FOO</samp>&rsquo; in &lsquo;<samp>FOOL</samp>&rsquo;.  At this point there are several things you
 can do.  If you mistyped the search string, correct it.  If you like the
-place you have found, you can type <kbd>RET</kbd> or some other Emacs command
+place you have found, you can type &lt;RET&gt; or some other Emacs command
 to &ldquo;accept what the search offered&rdquo;.  Or you can type <kbd>C-g</kbd>, which
 removes from the search string the characters that could not be found
 (the &lsquo;<samp>T</samp>&rsquo; in &lsquo;<samp>FOOT</samp>&rsquo;), leaving those that were found (the
@@ -203,8 +203,8 @@ been found are discarded from the search string.  The
 search is now successful and waiting for more input, so a second <kbd>C-g</kbd>
 cancels the entire search.
 </p>
-<p>  To search for a control character such as <kbd>C-s</kbd> or <kbd>DEL</kbd> or
-<kbd>ESC</kbd>, you must quote it by typing <kbd>C-q</kbd> first.  This function
+<p>  To search for a control character such as <kbd>C-s</kbd> or &lt;DEL&gt; or
+&lt;ESC&gt;, you must quote it by typing <kbd>C-q</kbd> first.  This function
 of <kbd>C-q</kbd> is analogous to its meaning as an Emacs command: it causes
 the following character to be treated the way a graphic character would
 normally be treated in the same context.
@@ -216,7 +216,7 @@ start the search; <kbd>C-r</kbd> is the key that runs the command
 this if a search fails because the place you started was too far down in the
 file.  Repeated <kbd>C-r</kbd> keeps looking for more occurrences backwards.
 <kbd>C-s</kbd> starts going forward again.  You can cancel <kbd>C-r</kbd> in a
-search with <kbd>DEL</kbd>.
+search with &lt;DEL&gt;.
 </p>
 <p>  The characters <kbd>C-y</kbd> and <kbd>C-w</kbd> can be used in incremental search
 to grab text from the buffer into the search string.  This makes it
@@ -231,10 +231,10 @@ search to recall things which you have searched for in the past.  A
 list of the last 16 things you have searched for is retained, and 
 <kbd>M-p</kbd> and <kbd>M-n</kbd> let you cycle through that ring.
 </p>
-<p>The character <kbd>M-<kbd>TAB</kbd></kbd> does completion on the elements in 
+<p>The character <kbd>M-&lt;TAB&gt;</kbd> does completion on the elements in 
 the search history ring.  For example, if you know that you have
 recently searched for the string <code>POTATOE</code>, you could type
-<kbd>C-s P O M-<kbd>TAB</kbd></kbd>.  If you had searched for other strings
+<kbd>C-s P O M-&lt;TAB&gt;</kbd>.  If you had searched for other strings
 beginning with <code>PO</code> then you would be shown a list of them, and
 would need to type more to select one. 
 </p>
@@ -306,7 +306,7 @@ isearch (<code>isearch-abort</code>).
 <dd><p>Recall the next element in the isearch history ring 
 (<code>isearch-ring-advance</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>M-&lt;TAB&gt;</kbd></dt>
 <dd><p>Do completion on the elements in the isearch history ring 
 (<code>isearch-complete</code>).
 </p>
@@ -384,34 +384,34 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 you type the entire search string before searching begins.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-s &lt;RET&gt; <var>string</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search for <var>string</var>.
 </p></dd>
-<dt> <kbd>C-r <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-r &lt;RET&gt; <var>string</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search backward for <var>string</var>.
 </p></dd>
 </dl>
 
-<p>  To do a non-incremental search, first type <kbd>C-s <kbd>RET</kbd></kbd>
+<p>  To do a non-incremental search, first type <kbd>C-s &lt;RET&gt;</kbd>
 (or <kbd>C-s C-m</kbd>).  This enters the minibuffer to read the search string.
-Terminate the string with <kbd>RET</kbd> to start the search.  If the string
+Terminate the string with &lt;RET&gt; to start the search.  If the string
 is not found, the search command gets an error.
 </p>
 <p> By default, <kbd>C-s</kbd> invokes incremental search, but if you give it an
 empty argument, which would otherwise be useless, it invokes non-incremental
-search.  Therefore, <kbd>C-s <kbd>RET</kbd></kbd> invokes non-incremental search. 
-<kbd>C-r <kbd>RET</kbd></kbd> also works this way.
+search.  Therefore, <kbd>C-s &lt;RET&gt;</kbd> invokes non-incremental search. 
+<kbd>C-r &lt;RET&gt;</kbd> also works this way.
 </p>
 <a name="IDX436"></a>
 <a name="IDX437"></a>
 <p>  Forward and backward non-incremental searches are implemented by the
 commands <code>search-forward</code> and <code>search-backward</code>.  You can bind
 these commands to keys.  The reason that incremental
-search is programmed to invoke them as well is that <kbd>C-s <kbd>RET</kbd></kbd>
+search is programmed to invoke them as well is that <kbd>C-s &lt;RET&gt;</kbd>
 is the traditional sequence of characters used in Emacs to invoke
 non-incremental search.
 </p>
-<p> Non-incremental searches performed using <kbd>C-s <kbd>RET</kbd></kbd> do
+<p> Non-incremental searches performed using <kbd>C-s &lt;RET&gt;</kbd> do
 not call <code>search-forward</code> right away.  They first check
 if the next character is <kbd>C-w</kbd>, which requests a word search.
 See section <a href="#SEC119">Word Search</a>.
@@ -448,28 +448,28 @@ where the line breaks are in the source file.  Word search, allows you
 to search  without having to know the line breaks.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-s &lt;RET&gt; C-w <var>words</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search for <var>words</var>, ignoring differences in punctuation.
 </p></dd>
-<dt> <kbd>C-r <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-r &lt;RET&gt; C-w <var>words</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search backward for <var>words</var>, ignoring differences in punctuation.
 </p></dd>
 </dl>
 
 <p>  Word search is a special case of non-incremental search.  It is invoked
-with <kbd>C-s <kbd>RET</kbd> C-w</kbd> followed by the search string, which
-must always be terminated with another <kbd>RET</kbd>.  Being non-incremental, this
+with <kbd>C-s &lt;RET&gt; C-w</kbd> followed by the search string, which
+must always be terminated with another &lt;RET&gt;.  Being non-incremental, this
 search does not start until the argument is terminated.  It works by
 constructing a regular expression and searching for that.  See section <a href="#SEC120">Regular Expression Search</a>.
 </p>
-<p> You can do a backward word search with <kbd>C-r <kbd>RET</kbd> C-w</kbd>.
+<p> You can do a backward word search with <kbd>C-r &lt;RET&gt; C-w</kbd>.
 </p>
 <a name="IDX438"></a>
 <a name="IDX439"></a>
 <p>  Forward and backward word searches are implemented by the commands
 <code>word-search-forward</code> and <code>word-search-backward</code>.  You can
 bind these commands to keys.  The reason that incremental
-search is programmed to invoke them as well is that <kbd>C-s <kbd>RET</kbd> C-w</kbd>
+search is programmed to invoke them as well is that <kbd>C-s &lt;RET&gt; C-w</kbd>
 is the traditional Emacs sequence of keys for word search.
 </p>
 <hr size="6">
@@ -540,8 +540,8 @@ incremental regexp and non-regexp searches have independent defaults.
 <code>re-search-forward</code> and <code>re-search-backward</code>.  You can invoke
 them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <code>re-search-forward</code> by way of incremental regexp search with
-<kbd>M-C-s <kbd>RET</kbd></kbd>; similarly for <code>re-search-backward</code> with
-<kbd>M-C-r <kbd>RET</kbd></kbd>.
+<kbd>M-C-s &lt;RET&gt;</kbd>; similarly for <code>re-search-backward</code> with
+<kbd>M-C-r &lt;RET&gt;</kbd>.
 </p>
 <hr size="6">
 <a name="Regexps"></a>
@@ -1062,10 +1062,10 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <h3 class="subsection"> 12.7.1 Unconditional Replacement </h3>
 
 <dl compact="compact">
-<dt> <kbd>M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x replace-string &lt;RET&gt; <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Replace every occurrence of <var>string</var> with <var>newstring</var>.
 </p></dd>
-<dt> <kbd>M-x replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x replace-regexp &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Replace every match for <var>regexp</var> with <var>newstring</var>.
 </p></dd>
 </dl>
@@ -1080,7 +1080,7 @@ buffer before doing the replacement (see section <a href="xemacs_29.html#SEC344"
 </p>
 <p>  When <code>replace-string</code> exits, point is left at the last occurrence
 replaced.  The value of point when the <code>replace-string</code> command was
-issued is remembered on the mark ring; <kbd>C-u C-<kbd>SPC</kbd></kbd> moves back
+issued is remembered on the mark ring; <kbd>C-u C-&lt;SPC&gt;</kbd> moves back
 there.
 </p>
 <p>  A numeric argument restricts replacement to matches that are surrounded
@@ -1118,13 +1118,13 @@ in <var>newstring</var> stands for the entire text being replaced.
 whatever matched the <var>d</var>'th parenthesized grouping in <var>regexp</var>.
 For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> c[ad]+r <kbd>RET</kbd> \&amp;-safe <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; c[ad]+r &lt;RET&gt; \&amp;-safe &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>would replace (for example) &lsquo;<samp>cadr</samp>&rsquo; with &lsquo;<samp>cadr-safe</samp>&rsquo; and &lsquo;<samp>cddr</samp>&rsquo;
 with &lsquo;<samp>cddr-safe</samp>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; \(c[ad]+r\)-safe &lt;RET&gt; \1 &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>would perform exactly the opposite replacements.  To include a &lsquo;<samp>\</samp>&rsquo;
@@ -1154,7 +1154,7 @@ in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
 <p>  If the arguments to a replace command are in lower case, the command
 preserves case when it makes a replacement.  Thus, the following command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string <kbd>RET</kbd> foo <kbd>RET</kbd> bar <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string &lt;RET&gt; foo &lt;RET&gt; bar &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>replaces a lower-case &lsquo;<samp>foo</samp>&rsquo; with a lower case &lsquo;<samp>bar</samp>&rsquo;, &lsquo;<samp>FOO</samp>&rsquo;
@@ -1190,11 +1190,11 @@ replacement string is not done.
 <h3 class="subsection"> 12.7.4 Query Replace </h3>
 
 <dl compact="compact">
-<dt> <kbd>M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
-<dt> <kbd>M-x query-replace <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-% <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dt> <kbd>M-x query-replace &lt;RET&gt; <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Replace some occurrences of <var>string</var> with <var>newstring</var>.
 </p></dd>
-<dt> <kbd>M-x query-replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x query-replace-regexp &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Replace some matches for <var>regexp</var> with <var>newstring</var>.
 </p></dd>
 </dl>
@@ -1228,27 +1228,27 @@ or a match for <var>regexp</var> are:
 <a name="IDX492"></a>
 
 <dl compact="compact">
-<dt> <kbd><kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
 <dd><p>to replace the occurrence with <var>newstring</var>.  This preserves case, just
 like <code>replace-string</code>, provided <code>case-replace</code> is non-<code>nil</code>,
 as it normally is.
 </p>
 </dd>
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
 <dd><p>to skip to the next occurrence without replacing this one.
 </p>
 </dd>
 <dt> <kbd>, <span class="roman">(Comma)</span></kbd></dt>
 <dd><p>to replace this occurrence and display the result.  You are then
 prompted for another input character.  However, since the replacement has
-already been made, <kbd>DEL</kbd> and <kbd>SPC</kbd> are equivalent.  At this
+already been made, &lt;DEL&gt; and &lt;SPC&gt; are equivalent.  At this
 point, you can type <kbd>C-r</kbd> (see below) to alter the replaced text.  To
 undo the replacement, you can type <kbd>C-x u</kbd>. 
 This exits the <code>query-replace</code>.  If you want to do further
-replacement you must use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> to restart (see section <a href="xemacs_9.html#SEC69">Repeating Minibuffer Commands</a>).
+replacement you must use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> to restart (see section <a href="xemacs_9.html#SEC69">Repeating Minibuffer Commands</a>).
 </p>
 </dd>
-<dt> <kbd><kbd>ESC</kbd></kbd></dt>
+<dt> <kbd>&lt;ESC&gt;</kbd></dt>
 <dd><p>to exit without doing any more replacements.
 </p>
 </dd>
@@ -1294,7 +1294,7 @@ answer.
 
 <p>  If you type any other character, Emacs exits the <code>query-replace</code>, and
 executes the character as a command.  To restart the <code>query-replace</code>,
-use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, which repeats the <code>query-replace</code> because it
+use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, which repeats the <code>query-replace</code> because it
 used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#SEC69">C-x ESC ESC</a>.
 </p>
 <hr size="6">

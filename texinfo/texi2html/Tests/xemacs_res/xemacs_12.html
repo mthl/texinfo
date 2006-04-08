@@ -149,7 +149,7 @@ Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
 <p>  Here are some commands for setting the mark:
 </p>
 <dl compact="compact">
-<dt> <kbd>C-<kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>C-&lt;SPC&gt;</kbd></dt>
 <dd><p>Set the mark where point is (<code>set-mark-command</code>).
 </p></dd>
 <dt> <kbd>C-@</kbd></dt>
@@ -169,7 +169,7 @@ Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
 <p>  For example, to convert part of the buffer to all
 upper-case, you can use the <kbd>C-x C-u</kbd> (<code>upcase-region</code>)
 command, which operates on the text in the region.  First go to the
-beginning of the text you want to capitalize and type <kbd>C-<kbd>SPC</kbd></kbd> to
+beginning of the text you want to capitalize and type <kbd>C-&lt;SPC&gt;</kbd> to
 put the mark there, then move to the end, and then type <kbd>C-x C-u</kbd> to
 capitalize the selected region.  You can also set the mark at the end of the
 text, move to the beginning, and then type <kbd>C-x C-u</kbd>.  Most commands
@@ -178,16 +178,16 @@ their names.
 </p>
 <a name="IDX284"></a>
 <a name="IDX285"></a>
-<p>  The most common way to set the mark is with the <kbd>C-<kbd>SPC</kbd></kbd>
+<p>  The most common way to set the mark is with the <kbd>C-&lt;SPC&gt;</kbd>
 command (<code>set-mark-command</code>).  This command sets the mark where
 point is. You can then move point away, leaving the mark behind.  It is
-actually incorrect to speak of the character <kbd>C-<kbd>SPC</kbd></kbd>; there is
-no such character.  When you type <kbd>SPC</kbd> while holding down
-<kbd>CTRL</kbd>, you get the character <kbd>C-@</kbd> on most terminals. This
+actually incorrect to speak of the character <kbd>C-&lt;SPC&gt;</kbd>; there is
+no such character.  When you type &lt;SPC&gt; while holding down
+&lt;CTRL&gt;, you get the character <kbd>C-@</kbd> on most terminals. This
 character is actually bound to <code>set-mark-command</code>.  But unless you are
-unlucky enough to have a terminal where typing <kbd>C-<kbd>SPC</kbd></kbd> does
+unlucky enough to have a terminal where typing <kbd>C-&lt;SPC&gt;</kbd> does
 not produce <kbd>C-@</kbd>, you should think of this character as
-<kbd>C-<kbd>SPC</kbd></kbd>.
+<kbd>C-&lt;SPC&gt;</kbd>.
 </p>
 <a name="IDX286"></a>
 <a name="IDX287"></a>
@@ -262,7 +262,7 @@ Fill it as text with <kbd>M-q</kbd> (see section <a href="xemacs_23.html#SEC210"
 </li><li>
 Print hardcopy with <kbd>M-x print-region</kbd> (see section <a href="xemacs_29.html#SEC345">Hardcopy Output</a>).
 </li><li>
-Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a href="xemacs_22.html#SEC192">Indentation</a>).
+Indent it with <kbd>C-x &lt;TAB&gt;</kbd> or <kbd>C-M-\</kbd> (see section <a href="xemacs_22.html#SEC192">Indentation</a>).
 </li></ul>
 
 <hr size="6">
@@ -367,7 +367,7 @@ putting point at the beginning and the mark at the end.
 a spot that you may want to go back to.  To make this feature more
 useful, Emacs remembers 16 previous locations of the mark in the
 <em>mark ring</em>.  Most commands that set the mark push the old mark onto
-this ring.  To return to a marked location, use <kbd>C-u C-<kbd>SPC</kbd></kbd>
+this ring.  To return to a marked location, use <kbd>C-u C-&lt;SPC&gt;</kbd>
 (or <kbd>C-u C-@</kbd>); this is the command <code>set-mark-command</code> given a
 numeric argument.  The command moves point to where the mark was, and
 restores the mark from the ring of former marks. Repeated use of this
@@ -375,7 +375,7 @@ command moves point to all the old marks on the ring, one by one.
 The marks you have seen go to the end of the ring, so no marks are lost.
 </p>
 <p>  Each buffer has its own mark ring.  All editing commands use the current
-buffer's mark ring.  In particular, <kbd>C-u C-<kbd>SPC</kbd></kbd> always stays in
+buffer's mark ring.  In particular, <kbd>C-u C-&lt;SPC&gt;</kbd> always stays in
 the same buffer.
 </p>
 <p>  Many commands that can move long distances, such as <kbd>M-&lt;</kbd>
@@ -389,7 +389,7 @@ echo area.
 <p>  The variable <code>mark-ring-max</code> is the maximum number of entries to
 keep in the mark ring.  If that many entries exist and another entry is
 added, the last entry in the list is discarded.  Repeating <kbd>C-u
-C-<kbd>SPC</kbd></kbd> circulates through the entries that are currently in the
+C-&lt;SPC&gt;</kbd> circulates through the entries that are currently in the
 ring.
 </p>
 <a name="IDX305"></a>
@@ -492,7 +492,7 @@ can use Emacs region commands on it.
 <p>XEmacs also provides the following mouse functions.  Most of these are
 not bound to mouse gestures by default, but they are provided for your
 customization pleasure.  For example, if you wanted <kbd>shift-left</kbd>
-(that is, holding down the <kbd>Shift</kbd> key and clicking the left mouse
+(that is, holding down the &lt;Shift&gt; key and clicking the left mouse
 button) to delete the character at which you are pointing, then you
 could do this:
 </p>
@@ -550,22 +550,22 @@ mouse position.
 </p></dd>
 <dt> <kbd>mouse-track</kbd></dt>
 <dd><p>Make a selection with the mouse.   This is the default binding of 
-the left mouse button (<kbd>button1</kbd>).
+the left mouse button (&lt;button1&gt;).
 </p></dd>
 <dt> <kbd>mouse-track-adjust</kbd></dt>
 <dd><p>Extend the existing selection.  This is the default binding of
-<kbd>Shift-button1</kbd>.
+&lt;Shift-button1&gt;.
 </p></dd>
 <dt> <kbd>mouse-track-and-copy-to-cutbuffer</kbd></dt>
 <dd><p>Make a selection like <code>mouse-track</code>, but also copy it to the cut buffer.
 </p></dd>
 <dt> <kbd>mouse-track-delete-and-insert</kbd></dt>
 <dd><p>Make a selection with the mouse and insert it at point.  This is the
-default binding of <kbd>control-shift-button1</kbd>.
+default binding of &lt;control-shift-button1&gt;.
 </p></dd>
 <dt> <kbd>mouse-track-insert</kbd></dt>
 <dd><p>Make a selection with the mouse and insert it at point.
-This is the default binding of <kbd>control-button1</kbd>.
+This is the default binding of &lt;control-button1&gt;.
 </p></dd>
 <dt> <kbd>mouse-window-to-region</kbd></dt>
 <dd><p>Narrow a window to the region between the cursor and the mouse pointer.
@@ -598,15 +598,15 @@ click position.  Bind a mouse click to
 <p>The <kbd>M-x mouse-track-adjust</kbd> command should be bound to a mouse
 button.  The selection will be enlarged or shrunk so that the point of
 the mouse click is one of its endpoints.  This is only meaningful
-after the <code>mouse-track</code> command (<kbd>button1</kbd>) has been executed.
+after the <code>mouse-track</code> command (&lt;button1&gt;) has been executed.
 </p>
 <p>The <kbd>M-x mouse-track-delete-and-insert</kbd> command is exactly the same
-as the <code>mouse-track</code> command on <kbd>button1</kbd>, except that point is
+as the <code>mouse-track</code> command on &lt;button1&gt;, except that point is
 not moved; the selected text is immediately inserted after being
 selected; and the text of the selection is deleted.
 </p>
 <p>The <kbd>M-x mouse-track-insert</kbd> command is exactly the same as the
-<code>mouse-track</code> command on <kbd>button1</kbd>, except that point is not moved;
+<code>mouse-track</code> command on &lt;button1&gt;, except that point is not moved;
 the selected text is immediately inserted after being selected; and the
 selection is immediately disowned afterwards.
 </p>
@@ -643,7 +643,7 @@ distinction is made only for erasing text in the buffer.)
 &lsquo;<samp>kill</samp>&rsquo; and &lsquo;<samp>delete</samp>&rsquo; to indicate what they do.  If you perform
 a kill or delete command by mistake, use the <kbd>C-x u</kbd> (<code>undo</code>)
 command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a>). The delete commands include <kbd>C-d</kbd>
-(<code>delete-char</code>) and <kbd>DEL</kbd> (<code>delete-backward-char</code>), which
+(<code>delete-char</code>) and &lt;DEL&gt; (<code>delete-backward-char</code>), which
 delete only one character at a time, and those commands that delete only
 spaces or newlines.  Commands that can destroy significant amounts of
 nontrivial data usually kill.
@@ -672,13 +672,13 @@ nontrivial data usually kill.
 <dt> <kbd>C-d</kbd></dt>
 <dd><p>Delete next character (<code>delete-char</code>).
 </p></dd>
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
 <dd><p>Delete previous character (<code>delete-backward-char</code>).
 </p></dd>
 <dt> <kbd>M-\</kbd></dt>
 <dd><p>Delete spaces and tabs around point (<code>delete-horizontal-space</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>M-&lt;SPC&gt;</kbd></dt>
 <dd><p>Delete spaces and tabs around point, leaving one space
 (<code>just-one-space</code>).
 </p></dd>
@@ -692,12 +692,12 @@ following it (<code>delete-indentation</code>).
 </dl>
 
 <p>  The most basic delete commands are <kbd>C-d</kbd> (<code>delete-char</code>) and
-<kbd>DEL</kbd> (<code>delete-backward-char</code>).  <kbd>C-d</kbd> deletes the
+&lt;DEL&gt; (<code>delete-backward-char</code>).  <kbd>C-d</kbd> deletes the
 character after point, the one the cursor is &ldquo;on top of&rdquo;.  Point
-doesn't move.  <kbd>DEL</kbd> deletes the character before the cursor, and
+doesn't move.  &lt;DEL&gt; deletes the character before the cursor, and
 moves point back.  You can delete newlines like any other characters in
 the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
-<kbd>DEL</kbd> aren't always delete commands; if you give them an argument,
+&lt;DEL&gt; aren't always delete commands; if you give them an argument,
 they kill instead, since they can erase more than one character this
 way.
 </p>
@@ -712,7 +712,7 @@ way.
 <p>  The other delete commands delete only formatting characters: spaces,
 tabs and newlines.  <kbd>M-\</kbd> (<code>delete-horizontal-space</code>) deletes
 all spaces and tab characters before and after point.
-<kbd>M-<kbd>SPC</kbd></kbd> (<code>just-one-space</code>) does the same but leaves a
+<kbd>M-&lt;SPC&gt;</kbd> (<code>just-one-space</code>) does the same but leaves a
 single space after point, regardless of the number of spaces that
 existed previously (even zero).
 </p>
@@ -804,10 +804,10 @@ See section <a href="xemacs_23.html#SEC206">Words</a>.
 <dt> <kbd>M-d</kbd></dt>
 <dd><p>Kill word (<code>kill-word</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>M-&lt;DEL&gt;</kbd></dt>
 <dd><p>Kill word backwards (<code>backward-kill-word</code>).
 </p></dd>
-<dt> <kbd>C-x <kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to beginning of sentence (<code>backward-kill-sentence</code>).
 See section <a href="xemacs_23.html#SEC207">Sentences</a>.
 </p></dd>
@@ -837,9 +837,9 @@ is no next occurrence, killing goes to the end of the buffer.  A numeric
 argument acts as a repeat count.  A negative argument means to search
 backward and kill text before point.
 </p>
-<p>  Other syntactic units can be killed: words, with <kbd>M-<kbd>DEL</kbd></kbd> and
+<p>  Other syntactic units can be killed: words, with <kbd>M-&lt;DEL&gt;</kbd> and
 <kbd>M-d</kbd> (see section <a href="xemacs_23.html#SEC206">Words</a>); sexps, with <kbd>C-M-k</kbd> (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>); and
-sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
+sentences, with <kbd>C-x &lt;DEL&gt;</kbd> and <kbd>M-k</kbd>
 (see section <a href="xemacs_23.html#SEC207">Sentences</a>).
 </p>
 <hr size="6">
@@ -988,12 +988,12 @@ and here is the third.
 </pre></td></tr></table>
 
 <p>with point at the beginning of the second line.  If you type <kbd>C-k C-u 2
-M-<kbd>DEL</kbd> C-k</kbd>, the first <kbd>C-k</kbd> kills the text &lsquo;<samp>line of sample
-text</samp>&rsquo;, <kbd>C-u 2 M-<kbd>DEL</kbd></kbd> kills &lsquo;<samp>the first</samp>&rsquo; with the newline that
+M-&lt;DEL&gt; C-k</kbd>, the first <kbd>C-k</kbd> kills the text &lsquo;<samp>line of sample
+text</samp>&rsquo;, <kbd>C-u 2 M-&lt;DEL&gt;</kbd> kills &lsquo;<samp>the first</samp>&rsquo; with the newline that
 followed it, and the second <kbd>C-k</kbd> kills the newline after the second
 line.  The result is that the buffer contains &lsquo;<samp>This is and here is the
-third.</samp>&rsquo; and a single kill entry contains &lsquo;<samp>the first<kbd>RET</kbd>line of
-sample text<kbd>RET</kbd></samp>&rsquo;&mdash;all the killed text, in its original order.
+third.</samp>&rsquo; and a single kill entry contains &lsquo;<samp>the first&lt;RET&gt;line of
+sample text&lt;RET&gt;</samp>&rsquo;&mdash;all the killed text, in its original order.
 </p>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
@@ -1382,7 +1382,7 @@ marks as a means of marking an area of text, such as <code>mark-defun</code>
 </p>
 <p>When <code>zmacs-regions</code> is <code>t</code>, there is no distinction between
 the primary X selection and the active region selected by point and the
-mark.  To see this, set the mark (<kbd>C-SPC</kbd>) and move the cursor
+mark.  To see this, set the mark (&lt;C-SPC&gt;) and move the cursor
 with any cursor-motion command: the region between point and mark is
 highlighted, and you can watch it grow and shrink as you move the
 cursor.
@@ -1395,7 +1395,7 @@ Region can be explicitly deactivated with <kbd>C-g</kbd>.
 <p>Commands that require a region (such as <kbd>C-w</kbd>) signal an error if
 the region is not active.  Certain commands cause the region to be in
 its active state.  The most common ones are <code>push-mark</code>
-(<kbd>C-SPC</kbd>) and <code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>).
+(&lt;C-SPC&gt;) and <code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>).
 </p>
 <a name="IDX342"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can be non-intrusive

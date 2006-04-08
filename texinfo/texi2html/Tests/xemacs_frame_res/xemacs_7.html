@@ -130,18 +130,18 @@ still before the &lsquo;<samp>B</samp>&rsquo;.
 </p>
 <a name="IDX132"></a>
 <a name="IDX133"></a>
-<p>   To <em>delete</em> text you have just inserted, use <kbd>BS</kbd>.  <kbd>BS</kbd>
+<p>   To <em>delete</em> text you have just inserted, use &lt;BS&gt;.  &lt;BS&gt;
 deletes the character <em>before</em> the cursor (not the one that the
 cursor is on top of or under; that is the character <var>after</var> the
 cursor).  The cursor and all characters after it move backwards.
-Therefore, if you type a printing character and then type <kbd>BS</kbd>, they
+Therefore, if you type a printing character and then type &lt;BS&gt;, they
 cancel out.
 </p>
 <a name="IDX134"></a>
 <a name="IDX135"></a>
-<p>   To end a line and start typing a new one, type <kbd>RET</kbd>.  This
+<p>   To end a line and start typing a new one, type &lt;RET&gt;.  This
 inserts a newline character in the buffer.  If point is in the middle of
-a line, <kbd>RET</kbd> splits the line.  Typing <kbd>DEL</kbd> when the cursor is
+a line, &lt;RET&gt; splits the line.  Typing &lt;DEL&gt; when the cursor is
 at the beginning of a line deletes the preceding newline, thus joining
 the line with the preceding line.
 </p>
@@ -156,7 +156,7 @@ a minor mode.  See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.
 <a name="IDX136"></a>
 <a name="IDX137"></a>
 <a name="IDX138"></a>
-<p>  Direct insertion works for printing characters and <kbd>SPC</kbd>, but other
+<p>  Direct insertion works for printing characters and &lt;SPC&gt;, but other
 characters act as editing commands and do not insert themselves.  If you
 need to insert a control character or a character whose code is above 200
 octal, you must <em>quote</em> it by typing the character <kbd>Control-q</kbd>
@@ -172,7 +172,7 @@ inserts that character.
 <kbd>C-q</kbd> followed by a sequence of octal digits inserts the character
 with the specified octal character code.  You can use any number of
 octal digits; any non-digit terminates the sequence.  If the terminating
-character is <kbd>RET</kbd>, it serves only to terminate the sequence; any
+character is &lt;RET&gt;, it serves only to terminate the sequence; any
 other non-digit is itself used as input after terminating the sequence.
 (The use of octal sequences is disabled in ordinary non-binary Overwrite
 mode, to give you a convenient way to insert a digit instead of
@@ -185,11 +185,11 @@ character should be inserted (see section <a href="#SEC58">Numeric Arguments</a>
 <a name="IDX139"></a>
 <a name="IDX140"></a>
 <a name="IDX141"></a>
-<p>  Customization information: <kbd>DEL</kbd>, in most modes, runs the command
-<code>backward-or-forward-delete-char</code>; <kbd>RET</kbd> runs the command
+<p>  Customization information: &lt;DEL&gt;, in most modes, runs the command
+<code>backward-or-forward-delete-char</code>; &lt;RET&gt; runs the command
 <code>newline</code>, and self-inserting printing characters run the command
 <code>self-insert</code>, which inserts whatever character was typed to invoke
-it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
+it.  Some major modes rebind &lt;DEL&gt; to other commands.
 </p>
 <hr size="6">
 <a name="Moving-Point"></a>
@@ -217,7 +217,7 @@ it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
 clicking the left mouse button where you want to move to.
 </p>
 <p>  NOTE: Many of the following commands have two versions, one that uses
-the function keys (e.g. <kbd>LEFT</kbd> or <kbd>END</kbd>) and one that doesn't.
+the function keys (e.g. &lt;LEFT&gt; or &lt;END&gt;) and one that doesn't.
 The former versions may only be available on X terminals (i.e. not on
 TTY's), but the latter are available on all terminals.
 </p>
@@ -385,7 +385,7 @@ it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, th
 <h2 class="section"> 4.3 Erasing Text </h2>
 
 <dl compact="compact">
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
 <dd><p>Delete the character before or after point
 (<code>backward-or-forward-delete-char</code>).  You can customize
 this behavior by setting the variable <code>delete-key-deletes-forward</code>.
@@ -399,7 +399,7 @@ this behavior by setting the variable <code>delete-key-deletes-forward</code>.
 <dt> <kbd>M-d</kbd></dt>
 <dd><p>Kill forward to the end of the next word (<code>kill-word</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>M-&lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to the beginning of the previous word
 (<code>backward-kill-word</code>).
 </p></dd>
@@ -408,7 +408,7 @@ this behavior by setting the variable <code>delete-key-deletes-forward</code>.
 <a name="IDX183"></a>
 <a name="IDX184"></a>
 <a name="IDX185"></a>
-<p>  You already know about the <kbd>DEL</kbd> key which deletes the character
+<p>  You already know about the &lt;DEL&gt; key which deletes the character
 before point (that is, before the cursor).  Another key, <kbd>Control-d</kbd>
 (<kbd>C-d</kbd> for short), deletes the character after point (that is, the
 character that the cursor is on).  This shifts the rest of the text on
@@ -454,12 +454,12 @@ Emacs, you must specify the file name.
 <p>  Consider a file named &lsquo;<tt>/usr/rms/foo.c</tt>&rsquo;.  To begin editing
 this file from Emacs, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-f /usr/rms/foo.c &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
 C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
-read the argument, and you type <kbd>RET</kbd> to terminate the argument
+read the argument, and you type &lt;RET&gt; to terminate the argument
 (see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>).
 </p>
 <p>  You can also use the <b>Open...</b> menu item from the <b>File</b> menu, then
@@ -505,7 +505,7 @@ buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 <h2 class="section"> 4.5 Help </h2>
 
 <p>  If you forget what a key does, you can find out with the Help
-character, which is <kbd>C-h</kbd> (or <kbd>F1</kbd>, which is an alias for
+character, which is <kbd>C-h</kbd> (or &lt;F1&gt;, which is an alias for
 <kbd>C-h</kbd>).  Type <kbd>C-h k</kbd> followed by the key you want to know
 about; for example, <kbd>C-h k C-n</kbd> tells you all about what <kbd>C-n</kbd>
 does.  <kbd>C-h</kbd> is a prefix key; <kbd>C-h k</kbd> is just one of its
@@ -553,13 +553,13 @@ blank lines.
 <a name="IDX189"></a>
 <a name="IDX190"></a>
 <p>  When you want to insert a new line of text before an existing line, you
-can do it by typing the new line of text, followed by <kbd>RET</kbd>.
+can do it by typing the new line of text, followed by &lt;RET&gt;.
 However, it may be easier to see what you are doing if you first make a
 blank line and then insert the desired text into it.  This is easy to do
 using the key <kbd>C-o</kbd> (<code>open-line</code>), which inserts a newline
 after point but leaves point in front of the newline.  After <kbd>C-o</kbd>,
 type the text for the new line.  <kbd>C-o F O O</kbd> has the same effect as
-<kbd>F O O <kbd>RET</kbd></kbd>, except for the final location of point.
+<kbd>F O O &lt;RET&gt;</kbd>, except for the final location of point.
 </p>
 <p>  You can make several blank lines by typing <kbd>C-o</kbd> several times, or
 by giving it a numeric argument to tell it how many blank lines to make.
@@ -596,7 +596,7 @@ nonblank line.
 <h2 class="section"> 4.7 Continuation Lines </h2>
 
 <p>  If you add too many characters to one line without breaking it with
-<kbd>RET</kbd>, the line will grow to occupy two (or more) lines on the
+&lt;RET&gt;, the line will grow to occupy two (or more) lines on the
 screen, with a curved arrow at the extreme right margin of all but the
 last of them.  The curved arrow says that the following screen line is
 not really a distinct line in the text, but just the <em>continuation</em>
@@ -780,10 +780,10 @@ command to move or act  in the opposite direction.
 <a name="IDX202"></a>
 <a name="IDX203"></a>
 <a name="IDX204"></a>
-<p>  If your keyboard has a <kbd>META</kbd> key (labelled with a diamond on
+<p>  If your keyboard has a &lt;META&gt; key (labelled with a diamond on
 Sun-type keyboards and labelled &lsquo;<samp>Alt</samp>&rsquo; on some other keyboards), the
 easiest way to specify a numeric argument is to type digits and/or a
-minus sign while holding down the <kbd>META</kbd> key.  For example,
+minus sign while holding down the &lt;META&gt; key.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">M-5 C-n
 </pre></td></tr></table>
 <p>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,

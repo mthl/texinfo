@@ -65,7 +65,7 @@ ul.toc {list-style: none}
 different text.  Abbrevs are defined by the user to expand in specific
 ways.  For example, you might define &lsquo;<samp>foo</samp>&rsquo; as an abbrev expanding to
 &lsquo;<samp>find outer otter</samp>&rsquo;.  With this abbrev defined, you would be able to
-get &lsquo;<samp>find outer otter </samp>&rsquo; into the buffer by typing <kbd>f o o <kbd>SPC</kbd></kbd>.
+get &lsquo;<samp>find outer otter </samp>&rsquo; into the buffer by typing <kbd>f o o &lt;SPC&gt;</kbd>.
 </p>
 <a name="IDX1060"></a>
 <a name="IDX1061"></a>
@@ -158,7 +158,7 @@ minibuffer, and then defines it as an abbrev for one or more words
 before point.  Use a numeric argument to say how many words before point
 should be taken as the expansion.  For example, to define the abbrev
 &lsquo;<samp>foo</samp>&rsquo; as in the example above, insert the text &lsquo;<samp>find outer
-otter</samp>&rsquo;, then type <br><kbd>C-u 3 C-x a g f o o <kbd>RET</kbd></kbd>.
+otter</samp>&rsquo;, then type <br><kbd>C-u 3 C-x a g f o o &lt;RET&gt;</kbd>.
 </p>
 <p>  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
 region as the expansion of the abbrev being defined.
@@ -214,7 +214,7 @@ two definitions are independent for one abbrev.
 <h2 class="section"> 23.2 Controlling Abbrev Expansion </h2>
 
 <p>  An abbrev expands whenever it is in a buffer just before point and you
-type a self-inserting punctuation character (<kbd>SPC</kbd>, comma,
+type a self-inserting punctuation character (&lt;SPC&gt;, comma,
 etc.).  Most often an abbrev is used by inserting the abbrev followed
 by punctuation.
 </p>

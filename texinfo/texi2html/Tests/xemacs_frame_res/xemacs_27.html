@@ -151,14 +151,14 @@ of screen model does not affect beginnings of lines.
 <p>  Insertion of text is adapted to the quarter-plane screen model through
 the use of Overwrite mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  Self-inserting characters
 replace existing text, column by column, rather than pushing existing text
-to the right.  <kbd>RET</kbd> runs <code>picture-newline</code>, which just moves to
+to the right.  &lt;RET&gt; runs <code>picture-newline</code>, which just moves to
 the beginning of the following line so that new text will replace that
 line.
 </p>
 <a name="IDX1092"></a>
 <a name="IDX1093"></a>
 <a name="IDX1094"></a>
-<p>  Text is erased instead of deleted and killed.  <kbd>DEL</kbd>
+<p>  Text is erased instead of deleted and killed.  &lt;DEL&gt;
 (<code>picture-backward-clear-column</code>) replaces the preceding character
 with a space rather than removing it.  <kbd>C-d</kbd>
 (<code>picture-clear-column</code>) does the same in a forward direction.
@@ -169,7 +169,7 @@ but never removes the newlines from a buffer.
 <p>  To do actual insertion, you must use special commands.  <kbd>C-o</kbd>
 (<code>picture-open-line</code>) creates a blank line, but does so after
 the current line; it never splits a line.  <kbd>C-M-o</kbd>, <code>split-line</code>,
-makes sense in Picture mode, so it remains unchanged.  <kbd>LFD</kbd>
+makes sense in Picture mode, so it remains unchanged.  &lt;LFD&gt;
 (<code>picture-duplicate-line</code>) inserts another line
 with the same contents below the current line.
 </p>
@@ -269,20 +269,20 @@ C-b</kbd> (<code>picture-motion-reverse</code>) moves in the opposite direction.
 <h2 class="section"> 24.3 Picture Mode Tabs </h2>
  
 <p>  Two kinds of tab-like action are provided in Picture mode.
-Context-based tabbing is done with <kbd>M-<kbd>TAB</kbd></kbd>
+Context-based tabbing is done with <kbd>M-&lt;TAB&gt;</kbd>
 (<code>picture-tab-search</code>).  With no argument, it moves to a point
 underneath the next &ldquo;interesting&rdquo; character that follows whitespace in
 the previous non-blank line.  &ldquo;Next&rdquo; here means &ldquo;appearing at a
 horizontal position greater than the one point starts out at&rdquo;.  With an
-argument, as in <kbd>C-u M-<kbd>TAB</kbd></kbd>, the command moves to the next such
-interesting character in the current line.  <kbd>M-<kbd>TAB</kbd></kbd> does not
+argument, as in <kbd>C-u M-&lt;TAB&gt;</kbd>, the command moves to the next such
+interesting character in the current line.  <kbd>M-&lt;TAB&gt;</kbd> does not
 change the text; it only moves point.  &ldquo;Interesting&rdquo; characters are
 defined by the variable <code>picture-tab-chars</code>, which contains a string
 of characters considered interesting.  Its default value is
 <code>&quot;!-~&quot;</code>.
 </p>
 <a name="IDX1102"></a>
-<p>  <kbd>TAB</kbd> itself runs <code>picture-tab</code>, which operates based on the
+<p>  &lt;TAB&gt; itself runs <code>picture-tab</code>, which operates based on the
 current tab stop settings; it is the Picture mode equivalent of
 <code>tab-to-tab-stop</code>.  Without arguments it just moves point, but with
 a numeric argument it clears the text that it moves over.
@@ -290,11 +290,11 @@ a numeric argument it clears the text that it moves over.
 <a name="IDX1103"></a>
 <a name="IDX1104"></a>
 <p>  The context-based and tab-stop-based forms of tabbing are brought
-together by the command <kbd>C-c <kbd>TAB</kbd></kbd> (<code>picture-set-tab-stops</code>.)
-This command sets the tab stops to the positions which <kbd>M-<kbd>TAB</kbd></kbd>
+together by the command <kbd>C-c &lt;TAB&gt;</kbd> (<code>picture-set-tab-stops</code>.)
+This command sets the tab stops to the positions which <kbd>M-&lt;TAB&gt;</kbd>
 would consider significant in the current line.  If you use this command
-with <kbd>TAB</kbd>, you can get the effect of context-based tabbing.  But
-<kbd>M-<kbd>TAB</kbd></kbd> is more convenient in the cases where it is sufficient.
+with &lt;TAB&gt;, you can get the effect of context-based tabbing.  But
+<kbd>M-&lt;TAB&gt;</kbd> is more convenient in the cases where it is sufficient.
 </p>
 <hr size="6">
 <a name="Rectangles-in-Picture"></a>

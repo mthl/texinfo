@@ -141,7 +141,7 @@ the command; therefore, the makefile comes from this directory.
 <a name="IDX1020"></a>
 <p>  When the shell command line is read, the minibuffer appears containing a
 default command line (the command you used the last time you typed
-<kbd>M-x compile</kbd>).  If you type just <kbd>RET</kbd>, the same command line is used
+<kbd>M-x compile</kbd>).  If you type just &lt;RET&gt;, the same command line is used
 again.  The first <kbd>M-x compile</kbd> provides <code>make -k</code> as the default.
 The default is taken from the variable <code>compile-command</code>; if the
 appropriate compilation command for a file is something other than
@@ -242,7 +242,7 @@ See section <a href="#SEC254">Libraries of Lisp Code for Emacs</a>.
 </p></dd>
 <dt> Lisp Interaction mode</dt>
 <dd><p>The mode for an interactive session with Emacs Lisp.  It defines
-<kbd>LFD</kbd> to evaluate the sexp before point and insert its value in the
+&lt;LFD&gt; to evaluate the sexp before point and insert its value in the
 buffer.  See section <a href="#SEC260">Lisp Interaction Buffers</a>.
 </p></dd>
 <dt> Lisp mode</dt>
@@ -791,14 +791,14 @@ provided for evaluating Lisp expressions interactively inside Emacs.  Both
 the expressions you evaluate and their output goes in the buffer.
 </p>
 <p>  The &lsquo;<samp>*scratch*</samp>&rsquo; buffer's major mode is Lisp Interaction mode, which
-is the same as Emacs-Lisp mode except for one command, <kbd>LFD</kbd>.  In
-Emacs-Lisp mode, <kbd>LFD</kbd> is an indentation command.  In Lisp
-Interaction mode, <kbd>LFD</kbd> is bound to <code>eval-print-last-sexp</code>.  This
+is the same as Emacs-Lisp mode except for one command, &lt;LFD&gt;.  In
+Emacs-Lisp mode, &lt;LFD&gt; is an indentation command.  In Lisp
+Interaction mode, &lt;LFD&gt; is bound to <code>eval-print-last-sexp</code>.  This
 function reads the Lisp expression before point, evaluates it, and inserts
 the value in printed representation before point.
 </p>
 <p> The way to use the &lsquo;<samp>*scratch*</samp>&rsquo; buffer is to insert Lisp
-expressions at the end, ending each one with <kbd>LFD</kbd> so that it will
+expressions at the end, ending each one with &lt;LFD&gt; so that it will
 be evaluated.  The result is a complete typescript of the expressions
 you have evaluated and their values.
 </p>
@@ -844,7 +844,7 @@ program named <code>lisp</code>, the same program you would run by typing
 Emacs buffer named &lsquo;<samp>*lisp*</samp>&rsquo;.  In other words, any &ldquo;terminal output&rdquo;
 from Lisp will go into the buffer, advancing point, and any &ldquo;terminal
 input&rdquo; for Lisp comes from text in the buffer.  To give input to Lisp, go
-to the end of the buffer and type the input, terminated by <kbd>RET</kbd>.  The
+to the end of the buffer and type the input, terminated by &lt;RET&gt;.  The
 &lsquo;<samp>*lisp*</samp>&rsquo; buffer is in Inferior Lisp mode, which has all the
 special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#SEC340">Shell Mode</a>).
 </p>
@@ -1285,7 +1285,7 @@ current version is out-of-date.
 installed and is up to date.
 </p>
 <p>From here, you can select or unselect packages for installation using
-the <kbd>RET</kbd> key, the <kbd>Mouse-2</kbd> button or selecting &quot;Select&quot; from
+the &lt;RET&gt; key, the <kbd>Mouse-2</kbd> button or selecting &quot;Select&quot; from
 the (Popup) Menu.
 Once you've finished selecting the packages, you can
 press the <kbd>x</kbd> key (or use the menu) to actually install the
@@ -1298,14 +1298,14 @@ recognize any new packages.
 <dt> <kbd>?</kbd></dt>
 <dd><p>Display simple help.
 </p></dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
-<dt> <kbd><kbd>Mouse-2</kbd></kbd></dt>
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dt> <kbd>&lt;Mouse-2&gt;</kbd></dt>
 <dd><p>Toggle between selecting and unselecting a package for installation.
 </p></dd>
 <dt> <kbd>x</kbd></dt>
 <dd><p>Install selected packages.
 </p></dd>
-<dt> <kbd><kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
 <dd><p>View, in the minibuffer, additional information about the package, such
 as the package date (not the build date) and the package author.  Moving 
 the mouse over a package name will also do the same thing.

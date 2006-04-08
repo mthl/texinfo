@@ -136,7 +136,7 @@ file name to use for them.)  File names are specified in the minibuffer
 specify long file names.  See section <a href="xemacs_9.html#SEC63">Completion</a>.
 </p>
 <p>  There is always a <em>default file name</em> which is used if you
-enter an empty argument by typing just <kbd>RET</kbd>.  Normally the default
+enter an empty argument by typing just &lt;RET&gt;.  Normally the default
 file name is the name of the file visited in the current buffer; this
 makes it easy to operate on that file with any of the Emacs file
 commands.
@@ -187,7 +187,7 @@ which takes as an argument a file name string. The current directory is
 displayed in the minibuffer when the function is called; you can delete
 the old directory name and supply a new directory name. For example, if
 the current directory is &lsquo;<tt>/u/rms/gnu</tt>&rsquo;, you can delete &lsquo;<tt>gnu</tt>&rsquo;
-and type &lsquo;<tt>oryx</tt>&rsquo; and <kbd>RET</kbd> to create &lsquo;<tt>/u/rms/oryx</tt>&rsquo;.
+and type &lsquo;<tt>oryx</tt>&rsquo; and &lt;RET&gt; to create &lsquo;<tt>/u/rms/oryx</tt>&rsquo;.
 Removing a directory is similar to creating one.  To remove a directory,
 use <code>remove-directory</code>; it takes one argument, a file name string.
 </p>
@@ -300,7 +300,7 @@ two stars near the left margin if the buffer is modified.
 <a name="IDX542"></a>
 <p>  To visit a file, use the command <kbd>C-x C-f</kbd> (<code>find-file</code>).  Follow
 the command with the name of the file you wish to visit, terminated by a
-<kbd>RET</kbd>.  If you are using XEmacs under X, you can also use the
+&lt;RET&gt;.  If you are using XEmacs under X, you can also use the
 <b>Open...</b> command from the <b>File</b> menu bar item. 
 </p>
 <p>  The file name is read using the minibuffer (see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>), with
@@ -1083,14 +1083,14 @@ buffer.
 <h3 class="subsection"> 14.5.3 Recovering Data from Auto-Saves </h3>
 
 <p>  If you want to use the contents of an auto-save file to recover from a
-loss of data, use the command <kbd>M-x recover-file <kbd>RET</kbd> <var>file</var>
-<kbd>RET</kbd></kbd>.  Emacs visits <var>file</var> and then (after your confirmation)
+loss of data, use the command <kbd>M-x recover-file &lt;RET&gt; <var>file</var>
+&lt;RET&gt;</kbd>.  Emacs visits <var>file</var> and then (after your confirmation)
 restores the contents from the auto-save file &lsquo;<tt>#<var>file</var>#</tt>&rsquo;.  You
 can then save the file with <kbd>C-x C-s</kbd> to put the recovered text into
 <var>file</var> itself.  For example, to recover file &lsquo;<tt>foo.c</tt>&rsquo; from its
 auto-save file &lsquo;<tt>#foo.c#</tt>&rsquo;, do:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x recover-file <kbd>RET</kbd> foo.c <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x recover-file &lt;RET&gt; foo.c &lt;RET&gt;
 C-x C-s
 </pre></td></tr></table>
 
@@ -1617,7 +1617,7 @@ to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 <h3 class="subsection"> 14.6.6 Examining And Comparing Old Versions </h3>
 
 <dl compact="compact">
-<dt> <kbd>C-x v ~ <var>version</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x v ~ <var>version</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Examine version <var>version</var> of the visited file, in a buffer of its
 own (<code>vc-version-other-window</code>).
 </p>
@@ -1627,7 +1627,7 @@ own (<code>vc-version-other-window</code>).
 of the file.
 </p>
 </dd>
-<dt> <kbd>C-u C-x v = <var>file</var> <kbd>RET</kbd> <var>oldvers</var> <kbd>RET</kbd> <var>newvers</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-u C-x v = <var>file</var> &lt;RET&gt; <var>oldvers</var> &lt;RET&gt; <var>newvers</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Compare the specified two versions of <var>file</var>.
 </p></dd>
 </dl>
@@ -1635,7 +1635,7 @@ of the file.
 <a name="IDX607"></a>
 <a name="IDX608"></a>
 <p>  You can examine any version of a file by first visiting it, and then
-using <kbd>C-x v ~ <var>version</var> <kbd>RET</kbd></kbd>
+using <kbd>C-x v ~ <var>version</var> &lt;RET&gt;</kbd>
 (<code>vc-version-other-window</code>).  This puts the text of version
 <var>version</var> in a file named &lsquo;<tt><var>filename</var>.~<var>version</var>~</tt>&rsquo;,
 then visits it in a separate window.
@@ -1811,7 +1811,7 @@ snapshot with a given name, the other retrieves a named snapshot.
 <dd><a name="IDX613"></a>
 <a name="IDX614"></a>
 </dd>
-<dt> <code>C-x v s <var>name</var> <kbd>RET</kbd></code></dt>
+<dt> <code>C-x v s <var>name</var> &lt;RET&gt;</code></dt>
 <dd><p>Define the last saved versions of every registered file in or under the
 current directory as a snapshot named <var>name</var>
 (<code>vc-create-snapshot</code>).
@@ -1819,7 +1819,7 @@ current directory as a snapshot named <var>name</var>
 <a name="IDX615"></a>
 <a name="IDX616"></a>
 </dd>
-<dt> <code>C-x v r <var>name</var> <kbd>RET</kbd></code></dt>
+<dt> <code>C-x v r <var>name</var> &lt;RET&gt;</code></dt>
 <dd><p>Check out all registered files at or below the current directory level
 using whatever versions correspond to the snapshot <var>name</var>
 (<code>vc-retrieve-snapshot</code>).
@@ -2023,13 +2023,13 @@ directory listings in brief format (file names only) and verbose format
 file name which is either a  directory to be listed or pattern
 containing wildcards for the files to be listed.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/etc <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/etc &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>lists all the files in directory &lsquo;<tt>/u2/emacs/etc</tt>&rsquo;.  An example of
 specifying a file name pattern is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/src/*.c <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/src/*.c &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>  Normally, <kbd>C-x C-d</kbd> prints a brief directory listing containing just
@@ -2086,8 +2086,8 @@ the <code>diff</code> program, using options taken from the variable
 you can use <kbd>C-x `</kbd> to visit successive changed locations in the two
 source files.  You can also move to a particular hunk of changes and
 type <kbd>C-c C-c</kbd> to find the corresponding source location.  You can
-also use the other special commands of Compilation mode: <kbd>SPC</kbd> and
-<kbd>DEL</kbd> for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
+also use the other special commands of Compilation mode: &lt;SPC&gt; and
+&lt;DEL&gt; for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
 See section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
 </p>
 <a name="IDX626"></a>
@@ -2224,9 +2224,9 @@ buffers.  Some special purpose commands are also provided.  The keys
 the cursor at the beginning of the filename on the line, rather than
 at the beginning of the line.
 </p>
-<p>  For extra convenience, <kbd>SPC</kbd> and <kbd>n</kbd> in Dired are equivalent to
+<p>  For extra convenience, &lt;SPC&gt; and <kbd>n</kbd> in Dired are equivalent to
 <kbd>C-n</kbd>.  <kbd>p</kbd> is equivalent to <kbd>C-p</kbd>.  Moving by lines is done so
-often in Dired that it deserves to be easy to type.  <kbd>DEL</kbd> (move up and
+often in Dired that it deserves to be easy to type.  &lt;DEL&gt; (move up and
 unflag) is often useful simply for moving up.
 </p>
 <p>  The <kbd>g</kbd> command in Dired runs <code>revert-buffer</code> to reinitialize
@@ -2265,7 +2265,7 @@ them.
 <dt> <kbd>u</kbd></dt>
 <dd><p>Remove deletion-flag on this line.
 </p></dd>
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
 <dd><p>Remove deletion-flag on previous line, moving point to that line.
 </p></dd>
 <dt> <kbd>x</kbd></dt>
@@ -2293,8 +2293,8 @@ the next line, so that repeated <kbd>d</kbd> commands flag successive files.
 <p>  The files are flagged for deletion rather than deleted immediately to
 avoid the danger of deleting a file accidentally.  Until you direct Dired
 to delete the flagged files, you can remove deletion flags using the
-commands <kbd>u</kbd> and <kbd>DEL</kbd>.  <kbd>u</kbd> works just like <kbd>d</kbd>, but
-removes flags rather than making flags.  <kbd>DEL</kbd> moves upward, removing
+commands <kbd>u</kbd> and &lt;DEL&gt;.  <kbd>u</kbd> works just like <kbd>d</kbd>, but
+removes flags rather than making flags.  &lt;DEL&gt; moves upward, removing
 flags; it is like <kbd>u</kbd> with numeric argument automatically negated.
 </p>
 <p>  To delete the flagged files, type <kbd>x</kbd>.  This command first displays a
@@ -2455,8 +2455,8 @@ file systems, the file <var>old</var> is copied and deleted.
 <p>  <kbd>M-x view-file</kbd> allows you to scan or read a file by sequential
 screenfuls.  It reads a file name argument using the minibuffer.  After
 reading the file into an Emacs buffer, <code>view-file</code> reads and displays
-one windowful.  You can then type <kbd>SPC</kbd> to scroll forward one window,
-or <kbd>DEL</kbd> to scroll backward.  Various other commands are provided for
+one windowful.  You can then type &lt;SPC&gt; to scroll forward one window,
+or &lt;DEL&gt; to scroll backward.  Various other commands are provided for
 moving around in the file, but none for changing it; type <kbd>C-h</kbd> while
 viewing a file for a list of them.  Most commands are the default Emacs
 cursor motion commands.  To exit from viewing, type <kbd>C-c</kbd>.

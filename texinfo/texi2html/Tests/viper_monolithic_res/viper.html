@@ -346,8 +346,8 @@ e.g. <kbd>^Z</kbd> as <kbd>C-z</kbd> and <kbd>Meta-x</kbd> as <kbd>M-x</kbd>.  T
 usually located on each side of the Space bar; it is used in a manner
 similar to the Control key, e.g., <kbd>M-x</kbd> means typing <kbd>x</kbd> while
 holding the Meta key down.  For keyboards that do not have a Meta key,
-<kbd>ESC</kbd> is used as Meta.  Thus <kbd>M-x</kbd> is typed as <kbd><kbd>ESC</kbd>
-x</kbd>.  Viper uses <kbd>ESC</kbd> to switch from Insert state to Vi state.  Therefore
+&lt;ESC&gt; is used as Meta.  Thus <kbd>M-x</kbd> is typed as <kbd>&lt;ESC&gt;
+x</kbd>.  Viper uses &lt;ESC&gt; to switch from Insert state to Vi state.  Therefore
 Viper defines <kbd>C-\</kbd> as its Meta key in Vi state.  See section <a href="#SEC8">Vi State</a>, for
 more info.
 </p>
@@ -470,7 +470,7 @@ Emacs runs on a dumb terminal or in an Xterm window).
 &hellip;, will take you to Insert state.  All Vi commands may
 be used in this mode.  Most Ex commands can also be used.
 For a full list of Ex commands supported by Viper, type
-<kbd>:</kbd> and then <kbd>TAB</kbd>.  To get help on any issue, including the Ex
+<kbd>:</kbd> and then &lt;TAB&gt;.  To get help on any issue, including the Ex
 commands, type <kbd>:help</kbd>.  This will invoke Viper Info
 (if it is installed).  Then typing <kbd>i</kbd> will prompt you for a topic to
 search in the index.  Note: to search for Ex commands in the index, you
@@ -485,7 +485,7 @@ inserts them automatically in front of the Ex command.
 </p>
 </dd>
 <dt> &lsquo;<samp>Insert state</samp>&rsquo;</dt>
-<dd><p>Insert state is the Vi insertion mode.  <kbd>ESC</kbd> will take you back to
+<dd><p>Insert state is the Vi insertion mode.  &lt;ESC&gt; will take you back to
 Vi state.  Insert state editing can be done, including auto-indentation.  By
 default, Viper disables Emacs key bindings in Insert state.
 </p>
@@ -495,7 +495,7 @@ default, Viper disables Emacs key bindings in Insert state.
 boundary of a replacement region (usually designated via a &lsquo;<samp>$</samp>&rsquo; sign),
 it will automatically change to Insert state.  You do not have to worry
 about it.  The key bindings remain practically the same as in Insert
-state.  If you type <kbd>ESC</kbd>, Viper will switch to Vi command mode, terminating the
+state.  If you type &lt;ESC&gt;, Viper will switch to Vi command mode, terminating the
 replacement state.
 </p></dd>
 </dl>
@@ -658,15 +658,15 @@ function instead.
 <dd><a name="IDX21"></a>
 <a name="IDX22"></a>
 
-<p>Viper uses <kbd>ESC</kbd> as a switch between Insert and Vi states.  Emacs uses
-<kbd>ESC</kbd> for Meta.  The Meta key is very important in Emacs since many
+<p>Viper uses &lt;ESC&gt; as a switch between Insert and Vi states.  Emacs uses
+&lt;ESC&gt; for Meta.  The Meta key is very important in Emacs since many
 functions are accessible only via that key as <kbd>M-x function-name</kbd>.
 Therefore, we need to simulate it somehow.  In Viper's Vi, Insert, and
 Replace states, the meta key is set to be <kbd>C-\</kbd>.  Thus, to get
 <kbd>M-x</kbd>, you should type <kbd>C-\ x</kbd> (if the keyboard has no Meta key,
 which is rare these days).
 This works both in the Vi command state and in the Insert and Replace
-states.  In Vi command state, you can also use <kbd>\ <kbd>ESC</kbd></kbd> as the
+states.  In Vi command state, you can also use <kbd>\ &lt;ESC&gt;</kbd> as the
 meta key.
 </p>
 <p>Note: Emacs binds <kbd>C-\</kbd> to a function that offers to change the
@@ -740,7 +740,7 @@ the invisible files (i.e., those that are not currently seen in Emacs
 windows).
 </p>
 <p>When applicable, Ex commands support file completion and history.  This
-means that by typing a partial file name and then <kbd>TAB</kbd>, Emacs will try
+means that by typing a partial file name and then &lt;TAB&gt;, Emacs will try
 to complete the name or it will offer a menu of possible completions.
 This works similarly to Tcsh and extends the behavior of Csh.  While Emacs
 is waiting for a file name, you can type <kbd>M-p</kbd> to get the previous file
@@ -748,13 +748,13 @@ name you typed.  Repeatedly typing <kbd>M-p</kbd> and <kbd>M-n</kbd> will let yo
 browse through the file history.
 </p>
 <p>Like file names, partially typed Ex commands can be completed by typing
-<kbd>TAB</kbd>, and Viper keeps the history of Ex commands.  After typing
+&lt;TAB&gt;, and Viper keeps the history of Ex commands.  After typing
 <kbd>:</kbd>, you can browse through the previously entered Ex commands by
 typing <kbd>M-p</kbd> and <kbd>M-n</kbd>.  Viper tries to rationalize when it puts Ex
 commands on the history list.  For instance, if you typed <kbd>:w! foo</kbd>,
 only <kbd>:w!</kbd> will be placed on the history list.  This is because the
 last history element is the default that can be invoked simply by typing
-<kbd>: <kbd>RET</kbd></kbd>.  If <kbd>:w! foo</kbd> were placed on the list, it would be all to
+<kbd>: &lt;RET&gt;</kbd>.  If <kbd>:w! foo</kbd> were placed on the list, it would be all to
 easy to override valuable data in another file.  Reconstructing the full
 command, <kbd>:w! foo</kbd>, from the history is still not that hard, since Viper
 has a separate history for file names.  By typing <kbd>: M-p</kbd>, you will get
@@ -878,8 +878,8 @@ the Insert state.
 <kbd>cw</kbd>, etc., or by typing <kbd>R</kbd>.  In Replace state, Viper puts &lt;R&gt; in
 the mode line to let you know which state is in effect.  If Replace state is
 entered through <kbd>R</kbd>, Viper stays in that state until the user hits
-<kbd>ESC</kbd>.  If this state is entered via the other replacement commands,
-then Replace state is in effect until you hit <kbd>ESC</kbd> or until you cross
+&lt;ESC&gt;.  If this state is entered via the other replacement commands,
+then Replace state is in effect until you hit &lt;ESC&gt; or until you cross
 the rightmost boundary of the replacement region.  In the latter case, Viper
 changes its state from Replace to Insert (which you will notice by the
 change in the mode line).
@@ -892,7 +892,7 @@ replacement region.  (This may be necessary for several reasons, including
 the need to enable text selection and region-setting with the mouse.)
 </p>
 <p>The issue then arises as to what to do when the user
-hits the <kbd>ESC</kbd> key.  In Vi, this would cause the text between cursor and
+hits the &lt;ESC&gt; key.  In Vi, this would cause the text between cursor and
 the end of the replacement region to be deleted.  But what if, as is
 possible in Viper, the cursor is not inside the replacement region?
 </p>
@@ -939,7 +939,7 @@ by commands from Insert state, namely:
 <dt> <kbd>C-v</kbd></dt>
 <dd><p>Quote the following character
 </p></dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>Execute command
 </p></dd>
 <dt> <kbd>C-g and C-]</kbd></dt>
@@ -1012,8 +1012,8 @@ textmarkers, e.g., <kbd>[a</kbd> to view marker &lsquo;<samp>a</samp>&rsquo; .
 last <kbd>!</kbd> command whichever file it was issued from.
 Typing <kbd>.</kbd> will repeat the last command from any file, and
 searches will repeat the last search.  Ex commands can be repeated by typing
-<kbd>: <kbd>RET</kbd></kbd>.
-Note: in some rare cases, that <kbd>: <kbd>RET</kbd></kbd> may do something dangerous.
+<kbd>: &lt;RET&gt;</kbd>.
+Note: in some rare cases, that <kbd>: &lt;RET&gt;</kbd> may do something dangerous.
 However, usually its effect can be undone by typing <kbd>u</kbd>.
 </p></dd>
 <dt> &lsquo;<samp>Registers</samp>&rsquo;</dt>
@@ -1043,7 +1043,7 @@ file name in any
 current directory).
 This directory is inserted in the Minibuffer once you type space after
 <kbd>:e, r</kbd>, etc.  Viper also supports completion of file names and Ex
-commands (<kbd>TAB</kbd>), and it keeps track of
+commands (&lt;TAB&gt;), and it keeps track of
 command and file history (<kbd>M-p</kbd>, <kbd>M-n</kbd>).
 Absolute filenames are required less
 often in Viper.
@@ -1327,8 +1327,8 @@ simply type Return to execute.
 <dt> <kbd>M-r and M-s</kbd></dt>
 <dd><p>To search backward and forward through the history.
 </p></dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
-<dd><p>Type <kbd>RET</kbd> to accept a default (which is displayed in the prompt).
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dd><p>Type &lt;RET&gt; to accept a default (which is displayed in the prompt).
 </p></dd>
 </dl>
 
@@ -1427,7 +1427,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 <h2 class="section"> 2.5 Completion </h2>
 
 
-<p>Completion is done when you type <kbd>TAB</kbd>.  The Emacs completer does not
+<p>Completion is done when you type &lt;TAB&gt;.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
 no longer work for that file name.  Remember that Emacs interprets a file name
 of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
@@ -1547,7 +1547,7 @@ that completed the &lsquo;<samp>A</samp>&rsquo; to &lsquo;<samp>Abbreviations</s
 will search further back in the buffer, so that one could get
 &lsquo;<samp>Abbrevs</samp>&rsquo; by repeating the
 keystroke, which appears earlier in the text.  Emacs binds this to
-<kbd><kbd>ESC</kbd> /</kbd>, so you will have to find a key and bind the function
+<kbd>&lt;ESC&gt; /</kbd>, so you will have to find a key and bind the function
 <code>dabbrev-expand</code> to that key.
 Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 </p>
@@ -1574,7 +1574,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 
 
 <p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
-refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
+refusing to move beyond the line, &lt;ESC&gt; moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your &lsquo;<tt>.viper</tt>&rsquo;
 contains
 </p>
@@ -1670,15 +1670,15 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <p>These two keys invoke many important Emacs functions.  For example, if you
 hit <kbd>C-x</kbd> followed by <kbd>2</kbd>, then the current window will be split
 into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
-command from the current major mode.  <kbd>ESC</kbd> will do the same, if you
-configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> to nil
+command from the current major mode.  &lt;ESC&gt; will do the same, if you
+configure &lt;ESC&gt; as Meta by setting <code>viper-no-multiple-ESC</code> to nil
 in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
 <dt> <kbd>\</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Escape to Emacs to execute a single Emacs command.  For instance,
-<kbd>\ <kbd>ESC</kbd></kbd> will act like a Meta key.
+<kbd>\ &lt;ESC&gt;</kbd> will act like a Meta key.
 </p></dd>
 <dt> <kbd>Q</kbd></dt>
 <dd><a name="IDX65"></a>
@@ -2067,25 +2067,25 @@ values.  The corresponding :se command is also indicated.  (The symbols
 <code>t</code> and <code>nil</code> represent &ldquo;true&rdquo; and &ldquo;false&rdquo; in Lisp).
 </p>
 <p>Viper supports both the abbreviated Vi variable names and their full
-names.  Variable completion is done on full names only.  <kbd>TAB</kbd> and
-<kbd>SPC</kbd> complete
+names.  Variable completion is done on full names only.  &lt;TAB&gt; and
+&lt;SPC&gt; complete
 variable names.  Typing `=' will complete the name and then will prompt for
-a value, if applicable.  For instance, <kbd>:se au <kbd>SPC</kbd></kbd> will complete the
-command to <kbd>:set autoindent</kbd>; <kbd>:se ta <kbd>SPC</kbd></kbd> will complete the command
+a value, if applicable.  For instance, <kbd>:se au &lt;SPC&gt;</kbd> will complete the
+command to <kbd>:set autoindent</kbd>; <kbd>:se ta &lt;SPC&gt;</kbd> will complete the command
 and prompt further like this: <kbd>:set tabstop = </kbd>.
-However, typing <kbd>:se ts <kbd>SPC</kbd></kbd> will produce a &ldquo;No match&rdquo; message
+However, typing <kbd>:se ts &lt;SPC&gt;</kbd> will produce a &ldquo;No match&rdquo; message
 because <kbd>ts</kbd> is an abbreviation for <kbd>tabstop</kbd> and Viper supports
-completion on full names only.  However, you can still hit <kbd>RET</kbd>
+completion on full names only.  However, you can still hit &lt;RET&gt;
 or <kbd>=</kbd>, which will complete the command like this: <kbd>:set ts = </kbd> and
 Viper will be waiting for you to type a value for the tabstop variable.
-To get the full list of Vi variables, type <kbd>:se <kbd>SPC</kbd> <kbd>TAB</kbd></kbd>.
+To get the full list of Vi variables, type <kbd>:se &lt;SPC&gt; &lt;TAB&gt;</kbd>.
 </p>
 <dl compact="compact">
 <dt> <code>viper-auto-indent nil</code></dt>
 <dt> <code>:se ai (:se autoindent)</code></dt>
 <dt> <code>:se ai-g (:se autoindent-global)</code></dt>
 <dd><p>If <code>t</code>, enable auto indentation.
-by <kbd>RET</kbd>, <kbd>o</kbd> or <kbd>O</kbd> command.
+by &lt;RET&gt;, <kbd>o</kbd> or <kbd>O</kbd> command.
 </p>
 <p><code>viper-auto-indent</code> is a local variable.  To change the value globally, use
 <code>setq-default</code>.  It may be useful for certain major modes to have their
@@ -2098,7 +2098,7 @@ buffer only; <kbd>:se ai-g</kbd> does the same globally.
 </p></dd>
 <dt> <code>viper-electric-mode t</code></dt>
 <dd><p>If not <code>nil</code>, auto-indentation becomes electric, which means that
-<kbd>RET</kbd>, <kbd>O</kbd>, and <kbd>o</kbd> indent cursor according to the current
+&lt;RET&gt;, <kbd>O</kbd>, and <kbd>o</kbd> indent cursor according to the current
 major mode.  In the future, this variable may control additional electric
 features.
 </p>
@@ -2141,14 +2141,14 @@ buffer only; it has no effect on other buffers.
 for all buffers where the tab is not yet set locally,
 including the new buffers.
 </p>
-<p>Note that typing <kbd>TAB</kbd> normally
+<p>Note that typing &lt;TAB&gt; normally
 doesn't insert the tab, since this key is usually bound to
 a text-formatting function, <code>indent-for-tab-command</code> (which facilitates
 programming and document writing).  Instead, the tab is inserted via the
 command <code>viper-insert-tab</code>, which is bound to <kbd>S-tab</kbd> (shift + tab).
 </p>
-<p>On some non-windowing terminals, Shift doesn't modify the <kbd>TAB</kbd> key, so
-<kbd>S-tab</kbd> behaves as if it were <kbd>TAB</kbd>.  In such a case, you will have
+<p>On some non-windowing terminals, Shift doesn't modify the &lt;TAB&gt; key, so
+<kbd>S-tab</kbd> behaves as if it were &lt;TAB&gt;.  In such a case, you will have
 to bind <code>viper-insert-tab</code> to some other convenient key.
 </p>
 </dd>
@@ -2181,18 +2181,18 @@ insert mode when you type text in the Minibuffer; if <code>nil</code>, typing in
 the Minibuffer feels like plain Emacs.
 </p></dd>
 <dt> <code>viper-no-multiple-ESC t</code></dt>
-<dd><p>If you set this to <code>nil</code>, you can use <kbd>ESC</kbd> as Meta in Vi state.
+<dd><p>If you set this to <code>nil</code>, you can use &lt;ESC&gt; as Meta in Vi state.
 Normally, this is not necessary, since graphical displays have separate
 Meta keys (usually on each side of the space bar).  On a dumb terminal, Viper
 sets this variable to <code>twice</code>, which is almost like <code>nil</code>, except
-that double <kbd>ESC</kbd> beeps.  This, too, lets <kbd>ESC</kbd> to be used as a Meta.
+that double &lt;ESC&gt; beeps.  This, too, lets &lt;ESC&gt; to be used as a Meta.
 </p></dd>
 <dt> <code>viper-ESC-keyseq-timeout 200 on tty, 0 on windowing display</code></dt>
 <dd><p>Escape key sequences separated by this much delay (in milliseconds) are
-interpreted as command, ignoring the special meaning of <kbd>ESC</kbd> in
+interpreted as command, ignoring the special meaning of &lt;ESC&gt; in
 VI.  The default is suitable for most terminals.  However, if your terminal
 is extremely slow, you might want to increase this slightly.  You will know
-if your terminal is slow if the <kbd>ESC</kbd> key sequences emitted by the
+if your terminal is slow if the &lt;ESC&gt; key sequences emitted by the
 arrow keys are interpreted as separately typed characters (and thus the
 arrow keys won't work).  Making this value too large will slow you down, so
 exercise restraint.
@@ -2225,8 +2225,8 @@ lines, etc.  See section <a href="#SEC22">Movement and Markers</a>, for more inf
 </p></dd>
 <dt> <code>viper-ex-style-editing t</code></dt>
 <dd><p>Set this to <code>nil</code>, if you want
-<kbd>C-h</kbd> and <kbd>DEL</kbd> to not stop
-at the beginning of a line in Insert state, <kbd>X</kbd> and <kbd>x</kbd> to delete
+<kbd>C-h</kbd> and &lt;DEL&gt; to not stop
+at the beginning of a line in Insert state, &lt;X&gt; and &lt;x&gt; to delete
 characters across lines in Vi command state, etc.
 </p></dd>
 <dt> <code>viper-ESC-moves-cursor-back t</code></dt>
@@ -2315,7 +2315,7 @@ then point will be moved to the place where the change took place.
 Set it to <code>t</code> and see if you like it better.
 </p></dd>
 <dt> <code>viper-delete-backwards-in-replace nil</code></dt>
-<dd><p>If not <code>nil</code>, <kbd>DEL</kbd> key will delete characters while moving the cursor
+<dd><p>If not <code>nil</code>, &lt;DEL&gt; key will delete characters while moving the cursor
 backwards.  If <code>nil</code>, the cursor will move backwards without deleting
 anything.
 </p></dd>
@@ -2679,7 +2679,7 @@ are not inherited by Insert state.
 </p>
 <p>On rare occasions, local keys may be added by mistake.  Usually this is done
 indirectly, by invoking a major mode that adds local keys (e.g.,
-<code>shell-mode</code> redefines <kbd>RET</kbd>).  In such a case, exiting the wrong
+<code>shell-mode</code> redefines &lt;RET&gt;).  In such a case, exiting the wrong
 major mode won't rid you from unwanted local keys, since these keys are
 local to Viper state and the current buffer, not to the major mode.
 In such situations, the remedy is to type <kbd>M-x viper-zap-local-keys</kbd>.
@@ -2733,33 +2733,33 @@ usually causes no problems because most packages designed for editing files
 typically do not bind such keys.  Instead, they use key sequences that start
 with <kbd>C-x</kbd> and <kbd>C-c</kbd>.  This is why it was so important for us to
 free up <kbd>C-x</kbd> and <kbd>C-c</kbd>.
-It is common for language-specific major modes to bind <kbd>TAB</kbd> and
+It is common for language-specific major modes to bind &lt;TAB&gt; and
 <kbd>C-j</kbd> (the line feed) keys to various formatting functions.  This is
 extremely useful, but may require some getting used to for a Vi user.  If you
 decide that this feature is not for you, you can re-bind these keys as
 explained earlier (see section <a href="#SEC25">Customization</a>).
 </p>
-<p>Binding for <kbd>TAB</kbd> is one of the most unusual aspects of Viper for many
-novice users.  In Emacs, <kbd>TAB</kbd> is used to format text and programs, and
-is extremely useful.  For instance, hitting <kbd>TAB</kbd> causes the current
+<p>Binding for &lt;TAB&gt; is one of the most unusual aspects of Viper for many
+novice users.  In Emacs, &lt;TAB&gt; is used to format text and programs, and
+is extremely useful.  For instance, hitting &lt;TAB&gt; causes the current
 line to be re-indented in accordance with the context.  In programming,
 this is very important, since improper automatic indentation would
 immediately alert the programmer to a possible error.  For instance, if a
 <kbd>)</kbd> or a <kbd>&quot;</kbd> is missing somewhere above the current
-line, <kbd>TAB</kbd> is likely to mis-indent the line.
+line, &lt;TAB&gt; is likely to mis-indent the line.
 </p>
 <p>For this reason, Viper doesn't change the standard Emacs binding of
-<kbd>TAB</kbd>, thereby sacrificing Vi compatibility
+&lt;TAB&gt;, thereby sacrificing Vi compatibility
 (except for users at level 1).  Instead, in Viper, the key
-<kbd>S-tab</kbd> (shift+ tab) is chosen to emulate Vi's <kbd>TAB</kbd>.
+<kbd>S-tab</kbd> (shift+ tab) is chosen to emulate Vi's &lt;TAB&gt;.
 </p>
 <p>We should note that on some non-windowing terminals, Shift doesn't modify
-the <kbd>TAB</kbd> key, so <kbd>S-tab</kbd> behaves as if it were <kbd>TAB</kbd>.  In such
+the &lt;TAB&gt; key, so <kbd>S-tab</kbd> behaves as if it were &lt;TAB&gt;.  In such
 a case, you will have to bind <code>viper-insert-tab</code> to some other
 convenient key.
 </p>
 <p>Some packages, notably Dired, Gnus, Info, etc., attach special meaning to
-common keys like <kbd>SPC</kbd>, <kbd>x</kbd>, <kbd>d</kbd>, <kbd>v</kbd>, and others.  This
+common keys like &lt;SPC&gt;, <kbd>x</kbd>, <kbd>d</kbd>, <kbd>v</kbd>, and others.  This
 means that Vi command state is inappropriate for working with these
 packages.  Fortunately, these modes operate on read-only buffers and are
 designed not for editing files, but for special-purpose browsing, reading
@@ -2941,7 +2941,7 @@ try these suffixes
 in the order listed and will check if the corresponding file exists.
 </p>
 <p>For instance, if completion stopped at `paper.' and the user typed
-<kbd>RET</kbd>,
+&lt;RET&gt;,
 then Viper will check if the files `paper.', `paper.tex', `paper.c', etc., exist.
 It will take the first such file.  If no file exists, Viper will give a chance
 to complete the file name by typing the appropriate suffix.  If `paper.' was
@@ -3037,7 +3037,7 @@ putting
 <p>in the &lsquo;<tt>~/.viper</tt>&rsquo; file or through the customization widget, as
 described above.  However, in that case, the user will not have any
 indication of the current Viper state in the minibuffer.  (This is important
-if the user accidentally switches to another Viper state by typing <kbd>ESC</kbd> or
+if the user accidentally switches to another Viper state by typing &lt;ESC&gt; or
 <kbd>C-z</kbd>).
 </p></dd>
 <dt> <code>M-x viper-go-away</code></dt>
@@ -3297,7 +3297,7 @@ being defined.  Third, macros can be bound to arbitrary sequences of keys,
 not just to printable keys.  For instance, one can define a macro that will
 be invoked by hitting <kbd>f3</kbd> then <kbd>f2</kbd> function keys.  (The keys
 <kbd>delete</kbd> and <kbd>backspace</kbd> are excluded; also, a macro invocation
-sequence can't start with <kbd>ESC</kbd>.  Some other keys, such as <kbd>f1</kbd> and
+sequence can't start with &lt;ESC&gt;.  Some other keys, such as <kbd>f1</kbd> and
 <kbd>help</kbd>, can't be bound to macros under Emacs, since they
 are bound in <code>key-translation-map</code>, which overrides any other binding
 the user gives to keys.  In general, keys that have a binding in
@@ -3346,7 +3346,7 @@ be escaped with a backslash.  Modified keys are represented as lists.  For
 instance, holding Meta and Control and pressing <kbd>f4</kbd> is represented as
 <kbd>(control meta f4)</kbd>.
 If all members of a vectors are printable characters (or sequences, such as
-<kbd>\e</kbd>, <kbd>\t</kbd>, for <kbd>ESC</kbd> and <kbd>TAB</kbd>), then they can also be represented as
+<kbd>\e</kbd>, <kbd>\t</kbd>, for &lt;ESC&gt; and &lt;TAB&gt;), then they can also be represented as
 strings:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-record-kbd-macro &quot;aa&quot; 'vi-state  &quot;aaa\e&quot;  &quot;my-buffer&quot;)
@@ -3417,7 +3417,7 @@ purposes, if you bind, say, a double-hitting action for that key to some
 other function.  Emacs doesn't allow the user to do that, but Viper does
 this through its keyboard macro facility.  To do this, type <kbd>:map </kbd>
 first.  When you are asked to enter a macro name, hit f13 twice, followed by
-<kbd>RET</kbd> or <kbd>SPC</kbd>.
+&lt;RET&gt; or &lt;SPC&gt;.
 </p>
 <p>Emacs will now start the mapping process by actually executing
 Vi and Emacs commands, so that you could see what will happen each time the
@@ -3471,7 +3471,7 @@ the actually keys to be used to invoke the macro.  For instance, you
 should hit the actual key <kbd>f6</kbd> if it is to be part of a macro
 name; you do <em>not</em> write <kbd>f 6</kbd>.  When entering keys, Viper
 displays them as strings or vectors (e.g., <code>&quot;abc&quot;</code> or <code>[f6
-f7 a]</code>).  The same holds for unmapping.  Hitting <kbd>TAB</kbd> while
+f7 a]</code>).  The same holds for unmapping.  Hitting &lt;TAB&gt; while
 typing a macro name in the <kbd>:unmap</kbd> or <kbd>:unmap!</kbd> command will
 cause name completion.  Completions are displayed as strings or
 vectors.  However, as before, you don't actually type &lsquo;<samp>&quot;</samp>&rsquo;,
@@ -5986,7 +5986,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><th><a name="SEC51_34">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX295"><code><kbd>e</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX294"><code><kbd>E</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SEC6"><code><kbd>ESC</kbd></code></a></td><td valign="top"><a href="#SEC6">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#SEC6"><code>&lt;ESC&gt;</code></a></td><td valign="top"><a href="#SEC6">1.3 States in Viper</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC51_35">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX303"><code><kbd>F&lt;char&gt;</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>

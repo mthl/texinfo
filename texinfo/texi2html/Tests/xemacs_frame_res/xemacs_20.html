@@ -177,7 +177,7 @@ supports various <em>input methods</em>, typically one for each script or
 language, to make it convenient to type them.
 </p>
 <a name="IDX700"></a>
-<p>  The prefix key <kbd>C-x <kbd>RET</kbd></kbd> is used for commands that pertain
+<p>  The prefix key <kbd>C-x &lt;RET&gt;</kbd> is used for commands that pertain
 to world scripts, coding systems, and input methods.
 </p>
 
@@ -237,7 +237,7 @@ corresponding language environment.
 <a name="IDX703"></a>
 <p>  To display information about the effects of a certain language
 environment <var>lang-env</var>, use the command <kbd>C-h L <var>lang-env</var>
-<kbd>RET</kbd></kbd> (<code>describe-language-environment</code>).  This tells you which
+&lt;RET&gt;</kbd> (<code>describe-language-environment</code>).  This tells you which
 languages this language environment is useful for, and lists the
 character sets, coding systems, and input methods that go with it.  It
 also shows some sample text to illustrate scripts used in this language
@@ -294,7 +294,7 @@ of the character (input methods <code>chinese-4corner</code> and
 corresponds to many different Chinese characters, you must select one of
 the alternatives using special XEmacs commands.  Keys such as <kbd>C-f</kbd>,
 <kbd>C-b</kbd>, <kbd>C-n</kbd>, <kbd>C-p</kbd>, and digits have special definitions in
-this situation, used for selecting among the alternatives.  <kbd>TAB</kbd>
+this situation, used for selecting among the alternatives.  &lt;TAB&gt;
 displays a buffer showing all the possibilities.
 </p>
 <p>   In Japanese input methods, first you input a whole word using
@@ -314,7 +314,7 @@ you want to enter them as separate characters?
 entering the separate letter and accent.  For example, <kbd>e ' '</kbd> gives
 you the two characters &lsquo;<samp>e'</samp>&rsquo;.  Another way is to type another letter
 after the <kbd>e</kbd>&mdash;something that won't combine with that&mdash;and
-immediately delete it.  For example, you could type <kbd>e e <kbd>DEL</kbd>
+immediately delete it.  For example, you could type <kbd>e e &lt;DEL&gt;
 '</kbd> to get separate &lsquo;<samp>e</samp>&rsquo; and &lsquo;<samp>'</samp>&rsquo;.
 </p>
 <p>  Another method, more general but not quite as easy to type, is to use
@@ -362,12 +362,12 @@ are in the minibuffer).
 <dd><p>Enable or disable use of the selected input method.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; C-\ <var>method</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Select a new input method for the current buffer.
 </p>
 </dd>
-<dt> <kbd>C-h I <var>method</var> <kbd>RET</kbd></kbd></dt>
-<dt> <kbd>C-h C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h I <var>method</var> &lt;RET&gt;</kbd></dt>
+<dt> <kbd>C-h C-\ <var>method</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX706"></a>
 <a name="IDX707"></a>
 <a name="IDX708"></a>
@@ -384,7 +384,7 @@ By default, it describes the current input method (if any).
 <a name="IDX710"></a>
 <a name="IDX711"></a>
 <p>  To choose an input method for the current buffer, use <kbd>C-x
-<kbd>RET</kbd> C-\</kbd> (<code>select-input-method</code>).  This command reads the
+&lt;RET&gt; C-\</kbd> (<code>select-input-method</code>).  This command reads the
 input method name with the minibuffer; the name normally starts with the
 language environment that it is meant to be used with.  The variable
 <code>current-input-method</code> records which input method is selected.
@@ -399,7 +399,7 @@ method temporarily.  To do this, type <kbd>C-\</kbd>
 </p>
 <p>  If you type <kbd>C-\</kbd> and you have not yet selected an input method,
 it prompts for you to specify one.  This has the same effect as using
-<kbd>C-x <kbd>RET</kbd> C-\</kbd> to specify an input method.
+<kbd>C-x &lt;RET&gt; C-\</kbd> to specify an input method.
 </p>
 <a name="IDX714"></a>
 <p>  Selecting a language environment specifies a default input method for
@@ -537,11 +537,11 @@ handles three different conventions for how to separate lines in a file:
 newline, carriage-return linefeed, and just carriage-return.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-h C <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Describe coding system <var>coding</var>.
 </p>
 </dd>
-<dt> <kbd>C-h C <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C &lt;RET&gt;</kbd></dt>
 <dd><p>Describe the coding systems currently in use.
 </p>
 </dd>
@@ -740,26 +740,26 @@ the buffer using <code>set-buffer-file-coding-system</code> (see section <a href
 system, you can use these commands to specify one:
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; f <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for the visited file
 in the current buffer.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; c <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Specify coding system <var>coding</var> for the immediately following
 command.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; k <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for keyboard input.  (This feature is
 non-functional and is temporarily disabled.)
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; t <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for terminal output.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;RET&gt; p <var>coding</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for subprocess input and output
 in the current buffer.
 </p></dd>
@@ -777,7 +777,7 @@ way the file is saved.
 <a name="IDX726"></a>
 <a name="IDX727"></a>
 <p>  Another way to specify the coding system for a file is when you visit
-the file.  First use the command <kbd>C-x <kbd>RET</kbd> c</kbd>
+the file.  First use the command <kbd>C-x &lt;RET&gt; c</kbd>
 (<code>universal-coding-system-argument</code>); this command uses the
 minibuffer to read a coding system name.  After you exit the minibuffer,
 the specified coding system is used for <em>the immediately following
@@ -809,7 +809,7 @@ environment.
 </p>
 <a name="IDX729"></a>
 <a name="IDX730"></a>
-<p>  The command <kbd>C-x <kbd>RET</kbd> t</kbd> (<code>set-terminal-coding-system</code>)
+<p>  The command <kbd>C-x &lt;RET&gt; t</kbd> (<code>set-terminal-coding-system</code>)
 specifies the coding system for terminal output.  If you specify a
 character code for terminal output, all characters output to the
 terminal are translated into that coding system.
@@ -822,7 +822,7 @@ terminals that support one of the ISO Latin character sets.
 </p>
 <a name="IDX731"></a>
 <a name="IDX732"></a>
-<p>  The command <kbd>C-x <kbd>RET</kbd> k</kbd> (<code>set-keyboard-coding-system</code>)
+<p>  The command <kbd>C-x &lt;RET&gt; k</kbd> (<code>set-keyboard-coding-system</code>)
 specifies the coding system for keyboard input.  Character-code
 translation of keyboard input is useful for terminals with keys that
 send non-ASCII graphic characters&mdash;for example, some terminals designed
@@ -842,7 +842,7 @@ non-graphic characters.
 </p>
 <a name="IDX733"></a>
 <a name="IDX734"></a>
-<p>  The command <kbd>C-x <kbd>RET</kbd> p</kbd> (<code>set-buffer-process-coding-system</code>)
+<p>  The command <kbd>C-x &lt;RET&gt; p</kbd> (<code>set-buffer-process-coding-system</code>)
 specifies the coding system for input and output to a subprocess.  This
 command applies to the current buffer; normally, each subprocess has its
 own buffer, and thus you can use this command to specify translation to

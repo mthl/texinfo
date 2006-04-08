@@ -91,7 +91,7 @@ current node is visible on the screen.
 with &ldquo;vi-like operation&rdquo;.
 </p>
 <dl compact="compact">
-<dt> <kbd>SPC</kbd> (<code>scroll-forward</code>)</dt>
+<dt> &lt;SPC&gt; (<code>scroll-forward</code>)</dt>
 <dd><a name="IDX65"></a>
 <a name="IDX66"></a>
 <p>Shift the text in this window up.  That is, show more of the node which
@@ -99,63 +99,63 @@ is currently below the bottom of the window.  With a numeric argument,
 show that many more lines at the bottom of the window; a numeric
 argument of 4 would shift all of the text in the window up 4 lines
 (discarding the top 4 lines), and show you four new lines at the bottom
-of the window.  Without a numeric argument, <kbd>SPC</kbd> takes the bottom
+of the window.  Without a numeric argument, &lt;SPC&gt; takes the bottom
 two lines of the window and places them at the top of the window,
 redisplaying almost a completely new screenful of lines.  If you are at
-the end of a node, <kbd>SPC</kbd> takes you to the &ldquo;next&rdquo; node, so that you can
-read an entire manual from start to finish by repeating <kbd>SPC</kbd>.
+the end of a node, &lt;SPC&gt; takes you to the &ldquo;next&rdquo; node, so that you can
+read an entire manual from start to finish by repeating &lt;SPC&gt;.
 </p>
 <p>The default scroll size is one screen-full, but it can be changed by
 invoking the (<code>scroll-forward-page-only-set-window</code>) command,
 &lsquo;<samp>z</samp>&rsquo; under &lsquo;<samp>--vi-keys</samp>&rsquo;, with a numeric argument.
 </p>
 </dd>
-<dt> <kbd>NEXT</kbd> (an arrow key) (<code>scroll-forward-page-only</code>)</dt>
-<dt> <kbd>C-v</kbd></dt>
-<dt> <kbd>C-f</kbd>, vi-like operation</dt>
-<dt> <kbd>f</kbd>, vi-like operation</dt>
-<dt> <kbd>M-SPC</kbd>, vi-like operation</dt>
+<dt> &lt;NEXT&gt; (an arrow key) (<code>scroll-forward-page-only</code>)</dt>
+<dt> &lt;C-v&gt;</dt>
+<dt> &lt;C-f&gt;, vi-like operation</dt>
+<dt> &lt;f&gt;, vi-like operation</dt>
+<dt> &lt;M-SPC&gt;, vi-like operation</dt>
 <dd><a name="IDX67"></a>
 <a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
 <a name="IDX71"></a>
 <a name="IDX72"></a>
-<p>Shift the text in this window up.  This is identical to the <kbd>SPC</kbd>
+<p>Shift the text in this window up.  This is identical to the &lt;SPC&gt;
 operation above, except that it never scrolls beyond the end of the
 current node.
 </p>
 <a name="IDX73"></a>
-<p>The <kbd>NEXT</kbd> key is known as the <kbd>PageDown</kbd> key on some
+<p>The &lt;NEXT&gt; key is known as the &lt;PageDown&gt; key on some
 keyboards.
 </p>
 </dd>
-<dt> <kbd>z</kbd> (<code>scroll-forward-page-only-set-window</code>, vi-like operation)</dt>
+<dt> &lt;z&gt; (<code>scroll-forward-page-only-set-window</code>, vi-like operation)</dt>
 <dd><a name="IDX74"></a>
 <a name="IDX75"></a>
-<p>Scroll forward, like with <kbd>NEXT</kbd>, but if a numeric argument is
+<p>Scroll forward, like with &lt;NEXT&gt;, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 <code>scroll-forward</code> and <code>scroll-backward</code> commands and their
 ilk.
 </p>
 </dd>
-<dt> <kbd>DEL</kbd> (<code>scroll-backward</code>)</dt>
+<dt> &lt;DEL&gt; (<code>scroll-backward</code>)</dt>
 <dd><a name="IDX76"></a>
 <a name="IDX77"></a>
 <p>Shift the text in this window down.  The inverse of
 <code>scroll-forward</code>.
-If you are at the start of a node, <kbd>DEL</kbd> takes you to the
+If you are at the start of a node, &lt;DEL&gt; takes you to the
 &ldquo;previous&rdquo; node, so that you can read an entire manual from finish to
-start by repeating <kbd>DEL</kbd>.  The default scroll size can be changed by
+start by repeating &lt;DEL&gt;.  The default scroll size can be changed by
 invoking the (<code>scroll-backward-page-only-set-window</code>) command,
 &lsquo;<samp>w</samp>&rsquo; under &lsquo;<samp>--vi-keys</samp>&rsquo;, with a numeric argument.
 </p>
 </dd>
-<dt> <kbd>PREVIOUS</kbd> (arrow key) (<code>scroll-backward-page-only</code>)</dt>
-<dt> <kbd>PRIOR</kbd> (arrow key)</dt>
-<dt> <kbd>M-v</kbd></dt>
-<dt> <kbd>b</kbd>, vi-like operation</dt>
-<dt> <kbd>C-b</kbd>, vi-like operation</dt>
+<dt> &lt;PREVIOUS&gt; (arrow key) (<code>scroll-backward-page-only</code>)</dt>
+<dt> &lt;PRIOR&gt; (arrow key)</dt>
+<dt> &lt;M-v&gt;</dt>
+<dt> &lt;b&gt;, vi-like operation</dt>
+<dt> &lt;C-b&gt;, vi-like operation</dt>
 <dd><a name="IDX78"></a>
 <a name="IDX79"></a>
 <a name="IDX80"></a>
@@ -168,19 +168,19 @@ the(<code>scroll-backward-page-only-set-window</code>) command, &lsquo;<samp>w</
 &lsquo;<samp>--vi-keys</samp>&rsquo;, with a numeric argument.
 </p>
 </dd>
-<dt> <kbd>w</kbd> (<code>scroll-backward-page-only-set-window</code>, vi-like operation)</dt>
+<dt> &lt;w&gt; (<code>scroll-backward-page-only-set-window</code>, vi-like operation)</dt>
 <dd><a name="IDX83"></a>
 <a name="IDX84"></a>
-<p>Scroll backward, like with <kbd>PREVIOUS</kbd>, but if a numeric argument is
+<p>Scroll backward, like with &lt;PREVIOUS&gt;, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 <code>scroll-forward</code> and <code>scroll-backward</code> commands.
 </p>
 </dd>
-<dt> <kbd>C-n</kbd> (<code>down-line</code>, vi-like operation)</dt>
-<dt> <kbd>C-e</kbd>, vi-like operation</dt>
-<dt> <kbd>RET</kbd>, vi-like operation</dt>
-<dt> <kbd>LFD</kbd>, vi-like operation</dt>
-<dt> <kbd>DOWN</kbd>, vi-like operation</dt>
+<dt> &lt;C-n&gt; (<code>down-line</code>, vi-like operation)</dt>
+<dt> &lt;C-e&gt;, vi-like operation</dt>
+<dt> &lt;RET&gt;, vi-like operation</dt>
+<dt> &lt;LFD&gt;, vi-like operation</dt>
+<dt> &lt;DOWN&gt;, vi-like operation</dt>
 <dd><a name="IDX85"></a>
 <a name="IDX86"></a>
 <a name="IDX87"></a>
@@ -191,12 +191,12 @@ specified, it becomes the default scroll size for subsequent
 that many lines.
 </p>
 </dd>
-<dt> <kbd>C-p</kbd> (<code>up-line</code>, vi-like operation)</dt>
-<dt> <kbd>UP</kbd>, vi-like operation</dt>
-<dt> <kbd>y</kbd>, vi-like operation</dt>
-<dt> <kbd>k</kbd>, vi-like operation</dt>
-<dt> <kbd>C-k</kbd>, vi-like operation</dt>
-<dt> <kbd>C-y</kbd>, vi-like operation</dt>
+<dt> &lt;C-p&gt; (<code>up-line</code>, vi-like operation)</dt>
+<dt> &lt;UP&gt;, vi-like operation</dt>
+<dt> &lt;y&gt;, vi-like operation</dt>
+<dt> &lt;k&gt;, vi-like operation</dt>
+<dt> &lt;C-k&gt;, vi-like operation</dt>
+<dt> &lt;C-y&gt;, vi-like operation</dt>
 <dd><a name="IDX91"></a>
 <a name="IDX92"></a>
 <a name="IDX93"></a>
@@ -208,8 +208,8 @@ that many lines.
 many lines.
 </p>
 </dd>
-<dt> <kbd>d</kbd> (<code>scroll-half-screen-down</code>, vi-like operation)</dt>
-<dt> <kbd>C-d</kbd>, vi-like operation</dt>
+<dt> &lt;d&gt; (<code>scroll-half-screen-down</code>, vi-like operation)</dt>
+<dt> &lt;C-d&gt;, vi-like operation</dt>
 <dd><a name="IDX98"></a>
 <a name="IDX99"></a>
 <a name="IDX100"></a>
@@ -219,8 +219,8 @@ default number of lines to scroll for subsequent &lsquo;<samp>d</samp>&rsquo; an
 commands.
 </p>
 </dd>
-<dt> <kbd>u</kbd> (<code>scroll-half-screen-up</code>, vi-like operation)</dt>
-<dt> <kbd>C-u</kbd>, vi-like operation</dt>
+<dt> &lt;u&gt; (<code>scroll-half-screen-up</code>, vi-like operation)</dt>
+<dt> &lt;C-u&gt;, vi-like operation</dt>
 <dd><a name="IDX101"></a>
 <a name="IDX102"></a>
 <a name="IDX103"></a>
@@ -234,7 +234,7 @@ commands.
 <a name="IDX104"></a>
 <p>The <code>scroll-forward</code> and <code>scroll-backward</code> commands can also
 move forward and backward through the node structure of the file.  If
-you press <kbd>SPC</kbd> while viewing the end of a node, or <kbd>DEL</kbd> while
+you press &lt;SPC&gt; while viewing the end of a node, or &lt;DEL&gt; while
 viewing the beginning of a node, what happens is controlled by the
 variable <code>scroll-behavior</code>.  See section <a href="info-stnd_11.html#SEC16"><code>scroll-behavior</code></a>, for more information.
 </p>
@@ -242,18 +242,18 @@ variable <code>scroll-behavior</code>.  See section <a href="info-stnd_11.html#S
 commands never scroll beyond the current node.
 </p>
 <a name="IDX105"></a>
-<p>The <kbd>PREVIOUS</kbd> key is the <kbd>PageUp</kbd> key on many keyboards.  Emacs
-refers to it by the name <kbd>PRIOR</kbd>.  When you use <kbd>PRIOR</kbd> or
-<kbd>PageUp</kbd> to scroll, Info never scrolls beyond the beginning of the
+<p>The &lt;PREVIOUS&gt; key is the &lt;PageUp&gt; key on many keyboards.  Emacs
+refers to it by the name &lt;PRIOR&gt;.  When you use &lt;PRIOR&gt; or
+&lt;PageUp&gt; to scroll, Info never scrolls beyond the beginning of the
 current node.
 </p>
 <a name="IDX106"></a>
-<p>If your keyboard lacks the <kbd>DEL</kbd> key, look for a key called
-<kbd>BS</kbd>, or &lsquo;<samp>BackSpace</samp>&rsquo;, sometimes designated with an arrow which
+<p>If your keyboard lacks the &lt;DEL&gt; key, look for a key called
+&lt;BS&gt;, or &lsquo;<samp>BackSpace</samp>&rsquo;, sometimes designated with an arrow which
 points to the left, which should perform the same function.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-l</kbd> (<code>redraw-display</code>)</dt>
+<dt> &lt;C-l&gt; (<code>redraw-display</code>)</dt>
 <dd><a name="IDX107"></a>
 <a name="IDX108"></a>
 <p>Redraw the display from scratch, or shift the line containing the cursor
@@ -263,7 +263,7 @@ argument of <var>n</var>, the line containing the cursor is shifted so that
 it is on the <var>n</var>th line of the window.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>w</kbd></kbd> (<code>toggle-wrap</code>)</dt>
+<dt> <kbd>C-x &lt;w&gt;</kbd> (<code>toggle-wrap</code>)</dt>
 <dd><a name="IDX109"></a>
 <a name="IDX110"></a>
 <p>Toggles the state of line wrapping in the current window.  Normally,

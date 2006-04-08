@@ -130,7 +130,7 @@ use TeX mode; for input to nroff, Nroff mode.
 
 <p>  You should use Text mode&mdash;rather than Fundamental or Lisp mode&mdash;to
 edit files of text in a human language.  Invoke <kbd>M-x text-mode</kbd> to
-enter Text mode.  In Text mode, <kbd>TAB</kbd> runs the function
+enter Text mode.  In Text mode, &lt;TAB&gt; runs the function
 <code>tab-to-tab-stop</code>, which allows you to use arbitrary tab stops set
 with <kbd>M-x edit-tab-stops</kbd> (see section <a href="xemacs_22.html#SEC194">Tab Stops</a>).  Features concerned
 with comments in programs are turned off unless they are explicitly invoked.
@@ -139,10 +139,10 @@ word, while apostrophes, backspaces and underlines are.
 </p>
 <a name="IDX760"></a>
 <p>  A similar variant mode is Indented Text mode, intended for editing
-text in which most lines are indented.  This mode defines <kbd>TAB</kbd> to
+text in which most lines are indented.  This mode defines &lt;TAB&gt; to
 run <code>indent-relative</code> (see section <a href="xemacs_22.html#SEC192">Indentation</a>), and makes Auto Fill
 indent the lines it creates.  As a result, a line made by Auto Filling,
-or by <kbd>LFD</kbd>, is normally indented just like the previous line.  Use
+or by &lt;LFD&gt;, is normally indented just like the previous line.  Use
 <kbd>M-x indented-text-mode</kbd> to select this mode.
 </p>
 <a name="IDX761"></a>
@@ -227,11 +227,11 @@ nroff commands) in the region (<code>count-text-lines</code>).
 <p>  The other feature of Nroff mode is Electric Nroff newline mode.  
 This is a minor mode that you can turn on or off with
 <kbd>M-x electric-nroff-mode</kbd> (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  When the mode is
-on and you use <kbd>RET</kbd> to end a line containing an nroff command
+on and you use &lt;RET&gt; to end a line containing an nroff command
 that opens a kind of grouping, Emacs automatically inserts the matching
 nroff command to close that grouping on the following line.  For
 example, if you are at the beginning of a line and type <kbd>.(b
-<kbd>RET</kbd></kbd>, the matching command &lsquo;<samp>.)b</samp>&rsquo; will be inserted on a new
+&lt;RET&gt;</kbd>, the matching command &lsquo;<samp>.)b</samp>&rsquo; will be inserted on a new
 line following point.
 </p>
 <a name="IDX769"></a>
@@ -342,7 +342,7 @@ text of the file.
 <dd><p>Insert, according to context, either &lsquo;<samp>``</samp>&rsquo; or &lsquo;<samp>&quot;</samp>&rsquo; or
 &lsquo;<samp>''</samp>&rsquo; (<code>TeX-insert-quote</code>).
 </p></dd>
-<dt> <kbd><kbd>LFD</kbd></kbd></dt>
+<dt> <kbd>&lt;LFD&gt;</kbd></dt>
 <dd><p>Insert a paragraph break (two newlines) and check the previous
 paragraph for unbalanced braces or dollar signs
 (<code>tex-terminate-<br>paragraph</code>).
@@ -394,7 +394,7 @@ past the close brace.
 <a name="IDX776"></a>
 <a name="IDX777"></a>
 <a name="IDX778"></a>
-<p>  There are two commands for checking the matching of braces.  <kbd>LFD</kbd>
+<p>  There are two commands for checking the matching of braces.  &lt;LFD&gt;
 (<code>tex-terminate-paragraph</code>) checks the paragraph before point, and
 inserts two newlines to start a new paragraph.  It prints a message in the
 echo area if any mismatch is found.  <kbd>M-x validate-tex-buffer</kbd> checks
@@ -879,7 +879,7 @@ the keys for them are all <kbd>Meta-</kbd> characters.
 <dt> <kbd>M-d</kbd></dt>
 <dd><p>Kill up to the end of a word (<code>kill-word</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>M-&lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to the beginning of a word (<code>backward-kill-word</code>).
 </p></dd>
 <dt> <kbd>M-@</kbd></dt>
@@ -893,8 +893,8 @@ or backward across other words (<code>transpose-words</code>).
 
 <p>  Notice how these keys form a series that parallels the
 character-based <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-d</kbd>, <kbd>C-t</kbd> and
-<kbd>DEL</kbd>.  <kbd>M-@</kbd> is related to <kbd>C-@</kbd>, which is an alias for
-<kbd>C-<kbd>SPC</kbd></kbd>.
+&lt;DEL&gt;.  <kbd>M-@</kbd> is related to <kbd>C-@</kbd>, which is an alias for
+<kbd>C-&lt;SPC&gt;</kbd>.
 </p>
 <a name="IDX823"></a>
 <a name="IDX824"></a>
@@ -917,16 +917,16 @@ move to.  Thus, if point is in the middle of a word, <kbd>Meta-d</kbd> kills
 just the part after point.  If some punctuation comes between point and the
 next word, it is killed along with the word.  (To kill only the
 next word but not the punctuation before it, simply type <kbd>Meta-f</kbd> to get
-to the end and kill the word backwards with <kbd>Meta-<kbd>DEL</kbd></kbd>.)
+to the end and kill the word backwards with <kbd>Meta-&lt;DEL&gt;</kbd>.)
 <kbd>Meta-d</kbd> takes arguments just like <kbd>Meta-f</kbd>.
 </p>
 <a name="IDX829"></a>
 <a name="IDX830"></a>
-<p>  <kbd>Meta-<kbd>DEL</kbd></kbd> (<code>backward-kill-word</code>) kills the word before
+<p>  <kbd>Meta-&lt;DEL&gt;</kbd> (<code>backward-kill-word</code>) kills the word before
 point.  It kills everything from point back to where <kbd>Meta-b</kbd> would
 move to.  If point is after the space in &lsquo;<samp>FOO, BAR</samp>&rsquo;, then
 &lsquo;<samp>FOO, </samp>&rsquo; is killed.   To kill just &lsquo;<samp>FOO</samp>&rsquo;, type
-<kbd>Meta-b Meta-d</kbd> instead of <kbd>Meta-<kbd>DEL</kbd></kbd>.
+<kbd>Meta-b Meta-d</kbd> instead of <kbd>Meta-&lt;DEL&gt;</kbd>.
 </p>
 <a name="IDX831"></a>
 <a name="IDX832"></a>
@@ -985,7 +985,7 @@ on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
 <dt> <kbd>M-k</kbd></dt>
 <dd><p>Kill forward to the end of the sentence (<code>kill-sentence</code>).
 </p></dd>
-<dt> <kbd>C-x <kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to the beginning of the sentence <br>(<code>backward-kill-sentence</code>).
 </p></dd>
 </dl>
@@ -1019,7 +1019,7 @@ the sentence edge at which it is stopping.
 sentence.  With minus one as an argument it kills back to the beginning
 of the sentence.  Larger arguments serve as repeat counts.
 </p>
-<p>  There is a special command, <kbd>C-x <kbd>DEL</kbd></kbd>
+<p>  There is a special command, <kbd>C-x &lt;DEL&gt;</kbd>
 (<code>backward-kill-sentence</code>), for killing back to the beginning of a
 sentence, which is useful when you change your mind in the middle of
 composing text.
@@ -1136,7 +1136,7 @@ pages.
 example, if a file is printed on a line printer, each &ldquo;page&rdquo; of the
 file starts on a new page of paper.  Emacs treats a page-separator
 character just like any other character.  It can be inserted with
-<kbd>C-q C-l</kbd> or deleted with <kbd>DEL</kbd>.  You are free to
+<kbd>C-q C-l</kbd> or deleted with &lt;DEL&gt;.  You are free to
 paginate your file or not.  However, since pages are often meaningful
 divisions of the file, commands are provided to move over them and
 operate on them.
@@ -1259,14 +1259,14 @@ you can use explicit commands for filling.
 
 <p>  <em>Auto Fill</em> mode is a minor mode in which lines are broken
 automatically when they become too wide.  Breaking happens only when
-you type a <kbd>SPC</kbd> or <kbd>RET</kbd>.
+you type a &lt;SPC&gt; or &lt;RET&gt;.
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x auto-fill-mode</kbd></dt>
 <dd><p>Enable or disable Auto Fill mode.
 </p></dd>
-<dt> <kbd><kbd>SPC</kbd></kbd></dt>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>In Auto Fill mode, break lines when appropriate.
 </p></dd>
 </dl>
@@ -1282,13 +1282,13 @@ See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.
 </p>
 <p>  In Auto Fill mode, lines are broken automatically at spaces when they get
 longer than desired.  Line breaking and rearrangement takes place
-only when you type <kbd>SPC</kbd> or <kbd>RET</kbd>.  To insert a space
-or newline without permitting line-breaking, type <kbd>C-q <kbd>SPC</kbd></kbd> or
-<kbd>C-q <kbd>LFD</kbd></kbd> (recall that a newline is really a linefeed).
+only when you type &lt;SPC&gt; or &lt;RET&gt;.  To insert a space
+or newline without permitting line-breaking, type <kbd>C-q &lt;SPC&gt;</kbd> or
+<kbd>C-q &lt;LFD&gt;</kbd> (recall that a newline is really a linefeed).
 <kbd>C-o</kbd> inserts a newline without line breaking.
 </p>
 <p>  Auto Fill mode works well with Lisp mode: when it makes a new line in
-Lisp mode, it indents that line with <kbd>TAB</kbd>.  If a line ending in a
+Lisp mode, it indents that line with &lt;TAB&gt;.  If a line ending in a
 Lisp comment gets too long, the text of the comment is split into two
 comment lines.  Optionally, new comment delimiters are inserted at the
 end of the first line and the beginning of the second, so that each line

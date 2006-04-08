@@ -264,8 +264,8 @@ simply type Return to execute.
 <dt> <kbd>M-r and M-s</kbd></dt>
 <dd><p>To search backward and forward through the history.
 </p></dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
-<dd><p>Type <kbd>RET</kbd> to accept a default (which is displayed in the prompt).
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dd><p>Type &lt;RET&gt; to accept a default (which is displayed in the prompt).
 </p></dd>
 </dl>
 
@@ -364,7 +364,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 <h2 class="section"> 2.5 Completion </h2>
 
 
-<p>Completion is done when you type <kbd>TAB</kbd>.  The Emacs completer does not
+<p>Completion is done when you type &lt;TAB&gt;.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
 no longer work for that file name.  Remember that Emacs interprets a file name
 of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
@@ -484,7 +484,7 @@ that completed the &lsquo;<samp>A</samp>&rsquo; to &lsquo;<samp>Abbreviations</s
 will search further back in the buffer, so that one could get
 &lsquo;<samp>Abbrevs</samp>&rsquo; by repeating the
 keystroke, which appears earlier in the text.  Emacs binds this to
-<kbd><kbd>ESC</kbd> /</kbd>, so you will have to find a key and bind the function
+<kbd>&lt;ESC&gt; /</kbd>, so you will have to find a key and bind the function
 <code>dabbrev-expand</code> to that key.
 Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 </p>
@@ -511,7 +511,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 
 
 <p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
-refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
+refusing to move beyond the line, &lt;ESC&gt; moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your &lsquo;<tt>.viper</tt>&rsquo;
 contains
 </p>
@@ -607,15 +607,15 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <p>These two keys invoke many important Emacs functions.  For example, if you
 hit <kbd>C-x</kbd> followed by <kbd>2</kbd>, then the current window will be split
 into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
-command from the current major mode.  <kbd>ESC</kbd> will do the same, if you
-configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> to nil
+command from the current major mode.  &lt;ESC&gt; will do the same, if you
+configure &lt;ESC&gt; as Meta by setting <code>viper-no-multiple-ESC</code> to nil
 in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
 <dt> <kbd>\</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Escape to Emacs to execute a single Emacs command.  For instance,
-<kbd>\ <kbd>ESC</kbd></kbd> will act like a Meta key.
+<kbd>\ &lt;ESC&gt;</kbd> will act like a Meta key.
 </p></dd>
 <dt> <kbd>Q</kbd></dt>
 <dd><a name="IDX65"></a>

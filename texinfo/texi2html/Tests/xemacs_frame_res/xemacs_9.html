@@ -78,13 +78,13 @@ that the argument is for.  The prompt normally ends with a colon.
 <a name="IDX211"></a>
 <p>  Sometimes a <em>default argument</em> appears in parentheses after the
 colon; it, too, is part of the prompt.  The default is used as the
-argument value if you enter an empty argument (e.g., by just typing <kbd>RET</kbd>).
+argument value if you enter an empty argument (e.g., by just typing &lt;RET&gt;).
 For example, commands that read buffer names always show a default, which
-is the name of the buffer that will be used if you type just <kbd>RET</kbd>.
+is the name of the buffer that will be used if you type just &lt;RET&gt;.
 </p>
 <a name="IDX212"></a>
 <p>  The simplest way to enter a minibuffer argument is to type the text
-you want, terminated by <kbd>RET</kbd> which exits the minibuffer.  You can
+you want, terminated by &lt;RET&gt; which exits the minibuffer.  You can
 cancel the command that wants the argument, and get out of the
 minibuffer, by typing <kbd>C-g</kbd>.
 </p>
@@ -161,7 +161,7 @@ specifies the file &lsquo;<tt>/u2/emacs/src/buffer.c</tt>&rsquo;.  To find files
 nearby directories, use <kbd>..</kbd>; thus, if you type
 <kbd>../lisp/simple.el</kbd>, you will get the file named
 &lsquo;<tt>/u2/emacs/lisp/simple.el</tt>&rsquo;.  Alternatively, you can kill with
-<kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
+<kbd>M-&lt;DEL&gt;</kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
 </p>
 <p>  If you don't want any of the default, you can kill it with <kbd>C-a
 C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
@@ -212,7 +212,7 @@ interpreted with respect to the same default directory.
 usual XEmacs commands are available for editing the text of an argument
 you are entering.
 </p>
-<p>  Since <kbd>RET</kbd> in the minibuffer is defined to exit the minibuffer,
+<p>  Since &lt;RET&gt; in the minibuffer is defined to exit the minibuffer,
 you can't use it to insert a newline in the minibuffer.  To do that,
 type <kbd>C-o</kbd> or <kbd>C-q C-j</kbd>.  (Recall that a newline is really the
 character control-J.)
@@ -290,8 +290,8 @@ the argument value.  Completion means that you type part of the
 argument, then XEmacs visibly fills in the rest, or as much as
 can be determined from the part you have typed.
 </p>
-<p>  When completion is available, certain keys&mdash;<kbd>TAB</kbd>, <kbd>RET</kbd>, and
-<kbd>SPC</kbd>&mdash;are rebound to complete the text present in the
+<p>  When completion is available, certain keys&mdash;&lt;TAB&gt;, &lt;RET&gt;, and
+&lt;SPC&gt;&mdash;are rebound to complete the text present in the
 minibuffer into a longer string that it stands for, by matching it
 against a set of <em>completion alternatives</em> provided by the command
 reading the argument.  <kbd>?</kbd> is defined to display a list of possible
@@ -303,8 +303,8 @@ complete against.  The completion keys match the text in the minibuffer
 against all the command names, find any additional name characters
 implied by the ones already present in the minibuffer, and add those
 characters to the ones you have given.  This is what makes it possible
-to type <kbd>M-x inse <kbd>SPC</kbd> b <kbd>RET</kbd></kbd> instead of <kbd>M-x
-insert-buffer <kbd>RET</kbd></kbd> (for example).
+to type <kbd>M-x inse &lt;SPC&gt; b &lt;RET&gt;</kbd> instead of <kbd>M-x
+insert-buffer &lt;RET&gt;</kbd> (for example).
 </p>
 <p>  Case is normally significant in completion because it is significant
 in most of the names that you can complete (buffer names, file names and
@@ -315,7 +315,7 @@ ignored for completion's sake if specified by program.
 <p>When a completion list is displayed, the completions will highlight as
 you move the mouse over them.  Clicking the middle mouse button on any 
 highlighted completion will &ldquo;select&rdquo; it just as if you had typed it in
-and hit <kbd>RET</kbd>.
+and hit &lt;RET&gt;.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC64">6.3.1 Completion Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -349,23 +349,23 @@ and hit <kbd>RET</kbd>.
 </tr></table>
 <h3 class="subsection"> 6.3.1 Completion Example </h3>
 
-<p>  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
-the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
+<p>  A concrete example may help here.  If you type <kbd>M-x au &lt;TAB&gt;</kbd>,
+the &lt;TAB&gt; looks for alternatives (in this case, command names) that
 start with &lsquo;<samp>au</samp>&rsquo;.  There are several, including
 <code>auto-fill-mode</code> and <code>auto-save-mode</code>&mdash;but they are all the
 same as far as <code>auto</code>, so the &lsquo;<samp>au</samp>&rsquo; in the minibuffer changes
 to &lsquo;<samp>auto</samp>&rsquo;.
 </p>
-<p>  If you type <kbd>TAB</kbd> again immediately, there are multiple
+<p>  If you type &lt;TAB&gt; again immediately, there are multiple
 possibilities for the very next character&mdash;it could be any of
-&lsquo;<samp>c-</samp>&rsquo;&mdash;so no more characters are added; instead, <kbd>TAB</kbd>
+&lsquo;<samp>c-</samp>&rsquo;&mdash;so no more characters are added; instead, &lt;TAB&gt;
 displays a list of all possible completions in another window.
 </p>
-<p>  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
+<p>  If you go on to type <kbd>-f &lt;TAB&gt;</kbd>, this &lt;TAB&gt; sees
 &lsquo;<samp>auto-f</samp>&rsquo;.  The only command name starting this way is
 <code>auto-fill-mode</code>, so completion fills in the rest of that.  You now
 have &lsquo;<samp>auto-fill-mode</samp>&rsquo; in the minibuffer after typing just <kbd>au
-<kbd>TAB</kbd> f <kbd>TAB</kbd></kbd>.  Note that <kbd>TAB</kbd> has this effect because in
+&lt;TAB&gt; f &lt;TAB&gt;</kbd>.  Note that &lt;TAB&gt; has this effect because in
 the minibuffer it is bound to the command <code>minibuffer-complete</code>
 when completion is available.
 </p>
@@ -394,15 +394,15 @@ when completion is available.
 when completion is available.
 </p>
 <dl compact="compact">
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Complete the text in the minibuffer as much as possible
 (<code>minibuffer-complete</code>).
 </p></dd>
-<dt> <kbd><kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
 <dd><p>Complete the minibuffer text, but don't go beyond one word
 (<code>minibuffer-complete-word</code>).
 </p></dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>Submit the text in the minibuffer as the argument, possibly completing
 first as described below (<code>minibuffer-complete-and-exit</code>).
 </p></dd>
@@ -410,11 +410,11 @@ first as described below (<code>minibuffer-complete-and-exit</code>).
 <dd><p>Print a list of all possible completions of the text in the minibuffer
 (<code>minibuffer-list-completions</code>).
 </p></dd>
-<dt> <kbd><kbd>button2</kbd></kbd></dt>
+<dt> <kbd>&lt;button2&gt;</kbd></dt>
 <dd><p>Select the highlighted text under the mouse as a minibuffer response.
 When the minibuffer is being used to prompt the user for a completion,
 any valid completions which are visible on the screen will be highlighted
-when the mouse moves over them.  Clicking <kbd>button2</kbd> will select the
+when the mouse moves over them.  Clicking &lt;button2&gt; will select the
 highlighted completion and exit the minibuffer.  
 (<code>minibuf-select-highlighted-completion</code>).
 </p></dd>
@@ -422,12 +422,12 @@ highlighted completion and exit the minibuffer.
 
 <a name="IDX220"></a>
 <a name="IDX221"></a>
-<p>  <kbd>SPC</kbd> completes much like <kbd>TAB</kbd>, but never goes beyond the
+<p>  &lt;SPC&gt; completes much like &lt;TAB&gt;, but never goes beyond the
 next hyphen or space.  If you have &lsquo;<samp>auto-f</samp>&rsquo; in the minibuffer and
-type <kbd>SPC</kbd>, it finds that the completion is &lsquo;<samp>auto-fill-mode</samp>&rsquo;,
+type &lt;SPC&gt;, it finds that the completion is &lsquo;<samp>auto-fill-mode</samp>&rsquo;,
 but it stops completing after &lsquo;<samp>fill-</samp>&rsquo;.  This gives
-&lsquo;<samp>auto-fill-</samp>&rsquo;.  Another <kbd>SPC</kbd> at this point completes all the
-way to &lsquo;<samp>auto-fill-mode</samp>&rsquo;.  <kbd>SPC</kbd> in the minibuffer when
+&lsquo;<samp>auto-fill-</samp>&rsquo;.  Another &lt;SPC&gt; at this point completes all the
+way to &lsquo;<samp>auto-fill-mode</samp>&rsquo;.  &lt;SPC&gt; in the minibuffer when
 completion is available runs the command
 <code>minibuffer-complete-word</code>.
 </p>
@@ -445,9 +445,9 @@ must click in the list of completions, not in the minibuffer itself.
 </p>
 <a name="IDX223"></a>
 </dd>
-<dt> <kbd><kbd>PRIOR</kbd></kbd></dt>
+<dt> <kbd>&lt;PRIOR&gt;</kbd></dt>
 <dt> <kbd>M-v</kbd></dt>
-<dd><p>Typing <kbd>PRIOR</kbd> or <kbd>M-v</kbd>, while in the minibuffer, selects the
+<dd><p>Typing &lt;PRIOR&gt; or <kbd>M-v</kbd>, while in the minibuffer, selects the
 window showing the completion list buffer
 (<code>switch-to-completions</code>).  This paves the way for using the
 commands below.  (Selecting that window in the usual ways has the same
@@ -455,26 +455,26 @@ effect, but this way is more convenient.)
 </p>
 <a name="IDX224"></a>
 </dd>
-<dt> <kbd><kbd>RET</kbd></kbd></dt>
-<dd><p>Typing <kbd>RET</kbd> <em>in the completion list buffer</em> chooses the
+<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dd><p>Typing &lt;RET&gt; <em>in the completion list buffer</em> chooses the
 completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
 the list of completions.
 </p>
 <a name="IDX225"></a>
 </dd>
-<dt> <kbd><kbd>RIGHT</kbd></kbd></dt>
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;RIGHT&gt;</kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dt> <kbd>C-f</kbd></dt>
-<dd><p>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
+<dd><p>Typing the right-arrow key &lt;RIGHT&gt;, &lt;TAB&gt; or <kbd>C-f</kbd> <em>in
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
 </p>
 <a name="IDX226"></a>
 </dd>
-<dt> <kbd><kbd>LEFT</kbd></kbd></dt>
+<dt> <kbd>&lt;LEFT&gt;</kbd></dt>
 <dt> <kbd>C-b</kbd></dt>
-<dd><p>Typing the left-arrow key <kbd>LEFT</kbd> or <kbd>C-b</kbd> <em>in the
+<dd><p>Typing the left-arrow key &lt;LEFT&gt; or <kbd>C-b</kbd> <em>in the
 completion list buffer</em> moves point toward the beginning of the buffer,
 to the previous completion (<code>previous-list-mode-item</code>).
 </p></dd>
@@ -501,7 +501,7 @@ to the previous completion (<code>previous-list-mode-item</code>).
 </tr></table>
 <h3 class="subsection"> 6.3.3 Strict Completion </h3>
 
-<p>  There are three different ways that <kbd>RET</kbd> can work in completing
+<p>  There are three different ways that &lt;RET&gt; can work in completing
 minibuffers, depending on how the argument will be used.
 </p>
 <ul>
@@ -510,15 +510,15 @@ minibuffers, depending on how the argument will be used.
 argument except one of the known alternatives.  For example, when
 <kbd>C-x k</kbd> reads the name of a buffer to kill, it is meaningless to
 give anything but the name of an existing buffer.  In strict
-completion, <kbd>RET</kbd> refuses to exit if the text in the minibuffer
+completion, &lt;RET&gt; refuses to exit if the text in the minibuffer
 does not complete to an exact match.
 
 </li><li>
 <em>Cautious</em> completion is similar to strict completion, except that
-<kbd>RET</kbd> exits only if the text was an exact match already, not
-needing completion.  If the text is not an exact match, <kbd>RET</kbd> does
+&lt;RET&gt; exits only if the text was an exact match already, not
+needing completion.  If the text is not an exact match, &lt;RET&gt; does
 not exit, but it does complete the text.  If it completes to an exact
-match, a second <kbd>RET</kbd> will exit.
+match, a second &lt;RET&gt; will exit.
 
 <p>Cautious completion is used for reading file names for files that must
 already exist.
@@ -528,7 +528,7 @@ already exist.
 meaningful, and the list of completion alternatives is just a guide.
 For example, when <kbd>C-x C-f</kbd> reads the name of a file to visit, any
 file name is allowed, in case you want to create a file.  In
-permissive completion, <kbd>RET</kbd> takes the text in the minibuffer
+permissive completion, &lt;RET&gt; takes the text in the minibuffer
 exactly as given, without completing it.
 </li></ul>
 
@@ -579,7 +579,7 @@ and you must type <kbd>?</kbd> to display the possible completions.
 <a name="IDX228"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is set to <code>t</code>,
 then in contexts where <code>completing-read</code> allows answers that are
-not valid completions, an extra <kbd>RET</kbd> must be typed to confirm the
+not valid completions, an extra &lt;RET&gt; must be typed to confirm the
 response.  This is helpful for catching typos.
 </p>
 <a name="IDX229"></a>
@@ -616,21 +616,21 @@ in the minibuffer.  They discard the old minibuffer contents, so you can
 think of them as moving through the history of previous arguments.
 </p>
 <dl compact="compact">
-<dt> <kbd><kbd>UP</kbd></kbd></dt>
+<dt> <kbd>&lt;UP&gt;</kbd></dt>
 <dt> <kbd>M-p</kbd></dt>
 <dd><p>Move to the next earlier argument string saved in the minibuffer history
 (<code>previous-history-element</code>).
 </p></dd>
-<dt> <kbd><kbd>DOWN</kbd></kbd></dt>
+<dt> <kbd>&lt;DOWN&gt;</kbd></dt>
 <dt> <kbd>M-n</kbd></dt>
 <dd><p>Move to the next later argument string saved in the minibuffer history
 (<code>next-history-element</code>).
 </p></dd>
-<dt> <kbd>M-r <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-r <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Move to an earlier saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>previous-matching-history-element</code>).
 </p></dd>
-<dt> <kbd>M-s <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-s <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Move to a later saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>next-matching-history-element</code>).
 </p></dd>
@@ -649,7 +649,7 @@ input.
 </p>
 <p>  The previous input that you fetch from the history entirely replaces
 the contents of the minibuffer.  To use it as the argument, exit the
-minibuffer as usual with <kbd>RET</kbd>.  You can also edit the text before
+minibuffer as usual with &lt;RET&gt;.  You can also edit the text before
 you reuse it; this does not change the history element that you
 &ldquo;moved&rdquo; to, but your new argument does go at the end of the history
 list in its own right.
@@ -715,33 +715,33 @@ the command name.
 </p>
 <a name="IDX238"></a>
 <dl compact="compact">
-<dt> <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd></dt>
+<dt> <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd></dt>
 <dd><p>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
 </p></dd>
 <dt> <kbd>M-p</kbd></dt>
-<dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to previous recorded command
+<dd><p>Within <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, move to previous recorded command
 (<code>previous-history-element</code>).
 </p></dd>
 <dt> <kbd>M-n</kbd></dt>
-<dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to the next (more recent)
+<dd><p>Within <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, move to the next (more recent)
 recorded command (<code>next-history-element</code>).
 </p></dd>
 <dt> <kbd>M-x list-command-history</kbd></dt>
 <dd><p>Display the entire command history, showing all the commands
-<kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> can repeat, most recent first.
+<kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> can repeat, most recent first.
 </p></dd>
 </dl>
 
 <a name="IDX239"></a>
 <a name="IDX240"></a>
-<p>  <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> is used to re-execute a recent
+<p>  <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> is used to re-execute a recent
 minibuffer-using command.  With no argument, it repeats the last such
 command.  A numeric argument specifies which command to repeat; one
 means the last one, and larger numbers specify earlier ones.
 </p>
-<p>  <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> works by turning the previous command
+<p>  <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> works by turning the previous command
 into a Lisp expression and then entering a minibuffer initialized with
-the text for that expression.  If you type just <kbd>RET</kbd>, the command
+the text for that expression.  If you type just &lt;RET&gt;, the command
 is repeated as before.  You can also change the command by editing the
 Lisp expression.  Whatever expression you finally submit is what will be
 executed.  The repeated command is added to the front of the command
@@ -756,17 +756,17 @@ you can be sure the command will repeat exactly as before.
 <a name="IDX242"></a>
 <a name="IDX243"></a>
 <a name="IDX244"></a>
-<p>  If you are in the minibuffer for <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> and the
+<p>  If you are in the minibuffer for <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> and the
 command shown to you is not the one you want to repeat, you can move
 around the list of previous commands using <kbd>M-n</kbd> and <kbd>M-p</kbd>.
 <kbd>M-p</kbd> replaces the contents of the minibuffer with the next earlier
 recorded command, and <kbd>M-n</kbd> replaces it with the next later command.
 After finding the desired previous command, you can edit its expression
-and then resubmit it by typing <kbd>RET</kbd>.  Any editing you have done on
+and then resubmit it by typing &lt;RET&gt;.  Any editing you have done on
 the command to be repeated is lost if you use <kbd>M-n</kbd> or <kbd>M-p</kbd>.
 </p>
-<p><kbd>M-n</kbd> and <kbd>M-p</kbd> are specially defined within <kbd>C-x <kbd>ESC</kbd>
-<kbd>ESC</kbd></kbd> to run the commands <code>previous-history-element</code> and
+<p><kbd>M-n</kbd> and <kbd>M-p</kbd> are specially defined within <kbd>C-x &lt;ESC&gt;
+&lt;ESC&gt;</kbd> to run the commands <code>previous-history-element</code> and
 <code>next-history-element</code>.
 </p>
 <a name="IDX245"></a>

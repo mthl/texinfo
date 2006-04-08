@@ -77,7 +77,7 @@ register.  To see what a register <var>r</var> contains, use <kbd>M-x
 view-register</kbd>.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x view-register <kbd>RET</kbd> <var>r</var></kbd></dt>
+<dt> <kbd>M-x view-register &lt;RET&gt; <var>r</var></kbd></dt>
 <dd><p>Display a description of what register <var>r</var> contains.
 </p></dd>
 </dl>
@@ -129,7 +129,7 @@ back there later.  Moving to a saved position switches to that buffer
 and moves point to that place in it.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r <kbd>SPC</kbd> <var>r</var></kbd></dt>
+<dt> <kbd>C-x r &lt;SPC&gt; <var>r</var></kbd></dt>
 <dd><p>Save position of point in register <var>r</var> (<code>point-to-register</code>).
 </p></dd>
 <dt> <kbd>C-x r j <var>r</var></kbd></dt>
@@ -140,7 +140,7 @@ and moves point to that place in it.
 <a name="IDX352"></a>
 <a name="IDX353"></a>
 <p>  To save the current position of point in a register, choose a name
-<var>r</var> and type <kbd>C-x r <kbd>SPC</kbd> <var>r</var></kbd>.  The register <var>r</var>
+<var>r</var> and type <kbd>C-x r &lt;SPC&gt; <var>r</var></kbd>.  The register <var>r</var>
 retains the position thus saved until you store something else in that
 register.
 </p>
@@ -287,7 +287,7 @@ restore the configuration later.
 <dd><p>Save the state of the selected frame's windows in register <var>r</var>
 (<code>window-configuration-to-register</code>).
 </p></dd>
-<dt> <kbd>M-x frame-configuration-to-register <kbd>RET</kbd> <var>r</var></kbd></dt>
+<dt> <kbd>M-x frame-configuration-to-register &lt;RET&gt; <var>r</var></kbd></dt>
 <dd><p>Save the state of all frames, including all their windows, in register
 <var>r</var> (<code>frame-configuration-to-register</code>).
 </p></dd>
@@ -414,16 +414,16 @@ various files.
 install that to use bookmark facility (see section <a href="xemacs_25.html#SEC262">Packages</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r m <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x r m &lt;RET&gt;</kbd></dt>
 <dd><p>Set the bookmark for the visited file, at point.
 </p>
 </dd>
-<dt> <kbd>C-x r m <var>bookmark</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x r m <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX367"></a>
 <p>Set the bookmark named <var>bookmark</var> at point (<code>bookmark-set</code>).
 </p>
 </dd>
-<dt> <kbd>C-x r b <var>bookmark</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x r b <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX368"></a>
 <p>Jump to the bookmark named <var>bookmark</var> (<code>bookmark-jump</code>).
 </p>
@@ -481,7 +481,7 @@ position.
 <p>  Here are some additional commands for working with bookmarks:
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x bookmark-load <kbd>RET</kbd> <var>filename</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x bookmark-load &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX378"></a>
 <p>Load a file named <var>filename</var> that contains a list of bookmark
 values.  You can use this command, as well as <code>bookmark-write</code>, to
@@ -489,23 +489,23 @@ work with other files of bookmark values in addition to your default
 bookmark file.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-write <kbd>RET</kbd> <var>filename</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x bookmark-write &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX379"></a>
 <p>Save all the current bookmark values in the file <var>filename</var>.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-delete <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x bookmark-delete &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX380"></a>
 <p>Delete the bookmark named <var>bookmark</var>.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-insert-location <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x bookmark-insert-location &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX381"></a>
 <p>Insert in the buffer the name of the file that bookmark <var>bookmark</var>
 points to.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-insert <kbd>RET</kbd> <var>bookmark</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x bookmark-insert &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="IDX382"></a>
 <p>Insert in the buffer the <em>contents</em> of the file that bookmark
 <var>bookmark</var> points to.

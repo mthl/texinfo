@@ -190,7 +190,7 @@ own mode line (see section <a href="#SEC11">The Mode Line</a>) and history of no
 window (see section <a href="info-stnd_5.html#SEC5"><code>history-node</code></a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x <kbd>o</kbd></kbd> (<code>next-window</code>)</dt>
+<dt> <kbd>C-x &lt;o&gt;</kbd> (<code>next-window</code>)</dt>
 <dd><a name="IDX217"></a>
 <a name="IDX218"></a>
 <a name="IDX219"></a>
@@ -209,7 +209,7 @@ the previous window on the screen.
 &lsquo;<samp>C-x o</samp>&rsquo; with a negative argument.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>2</kbd></kbd> (<code>split-window</code>)</dt>
+<dt> <kbd>C-x &lt;2&gt;</kbd> (<code>split-window</code>)</dt>
 <dd><a name="IDX221"></a>
 <a name="IDX222"></a>
 <a name="IDX223"></a>
@@ -221,7 +221,7 @@ automatically, please see section <a href="info-stnd_11.html#SEC16">automatic-ti
 information.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>0</kbd></kbd> (<code>delete-window</code>)</dt>
+<dt> <kbd>C-x &lt;0&gt;</kbd> (<code>delete-window</code>)</dt>
 <dd><a name="IDX224"></a>
 <a name="IDX225"></a>
 <a name="IDX226"></a>
@@ -230,13 +230,13 @@ windows and your screen appears cluttered, this is the way to get rid of
 some of them.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>1</kbd></kbd> (<code>keep-one-window</code>)</dt>
+<dt> <kbd>C-x &lt;1&gt;</kbd> (<code>keep-one-window</code>)</dt>
 <dd><a name="IDX227"></a>
 <a name="IDX228"></a>
 <p>Delete all of the windows excepting the current one.
 </p>
 </dd>
-<dt> <kbd>ESC <kbd>C-v</kbd></kbd> (<code>scroll-other-window</code>)</dt>
+<dt> <kbd>ESC &lt;C-v&gt;</kbd> (<code>scroll-other-window</code>)</dt>
 <dd><a name="IDX229"></a>
 <a name="IDX230"></a>
 <p>Scroll the other window, in the same fashion that &lsquo;<samp>C-v</samp>&rsquo; might
@@ -244,7 +244,7 @@ scroll the current window.  Given a negative argument, scroll the
 &quot;other&quot; window backward.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>^</kbd></kbd> (<code>grow-window</code>)</dt>
+<dt> <kbd>C-x &lt;^&gt;</kbd> (<code>grow-window</code>)</dt>
 <dd><a name="IDX231"></a>
 <a name="IDX232"></a>
 <p>Grow (or shrink) the current window.  Given a numeric argument, grow
@@ -252,7 +252,7 @@ the current window that many lines; with a negative numeric argument,
 shrink the window instead.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>t</kbd></kbd> (<code>tile-windows</code>)</dt>
+<dt> <kbd>C-x &lt;t&gt;</kbd> (<code>tile-windows</code>)</dt>
 <dd><a name="IDX233"></a>
 <a name="IDX234"></a>
 <a name="IDX235"></a>
@@ -295,9 +295,9 @@ table briefly lists the commands that are available while input is being
 read in the echo area:
 </p>
 <dl compact="compact">
-<dt> <kbd>C-f</kbd> (<code>echo-area-forward</code>)</dt>
-<dt> <kbd>RIGHT</kbd> (an arrow key)</dt>
-<dt> <kbd>M-h</kbd>, vi-like operation</dt>
+<dt> &lt;C-f&gt; (<code>echo-area-forward</code>)</dt>
+<dt> &lt;RIGHT&gt; (an arrow key)</dt>
+<dt> &lt;M-h&gt;, vi-like operation</dt>
 <dd><a name="IDX236"></a>
 <a name="IDX237"></a>
 <a name="IDX238"></a>
@@ -305,9 +305,9 @@ read in the echo area:
 <p>Move forward a character.
 </p>
 </dd>
-<dt> <kbd>C-b</kbd> (<code>echo-area-backward</code>)</dt>
-<dt> <kbd>LEFT</kbd> (an arrow key)</dt>
-<dt> <kbd>M-l</kbd>, vi-like operation</dt>
+<dt> &lt;C-b&gt; (<code>echo-area-backward</code>)</dt>
+<dt> &lt;LEFT&gt; (an arrow key)</dt>
+<dt> &lt;M-l&gt;, vi-like operation</dt>
 <dd><a name="IDX240"></a>
 <a name="IDX241"></a>
 <a name="IDX242"></a>
@@ -315,64 +315,64 @@ read in the echo area:
 <p>Move backward a character.
 </p>
 </dd>
-<dt> <kbd>C-a</kbd> (<code>echo-area-beg-of-line</code>)</dt>
-<dt> <kbd>M-0</kbd>, vi-like operation</dt>
+<dt> &lt;C-a&gt; (<code>echo-area-beg-of-line</code>)</dt>
+<dt> &lt;M-0&gt;, vi-like operation</dt>
 <dd><a name="IDX244"></a>
 <a name="IDX245"></a>
 <a name="IDX246"></a>
 <p>Move to the start of the input line.
 </p>
 </dd>
-<dt> <kbd>C-e</kbd> (<code>echo-area-end-of-line</code>)</dt>
-<dt> <kbd>M-$</kbd>, vi-like operation</dt>
+<dt> &lt;C-e&gt; (<code>echo-area-end-of-line</code>)</dt>
+<dt> &lt;M-$&gt;, vi-like operation</dt>
 <dd><a name="IDX247"></a>
 <a name="IDX248"></a>
 <a name="IDX249"></a>
 <p>Move to the end of the input line.
 </p>
 </dd>
-<dt> <kbd>M-f</kbd> (<code>echo-area-forward-word</code>)</dt>
-<dt> <kbd>C-<kbd>RIGHT</kbd></kbd> (DOS/Windows only)</dt>
-<dt> <kbd>M-w</kbd>, vi-like operation</dt>
+<dt> &lt;M-f&gt; (<code>echo-area-forward-word</code>)</dt>
+<dt> &lt;C-&lt;RIGHT&gt;&gt; (DOS/Windows only)</dt>
+<dt> &lt;M-w&gt;, vi-like operation</dt>
 <dd><a name="IDX250"></a>
 <a name="IDX251"></a>
 <a name="IDX252"></a>
 <p>Move forward a word.
 </p>
 <a name="IDX253"></a>
-<p>On DOS/Windows, <kbd>C-<kbd>RIGHT</kbd></kbd> moves forward by words.
+<p>On DOS/Windows, <kbd>C-&lt;RIGHT&gt;</kbd> moves forward by words.
 </p>
 </dd>
-<dt> <kbd>M-b</kbd> (<code>echo-area-backward-word</code>)</dt>
-<dt> <kbd>C-<kbd>LEFT</kbd></kbd> (DOS/Windows only)</dt>
+<dt> &lt;M-b&gt; (<code>echo-area-backward-word</code>)</dt>
+<dt> &lt;C-&lt;LEFT&gt;&gt; (DOS/Windows only)</dt>
 <dd><a name="IDX254"></a>
 <a name="IDX255"></a>
 <p>Move backward a word.
 </p>
 <a name="IDX256"></a>
-<p>On DOS/Windows, <kbd>C-<kbd>LEFT</kbd></kbd> moves backward by words.
+<p>On DOS/Windows, <kbd>C-&lt;LEFT&gt;</kbd> moves backward by words.
 </p>
 </dd>
-<dt> <kbd>C-d</kbd> (<code>echo-area-delete</code>)</dt>
-<dt> <kbd>M-x</kbd>, vi-like operation</dt>
+<dt> &lt;C-d&gt; (<code>echo-area-delete</code>)</dt>
+<dt> &lt;M-x&gt;, vi-like operation</dt>
 <dd><a name="IDX257"></a>
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 <p>Delete the character under the cursor.
 </p>
 </dd>
-<dt> <kbd>DEL</kbd> (<code>echo-area-rubout</code>)</dt>
+<dt> &lt;DEL&gt; (<code>echo-area-rubout</code>)</dt>
 <dd><a name="IDX260"></a>
 <a name="IDX261"></a>
 <p>Delete the character behind the cursor.
 </p>
-<p>On some keyboards, this key is designated <kbd>BS</kbd>, for
-&lsquo;<samp>BackSpace</samp>&rsquo;.  Those keyboards will usually bind <kbd>DEL</kbd> in the
+<p>On some keyboards, this key is designated &lt;BS&gt;, for
+&lsquo;<samp>BackSpace</samp>&rsquo;.  Those keyboards will usually bind &lt;DEL&gt; in the
 echo area to <code>echo-area-delete</code>.
 </p>
 </dd>
-<dt> <kbd>C-g</kbd> (<code>echo-area-abort</code>)</dt>
-<dt> <kbd>C-u</kbd>, vi-like operation</dt>
+<dt> &lt;C-g&gt; (<code>echo-area-abort</code>)</dt>
+<dt> &lt;C-u&gt;, vi-like operation</dt>
 <dd><a name="IDX262"></a>
 <a name="IDX263"></a>
 <a name="IDX264"></a>
@@ -381,14 +381,14 @@ command discards the text of the input line which does not match any
 completion.  If the input line is empty, it aborts the calling function.
 </p>
 </dd>
-<dt> <kbd>RET</kbd> (<code>echo-area-newline</code>)</dt>
+<dt> &lt;RET&gt; (<code>echo-area-newline</code>)</dt>
 <dd><a name="IDX265"></a>
 <a name="IDX266"></a>
 <p>Accept (or forces completion of) the current input line.
 </p>
 </dd>
-<dt> <kbd>C-q</kbd> (<code>echo-area-quoted-insert</code>)</dt>
-<dt> <kbd>C-v</kbd>, vi-like operation</dt>
+<dt> &lt;C-q&gt; (<code>echo-area-quoted-insert</code>)</dt>
+<dt> &lt;C-v&gt;, vi-like operation</dt>
 <dd><a name="IDX267"></a>
 <a name="IDX268"></a>
 <a name="IDX269"></a>
@@ -405,8 +405,8 @@ bound to &lsquo;<samp>M-</samp>&rsquo; commands, are also inserted verbatim; thi
 for terminals which support Latin scripts.
 </p>
 </dd>
-<dt> <kbd>M-TAB</kbd> (<code>echo-area-tab-insert</code>)</dt>
-<dt> <kbd>Shift-<kbd>TAB</kbd></kbd> (on DOS/Windows only)</dt>
+<dt> &lt;M-TAB&gt; (<code>echo-area-tab-insert</code>)</dt>
+<dt> &lt;Shift-&lt;TAB&gt;&gt; (on DOS/Windows only)</dt>
 <dd><a name="IDX272"></a>
 <a name="IDX273"></a>
 <a name="IDX274"></a>
@@ -414,11 +414,11 @@ for terminals which support Latin scripts.
 </p>
 <a name="IDX275"></a>
 <a name="IDX276"></a>
-<p>On DOS/Windows only, the <kbd>Shift-<kbd>TAB</kbd></kbd> key is an alias for
-<kbd>M-<kbd>TAB</kbd></kbd>.  This key is sometimes called &lsquo;<samp>BackTab</samp>&rsquo;.
+<p>On DOS/Windows only, the <kbd>Shift-&lt;TAB&gt;</kbd> key is an alias for
+<kbd>M-&lt;TAB&gt;</kbd>.  This key is sometimes called &lsquo;<samp>BackTab</samp>&rsquo;.
 </p>
 </dd>
-<dt> <kbd>C-t</kbd> (<code>echo-area-transpose-chars</code>)</dt>
+<dt> &lt;C-t&gt; (<code>echo-area-transpose-chars</code>)</dt>
 <dd><a name="IDX277"></a>
 <a name="IDX278"></a>
 <p>Transpose the characters at the cursor.
@@ -430,45 +430,45 @@ text<a name="DOCF6" href="info-stnd_fot.html#FOOT6">(6)</a>.   For an in depth d
 yanking, see <a href="../emacs/Killing.html#Killing">(emacs)Killing</a> section `Killing and Deleting' in <cite>the GNU Emacs Manual</cite>
 </p>
 <dl compact="compact">
-<dt> <kbd>M-d</kbd> (<code>echo-area-kill-word</code>)</dt>
-<dt> <kbd>M-X</kbd>, vi-like operation</dt>
+<dt> &lt;M-d&gt; (<code>echo-area-kill-word</code>)</dt>
+<dt> &lt;M-X&gt;, vi-like operation</dt>
 <dd><a name="IDX279"></a>
 <a name="IDX280"></a>
 <a name="IDX281"></a>
 <p>Kill the word following the cursor.
 </p>
 </dd>
-<dt> <kbd>M-DEL</kbd> (<code>echo-area-backward-kill-word</code>)</dt>
-<dt> <kbd>M-<kbd>BS</kbd></kbd></dt>
+<dt> &lt;M-DEL&gt; (<code>echo-area-backward-kill-word</code>)</dt>
+<dt> &lt;M-&lt;BS&gt;&gt;</dt>
 <dd><a name="IDX282"></a>
 <a name="IDX283"></a>
 <p>Kill the word preceding the cursor.
 </p>
 <a name="IDX284"></a>
 <p>On some keyboards, the <code>Backspace</code> key is used instead of
-<code>DEL</code>, so <code>M-<kbd>Backspace</kbd></code> has the same effect as
-<code>M-<kbd>DEL</kbd></code>.
+<code>DEL</code>, so <code>M-&lt;Backspace&gt;</code> has the same effect as
+<code>M-&lt;DEL&gt;</code>.
 </p>
 </dd>
-<dt> <kbd>C-k</kbd> (<code>echo-area-kill-line</code>)</dt>
+<dt> &lt;C-k&gt; (<code>echo-area-kill-line</code>)</dt>
 <dd><a name="IDX285"></a>
 <a name="IDX286"></a>
 <p>Kill the text from the cursor to the end of the line.
 </p>
 </dd>
-<dt> <kbd>C-x <kbd>DEL</kbd></kbd> (<code>echo-area-backward-kill-line</code>)</dt>
+<dt> <kbd>C-x &lt;DEL&gt;</kbd> (<code>echo-area-backward-kill-line</code>)</dt>
 <dd><a name="IDX287"></a>
 <a name="IDX288"></a>
 <p>Kill the text from the cursor to the beginning of the line.
 </p>
 </dd>
-<dt> <kbd>C-y</kbd> (<code>echo-area-yank</code>)</dt>
+<dt> &lt;C-y&gt; (<code>echo-area-yank</code>)</dt>
 <dd><a name="IDX289"></a>
 <a name="IDX290"></a>
 <p>Yank back the contents of the last kill.
 </p>
 </dd>
-<dt> <kbd>M-y</kbd> (<code>echo-area-yank-pop</code>)</dt>
+<dt> &lt;M-y&gt; (<code>echo-area-yank-pop</code>)</dt>
 <dd><a name="IDX291"></a>
 <a name="IDX292"></a>
 <p>Yank back a previous kill, removing the last yanked text first.
@@ -488,15 +488,15 @@ is called <em>completion</em>.
 <p>The following commands are available when completing in the echo area:
 </p>
 <dl compact="compact">
-<dt> <kbd>TAB</kbd> (<code>echo-area-complete</code>)</dt>
-<dt> <kbd>SPC</kbd></dt>
+<dt> &lt;TAB&gt; (<code>echo-area-complete</code>)</dt>
+<dt> &lt;SPC&gt;</dt>
 <dd><a name="IDX294"></a>
 <a name="IDX295"></a>
 <a name="IDX296"></a>
 <p>Insert as much of a completion as is possible.
 </p>
 </dd>
-<dt> <kbd>?</kbd> (<code>echo-area-possible-completions</code>)</dt>
+<dt> &lt;?&gt; (<code>echo-area-possible-completions</code>)</dt>
 <dd><a name="IDX297"></a>
 <a name="IDX298"></a>
 <p>Display a window containing a list of the possible completions of what
@@ -517,15 +517,15 @@ foliate         food
 forget
 </pre></td></tr></table>
 
-<p>i.e., all of the choices which begin with &lsquo;<samp>f</samp>&rsquo;.  Pressing <kbd>SPC</kbd>
-or <kbd>TAB</kbd> would result in &lsquo;<samp>fo</samp>&rsquo; appearing in the echo area, since
+<p>i.e., all of the choices which begin with &lsquo;<samp>f</samp>&rsquo;.  Pressing &lt;SPC&gt;
+or &lt;TAB&gt; would result in &lsquo;<samp>fo</samp>&rsquo; appearing in the echo area, since
 all of the choices which begin with &lsquo;<samp>f</samp>&rsquo; continue with &lsquo;<samp>o</samp>&rsquo;.
 Now, typing &lsquo;<samp>l</samp>&rsquo; followed by &lsquo;<samp>TAB</samp>&rsquo; results in &lsquo;<samp>foliate</samp>&rsquo;
 appearing in the echo area, since that is the only choice which begins
 with &lsquo;<samp>fol</samp>&rsquo;.
 </p>
 </dd>
-<dt> <kbd>ESC C-v</kbd> (<code>echo-area-scroll-completions-window</code>)</dt>
+<dt> &lt;ESC C-v&gt; (<code>echo-area-scroll-completions-window</code>)</dt>
 <dd><a name="IDX299"></a>
 <a name="IDX300"></a>
 <p>Scroll the completions window, if that is visible, or the &quot;other&quot;

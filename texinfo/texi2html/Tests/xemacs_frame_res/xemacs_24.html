@@ -157,17 +157,17 @@ that someone decided to take the trouble to write.
 <p>  There are several variants of Lisp mode, which differ in the way they
 interface to Lisp execution.  See section <a href="xemacs_25.html#SEC253">Major Modes for Lisp</a>.
 </p>
-<p>  Each of the programming language modes defines the <kbd>TAB</kbd> key to run
+<p>  Each of the programming language modes defines the &lt;TAB&gt; key to run
 an indentation function that knows the indentation conventions of that
 language and updates the current line's indentation accordingly.  For
-example, in C mode <kbd>TAB</kbd> is bound to <code>c-indent-line</code>.  <kbd>LFD</kbd>
-is normally defined to do <kbd>RET</kbd> followed by <kbd>TAB</kbd>; thus it, too,
+example, in C mode &lt;TAB&gt; is bound to <code>c-indent-line</code>.  &lt;LFD&gt;
+is normally defined to do &lt;RET&gt; followed by &lt;TAB&gt;; thus it, too,
 indents in a mode-specific fashion.
 </p>
 <a name="IDX889"></a>
 <a name="IDX890"></a>
 <p>  In most programming languages, indentation is likely to vary from line to
-line.  So the major modes for those languages rebind <kbd>DEL</kbd> to treat a
+line.  So the major modes for those languages rebind &lt;DEL&gt; to treat a
 tab as if it were the equivalent number of spaces (using the command
 <code>backward-delete-char-untabify</code>).  This makes it possible to rub out
 indentation one column at a time without worrying whether it is made up of
@@ -512,43 +512,43 @@ all of the lines inside a single parenthetical grouping.
 <h3 class="subsection"> 21.4.1 Basic Program Indentation Commands </h3>
 
 <dl compact="compact">
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Adjust indentation of current line.
 </p></dd>
-<dt> <kbd><kbd>LFD</kbd></kbd></dt>
-<dd><p>Equivalent to <kbd>RET</kbd> followed by <kbd>TAB</kbd> (<code>newline-and-indent</code>).
+<dt> <kbd>&lt;LFD&gt;</kbd></dt>
+<dd><p>Equivalent to &lt;RET&gt; followed by &lt;TAB&gt; (<code>newline-and-indent</code>).
 </p></dd>
 </dl>
 
 <a name="IDX927"></a>
 <a name="IDX928"></a>
 <a name="IDX929"></a>
-<p>  The basic indentation command is <kbd>TAB</kbd>, which gives the current
+<p>  The basic indentation command is &lt;TAB&gt;, which gives the current
 line the correct indentation as determined from the previous lines.  The
-function that <kbd>TAB</kbd> runs depends on the major mode; it is
+function that &lt;TAB&gt; runs depends on the major mode; it is
 <code>lisp-indent-line</code> in Lisp mode, <code>c-indent-line</code> in C mode,
 etc.  These functions understand different syntaxes for different
-languages, but they all do about the same thing.  <kbd>TAB</kbd> in any
+languages, but they all do about the same thing.  &lt;TAB&gt; in any
 programming language major mode inserts or deletes whitespace at the
 beginning of the current line, independent of where point is in the
 line.  If point is inside the whitespace at the beginning of the line,
-<kbd>TAB</kbd> leaves it at the end of that whitespace; otherwise, <kbd>TAB</kbd>
+&lt;TAB&gt; leaves it at the end of that whitespace; otherwise, &lt;TAB&gt;
 leaves point fixed with respect to the characters around it.
 </p>
-<p>  Use <kbd>C-q <kbd>TAB</kbd></kbd> to insert a tab at point.
+<p>  Use <kbd>C-q &lt;TAB&gt;</kbd> to insert a tab at point.
 </p>
 <a name="IDX930"></a>
 <a name="IDX931"></a>
-<p>  When entering a large amount of new code, use <kbd>LFD</kbd>
-(<code>newline-and-indent</code>), which is equivalent to a <kbd>RET</kbd> followed
-by a <kbd>TAB</kbd>.  <kbd>LFD</kbd> creates a blank line, then gives it the
+<p>  When entering a large amount of new code, use &lt;LFD&gt;
+(<code>newline-and-indent</code>), which is equivalent to a &lt;RET&gt; followed
+by a &lt;TAB&gt;.  &lt;LFD&gt; creates a blank line, then gives it the
 appropriate indentation.
 </p>
-<p>  <kbd>TAB</kbd> indents the second and following lines of the body of a
+<p>  &lt;TAB&gt; indents the second and following lines of the body of a
 parenthetical grouping each under the preceding one; therefore, if you
 alter one line's indentation to be nonstandard, the lines below tend
 to follow it.  This is the right behavior in cases where the standard
-result of <kbd>TAB</kbd> does not look good.
+result of &lt;TAB&gt; does not look good.
 </p>
 <p>  Remember that Emacs assumes that an open-parenthesis, open-brace, or
 other opening delimiter at the left margin (including the indentation
@@ -588,7 +588,7 @@ structure.
 <dt> <kbd>C-M-q</kbd></dt>
 <dd><p>Re-indent all the lines within one list (<code>indent-sexp</code>).
 </p></dd>
-<dt> <kbd>C-u <kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>C-u &lt;TAB&gt;</kbd></dt>
 <dd><p>Shift an entire list rigidly sideways so that its first line
 is properly indented.
 </p></dd>
@@ -606,12 +606,12 @@ beginning of it and type <kbd>C-M-q</kbd>. This key is bound to
 bound to other suitable functions in other modes.  The indentation of
 the line the sexp starts on is not changed; therefore, only the relative
 indentation within the list, and not its position, is changed.  To
-correct the position as well, type a <kbd>TAB</kbd> before <kbd>C-M-q</kbd>.
+correct the position as well, type a &lt;TAB&gt; before <kbd>C-M-q</kbd>.
 </p>
 <a name="IDX935"></a>
 <p>  If the relative indentation within a list is correct but the
 indentation of its beginning is not, go to the line on which the list
-begins and type <kbd>C-u <kbd>TAB</kbd></kbd>.  When you give <kbd>TAB</kbd> a numeric
+begins and type <kbd>C-u &lt;TAB&gt;</kbd>.  When you give &lt;TAB&gt; a numeric
 argument, it moves all the lines in the group, starting on the current
 line, sideways the same amount that the current line moves.  The command
 does not move lines that start inside strings, or C
@@ -620,7 +620,7 @@ preprocessor lines when in C mode.
 <a name="IDX936"></a>
 <a name="IDX937"></a>
 <p>  Another way to specify a range to be re-indented is with point and
-mark.  The command <kbd>C-M-\</kbd> (<code>indent-region</code>) applies <kbd>TAB</kbd>
+mark.  The command <kbd>C-M-\</kbd> (<code>indent-region</code>) applies &lt;TAB&gt;
 to every line whose first character is between point and mark.
 </p>
 <hr size="6">
@@ -748,11 +748,11 @@ before and after braces that you insert and after colons and semicolons.
 Correct C indentation is done on all the lines that are made this way.
 </p>
 <a name="IDX941"></a>
-<p>  If <code>c-tab-always-indent</code> is non-<code>nil</code>, the <kbd>TAB</kbd> command
+<p>  If <code>c-tab-always-indent</code> is non-<code>nil</code>, the &lt;TAB&gt; command
 in C mode does indentation only if point is at the left margin or within
 the line's indentation.  If there is non-whitespace to the left of point,
-<kbd>TAB</kbd> just inserts a tab character in the buffer.  Normally,
-this variable is <code>nil</code>, and <kbd>TAB</kbd> always reindents the current line.
+&lt;TAB&gt; just inserts a tab character in the buffer.  Normally,
+this variable is <code>nil</code>, and &lt;TAB&gt; always reindents the current line.
 </p>
 <p>  C does not have anything analogous to particular function names for which
 special forms of indentation are desirable.  However, it has a different
@@ -987,8 +987,8 @@ match.  The default is 4000.
 <dt> <kbd>C-u - C-x ;</kbd></dt>
 <dd><p>Kill comment on current line (<code>kill-comment</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>LFD</kbd></kbd></dt>
-<dd><p>Like <kbd>RET</kbd> followed by inserting and aligning a comment
+<dt> <kbd>M-&lt;LFD&gt;</kbd></dt>
+<dd><p>Like &lt;RET&gt; followed by inserting and aligning a comment
 (<code>indent-new-comment-line</code>).
 </p></dd>
 </dl>
@@ -1014,7 +1014,7 @@ comments in certain contexts.  For example, in Lisp code, comments which
 start with two semicolons are indented as if they were lines of code,
 instead of at the comment column.  Comments which start with three
 semicolons are supposed to start at the left margin.  Emacs understands
-these conventions by indenting a double-semicolon comment using <kbd>TAB</kbd>
+these conventions by indenting a double-semicolon comment using &lt;TAB&gt;
 and by not changing the indentation of a triple-semicolon comment at all.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">;; This function is just an example.
@@ -1065,12 +1065,12 @@ valid command which you could bind directly to a key if you wanted to.
 <h3 class="subsection"> 21.6.1 Multiple Lines of Comments </h3>
 
 <p>  If you are typing a comment and want to continue it on another line,
-use the command <kbd>Meta-<kbd>LFD</kbd></kbd> (<code>indent-new-comment-line</code>),
+use the command <kbd>Meta-&lt;LFD&gt;</kbd> (<code>indent-new-comment-line</code>),
 which terminates the comment you are typing, creates a new blank line
 afterward, and begins a new comment indented under the old one.  If
 Auto Fill mode is on and you go past the fill column while typing, the 
 comment is continued in just this fashion.  If point is
-not at the end of the line when you type <kbd>M-<kbd>LFD</kbd></kbd>, the text on
+not at the end of the line when you type <kbd>M-&lt;LFD&gt;</kbd>, the text on
 the rest of the line becomes part of the new comment line.
 </p>
 <hr size="6">
@@ -1125,12 +1125,12 @@ into the comment.  In C mode, <code>comment-start</code> has the value
 <code>&quot;/* &quot;</code> and <code>comment-end</code> has the value <code>&quot; */&quot;</code>.
 </p>
 <a name="IDX955"></a>
-<p>  <code>comment-multi-line</code> controls how <kbd>M-<kbd>LFD</kbd></kbd>
+<p>  <code>comment-multi-line</code> controls how <kbd>M-&lt;LFD&gt;</kbd>
 (<code>indent-new-comment-line</code>) behaves when used inside a comment.  If
 <code>comment-multi-line</code> is <code>nil</code>, as it normally is, then
-<kbd>M-<kbd>LFD</kbd></kbd> terminates the comment on the starting line and starts
+<kbd>M-&lt;LFD&gt;</kbd> terminates the comment on the starting line and starts
 a new comment on the new following line.  If <code>comment-multi-line</code>
-is not <code>nil</code>, then <kbd>M-<kbd>LFD</kbd></kbd> sets up the new following line
+is not <code>nil</code>, then <kbd>M-&lt;LFD&gt;</kbd> sets up the new following line
 as part of the same comment that was found on the starting line.  This
 is done by not inserting a terminator on the old line and not inserting
 a starter on the new line.  In languages where multi-line comments are legal,
@@ -1191,7 +1191,7 @@ parenthesis.  Instead of typing <kbd>( F O O )</kbd>, you can type <kbd>M-( F O
 O</kbd>, which has the same effect except for leaving the cursor before the
 close parenthesis.  You can then type <kbd>M-)</kbd>, which moves past the
 close parenthesis, deletes any indentation preceding it (in this example
-there is none), and indents with <kbd>LFD</kbd> after it.
+there is none), and indents with &lt;LFD&gt; after it.
 </p>
 <hr size="6">
 <a name="Lisp-Completion"></a>
@@ -1219,7 +1219,7 @@ completion for Lisp symbol names, which is available in all buffers.
 </p>
 <a name="IDX961"></a>
 <a name="IDX962"></a>
-<p>  The command <kbd>M-<kbd>TAB</kbd></kbd> (<code>lisp-complete-symbol</code>) takes the
+<p>  The command <kbd>M-&lt;TAB&gt;</kbd> (<code>lisp-complete-symbol</code>) takes the
 partial Lisp symbol before point to be an abbreviation, and compares it
 against all non-trivial Lisp symbols currently known to Emacs.  Any
 additional characters that they all have in common are inserted at point.
@@ -1319,7 +1319,7 @@ the description of what you changed and how.  You must then save the
 change log file yourself.
 </p>
 <p>  The change log file is always visited in Indented Text mode, which means
-that <kbd>LFD</kbd> and auto-filling indent each new line like the previous
+that &lt;LFD&gt; and auto-filling indent each new line like the previous
 line.  This is convenient for entering the contents of an entry, which must
 be indented.  See section <a href="xemacs_23.html#SEC197">Text Mode</a>.
 </p>
@@ -1982,7 +1982,7 @@ moves point to the approximate character position, and starts searching
 ever-increasing distances away for the text that should appear at
 the beginning of the definition.
 </p>
-<p>  If an empty argument is given (by typing <kbd>RET</kbd>), the sexp in the
+<p>  If an empty argument is given (by typing &lt;RET&gt;), the sexp in the
 buffer before or around point is used as the name of the tag to find.
 See section <a href="#SEC217">Lists and Sexps</a>, for information on sexps.
 </p>
@@ -1994,7 +1994,7 @@ that the specified substring appears in.  To find other tags that match
 the substring, give <code>find-tag</code> a numeric argument, as in <kbd>C-u
 M-.</kbd>.  This does not read a tag name, but continues searching the tag
 table's text for another tag containing the same substring last used.
-If your keyboard has a real <kbd>META</kbd> key, <kbd>M-0 M-.</kbd> is an easier
+If your keyboard has a real &lt;META&gt; key, <kbd>M-0 M-.</kbd> is an easier
 alternative to <kbd>C-u M-.</kbd>.
 </p>
 <p>If the optional second argument <var>other-window</var> is non-<code>nil</code>, it uses
@@ -2071,11 +2071,11 @@ only to specify a sequence of files to search.  A related command is
 <kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x tags-search <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x tags-search &lt;RET&gt; <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search for <var>regexp</var> through the files in the selected tags
 table.
 </p></dd>
-<dt> <kbd>M-x tags-query-replace <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>replacement</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x tags-query-replace &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>replacement</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Perform a <code>query-replace-regexp</code> on each file in the selected tags table.
 </p></dd>
 <dt> <kbd>M-,</kbd></dt>
@@ -2358,10 +2358,10 @@ required for standard Fortran.
 <h4 class="subsubsection"> 21.12.2.1 Fortran Indentation Commands </h4>
 
 <dl compact="compact">
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Indent the current line (<code>fortran-indent-line</code>).
 </p></dd>
-<dt> <kbd>M-<kbd>LFD</kbd></kbd></dt>
+<dt> <kbd>M-&lt;LFD&gt;</kbd></dt>
 <dd><p>Break the current line and set up a continuation line.
 </p></dd>
 <dt> <kbd>C-M-q</kbd></dt>
@@ -2371,7 +2371,7 @@ required for standard Fortran.
 </dl>
 
 <a name="IDX999"></a>
-<p>  <kbd>TAB</kbd> is redefined by Fortran mode to reindent the current line for
+<p>  &lt;TAB&gt; is redefined by Fortran mode to reindent the current line for
 Fortran (<code>fortran-indent-line</code>).  Line numbers and continuation
 markers are indented to their required columns, and the body of the
 statement is independently indented, based on its nesting in the program.
@@ -2384,7 +2384,7 @@ subroutine) containing point.
 </p>
 <a name="IDX1002"></a>
 <a name="IDX1003"></a>
-<p>  The key <kbd>M-<kbd>LFD</kbd></kbd> is redefined as <code>fortran-split-line</code>, a
+<p>  The key <kbd>M-&lt;LFD&gt;</kbd> is redefined as <code>fortran-split-line</code>, a
 command to split a line in the appropriate fashion for Fortran.  In a
 non-comment line, the second half becomes a continuation line and is
 indented accordingly.  In a comment line, both halves become separate
@@ -2756,10 +2756,10 @@ Fortran abbrevs and what they stand for.
 defines these commands:
 </p>
 <dl compact="compact">
-<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p><code>tab-to-tab-stop</code>.
 </p></dd>
-<dt> <kbd><kbd>LFD</kbd></kbd></dt>
+<dt> <kbd>&lt;LFD&gt;</kbd></dt>
 <dd><p>Insert a newline and then indent using <code>tab-to-tab-stop</code>.
 </p></dd>
 <dt> <kbd>:</kbd></dt>

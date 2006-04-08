@@ -66,7 +66,7 @@ character, <kbd>C-h</kbd>.  <kbd>C-h</kbd> is a prefix key that is used only for
 documentation-printing commands.  The characters that you can type after
 <kbd>C-h</kbd> are called <em>help options</em>.  One help option is <kbd>C-h</kbd>;
 that is how you ask for help about using <kbd>C-h</kbd>.  To cancel, type
-<kbd>C-g</kbd>.  The function key <kbd>F1</kbd> is equivalent to <kbd>C-h</kbd>.
+<kbd>C-g</kbd>.  The function key &lt;F1&gt; is equivalent to <kbd>C-h</kbd>.
 </p>
 <a name="IDX250"></a>
 <a name="IDX251"></a>
@@ -83,7 +83,7 @@ with the string:
 Emacs still waits for you to type an option.  To cancel, type <kbd>C-g</kbd>.
 </p>
 <p>  Most help buffers use a special major mode, Help mode, which lets you
-scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
+scroll conveniently with &lt;SPC&gt; and &lt;DEL&gt; or &lt;BS&gt;.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC72">8.1 Help Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Brief list of all Help commands.
@@ -126,7 +126,7 @@ scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
 <p>  Here is a summary of the defined help commands.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-h a <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h a <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display a list of functions and variables whose names match <var>regexp</var>
 (<code>hyper-apropos</code>).
 </p></dd>
@@ -144,8 +144,8 @@ bindings (<code>describe-bindings</code>).
 (<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for `character'.  For more
 extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
 </p></dd>
-<dt> <kbd>C-h d <var>function</var> <kbd>RET</kbd></kbd></dt>
-<dt> <kbd>C-h f <var>function</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h d <var>function</var> &lt;RET&gt;</kbd></dt>
+<dt> <kbd>C-h f <var>function</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display documentation on the Lisp function named <var>function</var>
 (<code>describe-function</code>).  Since commands are Lisp functions,
 a command name may be used.
@@ -185,31 +185,31 @@ what they mean (<code>describe-syntax</code>).  See section <a href="xemacs_30.h
 <dt> <kbd>C-h t</kbd></dt>
 <dd><p>Enter the XEmacs interactive tutorial (<code>help-with-tutorial</code>).
 </p></dd>
-<dt> <kbd>C-h v <var>var</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h v <var>var</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display the documentation of the Lisp variable <var>var</var>
 (<code>describe-variable</code>).
 </p></dd>
-<dt> <kbd>C-h w <var>command</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h w <var>command</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Print which keys run the command named <var>command</var> (<code>where-is</code>).
 </p></dd>
-<dt> <kbd>C-h B <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h B &lt;RET&gt;</kbd></dt>
 <dd><p>Display info on how to deal with Beta versions of XEmacs
 (<code>describe-beta</code>).
 </p></dd>
-<dt> <kbd>C-h C <var>group</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C <var>group</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Select customization buffer for <var>group</var> (<code>customize</code>).
 </p></dd>
-<dt> <kbd>C-h F <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h F &lt;RET&gt;</kbd></dt>
 <dd><p>View the local copy of the XEmacs FAQ (<code>xemacs-local-faq</code>).
 </p></dd>
-<dt> <kbd>C-h C-i <var>file</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C-i <var>file</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Read Info file <var>file</var> with Info browser (<code>Info-query</code>).
 </p></dd>
-<dt> <kbd>C-h C-c <var>command</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C-c <var>command</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Look up an Emacs command <var>command</var> in the Emacs manual in the Info
 system (<code>Info-goto-emacs-command-node</code>).
 </p></dd>
-<dt> <kbd>C-h C-f <var>function</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C-f <var>function</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Look up an Emacs Lisp function <var>function</var> in the Elisp manual in the
 Info system (<code>Info-elisp-ref</code>).
 </p></dd>
@@ -283,7 +283,7 @@ documentation string in a window.  Since commands are Lisp functions,
 you can use the argument <var>function</var> to get the documentation of a
 command that you know by name.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-h f auto-fill-mode <kbd>RET</kbd>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-h f auto-fill-mode &lt;RET&gt;
 </pre></td></tr></table>
 
 <p>displays the documentation for <code>auto-fill-mode</code>. Using <kbd>C-h f</kbd>
@@ -296,7 +296,7 @@ an autoload function.
 <p>  <kbd>C-h f</kbd> is also useful for Lisp functions that you are planning to
 use in a Lisp program.  For example, if you have just written the
 expression <code>(make-vector len)</code> and want to make sure you are using
-<code>make-vector</code> properly, type <kbd>C-h f make-vector <kbd>RET</kbd></kbd>.
+<code>make-vector</code> properly, type <kbd>C-h f make-vector &lt;RET&gt;</kbd>.
 Because <kbd>C-h f</kbd> allows all function names, not just command names,
 you may find that some of your favorite abbreviations that work in
 <kbd>M-x</kbd> don't work in <kbd>C-h f</kbd>.  An abbreviation may be unique
@@ -304,7 +304,7 @@ among command names, yet fail to be unique when other function names are
 allowed.
 </p>
 <p>  The function name for <kbd>C-h f</kbd> to describe has a default which is
-used if you type <kbd>RET</kbd> leaving the minibuffer empty.  The default is
+used if you type &lt;RET&gt; leaving the minibuffer empty.  The default is
 the function called by the innermost Lisp expression in the buffer
 around point, <em>provided</em> that is a valid, defined Lisp function
 name.  For example, if point is located following the text
@@ -320,7 +320,7 @@ f</kbd> command, then go on editing.
 </p>
 <a name="IDX254"></a>
 <a name="IDX255"></a>
-<p>  <kbd>C-h w <var>command</var> <kbd>RET</kbd></kbd> (<code>where-is</code>) tells you what
+<p>  <kbd>C-h w <var>command</var> &lt;RET&gt;</kbd> (<code>where-is</code>) tells you what
 keys are bound to <var>command</var>.  It prints a list of the keys in the
 echo area. Alternatively, it informs you that a command is not bound to
 any keys, which implies that you must use <kbd>M-x</kbd> to call the
@@ -368,7 +368,7 @@ variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 
 <p>  A more sophisticated sort of question to ask is, &ldquo;What are the
 commands for working with files?&rdquo;  To ask this question, type <kbd>C-h
-a file <kbd>RET</kbd></kbd>, which displays a list of all command names that
+a file &lt;RET&gt;</kbd>, which displays a list of all command names that
 contain &lsquo;<samp>file</samp>&rsquo;, including <code>copy-file</code>, <code>find-file</code>, and
 so on.  With each command name appears a brief description of how to use
 the command, and what keys you can currently invoke it with.  For
@@ -381,7 +381,7 @@ prefix argument, it checks noninteractive functions as well.
 <p>  Because <kbd>C-h A</kbd> looks only for functions whose names contain the
 string you specify, you must use ingenuity in choosing the string.  If
 you are looking for commands for killing backwards and <kbd>C-h a
-kill-backwards <kbd>RET</kbd></kbd> doesn't reveal any, don't give up.  Try just
+kill-backwards &lt;RET&gt;</kbd> doesn't reveal any, don't give up.  Try just
 <kbd>kill</kbd>, or just <kbd>backwards</kbd>, or just <kbd>back</kbd>.  Be persistent.
 Pretend you are playing Adventure.  Also note that you can use a regular
 expression as the argument, for more flexibility (see section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>).
@@ -423,7 +423,7 @@ above all behave as if they had been given a prefix argument.
 </p>
 <p>  If you want more information about a function definition, variable or
 symbol property listed in the Apropos buffer, you can click on it with
-<kbd>Mouse-2</kbd> or move there and type <kbd>RET</kbd>.
+<kbd>Mouse-2</kbd> or move there and type &lt;RET&gt;.
 </p>
 <hr size="6">
 <a name="Library-Keywords"></a>
@@ -512,11 +512,11 @@ wp            word processing
 <p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>), plus a few special commands of their own.
 </p>
 <dl compact="compact">
-<dt> <kbd><kbd>SPC</kbd></kbd></dt>
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
 <dd><p>Scroll forward.
 </p></dd>
-<dt> <kbd><kbd>DEL</kbd></kbd></dt>
-<dt> <kbd><kbd>BS</kbd></kbd></dt>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
+<dt> <kbd>&lt;BS&gt;</kbd></dt>
 <dd><p>Scroll backward.
 </p></dd>
 </dl>
@@ -563,7 +563,7 @@ the file.
 <a name="IDX264"></a>
 <a name="IDX265"></a>
 <p>  There are two special help commands for accessing XEmacs documentation
-through Info.  <kbd>C-h C-f <var>function</var> <kbd>RET</kbd></kbd> enters Info and
+through Info.  <kbd>C-h C-f <var>function</var> &lt;RET&gt;</kbd> enters Info and
 goes straight to the documentation of the XEmacs function
 <var>function</var>.  <kbd>C-h C-k <var>key</var></kbd> enters Info and goes straight
 to the documentation of the key <var>key</var>.  These two keys run the
@@ -596,7 +596,7 @@ explanations of each character's syntax (see section <a href="xemacs_30.html#SEC
 <p>  You can get a similar list for a particular prefix key by typing
 <kbd>C-h</kbd> after the prefix key.  (There are a few prefix keys for which
 this does not work&mdash;those that provide their own bindings for
-<kbd>C-h</kbd>.  One of these is <kbd>ESC</kbd>, because <kbd><kbd>ESC</kbd> C-h</kbd> is
+<kbd>C-h</kbd>.  One of these is &lt;ESC&gt;, because <kbd>&lt;ESC&gt; C-h</kbd> is
 actually <kbd>C-M-h</kbd>, which marks a defun.)
 </p>
 <a name="IDX272"></a>
