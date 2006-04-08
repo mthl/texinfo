@@ -110,12 +110,12 @@ See section <a href="cvs_1.html#SEC5">Getting the source</a>.
 Create the new file inside your working copy of the directory.
 
 </li><li>
-Use <samp>`cvs add <var>filename</var>'</samp> to tell <small>CVS</small> that you
+Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify <samp>`-kb'</samp> (see section <a href="cvs_9.html#SEC80">Handling binary files</a>).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section <a href="cvs_9.html#SEC80">Handling binary files</a>).
 
 </li><li>
-Use <samp>`cvs commit <var>filename</var>'</samp> to actually check
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
 in the file into the repository.  Other developers
 cannot see the file until you perform this step.
 </li></ul>
@@ -124,8 +124,8 @@ cannot see the file until you perform this step.
 directory.
 </p>
 <p>Unlike most other commands, the <code>add</code> command is
-not recursive.  You cannot even type <samp>`cvs add
-foo/bar'</samp>!  Instead, you have to
+not recursive.  You cannot even type &lsquo;<samp>cvs add
+foo/bar</samp>&rsquo;!  Instead, you have to
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd foo
 $ cvs add bar
@@ -151,23 +151,23 @@ effect of the <code>remove</code>, unless a <code>commit</code>
 command intervened.  See section <a href="#SEC68">Removing files</a>, for an
 example.
 </p>
-<p>The <samp>`-k'</samp> option specifies the default way that
+<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
 this file will be checked out; for more information see
 <a href="cvs_12.html#SEC102">Substitution modes</a>.
 </p>
-<p>The <samp>`-m'</samp> option specifies a description for the
+<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
 it is enabled, see section <a href="cvs_18.html#SEC178">The history file</a>).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-<samp>`admin -t'</samp>.  See section <a href="cvs_16.html#SEC120">admin&mdash;Administration</a>.  If you omit the
-<samp>`-m <var>description</var>'</samp> flag, an empty string will
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section <a href="cvs_16.html#SEC120">admin&mdash;Administration</a>.  If you omit the
+&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
 
 <p>For example, the following commands add the file
-<tt>`backend.c'</tt> to the repository:
+&lsquo;<tt>backend.c</tt>&rsquo; to the repository:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs add backend.c
 $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
@@ -221,11 +221,11 @@ Remove the file from your working copy of the directory.
 You can for instance use <code>rm</code>.
 
 </li><li>
-Use <samp>`cvs remove <var>filename</var>'</samp> to tell <small>CVS</small> that
+Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
 you really want to delete the file.
 
 </li><li>
-Use <samp>`cvs commit <var>filename</var>'</samp> to actually
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
 perform the removal of the file from the repository.
 </li></ul>
 
@@ -234,7 +234,7 @@ records the fact that the file no longer exists.  It is
 possible for a file to exist on only some branches and
 not on others, or to re-add another file with the same
 name later.  <small>CVS</small> will correctly create or not create
-the file, based on the <samp>`-r'</samp> and <samp>`-D'</samp> options
+the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
 specified to <code>checkout</code> or <code>update</code>.
 </p>
 <a name="IDX131"></a>
@@ -265,7 +265,7 @@ cvs commit: Committing .
 </pre></td></tr></table>
 
 <p>As a convenience you can remove the file and <code>cvs
-remove</code> it in one step, by specifying the <samp>`-f'</samp>
+remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
 option.  For example, the above example could also be
 done like this:
 </p>
@@ -340,18 +340,18 @@ existed.
 <p>The way that you remove a directory is to remove all
 the files in it.  You don't remove the directory
 itself; there is no way to do that.
-Instead you specify the <samp>`-P'</samp> option to
+Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
 <code>cvs update</code> or <code>cvs checkout</code>,
 which will cause <small>CVS</small> to remove empty
 directories from working directories.
 (Note that <code>cvs export</code> always removes empty directories.)
 Probably the
-best way to do this is to always specify <samp>`-P'</samp>; if
+best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
 you want an empty directory then put a dummy file (for
-example <tt>`.keepme'</tt>) in it to prevent <samp>`-P'</samp> from
+example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
 removing it.
 </p>
-<p>Note that <samp>`-P'</samp> is implied by the <samp>`-r'</samp> or <samp>`-D'</samp>
+<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
 options of <code>checkout</code>.  This way
 <small>CVS</small> will be able to correctly create the directory
 or not depending on whether the particular version you
@@ -438,7 +438,7 @@ time of the rename.
 </p>
 <p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
-use the <samp>`-r rev'</samp> option to commit.  For more
+use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
 information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
 </p>
 <hr size="6">
@@ -545,7 +545,7 @@ revisions.
 <ul>
 <li>
 Checking out old revisions works correctly, as long as
-you use <samp>`-r<var>tag</var>'</samp> and not <samp>`-D<var>date</var>'</samp>
+you use &lsquo;<samp>-r<var>tag</var></samp>&rsquo; and not &lsquo;<samp>-D<var>date</var></samp>&rsquo;
 to retrieve the revisions.
 
 </li><li>
@@ -586,7 +586,7 @@ You cannot easily see the history of the file across the rename.
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-<a href="#SEC71">The Normal way to Rename</a>.  Then check out with the <samp>`-P'</samp>
+<a href="#SEC71">The Normal way to Rename</a>.  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
 option, as described in <a href="#SEC69">Removing directories</a>.
 </p>
 <p>If you really want to hack the repository to rename or

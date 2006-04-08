@@ -381,7 +381,7 @@ the same buffer.
 (<code>beginning-of-buffer</code>), start by setting the mark and saving the
 old mark on the mark ring.  This makes it easier for you to move back
 later.  Searches set the mark, unless they do not actually move point.
-When a command sets the mark, <samp>`Mark Set'</samp> is printed in the
+When a command sets the mark, &lsquo;<samp>Mark Set</samp>&rsquo; is printed in the
 echo area.
 </p>
 <a name="IDX304"></a>
@@ -396,7 +396,6 @@ ring.
 marker objects in the order most recent first.  This variable is local
 in every buffer.
 </p>
-
 <hr size="6">
 <a name="Mouse-Selection"></a>
 <a name="SEC85"></a>
@@ -611,7 +610,6 @@ the selected text is immediately inserted after being selected; and the
 selection is immediately disowned afterwards.
 </p>
 
-
 <hr size="6">
 <a name="Killing"></a>
 <a name="SEC87"></a>
@@ -641,7 +639,7 @@ text but do not save it; they are known as <em>delete</em> commands.  (This
 distinction is made only for erasing text in the buffer.)
 </p>
 <p>The commands' names and individual descriptions use the words
-<samp>`kill'</samp> and <samp>`delete'</samp> to indicate what they do.  If you perform
+&lsquo;<samp>kill</samp>&rsquo; and &lsquo;<samp>delete</samp>&rsquo; to indicate what they do.  If you perform
 a kill or delete command by mistake, use the <kbd>C-x u</kbd> (<code>undo</code>)
 command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a>). The delete commands include <kbd>C-d</kbd>
 (<code>delete-char</code>) and <kbd>DEL</kbd> (<code>delete-backward-char</code>), which
@@ -989,12 +987,12 @@ and here is the third.
 </pre></td></tr></table>
 
 <p>with point at the beginning of the second line.  If you type <kbd>C-k C-u 2
-M-<kbd>DEL</kbd> C-k</kbd>, the first <kbd>C-k</kbd> kills the text <samp>`line of sample
-text'</samp>, <kbd>C-u 2 M-<kbd>DEL</kbd></kbd> kills <samp>`the first'</samp> with the newline that
+M-<kbd>DEL</kbd> C-k</kbd>, the first <kbd>C-k</kbd> kills the text &lsquo;<samp>line of sample
+text</samp>&rsquo;, <kbd>C-u 2 M-<kbd>DEL</kbd></kbd> kills &lsquo;<samp>the first</samp>&rsquo; with the newline that
 followed it, and the second <kbd>C-k</kbd> kills the newline after the second
-line.  The result is that the buffer contains <samp>`This is and here is the
-third.'</samp> and a single kill entry contains <samp>`the first<kbd>RET</kbd>line of
-sample text<kbd>RET</kbd>'</samp>&mdash;all the killed text, in its original order.
+line.  The result is that the buffer contains &lsquo;<samp>This is and here is the
+third.</samp>&rsquo; and a single kill entry contains &lsquo;<samp>the first<kbd>RET</kbd>line of
+sample text<kbd>RET</kbd></samp>&rsquo;&mdash;all the killed text, in its original order.
 </p>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
@@ -1154,19 +1152,19 @@ One can transfer text from the <b>Primary</b> selection to the  <b>Clipboard</b>
 selection with the <b>Copy</b> command under the <b>Edit</b> menu in the menubar.
 </p>
 <p>Usually, the clipboard selection is not visible.  However, if you run the
-<tt>`xclipboard'</tt> application, the text most recently copied to the clipboard
+&lsquo;<tt>xclipboard</tt>&rsquo; application, the text most recently copied to the clipboard
 (with the <b>Copy</b> command) is displayed in a window.  Any time new text is
-thus copied, the <tt>`xclipboard'</tt> application makes a copy of it and displays
+thus copied, the &lsquo;<tt>xclipboard</tt>&rsquo; application makes a copy of it and displays
 it in its window.  The value of the clipboard can survive the lifetime of the
 running Emacs process.  The <code>xclipboard</code> man page provides more details.
 </p>
-<p>Warning: If you use the <tt>`xclipboard'</tt> application, remember that it
+<p>Warning: If you use the &lsquo;<tt>xclipboard</tt>&rsquo; application, remember that it
 maintains a list of all things that have been pasted to the clipboard (that
 is, copied with the <b>Copy</b> command).  If you don't manually delete elements
 from this list by clicking on the <b>Delete</b> button in the <code>xclipboard</code>
 window, the clipboard will eventually consume a lot of memory.
 </p>
-<p>In summary, some X applications (such as <tt>`xterm'</tt>) allow one to paste
+<p>In summary, some X applications (such as &lsquo;<tt>xterm</tt>&rsquo;) allow one to paste
 text in them from XEmacs in the following way:
 </p>
 <ul>
@@ -1601,7 +1599,6 @@ deleting it and then inserting a blank rectangle of the same size.
 <p>  Rectangles can also be copied into and out of registers.
 See section <a href="xemacs_13.html#SEC105">Rectangle Registers</a>.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

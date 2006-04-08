@@ -45,7 +45,6 @@ texi2html.texi(,49) @c Get the version of the script itself through
 texi2html.texi(,50) @c configure/autoconf etc.
 texi2html.texi(,51) @c version.texi is automatically generated through
 texi2html.texi(,52) @c configure/autoconf.
-./version.texi(,1) 
 texi2html.texi(,54) @c --------------------------------------------------------
 texi2html.texi(,55) @c Index for command line options
 texi2html.texi(,56) @defcodeindex op
@@ -214,7 +213,6 @@ texi2html.texi(,397) Take a look at optionexpand.
 texi2html.texi(,398) 
 texi2html.texi(,399) @c ========================================================
 texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
-./custpage.texi(,1) 
 ./custpage.texi(,1) @c
 ./custpage.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./custpage.texi(,3) @c which is part of the ``texi2html'' distribution.
@@ -385,7 +383,6 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,168) Page Foot @code{T2H_DEFAULT_print_page_foot}
 texi2html.texi(,402) @c ========================================================
 texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
-./custhtml.texi(,1) 
 ./custhtml.texi(,1) @c
 ./custhtml.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./custhtml.texi(,3) @c which is part of the ``texi2html'' distribution.
@@ -511,7 +508,6 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,123) @ref{CustPagePageHead}.
 ./custhtml.texi(,124) 
 ./custhtml.texi(,125) @example
-./custhtml-header.htmltexi(,1) 
 ./custhtml-header.htmltexi(,1) <HTML>
 ./custhtml-header.htmltexi(,2) $T2H_DOCTYPE
 ./custhtml-header.htmltexi(,3) <!-- Created on $T2H_TODAY by $THISPROG -->
@@ -538,7 +534,6 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,131) @section Head
 texi2html.texi(,405) @c ========================================================
 texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
-./initfile.texi(,1) 
 ./initfile.texi(,1) @c
 ./initfile.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./initfile.texi(,3) @c which is part of the ``texi2html'' distribution.
@@ -640,7 +635,6 @@ texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
 ./initfile.texi(,99) 
 texi2html.texi(,408) @c --------------------------------------------------------
 texi2html.texi(,409) @node IFOs, Options, InitFile, Top
-./ifo.texi(,1) 
 ./ifo.texi(,1) @c
 ./ifo.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./ifo.texi(,3) @c which is part of the ``texi2html'' distribution.
@@ -801,7 +795,6 @@ texi2html.texi(,411) @c ========================================================
 texi2html.texi(,412) @c @include extfile.texi obsolete now, is not documented!
 texi2html.texi(,413) @c ========================================================
 texi2html.texi(,414) @node Options, Reference, IFOs, Top
-./options.texi(,1) 
 ./options.texi(,1) @c
 ./options.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./options.texi(,3) @c which is part of the ``texi2html'' distribution.
@@ -1275,7 +1268,6 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,471) a @samp{.}); otherwise, l2h will fail.
 texi2html.texi(,416) @c ========================================================
 texi2html.texi(,417) @node Reference, Indexop, Options, Top
-./reference.texi(,1) 
 ./reference.texi(,1) @c
 ./reference.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
 ./reference.texi(,3) @c which is part of the ``texi2html'' distribution.

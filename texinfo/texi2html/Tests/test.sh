@@ -159,14 +159,17 @@ fi
 test_texi GermanNodeTest nodetest.texi "" 1
 test_texi GermanNodeTest nodetest_for_makeinfo.texi "" 9
 test_texi index_table
+test_texi index_table index_table.texi "-split chapter -init index_test.init -output . -prefix chapter_index_table" 0 texi chapter_index_table
 test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init -output ."
 test_texi index_table index_split.texi "-split chapter -output . -init index_test.init"
 test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html -output ."
 test_texi index_table no_node.texi "-init index_test.init -split chapter -output ." 3
 test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -output . -prefix nodes_more_before_top -top-file nodes_more_before_top.html -no-node-files" 0 texi nodes_more_before_top
+#test_texi index_table more_before_top.texi "-init index_test.init -split none -prefix nodes_more_before_top_unsplit" 0 texi nodes_more_before_top_unsplit
 test_texi index_table more_before_top.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
+test_texi index_split_nodes ../index_table/index_split.texi "-init ../../examples/makeinfo.init -output . -init ../index_table/index_test.init"
 test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi
@@ -181,15 +184,18 @@ test_texi macros ifset_in_macro.texi "-D notes -prefix set_ifset_in_macro" 0 tex
 test_texi macros not_ifset_text.texi
 test_texi macros bib-example.texi
 test_texi sectionning
+test_texi sectionning sectionning.texi "-init test_directions.init -prefix sectionning_directions" 0 texi sectionning_directions
+test_texi sectionning test_include.texi
 test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -prefix novalidate_split -top novalidate_split.html -no-node-file -output ." 0 texi novalidate_split
 test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -split no -no-node-file"  
-#test_texi sectionning novalidate.texi 
-#test_texi sectionning novalidate.texi "-split node -output ."
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
+test_texi sectionning section_nodes_before_top.texi
 test_texi sectionning nodes_test.texi "" 5
 test_texi sectionning no_section.texi
+test_texi sectionning no_section.texi "-init test_directions.init -prefix no_section_directions" 0 texi no_section_directions
 test_texi sectionning no_node.texi
+test_texi sectionning no_node.texi "-init test_directions.init -prefix no_node_directions" 0 texi no_node_directions
 test_texi sectionning no_node.texi "-prefix chapter_split_no_node -split chapter -output ." 0 texi chapter_split_no_node
 test_texi sectionning no_section_no_top.texi
 test_texi sectionning one_section.texi
@@ -215,6 +221,7 @@ test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
+test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting
 test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple
 test_texi formatting simplest.texi "-css-include file.css"
@@ -237,6 +244,7 @@ test_texi formatting tex.texi "-l2h -expand tex" "no"
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
 test_texi formatting comments.texi "-init redefine_need.init -prefix comments_redefined" 0 texi  comments_redefined 
+test_texi formatting equivalent_nodes.texi "" 5
 test_texi formatting formats_not_closed.texi "" 12
 test_texi formatting not_closed_in_menu.texi "" 7
 test_texi formatting macro_call_not_closed.texi "" 1

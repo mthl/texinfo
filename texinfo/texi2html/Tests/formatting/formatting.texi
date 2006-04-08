@@ -99,6 +99,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@ordm @ordm{}
 @@comma @comma{}
 
+@@TeX, but without brace @TeX
+
 @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@asis@{--a@}} @asis{--a}

@@ -74,8 +74,8 @@ other hosts.  Not only is Emacs somewhat aware of the special issues
 involved with network file systems, but it can also use FTP and ssh (or
 rsh) to make local copies of the files, and refresh them on the remote
 host automatically when you save the buffer.  The FTP interface is
-provided by the standard <samp>`efs'</samp> package <a href="../efs/index.html#Top">EFS: (efs)Top</a>.  The
-ssh/rsh interface is provided by the optional <samp>`tramp'</samp> package
+provided by the standard &lsquo;<samp>efs</samp>&rsquo; package <a href="../efs/index.html#Top">EFS: (efs)Top</a>.  The
+ssh/rsh interface is provided by the optional &lsquo;<samp>tramp</samp>&rsquo; package
 <a href="../tramp/index.html#Top">TRAMP: (tramp)Top</a>.  These packages attempt to implement all of
 the operations described below, making remote file use transparent
 (except for unavoidable network delays).
@@ -142,13 +142,13 @@ commands.
 </p>
 <p>The syntax for accessing remote files unfortunately varies depending on
 the method used.  The syntax for using FTP is
-<samp>`/<var>user</var>@<var>remote-host</var>:<var>path-on-remote-host</var>'</samp>.  The
+&lsquo;<samp>/<var>user</var>@<var>remote-host</var>:<var>path-on-remote-host</var></samp>&rsquo;.  The
 syntax for using ssh is
-<samp>`/[<var>user</var>@<var>remote-host</var>]<var>path-on-remote-host</var>'</samp>.
+&lsquo;<samp>/[<var>user</var>@<var>remote-host</var>]<var>path-on-remote-host</var></samp>&rsquo;.
 </p>
-<p>  In both cases the <samp>`<var>user</var>@'</samp> portion is optional (it defaults
+<p>  In both cases the &lsquo;<samp><var>user</var>@</samp>&rsquo; portion is optional (it defaults
 to your local user name).  <var>path-on-remote-host</var> may use the
-<samp>`~'</samp> notation to indicate <var>user</var>'s home directory on the remote
+&lsquo;<samp>~</samp>&rsquo; notation to indicate <var>user</var>'s home directory on the remote
 host.  The default file name will reflect the remote host information.
 </p>
 <a name="IDX529"></a>
@@ -161,11 +161,11 @@ directory.  The default directory of the current buffer is kept in the
 variable <code>default-directory</code>, which has a separate value in every
 buffer.  The value of the variable should end with a slash.
 </p>
-<p>  For example, if the default file name is <tt>`/u/rms/gnu/gnu.tasks'</tt> then
-the default directory is <tt>`/u/rms/gnu/'</tt>.  If you type just <samp>`foo'</samp>,
-which does not specify a directory, it is short for <tt>`/u/rms/gnu/foo'</tt>.
-<samp>`../.login'</samp> would stand for <tt>`/u/rms/.login'</tt>.  <samp>`new/foo'</samp>
-would stand for the filename <tt>`/u/rms/gnu/new/foo'</tt>.
+<p>  For example, if the default file name is &lsquo;<tt>/u/rms/gnu/gnu.tasks</tt>&rsquo; then
+the default directory is &lsquo;<tt>/u/rms/gnu/</tt>&rsquo;.  If you type just &lsquo;<samp>foo</samp>&rsquo;,
+which does not specify a directory, it is short for &lsquo;<tt>/u/rms/gnu/foo</tt>&rsquo;.
+&lsquo;<samp>../.login</samp>&rsquo; would stand for &lsquo;<tt>/u/rms/.login</tt>&rsquo;.  &lsquo;<samp>new/foo</samp>&rsquo;
+would stand for the filename &lsquo;<tt>/u/rms/gnu/new/foo</tt>&rsquo;.
 </p>
 <p>  When visiting a remote file via EFS or TRAMP, the remote directory
 becomes the default directory (see section <a href="#SEC136">Visiting Files</a>) for that buffer, just
@@ -185,8 +185,8 @@ favor of <code>default-directory</code>.
 which takes as an argument a file name string. The current directory is
 displayed in the minibuffer when the function is called; you can delete
 the old directory name and supply a new directory name. For example, if
-the current directory is <tt>`/u/rms/gnu'</tt>, you can delete <tt>`gnu'</tt>
-and type <tt>`oryx'</tt> and <kbd>RET</kbd> to create <tt>`/u/rms/oryx'</tt>.
+the current directory is &lsquo;<tt>/u/rms/gnu</tt>&rsquo;, you can delete &lsquo;<tt>gnu</tt>&rsquo;
+and type &lsquo;<tt>oryx</tt>&rsquo; and <kbd>RET</kbd> to create &lsquo;<tt>/u/rms/oryx</tt>&rsquo;.
 Removing a directory is similar to creating one.  To remove a directory,
 use <code>remove-directory</code>; it takes one argument, a file name string.
 </p>
@@ -212,18 +212,18 @@ enter the minibuffer, ignoring the presence of the default directory
 name.  The final minibuffer contents may look invalid, but that is not
 so.  See section <a href="xemacs_9.html#SEC61">Minibuffers for File Names</a>.
 </p>
-<p>  <samp>`$'</samp> in a file name is used to substitute environment variables.  For
-example, if you have used the shell command <samp>`setenv FOO rms/hacks'</samp> to
-set up an environment variable named <samp>`FOO'</samp>, then you can use
-<tt>`/u/$FOO/test.c'</tt> or <tt>`/u/${FOO}/test.c'</tt> as an abbreviation for
-<tt>`/u/rms/hacks/test.c'</tt>.  The environment variable name consists of all
-the alphanumeric characters after the <samp>`$'</samp>; alternatively, it may be
-enclosed in braces after the <samp>`$'</samp>.  Note that the <samp>`setenv'</samp> command
+<p>  &lsquo;<samp>$</samp>&rsquo; in a file name is used to substitute environment variables.  For
+example, if you have used the shell command &lsquo;<samp>setenv FOO rms/hacks</samp>&rsquo; to
+set up an environment variable named &lsquo;<samp>FOO</samp>&rsquo;, then you can use
+&lsquo;<tt>/u/$FOO/test.c</tt>&rsquo; or &lsquo;<tt>/u/${FOO}/test.c</tt>&rsquo; as an abbreviation for
+&lsquo;<tt>/u/rms/hacks/test.c</tt>&rsquo;.  The environment variable name consists of all
+the alphanumeric characters after the &lsquo;<samp>$</samp>&rsquo;; alternatively, it may be
+enclosed in braces after the &lsquo;<samp>$</samp>&rsquo;.  Note that the &lsquo;<samp>setenv</samp>&rsquo; command
 affects Emacs only if done before Emacs is started.
 </p>
-<p>  To access a file with <samp>`$'</samp> in its name, type <samp>`$$'</samp>.  This pair
-is converted to a single <samp>`$'</samp> at the same time variable substitution
-is performed for single <samp>`$'</samp>.  The Lisp function that performs the
+<p>  To access a file with &lsquo;<samp>$</samp>&rsquo; in its name, type &lsquo;<samp>$$</samp>&rsquo;.  This pair
+is converted to a single &lsquo;<samp>$</samp>&rsquo; at the same time variable substitution
+is performed for single &lsquo;<samp>$</samp>&rsquo;.  The Lisp function that performs the
 substitution is called <code>substitute-in-file-name</code>.  The substitution
 is performed only on filenames read as such using the minibuffer.
 </p>
@@ -274,9 +274,9 @@ so you can edit it.  Emacs creates a new buffer for each file you
 visit.  We say that the buffer is visiting the file that it was created
 to hold.  Emacs constructs the buffer name from the file name by
 throwing away the directory and keeping just the file name.  For example,
-a file named <tt>`/usr/rms/emacs.tex'</tt> is displayed in a buffer named
-<samp>`emacs.tex'</samp>.  If a buffer with that name exists, a unique
-name is constructed by appending <samp>`&lt;2&gt;'</samp>, <samp>`&lt;3&gt;'</samp>,and so on, using
+a file named &lsquo;<tt>/usr/rms/emacs.tex</tt>&rsquo; is displayed in a buffer named
+&lsquo;<samp>emacs.tex</samp>&rsquo;.  If a buffer with that name exists, a unique
+name is constructed by appending &lsquo;<samp>&lt;2&gt;</samp>&rsquo;, &lsquo;<samp>&lt;3&gt;</samp>&rsquo;,and so on, using
 the lowest number that makes a name that is not already in use.
 </p>
 <p>  Each window's mode line shows the name of the buffer that is being displayed
@@ -351,7 +351,7 @@ symbolic link as well, but doesn't work with hard links (nothing does).
 </p>
 <a name="IDX548"></a>
 <p>   If you want to create a file, just visit it.  Emacs prints
-<samp>`(New File)'</samp> in the echo area, but in other respects behaves as if you
+&lsquo;<samp>(New File)</samp>&rsquo; in the echo area, but in other respects behaves as if you
 had visited an existing empty file.  If you make any changes and save them,
 the file is created.
 </p>
@@ -482,7 +482,7 @@ save it by mistake each time you use <code>save-some-buffers</code> or a
 related command.  One thing you can do is type <kbd>M-~</kbd>
 (<code>not-modified</code>), which removes the indication that the buffer
 is modified.  If you do this, none of the save commands will believe
-that the buffer needs to be saved.  (<samp>`~'</samp> is often used as a
+that the buffer needs to be saved.  (&lsquo;<samp>~</samp>&rsquo; is often used as a
 mathematical symbol for `not'; thus <kbd>Meta-~</kbd> is `not', metafied.)
 You could also use <code>set-visited-file-name</code> (see below) to mark the
 buffer as visiting a different file name, not in use for
@@ -619,18 +619,18 @@ the file again, a new backup file is made by the next save.
 <h4 class="subsubsection"> 14.3.1.1 Single or Numbered Backups </h4>
 
 <p>  If you choose to have a single backup file (the default),
-the backup file's name is constructed by appending <samp>`~'</samp> to the
-file name being edited; thus, the backup file for <tt>`eval.c'</tt> is
-<tt>`eval.c~'</tt>.
+the backup file's name is constructed by appending &lsquo;<samp>~</samp>&rsquo; to the
+file name being edited; thus, the backup file for &lsquo;<tt>eval.c</tt>&rsquo; is
+&lsquo;<tt>eval.c~</tt>&rsquo;.
 </p>
 <p>  If you choose to have a series of numbered backup files, backup file
-names are made by appending <samp>`.~'</samp>, the number, and another <samp>`~'</samp> to
-the original file name.  Thus, the backup files of <tt>`eval.c'</tt> would be
-called <tt>`eval.c.~1~'</tt>, <tt>`eval.c.~2~'</tt>, and so on, through names
-like <tt>`eval.c.~259~'</tt> and beyond.
+names are made by appending &lsquo;<samp>.~</samp>&rsquo;, the number, and another &lsquo;<samp>~</samp>&rsquo; to
+the original file name.  Thus, the backup files of &lsquo;<tt>eval.c</tt>&rsquo; would be
+called &lsquo;<tt>eval.c.~1~</tt>&rsquo;, &lsquo;<tt>eval.c.~2~</tt>&rsquo;, and so on, through names
+like &lsquo;<tt>eval.c.~259~</tt>&rsquo; and beyond.
 </p>
 <p>  If protection stops you from writing backup files under the usual names,
-the backup file is written as <tt>`%backup%~'</tt> in your home directory.
+the backup file is written as &lsquo;<tt>%backup%~</tt>&rsquo; in your home directory.
 Only one such file can exist, so only the most recently made backup is
 available.
 </p>
@@ -936,7 +936,7 @@ system crashes.
 <p>  When Emacs determines it is time for auto-saving, each buffer is
 considered and is auto-saved if auto-saving is turned on for it and it has
 changed since the last time it was auto-saved.  If any auto-saving is
-done, the message <samp>`Auto-saving...'</samp> is displayed in the echo area until
+done, the message &lsquo;<samp>Auto-saving...</samp>&rsquo; is displayed in the echo area until
 auto-saving is finished.  Errors occurring during auto-saving are caught
 so that they do not interfere with the execution of commands you have been
 typing.
@@ -979,14 +979,14 @@ visited file is changed only when you save explicitly, for example,
 with <kbd>C-x C-s</kbd>.
 </p>
 <p>  Normally, the name of the auto-save file is generated by appending
-<samp>`#'</samp> to the front and back of the visited file name.  Thus, a buffer
-visiting file <tt>`foo.c'</tt> would be auto-saved in a file <tt>`#foo.c#'</tt>.
+&lsquo;<samp>#</samp>&rsquo; to the front and back of the visited file name.  Thus, a buffer
+visiting file &lsquo;<tt>foo.c</tt>&rsquo; would be auto-saved in a file &lsquo;<tt>#foo.c#</tt>&rsquo;.
 Most buffers that are not visiting files are auto-saved only if you
 request it explicitly; when they are auto-saved, the auto-save file name
-is generated by appending <samp>`#%'</samp> to the front and <samp>`#'</samp> to the
-back of buffer name.  For example, the <samp>`*mail*'</samp> buffer in which you
+is generated by appending &lsquo;<samp>#%</samp>&rsquo; to the front and &lsquo;<samp>#</samp>&rsquo; to the
+back of buffer name.  For example, the &lsquo;<samp>*mail*</samp>&rsquo; buffer in which you
 compose messages to be sent is auto-saved in a file named
-<tt>`#%*mail*#'</tt>.  Names of auto-save files are generated this way
+&lsquo;<tt>#%*mail*#</tt>&rsquo;.  Names of auto-save files are generated this way
 unless you customize the functions <code>make-auto-save-file-name</code> and
 <code>auto-save-file-name-p</code> to do something different.  The file name
 to be used for auto-saving a buffer is calculated at the time auto-saving is
@@ -1084,10 +1084,10 @@ buffer.
 <p>  If you want to use the contents of an auto-save file to recover from a
 loss of data, use the command <kbd>M-x recover-file <kbd>RET</kbd> <var>file</var>
 <kbd>RET</kbd></kbd>.  Emacs visits <var>file</var> and then (after your confirmation)
-restores the contents from the auto-save file <tt>`#<var>file</var>#'</tt>.  You
+restores the contents from the auto-save file &lsquo;<tt>#<var>file</var>#</tt>&rsquo;.  You
 can then save the file with <kbd>C-x C-s</kbd> to put the recovered text into
-<var>file</var> itself.  For example, to recover file <tt>`foo.c'</tt> from its
-auto-save file <tt>`#foo.c#'</tt>, do:
+<var>file</var> itself.  For example, to recover file &lsquo;<tt>foo.c</tt>&rsquo; from its
+auto-save file &lsquo;<tt>#foo.c#</tt>&rsquo;, do:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x recover-file <kbd>RET</kbd> foo.c <kbd>RET</kbd>
 C-x C-s
@@ -1245,10 +1245,10 @@ files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
 <h3 class="subsection"> 14.6.2 Editing with Version Control </h3>
 
 <p>  When you visit a file that is maintained using version control, the
-mode line displays <samp>`RCS'</samp> or <samp>`SCCS'</samp> to inform you that version
+mode line displays &lsquo;<samp>RCS</samp>&rsquo; or &lsquo;<samp>SCCS</samp>&rsquo; to inform you that version
 control is in use, and also (in case you care) which low-level system
 the file is actually stored in.  Normally, such a source file is
-read-only, and the mode line indicates this with <samp>`%%'</samp>.  With RCS,
+read-only, and the mode line indicates this with &lsquo;<samp>%%</samp>&rsquo;.  With RCS,
 the mode line also indicates the number of the head version, which is
 normally also the version you are looking at.
 </p>
@@ -1343,7 +1343,7 @@ erroneous check-in, fix the error, and repeat the check-in.
 </p>
 <p>  Be careful when invoking <kbd>C-x v c</kbd>, as it is easy to throw away a
 lot of work with it.  To help you be careful, this command always
-requires confirmation with <samp>`yes'</samp>.
+requires confirmation with &lsquo;<samp>yes</samp>&rsquo;.
 </p>
 <a name="IDX595"></a>
 <a name="IDX596"></a>
@@ -1408,7 +1408,7 @@ messages when the commands finish.
 </p>
 <p>  Normally, VC assumes that it can deduce the locked/unlocked state of
 files by looking at the file permissions of the work file; this is
-fast.  However, if the <tt>`RCS'</tt> or <tt>`SCCS'</tt> subdirectory is
+fast.  However, if the &lsquo;<tt>RCS</tt>&rsquo; or &lsquo;<tt>SCCS</tt>&rsquo; subdirectory is
 actually a symbolic link, then VC does not trust the file permissions to
 reflect this status.
 </p>
@@ -1418,7 +1418,7 @@ by setting the variable <code>vc-mistrust-permissions</code>.  Its value may
 be <code>t</code> (always mistrust the file permissions and check the master
 file), <code>nil</code> (always trust the file permissions), or a function of
 one argument which makes the decision.  The argument is the directory
-name of the <tt>`RCS'</tt> or <tt>`SCCS'</tt> subdirectory.  A non-<code>nil</code>
+name of the &lsquo;<tt>RCS</tt>&rsquo; or &lsquo;<tt>SCCS</tt>&rsquo; subdirectory.  A non-<code>nil</code>
 value from the function says to mistrust the file permissions.
 </p>
 <p>  If you find that the file permissions of work files are changed
@@ -1517,11 +1517,11 @@ versions checked in since the most recent entry in the change log file
 </p></dd>
 </dl>
 
-<p>  For example, suppose the first line of <tt>`ChangeLog'</tt> is dated 10
+<p>  For example, suppose the first line of &lsquo;<tt>ChangeLog</tt>&rsquo; is dated 10
 April 1992, and that the only check-in since then was by Nathaniel
-Bowditch to <tt>`rcs2log'</tt> on 8 May 1992 with log text <samp>`Ignore log
-messages that start with `#'.'</samp>.  Then <kbd>C-x v a</kbd> visits
-<tt>`ChangeLog'</tt> and inserts text like this:
+Bowditch to &lsquo;<tt>rcs2log</tt>&rsquo; on 8 May 1992 with log text &lsquo;<samp>Ignore log
+messages that start with `#'.</samp>&rsquo;.  Then <kbd>C-x v a</kbd> visits
+&lsquo;<tt>ChangeLog</tt>&rsquo; and inserts text like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
@@ -1530,12 +1530,12 @@ messages that start with `#'.'</samp>.  Then <kbd>C-x v a</kbd> visits
 
 <p>You can then edit the new change log entry further as you wish.
 </p>
-<p>  Normally, the log entry for file <tt>`foo'</tt> is displayed as <samp>`*
-foo: <var>text of log entry</var>'</samp>.  The <samp>`:'</samp> after <tt>`foo'</tt> is omitted
-if the text of the log entry starts with <samp>`(<var>functionname</var>):
-'</samp>.  For example, if the log entry for <tt>`vc.el'</tt> is
-<samp>`(vc-do-command): Check call-process status.'</samp>, then the text in
-<tt>`ChangeLog'</tt> looks like this:
+<p>  Normally, the log entry for file &lsquo;<tt>foo</tt>&rsquo; is displayed as &lsquo;<samp>*
+foo: <var>text of log entry</var></samp>&rsquo;.  The &lsquo;<samp>:</samp>&rsquo; after &lsquo;<tt>foo</tt>&rsquo; is omitted
+if the text of the log entry starts with &lsquo;<samp>(<var>functionname</var>):
+</samp>&rsquo;.  For example, if the log entry for &lsquo;<tt>vc.el</tt>&rsquo; is
+&lsquo;<samp>(vc-do-command): Check call-process status.</samp>&rsquo;, then the text in
+&lsquo;<tt>ChangeLog</tt>&rsquo; looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
@@ -1549,15 +1549,15 @@ files all have the same text, it coalesces them into a single entry.
 For example, suppose the most recent checkins have the following log
 entries:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">For <tt>`vc.texinfo'</tt>:
+<table><tr><td>&nbsp;</td><td><pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
 Fix expansion typos.
-For <tt>`vc.el'</tt>:
+For &lsquo;<tt>vc.el</tt>&rsquo;:
 Don't call expand-file-name.
-For <tt>`vc-hooks.el'</tt>:
+For &lsquo;<tt>vc-hooks.el</tt>&rsquo;:
 Don't call expand-file-name.
 </pre></td></tr></table>
 
-<p>  They appear like this in <tt>`ChangeLog'</tt>:
+<p>  They appear like this in &lsquo;<tt>ChangeLog</tt>&rsquo;:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
@@ -1569,19 +1569,19 @@ Don't call expand-file-name.
 <p>  Normally, <kbd>C-x v a</kbd> separates log entries by a blank line, but you
 can mark several related log entries to be clumped together (without an
 intervening blank line) by starting the text of each related log entry
-with a label of the form <samp>`{<var>clumpname</var>} '</samp>.  The label
-itself is not copied to <tt>`ChangeLog'</tt>.  For example, suppose the log
+with a label of the form &lsquo;<samp>{<var>clumpname</var>} </samp>&rsquo;.  The label
+itself is not copied to &lsquo;<tt>ChangeLog</tt>&rsquo;.  For example, suppose the log
 entries are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">For <tt>`vc.texinfo'</tt>:
+<table><tr><td>&nbsp;</td><td><pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
 {expand} Fix expansion typos.
-For <tt>`vc.el'</tt>:
+For &lsquo;<tt>vc.el</tt>&rsquo;:
 {expand} Don't call expand-file-name.
-For <tt>`vc-hooks.el'</tt>:
+For &lsquo;<tt>vc-hooks.el</tt>&rsquo;:
 {expand} Don't call expand-file-name.
 </pre></td></tr></table>
 
-<p>Then the text in <tt>`ChangeLog'</tt> looks like this:
+<p>Then the text in &lsquo;<tt>ChangeLog</tt>&rsquo; looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
@@ -1589,10 +1589,10 @@ For <tt>`vc-hooks.el'</tt>:
         * vc.el, vc-hooks.el: Don't call expand-file-name.
 </pre></td></tr></table>
 
-<p>  A log entry whose text begins with <samp>`#'</samp> is not copied to
-<tt>`ChangeLog'</tt>.  For example, if you merely fix some misspellings in
-comments, you can log the change with an entry beginning with <samp>`#'</samp>
-to avoid putting such trivia into <tt>`ChangeLog'</tt>.
+<p>  A log entry whose text begins with &lsquo;<samp>#</samp>&rsquo; is not copied to
+&lsquo;<tt>ChangeLog</tt>&rsquo;.  For example, if you merely fix some misspellings in
+comments, you can log the change with an entry beginning with &lsquo;<samp>#</samp>&rsquo;
+to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 </p>
 <hr size="6">
 <a name="Old-Versions"></a>
@@ -1636,7 +1636,7 @@ of the file.
 <p>  You can examine any version of a file by first visiting it, and then
 using <kbd>C-x v ~ <var>version</var> <kbd>RET</kbd></kbd>
 (<code>vc-version-other-window</code>).  This puts the text of version
-<var>version</var> in a file named <tt>`<var>filename</var>.~<var>version</var>~'</tt>,
+<var>version</var> in a file named &lsquo;<tt><var>filename</var>.~<var>version</var>~</tt>&rsquo;,
 then visits it in a separate window.
 </p>
 <a name="IDX609"></a>
@@ -1929,7 +1929,7 @@ insert a suitable header string.
 </dl>
 
 <a name="IDX619"></a>
-<p>  The default header string is <samp>`\$Id\$'</samp> for RCS and <samp>`\%W\%'</samp>
+<p>  The default header string is &lsquo;<samp>\$Id\$</samp>&rsquo; for RCS and &lsquo;<samp>\%W\%</samp>&rsquo;
 for SCCS. (The actual strings inserted do not have the backslashes
 in them.  They were placed in the Info source file so that the
 strings don't get interpreted as version-control headers when the
@@ -2025,7 +2025,7 @@ containing wildcards for the files to be listed.  For example,
 <table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/etc <kbd>RET</kbd>
 </pre></td></tr></table>
 
-<p>lists all the files in directory <tt>`/u2/emacs/etc'</tt>.  An example of
+<p>lists all the files in directory &lsquo;<tt>/u2/emacs/etc</tt>&rsquo;.  An example of
 specifying a file name pattern is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/src/*.c <kbd>RET</kbd>
@@ -2049,7 +2049,7 @@ for file directories.  The list consists of elements of the form
 <code>(FROM .  TO)</code>, each meaning to replace <code>FROM</code> with <code>TO</code>
 when it appears in a directory name.  This replacement is done when
 setting up the default directory of a newly visited file.  Every <code>FROM</code>
-string should start with `<samp>`^'</samp>'.
+string should start with `&lsquo;<samp>^</samp>&rsquo;'.
 </p>
 <p>Use this feature when you have directories which you normally refer to
 via absolute symbolic links.  Make <code>TO</code> the name of the link, and
@@ -2077,11 +2077,11 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <h2 class="section"> 14.8 Comparing Files </h2>
 
 <p>  The command <kbd>M-x diff</kbd> compares two files, displaying the
-differences in an Emacs buffer named <samp>`*Diff*'</samp>.  It works by running
+differences in an Emacs buffer named &lsquo;<samp>*Diff*</samp>&rsquo;.  It works by running
 the <code>diff</code> program, using options taken from the variable
 <code>diff-switches</code>, whose value should be a string.
 </p>
-<p>  The buffer <samp>`*Diff*'</samp> has Compilation mode as its major mode, so
+<p>  The buffer &lsquo;<samp>*Diff*</samp>&rsquo; has Compilation mode as its major mode, so
 you can use <kbd>C-x `</kbd> to visit successive changed locations in the two
 source files.  You can also move to a particular hunk of changes and
 type <kbd>C-c C-c</kbd> to find the corresponding source location.  You can
@@ -2175,7 +2175,7 @@ directory name or the wildcard pattern used for the listing, and putting
 the buffer into Dired mode so that the special commands of Dired are
 available in it.  The variable <code>dired-listing-switches</code> is a string
 used as an argument to <code>ls</code> in making the directory; this string
-<i>must</i> contain <samp>`-l'</samp>.
+<i>must</i> contain &lsquo;<samp>-l</samp>&rsquo;.
 </p>
 <a name="IDX630"></a>
 <a name="IDX631"></a>
@@ -2271,11 +2271,11 @@ them.
 <dd><p>Delete the files that are flagged for deletion.
 </p></dd>
 <dt> <kbd>#</kbd></dt>
-<dd><p>Flag all auto-save files (files whose names start and end with <samp>`#'</samp>)
+<dd><p>Flag all auto-save files (files whose names start and end with &lsquo;<samp>#</samp>&rsquo;)
 for deletion (see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).
 </p></dd>
 <dt> <kbd>~</kbd></dt>
-<dd><p>Flag all backup files (files whose names end with <samp>`~'</samp>) for deletion
+<dd><p>Flag all backup files (files whose names end with &lsquo;<samp>~</samp>&rsquo;) for deletion
 (see section <a href="#SEC138">Backup Files</a>).
 </p></dd>
 <dt> <kbd>. (Period)</kbd></dt>
@@ -2286,7 +2286,7 @@ few backup files of any one file are exempt; the middle ones are flagged.
 
 <p>  You can flag a file for deletion by moving to the line describing the
 file and typing <kbd>d</kbd> or <kbd>C-d</kbd>.  The deletion flag is visible as a
-<samp>`D'</samp> at the beginning of the line.  Point is moved to the beginning of
+&lsquo;<samp>D</samp>&rsquo; at the beginning of the line.  Point is moved to the beginning of
 the next line, so that repeated <kbd>d</kbd> commands flag successive files.
 </p>
 <p>  The files are flagged for deletion rather than deleted immediately to
@@ -2310,10 +2310,10 @@ because they do not actually delete any files; you can remove the
 deletion flags from any flagged files that you really wish to keep.
 </p>
 <p>  <kbd>#</kbd> flags for deletion all files that appear to have been made by
-auto-saving (that is, files whose names begin and end with <samp>`#'</samp>).
+auto-saving (that is, files whose names begin and end with &lsquo;<samp>#</samp>&rsquo;).
 <kbd>~</kbd> flags for deletion all files that appear to have been made as
 backups for files that were edited (that is, files whose names end with
-<samp>`~'</samp>).
+&lsquo;<samp>~</samp>&rsquo;).
 </p>
 <a name="IDX632"></a>
 <p>  <kbd>.</kbd> (Period) flags just some of the backup files for deletion: only
@@ -2460,7 +2460,6 @@ moving around in the file, but none for changing it; type <kbd>C-h</kbd> while
 viewing a file for a list of them.  Most commands are the default Emacs
 cursor motion commands.  To exit from viewing, type <kbd>C-c</kbd>.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

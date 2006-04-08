@@ -83,9 +83,9 @@ ul.toc {list-style: none}
 <p>This section details the numerous Info commands which select a new node
 to view in the current window.
 </p>
-<p>The most basic node commands are <samp>`n'</samp>, <samp>`p'</samp>, <samp>`u'</samp>, and
-<samp>`l'</samp>.  Note that the commands to select nodes are mapped differently
-when <samp>`--vi-keys'</samp> is in effect; these keybindings are designated
+<p>The most basic node commands are &lsquo;<samp>n</samp>&rsquo;, &lsquo;<samp>p</samp>&rsquo;, &lsquo;<samp>u</samp>&rsquo;, and
+&lsquo;<samp>l</samp>&rsquo;.  Note that the commands to select nodes are mapped differently
+when &lsquo;<samp>--vi-keys</samp>&rsquo; is in effect; these keybindings are designated
 below as &ldquo;vi-like operation&rdquo;.
 </p>
 <p>When you are viewing a node, the top line of the node contains some Info
@@ -132,13 +132,13 @@ keyboards.
 </dl>
 
 <p>You can easily select a node that you have already viewed in this window
-by using the <samp>`l'</samp> command &ndash; this name stands for &quot;last&quot;, and
+by using the &lsquo;<samp>l</samp>&rsquo; command &ndash; this name stands for &quot;last&quot;, and
 actually moves backwards through the history of visited nodes for this
 window.  This is handy when you followed a reference to another node,
 possibly to read about a related issue, and would like then to resume
 reading at the same place where you started the excursion.
 </p>
-<p>Each node where you press <samp>`l'</samp> is discarded from the history.  Thus,
+<p>Each node where you press &lsquo;<samp>l</samp>&rsquo; is discarded from the history.  Thus,
 by the time you get to the first node you visited in a window, the
 entire history of that window is discarded.
 </p>
@@ -156,7 +156,7 @@ history.
 </dl>
 
 <p>Two additional commands make it easy to select the most commonly
-selected nodes; they are <samp>`t'</samp> and <samp>`d'</samp>.
+selected nodes; they are &lsquo;<samp>t</samp>&rsquo; and &lsquo;<samp>d</samp>&rsquo;.
 </p>
 <dl compact="compact">
 <dt> <kbd>t</kbd> (<code>top-node</code>)</dt>
@@ -164,7 +164,7 @@ selected nodes; they are <samp>`t'</samp> and <samp>`d'</samp>.
 <dd><a name="IDX128"></a>
 <a name="IDX129"></a>
 <a name="IDX130"></a>
-<p>Select the node <samp>`Top'</samp> in the current Info file.
+<p>Select the node &lsquo;<samp>Top</samp>&rsquo; in the current Info file.
 </p>
 </dd>
 <dt> <kbd>d</kbd> (<code>dir-node</code>)</dt>
@@ -172,7 +172,7 @@ selected nodes; they are <samp>`t'</samp> and <samp>`d'</samp>.
 <dd><a name="IDX131"></a>
 <a name="IDX132"></a>
 <a name="IDX133"></a>
-<p>Select the directory node (i.e., the node <samp>`(dir)'</samp>).
+<p>Select the directory node (i.e., the node &lsquo;<samp>(dir)</samp>&rsquo;).
 </p></dd>
 </dl>
 
@@ -186,7 +186,7 @@ of a different node in the current window:
 <a name="IDX135"></a>
 <a name="IDX136"></a>
 <p>Selects the first node which appears in this file.  This node is most
-often <samp>`Top'</samp>, but it does not have to be.  With a numeric argument
+often &lsquo;<samp>Top</samp>&rsquo;, but it does not have to be.  With a numeric argument
 <var>N</var>, select the <var>N</var>th node (the first node is node 1).  An
 argument of zero is the same as the argument of 1.
 </p>
@@ -206,18 +206,18 @@ node.
 <dd><a name="IDX140"></a>
 <a name="IDX141"></a>
 <p>Move forward or down through node structure.  If the node that you are
-currently viewing has a <samp>`Next'</samp> pointer, that node is selected.
+currently viewing has a &lsquo;<samp>Next</samp>&rsquo; pointer, that node is selected.
 Otherwise, if this node has a menu, the first menu item is selected.  If
-there is no <samp>`Next'</samp> and no menu, the same process is tried with the
-<samp>`Up'</samp> node of this node.
+there is no &lsquo;<samp>Next</samp>&rsquo; and no menu, the same process is tried with the
+&lsquo;<samp>Up</samp>&rsquo; node of this node.
 </p>
 </dd>
 <dt> <kbd>[</kbd> (<code>global-prev-node</code>)</dt>
 <dd><a name="IDX142"></a>
 <a name="IDX143"></a>
 <p>Move backward or up through node structure.  If the node that you are
-currently viewing has a <samp>`Prev'</samp> pointer, that node is selected.
-Otherwise, if the node has an <samp>`Up'</samp> pointer, that node is selected,
+currently viewing has a &lsquo;<samp>Prev</samp>&rsquo; pointer, that node is selected.
+Otherwise, if the node has an &lsquo;<samp>Up</samp>&rsquo; pointer, that node is selected,
 and if it has a menu, the last item in the menu is selected.
 </p></dd>
 </dl>
@@ -245,7 +245,7 @@ must include the Info file of the other file.  For example,
 <table><tr><td>&nbsp;</td><td><pre class="example"><code>g(emacs)Buffers</code>
 </pre></td></tr></table>
 
-<p>finds the node <samp>`Buffers'</samp> in the Info file <tt>`emacs'</tt>.
+<p>finds the node &lsquo;<samp>Buffers</samp>&rsquo; in the Info file &lsquo;<tt>emacs</tt>&rsquo;.
 </p>
 <p><a name="goto_002dinvocation"></a>
 </p></dd>
@@ -259,18 +259,18 @@ must include the Info file of the other file.  For example,
 which describes the invocation and the command-line options for that
 program.  The default program name is derived from the name of the
 current Info file.  This command does the same as the
-<samp>`--show-options'</samp> command-line option (see <a href="info-stnd_2.html#g_t_002d_002dshow_002doptions">&ndash;show-options</a>), but
+&lsquo;<samp>--show-options</samp>&rsquo; command-line option (see <a href="info-stnd_2.html#g_t_002d_002dshow_002doptions">&ndash;show-options</a>), but
 it also allows to specify the program name; this is important for those
 manuals which describe several programs.
 </p>
 <p>If you need to find the Invocation node of a program that is documented
 in another Info file, you need to visit that file before invoking
-<samp>`I'</samp>.  For example, if you are reading the Emacs manual and want to
+&lsquo;<samp>I</samp>&rsquo;.  For example, if you are reading the Emacs manual and want to
 see the command-line options of the <code>makeinfo</code> program, type <kbd>g
 (texinfo) <kbd>RET</kbd></kbd> and then <kbd>I makeinfo <kbd>RET</kbd></kbd>.  If you don't
-know what Info file documents the command, or if invoking <samp>`I'</samp>
-doesn't display the right node, go to the <samp>`(dir)'</samp> node (using the
-<samp>`d'</samp> command) and invoke <samp>`I'</samp> from there.
+know what Info file documents the command, or if invoking &lsquo;<samp>I</samp>&rsquo;
+doesn't display the right node, go to the &lsquo;<samp>(dir)</samp>&rsquo; node (using the
+&lsquo;<samp>d</samp>&rsquo; command) and invoke &lsquo;<samp>I</samp>&rsquo; from there.
 </p>
 </dd>
 <dt> <kbd>G</kbd> (<code>menu-sequence</code>)</dt>
@@ -281,18 +281,18 @@ doesn't display the right node, go to the <samp>`(dir)'</samp> node (using the
 sequence of menu items separated by commas.  (Since commas are not
 allowed in a node name, they are a natural choice for a delimiter in a
 list of menu items.)  Info then looks up the first item in the menu of
-the node <samp>`(dir)'</samp> (if the <samp>`(dir)'</samp> node cannot be found, Info
-uses <samp>`Top'</samp>).  If such an entry is found, Info goes to the node it
+the node &lsquo;<samp>(dir)</samp>&rsquo; (if the &lsquo;<samp>(dir)</samp>&rsquo; node cannot be found, Info
+uses &lsquo;<samp>Top</samp>&rsquo;).  If such an entry is found, Info goes to the node it
 points to and looks up the second item in the menu of that node, etc.
 In other words, you can specify a complete path which descends through
 the menu hierarchy of a particular Info file starting at the
-<samp>`(dir)'</samp> node.  This has the same effect as if you typed the menu
+&lsquo;<samp>(dir)</samp>&rsquo; node.  This has the same effect as if you typed the menu
 item sequence on Info's command line, see <a href="info-stnd_2.html#command_002dline-menu-items">Info command-line arguments processing</a>.  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"> <kbd>G Texinfo,Overview,Reporting Bugs <kbd>RET</kbd></kbd>
 </pre></td></tr></table>
 
-<p>displays the node <samp>`Reporting Bugs'</samp> in the Texinfo manual.  (You
+<p>displays the node &lsquo;<samp>Reporting Bugs</samp>&rsquo; in the Texinfo manual.  (You
 don't actually need to type the menu items in their full length, or in
 their exact letter-case.  However, if you do type the menu items
 exactly, Info will find it faster.)
@@ -334,7 +334,7 @@ Info commands within it.
 <dd><a name="IDX160"></a>
 <a name="IDX161"></a>
 <p>Select a node which has been previously visited in a visible window.
-This is similar to <samp>`C-x C-b'</samp> followed by <samp>`m'</samp>, but no window is
+This is similar to &lsquo;<samp>C-x C-b</samp>&rsquo; followed by &lsquo;<samp>m</samp>&rsquo;, but no window is
 created.
 </p></dd>
 </dl>

@@ -22,7 +22,6 @@ bib-example.texi(,22) @comment %**start of header
 bib-example.texi(,23) @setfilename my-file-with-bib.info
 bib-example.texi(,24) @settitle Texinfo with a Bibliography and References
 bib-example.texi(,25) 
-./my-bib-macros.texi(,1) 
 ./my-bib-macros.texi(,1) @c \input texinfo   @c -*-texinfo-*-
 ./my-bib-macros.texi(,2) @c %% my-bib-macros.texi --- Texinfo macros providing a crude
 ./my-bib-macros.texi(,3) @c %% bibliography and citation capability.

@@ -92,7 +92,7 @@ is to permit modification of your working files.
 check out from a read-only repository, such as within
 an anoncvs server, or from a CDROM repository.
 </p>
-<p>It has the same effect as if the <samp>`-R'</samp> command-line
+<p>It has the same effect as if the &lsquo;<samp>-R</samp>&rsquo; command-line
 option is used. This can also allow the use of
 read-only NFS repositories.
 </p>
@@ -108,10 +108,10 @@ source repository (where the <small>RCS</small> files are
 kept).  This information must be available to <small>CVS</small> for
 most commands to execute; if <code>$CVSROOT</code> is not set,
 or if you wish to override it for one invocation, you
-can supply it on the command line: <samp>`cvs -d cvsroot
-cvs_command&hellip;'</samp> Once you have checked out a working
+can supply it on the command line: &lsquo;<samp>cvs -d cvsroot
+cvs_command&hellip;</samp>&rsquo; Once you have checked out a working
 directory, <small>CVS</small> stores the appropriate root (in
-the file <tt>`CVS/Root'</tt>), so normally you only need to
+the file &lsquo;<tt>CVS/Root</tt>&rsquo;), so normally you only need to
 worry about this when initially checking out a working
 directory.
 </p>
@@ -147,11 +147,11 @@ programs it uses.
 <dd><a name="IDX303"></a>
 </dd>
 <dt> <code>$HOMEDRIVE</code></dt>
-<dd><p>Used to locate the directory where the <tt>`.cvsrc'</tt>
+<dd><p>Used to locate the directory where the &lsquo;<tt>.cvsrc</tt>&rsquo;
 file, and other such files, are searched.  On Unix, <small>CVS</small>
 just checks for <code>HOME</code>.  On Windows NT, the system will
-set <code>HOMEDRIVE</code>, for example to <samp>`d:'</samp> and <code>HOMEPATH</code>,
-for example to <tt>`\joe'</tt>.  On Windows 95, you'll
+set <code>HOMEDRIVE</code>, for example to &lsquo;<samp>d:</samp>&rsquo; and <code>HOMEPATH</code>,
+for example to &lsquo;<tt>\joe</tt>&rsquo;.  On Windows 95, you'll
 probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 </p>
 <a name="IDX304"></a>
@@ -175,7 +175,7 @@ see section <a href="cvs_2.html#SEC28">Connecting with rsh</a>
 </dd>
 <dt> <code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
-login server</code>.  Default value is <tt>`$HOME/.cvspass'</tt>.
+login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
 see section <a href="cvs_2.html#SEC31">Using the client with password authentication</a>
 </p>
 </dd>
@@ -197,9 +197,9 @@ the server side. (Currently not used for Unix clients).
 <dt> <code>$CVS_CLIENT_LOG</code></dt>
 <dd><p>Used for debugging only in client-server
 mode.  If set, everything sent to the server is logged
-into <tt>`<code>$CVS_CLIENT_LOG</code>.in'</tt> and everything
+into &lsquo;<tt><code>$CVS_CLIENT_LOG</code>.in</tt>&rsquo; and everything
 sent from the server is logged into
-<tt>`<code>$CVS_CLIENT_LOG</code>.out'</tt>.
+&lsquo;<tt><code>$CVS_CLIENT_LOG</code>.out</tt>&rsquo;.
 </p>
 <a name="IDX307"></a>
 </dd>
@@ -213,10 +213,10 @@ seconds so that you can attach to it with a debugger.
 </dd>
 <dt> <code>$CVS_IGNORE_REMOTE_ROOT</code></dt>
 <dd><p>For <small>CVS</small> 1.10 and older, setting this variable
-prevents <small>CVS</small> from overwriting the <tt>`CVS/Root'</tt>
-file when the <samp>`-d'</samp> global option is specified.
+prevents <small>CVS</small> from overwriting the &lsquo;<tt>CVS/Root</tt>&rsquo;
+file when the &lsquo;<samp>-d</samp>&rsquo; global option is specified.
 Later versions of <small>CVS</small> do not rewrite
-<tt>`CVS/Root'</tt>, so <code>CVS_IGNORE_REMOTE_ROOT</code> has no
+&lsquo;<tt>CVS/Root</tt>&rsquo;, so <code>CVS_IGNORE_REMOTE_ROOT</code> has no
 effect.
 </p>
 <a name="IDX309"></a>
@@ -250,7 +250,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 The <small>CVS</small> server uses
 <code>TMPDIR</code>.  See section <a href="cvs_16.html#SEC118">Global options</a>, for a
 description of how to specify this.
-Some parts of <small>CVS</small> will always use <tt>`/tmp'</tt> (via
+Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).
 </p>
 <p>On Windows NT, <code>TMP</code> is used (via the <code>_tempnam</code>
@@ -258,7 +258,7 @@ function provided by the system).
 </p>
 <p>The <code>patch</code> program which is used by the <small>CVS</small>
 client uses <code>TMPDIR</code>, and if it is not set, uses
-<tt>`/tmp'</tt> (at least with GNU patch 2.1).  Note that
+&lsquo;<tt>/tmp</tt>&rsquo; (at least with GNU patch 2.1).  Note that
 if your server and client are both running <small>CVS</small>
 1.9.10 or later, <small>CVS</small> will not invoke an external
 <code>patch</code> program.
@@ -269,7 +269,7 @@ if your server and client are both running <small>CVS</small>
 <dd><p>This is the process identification (aka pid) number of
 the <small>CVS</small> process. It is often useful in the
 programs and/or scripts specified by the
-<tt>`commitinfo'</tt>, <tt>`verifymsg'</tt>, <tt>`loginfo'</tt>
+&lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo;
 files.
 </p></dd>
 </dl>

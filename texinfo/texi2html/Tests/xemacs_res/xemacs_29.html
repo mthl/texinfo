@@ -68,7 +68,7 @@ with standard Unix-mail-format folders and was designed as a replacement
 for the older Rmail.
 </p>
 <p>XEmacs also provides a sophisticated and comfortable front-end to the
-MH mail-processing system, called <samp>`mh-e'</samp>.  Unlike in other
+MH mail-processing system, called &lsquo;<samp>mh-e</samp>&rsquo;.  Unlike in other
 mail programs, folders in MH are stored as file-system directories,
 with each message occupying one (numbered) file.  This facilitates
 working with mail using shell commands, and many other features of
@@ -80,14 +80,13 @@ computer.
 <p>Finally, XEmacs provides the Rmail package.  Rmail is (currently) the
 only mail reading package distributed with FSF GNU Emacs, and is
 powerful in its own right.  However, it stores mail folders in a special
-format called <samp>`Babyl'</samp>, that is incompatible with all other
+format called &lsquo;<samp>Babyl</samp>&rsquo;, that is incompatible with all other
 frequently-used mail programs.  A utility program is provided for
 converting Babyl folders to standard Unix-mail format; however, unless
 you already have mail in Babyl-format folders, you should consider
 using VM or mh-e instead. (If at times you have to use FSF Emacs, it
 is not hard to obtain and install VM for that editor.)
-</p>
-<hr size="6">
+</p><hr size="6">
 <a name="Calendar_002fDiary"></a>
 <a name="SEC301"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -392,7 +391,7 @@ specified in various ways.
 <p>  <kbd>g d</kbd> (<code>calendar-goto-date</code>) prompts for a year, a month, and a day
 of the month, and then moves to that date.  Because the calendar includes all
 dates from the beginning of the current era, you must type the year in its
-entirety; that is, type <samp>`1990'</samp>, not <samp>`90'</samp>.
+entirety; that is, type &lsquo;<samp>1990</samp>&rsquo;, not &lsquo;<samp>90</samp>&rsquo;.
 </p>
 <a name="IDX1174"></a>
 <a name="IDX1175"></a>
@@ -779,7 +778,7 @@ window.
 <a name="IDX1212"></a>
 <p>  To view the distribution of holidays for all the dates shown in the
 calendar, use the <kbd>x</kbd> command.  This displays the dates that are
-holidays in a different face (or places a <samp>`*'</samp> after these dates, if 
+holidays in a different face (or places a &lsquo;<samp>*</samp>&rsquo; after these dates, if 
 display with multiple faces is not available). The command applies both
 to the currently visible months and to other months that subsequently
 become visible by scrolling.  To turn marking off and erase the current
@@ -915,7 +914,7 @@ for how daylight savings time is determined.
 </p>
 <p>  As a user, you might find it convenient to set the calendar location
 variables for your usual physical location in your init file.  And when
-you install Emacs on a machine, you can create a <tt>`default.el'</tt> file
+you install Emacs on a machine, you can create a &lsquo;<tt>default.el</tt>&rsquo; file
 which sets them properly for the typical location of most users of that
 machine.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p>
@@ -1435,9 +1434,9 @@ their dates.  Then Emacs can automatically pick out and display the
 events for today, for the immediate future, or for any specified
 date.
 </p>
-<p>  By default, Emacs uses <tt>`~/diary'</tt> as the diary file.  This is the
+<p>  By default, Emacs uses &lsquo;<tt>~/diary</tt>&rsquo; as the diary file.  This is the
 same file that the <code>calendar</code> utility uses.  A sample
-<tt>`~/diary'</tt> file is:
+&lsquo;<tt>~/diary</tt>&rsquo; file is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">12/22/1988 Twentieth wedding anniversary!!
 &amp;1/1. Happy New Year!
@@ -1494,7 +1493,7 @@ entries.  You can also share diary entries with other users
 </tr></table>
 <h3 class="subsection"> 26.5.3 Commands Displaying Diary Entries </h3>
 
-<p>  Once you have created a <tt>`~/diary'</tt> file, you can use the calendar
+<p>  Once you have created a &lsquo;<tt>~/diary</tt>&rsquo; file, you can use the calendar
 to view it.  You can also view today's events outside of Calendar mode.
 </p>
 <dl compact="compact">
@@ -1546,7 +1545,7 @@ that appears.
 <a name="IDX1281"></a>
 <p>  To get a broader view of which days are mentioned in the diary, use
 the <kbd>m</kbd> command.  This displays the dates that have diary entries
-in a different face (or places a <samp>`+'</samp> after these dates, if
+in a different face (or places a &lsquo;<samp>+</samp>&rsquo; after these dates, if
 display with multiple faces is not available).  The command applies both
 to the currently visible months and to other months that subsequently
 become visible by scrolling.  To turn marking off and erase the current
@@ -1611,7 +1610,7 @@ diary-mail-entries</kbd>.  A prefix argument specifies how many days
 
 <p>  Your <em>diary file</em> is a file that records events associated with
 particular dates.  The name of the diary file is specified by the
-variable <code>diary-file</code>; <tt>`~/diary'</tt> is the default.  The
+variable <code>diary-file</code>; &lsquo;<tt>~/diary</tt>&rsquo; is the default.  The
 <code>calendar</code> utility program supports a subset of the format allowed
 by the Emacs diary facilities, so you can use that utility to view the
 diary file, with reasonable results aside from the entries it cannot
@@ -1626,7 +1625,7 @@ entry.  Lines that do not begin with valid dates and do not continue a
 preceding entry are ignored.
 </p>
 <p>  You can inhibit the marking of certain diary entries in the calendar
-window; to do this, insert an ampersand (<samp>`&amp;'</samp>) at the beginning of
+window; to do this, insert an ampersand (&lsquo;<samp>&amp;</samp>&rsquo;) at the beginning of
 the entry, before the date.  This has no effect on display of the entry
 in the diary window; it affects only marks on dates in the calendar
 window.  Nonmarking entries are especially useful for generic entries
@@ -1704,24 +1703,24 @@ wildcard (asterisk) for the month, so it appears on the 25th of every
 month.  The final entry appears every week on Friday.
 </p>
 <p>  You can use just numbers to express a date, as in
-<samp>`<var>month</var>/<var>day</var>'</samp> or <samp>`<var>month</var>/<var>day</var>/<var>year</var>'</samp>.
+&lsquo;<samp><var>month</var>/<var>day</var></samp>&rsquo; or &lsquo;<samp><var>month</var>/<var>day</var>/<var>year</var></samp>&rsquo;.
 This must be followed by a nondigit.  In the date itself, <var>month</var>
 and <var>day</var> are numbers of one or two digits.  The optional <var>year</var>
 is also a number, and may be abbreviated to the last two digits; that
-is, you can use <samp>`11/12/1989'</samp> or <samp>`11/12/89'</samp>.
+is, you can use &lsquo;<samp>11/12/1989</samp>&rsquo; or &lsquo;<samp>11/12/89</samp>&rsquo;.
 </p>
-<p>  Dates can also have the form <samp>`<var>monthname</var> <var>day</var>'</samp> or
-<samp>`<var>monthname</var> <var>day</var>, <var>year</var>'</samp>, where the month's name can
+<p>  Dates can also have the form &lsquo;<samp><var>monthname</var> <var>day</var></samp>&rsquo; or
+&lsquo;<samp><var>monthname</var> <var>day</var>, <var>year</var></samp>&rsquo;, where the month's name can
 be spelled in full or abbreviated to three characters (with or without a
 period).  Case is not significant.
 </p>
 <p>  A date may be <em>generic</em>; that is, partially unspecified.  Then the
 entry applies to all dates that match the specification.  If the date
 does not contain a year, it is generic and applies to any year.
-Alternatively, <var>month</var>, <var>day</var>, or <var>year</var> can be a <samp>`*'</samp>;
+Alternatively, <var>month</var>, <var>day</var>, or <var>year</var> can be a &lsquo;<samp>*</samp>&rsquo;;
 this matches any month, day, or year, respectively.  Thus, a diary entry
-<samp>`3/*/*'</samp> matches any day in March of any year; so does <samp>`march
-*'</samp>.
+&lsquo;<samp>3/*/*</samp>&rsquo; matches any day in March of any year; so does &lsquo;<samp>march
+*</samp>&rsquo;.
 </p>
 <a name="IDX1288"></a>
 <a name="IDX1289"></a>
@@ -1832,7 +1831,7 @@ exiting Emacs.
 contain <em>sexp entries</em> for regular events such as anniversaries.
 These entries are based on Lisp expressions (sexps) that Emacs evaluates
 as it scans the diary file.  Instead of a date, a sexp entry contains
-<samp>`%%'</samp> followed by a Lisp expression which must begin and end with
+&lsquo;<samp>%%</samp>&rsquo; followed by a Lisp expression which must begin and end with
 parentheses.  The Lisp expression determines which dates the entry
 applies to.
 </p>
@@ -1869,8 +1868,8 @@ diary file.  You can also add one manually, for instance:
 <table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-anniversary 10 31 1948) Arthur's birthday
 </pre></td></tr></table>
 
-<p>This entry applies to October 31 in any year after 1948; <samp>`10 31
-1948'</samp> specifies the date.  (If you are using the European calendar
+<p>This entry applies to October 31 in any year after 1948; &lsquo;<samp>10 31
+1948</samp>&rsquo; specifies the date.  (If you are using the European calendar
 style, the month and day are interchanged.)  The reason this expression
 requires a beginning year is that advanced diary functions can use it to
 calculate the number of elapsed years.
@@ -1883,7 +1882,7 @@ dates.  Here is a block diary entry that applies to all dates from June
 <table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-block 6 24 1990 7 10 1990) Vacation
 </pre></td></tr></table>
 
-<p>The <samp>`6 24 1990'</samp> indicates the starting date and the <samp>`7 10 1990'</samp>
+<p>The &lsquo;<samp>6 24 1990</samp>&rsquo; indicates the starting date and the &lsquo;<samp>7 10 1990</samp>&rsquo;
 indicates the stopping date.  (Again, if you are using the European calendar
 style, the month and day are interchanged.)
 </p>
@@ -1906,7 +1905,7 @@ which looks like this:
 </pre></td></tr></table>
 
 <p>This entry applies to March 1, 1990 and every 50th day following;
-<samp>`3 1 1990'</samp> specifies the starting date.  (If you are using the
+&lsquo;<samp>3 1 1990</samp>&rsquo; specifies the starting date.  (If you are using the
 European calendar style, the month and day are interchanged.)
 </p>
 <p>  All three of these commands make marking diary entries.  To insert a
@@ -1916,7 +1915,7 @@ nonmarking entry, give a numeric argument to the command.  For example,
 <p>  Marking sexp diary entries in the calendar is <em>extremely</em>
 time-consuming, since every date visible in the calendar window must be
 individually checked.  So it's a good idea to make sexp diary entries
-nonmarking (with <samp>`&amp;'</samp>) when possible.
+nonmarking (with &lsquo;<samp>&amp;</samp>&rsquo;) when possible.
 </p>
 <p>  Another sophisticated kind of sexp entry, a <em>floating</em> diary entry,
 specifies a regularly occurring event by offsets specified in days,
@@ -1933,7 +1932,7 @@ that applies to the last Thursday in November:
 -1 specifies &ldquo;last&rdquo; (1 would mean &ldquo;first&rdquo;, 2 would mean
 &ldquo;second&rdquo;, -2 would mean &ldquo;second-to-last&rdquo;, and so on).  The
 month can be a single month or a list of months.  Thus you could change
-the 11 above to <samp>`'(1 2 3)'</samp> and have the entry apply to the last
+the 11 above to &lsquo;<samp>'(1 2 3)</samp>&rsquo; and have the entry apply to the last
 Thursday of January, February, and March.  If the month is <code>t</code>, the
 entry applies to all months of the year.
 </p>
@@ -2057,13 +2056,13 @@ window.
 <code>t</code> in order to mark any dates with diary entries.  This takes
 effect whenever the calendar window contents are recomputed.  There are
 two ways of marking these dates: by changing the face (see section <a href="xemacs_30.html#SEC382">Faces</a>),
-if the display supports that, or by placing a plus sign (<samp>`+'</samp>)
+if the display supports that, or by placing a plus sign (&lsquo;<samp>+</samp>&rsquo;)
 beside the date otherwise.
 </p>
 <a name="IDX1311"></a>
 <p>  Similarly, setting the variable <code>mark-holidays-in-calendar</code> to
 <code>t</code> marks holiday dates, either with a change of face or with an
-asterisk (<samp>`*'</samp>).
+asterisk (&lsquo;<samp>*</samp>&rsquo;).
 </p>
 <a name="IDX1312"></a>
 <a name="IDX1313"></a>
@@ -2378,7 +2377,7 @@ list is as follows:
 
 <p>  The calendar and diary by default display times of day in the
 conventional American style with the hours from 1 through 12, minutes,
-and either <samp>`am'</samp> or <samp>`pm'</samp>.  If you prefer the European style,
+and either &lsquo;<samp>am</samp>&rsquo; or &lsquo;<samp>pm</samp>&rsquo;.  If you prefer the European style,
 also known in the US as military, in which the hours go from 00 to 23,
 you can alter the variable <code>calendar-time-display-form</code>.  This
 variable is a list of expressions that can involve the variables
@@ -2397,8 +2396,8 @@ both alphabetic strings.  The default value of
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </pre></td></tr></table>
 
-<p>gives military-style times like <samp>`21:07 (UT)'</samp> if time zone names are
-defined, and times like <samp>`21:07'</samp> if they are not.
+<p>gives military-style times like &lsquo;<samp>21:07 (UT)</samp>&rsquo; if time zone names are
+defined, and times like &lsquo;<samp>21:07</samp>&rsquo; if they are not.
 </p>
 <hr size="6">
 <a name="Daylight-Savings"></a>
@@ -2560,7 +2559,7 @@ kinds of text in the diary file.  In order for the date pattern, as a
 whole, to match, all of its elements must match consecutively.
 </p>
 <p>  A regular expression in a date pattern matches in its usual fashion,
-using the standard syntax table altered so that <samp>`*'</samp> is a word
+using the standard syntax table altered so that &lsquo;<samp>*</samp>&rsquo; is a word
 constituent.
 </p>
 <p>  The symbols <code>month</code>, <code>day</code>, <code>year</code>, <code>monthname</code>,
@@ -2568,7 +2567,7 @@ and <code>dayname</code> match the month number, day number, year number,
 month name, and day name of the date being considered.  The symbols that
 match numbers allow leading zeros; those that match names allow
 three-letter abbreviations and capitalization.  All the symbols can
-match <samp>`*'</samp>; since <samp>`*'</samp> in a diary entry means &ldquo;any day&rdquo;, &ldquo;any
+match &lsquo;<samp>*</samp>&rsquo;; since &lsquo;<samp>*</samp>&rsquo; in a diary entry means &ldquo;any day&rdquo;, &ldquo;any
 month&rdquo;, and so on, it should match regardless of the date being
 considered.
 </p>
@@ -2585,7 +2584,7 @@ this:
 <p>Emacs matches of the diary entries with the date forms is done with the
 standard syntax table from Fundamental mode
 (see <a href="../lispref/Syntax-Tables.html#Syntax-Tables">(lispref)Syntax Tables</a> section `Syntax Tables' in <cite>XEmacs Lisp Reference Manual</cite>),
-but with the <samp>`*'</samp> changed so that it is a word constituent.
+but with the &lsquo;<samp>*</samp>&rsquo; changed so that it is a word constituent.
 </p>
 <p>  The date patterns in the list must be <em>mutually exclusive</em> and
 must not match any portion of the diary entry itself, just the date and
@@ -2655,8 +2654,8 @@ you must do this:
 </pre></td></tr></table>
 
 <p>  Hebrew- and Islamic-date diary entries have the same formats as
-Gregorian-date diary entries, except that <samp>`H'</samp> precedes a Hebrew
-date and <samp>`I'</samp> precedes an Islamic date.  Moreover, because the
+Gregorian-date diary entries, except that &lsquo;<samp>H</samp>&rsquo; precedes a Hebrew
+date and &lsquo;<samp>I</samp>&rsquo; precedes an Islamic date.  Moreover, because the
 Hebrew and Islamic month names are not uniquely specified by the first
 three letters, you may not abbreviate them.  For example, a diary entry
 for the Hebrew date Heshvan 25 could look like this:
@@ -2675,7 +2674,7 @@ Dhu al-Qada 25:
 on the Islamic calendar.
 </p>
 <p>  As with Gregorian-date diary entries, Hebrew- and Islamic-date entries
-are nonmarking if they are preceded with an ampersand (<samp>`&amp;'</samp>).
+are nonmarking if they are preceded with an ampersand (&lsquo;<samp>&amp;</samp>&rsquo;).
 </p>
 <p>  Here is a table of commands used in the calendar to create diary entries
 that match the selected date and other dates that are similar in the Hebrew
@@ -2861,7 +2860,7 @@ conditions under which a diary entry applies.  If you use the fancy
 diary display, sexp entries can generate the text of the entry depending
 on the date itself.  For example, an anniversary diary entry can insert
 the number of years since the anniversary date into the text of the
-diary entry.  Thus the <samp>`%d'</samp> in this dairy entry:
+diary entry.  Thus the &lsquo;<samp>%d</samp>&rsquo; in this dairy entry:
 </p>
 <a name="IDX1357"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
@@ -2978,7 +2977,7 @@ calendar.
 
 <p>causes every day's diary display to contain the equivalent date on the
 Hebrew calendar, if you are using the fancy diary display.  (With simple
-diary display, the line <samp>`&amp;%%(diary-hebrew-date)'</samp> appears in the
+diary display, the line &lsquo;<samp>&amp;%%(diary-hebrew-date)</samp>&rsquo; appears in the
 diary for any date, but does nothing particularly useful.)
 </p>
 <p>  These functions can be used to construct sexp diary entries based on
@@ -3076,7 +3075,6 @@ is 5 seconds.
 </dl>
 
 
-
 <hr size="6">
 <a name="Sorting"></a>
 <a name="SEC336"></a>
@@ -3153,8 +3151,8 @@ order.
 </dd>
 <dt> <kbd>M-x sort-numeric-fields</kbd></dt>
 <dd><p>Like <kbd>M-x sort-fields</kbd>, except the specified field is converted
-to a number for each line and the numbers are compared.  <samp>`10'</samp>
-comes before <samp>`2'</samp> when considered as text, but after it when
+to a number for each line and the numbers are compared.  &lsquo;<samp>10</samp>&rsquo;
+comes before &lsquo;<samp>2</samp>&rsquo; when considered as text, but after it when
 considered as a number.
 </p>
 </dd>
@@ -3193,8 +3191,8 @@ On systems where clash detection (locking of files being edited) is
 whether the file has changed on disk since it was last visited or
 </pre></td></tr></table>
 
-<p>where the sort keys were <samp>`If'</samp>, <samp>`XEmacs'</samp>, <samp>`buffer'</samp>,
-<samp>`systems'</samp>, and <samp>`the'</samp>.
+<p>where the sort keys were &lsquo;<samp>If</samp>&rsquo;, &lsquo;<samp>XEmacs</samp>&rsquo;, &lsquo;<samp>buffer</samp>&rsquo;,
+&lsquo;<samp>systems</samp>&rsquo;, and &lsquo;<samp>the</samp>&rsquo;.
 </p>
 <a name="IDX1390"></a>
 <p>  <kbd>M-x sort-columns</kbd> requires more explanation.  You specify the
@@ -3238,7 +3236,7 @@ See section <a href="xemacs_12.html#SEC101">Rectangles</a>.
 
 <p>  XEmacs has commands for passing single command lines to inferior shell
 processes; it can also run a shell interactively with input and output to
-an XEmacs buffer <samp>`*shell*'</samp>.
+an XEmacs buffer &lsquo;<samp>*shell*</samp>&rsquo;.
 </p>
 <dl compact="compact">
 <dt> <kbd>M-!</kbd></dt>
@@ -3300,7 +3298,7 @@ Full terminal emulation is available.
 minibuffer and creates an inferior shell to execute the line as a command.
 Standard input from the command comes from the null device.  If the shell
 command produces any output, the output goes to an XEmacs buffer named
-<samp>`*Shell Command Output*'</samp>, which is displayed in another window but not
+&lsquo;<samp>*Shell Command Output*</samp>&rsquo;, which is displayed in another window but not
 selected.  A numeric argument, as in <kbd>M-1 M-!</kbd>, directs this command to
 insert any output into the current buffer.  In that case, point is left
 before the output and the mark is set after the output.
@@ -3350,7 +3348,7 @@ the shell command.
 
 <p>  To run a subshell interactively with its typescript in an XEmacs
 buffer, use <kbd>M-x shell</kbd>.  This creates (or reuses) a buffer named
-<samp>`*shell*'</samp> and runs a subshell with input coming from and output going
+&lsquo;<samp>*shell*</samp>&rsquo; and runs a subshell with input coming from and output going
 to that buffer.  That is to say, any &ldquo;terminal output&rdquo; from the subshell
 will go into the buffer, advancing point, and any &ldquo;terminal input&rdquo; for
 the subshell comes from text in the buffer.  To give input to the subshell,
@@ -3363,8 +3361,8 @@ process it; this happens whenever XEmacs is waiting for keyboard input or
 for time to elapse.
 </p>
 <p> To get multiple subshells, change the name of buffer
-<samp>`*shell*'</samp> to something different by using <kbd>M-x rename-buffer</kbd>.  The
-next use of <kbd>M-x shell</kbd> creates a new buffer <samp>`*shell*'</samp> with
+&lsquo;<samp>*shell*</samp>&rsquo; to something different by using <kbd>M-x rename-buffer</kbd>.  The
+next use of <kbd>M-x shell</kbd> creates a new buffer &lsquo;<samp>*shell*</samp>&rsquo; with
 its own subshell.  By renaming this buffer as well you can create a third
 one, and so on.  All the subshells run independently and in parallel.
 </p>
@@ -3377,25 +3375,25 @@ is relative, the directories in the list <code>exec-path</code> are searched
 (see section <a href="#SEC338">Single Shell Commands</a>).
 </p>
 <p>  As soon as the subshell is started, it is sent as input the contents of
-the file <tt>`~/.emacs_<var>shellname</var>'</tt>, if that file exists, where
+the file &lsquo;<tt>~/.emacs_<var>shellname</var></tt>&rsquo;, if that file exists, where
 <var>shellname</var> is the name of the file that the shell was loaded from.
 For example, if you use <code>csh</code>, the file sent to it is
-<tt>`~/.emacs_csh'</tt>.
+&lsquo;<tt>~/.emacs_csh</tt>&rsquo;.
 </p>
 <a name="IDX1396"></a>
 <a name="IDX1397"></a>
 <a name="IDX1398"></a>
 <p>  <code>cd</code>, <code>pushd</code>, and <code>popd</code> commands given to the inferior
-shell are watched by XEmacs so it can keep the <samp>`*shell*'</samp> buffer's
+shell are watched by XEmacs so it can keep the &lsquo;<samp>*shell*</samp>&rsquo; buffer's
 default directory the same as the shell's working directory.  These
 commands are recognized syntactically by examining lines of input that are
 sent.  If you use aliases for these commands, you can tell XEmacs to
 recognize them also.  For example, if the value of the variable
 <code>shell-pushd-regexp</code> matches the beginning of a shell command line,
 that line is regarded as a <code>pushd</code> command.  Change this variable when
-you add aliases for <samp>`pushd'</samp>.  Likewise, <code>shell-popd-regexp</code> and
+you add aliases for &lsquo;<samp>pushd</samp>&rsquo;.  Likewise, <code>shell-popd-regexp</code> and
 <code>shell-cd-regexp</code> are used to recognize commands with the meaning of
-<samp>`popd'</samp> and <samp>`cd'</samp>.
+&lsquo;<samp>popd</samp>&rsquo; and &lsquo;<samp>cd</samp>&rsquo;.
 </p>
 <p><kbd>M-x shell-resync-dirs</kbd> queries the shell and resynchronizes XEmacs'
 idea of what the current directory stack is.  <kbd>M-x
@@ -3403,7 +3401,7 @@ shell-dirtrack-toggle</kbd> turns directory tracking on and off.
 </p>
 <a name="IDX1399"></a>
 <p>XEmacs keeps a history of the most recent commands you have typed in the
-<samp>`*shell*'</samp> buffer.  If you are at the beginning of a shell command
+&lsquo;<samp>*shell*</samp>&rsquo; buffer.  If you are at the beginning of a shell command
 line and type <kbd>M-p</kbd>, the previous shell input is inserted into the
 buffer before point.  Immediately typing <kbd>M-p</kbd> again deletes that
 input and inserts the one before it.  By repeating <kbd>M-p</kbd> you can
@@ -3557,7 +3555,7 @@ using <kbd>M-p</kbd> quickly and go past the desired command
 
 <p>  To run a subshell in a terminal emulator, putting its typescript in an XEmacs
 buffer, use <kbd>M-x term</kbd>.  This creates (or reuses) a buffer named
-<samp>`*term*'</samp> and runs a subshell with input coming from your keyboard and
+&lsquo;<samp>*term*</samp>&rsquo; and runs a subshell with input coming from your keyboard and
 output going to that buffer.
 </p>
 <p>All the normal keys that you type are sent without any interpretation
@@ -3587,7 +3585,7 @@ it is running a command.  Output from the subshell waits until XEmacs
 has time to process it; this happens whenever XEmacs is waiting for
 keyboard input or for time to elapse.
 </p>
-<p>   To make multiple terminal emulators, rename the buffer <samp>`*term*'</samp>
+<p>   To make multiple terminal emulators, rename the buffer &lsquo;<samp>*term*</samp>&rsquo;
 to something different using <kbd>M-x rename-uniquely</kbd>,
 just as with Shell mode.
 </p>
@@ -3650,7 +3648,7 @@ except for the Term escape character, normally <kbd>C-c</kbd>.
 <dt> <kbd>C-c C-x</kbd></dt>
 <dd><p>A prefix command to conveniently access the global <kbd>C-x</kbd> commands.
 For example, <kbd>C-c C-x o</kbd> invokes the global binding of
-<kbd>C-x o</kbd>, which is normally <samp>`other-window'</samp>.
+<kbd>C-x o</kbd>, which is normally &lsquo;<samp>other-window</samp>&rsquo;.
 </p></dd>
 </dl>
 
@@ -3685,16 +3683,16 @@ term mode will pause at the end of each screenful.
 <dt> <kbd>C-c C-q</kbd></dt>
 <dd><p>Toggles the pager feature:  Disables the pager if it is enabled,
 and vice versa.  This works in both line and char modes.
-If the pager enabled, the mode-line contains the word <samp>`page'</samp>.
+If the pager enabled, the mode-line contains the word &lsquo;<samp>page</samp>&rsquo;.
 </p></dd>
 </dl>
 
 <p>If the pager is enabled, and Term receives more than a screenful
 of output since your last input, Term will enter More break mode.
-This is indicated by <samp>`**MORE**'</samp> in the mode-line.
+This is indicated by &lsquo;<samp>**MORE**</samp>&rsquo; in the mode-line.
 Type a <kbd>Space</kbd> to display the next screenful of output.
 Type <kbd>?</kbd> to see your other options.  The interface is similar
-to the Unix <samp>`more'</samp> program.
+to the Unix &lsquo;<samp>more</samp>&rsquo; program.
 </p>
 <hr size="6">
 <a name="Narrowing"></a>
@@ -3735,7 +3733,7 @@ buffer's <em>restriction</em>.
 <p>  Narrowing sometimes makes it easier to concentrate on a single
 subroutine or paragraph by eliminating clutter.  It can also be used to
 restrict the range of operation of a replace command or repeating
-keyboard macro.  The word <samp>`Narrow'</samp> appears in the mode line
+keyboard macro.  The word &lsquo;<samp>Narrow</samp>&rsquo; appears in the mode line
 whenever narrowing is in effect.  When you have narrowed to a part of the
 buffer, that part appears to be all there is.  You can't see the rest,
 can't move into it (motion commands won't go outside the visible part),
@@ -3784,16 +3782,16 @@ buffer you narrowed down.  See section <a href="xemacs_7.html#SEC57">Cursor Posi
 <h2 class="section"> 26.9 Hardcopy Output </h2>
 
 <p>  The XEmacs commands for making hardcopy derive their names from the
-Unix commands <samp>`print'</samp> and <samp>`lpr'</samp>.
+Unix commands &lsquo;<samp>print</samp>&rsquo; and &lsquo;<samp>lpr</samp>&rsquo;.
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x print-buffer</kbd></dt>
-<dd><p>Print hardcopy of current buffer using Unix command <samp>`print'</samp>
-<br>(<samp>`lpr -p'</samp>).  This command adds page headings containing the file name
+<dd><p>Print hardcopy of current buffer using Unix command &lsquo;<samp>print</samp>&rsquo;
+<br>(&lsquo;<samp>lpr -p</samp>&rsquo;).  This command adds page headings containing the file name
 and page number.
 </p></dd>
 <dt> <kbd>M-x lpr-buffer</kbd></dt>
-<dd><p>Print hardcopy of current buffer using Unix command <samp>`lpr'</samp>.
+<dd><p>Print hardcopy of current buffer using Unix command &lsquo;<samp>lpr</samp>&rsquo;.
 This command does not add page headings.
 </p></dd>
 <dt> <kbd>M-x print-region</kbd></dt>
@@ -3811,9 +3809,9 @@ This command does not add page headings.
 <a name="IDX1440"></a>
 <p>  All the hardcopy commands pass extra switches to the <code>lpr</code> program
 based on the value of the variable <code>lpr-switches</code>.  Its value should
-be a list of strings, each string a switch starting with <samp>`-'</samp>.  For
+be a list of strings, each string a switch starting with &lsquo;<samp>-</samp>&rsquo;.  For
 example, the value could be <code>(&quot;-Pfoo&quot;)</code> to print on printer
-<samp>`foo'</samp>.
+&lsquo;<samp>foo</samp>&rsquo;.
 </p>
 <hr size="6">
 <a name="Recursive-Edit"></a>
@@ -3920,12 +3918,12 @@ was invoked from.
 either word by word or character by character.  Starting from a buffer of
 straight English, it produces extremely amusing output.  The input comes
 from the current XEmacs buffer.  Dissociated Press writes its output in a
-buffer named <samp>`*Dissociation*'</samp>, and redisplays that buffer after every
+buffer named &lsquo;<samp>*Dissociation*</samp>&rsquo;, and redisplays that buffer after every
 couple of lines (approximately) to facilitate reading it.
 </p>
 <p>  <code>dissociated-press</code> asks every so often whether to continue
 operating.  Answer <kbd>n</kbd> to stop it.  You can also stop at any time by
-typing <kbd>C-g</kbd>.  The dissociation output remains in the <samp>`*Dissociation*'</samp>
+typing <kbd>C-g</kbd>.  The dissociation output remains in the &lsquo;<samp>*Dissociation*</samp>&rsquo;
 buffer for you to copy elsewhere if you wish.
 </p>
 <a name="IDX1447"></a>
@@ -3945,7 +3943,7 @@ negative argument tells it to operate word by word and specifies the number
 of overlap words.  In this mode, whole words are treated as the elements to
 be permuted, rather than characters.  No argument is equivalent to an
 argument of two.  For your againformation, the output goes only into the
-buffer <samp>`*Dissociation*'</samp>.  The buffer you start with is not changed.
+buffer &lsquo;<samp>*Dissociation*</samp>&rsquo;.  The buffer you start with is not changed.
 </p>
 <a name="IDX1449"></a>
 <a name="IDX1450"></a>
@@ -4129,7 +4127,6 @@ set-gosmacs-bindings</kbd> was done.
 See section <a href="xemacs_25.html#SEC257">Converting Mocklisp to Lisp</a>.
 </p></dd>
 </dl>
-
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename novalidate
+@setfilename novalidate.info
 
 @novalidate
 

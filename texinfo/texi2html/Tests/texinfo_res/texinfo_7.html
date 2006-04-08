@@ -373,7 +373,7 @@ node's `Previous' node is the same as its `Up' node, both node pointers
 name the same node.
 </p>
 <p>Usually, the first node of a Texinfo file is the `Top' node, and its
-`Up' and `Previous' pointers point to the <tt>`dir'</tt> file, which
+`Up' and `Previous' pointers point to the &lsquo;<tt>dir</tt>&rsquo; file, which
 contains the main menu for all of Info.
 </p>
 <p>The `Top' node itself contains the main or master menu for the manual.
@@ -424,7 +424,7 @@ insert node pointers into the Info file it creates.  (See section <a href="texin
 <p>Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
 Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
-<samp>`@node'</samp> and a comment line listing the names of the pointers in
+&lsquo;<samp>@node</samp>&rsquo; and a comment line listing the names of the pointers in
 their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
 if you are not familiar with Texinfo.
@@ -542,7 +542,7 @@ node containing the pointer.
 </li><li>
 @-commands used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
-escaped with a <samp>`@'</samp>, such as <code>@</code> and <code>{</code>.  For a few
+escaped with a &lsquo;<samp>@</samp>&rsquo;, such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="texinfo_21.html#SEC265">Pointer Validation</a>.
 
@@ -558,8 +558,8 @@ this:
 </li><li>
 <a name="IDX98"></a>
 You cannot use parentheses in node names, because a node name such as
-<samp>`(foo)bar'</samp> is interpreted by the Info readers as a node
-<samp>`bar'</samp> in an Info file <tt>`foo'</tt>.
+&lsquo;<samp>(foo)bar</samp>&rsquo; is interpreted by the Info readers as a node
+&lsquo;<samp>bar</samp>&rsquo; in an Info file &lsquo;<tt>foo</tt>&rsquo;.
 
 </li><li>
 <a name="IDX99"></a>
@@ -618,21 +618,21 @@ short summary, copying permissions, and a master menu.  See section <a href="tex
 <li>
 <a name="IDX106"></a>
 <a name="IDX107"></a>
-The Top node (which must be named <samp>`top'</samp> or <samp>`Top'</samp>) should have
+The Top node (which must be named &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;) should have
 as its `Up' node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
 <p>Usually, all Info files are installed in the same Info directory tree;
-in this case, use <samp>`(dir)'</samp> as the parent of the Top node; this is
-short for <samp>`(dir)top'</samp>, and specifies the Top node in the <tt>`dir'</tt>
+in this case, use &lsquo;<samp>(dir)</samp>&rsquo; as the parent of the Top node; this is
+short for &lsquo;<samp>(dir)top</samp>&rsquo;, and specifies the Top node in the &lsquo;<tt>dir</tt>&rsquo;
 file, which contains the main menu for the Info system as a whole. 
 </p>
 </li><li>
 <a name="IDX108"></a>
 On the other hand, do not define the `Previous' node of the Top node to
-be <samp>`(dir)'</samp>, as it causes confusing behavior for users: if you are
+be &lsquo;<samp>(dir)</samp>&rsquo;, as it causes confusing behavior for users: if you are
 in the Top node and hits <kbd>DEL</kbd> to go backwards, you wind up in the
-middle of the some other entry in the <tt>`dir'</tt> file, which has nothing
+middle of the some other entry in the &lsquo;<tt>dir</tt>&rsquo; file, which has nothing
 to do with what you were reading.
 
 </li><li>
@@ -643,7 +643,7 @@ document.
 </li></ul>
 
 <p>See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>, for more information about installing
-an Info file in the <tt>`info'</tt> directory.
+an Info file in the &lsquo;<tt>info</tt>&rsquo; directory.
 </p>
 <p>For concreteness, here is an example with explicit pointers (which you
 can maintain automatically with the texinfo mode commands):

@@ -44,4 +44,8 @@ no_node.texi(,45) @printindex cp
 no_node.texi(,46) Text of chapter
 no_node.texi(,47) @cindex Chapter2
 no_node.texi(,48) 
-no_node.texi(,49) @bye
+no_node.texi(,49) @chapter Chapter 2
+no_node.texi(,50) 
+no_node.texi(,51) In chapter 2
+no_node.texi(,52) 
+no_node.texi(,53) @bye

@@ -93,11 +93,11 @@ command, which is for documenting macros in the subject of the manual
 (see section <a href="texinfo_16.html#SEC215">The Template for a Definition</a>).
 </p>
 </li><li>
-<samp>`@alias'</samp> is a convenient way to define a new name for an existing
+&lsquo;<samp>@alias</samp>&rsquo; is a convenient way to define a new name for an existing
 command.
 
 </li><li>
-<samp>`@definfoenclose'</samp> allows you to define new commands with
+&lsquo;<samp>@definfoenclose</samp>&rsquo; allows you to define new commands with
 customized output in the Info file.
 
 </li></ul>
@@ -109,9 +109,9 @@ customized output in the Info file.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC241">18.3 Macro Details</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Beyond basic macro usage.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC242">18.4 <samp>`@alias <var>new</var>=<var>existing</var>'</samp></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Command aliases.
+<tr><td align="left" valign="top"><a href="#SEC242">18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Command aliases.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC243">18.5 <samp>`definfoenclose'</samp>: Customized Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Customized highlighting.
+<tr><td align="left" valign="top"><a href="#SEC243">18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Customized highlighting.
 </td></tr>
 </table>
 
@@ -152,8 +152,8 @@ arguments supplied when the macro is subsequently used in the document
 of letters: no digits, hyphens, underscores, or other special characters.
 </p>
 <p>If a macro needs no parameters, you can define it either with an empty
-list (<samp>`@macro foo {}'</samp>) or with no braces at all (<samp>`@macro
-foo'</samp>).
+list (&lsquo;<samp>@macro foo {}</samp>&rsquo;) or with no braces at all (&lsquo;<samp>@macro
+foo</samp>&rsquo;).
 </p>
 <a name="IDX303"></a>
 <a name="IDX304"></a>
@@ -167,13 +167,13 @@ macro does not work in TeX due to limitations in the design of
 </p>
 <a name="IDX306"></a>
 <p>In the macro body, instances of a parameter name surrounded by
-backslashes, as in <samp>`\<var>param1</var>\'</samp> in the example above, are
+backslashes, as in &lsquo;<samp>\<var>param1</var>\</samp>&rsquo; in the example above, are
 replaced by the corresponding argument from the macro invocation.  You
 can use parameter names any number of times in the body, including zero.
 </p>
 <a name="IDX307"></a>
-<p>To get a single <samp>`\'</samp> in the macro expansion, use <samp>`\\'</samp>.  Any
-other use of <samp>`\'</samp> in the body yields a warning.
+<p>To get a single &lsquo;<samp>\</samp>&rsquo; in the macro expansion, use &lsquo;<samp>\\</samp>&rsquo;.  Any
+other use of &lsquo;<samp>\</samp>&rsquo; in the body yields a warning.
 </p>
 <a name="IDX308"></a>
 <a name="IDX309"></a>
@@ -184,7 +184,7 @@ other whitespace is treated according to the usual Texinfo rules.
 <a name="IDX310"></a>
 <a name="IDX311"></a>
 <p>To allow a macro to be used recursively, that is, in an argument to a
-call to itself, you must define it with <samp>`@rmacro'</samp>, like this:
+call to itself, you must define it with &lsquo;<samp>@rmacro</samp>&rsquo;, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@rmacro rmac {arg}
 a\arg\b
@@ -193,8 +193,8 @@ a\arg\b
 @rmac{1@rmac{text}2}
 </pre></td></tr></table>
 
-<p>This produces the output `a1atextb2b'.  With <samp>`@macro'</samp> instead of
-<samp>`@rmacro'</samp>, an error message is given.
+<p>This produces the output `a1atextb2b'.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
+&lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
 </p>
 <a name="IDX312"></a>
 <a name="IDX313"></a>
@@ -275,7 +275,7 @@ backslash, as in
 </pre></td></tr></table>
 
 <p>which will pass the (almost certainly error-producing) argument
-<samp>`\{},'</samp> to <var>macname</var>.  However, commas in parameters, even
+&lsquo;<samp>\{},</samp>&rsquo; to <var>macname</var>.  However, commas in parameters, even
 if escaped by a backslash, might cause trouble in TeX.
 </p>
 <p>If the macro is defined to take a single argument, and is invoked
@@ -372,7 +372,7 @@ It is best to avoid comments inside macro definitions.
 
 <p>If some macro feature causes errors when producing the printed version
 of a manual, try expanding the macros with <code>makeinfo</code> by
-invoking <code>texi2dvi</code> with the <samp>`-e'</samp> option; see <a href="texinfo_20.html#SEC247">Format with <code>texi2dvi</code></a>.
+invoking <code>texi2dvi</code> with the &lsquo;<samp>-e</samp>&rsquo; option; see <a href="texinfo_20.html#SEC247">Format with <code>texi2dvi</code></a>.
 </p>
 <hr size="6">
 <a name="alias"></a>
@@ -393,14 +393,14 @@ invoking <code>texi2dvi</code> with the <samp>`-e'</samp> option; see <a href="t
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 18.4 <samp>`@alias <var>new</var>=<var>existing</var>'</samp> </h2>
+<h2 class="section"> 18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo; </h2>
 
-<p>The <samp>`@alias'</samp> command defines a new command to be just like an
+<p>The &lsquo;<samp>@alias</samp>&rsquo; command defines a new command to be just like an
 existing one.  This is useful for defining additional markup names, thus
 preserving semantic information in the input even though the output
 result may be the same.
 </p>
-<p>Write the <samp>`@alias'</samp> command on a line by itself, followed by the
+<p>Write the &lsquo;<samp>@alias</samp>&rsquo; command on a line by itself, followed by the
 new command name, an equals sign, and the existing command name.
 Whitespace around the equals sign is ignored.  Thus:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@alias <var>new</var> = <var>existing</var>
@@ -440,7 +440,7 @@ command is not redundant.  (It was also heavily used in the Jargon File!)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 18.5 <samp>`definfoenclose'</samp>: Customized Highlighting </h2>
+<h2 class="section"> 18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting </h2>
 
 <p>A <code>@definfoenclose</code> command may be used to define a highlighting
 command for Info, but not for TeX.  A command defined using
@@ -450,7 +450,7 @@ your Info output.
 </p> 
 <p>Presumably, if you define a command with <code>@definfoenclose</code> for Info,
 you will create a corresponding command for TeX, either in
-<tt>`texinfo.tex'</tt>, <tt>`texinfo.cnf'</tt>, or within an <samp>`@iftex'</samp> in
+&lsquo;<tt>texinfo.tex</tt>&rsquo;, &lsquo;<tt>texinfo.cnf</tt>&rsquo;, or within an &lsquo;<samp>@iftex</samp>&rsquo; in
 your document.
 </p>
 <p>Write a <code>@definfoenclose</code> command on a line and follow it with
@@ -495,8 +495,8 @@ argument to <code>@phoo</code> in italics.
 </p>
 <p>Each definition applies to its own formatter: one for TeX, the other
 for <code>texinfo-format-buffer</code> or <code>texinfo-format-region</code>.  The
-<code>@definfoenclose</code> command need not be within <samp>`@ifinfo'</samp>, but
-the raw TeX commands do need to be in <samp>`@iftex'</samp>.
+<code>@definfoenclose</code> command need not be within &lsquo;<samp>@ifinfo</samp>&rsquo;, but
+the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
 </p>
 <a name="IDX319"></a>
 <p>Here is another example: write
@@ -508,7 +508,7 @@ the raw TeX commands do need to be in <samp>`@iftex'</samp>.
 formatting command that inserts nothing before and a colon after the
 argument to <code>@headword</code>.
 </p>
-<p><samp>`@definfoenclose'</samp> definitions must not be recursive, directly or
+<p>&lsquo;<samp>@definfoenclose</samp>&rsquo; definitions must not be recursive, directly or
 indirectly.
 </p>
 

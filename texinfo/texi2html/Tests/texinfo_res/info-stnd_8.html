@@ -131,7 +131,7 @@ updated, and whether or not the Info file was compressed when stored on
 disk.
 </p>
 <p>Here is a sample mode line for a window containing an uncompressed file
-named <tt>`dir'</tt>, showing the node <samp>`Top'</samp>.
+named &lsquo;<tt>dir</tt>&rsquo;, showing the node &lsquo;<samp>Top</samp>&rsquo;.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">-----Info: (dir)Top, 40 lines --Top-------------------------------------
             ^^   ^   ^^^        ^^
@@ -139,7 +139,7 @@ named <tt>`dir'</tt>, showing the node <samp>`Top'</samp>.
 </pre></td></tr></table>
 
 <p>When a node comes from a file which is compressed on disk, this is
-indicated in the mode line with two small <samp>`z'</samp>'s.  In addition, if
+indicated in the mode line with two small &lsquo;<samp>z</samp>&rsquo;'s.  In addition, if
 the Info file containing the node has been split into subfiles, the name
 of the subfile containing the node appears in the modeline as well:
 </p>
@@ -148,14 +148,14 @@ of the subfile containing the node appears in the modeline as well:
 
 <p>Truncation of long lines (as opposed to wrapping them to the next
 display line, see section <a href="info-stnd_4.html#SEC4">toggle-wrap</a>) is indicated by a
-<samp>`$'</samp> at the left edge of the mode line:
+&lsquo;<samp>$</samp>&rsquo; at the left edge of the mode line:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
 </pre></td></tr></table>
 
 <p>When Info makes a node internally, such that there is no corresponding
 info file on disk, the name of the node is surrounded by asterisks
-(<samp>`*'</samp>).  The name itself tells you what the contents of the window
+(&lsquo;<samp>*</samp>&rsquo;).  The name itself tells you what the contents of the window
 are; the sample mode line below shows an internally constructed node
 showing possible completions:
 </p>
@@ -195,17 +195,17 @@ window (see section <a href="info-stnd_5.html#SEC5"><code>history-node</code></a
 <a name="IDX219"></a>
 <p>Select the next window on the screen.  Note that the echo area can only be
 selected if it is already in use, and you have left it temporarily.
-Normally, <samp>`C-x o'</samp> simply moves the cursor into the next window on
+Normally, &lsquo;<samp>C-x o</samp>&rsquo; simply moves the cursor into the next window on
 the screen, or if you are already within the last window, into the first
-window on the screen.  Given a numeric argument, <samp>`C-x o'</samp> moves over
-that many windows.  A negative argument causes <samp>`C-x o'</samp> to select
+window on the screen.  Given a numeric argument, &lsquo;<samp>C-x o</samp>&rsquo; moves over
+that many windows.  A negative argument causes &lsquo;<samp>C-x o</samp>&rsquo; to select
 the previous window on the screen.
 </p>
 </dd>
 <dt> <kbd>M-x prev-window</kbd></dt>
 <dd><a name="IDX220"></a>
 <p>Select the previous window on the screen.  This is identical to
-<samp>`C-x o'</samp> with a negative argument.
+&lsquo;<samp>C-x o</samp>&rsquo; with a negative argument.
 </p>
 </dd>
 <dt> <kbd>C-x <kbd>2</kbd></kbd> (<code>split-window</code>)</dt>
@@ -238,7 +238,7 @@ some of them.
 <dt> <kbd>ESC <kbd>C-v</kbd></kbd> (<code>scroll-other-window</code>)</dt>
 <dd><a name="IDX229"></a>
 <a name="IDX230"></a>
-<p>Scroll the other window, in the same fashion that <samp>`C-v'</samp> might
+<p>Scroll the other window, in the same fashion that &lsquo;<samp>C-v</samp>&rsquo; might
 scroll the current window.  Given a negative argument, scroll the
 &quot;other&quot; window backward.
 </p>
@@ -366,7 +366,7 @@ read in the echo area:
 <p>Delete the character behind the cursor.
 </p>
 <p>On some keyboards, this key is designated <kbd>BS</kbd>, for
-<samp>`BackSpace'</samp>.  Those keyboards will usually bind <kbd>DEL</kbd> in the
+&lsquo;<samp>BackSpace</samp>&rsquo;.  Those keyboards will usually bind <kbd>DEL</kbd> in the
 echo area to <code>echo-area-delete</code>.
 </p>
 </dd>
@@ -392,7 +392,7 @@ completion.  If the input line is empty, it aborts the calling function.
 <a name="IDX268"></a>
 <a name="IDX269"></a>
 <p>Insert the next character verbatim.  This is how you can insert control
-characters into a search string, for example, or the <samp>`?'</samp> character
+characters into a search string, for example, or the &lsquo;<samp>?</samp>&rsquo; character
 when Info prompts with completion.
 </p>
 </dd>
@@ -400,7 +400,7 @@ when Info prompts with completion.
 <dd><a name="IDX270"></a>
 <a name="IDX271"></a>
 <p>Insert the character.  Characters that have their 8th bit set, and not
-bound to <samp>`M-'</samp> commands, are also inserted verbatim; this is useful
+bound to &lsquo;<samp>M-</samp>&rsquo; commands, are also inserted verbatim; this is useful
 for terminals which support Latin scripts.
 </p>
 </dd>
@@ -414,7 +414,7 @@ for terminals which support Latin scripts.
 <a name="IDX275"></a>
 <a name="IDX276"></a>
 <p>On DOS/Windows only, the <kbd>Shift-<kbd>TAB</kbd></kbd> key is an alias for
-<kbd>M-<kbd>TAB</kbd></kbd>.  This key is sometimes called <samp>`BackTab'</samp>.
+<kbd>M-<kbd>TAB</kbd></kbd>.  This key is sometimes called &lsquo;<samp>BackTab</samp>&rsquo;.
 </p>
 </dd>
 <dt> <kbd>C-t</kbd> (<code>echo-area-transpose-chars</code>)</dt>
@@ -507,8 +507,8 @@ food
 forget
 </pre></td></tr></table>
 
-<p>and you have typed an <samp>`f'</samp>, followed by <samp>`?'</samp>, Info will pop up a
-window showing a node called <samp>`*Completions*'</samp> which lists the
+<p>and you have typed an &lsquo;<samp>f</samp>&rsquo;, followed by &lsquo;<samp>?</samp>&rsquo;, Info will pop up a
+window showing a node called &lsquo;<samp>*Completions*</samp>&rsquo; which lists the
 possible completions like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">3 completions:
@@ -516,12 +516,12 @@ foliate         food
 forget
 </pre></td></tr></table>
 
-<p>i.e., all of the choices which begin with <samp>`f'</samp>.  Pressing <kbd>SPC</kbd>
-or <kbd>TAB</kbd> would result in <samp>`fo'</samp> appearing in the echo area, since
-all of the choices which begin with <samp>`f'</samp> continue with <samp>`o'</samp>.
-Now, typing <samp>`l'</samp> followed by <samp>`TAB'</samp> results in <samp>`foliate'</samp>
+<p>i.e., all of the choices which begin with &lsquo;<samp>f</samp>&rsquo;.  Pressing <kbd>SPC</kbd>
+or <kbd>TAB</kbd> would result in &lsquo;<samp>fo</samp>&rsquo; appearing in the echo area, since
+all of the choices which begin with &lsquo;<samp>f</samp>&rsquo; continue with &lsquo;<samp>o</samp>&rsquo;.
+Now, typing &lsquo;<samp>l</samp>&rsquo; followed by &lsquo;<samp>TAB</samp>&rsquo; results in &lsquo;<samp>foliate</samp>&rsquo;
 appearing in the echo area, since that is the only choice which begins
-with <samp>`fol'</samp>.
+with &lsquo;<samp>fol</samp>&rsquo;.
 </p>
 </dd>
 <dt> <kbd>ESC C-v</kbd> (<code>echo-area-scroll-completions-window</code>)</dt>

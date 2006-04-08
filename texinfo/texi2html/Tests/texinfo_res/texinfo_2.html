@@ -156,7 +156,7 @@ better to include too much than to leave out something important.
 </p>
 <a name="IDX2"></a>
 <p>Patches are most welcome; if possible, please make them with
-<samp>`diff -c'</samp> (see <a href="../diffutils/index.html#Top">(diffutils)Top</a> section `Overview' in <cite>Comparing and Merging Files</cite>) and include <tt>`ChangeLog'</tt> entries (see <a href="../emacs/Change-Log.html#Change-Log">(emacs)Change Log</a> section `Change Log' in <cite>The GNU Emacs Manual</cite>).
+&lsquo;<samp>diff -c</samp>&rsquo; (see <a href="../diffutils/index.html#Top">(diffutils)Top</a> section `Overview' in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="../emacs/Change-Log.html#Change-Log">(emacs)Change Log</a> section `Change Log' in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>When sending patches, if possible please do not encode or split them in
 any way; it's much easier to deal with one plain text message, however
@@ -232,7 +232,7 @@ browsers.  Thus Texinfo can be used by almost any computer user.
 </p>
 <a name="IDX8"></a>
 <p>A Texinfo source file is a plain <small>ASCII</small> file containing text and
-<em>@-commands</em> (words preceded by an <samp>`@'</samp>) that tell the
+<em>@-commands</em> (words preceded by an &lsquo;<samp>@</samp>&rsquo;) that tell the
 typesetting and formatting programs what to do.  You may edit a Texinfo
 file with any text editor; but it is especially convenient to use GNU
 Emacs since that editor has a special mode, called Texinfo mode, that
@@ -263,7 +263,7 @@ output formats.  You might as well just write the man page directly.
 <a name="IDX11"></a>
 <p>Man pages still have their place, and if you wish to support them, the
 program <code>help2man</code> may be useful; it generates a traditional man
-page from the <samp>`--help'</samp> output of a program.  In fact, this is
+page from the &lsquo;<samp>--help</samp>&rsquo; output of a program.  In fact, this is
 currently used to generate man pages for the Texinfo programs
 themselves.  It is GNU software written by Brendan O'Dea, available from
 <a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
@@ -358,7 +358,7 @@ the command line (see <a href="../info/index.html#Top">(info)Top</a> section `To
 printed manual, you can hit <kbd>SPC</kbd> repeatedly, or you get the whole
 file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html#Expert">Advanced Info commands: (info)Expert</a>.)
 </p>
-<p>The <tt>`dir'</tt> file in the <tt>`info'</tt> directory serves as the
+<p>The &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</tt>&rsquo; directory serves as the
 departure point for the whole Info system.  From it, you can reach the
 `Top' nodes of each of the documents in a complete Info system.
 </p>
@@ -411,12 +411,12 @@ this latter application is not recommended since electronic mail is so
 much easier.
 </p>
 <p>TeX is a general purpose typesetting program.  Texinfo provides a
-file <tt>`texinfo.tex'</tt> that contains information (definitions or
+file &lsquo;<tt>texinfo.tex</tt>&rsquo; that contains information (definitions or
 <em>macros</em>) that TeX uses when it typesets a Texinfo file.
-(<tt>`texinfo.tex'</tt> tells TeX how to convert the Texinfo @-commands
+(&lsquo;<tt>texinfo.tex</tt>&rsquo; tells TeX how to convert the Texinfo @-commands
 to TeX commands, which TeX can then process to create the typeset
-document.)  <tt>`texinfo.tex'</tt> contains the specifications for printing
-a document.  You can get the latest version of <tt>`texinfo.tex'</tt> from
+document.)  &lsquo;<tt>texinfo.tex</tt>&rsquo; contains the specifications for printing
+a document.  You can get the latest version of &lsquo;<tt>texinfo.tex</tt>&rsquo; from
 <a href="ftp://ftp.gnu.org/gnu/texinfo.tex">ftp://ftp.gnu.org/gnu/texinfo.tex</a>.
 </p>
 <p>In the United States, documents are most often printed on 8.5 inch by 11
@@ -425,7 +425,7 @@ you can also print for 7 inch by 9.25 inch pages (178mm by
 235mm, the <code>@smallbook</code> size; or on A4 or A5 size paper
 (<code>@afourpaper</code>, <code>@afivepaper</code>).  (See section <a href="texinfo_20.html#SEC255">Printing &ldquo;Small&rdquo; Books</a>.  Also, see <a href="texinfo_20.html#SEC256">Printing on A4 Paper</a>.)
 </p>
-<p>By changing the parameters in <tt>`texinfo.tex'</tt>, you can change the
+<p>By changing the parameters in &lsquo;<tt>texinfo.tex</tt>&rsquo;, you can change the
 size of the printed document.  In addition, you can change the style in
 which the printed document is formatted; for example, you can change the
 sizes and fonts used, the amount of indentation for each paragraph, the
@@ -472,7 +472,7 @@ formatting commands that Texinfo supports are necessarily limited.
 <p>In a Texinfo file, the commands that tell TeX how to typeset the
 printed manual and tell <code>makeinfo</code> and
 <code>texinfo-format-buffer</code> how to create an Info file are preceded
-by <samp>`@'</samp>; they are called <em>@-commands</em>.  For example,
+by &lsquo;<samp>@</samp>&rsquo;; they are called <em>@-commands</em>.  For example,
 <code>@node</code> is the command to indicate a node and <code>@chapter</code>
 is the command to indicate the start of a chapter.
 </p>
@@ -562,13 +562,13 @@ syntax, see <a href="texinfo_29.html#SEC320">@-Command Syntax</a>.)
 </p>
 <ul>
 <li>
-All printable <small>ASCII</small> characters except <samp>`@'</samp>, <samp>`{'</samp> and
-<samp>`}'</samp> can appear in a Texinfo file and stand for themselves.
-<samp>`@'</samp> is the escape character which introduces commands, while
-<samp>`{'</samp> and <samp>`}'</samp> are used to surround arguments to certain
+All printable <small>ASCII</small> characters except &lsquo;<samp>@</samp>&rsquo;, &lsquo;<samp>{</samp>&rsquo; and
+&lsquo;<samp>}</samp>&rsquo; can appear in a Texinfo file and stand for themselves.
+&lsquo;<samp>@</samp>&rsquo; is the escape character which introduces commands, while
+&lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo; are used to surround arguments to certain
 commands.  To put one of these special characters into the document, put
-an <samp>`@'</samp> character in front of it, like this: <samp>`@@'</samp>,
-<samp>`@{'</samp>, and <samp>`@}'</samp>.
+an &lsquo;<samp>@</samp>&rsquo; character in front of it, like this: &lsquo;<samp>@@</samp>&rsquo;,
+&lsquo;<samp>@{</samp>&rsquo;, and &lsquo;<samp>@}</samp>&rsquo;.
 
 </li><li>
 It is customary in TeX to use doubled single-quote characters to
@@ -580,7 +580,7 @@ and Info converts doubled single-quote characters to <small>ASCII</small>
 double-quotes: <tt>``&hellip;''</tt> becomes <tt>&quot;&hellip;&quot;</tt>.
 
 </li><li>
-Use three hyphens in a row, <samp>`---'</samp>, for a dash&mdash;like this.  In
+Use three hyphens in a row, &lsquo;<samp>---</samp>&rsquo;, for a dash&mdash;like this.  In
 TeX, a single or double hyphen produces a printed dash that is
 shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
@@ -697,8 +697,8 @@ error messages if you have invalid Texinfo commands within ignored text.
 <h2 class="section"> 1.8 What a Texinfo File Must Have </h2>
 
 <p>By convention, the namea of a Texinfo file ends with (in order of
-preference) one of the extensions <tt>`.texinfo'</tt>, <tt>`.texi'</tt>,
-<tt>`.txi'</tt>, or <tt>`.tex'</tt>.  The longer extensions are preferred since
+preference) one of the extensions &lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo;,
+&lsquo;<tt>.txi</tt>&rsquo;, or &lsquo;<tt>.tex</tt>&rsquo;.  The longer extensions are preferred since
 they describe more clearly to a human reader the nature of the file.
 The shorter extensions are for operating systems that cannot handle long
 file names.
@@ -722,10 +722,10 @@ file <strong>must</strong> begin with lines like this:
 </p>
 <ul>
 <li>
-The <samp>`\input texinfo'</samp> line tells TeX to use the
-<tt>`texinfo.tex'</tt> file, which tells TeX how to translate the Texinfo
+The &lsquo;<samp>\input texinfo</samp>&rsquo; line tells TeX to use the
+&lsquo;<tt>texinfo.tex</tt>&rsquo; file, which tells TeX how to translate the Texinfo
 @-commands into TeX typesetting commands.  (Note the use of the
-backslash, <samp>`\'</samp>; this is correct for TeX.)
+backslash, &lsquo;<samp>\</samp>&rsquo;; this is correct for TeX.)
 
 </li><li>
 The <code>@setfilename</code> line provides a name for the Info file and
@@ -735,7 +735,7 @@ tells TeX to open auxiliary files.  <strong>All text before
 </li><li>
 The <code>@settitle</code> line specifies a title for the page headers (or
 footers) of the printed manual, and the default document description for
-the <samp>`&lt;head&gt;'</samp> in HTML format.  Strictly speaking, <code>@settitle</code>
+the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; in HTML format.  Strictly speaking, <code>@settitle</code>
 is optional&mdash;if you don't mind your document being titled `Untitled'.
 
 </li><li>
@@ -755,7 +755,7 @@ beginning of a Texinfo file, like this:
 @c %**end of header
 </pre></td></tr></table>
 
-<p>In the first line, <samp>`-*-texinfo-*-'</samp> causes Emacs to switch into
+<p>In the first line, &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; causes Emacs to switch into
 Texinfo mode when you edit the file.
 </p>
 <p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
@@ -857,7 +857,7 @@ of its own.
 <p>Here is a very short but complete Texinfo file, in the six conventional
 parts enumerated in the previous section, so you can see how Texinfo
 source appears in practice.  The first three parts of the file, from
-<samp>`\input texinfo'</samp> through to <samp>`@end titlepage'</samp>, look more
+&lsquo;<samp>\input texinfo</samp>&rsquo; through to &lsquo;<samp>@end titlepage</samp>&rsquo;, look more
 intimidating than they are: most of the material is standard
 boilerplate; when writing a manual, you simply change the names as
 appropriate.
@@ -1045,10 +1045,10 @@ indefatigable Eli Zaretskii and Andreas Schwab, who have provided
 patches beyond counting.  Fran&ccedil;ois Pinard and David D. Zuhn,
 tirelessly recorded and reported mistakes and obscurities.  Zack
 Weinberg did the impossible by implementing the macro syntax in
-<tt>`texinfo.tex'</tt>.  Special thanks go to Melissa Weisshaus for her
+&lsquo;<tt>texinfo.tex</tt>&rsquo;.  Special thanks go to Melissa Weisshaus for her
 frequent reviews of nearly similar editions.  Dozens of others have
 contributed patches and suggestions, they are gratefully acknowledged in
-the <tt>`ChangeLog'</tt> file.  Our mistakes are our own.
+the &lsquo;<tt>ChangeLog</tt>&rsquo; file.  Our mistakes are our own.
 </p>
 <a name="IDX26"></a>
 <a name="IDX27"></a>

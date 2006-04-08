@@ -24,5 +24,5 @@ clean-local:
 	*_?.png *_??.png *_???.png *_l2h_img?.old *_l2h_img??.old *_l2h_img???.old \
 	*_l2h_img?.png *_l2h_img??.png *_l2h_img???.png \
 	 *_l2h.tex *_l2h.css *_l2h_images.pl *_l2h_images.tex \
-	*_l2h_labels.pl l2h_cache.pm; fi) ; \
+	*_l2h_labels.pl l2h_cache.pm *.out; fi) ; \
 	done

@@ -80,7 +80,7 @@ ul.toc {list-style: none}
 <hr size="1">
 <h3 class="subsection"> 20.1.4 Pointer Validation </h3>
 
-<p>If you do not suppress pointer validation with the <samp>`--no-validate'</samp>
+<p>If you do not suppress pointer validation with the &lsquo;<samp>--no-validate</samp>&rsquo;
 option or the <code>@novalidate</code> command in the source file (see section <a href="Use-TeX.html#SEC245">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
 Info file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
@@ -89,7 +89,7 @@ really exist.  Here is a complete list of what is checked:
 <li>
 If a `Next', `Previous', or `Up' node reference is a reference to a
 node in the current file and is not an external reference such as to
-<tt>`(dir)'</tt>, then the referenced node must exist.
+&lsquo;<tt>(dir)</tt>&rsquo;, then the referenced node must exist.
 
 </li><li>
 In every node, if the `Previous' node is different from the `Up' node,
@@ -143,7 +143,7 @@ always try to reference nodes consistently; e.g., in the above example,
 the second <code>@node</code> line should have also used <code>@value</code>.
 However, if, for some reason, you <em>must</em> reference node names
 inconsistently, and <code>makeinfo</code> fails to validate the file, you can
-use the <samp>`--commands-in-node-names'</samp> option to force <code>makeinfo</code>
+use the &lsquo;<samp>--commands-in-node-names</samp>&rsquo; option to force <code>makeinfo</code>
 to perform the expensive expansion of all node names it finds in the
 document.  This might considerably slow down the program, though;
 twofold increase in conversion time was measured for large documents
@@ -154,9 +154,9 @@ such as the Jargon file.
 general enough to be freely used.  For example, if the example above
 redefined <code>nodename</code> somewhere in the document, <code>makeinfo</code>
 will fail to convert it, even if invoked with the
-<samp>`--commands-in-node-names'</samp> option.
+&lsquo;<samp>--commands-in-node-names</samp>&rsquo; option.
 </p>
-<p><samp>`--commands-in-node-names'</samp> has no effect if the <samp>`--no-validate'</samp>
+<p>&lsquo;<samp>--commands-in-node-names</samp>&rsquo; has no effect if the &lsquo;<samp>--no-validate</samp>&rsquo;
 option is given.
 </p>
 

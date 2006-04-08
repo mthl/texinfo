@@ -203,7 +203,7 @@ Texinfo command that generates a mark.  Usually, you will write
 character in the Info file.  If you don't want any mark at all, use
 <code>@w</code>.  (When you write the mark command such as
 <code>@bullet</code> after an <code>@itemize</code> command, you may omit the
-<samp>`{}'</samp>.)  If you don't specify a mark command, the default is
+&lsquo;<samp>{}</samp>&rsquo;.)  If you don't specify a mark command, the default is
 <code>@bullet</code>.
 </p>
 <p>Write the text of the indented paragraphs themselves after the
@@ -221,7 +221,7 @@ interline whitespace in either case.)  Except when the entries are
 very brief, these blank lines make the list look better.
 </p>
 <p>Here is an example of the use of <code>@itemize</code>, followed by the
-output it produces.  <code>@bullet</code> produces an <samp>`*'</samp> in Info and a
+output it produces.  <code>@bullet</code> produces an &lsquo;<samp>*</samp>&rsquo; in Info and a
 round dot in TeX.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@itemize @bullet
@@ -313,9 +313,9 @@ successive integers or letters instead of bullets.
 <p>Write the <code>@enumerate</code> command at the beginning of a line.  The
 command does not require an argument, but accepts either a number or a
 letter as an option.  Without an argument, <code>@enumerate</code> starts the
-list with the number <samp>`1'</samp>.  With a numeric argument, such as
-<samp>`3'</samp>, the command starts the list with that number.  With an upper
-or lower case letter, such as <samp>`a'</samp> or <samp>`A'</samp>, the command starts
+list with the number &lsquo;<samp>1</samp>&rsquo;.  With a numeric argument, such as
+&lsquo;<samp>3</samp>&rsquo;, the command starts the list with that number.  With an upper
+or lower case letter, such as &lsquo;<samp>a</samp>&rsquo; or &lsquo;<samp>A</samp>&rsquo;, the command starts
 the list with that letter.
 </p>
 <p>Write the text of the enumerated list in the same way you write an
@@ -502,12 +502,12 @@ Text for @samp{bar}.
 <p>This produces:
 </p>
 <dl compact="compact">
-<dt> <samp>`foo'</samp></dt>
+<dt> &lsquo;<samp>foo</samp>&rsquo;</dt>
 <dd><p>This is the text for
-<samp>`foo'</samp>.
+&lsquo;<samp>foo</samp>&rsquo;.
 </p></dd>
-<dt> <samp>`bar'</samp></dt>
-<dd><p>Text for <samp>`bar'</samp>.
+<dt> &lsquo;<samp>bar</samp>&rsquo;</dt>
+<dd><p>Text for &lsquo;<samp>bar</samp>&rsquo;.
 </p></dd>
 </dl>
 

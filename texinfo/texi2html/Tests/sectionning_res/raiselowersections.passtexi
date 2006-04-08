@@ -16,7 +16,6 @@ raiselowersections.texi(,18)
 raiselowersections.texi(,20) 
 raiselowersections.texi(,21) @lowersections
 raiselowersections.texi(,22) 
-./section_file.texi(,1) 
 ./section_file.texi(,1) \input texinfo @c -*-texinfo-*-
 ./section_file.texi(,2) 
 ./section_file.texi(,11) 

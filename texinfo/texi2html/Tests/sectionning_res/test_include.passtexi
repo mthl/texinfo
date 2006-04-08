@@ -1,0 +1,11 @@
+test_include.texi(,2) 
+test_include.texi(,3) @setfilename test_include.info
+test_include.texi(,4) 
+test_include.texi(,5) @node Top
+test_include.texi(,6) 
+test_include.texi(,7) This is a very simple texi manual.
+./inc_file.texi(,1) In included file.
+test_include.texi(,9) 
+test_include.texi(,10) After inclusion.
+test_include.texi(,11) 
+test_include.texi(,12) @bye

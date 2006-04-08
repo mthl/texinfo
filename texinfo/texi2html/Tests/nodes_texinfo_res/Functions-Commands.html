@@ -112,7 +112,7 @@ upper case, as if <code>@var</code> had been used, because we think of these
 names as metasyntactic variables&mdash;they stand for the actual argument
 values.  Within the text of the description, write an argument name
 explicitly with <code>@var</code> to refer to the value of the argument.  In
-the example above, we used <samp>`@var{nchars}'</samp> in this way.
+the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>The template for <code>@deffn</code> is:
 </p>
@@ -125,8 +125,8 @@ the example above, we used <samp>`@var{nchars}'</samp> in this way.
 </dd>
 <dt> <code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
-<code>@defun</code> is equivalent to <samp>`@deffn Function
-&hellip;'</samp>.
+<code>@defun</code> is equivalent to &lsquo;<samp>@deffn Function
+&hellip;</samp>&rsquo;.
 </p>
 <p>For example,
 </p>
@@ -155,7 +155,7 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </dd>
 <dt> <code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
-<code>@defmac</code> is equivalent to <samp>`@deffn Macro &hellip;'</samp> and
+<code>@defmac</code> is equivalent to &lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo; and
 works like <code>@defun</code>.
 </p>
 <a name="IDX269"></a>
@@ -164,8 +164,8 @@ works like <code>@defun</code>.
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
-<code>@defspec</code> is equivalent to <samp>`@deffn {Special Form}
-&hellip;'</samp> and works like <code>@defun</code>.
+<code>@defspec</code> is equivalent to &lsquo;<samp>@deffn {Special Form}
+&hellip;</samp>&rsquo; and works like <code>@defun</code>.
 </p></dd>
 </dl>
 

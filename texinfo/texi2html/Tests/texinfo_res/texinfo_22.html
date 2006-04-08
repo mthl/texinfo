@@ -81,7 +81,7 @@ ul.toc {list-style: none}
 
 <p>Here is an alphabetical list of the @-commands in Texinfo.  Square
 brackets, <tt>[</tt> <tt>]</tt>, indicate optional arguments; an ellipsis,
-<samp>`&hellip;'</samp>, indicates repeated text.
+&lsquo;<samp>&hellip;</samp>&rsquo;, indicates repeated text.
 </p>
 <br>
 <dl compact="compact">
@@ -138,12 +138,12 @@ an end-of-sentence capital letter).  See section <a href="texinfo_14.html#SEC180
 </p>
 </dd>
 <dt> <code>@@</code></dt>
-<dd><p>Stands for an at sign, <samp>`@'</samp>.
+<dd><p>Stands for an at sign, &lsquo;<samp>@</samp>&rsquo;.
 See section <a href="texinfo_14.html#SEC175">Inserting @ and braces</a>.
 </p>
 </dd>
 <dt> <code>@\</code></dt>
-<dd><p>Stands for a backslash (<samp>`\'</samp>) inside <code>@math</code>.
+<dd><p>Stands for a backslash (&lsquo;<samp>\</samp>&rsquo;) inside <code>@math</code>.
 See section <a href="texinfo_14.html#SEC192"><code>math</code></a>.
 </p>
 </dd>
@@ -155,12 +155,12 @@ See section <a href="texinfo_14.html#SEC183">Inserting Accents</a>.
 </p>
 </dd>
 <dt> <code>@{</code></dt>
-<dd><p>Stands for a left brace, <samp>`{'</samp>.
+<dd><p>Stands for a left brace, &lsquo;<samp>{</samp>&rsquo;.
 See section <a href="texinfo_14.html#SEC175">Inserting @ and braces</a>.
 </p>
 </dd>
 <dt> <code>@}</code></dt>
-<dd><p>Stands for a right-hand brace, <samp>`}'</samp>.<br>
+<dd><p>Stands for a right-hand brace, &lsquo;<samp>}</samp>&rsquo;.<br>
 See section <a href="texinfo_14.html#SEC175">Inserting @ and braces</a>.
 </p>
 </dd>
@@ -197,8 +197,8 @@ capital letters, such as `NASA'.  See section <a href="texinfo_10.html#SEC134"><
 </p>
 </dd>
 <dt> <code>@alias <var>new</var>=<var>existing</var></code></dt>
-<dd><p>Make the command <samp>`@<var>new</var>'</samp> an alias for the existing command
-<samp>`@<var>existing</var>'</samp>.  See section <a href="texinfo_19.html#SEC242"><samp>`@alias <var>new</var>=<var>existing</var>'</samp></a>.
+<dd><p>Make the command &lsquo;<samp>@<var>new</var></samp>&rsquo; an alias for the existing command
+&lsquo;<samp>@<var>existing</var></samp>&rsquo;.  See section <a href="texinfo_19.html#SEC242">&lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo;</a>.
 </p>
 </dd>
 <dt> <code>@anchor{<var>name</var>}</code></dt>
@@ -362,28 +362,28 @@ font.  See section <a href="texinfo_13.html#SEC173">Defining New Indices</a>.
 </dd>
 <dt> <code>@definfoenclose <var>newcmd</var>, <var>before</var>, <var>after</var>,</code></dt>
 <dd><p>Create new @-command <var>newcmd</var> for Info that marks text by enclosing
-it in strings that precede and follow the text.  See section <a href="texinfo_19.html#SEC243"><samp>`definfoenclose'</samp>: Customized Highlighting</a>.
+it in strings that precede and follow the text.  See section <a href="texinfo_19.html#SEC243">&lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</a>.
 </p>
 </dd>
 <dt> <code>@defivar <var>class</var> <var>instance-variable-name</var></code></dt>
 <dt> <code>@defivarx <var>class</var> <var>instance-variable-name</var></code></dt>
 <dd><p>This command formats a description for an instance variable in
-object-oriented programming.  The command is equivalent to <samp>`@defcv
-{Instance Variable} &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+object-oriented programming.  The command is equivalent to &lsquo;<samp>@defcv
+{Instance Variable} &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@defmac <var>macroname</var> <var>arguments</var>&hellip;</code></dt>
 <dt> <code>@defmacx <var>macroname</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>Format a description for a macro.  The command is equivalent to
-<samp>`@deffn Macro &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+&lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;</code></dt>
 <dt> <code>@defmethodx <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>Format a description for a method in object-oriented programming.  The
-command is equivalent to <samp>`@defop Method &hellip;'</samp>.  Takes as
+command is equivalent to &lsquo;<samp>@defop Method &hellip;</samp>&rsquo;.  Takes as
 arguments the name of the class of the method, the name of the
 method, and its arguments, if any.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
@@ -400,22 +400,22 @@ operation, and its arguments, if any.  See section <a href="texinfo_16.html#SEC2
 <dt> <code>@defopt <var>option-name</var></code></dt>
 <dt> <code>@defoptx <var>option-name</var></code></dt>
 <dd><p>Format a description for a user option.  The command is equivalent to
-<samp>`@defvr {User Option} &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+&lsquo;<samp>@defvr {User Option} &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@defspec <var>special-form-name</var> <var>arguments</var>&hellip;</code></dt>
 <dt> <code>@defspecx <var>special-form-name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>Format a description for a special form.  The command is equivalent to
-<samp>`@deffn {Special Form} &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>,
+&lsquo;<samp>@deffn {Special Form} &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>,
 and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@deftp <var>category</var> <var>name-of-type</var> <var>attributes</var>&hellip;</code></dt>
 <dt> <code>@deftpx <var>category</var> <var>name-of-type</var> <var>attributes</var>&hellip;</code></dt>
 <dd><p>Format a description for a data type.  <code>@deftp</code> takes as arguments
-the category, the name of the type (which is a word like <samp>`int'</samp> or
-<samp>`float'</samp>), and then the names of attributes of objects of that type.
+the category, the name of the type (which is a word like &lsquo;<samp>int</samp>&rsquo; or
+&lsquo;<samp>float</samp>&rsquo;), and then the names of attributes of objects of that type.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC224">Data Types</a>.
 </p>
 </dd>
@@ -431,7 +431,7 @@ entity, and its arguments, if any.  See section <a href="texinfo_16.html#SEC214"
 <dt> <code>@deftypefun <var>data-type</var> <var>function-name</var> <var>arguments</var>&hellip;</code></dt>
 <dt> <code>@deftypefunx <var>data-type</var> <var>function-name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>Format a description for a function in a typed language.
-The command is equivalent to <samp>`@deftypefn Function &hellip;'</samp>.
+The command is equivalent to &lsquo;<samp>@deftypefn Function &hellip;</samp>&rsquo;.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
@@ -456,7 +456,7 @@ See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a hre
 <dt> <code>@deftypevar <var>data-type</var> <var>variable-name</var></code></dt>
 <dt> <code>@deftypevarx <var>data-type</var> <var>variable-name</var></code></dt>
 <dd><p>Format a description for a variable in a typed language.  The command is
-equivalent to <samp>`@deftypevr Variable &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
+equivalent to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@deftypevr <var>classification</var> <var>data-type</var> <var>name</var></code></dt>
@@ -470,14 +470,14 @@ entity.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, a
 <dt> <code>@defun <var>function-name</var> <var>arguments</var>&hellip;</code></dt>
 <dt> <code>@defunx <var>function-name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>Format a description for functions.  The command is equivalent to
-<samp>`@deffn Function &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+&lsquo;<samp>@deffn Function &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
 <dt> <code>@defvar <var>variable-name</var></code></dt>
 <dt> <code>@defvarx <var>variable-name</var></code></dt>
 <dd><p>Format a description for variables.  The command is equivalent to
-<samp>`@defvr Variable &hellip;'</samp>.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+&lsquo;<samp>@defvr Variable &hellip;</samp>&rsquo;.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p>
 </dd>
@@ -542,7 +542,7 @@ See section <a href="texinfo_14.html#SEC183">Inserting Accents</a>.
 </p>
 </dd>
 <dt> <code>@dots{}</code></dt>
-<dd><p>Insert an ellipsis: <samp>`&hellip;'</samp>.
+<dd><p>Insert an ellipsis: &lsquo;<samp>&hellip;</samp>&rsquo;.
 See section <a href="texinfo_14.html#SEC185"><code>@dots</code></a>.
 </p>
 </dd>
@@ -557,7 +557,7 @@ output, and surrounded by asterisks in Info.  See section <a href="texinfo_10.ht
 </p>
 </dd>
 <dt> <code>@end <var>environment</var></code></dt>
-<dd><p>Ends <var>environment</var>, as in <samp>`@end example'</samp>.  See section <a href="texinfo_2.html#SEC7">@-commands</a>.
+<dd><p>Ends <var>environment</var>, as in &lsquo;<samp>@end example</samp>&rsquo;.  See section <a href="texinfo_2.html#SEC7">@-commands</a>.
 </p>
 </dd>
 <dt> <code>@env{<var>environment-variable</var>}</code></dt>
@@ -578,12 +578,12 @@ Optionally, start list with <var>number-or-letter</var>.  Pair with
 </dd>
 <dt> <code>@equiv{}</code></dt>
 <dd><p>Indicate to the reader the exact equivalence of two forms with a
-glyph: <samp>`&equiv;'</samp>.  See section <a href="texinfo_14.html#SEC199"><code>@equiv{}</code> (&equiv;): Indicating Equivalence</a>.
+glyph: &lsquo;<samp>&equiv;</samp>&rsquo;.  See section <a href="texinfo_14.html#SEC199"><code>@equiv{}</code> (&equiv;): Indicating Equivalence</a>.
 </p>
 </dd>
 <dt> <code>@error{}</code></dt>
 <dd><p>Indicate to the reader with a glyph that the following text is
-an error message: <samp>`error--&gt;'</samp>.  See section <a href="texinfo_14.html#SEC198"><code>@error{}</code> (error--&gt;): Indicating an Error Message</a>.
+an error message: &lsquo;<samp>error--&gt;</samp>&rsquo;.  See section <a href="texinfo_14.html#SEC198"><code>@error{}</code> (error--&gt;): Indicating an Error Message</a>.
 </p>
 </dd>
 <dt>  <code>@evenfooting [<var>left</var>] @| [<var>center</var>] @| [<var>right</var>]</code></dt>
@@ -618,7 +618,7 @@ Pair with <code>@end example</code>.  See section <a href="texinfo_11.html#SEC14
 </dd>
 <dt> <code>@expansion{}</code></dt>
 <dd><p>Indicate the result of a macro expansion to the reader with a special
-glyph: <samp>`&rarr;'</samp>.
+glyph: &lsquo;<samp>&rarr;</samp>&rsquo;.
 See section <a href="texinfo_14.html#SEC196">&rarr; Indicating an Expansion</a>.
 </p>
 </dd>
@@ -650,8 +650,8 @@ See section <a href="texinfo_14.html#SEC201">Footnotes</a>.
 </p>
 </dd>
 <dt> <code>@footnotestyle <var>style</var></code></dt>
-<dd><p>Specify an Info file's footnote style, either <samp>`end'</samp> for the end
-node style or <samp>`separate'</samp> for the separate node style.
+<dd><p>Specify an Info file's footnote style, either &lsquo;<samp>end</samp>&rsquo; for the end
+node style or &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
 See section <a href="texinfo_14.html#SEC201">Footnotes</a>.
 </p>
 </dd>
@@ -755,7 +755,7 @@ See section <a href="texinfo_2.html#SEC9">Comments and Ignored Text</a>.
 <dt> <code>@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alt</var>], [<var>ext</var>]}</code></dt>
 <dd><p>Include graphics image in external <var>filename</var> scaled to the given
 <var>width</var> and/or <var>height</var>, using <var>alt</var> text and looking for
-<samp>`<var>filename</var>.<var>ext</var>'</samp> in HTML.  See section <a href="texinfo_14.html#SEC204">Inserting Images</a>.
+&lsquo;<samp><var>filename</var>.<var>ext</var></samp>&rsquo; in HTML.  See section <a href="texinfo_14.html#SEC204">Inserting Images</a>.
 </p>
 </dd>
 <dt> <code>@include <var>filename</var></code></dt>
@@ -771,7 +771,7 @@ manual.  See section <a href="texinfo_9.html#SEC117">Cross references using <cod
 <dt> <code>\input <var>macro-definitions-file</var></code></dt>
 <dd><p>Use the specified macro definitions file.  This command is used only
 in the first line of a Texinfo file to cause TeX to make use of the
-<tt>`texinfo'</tt> macro definitions file.  The backslash in <code>\input</code>
+&lsquo;<tt>texinfo</tt>&rsquo; macro definitions file.  The backslash in <code>\input</code>
 is used instead of an <code>@</code> because TeX does not
 recognize <code>@</code> until after it has read the definitions file.
 See section <a href="texinfo_4.html#SEC43">Texinfo File Header</a>.
@@ -902,7 +902,7 @@ pages.  See section <a href="texinfo_26.html#SEC307">How to Make Your Own Headin
 </p>
 </dd>
 <dt> <code>@option{<var>option-name</var>}</code></dt>
-<dd><p>Indicate a command-line option, such as <samp>`-l'</samp> or <samp>`--help'</samp>.
+<dd><p>Indicate a command-line option, such as &lsquo;<samp>-l</samp>&rsquo; or &lsquo;<samp>--help</samp>&rsquo;.
 See section <a href="texinfo_10.html#SEC131"><code>@option</code></a>.
 </p>
 </dd>
@@ -927,7 +927,7 @@ See section <a href="texinfo_4.html#SEC65">Paragraph Indenting</a>.
 </dd>
 <dt> <code>@point{}</code></dt>
 <dd><p>Indicate the position of point in a buffer to the reader with a
-glyph: <samp>`&lowast;'</samp>.  See section <a href="texinfo_14.html#SEC200">Indicating Point in a Buffer</a>.
+glyph: &lsquo;<samp>&lowast;</samp>&rsquo;.  See section <a href="texinfo_14.html#SEC200">Indicating Point in a Buffer</a>.
 </p>
 </dd>
 <dt> <code>@pounds{}</code></dt>
@@ -937,7 +937,7 @@ See section <a href="texinfo_14.html#SEC190"><code>@pounds{}</code></a>.
 </dd>
 <dt> <code>@print{}</code></dt>
 <dd><p>Indicate printed output to the reader with a glyph:
-<samp>`-|'</samp>.  See section <a href="texinfo_14.html#SEC197"><code>@print{}</code> (-|): Indicating Printed Output</a>.
+&lsquo;<samp>-|</samp>&rsquo;.  See section <a href="texinfo_14.html#SEC197"><code>@print{}</code> (-|): Indicating Printed Output</a>.
 </p>
 </dd>
 <dt> <code>@printindex <var>index-name</var></code></dt>
@@ -988,7 +988,7 @@ See section <a href="texinfo_28.html#SEC319">Refilling Paragraphs</a>.
 </dd>
 <dt> <code>@result{}</code></dt>
 <dd><p>Indicate the result of an expression to the reader with a special
-glyph: <samp>`&rArr;'</samp>.  See section <a href="texinfo_14.html#SEC195"><code>@result</code></a>.
+glyph: &lsquo;<samp>&rArr;</samp>&rsquo;.  See section <a href="texinfo_14.html#SEC195"><code>@result</code></a>.
 </p>
 </dd>
 <dt> <code>@ringaccent{<var>c</var>}</code></dt>
@@ -1028,7 +1028,7 @@ odd-numbered (right-hand) new pages.  See section <a href="texinfo_4.html#SEC64"
 </p>
 </dd>
 <dt> <code>@setcontentsaftertitlepage</code></dt>
-<dd><p>Put the table of contents after the <samp>`@end titlepage'</samp> even if the
+<dd><p>Put the table of contents after the &lsquo;<samp>@end titlepage</samp>&rsquo; even if the
 <code>@contents</code> command is not there.  See section <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>.
 </p>
 </dd>
@@ -1039,14 +1039,14 @@ See section <a href="texinfo_4.html#SEC46"><code>@setfilename</code></a>.
 </p>
 </dd>
 <dt> <code>@setshortcontentsaftertitlepage</code></dt>
-<dd><p>Place the short table of contents after the <samp>`@end titlepage'</samp>
+<dd><p>Place the short table of contents after the &lsquo;<samp>@end titlepage</samp>&rsquo;
 command even if the <code>@shortcontents</code> command is not there.
 See section <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>.
 </p>
 </dd>
 <dt> <code>@settitle <var>title</var></code></dt>
 <dd><p>Provide a title for page headers in a printed manual, and the default
-document description for HTML <samp>`&lt;head&gt;'</samp>.
+document description for HTML &lsquo;<samp>&lt;head&gt;</samp>&rsquo;.
 See section <a href="texinfo_4.html#SEC47"><code>@settitle</code></a>.
 </p>
 </dd>
@@ -1317,8 +1317,8 @@ See section <a href="texinfo_11.html#SEC146"><code>verbatiminclude</code></a>.
 <dt> <code>@vskip <var>amount</var></code></dt>
 <dd><p>In a printed manual, insert whitespace so as to push text on the
 remainder of the page towards the bottom of the page.  Used in
-formatting the copyright page with the argument <samp>`0pt plus
-1filll'</samp>.  (Note spelling of <samp>`filll'</samp>.)  <code>@vskip</code> may be used
+formatting the copyright page with the argument &lsquo;<samp>0pt plus
+1filll</samp>&rsquo;.  (Note spelling of &lsquo;<samp>filll</samp>&rsquo;.)  <code>@vskip</code> may be used
 only in contexts ignored for Info.  See section <a href="texinfo_4.html#SEC56">Copyright Page</a>.
 </p>
 </dd>

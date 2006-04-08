@@ -46,4 +46,8 @@ second node
 Text of chapter
 @cindex Chapter2
 
+@chapter Chapter 2
+
+In chapter 2
+
 @bye

@@ -297,7 +297,7 @@ example).
 </pre></td></tr></table>
 
 <p>The function is listed in the Command and Variable Index under
-<samp>`foobar'</samp>.
+&lsquo;<samp>foobar</samp>&rsquo;.
 </p>
 <hr size="6">
 <a name="deffnx"></a>
@@ -452,7 +452,7 @@ upper case, as if <code>@var</code> had been used, because we think of these
 names as metasyntactic variables&mdash;they stand for the actual argument
 values.  Within the text of the description, write an argument name
 explicitly with <code>@var</code> to refer to the value of the argument.  In
-the example above, we used <samp>`@var{nchars}'</samp> in this way.
+the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>The template for <code>@deffn</code> is:
 </p>
@@ -465,8 +465,8 @@ the example above, we used <samp>`@var{nchars}'</samp> in this way.
 </dd>
 <dt> <code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
-<code>@defun</code> is equivalent to <samp>`@deffn Function
-&hellip;'</samp>.
+<code>@defun</code> is equivalent to &lsquo;<samp>@deffn Function
+&hellip;</samp>&rsquo;.
 </p>
 <p>For example,
 </p>
@@ -495,7 +495,7 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </dd>
 <dt> <code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
-<code>@defmac</code> is equivalent to <samp>`@deffn Macro &hellip;'</samp> and
+<code>@defmac</code> is equivalent to &lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo; and
 works like <code>@defun</code>.
 </p>
 <a name="IDX269"></a>
@@ -504,8 +504,8 @@ works like <code>@defun</code>.
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
-<code>@defspec</code> is equivalent to <samp>`@deffn {Special Form}
-&hellip;'</samp> and works like <code>@defun</code>.
+<code>@defspec</code> is equivalent to &lsquo;<samp>@deffn {Special Form}
+&hellip;</samp>&rsquo; and works like <code>@defun</code>.
 </p></dd>
 </dl>
 
@@ -573,8 +573,8 @@ own.
 </dd>
 <dt> <code>@defvar <var>name</var></code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
-<code>@defvar</code> is equivalent to <samp>`@defvr Variable
-&hellip;'</samp>.
+<code>@defvar</code> is equivalent to &lsquo;<samp>@defvr Variable
+&hellip;</samp>&rsquo;.
 </p>
 <p>For example:
 </p>
@@ -599,8 +599,8 @@ own.
 <dd><a name="IDX273"></a>
 <p>The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
-taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to <samp>`@defvr {User
-Option} &hellip;'</samp> and works like <code>@defvar</code>.
+taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
+Option} &hellip;</samp>&rsquo; and works like <code>@defvar</code>.
 </p></dd>
 </dl>
 
@@ -666,7 +666,7 @@ to an implicit <code>@var</code>&mdash;since the actual names of the arguments i
 <code>@deftypefn</code> are typically scattered among data type names and
 keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example
-above, the argument names are <samp>`foo'</samp> and <samp>`bar'</samp>.
+above, the argument names are &lsquo;<samp>foo</samp>&rsquo; and &lsquo;<samp>bar</samp>&rsquo;.
 </p>
 <p>The template for <code>@deftypefn</code> is:
 </p>
@@ -708,7 +708,7 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 <dd><a name="IDX275"></a>
 <p>The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
-<samp>`@deftypefn Function &hellip;'</samp>.
+&lsquo;<samp>@deftypefn Function &hellip;</samp>&rsquo;.
 </p>
 <p>Thus,
 </p>
@@ -807,7 +807,7 @@ entity.
 <dt> <code>@deftypevar <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
-to <samp>`@deftypevr Variable &hellip;'</samp>.
+to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.
 </p>
 <p>For example:
 </p>
@@ -897,7 +897,7 @@ name.  Thus,
 <dt> <code>@defivar <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
-equivalent to <samp>`@defcv {Instance Variable} &hellip;'</samp>
+equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
 </p>
 <p>The template is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
@@ -979,7 +979,7 @@ in object-oriented programming.  A method is a kind of function that
 implements an operation for a particular class of objects and its
 subclasses.
 </p>
-<p><code>@defmethod</code> is equivalent to <samp>`@defop Method &hellip;'</samp>.
+<p><code>@defmethod</code> is equivalent to &lsquo;<samp>@defop Method &hellip;</samp>&rsquo;.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
 arguments, if any.

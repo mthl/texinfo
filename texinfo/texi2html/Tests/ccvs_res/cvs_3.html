@@ -138,17 +138,17 @@ projects that can be
 put under <small>CVS</small> control.  In these cases the easiest way is to use the
 <code>import</code> command.  An example is probably the easiest way to
 explain how to use it.  If the files you want to install in
-<small>CVS</small> reside in <tt>`<var>wdir</var>'</tt>, and you want them to appear in the
-repository as <tt>`$CVSROOT/yoyodyne/<var>rdir</var>'</tt>, you can do this:
+<small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
+repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd <var>wdir</var>
 $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </pre></td></tr></table>
 
-<p>Unless you supply a log message with the <samp>`-m'</samp>
+<p>Unless you supply a log message with the &lsquo;<samp>-m</samp>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
-message.  The string <samp>`yoyo'</samp> is a <em>vendor tag</em>,
-and <samp>`start'</samp> is a <em>release tag</em>.  They may fill
+message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
+and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
 them they must be present.  See section <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, for
 more information about them.
@@ -213,16 +213,16 @@ files.
 </dd>
 <dt> From RCS</dt>
 <dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
-files&mdash;usually a file named <tt>`foo.c'</tt> will have its
-<small>RCS</small> file in <tt>`RCS/foo.c,v'</tt> (but it could be
+files&mdash;usually a file named &lsquo;<tt>foo.c</tt>&rsquo; will have its
+<small>RCS</small> file in &lsquo;<tt>RCS/foo.c,v</tt>&rsquo; (but it could be
 other places; consult the <small>RCS</small> documentation for
 details).  Then create the appropriate directories in
 <small>CVS</small> if they do not already exist.  Then copy the
 files into the appropriate directories in the <small>CVS</small>
 repository (the name in the repository must be the name
-of the source file with <samp>`,v'</samp> added; the files go
+of the source file with &lsquo;<samp>,v</samp>&rsquo; added; the files go
 directly in the appropriate directory of the repository,
-not in an <tt>`RCS'</tt> subdirectory).  This is one of the
+not in an &lsquo;<tt>RCS</tt>&rsquo; subdirectory).  This is one of the
 few times when it is a good idea to access the <small>CVS</small>
 repository directly, rather than using <small>CVS</small>
 commands.  Then you are ready to check out a new
@@ -243,14 +243,14 @@ instructions.
 script that will check out the files one revision at a
 time using the command line interface to the other
 system, and then check the revisions into <small>CVS</small>.
-The <tt>`sccs2rcs'</tt> script mentioned below may be a
+The &lsquo;<tt>sccs2rcs</tt>&rsquo; script mentioned below may be a
 useful example to follow.
 </p>
 <a name="IDX91"></a>
 </dd>
 <dt> From SCCS</dt>
-<dd><p>There is a script in the <tt>`contrib'</tt> directory of
-the <small>CVS</small> source distribution called <tt>`sccs2rcs'</tt>
+<dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
+the <small>CVS</small> source distribution called &lsquo;<tt>sccs2rcs</tt>&rsquo;
 which converts <small>SCCS</small> files to <small>RCS</small> files.
 Note: you must run it on a machine which has both
 <small>SCCS</small> and <small>RCS</small> installed, and like everything
@@ -260,8 +260,8 @@ vary).
 <a name="IDX92"></a>
 </dd>
 <dt> From PVCS</dt>
-<dd><p>There is a script in the <tt>`contrib'</tt> directory of
-the <small>CVS</small> source distribution called <tt>`pvcs_to_rcs'</tt>
+<dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
+the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo;
 which converts <small>PVCS</small> archives to <small>RCS</small> files.
 You must run it on a machine which has both
 <small>PVCS</small> and <small>RCS</small> installed, and like everything
@@ -335,7 +335,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <h2 class="section"> 3.2 Defining the module </h2>
 
 <p>The next step is to define the module in the
-<tt>`modules'</tt> file.  This is not strictly necessary,
+&lsquo;<tt>modules</tt>&rsquo; file.  This is not strictly necessary,
 but modules can be convenient in grouping together
 related files and directories.
 </p>
@@ -352,7 +352,7 @@ $ cd CVSROOT
 </li><li>
 Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
-following line to define the module <samp>`tc'</samp>:
+following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 
 <table><tr><td>&nbsp;</td><td><pre class="example">tc   yoyodyne/tc
 </pre></td></tr></table>

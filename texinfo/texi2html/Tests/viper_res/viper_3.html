@@ -150,15 +150,15 @@ Text Deletion Commands (see section <a href="viper_5.html#SEC38">Deleting Text</
 (see section <a href="viper_5.html#SEC39">Changing Text</a>), even Shell Commands (see section <a href="viper_5.html#SEC46">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
 Thus, type <kbd>dw</kbd> to delete a word, <kbd>&gt;}</kbd> to shift a paragraph, or
-<kbd>!'afmt</kbd> to format a region from <samp>`point'</samp> to textmarker
-<samp>`a'</samp>.
+<kbd>!'afmt</kbd> to format a region from &lsquo;<samp>point</samp>&rsquo; to textmarker
+&lsquo;<samp>a</samp>&rsquo;.
 </p>
 <a name="IDX44"></a>
 
-<p>Viper adds the region specifiers <samp>`r'</samp> and <samp>`R'</samp>.  Emacs has a
+<p>Viper adds the region specifiers &lsquo;<samp>r</samp>&rsquo; and &lsquo;<samp>R</samp>&rsquo;.  Emacs has a
 special marker called <em>mark</em>.  The text-area between the current cursor
 position <em>point</em> and the <em>mark</em> is called the <em>region</em>.
-<samp>`r'</samp> specifies the raw region and <samp>`R'</samp> is the expanded region
+&lsquo;<samp>r</samp>&rsquo; specifies the raw region and &lsquo;<samp>R</samp>&rsquo; is the expanded region
 (i.e., the minimal contiguous chunk of full lines that contains the raw
 region).
 <kbd>dr</kbd> will now delete the region, <kbd>&gt;r</kbd> will shift it, etc.
@@ -171,7 +171,7 @@ region).
 (see section <a href="viper_2.html#SEC12">Multiple Files in Viper</a>).  In addition to the files, Emacs has
 buffers.  These can be seen in the <kbd>:args</kbd> list and switched using
 <kbd>:next</kbd> if you type <kbd>:set ex-cycle-through-non-files t</kbd>, or
-specify <code>(setq ex-cycle-through-non-files t)</code> in your <tt>`.viper'</tt>
+specify <code>(setq ex-cycle-through-non-files t)</code> in your &lsquo;<tt>.viper</tt>&rsquo;
 file.  See section <a href="viper_4.html#SEC25">Customization</a>, for details.
 </p>
 <hr size="6">
@@ -221,7 +221,7 @@ registers, in addition to being able to access them through <kbd>p</kbd> and
 <kbd>M-y</kbd> (See section <a href="viper_2.html#SEC9">Insert State</a>, for details.)
 The Viper command <kbd>] register</kbd> will display the contents of any
 register, numeric or alphabetical.  The related command <kbd>[ textmarker</kbd>
-will show the text around the textmarker.  <samp>`register'</samp> and <samp>`textmarker'</samp>
+will show the text around the textmarker.  &lsquo;<samp>register</samp>&rsquo; and &lsquo;<samp>textmarker</samp>&rsquo;
 can be any letters from a through z.
 </p>
 <hr size="6">
@@ -307,8 +307,8 @@ expressions keep a history on those items.
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
 remembered (This is called &ldquo;learn mode&rdquo; in some editors.)
-<kbd>@register</kbd> will complete the macro, putting it into <samp>`register'</samp>,
-where <samp>`register'</samp> is any character from <samp>`a'</samp> through <samp>`z'</samp>.  Then
+<kbd>@register</kbd> will complete the macro, putting it into &lsquo;<samp>register</samp>&rsquo;,
+where &lsquo;<samp>register</samp>&rsquo; is any character from &lsquo;<samp>a</samp>&rsquo; through &lsquo;<samp>z</samp>&rsquo;.  Then
 you can execute this macro using <kbd>@register</kbd>.  It is, of course,
 possible to yank some text into a register and execute it using
 <kbd>@register</kbd>.  Typing <kbd>@@</kbd>, <kbd>@RET</kbd>, or <kbd>@C-j</kbd> will
@@ -392,7 +392,7 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 
 
 <p>Viper provides buffer search, the ability to search the buffer for a region
-under the cursor.  You have to turn this on in <tt>`.viper'</tt> either by calling
+under the cursor.  You have to turn this on in &lsquo;<tt>.viper</tt>&rsquo; either by calling
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-buffer-search-enable)
 </pre></td></tr></table>
@@ -435,7 +435,7 @@ variable that controls how search patterns are highlighted is
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(copy-face 'default 'viper-search-face)
 </pre></td></tr></table>
 <a name="IDX56"></a>
-<p>in <tt>`~/.viper'</tt>.  If you want to change how patterns are highlighted, you
+<p>in &lsquo;<tt>~/.viper</tt>&rsquo;.  If you want to change how patterns are highlighted, you
 will have to change <code>viper-search-face</code> to your liking.  The easiest
 way to do this is to use Emacs customization widget, which is accessible
 from the menubar.  Viper customization group is located under the
@@ -478,10 +478,10 @@ details.
 
 <p>Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
 will search the buffer to find an extension for this word.  For instance,
-one can type <samp>`Abbreviations'</samp> by typing <samp>`A'</samp>, followed by a keystroke
-that completed the <samp>`A'</samp> to <samp>`Abbreviations'</samp>.  Repeated typing
+one can type &lsquo;<samp>Abbreviations</samp>&rsquo; by typing &lsquo;<samp>A</samp>&rsquo;, followed by a keystroke
+that completed the &lsquo;<samp>A</samp>&rsquo; to &lsquo;<samp>Abbreviations</samp>&rsquo;.  Repeated typing
 will search further back in the buffer, so that one could get
-<samp>`Abbrevs'</samp> by repeating the
+&lsquo;<samp>Abbrevs</samp>&rsquo; by repeating the
 keystroke, which appears earlier in the text.  Emacs binds this to
 <kbd><kbd>ESC</kbd> /</kbd>, so you will have to find a key and bind the function
 <code>dabbrev-expand</code> to that key.
@@ -511,7 +511,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 
 <p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
-etc.  These derive from Ex, which is a line editor.  If your <tt>`.viper'</tt>
+etc.  These derive from Ex, which is a line editor.  If your &lsquo;<tt>.viper</tt>&rsquo;
 contains
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><code>(setq viper-ex-style-motion nil)</code>
@@ -608,7 +608,7 @@ hit <kbd>C-x</kbd> followed by <kbd>2</kbd>, then the current window will be spl
 into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
 command from the current major mode.  <kbd>ESC</kbd> will do the same, if you
 configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> to nil
-in <tt>`.viper'</tt>.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
+in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
 <dt> <kbd>\</kbd></dt>
@@ -621,7 +621,7 @@ states will make Emacs think <kbd>Meta</kbd> has been hit.
 <a name="IDX66"></a>
 <p><kbd>Q</kbd> is for query replace.  By default,
 each string to be replaced is treated as a regular expression.  You can use
-<code>(setq viper-re-query-replace nil)</code> in your <tt>`.emacs'</tt> file to
+<code>(setq viper-re-query-replace nil)</code> in your &lsquo;<tt>.emacs</tt>&rsquo; file to
 turn this off.  (For normal searches, <kbd>:se nomagic</kbd> will work.  Note
 that <kbd>:se nomagic</kbd> turns Regexps off completely, unlike Vi).
 </p></dd>
@@ -831,26 +831,26 @@ Manual.
 <p>The features first.  For details, look up the Emacs Manual.
 </p>
 <dl compact="compact">
-<dt> <samp>`Make'</samp></dt>
+<dt> &lsquo;<samp>Make</samp>&rsquo;</dt>
 <dd><a name="IDX108"></a>
 <a name="IDX109"></a>
 
 <p>Makes and Compiles can be done from the editor.  Error messages will be
 parsed and you can move to the error lines.
 </p></dd>
-<dt> <samp>`Shell'</samp></dt>
+<dt> &lsquo;<samp>Shell</samp>&rsquo;</dt>
 <dd><a name="IDX110"></a>
 <a name="IDX111"></a>
 <p>You can talk to Shells from inside the editor.  Your entire shell session
 can be treated as a file.
 </p></dd>
-<dt> <samp>`Mail'</samp></dt>
+<dt> &lsquo;<samp>Mail</samp>&rsquo;</dt>
 <dd><a name="IDX112"></a>
 <a name="IDX113"></a>
 <p>Mail can be read from and sent within the editor.  Several sophisticated
 packages exist.
 </p></dd>
-<dt> <samp>`Language Sensitive Editing'</samp></dt>
+<dt> &lsquo;<samp>Language Sensitive Editing</samp>&rsquo;</dt>
 <dd><p>Editing modes are written for most computer languages in existence.  By
 controlling indentation, they catch punctuation errors.
 </p></dd>
@@ -860,41 +860,41 @@ controlling indentation, they catch punctuation errors.
 packages that come with standard distribution of Emacs.
 </p>
 <dl compact="compact">
-<dt> <samp>`Transparent FTP'</samp></dt>
+<dt> &lsquo;<samp>Transparent FTP</samp>&rsquo;</dt>
 <dd><a name="IDX114"></a>
 <a name="IDX115"></a>
 <p><code>ange-ftp.el</code> can ftp from the editor to files on other machines
 transparent to the user.
 </p></dd>
-<dt> <samp>`RCS Interfaces'</samp></dt>
+<dt> &lsquo;<samp>RCS Interfaces</samp>&rsquo;</dt>
 <dd><a name="IDX116"></a>
 <a name="IDX117"></a>
 <a name="IDX118"></a>
 <p><code>vc.el</code> for doing RCS commands from inside the editor
 </p></dd>
-<dt> <samp>`Directory Editor'</samp></dt>
+<dt> &lsquo;<samp>Directory Editor</samp>&rsquo;</dt>
 <dd><a name="IDX119"></a>
 <a name="IDX120"></a>
 <p><code>dired.el</code> for editing contents of directories and for navigating in
 the file system.
 </p></dd>
-<dt> <samp>`Syntactic Highlighting'</samp></dt>
+<dt> &lsquo;<samp>Syntactic Highlighting</samp>&rsquo;</dt>
 <dd><a name="IDX121"></a>
 <a name="IDX122"></a>
 <p><code>font-lock.el</code> for automatic highlighting various parts of a buffer
 using different fonts and colors.
 </p></dd>
-<dt> <samp>`Saving Emacs Configuration'</samp></dt>
+<dt> &lsquo;<samp>Saving Emacs Configuration</samp>&rsquo;</dt>
 <dd><a name="IDX123"></a>
 <a name="IDX124"></a>
 <p><code>desktop.el</code> for saving/restoring configuration on Emacs exit/startup.
 </p></dd>
-<dt> <samp>`Spell Checker'</samp></dt>
+<dt> &lsquo;<samp>Spell Checker</samp>&rsquo;</dt>
 <dd><a name="IDX125"></a>
 <a name="IDX126"></a>
 <p><code>ispell.el</code> for spell checking the buffer, words, regions, etc.
 </p></dd>
-<dt> <samp>`File and Buffer Comparison'</samp></dt>
+<dt> &lsquo;<samp>File and Buffer Comparison</samp>&rsquo;</dt>
 <dd><a name="IDX127"></a>
 <a name="IDX128"></a>
 <p><code>ediff.el</code> for finding differences between files and for applying
@@ -903,8 +903,8 @@ patches.
 </dl>
 
 <p>Emacs Lisp archives exist on
-<samp>`archive.cis.ohio-state.edu'</samp>
-and <samp>`wuarchive.wustl.edu'</samp>
+&lsquo;<samp>archive.cis.ohio-state.edu</samp>&rsquo;
+and &lsquo;<samp>wuarchive.wustl.edu</samp>&rsquo;
 </p>
 
 <hr size="6">

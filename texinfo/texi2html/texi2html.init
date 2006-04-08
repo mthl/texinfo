@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.99 2006-03-30 10:05:05 pertusus Exp $
+# $Id: texi2html.init,v 1.100 2006-04-08 11:37:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -352,6 +352,9 @@ $EXTENSION = "html";
 # file name used for Top node when NODE_FILES is true
 $TOP_NODE_FILE = "index";
 
+# node name used for Top node when automatic node directions are used
+$TOP_NODE_UP = '(dir)';
+
 # this controls the pre style for menus
 $MENU_PRE_STYLE = 'font-family: serif';
 
@@ -369,6 +372,7 @@ $AFTER_TOC_LINES = "</div>\n";
 
 # if set (e.g., to index.html) replace hrefs to this file
 # (i.e., to index.html) by ./
+# Obsolete. Worked around a bug that is fixed now.
 $HREF_DIR_INSTEAD_FILE = '';
 
 # text inserted after <body ...>
@@ -392,6 +396,9 @@ $VERTICAL_HEAD_NAVIGATION = 0;
 
 # html version for latex2html
 $L2H_HTML_VERSION = "4.0";
+
+# use the information given by menus to complete the node directions
+$USE_MENU_DIRECTIONS = 1;
 
 # specify in this array which "buttons" should appear in which order
 # in the navigation panel for sections; use ' ' for empty buttons (space)
@@ -1984,6 +1991,8 @@ foreach my $symbol(keys(%unicode_map))
          'result'    => '&rArr;',
          'expansion' => '&rarr;',
          'point'     => '&lowast;',
+         "'"         => '&rsquo;',
+         '`'         => '&lsquo;',
         );
 
 # not used currently for html, but used in chm.init
@@ -2874,7 +2883,6 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'deftypecv', [ 'v', 'category', 'class' , 'type', 'name' ],
     'defop', [ 'f', 'category', 'class' , 'name', 'arg' ],
     'deftp', [ 't', 'category', 'name', 'arg' ],
-    # basic x commands
     # shortcuts
     # FIXME i18n
     'defun', 'deffn Function',
@@ -2890,6 +2898,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'deftypemethod', 'deftypeop Method',
          );
 
+# basic x commands
 foreach my $key (keys(%def_map))
 {
     $def_map{$key . 'x'} = $def_map{$key};

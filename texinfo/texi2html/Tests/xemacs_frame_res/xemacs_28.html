@@ -61,7 +61,7 @@ ul.toc {list-style: none}
 <h1 class="chapter"> 25. Sending Mail </h1>
 
 <p>  To send a message in Emacs, start by typing the command (<kbd>C-x m</kbd>)
-to select and initialize the <samp>`*mail*'</samp> buffer.  You can then edit the text
+to select and initialize the &lsquo;<samp>*mail*</samp>&rsquo; buffer.  You can then edit the text
 and headers of the message in the mail buffer, and type the command
 (<kbd>C-c C-c</kbd>) to send the message.
 </p>
@@ -84,8 +84,8 @@ and headers of the message in the mail buffer, and type the command
 <a name="IDX1115"></a>
 <a name="IDX1116"></a>
 <p>  The command <kbd>C-x m</kbd> (<code>mail</code>) selects a buffer named
-<samp>`*mail*'</samp> and initializes it with the skeleton of an outgoing message.
-<kbd>C-x 4 m</kbd> (<code>mail-other-window</code>) selects the <samp>`*mail*'</samp> buffer
+&lsquo;<samp>*mail*</samp>&rsquo; and initializes it with the skeleton of an outgoing message.
+<kbd>C-x 4 m</kbd> (<code>mail-other-window</code>) selects the &lsquo;<samp>*mail*</samp>&rsquo; buffer
 in a different window, leaving the previous current buffer visible.
 </p>
 <p>  Because the buffer for mail composition is an ordinary Emacs buffer, you can
@@ -151,7 +151,7 @@ headers precede it.  The delimiter line itself does not appear in the
 message actually sent.  The text used for the delimiter line is controlled
 by the variable <code>mail-header-separator</code>.
 </p>
-<p>Here is an example of what the headers and text in the <samp>`*mail*'</samp> buffer
+<p>Here is an example of what the headers and text in the &lsquo;<samp>*mail*</samp>&rsquo; buffer
 might look like.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">To: rms@mc
@@ -182,57 +182,57 @@ Please ignore this message.
 </tr></table>
 <h2 class="section"> 25.2 Mail Header Fields </h2>
 
-<p>  There are several header fields you can use in the <samp>`*mail*'</samp> buffer.
+<p>  There are several header fields you can use in the &lsquo;<samp>*mail*</samp>&rsquo; buffer.
 Each header field starts with a field name at the beginning of a line,
 terminated by a colon.  It does not matter whether you use upper or lower
 case in the field name.  After the colon and optional whitespace comes the
 contents of the field.
 </p>
 <dl compact="compact">
-<dt> <samp>`To'</samp></dt>
+<dt> &lsquo;<samp>To</samp>&rsquo;</dt>
 <dd><p>This field contains the mailing addresses of the message.
 </p>
 </dd>
-<dt> <samp>`Subject'</samp></dt>
-<dd><p>The contents of the <samp>`Subject'</samp> field should be a piece of text that
+<dt> &lsquo;<samp>Subject</samp>&rsquo;</dt>
+<dd><p>The contents of the &lsquo;<samp>Subject</samp>&rsquo; field should be a piece of text that
 says what the message is about.  Subject fields are useful because most
 mail-reading programs can provide a summary of messages, listing the
 subject of each message but not its text.
 </p>
 </dd>
-<dt> <samp>`CC'</samp></dt>
+<dt> &lsquo;<samp>CC</samp>&rsquo;</dt>
 <dd><p>This field contains additional mailing addresses to send the message
 to, but whose readers should not regard the message as addressed to
 them.
 </p>
 </dd>
-<dt> <samp>`BCC'</samp></dt>
+<dt> &lsquo;<samp>BCC</samp>&rsquo;</dt>
 <dd><p>This field contains additional mailing addresses to send the message
 to, but which should not appear in the header of the message actually
 sent.
 </p>
 </dd>
-<dt> <samp>`FCC'</samp></dt>
+<dt> &lsquo;<samp>FCC</samp>&rsquo;</dt>
 <dd><p>This field contains the name of one file (in Unix mail file format) to
 which a copy of the message should be appended when the message is
 sent.
 </p>
 </dd>
-<dt> <samp>`From'</samp></dt>
-<dd><p>Use the <samp>`From'</samp> field to say who you are, when the account you are
+<dt> &lsquo;<samp>From</samp>&rsquo;</dt>
+<dd><p>Use the &lsquo;<samp>From</samp>&rsquo; field to say who you are, when the account you are
 using to send the mail is not your own.  The contents of the
-<samp>`From'</samp> field should be a valid mailing address, since replies
+&lsquo;<samp>From</samp>&rsquo; field should be a valid mailing address, since replies
 will normally go there.
 </p>
 </dd>
-<dt> <samp>`Reply-To'</samp></dt>
-<dd><p>Use the <samp>`Reply-To'</samp> field to direct replies to a different
-address, not your own. <samp>`From'</samp> and
-<samp>`Reply-To'</samp> have the same effect on where replies go, but they convey a
+<dt> &lsquo;<samp>Reply-To</samp>&rsquo;</dt>
+<dd><p>Use the &lsquo;<samp>Reply-To</samp>&rsquo; field to direct replies to a different
+address, not your own. &lsquo;<samp>From</samp>&rsquo; and
+&lsquo;<samp>Reply-To</samp>&rsquo; have the same effect on where replies go, but they convey a
 different meaning to the person who reads the message.
 </p>
 </dd>
-<dt> <samp>`In-Reply-To'</samp></dt>
+<dt> &lsquo;<samp>In-Reply-To</samp>&rsquo;</dt>
 <dd><p>This field contains a piece of text describing a message you are
 replying to.  Some mail systems can use the information to correlate
 related pieces of mail.  This field is normally filled in by your mail
@@ -241,10 +241,10 @@ to think about it.
 </p></dd>
 </dl>
 
-<p>The <samp>`To'</samp>, <samp>`CC'</samp>, <samp>`BCC'</samp> and <samp>`FCC'</samp> fields can appear
+<p>The &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;, &lsquo;<samp>BCC</samp>&rsquo; and &lsquo;<samp>FCC</samp>&rsquo; fields can appear
 any number of times, to specify many places to send the message.
 </p>
-<p>The <samp>`To'</samp>, <samp>`CC'</samp>, and <samp>`BCC'</samp>, fields can have continuation
+<p>The &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;, and &lsquo;<samp>BCC</samp>&rsquo;, fields can have continuation
 lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
 example,
@@ -254,18 +254,18 @@ example,
 </pre></td></tr></table>
 
 <a name="IDX1118"></a>
-<p>If you have a <tt>`~/.mailrc'</tt> file, Emacs scans it for mail aliases the
+<p>If you have a &lsquo;<tt>~/.mailrc</tt>&rsquo; file, Emacs scans it for mail aliases the
 first time you try to send mail in an Emacs session.  Emacs expands
-aliases found in the <samp>`To'</samp>, <samp>`CC'</samp>, and <samp>`BCC'</samp> fields where
+aliases found in the &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;, and &lsquo;<samp>BCC</samp>&rsquo; fields where
 appropriate. You can set the variable <code>mail-abbrev-mailrc-file</code> to
-the name of the file with mail aliases.  If <code>nil</code>, <tt>`~/.mailrc'</tt>
+the name of the file with mail aliases.  If <code>nil</code>, &lsquo;<tt>~/.mailrc</tt>&rsquo;
 is used.
 </p>
 <a name="IDX1119"></a>
-<p>Your <tt>`.mailrc'</tt> file ensures that word-abbrevs are defined for each
-of your mail aliases when point is in a <samp>`To'</samp>, <samp>`CC'</samp>,
-<samp>`BCC'</samp>, or <samp>`From'</samp> field.  The aliases are defined in your
-<tt>`.mailrc'</tt> file or in a file specified by the <b>MAILRC</b>
+<p>Your &lsquo;<tt>.mailrc</tt>&rsquo; file ensures that word-abbrevs are defined for each
+of your mail aliases when point is in a &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;,
+&lsquo;<samp>BCC</samp>&rsquo;, or &lsquo;<samp>From</samp>&rsquo; field.  The aliases are defined in your
+&lsquo;<tt>.mailrc</tt>&rsquo; file or in a file specified by the <b>MAILRC</b>
 environment variable if it exists.  Your mail aliases expand any time
 you type a word-delimiter at the end of an abbreviation.
 </p>
@@ -276,7 +276,7 @@ things behind your back&mdash;if the system rewrites an address you typed,
 you know it immediately, instead of after the mail has been sent and
 it's too late to do anything about it.  For example, you will never
 again be in trouble because you forgot to delete an old alias from your
-<tt>`.mailrc'</tt> and a new local user is given a userid which conflicts
+&lsquo;<tt>.mailrc</tt>&rsquo; and a new local user is given a userid which conflicts
 with one of your aliases.
 </p>
 <a name="IDX1120"></a>
@@ -297,41 +297,41 @@ This function, which is bound to <kbd>C-c C-a</kbd>, prompts you for an alias
 (with completion) and inserts its expansion at point.
 </p>
 <p>In this version of Emacs, it is possible to have lines like the
-following in your <tt>`.mailrc'</tt> file:
+following in your &lsquo;<tt>.mailrc</tt>&rsquo; file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">     alias someone &quot;John Doe &lt;doe@quux.com&gt;&quot;
 </pre></td></tr></table>
 
 <p>That is, if you want an address to have embedded spaces, simply surround
 it with double-quotes.  The quotes are necessary because the format of
-the <tt>`.mailrc'</tt> file uses spaces as address delimiters.  
+the &lsquo;<tt>.mailrc</tt>&rsquo; file uses spaces as address delimiters.  
 </p>
-<p>Aliases in the <tt>`.mailrc'</tt> file may be nested. For example, assume
+<p>Aliases in the &lsquo;<tt>.mailrc</tt>&rsquo; file may be nested. For example, assume
 you define aliases like:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">     alias group1 fred ethel
      alias group2 larry curly moe
      alias everybody group1 group2
 </pre></td></tr></table>
 
-<p>When you now type <samp>`everybody'</samp> on the <samp>`To'</samp> line, it will expand to:
+<p>When you now type &lsquo;<samp>everybody</samp>&rsquo; on the &lsquo;<samp>To</samp>&rsquo; line, it will expand to:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">     fred, ethyl, larry, curly, moe
 </pre></td></tr></table>
 
-<p>Aliases may contain forward references; the alias of <samp>`everybody'</samp> in the
-example above can precede the aliases of <samp>`group1'</samp> and <samp>`group2'</samp>.
+<p>Aliases may contain forward references; the alias of &lsquo;<samp>everybody</samp>&rsquo; in the
+example above can precede the aliases of &lsquo;<samp>group1</samp>&rsquo; and &lsquo;<samp>group2</samp>&rsquo;.
 </p>
-<p>In this version of Emacs, you can use the <code>source</code> <tt>`.mailrc'</tt> command
+<p>In this version of Emacs, you can use the <code>source</code> &lsquo;<tt>.mailrc</tt>&rsquo; command
 for reading aliases from some other file as well.
 </p>
 <p>Aliases may contain hyphens, as in <code>&quot;alias foo-bar foo@bar&quot;</code>, even
 though word-abbrevs normally cannot contain hyphens.
 </p>
-<p>To read in the contents of another <tt>`.mailrc'</tt>-type file from Emacs, use the
+<p>To read in the contents of another &lsquo;<tt>.mailrc</tt>&rsquo;-type file from Emacs, use the
 command <code>M-x merge-mail-aliases</code>.  The <code>rebuild-mail-aliases</code>
 command is similar, but deletes existing aliases first.
 </p>
 <a name="IDX1122"></a>
-<p>If you want multiple addresses separated by a string other than <samp>`,'</samp>
+<p>If you want multiple addresses separated by a string other than &lsquo;<samp>,</samp>&rsquo;
 (a comma), then set the variable <code>mail-alias-separator-string</code> to
 it.  This has to be a comma bracketed by whitespace if you want any kind
  of reasonable behavior.
@@ -339,8 +339,8 @@ it.  This has to be a comma bracketed by whitespace if you want any kind
 <a name="IDX1123"></a>
 <p>  If the variable <code>mail-archive-file-name</code> is non-<code>nil</code>, it
 should be a string naming a file.  Each time you start to edit a message
-to send, an <samp>`FCC'</samp> field is entered for that file.  Unless you
-remove the <samp>`FCC'</samp> field, every message is written into that
+to send, an &lsquo;<samp>FCC</samp>&rsquo; field is entered for that file.  Unless you
+remove the &lsquo;<samp>FCC</samp>&rsquo; field, every message is written into that
 file when it is sent.
 </p>
 <hr size="6">
@@ -364,33 +364,33 @@ file when it is sent.
 </tr></table>
 <h2 class="section"> 25.3 Mail Mode </h2>
 
-<p>  The major mode used in the <samp>`*mail*'</samp> buffer is Mail mode.  Mail
+<p>  The major mode used in the &lsquo;<samp>*mail*</samp>&rsquo; buffer is Mail mode.  Mail
 mode is similar to Text mode, but several commands are provided on
 the <kbd>C-c</kbd> prefix.  These commands all deal specifically with
 editing or sending the message.
 </p>
 <dl compact="compact">
 <dt> <kbd>C-c C-s</kbd></dt>
-<dd><p>Send the message, and leave the <samp>`*mail*'</samp> buffer selected
+<dd><p>Send the message, and leave the &lsquo;<samp>*mail*</samp>&rsquo; buffer selected
 (<code>mail-send</code>).
 </p></dd>
 <dt> <kbd>C-c C-c</kbd></dt>
 <dd><p>Send the message, and select some other buffer (<code>mail-send-and-exit</code>).
 </p></dd>
 <dt> <kbd>C-c C-f C-t</kbd></dt>
-<dd><p>Move to the <samp>`To'</samp> header field, creating one if there is none
+<dd><p>Move to the &lsquo;<samp>To</samp>&rsquo; header field, creating one if there is none
 (<code>mail-to</code>).
 </p></dd>
 <dt> <kbd>C-c C-f C-s</kbd></dt>
-<dd><p>Move to the <samp>`Subject'</samp> header field, creating one if there is
+<dd><p>Move to the &lsquo;<samp>Subject</samp>&rsquo; header field, creating one if there is
 none (<code>mail-subject</code>).
 </p></dd>
 <dt> <kbd>C-c C-f C-c</kbd></dt>
-<dd><p>Move to the <samp>`CC'</samp> header field, creating one if there is none
+<dd><p>Move to the &lsquo;<samp>CC</samp>&rsquo; header field, creating one if there is none
 (<code>mail-cc</code>).
 </p></dd>
 <dt> <kbd>C-c C-w</kbd></dt>
-<dd><p>Insert the file <tt>`~/.signature'</tt> at the end of the message text
+<dd><p>Insert the file &lsquo;<tt>~/.signature</tt>&rsquo; at the end of the message text
 (<code>mail-signature</code>).
 </p></dd>
 <dt> <kbd>C-c C-y</kbd></dt>
@@ -412,10 +412,10 @@ none (<code>mail-subject</code>).
 <p>  There are two ways to send a message.  <kbd>C-c C-c</kbd>
 (<code>mail-send-and-exit</code>) is the usual way to send the message.  It
 sends the message and then deletes the window (if there is another
-window) or switches to another buffer.  It puts the <samp>`*mail*'</samp> buffer
+window) or switches to another buffer.  It puts the &lsquo;<samp>*mail*</samp>&rsquo; buffer
 at the lowest priority for automatic reselection, since you are finished
 with using it.  <kbd>C-c C-s</kbd> (<code>mail-send</code>) sends the
-message and marks the <samp>`*mail*'</samp> buffer unmodified, but leaves that
+message and marks the &lsquo;<samp>*mail*</samp>&rsquo; buffer unmodified, but leaves that
 buffer selected so that you can modify the message (perhaps with new
 recipients) and send it again.
 </p>
@@ -428,10 +428,10 @@ recipients) and send it again.
 <p>  Mail mode provides some other special commands that are useful for
 editing the headers and text of the message before you send it.  There are
 three commands defined to move point to particular header fields, all based
-on the prefix <kbd>C-c C-f</kbd> (<samp>`C-f'</samp> is for &ldquo;field&rdquo;).  They are
-<kbd>C-c C-f C-t</kbd> (<code>mail-to</code>) to move to the <samp>`To'</samp> field, <kbd>C-c
-C-f C-s</kbd> (<code>mail-subject</code>) for the <samp>`Subject'</samp> field, and <kbd>C-c
-C-f C-c</kbd> (<code>mail-cc</code>) for the <samp>`CC'</samp> field.  These fields have
+on the prefix <kbd>C-c C-f</kbd> (&lsquo;<samp>C-f</samp>&rsquo; is for &ldquo;field&rdquo;).  They are
+<kbd>C-c C-f C-t</kbd> (<code>mail-to</code>) to move to the &lsquo;<samp>To</samp>&rsquo; field, <kbd>C-c
+C-f C-s</kbd> (<code>mail-subject</code>) for the &lsquo;<samp>Subject</samp>&rsquo; field, and <kbd>C-c
+C-f C-c</kbd> (<code>mail-cc</code>) for the &lsquo;<samp>CC</samp>&rsquo; field.  These fields have
 special motion commands because they are edited most frequently. 
 </p>
 
@@ -439,21 +439,21 @@ special motion commands because they are edited most frequently.
 <a name="IDX1135"></a>
 <p>  <kbd>C-c C-w</kbd> (<code>mail-signature</code>) adds a standard piece of text at
 the end of the message to say more about who you are.  The text comes
-from the file <tt>`.signature'</tt> in your home directory.
+from the file &lsquo;<tt>.signature</tt>&rsquo; in your home directory.
 </p>
 <a name="IDX1136"></a>
 <a name="IDX1137"></a>
 <p>  When you use an Rmail command to send mail from the Rmail mail reader,
 you can use <kbd>C-c C-y</kbd> <code>mail-yank-original</code> inside the
-<samp>`*mail*'</samp> buffer to insert the
+&lsquo;<samp>*mail*</samp>&rsquo; buffer to insert the
 text of the message you are replying to.  Normally Rmail indents each line
 of that message four spaces and eliminates most header fields.  A
 numeric argument specifies the number of spaces to indent.  An argument
 of just <kbd>C-u</kbd> says not to indent at all and not to eliminate
 anything.  <kbd>C-c C-y</kbd> always uses the current message from the
-<samp>`RMAIL'</samp> buffer, so you can insert several old messages by selecting
-one in <samp>`RMAIL'</samp>, switching to <samp>`*mail*'</samp> and yanking it, then
-switching back to <samp>`RMAIL'</samp> to select another.
+&lsquo;<samp>RMAIL</samp>&rsquo; buffer, so you can insert several old messages by selecting
+one in &lsquo;<samp>RMAIL</samp>&rsquo;, switching to &lsquo;<samp>*mail*</samp>&rsquo; and yanking it, then
+switching back to &lsquo;<samp>RMAIL</samp>&rsquo; to select another.
 </p>
 <a name="IDX1138"></a>
 <a name="IDX1139"></a>
@@ -471,7 +471,6 @@ value of <code>text-mode-hook</code>, if it is not void or <code>nil</code>, and
 then calls the value of <code>mail-mode-hook</code> if that is not void or
 <code>nil</code>.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC296" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

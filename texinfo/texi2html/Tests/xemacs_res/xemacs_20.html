@@ -167,7 +167,7 @@ where necessary (rarely, we hope) to set coding systems directly.
 <a name="IDX698"></a>
 <a name="IDX699"></a>
 <p>  The command <kbd>C-h h</kbd> (<code>view-hello-file</code>) displays the file
-<tt>`etc/HELLO'</tt>, which shows how to say &ldquo;hello&rdquo; in many languages.
+&lsquo;<tt>etc/HELLO</tt>&rsquo;, which shows how to say &ldquo;hello&rdquo; in many languages.
 This illustrates various scripts.
 </p>
 <p>  Keyboards, even in the countries where these character sets are used,
@@ -229,7 +229,7 @@ Latin-5, Norwegian, Polish, Romanian, Slovenian, Thai-XTIS, Vietnamese.
 <p>  Some operating systems let you specify the language you are using by
 setting locale environment variables.  XEmacs handles one common special
 case of this: if your locale name for character types contains the
-string <samp>`8859-<var>n</var>'</samp>, XEmacs automatically selects the
+string &lsquo;<samp>8859-<var>n</var></samp>&rsquo;, XEmacs automatically selects the
 corresponding language environment.
 </p>
 <a name="IDX702"></a>
@@ -306,15 +306,15 @@ cycle through the alternatives.
 <p>  Sometimes it is useful to cut off input method processing so that the
 characters you have just entered will not combine with subsequent
 characters.  For example, in input method <code>latin-1-postfix</code>, the
-sequence <kbd>e '</kbd> combines to form an <samp>`e'</samp> with an accent.  What if
+sequence <kbd>e '</kbd> combines to form an &lsquo;<samp>e</samp>&rsquo; with an accent.  What if
 you want to enter them as separate characters?
 </p>
 <p>  One way is to type the accent twice; that is a special feature for
 entering the separate letter and accent.  For example, <kbd>e ' '</kbd> gives
-you the two characters <samp>`e''</samp>.  Another way is to type another letter
+you the two characters &lsquo;<samp>e'</samp>&rsquo;.  Another way is to type another letter
 after the <kbd>e</kbd>&mdash;something that won't combine with that&mdash;and
 immediately delete it.  For example, you could type <kbd>e e <kbd>DEL</kbd>
-'</kbd> to get separate <samp>`e'</samp> and <samp>`''</samp>.
+'</kbd> to get separate &lsquo;<samp>e</samp>&rsquo; and &lsquo;<samp>'</samp>&rsquo;.
 </p>
 <p>  Another method, more general but not quite as easy to type, is to use
 <kbd>C-\ C-\</kbd> between two characters to stop them from combining.  This
@@ -453,24 +453,24 @@ user: font registry and so called <em>ccl-program</em>.
 for this character set.  For example, both the <code>ascii</code> and
 <code>latin-iso8859-1</code> charsets use the registry <code>&quot;ISO8859-1&quot;</code>.
 This field is used to choose an appropriate font when the user gives a
-general font specification such as <samp>`-*-courier-medium-r-*-140-*'</samp>,
+general font specification such as &lsquo;<samp>-*-courier-medium-r-*-140-*</samp>&rsquo;,
 i.e. a 14-point upright medium-weight Courier font.
 </p>
 <p>You can set font registry for a charset using
-<samp>`set-charset-registry'</samp> function in one of your startup files.  This
+&lsquo;<samp>set-charset-registry</samp>&rsquo; function in one of your startup files.  This
 function takes two arguments: character set (as a symbol) and font
 registry (as a string).
 </p>
 <p>E. g., for Cyrillic texts Mule uses <code>cyrillic-iso8859-5</code>
-charset with <samp>`&quot;ISO8859-5&quot;'</samp> as a default registry, and we want to
-use <samp>`&quot;koi8-r&quot;'</samp> instead, because fonts in that encoding are
+charset with &lsquo;<samp>&quot;ISO8859-5&quot;</samp>&rsquo; as a default registry, and we want to
+use &lsquo;<samp>&quot;koi8-r&quot;</samp>&rsquo; instead, because fonts in that encoding are
 installed on our system.  Use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
 </pre></td></tr></table>
 
 <p>(Please note that you probably also want to set font registry for
-<samp>`ascii'</samp> charset so that mixed English/Cyrillic texts be displayed
+&lsquo;<samp>ascii</samp>&rsquo; charset so that mixed English/Cyrillic texts be displayed
 using the same font.)
 </p>
 <p>&quot;CCL-programs&quot; are a little special-purpose scripts defined within
@@ -479,13 +479,13 @@ are in different encoding from the encoding that is used by Mule for
 text in buffer.  Returning to the above example, we need to somehow tell
 XEmacs that we have different encodings of fonts and text and so it
 needs to convert characters between those encodings when displaying.
-That's what <samp>`set-charset-ccl-program'</samp> function is used for.  There
+That's what &lsquo;<samp>set-charset-ccl-program</samp>&rsquo; function is used for.  There
 are quite a few various CCL programs defined within XEmacs, and there is
 no comprehensive list of them, so you currently have to consult sources.
 </p>
-<p>We know that there is a CCL program called <samp>`ccl-encode-koi8-r-font'</samp>
+<p>We know that there is a CCL program called &lsquo;<samp>ccl-encode-koi8-r-font</samp>&rsquo;
 that is used exactly for needed purpose: to convert characters between
-<samp>`ISO8859-5'</samp> encoding and <samp>`koi8-r'</samp>.  Use:
+&lsquo;<samp>ISO8859-5</samp>&rsquo; encoding and &lsquo;<samp>koi8-r</samp>&rsquo;.  Use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
 </pre></td></tr></table>
@@ -526,7 +526,7 @@ terminal, and in exchanging data with subprocesses.
 <p>  XEmacs assigns a name to each coding system.  Most coding systems are
 used for one language, and the name of the coding system starts with the
 language name.  Some coding systems are used for several languages;
-their names usually start with <samp>`iso'</samp>.  There are also special
+their names usually start with &lsquo;<samp>iso</samp>&rsquo;.  There are also special
 coding systems <code>binary</code> and <code>no-conversion</code> which do not
 convert printing characters at all.
 </p>
@@ -684,7 +684,7 @@ list.
 file.  The variable <code>file-coding-system-alist</code> specifies this
 correspondence.  There is a special function
 <code>modify-coding-system-alist</code> for adding elements to this list.  For
-example, to read and write all <samp>`.txt'</samp> using the coding system
+example, to read and write all &lsquo;<samp>.txt</samp>&rsquo; using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
@@ -696,12 +696,12 @@ the third argument says which coding system to use for these files.
 </p>
 <a name="IDX722"></a>
 <p>  You can specify the coding system for a particular file using the
-<samp>`-*-&hellip;-*-'</samp> construct at the beginning of a file, or a local
+&lsquo;<samp>-*-&hellip;-*-</samp>&rsquo; construct at the beginning of a file, or a local
 variables list at the end (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).  You do this by
 defining a value for the &ldquo;variable&rdquo; named <code>coding</code>.  XEmacs does
 not really have a variable <code>coding</code>; instead of setting a variable,
 it uses the specified coding system for the file.  For example,
-<samp>`-*-mode: C; coding: iso-8859-1;-*-'</samp> specifies use of the
+&lsquo;<samp>-*-mode: C; coding: iso-8859-1;-*-</samp>&rsquo; specifies use of the
 iso-8859-1 coding system, as well as C mode.
 </p>
 <a name="IDX723"></a>
@@ -860,7 +860,6 @@ those non-Latin-1 characters which the specified coding system can
 encode.  By default, this variable is <code>nil</code>, which implies that you
 cannot use non-Latin-1 characters in file names.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

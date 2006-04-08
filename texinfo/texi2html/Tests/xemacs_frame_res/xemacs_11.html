@@ -239,7 +239,7 @@ Info system (<code>Info-elisp-ref</code>).
 (<code>describe-key-briefly</code>) and <kbd>C-h k</kbd> (<code>describe-key</code>).
 <kbd>C-h c <var>key</var></kbd> prints in the echo area the name of the command
 that <var>key</var> is bound to.  For example, <kbd>C-h c C-f</kbd> prints
-<samp>`forward-char'</samp>.  Since command names are chosen to describe what
+&lsquo;<samp>forward-char</samp>&rsquo;.  Since command names are chosen to describe what
 the commands do, this is a good way to get a very brief description of
 what <var>key</var> does.
 </p>
@@ -307,8 +307,8 @@ used if you type <kbd>RET</kbd> leaving the minibuffer empty.  The default is
 the function called by the innermost Lisp expression in the buffer
 around point, <em>provided</em> that is a valid, defined Lisp function
 name.  For example, if point is located following the text
-<samp>`(make-vector (car x)'</samp>, the innermost list containing point is the
-one that starts with <samp>`(make-vector'</samp>, so the default is to describe the
+&lsquo;<samp>(make-vector (car x)</samp>&rsquo;, the innermost list containing point is the
+one that starts with &lsquo;<samp>(make-vector</samp>&rsquo;, so the default is to describe the
 function <code>make-vector</code>.
 </p>
 <p>  <kbd>C-h f</kbd> is often useful just to verify that you have the right
@@ -368,7 +368,7 @@ variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 <p>  A more sophisticated sort of question to ask is, &ldquo;What are the
 commands for working with files?&rdquo;  To ask this question, type <kbd>C-h
 a file <kbd>RET</kbd></kbd>, which displays a list of all command names that
-contain <samp>`file'</samp>, including <code>copy-file</code>, <code>find-file</code>, and
+contain &lsquo;<samp>file</samp>&rsquo;, including <code>copy-file</code>, <code>find-file</code>, and
 so on.  With each command name appears a brief description of how to use
 the command, and what keys you can currently invoke it with.  For
 example, it would say that you can invoke <code>find-file</code> by typing
@@ -613,19 +613,18 @@ actually <kbd>C-M-h</kbd>, which marks a defun.)
 <p>  The other <kbd>C-h</kbd> options display various files of useful
 information.  <kbd>C-h C-w</kbd> (<code>describe-no-warranty</code>) displays the
 full details on the complete absence of warranty for XEmacs.  <kbd>C-h
-n</kbd> (<code>view-emacs-news</code>) displays the file <tt>`xemacs/etc/NEWS'</tt>,
+n</kbd> (<code>view-emacs-news</code>) displays the file &lsquo;<tt>xemacs/etc/NEWS</tt>&rsquo;,
 which contains documentation on XEmacs changes arranged chronologically.
 <kbd>C-h F</kbd> (<code>xemacs-local-faq</code>) displays local version of the
 XEmacs frequently-answered-questions-list.  <kbd>C-h t</kbd>
 (<code>help-with-tutorial</code>) displays the learn-by-doing XEmacs
 tutorial. <kbd>C-h C-c</kbd> (<code>describe-copying</code>) displays the file
-<tt>`xemacs/etc/COPYING'</tt>, which tells you the conditions you must obey
+&lsquo;<tt>xemacs/etc/COPYING</tt>&rsquo;, which tells you the conditions you must obey
 in distributing copies of XEmacs.  <kbd>C-h C-d</kbd>
 (<code>describe-distribution</code>) displays another file named
-<tt>`xemacs/etc/DISTRIB'</tt>, which tells you how you can order a copy of
+&lsquo;<tt>xemacs/etc/DISTRIB</tt>&rsquo;, which tells you how you can order a copy of
 the latest version of XEmacs.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC71" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

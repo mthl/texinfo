@@ -155,18 +155,18 @@ directory.
 <table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src/
 </pre></td></tr></table>
 
-<p>where <samp>`Find File: '</samp> is the prompt.  Typing <kbd>buffer.c</kbd>
-specifies the file <tt>`/u2/emacs/src/buffer.c'</tt>.  To find files in
+<p>where &lsquo;<samp>Find File: </samp>&rsquo; is the prompt.  Typing <kbd>buffer.c</kbd>
+specifies the file &lsquo;<tt>/u2/emacs/src/buffer.c</tt>&rsquo;.  To find files in
 nearby directories, use <kbd>..</kbd>; thus, if you type
 <kbd>../lisp/simple.el</kbd>, you will get the file named
-<tt>`/u2/emacs/lisp/simple.el'</tt>.  Alternatively, you can kill with
+&lsquo;<tt>/u2/emacs/lisp/simple.el</tt>&rsquo;.  Alternatively, you can kill with
 <kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
 </p>
 <p>  If you don't want any of the default, you can kill it with <kbd>C-a
 C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
 Insert an absolute file name, one starting with a slash or a tilde,
 after the default directory.  For example, to specify the file
-<tt>`/etc/termcap'</tt>, just insert that name, giving these minibuffer
+&lsquo;<tt>/etc/termcap</tt>&rsquo;, just insert that name, giving these minibuffer
 contents:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src//etc/termcap
@@ -177,8 +177,8 @@ contents:
 <a name="IDX215"></a>
 <p>XEmacs gives a special meaning to a double slash (which is not normally
 a useful thing to write): it means, &ldquo;ignore everything before the
-second slash in the pair.&rdquo;  Thus, <samp>`/u2/emacs/src/'</samp> is ignored in
-the example above, and you get the file <tt>`/etc/termcap'</tt>.
+second slash in the pair.&rdquo;  Thus, &lsquo;<samp>/u2/emacs/src/</samp>&rsquo; is ignored in
+the example above, and you get the file &lsquo;<tt>/etc/termcap</tt>&rsquo;.
 </p>
 <a name="IDX216"></a>
 <p>If you set <code>insert-default-directory</code> to <code>nil</code>, the default
@@ -307,7 +307,7 @@ insert-buffer <kbd>RET</kbd></kbd> (for example).
 </p>
 <p>  Case is normally significant in completion because it is significant
 in most of the names that you can complete (buffer names, file names and
-command names).  Thus, <samp>`fo'</samp> does not complete to <samp>`Foo'</samp>.  When
+command names).  Thus, &lsquo;<samp>fo</samp>&rsquo; does not complete to &lsquo;<samp>Foo</samp>&rsquo;.  When
 you are completing a name in which case does not matter, case may be
 ignored for completion's sake if specified by program.
 </p>
@@ -350,20 +350,20 @@ and hit <kbd>RET</kbd>.
 
 <p>  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
 the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
-start with <samp>`au'</samp>.  There are several, including
+start with &lsquo;<samp>au</samp>&rsquo;.  There are several, including
 <code>auto-fill-mode</code> and <code>auto-save-mode</code>&mdash;but they are all the
-same as far as <code>auto</code>, so the <samp>`au'</samp> in the minibuffer changes
-to <samp>`auto'</samp>.
+same as far as <code>auto</code>, so the &lsquo;<samp>au</samp>&rsquo; in the minibuffer changes
+to &lsquo;<samp>auto</samp>&rsquo;.
 </p>
 <p>  If you type <kbd>TAB</kbd> again immediately, there are multiple
 possibilities for the very next character&mdash;it could be any of
-<samp>`c-'</samp>&mdash;so no more characters are added; instead, <kbd>TAB</kbd>
+&lsquo;<samp>c-</samp>&rsquo;&mdash;so no more characters are added; instead, <kbd>TAB</kbd>
 displays a list of all possible completions in another window.
 </p>
 <p>  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
-<samp>`auto-f'</samp>.  The only command name starting this way is
+&lsquo;<samp>auto-f</samp>&rsquo;.  The only command name starting this way is
 <code>auto-fill-mode</code>, so completion fills in the rest of that.  You now
-have <samp>`auto-fill-mode'</samp> in the minibuffer after typing just <kbd>au
+have &lsquo;<samp>auto-fill-mode</samp>&rsquo; in the minibuffer after typing just <kbd>au
 <kbd>TAB</kbd> f <kbd>TAB</kbd></kbd>.  Note that <kbd>TAB</kbd> has this effect because in
 the minibuffer it is bound to the command <code>minibuffer-complete</code>
 when completion is available.
@@ -422,11 +422,11 @@ highlighted completion and exit the minibuffer.
 <a name="IDX220"></a>
 <a name="IDX221"></a>
 <p>  <kbd>SPC</kbd> completes much like <kbd>TAB</kbd>, but never goes beyond the
-next hyphen or space.  If you have <samp>`auto-f'</samp> in the minibuffer and
-type <kbd>SPC</kbd>, it finds that the completion is <samp>`auto-fill-mode'</samp>,
-but it stops completing after <samp>`fill-'</samp>.  This gives
-<samp>`auto-fill-'</samp>.  Another <kbd>SPC</kbd> at this point completes all the
-way to <samp>`auto-fill-mode'</samp>.  <kbd>SPC</kbd> in the minibuffer when
+next hyphen or space.  If you have &lsquo;<samp>auto-f</samp>&rsquo; in the minibuffer and
+type <kbd>SPC</kbd>, it finds that the completion is &lsquo;<samp>auto-fill-mode</samp>&rsquo;,
+but it stops completing after &lsquo;<samp>fill-</samp>&rsquo;.  This gives
+&lsquo;<samp>auto-fill-</samp>&rsquo;.  Another <kbd>SPC</kbd> at this point completes all the
+way to &lsquo;<samp>auto-fill-mode</samp>&rsquo;.  <kbd>SPC</kbd> in the minibuffer when
 completion is available runs the command
 <code>minibuffer-complete-word</code>.
 </p>
@@ -563,8 +563,8 @@ ignored.  The variable <code>completion-ignored-extensions</code> contains a
 list of strings; a file whose name ends in any of those strings is
 ignored as a possible completion.  The standard value of this variable
 has several elements including <code>&quot;.o&quot;</code>, <code>&quot;.elc&quot;</code>, <code>&quot;.dvi&quot;</code>
-and <code>&quot;~&quot;</code>.  The effect is that, for example, <samp>`foo'</samp> can
-complete to <samp>`foo.c'</samp> even though <samp>`foo.o'</samp> exists as well.
+and <code>&quot;~&quot;</code>.  The effect is that, for example, &lsquo;<samp>foo</samp>&rsquo; can
+complete to &lsquo;<samp>foo.c</samp>&rsquo; even though &lsquo;<samp>foo.o</samp>&rsquo; exists as well.
 However, if <em>all</em> the possible completions end in &ldquo;ignored&rdquo;
 strings, then they are not ignored.  Ignored extensions do not apply to
 lists of completions&mdash;those always mention all possible completions.
@@ -775,7 +775,6 @@ is a Lisp expression which describes one command and its arguments.
 Lisp programs can reexecute a command by feeding the corresponding
 <code>command-history</code> element to <code>eval</code>.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC60" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

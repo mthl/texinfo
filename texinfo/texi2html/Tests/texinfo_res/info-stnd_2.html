@@ -131,7 +131,7 @@ build-time default to the value of <code>INFOPATH</code>.
 <dt> <code>--dribble=<var>dribble-file</var></code></dt>
 <dd><p>Specify a file where all user keystrokes will be recorded.  This file
 can be used later to replay the same sequence of commands, see the
-<samp>`--restore'</samp> option below.
+&lsquo;<samp>--restore</samp>&rsquo; option below.
 </p>
 </dd>
 <dt> <code>--file <var>filename</var></code></dt>
@@ -144,14 +144,14 @@ the file <code>dir</code>; if you use this option, Info will start with
 <a name="IDX8"></a>
 <a name="IDX9"></a>
 <a name="IDX10"></a>
-<p>If <var>filename</var> is an absolute file name, or begins with <tt>`./'</tt> or
-<tt>`../'</tt>, Info looks for <var>filename</var> only in the directory of the
+<p>If <var>filename</var> is an absolute file name, or begins with &lsquo;<tt>./</tt>&rsquo; or
+&lsquo;<tt>../</tt>&rsquo;, Info looks for <var>filename</var> only in the directory of the
 specified <var>filename</var>, and adds the directory of <var>filename</var> to
 the value of <code>INFOPATH</code>.  In contrast, if <var>filename</var> is in the
-form of a relative file name, but without the <tt>`./'</tt> or <tt>`../'</tt>
+form of a relative file name, but without the &lsquo;<tt>./</tt>&rsquo; or &lsquo;<tt>../</tt>&rsquo;
 prefix, Info will only look for it in the directories specified in
 <code>INFOPATH</code>.  In other words, Info does <em>not</em> treat file names
-which lack <tt>`./'</tt> and <tt>`../'</tt> prefix as relative to the current
+which lack &lsquo;<tt>./</tt>&rsquo; and &lsquo;<tt>../</tt>&rsquo; prefix as relative to the current
 directory.
 </p>
 <a name="IDX11"></a>
@@ -164,8 +164,8 @@ isn't found.  Info supports files compressed with <code>gzip</code>,
 <code>bzip2</code>, <code>compress</code> and <code>yabba</code> programs; it calls
 <code>gunzip</code>, <code>bunzip2</code>, <code>uncompress</code> and <code>unyabba</code>,
 accordingly, to decompress such files.  Compressed Info files are
-assumed to have <tt>`.z'</tt>, <tt>`.gz'</tt>, <tt>`.bz2'</tt>, <tt>`.Z'</tt>, or
-<tt>`.Y'</tt> extensions, possibly in addition to one of the known Info
+assumed to have &lsquo;<tt>.z</tt>&rsquo;, &lsquo;<tt>.gz</tt>&rsquo;, &lsquo;<tt>.bz2</tt>&rsquo;, &lsquo;<tt>.Z</tt>&rsquo;, or
+&lsquo;<tt>.Y</tt>&rsquo; extensions, possibly in addition to one of the known Info
 files extensions<a name="DOCF2" href="info-stnd_fot.html#FOOT2">(2)</a>.
 </p>
 </dd>
@@ -181,8 +181,8 @@ files extensions<a name="DOCF2" href="info-stnd_fot.html#FOOT2">(2)</a>.
 file and search for index entries which matche <var>string</var>.  If such an
 entry is found, the Info session begins with displaying the node pointed
 to by the first matching index entry; press <kbd>,</kbd> to step through the
-rest of the matching entries.  If no such entry exists, print <samp>`no
-entries found'</samp> and exit with nonzero status.  This can be used from
+rest of the matching entries.  If no such entry exists, print &lsquo;<samp>no
+entries found</samp>&rsquo; and exit with nonzero status.  This can be used from
 another program as a way to provide online help, or as a quick way of
 starting to read an Info file at a certain node when you don't know the
 exact name of that node.
@@ -227,7 +227,7 @@ display the man pages with those attributes.
 </dd>
 <dt> <code>--restore=<var>dribble-file</var></code></dt>
 <dd><p>Read keystrokes from <var>dribble-file</var>, presumably recorded during
-previous Info session (see the description of the <samp>`--dribble'</samp>
+previous Info session (see the description of the &lsquo;<samp>--dribble</samp>&rsquo;
 option above).  When the keystrokes in the files are all read, Info
 reverts its input to the usual interactive operation.
 </p>
@@ -294,21 +294,21 @@ the menu names which describe the path to that node.  For example,
 <table><tr><td>&nbsp;</td><td><pre class="example">info emacs buffers
 </pre></td></tr></table>
 
-<p>first selects the menu item <samp>`Emacs'</samp> in the node <samp>`(dir)Top'</samp>,
-and then selects the menu item <samp>`Buffers'</samp> in the node
-<samp>`(emacs)Top'</samp>.
+<p>first selects the menu item &lsquo;<samp>Emacs</samp>&rsquo; in the node &lsquo;<samp>(dir)Top</samp>&rsquo;,
+and then selects the menu item &lsquo;<samp>Buffers</samp>&rsquo; in the node
+&lsquo;<samp>(emacs)Top</samp>&rsquo;.
 </p></dd>
 </dl>
 
-<p>To avoid searching the <tt>`dir'</tt> files and just show some arbitrary
-file, use <samp>`-f'</samp> and the filename, as in <samp>`info -f ./foo.info'</samp>.
+<p>To avoid searching the &lsquo;<tt>dir</tt>&rsquo; files and just show some arbitrary
+file, use &lsquo;<samp>-f</samp>&rsquo; and the filename, as in &lsquo;<samp>info -f ./foo.info</samp>&rsquo;.
 </p>
 <p>The index search and the search for the node which describes program
 invocation and command-line options begins <em>after</em> processing all
 the command-line menu items.  Therefore, the Info file searched for the
 index or the invocation node is the file where Info finds itself after
 following all the menu items given on the command line.  This is so
-<samp>`info emacs --show-options'</samp> does what you'd expect.
+&lsquo;<samp>info emacs --show-options</samp>&rsquo; does what you'd expect.
 </p>
 
 

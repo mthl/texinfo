@@ -15,7 +15,6 @@
 ../texinfo/texinfo.txi(,16) 
 ../texinfo/texinfo.txi(,17) @c Automake automatically updates version.texi to @set VERSION and
 ../texinfo/texinfo.txi(,18) @c @set UPDATED to appropriate values.
-../texinfo/version.texi(,1) 
 ../texinfo/texinfo.txi(,20) @settitle GNU Texinfo 4.2
 ../texinfo/texinfo.txi(,21) 
 ../texinfo/texinfo.txi(,22) @c Define a new index for options.
@@ -17637,7 +17636,6 @@
 ../texinfo/texinfo.txi(,18732) * GNU Free Documentation License::  License for copying this manual.
 ../texinfo/texinfo.txi(,18733) @end menu
 ../texinfo/texinfo.txi(,18734) 
-../texinfo/fdl.texi(,1) 
 ../texinfo/fdl.texi(,1) 
 ../texinfo/fdl.texi(,2) @node GNU Free Documentation License
 ../texinfo/fdl.texi(,3) @appendixsec GNU Free Documentation License

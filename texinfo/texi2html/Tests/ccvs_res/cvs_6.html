@@ -90,36 +90,36 @@ structure:
                  +--<tt>test2.t</tt>
 </pre></td></tr></table>
 
-<p>If <tt>`tc'</tt> is the current working directory, the
+<p>If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
 </p>
 <ul>
 <li>
-<samp>`cvs update testing'</samp> is equivalent to
+&lsquo;<samp>cvs update testing</samp>&rsquo; is equivalent to
 
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs update testing/testpgm.t testing/test2.t
 </pre></td></tr></table>
 
 </li><li>
-<samp>`cvs update testing man'</samp> updates all files in the
+&lsquo;<samp>cvs update testing man</samp>&rsquo; updates all files in the
 subdirectories
 
 </li><li>
-<samp>`cvs update .'</samp> or just <samp>`cvs update'</samp> updates
+&lsquo;<samp>cvs update .</samp>&rsquo; or just &lsquo;<samp>cvs update</samp>&rsquo; updates
 all files in the <code>tc</code> directory
 </li></ul>
 
 <p>If no arguments are given to <code>update</code> it will
 update all files in the current working directory and
-all its subdirectories.  In other words, <tt>`.'</tt> is a
+all its subdirectories.  In other words, &lsquo;<tt>.</tt>&rsquo; is a
 default argument to <code>update</code>.  This is also true
 for most of the <small>CVS</small> subcommands, not only the
 <code>update</code> command.
 </p>
 <p>The recursive behavior of the <small>CVS</small> subcommands can be
-turned off with the <samp>`-l'</samp> option.
-Conversely, the <samp>`-R'</samp> option can be used to force recursion if
-<samp>`-l'</samp> is specified in <tt>`~/.cvsrc'</tt> (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
+turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
+Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
+&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -l         # Don't update files in subdirectories
 </pre></td></tr></table>

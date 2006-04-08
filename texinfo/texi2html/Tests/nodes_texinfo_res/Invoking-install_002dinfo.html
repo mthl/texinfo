@@ -82,9 +82,9 @@ ul.toc {list-style: none}
 
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
-top-level <tt>`dir'</tt> file in the Info system (see the previous sections
-for an explanation of how the <tt>`dir'</tt> file works).  It's most often
-run as part of software installation, or when constructing a <tt>`dir'</tt> file
+top-level &lsquo;<tt>dir</tt>&rsquo; file in the Info system (see the previous sections
+for an explanation of how the &lsquo;<tt>dir</tt>&rsquo; file works).  It's most often
+run as part of software installation, or when constructing a &lsquo;<tt>dir</tt>&rsquo; file
 for all manuals on a system.  Synopsis:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
@@ -93,7 +93,7 @@ for all manuals on a system.  Synopsis:
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time
 defaults, and standard input is never used.  <code>install-info</code> can
-read only one Info file and write only one <tt>`dir'</tt> file per invocation.
+read only one Info file and write only one &lsquo;<tt>dir</tt>&rsquo; file per invocation.
 </p>
 <a name="IDX420"></a>
 <p>If <var>dir-file</var> (however specified) does not exist,
@@ -105,7 +105,7 @@ read only one Info file and write only one <tt>`dir'</tt> file per invocation.
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to
-open <tt>`<var>dir-file</var>.gz'</tt>.
+open &lsquo;<tt><var>dir-file</var>.gz</tt>&rsquo;.
 </p>
 <p>Options:
 </p>
@@ -114,7 +114,7 @@ open <tt>`<var>dir-file</var>.gz'</tt>.
 <dd><a name="IDX423"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
-an optional <samp>`.info'</samp> in either one).  Don't insert any new entries.
+an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don't insert any new entries.
 </p>
 </dd>
 <dt> <code>--dir-file=<var>name</var></code></dt>
@@ -156,13 +156,13 @@ Equivalent to using the <var>info-file</var> argument.
 <dt> <code>-D <var>dir</var></code></dt>
 <dd><a name="IDX432"></a>
 <a name="IDX433"></a>
-<p>Specify the directory where <tt>`dir'</tt> resides.
-Equivalent to <samp>`--dir-file=<var>dir</var>/dir'</samp>.
+<p>Specify the directory where &lsquo;<tt>dir</tt>&rsquo; resides.
+Equivalent to &lsquo;<samp>--dir-file=<var>dir</var>/dir</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--item=<var>text</var></code></dt>
 <dd><a name="IDX434"></a>
-<p>Same as <samp>`--entry=<var>text</var>'</samp>.  An Info directory entry is actually
+<p>Same as &lsquo;<samp>--entry=<var>text</var></samp>&rsquo;.  An Info directory entry is actually
 a menu item.
 </p>
 </dd>
@@ -175,7 +175,7 @@ a menu item.
 <dt> <code>-r</code></dt>
 <dd><a name="IDX436"></a>
 <a name="IDX437"></a>
-<p>Same as <samp>`--delete'</samp>.
+<p>Same as &lsquo;<samp>--delete</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--section=<var>sec</var></code></dt>

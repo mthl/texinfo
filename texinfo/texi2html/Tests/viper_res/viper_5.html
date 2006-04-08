@@ -61,7 +61,7 @@ ul.toc {list-style: none}
 <h1 class="chapter"> 4. Commands </h1>
 
 <p>This section is a semi-automatically bowdlerized version of the Vi
-reference created by <br> <samp>`maart@cs.vu.nl'</samp> and others.  It can be
+reference created by <br> &lsquo;<samp>maart@cs.vu.nl</samp>&rsquo; and others.  It can be
 found on the Vi archives.  This reference has been adapted for Viper.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -138,7 +138,7 @@ use these commands to describe a region of text to operate on.
 <p>Viper adds two region descriptors, <kbd>r</kbd> and <kbd>R</kbd>.  These describe
 the Emacs regions (see section <a href="viper_3.html#SEC15">Basics</a>), but they are not movement commands.
 </p>
-<p>The command description uses angle brackets <samp>`&lt;&gt;'</samp> to indicate
+<p>The command description uses angle brackets &lsquo;<samp>&lt;&gt;</samp>&rsquo; to indicate
 metasyntactic variables, since the normal conventions of using simple
 text can be confusing with Viper where the commands themselves are
 characters.  Watch out where <kbd>&lt;</kbd> shift commands and <kbd>&lt;count&gt;</kbd> are
@@ -152,12 +152,12 @@ mentioned together!!!
 <a name="IDX241"></a>
 <a name="IDX242"></a>
 
-<p><samp>`&lt;move&gt;'</samp> refers to the above movement commands, and <samp>`&lt;a-z&gt;'</samp>
-refers to registers or textmarkers from <samp>`a'</samp> to <samp>`z'</samp>.  Note
-that the <samp>`&lt;move&gt;'</samp>  is described by full move commands, that is to
+<p>&lsquo;<samp>&lt;move&gt;</samp>&rsquo; refers to the above movement commands, and &lsquo;<samp>&lt;a-z&gt;</samp>&rsquo;
+refers to registers or textmarkers from &lsquo;<samp>a</samp>&rsquo; to &lsquo;<samp>z</samp>&rsquo;.  Note
+that the &lsquo;<samp>&lt;move&gt;</samp>&rsquo;  is described by full move commands, that is to
 say they will take counts, and otherwise behave like normal move commands.
 <a name="IDX243"></a>
-<samp>`&lt;address&gt;'</samp> refers to Ex line addresses, which include
+&lsquo;<samp>&lt;address&gt;</samp>&rsquo; refers to Ex line addresses, which include
 </p>
 <dl compact="compact">
 <dt> <kbd>. &lt;No address&gt;</kbd></dt>
@@ -193,13 +193,13 @@ lines.
 </dl>
 
 <a name="IDX245"></a>
-<p>Note that <samp>`%'</samp> is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
-to mean current file.  If you want a <samp>`%'</samp> in your command, it must be
-escaped as <samp>`\%'</samp>. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
-command doesn't support the meta symbols <samp>`%'</samp> and <samp>`#'</samp>, because
+<p>Note that &lsquo;<samp>%</samp>&rsquo; is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
+to mean current file.  If you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be
+escaped as &lsquo;<samp>\%</samp>&rsquo;. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
+command doesn't support the meta symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo;, because
 file history is a better mechanism.
 <a name="IDX246"></a>
-Similarly, <samp>`#'</samp> expands to the previous file.  The previous file is
+Similarly, &lsquo;<samp>#</samp>&rsquo; expands to the previous file.  The previous file is
 the first file in <kbd>:args</kbd> listing.  This defaults to previous window
 in the VI sense if you have one window only.
 </p>
@@ -207,7 +207,7 @@ in the VI sense if you have one window only.
 <a name="IDX248"></a>
 <a name="IDX249"></a>
 <a name="IDX250"></a>
-<p>Others like <samp>`&lt;args&gt; -- arguments'</samp>, <samp>`&lt;cmd&gt; -- command'</samp> etc.
+<p>Others like &lsquo;<samp>&lt;args&gt; -- arguments</samp>&rsquo;, &lsquo;<samp>&lt;cmd&gt; -- command</samp>&rsquo; etc.
 should be fairly obvious.
 </p>
 <p>Common characters referred to include:
@@ -240,12 +240,12 @@ should be fairly obvious.
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 
-<p>We also use <samp>`word'</samp> for alphanumeric/non-alphanumeric words, and
-<samp>`WORD'</samp> for whitespace delimited words.  <samp>`char'</samp> refers to any
-ASCII character, <samp>`CHAR'</samp> to non-whitespace character.
-Brackets <samp>`[]'</samp> indicate optional parameters; <samp>`&lt;count&gt;'</samp> also
+<p>We also use &lsquo;<samp>word</samp>&rsquo; for alphanumeric/non-alphanumeric words, and
+&lsquo;<samp>WORD</samp>&rsquo; for whitespace delimited words.  &lsquo;<samp>char</samp>&rsquo; refers to any
+ASCII character, &lsquo;<samp>CHAR</samp>&rsquo; to non-whitespace character.
+Brackets &lsquo;<samp>[]</samp>&rsquo; indicate optional parameters; &lsquo;<samp>&lt;count&gt;</samp>&rsquo; also
 optional, usually defaulting to 1.  Brackets are elided for
-<samp>`&lt;count&gt;'</samp> to eschew obfuscation.
+&lsquo;<samp>&lt;count&gt;</samp>&rsquo; to eschew obfuscation.
 </p>
 <p>Viper's idea of Vi's words is slightly different from Vi.  First, Viper
 words understand Emacs symbol tables.  Therefore, all symbols declared to be
@@ -542,7 +542,7 @@ this function.
 <dd><p>Find the next bracket/parenthesis/brace and go to its match.
 By default, Viper ignores brackets/parentheses/braces that occur inside
 parentheses.  You can change this by setting
-<code>viper-parse-sexp-ignore-comments</code> to nil in your <tt>`.viper'</tt> file.
+<code>viper-parse-sexp-ignore-comments</code> to nil in your &lsquo;<tt>.viper</tt>&rsquo; file.
 This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
 </p>
 <p>This latter feature is implemented as a vi-style keyboard macro.  If you
@@ -552,7 +552,7 @@ don't want this macro, put
 </pre></td></tr></table>
 <a name="IDX267"></a>
 
-<p>in your <tt>`~/.viper'</tt> file.
+<p>in your &lsquo;<tt>~/.viper</tt>&rsquo; file.
 </p>
 </dd>
 </dl>
@@ -789,7 +789,7 @@ then be executed by typing `<kbd>.</kbd>'.
 </p>
 <p>Since typing the above sequences of keys may be tedious, the
 functions doing the perusing can be bound to unused keyboard keys in the
-<tt>`~/.viper'</tt> file.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+&lsquo;<tt>~/.viper</tt>&rsquo; file.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 </p></dd>
 </dl>
 <a name="IDX340"></a>
@@ -883,7 +883,7 @@ current line.
 aware of.  This difference comes from Emacs and was adopted in Viper
 because we find it very useful.  In Vi, if you delete a line, say, and then
 another line, these two deletions are separated and are put back
-separately if you use the <samp>`p'</samp> command.  In Emacs (and Viper), successive
+separately if you use the &lsquo;<samp>p</samp>&rsquo; command.  In Emacs (and Viper), successive
 series of deletions that are <em>not interrupted</em> by other commands are
 lumped together, so the deleted text gets accumulated and can be put back
 as one chunk.  If you want to break a sequence of deletions so that the
@@ -982,19 +982,19 @@ appending change <var>count - 1</var> times.
 <dt>  <kbd>:[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
 <dd><p>Substitute (on lines x through y) the pattern
 &lt;pat&gt; (default the last pattern) with &lt;repl&gt;.  Useful
-flags &lt;f&gt; are <samp>`g'</samp> for <samp>`global'</samp> (i.e. change every
-non-overlapping occurrence of &lt;pat&gt;) and <samp>`c'</samp> for
-<samp>`confirm'</samp> (type <samp>`y'</samp> to confirm a particular
-substitution, else <samp>`n'</samp> ).  Instead of <kbd>/</kbd> any
+flags &lt;f&gt; are &lsquo;<samp>g</samp>&rsquo; for &lsquo;<samp>global</samp>&rsquo; (i.e. change every
+non-overlapping occurrence of &lt;pat&gt;) and &lsquo;<samp>c</samp>&rsquo; for
+&lsquo;<samp>confirm</samp>&rsquo; (type &lsquo;<samp>y</samp>&rsquo; to confirm a particular
+substitution, else &lsquo;<samp>n</samp>&rsquo; ).  Instead of <kbd>/</kbd> any
 punctuation CHAR unequal to &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
 </p>
-<p>In Emacs, <samp>`\&amp;'</samp> stands for the last matched expression, so
+<p>In Emacs, &lsquo;<samp>\&amp;</samp>&rsquo; stands for the last matched expression, so
 <kbd>s/[ab]+/\&amp;\&amp;/</kbd> will double the string matched by <kbd>[ab]</kbd>.
-Viper doesn't treat <samp>`&amp;'</samp> specially, unlike Vi: use <samp>`\&amp;'</samp> instead.
+Viper doesn't treat &lsquo;<samp>&amp;</samp>&rsquo; specially, unlike Vi: use &lsquo;<samp>\&amp;</samp>&rsquo; instead.
 </p>
 <p>Viper does not parse search patterns and does not expand special symbols
-found there (e.g., <samp>`~'</samp> is not expanded to the result of the previous
+found there (e.g., &lsquo;<samp>~</samp>&rsquo; is not expanded to the result of the previous
 substitution).
 </p>
 <p>Note: <em>The newline character (inserted as <kbd>C-qC-j</kbd>)
@@ -1101,7 +1101,7 @@ expression search.
 <dd><p>To the &lt;count&gt;th occurrence of &lt;string&gt;.
 </p>
 <p>Viper does not parse search patterns and does not expand special symbols
-found there (e.g., <samp>`~'</samp> is not expanded to the result of the previous
+found there (e.g., &lsquo;<samp>~</samp>&rsquo; is not expanded to the result of the previous
 substitution).
 </p>
 </dd>
@@ -1141,10 +1141,10 @@ See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info
 <dt>  <kbd>:[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
 <dd><p>Substitute (on lines x through y) the pattern &lt;pat&gt; (default the last
 pattern) with &lt;repl&gt;.  Useful
-flags &lt;f&gt; are <samp>`g'</samp> for <samp>`global'</samp> (i.e. change every
-non-overlapping occurrence of &lt;pat&gt;) and <samp>`c'</samp> for
-<samp>`confirm'</samp> (type <samp>`y'</samp> to confirm a particular
-substitution, else <samp>`n'</samp>).  Instead of <kbd>/</kbd> any
+flags &lt;f&gt; are &lsquo;<samp>g</samp>&rsquo; for &lsquo;<samp>global</samp>&rsquo; (i.e. change every
+non-overlapping occurrence of &lt;pat&gt;) and &lsquo;<samp>c</samp>&rsquo; for
+&lsquo;<samp>confirm</samp>&rsquo; (type &lsquo;<samp>y</samp>&rsquo; to confirm a particular
+substitution, else &lsquo;<samp>n</samp>&rsquo;).  Instead of <kbd>/</kbd> any
 punctuation character other than &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
 </p>
@@ -1289,7 +1289,7 @@ be automatically down-cased.
 </p></dd>
 <dt> <kbd>:rec</kbd></dt>
 <dd><p>Recover file from autosave.  Viper also creates backup files
-that have a <samp>`~'</samp> appended to them.
+that have a &lsquo;<samp>~</samp>&rsquo; appended to them.
 </p></dd>
 </dl>
 <a name="IDX420"></a>
@@ -1416,7 +1416,7 @@ put any space between the command and the modifier.
 <p>Note that many Ex commands, e.g., <kbd>:w</kbd>, accept command arguments. The
 effect is that the command would start acting on the current region. For
 instance, if the current region spans the lines 11 through 22, then if you
-type <kbd>1:w</kbd> you would see <samp>`:11,22w'</samp> in the minibuffer.
+type <kbd>1:w</kbd> you would see &lsquo;<samp>:11,22w</samp>&rsquo; in the minibuffer.
 </p>
 <dl compact="compact">
 <dt> <kbd>:q</kbd></dt>
@@ -1436,7 +1436,7 @@ visit files.
 any file where this newline is missing.  This is done by setting Emacs
 variable <code>require-final-newline</code> to <code>t</code>.  If you don't like this
 feature, use <code>setq-default</code> to set <code>require-final-newline</code> to
-<code>nil</code>.  This must be done in <tt>`.viper'</tt> file.
+<code>nil</code>.  This must be done in &lsquo;<tt>.viper</tt>&rsquo; file.
 </p></dd>
 <dt> <kbd>:[x,y] w &lt;name&gt;</kbd></dt>
 <dd><p>Write to the file &lt;name&gt;.
@@ -1490,7 +1490,7 @@ switch to higher user levels as soon as possible.
 <dt> <kbd>:f [&lt;file&gt;]</kbd></dt>
 <dd><p>without the argument, prints file name and character/line information afout
 the currently visited file. With an argument, sets the currently visited
-filename to <tt>`file'</tt>.
+filename to &lsquo;<tt>file</tt>&rsquo;.
 </p></dd>
 <dt> <kbd>:cd [&lt;dir&gt;]</kbd></dt>
 <dd><p>Set the working directory to &lt;dir&gt; (default home directory).
@@ -1617,7 +1617,7 @@ is typed in Minibuffer.  File completion and history are supported.
 For instance, typing
 <kbd>:map www</kbd> followed by <kbd>:!wc %</kbd> and then typing <kbd>C-x )</kbd>
 will cause <kbd>www</kbd> to run wc on
-current file (Vi replaces <samp>`%'</samp> with the current file name).
+current file (Vi replaces &lsquo;<samp>%</samp>&rsquo; with the current file name).
 </p></dd>
 <dt> <kbd>C-x )</kbd></dt>
 <dd><p>Finish defining a keyboard macro.
@@ -1708,17 +1708,17 @@ See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info
 <h2 class="section"> 4.6 Shell Commands </h2>
 
 
-<p>The symbol <samp>`%'</samp> is used in Ex shell commands to mean current file.  If
-you want a <samp>`%'</samp> in your command, it must be escaped as <samp>`\%'</samp>.
+<p>The symbol &lsquo;<samp>%</samp>&rsquo; is used in Ex shell commands to mean current file.  If
+you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be escaped as &lsquo;<samp>\%</samp>&rsquo;.
 <a name="IDX492"></a>
-However if <samp>`%'</samp> is the first character, it stands as the address for
+However if &lsquo;<samp>%</samp>&rsquo; is the first character, it stands as the address for
 the whole file.
 <a name="IDX493"></a>
-Similarly, <samp>`#'</samp> expands to the previous file.  The previous file is the
+Similarly, &lsquo;<samp>#</samp>&rsquo; expands to the previous file.  The previous file is the
 first file in <kbd>:args</kbd> listing.  This defaults to the previous file in
 the VI sense if you have one window.
 </p>
-<p>Symbols <samp>`%'</samp> and <samp>`#'</samp> are also used in the Ex commands <kbd>:e</kbd> and
+<p>Symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo; are also used in the Ex commands <kbd>:e</kbd> and
 <kbd>:r &lt;shell-cmd&gt;</kbd>.  The commands <kbd>:w</kbd> and the regular <kbd>:r
 &lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
 better mechanism.
@@ -1746,7 +1746,7 @@ better mechanism.
 <dd><p>The shell executes &lt;cmd&gt;, with standard
 input the lines described by &lt;count&gt;&lt;move&gt;,
 next the standard output replaces those lines
-(think of <samp>`cb'</samp>, <samp>`sort'</samp>, <samp>`nroff'</samp>, etc.).
+(think of &lsquo;<samp>cb</samp>&rsquo;, &lsquo;<samp>sort</samp>&rsquo;, &lsquo;<samp>nroff</samp>&rsquo;, etc.).
 </p></dd>
 <dt> <kbd>&lt;count&gt; !!&lt;cmd&gt;</kbd></dt>
 <dd><p>Give &lt;count&gt; lines as standard input to the
@@ -1855,7 +1855,7 @@ If the user attempts to write to this file, confirmation will be requested.
 <dt> <kbd>sh=&lt;string&gt;</kbd></dt>
 <dd><a name="IDX510"></a>
 <p>shell &ndash; The program to be used for shell escapes
-(default <samp>`$SHELL'</samp> (default <tt>`/bin/sh'</tt>)).
+(default &lsquo;<samp>$SHELL</samp>&rsquo; (default &lsquo;<tt>/bin/sh</tt>&rsquo;)).
 </p></dd>
 <dt> <kbd>shiftwidth=&lt;count&gt;</kbd></dt>
 <dt> <kbd>sw=&lt;count&gt;</kbd></dt>
@@ -1900,7 +1900,7 @@ within &lt;wm&gt; columns from the right margin.
 <dt> <kbd>ws</kbd></dt>
 <dd><a name="IDX519"></a>
 <p>wrapscan &ndash; When searching, the end is
-considered <samp>`stuck'</samp> to the begin of the file.
+considered &lsquo;<samp>stuck</samp>&rsquo; to the begin of the file.
 </p></dd>
 <dt> <kbd>nowrapscan</kbd></dt>
 <dt> <kbd>nows</kbd></dt>

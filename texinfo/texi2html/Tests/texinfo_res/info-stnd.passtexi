@@ -1,7 +1,6 @@
 info-stnd.texi(,2) @comment Id: info-stnd.texi,v 1.1 2003/02/03 16:10:29 pertusus Exp $
 info-stnd.texi(,3) @comment %**start of header
 info-stnd.texi(,4) @setfilename info-stnd.info
-./version-stnd.texi(,1) 
 info-stnd.texi(,6) @settitle GNU Info 4.2
 info-stnd.texi(,7) @syncodeindex vr cp
 info-stnd.texi(,8) @syncodeindex fn cp
@@ -2130,7 +2129,6 @@ info-stnd.texi(,2180) @menu
 info-stnd.texi(,2181) * GNU Free Documentation License::  License for copying this manual.
 info-stnd.texi(,2182) @end menu
 info-stnd.texi(,2183) 
-./fdl.texi(,1) 
 ./fdl.texi(,1) 
 ./fdl.texi(,2) @node GNU Free Documentation License
 ./fdl.texi(,3) @appendixsec GNU Free Documentation License

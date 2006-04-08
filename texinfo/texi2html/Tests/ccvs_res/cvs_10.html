@@ -220,7 +220,7 @@ use.
 <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
 and <code>Sticky date</code> output, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 For information on its <code>Sticky options</code> output,
-see the <samp>`-k'</samp> option in <a href="cvs_16.html#SEC154">update options</a>.
+see the &lsquo;<samp>-k</samp>&rsquo; option in <a href="cvs_16.html#SEC154">update options</a>.
 </p>
 <p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
@@ -236,8 +236,8 @@ displayed by the <code>status</code> command, you can invoke
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs -n -q update
 </pre></td></tr></table>
 
-<p>The <samp>`-n'</samp> option means to not actually do the
-update, but merely to display statuses; the <samp>`-q'</samp>
+<p>The &lsquo;<samp>-n</samp>&rsquo; option means to not actually do the
+update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
@@ -311,7 +311,7 @@ See section <a href="cvs_16.html#SEC153">update&mdash;Bring work tree in sync wi
 </tr></table>
 <h2 class="section"> 10.3 Conflicts example </h2>
 
-<p>Suppose revision 1.4 of <tt>`driver.c'</tt> contains this:
+<p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdio.h&gt;
 
@@ -326,7 +326,7 @@ void main()
 }
 </pre></td></tr></table>
 
-<p>Revision 1.6 of <tt>`driver.c'</tt> contains this:
+<p>Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdio.h&gt;
 
@@ -347,8 +347,8 @@ int main(int argc,
 }
 </pre></td></tr></table>
 
-<p>Your working copy of <tt>`driver.c'</tt>, based on revision
-1.4, contains this before you run <samp>`cvs update'</samp>:
+<p>Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
+1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
@@ -365,7 +365,7 @@ void main()
 }
 </pre></td></tr></table>
 
-<p>You run <samp>`cvs update'</samp>:
+<p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update driver.c
 RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
@@ -380,8 +380,8 @@ C driver.c
 <a name="IDX148"></a>
 <p><small>CVS</small> tells you that there were some conflicts.
 Your original working file is saved unmodified in
-<tt>`.#driver.c.1.4'</tt>.  The new version of
-<tt>`driver.c'</tt> contains this:
+&lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
+&lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
@@ -416,7 +416,7 @@ int main(int argc,
 
 <p>Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
-<samp>`&lt;&lt;&lt;&lt;&lt;&lt;&lt;'</samp>, <samp>`======='</samp> and <samp>`&gt;&gt;&gt;&gt;&gt;&gt;&gt;'</samp>.
+&lsquo;<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>&rsquo;, &lsquo;<samp>=======</samp>&rsquo; and &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>&rsquo;.
 </p>
 <a name="IDX154"></a>
 <a name="IDX155"></a>
@@ -460,7 +460,7 @@ versions of <small>CVS</small>, you also needed to
 insure that the file contains no conflict markers.
 Because
 your file may legitimately contain conflict markers (that
-is, occurrences of <samp>`&gt;&gt;&gt;&gt;&gt;&gt;&gt; '</samp> at the start of a
+is, occurrences of &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>&rsquo; at the start of a
 line that don't mark a conflict), the current
 version of <small>CVS</small> will print a warning and proceed to
 check in the file.
@@ -493,8 +493,8 @@ See the documentation for pcl-cvs.
 <h2 class="section"> 10.4 Informing others about commits </h2>
 
 <p>It is often useful to inform others when you commit a
-new revision of a file.  The <samp>`-i'</samp> option of the
-<tt>`modules'</tt> file, or the <tt>`loginfo'</tt> file, can be
+new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
+&lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
 used to automate this process.  See section <a href="cvs_18.html#SEC158">The modules file</a>.
 See section <a href="cvs_18.html#SEC172">Loginfo</a>.  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
@@ -539,8 +539,8 @@ holding the lock and ask them about the cvs command
 they are running.  If they aren't running a cvs
 command, look in the repository directory mentioned in
 the message and remove files which they own whose names
-start with <tt>`#cvs.rfl'</tt>,
-<tt>`#cvs.wfl'</tt>, or <tt>`#cvs.lock'</tt>.
+start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
+&lsquo;<tt>#cvs.wfl</tt>&rsquo;, or &lsquo;<tt>#cvs.lock</tt>&rsquo;.
 </p>
 <p>Note that these locks are to protect <small>CVS</small>'s
 internal data structures and have no relationship to
@@ -577,8 +577,8 @@ b/four.c
 
 <p>and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
-the change to <tt>`b/three.c'</tt> and not the change to
-<tt>`a/two.c'</tt>.
+the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
+&lsquo;<tt>a/two.c</tt>&rsquo;.
 </p>
 <hr size="6">
 <a name="Watches"></a>
@@ -674,7 +674,7 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in <tt>`~/.cvsrc'</tt> (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
@@ -794,13 +794,13 @@ watches for the specified actions are removed.
 
 <a name="IDX171"></a>
 <p>When the conditions exist for notification, <small>CVS</small>
-calls the <tt>`notify'</tt> administrative file.  Edit
-<tt>`notify'</tt> as one edits the other administrative
+calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
+&lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
 files (see section <a href="cvs_2.html#SEC20">The administrative files</a>).  This
 file follows the usual conventions for administrative
 files (see section <a href="cvs_18.html#SEC167">The common syntax</a>), where each line is a regular
 expression followed by a command to execute.  The
-command should contain a single occurrence of <samp>`%s'</samp>
+command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest
 of the information regarding the notification will be
 supplied to the command on standard input.  The
@@ -815,14 +815,14 @@ single line:
 <a name="IDX172"></a>
 <p>Note that if you set this up in the straightforward
 way, users receive notifications on the server machine.
-One could of course write a <tt>`notify'</tt> script which
+One could of course write a &lsquo;<tt>notify</tt>&rsquo; script which
 directed notifications elsewhere, but to make this
 easy, <small>CVS</small> allows you to associate a notification
 address for each user.  To do so create a file
-<tt>`users'</tt> in <tt>`CVSROOT'</tt> with a line for each
+&lsquo;<tt>users</tt>&rsquo; in &lsquo;<tt>CVSROOT</tt>&rsquo; with a line for each
 user in the format <var>user</var>:<var>value</var>.  Then
 instead of passing the name of the user to be notified
-to <tt>`notify'</tt>, <small>CVS</small> will pass the <var>value</var>
+to &lsquo;<tt>notify</tt>&rsquo;, <small>CVS</small> will pass the <var>value</var>
 (normally an email address on some other machine).
 </p>
 <p><small>CVS</small> does not notify you for your own changes.
@@ -995,7 +995,7 @@ containing the file.
 <h3 class="subsection"> 10.6.5 Using watches with old versions of CVS </h3>
 
 <p>If you use the watch features on a repository, it
-creates <tt>`CVS'</tt> directories in the repository and
+creates &lsquo;<tt>CVS</tt>&rsquo; directories in the repository and
 stores the information about watches in that directory.
 If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the

@@ -35,7 +35,6 @@ cvs.texinfo(,69) @c to injury, and I'm not aware of them helping to fix
 cvs.texinfo(,70) @c the overfull hboxes at all.
 cvs.texinfo(,71) @finalout
 cvs.texinfo(,72) 
-./version.texi(,1) 
 cvs.texinfo(,74) @settitle CVS---Concurrent Versions System v1.12.1.1
 cvs.texinfo(,75) @setchapternewpage odd
 cvs.texinfo(,76) 

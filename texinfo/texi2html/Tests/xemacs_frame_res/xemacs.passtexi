@@ -970,7 +970,6 @@ xemacs.texi(,1059) exceptions could have been written in Lisp but are written in
 xemacs.texi(,1060) efficiency.  Only a programmer can write an extension to XEmacs, but anybody
 xemacs.texi(,1061) can use it afterward.
 xemacs.texi(,1062) 
-./frame.texi(,1) 
 ./frame.texi(,1) @node Frame, Keystrokes, Concept Index, Top
 ./frame.texi(,2) @comment  node-name,  next,  previous,  up
 ./frame.texi(,3) @chapter The XEmacs Frame
@@ -1546,7 +1545,6 @@ xemacs.texi(,1062)
 ./frame.texi(,573) Where possible, native MS Windows GUI components and capabilities are
 ./frame.texi(,574) used in XEmacs.
 ./keystrokes.texi(,1) 
-./keystrokes.texi(,1) 
 ./keystrokes.texi(,2) @node Keystrokes, Pull-down Menus, Frame, Top
 ./keystrokes.texi(,3) @chapter Keystrokes, Key Sequences, and Key Bindings
 ./keystrokes.texi(,4) 
@@ -2040,7 +2038,6 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,514) are ready to be interested, read the basic information on variables, and 
 ./keystrokes.texi(,515) then the information on individual variables will make sense.
 ./keystrokes.texi(,516) @xref{Variables}.
-./menus.texi(,1) 
 ./menus.texi(,1) 
 ./menus.texi(,2) @node Pull-down Menus, Entering Emacs, Keystrokes, Top
 ./menus.texi(,3) @comment  node-name,  next,  previous,  up
@@ -2593,7 +2590,6 @@ xemacs.texi(,1062)
 ./menus.texi(,550) @code{relabel-menu-item}. This function also takes the argument @var{path}.
 ./menus.texi(,551) 
 ./menus.texi(,552) @var{new-name} is the string to which the menu item will be changed.
-./entering.texi(,1) 
 ./entering.texi(,1) @c This is part of the XEmacs manual.
 ./entering.texi(,2) @c Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995 Free Software Foundation, Inc.
 ./entering.texi(,3) @c See file xemacs.texi for copying conditions.
@@ -2755,7 +2751,6 @@ xemacs.texi(,1062)
 ./entering.texi(,159) systems as the characters for stopping or killing a program, but that is
 ./entering.texi(,160) their only relationship with the operating system.  You can customize
 ./entering.texi(,161) these keys to run any commands of your choice (@pxref{Keymaps}).
-./cmdargs.texi(,1) 
 ./cmdargs.texi(,1) 
 ./cmdargs.texi(,2) @node Command Switches, Startup Paths, Exiting, Top
 ./cmdargs.texi(,3) @section Command Line Switches and Arguments
@@ -3065,7 +3060,6 @@ xemacs.texi(,1062)
 ./cmdargs.texi(,307) Read something into the resource database for this invocation of Emacs only.
 ./cmdargs.texi(,308) 
 ./cmdargs.texi(,309) @end table
-./startup.texi(,1) 
 ./startup.texi(,1) @node Startup Paths, Packages, Command Switches, Top
 ./startup.texi(,2) @comment  node-name,  next,  previous,  up
 ./startup.texi(,3) @section How XEmacs finds Directories and Files
@@ -3261,7 +3255,6 @@ xemacs.texi(,1062)
 ./startup.texi(,193) @end table
 ./startup.texi(,194) 
 ./startup.texi(,195) 
-./basic.texi(,1) 
 ./basic.texi(,1) @c This is part of the XEmacs manual.
 ./basic.texi(,2) @c Copyright (C) 1985, 86, 87, 93, 94, 95, 1997 Free Software Foundation, Inc.
 ./basic.texi(,3) @c See file xemacs.texi for copying conditions.
@@ -3890,7 +3883,6 @@ xemacs.texi(,1062)
 ./basic.texi(,626) the command.
 ./basic.texi(,627) 
 ./undo.texi(,1) 
-./undo.texi(,1) 
 ./undo.texi(,2) @node Undo, Minibuffer, Basic, Top
 ./undo.texi(,3) @chapter Undoing Changes
 ./undo.texi(,4) @cindex undo
@@ -3956,7 +3948,6 @@ xemacs.texi(,1062)
 ./undo.texi(,64) @kbd{C-_}, because on some keyboards, it is not obvious how to type
 ./undo.texi(,65) @kbd{C-_}. @kbd{C-x u} is an alternative you can type in the same
 ./undo.texi(,66) fashion on any terminal.
-./mini.texi(,1) 
 ./mini.texi(,1) 
 ./mini.texi(,2) @node Minibuffer, M-x, Undo, Top
 ./mini.texi(,3) @chapter The Minibuffer
@@ -4502,7 +4493,6 @@ xemacs.texi(,1062)
 ./mini.texi(,551) Lisp programs can reexecute a command by feeding the corresponding
 ./mini.texi(,552) @code{command-history} element to @code{eval}.
 ./m-x.texi(,1) 
-./m-x.texi(,1) 
 ./m-x.texi(,2) @node M-x, Help, Minibuffer, Top
 ./m-x.texi(,3) @chapter Running Commands by Name
 ./m-x.texi(,4) 
@@ -4647,7 +4637,6 @@ xemacs.texi(,1062)
 ./m-x.texi(,143)   @kbd{M-x} is defined to run the command @code{execute-extended-command},
 ./m-x.texi(,144) which is responsible for reading the name of another command and invoking
 ./m-x.texi(,145) it.
-./help.texi(,1) 
 ./help.texi(,1) 
 ./help.texi(,2) @node Help, Mark, M-x, Top
 ./help.texi(,3) @chapter Help
@@ -5095,7 +5084,6 @@ xemacs.texi(,1062)
 ./help.texi(,450) @file{xemacs/etc/DISTRIB}, which tells you how you can order a copy of
 ./help.texi(,451) the latest version of XEmacs.
 ./mark.texi(,1) 
-./mark.texi(,1) 
 ./mark.texi(,2) @node Mark, Mouse Selection, Help, Top
 ./mark.texi(,3) @chapter Selecting Text
 ./mark.texi(,4) @cindex mark
@@ -5336,7 +5324,6 @@ xemacs.texi(,1062)
 ./mark.texi(,239) marker objects in the order most recent first.  This variable is local
 ./mark.texi(,240) in every buffer.
 ./mouse.texi(,1) 
-./mouse.texi(,1) 
 ./mouse.texi(,2) @node Mouse Selection, Additional Mouse Operations, Mark, Top
 ./mouse.texi(,3) @comment  node-name,  next,  previous,  up
 ./mouse.texi(,4) @section Selecting Text with the Mouse
@@ -5502,7 +5489,6 @@ xemacs.texi(,1062)
 ./mouse.texi(,164) @code{mouse-track} command on @key{button1}, except that point is not moved;
 ./mouse.texi(,165) the selected text is immediately inserted after being selected; and the
 ./mouse.texi(,166) selection is immediately disowned afterwards.
-./killing.texi(,1) 
 ./killing.texi(,1) 
 ./killing.texi(,23) 
 ./killing.texi(,24) @node Killing, Yanking, Additional Mouse Operations, Top
@@ -6236,7 +6222,6 @@ xemacs.texi(,1062)
 ./killing.texi(,752)   Rectangles can also be copied into and out of registers.
 ./killing.texi(,753) @xref{RegRect,,Rectangle Registers}.
 ./regs.texi(,1) 
-./regs.texi(,1) 
 ./regs.texi(,2) @node Registers, Display, Rectangles, Top
 ./regs.texi(,3) @chapter Registers
 ./regs.texi(,4) @cindex registers
@@ -6548,7 +6533,6 @@ xemacs.texi(,1062)
 ./regs.texi(,310) @var{bookmark} points to.
 ./regs.texi(,311) @end table
 ./display.texi(,1) 
-./display.texi(,1) 
 ./display.texi(,2) @node Display, Search, Registers, Top
 ./display.texi(,3) @chapter Controlling the Display
 ./display.texi(,4) 
@@ -6807,7 +6791,6 @@ xemacs.texi(,1062)
 ./display.texi(,261) the three dots at the end of a line that precedes invisible
 ./display.texi(,262) lines do not appear.  There is no visible indication of the invisible lines.
 ./display.texi(,263) This variable becomes local automatically when set.
-./search.texi(,1) 
 ./search.texi(,1) 
 ./search.texi(,2) @node Search, Fixit, Display, Top
 ./search.texi(,3) @chapter Searching and Replacement
@@ -7835,7 +7818,6 @@ xemacs.texi(,1062)
 ./search.texi(,1027) specified regexp.
 ./search.texi(,1028) @end table
 ./fixit.texi(,1) 
-./fixit.texi(,1) 
 ./fixit.texi(,2) @node Fixit, Files, Search, Top
 ./fixit.texi(,3) @chapter Commands for Fixing Typos
 ./fixit.texi(,4) @cindex typos
@@ -8018,7 +8000,6 @@ xemacs.texi(,1062)
 ./fixit.texi(,181)   @kbd{M-x spell-string} reads a string as an argument and checks
 ./fixit.texi(,182) whether that is a correctly spelled English word.  It prints a message
 ./fixit.texi(,183) giving the answer in the echo area.
-./files.texi(,1) 
 ./files.texi(,1) 
 ./files.texi(,2) @node Files, Buffers, Fixit, Top
 ./files.texi(,3) @chapter File Handling
@@ -9810,7 +9791,6 @@ xemacs.texi(,1062)
 ./files.texi(,1789) viewing a file for a list of them.  Most commands are the default Emacs
 ./files.texi(,1790) cursor motion commands.  To exit from viewing, type @kbd{C-c}.
 ./buffers.texi(,1) 
-./buffers.texi(,1) 
 ./buffers.texi(,2) @node Buffers, Windows, Files, Top
 ./buffers.texi(,3) @chapter Using Multiple Buffers
 ./buffers.texi(,4) 
@@ -10122,7 +10102,6 @@ xemacs.texi(,1062)
 ./buffers.texi(,310) type @kbd{C-x C-b}) and select the buffer list manually, you can use all
 ./buffers.texi(,311) the commands described here.
 ./windows.texi(,1) 
-./windows.texi(,1) 
 ./windows.texi(,2) @node Windows, Mule, Buffers, Top
 ./windows.texi(,3) @chapter Multiple Windows
 ./windows.texi(,4) @cindex windows
@@ -10409,7 +10388,6 @@ xemacs.texi(,1062)
 ./windows.texi(,285) Readjust the sizes of all windows on the frame until all windows have
 ./windows.texi(,286) roughly the same number of lines.
 ./windows.texi(,287) @end table
-./mule.texi(,1) 
 ./mule.texi(,1) @c This is part of the Emacs manual.
 ./mule.texi(,2) @c Copyright (C) 1997 Free Software Foundation, Inc.
 ./mule.texi(,3) @c See file emacs.texi for copying conditions.
@@ -11101,7 +11079,6 @@ xemacs.texi(,1062)
 ./mule.texi(,691) encode.  By default, this variable is @code{nil}, which implies that you
 ./mule.texi(,692) cannot use non-Latin-1 characters in file names.
 ./major.texi(,1) 
-./major.texi(,1) 
 ./major.texi(,2) @node Major Modes, Indentation, Mule, Top
 ./major.texi(,3) @chapter Major Modes
 ./major.texi(,4) @cindex major modes
@@ -11214,7 +11191,6 @@ xemacs.texi(,1062)
 ./major.texi(,111) value is the symbol @code{fundamental-mode}, which specifies Fundamental
 ./major.texi(,112) mode.  If @code{default-major-mode} is @code{nil}, the major mode is
 ./major.texi(,113) taken from the previously selected buffer.
-./indent.texi(,1) 
 ./indent.texi(,1) 
 ./indent.texi(,2) @node Indentation, Text, Major Modes, Top
 ./indent.texi(,3) @chapter Indentation
@@ -11402,7 +11378,6 @@ xemacs.texi(,1062)
 ./indent.texi(,185) region for sequences of spaces, and converts sequences of at least three
 ./indent.texi(,186) spaces to tabs if that is possible without changing indentation.  @kbd{M-x
 ./indent.texi(,187) untabify} changes all tabs in the region to corresponding numbers of spaces.
-./text.texi(,1) 
 ./text.texi(,1) 
 ./text.texi(,2) @node Text, Programs, Indentation, Top
 ./text.texi(,3) @chapter Commands for Human Languages
@@ -12529,7 +12504,6 @@ xemacs.texi(,1062)
 ./text.texi(,1124) (@code{upcase-region}) and @kbd{C-x C-l} (@code{downcase-region}), which
 ./text.texi(,1125) convert everything between point and mark to the specified case.  Point and
 ./text.texi(,1126) mark do not move.@refill
-./programs.texi(,1) 
 ./programs.texi(,1) 
 ./programs.texi(,2) @node Programs, Running, Text, Top
 ./programs.texi(,3) @chapter Editing Programs
@@ -14591,7 +14565,6 @@ xemacs.texi(,1062)
 ./programs.texi(,2064)   The variable @code{asm-comment-char} specifies which character
 ./programs.texi(,2065) starts comments in assembler syntax.
 ./building.texi(,1) 
-./building.texi(,1) 
 ./building.texi(,2) @node Running, Abbrevs, Programs, Top
 ./building.texi(,3) @chapter Compiling and Testing Programs
 ./building.texi(,4) 
@@ -15196,7 +15169,6 @@ xemacs.texi(,1062)
 ./building.texi(,603) the function definition that point is in, but the way of doing so is
 ./building.texi(,604) different according to where the relevant Lisp environment is found.
 ./building.texi(,605) @xref{Lisp Modes}.
-./packages.texi(,1) 
 ./packages.texi(,1) @c This is part of the XEmacs manual.
 ./packages.texi(,2) @c Copyright (C) 1985, 86, 87, 93, 94, 95, 1997 Free Software Foundation, Inc.
 ./packages.texi(,3) @c See file xemacs.texi for copying conditions.
@@ -16232,7 +16204,6 @@ xemacs.texi(,1062)
 ./packages.texi(,1033) @end table
 ./packages.texi(,1034) 
 ./abbrevs.texi(,1) 
-./abbrevs.texi(,1) 
 ./abbrevs.texi(,2) @node Abbrevs, Picture, Running, Top
 ./abbrevs.texi(,3) @chapter Abbrevs
 ./abbrevs.texi(,4) @cindex abbrevs
@@ -16540,7 +16511,6 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,306) expansion of a word with @kbd{M-/} is completely independent of whether it
 ./abbrevs.texi(,307) has a definition as an ordinary abbrev.
 ./picture.texi(,1) 
-./picture.texi(,1) 
 ./picture.texi(,2) @node Picture, Sending Mail, Abbrevs, Top
 ./picture.texi(,3) @chapter Editing Pictures
 ./picture.texi(,4) @cindex pictures
@@ -16791,7 +16761,6 @@ xemacs.texi(,1062)
 ./picture.texi(,249) Since most region commands in Picture mode operate on rectangles, when you
 ./picture.texi(,250) select a region of text with the mouse in Picture mode, it is highlighted
 ./picture.texi(,251) as a rectangle.
-./sending.texi(,1) 
 ./sending.texi(,1) 
 ./sending.texi(,2) @node Sending Mail, Reading Mail, Picture, Top
 ./sending.texi(,3) @chapter Sending Mail
@@ -17143,7 +17112,6 @@ xemacs.texi(,1062)
 ./sending.texi(,349) then calls the value of @code{mail-mode-hook} if that is not void or
 ./sending.texi(,350) @code{nil}.
 ./reading.texi(,1) 
-./reading.texi(,1) 
 ./reading.texi(,2) @node Reading Mail, Calendar/Diary, Sending Mail, Top
 ./reading.texi(,3) @chapter Reading Mail
 ./reading.texi(,4) @cindex mail
@@ -17175,7 +17143,6 @@ xemacs.texi(,1062)
 ./reading.texi(,30) you already have mail in Babyl-format folders, you should consider
 ./reading.texi(,31) using VM or mh-e instead. (If at times you have to use FSF Emacs, it
 ./reading.texi(,32) is not hard to obtain and install VM for that editor.)
-./calendar.texi(,1) 
 ./calendar.texi(,1) @node Calendar/Diary, Sorting, Reading Mail, Top
 ./calendar.texi(,2) @section Calendar Mode and the Diary
 ./calendar.texi(,3) @cindex calendar
@@ -19486,7 +19453,6 @@ xemacs.texi(,1062)
 ./calendar.texi(,2308) is 5 seconds.
 ./calendar.texi(,2309) @end table
 ./misc.texi(,1) 
-./misc.texi(,1) 
 ./misc.texi(,8) 
 ./misc.texi(,9) @node Sorting, Shell, Calendar/Diary, Top
 ./misc.texi(,10) @section Sorting Text
@@ -20252,7 +20218,6 @@ xemacs.texi(,1062)
 ./misc.texi(,782) It is also possible to run Mocklisp code written for Gosling Emacs.
 ./misc.texi(,783) @xref{Mocklisp}.
 ./misc.texi(,784) @end table
-./custom.texi(,1) 
 ./custom.texi(,1) 
 ./custom.texi(,2) @node Customization, Quitting, Emulation, Top
 ./custom.texi(,3) @chapter Customization
@@ -22809,7 +22774,6 @@ xemacs.texi(,1062)
 ./custom.texi(,2554) The same is true of the scrollbars: They accept whichever resources are 
 ./custom.texi(,2555) appropriate for the toolkit in use.
 ./trouble.texi(,1) 
-./trouble.texi(,1) 
 ./trouble.texi(,10) 
 ./trouble.texi(,11) @node Quitting, Lossage, Customization, Top
 ./trouble.texi(,12) @section Quitting and Aborting
@@ -23210,8 +23174,6 @@ xemacs.texi(,1062)
 ./trouble.texi(,407) configuration problems.
 xemacs.texi(,1099) 
 ./new.texi(,1) 
-./new.texi(,1) 
-./glossary.texi(,1) 
 ./glossary.texi(,1) 
 ./glossary.texi(,2) @node Glossary, Manifesto, Intro, Top
 ./glossary.texi(,3) @unnumbered Glossary
@@ -23977,7 +23939,6 @@ xemacs.texi(,1099)
 ./glossary.texi(,763) undo a mistaken kill, or for copying or moving text.  Some other
 ./glossary.texi(,764) systems call this ``pasting''.  @xref{Yanking}.
 ./glossary.texi(,765) @end table
-./gnu.texi(,1) 
 ./gnu.texi(,1) 
 ./gnu.texi(,2) @node Manifesto, Key Index, Glossary, Top
 ./gnu.texi(,3) @unnumbered The GNU Manifesto

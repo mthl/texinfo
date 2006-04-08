@@ -280,18 +280,18 @@ with a line that looks like this:
 </p>
 <ol>
 <li>
-When the file is processed by TeX, the <samp>`\input texinfo'</samp> command
+When the file is processed by TeX, the &lsquo;<samp>\input texinfo</samp>&rsquo; command
 tells TeX to load the macros needed for processing a Texinfo file.
-These are in a file called <tt>`texinfo.tex'</tt>, which should have been
+These are in a file called &lsquo;<tt>texinfo.tex</tt>&rsquo;, which should have been
 installed on your system along with either the TeX or Texinfo
-software.  TeX uses the backslash, <samp>`\'</samp>, to mark the beginning of
-a command, exactly as Texinfo uses <samp>`@'</samp>.  The <tt>`texinfo.tex'</tt>
-file causes the switch from <samp>`\'</samp> to <samp>`@'</samp>; before the switch
-occurs, TeX requires <samp>`\'</samp>, which is why it appears at the
+software.  TeX uses the backslash, &lsquo;<samp>\</samp>&rsquo;, to mark the beginning of
+a command, exactly as Texinfo uses &lsquo;<samp>@</samp>&rsquo;.  The &lsquo;<tt>texinfo.tex</tt>&rsquo;
+file causes the switch from &lsquo;<samp>\</samp>&rsquo; to &lsquo;<samp>@</samp>&rsquo;; before the switch
+occurs, TeX requires &lsquo;<samp>\</samp>&rsquo;, which is why it appears at the
 beginning of the file.
 
 </li><li>
-When the file is edited in GNU Emacs, the <samp>`-*-texinfo-*-'</samp> mode
+When the file is edited in GNU Emacs, the &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; mode
 specification tells Emacs to use Texinfo mode.
 </li></ol>
 
@@ -331,7 +331,7 @@ globally affect the document formatting, such as <code>@synindex</code> or
 <p>The start- and end-of-header lines allow you to format only part of a
 Texinfo file for Info or printing.  See section <a href="texinfo_21.html#SEC267">The <code>texinfo-format&hellip;</code> Commands</a>.
 </p>
-<p>The odd string of characters, <samp>`%**'</samp>, is to ensure that no other
+<p>The odd string of characters, &lsquo;<samp>%**</samp>&rsquo;, is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
 change it if you wish by setting the <code>tex-start-of-header</code> and/or
 <code>tex-end-of-header</code> Emacs variables.  See section <a href="texinfo_20.html#SEC250">Formatting and Printing in Texinfo Mode</a>.
@@ -379,36 +379,36 @@ the file (the <code>\input</code> line) does not show up in the output.
 <p>The <code>@setfilename</code> line specifies the name of the output file to
 be generated.  This name must be different from the name of the Texinfo
 file.  There are two conventions for choosing the name: you can either
-remove the extension (such as <samp>`.texi'</samp>) entirely from the input file
-name, or, preferably, replace it with the <samp>`.info'</samp> extension.
+remove the extension (such as &lsquo;<samp>.texi</samp>&rsquo;) entirely from the input file
+name, or, preferably, replace it with the &lsquo;<samp>.info</samp>&rsquo; extension.
 </p>
 <a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
-<p>Although an explicit <samp>`.info'</samp> extension is preferable, some
+<p>Although an explicit &lsquo;<samp>.info</samp>&rsquo; extension is preferable, some
 operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
 This occurs because the Info formatters split a long Info file into
-short indirect subfiles, and name them by appending <samp>`-1'</samp>,
-<samp>`-2'</samp>, &hellip;, <samp>`-10'</samp>, <samp>`-11'</samp>, and so on, to the original
+short indirect subfiles, and name them by appending &lsquo;<samp>-1</samp>&rsquo;,
+&lsquo;<samp>-2</samp>&rsquo;, &hellip;, &lsquo;<samp>-10</samp>&rsquo;, &lsquo;<samp>-11</samp>&rsquo;, and so on, to the original
 file name.  (See section <a href="texinfo_21.html#SEC269">Tag Files and Split Files</a>.)  The subfile name
-<tt>`texinfo.info-10'</tt>, for example, is too long for old systems with a
+&lsquo;<tt>texinfo.info-10</tt>&rsquo;, for example, is too long for old systems with a
 14-character limit on filenames; so the Info file name for this document
-is <tt>`texinfo'</tt> rather than <tt>`texinfo.info'</tt>.  When <code>makeinfo</code>
+is &lsquo;<tt>texinfo</tt>&rsquo; rather than &lsquo;<tt>texinfo.info</tt>&rsquo;.  When <code>makeinfo</code>
 is running on operating systems such as MS-DOS which impose severe
 limits on file names, it may remove some characters from the original
 file name to leave enough space for the subfile suffix, thus producing
-files named <tt>`texin-10'</tt>, <tt>`gcc.i12'</tt>, etc.
+files named &lsquo;<tt>texin-10</tt>&rsquo;, &lsquo;<tt>gcc.i12</tt>&rsquo;, etc.
 </p>
 <p>When producing HTML output, <code>makeinfo</code> will replace any extension
-with <samp>`html'</samp>, or add <samp>`.html'</samp> if the given name has no
+with &lsquo;<samp>html</samp>&rsquo;, or add &lsquo;<samp>.html</samp>&rsquo; if the given name has no
 extension.
 </p>
 <a name="IDX71"></a>
 <p>The <code>@setfilename</code> line produces no output when you typeset a
 manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
-also reads <tt>`texinfo.cnf'</tt> if that file is present on your system
+also reads &lsquo;<tt>texinfo.cnf</tt>&rsquo; if that file is present on your system
 (see section <a href="texinfo_20.html#SEC253">Preparing for TeX</a>).
 </p>
 
@@ -450,8 +450,8 @@ actual output in TeX.
 </p>
 <a name="IDX72"></a>
 <p>In the HTML file produced by <code>makeinfo</code>, <var>title</var> also serves
-as the document <samp>`&lt;title&gt;'</samp> and the default document description in
-the <samp>`&lt;head&gt;'</samp> part; see <a href="#SEC63"><code>@documentdescription</code>: Summary text</a>, for how to change
+as the document &lsquo;<samp>&lt;title&gt;</samp>&rsquo; and the default document description in
+the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; part; see <a href="#SEC63"><code>@documentdescription</code>: Summary text</a>, for how to change
 that.
 </p>
 <p>The title in the <code>@settitle</code> command does not affect the title as
@@ -600,8 +600,8 @@ emit the copying information.  See the next section for details.
 </p>
 <a name="IDX73"></a>
 <p>In output formats that support it (print and HTML), the
-<code>@copyright{}</code> command generates a <samp>`c'</samp> inside a circle.  In
-Info and plain text, it generates <samp>`(C)'</samp>.  The copyright notice
+<code>@copyright{}</code> command generates a &lsquo;<samp>c</samp>&rsquo; inside a circle.  In
+Info and plain text, it generates &lsquo;<samp>(C)</samp>&rsquo;.  The copyright notice
 itself has the following legally defined sequence:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
@@ -716,7 +716,7 @@ text of the copying permissions that appears in the printed manual.
 <p>You may wish to include titlepage-like information for plain text
 output.  Simply place any such leading material between
 <code>@ifplaintext</code> and <code>@end ifplaintext</code>; <code>makeinfo</code>
-includes this when writing plain text (<samp>`--no-headers'</samp>), along with
+includes this when writing plain text (&lsquo;<samp>--no-headers</samp>&rsquo;), along with
 an <code>@insertcopying</code>.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -1012,11 +1012,11 @@ bottom of the page, use the following incantantion after <code>@page</code>:
 </pre></td></tr></table>
 
 <p>This is a TeX command that is not supported by the Info formatting
-commands.  The <code>@vskip</code> command inserts whitespace.  The <samp>`0pt
-plus 1filll'</samp> means to put in zero points of mandatory whitespace, and as
+commands.  The <code>@vskip</code> command inserts whitespace.  The &lsquo;<samp>0pt
+plus 1filll</samp>&rsquo; means to put in zero points of mandatory whitespace, and as
 much optional whitespace as needed to push the following text to the
-bottom of the page.  Note the use of three <samp>`l'</samp>s in the word
-<samp>`filll'</samp>; this is correct.
+bottom of the page.  Note the use of three &lsquo;<samp>l</samp>&rsquo;s in the word
+&lsquo;<samp>filll</samp>&rsquo;; this is correct.
 </p>
 <p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see section <a href="#SEC49">Document Permissions</a>):
@@ -1153,8 +1153,8 @@ current page is output.
 </p>
 </dd>
 <dt> <code>@headings on</code></dt>
-<dd><p>Turn on page headings: <code>single</code> if <samp>`@setchapternewpage
-on'</samp>, <code>double</code> otherwise.
+<dd><p>Turn on page headings: <code>single</code> if &lsquo;<samp>@setchapternewpage
+on</samp>&rsquo;, <code>double</code> otherwise.
 </p></dd>
 </dl>
 
@@ -1410,7 +1410,7 @@ generally all given before the Top node, if they are given at all.
 <h3 class="subsection"> 3.6.1 <code>@documentdescription</code>: Summary text </h3>
 
 <p>When producing HTML output for a document, <code>makeinfo</code> writes a
-<samp>`&lt;meta&gt;'</samp> element in the <samp>`&lt;head&gt;'</samp> to give some idea of the
+&lsquo;<samp>&lt;meta&gt;</samp>&rsquo; element in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; to give some idea of the
 content of the document.  By default, this <em>description</em> is the title
 of the document, taken from the <code>@settitle</code> command
 (see section <a href="#SEC47"><code>@settitle</code>: Set the document title</a>).  To change this, use the <code>@documentdescription</code>
@@ -1421,7 +1421,7 @@ descriptive text.
 @end documentdescription
 </pre></td></tr></table>
 
-<p>This will produce the following output in the <samp>`&lt;head&gt;'</samp> of the HTML:
+<p>This will produce the following output in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; of the HTML:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
 </pre></td></tr></table>
@@ -1515,7 +1515,7 @@ command has no effect on it.
 your manual sources at all, since the desired output is not intrinsic to
 the document.  For a particular hard copy run, if you don't want the
 default option (no blank pages, same headers on all pages) use the
-<samp>`--texinfo'</samp> option to <code>texi2dvi</code> to specify the output
+&lsquo;<samp>--texinfo</samp>&rsquo; option to <code>texi2dvi</code> to specify the output
 you want.
 </p>
 
@@ -1544,7 +1544,7 @@ you want.
 first line of each paragraph, thereby indenting that paragraph.  You can
 use the <code>@paragraphindent</code> command to specify this indentation.
 Write an <code>@paragraphindent</code> command at the beginning of a line
-followed by either <samp>`asis'</samp> or a number:
+followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
 </pre></td></tr></table>
@@ -1605,7 +1605,7 @@ See section <a href="texinfo_28.html#SEC319">Refilling Paragraphs</a>, for furth
 <p>The Texinfo processors indent each line of <code>@example</code> and similar
 environments.  You can use the <code>@exampleindent</code> command to specify
 this indentation.  Write an <code>@exampleindent</code> command at the
-beginning of a line followed by either <samp>`asis'</samp> or a number:
+beginning of a line followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@exampleindent <var>indent</var>
 </pre></td></tr></table>

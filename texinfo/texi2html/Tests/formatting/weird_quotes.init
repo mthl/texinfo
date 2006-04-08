@@ -1,0 +1,4 @@
+$OPEN_QUOTE_SYMBOL = '@';
+$CLOSE_QUOTE_SYMBOL = "'&lsquo;";
+
+1;

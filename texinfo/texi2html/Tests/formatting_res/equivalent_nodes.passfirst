@@ -1,0 +1,26 @@
+equivalent_nodes.texi(,2) 
+equivalent_nodes.texi(,3) @setfilename equivalent_nodes.info
+equivalent_nodes.texi(,4) 
+equivalent_nodes.texi(,5) @node before top, @asis{node},,(dir)
+equivalent_nodes.texi(,6) 
+equivalent_nodes.texi(,7) @node Top
+equivalent_nodes.texi(,8) 
+equivalent_nodes.texi(,9) Equivalent nodes in node line and in menu.
+equivalent_nodes.texi(,10) 
+equivalent_nodes.texi(,11) @menu
+equivalent_nodes.texi(,12) * @strong{node}::
+equivalent_nodes.texi(,13) @end menu
+equivalent_nodes.texi(,14) 
+equivalent_nodes.texi(,15) @node node
+equivalent_nodes.texi(,16) 
+equivalent_nodes.texi(,17) @float Figure, @samp{node}
+equivalent_nodes.texi(,18) A figure
+equivalent_nodes.texi(,19) @end float
+equivalent_nodes.texi(,20) 
+equivalent_nodes.texi(,21) @listoffloats Figure
+equivalent_nodes.texi(,22) 
+equivalent_nodes.texi(,23) Ref to node @ref{node}.
+equivalent_nodes.texi(,24) 
+equivalent_nodes.texi(,25) Ref to @@samp@{node@} @ref{@samp{node}}.
+equivalent_nodes.texi(,26) 
+equivalent_nodes.texi(,27) @bye

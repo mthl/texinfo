@@ -83,11 +83,11 @@ ul.toc {list-style: none}
 <p>The <code>makeinfo</code> command takes a number of options.  Most often,
 options are used to set the value of the fill column and specify the
 footnote style.  Each command line option is a word preceded by
-<samp>`--'</samp> or a letter preceded by <samp>`-'</samp>.  You can use abbreviations
+&lsquo;<samp>--</samp>&rsquo; or a letter preceded by &lsquo;<samp>-</samp>&rsquo;.  You can use abbreviations
 for the long option names as long as they are unique.
 </p>
 <p>For example, you could use the following shell command to create an Info
-file for <tt>`bison.texinfo'</tt> in which each line is filled to only 68
+file for &lsquo;<tt>bison.texinfo</tt>&rsquo; in which each line is filled to only 68
 columns:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --fill-column=68 bison.texinfo
@@ -115,7 +115,7 @@ file and would also set the fill column to 70.
 <p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
-<samp>`--no-validate'</samp> is used.  See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>, for more
+&lsquo;<samp>--no-validate</samp>&rsquo; is used.  See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>, for more
 details.
 </p>
 </dd>
@@ -142,21 +142,21 @@ edge of a line.  Paragraphs that are filled will be filled to this
 width.  (Filling is the process of breaking up and connecting lines so
 that lines are the same length as or shorter than the number specified
 as the fill column.  Lines are broken between words.) The default value
-is 72.  Ignored with <samp>`--html'</samp>.
+is 72.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--footnote-style=<var>style</var></code></dt>
 <dt> <code>-s <var>style</var></code></dt>
 <dd><a name="IDX365"></a>
 <a name="IDX366"></a>
-<p>Set the footnote style to <var>style</var>, either <samp>`end'</samp> for the end
-node style (the default) or <samp>`separate'</samp> for the separate node style.
+<p>Set the footnote style to <var>style</var>, either &lsquo;<samp>end</samp>&rsquo; for the end
+node style (the default) or &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
 The value set by this option overrides the value set in a Texinfo file
 by an <code>@footnotestyle</code> command (see section <a href="Footnotes.html#SEC201">Footnotes</a>).  When the
-footnote style is <samp>`separate'</samp>, <code>makeinfo</code> makes a new node
+footnote style is &lsquo;<samp>separate</samp>&rsquo;, <code>makeinfo</code> makes a new node
 containing the footnotes found in the current node.  When the footnote
-style is <samp>`end'</samp>, <code>makeinfo</code> places the footnote references at
-the end of the current node.  Ignored with <samp>`--html'</samp>.
+style is &lsquo;<samp>end</samp>&rsquo;, <code>makeinfo</code> places the footnote references at
+the end of the current node.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--force</code></dt>
@@ -187,9 +187,9 @@ top-level info file.
 <p>Append <var>dir</var> to the directory search list for finding files that
 are included using the <code>@include</code> command.  By default,
 <code>makeinfo</code> searches only the current directory.  If <var>dir</var> is
-not given, the current directory <tt>`.'</tt> is appended.  Note that
+not given, the current directory &lsquo;<tt>.</tt>&rsquo; is appended.  Note that
 <var>dir</var> can actually be a list of several directories separated by the
-usual path separator character (<samp>`:'</samp> on Unix, <samp>`;'</samp> on
+usual path separator character (&lsquo;<samp>:</samp>&rsquo; on Unix, &lsquo;<samp>;</samp>&rsquo; on
 MS-DOS/MS-Windows).
 </p>
 </dd>
@@ -198,7 +198,7 @@ MS-DOS/MS-Windows).
 <dd><p>Output the Texinfo source with all the macros expanded to the named
 file.  Normally, the results of macro expansion are used internally by
 <code>makeinfo</code> and then discarded.  This option is used by
-<code>texi2dvi</code> if you are using an old version of <tt>`texinfo.tex'</tt>
+<code>texi2dvi</code> if you are using an old version of &lsquo;<tt>texinfo.tex</tt>&rsquo;
 that does not support <code>@macro</code>.
 </p>
 </dd>
@@ -213,16 +213,16 @@ that does not support <code>@macro</code>.
 <p>For Info output, do not include menus or node separator lines in the
 output.  This results in a simple plain text file that you can (for
 example) send in email without complications, or include in a
-distribution (as in an <tt>`INSTALL'</tt> file).
+distribution (as in an &lsquo;<tt>INSTALL</tt>&rsquo; file).
 </p>
 <a name="IDX380"></a>
-<p>For HTML output, likewise omit menus.  And if <samp>`--no-split'</samp> is also
+<p>For HTML output, likewise omit menus.  And if &lsquo;<samp>--no-split</samp>&rsquo; is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
 See section <a href="makeinfo-html.html#SEC270">Generating HTML</a>.
 </p>
 <p>In both cases, write to standard output by default (can still be
-overridden by <samp>`-o'</samp>).
+overridden by &lsquo;<samp>-o</samp>&rsquo;).
 </p>
 </dd>
 <dt> <code>--no-split</code></dt>
@@ -272,8 +272,8 @@ current footnote number to 1 at the start of each node.
 <a name="IDX391"></a>
 <p>Specify that the output should be directed to <var>file</var> and not to the
 file name specified in the <code>@setfilename</code> command found in the
-Texinfo source (see section <a href="setfilename.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is <samp>`-'</samp>, output
-goes to standard output and <samp>`--no-split'</samp> is implied.  For split
+Texinfo source (see section <a href="setfilename.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output
+goes to standard output and &lsquo;<samp>--no-split</samp>&rsquo; is implied.  For split
 HTML output, <var>file</var> is the name for the directory into which all
 HTML nodes are written (see section <a href="makeinfo-html.html#SEC270">Generating HTML</a>).
 </p>
@@ -281,8 +281,8 @@ HTML nodes are written (see section <a href="makeinfo-html.html#SEC270">Generati
 <dt> <code>-P <var>dir</var></code></dt>
 <dd><a name="IDX392"></a>
 <p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
-If <var>dir</var> is not given, the current directory <tt>`.'</tt> is prepended.
-See <samp>`-I'</samp> for more details.
+If <var>dir</var> is not given, the current directory &lsquo;<tt>.</tt>&rsquo; is prepended.
+See &lsquo;<samp>-I</samp>&rsquo; for more details.
 </p>
 </dd>
 <dt> <code>--paragraph-indent=<var>indent</var></code></dt>
@@ -295,11 +295,11 @@ this option overrides the value set in a Texinfo file by an
 of <var>indent</var> is interpreted as follows:
 </p>
 <dl compact="compact">
-<dt> <samp>`asis'</samp></dt>
+<dt> &lsquo;<samp>asis</samp>&rsquo;</dt>
 <dd><p>Preserve any existing indentation at the starts of paragraphs.
 </p>
 </dd>
-<dt> <samp>`0'</samp> or <samp>`none'</samp></dt>
+<dt> &lsquo;<samp>0</samp>&rsquo; or &lsquo;<samp>none</samp>&rsquo;</dt>
 <dd><p>Delete any existing indentation.
 </p>
 </dd>

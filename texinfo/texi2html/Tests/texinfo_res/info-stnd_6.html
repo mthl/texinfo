@@ -169,7 +169,7 @@ where the found index entry points to.
 <dd><a name="IDX187"></a>
 <a name="IDX188"></a>
 <p>Move to the node containing the next matching index item from the last
-<samp>`i'</samp> command.
+&lsquo;<samp>i</samp>&rsquo; command.
 </p>
 </dd>
 <dt> <kbd>M-x index-apropos</kbd></dt>
@@ -179,15 +179,15 @@ string, and build a menu of the possible matches.
 </p></dd>
 </dl>
 
-<p>The most basic searching command is <samp>`s'</samp> or <samp>`/'</samp>
-(<code>search</code>).  The <samp>`s'</samp> command prompts you for a string in the
+<p>The most basic searching command is &lsquo;<samp>s</samp>&rsquo; or &lsquo;<samp>/</samp>&rsquo;
+(<code>search</code>).  The &lsquo;<samp>s</samp>&rsquo; command prompts you for a string in the
 echo area, and then searches the remainder of the Info file for an
 occurrence of that string.  If the string is found, the node containing
 it is selected, and the cursor is left positioned at the start of the
-found string.  Subsequent <samp>`s'</samp> commands show you the default search
-string within <samp>`['</samp> and <samp>`]'</samp>; pressing <kbd>RET</kbd> instead of
+found string.  Subsequent &lsquo;<samp>s</samp>&rsquo; commands show you the default search
+string within &lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo;; pressing <kbd>RET</kbd> instead of
 typing a new string will use the default search string.  Under
-<samp>`--vi-keys'</samp> (see <a href="info-stnd_2.html#g_t_002d_002dvi_002dkeys">&ndash;vi-keys</a>), using the <samp>`n'</samp> or <samp>`N'</samp>
+&lsquo;<samp>--vi-keys</samp>&rsquo; (see <a href="info-stnd_2.html#g_t_002d_002dvi_002dkeys">&ndash;vi-keys</a>), using the &lsquo;<samp>n</samp>&rsquo; or &lsquo;<samp>N</samp>&rsquo;
 commands is a faster way of searching for the same string.
 </p>
 <p><em>Incremental searching</em> is similar to basic searching, but the
@@ -201,18 +201,18 @@ of letters when comparing the Info file text with the search string.
 However, an uppercase letter in the search string makes the search
 case-sensitive.  You can force a case-sensitive non-incremental search,
 even for a string that includes only lower-case letters, by using the
-<samp>`S'</samp> command (<code>search-case-sensitively</code>).  The <samp>`n'</samp> and
-<samp>`N'</samp> commands operate case-sensitively if the last search command
-was <samp>`S'</samp>.
+&lsquo;<samp>S</samp>&rsquo; command (<code>search-case-sensitively</code>).  The &lsquo;<samp>n</samp>&rsquo; and
+&lsquo;<samp>N</samp>&rsquo; commands operate case-sensitively if the last search command
+was &lsquo;<samp>S</samp>&rsquo;.
 </p>
 <p>The most efficient means of finding something quickly in a manual is
-the <samp>`i'</samp> command (<code>index-search</code>).  This command prompts for
+the &lsquo;<samp>i</samp>&rsquo; command (<code>index-search</code>).  This command prompts for
 a string, and then looks for that string in all the indices of the
 current Info manual.  If it finds a matching index entry, it displays
 the node to which that entry refers and prints the full text of the
-entry in the echo area.  You can press <samp>`,'</samp>
+entry in the echo area.  You can press &lsquo;<samp>,</samp>&rsquo;
 (<code>next-index-match</code>) to find more matches.  A good Info manual
-has all of its important concepts indexed, so the <samp>`i'</samp> command
+has all of its important concepts indexed, so the &lsquo;<samp>i</samp>&rsquo; command
 lets you use a manual as a reference.
 </p>
 <p>If you don't know what manual documents something, try the <kbd>M-x

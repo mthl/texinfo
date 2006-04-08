@@ -78,7 +78,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2 class="section"> 18.5 <samp>`definfoenclose'</samp>: Customized Highlighting </h2>
+<h2 class="section"> 18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting </h2>
 
 <p>A <code>@definfoenclose</code> command may be used to define a highlighting
 command for Info, but not for TeX.  A command defined using
@@ -88,7 +88,7 @@ your Info output.
 </p> 
 <p>Presumably, if you define a command with <code>@definfoenclose</code> for Info,
 you will create a corresponding command for TeX, either in
-<tt>`texinfo.tex'</tt>, <tt>`texinfo.cnf'</tt>, or within an <samp>`@iftex'</samp> in
+&lsquo;<tt>texinfo.tex</tt>&rsquo;, &lsquo;<tt>texinfo.cnf</tt>&rsquo;, or within an &lsquo;<samp>@iftex</samp>&rsquo; in
 your document.
 </p>
 <p>Write a <code>@definfoenclose</code> command on a line and follow it with
@@ -133,8 +133,8 @@ argument to <code>@phoo</code> in italics.
 </p>
 <p>Each definition applies to its own formatter: one for TeX, the other
 for <code>texinfo-format-buffer</code> or <code>texinfo-format-region</code>.  The
-<code>@definfoenclose</code> command need not be within <samp>`@ifinfo'</samp>, but
-the raw TeX commands do need to be in <samp>`@iftex'</samp>.
+<code>@definfoenclose</code> command need not be within &lsquo;<samp>@ifinfo</samp>&rsquo;, but
+the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
 </p>
 <a name="IDX319"></a>
 <p>Here is another example: write
@@ -146,7 +146,7 @@ the raw TeX commands do need to be in <samp>`@iftex'</samp>.
 formatting command that inserts nothing before and a colon after the
 argument to <code>@headword</code>.
 </p>
-<p><samp>`@definfoenclose'</samp> definitions must not be recursive, directly or
+<p>&lsquo;<samp>@definfoenclose</samp>&rsquo; definitions must not be recursive, directly or
 indirectly.
 </p>
 

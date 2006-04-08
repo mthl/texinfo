@@ -161,7 +161,7 @@ rest of this section presumes that you are using
 <p>If you have made a mistake with an @-command,
 <code>texinfo-format-region</code> will stop processing at or after the
 error and display an error message.  To see where in the buffer the
-error occurred, switch to the <samp>`*Info Region*'</samp> buffer; the cursor
+error occurred, switch to the &lsquo;<samp>*Info Region*</samp>&rsquo; buffer; the cursor
 will be in a position that is after the location of the error.  Also,
 the text will not be formatted after the place where the error
 occurred (or more precisely, where it was detected).
@@ -196,8 +196,8 @@ odd error messages.  For example, the following cross reference fails to format:
 </pre></td></tr></table>
 
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
-brace but displays a message that says <samp>`Unbalanced parentheses'</samp>
-rather than <samp>`Unbalanced braces'</samp>.  This is because the formatting
+brace but displays a message that says &lsquo;<samp>Unbalanced parentheses</samp>&rsquo;
+rather than &lsquo;<samp>Unbalanced braces</samp>&rsquo;.  This is because the formatting
 command looks for mismatches between braces as if they were
 parentheses.
 </p>
@@ -297,9 +297,9 @@ understandable error message:
 <table><tr><td>&nbsp;</td><td><pre class="example">Paragraph ended before @xref was complete.
 </pre></td></tr></table>
 
-<p><samp>`@par'</samp> is an internal TeX command of no relevance to Texinfo.
-<samp>`l.27'</samp> means that TeX detected the problem on line 27 of the
-Texinfo file.  The <samp>`?'</samp> is the prompt TeX uses in this
+<p>&lsquo;<samp>@par</samp>&rsquo; is an internal TeX command of no relevance to Texinfo.
+&lsquo;<samp>l.27</samp>&rsquo; means that TeX detected the problem on line 27 of the
+Texinfo file.  The &lsquo;<samp>?</samp>&rsquo; is the prompt TeX uses in this
 circumstance.
 </p>
 <p>Unfortunately, TeX is not always so helpful, and sometimes you must
@@ -311,11 +311,11 @@ things.
 <ol>
 <li>
 You can tell TeX to continue running and ignore just this error by
-typing <kbd>RET</kbd> at the <samp>`?'</samp> prompt.
+typing <kbd>RET</kbd> at the &lsquo;<samp>?</samp>&rsquo; prompt.
 
 </li><li>
 You can tell TeX to continue running and to ignore all errors as best
-it can by typing <kbd>r <kbd>RET</kbd></kbd> at the <samp>`?'</samp> prompt.
+it can by typing <kbd>r <kbd>RET</kbd></kbd> at the &lsquo;<samp>?</samp>&rsquo; prompt.
 
 <p>This is often the best thing to do.  However, beware: the one error
 may produce a cascade of additional error messages as its consequences
@@ -325,11 +325,11 @@ producing such an avalanche of error messages, type <kbd>C-c</kbd> (or
 </p>
 </li><li>
 You can tell TeX to stop this run by typing <kbd>x <kbd>RET</kbd></kbd>
-at the <samp>`?'</samp> prompt.
+at the &lsquo;<samp>?</samp>&rsquo; prompt.
 </li></ol>
 
 <p>If you are running TeX inside Emacs, you need to switch to the shell
-buffer and line at which TeX offers the <samp>`?'</samp> prompt.
+buffer and line at which TeX offers the &lsquo;<samp>?</samp>&rsquo; prompt.
 </p>
 <p>Sometimes TeX will format a file without producing error messages even
 though there is a problem.  This usually occurs if a command is not ended
@@ -356,7 +356,7 @@ first.
 <p>If the Texinfo file lacks header lines,
 TeX may stop in the
 beginning of its run and display output that looks like the following.
-The <samp>`*'</samp> indicates that TeX is waiting for input.
+The &lsquo;<samp>*</samp>&rsquo; indicates that TeX is waiting for input.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
@@ -365,8 +365,8 @@ The <samp>`*'</samp> indicates that TeX is waiting for input.
 
 <p>In this case, simply type <kbd>\end <kbd>RET</kbd></kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command
-again. (Note the use of the backslash, <samp>`\'</samp>.  TeX uses <samp>`\'</samp>
-instead of <samp>`@'</samp>; and in this circumstance, you are working
+again. (Note the use of the backslash, &lsquo;<samp>\</samp>&rsquo;.  TeX uses &lsquo;<samp>\</samp>&rsquo;
+instead of &lsquo;<samp>@</samp>&rsquo;; and in this circumstance, you are working
 directly with TeX, not with Texinfo.)
 </p>
 <hr size="6">
@@ -403,7 +403,7 @@ the command also shows the <code>@node</code> lines.  The
 <code>texinfo-show-structure</code> command is bound to <kbd>C-c C-s</kbd> in
 Texinfo mode, by default.
 </p>
-<p>The lines are displayed in a buffer called the <samp>`*Occur*'</samp> buffer,
+<p>The lines are displayed in a buffer called the &lsquo;<samp>*Occur*</samp>&rsquo; buffer,
 indented by hierarchical level.  For example, here is a part of what was
 produced by running <code>texinfo-show-structure</code> on this manual:
 </p>
@@ -421,15 +421,15 @@ produced by running <code>texinfo-show-structure</code> on this manual:
  &hellip;
 </pre></td></tr></table>
 
-<p>This says that lines 4337, 4393, and 4417 of <tt>`texinfo.texi'</tt> begin
+<p>This says that lines 4337, 4393, and 4417 of &lsquo;<tt>texinfo.texi</tt>&rsquo; begin
 with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection</code>
-commands respectively.  If you move your cursor into the <samp>`*Occur*'</samp>
+commands respectively.  If you move your cursor into the &lsquo;<samp>*Occur*</samp>&rsquo;
 window, you can position the cursor over one of the lines and use the
 <kbd>C-c C-c</kbd> command (<code>occur-mode-goto-occurrence</code>), to jump to
 the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>, for more
 information about <code>occur-mode-goto-occurrence</code>.
 </p>
-<p>The first line in the <samp>`*Occur*'</samp> window describes the <em>regular
+<p>The first line in the &lsquo;<samp>*Occur*</samp>&rsquo; window describes the <em>regular
 expression</em> specified by <var>texinfo-heading-pattern</var>.  This regular
 expression is the pattern that <code>texinfo-show-structure</code> looks for.
 See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section `Using Regular Expressions' in <cite>The GNU Emacs Manual</cite>,
@@ -449,7 +449,7 @@ typing <kbd>C-u C-c C-s</kbd>, it will list lines beginning with
 for <code>@chapter</code>, <code>@section</code>, and the like.
 </p>
 <p>You can remind yourself of the structure of a Texinfo file by looking at
-the list in the <samp>`*Occur*'</samp> window; and if you have mis-named a node
+the list in the &lsquo;<samp>*Occur*</samp>&rsquo; window; and if you have mis-named a node
 or left out a section, you can correct the mistake.
 </p>
 <hr size="6">
@@ -489,15 +489,15 @@ buffer.  If you want to run <code>occur</code> on the whole buffer, place
 the cursor at the beginning of the buffer.
 </p>
 <p>For example, to see all the lines that contain the word
-<samp>`@chapter'</samp> in them, just type <samp>`@chapter'</samp>.  This will
+&lsquo;<samp>@chapter</samp>&rsquo; in them, just type &lsquo;<samp>@chapter</samp>&rsquo;.  This will
 produce a list of the chapters.  It will also list all the sentences
-with <samp>`@chapter'</samp> in the middle of the line.
+with &lsquo;<samp>@chapter</samp>&rsquo; in the middle of the line.
 </p>
 <p>If you want to see only those lines that start with the word
-<samp>`@chapter'</samp>, type <samp>`^@chapter'</samp> when prompted by
+&lsquo;<samp>@chapter</samp>&rsquo;, type &lsquo;<samp>^@chapter</samp>&rsquo; when prompted by
 <code>occur</code>.  If you want to see all the lines that end with a word
-or phrase, end the last word with a <samp>`$'</samp>; for example,
-<samp>`catching mistakes$'</samp>.  This can be helpful when you want to see
+or phrase, end the last word with a &lsquo;<samp>$</samp>&rsquo;; for example,
+&lsquo;<samp>catching mistakes$</samp>&rsquo;.  This can be helpful when you want to see
 all the nodes that are part of the same chapter or section and
 therefore have the same `Up' pointer.
 </p>
@@ -582,8 +582,8 @@ type:
 </p>
 <p>If your file is valid, you will receive a message that says &ldquo;File appears
 valid&rdquo;.  However, if you have a pointer that does not point to a node,
-error messages will be displayed in a buffer called <samp>`*problems in
-info file*'</samp>.
+error messages will be displayed in a buffer called &lsquo;<samp>*problems in
+info file*</samp>&rsquo;.
 </p>
 <p>For example, <code>Info-validate</code> was run on a test file that contained
 only the first node of this manual.  One of the messages said:
@@ -591,11 +591,11 @@ only the first node of this manual.  One of the messages said:
 <table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
 
-<p>This meant that the node called <samp>`Overview'</samp> had a `Next' pointer that
+<p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a `Next' pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
 </p>
-<p>Now suppose we add a node named <samp>`Texinfo Mode'</samp> to our test case
+<p>Now suppose we add a node named &lsquo;<samp>Texinfo Mode</samp>&rsquo; to our test case
 but we do not specify a `Previous' for this node.  Then we will get
 the following error message:
 </p>
@@ -691,7 +691,7 @@ it.  Visit the Info file you wish to tagify and type:
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
 </pre></td></tr></table>
 
-<p>(Note the upper case <samp>`I'</samp> in <code>Info-tagify</code>.)  This creates an
+<p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-tagify</code>.)  This creates an
 Info file with a tag table that you can validate.
 </p>
 <p>The third step is to validate the Info file:
@@ -699,7 +699,7 @@ Info file with a tag table that you can validate.
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
 </pre></td></tr></table>
 
-<p>(Note the upper case <samp>`I'</samp> in <code>Info-validate</code>.)
+<p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-validate</code>.)
 In brief, the steps are:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-format-buffer
@@ -759,13 +759,13 @@ commands:
 M-x Info-split
 </pre></td></tr></table>
 
-<p>(Note that the <samp>`I'</samp> in <samp>`Info'</samp> is upper case.)
+<p>(Note that the &lsquo;<samp>I</samp>&rsquo; in &lsquo;<samp>Info</samp>&rsquo; is upper case.)
 </p>
 <p>When you use the <code>Info-split</code> command, the buffer is modified into a
 (small) Info file which lists the indirect subfiles.  This file should be
 saved in place of the original visited file.  The indirect subfiles are
 written in the same directory the original file is in, with names generated
-by appending <samp>`-'</samp> and a number to the original file name.
+by appending &lsquo;<samp>-</samp>&rsquo; and a number to the original file name.
 </p>
 <p>The primary file still functions as an Info file, but it contains just
 the tag table and a directory of subfiles.

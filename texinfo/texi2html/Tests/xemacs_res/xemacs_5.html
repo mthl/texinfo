@@ -105,7 +105,7 @@ ul.toc {list-style: none}
 
 <p>      Earlier versions of Emacs used only the ASCII character set,
 which defines 128 different character codes.  Some of these codes are
-assigned graphic symbols like <samp>`a'</samp> and <samp>`='</samp>; the rest are
+assigned graphic symbols like &lsquo;<samp>a</samp>&rsquo; and &lsquo;<samp>=</samp>&rsquo;; the rest are
 control characters, such as <kbd>Control-a</kbd> (also called <kbd>C-a</kbd>).
 <kbd>C-a</kbd> means you hold down the <kbd>CTRL</kbd> key and then press
 <kbd>a</kbd>.
@@ -481,13 +481,13 @@ following description from the X Protocol document for your convenience:
 <a name="IDX42"></a>
 
 <p> A list of keysyms is associated with each keycode. If that list
-(ignoring trailing <code>NoSymbol</code> entries) is a single keysym <samp>`K'</samp>,
+(ignoring trailing <code>NoSymbol</code> entries) is a single keysym &lsquo;<samp>K</samp>&rsquo;,
 then the list is treated as if it were the list 
 <code>``K NoSymbol K NoSymbol''</code>. If the list (ignoring trailing 
-<code>NoSymbol</code> entries) is a pair of keysyms <samp>`K1 K2'</samp>, then the 
+<code>NoSymbol</code> entries) is a pair of keysyms &lsquo;<samp>K1 K2</samp>&rsquo;, then the 
 list is treated as if it were the list <code>``K1 K2 K1 K2''</code>. If the 
 list (ignoring trailing <code>NoSymbol</code> entries) is a triple of keysyms 
-<samp>`K1 K2 K3'</samp>, then the list is treated as if it were the list 
+&lsquo;<samp>K1 K2 K3</samp>&rsquo;, then the list is treated as if it were the list 
 <code>``K1 K2 K3 NoSymbol''</code>.
 </p>
 <p> The first four elements of the list are split into two groups of 
@@ -495,10 +495,10 @@ keysyms. Group 1 contains the first and second keysyms; Group 2 contains
 third and fourth keysyms. Within each group, if the second element of
 the group is NoSymbol, then the group should be treated as if the second
 element were the same as the first element, except when the first
-element is an alphabetic keysym <samp>`K'</samp> for which both lowercase and 
+element is an alphabetic keysym &lsquo;<samp>K</samp>&rsquo; for which both lowercase and 
 uppercase forms are defined. In that case, the group should be treated 
-as if the first element were the lowercase form of <samp>`K'</samp> and the second 
-element were the uppercase form of <samp>`K'</samp>.
+as if the first element were the lowercase form of &lsquo;<samp>K</samp>&rsquo; and the second 
+element were the uppercase form of &lsquo;<samp>K</samp>&rsquo;.
 </p>
 <p> The standard rules for obtaining a keysym from a KeyPress event make use of 
 only the Group 1 and Group 2 keysyms; no interpretation of other keysyms in 
@@ -619,11 +619,11 @@ sequences to create key bindings.
 graphics.  <kbd>LFD</kbd> is the same as a newline character; it is displayed
 by starting a new line.  <kbd>TAB</kbd> is displayed by moving to the next
 tab stop column (usually every 8 spaces).  Other control characters are
-displayed as a caret (<samp>`^'</samp>) followed by the non-control version of
-the character; thus, <kbd>C-a</kbd> is displayed as <samp>`^A'</samp>.  Non-ASCII
+displayed as a caret (&lsquo;<samp>^</samp>&rsquo;) followed by the non-control version of
+the character; thus, <kbd>C-a</kbd> is displayed as &lsquo;<samp>^A</samp>&rsquo;.  Non-ASCII
 characters 128 and up are displayed with octal escape sequences; thus,
 character code 243 (octal), also called <kbd>M-#</kbd> when used as an input
-character, is displayed as <samp>`\243'</samp>.
+character, is displayed as &lsquo;<samp>\243</samp>&rsquo;.
 </p>
 <p>The variable <code>ctl-arrow</code> may be used to alter this behavior.
 See section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>.
@@ -700,7 +700,6 @@ are ready to be interested, read the basic information on variables, and
 then the information on individual variables will make sense.
 See section <a href="xemacs_30.html#SEC353">Variables</a>.
 </p>
-
 <hr size="6">
 <a name="Pull_002ddown-Menus"></a>
 <a name="SEC30"></a>
@@ -1449,8 +1448,7 @@ argument <var>path</var>.
 <code>relabel-menu-item</code>. This function also takes the argument <var>path</var>.
 </p>
 <p><var>new-name</var> is the string to which the menu item will be changed.
-</p>
-<hr size="6">
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC21" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_6.html#SEC39" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -95,8 +95,8 @@ arguments supplied when the macro is subsequently used in the document
 of letters: no digits, hyphens, underscores, or other special characters.
 </p>
 <p>If a macro needs no parameters, you can define it either with an empty
-list (<samp>`@macro foo {}'</samp>) or with no braces at all (<samp>`@macro
-foo'</samp>).
+list (&lsquo;<samp>@macro foo {}</samp>&rsquo;) or with no braces at all (&lsquo;<samp>@macro
+foo</samp>&rsquo;).
 </p>
 <a name="IDX303"></a>
 <a name="IDX304"></a>
@@ -110,13 +110,13 @@ macro does not work in TeX due to limitations in the design of
 </p>
 <a name="IDX306"></a>
 <p>In the macro body, instances of a parameter name surrounded by
-backslashes, as in <samp>`\<var>param1</var>\'</samp> in the example above, are
+backslashes, as in &lsquo;<samp>\<var>param1</var>\</samp>&rsquo; in the example above, are
 replaced by the corresponding argument from the macro invocation.  You
 can use parameter names any number of times in the body, including zero.
 </p>
 <a name="IDX307"></a>
-<p>To get a single <samp>`\'</samp> in the macro expansion, use <samp>`\\'</samp>.  Any
-other use of <samp>`\'</samp> in the body yields a warning.
+<p>To get a single &lsquo;<samp>\</samp>&rsquo; in the macro expansion, use &lsquo;<samp>\\</samp>&rsquo;.  Any
+other use of &lsquo;<samp>\</samp>&rsquo; in the body yields a warning.
 </p>
 <a name="IDX308"></a>
 <a name="IDX309"></a>
@@ -127,7 +127,7 @@ other whitespace is treated according to the usual Texinfo rules.
 <a name="IDX310"></a>
 <a name="IDX311"></a>
 <p>To allow a macro to be used recursively, that is, in an argument to a
-call to itself, you must define it with <samp>`@rmacro'</samp>, like this:
+call to itself, you must define it with &lsquo;<samp>@rmacro</samp>&rsquo;, like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@rmacro rmac {arg}
 a\arg\b
@@ -136,8 +136,8 @@ a\arg\b
 @rmac{1@rmac{text}2}
 </pre></td></tr></table>
 
-<p>This produces the output `a1atextb2b'.  With <samp>`@macro'</samp> instead of
-<samp>`@rmacro'</samp>, an error message is given.
+<p>This produces the output `a1atextb2b'.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
+&lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
 </p>
 <a name="IDX312"></a>
 <a name="IDX313"></a>

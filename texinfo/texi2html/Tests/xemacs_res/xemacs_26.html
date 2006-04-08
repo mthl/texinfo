@@ -62,9 +62,9 @@ ul.toc {list-style: none}
 
 <p>  An <em>abbrev</em> is a word which <em>expands</em> into some
 different text.  Abbrevs are defined by the user to expand in specific
-ways.  For example, you might define <samp>`foo'</samp> as an abbrev expanding to
-<samp>`find outer otter'</samp>.  With this abbrev defined, you would be able to
-get <samp>`find outer otter '</samp> into the buffer by typing <kbd>f o o <kbd>SPC</kbd></kbd>.
+ways.  For example, you might define &lsquo;<samp>foo</samp>&rsquo; as an abbrev expanding to
+&lsquo;<samp>find outer otter</samp>&rsquo;.  With this abbrev defined, you would be able to
+get &lsquo;<samp>find outer otter </samp>&rsquo; into the buffer by typing <kbd>f o o <kbd>SPC</kbd></kbd>.
 </p>
 <a name="IDX1060"></a>
 <a name="IDX1061"></a>
@@ -156,8 +156,8 @@ abbrev to expand to, position point after it, and type <kbd>C-x a g</kbd>
 minibuffer, and then defines it as an abbrev for one or more words
 before point.  Use a numeric argument to say how many words before point
 should be taken as the expansion.  For example, to define the abbrev
-<samp>`foo'</samp> as in the example above, insert the text <samp>`find outer
-otter'</samp>, then type <br><kbd>C-u 3 C-x a g f o o <kbd>RET</kbd></kbd>.
+&lsquo;<samp>foo</samp>&rsquo; as in the example above, insert the text &lsquo;<samp>find outer
+otter</samp>&rsquo;, then type <br><kbd>C-u 3 C-x a g f o o <kbd>RET</kbd></kbd>.
 </p>
 <p>  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
 region as the expansion of the abbrev being defined.
@@ -218,9 +218,9 @@ etc.).  Most often an abbrev is used by inserting the abbrev followed
 by punctuation.
 </p>
 <a name="IDX1071"></a>
-<p>  Abbrev expansion preserves case; thus, <samp>`foo'</samp> expands into <samp>`find
-outer otter'</samp>, <samp>`Foo'</samp> into <samp>`Find outer otter'</samp>, and <samp>`FOO'</samp> into
-<samp>`FIND OUTER OTTER'</samp> or <samp>`Find Outer Otter'</samp> according to the
+<p>  Abbrev expansion preserves case; thus, &lsquo;<samp>foo</samp>&rsquo; expands into &lsquo;<samp>find
+outer otter</samp>&rsquo;, &lsquo;<samp>Foo</samp>&rsquo; into &lsquo;<samp>Find outer otter</samp>&rsquo;, and &lsquo;<samp>FOO</samp>&rsquo; into
+&lsquo;<samp>FIND OUTER OTTER</samp>&rsquo; or &lsquo;<samp>Find Outer Otter</samp>&rsquo; according to the
 variable <code>abbrev-all-caps</code> (a non-<code>nil</code> value chooses the first
 of the two expansions).
 </p>
@@ -247,21 +247,21 @@ This is effective even when Abbrev mode is not enabled.
 <a name="IDX1073"></a>
 <a name="IDX1074"></a>
 <p>  You may wish to expand an abbrev with a prefix attached.  For example,
-if <samp>`cnst'</samp> expands into <samp>`construction'</samp>, you may want to use it
-to enter <samp>`reconstruction'</samp>.  It does not work to type <kbd>recnst</kbd>,
+if &lsquo;<samp>cnst</samp>&rsquo; expands into &lsquo;<samp>construction</samp>&rsquo;, you may want to use it
+to enter &lsquo;<samp>reconstruction</samp>&rsquo;.  It does not work to type <kbd>recnst</kbd>,
 because that is not necessarily a defined abbrev.  Instead, you can use
 the command <kbd>M-'</kbd> (<code>abbrev-prefix-mark</code>) between the prefix
-<samp>`re'</samp> and the abbrev <samp>`cnst'</samp>.  First, insert <samp>`re'</samp>.  Then
+&lsquo;<samp>re</samp>&rsquo; and the abbrev &lsquo;<samp>cnst</samp>&rsquo;.  First, insert &lsquo;<samp>re</samp>&rsquo;.  Then
 type <kbd>M-'</kbd>; this inserts a minus sign in the buffer to indicate that
-it has done its work.  Then insert the abbrev <samp>`cnst'</samp>.  The buffer
-now contains <samp>`re-cnst'</samp>.  Now insert a punctuation character to
-expand the abbrev <samp>`cnst'</samp> into <samp>`construction'</samp>.  The minus sign
+it has done its work.  Then insert the abbrev &lsquo;<samp>cnst</samp>&rsquo;.  The buffer
+now contains &lsquo;<samp>re-cnst</samp>&rsquo;.  Now insert a punctuation character to
+expand the abbrev &lsquo;<samp>cnst</samp>&rsquo; into &lsquo;<samp>construction</samp>&rsquo;.  The minus sign
 is deleted at this point by <kbd>M-'</kbd>.  The resulting text is the
-desired <samp>`reconstruction'</samp>.
+desired &lsquo;<samp>reconstruction</samp>&rsquo;.
 </p>
 <p>  If you actually want the text of the abbrev in the buffer, rather than
 its expansion, insert the following punctuation with <kbd>C-q</kbd>.  Thus,
-<kbd>foo C-q -</kbd> leaves <samp>`foo-'</samp> in the buffer.
+<kbd>foo C-q -</kbd> leaves &lsquo;<samp>foo-</samp>&rsquo; in the buffer.
 </p>
 <a name="IDX1075"></a>
 <p>  If you expand an abbrev by mistake, you can undo the expansion (replace
@@ -337,14 +337,14 @@ expansion.
 <p>  <kbd>M-x edit-abbrevs</kbd> allows you to add, change or kill abbrev
 definitions by editing a list of them in an Emacs buffer.  The list has
 the format described above.  The buffer of abbrevs is called
-<samp>`*Abbrevs*'</samp>, and is in Edit-Abbrevs mode.  This mode redefines the
+&lsquo;<samp>*Abbrevs*</samp>&rsquo;, and is in Edit-Abbrevs mode.  This mode redefines the
 key <kbd>C-c C-c</kbd> to install the abbrev definitions as specified in the
 buffer.  The  <code>edit-abbrevs-redefine</code> command does this.
 Any abbrevs not described in the buffer are eliminated when this is
 done.
 </p>
 <p>  <code>edit-abbrevs</code> is actually the same as <code>list-abbrevs</code>, except
-that it selects the buffer <samp>`*Abbrevs*'</samp> whereas <code>list-abbrevs</code>
+that it selects the buffer &lsquo;<samp>*Abbrevs*</samp>&rsquo; whereas <code>list-abbrevs</code>
 merely displays it in another window.
 </p>
 <hr size="6">
@@ -460,9 +460,9 @@ by searching in the buffer for words starting with that abbreviation
 </p></dd>
 </dl>
 
-<p>  For example, if the buffer contains <samp>`does this follow '</samp> and you type
-<kbd>f o M-/</kbd>, the effect is to insert <samp>`follow'</samp> because that is the
-last word in the buffer that starts with <samp>`fo'</samp>.  A numeric argument to
+<p>  For example, if the buffer contains &lsquo;<samp>does this follow </samp>&rsquo; and you type
+<kbd>f o M-/</kbd>, the effect is to insert &lsquo;<samp>follow</samp>&rsquo; because that is the
+last word in the buffer that starts with &lsquo;<samp>fo</samp>&rsquo;.  A numeric argument to
 <kbd>M-/</kbd> says to take the second, third, etc. distinct expansion found
 looking backward from point.  Repeating <kbd>M-/</kbd> searches for an
 alternative expansion by looking farther back.  After the entire buffer
@@ -472,7 +472,6 @@ before point has been considered, the buffer after point is searched.
 expansion of a word with <kbd>M-/</kbd> is completely independent of whether it
 has a definition as an ordinary abbrev.
 </p>
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

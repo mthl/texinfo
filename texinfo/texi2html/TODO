@@ -45,11 +45,6 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Test the back path stuff for images.
 
-* Test refs with no unicode support.
-  Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
-  test case for cross refs with @ commands in nodes.
-  see info texinfo for the specification of the result 
-
 * don't double in title when the @top and @settitle are the same
 
 * handle right things like
@@ -66,8 +61,8 @@ text
 }
 
 * maybe some @-commands appearing on lines should stop paragraphs, namely
-@page. That's not sure. Maybe this should be up  to the writer to add
-a line.
+@page or @indent. That's not sure. More likely this should be up to the 
+writer to add a line.
 
 * handle better things like
 @itemize @bullet
@@ -76,17 +71,17 @@ a line.
 In the example
 @end itemize
 
+* @macro definition in @ifset is parsed but ignored. So in the following, the
+@end ifset appearing in the macro is ignored, and the macro isn't defined.
+Don't know if it's right.
+
+@ifset a
+@macro bidule
+@end ifset
+@end macro
+@end ifset
+
 * @m_cedilla appears in output with --macro-expand. That's a bug.
-
-* currently the following leads to an error:
-
-@menu
-* @strong{node}::
-@end menu
-
-@node node
-
-Is it a bug or a feature?
 
 * in chm.init (Jose Fonseca)
 

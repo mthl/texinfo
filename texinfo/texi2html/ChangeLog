@@ -1,3 +1,23 @@
+2006-04-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: take into account the equivalent nodes (after
+	@-commands removal) when a node isn't found.
+	* texi2html.pl, texi2html.init: new variable $TOP_NODE_UP used
+	for the top node up node name with automatic top node directions.
+	Another variable $USE_MENU_DIRECTIONS. When unset the missing
+	node directions are not set using the information given by menus.
+	Use entities for OPEN_QUOTE_SYMBOL and CLOSE_QUOTE_SYMBOL with
+	$USE_ISO.
+	Use sectionprev, sectionnext and sectionup for section directions.
+	next, prev are set more sanely. up still means the same.
+	* texi2html.pl: Remove element_next, element_prev and 
+	element_up. They were duplicating sectionup or useless.
+	Homogeneize and clean the coding style, remove comments.
+	Don't reset %Texi2HTML::NAME/NO_TEXI... such that a ref to those
+	structures is valid.
+	* Tests/formatting/equivalent_nodes.texi: test equivalent nodes.
+	* Tests/*: test for different quotes. Test for more directions.
+
 2006-03-27  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl,texi2html.init: if $TRANSLITERATE_NODE is set

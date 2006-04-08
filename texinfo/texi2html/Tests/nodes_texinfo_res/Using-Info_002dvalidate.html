@@ -92,8 +92,8 @@ type:
 </p>
 <p>If your file is valid, you will receive a message that says &ldquo;File appears
 valid&rdquo;.  However, if you have a pointer that does not point to a node,
-error messages will be displayed in a buffer called <samp>`*problems in
-info file*'</samp>.
+error messages will be displayed in a buffer called &lsquo;<samp>*problems in
+info file*</samp>&rsquo;.
 </p>
 <p>For example, <code>Info-validate</code> was run on a test file that contained
 only the first node of this manual.  One of the messages said:
@@ -101,11 +101,11 @@ only the first node of this manual.  One of the messages said:
 <table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
 
-<p>This meant that the node called <samp>`Overview'</samp> had a `Next' pointer that
+<p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a `Next' pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
 </p>
-<p>Now suppose we add a node named <samp>`Texinfo Mode'</samp> to our test case
+<p>Now suppose we add a node named &lsquo;<samp>Texinfo Mode</samp>&rsquo; to our test case
 but we do not specify a `Previous' for this node.  Then we will get
 the following error message:
 </p>
