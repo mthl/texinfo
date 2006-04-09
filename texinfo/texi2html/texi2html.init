@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.101 2006-04-08 22:40:16 pertusus Exp $
+# $Id: texi2html.init,v 1.102 2006-04-09 22:50:06 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2065,7 +2065,7 @@ my %old_style_map = (
       'slanted',    {'attribute' => 'i'},
       'sansserif',  {'attribute' => 'span class="sansserif"'},
       'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
-      'key',        {'attribute' => 'kbd'},
+      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
       'math',       {'attribute' => 'em'},
       'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
       'r',          {'attribute' => 'span class="roman"'},
@@ -3173,6 +3173,8 @@ $acronym_like             = \&t2h_default_acronym_like;
 $quotation                = \&t2h_default_quotation;
 $quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
 $paragraph_style_command  = \&t2h_default_paragraph_style_command;
+$heading_texi             = \&t2h_default_heading_texi;
+$index_element_heading_texi = \&t2h_default_index_element_heading_texi;
 
 # This function is called whenever a complex format is processed
 #
@@ -4590,6 +4592,28 @@ sub t2h_default_index_summary($$)
     }
     return "<table><tr><th valign=\"top\">" . &$I('Jump to') .": &nbsp; </th><td>" .
     $nonalpha_text . $join . $alpha_text . "</td></tr></table>\n";
+}
+
+# return the heading with number texinfo text
+sub t2h_default_heading_texi($$$)
+{
+    my $tag = shift;
+    my $texi = shift;
+    my $number = shift;
+    $texi =~ s/\s*$//;
+    $texi =~ s/^\s*//;
+    return "$number $texi" if (defined($number) and ($number !~ /^\s*$/)) ;
+    return $texi;
+}
+
+# return the heading texinfo text for split index sections
+sub t2h_default_index_element_heading_texi($$$)
+{ # FIXME i18n
+    my $texi = shift;
+    my $first_letter = shift;
+    my $last_letter = shift;
+    return "$texi: $first_letter -- $last_letter" if ($last_letter ne $first_letter);
+    return "$texi: $first_letter";
 }
 
 1;

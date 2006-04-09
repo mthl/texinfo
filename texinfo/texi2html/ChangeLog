@@ -1,6 +1,13 @@
 2006-04-09  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: really use roman type for @r.
+	Format @key more in line with what is done in texinfo, and makes
+	more sense.
+	* texi2html.pl, texi2html.init: use a function reference to define
+	the numbered heading texinfo, and the index page headings texinfo.
+	* texi2html.pl: don't take into account new indices with 
+	index name clashing with existing indices, or with file extensions
+	(because texi2dvi uses the index name as file extension).
 
 2006-04-08  Patrice Dumas  <dumas@centre-cired.fr>
 

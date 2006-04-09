@@ -3004,6 +3004,16 @@ the sectioning element name, with @code{@@raisesections} and
 @end table
 @end deftypefn
 
+It is also possible to customize the heading text with section number
+with the following function reference:
+@deftypefn {Function Reference} $result_texi heading_texi $heading_command $heading $number
+@var{$heading_command} is the sectioning @@-command of that heading. 
+@var{$heading} is the texinfo for that heading. @var{$number} is the
+heading number classicaly computed with dots between numbers, and
+letters for top level appendix numbering. This function should return the 
+texinfo text corresponding with the numbered heading.
+@end deftypefn
+
 @c --------------------------------------------------------
 @node Special regions
 @section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche}, @code{@@quotation})

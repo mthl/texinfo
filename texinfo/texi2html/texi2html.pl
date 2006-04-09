@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.162 2006-04-08 11:37:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.163 2006-04-09 22:50:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -415,6 +415,8 @@ $acronym_like
 $quotation
 $quotation_prepend_text
 $paragraph_style_command
+$heading_texi
+$index_element_heading_texi
 
 $PRE_ABOUT
 $AFTER_ABOUT
@@ -838,6 +840,7 @@ $index_properties
 %sec2level
 %code_style_map
 %region_lines
+%forbidden_index_name
 );
 
 # Some global variables are set in the script, and used in the subroutines
@@ -970,29 +973,22 @@ $index_properties =
  't' => { name => 'tp', code => 1}
 };
 
+# FIXME valid_index and predefined_index aren't used.
+foreach my $valid_key(keys(%$index_properties))
+{
+    my $name = $index_properties->{$valid_key};
+    $predefined_index{$name} = $valid_key;
+    $valid_index{$valid_key} = 1;
+    $forbidden_index_name{$valid_key} = 1;
+    $forbidden_index_name{$name} = 1;
+}
 
-%predefined_index = (
-                     'cp', 'c',
-                     'fn', 'f',
-                     'vr', 'v',
-                     'ky', 'k',
-                     'pg', 'p',
-                     'tp', 't',
-	            );
+foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
+   'log','aux','dvi','texi','txi','texinfo','tex','bib')
+{
+    $forbidden_index_name{$other_forbidden_index_name} = 1;
+}
 
-#
-# valid indices
-#
-%valid_index = (
-                'c', 1,
-                'f', 1,
-                'v', 1,
-                'k', 1,
-                'p', 1,
-                't', 1,
-               );
-
-#
 # commands with ---, -- '' and `` preserved
 # usefull with the old interface
 
@@ -2876,7 +2872,7 @@ if ($Texi2HTML::Config::USE_ISO)
          #$Texi2HTML::Config::simple_format_texi_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
     }
     # we don't override the user defined quote, but beware that this works
-    # only if the hardcoded defaults, '`' and "'" match wit the defaults
+    # only if the hardcoded defaults, '`' and "'" match with the defaults
     # in the default init file
     $Texi2HTML::Config::OPEN_QUOTE_SYMBOL = $Texi2HTML::Config::iso_symbols{'`'} 
         if (exists($Texi2HTML::Config::iso_symbols{'`'}) and ($Texi2HTML::Config::OPEN_QUOTE_SYMBOL eq '`'));
@@ -3743,9 +3739,16 @@ sub misc_command_structure($$$$)
         if ($line =~ /^\s+(\w+)\s*$/)
         {
             my $name = $1;
-            $index_properties->{$name}->{'name'} = $name;
-            $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
-            push @{$Texi2HTML::THISDOC{$macro}}, $name; 
+            if ($forbidden_index_name{$name})
+            {
+                echo_error("Reserved index name $name", $line_nr);
+            }
+            else
+            {
+                $index_properties->{$name}->{'name'} = $name;
+                $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
+                push @{$Texi2HTML::THISDOC{$macro}}, $name; 
+            }
         }
         else
         {# FIXME makeinfo don't warn and even accepts index with empty name
@@ -4463,8 +4466,8 @@ sub rearrange_elements()
     print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
 
-    # FIXME is it right for the last element ? Or should it be the last
-    # with indices taken into account ?
+    # It is the last element before indices split, which may add new 
+    # elements
     $element_last = $elements_list[-1];
     
     print STDERR "# Complete nodes next prev and up based on menus and sections\n"
@@ -4921,13 +4924,14 @@ sub rearrange_elements()
                           # a new element which will contain the text 
                           # between the beginning of the element and the index
                             push @new_elements, $checked_element;
-                            print STDERR "# Add element `$checked_element->{'texi'}' before index page\n" 
+                            print STDERR "# Add `$checked_element->{'texi'}' before index page for `$element->{'texi'}'\n" 
                                 if ($T2H_DEBUG & $DEBUG_INDEX);
                             echo_warn("Add `$checked_element->{'texi'}' for indicing");
                             $checked_element->{'element'} = 1;
                             $checked_element->{'level'} = $element->{'level'};
                             $checked_element->{'toc_level'} = $element->{'toc_level'};
                             $checked_element->{'toplevel'} = $element->{'toplevel'};
+                            $checked_element->{'toplevel'} = 1 if ($element->{'top'});
                             $checked_element->{'up'} = $element->{'up'};
                             $checked_element->{'sectionup'} = $element->{'sectionup'};
                             $checked_element->{'element_added'} = 1;
@@ -4944,17 +4948,15 @@ sub rearrange_elements()
                             foreach my $waiting_element (@waiting_elements)
                             {
                                  $waiting_element->{'section_ref'} = $checked_element;
+                                 $waiting_element->{'sectionup'} = $checked_element;
                             }
                             @waiting_elements = ();
-                            # FIXME the added element is like a section, and
-                            # indeed it is a 'section_ref' just above, for 
-                            # other nodes.
-                            # so should it really promoted to be a section
-                            # so if it is the 'node_ref' for another section
-                            # it is not 'node_ref' anymore?
-                            # it seems that the existing code assume that it
-                            # should still be considered as a node, and then
-                            # the Texi2HTML::NODE would be relative to this
+                            # WARNING the added element is like a section, and
+                            # indeed it is a 'section_ref' and 'sectionup' 
+                            # for other nodes (see just above). But it is also
+                            # a node.
+                            # it may be considered 'node_ref' for a section.
+                            # and the Texi2HTML::NODE is relative to this
                             # added element.
                             
                             $checked_element->{'back'} = $back;
@@ -5188,7 +5190,12 @@ sub rearrange_elements()
             $element->{'doc_nr'} = $doc_nr;
             if ($Texi2HTML::Config::NODE_FILES and ($Texi2HTML::Config::SPLIT eq 'node'))
             { # simply use node file names for elements
-                my $node = get_node($element);
+                my $node;
+                # in case it is an element_added, the section isn't put in 
+                # a file with the node file name, but in a separate file,
+                # such that the element_added appears in its own file
+                $node = get_node($element) unless(exists($element->{'node_ref'})
+                    and $element->{'node_ref'}->{'element_added'});
                 if ($node and $node->{'file'})
                 {
                     $element->{'file'} = $node->{'file'};
@@ -5196,7 +5203,7 @@ sub rearrange_elements()
                 unless ($element->{'file'})
                 {
                     $element->{'file'} = "${docu_name}_$doc_nr"
-		    			 . ($docu_ext ? ".$docu_ext" : "");
+                           . ($docu_ext ? ".$docu_ext" : "");
                     $element->{'doc_nr'} = $doc_nr;
                 }
             }
@@ -5450,7 +5457,7 @@ sub get_node($)
     my $element = shift;
     return undef if (!defined($element));
     return $element if ($element->{'node'});
-    return $element->{'node_ref'} if ($element->{'node_ref'} and !$element->{'node_ref'}->{'element_added'});
+    return $element->{'node_ref'} if ($element->{'node_ref'});
     return $element;
 }
 # get the html names from the texi for all elements
@@ -5469,6 +5476,7 @@ sub do_names()
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
         $nodes{$node}->{'no_texi'} = remove_texi($nodes{$node}->{'texi'});
         $nodes{$node}->{'simple_format'} = simple_format(undef, $nodes{$node}->{'texi'});
+        $nodes{$node}->{'heading_texi'} = $nodes{$node}->{'texi'};
         # FIXME : what to do if $nodes{$node}->{'external_node'} and
         # $nodes{$node}->{'seen'}
     }
@@ -5476,14 +5484,11 @@ sub do_names()
     {
         my $section = $sections{$number};
         $section->{'name'} = substitute_line($section->{'texi'});
-        # FIXME the user should be able to give a raw texinfo himself for
-        # section number formatting
-        $section->{'text'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " . $section->{'name'};
-        $section->{'text'} =~ s/^\s*//;
-        $section->{'no_texi'} = $section->{'number'} . " " .remove_texi($section->{'texi'});
-        $section->{'no_texi'} =~ s/^\s*//;
-        $section->{'simple_format'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .simple_format(undef,$section->{'texi'});
-        $section->{'simple_format'} =~ s/^\s*//;
+        my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
+        $section->{'text'} = substitute_line($texi);
+        $section->{'no_texi'} = remove_texi($texi);
+        $section->{'simple_format'} = simple_format(undef,$texi);
+        $section->{'heading_texi'} = $texi;
     }
     my $tocnr = 1;
     foreach my $element (@elements_list)
@@ -5497,17 +5502,11 @@ sub do_names()
         if ($element->{'index_page'})
         {
             my $page = $element->{'page'};
-            # FIXME the user should be able to give a raw texinfo himself
-            # for additionnal index page section title
-            my $letter_raw =  ($page->{'first_letter'} ne $page->{'last_letter'} ? 
-                "$page->{'first_letter'} -- $page->{'last_letter'}" :
-                "$page->{'first_letter'}");
-            $element->{'text'} = "$element->{'element_ref'}->{'text'}: "
-                . &$Texi2HTML::Config::protect_text($letter_raw);
-            $element->{'no_texi'} = 
-                "$element->{'element_ref'}->{'no_texi'}: $letter_raw";
-            $element->{'simple_format'} = "$element->{'element_ref'}->{'simple_format'}: "
-                . &$Texi2HTML::Config::protect_text($letter_raw);
+            my $texi = &$Texi2HTML::Config::index_element_heading_texi($element->{'element_ref'}->{'heading_texi'}, $page->{'first_letter'}, $page->{'last_letter'});
+            $element->{'heading_texi'} = $texi;
+            $element->{'text'} = substitute_line($texi);
+            $element->{'no_texi'} = remove_texi($texi);
+            $element->{'simple_format'} = simple_format(undef,$texi);
         }
     }
     print STDERR "# Names done\n" if ($T2H_DEBUG);
@@ -6105,7 +6104,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     $old = $element->{'texi'} if (defined($element));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
 # FIXME this should be done differently now that there could be elements
-# associated with the same file
+# associated with the same file. Buggy as it is now, see
+# Tests/node_footnote/node_footnote.texi
                     if ($element and ($new_element->{'doc_nr'} != $element->{'doc_nr'}) and @foot_lines and !$Texi2HTML::Config::SEPARATED_FOOTNOTES)
                     { # note that this can only happen if $Texi2HTML::Config::SPLIT
                         &$Texi2HTML::Config::foot_section (\@foot_lines);
