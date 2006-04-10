@@ -2,7 +2,8 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      viper_monolithic texi2html xemacs_frame index_table formatting macros \
      nodes_texinfo singular floats node_translit node_translit_no_unicode \
      node_translit_no_unidecode node_utf8_translit \
-     node_utf8_translit_no_unidecode
+     node_utf8_translit_no_unidecode index_split_nodes \
+     more_before_top_section node_footnote
 
 
 #check-local:

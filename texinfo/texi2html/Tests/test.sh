@@ -169,7 +169,9 @@ test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -
 test_texi index_table more_before_top.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
+test_texi more_before_top_section ../index_table/more_before_top_section.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -output ."
 test_texi index_split_nodes ../index_table/index_split.texi "-init ../../examples/makeinfo.init -output . -init ../index_table/index_test.init"
+test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
 test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi

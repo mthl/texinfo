@@ -1,0 +1,21 @@
+node_footnote.texi(,2) 
+node_footnote.texi(,3) @setfilename node_footnote.info
+node_footnote.texi(,4) 
+node_footnote.texi(,5) @node Top
+node_footnote.texi(,6) 
+node_footnote.texi(,7) @menu
+node_footnote.texi(,8) * @'a::
+node_footnote.texi(,9) * @^a::
+node_footnote.texi(,10) @end menu
+node_footnote.texi(,11) 
+node_footnote.texi(,12) @node @'a
+node_footnote.texi(,13) 
+node_footnote.texi(,14) node @'a,
+node_footnote.texi(,15) Footnote 1@footnote{foot 1 @'a}.
+node_footnote.texi(,16) 
+node_footnote.texi(,17) @node @^a
+node_footnote.texi(,18) 
+node_footnote.texi(,19) node @^a,
+node_footnote.texi(,20) Footnote 2@footnote{foot 2 @^a}.
+node_footnote.texi(,21) 
+node_footnote.texi(,22) @bye

@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.163 2006-04-09 22:50:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.164 2006-04-10 14:43:32 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4883,10 +4883,6 @@ sub rearrange_elements()
                 $back->{'forward'} = $checked_element if (defined($back));
                 $back = $checked_element;
                 push @{$checked_element->{'nodes'}}, @waiting_elements;
-                foreach my $waiting_element (@waiting_elements)
-                {
-                    $waiting_element->{'section_ref'} = $checked_element;
-                }
                 @waiting_elements = ();
             }
             elsif ($current_element->{'holder'})
@@ -4923,6 +4919,16 @@ sub rearrange_elements()
                           # is splitted by the index, thus we must add 
                           # a new element which will contain the text 
                           # between the beginning of the element and the index
+                          # WARNING the added element is like a section, and
+                          # indeed it is a 'section_ref' and 'sectionup' 
+                          # for other nodes, it has 'nodes' 
+                          # (see below and above).
+                          # But it is also a node. It may have a 'with_section'
+                          # and have a 'section_ref'
+                          # it may be considered 'node_ref' for a section.
+                          # and the Texi2HTML::NODE is relative to this
+                          # added element.
+                            
                             push @new_elements, $checked_element;
                             print STDERR "# Add `$checked_element->{'texi'}' before index page for `$element->{'texi'}'\n" 
                                 if ($T2H_DEBUG & $DEBUG_INDEX);
@@ -4937,7 +4943,6 @@ sub rearrange_elements()
                             $checked_element->{'element_added'} = 1;
                             print STDERR "Bug: checked element wasn't seen" if 
                                  (!$checked_element->{'seen'});
-                            delete $checked_element->{'with_section'};
                             $element->{'sectionprev'}->{'sectionnext'} = $checked_element if (exists($element->{'sectionprev'}));
                             push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                             foreach my $index(@{$current_element->{'indices'}})
@@ -4951,14 +4956,6 @@ sub rearrange_elements()
                                  $waiting_element->{'sectionup'} = $checked_element;
                             }
                             @waiting_elements = ();
-                            # WARNING the added element is like a section, and
-                            # indeed it is a 'section_ref' and 'sectionup' 
-                            # for other nodes (see just above). But it is also
-                            # a node.
-                            # it may be considered 'node_ref' for a section.
-                            # and the Texi2HTML::NODE is relative to this
-                            # added element.
-                            
                             $checked_element->{'back'} = $back;
                             $back->{'forward'} = $checked_element if (defined($back));
                             $current_element = $checked_element;
@@ -4991,11 +4988,11 @@ sub rearrange_elements()
                             };
                             if ($current_element->{'index_page'})
                             {
-                                $index_page->{'element_ref'} = $element;
+                                $index_page->{'original_index_element'} = $element;
                             }
                             else
                             {
-                                $index_page->{'element_ref'} = $current_element;
+                                $index_page->{'original_index_element'} = $current_element;
                             }
                             $index_page->{'node'} = 1 if ($element->{'node'});
                             while ($nodes{$index_page->{'texi'}})
@@ -5062,6 +5059,20 @@ sub rearrange_elements()
             # the element is a top level element, we adjust the next
             # toplevel element fastback
             $element->{'fastforward'}->{'fastback'} = $element if ($element->{'fastforward'});
+        }
+    }
+    
+    # set 'reference_element' which is used each time there is a cross ref
+    # to that node.
+    # It is the section associated with the node except if USE_NODES
+    unless ($Texi2HTML::Config::USE_NODES)
+    {
+        foreach my $node(@nodes_list)
+        {
+            if ($node->{'with_section'})
+            {
+                $node->{'reference_element'} = $node->{'with_section'};
+            }
         }
     }
 
@@ -5179,6 +5190,8 @@ sub rearrange_elements()
         foreach my $element (@elements_list)
         { # FIXME the code is complicated and hard to follow, yet it doesn't
           # do such a complicated task. Maybe it could be simplified.
+          # moreover the use of doc_nr to split is wrong or, at least 
+          # strange 
             print STDERR "# Splitting ($Texi2HTML::Config::SPLIT:$cut_section) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             $doc_nr++ if (
                ($Texi2HTML::Config::SPLIT eq 'node') or
@@ -5502,7 +5515,9 @@ sub do_names()
         if ($element->{'index_page'})
         {
             my $page = $element->{'page'};
-            my $texi = &$Texi2HTML::Config::index_element_heading_texi($element->{'element_ref'}->{'heading_texi'}, $page->{'first_letter'}, $page->{'last_letter'});
+            my $texi = &$Texi2HTML::Config::index_element_heading_texi(
+                 $element->{'original_index_element'}->{'heading_texi'}, 
+                 $page->{'first_letter'}, $page->{'last_letter'});
             $element->{'heading_texi'} = $texi;
             $element->{'text'} = substitute_line($texi);
             $element->{'no_texi'} = remove_texi($texi);
@@ -6103,10 +6118,11 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     my $old = 'NO_OLD';
                     $old = $element->{'texi'} if (defined($element));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-# FIXME this should be done differently now that there could be elements
-# associated with the same file. Buggy as it is now, see
-# Tests/node_footnote/node_footnote.texi
-                    if ($element and ($new_element->{'doc_nr'} != $element->{'doc_nr'}) and @foot_lines and !$Texi2HTML::Config::SEPARATED_FOOTNOTES)
+# FIXME this could be done differently now that there could be elements
+# associated with the same file. 
+# indeed a footnote may not appear at the footer of the page
+# in case we go out and in the file
+                    if ($element and ($new_element->{'file'} ne $element->{'file'}) and scalar(@foot_lines) and !$Texi2HTML::Config::SEPARATED_FOOTNOTES)
                     { # note that this can only happen if $Texi2HTML::Config::SPLIT
                         &$Texi2HTML::Config::foot_section (\@foot_lines);
                         push @section_lines, @foot_lines;
@@ -6282,6 +6298,15 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         push @section_lines, $text;
     }
     print STDERR "\n" if ($T2H_VERBOSE);
+ 
+    # do the footnotes for the latest element
+    if (scalar(@foot_lines) and !$Texi2HTML::Config::SEPARATED_FOOTNOTES
+        and $Texi2HTML::Config::SPLIT)
+    { 
+        &$Texi2HTML::Config::foot_section (\@foot_lines);
+        push @section_lines, @foot_lines;
+        @foot_lines = ();
+    }
     $Texi2HTML::THIS_SECTION = \@section_lines;
     # if no sections, then simply print document as is
     if ($one_section)
@@ -7489,7 +7514,7 @@ sub close_menu($$$$)
     my $line_nr = shift;
     if ($state->{'menu_comment'})
     {
-	    #print STDERR "close MENU_COMMENT Before close_stack\n";
+	    #print STDERR "close MENU_COMMENT\n";
 	    #dump_stack($text, $stack, $state);
         close_stack($text, $stack, $state, $line_nr, undef, 'menu_comment');
         # close_paragraph isn't needed in most cases, but a preformatted may 
@@ -7575,9 +7600,9 @@ sub do_menu_link($$;$)
          
     if ($element->{'seen'})
     {
-        if ($element->{'with_section'})
+        if ($element->{'reference_element'})
         {
-            $element = $element->{'with_section'};
+            $element = $element->{'reference_element'};
         }
     
         #print STDERR "SUBHREF in menu for $element->{'texi'}\n";
@@ -7604,9 +7629,9 @@ sub menu_description($$)
     my $element = $nodes{$node_name};
     if ($element->{'seen'})
     {
-        if ($element->{'with_section'})
+        if ($element->{'reference_element'})
         {
-            $element = $element->{'with_section'};
+            $element = $element->{'reference_element'};
         }
         if ($Texi2HTML::Config::AVOID_MENU_REDUNDANCY && ($descr ne '') && !$state->{'preformatted'})
         {
@@ -7719,9 +7744,9 @@ sub do_xref($$$$)
         my $element = $nodes{$node_texi};
         if ($element and $element->{'seen'})
         {
-            if ($element->{'with_section'})
+            if ($element->{'reference_element'})
             {
-                $element = $element->{'with_section'};
+                $element = $element->{'reference_element'};
             }
             my $file = '';
             if (defined($state->{'element'}))
@@ -8284,7 +8309,7 @@ sub simple_format($@)
     $state = {} if (!defined($state));
     $state->{'remove_texi'} = 1;
     $state->{'simple_format'} = 1;
-# FIXME currently it is only used for lines. It may change in the future.
+    # WARNING currently it is only used for lines. It may change in the future.
     $state->{'no_paragraph'} = 1;
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_format_simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::simple_format_style_map_texi;
@@ -10852,7 +10877,7 @@ sub add_item($$$$;$)
 
               my @letter_ords = decompose(ord($spec) - $base_letter + $format->{'item_nr'} - 1, 26);
               foreach my $ord (@letter_ords)
-              {#FIXME? we go directly to 'ba' after 'z', and not 'aa'
+              {# WARNING we go directly to 'ba' after 'z', and not 'aa'
                #because 'ba' is 1,0 and 'aa' is 0,0.
                    $format->{'number'} = chr($base_letter + $ord) . $format->{'number'};
               }
@@ -11222,8 +11247,8 @@ sub close_stack_texi_structure($$$$)
 # close the stack, closing macros and formats left open.
 # the precise behavior of the function depends on $close_paragraph:
 #  undef   -> close everything
-#  defined -> remove empty paragraphs, close until the first format or paragraph.
-#      1          -> don't close styles, duplicate stack of styles not closed
+#  defined -> remove empty paragraphs, close until the first format or 
+#          paragraph. don't close styles, duplicate stack of styles not closed
 
 # if a $format is given the stack is closed according to $close_paragraph but
 # if $format is encountered the closing stops
@@ -11286,7 +11311,6 @@ sub close_stack($$$$;$$)
                 {
                     echo_warn ("closing `$stack_format'", $line_nr); 
                     #dump_stack ($text, $stack, $state);
-                    #warn "$WARN closing `$stack_format'\n"; 
                 }
                 $string .= "\@end $stack_format ";
             }

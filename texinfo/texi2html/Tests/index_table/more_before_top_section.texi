@@ -41,6 +41,8 @@ in top section
 
 @menu
 * first::
+* chapter::
+* node in chapter::
 @end menu
 
 @node first,,Top, Top
@@ -79,7 +81,13 @@ Text and then index entries
 
 @printindex cp
 
-@c @node unnumberedsec, , ,(dir)
-@c @unnumberedsec a section to avoid a document without splitting
+@node chapter,node in chapter,,Top
+@chapter A chapter
+
+@printindex cp
+
+@node node in chapter,, chapter,Top
+
+@cindex node in chapter
 
 @bye

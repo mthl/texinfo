@@ -1,3 +1,11 @@
+2006-04-10  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use nodes for refs with USE_NODES.
+	Handle right footnotes at the end of the document and 
+	SEPARATED_FOOTNOTES false.
+	* Tests: test for footnotes  at the end of the document and 
+	SEPARATED_FOOTNOTES false. More tests.
+
 2006-04-09  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: really use roman type for @r.
