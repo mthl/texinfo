@@ -1,8 +1,8 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.60 2005-08-15 13:05:24 karl Exp $
+   $Id: insertion.c,v 1.61 2006-04-13 21:57:09 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free
-   Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1226,8 +1226,10 @@ end_insertion (enum insertion_type type)
              does not function here, since we've inserted non-whitespace
              (the </whatever>) before it.  The indentation already got
              inserted at the end of the last example line, so we have to
-             delete it, or browsers wind up showing an extra blank line.  */
-          kill_self_indent (default_indentation_increment);
+             delete it, or browsers wind up showing an extra blank line.
+             Furthermore, if we're inside indented environments, we
+             might have arbitrarily much indentation, so remove it all.  */
+          kill_self_indent (-1);
           add_html_block_elt (type == quotation
               ? "</blockquote>\n" : "</pre>\n");
         }
