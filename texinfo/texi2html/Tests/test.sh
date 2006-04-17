@@ -169,9 +169,9 @@ test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -
 test_texi index_table more_before_top.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
+test_texi index_table index_special_region.texi "-split chapter -output ."
 test_texi more_before_top_section ../index_table/more_before_top_section.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -output ."
 test_texi index_split_nodes ../index_table/index_split.texi "-init ../../examples/makeinfo.init -output . -init ../index_table/index_test.init"
-test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
 test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi
@@ -215,12 +215,14 @@ test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
+test_texi sectionning ../node_footnote/node_footnote.texi "--no-separated-footnotes"
+test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
 test_texi floats float.texi
 #test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
 test_texi floats float_with_at_commands.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
-test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting
+test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
 test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting

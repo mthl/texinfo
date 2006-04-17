@@ -1,0 +1,120 @@
+../index_table/index_split.texi(,2) 
+../index_table/index_split.texi(,3) @setfilename index_split
+../index_table/index_split.texi(,4) 
+../index_table/index_split.texi(,5) @node Top
+../index_table/index_split.texi(,6) @top split indices
+../index_table/index_split.texi(,7) @cindex entry a
+../index_table/index_split.texi(,8) 
+../index_table/index_split.texi(,9) @printindex cp
+../index_table/index_split.texi(,10) 
+../index_table/index_split.texi(,11) @printindex fn
+../index_table/index_split.texi(,12) 
+../index_table/index_split.texi(,13) And one one more index
+../index_table/index_split.texi(,14) 
+../index_table/index_split.texi(,15) @printindex cp
+../index_table/index_split.texi(,16) 
+../index_table/index_split.texi(,17) @menu
+../index_table/index_split.texi(,18) * Top:: back to the current top node
+../index_table/index_split.texi(,19) * first::
+../index_table/index_split.texi(,20) * second chapter::
+../index_table/index_split.texi(,21) @end menu
+../index_table/index_split.texi(,22) 
+../index_table/index_split.texi(,23) @node first
+../index_table/index_split.texi(,24) 
+../index_table/index_split.texi(,25) Text and then index entries
+../index_table/index_split.texi(,26) @cindex entry in node
+../index_table/index_split.texi(,27) @cindex ! entry in node
+../index_table/index_split.texi(,28) @findex fun in node
+../index_table/index_split.texi(,29) @cindex entry in node
+../index_table/index_split.texi(,30) 
+../index_table/index_split.texi(,31) @printindex cp
+../index_table/index_split.texi(,32) 
+../index_table/index_split.texi(,33) @printindex fn
+../index_table/index_split.texi(,34) 
+../index_table/index_split.texi(,35) @cindex entry after printindex
+../index_table/index_split.texi(,36) 
+../index_table/index_split.texi(,37) @chapter First chapter
+../index_table/index_split.texi(,38) @findex a function
+../index_table/index_split.texi(,39) @cindex a concept in first
+../index_table/index_split.texi(,40) @findex somewhere
+../index_table/index_split.texi(,41) 
+../index_table/index_split.texi(,42) @menu
+../index_table/index_split.texi(,43) * section 1::
+../index_table/index_split.texi(,44) * section 2::
+../index_table/index_split.texi(,45) * section 3::
+../index_table/index_split.texi(,46) * node in section 3::
+../index_table/index_split.texi(,47) * node 2 in section 3::
+../index_table/index_split.texi(,48) * node 3 in section 3::
+../index_table/index_split.texi(,49) @end menu
+../index_table/index_split.texi(,50) 
+../index_table/index_split.texi(,51) @node section 1
+../index_table/index_split.texi(,52) @section Section 1
+../index_table/index_split.texi(,53) 
+../index_table/index_split.texi(,54) @cindex something
+../index_table/index_split.texi(,55) 
+../index_table/index_split.texi(,56) @menu 
+../index_table/index_split.texi(,57) * subsection 1::
+../index_table/index_split.texi(,58) * subsection 2::
+../index_table/index_split.texi(,59) @end menu
+../index_table/index_split.texi(,60) The index once more
+../index_table/index_split.texi(,61) 
+../index_table/index_split.texi(,62) @printindex cp
+../index_table/index_split.texi(,63) 
+../index_table/index_split.texi(,64) @cindex another
+../index_table/index_split.texi(,65) 
+../index_table/index_split.texi(,66) @node subsection 1
+../index_table/index_split.texi(,67) @subsection Subsection 1
+../index_table/index_split.texi(,68) 
+../index_table/index_split.texi(,69) In subsection 1
+../index_table/index_split.texi(,70) 
+../index_table/index_split.texi(,71) @node subsection 2
+../index_table/index_split.texi(,72) @subsection Subsection 2
+../index_table/index_split.texi(,73) 
+../index_table/index_split.texi(,74) index in subsction 2
+../index_table/index_split.texi(,75) 
+../index_table/index_split.texi(,76) @cindex subsection 2
+../index_table/index_split.texi(,77) 
+../index_table/index_split.texi(,78) @printindex cp
+../index_table/index_split.texi(,79) 
+../index_table/index_split.texi(,80) @cindex printindex subsection 2
+../index_table/index_split.texi(,81) 
+../index_table/index_split.texi(,82) @node section 2
+../index_table/index_split.texi(,83) @section Section 2
+../index_table/index_split.texi(,84) 
+../index_table/index_split.texi(,85) Section 2
+../index_table/index_split.texi(,86) 
+../index_table/index_split.texi(,87) @node section 3
+../index_table/index_split.texi(,88) @section Section 3
+../index_table/index_split.texi(,89) 
+../index_table/index_split.texi(,90) @cindex section 3
+../index_table/index_split.texi(,91) 
+../index_table/index_split.texi(,92) @printindex cp
+../index_table/index_split.texi(,93) 
+../index_table/index_split.texi(,94) @node node in section 3,,section 3,first
+../index_table/index_split.texi(,95) 
+../index_table/index_split.texi(,96) @cindex node in section 3
+../index_table/index_split.texi(,97) Text for the node in section 3
+../index_table/index_split.texi(,98) 
+../index_table/index_split.texi(,99) @node node 2 in section 3,,,first
+../index_table/index_split.texi(,100) 
+../index_table/index_split.texi(,101) @cindex node 2 in section 3
+../index_table/index_split.texi(,102) Text for the node 2 in section 3
+../index_table/index_split.texi(,103) 
+../index_table/index_split.texi(,104) @printindex cp
+../index_table/index_split.texi(,105) 
+../index_table/index_split.texi(,106) @cindex between printindex node in section 3
+../index_table/index_split.texi(,107) 
+../index_table/index_split.texi(,108) @printindex cp
+../index_table/index_split.texi(,109) 
+../index_table/index_split.texi(,110) @cindex after second printindex node in section 3
+../index_table/index_split.texi(,111) 
+../index_table/index_split.texi(,112) @node node 3 in section 3,,,first
+../index_table/index_split.texi(,113) 
+../index_table/index_split.texi(,114) @cindex node 3 in section 3
+../index_table/index_split.texi(,115) 
+../index_table/index_split.texi(,116) @node second chapter
+../index_table/index_split.texi(,117) @chapter Second chapter
+../index_table/index_split.texi(,118) 
+../index_table/index_split.texi(,119) Second chapter
+../index_table/index_split.texi(,120) 
+../index_table/index_split.texi(,121) @bye

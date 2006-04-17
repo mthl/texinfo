@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.102 2006-04-09 22:50:06 pertusus Exp $
+# $Id: texi2html.init,v 1.103 2006-04-17 23:11:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4171,7 +4171,9 @@ sub t2h_default_heading($)
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
-    return "<h$level class=\"$class\"> $text </h$level>\n";
+    my $align = '';
+    $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
+    return "<h$level class=\"$class\"$align> $text </h$level>\n";
 }
 
 # formatting of raw regions
@@ -4298,6 +4300,7 @@ sub t2h_default_address($$)
 # arguments:
 # target identifier
 # boolean true if in preformatted format
+# FIXME document the remaining 
 sub t2h_default_index_entry_label($$)
 {
     my $identifier = shift;

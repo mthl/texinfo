@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename nodes_test
+@setfilename nodes_test.info
 
 Garbage
 

@@ -1,6 +1,8 @@
 simplest.texi(,2) 
-simplest.texi(,3) @setfilename simplest
+simplest.texi(,3) @setfilename simplest.info
 simplest.texi(,4) 
 simplest.texi(,5) @node Top
 simplest.texi(,6) 
 simplest.texi(,7) This is a very simple texi manual.
+simplest.texi(,8) 
+simplest.texi(,9) @bye

@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.4 2004-02-10 00:12:42 pertusus Exp $
+# $Id: MySimple.pm,v 1.5 2006-04-17 23:11:09 pertusus Exp $
 
 # use strict;
 # no strict 'refs';
@@ -112,6 +112,7 @@ sub getOptions
 
 	for (keys(%{$self -> {'default'} }) )
 	{
+	  next unless (ref(${$self -> {'default'} }{$_}) eq 'HASH');
 	  my $type = ${$self -> {'default'} }{$_}{'type'};
 	  push(@{$self -> {'type'} }, "$_$type");
 	  $self->{'opt'}->{$_} =  ${$self -> {'default'} }{$_}{'linkage'}
@@ -164,7 +165,7 @@ sub helpOptions
                  $val = ${$self->{'default'} }{$_}{'linkage'};
                 if ($val)
                 {
-                  if (ref($val) eq 'SCALAR')
+                  if ((ref($val) eq 'SCALAR') and (defined($$val)))
 		  {
 		    $val = $$val; 
 		  }
@@ -173,9 +174,13 @@ sub helpOptions
 		    $val = '';
 		  }
                 }
-		else
+		elsif (defined(${$self->{'default'} }{$_}{'default'}))
 		{
 		  $val = ${$self->{'default'} }{$_}{'default'};
+		}
+		else
+		{
+		  $val = '';
 		}
 	        $line .= "$val  ";
 		$line .= ' ' x ($optwidth + $typewidth + $defaultwidth + 1 - length($line));

@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.164 2006-04-10 14:43:32 pertusus Exp $
+# $Id: texi2html.pl,v 1.165 2006-04-17 23:11:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1092,8 +1092,10 @@ $sec2level{'appendixsection'} = 2;
 # sec2level{'majorheading'} is also 1 and not 0
 $sec2level{'majorheading'} = 1;
 $sec2level{'chapheading'} = 1;
-# FIXME this one could be centered...
 $sec2level{'centerchap'} = 1;
+
+# sction to level hash not taking into account raise and lower sections
+my %reference_sec2level = %sec2level;
 
 # regions treated especially. The text for these regions is collected in the
 # corresponding array 
@@ -2380,6 +2382,10 @@ $T2H_OPTIONS -> {'help'} =
  verbose => "print help and exit"
 };
 
+# this avoids getOptions defining twice 'help' and 'version'.
+$T2H_OBSOLETE_OPTIONS -> {'help'} = 0;
+$T2H_OBSOLETE_OPTIONS -> {'version'} = 0;
+
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
 eval {Getopt::Long::Configure("pass_through");};
@@ -2389,8 +2395,6 @@ my $Configure_failed = $@ && <<EOT;
            'texi2html --help 2' for a complete list) or upgrade to perl
            version 5.005 or higher.
 EOT
-# FIXME getOptions is called 2 times, and thus adds 2 times the default 
-# help and version and after that warns.
 if (! $options->getOptions($T2H_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
 {
     print STDERR "$Configure_failed" if $Configure_failed;
@@ -3256,6 +3260,10 @@ my $element_before_anything =
     'texi' => 'VIRTUAL ELEMENT BEFORE ANYTHING',
 };
 
+# This is a place for index entries, anchors and so on appearing in 
+# copying or documentdescription
+my $region_place = [];
+
 sub initialise_state_structure($)
 {
     my $state = shift;
@@ -3266,7 +3274,11 @@ sub initialise_state_structure($)
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'sectionning_base'} = 0;         # current base sectionning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
-    delete ($state->{'region_lines'}) unless (defined($state->{'region_lines'}));
+    if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
+    {
+        delete ($state->{'region_lines'});
+        print STDERR "Bug: state->{'region_lines'} exists but undef.\n";
+    }
 }
 
 my @doc_lines = ();         # whole document
@@ -3352,6 +3364,7 @@ $tag eq 'float')
                     if (exists($state->{'region_lines'}))
                     {
                         push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines ($text);
+                        close_region($state); 
                     }
                     else
                     {
@@ -3624,7 +3637,18 @@ $tag eq 'float')
     if (@stack)
     {# close stack at the end of pass structure
         close_stack_texi_structure(\$text, \@stack, $state, $line_nr);
-        push @doc_lines, split_lines ($text) if ($text and (!exists($state->{'region_lines'})));
+        if ($text)
+        {
+            if (exists($state->{'region_lines'}))
+            {
+                push @{$region_lines{$state->{'region_lines'}->{'format'}}}, 
+                   split_lines ($text);
+            }
+            else
+            {
+                push @doc_lines, split_lines ($text);
+            }
+        }
     }
     echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
@@ -3751,8 +3775,9 @@ sub misc_command_structure($$$$)
             }
         }
         else
-        {# FIXME makeinfo don't warn and even accepts index with empty name
-         # and index with numbers only
+        {# makeinfo don't warn and even accepts index with empty name
+         # and index with numbers only. I reported it on the mailing list
+         # this should be fixed in future makeinfo versions.
             echo_error ("Bad $macro line: $line", $line_nr);
         }
     }
@@ -3768,7 +3793,8 @@ sub misc_command_structure($$$$)
         }
     }
     elsif ($macro eq 'kbdinputstyle')
-    {# FIXME makeinfo ignores that with --html
+    {# makeinfo ignores that with --html. I reported it and it should be 
+     # fixed in future makeinfo releases
         if ($line =~ /\s+([a-z]+)/)
         {
             if ($1 eq 'code')
@@ -3987,21 +4013,21 @@ sub misc_command_text($$$$$$)
 }
 
 # merge the things appearing before the first @node or sectionning command
-# (held by element_before_anything) with the current element if not allready 
-# done 
+# (held by element_before_anything) with the current element 
+# FIXME do that only if not allready done? (uncomment)
 sub merge_element_before_anything($)
 {
     my $element = shift;
-    if (exists($element_before_anything->{'place'}))
+#    if (exists($element_before_anything->{'place'}))
+#    {
+    $element->{'current_place'} = $element_before_anything->{'place'};
+    $element->{'titlefont'} = $element_before_anything->{'titlefont'};
+    delete $element_before_anything->{'place'};
+    foreach my $placed_thing (@{$element->{'current_place'}})
     {
-        $element->{'current_place'} = $element_before_anything->{'place'};
-        $element->{'titlefont'} = $element_before_anything->{'titlefont'};
-        delete $element_before_anything->{'place'};
-        foreach my $placed_thing (@{$element->{'current_place'}})
-        {
-            $placed_thing->{'element'} = $element if (exists($placed_thing->{'element'}));
-        }
+        $placed_thing->{'element'} = $element if (exists($placed_thing->{'element'}));
     }
+#    }
 }
 
 # find menu_prev, menu_up... for a node in menu
@@ -4099,7 +4125,14 @@ sub rearrange_elements()
         # This is for top
         $section->{'toc_level'} = $MIN_LEVEL if ($section->{'level'} < $MIN_LEVEL);
         # find the new tag corresponding with the level of the section
-        $section->{'tag_level'} = $level2sec{$section->{'tag'}}->[$section->{'level'}] if ($section->{'tag'} !~ /heading/);
+        if ($section->{'tag'} !~ /heading/ and ($level ne $reference_sec2level{$section->{'tag'}}))
+        {
+             $section->{'tag_level'} = $level2sec{$section->{'tag'}}->[$section->{'level'}];
+        }
+        else
+        {
+             $section->{'tag_level'} = $section->{'tag'};
+        }
         $toplevel = $section->{'level'} if (($section->{'level'} < $toplevel) and ($section->{'level'} > 0 and ($section->{'tag'} !~ /heading/)));
         print STDERR "# section level $level: $section->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     }
@@ -4907,7 +4940,7 @@ sub rearrange_elements()
                     ############################## begin debug section
                     my $back_texi = 'NO_BACK';
                     $back_texi = $back->{'texi'} if (defined($back));
-                    print STDERR "# New index first page (back `$back_texi', current `$current_element->{'texi'}')\n" if ($T2H_DEBUG & $DEBUG_INDEX);
+                    print STDERR "# Index first page (back `$back_texi', in  `$current_element->{'texi'}')\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                     ############################## end debug section
                     push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page, 'name' => $index->{'name'} } ];
                     if (@pages)
@@ -5301,6 +5334,15 @@ sub rearrange_elements()
         $place->{'file'} = $footnote_element->{'file'};
         $place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
     }
+    # correct the id and file for the things placed in regions (copying...)
+    foreach my $place(@$region_place)
+    {
+#print STDERR "entry $place->{'entry'} texi $place->{'texi'}\n";
+        $place->{'file'} = $element_top->{'file'};
+        $place->{'id'} = $element_top->{'id'} unless defined($place->{'id'});
+        $place->{'element'} =  $element_top if (exists($place->{'element'}));
+    }
+
     ########################### debug prints
     foreach my $file (keys(%files))
     {
@@ -5441,7 +5483,9 @@ sub add_file($)
     {
          $files{$file} = { 
            #'type' => 'section', 
-           'counter' => 1
+           'counter' => 1,
+           'relative_foot_num' => 1,
+           'foot_lines' => []
          };
     }
 }
@@ -5538,10 +5582,8 @@ sub do_names()
 #                                                                              #
 #---############################################################################
 
-# FIXME what to do with index entries appearing in @copying 
-# @documentdescription and @titlepage
 # called during pass_structure
-sub enter_index_entry($$$$$$)
+sub enter_index_entry($$$$$$$)
 {
     my $prefix = shift;
     my $line_nr = shift;
@@ -5549,10 +5591,11 @@ sub enter_index_entry($$$$$$)
     my $place = shift;
     my $element = shift;
     my $use_section_id = shift;
+    my $command = shift;
     unless (exists ($index_properties->{$prefix}))
     {
         echo_error ("Undefined index command: ${prefix}index", $line_nr);
-        return 0;
+        $key = '';
     }
     if (!exists($element->{'tag'}) and !$element->{'footnote'})
     {
@@ -5563,25 +5606,40 @@ sub enter_index_entry($$$$$$)
     my $entry = $key;
     # The $key is mostly usefull for alphabetical sorting
     $key = remove_texi($key);
-    return if ($key =~ /^\s*$/);
+    my $id = '';
+    # don't add a specific index target if after a section or the index
+    # entry is in @copying or the like
+    unless ($use_section_id or ($place eq $region_place))
+    {
+        $id = 'IDX' . ++$idx_num;
+    }
+    my $index_entry = {
+           'entry'    => $entry,
+           'element'  => $element,
+           'prefix'   => $prefix,
+           'label'    => $id,
+           'command'  => $command
+    };
+            
+    print STDERR "# enter \@$command ${prefix}index '$key' with id $id ($index_entry)\n"
+        if ($T2H_DEBUG & $DEBUG_INDEX);
+    if ($key =~ /^\s*$/)
+    {
+        echo_warn("Empty index entry for \@$command",$line_nr);
+        # don't add the index entry to the list of index entries used for index
+        # entry formatting,if the index entry appears in a region like copying 
+        push @index_labels, $index_entry unless ($place eq $region_place);
+        return;
+    }
     while (exists $index->{$prefix}->{$key})
     {
         $key .= ' ';
     }
-    my $id = '';
-    unless ($use_section_id)
-    {
-        $id = 'IDX' . ++$idx_num;
-    }
-    $index->{$prefix}->{$key}->{'entry'} = $entry;
-    $index->{$prefix}->{$key}->{'element'} = $element;
-    $index->{$prefix}->{$key}->{'label'} = $id;
-    $index->{$prefix}->{$key}->{'prefix'} = $prefix;
-    push @$place, $index->{$prefix}->{$key};
-    print STDERR "# enter ${prefix}index '$key' with id $id ($index->{$prefix}->{$key})\n"
-        if ($T2H_DEBUG & $DEBUG_INDEX);
-    push @index_labels, $index->{$prefix}->{$key};
-    return $index->{$prefix}->{$key};
+    $index->{$prefix}->{$key} = $index_entry;
+    push @$place, $index_entry;
+    # don't add the index entry to the list of index entries used for index
+    # entry formatting,if the index entry appears in a region like copying 
+    push @index_labels, $index_entry unless ($place eq $region_place);
 }
 
 # returns prefix of @?index command associated with 2 letters prefix name
@@ -6118,17 +6176,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     my $old = 'NO_OLD';
                     $old = $element->{'texi'} if (defined($element));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-# FIXME this could be done differently now that there could be elements
-# associated with the same file. 
-# indeed a footnote may not appear at the footer of the page
-# in case we go out and in the file
-                    if ($element and ($new_element->{'file'} ne $element->{'file'}) and scalar(@foot_lines) and !$Texi2HTML::Config::SEPARATED_FOOTNOTES)
-                    { # note that this can only happen if $Texi2HTML::Config::SPLIT
-                        &$Texi2HTML::Config::foot_section (\@foot_lines);
-                        push @section_lines, @foot_lines;
-                        @foot_lines = ();
-                        $relative_foot_num = 0;
-                    }
                     # print the element that just finished
                     $Texi2HTML::THIS_SECTION = \@section_lines;
                     $Texi2HTML::THIS_HEADER = \@head_lines;
@@ -6299,14 +6346,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     }
     print STDERR "\n" if ($T2H_VERBOSE);
  
-    # do the footnotes for the latest element
-    if (scalar(@foot_lines) and !$Texi2HTML::Config::SEPARATED_FOOTNOTES
-        and $Texi2HTML::Config::SPLIT)
-    { 
-        &$Texi2HTML::Config::foot_section (\@foot_lines);
-        push @section_lines, @foot_lines;
-        @foot_lines = ();
-    }
     $Texi2HTML::THIS_SECTION = \@section_lines;
     # if no sections, then simply print document as is
     if ($one_section)
@@ -6443,6 +6482,34 @@ sub finish_element($$$$)
     my $new_element = shift;
     my $first_section = shift;
 #print STDERR "FINISH_ELEMENT($FH)($element->{'texi'})[$element->{'file'}] counter $files{$element->{'file'}}->{'counter'}\n";
+
+    # handle foot notes
+    if ($Texi2HTML::Config::SPLIT and scalar(@foot_lines) 
+        and !$Texi2HTML::Config::SEPARATED_FOOTNOTES
+        and  (! $new_element or
+        ($element and ($new_element->{'file'} ne $element->{'file'})))
+       )
+    {
+        if ($files{$element->{'file'}}->{'counter'})
+        {# there are other elements in that page we are not on its foot
+            $files{$element->{'file'}}->{'relative_foot_num'} 
+               = $relative_foot_num;
+            push @{$files{$element->{'file'}}->{'foot_lines'}},
+                @foot_lines;
+        }
+        else
+        {# we output the footnotes as we are at the file end
+             unshift @foot_lines, @{$files{$element->{'file'}}->{'foot_lines'}};
+             &$Texi2HTML::Config::foot_section (\@foot_lines);
+             push @{$Texi2HTML::THIS_SECTION}, @foot_lines;
+        }
+        if ($new_element)
+        {
+            $relative_foot_num = 
+               $files{$new_element->{'file'}}->{'relative_foot_num'};
+        }
+        @foot_lines = ();
+    }
     if ($element->{'top'})
     {
         my $top_file = $docu_top_file;
@@ -7136,7 +7203,9 @@ sub do_insertcopying($)
 {
     my $state = shift;
     return '' unless @{$region_lines{'copying'}};
-    return substitute_text(duplicate_state($state), @{$region_lines{'copying'}});
+    my $insert_copying_state = duplicate_state($state);
+    $insert_copying_state->{'multiple_pass'} = 1;
+    return substitute_text($insert_copying_state, @{$region_lines{'copying'}});
 }
 
 sub get_deff_index($$$)
@@ -7145,7 +7214,7 @@ sub get_deff_index($$$)
     my $line = shift;
     my $line_nr = shift;
    
-    $tag =~ s/x$// if $tag =~ /x$/;
+    $tag =~ s/x$//;
     my ($style, $category, $name, $type, $class, $arguments);
     ($style, $category, $name, $type, $class, $arguments) = parse_def($tag, $line, $line_nr); 
     # FIXME -- --- ''... should be protected for name and maybe class
@@ -7156,9 +7225,11 @@ sub get_deff_index($$$)
 
 sub parse_def($$$)
 {
-    my $tag = shift;
+    my $command = shift;
     my $line = shift;
     my $line_nr = shift;
+
+    my $tag = $command;
 
     if (!ref ($Texi2HTML::Config::def_map{$tag}))
     {
@@ -7168,7 +7239,7 @@ sub parse_def($$$)
         $tag = $1;
         $line = $substituted . $line;
     }
-#print STDERR "PARSE_DEF $line";
+#print STDERR "PARSE_DEF($command,$tag) $line";
     my ($category, $name, $type, $class, $arguments);
     my @args = @{$Texi2HTML::Config::def_map{$tag}};
     my $style = shift @args;
@@ -7605,7 +7676,7 @@ sub do_menu_link($$;$)
             $element = $element->{'reference_element'};
         }
     
-        #print STDERR "SUBHREF in menu for $element->{'texi'}\n";
+        #print STDERR "SUBHREF in menu for `$element->{'texi'}'\n";
         $href = href($element, $file);
         if (! $element->{'node'})
         {
@@ -7761,7 +7832,7 @@ sub do_xref($$$$)
                 # won't be the file name
                 $file = $element->{'file'} unless ($Texi2HTML::Config::SPLIT);
             }
-	    #print STDERR "SUBHREF in ref `$node_texi': $_";
+	    #print STDERR "SUBHREF in ref to node `$node_texi': $_";
             my $href = href($element, $file);
             my $section = $args[2];
             $section = $args[1] if ($section eq '');
@@ -8282,7 +8353,7 @@ sub do_index_entries($$$)
                    $origin_href .= '#' . $entry->{'id'} ;
                }
            }
-	   #print STDERR "SUBHREF in index for $entry_element->{'texi'}\n";
+	   #print STDERR "SUBHREF in index entry `$entry->{'entry'}' for `$entry_element->{'texi'}'\n";
            $entries .= &$Texi2HTML::Config::index_entry ($origin_href, 
                      substitute_line($entry->{'entry'}),
                      href($entry_element, $element->{'file'}),
@@ -8336,8 +8407,8 @@ sub enter_table_index_entry($$$$)
          my $item = pop @$stack;
          my $element = $state->{'element'};
          $element = $state->{'node_ref'} unless ($element);
-         #print STDERR "enter_table_index_entry $item->{'text'}";
-         enter_index_entry($index, $line_nr, $item->{'text'}, $state->{'place'}, $element, 0);
+         enter_index_entry($index, $line_nr, $item->{'text'}, 
+            $state->{'place'}, $element, 0, $state->{'table_stack'}->[-1]);
          add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
 }
@@ -9170,15 +9241,8 @@ sub scan_structure($$$$;$)
                          if ( $end_tag ne $state->{'region_lines'}->{'format'});
                      $state->{'region_lines'}->{'number'}--;
                      if ($state->{'region_lines'}->{'number'} == 0)
-                     { # restore $state->{'after_element'} and delete the
-                       # structure
-                         $state->{'after_element'} = 1;
-                         delete $state->{'after_element'} unless 
-                             ($state->{'region_lines'}->{'after_element'});
-                         delete $state->{'region_lines'}->{'number'};
-                         delete $state->{'region_lines'}->{'format'};
-                         delete $state->{'region_lines'}->{'after_element'};
-                         delete $state->{'region_lines'};
+                     { 
+                         close_region($state);
                      }
 		     #dump_stack($text, $stack, $state); 
                 }
@@ -9233,26 +9297,12 @@ sub scan_structure($$$$;$)
             if ($macro =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'))
             {
                 my $index_prefix = $1;
-                if (/^\s+(.*)/)
-                {
-                    my $key = $1;
-                    $_ = substitute_texi_line($_);
-                    my $index_entry = enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'});
-                    if ($index_entry)
-                    {
-                        add_prev ($text, $stack, "\@$macro" .  $_);
-                        last;
-                    }
-                    elsif (!defined($index_entry))
-                    {
-                        echo_warn ("Bad index entry: $_", $line_nr);
-                    }
-                }
-                else
-                {
-                     echo_warn ("empty index entry", $line_nr);
-                }
-                return;
+                my $key = $_;
+                $key =~ s/^\s*//;
+                $_ = substitute_texi_line($_);
+                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro);
+                add_prev ($text, $stack, "\@$macro" .  $_);
+                last;
             }
             elsif (defined($text_macros{$macro}))
             {
@@ -9281,6 +9331,8 @@ sub scan_structure($$$$;$)
                          $state->{'region_lines'}->{'format'} = $macro;
                          $state->{'region_lines'}->{'number'} = 1;
                          $state->{'region_lines'}->{'after_element'} = 1 if ($state->{'after_element'});
+                         $state->{'region_lines'}->{'kept_place'} = $state->{'place'};
+                         $state->{'place'} = $region_place;
                     }
                     else
                     {
@@ -9308,7 +9360,12 @@ sub scan_structure($$$$;$)
             {
                 #We must enter the index entries
                 my ($prefix, $entry) = get_deff_index($macro, $_, $line_nr);
-                enter_index_entry($prefix, $line_nr, $entry, $state->{'place'}, $state->{'element'}, 0) if ($prefix and defined($entry));
+                # use deffn instead of deffnx for @-command record 
+                # associated with index entry
+                my $idx_macro = $macro;
+                $idx_macro =~ s/x$//;
+                enter_index_entry($prefix, $line_nr, $entry, $state->{'place'},
+                   $state->{'element'}, 0, $idx_macro) if ($prefix);
                 s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
             }
@@ -9976,8 +10033,9 @@ sub scan_line($$$$;$)
                 {
                     $macro = ',';
                 }
-                # FIXME currently if remove_texi and anchor/ref/footnote
+                # currently if remove_texi and anchor/ref/footnote
                 # the text within the command is ignored
+                # see t2h_remove_command in texi2html.init
                 push (@$stack, { 'style' => $macro, 'text' => '', 'arg_nr' => 0 });
                 $state->{'no_paragraph'}++ if ($no_paragraph_macro{$macro});
                 open_arg($macro, 0, $state);
@@ -10121,7 +10179,7 @@ sub scan_line($$$$;$)
             # handle the other macros, in the context of some normal text
             if (($macro =~ /^(\w+?)index$/) and ($1 ne 'print'))
             {
-                add_prev($text, $stack, do_index_entry_label($state,$line_nr));
+                add_prev($text, $stack, do_index_entry_label($macro,$state,$line_nr));
                 return;
             }
             if ($macro eq 'insertcopying')
@@ -10520,7 +10578,8 @@ sub scan_line($$$$;$)
                     {
                         if ($state->{'deff_line'})
                         {
-#print STDERR "DO DEFF $state->{'deff'}->{'command'} $state->{'deff'}->{'arguments'}\n";
+#print STDERR "DO DEFF $state->{'deff_line'}->{'command'} $state->{'deff_line'}->{'arguments'}\n";
+                             my $command = $state->{'deff_line'}->{'command'};
                              my $def_style = $state->{'deff_line'}->{'style'};
                              my $category = $state->{'deff_line'}->{'category'};
                              my $class = $state->{'deff_line'}->{'class'};
@@ -10531,7 +10590,7 @@ sub scan_line($$$$;$)
                              $arguments = substitute_line($state->{'deff_line'}->{'arguments'}) if (defined($state->{'deff_line'}->{'arguments'}));
 
                              $category = &$Texi2HTML::Config::definition_category($category, $class, $def_style);
-                             my $index_label = do_index_entry_label($state,$line_nr) if ($name ne '');
+                             my $index_label = do_index_entry_label($command, $state,$line_nr);
                              add_prev($text, $stack, &$Texi2HTML::Config::def_line($category, $name, $type, $arguments, $index_label));
                         }
                         else
@@ -10732,7 +10791,7 @@ sub add_term($$$$;$)
     my $index_label;
     if ($format->{'format'} =~ /^(f|v)/)
     {
-        $index_label = do_index_entry_label($state,$line_nr);
+        $index_label = do_index_entry_label($format->{'format'}, $state,$line_nr);
         print STDERR "Bug: no index entry for $text" unless defined($index_label);
     }
     add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $command_formatted));
@@ -11223,8 +11282,6 @@ sub close_stack_texi_structure($$$$)
          add_prev($text, $stack, $stack_text);
     }
     $stack = [ ];
-    $stack_level = 0;
-    #return ($text, [ ], $state);
 
     $state->{'close_stack'} = 1;
     if ($string ne '')
@@ -11243,6 +11300,21 @@ sub close_stack_texi_structure($$$$)
     delete $state->{'close_stack'};
 }
 
+# close region like @insertcopying, titlepage...
+# restore $state->{'after_element'} and delete the structure
+sub close_region($)
+{
+    my $state = shift;
+    $state->{'after_element'} = 1;
+    delete $state->{'after_element'} unless 
+          ($state->{'region_lines'}->{'after_element'});
+    $state->{'place'} = $state->{'region_lines'}->{'kept_place'};
+    delete $state->{'region_lines'}->{'number'};
+    delete $state->{'region_lines'}->{'format'};
+    delete $state->{'region_lines'}->{'after_element'};
+    delete $state->{'region_lines'}->{'kept_place'};
+    delete $state->{'region_lines'};
+}
 
 # close the stack, closing macros and formats left open.
 # the precise behavior of the function depends on $close_paragraph:
@@ -11609,6 +11681,7 @@ sub substitute_text($@)
 sub substitute_texi_line($)
 {
     my $text = shift;  
+    return $text if $text =~ /^\s*$/;
     my @text = substitute_text({'structure' => 1}, $text);
     my @result = ();
     while (@text)
@@ -11644,21 +11717,26 @@ sub print_lines($;$)
     return $cnt;
 }
 
-sub do_index_entry_label($$)
+sub do_index_entry_label($$$)
 {
+    my $command = shift;
     my $state = shift;
     my $line_nr = shift;
-    my $entry = shift @index_labels;
     return '' if ($state->{'multiple_pass'});
+    my $entry = shift @index_labels;
     if (!defined($entry))
     {
         echo_warn ("Not enough index entries !", $line_nr);
         return '';
     }
+    if ($command ne $entry->{'command'})
+    {
+        print STDERR "Bug: waiting for index cmd $entry->{'command'} (in list), got $command\n";
+    }
     
-    print STDERR "[(index) $entry->{'entry'} $entry->{'label'}]\n"
+    print STDERR "[(index $command) $entry->{'entry'} $entry->{'label'}]\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), $index_properties->{$entry->{'prefix'}}->{'name'}); 
+    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), $index_properties->{$entry->{'prefix'}}->{'name'},$command); 
 }
 
 # decompose a decimal number on a given base. The algorithm looks like
@@ -11841,6 +11919,8 @@ foreach my $handler(@Texi2HTML::Config::command_handler_process)
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
 
 pass_text();
+print STDERR "BUG: " . scalar(@index_labels) . " index entries pending\n" 
+   if (scalar(@index_labels));
 foreach my $special (keys(%special_commands))
 {
     my $count = $special_commands{$special}->{'count'};

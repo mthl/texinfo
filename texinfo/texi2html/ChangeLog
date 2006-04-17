@@ -1,3 +1,21 @@
+2006-04-17  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: hanldle rightly centerchap.
+	Footnote really appear at the foot of the file when there are
+	different nodes in one file.
+	* texi2html.pl, MySimple.pm: avoid Getopt::Long warning when
+	trying obsolete options.
+	* texi2html.pl: handle more sanely some special @-commands
+	(@anchor, @*index) in @copying and similar regions, by associating
+	them with top element and ignoring them during expansions that
+	are done more than once.
+	Set titlefont if @titlefont appears before any sectionning command.
+	Collect the @-command associated with index entries.
+	Collect all the index entries even the wrong ones, during 
+	pass_structure, but don't add the wrong ones to the per index hash.
+	* Tests/*: test @centerchap.
+	Better tests for not separated footnotes.
+
 2006-04-10  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use nodes for refs with USE_NODES.

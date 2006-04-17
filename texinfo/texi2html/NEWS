@@ -48,7 +48,8 @@ This file records noteworthy changes.
 * The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
   and $OUT_ENCODING.
 
-* Use entities for ``, '', --- and -- if $USE_ISO is set. 
+* Use entities for ``, '', ---, -- and quotes used for some formatting
+  @-commands if $USE_ISO is set. 
 
 * BUG FIXES
   ---------
@@ -68,7 +69,7 @@ This file records noteworthy changes.
 
 * handle nested ifset/ifclear.
 
-* Improved handling of @sc.
+* Improved handling of @sc and @centerchap.
 
 * More flexible normal_text.
 

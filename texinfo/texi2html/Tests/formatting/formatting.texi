@@ -539,7 +539,7 @@ Menu comment
 @subsubsection subsubsection
 
 @node chapter2
-@chapter chapter 2
+@centerchap chapter 2
 
 @printindex cp
 @printindex fn

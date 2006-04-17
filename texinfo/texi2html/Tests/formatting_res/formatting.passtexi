@@ -1429,7 +1429,7 @@ formatting.texi(,538) @node subsubsection
 formatting.texi(,539) @subsubsection subsubsection
 formatting.texi(,540) 
 formatting.texi(,541) @node chapter2
-formatting.texi(,542) @chapter chapter 2
+formatting.texi(,542) @centerchap chapter 2
 formatting.texi(,543) 
 formatting.texi(,544) @printindex cp
 formatting.texi(,545) @printindex fn
