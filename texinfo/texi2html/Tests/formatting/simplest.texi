@@ -4,6 +4,6 @@
 
 @node Top
 
-This is a very simple texi manual.
+This is a very simple texi manual @  <>.
 
 @bye

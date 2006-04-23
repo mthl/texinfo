@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.103 2006-04-17 23:11:09 pertusus Exp $
+# $Id: texi2html.init,v 1.104 2006-04-23 20:47:27 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3133,9 +3133,10 @@ $row               = \&t2h_default_row;
 $cell              = \&t2h_default_cell;
 $list_item         = \&t2h_default_list_item;
 $comment           = \&t2h_default_comment;
-$def_line	       = \&t2h_default_def_line;
+$def_line          = \&t2h_default_def_line;
 $def_line_no_texi  = \&t2h_default_def_line_no_texi;
 $raw               = \&t2h_default_raw;
+$raw_no_texi       = \&t2h_default_raw_no_texi;
 $heading           = \&t2h_default_heading;
 $paragraph         = \&t2h_default_paragraph;
 $preformatted      = \&t2h_default_preformatted;
@@ -4052,10 +4053,7 @@ sub t2h_default_table_list($$$$$$)
 sub t2h_default_comment($)
 {
     my $text = shift;
-    while ($text =~ /-->/) # --> ends an html comment !
-    { 
-        $text =~ s/-->/->/go;
-    }
+    $text =~ s/--+/-/go;
     return '<!-- ' . $text . ' -->' . "\n";
 }
 
@@ -4177,7 +4175,7 @@ sub t2h_default_heading($)
 }
 
 # formatting of raw regions
-# ih L2H is true another mechanism is used for tex
+# if L2H is true another mechanism is used for tex
 sub t2h_default_raw($$)
 {
     my $style = shift;
@@ -4195,6 +4193,14 @@ sub t2h_default_raw($$)
         warn "$WARN (bug) unknown style $style\n";
         return &$protect_text($text);
     }
+}
+
+# raw environment when removing texi (in comments) 
+sub t2h_default_raw_no_texi($$)
+{
+    my $style = shift;
+    my $text = shift;
+    return $text;
 }
 
 # This function formats a footnote reference and the footnote text associated

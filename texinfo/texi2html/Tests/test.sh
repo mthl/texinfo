@@ -220,6 +220,7 @@ test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated
 test_texi floats float.texi
 #test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
 test_texi floats float_with_at_commands.texi
+test_texi floats float_copying.texi "-split chapter -output ."
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes -prefix exotic_formatting -output ." 0 texi exotic_formatting
@@ -259,7 +260,10 @@ test_texi formatting tex_not_closed.texi "-l2h -expand tex " 2
 test_texi formatting html_not_closed.texi "" 1
 test_texi formatting verbatim_not_closed.texi "" 1
 test_texi formatting copying_not_closed.texi "" 1
+test_texi formatting node_in_copying.texi "" 1
+test_texi formatting tex_in_copying.texi "-l2h -expand tex"
 test_texi formatting titlepage_not_closed.texi "" 1
+test_texi formatting footnote_not_closed.texi "" 1
 test_texi formatting nested_ignore.texi
 test_texi formatting test_refs.texi 
 test_texi formatting test_refs.texi "-prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs

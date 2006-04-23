@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename footnote_not_closed.info
+
+@node Top
+@top Top section
+
+texte@footnote{We have a footnote.
+
+This is an important footnote.
+
+@menu
+* chapter::           the chapter
+@end menu
+
+@node chapter
+@chapter Chapter
+
+In chapter
+
+@bye

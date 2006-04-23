@@ -396,8 +396,9 @@ sub do_tex($$$$)
 {
     my $style = shift;
     my $counter = shift;
+    my $state = shift;
     my $count = $global_count{"${style}_$counter"}; 
-    # begin debug section (incorrect counts)
+    ################################## begin debug section (incorrect counts)
     if (!defined($count))
     {
          # counter is undefined
@@ -416,7 +417,7 @@ sub do_tex($$$$)
                 if ($debug);
          return '';
     }
-    # end debug section (incorrect counts)
+    ################################## end debug section (incorrect counts)
 
     # this seems to be a valid counter
     my $result = '';
@@ -424,7 +425,17 @@ sub do_tex($$$$)
     if (defined($l2h_from_html[$count]))
     {
          $html_output_count++;
-         $result .= $l2h_from_html[$count];
+         # maybe we could also have something if simple_format
+         # with Texi2HTML::Config::protect_text, once simple_format
+         # may happen for anything else than lines
+         if ($state->{'remove_texi'})
+         {# don't protect anything
+             $result .= $l2h_to_latex[$count];
+         }
+         else
+         { 
+             $result .= $l2h_from_html[$count];
+         }
     } 
     else
     {

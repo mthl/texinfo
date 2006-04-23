@@ -1,3 +1,13 @@
+2006-04-23  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, T2h_l2h.pm: handle @tex,
+	@verbatim and @verbatiminclude in @copying comments (with 
+	'remove_texi').
+	Handle @float and @need at the right place.
+	* texi2html.init: More cleanings of -- in html comments.
+	* Tests/*: add test for @tex and @float in @copying, for
+	@node in @copying.
+
 2006-04-17  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: hanldle rightly centerchap.

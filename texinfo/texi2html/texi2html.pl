@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.165 2006-04-17 23:11:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.166 2006-04-23 20:47:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -376,6 +376,7 @@ $comment
 $def_line
 $def_line_no_texi
 $raw
+$raw_no_texi
 $heading
 $paragraph
 $preformatted
@@ -1251,7 +1252,7 @@ my %text_macros = (
      'direntry' => 0,
      'verbatim' => 'raw', 
      'ifclear' => 'value', 
-     'ifset' => 'value' 
+     'ifset' => 'value' ,
      );
     
 foreach my $key (keys(%text_macros))
@@ -3354,12 +3355,11 @@ sub pass_structure()
             #
             # analyze the tag
             #
-            if ($tag and $tag eq 'node' or defined($sec2level{$tag}) or $tag eq 'printindex' or $tag eq 'float')
+            if ($tag and $tag eq 'node' or defined($sec2level{$tag}) or $tag eq 'printindex')
             {
                 $_ = substitute_texi_line($_); 
-                if (@stack and $tag eq 'node' or defined($sec2level{$tag}) or
-$tag eq 'float')
-                {# in pass structure node and float shouldn't appear in formats
+                if ($tag eq 'node' or defined($sec2level{$tag}))
+                {# in pass structure node shouldn't appear in formats
                     close_stack_texi_structure(\$text, \@stack, $state, $line_nr);
                     if (exists($state->{'region_lines'}))
                     {
@@ -3543,49 +3543,6 @@ $tag eq 'float')
                             $state->{'element'} = $section_ref;
                             push @{$state->{'place'}}, $section_ref;
                             $sections{$sec_num} = $section_ref;
-                        }
-                    }
-                }
-                elsif ($tag eq 'float')
-                { 
-                    my ($style_texi, $label_texi) = split(/,/, $_);
-                    $style_texi =~ s/^\@float\s*//;
-                    $style_texi = normalise_space($style_texi);
-                    $label_texi = undef if (defined($label_texi) and ($label_texi =~ /^\s*$/));
-                    if (defined($label_texi))
-                    { # The float may be a target for refs if it has a label
-                        $label_texi = normalise_node($label_texi);
-                        if (exists($nodes{$label_texi}) and defined($nodes{$label_texi})
-                             and $nodes{$label_texi}->{'seen'})
-                        {
-                            echo_error ("Duplicate label found: $label_texi", $line_nr);
-                            while ($_ =~ /,/)
-                            {
-                                $_ =~ s/,.*$//;
-                            }
-                        }
-                        else
-                        {
-                            my $float = { };
-                            if (exists($nodes{$label_texi}) and defined($nodes{$label_texi}))
-                            { # float appeared in a menu
-                                $float = $nodes{$label_texi};
-                            }
-                            else
-                            {
-                                $nodes{$label_texi} = $float;
-                            }
-                            $float->{'float'} = 1;
-                            $float->{'tag'} = 'float';
-                            $float->{'texi'} = $label_texi;
-                            $float->{'seen'} = 1;
-                            $float->{'id'} = $label_texi;
-#print STDERR "FLOAT: $float $float->{'texi'}, place $state->{'place'}\n";
-                            push @{$state->{'place'}}, $float;
-                            $float->{'element'} = $state->{'element'};
-                            $state->{'float'} = $float;
-                            $float->{'style_texi'} = $style_texi;
-                            push @floats, $float;
                         }
                     }
                 }
@@ -3918,6 +3875,14 @@ sub misc_command_structure($$$$)
         $arg =~ s/^\s+//;
         $Texi2HTML::THISDOC{$macro} = $arg;
     }
+    elsif ($macro eq 'need')
+    {
+        unless (($line =~ /^\s+([0-9]+(\.[0-9]*)?)[^\w\-]/) or 
+                 ($line =~ /^\s+(\.[0-9]+)[^\w\-]/))
+        {
+            echo_warn ("Bad \@$macro", $line_nr);
+        }
+    }
 
     ($text, $line, $args) = preserve_command($line, $macro);
     return ($text, $line);
@@ -3959,7 +3924,10 @@ sub misc_command_text($$$$$$)
             echo_error ("\@$macro needs a numeric arg or no arg", $line_nr);
         }
         $sp_number = 1 if ($sp_number eq '');
-        add_prev($text, $stack, &$Texi2HTML::Config::sp($sp_number, $state->{'preformatted'}));
+        if (!$state->{'remove_texi'})
+        {
+            add_prev($text, $stack, &$Texi2HTML::Config::sp($sp_number, $state->{'preformatted'}));
+        }
     }
     elsif($macro eq 'verbatiminclude' and !$keep)
     {
@@ -3980,7 +3948,15 @@ sub misc_command_text($$$$$$)
                     {
                         $verb_text .= $line;
                     }
-                    add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatim',$verb_text));
+                    
+                    if ($state->{'remove_texi'})
+                    {
+                        add_prev ($text, $stack, &$Texi2HTML::Config::raw_no_texi('verbatim', $verb_text));
+                    }
+                    else
+                    { 
+                        add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatim', $verb_text));
+                    }
                     close VERBINCLUDE;
                 }
             }
@@ -3992,14 +3968,6 @@ sub misc_command_text($$$$$$)
         else
         {
             echo_error ("Bad \@$macro line: $_", $line_nr);
-        }
-    }
-    elsif ($macro eq 'need')
-    {
-        unless (($line =~ /^\s+([0-9]+(\.[0-9]*)?)[^\w\-]/) or 
-                 ($line =~ /^\s+(\.[0-9]+)[^\w\-]/))
-        {
-            echo_warn ("Bad \@$macro", $line_nr);
         }
     }
     elsif ($macro eq 'indent' or $macro eq 'noindent')
@@ -7466,7 +7434,7 @@ sub end_format($$$$$)
     {
         if (!defined($state->{'float'}))
         {
-             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format ", $line_nr);
         }
         else
         {
@@ -7501,7 +7469,7 @@ sub end_format($$$$$)
 	#dump_stack($text, $stack, $state); 
         if ($format_ref->{'format'} ne $format)
         {
-             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format  ", $line_nr);
         }
         if ($Texi2HTML::Config::format_map{$format})
         { # table or list has a simple format
@@ -7542,7 +7510,7 @@ sub end_format($$$$$)
     {
         if ($format_ref->{'format'} ne $format)
         { # FIXME hasn't that case been handled before ?
-             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format   ", $line_nr);
         }
         add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}));
     }
@@ -8124,7 +8092,8 @@ sub duplicate_state($)
            'code_style' => $state->{'code_style'}, 
            'keep_texi' => $state->{'keep_texi'}, 
            'keep_nr' => $state->{'keep_nr'}, 
-           'preformatted_stack' => $state->{'preformatted_stack'} 
+           'preformatted_stack' => $state->{'preformatted_stack'},
+           'multiple_pass' => $state->{'multiple_pass'}
     };
     return $new_state;
 }
@@ -9131,7 +9100,7 @@ sub scan_structure($$$$;$)
     while(1)
     {
         # scan structure
-	#print STDERR "WHILE\n";
+	#print STDERR "WHILE (s):$_";
 	#dump_stack($text, $stack, $state);
 
         # as texinfo 4.5
@@ -9229,6 +9198,7 @@ sub scan_structure($$$$;$)
         {
             add_prev($text, $stack, $1);
             my $end_tag = $2;
+            #print STDERR "END STRUCTURE $end_tag\n";
             $state->{'detailmenu'}-- if ($end_tag eq 'detailmenu' and $state->{'detailmenu'});
             if (defined($state->{'text_macro_stack'}) 
                and @{$state->{'text_macro_stack'}} 
@@ -9355,6 +9325,50 @@ sub scan_structure($$$$;$)
                 next if $macro_kept;
                 #dump_stack ($text, $stack, $state);
                 return if (/^\s*$/);
+            }
+            elsif ($macro eq 'float')
+            { 
+                my ($style_texi, $label_texi) = split(/,/, $_);
+                $style_texi = normalise_space($style_texi);
+                $label_texi = undef if (defined($label_texi) and ($label_texi =~ /^\s*$/));
+                if (defined($label_texi))
+                { # The float may be a target for refs if it has a label
+                    $label_texi = normalise_node($label_texi);
+                    if (exists($nodes{$label_texi}) and defined($nodes{$label_texi})
+                         and $nodes{$label_texi}->{'seen'})
+                    {
+                        echo_error ("Duplicate label found: $label_texi", $line_nr);
+                        while ($_ =~ /,/)
+                        {
+                            $_ =~ s/,.*$//;
+                        }
+                    }
+                    else
+                    {
+                        my $float = { };
+                        if (exists($nodes{$label_texi}) and defined($nodes{$label_texi}))
+                        { # float appeared in a menu
+                            $float = $nodes{$label_texi};
+                        }
+                        else
+                        {
+                            $nodes{$label_texi} = $float;
+                        }
+                        $float->{'float'} = 1;
+                        $float->{'tag'} = 'float';
+                        $float->{'texi'} = $label_texi;
+                        $float->{'seen'} = 1;
+                        $float->{'id'} = $label_texi;
+#print STDERR "FLOAT: $float $float->{'texi'}, place $state->{'place'}\n";
+                        push @{$state->{'place'}}, $float;
+                        $float->{'element'} = $state->{'element'};
+                        $state->{'float'} = $float;
+                        $float->{'style_texi'} = $style_texi;
+                        push @floats, $float;
+                    }
+                }
+                add_prev($text, $stack, "\@$macro" . $_);
+                last;
             }
             elsif (defined($Texi2HTML::Config::def_map{$macro}))
             {
@@ -9694,13 +9708,13 @@ sub scan_line($$$$;$)
                 my $style = pop @$stack;
                 if ($style->{'text'} !~ /^\s*$/)
                 {
-                    if ($state->{'remove_texi'})
-                    {
-                        add_prev ($text, $stack, $style->{'text'});
-                    }
-                    elsif ($state->{'keep_texi'})
+                    if ($state->{'keep_texi'})
                     {
                         add_prev ($text, $stack, $style->{'text'} . "\@end $state->{'raw'}");
+                    }
+                    elsif ($state->{'remove_texi'})
+                    {
+                        add_prev ($text, $stack, &$Texi2HTML::Config::raw_no_texi($style->{'style'}, $style->{'text'}));
                     }
                     else
                     { 
@@ -9940,18 +9954,12 @@ sub scan_line($$$$;$)
                 # @item we don't want to keep @c or @comment as otherwise it 
                 # eats the @item line. Other commands could do that too but 
                 # then the user deserves what he gets.
-                if (
-                       ($state->{'keep_texi'} and 
+                if ($state->{'keep_texi'} and 
                            (!$state->{'check_item'} or ($macro ne 'c' and $macro ne 'comment'))) 
-                     or $state->{'remove_texi'}
-                   )
                 {
                     my ($line, $args);
                     ($_, $line, $args) = preserve_command($_, $macro);
-                    if ($state->{'keep_texi'})
-                    {
-                        add_prev($text, $stack, "\@$macro". $line);
-                    }
+                    add_prev($text, $stack, "\@$macro". $line);
                     next;
                 }
 
@@ -11206,6 +11214,7 @@ sub close_stack_texi_structure($$$$)
 
     return undef unless (@$stack or $state->{'raw'} or $state->{'macro'} or $state->{'macro_name'} or $state->{'ignored'});
 
+    #print STDERR "close_stack_texi_structure\n";
     #dump_stack ($text, $stack, $state);
     my $stack_level = $#$stack + 1;
     my $string = '';
@@ -11576,6 +11585,14 @@ sub dump_stack($$$)
         }
         print STDERR "\n";
     }
+    if (defined($state->{'region_lines'}))
+    {
+        print STDERR "region_lines($state->{'region_lines'}->{'number'}): $state->{'region_lines'}->{'format'}\n";
+    }
+    if (defined($state->{'text_macro_stack'}) and @{$state->{'text_macro_stack'}})
+    {
+        print STDERR "text_macro_stack: (@{$state->{'text_macro_stack'}})\n";
+    }
 }
 
 # for debugging 
@@ -11682,6 +11699,7 @@ sub substitute_texi_line($)
 {
     my $text = shift;  
     return $text if $text =~ /^\s*$/;
+    #print STDERR "substitute_texi_line $text\n";
     my @text = substitute_text({'structure' => 1}, $text);
     my @result = ();
     while (@text)
@@ -11890,6 +11908,13 @@ foreach my $style (keys(%special_commands))
 
 rearrange_elements();
 do_names();
+
+#Texi2HTML::LaTeX2HTML::latex2html();
+foreach my $handler(@Texi2HTML::Config::command_handler_process)
+{
+    &$handler;
+}
+
 if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENT_DESCRIPTION)))
 {
     my $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
@@ -11910,11 +11935,6 @@ if (@{$region_lines{'copying'}})
 &$Texi2HTML::Config::toc_body(\@elements_list);
 $sec_num = 0;
 
-#Texi2HTML::LaTeX2HTML::latex2html();
-foreach my $handler(@Texi2HTML::Config::command_handler_process)
-{
-    &$handler;
-}
 
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
 

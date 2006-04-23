@@ -1,0 +1,41 @@
+float_copying.texi(,2) 
+float_copying.texi(,3) @setfilename float_copying.info
+float_copying.texi(,4) 
+float_copying.texi(,18) 
+float_copying.texi(,19) @node Top
+float_copying.texi(,20) @top Top
+float_copying.texi(,21) 
+float_copying.texi(,22) @cindex Top
+float_copying.texi(,23) 
+float_copying.texi(,24) See the caption @ref{public domain anchor}.
+float_copying.texi(,25) 
+float_copying.texi(,26) See the float @ref{public domain}.
+float_copying.texi(,27) 
+float_copying.texi(,28) @insertcopying
+float_copying.texi(,29) 
+float_copying.texi(,30) @menu
+float_copying.texi(,31) * Copying and floats::
+float_copying.texi(,32) @end menu
+float_copying.texi(,33) 
+float_copying.texi(,34) @node Copying and floats
+float_copying.texi(,35) @appendix Copying and floats
+float_copying.texi(,36) 
+float_copying.texi(,37) In the appendix, we print the references and the copying once more
+float_copying.texi(,38) and the list of coyright notices (listoffloats).
+float_copying.texi(,39) 
+float_copying.texi(,40) See the caption @ref{public domain anchor}.
+float_copying.texi(,41) 
+float_copying.texi(,42) See the float @ref{public domain}.
+float_copying.texi(,43) 
+float_copying.texi(,44) @cindex listofloats
+float_copying.texi(,45) 
+float_copying.texi(,46) @insertcopying
+float_copying.texi(,47) @insertcopying
+float_copying.texi(,48) 
+float_copying.texi(,49) @subheading listoffloats
+float_copying.texi(,50) @listoffloats Copyright notice
+float_copying.texi(,51) 
+float_copying.texi(,52) @subheading printindex
+float_copying.texi(,53) @printindex cp
+float_copying.texi(,54) 
+float_copying.texi(,55) @bye

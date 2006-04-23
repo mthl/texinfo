@@ -13,7 +13,7 @@ regenerate:
 	-for dir in ${SUBDIR_TESTS}; do \
 	[ -d $${dir}_res ] && cp $$dir/*.passfirst $$dir/*.html $$dir/*.htm $$dir/*.2 $$dir/*.passtexi $${dir}_res;\
 	done
-	-rm -f formatting_res/*_l2h.html formatting_res/tex.2
+	-rm -f formatting_res/*_l2h.html formatting_res/tex.2 formatting_res/tex_in_copying.2
 	-rm -f singular_res/*_l2h.html singular_res/sing.2
 
 clean-local:
