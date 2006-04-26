@@ -1,3 +1,9 @@
+2006-04-26  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (TXI_XLATE): add txi-ru.tex and txi-uk.tex,
+	from Sergey Poznyakoff.
+	* doc/txi-ru.tex, doc/txi-uk.tex: new files.
+
 2006-04-13  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/insertion.c (end_insertion): kill_self_indent(-1) to
