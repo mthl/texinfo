@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.160 2006-04-11 17:22:54 karl Exp $
+@c $Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -794,13 +794,7 @@ better to include too much than to leave out something important.
 Patches are most welcome; if possible, please make them with
 @samp{@w{diff -c}} (@pxref{Top,, Overview, diff, Comparing and Merging
 Files}) and include @file{ChangeLog} entries (@pxref{Change Log,,,
-emacs, The GNU Emacs Manual}).
-
-When sending patches, if possible please do not encode or split them in
-any way; it's much easier to deal with one plain text message, however
-large, than many small ones.  @uref{ftp://ftp.gnu.org/gnu/sharutils/,
-GNU shar} is a convenient way of packaging multiple and/or binary files
-for email.
+emacs, The GNU Emacs Manual}), and follow the existing coding style.
 
 
 @node Using Texinfo
@@ -18607,7 +18601,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.160 2006-04-11 17:22:54 karl Exp $
+$Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18673,7 +18667,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.160 2006-04-11 17:22:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
