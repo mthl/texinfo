@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.63 2006-02-14 01:05:59 karl Exp $
+   $Id: cmds.c,v 1.64 2006-05-05 16:31:37 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
@@ -42,6 +42,7 @@
 /* Simple commands defined and only called here. */
 static void cm_exampleindent (void),
      cm_firstparagraphindent (void),
+     cm_fonttextsize (void),
      cm_frenchspacing (void),
      cm_novalidate (void),
      cm_paragraphindent (void);
@@ -202,6 +203,7 @@ COMMAND command_table[] = {
   { "float", cm_float, NO_BRACE_ARGS },
   { "flushleft", cm_flushleft, NO_BRACE_ARGS },
   { "flushright", cm_flushright, NO_BRACE_ARGS },
+  { "fonttextsize", cm_fonttextsize, NO_BRACE_ARGS },
   { "footnote", cm_footnote, NO_BRACE_ARGS}, /* self-arg eater */
   { "footnotestyle", cm_footnotestyle, NO_BRACE_ARGS },
   { "format", cm_format, NO_BRACE_ARGS },
@@ -1901,6 +1903,7 @@ cm_punct (int arg)
     }
 }
 
+
 /* If @frenchspacing is in effect, avoid outputting extra spaces after
    sentence-ending periods.  Actually, we explicitly do this only in one
    tiny case (see add_char in makeinfo.c).  Usually we just output
@@ -1923,5 +1926,19 @@ cm_frenchspacing (void)
     xml_insert_element_with_attribute (FRENCHSPACING, START,
                                        "val=\"%s\"", val);
     xml_insert_element (FRENCHSPACING, END);
+  }
+}
+
+
+/* Body font size.  This is only for TeX, so we're just checking
+   validity here.  Don't think we should even pass it on to XML.  */
+void
+cm_fonttextsize (void)
+{
+  char *val;
+  get_rest_of_line (1, &val);
+
+  if (! (STREQ (val, "10") || STREQ (val, "off"))) {
+    line_error (_("Only @%s 10 or 11 is supported, not `%s'"), command, val);
   }
 }

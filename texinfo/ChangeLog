@@ -1,3 +1,12 @@
+2006-05-05  Karl Berry  <karl@gnu.org>
+
+	* texinfo.tex (\definetextfonsizexi, \definetextfonsizex): new cmds.
+	(\fonttextsize): new user-level command @fonttextsize to change
+	text font size.  (To be used for the next Emacs edition.)
+	* makeinfo/cmds.c (cm_fonttextsize): new fn.
+	(command_table): include it.
+	* NEWS, doc/texinfo.txi (Fonts): document it.
+
 2006-05-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Reporting Bugs): wording to match hello.

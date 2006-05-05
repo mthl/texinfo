@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
+@c $Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7664,7 +7664,34 @@ We recommend using regular mixed case wherever possible.
 @subsection Fonts for Printing, Not Info
 @cindex Fonts for printing, not Info
 
-Texinfo provides a number of font commands that specify font changes
+@findex fonttextsize
+@cindex Font size, reducing
+@cindex Reducing font size
+@cindex Smaller fonts
+Texinfo provides one command to change the size of the main body font
+in the @TeX{} output for a document: @code{@@fonttextsize}.  It has no
+effect at all in other output.  It takes a single argument on the
+remainder of the line, which must be either @samp{10} or @samp{11}.
+For example:
+
+@example
+@@fonttextsize 10
+@end example
+
+@cindex Printing cost, reducing
+The effect is to reduce the body font to a 10@dmn{pt} size (the
+default is 11@dmn{pt}).  Fonts for other elements, such as sections
+and chapters, are reduced accordingly.  This should only be used in
+conjunction with @code{@@smallbook} (@pxref{smallbook,,Printing
+``Small'' Books}) or similar, since 10@dmn{pt} fonts on standard paper
+(8.5x11 or A4) are too small.  One reason to use this command is to
+save pages, and hence printing cost, for physical books.
+
+Texinfo does not at present have commands to switch the font family
+to use, or more general size-changing commands.
+
+@cindex Styles, font
+Texinfo also provides a number of font commands that specify font changes
 in the printed manual and (where possible) in the HTML output, but
 have no effect in the Info file.  All the commands apply to an
 argument that follows, surrounded by braces.
@@ -7708,8 +7735,8 @@ selects the @t{fixed-width}, typewriter-style font used by @code{@@code};
 @end table
 
 (The commands with longer names were invented much later than the
-others, when it did not seem desirable to use very short names for
-such an infrequently needed feature.)
+others, at which time it did not seem desirable to use very short
+names for such an infrequently needed feature.)
 
 @cindex <lineannotation> Docbook tag
 Only the @code{@@r} command has much use: in example-like
@@ -7736,7 +7763,7 @@ produces
 @end lisp
 
 In general, you should avoid using the other font commands.  Some of
-them are only useful when documenting functionality with specific font
+them are only useful when documenting functionality of specific font
 effects, such as in @TeX{} and related packages.
 
 
@@ -18601,7 +18628,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
+$Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18667,7 +18694,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.161 2006-05-04 13:07:31 karl Exp $
+@comment $Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
