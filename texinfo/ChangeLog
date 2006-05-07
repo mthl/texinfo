@@ -1,3 +1,8 @@
+2006-05-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dopdfimage): width and height args might have
+	whitespace.  Report from Bob Chassell.
+
 2006-05-05  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\definetextfonsizexi, \definetextfonsizex): new cmds.
