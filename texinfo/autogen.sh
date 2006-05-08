@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.11 2004-04-12 19:07:41 karl Exp $
+# $Id: autogen.sh,v 1.1 2006-05-08 23:16:24 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -9,7 +9,7 @@ else
   chicken=
 fi
 
-echo "Bootstrapping CVS Texinfo with:"
+echo "Preparing CVS Texinfo infrastructure:"
 
 # This overwrites lots of files with older versions.
 # I keep the newest versions of files common between distributions up to
