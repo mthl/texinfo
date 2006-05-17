@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.104 2006-04-23 20:47:27 pertusus Exp $
+# $Id: texi2html.init,v 1.105 2006-05-17 01:51:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1322,7 +1322,7 @@ EOT
 # 'file': the file containing the element, usefull to do href to that file
 #         in case the document is split.
 # 'text': text of the element, with section number
-# 'name': text of the element, without section number
+# 'text_nonumber': text of the element, without section number
 
 # Relevant configuration variables are:
 # $NUMBER_SECTIONS
@@ -2051,11 +2051,12 @@ my %old_style_map = (
       'cite',       {'attribute' => 'cite'},
       'code',       {'args' => ['code'], 'attribute' => 'code'},
       'command',    {'args' => ['code'], 'attribute' => 'code'},
-      'ctrl',       {'function' => \&t2h_default_ctrl}, 
+      'ctrl',       {'function' => \&t2h_default_ctrl,'type' => 'simple_type'}, 
       'dfn',        {'attribute' => 'em'}, 
       'dmn',        {},   
       'email',      {'args' => ['code', 'normal'], 
-                       'function' => \&t2h_default_email}, 
+                       'function' => \&t2h_default_email,
+                       'type' => 'simple_type'}, 
       #'email',      {'args' => ['normal', 'normal'], 
       #                 'function' => \&t2h_default_email}, 
       'emph',       {'attribute' => 'em'}, 
@@ -2075,17 +2076,34 @@ my %old_style_map = (
       'strong',     {'attribute' => 'strong'},
       't',          {'attribute' => 'tt'},
       'uref',       {'function' => \&t2h_default_uref, 
-                      'args' => ['code', 'normal', 'normal']},
+                      'args' => ['code', 'normal', 'normal'],
+                      'type' => 'simple_type' },
       #'uref',       {'function' => \&t2h_default_uref, 
       #                'args' => ['normal', 'normal', 'normal']},
       'url',        {'function' => \&t2h_default_uref, 
-                      'args' => ['code', 'normal', 'normal']},
-      'indicateurl', {'args' => ['code'], 'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
+                      'args' => ['code', 'normal', 'normal'],
+                      'type' => 'simple_type'},
+      'indicateurl', {'args' => ['code'], 'begin' => '&lt;<code>', 'end' => '</code>&gt;','type' => 'simple_type'},
       'var',        {'attribute' => 'var'},
       'verb',       {'args' => ['code'], 'attribute' => 'tt'},
-      'titlefont',  {'function' => \&t2h_default_titlefont},
-      'w',          {},
+      'titlefont',  {'function' => \&t2h_default_titlefont, 
+            'type' => 'simple_type'},
+      'w',          {'type' => 'simple_type'},
      );
+
+%command_type = ();
+
+foreach my $style (keys(%style_map))
+{
+   if (exists($style_map{$style}->{'type'}))
+   {
+       $command_type{$style} = $style_map{$style}->{'type'};
+   }
+   else
+   {
+       $command_type{$style} = 'style';
+   }
+}
 
 %unicode_diacritical = (
        'H'          => '030B', 
@@ -2727,7 +2745,7 @@ foreach my $command (keys(%style_map))
 }
 
 #$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
-$style_map_pre{'sc'} = '';
+$style_map_pre{'sc'} = {};
 $style_map_pre{'titlefont'} = {};
 
 #$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
@@ -2933,12 +2951,10 @@ foreach my $key (keys(%def_map))
         'summarycontents'=> {}, # no arg
         'detailmenu' => {'skip' => 'whitespace'}, # no arg
         'end detailmenu' => {'skip' => 'space'}, # no arg
-        #'end detailmenu', 1, # no arg
         'bye' => {'skip' => 'line'}, # no arg
         # comments
         'comment' => {'arg' => 'line'},
         'c' => {'arg' => 'line'},
-        #'c'=> {'arg' => 'line', 'keep' => 1},
         # in preamble
         'novalidate' => {}, # no arg
         'dircategory'=> {'skip' => 'line'}, # line. Position with regard 
@@ -3209,9 +3225,12 @@ sub t2h_default_complex_format($$)
     return $beginning . $text . $end;	
 }
 
-sub t2h_default_empty_line($)
+sub t2h_default_empty_line($$)
 {
     my $text = shift;
+    my $state = shift;
+    #ignore the line if it just follows a deff
+    return '' if ($state->{'deff_line'});
     return $text;
 }
 
@@ -3244,33 +3263,33 @@ sub t2h_caption_shortcaption($)
     my $style = $float->{'style_texi'};
     if (defined($float->{'nr'}))
     {
-         my $nr = $float->{'nr'};
-         if ($style ne '')
-         {
-              $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
-         }
-         else 
-         {
-              $style = $nr;
-         }
+        my $nr = $float->{'nr'};
+        if ($style ne '')
+        {
+            $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+        }
+        else 
+        {
+            $style = $nr;
+        }
     }
     
     if (defined($float->{'caption_texi'}))
     {
-         @$caption_lines = @{$float->{'caption_texi'}};
-         if (defined($style))
-         {
-              $caption_lines->[0] = '@strong{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
-         }
-         else
-         {
-              $caption_lines->[0] = '@strong{' .  $caption_lines->[0];
-         }
-         push @$caption_lines, "}\n";
+        @$caption_lines = @{$float->{'caption_texi'}};
+        if (defined($style))
+        {
+            $caption_lines->[0] = '@strong{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
+        }
+        else
+        {
+            $caption_lines->[0] = '@strong{' .  $caption_lines->[0];
+        }
+        push @$caption_lines, "}\n";
     }
     elsif (defined($style))
     {
-         $caption_lines->[0] = '@strong{' . $style . '}' . "\n";
+        $caption_lines->[0] = '@strong{' . $style . '}' . "\n";
     }
     if (defined($float->{'shortcaption_texi'}))
     {
@@ -3308,15 +3327,15 @@ sub t2h_default_float($$$$$)
     
     if (defined($float->{'caption_texi'}))
     {
-         $caption_text = $caption;
+        $caption_text = $caption;
     }
     elsif (defined($float->{'shortcaption_texi'}))
     {
-         $caption_text = $shortcaption;
+        $caption_text = $shortcaption;
     }
     elsif (defined($caption))
     {
-         $caption_text = $caption;
+        $caption_text = $caption;
     }
     
     return '<div class="float">' . "$label\n" . $text . '</div>' . $caption_text;
@@ -3529,8 +3548,6 @@ sub t2h_default_definition_category($$$)
     my $name = shift;
     my $class = shift;
     my $style = shift;
-#    print STDERR "definition_category $name, class $class, style $style\n";
-    #return undef if (!defined($name) or $name =~ /^\s*$/);
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
@@ -3628,6 +3645,7 @@ sub t2h_default_menu_link($$$$$$)
     my $node = shift;
     my $name = shift;
     my $ending = shift;
+#print STDERR  "MENU_LINK\n";
     if (($entry eq '') or $NODE_NAME_IN_MENU or $state->{'preformatted'})
     {
         $name .= ':' if ($name ne '');
@@ -3655,6 +3673,7 @@ sub t2h_default_menu_description($$)
     my $text = shift;
     my $state = shift;
     return $text if ($SIMPLE_MENU); 
+#print STDERR  "MENU_DESCRIPTION\n";
     if ($state->{'preformatted'})
     {
         return main::do_preformatted($text, $state) . '</td></tr>';
@@ -3949,21 +3968,48 @@ sub t2h_default_internal_ref($$$$$)
     return '';
 }
 
+sub teletyped_in_stack($)
+{
+    my $stack = shift;
+    foreach my $element(reverse(@$stack))
+    {
+        if ($complex_format_map->{$element})
+        {
+            if (!$complex_format_map->{$element}->{'pre_style'})
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+    return 0;
+}
+
 # text after @item in table, vtable and ftable
-sub t2h_default_table_item($$$$$)
+sub t2h_default_table_item($$$$$$)
 {
     my $text = shift;
     my $index_label = shift;
     my $format = shift;
     my $command = shift;
     my $formatted_command = shift;
+    my $style_stack = shift;
+    #print STDERR "-> $format (@$style_stack)\n";
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
+    if (teletyped_in_stack($style_stack))
+    {
+       $text .= '</tt>';
+       $formatted_command = '<tt>' . $formatted_command;
+    }
     $text .= "\n" . $index_label  if (defined($index_label));
     return '<dt>' . $formatted_command . $text . '</dt>' . "\n";
 }
 
-# format text on the line following @item (in table, vtable and ftable)
+# format text on the line following the @item line (in table, vtable and ftable)
 sub t2h_default_table_line($)
 {
     my $text = shift;
@@ -4057,6 +4103,62 @@ sub t2h_default_comment($)
     return '<!-- ' . $text . ' -->' . "\n";
 }
 
+sub t2h_collect_styles($)
+{
+    my $stack = shift;
+    my @result = ();
+    foreach my $style (reverse(@$stack))
+    {
+#        last unless (defined($command_type{$style}) and $command_type{$style} eq 'style');
+        push @result, $style if (defined($command_type{$style}) and $command_type{$style} eq 'style');
+    }
+    return @result;
+}
+
+sub t2h_get_attribute($;$)
+{
+    my $command = shift;
+    my $map_ref = shift;
+    $map_ref = \%style_map if (!defined($map_ref));
+    return '' unless (defined($map_ref->{$command}));
+    if ((ref($map_ref->{$command}) eq 'HASH') 
+       and exists($map_ref->{$command}->{'attribute'}))
+    {
+        return $map_ref->{$command}->{'attribute'};
+    }
+    elsif ($map_ref->{$command} !~ /^&/)
+    {
+        my $attribute = $map_ref->{$command};
+        $attribute =~ s/^\"//;
+        return $attribute;
+    }
+    return '';
+}
+
+sub t2h_begin_style($$;$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $map_ref = shift;
+    my $attribute = t2h_get_attribute($command,$map_ref);
+    $attribute = "<$attribute>" if ($attribute ne '');
+    return $attribute.$text;
+}
+
+sub t2h_end_style($$;$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $map_ref = shift;
+    my $attribute = t2h_get_attribute($command,$map_ref);
+    if ($attribute =~ /^(\w+)/)
+    {
+        $attribute = $1;
+    }
+    $attribute = "</$attribute>" if ($attribute ne '');
+    return $text.$attribute;
+}
+
 # a paragraph
 # arguments:
 # $text of the paragraph
@@ -4068,7 +4170,7 @@ sub t2h_default_comment($)
 # $paragraph_number is a reference on the number of paragraphs appearing
 #    in the format. The value should be increased if a paragraph is done
 # $format is the format name (@itemize)
-sub t2h_default_paragraph($$$$$$$$$$)
+sub t2h_default_paragraph($$$$$$$$$$$$)
 {
     my $text = shift;
     my $align = shift;
@@ -4080,15 +4182,24 @@ sub t2h_default_paragraph($$$$$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
 #print STDERR "format: $format\n" if (defined($format));
+#print STDERR "paragraph @$command_stack_at_end; @$command_stack_at_begin\n";
     $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
           exists($special_list_commands{$format}->{$paragraph_command}));
-    #my $in_term = shift;
     return '' if ($text =~ /^\s*$/);
+    foreach my $style(t2h_collect_styles($command_stack_at_begin))
+    {
+       $text = t2h_begin_style($style, $text);
+    }
+    foreach my $style(t2h_collect_styles($command_stack_at_end))
+    {
+       $text = t2h_end_style($style, $text);
+    }
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;
-         #return $text . "\n" if (($format eq 'itemize' or $format eq 'enumerate') and
          return $text  if (($format eq 'itemize' or $format eq 'enumerate') and
             ($$paragraph_number == 1));
     }
@@ -4097,7 +4208,7 @@ sub t2h_default_paragraph($$$$$$$$$$)
     {
         $open = "<p align=\"$paragraph_style{$align}\">";
     }
-    return $open. "$text</p>";
+    return $open.$text.'</p>';
 }
 
 # a preformatted region
@@ -4110,7 +4221,7 @@ sub t2h_default_paragraph($$$$$$$$$$)
 # $leading_command_formatted is the leading formatting command formatted
 # $preformatted_number is a reference on the number of preformatteds appearing
 #    in the format. The value should be increased if a preformatted is done
-sub t2h_default_preformatted($$$$$$$$$$)
+sub t2h_default_preformatted($$$$$$$$$$$$)
 {
     my $text = shift;
     my $pre_style = shift;
@@ -4122,7 +4233,10 @@ sub t2h_default_preformatted($$$$$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
 
+#print STDERR "preformatted @$command_stack_at_end; @$command_stack_at_begin\n";
     return '' if ($text eq '');
     $leading_command_formatted = '' if (!defined($leading_command_formatted) or 
           exists($special_list_commands{$format}->{$leading_command}));
@@ -4130,7 +4244,15 @@ sub t2h_default_preformatted($$$$$$$$$$)
     {
         $$preformatted_number++;
     }
-    return "<pre class=\"$class\">$text</pre>";
+    foreach my $style(t2h_collect_styles($command_stack_at_begin))
+    {
+       $text = t2h_begin_style($style, $text, \%style_map_pre);
+    }
+    foreach my $style(t2h_collect_styles($command_stack_at_end))
+    {
+       $text = t2h_end_style($style, $text, \%style_map_pre);
+    }
+    return "<pre class=\"$class\">".$text."</pre>";
 }
 
 # This function formats a heading for an element
@@ -4139,15 +4261,12 @@ sub t2h_default_preformatted($$$$$$$$$$)
 # an element. It is a hash reference for a node or a sectionning command.
 # The interesting keys are:
 # 'text': the heading text
-# 'name': the heading text without section number
+# 'text_nonumber': the heading text without section number
 # 'node': true if it is a node
 # 'level': level of the element. 0 for @top, 1 for chapter, heading, 
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-#
-# relevant configuration variable:
-# $NUMBER_SECTIONS
 sub t2h_default_heading($)
 {
     my $element = shift;
@@ -4158,10 +4277,6 @@ sub t2h_default_heading($)
     }
     $level = 1 if ($level == 0);
     my $text = $element->{'text'};
-    if (!$element->{'node'} and (!$NUMBER_SECTIONS))
-    {
-        $text = $element->{'name'};
-    }
     return '' if ($text !~ /\S/);
     my $class = $element->{'tag_level'};
     $class = 'unnumbered' if ($class eq 'top');
@@ -4336,6 +4451,7 @@ sub t2h_default_def_line($$$$$)
    }
    else
    {
+       chomp ($arguments);
        $arguments = '<i>' . $arguments . '</i>';
    }
    my $type_name = '';
@@ -4467,10 +4583,13 @@ sub t2h_default_acronym_like($$$$$$)
 
 sub t2h_default_quotation_prepend_text($)
 {
-#    my $style = shift;
     my $text = shift;
-    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1}) if (defined($text));
-    return undef;
+    return undef if (!defined($text) or $text =~ /^$/);
+# FIXME if there is a @ protecting the end of line the result is
+# @b{some text @:}
+# It is likely not to be what was intended
+    chomp($text);
+    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
 }
 
 sub t2h_default_quotation($$$)
@@ -4604,6 +4723,7 @@ sub t2h_default_index_summary($$)
 }
 
 # return the heading with number texinfo text
+# also called for nodes.
 sub t2h_default_heading_texi($$$)
 {
     my $tag = shift;
@@ -4611,18 +4731,21 @@ sub t2h_default_heading_texi($$$)
     my $number = shift;
     $texi =~ s/\s*$//;
     $texi =~ s/^\s*//;
-    return "$number $texi" if (defined($number) and ($number !~ /^\s*$/)) ;
+    return "$number $texi" if ($NUMBER_SECTIONS and defined($number) and ($number !~ /^\s*$/)) ;
     return $texi;
 }
 
 # return the heading texinfo text for split index sections
 sub t2h_default_index_element_heading_texi($$$)
 { # FIXME i18n
+    my $heading_texi = shift;
+    my $tag = shift;
     my $texi = shift;
+    my $number = shift;
     my $first_letter = shift;
     my $last_letter = shift;
-    return "$texi: $first_letter -- $last_letter" if ($last_letter ne $first_letter);
-    return "$texi: $first_letter";
+    return "$heading_texi: $first_letter -- $last_letter" if ($last_letter ne $first_letter);
+    return "$heading_texi: $first_letter";
 }
 
 1;

@@ -290,6 +290,15 @@ verbatim_html.texi(,318) the example
 verbatim_html.texi(,319) before end example  @end example 
 verbatim_html.texi(,320) after end example
 verbatim_html.texi(,321) 
-verbatim_html.texi(,322) 
-verbatim_html.texi(,323) @contents
-verbatim_html.texi(,324) @bye
+verbatim_html.texi(,322) Text only after the end
+verbatim_html.texi(,323) 
+verbatim_html.texi(,324) @example
+verbatim_html.texi(,325) Example
+verbatim_html.texi(,326) @end example text following end example.
+verbatim_html.texi(,327) 
+verbatim_html.texi(,328) @deffn category name args
+verbatim_html.texi(,329) Deffn.
+verbatim_html.texi(,330) @end deffn text following end deffn.
+verbatim_html.texi(,331) 
+verbatim_html.texi(,332) @contents
+verbatim_html.texi(,333) @bye

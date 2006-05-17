@@ -319,6 +319,15 @@ the example
 before end example  @end  example 
 after end example
 
+Text only after the end
+
+@example
+Example
+@end example text following end example.
+
+@deffn category name args
+Deffn.
+@end deffn text following end deffn.
 
 @contents
 @bye

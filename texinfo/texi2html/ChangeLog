@@ -1,3 +1,45 @@
+2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: teletype style is set in 
+	table item formatting in texi2html.init, not in the main
+	program.
+	Add the formats to the 'command_stack' ('style_stack' is renamed
+	to 'command_stack').
+	Clean the 'cmd_line' related code.
+	End of lines are removed in formatting function related with
+	'cmd_line', not in the main program.
+	Commands surrounding paragraphs aren't handled in the 
+	main program anymore, but using 2 'command_stack', one at the
+	beginning of the paragraph and one at the end of the paragraph.
+	rename 'name' of element to 'text_nonumber'.
+	call heading_texi even for nodes.
+	give more information to index_element_heading_texi such that
+	it is easier to customize those headings.
+	Handle NUMBER_SECTIONS in heading_texi and not in the main program
+	styles considered to be simple may be customized.
+	indentation cleanups.
+	* texi2html.pl: handle @center like a regular format. Many
+	fixes for @center.
+	rename some hash keys to avoid hash keys name clashes.
+	revert a change in merge_element_before_anything such that it is
+	only done for the first node.
+	more duplicate_stack when giving the state to a formatting
+	function. This has the added benefit that it sets the command_stack
+	at preformatted beginning to the current command_stack, which is right
+	in thoses case (it is done by begin_paragraph in other cases).
+	protect end of lines with @
+	only for deff, and in that case protect it better.
+	remove unneeded spaces added during close_stack.
+	use begin_paragraph_after_command to generalize reopening of paragraph
+	after a commmand, replace automatic_preformatted.
+	Use iso entities in titles (in simple_format).
+	* Tests/formatting/def_cmds.texi: test file only for def stuff 
+	(excerpted from formatting.texi with additional tests).
+	* Tests/formatting/center.texi: test file only for center 
+	(excerpted from verbatim_html.texi with addtional tests).
+	* Tests/formatting/tables.texi: test file with tests for tables.
+	* doc/texi2html.texi: update.
+
 2006-04-23  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, T2h_l2h.pm: handle @tex,

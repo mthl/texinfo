@@ -1,0 +1,148 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def_cmds.info
+@node Top
+@top Test for definition commands
+
+@macro mymacro
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@deffn cate--gory de--ffn_name ar--guments @
+   more args @* even more so
+def--fn
+@end deffn
+
+@deffn fset @var{i} a g
+@deffnx {cmde} truc {}
+@deffnx Command {log trap} {}
+@deffnx Command { log trap1} {}  
+@deffnx Command {log trap2 } {}
+@deffnx cmde @b{id ule} truc
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@deffnx @b{id @samp{i} ule}    
+@deffnx 
+@deffnx aaa
+@deffnx {} {}
+@deffnx{}
+@deffnx{} machin
+@deffnx{} {bidule machin}
+@deffnx{truc} machin
+@deffnx{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@deffnx {truc} followed by a comment
+@c comment
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+Various deff lines
+@deffnx {truc} after a deff item
+@c comment
+text in def item for second def item
+@deffnx {truc} deffnx before end deffn
+@end deffn
+
+@deffn empty deffn
+@end deffn
+
+@deffn empty deffn with deffnx
+@deffnx empty deffnx
+@end deffn
+
+@defvr c--ategory d--efvr_name
+d--efvr
+@end defvr
+
+@deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+@end deftypefn
+
+@deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+@end deftypeop
+
+@deftypevr c--ategory t--ype d--eftypevr_name
+d--eftypevr
+@end deftypevr
+
+@defcv c--ategory c--lass d--efcv_name
+d--efcv
+@end defcv
+
+@defop c--ategory c--lass d--efop_name a--rguments...
+d--efop
+@end defop
+
+@deftp c--ategory d--eftp_name a--ttributes...
+d--eftp
+@end deftp
+
+@defun d--efun_name a--rguments...
+d--efun
+@end defun
+
+@defmac d--efmac_name a--rguments...
+d--efmac
+@end defmac
+
+@defspec d--efspec_name a--rguments...
+d--efspec
+@end defspec
+
+@defvar d--efvar_name
+d--efvar
+@end defvar
+
+@defopt d--efopt_name
+d--efopt
+@end defopt
+
+@deftypefun t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+@end deftypefun
+
+@deftypevar t--ype d--eftypevar_name
+d--eftypevar
+@end deftypevar
+
+@defivar c--lass d--efivar_name
+d--efivar
+@end defivar
+
+@deftypeivar c--lass t--ype d--eftypeivar_name
+d--eftypeivar
+@end deftypeivar
+
+@defmethod c--lass d--efmethod_name a--rguments...
+d--efmethod
+@end defmethod
+
+@deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+@end deftypemethod
+
+@deffn category name args { @
+  more args
+deffn with @{
+@end deffn 
+
+@deffn category name args } @
+  more args
+deffn with @}
+@end deffn 
+
+@end macro
+
+@copying
+@mymacro{}
+@end copying
+
+@mymacro{}
+
+@example
+@mymacro{}
+@end example
+
+@bye

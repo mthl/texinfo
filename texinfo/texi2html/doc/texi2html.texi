@@ -2248,9 +2248,9 @@ function is called with the following arguments:
 The @@-command name
 @item $args
 A reference on an array containing the arguments of the @@-command.
-@item $style_stack
+@item $command_stack
 A reference on an array containing the name of the @@-commands containing 
-the @@-command being formatted.
+the @@-command being formatted, latest on top.
 @item $state
 A reference on a hash containing a lot of informations about the context
 of the @@-command.
@@ -2328,7 +2328,7 @@ Thus @code{elem class="elem"} leads to
 If you don't like this scheme, it is possible to change how those commands
 are processed by redefining the following function reference:
 
-@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $style_stack
+@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $command_stack
 @var{$command} is the @@-command, @var{$style} is the value associated with 
 the @var{$command} in the @code{%style_map}, @code{%style_map_pre} 
 or @code{%style_map_texi} hashes.
@@ -2348,7 +2348,7 @@ is an opaque structure containing the information about the line number of the
 @var{$state}
 is a reference on a hash containing a lot of informations about the context
 of the @@-command.
-@var{$style_stack}
+@var{$command_stack}
 is a reference on an array containing the name of the @@-commands containing 
 the @@-command being formatted.
 
@@ -2423,7 +2423,7 @@ case if it is in @code{@@sc}. This function should also take care
 of protecting special characters
 
 
-@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $style_stack 
+@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $command_stack 
 The function processes @var{$text} and returns @var{$processed_text}. 
 The other arguments give some information about the context of the text.
 @var{$in_raw_text} is true if the text appears in special place where
@@ -2431,7 +2431,7 @@ there is no formatting, typically in comments. @var{$in_preformatted}
 is true if in a preformatted environemnt, and @var{$in_code} is true
 if in a special command like @code{@@code}, @code{@@env} where
 @samp{---}, @samp{--}, @samp{``} and @samp{''} should not be
-touched. @var{$style_stack} is an array containing the name of the 
+touched. @var{$command_stack} is an array containing the name of the 
 formatting @@-command that enclose the text.  
 
 In the default case the @samp{---}, @samp{--}, @samp{``} and @samp{''}
@@ -2454,9 +2454,12 @@ the resulting protected text @var{$protected_text}.
 Empty lines are processed by the following function reference, which could
 be usefull if empty lines are to be removed for example
 
-@deftypefn {Function Reference} $resulting_text empty_line $empty_line
+@deftypefn {Function Reference} $resulting_text empty_line $empty_line $state
 This function processes an @var{$empty_line} and returns the resulting
-text @var{$resulting_text}. Empty lines are left as is by default.
+text @var{$resulting_text}. @var{$state} is a structure that holds informations
+about the state of the parsing.
+Empty lines are left as is by default except right after a definition 
+@@-command.
 @end deftypefn
 
 @c --------------------------------------------------------
@@ -2614,13 +2617,16 @@ The default is to return the text unmodified.
 The formatting of a paragraph region or a preformatted region, is controlled
 by function references:
 
-@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number
+@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin
 This function formats a paragraph. @var{$text} is the text of the paragraph,
 @var{$alignement} is the empty string when no alignement command has
 been seen, otherwise it is the current alignement command name.
 @xref{Alignement commands}.
 @var{$indent} holds @samp{noindent} or @samp{indent} if the corresponding 
 @@-command appeared in the paragraph.
+@var{$command_stack_at_end} and @var{$command_stack_at_begin} are arrays
+containing the opened @@-commands at end and at beginning of the paragraph,
+latest on top.
 
 The remaining arguments are usefull when the paragraph appears within a
 list or table. It is usefull whenever the paragraph has to be formatted
@@ -2643,7 +2649,7 @@ the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 @var{$number} is the number or letter corresponding with this item. 
 @end deftypefn
 
-@deftypefn {Function Reference} $preformatted_text preformatted $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format $item_number $enumerate_style $number
+@deftypefn {Function Reference} $preformatted_text preformatted $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin
 This function formats a preformatted region. @var{$text} is the text of the
 preformatted region, @var{$style} is the css style associated with that
 preformatted region (@pxref{css}). @var{$region_name} is the 
@@ -2653,6 +2659,9 @@ or a identifier for the preformatted context (for example
 @code{menu-comment}, see @ref{Menus}).
 The alignment commands are not taken into account, as the spaces are
 preserved in preformatted regions, you should flush and center by hand.
+@var{$command_stack_at_end} and @var{$command_stack_at_begin} are arrays
+containing the opened @@-commands at end and at beginning of the preformatted
+region, latest on top.
 
 The remaining arguments are usefull when the preformatted region appears 
 within a list or table. It is usefull whenever the preformatted region 
@@ -2802,7 +2811,7 @@ one for the first line located on the @code{@@item} line corresponding
 with the first column, the other for the text appearing on the
 following lines, corresponding with the second column text.
 
-@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $formatted_command
+@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $formatted_command $command_stack
 This function is used to format the text on the @code{@@item} line.
 @var{$text_item} is the text line. In case there is an index entry 
 associated with the @code{@@item} (as with @code{@@ftable} and 
@@ -2812,6 +2821,8 @@ the place where an index entry appears. @xref{Index entry place}.
 @samp{table}, @samp{ftable} or @samp{vtable}. @var{$command} is the formatting command
 given in argument to the table format command, @var{$formatted_command} is 
 this command formatted if it is a leading command, like @code{@@minus}.
+@var{$command_stack} is an array with all the @@-commands opened, latest
+on top.
 @end deftypefn
 
 @deftypefn {Function Reference} $table_line table_line $text
@@ -3005,7 +3016,7 @@ the sectioning element name, with @code{@@raisesections} and
 @end deftypefn
 
 It is also possible to customize the heading text with section number
-with the following function reference:
+with the following function reference (called for headings and nodes):
 @deftypefn {Function Reference} $result_texi heading_texi $heading_command $heading $number
 @var{$heading_command} is the sectioning @@-command of that heading. 
 @var{$heading} is the texinfo for that heading. @var{$number} is the
@@ -3866,12 +3877,24 @@ change was to use the @code{Texi2HTML::Config} names space instead of
 variables prefixed with @samp{T2H_} or  @samp{t2h_}. To cope with
 the change the prefix should be removed from variables in init files.
 Some variables are now in @code{%Texi2HTML::THISDOC}.
-@item API changes between 1.76 and 1.78: paragraph has a new argument
-with indentation information, added as the third argument. normal_text 
+@item API changes between 1.76 and 1.78: 
+@itemize
+@item paragraph has new arguments
+with indentation information, added as the third argument, and
+other context information. The formatting linked with commands
+opened before the paragraph and closed after the paragraph are done
+in the formatting function. Similar
+things are done for preformatted.
+@item normal_text 
 changed completely. There
 are much more arguments to give informations about the context, and
-normal_text now does more text manipulation. New argument for image
-(the alt text).
+normal_text now does more text manipulation. 
+@item New argument for image
+(the alt text). 
+@item New argument for empty_line.
+@item End of line removal is done in formatting function of definition line
+formatting.
+@end itemize
 @item @code{@@ifinfo} regions are not expanded by default. This may lead
 to warnings or errors especially if the Top node is enclosed in 
 @code{@@ifinfo}, as some node won't appear in menus. The quick fix

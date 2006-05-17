@@ -242,9 +242,12 @@ test_texi formatting ../GermanNodeTest/nodetest.texi "-init no_unicode.init -pre
 test_texi formatting testkb.texi
 test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
+test_texi formatting def_cmds.texi
 test_texi formatting imbrications.texi "" 2
 test_texi formatting complex_command_in_simple_command.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
+test_texi formatting center.texi
+test_texi formatting tables.texi
 test_texi formatting tex.texi "-l2h -expand tex" "no"
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
@@ -282,8 +285,6 @@ test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo -output ."
 test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
 test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
-#test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
-test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
-#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing
+#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+#test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags

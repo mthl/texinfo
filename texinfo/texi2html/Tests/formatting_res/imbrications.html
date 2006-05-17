@@ -143,10 +143,10 @@ to follow it
 <p>Table imbricated in code:<br>
 <code>
 in code
-</code> </p><dl compact="compact">
+</code></p><dl compact="compact">
 <dt> <em>line</em></dt>
 <dd><p><code>text
-</code> </p></dd>
+</code></p></dd>
 </dl>
 <p><code></code>
 </p>                           
@@ -159,11 +159,11 @@ in code
 <p>code with table and example within:<br>                                                    
 <code>
 in code
-</code> </p><dl compact="compact">
+</code></p><dl compact="compact">
 <dt> <em>line</em></dt>
 <dd><p><code>in code and table
-</code> </p><table><tr><td>&nbsp;</td><td><pre class="example"><code>  in example
-</code> </pre></td></tr></table>
+</code></p><table><tr><td>&nbsp;</td><td><pre class="example"><code>  in example
+</code></pre></td></tr></table>
 </dd>
 </dl>
 <p><code></code>
@@ -259,10 +259,10 @@ it should be flushed
 </pre></td></tr></table>
 </td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">a table within example
+<p>An example with table, multitable, quotation, enumerate 
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a table within example
 </pre><dl compact="compact">
-<dt>&bull;<tt> item
-</tt></dt>
+<dt><tt>&bull; item</tt></dt>
 <dd><pre class="example">text
 </pre></dd>
 </dl>
@@ -309,7 +309,8 @@ still second
 <pre class="example">
 </pre></td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">deffs
+<p>example with deff-like commands
+</p><table><tr><td>&nbsp;</td><td><pre class="example">deffs
 </pre><dl>
 <dt><u>Function:</u> <b>my def</b><i> args <var>arg</var> &hellip;</i>
 <a name="IDX4"></a></dt>
@@ -328,14 +329,12 @@ still second
 
 A table within the def
 </pre><dl compact="compact">
-<dt><tt> item
-</tt></dt>
+<dt><tt> item</tt></dt>
 <dd><pre class="example">text
 
 more text
 </pre></dd>
-<dt><tt> second item
-</tt></dt>
+<dt><tt> second item</tt></dt>
 </dl>
 <pre class="example">
 explanation
@@ -344,6 +343,24 @@ explanation
 </dd></dl>
 <pre class="example">
 </pre></td></tr></table>
+
+<p>table within display within example
+</p><table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><dl compact="compact">
+<dt> item</dt>
+<dd><pre class="display">Line
+</pre></dd>
+</dl>
+</td></tr></table>
+</td></tr></table>
+
+<p>table within example within display
+</p><table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><dl compact="compact">
+<dt><tt> item</tt></dt>
+<dd><pre class="example">Line
+</pre></dd>
+</dl>
+</td></tr></table>
+</td></tr></table>
 
 <hr size="6">
 <a name="node-menu"></a>
@@ -396,7 +413,7 @@ explanation
 <h1>Footnotes</h1>
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p> in footnote  <code>par1
-</code> </p>                                                                                
+</code></p>                                                                                
 <p><code>par2</code>
 </p><hr size="1">
 <a name="SEC_Contents"></a>

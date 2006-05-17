@@ -290,7 +290,12 @@ text in def item for second def item
 @deffnx {truc} deffnx before end deffn
 @end deffn
 
+@deffn empty deffn
+@end deffn
 
+@deffn empty deffn with deffnx
+@deffnx empty deffnx
+@end deffn
 
 @defvr c--ategory d--efvr_name
 d--efvr
