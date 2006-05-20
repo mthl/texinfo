@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.77 2006-03-13 16:47:33 karl Exp $
+# $Id: texi2dvi,v 1.78 2006-05-20 20:36:30 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.77 $'
+rcs_revision='$Revision: 1.78 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -902,7 +902,7 @@ run_makeinfo ()
          echo '\input texinfo.tex @bye' >txiversion.tex
          # Be sure that if tex wants to fail, it is not interactive:
          # close stdin.
-         tex txiversion.tex </dev/null >txiversion.out 2>txiversion.err
+         $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
       )
       if test $? != 0; then
         cat $version_test_dir/txiversion.out
