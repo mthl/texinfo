@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.78 2006-05-20 20:36:30 karl Exp $
+# $Id: texi2dvi,v 1.79 2006-05-27 19:08:14 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.78 $'
+rcs_revision='$Revision: 1.79 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -164,6 +164,13 @@ recode_from=    # if not empty, recode from this encoding to @documentencoding
 
 orig_pwd=`pwd`
 
+# We have to initialize IFS to space tab newline since we save and
+# restore IFS and apparently POSIX allows stupid/broken behavior with
+# empty-but-set IFS.
+# http://lists.gnu.org/archive/html/automake-patches/2006-05/msg00008.html
+IFS=" 	
+"
+
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
 # directories in TEXINPUTS -- except for Cygwin, where COMSPEC might be
 # inherited, but : is used.
@@ -178,7 +185,6 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 
 # In case someone crazy insists on using grep -E.
 : ${EGREP=egrep}
-
 
 ## --------------------- ##
 ## Auxiliary functions.  ##

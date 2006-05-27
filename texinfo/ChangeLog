@@ -1,3 +1,9 @@
+2006-05-27  Karl Berry  <karl@gnu.org>
+
+	* texi2dvi (IFS): initialize, since otherwise when we save/restore
+	it may end up being set-but-empty, which may disable splitting.
+	From Ralf W.
+
 2006-05-20  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_makeinfo): use $TEX instead of hardwiring
