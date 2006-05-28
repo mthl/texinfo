@@ -1,8 +1,8 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.14 2005-05-15 00:00:07 karl Exp $
+   $Id: system.h,v 1.15 2006-05-28 17:07:49 karl Exp $
 
-   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
-   Free Software Foundation, Inc.
+   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+   2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -213,6 +213,8 @@ extern int strcoll ();
 # ifdef __CYGWIN__
 #  define DEFAULT_TMPDIR	"/tmp/"
 #  define PATH_SEP	":"
+#  undef NULL_DEVICE
+#  define NULL_DEVICE "/dev/null"
 # else  /* O_BINARY && !__CYGWIN__ */
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
