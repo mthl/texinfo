@@ -1,0 +1,20 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename caption_not_closed.info
+
+@node Top
+@top Test caption not closed
+
+@float Text
+No label but caption.
+
+@caption{Not closed caption
+
+The caption trigger a keep_texi, so everything until the end of the file
+is in the caption.
+
+@end float
+
+@listoffloats Text
+
+@bye

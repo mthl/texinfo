@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.105 2006-05-17 01:51:45 pertusus Exp $
+# $Id: texi2html.init,v 1.106 2006-05-29 23:36:10 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -487,6 +487,7 @@ $ICONS = 0;
      'Last',        '',
     );
 
+@IMAGE_EXTENSIONS = ('png','jpg','jpeg','gif');
 
 $init_out    = \&t2h_default_init_out;
 $finish_out    = \&t2h_default_finish_out;
@@ -3158,6 +3159,7 @@ $paragraph         = \&t2h_default_paragraph;
 $preformatted      = \&t2h_default_preformatted;
 $foot_line_and_ref = \&t2h_default_foot_line_and_ref;
 $foot_section      = \&t2h_default_foot_section;
+$image_files       = \&t2h_default_image_files;
 $image             = \&t2h_default_image;
 $address           = \&t2h_default_address;
 $index_entry_label = \&t2h_default_index_entry_label;
@@ -3660,6 +3662,13 @@ sub t2h_default_menu_link($$$$$$)
     return "<tr><td align=\"left\" valign=\"top\">$entry</td><td>&nbsp;&nbsp;</td>";
 }
 
+sub simplify_text($)
+{
+    my $text = shift;
+    $text =~ s/[^\w]//og;
+    return $text;
+}
+
 # formats a menu entry description, ie the text appearing after the node
 # specification in a menu entry an spanning until there is another
 # menu entry, an empty line or some text at the very beginning of the line
@@ -3668,15 +3677,21 @@ sub t2h_default_menu_link($$$$$$)
 # arguments:
 # the description text
 # the state. See menu_entry.
-sub t2h_default_menu_description($$)
+# the heading of the element associated with the node.
+sub t2h_default_menu_description($$$)
 {
     my $text = shift;
     my $state = shift;
+    my $element_text = shift;
     return $text if ($SIMPLE_MENU); 
 #print STDERR  "MENU_DESCRIPTION\n";
     if ($state->{'preformatted'})
     {
         return main::do_preformatted($text, $state) . '</td></tr>';
+    }
+    elsif ($AVOID_MENU_REDUNDANCY)
+    {
+        $text = '' if (simplify_text($element_text) eq simplify_text($text));
     }
     return "<td align=\"left\" valign=\"top\">$text</td></tr>\n";
 }
@@ -4370,6 +4385,20 @@ sub t2h_default_foot_section($)
     return $lines; 
 }
 
+sub t2h_default_image_files($$)
+{
+    my $base = shift;
+    my $extension = shift;
+    my @files = ();
+    return @files if (!defined($base) or ($base eq ''));
+    push @files,"$base.$extension" if (defined($extension) and ($extension ne ''));
+    foreach my $ext (@IMAGE_EXTENSIONS)
+    {
+        push @files, "$base.$ext";
+    }
+    return @files;
+}
+
 # format an image
 #
 # arguments:
@@ -4378,19 +4407,44 @@ sub t2h_default_foot_section($)
 # a boolean true if we are in a preformatted format
 # image file name without path
 # alt text
-sub t2h_default_image($$$$$)
+# width
+# height
+# raw alt
+# extension
+# path to working dir
+# path to file relative from working dir
+sub t2h_default_image($$$$$$$$$$$)
 {
-   my $file = shift;
-   my $base = shift;
-   my $preformatted = shift;
-   my $file_name = shift;
-   my $alt = shift;
-   $alt = &$protect_text($base) if (!defined($alt) or ($alt eq ''));
-   return "[ $alt ]" if ($preformatted);
-   # it is possible that $file_name is more correct as it allows the user
-   # to chose the relative path.
-   $file = &$protect_text($file);
-   return "<img src=\"$file\" alt=\"$alt\">";
+    my $file = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    my $file_name = shift;
+    my $alt = shift;
+    my $width = shift;
+    my $height = shift;
+    my $raw_alt = shift;
+    my $extension = shift;
+    my $working_dir = shift;
+    my $file_path = shift;
+ 
+    if (!defined($file_path) or $file_path eq '')
+    {
+        if (defined($extension) and $extension ne '')
+        {
+            $file = "$base.$extension";
+        }
+        else
+        {
+            $file = "$base.jpg";
+        }
+        main::echo_warn ("no image file for $base, (using $file)");
+    } 
+    $alt = &$protect_text($base) if (!defined($alt) or ($alt eq ''));
+    return "[ $alt ]" if ($preformatted);
+    # it is possible that $file_name is more correct as it allows the user
+    # to chose the relative path.
+    $file = &$protect_text($file);
+    return "<img src=\"$file\" alt=\"$alt\">";
 }
 
 # address put in footer describing when was generated and who did the manual

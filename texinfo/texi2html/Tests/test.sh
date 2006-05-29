@@ -44,7 +44,7 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html ${basename}_???.htm ${basename}_??.htm ${basename}_?.htm ${basename}_????.png ${basename}_???.png ${basename}_??.png ${basename}_?.png ${basename}_l2h.css ${basename}_l2h.html ${basename}_l2h_images.* ${basename}_l2h_labels.pl ${basename}_l2h.tex $basename.passfirst $basename.passtexi $basename.2 l2h_cache.pm) > /dev/null 2>&1
+(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html ${basename}_???.htm ${basename}_??.htm ${basename}_?.htm ${basename}_????.png ${basename}_???.png ${basename}_??.png ${basename}_?.png ${basename}_l2h.css ${basename}_l2h.html ${basename}_l2h_images.* ${basename}_l2h_labels.pl ${basename}_l2h.tex $basename.passfirst $basename.passtexi $basename.2 ${basename}-l2h_cache.pm) > /dev/null 2>&1
 export T2H_HOME=../..
 
 # generate a dump of the first pass
@@ -221,6 +221,7 @@ test_texi floats float.texi
 #test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
 test_texi floats float_with_at_commands.texi
 test_texi floats float_copying.texi "-split chapter -output ."
+test_texi floats caption_not_closed.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes -prefix exotic_formatting -output ." 0 texi exotic_formatting
@@ -253,7 +254,10 @@ test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
 test_texi formatting comments.texi "-init redefine_need.init -prefix comments_redefined" 0 texi  comments_redefined 
 test_texi formatting equivalent_nodes.texi "" 5
+test_texi formatting bad_nesting.texi
 test_texi formatting formats_not_closed.texi "" 12
+test_texi formatting commands_not_closed.texi "" 4
+test_texi formatting math_not_closed.texi "--l2h --iftex" 8
 test_texi formatting not_closed_in_menu.texi "" 7
 test_texi formatting macro_call_not_closed.texi "" 1
 test_texi formatting macro_def_not_closed.texi "" 1

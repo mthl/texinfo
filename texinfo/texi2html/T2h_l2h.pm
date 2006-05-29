@@ -101,7 +101,7 @@ sub init()
     $docu_ext = $Texi2HTML::THISDOC{'extension'};
     $l2h_name =  "${docu_name}_l2h";
     $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
-    $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
+    $l2h_cache_file = "${docu_rdir}${docu_name}-l2h_cache.pm";
     # destination dir -- generated images are put there, should be the same
     # as dir of enclosing html document --
     $l2h_html_file = "$docu_rdir${l2h_name}.html";

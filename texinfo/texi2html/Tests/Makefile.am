@@ -13,7 +13,8 @@ regenerate:
 	-for dir in ${SUBDIR_TESTS}; do \
 	[ -d $${dir}_res ] && cp $$dir/*.passfirst $$dir/*.html $$dir/*.htm $$dir/*.2 $$dir/*.passtexi $${dir}_res;\
 	done
-	-rm -f formatting_res/*_l2h.html formatting_res/tex.2 formatting_res/tex_in_copying.2
+	-rm -f formatting_res/*_l2h.html formatting_res/tex.2 \
+          formatting_res/tex_in_copying.2 formatting_res/math_not_closed.2
 	-rm -f singular_res/*_l2h.html singular_res/sing.2
 
 clean-local:
@@ -25,5 +26,5 @@ clean-local:
 	*_?.png *_??.png *_???.png *_l2h_img?.old *_l2h_img??.old *_l2h_img???.old \
 	*_l2h_img?.png *_l2h_img??.png *_l2h_img???.png \
 	 *_l2h.tex *_l2h.css *_l2h_images.pl *_l2h_images.tex \
-	*_l2h_labels.pl l2h_cache.pm *.out; fi) ; \
+	*_l2h_labels.pl *-l2h_cache.pm l2h_cache.pm *.out; fi) ; \
 	done

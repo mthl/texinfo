@@ -52,4 +52,12 @@ formats_not_closed.texi(,52) @flushright
 formats_not_closed.texi(,53) 
 formats_not_closed.texi(,54) text flushed right
 formats_not_closed.texi(,55) 
-formats_not_closed.texi(,56) @bye
+formats_not_closed.texi(,56) @section a section
+formats_not_closed.texi(,57) 
+formats_not_closed.texi(,58) group not closed
+formats_not_closed.texi(,59) 
+formats_not_closed.texi(,60) @group
+formats_not_closed.texi(,61) 
+formats_not_closed.texi(,62) text in group
+formats_not_closed.texi(,63) 
+formats_not_closed.texi(,64) @bye

@@ -1,5 +1,23 @@
 2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl, texi2html.init: rework image formatting,
+	more is done in the formatting functions.
+	Redundancy between menu entry and menu description is 
+	handled in the formatting functions.
+	* texi2html.pl:
+	Close correctly the @-commands in pass_structure.
+	Remove unneeded error messages for formats not matching when
+	it cannot happen.
+	Use the same element in menu description and menu links.
+	Try to close paragraph when searching for the right format
+	to close.
+	Remove unclosed accent commands from the 'command_stack'.
+	Indentation fixes.
+	* T2h_l2h.pm: use the document name in the perl cache name.
+	* Tests/*: more tests for unclosed @-commands.
+
+2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: teletype style is set in 
 	table item formatting in texi2html.init, not in the main
 	program.

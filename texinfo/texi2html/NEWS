@@ -43,13 +43,19 @@ This file records noteworthy changes.
   file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
   for use in init files.
 
-* The API for image and normal_text and paragraph is changed.
+* The API for image, normal_text and paragraph has changed.
 
 * The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
   and $OUT_ENCODING.
 
 * Use entities for ``, '', ---, -- and quotes used for some formatting
   @-commands if $USE_ISO is set. 
+
+* don't set unset MENU-ENTRY-NAME if it is similar with the NODE-NAME,
+  it is useless as it is a construct that shouldn't happen.
+
+* avoid menu entry and description redundancy in the formatting function
+  and not in the main program.
 
 * BUG FIXES
   ---------

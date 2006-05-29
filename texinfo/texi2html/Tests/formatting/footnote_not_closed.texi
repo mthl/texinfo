@@ -11,11 +11,19 @@ This is an important footnote.
 
 @menu
 * chapter::           the chapter
+* chapter2::           the second chapter
 @end menu
 
 @node chapter
 @chapter Chapter
 
-In chapter
+In chapter@footnote{Another footnote
+
+@quotation
+In a quotation
+
+@node chapter2
+@chapter Chapter2
+
 
 @bye

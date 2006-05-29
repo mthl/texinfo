@@ -2379,12 +2379,32 @@ It should be reasonable to assume that the attributes are for a @code{<a>}
 @acronym{HTML} element. 
 @end deftypefn
 
-The formatting of @code{@@image} is controlled by:
-@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text
+To customize the images produced by @code{@@image}, the first possibility 
+is to modify the @variable{@@IMAGE_EXTENSIONS}, which holds a list of 
+filename extensions for image files. It is also possible to redefine
+the function used to determine the filename of the image:
+
+@deftypefn {Function Reference} $filename image_files $basename $extension
+@var{$basename} is the first @code{@@image} argument, @var{$extension}
+is the corresponding @code{@@image} argument. This function reference 
+should return an array of image filenames without path that the main 
+program should look for.
+@end deftypefn
+
+Last, it is possible to control 
+the formatting of @code{@@image} by redefining:
+@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_path
 @var{$file_path} is the image file name with the path, @var{$basename}  
 the file name without extension. @var{$preformatted} is true if the image 
 appears in preformatted text. @var{$file_name} is the file name without path 
-but with extension. @var{$alt_text} is the alternate text, it may be undefined.
+but with extension. @var{$alt_text} is the alternate text, it may be 
+undefined. @var{$width} and @var{$height} are the corresponding arguments 
+of @code{@@image}, @var{$raw_alt} is the unmodified alt argument of 
+@code{@@image} and @var{$extension} holds the corresponding 
+@code{@@image} argument.
+@var{$working_dir} is the path to working dir relative to the output
+directory. @var{$file_path} is the file name relative to the 
+@var{$working_dir}.
 @end deftypefn
 
 The formatting of @code{@@sp} is controlled by:
@@ -2401,13 +2421,13 @@ The formatting of @code{@@acronym} and @code{@@abbr} is controlled by:
 The other arguments are related with
 the explanation, the second arg of the acronym. @var{$with_explanation} is 
 true if the second argument of the acronym command is present. If an
-explanation exists, coming from previous @code{@@acronym} or as an arg of this
-command, the other args are defined: @var{\@@explanation_lines} is a 
+explanation exists, coming from previous @code{@@acronym} or as an arg of 
+this command, the other args are defined: @var{\@@explanation_lines} is a 
 reference on an array containing the simply fomatted explanation lines, 
 @var{$explanation_text} is the explanation text formatted,
-@var{$explanation_simply_formatted} is the explanation with a light formatting,
-unabling in @acronym{HTML} (or @acronym{XML}) the explanation to be in an 
-attribute.
+@var{$explanation_simply_formatted} is the explanation with a light 
+formatting, unabling in @acronym{HTML} (or @acronym{XML}) the explanation 
+to be in an attribute.
 @end deftypefn
 
 @c --------------------------------------------------------
@@ -2600,7 +2620,7 @@ The default is to return the text unmodified.
 
 @c --------------------------------------------------------
 @node Paragraph and preformatted region
-@section Formatting or not a paragraph or a preformatted region
+@section Formatting (or not) a paragraph and a preformatted region
 
 
 @menu
@@ -2960,7 +2980,7 @@ with the definition line is the variables index.
 
 Four functions are used when formatting a definition command:
 
-@table @asis
+@table @strong
 @item category name
 @deftypefn {Function Reference} $category definition_category $category_or_name $class $style
 This function precise a category or an index entry name associating a class 
@@ -3037,7 +3057,7 @@ or @code{@@tex} are formatted according to the following function reference:
 @end deftypefn
 
 If La@TeX{}2HTML is used, @code{@@tex} regions are handled differently,
-from within the main program.
+(@pxref{Bypassing normal formatting}).
 
 The @code{@@cartouche} command formatting is controlled by the
 function reference:
@@ -3171,9 +3191,10 @@ name of the node. @var{$ending} is the text ending the link entry,
 in general @samp{::} followed by some spaces.
 @end deftypefn
 
-@deftypefn {Function Reference} $description menu_description $description_text \%state
+@deftypefn {Function Reference} $description menu_description $description_text \%state $element_text
 @var{$description_text} is the text of the menu description. @var{\%state}
-should be used similarly than for the menu link.
+should be used similarly than for the menu link. @var{$element_text}
+is the heading of the element associated with the node.
 @end deftypefn
 
 @deftypefn {Function Reference} $menu_comment menu_comment $text
@@ -3889,8 +3910,10 @@ things are done for preformatted.
 changed completely. There
 are much more arguments to give informations about the context, and
 normal_text now does more text manipulation. 
-@item New argument for image
-(the alt text). 
+@item New arguments for image the alt text, the height and width, 
+the path to working dir and the path to image file relative 
+to working dir. More image formatting is
+done in the formatting function.
 @item New argument for empty_line.
 @item End of line removal is done in formatting function of definition line
 formatting.

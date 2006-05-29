@@ -1,0 +1,9 @@
+math_not_closed.texi(,2) 
+math_not_closed.texi(,3) @setfilename math_no_closed.info
+math_not_closed.texi(,4) 
+math_not_closed.texi(,5) @node Top
+math_not_closed.texi(,6) 
+math_not_closed.texi(,7) @special_math_1{}
+math_not_closed.texi(,8) @chapter Chapter 
+math_not_closed.texi(,9) 
+math_not_closed.texi(,10) @special_math_2{}

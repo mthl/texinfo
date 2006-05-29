@@ -105,3 +105,5 @@ texi and formatted result.
   test of missing files.
 
 * many FIXME in the code
+
+* test @printindex in diverse contexts
