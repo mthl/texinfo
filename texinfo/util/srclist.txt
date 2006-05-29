@@ -44,9 +44,9 @@ $GNULIBSRC/doc/INSTALL		./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi		doc
 #
 $GNULIBSRC/lib/alloca.c		lib
-$GNULIBSRC/lib/getopt.c		lib
-$GNULIBSRC/lib/getopt_.h	lib
-$GNULIBSRC/lib/getopt1.c	lib
+#$GNULIBSRC/lib/getopt.c		lib
+#$GNULIBSRC/lib/getopt_.h	lib
+#$GNULIBSRC/lib/getopt1.c	lib
 $GNULIBSRC/lib/gettext.h	lib
 $GNULIBSRC/lib/memcpy.c		lib
 $GNULIBSRC/lib/memmove.c	lib
@@ -56,7 +56,7 @@ $GNULIBSRC/lib/strdup.c		lib
 $GNULIBSRC/lib/strerror.c	lib
 $GNULIBSRC/lib/strncasecmp.c	lib
 $GNULIBSRC/lib/tempname.c	lib
-$GNULIBSRC/lib/xalloc.h		lib
+#$GNULIBSRC/lib/xalloc.h		lib
 #
 $GNULIBSRC/m4/codeset.m4	m4
 $GNULIBSRC/m4/gettext.m4	m4
