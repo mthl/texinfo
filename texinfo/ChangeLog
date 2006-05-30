@@ -1,5 +1,14 @@
 2006-05-30  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi (aux_file_p): Rename the second occurrence as...
+	(bibaux_file_p): this.
+	(run_bibtex): Use it.
+	(options processing, $usage): Support --dvi for symmetry and to
+	ease systematic tests.
+	* util/bibtex.test: New.
+
+2006-05-30  Akim Demaille  <akim@epita.fr>
+
 	* util/texi2dvi: Add support for latex to text and info using
 	hevea.
 	Don't document it yet, as it's preliminary and on some regards

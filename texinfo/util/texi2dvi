@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.80 2006-05-30 14:44:04 akim Exp $
+# $Id: texi2dvi,v 1.81 2006-05-30 15:02:33 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.80 $'
+rcs_revision='$Revision: 1.81 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -79,6 +79,7 @@ General options:
 
 TeX tuning:
   -@                         use @input instead of \input for preloaded Texinfo
+      --dvi                  output a DVI file [default]
   -e, -E, --expand           force macro expansion using makeinfo
   -I DIR                     search DIR for Texinfo files
   -l, --language=LANG        specify the LANG of FILE (LaTeX or Texinfo)
@@ -499,7 +500,7 @@ aux_file_p ()
 # ------------------
 # Return with success with FILE is an aux file containing citation
 # requests.
-aux_file_p ()
+bibaux_file_p ()
 {
   test -s "$1" || return 1
   if (grep '^\\bibstyle[{]' "$1"   \
@@ -775,21 +776,11 @@ run_bibtex ()
           || grep 'No file .*\.bbl\.' "$in_noext.log") \
         >&6 2>&1; \
   then
-    generated_files_get "$in_noext" |
-    while read f
+    for f in $(generated_files_get "$in_noext" bibaux_file_p)
     do
-      if test -s "$f" && \
-         (grep '^\\bibstyle[{]' "$f"   \
-          && grep '^\\bibdata[{]' "$f" \
-	  ## The following line is suspicious: fails when there
-          ## are citations in sub aux files.  We need to be
-          ## smarter in this case.
-          ## && grep '^\\citation[{]' "$f"
-	  ) >&6 2>&1; then
-        verbose "Running $bibtex $f ..."
-        $bibtex "$f" >&5 ||
-          fatal 1 "$bibtex exited with bad status, quitting."
-      fi
+      verbose "Running $bibtex $f ..."
+      $bibtex "$f" >&5 ||
+        fatal 1 "$bibtex exited with bad status, quitting."
     done
   fi
 }
@@ -1235,6 +1226,7 @@ while test x"$1" != x"$arg_sep"; do
          --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
+         --dvi)   out_lang=dvi;;
     -e | -E | --expand) expand=t;;
     -h | --help) echo "$usage"; exit 0;;
          --html) out_lang=html;;

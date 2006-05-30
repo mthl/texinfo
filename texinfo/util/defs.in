@@ -122,7 +122,7 @@ cp $srcdir/../doc/texinfo.tex testSubDir || exit 1
 cd ./testSubDir
 
 
-
+# Unset the user's envvars that might change the behavior.
 unset TEXI2DVI_BUILD_MODE
 unset TEXI2DVI_BUILD_DIRECTORY
 
