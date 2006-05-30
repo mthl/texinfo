@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.79 2006-05-27 19:08:14 karl Exp $
+# $Id: texi2dvi,v 1.80 2006-05-30 14:44:04 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.79 $'
+rcs_revision='$Revision: 1.80 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -85,7 +85,7 @@ TeX tuning:
       --no-line-error        do not pass --file-line-error to TeX
   -p, --pdf                  use pdftex or pdflatex for processing
   -r, --recode               call recode before TeX to translate input
-      --recode-from=ENC      recode from ENC to the @documentencoding       
+      --recode-from=ENC      recode from ENC to the @documentencoding
   -t, --command=CMD          insert CMD in copy of input file
    or --texinfo=CMD          multiple values accumulate
       --translate-file=FILE  use given charset translation file for TeX
@@ -168,8 +168,11 @@ orig_pwd=`pwd`
 # restore IFS and apparently POSIX allows stupid/broken behavior with
 # empty-but-set IFS.
 # http://lists.gnu.org/archive/html/automake-patches/2006-05/msg00008.html
-IFS=" 	
-"
+# We need space, tab and new line, in precisely that order.  And don't leave
+# trailing blanks.
+newline='
+'
+IFS=" 	$newline"
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
 # directories in TEXINPUTS -- except for Cygwin, where COMSPEC might be
@@ -185,6 +188,7 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 
 # In case someone crazy insists on using grep -E.
 : ${EGREP=egrep}
+
 
 ## --------------------- ##
 ## Auxiliary functions.  ##
@@ -491,6 +495,26 @@ aux_file_p ()
   esac
 }
 
+# bibaux_file_p FILE
+# ------------------
+# Return with success with FILE is an aux file containing citation
+# requests.
+aux_file_p ()
+{
+  test -s "$1" || return 1
+  if (grep '^\\bibstyle[{]' "$1"   \
+      && grep '^\\bibdata[{]' "$1" \
+      ## The following line is suspicious: fails when there
+      ## are citations in sub aux files.  We need to be
+      ## smarter in this case.
+      ## && grep '^\\citation[{]' "$f"
+      ) >&6 2>&1;
+  then
+    return 0
+  fi
+  return 1
+}
+
 # index_file_p FILE
 # -----------------
 # Return with success with FILE is an index file.
@@ -544,17 +568,17 @@ generated_files_get ()
     case $language in
       (texinfo)
         # texindex: texinfo.cp -> texinfo.cps
-	if index_file_p $file; then
-	  echo ${file}s
-	fi
-	;;
+       if index_file_p $file; then
+         echo ${file}s
+       fi
+       ;;
       (latex)
-	# bibtex: *.aux -> *.bbl and *.blg.
+       # bibtex: *.aux -> *.bbl and *.blg.
         if aux_file_p $file; then
           echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
-	  echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
-	fi
-	;;
+         echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
+       fi
+       ;;
     esac
   done |
   # Filter existing files matching the criterion.
@@ -681,7 +705,7 @@ run_tex ()
       true:*file-line-error*) cmd="$cmd --file-line-error";;
     esac
   fi
-  
+
   # Tell TeX about TCX file, if specified.
   test -n "$translate_file" && cmd="$cmd --translate-file=$translate_file"
 
@@ -726,10 +750,6 @@ run_tex ()
 # - If its input (AUX) exists.
 # - If some citations are missing (LOG contains `Citation').
 #   or the LOG complains of a missing .bbl
-#
-# We run bibtex first, because I can see reasons for the indexes
-# to change after bibtex is run, but I see no reason for the
-# converse.
 #
 # Don't try to be too smart:
 #
@@ -829,6 +849,9 @@ run_tex_suite ()
 
     xref_files_save
 
+    # We run bibtex first, because I can see reasons for the indexes
+    # to change after bibtex is run, but I see no reason for the
+    # converse.
     run_bibtex
     run_index
     run_tex
@@ -988,7 +1011,7 @@ run_recode ()
 {
   local from
   local to
-  
+
   if test $language = texinfo; then
     pgm='s/^ *@documentencoding  *\([^ ][^ ]*\) *$/\1/
 	t found
@@ -1043,23 +1066,30 @@ compute_language ()
 }
 
 
-# run_to_html ()
-# --------------
+# run_hevea (MODE)
+# ----------------
 # Convert to HTML.
-run_to_html ()
+run_hevea ()
 {
-  hevea=${HEVEA:-hevea}
+  local hevea=${HEVEA:-hevea}
+  local run_hevea="$hevea"
+
+  case $1 in
+    html) ;;
+    text|info) run_hevea="$run_hevea -$1";;
+    *) fatal "run_hevea: invalid argument: $1";;
+  esac
 
   # Compiling to the tmp directory enables to preserve a previous
   # successful compilation.  Unfortunately it makes it hard to move
   # the image back to the destination directory.  So compile to the
   # actual destination.
-  local to_html="$hevea -fix -noiso -O -o '$out_name'"
-  to_html="$to_html `list_prefix includes -I`"
-  to_html="$to_html '$in_input'"
+  run_hevea="$run_hevea -fix -noiso -O -o '$out_name'"
+  run_hevea="$run_hevea `list_prefix includes -I` -I '$orig_pwd' "
+  run_hevea="$run_hevea '$in_input'"
 
-  verbose "running $to_html"
-  if eval "$to_html" >&5; then :; else
+  verbose "running $run_hevea"
+  if eval "$run_hevea" >&5; then :; else
     fatal 1 "$hevea exited with bad status, quitting."
   fi
 }
@@ -1076,9 +1106,13 @@ run_core_conversion ()
     cd "$work_build" || exit 1
   fi
 
-  case $out_lang in
-    dvi|pdf) run_tex_suite;;
-    html   ) run_to_html;;
+  case $language:$out_lang in
+    *:dvi|*:pdf)
+	run_tex_suite;;
+    latex:html|latex:text|latex:info)
+	run_hevea $out_lang;;
+    *)
+	fatal "invalid input/output combination: $language/$out_lang";;
   esac
 
   cd_orig
@@ -1210,6 +1244,7 @@ while test x"$1" != x"$arg_sep"; do
       val=`absolute "$1"`
       list_append includes "$val"
       ;;
+    --info) out_lang=info;;
     -l | --lang | --language) shift; set_language=$1;;
     --mostly-clean) action=mostly-clean;;
     --no-line-error) no_line_error=true;;
@@ -1223,7 +1258,8 @@ while test x"$1" != x"$arg_sep"; do
     --recode-from) shift; recode=true; recode_from="$1";;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
-    --translate-file ) shift; translate_file="$1";;    
+    --text) out_lang=text;;
+    --translate-file ) shift; translate_file="$1";;
     --tidy) build_mode=tidy;;
     -v | --vers*) echo "$version"; exit 0;;
     -V | --verb*) verb=true;;

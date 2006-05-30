@@ -22,9 +22,7 @@
 
 set -e
 
-cat >>input.texi <<EOF
-@bye
-EOF
+create_input_texi </dev/null
 
 # Testing the local build mode.
 TEXI2DVI_pass --batch input.texi

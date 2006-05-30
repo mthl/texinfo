@@ -1,3 +1,24 @@
+2006-05-30  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: Add support for latex to text and info using
+	hevea.
+	Don't document it yet, as it's preliminary and on some regards
+	incomplete.  It is usable though.
+	(IFS): Use a more robust definition, taken from Autoconf.
+	(bibaux_file_p): New, extracted from...
+	(run_html): Generalize and rename as...
+	(run_hevea): this.
+	(run_core_conversion): Adjust.
+	(option processing): Accept --text and --info.
+	* configure.ac: Check for TEX and HEVEA.
+	* util/defs.in: No longer create a texi file by default.
+	Handle hevea requests.
+	(create_input_tex, create_input_texi): New.
+	(assert_files, list_files): Rework to use diff instead of test.
+	And sort both lists of files before comparing them.
+	* util/latex2html.test: New.
+	* util/Makefile.am (TESTS): Update.
+
 2006-05-29  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.h (getdocumenttext, __): new definitions for

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.61 2005-09-30 17:21:49 karl Exp $
+# $Id: configure.ac,v 1.62 2006-05-30 14:44:03 akim Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -209,6 +209,11 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 AM_GNU_GETTEXT_VERSION([0.14.5])
 AM_GNU_GETTEXT([external])
 
+# The test suite.
+AC_CONFIG_FILES([util/defs])
+AC_CHECK_PROGS([HEVEA], [hevea], [])
+AC_CHECK_PROGS([TEX], [tex], [])
+
 AC_CONFIG_FILES([
   Makefile
   doc/Makefile
@@ -217,6 +222,6 @@ AC_CONFIG_FILES([
   makeinfo/Makefile
   makeinfo/tests/Makefile
   po/Makefile.in
-  util/Makefile util/defs
+  util/Makefile
 ])
 AC_OUTPUT

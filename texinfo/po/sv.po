@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2005-12-11 14:51-0800\n"
+"POT-Creation-Date: 2006-05-30 16:37+0200\n"
 "PO-Revision-Date: 2004-12-12 22:41+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Prova --help för mer information.\n"
 
-#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:765
+#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:774
 #: util/install-info.c:1265 util/texindex.c:350
 #, fuzzy, c-format
 msgid ""
@@ -338,7 +338,7 @@ msgstr ""
 "  info --show-options emacs  börja på noden med emacs kommandoradsflaggor\n"
 "  info -f ./foo.info         visa filen ./foo.info, sök inte i katalogen\n"
 
-#: info/info.c:638 info/infokey.c:921 makeinfo/makeinfo.c:465
+#: info/info.c:638 info/infokey.c:921 makeinfo/makeinfo.c:468
 #: util/install-info.c:466 util/texindex.c:300
 msgid ""
 "\n"
@@ -706,69 +706,37 @@ msgstr "  %-10s  Välj första ... nionde objektet i nodens meny.\n"
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Välj det sista objektet i nodens meny.\n"
 
-# This is broken
-#
-#  N_("  %-10s  Search for a specified string in the index entries of this Info\n"),
-#  N_("              file, and select the node referenced by the first entry found.\n"),
-#
-# Please don't split a single sentence like this in multiple messages,
-# use one single message instead. Sentences have to be kept together when
-# translating, you can't split a sentence into parts and mark them for
-# separate translation and expect it to work with word ordering,
-# grammar, and everything else in other languages. Splitting sentences
-# just makes it harder for translators when having not just to translate,
-# but also puzzle the pieces of the sentence together again so that it
-# makes some sense, in order to be able to translate in the first place.
-#
-#: info/infodoc.c:129
-#, c-format
+#: info/infodoc.c:131
+#, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-msgstr "  %-10s  Sök efter en angiven sträng i indexposterna i denna\n"
-
-#: info/infodoc.c:130
-msgid ""
 "              file, and select the node referenced by the first entry "
 "found.\n"
 msgstr ""
+"\\%-10[index-search]  Sök efter en angiven sträng i indexposterna i denna\n"
 "              Info-fil, och välj noden som refereras av den första posten\n"
 "              som hittas.\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:133
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Gå till den nod som anges.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:134
 msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "              Du kan även inkludera ett filnamn, som exempelvis\n"
 "              (FILNAMN)NODNAMN.\n"
 
-# This is broken
-#
-#  N_("  %-10s  Search forward through this Info file for a specified string,\n"),
-#  N_("              and select the node in which the next occurrence is found.\n"),
-#
-# Please don't split a single sentence like this in multiple messages,
-# use one single message instead. Sentences have to be kept together when
-# translating, you can't split a sentence into parts and mark them for
-# separate translation and expect it to work with word ordering,
-# grammar, and everything else in other languages. Splitting sentences
-# just makes it harder for translators when having not just to translate,
-# but also puzzle the pieces of the sentence together again so that it
-# makes some sense, in order to be able to translate in the first place.
-#
-#: info/infodoc.c:133
-#, c-format
-msgid "  %-10s  Search forward for a specified string,\n"
-msgstr "  %-10s  Sök framåt efter en angiven sträng,\n"
-
-#: info/infodoc.c:134 info/infodoc.c:136
+#: info/infodoc.c:135
+#, fuzzy, c-format
 msgid ""
+"  %-10s  Search forward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
-msgstr "              och välj den nod i vilken nästa förekomst hittas.\n"
+msgstr ""
+"\\%-10[search]  Sök framåt efter en angiven sträng\n"
+"              och välj den nod i vilken nästa förekomst hittas.\n"
 
 # This is broken
 #
@@ -784,16 +752,21 @@ msgstr "              och välj den nod i vilken nästa förekomst hittas.\n"
 # but also puzzle the pieces of the sentence together again so that it
 # makes some sense, in order to be able to translate in the first place.
 #
-#: info/infodoc.c:135
+#: info/infodoc.c:137
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Sök bakåt efter en angiven sträng,\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:138
+msgid ""
+"              and select the node in which the next occurrence is found.\n"
+msgstr "              och välj den nod i vilken nästa förekomst hittas.\n"
+
+#: info/infodoc.c:318
 msgid "The current search path is:\n"
 msgstr "Den aktuella sökvägen är:\n"
 
-#: info/infodoc.c:320
+#: info/infodoc.c:322
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -801,7 +774,7 @@ msgstr ""
 "Kommandon som är tillgängliga i Info-fönster:\n"
 "\n"
 
-#: info/infodoc.c:324
+#: info/infodoc.c:326
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -809,7 +782,7 @@ msgstr ""
 "Kommandon som är tillgängliga i echo-området:\n"
 "\n"
 
-#: info/infodoc.c:347
+#: info/infodoc.c:349
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -818,7 +791,7 @@ msgstr ""
 "Följande kommandon kan endast startas via %s:\n"
 "\n"
 
-#: info/infodoc.c:351
+#: info/infodoc.c:353
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -826,67 +799,67 @@ msgstr ""
 "Följande kommandon kan inte startas alls:\n"
 "\n"
 
-#: info/infodoc.c:375
+#: info/infodoc.c:377
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- Använd \"\\[history-node]\" eller \"\\[kill-node]\" för att avsluta ---\n"
 
-#: info/infodoc.c:485
+#: info/infodoc.c:487
 msgid "Display help message"
 msgstr "Visa hjälpmeddelande"
 
-#: info/infodoc.c:503
+#: info/infodoc.c:505
 msgid "Visit Info node `(info)Help'"
 msgstr "Besök Info-noden \"(info)Help\""
 
-#: info/infodoc.c:641
+#: info/infodoc.c:643
 msgid "Print documentation for KEY"
 msgstr "Visa dokumentationen för NYCKEL"
 
-#: info/infodoc.c:653
+#: info/infodoc.c:655
 #, c-format
 msgid "Describe key: %s"
 msgstr "Beskriv nyckel: %s"
 
-#: info/infodoc.c:664
+#: info/infodoc.c:666
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s är odefinierad."
 
-#: info/infodoc.c:680 info/infodoc.c:709
+#: info/infodoc.c:682 info/infodoc.c:711
 #, c-format
 msgid "%s is undefined."
 msgstr "%s är odefinierad."
 
-#: info/infodoc.c:730
+#: info/infodoc.c:732
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s är definierad till %s."
 
-#: info/infodoc.c:1153
+#: info/infodoc.c:1155
 msgid "Show what to type to execute a given command"
 msgstr "Visa vad som ska anges för att köra ett angivet kommando"
 
-#: info/infodoc.c:1157
+#: info/infodoc.c:1159
 msgid "Where is command: "
 msgstr "Var är kommando: "
 
-#: info/infodoc.c:1179
+#: info/infodoc.c:1181
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "\"%s\" finns inte på några tangenter"
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1188
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s kan endast startas via %s."
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1192
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s kan startas via %s."
 
-#: info/infodoc.c:1195
+#: info/infodoc.c:1197
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Det finns ingen funktion med namnet \"%s\""
@@ -1161,7 +1134,7 @@ msgid "Move to the start of the line"
 msgstr "Gå till början på raden"
 
 # src/menus.c:332
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860
 msgid "Next"
 msgstr "Nästa"
 
@@ -1811,7 +1784,7 @@ msgstr "%s: flaggan \"-W %s\" är flertydig\n"
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: flaggan \"-W %s\" tillåter inget argument\n"
 
-#: makeinfo/cmds.c:523 makeinfo/cmds.c:545
+#: makeinfo/cmds.c:525 makeinfo/cmds.c:547
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "argument till @%s ignorerades"
@@ -1821,81 +1794,81 @@ msgstr "argument till @%s ignorerades"
 # The translator should not need to translate this - it is all present
 # in libc and can be used with nl_langinfo(), strftime() and friends.
 #
-#: makeinfo/cmds.c:588
+#: makeinfo/cmds.c:590
 msgid "January"
 msgstr "januari"
 
-#: makeinfo/cmds.c:588
+#: makeinfo/cmds.c:590
 msgid "February"
 msgstr "februari"
 
-#: makeinfo/cmds.c:588
+#: makeinfo/cmds.c:590
 msgid "March"
 msgstr "mars"
 
-#: makeinfo/cmds.c:588
+#: makeinfo/cmds.c:590
 msgid "April"
 msgstr "april"
 
-#: makeinfo/cmds.c:588
+#: makeinfo/cmds.c:590
 msgid "May"
 msgstr "maj"
 
-#: makeinfo/cmds.c:589
+#: makeinfo/cmds.c:591
 msgid "June"
 msgstr "juni"
 
-#: makeinfo/cmds.c:589
+#: makeinfo/cmds.c:591
 msgid "July"
 msgstr "juli"
 
-#: makeinfo/cmds.c:589
+#: makeinfo/cmds.c:591
 msgid "August"
 msgstr "augusti"
 
-#: makeinfo/cmds.c:589
+#: makeinfo/cmds.c:591
 msgid "September"
 msgstr "september"
 
-#: makeinfo/cmds.c:589
+#: makeinfo/cmds.c:591
 msgid "October"
 msgstr "oktober"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "November"
 msgstr "november"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "December"
 msgstr "december"
 
-#: makeinfo/cmds.c:942
+#: makeinfo/cmds.c:944
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "osannolikt tecken %c i @var"
 
-#: makeinfo/cmds.c:985
+#: makeinfo/cmds.c:987
 msgid "@sc argument all uppercase, thus no effect"
 msgstr ""
 "@sc-argumentet är enbart med stora bokstäver, därför har det ingen effekt"
 
-#: makeinfo/cmds.c:1040
+#: makeinfo/cmds.c:1042
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "\"{\" förväntades, men såg \"%c\""
 
-#: makeinfo/cmds.c:1080
+#: makeinfo/cmds.c:1082
 msgid "end of file inside verb block"
 msgstr "filslut inuti verb-block"
 
-#: makeinfo/cmds.c:1088
+#: makeinfo/cmds.c:1090
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "\"}\" förväntades, men såg \"%c\""
 
 # Är det kombinationen "@strong{Note:.." eller bara @strong{} rent allmänt som
 # orsakar problem?
-#: makeinfo/cmds.c:1118
+#: makeinfo/cmds.c:1120
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -1903,89 +1876,56 @@ msgstr ""
 "@strong{Obs...} skapar en falsk korsreferens i Info; formulera om för att "
 "undvika detta"
 
-#: makeinfo/cmds.c:1317
+#: makeinfo/cmds.c:1319
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s är föråldrat"
 
-#: makeinfo/cmds.c:1426
+#: makeinfo/cmds.c:1428
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp kräver ett positivt numeriskt argument, inte \"%s\""
 
-#: makeinfo/cmds.c:1781 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1783 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Felaktigt argument till %c%s"
 
-#: makeinfo/cmds.c:1791 makeinfo/makeinfo.c:4150
+#: makeinfo/cmds.c:1793 makeinfo/makeinfo.c:4181
 msgid "asis"
 msgstr "oförändrad"
 
-#: makeinfo/cmds.c:1793 makeinfo/cmds.c:1823 makeinfo/makeinfo.c:4152
+#: makeinfo/cmds.c:1795 makeinfo/cmds.c:1825 makeinfo/makeinfo.c:4183
 msgid "none"
 msgstr "ingen"
 
-#: makeinfo/cmds.c:1807
+#: makeinfo/cmds.c:1809
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Felaktigt argument till @%s"
 
-#: makeinfo/cmds.c:1821
+#: makeinfo/cmds.c:1823
 msgid "insert"
 msgstr "infoga"
 
-#: makeinfo/cmds.c:1837
+#: makeinfo/cmds.c:1839
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Felaktigt argument till @%s"
 
-#: makeinfo/cmds.c:1919
+#: makeinfo/cmds.c:1922
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: makeinfo/cmds.c:1942
+#, c-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
 #: makeinfo/defun.c:84
 msgid "Missing `}' in @def arg"
 msgstr "\"}\" saknas i @def-argumentet"
-
-#: makeinfo/defun.c:403
-msgid "Function"
-msgstr "Funktion"
-
-#: makeinfo/defun.c:406
-msgid "Macro"
-msgstr "Makro"
-
-#: makeinfo/defun.c:409
-msgid "Special Form"
-msgstr "Specialform"
-
-#: makeinfo/defun.c:413
-msgid "Variable"
-msgstr "Variabel"
-
-#: makeinfo/defun.c:416
-msgid "User Option"
-msgstr "Användarflagga"
-
-#: makeinfo/defun.c:420
-msgid "Instance Variable"
-msgstr "Instansvariabel"
-
-#: makeinfo/defun.c:424
-msgid "Method"
-msgstr "Metod"
-
-#: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2109
-msgid "of"
-msgstr "av"
-
-#: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2114
-msgid "on"
-msgstr "på"
 
 #: makeinfo/defun.c:712
 #, c-format
@@ -2010,6 +1950,16 @@ msgstr "\"%s\" utelämnades efter skrivning till standard ut"
 #: makeinfo/files.c:694
 msgid "Output buffer not empty."
 msgstr "Utdatabufferten är inte tom."
+
+#: makeinfo/float.c:182
+#, c-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: makeinfo/float.c:378 makeinfo/float.c:384 makeinfo/index.c:913
+#: makeinfo/index.c:919
+msgid "See "
+msgstr "Se "
 
 #: makeinfo/footnote.c:150
 #, c-format
@@ -2043,16 +1993,12 @@ msgstr "%s: kunde inte öppna --css-fil: %s"
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-fil slutade med kommentar"
 
-#: makeinfo/html.c:210
-msgid "Untitled"
-msgstr "Namnlös"
-
 # to pop?
 #: makeinfo/html.c:425
 msgid "[unexpected] no html tag to pop"
 msgstr "[oväntat] ingen html-tagg att poppa"
 
-#: makeinfo/html.c:757
+#: makeinfo/html.c:761
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[oväntat] ogiltigt nodnamn: \"%s\""
@@ -2100,10 +2046,6 @@ msgstr "Posten för index \"%s\" är utanför alla noder"
 msgid "(outside of any node)"
 msgstr "(utanför alla noder)"
 
-#: makeinfo/index.c:913 makeinfo/index.c:919
-msgid "See "
-msgstr "Se "
-
 #: makeinfo/insertion.c:162
 msgid "@item not allowed in argument to @itemize"
 msgstr "@item är inte tillåtet i argument till @itemize"
@@ -2136,105 +2078,105 @@ msgstr "%cfloat-omgivningar kan inte nästlas"
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "\"@end\" förväntade \"%s\", men såg \"%s\""
 
-#: makeinfo/insertion.c:1344
+#: makeinfo/insertion.c:1346
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "Inget matchande \"%cend %s\""
 
-#: makeinfo/insertion.c:1607
+#: makeinfo/insertion.c:1609
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s kräver bokstav eller siffra"
 
-#: makeinfo/insertion.c:1700
+#: makeinfo/insertion.c:1702
 msgid "end of file inside verbatim block"
 msgstr "filslut inuti bokstavligt block"
 
-#: makeinfo/insertion.c:1924
+#: makeinfo/insertion.c:1926
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s är inte meningsfullt utanför \"@float\"-omgivning"
 
-#: makeinfo/insertion.c:1960
+#: makeinfo/insertion.c:1962
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu sågs innan första @node, skapar \"Top\"-nod"
 
-#: makeinfo/insertion.c:1961
+#: makeinfo/insertion.c:1963
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "din @top-nod ska kanske packas i @ifnottex istället för @ifinfo?"
 
-#: makeinfo/insertion.c:1973
+#: makeinfo/insertion.c:1975
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu sågs innan första noden, skapar \"Top\"-nod"
 
-#: makeinfo/insertion.c:2029
+#: makeinfo/insertion.c:2031
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 "@%s är inte meningsfullt utanför \"@titlepage\"- och \"@quotation\"-omgivning"
 
-#: makeinfo/insertion.c:2043
+#: makeinfo/insertion.c:2045
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s är inte meningsfullt utanför \"@titlepage\"-omgivning"
 
-#: makeinfo/insertion.c:2074
+#: makeinfo/insertion.c:2076
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Ensamt \"%c%s\""
 
-#: makeinfo/insertion.c:2079
+#: makeinfo/insertion.c:2081
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "\"%c%s\" kräver någonting efter sig"
 
-#: makeinfo/insertion.c:2085
+#: makeinfo/insertion.c:2087
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Felaktigt argument \"%s\" till \"@%s\", använder \"%s\""
 
-#: makeinfo/insertion.c:2182
+#: makeinfo/insertion.c:2184
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s är inte meningsfullt inuti \"@%s\"-block"
 
-#: makeinfo/insertion.c:2191
+#: makeinfo/insertion.c:2193
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx är inte meningsfullt inuti \"%s\"-block"
 
-#: makeinfo/insertion.c:2367
+#: makeinfo/insertion.c:2369
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s hittades utanför ett insättningsblock"
 
-#: makeinfo/lang.c:582
+#: makeinfo/lang.c:585
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s är inte en giltig landskod enligt ISO 639"
 
-#: makeinfo/lang.c:657
+#: makeinfo/lang.c:660
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "okänt kodningsnamn \"%s\""
 
-#: makeinfo/lang.c:665
+#: makeinfo/lang.c:668
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "tyvärr, kodningen \"%s\" stöds inte"
 
-#: makeinfo/lang.c:717
+#: makeinfo/lang.c:720
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ogiltigt kodat tecken \"%s\""
 
-#: makeinfo/lang.c:1012
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s förväntar \"i\" eller \"j\" som argument, inte \"%c\""
 
-#: makeinfo/lang.c:1016
+#: makeinfo/lang.c:1024
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s förväntar ett ensamt tecken \"i\" eller \"j\" som argument"
@@ -2273,32 +2215,32 @@ msgstr "@quote-arg är endast användbart för makron med ett argument"
 msgid "mismatched @end %s with @%s"
 msgstr "@end %s och @%s passar inte"
 
-#: makeinfo/makeinfo.c:184
+#: makeinfo/makeinfo.c:185
 #, c-format
 msgid "Too many errors!  Gave up.\n"
 msgstr "För många fel! Gav upp.\n"
 
-#: makeinfo/makeinfo.c:302
+#: makeinfo/makeinfo.c:303
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: varning: "
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2264
+#: makeinfo/makeinfo.c:322 makeinfo/makeinfo.c:2295
 #, c-format
 msgid "Misplaced %c"
 msgstr "Felplacerat %c"
 
-#: makeinfo/makeinfo.c:340
+#: makeinfo/makeinfo.c:341
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Prova \"%s --help\" för mer information.\n"
 
-#: makeinfo/makeinfo.c:343
+#: makeinfo/makeinfo.c:344
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Användning: %s [FLAGGA]... TEXINFO-FIL...\n"
 
-#: makeinfo/makeinfo.c:346
+#: makeinfo/makeinfo.c:347
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2306,11 +2248,13 @@ msgstr ""
 "Översätt Texinfo-källdokumentation till diverse andra format, som standard\n"
 "infofiler som är lämpliga för läsning med Emacs eller GNU Info.\n"
 
-#: makeinfo/makeinfo.c:350
-#, c-format
+#: makeinfo/makeinfo.c:351
+#, fuzzy, c-format
 msgid ""
 "General options:\n"
 "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
 "      --force                 preserve output even if errors.\n"
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
@@ -2331,7 +2275,7 @@ msgstr ""
 "  -v, --verbose               förklara vad som görs.\n"
 "      --version               visa versionsinformation och avsluta.\n"
 
-#: makeinfo/makeinfo.c:364
+#: makeinfo/makeinfo.c:367
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2346,7 +2290,7 @@ msgstr ""
 "      --xml                 generera Texinfo XML istället för Info.\n"
 "      --plaintext           generera vanlig text istället för Info.\n"
 
-#: makeinfo/makeinfo.c:372
+#: makeinfo/makeinfo.c:375
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2377,7 +2321,7 @@ msgstr ""
 "      --number-sections     generera kapitel- och avsnittsnummer.\n"
 "  -o, --output=FIL          generera till FIL (katalog om delad HTML),\n"
 
-#: makeinfo/makeinfo.c:386
+#: makeinfo/makeinfo.c:389
 #, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2416,7 +2360,7 @@ msgstr ""
 "      --split-size=ANTAL      dela upp Info-filer vid storleken ANTAL\n"
 "                                (standardvärde %d).\n"
 
-#: makeinfo/makeinfo.c:403
+#: makeinfo/makeinfo.c:406
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2427,7 +2371,7 @@ msgstr ""
 "      --css-include=FIL          inkludera FIL i HTML <style>-utdata;\n"
 "                                   läs standard in om FIL är -.\n"
 
-#: makeinfo/makeinfo.c:409
+#: makeinfo/makeinfo.c:412
 #, fuzzy, c-format
 msgid ""
 "Options for XML and Docbook:\n"
@@ -2441,7 +2385,7 @@ msgstr ""
 "                                  (standard %d). Om VÄRDE är 0 kastas\n"
 "                                  mellanrum som kan ignoreras.\n"
 
-#: makeinfo/makeinfo.c:416
+#: makeinfo/makeinfo.c:419
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2460,7 +2404,7 @@ msgstr ""
 "  -U VARIABEL                    odefiniera variabeln VARIABEL, som med "
 "@clear.\n"
 
-#: makeinfo/makeinfo.c:425
+#: makeinfo/makeinfo.c:428
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2497,7 +2441,7 @@ msgstr ""
 "\n"
 "  Dessutom, för flaggorna --no-ifFORMAT, behandla @ifnotFORMAT-text.\n"
 
-#: makeinfo/makeinfo.c:444
+#: makeinfo/makeinfo.c:447
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2511,7 +2455,7 @@ msgstr ""
 "  om vanlig text genereras är --ifplaintext på och de andra av;\n"
 "  om XML genereras är --ifxml på och de andra av.\n"
 
-#: makeinfo/makeinfo.c:452
+#: makeinfo/makeinfo.c:455
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2538,67 +2482,67 @@ msgstr ""
 "  makeinfo --no-split apa.texi          skriv en Info-fil hur stor den än "
 "är\n"
 
-#: makeinfo/makeinfo.c:603
+#: makeinfo/makeinfo.c:607
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorerar okänt TEXINFO_OUTPUT_FORMAT-värde \"%s\".\n"
 
-#: makeinfo/makeinfo.c:647 makeinfo/makeinfo.c:673 makeinfo/makeinfo.c:692
-#: makeinfo/makeinfo.c:722 makeinfo/makeinfo.c:743
+#: makeinfo/makeinfo.c:651 makeinfo/makeinfo.c:677 makeinfo/makeinfo.c:701
+#: makeinfo/makeinfo.c:731 makeinfo/makeinfo.c:752
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: argumentet %s måste vara numeriskt, inte \"%s\".\n"
 
-#: makeinfo/makeinfo.c:660
+#: makeinfo/makeinfo.c:664
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s: kunde inte öppna makroexpansionsutdata \"%s\""
 
-#: makeinfo/makeinfo.c:665
+#: makeinfo/makeinfo.c:669
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: ignorerar andra makroexpansionsutdata \"%s\".\n"
 
-#: makeinfo/makeinfo.c:707
+#: makeinfo/makeinfo.c:716
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
 "inte \"%s\".\n"
 
-#: makeinfo/makeinfo.c:732
+#: makeinfo/makeinfo.c:741
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
 "\"%s\".\n"
 
-#: makeinfo/makeinfo.c:809
+#: makeinfo/makeinfo.c:818
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: filargument saknas.\n"
 
-#: makeinfo/makeinfo.c:1000 makeinfo/makeinfo.c:3997
+#: makeinfo/makeinfo.c:1009 makeinfo/makeinfo.c:4028
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Flerradskommandot %c%s används felaktigt"
 
-#: makeinfo/makeinfo.c:1003
+#: makeinfo/makeinfo.c:1012
 #, c-format
 msgid "Expected `%s'"
 msgstr "\"%s\" förväntades"
 
-#: makeinfo/makeinfo.c:1482
+#: makeinfo/makeinfo.c:1491
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan inte skapa katalogen \"%s\": %s"
 
-#: makeinfo/makeinfo.c:1528
+#: makeinfo/makeinfo.c:1537
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Inget \"%s\" hittades i \"%s\""
 
-#: makeinfo/makeinfo.c:1608
+#: makeinfo/makeinfo.c:1617
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
@@ -2609,17 +2553,12 @@ msgstr ""
 #         no_headers ? "text" : (html ? "HTML" : "info"),
 #         output_filename, input_filename);
 #
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1650
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Skapar %s-fil \"%s\" från \"%s\".\n"
 
-#: makeinfo/makeinfo.c:1676
-#, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Detta är %s, skapad av makeinfo version %s från %s.\n"
-
-#: makeinfo/makeinfo.c:1712
+#: makeinfo/makeinfo.c:1721
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2634,74 +2573,74 @@ msgstr ""
 "%s: Tar bort utdatafilen \"%s\" på grund av fel; använd --force för att "
 "bevara.\n"
 
-#: makeinfo/makeinfo.c:2037
+#: makeinfo/makeinfo.c:2068
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Okänt kommando \"%s\""
 
-#: makeinfo/makeinfo.c:2059
+#: makeinfo/makeinfo.c:2090
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Använd klamrar för att ge ett komamndo som ett argument till @%s"
 
-#: makeinfo/makeinfo.c:2318
+#: makeinfo/makeinfo.c:2349
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s förväntade klamrar"
 
-#: makeinfo/makeinfo.c:2331
+#: makeinfo/makeinfo.c:2362
 msgid "Unmatched }"
 msgstr "Ensam }"
 
-#: makeinfo/makeinfo.c:2379
+#: makeinfo/makeinfo.c:2410
 msgid "NO_NAME!"
 msgstr "INGET_NAMN!"
 
-#: makeinfo/makeinfo.c:2400
+#: makeinfo/makeinfo.c:2431
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s saknar avslutande klammer"
 
-#: makeinfo/makeinfo.c:3315
+#: makeinfo/makeinfo.c:3346
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-filen \"%s\" (för HTML) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3321
+#: makeinfo/makeinfo.c:3352
 #, c-format
 msgid "No such file `%s'"
 msgstr "Det finns ingen sådan fil \"%s\""
 
-#: makeinfo/makeinfo.c:3453
+#: makeinfo/makeinfo.c:3484
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-filen \"%s\" (för text) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3462
+#: makeinfo/makeinfo.c:3493
 msgid "@image missing filename argument"
 msgstr "@image saknar filnamnsargument"
 
-#: makeinfo/makeinfo.c:3681
+#: makeinfo/makeinfo.c:3712
 #, c-format
 msgid "undefined flag: %s"
 msgstr "odefinierad flagga: %s"
 
-#: makeinfo/makeinfo.c:3682
+#: makeinfo/makeinfo.c:3713
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Inget värde för \"%s\"}"
 
-#: makeinfo/makeinfo.c:3734
+#: makeinfo/makeinfo.c:3765
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kräver ett namn"
 
-#: makeinfo/makeinfo.c:3840
+#: makeinfo/makeinfo.c:3871
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nådde filslut innan matchande @end %s"
 
-#: makeinfo/makeinfo.c:4090
+#: makeinfo/makeinfo.c:4121
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" är för lång för expansion; inte expanderad"
@@ -2778,19 +2717,6 @@ msgstr "Byt namn på detta ankare eller använd flaggan \"--no-split\""
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Oväntad sträng vid slutet på den delade HTML-filen \"%s\""
 
-# src/menus.c:332
-#: makeinfo/node.c:992
-msgid "Next:"
-msgstr "Nästa:"
-
-#: makeinfo/node.c:1008
-msgid "Previous:"
-msgstr "Föregående:"
-
-#: makeinfo/node.c:1022
-msgid "Up:"
-msgstr "Upp:"
-
 #: makeinfo/node.c:1149
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
@@ -2808,14 +2734,6 @@ msgstr ""
 "%s-referens till ickeexisterande noden \"%s\" (kanske felaktig "
 "avsnittsindelning?)"
 
-#: makeinfo/node.c:1364
-msgid "Menu"
-msgstr "Meny"
-
-#: makeinfo/node.c:1366
-msgid "Cross"
-msgstr "Kors"
-
 #: makeinfo/node.c:1448
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
@@ -2827,10 +2745,6 @@ msgstr ""
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Denna nod (%s) har den felaktiga föregående-noden"
-
-#: makeinfo/node.c:1463
-msgid "Prev"
-msgstr "Föreg"
 
 #: makeinfo/node.c:1506
 #, c-format
@@ -2846,10 +2760,6 @@ msgstr "Denna nod (%s) har den felaktiga nästa-noden"
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "\"%s\" har inget upp-fält (kanske felaktig avsnittsindelning?)"
-
-#: makeinfo/node.c:1525
-msgid "Up"
-msgstr "Upp"
 
 #: makeinfo/node.c:1591
 #, c-format
@@ -2886,38 +2796,30 @@ msgstr "Appendix %c"
 msgid "Internal error (search_sectioning) `%s'!"
 msgstr "Internt fel (search_sectioning) \"%s\"!"
 
-#: makeinfo/sectioning.c:562
+#: makeinfo/sectioning.c:563
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "Internt fel (search_sectioning) \"%s\"!"
 
-#: makeinfo/sectioning.c:623
+#: makeinfo/sectioning.c:624
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s är föråldrat; använd %c%s istället"
 
-#: makeinfo/sectioning.c:639
+#: makeinfo/sectioning.c:640
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "En nod med %ctop som en sektion finns redan"
 
-#: makeinfo/sectioning.c:647
+#: makeinfo/sectioning.c:648
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Här är %ctop-noden"
 
-#: makeinfo/sectioning.c:663
+#: makeinfo/sectioning.c:664
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop användes innan %cnode, använder %s som standard"
-
-#: makeinfo/toc.c:197 makeinfo/toc.c:271 makeinfo/toc.c:273
-msgid "Table of Contents"
-msgstr "Innehållsförteckning"
-
-#: makeinfo/toc.c:304 makeinfo/toc.c:337 makeinfo/toc.c:339
-msgid "Short Contents"
-msgstr "Kort innehållsförteckning"
 
 #: makeinfo/xml.c:1628
 #, c-format
@@ -2930,6 +2832,41 @@ msgid ""
 msgstr ""
 "@headitem som det sista objektet i @multitable genererar ogiltiga Docbook-"
 "dokument"
+
+#: makeinfo/xml.c:2109
+msgid "of"
+msgstr "av"
+
+#: makeinfo/xml.c:2114
+msgid "on"
+msgstr "på"
+
+#: makeinfo/xref.c:128
+msgid "First argument to cross-reference may not be empty"
+msgstr "Första argumentet till korsreferens kan inte vara tomt"
+
+#: makeinfo/xref.c:253
+#, c-format
+msgid "Empty file name for HTML cross reference in `%s'"
+msgstr ""
+
+#: makeinfo/xref.c:388
+msgid "End of file reached while looking for `.' or `,'"
+msgstr ""
+
+#: makeinfo/xref.c:391
+#, fuzzy, c-format
+msgid "`.' or `,' must follow @%s, not `%c'"
+msgstr "\".\" eller \",\" måste följa på korsreferens, inte %c"
+
+#: makeinfo/xref.c:393
+#, fuzzy
+msgid "for cross-references in parentheses, use @pxref"
+msgstr "Inga korsreferenser i denna nod."
+
+#: makeinfo/xref.c:436
+msgid "First argument to @inforef may not be empty"
+msgstr "Första argumentet till @inforef kan inte vara tomt"
 
 #: util/install-info.c:154
 #, c-format
@@ -3172,6 +3109,104 @@ msgstr "Inget sidnummer i %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "posten %s följer på en post med ett sekundärt namn"
 
+# This is broken
+#
+#  N_("  %-10s  Search for a specified string in the index entries of this Info\n"),
+#  N_("              file, and select the node referenced by the first entry found.\n"),
+#
+# Please don't split a single sentence like this in multiple messages,
+# use one single message instead. Sentences have to be kept together when
+# translating, you can't split a sentence into parts and mark them for
+# separate translation and expect it to work with word ordering,
+# grammar, and everything else in other languages. Splitting sentences
+# just makes it harder for translators when having not just to translate,
+# but also puzzle the pieces of the sentence together again so that it
+# makes some sense, in order to be able to translate in the first place.
+#
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ msgstr "  %-10s  Sök efter en angiven sträng i indexposterna i denna\n"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "              Info-fil, och välj noden som refereras av den första "
+#~ "posten\n"
+#~ "              som hittas.\n"
+
+# This is broken
+#
+#  N_("  %-10s  Search forward through this Info file for a specified string,\n"),
+#  N_("              and select the node in which the next occurrence is found.\n"),
+#
+# Please don't split a single sentence like this in multiple messages,
+# use one single message instead. Sentences have to be kept together when
+# translating, you can't split a sentence into parts and mark them for
+# separate translation and expect it to work with word ordering,
+# grammar, and everything else in other languages. Splitting sentences
+# just makes it harder for translators when having not just to translate,
+# but also puzzle the pieces of the sentence together again so that it
+# makes some sense, in order to be able to translate in the first place.
+#
+#~ msgid "  %-10s  Search forward for a specified string,\n"
+#~ msgstr "  %-10s  Sök framåt efter en angiven sträng,\n"
+
+#~ msgid "Function"
+#~ msgstr "Funktion"
+
+#~ msgid "Macro"
+#~ msgstr "Makro"
+
+#~ msgid "Special Form"
+#~ msgstr "Specialform"
+
+#~ msgid "Variable"
+#~ msgstr "Variabel"
+
+#~ msgid "User Option"
+#~ msgstr "Användarflagga"
+
+#~ msgid "Instance Variable"
+#~ msgstr "Instansvariabel"
+
+#~ msgid "Method"
+#~ msgstr "Metod"
+
+#~ msgid "Untitled"
+#~ msgstr "Namnlös"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr "Detta är %s, skapad av makeinfo version %s från %s.\n"
+
+# src/menus.c:332
+#~ msgid "Next:"
+#~ msgstr "Nästa:"
+
+#~ msgid "Previous:"
+#~ msgstr "Föregående:"
+
+#~ msgid "Up:"
+#~ msgstr "Upp:"
+
+#~ msgid "Menu"
+#~ msgstr "Meny"
+
+#~ msgid "Cross"
+#~ msgstr "Kors"
+
+#~ msgid "Prev"
+#~ msgstr "Föreg"
+
+#~ msgid "Up"
+#~ msgstr "Upp"
+
+#~ msgid "Table of Contents"
+#~ msgstr "Innehållsförteckning"
+
+#~ msgid "Short Contents"
+#~ msgstr "Kort innehållsförteckning"
+
 #~ msgid ""
 #~ "There is NO warranty.  You may redistribute this software\n"
 #~ "under the terms of the GNU General Public License.\n"
@@ -3214,17 +3249,8 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ msgid "File exists, but is not a directory"
 #~ msgstr "Filen finns men är ingen katalog"
 
-#~ msgid "First argument to cross-reference may not be empty"
-#~ msgstr "Första argumentet till korsreferens kan inte vara tomt"
-
 #~ msgid "see "
 #~ msgstr "se "
-
-#~ msgid "`.' or `,' must follow cross reference, not %c"
-#~ msgstr "\".\" eller \",\" måste följa på korsreferens, inte %c"
-
-#~ msgid "First argument to @inforef may not be empty"
-#~ msgstr "Första argumentet till @inforef kan inte vara tomt"
 
 #~ msgid "Node:"
 #~ msgstr "Nod:"

@@ -82,6 +82,10 @@ then
   do
     # Check that each required tool is present.
     case $tool in
+      hevea)
+        # HeVeA supports -version only.  Use configure to find it.
+        test -n "@HEVEA@" || exit 77
+	;;
       tex)
         # No all versions of Tex support `--version', so we use
         # a configure check.
@@ -117,18 +121,7 @@ cp $srcdir/../doc/texinfo.tex testSubDir || exit 1
 
 cd ./testSubDir
 
-# Build appropriate environment in test directory.
-cat > input.texi << END
-\input texinfo   @c -*-texinfo-*-
-@setfilename input
-@settitle input
 
-@ifnottex
-@node Top
-@top input
-@end ifnottex
-
-END
 
 unset TEXI2DVI_BUILD_MODE
 unset TEXI2DVI_BUILD_DIRECTORY
@@ -150,6 +143,51 @@ sleep='sleep @MODIFICATION_DELAY@'
 testsrcdir=$srcdir
 unset srcdir
 
+
+# create_input_texi < INPUT
+# -------------------------
+# Create input.texi adding stdin inside a default prologue/epilogue
+create_input_texi ()
+{
+  {
+    cat << END
+\input texinfo   @c -*-texinfo-*-
+@setfilename input
+@settitle input
+
+@ifnottex
+@node Top
+@top input
+@end ifnottex
+
+END
+    cat
+    cat << END
+@bye
+END
+  } >input.texi
+}
+
+
+# create_input_tex < INPUT
+# ------------------------
+# Create input.tex adding stdin inside a default prologue/epilogue
+create_input_tex ()
+{
+  {
+    cat << END
+\documentclass{article}
+
+\begin{document}
+END
+    cat
+    cat << END
+\end{document}
+END
+  } >input.tex
+}
+
+
 # TEXI2DVI_run status [options...]
 # --------------------------------
 # Run texi2dvi with OPTIONS, and fail if does not exit with STATUS.
@@ -169,6 +207,7 @@ TEXI2DVI_run ()
   test $exitcode = $expected_exitcode || exit 1
 }
 
+
 # TEXI2DVI_fail [options...]
 # ---------------------------
 # Run texi2dvi with OPTIONS, and fail if does not exit with failure.
@@ -176,6 +215,7 @@ TEXI2DVI_fail ()
 {
   TEXI2DVI_run 1 ${1+"$@"}
 }
+
 
 # TEXI2DVI_pass [options...]
 # ---------------------------
@@ -185,20 +225,21 @@ TEXI2DVI_pass ()
   TEXI2DVI_run 0 ${1+"$@"}
 }
 
+
 # list_files ()
 # -------------
-# Return the space separated sorted list of files in this directory,
-# except the "invisible" ones.
+# Return the sorted list of files in this directory, except the "invisible" ones.
 list_files ()
 {
-  echo `for f in *
+  for f in *
   do
     case $f in
-      texinfo.tex | stdout | stderr);;
+      texinfo.tex | stdout | stderr | ls.expected | ls.value );;
       *) echo $f;;
     esac
-  done | sort`
+  done | sort
 }
+
 
 # assert_files (EXPECTED-FILES)
 # -----------------------------
@@ -208,7 +249,9 @@ assert_files ()
   if test -n "$VERBOSE"; then
     ls
   fi
-  test "`list_files`" = "$*" || exit 1
+  list_files > ls.value
+  echo "$*" | tr ' ' '\n' | sort > ls.expected
+  diff -u ls.expected ls.value
 }
 
 # Turn on shell traces when VERBOSE is set.
