@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.9 2005-08-30 13:55:55 karl Exp $
+   $Id: xref.c,v 1.10 2006-05-30 00:51:28 karl Exp $
 
    Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 
@@ -131,7 +131,7 @@ cm_xref (int arg)
         {
           if (!ref_flag)
             add_word (px_ref_flag || printing_index
-                ? (char *) _("see ") : (char *) _("See "));
+                ? (char *) __("see ") : (char *) __("See "));
 
           if (!*arg4 && !*arg5)
             {
@@ -155,7 +155,7 @@ cm_xref (int arg)
             }
           else if (*arg5)
             {
-              add_word_args (_("See section ``%s'' in "), *arg3 ? arg3 : arg1);
+              add_word_args (__("See section ``%s'' in "), *arg3 ? arg3 : arg1);
               xml_insert_element (CITE, START);
               add_word (arg5);
               xml_insert_element (CITE, END);
@@ -168,7 +168,7 @@ cm_xref (int arg)
       else if (xml)
         {
           if (!ref_flag)
-            add_word_args ("%s", px_ref_flag ? _("see ") : _("See "));
+            add_word_args ("%s", px_ref_flag ? __("see ") : __("See "));
 
           xml_insert_element (XREF, START);
           xml_insert_element (XREFNODENAME, START);
@@ -203,7 +203,7 @@ cm_xref (int arg)
       else if (html)
         {
           if (!ref_flag)
-            add_word_args ("%s", px_ref_flag ? _("see ") : _("See "));
+            add_word_args ("%s", px_ref_flag ? __("see ") : __("See "));
         }
       else
         add_word_args ("%s", px_ref_flag || ref_flag ? "*note " : "*Note ");
@@ -457,7 +457,7 @@ cm_inforef (int arg)
         {
           char *tem;
 
-          add_word ((char *) _("see "));
+          add_word ((char *) __("see "));
           /* html fixxme: revisit this */
           add_html_elt ("<a href=");
           if (splitting)

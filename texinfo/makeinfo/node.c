@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.30 2005-05-15 00:00:08 karl Exp $
+   $Id: node.c,v 1.31 2006-05-30 00:51:28 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software
    Foundation, Inc.
@@ -989,7 +989,7 @@ cm_node (void)
           if (next)
             {
               tem = expansion (next, 0);
-	      add_word ((char *) _("Next:"));
+	      add_word ((char *) __("Next:"));
               add_word ("&nbsp;");
               
 	      add_word ("<a rel=\"next\" accesskey=\"n\" href=\"");
@@ -1005,7 +1005,7 @@ cm_node (void)
           if (prev)
             {
               tem = expansion (prev, 0);
-	      add_word ((char *) _("Previous:"));
+	      add_word ((char *) __("Previous:"));
               add_word ("&nbsp;");
 	      add_word ("<a rel=\"previous\" accesskey=\"p\" href=\"");
 	      add_anchor_name (tem, 1);
@@ -1019,7 +1019,7 @@ cm_node (void)
           if (up)
             {
               tem = expansion (up, 0);
-	      add_word ((char *) _("Up:"));
+	      add_word ((char *) __("Up:"));
               add_word ("&nbsp;");
 	      add_word ("<a rel=\"up\" accesskey=\"u\" href=\"");
 	      add_anchor_name (tem, 1);
@@ -1361,9 +1361,9 @@ reftype_type_string (enum reftype type)
   switch (type)
     {
     case menu_reference:
-      return _("Menu");
+      return __("Menu");
     case followed_reference:
-      return _("Cross");
+      return __("Cross");
     default:
       return "Internal-bad-reference-type";
     }
@@ -1422,7 +1422,7 @@ validate_file (TAG_ENTRY *tag_table)
       /* If this node has a Next, then make sure that the Next exists. */
       if (tags->next)
         {
-          validate (tags->next, tags->line_no, _("Next"));
+          validate (tags->next, tags->line_no, __("Next"));
 
           /* If the Next node exists, and there is no Up, then make sure
              that the Prev of the Next points back.  But do nothing if
@@ -1460,7 +1460,7 @@ validate_file (TAG_ENTRY *tag_table)
          field at this stage. */
       if (!(tags->flags & TAG_FLAG_PREV_ERROR) && tags->prev)
         {
-          int valid_p = validate (tags->prev, tags->line_no, _("Prev"));
+          int valid_p = validate (tags->prev, tags->line_no, __("Prev"));
 
           if (!valid_p)
             tags->flags |= TAG_FLAG_PREV_ERROR;
@@ -1522,7 +1522,7 @@ validate_file (TAG_ENTRY *tag_table)
         line_error (_("`%s' has no Up field (perhaps incorrect sectioning?)"), tags->node);
       else if (tags->up)
         {
-          int valid_p = validate (tags->up, tags->line_no, _("Up"));
+          int valid_p = validate (tags->up, tags->line_no, __("Up"));
 
           /* If node X has Up: Y, then warn if Y fails to have a menu item
              or note pointing at X, if Y isn't of the form "(Y)". */

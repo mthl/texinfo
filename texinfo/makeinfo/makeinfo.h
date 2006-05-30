@@ -1,8 +1,8 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.19 2005-05-15 00:00:08 karl Exp $
+   $Id: makeinfo.h,v 1.20 2006-05-30 00:51:28 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005 Free Software Foundation, Inc.
+   2005, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -318,6 +318,11 @@ DECLARE (int, splitting, 1);    /* Defaults to true for now. */
 typedef struct generic_list {
   struct generic_list *next;
 } GENERIC_LIST;
+
+/* Use __ instead of _ to translate strings that end up in the output
+   document.  */
+extern char *getdocumenttext (const char *msgid);
+#define __(s) getdocumenttext(s)
 
 /* Reverse the order of a list.  */
 extern GENERIC_LIST * reverse_list (GENERIC_LIST *list);

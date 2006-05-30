@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
+@c $Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15175,6 +15175,16 @@ input.
 @opindex --docbook
 Generate Docbook output rather than Info.
 
+@item --document-language=@var{lang}
+@opindex --document-language
+@vindex LANG
+Use @var{lang} for translations of Texinfo keywords which end up in
+the output document.  The default is (xxshould be) the locale
+specified by the @code{@@documentlanguage} command if there is one
+(@pxref{documentlanguage}), else the locale used for translations of
+@code{makeinfo}'s diagnostic messages, i.e., the @env{LANG}
+environment variable.
+
 @item --enable-encoding
 @opindex --enable-encoding
 Output accented and special characters in Info or plain text output
@@ -18628,7 +18638,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
+$Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18694,7 +18704,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.162 2006-05-05 16:31:37 karl Exp $
+@comment $Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

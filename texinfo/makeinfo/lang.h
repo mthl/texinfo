@@ -1,7 +1,7 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.7 2005-05-15 00:00:07 karl Exp $
+   $Id: lang.h,v 1.8 2006-05-30 00:51:28 karl Exp $
 
-   Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2001, 2002, 2003, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -144,5 +144,7 @@ extern void cm_accent_umlaut (int arg, int start, int end),
      cm_accent_tilde (int arg, int start, int end);
 
 extern char *current_document_encoding (void);
+
+extern char *document_language;
 
 #endif /* not LANG_H */

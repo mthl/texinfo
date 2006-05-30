@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.17 2006-01-26 01:06:05 karl Exp $
+   $Id: lang.c,v 1.18 2006-05-30 00:51:28 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
    Software Foundation, Inc.
@@ -34,6 +34,9 @@ encoding_code_type document_encoding_code = no_encoding;
 
 /* Current language code; default is English.  */
 language_code_type language_code = en;
+
+/* Language to use for translations that end up in the output. */
+char *document_language = "C";
 
 /* By default, unsupported encoding is an empty string.  */
 char *unknown_encoding = NULL;

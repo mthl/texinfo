@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.84 2006-02-12 01:15:25 karl Exp $
+   $Id: makeinfo.c,v 1.85 2006-05-30 00:51:28 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -351,6 +351,8 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n"));
     printf (_("\
 General options:\n\
       --error-limit=NUM       quit after NUM errors (default %d).\n\
+      --document-language=STR locale to use in translating Texinfo keywords\n\
+                                for the output document (default C).\n\
       --force                 preserve output even if errors.\n\
       --help                  display this help and exit.\n\
       --no-validate           suppress node cross-reference validation.\n\
@@ -479,6 +481,7 @@ struct option long_options[] =
   { "css-include", 1, 0, 'C' },
   { "docbook", 0, 0, 'd' },
   { "enable-encoding", 0, &enable_encoding, 1 },
+  { "document-language", 1, 0, 'l' },
   { "error-limit", 1, 0, 'e' },
   { "fill-column", 1, 0, 'f' },
   { "footnote-style", 1, 0, 's' },
@@ -685,6 +688,11 @@ main (int argc, char **argv)
           /* Append user-specified dir to include file path. */
           append_to_include_path (optarg);
           break;
+
+	case 'l':
+	  /* save the override language code */
+	  document_language = xstrdup (optarg);
+	  break;
 
         case 'i':
           if (sscanf (optarg, "%d", &xml_indentation_increment) != 1)
@@ -1674,7 +1682,7 @@ convert_from_loaded_file (char *name)
 
   /* html fixxme: should output this as trailer on first page.  */
   if (!no_headers && !html && !xml)
-    add_word_args (_("This is %s, produced by makeinfo version %s from %s.\n"),
+    add_word_args (__("This is %s, produced by makeinfo version %s from %s.\n"),
                    output_filename, VERSION, input_filename);
 
   close_paragraph ();
@@ -4185,4 +4193,23 @@ set_paragraph_indent (char *string)
         }
     }
   return 0;
+}
+
+
+/* Translate MSGID according to the document language
+   (--document-language), rather than the environment language (LANG,
+   etc.).  */
+
+char *
+getdocumenttext (const char *msgid)
+{
+  char *s;
+  char *old_locale = setlocale (LC_ALL, NULL);
+  char *save_locale = xstrdup (old_locale);
+
+  setlocale (LC_ALL, document_language);
+  s = gettext (msgid);
+  setlocale (LC_ALL, save_locale);
+
+  return s;
 }

@@ -1,3 +1,19 @@
+2006-05-29  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.h (getdocumenttext, __): new definitions for
+	strings translated according to the document language, instead of
+	the interface language.
+	* makeinfo/makeinfo.c (getdocumenttext): new fn.
+	(usage): new option --document-language to specify.
+	* makeinfo/lang.h (document_language): new declaration.
+	* makeinfo/lang.c (document_language): define.
+	* makeinfo/defun.c, makeinfo/html.c, makeinfo/node.c,
+	makeinfo/toc.c, makeinfo/xref.c: use __ instead of _ for document
+		strings.
+	* doc/texinfo.txi (makeinfo options): minimal documentation.
+	From Norbert Preining, 10 Mar 2006 02:22:19 +0100.
+	Debian bugs 113988 and 355367.
+
 2006-05-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\indexdummies): \let\endinput=\empty, to
