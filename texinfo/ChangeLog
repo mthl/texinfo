@@ -1,3 +1,7 @@
+2006-05-30  <Ralf.Wildenhues@gmx.de>
+
+	* configure.ac (sigblock): Fix underquoted macro usage.
+
 2006-05-30  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (aux_file_p): Rename the second occurrence as...

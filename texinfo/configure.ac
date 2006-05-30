@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.62 2006-05-30 14:44:03 akim Exp $
+# $Id: configure.ac,v 1.63 2006-05-30 20:52:36 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -34,7 +34,7 @@ AC_ISC_POSIX
 AC_MINIX
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
-AC_CHECK_FUNC(sigblock, , AC_CHECK_LIB(bsd, sigblock))
+AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 
 # Checks for header files.
 AC_HEADER_STAT
