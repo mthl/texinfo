@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.20 2006-05-30 00:51:28 karl Exp $
+   $Id: makeinfo.h,v 1.21 2006-06-01 23:48:33 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006 Free Software Foundation, Inc.
@@ -189,6 +189,12 @@ DECLARE (char *, node_filename, NULL);
 /* Name of CSS file to include, if any.  (--css-include).  */
 DECLARE (char *, css_include, NULL);
 
+/* Name of CSS to reference, if any.  (--css-ref).  */
+DECLARE (char *, css_ref, NULL);
+
+/* Transliterate file names into ASCII */
+DECLARE (int, transliterate_file_names, 0);
+
 /* Nonzero means do not output "Node: Foo" for node separations, that
    is, generate plain text.  (--no-headers) */
 DECLARE (int, no_headers, 0);
@@ -281,7 +287,7 @@ DECLARE (int, expensive_validation, 0);
 #define OLD_URL_SAFE_CHAR(ch) (strchr (OLD_HTML_SAFE, ch))
 
 /* For the current/stable scheme.  */
-#define URL_SAFE_CHAR(ch) (isalnum (ch))
+#define URL_SAFE_CHAR(ch) (((unsigned char)ch)<128 && isalnum (ch))
 
 #define COMMAND_PREFIX '@'
 

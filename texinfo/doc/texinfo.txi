@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
+@c $Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13541,6 +13541,13 @@ Euro symbol.
 
 A full description of the encodings is beyond our scope here;
 one useful reference is @uref{http://czyborra.com/charsets/iso8859.html}.
+
+@item koi8-r
+This is the commonly used encoding for Russian language.
+
+@item koi8-u
+This is the commonly used encoding for Ukrainian language.
+
 @end table
 
 Specifying an encoding @var{enc} has the following effects:
@@ -13572,6 +13579,11 @@ used to display the page, if supported by the system.
 <meta http-equiv="Content-Type" content="text/html;
      charset=@var{enc}">
 @end example
+
+In split HTML output, if @option{--transliterate-file-names} is
+given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
+files are formed by transliteration of the corresponding node names,
+using the specified encoding. 
 
 In all other cases, it is recognized but ignored.
 
@@ -14267,16 +14279,18 @@ MS-DOS and perhaps in other circumstances, you may need to run @samp{sh
 texi2dvi foo.texi} instead of relying on the operating system to invoke
 the shell on the @samp{texi2dvi} script.
 
-Perhaps the most useful option to @code{texi2dvi} is
-@samp{--command=@var{cmd}}.  This inserts @var{cmd} on a line by itself
-after the @code{@@setfilename} in a temporary copy of the input file
-before running @TeX{}.  With this, you can specify different printing
+@opindex --command @r{(@command{texi2dvi})}
+One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
+This inserts @var{cmd} on a line by itself after the
+@code{@@setfilename} in a temporary copy of the input file before
+running @TeX{}.  With this, you can specify different printing
 formats, such as @code{@@smallbook} (@pxref{smallbook}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
 (@pxref{pagesizes}), without actually changing the document source.
 (You can also do this on a site-wide basis with @file{texinfo.cnf};
 @pxref{Preparing for TeX,,Preparing for @TeX{}}).
 
+@opindex --pdf @r{(@command{texi2dvi})}
 With the @option{--pdf} option, @command{texi2dvi} produces PDF output
 instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
 instead of @command{tex}.  Alternatively, the command
@@ -14289,11 +14303,47 @@ convenience to AUC-@TeX{} users, since the latter merely prepends
 @command{texi2dvi} can also be used to process @LaTeX{} files; simply
 run @samp{texi2dvi filename.ext}.
 
+@opindex --language @r{(@command{texi2dvi})}
+Normally @command{texi2dvi} is able to guess the input file language
+by its contents and file name suffix. If, however, it fails to do so
+you can specify the input language using
+@option{--language=@var{lang}} command line option, where @var{lang}
+is either @samp{latex} or @samp{texinfo}.
+
 @command{texi2dvi} will use @command{etex} (or @command{pdfetex}) if
 they are available; these extended versions of @TeX{} are not
 required, and the DVI (or PDF) output is identical, but they simplify
 the @TeX{} programming in some cases, and provide additional tracing
 information when debugging @file{texinfo.tex}.
+
+@opindex --translate-file @r{(@command{texi2dvi})}
+Several options are provided for handling documents, written in
+character sets other than ASCII. The
+@option{--translate-file=@var{file}} option instructs
+@command{texi2dv} to translate input into internal @TeX{} character
+set using @dfn{translation file} @var{file} (@pxref{TCX files, TCX
+files, TCX files: Character translations, web2c, Web2c: A @TeX{}
+implementation}).
+
+@opindex --recode @r{(@command{texi2dvi})}
+The options @option{--recode} and @option{--recode-from=@var{enc}}
+allow conversion of an input document before running @TeX{}. The
+@option{--recode} option recodes the document from encoding specified
+by @samp{@@documentencoding} command
+(@pxref{documentencoding,,@code{documentencoding}}) to plain 7-bit
+@samp{texinfo} encoding.
+
+@opindex --recode-from @r{(@command{texi2dvi})}
+The option @option{--recode-from=@var{enc}} recodes the document from
+@var{enc} encoding to the encoding specified by
+@samp{@@documentencoding}. This is useful, for example, if the
+document is written in @samp{UTF-8} encoding and an equivalent 8-bit
+encoding is supported by @command{makeinfo}.
+
+Both @option{--recode} and @option{--recode-from=@var{enc}} use
+@command{recode} utility to perform the conversion. If
+@command{recode} fails to process the file, @command{texi2dvi} prints
+a warning and continues using unmodified input file.
 
 For a list of other options, run @samp{texi2dvi --help}.
 
@@ -15171,6 +15221,12 @@ style sheets specifications, in the @samp{<style>} block of the HTML
 output.  @xref{HTML CSS}.  If @var{file} is @samp{-}, read standard
 input.
 
+@item --css-ref=@var{url}
+@opindex --css-ref
+In HTML mode, add a @samp{<link>} tag to the HTML output which
+references a cascading style sheet at @var{url}. This allows using
+standalone style sheets.
+
 @item --docbook
 @opindex --docbook
 Generate Docbook output rather than Info.
@@ -15412,6 +15468,11 @@ references but also report a warning.  The default is 1000.
 @item --split-size=@var{num}
 @opindex --split-size=@var{num}
 Keep Info files to at most @var{num} characters; default is 300,000.
+
+@item --transliterate-file-names
+@opindex --transliterate-file-names
+Enable transliteration of 8-bit characters in node names for the
+purpose of file name creation. @xref{HTML Xref 8-bit Character Expansion}.
 
 @item -U @var{var}
 Cause @var{var} to be undefined.  This is equivalent to
@@ -16353,11 +16414,18 @@ and to use the `inherited' font (generally a regular roman typeface)
 for both @code{@@smalldisplay} and @code{@@display}.  By default, the
 HTML @samp{<pre>} command uses a monospaced font.
 
-You can influence the CSS in the HTML output with the
-@option{--css-include=@var{file}} option to @command{makeinfo}.  This
-includes the contents @var{file} in the HTML output, as you might
-expect.  However, the details are somewhat tricky, as described in the
-following, to provide maximum flexibility.
+You can influence the CSS in the HTML output with two
+@command{makeinfo} options: @option{--css-include=@var{file}} and
+@option{--css-ref=@var{url}}.
+
+The option @option{--css-ref=@var{url}} adds to each output HTML file
+a @samp{<link>} tag referencing a CSS at the given @var{url}. This
+allows using external style sheets.
+
+The option @option{--css-include=@var{file}} includes the contents
+@var{file} in the HTML output, as you might expect.  However, the
+details are somewhat tricky, as described in the following, to provide
+maximum flexibility. 
 
 @cindex @@import specifications, in CSS files
 The CSS file may begin with so-called @samp{@@import} directives,
@@ -16719,6 +16787,7 @@ Any other command is an error, and the result is unspecified.
 @cindex HTML cross-reference 8-bit character expansion
 @cindex 8-bit characters, in HTML cross-references
 @cindex Expansion of 8-bit characters in HTML cross-references
+@cindex Transliteration of 8-bit characters in HTML cross-references
 
 Usually, characters other than plain 7-bit ASCII are transformed into
 the corresponding Unicode code point(s) in Normalization Form C, which
@@ -16748,6 +16817,19 @@ six hex digits.  Since Unicode has declared that their highest code
 point is 0x10ffff, this is sufficient.  (We felt it was better to
 define this extra escape than to always use six hex digits, since the
 first two would nearly always be zeros.)
+
+This method works fine if the node name consists mostly of ASCII
+characters and contains only few 8-bit ones. If the document is
+written in a language whose script is not based on the Latin alphabet
+(such as, e.g. Ukrainian), it will create file names consisting
+entirely of @samp{_@var{xxxx}} notations, which is inconvenient.
+
+To handle such cases, @command{makeinfo} offers
+@option{--transliterate-file-names} command line option. This option
+enables @dfn{transliteration} of node names into ASCII characters for
+the purposes of file name creation and referencing. The
+transliteration is based on phonetic principle, which makes the
+produced file names easily readable.
 
 For the definition of Unicode Normalization Form C, see Unicode report
 UAX#15, @uref{http://www.unicode.org/reports/tr15/}.  Many related
@@ -18638,7 +18720,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
+$Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18704,7 +18786,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.163 2006-05-30 00:51:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

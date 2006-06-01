@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.18 2006-05-30 00:51:28 karl Exp $
+   $Id: lang.c,v 1.19 2006-06-01 23:48:33 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
    Software Foundation, Inc.
@@ -79,71 +79,71 @@ static iso_map_type iso8859_1_map [] = {
   { "frac12", 0xBD, 0x00BD },
   { "frac34", 0xBE, 0x00BE },
   { "iquest", 0xBF, 0x00BF },
-  { "Agrave", 0xC0, 0x00C0 },
-  { "Aacute", 0xC1, 0x00C1 },
-  { "Acirc",  0xC2, 0x00C2 },
-  { "Atilde", 0xC3, 0x00C3 },
-  { "Auml",   0xC4, 0x00C4 },
-  { "Aring",  0xC5, 0x00C5 },
-  { "AElig",  0xC6, 0x00C6 },
-  { "Ccedil", 0xC7, 0x00C7 },
-  { "Ccedil", 0xC7, 0x00C7 },
-  { "Egrave", 0xC8, 0x00C8 },
-  { "Eacute", 0xC9, 0x00C9 },
-  { "Ecirc",  0xCA, 0x00CA },
-  { "Euml",   0xCB, 0x00CB },
-  { "Igrave", 0xCC, 0x00CC },
-  { "Iacute", 0xCD, 0x00CD },
-  { "Icirc",  0xCE, 0x00CE },
-  { "Iuml",   0xCF, 0x00CF },
-  { "ETH",    0xD0, 0x00D0 },
-  { "Ntilde", 0xD1, 0x00D1 },
-  { "Ograve", 0xD2, 0x00D2 },
-  { "Oacute", 0xD3, 0x00D3 },
-  { "Ocirc",  0xD4, 0x00D4 },
-  { "Otilde", 0xD5, 0x00D5 },
-  { "Ouml",   0xD6, 0x00D6 },
+  { "Agrave", 0xC0, 0x00C0, "A" },
+  { "Aacute", 0xC1, 0x00C1, "A" },
+  { "Acirc",  0xC2, 0x00C2, "A" },
+  { "Atilde", 0xC3, 0x00C3, "A" },
+  { "Auml",   0xC4, 0x00C4, "A" },
+  { "Aring",  0xC5, 0x00C5, "AA" },
+  { "AElig",  0xC6, 0x00C6, "AE" },
+  { "Ccedil", 0xC7, 0x00C7, "C" },
+  { "Ccedil", 0xC7, 0x00C7, "C" },
+  { "Egrave", 0xC8, 0x00C8, "E" },
+  { "Eacute", 0xC9, 0x00C9, "E" },
+  { "Ecirc",  0xCA, 0x00CA, "E" },
+  { "Euml",   0xCB, 0x00CB, "E" },
+  { "Igrave", 0xCC, 0x00CC, "I" },
+  { "Iacute", 0xCD, 0x00CD, "I" },
+  { "Icirc",  0xCE, 0x00CE, "I" },
+  { "Iuml",   0xCF, 0x00CF, "I" },
+  { "ETH",    0xD0, 0x00D0, "DH" },
+  { "Ntilde", 0xD1, 0x00D1, "N" },
+  { "Ograve", 0xD2, 0x00D2, "O" },
+  { "Oacute", 0xD3, 0x00D3, "O" },
+  { "Ocirc",  0xD4, 0x00D4, "O" },
+  { "Otilde", 0xD5, 0x00D5, "O" },
+  { "Ouml",   0xD6, 0x00D6, "O" },
   { "times",  0xD7, 0x00D7 },
-  { "Oslash", 0xD8, 0x00D8 },
-  { "Ugrave", 0xD9, 0x00D9 },
-  { "Uacute", 0xDA, 0x00DA },
-  { "Ucirc",  0xDB, 0x00DB },
-  { "Uuml",   0xDC, 0x00DC },
-  { "Yacute", 0xDD, 0x00DD },
-  { "THORN",  0xDE, 0x00DE },
-  { "szlig",  0xDF, 0x00DF },
-  { "agrave", 0xE0, 0x00E0 },
-  { "aacute", 0xE1, 0x00E1 },
-  { "acirc",  0xE2, 0x00E2 },
-  { "atilde", 0xE3, 0x00E3 },
-  { "auml",   0xE4, 0x00E4 },
-  { "aring",  0xE5, 0x00E5 },
-  { "aelig",  0xE6, 0x00E6 },
-  { "ccedil", 0xE7, 0x00E7 },
-  { "egrave", 0xE8, 0x00E8 },
-  { "eacute", 0xE9, 0x00E9 },
-  { "ecirc",  0xEA, 0x00EA },
-  { "euml",   0xEB, 0x00EB },
-  { "igrave", 0xEC, 0x00EC },
-  { "iacute", 0xED, 0x00ED },
-  { "icirc",  0xEE, 0x00EE },
-  { "iuml",   0xEF, 0x00EF },
-  { "eth",    0xF0, 0x00F0 },
-  { "ntilde", 0xF1, 0x00F1 },
-  { "ograve", 0xF2, 0x00F2 },
-  { "oacute", 0xF3, 0x00F3 },
-  { "ocirc",  0xF4, 0x00F4 },
-  { "otilde", 0xF5, 0x00F5 },
-  { "ouml",   0xF6, 0x00F6 },
+  { "Oslash", 0xD8, 0x00D8, "OE" },
+  { "Ugrave", 0xD9, 0x00D9, "U" },
+  { "Uacute", 0xDA, 0x00DA, "U" },
+  { "Ucirc",  0xDB, 0x00DB, "U" },
+  { "Uuml",   0xDC, 0x00DC, "U" },
+  { "Yacute", 0xDD, 0x00DD, "Y" },
+  { "THORN",  0xDE, 0x00DE, "TH" },
+  { "szlig",  0xDF, 0x00DF, "s" },
+  { "agrave", 0xE0, 0x00E0, "a" },
+  { "aacute", 0xE1, 0x00E1, "a" },
+  { "acirc",  0xE2, 0x00E2, "a" },
+  { "atilde", 0xE3, 0x00E3, "a" },
+  { "auml",   0xE4, 0x00E4, "a" },
+  { "aring",  0xE5, 0x00E5, "aa" },
+  { "aelig",  0xE6, 0x00E6, "ae" },
+  { "ccedil", 0xE7, 0x00E7, "c" },
+  { "egrave", 0xE8, 0x00E8, "e" },
+  { "eacute", 0xE9, 0x00E9, "e" },
+  { "ecirc",  0xEA, 0x00EA, "e" },
+  { "euml",   0xEB, 0x00EB, "e" },
+  { "igrave", 0xEC, 0x00EC, "i" },
+  { "iacute", 0xED, 0x00ED, "i" },
+  { "icirc",  0xEE, 0x00EE, "i" },
+  { "iuml",   0xEF, 0x00EF, "i" },
+  { "eth",    0xF0, 0x00F0, "dh" },
+  { "ntilde", 0xF1, 0x00F1, "n" },
+  { "ograve", 0xF2, 0x00F2, "o"},
+  { "oacute", 0xF3, 0x00F3, "o" },
+  { "ocirc",  0xF4, 0x00F4, "o" },
+  { "otilde", 0xF5, 0x00F5, "o" },
+  { "ouml",   0xF6, 0x00F6, "o" },
   { "divide", 0xF7, 0x00F7 },
-  { "oslash", 0xF8, 0x00F8 },
-  { "ugrave", 0xF9, 0x00F9 },
-  { "uacute", 0xFA, 0x00FA },
-  { "ucirc",  0xFB, 0x00FB },
-  { "uuml",   0xFC, 0x00FC },
-  { "yacute", 0xFD, 0x00FD },
-  { "thorn",  0xFE, 0x00FE },
-  { "yuml",   0xFF, 0x00FF },
+  { "oslash", 0xF8, 0x00F8, "oe" },
+  { "ugrave", 0xF9, 0x00F9, "u" },
+  { "uacute", 0xFA, 0x00FA, "u" },
+  { "ucirc",  0xFB, 0x00FB, "u" },
+  { "uuml",   0xFC, 0x00FC, "u" },
+  { "yacute", 0xFD, 0x00FD, "y" },
+  { "thorn",  0xFE, 0x00FE, "th" },
+  { "yuml",   0xFF, 0x00FF, "y" },
   { NULL, 0, 0 }
 };
 
@@ -173,9 +173,9 @@ static iso_map_type iso8859_15_map [] = {
   { "pound",  0xA3, 0x00A3 },
   { "euro",   0xA4, 0x20AC },
   { "yen",    0xA5, 0x00A5 },
-  { "Scaron", 0xA6, 0x0160 },
+  { "Scaron", 0xA6, 0x0160, "S" },
   { "sect",   0xA7, 0x00A7 },
-  { "scaron", 0xA8, 0x0161 },
+  { "scaron", 0xA8, 0x0161, "s" },
   { "copy",   0xA9, 0x00A9 },
   { "ordf",   0xAA, 0x00AA },
   { "laquo",  0xAB, 0x00AB },
@@ -187,83 +187,82 @@ static iso_map_type iso8859_15_map [] = {
   { "plusmn", 0xB1, 0x00B1 },
   { "sup2",   0xB2, 0x00B2 },
   { "sup3",   0xB3, 0x00B3 },
-  { "Zcaron", 0xB4, 0x017D },
+  { "Zcaron", 0xB4, 0x017D, "Z" },
   { "micro",  0xB5, 0x00B5 },
   { "para",   0xB6, 0x00B6 },
   { "middot", 0xB7, 0x00B7 },
-  { "zcaron", 0xB8, 0x017E },
+  { "zcaron", 0xB8, 0x017E, "z" },
   { "sup1",   0xB9, 0x00B9 },
   { "ordm",   0xBA, 0x00BA },
   { "raquo",  0xBB, 0x00BB },
-  { "OElig",  0xBC, 0x0152 },
-  { "oelig",  0xBD, 0x0153 },
-  { "Yuml",   0xBE, 0x0178 },
+  { "OElig",  0xBC, 0x0152, "OE" },
+  { "oelig",  0xBD, 0x0153, "oe" },
+  { "Yuml",   0xBE, 0x0178, "y" },
   { "iquest", 0xBF, 0x00BF },
-  { "Agrave", 0xC0, 0x00C0 },
-  { "Aacute", 0xC1, 0x00C1 },
-  { "Acirc",  0xC2, 0x00C2 },
-  { "Atilde", 0xC3, 0x00C3 },
-  { "Auml",   0xC4, 0x00C4 },
-  { "Aring",  0xC5, 0x00C5 },
-  { "AElig",  0xC6, 0x00C6 },
-  { "Ccedil", 0xC7, 0x00C7 },
-  { "Ccedil", 0xC7, 0x00C7 },
-  { "Egrave", 0xC8, 0x00C8 },
-  { "Eacute", 0xC9, 0x00C9 },
-  { "Ecirc",  0xCA, 0x00CA },
-  { "Euml",   0xCB, 0x00CB },
-  { "Igrave", 0xCC, 0x00CC },
-  { "Iacute", 0xCD, 0x00CD },
-  { "Icirc",  0xCE, 0x00CE },
-  { "Iuml",   0xCF, 0x00CF },
-  { "ETH",    0xD0, 0x00D0 },
-  { "Ntilde", 0xD1, 0x00D1 },
-  { "Ograve", 0xD2, 0x00D2 },
-  { "Oacute", 0xD3, 0x00D3 },
-  { "Ocirc",  0xD4, 0x00D4 },
-  { "Otilde", 0xD5, 0x00D5 },
-  { "Ouml",   0xD6, 0x00D6 },
+  { "Agrave", 0xC0, 0x00C0, "A" },
+  { "Aacute", 0xC1, 0x00C1, "A" },
+  { "Acirc",  0xC2, 0x00C2, "A" },
+  { "Atilde", 0xC3, 0x00C3, "A" },
+  { "Auml",   0xC4, 0x00C4, "A" },
+  { "Aring",  0xC5, 0x00C5, "AA" },
+  { "AElig",  0xC6, 0x00C6, "AE" },
+  { "Ccedil", 0xC7, 0x00C7, "C" },
+  { "Egrave", 0xC8, 0x00C8, "E" },
+  { "Eacute", 0xC9, 0x00C9, "E" },
+  { "Ecirc",  0xCA, 0x00CA, "E" },
+  { "Euml",   0xCB, 0x00CB, "E" },
+  { "Igrave", 0xCC, 0x00CC, "I" },
+  { "Iacute", 0xCD, 0x00CD, "I" },
+  { "Icirc",  0xCE, 0x00CE, "I" },
+  { "Iuml",   0xCF, 0x00CF, "I" },
+  { "ETH",    0xD0, 0x00D0, "DH" },
+  { "Ntilde", 0xD1, 0x00D1, "N" },
+  { "Ograve", 0xD2, 0x00D2, "O" },
+  { "Oacute", 0xD3, 0x00D3, "O" },
+  { "Ocirc",  0xD4, 0x00D4, "O" },
+  { "Otilde", 0xD5, 0x00D5, "O" },
+  { "Ouml",   0xD6, 0x00D6, "O" },
   { "times",  0xD7, 0x00D7 },
-  { "Oslash", 0xD8, 0x00D8 },
-  { "Ugrave", 0xD9, 0x00D9 },
-  { "Uacute", 0xDA, 0x00DA },
-  { "Ucirc",  0xDB, 0x00DB },
-  { "Uuml",   0xDC, 0x00DC },
-  { "Yacute", 0xDD, 0x00DD },
-  { "THORN",  0xDE, 0x00DE },
-  { "szlig",  0xDF, 0x00DF },
-  { "agrave", 0xE0, 0x00E0 },
-  { "aacute", 0xE1, 0x00E1 },
-  { "acirc",  0xE2, 0x00E2 },
-  { "atilde", 0xE3, 0x00E3 },
-  { "auml",   0xE4, 0x00E4 },
-  { "aring",  0xE5, 0x00E5 },
-  { "aelig",  0xE6, 0x00E6 },
-  { "ccedil", 0xE7, 0x00E7 },
-  { "egrave", 0xE8, 0x00E8 },
-  { "eacute", 0xE9, 0x00E9 },
-  { "ecirc",  0xEA, 0x00EA },
-  { "euml",   0xEB, 0x00EB },
-  { "igrave", 0xEC, 0x00EC },
-  { "iacute", 0xED, 0x00ED },
-  { "icirc",  0xEE, 0x00EE },
-  { "iuml",   0xEF, 0x00EF },
-  { "eth",    0xF0, 0x00F0 },
-  { "ntilde", 0xF1, 0x00F1 },
-  { "ograve", 0xF2, 0x00F2 },
-  { "oacute", 0xF3, 0x00F3 },
-  { "ocirc",  0xF4, 0x00F4 },
-  { "otilde", 0xF5, 0x00F5 },
-  { "ouml",   0xF6, 0x00F6 },
+  { "Oslash", 0xD8, 0x00D8, "OE" },
+  { "Ugrave", 0xD9, 0x00D9, "U" },
+  { "Uacute", 0xDA, 0x00DA, "U" },
+  { "Ucirc",  0xDB, 0x00DB, "U" },
+  { "Uuml",   0xDC, 0x00DC, "U" },
+  { "Yacute", 0xDD, 0x00DD, "Y" },
+  { "THORN",  0xDE, 0x00DE, "TH" },
+  { "szlig",  0xDF, 0x00DF, "s" },
+  { "agrave", 0xE0, 0x00E0, "a" },
+  { "aacute", 0xE1, 0x00E1, "a" },
+  { "acirc",  0xE2, 0x00E2, "a" },
+  { "atilde", 0xE3, 0x00E3, "a" },
+  { "auml",   0xE4, 0x00E4, "a" },
+  { "aring",  0xE5, 0x00E5, "aa" },
+  { "aelig",  0xE6, 0x00E6, "ae" },
+  { "ccedil", 0xE7, 0x00E7, "c" },
+  { "egrave", 0xE8, 0x00E8, "e" },
+  { "eacute", 0xE9, 0x00E9, "e" },
+  { "ecirc",  0xEA, 0x00EA, "e" },
+  { "euml",   0xEB, 0x00EB, "e" },
+  { "igrave", 0xEC, 0x00EC, "i" },
+  { "iacute", 0xED, 0x00ED, "i" },
+  { "icirc",  0xEE, 0x00EE, "i" },
+  { "iuml",   0xEF, 0x00EF, "i" },
+  { "eth",    0xF0, 0x00F0, "d" },
+  { "ntilde", 0xF1, 0x00F1, "n" },
+  { "ograve", 0xF2, 0x00F2, "o" },
+  { "oacute", 0xF3, 0x00F3, "o" },
+  { "ocirc",  0xF4, 0x00F4, "o" },
+  { "otilde", 0xF5, 0x00F5, "o" },
+  { "ouml",   0xF6, 0x00F6, "o" },
   { "divide", 0xF7, 0x00F7 },
-  { "oslash", 0xF8, 0x00F8 },
-  { "ugrave", 0xF9, 0x00F9 },
-  { "uacute", 0xFA, 0x00FA },
-  { "ucirc",  0xFB, 0x00FB },
-  { "uuml",   0xFC, 0x00FC },
-  { "yacute", 0xFD, 0x00FD },
-  { "thorn",  0xFE, 0x00FE },
-  { "yuml",   0xFF, 0x00FF },
+  { "oslash", 0xF8, 0x00F8, "oe" },
+  { "ugrave", 0xF9, 0x00F9, "u" },
+  { "uacute", 0xFA, 0x00FA, "u" },
+  { "ucirc",  0xFB, 0x00FB, "u" },
+  { "uuml",   0xFC, 0x00FC, "u" },
+  { "yacute", 0xFD, 0x00FD, "y" },
+  { "thorn",  0xFE, 0x00FE, "th" },
+  { "yuml",   0xFF, 0x00FF, "y" },
   { NULL, 0, 0 }
 };
 
@@ -291,103 +290,182 @@ static iso_map_type iso8859_15_map [] = {
 
 static iso_map_type iso8859_2_map [] = {
   { "nbsp",	0xA0, 0x00A0 }, /* NO-BREAK SPACE */
-  { "",	0xA1, 0x0104 }, /* LATIN CAPITAL LETTER A WITH OGONEK */
+  { "",	0xA1, 0x0104, "A" }, /* LATIN CAPITAL LETTER A WITH OGONEK */
   { "",	0xA2, 0x02D8 }, /* BREVE */
-  { "",	0xA3, 0x0141 }, /* LATIN CAPITAL LETTER L WITH STROKE */
+  { "",	0xA3, 0x0141, "L" }, /* LATIN CAPITAL LETTER L WITH STROKE */
   { "curren",	0xA4, 0x00A4 }, /* CURRENCY SIGN */
-  { "",	0xA5, 0x013D }, /* LATIN CAPITAL LETTER L WITH CARON */
-  { "",	0xA6, 0x015A }, /* LATIN CAPITAL LETTER S WITH ACUTE */
+  { "",	0xA5, 0x013D, "L" }, /* LATIN CAPITAL LETTER L WITH CARON */
+  { "",	0xA6, 0x015A, "S" }, /* LATIN CAPITAL LETTER S WITH ACUTE */
   { "sect",	0xA7, 0x00A7 }, /* SECTION SIGN */
   { "uml",	0xA8, 0x00A8 }, /* DIAERESIS */
-  { "",	0xA9, 0x0160 }, /* LATIN CAPITAL LETTER S WITH CARON */
-  { "",	0xAA, 0x015E }, /* LATIN CAPITAL LETTER S WITH CEDILLA */
-  { "",	0xAB, 0x0164 }, /* LATIN CAPITAL LETTER T WITH CARON */
-  { "",	0xAC, 0x0179 }, /* LATIN CAPITAL LETTER Z WITH ACUTE */
+  { "",	0xA9, 0x0160, "S" }, /* LATIN CAPITAL LETTER S WITH CARON */
+  { "",	0xAA, 0x015E, "S" }, /* LATIN CAPITAL LETTER S WITH CEDILLA */
+  { "",	0xAB, 0x0164, "T" }, /* LATIN CAPITAL LETTER T WITH CARON */
+  { "",	0xAC, 0x0179, "Z" }, /* LATIN CAPITAL LETTER Z WITH ACUTE */
   { "shy",	0xAD, 0x00AD }, /* SOFT HYPHEN */
-  { "",	0xAE, 0x017D }, /* LATIN CAPITAL LETTER Z WITH CARON */
-  { "",	0xAF, 0x017B }, /* LATIN CAPITAL LETTER Z WITH DOT ABOVE */
+  { "",	0xAE, 0x017D, "Z" }, /* LATIN CAPITAL LETTER Z WITH CARON */
+  { "",	0xAF, 0x017B, "Z" }, /* LATIN CAPITAL LETTER Z WITH DOT ABOVE */
   { "deg",	0xB0, 0x00B0 }, /* DEGREE SIGN */
-  { "",	0xB1, 0x0105 }, /* LATIN SMALL LETTER A WITH OGONEK */
+  { "",	0xB1, 0x0105, "a" }, /* LATIN SMALL LETTER A WITH OGONEK */
   { "",	0xB2, 0x02DB }, /* OGONEK */
-  { "",	0xB3, 0x0142 }, /* LATIN SMALL LETTER L WITH STROKE */
+  { "",	0xB3, 0x0142, "l" }, /* LATIN SMALL LETTER L WITH STROKE */
   { "acute",	0xB4, 0x00B4 }, /* ACUTE ACCENT */
-  { "",	0xB5, 0x013E }, /* LATIN SMALL LETTER L WITH CARON */
-  { "",	0xB6, 0x015B }, /* LATIN SMALL LETTER S WITH ACUTE */
+  { "",	0xB5, 0x013E, "l" }, /* LATIN SMALL LETTER L WITH CARON */
+  { "",	0xB6, 0x015B, "s" }, /* LATIN SMALL LETTER S WITH ACUTE */
   { "",	0xB7, 0x02C7 }, /* CARON (Mandarin Chinese third tone) */
   { "cedil",	0xB8, 0x00B8 }, /* CEDILLA */
-  { "",	0xB9, 0x0161 }, /* LATIN SMALL LETTER S WITH CARON */
-  { "",	0xBA, 0x015F }, /* LATIN SMALL LETTER S WITH CEDILLA */
-  { "",	0xBB, 0x0165 }, /* LATIN SMALL LETTER T WITH CARON */
-  { "",	0xBC, 0x017A }, /* LATIN SMALL LETTER Z WITH ACUTE */
+  { "",	0xB9, 0x0161, "s" }, /* LATIN SMALL LETTER S WITH CARON */
+  { "",	0xBA, 0x015F, "s" }, /* LATIN SMALL LETTER S WITH CEDILLA */
+  { "",	0xBB, 0x0165, "t" }, /* LATIN SMALL LETTER T WITH CARON */
+  { "",	0xBC, 0x017A, "z" }, /* LATIN SMALL LETTER Z WITH ACUTE */
   { "",	0xBD, 0x02DD }, /* DOUBLE ACUTE ACCENT */
-  { "",	0xBE, 0x017E }, /* LATIN SMALL LETTER Z WITH CARON */
-  { "",	0xBF, 0x017C }, /* LATIN SMALL LETTER Z WITH DOT ABOVE */
-  { "",	0xC0, 0x0154 }, /* LATIN CAPITAL LETTER R WITH ACUTE */
-  { "",	0xC1, 0x00C1 }, /* LATIN CAPITAL LETTER A WITH ACUTE */
-  { "",	0xC2, 0x00C2 }, /* LATIN CAPITAL LETTER A WITH CIRCUMFLEX */
-  { "",	0xC3, 0x0102 }, /* LATIN CAPITAL LETTER A WITH BREVE */
-  { "",	0xC4, 0x00C4 }, /* LATIN CAPITAL LETTER A WITH DIAERESIS */
-  { "",	0xC5, 0x0139 }, /* LATIN CAPITAL LETTER L WITH ACUTE */
-  { "",	0xC6, 0x0106 }, /* LATIN CAPITAL LETTER C WITH ACUTE */
-  { "",	0xC7, 0x00C7 }, /* LATIN CAPITAL LETTER C WITH CEDILLA */
-  { "",	0xC8, 0x010C }, /* LATIN CAPITAL LETTER C WITH CARON */
-  { "",	0xC9, 0x00C9 }, /* LATIN CAPITAL LETTER E WITH ACUTE */
-  { "",	0xCA, 0x0118 }, /* LATIN CAPITAL LETTER E WITH OGONEK */
-  { "",	0xCB, 0x00CB }, /* LATIN CAPITAL LETTER E WITH DIAERESIS */
-  { "",	0xCC, 0x011A }, /* LATIN CAPITAL LETTER E WITH CARON */
-  { "",	0xCD, 0x00CD }, /* LATIN CAPITAL LETTER I WITH ACUTE */
-  { "",	0xCE, 0x00CE }, /* LATIN CAPITAL LETTER I WITH CIRCUMFLEX */
-  { "",	0xCF, 0x010E }, /* LATIN CAPITAL LETTER D WITH CARON */
-  { "",	0xD0, 0x0110 }, /* LATIN CAPITAL LETTER D WITH STROKE */
-  { "",	0xD1, 0x0143 }, /* LATIN CAPITAL LETTER N WITH ACUTE */
-  { "",	0xD2, 0x0147 }, /* LATIN CAPITAL LETTER N WITH CARON */
-  { "",	0xD3, 0x00D3 }, /* LATIN CAPITAL LETTER O WITH ACUTE */
-  { "",	0xD4, 0x00D4 }, /* LATIN CAPITAL LETTER O WITH CIRCUMFLEX */
-  { "",	0xD5, 0x0150 }, /* LATIN CAPITAL LETTER O WITH DOUBLE ACUTE */
-  { "",	0xD6, 0x00D6 }, /* LATIN CAPITAL LETTER O WITH DIAERESIS */
+  { "",	0xBE, 0x017E, "z" }, /* LATIN SMALL LETTER Z WITH CARON */
+  { "",	0xBF, 0x017C, "z" }, /* LATIN SMALL LETTER Z WITH DOT ABOVE */
+  { "",	0xC0, 0x0154, "R" }, /* LATIN CAPITAL LETTER R WITH ACUTE */
+  { "",	0xC1, 0x00C1, "A" }, /* LATIN CAPITAL LETTER A WITH ACUTE */
+  { "",	0xC2, 0x00C2, "A" }, /* LATIN CAPITAL LETTER A WITH CIRCUMFLEX */
+  { "",	0xC3, 0x0102, "A" }, /* LATIN CAPITAL LETTER A WITH BREVE */
+  { "",	0xC4, 0x00C4, "A" }, /* LATIN CAPITAL LETTER A WITH DIAERESIS */
+  { "",	0xC5, 0x0139, "L" }, /* LATIN CAPITAL LETTER L WITH ACUTE */
+  { "",	0xC6, 0x0106, "C" }, /* LATIN CAPITAL LETTER C WITH ACUTE */
+  { "",	0xC7, 0x00C7, "C" }, /* LATIN CAPITAL LETTER C WITH CEDILLA */
+  { "",	0xC8, 0x010C, "C" }, /* LATIN CAPITAL LETTER C WITH CARON */
+  { "",	0xC9, 0x00C9, "E" }, /* LATIN CAPITAL LETTER E WITH ACUTE */
+  { "",	0xCA, 0x0118, "E" }, /* LATIN CAPITAL LETTER E WITH OGONEK */
+  { "",	0xCB, 0x00CB, "E" }, /* LATIN CAPITAL LETTER E WITH DIAERESIS */
+  { "",	0xCC, 0x011A, "E" }, /* LATIN CAPITAL LETTER E WITH CARON */
+  { "",	0xCD, 0x00CD, "I" }, /* LATIN CAPITAL LETTER I WITH ACUTE */
+  { "",	0xCE, 0x00CE, "I" }, /* LATIN CAPITAL LETTER I WITH CIRCUMFLEX */
+  { "",	0xCF, 0x010E, "D" }, /* LATIN CAPITAL LETTER D WITH CARON */
+  { "",	0xD0, 0x0110, "D" }, /* LATIN CAPITAL LETTER D WITH STROKE */
+  { "",	0xD1, 0x0143, "N" }, /* LATIN CAPITAL LETTER N WITH ACUTE */
+  { "",	0xD2, 0x0147, "N" }, /* LATIN CAPITAL LETTER N WITH CARON */
+  { "",	0xD3, 0x00D3, "O" }, /* LATIN CAPITAL LETTER O WITH ACUTE */
+  { "",	0xD4, 0x00D4, "O" }, /* LATIN CAPITAL LETTER O WITH CIRCUMFLEX */
+  { "",	0xD5, 0x0150, "O" }, /* LATIN CAPITAL LETTER O WITH DOUBLE ACUTE */
+  { "",	0xD6, 0x00D6, "O" }, /* LATIN CAPITAL LETTER O WITH DIAERESIS */
   { "times",	0xD7, 0x00D7 }, /* MULTIPLICATION SIGN */
-  { "",	0xD8, 0x0158 }, /* LATIN CAPITAL LETTER R WITH CARON */
-  { "",	0xD9, 0x016E }, /* LATIN CAPITAL LETTER U WITH RING ABOVE */
-  { "",	0xDA, 0x00DA }, /* LATIN CAPITAL LETTER U WITH ACUTE */
-  { "",	0xDB, 0x0170 }, /* LATIN CAPITAL LETTER U WITH DOUBLE ACUTE */
-  { "",	0xDC, 0x00DC }, /* LATIN CAPITAL LETTER U WITH DIAERESIS */
-  { "",	0xDD, 0x00DD }, /* LATIN CAPITAL LETTER Y WITH ACUTE */
-  { "",	0xDE, 0x0162 }, /* LATIN CAPITAL LETTER T WITH CEDILLA */
-  { "",	0xDF, 0x00DF }, /* LATIN SMALL LETTER SHARP S (German) */
-  { "",	0xE0, 0x0155 }, /* LATIN SMALL LETTER R WITH ACUTE */
-  { "",	0xE1, 0x00E1 }, /* LATIN SMALL LETTER A WITH ACUTE */
-  { "",	0xE2, 0x00E2 }, /* LATIN SMALL LETTER A WITH CIRCUMFLEX */
-  { "",	0xE3, 0x0103 }, /* LATIN SMALL LETTER A WITH BREVE */
-  { "",	0xE4, 0x00E4 }, /* LATIN SMALL LETTER A WITH DIAERESIS */
-  { "",	0xE5, 0x013A }, /* LATIN SMALL LETTER L WITH ACUTE */
-  { "",	0xE6, 0x0107 }, /* LATIN SMALL LETTER C WITH ACUTE */
-  { "",	0xE7, 0x00E7 }, /* LATIN SMALL LETTER C WITH CEDILLA */
-  { "",	0xE8, 0x010D }, /* LATIN SMALL LETTER C WITH CARON */
-  { "",	0xE9, 0x00E9 }, /* LATIN SMALL LETTER E WITH ACUTE */
-  { "",	0xEA, 0x0119 }, /* LATIN SMALL LETTER E WITH OGONEK */
-  { "",	0xEB, 0x00EB }, /* LATIN SMALL LETTER E WITH DIAERESIS */
-  { "",	0xEC, 0x011B }, /* LATIN SMALL LETTER E WITH CARON */
-  { "",	0xED, 0x00ED }, /* LATIN SMALL LETTER I WITH ACUTE */
-  { "",	0xEE, 0x00EE }, /* LATIN SMALL LETTER I WITH CIRCUMFLEX */
-  { "",	0xEF, 0x010F }, /* LATIN SMALL LETTER D WITH CARON */
-  { "",	0xF0, 0x0111 }, /* LATIN SMALL LETTER D WITH STROKE */
-  { "",	0xF1, 0x0144 }, /* LATIN SMALL LETTER N WITH ACUTE */
-  { "",	0xF2, 0x0148 }, /* LATIN SMALL LETTER N WITH CARON */
-  { "",	0xF3, 0x00F3 }, /* LATIN SMALL LETTER O WITH ACUTE */
-  { "",	0xF4, 0x00F4 }, /* LATIN SMALL LETTER O WITH CIRCUMFLEX */
-  { "",	0xF5, 0x0151 }, /* LATIN SMALL LETTER O WITH DOUBLE ACUTE */
-  { "",	0xF6, 0x00F6 }, /* LATIN SMALL LETTER O WITH DIAERESIS */
+  { "",	0xD8, 0x0158, "R" }, /* LATIN CAPITAL LETTER R WITH CARON */
+  { "",	0xD9, 0x016E, "U" }, /* LATIN CAPITAL LETTER U WITH RING ABOVE */
+  { "",	0xDA, 0x00DA, "U" }, /* LATIN CAPITAL LETTER U WITH ACUTE */
+  { "",	0xDB, 0x0170, "U" }, /* LATIN CAPITAL LETTER U WITH DOUBLE ACUTE */
+  { "",	0xDC, 0x00DC, "U" }, /* LATIN CAPITAL LETTER U WITH DIAERESIS */
+  { "",	0xDD, 0x00DD, "Y" }, /* LATIN CAPITAL LETTER Y WITH ACUTE */
+  { "",	0xDE, 0x0162, "T" }, /* LATIN CAPITAL LETTER T WITH CEDILLA */
+  { "",	0xDF, 0x00DF, "ss" }, /* LATIN SMALL LETTER SHARP S (German) */
+  { "",	0xE0, 0x0155, "s" }, /* LATIN SMALL LETTER R WITH ACUTE */
+  { "",	0xE1, 0x00E1, "a" }, /* LATIN SMALL LETTER A WITH ACUTE */
+  { "",	0xE2, 0x00E2, "a" }, /* LATIN SMALL LETTER A WITH CIRCUMFLEX */
+  { "",	0xE3, 0x0103, "a" }, /* LATIN SMALL LETTER A WITH BREVE */
+  { "",	0xE4, 0x00E4, "a" }, /* LATIN SMALL LETTER A WITH DIAERESIS */
+  { "",	0xE5, 0x013A, "l" }, /* LATIN SMALL LETTER L WITH ACUTE */
+  { "",	0xE6, 0x0107, "c" }, /* LATIN SMALL LETTER C WITH ACUTE */
+  { "",	0xE7, 0x00E7, "c" }, /* LATIN SMALL LETTER C WITH CEDILLA */
+  { "",	0xE8, 0x010D, "c" }, /* LATIN SMALL LETTER C WITH CARON */
+  { "",	0xE9, 0x00E9, "e" }, /* LATIN SMALL LETTER E WITH ACUTE */
+  { "",	0xEA, 0x0119, "e" }, /* LATIN SMALL LETTER E WITH OGONEK */
+  { "",	0xEB, 0x00EB, "e" }, /* LATIN SMALL LETTER E WITH DIAERESIS */
+  { "",	0xEC, 0x011B, "e" }, /* LATIN SMALL LETTER E WITH CARON */
+  { "",	0xED, 0x00ED, "i" }, /* LATIN SMALL LETTER I WITH ACUTE */
+  { "",	0xEE, 0x00EE, "i" }, /* LATIN SMALL LETTER I WITH CIRCUMFLEX */
+  { "",	0xEF, 0x010F, "d" }, /* LATIN SMALL LETTER D WITH CARON */
+  { "",	0xF0, 0x0111, "d" }, /* LATIN SMALL LETTER D WITH STROKE */
+  { "",	0xF1, 0x0144, "n" }, /* LATIN SMALL LETTER N WITH ACUTE */
+  { "",	0xF2, 0x0148, "n" }, /* LATIN SMALL LETTER N WITH CARON */
+  { "",	0xF3, 0x00F3, "o" }, /* LATIN SMALL LETTER O WITH ACUTE */
+  { "",	0xF4, 0x00F4, "o" }, /* LATIN SMALL LETTER O WITH CIRCUMFLEX */
+  { "",	0xF5, 0x0151, "o" }, /* LATIN SMALL LETTER O WITH DOUBLE ACUTE */
+  { "",	0xF6, 0x00F6, "o" }, /* LATIN SMALL LETTER O WITH DIAERESIS */
   { "divide",	0xF7, 0x00F7 }, /* DIVISION SIGN */
-  { "",	0xF8, 0x0159 }, /* LATIN SMALL LETTER R WITH CARON */
-  { "",	0xF9, 0x016F }, /* LATIN SMALL LETTER U WITH RING ABOVE */
-  { "",	0xFA, 0x00FA }, /* LATIN SMALL LETTER U WITH ACUTE */
-  { "",	0xFB, 0x0171 }, /* LATIN SMALL LETTER U WITH DOUBLE ACUTE */
-  { "",	0xFC, 0x00FC }, /* LATIN SMALL LETTER U WITH DIAERESIS */
-  { "",	0xFD, 0x00FD }, /* LATIN SMALL LETTER Y WITH ACUTE */
-  { "",	0xFE, 0x0163 }, /* LATIN SMALL LETTER T WITH CEDILLA */
+  { "",	0xF8, 0x0159, "r" }, /* LATIN SMALL LETTER R WITH CARON */
+  { "",	0xF9, 0x016F, "u" }, /* LATIN SMALL LETTER U WITH RING ABOVE */
+  { "",	0xFA, 0x00FA, "u" }, /* LATIN SMALL LETTER U WITH ACUTE */
+  { "",	0xFB, 0x0171, "u" }, /* LATIN SMALL LETTER U WITH DOUBLE ACUTE */
+  { "",	0xFC, 0x00FC, "u" }, /* LATIN SMALL LETTER U WITH DIAERESIS */
+  { "",	0xFD, 0x00FD, "y" }, /* LATIN SMALL LETTER Y WITH ACUTE */
+  { "",	0xFE, 0x0163, "t" }, /* LATIN SMALL LETTER T WITH CEDILLA */
   { "",	0xFF, 0x02D9 }, /* DOT ABOVE (Mandarin Chinese light tone) */
   { NULL, 0, 0 }
 };
+
+/* Common map for koi8-u, koi8-r */
+static iso_map_type koi8_map [] = {
+  { "", 0xa3, 0x0415, "io"}, /* CYRILLIC SMALL LETTER IO */
+  { "", 0xa4, 0x0454, "ie"}, /* CYRILLIC SMALL LETTER UKRAINIAN IE */
+  { "", 0xa6, 0x0456, "i"}, /* CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I */
+  { "", 0xa7, 0x0457, "yi"}, /* CYRILLIC SMALL LETTER YI */
+
+  { "", 0xb3, 0x04d7, "IO"}, /* CYRILLIC CAPITAL LETTER IO */
+  { "", 0xb4, 0x0404, "IE"}, /* CYRILLIC CAPITAL LETTER UKRAINIAN IE */
+  { "", 0xb6, 0x0406, "I"},  /* CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I */
+  { "", 0xb7, 0x0407, "YI"}, /* CYRILLIC CAPITAL LETTER YI */
+/* { "", 0xbf, 0x}, / * CYRILLIC COPYRIGHT SIGN */ 
+  { "", 0xc0, 0x042e, "yu"}, /* CYRILLIC SMALL LETTER YU */        
+  { "", 0xc1, 0x0430, "a"}, /* CYRILLIC SMALL LETTER A */         
+  { "", 0xc2, 0x0431, "b"}, /* CYRILLIC SMALL LETTER BE */        
+  { "", 0xc3, 0x0446, "c"}, /* CYRILLIC SMALL LETTER TSE */        
+  { "", 0xc4, 0x0434, "d"}, /* CYRILLIC SMALL LETTER DE */        
+  { "", 0xc5, 0x0435, "e"}, /* CYRILLIC SMALL LETTER IE */        
+  { "", 0xc6, 0x0444, "f"}, /* CYRILLIC SMALL LETTER EF */        
+  { "", 0xc7, 0x0433, "g"}, /* CYRILLIC SMALL LETTER GHE */       
+  { "", 0xc8, 0x0445, "h"}, /* CYRILLIC SMALL LETTER HA */        
+  { "", 0xc9, 0x0438, "i"}, /* CYRILLIC SMALL LETTER I */         
+  { "", 0xca, 0x0439, "i"}, /* CYRILLIC SMALL LETTER SHORT I */   
+  { "", 0xcb, 0x043a, "k"}, /* CYRILLIC SMALL LETTER KA */        
+  { "", 0xcc, 0x043b, "l"}, /* CYRILLIC SMALL LETTER EL */        
+  { "", 0xcd, 0x043c, "m"}, /* CYRILLIC SMALL LETTER EM */        
+  { "", 0xce, 0x043d, "n"}, /* CYRILLIC SMALL LETTER EN */        
+  { "", 0xcf, 0x043e, "o"}, /* CYRILLIC SMALL LETTER O */         
+  { "", 0xd0, 0x043f, "p"}, /* CYRILLIC SMALL LETTER PE */        
+  { "", 0xd1, 0x044f, "ya"}, /* CYRILLIC SMALL LETTER YA */        
+  { "", 0xd2, 0x0440, "r"}, /* CYRILLIC SMALL LETTER ER */        
+  { "", 0xd3, 0x0441, "s"}, /* CYRILLIC SMALL LETTER ES */        
+  { "", 0xd4, 0x0442, "t"}, /* CYRILLIC SMALL LETTER TE */        
+  { "", 0xd5, 0x0443, "u"}, /* CYRILLIC SMALL LETTER U */         
+  { "", 0xd6, 0x0436, "zh"}, /* CYRILLIC SMALL LETTER ZHE */       
+  { "", 0xd7, 0x0432, "v"}, /* CYRILLIC SMALL LETTER VE */        
+  { "", 0xd8, 0x044c, "x"}, /* CYRILLIC SMALL LETTER SOFT SIGN */ 
+  { "", 0xd9, 0x044b, "y"}, /* CYRILLIC SMALL LETTER YERU */      
+  { "", 0xda, 0x0437, "z"}, /* CYRILLIC SMALL LETTER ZE */        
+  { "", 0xdb, 0x0448, "sh"}, /* CYRILLIC SMALL LETTER SHA */       
+  { "", 0xdc, 0x044d, "e"}, /* CYRILLIC SMALL LETTER E */         
+  { "", 0xdd, 0x0449, "shch"}, /* CYRILLIC SMALL LETTER SHCHA */     
+  { "", 0xde, 0x0447, "ch"}, /* CYRILLIC SMALL LETTER CHA */       
+  { "", 0xdf, 0x044a, "w"}, /* CYRILLIC SMALL LETTER HARD SIGN */ 
+  { "", 0xe0, 0x042d, "YU"}, /* CYRILLIC CAPITAL LETTER YU */       
+  { "", 0xe1, 0x0410, "A"}, /* CYRILLIC CAPITAL LETTER A */        
+  { "", 0xe2, 0x0411, "B"}, /* CYRILLIC CAPITAL LETTER BE */         
+  { "", 0xe3, 0x0426, "C"}, /* CYRILLIC CAPITAL LETTER TSE */        
+  { "", 0xe4, 0x0414, "D"}, /* CYRILLIC CAPITAL LETTER DE */        
+  { "", 0xe5, 0x0415, "E"}, /* CYRILLIC CAPITAL LETTER IE */        
+  { "", 0xe6, 0x0424, "F"}, /* CYRILLIC CAPITAL LETTER EF */        
+  { "", 0xe7, 0x0413, "G"}, /* CYRILLIC CAPITAL LETTER GHE */        
+  { "", 0xe8, 0x0425, "H"}, /* CYRILLIC CAPITAL LETTER HA */        
+  { "", 0xe9, 0x0418, "I"}, /* CYRILLIC CAPITAL LETTER I */        
+  { "", 0xea, 0x0419, "I"}, /* CYRILLIC CAPITAL LETTER SHORT I */  
+  { "", 0xeb, 0x041a, "K"}, /* CYRILLIC CAPITAL LETTER KA */        
+  { "", 0xec, 0x041b, "L"}, /* CYRILLIC CAPITAL LETTER EL */        
+  { "", 0xed, 0x041c, "M"}, /* CYRILLIC CAPITAL LETTER EM */        
+  { "", 0xee, 0x041d, "N"}, /* CYRILLIC CAPITAL LETTER EN */        
+  { "", 0xef, 0x041e, "O"}, /* CYRILLIC CAPITAL LETTER O */        
+  { "", 0xf0, 0x041f, "P"}, /* CYRILLIC CAPITAL LETTER PE */        
+  { "", 0xf1, 0x042f, "YA"}, /* CYRILLIC CAPITAL LETTER YA */       
+  { "", 0xf2, 0x0420, "R"}, /* CYRILLIC CAPITAL LETTER ER */        
+  { "", 0xf3, 0x0421, "S"}, /* CYRILLIC CAPITAL LETTER ES */        
+  { "", 0xf4, 0x0422, "T"}, /* CYRILLIC CAPITAL LETTER TE */        
+  { "", 0xf5, 0x0423, "U"}, /* CYRILLIC CAPITAL LETTER U */        
+  { "", 0xf6, 0x0416, "ZH"}, /* CYRILLIC CAPITAL LETTER ZHE */       
+  { "", 0xf7, 0x0412, "V"}, /* CYRILLIC CAPITAL LETTER VE */        
+  { "", 0xf8, 0x042c, "X"}, /* CYRILLIC CAPITAL LETTER SOFT SIGN */
+  { "", 0xf9, 0x042b, "Y"}, /* CYRILLIC CAPITAL LETTER YERU */     
+  { "", 0xfa, 0x0417, "Z"}, /* CYRILLIC CAPITAL LETTER ZE */        
+  { "", 0xfb, 0x0428, "SH"}, /* CYRILLIC CAPITAL LETTER SHA */       
+  { "", 0xfc, 0x042d, "E"}, /* CYRILLIC CAPITAL LETTER E */        
+  { "", 0xfd, 0x0429, "SHCH"}, /* CYRILLIC CAPITAL LETTER SHCHA */     
+  { "", 0xfe, 0x0427, "CH"}, /* CYRILLIC CAPITAL LETTER CHE */      
+  { "", 0xff, 0x042a, "W"}, /* CYRILLIC CAPITAL LETTER HARD SIGN */
+  { NULL, 0, 0 }
+};	      
 
 encoding_type encoding_table[] = {
   { no_encoding, "(no encoding)", NULL },
@@ -407,6 +485,8 @@ encoding_type encoding_table[] = {
   { ISO_8859_13, "iso-8859-13", NULL },
   { ISO_8859_14, "iso-8859-14", NULL },
   { ISO_8859_15, "iso-8859-15", (iso_map_type *) iso8859_15_map },
+  { KOI8_R,      "koi8-r",      (iso_map_type *) koi8_map },
+  { KOI8_U,      "koi8-u",      (iso_map_type *) koi8_map },
   { last_encoding_code, NULL, NULL }
 };
 
@@ -553,6 +633,33 @@ language_type language_table[] = {
   { zu, "zu", "Zulu" },
   { last_language_code, NULL, NULL }
 };
+
+static const char *
+cm_search_iso_map_char (byte_t ch)
+{
+  int i;
+  iso_map_type *iso = encoding_table[document_encoding_code].isotab;
+
+  /* If no conversion table for this encoding, quit.  */
+  if (!iso)
+    return NULL;
+  
+  for (i = 0; iso[i].html; i++)
+    if (iso[i].bytecode == ch)
+      return iso[i].translit;
+
+  return NULL;
+}
+
+const char *
+lang_transliterate_char (byte_t ch)
+{
+  if (transliterate_file_names
+      && document_encoding_code != no_encoding)
+    return cm_search_iso_map_char (ch);
+  return NULL;
+}	
+
 
 /* @documentlanguage.  Maybe we'll do something useful with this in the
    future.  For now, we just recognize it.  */

@@ -1,3 +1,24 @@
+2006-06-01  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* makeinfo/html.c (html_output_head): Insert external CSS
+	reference if css_ref is set.
+	(fix_filename): Attempt to transliterate the name before falling
+	back to numeric symbol representation.
+	* makeinfo/lang.c (iso8859_2_map): Add transliterations
+	(koi8_map): New map for koi8-u and koi8-r encodings.
+	(encoding_table): Add koi8-u and koi8-r
+	(cm_search_iso_map_char,lang_transliterate_char): New functions.
+	* makeinfo/lang.h (encoding_code_type): Add KOI8_R, KOI8_U
+	(struct iso_map_type): New member `translit'.
+	(lang_transliterate_char): New function prototype.
+	* makeinfo/makeinfo.c: New options --css-ref and
+	  --transliterate-file-names.
+	* makeinfo/makeinfo.h (css_ref, transliterate_file_names): New
+	variables.
+	(URL_SAFE_CHAR): Bugfix: Make sure argument is in isalnum() domain.
+
+	* doc/texinfo.txi: Document new options.
+
 2006-05-30  <Ralf.Wildenhues@gmx.de>
 
 	* configure.ac (sigblock): Fix underquoted macro usage.

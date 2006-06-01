@@ -1,5 +1,5 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.8 2006-05-30 00:51:28 karl Exp $
+   $Id: lang.h,v 1.9 2006-06-01 23:48:33 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2006 Free Software Foundation, Inc.
 
@@ -94,6 +94,8 @@ typedef enum {
   ISO_8859_13,
   ISO_8859_14,
   ISO_8859_15,
+  KOI8_R,
+  KOI8_U,
   last_encoding_code
 } encoding_code_type;
 
@@ -113,6 +115,7 @@ typedef struct
   char *html;        /* HTML equivalent like umlaut auml => &auml; */
   byte_t bytecode;   /* 8-Bit Code (ISO 8859-1,...) */
   unicode_t unicode; /* Unicode in U+ convention */
+  char *translit;    /* 7-bit transliteration */
 } iso_map_type;
 
 /* Information about the document encoding. */
@@ -144,6 +147,8 @@ extern void cm_accent_umlaut (int arg, int start, int end),
      cm_accent_tilde (int arg, int start, int end);
 
 extern char *current_document_encoding (void);
+
+extern const char *lang_transliterate_char (byte_t ch);
 
 extern char *document_language;
 

@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.33 2006-05-30 00:51:28 karl Exp $
+   $Id: html.c,v 1.34 2006-06-01 23:48:33 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -327,7 +327,10 @@ rel=\"generator-home\" title=\"Texinfo Homepage\">\n");
 
     add_word ("--></style>\n");
   }
-
+  if (css_ref)
+    add_word_args ("<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\">\n",
+	            css_ref);
+  
   add_word ("</head>\n<body>\n");
 
   if (title && !html_title_written && titlepage_cmd_present)
@@ -679,8 +682,10 @@ add_url_name (char *nodename, int href)
     add_nodename_to_filename (nodename, href);
 }
 
-/* Convert non [A-Za-z0-9] to _00xx, where xx means the hexadecimal
-   representation of the ASCII character.  Also convert spaces and
+/* Convert non [A-Za-z0-9] characters depending on the command line options given.
+   If --transliterate-file-names is specified, these are replaced with their ASCII
+   phonetic transliteration. Otherwise, _00xx notation is used, where xx means the
+   hexadecimal representation of the ASCII character.  Also convert spaces and
    newlines to dashes.  */
 static void
 fix_filename (char *filename)
@@ -693,7 +698,11 @@ fix_filename (char *filename)
 
   for (i = 0; i < len; i++)
     {
-      if (cr_or_whitespace (oldname[i]))
+      const char *p = lang_transliterate_char (oldname[i]);
+
+      if (p)
+	strcat (filename, p);
+      else if (cr_or_whitespace (oldname[i]))
         strcat (filename, "-");
       else if (URL_SAFE_CHAR (oldname[i]))
         strncat (filename, (char *) oldname + i, 1);

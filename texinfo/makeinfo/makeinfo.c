@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.85 2006-05-30 00:51:28 karl Exp $
+   $Id: makeinfo.c,v 1.86 2006-06-01 23:48:33 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -407,6 +407,9 @@ Options for Info and plain text:\n\
 Options for HTML:\n\
       --css-include=FILE      include FILE in HTML <style> output;\n\
                                 read stdin if FILE is -.\n\
+      --css-ref=URL           generate reference to a CSS file.\n\
+      --transliterate-file-names\n\
+                              produce file names in ASCII transliteration.\n\
 "));
 
     printf (_("\
@@ -475,10 +478,14 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"));
   xexit (exit_value);
 }
 
+#define OPT_CSSREF    256
+#define OPT_TRANSLITERATE_FILE_NAMES 257
+
 struct option long_options[] =
 {
   { "commands-in-node-names", 0, &expensive_validation, 1 },
   { "css-include", 1, 0, 'C' },
+  { "css-ref", 1, 0, OPT_CSSREF },
   { "docbook", 0, 0, 'd' },
   { "enable-encoding", 0, &enable_encoding, 1 },
   { "document-language", 1, 0, 'l' },
@@ -516,6 +523,7 @@ struct option long_options[] =
   { "plaintext", 0, 0, 't' },
   { "reference-limit", 1, 0, 'r' },
   { "split-size", 1, 0, 'S'},
+  { "transliterate-file-names", 0, &transliterate_file_names, 1 },
   { "verbose", 0, &verbose_mode, 1 },
   { "version", 0, 0, 'V' },
   { "xml", 0, 0, 'x' },
@@ -621,6 +629,10 @@ main (int argc, char **argv)
           css_include = xstrdup (optarg);
           break;
 
+	case OPT_CSSREF:
+	  css_ref = xstrdup (optarg);
+	  break;
+	  
         case 'D':
         case 'U':
           /* User specified variable to set or clear. */
