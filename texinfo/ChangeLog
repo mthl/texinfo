@@ -1,3 +1,9 @@
+2006-06-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\thischapternum): new macro for
+	headings/footings, requested by Werner.
+	* NEWS, doc/texinfo.txi (Command List, Custom Headings): document it.
+
 2006-06-01  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* makeinfo/html.c (html_output_head): Insert external CSS

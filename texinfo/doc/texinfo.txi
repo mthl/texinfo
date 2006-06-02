@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
+@c $Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17962,14 +17962,16 @@ Formatter Commands}.
 
 @item @@thischapter
 @itemx @@thischaptername
+@itemx @@thischapternum
 @itemx @@thisfile
 @itemx @@thispage
 @itemx @@thistitle
-Only allowed in a heading or footing.  Stands for the number and name of
-the current chapter (in the format `Chapter 1: Title'), the chapter name
+Only allowed in a heading or footing.  Stands for, respectively, the
+number and name of the current chapter (in the format `Chapter 1:
+Title'), the current chapter name only, the current chapter number
 only, the filename, the current page number, and the title of the
 document, respectively.  @xref{Custom Headings, , How to Make Your Own
-Headings}.@refill
+Headings}.
 
 @item @@tie@{@}
 Generate a normal interword space at which a line break is not allowed.
@@ -18720,7 +18722,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
+$Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18786,7 +18788,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.164 2006-06-01 23:48:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -19484,6 +19486,11 @@ Expands to the name of the current section.@refill
 @findex thischaptername
 @item @@thischaptername
 Expands to the name of the current chapter.@refill
+
+@findex thischapternum
+@item @@thischapternum
+Expands to the number of the current chapter, or letter of the current
+appendix.
 
 @findex thischapter
 @item @@thischapter
