@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.81 2006-05-30 15:02:33 akim Exp $
+# $Id: texi2dvi,v 1.82 2006-06-02 22:03:55 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.81 $'
+rcs_revision='$Revision: 1.82 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -87,6 +87,7 @@ TeX tuning:
   -p, --pdf                  use pdftex or pdflatex for processing
   -r, --recode               call recode before TeX to translate input
       --recode-from=ENC      recode from ENC to the @documentencoding
+      --src-specials         pass --src-specials to TeX
   -t, --command=CMD          insert CMD in copy of input file
    or --texinfo=CMD          multiple values accumulate
       --translate-file=FILE  use given charset translation file for TeX
@@ -157,6 +158,7 @@ out_lang=dvi
 quiet=false     # by default let the tools' message be displayed
 recode=false
 set_language=
+src_specials=
 textra=         # Extra TeX commands to insert in the input file.
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
@@ -710,6 +712,10 @@ run_tex ()
   # Tell TeX about TCX file, if specified.
   test -n "$translate_file" && cmd="$cmd --translate-file=$translate_file"
 
+  # Tell TeX to make source specials (for backtracking from output to
+  # source, given a sufficiently smart editor), if specifed.
+  test -n "$src_specials" && cmd="$cmd $src_specials"
+
   # Tell TeX to be batch if requested.
   if $batch; then
     # \batchmode does not show terminal output at all, so we don't
@@ -1248,6 +1254,7 @@ while test x"$1" != x"$arg_sep"; do
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
+    --src-specials) src_specials=--src-specials;;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
     --text) out_lang=text;;

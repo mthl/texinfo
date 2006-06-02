@@ -1,3 +1,8 @@
+2006-06-02  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (--src-specials): new option,
+	requested by Charlie Zender.
+
 2006-06-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\thischapternum): new macro for
