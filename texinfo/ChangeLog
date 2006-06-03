@@ -1,3 +1,7 @@
+2006-06-03  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: always report tex command being used.
+
 2006-06-02  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (--src-specials): new option,
