@@ -216,5 +216,42 @@ simple_macro.texi(,233) result: @emph{macro_arg1} the \the thearg \thearg with v
 simple_macro.texi(,234) 
 simple_macro.texi(,235) ==================================
 simple_macro.texi(,236) 
-simple_macro.texi(,237) @contents
-simple_macro.texi(,238) @bye
+simple_macro.texi(,237) Define macro without arg
+simple_macro.texi(,238) @example
+simple_macro.texi(,239) @@macro test1
+simple_macro.texi(,240) test1
+simple_macro.texi(,241) @@end macro
+simple_macro.texi(,242) @end example
+simple_macro.texi(,243) 
+simple_macro.texi(,247) 
+simple_macro.texi(,248) Call with @{@}:
+simple_macro.texi(,249) 
+simple_macro.texi(,250) ==================================
+simple_macro.texi(,251) 
+simple_macro.texi(test1,252) test1simple_macro.texi(test1,252)  abc
+simple_macro.texi(,253) 
+simple_macro.texi(,254) ----------------------------------
+simple_macro.texi(,255) 
+simple_macro.texi(,256) test1 abc
+simple_macro.texi(,257) 
+simple_macro.texi(,258) ==================================
+simple_macro.texi(,259) 
+simple_macro.texi(,260) Call with something on the line
+simple_macro.texi(,261) 
+simple_macro.texi(,262) ==================================
+simple_macro.texi(,263) 
+simple_macro.texi(test1,264) test1simple_macro.texi(test1,264)  abc
+simple_macro.texi(,265) 
+simple_macro.texi(,266) ----------------------------------
+simple_macro.texi(,267) 
+simple_macro.texi(,268) test1 abc
+simple_macro.texi(,269) 
+simple_macro.texi(,270) ==================================
+simple_macro.texi(,271) 
+simple_macro.texi(,272) An empty set value
+simple_macro.texi(,273) 
+simple_macro.texi(,275) 
+simple_macro.texi(,276) 1  1
+simple_macro.texi(,277) 
+simple_macro.texi(,278) @contents
+simple_macro.texi(,279) @bye

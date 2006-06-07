@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.168 2006-05-29 23:36:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.169 2006-06-07 20:56:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -686,9 +686,9 @@ foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%simple_forma
     my $name = $hash_names[$name_index]; # name associated with hash ref
     foreach my $style (keys(%{$hash}))
     {
-         next unless (ref($hash->{$style}) eq 'HASH');
-         $hash->{$style}->{'args'} = ['normal'] if (!exists($hash->{$style}->{'args'}));
-         die "Bug: args not defined, but existing, for $style in $name" if (!defined($hash->{$style}->{'args'}));
+        next unless (ref($hash->{$style}) eq 'HASH');
+        $hash->{$style}->{'args'} = ['normal'] if (!exists($hash->{$style}->{'args'}));
+        die "Bug: args not defined, but existing, for $style in $name" if (!defined($hash->{$style}->{'args'}));
 #print STDERR "DEFAULT($name, $hash) add normal as arg for $style ($hash->{$style}), $hash->{$style}->{'args'}\n";
     }
 }
@@ -8936,13 +8936,16 @@ sub scan_texi($$$$;$)
             {
                 if (s/^{($VARRE)}//)
                 {
+                    my $value = $1;
                     if ($state->{'arg_expansion'})
                     {
-                        add_prev($text, $stack, "\@$macro" . '{' . $1 . '}');
+                        add_prev($text, $stack, "\@$macro" .'{'. $value .'}');
                         next;
                     }
                     next if ($state->{'ignored'});
-                    $_ = get_value($1) . $_;
+                    my $expansion = "No value for $value";
+                    $expansion = $value{$value} if (defined($value{$value}));
+                    $_ = $expansion . $_;
                 }
                 else
                 {
@@ -8984,7 +8987,7 @@ sub scan_texi($$$$;$)
                     $state->{'macro_name'} = $macro;
                     $state->{'macro_depth'} = 1;
                 }
-                elsif ($#$ref >= 1)
+                elsif (($#$ref >= 1) or ($#$ref <0))
                 { # no brace -> no arg
                     $_ = expand_macro ($macro, [], $_, $line_nr, $state);
                     return;
@@ -10803,13 +10806,6 @@ sub open_cmd_line($$$$)
     $state->{'no_paragraph'}++;
     open_arg ('cmd_line', 0, $state);
 }
-
-sub get_value($)
-{
-    my $value = shift;
-    return $value{$value} if ($value{$value});
-    return "No value for $value";
-} 
 
 # finish @item line in @*table
 sub add_term($$$$;$)

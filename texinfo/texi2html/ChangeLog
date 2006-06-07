@@ -1,3 +1,9 @@
+2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: Accept empty value set by @set (bug #16774).
+	Don't eat the line after a macro without arg (bug #16773).
+	* Tests/*: test for those issues.
+
 2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: rework image formatting,

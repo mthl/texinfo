@@ -19,10 +19,8 @@ glossary.texi(,43)
 glossary.texi(,44) @node glossary
 glossary.texi(,45) @chapter glossary
 glossary.texi(glossary,46) @table @asis
-glossary.texi(glossary,46) 
 glossary.texi(glossary,46) @item name1 @anchor{id1}
 glossary.texi(glossary,46) text1, arg1 
-glossary.texi(glossary,46) 
 glossary.texi(glossary,46) @item name2 @anchor{id2}
 glossary.texi(glossary,46) text2glossary.texi(glossary,46) 
 glossary.texi(glossary,46) @end table

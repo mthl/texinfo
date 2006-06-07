@@ -234,5 +234,46 @@ result: @emph{macro_arg1} the \the thearg \thearg with value \thearg
 
 ==================================
 
+Define macro without arg
+@example
+@@macro test1
+test1
+@@end macro
+@end example
+
+@macro test1
+test1
+@end macro
+
+Call with @{@}:
+
+==================================
+
+@test1{} abc
+
+----------------------------------
+
+test1 abc
+
+==================================
+
+Call with something on the line
+
+==================================
+
+@test1 abc
+
+----------------------------------
+
+test1 abc
+
+==================================
+
+An empty set value
+
+@set myspace
+
+1 @value{myspace} 1
+
 @contents
 @bye
