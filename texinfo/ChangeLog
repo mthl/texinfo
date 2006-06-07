@@ -1,3 +1,9 @@
+2006-06-07  <Ralf.Wildenhues@gmx.de>
+
+	* makeinfo/footnote.c (output_pending_notes): Use
+	add_html_block_elt instead of add_word for final part of
+	footnote, so no extra <p> is output.
+
 2006-06-05  Akim Demaille  <akim@epita.fr>
 
 	* util/bibtex.test: Add it for real.

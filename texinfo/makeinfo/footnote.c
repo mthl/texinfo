@@ -1,5 +1,5 @@
 /* footnote.c -- footnotes for Texinfo.
-   $Id: footnote.c,v 1.8 2005-05-15 00:00:07 karl Exp $
+   $Id: footnote.c,v 1.9 2006-06-07 21:52:25 karl Exp $
 
    Copyright (C) 1998, 1999, 2002 Free Software Foundation, Inc.
 
@@ -380,7 +380,7 @@ output_pending_notes (void)
       }
 
     if (html)
-      add_word ("<hr></div>");
+      add_html_block_elt ("<hr></div>");
     close_paragraph ();
     free (array);
 
