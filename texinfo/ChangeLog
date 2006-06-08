@@ -1,3 +1,9 @@
+2006-06-08  Karl Berry  <karl@gnu.org>
+
+	* po/Makevars (XGETTEXT_OPTIONS): add --keyword=__, so that the
+	gettext will mark the new __ strings (2006-05-29 change from
+	Norbert) for translation again.
+
 2006-06-07  <Ralf.Wildenhues@gmx.de>
 
 	* makeinfo/footnote.c (output_pending_notes): Use
