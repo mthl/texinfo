@@ -1,5 +1,4 @@
-/* xstrdup.c -- copy a string with out of memory checking
-   Copyright (C) 1990, 1996, 1998, 2001, 2003 Free Software Foundation, Inc.
+/* Copyright (C) 2001 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,21 +12,27 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software Foundation,
-   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
 
-#if HAVE_CONFIG_H
+
+#ifdef HAVE_CONFIG_H
 # include <config.h>
 #endif
 
-/* Specification.  */
-#include "xalloc.h"
+#include <limits.h>
 
-#include <string.h>
+#include "mbchar.h"
 
-/* Return a newly allocated copy of STRING.  */
+#if IS_BASIC_ASCII
 
-char *
-xstrdup (const char *string)
+/* Bit table of characters in the ISO C "basic character set".  */
+unsigned int is_basic_table [UCHAR_MAX / 32 + 1] =
 {
-  return strcpy (xmalloc (strlen (string) + 1), string);
-}
+  0x00001a00,		/* '\t' '\v' '\f' */
+  0xffffffef,		/* ' '...'#' '%'...'?' */
+  0xfffffffe,		/* 'A'...'Z' '[' '\\' ']' '^' '_' */
+  0x7ffffffe		/* 'a'...'z' '{' '|' '}' '~' */
+  /* The remaining bits are 0.  */
+};
+
+#endif /* IS_BASIC_ASCII */

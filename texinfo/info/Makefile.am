@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.10 2006-03-14 14:47:09 karl Exp $
+# $Id: Makefile.am,v 1.11 2006-06-18 23:39:43 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -19,14 +19,13 @@ transform = s/ginfo/info/; $(program_transform_name)
 localedir = $(datadir)/locale
 infodir2 = $(datadir)/info
 
-# -I. for funs.h.
-# Automake puts -I.. and -I$(srcdir) into DEFS by default, but
-# we need to override it, so include them ourselves.
-AM_CPPFLAGS = -I. -I$(top_srcdir)/lib -I.. -I$(srcdir)
-DEFS += -DLOCALEDIR=\"$(localedir)\" -DINFODIR=\"$(infodir)\" \
-	-DINFODIR2=\"$(infodir2)\"
-LDADD = ../lib/libtxi.a $(TERMLIBS) $(LIBINTL)
-infokey_LDADD = ../lib/libtxi.a $(LIBINTL)
+AM_CPPFLAGS = -I$(top_srcdir)/lib \
+              -I$(top_srcdir)/gnulib/lib -I$(top_builddir)/gnulib/lib
+DEFS =  -DLOCALEDIR=\"$(localedir)\" -DINFODIR=\"$(infodir)\" \
+        -DINFODIR2=\"$(infodir2)\"
+LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a \
+        $(TERMLIBS) $(LIBINTL)
+infokey_LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
 EXTRA_DIST = README pcterm.c
 

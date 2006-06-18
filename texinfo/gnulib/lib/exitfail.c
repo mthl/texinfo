@@ -1,5 +1,6 @@
-/* strdup.h -- duplicate a string
-   Copyright (C) 2004 Free Software Foundation, Inc.
+/* Failure exit status
+
+   Copyright (C) 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,18 +13,15 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software Foundation,
-   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+   along with this program; see the file COPYING.
+   If not, write to the Free Software Foundation,
+   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 
-#ifndef STRDUP_H_
-#define STRDUP_H_
-
-/* Get strdup declaration, if available.  */
-#include <string.h>
-
-#if !HAVE_DECL_STRDUP && !defined strdup
-/* Duplicate S, returning an identical malloc'd string.  */
-extern char *strdup (const char *s);
+#ifdef HAVE_CONFIG_H
+# include <config.h>
 #endif
 
-#endif /* STRDUP_H_ */
+#include "exitfail.h"
+#include "exit.h"
+
+int volatile exit_failure = EXIT_FAILURE;

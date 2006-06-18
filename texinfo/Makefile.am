@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.15 2005-04-25 00:28:31 karl Exp $
+# $Id: Makefile.am,v 1.16 2006-06-18 23:39:43 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -12,6 +12,9 @@
 
 # Be sure we're using the right version of Automake.
 AUTOMAKE_OPTIONS = 1.8 readme-alpha
+
+# Find our headers and gnulib headers.
+ACLOCAL_AMFLAGS = -I gnulib/m4
 
 # Additional files to distribute.
 EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README.dev \
@@ -27,13 +30,11 @@ if TOOLS_ONLY
   SUBDIRS = lib info makeinfo util
 else
   # All subdirectories.
-  # Do lib first since the C programs depend on it.
+  # Do libs first since the C programs depend on it.
   # Do doc last so makeinfo will be built when we get there.
   # Others are alphabetical.
-  SUBDIRS = $(native_tools) lib info makeinfo po util doc
+  SUBDIRS = $(native_tools) gnulib/lib lib info makeinfo po util doc
 endif
-
-ACLOCAL_AMFLAGS = -I m4
 
 # One special target for installers to use by hand if desired.
 install-tex:

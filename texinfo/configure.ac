@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.63 2006-05-30 20:52:36 karl Exp $
+# $Id: configure.ac,v 1.64 2006-06-18 23:39:43 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,13 +9,18 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.8], [bug-texinfo@gnu.org])
-AC_PREREQ(2.59)# Minimum Autoconf version required.
-#
-AC_CONFIG_HEADERS(config.h:config.in)# Keep filename to 8.3 for MS-DOS.
-AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
-#
+AC_INIT([GNU Texinfo], [4.8.90], [bug-texinfo@gnu.org])
+
+dnl Must come before AM_INIT_AUTOMAKE.
+AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([dist-bzip2 readme-alpha])
+
+# Minimum Autoconf version required.
+AC_PREREQ(2.59)
+
+# Where to generate output; srcdir location.
+AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
+AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 
 # When the Texinfo source is imported into other repositories
 # (NetBSD and TeX Live), timestamps are generally not preserved.  This
@@ -24,14 +29,25 @@ AM_MAINTAINER_MODE
 
 # Checks for programs.
 AC_PROG_CC
-AC_PROG_GCC_TRADITIONAL
-AC_PROG_INSTALL
-AC_PROG_MAKE_SET
+
+# Since we use gnulib: gl_EARLY must be called as soon as possible after
+# the C compiler is checked.  The others could be later, but we just
+# keep everything together.
+gl_EARLY
+
+dnl Must be after gl_EARLY but before gl_INIT.
+AC_MINIX
+
+dnl Rest of Gnulib.
+gl_INIT
+
+
+# Since we make a helper library.
 AC_PROG_RANLIB
 AM_MISSING_PROG(HELP2MAN, help2man)
 
-AC_ISC_POSIX
-AC_MINIX
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
@@ -63,7 +79,6 @@ AC_STRUCT_TM
 AC_CHECK_DECLS([memchr, strcoll, strerror])
 
 # Checks for library functions.
-AC_FUNC_ALLOCA
 AC_FUNC_STRCOLL
 AC_FUNC_VPRINTF
 # in theory only pre-sysvr3 systems needed this and it's not likely
@@ -72,9 +87,6 @@ AC_FUNC_VPRINTF
 AC_CHECK_FUNCS(bzero getcwd memset setvbuf sigaction sigprocmask \
                sigsetmask strchr)
 AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
-
-# strcasecmp and strncasecmp, gnulib-style.
-gl_STRCASE
 
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.
@@ -179,9 +191,6 @@ if test "x$termlib" = xncurses; then
   AC_CHECK_HEADERS(ncurses/termcap.h)
 fi
 
-# gnulib.
-gl_FUNC_MKSTEMP
-
 # For teTeX and TeX Live.
 AC_CANONICAL_HOST
 AC_ARG_ENABLE(multiplatform,
@@ -217,6 +226,7 @@ AC_CHECK_PROGS([TEX], [tex], [])
 AC_CONFIG_FILES([
   Makefile
   doc/Makefile
+  gnulib/lib/Makefile
   info/Makefile
   lib/Makefile
   makeinfo/Makefile

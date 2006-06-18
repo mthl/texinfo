@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.1 2006-05-08 23:16:24 karl Exp $
+# $Id: autogen.sh,v 1.2 2006-06-18 23:39:43 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -23,7 +23,7 @@ echo "Preparing CVS Texinfo infrastructure:"
 : ${AUTOCONF=autoconf}
 
 # So instead:
-cmd="$ACLOCAL -I m4 && $AUTOHEADER && $AUTOMAKE && $AUTOCONF"
+cmd="$ACLOCAL -I gnulib/m4 && $AUTOHEADER && $AUTOMAKE && $AUTOCONF"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 

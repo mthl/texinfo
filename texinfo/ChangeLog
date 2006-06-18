@@ -1,3 +1,16 @@
+2006-06-18  Karl Berry  <karl@gnu.org>
+
+	* gnulib: new subdirectory, managed by gnulib-tool.
+	* m4: delete entire subdirectory, now replaced by gnulib/m4.
+	* build-aux: new subdirectory.
+	* README.dev: doc.
+	* autogen.sh: aclocal needs -I gnulib/m4 now.
+	* Makefile.am, util/Makefile.am, lib/Makefile.am, info/Makefile.am,
+	  makeinfo/Makefile.am (AM_CPPFLAGS, LDADD): use new gnulib dirs.
+	* lib/alloca.c, lib/getopt*, lib/gettext.h, lib/mem*, lib/str*,
+	  etc.: delete, now using gnulib modules (as recorded in
+	  gnulib/m4/gnulib-cache.m4)
+
 2006-06-08  Karl Berry  <karl@gnu.org>
 
 	* po/Makevars (XGETTEXT_OPTIONS): add --keyword=__, so that the
