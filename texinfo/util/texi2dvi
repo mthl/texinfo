@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.83 2006-06-03 20:31:29 karl Exp $
+# $Id: texi2dvi,v 1.84 2006-06-19 09:35:01 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.83 $'
+rcs_revision='$Revision: 1.84 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -395,6 +395,38 @@ list_dir_to_abs ()
   eval $ld_l=\"$@\"
 }
 
+
+## ------------------------------ ##
+## Language auxiliary functions.  ##
+## ------------------------------ ##
+
+# out_lang_tex
+# ------------
+# Return the tex output language (DVI or PDF) for $OUT_LANG.
+out_lang_tex ()
+{
+  case $out_lang in
+    dvi | ps | dvipdf ) echo dvi;;
+    pdf ) echo $out_lang;;
+    html | info | text ) echo $out_lang;;
+    *)    fatal "$0: invalid out_lang: $1";;
+  esac
+}
+
+
+# out_lang_ext
+# ------------
+# Return the extension for $OUT_LANG.
+out_lang_ext ()
+{
+  case $out_lang in
+    dvipdf ) echo pdf;;
+    dvi | html | info | pdf | ps | text ) echo $out_lang;;
+    *)    fatal "$0: invalid out_lang: $1";;
+  esac
+}
+
+
 ## ------------------------- ##
 ## TeX auxiliary functions.  ##
 ## ------------------------- ##
@@ -568,7 +600,7 @@ generated_files_get ()
   # Depending on these files, infer outputs from other tools.
   while read file; do
     echo $file
-    case $language in
+    case $in_lang in
       (texinfo)
         # texindex: texinfo.cp -> texinfo.cps
        if index_file_p $file; then
@@ -657,12 +689,14 @@ xref_files_changed ()
 ## Running the TeX suite.  ##
 ## ----------------------- ##
 
+
+
 # run_tex ()
 # ----------
 # Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
-  case $language:$out_lang in
+  case $in_lang:$(out_lang_tex) in
     latex:dvi)   tex=${LATEX:-latex};;
     latex:pdf)   tex=${PDFLATEX:-pdflatex};;
     texinfo:dvi)
@@ -674,12 +708,12 @@ run_tex ()
         esac;;
     texinfo:pdf) tex=$PDFTEX;;
 
-    *) fatal 1 "$out_lang not supported for $language";;
+    *) fatal 1 "$0: $out_lang not supported for $in_lang";;
   esac
 
   # Beware of aux files in subdirectories that require the
   # subdirectory to exist.
-  case $language:$tidy in
+  case $in_lang:$tidy in
     latex:true)
        sed -n 's|^[ ]*\\include{\(.*\)/.*}.*|\1|p' "$in_input" |
        sort -u |
@@ -745,7 +779,9 @@ run_tex ()
 
   echo "$0: Running $cmd ..."
   if eval "$cmd" >&5; then
-    move_to_dest "$in_noext.$out_lang"
+    case $out_lang in
+      dvi | pdf ) move_to_dest "$in_noext.$out_lang";;
+    esac
   else
     fatal 1 "$tex exited with bad status, quitting."
   fi
@@ -769,7 +805,7 @@ run_tex ()
 # easier, though we take the risk to match false messages.
 run_bibtex ()
 {
-  case $language in
+  case $in_lang in
     latex)   bibtex=${BIBTEX:-bibtex};;
     texinfo) return;;
   esac
@@ -799,7 +835,7 @@ run_bibtex ()
 # that if the index files are out of date or nonexistent.
 run_index ()
 {
-  case $language in
+  case $in_lang in
     latex)   texindex=${MAKEINDEX:-makeindex};;
     texinfo) texindex=${TEXINDEX:-texindex};;
   esac
@@ -816,7 +852,7 @@ run_index ()
 # ---------------
 run_thumbpdf ()
 {
-  if test $out_lang = pdf \
+  if test $(out_lang_tex) = pdf \
      && test -r "$in_noext.log" \
      && grep 'thumbpdf\.sty'  "$in_noext.log" >&6 2>&1; \
   then
@@ -859,6 +895,19 @@ run_tex_suite ()
   # If we were using thumbpdf and producing PDF, then run thumbpdf
   # and TeX one last time.
   run_thumbpdf
+
+  # Install the result if we didn't already (i.e., if the output is
+  # dvipdf or ps).
+  case $out_lang in
+    dvipdf)
+      dvipdf "$in_noext.$(out_lang_tex)" "$in_noext.$(out_lang_ext)"
+      move_to_dest "$in_noext.$(out_lang_ext)"
+      ;;
+    ps)
+      dvips -o "$in_noext.$(out_lang_ext)" "$in_noext.$(out_lang_tex)"
+      move_to_dest "$in_noext.$(out_lang_ext)"
+      ;;
+  esac
 }
 
 ## -------------------------------- ##
@@ -908,7 +957,7 @@ uncomment_iftex='s/^@c texi2dvi//'
 # main info output, the user asked to run TeX, not makeinfo.
 run_makeinfo ()
 {
-  case $language in
+  case $in_lang in
   texinfo)
     # Unless required by the user, makeinfo expansion is wanted only
     # if texinfo.tex is too old.
@@ -982,10 +1031,10 @@ run_makeinfo ()
 insert_commands ()
 {
   local textra_cmd
-  case $language in
+  case $in_lang in
     latex)   textra_cmd=1i;;
     texinfo) textra_cmd='/^@setfilename/a';;
-    *)       echo "$0: internal error, unknown language: $language" >&2;
+    *)       echo "$0: internal error, unknown language: $in_lang" >&2;
   esac
 
   if test -n "$textra"; then
@@ -1009,7 +1058,7 @@ run_recode ()
   local from
   local to
 
-  if test $language = texinfo; then
+  if test $in_lang = texinfo; then
     pgm='s/^ *@documentencoding  *\([^ ][^ ]*\) *$/\1/
 	t found
 	d
@@ -1103,13 +1152,13 @@ run_core_conversion ()
     cd "$work_build" || exit 1
   fi
 
-  case $language:$out_lang in
+  case $in_lang:$(out_lang_tex) in
     *:dvi|*:pdf)
 	run_tex_suite;;
     latex:html|latex:text|latex:info)
 	run_hevea $out_lang;;
     *)
-	fatal "invalid input/output combination: $language/$out_lang";;
+	fatal "invalid input/output combination: $in_lang/$out_lang";;
   esac
 
   cd_orig
@@ -1233,6 +1282,7 @@ while test x"$1" != x"$arg_sep"; do
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
          --dvi)   out_lang=dvi;;
+         --dvipdf)   out_lang=dvipdf;;
     -e | -E | --expand) expand=t;;
     -h | --help) echo "$usage"; exit 0;;
          --html) out_lang=html;;
@@ -1251,6 +1301,7 @@ while test x"$1" != x"$arg_sep"; do
       # Make it absolute, just in case we also have --clean, or whatever.
       oname=`absolute "$1"`;;
     -p | --pdf) out_lang=pdf;;
+         --ps)  out_lang=ps;;
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
@@ -1436,7 +1487,7 @@ input_file_name_decode ()
   if test x"$oname" != x; then
     out_name=$oname
   else
-    out_name=$in_noext.$out_lang
+    out_name=$in_noext.$(out_lang_ext)
   fi
   out_dir=`func_dirname "$out_name"`
   out_dir_abs=`absolute "$out_dir"`
@@ -1455,7 +1506,7 @@ for command_line_filename in ${1+"$@"}; do
   input_file_name_decode
 
   # `texinfo' or `latex'?
-  language=`compute_language $command_line_filename`
+  in_lang=`compute_language $command_line_filename`
 
   # An auxiliary directory used for all the auxiliary tasks involved
   # in compiling this document.
@@ -1478,7 +1529,7 @@ for command_line_filename in ${1+"$@"}; do
   # Sometimes there are incompatibilities between auxiliary files for
   # DVI and PDF.  The contents can also change whether we work on PDF
   # and/or DVI.  So keep separate spaces for each.
-  workdir=$t2ddir/$out_lang
+  workdir=$t2ddir/$(out_lang_tex)
   ensure_dir "$workdir"
 
   # _build.  In a tidy build, where the auxiliary files are output.

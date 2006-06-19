@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.22 2006-06-18 23:39:43 karl Exp $
+# $Id: Makefile.am,v 1.23 2006-06-19 09:35:01 akim Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -59,6 +59,7 @@ XFAIL_TESTS =
 
 TESTS =	\
 bibtex.test \
+dvipdf.test \
 latex2html.test \
 local.test \
 texi2dvi.test

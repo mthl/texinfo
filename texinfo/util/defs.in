@@ -226,6 +226,30 @@ TEXI2DVI_pass ()
 }
 
 
+# optionset_get N OPTIONSET<1> -- OPTIONSET<2> -- ...
+# ---------------------------------------------------
+# Return OPTIONSET<N>
+optionset_get ()
+{
+  n=$1
+  shift
+  # Find the optionset.
+  while test $n != 1; do
+    case $1 in
+      --) n=$(expr $n - 1);;
+    esac
+    shift
+  done
+  # Return the optionset.
+  while true; do
+    case $#:$1 in
+      0:) break;;
+    *:--) shift; break;;
+       *) echo "$1"; shift;;
+    esac
+  done
+}
+
 # list_files ()
 # -------------
 # Return the sorted list of files in this directory, except the "invisible" ones.
@@ -252,6 +276,17 @@ assert_files ()
   list_files > ls.value
   echo "$*" | tr ' ' '\n' | sort > ls.expected
   diff -u ls.expected ls.value
+}
+
+
+# assert_and_remove_files (EXPECTED-FILES)
+# ----------------------------------------
+# Only those files are valid in the current directory.  Remove them
+# afterwards.
+assert_and_remove_files ()
+{
+  assert_files "$@"
+  rm -rf "$@"
 }
 
 # Turn on shell traces when VERBOSE is set.

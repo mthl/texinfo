@@ -22,45 +22,58 @@
 
 set -e
 
-create_input_texi </dev/null
+# one_run ARGS -- FILES
+# ---------------------
+# Run texi2dvi with ARGS, expect the FILES to be left.  Remove them.
+one_run ()
+{
+  # Testing the local build mode.
+  create_input_texi </dev/null
+  TEXI2DVI_pass $(optionset_get 1 "$@") input.texi
+  # There should only be the expected FILES and the input file.
+  assert_and_remove_files $(optionset_get 2 "$@") input.texi
+}
 
-# Testing the local build mode.
-TEXI2DVI_pass --batch input.texi
-# There should only be the DVI and the TEXI file.
-assert_files input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.texi input.tp input.vr
-rm input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.tp input.vr
+one_run --batch \
+   -- \
+   input.aux input.cp input.dvi input.fn input.ky input.log \
+   input.pg input.tp input.vr
 
-TEXI2DVI_pass --batch input.texi -o output.dvi
-# There should only be the DVI and the TEXI file.
-assert_files input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.texi input.tp input.vr output.dvi
-rm input.aux input.cp input.dvi input.fn input.ky input.log input.pg input.tp input.vr output.dvi
+
+one_run --batch -o output.dvi \
+   -- \
+   input.aux input.cp input.dvi input.fn input.ky input.log \
+   input.pg input.tp input.vr output.dvi
+
 
 # Testing the clean build mode.
 for mode in --clean --build=clean
 do
-  TEXI2DVI_pass $mode --batch input.texi
   # There should only be the DVI and the TEXI file.
-  assert_files input.dvi input.texi
-  rm input.dvi
+  one_run $mode --batch -- input.dvi
 
-  TEXI2DVI_pass $mode --batch input.texi -o output.dvi
   # There should only be the DVI and the TEXI file.
-  assert_files input.texi output.dvi
-  rm output.dvi
+  one_run $mode --batch -o output.dvi -- output.dvi
 done
 
 
 # Testing the tidy build mode.
-TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi
-# There should only be the DVI and the TEXI file.
-assert_files input.texi output.dvi output.t2d
-TEXI2DVI_pass --build=tidy --batch input.texi -o output.dvi --mostly-clean
-assert_files input.texi output.dvi
-rm output.dvi
+one_run --build=tidy --batch -o output.dvi \
+   -- \
+   output.dvi output.t2d
 
+
+# mostly-clean should remove auxiliary files, but not the expected
+# output.
+touch output.dvi
+one_run --build=tidy --batch -o output.dvi --mostly-clean \
+   -- \
+   output.dvi
+
+
+# There should only be the DVI and the TEXI file.
+create_input_texi </dev/null
 cp input.texi input2.texi
-
-TEXI2DVI_pass --clean --batch input.texi input2.texi
-# There should only be the DVI and the TEXI file.
-assert_files input2.dvi input2.texi input.dvi input.texi
-rm input.dvi input2.dvi
+one_run --clean --batch input.texi input2.texi \
+   -- \
+   input2.dvi input2.texi input.dvi

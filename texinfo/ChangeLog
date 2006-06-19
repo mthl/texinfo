@@ -1,3 +1,18 @@
+2006-06-19  Akim Demaille  <akim@epita.fr>
+
+	Support dvips and dvipdf for sake of pstricks, and to
+	spare the use tweaking TEXINPUTS.
+	* util/defs.in (optionset_get, assert_and_remove_files): New.
+	* util/texi2dvi (out_lang_tex, out_lang_ext): New.
+	Use them.
+	($language): Rename as...
+	($in_lang): this for consistency.
+	Support --dvipdf and --ps.
+	Not documented yet.
+	* util/dvipdf.test: New.
+	* util/Makefile.am (TESTS): Adjust.
+	* util/texi2dvi.tests (one_run): New.
+
 2006-06-18  Karl Berry  <karl@gnu.org>
 
 	* gnulib: new subdirectory, managed by gnulib-tool.
