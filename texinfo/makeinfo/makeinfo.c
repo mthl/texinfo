@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.86 2006-06-01 23:48:33 karl Exp $
+   $Id: makeinfo.c,v 1.87 2006-06-19 23:08:57 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -4210,18 +4210,59 @@ set_paragraph_indent (char *string)
 
 /* Translate MSGID according to the document language
    (--document-language), rather than the environment language (LANG,
-   etc.).  */
+   etc.).  This comes from the get_title function in gettext.  (xsetenv
+   and unsetenv come from the gnulib xsetenv module.)  */
 
 char *
 getdocumenttext (const char *msgid)
 {
-  char *s;
-  char *old_locale = setlocale (LC_ALL, NULL);
-  char *save_locale = xstrdup (old_locale);
+  /* The original get_title also saves, sets, and restores
+     OUTPUT_CHARSET, so that the translation will be given in
+     the proper encoding (via canonical_locale_charset).  But defining
+     that function ends up pulling a whole lot of subsidiary functions.
+     Not sure how to handle it; skip the whole thing for now.  */
+  const char *tmp;
+  char *old_LC_ALL;
+  char *old_LANGUAGE;
+  const char *result;
 
-  setlocale (LC_ALL, document_language);
-  s = gettext (msgid);
-  setlocale (LC_ALL, save_locale);
+  /* Save LC_ALL, LANGUAGE environment variables.  */
 
-  return s;
+  tmp = getenv ("LC_ALL");
+  old_LC_ALL = (tmp != NULL ? xstrdup (tmp) : NULL);
+
+  tmp = getenv ("LANGUAGE");
+  old_LANGUAGE = (tmp != NULL ? xstrdup (tmp) : NULL);
+
+  xsetenv ("LC_ALL", document_language, 1);
+  unsetenv ("LANGUAGE");
+
+#ifdef HAVE_SETLOCALE
+  if (setlocale (LC_ALL, "") == NULL)
+    /* Nonexistent locale.  Use the original.  */
+    result = msgid;
+  else
+#endif
+    {
+      /* Fetch the translation.  */
+      result = gettext (msgid);
+    }
+
+  /* Restore LC_ALL, LANGUAGE environment variables.  */
+
+  if (old_LC_ALL != NULL)
+    xsetenv ("LC_ALL", old_LC_ALL, 1), free (old_LC_ALL);
+  else
+    unsetenv ("LC_ALL");
+
+  if (old_LANGUAGE != NULL)
+    xsetenv ("LANGUAGE", old_LANGUAGE, 1), free (old_LANGUAGE);
+  else
+    unsetenv ("LANGUAGE");
+
+#ifdef HAVE_SETLOCALE
+  setlocale (LC_ALL, "");
+#endif
+
+  return result;
 }

@@ -28,6 +28,8 @@ AC_DEFUN([gl_EARLY],
 AC_DEFUN([gl_INIT],
 [
   AM_CONDITIONAL([GL_COND_LIBTOOL], [false])
+  gl_FUNC_ALLOCA
+  gl_ALLOCSA
   gl_ERROR
   gl_EXITFAIL
   gl_GETOPT
@@ -39,6 +41,7 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
+  gt_FUNC_SETENV
   gl_STAT_MACROS
   AM_STDBOOL_H
   gl_STRCASE
@@ -52,6 +55,10 @@ AC_DEFUN([gl_INIT],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
+  lib/alloca_.h
+  lib/allocsa.c
+  lib/allocsa.h
+  lib/allocsa.valgrind
   lib/error.c
   lib/error.h
   lib/exit.h
@@ -69,6 +76,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
+  lib/setenv.c
+  lib/setenv.h
   lib/stat-macros.h
   lib/stdbool_.h
   lib/strcase.h
@@ -80,10 +89,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strnlen1.c
   lib/strnlen1.h
   lib/tempname.c
+  lib/unsetenv.c
   lib/xalloc-die.c
   lib/xalloc.h
   lib/xmalloc.c
+  lib/xsetenv.c
+  lib/xsetenv.h
+  m4/alloca.m4
+  m4/allocsa.m4
   m4/codeset.m4
+  m4/eealloc.m4
   m4/error.m4
   m4/exitfail.m4
   m4/getopt.m4
@@ -115,6 +130,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/po.m4
   m4/printf-posix.m4
   m4/progtest.m4
+  m4/setenv.m4
   m4/signed.m4
   m4/size_max.m4
   m4/stat-macros.m4

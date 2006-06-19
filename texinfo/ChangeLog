@@ -1,5 +1,10 @@
 2006-06-19  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/makeinfo.c (getdocumenttext): replace with a modified
+	version of get_title from gettext, as suggested by Bruno Haible,
+	back on 2 Dec 2003.
+	* gnulib: import xsetenv module.
+	
 	* doc/texinfo.tex (\indexdotfill): back to regular (non-italic)
 	periods, suggested by Werner Lemberg and others.
 
