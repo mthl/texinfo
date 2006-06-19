@@ -1,5 +1,8 @@
 2006-06-19  Karl Berry  <karl@gnu.org>
 
+	* system.h: move to top level.
+	* */Makefile.am (AM_CPPFLAGS): no longer need -I$(top_srcdir)/lib.
+
 	* makeinfo/makeinfo.c (getdocumenttext): replace with a modified
 	version of get_title from gettext, as suggested by Bruno Haible,
 	back on 2 Dec 2003.
