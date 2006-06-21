@@ -1,5 +1,15 @@
 2006-06-21  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi (fatal): Rename as...
+	(error): this.
+	If the exit status is 0, don't exit.
+	(run): New.
+	Use it where appropriate.
+	(run_dvipdf): New.
+	Use it.
+
+2006-06-21  Akim Demaille  <akim@epita.fr>
+
 	* util/Makefile.am, info/Makefile.am, makeinfo/Makefile.am,
 	* lib/Makefile.am (DEFS): Remove, included in...
 	(AM_CPPFLAGS): this.
