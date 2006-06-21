@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.9 2006-06-18 23:39:43 karl Exp $
+# $Id: Makefile.am,v 1.10 2006-06-21 08:08:48 akim Exp $
 # Makefile.am for texinfo/lib.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -12,8 +12,10 @@
 
 noinst_LIBRARIES = libtxi.a
 
-AM_CPPFLAGS = -I$(top_srcdir)/gnulib/lib -I$(top_builddir)/gnulib/lib
-DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+AM_CPPFLAGS = -I$(top_srcdir)			\
+  -I$(top_srcdir)/gnulib/lib			\
+  -I$(top_builddir)/gnulib/lib			\
+  -DLOCALEDIR=\"$(localedir)\"
 
 libtxi_a_SOURCES = substring.c system.h xexit.c
 

@@ -1,3 +1,10 @@
+2006-06-21  Akim Demaille  <akim@epita.fr>
+
+	* util/Makefile.am, info/Makefile.am, makeinfo/Makefile.am,
+	* lib/Makefile.am (DEFS): Remove, included in...
+	(AM_CPPFLAGS): this.
+	Add -I $(top_srcdir) to find system.h.
+
 2006-06-19  Karl Berry  <karl@gnu.org>
 
 	* system.h: move to top level.
@@ -7,7 +14,7 @@
 	version of get_title from gettext, as suggested by Bruno Haible,
 	back on 2 Dec 2003.
 	* gnulib: import xsetenv module.
-	
+
 	* doc/texinfo.tex (\indexdotfill): back to regular (non-italic)
 	periods, suggested by Werner Lemberg and others.
 
