@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
+@c $Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5283,6 +5283,9 @@ Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the @code{goto-node}
 command in standalone Info takes either an anchor name or a node name as
 an argument.  (@xref{goto-node,,,info-stnd,GNU Info}.)
+
+Also, like node names, anchor names cannot include some characters
+(@pxref{Node Line Requirements}).
 
 
 @node Menus
@@ -18722,7 +18725,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
+$Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18788,7 +18791,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.165 2006-06-02 00:11:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
