@@ -1,3 +1,8 @@
+2006-06-07  <Ralf.Wildenhues@gmx.de>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Require Automake 1.9, since
+	non-direct subdirs in SUBDIRS (gnulib/lib) is a 1.9 feature.
+
 2006-06-24  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (anchor): pxref Node Line Requirements since the
