@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.85 2006-06-21 08:18:09 akim Exp $
+# $Id: texi2dvi,v 1.86 2006-06-26 09:29:41 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.85 $'
+rcs_revision='$Revision: 1.86 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -637,7 +637,9 @@ generated_files_get ()
       echo $file
     fi
   done |
-  sort
+  sort |
+  # Some files are opened several times, e.g., listings.sty's *.vrb.
+  uniq
 }
 
 

@@ -1,3 +1,7 @@
+2006-06-26  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (generated_files_get): Call uniq.
+
 2006-06-07  <Ralf.Wildenhues@gmx.de>
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Require Automake 1.9, since
