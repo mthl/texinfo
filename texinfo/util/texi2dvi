@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.86 2006-06-26 09:29:41 akim Exp $
+# $Id: texi2dvi,v 1.87 2006-06-27 16:23:19 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.86 $'
+rcs_revision='$Revision: 1.87 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -424,7 +424,7 @@ out_lang_tex ()
     dvi | ps | dvipdf ) echo dvi;;
     pdf ) echo $out_lang;;
     html | info | text ) echo $out_lang;;
-    *)    error "$0: invalid out_lang: $1";;
+    *)    error 1 "$0: invalid out_lang: $1";;
   esac
 }
 
@@ -437,7 +437,7 @@ out_lang_ext ()
   case $out_lang in
     dvipdf ) echo pdf;;
     dvi | html | info | pdf | ps | text ) echo $out_lang;;
-    *)    error "$0: invalid out_lang: $1";;
+    *)    error 1 "$0: invalid out_lang: $1";;
   esac
 }
 
@@ -1150,7 +1150,11 @@ compute_language ()
 
 # run_hevea (MODE)
 # ----------------
-# Convert to HTML.
+# Convert to HTML/INFO/TEXT.
+#
+# Don't pass `-noiso' to hevea: it's useless in HTML since anyway the
+# charset is set to latin1, and troublesome in other modes since
+# accented characters loose their accents.
 run_hevea ()
 {
   local hevea=${HEVEA:-hevea}
@@ -1159,19 +1163,19 @@ run_hevea ()
   case $1 in
     html) ;;
     text|info) run_hevea="$run_hevea -$1";;
-    *) error "run_hevea: invalid argument: $1";;
+    *) error 1 "run_hevea: invalid argument: $1";;
   esac
 
   # Compiling to the tmp directory enables to preserve a previous
-  # successful compilation.  Unfortunately it makes it hard to move
-  # the image back to the destination directory.  So compile to the
-  # actual destination.
-  run_hevea="$run_hevea -fix -noiso -O -o '$out_name'"
+  # successful compilation.
+  run_hevea="$run_hevea -fix -O -o '$out_base'"
   run_hevea="$run_hevea `list_prefix includes -I` -I '$orig_pwd' "
   run_hevea="$run_hevea '$in_input'"
 
   verbose "running $run_hevea"
-  if eval "$run_hevea" >&5; then :; else
+  if eval "$run_hevea" >&5; then
+    move_to_dest "$out_base"
+  else
     error 1 "$hevea exited with bad status, quitting."
   fi
 }
@@ -1194,7 +1198,7 @@ run_core_conversion ()
     latex:html|latex:text|latex:info)
 	run_hevea $out_lang;;
     *)
-	error "invalid input/output combination: $in_lang/$out_lang";;
+	error 1 "invalid input/output combination: $in_lang/$out_lang";;
   esac
 
   cd_orig

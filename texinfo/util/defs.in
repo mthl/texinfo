@@ -289,6 +289,20 @@ assert_and_remove_files ()
   rm -rf "$@"
 }
 
+
+# title TITLE...
+# --------------
+# Make a huge title to ease the reading of the output.
+title ()
+{
+  (
+    set +x
+    echo "    $@    " | sed -e 's/./=/g'
+    echo "    $@    "
+    echo "    $@    " | sed -e 's/./=/g'
+  )
+}
+
 # Turn on shell traces when VERBOSE is set.
 if test -n "$VERBOSE"; then
   set -x

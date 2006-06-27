@@ -24,20 +24,41 @@ required='hevea'
 
 set -e
 
-create_input_tex </dev/null
+# For the creation of auxiliary files.
+create_input_tex <<EOF
+\tableofcontents
+\section{First}
+\section{Second}
+EOF
 
-# run_hevea_check HTML|INFO|TEXT
+# run_hevea_check FORMAT OPTIONS
+# ------------------------------
 run_hevea_check ()
 {
-  out=$1
+  title "$@"
+
+  format="$1"
+  shift
+
   # Testing the local build mode.
-  TEXI2DVI_pass --$out --batch input.tex
-  # There should only be the DVI and the TEXI file.
-  assert_files input.$out input.tex
-  rm input.$out
+  TEXI2DVI_pass --batch --$format "$@" input.tex
+
+  case $format:$@ in
+    *clean* ) auxfiles='';;
+     *tidy* ) auxfiles='input.t2d';;
+     html:*|text:* ) auxfiles='input.haux input.htoc';;
+      dvi:* ) auxfiles='input.aux input.log input.toc';;
+          * ) auxfiles='';;
+  esac
+  # There should only be the expected output and the source file.
+  assert_files $auxfiles input.$out input.tex
+  rm -fr $auxfiles input.$out
 }
 
-for out in html info text
+for opt in "" "--clean" "--tidy"
 do
-  run_hevea_check $out
+  for out in html info text
+    do
+    run_hevea_check $out $opt
+  done
 done
