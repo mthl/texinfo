@@ -303,6 +303,54 @@ title ()
   )
 }
 
+# $latex_paragraph
+# ----------------
+# Some lengthy LaTeX.
+# grep -E '^[a-zA-Z]+$' /usr/share/dict/words | sed 200q | pr --page-width=76 --column=5 --omit-header
+latex_paragraph='
+A              Acrux        Aegean           Ahmad          Albany
+AOL            Actaeon        Aelfric        Ahmadabad      Albee
+Aachen         Acton        Aeneas           Ahmed          Alberio
+Aaliyah        Acts         Aeneid           Ahriman        Albert
+Aaron          Acuff        Aeolus           Aida           Alberta
+Abbas          Ada          Aeroflot         Aiken          Alberto
+Abbasid        Adam         Aeschylus        Aileen         Albigensian
+Abbott         Adams        Aesculapius    Aimee     Albion
+Abby           Adan         Aesop            Ainu           Albireo
+Abdul          Adana        Afghan           Airedale       Albuquerque
+Abe            Adar         Afghanistan    Airedales        Alcatraz
+Abel           Addams       Afghans          Aisha          Alcestis
+Abelard        Adderley       Africa         Ajax           Alcibiades
+Abelson        Addie        African          Akbar          Alcmena
+Aberdeen       Addison        Africans       Akhmatova      Alcoa
+Abernathy      Adela        Afrikaans        Akihito        Alcott
+Abidjan        Adelaide       Afrikaner      Akita          Alcuin
+Abigail        Adele        Afrikaners     Akkad     Alcyone
+Abilene        Adeline        Afro           Akron          Aldan
+Abner          Aden         Afrocentrism   Al        Aldebaran
+Abraham        Adenauer       Afros          Ala     Alden
+Abram          Adhara       Ag       Alabama        Alderamin
+Abrams         Adidas       Agamemnon        Alabaman       Aldo
+Absalom        Adirondack     Agassi         Alabamans      Aldrin
+Abuja          Adirondacks    Agassiz        Alabamian      Alec
+Abyssinia      Adkins       Agatha           Alabamians     Aleichem
+Abyssinian     Adler        Aggie            Aladdin        Alejandra
+Ac             Adolf        Aglaia           Alamo          Alejandro
+Acadia         Adolfo       Agnes            Alamogordo     Alembert
+Acapulco       Adolph       Agnew            Alan           Aleppo
+Accra          Adonis       Agni             Alana          Aleut
+Acevedo        Adonises       Agra           Alar           Aleutian
+Achaean        Adrian       Agricola         Alaric         Alex
+Achebe         Adriana        Agrippa        Alaska         Alexander
+Achernar       Adriatic       Agrippina      Alaskan        Alexandra
+Acheson        Adrienne       Aguilar        Alaskans       Alexandria
+Achilles       Advent       Aguinaldo        Alba           Alexei
+Aconcagua      Adventist      Aguirre        Albania        Alexis
+Acosta         Advents        Agustin        Albanian       Alfonso
+Acropolis      Advil        Ahab             Albanians      Alfonzo
+'
+
+
 # Turn on shell traces when VERBOSE is set.
 if test -n "$VERBOSE"; then
   set -x

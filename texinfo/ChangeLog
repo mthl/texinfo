@@ -1,5 +1,13 @@
 2006-06-27  Akim Demaille  <akim@epita.fr>
 
+	* util/defs.in ($latex_paragraph): New.
+	* util/latex2html.test (input.tex): Make it big enough to trigger
+	the info file splitting.
+	* util/texi2dvi (move_to_dest): Accept several arguments.
+	(run_hevea): Use it to move the whole family.
+
+2006-06-27  Akim Demaille  <akim@epita.fr>
+
 	Fix the clean invocations to hevea.
 	Note that this breaks document using images (to be fixed).
 	* util/latex2html.test (run_hevea_check): Extend to support

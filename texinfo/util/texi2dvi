@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.88 2006-06-27 16:29:54 akim Exp $
+# $Id: texi2dvi,v 1.89 2006-06-27 17:01:26 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.88 $'
+rcs_revision='$Revision: 1.89 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -505,8 +505,9 @@ output_base_name ()
   esac
 }
 
-# move_to_dest FILE
-# -----------------
+
+# move_to_dest FILE...
+# --------------------
 # Move the FILE to the place where the user expects it.  FILE can be
 # the principal output (in which case -o directly apply), or an auxiliary
 # file with the same base name.
@@ -514,18 +515,21 @@ move_to_dest ()
 {
   local dest
 
-  case $tidy:$oname in
-    true:)  dest=$orig_pwd;;
-    false:) dest=;;
-    *:*)    dest=$(output_base_name "$1");;
-  esac
-  if test ! -f "$1"; then
-    error 1 "no such file or directory: $1"
-  fi
-  if test -n "$dest"; then
-    verbose "Copying $1 to $dest"
-    cp -p "$1" "$dest"
-  fi
+  for file
+  do
+    case $tidy:$oname in
+      true:)  dest=$orig_pwd;;
+      false:) dest=;;
+      *:*)    dest=$(output_base_name "$file");;
+    esac
+    if test ! -f "$file"; then
+      error 1 "no such file or directory: $file"
+    fi
+    if test -n "$dest"; then
+      verbose "Copying $file to $dest"
+      cp -p "$file" "$dest"
+    fi
+  done
 }
 
 
@@ -1178,7 +1182,11 @@ run_hevea ()
 
   verbose "running $run_hevea"
   if eval "$run_hevea" >&5; then
-    move_to_dest "$out_base"
+    case $1 in
+    html|text) move_to_dest "$out_base";;
+    info) # There can be foo.info-1, foo.info-2 etc.
+               move_to_dest "$out_base"*;;
+    esac
   else
     error 1 "$hevea exited with bad status, quitting."
   fi
