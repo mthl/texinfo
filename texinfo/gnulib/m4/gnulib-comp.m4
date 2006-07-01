@@ -47,7 +47,9 @@ AC_DEFUN([gl_INIT],
   gl_STRCASE
   gl_FUNC_STRDUP
   gl_FUNC_STRERROR
+  gl_HEADER_SYS_STAT_H
   gl_HEADER_UNISTD
+  gl_FUNC_WCWIDTH
   gl_XALLOC
 ])
 
@@ -79,6 +81,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/setenv.c
   lib/setenv.h
   lib/stat-macros.h
+  lib/stat_.h
   lib/stdbool_.h
   lib/strcase.h
   lib/strcasecmp.c
@@ -90,6 +93,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strnlen1.h
   lib/tempname.c
   lib/unsetenv.c
+  lib/wcwidth.h
   lib/xalloc-die.c
   lib/xalloc.h
   lib/xmalloc.c
@@ -101,6 +105,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/eealloc.m4
   m4/error.m4
   m4/exitfail.m4
+  m4/full-header-path.m4
   m4/getopt.m4
   m4/gettext.m4
   m4/glibc2.m4
@@ -140,10 +145,12 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strdup.m4
   m4/strerror.m4
   m4/strerror_r.m4
+  m4/sys_stat_h.m4
   m4/uintmax_t.m4
   m4/ulonglong.m4
   m4/unistd_h.m4
   m4/wchar_t.m4
+  m4/wcwidth.m4
   m4/wint_t.m4
   m4/xalloc.m4
   m4/xsize.m4

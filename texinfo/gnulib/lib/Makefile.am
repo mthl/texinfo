@@ -133,6 +133,23 @@ libgnu_a_SOURCES += strnlen1.h strnlen1.c
 
 ## end   gnulib module strnlen1
 
+## begin gnulib module sys_stat
+
+BUILT_SOURCES += $(SYS_STAT_H)
+EXTRA_DIST += stat_.h
+
+# We need the following in order to create <sys/stat.h> when the system
+# has one that is incomplete.
+sys/stat.h: stat_.h
+	test -d sys || mkdir sys
+	sed -e 's|@''FULL_PATH_SYS_STAT_H''@|$(FULL_PATH_SYS_STAT_H)|g' \
+	    < $(srcdir)/stat_.h > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += sys/stat.h sys/stat.h-t
+MOSTLYCLEANDIRS += sys
+
+## end   gnulib module sys_stat
+
 ## begin gnulib module unistd
 
 BUILT_SOURCES += $(UNISTD_H)
@@ -144,6 +161,12 @@ unistd.h:
 MOSTLYCLEANFILES += unistd.h
 
 ## end   gnulib module unistd
+
+## begin gnulib module wcwidth
+
+libgnu_a_SOURCES += wcwidth.h
+
+## end   gnulib module wcwidth
 
 ## begin gnulib module xalloc-die
 
