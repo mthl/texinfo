@@ -1,3 +1,9 @@
+2006-07-03  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* doc/txi-pl.tex: Do not use \prefixing and \notprefixing. They
+	were defined in PLaTeX, but are no longer global. Use ISO-8859-1
+	instead.
+
 2006-06-27  Akim Demaille  <akim@epita.fr>
 
 	* util/defs.in ($latex_paragraph): New.
