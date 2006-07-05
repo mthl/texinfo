@@ -1,5 +1,5 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.8 2005-05-15 00:00:07 karl Exp $
+   $Id: macro.c,v 1.9 2006-07-05 13:39:05 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2005 Free Software Foundation, Inc.
 
@@ -151,13 +151,14 @@ add_macro (char *name, char **arglist, char *body, char *source_file,
   def->source_lineno = source_lineno;
   def->body = body;
   def->arglist = arglist;
+  def->argcount = array_len (arglist);
   def->inhibited = 0;
   def->flags = flags;
 }
 
 
 char **
-get_brace_args (int quote_single)
+get_brace_args (enum quote_type quote)
 {
   char **arglist, *word;
   int arglist_index, arglist_size;
@@ -187,8 +188,10 @@ get_brace_args (int quote_single)
           depth++;
           input_text_offset++;
         }
-      else if ((character == ',' && !quote_single) ||
-               ((character == '}') && depth == 1))
+      else if ((character == ','
+		&& !(quote == quote_single
+		     || (quote == quote_many && depth > 1)))
+	       || ((character == '}') && depth == 1))
         {
           int len = input_text_offset - start;
 
@@ -285,7 +288,7 @@ get_macro_args (MACRO_DEF *def)
             }
         }
     }
-  return get_brace_args (def->flags & ME_QUOTE_ARG);
+  return get_brace_args (def->argcount == 1 ? quote_single : quote_many);
 }
 
 /* Substitute actual parameters for named parameters in body.
@@ -386,17 +389,13 @@ char *
 expand_macro (MACRO_DEF *def)
 {
   char **arglist;
-  int num_args;
   char *execution_string = NULL;
   int start_line = line_number;
-
-  /* Find out how many arguments this macro definition takes. */
-  num_args = array_len (def->arglist);
 
   /* Gather the arguments present on the line if there are any. */
   arglist = get_macro_args (def);
 
-  if (num_args < array_len (arglist))
+  if (def->argcount < array_len (arglist))
     {
       free_array (arglist);
       line_error (_("Macro `%s' called on line %d with too many args"),
@@ -567,12 +566,6 @@ define_macro (char *mactype, int recursive)
                 }
             }
         }
-      
-      /* If we have exactly one argument, do @quote-arg implicitly.  Not
-         only does this match TeX's behavior (which can't feasibly be
-         changed), but it's a good idea.  */
-      if (arglist_index == 1)
-        flags |= ME_QUOTE_ARG;
     }
 
   /* Read the text carefully until we find an "@end macro" which
@@ -595,6 +588,7 @@ define_macro (char *mactype, int recursive)
           (strncmp (line + 1, "allow-recursion", 15) == 0) &&
           (line[16] == 0 || whitespace (line[16])))
         {
+	  warning (_("@allow-recursion is deprecated; please use @rmacro instead"));
           for (i = 16; whitespace (line[i]); i++);
           strcpy (line, line + i);
           flags |= ME_RECURSE;
@@ -609,20 +603,14 @@ define_macro (char *mactype, int recursive)
           (strncmp (line + 1, "quote-arg", 9) == 0) &&
           (line[10] == 0 || whitespace (line[10])))
         {
+	  warning (_("@quote-arg is deprecated; arguments are quoted by default"));
           for (i = 10; whitespace (line[i]); i++);
           strcpy (line, line + i);
-
-          if (arglist && arglist[0] && !arglist[1])
-            {
-              flags |= ME_QUOTE_ARG;
-              if (!*line)
-                {
-                  free (line);
-                  continue;
-                }
-            }
-          else
-           line_error (_("@quote-arg only useful for single-argument macros"));
+	  if (!*line)
+	    {
+	      free (line);
+	      continue;
+	    }
         }
 
       if (*line == COMMAND_PREFIX

@@ -1,5 +1,5 @@
 /* macro.h -- declarations for macro.c.
-   $Id: macro.h,v 1.3 2005-05-15 00:00:07 karl Exp $
+   $Id: macro.h,v 1.4 2006-07-05 13:39:05 karl Exp $
 
    Copyright (C) 1998, 99 Free Software Foundation, Inc.
 
@@ -37,16 +37,16 @@ typedef struct {
 typedef struct {
   char *name;                   /* Name of the macro. */
   char **arglist;               /* Args to replace when executing. */
+  int argcount;                 /* Number of args in arglist */
   char *body;                   /* Macro body. */
   char *source_file;            /* File where this macro is defined. */
   int source_lineno;            /* Line number within FILENAME. */
   int inhibited;                /* Nonzero means make find_macro () fail. */
-  int flags;                    /* ME_RECURSE, ME_QUOTE_ARG, etc. */
+  int flags;                    /* ME_RECURSE, etc. */
 } MACRO_DEF;
 
 /* flags for MACRO_DEF */
 #define ME_RECURSE      0x01
-#define ME_QUOTE_ARG    0x02
 
 extern void execute_macro (MACRO_DEF *def);
 extern MACRO_DEF *find_macro (char *name);
@@ -72,6 +72,8 @@ extern void cm_alias (void), cm_definfoenclose (void);
 
 extern int array_len (char **array);
 extern void free_array (char **array);
-extern char **get_brace_args (int quote_single);
+
+enum quote_type { quote_none, quote_single, quote_many };
+extern char **get_brace_args (enum quote_type type);
 
 #endif /* not MACRO_H */

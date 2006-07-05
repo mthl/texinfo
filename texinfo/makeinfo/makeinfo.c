@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.87 2006-06-19 23:08:57 karl Exp $
+   $Id: makeinfo.c,v 1.88 2006-07-05 13:39:05 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -3640,7 +3640,7 @@ cm_ifeq (void)
 {
   char **arglist;
 
-  arglist = get_brace_args (0);
+  arglist = get_brace_args (quote_none);
 
   if (arglist)
     {

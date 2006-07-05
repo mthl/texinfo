@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
+@c $Id: texinfo.txi,v 1.167 2006-07-05 13:39:05 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13768,16 +13768,71 @@ No arguments here.
 @end display
 
 @cindex Comma, in macro arguments
+Passing strings containing commas as macro arguments requires special
+care, since they should be properly @dfn{quoted} to prevent
+@command{makeinfo} from confusing them with argument separators.  To
+manually quote a comma, prepend it with a backslash character, like
+this: @code{\,}.  Alternatively, use the @code{@@comma} command
+(@pxref{Inserting a Comma}).  However, to facilitate use of macros,
+@command{makeinfo} implements a set of rules called @dfn{automatic
+quoting}:
+
+@enumerate 1
+@item If a macro takes only one argument, all commas in its invocation
+are quoted by default.  For example:
+
+@example
+@group
+@@macro FIXME@{text@}
+@@strong@{FIXME: \text\@}
+@@end macro
+
+@@FIXME@{A nice feature, though it can be dangerous.@}
+@end group
+@end example
+
+@noindent
+will produce the following output
+
+@example
+@strong{FIXME: A nice feature, though it can be dangerous.}
+@end example
+
+And indeed, it can.  Namely, @command{makeinfo}
+does not control number of arguments passed to one-argument
+macros, so be careful when you invoke them.
+
+@item If a macro calls another macro (possibly itself), any commas in
+the nested macro invocations are quoted by default.  Thus, the
+following example:
+
+@example
+@group
+@@rmacro cat@{a,b@}
+\a\\b\
+@@end rmacro
+
+@@cat@{@@cat@{foo, bar@}, baz@}
+@end group
+@end example
+
+@noindent
+will produce the string @samp{foobarbaz}.
+
+@item Otherwise, a comma should be explicitly quoted, as above, to be
+treated as a part of an argument.
+@end enumerate
+
 @cindex Braces, in macro arguments
-To insert a comma, brace, or backslash in an argument, prepend a
-backslash, as in
+Other characters that need to be quoted in macro arguments are
+curly braces and backslash.  For example
 
 @example
 @@@var{macname} @{\\\@{\@}\,@}
 @end example
 
 @noindent
-which will pass the (almost certainly error-producing) argument
+will pass the (almost certainly error-producing) argument
 @samp{\@{@},} to @var{macname}.  However, commas in parameters, even
 if escaped by a backslash, might cause trouble in @TeX{}.
 
@@ -18725,7 +18780,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
+$Id: texinfo.txi,v 1.167 2006-07-05 13:39:05 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18791,7 +18846,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.166 2006-06-24 22:02:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.167 2006-07-05 13:39:05 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

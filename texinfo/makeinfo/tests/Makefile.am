@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.5 2004-04-11 17:56:47 karl Exp $
+# $Id: Makefile.am,v 1.6 2006-07-05 13:39:05 karl Exp $
 # Makefile.am for texinfo/tests/makeinfo.
 #
 # This file is free software; as a special exception the author gives
@@ -19,6 +19,7 @@ TESTS = accent accentenc \
   macro-at menu-whitespace \
   no-headers \
   node-expand node-value node-whitespace \
+  quote-args \
   top \
   twofiles
 
@@ -33,4 +34,5 @@ EXTRA_DIST = $(noinst_SCRIPTS) \
   include-value.txi incl-incl.txi \
   macro-at.txi menu-whitespace.txi \
   node-expand.txi node-value.txi node-whitespace.txi \
+  quote-args.txi \
   top.txi # top2.txi
