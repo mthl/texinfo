@@ -1,3 +1,23 @@
+2006-07-04  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* makeinfo/macro.c (add_macro): Initialize def->argcount
+	(get_brace_args): Change argument type to enum quote_type.
+	(All callers updated.) Implement default argument quoting.
+	(expand_macro): Use def->argcount to control the number of passed
+	arguments.
+	(define_macro): Issue a warning if @allow-recursion or @quote-arg
+	is used.
+	* makeinfo/macro.h (MACRO_DEF): New member argcount
+        (enum quote_type): New data type.
+        (get_brace_args): Change argument type to enum quote_type
+	(ME_QUOTE_ARG): Remove the macro	 
+	* makeinfo/makeinfo.c (cm_ifeq): Update call to get_brace_args 
+        * makeinfo/tests/Makefile.am (TESTS): New test quote-args
+        (EXTRA_DIST): New file quote-args.txi
+        * makeinfo/tests/quote-args: New test
+        * makeinfo/tests/quote-args.txi: New file
+	* doc/texinfo.txi: Document automatic argument quoting
+
 2006-07-03  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* doc/txi-pl.tex: Do not use \prefixing and \notprefixing. They
