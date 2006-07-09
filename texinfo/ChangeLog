@@ -1,3 +1,8 @@
+2006-07-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo Pointer Creation, Writing a Menu):
+	mention that accesskey is used in the HTML output.
+
 2006-07-09  <Ralf.Wildenhues@gmx.de>
 
 	* doc/texinfo.txi: Fix some typos.
