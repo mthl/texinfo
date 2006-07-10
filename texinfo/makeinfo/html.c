@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.34 2006-06-01 23:48:33 karl Exp $
+   $Id: html.c,v 1.35 2006-07-10 23:07:12 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -557,6 +557,7 @@ insert_html_tag_with_attribute (start_or_end, tag, format, va_alist)
   /* texinfo.tex doesn't support more than one font attribute
      at the same time.  */
   if ((start_or_end == START) && old_tag && *old_tag
+      && !STREQ (old_tag, "samp")
       && !rollback_empty_tag (old_tag))
     add_word_args ("</%s>", old_tag);
 
@@ -564,13 +565,13 @@ insert_html_tag_with_attribute (start_or_end, tag, format, va_alist)
     {
       if (start_or_end == START)
         add_word_args (format ? "<%s %s>" : "<%s>", tag, formatted_attribs);
-      else if (!rollback_empty_tag (tag))
+      else if (STREQ (tag, "samp") || !rollback_empty_tag (tag))
         /* Insert close tag only if we didn't rollback,
            in which case the opening tag is removed.  */
         add_word_args ("</%s>", tag);
     }
 
-  if ((start_or_end != START) && old_tag && *old_tag)
+  if ((start_or_end != START) && old_tag && *old_tag && !STREQ (old_tag, "samp"))
     add_word_args (strlen (old_attribs) > 0 ? "<%s %s>" : "<%s>",
         old_tag, old_attribs);
 

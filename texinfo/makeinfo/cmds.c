@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.64 2006-05-05 16:31:37 karl Exp $
+   $Id: cmds.c,v 1.65 2006-07-10 23:07:12 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
@@ -837,12 +837,12 @@ cm_code (int arg)
             { /* If @samp specifically, add quotes a la TeX output.  */
               if (STREQ (command, "samp"))
 		add_word ("&lsquo;");
-              add_word ("<samp>");
+	      insert_html_tag (arg, "samp");
             }
           insert_html_tag_with_attribute (arg, "span", "class=\"%s\"",command);
           if (arg == END)
             {
-              add_word ("</samp>");
+	      insert_html_tag (arg, "samp");
               if (STREQ (command, "samp"))
 		add_word ("&rsquo;");
             }

@@ -1,3 +1,16 @@
+2006-07-10  <Ralf.Wildenhues@gmx.de>
+
+	* makeinfo/html.c (insert_html_tag_with_attribute): Treat `samp'
+	special, to allow it to nest.
+	* makeinfo/cmds.c (cm_code): use insert_html_tag to add `samp'
+	instead of add_word, so that the roll-back of outer tags works
+	correctly.  (This fixes @option inside of @emph causing badly
+	nested tags in the HTML output, see 8 Jun 2006 00:12:55 +0200 mail.
+	The general problem still remains.)
+	* makeinfo/tests/emph-option: New test.
+	* makeinfo/tests/emph-option.txi: New file.
+	* makeinfo/tests/Makefile.am: Adjust.
+
 2006-07-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (makeinfo Pointer Creation, Writing a Menu):
