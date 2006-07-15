@@ -1,3 +1,15 @@
+2006-07-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\code): make ' active.
+	(@lisp,@example): call \quoteexpand.
+	(\quoteexpand): new definition to make ' active.
+	(\singlequotechar): the active definition of '; if
+	the variable codequoteundirected is @set, use char"d from tt
+	instead of the regular directed quote.
+	This is all to make pasting of ' in examples work in more pdf
+	viewers, at least evince.
+	From: Han-Wen Nienhuys, 2 Jun 2006 01:22:44 +0000.
+
 2006-07-10  <Ralf.Wildenhues@gmx.de>
 
 	* makeinfo/html.c (insert_html_tag_with_attribute): Treat `samp'
