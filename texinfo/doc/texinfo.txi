@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.169 2006-07-09 23:34:02 karl Exp $
+@c $Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -37,16 +37,18 @@ This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
 printed manual from a single source.
 
-Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997, 1998,
-1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with no
-Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
-and with the Back-Cover Texts as in (a) below.  A copy of the license is
-included in the section entitled ``GNU Free Documentation License.''
+Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled ``GNU Free Documentation
+License.''
 
 (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
 this GNU Manual, like GNU software.  Copies published by the Free
@@ -13598,7 +13600,7 @@ given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
 files are formed by transliteration of the corresponding node names,
 using the specified encoding. 
 
-In all other cases, it is recognized but ignored.
+In all other cases, it is accepted but ignored.
 
 
 @node Defining New Texinfo Commands
@@ -18700,7 +18702,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright (C) 2005 Free Software Foundation, Inc.
+Copyright @copyright{} 2005 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -18790,7 +18792,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.169 2006-07-09 23:34:02 karl Exp $
+$Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18856,7 +18858,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.169 2006-07-09 23:34:02 karl Exp $
+@comment $Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
