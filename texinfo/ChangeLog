@@ -1,3 +1,14 @@
+2006-07-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\onepageout): hardwire a 24pt space before
+	\footlinebox, instead of 2\baselineskip.  If the page break occurs
+	at a heading, for instance, \baselineskip might be larger, causing
+	the footer to jump.
+	(\oddfootingyyy): likewise (although doesn't really matter here).
+	Report from Werner Lemberg, 02 Jun 2006 07:44:36 +0200.
+
+	* doc/texinfo.txi: use @copyright{} in @copying, not (C).
+
 2006-07-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\code): make ' active.
