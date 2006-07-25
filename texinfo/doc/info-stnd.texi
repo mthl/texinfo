@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.11 2005-09-19 12:50:55 karl Exp $
+@comment $Id: info-stnd.texi,v 1.12 2006-07-25 16:02:29 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -18,7 +18,7 @@ a program for viewing documents in Info format (usually created from
 Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005 Free Software Foundation, Inc.
+2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -56,10 +56,12 @@ Software Foundation raise funds for GNU development.''
 @node Top
 @top GNU Info
 
-This documentation is different from the documentation for the Info
-reader that is part of GNU Emacs.  If you do not know how to use Info,
-but have a working Info reader, you should read the Emacs documentation
-first, as it includes more background information and a thorough tutorial.
+If you do not know how to use Info, but have a working Info reader,
+you should read the Info manual before this one (@pxref{Top, Getting
+Started,,info, Info}), as it includes more background information and
+a thorough tutorial.  This documentation describes the standalone Info
+reader that is part of the Texinfo distribution, not the Info reader
+that is part of GNU Emacs.
 @end ifnottex
 
 @menu
@@ -85,13 +87,24 @@ first, as it includes more background information and a thorough tutorial.
 @node What is Info
 @chapter What is Info?
 
-@dfn{Info} is a program which is used to view Info files on an ASCII
-terminal.  @dfn{Info files} are the result of processing Texinfo files
-with the program @code{makeinfo} or with one of the Emacs commands, such
-as @code{M-x texinfo-format-buffer}.  Texinfo itself is a documentation
-system that uses a single source file to produce both on-line
-information and printed output.  You can typeset and print the files
-that you read in Info.
+The @dfn{Info} program is a standalone program, part of the Texinfo
+distribution, which is used to view Info files on an ASCII terminal.
+@dfn{Info files} are typically the result of processing Texinfo files
+with the program @code{makeinfo} (also in the Texinfo distribution)
+
+Texinfo itself is a documentation system that uses a single source
+file to produce both on-line information and printed output.  You can
+typeset and print the files that you read in Info.
+
+GNU Emacs also provides an Info reader (just type @kbd{M-x info} in
+Emacs).  Emacs Info and standalone Info have nearly identical user
+interfaces, although customization and other details are different
+(this manual explains the standalone Info reader).  The Emacs Info
+reader supports the X Window System and other such bitmapped
+interfaces, not just plain ASCII, so if you want the prettiest
+display for Info files, you should try it.  You can use Emacs Info
+without using Emacs for anything else.  (Type @kbd{C-x C-x} to exit;
+this also works in the standalone Info reader.)
 
 
 @node Invoking Info
@@ -352,7 +365,7 @@ the Emacs and standalone versions) have several commands which allow
 you to move the cursor about the screen.  The notation used in this
 manual to describe keystrokes is identical to the notation used within
 the Emacs manual, and the GNU Readline manual.  @xref{User Input,,,
-emacs, the GNU Emacs Manual}, if you are unfamiliar with the
+emacs, The GNU Emacs Manual}, if you are unfamiliar with the
 notation.@footnote{Here's a short summary.  @kbd{C-@var{x}} means
 press the @kbd{CTRL} key and the key @var{x}.  @kbd{M-@var{x}} means
 press the @kbd{META} key and the key @var{x}.  On many terminals th
