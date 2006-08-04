@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.171 2006-08-04 21:18:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.172 2006-08-04 23:18:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4980,7 +4980,11 @@ sub rearrange_elements()
                             $checked_element->{'level'} = $element->{'level'};
                             $checked_element->{'toc_level'} = $element->{'toc_level'};
                             $checked_element->{'toplevel'} = $element->{'toplevel'};
-                            $checked_element->{'toplevel'} = 1 if ($element->{'top'});
+                            if ($element->{'top'})
+                            {
+                                $checked_element->{'toplevel'} = 1; 
+                                $checked_element->{'top'} = 1;
+                            }
                             $checked_element->{'up'} = $element->{'up'};
                             $checked_element->{'sectionup'} = $element->{'sectionup'};
                             $checked_element->{'element_added'} = 1;
@@ -5017,6 +5021,7 @@ sub rearrange_elements()
                              'tag' => $element->{'tag'},
                              'tag_level' => $element->{'tag_level'},
                              'toplevel' => $element->{'toplevel'},
+                             'top' => $element->{'top'},
                              'up' => $element->{'up'},
                              'sectionup' => $element->{'sectionup'},
                              'back' => $back,
@@ -5235,8 +5240,8 @@ sub rearrange_elements()
         {
             $cut_section = 2 if ($toplevel <= 2);
         }
-        my $top_doc_nr;
-        my $prev_nr;
+        #my $top_doc_nr;
+        #my $prev_nr;
         foreach my $element (@elements_list)
         { # FIXME the code is complicated and hard to follow, yet it doesn't
           # do such a complicated task. Maybe it could be simplified.
@@ -5280,31 +5285,32 @@ sub rearrange_elements()
                 my $is_top = '';
                 $element->{'file'} = "${docu_name}_$doc_nr"
                        . ($docu_ext ? ".$docu_ext" : "");
-                if (defined($top_doc_nr))
-                {
-                    if ($doc_nr eq $top_doc_nr)
-                    {
-                        $element->{'file'} = $docu_top;
-                        if ($element->{'level'} # this is an element below @top.
+                #if (defined($top_doc_nr))
+                #{
+                    #if ($doc_nr eq $top_doc_nr)
+                    #{
+                    #    $element->{'file'} = $docu_top;
+                    #    if ($element->{'level'} # this is an element below @top.
                                                # It starts a new file.
-                          or ($element->{'node'} and ($element ne $node_top) and (!defined($element->{'section_ref'}) or $element->{'section_ref'} ne $element_top))
-                          )# this is a node not associated with top
-                        {
-                            $doc_nr++;
-                            $element->{'doc_nr'} = $doc_nr;
-                            $element->{'file'} = "${docu_name}_$doc_nr"
-                               . ($docu_ext ? ".$docu_ext" : "");
-                        }
-                    }
-                }
-                elsif (element_is_top($element))
+                    #      or ($element->{'node'} and ($element ne $node_top) and (!defined($element->{'section_ref'}) or $element->{'section_ref'} ne $element_top))
+                    #      )# this is a node not associated with top
+                    #    {
+                    #        $doc_nr++;
+                    #        $element->{'doc_nr'} = $doc_nr;
+                    #        $element->{'file'} = "${docu_name}_$doc_nr"
+                    #           . ($docu_ext ? ".$docu_ext" : "");
+                    #    }
+                    #}
+                #}
+                #elsif (element_is_top($element))
+                if ($element->{'top'} or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
                 { # the top element
                     $is_top = "top";
                     $element->{'file'} = $docu_top;
                     # if there is a previous element, we force it to be in 
                     # another file than top
-                    $doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
-                    $top_doc_nr = $doc_nr;
+                    #$doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
+                    #$top_doc_nr = $doc_nr;
                     $element->{'doc_nr'} = $doc_nr;
                 }
                 if (defined($Texi2HTML::Config::element_file_name))
@@ -5315,7 +5321,7 @@ sub rearrange_elements()
             }
             print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
-            $prev_nr = $doc_nr;
+            #$prev_nr = $doc_nr;
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = $element->{'file'};
@@ -6391,7 +6397,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             $element->{'node'} = 0; # otherwise Texi2HTML::Config::heading may uses the node level
             $element->{'text'} = $Texi2HTML::NAME{'Top'};
             print STDERR "[Top]" if ($T2H_VERBOSE);
-            unless ($element->{'titlefont'})
+            unless ($element->{'titlefont'} or $element->{'index_page'})
             {
                 unshift @section_lines, &$Texi2HTML::Config::heading($element);
             }
@@ -6544,7 +6550,7 @@ sub finish_element($$$$)
         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
         print STDERR "[Top]" if ($T2H_VERBOSE);
         $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
-        &$Texi2HTML::Config::print_Top($FH, $element->{'titlefont'});
+        &$Texi2HTML::Config::print_Top($FH, ($element->{'titlefont'} or $element->{'index_page'}));
         my $end_page = 0;
         if ($Texi2HTML::Config::SPLIT)
         {

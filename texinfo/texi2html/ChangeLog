@@ -1,9 +1,13 @@
 2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: fixes for split indices.
+	Fix detection of allready present heading.
+	Don't split top element accross pages because of split indices.
+	Simplify the file name determination.
 	* Tests/*: add a test case for split indices in chapter
 	and more tests for split indices.
 	Put index_nodes result in a directory.
+	Regenerate.
 
 2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
 
