@@ -107,3 +107,6 @@ texi and formatted result.
 * many FIXME in the code
 
 * test @printindex in diverse contexts
+
+* in index_split the section associated with indices is the numbered section
+  not the associated node where the @cindex are. Good or bad?

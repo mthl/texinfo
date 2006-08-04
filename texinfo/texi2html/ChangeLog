@@ -1,5 +1,12 @@
 2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: fixes for split indices.
+	* Tests/*: add a test case for split indices in chapter
+	and more tests for split indices.
+	Put index_nodes result in a directory.
+
+2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: Accept empty value set by @set (bug #16774).
 	Don't eat the line after a macro without arg (bug #16773).
 	* Tests/*: test for those issues.

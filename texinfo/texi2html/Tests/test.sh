@@ -162,7 +162,6 @@ test_texi index_table
 test_texi index_table index_table.texi "-split chapter -init index_test.init -output . -prefix chapter_index_table" 0 texi chapter_index_table
 test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init -output ."
 test_texi index_table index_split.texi "-split chapter -output . -init index_test.init"
-test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html -output ."
 test_texi index_table no_node.texi "-init index_test.init -split chapter -output ." 3
 test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -output . -prefix nodes_more_before_top -top-file nodes_more_before_top.html -no-node-files" 0 texi nodes_more_before_top
 #test_texi index_table more_before_top.texi "-init index_test.init -split none -prefix nodes_more_before_top_unsplit" 0 texi nodes_more_before_top_unsplit
@@ -170,8 +169,10 @@ test_texi index_table more_before_top.texi "-init index_test.init -output . -spl
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
 test_texi index_table index_special_region.texi "-split chapter -output ."
+test_texi index_nodes ../index_table/index_nodes.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -split node -top-file index_nodes.html -output ."
 test_texi more_before_top_section ../index_table/more_before_top_section.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -output ."
 test_texi index_split_nodes ../index_table/index_split.texi "-init ../../examples/makeinfo.init -output . -init ../index_table/index_test.init"
+test_texi node_in_chapter_index_split node_in_chapter_index_split.texi "-init ../index_table/index_test.init -output . -node-files"
 test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi
@@ -193,6 +194,7 @@ test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -split
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
 test_texi sectionning section_nodes_before_top.texi
+test_texi sectionning nodes_after_top_before_section.texi "-split chapter -output ."
 test_texi sectionning nodes_test.texi "" 5
 test_texi sectionning no_section.texi
 test_texi sectionning no_section.texi "-init test_directions.init -prefix no_section_directions" 0 texi no_section_directions

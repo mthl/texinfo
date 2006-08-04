@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.169 2006-06-07 20:56:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.170 2006-08-04 12:51:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3322,11 +3322,11 @@ my @nodes_list = ();        # nodes in document reading order
                             # each member is a reference on a hash
 my @sections_list = ();     # sections in reading order
                             # each member is a reference on a hash
-my @elements_list = ();     # sectionning elements (nodes and sections)
+my @all_elements = ();      # sectionning elements (nodes and sections)
                             # in reading order. Each member is a reference
                             # on a hash which also appears in %nodes,
-                            # @sections_list @nodes_list, @all_elements
-my @all_elements;           # all the elements in document order
+                            # @sections_list @nodes_list, @elements_list
+my @elements_list;          # all the resulting elements in document order
 my %sections = ();          # sections hash. The key is the section number
                             # headings are there, although they are not elements
 my $section_top;            # @top section
@@ -3473,7 +3473,7 @@ sub pass_structure()
                                 $node_ref->{'first'} = 1;
                             }
                             push (@nodes_list, $node_ref);
-                            push @elements_list, $node_ref;
+                            push @all_elements, $node_ref;
                         }
                     }
                     else
@@ -3496,7 +3496,7 @@ sub pass_structure()
                     }
                 }
                 elsif (defined($sec2level{$tag}))
-                {
+                { # section or heading
                     if (/^\@$tag\s*(.*)$/)
                     {
                         my $name = normalise_space($1);
@@ -3551,7 +3551,7 @@ sub pass_structure()
                                echo_warn ("$tag without name", $line_nr);
                             }
                             push @sections_list, $section_ref;
-                            push @elements_list, $section_ref;
+                            push @all_elements, $section_ref;
                             $state->{'element'} = $section_ref;
                             $state->{'place'} = $section_ref->{'current_place'};
                             my $node_ref = "NO NODE";
@@ -3582,18 +3582,18 @@ sub pass_structure()
                 }
                 elsif (/^\@printindex\s+(\w+)/)
                 {
-                    unless (@elements_list)
+                    unless (@all_elements)
                     {
                         echo_warn ("Printindex before document beginning: \@printindex $1", $line_nr);
                         next;
                     }
                     delete $state->{'after_element'};
                     # $element_index is the first element with index
-                    $element_index = $elements_list[-1] unless (defined($element_index));
+                    $element_index = $all_elements[-1] unless (defined($element_index));
                     # associate the index to the element such that the page
                     # number is right
                     my $placed_elements = [];
-                    push @{$elements_list[-1]->{'index_names'}}, { 'name' => $1, 'place' => $placed_elements };
+                    push @{$all_elements[-1]->{'index_names'}}, { 'name' => $1, 'place' => $placed_elements };
                     $state->{'place'} = $placed_elements;
                 }
                 if (exists($state->{'region_lines'}))
@@ -4099,6 +4099,13 @@ my %empty_indices = (); # value is true for an index name key if the index
                         # is empty
 my %printed_indices = (); # value is true for an index name not empty and
                           # printed
+
+
+sub element_is_top($)
+{
+    my $element = shift;
+    return ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top));
+}
 		  
 # find next, prev, up, back, forward, fastback, fastforward
 # find element id and file
@@ -4108,8 +4115,6 @@ my %printed_indices = (); # value is true for an index name not empty and
 # associate nodes with sections
 sub rearrange_elements()
 {
-    @all_elements = @elements_list;
-    
     print STDERR "# find sections levels and toplevel\n"
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     
@@ -4428,6 +4433,7 @@ sub rearrange_elements()
     }
     else
     {
+        @elements_list = @all_elements;
         # elements are sections if possible, and node if no section associated
         my @elements = ();
         while (@elements_list)
@@ -4728,7 +4734,7 @@ sub rearrange_elements()
             $node->{'sectionup'} = $section
                if (grep {$node eq $_} @{$section->{'node_childs'}});
         }
-        # used in .init files. Maybe should go.
+        # 'up' is used in .init files. Maybe should go.
         if (defined($node->{'sectionup'}))
         {
             $node->{'up'} = $node->{'sectionup'};
@@ -4738,7 +4744,7 @@ sub rearrange_elements()
         {
             $node->{'up'} = $node->{'nodeup'};
         }
-        # Not used but documented. 
+        # 'next' not used but documented. 
         if (defined($node->{'sectionnext'}))
         {
             $node->{'next'} = $node->{'sectionnext'};
@@ -4842,6 +4848,10 @@ sub rearrange_elements()
         my @checked_elements = ();
         if (!$element->{'node'} or $element->{'top_as_section'})
         {
+            if (!defined($element->{'node_ref'}))
+            { # a section not associated with a node. May still contain nodes
+                push @checked_elements, $element;
+            }
             if (!$Texi2HTML::Config::USE_NODES)
             {
                 # collect the associated nodes, and the section if associated
@@ -4850,31 +4860,24 @@ sub rearrange_elements()
                     # we update the element index, first element with index
                     # if it is a node
                     $element_index = $element if ($element_index and ($node eq $element_index));
-                    push @checked_elements, $node;
+                    # the condition unless($node eq $element) is for top node
+                    push @checked_elements, $node unless($node eq $element);
                     # we push the section itself after the corresponding node
-                    if (defined($element->{'node_ref'}) and ($node eq $element->{'node_ref'}))
+                    if ($element->{'node_ref'} and ($node eq $element->{'node_ref'}))
                     {
                         push @checked_elements, $element;
                     }
                 }
-                if (!defined($element->{'node_ref'}) and !$element->{'node'})
-                {
-                    push @checked_elements, $element;
-                }
-                $element->{'nodes'} = []; # We reset the element nodes list
-                # as the nodes may be associated below to another element if 
-                # the element is split accross several other elements/pages
             }
-            else
+            elsif(defined($element->{'node_ref'}))
             {
-                if ($element->{'node_ref'})
-                {
-                    push @checked_elements, $element->{'node_ref'};
-                    $element_index = $element if ($element_index and ($element->{'node_ref'} eq $element_index));
-                }
+                push @checked_elements, $element->{'node_ref'};
+                $element_index = $element if ($element_index and ($element->{'node_ref'} eq $element_index));
                 push @checked_elements, $element;
-                $element->{'nodes'} = [];
             }
+            $element->{'nodes'} = []; # We reset the element nodes list
+            # as the nodes may be associated below to another element if 
+            # the element is split accross several other elements/pages
         }
         else
         {
@@ -4955,12 +4958,12 @@ sub rearrange_elements()
                     ############################## end debug section
                     push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page, 'name' => $index->{'name'} } ];
                     if (@pages)
-                    {
+                    {# index is split accross more than one page
                         if ($current_element->{'holder'})
                         { # the current element isn't an element which is
                           # normally outputted. We add a real element. 
                           # we are in a node of a section but the element
-                          # is splitted by the index, thus we must add 
+                          # is split by the index, thus we must add 
                           # a new element which will contain the text 
                           # between the beginning of the element and the index
                           # WARNING the added element is like a section, and
@@ -4993,11 +4996,12 @@ sub rearrange_elements()
                             {
                                 push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'}, 'name' => $index->[0]->{'name'} } ] ;
                             }
-                            push @{$checked_element->{'nodes'}}, @waiting_elements;
                             foreach my $waiting_element (@waiting_elements)
                             {
+                                 next if ($waiting_element eq $checked_element);
                                  $waiting_element->{'section_ref'} = $checked_element;
                                  $waiting_element->{'sectionup'} = $checked_element;
+                                 push @{$checked_element->{'nodes'}}, $waiting_element;
                             }
                             @waiting_elements = ();
                             $checked_element->{'back'} = $back;
@@ -5030,13 +5034,15 @@ sub rearrange_elements()
                              'seen' => 1,
                              'page' => $page
                             };
-                            if ($current_element->{'index_page'})
+                            # the index page is associated with the new element
+                            # if there is one, the element otherwise
+                            if ($checked_element->{'element_added'})
                             {
-                                $index_page->{'original_index_element'} = $element;
+                                $index_page->{'original_index_element'} = $checked_element;
                             }
                             else
                             {
-                                $index_page->{'original_index_element'} = $current_element;
+                                $index_page->{'original_index_element'} = $element;
                             }
                             $index_page->{'node'} = 1 if ($element->{'node'});
                             while ($nodes{$index_page->{'texi'}})
@@ -5140,6 +5146,8 @@ sub rearrange_elements()
         }
     }
 
+    print STDERR "# find float id\n" 
+       if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $float (@floats)
     {
         $float->{'style_id'} = cross_manual_line(normalise_space($float->{'style_texi'}));
@@ -5217,6 +5225,9 @@ sub rearrange_elements()
             $node->{'node_file'} = $node_file if (defined($node_file));
         }
     }
+    
+    print STDERR "# split and st files\n" 
+       if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     # find document nr and document file for sections and nodes. 
     # Split according to Texi2HTML::Config::SPLIT.
     # find file and id for placed elements (anchors, index entries, headings)
@@ -5233,8 +5244,6 @@ sub rearrange_elements()
         foreach my $element (@elements_list)
         { # FIXME the code is complicated and hard to follow, yet it doesn't
           # do such a complicated task. Maybe it could be simplified.
-          # moreover the use of doc_nr to split is wrong or, at least 
-          # strange 
             print STDERR "# Splitting ($Texi2HTML::Config::SPLIT:$cut_section) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             $doc_nr++ if (
                ($Texi2HTML::Config::SPLIT eq 'node') or
@@ -5252,15 +5261,22 @@ sub rearrange_elements()
                 # such that the element_added appears in its own file
                 $node = get_node($element) unless(exists($element->{'node_ref'})
                     and $element->{'node_ref'}->{'element_added'});
-                if ($node and $node->{'file'})
+                if ($node and defined($node->{'file'}))
                 {
                     $element->{'file'} = $node->{'file'};
                 }
-                unless ($element->{'file'})
+                unless (defined($element->{'file'}))
                 {
-                    $element->{'file'} = "${docu_name}_$doc_nr"
+                    if (element_is_top($element))
+                    {
+                        $element->{'file'} = $docu_top;
+                    }
+                    else
+                    {
+                        $element->{'file'} = "${docu_name}_$doc_nr"
                            . ($docu_ext ? ".$docu_ext" : "");
-                    $element->{'doc_nr'} = $doc_nr;
+                        $element->{'doc_nr'} = $doc_nr;
+                    }
                 }
             }
             else
@@ -5272,7 +5288,7 @@ sub rearrange_elements()
                 {
                     if ($doc_nr eq $top_doc_nr)
                     {
-                        $element->{'file'} = "$docu_top";
+                        $element->{'file'} = $docu_top;
                         if ($element->{'level'} # this is an element below @top.
                                                # It starts a new file.
                           or ($element->{'node'} and ($element ne $node_top) and (!defined($element->{'section_ref'}) or $element->{'section_ref'} ne $element_top))
@@ -5285,10 +5301,10 @@ sub rearrange_elements()
                         }
                     }
                 }
-                elsif ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
+                elsif (element_is_top($element))
                 { # the top element
                     $is_top = "top";
-                    $element->{'file'} = "$docu_top";
+                    $element->{'file'} = $docu_top;
                     # if there is a previous element, we force it to be in 
                     # another file than top
                     $doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
@@ -5324,17 +5340,17 @@ sub rearrange_elements()
         add_file($docu_doc);
         foreach my $element(@elements_list)
         {
-            $element->{'file'} =  "$docu_doc";
+            $element->{'file'} = $docu_doc;
             $element->{'doc_nr'} = 0;
             foreach my $place(@{$element->{'place'}})
             {
-                $place->{'file'} = "$element->{'file'}";
+                $place->{'file'} = $element->{'file'};
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
         }
         foreach my $node(@nodes_list)
         {
-            $node->{'file'} =  "$docu_doc";
+            $node->{'file'} = $docu_doc;
             $node->{'doc_nr'} = 0;
         }
     }

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.106 2006-05-29 23:36:10 pertusus Exp $
+# $Id: texi2html.init,v 1.107 2006-08-04 12:51:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1566,11 +1566,11 @@ sub T2H_DEFAULT_node_file_name($$)
         my $default_top_file;
         if ($NEW_CROSSREF_STYLE)
         {
-             $default_top_file  = "$TOP_NODE_FILE.$NODE_FILE_EXTENSION";
+            $default_top_file  = "$TOP_NODE_FILE.$NODE_FILE_EXTENSION";
         }
         else
         {
-             $default_top_file  = undef; 
+            $default_top_file  = undef; 
         }
         my $top_file = $default_top_file;
         if ($SPLIT eq 'node')
@@ -1587,25 +1587,28 @@ sub T2H_DEFAULT_node_file_name($$)
     
     if ($NEW_CROSSREF_STYLE)
     {
-         if (defined($node->{'file'}))
-         {
-              $file = $node->{'file'};
-              $node_file = $node->{'node_file'};
-         }
-         else
-         {
-             my $node_file_base;
-             if ($TRANSLITERATE_NODE)
-             {
-                $node_file_base = $node->{'cross_manual_file'};
-             }
-             else
-             {
-                 $node_file_base = $node->{'cross_manual_target'};
-             }
-             $node_file = $node_file_base . ".$NODE_FILE_EXTENSION";
-             $file =  $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
-         }
+        if (defined($node->{'file'}))
+        {
+            $file = $node->{'file'};
+            $node_file = $node->{'node_file'};
+        }
+        else
+        {
+            my $node_file_base;
+            if ($TRANSLITERATE_NODE)
+            {
+               $node_file_base = $node->{'cross_manual_file'};
+            }
+            else
+            {
+                $node_file_base = $node->{'cross_manual_target'};
+            }
+            $node_file = $node_file_base . ".$NODE_FILE_EXTENSION";
+            # set the file associated with the node only if it is split at
+            # this node, ie if it is associated with a section or USE_NODES
+            $file = $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
+            #$file = $node_file if ($USE_NODES or $node->{'with_section'});
+        }
     }
     else
     {

@@ -9,6 +9,8 @@
 in first node before printindex
 @printindex cp
 in first node
+@printindex cp
+after second printindex in first node
 @menu
 * node in menu before top::
 @end menu

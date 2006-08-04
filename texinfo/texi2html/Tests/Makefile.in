@@ -122,7 +122,8 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      nodes_texinfo singular floats node_translit node_translit_no_unicode \
      node_translit_no_unidecode node_utf8_translit \
      node_utf8_translit_no_unidecode index_split_nodes \
-     more_before_top_section node_footnote
+     more_before_top_section node_footnote node_in_chapter_index_split \
+     index_nodes
 
 all: all-am
 
