@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.170 2006-08-04 12:51:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.171 2006-08-04 21:18:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2874,7 +2874,6 @@ $Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
 $Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
 $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
 $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
-$Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
 $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
 $Texi2HTML::THISDOC{'extension'} = $docu_ext;
 # FIXME document that
@@ -4465,7 +4464,6 @@ sub rearrange_elements()
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     my $current_section = $sections_list[0];
     $current_section = $node_top if ($node_top and $node_top->{'top_as_section'} and !$section_before_top);
-    my $current;
     foreach my $element (@all_elements)
     {
         if ($element->{'node'} and !$element->{'top_as_section'})
@@ -4477,11 +4475,10 @@ sub rearrange_elements()
             }
             elsif (defined($current_section))
             {
-                $element->{'in_top'} = 1 if ($current_section->{'top'});
                 $element->{'section_ref'} = $current_section;
                 $element->{'toc_level'} = $current_section->{'toc_level'};
-                push @{$element->{'section_ref'}->{'nodes'}}, $element;
-                push @{$element->{'section_ref'}->{'node_childs'}}, $element;
+                push @{$current_section->{'nodes'}}, $element;
+                push @{$current_section->{'node_childs'}}, $element;
             }
             else
             {
@@ -4490,7 +4487,6 @@ sub rearrange_elements()
         }
         else
         {
-            $current = undef;
             $current_section = $element;
             if ($element->{'node'})
             { # Top node
@@ -5584,7 +5580,8 @@ sub do_names()
     foreach my $element (@elements_list)
     {
         if (!$element->{'top'} and !$element->{'index_page'})
-        {
+        { # for link back to table of contents
+          # FIXME do it for top too?
             $element->{'tocid'} = 'TOC' . $tocnr;
             $tocnr++;
         }
@@ -5893,7 +5890,6 @@ sub pass_text()
     # We set titlefont only if the titlefont appeared in the top element
     if (defined($element_top->{'titlefont'}))
     {
-         $element_top->{'has_heading'} = 1;
          $value{'_titlefont'} = $element_top->{'titlefont'};
     }
     
@@ -6150,14 +6146,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     if (! $element)
                     {
                         $new_element = shift @elements_list;
-                        $element->{'has_heading'} = 1 if ($new_element->{'top'});
                     }
                     else
                     {
-                        if ($element->{'top'})
-                        {
-                            $element->{'has_heading'} = 1;
-                        }
                         push (@section_lines, &$Texi2HTML::Config::anchor($current_element->{'id'}) . "\n");
                         push @section_lines, &$Texi2HTML::Config::heading($current_element);
                         next;
@@ -6400,7 +6391,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             $element->{'node'} = 0; # otherwise Texi2HTML::Config::heading may uses the node level
             $element->{'text'} = $Texi2HTML::NAME{'Top'};
             print STDERR "[Top]" if ($T2H_VERBOSE);
-            unless ($element->{'has_heading'})
+            unless ($element->{'titlefont'})
             {
                 unshift @section_lines, &$Texi2HTML::Config::heading($element);
             }
@@ -6553,7 +6544,7 @@ sub finish_element($$$$)
         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
         print STDERR "[Top]" if ($T2H_VERBOSE);
         $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
-        &$Texi2HTML::Config::print_Top($FH, $element->{'has_heading'});
+        &$Texi2HTML::Config::print_Top($FH, $element->{'titlefont'});
         my $end_page = 0;
         if ($Texi2HTML::Config::SPLIT)
         {
