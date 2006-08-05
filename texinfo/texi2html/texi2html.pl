@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.172 2006-08-04 23:18:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.173 2006-08-05 09:24:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5195,6 +5195,7 @@ sub rearrange_elements()
     }
 
     # Find node file names and file names for nodes considered as elements
+    # this could be done unconditionaly
     if ($Texi2HTML::Config::NODE_FILES)
     {
         my $top;
@@ -5212,22 +5213,20 @@ sub rearrange_elements()
         }
         if ($top)
         {
-            my ($file,$node_file);
-            ($file, $node_file) = &$Texi2HTML::Config::node_file_name($top,'top');
-            $top->{'file'} = $file if (defined($file)); 
+            my $node_file;
+            $node_file = &$Texi2HTML::Config::node_file_name($top,'top');
             $top->{'node_file'} = $node_file if (defined($node_file));
         }
         foreach my $key (keys(%nodes))
         {
             my $node = $nodes{$key};
-            my ($file, $node_file);
-            ($file, $node_file) = &$Texi2HTML::Config::node_file_name($node,'');
-            $node->{'file'} = $file if (defined($file));
+            next if ($node eq $top);
+            my $node_file = &$Texi2HTML::Config::node_file_name($node,'');
             $node->{'node_file'} = $node_file if (defined($node_file));
         }
     }
     
-    print STDERR "# split and st files\n" 
+    print STDERR "# split and set files\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     # find document nr and document file for sections and nodes. 
     # Split according to Texi2HTML::Config::SPLIT.
@@ -5240,88 +5239,46 @@ sub rearrange_elements()
         {
             $cut_section = 2 if ($toplevel <= 2);
         }
-        #my $top_doc_nr;
-        #my $prev_nr;
         foreach my $element (@elements_list)
-        { # FIXME the code is complicated and hard to follow, yet it doesn't
-          # do such a complicated task. Maybe it could be simplified.
+        { 
             print STDERR "# Splitting ($Texi2HTML::Config::SPLIT:$cut_section) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            $doc_nr++ if (
+            my $new_file = 0;
+            if (
                ($Texi2HTML::Config::SPLIT eq 'node') or
                (
                  defined($element->{'level'}) and ($element->{'level'} <= $cut_section)
                )
-              );
+              )
+            {
+                 $new_file = 1;
+                 $doc_nr++;
+            }
             $doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
             $element->{'doc_nr'} = $doc_nr;
-            if ($Texi2HTML::Config::NODE_FILES and ($Texi2HTML::Config::SPLIT eq 'node'))
-            { # simply use node file names for elements
-                my $node;
-                # in case it is an element_added, the section isn't put in 
-                # a file with the node file name, but in a separate file,
-                # such that the element_added appears in its own file
-                $node = get_node($element) unless(exists($element->{'node_ref'})
-                    and $element->{'node_ref'}->{'element_added'});
-                if ($node and defined($node->{'file'}))
+            my $is_top = '';
+            $element->{'file'} = "${docu_name}_$doc_nr"
+                   . ($docu_ext ? ".$docu_ext" : "");
+            if ($element->{'top'} or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
+            { # the top elements
+                $is_top = "top";
+                $element->{'file'} = $docu_top;
+            }
+            elsif ($Texi2HTML::Config::NODE_FILES and ($Texi2HTML::Config::SPLIT eq 'node'))
+            {
+                my $node = get_node($element) unless(exists($element->{'node_ref'})
+                   and $element->{'node_ref'}->{'element_added'});
+                if ($node and defined($node->{'node_file'}))
                 {
-                    $element->{'file'} = $node->{'file'};
-                }
-                unless (defined($element->{'file'}))
-                {
-                    if (element_is_top($element))
-                    {
-                        $element->{'file'} = $docu_top;
-                    }
-                    else
-                    {
-                        $element->{'file'} = "${docu_name}_$doc_nr"
-                           . ($docu_ext ? ".$docu_ext" : "");
-                        $element->{'doc_nr'} = $doc_nr;
-                    }
+                    $element->{'file'} = $node->{'node_file'};
                 }
             }
-            else
-            { # the traditional naming scheme
-                my $is_top = '';
-                $element->{'file'} = "${docu_name}_$doc_nr"
-                       . ($docu_ext ? ".$docu_ext" : "");
-                #if (defined($top_doc_nr))
-                #{
-                    #if ($doc_nr eq $top_doc_nr)
-                    #{
-                    #    $element->{'file'} = $docu_top;
-                    #    if ($element->{'level'} # this is an element below @top.
-                                               # It starts a new file.
-                    #      or ($element->{'node'} and ($element ne $node_top) and (!defined($element->{'section_ref'}) or $element->{'section_ref'} ne $element_top))
-                    #      )# this is a node not associated with top
-                    #    {
-                    #        $doc_nr++;
-                    #        $element->{'doc_nr'} = $doc_nr;
-                    #        $element->{'file'} = "${docu_name}_$doc_nr"
-                    #           . ($docu_ext ? ".$docu_ext" : "");
-                    #    }
-                    #}
-                #}
-                #elsif (element_is_top($element))
-                if ($element->{'top'} or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
-                { # the top element
-                    $is_top = "top";
-                    $element->{'file'} = $docu_top;
-                    # if there is a previous element, we force it to be in 
-                    # another file than top
-                    #$doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
-                    #$top_doc_nr = $doc_nr;
-                    $element->{'doc_nr'} = $doc_nr;
-                }
-                if (defined($Texi2HTML::Config::element_file_name))
-                {
-                    $element->{'file'} = 
-                        &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
-                }
+            if (defined($Texi2HTML::Config::element_file_name))
+            {
+                $element->{'file'} = 
+                    &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
             }
             print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
-            #$prev_nr = $doc_nr;
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = $element->{'file'};
@@ -8895,6 +8852,7 @@ sub scan_texi($$$$;$)
             {
                 # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
                 # the args anyway and don't take away the whole line?
+
                 # as in the makeinfo doc 'definfoenclose' may override
                 # texinfo @-commands like @i. It is what we do here.
                 if ($state->{'arg_expansion'})

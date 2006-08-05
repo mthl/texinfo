@@ -1943,10 +1943,9 @@ First the extension may be overrided by the variable @variable{$EXTENSION}
 value.
 Two function references enable 
 further customization. One is usefull in case @variable{$NODE_FILES} is true
-and it is used to customize the node file name itself and is also used 
-to produce a file name with a redirection leading to the node file.
+and it is used to customize the node file name. 
 
-@deftypefn {Function Reference} {($node_file $redirection_node_file)} node_file_name $node
+@deftypefn {Function Reference} $node_file node_file_name $node
 @var{$node} is a hash reference with the following interesting keys (there
 are much more keys):
 @table @code
@@ -1955,11 +1954,10 @@ The texinfo node name.
 @item with_section
 True if associated with a section.
 @end table
-The result is the node file name @var{$node_file}, and the file containing
-a redirection to the node @var{$redirection_node_file}.
+The result is the node file name @var{$node_file}.
 @end deftypefn
 
-The other is usefull if @code{$NODE_FILES} isn't true. It is used to 
+The other is used to
 customize the file names associated with each element, and the 
 name of the file associated with the special elements.
 @deftypefn {Function Reference} $file element_file_name $element $type $docu_name
@@ -1998,7 +1996,7 @@ entries, outside of the document, you should first set the variable
 @variable{$IDX_SUMMARY} true. After that some function reference will be called
 for each non empty index. For each index there are 3 function 
 references, one called for initialization, one called for each index entry
-and the last one called for finalazation.
+and the last one called for finalization.
 
 @deffn {Function Reference} index_summary_file_begin $index_name $is_printed
 @var{$index_name} is the two letters name for the index. 
@@ -3917,6 +3915,9 @@ done in the formatting function.
 @item New argument for empty_line.
 @item End of line removal is done in formatting function of definition line
 formatting.
+@item node_file_name now should only returns the node file, since the 
+redirection file isn't used anymore. element_file_name only is used for 
+file names, whatever NODES_FILES is.
 @end itemize
 @item @code{@@ifinfo} regions are not expanded by default. This may lead
 to warnings or errors especially if the Top node is enclosed in 

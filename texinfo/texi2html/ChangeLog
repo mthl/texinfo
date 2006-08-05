@@ -1,4 +1,17 @@
-2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
+2006-08-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: use the same code for file 
+	name determination with NODE_FILES than with the traditional 
+	scheme. node_file_name is now used only to change the node 
+	file name, not for the determination of the html page file 
+	name anymore.
+	With this change the top file isn't necessarily index.html, 
+	even if it is the node_file_name it is index.html only if 
+	explicitly set.
+	* Tests/*: Regenerate
+	* NEWS, doc/*: document the api node_file_name api change
+
+2006-08-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: fixes for split indices.
 	Fix detection of allready present heading.

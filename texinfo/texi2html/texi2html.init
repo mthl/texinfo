@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.108 2006-08-04 21:18:51 pertusus Exp $
+# $Id: texi2html.init,v 1.109 2006-08-05 09:24:44 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1558,68 +1558,34 @@ sub T2H_DEFAULT_node_file_name($$)
 {
     my $node = shift;
     my $type = shift;
-    return (undef, undef) if ($node->{'external_node'} or $node->{'index_page'});
-    my $file;
-    my $node_file;
-    if ($type eq 'top')
+    return undef if ($node->{'external_node'} or $node->{'index_page'}
+       or ($type eq 'top' and !$NEW_CROSSREF_STYLE));
+    my $node_file_base;
+    if ($type eq 'top' and defined($TOP_NODE_FILE))
     {
-        my $default_top_file;
-        if ($NEW_CROSSREF_STYLE)
-        {
-            $default_top_file  = "$TOP_NODE_FILE.$NODE_FILE_EXTENSION";
-        }
-        else
-        {
-            $default_top_file  = undef; 
-        }
-        my $top_file = $default_top_file;
-        if ($SPLIT eq 'node')
-        {
-            if (defined($TOP_FILE) and ($TOP_FILE ne ''))
-            {
-                $top_file = $TOP_FILE;
-            }
-            $file = $top_file; 
-        }
-        $node_file = $default_top_file;
-        return ($file, $node_file);
+        $node_file_base = $TOP_NODE_FILE;
     }
-    
-    if ($NEW_CROSSREF_STYLE)
+    elsif ($NEW_CROSSREF_STYLE)
     {
-        if (defined($node->{'file'}))
+        if ($TRANSLITERATE_NODE)
         {
-            $file = $node->{'file'};
-            $node_file = $node->{'node_file'};
+            $node_file_base = $node->{'cross_manual_file'};
         }
         else
         {
-            my $node_file_base;
-            if ($TRANSLITERATE_NODE)
-            {
-               $node_file_base = $node->{'cross_manual_file'};
-            }
-            else
-            {
-                $node_file_base = $node->{'cross_manual_target'};
-            }
-            $node_file = $node_file_base . ".$NODE_FILE_EXTENSION";
-            # set the file associated with the node only if it is split at
-            # this node, ie if it is associated with a section or USE_NODES
-            $file = $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
-            #$file = $node_file if ($USE_NODES or $node->{'with_section'});
+            $node_file_base = $node->{'cross_manual_target'};
         }
     }
     else
     {
-         return (undef, undef) if (defined($node->{'file'}));
-         my $name = main::remove_texi($node->{'texi'});
-         $name =~ s/[^\w\.\-]/-/g;
-         $name = "${name}.$NODE_FILE_EXTENSION";
-         $file = $name if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
-         $node_file = $name;
+         $node_file_base = main::remove_texi($node->{'texi'});
+         $node_file_base =~ s/[^\w\.\-]/-/g;
     }
-    return ($file, $node_file);
+    if (defined($NODE_FILE_EXTENSION) and $NODE_FILE_EXTENSION ne '')
+    {
+        return ($node_file_base . ".$NODE_FILE_EXTENSION");
+    }
+    return $node_file_base;
 }
 
 ########################################################################

@@ -43,7 +43,7 @@ This file records noteworthy changes.
   file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
   for use in init files.
 
-* The API for image, normal_text and paragraph has changed.
+* The API for image, normal_text, paragraph and node_file_name has changed.
 
 * The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
   and $OUT_ENCODING.
