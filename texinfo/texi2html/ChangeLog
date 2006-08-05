@@ -8,6 +8,7 @@
 	With this change the top file isn't necessarily index.html, 
 	even if it is the node_file_name it is index.html only if 
 	explicitly set.
+	* texi2html.pl: simplify index handling code.
 	* Tests/*: Regenerate
 	* NEWS, doc/*: document the api node_file_name api change
 

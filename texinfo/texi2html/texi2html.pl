@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.173 2006-08-05 09:24:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.174 2006-08-05 11:00:31 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4432,12 +4432,9 @@ sub rearrange_elements()
     }
     else
     {
-        @elements_list = @all_elements;
         # elements are sections if possible, and node if no section associated
-        my @elements = ();
-        while (@elements_list)
+        foreach my $element(@all_elements)
         {
-            my $element = shift @elements_list;
             if ($element->{'node'})
             {
                 if (!defined($element->{'with_section'}))
@@ -4445,22 +4442,25 @@ sub rearrange_elements()
                     $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
                     print STDERR "# new node element ($element) $element->{'texi'}\n"
                         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    push @elements, $element;
+                    push @elements_list, $element;
                 }
             }
             else
             {
                 print STDERR "# new section element ($element) $element->{'texi'}\n"
                     if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                push @elements, $element;
+                push @elements_list, $element;
             }
         }
-        @elements_list = @elements;
     }
     
-    # nodes that are elements are attached to the section preceding them 
-    # if not allready associated with a section
-    print STDERR "# Find the section associated with each node used as element\n"
+    # nodes are attached to the section preceding them if not allready 
+    # associated with a section
+    # here we don't set @{$element->{'nodes'}} since it may be changed 
+    # below if split by indices. There fore we only set 
+    # @{$element->{'all_elements'}} with all the elements associated
+    # with an element output, in the right order
+    print STDERR "# Find the section associated with each node\n"
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     my $current_section = $sections_list[0];
     $current_section = $node_top if ($node_top and $node_top->{'top_as_section'} and !$section_before_top);
@@ -4471,27 +4471,44 @@ sub rearrange_elements()
             if ($element->{'with_section'})
             { # the node is associated with a section
                 $element->{'section_ref'} = $element->{'with_section'};
-                push @{$element->{'section_ref'}->{'nodes'}}, $element;
+                push @{$element->{'section_ref'}->{'all_elements'}}, $element, $element->{'section_ref'};
+                # first index is section if the first index is associated with that node
+                $element_index = $element->{'section_ref'} if ($element_index and ($element_index eq $element));
             }
             elsif (defined($current_section))
-            {
+            {# node appearing after a section, but not before another section,
+             # or appearing before any section
                 $element->{'section_ref'} = $current_section;
                 $element->{'toc_level'} = $current_section->{'toc_level'};
-                push @{$current_section->{'nodes'}}, $element;
                 push @{$current_section->{'node_childs'}}, $element;
+                if ($Texi2HTML::Config::USE_NODES)
+                { # the node is an element itself
+                    push @{$element->{'all_elements'}}, $element;
+                }
+                else
+                {
+                    push @{$current_section->{'all_elements'}}, $element;
+                    # first index is section if the first index is associated with that node
+                    $element_index = $current_section if ($element_index and ($element_index eq $element));
+                }
             }
             else
-            {
+            { # seems like there are only nodes in the documents
                 $element->{'toc_level'} = $MIN_LEVEL;
+                push @{$element->{'all_elements'}}, $element;
             }
         }
         else
         {
             $current_section = $element;
             if ($element->{'node'})
-            { # Top node
+            { # Top node not associated with a section
                 $element->{'toc_level'} = $MIN_LEVEL;
-                push @{$element->{'section_ref'}->{'nodes'}}, $element;
+                push @{$element->{'section_ref'}->{'all_elements'}}, $element;
+            }
+            elsif (!$element->{'node_ref'})
+            { # a section not preceded by a node
+                push @{$element->{'all_elements'}}, $element;
             }
         }
     }
@@ -4839,62 +4856,13 @@ sub rearrange_elements()
     while(@elements_list)
     {
         my $element = shift @elements_list;
-        # @checked_elements are the elements included in the $element (including
-        # itself) and are searched for indices
-        my @checked_elements = ();
-        if (!$element->{'node'} or $element->{'top_as_section'})
-        {
-            if (!defined($element->{'node_ref'}))
-            { # a section not associated with a node. May still contain nodes
-                push @checked_elements, $element;
-            }
-            if (!$Texi2HTML::Config::USE_NODES)
-            {
-                # collect the associated nodes, and the section if associated
-                foreach my $node (@{$element->{'nodes'}})
-                {
-                    # we update the element index, first element with index
-                    # if it is a node
-                    $element_index = $element if ($element_index and ($node eq $element_index));
-                    # the condition unless($node eq $element) is for top node
-                    push @checked_elements, $node unless($node eq $element);
-                    # we push the section itself after the corresponding node
-                    if ($element->{'node_ref'} and ($node eq $element->{'node_ref'}))
-                    {
-                        push @checked_elements, $element;
-                    }
-                }
-            }
-            elsif(defined($element->{'node_ref'}))
-            {
-                push @checked_elements, $element->{'node_ref'};
-                $element_index = $element if ($element_index and ($element->{'node_ref'} eq $element_index));
-                push @checked_elements, $element;
-            }
-            $element->{'nodes'} = []; # We reset the element nodes list
-            # as the nodes may be associated below to another element if 
-            # the element is split accross several other elements/pages
-        }
-        else
-        {
-            push @checked_elements, $element;
-        }
-        ##################################### debug
-        my $checked_nodes = '';
-        foreach my $checked (@checked_elements)
-        {
-            $checked_nodes .= "$checked->{'texi'}, ";
-        }
-        print STDERR "# Elements checked for $element->{'texi'}: $checked_nodes\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        ##################################### end debug
-
         # current_element is the last element which can hold text. It is 
         # initialized to a fake element
         my $current_element = { 'holder' => 1, 'texi' => 'HOLDER', 
             'place' => [], 'indices' => [] };
         # $back, $forward and $sectionnext are kept because $element
-        # is in @checked_elements, so it is possible that those directions
-        # get changed.
+        # is in @{$element->{'all_elements'}}, so it is possible that 
+        # those directions get changed.
         # back is set to find back and forward
         my $back = $element->{'back'} if defined($element->{'back'});
         my $forward = $element->{'forward'};
@@ -4902,7 +4870,7 @@ sub rearrange_elements()
         my $index_num = 0;
         my @waiting_elements = (); # elements (nodes) not used for sectionning 
                                  # waiting to be associated with an element
-        foreach my $checked_element(@checked_elements)
+        foreach my $checked_element(@{$element->{'all_elements'}})
         {
 	    if ($checked_element->{'element'})
             { # this is the element, we must add it
