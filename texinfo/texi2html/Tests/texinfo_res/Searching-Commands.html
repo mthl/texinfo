@@ -1,5 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
+<!-- This manual is for GNU Info (version 4.2, 23 March 2002),
+a program for viewing documents in Info format (usually created from
+Texinfo source files).
+
+Copyright C 1992, 93, 96, 97, 98, 99, 2001, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
 <!-- Created on a sunny day by texi2html -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -11,10 +31,10 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
-<title>GNU Info 4.2: Searching Commands</title>
+<title>GNU Info 4.2: 6. Searching an Info File</title>
 
-<meta name="description" content="GNU Info 4.2: Searching Commands">
-<meta name="keywords" content="GNU Info 4.2: Searching Commands">
+<meta name="description" content="GNU Info 4.2: 6. Searching an Info File">
+<meta name="keywords" content="GNU Info 4.2: 6. Searching an Info File">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -36,11 +56,192 @@ ul.toc {list-style: none}
 -->
 </style>
 
-<meta http-equiv="Refresh" content="2; url=info-stnd_6.html#Searching-Commands">
 
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<p>The node you are looking for is at <a href="info-stnd_6.html#Searching-Commands">Searching Commands</a>.</p>
+<a name="Searching-Commands"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Commands.html#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Xref-Commands.html#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Node-Commands.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Xref-Commands.html#SEC7" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#SEC23" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter"> 6. Searching an Info File </h1>
+
+<p>GNU Info allows you to search for a sequence of characters throughout an
+entire Info file, search through the indices of an Info file, or find
+areas within an Info file which discuss a particular topic.
+</p>
+<dl compact="compact">
+<dt> &lt;s&gt; (<code>search</code>)</dt>
+<dt> &lt;/&gt;</dt>
+<dd><a name="IDX162"></a>
+<a name="IDX163"></a>
+<a name="IDX164"></a>
+<p>Read a string in the echo area and search for it.  If the string
+includes upper-case characters, the Info file is searched
+case-sensitively; otherwise Info ignores the letter case.  With a
+numeric argument of <var>N</var>, search for <var>N</var>th occurrence of the
+string.  Negative arguments search backwards.
+</p>
+</dd>
+<dt> &lt;?&gt; (<code>search-backward</code>, vi-like operation)</dt>
+<dd><a name="IDX165"></a>
+<a name="IDX166"></a>
+<p>Read a string in the echo area and search backward through the Info file
+for that string.  If the string includes upper-case characters, the Info
+file is searched case-sensitively; otherwise Info ignores the letter
+case.  With a numeric argument of <var>N</var>, search for <var>N</var>th
+occurrence of the string.  Negative arguments search forward.
+</p>
+</dd>
+<dt> &lt;S&gt; (<code>search-case-sensitively</code></dt>
+<dd><a name="IDX167"></a>
+<a name="IDX168"></a>
+<a name="IDX169"></a>
+<a name="IDX170"></a>
+<p>Read a string in the echo area and search for it case-sensitively, even
+if the string includes only lower-case letters.  With a numeric argument
+of <var>N</var>, search for <var>N</var>th occurrence of the string.  Negative
+arguments search backwards.
+</p>
+</dd>
+<dt> <kbd>C-x &lt;n&gt;</kbd> (<code>search-next</code>)</dt>
+<dt> &lt;n&gt;, vi-like operation</dt>
+<dd><a name="IDX171"></a>
+<a name="IDX172"></a>
+<a name="IDX173"></a>
+<a name="IDX174"></a>
+<p>Search for the same string used in the last search command, in the same
+direction, and with the same case-sensitivity option.  With a numeric
+argument of <var>N</var>, search for <var>N</var>th next occurrence.
+</p>
+</dd>
+<dt> <kbd>C-x &lt;N&gt;</kbd> (<code>search-previous</code>)</dt>
+<dt> &lt;N&gt;, vi-like operation</dt>
+<dd><a name="IDX175"></a>
+<a name="IDX176"></a>
+<a name="IDX177"></a>
+<p>Search for the same string used in the last search command, and with the
+same case-sensitivity option, but in the reverse direction.  With a
+numeric argument of <var>N</var>, search for <var>N</var>th previous occurrence.
+</p>
+</dd>
+<dt> &lt;C-s&gt; (<code>isearch-forward</code>)</dt>
+<dd><a name="IDX178"></a>
+<a name="IDX179"></a>
+<a name="IDX180"></a>
+<p>Interactively search forward through the Info file for a string as you
+type it.  If the string includes upper-case characters, the search is
+case-sensitive; otherwise Info ignores the letter case.
+</p>
+</dd>
+<dt> &lt;C-r&gt; (<code>isearch-backward</code>)</dt>
+<dd><a name="IDX181"></a>
+<a name="IDX182"></a>
+<p>Interactively search backward through the Info file for a string as
+you type it.  If the string includes upper-case characters, the search
+is case-sensitive; otherwise Info ignores the letter case.
+</p>
+</dd>
+<dt> &lt;i&gt; (<code>index-search</code>)</dt>
+<dd><a name="IDX183"></a>
+<a name="IDX184"></a>
+<a name="IDX185"></a>
+<a name="IDX186"></a>
+<p>Look up a string in the indices for this Info file, and select a node
+where the found index entry points to.
+</p>
+</dd>
+<dt> &lt;,&gt; (<code>next-index-match</code>)</dt>
+<dd><a name="IDX187"></a>
+<a name="IDX188"></a>
+<p>Move to the node containing the next matching index item from the last
+&lsquo;<samp>i</samp>&rsquo; command.
+</p>
+</dd>
+<dt> <kbd>M-x index-apropos</kbd></dt>
+<dd><a name="IDX189"></a>
+<p>Grovel the indices of all the known Info files on your system for a
+string, and build a menu of the possible matches.
+</p></dd>
+</dl>
+
+<p>The most basic searching command is &lsquo;<samp>s</samp>&rsquo; or &lsquo;<samp>/</samp>&rsquo;
+(<code>search</code>).  The &lsquo;<samp>s</samp>&rsquo; command prompts you for a string in the
+echo area, and then searches the remainder of the Info file for an
+occurrence of that string.  If the string is found, the node containing
+it is selected, and the cursor is left positioned at the start of the
+found string.  Subsequent &lsquo;<samp>s</samp>&rsquo; commands show you the default search
+string within &lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo;; pressing &lt;RET&gt; instead of
+typing a new string will use the default search string.  Under
+&lsquo;<samp>--vi-keys</samp>&rsquo; (see <a href="Invoking-Info.html#g_t_002d_002dvi_002dkeys">&ndash;vi-keys</a>), using the &lsquo;<samp>n</samp>&rsquo; or &lsquo;<samp>N</samp>&rsquo;
+commands is a faster way of searching for the same string.
+</p>
+<p><em>Incremental searching</em> is similar to basic searching, but the
+string is looked up while you are typing it, instead of waiting until
+the entire search string has been specified.
+</p>
+<a name="IDX190"></a>
+<a name="IDX191"></a>
+<p>Both incremental and non-incremental search by default ignore the case
+of letters when comparing the Info file text with the search string.
+However, an uppercase letter in the search string makes the search
+case-sensitive.  You can force a case-sensitive non-incremental search,
+even for a string that includes only lower-case letters, by using the
+&lsquo;<samp>S</samp>&rsquo; command (<code>search-case-sensitively</code>).  The &lsquo;<samp>n</samp>&rsquo; and
+&lsquo;<samp>N</samp>&rsquo; commands operate case-sensitively if the last search command
+was &lsquo;<samp>S</samp>&rsquo;.
+</p>
+<p>The most efficient means of finding something quickly in a manual is
+the &lsquo;<samp>i</samp>&rsquo; command (<code>index-search</code>).  This command prompts for
+a string, and then looks for that string in all the indices of the
+current Info manual.  If it finds a matching index entry, it displays
+the node to which that entry refers and prints the full text of the
+entry in the echo area.  You can press &lsquo;<samp>,</samp>&rsquo;
+(<code>next-index-match</code>) to find more matches.  A good Info manual
+has all of its important concepts indexed, so the &lsquo;<samp>i</samp>&rsquo; command
+lets you use a manual as a reference.
+</p>
+<p>If you don't know what manual documents something, try the <kbd>M-x
+index-apropos</kbd>.  It prompts for a string and then looks up that string
+in all the indices of all the Info documents installed on your system.
+It can also be invoked from the command line; see <a href="Invoking-Info.html#g_t_002d_002dapropos">&ndash;apropos</a>.
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Commands.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Xref-Commands.html#SEC7" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="info-stnd.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#SEC23" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
 </body>
+</html>

@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.174 2006-08-05 11:00:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.175 2006-08-05 12:09:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5207,6 +5207,7 @@ sub rearrange_elements()
         {
             $cut_section = 2 if ($toplevel <= 2);
         }
+        my $previous_file;
         foreach my $element (@elements_list)
         { 
             print STDERR "# Splitting ($Texi2HTML::Config::SPLIT:$cut_section) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -5231,13 +5232,21 @@ sub rearrange_elements()
                 $is_top = "top";
                 $element->{'file'} = $docu_top;
             }
-            elsif ($Texi2HTML::Config::NODE_FILES and ($Texi2HTML::Config::SPLIT eq 'node'))
+            elsif ($Texi2HTML::Config::NODE_FILES)# and ($Texi2HTML::Config::SPLIT eq 'node'))
             {
-                my $node = get_node($element) unless(exists($element->{'node_ref'})
-                   and $element->{'node_ref'}->{'element_added'});
-                if ($node and defined($node->{'node_file'}))
+                if ($new_file)
                 {
-                    $element->{'file'} = $node->{'node_file'};
+                    my $node = get_node($element) unless(exists($element->{'node_ref'})
+                        and $element->{'node_ref'}->{'element_added'});
+                    if ($node and defined($node->{'node_file'}))
+                    {
+                        $element->{'file'} = $node->{'node_file'};
+                    }
+                    $previous_file = $element->{'file'};
+                }
+                elsif($previous_file)
+                {
+                    $element->{'file'} = $previous_file;
                 }
             }
             if (defined($Texi2HTML::Config::element_file_name))
