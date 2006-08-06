@@ -8,7 +8,8 @@ This file records noteworthy changes.
 * Transliterate accented characters in file names. Use Text::Unidecode
   if detected.
 
-* Handle @frenchspacing, @tie and @indent.
+* Handle @frenchspacing, @tie, @indent and the obsolete @allow-recursion 
+  and @quote-arg.
 
 * Use more numeric entities, especially for accented letters.
 
@@ -56,6 +57,11 @@ This file records noteworthy changes.
 
 * avoid menu entry and description redundancy in the formatting function
   and not in the main program.
+
+* accept - in @-command names (compatibility with makeinfo)
+
+* in user-defined macro arguments a comma in brace is escaped (compatibility
+  with makeinfo from texinfo 4.8.90)
 
 * BUG FIXES
   ---------

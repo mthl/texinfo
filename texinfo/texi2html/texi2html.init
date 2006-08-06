@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.109 2006-08-05 09:24:44 pertusus Exp $
+# $Id: texi2html.init,v 1.110 2006-08-06 21:12:36 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2986,6 +2986,9 @@ foreach my $key (keys(%def_map))
         'documentencoding' => {'arg' => 1}, # makeinfo ignore the whole line
         # ???
         'filbreak' => {},
+        # obsolete @-commands
+        'quote-arg' => {},
+        'allow-recursion' => {},
      );
 my %misc_command_old = (
         # not needed for formatting

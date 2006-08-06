@@ -186,6 +186,7 @@ test_texi macros ifset_in_macro.texi
 test_texi macros ifset_in_macro.texi "-D notes -prefix set_ifset_in_macro" 0 texi set_ifset_in_macro
 test_texi macros not_ifset_text.texi
 test_texi macros bib-example.texi
+test_texi macros quote-args.txi "" 0 txi
 test_texi sectionning
 test_texi sectionning sectionning.texi "-init test_directions.init -prefix sectionning_directions" 0 texi sectionning_directions
 test_texi sectionning test_include.texi
@@ -292,5 +293,6 @@ test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
 test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
+test_texi tar ../tar_texi/tar.texi 
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags

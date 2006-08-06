@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.175 2006-08-05 12:09:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.176 2006-08-06 21:12:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -840,7 +840,7 @@ use vars qw(
 # variables which might be redefined by the user but aren't likely to be  
 # they seem to be in the main namespace
 use vars qw(
-$index_properties
+%index_names
 %predefined_index
 %valid_index
 %sec2level
@@ -969,24 +969,26 @@ package main;
 #
 # pre-defined indices
 #
-$index_properties =
-{
- 'c' => { name => 'cp'},
- 'f' => { name => 'fn', code => 1},
- 'v' => { name => 'vr', code => 1},
- 'k' => { name => 'ky', code => 1},
- 'p' => { name => 'pg', code => 1},
- 't' => { name => 'tp', code => 1}
-};
 
-# FIXME valid_index and predefined_index aren't used.
-foreach my $valid_key(keys(%$index_properties))
+my %index_prefix_to_name = ();
+
+%index_names =
+(
+ 'cp' => { 'prefix' => ['cp','c']},
+ 'fn' => { 'prefix' => ['fn', 'f'], code => 1},
+ 'vr' => { 'prefix' => ['vr', 'v'], code => 1},
+ 'ky' => { 'prefix' => ['ky', 'k'], code => 1},
+ 'pg' => { 'prefix' => ['pg', 'p'], code => 1},
+ 'tp' => { 'prefix' => ['tp', 't'], code => 1}
+);
+
+foreach my $name(keys(%index_names))
 {
-    my $name = $index_properties->{$valid_key};
-    $predefined_index{$name} = $valid_key;
-    $valid_index{$valid_key} = 1;
-    $forbidden_index_name{$valid_key} = 1;
-    $forbidden_index_name{$name} = 1;
+    foreach my $prefix (@{$index_names{$name}->{'prefix'}})
+    {
+        $forbidden_index_name{$prefix} = 1;
+        $index_prefix_to_name{$prefix} = $name;
+    }
 }
 
 foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
@@ -3724,25 +3726,23 @@ sub misc_command_structure($$$$)
     {
         if ($line =~ /^\s+(\w+)\s+(\w+)/)
         {
-            my $from = $1;
-            my $to = $2;
-            my $prefix_from = index_name2prefix($from);
-            my $prefix_to = index_name2prefix($to);
-            echo_error ("unknown from index name $from in \@$macro", $line_nr)
-                unless $prefix_from;
-            echo_error ("unknown to index name $to in \@$macro", $line_nr)
-                unless $prefix_to;
-            if ($prefix_from and $prefix_to)
+            my $index_from = $1;
+            my $index_to = $2;
+            echo_error ("unknown from index name $index_from in \@$macro", $line_nr)
+                unless $index_names{$index_from};
+            echo_error ("unknown to index name $index_to in \@$macro", $line_nr)
+                unless $index_names{$index_to};
+            if ($index_names{$index_from} and $index_names{$index_to})
             {
                 if ($macro eq 'syncodeindex')
                 {
-                    $index_properties->{$prefix_to}->{'from_code'}->{$prefix_from} = 1;
+                    $index_names{$index_to}->{'associated_indices_code'}->{$index_from} = 1;
                 }
                 else
                 {
-                    $index_properties->{$prefix_to}->{'from'}->{$prefix_from} = 1;
+                    $index_names{$index_to}->{'associated_indices'}->{$index_from} = 1;
                 }
-                push @{$Texi2HTML::THISDOC{$macro}}, [$prefix_from,$prefix_to]; 
+                push @{$Texi2HTML::THISDOC{$macro}}, [$index_from,$index_to]; 
             }
         }
         else
@@ -3761,8 +3761,9 @@ sub misc_command_structure($$$$)
             }
             else
             {
-                $index_properties->{$name}->{'name'} = $name;
-                $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
+                @{$index_names{$name}->{'prefix'}} = ($name);
+                $index_names{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
+                $index_prefix_to_name{$name} = $name;
                 push @{$Texi2HTML::THISDOC{$macro}}, $name; 
             }
         }
@@ -4099,13 +4100,6 @@ my %empty_indices = (); # value is true for an index name key if the index
 my %printed_indices = (); # value is true for an index name not empty and
                           # printed
 
-
-sub element_is_top($)
-{
-    my $element = shift;
-    return ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top));
-}
-		  
 # find next, prev, up, back, forward, fastback, fastforward
 # find element id and file
 # split index pages
@@ -4457,7 +4451,7 @@ sub rearrange_elements()
     # nodes are attached to the section preceding them if not allready 
     # associated with a section
     # here we don't set @{$element->{'nodes'}} since it may be changed 
-    # below if split by indices. There fore we only set 
+    # below if split by indices. Therefore we only set 
     # @{$element->{'all_elements'}} with all the elements associated
     # with an element output, in the right order
     print STDERR "# Find the section associated with each node\n"
@@ -5219,8 +5213,8 @@ sub rearrange_elements()
                )
               )
             {
-                 $new_file = 1;
-                 $doc_nr++;
+                $new_file = 1;
+                $doc_nr++;
             }
             $doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
             $element->{'doc_nr'} = $doc_nr;
@@ -5232,7 +5226,7 @@ sub rearrange_elements()
                 $is_top = "top";
                 $element->{'file'} = $docu_top;
             }
-            elsif ($Texi2HTML::Config::NODE_FILES)# and ($Texi2HTML::Config::SPLIT eq 'node'))
+            elsif ($Texi2HTML::Config::NODE_FILES)
             {
                 if ($new_file)
                 {
@@ -5566,7 +5560,7 @@ sub enter_index_entry($$$$$$$)
     my $element = shift;
     my $use_section_id = shift;
     my $command = shift;
-    unless (exists ($index_properties->{$prefix}))
+    unless ($index_prefix_to_name{$prefix})
     {
         echo_error ("Undefined index command: ${prefix}index", $line_nr);
         $key = '';
@@ -5614,53 +5608,6 @@ sub enter_index_entry($$$$$$$)
     # don't add the index entry to the list of index entries used for index
     # entry formatting,if the index entry appears in a region like copying 
     push @index_labels, $index_entry unless ($place eq $region_place);
-}
-
-# returns prefix of @?index command associated with 2 letters prefix name
-# for example returns 'c' for 'cp'
-sub index_name2prefix($)
-{
-    my $name = shift;
-    my $prefix;
-
-    for $prefix (keys %$index_properties)
-    {
-        return $prefix if ($index_properties->{$prefix}->{'name'} eq $name);
-    }
-    return undef;
-}
-
-# get all the entries (for all the prefixes) in the $normal and $code 
-# references, formatted with @code{code } if it is a $code entry.
-sub get_index_entries($$)
-{
-    my $normal = shift;
-    my $code = shift;
-    my $entries = {};
-    foreach my $prefix (keys %$normal)
-    {
-        for my $key (keys %{$index->{$prefix}})
-        {
-            $entries->{$key} = $index->{$prefix}->{$key};
-        }
-    }
-
-    if (defined($code))
-    {
-        foreach my $prefix (keys %$code)
-        {
-            unless (exists $normal->{$prefix})
-            {
-                foreach my $key (keys %{$index->{$prefix}})
-                {
-                    $entries->{$key} = $index->{$prefix}->{$key};
-                    # use @code for code style index entry
-                    $entries->{$key}->{'entry'} = "\@code{$entries->{$key}->{entry}}";
-                }
-            }
-        }
-    }
-    return $entries;
 }
 
 # sort according to cmp if both $a and $b are alphabetical or non alphabetical, 
@@ -5751,32 +5698,64 @@ sub get_index_pages($)
     return $pages;
 }
 
+# return the page and the entries. Cache the result in %indices.
 sub get_index($;$)
 {
-    my $name = shift;
+    my $index_name = shift;
     my $line_nr = shift;
-    return (@{$indices{$name}}) if ($indices{$name});
-    my $prefix = index_name2prefix($name);
-    unless ($prefix)
+
+    return (@{$indices{$index_name}}) if ($indices{$index_name});
+
+    unless (exists($index_names{$index_name}))
     {
-        echo_error ("Bad index name: $name", $line_nr);
-        #warn "$ERROR Bad index name: $name\n";
+        echo_error ("Bad index name: $index_name", $line_nr);
         return;
     }
-    if ($index_properties->{$prefix}->{'code'})
+    # add the index name itself to the index names searched for index
+    # prefixes. Only those found associated by synindex or syncodeindex are 
+    # allready there (unless this code has allready been called).
+    if ($index_names{$index_name}->{'code'})
     {
-        $index_properties->{$prefix}->{'from_code'}->{$prefix} = 1;
+        $index_names{$index_name}->{'associated_indices_code'}->{$index_name} = 1;
     }
     else
     {
-        $index_properties->{$prefix}->{'from'}->{$prefix}= 1;
+        $index_names{$index_name}->{'associated_indices'}->{$index_name} = 1;
     }
 
-    my $entries = get_index_entries($index_properties->{$prefix}->{'from'},
-                                  $index_properties->{$prefix}->{'from_code'});
+    # find all the index names associated with the prefixes and then 
+    # all the entries associated with each prefix
+    my $entries = {};
+    foreach my $associated_indice(keys %{$index_names{$index_name}->{'associated_indices'}})
+    {
+        foreach my $prefix(@{$index_names{$associated_indice}->{'prefix'}})
+        {
+            foreach my $key (keys %{$index->{$prefix}})
+            {
+                $entries->{$key} = $index->{$prefix}->{$key};
+            }
+        }
+    }
+
+    foreach my $associated_indice (keys %{$index_names{$index_name}->{'associated_indices_code'}})
+    {
+        unless (exists ($index_names{$index_name}->{'associated_indices'}->{$associated_indice}))
+        {
+            foreach my $prefix (@{$index_names{$associated_indice}->{'prefix'}})
+            {
+                foreach my $key (keys (%{$index->{$prefix}}))
+                {
+                    $entries->{$key} = $index->{$prefix}->{$key};
+                    # use @code for code style index entry
+                    $entries->{$key}->{'entry'} = "\@code{$entries->{$key}->{entry}}";
+                }
+            }
+        }
+    }
+
     return unless %$entries;
     my $pages = get_index_pages($entries);
-    $indices{$name} = [ $pages, $entries ];
+    $indices{$index_name} = [ $pages, $entries ];
     return ($pages, $entries);
 }
 
@@ -6274,7 +6253,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 s/\s+(\w+)\s*//;
                 my $name = $1;
                 close_paragraph(\$text, \@stack, \%state);
-                next if (!index_name2prefix($name) or $empty_indices{$name});
+                next if (!$index_names{$name} or $empty_indices{$name});
                 $printed_indices{$name} = 1;
                 print STDERR "print index $name($index_nr) in `$element->{'texi'}', element->{'indices'}: $element->{'indices'},\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
                 print STDERR "element->{'indices'}->[index_nr]: $element->{'indices'}->[$index_nr] (@{$element->{'indices'}->[$index_nr]})\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
@@ -6748,7 +6727,8 @@ sub dump_texi($$;$$)
 sub next_tag($)
 {
     my $line = shift;
-    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])/o or $line =~ /^\s*\@([a-zA-Z]\w*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z]\w*)$/)
+    # macro_regexp
+    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])/o or $line =~ /^\s*\@([a-zA-Z][\w-]*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z][\w-]*)$/)
     {
         return ($1);
     }
@@ -7310,9 +7290,11 @@ sub parse_format_command($$)
     my $line = shift;
     my $tag = shift;
     my $command = 'asis';
-    if (($line =~ /^\s*\@([A-Za-z]\w*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z]\w*)(\{\})?\s/) and ($::things_map_ref->{$1} or defined($::style_map_ref->{$1})))
+    # macro_regexp
+    if (($line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?\s/) and ($::things_map_ref->{$1} or defined($::style_map_ref->{$1})))
     {
-        $line =~ s/^\s*\@([A-Za-z]\w*)(\{\})?\s*//;
+        # macro_regexp
+        $line =~ s/^\s*\@([A-Za-z][\w-]*)(\{\})?\s*//;
         $command = $1;
     }
     return ('', $command) if ($line =~ /^\s*$/);
@@ -8498,10 +8480,17 @@ sub scan_texi($$$$;$)
                     }
                 }
                 elsif ($2 eq ',')
-                { # separate args
-                    print STDERR "# macro call: new arg\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-                    s/^\s*//o;
-                    push @{$state->{'macro_args'}}, '';
+                { # in texinfo 4.8.90 a comma in braces is protected
+                    if ($state->{'macro_depth'} > 1)
+                    {
+                        $state->{'macro_args'}->[-1] .= ',';
+                    }
+                    else
+                    { # separate args
+                        print STDERR "# macro call: new arg\n" if ($T2H_DEBUG & $DEBUG_MACROS);
+                        s/^\s*//o;
+                        push @{$state->{'macro_args'}}, '';
+                    }
                 }
                 elsif ($2 eq '}')
                 { # balanced } ends the macro call, otherwise it is in the arg
@@ -8635,7 +8624,8 @@ sub scan_texi($$$$;$)
 
 	
         # an @end tag
-        if (s/^([^{}@]*)\@end(\s+)([a-zA-Z]\w*)//)
+        # macro_regexp
+        if (s/^([^{}@]*)\@end(\s+)([a-zA-Z][\w-]*)//)
         {
             my $leading_text = $1;
             my $space = $2;
@@ -8671,7 +8661,8 @@ sub scan_texi($$$$;$)
             }
             next;
         }
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
+        # macro_regexp
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {# ARG_EXPANSION
             add_prev($text, $stack, $1) unless $state->{'ignored'};
             my $macro = $2;
@@ -8738,7 +8729,7 @@ sub scan_texi($$$$;$)
             elsif ($macro =~ /^r?macro$/)
             { #FIXME what to do if 'arg_expansion' is true (ie within another
               # macro call arguments?
-                if (/^\s+(\w+)\s*(.*)/)
+                if (/^\s+(\w[\w-]*)\s*(.*)/)
                 {
                     my $name = $1;
                     unless ($state->{'ignored'})
@@ -9249,7 +9240,8 @@ sub scan_structure($$$$;$)
         {
             delete $state->{'after_element'};
         }
-        if (s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)//)
+        # macro_regexp
+        if (s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             add_prev($text, $stack, $1);
             my $end_tag = $2;
@@ -9305,7 +9297,8 @@ sub scan_structure($$$$;$)
             next;
         }
         #elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
+        # macro_regexp
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -9775,19 +9768,21 @@ sub scan_line($$$$;$)
         }
 
         # We handle now the end tags 
-        if ($state->{'keep_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)//)
+        # macro_regexp
+        if ($state->{'keep_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             my $end_tag = $2;
             add_prev($text, $stack, $1 . "\@end $end_tag");
             next;
         }
-        elsif ($state->{'remove_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)//)
+        # macro_regexp
+        elsif ($state->{'remove_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             add_prev($text, $stack, $1);
             next;
         }
-	
-        if (s/^([^{}@,]*)\@end\s+([a-zA-Z]\w*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z]\w*)$//o)
+	# macro_regexp
+        if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $end_tag = $2;
@@ -9922,7 +9917,8 @@ sub scan_line($$$$;$)
         }
         # This is a macro
 	#elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
-        elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@,]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z]\w*)$//o)
+        # macro_regexp
+        elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $macro = $2;
@@ -11771,7 +11767,9 @@ sub do_index_entry_label($$$)
     
     print STDERR "[(index $command) $entry->{'entry'} $entry->{'label'}]\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), $index_properties->{$entry->{'prefix'}}->{'name'},$command); 
+    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), 
+      $index_prefix_to_name{$prefix},
+       $command); 
 }
 
 # decompose a decimal number on a given base. The algorithm looks like
@@ -11968,11 +11966,9 @@ foreach my $special (keys(%special_commands))
 }
 if ($Texi2HTML::Config::IDX_SUMMARY)
 {
-    foreach my $entry (keys(%$index_properties))
+    foreach my $entry (keys(%index_names))
     {
-         my $name = $index_properties->{$entry}->{'name'};
-         do_index_summary_file($name) 
-            unless ($empty_indices{$name});
+         do_index_summary_file($entry) unless ($empty_indices{$entry});
     }
 }
 do_node_files() if ($Texi2HTML::Config::NODE_FILES);

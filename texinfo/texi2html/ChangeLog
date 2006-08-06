@@ -1,3 +1,14 @@
+2006-08-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: accept - in @-command names.
+	ignore @allow-recursion and @quote-arg.
+	In macro args parsing, a comma in brace is protected.
+	Rewrite index names handling to be simpler and
+	accept more than one prefix for an index name. The main 
+	hash has now index names as key instead of prefixes.
+	* Tests/*: add the tar manual.
+	add macros/quote-args.txi from the makeinfo test suite.
+
 2006-08-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: use the same code for file 
