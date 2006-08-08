@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
+@c $Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13814,9 +13814,16 @@ And indeed, it can.  Namely, @command{makeinfo}
 does not control number of arguments passed to one-argument
 macros, so be careful when you invoke them.
 
-@item If a macro calls another macro (possibly itself), any commas in
-the nested macro invocations are quoted by default.  Thus, the
-following example:
+@item If a macro invocation includes another command (including a
+recursive invocation of itself), any commas in the nested command
+invocation(s) are quoted by default.  For example, in
+
+@example
+@@say@{@@strong@{Yes, I do@}, person one@}
+@end example
+
+the comma after @samp{Yes} is implicitly quoted.  Here's another
+example, with a recursive macro:
 
 @example
 @group
@@ -18792,7 +18799,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
+$Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18858,7 +18865,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.170 2006-07-16 13:51:32 karl Exp $
+@comment $Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

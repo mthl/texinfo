@@ -1,4 +1,12 @@
+2006-08-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Invoking Macros): all commas inside macro calls
+	are quoted, it seems.  From Patrice.
+
 2006-07-25  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_MINIX): remove, as it seems there is nowhere to
+	call it, and is it really necessary these days?
 
 	* doc/info-stnd.texi (What is Info?): suggest the Emacs Info
 	reader for the nicest display.
