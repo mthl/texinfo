@@ -19,8 +19,11 @@
 # any checks for libraries, header files, types and library functions.
 AC_DEFUN([gl_EARLY],
 [
+  m4_pattern_forbid([^gl_[A-Z]])dnl the gnulib macro namespace
+  m4_pattern_allow([^gl_ES$])dnl a valid locale name
   AC_REQUIRE([AC_PROG_RANLIB])
   AC_REQUIRE([AC_GNU_SOURCE])
+  AC_REQUIRE([gl_LOCK])
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -34,7 +37,7 @@ AC_DEFUN([gl_INIT],
   gl_EXITFAIL
   gl_GETOPT
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
-  AM_GNU_GETTEXT_VERSION([0.14.5])
+  AM_GNU_GETTEXT_VERSION([0.15])
   gl_MBCHAR
   gl_MBITER
   gl_FUNC_MEMCHR
@@ -99,13 +102,13 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xmalloc.c
   lib/xsetenv.c
   lib/xsetenv.h
+  m4/absolute-header.m4
   m4/alloca.m4
   m4/allocsa.m4
   m4/codeset.m4
   m4/eealloc.m4
   m4/error.m4
   m4/exitfail.m4
-  m4/full-header-path.m4
   m4/getopt.m4
   m4/gettext.m4
   m4/glibc2.m4
@@ -113,14 +116,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/iconv.m4
   m4/intdiv0.m4
   m4/intmax.m4
+  m4/inttypes-h.m4
   m4/inttypes-pri.m4
-  m4/inttypes.m4
   m4/inttypes_h.m4
-  m4/isc-posix.m4
   m4/lcmessage.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
+  m4/lock.m4
   m4/longdouble.m4
   m4/longlong.m4
   m4/mbchar.m4
@@ -149,6 +152,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/uintmax_t.m4
   m4/ulonglong.m4
   m4/unistd_h.m4
+  m4/visibility.m4
   m4/wchar_t.m4
   m4/wcwidth.m4
   m4/wint_t.m4

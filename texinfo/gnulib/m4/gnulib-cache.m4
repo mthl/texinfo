@@ -15,13 +15,14 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --aux-dir=build-aux --macro-prefix=gl getopt gettext memcpy memmove mkstemp strcase strdup strerror xalloc xsetenv
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --aux-dir=build-aux --no-libtool --macro-prefix=gl getopt gettext memcpy memmove mkstemp strcase strdup strerror xalloc xsetenv
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_MODULES([getopt gettext memcpy memmove mkstemp strcase strdup strerror xalloc xsetenv])
 gl_AVOID([])
 gl_SOURCE_BASE([gnulib/lib])
 gl_M4_BASE([gnulib/m4])
+gl_DOC_BASE([doc])
 gl_TESTS_BASE([tests])
 gl_LIB([libgnu])
 gl_MACRO_PREFIX([gl])
