@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.64 2006-06-18 23:39:43 karl Exp $
+# $Id: configure.ac,v 1.65 2006-08-12 13:38:10 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -34,9 +34,6 @@ AC_PROG_CC
 # the C compiler is checked.  The others could be later, but we just
 # keep everything together.
 gl_EARLY
-
-dnl Must be after gl_EARLY but before gl_INIT.
-AC_MINIX
 
 dnl Rest of Gnulib.
 gl_INIT

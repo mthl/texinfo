@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.10 2006-06-18 23:39:43 karl Exp $
+$Id: README.dev,v 1.11 2006-08-12 13:38:10 karl Exp $
 This README.dev file describes the development environment.
 
   Copyright (C) 2002, 2003, 2005, 2006 Free Software Foundation, Inc.
@@ -19,8 +19,8 @@ All of these programs are available from ftp://ftp.gnu.org/gnu.
 
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files, with the files being checked in to CVS.  If you
-want to update from the current gnulib, do a cvs checkout of gnulib, and
-then run
+want to update from the current gnulib, then do a cvs checkout of
+gnulib, and run
   gnulib-tool --update
 in the top-level directory.
 

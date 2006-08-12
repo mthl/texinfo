@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: txitextest,v 1.6 2005-06-06 12:34:38 karl Exp $
+# $Id: txitextest,v 1.7 2006-08-12 13:38:10 karl Exp $
 # Test texinfo.tex changes by running various manuals through with an
 # old version, saving the .ps result from dvips, doing the same with a
 # new version, and comparing.  Idea from Stepan Kasal.
@@ -7,15 +7,15 @@
 # Another option is to run the manuals all the way through using
 # texi2dvi, which tests in another way.
 
-tsrc=/u/texinfo/src
+tsrc=`dirname $0`/..
 PATH=$tsrc/util:$PATH
 
 tdoc=$tsrc/doc
 default_manuals="$tdoc/texinfo.txi $tdoc/info.texi $tdoc/info-stnd.texi"
 
-olddir=$HOME/gnu/src/gnulib/config
+olddir=$tsrc/../gnulib/config
 newdir=$tdoc
-tempdir=/u/texinfo/@tests/testdir
+tempdir=$tsrc/@tests
 full=false
 manuals=
 
