@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.6 2005-06-03 23:53:20 karl Exp $
+    $Id: man.c,v 1.7 2006-08-13 23:36:22 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005
    Free Software Foundation, Inc.
@@ -326,6 +326,17 @@ get_manpage_contents (char *pagename)
       freopen (NULL_DEVICE, "w", stderr);
       freopen (NULL_DEVICE, "r", stdin);
       dup2 (pipes[1], fileno (stdout));
+
+      if (MB_CUR_MAX > 1)
+        {
+          /* Info has trouble wrapping man output if it contains
+             multibyte characters */
+          setenv("LANGUAGE", "C", 1);
+          setenv("LANG", "C", 1);
+          setenv("LC_MESSAGES", "C", 1);
+          setenv("LC_CTYPE", "C", 1);
+          setenv("LC_ALL", "C", 1);
+        }
 
       execv (formatter_args[0], formatter_args);
 

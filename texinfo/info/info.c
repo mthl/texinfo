@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.13 2005-08-19 22:23:54 karl Exp $
+   $Id: info.c,v 1.14 2006-08-13 23:36:22 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005 Free Software Foundation, Inc.
@@ -154,6 +154,10 @@ main (int argc, char **argv)
 #ifdef HAVE_SETLOCALE
   /* Set locale via LC_ALL.  */
   setlocale (LC_ALL, "");
+  /* But don't use translated messages in the case when
+     string width and length can differ */
+  if (MB_CUR_MAX > 1)
+    setlocale(LC_MESSAGES, "C");
 #endif
 
 #ifdef ENABLE_NLS

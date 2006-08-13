@@ -1,3 +1,12 @@
+2006-08-13  Alexander E. Patrakov  <patrakov@ums.usu.ru>  (tiny change)
+
+	* info/man.c (get_manpage_contents), info/info.c (main):
+	Info apparently assumes equivalence of bytes and characters,
+	leading to (for example) translated man output in multibyte
+	locales being broken within a character.  In lieu of a
+	real fix, if MB_CUR_MAX > 1, revert to C.  bug-texinfo mail, 
+	07 Aug 2006 14:59:42 +0600.
+
 2006-08-12  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (error \box0): smaller font.
