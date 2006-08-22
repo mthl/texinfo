@@ -17,7 +17,6 @@ noinst_LIBRARIES = libgnu.a
 libgnu_a_SOURCES =
 libgnu_a_LIBADD = @LIBOBJS@
 noinst_HEADERS =
-pkgdata_DATA =
 EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
@@ -55,6 +54,12 @@ EXTRA_DIST += allocsa.valgrind
 libgnu_a_SOURCES += exit.h
 
 ## end   gnulib module exit
+
+## begin gnulib module exitfail
+
+EXTRA_DIST += exitfail.h
+
+## end   gnulib module exitfail
 
 ## begin gnulib module getopt
 
@@ -108,6 +113,12 @@ libgnu_a_SOURCES += setenv.h
 
 ## end   gnulib module setenv
 
+## begin gnulib module stat-macros
+
+EXTRA_DIST += stat-macros.h
+
+## end   gnulib module stat-macros
+
 ## begin gnulib module stdbool
 
 BUILT_SOURCES += $(STDBOOL_H)
@@ -122,11 +133,52 @@ MOSTLYCLEANFILES += stdbool.h stdbool.h-t
 
 ## end   gnulib module stdbool
 
+## begin gnulib module stdint
+
+BUILT_SOURCES += $(STDINT_H)
+EXTRA_DIST += stdint_.h
+
+# We need the following in order to create <stdint.h> when the system
+# doesn't have one that works with the given compiler.
+stdint.h: stdint_.h
+	sed -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
+	    -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
+	    -e 's/@''HAVE_SYS_TYPES_H''@/$(HAVE_SYS_TYPES_H)/g' \
+	    -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
+	    -e 's/@''HAVE_INTTYPES_H''@/$(HAVE_INTTYPES_H)/g' \
+	    -e 's/@''HAVE_SYS_INTTYPES_H''@/$(HAVE_SYS_INTTYPES_H)/g' \
+	    -e 's/@''HAVE_SYS_BITYPES_H''@/$(HAVE_SYS_BITYPES_H)/g' \
+	    -e 's/@''HAVE_LONG_LONG_INT''@/$(HAVE_LONG_LONG_INT)/g' \
+	    -e 's/@''BITSIZEOF_PTRDIFF_T''@/$(BITSIZEOF_PTRDIFF_T)/g' \
+	    -e 's/@''PTRDIFF_T_SUFFIX''@/$(PTRDIFF_T_SUFFIX)/g' \
+	    -e 's/@''BITSIZEOF_SIG_ATOMIC_T''@/$(BITSIZEOF_SIG_ATOMIC_T)/g' \
+	    -e 's/@''HAVE_SIGNED_SIG_ATOMIC_T''@/$(HAVE_SIGNED_SIG_ATOMIC_T)/g' \
+	    -e 's/@''SIG_ATOMIC_T_SUFFIX''@/$(SIG_ATOMIC_T_SUFFIX)/g' \
+	    -e 's/@''BITSIZEOF_SIZE_T''@/$(BITSIZEOF_SIZE_T)/g' \
+	    -e 's/@''SIZE_T_SUFFIX''@/$(SIZE_T_SUFFIX)/g' \
+	    -e 's/@''BITSIZEOF_WCHAR_T''@/$(BITSIZEOF_WCHAR_T)/g' \
+	    -e 's/@''HAVE_SIGNED_WCHAR_T''@/$(HAVE_SIGNED_WCHAR_T)/g' \
+	    -e 's/@''WCHAR_T_SUFFIX''@/$(WCHAR_T_SUFFIX)/g' \
+	    -e 's/@''BITSIZEOF_WINT_T''@/$(BITSIZEOF_WINT_T)/g' \
+	    -e 's/@''HAVE_SIGNED_WINT_T''@/$(HAVE_SIGNED_WINT_T)/g' \
+	    -e 's/@''WINT_T_SUFFIX''@/$(WINT_T_SUFFIX)/g' \
+	    < $(srcdir)/stdint_.h > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += stdint.h stdint.h-t
+
+## end   gnulib module stdint
+
 ## begin gnulib module strcase
 
 libgnu_a_SOURCES += strcase.h
 
 ## end   gnulib module strcase
+
+## begin gnulib module strdup
+
+EXTRA_DIST += strdup.h
+
+## end   gnulib module strdup
 
 ## begin gnulib module strnlen1
 
@@ -168,6 +220,12 @@ MOSTLYCLEANFILES += unistd.h
 libgnu_a_SOURCES += wcwidth.h
 
 ## end   gnulib module wcwidth
+
+## begin gnulib module xalloc
+
+EXTRA_DIST += xalloc.h
+
+## end   gnulib module xalloc
 
 ## begin gnulib module xalloc-die
 

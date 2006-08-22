@@ -47,6 +47,7 @@ AC_DEFUN([gl_INIT],
   gt_FUNC_SETENV
   gl_STAT_MACROS
   AM_STDBOOL_H
+  gl_STDINT_H
   gl_STRCASE
   gl_FUNC_STRDUP
   gl_FUNC_STRERROR
@@ -86,6 +87,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stat-macros.h
   lib/stat_.h
   lib/stdbool_.h
+  lib/stdint_.h
   lib/strcase.h
   lib/strcasecmp.c
   lib/strdup.c
@@ -143,11 +145,11 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/size_max.m4
   m4/stat-macros.m4
   m4/stdbool.m4
+  m4/stdint.m4
   m4/stdint_h.m4
   m4/strcase.m4
   m4/strdup.m4
   m4/strerror.m4
-  m4/strerror_r.m4
   m4/sys_stat_h.m4
   m4/uintmax_t.m4
   m4/ulonglong.m4
