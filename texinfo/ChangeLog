@@ -1,3 +1,8 @@
+2006-08-23  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (man_rule_bin): use help2man -o, instead of
+	redirection, so that `missing' can infer the output filename.
+
 2006-08-13  Alexander E. Patrakov  <patrakov@ums.usu.ru>  (tiny change)
 
 	* info/man.c (get_manpage_contents), info/info.c (main):

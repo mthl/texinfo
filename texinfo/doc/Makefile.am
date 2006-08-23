@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.31 2006-04-26 21:30:02 karl Exp $
+# $Id: Makefile.am,v 1.32 2006-08-23 12:56:37 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -81,8 +81,8 @@ man_rule_bin = echo "Updating man page $@" && \
 	$(man_rule_0) && \
 	echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
 	    (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) && \
-	echo $(HELP2MAN) --name=\""$$name"\" "$$dir/$$program" '>$@' && \
-	     $(HELP2MAN) --name="$$name"     "$$dir/$$program"  >$@
+	echo $(HELP2MAN) --name=\""$$name"\" "$$dir/$$program" -o '$@' && \
+	     $(HELP2MAN) --name="$$name"     "$$dir/$$program" -o '$@'
 
 $(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
