@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
+@c $Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -905,7 +905,7 @@ based on their previous PostScript language.  It can represent the exact
 appearance of a document, including fonts, and supporting arbitrary
 scaling.  It is intended to be platform-independent and easily
 viewable, among other design goals; for a discussion, see
-@uref{http://tug.org/TUGboat/Articles/tb22-3/tb72beebeI.pdf}.  Texinfo
+@uref{http://tug.org/TUGboat/Articles/tb22-3/tb72beebe-pdf.pdf}.  Texinfo
 uses the @command{pdftex} program, a variant of @TeX{}, to output PDF;
 see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
@@ -1099,7 +1099,7 @@ file @file{texinfo.tex} that contains information (definitions or
 to @TeX{} commands, which @TeX{} can then process to create the typeset
 document.)  @file{texinfo.tex} contains the specifications for printing
 a document.  You can get the latest version of @file{texinfo.tex} from
-@uref{ftp://ftp.gnu.org/gnu/texinfo/texinfo.tex}.
+the Texinfo home page, @uref{http://www.gnu.org/software/texinfo/}.
 
 In the United States, documents are most often printed on 8.5 inch by 11
 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.  But
@@ -18799,7 +18799,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
+$Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18865,7 +18865,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.171 2006-08-08 21:40:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

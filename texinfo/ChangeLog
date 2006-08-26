@@ -1,3 +1,9 @@
+2006-08-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Formats): update Beebe paper reference.
+	(Printed Books): update texinfo.tex reference.
+	Report from VAN VLIERBERGHE Stef, 22 Aug 2006 22:05:27 +0200.
+
 2006-08-23  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (man_rule_bin): use help2man -o, instead of
