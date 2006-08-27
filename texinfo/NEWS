@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.132 2006-08-12 13:38:10 karl Exp $
+$Id: NEWS,v 1.133 2006-08-27 00:13:52 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -26,6 +26,7 @@ one of the relevant sections:
   . new command @allowcodebreaks to control breaks at _ and - within @code.
   . new command @frenchspacing to control spacing after sentences.
   . new command @fonttextsize to allow changing body text font size to 10pt.
+  . new command @textdegree{} for the normal degrees symbol.
   . new command @thischapternum for use in TeX headers/footers.
   . new option @set codequoteundirected to use an undirected quote in
     code and example output, instead of the regular right quote.

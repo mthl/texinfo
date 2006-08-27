@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.19 2006-06-01 23:48:33 karl Exp $
+   $Id: lang.c,v 1.20 2006-08-27 00:13:52 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
    Software Foundation, Inc.
@@ -1094,6 +1094,8 @@ cm_special_char (int arg)
         add_encoded_char ("ordf" , "a");
       else if (strcmp (command, "ordm") == 0)
         add_encoded_char ("ordm" , "o");
+      else if (strcmp (command, "textdegree") == 0)
+        add_encoded_char ("deg" , "o");
       else if (strcmp (command, "AE") == 0)
         add_encoded_char ("AElig", command);
       else if (strcmp (command, "ae") == 0)

@@ -1,5 +1,9 @@
 2006-08-26  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/cmds.c (command_table): new command @textdegree{}.
+	* makeinfo/lang.c (cm_special_char): handle textdegree.
+	* doc/texinfo.tex (\textdegree): define it.
+
 	* doc/texinfo.txi (Output Formats): update Beebe paper reference.
 	(Printed Books): update texinfo.tex reference.
 	Report from VAN VLIERBERGHE Stef, 22 Aug 2006 22:05:27 +0200.

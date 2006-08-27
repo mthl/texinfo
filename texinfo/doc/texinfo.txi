@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
+@c $Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -447,6 +447,7 @@ Special Insertions
                                  and the copyright symbol.
 * euro::                        How to insert the Euro currency symbol.
 * pounds::                      How to insert the pounds currency symbol.
+* textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
 * Glyphs::                      How to indicate results of evaluation,
@@ -10034,7 +10035,8 @@ These are:
 @item Accents.
 @item Dots and bullets.
 @item The @TeX{} logo and the copyright symbol.
-@item The pounds currency symbol.
+@item The euro and pounds currency symbols.
+@item The degrees symbol.
 @item The minus sign.
 @item Mathematical expressions.
 @item Glyphs for evaluation, macros, errors, etc.
@@ -10053,6 +10055,7 @@ These are:
                                  and the copyright symbol.
 * euro::                        How to insert the Euro currency symbol.
 * pounds::                      How to insert the pounds currency symbol.
+* textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
 * Glyphs::                      How to indicate results of evaluation,
@@ -10661,10 +10664,10 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 
 Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
 possible, this is the symbol for the Euro currency, invented as part
-of the European economic unification relatively recently.  In plain
-Info, it is the word @samp{Euro }.  (The space is included in the text
-transliteration since typically there would be no space after the
-symbol, so it would be inappropriate to have a space in the source document.)
+of the European economic unification.  In plain Info, it is the word
+@samp{Euro }.  A trailing space is included in the text
+transliteration since typically no space is desired after the symbol,
+so it would be inappropriate to have a space in the source document.
 
 Texinfo cannot magically synthesize support for the Euro symbol where
 the underlying system (fonts, software, whatever) does not support
@@ -10696,6 +10699,15 @@ instructions.
 Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
 possible, this is the symbol for the currency pounds sterling.  In
 Info, it is a @samp{#}.
+
+
+@node textdegree
+@section @code{@@textdegree}@{@} (@textdegree{}): Degrees symbol
+@findex pounds
+
+Use the @code{@@textdegree@{@}} command to generate `@textdegree{}'.
+Where possible, this is the normal symbol for degrees.  In plain text
+and Info output, it is an @samp{o}.
 
 
 @node minus
@@ -18799,7 +18811,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
+$Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18865,7 +18877,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.172 2006-08-26 23:25:38 karl Exp $
+@comment $Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

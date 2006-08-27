@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.65 2006-07-10 23:07:12 karl Exp $
+   $Id: cmds.c,v 1.66 2006-08-27 00:13:52 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
@@ -321,6 +321,7 @@ COMMAND command_table[] = {
   { "tab", cm_tab, NO_BRACE_ARGS },
   { "table", cm_table, NO_BRACE_ARGS },
   { "tex", cm_tex, NO_BRACE_ARGS },
+  { "textdegree", cm_special_char, BRACE_ARGS },
   { "tie", cm_tie, BRACE_ARGS },
   { "tieaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "tindex", cm_tindex, NO_BRACE_ARGS },
