@@ -1,3 +1,8 @@
+2006-09-01  Eli Zaretskii  <eliz@gnu.org>
+
+	* doc/texinfo.txi (Multitable Rows): Document the Info output of
+	@headitem.
+
 2006-08-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (command_table): new command @textdegree{}.

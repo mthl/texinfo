@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
+@c $Id: texinfo.txi,v 1.174 2006-09-01 22:59:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9058,7 +9058,9 @@ input lines in your source file as necessary.
 @cindex <thead> HTML tag
 You can also use @code{@@headitem} instead of @code{@@item} to produce
 a @dfn{heading row}.  The @TeX{} output for such a row is in bold, and
-the HTML, XML, and Docbook output uses the @code{<thead>} tag.
+the HTML, XML, and Docbook output uses the @code{<thead>} tag.  In
+Info, the heading row is followed by a separator line made of dashes
+(@samp{-} characters).
 
 Here is a complete example of a multi-column table (the text is from
 @cite{The GNU Emacs Manual}, @pxref{Split Window,, Splitting Windows,
@@ -18811,7 +18813,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
+$Id: texinfo.txi,v 1.174 2006-09-01 22:59:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18877,7 +18879,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.173 2006-08-27 00:13:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.174 2006-09-01 22:59:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
