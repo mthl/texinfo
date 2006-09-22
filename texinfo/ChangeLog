@@ -1,3 +1,7 @@
+2006-09-22  Stepan Kasal  <kasal@ucw.cz>
+
+	* configure.ac: Add a comment explaining `env -i PATH=$PATH'.
+
 2006-09-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (code): spurious "in the printed manual", from
