@@ -1,3 +1,13 @@
+2006-10-01  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_bibtex): also run bibtex if "no .aux file" in
+	the .log, and "\bibdata" in the aux, for the first run of a btxmac
+	file.  From Oleg Katsitadze.
+
+2006-09-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Inserting Braces): spurious ppp.
+
 2006-09-22  Stepan Kasal  <kasal@ucw.cz>
 
 	* configure.ac: Add a comment explaining `env -i PATH=$PATH'.
