@@ -1,3 +1,12 @@
+2006-10-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\singlequotechar): rename to \codequoteright.
+	(\quoteexpand): rename to \rquoteexpand.
+	(\codequoteleft): new def, to look for @set codequotebacktick.
+	(\lquoteexpand, \quoteexpand): new defs.
+	(\lquoteChar, \rquoteChar, \dashChar, \underChar: new \chardef's.
+	(\code): must use new \...Char values, since now ` is active.
+
 2006-10-01  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_bibtex): also run bibtex if "no .aux file" in
