@@ -12,7 +12,7 @@ natopocotuototam
 
 EOT
 
-../makeinfo --plaintex quote-args.txi | diff - quote-args.samp
+../makeinfo --plaintex $srcdir/quote-args.txi | diff - quote-args.samp
 exit_code=$?
 
 rm quote-args.samp
