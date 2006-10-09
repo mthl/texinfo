@@ -1,8 +1,8 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.15 2005-10-05 23:21:41 karl Exp $
+   $Id: texindex.c,v 1.16 2006-10-09 18:48:40 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
-   2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+   2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -395,17 +395,26 @@ For more information about these matters, see the file named COPYING.\n"),
     usage (1);
 }
 
+/* Return a name for temporary file COUNT.  It is INSECURE to use this name to
+   create files without O_EXCL. */
+static char *
+gettempname (int count)
+{
+  char tempsuffix[10];
+
+  sprintf (tempsuffix, ".%d", count);
+  return concat3 (tempdir, tempbase, tempsuffix);
+}
+
 /* Return a name for temporary file COUNT, or NULL if failure. */
 
 static char *
 maketempname (int count)
 {
-  char tempsuffix[10];
   char *name;
   int fd;
 
-  sprintf (tempsuffix, ".%d", count);
-  name =  concat3 (tempdir, tempbase, tempsuffix);
+  name = gettempname (count);
   fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0600);
   if (fd == -1)
     return NULL;
@@ -425,7 +434,7 @@ flush_tempfiles (int to_count)
   if (keep_tempfiles)
     return;
   while (last_deleted_tempcount < to_count)
-    unlink (maketempname (++last_deleted_tempcount));
+    unlink (gettempname (++last_deleted_tempcount));
 }
 
 
@@ -892,10 +901,13 @@ sort_offline (char *infile, off_t total, char *outfile)
 
   for (i = 0; i < ntemps; i++)
     {
+      FILE *ostream;
       char *outname = maketempname (++tempcount);
-      FILE *ostream = fopen (outname, "w");
       long tempsize = 0;
 
+      if (!outname)
+        pfatal_with_name("temp file");
+      ostream = fopen (outname, "w");
       if (!ostream)
         pfatal_with_name (outname);
       tempfiles[i] = outname;

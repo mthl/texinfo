@@ -1,3 +1,9 @@
+2006-10-09  Miloslav Trmac  <mitr@redhat.com>  (tiny change)
+
+	* util/texindex.c (gettempname): new fn, split off from maketempname.
+        (maketempname): call it.  We weren't deleting temp files.
+        (sort_offline): check result from maketempname.
+
 2006-10-06  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* makeinfo/tests/quote-args: Add missing $srcdir.
