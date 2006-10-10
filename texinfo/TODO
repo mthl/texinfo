@@ -1,4 +1,4 @@
-$Id: TODO,v 1.31 2006-06-01 23:54:42 karl Exp $
+$Id: TODO,v 1.32 2006-10-10 23:44:30 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -100,7 +100,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Use @ as the escape character, and Texinfo syntax generally, in the
     table of contents and index files.
   - Support input in any encoding and language, via ec or Latin Modern fonts.
-  - Or even Unicode, e.g., UTF-8, maybe assume enctex for the TeX work.
+    Including Unicode, e.g., UTF-8.  (Some work has been done.)
   - Reasonable way to change fonts from the default (some work has been
     done), to allow for PostScript fonts, for example.
   - @multitable: handle @hsep and @vsep.
@@ -110,6 +110,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Use marks to define a real @thissection.
   - Table of contents is misaligned if there are 10 or more [sub]sections.
   - Use url.sty (or something) to allow linebreak of url's.
+  - Make accent commands implicitly use @dotless{i/j}.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
     From Carsten Dominik.
