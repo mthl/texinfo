@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.133 2006-08-27 00:13:52 karl Exp $
+$Id: NEWS,v 1.134 2006-10-15 21:09:15 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -65,7 +65,7 @@ one of the relevant sections:
   . when calling man, use -a if no explicit section is found.
   . avoid showing the top(1) man page for nonexistent info files.
 * Distribution:
-  . autoconf 2.60, automake 1.9.6, gettext 0.15.
+  . autoconf 2.60, automake 1.10, gettext 0.15.
   . gettext support now [external].
   . new translations: hu (Hungarian), rw (Kinyarwandan), vi (Vietnamese).
   . most common functionality imported from gnulib.

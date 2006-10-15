@@ -1,3 +1,8 @@
+2006-10-10  Karl Berry  <karl@gnu.org>
+
+	* TODO: would be nice if accent commands implicitly used
+	dotless i/j.
+
 2006-10-09  Miloslav Trmac  <mitr@redhat.com>  (tiny change)
 
 	* util/texindex.c (gettempname): new fn, split off from maketempname.

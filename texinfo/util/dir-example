@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.66 2006-10-08 16:06:12 karl Exp $
+$Id: dir-example,v 1.67 2006-10-15 21:09:15 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -89,8 +89,8 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
+* Automake: (automake).         Making GNU standards-compliant Makefiles.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
-* automake: (automake).         Making Makefile.in's.
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * CVS: (cvs).                   Concurrent Versions System
@@ -272,6 +272,7 @@ Individual utilities
                                 How to create configuration templates
 * autom4te: (autoconf)autom4te Invocation.
                                 The Autoconf executables backbone
+* automake: (automake)Invoking Automake.        Generating Makefile.in.
 * autoreconf: (autoconf)autoreconf Invocation.
                                 Remaking multiple `configure' scripts
 * autoscan: (autoconf)autoscan Invocation.
