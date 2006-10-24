@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.16 2006-10-09 18:48:40 karl Exp $
+   $Id: texindex.c,v 1.17 2006-10-24 22:28:28 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -856,7 +856,7 @@ readline (struct linebuffer *linebuffer, FILE *stream)
         {
           buffer = (char *) xrealloc (buffer, linebuffer->size *= 2);
           p += buffer - linebuffer->buffer;
-          end += buffer - linebuffer->buffer;
+          end = buffer + linebuffer->size;
           linebuffer->buffer = buffer;
         }
       if (c < 0 || c == '\n')

@@ -1,3 +1,8 @@
+2006-10-24  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* util/texindex.c (readline): do the reallocation (more) correctly.
+	From Miloslav Trmac.
+
 2006-10-10  Karl Berry  <karl@gnu.org>
 
 	* TODO: would be nice if accent commands implicitly used
