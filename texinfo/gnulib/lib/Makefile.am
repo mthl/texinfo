@@ -149,7 +149,7 @@ EXTRA_DIST += memmove.c
 ## begin gnulib module mkstemp
 
 
-EXTRA_DIST += mkstemp.c mkstemp.h tempname.c
+EXTRA_DIST += mkstemp.c mkstemp.h
 
 ## end   gnulib module mkstemp
 
@@ -159,13 +159,6 @@ EXTRA_DIST += mkstemp.c mkstemp.h tempname.c
 EXTRA_DIST += setenv.c setenv.h unsetenv.c
 
 ## end   gnulib module setenv
-
-## begin gnulib module stat-macros
-
-
-EXTRA_DIST += stat-macros.h
-
-## end   gnulib module stat-macros
 
 ## begin gnulib module stdbool
 
@@ -273,6 +266,13 @@ EXTRA_DIST += stat_.h
 
 ## end   gnulib module sys_stat
 
+## begin gnulib module tempname
+
+
+EXTRA_DIST += tempname.c tempname.h
+
+## end   gnulib module tempname
+
 ## begin gnulib module unistd
 
 BUILT_SOURCES += $(UNISTD_H)
@@ -314,9 +314,8 @@ libgnu_a_SOURCES += xsetenv.h xsetenv.c
 
 
 mostlyclean-local: mostlyclean-generic
-	@test -z "$(MOSTLYCLEANDIRS)" || \
-	  for dir in $(MOSTLYCLEANDIRS); do \
-	    if test -d $$dir; then \
-	      echo "rmdir $$dir"; rmdir $$dir; \
-	    fi; \
-	  done
+	@for dir in '' $(MOSTLYCLEANDIRS); do \
+	  if test -n "$$dir" && test -d $$dir; then \
+	    echo "rmdir $$dir"; rmdir $$dir; \
+	  fi; \
+	done

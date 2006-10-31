@@ -49,10 +49,11 @@
 
 /* <sys/types.h> defines some of the stdint.h types as well, on glibc,
    IRIX 6.5, and OpenBSD 3.8 (via <machine/types.h>).
+   AIX 5.2 <sys/types.h> isn't needed and causes troubles.
    MacOS X 10.4.6 <sys/types.h> includes <stdint.h> (which is us), but
    relies on the system <stdint.h> definitions, so include
    <sys/types.h> after "///usr/include/stdint.h".  */
-#if 1
+#if 1 && ! defined _AIX
 # include <sys/types.h>
 #endif
 

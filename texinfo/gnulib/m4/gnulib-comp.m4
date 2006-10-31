@@ -56,13 +56,13 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
   gt_FUNC_SETENV
-  gl_STAT_MACROS
   AM_STDBOOL_H
   gl_STDINT_H
   gl_STRCASE
   gl_FUNC_STRDUP
   gl_FUNC_STRERROR
   gl_HEADER_SYS_STAT_H
+  gl_FUNC_GEN_TEMPNAME
   gl_HEADER_UNISTD
   gl_FUNC_WCWIDTH
   gl_XALLOC
@@ -76,10 +76,9 @@ AC_DEFUN([gl_INIT],
     gl_libobjs=
     gl_ltlibobjs=
     if test -n "$gl_LIBOBJS"; then
-      for i in $gl_LIBOBJS; do
-        # Remove the extension.
-        sed_drop_objext='s/\.o$//;s/\.obj$//'
-        i=`echo "$i" | sed "$sed_drop_objext"`
+      # Remove the extension.
+      sed_drop_objext='s/\.o$//;s/\.obj$//'
+      for i in `for i in $gl_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
         gl_libobjs="$gl_libobjs $i.$ac_objext"
         gl_ltlibobjs="$gl_ltlibobjs $i.lo"
       done
@@ -127,7 +126,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mkstemp.h
   lib/setenv.c
   lib/setenv.h
-  lib/stat-macros.h
   lib/stat_.h
   lib/stdbool_.h
   lib/stdint_.h
@@ -140,6 +138,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strnlen1.c
   lib/strnlen1.h
   lib/tempname.c
+  lib/tempname.h
   lib/unsetenv.c
   lib/wcwidth.h
   lib/xalloc-die.c
@@ -161,8 +160,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/glibc21.m4
   m4/iconv.m4
   m4/intdiv0.m4
+  m4/intl.m4
+  m4/intldir.m4
   m4/intmax.m4
-  m4/inttypes-h.m4
   m4/inttypes-pri.m4
   m4/inttypes_h.m4
   m4/lcmessage.m4
@@ -185,9 +185,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/printf-posix.m4
   m4/progtest.m4
   m4/setenv.m4
-  m4/signed.m4
   m4/size_max.m4
-  m4/stat-macros.m4
   m4/stdbool.m4
   m4/stdint.m4
   m4/stdint_h.m4
@@ -195,6 +193,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strdup.m4
   m4/strerror.m4
   m4/sys_stat_h.m4
+  m4/tempname.m4
   m4/uintmax_t.m4
   m4/ulonglong.m4
   m4/unistd_h.m4

@@ -1,3 +1,4 @@
+/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
 /* Provide a more complete sys/stat header file.
    Copyright (C) 2006 Free Software Foundation, Inc.
 
@@ -23,7 +24,7 @@
 /* This file is supposed to be used on platforms where <sys/stat.h> is
    incomplete.  It is intended to provide definitions and prototypes
    needed by an application.  Start with what the system provides.  */
-#include @ABSOLUTE_SYS_STAT_H@
+#include "///usr/include/sys/stat.h"
 
 #ifndef S_IFMT
 # define S_IFMT 0170000
