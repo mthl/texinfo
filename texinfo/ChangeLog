@@ -1,3 +1,15 @@
+2006-11-01  Miloslav Trmac  <mitr@redhat.com>
+
+	* util/texindex.c (main): Remove off-line sort implementation.
+	(tempdir, tempbase, tempcount, last_deleted_tempcount)
+	keep_tempfiles): Remove variables.
+	(sort_offline, initbuffer, readline, merge_files, merge_direct)
+	(gettempname, maketempname, flush_tempfiles):
+	Remove functions.
+	(texindex_options): Remove --keep and --no-keep documentation.
+	(decode_command): Ignore --keep.
+	(writelines): Fix comment.
+
 2006-10-24  Karl Berry  <karl@gnu.org>  (tiny change)
 
 	* util/texindex.c (readline): do the reallocation (more) correctly.
