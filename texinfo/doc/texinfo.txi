@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.176 2006-09-30 18:54:58 karl Exp $
+@c $Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9383,14 +9383,12 @@ the full file name of the image being displayed.  If you want an empty
 Texinfo text, so special characters such as @samp{"} and @samp{<} and
 @samp{&} are escaped in the HTML and XML output.
 
-@cindex GIF images, unsupported due to patents
 @cindex PNG image format
 @cindex JPEG image format
 If you do not supply the optional @var{extension} (fifth) argument,
 @code{makeinfo} first tries @file{@var{filename}.png}; if that does
 not exist, it tries @file{@var{filename}.jpg}.  If that does not exist
-either, it complains.  (We cannot support GIF format directly due to
-software patents.)
+either, it complains.
 
 In Info output, @code{makeinfo} writes a reference to the binary image
 file (trying @var{filename} suffixed with @file{@var{extension}},
@@ -18811,7 +18809,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.176 2006-09-30 18:54:58 karl Exp $
+$Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18877,7 +18875,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.176 2006-09-30 18:54:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
