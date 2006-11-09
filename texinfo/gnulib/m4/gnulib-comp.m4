@@ -159,6 +159,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/glibc2.m4
   m4/glibc21.m4
   m4/iconv.m4
+  m4/inline.m4
   m4/intdiv0.m4
   m4/intl.m4
   m4/intldir.m4
