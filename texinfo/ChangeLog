@@ -1,3 +1,10 @@
+2006-11-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dopdfimage): look for png, jpg/jpeg/JPG, and
+	  as well as pdf images, since they are supported in pdftex with
+	  no further ado.
+	* doc/texinfo.txi (Image Syntax): document it.
+
 2006-11-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (Image Syntax): don't mention GIF any more.

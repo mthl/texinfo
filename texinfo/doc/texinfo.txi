@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
+@c $Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9341,11 +9341,18 @@ extension, because the different processors support different formats:
 
 @itemize @bullet
 @item
+@pindex eps image format
 @TeX{} reads the file @file{@var{filename}.eps} (Encapsulated PostScript
 format).
 @item
 @pindex pdftex@r{, and images}
-PDF@TeX{} reads @file{@var{filename}.pdf} (Adobe's Portable Document Format).
+@pindex png image format
+@pindex jpeg image format
+@pindex pdf image inclusions
+pdf@TeX{} reads @file{@var{filename}.png}, @file{@var{filename}.jpg},
+@file{@var{filename}.jpeg}, or @file{@var{filename}.pdf} (in that
+order).  The PDF format cannot support EPS images, so they must be
+converted first.
 @item
 @code{makeinfo} includes @file{@var{filename}.txt} verbatim for
 Info output (more or less as if it was an @code{@@example}).
@@ -18809,7 +18816,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
+$Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18875,7 +18882,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.177 2006-11-05 18:56:49 karl Exp $
+@comment $Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
