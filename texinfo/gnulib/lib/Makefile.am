@@ -18,6 +18,7 @@ noinst_LIBRARIES = libgnu.a
 libgnu_a_SOURCES =
 libgnu_a_LIBADD = $(gl_LIBOBJS)
 libgnu_a_DEPENDENCIES = $(gl_LIBOBJS)
+EXTRA_libgnu_a_SOURCES =
 noinst_HEADERS =
 EXTRA_DIST =
 BUILT_SOURCES =
@@ -60,6 +61,8 @@ EXTRA_DIST += allocsa.valgrind
 
 EXTRA_DIST += error.c error.h
 
+EXTRA_libgnu_a_SOURCES += error.c
+
 ## end   gnulib module error
 
 ## begin gnulib module exit
@@ -72,6 +75,8 @@ libgnu_a_SOURCES += exit.h
 
 
 EXTRA_DIST += exitfail.c exitfail.h
+
+EXTRA_libgnu_a_SOURCES += exitfail.c
 
 ## end   gnulib module exitfail
 
@@ -89,6 +94,8 @@ getopt.h: getopt_.h
 MOSTLYCLEANFILES += getopt.h getopt.h-t
 
 EXTRA_DIST += getopt.c getopt1.c getopt_.h getopt_int.h
+
+EXTRA_libgnu_a_SOURCES += getopt.c getopt1.c
 
 ## end   gnulib module getopt
 
@@ -117,6 +124,8 @@ libgnu_a_SOURCES += gettext.h
 
 EXTRA_DIST += mbchar.c mbchar.h
 
+EXTRA_libgnu_a_SOURCES += mbchar.c
+
 ## end   gnulib module mbchar
 
 ## begin gnulib module mbuiter
@@ -130,12 +139,16 @@ libgnu_a_SOURCES += mbuiter.h
 
 EXTRA_DIST += memchr.c
 
+EXTRA_libgnu_a_SOURCES += memchr.c
+
 ## end   gnulib module memchr
 
 ## begin gnulib module memcpy
 
 
 EXTRA_DIST += memcpy.c
+
+EXTRA_libgnu_a_SOURCES += memcpy.c
 
 ## end   gnulib module memcpy
 
@@ -144,6 +157,8 @@ EXTRA_DIST += memcpy.c
 
 EXTRA_DIST += memmove.c
 
+EXTRA_libgnu_a_SOURCES += memmove.c
+
 ## end   gnulib module memmove
 
 ## begin gnulib module mkstemp
@@ -151,12 +166,16 @@ EXTRA_DIST += memmove.c
 
 EXTRA_DIST += mkstemp.c mkstemp.h
 
+EXTRA_libgnu_a_SOURCES += mkstemp.c
+
 ## end   gnulib module mkstemp
 
 ## begin gnulib module setenv
 
 
 EXTRA_DIST += setenv.c setenv.h unsetenv.c
+
+EXTRA_libgnu_a_SOURCES += setenv.c unsetenv.c
 
 ## end   gnulib module setenv
 
@@ -223,6 +242,8 @@ EXTRA_DIST += stdint_.h
 
 EXTRA_DIST += strcase.h strcasecmp.c strncasecmp.c
 
+EXTRA_libgnu_a_SOURCES += strcasecmp.c strncasecmp.c
+
 ## end   gnulib module strcase
 
 ## begin gnulib module strdup
@@ -230,12 +251,16 @@ EXTRA_DIST += strcase.h strcasecmp.c strncasecmp.c
 
 EXTRA_DIST += strdup.c strdup.h
 
+EXTRA_libgnu_a_SOURCES += strdup.c
+
 ## end   gnulib module strdup
 
 ## begin gnulib module strerror
 
 
 EXTRA_DIST += strerror.c
+
+EXTRA_libgnu_a_SOURCES += strerror.c
 
 ## end   gnulib module strerror
 
@@ -271,6 +296,8 @@ EXTRA_DIST += stat_.h
 
 EXTRA_DIST += tempname.c tempname.h
 
+EXTRA_libgnu_a_SOURCES += tempname.c
+
 ## end   gnulib module tempname
 
 ## begin gnulib module unistd
@@ -297,6 +324,8 @@ libgnu_a_SOURCES += wcwidth.h
 
 
 EXTRA_DIST += xalloc.h xmalloc.c
+
+EXTRA_libgnu_a_SOURCES += xmalloc.c
 
 ## end   gnulib module xalloc
 
