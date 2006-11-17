@@ -23,7 +23,6 @@ info/session.c
 info/tilde.c
 info/variables.c
 info/window.c
-lib/getopt.c
 lib/system.h
 makeinfo/cmds.c
 makeinfo/defun.c
