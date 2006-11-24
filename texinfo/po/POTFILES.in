@@ -6,24 +6,26 @@
 #  
 # List of source files containing translatable strings.
 
+gnulib/lib/error.c
+gnulib/lib/getopt.c
+gnulib/lib/xalloc-die.c
+gnulib/lib/xsetenv.c
 info/echo-area.c
 info/footnotes.c
 info/footnotes.h
 info/indices.c
 info/info.c
-info/info.h
 info/infodoc.c
 info/infokey.c
 info/infomap.c
 info/m-x.c
 info/makedoc.c
 info/nodemenu.c
-info/pcterm.c
 info/session.c
 info/tilde.c
 info/variables.c
 info/window.c
-lib/system.h
+lib/xexit.c
 makeinfo/cmds.c
 makeinfo/defun.c
 makeinfo/files.c
@@ -38,7 +40,6 @@ makeinfo/makeinfo.c
 makeinfo/multi.c
 makeinfo/node.c
 makeinfo/sectioning.c
-makeinfo/toc.c
 makeinfo/xml.c
 makeinfo/xref.c
 util/install-info.c

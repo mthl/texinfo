@@ -1,3 +1,7 @@
+2006-11-24  Karl Berry  <karl@gnu.org>
+
+	* Makefile.am (po-check): new utility target from coreutils.
+
 2006-11-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\dopdfimage): look for png, jpg/jpeg/JPG, and
