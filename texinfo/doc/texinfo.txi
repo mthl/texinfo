@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
+@c $Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13617,6 +13617,12 @@ given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
 files are formed by transliteration of the corresponding node names,
 using the specified encoding. 
 
+In @TeX{} output, the characters which are supported in the standard
+Computer Modern fonts are output accordingly.  (For example, this
+means using constructed accents rather than precomposed glyphs.)
+Using a missing character generates a warning message, as does
+specifying an unimplemented encoding.
+
 In all other cases, it is accepted but ignored.
 
 
@@ -18816,7 +18822,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
+$Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18882,7 +18888,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.178 2006-11-09 01:18:37 karl Exp $
+@comment $Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

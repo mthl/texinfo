@@ -1,3 +1,15 @@
+2006-12-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@documentencoding): mention that it is
+	(somewhat) supported in TeX now.
+
+2006-12-05  Paulo Sequeira  <psequeira@gawab.com>
+
+	* doc/texinfo.tex (\documentencoding): real implementation.
+	(\setnonasciicharscatcode): new macro.
+	(\missingcharmsg): new macro.
+	(\latonechardefs, latninechardefs, \lattwochardefs): new macros.
+
 2006-11-24  Karl Berry  <karl@gnu.org>
 
 	* Makefile.am (po-check): new utility target from coreutils.
