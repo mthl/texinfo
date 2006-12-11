@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.20 2005-08-15 13:05:24 karl Exp $
+   $Id: index.c,v 1.21 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -657,7 +657,7 @@ sort_index (INDEX_ELT *index)
 static void
 insert_index_output_line_no (int line_number, int output_line_number_len)
 {
-  int last_column;
+  int last_column, out_line_no_width;
   int str_size = output_line_number_len + strlen (_("(line )"))
     + sizeof (NULL);
   char *out_line_no_str = (char *) xmalloc (str_size + 1);
@@ -673,16 +673,18 @@ insert_index_output_line_no (int line_number, int output_line_number_len)
     int i = output_paragraph_offset; 
     while (0 < i && output_paragraph[i-1] != '\n')
       i--;
-    last_column = output_paragraph_offset - i;
+    last_column = string_width ((char *)(output_paragraph + i),
+				output_paragraph_offset - i);
   }
 
-  if (last_column + strlen (out_line_no_str) > fill_column)
+  out_line_no_width = string_width (out_line_no_str, strlen (out_line_no_str));
+  if (last_column + out_line_no_width > fill_column)
     {
       insert ('\n');
       last_column = 0;
     }
 
-  while (last_column + strlen (out_line_no_str) < fill_column)
+  while (last_column + out_line_no_width < fill_column)
     {
       insert (' ');
       last_column++;
@@ -871,7 +873,10 @@ cm_printindex (void)
             }
           else
             {
-              unsigned new_length = strlen (index->entry);
+#define MIN_ENTRY_COLUMNS 37
+	      /* Make sure there is enough space even if index->entry has zero
+		 width. */
+              unsigned new_length = strlen (index->entry) + MIN_ENTRY_COLUMNS;
 
               if (new_length < 50) /* minimum length used below */
                 new_length = 50;
@@ -888,7 +893,13 @@ cm_printindex (void)
                  @@ has turned into @. */
               if (!no_headers)
                 {
-                  sprintf (line, "* %-37s  ", index->entry);
+		  int width;
+
+		  width = string_width (index->entry, strlen (index->entry));
+                  sprintf (line, "* %*s  ", width < MIN_ENTRY_COLUMNS
+			   ? -(strlen (index->entry)
+			       + (MIN_ENTRY_COLUMNS - width))
+			   : 0, index->entry);
                   line[2 + strlen (index->entry)] = ':';
                   insert_string (line);
                   /* Make sure any non-macros in the node name are expanded.  */

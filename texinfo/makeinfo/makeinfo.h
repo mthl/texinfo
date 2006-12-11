@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.21 2006-06-01 23:48:33 karl Exp $
+   $Id: makeinfo.h,v 1.22 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006 Free Software Foundation, Inc.
@@ -52,9 +52,6 @@ DECLARE (unsigned char *, output_paragraph, NULL);
 
 /* Offset into OUTPUT_PARAGRAPH. */
 DECLARE (int, output_paragraph_offset, 0);
-
-/* The output paragraph "cursor" horizontal position. */
-DECLARE (int, output_column, 0);
 
 /* Position in the output file. */
 DECLARE (int, output_position, 0);
@@ -251,13 +248,6 @@ DECLARE (int, expensive_validation, 0);
 #define coerce_to_upper(c) ((islower(c) ? toupper(c) : (c)))
 #define coerce_to_lower(c) ((isupper(c) ? tolower(c) : (c)))
 
-#define control_character_bit 0x40 /* %01000000, must be off. */
-#define meta_character_bit 0x080/* %10000000, must be on.  */
-#define CTL(c) ((c) & (~control_character_bit))
-#define UNCTL(c) coerce_to_upper(((c)|control_character_bit))
-#define META(c) ((c) | (meta_character_bit))
-#define UNMETA(c) ((c) & (~meta_character_bit))
-
 #define whitespace(c)       ((c) == '\t' || (c) == ' ')
 #define sentence_ender(c)   ((c) == '.'  || (c) == '?' || (c) == '!')
 #define cr_or_whitespace(c) (whitespace(c) || (c) == '\r' || (c) == '\n')
@@ -290,6 +280,9 @@ DECLARE (int, expensive_validation, 0);
 #define URL_SAFE_CHAR(ch) (((unsigned char)ch)<128 && isalnum (ch))
 
 #define COMMAND_PREFIX '@'
+
+/* A byte value to represent a non-breaking space until flush_output (). */
+#define NON_BREAKING_SPACE 036
 
 #define END_VERBATIM "end verbatim"
 
@@ -376,6 +369,8 @@ extern int get_until (char *match, char **string),
   search_forward (char *string, int from),
   search_forward_until_pos (char *string, int from, int end_pos),
   next_nonwhitespace_character (void),
+  string_width (const char *string, size_t length),
+  current_output_column (void),
   fs_error (char *filename);
 
 #if defined (VA_FPRINTF) && __STDC__

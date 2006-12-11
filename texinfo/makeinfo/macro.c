@@ -1,5 +1,5 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.9 2006-07-05 13:39:05 karl Exp $
+   $Id: macro.c,v 1.10 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2005 Free Software Foundation, Inc.
 
@@ -888,13 +888,12 @@ me_execute_string (char *execution_string)
 void
 me_execute_string_keep_state (char *execution_string, char *append_string)
 {
-  int op_orig, opcol_orig, popen_orig;
+  int op_orig, popen_orig;
   int fill_orig, newline_orig, indent_orig, meta_pos_orig;
 
   remember_itext (input_text, input_text_offset);
   op_orig = output_paragraph_offset;
   meta_pos_orig = meta_char_pos;
-  opcol_orig = output_column;
   popen_orig = paragraph_is_open;
   fill_orig = filling_enabled;
   newline_orig = last_char_was_newline;
@@ -906,7 +905,6 @@ me_execute_string_keep_state (char *execution_string, char *append_string)
     write_region_to_macro_output (append_string, 0, strlen (append_string));
   output_paragraph_offset = op_orig;
   meta_char_pos = meta_pos_orig;
-  output_column = opcol_orig;
   paragraph_is_open = popen_orig;
   filling_enabled = fill_orig;
   last_char_was_newline = newline_orig;

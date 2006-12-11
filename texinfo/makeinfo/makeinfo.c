@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.88 2006-07-05 13:39:05 karl Exp $
+   $Id: makeinfo.c,v 1.89 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -38,6 +38,10 @@
 #include "sectioning.h"
 #include "toc.h"
 #include "xml.h"
+
+#ifdef HAVE_WCWIDTH
+# include <wchar.h>
+#endif
 
 /* You can change some of the behavior of Makeinfo by changing the
    following defines: */
@@ -142,6 +146,11 @@ static int executing_macro = 0;
 
 /* True when we are inside a <li> block of a menu.  */
 static int in_menu_item = 0;
+
+/* The column position of output_paragraph[0].  This is not saved and restored
+   in the multitable code because flush_output () is only called in environment
+   0. */
+static int output_paragraph_start_column = 0;
 
 typedef struct brace_element
 {
@@ -1889,7 +1898,7 @@ init_paragraph (void)
   output_paragraph = xmalloc (paragraph_buffer_len);
   output_paragraph[0] = 0;
   output_paragraph_offset = 0;
-  output_column = 0;
+  output_paragraph_start_column = 0;
   paragraph_is_open = 0;
   current_indent = 0;
   meta_char_pos = 0;
@@ -2454,37 +2463,102 @@ discard_braces (void)
     }
 }
 
-static int
-get_char_len (int character)
+/* Return the number of columns necessary for displaying STRING of LEN
+   bytes. */
+int
+string_width (const char *string, size_t length)
 {
-  /* Return the printed length of the character. */
-  int len;
+#ifdef HAVE_WCWIDTH
+  int width;
 
-  switch (character)
+  mbtowc (NULL, NULL, 0);
+  width = 0;
+  while (length > 0)
     {
-    case '\t':
-      len = (output_column + 8) & 0xf7;
-      if (len > fill_column)
-        len = fill_column - output_column;
-      else
-        len = len - output_column;
-      break;
+      wchar_t wc;
+      int l, w;
 
-    case '\n':
-      len = fill_column - output_column;
-      break;
-
-    default:
-      /* ASCII control characters appear as two characters in the output
-         (e.g., ^A).  But characters with the high bit set are just one
-         on suitable terminals, so don't count them as two for line
-         breaking purposes.  */
-      if (0 <= character && character < ' ')
-        len = 2;
+      l = mbtowc (&wc, string, length);
+      if (l == -1)
+ 	{
+ 	  mbtowc (NULL, NULL, 0);
+ 	  w = 1;
+ 	  l = 1;
+ 	}
       else
-        len = 1;
+ 	{
+ 	  if (l == 0)
+ 	    l = 1;
+ 	  w = wcwidth (wc);
+ 	  if (w == -1)
+ 	    w = 1;
+ 	}
+      width += w;
+      string += l;
+      length -= l;
     }
-  return len;
+  return width;
+#endif
+  return length;
+}
+
+/* Return the 0-based number of the current output column */
+int
+current_output_column (void)
+{
+  int i, column;
+
+  for (i = output_paragraph_offset; i > 0 && output_paragraph[i - 1] != '\n';
+       i--)
+     ;
+  if (i == 0)
+    column = output_paragraph_start_column;
+  else
+    column = 0;
+  while (i < output_paragraph_offset)
+    {
+      int j;
+
+      /* Find a span of non-control characters */
+      for (j = i; j < output_paragraph_offset; j++)
+ 	{
+ 	  char c;
+
+ 	  c = output_paragraph[j];
+ 	  if ((0 <= c && c < ' ') || c == '\t' || c == NON_BREAKING_SPACE)
+ 	    break;
+ 	}
+      if (i < j)
+ 	{
+ 	  column += string_width ((char *)(output_paragraph + i), j - i);
+	  i = j;
+ 	}
+      if (i < output_paragraph_offset)
+ 	{
+ 	  char c;
+
+ 	  /* Handle a control character */
+ 	  c = output_paragraph[i];
+ 	  if (c == '\t')
+ 	    {
+ 	      column = (column + 8) & ~0x7;
+ 	      if (column > fill_column)
+ 		column = fill_column;
+ 	    }
+	  else if (c == NON_BREAKING_SPACE)
+	    column++;
+ 	  else
+ 	    {
+ 	      /* ASCII control characters appear as two characters in the
+ 		 output (e.g., ^A).  */
+ 	      if (!(0 <= c && c < ' '))
+ 		abort ();
+ 	      column += 2;
+ 	    }
+ 	  i++;
+ 	}
+    }
+  return column;
 }
 
 void
@@ -2609,13 +2683,13 @@ add_char (int character)
      ignore close_paragraph () calls any more. */
   if (must_start_paragraph && character != '\n')
     {
+      int column;
+
       must_start_paragraph = 0;
       line_already_broken = 0;  /* The line is no longer broken. */
-      if (current_indent > output_column)
-        {
-          indent (current_indent - output_column);
-          output_column = current_indent;
-        }
+      column = current_output_column ();
+      if (current_indent > column)
+	indent (current_indent - column);
     }
 
   if (non_splitting_words
@@ -2631,7 +2705,7 @@ add_char (int character)
           character = ';';
         }
       else
-        character = META (' '); /* unmeta-d in flush_output */
+        character = NON_BREAKING_SPACE; /* restored in flush_output */
     }
 
   insertion_paragraph_closed = 0;
@@ -2650,10 +2724,8 @@ add_char (int character)
               flush_output ();
             }
 
-          output_column = 0;
-
           if (!no_indent && paragraph_is_open)
-            indent (output_column = current_indent);
+            indent (current_indent);
           break;
         }
       else if (end_of_sentence_p () && !french_spacing)
@@ -2662,7 +2734,6 @@ add_char (int character)
            @frenchspacing is in effect.  */
         {
           insert (' ');
-          output_column++;
           last_inserted_character = character;
         }
 
@@ -2680,13 +2751,12 @@ add_char (int character)
             insert ('\n');
           else
             insert (' ');
-          output_column++;
         }
       break;
 
     default: /* not at newline */
       {
-        int len = get_char_len (character);
+        int column;
         int suppress_insert = 0;
 
         if ((character == ' ') && (last_char_was_newline))
@@ -2734,8 +2804,20 @@ add_char (int character)
               }
           }
 
-        output_column += len;
-        if (output_column > fill_column)
+	output_paragraph[output_paragraph_offset] = character;
+	output_paragraph_offset++;
+	column = current_output_column ();
+	output_paragraph_offset--;
+	/* The string_width () in current_output_column () cannot predict
+	   future incoming bytes.  So if output_paragraph ends in a partial
+	   multibyte character, its bytes are counted as separate column
+	   positions.  This may push column past fill_column, even though the
+	   finished multibyte character would fit on the current line.
+
+	   This is too hard to fix without modifying add_char () to recieve
+	   complete multibyte characters at a time, and causes only slightly
+	   incorrect paragraph filling, so we punt.  */
+        if (column > fill_column)
           {
             if (filling_enabled && !html)
               {
@@ -2822,11 +2904,6 @@ add_char (int character)
                             output_paragraph_offset += current_indent;
                             free (temp_buffer);
                           }
-                        output_column = 0;
-                        while (temp < output_paragraph_offset)
-                          output_column +=
-                            get_char_len (output_paragraph[temp++]);
-                        output_column += len;
                         break;
                       }
                   }
@@ -2919,7 +2996,6 @@ kill_self_indent (int count)
   /* Handle infinite case first. */
   if (count < 0)
     {
-      output_column = 0;
       while (output_paragraph_offset)
         {
           if (whitespace (output_paragraph[output_paragraph_offset - 1]))
@@ -2971,22 +3047,17 @@ flush_output (void)
           node_line_number++;
         }
 
-      /* If we turned on the 8th bit for a space inside @w, turn it
-         back off for output.  This might be problematic, since the
-         0x80 character may be used in 8-bit character sets.  Sigh.
-         In any case, don't do this for HTML, since the nbsp character
-         is valid input and must be passed along to the browser.  */
-      if (!html && (output_paragraph[i] & meta_character_bit))
-        {
-          int temp = UNMETA (output_paragraph[i]);
-          if (temp == ' ')
-            output_paragraph[i] &= 0x7f;
-        }
+      /* If we turned on the 8th bit for a space inside @w, turn it back off
+         for output.  Don't do this for HTML, since the nbsp character is valid
+         input and must be passed along to the browser.  */
+      if (!html && output_paragraph[i] == NON_BREAKING_SPACE)
+	output_paragraph[i] = ' ';
     }
 
   fwrite (output_paragraph, 1, output_paragraph_offset, output_stream);
 
   output_position += output_paragraph_offset;
+  output_paragraph_start_column = current_output_column ();
   output_paragraph_offset = 0;
   meta_char_pos = 0;
 }
@@ -3037,6 +3108,8 @@ close_insertion_paragraph (void)
     }
   else
     {
+      int column;
+
       /* If the insertion paragraph is closed already, then we are seeing
          two `@end' commands in a row.  Note that the first one we saw was
          handled in the first part of this if-then-else clause, and at that
@@ -3044,8 +3117,9 @@ close_insertion_paragraph (void)
          indentation of the current line.  However, the indentation level
          may have just changed again, so we may have to outdent the current
          line to the new indentation level. */
-      if (current_indent < output_column)
-        kill_self_indent (output_column - current_indent);
+      column = current_output_column ();
+      if (current_indent < column)
+        kill_self_indent (column - current_indent);
     }
 
   insertion_paragraph_closed = 1;
@@ -3111,7 +3185,6 @@ close_paragraph (void)
       flush_output ();
       paragraph_is_open = 0;
       no_indent = 0;
-      output_column = 0;
     }
 
   ignore_blank_line ();
@@ -3125,38 +3198,39 @@ ignore_blank_line (void)
   last_char_was_newline = 1;
 }
 
-/* Align the end of the text in output_paragraph with fill_column. */
+/* Align the end of the text in output_paragraph with fill_column.  The last
+   character in output_paragraph is '\n'. */
 static void
 do_flush_right_indentation (void)
 {
   char *temp;
-  int temp_len;
 
   kill_self_indent (-1);
 
   if (output_paragraph[0] != '\n')
     {
-      output_paragraph[output_paragraph_offset] = 0;
+      int width;
 
-      if (output_paragraph_offset < fill_column)
+      width = string_width((char *)output_paragraph, output_paragraph_offset);
+      if (width < fill_column)
         {
           int i;
 
-          if (fill_column >= paragraph_buffer_len)
+          if (output_paragraph_offset + (fill_column - width)
+	      >= paragraph_buffer_len)
             output_paragraph =
               xrealloc (output_paragraph,
                         (paragraph_buffer_len += fill_column));
 
-          temp_len = strlen ((char *)output_paragraph);
-          temp = xmalloc (temp_len + 1);
-          memcpy (temp, (char *)output_paragraph, temp_len);
+          temp = xmalloc (output_paragraph_offset);
+          memcpy (temp, (char *)output_paragraph, output_paragraph_offset);
 
-          for (i = 0; i < fill_column - output_paragraph_offset; i++)
+          for (i = 0; i < fill_column - width; i++)
             output_paragraph[i] = ' ';
 
-          memcpy ((char *)output_paragraph + i, temp, temp_len);
+          memcpy ((char *)output_paragraph + i, temp, output_paragraph_offset);
           free (temp);
-          output_paragraph_offset = fill_column;
+          output_paragraph_offset += i;
           adjust_braces_following (0, i);
         }
     }
@@ -3186,6 +3260,8 @@ start_paragraph (void)
       /* If doing indentation, then insert the appropriate amount. */
       if (!no_indent)
         {
+	  int column;
+
           if (inhibit_paragraph_indentation)
             {
               amount_to_indent = current_indent;
@@ -3197,12 +3273,9 @@ start_paragraph (void)
           else
             amount_to_indent = current_indent + paragraph_start_indent;
 
-          if (amount_to_indent >= output_column)
-            {
-              amount_to_indent -= output_column;
-              indent (amount_to_indent);
-              output_column += amount_to_indent;
-            }
+	  column = current_output_column ();
+          if (amount_to_indent >= column)
+	    indent (amount_to_indent - column);
         }
     }
   else
@@ -3691,7 +3764,6 @@ cm_value (int arg, int start_pos, int end_pos)
       output_paragraph[end_pos] = 0;
       name = xstrdup (name);
       value = set_p (name);
-      output_column -= end_pos - start_pos;
       output_paragraph_offset = start_pos;
 
       /* Restore the previous value of meta_char_pos if the stuff
@@ -4112,7 +4184,6 @@ full_expansion (char *str, int implicit_code)
   /* Inhibit any real output.  */
   int start = output_paragraph_offset;
   int saved_paragraph_is_open = paragraph_is_open;
-  int saved_output_column = output_column;
 
   /* More output state to save.  */
   int saved_meta_pos = meta_char_pos;
@@ -4147,7 +4218,6 @@ full_expansion (char *str, int implicit_code)
 
   output_paragraph_offset = start;
   paragraph_is_open = saved_paragraph_is_open;
-  output_column = saved_output_column;
 
   meta_char_pos = saved_meta_pos;
   last_inserted_character = saved_last_char;

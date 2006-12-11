@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.61 2006-04-13 21:57:09 karl Exp $
+   $Id: insertion.c,v 1.62 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
@@ -375,7 +375,7 @@ enumerate_item (void)
   else
     sprintf (temp, "%d. ", current_enumval);
 
-  indent (output_column += (current_indent - strlen (temp)));
+  indent (current_output_column () + (current_indent - strlen (temp)));
   add_word (temp);
   current_enumval++;
 }
@@ -2207,8 +2207,7 @@ cm_item (void)
 
                   if (current_item_function ())
                     {
-                      output_column = current_indent - 2;
-                      indent (output_column);
+                      indent (current_indent - 2);
 
                       /* The item marker can be given with or without
                          braces -- @bullet and @bullet{} are both ok.
@@ -2227,7 +2226,6 @@ cm_item (void)
                             execute_string ("%s", item_func);
                         }
                       insert (' ');
-                      output_column++;
                     }
                   else
                     enumerate_item ();

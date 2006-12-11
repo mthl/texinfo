@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.12 2005-05-15 00:00:08 karl Exp $
+   $Id: multi.c,v 1.13 2006-12-11 14:59:59 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005
    Free Software Foundation, Inc.
@@ -59,7 +59,6 @@ static struct env
   unsigned char *output_paragraph;
   int output_paragraph_offset;
   int meta_char_pos;
-  int output_column;
   int paragraph_is_open;
   int current_indent;
   int fill_column;
@@ -143,7 +142,6 @@ select_output_environment (int n)
   e->output_paragraph = output_paragraph;
   e->output_paragraph_offset = output_paragraph_offset;
   e->meta_char_pos = meta_char_pos;
-  e->output_column = output_column;
   e->paragraph_is_open = paragraph_is_open;
   e->current_indent = current_indent;
   e->fill_column = fill_column;
@@ -154,7 +152,6 @@ select_output_environment (int n)
   output_paragraph = e->output_paragraph;
   output_paragraph_offset = e->output_paragraph_offset;
   meta_char_pos = e->meta_char_pos;
-  output_column = e->output_column;
   paragraph_is_open = e->paragraph_is_open;
   current_indent = e->current_indent;
   fill_column = e->fill_column;
@@ -468,15 +465,16 @@ output_multitable_row (void)
           break;
         out_char (CHAR_AT (j));
       }
-      offset[i] += j + 1;       /* skip last text plus skip the newline */
-      
       /* Do not output trailing blanks if we're in the last column and
          there will be no trailing |.  */
       if (i < last_column && !vsep)
-        for (; j <= envs[i].fill_column; j++)
+        for (s = string_width ((char *)&CHAR_AT (0), j);
+	     s <= envs[i].fill_column; s++)
           out_char (' ');
       if (vsep)
         out_char ('|'); /* draw column separator */
+
+      offset[i] += j + 1;       /* skip last text plus skip the newline */
     }
     out_char ('\n');    /* end of line */
     had_newline = 1;

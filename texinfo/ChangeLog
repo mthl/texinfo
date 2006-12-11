@@ -1,3 +1,32 @@
+2006-12-11  Miloslav Trmac  <mitr@redhat.com>
+
+	* configure.ac: Test wcwidth () availability.
+	* makeinfo/makeinfo.h (string_width, current_output_column): New
+	declarations.
+	(output_column): Remove.  All users replaced by
+	current_output_column (), all modifications dropped.
+	* makeinfo/makeinfo.c (output_paragraph_start_column): New
+	variable.
+	(string_width, current_output_column): New functions.
+	(get_char_len): Remove.
+	(init_paragraph): Initialize output_paragraph_start_column.
+	(flush_output): Update output_paragraph_start_column.
+
+	* makeinfo/cmds.c (cm_center)
+	* makeinfo/index.c (insert_index_output_line_no, cm_printindex):
+	* makeinfo/makeinfo.c (do_flush_right_indentation)
+	* makeinfo/multi.c (output_multitable_row):
+	Don't assume number of columns == number of bytes.
+
+2006-12-11  Miloslav Trmac  <mitr@redhat.com>
+
+	* makeinfo/makeinfo.h (NON_BREAKING_SPACE): New macro.
+	(control_character_bit, meta_character_bit, CTL, UNCTL, META)
+	(UNMETA): Remove.
+	* makeinfo/makeinfo.c (add_char, flush_output): Use
+	NON_BREAKING_SPACE instead of META (' ').
+	(get_char_len): NON_BREAKING_SPACE is only one column wide.
+
 2006-12-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (@documentencoding): mention that it is
