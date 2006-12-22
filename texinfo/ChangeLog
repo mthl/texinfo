@@ -1,3 +1,10 @@
+2006-12-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\setnormaldispenv, \setsmalldispenv): do
+	\endgraf before changing fonts, to get leading of previous
+	paragraph right when there is no blank line.
+	From John Gabriele, 21 Dec 2006 18:00:24.
+
 2006-12-11  Miloslav Trmac  <mitr@redhat.com>
 
 	* configure.ac: Test wcwidth () availability.

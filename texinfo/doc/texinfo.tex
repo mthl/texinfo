@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2006-12-19.10}
+\def\texinfoversion{2006-12-22.09}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
@@ -5283,12 +5283,18 @@ output) for that.)}
 \let\SETdispenvsize\relax
 \def\setnormaldispenv{%
   \ifx\SETdispenvsize\smallword
+    % end paragraph for sake of leading, in case document has no blank
+    % line.  This is redundant with what happens in \aboveenvbreak, but
+    % we need to do it before changing the fonts, and it's inconvenient
+    % to change the fonts afterward.
+    \ifnum \lastpenalty=10000 \else \endgraf \fi
     \smallexamplefonts \rm
   \fi
 }
 \def\setsmalldispenv{%
   \ifx\SETdispenvsize\nosmallword
   \else
+    \ifnum \lastpenalty=10000 \else \endgraf \fi
     \smallexamplefonts \rm
   \fi
 }
