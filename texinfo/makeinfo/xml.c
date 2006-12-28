@@ -1,7 +1,8 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.62 2005-08-15 13:05:25 karl Exp $
+   $Id: xml.c,v 1.63 2006-12-28 17:40:26 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -695,9 +696,10 @@ xml_pop_current_element (void)
 {
   element_stack_index--;
   if (element_stack_index < 0)
-    printf ("*** stack underflow (%d - %d) ***\n",
-            element_stack_index,
-            xml_current_element());
+    {
+      printf ("*** stack underflow (index %d) ***\n", element_stack_index);
+      element_stack_index = 0;
+    }
 }
 
 int
@@ -842,7 +844,10 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   if (!book_started)
-    return;
+    {
+      warning (_("ignoring insertion before @settitle, etc."));
+      return;
+    }
 
   if (!xml_dont_touch_items_defs && arg == START)
     {
@@ -1238,7 +1243,8 @@ xml_add_char (int character)
       xml_just_after_element = 0;
     }
 
-  if (xml_element_list[xml_current_element()].contains_para
+  if (element_stack_index > 0
+      && xml_element_list[xml_current_element()].contains_para
       && !xml_in_para && !only_macro_expansion && !xml_no_para
       && !cr_or_whitespace (character) && !in_fixed_width_font)
     xml_start_para ();

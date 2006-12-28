@@ -1,3 +1,14 @@
+2006-12-28  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xml.c (xml_insert_element_with_attribute): give a
+	warning if we need to ignore an insertion because the book hasn't
+	started.  Can this ever happen with acceptable Texinfo documents?
+	I saw it in a document without @settitle but with @copying.
+	(xml_add_char): ensure that we have an element stack before
+	testing xml_current_element and failing the assertion.
+	(xml_pop_current_element): do not try to print the value of the
+	current element on underflow, there isn't one.
+
 2006-12-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\xrdef, \xrefX, \pdfmkdest): sanitize the node
