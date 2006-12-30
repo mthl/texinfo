@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.63 2006-12-28 17:40:26 karl Exp $
+   $Id: xml.c,v 1.64 2006-12-30 19:02:45 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -844,10 +844,7 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   if (!book_started)
-    {
-      warning (_("ignoring insertion before @settitle, etc."));
-      return;
-    }
+    return;
 
   if (!xml_dont_touch_items_defs && arg == START)
     {

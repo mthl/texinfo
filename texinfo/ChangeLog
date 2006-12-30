@@ -1,5 +1,9 @@
 2006-12-30  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/xml.c (xml_insert_element_with_attribute): remove the
+	warning again, the html-docdesc test triggers it for no apparent
+	reason, and I don't want to debug it now.
+
 	* doc/texinfo.tex (\DeclareUnicodeCharacter, et al.): new macros
 	to support @documentencoding UTF-8 (as well as Computer Modern
 	can).  From Werner Lemberg.
