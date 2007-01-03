@@ -1,3 +1,9 @@
+2007-01-02  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xml.c (xml_id): do not use the SGML rules for id's,
+	which were very restrictive (no 8-bit chars).  Instead, just pass
+	along what we are given, more or less, per current XML.
+
 2006-12-30  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xml.c (xml_insert_element_with_attribute): remove the

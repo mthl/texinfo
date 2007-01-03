@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.64 2006-12-30 19:02:45 karl Exp $
+   $Id: xml.c,v 1.65 2007-01-03 00:43:58 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -569,6 +569,15 @@ static int in_indexentry = 0;
 static int in_secondary = 0;
 static int in_indexterm = 0;
 
+/* Technically there are certain Unicode characters which cannot
+   appear.  Trying to implement the real rules would lead to deep
+   waters.  So essentially just pass along what we are given.  Some
+   references:
+   http://www.w3.org/TR/xml-id/ 
+   -> http://www.w3.org/TR/xml-names11/#NT-NCName
+   -> http://www.w3.org/TR/xml11/#NT-NameChar
+*/
+
 char *
 xml_id (char *id)
 {
@@ -576,17 +585,18 @@ xml_id (char *id)
   char *p = tem;
   strcpy (tem, id);
   while (*p)
-    { /* Check if a character is allowed in ID attributes.  This list differs
-         slightly from XML specs that it doesn't contain underscores.
-         See http://xml.coverpages.org/sgmlsyn/sgmlsyn.htm, ``9.3 Name''  */
-      if (!strchr ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.", *p))
+    {
+      if (strchr (":\"", *p))
         *p = '-';
       p++;
     }
   p = tem;
-  /* First character can only be a letter.  */
-  if (!strchr ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", *p))
+
+  /* First character cannot be a number.  Clearly we should make this
+     dependent on the actual numeral found.  */
+  if (strchr ("0123456789", *p))
     *p = 'i';
+
   return tem;
 }
 
