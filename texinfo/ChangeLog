@@ -1,3 +1,8 @@
+2007-01-03  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xml.c (xml_id): oops, whitespace should be replaced
+	too.  And probably more, but let's leave it at this for now.
+
 2007-01-02  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xml.c (xml_id): do not use the SGML rules for id's,

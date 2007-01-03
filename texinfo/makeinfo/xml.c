@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.65 2007-01-03 00:43:58 karl Exp $
+   $Id: xml.c,v 1.66 2007-01-03 23:05:35 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -586,7 +586,7 @@ xml_id (char *id)
   strcpy (tem, id);
   while (*p)
     {
-      if (strchr (":\"", *p))
+      if (strchr (":\" \t\f\r\n", *p))
         *p = '-';
       p++;
     }
