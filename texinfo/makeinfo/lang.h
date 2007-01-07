@@ -1,7 +1,7 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.9 2006-06-01 23:48:33 karl Exp $
+   $Id: lang.h,v 1.10 2007-01-07 19:11:37 karl Exp $
 
-   Copyright (C) 1999, 2001, 2002, 2003, 2006 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2001, 2002, 2003, 2006, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -96,6 +96,7 @@ typedef enum {
   ISO_8859_15,
   KOI8_R,
   KOI8_U,
+  UTF_8,
   last_encoding_code
 } encoding_code_type;
 

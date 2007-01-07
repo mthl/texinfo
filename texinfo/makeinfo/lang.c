@@ -1,7 +1,7 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.20 2006-08-27 00:13:52 karl Exp $
+   $Id: lang.c,v 1.21 2007-01-07 19:11:37 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free
    Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,7 @@ char *document_language = "C";
 /* By default, unsupported encoding is an empty string.  */
 char *unknown_encoding = NULL;
 
-static iso_map_type us_ascii_map [] = {{NULL, 0, 0}}; /* ASCII map is trivial */
+static iso_map_type asis_map [] = {{NULL, 0, 0}}; /* ASCII, etc. */
 
 /* Translation table between HTML and ISO Codes.  The last item is
    hopefully the Unicode. It might be possible that those Unicodes are
@@ -469,7 +469,7 @@ static iso_map_type koi8_map [] = {
 
 encoding_type encoding_table[] = {
   { no_encoding, "(no encoding)", NULL },
-  { US_ASCII,    "US-ASCII",    us_ascii_map },
+  { US_ASCII,    "US-ASCII",    asis_map },
   { ISO_8859_1,  "iso-8859-1",  (iso_map_type *) iso8859_1_map },
   { ISO_8859_2,  "iso-8859-2",  (iso_map_type *) iso8859_2_map },
   { ISO_8859_3,  "iso-8859-3",  NULL },
@@ -487,6 +487,7 @@ encoding_type encoding_table[] = {
   { ISO_8859_15, "iso-8859-15", (iso_map_type *) iso8859_15_map },
   { KOI8_R,      "koi8-r",      (iso_map_type *) koi8_map },
   { KOI8_U,      "koi8-u",      (iso_map_type *) koi8_map },
+  { UTF_8,       "utf-8",       asis_map },  /* fixme: need to do a lot more */
   { last_encoding_code, NULL, NULL }
 };
 

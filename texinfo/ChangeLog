@@ -1,3 +1,9 @@
+2007-01-07  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/lang.c (encoding_table): include UTF-8, just passing
+	through everything as-is.
+	(asis_map): rename us_ascii_map (and change US-ASCII entry).
+
 2007-01-03  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xml.c (xml_id): oops, whitespace should be replaced
