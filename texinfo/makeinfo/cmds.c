@@ -1,7 +1,7 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.67 2006-12-11 14:59:59 karl Exp $
+   $Id: cmds.c,v 1.68 2007-01-07 22:59:08 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -1579,7 +1579,10 @@ void
 cm_result (int arg)
 {
   if (arg == END)
-    add_word (html ? "=&gt;" : "=>");
+    if (html || xml)
+      xml_insert_entity ("rArr");
+    else
+      add_word ("=>");
 }
 
 /* What an expression expands to. */

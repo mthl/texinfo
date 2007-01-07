@@ -1,5 +1,7 @@
 2007-01-07  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/cmds.c (cm_result): use rArr for html or docbook.
+
 	* makeinfo/lang.c (encoding_table): include UTF-8, just passing
 	through everything as-is.
 	(asis_map): rename us_ascii_map (and change US-ASCII entry).
