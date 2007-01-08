@@ -1,3 +1,7 @@
+2007-01-08  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd (rArr): define, per Per.
+
 2007-01-07  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_result): use rArr for html or docbook.

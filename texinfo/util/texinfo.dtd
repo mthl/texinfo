@@ -1,7 +1,7 @@
-<!-- $Id: texinfo.dtd,v 1.10 2006-02-11 00:54:26 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.11 2007-01-08 19:40:58 karl Exp $
    Document Type Definition for Texinfo XML output (the '-'-xml option).
 
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
   Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -483,6 +483,8 @@
 <!ENTITY Aring "&#xc5;">
 <!ENTITY aring "&#xe5;">
 <!ENTITY szlig "&#xdf;">
+
+<!ENTITY rArr "&#x21D2;">
 
 <!ENTITY macr "&#xaf;">
 
