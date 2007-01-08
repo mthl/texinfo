@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.110 2006-08-06 21:12:36 pertusus Exp $
+# $Id: texi2html.init,v 1.111 2007-01-08 15:59:50 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3771,7 +3771,7 @@ sub t2h_default_external_href($$$)
     {
          if ($NEW_CROSSREF_STYLE)
          {
-             if ($SPLIT)
+             if ($target_split)
              {
                  return $file . $TOP_NODE_FILE . '.' . $NODE_FILE_EXTENSION . '#Top';
                  # or ?
@@ -3802,7 +3802,7 @@ sub t2h_default_external_href($$$)
     $file_basename = $TOP_NODE_FILE if ($node =~ /^top$/i);
     if ($NEW_CROSSREF_STYLE)
     {
-        if ($SPLIT)
+        if ($target_split)
         {
             return $file . $file_basename . ".$NODE_FILE_EXTENSION" . '#' . $target;
         }

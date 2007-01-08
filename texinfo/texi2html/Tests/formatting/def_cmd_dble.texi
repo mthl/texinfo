@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def_cmd_dble.info
+@node Top
+@top Test for double definition commands
+
+@deffnx func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
+aaa
+@end deffn
+
+@deffn func aaaa args
+bbb
+@end deffn
+
+@bye

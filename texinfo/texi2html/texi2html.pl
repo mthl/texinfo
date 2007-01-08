@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.176 2006-08-06 21:12:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.177 2007-01-08 15:59:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4741,7 +4741,7 @@ sub rearrange_elements()
             $node->{'sectionup'} = $section
                if (grep {$node eq $_} @{$section->{'node_childs'}});
         }
-        # 'up' is used in .init files. Maybe should go.
+        # 'up' is used in .init files. Maybe should go away.
         if (defined($node->{'sectionup'}))
         {
             $node->{'up'} = $node->{'sectionup'};
@@ -5157,35 +5157,31 @@ sub rearrange_elements()
     }
 
     # Find node file names and file names for nodes considered as elements
-    # this could be done unconditionaly
-    if ($Texi2HTML::Config::NODE_FILES)
+    my $node_as_top;
+    if ($node_top)
     {
-        my $top;
-        if ($node_top)
-        {
-            $top = $node_top;
-        }
-        elsif ($element_top->{'node_ref'})
-        {
-            $top = $element_top->{'node_ref'};
-        }
-        else
-        {
-            $top = $node_first;
-        }
-        if ($top)
-        {
-            my $node_file;
-            $node_file = &$Texi2HTML::Config::node_file_name($top,'top');
-            $top->{'node_file'} = $node_file if (defined($node_file));
-        }
-        foreach my $key (keys(%nodes))
-        {
-            my $node = $nodes{$key};
-            next if ($node eq $top);
-            my $node_file = &$Texi2HTML::Config::node_file_name($node,'');
-            $node->{'node_file'} = $node_file if (defined($node_file));
-        }
+        $node_as_top = $node_top;
+    }
+    elsif ($element_top->{'node_ref'})
+    {
+        $node_as_top = $element_top->{'node_ref'};
+    }
+    else
+    {
+        $node_as_top = $node_first;
+    }
+    if ($node_as_top)
+    {
+        my $node_file;
+        $node_file = &$Texi2HTML::Config::node_file_name($node_as_top,'top');
+        $node_as_top->{'node_file'} = $node_file if (defined($node_file));
+    }
+    foreach my $key (keys(%nodes))
+    {
+        my $node = $nodes{$key};
+        next if (defined($node_as_top) and ($node eq $node_as_top));
+        my $node_file = &$Texi2HTML::Config::node_file_name($node,'');
+        $node->{'node_file'} = $node_file if (defined($node_file));
     }
     
     print STDERR "# split and set files\n" 
@@ -5245,8 +5241,9 @@ sub rearrange_elements()
             }
             if (defined($Texi2HTML::Config::element_file_name))
             {
-                $element->{'file'} = 
+                my $filename = 
                     &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
+                $element->{'file'} = $filename if (defined($filename));
             }
             print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
@@ -10356,6 +10353,7 @@ sub scan_line($$$$;$)
                     $state->{'deff_line'}->{'type'} = substitute_line($type) if (defined($type));
                     $state->{'deff_line'}->{'class'} = substitute_line($class) if (defined($class));
                     # the remaining of the line (the argument)
+                    #print STDERR "DEFF: open_cmd_line do_def_line $_";
                     open_cmd_line($stack, $state, ['keep'], \&do_def_line);
                     next;
                 }
