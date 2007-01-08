@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.177 2007-01-08 15:59:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.178 2007-01-08 22:23:59 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3067,7 +3067,6 @@ foreach my $file (@texinfo_htmlxref_files)
         next if /^\s*$/;
         my @htmlxref = split /\s+/;
         my $manual = shift @htmlxref;
-        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}));
         my $split_or_mono = shift @htmlxref;
         if (!defined($split_or_mono) or ($split_or_mono ne 'split' and $split_or_mono ne 'mono'))
         {
@@ -3075,6 +3074,7 @@ foreach my $file (@texinfo_htmlxref_files)
             next;
         }
         my $href = shift @htmlxref;
+        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}));
         if ($split_or_mono eq 'split')
         {
             $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'} = 1;
@@ -7169,7 +7169,7 @@ sub get_deff_index($$$)
     ($style, $category, $name, $type, $class, $arguments) = parse_def($tag, $line, $line_nr); 
     $name = &$Texi2HTML::Config::definition_category($name, $class, $style);
     return ($style, '') if (!defined($name) or ($name =~ /^\s*$/));
-    return ($style, $name);
+    return ($style, $name, $arguments);
 }
 
 sub parse_def($$$)
@@ -9418,7 +9418,7 @@ sub scan_structure($$$$;$)
             elsif (defined($Texi2HTML::Config::def_map{$macro}))
             {
                 #We must enter the index entries
-                my ($prefix, $entry) = get_deff_index($macro, $_, $line_nr);
+                my ($prefix, $entry, $argument) = get_deff_index($macro, $_, $line_nr);
                 # use deffn instead of deffnx for @-command record 
                 # associated with index entry
                 my $idx_macro = $macro;
@@ -9427,6 +9427,9 @@ sub scan_structure($$$$;$)
                    $state->{'element'}, 0, $idx_macro) if ($prefix);
                 s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
+                # the text is discarded but we must handle correctly bad
+                # texinfo with 2 @def-like commands on the same line
+                substitute_text({'structure' => 1},($argument));
             }
             elsif ($macro =~ /^itemx?$/)
             {
@@ -11760,7 +11763,9 @@ sub do_index_entry_label($$$)
     }
     if ($command ne $entry->{'command'})
     {
-        print STDERR "Bug: waiting for index cmd $entry->{'command'} (in list), got $command\n";
+        # happens with bad texinfo with a line like
+        # @deffn func aaaa args  @defvr c--ategory d--efvr_name
+        echo_warn ("Waiting for index cmd \@$entry->{'command'}, got \@$command", $line_nr);
     }
     
     print STDERR "[(index $command) $entry->{'entry'} $entry->{'label'}]\n"

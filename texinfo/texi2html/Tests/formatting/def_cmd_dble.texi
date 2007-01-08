@@ -3,11 +3,11 @@
 @node Top
 @top Test for double definition commands
 
-@deffnx func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
+@deffn func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
 aaa
 @end deffn
 
-@deffn func aaaa args
+@deffn func aaaa args  @defvr c--ategory d--efvr_name
 bbb
 @end deffn
 

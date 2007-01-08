@@ -2,12 +2,14 @@
 
 	* texi2html.pl: correctly set node filenames even if NODE_FILES
 	isn't set.
+	Handle right 2 @def-like commands on a line
 	* texi2html.init: take into account when a target is split
 	in crossref.
 	* examples/book.init: update to new use of directions.
 	* Tests/*: new tests for htmlxref.cnf file use.
-	New test for double @deffn on the same line (the result is still
-	broken, though...).
+	New test for double @deffn on the same line.
+	* */Makefile.in, aclocal.m4, configure: use automake 1.10 and
+	autoconf 2.61.
 
 2006-08-06  Patrice Dumas  <dumas@centre-cired.fr>
 

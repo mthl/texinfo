@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.111 2007-01-08 15:59:50 pertusus Exp $
+# $Id: texi2html.init,v 1.112 2007-01-08 22:23:59 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3656,7 +3656,7 @@ sub t2h_default_menu_description($$$)
     my $state = shift;
     my $element_text = shift;
     return $text if ($SIMPLE_MENU); 
-#print STDERR  "MENU_DESCRIPTION\n";
+#print STDERR  "MENU_DESCRIPTION element_text!$element_text, text!$text\n";
     if ($state->{'preformatted'})
     {
         return main::do_preformatted($text, $state) . '</td></tr>';
