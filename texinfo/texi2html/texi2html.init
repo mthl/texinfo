@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.112 2007-01-08 22:23:59 pertusus Exp $
+# $Id: texi2html.init,v 1.113 2007-01-09 00:41:33 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3705,7 +3705,11 @@ sub t2h_default_external_href($$$)
     my $node_xhtml_id = shift;
     my $file = shift;
     $file = '' if (!defined($file));
-    my $target_split = $EXTERNAL_CROSSREF_SPLIT;
+    my $default_target_split = $EXTERNAL_CROSSREF_SPLIT;
+    my $target_split;
+    my $target_mono;
+    my $href_split;
+    my $href_mono;
     if ($file ne '')
     {
          if ($NEW_CROSSREF_STYLE)
@@ -3715,14 +3719,36 @@ sub t2h_default_external_href($$$)
              my $href;
              if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}))
              {
-                  $target_split = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'};
-                  $href = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'href'};
+                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}))
+                  {
+                       $target_split = 1;
+                       $href_split =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}->{'href'};
+                  }
+                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}))
+                  {
+                       $target_mono = 1;
+                       $href_mono =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}->{'href'};
+                  }
              }
+
+             if ((not $target_mono) and (not $target_split))
+             { # nothing specified for that manual, use default
+                  $target_split = $default_target_split;
+             }
+             elsif ($target_split and $target_mono)
+             { # depends on the splitting of the manual
+                  $target_split = $SPLIT;
+             }
+             elsif ($target_mono)
+             { # only mono specified
+                  $target_split = 0;
+             }
+
              if ($target_split)
              {
-                  if (defined($href))
+                  if (defined($href_split))
                   {
-                       $file = "$href";
+                       $file = "$href_split";
                   }
                   elsif (defined($EXTERNAL_DIR))
                   {
@@ -3736,9 +3762,9 @@ sub t2h_default_external_href($$$)
              }
              else
              {# target not split
-                  if (defined($href))
+                  if (defined($href_mono))
                   {
-                       $file = "$href";
+                       $file = "$href_mono";
                   }
                   else
                   {
@@ -3766,6 +3792,10 @@ sub t2h_default_external_href($$$)
                  $file = '../' . $file;
              } 
          }
+    }
+    else
+    {
+        $target_split = $default_target_split;
     }
     if ($node eq '')
     {

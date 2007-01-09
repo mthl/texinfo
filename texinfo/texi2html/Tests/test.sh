@@ -282,6 +282,10 @@ test_texi formatting test_refs.texi "-prefix node_test_refs -split node -node-fi
 test_texi formatting at_commands_in_refs.texi
 test_texi htmlxref ../formatting/test_refs.texi "-prefix no_split_test_refs" 2 texi no_split_test_refs
 test_texi htmlxref ../formatting/test_refs.texi "--split node --use-nodes --node-files --output ." 0 texi
+test_texi htmlxref-only_split ../formatting/test_refs.texi "-prefix no_split_test_refs" 2 texi no_split_test_refs
+test_texi htmlxref-only_split ../formatting/test_refs.texi "--split node --use-nodes --node-files --output ." 0 texi
+test_texi htmlxref-only_mono ../formatting/test_refs.texi "-prefix no_split_test_refs" 2 texi no_split_test_refs
+test_texi htmlxref-only_mono ../formatting/test_refs.texi "--split node --use-nodes --node-files --output ." 0 texi
 test_texi node_utf8_translit ../formatting/nodetest_utf8.texi "-node-files -use-nodes -split node -output . -prefix nodetest" 1 texi nodetest
 test_texi node_utf8_translit_no_unidecode ../formatting/nodetest_utf8.texi "-init ../formatting/no_unidecode.init -node-files -use-nodes -split node -output . -prefix nodetest" 1 texi nodetest
 test_texi node_translit ../GermanNodeTest/nodetest.texi "-node-files -use-nodes -split node -output ." 

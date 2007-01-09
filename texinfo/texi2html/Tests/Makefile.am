@@ -4,7 +4,7 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      node_translit_no_unidecode node_utf8_translit \
      node_utf8_translit_no_unidecode index_split_nodes \
      more_before_top_section node_footnote node_in_chapter_index_split \
-     index_nodes tar htmlxref
+     index_nodes tar htmlxref htmlxref-only_mono htmlxref-only_split
 
 
 #check-local:

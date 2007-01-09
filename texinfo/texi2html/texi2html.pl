@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.178 2007-01-08 22:23:59 pertusus Exp $
+# $Id: texi2html.pl,v 1.179 2007-01-09 00:41:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3074,24 +3074,16 @@ foreach my $file (@texinfo_htmlxref_files)
             next;
         }
         my $href = shift @htmlxref;
-        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}));
-        if ($split_or_mono eq 'split')
+        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}) and exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'}));
+        
+        if (defined($href))
         {
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'} = 1;
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'mono'} = 0;
+            $href =~ s/\/*$// if ($split_or_mono eq 'split');
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
         }
         else
         {
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'} = 0;
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'mono'} = 1;
-        }
-        if (defined($href))
-        {
-            if ($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'})
-            {
-                $href =~ s/\/*$//;
-            }
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'} = $href;
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono} = {};
         }
     }
     close (HTMLXREF);
@@ -3101,10 +3093,14 @@ if ($T2H_DEBUG)
 {
     foreach my $manual (keys(%{$Texi2HTML::THISDOC{'htmlxref'}}))
     {
-         my $href = 'NO';
-         $href = $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'} if
-            defined($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'});
-         print STDERR "$manual: split $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'}, href: $href\n";
+         foreach my $split ('split', 'mono')
+         {
+              my $href = 'NO';
+              next unless (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}));
+              $href = $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}->{'href'} if
+                  exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}->{'href'});
+              print STDERR "$manual: $split, href: $href\n";
+         }
     }
 }
 
@@ -9429,7 +9425,7 @@ sub scan_structure($$$$;$)
                 add_prev($text, $stack, "\@$macro" . $1);
                 # the text is discarded but we must handle correctly bad
                 # texinfo with 2 @def-like commands on the same line
-                substitute_text({'structure' => 1},($argument));
+                substitute_text({'structure' => 1, 'place' => $state->{'place'} },($argument));
             }
             elsif ($macro =~ /^itemx?$/)
             {

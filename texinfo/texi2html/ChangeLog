@@ -2,9 +2,11 @@
 
 	* texi2html.pl: correctly set node filenames even if NODE_FILES
 	isn't set.
-	Handle right 2 @def-like commands on a line
+	Handle right 2 @def-like commands on a line.
+	Collect split and mono entry in htmlxref.cnf.
 	* texi2html.init: take into account when a target is split
-	in crossref.
+	in crossref. When there is a split and a mono entry, chose
+	based on split.
 	* examples/book.init: update to new use of directions.
 	* Tests/*: new tests for htmlxref.cnf file use.
 	New test for double @deffn on the same line.
