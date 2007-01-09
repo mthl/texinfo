@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2004-2006 Free Software Foundation, Inc.
+# Copyright (C) 2004-2007 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -66,6 +66,7 @@ AC_DEFUN([gl_INIT],
   gl_HEADER_SYS_STAT_H
   gl_FUNC_GEN_TEMPNAME
   gl_HEADER_UNISTD
+  gl_WCTYPE_H
   gl_FUNC_WCWIDTH
   gl_XALLOC
   LIBGNU_LIBDEPS="$gl_libdeps"
@@ -148,6 +149,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/tempname.c
   lib/tempname.h
   lib/unsetenv.c
+  lib/wctype_.h
   lib/wcwidth.h
   lib/xalloc-die.c
   lib/xalloc.h
@@ -166,6 +168,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gettext.m4
   m4/glibc2.m4
   m4/glibc21.m4
+  m4/gnulib-common.m4
   m4/iconv.m4
   m4/inline.m4
   m4/intdiv0.m4
@@ -208,6 +211,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/unistd_h.m4
   m4/visibility.m4
   m4/wchar_t.m4
+  m4/wctype.m4
   m4/wcwidth.m4
   m4/wint_t.m4
   m4/xalloc.m4
