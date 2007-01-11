@@ -14,6 +14,11 @@ AC_DEFUN([gl_WCTYPE_H],
   AC_REQUIRE([AC_C_INLINE])
 
   AC_REQUIRE([gt_TYPE_WINT_T])
+  if test $gt_cv_c_wint_t = yes; then
+    HAVE_WINT_T=1
+  else
+    HAVE_WINT_T=0
+  fi
   AC_SUBST([HAVE_WINT_T])
 
   WCTYPE_H=wctype.h
