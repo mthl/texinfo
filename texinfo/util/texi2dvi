@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.93 2007-01-16 09:59:51 akim Exp $
+# $Id: texi2dvi,v 1.94 2007-01-16 10:01:43 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.93 $'
+rcs_revision='$Revision: 1.94 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -1078,7 +1078,7 @@ insert_commands ()
   case $in_lang in
     latex)   textra_cmd=1i;;
     texinfo) textra_cmd='/^@setfilename/a';;
-    *)       fatal 1 "internal error, unknown language: $in_lang";;
+    *)       error 1 "internal error, unknown language: $in_lang";;
   esac
 
   if test -n "$textra"; then
@@ -1268,6 +1268,7 @@ remove ()
   verbose "Removing" "$@"
   rm -rf "$@"
 }
+
 
 # mostly_clean
 # ------------
@@ -1518,7 +1519,7 @@ input_file_name_decode ()
   # though the user may be able to reenter a valid filename at the tex
   # prompt (assuming they're attending the terminal), this script won't
   # be able to find the right xref files and so forth.
-  test  -r "$command_line_filename" ||
+  test -r "$command_line_filename" ||
     error 1 "cannot read $command_line_filename, skipping."
 
   # Get the name of the current directory.

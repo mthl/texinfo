@@ -1,6 +1,8 @@
 2007-01-16  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (insert_commands): Use fatal for errors.
+	(insert_commands): Actually, use "error", not "fatal".
+	White space changes.
 
 2007-01-16  Akim Demaille  <akim@epita.fr>
 
