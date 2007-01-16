@@ -1,3 +1,7 @@
+2007-01-16  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: White space changes.
+
 2007-01-08  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd (rArr): define, per Per.
@@ -196,7 +200,7 @@
 	Info apparently assumes equivalence of bytes and characters,
 	leading to (for example) translated man output in multibyte
 	locales being broken within a character.  In lieu of a
-	real fix, if MB_CUR_MAX > 1, revert to C.  bug-texinfo mail, 
+	real fix, if MB_CUR_MAX > 1, revert to C.  bug-texinfo mail,
 	07 Aug 2006 14:59:42 +0600.
 
 2006-08-12  Karl Berry  <karl@gnu.org>
@@ -273,8 +277,8 @@
 	* makeinfo/macro.h (MACRO_DEF): New member argcount
         (enum quote_type): New data type.
         (get_brace_args): Change argument type to enum quote_type
-	(ME_QUOTE_ARG): Remove the macro	 
-	* makeinfo/makeinfo.c (cm_ifeq): Update call to get_brace_args 
+	(ME_QUOTE_ARG): Remove the macro
+	* makeinfo/makeinfo.c (cm_ifeq): Update call to get_brace_args
         * makeinfo/tests/Makefile.am (TESTS): New test quote-args
         (EXTRA_DIST): New file quote-args.txi
         * makeinfo/tests/quote-args: New test

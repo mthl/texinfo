@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.90 2006-10-01 21:37:47 karl Exp $
+# $Id: texi2dvi,v 1.91 2007-01-16 09:51:56 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+# 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.90 $'
+rcs_revision='$Revision: 1.91 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -71,7 +71,7 @@ General options:
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
   -o, --output=OFILE  leave output in OFILE (implies --clean);
-                        only one input FILE may be specified in this case
+			only one input FILE may be specified in this case
   -q, --quiet         no output unless errors (implies --batch)
   -s, --silent        same as --quiet
   -v, --version       display version information and exit successfully
@@ -97,10 +97,10 @@ Build modes:
       --tidy           same as --build=tidy
   -c, --clean          same as --build=clean
       --build-dir=DIR  specify where the tidy compilation is performed;
-                         implies --tidy;
-                         defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
+			 implies --tidy;
+			 defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
   --mostly-clean       remove the auxiliary files and directories
-                         but not the output
+			 but not the output
 
 The MODE specifies where the TeX compilation takes place, and, as a
 consequence, how auxiliary files are treated.  The build mode
@@ -108,11 +108,11 @@ can also be set using the environment variable TEXI2DVI_BUILD_MODE.
 
 Valid MODEs are:
   \`local'      compile in the current directory, leaving all the auxiliary
-                 files around.  This is the traditional TeX use.
+		 files around.  This is the traditional TeX use.
   \`tidy'       compile in a local *.t2d directory, where the auxiliary files
-                 are left.  Output files are copied back to the original file.
+		 are left.  Output files are copied back to the original file.
   \`clean'      same as \`tidy', but remove the auxiliary directory afterwards.
-                 Every compilation therefore requires the full cycle.
+		 Every compilation therefore requires the full cycle.
 
 Using the \`tidy' mode brings several advantages:
   - the current directory is not cluttered with plethora of temporary files.
@@ -249,9 +249,9 @@ absolute ()
       ;;
    *) local rel="$orig_pwd/`func_dirname $1`"
       if test -d "$rel"; then
-        (cd "$rel" 2>/dev/null && echo `pwd`/`basename "$1"`);
+	(cd "$rel" 2>/dev/null && echo `pwd`/`basename "$1"`);
       else
-        error 1 "not a directory: $rel"
+	error 1 "not a directory: $rel"
       fi
       ;;
   esac
@@ -467,8 +467,8 @@ done
 absolute_filenames ()
 {
   local replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
-                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+		       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+		       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
   local res=`echo "$1" | eval sed $replace_empty`
   save_IFS=$IFS
   IFS=$path_sep
@@ -478,13 +478,13 @@ absolute_filenames ()
   do
     case $dir in
       EMPTY)
-        res=$res$path_sep
-        ;;
+	res=$res$path_sep
+	;;
       *)
-        if test -d $dir; then
+	if test -d $dir; then
 	  res=$res$path_sep`absolute "$dir"`
 	fi
-        ;;
+	;;
     esac
   done
   echo "$res"
@@ -594,7 +594,7 @@ xref_file_p ()
   case `sed '1q' $1` in
     "\\input texinfo"*) return 1;;
     [\\''@]*)           return 0;;
-           *)           return 1;;
+	   *)           return 1;;
   esac
 }
 
@@ -621,16 +621,16 @@ generated_files_get ()
     echo $file
     case $in_lang in
       (texinfo)
-        # texindex: texinfo.cp -> texinfo.cps
+	# texindex: texinfo.cp -> texinfo.cps
        if index_file_p $file; then
-         echo ${file}s
+	 echo ${file}s
        fi
        ;;
       (latex)
        # bibtex: *.aux -> *.bbl and *.blg.
-        if aux_file_p $file; then
-          echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
-         echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
+	if aux_file_p $file; then
+	  echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
+	 echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
        fi
        ;;
     esac
@@ -721,12 +721,12 @@ run_tex ()
     latex:dvi)   tex=${LATEX:-latex};;
     latex:pdf)   tex=${PDFLATEX:-pdflatex};;
     texinfo:dvi)
-        # MetaPost also uses the TEX environment variable.  If the user
-        # has set TEX=latex for that reason, don't bomb out.
-        case $TEX in
+	# MetaPost also uses the TEX environment variable.  If the user
+	# has set TEX=latex for that reason, don't bomb out.
+	case $TEX in
 	  *latex) tex=tex;; # don't bother trying to find etex
 	       *) tex=$TEX
-        esac;;
+	esac;;
     texinfo:pdf) tex=$PDFTEX;;
 
     *) error 1 "$0: $out_lang not supported for $in_lang";;
@@ -788,7 +788,7 @@ run_tex ()
       _run_tex_file_name=`basename "$in_input"`
       if test ! -f "$_run_tex_file_name"; then
 	verbose ln -sf "$in_input"
-        ln -sf "$_run_tex_file_name"
+	ln -sf "$_run_tex_file_name"
       fi
       cmd="$cmd '$_run_tex_file_name'"
       ;;
@@ -838,11 +838,11 @@ run_bibtex ()
   if test -r "$in_noext.aux" \
      && test -r "$in_noext.log" \
      && (grep 'Warning:.*Citation.*undefined' "$in_noext.log" \
-          || grep '.*Undefined citation' "$in_noext.log" \
-          || grep 'No file .*\.bbl\.' "$in_noext.log") \
-          || (grep 'No \.aux file' "$in_noext.log" \
-              && grep '^\\bibdata' "$in_noext.aux") \
-        >&6 2>&1; \
+	  || grep '.*Undefined citation' "$in_noext.log" \
+	  || grep 'No file .*\.bbl\.' "$in_noext.log") \
+	  || (grep 'No \.aux file' "$in_noext.log" \
+	      && grep '^\\bibdata' "$in_noext.aux") \
+	>&6 2>&1; \
   then
     for f in $(generated_files_get "$in_noext" bibaux_file_p)
     do
@@ -900,7 +900,7 @@ run_dvipdf ()
     for i in "$DVIPDF" dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf;
     do
       if findprog $i; then
-        dvipdf=$i
+	dvipdf=$i
       fi
     done
   fi
@@ -1018,23 +1018,23 @@ run_makeinfo ()
       version_test_dir=$t2ddir/version_test
       ensure_dir "$version_test_dir"
       (
-         cd "$version_test_dir"
-         echo '\input texinfo.tex @bye' >txiversion.tex
-         # Be sure that if tex wants to fail, it is not interactive:
-         # close stdin.
-         $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
+	 cd "$version_test_dir"
+	 echo '\input texinfo.tex @bye' >txiversion.tex
+	 # Be sure that if tex wants to fail, it is not interactive:
+	 # close stdin.
+	 $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
       )
       if test $? != 0; then
-        cat $version_test_dir/txiversion.out
-        cat $version_test_dir/txiversion.err >&2
-        error 1 "texinfo.tex appears to be broken, quitting."
+	cat $version_test_dir/txiversion.out
+	cat $version_test_dir/txiversion.err >&2
+	error 1 "texinfo.tex appears to be broken, quitting."
       fi
       eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $version_test_dir/txiversion.out`
       verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
       if test "$txiprereq" -le "$txiversion" >&6 2>&1; then
-        makeinfo=
+	makeinfo=
       else
-        makeinfo=${MAKEINFO:-makeinfo}
+	makeinfo=${MAKEINFO:-makeinfo}
       fi
       # As long as we had to run TeX, offer the user this convenience:
       if test "$txiformat" = Texinfo; then
@@ -1055,15 +1055,15 @@ run_makeinfo ()
       # and "-I" (including the quotes) is not an option name.  This
       # happens with gettext 0.14.5, at least.
       sed "$comment_iftex" "$command_line_filename" \
-        | eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
-          -o /dev/null --macro-expand=- \
-        | sed "$uncomment_iftex" >"$in_src"
+	| eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
+	  -o /dev/null --macro-expand=- \
+	| sed "$uncomment_iftex" >"$in_src"
       # Continue only if everything succeeded.
       if test $? -ne 0 \
-         || test ! -r "$in_src"; then
-        verbose "Expansion failed, ignored...";
+	 || test ! -r "$in_src"; then
+	verbose "Expansion failed, ignored...";
       else
-        in_input=$in_src
+	in_input=$in_src
       fi
     fi
     ;;
@@ -1115,7 +1115,7 @@ run_recode ()
 	from=$recode_from
 	to=$encoding
       else
-        from=$encoding
+	from=$encoding
 	to=$texinfo
       fi
       verbose "Recoding from $from to $to."
@@ -1124,10 +1124,10 @@ run_recode ()
       in_rcd=$work_rcd/$in_base
       ensure_dir "$work_rcd"
       if recode "$encoding..$to" <"$in_input" >"$in_rcd" \
-         && test -s "$in_rcd"; then
-        in_input=$in_rcd
+	 && test -s "$in_rcd"; then
+	in_input=$in_rcd
       else
-        verbose "Recoding failed, using original input."
+	verbose "Recoding failed, using original input."
       fi
     fi
   fi
@@ -1190,7 +1190,7 @@ run_hevea ()
     case $1 in
     html|text) move_to_dest "$out_base";;
     info) # There can be foo.info-1, foo.info-2 etc.
-               move_to_dest "$out_base"*;;
+	       move_to_dest "$out_base"*;;
     esac
   else
     error 1 "$hevea exited with bad status, quitting."
@@ -1334,15 +1334,15 @@ while test x"$1" != x"$arg_sep"; do
     -@ ) escape=@;;
     # Silently and without documentation accept -b and --b[atch] as synonyms.
     -b | --batch) batch=true;;
-         --build)      shift; build_mode=$1;;
-         --build-dir)  shift; build_dir=$1; build_mode=tidy;;
+	 --build)      shift; build_mode=$1;;
+	 --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
-         --dvi)   out_lang=dvi;;
-         --dvipdf)   out_lang=dvipdf;;
+	 --dvi)   out_lang=dvi;;
+	 --dvipdf)   out_lang=dvipdf;;
     -e | -E | --expand) expand=t;;
     -h | --help) echo "$usage"; exit 0;;
-         --html) out_lang=html;;
+	 --html) out_lang=html;;
     -I | --I*)
       shift
       # Use absolute dir names in the includes.
@@ -1358,7 +1358,7 @@ while test x"$1" != x"$arg_sep"; do
       # Make it absolute, just in case we also have --clean, or whatever.
       oname=`absolute "$1"`;;
     -p | --pdf) out_lang=pdf;;
-         --ps)  out_lang=ps;;
+	 --ps)  out_lang=ps;;
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
@@ -1373,13 +1373,13 @@ while test x"$1" != x"$arg_sep"; do
     --) # What remains are not options.
       shift
       while test x"$1" != x"$arg_sep"; do
-        set dummy ${1+"$@"} "$1"; shift
-        shift
+	set dummy ${1+"$@"} "$1"; shift
+	shift
       done
       break;;
     -*)
       error 1 "Unknown or ambiguous option \`$1'." \
-              "Try \`--help' for more information."
+	      "Try \`--help' for more information."
       ;;
     *) set dummy ${1+"$@"} "$1"; shift;;
    esac
@@ -1506,7 +1506,7 @@ input_file_name_decode ()
       # Let AUC-TeX error parser deal with line numbers.
       line_error=false
       command_line_filename=`\
-        expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
+	expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
       ;;
   esac
 
@@ -1573,8 +1573,8 @@ for command_line_filename in ${1+"$@"}; do
 	 # file.  The sed expression is fragile if the cwd has
 	 # active characters.
 	 t2ddir=$build_dir/`echo "$out_dir_abs/$out_noext.t2d" |
-             sed "s,^$orig_pwd/,," |
-             sed 's,/,!,g'`
+	     sed "s,^$orig_pwd/,," |
+	     sed 's,/,!,g'`
   esac
   # Remove it at exit if clean mode.
   trap "cleanup" 0 1 2 15
