@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.91 2007-01-16 09:51:56 akim Exp $
+# $Id: texi2dvi,v 1.92 2007-01-16 09:56:27 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -35,7 +35,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.91 $'
+rcs_revision='$Revision: 1.92 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -1002,72 +1002,71 @@ uncomment_iftex='s/^@c texi2dvi//'
 # main info output, the user asked to run TeX, not makeinfo.
 run_makeinfo ()
 {
-  case $in_lang in
-  texinfo)
-    # Unless required by the user, makeinfo expansion is wanted only
-    # if texinfo.tex is too old.
-    if test "$expand" = t; then
-      makeinfo=${MAKEINFO:-makeinfo}
-    else
-      # Check if texinfo.tex performs macro expansion by looking for
-      # its version.  The version is a date of the form YEAR-MO-DA.
-      # We don't need to use [0-9] to match the digits since anyway
-      # the comparison with $txiprereq, a number, will fail with non
-      # digits.
-      # Run in a temporary directory to avoid leaving files.
-      version_test_dir=$t2ddir/version_test
-      ensure_dir "$version_test_dir"
-      (
-	 cd "$version_test_dir"
-	 echo '\input texinfo.tex @bye' >txiversion.tex
-	 # Be sure that if tex wants to fail, it is not interactive:
-	 # close stdin.
-	 $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
-      )
-      if test $? != 0; then
-	cat $version_test_dir/txiversion.out
-	cat $version_test_dir/txiversion.err >&2
-	error 1 "texinfo.tex appears to be broken, quitting."
-      fi
-      eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $version_test_dir/txiversion.out`
-      verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
-      if test "$txiprereq" -le "$txiversion" >&6 2>&1; then
-	makeinfo=
-      else
-	makeinfo=${MAKEINFO:-makeinfo}
-      fi
-      # As long as we had to run TeX, offer the user this convenience:
-      if test "$txiformat" = Texinfo; then
-	escape=@
-      fi
-    fi
+  test $in_lang == texinfo ||
+    return 0
 
-    if test -n "$makeinfo"; then
-      # in_src: the file with macros expanded.
-      # Use the same basename to generate the same aux file names.
-      work_src=$workdir/src
-      ensure_dir "$work_src"
-      in_src=$work_src/$in_base
-      local miincludes=`list_prefix includes -I`
-      verbose "Macro-expanding $command_line_filename to $in_src ..."
-      # eval $makeinfo because it might be defined as something complex
-      # (running missing) and then we end up with things like '"-I"',
-      # and "-I" (including the quotes) is not an option name.  This
-      # happens with gettext 0.14.5, at least.
-      sed "$comment_iftex" "$command_line_filename" \
-	| eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
-	  -o /dev/null --macro-expand=- \
-	| sed "$uncomment_iftex" >"$in_src"
-      # Continue only if everything succeeded.
-      if test $? -ne 0 \
-	 || test ! -r "$in_src"; then
-	verbose "Expansion failed, ignored...";
-      else
-	in_input=$in_src
-      fi
+  # Unless required by the user, makeinfo expansion is wanted only
+  # if texinfo.tex is too old.
+  if test "$expand" = t; then
+    makeinfo=${MAKEINFO:-makeinfo}
+  else
+    # Check if texinfo.tex performs macro expansion by looking for
+    # its version.  The version is a date of the form YEAR-MO-DA.
+    # We don't need to use [0-9] to match the digits since anyway
+    # the comparison with $txiprereq, a number, will fail with non
+    # digits.
+    # Run in a temporary directory to avoid leaving files.
+    version_test_dir=$t2ddir/version_test
+    ensure_dir "$version_test_dir"
+    (
+       cd "$version_test_dir"
+       echo '\input texinfo.tex @bye' >txiversion.tex
+       # Be sure that if tex wants to fail, it is not interactive:
+       # close stdin.
+       $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
+    )
+    if test $? != 0; then
+      cat $version_test_dir/txiversion.out
+      cat $version_test_dir/txiversion.err >&2
+      error 1 "texinfo.tex appears to be broken, quitting."
     fi
-    ;;
-  esac
+    eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $version_test_dir/txiversion.out`
+    verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
+    if test "$txiprereq" -le "$txiversion" >&6 2>&1; then
+      makeinfo=
+    else
+      makeinfo=${MAKEINFO:-makeinfo}
+    fi
+    # As long as we had to run TeX, offer the user this convenience:
+    if test "$txiformat" = Texinfo; then
+	escape=@
+    fi
+  fi
+
+  if test -n "$makeinfo"; then
+    # in_src: the file with macros expanded.
+    # Use the same basename to generate the same aux file names.
+    work_src=$workdir/src
+    ensure_dir "$work_src"
+    in_src=$work_src/$in_base
+    local miincludes=`list_prefix includes -I`
+    verbose "Macro-expanding $command_line_filename to $in_src ..."
+    # eval $makeinfo because it might be defined as something complex
+    # (running missing) and then we end up with things like '"-I"',
+    # and "-I" (including the quotes) is not an option name.  This
+    # happens with gettext 0.14.5, at least.
+    sed "$comment_iftex" "$command_line_filename" \
+      | eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
+	-o /dev/null --macro-expand=- \
+      | sed "$uncomment_iftex" >"$in_src"
+    # Continue only if everything succeeded.
+    if test $? -ne 0 \
+       || test ! -r "$in_src"; then
+      verbose "Expansion failed, ignored...";
+    else
+      in_input=$in_src
+    fi
+  fi
 }
 
 # insert_commands ()
