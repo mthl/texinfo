@@ -1,7 +1,7 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.9 2005-05-15 00:00:07 karl Exp $
+   $Id: float.c,v 1.10 2007-01-26 00:03:56 karl Exp $
 
-   Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+   Copyright (C) 2003, 2004, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -219,6 +219,14 @@ cm_listoffloats (void)
         {
           if (strlen (temp->id) > 0 && STREQ (float_type, temp->type))
             {
+              char *caption;
+              if (strlen (temp->shorttitle) > 0)
+                caption = expansion (temp->shorttitle, 0);
+              else if (strlen (temp->title) > 0)
+                caption = expansion (temp->title, 0);
+              else
+                caption = "";
+                  
               if (html)
                 {
                   /* A bit of space for HTML reabality.  */
@@ -242,13 +250,11 @@ cm_listoffloats (void)
                       add_word (temp->number);
                     }
 
-                  if (strlen (temp->title) > 0)
+                  if (caption)
                     {
-                      if (strlen (float_type) > 0
-                          || strlen (temp->id) > 0)
+                      if (strlen (float_type) > 0 || strlen (temp->id) > 0)
                         insert_string (": ");
-
-                      execute_string ("%s", temp->title);
+                      execute_string ("%s", caption);
                     }
 
                   add_word ("</a>");
@@ -259,7 +265,6 @@ cm_listoffloats (void)
                 {
                   char *entry;
                   char *raw_entry;
-                  char *title = expansion (temp->title, 0);
 
                   int len;
                   int aux_chars_len; /* these are asterisk, colon, etc.  */
@@ -285,25 +290,19 @@ cm_listoffloats (void)
 
                   /* Allocate enough space for possible expansion later.  */
                   raw_entry = (char *) xmalloc (strlen (float_type)
-                      + strlen (temp->number) + strlen (title)
+                      + strlen (temp->number) + strlen (caption)
                       + sizeof (":  "));
 
                   sprintf (raw_entry, "%s %s", float_type, temp->number);
 
-                  if (strlen (title) > 0)
+                  if (strlen (caption) > 0)
                     strcat (raw_entry, ": ");
 
                   number_len = strlen (raw_entry);
 
-                  len = strlen (title) + strlen (raw_entry);
+                  len = strlen (caption) + strlen (raw_entry);
 
-                  /* If we have a @shortcaption, try it if @caption is
-                     too long to fit on a line.  */
-                  if (len + aux_chars_len > column_width
-                      && strlen (temp->shorttitle) > 0)
-                    title = expansion (temp->shorttitle, 0);
-
-                  strcat (raw_entry, title);
+                  strcat (raw_entry, caption);
                   len = strlen (raw_entry);
 
                   if (len + aux_chars_len > column_width)
@@ -324,7 +323,7 @@ cm_listoffloats (void)
                          went as far as the beginning.  Just print as much
                          as possible of the title.  */
                       if (len == 0
-                          || (len == number_len && strlen (title) > 0))
+                          || (len == number_len && strlen (caption) > 0))
                         len = column_width - sizeof ("...");
 
                       /* Break here.  */
@@ -393,8 +392,10 @@ cm_listoffloats (void)
                   insert_string (".\n");
 
                   free (entry);
-                  free (title);
                 }
+              
+              if (strlen (caption) > 0)
+                free (caption);
             }
           temp = temp->next;
         }
