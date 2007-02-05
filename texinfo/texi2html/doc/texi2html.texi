@@ -290,7 +290,7 @@ The second is @command{texi2html}.
 The design goal of @command{makeinfo}'s @acronym{HTML} output was to produce
 readable @acronym{HTML} output. It is now possible to use @acronym{CSS}
 for @acronym{HTML} customization. Another possibility is to use intermediate 
-formats, like docbook or @command{mekeinfo} @acronym{XML} 
+formats, like docbook or @command{makeinfo} @acronym{XML} 
 and @acronym{XSL} stylesheets to customize the resulting document. Still the 
 output produced by @command{makeinfo} isn't customizable.
 
@@ -340,7 +340,8 @@ The latest version of the source code for @command{texi2html} should be
 available from
 @uref{http://www.nongnu.org/texi2html/,www.nongnu.org/texi2html/}.
 @command{texi2html} is also available with 
-@uref{http://www.tug.org/teTeX/,teTeX}.
+@uref{http://www.tug.org/teTeX/,teTeX} and 
+@uref{http://www.tug.org/texlive/, TeX Live}.
 
 @c ========================================================
 @node Installation
@@ -970,7 +971,8 @@ The values for the encoding related variables are set in the default
 
 In general the @code{$DOCUMENT_ENCODING} and @code{$IN_ENCODING} are
 set to the right values, and to force a given encoding for the output, the
-@code{$ENCODING_NAME} value may be set.
+@code{$ENCODING_NAME} value may be set. The current default output encoding
+is UTF-8.
 
 @c --------------------------------------------------------
 @node Redefining functions

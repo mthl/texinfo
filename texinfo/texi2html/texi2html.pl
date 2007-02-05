@@ -1,4 +1,4 @@
-#! @PERL@ -- # perl
+#! @PERL@ -- 
 'di ';
 'ig 00 ';
 #+##############################################################################
@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.179 2007-01-09 00:41:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.180 2007-02-05 15:30:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";

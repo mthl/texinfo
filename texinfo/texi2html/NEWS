@@ -49,6 +49,10 @@ This file records noteworthy changes.
 * The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
   and $OUT_ENCODING.
 
+* utf8 is used as default out file encoding. This should allow for utf8
+  translations for languages which cannot use @-commands for non ascii
+  characters.
+
 * Use entities for ``, '', ---, -- and quotes used for some formatting
   @-commands if $USE_ISO is set. 
 

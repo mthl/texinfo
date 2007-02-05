@@ -1,3 +1,8 @@
+2007-02-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: set default out encoding to utf8. This could
+	help with translations.
+
 2007-01-08  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: correctly set node filenames even if NODE_FILES
@@ -637,7 +642,7 @@
 	old perl. Report from Sven de Vries.
 	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
 	Report from ezra peisach.
-	* Tests/*: remove some $Id : ChangeLog,v 1.191 2005/02/07 05:10:11 dprice Exp $ rcs tags
+	* Tests/*: remove some $ Id : ChangeLog,v 1.191 2005/02/07 05:10:11 dprice Exp $ rcs tags
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 

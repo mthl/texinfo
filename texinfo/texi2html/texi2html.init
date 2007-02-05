@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.113 2007-01-09 00:41:33 pertusus Exp $
+# $Id: texi2html.init,v 1.114 2007-02-05 15:30:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -666,7 +666,7 @@ sub t2h_default_finish_out()
 $BODYTEXT = undef;
 
 # default used in init_out for the setting of the ENCODING_NAME variable
-$DEFAULT_ENCODING = 'ascii';
+$DEFAULT_ENCODING = 'utf8';
 
 # In file encoding. The @documentencoding overrides that variable.
 $DOCUMENT_ENCODING = undef;
@@ -3451,6 +3451,7 @@ sub t2h_default_normal_text($$$$$)
                 $text =~ s/''/&quot;/g;
             }
             # temporary reuse '' to store --- !....
+            # FIXME won't '---' be handled wrongly?
             # FIXME really do that in raw text?
             $text =~ s/---/''/g; 
             $text =~ s/--/-/g; 
