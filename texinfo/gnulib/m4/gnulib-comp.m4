@@ -27,7 +27,6 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([AC_PROG_RANLIB])
   AC_REQUIRE([AC_GNU_SOURCE])
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
-  AC_REQUIRE([gl_LOCK_EARLY])
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -46,28 +45,28 @@ AC_DEFUN([gl_INIT],
   gl_ALLOCSA
   gl_ERROR
   gl_EXITFAIL
-  dnl gl_USE_SYSTEM_EXTENSIONS must be added quite early to configure.ac.
   gl_GETOPT
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
   AM_GNU_GETTEXT_VERSION([0.15])
+  gl_FUNC_GETTIMEOFDAY
   gl_INLINE
-  gl_MBCHAR
-  gl_MBITER
-  gl_FUNC_MEMCHR
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
   gt_FUNC_SETENV
-  AM_STDBOOL_H
   gl_STDINT_H
   gl_STRCASE
   gl_FUNC_STRDUP
+  gl_STRING_MODULE_INDICATOR([strdup])
   gl_FUNC_STRERROR
+  gl_HEADER_STRING_H
   gl_HEADER_SYS_STAT_H
+  AC_PROG_MKDIR_P
+  gl_HEADER_SYS_TIME_H
+  AC_PROG_MKDIR_P
   gl_FUNC_GEN_TEMPNAME
   gl_HEADER_UNISTD
-  gl_WCTYPE_H
-  gl_FUNC_WCWIDTH
+  gl_WCHAR_H
   gl_XALLOC
   LIBGNU_LIBDEPS="$gl_libdeps"
   AC_SUBST([LIBGNU_LIBDEPS])
@@ -125,10 +124,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
-  lib/mbchar.c
-  lib/mbchar.h
-  lib/mbuiter.h
-  lib/memchr.c
+  lib/gettimeofday.c
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
@@ -136,21 +132,18 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/setenv.c
   lib/setenv.h
   lib/stat_.h
-  lib/stdbool_.h
   lib/stdint_.h
-  lib/strcase.h
   lib/strcasecmp.c
   lib/strdup.c
-  lib/strdup.h
   lib/strerror.c
+  lib/string_.h
   lib/strncasecmp.c
-  lib/strnlen1.c
-  lib/strnlen1.h
+  lib/sys_time_.h
   lib/tempname.c
   lib/tempname.h
+  lib/unistd_.h
   lib/unsetenv.c
-  lib/wctype_.h
-  lib/wcwidth.h
+  lib/wchar_.h
   lib/xalloc-die.c
   lib/xalloc.h
   lib/xmalloc.c
@@ -166,6 +159,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/extensions.m4
   m4/getopt.m4
   m4/gettext.m4
+  m4/gettimeofday.m4
   m4/glibc2.m4
   m4/glibc21.m4
   m4/gnulib-common.m4
@@ -184,10 +178,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lock.m4
   m4/longdouble.m4
   m4/longlong.m4
-  m4/mbchar.m4
-  m4/mbiter.m4
-  m4/mbrtowc.m4
-  m4/memchr.m4
   m4/memcpy.m4
   m4/memmove.m4
   m4/mkstemp.m4
@@ -198,21 +188,21 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/progtest.m4
   m4/setenv.m4
   m4/size_max.m4
-  m4/stdbool.m4
   m4/stdint.m4
   m4/stdint_h.m4
   m4/strcase.m4
   m4/strdup.m4
   m4/strerror.m4
+  m4/string_h.m4
   m4/sys_stat_h.m4
+  m4/sys_time_h.m4
   m4/tempname.m4
   m4/uintmax_t.m4
   m4/ulonglong.m4
   m4/unistd_h.m4
   m4/visibility.m4
+  m4/wchar.m4
   m4/wchar_t.m4
-  m4/wctype.m4
-  m4/wcwidth.m4
   m4/wint_t.m4
   m4/xalloc.m4
   m4/xsize.m4

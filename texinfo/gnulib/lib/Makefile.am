@@ -122,29 +122,14 @@ libgnu_a_SOURCES += gettext.h
 
 ## end   gnulib module gettext-h
 
-## begin gnulib module mbchar
+## begin gnulib module gettimeofday
 
 
-EXTRA_DIST += mbchar.c mbchar.h
+EXTRA_DIST += gettimeofday.c
 
-EXTRA_libgnu_a_SOURCES += mbchar.c
+EXTRA_libgnu_a_SOURCES += gettimeofday.c
 
-## end   gnulib module mbchar
-
-## begin gnulib module mbuiter
-
-libgnu_a_SOURCES += mbuiter.h
-
-## end   gnulib module mbuiter
-
-## begin gnulib module memchr
-
-
-EXTRA_DIST += memchr.c
-
-EXTRA_libgnu_a_SOURCES += memchr.c
-
-## end   gnulib module memchr
+## end   gnulib module gettimeofday
 
 ## begin gnulib module memcpy
 
@@ -182,24 +167,6 @@ EXTRA_libgnu_a_SOURCES += setenv.c unsetenv.c
 
 ## end   gnulib module setenv
 
-## begin gnulib module stdbool
-
-BUILT_SOURCES += $(STDBOOL_H)
-
-# We need the following in order to create <stdbool.h> when the system
-# doesn't have one that works.
-stdbool.h: stdbool_.h
-	rm -f $@-t $@
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's/@''HAVE__BOOL''@/$(HAVE__BOOL)/g' < $(srcdir)/stdbool_.h; \
-	} > $@-t
-	mv $@-t $@
-MOSTLYCLEANFILES += stdbool.h stdbool.h-t
-
-EXTRA_DIST += stdbool_.h
-
-## end   gnulib module stdbool
-
 ## begin gnulib module stdint
 
 BUILT_SOURCES += $(STDINT_H)
@@ -209,8 +176,7 @@ BUILT_SOURCES += $(STDINT_H)
 stdint.h: stdint_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
-	      -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
+	  sed -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
 	      -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
 	      -e 's/@''HAVE_SYS_TYPES_H''@/$(HAVE_SYS_TYPES_H)/g' \
 	      -e 's/@''HAVE_INTTYPES_H''@/$(HAVE_INTTYPES_H)/g' \
@@ -243,7 +209,7 @@ EXTRA_DIST += stdint_.h
 ## begin gnulib module strcase
 
 
-EXTRA_DIST += strcase.h strcasecmp.c strncasecmp.c
+EXTRA_DIST += strcasecmp.c strncasecmp.c
 
 EXTRA_libgnu_a_SOURCES += strcasecmp.c strncasecmp.c
 
@@ -252,7 +218,7 @@ EXTRA_libgnu_a_SOURCES += strcasecmp.c strncasecmp.c
 ## begin gnulib module strdup
 
 
-EXTRA_DIST += strdup.c strdup.h
+EXTRA_DIST += strdup.c
 
 EXTRA_libgnu_a_SOURCES += strdup.c
 
@@ -267,11 +233,62 @@ EXTRA_libgnu_a_SOURCES += strerror.c
 
 ## end   gnulib module strerror
 
-## begin gnulib module strnlen1
+## begin gnulib module string
 
-libgnu_a_SOURCES += strnlen1.h strnlen1.c
+BUILT_SOURCES += string.h
 
-## end   gnulib module strnlen1
+# We need the following in order to create <string.h> when the system
+# doesn't have one that works with the given compiler.
+string.h: string_.h
+	rm -f $@-t $@
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''ABSOLUTE_STRING_H''@|$(ABSOLUTE_STRING_H)|g' \
+	      -e 's|@''GNULIB_MBSCHR''@|$(GNULIB_MBSCHR)|g' \
+	      -e 's|@''GNULIB_MBSRCHR''@|$(GNULIB_MBSRCHR)|g' \
+	      -e 's|@''GNULIB_MBSSTR''@|$(GNULIB_MBSSTR)|g' \
+	      -e 's|@''GNULIB_MBSCASECMP''@|$(GNULIB_MBSCASECMP)|g' \
+	      -e 's|@''GNULIB_MBSCASESTR''@|$(GNULIB_MBSCASESTR)|g' \
+	      -e 's|@''GNULIB_MBSCSPN''@|$(GNULIB_MBSCSPN)|g' \
+	      -e 's|@''GNULIB_MBSPBRK''@|$(GNULIB_MBSPBRK)|g' \
+	      -e 's|@''GNULIB_MBSSPN''@|$(GNULIB_MBSSPN)|g' \
+	      -e 's|@''GNULIB_MBSTOK_R''@|$(GNULIB_MBSTOK_R)|g' \
+	      -e 's|@''GNULIB_MEMMEM''@|$(GNULIB_MEMMEM)|g' \
+	      -e 's|@''GNULIB_MEMPCPY''@|$(GNULIB_MEMPCPY)|g' \
+	      -e 's|@''GNULIB_MEMRCHR''@|$(GNULIB_MEMRCHR)|g' \
+	      -e 's|@''GNULIB_STPCPY''@|$(GNULIB_STPCPY)|g' \
+	      -e 's|@''GNULIB_STPNCPY''@|$(GNULIB_STPNCPY)|g' \
+	      -e 's|@''GNULIB_STRCHRNUL''@|$(GNULIB_STRCHRNUL)|g' \
+	      -e 's|@''GNULIB_STRDUP''@|$(GNULIB_STRDUP)|g' \
+	      -e 's|@''GNULIB_STRNDUP''@|$(GNULIB_STRNDUP)|g' \
+	      -e 's|@''GNULIB_STRNLEN''@|$(GNULIB_STRNLEN)|g' \
+	      -e 's|@''GNULIB_STRPBRK''@|$(GNULIB_STRPBRK)|g' \
+	      -e 's|@''GNULIB_STRSEP''@|$(GNULIB_STRSEP)|g' \
+	      -e 's|@''GNULIB_STRCASESTR''@|$(GNULIB_STRCASESTR)|g' \
+	      -e 's|@''GNULIB_STRTOK_R''@|$(GNULIB_STRTOK_R)|g' \
+	      -e 's|@''HAVE_DECL_MEMMEM''@|$(HAVE_DECL_MEMMEM)|g' \
+	      -e 's|@''HAVE_MEMPCPY''@|$(HAVE_MEMPCPY)|g' \
+	      -e 's|@''HAVE_DECL_MEMRCHR''@|$(HAVE_DECL_MEMRCHR)|g' \
+	      -e 's|@''HAVE_STPCPY''@|$(HAVE_STPCPY)|g' \
+	      -e 's|@''HAVE_STPNCPY''@|$(HAVE_STPNCPY)|g' \
+	      -e 's|@''HAVE_STRCASECMP''@|$(HAVE_STRCASECMP)|g' \
+	      -e 's|@''HAVE_DECL_STRNCASECMP''@|$(HAVE_DECL_STRNCASECMP)|g' \
+	      -e 's|@''HAVE_STRCHRNUL''@|$(HAVE_STRCHRNUL)|g' \
+	      -e 's|@''HAVE_DECL_STRDUP''@|$(HAVE_DECL_STRDUP)|g' \
+	      -e 's|@''HAVE_STRNDUP''@|$(HAVE_STRNDUP)|g' \
+	      -e 's|@''HAVE_DECL_STRNDUP''@|$(HAVE_DECL_STRNDUP)|g' \
+	      -e 's|@''HAVE_DECL_STRNLEN''@|$(HAVE_DECL_STRNLEN)|g' \
+	      -e 's|@''HAVE_STRPBRK''@|$(HAVE_STRPBRK)|g' \
+	      -e 's|@''HAVE_STRSEP''@|$(HAVE_STRSEP)|g' \
+	      -e 's|@''HAVE_STRCASESTR''@|$(HAVE_STRCASESTR)|g' \
+	      -e 's|@''HAVE_DECL_STRTOK_R''@|$(HAVE_DECL_STRTOK_R)|g' \
+	      < $(srcdir)/string_.h; \
+	} > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += string.h string.h-t
+
+EXTRA_DIST += string_.h
+
+## end   gnulib module string
 
 ## begin gnulib module sys_stat
 
@@ -280,7 +297,7 @@ BUILT_SOURCES += $(SYS_STAT_H)
 # We need the following in order to create <sys/stat.h> when the system
 # has one that is incomplete.
 sys/stat.h: stat_.h
-	test -d sys || mkdir sys
+	@MKDIR_P@ sys
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''ABSOLUTE_SYS_STAT_H''@|$(ABSOLUTE_SYS_STAT_H)|g' \
@@ -293,6 +310,29 @@ MOSTLYCLEANDIRS += sys
 EXTRA_DIST += stat_.h
 
 ## end   gnulib module sys_stat
+
+## begin gnulib module sys_time
+
+BUILT_SOURCES += $(SYS_TIME_H)
+
+# We need the following in order to create <sys/time.h> when the system
+# doesn't have one that works with the given compiler.
+sys/time.h: sys_time_.h
+	@MKDIR_P@ sys
+	rm -f $@-t $@
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's/@''HAVE_SYS_TIME_H''@/$(HAVE_SYS_TIME_H)/g' \
+	      -e 's|@''ABSOLUTE_SYS_TIME_H''@|$(ABSOLUTE_SYS_TIME_H)|g' \
+	      -e 's/@''GETTIMEOFDAY_REPLACEMENT''@/$(GETTIMEOFDAY_REPLACEMENT)/g' \
+	      -e 's/@''HAVE_STRUCT_TIMEVAL''@/$(HAVE_STRUCT_TIMEVAL)/g' \
+	      < $(srcdir)/sys_time_.h; \
+	} > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += sys/time.h sys/time.h-t
+
+EXTRA_DIST += sys_time_.h
+
+## end   gnulib module sys_time
 
 ## begin gnulib module tempname
 
@@ -309,41 +349,37 @@ BUILT_SOURCES += $(UNISTD_H)
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
-unistd.h:
+unistd.h: unistd_.h
+	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  echo '/* Empty placeholder for $@.  */'; \
-	} > $@
-MOSTLYCLEANFILES += unistd.h
+	  sed -e 's|@''ABSOLUTE_UNISTD_H''@|$(ABSOLUTE_UNISTD_H)|g' \
+	      < $(srcdir)/unistd_.h; \
+	} > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += unistd.h unistd.h-t
+
+EXTRA_DIST += unistd_.h
 
 ## end   gnulib module unistd
 
-## begin gnulib module wctype
+## begin gnulib module wchar
 
-BUILT_SOURCES += $(WCTYPE_H)
+BUILT_SOURCES += $(WCHAR_H)
 
-# We need the following in order to create <wctype.h> when the system
-# doesn't have one that works with the given compiler.
-wctype.h: wctype_.h
+# We need the following in order to create <wchar.h> when the system
+# version does not work standalone.
+wchar.h: wchar_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's/@''HAVE_WCTYPE_H''@/$(HAVE_WCTYPE_H)/g' \
-	      -e 's|@''ABSOLUTE_WCTYPE_H''@|$(ABSOLUTE_WCTYPE_H)|g' \
-	      -e 's/@''HAVE_WCTYPE_CTMP_BUG''@/$(HAVE_WCTYPE_CTMP_BUG)/g' \
-	      -e 's/@''HAVE_WINT_T''@/$(HAVE_WINT_T)/g' \
-	      < $(srcdir)/wctype_.h; \
+	  sed -e 's|@''ABSOLUTE_WCHAR_H''@|$(ABSOLUTE_WCHAR_H)|g' \
+	    < $(srcdir)/wchar_.h; \
 	} > $@-t
 	mv $@-t $@
-MOSTLYCLEANFILES += wctype.h wctype.h-t
+MOSTLYCLEANFILES += wchar.h wchar.h-t
 
-EXTRA_DIST += wctype_.h
+EXTRA_DIST += wchar_.h
 
-## end   gnulib module wctype
-
-## begin gnulib module wcwidth
-
-libgnu_a_SOURCES += wcwidth.h
-
-## end   gnulib module wcwidth
+## end   gnulib module wchar
 
 ## begin gnulib module xalloc
 
