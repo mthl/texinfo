@@ -2,6 +2,8 @@
 
 	* texi2html.init: set default out encoding to utf8. This could
 	help with translations.
+	* Makefile.am, manage_i18n.pl.in: add japanese translations, 
+	from fedora.
 
 2007-01-08  Patrice Dumas  <dumas@centre-cired.fr>
 
