@@ -4,6 +4,8 @@
 	help with translations.
 	* Makefile.am, manage_i18n.pl.in: add japanese translations, 
 	from fedora.
+	* doc/Makefile.am: call perl with -x when called directly on 
+	texi2html.pl
 
 2007-01-08  Patrice Dumas  <dumas@centre-cired.fr>
 
