@@ -1,3 +1,16 @@
+2007-02-07  Miloslav Trmac  <mitr@redhat.com>
+
+	* configure.ac: Remove unnecessary wcwidth () test.  Add missing
+	setlocale () test.
+	* makeinfo/makeinfo.c (string_width): Remove.
+	* makeinfo/makeinfo.h (string_width): Remove declaration.
+
+	* makeinfo/cmds.c (cm_center)
+	* makeinfo/index.c (insert_index_output_line_no, cm_printindex):
+	* makeinfo/makeinfo.c (do_flush_right_indentation)
+	* makeinfo/multi.c (output_multitable_row): Use mbswidth () and
+	mbsnwidth () instead of string_width ().
+
 2007-01-25  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/float.c (cm_listoffloats): always use the short caption

@@ -50,6 +50,7 @@ AC_DEFUN([gl_INIT],
   AM_GNU_GETTEXT_VERSION([0.15])
   gl_FUNC_GETTIMEOFDAY
   gl_INLINE
+  gl_MBSWIDTH
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
@@ -67,6 +68,8 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_GEN_TEMPNAME
   gl_HEADER_UNISTD
   gl_WCHAR_H
+  gl_WCTYPE_H
+  gl_FUNC_WCWIDTH
   gl_XALLOC
   LIBGNU_LIBDEPS="$gl_libdeps"
   AC_SUBST([LIBGNU_LIBDEPS])
@@ -125,6 +128,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/gettimeofday.c
+  lib/mbswidth.c
+  lib/mbswidth.h
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
@@ -144,6 +149,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unistd_.h
   lib/unsetenv.c
   lib/wchar_.h
+  lib/wctype_.h
+  lib/wcwidth.h
   lib/xalloc-die.c
   lib/xalloc.h
   lib/xmalloc.c
@@ -178,6 +185,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lock.m4
   m4/longdouble.m4
   m4/longlong.m4
+  m4/mbrtowc.m4
+  m4/mbstate_t.m4
+  m4/mbswidth.m4
   m4/memcpy.m4
   m4/memmove.m4
   m4/mkstemp.m4
@@ -203,6 +213,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/visibility.m4
   m4/wchar.m4
   m4/wchar_t.m4
+  m4/wctype.m4
+  m4/wcwidth.m4
   m4/wint_t.m4
   m4/xalloc.m4
   m4/xsize.m4

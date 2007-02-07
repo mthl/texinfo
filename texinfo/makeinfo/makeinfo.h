@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.22 2006-12-11 14:59:59 karl Exp $
+   $Id: makeinfo.h,v 1.23 2007-02-07 17:00:38 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006 Free Software Foundation, Inc.
@@ -369,7 +369,6 @@ extern int get_until (char *match, char **string),
   search_forward (char *string, int from),
   search_forward_until_pos (char *string, int from, int end_pos),
   next_nonwhitespace_character (void),
-  string_width (const char *string, size_t length),
   current_output_column (void),
   fs_error (char *filename);
 

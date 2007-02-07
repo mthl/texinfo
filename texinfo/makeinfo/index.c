@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.21 2006-12-11 14:59:59 karl Exp $
+   $Id: index.c,v 1.22 2007-02-07 17:00:38 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -19,6 +19,7 @@
    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 
 #include "system.h"
+#include "mbswidth.h"
 #include "files.h"
 #include "footnote.h"
 #include "html.h"
@@ -673,11 +674,11 @@ insert_index_output_line_no (int line_number, int output_line_number_len)
     int i = output_paragraph_offset; 
     while (0 < i && output_paragraph[i-1] != '\n')
       i--;
-    last_column = string_width ((char *)(output_paragraph + i),
-				output_paragraph_offset - i);
+    last_column = mbsnwidth ((char *)(output_paragraph + i),
+			     output_paragraph_offset - i, 0);
   }
 
-  out_line_no_width = string_width (out_line_no_str, strlen (out_line_no_str));
+  out_line_no_width = mbswidth (out_line_no_str, 0);
   if (last_column + out_line_no_width > fill_column)
     {
       insert ('\n');
@@ -895,7 +896,7 @@ cm_printindex (void)
                 {
 		  int width;
 
-		  width = string_width (index->entry, strlen (index->entry));
+		  width = mbswidth (index->entry, 0);
                   sprintf (line, "* %*s  ", width < MIN_ENTRY_COLUMNS
 			   ? -(strlen (index->entry)
 			       + (MIN_ENTRY_COLUMNS - width))

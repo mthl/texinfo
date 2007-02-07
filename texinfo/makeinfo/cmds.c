@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.68 2007-01-07 22:59:08 karl Exp $
+   $Id: cmds.c,v 1.69 2007-02-07 17:00:38 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -19,6 +19,7 @@
    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 
 #include "system.h"
+#include "mbswidth.h"
 #include "cmds.h"
 #include "defun.h"
 #include "files.h"
@@ -1545,7 +1546,7 @@ cm_center (void)
 
            output_paragraph_offset = ++i;
            length = output_paragraph_offset - start;
-	   width = string_width ((char *)(output_paragraph + start), length);
+	   width = mbsnwidth ((char *)(output_paragraph + start), length, 0);
 
            if (width < (fill_column - fudge_factor))
              {

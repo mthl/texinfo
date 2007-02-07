@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.67 2006-12-27 16:20:17 karl Exp $
+# $Id: configure.ac,v 1.68 2007-02-07 17:00:38 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -81,8 +81,8 @@ AC_FUNC_VPRINTF
 # in theory only pre-sysvr3 systems needed this and it's not likely
 # that anyone compiling new texinfo still has such a thing? we'll see.
 # AC_FUNC_SETVBUF_REVERSED
-AC_CHECK_FUNCS(bzero getcwd memset setvbuf sigaction sigprocmask \
-               sigsetmask strchr wcwidth)
+AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
+               sigsetmask strchr)
 AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
 
 # We want to recognize djgpp to avoid the useless warning about no

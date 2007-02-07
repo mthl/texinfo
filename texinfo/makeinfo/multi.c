@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.13 2006-12-11 14:59:59 karl Exp $
+   $Id: multi.c,v 1.14 2007-02-07 17:00:38 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005
    Free Software Foundation, Inc.
@@ -21,6 +21,7 @@
    Originally written by phr@gnu.org (Paul Rubin).  */
 
 #include "system.h"
+#include "mbswidth.h"
 #include "cmds.h"
 #include "insertion.h"
 #include "makeinfo.h"
@@ -468,7 +469,7 @@ output_multitable_row (void)
       /* Do not output trailing blanks if we're in the last column and
          there will be no trailing |.  */
       if (i < last_column && !vsep)
-        for (s = string_width ((char *)&CHAR_AT (0), j);
+        for (s = mbsnwidth ((char *)&CHAR_AT (0), j, 0);
 	     s <= envs[i].fill_column; s++)
           out_char (' ');
       if (vsep)

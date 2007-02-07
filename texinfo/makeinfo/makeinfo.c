@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.89 2006-12-11 14:59:59 karl Exp $
+   $Id: makeinfo.c,v 1.90 2007-02-07 17:00:38 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -22,6 +22,7 @@
 
 #include "system.h"
 #include "getopt.h"
+#include "mbswidth.h"
 
 #define COMPILING_MAKEINFO
 #include "makeinfo.h"
@@ -38,10 +39,6 @@
 #include "sectioning.h"
 #include "toc.h"
 #include "xml.h"
-
-#ifdef HAVE_WCWIDTH
-# include <wchar.h>
-#endif
 
 /* You can change some of the behavior of Makeinfo by changing the
    following defines: */
@@ -2463,45 +2460,6 @@ discard_braces (void)
     }
 }
 
-/* Return the number of columns necessary for displaying STRING of LEN
-   bytes. */
-int
-string_width (const char *string, size_t length)
-{
-#ifdef HAVE_WCWIDTH
-  int width;
-
-  mbtowc (NULL, NULL, 0);
-  width = 0;
-  while (length > 0)
-    {
-      wchar_t wc;
-      int l, w;
-
-      l = mbtowc (&wc, string, length);
-      if (l == -1)
- 	{
- 	  mbtowc (NULL, NULL, 0);
- 	  w = 1;
- 	  l = 1;
- 	}
-      else
- 	{
- 	  if (l == 0)
- 	    l = 1;
- 	  w = wcwidth (wc);
- 	  if (w == -1)
- 	    w = 1;
- 	}
-      width += w;
-      string += l;
-      length -= l;
-    }
-  return width;
-#endif
-  return length;
-}
-
 /* Return the 0-based number of the current output column */
 int
 current_output_column (void)
@@ -2530,7 +2488,7 @@ current_output_column (void)
  	}
       if (i < j)
  	{
- 	  column += string_width ((char *)(output_paragraph + i), j - i);
+ 	  column += mbsnwidth ((char *)(output_paragraph + i), j - i, 0);
 	  i = j;
  	}
       if (i < output_paragraph_offset)
@@ -2808,15 +2766,6 @@ add_char (int character)
 	output_paragraph_offset++;
 	column = current_output_column ();
 	output_paragraph_offset--;
-	/* The string_width () in current_output_column () cannot predict
-	   future incoming bytes.  So if output_paragraph ends in a partial
-	   multibyte character, its bytes are counted as separate column
-	   positions.  This may push column past fill_column, even though the
-	   finished multibyte character would fit on the current line.
-
-	   This is too hard to fix without modifying add_char () to recieve
-	   complete multibyte characters at a time, and causes only slightly
-	   incorrect paragraph filling, so we punt.  */
         if (column > fill_column)
           {
             if (filling_enabled && !html)
@@ -3211,7 +3160,8 @@ do_flush_right_indentation (void)
     {
       int width;
 
-      width = string_width((char *)output_paragraph, output_paragraph_offset);
+      width = mbsnwidth ((char *)output_paragraph, output_paragraph_offset - 1,
+			 0) + 1;
       if (width < fill_column)
         {
           int i;
