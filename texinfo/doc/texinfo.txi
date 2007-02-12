@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
+@c $Id: texinfo.txi,v 1.180 2007-02-12 00:57:04 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -38,7 +38,7 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
-1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
 Foundation, Inc.
 
 @quotation
@@ -13332,11 +13332,15 @@ supports, see @ref{Inserting Accents}.
 @cindex Document language, declaring
 
 The @code{@@documentlanguage} command declares the current document
-language.  Write it on a line by itself, with a two-letter ISO-639
-language code following (list is included below).  If you have a
-multilingual document, the intent is to be able to use this command
-multiple times, to declare each language change.  If the command is not
-used at all, the default is @code{en} for English.
+language.  Write it on a line by itself, near the beginning of the
+file but after @code{@@setfilename}
+(@pxref{setfilename,,@code{@@setfilename}}).
+
+Include a two-letter ISO-639 language code following the command name
+(list is included below).  If you have a multilingual document, the
+intent is to be able to use this command multiple times, to declare
+each language change.  If the command is not used at all, the default
+is @code{en} for English.
 
 @cindex @file{txi-@var{cc}.tex}
 At present, this command is ignored in Info and HTML output.  For
@@ -13554,7 +13558,8 @@ Here are the valid language codes, from ISO-639.
 
 The @code{@@documentencoding} command declares the input document
 encoding.  Write it on a line by itself, with a valid encoding
-specification following.
+specification following, near the beginning of the file but after
+@code{@@setfilename} (@pxref{setfilename,,@code{@@setfilename}}).
 
 At present, Texinfo supports only these encodings:
 
@@ -13623,7 +13628,7 @@ means using constructed accents rather than precomposed glyphs.)
 Using a missing character generates a warning message, as does
 specifying an unimplemented encoding.
 
-In all other cases, it is accepted but ignored.
+In all other cases, @code{@@documentencoding} is accepted but ignored.
 
 
 @node Defining New Texinfo Commands
@@ -18822,7 +18827,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
+$Id: texinfo.txi,v 1.180 2007-02-12 00:57:04 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18888,7 +18893,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.179 2006-12-05 19:36:48 karl Exp $
+@comment $Id: texinfo.txi,v 1.180 2007-02-12 00:57:04 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
