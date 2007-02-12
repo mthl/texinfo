@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.181 2007-02-12 01:08:35 karl Exp $
+@c $Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16656,9 +16656,10 @@ HTML links, the @samp{http://localhost/} could be omitted entirely.
 The @var{dir} and @var{file} parts are more complicated, and depend on
 the relative split/mono nature of both the manual being processed and
 the manual that the cross-reference refers to.  The underlying idea is
-that there is one directory for Texinfo manuals in HTML, and each
-manual is either available as a monolithic file @file{manual.html}, or a
-split subdirectory @file{manual/*.html}.  Here are the cases:
+that there is one directory for Texinfo manuals in HTML, and a given
+@var{manual} is either available as a monolithic file
+@file{@var{manual}.html}, or a split subdirectory
+@file{@var{manual}/*.html}.  Here are the cases:
 
 @itemize @bullet
 @item
@@ -18832,7 +18833,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.181 2007-02-12 01:08:35 karl Exp $
+$Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18898,7 +18899,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.181 2007-02-12 01:08:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
