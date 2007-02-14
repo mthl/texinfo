@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.90 2007-02-07 17:00:38 karl Exp $
+   $Id: makeinfo.c,v 1.91 2007-02-14 22:19:30 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -4245,6 +4245,9 @@ getdocumenttext (const char *msgid)
   char *old_LC_ALL;
   char *old_LANGUAGE;
   const char *result;
+#ifdef HAVE_SETLOCALE
+  char *old_locale;
+#endif
 
   /* Save LC_ALL, LANGUAGE environment variables.  */
 
@@ -4258,6 +4261,7 @@ getdocumenttext (const char *msgid)
   unsetenv ("LANGUAGE");
 
 #ifdef HAVE_SETLOCALE
+  old_locale = xstrdup (setlocale (LC_ALL, NULL));
   if (setlocale (LC_ALL, "") == NULL)
     /* Nonexistent locale.  Use the original.  */
     result = msgid;
@@ -4281,7 +4285,8 @@ getdocumenttext (const char *msgid)
     unsetenv ("LANGUAGE");
 
 #ifdef HAVE_SETLOCALE
-  setlocale (LC_ALL, "");
+  setlocale (LC_ALL, old_locale);
+  free (old_locale);
 #endif
 
   return result;
