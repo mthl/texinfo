@@ -1,3 +1,7 @@
+2007-02-17  Derek Price  <derek@ximbiot.com>
+
+	* doc/texi2html.texi: Clean out some old, commented-out cruft.
+
 2007-02-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: set default out encoding to utf8. This could

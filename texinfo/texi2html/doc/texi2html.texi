@@ -3,7 +3,6 @@
 @c which is part of the ``texi2html'' distribution.
 @setfilename texi2html.info
 
-@c @macro copyleftnotice
 @copying
 @multitable @columnfractions .12 .88
 @item Portions of @command{texi2html}
@@ -45,7 +44,6 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
 @end copying
-@c @end macro
 
 @c --------------------------------------------------------
 @c    This file is part of the Texi2HTML distribution.
@@ -141,7 +139,6 @@ script which converts @uref{http://www.texinfo.org,Texinfo} into
 @value{VERSION}.
 @end ifnothtml
 
-@c @copyleftnotice
 @insertcopying
 @end ifnottex
 @c --------------------------------------------------------
@@ -160,7 +157,6 @@ script which converts @uref{http://www.texinfo.org,Texinfo} into
 @author Derek Price (manual)
 @page
 @vskip 0pt plus 1filll
-@c @copyleftnotice
 @insertcopying
 @end titlepage
 
@@ -200,7 +196,6 @@ list @email{texi2html-bug@@nongnu.org}. Please state the exact
 version of the manual which contains the bug, as given above.
 
 @ifinfo
-@c @copyleftnotice
 @insertcopying
 @end ifinfo
 
