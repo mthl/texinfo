@@ -1,3 +1,11 @@
+2007-02-21  Brian Dessent  <brian@dessent.net>
+
+	* info/info.c,
+	* info/infokey.c,
+	* info/makedoc.c,
+	* util/texindex.c (program_name): declare as non-static, for
+	non-glibc, e.g., Cygwin.  bug-texinfo mail from 31 Oct 2006 15:50:34.
+
 2007-02-14  Miloslav Trmac  <mitr@redhat.com>
 
 	* makeinfo/makeinfo.c (getdocumenttext): Correctly save and

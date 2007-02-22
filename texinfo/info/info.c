@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.14 2006-08-13 23:36:22 karl Exp $
+   $Id: info.c,v 1.15 2007-02-22 00:24:19 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005 Free Software Foundation, Inc.
@@ -28,7 +28,7 @@
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
 
-static char *program_name = "info";
+char *program_name = "info";
 
 /* Non-zero means search all indices for APROPOS_SEARCH_STRING. */
 static int apropos_p = 0;

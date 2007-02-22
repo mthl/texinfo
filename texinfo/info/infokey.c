@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.11 2005-08-19 22:23:54 karl Exp $
+   $Id: infokey.c,v 1.12 2007-02-22 00:24:20 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005 Free Software
    Foundation, Inc.
@@ -26,7 +26,7 @@
 #include "key.h"
 #include "getopt.h"
 
-static char *program_name = "infokey";
+char *program_name = "infokey";
 
 /* Non-zero means print version info only. */
 static int print_version_p = 0;

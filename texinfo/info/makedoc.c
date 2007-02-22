@@ -1,5 +1,5 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
-   $Id: makedoc.c,v 1.5 2005-05-15 00:00:07 karl Exp $
+   $Id: makedoc.c,v 1.6 2007-02-22 00:24:20 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -27,6 +27,8 @@
 
 #include "info.h"
 #include "infokey.h"
+
+char *program_name = "makedoc";
 
 static void fatal_file_error (char *filename);
 

@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.18 2006-11-02 00:40:15 karl Exp $
+   $Id: texindex.c,v 1.19 2007-02-22 00:24:19 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -21,7 +21,7 @@
 #include "system.h"
 #include <getopt.h>
 
-static char *program_name = "texindex";
+char *program_name = "texindex";
 
 #if defined (emacs)
 #  include "../src/config.h"
