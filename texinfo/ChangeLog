@@ -1,5 +1,8 @@
 2007-02-21  Karl Berry  <karl@gnu.org>
 
+	* system.h: simplify system header inclusion, following current
+	practice; that is, copied from GNU Hello.
+
 	* makeinfo/test/no-headers (nulldev): just always use /dev/null.
 	Also from Brian.
 

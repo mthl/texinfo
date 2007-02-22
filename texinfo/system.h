@@ -1,8 +1,8 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.1 2006-06-19 23:12:34 karl Exp $
+   $Id: system.h,v 1.2 2007-02-22 00:38:03 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-   2006 Free Software Foundation, Inc.
+   2006, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -35,13 +35,16 @@
 extern char *substring (const char *, const char *);
 #endif
 
-/* We follow the order of header inclusion from Autoconf's
-   ac_includes_default, more or less.  */
-#include <stdio.h>
-#include <sys/types.h>
-#include <ctype.h>
-
+/* Assume ANSI C89 headers are available.  */
 #include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* Use POSIX headers.  If they are not available, we use the substitute
+   provided by gnulib.  */
+#include <getopt.h>
+#include <unistd.h>
 
 /* For gettext (NLS).  */
 #define const
@@ -51,43 +54,10 @@ extern char *substring (const char *, const char *);
 #define _(String) gettext (String)
 #define N_(String) (String)
 
-#ifdef STDC_HEADERS
-#define getopt system_getopt
-#include <stdlib.h>
-#undef getopt
-#else
-extern char *getenv ();
-#endif
-
-/* Don't use bcopy!  Use memmove if source and destination may overlap,
-   memcpy otherwise.  */
-#if HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-
-#if HAVE_STRINGS_H
-/* Always include <strings.h> if we have it.  This is because that's
-   what Autoconf's AC_CHECK_DECL does.  On IBM AIX 4.2, strncasecmp is
-   only declared in strings.h.  */
-# include <strings.h>
-#endif
-
-#if !HAVE_STRNCASECMP || !HAVE_STRCASECMP
-# include "strcase.h"
-#endif
-
-#if !HAVE_DECL_MEMCHR
-char *memchr ();
-#endif
-
-/* <unistd.h> defines _POSIX_VERSION, but Paul Eggert points out that is
-   only supposed to be used in user code, not other system headers.  */
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif /* HAVE_UNISTD_H */
+/* Additional gnulib includes.  */
+#include "mbswidth.h"
+#include "xalloc.h"
+#include "xsetenv.h"
 
 #include <errno.h>
 #ifndef errno
