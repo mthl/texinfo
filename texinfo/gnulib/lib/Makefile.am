@@ -68,12 +68,6 @@ EXTRA_libgnu_a_SOURCES += error.c
 
 ## end   gnulib module error
 
-## begin gnulib module exit
-
-libgnu_a_SOURCES += exit.h
-
-## end   gnulib module exit
-
 ## begin gnulib module exitfail
 
 
@@ -131,6 +125,12 @@ EXTRA_libgnu_a_SOURCES += gettimeofday.c
 
 ## end   gnulib module gettimeofday
 
+## begin gnulib module link-warning
+
+LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+
+## end   gnulib module link-warning
+
 ## begin gnulib module mbswidth
 
 libgnu_a_SOURCES += mbswidth.h mbswidth.c
@@ -158,7 +158,7 @@ EXTRA_libgnu_a_SOURCES += memmove.c
 ## begin gnulib module mkstemp
 
 
-EXTRA_DIST += mkstemp.c mkstemp.h
+EXTRA_DIST += mkstemp.c
 
 EXTRA_libgnu_a_SOURCES += mkstemp.c
 
@@ -212,6 +212,32 @@ EXTRA_DIST += stdint_.h
 
 ## end   gnulib module stdint
 
+## begin gnulib module stdlib
+
+BUILT_SOURCES += stdlib.h
+
+# We need the following in order to create <stdlib.h> when the system
+# doesn't have one that works with the given compiler.
+stdlib.h: stdlib_.h
+	rm -f $@-t $@
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''ABSOLUTE_STDLIB_H''@|$(ABSOLUTE_STDLIB_H)|g' \
+	      -e 's|@''GNULIB_GETSUBOPT''@|$(GNULIB_GETSUBOPT)|g' \
+	      -e 's|@''GNULIB_MKDTEMP''@|$(GNULIB_MKDTEMP)|g' \
+	      -e 's|@''GNULIB_MKSTEMP''@|$(GNULIB_MKSTEMP)|g' \
+	      -e 's|@''HAVE_GETSUBOPT''@|$(HAVE_GETSUBOPT)|g' \
+	      -e 's|@''HAVE_MKDTEMP''@|$(HAVE_MKDTEMP)|g' \
+	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
+	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      < $(srcdir)/stdlib_.h; \
+	} > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += stdlib.h stdlib.h-t
+
+EXTRA_DIST += stdlib_.h
+
+## end   gnulib module stdlib
+
 ## begin gnulib module strcase
 
 
@@ -249,10 +275,13 @@ string.h: string_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's|@''ABSOLUTE_STRING_H''@|$(ABSOLUTE_STRING_H)|g' \
+	      -e 's|@''GNULIB_MBSLEN''@|$(GNULIB_MBSLEN)|g' \
 	      -e 's|@''GNULIB_MBSCHR''@|$(GNULIB_MBSCHR)|g' \
 	      -e 's|@''GNULIB_MBSRCHR''@|$(GNULIB_MBSRCHR)|g' \
 	      -e 's|@''GNULIB_MBSSTR''@|$(GNULIB_MBSSTR)|g' \
 	      -e 's|@''GNULIB_MBSCASECMP''@|$(GNULIB_MBSCASECMP)|g' \
+	      -e 's|@''GNULIB_MBSNCASECMP''@|$(GNULIB_MBSNCASECMP)|g' \
+	      -e 's|@''GNULIB_MBSPCASECMP''@|$(GNULIB_MBSPCASECMP)|g' \
 	      -e 's|@''GNULIB_MBSCASESTR''@|$(GNULIB_MBSCASESTR)|g' \
 	      -e 's|@''GNULIB_MBSCSPN''@|$(GNULIB_MBSCSPN)|g' \
 	      -e 's|@''GNULIB_MBSPBRK''@|$(GNULIB_MBSPBRK)|g' \
@@ -288,6 +317,7 @@ string.h: string_.h
 	      -e 's|@''HAVE_STRSEP''@|$(HAVE_STRSEP)|g' \
 	      -e 's|@''HAVE_STRCASESTR''@|$(HAVE_STRCASESTR)|g' \
 	      -e 's|@''HAVE_DECL_STRTOK_R''@|$(HAVE_DECL_STRTOK_R)|g' \
+	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      < $(srcdir)/string_.h; \
 	} > $@-t
 	mv $@-t $@
@@ -352,14 +382,29 @@ EXTRA_libgnu_a_SOURCES += tempname.c
 
 ## begin gnulib module unistd
 
-BUILT_SOURCES += $(UNISTD_H)
+BUILT_SOURCES += unistd.h
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
 unistd.h: unistd_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''ABSOLUTE_UNISTD_H''@|$(ABSOLUTE_UNISTD_H)|g' \
+	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
+	      -e 's|@''ABSOLUTE_UNISTD_H''@|$(ABSOLUTE_UNISTD_H)|g' \
+	      -e 's|@''GNULIB_CHOWN''@|$(GNULIB_CHOWN)|g' \
+	      -e 's|@''GNULIB_DUP2''@|$(GNULIB_DUP2)|g' \
+	      -e 's|@''GNULIB_FCHDIR''@|$(GNULIB_FCHDIR)|g' \
+	      -e 's|@''GNULIB_FTRUNCATE''@|$(GNULIB_FTRUNCATE)|g' \
+	      -e 's|@''GNULIB_GETCWD''@|$(GNULIB_GETCWD)|g' \
+	      -e 's|@''GNULIB_GETLOGIN_R''@|$(GNULIB_GETLOGIN_R)|g' \
+	      -e 's|@''GNULIB_READLINK''@|$(GNULIB_READLINK)|g' \
+	      -e 's|@''HAVE_DUP2''@|$(HAVE_DUP2)|g' \
+	      -e 's|@''HAVE_FTRUNCATE''@|$(HAVE_FTRUNCATE)|g' \
+	      -e 's|@''HAVE_READLINK''@|$(HAVE_READLINK)|g' \
+	      -e 's|@''HAVE_DECL_GETLOGIN_R''@|$(HAVE_DECL_GETLOGIN_R)|g' \
+	      -e 's|@''REPLACE_CHOWN''@|$(REPLACE_CHOWN)|g' \
+	      -e 's|@''REPLACE_FCHDIR''@|$(REPLACE_FCHDIR)|g' \
+	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
 	      < $(srcdir)/unistd_.h; \
 	} > $@-t
 	mv $@-t $@

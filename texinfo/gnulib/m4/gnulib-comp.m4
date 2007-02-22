@@ -54,8 +54,10 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
+  gl_STDLIB_MODULE_INDICATOR([mkstemp])
   gt_FUNC_SETENV
   gl_STDINT_H
+  gl_STDLIB_H
   gl_STRCASE
   gl_FUNC_STRDUP
   gl_STRING_MODULE_INDICATOR([strdup])
@@ -66,7 +68,7 @@ AC_DEFUN([gl_INIT],
   gl_HEADER_SYS_TIME_H
   AC_PROG_MKDIR_P
   gl_FUNC_GEN_TEMPNAME
-  gl_HEADER_UNISTD
+  gl_UNISTD_H
   gl_WCHAR_H
   gl_WCTYPE_H
   gl_FUNC_WCWIDTH
@@ -113,13 +115,13 @@ AC_DEFUN([gl_LIBSOURCES],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
+  build-aux/link-warning.h
   lib/alloca_.h
   lib/allocsa.c
   lib/allocsa.h
   lib/allocsa.valgrind
   lib/error.c
   lib/error.h
-  lib/exit.h
   lib/exitfail.c
   lib/exitfail.h
   lib/getopt.c
@@ -133,11 +135,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
-  lib/mkstemp.h
   lib/setenv.c
   lib/setenv.h
   lib/stat_.h
   lib/stdint_.h
+  lib/stdlib_.h
   lib/strcasecmp.c
   lib/strdup.c
   lib/strerror.c
@@ -200,6 +202,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/size_max.m4
   m4/stdint.m4
   m4/stdint_h.m4
+  m4/stdlib_h.m4
   m4/strcase.m4
   m4/strdup.m4
   m4/strerror.m4
