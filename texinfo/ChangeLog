@@ -1,3 +1,8 @@
+2007-02-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (The Top Node): no @insertcopying recommended,
+	per rms.
+
 2007-02-21  Karl Berry  <karl@gnu.org>
 
 	* system.h: simplify system header inclusion, following current

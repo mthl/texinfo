@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
+@c $Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3654,18 +3654,17 @@ texi2dvi --texinfo=@@setcontentsaftertitlepage foo.texi
 @cindex Top node
 @cindex Node, `Top'
 
-The `Top' node is the node in which a reader enters an Info manual.  As
-such, it should begin with the @code{@@insertcopying} command
-(@pxref{Document Permissions}) to provide a brief description of the
-manual (including the version number) and copying permissions, and end
-with a master menu for the whole manual.  Of course you should include
-any other general information you feel a reader would find helpful.
+The `Top' node is the node in which a reader enters an Info manual.
+As such, it should begin with a brief description of the manual
+(including the version number), and end with a master menu for the
+whole manual.  Of course you should include any other general
+information you feel a reader would find helpful.
 
 @findex top
-It is also conventional to write an @code{@@top} sectioning command line
-containing the title of the document immediately after the @code{@@node
-Top} line (@pxref{makeinfo top command, , The @code{@@top} Sectioning
-Command}).
+It is conventional and desirable to write an @code{@@top} sectioning
+command line containing the title of the document immediately after
+the @code{@@node Top} line (@pxref{makeinfo top command, , The
+@code{@@top} Sectioning Command}).
 
 The contents of the `Top' node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
@@ -18833,7 +18832,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
+$Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18899,7 +18898,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.182 2007-02-12 01:13:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
