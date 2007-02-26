@@ -1,3 +1,8 @@
+2007-02-26  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (info_short_example): example for dumping a whole
+	manual, suggested by Dan Jacobson, 21 Feb 2007 08:37:08.
+
 2007-02-24  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (The Top Node): no @insertcopying recommended,
