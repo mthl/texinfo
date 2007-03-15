@@ -1,3 +1,8 @@
+2007-03-13  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex (\enddoublecolumns): add \penalty0 so the 
+	recent contributions won't be spuriously added to an index page.
+
 2007-02-26  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (info_short_example): example for dumping a whole
