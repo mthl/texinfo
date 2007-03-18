@@ -1,3 +1,12 @@
+2007-03-18  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (cm_image): malloc enough space for the .txt
+	when given an extension.
+
+2007-03-17  Karl Berry  <karl@gnu.org>
+
+	* util/dir-example: dmalloc, alignment.
+
 2007-03-13  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\enddoublecolumns): add \penalty0 so the 

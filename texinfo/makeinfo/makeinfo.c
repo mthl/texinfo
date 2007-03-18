@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.91 2007-02-14 22:19:30 karl Exp $
+   $Id: makeinfo.c,v 1.92 2007-03-18 18:51:08 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -3333,8 +3333,8 @@ cm_image (int arg)
     {
       struct stat file_info;
       char *pathname = NULL;
-      char *fullname = xmalloc (strlen (name_arg)
-                       + (ext_arg && *ext_arg ? strlen (ext_arg) + 1: 4) + 1);
+      unsigned ext_len = (ext_arg && *ext_arg) ? strlen (ext_arg) : 0;
+      char *fullname = xmalloc (strlen (name_arg) + MAX (ext_len, 4) + 1);
 
       if (ext_arg && *ext_arg)
         {
@@ -3427,12 +3427,10 @@ cm_image (int arg)
             xml_no_para--;
         }
       else
-        { /* Try to open foo.EXT or foo.txt.  */
+        { /* Prefer foo.txt for Info/ASCII.  Seems wrong nowadays.  */
           FILE *image_file;
           char *txtpath = NULL;
-          char *txtname = xmalloc (strlen (name_arg)
-                                   + (ext_arg && *ext_arg
-                                      ? strlen (ext_arg) : 4) + 1);
+          char *txtname = xmalloc (strlen (name_arg) + 4 + 1);
           strcpy (txtname, name_arg);
           strcat (txtname, ".txt");
           image_file = fopen (txtname, "r");
