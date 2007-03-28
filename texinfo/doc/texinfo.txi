@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
+@c $Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5303,11 +5303,12 @@ you use menus to go to such nodes.  Menus have no effect in printed
 manuals and do not appear in them.
 
 A node with a menu should not contain much text.  If you find yourself
-writing a lot of before a menu, we generally recommend moving most of
-the text into a new subnode---all but a paragraph or two.  Otherwise,
-a reader with a terminal that displays only a few lines may miss the
-menu and its associated text.  As a practical matter, it is best to
-locate a menu within 20 or so lines of the beginning of the node.
+writing a lot of text before a menu, we generally recommend moving
+most of the text into a new subnode---all but a paragraph or two.
+Otherwise, a reader with a terminal that displays only a few lines may
+miss the menu and its associated text.  As a practical matter, it is
+best to locate a menu within 20 or so lines of the beginning of the
+node.
 
 @menu
 * Menu Location::               Menus go at the ends of short nodes.
@@ -18832,7 +18833,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
+$Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18898,7 +18899,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.183 2007-02-25 01:48:45 karl Exp $
+@comment $Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
