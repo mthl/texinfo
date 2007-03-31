@@ -1,4 +1,9 @@
-2007-03-29  Roland Levillain  <roland@lrde.epita.fr>
+2007-03-31  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (init_paragraph): only free output_paragraph
+	if it is non-null.
+
+2007-03-31  Roland Levillain  <roland@lrde.epita.fr>
 
 	* makeinfo/makeinfo.c (cm_image): Look for a JPEG image in the
 	include search path before giving up.

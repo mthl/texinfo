@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.93 2007-03-31 22:39:42 karl Exp $
+   $Id: makeinfo.c,v 1.94 2007-03-31 22:40:51 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
@@ -1891,7 +1891,8 @@ init_internals (void)
 void
 init_paragraph (void)
 {
-  free (output_paragraph);
+  if (output_paragraph)
+    free (output_paragraph);
   output_paragraph = xmalloc (paragraph_buffer_len);
   output_paragraph[0] = 0;
   output_paragraph_offset = 0;
