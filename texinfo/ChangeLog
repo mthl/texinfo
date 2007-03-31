@@ -1,3 +1,15 @@
+2007-03-29  Roland Levillain  <roland@lrde.epita.fr>
+
+	* makeinfo/makeinfo.c (cm_image): Look for a JPEG image in the
+	include search path before giving up.
+	Fix inclusion of JPEG images (with non explicit extension)
+	not present in the current directory, but in the include search path.
+
+2007-03-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Menus): missing word "text".
+	From Matt Kraai, 27 Mar 2007 10:26:28 -0700.
+
 2007-03-18  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (cm_image): malloc enough space for the .txt
