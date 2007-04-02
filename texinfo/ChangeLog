@@ -1,3 +1,9 @@
+2007-04-02  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs_template: "bytes" is more accurate than "characters".
+	* util/gendocs.sh: force English settings; improve --help.
+	From Bruno.
+
 2007-03-31  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (init_paragraph): only free output_paragraph
