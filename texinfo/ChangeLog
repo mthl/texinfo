@@ -1,3 +1,11 @@
+2007-04-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\whatsitskip, \whatsitpenalty): new registers.
+	(\safewhatsit): generalization of \dosubindsanitize.  Change call.
+	(\pdfmkdest, \dosubind, \setref): call it.  This avoids a page
+	break at an anchor (lispref/loading.texi/load-read-function).
+	From Oleg.
+
 2007-04-02  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs_template: "bytes" is more accurate than "characters".
