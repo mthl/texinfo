@@ -1,3 +1,10 @@
+2007-04-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\defunpenalty): new register.
+	(\startdefun): use it to avoid page breaks between a defun and a
+	single defunx -- only allow breaks between multiple defunx's.
+	From Oleg.
+
 2007-04-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\whatsitskip, \whatsitpenalty): new registers.

@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2007-03-14.11}
+\def\texinfoversion{2007-04-07.08}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5634,21 +5634,28 @@ output) for that.)}
 \newskip\defbodyindent \defbodyindent=.4in
 \newskip\defargsindent \defargsindent=50pt
 \newskip\deflastargmargin \deflastargmargin=18pt
+\newcount\defunpenalty
 
 % Start the processing of @deffn:
 \def\startdefun{%
   \ifnum\lastpenalty<10000
     \medbreak
+    \defunpenalty=10003 % Will keep this @deffn together with the
+                        % following @def command, see below.
   \else
     % If there are two @def commands in a row, we'll have a \nobreak,
     % which is there to keep the function description together with its
     % header.  But if there's nothing but headers, we need to allow a
     % break somewhere.  Check specifically for penalty 10002, inserted
-    % by \defargscommonending, instead of 10000, since the sectioning
+    % by \printdefunline, instead of 10000, since the sectioning
     % commands also insert a nobreak penalty, and we don't want to allow
     % a break between a section heading and a defun.
-    % 
-    \ifnum\lastpenalty=10002 \penalty2000 \fi
+    %
+    % As a minor refinement, we avoid "club" headers by signalling
+    % with penalty of 10003 after the very first @deffn in the
+    % sequence (see above), and penalty of 10002 after any following
+    % @def command.
+    \ifnum\lastpenalty=10002 \penalty2000 \else \defunpenalty=10002 \fi
     %
     % Similarly, after a section heading, do not allow a break.
     % But do insert the glue.
@@ -5666,7 +5673,7 @@ output) for that.)}
   %
   % As above, allow line break if we have multiple x headers in a row.
   % It's not a great place, though.
-  \ifnum\lastpenalty=10002 \penalty3000 \fi
+  \ifnum\lastpenalty=10002 \penalty3000 \else \defunpenalty=10002 \fi
   %
   % And now, it's time to reuse the body of the original defun:
   \expandafter\gobbledefun#1%
@@ -5684,7 +5691,7 @@ output) for that.)}
     \advance\rightskip by 0pt plus 1fil
     \endgraf
     \nobreak\vskip -\parskip
-    \penalty 10002  % signal to \startdefun and \dodefunx
+    \penalty\defunpenalty  % signal to \startdefun and \dodefunx
     % Some of the @defun-type tags do not enable magic parentheses,
     % rendering the following check redundant.  But we don't optimize.
     \checkparencounts
