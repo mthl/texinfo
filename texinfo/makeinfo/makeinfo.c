@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.95 2007-04-08 19:07:58 karl Exp $
+   $Id: makeinfo.c,v 1.96 2007-04-08 23:33:08 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -3314,6 +3314,8 @@ next_nonwhitespace_character (void)
 
   return -1;
 }
+
+
 
 /* Replace " with \" and \ with \\.  Used for alt tag in Info output.
    Return a newly-malloced string in all cases.  */
@@ -3322,7 +3324,7 @@ static char *
 bs_escape_quote (const char *src)
 {
   int c;
-  char *dest = xmalloc (2 * strlen (src));  /* can't need more.  */
+  char *dest = xmalloc (2 * strlen (src) + 1);  /* can't need more.  */
   char *p = dest;
   
   for (; c = *src; src++)
@@ -3338,6 +3340,7 @@ bs_escape_quote (const char *src)
 }
 
 
+
 /* An external image is a reference, kind of.  The parsing is (not
    coincidentally) similar, anyway.  */
 void
