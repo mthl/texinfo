@@ -1,5 +1,10 @@
 2007-04-08  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/makeinfo.c (bs_escape_quote): new fn.
+	(cm_image) <Info output>: call it, to escape the alt string.
+	Also expand the alt string.
+	bug-texinfo mail from Kevin Ryde, 26 Mar 2007 07:06:14.
+
 	* doc/texinfo.tex (\printindex): set \plainfrenchspacing.
 
 2007-04-07  Karl Berry  <karl@gnu.org>

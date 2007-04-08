@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
+@c $Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9382,13 +9382,19 @@ sp,,@code{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
-When producing HTML, @code{makeinfo} sets the @dfn{alt attribute} for
+@findex @- (alt string)
+For HTML output, @code{makeinfo} sets the @dfn{alt attribute} for
 inline images to the optional @var{alttext} (fourth) argument to
 @code{@@image}, if supplied.  If not supplied, @code{makeinfo} uses
-the full file name of the image being displayed.  If you want an empty
-@code{alt} string, use @code{@@-}.  The @var{alttext} is taken as
-Texinfo text, so special characters such as @samp{"} and @samp{<} and
-@samp{&} are escaped in the HTML and XML output.
+the full file name of the image being displayed.  The @var{alttext} is
+taken as Texinfo text, so special characters such as @samp{"} and
+@samp{<} and @samp{&} are escaped in the HTML and XML output; also,
+you can get an empty @code{alt} string with @code{@@-} (a command
+that produces no output; @pxref{- and hyphenation}).
+
+For Info output, the @code{alt} string is also processed as Texinfo
+text and output.  In this case, @samp{\} is escaped as @samp{\\} and
+@samp{"} as @samp{\"}; no other escapes are done.
 
 @cindex PNG image format
 @cindex JPEG image format
@@ -9406,6 +9412,7 @@ Emacs Info browser, running under X) can do so, whereas Info readers
 which can only use text (such as the standalone Info reader) can
 display the textual version.
 
+@cindex @samp{^@@^H} for images in Info
 The implementation of this is to put the following construct into the
 Info output:
 
@@ -18833,7 +18840,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
+$Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18899,7 +18906,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.184 2007-03-28 21:20:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

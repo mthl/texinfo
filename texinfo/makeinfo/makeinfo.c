@@ -1,8 +1,9 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.94 2007-03-31 22:40:51 karl Exp $
+   $Id: makeinfo.c,v 1.95 2007-04-08 19:07:58 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -3314,6 +3315,29 @@ next_nonwhitespace_character (void)
   return -1;
 }
 
+/* Replace " with \" and \ with \\.  Used for alt tag in Info output.
+   Return a newly-malloced string in all cases.  */
+
+static char *
+bs_escape_quote (const char *src)
+{
+  int c;
+  char *dest = xmalloc (2 * strlen (src));  /* can't need more.  */
+  char *p = dest;
+  
+  for (; c = *src; src++)
+    {
+      if (c == '"' || c == '\\')
+        *p++ = '\\';
+
+      *p++ = c;
+    }
+  *p = 0;
+  
+  return dest;
+}
+
+
 /* An external image is a reference, kind of.  The parsing is (not
    coincidentally) similar, anyway.  */
 void
@@ -3479,7 +3503,13 @@ cm_image (int arg)
                     add_word_args (" src=\"%s\"", fullname);
 
                   if (*alt_arg)
-                    add_word_args (" alt=\"%s\"", alt_arg);
+                    {
+                      char *expanded = text_expansion (alt_arg);
+                      char *escaped = bs_escape_quote (expanded);
+                      add_word_args (" alt=\"%s\"", escaped);
+                      free (expanded);
+                      free (escaped);
+                    }
                 }
 
               if (image_file != NULL)
