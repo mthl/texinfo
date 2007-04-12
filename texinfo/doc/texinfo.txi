@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
+@c $Id: texinfo.txi,v 1.186 2007-04-12 15:33:10 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1265,7 +1265,7 @@ for example, in documenting a computer language such as Maxima where
 the double-quote characters.
 
 @cindex Unicode quotation characters
-@cindex Grave accent, vs.@: left quote
+@cindex Grave accent, vs. left quote
 The left quote character (@t{`}, ASCII code 96) used in Texinfo is a
 grave accent in ANSI and ISO character set standards.  We use it as a
 quote character because that is how @TeX{} is set up, by default.  We
@@ -1672,13 +1672,13 @@ This is the second item.
 @cindex Chassell, Robert J.
 @cindex Fox, Brian
 @cindex Berry, Karl
-Richard M.@: Stallman invented the Texinfo format, wrote the initial
-processors, and created Edition 1.0 of this manual.  @w{Robert J.@:}
-Chassell greatly revised and extended the manual, starting with Edition
-1.1.  Brian Fox was responsible for the standalone Texinfo distribution
-until version 3.8, and wrote the standalone @command{makeinfo} and
-@command{info} programs.  Karl Berry has continued maintenance since
-Texinfo 3.8 (manual edition 2.22).
+Richard M. Stallman invented the Texinfo format, wrote the initial
+processors, and created Edition 1.0 of this manual.  Robert@tie{}J.
+Chassell greatly revised and extended the manual, starting with
+Edition 1.1.  Brian Fox was responsible for the standalone Texinfo
+distribution until version 3.8, and wrote the standalone
+@command{makeinfo} and @command{info} programs.  Karl Berry has
+continued maintenance since Texinfo 3.8 (manual edition 2.22).
 
 @cindex Pinard, Fran@,{c}ois
 @cindex Zuhn, David D.
@@ -1688,7 +1688,7 @@ Texinfo 3.8 (manual edition 2.22).
 @cindex Weinberg, Zack
 Our thanks go out to all who helped improve this work, particularly the
 indefatigable Eli Zaretskii and Andreas Schwab, who have provided
-patches beyond counting.  Fran@,{c}ois Pinard and @w{David D.@: Zuhn},
+patches beyond counting.  Fran@,{c}ois Pinard and David@tie{}D. Zuhn,
 tirelessly recorded and reported mistakes and obscurities.  Zack
 Weinberg did the impossible by implementing the macro syntax in
 @file{texinfo.tex}.  Special thanks go to Melissa Weisshaus for her
@@ -7504,8 +7504,7 @@ acronyms.
 
 @item
 It's not essential to use these commands for all abbreviations.  Text
-is perfectly readable without them, and for common abbreviations like
-`etc.@:', we consider them to be overkill.
+is perfectly readable without them.
 
 @end itemize
 
@@ -10192,8 +10191,8 @@ which are not at the ends of sentences.
 For example,
 
 @example
-The s.o.p.@@: has three parts @dots{}
-The s.o.p. has three parts @dots{}
+foo vs.@@: bar
+foo vs. bar
 @end example
 
 @noindent
@@ -10202,19 +10201,16 @@ produces
 @end ifnottex
 @iftex
 produces the following.  If you look carefully at this printed output,
-you will see a little extraneous space after @samp{s.o.p.} in the second
+you will see a little extraneous space after @samp{vs.}@: in the second
 line.
 @end iftex
 
 @quotation
-The s.o.p.@: has three parts @dots{}@*
-The s.o.p. has three parts @dots{}
+foo vs.@: bar @*
+foo vs. bar
 @end quotation
 
 @noindent
-(Incidentally, @samp{s.o.p.} is an abbreviation for ``Standard Operating
-Procedure''.)
-
 @code{@@:} has no effect on the Info and HTML output.  In Docbook and
 XML, the previous punctuation character (.?!:) is output as an entity
 instead of as the normal character: @samp{&period; &quest; &excl;
@@ -17085,11 +17081,9 @@ end-of-sentence capital letter).  @xref{Ending a Sentence}.
 Produces no output, but allows a line break.  @xref{Line Breaks}.
 
 @item @@:
-Indicate to @TeX{} that an immediately preceding period, question
-mark, exclamation mark, or colon does not end a sentence.  Prevent
-@TeX{} from inserting extra whitespace as it does at the end of a
-sentence.  The command has no effect on the Info file output.
-@xref{Not Ending a Sentence}.
+Tell @TeX{} to refrain from inserting extra whitespace after an
+immediately preceding period, question mark, exclamation mark, or
+colon, as @TeX{} normally would.  @xref{Not Ending a Sentence}.
 
 @item @@=
 Generate a macron (bar) accent over the next character, as in @=o.
@@ -18840,7 +18834,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
+$Id: texinfo.txi,v 1.186 2007-04-12 15:33:10 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18906,7 +18900,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.185 2007-04-08 19:07:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.186 2007-04-12 15:33:10 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
