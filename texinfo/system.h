@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.2 2007-02-22 00:38:03 karl Exp $
+   $Id: system.h,v 1.3 2007-04-21 13:13:54 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007 Free Software Foundation, Inc.
@@ -253,5 +253,10 @@ extern void xexit (int);
 #undef MAX
 #endif
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
+
+#ifdef DMALLOC_DEBUG
+#define DMALLOC_FUNC_CHECK
+#include "dmalloc.h"
+#endif
 
 #endif /* TEXINFO_SYSTEM_H */
