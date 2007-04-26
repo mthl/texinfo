@@ -1,5 +1,10 @@
 2007-04-26  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (cmapOT1, cmapOT1IT, cmapOT1TT): new definitions
+	for pdf so that searching and copying from pdf documents will find
+	text properly, e.g., the "fi" in "file".  From Oleg.  Report from
+	Frank K on tex-live.
+
 	* util/gendocs_template: conform to new GNU style.  From Yavor.
 	* util/gendocs_template_min: previous version, without SSI.
 
