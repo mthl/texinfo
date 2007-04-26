@@ -1,3 +1,8 @@
+2007-04-26  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs_template: conform to new GNU style.  From Yavor.
+	* util/gendocs_template_min: previous version, without SSI.
+
 2007-04-21  Karl Berry  <karl@gnu.org>
 
 	* system.h (DMALLOC_FUNC_CHECK) [DMALLOC_DEBUG]: #define.
