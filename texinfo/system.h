@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.3 2007-04-21 13:13:54 karl Exp $
+   $Id: system.h,v 1.4 2007-04-29 22:21:51 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007 Free Software Foundation, Inc.
@@ -183,11 +183,14 @@ extern int strcoll ();
 # ifdef __CYGWIN__
 #  define DEFAULT_TMPDIR	"/tmp/"
 #  define PATH_SEP	":"
+#  define STRIP_DOT_EXE	0
 #  undef NULL_DEVICE
 #  define NULL_DEVICE "/dev/null"
+#  define PIPE_USE_FORK	1
 # else  /* O_BINARY && !__CYGWIN__ */
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
+#  define STRIP_DOT_EXE	1
 # endif /* O_BINARY && !__CYGWIN__ */
   /* Back to any O_BINARY system.  */
 # define FILENAME_CMP	strcasecmp
@@ -199,7 +202,6 @@ extern int strcoll ();
 # define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || ((n)[0] && (n)[1] == ':'))
 # define PIPE_USE_FORK	0
 # define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
-# define STRIP_DOT_EXE	1
 
 #else  /* not O_BINARY, i.e., Unix */
 # define SET_BINARY(f)	(void)0

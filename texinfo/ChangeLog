@@ -1,5 +1,9 @@
 2007-04-29  Karl Berry  <karl@gnu.org>
 
+	* system.h [__CYGWIN__]: #define STRIP_DOT_EXE 0 (since gunzip.exe
+	may no longer exist), and PIPE_USE_FORK as 1.
+	From Christopher Faylor, 28 Apr 2007 20:25:56.
+
 	* makeinfo/cmds.c (cm_strong): doc fix.
 
 	* makeinfo/makeinfo.h (paragraph_buffer_len): move decl here ...
