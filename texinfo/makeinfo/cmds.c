@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.69 2007-02-07 17:00:38 karl Exp $
+   $Id: cmds.c,v 1.70 2007-04-29 18:36:21 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -1110,15 +1110,16 @@ cm_strong (int arg, int start_pos, int end_pos)
     insert_html_tag (arg, "strong");
   else
     add_char ('*');
-  
+
   if (!xml && !html && !docbook && !no_headers
       && arg == END
       && end_pos - start_pos >= 6
       && (STRNCASEEQ ((char *) output_paragraph + start_pos, "*Note:", 6)
-          || STRNCASEEQ ((char *) output_paragraph + start_pos, "*Note ", 6)))
+          || STRNCASEEQ ((char *) output_paragraph + start_pos, "*Note ", 6))
+          )
     {
       /* Translators: "Note:" is literal here and should not be
-         translated.  @strong{Nota}, say, does not cause the problem.  */
+         translated.  A document with @strong{Nota}, say, is fine.  */
       warning (_("@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"));
       /* Adjust the output to avoid writing the bad xref.  */
       output_paragraph[start_pos + 5] = '_';
