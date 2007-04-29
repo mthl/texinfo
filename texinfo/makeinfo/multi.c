@@ -1,7 +1,7 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.14 2007-02-07 17:00:38 karl Exp $
+   $Id: multi.c,v 1.15 2007-04-29 18:41:58 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005, 2007
    Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -59,8 +59,9 @@ static struct env
 {
   unsigned char *output_paragraph;
   int output_paragraph_offset;
-  int meta_char_pos;
+  int paragraph_buffer_len;
   int paragraph_is_open;
+  int meta_char_pos;
   int current_indent;
   int fill_column;
 } envs[MAXCOLS];                /* the environment table */
@@ -142,8 +143,9 @@ select_output_environment (int n)
   /* stash current env info from global vars into the old environment */
   e->output_paragraph = output_paragraph;
   e->output_paragraph_offset = output_paragraph_offset;
-  e->meta_char_pos = meta_char_pos;
+  e->paragraph_buffer_len = paragraph_buffer_len;
   e->paragraph_is_open = paragraph_is_open;
+  e->meta_char_pos = meta_char_pos;
   e->current_indent = current_indent;
   e->fill_column = fill_column;
 
@@ -152,10 +154,17 @@ select_output_environment (int n)
   e = &envs[current_env_no];
   output_paragraph = e->output_paragraph;
   output_paragraph_offset = e->output_paragraph_offset;
-  meta_char_pos = e->meta_char_pos;
+  /* All the elements in the output environment structures start out as
+     zeros from the static declaration.  However, we don't want to try
+     to malloc zero bytes when init_paragraph is called just below,
+     after we return.  */
+  paragraph_buffer_len = e->paragraph_buffer_len
+                         || INITIAL_PARAGRAPH_BUFFER_LEN;
   paragraph_is_open = e->paragraph_is_open;
+  meta_char_pos = e->meta_char_pos;
   current_indent = e->current_indent;
   fill_column = e->fill_column;
+
   return old_env_no;
 }
 

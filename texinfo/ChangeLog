@@ -1,3 +1,16 @@
+2007-04-29  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_strong): doc fix.
+
+	* makeinfo/makeinfo.h (paragraph_buffer_len): move decl here ...
+	* makeinfo/makeinfo.c (paragraph_buffer_len): from here.
+	* makeinfo/multi.c (select_output_environment): save and restore
+	paragraph_buffer_len.  Otherwise, an exceptionally long multitable
+	entry (gcal.texi) might realloc output_paragraph, thus increasing
+	paragraph_buffer_len, and then we get back to the main text and
+	restore the old output_paragraph, we'll be out of sync.  Yikes.
+	(Thank you to Electric Fence and valgrind.)
+
 2007-04-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (cmapOT1, cmapOT1IT, cmapOT1TT): new definitions

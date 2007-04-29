@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.23 2007-02-07 17:00:38 karl Exp $
+   $Id: makeinfo.h,v 1.24 2007-04-29 18:41:58 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006 Free Software Foundation, Inc.
@@ -47,8 +47,10 @@ DECLARE (char *, pretty_output_filename, NULL);
 /* Current output file name.  */
 DECLARE (char *, current_output_filename, NULL);
 
-/* Output paragraph buffer. */
+/* Output paragraph buffer and its length. */
+#define INITIAL_PARAGRAPH_BUFFER_LEN 5000
 DECLARE (unsigned char *, output_paragraph, NULL);
+DECLARE (int, paragraph_buffer_len, INITIAL_PARAGRAPH_BUFFER_LEN);
 
 /* Offset into OUTPUT_PARAGRAPH. */
 DECLARE (int, output_paragraph_offset, 0);

@@ -3,11 +3,11 @@ file makeinfo
 end
 
 define out
-p output_paragraph[0]@output_paragraph_offset
+p output_paragraph+output_paragraph_offset
 end
 
-set env MALLOC_CHECK_ 2
-set env ttests ../../@tests
+#set env MALLOC_CHECK_ 2
+set env ttests ../@tests
 
 #set args -o /tmp/out --no-validate ../@ttests/outside.texi
 #set args -o - $ttests/hyphyph.tex
@@ -247,3 +247,9 @@ set args -I /usr/local/gnu/src/groff-1.19/doc --enable-encoding groff.texinfo
 
 # escape & in <link> titles
 set args -o $ttests/titleamp.out --html $ttests/titleamp.tex
+
+# core dump
+set args -o $ttests/imagedump.out $ttests/imagedump.tex
+
+# core dump, memory.
+set args -o $ttests/multitabgcal.out $ttests/gcal-bug.tex

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.96 2007-04-08 23:33:08 karl Exp $
+   $Id: makeinfo.c,v 1.97 2007-04-29 18:41:58 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -72,9 +72,6 @@ char *output_filename = NULL;
    Such a name overrides any name found with the @setfilename command. */
 char *command_output_filename = NULL;
 static char *save_command_output_filename = NULL;
-
-#define INITIAL_PARAGRAPH_SPACE 5000
-int paragraph_buffer_len = INITIAL_PARAGRAPH_SPACE;
 
 /* The amount of indentation to add at the starts of paragraphs.
    0 means don't change existing indentation at paragraph starts.
