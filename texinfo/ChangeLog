@@ -1,3 +1,8 @@
+2007-04-29  Werner Koch  <wk@g10code.com>
+
+	* makeinfo/html.c (process_css_file): Don't omit copying the i
+	of @import.  (Reported on 27 Sep 06.)
+	
 2007-04-29  Karl Berry  <karl@gnu.org>
 
 	* system.h [__CYGWIN__]: #define STRIP_DOT_EXE 0 (since gunzip.exe

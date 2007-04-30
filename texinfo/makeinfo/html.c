@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.35 2006-07-10 23:07:12 karl Exp $
+   $Id: html.c,v 1.36 2007-04-30 00:11:00 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -108,6 +108,7 @@ process_css_file (char *filename)
               if (nextchar == 'i' || nextchar == 'c')
                 {
                   append_char (import_text, c);
+                  append_char (import_text, nextchar);
                   state = import_state;
                 }
               else
