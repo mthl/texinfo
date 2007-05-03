@@ -1,3 +1,8 @@
+2007-05-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\urlcolor, \linkcolor): define both as \BrickRed
+	by default.
+
 2007-04-29  Werner Koch  <wk@g10code.com>
 
 	* makeinfo/html.c (process_css_file): Don't omit copying the i
