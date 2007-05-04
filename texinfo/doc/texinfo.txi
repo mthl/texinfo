@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.187 2007-04-17 23:59:09 karl Exp $
+@c $Id: texinfo.txi,v 1.188 2007-05-04 21:59:53 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5282,14 +5282,14 @@ It is best to put @code{@@anchor} commands just before the position you
 wish to refer to; that way, the reader's eye is led on to the correct
 text when they jump to the anchor.  You can put the @code{@@anchor}
 command on a line by itself if that helps readability of the source.
-Spaces are always ignored after @code{@@anchor}.
+Whitespace (including newlines) is ignored after @code{@@anchor}.
 
 Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the @code{goto-node}
 command in standalone Info takes either an anchor name or a node name as
 an argument.  (@xref{goto-node,,,info-stnd,GNU Info}.)
 
-Also, like node names, anchor names cannot include some characters
+Also like node names, anchor names cannot include some characters
 (@pxref{Node Line Requirements}).
 
 
@@ -18836,7 +18836,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.187 2007-04-17 23:59:09 karl Exp $
+$Id: texinfo.txi,v 1.188 2007-05-04 21:59:53 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18902,7 +18902,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.187 2007-04-17 23:59:09 karl Exp $
+@comment $Id: texinfo.txi,v 1.188 2007-05-04 21:59:53 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,9 @@
 2007-05-04  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/node.c (cm_anchor): ignore following whitespace,
+	including newlines.  Reported by Kevin Ryde.
+	* doc/texinfo.txi (anchor): state this more clearly.
+
 	* doc/texinfo.tex (\tocreadfilename): allow override of
 	\jobname.toc for sake of 2-volume printed lispref.
 	(\finishentry): change test for no page number (and hence no

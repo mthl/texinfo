@@ -1,8 +1,8 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.31 2006-05-30 00:51:28 karl Exp $
+   $Id: node.c,v 1.32 2007-05-04 21:59:53 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software
-   Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1103,7 +1103,17 @@ cm_anchor (int arg)
   char *fname_for_anchor = NULL;
 
   if (arg == END)
-    return;
+    {
+      /* We want to ignore whitespace following @anchor a la
+         texinfo.tex, but we're sitting at the }.  So advance past it,
+         ignore the whitespace, and then go back one character.  When we
+         return, reader_loop will increment input_text_offset again (see
+         the '}' case).  Sorry.  */
+      input_text_offset++;
+      skip_whitespace_and_newlines ();
+      input_text_offset--;
+      return;
+    }
 
   /* Parse the anchor text.  */
   anchor = get_xref_token (1);
@@ -1225,6 +1235,7 @@ cm_anchor (int arg)
       xml_insert_element_with_attribute (ANCHOR, START, "name=\"%s\"", anchor);
       xml_insert_element (ANCHOR, END);
     }
+
   /* Save it in the tag table.  */
   remember_node (anchor, NULL, NULL, NULL,
                  output_position + output_paragraph_offset,
