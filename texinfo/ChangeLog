@@ -1,3 +1,11 @@
+2007-05-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\tocreadfilename): allow override of
+	\jobname.toc for sake of 2-volume printed lispref.
+	(\finishentry): change test for no page number (and hence no
+	leaders) again, for "Volume N" in lispref.
+	(\smallbook): adjust margins to be more equal.
+
 2007-05-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\urlcolor, \linkcolor): define both as \BrickRed
