@@ -67,6 +67,8 @@ This file records noteworthy changes.
 * in user-defined macro arguments a comma in brace is escaped (compatibility
   with makeinfo from texinfo 4.8.90)
 
+* don't add the section title to the html title when the document isn't split
+
 * BUG FIXES
   ---------
 
@@ -96,7 +98,7 @@ This file records noteworthy changes.
 * FOR DEVELOPERS
   --------------
 
-* Standardized on Automake 1.9.5
+* Standardized on Automake 1.10.0
 
 1.76 (February  3 2005)
 

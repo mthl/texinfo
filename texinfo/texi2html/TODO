@@ -110,3 +110,5 @@ texi and formatted result.
 
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?
+
+* implement @alias
