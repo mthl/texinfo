@@ -2,6 +2,8 @@
 
 $DO_CONTENTS = 1;
 
+$INLINE_CONTENTS = 1;
+
 @SECTION_BUTTONS =
     (
      'Back', 'Forward', ' ', 'Contents', 'Index', 'About'
@@ -107,13 +109,16 @@ sub book_print_Top($$)
     my $has_top_heading = shift;
 
     my $buttons = \@MISC_BUTTONS;
-    &$print_head_navigation($fh, $buttons);
+    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
     print $fh $Texi2HTML::TITLEPAGE;
     print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
         unless ($has_top_heading);
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
-    print $fh '<h2> ' . $Texi2HTML::NAME{'Contents'} . "</h2>\n" ;
-    main::print_lines($fh, $Texi2HTML::TOC_LINES);
+    if (!$INLINE_CONTENTS and !$Texi2HTML::THISDOC{'setcontentsaftertitlepage'})
+    {
+        print $fh '<h2> ' . $Texi2HTML::NAME{'Contents'} . "</h2>\n" ;
+        main::print_lines($fh, $Texi2HTML::TOC_LINES);
+    }
 }
 
 sub book_print_Toc

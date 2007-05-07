@@ -898,6 +898,11 @@ make the necessary changes there, and then have
 @command{texi2html} read this initialization file by one of
 the means described above.
 
+Some init files are provided with @command{texi2html}, for example
+@file{book.init} which produces an output more in line with 
+what could be in a book, or @file{chm.init} outputs files
+that can be used to produce a CHM file.
+
 @c ========================================================
 @node Initialization files
 @chapter Overview of initialization files content and loading
@@ -1094,13 +1099,16 @@ There are four misc elements:
 @end enumerate
 
 The @emph{About page} shouldn't be present for documents consisting
-in only one sectioning element. The @emph{Footnote page} should only
+in only one sectioning element, or for documents unsplit and without
+navigation information. The @emph{Footnote page} should only
 be present if the footnotes appear on a separated page 
 (@pxref{Page layout options}), however a footnote element is present if
 the document isn't split. The @emph{Table of contents} should only
 be formatted if @code{@@contents} is present in the document.
 Similarly the @emph{Overview} should only appear if @code{@@shortcontents}
-or @code{@@summarycontents} is present.
+or @code{@@summarycontents} is present. The Table of contents and 
+the Overview may also be directly included within the document, not
+as separate pages (@pxref{Contents and Overview text}).
 @end table
 
 @c --------------------------------------------------------
@@ -1400,6 +1408,9 @@ Authors of @command{texi2html}.
 base name of the texinfo manual file.
 @item filename
 This is a reference on a hash that holds the filenames for special elements.
+These files may not be used in certain cases, for example the @code{toc}
+element file name may not be relevant if table of contents is not output 
+separately.
 The keys are
 @table @code
 @item doc
@@ -1420,7 +1431,21 @@ Destination directory for the resulting files.
 @item extension
 Extension for the output files.
 @item toc_file
-The file name of the table of contents.
+The file name of the table of contents, should always be valid, even 
+when table of contents are output directly in the document.
+@item inline_contents
+A reference on a hash containing two key, one for each type of table
+of contents:
+@table @code
+@item contents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the table of contents, including a heading and a reference.
+@item shortcontents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the short table of contents, including a heading and a reference.
+@end table
 @item today
 The date. May be overriden by @code{$DATE}.
 @item user
@@ -1437,7 +1462,9 @@ It also holds the arg of the following commands, associated with the command
 name: kbdinputstyle, paragraphindent, setchapternewpage, headings,
 footnotestyle,
  exampleindent, firstparagraphindent, everyheading, everyfooting,
- evenheading, evenfooting, oddheading, oddfooting.
+ evenheading, evenfooting, oddheading, oddfooting, setcontentsaftertitlepage,
+setshortcontentsaftertitlepage, frenchspacing.
+If the command doesn't have any arg, it will be true is it was set.
 
 
 @subsubheading Flags
@@ -1466,6 +1493,9 @@ Lines of the current element appearing before the element label (anchors).
 Lines of short table of contents. @xref{Special pages}.
 @item $Texi2HTML::TOC_LINES
 Lines of table of contents. @xref{Special pages}.
+@item $Texi2HTML::TITLEPAGE
+The title page formatted with special title commands (@code{@@author},
+@code{@@title}) expanded. @xref{Title page}.
 @end vtable
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1752,6 +1782,7 @@ and the page layout
 * Contents and Overview text::
 * Footnotes text::
 * About text::
+* Title page::
 @end menu
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1785,6 +1816,22 @@ This function should end the Top element.
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Contents and Overview text
 @subsubsection Table of contents and Short table of contents
+
+Two possibilities exist for the formatting of table of contents (and 
+short table of contents). In the default case, the table of contents 
+are in separate elements, at the end of the document if the document 
+is unsplit or in separate files. This is consistent with @command{makeinfo}
+where menus are used for navigation. Another mode may be selected by
+setting @variable{$INLINE_CONTENTS}. In that case the table of contents
+are not output as separate elements but 
+are instead output where the corresponding @@-command, 
+for example @code{@@contents},
+is set. This behaviour is more consistent with @command{texi2dvi}. 
+If @code{@@setcontentsaftertitlepage} appears in the document,
+and even if @code{$INLINE_CONTENTS} is set, the table of contents are 
+merged in the title (which isn't output in the default case, see 
+@ref{Title page}).
+
 Several variables may be used to control the formatting of table of contents 
 and short table of contents:
 
@@ -1850,6 +1897,29 @@ table of contents.
 
 @end deffn
 
+Another function reference is used to add a heading and a reference, to
+be used with @code{$INLINE_CONTENTS} or merged in the title. Its output
+is not used when the table of contents are separate elements.
+
+@deftypefn {Function Reference} \@@inline_contents_lines inline_contents $filehandle $command $element
+This function reference returns a reference on an array holding 
+the lines containing the contents, heading and reference.
+@var{$filehandle} is a reference on the currently opened file if
+the function is called because a @code{@@contents} or
+@code{@@shortcontents} command was encountered, it is undef otherwise.
+@var{$command} is either @samp{contents} or  @samp{shortcontents}.
+@var{$element} is a hash reference containing informations about the
+table of contents context. Relevant keys are:
+@table @code
+@item id
+The identifier associated with the table of contents, used for example
+to do references to the table of contents using href in @acronym{HTML}.
+@item file
+The file name containing the table of contents.
+@end table
+
+@end deftypefn
+
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Footnotes text
 @subsubsection Formatting of footnotes text
@@ -1898,6 +1968,30 @@ function reference:
 @deftypefn {Function Reference} $about_text print_about
 This function should return the about text.
 @end deftypefn
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Title page
+@subsubsection Formatting of title page
+
+The title page is first formatted using the text appearing in 
+the @code{@@titlepage} section, and put in @variable{$Texi2HTML::TITLEPAGE}.
+The information appearing in @code{@@title}, @code{@@subtitle} or 
+@code{@@author} is then added using the following
+function reference:
+
+@deffn {Function Reference} titlepage 
+This function should complete @code{$Texi2HTML::TITLEPAGE}.
+@end deffn
+
+In the default case, in this function the table of contents and short
+table of contents are also added if they are to be output and 
+@code{@@setcontentsaftertitlepage}
+or @code{@@setshortcontentsaftertitlepage} appear in the document
+(@pxref{Contents and Overview text}).
+
+In the default case the resulting title page output is not used in 
+the document, except if the top node is not associated with any 
+content.
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Special pages layout

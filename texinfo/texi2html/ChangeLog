@@ -1,3 +1,17 @@
+2007-04-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: when INLINE_CONTENTS is set, 
+	the table of contents and short table of contents are output 
+	where they are defined, except if setcontentsaftertitlepage is set.
+	If setcontentsaftertitlepage is set the contents is associated
+	with the title.
+	Handle @setcontentsaftertitlepage and @setshortcontentsaftertitlepage.
+	Don't output a navigation panel nor an about page when not SPLIT and no
+	SECTION_NAVIGATION.
+	* Tests/contents*: new tests for contents
+	* examples/book.init,noheaders.init: update
+	* doc/*: update
+
 2007-04-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: Texi2HTML::THIS_SECTION is always defined, 

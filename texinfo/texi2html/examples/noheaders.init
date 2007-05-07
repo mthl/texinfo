@@ -63,7 +63,7 @@ sub T2H_NOHEAD_print_Top
     my $has_top_heading = shift;
 
     &$print_head_navigation($fh,[]);
-    if ($Texi2HTML::THIS_SECTION)
+    if (@$Texi2HTML::THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
         #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
@@ -81,6 +81,11 @@ sub T2H_NOHEAD_print_Top
              print $fh '<h2> ' . &$I('Overview:') . "</h2>\n" . "<blockquote>\n";
              my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
              print $fh "</blockquote>\n";
+        }
+        elsif (@{$Texi2HTML::TOC_LINES})
+        {
+             print $fh '<h1> ' . &$I('Table of contents') . "</h1>\n";
+             my $nw = main::print_lines($fh, $Texi2HTML::TOC_LINES);
         }
     }
 }
@@ -119,7 +124,7 @@ sub T2H_NOHEAD_print_misc
 sub T2H_NOHEAD_end_section($)
 {
     my $fh = shift;
-    print $fh "$MIDDLE_RULE\n";
+    print $fh "$BIG_RULE\n";
 }
 
 ###################################################################

@@ -280,6 +280,29 @@ test_texi formatting test_refs.texi
 test_texi formatting test_refs.texi "-prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
 test_texi formatting test_refs.texi "-prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
 test_texi formatting at_commands_in_refs.texi
+
+test_texi contents contents_at_begin.texi
+test_texi contents contents_at_end.texi
+test_texi contents contents_in_middle_chapter.texi
+test_texi contents contents_in_middle_section.texi
+test_texi contents double_contents.texi
+test_texi contents double_contents_setcontentsaftertitlepage.texi
+test_texi contents double_contents.texi "--prefix split_chapter_double_contents --split chapter --output ." 0 texi split_chapter_double_contents
+test_texi contents double_contents.texi "--prefix split_section_double_contents --split section --output ." 0 texi split_section_double_contents
+test_texi contents double_contents.texi "--prefix split_node_double_contents --split node --output ." 0 texi split_node_double_contents
+test_texi contents_inline ../contents/contents_at_begin.texi "-init inline.init"
+test_texi contents_inline ../contents/contents_at_end.texi "-init inline.init"
+test_texi contents_inline ../contents/contents_in_middle_chapter.texi "-init inline.init"
+test_texi contents_inline ../contents/contents_in_middle_section.texi "-init inline.init"
+test_texi contents_inline ../contents/double_contents.texi "-init inline.init"
+test_texi contents_inline ../contents/double_contents_setcontentsaftertitlepage.texi "-init inline.init"
+test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_chapter_double_contents --split chapter --output ." 0 texi split_chapter_double_contents
+test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_section_double_contents --split section --output ." 0 texi split_section_double_contents
+test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_node_double_contents --split node --output ." 0 texi split_node_double_contents
+test_texi contents_book ../contents/double_contents.texi "-init ../../examples/book.init"
+test_texi contents_book ../contents/double_contents_setcontentsaftertitlepage.texi "-init ../../examples/book.init"
+test_texi contents_book ../contents/double_contents_setcontentsaftertitlepage.texi "-init ../../examples/book.init -split chapter -prefix split_chapter_double_contents_setcontentsaftertitlepage --output ." 0 texi split_chapter_double_contents_setcontentsaftertitlepage
+
 test_texi htmlxref ../formatting/test_refs.texi "-prefix no_split_test_refs" 2 texi no_split_test_refs
 test_texi htmlxref ../formatting/test_refs.texi "--split node --use-nodes --node-files --output ." 0 texi
 test_texi htmlxref-only_split ../formatting/test_refs.texi "-prefix no_split_test_refs" 2 texi no_split_test_refs

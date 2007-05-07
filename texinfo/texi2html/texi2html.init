@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.115 2007-05-06 12:57:06 pertusus Exp $
+# $Id: texi2html.init,v 1.116 2007-05-07 22:56:02 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -277,6 +277,9 @@ $DO_CONTENTS = 0;
 
 # If true do short table of contents even if there is no @shortcontent
 $DO_SCONTENTS = 0;
+
+# if set, output the contents where the command is located
+$INLINE_CONTENTS = 0;
 
 # if this variable is true, numeric entities are used when there is no
 # corresponding textual entity.
@@ -794,6 +797,7 @@ $titlepage                 = \&T2H_DEFAULT_titlepage;
 $css_lines                 = \&T2H_DEFAULT_css_lines;
 $print_redirection_page    = \&T2H_DEFAULT_print_redirection_page;
 $node_file_name            = \&T2H_DEFAULT_node_file_name;
+$inline_contents           = \&T2H_DEFAULT_inline_contents;
 
 ########################################################################
 # Layout for html for every sections
@@ -872,7 +876,7 @@ sub T2H_DEFAULT_print_Top($$)
     # my $buttons = [...];
     # as it is, 'Top', 'Contents', 'Index', 'About' are printed
     my $buttons = \@MISC_BUTTONS;
-    &$print_head_navigation($fh, $buttons);
+    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
     my $nw;
     if (@$Texi2HTML::THIS_SECTION)
     {
@@ -887,15 +891,15 @@ sub T2H_DEFAULT_print_Top($$)
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview or table of contents
         print $fh $Texi2HTML::TITLEPAGE;
-        if (@{$Texi2HTML::OVERVIEW})
+        if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'})
         {
-             print $fh '<h2> ' . &$I('Overview:') . "</h2>\n" . "<blockquote>\n";
+             print $fh '<h2> ' . $Texi2HTML::NAME{'Overview'} . "</h2>\n" . "<blockquote\n";
              my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
              print $fh "</blockquote>\n";
         }
-        elsif (@{$Texi2HTML::TOC_LINES})
+        elsif (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::THISDOC{'setcontentsaftertitlepage'})
         {
-             print $fh '<h1> ' . &$I('Table of contents') . "</h1>\n";
+             print $fh '<h1> ' . $Texi2HTML::NAME{'Contents'}  . "</h1>\n";
              my $nw = main::print_lines($fh, $Texi2HTML::TOC_LINES);
         }
     }
@@ -920,7 +924,9 @@ sub T2H_DEFAULT_print_Footnotes
 }
 sub T2H_DEFAULT_print_About
 {
-    return &$print_misc(@_);
+    # if there is no section navigation and it is not split, the 
+    # navigation information is useless
+    return &$print_misc(@_) if ($SPLIT or $SECTION_NAVIGATION);
 }
 
 sub T2H_DEFAULT_print_misc_header
@@ -928,7 +934,7 @@ sub T2H_DEFAULT_print_misc_header
     my $fh = shift;
     my $buttons = shift;
     &$print_page_head($fh) if $SPLIT;
-    &$print_head_navigation($fh, $buttons);
+    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
 }
 
 sub T2H_DEFAULT_print_misc_footer
@@ -1345,6 +1351,36 @@ sub T2H_DEFAULT_toc_body($)
 {
 }
 
+sub T2H_DEFAULT_inline_contents($$$)
+{
+    my $fh = shift;
+    my $command = shift;
+    my $element = shift;
+    my $name;
+    my $lines;
+
+    my $result = undef;
+
+    if ($command eq 'contents')
+    {
+        $name = $Texi2HTML::NAME{'Contents'};
+        $lines = $Texi2HTML::TOC_LINES;
+    }
+    else
+    {
+        $name = $Texi2HTML::NAME{'Overview'};
+        $lines = $Texi2HTML::OVERVIEW;
+    }
+    if (@{$lines})
+    {
+         $result = [ "".&$anchor($element->{'id'})."\n",
+            "<h1>$name</h1>\n" ]; 
+         push @$result, @$lines;
+    }
+
+    return $result;
+}
+
 sub T2H_DEFAULT_css_lines ($$)
 {
     my $import_lines = shift;
@@ -1517,6 +1553,23 @@ sub T2H_DEFAULT_titlepage()
     }
 
     $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
+    
+    if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
+    {
+        foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
+        {
+            $Texi2HTML::TITLEPAGE .= $line;
+        }
+        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+    }
+    if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
+    {
+        foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
+        {
+            $Texi2HTML::TITLEPAGE .= $line;
+        }
+        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+    }
 }
 
 # FIXME Honor DOCUMENT_DESCRIPTION? 
@@ -2924,6 +2977,8 @@ foreach my $key (keys(%def_map))
         'contents' => {}, # no arg
         'shortcontents' => {}, # no arg
         'summarycontents'=> {}, # no arg
+        'setcontentsaftertitlepage' => {}, # no arg
+        'setshortcontentsaftertitlepage' => {}, # no arg
         'detailmenu' => {'skip' => 'whitespace'}, # no arg
         'end detailmenu' => {'skip' => 'space'}, # no arg
         'bye' => {'skip' => 'line'}, # no arg

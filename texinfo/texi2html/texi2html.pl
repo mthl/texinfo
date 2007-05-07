@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.181 2007-02-05 16:01:43 pertusus Exp $
+# $Id: texi2html.pl,v 1.182 2007-05-07 22:56:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -237,6 +237,7 @@ $EXTERNAL_DIR
 @CONF_DIRS 
 $IGNORE_PREAMBLE_TEXT
 @CSS_FILES
+$INLINE_CONTENTS
 );
 
 # customization variables
@@ -352,6 +353,7 @@ $init_out
 $finish_out
 $node_file_name
 $element_file_name
+$inline_contents
 
 $protect_text
 $anchor
@@ -2863,9 +2865,10 @@ else
     }
     if (defined $Texi2HTML::Config::element_file_name)
     {
-        $docu_doc = &$Texi2HTML::Config::element_file_name
+        my $docu_name = &$Texi2HTML::Config::element_file_name
            (undef, "doc", $docu_name);
-    }
+        $docu_top = $docu_name if (defined($docu_name));
+    } 
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
 
@@ -3348,6 +3351,12 @@ my $footnote_element =
     'place' => [],
 };
 
+my %content_element =
+(
+    'contents' => { 'id' => 'SEC_Contents', 'contents' => 1, 'texi' => '_contents' },
+    'shortcontents' => { 'id' => 'SEC_Overview', 'shortcontents' => 1, 'texi' => '_shortcontents' },
+);
+
 #my $do_contents;            # do table of contents if true
 #my $do_scontents;           # do short table of contents if true
 my $novalidate = $Texi2HTML::Config::NOVALIDATE; # @novalidate appeared
@@ -3690,17 +3699,22 @@ sub misc_command_structure($$$$)
         }
         $state->{'sectionning_base'}++;
     }
-    elsif ($macro eq 'contents')
+    elsif (($macro eq 'contents') or ($macro eq 'summarycontents') or ($macro eq 'shortcontents'))
     {
-        $Texi2HTML::Config::DO_CONTENTS = 1;
+        if ($macro eq 'contents')
+        {
+             $Texi2HTML::Config::DO_CONTENTS = 1;
+        }
+        else
+        {
+             $macro = 'shortcontents';
+             $Texi2HTML::Config::DO_SCONTENTS = 1;
+        }
+        push @{$state->{'place'}}, $content_element{$macro};
     }
     elsif ($macro eq 'detailmenu')
     {
         $state->{'detailmenu'}++;
-    }
-    elsif (($macro eq 'summarycontents') or ($macro eq 'shortcontents'))
-    {
-        $Texi2HTML::Config::DO_SCONTENTS = 1;
     }
     elsif ($macro eq 'novalidate')
     {
@@ -3899,6 +3913,13 @@ sub misc_command_structure($$$$)
         {
             echo_error ("Bad \@$macro", $line_nr);
         }
+    }
+    elsif ($macro eq 'setcontentsaftertitlepage' or $macro eq 'setshortcontentsaftertitlepage')
+    {
+        $Texi2HTML::THISDOC{$macro} = 1;
+        my $tag = 'contents';
+        $tag = 'shortcontents' if ($macro ne 'setcontentsaftertitlepage');
+        $content_element{$tag}->{'aftertitlepage'} = 1;
     }
     elsif (grep {$macro eq $_} ('everyheading', 'everyfooting',
           'evenheading', 'evenfooting', 'oddheading', 'oddfooting'))
@@ -5283,6 +5304,12 @@ sub rearrange_elements()
         $place->{'file'} = $footnote_element->{'file'};
         $place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
     }
+    # if setcontentsaftertitlepage is set, the contents should be associated
+    # with the titlepage. That's wat is done there.
+    push @$region_place, $content_element{'contents'} 
+      if ($Texi2HTML::Config::DO_CONTENTS and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
+    push @$region_place, $content_element{'shortcontents'} 
+      if ($Texi2HTML::Config::DO_SCONTENTS and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
     # correct the id and file for the things placed in regions (copying...)
     foreach my $place(@$region_place)
     {
@@ -5290,6 +5317,14 @@ sub rearrange_elements()
         $place->{'file'} = $element_top->{'file'};
         $place->{'id'} = $element_top->{'id'} unless defined($place->{'id'});
         $place->{'element'} =  $element_top if (exists($place->{'element'}));
+    }
+    foreach my $content_type(keys(%content_element))
+    {
+        if (!defined($content_element{$content_type}->{'file'}))
+        {
+            print STDERR "# No content $content_type\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            $content_element{$content_type} = undef;
+        }
     }
 
     ########################### debug prints
@@ -5371,7 +5406,7 @@ sub rearrange_elements()
         print STDERR "  places: $element->{'place'}\n";
         foreach my $place(@{$element->{'place'}})
         {
-            if (!$place->{'entry'} and !$place->{'float'} and !$place->{'texi'})
+            if (!$place->{'entry'} and !$place->{'float'} and !$place->{'texi'} and !$place->{'contents'} and !$place->{'shortcontents'})
             {
                  print STDERR "BUG: unknown placed stuff ========\n";
                  foreach my $key (keys(%$place))
@@ -5398,6 +5433,14 @@ sub rearrange_elements()
                 {
                     print STDERR "    float($place): NO LABEL\n";
                 }
+            }
+            elsif ($place->{'contents'})
+            {
+                print STDERR "    contents\n";
+            }
+            elsif ($place->{'shortcontents'})
+            {
+                print STDERR "    shortcontents\n";
             }
             else
             {
@@ -5923,8 +5966,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
 #    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
-    $Texi2HTML::THISDOC{'toc_file'} = ''; 
-    $Texi2HTML::THISDOC{'toc_file'} = $docu_toc if ($Texi2HTML::Config::SPLIT); 
     $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
@@ -5939,21 +5980,27 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             #print STDERR "$element:$i: $Texi2HTML::THISDOC{$element}->[$i]\n";
         }
     }
-    # prepare TOC, OVERVIEW
+    # prepare TOC, OVERVIEW...
+    my ($toc_file, $stoc_file, $foot_file, $about_file);
+    # if not split the references are to the same file
+    $toc_file = $stoc_file = $foot_file = $about_file = '';
     if ($Texi2HTML::Config::SPLIT)
     {
-        $Texi2HTML::HREF{'Contents'} = $docu_toc.'#SEC_Contents' if @{$Texi2HTML::TOC_LINES};
-        $Texi2HTML::HREF{'Overview'} = $docu_stoc.'#SEC_Overview' if @{$Texi2HTML::OVERVIEW};
-        $Texi2HTML::HREF{'Footnotes'} = $docu_foot. '#SEC_Foot';
-        $Texi2HTML::HREF{'About'} = $docu_about . '#SEC_About' unless $one_section;
+        $toc_file = $docu_toc;
+        $stoc_file = $docu_stoc;
+        if ($Texi2HTML::Config::INLINE_CONTENTS)
+        {
+            $toc_file = $content_element{'contents'}->{'file'} if (defined($content_element{'contents'}));
+            $stoc_file = $content_element{'shortcontents'}->{'file'} if (defined($content_element{'shortcontents'}));
+        }
+        $foot_file = $docu_foot;
+        $about_file = $docu_about;
     }
-    else
-    {
-        $Texi2HTML::HREF{'Contents'} = '#SEC_Contents' if @{$Texi2HTML::TOC_LINES};
-        $Texi2HTML::HREF{'Overview'} = '#SEC_Overview' if @{$Texi2HTML::OVERVIEW};
-        $Texi2HTML::HREF{'Footnotes'} = '#SEC_Foot';
-        $Texi2HTML::HREF{'About'} = '#SEC_About' unless $one_section;
-    }
+    $Texi2HTML::THISDOC{'toc_file'} = $toc_file; 
+    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'id'} if @{$Texi2HTML::TOC_LINES};
+    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'id'} if @{$Texi2HTML::OVERVIEW};
+    $Texi2HTML::HREF{'Footnotes'} = $foot_file. '#SEC_Foot';
+    $Texi2HTML::HREF{'About'} = $about_file . '#SEC_About' unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
@@ -5983,6 +6030,12 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::SIMPLE_TEXT{'Footnotes'} = &$I('Footnotes', {},{'simple_format' => 1});
 
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
+    # must be after toc_body, but before titlepage
+    for my $element_tag ('contents', 'shortcontents')
+    {
+        my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $element_tag, $content_element{$element_tag});
+        @{$Texi2HTML::THISDOC{'inline_contents'}->{$element_tag}} = @$toc_lines if (defined($toc_lines));
+    }
     $Texi2HTML::TITLEPAGE = '';
     $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
         if (@{$region_lines{'titlepage'}});
@@ -6151,6 +6204,11 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $element->{'file'}) if (defined($element_chapter_index));
                     #print STDERR "Top ";
                     $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
+                    if ($Texi2HTML::Config::INLINE_CONTENTS)
+                    {
+                        $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $element->{'file'});
+                        $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $element->{'file'});
+                    }
                     foreach my $direction (@element_directions)
                     {
                         my $elem = $element->{$direction};
@@ -6261,8 +6319,21 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 $text = '';
                 next;
             }
-            elsif ($tag eq 'contents')
+            elsif (($tag eq 'contents') or ($tag eq 'summarycontents') or ($tag eq 'shortcontents'))
             {
+                my $element_tag = $tag;
+                $element_tag = 'shortcontents' if ($element_tag ne 'contents');
+                if ($Texi2HTML::Config::INLINE_CONTENTS and !$content_element{$element_tag}->{'aftertitlepage'})
+                {
+                    if (@stack or (defined($text) and $text ne ''))
+                    {# in pass text contents  shouldn't appear in formats
+                        close_stack(\$text, \@stack, \%state, $line_nr);
+                        push @section_lines, $text;
+                        $text = '';
+                    }
+                    my $toc_lines = &$Texi2HTML::Config::inline_contents($FH, $tag, $content_element{$element_tag});
+                    push (@section_lines, @$toc_lines) if (defined($toc_lines)) ;
+                }
                 next;
             }
         }
@@ -6352,7 +6423,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{'Footnotes'} = $Texi2HTML::HREF{'This'};
     }
 
-    if (@{$Texi2HTML::TOC_LINES})
+    if (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS)
     {
         print STDERR "# writing Toc in $docu_toc_file\n" if $T2H_VERBOSE;
         $FH = open_out ($docu_toc_file)
@@ -6370,7 +6441,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::HREF{'Contents'} = $Texi2HTML::HREF{'This'};
     }
 
-    if (@{$Texi2HTML::OVERVIEW})
+    if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS)
     {
         print STDERR "# writing Overview in $docu_stoc_file\n" if $T2H_VERBOSE;
         $FH = open_out ($docu_stoc_file)
