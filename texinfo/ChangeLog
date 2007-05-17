@@ -1,3 +1,9 @@
+2007-05-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Image Syntax): findex entry should just be for
+	"-", not "@-".  (Which fails due to \initial{\} in texinfo.fns,
+	but that's a different story.)
+
 2007-05-04  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/node.c (cm_anchor): ignore following whitespace,
