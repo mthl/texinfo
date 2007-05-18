@@ -1,3 +1,13 @@
+2007-05-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Invoking install-info): document them.
+
+2007-05-18  Norbert Preining  <preining@logic.at>
+
+	* util/install-info.c (longopts): new options --remove-exactly,
+	--section-regex.
+	(main): handle them.
+
 2007-05-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Image Syntax): findex entry should just be for

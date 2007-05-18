@@ -1,8 +1,8 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.14 2005-08-19 22:23:54 karl Exp $
+   $Id: install-info.c,v 1.15 2007-05-18 17:31:03 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005 Free Software Foundation, Inc.
+   2005, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 
 #include "system.h"
 #include <getopt.h>
+#include <regex.h>
 
 static char *progname = "install-info";
 
@@ -129,10 +130,18 @@ struct option longopts[] =
   { "item",      required_argument, NULL, 'e' },
   { "quiet",     no_argument, NULL, 'q' },
   { "remove",    no_argument, NULL, 'r' },
+  { "remove-exactly",    no_argument, NULL, 'x' },
+  { "section-regex", required_argument, NULL, 'R' },
   { "section",   required_argument, NULL, 's' },
   { "version",   no_argument, NULL, 'V' },
   { 0 }
 };
+
+regex_t *psecreg = NULL;
+  /* Nonzero means that the name specified for the info file will be used
+   * (without removing .gz, .info extension or leading path) to match the
+   * entries that must be removed.  */
+  int remove_exactly = 0;
 
 /* Error message functions.  */
 
@@ -383,6 +392,7 @@ menu_item_equal (const char *item, char term_char, const char *name)
      filename from the new dir entries, not the filename on the command
      line.  Not worrying about those things right now, though.  --karl,
      26mar04.  */
+  if (!remove_exactly) {
   while (*item_basename && !IS_SLASH (*item_basename)
 	 && *item_basename != term_char)
     item_basename++;
@@ -390,6 +400,7 @@ menu_item_equal (const char *item, char term_char, const char *name)
     item_basename = item;  /* no /, use original */
   else
     item_basename++;       /* have /, move past it */
+  }
     
   /* First, ITEM must actually match NAME (usually it won't).  */
   ret = strncasecmp (item_basename, name, name_len) == 0;
@@ -433,8 +444,7 @@ print_help (void)
 {
   printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n\
 \n\
-Install or delete dir entries from INFO-FILE in the Info directory file\n\
-DIR-FILE.\n\
+Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n\
 \n\
 Options:\n\
  --delete          delete existing entries for INFO-FILE from DIR-FILE;\n\
@@ -455,11 +465,16 @@ Options:\n\
                      An Info directory entry is actually a menu item.\n\
  --quiet           suppress warnings.\n\
  --remove          same as --delete.\n\
+ --remove-exactly  only remove if the info file name matches exactly;\n\
+                     .info and/or .gz suffixes are not ignored.\n\
  --section=SEC     put this file's entries in section SEC of the directory.\n\
                      If you specify more than one section, all the entries\n\
                      are added in each of the sections.\n\
                      If you don't specify any sections, they are determined\n\
                      from information in the Info file itself.\n\
+ --section-regex=R if an entry is added to a section that does not exist,\n\
+                     look for a section matching basic regular expression R\n\
+                     (and ignoring case) before starting a new section.\n\
  --version         display version information and exit.\n\
 "), progname);
 
@@ -1248,6 +1263,27 @@ main (int argc, char **argv)
           delete_flag = 1;
           break;
 
+        case 'R':
+          {
+            int error;
+            if (psecreg)
+              warning (_("Extra regular expression specified, ignoring `%s'"),
+                       optarg, 0);
+            else
+              psecreg = (regex_t *) xmalloc (sizeof (regex_t));
+
+	    error = regcomp (psecreg, optarg, REG_ICASE|REG_NOSUB);
+            if (error != 0)
+              {
+                int errbuf_size = regerror (error, psecreg, NULL, 0);
+                char *errbuf = (char *) xmalloc (errbuf_size);
+                regerror (error, psecreg, errbuf, errbuf_size);
+                fatal (_("Error in regular expression `%s': %s"),
+                       optarg, errbuf);
+              };
+          }
+          break;
+
         case 's':
           {
             struct spec_section *next
@@ -1270,6 +1306,11 @@ under the terms of the GNU General Public License.\n\
 For more information about these matters, see the file named COPYING.\n"),
               "2005", PACKAGE);
           xexit (0);
+
+        case 'x':
+          delete_flag = 1;
+          remove_exactly = 1;
+          break;
 
         default:
           suggest_asking_for_help ();
@@ -1352,7 +1393,7 @@ For more information about these matters, see the file named COPYING.\n"),
   /* We will be comparing the entries in the dir file against the
      current filename, so need to strip off any directory prefix and/or
      [.info][.gz] suffix.  */
-  {
+  if (!remove_exactly) {
     char *infile_basename = infile + strlen (infile);
 
     if (HAVE_DRIVE (infile))
@@ -1362,7 +1403,8 @@ For more information about these matters, see the file named COPYING.\n"),
       infile_basename--;
 
     infile_sans_info = strip_info_suffix (infile_basename);
-  }
+  } else
+    infile_sans_info = xstrdup(infile);
 
   something_deleted
     = parse_dir_file (dir_lines, dir_nlines, &dir_nodes, infile_sans_info);
@@ -1377,6 +1419,31 @@ For more information about these matters, see the file named COPYING.\n"),
       struct menu_section *section;
       struct spec_section *spec;
 
+      for (spec = input_sections; spec; spec = spec->next)
+        {
+          int found = 0;
+          /* Check if the section specified (e.g. in the info file) exists */
+          for (node = dir_nodes; node && found == 0; node = node->next)
+            for (section = node->sections;
+                 section && found == 0;
+                 section = section->next)
+              if (strcmp (spec->name, section->name) == 0)
+                found = 1;
+
+          /* If it does not exist, but the user specified a regular expression,
+             try to find a section that matches this regex.  */
+          if (!found && psecreg)
+            for (node = dir_nodes; node && found == 0; node = node->next)
+              for (section = node->sections;
+                   section && found == 0;
+                   section = section->next)
+                if (regexec (psecreg, section->name, 0, NULL, 0) == 0)
+                  {
+                    spec->name = section->name;
+                    spec->missing = 0;
+                    found = 1;
+                  }
+        }
       for (node = dir_nodes; node; node = node->next)
         for (section = node->sections; section; section = section->next)
           {

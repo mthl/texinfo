@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.189 2007-05-17 13:59:59 karl Exp $
+@c $Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16332,16 +16332,12 @@ name in the entry in @var{dir-file} must be @var{info-file} (except for
 an optional @samp{.info} in either one).  Don't insert any new entries.
 
 @item --dir-file=@var{name}
-@itemx -d @var{name}
 @opindex --dir-file=@var{name}
-@opindex -d @var{name}
 Specify file name of the Info directory file.  This is equivalent to
 using the @var{dir-file} argument.
 
 @item --entry=@var{text}
-@itemx -e @var{text}
 @opindex --entry=@var{text}
-@opindex -e @var{text}
 Insert @var{text} as an Info directory entry; @var{text} should have the
 form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
@@ -16349,23 +16345,17 @@ added.  If you don't specify any entries, they are determined from
 information in the Info file itself.
 
 @item --help
-@itemx -h
 @opindex --help
-@opindex -h
-Display a usage message listing basic usage and all available options,
+Display a usage message with basic usage and all available options,
 then exit successfully.
 
 @item --info-file=@var{file}
-@itemx -i @var{file}
 @opindex --info-file=@var{file}
-@opindex -i @var{file}
-Specify Info file to install in the directory.
-Equivalent to using the @var{info-file} argument.
+Specify Info file to install in the directory.  This is
+equivalent to using the @var{info-file} argument.
 
 @item --info-dir=@var{dir}
-@itemx -D @var{dir}
 @opindex --info-dir=@var{dir}
-@opindex -D @var{dir}
 Specify the directory where the directory file @file{dir} resides.
 Equivalent to @samp{--dir-file=@var{dir}/dir}.
 
@@ -16379,24 +16369,32 @@ a menu item.
 Suppress warnings.
 
 @item --remove
-@itemx -r
 @opindex --remove
-@opindex -r
 Same as @samp{--delete}.
 
+@item --remove-exactly
+@opindex --remove-exactly
+Also like @samp{--delete}, but only entries if the Info file name
+matches exactly; @code{.info} and/or @code{.gz} suffixes are
+@emph{not} ignored.
+
 @item --section=@var{sec}
-@itemx -s @var{sec}
 @opindex --section=@var{sec}
-@opindex -s @var{sec}
 Put this file's entries in section @var{sec} of the directory.  If you
 specify more than one section, all the entries are added in each of the
 sections.  If you don't specify any sections, they are determined from
 information in the Info file itself.
 
+@item --section-regex=@var{regex}
+@opindex  --section-regex=@var{regex}
+If an entry is added to a section that does not exist, look for a
+section matching the regular expression @var{regex} (and ignoring
+case) before starting a new section.  Specify @var{regex} using 
+basic regular expression syntax, more or less as used with
+@command{grep}, for example.
+
 @item --version
-@itemx -V
 @opindex --version
-@opindex -V
 @cindex Version number, for install-info
 Display version information and exit successfully.
 
@@ -18836,7 +18834,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.189 2007-05-17 13:59:59 karl Exp $
+$Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18902,7 +18900,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.189 2007-05-17 13:59:59 karl Exp $
+@comment $Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
