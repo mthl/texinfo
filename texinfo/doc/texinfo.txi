@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
+@c $Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16325,6 +16325,10 @@ open @file{@var{dir-file}.gz}.
 Options:
 
 @table @code
+@item --debug
+@opindex --debug
+Report what is being done.
+
 @item --delete
 @opindex --delete
 Delete the entries in @var{info-file} from @var{dir-file}.  The file
@@ -16366,7 +16370,9 @@ a menu item.
 
 @item --quiet
 @opindex --quiet
-Suppress warnings.
+@itemx --silent
+@opindex --silent
+Suppress warnings, etc., for silent operation.
 
 @item --remove
 @opindex --remove
@@ -16392,6 +16398,10 @@ section matching the regular expression @var{regex} (and ignoring
 case) before starting a new section.  Specify @var{regex} using 
 basic regular expression syntax, more or less as used with
 @command{grep}, for example.
+
+@item --test
+@opindex --test
+Suppress updating of the directory file.
 
 @item --version
 @opindex --version
@@ -18834,7 +18844,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
+$Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18900,7 +18910,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.190 2007-05-18 17:31:03 karl Exp $
+@comment $Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

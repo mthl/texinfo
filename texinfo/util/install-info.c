@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.15 2007-05-18 17:31:03 karl Exp $
+   $Id: install-info.c,v 1.16 2007-05-21 17:38:00 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007 Free Software Foundation, Inc.
@@ -120,6 +120,7 @@ struct menu_section
 
 struct option longopts[] =
 {
+  { "debug",     no_argument, NULL, 'g' },
   { "delete",    no_argument, NULL, 'r' },
   { "dir-file",  required_argument, NULL, 'd' },
   { "entry",     required_argument, NULL, 'e' },
@@ -131,17 +132,24 @@ struct option longopts[] =
   { "quiet",     no_argument, NULL, 'q' },
   { "remove",    no_argument, NULL, 'r' },
   { "remove-exactly",    no_argument, NULL, 'x' },
-  { "section-regex", required_argument, NULL, 'R' },
-  { "section",   required_argument, NULL, 's' },
+  { "section",           required_argument, NULL, 's' },
+  { "section-regex",     required_argument, NULL, 'R' },
+  { "silent",    no_argument, NULL, 'q' },
+  { "test",      no_argument, NULL, 'n' },
   { "version",   no_argument, NULL, 'V' },
   { 0 }
 };
-
+
 regex_t *psecreg = NULL;
-  /* Nonzero means that the name specified for the info file will be used
-   * (without removing .gz, .info extension or leading path) to match the
-   * entries that must be removed.  */
-  int remove_exactly = 0;
+
+/* Nonzero means that the name specified for the info file will be used
+   (without removing .gz, .info extension or leading path) to match the
+   entries that must be removed.  */
+int remove_exactly = 0;
+
+/* Nonzero means --test was specified, to inhibit updating the dir file.  */
+int chicken_flag = 0;
+
 
 /* Error message functions.  */
 
@@ -447,6 +455,7 @@ print_help (void)
 Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n\
 \n\
 Options:\n\
+ --debug           report what is being done.\n\
  --delete          delete existing entries for INFO-FILE from DIR-FILE;\n\
                      don't insert any new entries.\n\
  --dir-file=NAME   specify file name of Info directory file.\n\
@@ -475,6 +484,8 @@ Options:\n\
  --section-regex=R if an entry is added to a section that does not exist,\n\
                      look for a section matching basic regular expression R\n\
                      (and ignoring case) before starting a new section.\n\
+ --test            suppress updating of DIR-FILE.\n\
+ --silent          suppress warnings.\n\
  --version         display version information and exit.\n\
 "), progname);
 
@@ -485,13 +496,18 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"));
 }
 
 
-/* If DIRFILE does not exist, create a minimal one (or abort).  If it
-   already exists, do nothing.  */
+/* If DIRFILE does not exist, and we are not in test mode, create a
+   minimal one (or abort).  If it already exists, do nothing.  */
 
-void
+static void
 ensure_dirfile_exists (char *dirfile)
 {
-  int desc = open (dirfile, O_RDONLY);
+  int desc;
+  
+  if (chicken_flag)
+    return;
+    
+  desc = open (dirfile, O_RDONLY);
   if (desc < 0 && errno == ENOENT)
     {
       FILE *f;
@@ -1169,8 +1185,12 @@ main (int argc, char **argv)
   /* Nonzero means --delete was specified (just delete existing entries).  */
   int delete_flag = 0;
   int something_deleted = 0;
-  /* Nonzero means -q was specified.  */
+
+  /* Nonzero means -quiet/--silent was specified.  */
   int quiet_flag = 0;
+
+  /* Nonzero means --debug was specified.  */
+  int debug_flag = 0;
 
   int i;
 
@@ -1240,6 +1260,10 @@ main (int argc, char **argv)
           }
           break;
 
+        case 'g':
+          debug_flag = 1;
+          break;
+
         case 'h':
         case 'H':
           print_help ();
@@ -1253,6 +1277,10 @@ main (int argc, char **argv)
               suggest_asking_for_help ();
             }
           infile = optarg;
+          break;
+
+        case 'n':
+          chicken_flag = 1;
           break;
 
         case 'q':
@@ -1337,6 +1365,8 @@ For more information about these matters, see the file named COPYING.\n"),
   /* Read the Info file and parse it into lines, unless we're deleting.  */
   if (!delete_flag)
     {
+      if (debug_flag)
+        printf ("debug: reading input file %s\n", infile);
       input_data = readfile (infile, &input_size, NULL, NULL, NULL);
       input_lines = findlines (input_data, input_size, &input_nlines);
     }
@@ -1386,6 +1416,8 @@ For more information about these matters, see the file named COPYING.\n"),
     }
 
   /* Now read in the Info dir file.  */
+  if (debug_flag)
+    printf ("debug: reading dir file %s\n", dirfile);
   dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
                        &opened_dirfilename, &compression_program);
   dir_lines = findlines (dir_data, dir_size, &dir_nlines);
@@ -1518,8 +1550,14 @@ For more information about these matters, see the file named COPYING.\n"),
   if (delete_flag && !something_deleted && !quiet_flag)
     warning (_("no entries found for `%s'; nothing deleted"), infile, 0);
 
-  output_dirfile (opened_dirfilename, dir_nlines, dir_lines, n_entries_to_add,
-                  entries_to_add, input_sections, compression_program);
+  if (debug_flag)
+    printf ("debug: writing dir file %s\n", opened_dirfilename);
+  if (chicken_flag)
+    printf ("test mode, not updating dir file %s\n", opened_dirfilename);
+  else
+    output_dirfile (opened_dirfilename, dir_nlines, dir_lines,
+                    n_entries_to_add, entries_to_add,
+                    input_sections, compression_program);
 
   xexit (0);
   return 0; /* Avoid bogus warnings.  */

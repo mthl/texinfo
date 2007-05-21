@@ -1,3 +1,11 @@
+2007-05-21  Karl Berry  <karl@gnu.org>
+
+	* util/install-info.c (--test, --debug): new options,
+	via new variable chicken_flag and debug_flag,
+	and (minimal) implementation thereof.
+	(--silent): synonym for --quiet.
+	* doc/texinfo.txi (Invoking install-info): document them.
+
 2007-05-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Invoking install-info): document them.
