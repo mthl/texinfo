@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.15 2007-04-29 18:41:58 karl Exp $
+   $Id: multi.c,v 1.16 2007-05-22 00:54:44 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -158,8 +158,8 @@ select_output_environment (int n)
      zeros from the static declaration.  However, we don't want to try
      to malloc zero bytes when init_paragraph is called just below,
      after we return.  */
-  paragraph_buffer_len = e->paragraph_buffer_len
-                         || INITIAL_PARAGRAPH_BUFFER_LEN;
+  paragraph_buffer_len = e->paragraph_buffer_len ? e->paragraph_buffer_len
+                         : INITIAL_PARAGRAPH_BUFFER_LEN;
   paragraph_is_open = e->paragraph_is_open;
   meta_char_pos = e->meta_char_pos;
   current_indent = e->current_indent;
