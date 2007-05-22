@@ -1,4 +1,10 @@
+2007-05-22  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs_template{,_min}: missing period on source link.
+
 2007-05-21  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/multi.c (select_output_environment): C is not Perl.
 
 	* util/install-info.c (--test, --debug): new options,
 	via new variable chicken_flag and debug_flag,
