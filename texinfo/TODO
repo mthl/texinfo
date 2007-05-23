@@ -1,9 +1,9 @@
-$Id: TODO,v 1.34 2007-01-07 19:11:36 karl Exp $
+$Id: TODO,v 1.35 2007-05-23 15:40:14 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation.
+  2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -145,8 +145,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     http://zeus.polsl.gliwice.pl/~pborys/.
   - More sample .infokey files, so people can choose without writing their own.
   - q within help should quit help like C-x 0.
-  - Incorporate an X-based viewer, perhaps saxinfo or tkinfo
-      http://www.math.ucsb.edu/~boldt/tkinfo/
+  - Incorporate an X-based viewer, perhaps the old GNU xinfo widget
+     (http://www.gnu.org/software/xinfo) or saxinfo
+     or tkinfo (http://www.math.ucsb.edu/~boldt/tkinfo/).
   - Make "info foo bar" search for bar in foo's index(es) if no menu match.
   - Handle M-n, C-u m, and C-u g like Emacs Info (opening new windows).
   - Write technical definition of Info format.
