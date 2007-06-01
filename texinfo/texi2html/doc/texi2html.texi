@@ -9,15 +9,15 @@
 @item @tab Copyright @copyright{} 1999, 2000 Lionel Cons@*
 @item @tab Copyright @copyright{} 1999, 2000 Karl Berry@*
 @item @tab Copyright @copyright{} 1999, 2000 Olaf Bachmann@*
-@item @tab Copyright @copyright{} 2002, 2003, 2004, 2005 Patrice Dumas@*
-@item @tab Copyright @copyright{} 2001, 2002, 2003, 2004, 2005 Derek Price@*
+@item @tab Copyright @copyright{} 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas@*
+@item @tab Copyright @copyright{} 2001, 2002, 2003, 2004, 2005, 2006 Derek Price@*
 @item @tab Copyright @copyright{} many others.@*
 @item @tab
 @item @tab
 @item Portions of this manual
 @item @tab Copyright @copyright{} 1999, 2000 Karl Heinz Marbaise (manual)@*
-@item @tab Copyright @copyright{} 2003 Derek Price (manual)@*
-@item @tab Copyright @copyright{} 2003, 2004, 2005 Patrice Dumas (manual)@*
+@item @tab Copyright @copyright{} 2003, 2007 Derek Price (manual)@*
+@item @tab Copyright @copyright{} 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)@*
 @end multitable
 
 Permission is granted to make and distribute verbatim
@@ -43,8 +43,15 @@ of this manual into another language, under the above
 conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c   Patrice Dumas
+@c   Derek Price
 @end copying
 
+@c The following is the Texi2HTML program license, not the manual
+@c license. The manual license is stated above.
+@c
 @c --------------------------------------------------------
 @c    This file is part of the Texi2HTML distribution.
 @c
@@ -65,10 +72,6 @@ by the Free Software Foundation.
 @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
 @c    330, Boston, MA  02110-1301  USA
 @c
-@c Author:
-@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
-@c   Patrice Dumas
-@c   Derek Price
 @c --------------------------------------------------------
 
 @c --------------------------------------------------------

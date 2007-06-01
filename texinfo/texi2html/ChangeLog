@@ -1,3 +1,9 @@
+2007-06-01  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* doc/texi2html.texi: update copyright years, clarify that the
+	license in comment is the license for texi2html, not for the
+	manual.
+
 2007-04-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: when INLINE_CONTENTS is set, 
