@@ -140,7 +140,7 @@ dist_images_DATA = images/a_begin.png \
 #	    -e "/@T2H_L2H@/r $(srcdir)/T2h_l2h.pm" $< >$@
 #	chmod a+x $@
 texi2html: $(texi2html_sources)
-	$(srcdir)/buildt2h.sh $@ $^ 
+	$(SHELL) $(srcdir)/buildt2h.sh $@ $^ 
 	chmod a+x $@
 
 texi2html.spec: texi2html.spec.in configure
