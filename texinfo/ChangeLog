@@ -1,3 +1,8 @@
+2007-06-03  Per Bothner  <per@bothner.com>
+
+	* xml.c (docbook_element_list): Map ANCHOR to "anchor".
+	* node.c (cm_anchor): Handle docbook.
+
 2007-05-22  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs_template{,_min}: missing period on source link.

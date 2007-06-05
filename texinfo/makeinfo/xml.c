@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.66 2007-01-03 23:05:35 karl Exp $
+   $Id: xml.c,v 1.67 2007-06-05 23:03:02 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
    Foundation, Inc.
@@ -415,7 +415,7 @@ element docbook_element_list [] = {
 
   { "index",               0, 0, 0 }, /* PRINTINDEX */
   { "",                    0, 1, 0 }, /* LISTOFFLOATS */
-  { "",                    0, 1, 0 }, /* ANCHOR */
+  { "anchor",              0, 1, 0 }, /* ANCHOR */
 
   { "",                    0, 0, 0 }, /* IMAGE */
   { "inlinemediaobject",   0, 1, 0 }, /* INLINEIMAGE */

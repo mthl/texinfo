@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.32 2007-05-04 21:59:53 karl Exp $
+   $Id: node.c,v 1.33 2007-06-05 23:03:02 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -1230,9 +1230,11 @@ cm_anchor (int arg)
 	    }
 	}
     }
-  else if (xml)
+  else if (xml || docbook)
     {
-      xml_insert_element_with_attribute (ANCHOR, START, "name=\"%s\"", anchor);
+      xml_insert_element_with_attribute (ANCHOR, START,
+					 docbook ? "id=\"%s\"" : "name=\"%s\"",
+					 anchor);
       xml_insert_element (ANCHOR, END);
     }
 
