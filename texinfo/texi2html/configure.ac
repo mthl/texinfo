@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
-AC_INIT([texi2html], [1.78], [texi2html-bug@nongnu.org])
+AC_INIT([texi2html], [1.79], [texi2html-bug@nongnu.org])
 AM_INIT_AUTOMAKE([gnu 1.7 dist-bzip2 dist-zip])
 
 dnl Disable Autoconf, Automake, and some other maintainer tools without the
