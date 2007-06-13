@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.68 2007-06-13 18:55:39 karl Exp $
+   $Id: xml.c,v 1.69 2007-06-13 18:57:39 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
    Foundation, Inc.
@@ -604,7 +604,7 @@ int
 xml_element (char *name)
 {
   int i;
-  for (i=0; i<=PARA; i++)
+  for (i = 0; i<=PARA; i++)
     {
       if (strcasecmp (name, texinfoml_element_list[i].name) == 0)
         return i;
@@ -926,10 +926,10 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
       if (xml_in_menu_entry_comment)
         {
           xml_insert_element (MENUCOMMENT, END);
-          xml_in_menu_entry_comment=0;
+          xml_in_menu_entry_comment = 0;
         }
       xml_insert_element (MENUENTRY, END);
-      xml_in_menu_entry=0;
+      xml_in_menu_entry = 0;
     }
     
   if (docbook && xml_table_level && !in_table_title
@@ -1157,13 +1157,13 @@ xml_start_menu_entry (char *tem)
       if (xml_in_menu_entry_comment)
         {
           xml_insert_element (MENUCOMMENT, END);
-          xml_in_menu_entry_comment=0;
+          xml_in_menu_entry_comment = 0;
         }
       xml_insert_element (MENUENTRY, END);
-      xml_in_menu_entry=0;
+      xml_in_menu_entry = 0;
     }
   xml_insert_element (MENUENTRY, START);
-  xml_in_menu_entry=1;
+  xml_in_menu_entry = 1;
 
   xml_insert_element (MENUNODE, START);
   string = expansion (tem, 0);
@@ -1357,7 +1357,7 @@ xml_insert_quotation (char *type, int arg)
     type = quotation_stack->type;
 
   /* Make use of special quotation styles of Docbook if we can.  */
-  if (docbook && strlen(type))
+  if (docbook && strlen (type))
     {
       /* Let's assume it started.  */
       quotation_started = 1;
@@ -1915,7 +1915,7 @@ xml_begin_multitable (int ncolumns, int *column_widths)
   else
     {
       xml_insert_element (MULTITABLE, START);
-      for (i=0; i<ncolumns; i++)
+      for (i = 0; i < ncolumns; i++)
         {
           xml_insert_element (COLSPEC, START);
           add_word_args ("%d", column_widths[i]);
@@ -1933,7 +1933,7 @@ xml_begin_multitable_group (void)
   xml_insert_element_with_attribute (TGROUP, START, "cols=\"%d\"",
       multitable_columns_count);
 
-  for (i=0; i < multitable_columns_count; i++)
+  for (i = 0; i < multitable_columns_count; i++)
     {
       xml_insert_element_with_attribute (COLSPEC, START,
           "colwidth=\"%d*\"", multitable_column_widths[i]);
