@@ -1,3 +1,10 @@
+2007-06-13  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xml.c (xml_insert_element_with_attribute): close
+	menu_entry and menu_entry_comment elements before handling the
+	detailmenu element (either start or end).
+	From Thien-Thi Nguyen, 04 Jun 2007 01:18:37.
+
 2007-06-03  Per Bothner  <per@bothner.com>
 
 	* xml.c (docbook_element_list): Map ANCHOR to "anchor".

@@ -1,7 +1,7 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.67 2007-06-05 23:03:02 karl Exp $
+   $Id: xml.c,v 1.68 2007-06-13 18:55:39 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -918,6 +918,20 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   if (arg == END && xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_end_para ();
 
+  /* Oddly, we want to do the same thing whether we starting or ending
+     the detailmenu -- close any existing menu elements before inserting
+     the detailmenu element.  */
+  if (elt == DETAILMENU && xml_in_menu_entry)
+    {
+      if (xml_in_menu_entry_comment)
+        {
+          xml_insert_element (MENUCOMMENT, END);
+          xml_in_menu_entry_comment=0;
+        }
+      xml_insert_element (MENUENTRY, END);
+      xml_in_menu_entry=0;
+    }
+    
   if (docbook && xml_table_level && !in_table_title
       && !xml_in_tableitem[xml_table_level] && !xml_in_item[xml_table_level]
       && arg == START && elt != TABLEITEM && elt != TABLETERM
