@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
+@c $Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13330,7 +13330,7 @@ supports, see @ref{Inserting Accents}.
 
 
 @node documentlanguage
-@section @code{@@documentlanguage @var{cc}}: Set the Document Language
+@section @code{@@documentlanguage @var{ll}[_@var{cc}]}: Set the Document Language
 
 @findex documentlanguage
 @cindex Language, declaring
@@ -13338,29 +13338,58 @@ supports, see @ref{Inserting Accents}.
 
 The @code{@@documentlanguage} command declares the current document
 language.  Write it on a line by itself, near the beginning of the
-file but after @code{@@setfilename}
+file, but after @code{@@setfilename}
 (@pxref{setfilename,,@code{@@setfilename}}).
 
-Include a two-letter ISO-639 language code following the command name
-(list is included below).  If you have a multilingual document, the
-intent is to be able to use this command multiple times, to declare
-each language change.  If the command is not used at all, the default
-is @code{en} for English.
+Include a two-letter ISO@tie{}639-1 language code (@var{ll}) following
+the command name (list is included below), optionally followed by a
+two-letter ISO@tie{}3166 two-letter country code (@var{cc}).  If you
+have a multilingual document, the intent is to be able to use this
+command multiple times, to declare each language change.  If the
+command is not used at all, the default is @code{en_US} for US
+English.
+
+As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
+code is omitted, the main dialect is assumed.  For example, @code{de}
+is equivalent to @code{de_DE} (German as spoken in Germany). 
+
+@cindex Document strings, translation of
+For Info and other online output, this command changes the translation
+of various @dfn{document strings} such as ``see'' in cross-references
+(@pxref{Cross References}), ``Function' in defuns (@pxref{Definition
+Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
+``Menu:'', etc., are keywords in Info output, so are not translated
+there; they are translated in other output formats.
 
 @cindex @file{txi-@var{cc}.tex}
-At present, this command is ignored in Info and HTML output.  For
-@TeX{}, it causes the file @file{txi-@var{cc}.tex} to be read (if it
-exists).  Such a file appropriately redefines the various English words
-used in @TeX{} output, such as `Chapter', `See', and so on.
+For @TeX{}, this command causes the file @file{txi-@var{ll}.tex} to be
+read (if it exists).  Such a file appropriately redefines the various
+English words used in @TeX{} output, such as `Chapter', `See', and so
+on.
+
+We are aware that individual words like these cannot always be
+translated in isolation, and that a very different strategy would be
+required for ideographic (among other) scripts.  Help in improving
+Texinfo's language support would be welcome.
 
 @cindex Hyphenation patterns, language-dependent
-It would be good if this command also changed @TeX{}'s ideas of the
-current hyphenation patterns (via the @TeX{} primitive
-@code{\language}), but this is unfortunately not currently implemented.
+It would also be desirable for this command to also change @TeX{}'s
+ideas of the current hyphenation patterns (via the @TeX{} primitive
+@code{\language}), but this is unfortunately not currently
+implemented.
 
-@cindex ISO 639 codes
+In September 2006, the W3C Internationalization Activity released a
+new recommendation for specifying tags identifying language
+(@url{http://www.rfc-editor.org/rfc/bcp/bcp47.txt}).  When and if
+Gettext supports this new scheme, Texinfo will too.
+
+@cindex ISO 639-1 codes
 @cindex Language codes
-Here are the valid language codes, from ISO-639.
+Meanwhile, here are the valid language codes, from ISO@tie{}639-1.
+The official home page for ISO@tie{}639 is
+@url{http://www.loc.gov/standards/iso639-2/}.  The country codes are
+too many to list here; one web page listing them is
+@url{http://en.wikipedia.org/wiki/ISO_3166}.
 
 @multitable @columnfractions .07 .26 .07 .26 .07 .26
 @item
@@ -18844,7 +18873,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
+$Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18910,7 +18939,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.191 2007-05-21 17:38:00 karl Exp $
+@comment $Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

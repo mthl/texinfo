@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.97 2007-04-29 18:41:58 karl Exp $
+   $Id: makeinfo.c,v 1.98 2007-06-15 01:04:41 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -4263,10 +4263,10 @@ set_paragraph_indent (char *string)
 }
 
 
-/* Translate MSGID according to the document language
-   (--document-language), rather than the environment language (LANG,
-   etc.).  This comes from the get_title function in gettext.  (xsetenv
-   and unsetenv come from the gnulib xsetenv module.)  */
+/* Translate MSGID according to the document language (@documentlanguage
+   value or --document-language), rather than the current locale
+   (LANGUAGE/LC_ALL/LANG).  This code is from the get_title function in
+   gettext.  (xsetenv and unsetenv come from the gnulib xsetenv module.)  */
 
 char *
 getdocumenttext (const char *msgid)

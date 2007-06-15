@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.141 2007-05-21 17:38:00 karl Exp $
+$Id: NEWS,v 1.142 2007-06-15 01:04:40 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -23,14 +23,17 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 * Language:
-  . new command @allowcodebreaks to control breaks at _ and - within @code.
-  . new command @frenchspacing to control spacing after sentences.
-  . new command @fonttextsize to allow changing body text font size to 10pt.
-  . new command @textdegree{} for the normal degrees symbol.
-  . new command @thischapternum for use in TeX headers/footers.
-  . new option @set codequoteundirected to use an undirected quote in
+  . @documentlanguage now supports an optional country code
+    specification after the language code, a la gettext.
+  . new command @allowcodebreaks controls breaks at _ and - within @code.
+  . new command @frenchspacing controls spacing after sentences.
+  . new command @fonttextsize allows changing body text font size to 10pt.
+  . new command @textdegree{} produces the normal degrees symbol.
+  . new command @thischapternum can be used in TeX headers/footers.
+  . new option @set codequoteundirected produces an undirected quote in
     code and example output, instead of the regular right quote.
 * makeinfo:
+  . The @documentlanguage locale is used to translate various document strings.
   . new option --css-ref=URL for creating a stylesheet <link> in HTML output.
   . new option --transliterate-file-names to use a reduction-to-ASCII
     algorithm for split HTML file names, useful for non-Latin-based languages.

@@ -1,3 +1,13 @@
+2007-06-14  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/lang.c (cm_documentlanguage): add _CC part if necessary,
+	or split LL_CC if that's given.  Set document_language so that
+	getdocumenttext strings will be translated.
+	* doc/texinfo.txi (documentlanguage):
+	* NEWS: mention this.
+
+	* util/gendocs_template: mention possibility of buying manuals
+
 2007-06-13  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xml.c (xml_insert_element_with_attribute): close

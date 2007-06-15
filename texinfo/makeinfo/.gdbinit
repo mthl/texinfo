@@ -2,6 +2,9 @@ define redo
 file makeinfo
 end
 
+define in
+p input_text+input_text_offset
+end
 define out
 p output_paragraph+output_paragraph_offset
 end
@@ -124,9 +127,6 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 
 # @ifset switches @itemize to @enumerate
 #set args -o - $ttests/itemset.tex
-
-#set env LANG de
-#set args -o - $ttests/doclang.tex
 
 # allow braces, no braces, etc as item markers
 #set args -o - $ttests/itemspace.tex
@@ -253,3 +253,13 @@ set args -o $ttests/imagedump.out $ttests/imagedump.tex
 
 # core dump, memory.
 set args -o $ttests/multitabgcal.out $ttests/gcal-bug.tex
+
+# blank line from @anchor in mid-paragraph.
+set args -o $ttests/anchorline.out $ttests/anchorline.tex
+
+# core dump.
+set args --no-split --html -o $ttests/chart.out $ttests/chart.tex
+
+#set env LANG de
+set args -o - --docbook $ttests/doclang.tex
+

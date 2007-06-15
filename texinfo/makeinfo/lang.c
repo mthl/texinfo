@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.21 2007-01-07 19:11:37 karl Exp $
+   $Id: lang.c,v 1.22 2007-06-15 01:04:41 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free
    Software Foundation, Inc.
@@ -661,27 +661,70 @@ lang_transliterate_char (byte_t ch)
   return NULL;
 }	
 
-
-/* @documentlanguage.  Maybe we'll do something useful with this in the
-   future.  For now, we just recognize it.  */
 
-/* XML documents can make use of this data.  Unfortunately, it clashes with
-   the structure currently used.  So instead of enclosing content into
-   a language block, we just output an empty element.  Anyways, a stream based
-   parser can make good use of it.  */
+/* Given a language code LL_CODE, return a "default" country code (in
+   new memory).  We use the same table as gettext, and return LL_CODE
+   uppercased in the absence of any better possibility, with a warning.
+   gettext silently defaults to the C locale, but we want to give users
+   a shot at fixing ambiguities.  xx undone */
+
+static char *
+default_country_for_lang (const char *ll_code)
+{
+  int c;
+  char *cc_code = xmalloc (strlen (ll_code) + 1);
+  
+  for (c = 0; c < strlen (ll_code); c++)
+    cc_code[c] = toupper (ll_code[c]);
+  cc_code[c] = 0;
+  
+  return cc_code;
+}
+
+
+
+/* @documentlanguage ARG.  We set the global `document_language' (which
+   `getdocumenttext' uses) to the gettextish string, and 
+   `language_code' to the corresponding enum value.  */
+
 void
 cm_documentlanguage (void)
 {
   language_code_type c;
-  char *lang_arg;
+  char *lang_arg, *ll_part, *cc_part, *locale_string;
+  char *underscore;
 
   /* Read the line with the language code on it.  */
   get_rest_of_line (0, &lang_arg);
 
+  /* What we're passed might be either just a language code LL (we'll 
+     also need it with the usual _CC appended, if there is one), or a
+     locale name as used by gettext, LL_CC (we'll also need its
+     constituents separately).  */
+  underscore = strchr (lang_arg, '_');
+  if (underscore)
+    {
+      ll_part = substring (lang_arg, underscore);
+      cc_part = xstrdup (underscore + 1);
+      locale_string = xstrdup (lang_arg);
+    }
+  else
+    {
+      ll_part = xstrdup (lang_arg);
+      cc_part = default_country_for_lang (ll_part);
+      locale_string = xmalloc (strlen (ll_part) + 1 + strlen (cc_part) + 1);
+      strcpy (locale_string, ll_part);
+      strcat (locale_string, "_");
+      strcat (locale_string, cc_part);
+    }
+
+  /* Done with analysis of user-supplied string.  */
+  free (lang_arg);
+  
   /* Linear search is fine these days.  */
   for (c = aa; c != last_language_code; c++)
     {
-      if (strcmp (lang_arg, language_table[c].abbrev) == 0)
+      if (strcmp (ll_part, language_table[c].abbrev) == 0)
         { /* Set current language code.  */
           language_code = c;
           break;
@@ -690,15 +733,30 @@ cm_documentlanguage (void)
 
   /* If we didn't find this code, complain.  */
   if (c == last_language_code)
-    warning (_("%s is not a valid ISO 639 language code"), lang_arg);
+    warning (_("%s is not a valid ISO 639 language code"), ll_part);
 
   if (xml && !docbook)
-    {
-      xml_insert_element_with_attribute (DOCUMENTLANGUAGE, START, "xml:lang=\"%s\"", lang_arg);
+    { /* According to http://www.opentag.com/xfaq_lang.htm, xml:lang
+         takes an ISO 639 language code, optionally followed by a dash
+         (not underscore) and an ISO 3166 country code.  So we have
+         to make another version with - instead of _.  */
+      char *xml_locale = xmalloc (strlen (ll_part) + 1 + strlen (cc_part) + 1);
+      strcpy (xml_locale, ll_part);
+      strcat (xml_locale, "-");
+      strcat (xml_locale, cc_part);
+      xml_insert_element_with_attribute (DOCUMENTLANGUAGE, START,
+                                         "xml:lang=\"%s\"", xml_locale);
       xml_insert_element (DOCUMENTLANGUAGE, END);
+      free (xml_locale);
     }
 
-  free (lang_arg);
+  /* Set the language our `getdocumenttext' function uses for
+     translating document strings.  */
+  document_language = xstrdup (locale_string);
+  
+  free (ll_part);
+  free (cc_part);
+  free (locale_string);
 }
 
 
