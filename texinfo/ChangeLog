@@ -1,5 +1,8 @@
 2007-06-17  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/lang.c (language_table): update from current list,
+	write out update procedure for next time.
+	* makeinfo/lang.h (language_code_type): update enum.
 	* doc/texinfo.txi (documentlanguage): don't include the list of
 	language codes, change is too rapid.
 
