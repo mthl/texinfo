@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
+@c $Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -439,6 +439,7 @@ Combining Indices
 Special Insertions
 
 * Atsign Braces Comma::         Inserting @@ and @{@} and ,.
+* Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
@@ -821,7 +822,7 @@ computer terminals; the HTML output works with virtually all web
 browsers.  Thus Texinfo can be used by almost any computer user.
 
 @cindex Source file format
-A Texinfo source file is a plain @sc{ascii} file containing text
+A Texinfo source file is a plain ASCII file containing text
 interspersed with @dfn{@@-commands} (words preceded by an @samp{@@})
 that tell the typesetting and formatting programs what to do.  You can
 edit a Texinfo file with any text editor, but it is especially
@@ -901,14 +902,15 @@ For more information on @TeX{} in general, please see the book
 @cindex Beebe, Nelson
 @pindex pdftex
 (Generated via @command{texi2dvi --pdf} or @command{texi2pdf}.)  This
-was developed by Adobe Systems for portable document interchange,
-based on their previous PostScript language.  It can represent the exact
-appearance of a document, including fonts, and supporting arbitrary
-scaling.  It is intended to be platform-independent and easily
-viewable, among other design goals; for a discussion, see
-@uref{http://tug.org/TUGboat/Articles/tb22-3/tb72beebe-pdf.pdf}.  Texinfo
-uses the @command{pdftex} program, a variant of @TeX{}, to output PDF;
-see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
+format was developed by Adobe Systems for portable document
+interchange, based on their previous PostScript language.  It can
+represent the exact appearance of a document, including fonts and
+graphics, and supporting arbitrary scaling.  It is intended to be
+platform-independent and easily viewable, among other design goals;
+@uref{http://tug.org/TUGboat/Articles/tb22-3/tb72beebe-pdf.pdf} has
+some background.  Texinfo uses the @command{pdftex} program, a variant
+of @TeX{}, to output PDF; see
+@uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
 @item XML
 @cindex XML output
@@ -916,7 +918,7 @@ see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 @pindex texinfo.dtd
 (Generated via @command{makeinfo --xml}.)  XML is a generic syntax
 specification usable for any sort of content (see, for example,
-@uref{http://www.w3.org/XML/}).  The @command{makeinfo} xml output,
+@uref{http://www.w3.org/XML/}).  The @command{makeinfo} XML output,
 unlike all the formats above, interprets very little of the Texinfo
 source.  Rather, it merely translates the Texinfo markup commands into
 XML syntax, for processing by further XML tools.  The particular
@@ -1227,7 +1229,7 @@ This section describes the general conventions used in all Texinfo documents.
 @itemize @bullet
 @item
 @cindex Source files, characters used
-All printable @sc{ascii} characters except @samp{@@}, @samp{@{} and
+All printable ASCII characters except @samp{@@}, @samp{@{} and
 @samp{@}} can appear in a Texinfo file and stand for themselves.
 @samp{@@} is the escape character which introduces commands, while
 @samp{@{} and @samp{@}} are used to surround arguments to certain
@@ -1255,7 +1257,7 @@ left- and right-hand doubled quotation marks,
 @iftex
 ``like this'',
 @end iftex
-and Info converts doubled single-quote characters to @sc{ascii}
+and Info converts doubled single-quote characters to ASCII
 double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
 
 You may occasionally need to produce two consecutive single quotes;
@@ -1290,24 +1292,23 @@ contexts, such as @code{@@code} and @code{@@example}.
 
 @item
 @cindex Tabs; don't use!
-@strong{Caution:} Last and most important, do not use tab characters
-in a Texinfo file (except in verbatim modes)!  @TeX{} uses
-variable-width fonts, which means that it is impractical at best to
-define a tab to work in all circumstances.  Consequently, @TeX{}
-treats tabs like single spaces, and that is not what they look like in
-the source.  Furthermore, @code{makeinfo} does nothing special with
-tabs, and thus a tab character in your input file will usually appear
-differently in the output.
+@strong{Caution:} Last, do not use tab characters in a Texinfo file
+(except in verbatim modes)!  @TeX{} uses variable-width fonts, which
+means that it is impractical at best to define a tab to work in all
+circumstances.  Consequently, @TeX{} treats tabs like single spaces,
+and that is not what they look like in the source.  Furthermore,
+@code{makeinfo} does nothing special with tabs, and thus a tab
+character in your input file will usually appear differently in the
+output.
 
 @noindent
-To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
-spaces when you press the @key{TAB} key.
-
-@noindent
-Also, you can run @code{untabify} in Emacs to convert tabs in a region
-to multiple spaces, or use the @code{unexpand} command from the shell.
+To avoid this problem, Texinfo mode in GNU Emacs inserts
+multiple spaces when you press the @key{TAB} key.  Also, you can run
+@code{untabify} in Emacs to convert tabs in a region to multiple
+spaces, or use the @code{unexpand} command from the shell.
 
 @end itemize
+
 
 @node Comments
 @section Comments
@@ -1729,7 +1730,7 @@ as printed hard copy.
 @cindex Emacs
 
 You may edit a Texinfo file with any text editor you choose.  A Texinfo
-file is no different from any other @sc{ascii} file.  However, GNU Emacs
+file is no different from any other ASCII file.  However, GNU Emacs
 comes with a special mode, called Texinfo mode, that provides Emacs
 commands and tools to help ease your work.
 
@@ -6767,7 +6768,7 @@ Indicate an electronic mail address.
 
 @ignore
 @item @@ctrl@{@var{ctrl-char}@}
-Use for an @sc{ascii} control character.@refill
+Use for an ASCII control character.
 @end ignore
 @end table
 
@@ -7348,7 +7349,7 @@ command since a reader can easily follow such a reference in Info.
 @c subsection @code{@@ctrl}@{@var{ctrl-char}@}
 @findex ctrl
 
-The @code{@@ctrl} command is seldom used.  It describes an @sc{ascii}
+The @code{@@ctrl} command is seldom used.  It describes an ASCII
 control character by inserting the actual character into the Info
 file.
 
@@ -7364,7 +7365,7 @@ to make it easier for a reader to understand.@refill
 @code{@@ctrl} is an idea from the beginnings of Texinfo which may not
 really fit in to the scheme of things.  But there may be times when
 you want to use the command.  The pattern is
-@code{@@ctrl@{@var{ch}@}}, where @var{ch} is an @sc{ascii} character
+@code{@@ctrl@{@var{ch}@}}, where @var{ch} is an ASCII character
 whose control-equivalent is wanted.  For example, to specify
 @samp{control-f}, you would enter@refill
 
@@ -7559,7 +7560,6 @@ suggestions to the @email{bug-texinfo@@gnu.org, same place}.
 
 
 @node Emphasis
-@comment node-name,  next,  previous,  up
 @section Emphasizing Text
 @cindex Emphasizing text
 
@@ -10058,6 +10058,7 @@ These are:
 
 @menu
 * Atsign Braces Comma::         Inserting @@ and @{@} and ,.
+* Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
@@ -10147,6 +10148,56 @@ to pass an actual comma.  Here are some examples:
 
 Although @comma{} can be used nearly anywhere, there is no need for it
 anywhere except in this unusual case.
+
+
+@node Inserting Quote Characters
+@section Inserting Quote Characters
+
+@cindex Inserting quote characters
+@cindex Quote characters, inserting
+
+As explained in the early section on general Texinfo input conventions
+(@pxref{Conventions}), Texinfo source files use the ASCII character
+@code{`} (96 decimal) to produce a left quote (`), and ASCII @code{'}
+(39 decimal) to produce a right quote (').  Doubling these input
+characters (@code{``} and @code{''}) produces double quotes (`` and
+'').  These are the conventions used by @TeX{}.
+
+This works all right for text.  However, in examples of computer code,
+readers are especially likely to cut and paste the text
+verbatim---and, unfortunately, some document viewers will mangle these
+characters.  (The free PDF reader @command{xpdf} works fine, but other
+PDF readers, both free and nonfree, have problems.)
+
+If this is a concern for your document, Texinfo provides two special
+settings via @code{@@set}:
+
+@table @code
+@item @@set txicodequoteundirected
+causes the output for the @code{'} character to be the undirected
+single quote, like this:
+@set txicodequoteundirected
+@code{'}.
+@clear txicodequoteundirected
+
+@item @@set txicodequotebacktick
+Cause the output for the @code{`} character to be the standalone grave
+accent, like this:
+@set txicodequotebacktick
+@code{`}.
+@clear txicodequotebacktick
+
+@end table
+
+@code{xyza`'bc}
+
+If you want these settings for only part of the document,
+@code{@@clear} will restore the normal behavior, as in
+@code{@@clear@tie{}txicodequoteundirected}.
+
+These settings affect @code{@@code}, @code{@@example}, and
+@code{@@verbatim}; they do not affect @code{@@samp}.  (@xref{Useful
+Highlighting}.)
 
 
 @node Inserting Space
@@ -13379,9 +13430,11 @@ ideas of the current hyphenation patterns (via the @TeX{} primitive
 implemented.
 
 In September 2006, the W3C Internationalization Activity released a
-new recommendation for specifying tags identifying language
-(@url{http://www.rfc-editor.org/rfc/bcp/bcp47.txt}).  When and if
-Gettext supports this new scheme, Texinfo will too.
+new recommendation for specifying tags identifying language:
+@example
+@url{http://www.rfc-editor.org/rfc/bcp/bcp47.txt}
+@end example
+When Gettext supports this new scheme, Texinfo will too.
 
 @cindex ISO 639-1 codes
 @cindex Language codes
@@ -17321,8 +17374,8 @@ Generate the copyright symbol @copyright{}.  @xref{copyright symbol,,
 
 @ignore
 @item @@ctrl@{@var{ctrl-char}@}
-Describe an @sc{ascii} control character.  Insert actual control character
-into Info file.  @xref{ctrl, , @code{@@ctrl}}.@refill
+Describe an ASCII control character.  Insert actual control character
+into Info file.  @xref{ctrl, , @code{@@ctrl}}.
 @end ignore
 
 @item @@defcodeindex @var{index-name}
@@ -18873,7 +18926,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
+$Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18939,7 +18992,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.192 2007-06-15 01:04:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

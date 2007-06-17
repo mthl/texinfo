@@ -1,3 +1,11 @@
+2007-06-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\codequoteright, \codequoteleft): support
+	@set txicodequoteundirected and 
+	@set txicodequotebacktick, respectively, as well as the non-txi names.
+	* doc/texinfo.txi (Inserting Quote Characters): new node.
+	* NEWS: mention both.
+
 2007-06-14  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/lang.c (cm_documentlanguage): add _CC part if necessary,
