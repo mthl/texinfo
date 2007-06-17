@@ -1,5 +1,8 @@
 2007-06-17  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (documentlanguage): don't include the list of
+	language codes, change is too rapid.
+
 	* doc/texinfo.tex (\codequoteright, \codequoteleft): support
 	@set txicodequoteundirected and 
 	@set txicodequotebacktick, respectively, as well as the non-txi names.

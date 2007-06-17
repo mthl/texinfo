@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
+@c $Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13392,13 +13392,12 @@ language.  Write it on a line by itself, near the beginning of the
 file, but after @code{@@setfilename}
 (@pxref{setfilename,,@code{@@setfilename}}).
 
-Include a two-letter ISO@tie{}639-1 language code (@var{ll}) following
-the command name (list is included below), optionally followed by a
-two-letter ISO@tie{}3166 two-letter country code (@var{cc}).  If you
-have a multilingual document, the intent is to be able to use this
-command multiple times, to declare each language change.  If the
-command is not used at all, the default is @code{en_US} for US
-English.
+Include a two-letter ISO@tie{}639-2 language code (@var{ll}) following
+the command name, optionally followed by a two-letter ISO@tie{}3166
+two-letter country code (@var{cc}).  If you have a multilingual
+document, the intent is to be able to use this command multiple times,
+to declare each language change.  If the command is not used at all,
+the default is @code{en_US} for US English.
 
 As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
 code is omitted, the main dialect is assumed.  For example, @code{de}
@@ -13436,202 +13435,16 @@ new recommendation for specifying tags identifying language:
 @end example
 When Gettext supports this new scheme, Texinfo will too.
 
-@cindex ISO 639-1 codes
+@cindex ISO 639-2 language codes
+@cindex ISO 3166 country codes
 @cindex Language codes
-Meanwhile, here are the valid language codes, from ISO@tie{}639-1.
-The official home page for ISO@tie{}639 is
-@url{http://www.loc.gov/standards/iso639-2/}.  The country codes are
-too many to list here; one web page listing them is
+@cindex Country codes
+Since the lists of language codes and country codes are quite dynamic,
+we don't attempt to list them here.  The valid language codes are on
+the official home page for ISO@tie{}639,
+@url{http://www.loc.gov/standards/iso639-2/}.  The country codes and
+the official web site for ISO@tie{}3166 can be found via
 @url{http://en.wikipedia.org/wiki/ISO_3166}.
-
-@multitable @columnfractions .07 .26 .07 .26 .07 .26
-@item
-@code{aa} @tab Afar @tab
-@code{ab} @tab Abkhazian @tab
-@code{af} @tab Afrikaans
-@item
-@code{am} @tab Amharic @tab
-@code{ar} @tab Arabic @tab
-@code{as} @tab Assamese
-@item
-@code{ay} @tab Aymara @tab
-@code{az} @tab Azerbaijani @tab
-@code{ba} @tab Bashkir
-@item
-@code{be} @tab Byelorussian @tab
-@code{bg} @tab Bulgarian @tab
-@code{bh} @tab Bihari
-@item
-@code{bi} @tab Bislama @tab
-@code{bn} @tab Bengali; Bangla @tab
-@code{bo} @tab Tibetan
-@item
-@code{br} @tab Breton @tab
-@code{ca} @tab Catalan @tab
-@code{co} @tab Corsican
-@item
-@code{cs} @tab Czech @tab
-@code{cy} @tab Welsh @tab
-@code{da} @tab Danish
-@item
-@code{de} @tab German @tab
-@code{dz} @tab Bhutani @tab
-@code{el} @tab Greek
-@item
-@code{en} @tab English @tab
-@code{eo} @tab Esperanto @tab
-@code{es} @tab Spanish
-@item
-@code{et} @tab Estonian @tab
-@code{eu} @tab Basque @tab
-@code{fa} @tab Persian
-@item
-@code{fi} @tab Finnish @tab
-@code{fj} @tab Fiji @tab
-@code{fo} @tab Faroese
-@item
-@code{fr} @tab French @tab
-@code{fy} @tab Frisian @tab
-@code{ga} @tab Irish
-@item
-@code{gd} @tab Scots Gaelic @tab
-@code{gl} @tab Galician @tab
-@code{gn} @tab Guarani
-@item
-@code{gu} @tab Gujarati @tab
-@code{ha} @tab Hausa @tab
-@code{he} @tab Hebrew
-@item
-@code{hi} @tab Hindi @tab
-@code{hr} @tab Croatian @tab
-@code{hu} @tab Hungarian
-@item
-@code{hy} @tab Armenian @tab
-@code{ia} @tab Interlingua @tab
-@code{id} @tab Indonesian
-@item
-@code{ie} @tab Interlingue @tab
-@code{ik} @tab Inupiak @tab
-@code{is} @tab Icelandic
-@item
-@code{it} @tab Italian @tab
-@code{iu} @tab Inuktitut @tab
-@code{ja} @tab Japanese
-@item
-@code{jw} @tab Javanese @tab
-@code{ka} @tab Georgian @tab
-@code{kk} @tab Kazakh
-@item
-@code{kl} @tab Greenlandic @tab
-@code{km} @tab Cambodian @tab
-@code{kn} @tab Kannada
-@item
-@code{ks} @tab Kashmiri @tab
-@code{ko} @tab Korean @tab
-@code{ku} @tab Kurdish
-@item
-@code{ky} @tab Kirghiz @tab
-@code{la} @tab Latin @tab
-@code{ln} @tab Lingala
-@item
-@code{lt} @tab Lithuanian @tab
-@code{lo} @tab Laothian @tab
-@code{lv} @tab Latvian, Lettish
-@item
-@code{mg} @tab Malagasy @tab
-@code{mi} @tab Maori @tab
-@code{mk} @tab Macedonian
-@item
-@code{ml} @tab Malayalam @tab
-@code{mn} @tab Mongolian @tab
-@code{mo} @tab Moldavian
-@item
-@code{mr} @tab Marathi @tab
-@code{ms} @tab Malay @tab
-@code{mt} @tab Maltese
-@item
-@code{my} @tab Burmese @tab
-@code{na} @tab Nauru @tab
-@code{ne} @tab Nepali
-@item
-@code{nl} @tab Dutch @tab
-@code{no} @tab Norwegian @tab
-@code{oc} @tab Occitan
-@item
-@code{om} @tab (Afan) Oromo @tab
-@code{or} @tab Oriya @tab
-@code{pa} @tab Punjabi
-@item
-@code{pl} @tab Polish @tab
-@code{ps} @tab Pashto, Pushto @tab
-@code{pt} @tab Portuguese
-@item
-@code{qu} @tab Quechua @tab
-@code{rm} @tab Rhaeto-Romance @tab
-@code{rn} @tab Kirundi
-@item
-@code{ro} @tab Romanian @tab
-@code{ru} @tab Russian @tab
-@code{rw} @tab Kinyarwanda
-@item
-@code{sa} @tab Sanskrit @tab
-@code{sd} @tab Sindhi @tab
-@code{sg} @tab Sango
-@item
-@code{sh} @tab Serbo-Croatian @tab
-@code{si} @tab Sinhalese @tab
-@code{sk} @tab Slovak
-@item
-@code{sl} @tab Slovenian @tab
-@code{sm} @tab Samoan @tab
-@code{sn} @tab Shona
-@item
-@code{so} @tab Somali @tab
-@code{sq} @tab Albanian @tab
-@code{sr} @tab Serbian
-@item
-@code{ss} @tab Siswati @tab
-@code{st} @tab Sesotho @tab
-@code{su} @tab Sundanese
-@item
-@code{sv} @tab Swedish @tab
-@code{sw} @tab Swahili @tab
-@code{ta} @tab Tamil
-@item
-@code{te} @tab Telugu @tab
-@code{tg} @tab Tajik @tab
-@code{th} @tab Thai
-@item
-@code{ti} @tab Tigrinya @tab
-@code{tk} @tab Turkmen @tab
-@code{tl} @tab Tagalog
-@item
-@code{tn} @tab Setswana @tab
-@code{to} @tab Tonga @tab
-@code{tr} @tab Turkish
-@item
-@code{ts} @tab Tsonga @tab
-@code{tt} @tab Tatar @tab
-@code{tw} @tab Twi
-@item
-@code{ug} @tab Uighur @tab
-@code{uk} @tab Ukrainian @tab
-@code{ur} @tab Urdu
-@item
-@code{uz} @tab Uzbek @tab
-@code{vi} @tab Vietnamese @tab
-@code{vo} @tab Volapuk
-@item
-@code{wo} @tab Wolof @tab
-@code{xh} @tab Xhosa @tab
-@code{yi} @tab Yiddish
-@item
-@code{yo} @tab Yoruba @tab
-@code{za} @tab Zhuang @tab
-@code{zh} @tab Chinese
-@item
-@code{zu} @tab Zulu
-@end multitable
 
 
 @node documentencoding
@@ -18926,7 +18739,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
+$Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18992,7 +18805,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.193 2007-06-17 15:22:19 karl Exp $
+@comment $Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
