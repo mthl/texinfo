@@ -1,5 +1,8 @@
 2007-06-17  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/lang.c (default_country_for_lang): implement using the
+	same locales_with_principal_territory list as gettext's msginit.c.
+
 	* makeinfo/lang.c (language_table): update from current list,
 	write out update procedure for next time.
 	* makeinfo/lang.h (language_code_type): update enum.

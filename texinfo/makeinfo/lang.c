@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.23 2007-06-17 23:12:00 karl Exp $
+   $Id: lang.c,v 1.24 2007-06-18 13:07:13 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free
    Software Foundation, Inc.
@@ -720,21 +720,235 @@ lang_transliterate_char (byte_t ch)
 }	
 
 
+
 /* Given a language code LL_CODE, return a "default" country code (in
    new memory).  We use the same table as gettext, and return LL_CODE
    uppercased in the absence of any better possibility, with a warning.
    gettext silently defaults to the C locale, but we want to give users
-   a shot at fixing ambiguities.  xx undone */
+   a shot at fixing ambiguities.  */
+
+#define SIZEOF(a) (sizeof(a) / sizeof(a[0]))
 
 static char *
 default_country_for_lang (const char *ll_code)
 {
+  /* This table comes from msginit.c in gettext (0.16.1).  It is
+     intentionally copied verbatim even though the format is not the
+     most convenient for our purposes, to make updates simple.  */
+  static const char *locales_with_principal_territory[] = {
+		/* Language	Main territory */
+    "ace_ID",	/* Achinese	Indonesia */
+    "af_ZA",	/* Afrikaans	South Africa */
+    "ak_GH",	/* Akan		Ghana */
+    "am_ET",	/* Amharic	Ethiopia */
+    "an_ES",	/* Aragonese	Spain */
+    "ang_GB",	/* Old English	Britain */
+    "as_IN",	/* Assamese	India */
+    "av_RU",	/* Avaric	Russia */
+    "awa_IN",	/* Awadhi	India */
+    "az_AZ",	/* Azerbaijani	Azerbaijan */
+    "bad_CF",	/* Banda	Central African Republic */
+    "ban_ID",	/* Balinese	Indonesia */
+    "be_BY",	/* Belarusian	Belarus */
+    "bem_ZM",	/* Bemba	Zambia */
+    "bg_BG",	/* Bulgarian	Bulgaria */
+    "bho_IN",	/* Bhojpuri	India */
+    "bik_PH",	/* Bikol	Philippines */
+    "bin_NG",	/* Bini		Nigeria */
+    "bm_ML",	/* Bambara	Mali */
+    "bn_IN",	/* Bengali	India */
+    "bo_CN",	/* Tibetan	China */
+    "br_FR",	/* Breton	France */
+    "bs_BA",	/* Bosnian	Bosnia */
+    "btk_ID",	/* Batak	Indonesia */
+    "bug_ID",	/* Buginese	Indonesia */
+    "ca_ES",	/* Catalan	Spain */
+    "ce_RU",	/* Chechen	Russia */
+    "ceb_PH",	/* Cebuano	Philippines */
+    "co_FR",	/* Corsican	France */
+    "cr_CA",	/* Cree		Canada */
+    "cs_CZ",	/* Czech	Czech Republic */
+    "csb_PL",	/* Kashubian	Poland */
+    "cy_GB",	/* Welsh	Britain */
+    "da_DK",	/* Danish	Denmark */
+    "de_DE",	/* German	Germany */
+    "din_SD",	/* Dinka	Sudan */
+    "doi_IN",	/* Dogri	India */
+    "dv_MV",	/* Divehi	Maldives */
+    "dz_BT",	/* Dzongkha	Bhutan */
+    "ee_GH",	/* Éwé		Ghana */
+    "el_GR",	/* Greek	Greece */
+    /* Don't put "en_GB" or "en_US" here.  That would be asking for fruitless
+       political discussion.  */
+    "es_ES",	/* Spanish	Spain */
+    "et_EE",	/* Estonian	Estonia */
+    "fa_IR",	/* Persian	Iran */
+    "fi_FI",	/* Finnish	Finland */
+    "fil_PH",	/* Filipino	Philippines */
+    "fj_FJ",	/* Fijian	Fiji */
+    "fo_FO",	/* Faroese	Faeroe Islands */
+    "fon_BJ",	/* Fon		Benin */
+    "fr_FR",	/* French	France */
+    "fy_NL",	/* Western Frisian	Netherlands */
+    "ga_IE",	/* Irish	Ireland */
+    "gd_GB",	/* Scots	Britain */
+    "gon_IN",	/* Gondi	India */
+    "gsw_CH",	/* Swiss German	Switzerland */
+    "gu_IN",	/* Gujarati	India */
+    "he_IL",	/* Hebrew	Israel */
+    "hi_IN",	/* Hindi	India */
+    "hil_PH",	/* Hiligaynon	Philippines */
+    "hr_HR",	/* Croatian	Croatia */
+    "ht_HT",	/* Haitian	Haiti */
+    "hu_HU",	/* Hungarian	Hungary */
+    "hy_AM",	/* Armenian	Armenia */
+    "id_ID",	/* Indonesian	Indonesia */
+    "ig_NG",	/* Igbo		Nigeria */
+    "ii_CN",	/* Sichuan Yi	China */
+    "ilo_PH",	/* Iloko	Philippines */
+    "is_IS",	/* Icelandic	Iceland */
+    "it_IT",	/* Italian	Italy */
+    "ja_JP",	/* Japanese	Japan */
+    "jab_NG",	/* Hyam		Nigeria */
+    "jv_ID",	/* Javanese	Indonesia */
+    "ka_GE",	/* Georgian	Georgia */
+    "kab_DZ",	/* Kabyle	Algeria */
+    "kaj_NG",	/* Jju		Nigeria */
+    "kam_KE",	/* Kamba	Kenya */
+    "kmb_AO",	/* Kimbundu	Angola */
+    "kcg_NG",	/* Tyap		Nigeria */
+    "kdm_NG",	/* Kagoma	Nigeria */
+    "kg_CD",	/* Kongo	Democratic Republic of Congo */
+    "kk_KZ",	/* Kazakh	Kazakhstan */
+    "kl_GL",	/* Kalaallisut	Greenland */
+    "km_KH",	/* Khmer	Cambodia */
+    "kn_IN",	/* Kannada	India */
+    "ko_KR",	/* Korean	Korea (South) */
+    "kok_IN",	/* Konkani	India */
+    "kr_NG",	/* Kanuri	Nigeria */
+    "kru_IN",	/* Kurukh	India */
+    "lg_UG",	/* Ganda	Uganda */
+    "li_BE",	/* Limburgish	Belgium */
+    "lo_LA",	/* Laotian	Laos */
+    "lt_LT",	/* Lithuanian	Lithuania */
+    "lu_CD",	/* Luba-Katanga	Democratic Republic of Congo */
+    "lua_CD",	/* Luba-Lulua	Democratic Republic of Congo */
+    "luo_KE",	/* Luo		Kenya */
+    "lv_LV",	/* Latvian	Latvia */
+    "mad_ID",	/* Madurese	Indonesia */
+    "mag_IN",	/* Magahi	India */
+    "mai_IN",	/* Maithili	India */
+    "mak_ID",	/* Makasar	Indonesia */
+    "man_ML",	/* Mandingo	Mali */
+    "men_SL",	/* Mende	Sierra Leone */
+    "mg_MG",	/* Malagasy	Madagascar */
+    "min_ID",	/* Minangkabau	Indonesia */
+    "mk_MK",	/* Macedonian	Macedonia */
+    "ml_IN",	/* Malayalam	India */
+    "mn_MN",	/* Mongolian	Mongolia */
+    "mni_IN",	/* Manipuri	India */
+    "mos_BF",	/* Mossi	Burkina Faso */
+    "mr_IN",	/* Marathi	India */
+    "ms_MY",	/* Malay	Malaysia */
+    "mt_MT",	/* Maltese	Malta */
+    "mwr_IN",	/* Marwari	India */
+    "my_MM",	/* Burmese	Myanmar */
+    "na_NR",	/* Nauru	Nauru */
+    "nah_MX",	/* Nahuatl	Mexico */
+    "nap_IT",	/* Neapolitan	Italy */
+    "nb_NO",	/* Norwegian Bokmål	Norway */
+    "nds_DE",	/* Low Saxon	Germany */
+    "ne_NP",	/* Nepali	Nepal */
+    "nl_NL",	/* Dutch	Netherlands */
+    "nn_NO",	/* Norwegian Nynorsk	Norway */
+    "no_NO",	/* Norwegian	Norway */
+    "nr_ZA",	/* South Ndebele	South Africa */
+    "nso_ZA",	/* Northern Sotho	South Africa */
+    "nym_TZ",	/* Nyamwezi	Tanzania */
+    "nyn_UG",	/* Nyankole	Uganda */
+    "oc_FR",	/* Occitan	France */
+    "oj_CA",	/* Ojibwa	Canada */
+    "or_IN",	/* Oriya	India */
+    "pa_IN",	/* Punjabi	India */
+    "pag_PH",	/* Pangasinan	Philippines */
+    "pam_PH",	/* Pampanga	Philippines */
+    "pbb_CO",	/* Páez		Colombia */
+    "pl_PL",	/* Polish	Poland */
+    "ps_AF",	/* Pashto	Afghanistan */
+    "pt_PT",	/* Portuguese	Portugal */
+    "raj_IN",	/* Rajasthani	India */
+    "rm_CH",	/* Rhaeto-Roman	Switzerland */
+    "rn_BI",	/* Kirundi	Burundi */
+    "ro_RO",	/* Romanian	Romania */
+    "ru_RU",	/* Russian	Russia */
+    "sa_IN",	/* Sanskrit	India */
+    "sas_ID",	/* Sasak	Indonesia */
+    "sat_IN",	/* Santali	India */
+    "sc_IT",	/* Sardinian	Italy */
+    "scn_IT",	/* Sicilian	Italy */
+    "sg_CF",	/* Sango	Central African Republic */
+    "shn_MM",	/* Shan		Myanmar */
+    "si_LK",	/* Sinhala	Sri Lanka */
+    "sid_ET",	/* Sidamo	Ethiopia */
+    "sk_SK",	/* Slovak	Slovakia */
+    "sl_SI",	/* Slovenian	Slovenia */
+    "so_SO",	/* Somali	Somalia */
+    "sq_AL",	/* Albanian	Albania */
+    "sr_RS",	/* Serbian	Serbia */
+    "sr_YU",	/* Serbian	Yugoslavia */
+    "srr_SN",	/* Serer	Senegal */
+    "suk_TZ",	/* Sukuma	Tanzania */
+    "sus_GN",	/* Susu		Guinea */
+    "sv_SE",	/* Swedish	Sweden */
+    "te_IN",	/* Telugu	India */
+    "tem_SL",	/* Timne	Sierra Leone */
+    "tet_ID",	/* Tetum	Indonesia */
+    "tg_TJ",	/* Tajik	Tajikistan */
+    "th_TH",	/* Thai		Thailand */
+    "tiv_NG",	/* Tiv		Nigeria */
+    "tk_TM",	/* Turkmen	Turkmenistan */
+    "tl_PH",	/* Tagalog	Philippines */
+    "to_TO",	/* Tonga	Tonga */
+    "tr_TR",	/* Turkish	Turkey */
+    "tum_MW",	/* Tumbuka	Malawi */
+    "uk_UA",	/* Ukrainian	Ukraine */
+    "umb_AO",	/* Umbundu	Angola */
+    "ur_PK",	/* Urdu		Pakistan */
+    "uz_UZ",	/* Uzbek	Uzbekistan */
+    "ve_ZA",	/* Venda	South Africa */
+    "vi_VN",	/* Vietnamese	Vietnam */
+    "wa_BE",	/* Walloon	Belgium */
+    "wal_ET",	/* Walamo	Ethiopia */
+    "war_PH",	/* Waray	Philippines */
+    "wen_DE",	/* Sorbian	Germany */
+    "yao_MW",	/* Yao		Malawi */
+    "zap_MX"	/* Zapotec	Mexico */
+  };
   int c;
-  char *cc_code = xmalloc (strlen (ll_code) + 1);
+  int ll_len = strlen (ll_code);
+  char *cc_code = xmalloc (ll_len + 1 + 1);
+  int principal_len = SIZEOF (locales_with_principal_territory);
   
-  for (c = 0; c < strlen (ll_code); c++)
-    cc_code[c] = toupper (ll_code[c]);
-  cc_code[c] = 0;
+  strcpy (cc_code, ll_code);
+  strcat (cc_code, "_");
+  
+  for (c = 0; c < principal_len; c++)
+    if (strncmp (cc_code, locales_with_principal_territory[c], ll_len) == 0)
+      {
+        free (cc_code);
+        cc_code = xstrdup (locales_with_principal_territory[c]);
+        break;
+      }
+  
+  /* If didn't find one to copy, warn and duplicate.  */
+  if (c == principal_len)
+    {
+      warning (_("no default territory known for locale `%s'"), ll_code);
+      for (c = 0; c < strlen (ll_code); c++)
+        cc_code[c] = toupper (ll_code[c]);
+      cc_code[c] = 0;
+      /* We're wasting a byte, oops.  */
+    }
   
   return cc_code;
 }
