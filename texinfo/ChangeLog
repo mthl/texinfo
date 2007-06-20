@@ -1,3 +1,16 @@
+2007-06-20  Karl Berry  <karl@gnu.org>
+	
+	* lang.c (default_country_for_lang): just return country code, not
+	whole locale string.
+	
+	* makeinfo.h (output_head_p): new global.
+	* makeinfo.c (info_output_head, output_head): new fns.
+	(add_char): call it.  This is so we can translate the file header
+	("produced by Makeinfo ...") in Info output as well as HTML.
+	* html.c,
+	* html.h, 
+	* cmds.c: change usage of html_output_head_p to output_head_p, etc.
+
 2007-06-17  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/lang.c (default_country_for_lang): implement using the

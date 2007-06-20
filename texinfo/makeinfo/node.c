@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.33 2007-06-05 23:03:02 karl Exp $
+   $Id: node.c,v 1.34 2007-06-20 20:05:42 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -913,8 +913,8 @@ cm_node (void)
 	  if (!tag)
 	    {
 	      output_stream = fopen (filename, "w");
-	      html_output_head_p = 0; /* so that we generate HTML preamble */
-	      html_output_head ();
+	      output_head_p = 0; /* so that we generate HTML preamble */
+	      output_head ();
 	    }
 	  else if ((tag->flags & TAG_FLAG_ANCHOR) != 0)
 	    {
@@ -931,8 +931,8 @@ cm_node (void)
 	      free (tag->html_fname);
 	      tag->html_fname = NULL;
 	      output_stream = fopen (filename, "w");
-	      html_output_head_p = 0; /* so that we generate HTML preamble */
-	      html_output_head ();
+	      output_head_p = 0; /* so that we generate HTML preamble */
+	      output_head ();
 	    }
 	  else
 	    {

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.98 2007-06-15 01:04:41 karl Exp $
+   $Id: makeinfo.c,v 1.99 2007-06-20 20:05:42 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -1658,7 +1658,7 @@ convert_from_loaded_file (char *name)
     }
 
   set_current_output_filename (real_output_filename);
-
+  
   if (xml && !docbook)
     xml_begin_document (filename_part (output_filename));
 
@@ -1695,13 +1695,6 @@ convert_from_loaded_file (char *name)
       if (input_text[temp++] == '\n')
         line_number++;
   }
-
-  /* html fixxme: should output this as trailer on first page.  */
-  if (!no_headers && !html && !xml)
-    add_word_args (__("This is %s, produced by makeinfo version %s from %s.\n"),
-                   output_filename, VERSION, input_filename);
-
-  close_paragraph ();
 
   if (xml && !docbook)
     {
@@ -2024,7 +2017,8 @@ get_command_entry (char *string)
   /* We never heard of this command. */
   return (COMMAND *) -1;
 }
-
+
+
 /* input_text_offset is right at the command prefix character.
    Read the next token to determine what to do.  Return zero
    if there's no known command or macro after the prefix character.  */
@@ -2617,7 +2611,42 @@ defining_copying (void)
   return 0;
 }
 
+/* Output the header for Info.
+   html fixxme: should output this as trailer on first page (at least).  */
 
+static void
+info_output_head (void)
+{
+  add_word_args (__("This is %s, produced by makeinfo version %s from %s.\n"),
+                 output_filename, VERSION, input_filename);
+
+  /* Start afresh with whatever real text we have.  */
+  close_paragraph ();
+
+  /* We do not want indentation in what follows, which is usually going
+     to be a node marker (CTRL-_).  */
+  if (inhibit_paragraph_indentation == 0)
+    inhibit_paragraph_indentation = -1;
+}
+
+void
+output_head (void)
+{
+  if (output_head_p) /* no-op if we're mistakenly called twice */
+    return;
+  output_head_p = 1;
+  
+  if (html)
+    html_output_head ();
+  else if (xml)
+    ; /* handled differently, via xml_begin_document */
+  else if (no_headers)
+    ; /* no header for plain text */
+  else
+    info_output_head ();
+}
+
+
 /* Add the character to the current paragraph.  If filling_enabled is
    nonzero, then do filling as well. */
 void
@@ -2725,15 +2754,19 @@ add_char (int character)
               }
           }
 
-        /* This is sad, but it seems desirable to not force any
-           particular order on the front matter commands.  This way,
-           the document can do @settitle, @documentlanguage, etc, in
-           any order and with any omissions, and we'll still output
-           the html <head> `just in time'.  */
+        /* This is a sad place to do this, but it seems highly desirable
+           to not force any particular order on the front matter
+           commands.  This way, the document can do @settitle,
+           @documentlanguage, etc, in any order and with any omissions,
+           and we'll still output the header ("produced by makeinfo",
+           HTML <head>, etc.) `just in time'.  */
         if ((executing_macro || !executing_string)
             && !only_macro_expansion
-            && html && !html_output_head_p && !defining_copying ())
-          html_output_head ();
+            && !defining_copying ()
+            && !output_head_p)
+          {
+            output_head ();
+          }
 
         if (!paragraph_is_open)
           {
@@ -4304,7 +4337,7 @@ getdocumenttext (const char *msgid)
 #endif
     {
       /* Fetch the translation.  */
-      result = gettext (msgid);
+      result = gettext ((char *) msgid);
     }
 
   /* Restore LC_ALL, LANGUAGE environment variables.  */
@@ -4324,5 +4357,5 @@ getdocumenttext (const char *msgid)
   free (old_locale);
 #endif
 
-  return result;
+  return (char *) result;
 }

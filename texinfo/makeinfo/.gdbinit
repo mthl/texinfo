@@ -261,5 +261,4 @@ set args -o $ttests/anchorline.out $ttests/anchorline.tex
 set args --no-split --html -o $ttests/chart.out $ttests/chart.tex
 
 #set env LANG de
-set args -o - --docbook $ttests/doclang.tex
-
+set args -o - --no-headers $ttests/doclang.tex

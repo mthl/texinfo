@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.70 2007-04-29 18:36:21 karl Exp $
+   $Id: cmds.c,v 1.71 2007-06-20 20:05:42 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -607,7 +607,7 @@ cm_comment (void)
   /* For HTML, do not output comments before HTML header is written,
      otherwise comments before @settitle cause an empty <title> in the
      header.  */
-  if ((html && html_output_head_p) || xml)
+  if ((html && output_head_p) || xml)
     {
       char *line;
       get_rest_of_line (0, &line);

@@ -1,7 +1,7 @@
 /* html.h -- declarations for html-related utilities.
-   $Id: html.h,v 1.7 2005-05-15 00:00:07 karl Exp $
+   $Id: html.h,v 1.8 2007-06-20 20:05:42 karl Exp $
 
-   Copyright (C) 1999, 2000, 2002, 2004 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2002, 2004, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,9 +27,6 @@ typedef struct hstack
   char *tag;
   char *attribs;
 } HSTACK;
-
-/* Nonzero if we have output the <head>.  */
-extern int html_output_head_p;
 
 /* Nonzero if we have output a title, from @titlefont or @settitle.  */
 extern int html_title_written;

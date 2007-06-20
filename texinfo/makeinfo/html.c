@@ -1,8 +1,8 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.36 2007-04-30 00:11:00 karl Exp $
+   $Id: html.c,v 1.37 2007-06-20 20:05:42 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
-   Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -190,20 +190,13 @@ process_css_file (char *filename)
 HSTACK *htmlstack = NULL;
 
 /* See html.h.  */
-int html_output_head_p = 0;
 int html_title_written = 0;
 
 void
 html_output_head (void)
 {
   static const char *html_title = NULL;
-  char *encoding;
-
-  if (html_output_head_p)
-    return;
-  html_output_head_p = 1;
-
-  encoding = current_document_encoding ();
+  char *encoding = current_document_encoding ();
 
   /* The <title> should not have markup, so use text_expansion.  */
   if (!html_title)
@@ -216,8 +209,8 @@ html_output_head (void)
   add_html_block_elt_args ("<html lang=\"%s\">\n<head>\n",
       language_table[language_code].abbrev);
 
-  /* When splitting, add current node's name to title if it's available and not
-     Top.  */
+  /* When splitting, add current node's name to title if it's available
+     and not Top.  */
   if (splitting && current_node && !STREQ (current_node, "Top"))
     add_word_args ("<title>%s - %s</title>\n",
         escape_string (xstrdup (current_node)), html_title);

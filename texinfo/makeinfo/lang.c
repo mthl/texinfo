@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.24 2007-06-18 13:07:13 karl Exp $
+   $Id: lang.c,v 1.25 2007-06-20 20:05:42 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free
    Software Foundation, Inc.
@@ -724,8 +724,8 @@ lang_transliterate_char (byte_t ch)
 /* Given a language code LL_CODE, return a "default" country code (in
    new memory).  We use the same table as gettext, and return LL_CODE
    uppercased in the absence of any better possibility, with a warning.
-   gettext silently defaults to the C locale, but we want to give users
-   a shot at fixing ambiguities.  */
+   (gettext silently defaults to the C locale, but we want to give users
+   a shot at fixing ambiguities.)  */
 
 #define SIZEOF(a) (sizeof(a) / sizeof(a[0]))
 
@@ -925,29 +925,41 @@ default_country_for_lang (const char *ll_code)
     "zap_MX"	/* Zapotec	Mexico */
   };
   int c;
+  int cc_len;
   int ll_len = strlen (ll_code);
   char *cc_code = xmalloc (ll_len + 1 + 1);
   int principal_len = SIZEOF (locales_with_principal_territory);
   
   strcpy (cc_code, ll_code);
   strcat (cc_code, "_");
+  cc_len = ll_len + 1;
   
   for (c = 0; c < principal_len; c++)
-    if (strncmp (cc_code, locales_with_principal_territory[c], ll_len) == 0)
-      {
-        free (cc_code);
-        cc_code = xstrdup (locales_with_principal_territory[c]);
-        break;
-      }
+    {
+      const char *principal_locale = locales_with_principal_territory[c];
+      if (strncmp (principal_locale, cc_code, cc_len) == 0)
+        {
+          const char *underscore = strchr (principal_locale, '_');
+          /* should always be there, but in case ... */
+          free (cc_code);
+          cc_code = xstrdup (underscore ? underscore + 1 : principal_locale);
+          break;
+        }
+    }
   
   /* If didn't find one to copy, warn and duplicate.  */
   if (c == principal_len)
     {
-      warning (_("no default territory known for locale `%s'"), ll_code);
-      for (c = 0; c < strlen (ll_code); c++)
-        cc_code[c] = toupper (ll_code[c]);
-      cc_code[c] = 0;
-      /* We're wasting a byte, oops.  */
+      if (strcasecmp (ll_code, "en"))
+        cc_code = xstrdup ("en_US");
+      else
+        {
+          warning (_("no default territory known for language `%s'"), ll_code);
+          for (c = 0; c < strlen (ll_code); c++)
+            cc_code[c] = toupper (ll_code[c]);
+          cc_code[c] = 0;
+          /* We're probably wasting a byte, oops.  */
+        }
     }
   
   return cc_code;
@@ -1007,6 +1019,11 @@ cm_documentlanguage (void)
   if (c == last_language_code)
     warning (_("%s is not a valid ISO 639 language code"), ll_part);
 
+  /* Set the language our `getdocumenttext' function uses for
+     translating document strings.  */
+  document_language = xstrdup (locale_string);
+  free (locale_string);
+  
   if (xml && !docbook)
     { /* According to http://www.opentag.com/xfaq_lang.htm, xml:lang
          takes an ISO 639 language code, optionally followed by a dash
@@ -1022,13 +1039,8 @@ cm_documentlanguage (void)
       free (xml_locale);
     }
 
-  /* Set the language our `getdocumenttext' function uses for
-     translating document strings.  */
-  document_language = xstrdup (locale_string);
-  
   free (ll_part);
   free (cc_part);
-  free (locale_string);
 }
 
 
