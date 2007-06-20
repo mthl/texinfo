@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
+@c $Id: texinfo.txi,v 1.195 2007-06-20 20:27:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13385,10 +13385,11 @@ supports, see @ref{Inserting Accents}.
 
 @findex documentlanguage
 @cindex Language, declaring
+@cindex Locale, declaring
 @cindex Document language, declaring
 
 The @code{@@documentlanguage} command declares the current document
-language.  Write it on a line by itself, near the beginning of the
+locale.  Write it on a line by itself, near the beginning of the
 file, but after @code{@@setfilename}
 (@pxref{setfilename,,@code{@@setfilename}}).
 
@@ -13400,8 +13401,9 @@ to declare each language change.  If the command is not used at all,
 the default is @code{en_US} for US English.
 
 As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
-code is omitted, the main dialect is assumed.  For example, @code{de}
-is equivalent to @code{de_DE} (German as spoken in Germany). 
+code is omitted, the main dialect is assumed where possible.  For
+example, @code{de} is equivalent to @code{de_DE} (German as spoken in
+Germany).
 
 @cindex Document strings, translation of
 For Info and other online output, this command changes the translation
@@ -13412,15 +13414,18 @@ Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
 there; they are translated in other output formats.
 
 @cindex @file{txi-@var{cc}.tex}
-For @TeX{}, this command causes the file @file{txi-@var{ll}.tex} to be
-read (if it exists).  Such a file appropriately redefines the various
-English words used in @TeX{} output, such as `Chapter', `See', and so
-on.
+For @TeX{}, this command causes a file @file{txi-@var{locale}.tex} to
+be read (if it exists).  If @code{@@setdocumentlanguage} argument
+contains the optional @samp{_@var{cc}} suffix, this is tried first.
+For example, with @code{@@setdocumentlanguage de_DE}, @TeX{} first
+looks for @file{txi-de_DE.tex}, then @file{txi-de.tex}.
 
-We are aware that individual words like these cannot always be
-translated in isolation, and that a very different strategy would be
-required for ideographic (among other) scripts.  Help in improving
-Texinfo's language support would be welcome.
+Such a @file{txi-*} file is intended to redefine the various English
+words used in @TeX{} output, such as `Chapter', `See', and so on.  We
+are aware that individual words like these cannot always be translated
+in isolation, and that a very different strategy would be required for
+ideographic (among other) scripts.  Help in improving Texinfo's
+language support is welcome.
 
 @cindex Hyphenation patterns, language-dependent
 It would also be desirable for this command to also change @TeX{}'s
@@ -18739,7 +18744,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
+$Id: texinfo.txi,v 1.195 2007-06-20 20:27:41 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18805,7 +18810,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.194 2007-06-17 22:50:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.195 2007-06-20 20:27:41 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,9 @@
 2007-06-20  Karl Berry  <karl@gnu.org>
-	
+
+	* texinfo.tex (\documentlanguagetrywithoutunderscore): new macro,
+	to try txi-de.tex if @documentlanguage de_DE.
+	(\documentlanguage): call it.
+
 	* lang.c (default_country_for_lang): just return country code, not
 	whole locale string.
 	
