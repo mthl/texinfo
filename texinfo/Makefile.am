@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.18 2006-11-24 14:05:11 karl Exp $
+# $Id: Makefile.am,v 1.19 2007-06-21 18:57:40 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -51,8 +51,8 @@ endif
 
 # From coreutils.
 # Verify that all source files using _() are listed in po/POTFILES.in.
-# The idea is to run this before making pretests, as well as official
-# releases, so that 
+# Run this before making pretests, as well as official releases, so that
+# translators will see changed string.
 po-check:
 	if test -f po/POTFILES.in; then					\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
