@@ -1,3 +1,8 @@
+2007-06-24  Karl Berry  <karl@gnu.org>
+
+	* texinfo.tex (\internalpagesizes): must reset \pdfhorigin and
+	\pdfvorigin after changing \pdfpageheight and \pdfpagewidth.
+
 2007-06-20  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\documentlanguagetrywithoutunderscore): new macro,
