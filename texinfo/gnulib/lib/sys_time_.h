@@ -18,14 +18,17 @@
 
 /* Written by Paul Eggert.  */
 
-#ifndef _gl_SYS_TIME_H
-#define _gl_SYS_TIME_H
+#ifndef _GL_SYS_TIME_H
 
+/* The include_next requires a split double-inclusion guard.  */
 #if @HAVE_SYS_TIME_H@
-# include @ABSOLUTE_SYS_TIME_H@
+# @INCLUDE_NEXT@ @NEXT_SYS_TIME_H@
 #else
 # include <time.h>
 #endif
+
+#ifndef _GL_SYS_TIME_H
+#define _GL_SYS_TIME_H
 
 #if ! @HAVE_STRUCT_TIMEVAL@
 struct timeval
@@ -35,10 +38,11 @@ struct timeval
 };
 #endif
 
-#if @GETTIMEOFDAY_REPLACEMENT@
+#if @REPLACE_GETTIMEOFDAY@
 # undef gettimeofday
 # define gettimeofday rpl_gettimeofday
 int gettimeofday (struct timeval *restrict, void *restrict);
 #endif
 
-#endif /* _gl_SYS_TIME_H */
+#endif /* _GL_SYS_TIME_H */
+#endif /* _GL_SYS_TIME_H */

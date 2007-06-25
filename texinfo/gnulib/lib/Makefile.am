@@ -34,6 +34,15 @@ libgnu_a_LIBADD = $(gl_LIBOBJS)
 libgnu_a_DEPENDENCIES = $(gl_LIBOBJS)
 EXTRA_libgnu_a_SOURCES =
 
+## begin gnulib module absolute-header
+
+# Use this preprocessor expression to decide whether #include_next works.
+# Do not rely on a 'configure'-time test for this, since the expression
+# might appear in an installed header, which is used by some other compiler.
+HAVE_INCLUDE_NEXT = (__GNUC__ || 60000000 <= __DECC_VER)
+
+## end   gnulib module absolute-header
+
 ## begin gnulib module alloca-opt
 
 BUILT_SOURCES += $(ALLOCA_H)
@@ -50,14 +59,6 @@ MOSTLYCLEANFILES += alloca.h alloca.h-t
 EXTRA_DIST += alloca_.h
 
 ## end   gnulib module alloca-opt
-
-## begin gnulib module allocsa
-
-libgnu_a_SOURCES += allocsa.h allocsa.c
-
-EXTRA_DIST += allocsa.valgrind
-
-## end   gnulib module allocsa
 
 ## begin gnulib module error
 
@@ -131,6 +132,14 @@ LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
 
 ## end   gnulib module link-warning
 
+## begin gnulib module malloca
+
+libgnu_a_SOURCES += malloca.c
+
+EXTRA_DIST += malloca.h malloca.valgrind
+
+## end   gnulib module malloca
+
 ## begin gnulib module mbswidth
 
 libgnu_a_SOURCES += mbswidth.h mbswidth.c
@@ -183,7 +192,8 @@ stdint.h: stdint_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
-	      -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
+	      -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_STDINT_H''@|$(NEXT_STDINT_H)|g' \
 	      -e 's/@''HAVE_SYS_TYPES_H''@/$(HAVE_SYS_TYPES_H)/g' \
 	      -e 's/@''HAVE_INTTYPES_H''@/$(HAVE_INTTYPES_H)/g' \
 	      -e 's/@''HAVE_SYS_INTTYPES_H''@/$(HAVE_SYS_INTTYPES_H)/g' \
@@ -221,7 +231,8 @@ BUILT_SOURCES += stdlib.h
 stdlib.h: stdlib_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
-	  sed -e 's|@''ABSOLUTE_STDLIB_H''@|$(ABSOLUTE_STDLIB_H)|g' \
+	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_STDLIB_H''@|$(NEXT_STDLIB_H)|g' \
 	      -e 's|@''GNULIB_GETSUBOPT''@|$(GNULIB_GETSUBOPT)|g' \
 	      -e 's|@''GNULIB_MKDTEMP''@|$(GNULIB_MKDTEMP)|g' \
 	      -e 's|@''GNULIB_MKSTEMP''@|$(GNULIB_MKSTEMP)|g' \
@@ -274,8 +285,10 @@ BUILT_SOURCES += string.h
 string.h: string_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
-	  sed -e 's|@''ABSOLUTE_STRING_H''@|$(ABSOLUTE_STRING_H)|g' \
+	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_STRING_H''@|$(NEXT_STRING_H)|g' \
 	      -e 's|@''GNULIB_MBSLEN''@|$(GNULIB_MBSLEN)|g' \
+	      -e 's|@''GNULIB_MBSNLEN''@|$(GNULIB_MBSNLEN)|g' \
 	      -e 's|@''GNULIB_MBSCHR''@|$(GNULIB_MBSCHR)|g' \
 	      -e 's|@''GNULIB_MBSRCHR''@|$(GNULIB_MBSRCHR)|g' \
 	      -e 's|@''GNULIB_MBSSTR''@|$(GNULIB_MBSSTR)|g' \
@@ -333,18 +346,22 @@ BUILT_SOURCES += $(SYS_STAT_H)
 
 # We need the following in order to create <sys/stat.h> when the system
 # has one that is incomplete.
-sys/stat.h: stat_.h
+sys/stat.h: sys_stat_.h
 	@MKDIR_P@ sys
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''ABSOLUTE_SYS_STAT_H''@|$(ABSOLUTE_SYS_STAT_H)|g' \
-	      < $(srcdir)/stat_.h; \
+	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_SYS_STAT_H''@|$(NEXT_SYS_STAT_H)|g' \
+	      -e 's|@''HAVE_IO_H''@|$(HAVE_IO_H)|g' \
+	      -e 's|@''HAVE_LSTAT''@|$(HAVE_LSTAT)|g' \
+	      -e 's|@''HAVE_DECL_MKDIR''@|$(HAVE_DECL_MKDIR)|g' \
+	      < $(srcdir)/sys_stat_.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += sys/stat.h sys/stat.h-t
 MOSTLYCLEANDIRS += sys
 
-EXTRA_DIST += stat_.h
+EXTRA_DIST += sys_stat_.h
 
 ## end   gnulib module sys_stat
 
@@ -359,8 +376,9 @@ sys/time.h: sys_time_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''HAVE_SYS_TIME_H''@/$(HAVE_SYS_TIME_H)/g' \
-	      -e 's|@''ABSOLUTE_SYS_TIME_H''@|$(ABSOLUTE_SYS_TIME_H)|g' \
-	      -e 's/@''GETTIMEOFDAY_REPLACEMENT''@/$(GETTIMEOFDAY_REPLACEMENT)/g' \
+	      -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_SYS_TIME_H''@|$(NEXT_SYS_TIME_H)|g' \
+	      -e 's/@''REPLACE_GETTIMEOFDAY''@/$(REPLACE_GETTIMEOFDAY)/g' \
 	      -e 's/@''HAVE_STRUCT_TIMEVAL''@/$(HAVE_STRUCT_TIMEVAL)/g' \
 	      < $(srcdir)/sys_time_.h; \
 	} > $@-t
@@ -390,21 +408,28 @@ unistd.h: unistd_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
-	      -e 's|@''ABSOLUTE_UNISTD_H''@|$(ABSOLUTE_UNISTD_H)|g' \
+	      -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_UNISTD_H''@|$(NEXT_UNISTD_H)|g' \
 	      -e 's|@''GNULIB_CHOWN''@|$(GNULIB_CHOWN)|g' \
 	      -e 's|@''GNULIB_DUP2''@|$(GNULIB_DUP2)|g' \
 	      -e 's|@''GNULIB_FCHDIR''@|$(GNULIB_FCHDIR)|g' \
 	      -e 's|@''GNULIB_FTRUNCATE''@|$(GNULIB_FTRUNCATE)|g' \
 	      -e 's|@''GNULIB_GETCWD''@|$(GNULIB_GETCWD)|g' \
 	      -e 's|@''GNULIB_GETLOGIN_R''@|$(GNULIB_GETLOGIN_R)|g' \
+	      -e 's|@''GNULIB_LCHOWN''@|$(GNULIB_LCHOWN)|g' \
+	      -e 's|@''GNULIB_LSEEK''@|$(GNULIB_LSEEK)|g' \
 	      -e 's|@''GNULIB_READLINK''@|$(GNULIB_READLINK)|g' \
+	      -e 's|@''GNULIB_SLEEP''@|$(GNULIB_SLEEP)|g' \
 	      -e 's|@''HAVE_DUP2''@|$(HAVE_DUP2)|g' \
 	      -e 's|@''HAVE_FTRUNCATE''@|$(HAVE_FTRUNCATE)|g' \
 	      -e 's|@''HAVE_READLINK''@|$(HAVE_READLINK)|g' \
+	      -e 's|@''HAVE_SLEEP''@|$(HAVE_SLEEP)|g' \
 	      -e 's|@''HAVE_DECL_GETLOGIN_R''@|$(HAVE_DECL_GETLOGIN_R)|g' \
 	      -e 's|@''REPLACE_CHOWN''@|$(REPLACE_CHOWN)|g' \
 	      -e 's|@''REPLACE_FCHDIR''@|$(REPLACE_FCHDIR)|g' \
 	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
+	      -e 's|@''REPLACE_LCHOWN''@|$(REPLACE_LCHOWN)|g' \
+	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
 	      < $(srcdir)/unistd_.h; \
 	} > $@-t
 	mv $@-t $@
@@ -423,7 +448,9 @@ BUILT_SOURCES += $(WCHAR_H)
 wchar.h: wchar_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''ABSOLUTE_WCHAR_H''@|$(ABSOLUTE_WCHAR_H)|g' \
+	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_WCHAR_H''@|$(NEXT_WCHAR_H)|g' \
+	      -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
 	    < $(srcdir)/wchar_.h; \
 	} > $@-t
 	mv $@-t $@
@@ -443,8 +470,9 @@ wctype.h: wctype_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''HAVE_WCTYPE_H''@/$(HAVE_WCTYPE_H)/g' \
-	      -e 's|@''ABSOLUTE_WCTYPE_H''@|$(ABSOLUTE_WCTYPE_H)|g' \
-	      -e 's/@''HAVE_WCTYPE_CTMP_BUG''@/$(HAVE_WCTYPE_CTMP_BUG)/g' \
+	      -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
+	      -e 's|@''NEXT_WCTYPE_H''@|$(NEXT_WCTYPE_H)|g' \
+	      -e 's/@''HAVE_ISWCNTRL''@/$(HAVE_ISWCNTRL)/g' \
 	      -e 's/@''HAVE_WINT_T''@/$(HAVE_WINT_T)/g' \
 	      < $(srcdir)/wctype_.h; \
 	} > $@-t
@@ -488,4 +516,5 @@ mostlyclean-local: mostlyclean-generic
 	  if test -n "$$dir" && test -d $$dir; then \
 	    echo "rmdir $$dir"; rmdir $$dir; \
 	  fi; \
-	done
+	done; \
+	:

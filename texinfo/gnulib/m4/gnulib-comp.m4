@@ -42,20 +42,23 @@ AC_DEFUN([gl_INIT],
   gl_ltlibdeps=
   gl_source_base='gnulib/lib'
   gl_FUNC_ALLOCA
-  gl_ALLOCSA
   gl_ERROR
   gl_EXITFAIL
   gl_GETOPT
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
-  AM_GNU_GETTEXT_VERSION([0.15])
+  AM_GNU_GETTEXT_VERSION([0.16.1])
+  AC_SUBST([LIBINTL])
+  AC_SUBST([LTLIBINTL])
   gl_FUNC_GETTIMEOFDAY
   gl_INLINE
+  gl_MALLOCA
   gl_MBSWIDTH
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
-  gt_FUNC_SETENV
+  gl_FUNC_SETENV
+  gl_FUNC_UNSETENV
   gl_STDINT_H
   gl_STDLIB_H
   gl_STRCASE
@@ -117,9 +120,6 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/link-warning.h
   lib/alloca_.h
-  lib/allocsa.c
-  lib/allocsa.h
-  lib/allocsa.valgrind
   lib/error.c
   lib/error.h
   lib/exitfail.c
@@ -130,6 +130,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/gettimeofday.c
+  lib/malloca.c
+  lib/malloca.h
+  lib/malloca.valgrind
   lib/mbswidth.c
   lib/mbswidth.h
   lib/memcpy.c
@@ -137,7 +140,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mkstemp.c
   lib/setenv.c
   lib/setenv.h
-  lib/stat_.h
   lib/stdint_.h
   lib/stdlib_.h
   lib/strcasecmp.c
@@ -145,6 +147,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror.c
   lib/string_.h
   lib/strncasecmp.c
+  lib/sys_stat_.h
   lib/sys_time_.h
   lib/tempname.c
   lib/tempname.h
@@ -160,7 +163,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xsetenv.h
   m4/absolute-header.m4
   m4/alloca.m4
-  m4/allocsa.m4
   m4/codeset.m4
   m4/eealloc.m4
   m4/error.m4
@@ -173,10 +175,12 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/glibc21.m4
   m4/gnulib-common.m4
   m4/iconv.m4
+  m4/include_next.m4
   m4/inline.m4
   m4/intdiv0.m4
   m4/intl.m4
   m4/intldir.m4
+  m4/intlmacosx.m4
   m4/intmax.m4
   m4/inttypes-pri.m4
   m4/inttypes_h.m4
@@ -185,8 +189,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/lock.m4
-  m4/longdouble.m4
   m4/longlong.m4
+  m4/malloca.m4
   m4/mbrtowc.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4

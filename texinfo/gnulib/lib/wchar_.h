@@ -26,7 +26,6 @@
  */
 
 #ifndef _GL_WCHAR_H
-#define _GL_WCHAR_H
 
 /* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
    <wchar.h>.
@@ -36,7 +35,15 @@
 #include <stdio.h>
 #include <time.h>
 
-/* Include the original <wchar.h>.  */
-#include @ABSOLUTE_WCHAR_H@
+/* Include the original <wchar.h> if it exists.
+   Some builds of uClibc lack it.  */
+/* The include_next requires a split double-inclusion guard.  */
+#if @HAVE_WCHAR_H@
+# @INCLUDE_NEXT@ @NEXT_WCHAR_H@
+#endif
 
+#ifndef _GL_WCHAR_H
+#define _GL_WCHAR_H
+
+#endif /* _GL_WCHAR_H */
 #endif /* _GL_WCHAR_H */

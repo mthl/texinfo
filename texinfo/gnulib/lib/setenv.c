@@ -1,4 +1,4 @@
-/* Copyright (C) 1992,1995-1999,2000-2003,2005,2006 Free Software Foundation, Inc.
+/* Copyright (C) 1992,1995-1999,2000-2003,2005-2007 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software; you can redistribute it and/or modify
@@ -31,8 +31,10 @@
 # include <unistd.h>
 #endif
 
+#if _LIBC || !HAVE_SETENV
+
 #if !_LIBC
-# include "allocsa.h"
+# include "malloca.h"
 #endif
 
 #if !_LIBC
@@ -160,7 +162,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	  __mempcpy (__mempcpy (__mempcpy (new_value, name, namelen), "=", 1),
 		     value, vallen);
 # else
-	  new_value = (char *) allocsa (namelen + 1 + vallen);
+	  new_value = (char *) malloca (namelen + 1 + vallen);
 	  if (new_value == NULL)
 	    {
 	      __set_errno (ENOMEM);
@@ -180,7 +182,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	      if (new_environ[size] == NULL)
 		{
 #if defined USE_TSEARCH && !defined _LIBC
-		  freesa (new_value);
+		  freea (new_value);
 #endif
 		  __set_errno (ENOMEM);
 		  UNLOCK;
@@ -200,7 +202,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	      STORE_VALUE (new_environ[size]);
 	    }
 #if defined USE_TSEARCH && !defined _LIBC
-	  freesa (new_value);
+	  freea (new_value);
 #endif
 	}
 
@@ -228,7 +230,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	  __mempcpy (__mempcpy (__mempcpy (new_value, name, namelen), "=", 1),
 		     value, vallen);
 # else
-	  new_value = allocsa (namelen + 1 + vallen);
+	  new_value = malloca (namelen + 1 + vallen);
 	  if (new_value == NULL)
 	    {
 	      __set_errno (ENOMEM);
@@ -248,7 +250,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	      if (np == NULL)
 		{
 #if defined USE_TSEARCH && !defined _LIBC
-		  freesa (new_value);
+		  freea (new_value);
 #endif
 		  __set_errno (ENOMEM);
 		  UNLOCK;
@@ -266,7 +268,7 @@ __add_to_environ (const char *name, const char *value, const char *combined,
 	      STORE_VALUE (np);
 	    }
 #if defined USE_TSEARCH && !defined _LIBC
-	  freesa (new_value);
+	  freea (new_value);
 #endif
 	}
 
@@ -326,3 +328,5 @@ text_set_element (__libc_subfreeres, free_mem);
 weak_alias (__setenv, setenv)
 weak_alias (__clearenv, clearenv)
 #endif
+
+#endif /* _LIBC || !HAVE_SETENV */
