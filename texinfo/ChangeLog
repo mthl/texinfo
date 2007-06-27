@@ -1,3 +1,8 @@
+2007-06-27  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (move_to_dest): do not copy a file onto itself,
+	GNU cp complains.
+
 2007-06-27  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* texinfo.tex (\setnonasciicharscatcodenonglobal): new macro.

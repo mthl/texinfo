@@ -1,13 +1,13 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.94 2007-01-16 10:01:43 akim Exp $
+# $Id: texi2dvi,v 1.95 2007-06-27 17:19:38 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2, or (at your option)
+# the Free Software Foundation; either version 3, or (at your option)
 # any later version.
 #
 # This program is distributed in the hope that it will be useful,
@@ -35,16 +35,15 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.94 $'
+rcs_revision='$Revision: 1.95 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
-version="texi2dvi (GNU Texinfo 4.8) $rcs_version
+version="texi2dvi (GNU Texinfo 4.9) $rcs_version
 
-Copyright (C) 2005 Free Software Foundation, Inc.
-There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  You may redistribute copies of GNU texinfo
-under the terms of the GNU General Public License.
-For more information about these matters, see the file named COPYING.
+Copyright (C) 2007 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 "
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
@@ -526,8 +525,10 @@ move_to_dest ()
       error 1 "no such file or directory: $file"
     fi
     if test -n "$dest"; then
-      verbose "Copying $file to $dest"
-      cp -p "$file" "$dest"
+      if cmp -s "$file" "$dest"; then :; else
+        verbose "Copying $file to $dest"
+        cp -p "$file" "$dest"
+      fi
     fi
   done
 }
