@@ -1,8 +1,8 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.12 2004-04-11 17:56:47 karl Exp $
+   $Id: install-info.c,v 1.12.2.1 2007-06-27 17:02:28 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+   2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1262,10 +1262,11 @@ main (int argc, char **argv)
         case 'V':
           printf ("install-info (GNU %s) %s\n", PACKAGE, VERSION);
           puts ("");
-          puts ("Copyright (C) 2004 Free Software Foundation, Inc.");
-          printf (_("There is NO warranty.  You may redistribute this software\n\
-under the terms of the GNU General Public License.\n\
-For more information about these matters, see the files named COPYING.\n"));
+      printf (_("Copyright (C) %s Free Software Foundation, Inc.\n\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+This is free software: you are free to change and redistribute it.\n\
+There is NO WARRANTY, to the extent permitted by law.\n"),
+	      "2007");
           xexit (0);
 
         default:

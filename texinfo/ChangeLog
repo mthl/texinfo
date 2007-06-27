@@ -1,3 +1,15 @@
+2007-06-27  Karl Berry  <karl@gnu.org>
+
+	* Interim 4.9 release, updating to GPLv3.
+	Including new texinfo.tex and texi2dvi since they don't depend on
+	other changes.
+	
+	* makeinfo/makeinfo.c,
+	* info/info.c,
+	* info/infokey.c,
+	* util/install-info.c,
+	* util/texindex.c: update --version output.
+
 2004-12-31  Karl Berry  <karl@gnu.org>
 
 	* Version 4.8.
