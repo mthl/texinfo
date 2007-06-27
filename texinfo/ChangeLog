@@ -2,7 +2,8 @@
 
 	* texinfo.tex (\setnonasciicharscatcodenonglobal): new macro.
 	(\scanctxt):  in case of non-ASCII encodings, un-activate 8-bit
-	chars to avoid their expansion.
+	chars to avoid their expansion.  Report from John Mandereau on
+	bug-texinfo, Jun 22, 2007 at 05:26:09PM +0200.
 
 2007-06-24  Karl Berry  <karl@gnu.org>
 
