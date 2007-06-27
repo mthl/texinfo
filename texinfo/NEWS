@@ -1,9 +1,9 @@
-$Id: NEWS,v 1.104 2004-12-31 21:43:12 karl Exp $
+$Id: NEWS,v 1.104.2.1 2007-06-27 17:10:53 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+  2001, 2002, 2003, 2004, 2007 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -22,6 +22,31 @@ convenience, here's a url to one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+4.9 (29 June 2007)
+* GPLv3.
+* texi2dvi:
+  . new mode --build=tidy which supports compilation in a separate
+    directory, where intermediate files are preserved.
+  . new option --build-dir, to specify where the tidy build will take
+    place, either locally or globally.  This allows avoiding the clutter
+    while preserving auxiliary files.
+  . new support for AUC-TeX: texi2dvi (weakly) supports arguments a la
+    TeX such as `\nonstopmode\input{file.tex}'.
+  . new options --ps and --dvipdf, useful especially for pstricks documents.
+  . new option --src-specials, passed to TeX.
+  . pdftexi2dvi is a new wrapper to `texi2dvi --pdf', equal to texi2pdf,
+    for the sake of AUC-TeX which prepends `pdf' to the compilation
+    command when requested to produce PDF.
+* texinfo.tex:
+  . Latin1, Latin2, Latin9, and UTF-8 are supported as well as Computer
+    Modern can manage.
+  . png and jpg images supported in pdf output.
+  . new Russian, Serbian, and Ukrainian translations for texinfo.tex:
+    txi-ru.tex, txi-sr.tex, txi-uk.tex.
+  . section names with \ characters work properly in pdf outlines.
+  . have .toc files use @ as the escape character, instead of \.
+(Changes to the other programs will be in a forthcoming release.)
+
 
 4.8 (31 December 2004)
 * Language:

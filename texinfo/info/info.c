@@ -1,12 +1,12 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.11.2.1 2007-06-27 17:02:28 karl Exp $
+   $Id: info.c,v 1.11.2.2 2007-06-27 17:10:57 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,

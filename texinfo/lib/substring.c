@@ -1,11 +1,11 @@
 /* substring.c -- extract substring.
-   $Id: substring.c,v 1.2 2004-04-11 17:56:46 karl Exp $
+   $Id: substring.c,v 1.2.2.1 2007-06-27 17:11:00 karl Exp $
 
-   Copyright (C) 1999, 2004 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2004, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,

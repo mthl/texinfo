@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-21 16:20-0800\n"
+"POT-Creation-Date: 2007-06-27 09:59-0700\n"
 "PO-Revision-Date: 2004-12-16 08:19+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -226,36 +226,34 @@ msgstr ""
 "\n"
 "* Menu: Ноды, чьи алфавитные указатели содержат `%s':\n"
 
-#: info/info.c:275 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:900
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
-#: info/info.c:295 makeinfo/makeinfo.c:766 util/install-info.c:1266
-#: util/texindex.c:343
+#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:765
+#: util/install-info.c:1265 util/texindex.c:342
 #, c-format
 msgid ""
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
-"Мы НЕ предоставляем гарантий.  Вы можете распространять эти программы, при\n"
-"соблюдении условий Универсальной Общественной Лицензии GNU.\n"
-"Для получения подробной информации о возможности распространения смотрите\n"
-"файл COPYING.\n"
 
-#: info/info.c:498
+#: info/info.c:499
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "для `%s' не найдено вхождений в именном указателе\n"
 
-#: info/info.c:590
+#: info/info.c:591
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 "  -b, --speech-friendly       выводить в формате, удобном для синтезаторов "
 "речи.\n"
 
-#: info/info.c:597
+#: info/info.c:598
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -336,7 +334,7 @@ msgstr ""
 "  info --show-options emacs  начать с ноды, описывающей ключи emacs\n"
 "  info -f ./foo.info         показать файл ./foo.info, не искать dir\n"
 
-#: info/info.c:635 info/infokey.c:918 makeinfo/makeinfo.c:465
+#: info/info.c:636 info/infokey.c:919 makeinfo/makeinfo.c:465
 #: util/install-info.c:466 util/texindex.c:292
 msgid ""
 "\n"
@@ -349,73 +347,73 @@ msgstr ""
 "общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
 "Домашная страница Texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:669
+#: info/info.c:670
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Невозможно найти ноду `%s'."
 
-#: info/info.c:670
+#: info/info.c:671
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Невозможно найти ноду `(%s)%s'."
 
-#: info/info.c:671
+#: info/info.c:672
 msgid "Cannot find a window!"
 msgstr "Невозможно найти окно!"
 
-#: info/info.c:672
+#: info/info.c:673
 msgid "Point doesn't appear within this window's node!"
 msgstr "Точка находится вне ноды этого окна!"
 
-#: info/info.c:673
+#: info/info.c:674
 msgid "Cannot delete the last window."
 msgstr "Невозможно удалить последнее окно."
 
-#: info/info.c:674
+#: info/info.c:675
 msgid "No menu in this node."
 msgstr "В этой ноде нет меню."
 
-#: info/info.c:675
+#: info/info.c:676
 msgid "No footnotes in this node."
 msgstr "На этой ноде нет ссылок."
 
-#: info/info.c:676
+#: info/info.c:677
 msgid "No cross references in this node."
 msgstr "На этой ноде нет ссылок."
 
-#: info/info.c:677
+#: info/info.c:678
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Для этой ноды нет ссылки `%s'."
 
-#: info/info.c:678
+#: info/info.c:679
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Команда Info `%c' неизвестна; попробуйте `?' для получения справки."
 
-#: info/info.c:679
+#: info/info.c:680
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr ""
 "Терминал типа `%s' не обладает достаточными возможностями для запуска Info."
 
-#: info/info.c:680
+#: info/info.c:681
 msgid "You are already at the last page of this node."
 msgstr "Вы уже находитесь на последней странице этой ноды."
 
-#: info/info.c:681
+#: info/info.c:682
 msgid "You are already at the first page of this node."
 msgstr "Вы уже находитесь на первой странице этой ноды."
 
-#: info/info.c:682
+#: info/info.c:683
 msgid "Only one window."
 msgstr "Только одно окно."
 
-#: info/info.c:683
+#: info/info.c:684
 msgid "Resulting window would be too small."
 msgstr "Получившееся окно было бы слишком маленьким."
 
-#: info/info.c:684
+#: info/info.c:685
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
@@ -845,105 +843,91 @@ msgstr "%s может быть вызвана с помощью %s."
 msgid "There is no function named `%s'"
 msgstr "Функции с именем `%s' нет"
 
-#: info/infokey.c:145
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
-msgstr ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"Мы НЕ предоставляем гарантий.  Вы можете распространять эти программы, при\n"
-"соблюдении условий Универсальной Общественной Лицензии GNU.\n"
-"Для получения подробной информации о возможности распространения смотрите\n"
-"файл COPYING.\n"
-
-#: info/infokey.c:170
+#: info/infokey.c:171
 msgid "incorrect number of arguments"
 msgstr "неправильное число аргументов"
 
-#: info/infokey.c:201
+#: info/infokey.c:202
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "невозможно открыть выходной файл `%s'"
 
-#: info/infokey.c:215
+#: info/infokey.c:216
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "невозможно создать выходной файл `%s'"
 
-#: info/infokey.c:226
+#: info/infokey.c:227
 #, c-format
 msgid "error writing to `%s'"
 msgstr "ошибка записи в `%s'"
 
-#: info/infokey.c:232
+#: info/infokey.c:233
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "невозможно закрыть выходной файл `%s'"
 
-#: info/infokey.c:450
+#: info/infokey.c:451
 msgid "key sequence too long"
 msgstr "последовательность ключей слишком длинная"
 
-#: info/infokey.c:529
+#: info/infokey.c:530
 msgid "missing key sequence"
 msgstr "пропущена последовательность ключей"
 
-#: info/infokey.c:610
+#: info/infokey.c:611
 msgid "NUL character (\\000) not permitted"
 msgstr "знак NUL (\\000) недопустим"
 
-#: info/infokey.c:641
+#: info/infokey.c:642
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "знак NUL (^%c) недопустим"
 
-#: info/infokey.c:665
+#: info/infokey.c:666
 msgid "missing action name"
 msgstr "пропущено имя действия"
 
-#: info/infokey.c:681 info/infokey.c:756
+#: info/infokey.c:682 info/infokey.c:757
 msgid "section too long"
 msgstr "раздел слишком велик"
 
-#: info/infokey.c:688
+#: info/infokey.c:689
 #, c-format
 msgid "unknown action `%s'"
 msgstr "Неизвестное действие `%s'"
 
-#: info/infokey.c:698
+#: info/infokey.c:699
 msgid "action name too long"
 msgstr "имя действия слишком длинное"
 
-#: info/infokey.c:712
+#: info/infokey.c:713
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "лишние знаки после действия `%s'"
 
-#: info/infokey.c:723
+#: info/infokey.c:724
 msgid "missing variable name"
 msgstr "пропущено имя переменной"
 
-#: info/infokey.c:733
+#: info/infokey.c:734
 msgid "missing `=' immediately after variable name"
 msgstr "пропущен знак `=' сразу после имени переменной"
 
-#: info/infokey.c:741
+#: info/infokey.c:742
 msgid "variable name too long"
 msgstr "имя переменной слишком длинное"
 
-#: info/infokey.c:765
+#: info/infokey.c:766
 msgid "value too long"
 msgstr "значение слишком длинное"
 
-#: info/infokey.c:890
+#: info/infokey.c:891
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "\"%s\", строка %u: "
 
-#: info/infokey.c:906
+#: info/infokey.c:907
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -1857,11 +1841,11 @@ msgstr "команде @sp нужно указать положительный числовой аргумент, а не `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Плохой аргумент для %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4143
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4145
 msgid "none"
 msgstr "none"
 
@@ -2214,7 +2198,7 @@ msgstr "Слишком много ошибок! Остановка.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: предупреждение: "
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2260
+#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2261
 #, c-format
 msgid "Misplaced %c"
 msgstr "Здесь не должно быть %c"
@@ -2511,49 +2495,49 @@ msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: аргумент --footnote-style должен быть `separate' или `end'; а не `%s'.\n"
 
-#: makeinfo/makeinfo.c:806
+#: makeinfo/makeinfo.c:807
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: пропущен аргумент, задающий файл.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
+#: makeinfo/makeinfo.c:998 makeinfo/makeinfo.c:3992
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Неправильно использована многострочная команда %c%s"
 
-#: makeinfo/makeinfo.c:1000
+#: makeinfo/makeinfo.c:1001
 #, c-format
 msgid "Expected `%s'"
 msgstr "Ожидается `%s'"
 
-#: makeinfo/makeinfo.c:1479
+#: makeinfo/makeinfo.c:1480
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Невозможно создать каталог `%s': %s"
 
-#: makeinfo/makeinfo.c:1525
+#: makeinfo/makeinfo.c:1526
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "`%s' не найден в `%s'"
 
-#: makeinfo/makeinfo.c:1605
+#: makeinfo/makeinfo.c:1606
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Раскрытие макросов в стандартный вывод не производится,\n"
 "так как туда направлен вывод в формате Info.\n"
 
-#: makeinfo/makeinfo.c:1638
+#: makeinfo/makeinfo.c:1639
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Создание %s-файла `%s' из `%s'.\n"
 
-#: makeinfo/makeinfo.c:1673
+#: makeinfo/makeinfo.c:1674
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Это %s, созданный makeinfo версии %s из %s.\n"
 
-#: makeinfo/makeinfo.c:1709
+#: makeinfo/makeinfo.c:1710
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2561,82 +2545,82 @@ msgstr ""
 "%s: Удаление выходного файла макрорасширений `%s' -- были ошибки;\n"
 "используйте --force, чтобы принудительно сохранить результаты.\n"
 
-#: makeinfo/makeinfo.c:1773
+#: makeinfo/makeinfo.c:1774
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Удаление выходного файла `%s' -- были ошибки;\n"
 "используйте --force, чтобы принудительно сохранить результаты.\n"
 
-#: makeinfo/makeinfo.c:2034
+#: makeinfo/makeinfo.c:2035
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Неизвестная команда `%s'"
 
-#: makeinfo/makeinfo.c:2056
+#: makeinfo/makeinfo.c:2057
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr ""
 "Используйте фигурные скобки, чтобы передать @%s команду в качестве аргумента"
 
-#: makeinfo/makeinfo.c:2314
+#: makeinfo/makeinfo.c:2315
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s подразумевает фигурные скобки"
 
-#: makeinfo/makeinfo.c:2327
+#: makeinfo/makeinfo.c:2328
 msgid "Unmatched }"
 msgstr "Непарная }"
 
-#: makeinfo/makeinfo.c:2375
+#: makeinfo/makeinfo.c:2376
 msgid "NO_NAME!"
 msgstr "БЕЗ_ИМЕНИ!"
 
-#: makeinfo/makeinfo.c:2396
+#: makeinfo/makeinfo.c:2397
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s пропущена закрывающая скобка"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3310
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "Невозможно прочитать файл `%s' в команде @image (для HTML): %s"
 
-#: makeinfo/makeinfo.c:3315
+#: makeinfo/makeinfo.c:3316
 #, c-format
 msgid "No such file `%s'"
 msgstr "Файл `%s' не существует"
 
-#: makeinfo/makeinfo.c:3447
+#: makeinfo/makeinfo.c:3448
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "Невозможно прочитать файл `%s' в команде @image (для текста): %s"
 
-#: makeinfo/makeinfo.c:3456
+#: makeinfo/makeinfo.c:3457
 msgid "@image missing filename argument"
 msgstr "после @image пропущен аргумент задающий файл "
 
-#: makeinfo/makeinfo.c:3675
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "undefined flag: %s"
 msgstr "неопределенный флаг: %s"
 
-#: makeinfo/makeinfo.c:3676
+#: makeinfo/makeinfo.c:3677
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Значение `%s' не задано}"
 
-#: makeinfo/makeinfo.c:3728
+#: makeinfo/makeinfo.c:3729
 #, c-format
 msgid "%c%s requires a name"
 msgstr "команде %c%s нужно указать имя"
 
-#: makeinfo/makeinfo.c:3834
+#: makeinfo/makeinfo.c:3835
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Конец файла раньше соответствующей команды @end %s"
 
-#: makeinfo/makeinfo.c:4082
+#: makeinfo/makeinfo.c:4083
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' слишком велико; невозможно раскрыть"
@@ -3015,34 +2999,34 @@ msgstr "%s: уже существует файл dir: %s\n"
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Можно задать только один Info-файл.\n"
 
-#: util/install-info.c:1284
+#: util/install-info.c:1285
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "излишний аргумент `%s'"
 
-#: util/install-info.c:1288
+#: util/install-info.c:1289
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Не задан входной файл.\n"
 "Попробуйте `%s --help' для получения более подробного описания."
 
-#: util/install-info.c:1291
+#: util/install-info.c:1292
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Не задан файл каталога.\n"
 "Попробуйте `%s --help' для получения более подробного описания."
 
-#: util/install-info.c:1313
+#: util/install-info.c:1314
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "в `%s' нет вхождения для каталога Info"
 
-#: util/install-info.c:1426
+#: util/install-info.c:1427
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "пункт меню `%s' уже существует, для файла `%s'"
 
-#: util/install-info.c:1449
+#: util/install-info.c:1450
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "не найдено вхождений для `%s'; ничего не удалено"
@@ -3093,23 +3077,49 @@ msgstr ""
 "\n"
 "Ключи:\n"
 
-#: util/texindex.c:876 util/texindex.c:910 util/texindex.c:983
-#: util/texindex.c:1011
+#: util/texindex.c:877 util/texindex.c:911 util/texindex.c:984
+#: util/texindex.c:1012
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: не texinfo-файл с алфавитным указателем"
 
-#: util/texindex.c:968
+#: util/texindex.c:969
 #, c-format
 msgid "failure reopening %s"
 msgstr "ошибка повторного открытия %s"
 
-#: util/texindex.c:1218
+#: util/texindex.c:1219
 #, c-format
 msgid "No page number in %s"
 msgstr "В %s нет номера страницы"
 
-#: util/texindex.c:1291
+#: util/texindex.c:1292
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
+
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Мы НЕ предоставляем гарантий.  Вы можете распространять эти программы, "
+#~ "при\n"
+#~ "соблюдении условий Универсальной Общественной Лицензии GNU.\n"
+#~ "Для получения подробной информации о возможности распространения "
+#~ "смотрите\n"
+#~ "файл COPYING.\n"
+
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "Мы НЕ предоставляем гарантий.  Вы можете распространять эти программы, "
+#~ "при\n"
+#~ "соблюдении условий Универсальной Общественной Лицензии GNU.\n"
+#~ "Для получения подробной информации о возможности распространения "
+#~ "смотрите\n"
+#~ "файл COPYING.\n"

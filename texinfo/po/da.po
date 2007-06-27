@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2e\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-21 16:20-0800\n"
+"POT-Creation-Date: 2007-06-27 09:59-0700\n"
 "PO-Revision-Date: 2002-11-08 09:13GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -223,34 +223,32 @@ msgstr ""
 "\n"
 "* Menu: Emner, hvis indeks indeholder \"%s\":\n"
 
-#: info/info.c:275 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:900
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mere information.\n"
 
-#: info/info.c:295 makeinfo/makeinfo.c:766 util/install-info.c:1266
-#: util/texindex.c:343
-#, fuzzy, c-format
+#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:765
+#: util/install-info.c:1265 util/texindex.c:342
+#, c-format
 msgid ""
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
-msgstr ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"Der er INGEN garanti. Du må redistribuere denne software\n"
-"under GNU General Public License's betingelser.\n"
-"For mere information om dette, se filerne 'COPYING'.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
 
-#: info/info.c:498
+#: info/info.c:499
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "ingen indeksindgange blev fundet for '%s'\n"
 
-#: info/info.c:590
+#: info/info.c:591
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr " -b, --speech-friendly        vær talesyntese-venlig.\n"
 
-#: info/info.c:597
+#: info/info.c:598
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -325,7 +323,7 @@ msgstr ""
 "tilvalg\n"
 "  info -f ./xxx.info         vis filen ./xxx.info uden at søge i katalog\n"
 
-#: info/info.c:635 info/infokey.c:918 makeinfo/makeinfo.c:465
+#: info/info.c:636 info/infokey.c:919 makeinfo/makeinfo.c:465
 #: util/install-info.c:466 util/texindex.c:292
 msgid ""
 "\n"
@@ -339,72 +337,72 @@ msgstr ""
 "oversættelsesfejl til claus_h@image.dk\n"
 "Texinfos hjemmeside: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:669
+#: info/info.c:670
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Kan ikke finde emnet '%s'."
 
-#: info/info.c:670
+#: info/info.c:671
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Kan ikke finde emnet '(%s)%s'."
 
-#: info/info.c:671
+#: info/info.c:672
 msgid "Cannot find a window!"
 msgstr "Kan ikke finde et vindue!"
 
-#: info/info.c:672
+#: info/info.c:673
 msgid "Point doesn't appear within this window's node!"
 msgstr "Punktet optræder ikke i dette vindues emne!"
 
-#: info/info.c:673
+#: info/info.c:674
 msgid "Cannot delete the last window."
 msgstr "Kan ikke slette det sidste vindue."
 
-#: info/info.c:674
+#: info/info.c:675
 msgid "No menu in this node."
 msgstr "Ingen menu i dette emne."
 
-#: info/info.c:675
+#: info/info.c:676
 msgid "No footnotes in this node."
 msgstr "Ingen fodnoter i dette emne."
 
-#: info/info.c:676
+#: info/info.c:677
 msgid "No cross references in this node."
 msgstr "Ingen krydsreferencer i dette emne."
 
-#: info/info.c:677
+#: info/info.c:678
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Ingen '%s'-peger mod dette emne."
 
-#: info/info.c:678
+#: info/info.c:679
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Ukendt Info kommando '%c'; prøv '?' for hjælp."
 
-#: info/info.c:679
+#: info/info.c:680
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Info kan ikke køre på terminal type '%s'."
 
-#: info/info.c:680
+#: info/info.c:681
 msgid "You are already at the last page of this node."
 msgstr "Du er i forvejen ved emnets sidste side."
 
-#: info/info.c:681
+#: info/info.c:682
 msgid "You are already at the first page of this node."
 msgstr "Du er i forvejen ved emnets første side."
 
-#: info/info.c:682
+#: info/info.c:683
 msgid "Only one window."
 msgstr "Kun ét vindue."
 
-#: info/info.c:683
+#: info/info.c:684
 msgid "Resulting window would be too small."
 msgstr "Det resulterende vindue ville være for lille."
 
-#: info/info.c:684
+#: info/info.c:685
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Ikke nok plads til et hjælpevindue. Fjern venligst et vindue."
 
@@ -836,104 +834,91 @@ msgstr "%s kan udføres via %s."
 msgid "There is no function named `%s'"
 msgstr "Der er ingen funktion kaldet '%s'"
 
-#: info/infokey.c:145
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
-msgstr ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"Der er INGEN garanti. Du må redistribuere denne software\n"
-"under GNU General Public License's betingelser.\n"
-"For mere information om dette, se filerne 'COPYING'.\n"
-
-#: info/infokey.c:170
+#: info/infokey.c:171
 msgid "incorrect number of arguments"
 msgstr "ugyldigt antal parametre"
 
-#: info/infokey.c:201
+#: info/infokey.c:202
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "can ikke åbne inddata-filen '%s'."
 
-#: info/infokey.c:215
+#: info/infokey.c:216
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "kan ikke oprette uddatafil '%s'"
 
-#: info/infokey.c:226
+#: info/infokey.c:227
 #, c-format
 msgid "error writing to `%s'"
 msgstr "fejl under skrivning til '%s'"
 
-#: info/infokey.c:232
+#: info/infokey.c:233
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "fejl under lukning af uddatafilen '%s'"
 
-#: info/infokey.c:450
+#: info/infokey.c:451
 msgid "key sequence too long"
 msgstr "nøglesekvens for lang"
 
-#: info/infokey.c:529
+#: info/infokey.c:530
 msgid "missing key sequence"
 msgstr "manglende nøglesekvens"
 
-#: info/infokey.c:610
+#: info/infokey.c:611
 msgid "NUL character (\\000) not permitted"
 msgstr "NUL-tegn (\\000) ikke tilladt"
 
-#: info/infokey.c:641
+#: info/infokey.c:642
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "NUL-tegn (^%c) ikke tilladt"
 
-#: info/infokey.c:665
+#: info/infokey.c:666
 msgid "missing action name"
 msgstr "mangler handlingsnavn"
 
-#: info/infokey.c:681 info/infokey.c:756
+#: info/infokey.c:682 info/infokey.c:757
 msgid "section too long"
 msgstr "for langt afsnit"
 
-#: info/infokey.c:688
+#: info/infokey.c:689
 #, c-format
 msgid "unknown action `%s'"
 msgstr "ukendt handling '%s'"
 
-#: info/infokey.c:698
+#: info/infokey.c:699
 msgid "action name too long"
 msgstr "for langt handlingsnavn"
 
-#: info/infokey.c:712
+#: info/infokey.c:713
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "ekstra tegn følger handlingen '%s'"
 
-#: info/infokey.c:723
+#: info/infokey.c:724
 msgid "missing variable name"
 msgstr "manglende variabelnavn"
 
-#: info/infokey.c:733
+#: info/infokey.c:734
 msgid "missing `=' immediately after variable name"
 msgstr "mangler '=' umiddelbart efter variabelnavn"
 
-#: info/infokey.c:741
+#: info/infokey.c:742
 msgid "variable name too long"
 msgstr "for langt variabelnavn"
 
-#: info/infokey.c:765
+#: info/infokey.c:766
 msgid "value too long"
 msgstr "for lang værdi"
 
-#: info/infokey.c:890
+#: info/infokey.c:891
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "\"%s\", linje %u: "
 
-#: info/infokey.c:906
+#: info/infokey.c:907
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -1845,11 +1830,11 @@ msgstr "@sp kræver et positivt tal, ikke '%s'"
 msgid "Bad argument to %c%s"
 msgstr "Ugyldigt argument til %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4143
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4145
 msgid "none"
 msgstr "none"
 
@@ -2198,7 +2183,7 @@ msgstr "For mange fejl! Gav op.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: advarsel: "
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2260
+#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2261
 #, c-format
 msgid "Misplaced %c"
 msgstr "Fejlplaceret %c"
@@ -2466,128 +2451,128 @@ msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
 
-#: makeinfo/makeinfo.c:806
+#: makeinfo/makeinfo.c:807
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filparameter.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
+#: makeinfo/makeinfo.c:998 makeinfo/makeinfo.c:3992
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1000
+#: makeinfo/makeinfo.c:1001
 #, c-format
 msgid "Expected `%s'"
 msgstr "Forventede '%s'"
 
-#: makeinfo/makeinfo.c:1479
+#: makeinfo/makeinfo.c:1480
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan ikke oprette kataloget '%s': %s"
 
-#: makeinfo/makeinfo.c:1525
+#: makeinfo/makeinfo.c:1526
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Ingen '%s' fundet i '%s'"
 
-#: makeinfo/makeinfo.c:1605
+#: makeinfo/makeinfo.c:1606
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Undlader makroudfoldelse til standard-ud, da Info-uddata sendes der.\n"
 
-#: makeinfo/makeinfo.c:1638
+#: makeinfo/makeinfo.c:1639
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Producerer %s file '%s' ud fra '%s'.\n"
 
-#: makeinfo/makeinfo.c:1673
+#: makeinfo/makeinfo.c:1674
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Dette er %s, produceret med makeinfo version %s ud fra %s.\n"
 
-#: makeinfo/makeinfo.c:1709
+#: makeinfo/makeinfo.c:1710
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner makro uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
-#: makeinfo/makeinfo.c:1773
+#: makeinfo/makeinfo.c:1774
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
-#: makeinfo/makeinfo.c:2034
+#: makeinfo/makeinfo.c:2035
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Ukendt kommando '%s'"
 
-#: makeinfo/makeinfo.c:2056
+#: makeinfo/makeinfo.c:2057
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Benyt parenteser for at angive en kommando som parameter til @%s"
 
-#: makeinfo/makeinfo.c:2314
+#: makeinfo/makeinfo.c:2315
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s forventede '{...}'"
 
-#: makeinfo/makeinfo.c:2327
+#: makeinfo/makeinfo.c:2328
 msgid "Unmatched }"
 msgstr "Uparret }"
 
-#: makeinfo/makeinfo.c:2375
+#: makeinfo/makeinfo.c:2376
 msgid "NO_NAME!"
 msgstr "INTET_NAVN!"
 
-#: makeinfo/makeinfo.c:2396
+#: makeinfo/makeinfo.c:2397
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s mangler højre parentes"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3310
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-fil '%s' (for HTML) er ulæselig: %s"
 
-#: makeinfo/makeinfo.c:3315
+#: makeinfo/makeinfo.c:3316
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Ingen '%s' fundet i '%s'"
 
-#: makeinfo/makeinfo.c:3447
+#: makeinfo/makeinfo.c:3448
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-fil '%s' (for tekst) er ulæselig: %s"
 
-#: makeinfo/makeinfo.c:3456
+#: makeinfo/makeinfo.c:3457
 msgid "@image missing filename argument"
 msgstr "@image mangler filnavnsparameter"
 
-#: makeinfo/makeinfo.c:3675
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3676
+#: makeinfo/makeinfo.c:3677
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Ingen værdi for '%s'}"
 
-#: makeinfo/makeinfo.c:3728
+#: makeinfo/makeinfo.c:3729
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kræver et navn"
 
-#: makeinfo/makeinfo.c:3834
+#: makeinfo/makeinfo.c:3835
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nåede filslutning før samhørende @end %s"
 
-#: makeinfo/makeinfo.c:4082
+#: makeinfo/makeinfo.c:4083
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for langt til ekspansion; blev ikke ekspanderet"
@@ -2956,30 +2941,30 @@ msgstr ""
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Angiv kun Info-filen én gang.\n"
 
-#: util/install-info.c:1284
+#: util/install-info.c:1285
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "overskydende kommandolinjeparameter '%s'"
 
-#: util/install-info.c:1288
+#: util/install-info.c:1289
 msgid "No input file specified; try --help for more information."
 msgstr "Ingen inddatafil angivet; prøv --help for mere information."
 
-#: util/install-info.c:1291
+#: util/install-info.c:1292
 msgid "No dir file specified; try --help for more information."
 msgstr "Intet katalog angivet; prøv --help for mere information."
 
-#: util/install-info.c:1313
+#: util/install-info.c:1314
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "ingen infokatalog-indgang i '%s'"
 
-#: util/install-info.c:1426
+#: util/install-info.c:1427
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "menupunkt '%s' eksisterer allerede i filen '%s'"
 
-#: util/install-info.c:1449
+#: util/install-info.c:1450
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "ingen indgange fundet for '%s'; intet slettet"
@@ -3028,26 +3013,48 @@ msgstr ""
 "\n"
 "Tilvalg:\n"
 
-#: util/texindex.c:876 util/texindex.c:910 util/texindex.c:983
-#: util/texindex.c:1011
+#: util/texindex.c:877 util/texindex.c:911 util/texindex.c:984
+#: util/texindex.c:1012
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: ikke en texinfo indeksfil"
 
-#: util/texindex.c:968
+#: util/texindex.c:969
 #, c-format
 msgid "failure reopening %s"
 msgstr "kunne ikke åbne %s"
 
-#: util/texindex.c:1218
+#: util/texindex.c:1219
 #, c-format
 msgid "No page number in %s"
 msgstr "Intet sidenummer i %s"
 
-#: util/texindex.c:1291
+#: util/texindex.c:1292
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "indgang %s følger en indgang med et sekundært navn"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "Der er INGEN garanti. Du må redistribuere denne software\n"
+#~ "under GNU General Public License's betingelser.\n"
+#~ "For mere information om dette, se filerne 'COPYING'.\n"
+
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "Der er INGEN garanti. Du må redistribuere denne software\n"
+#~ "under GNU General Public License's betingelser.\n"
+#~ "For mere information om dette, se filerne 'COPYING'.\n"
 
 #~ msgid "%s: Specify the Info directory only once.\n"
 #~ msgstr "%s: Angiv kun Info-kataloget én gang.\n"
