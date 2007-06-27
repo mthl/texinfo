@@ -1,3 +1,9 @@
+2007-06-27  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* texinfo.tex (\setnonasciicharscatcodenonglobal): new macro.
+	(\scanctxt):  in case of non-ASCII encodings, un-activate 8-bit
+	chars to avoid their expansion.
+
 2007-06-24  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\internalpagesizes): must reset \pdfhorigin and
