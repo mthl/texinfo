@@ -1,3 +1,7 @@
+2007-06-29  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (move_to_dest): do not cmp a directory.
+
 2007-06-27  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (move_to_dest): do not copy a file onto itself,
