@@ -1,3 +1,17 @@
+2007-07-01  Karl Berry  <karl@gnu.org>
+
+	* pretest version 4.9.90.
+
+	* makeinfo/makeinfo.c,
+	* info/info.c,
+	* info/infokey.c,
+	* util/install-info.c,
+	* util/texindex.c: update --version output.
+
+2007-06-29  Karl Berry  <karl@gnu.org>
+
+	* Version 4.9 (GPLv3, made from 4.8 branch).
+
 2007-06-29  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (move_to_dest): do not cmp a directory.
