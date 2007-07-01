@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.144 2007-07-01 16:54:01 karl Exp $
+$Id: NEWS,v 1.145 2007-07-01 18:44:36 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -59,10 +59,10 @@ one of the relevant sections:
 * install-info:
   . new options --section-regex, --remove-exactly, --debug, --test.
 * Distribution:
-  . autoconf 2.60, automake 1.10, gettext 0.16.
+  . autoconf 2.60, automake 1.10, gettext 0.16.1.
   . gettext support now [external].
   . new translations: hu (Hungarian), rw (Kinyarwandan), vi (Vietnamese).
-  . most common functionality imported from gnulib.
+  . most common sources imported from gnulib.
 
 
 4.9 (29 June 2007)
