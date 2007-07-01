@@ -11,6 +11,9 @@
 	* util/texindex.c: update --version output.
 
 	* Makefile.am (EXTRA_DIST): remove config.rpath, it's in build-aux now.
+	* lib/Makefile.am (libtxi_A_SOURCES): system.h at top level now.
+	
+	* makeinfo/tests/copying.txi: test with nonempty copying text.
 
 2007-06-29  Karl Berry  <karl@gnu.org>
 
