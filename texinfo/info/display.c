@@ -1,12 +1,13 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.10 2007-07-01 18:46:21 karl Exp $
+   $Id: display.c,v 1.11 2007-07-01 21:20:29 karl Exp $
 
-   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007
+   Free Software Foundation, Inc.
 
-   This program is free software; you can redistribute it and/or modify
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
-   any later version.
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,8 +15,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
    Originally written by Brian Fox (bfox@ai.mit.edu). */
 
