@@ -17,10 +17,8 @@ scriptversion=2007-07-01.11
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, you can either send email to this
-# program's maintainer or write to: The Free Software Foundation,
-# Inc.; 51 Franklin Street, Fifth Floor; Boston, MA 02110-1301, USA.
-#
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
 # Original author: Mohit Agarwal.
 # Send bug reports and any other correspondence to bug-texinfo@gnu.org.
 
