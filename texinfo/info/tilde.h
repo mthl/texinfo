@@ -1,15 +1,15 @@
 /* tilde.h: Externally available variables and function in libtilde.a.
-   $Id: tilde.h,v 1.4 2005-05-15 00:00:07 karl Exp $
+   $Id: tilde.h,v 1.5 2007-07-01 18:46:23 karl Exp $
 
    This file has appeared in prior works by the Free Software Foundation;
    thus it carries copyright dates from 1988 through 1993.
 
-   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 2004 Free Software
+   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 2004, 2007 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
