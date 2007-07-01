@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.26 2007-07-01 17:59:13 karl Exp $
+# $Id: Makefile.am,v 1.27 2007-07-01 21:31:59 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -47,7 +47,7 @@ texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
 #
 EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
-  install-info-html outline.gawk \
+  install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in
 CLEANFILES = $(pkgdata_DATA)
