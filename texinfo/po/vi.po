@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2006-06-08 15:36-0700\n"
+"POT-Creation-Date: 2007-07-01 11:07-0700\n"
 "PO-Revision-Date: 2006-01-13 19:30+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -15,6 +15,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: LocFactoryEditor 1.6b23\n"
+
+#: gnulib/lib/error.c:125
+msgid "Unknown system error"
+msgstr ""
+
+#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: tùy chọn « %s » là mơ hồ\n"
+
+#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « --%s » không cho phép đối số\n"
+
+#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « %c%s » không cho phép đối số\n"
+
+#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
+#: gnulib/lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: tùy chọn « %s » cần đến đối số\n"
+
+#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: không nhận ra tùy chọn « --%s »\n"
+
+#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: không nhận ra tùy chọn « %c%s »\n"
+
+#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: không cho phép tùy chọn « -- %c »\n"
+
+#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: tùy chọn không hợp lệ « -- %c »\n"
+
+#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
+#: gnulib/lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: tùy chọn cần đến đối số « -- %c »\n"
+
+#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: tùy chọn « -W %s » là mơ hồ\n"
+
+#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « -W %s » không cho phép đối số\n"
+
+#: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
+msgid "memory exhausted"
+msgstr ""
 
 #: info/echo-area.c:284 info/session.c:689
 msgid "Move forward a character"
@@ -230,38 +295,34 @@ msgstr ""
 "\n"
 "* Trình đơn: nút có chỉ mục chứa « %s »:\n"
 
-#: info/info.c:275 info/infokey.c:902
+#: info/info.c:279 info/infokey.c:900
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh « --help » (trợ giúp) để xem thông tin thêm.\n"
 
-#: info/info.c:294 info/infokey.c:146 makeinfo/makeinfo.c:786
-#: util/install-info.c:1265 util/texindex.c:350
-#, fuzzy, c-format
+#: info/info.c:298 info/infokey.c:146 makeinfo/makeinfo.c:790
+#: util/install-info.c:1329 util/texindex.c:296
+#, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
-"PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the file named COPYING.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
-"Bản quyền © %s Tổ chức Phần mềm Tự do.\n"
-"Không bảo đảm gì cả. Bạn có thể phân phối lại phần mềm này\n"
-"với điều kiện của Quyền công chung Gnu (GPL).\n"
-"Để gọi thông tin thêm về chủ đề này thì hãy xem tập tin có tên COPYING.\n"
 
-#: info/info.c:501
+#: info/info.c:503
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: info/info.c:593
+#: info/info.c:595
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 "  -b, --speech-friendly        _chấp nhận_ thiết bị tổng hợp _tiếng nói_.\n"
 
-#: info/info.c:600
-#, c-format
+#: info/info.c:602
+#, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 "\n"
@@ -297,6 +358,7 @@ msgid ""
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
+"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
 msgstr ""
 "Cách sử dụng: %s [TÙY_CHỌN]... [MỤC_TRÌNH_ĐƠN...]\n"
@@ -346,8 +408,8 @@ msgstr ""
 "  info -f ./phu.info         hiện tập tin <./phu.info>, mà không tìm kiếm « "
 "dir »\n"
 
-#: info/info.c:638 info/infokey.c:921 makeinfo/makeinfo.c:471
-#: util/install-info.c:466 util/texindex.c:300
+#: info/info.c:641 info/infokey.c:919 makeinfo/makeinfo.c:475
+#: util/install-info.c:492 util/texindex.c:260
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -359,72 +421,72 @@ msgstr ""
 "và gởi câu hỏi chung v.v. cho <help-texinfo@gnu.org>.\n"
 "Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:672
+#: info/info.c:675
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Không tìm thấy nút « %s »."
 
-#: info/info.c:673
+#: info/info.c:676
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Không tìm thấy nút « (%s)%s »."
 
-#: info/info.c:674
+#: info/info.c:677
 msgid "Cannot find a window!"
 msgstr "Không tìm thấy cửa sổ."
 
-#: info/info.c:675
+#: info/info.c:678
 msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện ở trong cái nút thông tin của cửa sổ này."
 
-#: info/info.c:676
+#: info/info.c:679
 msgid "Cannot delete the last window."
 msgstr "Không thể xóa bỏ cửa sổ cuối cùng."
 
-#: info/info.c:677
+#: info/info.c:680
 msgid "No menu in this node."
 msgstr "Không có trình đơn trong nút này."
 
-#: info/info.c:678
+#: info/info.c:681
 msgid "No footnotes in this node."
 msgstr "Không có cước chú trong nút này."
 
-#: info/info.c:679
+#: info/info.c:682
 msgid "No cross references in this node."
 msgstr "Không có tham chiếu chéo trong nút này."
 
-#: info/info.c:680
+#: info/info.c:683
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Không có con trỏ « %s » cho nút này."
 
-#: info/info.c:681
+#: info/info.c:684
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Không biết lệnh « %c »: bạn hãy thử lệnh « ? » (trợ giúp)."
 
-#: info/info.c:682
+#: info/info.c:685
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Kiểu thiết bị cuối « %s » không đủ thông minh để chạy « info »."
 
-#: info/info.c:683
+#: info/info.c:686
 msgid "You are already at the last page of this node."
 msgstr "Bạn đạng ở trang cuối cùng của nút này."
 
-#: info/info.c:684
+#: info/info.c:687
 msgid "You are already at the first page of this node."
 msgstr "Bạn đạng ở trang đầu tiên của nút này."
 
-#: info/info.c:685
+#: info/info.c:688
 msgid "Only one window."
 msgstr "Chỉ một cửa sổ."
 
-#: info/info.c:686
+#: info/info.c:689
 msgid "Resulting window would be too small."
 msgstr "Cửa sổ kết quả sẽ quá nhỏ."
 
-#: info/info.c:687
+#: info/info.c:690
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa bỏ một cửa sổ."
 
@@ -883,91 +945,91 @@ msgstr "%s có thể được gọi bằng %s."
 msgid "There is no function named `%s'"
 msgstr "Không có chức năng tên « %s »"
 
-#: info/infokey.c:173
+#: info/infokey.c:171
 msgid "incorrect number of arguments"
 msgstr "có số đối số không đúng"
 
-#: info/infokey.c:204
+#: info/infokey.c:202
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "Không thể mở tập tin nhập « %s »"
 
-#: info/infokey.c:218
+#: info/infokey.c:216
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "không thể tạo tập tin xuất « %s »"
 
-#: info/infokey.c:229
+#: info/infokey.c:227
 #, c-format
 msgid "error writing to `%s'"
 msgstr "gặp lỗi khi ghi vào « %s »"
 
-#: info/infokey.c:235
+#: info/infokey.c:233
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "gặp lỗi khi đóng tập tin xuất « %s »"
 
-#: info/infokey.c:453
+#: info/infokey.c:451
 msgid "key sequence too long"
 msgstr "chuỗi phím quá dài"
 
-#: info/infokey.c:532
+#: info/infokey.c:530
 msgid "missing key sequence"
 msgstr "thiếu chuỗi phím"
 
-#: info/infokey.c:613
+#: info/infokey.c:611
 msgid "NUL character (\\000) not permitted"
 msgstr "Không cho phép ký tự trống (\\000)"
 
-#: info/infokey.c:644
+#: info/infokey.c:642
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "Không cho phép ký tự trống (^%c)"
 
-#: info/infokey.c:668
+#: info/infokey.c:666
 msgid "missing action name"
 msgstr "thiếu tên hành động"
 
-#: info/infokey.c:684 info/infokey.c:759
+#: info/infokey.c:682 info/infokey.c:757
 msgid "section too long"
 msgstr "phần quá dài"
 
-#: info/infokey.c:691
+#: info/infokey.c:689
 #, c-format
 msgid "unknown action `%s'"
 msgstr "không biết hành động « %s »"
 
-#: info/infokey.c:701
+#: info/infokey.c:699
 msgid "action name too long"
 msgstr "Tên hành động quá dài"
 
-#: info/infokey.c:715
+#: info/infokey.c:713
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "có ký tự thêm sau hành động « %s »"
 
-#: info/infokey.c:726
+#: info/infokey.c:724
 msgid "missing variable name"
 msgstr "thiếu tên biến"
 
-#: info/infokey.c:736
+#: info/infokey.c:734
 msgid "missing `=' immediately after variable name"
 msgstr "thiếu ký tự bằng « = » ngay sau tên biến"
 
-#: info/infokey.c:744
+#: info/infokey.c:742
 msgid "variable name too long"
 msgstr "tên biến quá dài"
 
-#: info/infokey.c:768
+#: info/infokey.c:766
 msgid "value too long"
 msgstr "giá trị quá dài"
 
-#: info/infokey.c:893
+#: info/infokey.c:891
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "« %s », dòng %u:"
 
-#: info/infokey.c:909
+#: info/infokey.c:907
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -1077,7 +1139,7 @@ msgstr "Lập độ cao của cửa sổ đã hiển thị"
 msgid "Set screen height to (%d): "
 msgstr "Lập độ cao của màn hình thành (%d):"
 
-#: info/makedoc.c:162 info/makedoc.c:170
+#: info/makedoc.c:164 info/makedoc.c:172
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
@@ -1086,7 +1148,7 @@ msgstr ""
 "   Các tập tin mã nguồn được grep với nhau để tạo tập tin này bao gồm:\n"
 "\n"
 
-#: info/makedoc.c:550
+#: info/makedoc.c:552
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Không thể thao tác tập tin %s.\n"
@@ -1155,7 +1217,7 @@ msgstr "Tới cuối dòng"
 msgid "Move to the start of the line"
 msgstr "Về đầu dòng"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1438
 msgid "Next"
 msgstr "Kế"
 
@@ -1642,7 +1704,7 @@ msgstr "Bắt đầu (hoặc nhân với 4) đối số thuộc số hiện th�
 msgid "Internally used by \\[universal-argument]"
 msgstr "Dùng bên trong bởi « \\[universal-argument] » (đối số toàn thể)"
 
-#: info/tilde.c:338
+#: info/tilde.c:337
 #, c-format
 msgid "readline: Out of virtual memory!\n"
 msgstr "readline: hết bộ nhớ ảo.\n"
@@ -1732,138 +1794,91 @@ msgstr "-%s%s-Info: (%s)%s, %d dòng --%s--"
 msgid " Subfile: %s"
 msgstr " Tập tin con: %s"
 
-#: lib/getopt.c:551 lib/getopt.c:570
-#, c-format
-msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: tùy chọn « %s » là mơ hồ\n"
+#: lib/xexit.c:54
+msgid "ferror on stdout\n"
+msgstr ""
 
-#: lib/getopt.c:603 lib/getopt.c:607
-#, c-format
-msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: tùy chọn « --%s » không cho phép đối số\n"
+#: lib/xexit.c:59
+msgid "fflush error on stdout\n"
+msgstr ""
 
-#: lib/getopt.c:616 lib/getopt.c:621
-#, c-format
-msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: tùy chọn « %c%s » không cho phép đối số\n"
-
-#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
-#, c-format
-msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: tùy chọn « %s » cần đến đối số\n"
-
-#: lib/getopt.c:727 lib/getopt.c:730
-#, c-format
-msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: không nhận ra tùy chọn « --%s »\n"
-
-#: lib/getopt.c:738 lib/getopt.c:741
-#, c-format
-msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: không nhận ra tùy chọn « %c%s »\n"
-
-#: lib/getopt.c:796 lib/getopt.c:799
-#, c-format
-msgid "%s: illegal option -- %c\n"
-msgstr "%s: không cho phép tùy chọn « -- %c »\n"
-
-#: lib/getopt.c:805 lib/getopt.c:808
-#, c-format
-msgid "%s: invalid option -- %c\n"
-msgstr "%s: tùy chọn không hợp lệ « -- %c »\n"
-
-#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
-#, c-format
-msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: tùy chọn cần đến đối số « -- %c »\n"
-
-#: lib/getopt.c:935 lib/getopt.c:954
-#, c-format
-msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: tùy chọn « -W %s » là mơ hồ\n"
-
-#: lib/getopt.c:978 lib/getopt.c:999
-#, c-format
-msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: tùy chọn « -W %s » không cho phép đối số\n"
-
-#: makeinfo/cmds.c:525 makeinfo/cmds.c:547
+#: makeinfo/cmds.c:527 makeinfo/cmds.c:549
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "đối số tới « @%s » bị bỏ qua"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "February"
 msgstr "Tháng Hai"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "March"
 msgstr "Tháng Ba"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "April"
 msgstr "Tháng Tư"
 
-#: makeinfo/cmds.c:590
+#: makeinfo/cmds.c:592
 msgid "May"
 msgstr "Tháng Năm"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:593
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:593
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:593
 msgid "August"
 msgstr "Tháng Tám"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:593
 msgid "September"
 msgstr "Tháng Chín"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:593
 msgid "October"
 msgstr "Tháng Mười"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:594
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:594
 msgid "December"
 msgstr "Tháng Chạp"
 
-#: makeinfo/cmds.c:944
+#: makeinfo/cmds.c:946
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "gặp ký tự không thường %c trong « @var »"
 
-#: makeinfo/cmds.c:987
+#: makeinfo/cmds.c:989
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "đối số « @sc » toàn chữ hoa nên không có tác động"
 
-#: makeinfo/cmds.c:1042
+#: makeinfo/cmds.c:1044
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "ngờ « { » còn gặp « %c »"
 
-#: makeinfo/cmds.c:1082
+#: makeinfo/cmds.c:1084
 msgid "end of file inside verb block"
 msgstr "kết thức tập tin ở trong khối động từ"
 
-#: makeinfo/cmds.c:1090
+#: makeinfo/cmds.c:1092
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "ngờ « } » còn gặp « %c »"
 
-#: makeinfo/cmds.c:1120
+#: makeinfo/cmds.c:1123
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -1871,49 +1886,49 @@ msgstr ""
 "« @strong{Note...} » gây ra tham chiếu chéo giả trong Info; hãy sửa đổi để "
 "tránh nó"
 
-#: makeinfo/cmds.c:1319
+#: makeinfo/cmds.c:1322
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s quá cũ"
 
-#: makeinfo/cmds.c:1428
+#: makeinfo/cmds.c:1431
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "« @sp » cần đến một đối số thuộc số, không phải '%s'"
 
-#: makeinfo/cmds.c:1783 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Đối số sai tới %c%s"
 
-#: makeinfo/cmds.c:1793 makeinfo/makeinfo.c:4193
+#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr "như thế"
 
-#: makeinfo/cmds.c:1795 makeinfo/cmds.c:1825 makeinfo/makeinfo.c:4195
+#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "không có"
 
-#: makeinfo/cmds.c:1809
+#: makeinfo/cmds.c:1816
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Đối số sai tới @%s"
 
-#: makeinfo/cmds.c:1823
+#: makeinfo/cmds.c:1830
 msgid "insert"
 msgstr "chèn"
 
-#: makeinfo/cmds.c:1839
+#: makeinfo/cmds.c:1846
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Đối số sai tới @%s"
 
-#: makeinfo/cmds.c:1922
+#: makeinfo/cmds.c:1929
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1942
+#: makeinfo/cmds.c:1949
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -1951,12 +1966,12 @@ msgid "Method"
 msgstr "Phương pháp"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2109
+#: makeinfo/defun.c:644 makeinfo/xml.c:2136
 msgid "of"
 msgstr "trên"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2114
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2141
 msgid "on"
 msgstr "trên"
 
@@ -1989,8 +2004,8 @@ msgstr "Bộ đệm xuất không rỗng."
 msgid "Requested float type `%s' not previously used"
 msgstr ""
 
-#: makeinfo/float.c:378 makeinfo/float.c:384 makeinfo/index.c:913
-#: makeinfo/index.c:919 makeinfo/xref.c:134 makeinfo/xref.c:171
+#: makeinfo/float.c:377 makeinfo/float.c:383 makeinfo/index.c:925
+#: makeinfo/index.c:931 makeinfo/xref.c:134 makeinfo/xref.c:171
 #: makeinfo/xref.c:206
 msgid "See "
 msgstr "Xem"
@@ -2016,7 +2031,7 @@ msgstr "Cước chú đã xác định mà không có nút mẹ"
 msgid "Footnotes inside footnotes are not allowed"
 msgstr "không cho phép cước chú ở trong cước chú (lồng nhau)"
 
-#: makeinfo/footnote.c:302 makeinfo/index.c:189
+#: makeinfo/footnote.c:302 makeinfo/index.c:190
 msgid "Footnotes"
 msgstr "Cước chú"
 
@@ -2025,64 +2040,64 @@ msgstr "Cước chú"
 msgid "%s: could not open --css-file: %s"
 msgstr "%s: không thể mở tập tin « --css-file »: %s"
 
-#: makeinfo/html.c:175
+#: makeinfo/html.c:176
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: tập tin « --css-file » kết thức với ghi chú"
 
-#: makeinfo/html.c:210
+#: makeinfo/html.c:204
 msgid "Untitled"
 msgstr "Không tên"
 
-#: makeinfo/html.c:428
+#: makeinfo/html.c:422
 msgid "[unexpected] no html tag to pop"
 msgstr "[bất ngờ] không có thẻ html cần bật"
 
-#: makeinfo/html.c:770
+#: makeinfo/html.c:765
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[bất ngờ] tên nút không hợp lệ: « %s »"
 
-#: makeinfo/index.c:169
+#: makeinfo/index.c:170
 #, c-format
 msgid "Unknown index `%s'"
 msgstr "Không biết chỉ mục « %s »"
 
-#: makeinfo/index.c:234
+#: makeinfo/index.c:235
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
 msgstr "Info không thể xử lý dấu hai chấm « : » trong điều chỉ mục « %s »"
 
-#: makeinfo/index.c:412
+#: makeinfo/index.c:413
 #, c-format
 msgid "Index `%s' already exists"
 msgstr "Chỉ mục « %s » đã có."
 
-#: makeinfo/index.c:455
+#: makeinfo/index.c:456
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "Không biết chỉ mục « %s » và/hay « %s » trong « @synindex »"
 
-#: makeinfo/index.c:661
+#: makeinfo/index.c:662
 msgid "(line )"
 msgstr "(dòng)"
 
-#: makeinfo/index.c:669
+#: makeinfo/index.c:670
 #, c-format
 msgid "(line %*d)"
 msgstr "(dòng %*d)"
 
-#: makeinfo/index.c:748
+#: makeinfo/index.c:751
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Không biết chỉ mục « %s » trong « @printindex »"
 
-#: makeinfo/index.c:817
+#: makeinfo/index.c:820
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Điều nhập cho chỉ mục « %s » ở ngoại nút nào"
 
-#: makeinfo/index.c:820 makeinfo/index.c:856
+#: makeinfo/index.c:823 makeinfo/index.c:859
 msgid "(outside of any node)"
 msgstr "(ở ngoại nút nào)"
 
@@ -2195,37 +2210,42 @@ msgstr "« @%s » không có nghĩa ở trong khối « @%s »"
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "« @itemx » không có nghĩa ở trong khối « %s »"
 
-#: makeinfo/insertion.c:2369
+#: makeinfo/insertion.c:2367
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "gặp « %c%s » ở ngoại một khối chèn"
 
-#: makeinfo/lang.c:692
+#: makeinfo/lang.c:957
+#, c-format
+msgid "no default territory known for language `%s'"
+msgstr ""
+
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s không phải là một mã ngôn ngữ kiểu ISO 639 hợp lệ"
 
-#: makeinfo/lang.c:767
+#: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "không nhận ra tên mã hóa « %s »"
 
-#: makeinfo/lang.c:775
+#: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "tiếc là không hỗ trợ mã hóa « %s »"
 
-#: makeinfo/lang.c:827
+#: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ký tự đã mã hóa không hợp lệ: « %s »"
 
-#: makeinfo/lang.c:1127
+#: makeinfo/lang.c:1472
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "« %c%s » ngờ « i » hay « j » là đối số, không phải « %c »"
 
-#: makeinfo/lang.c:1131
+#: makeinfo/lang.c:1476
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "« %c%s » ngờ một ký tự riêng lẻ « i » hay « j » là đối số"
@@ -2240,59 +2260,63 @@ msgstr "bộ lệnh « %s » được xác định trước"
 msgid "here is the previous definition of `%s'"
 msgstr "đây là lời định nghĩa trước của « %s »"
 
-#: makeinfo/macro.c:356
+#: makeinfo/macro.c:359
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgstr ""
 "« \\ » trong lời mở rộng bộ lệnh có « %s » theo sau, thay vào tên tham số"
 
-#: makeinfo/macro.c:402
+#: makeinfo/macro.c:401
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "Bộ lệnh « %s » được gọi trên dòng %d với quá nhiều đối số"
 
-#: makeinfo/macro.c:587
+#: makeinfo/macro.c:580
 #, c-format
 msgid "%cend macro not found"
 msgstr "Không tìm thấy bộ lệnh « %cend »"
 
-#: makeinfo/macro.c:625
-msgid "@quote-arg only useful for single-argument macros"
-msgstr "« @quote-arg » (đối số trích dẫn) chỉ hữu ích cho bộ lệnh đối số đơn"
+#: makeinfo/macro.c:591
+msgid "@allow-recursion is deprecated; please use @rmacro instead"
+msgstr ""
 
-#: makeinfo/macro.c:661
+#: makeinfo/macro.c:606
+msgid "@quote-arg is deprecated; arguments are quoted by default"
+msgstr ""
+
+#: makeinfo/macro.c:649
 #, c-format
 msgid "mismatched @end %s with @%s"
 msgstr "khớp sai « @end » « %s » với « @%s »"
 
-#: makeinfo/makeinfo.c:185
+#: makeinfo/makeinfo.c:189
 #, c-format
 msgid "Too many errors!  Gave up.\n"
 msgstr "Quá nhiều lỗi nên thôi.\n"
 
-#: makeinfo/makeinfo.c:303
+#: makeinfo/makeinfo.c:307
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: cảnh báo : "
 
-#: makeinfo/makeinfo.c:322 makeinfo/makeinfo.c:2307
+#: makeinfo/makeinfo.c:326 makeinfo/makeinfo.c:2304
 #, c-format
 msgid "Misplaced %c"
 msgstr "Định vị sai %c"
 
-#: makeinfo/makeinfo.c:341
+#: makeinfo/makeinfo.c:345
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh « %s --help » (trợ giúp) để xem thông tin thêm.\n"
 
-#: makeinfo/makeinfo.c:344
+#: makeinfo/makeinfo.c:348
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
 "Cách sử dụng: %s [TÙY_CHỌN]... TTT...\n"
 "\t[TTT\t\tTập Tin Texinfo]\n"
 
-#: makeinfo/makeinfo.c:347
+#: makeinfo/makeinfo.c:351
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2300,7 +2324,7 @@ msgstr ""
 "Dịch tài liệu nguồn Texinfo sang nhiều khuôn dạng khác nhau, mặc định là tập "
 "tin Info thích hợp để đọc trực tuyến bằng Emacs hoặc Info GNU độc nhất.\n"
 
-#: makeinfo/makeinfo.c:351
+#: makeinfo/makeinfo.c:355
 #, fuzzy, c-format
 msgid ""
 "General options:\n"
@@ -2333,7 +2357,7 @@ msgstr ""
 "  -v, --verbose               \tdiễn tả cái gì xảy ra (_chi tiết_).\n"
 "      --version               \t\thiện thông tin _phiên bản_ rồi thoát.\n"
 
-#: makeinfo/makeinfo.c:367
+#: makeinfo/makeinfo.c:371
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2348,7 +2372,7 @@ msgstr ""
 "      --xml                 \txuất Texinfo XML hơn là Info.\n"
 "      --plaintext           \txuất _văn bản thô_ hơn là Info.\n"
 
-#: makeinfo/makeinfo.c:375
+#: makeinfo/makeinfo.c:379
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2384,7 +2408,7 @@ msgstr ""
 "  -o, --output=TẬP_TIN\n"
 "\t\t_xuất_ ra tập tin tên này (ra thư mục nếu xuất HTML đã chi tách)\n"
 
-#: makeinfo/makeinfo.c:389
+#: makeinfo/makeinfo.c:393
 #, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2428,7 +2452,7 @@ msgstr ""
 "\t\tchia tách tập tin Info tại kích cỡ SỐ này (mặc định là %d).\n"
 "\t\t\t(_chia tách kích cỡ_)\n"
 
-#: makeinfo/makeinfo.c:406
+#: makeinfo/makeinfo.c:410
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2444,7 +2468,7 @@ msgstr ""
 "            \tđọc thiết bị nhập chuẩn nếu tập tin này là « - » .\n"
 "\t\t\t(_bao gồm CSS_)\n"
 
-#: makeinfo/makeinfo.c:415
+#: makeinfo/makeinfo.c:419
 #, fuzzy, c-format
 msgid ""
 "Options for XML and Docbook:\n"
@@ -2459,7 +2483,7 @@ msgstr ""
 "\t\tnếu giá trị này là 0, xóa bỏ các dấu cách có thể bỏ qua.\n"
 "\t\t\t(_xuất thụt lề_)\n"
 
-#: makeinfo/makeinfo.c:422
+#: makeinfo/makeinfo.c:426
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2481,7 +2505,7 @@ msgstr ""
 "  -U GIÁ_TRỊ\n"
 "\t\tbỏ xác định giá trị này, như với « @clear » (xóa).\n"
 
-#: makeinfo/makeinfo.c:431
+#: makeinfo/makeinfo.c:435
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2533,7 +2557,7 @@ msgstr ""
 "  Hơn nữa, cho những tùy chọn « --no-ifFORMAT »,\n"
 "  có phải xử lý văn bản « @ifnotFORMAT ».\n"
 
-#: makeinfo/makeinfo.c:450
+#: makeinfo/makeinfo.c:454
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2549,7 +2573,7 @@ msgstr ""
 " \tvăn bản thô \t\t--ifplaintext\tcác điều khác\n"
 "  \tXML\t\t\t\t--ifxml\t\tcác điều khác\n"
 
-#: makeinfo/makeinfo.c:458
+#: makeinfo/makeinfo.c:462
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2580,30 +2604,30 @@ msgstr ""
 "  makeinfo --no-split foo.texi\n"
 "\t\tghi chỉ một tập tin Info, bất chấp kích cỡ (_không chia tách_)\n"
 
-#: makeinfo/makeinfo.c:615
+#: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
 "%s: Đang bỏ qua giá trị không được nhận ra « TEXINFO_OUTPUT_FORMAT » (khuôn "
 "dạng xuất Texinfo) « %s ».\n"
 
-#: makeinfo/makeinfo.c:663 makeinfo/makeinfo.c:689 makeinfo/makeinfo.c:713
-#: makeinfo/makeinfo.c:743 makeinfo/makeinfo.c:764
+#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
+#: makeinfo/makeinfo.c:747 makeinfo/makeinfo.c:768
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: %s đối số phải có kiểu số, không phải « %s ».\n"
 
-#: makeinfo/makeinfo.c:676
+#: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s: không thể mở kết xuất mở rộng bộ lệnh « %s »"
 
-#: makeinfo/makeinfo.c:681
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: đang bỏ qua kết xuất mở rộng bộ lệnh thứ hai « %s ».\n"
 
-#: makeinfo/makeinfo.c:728
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -2613,7 +2637,7 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: makeinfo/makeinfo.c:753
+#: makeinfo/makeinfo.c:757
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -2622,49 +2646,44 @@ msgstr ""
 " • end\t\tkết thúc\n"
 "không phải « %s ».\n"
 
-#: makeinfo/makeinfo.c:830
+#: makeinfo/makeinfo.c:832
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: makeinfo/makeinfo.c:1021 makeinfo/makeinfo.c:4040
+#: makeinfo/makeinfo.c:1023 makeinfo/makeinfo.c:4128
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Lệnh đa dòng %c%s được dùng một cách không đúng"
 
-#: makeinfo/makeinfo.c:1024
+#: makeinfo/makeinfo.c:1026
 #, c-format
 msgid "Expected `%s'"
 msgstr "Ngờ « %s »"
 
-#: makeinfo/makeinfo.c:1503
+#: makeinfo/makeinfo.c:1505
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Không thể tạo thư mục « %s »: %s"
 
-#: makeinfo/makeinfo.c:1549
+#: makeinfo/makeinfo.c:1551
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Không tìm thấy « %s » trong « %s »."
 
-#: makeinfo/makeinfo.c:1629
+#: makeinfo/makeinfo.c:1631
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Đang nhảy qua việc mở rộng bộ lệnh ra thiết bị xuất chuẩn vì kết xuất "
 "Info đang đi ra đó.\n"
 
-#: makeinfo/makeinfo.c:1662
+#: makeinfo/makeinfo.c:1664
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Đang tạo tập tin %s « %s » từ « %s ».\n"
 
-#: makeinfo/makeinfo.c:1697
-#, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Đây là %s, được tạo bởi makinfo phiên bản %s từ %s.\n"
-
-#: makeinfo/makeinfo.c:1733
+#: makeinfo/makeinfo.c:1728
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2672,114 +2691,119 @@ msgstr ""
 "%s: Đang gỡ bỏ tập tin xuất bộ lệnh « %s » vì gặp lỗi; hãy dùng tùy chọn « --"
 "force » (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:1788
+#: makeinfo/makeinfo.c:1783
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Đang gỡ bỏ tập tin xuất « %s » vì gặp lỗi; hãy dùng tùy chọn « --force "
 "» (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:2080
+#: makeinfo/makeinfo.c:2077
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Không biết lệnh « %s »"
 
-#: makeinfo/makeinfo.c:2102
+#: makeinfo/makeinfo.c:2099
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Dùng dấu ngoặc móc {} để đưa ra lệnh dạng đối số tới @%s"
 
-#: makeinfo/makeinfo.c:2361
+#: makeinfo/makeinfo.c:2358
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s ngờ dấu ngoặc móc {}"
 
-#: makeinfo/makeinfo.c:2374
+#: makeinfo/makeinfo.c:2371
 msgid "Unmatched }"
 msgstr "Chưa khớp }"
 
-#: makeinfo/makeinfo.c:2422
+#: makeinfo/makeinfo.c:2419
 msgid "NO_NAME!"
 msgstr "Không có tên."
 
-#: makeinfo/makeinfo.c:2443
+#: makeinfo/makeinfo.c:2440
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s: thiếu dấu ngoặc móc đóng « } »"
 
-#: makeinfo/makeinfo.c:3358
+#: makeinfo/makeinfo.c:2618
+#, c-format
+msgid "This is %s, produced by makeinfo version %s from %s.\n"
+msgstr "Đây là %s, được tạo bởi makinfo phiên bản %s từ %s.\n"
+
+#: makeinfo/makeinfo.c:3443
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "Tập tin « @image » (ảnh) « %s » (cho HTML) không đọc được: %s"
 
-#: makeinfo/makeinfo.c:3364
+#: makeinfo/makeinfo.c:3449
 #, c-format
 msgid "No such file `%s'"
 msgstr "Không có tập tin như vậy « %s »"
 
-#: makeinfo/makeinfo.c:3496
+#: makeinfo/makeinfo.c:3585
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "Tập tin « @image » (ảnh) « %s » (cho văn bản) không đọc được: %s"
 
-#: makeinfo/makeinfo.c:3505
+#: makeinfo/makeinfo.c:3594
 msgid "@image missing filename argument"
 msgstr "« @image » (ảnh) thiếu đối số tên tập tin"
 
-#: makeinfo/makeinfo.c:3724
+#: makeinfo/makeinfo.c:3812
 #, c-format
 msgid "undefined flag: %s"
 msgstr "chưa định nghĩa cờ : %s"
 
-#: makeinfo/makeinfo.c:3725
+#: makeinfo/makeinfo.c:3813
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Không có giá trị cho « %s »}"
 
-#: makeinfo/makeinfo.c:3777
+#: makeinfo/makeinfo.c:3865
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s cần đến tên"
 
-#: makeinfo/makeinfo.c:3883
+#: makeinfo/makeinfo.c:3971
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Đã tới kết thúc tập tin trước khi khớp « @end » (kết thúc) %s"
 
-#: makeinfo/makeinfo.c:4133
+#: makeinfo/makeinfo.c:4220
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "« %.40s... » quá dài để mở rộng nên chưa mở rộng"
 
-#: makeinfo/multi.c:116
+#: makeinfo/multi.c:117
 msgid "Missing } in @multitable template"
 msgstr "Thiếu « } » trong biểu mẫu « @multitable » (đa bảng)"
 
-#: makeinfo/multi.c:254
+#: makeinfo/multi.c:261
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "Đang bỏ qua chữ rải rác « %s » sau « @multitable » (đa bảng)"
 
-#: makeinfo/multi.c:394
+#: makeinfo/multi.c:401
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Quá nhiều cột trong mục đa bảng (tối đà là %d)"
 
-#: makeinfo/multi.c:556
+#: makeinfo/multi.c:564
 #, c-format
 msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "[bất ngờ] không thể chọn cột số %d trong đa bảng"
 
-#: makeinfo/multi.c:585
+#: makeinfo/multi.c:593
 msgid "ignoring @tab outside of multitable"
 msgstr "đang bỏ qua « @tab » bên ngoài đa bảng"
 
-#: makeinfo/multi.c:633
+#: makeinfo/multi.c:641
 #, c-format
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Kết xuất đa cột từ hàng cuối cùng:\n"
 
-#: makeinfo/multi.c:636
+#: makeinfo/multi.c:644
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* cột số %d; kết xuất = %s\n"
@@ -2804,7 +2828,7 @@ msgstr "Nút « %s » cần đến lệnh chia ra từng phần (v.d. %c%s)"
 msgid "No node name specified for `%c%s' command"
 msgstr "Chưa ghi rõ tên nút cho lệnh « %c%s »"
 
-#: makeinfo/node.c:921 makeinfo/node.c:1152
+#: makeinfo/node.c:921 makeinfo/node.c:1162
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Neo « %s » và nút « %s » có ánh xạ tới cùng một tên tập tin"
@@ -2814,7 +2838,7 @@ msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 "Lệnh « @anchor » (neo) bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:926 makeinfo/node.c:1155
+#: makeinfo/node.c:926 makeinfo/node.c:1165
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 "Thay đổi tên neo này, hoặc dùng tùy chọn « --no-split » (không chia tách)"
@@ -2836,89 +2860,89 @@ msgstr "Trước:"
 msgid "Up:"
 msgstr "Lên:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1159
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Neo cả « %s » lẫn « %s » đều ánh xạ tới cùng một tên tập tin"
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1164
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 "Lệnh « @anchor » (neo) bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1361
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s tham chiếu đến nút không tồn tại « %s » (có lẽ đã chia ra từng phần không "
 "đúng?)"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1377
 msgid "Menu"
 msgstr "Trình đơn"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1379
 msgid "Cross"
 msgstr "Chéo"
 
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1461
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "Không có điều chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng "
 "phần không đúng?)"
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1464
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Nút này (%s) có Trước sai"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1476
 msgid "Prev"
 msgstr "Trước"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1519
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Không có điều chỉ tới trường trước của nút « %s »"
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1523
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Nút này (%s) có Kế sai"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1535
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "« %s » không có trường Lên (có lẽ đã chia ra từng phần không đúng?)"
 
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1538
 msgid "Up"
 msgstr "Lên"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1604
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên "
 "của nó"
 
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1633
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "nút « %s » đã được tham chiếu %d lần"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1647
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1737
 #, c-format
 msgid "Removing %s\n"
 msgstr "Đang gỡ bỏ %s...\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1741
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Không thể gỡ bỏ tập tin « %s »: %s"
@@ -2958,20 +2982,12 @@ msgstr "Đây là nút « %ctop »"
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "« %ctop » được dùng trước « %cnode » nên dùng giá trị mặc định là %s"
 
-#: makeinfo/toc.c:197 makeinfo/toc.c:271 makeinfo/toc.c:273
-msgid "Table of Contents"
-msgstr "Mục lục"
-
-#: makeinfo/toc.c:304 makeinfo/toc.c:337 makeinfo/toc.c:339
-msgid "Short Contents"
-msgstr "Mục lục ngắn"
-
-#: makeinfo/xml.c:1628
+#: makeinfo/xml.c:1655
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Không thể đọc tập tin « @image » (ảnh) « %s »: %s"
 
-#: makeinfo/xml.c:1973
+#: makeinfo/xml.c:2000
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""
@@ -3016,31 +3032,31 @@ msgstr "Không có tham chiếu chéo trong nút này."
 msgid "First argument to @inforef may not be empty"
 msgstr ""
 
-#: util/install-info.c:154
+#: util/install-info.c:171
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: cảnh báo :"
 
-#: util/install-info.c:203
+#: util/install-info.c:220
 #, c-format
 msgid " for %s"
 msgstr " cho %s"
 
-#: util/install-info.c:426
+#: util/install-info.c:445
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr ""
 "Hãy thử lệnh « %s --help » (trợ giúp) để xem danh sách tùy chọn hoàn toàn.\n"
 
-#: util/install-info.c:434
-#, c-format
+#: util/install-info.c:453
+#, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 "\n"
-"Install or delete dir entries from INFO-FILE in the Info directory file\n"
-"DIR-FILE.\n"
+"Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
 "\n"
 "Options:\n"
+" --debug           report what is being done.\n"
 " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                     don't insert any new entries.\n"
 " --dir-file=NAME   specify file name of Info directory file.\n"
@@ -3061,11 +3077,18 @@ msgid ""
 "                     An Info directory entry is actually a menu item.\n"
 " --quiet           suppress warnings.\n"
 " --remove          same as --delete.\n"
+" --remove-exactly  only remove if the info file name matches exactly;\n"
+"                     .info and/or .gz suffixes are not ignored.\n"
 " --section=SEC     put this file's entries in section SEC of the directory.\n"
 "                     If you specify more than one section, all the entries\n"
 "                     are added in each of the sections.\n"
 "                     If you don't specify any sections, they are determined\n"
 "                     from information in the Info file itself.\n"
+" --section-regex=R if an entry is added to a section that does not exist,\n"
+"                     look for a section matching basic regular expression R\n"
+"                     (and ignoring case) before starting a new section.\n"
+" --test            suppress updating of DIR-FILE.\n"
+" --silent          suppress warnings.\n"
 " --version         display version information and exit.\n"
 msgstr ""
 "Cách sử dụng: %s [TÙY_CHỌN]... [TI [TTM]]\n"
@@ -3104,7 +3127,7 @@ msgstr ""
 "\t\t\tcó quyết định chúng từ thông tin trong tập tin Info chính nó.\n"
 " --version         \thiện thông tin _phiên bản_ rồi thoát\n"
 
-#: util/install-info.c:488
+#: util/install-info.c:519
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -3141,107 +3164,109 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: util/install-info.c:513
+#: util/install-info.c:544
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: không thể đọc (%s) và không thể tạo (%s)\n"
 
-#: util/install-info.c:600
+#: util/install-info.c:631
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tập tin rỗng"
 
-#: util/install-info.c:913 util/install-info.c:953
+#: util/install-info.c:944 util/install-info.c:984
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr ""
 "Có « START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) mà không có « END-"
 "INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) khớp"
 
-#: util/install-info.c:948
+#: util/install-info.c:979
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr ""
 "Có « END-INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) mà không có « "
 "START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) khớp"
 
-#: util/install-info.c:1191 util/install-info.c:1201
+#: util/install-info.c:1226 util/install-info.c:1236
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: đã có tập tin thư mục: %s\n"
 
-#: util/install-info.c:1236
+#: util/install-info.c:1275
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần thôi.\n"
 
-#: util/install-info.c:1287
+#: util/install-info.c:1298
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr ""
+
+#: util/install-info.c:1309
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr ""
+
+#: util/install-info.c:1354
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "đối số dòng lệnh thừa « %s »"
 
-#: util/install-info.c:1291
+#: util/install-info.c:1358
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin nhập. Hãy chạy lệnh « --help » (trợ giúp) để xem thông "
 "tin thêm."
 
-#: util/install-info.c:1294
+#: util/install-info.c:1361
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh « --help » (trợ giúp) để xem "
 "thông tin thêm."
 
-#: util/install-info.c:1316
+#: util/install-info.c:1385
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "không có mục nhập thư mục Info trong « %s »"
 
-#: util/install-info.c:1429
+#: util/install-info.c:1526
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "mục trình đơn « %s » đã có, cho tập tin « %s »"
 
-#: util/install-info.c:1452
+#: util/install-info.c:1549
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "không tìm thấy mục nhập cho « %s »; không xóa bỏ gì"
 
-#: util/texindex.c:260
+#: util/texindex.c:224
 msgid "display this help and exit"
 msgstr "hiển thị trợ giúp này rồi thoát"
 
-#: util/texindex.c:262
-msgid "keep temporary files around after processing"
-msgstr "giữ lại các tập tin tạm thời sau khi xử lý"
-
-#: util/texindex.c:264
-msgid "do not keep temporary files around after processing (default)"
-msgstr "không giữ lại các tập tin tạm thời sau khi xử lý (mặc định)"
-
-#: util/texindex.c:266
+#: util/texindex.c:226
 msgid "send output to FILE"
 msgstr "xuất ra tập tin này"
 
-#: util/texindex.c:268
+#: util/texindex.c:228
 msgid "display version information and exit"
 msgstr "hiển thị thông tin phiên bản rồi thoát"
 
-#: util/texindex.c:278
+#: util/texindex.c:238
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Cách sử dụng: %s [TÙY_CHỌN]... [TẬP_TIN]...\n"
 
-#: util/texindex.c:279
+#: util/texindex.c:239
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "Tạo ra chỉ mục đã sắp xếp cho mỗi TẬP_TIN xuất TeX.\n"
 
-#: util/texindex.c:282
+#: util/texindex.c:242
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr ""
 "Thường TẬP_TIN... được ghi rõ dạng <foo.%c%c> cho tài liệu dạng <foo.texi>.\n"
 
-#: util/texindex.c:284
+#: util/texindex.c:244
 #, c-format
 msgid ""
 "\n"
@@ -3250,26 +3275,54 @@ msgstr ""
 "\n"
 "Tùy chọn:\n"
 
-#: util/texindex.c:886 util/texindex.c:920 util/texindex.c:995
-#: util/texindex.c:1023
-#, c-format
-msgid "%s: not a texinfo index file"
-msgstr "%s: không phải là tập tin chỉ mục texinfo"
-
-#: util/texindex.c:980
+#: util/texindex.c:744
 #, c-format
 msgid "failure reopening %s"
 msgstr "lỗi mở lại %s"
 
-#: util/texindex.c:1230
+#: util/texindex.c:759 util/texindex.c:787
+#, c-format
+msgid "%s: not a texinfo index file"
+msgstr "%s: không phải là tập tin chỉ mục texinfo"
+
+#: util/texindex.c:994
 #, c-format
 msgid "No page number in %s"
 msgstr "Không có số thứ tự trang trong %s"
 
-#: util/texindex.c:1303
+#: util/texindex.c:1067
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "mục nhập %s đi theo một mục nhập có tên phụ"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the file named COPYING.\n"
+#~ msgstr ""
+#~ "Bản quyền © %s Tổ chức Phần mềm Tự do.\n"
+#~ "Không bảo đảm gì cả. Bạn có thể phân phối lại phần mềm này\n"
+#~ "với điều kiện của Quyền công chung Gnu (GPL).\n"
+#~ "Để gọi thông tin thêm về chủ đề này thì hãy xem tập tin có tên COPYING.\n"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr ""
+#~ "« @quote-arg » (đối số trích dẫn) chỉ hữu ích cho bộ lệnh đối số đơn"
+
+#~ msgid "Table of Contents"
+#~ msgstr "Mục lục"
+
+#~ msgid "Short Contents"
+#~ msgstr "Mục lục ngắn"
+
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "giữ lại các tập tin tạm thời sau khi xử lý"
+
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "không giữ lại các tập tin tạm thời sau khi xử lý (mặc định)"
 
 #~ msgid ""
 #~ "There is NO warranty.  You may redistribute this software\n"

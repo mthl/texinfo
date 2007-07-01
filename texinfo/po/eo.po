@@ -6,13 +6,78 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-21 16:20-0800\n"
+"POT-Creation-Date: 2007-07-01 11:07-0700\n"
 "PO-Revision-Date: 2006-11-25 23:35+0600\n"
 "Last-Translator: Sergio Pokrovskij <sergio.pokrovskij@gmail.com>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+
+#: gnulib/lib/error.c:125
+msgid "Unknown system error"
+msgstr ""
+
+#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: opcio «%s» estas ambigua\n"
+
+#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: opcio „--%s‟ ne toleras argumenton\n"
+
+#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: opcio „%c%s‟ ne toleras argumenton\n"
+
+#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
+#: gnulib/lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: opcio «%s» bezonas argumenton\n"
+
+#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: nekonata opcio „--%s‟\n"
+
+#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: nekonata opcio „%c%s‟\n"
+
+#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: misa opcio -- %c\n"
+
+#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: nevalida opcio -- %c\n"
+
+#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
+#: gnulib/lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: opcio bezonas argumenton -- %c\n"
+
+#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: opcio „-W %s‟ estas ambigua\n"
+
+#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: opcio „-W %s‟ ne toleras argumenton\n"
+
+#: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
+msgid "memory exhausted"
+msgstr ""
 
 #: info/echo-area.c:284 info/session.c:689
 msgid "Move forward a character"
@@ -164,8 +229,10 @@ msgid "Index entry: "
 msgstr "Indeksa artikolo: "
 
 #: info/indices.c:325
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
-msgstr "Pasu al la sekva indeksa ero kongrua al la lasta komando „\\[index-search]‟"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
+msgstr ""
+"Pasu al la sekva indeksa ero kongrua al la lasta komando „\\[index-search]‟"
 
 #: info/indices.c:335
 msgid "No previous index search string."
@@ -220,41 +287,41 @@ msgstr ""
 "\n"
 "* Menu: Nodoj kies indeksoj entenas «%s»:\n"
 
-#: info/info.c:275 info/infokey.c:899
+#: info/info.c:279 info/infokey.c:900
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion „--help‟.\n"
 
-#: info/info.c:295 makeinfo/makeinfo.c:766 util/install-info.c:1266
-#: util/texindex.c:343
+#: info/info.c:298 info/infokey.c:146 makeinfo/makeinfo.c:790
+#: util/install-info.c:1329 util/texindex.c:296
 #, c-format
 msgid ""
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
-"NENIA garantio estas donita.  Vi rajtas pludoni ekzemplerojn de ĉi tiu\n"
-"programo laŭ la kondiĉoj de la GNUa Ĝenerala Publika Permesilo.\n"
-"Pluaj informoj troveblas en la dosieroj COPYING.\n"
 
-#: info/info.c:498
+#: info/info.c:503
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "por «%s» ne troviĝis indeksa artikolo\n"
 
-#: info/info.c:590
+#: info/info.c:595
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr "  -b, --speech-friendly        estu afabla al la parolsinteziloj.\n"
 
-#: info/info.c:597
-#, c-format
+#: info/info.c:602
+#, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 "\n"
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -282,6 +349,7 @@ msgid ""
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
+"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
 msgstr ""
 "Sintakso: %s [OPCIO]... [MENUERO...]\n"
@@ -294,7 +362,8 @@ msgstr ""
 "    --dribble=DOSIERO\t    Notu la klavofrapojn de la uzanto en DOSIERO.\n"
 "-f, --file=DOSIERO\t    Vizitu la Info-DOSIEROn.\n"
 "-h, --help\t\t    Eligu ĉi tiun helpeton kaj finu.\n"
-"    --index-search=ĈENO\t    Vizitu nodon referencatan per indeksartikolo ĈENO.\n"
+"    --index-search=ĈENO\t    Vizitu nodon referencatan per indeksartikolo "
+"ĈENO.\n"
 "-n, --node=NODO\t\t    Komencu per NODO.\n"
 "-o, --output=DOSIERO\t    Eligu la elektitajn nodojn en DOSIEROn.\n"
 "-R, --raw-escapes\t    Eligu ANSI-eskapilojn «krude» (la defaŭlto)\n"
@@ -319,8 +388,8 @@ msgstr ""
 " info --show-options emacs  komencu per la Emaksaj komandliniaj opcioj\n"
 " info -f ./um.info\t    eligu la dosieron ./um.info sen atenti „dir‟\n"
 
-#: info/info.c:635 info/infokey.c:918 makeinfo/makeinfo.c:465
-#: util/install-info.c:466 util/texindex.c:292
+#: info/info.c:641 info/infokey.c:919 makeinfo/makeinfo.c:475
+#: util/install-info.c:492 util/texindex.c:260
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -334,72 +403,72 @@ msgstr ""
 "Por la diskutoj pri Esperanto-traduko uzu la dissendoliston\n"
 "<translation-team-eo@lists.sourceforge.net>."
 
-#: info/info.c:669
+#: info/info.c:675
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "La nodo «%s» ne troveblas."
 
-#: info/info.c:670
+#: info/info.c:676
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "La nodo „(%s)%s‟ ne troveblas."
 
-#: info/info.c:671
+#: info/info.c:677
 msgid "Cannot find a window!"
 msgstr "Maleblas trovi fenestron!"
 
-#: info/info.c:672
+#: info/info.c:678
 msgid "Point doesn't appear within this window's node!"
 msgstr "La muskursoro ne estas en ĉi-fenestra nodo!"
 
-#: info/info.c:673
+#: info/info.c:679
 msgid "Cannot delete the last window."
 msgstr "Maleblas forigi la lastan fenestron"
 
-#: info/info.c:674
+#: info/info.c:680
 msgid "No menu in this node."
 msgstr "En ĉi tiu nodo malestas menuo."
 
-#: info/info.c:675
+#: info/info.c:681
 msgid "No footnotes in this node."
 msgstr "Ne estas piednotoj en ĉi tiu nodo."
 
-#: info/info.c:676
+#: info/info.c:682
 msgid "No cross references in this node."
 msgstr "Neniu referenco en ĉi tiu nodo."
 
-#: info/info.c:677
+#: info/info.c:683
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Mankas ligilo «%s» por ĉi tiu nodo."
 
-#: info/info.c:678
+#: info/info.c:684
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Nekonata Info-komando „%c‟; tajpu „?‟ por helpo."
 
-#: info/info.c:679
+#: info/info.c:685
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "La terminaloj de tipo «%s» ne estas sufiĉe inteligentaj por Info."
 
-#: info/info.c:680
+#: info/info.c:686
 msgid "You are already at the last page of this node."
 msgstr "Tiu paĝo jam estas la lasta en ĉi tiu nodo"
 
-#: info/info.c:681
+#: info/info.c:687
 msgid "You are already at the first page of this node."
 msgstr "Tio jam estas la unua paĝo de ĉi tiu nodo"
 
-#: info/info.c:682
+#: info/info.c:688
 msgid "Only one window."
 msgstr "Nur unu fenestro."
 
-#: info/info.c:683
+#: info/info.c:689
 msgid "Resulting window would be too small."
 msgstr "La fenestro rezultos tro malgranda."
 
-#: info/info.c:684
+#: info/info.c:690
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Mankas spaco por helpa fenestro, bv forigi iun fenestron."
 
@@ -437,7 +506,8 @@ msgstr "\\%-10[next-node]  Iru al la tujsekva („Next‟) nodo de ĉi tiu nodo.
 
 #: info/infodoc.c:56
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
-msgstr "\\%-10[prev-node]  Iru al la ĵusantaŭa („Previous‟) nodo de ĉi tiu nodo.\n"
+msgstr ""
+"\\%-10[prev-node]  Iru al la ĵusantaŭa („Previous‟) nodo de ĉi tiu nodo.\n"
 
 #: info/infodoc.c:57
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
@@ -452,31 +522,47 @@ msgstr ""
 "      Elekto de menuero kaŭzas transiron en alian nodon.\n"
 
 #: info/infodoc.c:60
-msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr "\\%-10[xref-item]  Sekvu referencon  (legante la nomon de la referenco).\n"
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr ""
+"\\%-10[xref-item]  Sekvu referencon  (legante la nomon de la referenco).\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr "\\%-10[history-node]  Revenu al la Lasta nodo vizitita en ĉi tiu fenestro.\n"
+msgstr ""
+"\\%-10[history-node]  Revenu al la Lasta nodo vizitita en ĉi tiu fenestro.\n"
 
 #: info/infodoc.c:62
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr "\\%-10[move-to-next-xref]  Saltu sur la sekvan hipertekstan ligilon en ĉi tiu nodo.\n"
+msgid ""
+"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr ""
+"\\%-10[move-to-next-xref]  Saltu sur la sekvan hipertekstan ligilon en ĉi "
+"tiu nodo.\n"
 
 #: info/infodoc.c:63
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
-msgstr "\\%-10[move-to-prev-xref]  Saltu sur la sekvan hipertekstan ligilon en ĉi tiu nodo.\n"
+msgid ""
+"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+"node.\n"
+msgstr ""
+"\\%-10[move-to-prev-xref]  Saltu sur la sekvan hipertekstan ligilon en ĉi "
+"tiu nodo.\n"
 
 #: info/infodoc.c:64
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  Iru laŭ la subkursora hiperteksta ligo.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Iru laŭ la subkursora hiperteksta ligo.\n"
 
 #: info/infodoc.c:65
-msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
-msgstr "\\%-10[dir-node]  Iru al la ĉefkataloga nodo.  Ekvivalentas al \"g (DIR)\".\n"
+msgid ""
+"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+"node] (DIR)'.\n"
+msgstr ""
+"\\%-10[dir-node]  Iru al la ĉefkataloga nodo.  Ekvivalentas al \"g (DIR)\".\n"
 
 #: info/infodoc.c:66
-msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgid ""
+"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Iru al la radika nodo.  Ekvivalentas al „g Top‟.\n"
 
 #: info/infodoc.c:68 info/infodoc.c:116
@@ -521,7 +607,9 @@ msgstr ""
 
 #: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-msgstr "\\%-10[menu-digit]  Elektu resp. la unuan ... la naŭan eron el ĉi-noda menuo.\n"
+msgstr ""
+"\\%-10[menu-digit]  Elektu resp. la unuan ... la naŭan eron el ĉi-noda "
+"menuo.\n"
 
 #: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
@@ -529,11 +617,15 @@ msgstr "\\%-10[last-menu-item]  Elektu la lastan eron de ĉi-noda menuo.\n"
 
 #: info/infodoc.c:81
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of "
+"this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
-"\\%-10[index-search]  Serĉu aperon de donita signoĉeno en la indeksartikoloj de ĉi\n"
-"      tiu info-dosiero kaj elektu la nodon referencatan de la unua trovita artikolo.\n"
+"\\%-10[index-search]  Serĉu aperon de donita signoĉeno en la indeksartikoloj "
+"de ĉi\n"
+"      tiu info-dosiero kaj elektu la nodon referencatan de la unua trovita "
+"artikolo.\n"
 
 #: info/infodoc.c:83
 msgid ""
@@ -554,7 +646,8 @@ msgstr ""
 #: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is found.\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
 msgstr ""
 "\\%-10[search-backward]  Serĉu supre aperon de donita signoĉeno kaj\n"
 "      vizitu la nodon en kiu troviĝos la ĵusantaŭa apero.\n"
@@ -668,43 +761,52 @@ msgstr "  %-10s  Elektu resp. la unuan ... la naŭan eron de ĉi-noda menuo.\n"
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Elektu la lastan eron de ĉi-noda menuo.\n"
 
-#: info/infodoc.c:129
-#, c-format
-msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
-msgstr "  %-10s  Serĉu indikotan signoĉenon en la indeksaj artikoloj de ĉi tiu Info-\n"
-
-#: info/infodoc.c:130
-msgid "              file, and select the node referenced by the first entry found.\n"
-msgstr "      dosiero kaj elektu la nodon referencatan de la unua trovita artikolo.\n"
-
 #: info/infodoc.c:131
+#, fuzzy, c-format
+msgid ""
+"  %-10s  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
+msgstr ""
+"\\%-10[index-search]  Serĉu aperon de donita signoĉeno en la indeksartikoloj "
+"de ĉi\n"
+"      tiu info-dosiero kaj elektu la nodon referencatan de la unua trovita "
+"artikolo.\n"
+
+#: info/infodoc.c:133
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Vizitu nodon indikotan per la nomo.\n"
 
-#: info/infodoc.c:132
-msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+#: info/infodoc.c:134
+msgid ""
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "      Ankaŭ la dosiernomon vi povas inkludi, kiel en (DOSIERO)NODO.\n"
 
-#: info/infodoc.c:133
-#, c-format
-msgid "  %-10s  Search forward for a specified string,\n"
-msgstr "  %-10s  Serĉu sube indikotan signoĉenon,\n"
-
-#: info/infodoc.c:134 info/infodoc.c:136
-msgid "              and select the node in which the next occurrence is found.\n"
-msgstr "        kaj vizitu la nodon en kiu troviĝos la sekva apero.\n"
-
 #: info/infodoc.c:135
+#, fuzzy, c-format
+msgid ""
+"  %-10s  Search forward for a specified string,\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"\\%-10[search]  Serĉu sube aperon de donita signoĉeno kaj\n"
+"      vizitu la nodon en kiu troviĝos la sekva apero.\n"
+
+#: info/infodoc.c:137
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Serĉu indikotan signoĉenon supre en la dosiero,\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:138
+msgid ""
+"              and select the node in which the next occurrence is found.\n"
+msgstr "        kaj vizitu la nodon en kiu troviĝos la sekva apero.\n"
+
+#: info/infodoc.c:318
 msgid "The current search path is:\n"
 msgstr "La kuranta serĉvojo estas:\n"
 
-#: info/infodoc.c:320
+#: info/infodoc.c:322
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -712,7 +814,7 @@ msgstr ""
 "Komandoj disponeblaj en Info-fenestroj:\n"
 "\n"
 
-#: info/infodoc.c:324
+#: info/infodoc.c:326
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -720,7 +822,7 @@ msgstr ""
 "Komandoj disponeblaj en la eĥozono:\n"
 "\n"
 
-#: info/infodoc.c:347
+#: info/infodoc.c:349
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -729,7 +831,7 @@ msgstr ""
 "La sekvaj komandoj vokeblas nur per  %s:\n"
 "\n"
 
-#: info/infodoc.c:351
+#: info/infodoc.c:353
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -737,168 +839,155 @@ msgstr ""
 "La sekvaj komandoj neniel vokeblas:\n"
 "\n"
 
-#: info/infodoc.c:375
+#: info/infodoc.c:377
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr "--- Uzu „\\[history-node]‟ aŭ „\\[kill-node]‟ por eliri ---\n"
 
-#: info/infodoc.c:485
+#: info/infodoc.c:487
 msgid "Display help message"
 msgstr "Eligu helpomesaĝon"
 
-#: info/infodoc.c:503
+#: info/infodoc.c:505
 msgid "Visit Info node `(info)Help'"
 msgstr "Vizitu la Info-nodon „(info)Help‟"
 
-#: info/infodoc.c:641
+#: info/infodoc.c:643
 msgid "Print documentation for KEY"
 msgstr "Eligu la informon pri KLAVO"
 
-#: info/infodoc.c:653
+#: info/infodoc.c:655
 #, c-format
 msgid "Describe key: %s"
 msgstr "Priskribu klavon: %s"
 
-#: info/infodoc.c:664
+#: info/infodoc.c:666
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s estas nedifinita."
 
-#: info/infodoc.c:680 info/infodoc.c:709
+#: info/infodoc.c:682 info/infodoc.c:711
 #, c-format
 msgid "%s is undefined."
 msgstr "%s estas nedifinita."
 
-#: info/infodoc.c:730
+#: info/infodoc.c:732
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s estas ligita al %s."
 
-#: info/infodoc.c:1153
+#: info/infodoc.c:1155
 msgid "Show what to type to execute a given command"
 msgstr "Montru, kion tajpi por plenumi koncernan komandon"
 
-#: info/infodoc.c:1157
+#: info/infodoc.c:1159
 msgid "Where is command: "
 msgstr "Kie estas la komando: "
 
-#: info/infodoc.c:1179
+#: info/infodoc.c:1181
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "neniu klavo trovita por la komando «%s»"
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1188
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s vokeblas nur per %s."
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1192
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s vokeblas per %s."
 
-#: info/infodoc.c:1195
+#: info/infodoc.c:1197
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Malestas funkcio nomata «%s»"
 
-#: info/infokey.c:145
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING.\n"
-msgstr ""
-"Copyright (c) %s Free Software Foundation, Inc.\n"
-"NENIA garantio estas donita.  Vi rajtas pludoni ekzemplerojn de ĉi tiu\n"
-"programo laŭ la kondiĉoj de la GNUa Ĝenerala Publika Permesilo.  Pluaj\n"
-"informoj troveblas en la dosieroj COPYING.\n"
-
-#: info/infokey.c:170
+#: info/infokey.c:171
 msgid "incorrect number of arguments"
 msgstr "Malĝusta nombro da argumentoj"
 
-#: info/infokey.c:201
+#: info/infokey.c:202
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "ne malfermiĝis eniga dosiero «%s»"
 
-#: info/infokey.c:215
+#: info/infokey.c:216
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "maleblas krei eligan dosieron «%s»"
 
-#: info/infokey.c:226
+#: info/infokey.c:227
 #, c-format
 msgid "error writing to `%s'"
 msgstr "eraro dum skribo en «%s»"
 
-#: info/infokey.c:232
+#: info/infokey.c:233
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "eraro dum fermo de eliga dosiero «%s»"
 
-#: info/infokey.c:450
+#: info/infokey.c:451
 msgid "key sequence too long"
 msgstr "tro longa klavosekvenco"
 
-#: info/infokey.c:529
+#: info/infokey.c:530
 msgid "missing key sequence"
 msgstr "mankanta klavosekvenco"
 
-#: info/infokey.c:610
+#: info/infokey.c:611
 msgid "NUL character (\\000) not permitted"
 msgstr "NUL-signo (\\000) malpermesitas"
 
-#: info/infokey.c:641
+#: info/infokey.c:642
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "NUL-signo (^%c) malpermesitas"
 
-#: info/infokey.c:665
+#: info/infokey.c:666
 msgid "missing action name"
 msgstr "mankas agonomo"
 
-#: info/infokey.c:681 info/infokey.c:756
+#: info/infokey.c:682 info/infokey.c:757
 msgid "section too long"
 msgstr "tro longa sekcio"
 
-#: info/infokey.c:688
+#: info/infokey.c:689
 #, c-format
 msgid "unknown action `%s'"
 msgstr "nekonata ago «%s»."
 
-#: info/infokey.c:698
+#: info/infokey.c:699
 msgid "action name too long"
 msgstr "tro longa agonomo"
 
-#: info/infokey.c:712
+#: info/infokey.c:713
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "kromaj signoj post la ago «%s»"
 
-#: info/infokey.c:723
+#: info/infokey.c:724
 msgid "missing variable name"
 msgstr "mankas nomo de variablo"
 
-#: info/infokey.c:733
+#: info/infokey.c:734
 msgid "missing `=' immediately after variable name"
 msgstr "mankas „=‟ tuj post variablonomo"
 
-#: info/infokey.c:741
+#: info/infokey.c:742
 msgid "variable name too long"
 msgstr "tro longa variablonomo"
 
-#: info/infokey.c:765
+#: info/infokey.c:766
 msgid "value too long"
 msgstr "tro longa valoro"
 
-#: info/infokey.c:890
+#: info/infokey.c:891
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "«%s», linio %u: "
 
-#: info/infokey.c:906
+#: info/infokey.c:907
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -935,8 +1024,10 @@ msgstr "Eraro dum lego de infoklava dosiero «%s» (tro frue elĉerpita)"
 
 #: info/infomap.c:1535
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "Misa infoklava dosiero «%s» (magiaj nombroj); aktualigu ĝin per infokey"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Misa infoklava dosiero «%s» (magiaj nombroj); aktualigu ĝin per infokey"
 
 #: info/infomap.c:1544
 #, c-format
@@ -945,13 +1036,17 @@ msgstr "Via infoklava dosiero «%s» malaktualas; aktualigu ĝin per infokey"
 
 #: info/infomap.c:1560
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "Misa infoklava dosiero «%s» (misa sekcilongo) -- aktualigu ĝin per infokey"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Misa infoklava dosiero «%s» (misa sekcilongo) -- aktualigu ĝin per infokey"
 
 #: info/infomap.c:1581
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "Misa infoklava dosiero «%s» (misa sekcikodo); aktualigu ĝin per infokey"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Misa infoklava dosiero «%s» (misa sekcikodo); aktualigu ĝin per infokey"
 
 #: info/infomap.c:1716
 msgid "Bad data in infokey file -- some key bindings ignored"
@@ -959,7 +1054,8 @@ msgstr "Misaj datumoj en infoklava dosiero -- iuj klavasociaĵoj ne validos"
 
 #: info/infomap.c:1766
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ne validos"
+msgstr ""
+"Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ne validos"
 
 #: info/m-x.c:69
 msgid "Read the name of an Info command and describe it"
@@ -991,7 +1087,7 @@ msgstr "Fiksu la alton de la prezentata fenestro"
 msgid "Set screen height to (%d): "
 msgstr "Alto de la ekrano estu (%d): "
 
-#: info/makedoc.c:162 info/makedoc.c:170
+#: info/makedoc.c:164 info/makedoc.c:172
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
@@ -1000,7 +1096,7 @@ msgstr ""
 "   La fontodosieroj tralaboritaj por fari ĉi tiun dosieron:\n"
 "\n"
 
-#: info/makedoc.c:550
+#: info/makedoc.c:552
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Maleblas prilabori la dosieron %s.\n"
@@ -1044,8 +1140,12 @@ msgstr "La referenco malaperis! (%s)."
 
 #: info/session.c:162
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "Bonvenon al Info, versio %s.  Tajpu \\[get-help-window] por helpo, \\[menu-item] por menuero."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Bonvenon al Info, versio %s.  Tajpu \\[get-help-window] por helpo, \\[menu-"
+"item] por menuero."
 
 #: info/session.c:620
 msgid "Move down to the next line"
@@ -1063,7 +1163,7 @@ msgstr "Iru al la fino de la linio"
 msgid "Move to the start of the line"
 msgstr "Iru al la komenco de la linio"
 
-#: info/session.c:860 makeinfo/node.c:1424
+#: info/session.c:860 makeinfo/node.c:1438
 msgid "Next"
 msgstr "Sekva"
 
@@ -1129,7 +1229,8 @@ msgid "Scroll forward in this window staying within node"
 msgstr "Rulumu antaŭen en ĉi tiu fenestro sed restu en la nodo"
 
 #: info/session.c:1229
-msgid "Scroll forward in this window staying within node and set default window size"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Rulumu antaŭen en ĉi tiu fenestro restante en la nodo kaj\n"
 "fiksu defaŭltan fenestrograndon"
@@ -1140,14 +1241,17 @@ msgstr "Rulumu malantaŭen en ĉi tiu fenestro"
 
 #: info/session.c:1245
 msgid "Scroll backward in this window and set default window size"
-msgstr "Rulumu malantaŭen en ĉi tiu fenestro kaj fiksu defaŭltan fenestrograndon"
+msgstr ""
+"Rulumu malantaŭen en ĉi tiu fenestro kaj fiksu defaŭltan fenestrograndon"
 
 #: info/session.c:1254
 msgid "Scroll backward in this window staying within node"
 msgstr "Rulumu malantaŭen en ĉi tiu fenestro sed restu en la nodo"
 
 #: info/session.c:1262
-msgid "Scroll backward in this window staying within node and set default window size"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
 msgstr ""
 "Rulumu malantaŭen en ĉi tiu fenestro restante en la nodo kaj\n"
 "     fiksu defaŭltan fenestrograndon"
@@ -1289,7 +1393,8 @@ msgstr "Iru al la komenco de la menuo de ĉi tiu nodo"
 
 #: info/session.c:2353
 msgid "Visit as many menu items at once as possible"
-msgstr "Vizitu samtempe kiom eble plej multe da menueroj (ĉiun en aparta fenestro)"
+msgstr ""
+"Vizitu samtempe kiom eble plej multe da menueroj (ĉiun en aparta fenestro)"
 
 #: info/session.c:2381
 msgid "Read a node name and select it"
@@ -1543,7 +1648,7 @@ msgstr "Komencu (aŭ 4-obligu) la kurantan argumenton nombran"
 msgid "Internally used by \\[universal-argument]"
 msgstr "Uzata interne de \\[universal-argument]"
 
-#: info/tilde.c:338
+#: info/tilde.c:337
 #, c-format
 msgid "readline: Out of virtual memory!\n"
 msgstr "readline: Virtuala memoro elĉerpita!\n"
@@ -1578,7 +1683,8 @@ msgstr "Determinas la konduton de rulumo fine de nodo"
 
 #: info/variables.c:64
 msgid "The number lines to scroll when the cursor moves out of the window"
-msgstr "La nombro de linioj rulumataj kiam la kursoro moviĝas ekster la fenestron"
+msgstr ""
+"La nombro de linioj rulumataj kiam la kursoro moviĝas ekster la fenestron"
 
 #: info/variables.c:68
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
@@ -1633,173 +1739,145 @@ msgstr "-%s%s-Info: (%s)%s, %d linioj --%s--"
 msgid " Subfile: %s"
 msgstr " Subdosiero: %s"
 
-#: lib/getopt.c:551 lib/getopt.c:570
-#, c-format
-msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: opcio «%s» estas ambigua\n"
+#: lib/xexit.c:54
+msgid "ferror on stdout\n"
+msgstr ""
 
-#: lib/getopt.c:603 lib/getopt.c:607
-#, c-format
-msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: opcio „--%s‟ ne toleras argumenton\n"
+#: lib/xexit.c:59
+msgid "fflush error on stdout\n"
+msgstr ""
 
-#: lib/getopt.c:616 lib/getopt.c:621
-#, c-format
-msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: opcio „%c%s‟ ne toleras argumenton\n"
-
-#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
-#, c-format
-msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: opcio «%s» bezonas argumenton\n"
-
-#: lib/getopt.c:727 lib/getopt.c:730
-#, c-format
-msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: nekonata opcio „--%s‟\n"
-
-#: lib/getopt.c:738 lib/getopt.c:741
-#, c-format
-msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: nekonata opcio „%c%s‟\n"
-
-#: lib/getopt.c:796 lib/getopt.c:799
-#, c-format
-msgid "%s: illegal option -- %c\n"
-msgstr "%s: misa opcio -- %c\n"
-
-#: lib/getopt.c:805 lib/getopt.c:808
-#, c-format
-msgid "%s: invalid option -- %c\n"
-msgstr "%s: nevalida opcio -- %c\n"
-
-#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
-#, c-format
-msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: opcio bezonas argumenton -- %c\n"
-
-#: lib/getopt.c:935 lib/getopt.c:954
-#, c-format
-msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: opcio „-W %s‟ estas ambigua\n"
-
-#: lib/getopt.c:978 lib/getopt.c:999
-#, c-format
-msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: opcio „-W %s‟ ne toleras argumenton\n"
-
-#: makeinfo/cmds.c:520 makeinfo/cmds.c:542
+#: makeinfo/cmds.c:527 makeinfo/cmds.c:549
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "Argumentoj por @%s estas ignoritaj"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:592
 msgid "January"
 msgstr "januaro"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:592
 msgid "February"
 msgstr "februaro"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:592
 msgid "March"
 msgstr "marto"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:592
 msgid "April"
 msgstr "aprilo"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:592
 msgid "May"
 msgstr "majo"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:593
 msgid "June"
 msgstr "junio"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:593
 msgid "July"
 msgstr "julio"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:593
 msgid "August"
 msgstr "aŭgusto"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:593
 msgid "September"
 msgstr "septembro"
 
-#: makeinfo/cmds.c:586
+#: makeinfo/cmds.c:593
 msgid "October"
 msgstr "oktobro"
 
-#: makeinfo/cmds.c:587
+#: makeinfo/cmds.c:594
 msgid "November"
 msgstr "novembro"
 
-#: makeinfo/cmds.c:587
+#: makeinfo/cmds.c:594
 msgid "December"
 msgstr "decembro"
 
-#: makeinfo/cmds.c:936
+#: makeinfo/cmds.c:946
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "dubinda signo „%c‟ en @var"
 
-#: makeinfo/cmds.c:979
+#: makeinfo/cmds.c:989
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "argumento de @sc tuta majuskla, do neniel ŝanĝita"
 
-#: makeinfo/cmds.c:1034
+#: makeinfo/cmds.c:1044
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "„{‟ atendata, sed „%c‟ ricevita"
 
-#: makeinfo/cmds.c:1074
+#: makeinfo/cmds.c:1084
 msgid "end of file inside verb block"
 msgstr "dosierfino ene de pretaranĝita bloko (verb block)"
 
-#: makeinfo/cmds.c:1082
+#: makeinfo/cmds.c:1092
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "„}‟ atendata, sed „%c‟ ricevita"
 
-#: makeinfo/cmds.c:1112
-msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
-msgstr "«@strong{Note...}» estigas falsan referencon en Info; alivortigu por eviti tion"
+#: makeinfo/cmds.c:1123
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"«@strong{Note...}» estigas falsan referencon en Info; alivortigu por eviti "
+"tion"
 
-#: makeinfo/cmds.c:1305
+#: makeinfo/cmds.c:1322
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s arkaikiĝis"
 
-#: makeinfo/cmds.c:1414
+#: makeinfo/cmds.c:1431
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp bezonas ne «%s» sed pozitivan argumenton nombran"
 
-#: makeinfo/cmds.c:1763 makeinfo/cmds.c:1819 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Misa argumento por %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
+#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:1789
+#: makeinfo/cmds.c:1816
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Misa argumento por @%s"
 
 # set_firstparagraphindent
-#: makeinfo/cmds.c:1803
+#: makeinfo/cmds.c:1830
 msgid "insert"
 msgstr "enŝovu"
+
+#: makeinfo/cmds.c:1846
+#, fuzzy, c-format
+msgid "Bad argument to @%s: %s"
+msgstr "Misa argumento por @%s"
+
+#: makeinfo/cmds.c:1929
+#, c-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: makeinfo/cmds.c:1949
+#, c-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
 
 #: makeinfo/defun.c:84
 msgid "Missing `}' in @def arg"
@@ -1834,16 +1912,16 @@ msgid "Method"
 msgstr "Metodo"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2229
+#: makeinfo/defun.c:644 makeinfo/xml.c:2136
 msgid "of"
 msgstr "de"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2141
 msgid "on"
 msgstr "sur"
 
-#: makeinfo/defun.c:711
+#: makeinfo/defun.c:712
 #, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "Nur en „@%s‟-bloko uzeblas „@%s‟."
@@ -1867,6 +1945,17 @@ msgstr "«%s» estas preterlasita, ĉar okazas skribado en la ĉefeligujon"
 msgid "Output buffer not empty."
 msgstr "Eliga bufro ne malplenas"
 
+#: makeinfo/float.c:182
+#, c-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: makeinfo/float.c:377 makeinfo/float.c:383 makeinfo/index.c:925
+#: makeinfo/index.c:931 makeinfo/xref.c:134 makeinfo/xref.c:171
+#: makeinfo/xref.c:206
+msgid "See "
+msgstr "Vidu "
+
 #: makeinfo/footnote.c:150
 #, c-format
 msgid "`%c%s' needs an argument `{...}', not just `%s'"
@@ -1885,7 +1974,7 @@ msgstr "Piednoto difinita sen patra nodo"
 msgid "Footnotes inside footnotes are not allowed"
 msgstr "Maleblas fari piednoton al piednoto"
 
-#: makeinfo/footnote.c:302 makeinfo/index.c:189
+#: makeinfo/footnote.c:302 makeinfo/index.c:190
 msgid "Footnotes"
 msgstr "Piednotoj"
 
@@ -1894,12 +1983,12 @@ msgstr "Piednotoj"
 msgid "%s: could not open --css-file: %s"
 msgstr "%s: Ne prosperis malfermi CSS-dosieron: %s"
 
-#: makeinfo/html.c:172
+#: makeinfo/html.c:176
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: CSS-dosiero finiĝis en komento"
 
-#: makeinfo/html.c:207
+#: makeinfo/html.c:204
 msgid "Untitled"
 msgstr "Sen titolo"
 
@@ -1907,187 +1996,189 @@ msgstr "Sen titolo"
 msgid "[unexpected] no html tag to pop"
 msgstr "[neatendite] mankas HTML-etikedo por elstakigo"
 
-#: makeinfo/html.c:752
+#: makeinfo/html.c:765
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[neatendite] misa nodnomo: «%s»"
 
-#: makeinfo/index.c:169
+#: makeinfo/index.c:170
 #, c-format
 msgid "Unknown index `%s'"
 msgstr "Nekonata indekso «%s»"
 
-#: makeinfo/index.c:234
+#: makeinfo/index.c:235
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
 msgstr "Info ne povas trakti „:‟ en indeksa artikolo «%s»"
 
-#: makeinfo/index.c:412
+#: makeinfo/index.c:413
 #, c-format
 msgid "Index `%s' already exists"
 msgstr "Jam estas indekso «%s»"
 
-#: makeinfo/index.c:455
+#: makeinfo/index.c:456
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "Nekonata indekso «%s» kajaŭ «%s» en @synindex"
 
-#: makeinfo/index.c:661
+#: makeinfo/index.c:662
 msgid "(line )"
 msgstr "(linio )"
 
-#: makeinfo/index.c:669
+#: makeinfo/index.c:670
 #, c-format
 msgid "(line %*d)"
 msgstr "(linio %*d)"
 
-#: makeinfo/index.c:750
+#: makeinfo/index.c:751
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Nekonata indekso «%s» en @printindex"
 
-#: makeinfo/index.c:819
+#: makeinfo/index.c:820
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Artikolo por indekso «%s» estas ekster iu ajn nodo"
 
-#: makeinfo/index.c:822 makeinfo/index.c:858
+#: makeinfo/index.c:823 makeinfo/index.c:859
 msgid "(outside of any node)"
 msgstr "(ekster iu ajn nodo)"
 
-#: makeinfo/index.c:919 makeinfo/index.c:925
-msgid "See "
-msgstr "Vidu "
-
-#: makeinfo/insertion.c:160
+#: makeinfo/insertion.c:162
 msgid "@item not allowed in argument to @itemize"
 msgstr "„@itemize‟ ne rajtas havi argumenton „@item‟"
 
-#: makeinfo/insertion.c:238
+#: makeinfo/insertion.c:243
 msgid "Broken-Type in insertion_type_pname"
 msgstr "Misa tipo en la funkcio insertion_type_pname"
 
-#: makeinfo/insertion.c:334
+#: makeinfo/insertion.c:339
 msgid "Enumeration stack overflow"
 msgstr "Troo en la stako de enumeracioj"
 
-#: makeinfo/insertion.c:366
+#: makeinfo/insertion.c:371
 #, c-format
 msgid "lettering overflow, restarting at %c"
 msgstr "mankas sekva enumeracia litero, rekomencite ekde %c"
 
-#: makeinfo/insertion.c:631
+#: makeinfo/insertion.c:636
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s bezonas argumenton: la aranĝilon por %citem"
 
-#: makeinfo/insertion.c:719
+#: makeinfo/insertion.c:724
 #, c-format
 msgid "%cfloat environments cannot be nested"
 msgstr "La blokoj %cfloat ne rajtas ingiĝi unu en alia"
 
-#: makeinfo/insertion.c:973
+#: makeinfo/insertion.c:978
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "„@end‟ atendis „%s‟, sed renkontis „%s‟"
 
-#: makeinfo/insertion.c:1337
+#: makeinfo/insertion.c:1346
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "Mankas para „%cend %s‟"
 
-#: makeinfo/insertion.c:1592
+#: makeinfo/insertion.c:1609
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s bezonas literon aŭ ciferon"
 
-#: makeinfo/insertion.c:1687
+#: makeinfo/insertion.c:1702
 msgid "end of file inside verbatim block"
 msgstr "dosierfino ene de pretaranĝita bloko"
 
-#: makeinfo/insertion.c:1913
+#: makeinfo/insertion.c:1926
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s estas sensenca ekster bloko „@float‟"
 
-#: makeinfo/insertion.c:1949
+#: makeinfo/insertion.c:1962
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu jam antaŭ la unua @nodo; nodo „Top‟ kreitas"
 
-#: makeinfo/insertion.c:1950
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+#: makeinfo/insertion.c:1963
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "eble via @top-nodo staru sub @ifnottex anstataŭ sub @ifinfo?"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1975
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu renkontita jam antaŭ la unua nodo; nodo „Top‟ kreitas"
 
-#: makeinfo/insertion.c:2018
+#: makeinfo/insertion.c:2031
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s sencas nur en bloko „@titlepage‟ aŭ „@quotation‟"
 
-#: makeinfo/insertion.c:2032
+#: makeinfo/insertion.c:2045
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s ne sencas ekster bloko „@titlepage‟"
 
-#: makeinfo/insertion.c:2063
+#: makeinfo/insertion.c:2076
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Mankas para „%c%s‟"
 
-#: makeinfo/insertion.c:2068
+#: makeinfo/insertion.c:2081
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "„%c%s‟ bezonas post si ion"
 
-#: makeinfo/insertion.c:2074
+#: makeinfo/insertion.c:2087
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Misa argumento «%s» por «%s»; estos uzata «%s»"
 
-#: makeinfo/insertion.c:2171
+#: makeinfo/insertion.c:2184
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s estas sensenca ene de bloko „@%s‟"
 
-#: makeinfo/insertion.c:2180
+#: makeinfo/insertion.c:2193
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx estas sensenca ene de bloko «%s»"
 
-#: makeinfo/insertion.c:2356
+#: makeinfo/insertion.c:2367
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s renkontita ekster „insertion block‟"
 
-#: makeinfo/lang.c:580
+#: makeinfo/lang.c:957
+#, c-format
+msgid "no default territory known for language `%s'"
+msgstr ""
+
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s ne estas valida lingvokodo laŭ ISO 639"
 
-#: makeinfo/lang.c:655
+#: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "Nekonata nomo de kodosistemo: «%s»"
 
-#: makeinfo/lang.c:663
+#: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "Pardonon, la kodo «%s» ne estas disponebla"
 
-#: makeinfo/lang.c:715
+#: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "misa kodoprezento: «%s»"
 
-#: makeinfo/lang.c:1009
+#: makeinfo/lang.c:1472
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s atendas argumenton „i‟ aŭ „j‟, ne „%c‟"
 
-#: makeinfo/lang.c:1013
+#: makeinfo/lang.c:1476
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s akceptas nur solsignan argumenton „i‟ aŭ „j‟"
@@ -2102,7 +2193,7 @@ msgstr "makroo «%s» jam difinita antaŭe"
 msgid "here is the previous definition of `%s'"
 msgstr "ĉi tie estas la antaŭa difino de «%s»"
 
-#: makeinfo/macro.c:355
+#: makeinfo/macro.c:359
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgstr "Dum makrogenerado: \\ sekvata de «%s» (anstataŭ de nomo de parametro)"
@@ -2112,46 +2203,50 @@ msgstr "Dum makrogenerado: \\ sekvata de «%s» (anstataŭ de nomo de parametro)
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "Makroo «%s» en la linio %d havas troan argumenton"
 
-#: makeinfo/macro.c:586
+#: makeinfo/macro.c:580
 #, c-format
 msgid "%cend macro not found"
 msgstr "makroo %cend ne troviĝis"
 
-#: makeinfo/macro.c:624
-msgid "@quote-arg only useful for single-argument macros"
-msgstr "@quote-arg utilas nur en sol-argumentaj makrooj"
+#: makeinfo/macro.c:591
+msgid "@allow-recursion is deprecated; please use @rmacro instead"
+msgstr ""
 
-#: makeinfo/macro.c:660
+#: makeinfo/macro.c:606
+msgid "@quote-arg is deprecated; arguments are quoted by default"
+msgstr ""
+
+#: makeinfo/macro.c:649
 #, c-format
 msgid "mismatched @end %s with @%s"
 msgstr "misa @end %s por @%s"
 
-#: makeinfo/makeinfo.c:184
+#: makeinfo/makeinfo.c:189
 #, c-format
 msgid "Too many errors!  Gave up.\n"
 msgstr "Tro multe da eraroj!  Halt'.\n"
 
-#: makeinfo/makeinfo.c:302
+#: makeinfo/makeinfo.c:307
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: averto: "
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2260
+#: makeinfo/makeinfo.c:326 makeinfo/makeinfo.c:2304
 #, c-format
 msgid "Misplaced %c"
 msgstr "Misloka %c"
 
-#: makeinfo/makeinfo.c:340
+#: makeinfo/makeinfo.c:345
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Por pluaj detaloj tajpu „%s --help‟.\n"
 
-#: makeinfo/makeinfo.c:343
+#: makeinfo/makeinfo.c:348
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Uzmaniero: %s [OPCIO]... TEXINFO-DOSIERO...\n"
 
-#: makeinfo/makeinfo.c:346
+#: makeinfo/makeinfo.c:351
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2159,16 +2254,19 @@ msgstr ""
 "Traduku fontan Texinfo-dokumenton en diversajn aliajn formojn, defaŭlte en\n"
 "Info-dosierojn taŭgajn por dialoga legado per Emakso aŭ aŭtonoma GNU-Info.\n"
 
-#: makeinfo/makeinfo.c:350
-#, c-format
+#: makeinfo/makeinfo.c:355
+#, fuzzy, c-format
 msgid ""
 "General options:\n"
 "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
 "      --force                 preserve output even if errors.\n"
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
+"      --reference-limit=NUM   warn about at most NUM references (default %"
+"d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
@@ -2182,14 +2280,14 @@ msgstr ""
 "  -v, --verbose\t\t    Rakontu kio estas farata\n"
 "      --version\t\t    Eligu la versio-informon kaj eliru\n"
 
-#: makeinfo/makeinfo.c:364
-#, no-wrap
+#: makeinfo/makeinfo.c:371
+#, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
-"      --docbook             output Docbook XML rather than Info.\n"
-"      --html                output HTML rather than Info.\n"
-"      --xml                 output Texinfo XML rather than Info.\n"
-"      --plaintext           output plain text rather than Info.\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
 msgstr ""
 "Por elekti celformon (defaŭlte, Info):\n"
 "      --docbook\t\t    Generu en DocBook anstataŭ en Info\n"
@@ -2197,24 +2295,29 @@ msgstr ""
 "      --xml\t\t    Generu en XML (TexinfoML) anstataŭ en Info\n"
 "      --plaintext\t    Generu platan tekston anstataŭ Infoon\n"
 
-#: makeinfo/makeinfo.c:372
+#: makeinfo/makeinfo.c:379
+#, fuzzy
 msgid ""
 "General output options:\n"
-"  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
-"                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and menus\n"
-"                              from Info output (thus producing plain text)\n"
-"                              or from HTML (thus producing shorter output);\n"
-"                              also, write to standard output by default.\n"
-"      --no-split            suppress splitting of Info or HTML output,\n"
-"                            generate only one output file.\n"
-"      --number-sections     output chapter and sectioning numbers.\n"
-"  -o, --output=FILE         output to FILE (directory if split HTML),\n"
+"  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
+"                              ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress splitting of Info or HTML output,\n"
+"                              generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (directory if split HTML),\n"
 msgstr ""
 "Ĝeneralaj opcioj generadaj:\n"
 "  -E, --macro-expand DOSIER Konservu makrotraktitan fontaĵon en DOSIERo,\n"
 "                              sen atenti ĉiajn @setfilename\n"
-"      --no-headers          Generu platan tekston, sen dispartigi en nodojn,\n"
+"      --no-headers          Generu platan tekston, sen dispartigi en "
+"nodojn,\n"
 "                              sen linioj «Node:» kaj menuoj; krome, eligu\n"
 "                              en la ĉefeligujon manke de --output\n"
 "      --no-split            Ne disfendu grandan Info- aŭ HTML-dosieron,\n"
@@ -2222,18 +2325,22 @@ msgstr ""
 "      --number-sections     Generu kun la numeroj de ĉapitroj, sekcioj ktp\n"
 "  -o, --output=DOSIER       Skribu en DOSIERon (DOSIERujon, por fenda HTML)\n"
 
-#: makeinfo/makeinfo.c:386
-#, c-format
+#: makeinfo/makeinfo.c:393
+#, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
 "                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node\n"
-"                                  in which they are defined (default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
@@ -2246,27 +2353,35 @@ msgstr ""
 "\t\t\t\t„separate‟ -- loku ilin en apartan nodon;\n"
 "\t\t\t\t„end‟  -- loku ilin fine de la nodo en kiu\n"
 "\t\t\t\t\t  ili estas difinitaj (la defaŭlto)\n"
-"      --paragraph-indent=VAL  Alinea enŝovo estu VAL spacetoj (defaŭlte %d);\n"
+"      --paragraph-indent=VAL  Alinea enŝovo estu VAL spacetoj (defaŭlte %"
+"d);\n"
 "\t\t\t\tse VAL estas „none‟, ne enŝovu;\n"
 "\t\t\t\tse VAL estas „asis‟, obeu la fontan enŝovon\n"
 "      --split-size=N\t      Fendu en dosierojn po N (defaŭlte %d)\n"
 
-#: makeinfo/makeinfo.c:403
+#: makeinfo/makeinfo.c:410
+#, fuzzy
 msgid ""
 "Options for HTML:\n"
-"      --css-include=FILE        include FILE in HTML <style> output;\n"
-"                                  read stdin if FILE is -.\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
 msgstr ""
 "Opcioj por HTML:\n"
-"      --css-include=DOSIERO   Inkludu DOSIEROn en <style>-etikedon de HTMLaĵo;\n"
+"      --css-include=DOSIERO   Inkludu DOSIEROn en <style>-etikedon de "
+"HTMLaĵo;\n"
 "\t\t\t\tlegu la ĉefenigujon, se DOSIERO estas „-‟\n"
 
-#: makeinfo/makeinfo.c:409
-#, c-format
+#: makeinfo/makeinfo.c:419
+#, fuzzy, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL       indent XML elements by VAL spaces (default %d).\n"
-"                                  If VAL is 0, ignorable whitespace is dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+"d).\n"
+"                                If VAL is 0, ignorable whitespace is "
+"dropped.\n"
 msgstr ""
 "Opcioj por XML kaj Docbook:\n"
 "      --output-indent=VAL     Deŝovu XML-elementojn je VAL spacetoj\n"
@@ -2274,7 +2389,7 @@ msgstr ""
 "\t\t\t\tsensignifajn spacetojn\n"
 "\n"
 
-#: makeinfo/makeinfo.c:416
+#: makeinfo/makeinfo.c:426
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2290,7 +2405,7 @@ msgstr ""
 "  -P UJO\t\t      Antaŭmetu dosierUJOn al la serĉvojo de @include\n"
 "  -U VAR\t\t      Maldifinu la variablon  VAR,  kiel per @clear\n"
 
-#: makeinfo/makeinfo.c:425
+#: makeinfo/makeinfo.c:435
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2328,7 +2443,7 @@ msgstr ""
 "\n"
 "  Krome, ĉe la opcioj --no-ifFORMO, ja traktu la pecojn sub @ifnotFORMO.\n"
 
-#: makeinfo/makeinfo.c:444
+#: makeinfo/makeinfo.c:454
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2342,18 +2457,21 @@ msgstr ""
 "se plata teksto estas generata, --ifplaintext aktivas kaj la ceteraj,\n"
 "malaktivas; ĉe XML-generado, --ifxml aktivas kaj la ceteraj, malaktivas.\n"
 
-#: makeinfo/makeinfo.c:452
+#: makeinfo/makeinfo.c:462
+#, fuzzy
 msgid ""
 "Examples:\n"
-"  makeinfo foo.texi                     write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi              write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi               write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi        write plain text to standard output\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, menus\n"
-"  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi          write one Info file however big\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Ekzemploj:\n"
 " makeinfo UM.texi\t\t      konservu Info laŭ @setfilename\n"
@@ -2364,194 +2482,197 @@ msgstr ""
 "\n"
 " makeinfo --html --no-headers UM.texi konservu HTML sen la linioj «Node:»\n"
 " makeinfo --number-sections UM.texi   konservu Infoon kun sekcinumeroj\n"
-" makeinfo --no-split UM.texi\t      faru unu Info-dosieron, kiom ajn grandan\n"
+" makeinfo --no-split UM.texi\t      faru unu Info-dosieron, kiom ajn "
+"grandan\n"
 
-#: makeinfo/makeinfo.c:603
+#: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Nekonata valoro de TEXINFO_OUTPUT_FORMAT: «%s».  Ignorita.\n"
 
-#: makeinfo/makeinfo.c:647 makeinfo/makeinfo.c:673 makeinfo/makeinfo.c:692
-#: makeinfo/makeinfo.c:722 makeinfo/makeinfo.c:743
+#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
+#: makeinfo/makeinfo.c:747 makeinfo/makeinfo.c:768
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: La argumento %s devas esti nombro, ne «%s».\n"
 
-#: makeinfo/makeinfo.c:660
+#: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s: Ne prosperis malfermi makrotraktadan eligdosieron «%s»"
 
-#: makeinfo/makeinfo.c:665
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: Ripeta dosierindiko «%s» por makrotraktada eligo estas ignorita.\n"
 
-#: makeinfo/makeinfo.c:707
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr "%s: Post „--paragraph-indent‟ estu nombro, „none‟ aŭ „asis‟, ne „%s‟.\n"
+msgstr ""
+"%s: Post „--paragraph-indent‟ estu nombro, „none‟ aŭ „asis‟, ne „%s‟.\n"
 
-#: makeinfo/makeinfo.c:732
+#: makeinfo/makeinfo.c:757
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: Post --footnote-style estu „separate‟ aŭ „end‟, ne „%s‟.\n"
 
-#: makeinfo/makeinfo.c:806
+#: makeinfo/makeinfo.c:832
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mankas dosiera argumento.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
+#: makeinfo/makeinfo.c:1023 makeinfo/makeinfo.c:4128
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Misa uzo de plurlinia komando «%c%s»."
 
-#: makeinfo/makeinfo.c:1000
+#: makeinfo/makeinfo.c:1026
 #, c-format
 msgid "Expected `%s'"
 msgstr "«%s» atendatas"
 
-#: makeinfo/makeinfo.c:1479
+#: makeinfo/makeinfo.c:1505
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Provo krei dosierujon «%s» malsukcesis: %s"
 
-#: makeinfo/makeinfo.c:1525
+#: makeinfo/makeinfo.c:1551
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Neniu «%s» trovita en «%s»"
 
-#: makeinfo/makeinfo.c:1605
+#: makeinfo/makeinfo.c:1631
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr "%s: Makrotraktitaĵo ne trafos en la ĉefeligujon ĉar Info iras tien.\n"
 
-#: makeinfo/makeinfo.c:1638
+#: makeinfo/makeinfo.c:1664
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "%s-dosiero «%s» estas generata el «%s».\n"
 
-#: makeinfo/makeinfo.c:1673
+#: makeinfo/makeinfo.c:1728
 #, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Ĉi tiun dosieron %s generis Makeinfo-%s el %s.\n"
-
-#: makeinfo/makeinfo.c:1709
-#, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: La eligdosiero «%s» por makrotraktitaĵo forigitas ĉar estis eraroj;\n"
 "uzu la opcion --force por ĝin reteni.\n"
 
-#: makeinfo/makeinfo.c:1773
+#: makeinfo/makeinfo.c:1783
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: La eligdosiero «%s» forigitas ĉar estis eraroj;\n"
 "uzu la opcion --force por ĝin reteni.\n"
 
-#: makeinfo/makeinfo.c:2034
+#: makeinfo/makeinfo.c:2077
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Nekonata komando «%s»."
 
-#: makeinfo/makeinfo.c:2056
+#: makeinfo/makeinfo.c:2099
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Uzu vinkulojn por pasigi al „@%s‟ komandan argumenton"
 
-#: makeinfo/makeinfo.c:2314
+#: makeinfo/makeinfo.c:2358
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s postulas vinkulojn"
 
-#: makeinfo/makeinfo.c:2327
+#: makeinfo/makeinfo.c:2371
 msgid "Unmatched }"
 msgstr "Nepara „}‟"
 
-#: makeinfo/makeinfo.c:2375
+#: makeinfo/makeinfo.c:2419
 msgid "NO_NAME!"
 msgstr "SEN_NOMO!"
 
-#: makeinfo/makeinfo.c:2396
+#: makeinfo/makeinfo.c:2440
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s sen „}‟"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:2618
+#, c-format
+msgid "This is %s, produced by makeinfo version %s from %s.\n"
+msgstr "Ĉi tiun dosieron %s generis Makeinfo-%s el %s.\n"
+
+#: makeinfo/makeinfo.c:3443
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "por HTML, la dosiero «%s» en la komando @image estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3315
+#: makeinfo/makeinfo.c:3449
 #, c-format
 msgid "No such file `%s'"
 msgstr "Ne estas tia dosiero: «%s»"
 
-#: makeinfo/makeinfo.c:3447
+#: makeinfo/makeinfo.c:3585
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "bilddosiero «%s» (por teksto) estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3456
+#: makeinfo/makeinfo.c:3594
 msgid "@image missing filename argument"
 msgstr "mankas dosiera argumento en la komando @image"
 
-#: makeinfo/makeinfo.c:3675
+#: makeinfo/makeinfo.c:3812
 #, c-format
 msgid "undefined flag: %s"
 msgstr "Nedifinita flago: %s"
 
-#: makeinfo/makeinfo.c:3676
+#: makeinfo/makeinfo.c:3813
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Mankas Valoro Por «%s»}"
 
-#: makeinfo/makeinfo.c:3728
+#: makeinfo/makeinfo.c:3865
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bezonas nomon"
 
-#: makeinfo/makeinfo.c:3834
+#: makeinfo/makeinfo.c:3971
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Pli frue ol la para @end %s renkontiĝis dosierfino"
 
-#: makeinfo/makeinfo.c:4082
+#: makeinfo/makeinfo.c:4220
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "„%.40s...‟ tro longas por malvolvo; malvolvo ne okazos"
 
-#: makeinfo/multi.c:116
+#: makeinfo/multi.c:117
 msgid "Missing } in @multitable template"
 msgstr "Mankas „}‟ en la ŝablono de @multitable"
 
-#: makeinfo/multi.c:254
+#: makeinfo/multi.c:261
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "la misa teksto «%s» post @multitable estas ignorita"
 
-#: makeinfo/multi.c:393
+#: makeinfo/multi.c:401
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Tro da kolumnoj en elemento de „multitable‟ (%d maksimume)"
 
-#: makeinfo/multi.c:555
+#: makeinfo/multi.c:564
 #, c-format
 msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "[neatendite] maleblas elekti %d-an kolumnon en „multitable‟."
 
-#: makeinfo/multi.c:584
+#: makeinfo/multi.c:593
 msgid "ignoring @tab outside of multitable"
 msgstr "komando @tab ekster „multitable‟; ignorita"
 
-#: makeinfo/multi.c:632
+#: makeinfo/multi.c:641
 #, c-format
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Multekolumna eligo el la lasta linio:\n"
 
-#: makeinfo/multi.c:635
+#: makeinfo/multi.c:644
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* kolumno %d-a: eligaĵo = %s\n"
@@ -2571,117 +2692,118 @@ msgstr "Estas aranĝata la nodo «%s» ...\n"
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Nodo «%s» bezonas subdividan komandon (ekz-e %c%s)"
 
-#: makeinfo/node.c:879
+#: makeinfo/node.c:880
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Mankas nodnomo por la komando „%c%s‟"
 
-#: makeinfo/node.c:920 makeinfo/node.c:1151
+#: makeinfo/node.c:921 makeinfo/node.c:1162
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Dosiernoma kolizio por la ankro «%s» kaj la nodo «%s»"
 
-#: makeinfo/node.c:923
+#: makeinfo/node.c:924
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Ĉi tiu @anchor-komando estas ignorita; la referencoj al ĝi ne funkcios"
 
-#: makeinfo/node.c:925 makeinfo/node.c:1154
+#: makeinfo/node.c:926 makeinfo/node.c:1165
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Alinomu la ankron aŭ uzu la opcion „--no-split‟"
 
-#: makeinfo/node.c:955
+#: makeinfo/node.c:956
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Nekonvena signoĉeno fine de disfendita HTML-dosiero «%s»"
 
-#: makeinfo/node.c:991
+#: makeinfo/node.c:992
 msgid "Next:"
 msgstr "Sekva:"
 
-#: makeinfo/node.c:1007
+#: makeinfo/node.c:1008
 msgid "Previous:"
 msgstr "Antaŭa:"
 
-#: makeinfo/node.c:1021
+#: makeinfo/node.c:1022
 msgid "Up:"
 msgstr "Supre:"
 
-#: makeinfo/node.c:1148
+#: makeinfo/node.c:1159
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Dosiernoma kolizio por la ankroj «%s» kaj «%s»"
 
-#: makeinfo/node.c:1153
+#: makeinfo/node.c:1164
 msgid "@anchor command ignored; references to it will not work"
 msgstr "Ignorita @anchor-komando; la referencoj al ĝi ne funkcios"
 
-#: makeinfo/node.c:1347
+#: makeinfo/node.c:1361
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s referencas neekzistantan nodon «%s» (ĉu eraro en sekciaranĝo?)"
 
-#: makeinfo/node.c:1363
+#: makeinfo/node.c:1377
 msgid "Menu"
 msgstr "Menuo"
 
-#: makeinfo/node.c:1365
+#: makeinfo/node.c:1379
 msgid "Cross"
 msgstr "Referenco"
 
-#: makeinfo/node.c:1447
+#: makeinfo/node.c:1461
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "La kampo „Next‟ de la nodo «%s» ne estas reciprokita (ĉu misa sekciaranĝo?)"
+msgstr ""
+"La kampo „Next‟ de la nodo «%s» ne estas reciprokita (ĉu misa sekciaranĝo?)"
 
-#: makeinfo/node.c:1450
+#: makeinfo/node.c:1464
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Ĉi tiu nodo («%s») havas eraran kampon „Prev‟"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1476
 msgid "Prev"
 msgstr "Antaŭa"
 
-#: makeinfo/node.c:1505
+#: makeinfo/node.c:1519
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "La kampo „Prev‟ de la nodo «%s» ne estas reciprokita"
 
-#: makeinfo/node.c:1509
+#: makeinfo/node.c:1523
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Ĉi tiu nodo («%s») havas eraran kampon „Next‟"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1535
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "«%s» malhavas kampon „Up‟ (ĉu eraro en sekciaranĝo?)"
 
-#: makeinfo/node.c:1524
+#: makeinfo/node.c:1538
 msgid "Up"
 msgstr "Supre"
 
-#: makeinfo/node.c:1590
+#: makeinfo/node.c:1604
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "En \"%s„ mankas menuero por ‟%s„, malgraŭ ties ligilo ‟Up„‟"
 
-#: makeinfo/node.c:1619
+#: makeinfo/node.c:1633
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "la nodo «%s» estis referencita %d fojojn"
 
-#: makeinfo/node.c:1633
+#: makeinfo/node.c:1647
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "la nodo «%s» ne estas referencita"
 
-#: makeinfo/node.c:1723
+#: makeinfo/node.c:1737
 #, c-format
 msgid "Removing %s\n"
 msgstr "%s estas forigata\n"
 
-#: makeinfo/node.c:1727
+#: makeinfo/node.c:1741
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Ne prosperis forigi dosierujon «%s»: %s"
@@ -2696,80 +2818,115 @@ msgstr "Aldono %c"
 msgid "Internal error (search_sectioning) `%s'!"
 msgstr "Interna eraro (search_sectioning) „%s‟!"
 
-#: makeinfo/sectioning.c:562
+#: makeinfo/sectioning.c:563
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "Interna eraro (search_sectioning) «%s»!"
 
-#: makeinfo/sectioning.c:623
+#: makeinfo/sectioning.c:624
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s arkaikiĝis; uzu %c%s anstataŭe"
 
-#: makeinfo/sectioning.c:639
+#: makeinfo/sectioning.c:640
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "Jam estas nodo kun sekcio %ctop"
 
-#: makeinfo/sectioning.c:647
+#: makeinfo/sectioning.c:648
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Jen estas la nodo %ctop"
 
-#: makeinfo/sectioning.c:663
+#: makeinfo/sectioning.c:664
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop aperis pli frue ol %cnode; la defaŭlto uzota estas %s"
 
-#: makeinfo/toc.c:197 makeinfo/toc.c:271 makeinfo/toc.c:273
-msgid "Table of Contents"
-msgstr "Enhavtabelo"
-
-#: makeinfo/toc.c:304 makeinfo/toc.c:337 makeinfo/toc.c:339
-msgid "Short Contents"
-msgstr "Maldetala enhavtabelo"
-
-#: makeinfo/xml.c:1605
+#: makeinfo/xml.c:1655
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "dosiero «%s» en la komando @image estas nelegebla: %s"
 
-#: makeinfo/xml.c:2097
-msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr "@headitem lastelemente en @multitable rezultigas nevalidajn Docbook-dokumentojn"
+#: makeinfo/xml.c:2000
+msgid ""
+"@headitem as the last item of @multitable produces invalid Docbook documents"
+msgstr ""
+"@headitem lastelemente en @multitable rezultigas nevalidajn Docbook-"
+"dokumentojn"
 
-#: util/install-info.c:154
+#: makeinfo/xref.c:128
+msgid "First argument to cross-reference may not be empty"
+msgstr ""
+
+#: makeinfo/xref.c:134 makeinfo/xref.c:171 makeinfo/xref.c:206
+#: makeinfo/xref.c:460
+#, fuzzy
+msgid "see "
+msgstr "Vidu "
+
+#: makeinfo/xref.c:158
+#, c-format
+msgid "See section ``%s'' in "
+msgstr ""
+
+#: makeinfo/xref.c:253
+#, c-format
+msgid "Empty file name for HTML cross reference in `%s'"
+msgstr ""
+
+#: makeinfo/xref.c:388
+msgid "End of file reached while looking for `.' or `,'"
+msgstr ""
+
+#: makeinfo/xref.c:391
+#, c-format
+msgid "`.' or `,' must follow @%s, not `%c'"
+msgstr ""
+
+#: makeinfo/xref.c:393
+#, fuzzy
+msgid "for cross-references in parentheses, use @pxref"
+msgstr "Neniu referenco en ĉi tiu nodo."
+
+#: makeinfo/xref.c:436
+msgid "First argument to @inforef may not be empty"
+msgstr ""
+
+#: util/install-info.c:171
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: averto: "
 
-#: util/install-info.c:203
+#: util/install-info.c:220
 #, c-format
 msgid " for %s"
 msgstr " por %s"
 
-#: util/install-info.c:426
+#: util/install-info.c:445
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPor ricevi kompletan liston da opcioj tajpu „%s --help‟.\n"
 
-#: util/install-info.c:434
-#, c-format
+#: util/install-info.c:453
+#, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 "\n"
-"Install or delete dir entries from INFO-FILE in the Info directory file\n"
-"DIR-FILE.\n"
+"Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
 "\n"
 "Options:\n"
+" --debug           report what is being done.\n"
 " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                     don't insert any new entries.\n"
 " --dir-file=NAME   specify file name of Info directory file.\n"
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with whitespace.\n"
-"                     If you specify more than one entry, they are all added.\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -2780,11 +2937,18 @@ msgid ""
 "                     An Info directory entry is actually a menu item.\n"
 " --quiet           suppress warnings.\n"
 " --remove          same as --delete.\n"
+" --remove-exactly  only remove if the info file name matches exactly;\n"
+"                     .info and/or .gz suffixes are not ignored.\n"
 " --section=SEC     put this file's entries in section SEC of the directory.\n"
 "                     If you specify more than one section, all the entries\n"
 "                     are added in each of the sections.\n"
 "                     If you don't specify any sections, they are determined\n"
 "                     from information in the Info file itself.\n"
+" --section-regex=R if an entry is added to a section that does not exist,\n"
+"                     look for a section matching basic regular expression R\n"
+"                     (and ignoring case) before starting a new section.\n"
+" --test            suppress updating of DIR-FILE.\n"
+" --silent          suppress warnings.\n"
 " --version         display version information and exit.\n"
 msgstr ""
 "Sintakso: %s [OPCIO]... [INFO-DOSIERO [DIR-DOSIERO]]\n"
@@ -2813,11 +2977,12 @@ msgstr ""
 "--remove          Sinonimo por --delete.\n"
 "--section=SEKC    Metu la „dir‟-aĵojn en sekcion SEKC de la Info-katalogo.\n"
 "                    Se pli ol unu sekcio estas indikitaj, ĉiuj „dir‟-aĵoj\n"
-"                    aldoniĝas en ilin ĉiujn.  Se neniu sekcio estas indikita,\n"
+"                    aldoniĝas en ilin ĉiujn.  Se neniu sekcio estas "
+"indikita,\n"
 "                    ili determiniĝos el la informoj de la Info-dosiero.\n"
 "--version         Eligu la nomon, la version de la programo kaj eliru.\n"
 
-#: util/install-info.c:488
+#: util/install-info.c:519
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2852,98 +3017,100 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: util/install-info.c:513
+#: util/install-info.c:544
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: ne povas legi (%s) kaj ne povas krei (%s)\n"
 
-#: util/install-info.c:600
+#: util/install-info.c:631
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: malplena dosiero"
 
-#: util/install-info.c:913 util/install-info.c:953
+#: util/install-info.c:944 util/install-info.c:984
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY sen para END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:948
+#: util/install-info.c:979
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY sen para START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1191 util/install-info.c:1201
+#: util/install-info.c:1226 util/install-info.c:1236
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: dir-dosiero estas jam havigita: %s\n"
 
-#: util/install-info.c:1236
+#: util/install-info.c:1275
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Indiku la Info-dosieron solfoje.\n"
 
-#: util/install-info.c:1284
+#: util/install-info.c:1298
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr ""
+
+#: util/install-info.c:1309
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr ""
+
+#: util/install-info.c:1354
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "troa argumento komandlinia: «%s»"
 
-#: util/install-info.c:1288
+#: util/install-info.c:1358
 msgid "No input file specified; try --help for more information."
 msgstr "Mankas enigdosiero; provu --help por pluaj informoj."
 
-#: util/install-info.c:1291
+#: util/install-info.c:1361
 msgid "No dir file specified; try --help for more information."
 msgstr "Mankas dosiero Info-katalogo (dir); provu --help por pluaj informoj."
 
-#: util/install-info.c:1313
+#: util/install-info.c:1385
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "Nenia informo por Info-katalogo troviĝis en «%s»"
 
-#: util/install-info.c:1426
+#: util/install-info.c:1526
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "menuero «%s» jam ekzistas (por la dosiero «%s»)"
 
-#: util/install-info.c:1449
+#: util/install-info.c:1549
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "Troviĝis nenia informo Info-kataloga pri «%s»; nenio iĝis forigita"
 
-#: util/texindex.c:252
+#: util/texindex.c:224
 msgid "display this help and exit"
 msgstr "eligu ĉi tiun helpon kaj eliru"
 
-#: util/texindex.c:254
-msgid "keep temporary files around after processing"
-msgstr "konservu la labordosierojn post la traktado"
-
-#: util/texindex.c:256
-msgid "do not keep temporary files around after processing (default)"
-msgstr "ne konservu la labordosierojn post la traktado (defaŭlto)"
-
-#: util/texindex.c:258
+#: util/texindex.c:226
 msgid "send output to FILE"
 msgstr "sendu la eligaĵon en DOSIEROn"
 
-#: util/texindex.c:260
+#: util/texindex.c:228
 msgid "display version information and exit"
 msgstr "eligu la uzatan version kaj eliru"
 
-#: util/texindex.c:270
+#: util/texindex.c:238
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Uzmaniero: %s [OPCIO]... DOSIERO...\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:239
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "Generu ordigitan indekson por ĉiu TeX-a elig-DOSIERO.\n"
 
-#: util/texindex.c:274
+#: util/texindex.c:242
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "Kutime DOSIERO... estas „umo.%c%c‟ por dokumento „umo.texi‟.\n"
 
-#: util/texindex.c:276
+#: util/texindex.c:244
 #, c-format
 msgid ""
 "\n"
@@ -2952,23 +3119,73 @@ msgstr ""
 "\n"
 "Opcioj:\n"
 
-#: util/texindex.c:876 util/texindex.c:910 util/texindex.c:983
-#: util/texindex.c:1011
-#, c-format
-msgid "%s: not a texinfo index file"
-msgstr "%s: ne indeksa dosiero laŭ Texinfo"
-
-#: util/texindex.c:968
+#: util/texindex.c:744
 #, c-format
 msgid "failure reopening %s"
 msgstr "fiasko ĉe remalfermo de %s"
 
-#: util/texindex.c:1218
+#: util/texindex.c:759 util/texindex.c:787
+#, c-format
+msgid "%s: not a texinfo index file"
+msgstr "%s: ne indeksa dosiero laŭ Texinfo"
+
+#: util/texindex.c:994
 #, c-format
 msgid "No page number in %s"
 msgstr "Mankas paĝnumero en %s"
 
-#: util/texindex.c:1291
+#: util/texindex.c:1067
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "la artikolo %s sekvas artikolon kun kromnomo"
+
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "NENIA garantio estas donita.  Vi rajtas pludoni ekzemplerojn de ĉi tiu\n"
+#~ "programo laŭ la kondiĉoj de la GNUa Ĝenerala Publika Permesilo.\n"
+#~ "Pluaj informoj troveblas en la dosieroj COPYING.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ msgstr ""
+#~ "  %-10s  Serĉu indikotan signoĉenon en la indeksaj artikoloj de ĉi tiu "
+#~ "Info-\n"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "      dosiero kaj elektu la nodon referencatan de la unua trovita "
+#~ "artikolo.\n"
+
+#~ msgid "  %-10s  Search forward for a specified string,\n"
+#~ msgstr "  %-10s  Serĉu sube indikotan signoĉenon,\n"
+
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (c) %s Free Software Foundation, Inc.\n"
+#~ "NENIA garantio estas donita.  Vi rajtas pludoni ekzemplerojn de ĉi tiu\n"
+#~ "programo laŭ la kondiĉoj de la GNUa Ĝenerala Publika Permesilo.  Pluaj\n"
+#~ "informoj troveblas en la dosieroj COPYING.\n"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr "@quote-arg utilas nur en sol-argumentaj makrooj"
+
+#~ msgid "Table of Contents"
+#~ msgstr "Enhavtabelo"
+
+#~ msgid "Short Contents"
+#~ msgstr "Maldetala enhavtabelo"
+
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "konservu la labordosierojn post la traktado"
+
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "ne konservu la labordosierojn post la traktado (defaŭlto)"
