@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: copying,v 1.3 2007-07-01 18:31:45 karl Exp $
+# $Id: copying,v 1.4 2007-07-01 18:38:52 karl Exp $
 # Test @copying.  The configure script for tramp uses this to make sure
 # the makeinfo that is present supports @copying.
 
@@ -10,5 +10,4 @@ LC_ALL=POSIX; export LC_ALL
 ../makeinfo -o copying.out $srcdir/copying.txi || exit 1
 fgrep 'produced by' copying.out >/dev/null || exit 2
 
-cat copying.out
 rm -f copying.out
