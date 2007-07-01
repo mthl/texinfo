@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.70 2007-06-25 21:27:33 karl Exp $
+$Id: dir-example,v 1.71 2007-07-01 16:55:27 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -74,7 +74,6 @@ Email
 
 Network applications
 * Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
-* Inetutils: (inetutils).       GNU networking utilities.
 * Wget: (wget).                 Non-interactive network downloader.
 
 Printing Tools
@@ -484,19 +483,21 @@ Individual utilities
 * zgrep: (gzip)Overview.                        Search compressed files.
 * zmore: (gzip)Overview.                        Decompression output by pages.
 * zsh: (zsh).                                   An enhanced Bourne shell.
-* ftp: (inetutils)ftp invocation.               File Transfer Protocol.
+
+Miscellaneous
 * ftpd: (inetutils)ftpd invocation.             FTP Daemon.
+* ftp: (inetutils)ftp invocation.               File Transfer Protocol.
 * inetd: (inetutils)inetd invocation.           Interner super-server.
 * logger: (inetutils)logger invocation.         Logger.
 * networking(inet) utilities: (inetutils).      GNU networking utilities.
 * ping: (inetutils)ping invocation.             Packets to network hosts.
 * rcp: (inetutils)rcp invocation.               Strip non-directory suffix.
 * rexecd: (inetutils)rexecd invocation.         Remote execution server.
-* rlogin: (inetutils)rlogin invocation.         Remote login.
 * rlogind: (inetutils)rlogind invocation.       Remote login server.
-* rsh: (inetutils)rsh invocation.               Remote shell.
+* rlogin: (inetutils)rlogin invocation.         Remote login.
 * rshd: (inetutils)rshd invocation.             Remote shell server.
+* rsh: (inetutils)rsh invocation.               Remote shell.
 * syslogd: (inetutils)syslogd invocation.       Syslog server.
-* talk: (inetutils)talk invocation.             Talk client.
 * talkd: (inetutils)talkd invocation.           Talk server.
+* talk: (inetutils)talk invocation.             Talk client.
 * tftp: (inetutils)tftp invocation.             Trivial FTP.
