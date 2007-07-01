@@ -14,6 +14,7 @@
 	* lib/Makefile.am (libtxi_A_SOURCES): system.h at top level now.
 	
 	* makeinfo/tests/copying.txi: test with nonempty copying text.
+	* makeinfo/insertion.c (cm_insert_copying): call output_head.
 
 2007-06-29  Karl Berry  <karl@gnu.org>
 

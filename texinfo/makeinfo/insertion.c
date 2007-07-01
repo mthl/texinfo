@@ -1,12 +1,12 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.62 2006-12-11 14:59:59 karl Exp $
+   $Id: insertion.c,v 1.63 2007-07-01 18:31:42 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -627,7 +627,7 @@ begin_insertion (enum insertion_type type)
           if (!(*insertion_stack->item_function))
             {
               free (insertion_stack->item_function);
-              insertion_stack->item_function = default_item_function;
+              insertion_stack->item_function = (char *) default_item_function;
             }
         }
 
@@ -1472,6 +1472,12 @@ cm_insert_copying (void)
       return;
     }
 
+  /* It is desirable that @copying is set early in the input file.  For
+     Info output, we write the copying text out right away, and thus it
+     may well be the first thing in the output, and we want the file
+     header first.  The special case in add_char has to check for
+     executing_string, so it won't be effective.  Thus, do it explicitly.  */
+  output_head ();
   execute_string ("%s", copying_text);
 
   if (!xml && !html)

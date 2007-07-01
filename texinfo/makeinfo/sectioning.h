@@ -1,11 +1,11 @@
 /* sectioning.h -- all related stuff @chapter, @section... @contents
-   $Id: sectioning.h,v 1.6 2005-05-15 00:00:08 karl Exp $
+   $Id: sectioning.h,v 1.7 2007-07-01 18:31:44 karl Exp $
 
-   Copyright (C) 1999, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2003, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,

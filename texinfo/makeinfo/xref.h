@@ -1,11 +1,11 @@
 /* xref.h -- declarations for the cross references.
-   $Id: xref.h,v 1.2 2005-05-15 00:00:08 karl Exp $
+   $Id: xref.h,v 1.3 2007-07-01 18:31:45 karl Exp $
 
-   Copyright (C) 2004 Free Software Foundation, Inc.
+   Copyright (C) 2004, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,

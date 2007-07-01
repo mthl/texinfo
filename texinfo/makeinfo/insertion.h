@@ -1,11 +1,11 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.12 2005-08-15 13:05:24 karl Exp $
+   $Id: insertion.h,v 1.13 2007-07-01 18:31:43 karl Exp $
 
-   Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2001, 2002, 2003, 2007 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,

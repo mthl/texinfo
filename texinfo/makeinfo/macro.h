@@ -1,11 +1,11 @@
 /* macro.h -- declarations for macro.c.
-   $Id: macro.h,v 1.4 2006-07-05 13:39:05 karl Exp $
+   $Id: macro.h,v 1.5 2007-07-01 18:31:43 karl Exp $
 
-   Copyright (C) 1998, 99 Free Software Foundation, Inc.
+   Copyright (C) 1998, 99, 07 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 3, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
