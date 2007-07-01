@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 11:07-0700\n"
+"POT-Creation-Date: 2007-07-01 11:49-0700\n"
 "PO-Revision-Date: 2006-11-25 23:35+0600\n"
 "Last-Translator: Sergio Pokrovskij <sergio.pokrovskij@gmail.com>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -1841,40 +1841,40 @@ msgstr "%c%s arkaikiĝis"
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp bezonas ne «%s» sed pozitivan argumenton nombran"
 
-#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1787 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Misa argumento por %c%s"
 
-#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
+#: makeinfo/cmds.c:1797 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
+#: makeinfo/cmds.c:1799 makeinfo/cmds.c:1829 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:1816
+#: makeinfo/cmds.c:1813
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Misa argumento por @%s"
 
 # set_firstparagraphindent
-#: makeinfo/cmds.c:1830
+#: makeinfo/cmds.c:1827
 msgid "insert"
 msgstr "enŝovu"
 
-#: makeinfo/cmds.c:1846
+#: makeinfo/cmds.c:1843
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Misa argumento por @%s"
 
-#: makeinfo/cmds.c:1929
+#: makeinfo/cmds.c:1926
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1949
+#: makeinfo/cmds.c:1946
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2081,69 +2081,69 @@ msgstr "„@end‟ atendis „%s‟, sed renkontis „%s‟"
 msgid "No matching `%cend %s'"
 msgstr "Mankas para „%cend %s‟"
 
-#: makeinfo/insertion.c:1609
+#: makeinfo/insertion.c:1615
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s bezonas literon aŭ ciferon"
 
-#: makeinfo/insertion.c:1702
+#: makeinfo/insertion.c:1708
 msgid "end of file inside verbatim block"
 msgstr "dosierfino ene de pretaranĝita bloko"
 
-#: makeinfo/insertion.c:1926
+#: makeinfo/insertion.c:1932
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s estas sensenca ekster bloko „@float‟"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1968
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu jam antaŭ la unua @nodo; nodo „Top‟ kreitas"
 
-#: makeinfo/insertion.c:1963
+#: makeinfo/insertion.c:1969
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "eble via @top-nodo staru sub @ifnottex anstataŭ sub @ifinfo?"
 
-#: makeinfo/insertion.c:1975
+#: makeinfo/insertion.c:1981
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu renkontita jam antaŭ la unua nodo; nodo „Top‟ kreitas"
 
-#: makeinfo/insertion.c:2031
+#: makeinfo/insertion.c:2037
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s sencas nur en bloko „@titlepage‟ aŭ „@quotation‟"
 
-#: makeinfo/insertion.c:2045
+#: makeinfo/insertion.c:2051
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s ne sencas ekster bloko „@titlepage‟"
 
-#: makeinfo/insertion.c:2076
+#: makeinfo/insertion.c:2082
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Mankas para „%c%s‟"
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2087
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "„%c%s‟ bezonas post si ion"
 
-#: makeinfo/insertion.c:2087
+#: makeinfo/insertion.c:2093
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Misa argumento «%s» por «%s»; estos uzata «%s»"
 
-#: makeinfo/insertion.c:2184
+#: makeinfo/insertion.c:2190
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s estas sensenca ene de bloko „@%s‟"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2199
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx estas sensenca ene de bloko «%s»"
 
-#: makeinfo/insertion.c:2367
+#: makeinfo/insertion.c:2373
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s renkontita ekster „insertion block‟"

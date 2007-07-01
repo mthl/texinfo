@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 11:07-0700\n"
+"POT-Creation-Date: 2007-07-01 11:49-0700\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -1994,41 +1994,41 @@ msgstr "%c%sni"
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@SP a Bikurikije umubare OYA"
 
-#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1787 makeinfo/footnote.c:82
 #, fuzzy, c-format
 msgid "Bad argument to %c%s"
 msgstr "Kuri"
 
-#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
+#: makeinfo/cmds.c:1797 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr ""
 
-#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
+#: makeinfo/cmds.c:1799 makeinfo/cmds.c:1829 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "ntacyo"
 
-#: makeinfo/cmds.c:1816
+#: makeinfo/cmds.c:1813
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "Kuri"
 
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.RID_INSERT.text
-#: makeinfo/cmds.c:1830
+#: makeinfo/cmds.c:1827
 #, fuzzy
 msgid "insert"
 msgstr "Kongeramo"
 
-#: makeinfo/cmds.c:1846
+#: makeinfo/cmds.c:1843
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Kuri"
 
-#: makeinfo/cmds.c:1929
+#: makeinfo/cmds.c:1926
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1949
+#: makeinfo/cmds.c:1946
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2246,73 +2246,73 @@ msgstr "`@Ikitezwe:"
 msgid "No matching `%cend %s'"
 msgstr ""
 
-#: makeinfo/insertion.c:1609
+#: makeinfo/insertion.c:1615
 #, fuzzy, c-format
 msgid "%s requires letter or digit"
 msgstr "%sIbaruwa... Cyangwa"
 
-#: makeinfo/insertion.c:1702
+#: makeinfo/insertion.c:1708
 #, fuzzy
 msgid "end of file inside verbatim block"
 msgstr "Impera Bya IDOSIYE Mo Imbere Funga"
 
-#: makeinfo/insertion.c:1926
+#: makeinfo/insertion.c:1932
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%sOYA Hanze"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1968
 #, fuzzy
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@Ibikubiyemo Mbere Itangira"
 
-#: makeinfo/insertion.c:1963
+#: makeinfo/insertion.c:1969
 #, fuzzy
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "Hejuru: in"
 
-#: makeinfo/insertion.c:1975
+#: makeinfo/insertion.c:1981
 #, fuzzy
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@Mbere Itangira"
 
-#: makeinfo/insertion.c:2031
+#: makeinfo/insertion.c:2037
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%sOYA Hanze Na"
 
-#: makeinfo/insertion.c:2045
+#: makeinfo/insertion.c:2051
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%sOYA Hanze"
 
-#: makeinfo/insertion.c:2076
+#: makeinfo/insertion.c:2082
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr ""
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2087
 #, fuzzy, c-format
 msgid "`%c%s' needs something after it"
 msgstr "`%c%s'Nyuma"
 
-#: makeinfo/insertion.c:2087
+#: makeinfo/insertion.c:2093
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Kuri ikoresha"
 
-#: makeinfo/insertion.c:2184
+#: makeinfo/insertion.c:2190
 #, fuzzy, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%sOYA Mo Imbere Funga"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2199
 #, fuzzy, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@OYA Mo Imbere Funga"
 
-#: makeinfo/insertion.c:2367
+#: makeinfo/insertion.c:2373
 #, fuzzy, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%sByabonetse Hanze Bya Iyinjizamo Funga"

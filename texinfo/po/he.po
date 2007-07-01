@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 11:07-0700\n"
+"POT-Creation-Date: 2007-07-01 11:49-0700\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -1837,39 +1837,39 @@ msgstr "ןשוימ וניה %c%s"
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "`%s' אל ,יבויח רפסמ אוהש טנמוגרא שרוד @sp"
 
-#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1787 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
+#: makeinfo/cmds.c:1797 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr "אוהש ומכ"
 
-#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
+#: makeinfo/cmds.c:1799 makeinfo/cmds.c:1829 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "ןיא"
 
-#: makeinfo/cmds.c:1816
+#: makeinfo/cmds.c:1813
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:1830
+#: makeinfo/cmds.c:1827
 msgid "insert"
 msgstr ""
 
-#: makeinfo/cmds.c:1846
+#: makeinfo/cmds.c:1843
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:1929
+#: makeinfo/cmds.c:1926
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1949
+#: makeinfo/cmds.c:1946
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2077,69 +2077,69 @@ msgstr "`%s' אצמנ םלוא ,`%s' ל\"צ `@end' ירחא"
 msgid "No matching `%cend %s'"
 msgstr "םאות `%cend %s' רסח"
 
-#: makeinfo/insertion.c:1609
+#: makeinfo/insertion.c:1615
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "הרפס וא תוא שרוד %s"
 
-#: makeinfo/insertion.c:1702
+#: makeinfo/insertion.c:1708
 msgid "end of file inside verbatim block"
 msgstr "verbatim ךותב ץבוק ףוס"
 
-#: makeinfo/insertion.c:1926
+#: makeinfo/insertion.c:1932
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1968
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "`Top' תקסיפ רצוי ,הנושארה הקסיפה ינפל אצמנ @menu"
 
-#: makeinfo/insertion.c:1963
+#: makeinfo/insertion.c:1969
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "?@ifinfo םוקמב @ifnottex-ב תפקומ תויהל התיה הכירצ @top תקסיפ יכ ןכתייה"
 
-#: makeinfo/insertion.c:1975
+#: makeinfo/insertion.c:1981
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "`Top' תקסיפ רצוי ,הנושארה הקסיפה ינפל אצמנ @detailmenu"
 
-#: makeinfo/insertion.c:2031
+#: makeinfo/insertion.c:2037
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: makeinfo/insertion.c:2045
+#: makeinfo/insertion.c:2051
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2076
+#: makeinfo/insertion.c:2082
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "גוז-ןב ול ןיאש `%c%s'"
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2087
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "וירחא אוביש והשמ ךירצ `%c%s'"
 
-#: makeinfo/insertion.c:2087
+#: makeinfo/insertion.c:2093
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "`%s'-ל טנמוגראכ םיאתמ וניא `%s'-ש םושמ `%s'-ב יתשמתשה"
 
-#: makeinfo/insertion.c:2184
+#: makeinfo/insertion.c:2190
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2199
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "`%s' ךותב @itemx-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2367
+#: makeinfo/insertion.c:2373
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "הסנכה קולב לכל ץוחמ %c%s אצמנ"

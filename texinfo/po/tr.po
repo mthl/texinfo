@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 11:07-0700\n"
+"POT-Creation-Date: 2007-07-01 11:49-0700\n"
 "PO-Revision-Date: 2005-02-04 18:34+0200\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -1858,39 +1858,39 @@ msgstr "%c%s kullanýmdan kalkmýþ"
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp pozitif bir sayýsal argüman gerektirir, `%s' deðil"
 
-#: makeinfo/cmds.c:1790 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1787 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1800 makeinfo/makeinfo.c:4279
+#: makeinfo/cmds.c:1797 makeinfo/makeinfo.c:4279
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1802 makeinfo/cmds.c:1832 makeinfo/makeinfo.c:4281
+#: makeinfo/cmds.c:1799 makeinfo/cmds.c:1829 makeinfo/makeinfo.c:4281
 msgid "none"
 msgstr "yok"
 
-#: makeinfo/cmds.c:1816
+#: makeinfo/cmds.c:1813
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "@%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1830
+#: makeinfo/cmds.c:1827
 msgid "insert"
 msgstr "ekle"
 
-#: makeinfo/cmds.c:1846
+#: makeinfo/cmds.c:1843
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "@%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1929
+#: makeinfo/cmds.c:1926
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1949
+#: makeinfo/cmds.c:1946
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2097,71 +2097,71 @@ msgstr "`@end'  `%1$s' beklerdi, `%2$s' gördü"
 msgid "No matching `%cend %s'"
 msgstr "Eþleþen `%cend %s' yok"
 
-#: makeinfo/insertion.c:1609
+#: makeinfo/insertion.c:1615
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s harf ya da rakam gerektirir"
 
-#: makeinfo/insertion.c:1702
+#: makeinfo/insertion.c:1708
 msgid "end of file inside verbatim block"
 msgstr "verbatim bloðu içinde dosya sonu"
 
-#: makeinfo/insertion.c:1926
+#: makeinfo/insertion.c:1932
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "`@float' çevresi dýþýnda @%s anlamlý deðil"
 
-#: makeinfo/insertion.c:1962
+#: makeinfo/insertion.c:1968
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "önce Üst"
 
-#: makeinfo/insertion.c:1963
+#: makeinfo/insertion.c:1969
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "belki de sizin @top düðümünüz, @ifinfo'dan ziyade @ifnottex içine "
 "sarýlmalýdýr?"
 
-#: makeinfo/insertion.c:1975
+#: makeinfo/insertion.c:1981
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu ilk düðümden önce görüldü, `En Üst' düðüm oluþturuluyor"
 
-#: makeinfo/insertion.c:2031
+#: makeinfo/insertion.c:2037
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "`@titlepage' ve `@quotation' çevreleri dýþýnda @%s anlamlý deðil"
 
-#: makeinfo/insertion.c:2045
+#: makeinfo/insertion.c:2051
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "`@titlepage' çevresi dýþýnda @%s anlamlý deðil"
 
-#: makeinfo/insertion.c:2076
+#: makeinfo/insertion.c:2082
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Eþleþmeyen `%c%s'"
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2087
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "`%c%s' sonrasýnda birþeyler gereklidir"
 
-#: makeinfo/insertion.c:2087
+#: makeinfo/insertion.c:2093
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "`%2$s''e hatalý argüman, `%1$s', `%3$s' kullanýlýyor"
 
-#: makeinfo/insertion.c:2184
+#: makeinfo/insertion.c:2190
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' bloðu içinde @%s anlamlý deðil"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2199
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "`%s' bloðunun içinde @itemx anlamlý deðil"
 
-#: makeinfo/insertion.c:2367
+#: makeinfo/insertion.c:2373
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s, bir ekleme bloðunun dýþýnda bulundu"
