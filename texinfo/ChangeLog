@@ -1,12 +1,16 @@
 2007-07-01  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.9.90.
+	
+	* COPYING, all source files: GPLv3.
 
 	* makeinfo/makeinfo.c,
 	* info/info.c,
 	* info/infokey.c,
 	* util/install-info.c,
 	* util/texindex.c: update --version output.
+
+	* Makefile.am (EXTRA_DIST): remove config.rpath, it's in build-aux now.
 
 2007-06-29  Karl Berry  <karl@gnu.org>
 
