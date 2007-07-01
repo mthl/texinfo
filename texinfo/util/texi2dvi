@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.97 2007-07-01 19:06:04 karl Exp $
+# $Id: texi2dvi,v 1.98 2007-07-01 21:29:02 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.97 $'
+rcs_revision='$Revision: 1.98 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.9) $rcs_version
@@ -523,8 +523,15 @@ move_to_dest ()
       error 1 "no such file or directory: $file"
     fi
     if test -n "$dest"; then
-      test -f "$dest" || dest="$dest/$file"
-      if cmp -s "$file" "$dest"; then :; else
+      # avoid complaint from cmp if given a directory.
+      # do the cmp in the first place to avoid a complaint from cp
+      # if we try to copy a file onto itself.
+      if test -d "$dest"; then
+        testdest="$dest/$file"
+      else
+        testdest="$dest"
+      fi
+      if cmp -s "$file" "$testdest"; then :; else
         verbose "Copying $file to $dest"
         cp -p "$file" "$dest"
       fi

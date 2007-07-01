@@ -13,6 +13,9 @@
 	* Makefile.am (EXTRA_DIST): remove config.rpath, it's in build-aux now.
 	* lib/Makefile.am (libtxi_A_SOURCES): system.h at top level now.
 	
+	* util/texi2dvi (move_to_dest): still more tweaks to try avoid
+	complaints from cp and cmp.
+
 	* makeinfo/tests/copying.txi: test with nonempty copying text.
 	* makeinfo/insertion.c (cm_insert_copying): call output_head.
 
