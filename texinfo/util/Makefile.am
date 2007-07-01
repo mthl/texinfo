@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.25 2006-06-21 08:08:48 akim Exp $
+# $Id: Makefile.am,v 1.26 2007-07-01 17:59:13 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -52,13 +52,7 @@ EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   $(dist_pkgdata_DATA) texinfo-cat.in
 CLEANFILES = $(pkgdata_DATA)
 
-
-## ------- ##
-## Tests.  ##
-## ------- ##
-
 XFAIL_TESTS =
-
 TESTS =	\
 bibtex.test \
 dvipdf.test \
