@@ -13,7 +13,6 @@
 
 $EMACSSRC/man/info.texi			doc
 #$TEXMFROOT/tex/generic/dvips/epsf.tex	doc
-$TEXMFROOT/tex/plain/misc/pdfcolor.tex	doc
 
 
 $GETTEXT/gettext-runtime/ABOUT-NLS		.

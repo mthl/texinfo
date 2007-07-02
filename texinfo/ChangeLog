@@ -1,6 +1,11 @@
 2007-07-02  Oleg Katsitadze  <olegkat@gmail.com>
 
-	* texinfo.tex (\chapmacro):  avoid potential breakpoint at
+	* doc/pdfcolor.tex: removed (merged with doc/texinfo.tex).
+	* doc/texinfo.tex: merged doc/pdfcolor.tex, omitting unused colors.
+	* doc/Makefile.am, doc/README, doc/texinfo.txi, util/srclist.txt:
+	removed any mention of pdfcolor.tex.
+
+	* doc/texinfo.tex (\chapmacro):  avoid potential breakpoint at
 	interline glue between \pdfdest and the heading.
 	(\safewhatsit): typo.
 
@@ -40,19 +45,19 @@
 
 2007-06-27  Oleg Katsitadze  <olegkat@gmail.com>
 
-	* texinfo.tex (\setnonasciicharscatcodenonglobal): new macro.
+	* doc/texinfo.tex (\setnonasciicharscatcodenonglobal): new macro.
 	(\scanctxt):  in case of non-ASCII encodings, un-activate 8-bit
-	chars to avoid their expansion.  Report from John Mandereau on
-	bug-texinfo, Jun 22, 2007 at 05:26:09PM +0200.
+	chars to avoid their expansion.  Report from John Mandereau,
+	22 Jun 2007 17:26:09 +0200.
 
 2007-06-24  Karl Berry  <karl@gnu.org>
 
-	* texinfo.tex (\internalpagesizes): must reset \pdfhorigin and
+	* doc/texinfo.tex (\internalpagesizes): must reset \pdfhorigin and
 	\pdfvorigin after changing \pdfpageheight and \pdfpagewidth.
 
 2007-06-20  Karl Berry  <karl@gnu.org>
 
-	* texinfo.tex (\documentlanguagetrywithoutunderscore): new macro,
+	* doc/texinfo.tex (\documentlanguagetrywithoutunderscore): new macro,
 	to try txi-de.tex if @documentlanguage de_DE.
 	(\documentlanguage): call it.
 
