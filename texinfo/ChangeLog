@@ -2,6 +2,7 @@
 
 	* texinfo.tex (\chapmacro):  avoid potential breakpoint at
 	interline glue between \pdfdest and the heading.
+	(\safewhatsit): typo.
 
 2007-07-01  Karl Berry  <karl@gnu.org>
 
