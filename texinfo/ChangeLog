@@ -1,3 +1,8 @@
+2007-07-02  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* texinfo.tex (\chapmacro):  avoid potential breakpoint at
+	interline glue between \pdfdest and the heading.
+
 2007-07-01  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.9.90.
