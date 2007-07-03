@@ -1,3 +1,10 @@
+2007-07-03  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex: use \setcolor for color changes instead of
+	\pdfsetcolor, to preserve color changes across page breaks.  Use a
+	darker red (which comes out almost black in b&w print) for links
+	and urls.
+
 2007-07-02  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/pdfcolor.tex: removed (merged with doc/texinfo.tex).
