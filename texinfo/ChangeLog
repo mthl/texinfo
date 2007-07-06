@@ -1,7 +1,12 @@
+2007-07-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Info Directories): recommend columns 32
+	and 48.  Suggestion from Antonio Diaz Diaz.
+
 2007-07-05  Karl Berry  <karl@gnu.org>
 
-	* (\setnonasciicharscatcodenonglobal, \setnonasciicharscatcode):
-	no newline after #1, that counts as a space.
+	* texinfo.tex (\setnonasciicharscatcodenonglobal,
+        \setnonasciicharscatcode): no newline after #1, that counts as a space.
 	(\pagebody, \pagesizesyyy): likewise.
 
 2007-07-03  Oleg Katsitadze  <olegkat@gmail.com>

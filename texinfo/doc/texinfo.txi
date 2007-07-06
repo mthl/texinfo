@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.196 2007-07-02 21:40:32 olegkat Exp $
+@c $Id: texinfo.txi,v 1.197 2007-07-06 17:35:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16153,6 +16153,11 @@ the beginning of the Texinfo input, before the first @code{@@node}
 command.  If you use them later on in the input, @code{install-info}
 will not notice them.
 
+As a matter of convention, please start the description for the main
+entry (above, @samp{The GNU documentation format}) at column 32.  This
+will make it align with most others.  Description for individual
+utilities best start in column 48, where possible.
+
 If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
 @code{@@direntry} commands will add to that category.
@@ -18740,7 +18745,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.196 2007-07-02 21:40:32 olegkat Exp $
+$Id: texinfo.txi,v 1.197 2007-07-06 17:35:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18806,7 +18811,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.196 2007-07-02 21:40:32 olegkat Exp $
+@comment $Id: texinfo.txi,v 1.197 2007-07-06 17:35:19 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
