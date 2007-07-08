@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.36 2007-07-01 21:20:33 karl Exp $
+   $Id: node.c,v 1.37 2007-07-08 13:11:48 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -1620,17 +1620,6 @@ validate_file (TAG_ENTRY *tag_table)
         {
           tags = tags->next_ent;
           continue;
-        }
-
-      /* Special hack.  If the node in question appears to have
-         been referenced more than REFERENCE_WARNING_LIMIT times,
-         give a warning. */
-      if (tags->touched > reference_warning_limit)
-        {
-          input_filename = tags->filename;
-          line_number = tags->line_no;
-          warning (_("node `%s' has been referenced %d times"),
-                   tags->node, tags->touched);
         }
 
       if (tags->touched == 0)

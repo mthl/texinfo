@@ -1,3 +1,13 @@
+2007-07-08  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/node.c (validate_file): don't check for warning limit,
+	it was hit in gnulib.
+	* makeinfo/makeinfo.h (reference_warning_limit): remove.
+	* makeinfo/makeinfo.c (main): ignore the option (but leave it in
+	so any Makefiles or scripts that use it won't gratuitiously break).
+	* doc/texinfo.txi (Invoking makeinfo): remove documentation for
+	--reference-limit.
+
 2007-07-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (@copying): new Back-Cover Text.

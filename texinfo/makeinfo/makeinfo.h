@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.27 2007-07-01 21:20:33 karl Exp $
+   $Id: makeinfo.h,v 1.28 2007-07-08 13:11:48 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006, 2007 Free Software Foundation, Inc.
@@ -222,10 +222,6 @@ DECLARE (int, process_tex, 0);
 
 /* Nonzero means that we process @xml and @ifxml.  (--ifxml) */
 DECLARE (int, process_xml, 0);
-
-/* Maximum number of references to a single node before complaining.
-   (--reference-limit) */
-DECLARE (int, reference_warning_limit, 1000);
 
 /* Default is to check node references.  (--no-validate) */
 DECLARE (int, validating, 1);

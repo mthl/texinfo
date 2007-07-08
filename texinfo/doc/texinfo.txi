@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.198 2007-07-08 01:00:10 karl Exp $
+@c $Id: texinfo.txi,v 1.199 2007-07-08 13:11:48 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15467,15 +15467,6 @@ Delete any existing indentation.
 Indent each paragraph by @var{num} spaces.
 @end table
 
-@item --reference-limit=@var{limit}
-@itemx -r @var{limit}
-@opindex --reference-limit=@var{limit}
-@opindex -r @var{limit}
-Set the value of the number of references to a node that
-@code{makeinfo} will make without reporting a warning.  If a node has more
-than this number of references in it, @code{makeinfo} will make the
-references but also report a warning.  The default is 1000.
-
 @item --split-size=@var{num}
 @opindex --split-size=@var{num}
 Keep Info files to at most @var{num} characters; default is 300,000.
@@ -18745,7 +18736,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.198 2007-07-08 01:00:10 karl Exp $
+$Id: texinfo.txi,v 1.199 2007-07-08 13:11:48 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18811,7 +18802,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.198 2007-07-08 01:00:10 karl Exp $
+@comment $Id: texinfo.txi,v 1.199 2007-07-08 13:11:48 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
