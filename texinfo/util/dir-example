@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.71 2007-07-01 16:55:27 karl Exp $
+$Id: dir-example,v 1.72 2007-07-09 13:51:52 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -331,6 +331,8 @@ Individual utilities
 * fnid: (id-utils)fnid invocation.      	Looking up file names.
 * fold: (coreutils)fold invocation.             Wrap long input lines.
 * frm: (mailutils)frm.                          List headers from a mailbox.
+* ftp: (inetutils)ftp invocation.               File Transfer Protocol.
+* ftpd: (inetutils)ftpd invocation.             FTP Daemon.
 * gcal2txt: (gcal)Invoking gcal2txt.            Calendar resource to text file.
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
 * gftopk: (web2c)GFtoPK invocation.             Generic to packed fonts.
@@ -346,6 +348,7 @@ Individual utilities
 * id: (coreutils)id invocation.                 Print user identity.
 * ifnames: (autoconf)ifnames Invocation.        Listing conditionals in source.
 * imap4d: (mailutils)imap4d.                    IMAP4 daemon.
+* inetd: (inetutils)inetd invocation.           Interner super-server.
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
 * initex: (web2c)initex invocation.             Initial TeX.
@@ -358,6 +361,7 @@ Individual utilities
 * link: (coreutils)link invocation.             Make hard links between files.
 * ln: (coreutils)ln invocation.                 Make links between files.
 * locate: (find)Invoking locate.                Finding files in a database.
+* logger: (inetutils)logger invocation.         Logger.
 * logname: (coreutils)logname invocation.       Print current login name.
 * ls: (coreutils)ls invocation.                 List directory contents.
 * mail-files: (sharutils)mail-files invocation. Send files to remote site.
@@ -382,6 +386,7 @@ Individual utilities
 * mp: (web2c)mp invocation.                     Creating technical diagrams.
 * mpto: (web2c)MPto invocation.                 MetaPost label extraction.
 * mv: (coreutils)mv invocation.                 Rename files.
+* networking(inet) utilities: (inetutils).      GNU networking utilities.
 * newer: (web2c)Newer invocation.               Compare modification times.
 * nice: (coreutils)nice invocation.             Modify niceness.
 * nl: (coreutils)nl invocation.                 Number lines and write files.
@@ -395,14 +400,15 @@ Individual utilities
 * patch: (diff)Invoking patch.                  Apply a patch to a file.
 * patgen: (web2c)Patgen invocation.             Creating hyphenation patterns.
 * pathchk: (coreutils)pathchk invocation.       Check file name portability.
+* ping: (inetutils)ping invocation.             Packets to network hosts.
 * pktogf: (web2c)PKtoGF invocation.             Packed to generic fonts.
 * pktype: (web2c)PKtype invocation.             PK to human-readable text.
 * pltotf: (web2c)PLtoTF invocation.             Property list to TFM.
 * pooltype: (web2c)Pooltype invocation.         Display WEB pool files.
 * pop3d: (mailutils)pop3d.                      POP3 daemon.
-* pr: (coreutils)pr invocation.                 Paginate or columnate files.
 * pr-addr: (gnats)pr-addr.                      Bug report address retrieval.
 * pr-edit: (gnats)pr-edit.                      The edit-pr driver.
+* pr: (coreutils)pr invocation.                 Paginate or columnate files.
 * printenv: (coreutils)printenv invocation.     Print environment variables.
 * printf: (coreutils)printf invocation.         Format and print data.
 * ptx: (coreutils)ptx invocation.               Produce permuted indexes.
@@ -410,10 +416,16 @@ Individual utilities
 * query-pr: (gnats)Invoking query-pr.           Bug searching/reporting.
 * queue-pr: (gnats)queue-pr.                    Handling incoming traffic.
 * ranlib: (binutils)ranlib.                     Index archive file contents.
+* rcp: (inetutils)rcp invocation.               Strip non-directory suffix.
 * readlink: (coreutils)readlink invocation.     Print referent of a symlink.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
+* rexecd: (inetutils)rexecd invocation.         Remote execution server.
+* rlogin: (inetutils)rlogin invocation.         Remote login.
+* rlogind: (inetutils)rlogind invocation.       Remote login server.
 * rm: (coreutils)rm invocation.                 Remove files.
 * rmdir: (coreutils)rmdir invocation.           Remove empty directories.
+* rsh: (inetutils)rsh invocation.               Remote shell.
+* rshd: (inetutils)rshd invocation.             Remote shell server.
 * sdiff: (diff)Invoking sdiff.                  Merge 2 files side-by-side.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (coreutils)seq invocation.               Print numeric sequences
@@ -434,9 +446,12 @@ Individual utilities
 * su: (coreutils)su invocation.                 Modify user and group ID.
 * sum: (coreutils)sum invocation.               Print traditional checksum.
 * sync: (coreutils)sync invocation.             Synchronize memory and disk.
+* syslogd: (inetutils)syslogd invocation.       Syslog server.
 * tabs: (tput)Invoking tabs.                    Tab settings.
 * tac: (coreutils)tac invocation.               Reverse files.
 * tail: (coreutils)tail invocation.             Output the last part of files.
+* talk: (inetutils)talk invocation.             Talk client.
+* talkd: (inetutils)talkd invocation.           Talk server.
 * tangle: (web2c)Tangle invocation.             WEB to Pascal.
 * tar: (tar)tar invocation.                     Invoking GNU `tar'.
 * tcal: (gcal)Invoking tcal.                    Run Gcal with tomorrow's date.
@@ -445,6 +460,7 @@ Individual utilities
 * testsuite: (autoconf)testsuite Invocation.    Running an Autotest test suite.
 * tex: (web2c)tex invocation.                   Typesetting.
 * tftopl: (web2c)TFtoPL invocation.             TFM -> property list.
+* tftp: (inetutils)tftp invocation.             Trivial FTP.
 * touch: (coreutils)touch invocation.           Change file timestamps.
 * tput: (tput)Invoking tput.                    Termcap in shell scripts.
 * tr: (coreutils)tr invocation.                 Translate characters.
@@ -483,21 +499,3 @@ Individual utilities
 * zgrep: (gzip)Overview.                        Search compressed files.
 * zmore: (gzip)Overview.                        Decompression output by pages.
 * zsh: (zsh).                                   An enhanced Bourne shell.
-
-Miscellaneous
-* ftpd: (inetutils)ftpd invocation.             FTP Daemon.
-* ftp: (inetutils)ftp invocation.               File Transfer Protocol.
-* inetd: (inetutils)inetd invocation.           Interner super-server.
-* logger: (inetutils)logger invocation.         Logger.
-* networking(inet) utilities: (inetutils).      GNU networking utilities.
-* ping: (inetutils)ping invocation.             Packets to network hosts.
-* rcp: (inetutils)rcp invocation.               Strip non-directory suffix.
-* rexecd: (inetutils)rexecd invocation.         Remote execution server.
-* rlogind: (inetutils)rlogind invocation.       Remote login server.
-* rlogin: (inetutils)rlogin invocation.         Remote login.
-* rshd: (inetutils)rshd invocation.             Remote shell server.
-* rsh: (inetutils)rsh invocation.               Remote shell.
-* syslogd: (inetutils)syslogd invocation.       Syslog server.
-* talkd: (inetutils)talkd invocation.           Talk server.
-* talk: (inetutils)talk invocation.             Talk client.
-* tftp: (inetutils)tftp invocation.             Trivial FTP.
