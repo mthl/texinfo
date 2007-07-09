@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.73 2007-07-01 21:20:31 karl Exp $
+   $Id: cmds.c,v 1.74 2007-07-09 20:34:30 olegkat Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -188,9 +188,13 @@ COMMAND command_table[] = {
   { "error", cm_error, BRACE_ARGS },
   { "euro", cm_special_char, BRACE_ARGS },
   { "evenfooting", cm_ignore_line, NO_BRACE_ARGS },
+  { "evenfootingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "evenheading", cm_ignore_line, NO_BRACE_ARGS },
+  { "evenheadingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "everyfooting", cm_ignore_line, NO_BRACE_ARGS },
+  { "everyfootingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "everyheading", cm_ignore_line, NO_BRACE_ARGS },
+  { "everyheadingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "example", cm_example, NO_BRACE_ARGS },
   { "exampleindent", cm_exampleindent, NO_BRACE_ARGS },
   { "exclamdown", cm_special_char, BRACE_ARGS },
@@ -262,7 +266,9 @@ COMMAND command_table[] = {
   { "nwnode", cm_node, NO_BRACE_ARGS },
   { "o", cm_special_char, BRACE_ARGS },
   { "oddfooting", cm_ignore_line, NO_BRACE_ARGS },
+  { "oddfootingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "oddheading", cm_ignore_line, NO_BRACE_ARGS },
+  { "oddheadingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "oe", cm_special_char, BRACE_ARGS },
   { "option", cm_code, BRACE_ARGS },
   { "ordf", cm_special_char, BRACE_ARGS },

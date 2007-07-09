@@ -1,3 +1,16 @@
+2007-07-09  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex (\thissection): renamed to \lastsection.
+	(\thissectionname, \thissectionnum, \evenheadingmarks, \oddheadingmarks, \evenfootingmarks, \oddfootingmarks, \everyheadingmarks, \everyfootingmarks):
+	new macros.
+	(\thischapter, \thischaptername, \thischapternum, \thissection, \thissectionname, \thissectionnum):
+	defined these using marks.
+	(\chapoddpage): omit heading and footing on blank filler pages.
+	* doc/texinfo.txi (Page headings): documented
+	\thissection{,name,num} and \{even,odd,every}{head,foot}ingmarks.
+	* makeinfo/cmds.c (command_table): added
+	{even,odd,every}{head,foot}ingmarks.
+
 2007-07-08  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/node.c (validate_file): don't check for warning limit,
@@ -534,7 +547,7 @@
 	(\quoteexpand): rename to \rquoteexpand.
 	(\codequoteleft): new def, to look for @set codequotebacktick.
 	(\lquoteexpand, \quoteexpand): new defs.
-	(\lquoteChar, \rquoteChar, \dashChar, \underChar: new \chardef's.
+	(\lquoteChar, \rquoteChar, \dashChar, \underChar): new \chardef's.
 	(\code): must use new \...Char values, since now ` is active.
 
 2006-10-01  Karl Berry  <karl@gnu.org>
