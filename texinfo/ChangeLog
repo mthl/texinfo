@@ -1,3 +1,9 @@
+2007-07-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\xrefX): use \putwordSection for external
+	cross-references, too.
+	Report from Ludovic C, 09 Jul 2007 18:09:13.
+
 2007-07-09  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\thissection): renamed to \lastsection.

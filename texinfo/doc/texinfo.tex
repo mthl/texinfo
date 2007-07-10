@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2007-07-09.23}
+\def\texinfoversion{2007-07-09.17}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995, 2007,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -6928,7 +6928,7 @@ end
     % is a loss.  Therefore, we give the text of the node name again, so it
     % is as if TeX is seeing it for the first time.
     \ifdim \wd1 > 0pt
-      \putwordsection{} ``\printedrefname'' \putwordin{} \cite{\printedmanual}%
+      \putwordSection{} ``\printedrefname'' \putwordin{} \cite{\printedmanual}%
     \else
       % _ (for example) has to be the character _ for the purposes of the
       % control sequence corresponding to the node, but it has to expand
