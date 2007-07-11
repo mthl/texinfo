@@ -1,3 +1,13 @@
+2007-07-10  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.h (enable_encoding): default to 1.
+	* makeinfo/makeinfo.c (long_options): new option --disable-encoding
+	to set to zero.
+	(usage): document --disable-encoding.
+	* makeinfo/lang.c (add_encoded_char): don't enable 8-bit unless we
+	have a document encoding.
+	* doc/texinfo.txi (makeinfo Options, documentencoding): document this.
+
 2007-07-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\xrefX): use \putwordSection for external

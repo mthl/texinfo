@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.28 2007-07-08 13:11:48 karl Exp $
+   $Id: makeinfo.h,v 1.29 2007-07-11 00:16:24 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006, 2007 Free Software Foundation, Inc.
@@ -133,9 +133,9 @@ DECLARE (int, xml, 0);
 /* Nonzero means that we're generating DocBook. (--docbook) */
 DECLARE (int, docbook, 0);
 
-/* Nonzero means true 8-bit output for Info and plain text.
-   (--enable-encoding) */
-DECLARE (int, enable_encoding, 0);
+/* Nonzero means 8-bit output for Info and plain text, according to
+   @documentencoding.  (--enable-encoding) */
+DECLARE (int, enable_encoding, 1);
 
 /* Nonzero means escape characters in HTML output. */
 DECLARE (int, escape_html, 1);

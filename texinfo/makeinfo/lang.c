@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.27 2007-07-01 21:20:32 karl Exp $
+   $Id: lang.c,v 1.28 2007-07-11 00:16:23 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -1157,7 +1157,7 @@ add_encoded_char (char *html_str, char *info_str)
     add_word_args ("&%s;", html_str);
   else if (xml)
     xml_insert_entity (html_str);
-  else if (enable_encoding)
+  else if (enable_encoding && document_encoding_code != no_encoding)
     {
       /* Look for HTML_STR in the current translation table.  */
       int rc = cm_search_iso_map (html_str);
