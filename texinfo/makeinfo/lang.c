@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.28 2007-07-11 00:16:23 karl Exp $
+   $Id: lang.c,v 1.29 2007-07-12 13:28:11 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -724,7 +724,8 @@ lang_transliterate_char (byte_t ch)
    new memory).  We use the same table as gettext, and return LL_CODE
    uppercased in the absence of any better possibility, with a warning.
    (gettext silently defaults to the C locale, but we want to give users
-   a shot at fixing ambiguities.)  */
+   a shot at fixing ambiguities.)  We also return en_US for en, while
+   gettext does not.  */
 
 #define SIZEOF(a) (sizeof(a) / sizeof(a[0]))
 
@@ -946,10 +947,10 @@ default_country_for_lang (const char *ll_code)
         }
     }
   
-  /* If didn't find one to copy, warn and duplicate.  */
+  /* If we didn't find one to copy, warn and duplicate.  */
   if (c == principal_len)
     {
-      if (strcasecmp (ll_code, "en"))
+      if (strcasecmp (ll_code, "en") == 0)
         cc_code = xstrdup ("en_US");
       else
         {

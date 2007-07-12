@@ -1,3 +1,8 @@
+2007-07-12  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/lang.c (default_country_for_lang): strcasecmp returns 0
+	when we find en.
+
 2007-07-10  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.h (enable_encoding): default to 1.
