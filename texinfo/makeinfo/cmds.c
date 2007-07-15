@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.74 2007-07-09 20:34:30 olegkat Exp $
+   $Id: cmds.c,v 1.75 2007-07-15 11:51:12 olegkat Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -214,6 +214,12 @@ COMMAND command_table[] = {
   { "frenchspacing", cm_frenchspacing, NO_BRACE_ARGS },
   { "ftable", cm_ftable, NO_BRACE_ARGS },
   { "group", cm_group, NO_BRACE_ARGS },
+  { "guillemetleft", cm_special_char, BRACE_ARGS },
+  { "guillemetright", cm_special_char, BRACE_ARGS },
+  { "guillemotleft", cm_special_char, BRACE_ARGS },
+  { "guillemotright", cm_special_char, BRACE_ARGS },
+  { "guilsinglleft", cm_guilsinglleft, BRACE_ARGS },
+  { "guilsinglright", cm_guilsinglright, BRACE_ARGS },
   { "heading", cm_heading, NO_BRACE_ARGS },
   { "headings", cm_ignore_line, NO_BRACE_ARGS },
   { "headitem", cm_headitem, NO_BRACE_ARGS },
@@ -284,6 +290,12 @@ COMMAND command_table[] = {
   { "pxref", cm_pxref, BRACE_ARGS },
   { "questiondown", cm_special_char, BRACE_ARGS },
   { "quotation", cm_quotation, NO_BRACE_ARGS },
+  { "quotedblbase", cm_quotedblbase, BRACE_ARGS },
+  { "quotedblleft", cm_quotedblleft, BRACE_ARGS },
+  { "quotedblright", cm_quotedblright, BRACE_ARGS },
+  { "quoteleft", cm_quoteleft, BRACE_ARGS },
+  { "quoteright", cm_quoteright, BRACE_ARGS },
+  { "quotesinglbase", cm_quotesinglbase, BRACE_ARGS },
   { "r", cm_r, BRACE_ARGS },
   { "raisesections", cm_raisesections, NO_BRACE_ARGS },
   { "ref", cm_ref, BRACE_ARGS },
@@ -587,6 +599,138 @@ cm_registeredsymbol (int arg)
         xml_insert_entity ("registered");
       else
         add_word ("(R)");
+    }
+}
+
+/* Left single guillemet (single left-pointing angle quotation mark). */
+void
+cm_guilsinglleft (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&lsaquo;");
+      else if (xml && !docbook)
+        xml_insert_entity ("lsaquo");
+      else
+        add_word ("<");
+    }
+}
+
+/* Right single guillemet (single right-pointing angle quotation mark). */
+void
+cm_guilsinglright (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&rsaquo;");
+      else if (xml && !docbook)
+        xml_insert_entity ("rsaquo");
+      else
+        add_word (">");
+    }
+}
+
+/* Double low-9 quotation mark. */
+void
+cm_quotedblbase (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&bdquo;");
+      else if (docbook)
+        xml_insert_entity ("ldquor");
+      else if (xml && !docbook)
+        xml_insert_entity ("bdquo");
+      else
+        add_word ("\"");
+    }
+}
+
+/* Left double quotation mark. */
+void
+cm_quotedblleft (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&ldquo;");
+      else if (docbook)
+        xml_insert_entity ("ldquo");
+      else if (xml && !docbook)
+        xml_insert_entity ("ldquo");
+      else
+        add_word ("\"");
+    }
+}
+
+/* Right double quotation mark. */
+void
+cm_quotedblright (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&rdquo;");
+      else if (docbook)
+        xml_insert_entity ("rdquo");
+      else if (xml && !docbook)
+        xml_insert_entity ("rdquo");
+      else
+        add_word ("\"");
+    }
+}
+
+/* Left single quotation mark. */
+void
+cm_quoteleft (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&lsquo;");
+      else if (docbook)
+        xml_insert_entity ("lsquo");
+      else if (xml && !docbook)
+        xml_insert_entity ("lsquo");
+      else
+        add_word ("`");
+    }
+}
+
+/* Right single quotation mark. */
+void
+cm_quoteright (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&rsquo;");
+      else if (docbook)
+        xml_insert_entity ("rsquo");
+      else if (xml && !docbook)
+        xml_insert_entity ("rsquo");
+      else
+        add_word ("'");
+    }
+}
+
+/* Single low-9 quotation mark. */
+void
+cm_quotesinglbase (int arg)
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&sbquo;");
+      else if (docbook)
+        xml_insert_entity ("lsquor");
+      else if (xml && !docbook)
+        xml_insert_entity ("sbquo");
+      else
+        add_word (",");
     }
 }
 

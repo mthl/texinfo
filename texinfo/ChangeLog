@@ -1,3 +1,24 @@
+2007-07-15  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex (\quotedblleft, \quotedblright, \quoteleft, \quoteright):
+	aliases for the quotation marks from the CM fonts.
+	(\guillemetleft, \guillemotleft, \guillemetright, \guillemotright, \guilsinglleft, \guilsinglright, \quotedblbase, \quotesinglbase):
+	new macros to borrow quotation marks from the EC fonts.  The
+	following font macros support these glyphs.
+	(\ecfont): new macro to switch to a EC font as close as possible
+	to the current style.
+	(\textecsize, \smallecsize, \smallerecsize, titleecsize, \chapecsize, \sececsize, \ssececsize, \reducedecsize):
+	new macros to store EC font name sizes.
+	* makeinfo/cmds.c, makeinfo/cmds.h: added defs for the new quotation marks.
+	* makeinfo/lang.c (cm_special_char): added guillemetleft,
+	guillemotleft, guillemetright, guillemotright.
+	* util/texinfo.dtd (lsquo, rsquo, sbquo, bdquo, laquo, raquo, lsaquo, rsaquo):
+	entities for the new quotation marks.
+	* doc/texinfo.txi (Inserting Quotation Marks): new section.
+	(General Syntactic Conventions): moved quotation mark syntax to
+	Inserting Quotation Marks.
+	(Preparing for TeX): added info on installation of EC and Euro fonts.
+
 2007-07-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (@copying, GNU Sample Texts),

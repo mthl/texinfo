@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.29 2007-07-12 13:28:11 karl Exp $
+   $Id: lang.c,v 1.30 2007-07-15 11:51:12 olegkat Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -1453,6 +1453,12 @@ cm_special_char (int arg)
         add_encoded_char ("aring", command);
       else if (strcmp (command, "ss") == 0)
         add_encoded_char ("szlig", command);
+      else if (strcmp (command, "guillemetleft") == 0
+               || strcmp (command, "guillemotleft") == 0)
+        add_encoded_char ("laquo", "<<");
+      else if (strcmp (command, "guillemetright") == 0
+               || strcmp (command, "guillemotright") == 0)
+        add_encoded_char ("raquo", ">>");
       else
         line_error ("cm_special_char internal error: command=@%s", command);
     }

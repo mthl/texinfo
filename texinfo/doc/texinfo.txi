@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
+@c $Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -443,6 +443,7 @@ Special Insertions
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
+* Inserting Quotation Marks::   How to insert quotation marks.
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
                                  and the copyright symbol.
@@ -1243,30 +1244,9 @@ in other cases as well; you can use the @code{@@noindent} to inhibit
 paragraph indentation if required (@pxref{noindent,,@code{@@noindent}}).
 
 @item
-@cindex Quotation characters (`'), in source
-Use doubled single-quote characters to begin and end quotations:
-@w{@t{`@w{}`@dots{}'@w{}'}}.  @TeX{} converts two single quotes to
-left- and right-hand doubled quotation marks,
-@c this comes out as "like this" in Info, which is just confusing.
-@iftex
-``like this'',
-@end iftex
-and Info converts doubled single-quote characters to ASCII
-double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
-
-You may occasionally need to produce two consecutive single quotes;
-for example, in documenting a computer language such as Maxima where
-@t{'@w{}'} is a valid command.  You can do this with the input
-@t{'@@w@{@}'}; the empty @code{@@w} command stops the combination into
-the double-quote characters.
-
-@cindex Unicode quotation characters
-@cindex Grave accent, vs. left quote
-The left quote character (@t{`}, ASCII code 96) used in Texinfo is a
-grave accent in ANSI and ISO character set standards.  We use it as a
-quote character because that is how @TeX{} is set up, by default.  We
-hope to eventually support the various quotation characters in
-Unicode.
+Texinfo supports the usual quotation marks used in English, and
+quotation marks used in other languages, please see @ref{Inserting
+Quotation Marks}.
 
 @item
 @cindex Multiple dashes in source
@@ -10056,6 +10036,7 @@ These are:
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
+* Inserting Quotation Marks::   How to insert quotation marks.
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
                                  and the copyright symbol.
@@ -10478,9 +10459,11 @@ braces around their argument (which is taken to be the next character).
 This is so as to make the source as convenient to type and read as
 possible, since accented characters are very common in some languages.
 
+@findex documentencoding
 To get the true accented characters output in Info, and not just the
-ASCII transliterations, you can use the @option{--enable-encoding}
-option to @command{makeinfo} (@pxref{makeinfo options}).
+ASCII transliterations, it is necessary to specify
+@code{@@documentencoding} with an encoding which supports the required
+characters (@pxref{documentencoding,,@code{@@documentencoding}}).
 
 @findex " @r{(umlaut accent)}
 @cindex Umlaut accent
@@ -10514,8 +10497,8 @@ option to @command{makeinfo} (@pxref{makeinfo options}).
 @cindex Hacek accent
 @cindex Check accent
 @cindex Caron accent
-@multitable {@@questiondown@{@}} {Output} {hacek/check/caron accent}
-@item Command               @tab Output         @tab What
+@multitable {@t{@@questiondown@{@}}} {Output} {hacek/check/caron accent}
+@headitem Command           @tab Output         @tab What
 @item @t{@@"o}              @tab @"o            @tab umlaut accent
 @item @t{@@'o}              @tab @'o            @tab acute accent
 @item @t{@@,@{c@}}          @tab @,{c}          @tab cedilla accent
@@ -10577,7 +10560,7 @@ commonly used in languages other than English.
 @cindex Es-zet
 @cindex Sharp S
 @cindex German S
-@multitable {x@@questiondown@{@}} {oe OE} {es-zet or sharp S}
+@multitable {@t{@@questiondown@{@}}} {oe OE} {es-zet or sharp S}
 @item @t{@@exclamdown@{@}}   @tab @exclamdown{}   @tab upside-down !
 @item @t{@@questiondown@{@}} @tab @questiondown{} @tab upside-down ?
 @item @t{@@aa@{@} @@AA@{@}}  @tab @aa{} @AA{}     @tab a,A with circle
@@ -10590,6 +10573,156 @@ commonly used in languages other than English.
 @item @t{@@ordf@{@} @@ordm@{@}}  @tab @ordf{} @ordm{}     @tab Spanish ordinals
 @item @t{@@ss@{@}}           @tab @ss{}           @tab es-zet or sharp S
 @end multitable
+
+
+@node Inserting Quotation Marks
+@section Inserting Quotation Marks
+@cindex Inserting quotation marks
+@cindex Quotation marks, inserting
+
+@cindex Quotation characters (`'), in source
+Use doubled single-quote characters to begin and end quotations:
+@w{@t{`@w{}`@dots{}'@w{}'}}.  @TeX{} converts two single quotes to
+left- and right-hand doubled quotation marks,
+@c this comes out as "like this" in Info, which is just confusing.
+@iftex
+``like this'',
+@end iftex
+and Info converts doubled single-quote characters to ASCII
+double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
+
+You may occasionally need to produce two consecutive single quotes;
+for example, in documenting a computer language such as Maxima where
+@t{'@w{}'} is a valid command.  You can do this with the input
+@t{'@@w@{@}'}; the empty @code{@@w} command stops the combination into
+the double-quote characters.
+
+@cindex Unicode quotation characters
+@cindex Grave accent, vs. left quote
+The left quote character (@t{`}, ASCII code 96) used in Texinfo is a
+grave accent in ANSI and ISO character set standards.  We use it as a
+quote character because that is how @TeX{} is set up, by default.
+
+Texinfo supports several other quotation marks used in languages other
+than English.  Below is a table with the commands Texinfo provides for
+inserting quotation marks.
+
+@findex documentencoding
+@cindex UTF-8
+@cindex ISO 8859-15
+@cindex Latin 9
+@cindex ISO 8859-1
+@cindex Latin 1
+In order to get the symbols for the quotation marks in encoded Info
+output, it is necessary to specify @code{@@documentencoding UTF-8}.
+(@xref{documentencoding,,@code{@@documentencoding}}.)  Double
+guillemets are also present in ISO 8859-1 (aka Latin@tie{}1) and ISO
+8859-15 (aka Latin@tie{}9).
+
+@cindex European Computer Modern fonts
+@cindex EC fonts
+The standard @TeX{} fonts support the usual quotation marks used in
+English (the ones produced with single and doubled ASCII
+single-quotes).  For the other quotation marks, @TeX{} uses European
+Computer Modern (EC) fonts (@code{ecrm1000} and other variants).
+These fonts are freely available, of course; you can download them
+from @url{http://@/www.ctan.org/@/tex-archive/@/fonts/ec}, among other
+places.
+
+@cindex CM-Super fonts
+The free EC fonts are bitmap fonts, which makes them appropriate only
+if you are typesetting your manual for print.  For on-line viewing the
+Type@tie{}1 (vector) versions of the fonts are preferable.  The
+Type@tie{}1 EC fonts are not free, you have to buy them from
+commercial suppliers.  Fortunately, there is a free alternative,
+CM-Super font package
+(@url{http://@/www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super},
+among other places).
+
+Both distributions include installation instructions.
+
+@cindex Single quotation marks
+@cindex Double quotation marks
+@cindex Left quotation marks
+@cindex Right quotation marks
+@findex quotedblleft
+@cindex ``
+@findex quoteleft
+@cindex `
+@findex quotedblright
+@cindex ''
+@findex quoteright
+@cindex '
+@cindex Double low-9 quotation mark
+@cindex Single low-9 quotation mark
+@findex quotedblbase
+@cindex @quotedblbase{} (double low-9 quotation mark)
+@findex quotesinglbase
+@cindex @quotesinglbase{} (single low-9 quotation mark)
+@cindex Angle quotation marks
+@cindex Guillemets
+@cindex Guillemots
+@cindex French quotation marks
+@cindex Quotation marks, French
+@cindex German quotation marks
+@cindex Quotation marks, German
+@cindex Double guillemets
+@cindex Single guillemets
+@cindex Double angle quotation marks
+@cindex Single angle quotation marks
+@cindex Left-pointing angle quotation marks
+@cindex Right-pointing angle quotation marks
+@cindex Double left-pointing angle quotation mark
+@cindex Double right-pointing angle quotation mark
+@cindex Single left-pointing angle quotation mark
+@cindex Single right-pointing angle quotation mark
+@findex guillemetleft
+@findex guillemotleft
+@cindex @guillemetleft{}
+@findex guillemetright
+@findex guillemotright
+@cindex @guillemetright{}
+@findex guilsinglleft
+@cindex @guilsinglleft{}
+@findex guilsinglright
+@cindex @guilsinglright{}
+@multitable {@t{@@quotedblright@{@} '@w{}'}} {Glyph} {Right-pointing double angle quotation mark (U+00BB)}
+@headitem Command                    @tab Glyph             @tab Unicode name (point)
+@item @verb{.@quotedblleft{} ``.}    @tab @quotedblleft{}   @tab Left double quotation mark (U+201C)
+@item @verb{.@quotedblright{} ''.}   @tab @quotedblright{}  @tab Right double quotation mark (U+201D)
+@item @verb{.@quoteleft{} `.}        @tab @quoteleft{}      @tab Left single quotation mark (U+2018)
+@item @verb{.@quoteright{} '.}       @tab @quoteright{}     @tab Right single quotation mark (U+2019)
+@item @t{@@quotedblbase@{@}}         @tab @quotedblbase{}   @tab Double low-9 quotation mark (U+201E)
+@item @t{@@quotesinglbase@{@}}       @tab @quotesinglbase{} @tab Single low-9 quotation mark (U+201A)
+@item @t{@@guillemetleft@{@}}        @tab @guillemetleft{}  @tab Left-pointing double angle quotation mark (U+00AB)
+@item @t{@@guillemetright@{@}}       @tab @guillemetright{} @tab Right-pointing double angle quotation mark (U+00BB)
+@item @t{@@guilsinglleft@{@}}        @tab @guilsinglleft{}  @tab Single left-pointing angle quotation mark (U+2039)
+@item @t{@@guilsinglright@{@}}       @tab @guilsinglright{} @tab Single right-pointing angle quotation mark (U+203A)
+@end multitable
+
+For the double angle quotation marks, Adobe and @LaTeX{} glyph names
+are also supported:  @code{@@guillemotleft} and
+@code{@@guillemotright}.  These names are actually incorrect; a
+``guillemot'' is a bird species (a type of auk).
+
+Traditions for quotation mark usage vary to a great extent between
+languages
+(@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage#Overview}).
+Texinfo does not provide commands for typesetting quotation marks
+according to the numerous traditions.  Therefore, you have to choose
+the commands appropriate for the language of your manual.  Sometimes
+aliases (@pxref{alias,,@code{@@alias}}) can simplify the usage and
+make the source code more readable.  For example, in German,
+@code{@@quotedblbase} is used for the left double quote, and the right
+double quote is actually @code{@@quotedblleft}, which is
+counter-intuitive.
+
+Thus, the following aliases may be convenient:
+
+@example
+@@alias lgqq = quotedblbase
+@@alias rgqq = quotedblleft
+@end example
 
 
 @node Dots Bullets
@@ -10736,6 +10869,7 @@ is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
 widely-used and supported ISO 8859-1 (Latin@tie{}1).
 
 @pindex feymr10
+@cindex Euro font
 The Euro symbol does not exist in the standard @TeX{} fonts (which
 were designed before the Euro was legislated into existence).
 Therefore, @TeX{} uses an additional font, named @code{feymr10} (along
@@ -14683,6 +14817,19 @@ Also, you should install @file{epsf.tex}, if it is not already installed
 from another distribution.  More details are at the end of the description
 of the @code{@@image} command (@pxref{Images}).
 
+@cindex European Computer Modern fonts, installing
+@cindex EC fonts, installing
+@cindex CM-Super fonts, installing
+To be able to use quotation marks other than those used in English
+you'll need to install European Computer Modern fonts and optionally
+CM-Super fonts, unless they are already installed (@pxref{Inserting
+Quotation Marks}).
+
+@pindex feymr10@r{, installing}
+@cindex Euro font, installing
+If you intend to use the @code{@@euro} command, you should install the
+Euro font, if it is not already installed.  @xref{euro}.
+
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
 @cindex Site-wide Texinfo configuration file
@@ -14763,6 +14910,7 @@ redumping.)  You can do this by running this command, assuming
 initex texinfo @@dump
 @end example
 
+@noindent
 (@code{dump} is a @TeX{} primitive.)  Then, move @file{texinfo.fmt} to
 wherever your @code{.fmt} files are found; typically, this will be in the
 subdirectory @file{web2c} of your @TeX{} installation.
@@ -18741,7 +18889,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
+$Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18815,7 +18963,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
+@comment $Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
