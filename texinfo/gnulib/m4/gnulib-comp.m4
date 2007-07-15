@@ -25,6 +25,7 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
+  AC_REQUIRE([AM_PROG_CC_C_O])
   AC_REQUIRE([AC_GNU_SOURCE])
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
 ])
@@ -51,6 +52,7 @@ AC_DEFUN([gl_INIT],
   AC_SUBST([LTLIBINTL])
   gl_FUNC_GETTIMEOFDAY
   gl_INLINE
+  gl_LOCALCHARSET
   gl_MALLOCA
   gl_MBSWIDTH
   gl_FUNC_MEMCPY
@@ -75,6 +77,7 @@ AC_DEFUN([gl_INIT],
   gl_WCHAR_H
   gl_WCTYPE_H
   gl_FUNC_WCWIDTH
+  gl_WCHAR_MODULE_INDICATOR([wcwidth])
   gl_XALLOC
   LIBGNU_LIBDEPS="$gl_libdeps"
   AC_SUBST([LIBGNU_LIBDEPS])
@@ -120,6 +123,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/link-warning.h
   lib/alloca_.h
+  lib/config.charset
   lib/error.c
   lib/error.h
   lib/exitfail.c
@@ -130,6 +134,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/gettimeofday.c
+  lib/localcharset.c
+  lib/localcharset.h
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
@@ -138,12 +144,15 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
+  lib/ref-add.sin
+  lib/ref-del.sin
   lib/setenv.c
   lib/setenv.h
   lib/stdint_.h
   lib/stdlib_.h
   lib/strcasecmp.c
   lib/strdup.c
+  lib/streq.h
   lib/strerror.c
   lib/string_.h
   lib/strncasecmp.c
@@ -152,10 +161,14 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/tempname.c
   lib/tempname.h
   lib/unistd_.h
+  lib/unitypes.h
+  lib/uniwidth.h
+  lib/uniwidth/cjk.h
+  lib/uniwidth/width.c
   lib/unsetenv.c
   lib/wchar_.h
   lib/wctype_.h
-  lib/wcwidth.h
+  lib/wcwidth.c
   lib/xalloc-die.c
   lib/xalloc.h
   lib/xmalloc.c
@@ -188,6 +201,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
+  m4/localcharset.m4
   m4/lock.m4
   m4/longlong.m4
   m4/malloca.m4

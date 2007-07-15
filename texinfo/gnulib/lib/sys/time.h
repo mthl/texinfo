@@ -19,27 +19,35 @@
 
 /* Written by Paul Eggert.  */
 
-#ifndef _gl_SYS_TIME_H
-#define _gl_SYS_TIME_H
+#if defined _GL_SYS_TIME_H
 
-#if 1
-# include "///usr/include/sys/time.h"
+/* Simply delegate to the system's header, without adding anything.  */
+# if 1
+#  include_next <sys/time.h>
+# endif
+
 #else
-# include <time.h>
-#endif
 
-#if ! 1
+# define _GL_SYS_TIME_H
+
+# if 1
+#  include_next <sys/time.h>
+# else
+#  include <time.h>
+# endif
+
+# if ! 1
 struct timeval
 {
   time_t tv_sec;
   long int tv_usec;
 };
-#endif
+# endif
 
-#if 0
-# undef gettimeofday
-# define gettimeofday rpl_gettimeofday
+# if 0
+#  undef gettimeofday
+#  define gettimeofday rpl_gettimeofday
 int gettimeofday (struct timeval *restrict, void *restrict);
-#endif
+# endif
 
-#endif /* _gl_SYS_TIME_H */
+#endif /* _GL_SYS_TIME_H */
