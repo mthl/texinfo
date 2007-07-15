@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.201 2007-07-11 00:16:23 karl Exp $
+@c $Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -168,7 +168,7 @@ the menu lists all the lower level nodes in the document.
 * Include Files::                 How to incorporate other Texinfo files.
 * Headings::                      How to write page headings and footings.
 * Catching Mistakes::             How to find formatting mistakes.
-* Copying This Manual::           The GNU Free Documentation License.
+* GNU Free Documentation License::Copying this manual.
 * Command and Variable Index::    A menu containing commands and variables.
 * General Index::                 A menu covering many topics.
 
@@ -637,9 +637,7 @@ Sample Texinfo Files
 * Verbatim Copying License::
 * All-permissive Copying License::
 
-Copying This Manual
-
-* GNU Free Documentation License::  License for copying this manual.
+GNU Free Documentation License
 
 Include Files
 
@@ -674,10 +672,6 @@ Finding Badly Referenced Nodes
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
-
-Copying This Manual
-
-* GNU Free Documentation License::  License for copying this manual.
 
 @end detailmenu
 @end menu
@@ -18747,7 +18741,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.201 2007-07-11 00:16:23 karl Exp $
+$Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18799,8 +18793,16 @@ that case the sample texts given here have to be modified.  @xref{GNU
 Free Documentation License}.
 
 @item
-If your manual has invariant sections (again, see the license itself for
-details), then don't forget to change the text here accordingly.
+If the FSF is not the copyright holder, then use the appropriate name.
+
+@item
+If your manual is not published on paper by the FSF, then omit the
+last sentence in the Back-Cover Text that talks about copies from GNU
+Press.
+
+@item
+If your manual has Invariant Sections (again, see the license itself
+for details), then change the text here accordingly.
 
 @item
 For documents that express your personal views, feelings or experiences,
@@ -18813,7 +18815,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.201 2007-07-11 00:16:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.202 2007-07-15 00:51:03 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -18824,7 +18826,7 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2005 Free Software Foundation, Inc.
+Copyright @copyright{} 2007 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -18882,12 +18884,8 @@ invoke, but if there was, you could see its basic usage
 and command line options here.
 
 
-@node Copying This Manual
-@appendix Copying This Manual
-
-@menu
-* GNU Free Documentation License::  License for copying this manual.
-@end menu
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
 
 @include fdl.texi
 
@@ -20827,12 +20825,8 @@ Insert the current date.
 @end ignore
 
 
-@node Copying This Manual
-@appendix Copying This Manual
-
-@menu
-* GNU Free Documentation License::  License for copying this manual.
-@end menu
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
 
 @include fdl.texi
 

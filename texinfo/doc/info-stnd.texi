@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.12 2006-07-25 16:02:29 karl Exp $
+@comment $Id: info-stnd.texi,v 1.13 2007-07-15 00:51:04 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -30,8 +30,7 @@ license is included in the section entitled ``GNU Free Documentation
 License.''
 
 (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
-this GNU Manual, like GNU software.  Copies published by the Free
-Software Foundation raise funds for GNU development.''
+this GNU Manual, like GNU software.''
 @end quotation
 @end copying
 
@@ -77,10 +76,9 @@ that is part of GNU Emacs.
 * Miscellaneous Commands::      A few commands that defy categories.
 * Variables::                   How to change the default behavior of Info.
 * Custom Key Bindings::         How to define your own key-to-command bindings.
-* Copying This Manual::         The GNU Free Documentation License.
-* Index::                       Global index containing keystrokes,
-                                  command names, variable names,
-                                  and general concepts.
+* GNU Free Documentation License:: Copying and sharing this documentation.
+* Index::                          Global index with keystrokes, command names,
+                                     variable names, and general concepts.
 @end menu
 
 
@@ -2196,12 +2194,8 @@ Some common ways to organize Info files.
 @end ignore
 
 
-@node Copying This Manual
-@appendix Copying This Manual
-
-@menu
-* GNU Free Documentation License::  License for copying this manual.
-@end menu
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
 
 @include fdl.texi
 

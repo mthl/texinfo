@@ -1,3 +1,8 @@
+2007-07-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@copying, GNU Sample Texts),
+	* doc/info-stnd.texi (@copying): update Back-Cover Text.
+
 2007-07-12  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/lang.c (default_country_for_lang): strcasecmp returns 0
