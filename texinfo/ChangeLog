@@ -1,3 +1,8 @@
+2007-07-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (license notice): punctuation changes to
+	match recommendation.  From Paul Eggert.
+
 2007-07-23  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Update DVIPSHEADERS so that dvips finds its
