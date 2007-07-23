@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.99 2007-07-01 22:32:12 karl Exp $
+# $Id: texi2dvi,v 1.100 2007-07-23 13:10:43 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.99 $'
+rcs_revision='$Revision: 1.100 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.9) $rcs_version
@@ -925,6 +925,12 @@ run_dvipdf ()
 # Run the TeX tools until a fix point is reached.
 run_tex_suite ()
 {
+  # Move to the working directory.
+  if $tidy; then
+    verbose "cd $work_build"
+    cd "$work_build" || exit 1
+  fi
+
   # Count the number of cycles.
   local cycle=0
 
@@ -939,7 +945,7 @@ run_tex_suite ()
     # converse.
     run_bibtex
     run_index
-    run_tex
+    run_core_conversion
 
     xref_files_changed || break
   done
@@ -960,6 +966,8 @@ run_tex_suite ()
       move_to_dest "$in_noext.$(out_lang_ext)"
       ;;
   esac
+
+  cd_orig
 }
 
 ## -------------------------------- ##
@@ -1191,8 +1199,16 @@ run_hevea ()
   run_hevea="$run_hevea `list_prefix includes -I` -I '$orig_pwd' "
   run_hevea="$run_hevea '$in_input'"
 
+  if $debug; then
+    run_hevea="$run_hevea -v -v"
+  fi
+
   verbose "running $run_hevea"
   if eval "$run_hevea" >&5; then
+    # hevea leaves trailing white spaces, this is annoying.
+    case $1 in text|info)
+      perl -pi -e 's/[ \t]+$//g' "$out_base"*;;
+    esac
     case $1 in
     html|text) move_to_dest "$out_base";;
     info) # There can be foo.info-1, foo.info-2 etc.
@@ -1206,25 +1222,17 @@ run_hevea ()
 
 # run_core_conversion ()
 # ----------------------
-# Run the TeX tools until a fix point is reached.
+# Run the TeX (or HeVeA).
 run_core_conversion ()
 {
-  # Move to the working directory.
-  if $tidy; then
-    verbose "cd $work_build"
-    cd "$work_build" || exit 1
-  fi
-
   case $in_lang:$(out_lang_tex) in
     *:dvi|*:pdf)
-	run_tex_suite;;
+	run_tex;;
     latex:html|latex:text|latex:info)
 	run_hevea $out_lang;;
     *)
 	error 1 "invalid input/output combination: $in_lang/$out_lang";;
   esac
-
-  cd_orig
 }
 
 
@@ -1264,7 +1272,7 @@ compile ()
   run_recode
 
   # Run until a fix point is reached.
-  run_core_conversion
+  run_tex_suite
 }
 
 

@@ -1,3 +1,21 @@
+2007-07-23  Akim Demaille  <akim@epita.fr>
+
+	Use hevea more like we use tex itself, no longer as a tool
+	that does everything magically.
+	* util/texi2dvi (run_hevea): Remove trailing spaces in the
+	output.
+	(run_tex_suite): Change to the working directory here, no longer
+	in...
+	(run_core_conversion): here, so that even when running hevea where
+	are in the working directory.
+	No longer call cd_orig, do it...
+	(run_tex_suite): here.
+	(run_hevea): Pass verbose flags to it when --debug.
+	(run_tex_suite): Since we now want to run the whole suite of tools,
+	including bibtex, with hevea, use run_core_conversion, not
+	run_tex.
+	(run_core_conversion): Now call run_tex.
+
 2007-07-15  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi (@copying, GFDL): remove, since it's
@@ -114,7 +132,7 @@
 2007-07-01  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.9.90.
-	
+
 	* COPYING, all source files: GPLv3.
 
 	* makeinfo/makeinfo.c,
@@ -125,7 +143,7 @@
 
 	* Makefile.am (EXTRA_DIST): remove config.rpath, it's in build-aux now.
 	* lib/Makefile.am (libtxi_A_SOURCES): system.h at top level now.
-	
+
 	* util/texi2dvi (move_to_dest): still more tweaks to try avoid
 	complaints from cp and cmp.
 
@@ -165,13 +183,13 @@
 
 	* lang.c (default_country_for_lang): just return country code, not
 	whole locale string.
-	
+
 	* makeinfo.h (output_head_p): new global.
 	* makeinfo.c (info_output_head, output_head): new fns.
 	(add_char): call it.  This is so we can translate the file header
 	("produced by Makeinfo ...") in Info output as well as HTML.
 	* html.c,
-	* html.h, 
+	* html.h,
 	* cmds.c: change usage of html_output_head_p to output_head_p, etc.
 
 2007-06-17  Karl Berry  <karl@gnu.org>
@@ -186,7 +204,7 @@
 	language codes, change is too rapid.
 
 	* doc/texinfo.tex (\codequoteright, \codequoteleft): support
-	@set txicodequoteundirected and 
+	@set txicodequoteundirected and
 	@set txicodequotebacktick, respectively, as well as the non-txi names.
 	* doc/texinfo.txi (Inserting Quote Characters): new node.
 	* NEWS: mention both.
@@ -264,7 +282,7 @@
 
 	* makeinfo/html.c (process_css_file): Don't omit copying the i
 	of @import.  (Reported on 27 Sep 06.)
-	
+
 2007-04-29  Karl Berry  <karl@gnu.org>
 
 	* system.h [__CYGWIN__]: #define STRIP_DOT_EXE 0 (since gunzip.exe
@@ -363,7 +381,7 @@
 
 2007-03-13  Oleg Katsitadze  <olegkat@gmail.com>
 
-	* doc/texinfo.tex (\enddoublecolumns): add \penalty0 so the 
+	* doc/texinfo.tex (\enddoublecolumns): add \penalty0 so the
 	recent contributions won't be spuriously added to an index page.
 
 2007-02-26  Karl Berry  <karl@gnu.org>
