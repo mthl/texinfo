@@ -23,6 +23,16 @@
 
 set -e
 
+# Make sure quotes are used to protect the value.  See the comment in
+# texi2dvi itself about local.
+if $EGREP "local [a-zA-Z_0-9]*=[^\"']" $TEXI2DVI; then
+  false
+else
+  true
+fi
+
+
+# Make sure each name is used only once.
 if sed -n 's/.*local \([a-zA-Z_0-9]*\)\(=.*\|\)$/\1/gp' $TEXI2DVI |
     sort |
     uniq -c |

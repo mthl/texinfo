@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.100 2007-07-23 13:10:43 akim Exp $
+# $Id: texi2dvi,v 1.101 2007-07-23 13:25:51 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -33,10 +33,10 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.100 $'
+rcs_revision='$Revision: 1.101 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
-version="texi2dvi (GNU Texinfo 4.9) $rcs_version
+version="texi2dvi (GNU Texinfo 4.8) $rcs_version
 
 Copyright (C) 2007 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -195,7 +195,27 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 ## --------------------- ##
 
 
-# In case `local' is not supported by the shell.
+# In case `local' is not supported by the shell, provide a function
+# that simulates it by simply performing the assignments.  This means
+# that we must not expect `local' to work, i.e., we must not (i) rely
+# on it during recursion, and (ii) have two local declarations of the
+# same variable.  (ii) is easy to check statically, and our test suite
+# does make sure there is never twice a static local declaration of a
+# variable.  (i) cannot be checked easily, so just be careful.
+#
+# Note that since we might use a function simulating `local', we can
+# no longer rely on the fact that no IFS-splitting is performed.  So,
+# while
+#
+# foo=$bar
+#
+# is fine (no IFS-splitting), never write
+#
+# local foo=$bar
+#
+# but rather
+#
+# local foo="$bar"
 (
   foo=bar
   test_local () {
@@ -260,7 +280,7 @@ absolute ()
 # Return true if PROG is somewhere in PATH, else false.
 findprog ()
 {
-  local saveIFS=$IFS
+  local saveIFS="$IFS"
   IFS=$path_sep  # break path components at the path separator
   for dir in $PATH; do
     IFS=$saveIFS
@@ -318,7 +338,7 @@ run ()
 # Report an error and exit with failure if EXIT_STATUS is non null.
 error ()
 {
-  local s=$1
+  local s="$1"
   shift
   report "$@"
   if test "$s" != 0; then
@@ -363,7 +383,7 @@ list_append ()
 # preceded by SEP.
 list_prefix ()
 {
-  local lp_p=$2
+  local lp_p="$2"
   eval set X \$$1
   shift
   local lp_res
@@ -381,7 +401,7 @@ list_infix ()
 {
   eval set X \$$1
   shift
-  local la_IFS=$IFS
+  local la_IFS="$IFS"
   IFS=$path_sep
   echo "$*"
   IFS=$la_IFS
@@ -393,7 +413,7 @@ list_infix ()
 # Currently unused, but should replace absolute_filenames some day.
 list_dir_to_abs ()
 {
-  local ld_l=$1
+  local ld_l="$1"
   eval set X \$$ld_l
   shift
   local ld_res
@@ -445,7 +465,7 @@ out_lang_ext ()
 
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
 # Likewise for bibtex and makeindex.
-tex_envvars="BIBINPUTS BSTINPUTS INDEXSTYLE TEXINPUTS"
+tex_envvars="BIBINPUTS BSTINPUTS DVIPSHEADERS INDEXSTYLE TEXINPUTS"
 for var in $tex_envvars; do
   eval ${var}_orig=\$$var
   export $var
@@ -753,7 +773,7 @@ run_tex ()
   esac
 
   # Note that this will be used via an eval: quote properly.
-  local cmd=$tex
+  local cmd="$tex"
 
   # If possible, make TeX report error locations in GNU format.
   if test "${tex_help:+set}" != set; then
@@ -1184,7 +1204,7 @@ compute_language ()
 # to handle images some day.
 run_hevea ()
 {
-  local hevea=${HEVEA:-hevea}
+  local hevea="${HEVEA:-hevea}"
   local run_hevea="$hevea"
 
   case $1 in
@@ -1293,7 +1313,7 @@ mostly_clean ()
   cd_orig
   local to_remove="$t2ddir"
   $tidy || {
-    local log=$work_build/$in_noext.log
+    local log="$work_build/$in_noext.log"
     to_remove=$to_remove" $log "$(generated_files_get "$work_build/$in_noext")
   }
   remove $to_remove
