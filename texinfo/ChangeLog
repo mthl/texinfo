@@ -1,10 +1,10 @@
 2007-07-23  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Update DVIPSHEADERS so that dvips finds its
-        special headers.
+	special headers.
 	Don't rely on non-IFS splitting when using local.
-        Maybe we should just not use local at all.
-        Or never use it to assign at the same time: declare, then assign.
+	Maybe we should just not use local at all.
+	Or never use it to assign at the same time: declare, then assign.
 	* util/local.test: Check that "local" is used properly with quotes.
 
 2007-07-23  Akim Demaille  <akim@epita.fr>
