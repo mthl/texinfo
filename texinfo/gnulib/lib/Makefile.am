@@ -165,6 +165,8 @@ EXTRA_libgnu_a_SOURCES += getopt.c getopt1.c
 # "gettextize --intl".
 AM_CPPFLAGS += -I$(top_builddir)/intl
 
+EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
+
 ## end   gnulib module gettext
 
 ## begin gnulib module gettext-h
@@ -182,9 +184,18 @@ EXTRA_libgnu_a_SOURCES += gettimeofday.c
 
 ## end   gnulib module gettimeofday
 
+## begin gnulib module havelib
+
+
+EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
+
+## end   gnulib module havelib
+
 ## begin gnulib module link-warning
 
 LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
 ## end   gnulib module link-warning
 
