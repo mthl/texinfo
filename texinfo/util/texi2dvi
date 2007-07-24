@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.102 2007-07-23 13:28:37 akim Exp $
+# $Id: texi2dvi,v 1.103 2007-07-24 14:50:55 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.102 $'
+rcs_revision='$Revision: 1.103 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.9) $rcs_version
@@ -552,8 +552,8 @@ move_to_dest ()
         testdest="$dest"
       fi
       if cmp -s "$file" "$testdest"; then :; else
-        verbose "Copying $file to $dest"
-        cp -p "$file" "$dest"
+        verbose "Moving $file to $dest"
+        mv "$file" "$dest"
       fi
     fi
   done

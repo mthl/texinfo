@@ -1,3 +1,9 @@
+2007-07-24  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (move_to_dest): really move the file,
+	don't just copy it, else automake tests fail.
+	From Michael Deutschmann, 23 Jul 2007 20:55:32.
+
 2007-07-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (license notice): punctuation changes to
