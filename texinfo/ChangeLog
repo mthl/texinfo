@@ -1,3 +1,7 @@
+2007-07-26  Karl Berry  <karl@gnu.org>
+
+	* util/Makefile.am (pdftexi2dvi): copy texi2pdf, not texi2dvi.
+
 2007-07-24  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (move_to_dest): really move the file,
