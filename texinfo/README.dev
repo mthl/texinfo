@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.12 2007-07-26 17:08:23 karl Exp $
+$Id: README.dev,v 1.13 2007-07-26 23:58:17 karl Exp $
 This README.dev file describes the development environment.
 
   Copyright (C) 2002, 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
@@ -24,8 +24,9 @@ to do a fresh build.  After that first time, running make should suffice.
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files, with the files being checked in to CVS.  If you
 get automake/conf/etc. errors from ./autogen.sh, please try doing a CVS
-checkout of gnulib, and then run
-  gnulib-tool --update
+checkout of gnulib (in a separate directory to the texinfo checkout),
+and then run
+  ../gnulib/gnulib-tool --update
 in your top-level Texinfo directory.  (gnulib-tool is in the gnulib CVS tree.)
 
 For the record, the first time invocation was
