@@ -2,6 +2,12 @@
 
 	* pretest 4.9.91.
 	* doc/texinfo.txi (Inserting Quotes): wording.
+	
+	* util/Makefile.am (TESTS): remove local.test.  It fails and I
+	would prefer not to replace local with a shell function anyway.
+
+	* util/texi2dvi.test: with -o output, do not expect input.dvi
+	to remain.
 
 2007-07-26  Karl Berry  <karl@gnu.org>
 

@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2003, 2005, 2006, 2007  Free Software Foundation, Inc.
+# Copyright (C) 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -40,7 +40,7 @@ one_run --batch \
 
 one_run --batch -o output.dvi \
    -- \
-   input.aux input.cp input.dvi input.fn input.ky input.log \
+   input.aux input.cp input.fn input.ky input.log \
    input.pg input.tp input.vr output.dvi
 
 
