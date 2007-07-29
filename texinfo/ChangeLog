@@ -1,3 +1,8 @@
+2007-07-29  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.9.91.
+	* doc/texinfo.txi (Inserting Quotes): wording.
+
 2007-07-26  Karl Berry  <karl@gnu.org>
 
 	* util/Makefile.am (pdftexi2dvi): copy texi2pdf, not texi2dvi.

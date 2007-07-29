@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
+@c $Id: texinfo.txi,v 1.204 2007-07-29 14:55:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10624,20 +10624,16 @@ guillemets are also present in ISO 8859-1 (aka Latin@tie{}1) and ISO
 The standard @TeX{} fonts support the usual quotation marks used in
 English (the ones produced with single and doubled ASCII
 single-quotes).  For the other quotation marks, @TeX{} uses European
-Computer Modern (EC) fonts (@code{ecrm1000} and other variants).
+Computer Modern (EC) fonts (@file{ecrm1000} and other variants).
 These fonts are freely available, of course; you can download them
 from @url{http://@/www.ctan.org/@/tex-archive/@/fonts/ec}, among other
 places.
 
 @cindex CM-Super fonts
-The free EC fonts are bitmap fonts, which makes them appropriate only
-if you are typesetting your manual for print.  For on-line viewing the
-Type@tie{}1 (vector) versions of the fonts are preferable.  The
-Type@tie{}1 EC fonts are not free, you have to buy them from
-commercial suppliers.  Fortunately, there is a free alternative,
-CM-Super font package
-(@url{http://@/www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super},
-among other places).
+The free EC fonts are bitmap fonts created with Metafont.  Especially
+for on-line viewing, Type@tie{}1 (vector) versions of the fonts are
+preferable; these are available in the CM-Super font package
+(@url{http://@/www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super}).
 
 Both distributions include installation instructions.
 
@@ -10706,8 +10702,8 @@ are also supported:  @code{@@guillemotleft} and
 ``guillemot'' is a bird species (a type of auk).
 
 Traditions for quotation mark usage vary to a great extent between
-languages
-(@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage#Overview}).
+languages (see
+@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage#Overview}).
 Texinfo does not provide commands for typesetting quotation marks
 according to the numerous traditions.  Therefore, you have to choose
 the commands appropriate for the language of your manual.  Sometimes
@@ -10715,9 +10711,8 @@ aliases (@pxref{alias,,@code{@@alias}}) can simplify the usage and
 make the source code more readable.  For example, in German,
 @code{@@quotedblbase} is used for the left double quote, and the right
 double quote is actually @code{@@quotedblleft}, which is
-counter-intuitive.
-
-Thus, the following aliases may be convenient:
+counter-intuitive.  Thus, in this case the following aliases would be
+convenient:
 
 @example
 @@alias lgqq = quotedblbase
@@ -18889,7 +18884,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
+$Id: texinfo.txi,v 1.204 2007-07-29 14:55:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18963,7 +18958,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.203 2007-07-15 11:51:12 olegkat Exp $
+@comment $Id: texinfo.txi,v 1.204 2007-07-29 14:55:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
