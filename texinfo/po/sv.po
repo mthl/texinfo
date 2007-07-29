@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 14:19-0700\n"
+"POT-Creation-Date: 2007-07-29 07:58-0700\n"
 "PO-Revision-Date: 2004-12-12 22:41+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnulib/lib/error.c:125
+#: gnulib/lib/error.c:126
 msgid "Unknown system error"
 msgstr ""
 
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Prova --help för mer information.\n"
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:789
+#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
@@ -1800,7 +1800,7 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:526 makeinfo/cmds.c:548
+#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "argument till @%s ignorerades"
@@ -1810,81 +1810,81 @@ msgstr "argument till @%s ignorerades"
 # The translator should not need to translate this - it is all present
 # in libc and can be used with nl_langinfo(), strftime() and friends.
 #
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "January"
 msgstr "januari"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "February"
 msgstr "februari"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "March"
 msgstr "mars"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "April"
 msgstr "april"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "May"
 msgstr "maj"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "June"
 msgstr "juni"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "July"
 msgstr "juli"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "August"
 msgstr "augusti"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "September"
 msgstr "september"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "October"
 msgstr "oktober"
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "November"
 msgstr "november"
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "December"
 msgstr "december"
 
-#: makeinfo/cmds.c:945
+#: makeinfo/cmds.c:1095
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "osannolikt tecken %c i @var"
 
-#: makeinfo/cmds.c:988
+#: makeinfo/cmds.c:1138
 msgid "@sc argument all uppercase, thus no effect"
 msgstr ""
 "@sc-argumentet är enbart med stora bokstäver, därför har det ingen effekt"
 
-#: makeinfo/cmds.c:1043
+#: makeinfo/cmds.c:1193
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "\"{\" förväntades, men såg \"%c\""
 
-#: makeinfo/cmds.c:1083
+#: makeinfo/cmds.c:1233
 msgid "end of file inside verb block"
 msgstr "filslut inuti verb-block"
 
-#: makeinfo/cmds.c:1091
+#: makeinfo/cmds.c:1241
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "\"}\" förväntades, men såg \"%c\""
 
 # Är det kombinationen "@strong{Note:.." eller bara @strong{} rent allmänt som
 # orsakar problem?
-#: makeinfo/cmds.c:1122
+#: makeinfo/cmds.c:1272
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -1892,49 +1892,49 @@ msgstr ""
 "@strong{Obs...} skapar en falsk korsreferens i Info; formulera om för att "
 "undvika detta"
 
-#: makeinfo/cmds.c:1321
+#: makeinfo/cmds.c:1471
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s är föråldrat"
 
-#: makeinfo/cmds.c:1430
+#: makeinfo/cmds.c:1580
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp kräver ett positivt numeriskt argument, inte \"%s\""
 
-#: makeinfo/cmds.c:1786 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Felaktigt argument till %c%s"
 
-#: makeinfo/cmds.c:1796 makeinfo/makeinfo.c:4278
+#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
 msgid "asis"
 msgstr "oförändrad"
 
-#: makeinfo/cmds.c:1798 makeinfo/cmds.c:1828 makeinfo/makeinfo.c:4280
+#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
 msgid "none"
 msgstr "ingen"
 
-#: makeinfo/cmds.c:1812
+#: makeinfo/cmds.c:1962
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Felaktigt argument till @%s"
 
-#: makeinfo/cmds.c:1826
+#: makeinfo/cmds.c:1976
 msgid "insert"
 msgstr "infoga"
 
-#: makeinfo/cmds.c:1842
+#: makeinfo/cmds.c:1992
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Felaktigt argument till @%s"
 
-#: makeinfo/cmds.c:1925
+#: makeinfo/cmds.c:2075
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1945
+#: makeinfo/cmds.c:2095
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2210,37 +2210,37 @@ msgstr "@itemx är inte meningsfullt inuti \"%s\"-block"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s hittades utanför ett insättningsblock"
 
-#: makeinfo/lang.c:956
+#: makeinfo/lang.c:957
 #, c-format
 msgid "no default territory known for language `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:1019
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s är inte en giltig landskod enligt ISO 639"
 
-#: makeinfo/lang.c:1109
+#: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "okänt kodningsnamn \"%s\""
 
-#: makeinfo/lang.c:1117
+#: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "tyvärr, kodningen \"%s\" stöds inte"
 
-#: makeinfo/lang.c:1169
+#: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ogiltigt kodat tecken \"%s\""
 
-#: makeinfo/lang.c:1471
+#: makeinfo/lang.c:1478
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s förväntar \"i\" eller \"j\" som argument, inte \"%c\""
 
-#: makeinfo/lang.c:1475
+#: makeinfo/lang.c:1482
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s förväntar ett ensamt tecken \"i\" eller \"j\" som argument"
@@ -2293,7 +2293,7 @@ msgstr "För många fel! Gav upp.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: varning: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2303
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
 #, c-format
 msgid "Misplaced %c"
 msgstr "Felplacerat %c"
@@ -2327,8 +2327,6 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %"
-"d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
@@ -2343,7 +2341,7 @@ msgstr ""
 "  -v, --verbose               förklara vad som görs.\n"
 "      --version               visa versionsinformation och avsluta.\n"
 
-#: makeinfo/makeinfo.c:370
+#: makeinfo/makeinfo.c:369
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2358,7 +2356,7 @@ msgstr ""
 "      --xml                 generera Texinfo XML istället för Info.\n"
 "      --plaintext           generera vanlig text istället för Info.\n"
 
-#: makeinfo/makeinfo.c:378
+#: makeinfo/makeinfo.c:377
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2389,12 +2387,13 @@ msgstr ""
 "      --number-sections     generera kapitel- och avsnittsnummer.\n"
 "  -o, --output=FIL          generera till FIL (katalog om delad HTML),\n"
 
-#: makeinfo/makeinfo.c:392
+#: makeinfo/makeinfo.c:391
 #, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
-"      --enable-encoding       output accented and special characters in\n"
-"                                Info output based on @documentencoding.\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
 "      --fill-column=NUM       break Info lines at NUM characters (default %"
 "d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
@@ -2553,67 +2552,67 @@ msgstr ""
 "  makeinfo --no-split apa.texi          skriv en Info-fil hur stor den än "
 "är\n"
 
-#: makeinfo/makeinfo.c:618
+#: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorerar okänt TEXINFO_OUTPUT_FORMAT-värde \"%s\".\n"
 
-#: makeinfo/makeinfo.c:666 makeinfo/makeinfo.c:692 makeinfo/makeinfo.c:716
-#: makeinfo/makeinfo.c:746 makeinfo/makeinfo.c:767
+#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
+#: makeinfo/makeinfo.c:761
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: argumentet %s måste vara numeriskt, inte \"%s\".\n"
 
-#: makeinfo/makeinfo.c:679
+#: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s: kunde inte öppna makroexpansionsutdata \"%s\""
 
-#: makeinfo/makeinfo.c:684
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: ignorerar andra makroexpansionsutdata \"%s\".\n"
 
-#: makeinfo/makeinfo.c:731
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
 "inte \"%s\".\n"
 
-#: makeinfo/makeinfo.c:756
+#: makeinfo/makeinfo.c:750
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
 "\"%s\".\n"
 
-#: makeinfo/makeinfo.c:831
+#: makeinfo/makeinfo.c:825
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: filargument saknas.\n"
 
-#: makeinfo/makeinfo.c:1022 makeinfo/makeinfo.c:4127
+#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Flerradskommandot %c%s används felaktigt"
 
-#: makeinfo/makeinfo.c:1025
+#: makeinfo/makeinfo.c:1019
 #, c-format
 msgid "Expected `%s'"
 msgstr "\"%s\" förväntades"
 
-#: makeinfo/makeinfo.c:1504
+#: makeinfo/makeinfo.c:1498
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan inte skapa katalogen \"%s\": %s"
 
-#: makeinfo/makeinfo.c:1550
+#: makeinfo/makeinfo.c:1544
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Inget \"%s\" hittades i \"%s\""
 
-#: makeinfo/makeinfo.c:1630
+#: makeinfo/makeinfo.c:1624
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
@@ -2624,12 +2623,12 @@ msgstr ""
 #         no_headers ? "text" : (html ? "HTML" : "info"),
 #         output_filename, input_filename);
 #
-#: makeinfo/makeinfo.c:1663
+#: makeinfo/makeinfo.c:1657
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Skapar %s-fil \"%s\" från \"%s\".\n"
 
-#: makeinfo/makeinfo.c:1727
+#: makeinfo/makeinfo.c:1721
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2637,86 +2636,86 @@ msgstr ""
 "%s: Tar bort makroutdatafilen \"%s\" på grund av fel; använd --force för att "
 "bevara.\n"
 
-#: makeinfo/makeinfo.c:1782
+#: makeinfo/makeinfo.c:1776
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Tar bort utdatafilen \"%s\" på grund av fel; använd --force för att "
 "bevara.\n"
 
-#: makeinfo/makeinfo.c:2076
+#: makeinfo/makeinfo.c:2070
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Okänt kommando \"%s\""
 
-#: makeinfo/makeinfo.c:2098
+#: makeinfo/makeinfo.c:2092
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Använd klamrar för att ge ett komamndo som ett argument till @%s"
 
-#: makeinfo/makeinfo.c:2357
+#: makeinfo/makeinfo.c:2351
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s förväntade klamrar"
 
-#: makeinfo/makeinfo.c:2370
+#: makeinfo/makeinfo.c:2364
 msgid "Unmatched }"
 msgstr "Ensam }"
 
-#: makeinfo/makeinfo.c:2418
+#: makeinfo/makeinfo.c:2412
 msgid "NO_NAME!"
 msgstr "INGET_NAMN!"
 
-#: makeinfo/makeinfo.c:2439
+#: makeinfo/makeinfo.c:2433
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s saknar avslutande klammer"
 
-#: makeinfo/makeinfo.c:2617
+#: makeinfo/makeinfo.c:2611
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Detta är %s, skapad av makeinfo version %s från %s.\n"
 
-#: makeinfo/makeinfo.c:3442
+#: makeinfo/makeinfo.c:3436
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-filen \"%s\" (för HTML) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3448
+#: makeinfo/makeinfo.c:3442
 #, c-format
 msgid "No such file `%s'"
 msgstr "Det finns ingen sådan fil \"%s\""
 
-#: makeinfo/makeinfo.c:3584
+#: makeinfo/makeinfo.c:3578
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-filen \"%s\" (för text) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3593
+#: makeinfo/makeinfo.c:3587
 msgid "@image missing filename argument"
 msgstr "@image saknar filnamnsargument"
 
-#: makeinfo/makeinfo.c:3811
+#: makeinfo/makeinfo.c:3805
 #, c-format
 msgid "undefined flag: %s"
 msgstr "odefinierad flagga: %s"
 
-#: makeinfo/makeinfo.c:3812
+#: makeinfo/makeinfo.c:3806
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Inget värde för \"%s\"}"
 
-#: makeinfo/makeinfo.c:3864
+#: makeinfo/makeinfo.c:3858
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kräver ett namn"
 
-#: makeinfo/makeinfo.c:3970
+#: makeinfo/makeinfo.c:3964
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nådde filslut innan matchande @end %s"
 
-#: makeinfo/makeinfo.c:4219
+#: makeinfo/makeinfo.c:4213
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" är för lång för expansion; inte expanderad"
@@ -2871,22 +2870,17 @@ msgstr "Upp"
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Noden \"%s\" saknar menypost för \"%s\" trots att den är dess Upp-mål"
 
-#: makeinfo/node.c:1632
-#, c-format
-msgid "node `%s' has been referenced %d times"
-msgstr "noden \"%s\" har refererats %d gånger"
-
-#: makeinfo/node.c:1646
+#: makeinfo/node.c:1635
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "orefererad nod \"%s\""
 
-#: makeinfo/node.c:1736
+#: makeinfo/node.c:1725
 #, c-format
 msgid "Removing %s\n"
 msgstr "Tar bort %s\n"
 
-#: makeinfo/node.c:1740
+#: makeinfo/node.c:1729
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Kan inte ta bort filen \"%s\": %s"
@@ -3223,6 +3217,9 @@ msgstr "Inget sidnummer i %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "posten %s följer på en post med ett sekundärt namn"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "noden \"%s\" har refererats %d gånger"
 
 #, fuzzy
 #~ msgid ""

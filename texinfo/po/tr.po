@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 14:19-0700\n"
+"POT-Creation-Date: 2007-07-29 07:58-0700\n"
 "PO-Revision-Date: 2007-07-10 18:40-0400\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: gnulib/lib/error.c:125
+#: gnulib/lib/error.c:126
 msgid "Unknown system error"
 msgstr "Bilinmeyen sistem hatasý"
 
@@ -231,8 +231,10 @@ msgid "Index entry: "
 msgstr "indeks giriþi: "
 
 #: info/indices.c:324
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
-msgstr "Son `\\[index-search]'komutundan bir sonraki eþleþen indeks öðesine gider"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
+msgstr ""
+"Son `\\[index-search]'komutundan bir sonraki eþleþen indeks öðesine gider"
 
 #: info/indices.c:334
 msgid "No previous index search string."
@@ -258,7 +260,8 @@ msgstr "BU GÖRÜLMEZ"
 #: info/indices.c:421
 #, c-format
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
-msgstr "`%s' bulundu - %s içinde. (`\\[next-index-match]' sonrakini bulmayý dener.)"
+msgstr ""
+"`%s' bulundu - %s içinde. (`\\[next-index-match]' sonrakini bulmayý dener.)"
 
 #: info/indices.c:540
 #, c-format
@@ -272,7 +275,9 @@ msgstr "Mevcut bilgi dosyalarýndan hiçbirisinin indisinde `%s' yok."
 
 #: info/indices.c:621
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr "Bir dizge için tüm bilinen bilgi dosyalarýnýn indislerinide ekleyerek bir menu oluþturur"
+msgstr ""
+"Bir dizge için tüm bilinen bilgi dosyalarýnýn indislerinide ekleyerek bir "
+"menu oluþturur"
 
 #: info/indices.c:625
 msgid "Index apropos: "
@@ -292,17 +297,19 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneðini kullanýn.\n"
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:789
+#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Telif Hakký (C) %s Özgür Yazýlým Vakfý Inc.\n"
-"Lisans GPLv3+: GNU GPL sürüm 3 ya da sonrasý <http://gnu.org/licenses/gpl.html>\n"
+"Lisans GPLv3+: GNU GPL sürüm 3 ya da sonrasý <http://gnu.org/licenses/gpl."
+"html>\n"
 "Bu özgür yazýlýmdýr: deðiþtirip daðýtma özgürlüðüne sahipsiniz.\n"
 "Yasalarýn elverdiði ölçüde HÝÇBÝR GARANTÝ yoktur.\n"
 
@@ -313,7 +320,8 @@ msgstr "`%s' için indeks girdisi yok.\n"
 
 #: info/info.c:594
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr "  -b, --speech-friendly       konuþma sentezcilerine dostça davranýr.\n"
+msgstr ""
+"  -b, --speech-friendly       konuþma sentezcilerine dostça davranýr.\n"
 
 #: info/info.c:601
 #, c-format
@@ -323,7 +331,8 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -359,15 +368,20 @@ msgstr ""
 "Info biçeminde belge okur\n"
 "\n"
 "Seçenekler:\n"
-"      --apropos=DÝZGE          DÝZGE'yi tüm elkitaplarýnýn tüm indislerinde ara.\n"
+"      --apropos=DÝZGE          DÝZGE'yi tüm elkitaplarýnýn tüm indislerinde "
+"ara.\n"
 "  -d, --directory=DIR          DIR'ý INFOPATH'a ekle.\n"
-"      --dribble=DOSYAADI       DOSYAADI'ndaki kullanýcý tuþbasýmlarýný anýmsa.\n"
+"      --dribble=DOSYAADI       DOSYAADI'ndaki kullanýcý tuþbasýmlarýný "
+"anýmsa.\n"
 "  -f, --file=DOSYAADI          uðranacak Info dosyasýný belirle.\n"
 "  -h, --help                   bu yardýmý görüntüle ve çýk.\n"
-"      --index-search=DÝZGE     DÝZGE indeks giriþince iþaret edilen düðüme git.\n"
-"  -n, --node=DÜÐÜMADI          ilk uðranan Info dosyasýndaki düðümleri belirle.\n"
+"      --index-search=DÝZGE     DÝZGE indeks giriþince iþaret edilen düðüme "
+"git.\n"
+"  -n, --node=DÜÐÜMADI          ilk uðranan Info dosyasýndaki düðümleri "
+"belirle.\n"
 "  -o, --output=DOSYAADI        seçili düðümleri DOSYAADI'na çýkar.\n"
-"  -R, --raw-escapes            \"ham\" ANSI kaçýþlarýný (esc) çýkar (öntanýmlý).\n"
+"  -R, --raw-escapes            \"ham\" ANSI kaçýþlarýný (esc) çýkar "
+"(öntanýmlý).\n"
 "      --no-raw-escapes         kaçýþlarý (esc) metin olarak çýkar.\n"
 "      --restore=DOSYAADI       ilk tuþ vuruþlarýný DOSYAADI'ndan oku.\n"
 "  -O, --show-options, --usage  komut-satýrý seçenekler düðümüne git.\n"
@@ -386,7 +400,8 @@ msgstr ""
 "  info                       üst-düzey dir menüsünü göster\n"
 "  info emacs                 üst-düzey dir'den emacs düðümünde baþla\n"
 "  info emacs buffers         emacs klavuzu içindeki tampon düðümden baþla\n"
-"  info --show-options emacs  emacs'ýn komut satýrý seçenekleri olan düðümden baþla\n"
+"  info --show-options emacs  emacs'ýn komut satýrý seçenekleri olan düðümden "
+"baþla\n"
 "  info --subnodes -o out.txt emacs  tüm el kitabýný out.txt'e yönlendir\n"
 "  info -f ./foo.info         dir'i aramadan ./foo.info dosyasýný göster\n"
 
@@ -521,32 +536,45 @@ msgstr ""
 "              Menü öðesi seçmek, bir baþka düðümün seçilmesine yolaçar.\n"
 
 #: info/infodoc.c:59
-msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr "\\%-10[xref-item]  Bir çapraz baþvuruyu izler.  Baþvurunun adýný okur.\n"
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr ""
+"\\%-10[xref-item]  Bir çapraz baþvuruyu izler.  Baþvurunun adýný okur.\n"
 
 #: info/infodoc.c:60
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "\\%-10[history-node]  Bu pencerede görünen en son düðüme gider.\n"
 
 #: info/infodoc.c:61
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr "\\%-10[move-to-next-xref]  Bu düðüm içinde sonraki URL linkine atlar.\n"
+msgid ""
+"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr ""
+"\\%-10[move-to-next-xref]  Bu düðüm içinde sonraki URL linkine atlar.\n"
 
 #: info/infodoc.c:62
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
+msgid ""
+"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+"node.\n"
 msgstr "\\%-10[move-to-prev-xref]  Bu düðüm içinde önceki URL linkine atlar.\n"
 
 #: info/infodoc.c:63
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  Ýmleç altýndaki URL linkini izler.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Ýmleç altýndaki URL linkini izler.\n"
 
 #: info/infodoc.c:64
-msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
-msgstr "\\%-10[dir-node]  `dizin' düðümüne gider.  `\\[goto-node] (DIR)'a eþdeðer.\n"
+msgid ""
+"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+"node] (DIR)'.\n"
+msgstr ""
+"\\%-10[dir-node]  `dizin' düðümüne gider.  `\\[goto-node] (DIR)'a eþdeðer.\n"
 
 #: info/infodoc.c:65
-msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr "\\%-10[top-node]  En üst düðüme gider.  `\\[goto-node] Top'a eþdeðer.\n"
+msgid ""
+"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgstr ""
+"\\%-10[top-node]  En üst düðüme gider.  `\\[goto-node] Top'a eþdeðer.\n"
 
 #: info/infodoc.c:67 info/infodoc.c:115
 msgid ""
@@ -598,11 +626,15 @@ msgstr "\\%-10[last-menu-item]  Düðümün menüsündeki son öðeyi seçer.\n"
 
 #: info/infodoc.c:80
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of "
+"this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
-"\\%-10[index-search]  Bu Info dosyasýndaki indeks girdileri içinde belirli bir dizgeyi arar\n"
-"              ve bulunan ilk girdi tarafýndan gönderme yapýlan düðümü seçer.\n"
+"\\%-10[index-search]  Bu Info dosyasýndaki indeks girdileri içinde belirli "
+"bir dizgeyi arar\n"
+"              ve bulunan ilk girdi tarafýndan gönderme yapýlan düðümü "
+"seçer.\n"
 
 #: info/infodoc.c:82
 msgid ""
@@ -610,7 +642,8 @@ msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "\\%-10[goto-node]  Ýsmiyle belirtilen düðüme gider.\n"
-"              (DOSYAADI)DÜÐÜMADI þeklinde bir dosya adý da ekleyebilirsiniz.\n"
+"              (DOSYAADI)DÜÐÜMADI þeklinde bir dosya adý da "
+"ekleyebilirsiniz.\n"
 
 #: info/infodoc.c:84
 msgid ""
@@ -623,7 +656,8 @@ msgstr ""
 #: info/infodoc.c:86
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is found.\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
 msgstr ""
 "\\%-10[search-backward]  Belirli bir dizgeyi geriye doðru arar\n"
 "              ve önceki bulunanýn içinde olduðu düðümü seçer.\n"
@@ -665,7 +699,9 @@ msgstr "  %-10s  Ýsmi ile belirtilen menü öðesini seçer.\n"
 
 #: info/infodoc.c:107
 msgid "              Picking a menu item causes another node to be selected.\n"
-msgstr "              Diðer düðümün seçilmesine sebep olan bir menü öðesini seçiyor.\n"
+msgstr ""
+"              Diðer düðümün seçilmesine sebep olan bir menü öðesini "
+"seçiyor.\n"
 
 #: info/infodoc.c:108
 #, c-format
@@ -741,10 +777,13 @@ msgstr "  %-10s  Düðüm menüsündeki son öðeyi seçer.\n"
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
-"  %-10s  Bu Info dosyasýndaki indeks girdileri içinde belirli bir dizgeyi arar\n"
-"              ve bulunan ilk girdi tarafýndan gönderme yapýlan düðümü seçer.\n"
+"  %-10s  Bu Info dosyasýndaki indeks girdileri içinde belirli bir dizgeyi "
+"arar\n"
+"              ve bulunan ilk girdi tarafýndan gönderme yapýlan düðümü "
+"seçer.\n"
 
 #: info/infodoc.c:132
 #, c-format
@@ -752,8 +791,11 @@ msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  ismiyle belirtilen düðüme gider.\n"
 
 #: info/infodoc.c:133
-msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
-msgstr "              (DOSYAÝSMÝ)DÜÐÜMÝSMÝ þeklinde bir dosyayý dahil edebilirsiniz.\n"
+msgid ""
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgstr ""
+"              (DOSYAÝSMÝ)DÜÐÜMÝSMÝ þeklinde bir dosyayý dahil "
+"edebilirsiniz.\n"
 
 #: info/infodoc.c:134
 #, c-format
@@ -770,7 +812,8 @@ msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Belirli bir dizgeyi geriye doðru arar\n"
 
 #: info/infodoc.c:137
-msgid "              and select the node in which the next occurrence is found.\n"
+msgid ""
+"              and select the node in which the next occurrence is found.\n"
 msgstr "              ve bulunan sonraki oluþumdaki düðümü seçer.\n"
 
 #: info/infodoc.c:317
@@ -810,7 +853,9 @@ msgstr "  tümü\n"
 
 #: info/infodoc.c:376
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr "--- Çýkmak için `\\[geçmiþ-düðüm]' ya da `\\[kaldýrýlan-düðüm]' kullanýn ---\n"
+msgstr ""
+"--- Çýkmak için `\\[geçmiþ-düðüm]' ya da `\\[kaldýrýlan-düðüm]' kullanýn "
+"---\n"
 
 #: info/infodoc.c:486
 msgid "Display help message"
@@ -997,8 +1042,11 @@ msgstr "infokey dosyasý `%s' okumada hata - çok kýsa"
 
 #: info/infomap.c:1534
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "Geçersiz infokey dosyasý `%s' (hatalý sihirli numaralar) -- güncellemek için infokey yürütün"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Geçersiz infokey dosyasý `%s' (hatalý sihirli numaralar) -- güncellemek için "
+"infokey yürütün"
 
 #: info/infomap.c:1543
 #, c-format
@@ -1007,13 +1055,19 @@ msgstr "infokey dosyanýz `%s' eskimiþ -- güncellemek için infokey yürütün"
 
 #: info/infomap.c:1559
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "Geçersiz infokey dosyasý `%s' (hatalý bölüm uzunluðu) -- güncellemek için infokey yürütün"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Geçersiz infokey dosyasý `%s' (hatalý bölüm uzunluðu) -- güncellemek için "
+"infokey yürütün"
 
 #: info/infomap.c:1580
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "Geçersiz infokey dosyasý `%s' (hatalý bölüm kodu) -- güncellemek için infokey yürütün"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Geçersiz infokey dosyasý `%s' (hatalý bölüm kodu) -- güncellemek için "
+"infokey yürütün"
 
 #: info/infomap.c:1715
 msgid "Bad data in infokey file -- some key bindings ignored"
@@ -1059,7 +1113,8 @@ msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
-"   Bu dosyanýn içermesini saðlamak için peþi sýra sürüklenen kaynak dosyalar:\n"
+"   Bu dosyanýn içermesini saðlamak için peþi sýra sürüklenen kaynak "
+"dosyalar:\n"
 "\n"
 
 #: info/makedoc.c:551
@@ -1089,7 +1144,9 @@ msgstr ""
 
 #: info/nodemenu.c:223
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr "Son zamanlarda uðradýðýnýz tüm düðümlerin menüsünü içeren bir pencere oluþturur"
+msgstr ""
+"Son zamanlarda uðradýðýnýz tüm düðümlerin menüsünü içeren bir pencere "
+"oluþturur"
 
 #: info/nodemenu.c:303
 msgid "Select a node which has been previously visited in a visible window"
@@ -1106,8 +1163,12 @@ msgstr "Referans yokoldu! (%s)."
 
 #: info/session.c:161
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "Info sürüm %s'e hoþgeldiniz. Yardým için \\[get-help-window], menü öðesi için \\[menu-item] yazýnýz."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Info sürüm %s'e hoþgeldiniz. Yardým için \\[get-help-window], menü öðesi "
+"için \\[menu-item] yazýnýz."
 
 #: info/session.c:619
 msgid "Move down to the next line"
@@ -1184,15 +1245,19 @@ msgstr "Bu pencerede ileriye doðru kaydýrýr"
 
 #: info/session.c:1212
 msgid "Scroll forward in this window and set default window size"
-msgstr "Bu pencerede ileriye doðru kaydýrýr ve öntanýmlý pencere boyutuna ayarlar"
+msgstr ""
+"Bu pencerede ileriye doðru kaydýrýr ve öntanýmlý pencere boyutuna ayarlar"
 
 #: info/session.c:1220
 msgid "Scroll forward in this window staying within node"
 msgstr "Bu pencerede, düðüm içinde kalarak ileriye doðru kaydýrýr"
 
 #: info/session.c:1228
-msgid "Scroll forward in this window staying within node and set default window size"
-msgstr "Bu pencerede, düðüm içinde kalarak ileriye doðru kaydýrýr ve öntanýmlý pencere boyutunu ayarlar"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Bu pencerede, düðüm içinde kalarak ileriye doðru kaydýrýr ve öntanýmlý "
+"pencere boyutunu ayarlar"
 
 #: info/session.c:1236
 msgid "Scroll backward in this window"
@@ -1200,14 +1265,17 @@ msgstr "Bu pencerede geriye doðru kaydýrýr"
 
 #: info/session.c:1244
 msgid "Scroll backward in this window and set default window size"
-msgstr "Bu pencerede geriye doðru kaydýrýr ve öntanýmlý pencere boyutunu ayarlar"
+msgstr ""
+"Bu pencerede geriye doðru kaydýrýr ve öntanýmlý pencere boyutunu ayarlar"
 
 #: info/session.c:1253
 msgid "Scroll backward in this window staying within node"
 msgstr "Bu pencerede, düðüm içinde kalarak geriye doðru kaydýrýr"
 
 #: info/session.c:1261
-msgid "Scroll backward in this window staying within node and set default window size"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
 msgstr "geri ve set öntanýmlý"
 
 #: info/session.c:1269
@@ -1612,7 +1680,9 @@ msgstr "\"Açýk\" olduðunda, dipnotlar otomatik olarak görünür ve kaybolur"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr "\"Açýk\" olduðunda, bir pencereyi oluþturma ya da silme, diðerlerini yeniden boyutlandýrýr"
+msgstr ""
+"\"Açýk\" olduðunda, bir pencereyi oluþturma ya da silme, diðerlerini yeniden "
+"boyutlandýrýr"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1624,7 +1694,9 @@ msgstr "\"Açýk\" olduðunda, hatalar zilin çalmasýna neden olur"
 
 #: info/variables.c:53
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr "\"Açýk\" olduðunda Info çöpü, sýkýþtýrmasý açýlmak zorunda olan dosyalarý biriktirir"
+msgstr ""
+"\"Açýk\" olduðunda Info çöpü, sýkýþtýrmasý açýlmak zorunda olan dosyalarý "
+"biriktirir"
 
 #: info/variables.c:56
 msgid "When \"On\", the portion of the matched search string is highlighted"
@@ -1640,7 +1712,8 @@ msgstr "Ýmleç penceere dýþýna taþýndýðýnda kaydýrýlacak satýr sayýsý"
 
 #: info/variables.c:68
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
-msgstr "\"Açýk\" olduðunda Info, ISO Latin karakterleri kabul eder ve görüntüler"
+msgstr ""
+"\"Açýk\" olduðunda Info, ISO Latin karakterleri kabul eder ve görüntüler"
 
 #: info/variables.c:74
 msgid "Explain the use of a variable"
@@ -1699,129 +1772,133 @@ msgstr "stdout'da ferror\n"
 msgid "fflush error on stdout\n"
 msgstr "stdout'da fflush hatasý\n"
 
-#: makeinfo/cmds.c:526 makeinfo/cmds.c:548
+#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "@%s'ye argümanlar yok sayýldý"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "January"
 msgstr "Ocak"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "February"
 msgstr "Þubat"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "March"
 msgstr "Mart"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "April"
 msgstr "Nisan"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "May"
 msgstr "Mayýs"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "June"
 msgstr "Haziran"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "July"
 msgstr "Temmuz"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "August"
 msgstr "Aðustos"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "September"
 msgstr "Eylül"
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "October"
 msgstr "Ekim"
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "November"
 msgstr "Kasým"
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "December"
 msgstr "Aralýk"
 
-#: makeinfo/cmds.c:945
+#: makeinfo/cmds.c:1095
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "@var içinde düþük olasýlýklý karakter %c"
 
-#: makeinfo/cmds.c:988
+#: makeinfo/cmds.c:1138
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc argümaný tamamen büyükharf(le yazýlmýþ), etkisiz"
 
-#: makeinfo/cmds.c:1043
+#: makeinfo/cmds.c:1193
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "`{' beklenirdi, `%c' görüldü"
 
-#: makeinfo/cmds.c:1083
+#: makeinfo/cmds.c:1233
 msgid "end of file inside verb block"
 msgstr "fiil bloðu içinde dosya sonu"
 
-#: makeinfo/cmds.c:1091
+#: makeinfo/cmds.c:1241
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "`}' beklenirdi, `%c' görüldü"
 
-#: makeinfo/cmds.c:1122
-msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
-msgstr "@strong{Not...} Info'da sahte bir çapraz-baþvuru oluþturur; bundan kaçýnmak için yazýmý deðiþtirin"
+#: makeinfo/cmds.c:1272
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Not...} Info'da sahte bir çapraz-baþvuru oluþturur; bundan kaçýnmak "
+"için yazýmý deðiþtirin"
 
-#: makeinfo/cmds.c:1321
+#: makeinfo/cmds.c:1471
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s kullanýmdan kalkmýþ"
 
-#: makeinfo/cmds.c:1430
+#: makeinfo/cmds.c:1580
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp pozitif bir sayýsal argüman gerektirir, `%s' deðil"
 
-#: makeinfo/cmds.c:1786 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1796 makeinfo/makeinfo.c:4278
+#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1798 makeinfo/cmds.c:1828 makeinfo/makeinfo.c:4280
+#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
 msgid "none"
 msgstr "yok"
 
-#: makeinfo/cmds.c:1812
+#: makeinfo/cmds.c:1962
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "@%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1826
+#: makeinfo/cmds.c:1976
 msgid "insert"
 msgstr "ekle"
 
-#: makeinfo/cmds.c:1842
+#: makeinfo/cmds.c:1992
 #, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "@%s:%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1925
+#: makeinfo/cmds.c:2075
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "%1$s'de açýk ya da kapalý bakleniyordu, `%2$s' deðil"
 
-#: makeinfo/cmds.c:1945
+#: makeinfo/cmds.c:2095
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Yalnýzca @%1$s 10 ya da 11 destekleniyor, `%2$s' deðil"
@@ -2047,8 +2124,11 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "önce Üst"
 
 #: makeinfo/insertion.c:1968
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "belki de sizin @top düðümünüz, @ifinfo'dan ziyade @ifnottex içine sarýlmalýdýr?"
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"belki de sizin @top düðümünüz, @ifinfo'dan ziyade @ifnottex içine "
+"sarýlmalýdýr?"
 
 #: makeinfo/insertion.c:1980
 msgid "@detailmenu seen before first node, creating `Top' node"
@@ -2094,37 +2174,37 @@ msgstr "`%s' bloðunun içinde @itemx anlamlý deðil"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s, bir ekleme bloðunun dýþýnda bulundu"
 
-#: makeinfo/lang.c:956
+#: makeinfo/lang.c:957
 #, c-format
 msgid "no default territory known for language `%s'"
 msgstr "`%s' dili için bilinen öntanýmlý bölge yok"
 
-#: makeinfo/lang.c:1019
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s geçerli bir ISO 639 dil kodu deðildir"
 
-#: makeinfo/lang.c:1109
+#: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "tanýnmayan kodlama adý `%s'"
 
-#: makeinfo/lang.c:1117
+#: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "üzgünüm, `%s' kodlamasý desteklenmiyor"
 
-#: makeinfo/lang.c:1169
+#: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "geçersiz kodlanmýþ karakter `%s'"
 
-#: makeinfo/lang.c:1471
+#: makeinfo/lang.c:1478
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s argüman olarak `i' ya da `j' gerektirir, %c deðil"
 
-#: makeinfo/lang.c:1475
+#: makeinfo/lang.c:1482
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s argüman olarak tek karakter, `i' ya da `j' gerektirir"
@@ -2160,7 +2240,8 @@ msgstr "@allow-recursion kullanýlmýyor; lütfen yerine @rmacro kullanýnýz"
 
 #: makeinfo/macro.c:606
 msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr "@quote-arg kullanýlmýyor; argümanlar öntanýmlý olarak týrnak içine alýnýyor"
+msgstr ""
+"@quote-arg kullanýlmýyor; argümanlar öntanýmlý olarak týrnak içine alýnýyor"
 
 #: makeinfo/macro.c:649
 #, c-format
@@ -2177,7 +2258,7 @@ msgstr "Çok sayýda hata!  Vazgeçildi.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: uyarý: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2303
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
 #, c-format
 msgid "Misplaced %c"
 msgstr "Yanlýþ yerleþtirilmiþ %c"
@@ -2198,10 +2279,11 @@ msgid ""
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
 "Öntanýmlý olarak Texinfo kaynak belgelerini diðer çeþitli biçemlere çevirir\n"
-"Info dosyalarý çevrimiçi Emacs ya da tek baþýna GNU Info'yla okunmak için uygundur.\n"
+"Info dosyalarý çevrimiçi Emacs ya da tek baþýna GNU Info'yla okunmak için "
+"uygundur.\n"
 
 #: makeinfo/makeinfo.c:354
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "General options:\n"
 "      --error-limit=NUM       quit after NUM errors (default %d).\n"
@@ -2211,14 +2293,15 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
 "Genel seçenekler:\n"
 "      --error-limit=ADET      ADET hatadan sonra çýkar (öntanýmlý %d).\n"
-"      --document-language=STR Çýktý belgesi için Texinfo anahtar sözcüklerini \n"
-"                                çevirmekte kullanýlacak yerel (öntanýmlý C).\n"
+"      --document-language=STR Çýktý belgesi için Texinfo anahtar "
+"sözcüklerini \n"
+"                                çevirmekte kullanýlacak yerel (öntanýmlý "
+"C).\n"
 "      --force                 hatalarda dahi çýktýyý korur.\n"
 "      --help                  bu yardýmý görüntüler ve çýkar.\n"
 "      --no-validate           düðüm çapraz-baþvuru onaylamasýný baskýlar.\n"
@@ -2227,7 +2310,7 @@ msgstr ""
 "  -v, --verbose               ne yapýlýyor olduðunu açýklar.\n"
 "      --version               sürüm bilgisini görüntüler ve çýkar.\n"
 
-#: makeinfo/makeinfo.c:370
+#: makeinfo/makeinfo.c:369
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2242,14 +2325,17 @@ msgstr ""
 "      --xml                  Info yerine Texinfo XML çýktýsý üretir.\n"
 "      --plaintext            Info yerine salt metin çýktýsý üretir.\n"
 
-#: makeinfo/makeinfo.c:378
+#: makeinfo/makeinfo.c:377
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
 "                              ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and menus\n"
-"                                from Info output (thus producing plain text)\n"
-"                                or from HTML (thus producing shorter output);\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
 "                                also, write to standard output by default.\n"
 "      --no-split              suppress splitting of Info or HTML output,\n"
 "                              generate only one output file.\n"
@@ -2257,45 +2343,59 @@ msgid ""
 "  -o, --output=FILE           output to FILE (directory if split HTML),\n"
 msgstr ""
 "Genel çýktý seçenekleri:\n"
-"  -E, --macro-expand DOSYA   makro-geniþletilmiþ kaynak çýktýsýný herhangi bir\n"
+"  -E, --macro-expand DOSYA   makro-geniþletilmiþ kaynak çýktýsýný herhangi "
+"bir\n"
 "                             @setfilename'i yoksayarak DOSYA'ya yazar.\n"
 "      --no-headers           Info çýktýsýnda düðüm ayraçlarýný, Node:\n"
-"                               satýrlarýný ve menüleri baskýlar (daha kýsa çýktý\n"
+"                               satýrlarýný ve menüleri baskýlar (daha kýsa "
+"çýktý\n"
 "                               üretmek üzere); ayrýca, öntanýmlý olarak\n"
 "                               standart çýktýya yazar.\n"
-"      --no-split             Info ya da HTML çýktýsýnýn bölünmesini baskýlar,\n"
+"      --no-split             Info ya da HTML çýktýsýnýn bölünmesini "
+"baskýlar,\n"
 "                             yalnýzca bir çýktý dosyasý oluþturur.\n"
 "      --number-sections      bölüm ve kýsým numaralarýnýn çýktýsýný alýr.\n"
-"  -o, --output=DOSYA         çýktýyý DOSYA'ya yazar (bölünmüþ HTML ise dizine).\n"
+"  -o, --output=DOSYA         çýktýyý DOSYA'ya yazar (bölünmüþ HTML ise "
+"dizine).\n"
 
-#: makeinfo/makeinfo.c:392
-#, c-format
+#: makeinfo/makeinfo.c:391
+#, fuzzy, c-format
 msgid ""
 "Options for Info and plain text:\n"
-"      --enable-encoding       output accented and special characters in\n"
-"                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, in\n"
-"                                which they are defined (this is the default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Info ve salt metin için seçenekler:\n"
-"      --enable-encoding       aksanlý ve özel karakterlerin çýktýsýný @documentencoding'e\n"
+"      --enable-encoding       aksanlý ve özel karakterlerin çýktýsýný "
+"@documentencoding'e\n"
 "                                dayalý olarak Info çýktýsýna yazar.\n"
-"      --fill-column=ADET       Info satýrlarýný ADET karakterde bitir (öntanýmlý %d)\n"
-"      --footnote-style=STÝL   Info'da dipnotlarýn çýktýsýný STÝL'e göre yazar:\n"
+"      --fill-column=ADET       Info satýrlarýný ADET karakterde bitir "
+"(öntanýmlý %d)\n"
+"      --footnote-style=STÝL   Info'da dipnotlarýn çýktýsýný STÝL'e göre "
+"yazar:\n"
 "                                 kendi düðümlerine koymak için `separate';\n"
 "                                 tanýmlandýklarý düðümün sonuna koymak için\n"
 "                                 `end' (öntanýmlý).\n"
-"      --paragraph-indent=DEG   Info paragraflarýný DEG boþluk girintiler (öntanýmlý %d).\n"
+"      --paragraph-indent=DEG   Info paragraflarýný DEG boþluk girintiler "
+"(öntanýmlý %d).\n"
 "                                Eðer DEG `none' ise girintilemez; eðer DEG\n"
 "                                `asis' ise mevcut girintiyi korur.\n"
-"      --spilt-size=NUM        Info dosyalarýný NUM boyutuna böler (öntanýmlý %d).\n"
+"      --spilt-size=NUM        Info dosyalarýný NUM boyutuna böler (öntanýmlý "
+"%d).\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2311,18 +2411,23 @@ msgstr ""
 "                                   eðer DOSYA - ise stdin'i oku.\n"
 "      --css-ref=URL           bir CSS dosyasýna baþvuru oluþtur.\n"
 "      --transliterate-file-names\n"
-"                              dosya isimlerini ASCII alfabesine dönüþtürerek üret.\n"
+"                              dosya isimlerini ASCII alfabesine dönüþtürerek "
+"üret.\n"
 
 #: makeinfo/makeinfo.c:418
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
-"                                If VAL is 0, ignorable whitespace is dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+"d).\n"
+"                                If VAL is 0, ignorable whitespace is "
+"dropped.\n"
 msgstr ""
 "XML ve Docbook için seçenekler:\n"
-"      --output-indent=DEÐER        XML elementlerini DEÐER kadar boþluk girintilendir (öntanýmlý %d).\n"
-"                                     eðer DEÐER 0 ise yok sayýlabilen beyaz boþluk silinir.\n"
+"      --output-indent=DEÐER        XML elementlerini DEÐER kadar boþluk "
+"girintilendir (öntanýmlý %d).\n"
+"                                     eðer DEÐER 0 ise yok sayýlabilen beyaz "
+"boþluk silinir.\n"
 
 #: makeinfo/makeinfo.c:425
 msgid ""
@@ -2335,10 +2440,12 @@ msgid ""
 msgstr ""
 "Girdi dosyasý seçenekleri:\n"
 "      --commands-in-node-names   düðüm adlarýnda @ komutlarýna izin verir.\n"
-"  -D VAR                         VAR deðiþkenini, @set ile olduðu gibi tanýmlar.\n"
+"  -D VAR                         VAR deðiþkenini, @set ile olduðu gibi "
+"tanýmlar.\n"
 "  -I DIR                         DIR'ý @include arama yolu sonuna ekler.\n"
 "  -P DIR                         DIR'ý @include arama yolu baþýna ekler.\n"
-"  -U VAR                         VAR deðiþkeninin tanýmýný, @clear ile olduðu gibi geri alýr.\n"
+"  -U VAR                         VAR deðiþkeninin tanýmýný, @clear ile "
+"olduðu gibi geri alýr.\n"
 
 #: makeinfo/makeinfo.c:434
 msgid ""
@@ -2397,9 +2504,11 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
@@ -2411,158 +2520,170 @@ msgstr ""
 "  makeinfo --no-headers foo.texi        standart çýktýya salt metin yazar\n"
 "\n"
 "  makeinfo --html --no-headres foo.texi düðüm çizgisiz, menüsüz html yazar\n"
-"  makeinfo --number-sections foo.texi   numaralanmýþ kýsýmlarý olan Info yazar\n"
-"  makeinfo --no-split foo.texi          ne büyüklükte olursa olsun tek Info dosyasý yazar\n"
+"  makeinfo --number-sections foo.texi   numaralanmýþ kýsýmlarý olan Info "
+"yazar\n"
+"  makeinfo --no-split foo.texi          ne büyüklükte olursa olsun tek Info "
+"dosyasý yazar\n"
 
-#: makeinfo/makeinfo.c:618
+#: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Tanýnamayan TEXINFO_OUTPUT_FORMAT deðeri `%s' yok sayýlýyor.\n"
 
-#: makeinfo/makeinfo.c:666 makeinfo/makeinfo.c:692 makeinfo/makeinfo.c:716
-#: makeinfo/makeinfo.c:746 makeinfo/makeinfo.c:767
+#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
+#: makeinfo/makeinfo.c:761
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%1$s: %2$s arg sayýsal olmalýdýr, `%3$s' deðil.\n"
 
-#: makeinfo/makeinfo.c:679
+#: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s:makro geniþleme çýktýsý `%s' açýlamadý"
 
-#: makeinfo/makeinfo.c:684
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: ikinci makro geniþleme çýktýsý yok sayýlýyor `%s'.\n"
 
-#: makeinfo/makeinfo.c:731
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr "%1$s: --paragraph-indent arg. sayýsal/`none'/`asis' olmalýdýr, `%2$s' deðil.\n"
+msgstr ""
+"%1$s: --paragraph-indent arg. sayýsal/`none'/`asis' olmalýdýr, `%2$s' "
+"deðil.\n"
 
-#: makeinfo/makeinfo.c:756
+#: makeinfo/makeinfo.c:750
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%1$s: --footnote-style arg. `separate' ya da `end' olmalýdýr, `%2$s' deðil.\n"
+msgstr ""
+"%1$s: --footnote-style arg. `separate' ya da `end' olmalýdýr, `%2$s' deðil.\n"
 
-#: makeinfo/makeinfo.c:831
+#: makeinfo/makeinfo.c:825
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: dosya argümaný eksik.\n"
 
-#: makeinfo/makeinfo.c:1022 makeinfo/makeinfo.c:4127
+#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Çok satýrlý komut %c%s uygunsuz kullanýldý"
 
-#: makeinfo/makeinfo.c:1025
+#: makeinfo/makeinfo.c:1019
 #, c-format
 msgid "Expected `%s'"
 msgstr "`%s' gerekir"
 
-#: makeinfo/makeinfo.c:1504
+#: makeinfo/makeinfo.c:1498
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "`%1$s' dizini oluþturulamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:1550
+#: makeinfo/makeinfo.c:1544
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "`%2$s' içinde `%1$s' yok"
 
-#: makeinfo/makeinfo.c:1630
+#: makeinfo/makeinfo.c:1624
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr "%s: Makro geniþlemesini, Info çýktýsý da oraya gittiðinden, stdout'a atlatýyor.\n"
+msgstr ""
+"%s: Makro geniþlemesini, Info çýktýsý da oraya gittiðinden, stdout'a "
+"atlatýyor.\n"
 
-#: makeinfo/makeinfo.c:1663
+#: makeinfo/makeinfo.c:1657
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "`%3$s''den %1$s dosya `%2$s' yapýlýyor.\n"
 
-#: makeinfo/makeinfo.c:1727
+#: makeinfo/makeinfo.c:1721
 #, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%1$s: Makro çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --force kullanýnýz.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%1$s: Makro çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --"
+"force kullanýnýz.\n"
 
-#: makeinfo/makeinfo.c:1782
+#: makeinfo/makeinfo.c:1776
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%1$s: Çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --force kullanýnýz.\n"
+msgstr ""
+"%1$s: Çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --force "
+"kullanýnýz.\n"
 
-#: makeinfo/makeinfo.c:2076
+#: makeinfo/makeinfo.c:2070
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Bilinmeyen komut `%s'"
 
-#: makeinfo/makeinfo.c:2098
+#: makeinfo/makeinfo.c:2092
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "@%s'e argüman olarak bir komut vermek için {} kullanýn"
 
-#: makeinfo/makeinfo.c:2357
+#: makeinfo/makeinfo.c:2351
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s küme parantezi bekledi"
 
-#: makeinfo/makeinfo.c:2370
+#: makeinfo/makeinfo.c:2364
 msgid "Unmatched }"
 msgstr "Eþleþmemiþ }"
 
-#: makeinfo/makeinfo.c:2418
+#: makeinfo/makeinfo.c:2412
 msgid "NO_NAME!"
 msgstr "ÝSÝMSÝZ!"
 
-#: makeinfo/makeinfo.c:2439
+#: makeinfo/makeinfo.c:2433
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s eksik kapama }"
 
-#: makeinfo/makeinfo.c:2617
+#: makeinfo/makeinfo.c:2611
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Bu %1$s, makeinfo sürümü %2$s tarafýndan, %3$s'den üretilmiþtir.\n"
 
-#: makeinfo/makeinfo.c:3442
+#: makeinfo/makeinfo.c:3436
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image dosyasý `%1$s' (HTML için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3448
+#: makeinfo/makeinfo.c:3442
 #, c-format
 msgid "No such file `%s'"
 msgstr "`%s' adýnda dosya yok"
 
-#: makeinfo/makeinfo.c:3584
+#: makeinfo/makeinfo.c:3578
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image dosyasý `%1$s' (metin için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3593
+#: makeinfo/makeinfo.c:3587
 msgid "@image missing filename argument"
 msgstr "@image eksik dosyaadý argümaný"
 
-#: makeinfo/makeinfo.c:3811
+#: makeinfo/makeinfo.c:3805
 #, c-format
 msgid "undefined flag: %s"
 msgstr "tanýmlanmamýþ bayrak: %s"
 
-#: makeinfo/makeinfo.c:3812
+#: makeinfo/makeinfo.c:3806
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "(`%s' için deðer yok)"
 
-#: makeinfo/makeinfo.c:3864
+#: makeinfo/makeinfo.c:3858
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bir isim gerektirir"
 
-#: makeinfo/makeinfo.c:3970
+#: makeinfo/makeinfo.c:3964
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Eþleþen @end %s'den önce dosya sonuna ulaþýldý"
 
-#: makeinfo/makeinfo.c:4219
+#: makeinfo/makeinfo.c:4213
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' geniþleme için çok uzun; geniþletilmedi"
@@ -2675,7 +2796,9 @@ msgstr "Çapraz"
 #: makeinfo/node.c:1460
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "Düðüm `%s''in sonraki alaný þuraya iþaret etmiyor (yanlýþ bölümleme nedeniyle?)"
+msgstr ""
+"Düðüm `%s''in sonraki alaný þuraya iþaret etmiyor (yanlýþ bölümleme "
+"nedeniyle?)"
 
 #: makeinfo/node.c:1463
 #, c-format
@@ -2708,24 +2831,21 @@ msgstr "Yukarý"
 #: makeinfo/node.c:1603
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Düðüm `%s', Yukarý hedefi olmasýna karþýn, `%s' için eksik menü öðesi içeriyor"
+msgstr ""
+"Düðüm `%s', Yukarý hedefi olmasýna karþýn, `%s' için eksik menü öðesi "
+"içeriyor"
 
-#: makeinfo/node.c:1632
-#, c-format
-msgid "node `%s' has been referenced %d times"
-msgstr "düðüm `%s''e %d kez baþvuruldu"
-
-#: makeinfo/node.c:1646
+#: makeinfo/node.c:1635
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "baþvurulmamýþ düðüm `%s'"
 
-#: makeinfo/node.c:1736
+#: makeinfo/node.c:1725
 #, c-format
 msgid "Removing %s\n"
 msgstr "%s siliniyor\n"
 
-#: makeinfo/node.c:1740
+#: makeinfo/node.c:1729
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "`%s' dosyasý silinemiyor: %s"
@@ -2771,7 +2891,8 @@ msgid "@image file `%s' unreadable: %s"
 msgstr "@image dosyasý `%1$s' okunamýyor: %2$s"
 
 #: makeinfo/xml.c:1999
-msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+msgid ""
+"@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr "@multitable'ýn son öðesi @headitem geçersiz Docbook belgeleri üretiyor"
 
 #: makeinfo/xref.c:127
@@ -2840,8 +2961,10 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with whitespace.\n"
-"                     If you specify more than one entry, they are all added.\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -2873,15 +2996,18 @@ msgstr ""
 "\n"
 "Seçenekler:\n"
 " --debug           yapýlmakta olanlarý rapor eder.\n"
-" --delete          INFO-DOSYASI için mevcut girdileri DIR-DOSYASI'ndan siler;\n"
+" --delete          INFO-DOSYASI için mevcut girdileri DIR-DOSYASI'ndan "
+"siler;\n"
 "                     yeni girdi eklemez.\n"
 " --dir-file=ÝSÝM   Info dizin dosyasýnýn adýný belirler.\n"
 "                     Bu, DIR-DOSYASI argümanýný kullanmaya eþdeðerdir.\n"
 " --entry=METÝN     METÝN'i bir Info dizin girdisi olarak ekler.\n"
 "                     METÝN, bir Info öðe satýrý þeklinde olmalý\n"
-"                     artý, boþlukla baþlayan sýfýr ya da daha çok fazladan satýrý bulunmalýdýr.\n"
+"                     artý, boþlukla baþlayan sýfýr ya da daha çok fazladan "
+"satýrý bulunmalýdýr.\n"
 "                     Birden fazla girdi belirtirseniz hepsi eklenir.\n"
-"                     Hiç girdi belirtmezseniz, (girdiler) Info dosyasýndaki bilgiden\n"
+"                     Hiç girdi belirtmezseniz, (girdiler) Info dosyasýndaki "
+"bilgiden\n"
 "                     belirlenir.\n"
 " --help            bu yardýmý görüntüler ve çýkar.\n"
 " --info-file=DOSYA dizine kurulacak Info dosyasýný belirler.\n"
@@ -2896,10 +3022,12 @@ msgstr ""
 " --section=KIS     bu dosyanýn girdilerini dizinin KIS bölümüne koyar.\n"
 "                     Bir bölümden fazlasýný belirtirseniz, tüm girdiler\n"
 "                     herbir bölüme eklenir.\n"
-"                     Hiçbir bölüm belirtmezseniz, (bölümler) Info dosyasýndaki bilgiden\n"
+"                     Hiçbir bölüm belirtmezseniz, (bölümler) Info "
+"dosyasýndaki bilgiden\n"
 "                     belirlenir.\n"
 " --section-regex=R mevcut olmayan bir bölüme bir girdi eklenirse,\n"
-"                     (ve büyük/küçük harf yok sayarak) yeni bir bölüme baþlamadan önce\n"
+"                     (ve büyük/küçük harf yok sayarak) yeni bir bölüme "
+"baþlamadan önce\n"
 "                     temel tüzenli ifade R'ye uyan bir bölüm arar.\n"
 " --test            DIR-DOSYASInýn güncellenmesini baskýlar.\n"
 " --silent          uyarýlarý baskýlar.\n"
@@ -2931,7 +3059,8 @@ msgstr ""
 "%s\tBu, INFO aðacýnýn tepesidir\n"
 "\n"
 "  Bu (Dizin düðümü), temel konularýn bir menüsünü verir.\n"
-"  \"q\" tuþuyla çýkar, \"?\" ile tüm Info komutlarýný listeler, \"d\" ile buraya döner,\n"
+"  \"q\" tuþuyla çýkar, \"?\" ile tüm Info komutlarýný listeler, \"d\" ile "
+"buraya döner,\n"
 "  \"h\" ile yeni baþlayanlar için bir klavuz alabilir,\n"
 "  \"mEmacs<Return>\" ile Emacs klavuzunu ziyaret edebilirsiniz, vs.\n"
 "\n"
@@ -3031,7 +3160,9 @@ msgstr "Her TeX çýktý DOSYAsý için sýralanmýþ bir indeks oluþturur.\n"
 #: util/texindex.c:241
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr "Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak belirtilir.\n"
+msgstr ""
+"Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak "
+"belirtilir.\n"
 
 #: util/texindex.c:243
 #, c-format
@@ -3061,3 +3192,6 @@ msgstr "%s'de sayfa numarasý yok"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "düðüm `%s''e %d kez baþvuruldu"

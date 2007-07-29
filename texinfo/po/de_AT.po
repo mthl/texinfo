@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-01 14:19-0700\n"
+"POT-Creation-Date: 2007-07-29 07:58-0700\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: gnulib/lib/error.c:125
+#: gnulib/lib/error.c:126
 msgid "Unknown system error"
 msgstr ""
 
@@ -292,7 +292,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr ""
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:789
+#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
@@ -1634,131 +1634,131 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:526 makeinfo/cmds.c:548
+#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr ""
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "January"
 msgstr "Jänner"
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "February"
 msgstr ""
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "March"
 msgstr ""
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "April"
 msgstr ""
 
-#: makeinfo/cmds.c:591
+#: makeinfo/cmds.c:741
 msgid "May"
 msgstr ""
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "June"
 msgstr ""
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "July"
 msgstr ""
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "August"
 msgstr ""
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "September"
 msgstr ""
 
-#: makeinfo/cmds.c:592
+#: makeinfo/cmds.c:742
 msgid "October"
 msgstr ""
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "November"
 msgstr ""
 
-#: makeinfo/cmds.c:593
+#: makeinfo/cmds.c:743
 msgid "December"
 msgstr ""
 
-#: makeinfo/cmds.c:945
+#: makeinfo/cmds.c:1095
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr ""
 
-#: makeinfo/cmds.c:988
+#: makeinfo/cmds.c:1138
 msgid "@sc argument all uppercase, thus no effect"
 msgstr ""
 
-#: makeinfo/cmds.c:1043
+#: makeinfo/cmds.c:1193
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr ""
 
-#: makeinfo/cmds.c:1083
+#: makeinfo/cmds.c:1233
 msgid "end of file inside verb block"
 msgstr ""
 
-#: makeinfo/cmds.c:1091
+#: makeinfo/cmds.c:1241
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr ""
 
-#: makeinfo/cmds.c:1122
+#: makeinfo/cmds.c:1272
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: makeinfo/cmds.c:1321
+#: makeinfo/cmds.c:1471
 #, c-format
 msgid "%c%s is obsolete"
 msgstr ""
 
-#: makeinfo/cmds.c:1430
+#: makeinfo/cmds.c:1580
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1786 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr ""
 
-#: makeinfo/cmds.c:1796 makeinfo/makeinfo.c:4278
+#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
 msgid "asis"
 msgstr ""
 
-#: makeinfo/cmds.c:1798 makeinfo/cmds.c:1828 makeinfo/makeinfo.c:4280
+#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
 msgid "none"
 msgstr ""
 
-#: makeinfo/cmds.c:1812
+#: makeinfo/cmds.c:1962
 #, c-format
 msgid "Bad argument to @%s"
 msgstr ""
 
-#: makeinfo/cmds.c:1826
+#: makeinfo/cmds.c:1976
 msgid "insert"
 msgstr ""
 
-#: makeinfo/cmds.c:1842
+#: makeinfo/cmds.c:1992
 #, c-format
 msgid "Bad argument to @%s: %s"
 msgstr ""
 
-#: makeinfo/cmds.c:1925
+#: makeinfo/cmds.c:2075
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:1945
+#: makeinfo/cmds.c:2095
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2032,37 +2032,37 @@ msgstr ""
 msgid "%c%s found outside of an insertion block"
 msgstr ""
 
-#: makeinfo/lang.c:956
+#: makeinfo/lang.c:957
 #, c-format
 msgid "no default territory known for language `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:1019
+#: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr ""
 
-#: makeinfo/lang.c:1109
+#: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:1117
+#: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr ""
 
-#: makeinfo/lang.c:1169
+#: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:1471
+#: makeinfo/lang.c:1478
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr ""
 
-#: makeinfo/lang.c:1475
+#: makeinfo/lang.c:1482
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr ""
@@ -2115,7 +2115,7 @@ msgstr ""
 msgid "%s:%d: warning: "
 msgstr ""
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2303
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
 #, c-format
 msgid "Misplaced %c"
 msgstr ""
@@ -2147,13 +2147,11 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %"
-"d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:370
+#: makeinfo/makeinfo.c:369
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2163,7 +2161,7 @@ msgid ""
 "      --plaintext             output plain text rather than Info.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:378
+#: makeinfo/makeinfo.c:377
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
@@ -2181,12 +2179,13 @@ msgid ""
 "  -o, --output=FILE           output to FILE (directory if split HTML),\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:392
+#: makeinfo/makeinfo.c:391
 #, c-format
 msgid ""
 "Options for Info and plain text:\n"
-"      --enable-encoding       output accented and special characters in\n"
-"                                Info output based on @documentencoding.\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
 "      --fill-column=NUM       break Info lines at NUM characters (default %"
 "d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
@@ -2277,156 +2276,156 @@ msgid ""
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:618
+#: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:666 makeinfo/makeinfo.c:692 makeinfo/makeinfo.c:716
-#: makeinfo/makeinfo.c:746 makeinfo/makeinfo.c:767
+#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
+#: makeinfo/makeinfo.c:761
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:679
+#: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr ""
 
-#: makeinfo/makeinfo.c:684
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:731
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:756
+#: makeinfo/makeinfo.c:750
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:831
+#: makeinfo/makeinfo.c:825
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1022 makeinfo/makeinfo.c:4127
+#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1025
+#: makeinfo/makeinfo.c:1019
 #, c-format
 msgid "Expected `%s'"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1504
+#: makeinfo/makeinfo.c:1498
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1550
+#: makeinfo/makeinfo.c:1544
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1630
+#: makeinfo/makeinfo.c:1624
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1663
+#: makeinfo/makeinfo.c:1657
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1727
+#: makeinfo/makeinfo.c:1721
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1782
+#: makeinfo/makeinfo.c:1776
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2076
+#: makeinfo/makeinfo.c:2070
 #, c-format
 msgid "Unknown command `%s'"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2098
+#: makeinfo/makeinfo.c:2092
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2357
+#: makeinfo/makeinfo.c:2351
 #, c-format
 msgid "%c%s expected braces"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2370
+#: makeinfo/makeinfo.c:2364
 msgid "Unmatched }"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2418
+#: makeinfo/makeinfo.c:2412
 msgid "NO_NAME!"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2439
+#: makeinfo/makeinfo.c:2433
 #, c-format
 msgid "%c%s missing close brace"
 msgstr ""
 
-#: makeinfo/makeinfo.c:2617
+#: makeinfo/makeinfo.c:2611
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3442
+#: makeinfo/makeinfo.c:3436
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3448
+#: makeinfo/makeinfo.c:3442
 #, c-format
 msgid "No such file `%s'"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3584
+#: makeinfo/makeinfo.c:3578
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3593
+#: makeinfo/makeinfo.c:3587
 msgid "@image missing filename argument"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3811
+#: makeinfo/makeinfo.c:3805
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3812
+#: makeinfo/makeinfo.c:3806
 #, c-format
 msgid "{No value for `%s'}"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3864
+#: makeinfo/makeinfo.c:3858
 #, c-format
 msgid "%c%s requires a name"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3970
+#: makeinfo/makeinfo.c:3964
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:4219
+#: makeinfo/makeinfo.c:4213
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
@@ -2574,22 +2573,17 @@ msgstr ""
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 
-#: makeinfo/node.c:1632
-#, c-format
-msgid "node `%s' has been referenced %d times"
-msgstr ""
-
-#: makeinfo/node.c:1646
+#: makeinfo/node.c:1635
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr ""
 
-#: makeinfo/node.c:1736
+#: makeinfo/node.c:1725
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1740
+#: makeinfo/node.c:1729
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr ""
