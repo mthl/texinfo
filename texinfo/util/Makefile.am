@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.28 2007-07-26 13:02:15 karl Exp $
+# $Id: Makefile.am,v 1.29 2007-07-29 15:11:29 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -57,7 +57,6 @@ TESTS =	\
 bibtex.test \
 dvipdf.test \
 latex2html.test \
-local.test \
 texi2dvi.test
 
 EXTRA_DIST += $(TESTS)
