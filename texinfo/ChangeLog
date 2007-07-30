@@ -1,3 +1,8 @@
+2007-07-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\badparencount, \badbrackcount): make these
+	just warnings, not \errmessage's.
+
 2007-07-29  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.9.91.
