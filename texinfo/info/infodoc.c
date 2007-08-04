@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.12 2007-07-01 21:20:30 karl Exp $
+   $Id: infodoc.c,v 1.13 2007-08-04 11:00:07 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -58,11 +58,14 @@ static char *info_internal_help_text[] = {
               Picking a menu item causes another node to be selected.\n"),
   N_("\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"),
   N_("\\%-10[history-node]  Move to the last node seen in this window.\n"),
-  N_("\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"),
-  N_("\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"),
+  N_("\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"),
+  N_("\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"),
   N_("\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"),
   N_("\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"),
   N_("\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"),
+  "\n",
+  N_("[*]    Command acts within this node or the entire document, depending on\n"
+     "the value of cursor-movement-scrolls variable\n"),
   "\n",
   N_("Moving within a node:\n\
 ---------------------\n"),
