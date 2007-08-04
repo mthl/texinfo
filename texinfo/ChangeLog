@@ -1,3 +1,12 @@
+2007-08-04  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+
+	* djgpp/config.bat: replace the string diffutil*.pot by
+	the correct one texinfo*.pot
+
+	* djgpp/config.sed: adjust for the use with autoconf 2.61
+
+	* djgpp/config.site: adjust for the use with autoconf 2.61
+
 2007-08-04  Sergey Poznyakoff  <gray@gnu.org.ua>
 
         * doc/info-stnd.texi: Document cursor-movement-scrolls variable.
@@ -17,6 +26,11 @@
         * info/variables.h: Likewise
         * info/variables.c (scroll-behavior): Alias for scroll-behaviour
         (cursor-movement-scrolls): New variable.
+
+2007-07-31  Karl Berry  <karl@gnu.org>
+
+	* info/infodoc.c (info_internal_help_text): hardwire
+	menu-digits, from Benno.
 
 2007-07-30  Karl Berry  <karl@gnu.org>
 

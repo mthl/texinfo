@@ -185,7 +185,7 @@ if not errorlevel 0 goto missing_NLS_tools
 
 Rem Recreate the files in the %XSRC%/po subdir with our ported tools.
 redir -e /dev/null rm %XSRC%/po/*.gmo
-redir -e /dev/null rm %XSRC%/po/diffutil*.pot
+redir -e /dev/null rm %XSRC%/po/texinfo*.pot
 redir -e /dev/null rm %XSRC%/po/cat-id-tbl.c
 redir -e /dev/null rm %XSRC%/po/stamp-cat-id
 
