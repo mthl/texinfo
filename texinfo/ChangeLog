@@ -1,3 +1,23 @@
+2007-08-04  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+        * doc/info-stnd.texi: Document cursor-movement-scrolls variable.
+        Document different spellings of scroll-behaviour variable.
+        * info/info-utils.c (info_references_internal): Initialize
+        line_number.
+        * info/infodoc.c (info_internal_help_text): Update docstrings
+        for move-to-next-xref and move-to-prev-xref.
+        * info/session.c (forward_move_node_structure)
+        (backward_move_node_structure): Return int
+        (cursor_movement_scrolls_p): New variable.
+        (info_next_line,info_prev_line,info_forward_char,info_backward_char)
+        (info_forward_word,info_backward_word): Scroll through the
+        entire document if cursor_movement_scrolls_p is set.
+        (info_move_to_xref,info_move_to_prev_xref): Return int
+        * info/session.h (cursor_movement_scrolls_p): New variable
+        * info/variables.h: Likewise
+        * info/variables.c (scroll-behavior): Alias for scroll-behaviour
+        (cursor-movement-scrolls): New variable.
+
 2007-07-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\badparencount, \badbrackcount): make these
