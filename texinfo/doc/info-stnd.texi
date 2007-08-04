@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.14 2007-07-15 17:34:37 karl Exp $
+@comment $Id: info-stnd.texi,v 1.15 2007-08-04 10:59:24 gray Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -1860,6 +1860,13 @@ window.  There are exceptions to the automatic tiling; specifically, the
 windows @samp{*Completions*} and @samp{*Footnotes*} are @emph{not}
 resized through automatic tiling; they remain their original size.
 
+@anchor{cursor-movement-scrolls}
+@item cursor-movement-scrolls
+Normally, cursor movement commands (@pxref{Cursor Commands}) stop when
+top or bottom of a node is reached.  When this variable is set to
+@code{On}, cursor movement commands act as scrolling ones and their
+behavior is controlled by @code{scroll-behavior} variable (see below).
+
 @item errors-ring-bell
 @vindex errors-ring-bell
 When set to @code{On}, errors cause the bell to ring.  The default
@@ -1890,6 +1897,7 @@ character set is in use, and allows you to input such characters to
 Info, as well as display them.
 
 @item scroll-behavior
+@itemx scroll-behaviour
 @vindex scroll-behavior
 Control what happens when forward scrolling is requested at the end of
 a node, or when backward scrolling is requested at the beginning of a
@@ -1912,6 +1920,9 @@ Simply give up, changing nothing.  If @code{scroll-behavior} is
 @code{Page Only}, no scrolling command can change the node that is being
 viewed.
 @end table
+
+This variable normally affects only scrolling commands.
+@xref{cursor-movement-scrolls}, for information on how to widen its scope.
 
 @item scroll-step
 @vindex scroll-step
