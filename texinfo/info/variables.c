@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.6 2007-07-01 21:20:31 karl Exp $
+   $Id: variables.c,v 1.7 2007-08-04 11:01:22 gray Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -60,10 +60,19 @@ VARIABLE_ALIST info_variables[] = {
       N_("Controls what happens when scrolling is requested at the end of a node"),
       &info_scroll_behaviour, (char **)info_scroll_choices },
 
+  /* Alternate spelling */
+  { "scroll-behavior",
+      N_("Same as scroll-behaviour"),
+      &info_scroll_behaviour, (char **)info_scroll_choices },
+
   { "scroll-step",
       N_("The number lines to scroll when the cursor moves out of the window"),
       &window_scroll_step, (char **)NULL },
 
+  { "cursor-movement-scrolls",
+    N_("Controls whether scroll-behavior affects cursor movement commands"),
+    &cursor_movement_scrolls_p, (char **)on_off_choices },
+  
   { "ISO-Latin",
       N_("When \"On\", Info accepts and displays ISO Latin characters"),
       &ISO_Latin_p, (char **)on_off_choices },
