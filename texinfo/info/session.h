@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.6 2007-07-01 21:20:31 karl Exp $
+   $Id: session.h,v 1.7 2007-08-04 11:01:02 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -58,6 +58,8 @@ extern char *info_scroll_choices[];
                            "Next:" of the up. */
 #define IS_NextOnly   1 /* Try to get "Next:" menu item. */
 #define IS_PageOnly   2 /* Simply give up at the bottom of a node. */
+
+extern int cursor_movement_scrolls_p;
 
 /* Utility functions found in session.c */
 extern void info_dispatch_on_key (unsigned char key, Keymap map);
