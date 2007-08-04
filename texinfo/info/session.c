@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.19 2007-07-01 21:20:31 karl Exp $
+   $Id: session.c,v 1.20 2007-08-04 11:00:43 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007 Free Software Foundation, Inc.
@@ -604,8 +604,8 @@ move_to_new_line (int old, int new, WINDOW *window)
       int goal;
 
       if (new >= window->line_count || new < 0)
-        return;
-
+	return;
+      
       goal = window_get_goal_column (window);
       window->goal_column = goal;
 
@@ -615,6 +615,9 @@ move_to_new_line (int old, int new, WINDOW *window)
     }
 }
 
+static int forward_move_node_structure (WINDOW *window, int behaviour);
+static int backward_move_node_structure (WINDOW *window, int behaviour);
+
 /* Move WINDOW's point down to the next line if possible. */
 DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 {
@@ -623,11 +626,32 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
   if (count < 0)
     info_prev_line (window, -count, key);
   else
-    {
-      old_line = window_line_of_point (window);
-      new_line = old_line + count;
-      move_to_new_line (old_line, new_line, window);
-    }
+    while (count)
+      {
+	int diff;
+
+	old_line = window_line_of_point (window);
+	diff = window->line_count - old_line;
+	if (diff > count)
+	  diff = count;
+
+	count -= diff;
+	new_line = old_line + diff;
+	if (new_line >= window->line_count)
+	  {
+	    if (cursor_movement_scrolls_p)
+	      {
+		if (forward_move_node_structure (window,
+						 info_scroll_behaviour))
+		  break;
+		move_to_new_line (0, 0, window);
+	      }
+	    else
+	      break;
+	  }
+	else
+	  move_to_new_line (old_line, new_line, window);
+      }
 }
 
 /* Move WINDOW's point up to the previous line if possible. */
@@ -638,11 +662,31 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
   if (count < 0)
     info_next_line (window, -count, key);
   else
-    {
-      old_line = window_line_of_point (window);
-      new_line = old_line - count;
-      move_to_new_line (old_line, new_line, window);
-    }
+    while (count)
+      {
+	int diff;
+	
+	old_line = window_line_of_point (window);
+	diff = old_line + 1;
+	if (diff > count)
+	  diff = count;
+	
+	count -= diff;
+	new_line = old_line - diff;
+	
+	if (new_line < 0
+	    && cursor_movement_scrolls_p)
+	  {
+	    if (backward_move_node_structure (window, info_scroll_behaviour))
+	      break;
+	    if (window->line_count > window->height)
+	      set_window_pagetop (window, window->line_count - window->height);
+	    move_to_new_line (window->line_count,
+			      window->line_count - 1, window);
+	  }
+	else
+	  move_to_new_line (old_line, new_line, window);
+      }
 }
 
 /* Move WINDOW's point to the end of the true line. */
@@ -691,11 +735,27 @@ DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
     info_backward_char (window, -count, key);
   else
     {
-      window->point += count;
-
-      if (window->point >= window->node->nodelen)
-        window->point = window->node->nodelen - 1;
-
+      while (count)
+	{
+	  int diff = window->node->nodelen - window->point;
+	  
+	  if (diff > count)
+	    diff = count;
+	  window->point += diff;
+	  count -= diff;
+	  if (window->point >= window->node->nodelen)
+	    {
+	      if (cursor_movement_scrolls_p
+		  && forward_move_node_structure (window,
+						  info_scroll_behaviour) == 0)
+		window->point = 0;
+	      else
+		{
+		  window->point = window->node->nodelen - 1;
+		  break;
+		}
+	    }
+	}
       info_show_point (window);
     }
 }
@@ -707,11 +767,34 @@ DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
     info_forward_char (window, -count, key);
   else
     {
-      window->point -= count;
+      while (count)
+	{
+	  int diff = count;
 
-      if (window->point < 0)
-        window->point = 0;
+	  if (window->point < diff)
+	    diff = window->point + 1;
+	  
+	  window->point -= diff;
+	  count -= diff;
 
+	  if (window->point < 0)
+	    {
+	      if (cursor_movement_scrolls_p
+		  && backward_move_node_structure (window,
+						   info_scroll_behaviour) == 0)
+		{
+		  window->point = window->node->nodelen - 1;
+		  if (window->line_count > window->height)
+		    set_window_pagetop (window,
+					window->line_count - window->height);
+		}
+	      else
+		{
+		  window->point = 0;
+		  break;
+		}
+	    }
+	}
       info_show_point (window);
     }
 }
@@ -738,8 +821,19 @@ DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
   while (count)
     {
       if (point + 1 >= end)
-        return;
-
+	{
+	  if (cursor_movement_scrolls_p
+	      && forward_move_node_structure (window,
+					      info_scroll_behaviour) == 0)
+	    {
+	      point = 0;
+	      buffer = window->node->contents;
+	      end = window->node->nodelen;
+	    }
+	  else
+	    return;
+	}
+      
       /* If we are not in a word, move forward until we are in one.
          Then, move forward until we hit a non-alphabetic character. */
       c = buffer[point];
@@ -754,7 +848,20 @@ DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
             }
         }
 
-      if (point >= end) return;
+      if (point >= end)
+	{
+	  if (cursor_movement_scrolls_p
+	      && forward_move_node_structure (window,
+					      info_scroll_behaviour) == 0)
+	    {
+	      point = 0;
+	      buffer = window->node->contents;
+	      end = window->node->nodelen;
+	    }
+	  else
+	    return;
+	}
+
 
       while (++point < end)
         {
@@ -786,8 +893,21 @@ DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
   while (count)
     {
       if (point == 0)
-        break;
-
+	{
+	  if (cursor_movement_scrolls_p
+	      && backward_move_node_structure (window,
+					       info_scroll_behaviour) == 0)
+	    {
+	      if (window->line_count > window->height)
+		set_window_pagetop (window,
+				    window->line_count - window->height);
+	      buffer = window->node->contents;
+	      point = window->node->nodelen;
+	    }
+	  else
+	    break;
+	}
+      
       /* Like info_forward_word (), except that we look at the
          characters just before point. */
 
@@ -835,6 +955,9 @@ char *info_scroll_choices[] = {
   "Continuous", "Next Only", "Page Only", (char *)NULL
 };
 
+/* Controls whether scroll-behavior affects line movement commands */
+int cursor_movement_scrolls_p = 0;
+
 /* Default window sizes for scrolling commands.  */
 int default_window_size = -1;	/* meaning 1 window-full */
 int default_scroll_size = -1;	/* meaning half screen size */
@@ -844,19 +967,22 @@ int default_scroll_size = -1;	/* meaning half screen size */
                             && !is_dir_name (info_parsed_filename)))
 
 /* Move to 1st menu item, Next, Up/Next, or error in this window. */
-static void
+static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
   switch (behaviour)
     {
     case IS_PageOnly:
       info_error ((char *) msg_at_node_bottom, NULL, NULL);
-      break;
+      return 1;
 
     case IS_NextOnly:
       info_next_label_of_node (window->node);
       if (!info_parsed_nodename && !info_parsed_filename)
-        info_error ((char *) msg_no_pointer, (char *) _("Next"), NULL);
+	{
+	  info_error ((char *) msg_no_pointer, (char *) _("Next"), NULL);
+	  return 1;
+	}
       else
         {
           window_message_in_echo_area ((char *) _("Following Next node..."),
@@ -880,7 +1006,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
               window_message_in_echo_area ((char *) _("Selecting first menu item..."),
                   NULL, NULL);
               info_menu_digit (window, 1, '1');
-              return;
+              return 0;
             }
         }
 
@@ -892,7 +1018,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
             window_message_in_echo_area ((char *) _("Selecting Next node..."),
                 NULL, NULL);
             info_handle_pointer ("Next", window);
-            return;
+            return 0;
           }
 
         /* Okay, there wasn't a "Next:" for this node.  Move "Up:" until we
@@ -964,7 +1090,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                      (void *) (long) up_counter, NULL);
 
                   info_handle_pointer ("Next", window);
-                  return;
+                  return 0;
                 }
               else
                 {
@@ -986,28 +1112,33 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   window->flags |= W_UpdateWindow;
                   info_error ((char *) _("No more nodes within this document."),
                       NULL, NULL);
+		  return 1;
                 }
             }
         }
         break;
       }
     }
+  return info_error_was_printed; /*FIXME*/
 }
 
 /* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
-static void
+static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
   switch (behaviour)
     {
     case IS_PageOnly:
       info_error ((char *) msg_at_node_top, NULL, NULL);
-      break;
+      return 1;
 
     case IS_NextOnly:
       info_prev_label_of_node (window->node);
       if (!info_parsed_nodename && !info_parsed_filename)
-        info_error ((char *) _("No `Prev' for this node."), NULL, NULL);
+	{
+	  info_error ((char *) _("No `Prev' for this node."), NULL, NULL);
+	  return 1;
+	}
       else
         {
           window_message_in_echo_area ((char *) _("Moving Prev in this window."),
@@ -1025,9 +1156,12 @@ backward_move_node_structure (WINDOW *window, int behaviour)
           info_up_label_of_node (window->node);
           if (!info_parsed_nodename && (!info_parsed_filename
                                         || is_dir_name (info_parsed_filename)))
-            info_error ((char *)
-                _("No `Prev' or `Up' for this node within this document."),
-                NULL, NULL);
+	    {
+	      info_error ((char *)
+		    _("No `Prev' or `Up' for this node within this document."),
+			  NULL, NULL);
+	      return 1;
+	    }
           else
             {
               window_message_in_echo_area ((char *) _("Moving Up in this window."),
@@ -1087,6 +1221,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
         }
       break;
     }
+  return 0;
 }
 
 /* Move continuously forward through the node structure of this info file. */
@@ -1148,10 +1283,10 @@ _scroll_forward(WINDOW *window, int count, unsigned char key, int behaviour)
           /* If there are no more lines to scroll here, error, or get
              another node, depending on BEHAVIOUR. */
           if (desired_top > window->line_count)
-            {
-              forward_move_node_structure (window, behaviour);
-              return;
-            }
+	    {
+	      forward_move_node_structure (window, behaviour);
+	      return;
+	    }
         }
       else
         desired_top = window->pagetop + count;
@@ -1185,10 +1320,10 @@ _scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour)
           desired_top = window->pagetop - (window->height - 2);
 
           if ((desired_top < 0) && (window->pagetop == 0))
-            {
-              backward_move_node_structure (window, behaviour);
-              return;
-            }
+	    {
+	      backward_move_node_structure (window, behaviour);
+	      return;
+	    }
         }
       else
         desired_top = window->pagetop - count;
@@ -4226,7 +4361,7 @@ info_gc_file_buffers (void)
 /* **************************************************************** */
 
 /* Move to the next or previous cross reference in this node. */
-static void
+static int
 info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 {
   long firstmenu, firstxref;
@@ -4270,7 +4405,7 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   if (firstmenu == -1 && firstxref == -1)
     {
       info_error ((char *) msg_no_xref_node, NULL, NULL);
-      return;
+      return cursor_movement_scrolls_p;
     }
 
   /* There is at least one cross reference or menu entry in this node.
@@ -4317,22 +4452,28 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
      point, choose the first menu or xref entry appearing in this node. */
   if (placement == -1)
     {
-      if (firstmenu != -1 && firstxref != -1)
-        {
-          if (((dir == 1) && (firstmenu < firstxref)) ||
-              ((dir == -1) && (firstmenu > firstxref)))
-            placement = firstmenu + 1;
-          else
-            placement = firstxref;
-        }
-      else if (firstmenu != -1)
-        placement = firstmenu + 1;
+      if (cursor_movement_scrolls_p)
+	return 1;
       else
-        placement = firstxref;
+	{
+	  if (firstmenu != -1 && firstxref != -1)
+	    {
+	      if (((dir == 1) && (firstmenu < firstxref)) ||
+		  ((dir == -1) && (firstmenu > firstxref)))
+		placement = firstmenu + 1;
+	      else
+		placement = firstxref;
+	    }
+	  else if (firstmenu != -1)
+	    placement = firstmenu + 1;
+	  else
+	    placement = firstxref;
+	}
     }
   window->point = placement;
   window_adjust_pagetop (window);
   window->flags |= W_UpdateWindow;
+  return 0;
 }
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
@@ -4341,7 +4482,16 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
   if (count < 0)
     info_move_to_prev_xref (window, -count, key);
   else
-    info_move_to_xref (window, count, key, -1);
+    {
+      while (info_move_to_xref (window, count, key, -1))
+	{
+	  info_error_was_printed = 0;
+	  if (backward_move_node_structure (window, info_scroll_behaviour))
+	    break;
+	  move_to_new_line (window->line_count, window->line_count - 1,
+			    window);
+	}
+    }
 }
 
 DECLARE_INFO_COMMAND (info_move_to_next_xref,
@@ -4350,7 +4500,19 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
   if (count < 0)
     info_move_to_next_xref (window, -count, key);
   else
-    info_move_to_xref (window, count, key, 1);
+    {
+      /* Note: This can cause some blinking when the next cross reference is
+	 located several nodes further. This effect can be easily suppressed
+	 by setting display_inhibited to 1, however this will also make
+	 error messages to be dumped on stderr, instead on the echo area. */ 
+      while (info_move_to_xref (window, count, key, 1))
+	{
+	  info_error_was_printed = 0;
+	  if (forward_move_node_structure (window, info_scroll_behaviour))
+	    break;
+	  move_to_new_line (0, 0, window);
+	}
+    }
 }
 
 /* Select the menu item or reference that appears on this line. */
