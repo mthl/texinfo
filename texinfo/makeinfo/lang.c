@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.30 2007-07-15 11:51:12 olegkat Exp $
+   $Id: lang.c,v 1.31 2007-08-16 17:32:28 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -149,8 +149,8 @@ static iso_map_type iso8859_1_map [] = {
 
 /* ISO 8859-15, also known as Latin 9, differs from Latin 1 in only a
    few positions.  http://www.cs.tut.fi/~jkorpela/latin9.html has a good
-   explanation and listing, summarized here.  The names are abbreviated
-   from the official Unicode names, to fit in a decent line length.
+   explanation and listing, summarized here.  The names here are
+   abbreviated to fit in a decent line length.
 
   code position
   dec	oct   hex   latin1 latin1 name	      latin9 latin9 name
@@ -280,7 +280,7 @@ static iso_map_type iso8859_15_map [] = {
    including the character table!!! (must see!)
 
  * ISO 8859-2 and even HTML entities !!! (must see!)
-   http://people.ssh.fi/mtr/genscript/88592.txt
+   88592.txt in the GNU enscript distribution
 
  * (minor) http://www.agh.edu.pl/ogonki/plchars.html
    One more table, this time it includes even information about Polish
@@ -321,67 +321,67 @@ static iso_map_type iso8859_2_map [] = {
   { "",	0xBE, 0x017E, "z" }, /* LATIN SMALL LETTER Z WITH CARON */
   { "",	0xBF, 0x017C, "z" }, /* LATIN SMALL LETTER Z WITH DOT ABOVE */
   { "",	0xC0, 0x0154, "R" }, /* LATIN CAPITAL LETTER R WITH ACUTE */
-  { "",	0xC1, 0x00C1, "A" }, /* LATIN CAPITAL LETTER A WITH ACUTE */
-  { "",	0xC2, 0x00C2, "A" }, /* LATIN CAPITAL LETTER A WITH CIRCUMFLEX */
+  { "Aacute",	0xC1, 0x00C1, "A" }, /* LATIN CAPITAL LETTER A WITH ACUTE */
+  { "Acirc",	0xC2, 0x00C2, "A" }, /* LATIN CAPITAL LETTER A WITH CIRCUMFLEX */
   { "",	0xC3, 0x0102, "A" }, /* LATIN CAPITAL LETTER A WITH BREVE */
-  { "",	0xC4, 0x00C4, "A" }, /* LATIN CAPITAL LETTER A WITH DIAERESIS */
+  { "Auml",	0xC4, 0x00C4, "A" }, /* LATIN CAPITAL LETTER A WITH DIAERESIS */
   { "",	0xC5, 0x0139, "L" }, /* LATIN CAPITAL LETTER L WITH ACUTE */
   { "",	0xC6, 0x0106, "C" }, /* LATIN CAPITAL LETTER C WITH ACUTE */
-  { "",	0xC7, 0x00C7, "C" }, /* LATIN CAPITAL LETTER C WITH CEDILLA */
+  { "Ccedil",	0xC7, 0x00C7, "C" }, /* LATIN CAPITAL LETTER C WITH CEDILLA */
   { "",	0xC8, 0x010C, "C" }, /* LATIN CAPITAL LETTER C WITH CARON */
-  { "",	0xC9, 0x00C9, "E" }, /* LATIN CAPITAL LETTER E WITH ACUTE */
+  { "Eacute",	0xC9, 0x00C9, "E" }, /* LATIN CAPITAL LETTER E WITH ACUTE */
   { "",	0xCA, 0x0118, "E" }, /* LATIN CAPITAL LETTER E WITH OGONEK */
-  { "",	0xCB, 0x00CB, "E" }, /* LATIN CAPITAL LETTER E WITH DIAERESIS */
+  { "Euml",	0xCB, 0x00CB, "E" }, /* LATIN CAPITAL LETTER E WITH DIAERESIS */
   { "",	0xCC, 0x011A, "E" }, /* LATIN CAPITAL LETTER E WITH CARON */
-  { "",	0xCD, 0x00CD, "I" }, /* LATIN CAPITAL LETTER I WITH ACUTE */
-  { "",	0xCE, 0x00CE, "I" }, /* LATIN CAPITAL LETTER I WITH CIRCUMFLEX */
+  { "Iacute",	0xCD, 0x00CD, "I" }, /* LATIN CAPITAL LETTER I WITH ACUTE */
+  { "Icirc",	0xCE, 0x00CE, "I" }, /* LATIN CAPITAL LETTER I WITH CIRCUMFLEX */
   { "",	0xCF, 0x010E, "D" }, /* LATIN CAPITAL LETTER D WITH CARON */
-  { "",	0xD0, 0x0110, "D" }, /* LATIN CAPITAL LETTER D WITH STROKE */
+  { "ETH",	0xD0, 0x0110, "D" }, /* LATIN CAPITAL LETTER D WITH STROKE */
   { "",	0xD1, 0x0143, "N" }, /* LATIN CAPITAL LETTER N WITH ACUTE */
   { "",	0xD2, 0x0147, "N" }, /* LATIN CAPITAL LETTER N WITH CARON */
-  { "",	0xD3, 0x00D3, "O" }, /* LATIN CAPITAL LETTER O WITH ACUTE */
-  { "",	0xD4, 0x00D4, "O" }, /* LATIN CAPITAL LETTER O WITH CIRCUMFLEX */
+  { "Oacute",	0xD3, 0x00D3, "O" }, /* LATIN CAPITAL LETTER O WITH ACUTE */
+  { "Ocirc",	0xD4, 0x00D4, "O" }, /* LATIN CAPITAL LETTER O WITH CIRCUMFLEX */
   { "",	0xD5, 0x0150, "O" }, /* LATIN CAPITAL LETTER O WITH DOUBLE ACUTE */
-  { "",	0xD6, 0x00D6, "O" }, /* LATIN CAPITAL LETTER O WITH DIAERESIS */
+  { "Ouml",	0xD6, 0x00D6, "O" }, /* LATIN CAPITAL LETTER O WITH DIAERESIS */
   { "times",	0xD7, 0x00D7 }, /* MULTIPLICATION SIGN */
   { "",	0xD8, 0x0158, "R" }, /* LATIN CAPITAL LETTER R WITH CARON */
   { "",	0xD9, 0x016E, "U" }, /* LATIN CAPITAL LETTER U WITH RING ABOVE */
-  { "",	0xDA, 0x00DA, "U" }, /* LATIN CAPITAL LETTER U WITH ACUTE */
+  { "Uacute",	0xDA, 0x00DA, "U" }, /* LATIN CAPITAL LETTER U WITH ACUTE */
   { "",	0xDB, 0x0170, "U" }, /* LATIN CAPITAL LETTER U WITH DOUBLE ACUTE */
-  { "",	0xDC, 0x00DC, "U" }, /* LATIN CAPITAL LETTER U WITH DIAERESIS */
-  { "",	0xDD, 0x00DD, "Y" }, /* LATIN CAPITAL LETTER Y WITH ACUTE */
+  { "Uuml",	0xDC, 0x00DC, "U" }, /* LATIN CAPITAL LETTER U WITH DIAERESIS */
+  { "Yacute",	0xDD, 0x00DD, "Y" }, /* LATIN CAPITAL LETTER Y WITH ACUTE */
   { "",	0xDE, 0x0162, "T" }, /* LATIN CAPITAL LETTER T WITH CEDILLA */
-  { "",	0xDF, 0x00DF, "ss" }, /* LATIN SMALL LETTER SHARP S (German) */
+  { "szlig",	0xDF, 0x00DF, "ss" }, /* LATIN SMALL LETTER SHARP S (German) */
   { "",	0xE0, 0x0155, "s" }, /* LATIN SMALL LETTER R WITH ACUTE */
-  { "",	0xE1, 0x00E1, "a" }, /* LATIN SMALL LETTER A WITH ACUTE */
-  { "",	0xE2, 0x00E2, "a" }, /* LATIN SMALL LETTER A WITH CIRCUMFLEX */
+  { "aacute",	0xE1, 0x00E1, "a" }, /* LATIN SMALL LETTER A WITH ACUTE */
+  { "acirc",	0xE2, 0x00E2, "a" }, /* LATIN SMALL LETTER A WITH CIRCUMFLEX */
   { "",	0xE3, 0x0103, "a" }, /* LATIN SMALL LETTER A WITH BREVE */
-  { "",	0xE4, 0x00E4, "a" }, /* LATIN SMALL LETTER A WITH DIAERESIS */
+  { "auml",	0xE4, 0x00E4, "a" }, /* LATIN SMALL LETTER A WITH DIAERESIS */
   { "",	0xE5, 0x013A, "l" }, /* LATIN SMALL LETTER L WITH ACUTE */
   { "",	0xE6, 0x0107, "c" }, /* LATIN SMALL LETTER C WITH ACUTE */
-  { "",	0xE7, 0x00E7, "c" }, /* LATIN SMALL LETTER C WITH CEDILLA */
+  { "ccedil",	0xE7, 0x00E7, "c" }, /* LATIN SMALL LETTER C WITH CEDILLA */
   { "",	0xE8, 0x010D, "c" }, /* LATIN SMALL LETTER C WITH CARON */
-  { "",	0xE9, 0x00E9, "e" }, /* LATIN SMALL LETTER E WITH ACUTE */
+  { "eacute",	0xE9, 0x00E9, "e" }, /* LATIN SMALL LETTER E WITH ACUTE */
   { "",	0xEA, 0x0119, "e" }, /* LATIN SMALL LETTER E WITH OGONEK */
-  { "",	0xEB, 0x00EB, "e" }, /* LATIN SMALL LETTER E WITH DIAERESIS */
+  { "euml",	0xEB, 0x00EB, "e" }, /* LATIN SMALL LETTER E WITH DIAERESIS */
   { "",	0xEC, 0x011B, "e" }, /* LATIN SMALL LETTER E WITH CARON */
-  { "",	0xED, 0x00ED, "i" }, /* LATIN SMALL LETTER I WITH ACUTE */
-  { "",	0xEE, 0x00EE, "i" }, /* LATIN SMALL LETTER I WITH CIRCUMFLEX */
+  { "iacute",	0xED, 0x00ED, "i" }, /* LATIN SMALL LETTER I WITH ACUTE */
+  { "icirc",	0xEE, 0x00EE, "i" }, /* LATIN SMALL LETTER I WITH CIRCUMFLEX */
   { "",	0xEF, 0x010F, "d" }, /* LATIN SMALL LETTER D WITH CARON */
   { "",	0xF0, 0x0111, "d" }, /* LATIN SMALL LETTER D WITH STROKE */
   { "",	0xF1, 0x0144, "n" }, /* LATIN SMALL LETTER N WITH ACUTE */
   { "",	0xF2, 0x0148, "n" }, /* LATIN SMALL LETTER N WITH CARON */
-  { "",	0xF3, 0x00F3, "o" }, /* LATIN SMALL LETTER O WITH ACUTE */
-  { "",	0xF4, 0x00F4, "o" }, /* LATIN SMALL LETTER O WITH CIRCUMFLEX */
+  { "oacute",	0xF3, 0x00F3, "o" }, /* LATIN SMALL LETTER O WITH ACUTE */
+  { "ocirc",	0xF4, 0x00F4, "o" }, /* LATIN SMALL LETTER O WITH CIRCUMFLEX */
   { "",	0xF5, 0x0151, "o" }, /* LATIN SMALL LETTER O WITH DOUBLE ACUTE */
-  { "",	0xF6, 0x00F6, "o" }, /* LATIN SMALL LETTER O WITH DIAERESIS */
+  { "ouml",	0xF6, 0x00F6, "o" }, /* LATIN SMALL LETTER O WITH DIAERESIS */
   { "divide",	0xF7, 0x00F7 }, /* DIVISION SIGN */
   { "",	0xF8, 0x0159, "r" }, /* LATIN SMALL LETTER R WITH CARON */
   { "",	0xF9, 0x016F, "u" }, /* LATIN SMALL LETTER U WITH RING ABOVE */
-  { "",	0xFA, 0x00FA, "u" }, /* LATIN SMALL LETTER U WITH ACUTE */
+  { "uacute",	0xFA, 0x00FA, "u" }, /* LATIN SMALL LETTER U WITH ACUTE */
   { "",	0xFB, 0x0171, "u" }, /* LATIN SMALL LETTER U WITH DOUBLE ACUTE */
-  { "",	0xFC, 0x00FC, "u" }, /* LATIN SMALL LETTER U WITH DIAERESIS */
-  { "",	0xFD, 0x00FD, "y" }, /* LATIN SMALL LETTER Y WITH ACUTE */
+  { "uuml",	0xFC, 0x00FC, "u" }, /* LATIN SMALL LETTER U WITH DIAERESIS */
+  { "yacute",	0xFD, 0x00FD, "y" }, /* LATIN SMALL LETTER Y WITH ACUTE */
   { "",	0xFE, 0x0163, "t" }, /* LATIN SMALL LETTER T WITH CEDILLA */
   { "",	0xFF, 0x02D9 }, /* DOT ABOVE (Mandarin Chinese light tone) */
   { NULL, 0, 0 }
