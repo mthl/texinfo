@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.31 2007-08-16 17:32:28 karl Exp $
+   $Id: lang.c,v 1.32 2007-08-16 17:42:20 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -297,7 +297,7 @@ static iso_map_type iso8859_2_map [] = {
   { "",	0xA6, 0x015A, "S" }, /* LATIN CAPITAL LETTER S WITH ACUTE */
   { "sect",	0xA7, 0x00A7 }, /* SECTION SIGN */
   { "uml",	0xA8, 0x00A8 }, /* DIAERESIS */
-  { "",	0xA9, 0x0160, "S" }, /* LATIN CAPITAL LETTER S WITH CARON */
+  { "#xa9",	0xA9, 0x0160, "S" }, /* LATIN CAPITAL LETTER S WITH CARON */
   { "",	0xAA, 0x015E, "S" }, /* LATIN CAPITAL LETTER S WITH CEDILLA */
   { "",	0xAB, 0x0164, "T" }, /* LATIN CAPITAL LETTER T WITH CARON */
   { "",	0xAC, 0x0179, "Z" }, /* LATIN CAPITAL LETTER Z WITH ACUTE */
@@ -486,7 +486,7 @@ encoding_type encoding_table[] = {
   { ISO_8859_15, "iso-8859-15", (iso_map_type *) iso8859_15_map },
   { KOI8_R,      "koi8-r",      (iso_map_type *) koi8_map },
   { KOI8_U,      "koi8-u",      (iso_map_type *) koi8_map },
-  { UTF_8,       "utf-8",       asis_map },  /* fixme: need to do a lot more */
+  { UTF_8,       "utf-8",       asis_map },  /* fixxme: much more needed */
   { last_encoding_code, NULL, NULL }
 };
 
