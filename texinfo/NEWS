@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.149 2007-07-29 14:55:43 karl Exp $
+$Id: NEWS,v 1.150 2007-08-18 22:19:52 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -87,8 +87,9 @@ one of the relevant sections:
   . new options --ps and --dvipdf, useful especially for pstricks documents.
   . new option --src-specials, passed to TeX.
 * texinfo.tex:
-  . Latin1, Latin2, Latin9, and UTF-8 are supported as well as Computer
-    Modern can manage.
+  . Latin1, Latin2, Latin9, and UTF-8 are supported -- only as well as
+    the Computer Modern fonts can manage, which means primarily English
+    and western European languages, to a limited extent.
   . png and jpg images supported in pdf output.
   . new Russian, Serbian, and Ukrainian translations for texinfo.tex:
     txi-ru.tex, txi-sr.tex, txi-uk.tex.
