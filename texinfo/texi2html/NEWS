@@ -11,6 +11,9 @@ This file records noteworthy changes.
 * BUG FIXES
   ---------
 
+* @, followed by an argument without brace is now handled. Report from 
+  Jorge Barros de Abreu.
+
 1.78 (2007-06-05)
 
 * NEW FEATURES

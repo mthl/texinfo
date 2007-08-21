@@ -252,99 +252,102 @@
 ../GermanNodeTest/nodetest.texi(,256) @menu
 ../GermanNodeTest/nodetest.texi(,257) * @m_cedilla{c}::    @m_cedilla{c}.
 ../GermanNodeTest/nodetest.texi(,258) * @m_cedilla{C}::    @m_cedilla{C}.
-../GermanNodeTest/nodetest.texi(,259) @end menu
-../GermanNodeTest/nodetest.texi(,260) @c
-../GermanNodeTest/nodetest.texi(,261) @node @m_cedilla{c},,,cedilla accent
-../GermanNodeTest/nodetest.texi(,262) @section @m_cedilla{c}
-../GermanNodeTest/nodetest.texi(,263) @node @m_cedilla{C},,,cedilla accent
-../GermanNodeTest/nodetest.texi(,264) @section @m_cedilla{C}
-../GermanNodeTest/nodetest.texi(,265) @c
-../GermanNodeTest/nodetest.texi(,266) @node rest,,Top,Top
-../GermanNodeTest/nodetest.texi(,267) @chapter rest
-../GermanNodeTest/nodetest.texi(,268) @menu
-../GermanNodeTest/nodetest.texi(,269) * @aa{}::  @aa{}.
-../GermanNodeTest/nodetest.texi(,270) * @ae{}::  @ae{}.
-../GermanNodeTest/nodetest.texi(,271) * @oe{}::  @oe{}.
-../GermanNodeTest/nodetest.texi(,272) * @AA{}::  @AA{}.
-../GermanNodeTest/nodetest.texi(,273) * @AE{}::  @AE{}.
-../GermanNodeTest/nodetest.texi(,274) * @OE{}::  @OE{}.
-../GermanNodeTest/nodetest.texi(,275) * @l{}::  @l{}.
-../GermanNodeTest/nodetest.texi(,276) * @o{}::  @o{}.
-../GermanNodeTest/nodetest.texi(,277) * @L{}::  @L{}.
-../GermanNodeTest/nodetest.texi(,278) * @O{}::  @O{}.
-../GermanNodeTest/nodetest.texi(,279) * @H{a}::  @H{a}.
-../GermanNodeTest/nodetest.texi(,280) * @u{a}::  @u{a}.
-../GermanNodeTest/nodetest.texi(,281) * @v{a}::  @v{a}.
-../GermanNodeTest/nodetest.texi(,282) * @udotaccent{a}::  @udotaccent{a} udotaccent.
-../GermanNodeTest/nodetest.texi(,283) * @dotaccent{a}::  @dotaccent{a} dotaccent.
-../GermanNodeTest/nodetest.texi(,284) * @ringaccent{a}::  @ringaccent{a} ringaccent.
-../GermanNodeTest/nodetest.texi(,285) * @tieaccent{a}::  @tieaccent{a} tieaccent.
-../GermanNodeTest/nodetest.texi(,286) * @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
-../GermanNodeTest/nodetest.texi(,287) * @dotless{i}::  @dotless{i} dotless i.
-../GermanNodeTest/nodetest.texi(,288) * @dotless{j}::  @dotless{j} dotless j.
-../GermanNodeTest/nodetest.texi(,289) * @comma{}::     @comma{} comma
-../GermanNodeTest/nodetest.texi(,290) @end menu
-../GermanNodeTest/nodetest.texi(,291) @c
-../GermanNodeTest/nodetest.texi(,292) @node @aa{},,,rest
-../GermanNodeTest/nodetest.texi(,293) @section @aa{}
-../GermanNodeTest/nodetest.texi(,294) @node @ae{},,,rest
-../GermanNodeTest/nodetest.texi(,295) @section @ae{}
-../GermanNodeTest/nodetest.texi(,296) @node @oe{},,,rest
-../GermanNodeTest/nodetest.texi(,297) @section @oe{}
-../GermanNodeTest/nodetest.texi(,298) @node @AA{},,,rest
-../GermanNodeTest/nodetest.texi(,299) @section @AA{}
-../GermanNodeTest/nodetest.texi(,300) @node @AE{},,,rest
-../GermanNodeTest/nodetest.texi(,301) @section @AE{}
-../GermanNodeTest/nodetest.texi(,302) @node @OE{},,,rest
-../GermanNodeTest/nodetest.texi(,303) @section @OE{}
-../GermanNodeTest/nodetest.texi(,304) @node @l{},,,rest
-../GermanNodeTest/nodetest.texi(,305) @section @l{}
-../GermanNodeTest/nodetest.texi(,306) @node @o{},,,rest
-../GermanNodeTest/nodetest.texi(,307) @section @o{}
-../GermanNodeTest/nodetest.texi(,308) @node @L{},,,rest
-../GermanNodeTest/nodetest.texi(,309) @section @L{}
-../GermanNodeTest/nodetest.texi(,310) @node @O{},,,rest
-../GermanNodeTest/nodetest.texi(,311) @section @O{}
-../GermanNodeTest/nodetest.texi(,312) @node @H{a},,,rest
-../GermanNodeTest/nodetest.texi(,313) @section @H{a}
-../GermanNodeTest/nodetest.texi(,314) @node @u{a},,,rest
-../GermanNodeTest/nodetest.texi(,315) @section @u{a}
-../GermanNodeTest/nodetest.texi(,316) @node @v{a},,,rest
-../GermanNodeTest/nodetest.texi(,317) @section @v{a}
-../GermanNodeTest/nodetest.texi(,318) @node @udotaccent{a},,,rest
-../GermanNodeTest/nodetest.texi(,319) @section @udotaccent{a}
-../GermanNodeTest/nodetest.texi(,320) Test udotaccent.
-../GermanNodeTest/nodetest.texi(,321) @node @dotaccent{a},,,rest
-../GermanNodeTest/nodetest.texi(,322) @section @dotaccent{a}
-../GermanNodeTest/nodetest.texi(,323) Test dotaccent.
-../GermanNodeTest/nodetest.texi(,324) @node @ringaccent{a},,,rest
-../GermanNodeTest/nodetest.texi(,325) @section @ringaccent{a}
-../GermanNodeTest/nodetest.texi(,326) @node @tieaccent{a},,,rest
-../GermanNodeTest/nodetest.texi(,327) @section @tieaccent{a}
-../GermanNodeTest/nodetest.texi(,328) @node @ubaraccent{a},,,rest
-../GermanNodeTest/nodetest.texi(,329) @section @ubaraccent{a}
-../GermanNodeTest/nodetest.texi(,330) @node @dotless{i},,,rest
-../GermanNodeTest/nodetest.texi(,331) @section @dotless{i}
-../GermanNodeTest/nodetest.texi(,332) @node @dotless{j},,,rest
-../GermanNodeTest/nodetest.texi(,333) @section @dotless{j}
-../GermanNodeTest/nodetest.texi(,334)         
-../GermanNodeTest/nodetest.texi(,335)         @dots{}
-../GermanNodeTest/nodetest.texi(,336) 
-../GermanNodeTest/nodetest.texi(,337) 	@enddots{}
-../GermanNodeTest/nodetest.texi(,338) 
-../GermanNodeTest/nodetest.texi(,339) 	@exclamdown{}
-../GermanNodeTest/nodetest.texi(,340) 
-../GermanNodeTest/nodetest.texi(,341) 	@questiondown{}
-../GermanNodeTest/nodetest.texi(,342) 
-../GermanNodeTest/nodetest.texi(,343) 	@pounds{}
-../GermanNodeTest/nodetest.texi(,344) 
-../GermanNodeTest/nodetest.texi(,345) 	@@- : @-
-../GermanNodeTest/nodetest.texi(,346) 	@@ followed by end of line: @
-../GermanNodeTest/nodetest.texi(,347) 	@@ followed by tab: @	
-../GermanNodeTest/nodetest.texi(,348) 	@@ followed by space @ 
-../GermanNodeTest/nodetest.texi(,349) 	@@*: @* and text followin @@*.
-../GermanNodeTest/nodetest.texi(,350) 
-../GermanNodeTest/nodetest.texi(,351) @node @comma{},,,rest
-../GermanNodeTest/nodetest.texi(,352) @section @comma{}
-../GermanNodeTest/nodetest.texi(,353) @contents
-../GermanNodeTest/nodetest.texi(,354) @bye
+../GermanNodeTest/nodetest.texi(,259) * @m_cedilla{c} no brace:: @m_cedilla{c} no brace.
+../GermanNodeTest/nodetest.texi(,260) @end menu
+../GermanNodeTest/nodetest.texi(,261) @c
+../GermanNodeTest/nodetest.texi(,262) @node @m_cedilla{c},,,cedilla accent
+../GermanNodeTest/nodetest.texi(,263) @section @m_cedilla{c}
+../GermanNodeTest/nodetest.texi(,264) @node @m_cedilla{C},,,cedilla accent
+../GermanNodeTest/nodetest.texi(,265) @section @m_cedilla{C}
+../GermanNodeTest/nodetest.texi(,266) @node @m_cedilla{c} no brace,,,cedilla accent
+../GermanNodeTest/nodetest.texi(,267) @section @m_cedilla{c} no brace
+../GermanNodeTest/nodetest.texi(,268) @c
+../GermanNodeTest/nodetest.texi(,269) @node rest,,Top,Top
+../GermanNodeTest/nodetest.texi(,270) @chapter rest
+../GermanNodeTest/nodetest.texi(,271) @menu
+../GermanNodeTest/nodetest.texi(,272) * @aa{}::  @aa{}.
+../GermanNodeTest/nodetest.texi(,273) * @ae{}::  @ae{}.
+../GermanNodeTest/nodetest.texi(,274) * @oe{}::  @oe{}.
+../GermanNodeTest/nodetest.texi(,275) * @AA{}::  @AA{}.
+../GermanNodeTest/nodetest.texi(,276) * @AE{}::  @AE{}.
+../GermanNodeTest/nodetest.texi(,277) * @OE{}::  @OE{}.
+../GermanNodeTest/nodetest.texi(,278) * @l{}::  @l{}.
+../GermanNodeTest/nodetest.texi(,279) * @o{}::  @o{}.
+../GermanNodeTest/nodetest.texi(,280) * @L{}::  @L{}.
+../GermanNodeTest/nodetest.texi(,281) * @O{}::  @O{}.
+../GermanNodeTest/nodetest.texi(,282) * @H{a}::  @H{a}.
+../GermanNodeTest/nodetest.texi(,283) * @u{a}::  @u{a}.
+../GermanNodeTest/nodetest.texi(,284) * @v{a}::  @v{a}.
+../GermanNodeTest/nodetest.texi(,285) * @udotaccent{a}::  @udotaccent{a} udotaccent.
+../GermanNodeTest/nodetest.texi(,286) * @dotaccent{a}::  @dotaccent{a} dotaccent.
+../GermanNodeTest/nodetest.texi(,287) * @ringaccent{a}::  @ringaccent{a} ringaccent.
+../GermanNodeTest/nodetest.texi(,288) * @tieaccent{a}::  @tieaccent{a} tieaccent.
+../GermanNodeTest/nodetest.texi(,289) * @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
+../GermanNodeTest/nodetest.texi(,290) * @dotless{i}::  @dotless{i} dotless i.
+../GermanNodeTest/nodetest.texi(,291) * @dotless{j}::  @dotless{j} dotless j.
+../GermanNodeTest/nodetest.texi(,292) * @comma{}::     @comma{} comma
+../GermanNodeTest/nodetest.texi(,293) @end menu
+../GermanNodeTest/nodetest.texi(,294) @c
+../GermanNodeTest/nodetest.texi(,295) @node @aa{},,,rest
+../GermanNodeTest/nodetest.texi(,296) @section @aa{}
+../GermanNodeTest/nodetest.texi(,297) @node @ae{},,,rest
+../GermanNodeTest/nodetest.texi(,298) @section @ae{}
+../GermanNodeTest/nodetest.texi(,299) @node @oe{},,,rest
+../GermanNodeTest/nodetest.texi(,300) @section @oe{}
+../GermanNodeTest/nodetest.texi(,301) @node @AA{},,,rest
+../GermanNodeTest/nodetest.texi(,302) @section @AA{}
+../GermanNodeTest/nodetest.texi(,303) @node @AE{},,,rest
+../GermanNodeTest/nodetest.texi(,304) @section @AE{}
+../GermanNodeTest/nodetest.texi(,305) @node @OE{},,,rest
+../GermanNodeTest/nodetest.texi(,306) @section @OE{}
+../GermanNodeTest/nodetest.texi(,307) @node @l{},,,rest
+../GermanNodeTest/nodetest.texi(,308) @section @l{}
+../GermanNodeTest/nodetest.texi(,309) @node @o{},,,rest
+../GermanNodeTest/nodetest.texi(,310) @section @o{}
+../GermanNodeTest/nodetest.texi(,311) @node @L{},,,rest
+../GermanNodeTest/nodetest.texi(,312) @section @L{}
+../GermanNodeTest/nodetest.texi(,313) @node @O{},,,rest
+../GermanNodeTest/nodetest.texi(,314) @section @O{}
+../GermanNodeTest/nodetest.texi(,315) @node @H{a},,,rest
+../GermanNodeTest/nodetest.texi(,316) @section @H{a}
+../GermanNodeTest/nodetest.texi(,317) @node @u{a},,,rest
+../GermanNodeTest/nodetest.texi(,318) @section @u{a}
+../GermanNodeTest/nodetest.texi(,319) @node @v{a},,,rest
+../GermanNodeTest/nodetest.texi(,320) @section @v{a}
+../GermanNodeTest/nodetest.texi(,321) @node @udotaccent{a},,,rest
+../GermanNodeTest/nodetest.texi(,322) @section @udotaccent{a}
+../GermanNodeTest/nodetest.texi(,323) Test udotaccent.
+../GermanNodeTest/nodetest.texi(,324) @node @dotaccent{a},,,rest
+../GermanNodeTest/nodetest.texi(,325) @section @dotaccent{a}
+../GermanNodeTest/nodetest.texi(,326) Test dotaccent.
+../GermanNodeTest/nodetest.texi(,327) @node @ringaccent{a},,,rest
+../GermanNodeTest/nodetest.texi(,328) @section @ringaccent{a}
+../GermanNodeTest/nodetest.texi(,329) @node @tieaccent{a},,,rest
+../GermanNodeTest/nodetest.texi(,330) @section @tieaccent{a}
+../GermanNodeTest/nodetest.texi(,331) @node @ubaraccent{a},,,rest
+../GermanNodeTest/nodetest.texi(,332) @section @ubaraccent{a}
+../GermanNodeTest/nodetest.texi(,333) @node @dotless{i},,,rest
+../GermanNodeTest/nodetest.texi(,334) @section @dotless{i}
+../GermanNodeTest/nodetest.texi(,335) @node @dotless{j},,,rest
+../GermanNodeTest/nodetest.texi(,336) @section @dotless{j}
+../GermanNodeTest/nodetest.texi(,337)         
+../GermanNodeTest/nodetest.texi(,338)         @dots{}
+../GermanNodeTest/nodetest.texi(,339) 
+../GermanNodeTest/nodetest.texi(,340) 	@enddots{}
+../GermanNodeTest/nodetest.texi(,341) 
+../GermanNodeTest/nodetest.texi(,342) 	@exclamdown{}
+../GermanNodeTest/nodetest.texi(,343) 
+../GermanNodeTest/nodetest.texi(,344) 	@questiondown{}
+../GermanNodeTest/nodetest.texi(,345) 
+../GermanNodeTest/nodetest.texi(,346) 	@pounds{}
+../GermanNodeTest/nodetest.texi(,347) 
+../GermanNodeTest/nodetest.texi(,348) 	@@- : @-
+../GermanNodeTest/nodetest.texi(,349) 	@@ followed by end of line: @
+../GermanNodeTest/nodetest.texi(,350) 	@@ followed by tab: @	
+../GermanNodeTest/nodetest.texi(,351) 	@@ followed by space @ 
+../GermanNodeTest/nodetest.texi(,352) 	@@*: @* and text followin @@*.
+../GermanNodeTest/nodetest.texi(,353) 
+../GermanNodeTest/nodetest.texi(,354) @node @comma{},,,rest
+../GermanNodeTest/nodetest.texi(,355) @section @comma{}
+../GermanNodeTest/nodetest.texi(,356) @contents
+../GermanNodeTest/nodetest.texi(,357) @bye

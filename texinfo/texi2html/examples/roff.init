@@ -129,6 +129,7 @@ sub T2H_ROFF_titlepage ()
           '~',  '~',
           '^',  '^',
           '`',  '`',
+          ',',  ',',
           "'", "'",
           '=', '',
          );
@@ -332,7 +333,6 @@ sub roff_accent($$)
     return "\\($accent_map{$accent}${text}" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return "\\(o${text}"  if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return "\\(v${text}" if (($accent eq 'v') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
-    return "\\(,${text}"  if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
 #FIXME maybe we should protect the symbols such that they look like strings and
 # not ponctuation marks ? Like it is done in texi2roff ? 
 # otherwise we should use
@@ -346,7 +346,6 @@ sub roff_accent($$)
     return $text . '_' if ($accent eq 'ubaraccent');
     return '\\&.' . $text  if ($accent eq 'udotaccent');
     return $text . '<' if ($accent eq 'v');
-    return $text . ',' if ($accent eq ','); 
 }
 
 sub roff_sc($$)

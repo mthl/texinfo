@@ -20,13 +20,25 @@ kbd: ``simple-double-three-four-''
 @'e e'
 @=o o=
 @`i i`
+@'{e} e'
 @'{@dotless{i}} i' 
 @dotless{i} i
 @dotless{ij} ij
 @`{@=E} E=` 
 @l{} l
 @,{@'C} C',
+@,c c,
+@,c@"u c,u" 
 
+Somehow invalid use of @,:
+@, 
+
+@,@"u ,u"
+
+Invalid use of @':
+@' '
+
+@'@"u @'"u
 
 @dotless{truc} truc
 
@@ -524,14 +536,26 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @'e &eacute;
 @=o &#333;
 @`i &igrave;
+@'{e} &eacute;
 @'{@dotless{i}} &iacute; 
 @dotless{i} i
 @dotless{ij} ij
 @`{@=E} &#274;` 
 @l{} &#322;
 @,{@'C} &#262;,
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; <br>
 </p>
-
+<p>Somehow invalid use of @,:<br>
+@, 
+<br>
+@,@&quot;u ,&uuml;
+</p>
+<p>Invalid use of @':<br>
+@' '
+<br>
+@'@&quot;u @'&quot;u
+</p>
 <p>@dotless{truc} truc
 </p>
 <p>@* <br>
@@ -1097,13 +1121,30 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 @'e &eacute;
 @=o &#333;
 @`i &igrave;
+@'{e} &eacute;
 @'{@dotless{i}} &iacute; 
 @dotless{i} i
 @dotless{ij} ij
 @`{@=E} &#274;` 
 @l{} &#322;
 @,{@'C} &#262;,
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; 
 
+
+Somehow invalid use of @,:
+
+@, 
+
+
+@,@&quot;u ,&uuml;
+
+Invalid use of @':
+
+@' '
+
+
+@'@&quot;u @'&quot;u
 
 @dotless{truc} truc
 

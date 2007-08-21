@@ -1,3 +1,14 @@
+2007-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: handle @, command without brace like @,c. 
+	Report from Jorge Barros de Abreu.
+	* examples/roff.init, texi2html.init: treat @, more like other accent 
+	@-commands.
+	* Tests/*: more tests for accents and cedillas.
+	* Makefile.am: don't write the spec file in $(srcdir).
+	* *Makefile.in, configure: regenerate with automake 1.10, and 
+	autoconf 2.61.
+
 2007-06-04  Derek Price  <derek@ximbiot.com>
 
 	* configure.ac: Update to version 1.79 for development.

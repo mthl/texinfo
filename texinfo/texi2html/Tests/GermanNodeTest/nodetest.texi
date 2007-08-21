@@ -256,12 +256,15 @@ A second one with accented char @anchor{@'e-o}.
 @menu
 * @,{c}::    @,{c}.
 * @,{C}::    @,{C}.
+* @,c no brace:: @,c no brace.
 @end menu
 @c
 @node @,{c},,,cedilla accent
 @section @,{c}
 @node @,{C},,,cedilla accent
 @section @,{C}
+@node @,c no brace,,,cedilla accent
+@section @,c no brace
 @c
 @node rest,,Top,Top
 @chapter rest

@@ -147,7 +147,7 @@ texi2html.spec: texi2html.spec.in configure
 	@echo Generating $@...
 	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
 	     -e "s/[@]PACKAGE_TARNAME[@]/$(PACKAGE_TARNAME)/" $< >texi2html.tmp
-	@cp texi2html.tmp $(srcdir)/$@
+	@cp texi2html.tmp texi2html.spec
 	-@rm texi2html.tmp
 
 i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \

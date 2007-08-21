@@ -1,5 +1,5 @@
 Name: texi2html
-Version: 1.78
+Version: 1.79
 Release: 1
 #Epoch: 0
 License: GPL

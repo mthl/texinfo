@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.182 2007-05-07 22:56:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.183 2007-08-21 17:02:03 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -9002,10 +9002,6 @@ sub scan_texi($$$$;$)
                     return;
                 }
             }
-            elsif ($macro eq ',')
-            {# the @, causes problems when `,' separates things (in @node, @ref)
-                $_ = "\@m_cedilla" . $_;
-            } # handling of @, must be done before handling of {
             elsif (s/^{//)
             {# we add nested commands in a stack. verb is also on the stack
              # but handled specifically.
@@ -9025,7 +9021,38 @@ sub scan_texi($$$$;$)
                         $state->{'verb'} = $1;
                     }
                 }
+                elsif ($macro eq ',')
+                {
+                    $macro = 'm_cedilla';
+                }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
+            }
+            elsif ($macro eq ',')
+            { # a @, not followed by an opening brace {, something like @,c.
+                # we catch syntax errors at that point because
+                # m_cedilla is a normal macro name, not a special
+                # macro character, like , is. 
+                # So, for example @m_cedilla{@} would be very wrong while 
+                # @,@ is less problematic.
+                # A side efefct of that special handling is that strange
+                # use of @, will not result in the same result than strange 
+                # use of other accent commands.
+                if (s/^(.)//)
+                {
+                    my $cedilla_char = $1;
+                    if ($cedilla_char eq '@' or $cedilla_char eq '}')
+                    { 
+                       $_ = "\@m_cedilla{}"  .$cedilla_char. $_;
+                    }
+                    else
+                    {
+                       $_ = "\@m_cedilla" . "{$1}" .$_;
+                    }
+                }
+                else 
+                {# @, followed by an end of line
+                    next;
+                }
             }
             else
             {
@@ -10103,6 +10130,10 @@ sub scan_line($$$$;$)
                 } 
                 return undef;
             }
+            if ($macro eq 'm_cedilla' and !$state->{'keep_texi'})
+            {
+                $macro = ',';
+            }
             # This is a @macroname{...} construct. We add it on top of stack
             # It will be handled when we encounter the '}'
             # There is a special case for def macros as @deffn{def} is licit
@@ -10121,10 +10152,6 @@ sub scan_line($$$$;$)
                         $state->{'verb'} = $1;
                     }
                 } 
-                elsif ($macro eq 'm_cedilla' and !$state->{'keep_texi'})
-                {
-                    $macro = ',';
-                }
                 # currently if remove_texi and anchor/ref/footnote
                 # the text within the command is ignored
                 # see t2h_remove_command in texi2html.init

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.116 2007-05-07 22:56:02 pertusus Exp $
+# $Id: texi2html.init,v 1.117 2007-08-21 17:02:03 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1677,6 +1677,7 @@ sub T2H_DEFAULT_node_file_name($$)
           '^',  'circ',
           '`',  'grave',
           "'", 'acute',
+          ",", 'cedil',
           '=', '',
          );
 
@@ -2511,7 +2512,6 @@ sub default_accent($$)
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
-    return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return ascii_accents($text, $accent);
 }
 
@@ -2525,7 +2525,6 @@ sub t2h_default_accent($$)
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
-    return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
 # FIXME here there could be a conversion to the character in the right 
 # encoding, like 
 #    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '' 
@@ -2558,7 +2557,6 @@ sub ascii_accents($$)
     return $text . '_' if ($accent eq 'ubaraccent');
     return '.' . $text  if ($accent eq 'udotaccent');
     return $text . '<' if ($accent eq 'v');
-    return $text . ',' if ($accent eq ','); 
 }
 
 sub default_sc($$)

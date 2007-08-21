@@ -36,13 +36,25 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@'e @'e
 @@=o @=o
 @@`i @`i
+@@'@{e@} @'{e}
 @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
 @@dotless@{i@} @dotless{i}
 @@dotless@{ij@} @dotless{ij}
 @@`@{@@=E@} @`{@=E} 
 @@l@{@} @l{}
 @@,@{@@'C@} @,{@'C}
+@@,c @,c
+@@,c@@"u @,c@"u @*
 
+Somehow invalid use of @@,:@*
+@@, @,
+@*
+@@,@@"u @,@"u
+
+Invalid use of @@':@*
+@@' @'
+@*
+@@'@@"u @'@"u
 
 @@dotless@{truc@} @dotless{truc}
 
