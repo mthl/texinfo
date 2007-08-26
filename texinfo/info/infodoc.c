@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.13 2007-08-04 11:00:07 gray Exp $
+   $Id: infodoc.c,v 1.14 2007-08-26 12:58:56 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -78,8 +78,8 @@ static char *info_internal_help_text[] = {
   "\n",
   N_("Other commands:\n\
 ---------------\n"),
-  N_("\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"),
-  N_("\\%-10[last-menu-item]  Pick last item in node's menu.\n"),
+  N_("1...9       Pick first...ninth item in this node's menu.\n"),
+  N_("\\%-10[last-menu-item]  Pick last item in this node's menu.\n"),
   N_("\\%-10[index-search]  Search for a specified string in the index entries of this Info\n\
               file, and select the node referenced by the first entry found.\n"),
   N_("\\%-10[goto-node]  Move to node specified by name.\n\

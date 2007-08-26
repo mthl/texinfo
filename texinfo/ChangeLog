@@ -1,3 +1,8 @@
+2007-08-26  Karl Berry  <karl@gnu.org>
+
+	* info/infodoc.c (info_internal_help_text): hardwire
+	menu-digits help string; bug report from Benno.
+
 2007-08-16  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/lang.c (iso8859_2_map): include known HTML entities,
@@ -31,11 +36,6 @@
         * info/variables.h: Likewise
         * info/variables.c (scroll-behavior): Alias for scroll-behaviour
         (cursor-movement-scrolls): New variable.
-
-2007-07-31  Karl Berry  <karl@gnu.org>
-
-	* info/infodoc.c (info_internal_help_text): hardwire
-	menu-digits, from Benno.
 
 2007-07-30  Karl Berry  <karl@gnu.org>
 
