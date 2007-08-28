@@ -1,14 +1,14 @@
 #! /bin/sh
 # depcomp - compile a program generating dependencies as side-effects
 
-scriptversion=2007-03-29.01
+scriptversion=2006-05-10.23
 
-# Copyright (C) 1999, 2000, 2003, 2004, 2005, 2006, 2007 Free Software
+# Copyright (C) 1999, 2000, 2003, 2004, 2005, 2006 Free Software
 # Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
+# the Free Software Foundation; either version 2, or (at your option)
 # any later version.
 
 # This program is distributed in the hope that it will be useful,
@@ -92,20 +92,7 @@ gcc3)
 ## gcc 3 implements dependency tracking that does exactly what
 ## we want.  Yay!  Note: for some reason libtool 1.4 doesn't like
 ## it if -MD -MP comes after the -MF stuff.  Hmm.
-## Unfortunately, FreeBSD c89 acceptance of flags depends upon
-## the command line argument order; so add the flags where they
-## appear in depend2.am.  Note that the slowdown incurred here
-## affects only configure: in makefiles, %FASTDEP% shortcuts this.
-  for arg
-  do
-    case $arg in
-    -c) set fnord "$@" -MT "$object" -MD -MP -MF "$tmpdepfile" "$arg" ;;
-    *)  set fnord "$@" "$arg" ;;
-    esac
-    shift # fnord
-    shift # $arg
-  done
-  "$@"
+  "$@" -MT "$object" -MD -MP -MF "$tmpdepfile"
   stat=$?
   if test $stat -eq 0; then :
   else
@@ -215,39 +202,34 @@ aix)
   # current directory.  Also, the AIX compiler puts `$object:' at the
   # start of each line; $object doesn't have directory information.
   # Version 6 uses the directory in both cases.
-  dir=`echo "$object" | sed -e 's|/[^/]*$|/|'`
-  test "x$dir" = "x$object" && dir=
-  base=`echo "$object" | sed -e 's|^.*/||' -e 's/\.o$//' -e 's/\.lo$//'`
+  stripped=`echo "$object" | sed 's/\(.*\)\..*$/\1/'`
+  tmpdepfile="$stripped.u"
   if test "$libtool" = yes; then
-    tmpdepfile1=$dir$base.u
-    tmpdepfile2=$base.u
-    tmpdepfile3=$dir.libs/$base.u
     "$@" -Wc,-M
   else
-    tmpdepfile1=$dir$base.u
-    tmpdepfile2=$dir$base.u
-    tmpdepfile3=$dir$base.u
     "$@" -M
   fi
   stat=$?
 
+  if test -f "$tmpdepfile"; then :
+  else
+    stripped=`echo "$stripped" | sed 's,^.*/,,'`
+    tmpdepfile="$stripped.u"
+  fi
+
   if test $stat -eq 0; then :
   else
-    rm -f "$tmpdepfile1" "$tmpdepfile2" "$tmpdepfile3"
+    rm -f "$tmpdepfile"
     exit $stat
   fi
 
-  for tmpdepfile in "$tmpdepfile1" "$tmpdepfile2" "$tmpdepfile3"
-  do
-    test -f "$tmpdepfile" && break
-  done
   if test -f "$tmpdepfile"; then
+    outname="$stripped.o"
     # Each line is of the form `foo.o: dependent.h'.
     # Do two passes, one to just change these to
     # `$object: dependent.h' and one to simply `dependent.h:'.
-    sed -e "s,^.*\.[a-z]*:,$object:," < "$tmpdepfile" > "$depfile"
-    # That's a tab and a space in the [].
-    sed -e 's,^.*\.[a-z]*:[	 ]*,,' -e 's,$,:,' < "$tmpdepfile" >> "$depfile"
+    sed -e "s,^$outname:,$object :," < "$tmpdepfile" > "$depfile"
+    sed -e "s,^$outname: \(.*\)$,\1:," < "$tmpdepfile" >> "$depfile"
   else
     # The sourcefile does not contain any dependencies, so just
     # store a dummy comment line, to avoid errors with the Makefile
@@ -353,7 +335,7 @@ tru64)
       #
       # With libtool 1.5 this exception was removed, and libtool now
       # generates 2 separate objects for the 2 libraries.  These two
-      # compilations output dependencies in $dir.libs/$base.o.d and
+      # compilations output dependencies in in $dir.libs/$base.o.d and
       # in $dir$base.o.d.  We have to check for both files, because
       # one of the two compilations can be disabled.  We should prefer
       # $dir$base.o.d over $dir.libs/$base.o.d because the latter is
