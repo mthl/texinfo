@@ -1,3 +1,7 @@
+2007-08-28  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.9.92.
+
 2007-08-26  Karl Berry  <karl@gnu.org>
 
 	* info/infodoc.c (info_internal_help_text): hardwire
