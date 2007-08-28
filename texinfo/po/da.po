@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2e\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-07-29 07:58-0700\n"
+"POT-Creation-Date: 2007-08-28 11:01-0700\n"
 "PO-Revision-Date: 2002-11-08 09:13GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -81,11 +81,11 @@ msgstr "%s: tilvalg '-W %s' tillader ikke en parameter\n"
 msgid "memory exhausted"
 msgstr "virtuel hukommelse opbrugt"
 
-#: info/echo-area.c:283 info/session.c:688
+#: info/echo-area.c:283 info/session.c:732
 msgid "Move forward a character"
 msgstr "Gå et tegn frem"
 
-#: info/echo-area.c:295 info/session.c:704
+#: info/echo-area.c:295 info/session.c:764
 msgid "Move backward a character"
 msgstr "Gå et tegn tilbage"
 
@@ -97,11 +97,11 @@ msgstr "Gå til starten af linjen"
 msgid "Move to the end of this line"
 msgstr "Gå til slutning af linjen"
 
-#: info/echo-area.c:320 info/session.c:722
+#: info/echo-area.c:320 info/session.c:805
 msgid "Move forward a word"
 msgstr "Ryk et ord frem"
 
-#: info/echo-area.c:360 info/session.c:771
+#: info/echo-area.c:360 info/session.c:878
 msgid "Move backward a word"
 msgstr "Ryk et ord tilbage"
 
@@ -473,7 +473,7 @@ msgstr "Det resulterende vindue ville være for lille."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Ikke nok plads til et hjælpevindue. Fjern venligst et vindue."
 
-#: info/infodoc.c:45 info/infodoc.c:94
+#: info/infodoc.c:45 info/infodoc.c:97
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -493,7 +493,7 @@ msgstr "\\%-10[quit]  Afslut hele Info-programmet.\n"
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Kør info introduktionen.\n"
 
-#: info/infodoc.c:52 info/infodoc.c:101
+#: info/infodoc.c:52 info/infodoc.c:104
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -532,16 +532,15 @@ msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "\\%-10[history-node]  Flyt til vinduets sidste synlige emne-felt.\n"
 
 #: info/infodoc.c:61
-msgid ""
-"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+#, fuzzy
+msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
 msgstr ""
 "\\%-10[move-to-next-xref]  Hop til næste hypertekst-henvisning i dette "
 "emne.\n"
 
 #: info/infodoc.c:62
-msgid ""
-"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
-"node.\n"
+#, fuzzy
+msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
 msgstr ""
 "\\%-10[move-to-prev-xref]  Hop til næste hypertekst-henvisning i dette "
 "emne.\n"
@@ -565,7 +564,13 @@ msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Gå til emnet Top. Svarer til '\\[goto-node] Top'.\n"
 
-#: info/infodoc.c:67 info/infodoc.c:115
+#: info/infodoc.c:67
+msgid ""
+"[*]    Command acts within this node or the entire document, depending on\n"
+"the value of cursor-movement-scrolls variable\n"
+msgstr ""
+
+#: info/infodoc.c:70 info/infodoc.c:118
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -573,31 +578,31 @@ msgstr ""
 "Bevægelser indenfor et emne:\n"
 "----------------------------\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Gå til starten af emnet.\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:73
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Gå til enden af emnet.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:74
 msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
 msgstr "\\%-10[næste linje]  Rul 1 linje frem.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:75
 msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
 msgstr "\\%-10[forrige linje]  Rul en linje tilbage.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:76
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "\\%-10[scroll-forward]  Rul en side frem.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:77
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "\\%-10[scroll-backward]  Rul en side tilbage.\n"
 
-#: info/infodoc.c:76 info/infodoc.c:124
+#: info/infodoc.c:79 info/infodoc.c:127
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -605,15 +610,17 @@ msgstr ""
 "Andre kommandoer:\n"
 "-----------------\n"
 
-#: info/infodoc.c:78
-msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-msgstr "\\%-10[menu-digit]  Vælg første til niende punkt i emnets menu.\n"
+#: info/infodoc.c:81
+#, fuzzy
+msgid "1...9       Pick first...ninth item in this node's menu.\n"
+msgstr "  %-10s  Vælg første ... niende punkt i emnets menu.\n"
 
-#: info/infodoc.c:79
-msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
+#: info/infodoc.c:82
+#, fuzzy
+msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Vælg sidste punkt i emnets menu.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:83
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -625,7 +632,7 @@ msgstr ""
 "              og vælg det emne, der refereres til af den først fundne "
 "indgang.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:85
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -633,7 +640,7 @@ msgstr ""
 "\\%-10[goto-node]  Gå til emne angivet ved navn.\n"
 "              Du kan også medtage filnavn, som (FILNAVN)EMNENAVN.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:87
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -641,7 +648,7 @@ msgstr ""
 "\\%-10[search]  Søg fremad efter en given streng\n"
 "              og vælg emnet med den næste forekomst.\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:89
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
 "              and select the node in which the previous occurrence is "
@@ -650,116 +657,116 @@ msgstr ""
 "\\%-10[search-backward]  Sæg baglæns efter en given streng\n"
 "              og vælg emnet med den forrige forekomst.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Afslut hjælp.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Afslut hele Info-programmet.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Kør info introduktionen.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Flyt til emnet 'næste' i dette emne.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Flyt til emnet 'Forrige' i dette emne.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Gå et niveau op.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
 msgstr "  %-10s  Vælg menupunkt angivet ved navn.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:110
 msgid "              Picking a menu item causes another node to be selected.\n"
 msgstr "              Valg af menupunkt vælger et andet emne.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Følg en krydshenvisning.  Indlæser referencens navn.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Flyt til vinduets sidste synlige emne-felt.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Hop til næste hypertekst-lænke i dette emne.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Følg hypertekst-lænken under markøren.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Flyt til emnet 'katalog'. Svarer til 'g (KATALOG)'.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Gå til emnet Top. Svarer til 'g Top'.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Rul en side frem.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Rul en side tilbage.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Gå til starten af emnet.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Gå til enden af emnet.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:124
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Rul 1 linje frem.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:125
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Rul en linje tilbage.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:129
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  Vælg første ... niende punkt i emnets menu.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:130
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Vælg sidste punkt i emnets menu.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:133
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -771,17 +778,17 @@ msgstr ""
 "              og vælg det emne, der refereres til af den først fundne "
 "indgang.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:135
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Gå til emne angivet ved navn.\n"
 
-#: info/infodoc.c:133
+#: info/infodoc.c:136
 msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              Du kan også medtage filnavn, som (FILNAVN)EMNENAVN.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:137
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -790,21 +797,21 @@ msgstr ""
 "\\%-10[search]  Søg fremad efter en given streng\n"
 "              og vælg emnet med den næste forekomst.\n"
 
-#: info/infodoc.c:136
+#: info/infodoc.c:139
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Søg baglæns efter en given streng\n"
 
-#: info/infodoc.c:137
+#: info/infodoc.c:140
 msgid ""
 "              and select the node in which the next occurrence is found.\n"
 msgstr "              og vælg emne med den næste forekomst.\n"
 
-#: info/infodoc.c:317
+#: info/infodoc.c:320
 msgid "The current search path is:\n"
 msgstr "Den nuværende søgesti er:\n"
 
-#: info/infodoc.c:321
+#: info/infodoc.c:324
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -812,7 +819,7 @@ msgstr ""
 "Tilgængelige kommandoer i infovinduer:\n"
 "\n"
 
-#: info/infodoc.c:325
+#: info/infodoc.c:328
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -820,7 +827,7 @@ msgstr ""
 "Tilgængelige kommandoer i ekko-område:\n"
 "\n"
 
-#: info/infodoc.c:348
+#: info/infodoc.c:351
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -829,7 +836,7 @@ msgstr ""
 "Følgende kommandoer kan kun køres via %s:\n"
 "\n"
 
-#: info/infodoc.c:352
+#: info/infodoc.c:355
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -837,67 +844,67 @@ msgstr ""
 "Følgende kommandoer kan slet ikke køres:\n"
 "\n"
 
-#: info/infodoc.c:376
+#: info/infodoc.c:379
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- Benyt '\\[history-node]' eller '\\[kill-node]' for at afslutte ---\n"
 
-#: info/infodoc.c:486
+#: info/infodoc.c:489
 msgid "Display help message"
 msgstr "Vis hjælp"
 
-#: info/infodoc.c:504
+#: info/infodoc.c:507
 msgid "Visit Info node `(info)Help'"
 msgstr "Besøg infoemnet '(info)Help'"
 
-#: info/infodoc.c:642
+#: info/infodoc.c:645
 msgid "Print documentation for KEY"
 msgstr "Vis dokumentation for TAST"
 
-#: info/infodoc.c:654
+#: info/infodoc.c:657
 #, c-format
 msgid "Describe key: %s"
 msgstr "Beskriv tast: %s"
 
-#: info/infodoc.c:665
+#: info/infodoc.c:668
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s er ikke defineret."
 
-#: info/infodoc.c:681 info/infodoc.c:710
+#: info/infodoc.c:684 info/infodoc.c:713
 #, c-format
 msgid "%s is undefined."
 msgstr "%s er ikke defineret."
 
-#: info/infodoc.c:731
+#: info/infodoc.c:734
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s er defineret til %s."
 
-#: info/infodoc.c:1154
+#: info/infodoc.c:1157
 msgid "Show what to type to execute a given command"
 msgstr "Vis hvad der skal tastes, for at udføre en given kommando"
 
-#: info/infodoc.c:1158
+#: info/infodoc.c:1161
 msgid "Where is command: "
 msgstr "Hvor er kommando: "
 
-#: info/infodoc.c:1180
+#: info/infodoc.c:1183
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "'%s' er ikke på nogen taster"
 
-#: info/infodoc.c:1187
+#: info/infodoc.c:1190
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s kan kun udføres via %s."
 
-#: info/infodoc.c:1191
+#: info/infodoc.c:1194
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s kan udføres via %s."
 
-#: info/infodoc.c:1196
+#: info/infodoc.c:1199
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Der er ingen funktion kaldet '%s'"
@@ -1142,7 +1149,7 @@ msgstr "Vælg et emne, som tidligere har været besøgt i et synligt vindue"
 msgid "Select visited node: "
 msgstr "Vælg besøgt emne: "
 
-#: info/nodemenu.c:336 info/session.c:2263
+#: info/nodemenu.c:336 info/session.c:2398
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referencen forsvandt! (%s)."
@@ -1156,500 +1163,500 @@ msgstr ""
 "Velkommen til Info version %s. Skriv \\[get-help-window] for hjælp.  \\[menu-"
 "item] for menupunkt."
 
-#: info/session.c:619
+#: info/session.c:622
 msgid "Move down to the next line"
 msgstr "Gå ned til næste linje"
 
-#: info/session.c:634
+#: info/session.c:658
 msgid "Move up to the previous line"
 msgstr "Gå op til forrige linje"
 
-#: info/session.c:649
+#: info/session.c:693
 msgid "Move to the end of the line"
 msgstr "Gå til linjeslutning"
 
-#: info/session.c:669
+#: info/session.c:713
 msgid "Move to the start of the line"
 msgstr "Gå til linjestart"
 
-#: info/session.c:859 makeinfo/node.c:1437
+#: info/session.c:983 makeinfo/node.c:1437
 msgid "Next"
 msgstr "Næste"
 
-#: info/session.c:862
+#: info/session.c:988
 msgid "Following Next node..."
 msgstr "Følger emnet Næste..."
 
-#: info/session.c:880
+#: info/session.c:1006
 msgid "Selecting first menu item..."
 msgstr "Vælger første menupunkt..."
 
-#: info/session.c:892
+#: info/session.c:1018
 msgid "Selecting Next node..."
 msgstr "Vælger emnet 'Næste'..."
 
-#: info/session.c:963
+#: info/session.c:1089
 #, c-format
 msgid "Moving Up %d time(s), then Next."
 msgstr "Går 'Op' %d gang(e), derefter 'Næste'."
 
-#: info/session.c:987
+#: info/session.c:1113
 msgid "No more nodes within this document."
 msgstr "Ikke flere emner i dette dokument."
 
-#: info/session.c:1010
+#: info/session.c:1139
 msgid "No `Prev' for this node."
 msgstr "Ingen 'Forrige' i dette emne."
 
-#: info/session.c:1013 info/session.c:1072
+#: info/session.c:1144 info/session.c:1206
 msgid "Moving Prev in this window."
 msgstr "Går til 'Forrige' i dette vindue."
 
-#: info/session.c:1029
+#: info/session.c:1161
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr "Ingen 'Forrige' eller 'Op' for dette emne i dette dokument."
 
-#: info/session.c:1033
+#: info/session.c:1167
 msgid "Moving Up in this window."
 msgstr "Går 'Op' i dette vindue."
 
-#: info/session.c:1083
+#: info/session.c:1217
 msgid "Moving to `Prev's last menu item."
 msgstr "Går til 'Forrige's sidste menupunkt."
 
-#: info/session.c:1094
+#: info/session.c:1229
 msgid "Move forwards or down through node structure"
 msgstr "Gå frem eller ned gennem emne-strukturen"
 
-#: info/session.c:1110
+#: info/session.c:1245
 msgid "Move backwards or up through node structure"
 msgstr "Gå tilbage eller op gennem emne-strukturen"
 
-#: info/session.c:1204
+#: info/session.c:1339
 msgid "Scroll forward in this window"
 msgstr "Rul tilbage i vinduet"
 
-#: info/session.c:1212
+#: info/session.c:1347
 msgid "Scroll forward in this window and set default window size"
 msgstr "Rul frem i vinduet og sæt standard vinduesstørrelse"
 
-#: info/session.c:1220
+#: info/session.c:1355
 msgid "Scroll forward in this window staying within node"
 msgstr "Rul frem i vinduet i samme emne"
 
-#: info/session.c:1228
+#: info/session.c:1363
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "Rul frem i vinduet i samme emne og sæt standard vinduesstørrelse"
 
-#: info/session.c:1236
+#: info/session.c:1371
 msgid "Scroll backward in this window"
 msgstr "Rul tilbage i vinduet"
 
-#: info/session.c:1244
+#: info/session.c:1379
 msgid "Scroll backward in this window and set default window size"
 msgstr "Rul tilbage i vinduet og sæt standard vinduesstørrelse"
 
-#: info/session.c:1253
+#: info/session.c:1388
 msgid "Scroll backward in this window staying within node"
 msgstr "Rul tilbage i vinduet indenfor samme emne"
 
-#: info/session.c:1261
+#: info/session.c:1396
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr ""
 "Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
 
-#: info/session.c:1269
+#: info/session.c:1404
 msgid "Move to the start of this node"
 msgstr "Gå til starten af dette emne"
 
-#: info/session.c:1276
+#: info/session.c:1411
 msgid "Move to the end of this node"
 msgstr "Gå til slutningen af dette emne"
 
-#: info/session.c:1283
+#: info/session.c:1418
 msgid "Scroll down by lines"
 msgstr "Rul N linjer ned"
 
-#: info/session.c:1300
+#: info/session.c:1435
 msgid "Scroll up by lines"
 msgstr "Rul N linjer op"
 
-#: info/session.c:1318
+#: info/session.c:1453
 msgid "Scroll down by half screen size"
 msgstr "Rul en halv skærmstørrelse ned"
 
-#: info/session.c:1344
+#: info/session.c:1479
 msgid "Scroll up by half screen size"
 msgstr "Rul en halv skærmstørrelse op"
 
-#: info/session.c:1373
+#: info/session.c:1508
 msgid "Select the next window"
 msgstr "Vælg det næste vindue"
 
-#: info/session.c:1412
+#: info/session.c:1547
 msgid "Select the previous window"
 msgstr "Vælg det forrige vindue"
 
-#: info/session.c:1463
+#: info/session.c:1598
 msgid "Split the current window"
 msgstr "Opdel nuværende vindue"
 
-#: info/session.c:1544
+#: info/session.c:1679
 msgid "Delete the current window"
 msgstr "Slet nuværende vindue"
 
-#: info/session.c:1552
+#: info/session.c:1687
 msgid "Cannot delete a permanent window"
 msgstr "Kan ikke slette et permanent vindue"
 
-#: info/session.c:1584
+#: info/session.c:1719
 msgid "Delete all other windows"
 msgstr "Slet alle andre vinduer"
 
-#: info/session.c:1630
+#: info/session.c:1765
 msgid "Scroll the other window"
 msgstr "Rul det andet vindue"
 
-#: info/session.c:1651
+#: info/session.c:1786
 msgid "Scroll the other window backward"
 msgstr "Rul det andet vindue baglæns"
 
-#: info/session.c:1657
+#: info/session.c:1792
 msgid "Grow (or shrink) this window"
 msgstr "Forstør (eller formindsk) dette vindue"
 
-#: info/session.c:1668
+#: info/session.c:1803
 msgid "Divide the available screen space among the visible windows"
 msgstr "Fordel det tilgængelige skærmområde mellem de synlige vinduer"
 
-#: info/session.c:1675
+#: info/session.c:1810
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Vælg/fravælg linjeombrydning i nuværende vindue"
 
-#: info/session.c:1847
+#: info/session.c:1982
 msgid "Select the Next node"
 msgstr "Vælg emnet Næste"
 
-#: info/session.c:1855
+#: info/session.c:1990
 msgid "Select the Prev node"
 msgstr "Vælg emnet Forrige"
 
-#: info/session.c:1863
+#: info/session.c:1998
 msgid "Select the Up node"
 msgstr "Vælg emnet 'Op'"
 
-#: info/session.c:1870
+#: info/session.c:2005
 msgid "Select the last node in this file"
 msgstr "Vælg det sidste emne i filen"
 
-#: info/session.c:1897 info/session.c:1930
+#: info/session.c:2032 info/session.c:2065
 msgid "This window has no additional nodes"
 msgstr "Dette vindue har ingen yderligere emner"
 
-#: info/session.c:1903
+#: info/session.c:2038
 msgid "Select the first node in this file"
 msgstr "Vælg det første emne i filen"
 
-#: info/session.c:1937
+#: info/session.c:2072
 msgid "Select the last item in this node's menu"
 msgstr "Vælg det sidste punkt i emnets menu"
 
-#: info/session.c:1943
+#: info/session.c:2078
 msgid "Select this menu item"
 msgstr "Vælg dette menupunkt"
 
-#: info/session.c:1976
+#: info/session.c:2111
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Der er ikke %d punkter i denne menu."
 
-#: info/session.c:2170 info/session.c:2171
+#: info/session.c:2305 info/session.c:2306
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menupunkt (%s): "
 
-#: info/session.c:2174
+#: info/session.c:2309
 msgid "Menu item: "
 msgstr "Menupunkt: "
 
-#: info/session.c:2181 info/session.c:2182
+#: info/session.c:2316 info/session.c:2317
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Følg krydsreference (%s): "
 
-#: info/session.c:2185
+#: info/session.c:2320
 msgid "Follow xref: "
 msgstr "Følg krydsreference: "
 
-#: info/session.c:2314
+#: info/session.c:2449
 msgid "Read a menu item and select its node"
 msgstr "Indlæs et menupunkt og vælg dets emne"
 
-#: info/session.c:2322
+#: info/session.c:2457
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Indlæs en fodnote eller krydsreference og vælg dets emne"
 
-#: info/session.c:2328
+#: info/session.c:2463
 msgid "Move to the start of this node's menu"
 msgstr "Flyt til starten af dette emnes menu"
 
-#: info/session.c:2352
+#: info/session.c:2487
 msgid "Visit as many menu items at once as possible"
 msgstr "Besøg så mange menupunkter på en gang, som det er muligt"
 
-#: info/session.c:2380
+#: info/session.c:2515
 msgid "Read a node name and select it"
 msgstr "Indlæs et emnenavn og vælg det"
 
-#: info/session.c:2435 info/session.c:2440
+#: info/session.c:2570 info/session.c:2575
 msgid "Goto node: "
 msgstr "Gå til emne: "
 
-#: info/session.c:2504
+#: info/session.c:2639
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Ingen menu i emne '%s'."
 
-#: info/session.c:2550
+#: info/session.c:2685
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Intet menupunkt '%s' i emne '%s'."
 
-#: info/session.c:2580
+#: info/session.c:2715
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Kunne ikke finde emnet, der refereres til af '%s' i '%s'."
 
-#: info/session.c:2630
+#: info/session.c:2765
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Indlæs en liste med menuer, der starter i katalog, og følg dem"
 
-#: info/session.c:2632
+#: info/session.c:2767
 msgid "Follow menus: "
 msgstr "Følg menuer: "
 
-#: info/session.c:2825
+#: info/session.c:2960
 msgid "Find the node describing program invocation"
 msgstr "Find emnet, der beskriver hvordan programmet startes"
 
-#: info/session.c:2827
+#: info/session.c:2962
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Find programstart emne for [%s]: "
 
-#: info/session.c:2865
+#: info/session.c:3000
 msgid "Read a manpage reference and select it"
 msgstr "Indlæs en man-side reference og vælg den"
 
-#: info/session.c:2869
+#: info/session.c:3004
 msgid "Get Manpage: "
 msgstr "Hent man-side: "
 
-#: info/session.c:2899
+#: info/session.c:3034
 msgid "Select the node `Top' in this file"
 msgstr "Vælg emnet 'Top' i filen"
 
-#: info/session.c:2905
+#: info/session.c:3040
 msgid "Select the node `(dir)'"
 msgstr "Vælg emnet '(katalog)'"
 
-#: info/session.c:2922 info/session.c:2924
+#: info/session.c:3057 info/session.c:3059
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Fjern emne (%s): "
 
-#: info/session.c:2976
+#: info/session.c:3111
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Kan ikke fjerne emnet '%s'"
 
-#: info/session.c:2986
+#: info/session.c:3121
 msgid "Cannot kill the last node"
 msgstr "Kan ikke fjerne det sidste emne"
 
-#: info/session.c:3072
+#: info/session.c:3207
 msgid "Select the most recently selected node"
 msgstr "Vælg det sidst valgt emne"
 
-#: info/session.c:3078
+#: info/session.c:3213
 msgid "Kill this node"
 msgstr "Fjern dette emne"
 
-#: info/session.c:3086
+#: info/session.c:3221
 msgid "Read the name of a file and select it"
 msgstr "Indlæs et filnavn og vælg det"
 
-#: info/session.c:3090
+#: info/session.c:3225
 msgid "Find file: "
 msgstr "Find fil: "
 
-#: info/session.c:3107
+#: info/session.c:3242
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Kan ikke finde '%s'."
 
-#: info/session.c:3150 info/session.c:3268
+#: info/session.c:3285 info/session.c:3403
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Kunne ikke oprette uddatafil '%s'."
 
-#: info/session.c:3164 info/session.c:3286 info/session.c:3346
+#: info/session.c:3299 info/session.c:3421 info/session.c:3481
 msgid "Done."
 msgstr "Færdig."
 
-#: info/session.c:3219
+#: info/session.c:3354
 #, c-format
 msgid "Writing node %s..."
 msgstr "Skriver emnet %s..."
 
-#: info/session.c:3295
+#: info/session.c:3430
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Udskriv indholdet af dette emne (ved videreførsel gennem INFO_PRINT_COMMAND)"
 
-#: info/session.c:3330
+#: info/session.c:3465
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Kan ikke åbne videreførsel til '%s'."
 
-#: info/session.c:3336
+#: info/session.c:3471
 #, c-format
 msgid "Printing node %s..."
 msgstr "Udskriver emnet %s..."
 
-#: info/session.c:3566
+#: info/session.c:3701
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Leder efter underfilen %s ..."
 
-#: info/session.c:3618
+#: info/session.c:3753
 msgid "Read a string and search for it case-sensitively"
 msgstr "Indlæs en tekst og søg efter den uden versalfølsomhed"
 
-#: info/session.c:3625
+#: info/session.c:3760
 msgid "Read a string and search for it"
 msgstr "Indlæs en tekst og søg for den"
 
-#: info/session.c:3633
+#: info/session.c:3768
 msgid "Read a string and search backward for it"
 msgstr "Indlæs en tekst og søg baglæns efter den"
 
-#: info/session.c:3669 info/session.c:3676
+#: info/session.c:3804 info/session.c:3811
 #, c-format
 msgid "%s%sfor string [%s]: "
 msgstr "%s%sefter tekst [%s]: "
 
-#: info/session.c:3670 info/session.c:3677
+#: info/session.c:3805 info/session.c:3812
 msgid "Search backward"
 msgstr "Søg baglæns"
 
-#: info/session.c:3671 info/session.c:3677
+#: info/session.c:3806 info/session.c:3812
 msgid "Search"
 msgstr "Søg"
 
-#: info/session.c:3672 info/session.c:3678
+#: info/session.c:3807 info/session.c:3813
 msgid " case-sensitively "
 msgstr " versalfølsomt"
 
-#: info/session.c:3673 info/session.c:3678
+#: info/session.c:3808 info/session.c:3813
 msgid " "
 msgstr " "
 
-#: info/session.c:3717
+#: info/session.c:3852
 msgid "Search failed."
 msgstr "Søgning mislykkedes."
 
-#: info/session.c:3735
+#: info/session.c:3870
 msgid "Repeat last search in the same direction"
 msgstr "Gentag sidste søgning i samme retning"
 
-#: info/session.c:3738 info/session.c:3748
+#: info/session.c:3873 info/session.c:3883
 msgid "No previous search string"
 msgstr "Ingen tidligere søgetekst"
 
-#: info/session.c:3745
+#: info/session.c:3880
 msgid "Repeat last search in the reverse direction"
 msgstr "Gentag sidste søgning i modsat retning"
 
-#: info/session.c:3764 info/session.c:3770
+#: info/session.c:3899 info/session.c:3905
 msgid "Search interactively for a string as you type it"
 msgstr "Søg interaktivt efter en tekst, mens du skriver den"
 
-#: info/session.c:3850
+#: info/session.c:3985
 msgid "I-search backward: "
 msgstr "I-søgning baglæns: "
 
-#: info/session.c:3852
+#: info/session.c:3987
 msgid "I-search: "
 msgstr "I-søgning: "
 
-#: info/session.c:3877 info/session.c:3879
+#: info/session.c:4012 info/session.c:4014
 msgid "Failing "
 msgstr "Fejler "
 
-#: info/session.c:4339
+#: info/session.c:4480
 msgid "Move to the previous cross reference"
 msgstr "Gå til foregående krydsreference"
 
-#: info/session.c:4348
+#: info/session.c:4498
 msgid "Move to the next cross reference"
 msgstr "Gå til næste krydsreference"
 
-#: info/session.c:4358
+#: info/session.c:4520
 msgid "Select reference or menu item appearing on this line"
 msgstr "Vælg reference eller menupunkt, der optræder på denne linje"
 
-#: info/session.c:4381
+#: info/session.c:4543
 msgid "Cancel current operation"
 msgstr "Afbryd nuværende aktivitet"
 
-#: info/session.c:4388
+#: info/session.c:4550
 msgid "Quit"
 msgstr "Afslut"
 
-#: info/session.c:4397
+#: info/session.c:4559
 msgid "Move the cursor to a specific line of the window"
 msgstr "Flyt markør til bestemt linje i vinduet"
 
-#: info/session.c:4429
+#: info/session.c:4591
 msgid "Redraw the display"
 msgstr "Gentegn skærmen"
 
-#: info/session.c:4466
+#: info/session.c:4628
 msgid "Quit using Info"
 msgstr "Afslut info"
 
-#: info/session.c:4479
+#: info/session.c:4641
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Kør kommandoen, der er bundet til denne tasts småbogstavs-variant"
 
-#: info/session.c:4490
+#: info/session.c:4652
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Ukendt kommando (%s)."
 
-#: info/session.c:4493
+#: info/session.c:4655
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" er ugyldig"
 
-#: info/session.c:4494
+#: info/session.c:4656
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" er ugyldig"
 
-#: info/session.c:4708
+#: info/session.c:4870
 msgid "Add this digit to the current numeric argument"
 msgstr "Tilføj dette tegn til det nuværende numeriske parameter"
 
-#: info/session.c:4717
+#: info/session.c:4879
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Start (eller gang med 4) det nuværende numeriske parameter"
 
-#: info/session.c:4732
+#: info/session.c:4894
 msgid "Internally used by \\[universal-argument]"
 msgstr "Bruges internt af \\[universal-argument]"
 
@@ -1689,36 +1696,44 @@ msgstr "Når \"On\", vil trufne søgestrenge blive markeret"
 msgid "Controls what happens when scrolling is requested at the end of a node"
 msgstr "Bestemmer, hvad der sker, når rulning forsøges ved slutning af et emne"
 
-#: info/variables.c:64
+#: info/variables.c:65
+msgid "Same as scroll-behaviour"
+msgstr ""
+
+#: info/variables.c:69
 msgid "The number lines to scroll when the cursor moves out of the window"
 msgstr "Antallet af linjer, der rulles, når markøren flytter ud af vinduet"
 
-#: info/variables.c:68
+#: info/variables.c:73
+msgid "Controls whether scroll-behavior affects cursor movement commands"
+msgstr ""
+
+#: info/variables.c:77
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Når \"On\", vil Info benytte og vise ISO Latin tegn"
 
-#: info/variables.c:74
+#: info/variables.c:83
 msgid "Explain the use of a variable"
 msgstr "Forklar brugen af en variabel"
 
-#: info/variables.c:80
+#: info/variables.c:89
 msgid "Describe variable: "
 msgstr "Beskriv variabel: "
 
-#: info/variables.c:99
+#: info/variables.c:108
 msgid "Set the value of an Info variable"
 msgstr "Sæt værdien af en Info-variabel"
 
-#: info/variables.c:105
+#: info/variables.c:114
 msgid "Set variable: "
 msgstr "Sæt variabel: "
 
-#: info/variables.c:123
+#: info/variables.c:132
 #, c-format
 msgid "Set %s to value (%d): "
 msgstr "Sæt %s til værdien (%d): "
 
-#: info/variables.c:164
+#: info/variables.c:173
 #, c-format
 msgid "Set %s to value (%s): "
 msgstr "Sæt %s til værdien (%s): "
@@ -3128,6 +3143,9 @@ msgstr "Intet sidenummer i %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "indgang %s følger en indgang med et sekundært navn"
+
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr "\\%-10[menu-digit]  Vælg første til niende punkt i emnets menu.\n"
 
 #~ msgid "node `%s' has been referenced %d times"
 #~ msgstr "emne '%s' blev refereret %d gange"
