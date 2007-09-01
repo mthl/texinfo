@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.9 2007-07-01 21:20:30 karl Exp $
+    $Id: man.c,v 1.10 2007-09-01 00:05:24 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -332,7 +332,9 @@ get_manpage_contents (char *pagename)
              multibyte characters */
           setenv("LANGUAGE", "C", 1);
           setenv("LANG", "C", 1);
+#ifdef LC_MESSAGES
           setenv("LC_MESSAGES", "C", 1);
+#endif
           setenv("LC_CTYPE", "C", 1);
           setenv("LC_ALL", "C", 1);
         }
