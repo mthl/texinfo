@@ -1,6 +1,15 @@
-2007-08-28  Karl Berry  <karl@gnu.org>
+2007-09-01  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
-	* pretest 4.9.92.
+	* djgpp/config.bat: change file names arguments and configure.orig
+	to args and configure.org.
+	Remove the command line that deletes co*.tmp files.
+
+2007-08-31  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (main) [LC_MESSAGES]: conditionalize setlocale on
+	LC_MESSAGES, since djgpp 2.04 doesn't have it.
+	Report from Juan Manuel Guerrero, 28 Aug 2007 21:38:18.
+	* info/man.c (get_manpage_contents) [LC_MESSAGES]: likewise.
 
 2007-08-26  Karl Berry  <karl@gnu.org>
 
