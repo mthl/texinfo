@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.104 2007-07-11 00:16:23 karl Exp $
+   $Id: makeinfo.c,v 1.105 2007-09-03 12:06:29 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -559,7 +559,7 @@ main (int argc, char **argv)
   /* Do not use LC_ALL, because LC_NUMERIC screws up the scanf parsing
      of the argument to @multicolumn.  */
   setlocale (LC_TIME, "");
-#ifdef LC_MESSAGES /* ultrix */
+#ifdef LC_MESSAGES /* ultrix, djgpp 2.04 */
   setlocale (LC_MESSAGES, "");
 #endif
   setlocale (LC_CTYPE, "");

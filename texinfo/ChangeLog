@@ -10,6 +10,7 @@
 	LC_MESSAGES, since djgpp 2.04 doesn't have it.
 	Report from Juan Manuel Guerrero, 28 Aug 2007 21:38:18.
 	* info/man.c (get_manpage_contents) [LC_MESSAGES]: likewise.
+	* makeinfo/makeinfo.c (main): doc fix, likewise.
 
 2007-08-26  Karl Berry  <karl@gnu.org>
 
