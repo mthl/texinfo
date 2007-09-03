@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-08-28 11:01-0700\n"
+"POT-Creation-Date: 2007-09-03 05:23-0700\n"
 "PO-Revision-Date: 2007-07-29 16:20-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -292,12 +292,12 @@ msgstr ""
 "\n"
 "* Menü: `%s' indislerini içeren düðümler:\n"
 
-#: info/info.c:278 info/infokey.c:899
+#: info/info.c:287 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneðini kullanýn.\n"
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
+#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
@@ -313,17 +313,17 @@ msgstr ""
 "Bu özgür yazýlýmdýr: deðiþtirip daðýtma özgürlüðüne sahipsiniz.\n"
 "Yasalarýn elverdiði ölçüde HÝÇBÝR GARANTÝ yoktur.\n"
 
-#: info/info.c:502
+#: info/info.c:511
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "`%s' için indeks girdisi yok.\n"
 
-#: info/info.c:594
+#: info/info.c:603
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 "  -b, --speech-friendly       konuþma sentezcilerine dostça davranýr.\n"
 
-#: info/info.c:601
+#: info/info.c:610
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -405,7 +405,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  tüm el kitabýný out.txt'e yönlendir\n"
 "  info -f ./foo.info         dir'i aramadan ./foo.info dosyasýný göster\n"
 
-#: info/info.c:640 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/install-info.c:491 util/texindex.c:259
 msgid ""
 "\n"
@@ -418,72 +418,72 @@ msgstr ""
 "genel soru ve tartýþmalarý help-texinfo@gnu.org'a gönderiniz.\n"
 "Texinfo anasayfasý: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:674
+#: info/info.c:683
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "`%s' düðümü bulunamadý."
 
-#: info/info.c:675
+#: info/info.c:684
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "`(%s)%s' düðümü bulunamadý."
 
-#: info/info.c:676
+#: info/info.c:685
 msgid "Cannot find a window!"
 msgstr "Bir pencere bulunamadý!"
 
-#: info/info.c:677
+#: info/info.c:686
 msgid "Point doesn't appear within this window's node!"
 msgstr "Orasý bu pencerenin düðümü gibi görünmüyor!"
 
-#: info/info.c:678
+#: info/info.c:687
 msgid "Cannot delete the last window."
 msgstr "Son pencere silinemez."
 
-#: info/info.c:679
+#: info/info.c:688
 msgid "No menu in this node."
 msgstr "Bu düðümde menü yok."
 
-#: info/info.c:680
+#: info/info.c:689
 msgid "No footnotes in this node."
 msgstr "Bu düðümde dipnot yok."
 
-#: info/info.c:681
+#: info/info.c:690
 msgid "No cross references in this node."
 msgstr "Bu düðümde çapraz baþvuru yok."
 
-#: info/info.c:682
+#: info/info.c:691
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Bu düðüm için `%s' yer gösterici yok."
 
-#: info/info.c:683
+#: info/info.c:692
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Info komutu `%c' bilinmiyor; yardým almak için `?' deneyin."
 
-#: info/info.c:684
+#: info/info.c:693
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "`%s' terminal türü Info çalýþtýrmak için yeterince akýllý deðil."
 
-#: info/info.c:685
+#: info/info.c:694
 msgid "You are already at the last page of this node."
 msgstr "Zaten bu düðümün son sayfasýndasýnýz."
 
-#: info/info.c:686
+#: info/info.c:695
 msgid "You are already at the first page of this node."
 msgstr "Zaten bu düðümün ilk sayfasýndasýnýz."
 
-#: info/info.c:687
+#: info/info.c:696
 msgid "Only one window."
 msgstr "Sadece bir pencere."
 
-#: info/info.c:688
+#: info/info.c:697
 msgid "Resulting window would be too small."
 msgstr "Pencere çok küçük olacaktý."
 
-#: info/info.c:689
+#: info/info.c:698
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Bir yardým penceresi için yer yok, lütfen bir pencere silin."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-08-28 11:01-0700\n"
+"POT-Creation-Date: 2007-09-03 05:23-0700\n"
 "PO-Revision-Date: 2007-07-30 17:26+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -289,12 +289,12 @@ msgstr ""
 "\n"
 "* Menu: Wêz³y, których indeksy zawieraj± `%s':\n"
 
-#: info/info.c:278 info/infokey.c:899
+#: info/info.c:287 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Wiêcej informacji mo¿na uzyskaæ przez --help.\n"
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
+#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
@@ -311,16 +311,16 @@ msgstr ""
 "rozpowszechniaæ.\n"
 "Nie ma ¯ADNEJ GWARANCJI w zakresie dopuszczalnym przez prawo.\n"
 
-#: info/info.c:502
+#: info/info.c:511
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "nie znaleziono wpisów w indeksie dla `%s'\n"
 
-#: info/info.c:594
+#: info/info.c:603
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr "  -b, --speech-friendly        tryb przyjazny dla syntezatorów mowy.\n"
 
-#: info/info.c:601
+#: info/info.c:610
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -408,7 +408,7 @@ msgstr ""
 "  info -f ./foo.info         pokazanie pliku ./foo.info, z pominiêciem "
 "katalogu\n"
 
-#: info/info.c:640 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/install-info.c:491 util/texindex.c:259
 msgid ""
 "\n"
@@ -421,72 +421,72 @@ msgstr ""
 "bug-texinfo@gnu.org, ogólne pytania i dyskusjê na help-texinfo@gnu.org.\n"
 "Strona domowa texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:674
+#: info/info.c:683
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `%s'."
 
-#: info/info.c:675
+#: info/info.c:684
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `(%s)%s'."
 
-#: info/info.c:676
+#: info/info.c:685
 msgid "Cannot find a window!"
 msgstr "Nie mo¿na znale¼æ okna!"
 
-#: info/info.c:677
+#: info/info.c:686
 msgid "Point doesn't appear within this window's node!"
 msgstr "Kropka nie wystêpuje w wê¼le z tego okna!"
 
-#: info/info.c:678
+#: info/info.c:687
 msgid "Cannot delete the last window."
 msgstr "Nie mo¿na usun±æ ostatniego okna."
 
-#: info/info.c:679
+#: info/info.c:688
 msgid "No menu in this node."
 msgstr "Brak menu w tym wê¼le."
 
-#: info/info.c:680
+#: info/info.c:689
 msgid "No footnotes in this node."
 msgstr "Brak przypisów w tym wê¼le."
 
-#: info/info.c:681
+#: info/info.c:690
 msgid "No cross references in this node."
 msgstr "Brak odsy³aczy w tym wê¼le."
 
-#: info/info.c:682
+#: info/info.c:691
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Brak wska¼nika `%s' dla tego wêz³a."
 
-#: info/info.c:683
+#: info/info.c:692
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Nieznane polecenie Info `%c'; `?' przywo³uje pomoc."
 
-#: info/info.c:684
+#: info/info.c:693
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Typ terminala `%s' nie jest wystarczaj±cy do uruchomienia Info."
 
-#: info/info.c:685
+#: info/info.c:694
 msgid "You are already at the last page of this node."
 msgstr "To ju¿ jest ostatnia strona tego wêz³a."
 
-#: info/info.c:686
+#: info/info.c:695
 msgid "You are already at the first page of this node."
 msgstr "To ju¿ jest pierwsza strona tego wêz³a."
 
-#: info/info.c:687
+#: info/info.c:696
 msgid "Only one window."
 msgstr "Tylko jedno okno."
 
-#: info/info.c:688
+#: info/info.c:697
 msgid "Resulting window would be too small."
 msgstr "Wynikowe okno by³oby zbyt ma³e."
 
-#: info/info.c:689
+#: info/info.c:698
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Za ma³o miejsca na okno pomocy, proszê usun±æ okno."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-08-28 11:01-0700\n"
+"POT-Creation-Date: 2007-09-03 05:23-0700\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -294,12 +294,12 @@ msgstr ""
 "\n"
 "* Menu: Uzly jejich¾ rejstøíky obsahují \"%s\":\n"
 
-#: info/info.c:278 info/infokey.c:899
+#: info/info.c:287 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Více informací mù¾ete získat pomocí pøepínaèe --help.\n"
 
-#: info/info.c:297 info/infokey.c:145 makeinfo/makeinfo.c:783
+#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
@@ -310,16 +310,16 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:502
+#: info/info.c:511
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "odpovídající polo¾ky rejstøíku nebyly pro `%s' nalezeny\n"
 
-#: info/info.c:594
+#: info/info.c:603
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 
-#: info/info.c:601
+#: info/info.c:610
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -402,7 +402,7 @@ msgstr ""
 "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
 "zasílejte na adresu <cs@li.org> (èesky).\n"
 
-#: info/info.c:640 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/install-info.c:491 util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -417,72 +417,72 @@ msgstr ""
 "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
 "zasílejte na <cs@li.org> (èesky).\n"
 
-#: info/info.c:674
+#: info/info.c:683
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Uzel `%s' nelze nalézt."
 
-#: info/info.c:675
+#: info/info.c:684
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Uzel `(%s)%s' nelze nalézt."
 
-#: info/info.c:676
+#: info/info.c:685
 msgid "Cannot find a window!"
 msgstr "Nelze nalézt okno!"
 
-#: info/info.c:677
+#: info/info.c:686
 msgid "Point doesn't appear within this window's node!"
 msgstr "Bod se nevyskutuje v oknì tohoto uzlu!"
 
-#: info/info.c:678
+#: info/info.c:687
 msgid "Cannot delete the last window."
 msgstr "Poslední okno nelze smazat."
 
-#: info/info.c:679
+#: info/info.c:688
 msgid "No menu in this node."
 msgstr "V tomto uzlu není menu."
 
-#: info/info.c:680
+#: info/info.c:689
 msgid "No footnotes in this node."
 msgstr "V tomto nejsou poznámky pod èarou."
 
-#: info/info.c:681
+#: info/info.c:690
 msgid "No cross references in this node."
 msgstr "V tomto uzlu není køí¾ový odkaz."
 
-#: info/info.c:682
+#: info/info.c:691
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Pro tento uzel není `%s' ukazatel."
 
-#: info/info.c:683
+#: info/info.c:692
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Neznámý Info pøíkaz `%c'; zkuste `?' pro nápovìdu."
 
-#: info/info.c:684
+#: info/info.c:693
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Typ terminálu `%s' není dostateènì inteligentní pro provoz Infa."
 
-#: info/info.c:685
+#: info/info.c:694
 msgid "You are already at the last page of this node."
 msgstr "Ji¾ jste na poslední stránce tohoto uzlu."
 
-#: info/info.c:686
+#: info/info.c:695
 msgid "You are already at the first page of this node."
 msgstr "Ji¾ jste na první stránce tohoto uzlu."
 
-#: info/info.c:687
+#: info/info.c:696
 msgid "Only one window."
 msgstr "Pouze jedno okno."
 
-#: info/info.c:688
+#: info/info.c:697
 msgid "Resulting window would be too small."
 msgstr "Výsledné okno by bylo pøíli¹ malé."
 
-#: info/info.c:689
+#: info/info.c:698
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Není volné místo pro okno nápovìdy, prosím sma¾te nìkteré okno."
 
