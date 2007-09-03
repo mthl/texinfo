@@ -1,3 +1,11 @@
+2007-09-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\baselinefactor): new macro, 1 by default.
+	(\setleading): use it, to allow for poor man's double spacing.
+	(\afourpaper, \letterpaper): use absolute dimension for height,
+	instead of a multiple of \baselineskip.  (Otherwise things run off
+	the bottom when double-spacing.)
+
 2007-09-01  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* djgpp/config.bat: change file names arguments and configure.orig
