@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.15 2007-08-04 10:59:24 gray Exp $
+@comment $Id: info-stnd.texi,v 1.16 2007-09-06 01:02:31 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -18,7 +18,7 @@ a program for viewing documents in Info format (usually created from
 Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -633,8 +633,7 @@ The @code{scroll-forward} and @code{scroll-backward} commands can also
 move forward and backward through the node structure of the file.  If
 you press @key{SPC} while viewing the end of a node, or @key{DEL} while
 viewing the beginning of a node, what happens is controlled by the
-variable @code{scroll-behavior}.  @xref{Variables,
-@code{scroll-behavior}}, for more information.
+variable @code{scroll-behavior} (@pxref{scroll-behavior}).
 
 The @code{scroll-forward-page-only} and @code{scroll-backward-page-only}
 commands never scroll beyond the current node.
@@ -814,8 +813,7 @@ and if it has a menu, the last item in the menu is selected.
 
 You can get the same behavior as @code{global-next-node} and
 @code{global-prev-node} while simply scrolling through the file with
-@key{SPC} and @key{DEL}; @xref{Variables, @code{scroll-behavior}}, for
-more information.
+@key{SPC} and @key{DEL} (@pxref{scroll-behavior}).
 
 @table @asis
 @anchor{goto-node}
@@ -1865,7 +1863,7 @@ resized through automatic tiling; they remain their original size.
 Normally, cursor movement commands (@pxref{Cursor Commands}) stop when
 top or bottom of a node is reached.  When this variable is set to
 @code{On}, cursor movement commands act as scrolling ones and their
-behavior is controlled by @code{scroll-behavior} variable (see below).
+behavior is controlled by the @code{scroll-behavior} variable (see below).
 
 @item errors-ring-bell
 @vindex errors-ring-bell
@@ -1896,13 +1894,15 @@ Info that it is running in an environment where the European standard
 character set is in use, and allows you to input such characters to
 Info, as well as display them.
 
+@anchor{scroll-behavior}
 @item scroll-behavior
 @itemx scroll-behaviour
 @vindex scroll-behavior
+@vindex scroll-behaviour
 Control what happens when forward scrolling is requested at the end of
 a node, or when backward scrolling is requested at the beginning of a
-node.  The default value for this variable is @code{Continuous}.  There
-are three possible values for this variable:
+node.  The default value for this variable is @code{Continuous}.
+There are three possible values for this variable:
 
 @table @code
 @item Continuous
@@ -1922,7 +1922,11 @@ viewed.
 @end table
 
 This variable normally affects only scrolling commands.
-@xref{cursor-movement-scrolls}, for information on how to widen its scope.
+@xref{cursor-movement-scrolls}, for information on how to widen its
+scope.
+
+The two names, @code{scroll-behavior} and @code{scroll-behaviour}, are
+a historical accident.  They are merely synonyms.
 
 @item scroll-step
 @vindex scroll-step

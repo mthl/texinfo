@@ -1,4 +1,12 @@
+2007-09-05  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Variables): make an anchor for
+	scroll-behavior, and use it.  Idea from Benno Schulenberg,
+	04 Sep 2007 00:21:01.
+
 2007-09-03  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.9.92.
 
 	* doc/texinfo.tex (\baselinefactor): new macro, 1 by default.
 	(\setleading): use it, to allow for poor man's double spacing.
