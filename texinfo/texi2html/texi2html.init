@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.117 2007-08-21 17:02:03 pertusus Exp $
+# $Id: texi2html.init,v 1.118 2007-09-09 20:19:08 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1709,6 +1709,14 @@ sub T2H_DEFAULT_node_file_name($$)
 %simple_map_pre = %simple_map;
 $simple_map_pre{'*'} = "\n";
 
+# maps for the math specific commands
+%simple_map_math = (
+           '\\', '\\'
+           );
+
+%simple_map_pre_math = %simple_map_math;
+%simple_map_texi_math = %simple_map_math;
+
 #
 # texinfo "things" (@foo{}) to HTML ones
 #
@@ -2080,12 +2088,12 @@ my %old_style_map = (
       'cite',       {'attribute' => 'cite'},
       'code',       {'args' => ['code'], 'attribute' => 'code'},
       'command',    {'args' => ['code'], 'attribute' => 'code'},
-      'ctrl',       {'function' => \&t2h_default_ctrl,'type' => 'simple_type'}, 
+      'ctrl',       {'function' => \&t2h_default_ctrl,'type' => 'simple_style'}, 
       'dfn',        {'attribute' => 'em'}, 
       'dmn',        {},   
       'email',      {'args' => ['code', 'normal'], 
                        'function' => \&t2h_default_email,
-                       'type' => 'simple_type'}, 
+                       'type' => 'simple_style'}, 
       #'email',      {'args' => ['normal', 'normal'], 
       #                 'function' => \&t2h_default_email}, 
       'emph',       {'attribute' => 'em'}, 
@@ -2096,7 +2104,7 @@ my %old_style_map = (
       'sansserif',  {'attribute' => 'span class="sansserif"'},
       'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
       'key',        {'begin' => '&lt;', 'end' => '&gt;'},
-      'math',       {'attribute' => 'em'},
+      'math',       {'function' => \&t2h_default_math, 'args' => ['math'] },
       'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
       'r',          {'attribute' => 'span class="roman"'},
       'samp',       {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
@@ -2106,18 +2114,18 @@ my %old_style_map = (
       't',          {'attribute' => 'tt'},
       'uref',       {'function' => \&t2h_default_uref, 
                       'args' => ['code', 'normal', 'normal'],
-                      'type' => 'simple_type' },
+                      'type' => 'simple_style' },
       #'uref',       {'function' => \&t2h_default_uref, 
       #                'args' => ['normal', 'normal', 'normal']},
       'url',        {'function' => \&t2h_default_uref, 
                       'args' => ['code', 'normal', 'normal'],
-                      'type' => 'simple_type'},
-      'indicateurl', {'args' => ['code'], 'begin' => '&lt;<code>', 'end' => '</code>&gt;','type' => 'simple_type'},
+                      'type' => 'simple_style'},
+      'indicateurl', {'args' => ['code'], 'begin' => '&lt;<code>', 'end' => '</code>&gt;','type' => 'simple_style'},
       'var',        {'attribute' => 'var'},
       'verb',       {'args' => ['code'], 'attribute' => 'tt'},
       'titlefont',  {'function' => \&t2h_default_titlefont, 
-            'type' => 'simple_type'},
-      'w',          {'type' => 'simple_type'},
+            'type' => 'simple_style'},
+      'w',          {'type' => 'simple_style'},
      );
 
 %command_type = ();
@@ -2676,6 +2684,17 @@ sub t2h_default_uref($$)
     $text = $url unless ($text ne '');
     return $text if ($url eq '');
     return &$anchor('', $url, $text);
+}
+
+sub t2h_default_math($$)
+{
+    shift;
+    my $args = shift;
+    my $text = shift @$args;
+#print STDERR "t2h_default_math $text\n";
+    $text =~ s/[{}]//g; 
+#    $text =~ s/\@\\/\\/g; 
+    return "<em>$text</em>";
 }
 
 sub default_email($$)

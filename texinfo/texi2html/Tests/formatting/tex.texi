@@ -24,6 +24,21 @@ tex \TeX
 Same that @@html (but empty following line not ignored).
 
 Test of @@math
-Here some @math{\frac{x^i}{\tan y}}.
+Here some @math{{x^i}\over{\tan y}}.
+
+Maths with protected \:
+@math{a @\ b}.
+
+Maths with code @@-command:
+
+@math{@code{math code}}
+
+Maths with code @@-command and braces:
+
+@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+
+@@\ outside of math
+
+@\
 
 @bye

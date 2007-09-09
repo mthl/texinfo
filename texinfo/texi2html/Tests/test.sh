@@ -254,10 +254,12 @@ test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting center.texi
 test_texi formatting tables.texi
 test_texi formatting tex.texi "-l2h -expand tex" "no"
+test_texi formatting tex.texi "-prefix tex_nol2h" 0 texi tex_nol2h
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
 test_texi formatting comments.texi "-init redefine_need.init -prefix comments_redefined" 0 texi  comments_redefined 
 test_texi formatting equivalent_nodes.texi "" 5
+test_texi formatting indicateurl_paragraph.texi
 test_texi formatting bad_nesting.texi
 test_texi formatting formats_not_closed.texi "" 12
 test_texi formatting commands_not_closed.texi "" 4
@@ -280,6 +282,8 @@ test_texi formatting test_refs.texi
 test_texi formatting test_refs.texi "-prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
 test_texi formatting test_refs.texi "-prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
 test_texi formatting at_commands_in_refs.texi
+
+test_texi tex_httex ../formatting/tex.texi "-init ../../examples/tex4ht.init --iftex"
 
 test_texi contents contents_at_begin.texi
 test_texi contents contents_at_end.texi

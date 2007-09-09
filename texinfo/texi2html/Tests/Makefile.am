@@ -5,7 +5,7 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      node_utf8_translit_no_unidecode index_split_nodes \
      more_before_top_section node_footnote node_in_chapter_index_split \
      index_nodes tar htmlxref htmlxref-only_mono htmlxref-only_split \
-     contents contents_book contents_inline
+     contents contents_book contents_inline tex_httex
 
 
 #check-local:
@@ -16,7 +16,8 @@ regenerate:
 	[ -d $${dir}_res ] && cp $$dir/*.passfirst $$dir/*.html $$dir/*.htm $$dir/*.2 $$dir/*.passtexi $${dir}_res;\
 	done
 	-rm -f formatting_res/*_l2h.html formatting_res/tex.2 \
-          formatting_res/tex_in_copying.2 formatting_res/math_not_closed.2
+          formatting_res/tex_in_copying.2 formatting_res/math_not_closed.2 \
+	  tex_httex_res/tex.2
 	-rm -f singular_res/*_l2h.html singular_res/sing.2
 
 clean-local:

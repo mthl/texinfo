@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.183 2007-08-21 17:02:03 pertusus Exp $
+# $Id: texi2html.pl,v 1.184 2007-09-09 20:19:08 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -436,6 +436,9 @@ $complex_format_map
 %simple_map
 %simple_map_pre
 %simple_map_texi
+%simple_map_math
+%simple_map_pre_math
+%simple_map_texi_math
 %style_map
 %style_map_pre
 %style_map_texi
@@ -5809,6 +5812,7 @@ sub initialise_state($)
     my $state = shift;
     $state->{'preformatted'} = 0 unless exists($state->{'preformatted'}); 
     $state->{'code_style'} = 0 unless exists($state->{'code_style'}); 
+    $state->{'math_style'} = 0 unless exists($state->{'math_style'}); 
     $state->{'keep_texi'} = 0 unless exists($state->{'keep_texi'});
     $state->{'keep_nr'} = 0 unless exists($state->{'keep_nr'});
     $state->{'detailmenu'} = 0 unless exists($state->{'detailmenu'});     # number of opened detailed menus      
@@ -6792,7 +6796,7 @@ sub next_tag($)
 {
     my $line = shift;
     # macro_regexp
-    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])/o or $line =~ /^\s*\@([a-zA-Z][\w-]*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z][\w-]*)$/)
+    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])/o or $line =~ /^\s*\@([a-zA-Z][\w-]*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z][\w-]*)$/)
     {
         return ($1);
     }
@@ -8726,7 +8730,7 @@ sub scan_texi($$$$;$)
             next;
         }
         # macro_regexp
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {# ARG_EXPANSION
             add_prev($text, $stack, $1) unless $state->{'ignored'};
             my $macro = $2;
@@ -9034,7 +9038,7 @@ sub scan_texi($$$$;$)
                 # macro character, like , is. 
                 # So, for example @m_cedilla{@} would be very wrong while 
                 # @,@ is less problematic.
-                # A side efefct of that special handling is that strange
+                # A side effect of that special handling is that strange
                 # use of @, will not result in the same result than strange 
                 # use of other accent commands.
                 if (s/^(.)//)
@@ -9389,7 +9393,7 @@ sub scan_structure($$$$;$)
         }
         #elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -10012,7 +10016,7 @@ sub scan_line($$$$;$)
         # This is a macro
 	#elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $macro = $2;
@@ -10609,20 +10613,34 @@ sub scan_line($$$$;$)
             if (defined($brace) and ($brace eq '{'))
             {
                 add_prev($text, $stack, do_text('{',$state));
-                unless ($state->{'keep_texi'} or $state->{'remove_texi'})
+                if ($state->{'math_style'})
                 {
-                    echo_error ("'{' without macro. Before: $_", $line_nr);
+                    $state->{'math_brace'}++;
+                }
+                else 
+                {
+                    unless ($state->{'keep_texi'} or $state->{'remove_texi'})
+                    {
+                        echo_error ("'{' without macro. Before: $_", $line_nr);
+                    }
                 }
             }
             elsif (defined($brace) and ($brace eq '}') and 
                     (!@$stack or (!defined($stack->[-1]->{'style'}))
             # a non empty stack, but with 'cmd_line' as first item on the stack
             # is like an empty stack
-                       or ($stack->[-1]->{'style'} eq 'cmd_line')))
+                       or ($stack->[-1]->{'style'} eq 'cmd_line'))
+            # braces are allowed in math
+                    or $state->{'math_brace'})
             {
                 if ($state->{'keep_texi'})
                 {
                     add_prev($text, $stack, '}');
+                }
+                elsif($state->{'math_style'} and $state->{'math_brace'})
+                {
+                    add_prev($text, $stack, do_text('}',$state));
+                    $state->{'math_brace'}--;
                 }
                 else
                 {
@@ -10677,6 +10695,10 @@ sub scan_line($$$$;$)
                         if ($state->{'code_style'} < 0)
                         {
                             echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_", $line_nr);
+                        }
+                        if ($state->{'math_style'} < 0)
+                        {
+                            echo_error ("Bug: negative math_style: $state->{'math_style'}, line:$_", $line_nr);
                         }
                     }
                 }
@@ -10787,14 +10809,29 @@ sub open_arg($$$)
     if (ref($::style_map_ref->{$macro}) eq 'HASH')
     {
          my $arg = $::style_map_ref->{$macro}->{'args'}->[$arg_nr];
-         if ($arg eq 'code' and !$state->{'keep_texi'})
-         {
-             $state->{'code_style'}++;
-         }
-         elsif ($arg eq 'keep')
+         if ($arg eq 'keep')
          {
              $state->{'keep_nr'}++;
              $state->{'keep_texi'} = 1;
+         }
+         elsif (!$state->{'keep_texi'})
+         {
+             if ($arg eq 'code')
+             {
+                 $state->{'code_style'}++;
+             }
+             elsif ($arg eq 'math')
+             {
+                 $state->{'math_style'}++;
+                 if ($state->{'math_style'} == 1)
+                 {
+                     $state->{'math_brace'} = 0;
+                     # FIXME quick hack to define @\ in @math 
+                     $::simple_map_ref->{'\\'} = $Texi2HTML::Config::simple_map_math{'\\'};
+                     $::simple_map_pre_ref->{'\\'} = $Texi2HTML::Config::simple_map_pre_math{'\\'};
+                     $::simple_map_texi_ref->{'\\'} = $Texi2HTML::Config::simple_map_texi_math{'\\'};
+                 }
+             }
          }
     }
     elsif ($code_style_map{$macro} and !$state->{'keep_texi'})
@@ -10811,14 +10848,27 @@ sub close_arg($$$)
     if (ref($::style_map_ref->{$macro}) eq 'HASH')
     {
          my $arg = $::style_map_ref->{$macro}->{'args'}->[$arg_nr];
-         if ($arg eq 'code' and !$state->{'keep_texi'})
-         {
-             $state->{'code_style'}--;
-         }
-         elsif ($arg eq 'keep')
+         if ($arg eq 'keep')
          {
              $state->{'keep_nr'}--;
              $state->{'keep_texi'} = 0 if ($state->{'keep_nr'} == 0);
+         }
+         elsif (!$state->{'keep_texi'})
+         {
+             if ($arg eq 'code')
+             {
+                 $state->{'code_style'}--;
+             }
+             elsif ($arg eq 'math')
+             {
+                 $state->{'math_style'}--;
+                 if ($state->{'math_style'} == 0)
+                 {
+                     delete $::simple_map_ref->{'\\'};
+                     delete $::simple_map_pre_ref->{'\\'};
+                     delete $::simple_map_texi_ref->{'\\'};
+                 }
+             }
          }
 #print STDERR "c $arg_nr $macro $arg $state->{'code_style'}\n";
     }

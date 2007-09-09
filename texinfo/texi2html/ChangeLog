@@ -1,3 +1,12 @@
+2007-09-09  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle @\ and matching { } in @math.
+	fix simple_style to be really used (typos in texi2html.init).
+	* examples/tex4ht.init: use httexi to handle @math, since texinfo
+	@-commands are allowed in @math, and httex for @tex.
+	* Tests/*: add test for simple_style with a paragraph within.
+	more tests for @math.
+
 2007-08-21  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: handle @, command without brace like @,c. 

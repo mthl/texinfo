@@ -1,0 +1,41 @@
+../formatting/tex.texi(,2) 
+../formatting/tex.texi(,3) @node Top
+../formatting/tex.texi(,4) @top Tests
+../formatting/tex.texi(,5) 
+../formatting/tex.texi(,7) Now tex on the same line @tex some
+../formatting/tex.texi(,8) 
+../formatting/tex.texi(,9) $$ \chi^2 = \sum_{i=1}^N
+../formatting/tex.texi(,10)           \left(y_i - (a + b x_i)
+../formatting/tex.texi(,11) 	  \over \sigma_i\right)^2 $$
+../formatting/tex.texi(,12) 		    
+../formatting/tex.texi(,13) 
+../formatting/tex.texi(,14) @end tex  bidule
+../formatting/tex.texi(,15) Some text one the line following @@end tex
+../formatting/tex.texi(,17) 
+../formatting/tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).
+../formatting/tex.texi(,19) @tex some
+../formatting/tex.texi(,20) 
+../formatting/tex.texi(,21) tex \TeX 
+../formatting/tex.texi(,22) @end tex
+../formatting/tex.texi(,23) 
+../formatting/tex.texi(,24) Same that @@html (but empty following line not ignored).
+../formatting/tex.texi(,25) 
+../formatting/tex.texi(,26) Test of @@math
+../formatting/tex.texi(,27) Here some @math{{x^i}\over{\tan y}}.
+../formatting/tex.texi(,28) 
+../formatting/tex.texi(,29) Maths with protected \:
+../formatting/tex.texi(,30) @math{a @\ b}.
+../formatting/tex.texi(,31) 
+../formatting/tex.texi(,32) Maths with code @@-command:
+../formatting/tex.texi(,33) 
+../formatting/tex.texi(,34) @math{@code{math code}}
+../formatting/tex.texi(,35) 
+../formatting/tex.texi(,36) Maths with code @@-command and braces:
+../formatting/tex.texi(,37) 
+../formatting/tex.texi(,38) @math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+../formatting/tex.texi(,39) 
+../formatting/tex.texi(,40) @@\ outside of math
+../formatting/tex.texi(,41) 
+../formatting/tex.texi(,42) @\
+../formatting/tex.texi(,43) 
+../formatting/tex.texi(,44) @bye

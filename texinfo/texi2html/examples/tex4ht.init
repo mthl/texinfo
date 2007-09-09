@@ -1,9 +1,13 @@
 # -*-perl-*-
 
 # To customize the command and the options, you could set
-# $Texi2HTML::TeX4HT::STYLE to latex
+# $Texi2HTML::TeX4HT::STYLE_MATH to latex/tex
+# $Texi2HTML::TeX4HT::STYLE_TEX to latex/texi
 # and/or change
-# $Texi2HTML::TeX4HT::tex4ht_command and $Texi2HTML::TeX4HT::tex4ht_options
+# $Texi2HTML::TeX4HT::tex4ht_command_math 
+#    and $Texi2HTML::TeX4HT::tex4ht_options_math
+# $Texi2HTML::TeX4HT::tex4ht_command_tex 
+#    and $Texi2HTML::TeX4HT::tex4ht_options_tex
 
 
 push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
@@ -24,20 +28,34 @@ use Cwd;
 
 package Texi2HTML::TeX4HT;
 
-$STYLE = 'tex' if (!defined($STYLE));
+$STYLE_MATH = 'texi' if (!defined($STYLE_MATH));
+$STYLE_TEX = 'tex' if (!defined($STYLE_TEX));
 
-if (!defined($tex4ht_command))
+if (!defined($tex4ht_command_math))
 {
-   $tex4ht_command = 'httex';
-   $tex4ht_command = 'htlatex' if ($STYLE eq 'latex');
+   $tex4ht_command_math = 'httexi';
+   $tex4ht_command_math = 'htlatex' if ($STYLE_MATH eq 'latex');
+   $tex4ht_command_math = 'httex' if ($STYLE_MATH eq 'tex');
 }
+if (!defined($tex4ht_command_tex))
+{
+   $tex4ht_command_tex = 'httex';
+   $tex4ht_command_tex = 'htlatex' if ($STYLE_TEX eq 'latex');
+   $tex4ht_command_tex = 'httexi' if ($STYLE_TEX eq 'texi');
+}
+
+my %commands = ();
 
 my $tex4ht_initial_dir;
 my $tex4ht_out_dir;
-my $tex4ht_basename;
-my $tex4ht_latex_basefile;
-my $tex4ht_html_basefile;
-my $tex4ht_latex_rfile;
+my $tex4ht_math_basename;
+my $tex4ht_tex_basename;
+my $tex4ht_math_basefile;
+my $tex4ht_html_math_basefile;
+my $tex4ht_tex_basefile;
+my $tex4ht_html_tex_basefile;
+my $tex4ht_latex_math_rfile;
+my $tex4ht_latex_tex_rfile;
 my $tex4ht_latex_failed = 0;
 
 sub tex4ht_init
@@ -46,48 +64,88 @@ sub tex4ht_init
   $tex4ht_initial_dir = Cwd::abs_path;
   $tex4ht_out_dir = "$Texi2HTML::THISDOC{'out_dir'}";
   $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
-  $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
-  $tex4ht_latex_basefile = "$tex4ht_basename.tex";
-  $tex4ht_html_basefile = "$tex4ht_basename.html";
-  $tex4ht_latex_rfile = $tex4ht_out_dir . $tex4ht_latex_basefile;
-
-  # begin tex file
-  unless (open (TEX4HT_TEXFILE, ">$tex4ht_latex_rfile"))  
+  my $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
+  $commands{'math'}->{'style'} = $STYLE_MATH;
+  $commands{'tex'}->{'style'} = $STYLE_TEX;
+  $commands{'math'}->{'exec'} = $tex4ht_command_math;
+  $commands{'tex'}->{'exec'} = $tex4ht_command_tex;
+  foreach my $command ('math', 'tex')
   {
-     warn "* tex4ht error opening $tex4ht_latex_rfile: $!\n";
-     $tex4ht_latex_failed = 1;
-     return;
+    my $style = $commands{$command}->{'style'};
+    $commands{$command}->{'basename'} = $tex4ht_basename . "_$command";
+    my $suffix = '.tex';
+    $suffix = '.texi' if ($style eq 'texi');
+    $commands{$command}->{'basefile'} = $commands{$command}->{'basename'} . $suffix;
+    $commands{$command}->{'html_file'} = $commands{$command}->{'basename'} . '.html';
+    $commands{$command}->{'rfile'} = $tex4ht_out_dir . $commands{$command}->{'basefile'};
+    my $rfile = $commands{$command}->{'rfile'};
+    local *TEX4HT_TEXFILE;
+    unless (open (*TEX4HT_TEXFILE, ">$rfile"))  
+    {
+       warn "* tex4ht error opening $rfile: $!\n";
+       $tex4ht_latex_failed = 1;
+       return;
+    }
+    $commands{$command}->{'handle'} = *TEX4HT_TEXFILE;
   }
-  print TEX4HT_TEXFILE "% Automatically generated\n";
-  if ($STYLE eq 'latex')
+  foreach my $command ('math', 'tex')
   {
-     print TEX4HT_TEXFILE "\\documentstyle{article}\n\\begin{document}\n";
-  }
-  else
-  {
-     print TEX4HT_TEXFILE "\\csname tex4ht\\endcsname\n";
+    $commands{$command}->{'counter'} = 0;
+    my $style = $commands{$command}->{'style'};
+    my $fh = $commands{$command}->{'handle'};
+    my $comment = '@c';
+    $comment = '%' if ($style ne 'texi');
+    print $fh "$comment Automatically generated\n";
+    if ($style eq 'latex')
+    {
+      print $fh "\\documentstyle{article}\n\\begin{document}\n";
+    }
+    elsif ($style eq 'tex')
+    {
+      print $fh "\\csname tex4ht\\endcsname\n";
+    }
+    elsif ($style eq 'texi')
+    {
+      print $fh "\\input texinfo
+\@setfilename $commands{$command}->{'basename'}.info\n";
+    }
   }
 }
-
-my $tex4ht_counter = 0;
 
 sub tex4ht_to_latex
 {
   my $command = shift;
   my $text = shift;
   my $counter = shift;
+  my $style = $commands{$command}->{'style'};
+  my $fh = $commands{$command}->{'handle'};
+
   # write to tex file
-  print TEX4HT_TEXFILE "\\HCode{\\Hnewline <!-- tex4ht_begin $tex4ht_basename $command $counter -->\\Hnewline}\n";
+  my $before_comment = "\@verbatim\n";
+  $before_comment = "\\HCode{\\Hnewline " if ($style ne 'texi');
+  my $after_comment = "\n\@end verbatim\n";
+  $after_comment = "\\Hnewline}\n" if ($style ne 'texi');
+  
+  my $begin_comment = "<!-- tex4ht_begin $commands{$command}->{'basename'} $command $counter -->";
+  print $fh "$before_comment$begin_comment$after_comment";
   if ($command eq 'tex')
   {
-     print TEX4HT_TEXFILE $text;
+     print $fh $text;
   }
   elsif ($command eq 'math')
   {
-     print TEX4HT_TEXFILE "\\IgnorePar \$" . $text . "\$";
+     if ($style eq 'texi')
+     {
+         print $fh '@math{' . $text . "}\n";
+     }
+     else
+     {
+         print $fh "\\IgnorePar \$" . $text . "\$";
+     }
   }
-  print TEX4HT_TEXFILE "\n\\HCode{\\Hnewline <!-- tex4ht_end $tex4ht_basename $command $counter -->\\Hnewline}\n";
-  $tex4ht_counter++;
+  my $end_comment = "<!-- tex4ht_end $commands{$command}->{'basename'} $command $counter -->";
+  print $fh "$before_comment$end_comment$after_comment";
+  $commands{$command}->{'counter'}++;
   return 1;
 }
 
@@ -95,19 +153,36 @@ my %tex4ht_results;
 
 sub tex4ht_process
 {
-  return if ($tex4ht_latex_failed or (!$tex4ht_counter));
-  # finish the tex file
-  if ($STYLE eq 'latex')
+  foreach my $command ('math', 'tex')
   {
-     print TEX4HT_TEXFILE "\\end{document}\n";
+     tex4ht_process_command($command);
+  }
+  tex4ht_return_to_dir();
+}
+
+sub tex4ht_process_command
+{
+#print STDERR "$style $tex4ht_latex_failed $tex4ht_counter\n";
+  my $command = shift;
+  my $style = $commands{$command}->{'style'};
+  my $fh = $commands{$command}->{'handle'};
+  return if ($tex4ht_latex_failed or (!$commands{$command}->{'counter'}));
+  # finish the tex file
+  if ($style eq 'latex')
+  {
+     print $fh "\\end{document}\n";
+  }
+  elsif ($style eq 'tex')
+  {
+     print $fh "\n\\bye\n";
   }
   else
   {
-     print TEX4HT_TEXFILE "\n\\bye\n";
+     print $fh "\n\@bye\n";
   }
-  close (TEX4HT_TEXFILE);
+  close ($fh);
 
-  # now run tex4th
+  # now run tex4ht
   unless (chdir $tex4ht_out_dir)
   {
      warn "chdir to $tex4ht_out_dir failed\n";
@@ -115,8 +190,10 @@ sub tex4ht_process
      return;
   }
   print STDERR "cwd($tex4ht_out_dir):" . cwd() ."\n" if ($VERBOSE);
-  $tex4ht_options = '' if (!defined($tex4ht_options));
-  my $cmd = "$tex4ht_command $tex4ht_latex_basefile $tex4ht_options";
+  my $options = '';
+  $options = $tex4ht_options_math if (($style eq 'math') and defined($tex4ht_options_math));
+  $options = $tex4ht_options_tex if (($style eq 'tex') and defined($tex4ht_options_tex));
+  my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
   print STDERR "$cmd" if ($VERBOSE);
   if (system($cmd))
   {
@@ -127,9 +204,10 @@ sub tex4ht_process
   }
 
   # extract the html from the file created by tex4ht
-  unless (open (TEX4HT_HTMLFILE, $tex4ht_html_basefile))
+  my $html_basefile = $commands{$command}->{'html_file'};
+  unless (open (TEX4HT_HTMLFILE, $html_basefile))
   {
-     warn "* tex4ht error opening $tex4ht_html_basefile: $!\n";
+     warn "* tex4ht error opening $html_basefile: $!\n";
      tex4ht_return_to_dir();
      $tex4ht_latex_failed = 1;
      return;
@@ -139,7 +217,7 @@ sub tex4ht_process
   while ($line = <TEX4HT_HTMLFILE>)
   {
      #print STDERR "while $line";
-     if ($line =~ /^<!-- tex4ht_begin $tex4ht_basename (\w+) (\d+) -->\s*$/)
+     if ($line =~ /!-- tex4ht_begin $commands{$command}->{'basename'} (\w+) (\d+) --/)
      {
         my $command = $1;
         my $count = $2;
@@ -148,7 +226,7 @@ sub tex4ht_process
         while ($line = <TEX4HT_HTMLFILE>)
         {
            #print STDERR "while search $command $count $line";
-           if ($line =~ /^<!-- tex4ht_end $tex4ht_basename $command $count -->\s*$/)
+           if ($line =~ /!-- tex4ht_end $commands{$command}->{'basename'} $command $count --/)
            {
               $got_count++;
               chomp($text);
@@ -167,15 +245,14 @@ sub tex4ht_process
         }
      }
   }
-  if ($got_count != $tex4ht_counter and ($Texi2HTML::Config::VERBOSE))
+  if ($got_count != $commands{$command}->{'counter'} and ($Texi2HTML::Config::VERBOSE))
   {
-     warn "* tex4ht: got $got_count for $tex4ht_counter items entered\n";
+     warn "* tex4ht: got $got_count for $commands{$command}->{'counter'} items entered\n";
   }
   close (TEX4HT_HTMLFILE);
 
-  push @{$Texi2HTML::THISDOC{'css_import_lines'}}, "\@import \"$tex4ht_basename.css\";\n";
+  push @{$Texi2HTML::THISDOC{'css_import_lines'}}, "\@import \"$commands{$command}->{'basename'}.css\";\n";
 
-  tex4ht_return_to_dir();
 }
 
 sub tex4ht_return_to_dir
@@ -207,9 +284,14 @@ sub tex4ht_do_tex
 
 sub tex4ht_finish
 { 
-  if (($tex4ht_output_counter != $tex4ht_counter) and ($Texi2HTML::Config::VERBOSE))
+  my $tex4ht_in_counter = 0;
+  foreach my $command (keys(%commands))
   {
-     warn "* tex4ht: output $tex4ht_output_counter for $tex4ht_counter items entered\n";
+    $tex4ht_in_counter += $commands{$command}->{'counter'};
+  }
+  if (($tex4ht_output_counter != $tex4ht_in_counter) and ($Texi2HTML::Config::VERBOSE))
+  {
+     warn "* tex4ht: output $tex4ht_output_counter for $tex4ht_in_counter items entered\n";
   }
 }
 

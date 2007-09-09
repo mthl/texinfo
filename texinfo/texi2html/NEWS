@@ -8,11 +8,19 @@ This file records noteworthy changes.
 * COMPATIBILITY
   -------------
 
+* tex4ht.init now may use a different external program for @tex and for
+  @math, and therefore the configuration variables were doubled and
+  their name changed.
+
 * BUG FIXES
   ---------
 
 * @, followed by an argument without brace is now handled. Report from 
   Jorge Barros de Abreu.
+
+* @math is more compatible with makeinfo/texi2dvi when no external program
+  is used. Using tex4ht for html generation should also lead to a correct
+  result.
 
 1.78 (2007-06-05)
 

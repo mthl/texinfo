@@ -1,0 +1,31 @@
+../formatting/tex.texi(,2) 
+../formatting/tex.texi(,3) @node Top
+../formatting/tex.texi(,4) @top Tests
+../formatting/tex.texi(,5) 
+../formatting/tex.texi(,14) Now tex on the same line @special_tex_1{} bidule
+../formatting/tex.texi(,15) Some text one the line following @@end tex
+../formatting/tex.texi(,17) 
+../formatting/tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).
+../formatting/tex.texi(,22) @special_tex_2{}
+../formatting/tex.texi(,23) 
+../formatting/tex.texi(,24) Same that @@html (but empty following line not ignored).
+../formatting/tex.texi(,25) 
+../formatting/tex.texi(,26) Test of @@math
+../formatting/tex.texi(,27) Here some @special_math_1{}.
+../formatting/tex.texi(,28) 
+../formatting/tex.texi(,29) Maths with protected \:
+../formatting/tex.texi(,30) @special_math_2{}.
+../formatting/tex.texi(,31) 
+../formatting/tex.texi(,32) Maths with code @@-command:
+../formatting/tex.texi(,33) 
+../formatting/tex.texi(,34) @special_math_3{}
+../formatting/tex.texi(,35) 
+../formatting/tex.texi(,36) Maths with code @@-command and braces:
+../formatting/tex.texi(,37) 
+../formatting/tex.texi(,38) @special_math_4{}
+../formatting/tex.texi(,39) 
+../formatting/tex.texi(,40) @@\ outside of math
+../formatting/tex.texi(,41) 
+../formatting/tex.texi(,42) @\
+../formatting/tex.texi(,43) 
+../formatting/tex.texi(,44) @bye

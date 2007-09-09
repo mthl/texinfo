@@ -21,6 +21,9 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
+@import "tex_tex4ht_math.css";
+@import "tex_tex4ht_tex.css";
+
 a.summary-letter {text-decoration: none}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
@@ -46,71 +49,39 @@ ul.toc {list-style: none}
 <h1 class="unnumbered"> Tests </h1>
 
 <p>Now tex on the same line  some
-
-<P>
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\chi^2 = \sum_{i=1}^N
-          \left(y_i - (a + b x_i)
-	  \over \sigma_i\right)^2
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="190" HEIGHT="56" BORDER="0"
- SRC="tex_1.png"
- ALT="\begin{displaymath}\chi^2 = \sum_{i=1}^N
-\left(y_i - (a + b x_i)
-\over \sigma_i\right)^2 \end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P> bidule
+<!--l. 6--><p class="indent" >
+    <center class="math-display" >
+<img 
+src="tex_tex4ht_tex0x.png" alt="     N  (            )2
+&#x03C7;2 = &#x2211;   yi --(a+-bxi)
+     i=1       &#x03C3;i
+" class="math-display" ></center>
+<!--l. 11--><p class="indent" >      bidule
 Some text one the line following @end tex
 </p>
 <p>Now tex on the following line, valid fot tex (with @end tex on a line).
  some
-
-<P>
-tex <SPAN CLASS="logo-TeX">T<SMALL>E</SMALL>X</SPAN>
+<!--l. 15--><p class="indent" >    tex <span class="TEX">T<span 
+class="E">E</span>X</span> 
 </p>
 <p>Same that @html (but empty following line not ignored).
 </p>
 <p>Test of @math
-Here some <!-- MATH
- ${x^i}\over{\tan y}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
- SRC="tex_2.png"
- ALT="${x^i}\over{\tan y}$"></SPAN>.
+Here some        xi
+_
+tan y.
 </p>
 <p>Maths with protected \:
-<SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="tex_3.png"
- ALT="$a @\ b$"></SPAN>.
+      a\b.
 </p>
 <p>Maths with code @-command:
 </p>
-<p><!-- MATH
- $@code{math code}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="115" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="tex_4.png"
- ALT="$@code{math code}$"></SPAN>
+<p>      mathcode
 </p>
 <p>Maths with code @-command and braces:
 </p>
-<p><!-- MATH
- $\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="163" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="tex_5.png"
- ALT="$ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$"></SPAN>
+<p>      math code_&#x2211;
+                   i f
 </p>
 <p>@\ outside of math
 </p>
