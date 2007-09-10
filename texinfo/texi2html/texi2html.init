@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.118 2007-09-09 20:19:08 pertusus Exp $
+# $Id: texi2html.init,v 1.119 2007-09-10 20:53:50 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1554,7 +1554,7 @@ sub T2H_DEFAULT_titlepage()
 
     $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
     
-    if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
+    if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
     {
         foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
         {
@@ -1562,7 +1562,7 @@ sub T2H_DEFAULT_titlepage()
         }
         $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
-    if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
+    if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
     {
         foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
         {

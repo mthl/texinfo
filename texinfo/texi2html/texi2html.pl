@@ -59,7 +59,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.184 2007-09-09 20:19:08 pertusus Exp $
+# $Id: texi2html.pl,v 1.185 2007-09-10 20:53:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3300,7 +3300,7 @@ my $element_before_anything =
 
 # This is a place for index entries, anchors and so on appearing in 
 # copying or documentdescription
-my $region_place = [];
+my $no_element_associated_place = [];
 
 sub initialise_state_structure($)
 {
@@ -5309,12 +5309,12 @@ sub rearrange_elements()
     }
     # if setcontentsaftertitlepage is set, the contents should be associated
     # with the titlepage. That's wat is done there.
-    push @$region_place, $content_element{'contents'} 
+    push @$no_element_associated_place, $content_element{'contents'} 
       if ($Texi2HTML::Config::DO_CONTENTS and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
-    push @$region_place, $content_element{'shortcontents'} 
+    push @$no_element_associated_place, $content_element{'shortcontents'} 
       if ($Texi2HTML::Config::DO_SCONTENTS and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
     # correct the id and file for the things placed in regions (copying...)
-    foreach my $place(@$region_place)
+    foreach my $place(@$no_element_associated_place)
     {
 #print STDERR "entry $place->{'entry'} texi $place->{'texi'}\n";
         $place->{'file'} = $element_top->{'file'};
@@ -5323,7 +5323,10 @@ sub rearrange_elements()
     }
     foreach my $content_type(keys(%content_element))
     {
-        if (!defined($content_element{$content_type}->{'file'}))
+        # with set*aftertitlepage, there will always be a href to Contents
+        # or Overview pointing to the top element, even if there is no 
+        # titlepage outputed.
+        if ((!defined($content_element{$content_type}->{'file'})) and $Texi2HTML::Config::INLINE_CONTENTS)
         {
             print STDERR "# No content $content_type\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             $content_element{$content_type} = undef;
@@ -5616,7 +5619,7 @@ sub enter_index_entry($$$$$$$)
     my $id = '';
     # don't add a specific index target if after a section or the index
     # entry is in @copying or the like
-    unless ($use_section_id or ($place eq $region_place))
+    unless ($use_section_id or ($place eq $no_element_associated_place))
     {
         $id = 'IDX' . ++$idx_num;
     }
@@ -5635,7 +5638,7 @@ sub enter_index_entry($$$$$$$)
         echo_warn("Empty index entry for \@$command",$line_nr);
         # don't add the index entry to the list of index entries used for index
         # entry formatting,if the index entry appears in a region like copying 
-        push @index_labels, $index_entry unless ($place eq $region_place);
+        push @index_labels, $index_entry unless ($place eq $no_element_associated_place);
         return;
     }
     while (exists $index->{$prefix}->{$key})
@@ -5646,7 +5649,7 @@ sub enter_index_entry($$$$$$$)
     push @$place, $index_entry;
     # don't add the index entry to the list of index entries used for index
     # entry formatting,if the index entry appears in a region like copying 
-    push @index_labels, $index_entry unless ($place eq $region_place);
+    push @index_labels, $index_entry unless ($place eq $no_element_associated_place);
 }
 
 # sort according to cmp if both $a and $b are alphabetical or non alphabetical, 
@@ -6001,8 +6004,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $about_file = $docu_about;
     }
     $Texi2HTML::THISDOC{'toc_file'} = $toc_file; 
-    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'id'} if @{$Texi2HTML::TOC_LINES};
-    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'id'} if @{$Texi2HTML::OVERVIEW};
+    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'id'} if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
+    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'id'} if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
     $Texi2HTML::HREF{'Footnotes'} = $foot_file. '#SEC_Foot';
     $Texi2HTML::HREF{'About'} = $about_file . '#SEC_About' unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
@@ -6035,8 +6038,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
 
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
     # must be after toc_body, but before titlepage
-    for my $element_tag ('contents', 'shortcontents')
+    foreach my $element_tag ('contents', 'shortcontents')
     {
+        next if (!defined($content_element{$element_tag}));
         my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $element_tag, $content_element{$element_tag});
         @{$Texi2HTML::THISDOC{'inline_contents'}->{$element_tag}} = @$toc_lines if (defined($toc_lines));
     }
@@ -6327,6 +6331,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             {
                 my $element_tag = $tag;
                 $element_tag = 'shortcontents' if ($element_tag ne 'contents');
+                # at that point the content_element is defined for sure since
+                # we already saw the tag
                 if ($Texi2HTML::Config::INLINE_CONTENTS and !$content_element{$element_tag}->{'aftertitlepage'})
                 {
                     if (@stack or (defined($text) and $text ne ''))
@@ -9445,7 +9451,7 @@ sub scan_structure($$$$;$)
                         $state->{'region_lines'}->{'number'} = 1;
                         $state->{'region_lines'}->{'after_element'} = 1 if ($state->{'after_element'});
                         $state->{'region_lines'}->{'kept_place'} = $state->{'place'};
-                        $state->{'place'} = $region_place;
+                        $state->{'place'} = $no_element_associated_place;
                     }
                     else
                     {

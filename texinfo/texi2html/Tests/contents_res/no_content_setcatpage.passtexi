@@ -1,0 +1,20 @@
+no_content_setcatpage.texi(,2) 
+no_content_setcatpage.texi(,3) @setfilename no_contents_setcatpage.info
+no_content_setcatpage.texi(,4) 
+no_content_setcatpage.texi(,5) @setcontentsaftertitlepage
+no_content_setcatpage.texi(,6) 
+no_content_setcatpage.texi(,7) @node Top
+no_content_setcatpage.texi(,8) @top No ccontent
+no_content_setcatpage.texi(,9) 
+no_content_setcatpage.texi(,10) No content.
+no_content_setcatpage.texi(,11) 
+no_content_setcatpage.texi(,12) @menu 
+no_content_setcatpage.texi(,13) * chapter::
+no_content_setcatpage.texi(,14) @end menu
+no_content_setcatpage.texi(,15) 
+no_content_setcatpage.texi(,16) @node chapter
+no_content_setcatpage.texi(,17) @chapter Chapter 1
+no_content_setcatpage.texi(,18) 
+no_content_setcatpage.texi(,19) The chapter
+no_content_setcatpage.texi(,20) 
+no_content_setcatpage.texi(,21) @bye

@@ -17,7 +17,7 @@ regenerate:
 	done
 	-rm -f formatting_res/*_l2h.html formatting_res/tex.2 \
           formatting_res/tex_in_copying.2 formatting_res/math_not_closed.2 \
-	  tex_httex_res/tex.2
+	  tex_httex_res/tex.2 tex_httex_res/*_tex4ht_*.html
 	-rm -f singular_res/*_l2h.html singular_res/sing.2
 
 clean-local:

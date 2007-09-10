@@ -1,0 +1,18 @@
+../contents/no_content.texi(,2) 
+../contents/no_content.texi(,3) @setfilename no_contents.info
+../contents/no_content.texi(,4) 
+../contents/no_content.texi(,5) @node Top
+../contents/no_content.texi(,6) @top No ccontent
+../contents/no_content.texi(,7) 
+../contents/no_content.texi(,8) No content.
+../contents/no_content.texi(,9) 
+../contents/no_content.texi(,10) @menu 
+../contents/no_content.texi(,11) * chapter::
+../contents/no_content.texi(,12) @end menu
+../contents/no_content.texi(,13) 
+../contents/no_content.texi(,14) @node chapter
+../contents/no_content.texi(,15) @chapter Chapter 1
+../contents/no_content.texi(,16) 
+../contents/no_content.texi(,17) The chapter
+../contents/no_content.texi(,18) 
+../contents/no_content.texi(,19) @bye

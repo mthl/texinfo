@@ -294,6 +294,10 @@ test_texi contents double_contents_setcontentsaftertitlepage.texi
 test_texi contents double_contents.texi "--prefix split_chapter_double_contents --split chapter --output ." 0 texi split_chapter_double_contents
 test_texi contents double_contents.texi "--prefix split_section_double_contents --split section --output ." 0 texi split_section_double_contents
 test_texi contents double_contents.texi "--prefix split_node_double_contents --split node --output ." 0 texi split_node_double_contents
+test_texi contents no_content.texi
+test_texi contents no_content.texi "--prefix no_content_do_contents -init do_contents.init" 0 texi no_content_do_contents
+test_texi contents no_content_setcatpage.texi
+test_texi contents no_content_setcatpage.texi "--prefix no_content_do_contents_setcatpage -init do_contents.init" 0 texi no_content_do_contents_setcatpage
 test_texi contents_inline ../contents/contents_at_begin.texi "-init inline.init"
 test_texi contents_inline ../contents/contents_at_end.texi "-init inline.init"
 test_texi contents_inline ../contents/contents_in_middle_chapter.texi "-init inline.init"
@@ -303,6 +307,10 @@ test_texi contents_inline ../contents/double_contents_setcontentsaftertitlepage.
 test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_chapter_double_contents --split chapter --output ." 0 texi split_chapter_double_contents
 test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_section_double_contents --split section --output ." 0 texi split_section_double_contents
 test_texi contents_inline ../contents/double_contents.texi "-init inline.init --prefix split_node_double_contents --split node --output ." 0 texi split_node_double_contents
+test_texi contents_inline ../contents/no_content.texi "-init inline.init"
+test_texi contents_inline ../contents/no_content.texi "--prefix no_content_do_contents -init inline.init -init ../contents/do_contents.init" 0 texi no_content_do_contents
+test_texi contents_inline ../contents/no_content_setcatpage.texi "-init inline.init"
+test_texi contents_inline ../contents/no_content_setcatpage.texi "--prefix no_content_do_contents_setcatpage -init inline.init -init ../contents/do_contents.init" 0 texi no_content_do_contents_setcatpage
 test_texi contents_book ../contents/double_contents.texi "-init ../../examples/book.init"
 test_texi contents_book ../contents/double_contents_setcontentsaftertitlepage.texi "-init ../../examples/book.init"
 test_texi contents_book ../contents/double_contents_setcontentsaftertitlepage.texi "-init ../../examples/book.init -split chapter -prefix split_chapter_double_contents_setcontentsaftertitlepage --output ." 0 texi split_chapter_double_contents_setcontentsaftertitlepage
