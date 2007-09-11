@@ -1,3 +1,8 @@
+2007-09-11  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* examples/tex4ht.init: chdir to the out dir only once.
+	Add the texinfo comment at a better place.
+
 2007-09-10  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: avoid content elements being defined

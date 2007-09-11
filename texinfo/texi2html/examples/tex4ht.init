@@ -95,19 +95,24 @@ sub tex4ht_init
     my $fh = $commands{$command}->{'handle'};
     my $comment = '@c';
     $comment = '%' if ($style ne 'texi');
-    print $fh "$comment Automatically generated\n";
-    if ($style eq 'latex')
-    {
-      print $fh "\\documentstyle{article}\n\\begin{document}\n";
-    }
-    elsif ($style eq 'tex')
-    {
-      print $fh "\\csname tex4ht\\endcsname\n";
-    }
-    elsif ($style eq 'texi')
+    $comment .= " Automatically generated\n";
+    if ($style eq 'texi')
     {
       print $fh "\\input texinfo
 \@setfilename $commands{$command}->{'basename'}.info\n";
+      print $fh "$comment";
+    }
+    else
+    {
+      print $fh "$comment";
+      if ($style eq 'latex')
+      {
+        print $fh "\\documentstyle{article}\n\\begin{document}\n";
+      }
+      elsif ($style eq 'tex')
+      {
+        print $fh "\\csname tex4ht\\endcsname\n";
+      }
     }
   }
 }
@@ -155,12 +160,24 @@ sub tex4ht_process
 {
   foreach my $command ('math', 'tex')
   {
+     tex4ht_finish_latex($command);
+  }
+  unless (chdir $tex4ht_out_dir)
+  {
+     warn "chdir to $tex4ht_out_dir failed\n";
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+  print STDERR "cwd($tex4ht_out_dir):" . Cwd::cwd() ."\n" if ($Texi2HTML::Config::VERBOSE);
+
+  foreach my $command ('math', 'tex')
+  {
      tex4ht_process_command($command);
   }
   tex4ht_return_to_dir();
 }
 
-sub tex4ht_process_command
+sub tex4ht_finish_latex
 {
 #print STDERR "$style $tex4ht_latex_failed $tex4ht_counter\n";
   my $command = shift;
@@ -181,20 +198,18 @@ sub tex4ht_process_command
      print $fh "\n\@bye\n";
   }
   close ($fh);
+}
 
+sub tex4ht_process_command
+{
+  my $command = shift;
+  my $style = $commands{$command}->{'style'};
   # now run tex4ht
-  unless (chdir $tex4ht_out_dir)
-  {
-     warn "chdir to $tex4ht_out_dir failed\n";
-     $tex4ht_latex_failed = 1;
-     return;
-  }
-  print STDERR "cwd($tex4ht_out_dir):" . cwd() ."\n" if ($VERBOSE);
   my $options = '';
   $options = $tex4ht_options_math if (($style eq 'math') and defined($tex4ht_options_math));
   $options = $tex4ht_options_tex if (($style eq 'tex') and defined($tex4ht_options_tex));
   my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
-  print STDERR "$cmd" if ($VERBOSE);
+  print STDERR "tex4ht command: $cmd\n" if ($Texi2HTML::Config::VERBOSE);
   if (system($cmd))
   {
      warn "* tex4ht command: $cmd failed";
