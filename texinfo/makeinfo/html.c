@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.39 2007-07-01 21:20:32 karl Exp $
+   $Id: html.c,v 1.40 2007-09-15 23:48:45 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -200,7 +200,7 @@ html_output_head (void)
   /* The <title> should not have markup, so use text_expansion.  */
   if (!html_title)
     html_title = escape_string (title ?
-        text_expansion (title) : (char *) __("Untitled"));
+        text_expansion (title) : (char *) gdt("Untitled"));
 
   /* Make sure this is the very first string of the output document.  */
   output_paragraph_offset = 0;

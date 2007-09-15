@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.105 2007-09-03 12:06:29 karl Exp $
+   $Id: makeinfo.c,v 1.106 2007-09-15 23:48:45 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -2608,7 +2608,7 @@ defining_copying (void)
 static void
 info_output_head (void)
 {
-  add_word_args (__("This is %s, produced by makeinfo version %s from %s.\n"),
+  add_word_args (gdt("This is %s, produced by makeinfo version %s from %s.\n"),
                  output_filename, VERSION, input_filename);
 
   /* Start afresh with whatever real text we have.  */

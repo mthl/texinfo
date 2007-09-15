@@ -1,3 +1,14 @@
+2007-09-15  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.h,
+	* makeinfo/makeinfo.c,
+	* makeinfo/defun.c,
+	* makeinfo/html.c,
+	* makeinfo/node.c,
+	* makeinfo/toc.c,
+	* makeinfo/xref.c (__): rename to gdt, since HP-UX uses it in
+	<stdsyms.h>.  (Report from Bert Deknuydt, 12 Sep 2007 12:17:34).
+
 2007-09-09  Karl Berry  <karl@gnu.org>
 
 	* Version 4.11.

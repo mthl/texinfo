@@ -1,5 +1,5 @@
 /* toc.c -- table of contents handling.
-   $Id: toc.c,v 1.10 2007-07-01 21:20:33 karl Exp $
+   $Id: toc.c,v 1.11 2007-09-15 23:48:46 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2007
    Free Software Foundation, Inc.
@@ -194,7 +194,7 @@ contents_update_html (void)
       /* no, so return to sender ;-) */
       return;
 
-  add_html_block_elt_args ("\n<div class=\"contents\">\n<h2>%s</h2>\n<ul>\n", __("Table of Contents"));
+  add_html_block_elt_args ("\n<div class=\"contents\">\n<h2>%s</h2>\n<ul>\n", gdt("Table of Contents"));
 
   last_level = toc_entry_alist[0]->level;
 
@@ -268,9 +268,9 @@ contents_update_info (void)
   if (!toc_counter)
       return;
 
-  insert_string ((char *) __("Table of Contents"));
+  insert_string ((char *) gdt("Table of Contents"));
   insert ('\n');
-  for (i = 0; i < strlen (__("Table of Contents")); i++)
+  for (i = 0; i < strlen (gdt("Table of Contents")); i++)
     insert ('*');
   insert_string ("\n\n");
 
@@ -301,7 +301,7 @@ shortcontents_update_html (char *contents_filename)
   if (!toc_counter)
     return;
 
-  add_html_block_elt_args ("\n<div class=\"shortcontents\">\n<h2>%s</h2>\n<ul>\n", __("Short Contents"));
+  add_html_block_elt_args ("\n<div class=\"shortcontents\">\n<h2>%s</h2>\n<ul>\n", gdt("Short Contents"));
 
   if (contents_filename)
     toc_file = filename_part (contents_filename);
@@ -334,9 +334,9 @@ shortcontents_update_info (void)
   if (!toc_counter)
       return;
 
-  insert_string ((char *) __("Short Contents"));
+  insert_string ((char *) gdt("Short Contents"));
   insert ('\n');
-  for (i = 0; i < strlen (__("Short Contents")); i++)
+  for (i = 0; i < strlen (gdt("Short Contents")); i++)
     insert ('*');
   insert_string ("\n\n");
 
