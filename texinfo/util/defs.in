@@ -234,7 +234,7 @@ optionset_get ()
   # Find the optionset.
   while test $n != 1; do
     case $1 in
-      --) n=$(expr $n - 1);;
+      --) n=`expr $n - 1`;;
     esac
     shift
   done
