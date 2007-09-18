@@ -1,5 +1,8 @@
 2007-09-17  Karl Berry  <karl@gnu.org>
 
+	* util/defs.in (TEXI2DVI_run): try "type" instead of "which".
+	Report from Michael Deutschmann, 13 Sep 2007 01:29:39.
+
 	* util/defs.in (optionset_get): use `...`, not $(...).  Still too
 	newfangled.  Report from Bert Deknuydt.
 
