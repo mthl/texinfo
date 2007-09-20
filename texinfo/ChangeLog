@@ -1,3 +1,8 @@
+2007-09-20  Greg Schafer <gschafer@zip.com.au>  (tiny change)
+
+	* util/dvipdf.test,
+	* util/texi2dvi.test (required): need tex, or the tests fail.
+
 2007-09-17  Karl Berry  <karl@gnu.org>
 
 	* util/defs.in (TEXI2DVI_run): try "type" instead of "which".
