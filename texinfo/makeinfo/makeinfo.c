@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.107 2007-09-21 22:49:26 karl Exp $
+   $Id: makeinfo.c,v 1.108 2007-09-21 22:51:12 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -1382,13 +1382,6 @@ convert_from_file (char *name)
 
       if (find_and_load (filename, 1))
         break;
-
-      if (!suffixes[i][0] && strrchr (filename, '.'))
-        {
-          fs_error (filename);
-          free (filename);
-          return;
-        }
     }
 
   if (!suffixes[i])

@@ -1,6 +1,14 @@
+2007-09-21  Stephen Compall <s11@member.fsf.org>
+
+	* makeinfo/makeinfo.c (convert_from_file): excise code testing
+	case in suffixes that doesn't arise.
+
 2007-09-21  Karl Berry  <karl@gnu.org>
 
-	* makein
+	* makeinfo/makeinfo.c,
+	* info/info.c,
+	* util/texindex.c,
+	* util/install-info.c (main): unify declaration on char *argv[].
 
 2007-09-20  Greg Schafer <gschafer@zip.com.au>  (tiny change)
 
