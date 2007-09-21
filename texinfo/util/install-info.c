@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.18 2007-07-01 21:20:33 karl Exp $
+   $Id: install-info.c,v 1.19 2007-09-21 22:49:26 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007 Free Software Foundation, Inc.
@@ -1154,7 +1154,7 @@ parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
 }
 
 int
-main (int argc, char **argv)
+main (int argc, char *argv[])
 {
   char *opened_dirfilename;
   char *compression_program;

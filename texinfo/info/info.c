@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.20 2007-09-01 00:05:23 karl Exp $
+   $Id: info.c,v 1.21 2007-09-21 22:49:26 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007 Free Software Foundation, Inc.
@@ -145,7 +145,7 @@ static void init_messages (void);
 /* **************************************************************** */
 
 int
-main (int argc, char **argv)
+main (int argc, char *argv[])
 {
   int getopt_long_index;        /* Index returned by getopt_long (). */
   NODE *initial_node;           /* First node loaded by Info. */

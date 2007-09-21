@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.106 2007-09-15 23:48:45 karl Exp $
+   $Id: makeinfo.c,v 1.107 2007-09-21 22:49:26 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -550,7 +550,7 @@ static COMMAND_LINE_DEFINE *command_line_defines = NULL;
 /* For each file mentioned in the command line, process it, turning
    Texinfo commands into wonderfully formatted output text. */
 int
-main (int argc, char **argv)
+main (int argc, char *argv[])
 {
   int c, ind;
   int reading_from_stdin = 0;

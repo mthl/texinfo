@@ -1,3 +1,7 @@
+2007-09-21  Karl Berry  <karl@gnu.org>
+
+	* makein
+
 2007-09-20  Greg Schafer <gschafer@zip.com.au>  (tiny change)
 
 	* util/dvipdf.test,
