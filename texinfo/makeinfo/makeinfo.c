@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.110 2007-09-24 18:51:49 karl Exp $
+   $Id: makeinfo.c,v 1.111 2007-09-24 19:04:10 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -1390,7 +1390,11 @@ convert_from_file (char *name)
       return;
     }
 
-  /* Set the global recording the current file name.  */
+  /* `find_and_load' (when successful) clobbers this global with new
+     memory.  We're about to reset it, so may as well free first.  */
+  free (input_filename);
+  
+  /* Set the current filename.  */
   input_filename = filename;
 
   /* Do the main conversion.  */
