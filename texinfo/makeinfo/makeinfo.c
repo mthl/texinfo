@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.108 2007-09-21 22:51:12 karl Exp $
+   $Id: makeinfo.c,v 1.109 2007-09-24 18:46:16 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
@@ -1367,14 +1367,13 @@ convert_from_file (char *name)
   int i;
   char *filename = xmalloc (strlen (name) + 50);
 
-  /* Prepend file directory to the search path, so relative links work.  */
+  /* Prepend NAME's directory to the search path, so relative links work.  */
   prepend_to_include_path (pathname_part (name));
 
   initialize_conversion ();
 
   /* Try to load the file specified by NAME, concatenated with our
-     various suffixes.  Prefer files like `makeinfo.texi' to
-     `makeinfo'.  */
+     various suffixes.  Prefer files like `makeinfo.texi' to `makeinfo'.  */
   for (i = 0; suffixes[i]; i++)
     {
       strcpy (filename, name);
@@ -1391,8 +1390,11 @@ convert_from_file (char *name)
       return;
     }
 
+  /* Set the global recording the current file name.  */
   input_filename = filename;
+  free (filename);  /* And we're done with our temporary.  */
 
+  /* Do the main conversion.  */
   convert_from_loaded_file (name);
 
   /* Pop the prepended path, so multiple filenames in the
