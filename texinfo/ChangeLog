@@ -1,8 +1,3 @@
-2007-09-24  Karl Berry  <karl@gnu.org>
-
-	* makeinfo/makeinfo.c (convert_from_file): free `filename' when done.
-	Reported by Stephen Compall, 21 Sep 2007 20:25:54.
-
 2007-09-21  Stephen Compall <s11@member.fsf.org>  (tiny change)
 
 	* makeinfo/makeinfo.c (convert_from_file): excise code testing
