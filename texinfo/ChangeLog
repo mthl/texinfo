@@ -1,3 +1,7 @@
+2007-09-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Six Parts): End segment should not have toc anymore.
+
 2007-09-24  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (convert_from_file): free `input_filename' leak.

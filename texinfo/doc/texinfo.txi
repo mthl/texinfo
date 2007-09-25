@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.205 2007-09-17 00:26:10 karl Exp $
+@c $Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1449,9 +1449,8 @@ The @dfn{Body} of the document is typically structured like a
 traditional book or encyclopedia, but it may be free form.
 
 @item 6. End
-The @dfn{End} segment contains commands for printing indices and
-generating the table of contents, and the @code{@@bye} command on a line
-of its own.
+The @dfn{End} segment may contain commands for printing indices, and
+closes with the @code{@@bye} command on a line of its own.
 @end table
 
 
@@ -18884,7 +18883,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.205 2007-09-17 00:26:10 karl Exp $
+$Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18958,7 +18957,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.205 2007-09-17 00:26:10 karl Exp $
+@comment $Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
