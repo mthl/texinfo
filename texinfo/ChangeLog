@@ -1,3 +1,17 @@
+2007-09-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/index.c (count_strn_chars): new fn.
+	(insert_index_output_line_no): call it.
+	(cm_printindex): call it.
+	This is to fix off-by-one width computation due to @tie{},
+        reported by Werner Lember, 16 Sep 2007 16:48:47.
+
+	* makeinfo/cmds.c,
+	* makeinfo/xref.c: #include "index.h", instead of explicit	
+	extern printing_index.
+	* makeinfo/index.c (the_indices, index_element_compare): can be static.
+	* makeinfo/index.h: make order of decls match index.c.
+
 2007-09-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Six Parts): End segment should not have toc anymore.

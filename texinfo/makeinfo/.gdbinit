@@ -242,9 +242,6 @@ set args -o /dev/null --no-split --enable-encoding -I ../doc --no-headers texinf
 # local variables with split files
 set args --no-warn --enable-encoding --split-size=150000 $ttests/xe.tex
 
-# no info trailer on main file
-set args -I /usr/local/gnu/src/groff-1.19/doc --enable-encoding groff.texinfo
-
 # escape & in <link> titles
 set args -o $ttests/titleamp.out --html $ttests/titleamp.tex
 
@@ -262,3 +259,7 @@ set args --no-split --html -o $ttests/chart.out $ttests/chart.tex
 
 #set env LANG de
 set args -o - --no-headers $ttests/doclang.tex
+
+# misaligned index
+set args -I $ks/groff/doc --enable-encoding groff.texinfo
+#set args $ttests/idxalign.tex

@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.13 2007-09-15 23:48:46 karl Exp $
+   $Id: xref.c,v 1.14 2007-09-26 20:53:40 karl Exp $
 
    Copyright (C) 2004, 2005, 2007 Free Software Foundation, Inc.
 
@@ -490,7 +490,6 @@ cm_uref (int arg)
 {
   if (arg == START)
     {
-      extern int printing_index;
       char *url  = get_xref_token (1); /* expands all macros in uref */
       char *desc = get_xref_token (0);
       char *replacement = get_xref_token (0);
