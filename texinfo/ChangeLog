@@ -4,7 +4,7 @@
 	(insert_index_output_line_no): call it.
 	(cm_printindex): call it.
 	This is to fix off-by-one width computation due to @tie{},
-        reported by Werner Lember, 16 Sep 2007 16:48:47.
+	reported by Werner Lemberg, 16 Sep 2007 16:48:47.
 
 	* makeinfo/cmds.c,
 	* makeinfo/xref.c: #include "index.h", instead of explicit	
@@ -116,23 +116,23 @@
 
 2007-08-04  Sergey Poznyakoff  <gray@gnu.org.ua>
 
-        * doc/info-stnd.texi: Document cursor-movement-scrolls variable.
-        Document different spellings of scroll-behaviour variable.
-        * info/info-utils.c (info_references_internal): Initialize
-        line_number.
-        * info/infodoc.c (info_internal_help_text): Update docstrings
-        for move-to-next-xref and move-to-prev-xref.
-        * info/session.c (forward_move_node_structure)
-        (backward_move_node_structure): Return int
-        (cursor_movement_scrolls_p): New variable.
-        (info_next_line,info_prev_line,info_forward_char,info_backward_char)
-        (info_forward_word,info_backward_word): Scroll through the
-        entire document if cursor_movement_scrolls_p is set.
-        (info_move_to_xref,info_move_to_prev_xref): Return int
-        * info/session.h (cursor_movement_scrolls_p): New variable
-        * info/variables.h: Likewise
-        * info/variables.c (scroll-behavior): Alias for scroll-behaviour
-        (cursor-movement-scrolls): New variable.
+	* doc/info-stnd.texi: Document cursor-movement-scrolls variable.
+	Document different spellings of scroll-behaviour variable.
+	* info/info-utils.c (info_references_internal): Initialize
+	line_number.
+	* info/infodoc.c (info_internal_help_text): Update docstrings
+	for move-to-next-xref and move-to-prev-xref.
+	* info/session.c (forward_move_node_structure)
+	(backward_move_node_structure): Return int
+	(cursor_movement_scrolls_p): New variable.
+	(info_next_line,info_prev_line,info_forward_char,info_backward_char)
+	(info_forward_word,info_backward_word): Scroll through the
+	entire document if cursor_movement_scrolls_p is set.
+	(info_move_to_xref,info_move_to_prev_xref): Return int
+	* info/session.h (cursor_movement_scrolls_p): New variable
+	* info/variables.h: Likewise
+	* info/variables.c (scroll-behavior): Alias for scroll-behaviour
+	(cursor-movement-scrolls): New variable.
 
 2007-07-30  Karl Berry  <karl@gnu.org>
 
@@ -202,7 +202,7 @@
 2007-07-15  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\quotedblleft, \quotedblright, \quoteleft,
-        \quoteright): aliases for the quotation marks from the CM fonts.
+	\quoteright): aliases for the quotation marks from the CM fonts.
 	(\guillemetleft, \guillemotleft, \guillemetright, \guillemotright,
 	 \guilsinglleft, \guilsinglright, \quotedblbase, \quotesinglbase):
 	 new macros to borrow quotation marks from the EC fonts.  The
@@ -284,7 +284,7 @@
 2007-07-05  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\setnonasciicharscatcodenonglobal,
-        \setnonasciicharscatcode): no newline after #1, that counts as a space.
+	\setnonasciicharscatcode): no newline after #1, that counts as a space.
 	(\pagebody, \pagesizesyyy): likewise.
 
 2007-07-03  Oleg Katsitadze  <olegkat@gmail.com>
@@ -785,8 +785,8 @@
 2006-10-09  Miloslav Trmac  <mitr@redhat.com>  (tiny change)
 
 	* util/texindex.c (gettempname): new fn, split off from maketempname.
-        (maketempname): call it.  We weren't deleting temp files.
-        (sort_offline): check result from maketempname.
+	(maketempname): call it.  We weren't deleting temp files.
+	(sort_offline): check result from maketempname.
 
 2006-10-06  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
@@ -921,14 +921,14 @@
 	(define_macro): Issue a warning if @allow-recursion or @quote-arg
 	is used.
 	* makeinfo/macro.h (MACRO_DEF): New member argcount
-        (enum quote_type): New data type.
-        (get_brace_args): Change argument type to enum quote_type
+	(enum quote_type): New data type.
+	(get_brace_args): Change argument type to enum quote_type
 	(ME_QUOTE_ARG): Remove the macro
 	* makeinfo/makeinfo.c (cm_ifeq): Update call to get_brace_args
-        * makeinfo/tests/Makefile.am (TESTS): New test quote-args
-        (EXTRA_DIST): New file quote-args.txi
-        * makeinfo/tests/quote-args: New test
-        * makeinfo/tests/quote-args.txi: New file
+	* makeinfo/tests/Makefile.am (TESTS): New test quote-args
+	(EXTRA_DIST): New file quote-args.txi
+	* makeinfo/tests/quote-args: New test
+	* makeinfo/tests/quote-args.txi: New file
 	* doc/texinfo.txi: Document automatic argument quoting
 
 2006-07-03  Sergey Poznyakoff  <gray@gnu.org.ua>
@@ -1244,10 +1244,10 @@
 
 2006-03-13  Miloslav Trmac  <mitr@redhat.com>  (tiny changes)
 
-        * info/Makefile.am (infokey_LDADD): don't link with curses.
+	* info/Makefile.am (infokey_LDADD): don't link with curses.
 
-        * makeinfo/sectioning.c: cast arguments to substring, to placate
-        current gcc.
+	* makeinfo/sectioning.c: cast arguments to substring, to placate
+	current gcc.
 
 2006-03-13  Karl Berry  <karl@gnu.org>
 
@@ -1765,8 +1765,8 @@
 2005-06-09  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Support --tidy, a new build mode which lets all the
-        compilations happen in a local directory.  This is
-        similar to using --clean, but the files are preserved.  The
+	compilations happen in a local directory.  This is
+	similar to using --clean, but the files are preserved.  The
 	benefits are:
 	- the output is updated when each tex compilation is completed:
 	  - to allow interactive viewing
@@ -2148,7 +2148,7 @@
 		functions and variables apparently cannot have the same
 		name on Digital UNIX 4.0E, AIX 3.2.5 (325102), ULTRIX V4.5.
 		(and related releases, presumably).
-        <pgm>: simplify sed expression to avoid \| operator, which does
+	<pgm>: simplify sed expression to avoid \| operator, which does
 	        not work on above platforms (and also be more correct).
 	<RUNNING_KSH>: switch to ksh under Ultrix.
 	All of this stuff reported by Bernhard Simon <simon@zid.tuwien.ac.at>
@@ -2320,7 +2320,7 @@
 	intptr_t is not defined with gcc 3.04 on Tru64 Unix V5.1
 	(This whole vararg stuff needs to be redone correctly.)
 	Report from: Svend Tollak Munkejord (via te)
-        8 Dec 2004 17:15:17 +0100.
+	8 Dec 2004 17:15:17 +0100.
 
 	* doc/texinfo.txi (ref): rewrite last two redundant paragraphs.
 
@@ -2434,7 +2434,7 @@
 	* insertion.c (end_insertion): insert closing xml tag.
 
 	* makeinfo/makeinfo.c (insert_string): declare const char * arg.
-        * makeinfo/makeinfo.h: likewise.
+	* makeinfo/makeinfo.h: likewise.
 	Report from: Vincent Lefevre, 20 Oct 2004 15:40:39 +0200,
 	noting a spurious </para> after </dircategory>.
 
@@ -2630,7 +2630,7 @@
 	obsolete.  Reported by Stepan.
 
 	* doc/texinfo.txi (caption shortcaption): show an example for
-        @shortcaption, and remark that weird commands like @c and @verb
+	@shortcaption, and remark that weird commands like @c and @verb
 	are not allowed.  Suggested by Stepan.
 
 2004-08-27  Stepan Kasal  <kasal@ucw.cz>
@@ -2765,13 +2765,13 @@
 
 2004-07-26  Karl Berry  <karl@gnu.org>
 
-        Avoid using the path for output files, since this led to problems
-        when incompatible files created by previous versions were found.
+	Avoid using the path for output files, since this led to problems
+	when incompatible files created by previous versions were found.
 	* makeinfo/files.c (find_and_load): introduce second parameter
 		use_path, set to 0 from the call in handle_delayed_writes,
 		1 in all cases.
-        * makeinfo/files.h: change decl.
-        * makeinfo/cmds.c, makeinfo.c, node.c: change calls.
+	* makeinfo/files.h: change decl.
+	* makeinfo/cmds.c, makeinfo.c, node.c: change calls.
 	From: Thomas Klausner <wiz@danbala.ifoer.tuwien.ac.at>,
 	14 Jul 2004 00:31:54 +0200.
 
@@ -2852,9 +2852,9 @@
 
 2004-07-10  Karl Berry  <karl@gnu.org>
 
-        * util/texi2pdf: new script.
-        * util/Makefile.am: install it.
-        * doc/texinfo.txi: document it.
+	* util/texi2pdf: new script.
+	* util/Makefile.am: install it.
+	* doc/texinfo.txi: document it.
 
 2004-07-05  Karl Berry  <karl@gnu.org>
 
@@ -2919,7 +2919,7 @@
 	15 May 2004 21:50:52 +0200.
 
 	* util/gendocs.sh: force HTML output name, otherwise Emacs fails
-        with its "@setfilename ../...".
+	with its "@setfilename ../...".
 
 2004-05-04  Karl Berry  <karl@gnu.org>
 
