@@ -1,8 +1,9 @@
 # -*-perl-*-
 
-$SPLIT = 'none';
+#$SPLIT = 'none';
 
 $print_section            = \&T2H_NOHEAD_print_section;
+$print_element_header            = \&T2H_NOHEAD_print_element_header;
 $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 #$print_Top_header         = \&T2H_NOHEAD_print_Top_header;
@@ -18,7 +19,7 @@ $about_body		      = \&T2H_NOHEAD_about_body;
 ########################################################################
 # Layout for html for every sections
 #
-sub T2H_NOHEAD_print_section
+sub T2H_NOHEAD_print_element_header
 {
     my $fh = shift;
     my $first_in_page = shift;
@@ -32,6 +33,13 @@ sub T2H_NOHEAD_print_section
     { # got to do this here, as it isn't done in print_head_navigation
         main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     }
+}
+
+sub T2H_NOHEAD_print_section
+{
+    my $fh = shift;
+    my $first_in_page = shift;
+    my $previous_is_top = shift;
     my $nw = main::print_lines($fh);
 }
 

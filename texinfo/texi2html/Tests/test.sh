@@ -187,6 +187,7 @@ test_texi macros ifset_in_macro.texi "-D notes -prefix set_ifset_in_macro" 0 tex
 test_texi macros not_ifset_text.texi
 test_texi macros bib-example.texi
 test_texi macros quote-args.txi "" 0 txi
+test_texi macros alias.texi
 test_texi sectionning
 test_texi sectionning sectionning.texi "-init test_directions.init -prefix sectionning_directions" 0 texi sectionning_directions
 test_texi sectionning test_include.texi
@@ -220,6 +221,27 @@ test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
 test_texi sectionning ../node_footnote/node_footnote.texi "--no-separated-footnotes"
 test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
+test_texi navigation navigation.texi
+test_texi navigation navigation.texi "--no-sec-nav -prefix navigation_no_nav" 0 texi navigation_no_nav
+test_texi navigation navigation.texi "-init ../../examples/noheaders.init -prefix navigation_no_headers" 0 texi navigation_no_headers
+test_texi navigation navigation.texi "-init vertical_nav.init -prefix navigation_vert" 0 texi navigation_vert
+test_texi navigation navigation.texi "-init vertical_nav.init --no-sec-nav -prefix navigation_no_nav_vert" 0 texi navigation_no_nav_vert
+test_texi navigation_chapter ../navigation/navigation.texi "-split chapter -output ."
+test_texi navigation_section ../navigation/navigation.texi "-split section -output ."
+test_texi navigation_node ../navigation/navigation.texi "-split node -output ."
+test_texi navigation_chapter_no_nav ../navigation/navigation.texi "-split chapter -no-sec-nav -output ."
+test_texi navigation_section_no_nav ../navigation/navigation.texi "-split section -no-sec-nav -output ."
+test_texi navigation_node_no_nav ../navigation/navigation.texi "-split node -no-sec-nav -output ."
+test_texi navigation_chapter_no_header ../navigation/navigation.texi "-split chapter -init ../../examples/noheaders.init -output ."
+test_texi navigation_section_no_header ../navigation/navigation.texi "-split section -init ../../examples/noheaders.init -output ."
+test_texi navigation_node_no_header ../navigation/navigation.texi "-split node -init ../../examples/noheaders.init -output ."
+test_texi navigation_chapter_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split chapter -output ."
+test_texi navigation_section_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split section -output ."
+test_texi navigation_node_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split node -output ."
+test_texi navigation_chapter_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split chapter -no-sec-nav -output ."
+test_texi navigation_section_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split section -no-sec-nav -output ."
+test_texi navigation_node_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split node -no-sec-nav -output ."
+
 test_texi floats float.texi
 #test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
 test_texi floats float_with_at_commands.texi
@@ -227,10 +249,12 @@ test_texi floats float_copying.texi "-split chapter -output ."
 test_texi floats caption_not_closed.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
-test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes -prefix exotic_formatting -output ." 0 texi exotic_formatting
+test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes --css-ref http://some.where.com/css/style.css -prefix exotic_formatting -output ." 0 texi exotic_formatting
+test_texi formatting formatting.texi "-init ../../examples/html32.init -prefix formatting_html32" 0 texi formatting_html32
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
 test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting
+test_texi formatting quotes.texi
 test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple
 test_texi formatting simplest.texi "-css-include file.css"
@@ -326,6 +350,9 @@ test_texi node_utf8_translit_no_unidecode ../formatting/nodetest_utf8.texi "-ini
 test_texi node_translit ../GermanNodeTest/nodetest.texi "-node-files -use-nodes -split node -output ." 
 test_texi node_translit_no_unicode ../GermanNodeTest/nodetest.texi "-init ../formatting/no_unicode.init -node-files -use-nodes -split node -output ."
 test_texi node_translit_no_unidecode ../GermanNodeTest/nodetest.texi "-init ../formatting/no_unidecode.init -node-files -use-nodes -split node -output ."
+test_texi documentlanguage multi_lang.texi
+test_texi documentlanguage unknown_language.texi
+
 test_texi texi2html 
 test_texi viper_monolithic viper.texi "-ifinfo"
 test_texi viper viper.texi "-split chapter -ifinfo -output ."
@@ -333,8 +360,9 @@ test_texi xemacs xemacs.texi "-split chapter -ifinfo -output ."
 test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo -output ."
 test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
 test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
+#test_texi texinfo-4.11 texinfo.txi "-split chapter -output ." 0 txi texinfo
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
 test_texi tar ../tar_texi/tar.texi 
-#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags

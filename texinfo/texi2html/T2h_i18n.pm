@@ -276,6 +276,10 @@ sub set_language($)
     }
 }
 
+sub get_language()
+{
+    return $language;
+}
 
 my @MONTH_NAMES =
     (

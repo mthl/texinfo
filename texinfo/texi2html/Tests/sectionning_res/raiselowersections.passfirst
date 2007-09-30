@@ -13,6 +13,7 @@ raiselowersections.texi(,13) @menu
 raiselowersections.texi(,15) * Chapter in included file::
 raiselowersections.texi(,17) @end menu
 raiselowersections.texi(,18) 
+raiselowersections.texi(,19) @set do-top
 raiselowersections.texi(,20) 
 raiselowersections.texi(,21) @lowersections
 raiselowersections.texi(,22) 
@@ -39,6 +40,7 @@ raiselowersections.texi(,22)
 ./section_file.texi(,37) 
 raiselowersections.texi(,26) @raisesections
 raiselowersections.texi(,27) 
+raiselowersections.texi(,28) @clear do-top 
 raiselowersections.texi(,29) 
 raiselowersections.texi(,30) @node Second chapter
 raiselowersections.texi(,31) @chapter Second chapter

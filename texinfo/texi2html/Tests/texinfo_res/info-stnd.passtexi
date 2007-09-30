@@ -1,6 +1,10 @@
 info-stnd.texi(,2) @comment Id: info-stnd.texi,v 1.1 2003/02/03 16:10:29 pertusus Exp $
 info-stnd.texi(,3) @comment %**start of header
 info-stnd.texi(,4) @setfilename info-stnd.info
+./version-stnd.texi(,1) @set UPDATED 23 March 2002
+./version-stnd.texi(,2) @set UPDATED-MONTH March 2002
+./version-stnd.texi(,3) @set EDITION 4.2
+./version-stnd.texi(,4) @set VERSION 4.2
 info-stnd.texi(,6) @settitle GNU Info 4.2
 info-stnd.texi(,7) @syncodeindex vr cp
 info-stnd.texi(,8) @syncodeindex fn cp

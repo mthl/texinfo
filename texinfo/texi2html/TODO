@@ -42,6 +42,9 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Document $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
   $Texi2HTML::THISDOC{'htmlxref'}
+  $Texi2HTML::THISDOC{'current_lang'}
+  $Texi2HTML::THISDOC{macro name}
+  $Texi2HTML::THISDOC{'hyphenation'}
 
 * Test the back path stuff for images.
 
@@ -97,7 +100,7 @@ all the CHM related parameters one can change).
 
 * BUG?: @special in multitable extracted but ignored later.
 The real fix would be to give to multitable each header within brace 
-texi and formatted result.
+texi and formatted result. And also give the fractions and maybe use them.
 
 * handling of images should be more configurable for other formats.
 
@@ -111,10 +114,9 @@ texi and formatted result.
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?
 
-* implement @alias
-
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
   is not only add a fixed key, but duplicate all the keys and add one.
   Documentation should only done once the interface is stable.
 
+* roff is certainly not uptodate. At least the @quote* and @guillem*

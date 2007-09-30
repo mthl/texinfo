@@ -1,4 +1,12 @@
 \input texinfo @c -*-texinfo-*-
+@setfilename comments.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+
+
+ }
 
 @node Top
 @top
@@ -114,10 +122,18 @@ Special arg for documentencoding. makeinfo complains, not tex
 @@documentencoding @documentencoding bad encoding name
 @documentencoding ISO-8859-1
 @c accepts on or off
-@ignore
 @@frenchspacing @frenchspacing on
 @@frenchspacing @frenchspacing off
-@end ignore
+@c accepts 10 or 11
+@@fonttextsize @fonttextsize 10
+@c @@fonttextsize @fonttextsize 11
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@allowcodebreaks false
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@allowcodebreaks true
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
 @ignore
 @@ @ on line following 

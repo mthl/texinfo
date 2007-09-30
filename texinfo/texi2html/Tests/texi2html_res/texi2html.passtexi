@@ -39,12 +39,20 @@ texi2html.texi(,39) @setfilename texi2html.info
 texi2html.texi(,40) @c --------------------------------------------------------
 texi2html.texi(,41) @c Edition and last update date of the manual which might
 texi2html.texi(,42) @c differ to the scripts last update date etc.
+texi2html.texi(,43) @set MANUAL_UPD 14. August 2000
+texi2html.texi(,44) @set MANUAL_ED 0.21
 texi2html.texi(,45) @c
+texi2html.texi(,46) @set MANUAL_AUTHOR Karl Heinz Marbaise
+texi2html.texi(,47) @set MANUAL_AUTHOR_EMAIL khmarbaise@@gmx.de
 texi2html.texi(,48) @c
 texi2html.texi(,49) @c Get the version of the script itself through
 texi2html.texi(,50) @c configure/autoconf etc.
 texi2html.texi(,51) @c version.texi is automatically generated through
 texi2html.texi(,52) @c configure/autoconf.
+./version.texi(,1) @set UPDATED 15 September 2001
+./version.texi(,2) @set UPDATED-MONTH September 2001
+./version.texi(,3) @set EDITION 1.67
+./version.texi(,4) @set VERSION 1.67
 texi2html.texi(,54) @c --------------------------------------------------------
 texi2html.texi(,55) @c Index for command line options
 texi2html.texi(,56) @defcodeindex op

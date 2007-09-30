@@ -1,0 +1,36 @@
+\input texinfo 
+@setfilename alias.info
+
+@top test alias
+
+@alias myalias = code
+
+@ignore
+@alias ignored = file
+@end ignore
+
+@macro mymacro{arg}
+before \arg\ after arg
+@end macro
+
+@mymacro{
+@alias inmymacro = verb
+
+@ignore
+@alias ignoredinmymacro = file
+@end ignore
+}
+
+Should be code: @myalias{code}
+
+Should be verb: @inmymacro{!verb!}
+
+Should not be defined: @ignored{ignored}
+
+Should not be defined: @ignoredinmymacro{ignoredinmymacro}
+
+@table @myalias
+@item table item (code)
+@end table
+
+@bye

@@ -15,6 +15,10 @@
 ../texinfo/texinfo.txi(,16) 
 ../texinfo/texinfo.txi(,17) @c Automake automatically updates version.texi to @set VERSION and
 ../texinfo/texinfo.txi(,18) @c @set UPDATED to appropriate values.
+../texinfo/version.texi(,1) @set UPDATED 28 March 2002
+../texinfo/version.texi(,2) @set UPDATED-MONTH March 2002
+../texinfo/version.texi(,3) @set EDITION 4.2
+../texinfo/version.texi(,4) @set VERSION 4.2
 ../texinfo/texinfo.txi(,20) @settitle GNU Texinfo 4.2
 ../texinfo/texinfo.txi(,21) 
 ../texinfo/texinfo.txi(,22) @c Define a new index for options.

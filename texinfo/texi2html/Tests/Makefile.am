@@ -5,7 +5,16 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      node_utf8_translit_no_unidecode index_split_nodes \
      more_before_top_section node_footnote node_in_chapter_index_split \
      index_nodes tar htmlxref htmlxref-only_mono htmlxref-only_split \
-     contents contents_book contents_inline tex_httex
+     contents contents_book contents_inline tex_httex documentlanguage \
+     navigation  navigation_node_no_nav navigation_chapter \
+     navigation_node_no_nav_vert \
+     navigation_chapter_no_header navigation_node_vert \
+     navigation_chapter_no_nav navigation_section \
+     navigation_chapter_no_nav_vert navigation_section_no_header \
+     navigation_chapter_vert navigation_section_no_nav \
+     navigation_node navigation_section_no_nav_vert \
+     navigation_node_no_header navigation_section_vert 
+
 
 
 #check-local:
@@ -31,3 +40,5 @@ clean-local:
 	 *_l2h.tex *_l2h.css *_l2h_images.pl *_l2h_images.tex \
 	*_l2h_labels.pl *-l2h_cache.pm l2h_cache.pm *.out; fi) ; \
 	done
+
+

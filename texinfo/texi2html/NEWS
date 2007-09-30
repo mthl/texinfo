@@ -5,12 +5,27 @@ This file records noteworthy changes.
 * NEW FEATURES
   ------------
 
+* handle @alias, @quote*, @guillem*, @textdegree, @allowcodebreaks,
+  @fonttextsize, @hyphenation.
+
+* @documentlanguage is used to set the language each time it is seen (except
+  if the language was set on the command line).
+
+* new option --css-ref, generate reference to a CSS URL.
+
+* new option --transliterate-file-names, produce file names in ASCII 
+  transliteration (set in the default case).
+
 * COMPATIBILITY
   -------------
 
 * tex4ht.init now may use a different external program for @tex and for
   @math, and therefore the configuration variables were doubled and
   their name changed.
+
+* change in the interface, a new function reference print_element_header
+  has been added, that should print the heading navigation of an element.
+  Previously it was done in print_section.
 
 * BUG FIXES
   ---------

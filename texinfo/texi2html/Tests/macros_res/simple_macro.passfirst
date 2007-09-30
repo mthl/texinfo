@@ -127,8 +127,10 @@ simple_macro.texi(,131)
 simple_macro.texi(,132) 
 simple_macro.texi(,138) 
 simple_macro.texi(,139) now @@set comma ,  
+simple_macro.texi(,140) @set comma ,
 simple_macro.texi(,141) 
 simple_macro.texi(,142) @@set flagab @@ab 
+simple_macro.texi(,143) @set flagab @ab
 simple_macro.texi(,144) 
 simple_macro.texi(,145) the values:
 simple_macro.texi(,146) 
@@ -174,6 +176,8 @@ simple_macro.texi(,183) comma: @value{comma}
 simple_macro.texi(,184) @macro1{ bidule, truc}
 simple_macro.texi(,185) @end verbatim
 simple_macro.texi(,186) 
+simple_macro.texi(,187) @set argument arg 
+simple_macro.texi(,188) @set bodyarg \arg\ 
 simple_macro.texi(,189) 
 simple_macro.texi(,190) Define macro
 simple_macro.texi(,191) @example
@@ -250,6 +254,7 @@ simple_macro.texi(,270) ==================================
 simple_macro.texi(,271) 
 simple_macro.texi(,272) An empty set value
 simple_macro.texi(,273) 
+simple_macro.texi(,274) @set myspace
 simple_macro.texi(,275) 
 simple_macro.texi(,276) 1  1
 simple_macro.texi(,277) 

@@ -1,3 +1,39 @@
+2007-09-27  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: handle @textdegree, @hyphenation.
+	* texi2html.pl, texi2html.init: reset the language for each 
+	appearance of @documentlanguage (except if language was set on the
+	command line). For a language like pt_BR, try pt_BR, and, if not 
+	found, use pt.
+	add a new function reference, print_element_header to print the 
+	beginning of an element, to be able to print it right when it
+	is ready, and not when starting the next element.
+	Add --css-ref and --transliterate-file-names options.
+	@set, @clear are kept for later passes.
+	Many @-commands are now handled equally in pass_structure and 
+	pass_text, and are reset at the beginning of the pass.
+	* Tests/documentlanguage/multi_lang.texi: test for multiple 
+	@documentlanguage changes.
+	* Tests/documentlanguage/unknown_language.texi: test for 
+	unknown languages.
+	* Tests/formatting/comments.texi: test for @hyphenation,
+	@allowcodebreaks, @fonttextsize, @frenchspacing.
+	* Tests/navigation*: test for vertical headers, no section 
+	navigation, use of noheader.init, for all the splitting 
+	possibilities.
+	* Tests/*, examples/html32.init: update html32.init and test for
+	most of the formatting. Remaining invalid warnings are like:
+	'"333" is not a character number in the document character set'
+	even when setting charset is utf-8.
+
+2007-09-22  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: handle @alias.
+	* texi2html.init: handle @quote*, @guillem*, @allowcodebreaks,
+	@fonttextsize commands.
+	use 3 dots for @enddots, like makeinfo.
+	* Tests/*: new test file for @alias. Test @quote* and @guillem*.
+
 2007-09-11  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* examples/tex4ht.init: chdir to the out dir only once.

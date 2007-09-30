@@ -171,7 +171,7 @@ sub T2H_ROFF_titlepage ()
                'copyright'    => '\(co',
                'registeredsymbol' => '\(rg',
                'dots'         => '\&...',
-               'enddots'      => '\&....',
+               'enddots'      => '\&...',
                'equiv'        => '\(==',
 # i18n
                'error'        => 'error->',

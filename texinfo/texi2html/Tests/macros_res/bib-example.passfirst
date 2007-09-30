@@ -205,7 +205,8 @@ bib-example.texi(,25)
 ./my-bib-macros.texi(,214) 
 ./my-bib-macros.texi(,231) 
 ./my-bib-macros.texi(,232) @c %% my-bib-macros.texi ends here
-bib-example.texi(mybibuselist,27) 
+bib-example.texi(mybibuselist,27) @set mybiblist true
+bib-example.texi(mybibuselist,27) @set mybibrefnode References
 bib-example.texi(,28) 
 bib-example.texi(,29) @comment %**end of header
 bib-example.texi(,30) 

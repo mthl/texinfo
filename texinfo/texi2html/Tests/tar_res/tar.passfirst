@@ -1,5 +1,9 @@
 ../tar_texi/tar.texi(,2) @comment %**start of header
 ../tar_texi/tar.texi(,3) @setfilename tar.info
+../tar_texi/version.texi(,1) @set UPDATED 26 June 2006
+../tar_texi/version.texi(,2) @set UPDATED-MONTH June 2006
+../tar_texi/version.texi(,3) @set EDITION 1.15.92
+../tar_texi/version.texi(,4) @set VERSION 1.15.92
 ../tar_texi/tar.texi(,5) @settitle GNU tar 1.15.92
 ../tar_texi/tar.texi(,6) @setchapternewpage odd
 ../tar_texi/tar.texi(,7) 
@@ -39,8 +43,10 @@
 ../tar_texi/rendition.texi(,22) @c of being inserted into the text.
 ../tar_texi/rendition.texi(,23) @c @set PROOF_FOOTNOTED
 ../tar_texi/rendition.texi(,24) 
+../tar_texi/rendition.texi(,28) @set DISTRIB
 ../tar_texi/rendition.texi(,32) 
 ../tar_texi/rendition.texi(,36) 
+../tar_texi/rendition.texi(,38) @set RENDITION FTP release, version
 ../tar_texi/rendition.texi(,40) 
 ../tar_texi/rendition.texi(,44) 
 ../tar_texi/rendition.texi(,45) @c Output marks for nodes needing revision, but not in PUBLISH rendition.
@@ -2267,6 +2273,7 @@
 ../tar_texi/tar.texi(,2244) 
 ../tar_texi/tar.texi(,2245) @table @option
 ../tar_texi/tar.texi(,2246) 
+../tar_texi/tar.texi(opsummary,2247) @set ANCHOR--append 1
 ../tar_texi/tar.texi(opsummary,2247) @anchor{--append}
 ../tar_texi/tar.texi(opsummary,2247) @opindex append@r{, summary}
 ../tar_texi/tar.texi(,2248) @item --append
@@ -2274,6 +2281,7 @@
 ../tar_texi/tar.texi(,2250) 
 ../tar_texi/tar.texi(,2251) Appends files to the end of the archive.  @xref{append}.
 ../tar_texi/tar.texi(,2252) 
+../tar_texi/tar.texi(opsummary,2253) @set ANCHOR--catenate 1
 ../tar_texi/tar.texi(opsummary,2253) @anchor{--catenate}
 ../tar_texi/tar.texi(opsummary,2253) @opindex catenate@r{, summary}
 ../tar_texi/tar.texi(,2254) @item --catenate
@@ -2281,6 +2289,7 @@
 ../tar_texi/tar.texi(,2256) 
 ../tar_texi/tar.texi(,2257) Same as @option{--concatenate}.  @xref{concatenate}.
 ../tar_texi/tar.texi(,2258) 
+../tar_texi/tar.texi(opsummary,2259) @set ANCHOR--compare 1
 ../tar_texi/tar.texi(opsummary,2259) @anchor{--compare}
 ../tar_texi/tar.texi(opsummary,2259) @opindex compare@r{, summary}
 ../tar_texi/tar.texi(,2260) @item --compare
@@ -2290,6 +2299,7 @@
 ../tar_texi/tar.texi(,2264) system, and reports differences in file size, mode, owner,
 ../tar_texi/tar.texi(,2265) modification date and contents.  @xref{compare}.
 ../tar_texi/tar.texi(,2266) 
+../tar_texi/tar.texi(opsummary,2267) @set ANCHOR--concatenate 1
 ../tar_texi/tar.texi(opsummary,2267) @anchor{--concatenate}
 ../tar_texi/tar.texi(opsummary,2267) @opindex concatenate@r{, summary}
 ../tar_texi/tar.texi(,2268) @item --concatenate
@@ -2298,6 +2308,7 @@
 ../tar_texi/tar.texi(,2271) Appends other @command{tar} archives to the end of the archive.
 ../tar_texi/tar.texi(,2272) @xref{concatenate}.
 ../tar_texi/tar.texi(,2273) 
+../tar_texi/tar.texi(opsummary,2274) @set ANCHOR--create 1
 ../tar_texi/tar.texi(opsummary,2274) @anchor{--create}
 ../tar_texi/tar.texi(opsummary,2274) @opindex create@r{, summary}
 ../tar_texi/tar.texi(,2275) @item --create
@@ -2305,6 +2316,7 @@
 ../tar_texi/tar.texi(,2277) 
 ../tar_texi/tar.texi(,2278) Creates a new @command{tar} archive.  @xref{create}.
 ../tar_texi/tar.texi(,2279) 
+../tar_texi/tar.texi(opsummary,2280) @set ANCHOR--delete 1
 ../tar_texi/tar.texi(opsummary,2280) @anchor{--delete}
 ../tar_texi/tar.texi(opsummary,2280) @opindex delete@r{, summary}
 ../tar_texi/tar.texi(,2281) @item --delete
@@ -2312,6 +2324,7 @@
 ../tar_texi/tar.texi(,2283) Deletes members from the archive.  Don't try this on a archive on a
 ../tar_texi/tar.texi(,2284) tape!  @xref{delete}.
 ../tar_texi/tar.texi(,2285) 
+../tar_texi/tar.texi(opsummary,2286) @set ANCHOR--diff 1
 ../tar_texi/tar.texi(opsummary,2286) @anchor{--diff}
 ../tar_texi/tar.texi(opsummary,2286) @opindex diff@r{, summary}
 ../tar_texi/tar.texi(,2287) @item --diff
@@ -2319,6 +2332,7 @@
 ../tar_texi/tar.texi(,2289) 
 ../tar_texi/tar.texi(,2290) Same @option{--compare}.  @xref{compare}.
 ../tar_texi/tar.texi(,2291) 
+../tar_texi/tar.texi(opsummary,2292) @set ANCHOR--extract 1
 ../tar_texi/tar.texi(opsummary,2292) @anchor{--extract}
 ../tar_texi/tar.texi(opsummary,2292) @opindex extract@r{, summary}
 ../tar_texi/tar.texi(,2293) @item --extract
@@ -2326,6 +2340,7 @@
 ../tar_texi/tar.texi(,2295) 
 ../tar_texi/tar.texi(,2296) Extracts members from the archive into the file system.  @xref{extract}.
 ../tar_texi/tar.texi(,2297) 
+../tar_texi/tar.texi(opsummary,2298) @set ANCHOR--get 1
 ../tar_texi/tar.texi(opsummary,2298) @anchor{--get}
 ../tar_texi/tar.texi(opsummary,2298) @opindex get@r{, summary}
 ../tar_texi/tar.texi(,2299) @item --get
@@ -2333,6 +2348,7 @@
 ../tar_texi/tar.texi(,2301) 
 ../tar_texi/tar.texi(,2302) Same as @option{--extract}.  @xref{extract}.
 ../tar_texi/tar.texi(,2303) 
+../tar_texi/tar.texi(opsummary,2304) @set ANCHOR--list 1
 ../tar_texi/tar.texi(opsummary,2304) @anchor{--list}
 ../tar_texi/tar.texi(opsummary,2304) @opindex list@r{, summary}
 ../tar_texi/tar.texi(,2305) @item --list
@@ -2340,6 +2356,7 @@
 ../tar_texi/tar.texi(,2307) 
 ../tar_texi/tar.texi(,2308) Lists the members in an archive.  @xref{list}.
 ../tar_texi/tar.texi(,2309) 
+../tar_texi/tar.texi(opsummary,2310) @set ANCHOR--update 1
 ../tar_texi/tar.texi(opsummary,2310) @anchor{--update}
 ../tar_texi/tar.texi(opsummary,2310) @opindex update@r{, summary}
 ../tar_texi/tar.texi(,2311) @item --update
@@ -2356,6 +2373,7 @@
 ../tar_texi/tar.texi(,2322) 
 ../tar_texi/tar.texi(,2323) @table @option
 ../tar_texi/tar.texi(,2324) 
+../tar_texi/tar.texi(opsummary,2325) @set ANCHOR--absolute-names 1
 ../tar_texi/tar.texi(opsummary,2325) @anchor{--absolute-names}
 ../tar_texi/tar.texi(opsummary,2325) @opindex absolute-names@r{, summary}
 ../tar_texi/tar.texi(,2326) @item --absolute-names
@@ -2365,18 +2383,21 @@
 ../tar_texi/tar.texi(,2330) @samp{/} from member names.  This option disables that behavior.
 ../tar_texi/tar.texi(,2331) @xref{absolute}.
 ../tar_texi/tar.texi(,2332) 
+../tar_texi/tar.texi(opsummary,2333) @set ANCHOR--after-date 1
 ../tar_texi/tar.texi(opsummary,2333) @anchor{--after-date}
 ../tar_texi/tar.texi(opsummary,2333) @opindex after-date@r{, summary}
 ../tar_texi/tar.texi(,2334) @item --after-date
 ../tar_texi/tar.texi(,2335) 
 ../tar_texi/tar.texi(,2336) (See @option{--newer}, @pxref{after})
 ../tar_texi/tar.texi(,2337) 
+../tar_texi/tar.texi(opsummary,2338) @set ANCHOR--anchored 1
 ../tar_texi/tar.texi(opsummary,2338) @anchor{--anchored}
 ../tar_texi/tar.texi(opsummary,2338) @opindex anchored@r{, summary}
 ../tar_texi/tar.texi(,2339) @item --anchored
 ../tar_texi/tar.texi(,2340) A pattern must match an initial subsequence of the name's components.
 ../tar_texi/tar.texi(,2341) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,2342) 
+../tar_texi/tar.texi(opsummary,2343) @set ANCHOR--atime-preserve 1
 ../tar_texi/tar.texi(opsummary,2343) @anchor{--atime-preserve}
 ../tar_texi/tar.texi(opsummary,2343) @opindex atime-preserve@r{, summary}
 ../tar_texi/tar.texi(,2344) @item --atime-preserve
@@ -2425,6 +2446,7 @@
 ../tar_texi/tar.texi(,2387) available on some systems.  However, mounting typically requires
 ../tar_texi/tar.texi(,2388) superuser privileges and can be a pain to manage.
 ../tar_texi/tar.texi(,2389) 
+../tar_texi/tar.texi(opsummary,2390) @set ANCHOR--backup 1
 ../tar_texi/tar.texi(opsummary,2390) @anchor{--backup}
 ../tar_texi/tar.texi(opsummary,2390) @opindex backup@r{, summary}
 ../tar_texi/tar.texi(,2391) @item --backup=@var{backup-type}
@@ -2433,6 +2455,7 @@
 ../tar_texi/tar.texi(,2394) back them up using simple or numbered backups, depending upon
 ../tar_texi/tar.texi(,2395) @var{backup-type}.  @xref{backup}.
 ../tar_texi/tar.texi(,2396) 
+../tar_texi/tar.texi(opsummary,2397) @set ANCHOR--block-number 1
 ../tar_texi/tar.texi(opsummary,2397) @anchor{--block-number}
 ../tar_texi/tar.texi(opsummary,2397) @opindex block-number@r{, summary}
 ../tar_texi/tar.texi(,2398) @item --block-number
@@ -2441,6 +2464,7 @@
 ../tar_texi/tar.texi(,2401) With this option present, @command{tar} prints error messages for read errors
 ../tar_texi/tar.texi(,2402) with the block number in the archive file.  @xref{block-number}.
 ../tar_texi/tar.texi(,2403) 
+../tar_texi/tar.texi(opsummary,2404) @set ANCHOR--blocking-factor 1
 ../tar_texi/tar.texi(opsummary,2404) @anchor{--blocking-factor}
 ../tar_texi/tar.texi(opsummary,2404) @opindex blocking-factor@r{, summary}
 ../tar_texi/tar.texi(,2405) @item --blocking-factor=@var{blocking}
@@ -2449,6 +2473,7 @@
 ../tar_texi/tar.texi(,2408) Sets the blocking factor @command{tar} uses to @var{blocking} x 512 bytes per
 ../tar_texi/tar.texi(,2409) record.  @xref{Blocking Factor}.
 ../tar_texi/tar.texi(,2410) 
+../tar_texi/tar.texi(opsummary,2411) @set ANCHOR--bzip2 1
 ../tar_texi/tar.texi(opsummary,2411) @anchor{--bzip2}
 ../tar_texi/tar.texi(opsummary,2411) @opindex bzip2@r{, summary}
 ../tar_texi/tar.texi(,2412) @item --bzip2
@@ -2457,6 +2482,7 @@
 ../tar_texi/tar.texi(,2415) This option tells @command{tar} to read or write archives through
 ../tar_texi/tar.texi(,2416) @code{bzip2}.  @xref{gzip}.
 ../tar_texi/tar.texi(,2417) 
+../tar_texi/tar.texi(opsummary,2418) @set ANCHOR--checkpoint 1
 ../tar_texi/tar.texi(opsummary,2418) @anchor{--checkpoint}
 ../tar_texi/tar.texi(opsummary,2418) @opindex checkpoint@r{, summary}
 ../tar_texi/tar.texi(,2419) @item --checkpoint[=@var{number}]
@@ -2467,6 +2493,7 @@
 ../tar_texi/tar.texi(,2424) don't want to see @option{--verbose} output.  For a detailed
 ../tar_texi/tar.texi(,2425) description, see @ref{Progress information}.
 ../tar_texi/tar.texi(,2426) 
+../tar_texi/tar.texi(opsummary,2427) @set ANCHOR--check-links 1
 ../tar_texi/tar.texi(opsummary,2427) @anchor{--check-links}
 ../tar_texi/tar.texi(opsummary,2427) @opindex check-links@r{, summary}
 ../tar_texi/tar.texi(,2428) @item --check-links
@@ -2479,8 +2506,10 @@
 ../tar_texi/tar.texi(,2435) complies to UNIX98, was introduced with version
 ../tar_texi/tar.texi(,2436) 1.15.91. @xref{Changes}, for more information.}. 
 ../tar_texi/tar.texi(,2437) 
+../tar_texi/tar.texi(opsummary,2438) @set ANCHOR--compress 1
 ../tar_texi/tar.texi(opsummary,2438) @anchor{--compress}
 ../tar_texi/tar.texi(opsummary,2438) @opindex compress@r{, summary}
+../tar_texi/tar.texi(opsummary,2439) @set ANCHOR--uncompress 1
 ../tar_texi/tar.texi(opsummary,2439) @anchor{--uncompress}
 ../tar_texi/tar.texi(opsummary,2439) @opindex uncompress@r{, summary}
 ../tar_texi/tar.texi(,2440) @item --compress
@@ -2491,12 +2520,14 @@
 ../tar_texi/tar.texi(,2445) writing the archive.  This allows you to directly act on archives
 ../tar_texi/tar.texi(,2446) while saving space.  @xref{gzip}.
 ../tar_texi/tar.texi(,2447) 
+../tar_texi/tar.texi(opsummary,2448) @set ANCHOR--confirmation 1
 ../tar_texi/tar.texi(opsummary,2448) @anchor{--confirmation}
 ../tar_texi/tar.texi(opsummary,2448) @opindex confirmation@r{, summary}
 ../tar_texi/tar.texi(,2449) @item --confirmation
 ../tar_texi/tar.texi(,2450) 
 ../tar_texi/tar.texi(,2451) (See @option{--interactive}.)  @xref{interactive}.
 ../tar_texi/tar.texi(,2452) 
+../tar_texi/tar.texi(opsummary,2453) @set ANCHOR--delay-directory-restore 1
 ../tar_texi/tar.texi(opsummary,2453) @anchor{--delay-directory-restore}
 ../tar_texi/tar.texi(opsummary,2453) @opindex delay-directory-restore@r{, summary}
 ../tar_texi/tar.texi(,2454) @item --delay-directory-restore
@@ -2504,6 +2535,7 @@
 ../tar_texi/tar.texi(,2456) Delay setting modification times and permissions of extracted
 ../tar_texi/tar.texi(,2457) directories until the end of extraction. @xref{Directory Modification Times and Permissions}.
 ../tar_texi/tar.texi(,2458) 
+../tar_texi/tar.texi(opsummary,2459) @set ANCHOR--dereference 1
 ../tar_texi/tar.texi(opsummary,2459) @anchor{--dereference}
 ../tar_texi/tar.texi(opsummary,2459) @opindex dereference@r{, summary}
 ../tar_texi/tar.texi(,2460) @item --dereference
@@ -2513,6 +2545,7 @@
 ../tar_texi/tar.texi(,2464) file that a symbolic link points to, rather than archiving the
 ../tar_texi/tar.texi(,2465) symlink.  @xref{dereference}.
 ../tar_texi/tar.texi(,2466) 
+../tar_texi/tar.texi(opsummary,2467) @set ANCHOR--directory 1
 ../tar_texi/tar.texi(opsummary,2467) @anchor{--directory}
 ../tar_texi/tar.texi(opsummary,2467) @opindex directory@r{, summary}
 ../tar_texi/tar.texi(,2468) @item --directory=@var{dir}
@@ -2522,6 +2555,7 @@
 ../tar_texi/tar.texi(,2472) to @var{dir} before performing any operations.  When this option is used
 ../tar_texi/tar.texi(,2473) during archive creation, it is order sensitive.  @xref{directory}.
 ../tar_texi/tar.texi(,2474) 
+../tar_texi/tar.texi(opsummary,2475) @set ANCHOR--exclude 1
 ../tar_texi/tar.texi(opsummary,2475) @anchor{--exclude}
 ../tar_texi/tar.texi(opsummary,2475) @opindex exclude@r{, summary}
 ../tar_texi/tar.texi(,2476) @item --exclude=@var{pattern}
@@ -2529,6 +2563,7 @@
 ../tar_texi/tar.texi(,2478) When performing operations, @command{tar} will skip files that match
 ../tar_texi/tar.texi(,2479) @var{pattern}.  @xref{exclude}.
 ../tar_texi/tar.texi(,2480) 
+../tar_texi/tar.texi(opsummary,2481) @set ANCHOR--exclude-from 1
 ../tar_texi/tar.texi(opsummary,2481) @anchor{--exclude-from}
 ../tar_texi/tar.texi(opsummary,2481) @opindex exclude-from@r{, summary}
 ../tar_texi/tar.texi(,2482) @item --exclude-from=@var{file}
@@ -2537,6 +2572,7 @@
 ../tar_texi/tar.texi(,2485) Similar to @option{--exclude}, except @command{tar} will use the list of
 ../tar_texi/tar.texi(,2486) patterns in the file @var{file}.  @xref{exclude}.
 ../tar_texi/tar.texi(,2487) 
+../tar_texi/tar.texi(opsummary,2488) @set ANCHOR--exclude-caches 1
 ../tar_texi/tar.texi(opsummary,2488) @anchor{--exclude-caches}
 ../tar_texi/tar.texi(opsummary,2488) @opindex exclude-caches@r{, summary}
 ../tar_texi/tar.texi(,2489) @item --exclude-caches
@@ -2544,6 +2580,7 @@
 ../tar_texi/tar.texi(,2491) Automatically excludes all directories
 ../tar_texi/tar.texi(,2492) containing a cache directory tag.  @xref{exclude}.
 ../tar_texi/tar.texi(,2493) 
+../tar_texi/tar.texi(opsummary,2494) @set ANCHOR--file 1
 ../tar_texi/tar.texi(opsummary,2494) @anchor{--file}
 ../tar_texi/tar.texi(opsummary,2494) @opindex file@r{, summary}
 ../tar_texi/tar.texi(,2495) @item --file=@var{archive}
@@ -2553,6 +2590,7 @@
 ../tar_texi/tar.texi(,2499) performs operations on, rather than @command{tar}'s compilation dependent
 ../tar_texi/tar.texi(,2500) default.  @xref{file tutorial}.
 ../tar_texi/tar.texi(,2501) 
+../tar_texi/tar.texi(opsummary,2502) @set ANCHOR--files-from 1
 ../tar_texi/tar.texi(opsummary,2502) @anchor{--files-from}
 ../tar_texi/tar.texi(opsummary,2502) @opindex files-from@r{, summary}
 ../tar_texi/tar.texi(,2503) @item --files-from=@var{file}
@@ -2562,6 +2600,7 @@
 ../tar_texi/tar.texi(,2507) or files to operate on, in addition to those specified on the
 ../tar_texi/tar.texi(,2508) command-line.  @xref{files}.
 ../tar_texi/tar.texi(,2509) 
+../tar_texi/tar.texi(opsummary,2510) @set ANCHOR--force-local 1
 ../tar_texi/tar.texi(opsummary,2510) @anchor{--force-local}
 ../tar_texi/tar.texi(opsummary,2510) @opindex force-local@r{, summary}
 ../tar_texi/tar.texi(,2511) @item --force-local
@@ -2570,6 +2609,7 @@
 ../tar_texi/tar.texi(,2514) as a local file, even if it looks like a remote tape drive name.
 ../tar_texi/tar.texi(,2515) @xref{local and remote archives}.
 ../tar_texi/tar.texi(,2516) 
+../tar_texi/tar.texi(opsummary,2517) @set ANCHOR--format 1
 ../tar_texi/tar.texi(opsummary,2517) @anchor{--format}
 ../tar_texi/tar.texi(opsummary,2517) @opindex format@r{, summary}
 ../tar_texi/tar.texi(,2518) @item --format=@var{format}
@@ -2601,6 +2641,7 @@
 ../tar_texi/tar.texi(,2544) 
 ../tar_texi/tar.texi(,2545) @xref{Formats}, for a detailed discussion of these formats.
 ../tar_texi/tar.texi(,2546) 
+../tar_texi/tar.texi(opsummary,2547) @set ANCHOR--group 1
 ../tar_texi/tar.texi(opsummary,2547) @anchor{--group}
 ../tar_texi/tar.texi(opsummary,2547) @opindex group@r{, summary}
 ../tar_texi/tar.texi(,2548) @item --group=@var{group}
@@ -2612,10 +2653,13 @@
 ../tar_texi/tar.texi(,2554) 
 ../tar_texi/tar.texi(,2555) Also see the comments for the @option{--owner=@var{user}} option.
 ../tar_texi/tar.texi(,2556) 
+../tar_texi/tar.texi(opsummary,2557) @set ANCHOR--gzip 1
 ../tar_texi/tar.texi(opsummary,2557) @anchor{--gzip}
 ../tar_texi/tar.texi(opsummary,2557) @opindex gzip@r{, summary}
+../tar_texi/tar.texi(opsummary,2558) @set ANCHOR--gunzip 1
 ../tar_texi/tar.texi(opsummary,2558) @anchor{--gunzip}
 ../tar_texi/tar.texi(opsummary,2558) @opindex gunzip@r{, summary}
+../tar_texi/tar.texi(opsummary,2559) @set ANCHOR--ungzip 1
 ../tar_texi/tar.texi(opsummary,2559) @anchor{--ungzip}
 ../tar_texi/tar.texi(opsummary,2559) @opindex ungzip@r{, summary}
 ../tar_texi/tar.texi(,2560) @item --gzip
@@ -2627,6 +2671,7 @@
 ../tar_texi/tar.texi(,2566) @command{gzip}, allowing @command{tar} to directly operate on several
 ../tar_texi/tar.texi(,2567) kinds of compressed archives transparently.  @xref{gzip}.
 ../tar_texi/tar.texi(,2568) 
+../tar_texi/tar.texi(opsummary,2569) @set ANCHOR--help 1
 ../tar_texi/tar.texi(opsummary,2569) @anchor{--help}
 ../tar_texi/tar.texi(opsummary,2569) @opindex help@r{, summary}
 ../tar_texi/tar.texi(,2570) @item --help
@@ -2635,17 +2680,20 @@
 ../tar_texi/tar.texi(,2573) @command{tar} will print out a short message summarizing the operations and
 ../tar_texi/tar.texi(,2574) options to @command{tar} and exit. @xref{help}.
 ../tar_texi/tar.texi(,2575) 
+../tar_texi/tar.texi(opsummary,2576) @set ANCHOR--ignore-case 1
 ../tar_texi/tar.texi(opsummary,2576) @anchor{--ignore-case}
 ../tar_texi/tar.texi(opsummary,2576) @opindex ignore-case@r{, summary}
 ../tar_texi/tar.texi(,2577) @item --ignore-case
 ../tar_texi/tar.texi(,2578) Ignore case when matching member or file names with
 ../tar_texi/tar.texi(,2579) patterns. @xref{controlling pattern-matching}. 
 ../tar_texi/tar.texi(,2580) 
+../tar_texi/tar.texi(opsummary,2581) @set ANCHOR--ignore-command-error 1
 ../tar_texi/tar.texi(opsummary,2581) @anchor{--ignore-command-error}
 ../tar_texi/tar.texi(opsummary,2581) @opindex ignore-command-error@r{, summary}
 ../tar_texi/tar.texi(,2582) @item --ignore-command-error
 ../tar_texi/tar.texi(,2583) Ignore exit codes of subprocesses. @xref{Writing to an External Program}.
 ../tar_texi/tar.texi(,2584) 
+../tar_texi/tar.texi(opsummary,2585) @set ANCHOR--ignore-failed-read 1
 ../tar_texi/tar.texi(opsummary,2585) @anchor{--ignore-failed-read}
 ../tar_texi/tar.texi(opsummary,2585) @opindex ignore-failed-read@r{, summary}
 ../tar_texi/tar.texi(,2586) @item --ignore-failed-read
@@ -2653,6 +2701,7 @@
 ../tar_texi/tar.texi(,2588) Do not exit unsuccessfully merely because an unreadable file was encountered.
 ../tar_texi/tar.texi(,2589) @xref{Reading}.
 ../tar_texi/tar.texi(,2590) 
+../tar_texi/tar.texi(opsummary,2591) @set ANCHOR--ignore-zeros 1
 ../tar_texi/tar.texi(opsummary,2591) @anchor{--ignore-zeros}
 ../tar_texi/tar.texi(opsummary,2591) @opindex ignore-zeros@r{, summary}
 ../tar_texi/tar.texi(,2592) @item --ignore-zeros
@@ -2661,6 +2710,7 @@
 ../tar_texi/tar.texi(,2595) With this option, @command{tar} will ignore zeroed blocks in the
 ../tar_texi/tar.texi(,2596) archive, which normally signals EOF.  @xref{Reading}.
 ../tar_texi/tar.texi(,2597) 
+../tar_texi/tar.texi(opsummary,2598) @set ANCHOR--incremental 1
 ../tar_texi/tar.texi(opsummary,2598) @anchor{--incremental}
 ../tar_texi/tar.texi(opsummary,2598) @opindex incremental@r{, summary}
 ../tar_texi/tar.texi(,2599) @item --incremental
@@ -2671,14 +2721,17 @@
 ../tar_texi/tar.texi(,2604) primarily for backwards compatibility only.  @xref{Incremental Dumps},
 ../tar_texi/tar.texi(,2605) for a detailed discussion of incremental archives.
 ../tar_texi/tar.texi(,2606) 
+../tar_texi/tar.texi(opsummary,2607) @set ANCHOR--index-file 1
 ../tar_texi/tar.texi(opsummary,2607) @anchor{--index-file}
 ../tar_texi/tar.texi(opsummary,2607) @opindex index-file@r{, summary}
 ../tar_texi/tar.texi(,2608) @item --index-file=@var{file}
 ../tar_texi/tar.texi(,2609) 
 ../tar_texi/tar.texi(,2610) Send verbose output to @var{file} instead of to standard output.
 ../tar_texi/tar.texi(,2611) 
+../tar_texi/tar.texi(opsummary,2612) @set ANCHOR--info-script 1
 ../tar_texi/tar.texi(opsummary,2612) @anchor{--info-script}
 ../tar_texi/tar.texi(opsummary,2612) @opindex info-script@r{, summary}
+../tar_texi/tar.texi(opsummary,2613) @set ANCHOR--new-volume-script 1
 ../tar_texi/tar.texi(opsummary,2613) @anchor{--new-volume-script}
 ../tar_texi/tar.texi(opsummary,2613) @opindex new-volume-script@r{, summary}
 ../tar_texi/tar.texi(,2614) @item --info-script=@var{script-file}
@@ -2690,6 +2743,7 @@
 ../tar_texi/tar.texi(,2620) @command{tar} fails immediately.  @xref{info-script}, for a detailed
 ../tar_texi/tar.texi(,2621) discussion of @var{script-file}.
 ../tar_texi/tar.texi(,2622) 
+../tar_texi/tar.texi(opsummary,2623) @set ANCHOR--interactive 1
 ../tar_texi/tar.texi(opsummary,2623) @anchor{--interactive}
 ../tar_texi/tar.texi(opsummary,2623) @opindex interactive@r{, summary}
 ../tar_texi/tar.texi(,2624) @item --interactive
@@ -2700,6 +2754,7 @@
 ../tar_texi/tar.texi(,2629) performing potentially destructive options, such as overwriting files.
 ../tar_texi/tar.texi(,2630) @xref{interactive}.
 ../tar_texi/tar.texi(,2631) 
+../tar_texi/tar.texi(opsummary,2632) @set ANCHOR--keep-newer-files 1
 ../tar_texi/tar.texi(opsummary,2632) @anchor{--keep-newer-files}
 ../tar_texi/tar.texi(opsummary,2632) @opindex keep-newer-files@r{, summary}
 ../tar_texi/tar.texi(,2633) @item --keep-newer-files
@@ -2707,6 +2762,7 @@
 ../tar_texi/tar.texi(,2635) Do not replace existing files that are newer than their archive copies
 ../tar_texi/tar.texi(,2636) when extracting files from an archive.
 ../tar_texi/tar.texi(,2637) 
+../tar_texi/tar.texi(opsummary,2638) @set ANCHOR--keep-old-files 1
 ../tar_texi/tar.texi(opsummary,2638) @anchor{--keep-old-files}
 ../tar_texi/tar.texi(opsummary,2638) @opindex keep-old-files@r{, summary}
 ../tar_texi/tar.texi(,2639) @item --keep-old-files
@@ -2715,6 +2771,7 @@
 ../tar_texi/tar.texi(,2642) Do not overwrite existing files when extracting files from an archive.
 ../tar_texi/tar.texi(,2643) @xref{Keep Old Files}.
 ../tar_texi/tar.texi(,2644) 
+../tar_texi/tar.texi(opsummary,2645) @set ANCHOR--label 1
 ../tar_texi/tar.texi(opsummary,2645) @anchor{--label}
 ../tar_texi/tar.texi(opsummary,2645) @opindex label@r{, summary}
 ../tar_texi/tar.texi(,2646) @item --label=@var{name}
@@ -2725,6 +2782,7 @@
 ../tar_texi/tar.texi(,2651) @command{tar} will only operate on archives that have a label matching
 ../tar_texi/tar.texi(,2652) the pattern specified in @var{name}.  @xref{Tape Files}.
 ../tar_texi/tar.texi(,2653) 
+../tar_texi/tar.texi(opsummary,2654) @set ANCHOR--listed-incremental 1
 ../tar_texi/tar.texi(opsummary,2654) @anchor{--listed-incremental}
 ../tar_texi/tar.texi(opsummary,2654) @opindex listed-incremental@r{, summary}
 ../tar_texi/tar.texi(,2655) @item --listed-incremental=@var{snapshot-file}
@@ -2736,6 +2794,7 @@
 ../tar_texi/tar.texi(,2661) With other operations, informs @command{tar} that the archive is in
 ../tar_texi/tar.texi(,2662) incremental format.  @xref{Incremental Dumps}.
 ../tar_texi/tar.texi(,2663) 
+../tar_texi/tar.texi(opsummary,2664) @set ANCHOR--mode 1
 ../tar_texi/tar.texi(opsummary,2664) @anchor{--mode}
 ../tar_texi/tar.texi(opsummary,2664) @opindex mode@r{, summary}
 ../tar_texi/tar.texi(,2665) @item --mode=@var{permissions}
@@ -2746,6 +2805,7 @@
 ../tar_texi/tar.texi(,2670) number or as symbolic permissions, like with
 ../tar_texi/tar.texi(,2671) @command{chmod}. @xref{override}.
 ../tar_texi/tar.texi(,2672) 
+../tar_texi/tar.texi(opsummary,2673) @set ANCHOR--mtime 1
 ../tar_texi/tar.texi(opsummary,2673) @anchor{--mtime}
 ../tar_texi/tar.texi(opsummary,2673) @opindex mtime@r{, summary}
 ../tar_texi/tar.texi(,2674) @item --mtime=@var{date}
@@ -2757,6 +2817,7 @@
 ../tar_texi/tar.texi(,2680) name of the existing file, starting with @samp{/} or @samp{.}.  In the
 ../tar_texi/tar.texi(,2681) latter case, the modification time of that file is used. @xref{override}.
 ../tar_texi/tar.texi(,2682) 
+../tar_texi/tar.texi(opsummary,2683) @set ANCHOR--multi-volume 1
 ../tar_texi/tar.texi(opsummary,2683) @anchor{--multi-volume}
 ../tar_texi/tar.texi(opsummary,2683) @opindex multi-volume@r{, summary}
 ../tar_texi/tar.texi(,2684) @item --multi-volume
@@ -2770,6 +2831,7 @@
 ../tar_texi/tar.texi(,2692) 
 ../tar_texi/tar.texi(,2693) (see --info-script)
 ../tar_texi/tar.texi(,2694) 
+../tar_texi/tar.texi(opsummary,2695) @set ANCHOR--seek 1
 ../tar_texi/tar.texi(opsummary,2695) @anchor{--seek}
 ../tar_texi/tar.texi(opsummary,2695) @opindex seek@r{, summary}
 ../tar_texi/tar.texi(,2696) @item --seek
@@ -2780,6 +2842,7 @@
 ../tar_texi/tar.texi(,2701) the archive can be seeked or not.  This option is intended for use
 ../tar_texi/tar.texi(,2702) in cases when such recognition fails.
 ../tar_texi/tar.texi(,2703) 
+../tar_texi/tar.texi(opsummary,2704) @set ANCHOR--newer 1
 ../tar_texi/tar.texi(opsummary,2704) @anchor{--newer}
 ../tar_texi/tar.texi(opsummary,2704) @opindex newer@r{, summary}
 ../tar_texi/tar.texi(,2705) @item --newer=@var{date}
@@ -2791,6 +2854,7 @@
 ../tar_texi/tar.texi(,2711) is taken to be the name of a file whose data modification time specifies
 ../tar_texi/tar.texi(,2712) the date.  @xref{after}.
 ../tar_texi/tar.texi(,2713) 
+../tar_texi/tar.texi(opsummary,2714) @set ANCHOR--newer-mtime 1
 ../tar_texi/tar.texi(opsummary,2714) @anchor{--newer-mtime}
 ../tar_texi/tar.texi(opsummary,2714) @opindex newer-mtime@r{, summary}
 ../tar_texi/tar.texi(,2715) @item --newer-mtime=@var{date}
@@ -2800,12 +2864,14 @@
 ../tar_texi/tar.texi(,2719) also back up files for which any status information has
 ../tar_texi/tar.texi(,2720) changed).  @xref{after}.
 ../tar_texi/tar.texi(,2721) 
+../tar_texi/tar.texi(opsummary,2722) @set ANCHOR--no-anchored 1
 ../tar_texi/tar.texi(opsummary,2722) @anchor{--no-anchored}
 ../tar_texi/tar.texi(opsummary,2722) @opindex no-anchored@r{, summary}
 ../tar_texi/tar.texi(,2723) @item --no-anchored
 ../tar_texi/tar.texi(,2724) An exclude pattern can match any subsequence of the name's components.
 ../tar_texi/tar.texi(,2725) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,2726) 
+../tar_texi/tar.texi(opsummary,2727) @set ANCHOR--no-delay-directory-restore 1
 ../tar_texi/tar.texi(opsummary,2727) @anchor{--no-delay-directory-restore}
 ../tar_texi/tar.texi(opsummary,2727) @opindex no-delay-directory-restore@r{, summary}
 ../tar_texi/tar.texi(,2728) @item --no-delay-directory-restore
@@ -2814,18 +2880,21 @@
 ../tar_texi/tar.texi(,2731) directories when all files from this directory has been
 ../tar_texi/tar.texi(,2732) extracted. This is the default. @xref{Directory Modification Times and Permissions}.
 ../tar_texi/tar.texi(,2733) 
+../tar_texi/tar.texi(opsummary,2734) @set ANCHOR--no-ignore-case 1
 ../tar_texi/tar.texi(opsummary,2734) @anchor{--no-ignore-case}
 ../tar_texi/tar.texi(opsummary,2734) @opindex no-ignore-case@r{, summary}
 ../tar_texi/tar.texi(,2735) @item --no-ignore-case
 ../tar_texi/tar.texi(,2736) Use case-sensitive matching.
 ../tar_texi/tar.texi(,2737) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,2738) 
+../tar_texi/tar.texi(opsummary,2739) @set ANCHOR--no-ignore-command-error 1
 ../tar_texi/tar.texi(opsummary,2739) @anchor{--no-ignore-command-error}
 ../tar_texi/tar.texi(opsummary,2739) @opindex no-ignore-command-error@r{, summary}
 ../tar_texi/tar.texi(,2740) @item --no-ignore-command-error
 ../tar_texi/tar.texi(,2741) Print warnings about subprocesses terminated with a non-zero exit
 ../tar_texi/tar.texi(,2742) code. @xref{Writing to an External Program}.
 ../tar_texi/tar.texi(,2743) 
+../tar_texi/tar.texi(opsummary,2744) @set ANCHOR--no-overwrite-dir 1
 ../tar_texi/tar.texi(opsummary,2744) @anchor{--no-overwrite-dir}
 ../tar_texi/tar.texi(opsummary,2744) @opindex no-overwrite-dir@r{, summary}
 ../tar_texi/tar.texi(,2745) @item --no-overwrite-dir
@@ -2833,6 +2902,7 @@
 ../tar_texi/tar.texi(,2747) Preserve metadata of existing directories when extracting files
 ../tar_texi/tar.texi(,2748) from an archive.  @xref{Overwrite Old Files}.
 ../tar_texi/tar.texi(,2749) 
+../tar_texi/tar.texi(opsummary,2750) @set ANCHOR--no-quote-chars 1
 ../tar_texi/tar.texi(opsummary,2750) @anchor{--no-quote-chars}
 ../tar_texi/tar.texi(opsummary,2750) @opindex no-quote-chars@r{, summary}
 ../tar_texi/tar.texi(,2751) @item --no-quote-chars=@var{string}
@@ -2840,6 +2910,7 @@
 ../tar_texi/tar.texi(,2753) characters set by the previous @option{--quote-chars} option
 ../tar_texi/tar.texi(,2754) (@pxref{quoting styles}).
 ../tar_texi/tar.texi(,2755) 
+../tar_texi/tar.texi(opsummary,2756) @set ANCHOR--no-recursion 1
 ../tar_texi/tar.texi(opsummary,2756) @anchor{--no-recursion}
 ../tar_texi/tar.texi(opsummary,2756) @opindex no-recursion@r{, summary}
 ../tar_texi/tar.texi(,2757) @item --no-recursion
@@ -2847,6 +2918,7 @@
 ../tar_texi/tar.texi(,2759) With this option, @command{tar} will not recurse into directories.
 ../tar_texi/tar.texi(,2760) @xref{recurse}.
 ../tar_texi/tar.texi(,2761) 
+../tar_texi/tar.texi(opsummary,2762) @set ANCHOR--no-same-owner 1
 ../tar_texi/tar.texi(opsummary,2762) @anchor{--no-same-owner}
 ../tar_texi/tar.texi(opsummary,2762) @opindex no-same-owner@r{, summary}
 ../tar_texi/tar.texi(,2763) @item --no-same-owner
@@ -2856,6 +2928,7 @@
 ../tar_texi/tar.texi(,2767) specified in the @command{tar} archive.  This the default behavior
 ../tar_texi/tar.texi(,2768) for ordinary users.
 ../tar_texi/tar.texi(,2769) 
+../tar_texi/tar.texi(opsummary,2770) @set ANCHOR--no-same-permissions 1
 ../tar_texi/tar.texi(opsummary,2770) @anchor{--no-same-permissions}
 ../tar_texi/tar.texi(opsummary,2770) @opindex no-same-permissions@r{, summary}
 ../tar_texi/tar.texi(,2771) @item --no-same-permissions
@@ -2864,24 +2937,28 @@
 ../tar_texi/tar.texi(,2774) the permissions specified in the archive.  This is the default behavior
 ../tar_texi/tar.texi(,2775) for ordinary users.
 ../tar_texi/tar.texi(,2776) 
+../tar_texi/tar.texi(opsummary,2777) @set ANCHOR--no-unquote 1
 ../tar_texi/tar.texi(opsummary,2777) @anchor{--no-unquote}
 ../tar_texi/tar.texi(opsummary,2777) @opindex no-unquote@r{, summary}
 ../tar_texi/tar.texi(,2778) @item --no-unquote
 ../tar_texi/tar.texi(,2779) Treat all input file or member names literally, do not interpret
 ../tar_texi/tar.texi(,2780) escape sequences.  @xref{input name quoting}.
 ../tar_texi/tar.texi(,2781) 
+../tar_texi/tar.texi(opsummary,2782) @set ANCHOR--no-wildcards 1
 ../tar_texi/tar.texi(opsummary,2782) @anchor{--no-wildcards}
 ../tar_texi/tar.texi(opsummary,2782) @opindex no-wildcards@r{, summary}
 ../tar_texi/tar.texi(,2783) @item --no-wildcards
 ../tar_texi/tar.texi(,2784) Do not use wildcards.
 ../tar_texi/tar.texi(,2785) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,2786) 
+../tar_texi/tar.texi(opsummary,2787) @set ANCHOR--no-wildcards-match-slash 1
 ../tar_texi/tar.texi(opsummary,2787) @anchor{--no-wildcards-match-slash}
 ../tar_texi/tar.texi(opsummary,2787) @opindex no-wildcards-match-slash@r{, summary}
 ../tar_texi/tar.texi(,2788) @item --no-wildcards-match-slash
 ../tar_texi/tar.texi(,2789) Wildcards do not match @samp{/}.
 ../tar_texi/tar.texi(,2790) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,2791) 
+../tar_texi/tar.texi(opsummary,2792) @set ANCHOR--null 1
 ../tar_texi/tar.texi(opsummary,2792) @anchor{--null}
 ../tar_texi/tar.texi(opsummary,2792) @opindex null@r{, summary}
 ../tar_texi/tar.texi(,2793) @item --null
@@ -2891,6 +2968,7 @@
 ../tar_texi/tar.texi(,2797) @command{tar} can correctly work with file names that contain newlines.
 ../tar_texi/tar.texi(,2798) @xref{nul}.
 ../tar_texi/tar.texi(,2799) 
+../tar_texi/tar.texi(opsummary,2800) @set ANCHOR--numeric-owner 1
 ../tar_texi/tar.texi(opsummary,2800) @anchor{--numeric-owner}
 ../tar_texi/tar.texi(opsummary,2800) @opindex numeric-owner@r{, summary}
 ../tar_texi/tar.texi(,2801) @item --numeric-owner
@@ -2912,6 +2990,7 @@
 ../tar_texi/tar.texi(,2817) 
 ../tar_texi/tar.texi(,2818) @xref{Changes}, for more information.
 ../tar_texi/tar.texi(,2819) 
+../tar_texi/tar.texi(opsummary,2820) @set ANCHOR--occurrence 1
 ../tar_texi/tar.texi(opsummary,2820) @anchor{--occurrence}
 ../tar_texi/tar.texi(opsummary,2820) @opindex occurrence@r{, summary}
 ../tar_texi/tar.texi(,2821) @item --occurrence[=@var{number}]
@@ -2932,11 +3011,13 @@
 ../tar_texi/tar.texi(,2836) will extract the first occurrence of the member @file{filename} from @file{archive.tar}
 ../tar_texi/tar.texi(,2837) and will terminate without scanning to the end of the archive.
 ../tar_texi/tar.texi(,2838) 
+../tar_texi/tar.texi(opsummary,2839) @set ANCHOR--old-archive 1
 ../tar_texi/tar.texi(opsummary,2839) @anchor{--old-archive}
 ../tar_texi/tar.texi(opsummary,2839) @opindex old-archive@r{, summary}
 ../tar_texi/tar.texi(,2840) @item --old-archive
 ../tar_texi/tar.texi(,2841) Synonym for @option{--format=v7}.
 ../tar_texi/tar.texi(,2842) 
+../tar_texi/tar.texi(opsummary,2843) @set ANCHOR--one-file-system 1
 ../tar_texi/tar.texi(opsummary,2843) @anchor{--one-file-system}
 ../tar_texi/tar.texi(opsummary,2843) @opindex one-file-system@r{, summary}
 ../tar_texi/tar.texi(,2844) @item --one-file-system
@@ -2946,6 +3027,7 @@
 ../tar_texi/tar.texi(,2848) synonym for @option{--one-file-system}.  This has changed in version
 ../tar_texi/tar.texi(,2849) 1.15.91. @xref{Changes}, for more information.}.
 ../tar_texi/tar.texi(,2850) 
+../tar_texi/tar.texi(opsummary,2851) @set ANCHOR--overwrite 1
 ../tar_texi/tar.texi(opsummary,2851) @anchor{--overwrite}
 ../tar_texi/tar.texi(opsummary,2851) @opindex overwrite@r{, summary}
 ../tar_texi/tar.texi(,2852) @item --overwrite
@@ -2953,6 +3035,7 @@
 ../tar_texi/tar.texi(,2854) Overwrite existing files and directory metadata when extracting files
 ../tar_texi/tar.texi(,2855) from an archive.  @xref{Overwrite Old Files}.
 ../tar_texi/tar.texi(,2856) 
+../tar_texi/tar.texi(opsummary,2857) @set ANCHOR--overwrite-dir 1
 ../tar_texi/tar.texi(opsummary,2857) @anchor{--overwrite-dir}
 ../tar_texi/tar.texi(opsummary,2857) @opindex overwrite-dir@r{, summary}
 ../tar_texi/tar.texi(,2858) @item --overwrite-dir
@@ -2960,6 +3043,7 @@
 ../tar_texi/tar.texi(,2860) Overwrite the metadata of existing directories when extracting files
 ../tar_texi/tar.texi(,2861) from an archive.  @xref{Overwrite Old Files}.
 ../tar_texi/tar.texi(,2862) 
+../tar_texi/tar.texi(opsummary,2863) @set ANCHOR--owner 1
 ../tar_texi/tar.texi(opsummary,2863) @anchor{--owner}
 ../tar_texi/tar.texi(opsummary,2863) @opindex owner@r{, summary}
 ../tar_texi/tar.texi(,2864) @item --owner=@var{user}
@@ -2972,6 +3056,7 @@
 ../tar_texi/tar.texi(,2871) 
 ../tar_texi/tar.texi(,2872) This option does not affect extraction from archives.
 ../tar_texi/tar.texi(,2873) 
+../tar_texi/tar.texi(opsummary,2874) @set ANCHOR--transform 1
 ../tar_texi/tar.texi(opsummary,2874) @anchor{--transform}
 ../tar_texi/tar.texi(opsummary,2874) @opindex transform@r{, summary}
 ../tar_texi/tar.texi(,2875) @item --transform=@var{sed-expr}
@@ -2992,12 +3077,14 @@
 ../tar_texi/tar.texi(,2890) @option{--show-transformed-names} option
 ../tar_texi/tar.texi(,2891) (@pxref{show-transformed-names}).  
 ../tar_texi/tar.texi(,2892) 
+../tar_texi/tar.texi(opsummary,2893) @set ANCHOR--quote-chars 1
 ../tar_texi/tar.texi(opsummary,2893) @anchor{--quote-chars}
 ../tar_texi/tar.texi(opsummary,2893) @opindex quote-chars@r{, summary}
 ../tar_texi/tar.texi(,2894) @item --quote-chars=@var{string}
 ../tar_texi/tar.texi(,2895) Always quote characters from @var{string}, even if the selected
 ../tar_texi/tar.texi(,2896) quoting style would not quote them (@pxref{quoting styles}).
 ../tar_texi/tar.texi(,2897) 
+../tar_texi/tar.texi(opsummary,2898) @set ANCHOR--quoting-style 1
 ../tar_texi/tar.texi(opsummary,2898) @anchor{--quoting-style}
 ../tar_texi/tar.texi(opsummary,2898) @opindex quoting-style@r{, summary}
 ../tar_texi/tar.texi(,2899) @item --quoting-style=@var{style}
@@ -3008,6 +3095,7 @@
 ../tar_texi/tar.texi(,2904) style is @code{escape}, unless overridden while configuring the
 ../tar_texi/tar.texi(,2905) package.
 ../tar_texi/tar.texi(,2906) 
+../tar_texi/tar.texi(opsummary,2907) @set ANCHOR--pax-option 1
 ../tar_texi/tar.texi(opsummary,2907) @anchor{--pax-option}
 ../tar_texi/tar.texi(opsummary,2907) @opindex pax-option@r{, summary}
 ../tar_texi/tar.texi(,2908) @item --pax-option=@var{keyword-list}
@@ -3017,17 +3105,20 @@
 ../tar_texi/tar.texi(,2912) list of keyword options.  @xref{PAX keywords}, for a detailed
 ../tar_texi/tar.texi(,2913) discussion.
 ../tar_texi/tar.texi(,2914) 
+../tar_texi/tar.texi(opsummary,2915) @set ANCHOR--portability 1
 ../tar_texi/tar.texi(opsummary,2915) @anchor{--portability}
 ../tar_texi/tar.texi(opsummary,2915) @opindex portability@r{, summary}
 ../tar_texi/tar.texi(,2916) @item --portability
 ../tar_texi/tar.texi(,2917) @itemx --old-archive
 ../tar_texi/tar.texi(,2918) Synonym for @option{--format=v7}.
 ../tar_texi/tar.texi(,2919) 
+../tar_texi/tar.texi(opsummary,2920) @set ANCHOR--posix 1
 ../tar_texi/tar.texi(opsummary,2920) @anchor{--posix}
 ../tar_texi/tar.texi(opsummary,2920) @opindex posix@r{, summary}
 ../tar_texi/tar.texi(,2921) @item --posix
 ../tar_texi/tar.texi(,2922) Same as @option{--format=posix}.
 ../tar_texi/tar.texi(,2923) 
+../tar_texi/tar.texi(opsummary,2924) @set ANCHOR--preserve 1
 ../tar_texi/tar.texi(opsummary,2924) @anchor{--preserve}
 ../tar_texi/tar.texi(opsummary,2924) @opindex preserve@r{, summary}
 ../tar_texi/tar.texi(,2925) @item --preserve
@@ -3035,14 +3126,17 @@
 ../tar_texi/tar.texi(,2927) Synonymous with specifying both @option{--preserve-permissions} and
 ../tar_texi/tar.texi(,2928) @option{--same-order}.  @xref{Setting Access Permissions}.
 ../tar_texi/tar.texi(,2929) 
+../tar_texi/tar.texi(opsummary,2930) @set ANCHOR--preserve-order 1
 ../tar_texi/tar.texi(opsummary,2930) @anchor{--preserve-order}
 ../tar_texi/tar.texi(opsummary,2930) @opindex preserve-order@r{, summary}
 ../tar_texi/tar.texi(,2931) @item --preserve-order
 ../tar_texi/tar.texi(,2932) 
 ../tar_texi/tar.texi(,2933) (See @option{--same-order}; @pxref{Reading}.)
 ../tar_texi/tar.texi(,2934) 
+../tar_texi/tar.texi(opsummary,2935) @set ANCHOR--preserve-permissions 1
 ../tar_texi/tar.texi(opsummary,2935) @anchor{--preserve-permissions}
 ../tar_texi/tar.texi(opsummary,2935) @opindex preserve-permissions@r{, summary}
+../tar_texi/tar.texi(opsummary,2936) @set ANCHOR--same-permissions 1
 ../tar_texi/tar.texi(opsummary,2936) @anchor{--same-permissions}
 ../tar_texi/tar.texi(opsummary,2936) @opindex same-permissions@r{, summary}
 ../tar_texi/tar.texi(,2937) @item --preserve-permissions
@@ -3055,6 +3149,7 @@
 ../tar_texi/tar.texi(,2944) Specifying this option instructs @command{tar} that it should use the
 ../tar_texi/tar.texi(,2945) permissions directly from the archive.  @xref{Setting Access Permissions}.
 ../tar_texi/tar.texi(,2946) 
+../tar_texi/tar.texi(opsummary,2947) @set ANCHOR--read-full-records 1
 ../tar_texi/tar.texi(opsummary,2947) @anchor{--read-full-records}
 ../tar_texi/tar.texi(opsummary,2947) @opindex read-full-records@r{, summary}
 ../tar_texi/tar.texi(,2948) @item --read-full-records
@@ -3063,6 +3158,7 @@
 ../tar_texi/tar.texi(,2951) Specifies that @command{tar} should reblock its input, for reading
 ../tar_texi/tar.texi(,2952) from pipes on systems with buggy implementations.  @xref{Reading}.
 ../tar_texi/tar.texi(,2953) 
+../tar_texi/tar.texi(opsummary,2954) @set ANCHOR--record-size 1
 ../tar_texi/tar.texi(opsummary,2954) @anchor{--record-size}
 ../tar_texi/tar.texi(opsummary,2954) @opindex record-size@r{, summary}
 ../tar_texi/tar.texi(,2955) @item --record-size=@var{size}
@@ -3070,6 +3166,7 @@
 ../tar_texi/tar.texi(,2957) Instructs @command{tar} to use @var{size} bytes per record when accessing the
 ../tar_texi/tar.texi(,2958) archive.  @xref{Blocking Factor}.
 ../tar_texi/tar.texi(,2959) 
+../tar_texi/tar.texi(opsummary,2960) @set ANCHOR--recursion 1
 ../tar_texi/tar.texi(opsummary,2960) @anchor{--recursion}
 ../tar_texi/tar.texi(opsummary,2960) @opindex recursion@r{, summary}
 ../tar_texi/tar.texi(,2961) @item --recursion
@@ -3077,6 +3174,7 @@
 ../tar_texi/tar.texi(,2963) With this option, @command{tar} recurses into directories.
 ../tar_texi/tar.texi(,2964) @xref{recurse}.
 ../tar_texi/tar.texi(,2965) 
+../tar_texi/tar.texi(opsummary,2966) @set ANCHOR--recursive-unlink 1
 ../tar_texi/tar.texi(opsummary,2966) @anchor{--recursive-unlink}
 ../tar_texi/tar.texi(opsummary,2966) @opindex recursive-unlink@r{, summary}
 ../tar_texi/tar.texi(,2967) @item --recursive-unlink
@@ -3085,6 +3183,7 @@
 ../tar_texi/tar.texi(,2970) directory hierarchies before extracting directories of the same name
 ../tar_texi/tar.texi(,2971) from the archive.  @xref{Recursive Unlink}.
 ../tar_texi/tar.texi(,2972) 
+../tar_texi/tar.texi(opsummary,2973) @set ANCHOR--remove-files 1
 ../tar_texi/tar.texi(opsummary,2973) @anchor{--remove-files}
 ../tar_texi/tar.texi(opsummary,2973) @opindex remove-files@r{, summary}
 ../tar_texi/tar.texi(,2974) @item --remove-files
@@ -3092,6 +3191,7 @@
 ../tar_texi/tar.texi(,2976) Directs @command{tar} to remove the source file from the file system after
 ../tar_texi/tar.texi(,2977) appending it to an archive.  @xref{remove files}.
 ../tar_texi/tar.texi(,2978) 
+../tar_texi/tar.texi(opsummary,2979) @set ANCHOR--restrict 1
 ../tar_texi/tar.texi(opsummary,2979) @anchor{--restrict}
 ../tar_texi/tar.texi(opsummary,2979) @opindex restrict@r{, summary}
 ../tar_texi/tar.texi(,2980) @item --restrict
@@ -3100,6 +3200,7 @@
 ../tar_texi/tar.texi(,2983) Currently this option disables shell invocaton from multi-volume menu
 ../tar_texi/tar.texi(,2984) (@pxref{Using Multiple Tapes}).
 ../tar_texi/tar.texi(,2985) 
+../tar_texi/tar.texi(opsummary,2986) @set ANCHOR--rmt-command 1
 ../tar_texi/tar.texi(opsummary,2986) @anchor{--rmt-command}
 ../tar_texi/tar.texi(opsummary,2986) @opindex rmt-command@r{, summary}
 ../tar_texi/tar.texi(,2987) @item --rmt-command=@var{cmd}
@@ -3107,6 +3208,7 @@
 ../tar_texi/tar.texi(,2989) Notifies @command{tar} that it should use @var{cmd} instead of
 ../tar_texi/tar.texi(,2990) the default @file{/usr/libexec/rmt} (@pxref{Remote Tape Server}).
 ../tar_texi/tar.texi(,2991) 
+../tar_texi/tar.texi(opsummary,2992) @set ANCHOR--rsh-command 1
 ../tar_texi/tar.texi(opsummary,2992) @anchor{--rsh-command}
 ../tar_texi/tar.texi(opsummary,2992) @opindex rsh-command@r{, summary}
 ../tar_texi/tar.texi(,2993) @item --rsh-command=@var{cmd}
@@ -3114,6 +3216,7 @@
 ../tar_texi/tar.texi(,2995) Notifies @command{tar} that is should use @var{cmd} to communicate with remote
 ../tar_texi/tar.texi(,2996) devices.  @xref{Device}.
 ../tar_texi/tar.texi(,2997) 
+../tar_texi/tar.texi(opsummary,2998) @set ANCHOR--same-order 1
 ../tar_texi/tar.texi(opsummary,2998) @anchor{--same-order}
 ../tar_texi/tar.texi(opsummary,2998) @opindex same-order@r{, summary}
 ../tar_texi/tar.texi(,2999) @item --same-order
@@ -3125,6 +3228,7 @@
 ../tar_texi/tar.texi(,3005) arguments has already been sorted to match the order of files in the
 ../tar_texi/tar.texi(,3006) archive.  @xref{Reading}.
 ../tar_texi/tar.texi(,3007) 
+../tar_texi/tar.texi(opsummary,3008) @set ANCHOR--same-owner 1
 ../tar_texi/tar.texi(opsummary,3008) @anchor{--same-owner}
 ../tar_texi/tar.texi(opsummary,3008) @opindex same-owner@r{, summary}
 ../tar_texi/tar.texi(,3009) @item --same-owner
@@ -3139,6 +3243,7 @@
 ../tar_texi/tar.texi(,3018) 
 ../tar_texi/tar.texi(,3019) (See @option{--preserve-permissions}; @pxref{Setting Access Permissions}.)
 ../tar_texi/tar.texi(,3020) 
+../tar_texi/tar.texi(opsummary,3021) @set ANCHOR--show-defaults 1
 ../tar_texi/tar.texi(opsummary,3021) @anchor{--show-defaults}
 ../tar_texi/tar.texi(opsummary,3021) @opindex show-defaults@r{, summary}
 ../tar_texi/tar.texi(,3022) @item --show-defaults
@@ -3153,6 +3258,7 @@
 ../tar_texi/tar.texi(,3031) --rmt-command=/usr/libexec/rmt --rsh-command=/usr/bin/rsh
 ../tar_texi/tar.texi(,3032) @end smallexample
 ../tar_texi/tar.texi(,3033) 
+../tar_texi/tar.texi(opsummary,3034) @set ANCHOR--show-omitted-dirs 1
 ../tar_texi/tar.texi(opsummary,3034) @anchor{--show-omitted-dirs}
 ../tar_texi/tar.texi(opsummary,3034) @opindex show-omitted-dirs@r{, summary}
 ../tar_texi/tar.texi(,3035) @item --show-omitted-dirs
@@ -3160,8 +3266,10 @@
 ../tar_texi/tar.texi(,3037) Instructs @command{tar} to mention directories its skipping over when
 ../tar_texi/tar.texi(,3038) operating on a @command{tar} archive.  @xref{show-omitted-dirs}.
 ../tar_texi/tar.texi(,3039) 
+../tar_texi/tar.texi(opsummary,3040) @set ANCHOR--show-transformed-names 1
 ../tar_texi/tar.texi(opsummary,3040) @anchor{--show-transformed-names}
 ../tar_texi/tar.texi(opsummary,3040) @opindex show-transformed-names@r{, summary}
+../tar_texi/tar.texi(opsummary,3041) @set ANCHOR--show-stored-names 1
 ../tar_texi/tar.texi(opsummary,3041) @anchor{--show-stored-names}
 ../tar_texi/tar.texi(opsummary,3041) @opindex show-stored-names@r{, summary}
 ../tar_texi/tar.texi(,3042) @item --show-transformed-names
@@ -3173,6 +3281,7 @@
 ../tar_texi/tar.texi(,3048) stored in the archive, as opposed to the actual file
 ../tar_texi/tar.texi(,3049) names.  @xref{listing member and file names}.
 ../tar_texi/tar.texi(,3050) 
+../tar_texi/tar.texi(opsummary,3051) @set ANCHOR--sparse 1
 ../tar_texi/tar.texi(opsummary,3051) @anchor{--sparse}
 ../tar_texi/tar.texi(opsummary,3051) @opindex sparse@r{, summary}
 ../tar_texi/tar.texi(,3052) @item --sparse
@@ -3181,6 +3290,7 @@
 ../tar_texi/tar.texi(,3055) Invokes a @acronym{GNU} extension when adding files to an archive that handles
 ../tar_texi/tar.texi(,3056) sparse files efficiently.  @xref{sparse}.
 ../tar_texi/tar.texi(,3057) 
+../tar_texi/tar.texi(opsummary,3058) @set ANCHOR--sparse-version 1
 ../tar_texi/tar.texi(opsummary,3058) @anchor{--sparse-version}
 ../tar_texi/tar.texi(opsummary,3058) @opindex sparse-version@r{, summary}
 ../tar_texi/tar.texi(,3059) @item --sparse-version=@var{version}
@@ -3189,6 +3299,7 @@
 ../tar_texi/tar.texi(,3062) files.  Implies @option{--sparse}.  @xref{sparse}. For the description
 ../tar_texi/tar.texi(,3063) of the supported sparse formats, @xref{Sparse Formats}.
 ../tar_texi/tar.texi(,3064) 
+../tar_texi/tar.texi(opsummary,3065) @set ANCHOR--starting-file 1
 ../tar_texi/tar.texi(opsummary,3065) @anchor{--starting-file}
 ../tar_texi/tar.texi(opsummary,3065) @opindex starting-file@r{, summary}
 ../tar_texi/tar.texi(,3066) @item --starting-file=@var{name}
@@ -3198,6 +3309,7 @@
 ../tar_texi/tar.texi(,3070) files in the archive until it finds one that matches @var{name}.
 ../tar_texi/tar.texi(,3071) @xref{Scarce}.
 ../tar_texi/tar.texi(,3072) 
+../tar_texi/tar.texi(opsummary,3073) @set ANCHOR--strip-components 1
 ../tar_texi/tar.texi(opsummary,3073) @anchor{--strip-components}
 ../tar_texi/tar.texi(opsummary,3073) @opindex strip-components@r{, summary}
 ../tar_texi/tar.texi(,3074) @item --strip-components=@var{number}
@@ -3213,6 +3325,7 @@
 ../tar_texi/tar.texi(,3084) @noindent
 ../tar_texi/tar.texi(,3085) would extract this file to file @file{name}.
 ../tar_texi/tar.texi(,3086) 
+../tar_texi/tar.texi(opsummary,3087) @set ANCHOR--suffix 1
 ../tar_texi/tar.texi(opsummary,3087) @anchor{--suffix}
 ../tar_texi/tar.texi(opsummary,3087) @opindex suffix@r{, summary}, summary
 ../tar_texi/tar.texi(,3088) @item --suffix=@var{suffix}
@@ -3220,6 +3333,7 @@
 ../tar_texi/tar.texi(,3090) Alters the suffix @command{tar} uses when backing up files from the default
 ../tar_texi/tar.texi(,3091) @samp{~}.  @xref{backup}.
 ../tar_texi/tar.texi(,3092) 
+../tar_texi/tar.texi(opsummary,3093) @set ANCHOR--tape-length 1
 ../tar_texi/tar.texi(opsummary,3093) @anchor{--tape-length}
 ../tar_texi/tar.texi(opsummary,3093) @opindex tape-length@r{, summary}
 ../tar_texi/tar.texi(,3094) @item --tape-length=@var{num}
@@ -3228,6 +3342,7 @@
 ../tar_texi/tar.texi(,3097) Specifies the length of tapes that @command{tar} is writing as being
 ../tar_texi/tar.texi(,3098) @w{@var{num} x 1024} bytes long.  @xref{Using Multiple Tapes}.
 ../tar_texi/tar.texi(,3099) 
+../tar_texi/tar.texi(opsummary,3100) @set ANCHOR--test-label 1
 ../tar_texi/tar.texi(opsummary,3100) @anchor{--test-label}
 ../tar_texi/tar.texi(opsummary,3100) @opindex test-label@r{, summary}
 ../tar_texi/tar.texi(,3101) @item --test-label
@@ -3235,6 +3350,7 @@
 ../tar_texi/tar.texi(,3103) Reads the volume label.  If an argument is specified, test whether it
 ../tar_texi/tar.texi(,3104) matches the volume label.  @xref{--test-label option}.
 ../tar_texi/tar.texi(,3105) 
+../tar_texi/tar.texi(opsummary,3106) @set ANCHOR--to-command 1
 ../tar_texi/tar.texi(opsummary,3106) @anchor{--to-command}
 ../tar_texi/tar.texi(opsummary,3106) @opindex to-command@r{, summary}
 ../tar_texi/tar.texi(,3107) @item --to-command=@var{command}
@@ -3242,6 +3358,7 @@
 ../tar_texi/tar.texi(,3109) During extraction @command{tar} will pipe extracted files to the
 ../tar_texi/tar.texi(,3110) standard input of @var{command}.  @xref{Writing to an External Program}.
 ../tar_texi/tar.texi(,3111) 
+../tar_texi/tar.texi(opsummary,3112) @set ANCHOR--to-stdout 1
 ../tar_texi/tar.texi(opsummary,3112) @anchor{--to-stdout}
 ../tar_texi/tar.texi(opsummary,3112) @opindex to-stdout@r{, summary}
 ../tar_texi/tar.texi(,3113) @item --to-stdout
@@ -3250,6 +3367,7 @@
 ../tar_texi/tar.texi(,3116) During extraction, @command{tar} will extract files to stdout rather
 ../tar_texi/tar.texi(,3117) than to the file system.  @xref{Writing to Standard Output}.
 ../tar_texi/tar.texi(,3118) 
+../tar_texi/tar.texi(opsummary,3119) @set ANCHOR--totals 1
 ../tar_texi/tar.texi(opsummary,3119) @anchor{--totals}
 ../tar_texi/tar.texi(opsummary,3119) @opindex totals@r{, summary}
 ../tar_texi/tar.texi(,3120) @item --totals[=@var{signo}]
@@ -3259,6 +3377,7 @@
 ../tar_texi/tar.texi(,3124) request, when signal @var{signo} is delivered to @command{tar}.
 ../tar_texi/tar.texi(,3125) @xref{totals}.
 ../tar_texi/tar.texi(,3126) 
+../tar_texi/tar.texi(opsummary,3127) @set ANCHOR--touch 1
 ../tar_texi/tar.texi(opsummary,3127) @anchor{--touch}
 ../tar_texi/tar.texi(opsummary,3127) @opindex touch@r{, summary}
 ../tar_texi/tar.texi(,3128) @item --touch
@@ -3278,6 +3397,7 @@
 ../tar_texi/tar.texi(,3142) 
 ../tar_texi/tar.texi(,3143) (See @option{--gzip}. @pxref{gzip})
 ../tar_texi/tar.texi(,3144) 
+../tar_texi/tar.texi(opsummary,3145) @set ANCHOR--unlink-first 1
 ../tar_texi/tar.texi(opsummary,3145) @anchor{--unlink-first}
 ../tar_texi/tar.texi(opsummary,3145) @opindex unlink-first@r{, summary}
 ../tar_texi/tar.texi(,3146) @item --unlink-first
@@ -3286,12 +3406,14 @@
 ../tar_texi/tar.texi(,3149) Directs @command{tar} to remove the corresponding file from the file
 ../tar_texi/tar.texi(,3150) system before extracting it from the archive.  @xref{Unlink First}.
 ../tar_texi/tar.texi(,3151) 
+../tar_texi/tar.texi(opsummary,3152) @set ANCHOR--unquote 1
 ../tar_texi/tar.texi(opsummary,3152) @anchor{--unquote}
 ../tar_texi/tar.texi(opsummary,3152) @opindex unquote@r{, summary}
 ../tar_texi/tar.texi(,3153) @item --unquote
 ../tar_texi/tar.texi(,3154) Enable unquoting input file or member names (default).  @xref{input
 ../tar_texi/tar.texi(,3155) name quoting}.
 ../tar_texi/tar.texi(,3156) 
+../tar_texi/tar.texi(opsummary,3157) @set ANCHOR--use-compress-program 1
 ../tar_texi/tar.texi(opsummary,3157) @anchor{--use-compress-program}
 ../tar_texi/tar.texi(opsummary,3157) @opindex use-compress-program@r{, summary}
 ../tar_texi/tar.texi(,3158) @item --use-compress-program=@var{prog}
@@ -3299,6 +3421,7 @@
 ../tar_texi/tar.texi(,3160) Instructs @command{tar} to access the archive through @var{prog}, which is
 ../tar_texi/tar.texi(,3161) presumed to be a compression program of some sort.  @xref{gzip}.
 ../tar_texi/tar.texi(,3162) 
+../tar_texi/tar.texi(opsummary,3163) @set ANCHOR--utc 1
 ../tar_texi/tar.texi(opsummary,3163) @anchor{--utc}
 ../tar_texi/tar.texi(opsummary,3163) @opindex utc@r{, summary}
 ../tar_texi/tar.texi(,3164) @item --utc
@@ -3306,6 +3429,7 @@
 ../tar_texi/tar.texi(,3166) Display file modification dates in @acronym{UTC}.  This option implies
 ../tar_texi/tar.texi(,3167) @option{--verbose}.
 ../tar_texi/tar.texi(,3168) 
+../tar_texi/tar.texi(opsummary,3169) @set ANCHOR--verbose 1
 ../tar_texi/tar.texi(opsummary,3169) @anchor{--verbose}
 ../tar_texi/tar.texi(opsummary,3169) @opindex verbose@r{, summary}
 ../tar_texi/tar.texi(,3170) @item --verbose
@@ -3316,6 +3440,7 @@
 ../tar_texi/tar.texi(,3175) operations to increase the amount of information displayed.
 ../tar_texi/tar.texi(,3176) @xref{verbose}.
 ../tar_texi/tar.texi(,3177) 
+../tar_texi/tar.texi(opsummary,3178) @set ANCHOR--verify 1
 ../tar_texi/tar.texi(opsummary,3178) @anchor{--verify}
 ../tar_texi/tar.texi(opsummary,3178) @opindex verify@r{, summary}
 ../tar_texi/tar.texi(,3179) @item --verify
@@ -3324,6 +3449,7 @@
 ../tar_texi/tar.texi(,3182) Verifies that the archive was correctly written when creating an
 ../tar_texi/tar.texi(,3183) archive.  @xref{verify}.
 ../tar_texi/tar.texi(,3184) 
+../tar_texi/tar.texi(opsummary,3185) @set ANCHOR--version 1
 ../tar_texi/tar.texi(opsummary,3185) @anchor{--version}
 ../tar_texi/tar.texi(opsummary,3185) @opindex version@r{, summary}
 ../tar_texi/tar.texi(,3186) @item --version
@@ -3332,6 +3458,7 @@
 ../tar_texi/tar.texi(,3189) status, all on standard output, and then exit successfully.
 ../tar_texi/tar.texi(,3190) @xref{help}.
 ../tar_texi/tar.texi(,3191) 
+../tar_texi/tar.texi(opsummary,3192) @set ANCHOR--volno-file 1
 ../tar_texi/tar.texi(opsummary,3192) @anchor{--volno-file}
 ../tar_texi/tar.texi(opsummary,3192) @opindex volno-file@r{, summary}
 ../tar_texi/tar.texi(,3193) @item --volno-file=@var{file}
@@ -3340,12 +3467,14 @@
 ../tar_texi/tar.texi(,3196) keep track of which volume of a multi-volume archive its working in
 ../tar_texi/tar.texi(,3197) @var{file}.  @xref{volno-file}.
 ../tar_texi/tar.texi(,3198) 
+../tar_texi/tar.texi(opsummary,3199) @set ANCHOR--wildcards 1
 ../tar_texi/tar.texi(opsummary,3199) @anchor{--wildcards}
 ../tar_texi/tar.texi(opsummary,3199) @opindex wildcards@r{, summary}
 ../tar_texi/tar.texi(,3200) @item --wildcards
 ../tar_texi/tar.texi(,3201) Use wildcards when matching member names with patterns.
 ../tar_texi/tar.texi(,3202) @xref{controlling pattern-matching}.
 ../tar_texi/tar.texi(,3203) 
+../tar_texi/tar.texi(opsummary,3204) @set ANCHOR--wildcards-match-slash 1
 ../tar_texi/tar.texi(opsummary,3204) @anchor{--wildcards-match-slash}
 ../tar_texi/tar.texi(opsummary,3204) @opindex wildcards-match-slash@r{, summary}
 ../tar_texi/tar.texi(,3205) @item --wildcards-match-slash

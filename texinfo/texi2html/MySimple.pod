@@ -1,7 +1,9 @@
 =head1 NAME
 
 C<Getopt::MySimple> - Provide a simple wrapper around Getopt::Long.
+
 =head NOTE
+
 Based on GetOpt::Simple, with some (here undocumented) modifications
 to fit texi2hml  needs.
 
@@ -56,19 +58,19 @@ The C<Getopt::MySimple> module provides a simple way of specifying:
 
 =item *
 
-Command line optes
+Command line options
 
 =item *
 
-Type information for opt values
+Type information for option values
 
 =item *
 
-Default values for the optes
+Default values for the options
 
 =item *
 
-Help text per opt
+Help text per option
 
 =back
 
@@ -80,7 +82,7 @@ The C<getOptions()> function takes 4 parameters:
 
 =item *
 
-A hash defining the command line optes
+A hash defining the command line options
 
 =item *
 
@@ -88,7 +90,7 @@ A string to display as a help text heading
 
 =item *
 
-A Boolean. 0 = (Default) Use case-sensitive opt names. 1 = Ignore case
+A Boolean. 0 = (Default) Use case-sensitive option names. 1 = Ignore case
 
 =item *
 

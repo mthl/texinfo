@@ -12,6 +12,8 @@ asis: "simple-double-three-four-"
 strong: "simple-double-three-four-" 
 kbd: ``simple-double-three-four-'' 
 
+``simple-double-three-four-''
+
 
 @"u u" 
 @"{U} U" 
@@ -66,7 +68,7 @@ Invalid use of @':
 @bullet *
 @copyright C
 @dots ...
-@enddots ....
+@enddots ...
 @equiv ==
 @error error->
 @expansion ==>
@@ -93,11 +95,28 @@ Invalid use of @':
 @ordf a
 @ordm o
 @comma ,
+@quotedblleft ``
+@quotedblright ''
+@quoteleft `
+@quoteright '
+@quotedblbase ,,
+@quotesinglbase ,
+@guillemetleft <<
+@guillemetright >>
+@guillemotleft <<
+@guillemotright >>
+@guilsinglleft <
+@guilsinglright >
+@textdegree o
 
 @TeX, but without brace TeX
 
 @acronym{-a,an accronym @comma{} @enddots{}} -a
 @acronym{-a} -a
+@abbr{@'E-. @comma{}A., @'Etude-@comma{} @b{Autonome} } E'-. ,A.
+@abbr{@'E-. @comma{}A.} E'-. ,A.
+@abbr{@'E-. @comma{}A., @'Etude Autonome } E'-. ,A.
+@abbr{@'E-. @comma{}A.} E'-. ,A.
 @asis{-a} -a
 @b{-a} -a
 @cite{-a} -a
@@ -122,6 +141,7 @@ Invalid use of @':
 @sc{-a} -A
 @strong{-a} -a
 @t{-a} -a
+@sansserif{-a} -a
 @titlefont{-a} -a
 @indicateurl{-a} -a
 @uref{-a,-b} -a,-b
@@ -524,6 +544,8 @@ asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; <br>
 strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> <br>
 kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 </p>
+<p>``simple-double--three&mdash;four&mdash;-''<br>
+</p>
 <a name="IDX1"></a>
 <a name="IDX2"></a>
 <a name="IDX3"></a>
@@ -581,7 +603,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
-@enddots <small class="enddots">....</small>
+@enddots <small class="enddots">...</small>
 @equiv &equiv;
 @error error--&gt;
 @expansion &rarr;
@@ -608,11 +630,28 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @ordf &ordf;
 @ordm &ordm;
 @comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
 </p>
 <p>@TeX, but without brace TeX
 </p>
-<p><code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ....">&ndash;a</acronym> (an accronym , <small class="enddots">....</small>)
-<code>@acronym{--a}</code> <acronym title="an accronym , ....">&ndash;a</acronym>
+<p><code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ...">&ndash;a</acronym> (an accronym , <small class="enddots">...</small>)
+<code>@acronym{--a}</code> <acronym title="an accronym , ...">&ndash;a</acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</code> <abbr title="&Eacute;tude&ndash;, Autonome">&Eacute;&ndash;. ,A.</abbr> (&Eacute;tude&ndash;, <b>Autonome</b>)
+<code>@abbr{@'E--. @comma{}A.}</code> <abbr title="&Eacute;tude&ndash;, Autonome">&Eacute;&ndash;. ,A.</abbr>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbr title="&Eacute;tude Autonome">&Eacute;&ndash;. ,A.</abbr> (&Eacute;tude Autonome)
+<code>@abbr{@'E--. @comma{}A.}</code> <abbr title="&Eacute;tude Autonome">&Eacute;&ndash;. ,A.</abbr>
 <code>@asis{--a}</code> &ndash;a
 <code>@b{--a}</code> <b>&ndash;a</b>
 <code>@cite{--a}</code> <cite>&ndash;a</cite>
@@ -637,6 +676,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@sc{--a}</code> <small>&ndash;A</small>
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <span class="sansserif">&ndash;a</span>
 <code>@titlefont{--a}</code> <h1 class="titlefont">&ndash;a</h1>
 <code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">&ndash;b</a>
@@ -1113,6 +1153,9 @@ strong: <strong>``simple-double--three---four----''</strong>
 kbd: <kbd>``simple-double--three---four----''</kbd> 
 
 
+``simple-double--three---four----''
+
+
 <a name="IDX55"></a><a name="IDX56"></a><a name="IDX57"></a><a name="IDX58"></a>
 @&quot;u &uuml; 
 @&quot;{U} &Uuml; 
@@ -1172,7 +1215,7 @@ Invalid use of @':
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
-@enddots ....
+@enddots ...
 @equiv &equiv;
 @error error--&gt;
 @expansion &rarr;
@@ -1199,11 +1242,28 @@ Invalid use of @':
 @ordf &ordf;
 @ordm &ordm;
 @comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
 
 @TeX, but without brace TeX
 
-<code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ....">--a</acronym> (an accronym , ....)
-<code>@acronym{--a}</code> <acronym title="an accronym , ....">--a</acronym>
+<code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ...">--a</acronym> (an accronym , ...)
+<code>@acronym{--a}</code> <acronym title="an accronym , ...">--a</acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</code> <abbr title="&Eacute;tude--, Autonome">&Eacute;--. ,A.</abbr> (&Eacute;tude--, <b>Autonome</b>)
+<code>@abbr{@'E--. @comma{}A.}</code> <abbr title="&Eacute;tude--, Autonome">&Eacute;--. ,A.</abbr>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbr title="&Eacute;tude Autonome">&Eacute;--. ,A.</abbr> (&Eacute;tude Autonome)
+<code>@abbr{@'E--. @comma{}A.}</code> <abbr title="&Eacute;tude Autonome">&Eacute;--. ,A.</abbr>
 <code>@asis{--a}</code> --a
 <code>@b{--a}</code> <b>--a</b>
 <code>@cite{--a}</code> <cite>--a</cite>
@@ -1228,6 +1288,7 @@ Invalid use of @':
 <code>@sc{--a}</code> --A
 <code>@strong{--a}</code> <strong>--a</strong>
 <code>@t{--a}</code> <tt>--a</tt>
+<code>@sansserif{--a}</code> <span class="sansserif">--a</span>
 <code>@titlefont{--a}</code> --a
 <code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">--b</a>

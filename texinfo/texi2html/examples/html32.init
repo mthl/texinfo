@@ -27,6 +27,9 @@ $AFTER_TOC_LINES = '';
 # html version for latex2html
 $L2H_HTML_VERSION = "3.2";
 
+# no class in html 32
+$TOC_LIST_ATTRIBUTE = '';
+
 # no css
 $CSS_LINES = "";
 %css_map = ();
@@ -34,15 +37,53 @@ $CSS_LINES = "";
 $things_map{'oe'} = '&#156;';
 $things_map{'OE'} = '&#140;';
 $things_map{'dots'} = '<small>...</small>';
-$things_map{'enddots'} = '<small>....</small>';
+$things_map{'enddots'} = '<small>...</small>';
 $things_map{'euro'} = 'Euro';
+$things_map{'quotedblleft'} = '``';
+$things_map{'quotedblright'} = "''";
+$things_map{'quoteleft'} = '`';
+$things_map{'quoteright'} = "'";
+$things_map{'quotedblbase'} = ',,';
+$things_map{'quotesinglbase'} = ',';
+$things_map{'guillemetleft'} = '&lt;&lt;';
+$things_map{'guillemetright'} = '&gt;&gt;';
+$things_map{'guillemotleft'} = '&lt;&lt;';
+$things_map{'guillemotright'} = '&gt;&gt;';
+$things_map{'guilsinglleft'} = '&lt;';
+$things_map{'guilsinglright'} = '&gt;';
+
+foreach my $style ('oe', 'OE', 'quotedblleft', 'quotedblright', 
+   'quoteleft', 'quoteright',
+   'quotedblbase', 'quotesinglbase', 'guillemetleft', 'guillemetright',
+   'guillemotleft', 'guillemotright', 'guilsinglleft', 'guilsinglright')
+{
+    $pre_map{$style} = $things_map{$style};
+}
+
 $style_map{'sansserif'} = {};
 $style_map{'r'} = {};
+$style_map_pre{'r'} = {};
+$style_map_pre{'sansserif'} = {};
+$style_map{'titlefont'} = {'function' => \&t2h_html32_titlefont, 
+            'type' => 'simple_style'};
+$style_map_pre{'titlefont'} = {};
+
+# Avoid adding h1 if the text is empty
+# no class in html 3.2
+sub t2h_html32_titlefont($$$)
+{
+    shift;
+    my $args = shift;
+    return "<h1>$args->[0]</h1>" if ($args->[0] =~ /\S/);
+    return '';
+}
 
 # formatting functions
 
 $summary_letter    = \&t2h_html32_summary_letter;
+$print_index       = \&t2h_html32_print_index;
 $protect_text      = \&t2h_html32_protect_text;
+$normal_text       = \&t2h_html32_normal_text;
 $heading           = \&t2h_html32_heading;
 $preformatted      = \&t2h_html32_preformatted;
 $raw               = \&t2h_html32_raw;
@@ -51,6 +92,9 @@ $foot_section      = \&t2h_html32_foot_section;
 $cartouche         = \&t2h_html32_cartouche;
 $listoffloats      = \&t2h_html32_listoffloats;
 $float             = \&t2h_html32_float;
+$acronym_like      = \&t2h_html32_acronym_like;
+$row               = \&t2h_html32_row;
+
 
 # &quot; is not in html 3.2
 sub t2h_html32_protect_text($)
@@ -59,7 +103,38 @@ sub t2h_html32_protect_text($)
    $text =~ s/&/&amp;/g;
    $text =~ s/</&lt;/g;
    $text =~ s/>/&gt;/g;
-   #$text =~ s/\"/&quot;/g;
+   $text =~ s/\"/&#34;/g;
+   return $text;
+}
+
+sub t2h_html32_normal_text($$$$$)
+{
+   my $text = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_code = shift;
+   my $style_stack = shift;
+   $text = uc($text) if (in_cmd($style_stack, 'sc'));
+   $text = &$protect_text($text) unless($in_raw_text);
+   if (! $in_code and !$in_preformatted)
+   {
+       if ($in_raw_text) #FIXME really do that ? It is done by makeinfo
+       {
+           $text =~ s/``/"/g;
+           $text =~ s/''/"/g;
+       }
+       else
+       {
+           $text =~ s/``/&#34;/g;
+           $text =~ s/''/&#34;/g;
+       }
+       # temporary reuse '' to store --- !....
+       # FIXME won't '---' be handled wrongly?
+       # FIXME really do that in raw text?
+       $text =~ s/---/''/g; 
+       $text =~ s/--/-/g; 
+       $text =~ s/''/--/g;
+   }
    return $text;
 }
 
@@ -159,6 +234,21 @@ sub t2h_html32_summary_letter($$$)
    return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>');
 }
 
+# format a whole index
+#
+# argument:
+# index text
+# index name
+sub t2h_html32_print_index($$)
+{
+    my $text = shift;
+    my $name = shift;
+    return "<table border=\"0\">\n" .
+    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
+    . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
+    "</table>\n";
+}
+
 sub t2h_html32_float($$$$$)
 {
     my $text = shift;
@@ -203,4 +293,36 @@ sub t2h_html32_listoffloats($$$)
     return $result . "</dl>\n";
 } 
 
+# no acronym, and no abbr in html 3.2
+sub t2h_html32_acronym_like($$$$$$)
+{
+    my $command = shift;
+    my $acronym_texi = shift;
+    my $acronym_text = shift;
+    my $with_explanation = shift;
+    my $explanation_lines = shift;
+    my $explanation_text = shift;
+    my $explanation_simply_formatted = shift;
+    
+    if ($with_explanation)
+    {
+        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text})
+    }
+    else
+    {
+        return $acronym_text;
+    }
+}
 
+# row in multitable
+sub t2h_html32_row($$)
+{
+    my $text = shift;
+    my $macro = shift;
+
+    if ($text =~ /\S/)
+    {
+         return '<tr>' . $text . '</tr>' . "\n";
+    }
+    return '';
+}

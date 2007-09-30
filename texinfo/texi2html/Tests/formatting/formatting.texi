@@ -24,6 +24,8 @@ asis: @asis{``simple-double--three---four----''} @*
 strong: @strong{``simple-double--three---four----''} @*
 kbd: @kbd{``simple-double--three---four----''} @*
 
+`@w{}`simple-double-@w{}-three---four----'@w{}'@*
+
 @cindex --option
 @cindex ``
 @findex ``
@@ -110,11 +112,28 @@ Invalid use of @@':@*
 @@ordf @ordf{}
 @@ordm @ordm{}
 @@comma @comma{}
+@@quotedblleft @quotedblleft{}
+@@quotedblright @quotedblright{}
+@@quoteleft @quoteleft{}
+@@quoteright @quoteright{}
+@@quotedblbase @quotedblbase{}
+@@quotesinglbase @quotesinglbase{}
+@@guillemetleft @guillemetleft{}
+@@guillemetright @guillemetright{}
+@@guillemotleft @guillemotleft{}
+@@guillemotright @guillemotright{}
+@@guilsinglleft @guilsinglleft{}
+@@guilsinglright @guilsinglright{}
+@@textdegree @textdegree{}
 
 @@TeX, but without brace @TeX
 
 @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
 @code{@@acronym@{--a@}} @acronym{--a}
+@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
+@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
+@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
 @code{@@asis@{--a@}} @asis{--a}
 @code{@@b@{--a@}} @b{--a}
 @code{@@cite@{--a@}} @cite{--a}
@@ -139,6 +158,7 @@ Invalid use of @@':@*
 @code{@@sc@{--a@}} @sc{--a}
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
+@code{@@sansserif@{--a@}} @sansserif{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
 @code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}

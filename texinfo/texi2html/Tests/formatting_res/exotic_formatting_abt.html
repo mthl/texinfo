@@ -12,6 +12,8 @@ asis: "simple-double-three-four-"
 strong: "simple-double-three-four-" 
 kbd: ``simple-double-three-four-'' 
 
+``simple-double-three-four-''
+
 
 @"u u" 
 @"{U} U" 
@@ -66,7 +68,7 @@ Invalid use of @':
 @bullet *
 @copyright C
 @dots ...
-@enddots ....
+@enddots ...
 @equiv ==
 @error error->
 @expansion ==>
@@ -93,11 +95,28 @@ Invalid use of @':
 @ordf a
 @ordm o
 @comma ,
+@quotedblleft ``
+@quotedblright ''
+@quoteleft `
+@quoteright '
+@quotedblbase ,,
+@quotesinglbase ,
+@guillemetleft <<
+@guillemetright >>
+@guillemotleft <<
+@guillemotright >>
+@guilsinglleft <
+@guilsinglright >
+@textdegree o
 
 @TeX, but without brace TeX
 
 @acronym{-a,an accronym @comma{} @enddots{}} -a
 @acronym{-a} -a
+@abbr{@'E-. @comma{}A., @'Etude-@comma{} @b{Autonome} } E'-. ,A.
+@abbr{@'E-. @comma{}A.} E'-. ,A.
+@abbr{@'E-. @comma{}A., @'Etude Autonome } E'-. ,A.
+@abbr{@'E-. @comma{}A.} E'-. ,A.
 @asis{-a} -a
 @b{-a} -a
 @cite{-a} -a
@@ -122,6 +141,7 @@ Invalid use of @':
 @sc{-a} -A
 @strong{-a} -a
 @t{-a} -a
+@sansserif{-a} -a
 @titlefont{-a} -a
 @indicateurl{-a} -a
 @uref{-a,-b} -a,-b
@@ -486,6 +506,7 @@ span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="http://some.where.com/css/style.css">
 
 
 </head>
