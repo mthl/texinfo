@@ -1,3 +1,8 @@
+2007-09-30  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't have # perl on the shebang line. Report by
+	Martin Koeppe.
+
 2007-09-27  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: handle @textdegree, @hyphenation.
