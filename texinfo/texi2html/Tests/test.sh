@@ -195,6 +195,7 @@ test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -prefi
 test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -split no -no-node-file"  
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
+test_texi sectionning nodes_after_top.texi
 test_texi sectionning section_nodes_before_top.texi
 test_texi sectionning nodes_after_top_before_section.texi "-split chapter -output ."
 test_texi sectionning nodes_test.texi "" 5
