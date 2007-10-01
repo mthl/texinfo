@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.120 2007-09-30 12:47:11 pertusus Exp $
+# $Id: texi2html.init,v 1.121 2007-10-01 10:41:59 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3094,7 +3094,7 @@ foreach my $key (keys(%def_map))
         'setcontentsaftertitlepage' => {}, # no arg
         'setshortcontentsaftertitlepage' => {}, # no arg
         'detailmenu' => {'skip' => 'whitespace'}, # no arg
-        'end detailmenu' => {'skip' => 'space'}, # no arg
+        'end detailmenu' => {'skip' => 'whitespace'}, # no arg
         'bye' => {'skip' => 'line'}, # no arg
         # set, clear
         'set' => {'skip' => 'line'}, # special arg
@@ -3177,7 +3177,7 @@ my %misc_command_old = (
         'shortcontents', 1, # no arg
         'summarycontents', 1, # no arg
         'detailmenu', 'whitespace', # no arg
-        'end detailmenu', 'space', # no arg
+        'end detailmenu', 'whitespace', # no arg
         #'end detailmenu', 1, # no arg
         'novalidate', 1, # no arg
         'bye', 'line', # no arg

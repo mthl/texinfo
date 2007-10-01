@@ -37,6 +37,9 @@ This file records noteworthy changes.
   is used. Using tex4ht for html generation should also lead to a correct
   result.
 
+* Handle right @end block commands follwed by something else than a 
+  spacing character.
+
 1.78 (2007-06-05)
 
 * NEW FEATURES

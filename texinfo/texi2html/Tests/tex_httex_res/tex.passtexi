@@ -9,7 +9,7 @@
 ../formatting/tex.texi(,11) 	  \over \sigma_i\right)^2 $$
 ../formatting/tex.texi(,12) 		    
 ../formatting/tex.texi(,13) 
-../formatting/tex.texi(,14) @end tex  bidule
+../formatting/tex.texi(,14) @end tex bidule
 ../formatting/tex.texi(,15) Some text one the line following @@end tex
 ../formatting/tex.texi(,17) 
 ../formatting/tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).

@@ -275,6 +275,7 @@ test_texi formatting def_cmd_dble.texi
 test_texi formatting imbrications.texi "" 2
 test_texi formatting complex_command_in_simple_command.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
+test_texi formatting symbol_after_block.texi
 test_texi formatting center.texi
 test_texi formatting tables.texi
 test_texi formatting tex.texi "-l2h -expand tex" "no"

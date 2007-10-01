@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.187 2007-09-30 13:21:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.188 2007-10-01 10:41:59 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4175,6 +4175,21 @@ sub misc_command_text($$$$$$)
     my $text = shift;
     my $line_nr = shift;
     my ($skipped, $remaining, $args);
+
+    # The strange condition associated with 'keep_texi' is 
+    # there because for an argument appearing on an @itemize 
+    # line (we're in 'check_item'), meant to be prepended to an 
+    # @item we don't want to keep @c or @comment as otherwise it 
+    # eats the @item line. Other commands could do that too but 
+    # then the user deserves what he gets.
+    if ($state->{'keep_texi'} and 
+        (!$state->{'check_item'} or ($macro ne 'c' and $macro ne 'comment'))) 
+    {
+        ($remaining, $skipped, $args) = preserve_command($line, $macro);
+        add_prev($text, $stack, "\@$macro". $skipped);
+        return $remaining;
+    }
+
     # if it is true the command args are kept so the user can modify how
     # they are skipped and handle them as unknown @-commands
     my $keep = $Texi2HTML::Config::misc_command{$macro}->{'keep'};
@@ -4182,6 +4197,10 @@ sub misc_command_text($$$$$$)
     if ($macro eq 'detailmenu')
     {
         $state->{'detailmenu'}++;
+    }
+    elsif ($macro eq 'end detailmenu')
+    {
+        $state->{'detailmenu'}-- if ($state->{'detailmenu'});
     }
     elsif ($macro eq 'sp')
     {
@@ -8836,9 +8855,12 @@ sub scan_texi($$$$;$)
                 exit 1;
             }
 	    
-            if (s/^(.*?)(\@end\s$tag)$// or s/^(.*?)(\@end\s$tag\s)//)
-            {# we add it even if 'ignored', it'll be discarded when there is
-             # the @end
+            # macro_regexp
+            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
+            {
+                s/^(.*?)(\@end\s$tag)//;
+            # we add it even if 'ignored', it'll be discarded when there is
+            # the @end
                 add_prev ($text, $stack, $1);
                 my $end = $2;
                 my $style = pop @$stack;
@@ -8848,9 +8870,7 @@ sub scan_texi($$$$;$)
                 # what is in the raw format however
                 # it will be removed later anyway 
                 {# ARG_EXPANSION
-                    my $after_macro = '';
-                    $after_macro = ' ' unless (/^\s*$/);
-                    add_prev ($text, $stack, $style->{'text'} . $end . $after_macro) unless ($state->{'ignored'});
+                    add_prev ($text, $stack, $style->{'text'} . $end) unless ($state->{'ignored'});
                     delete $state->{'raw'};
                 }
                 next;
@@ -9471,8 +9491,10 @@ sub scan_structure($$$$;$)
                 exit 1;
             }
             ################# end debug 
-            if (s/^(.*?)\@end\s$tag$// or s/^(.*?)\@end\s$tag\s//)
+            # macro_regexp
+            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
             {
+                s/^(.*?)\@end\s$tag//;
                 add_prev ($text, $stack, $1);
                 delete $state->{'raw'};
                 my $style = pop @$stack;
@@ -9486,9 +9508,7 @@ sub scan_structure($$$$;$)
                 }
                 else
                 {
-                    my $after_macro = '';
-                    $after_macro = ' ' unless (/^\s*$/);
-                    add_prev ($text, $stack, $style->{'text'} . "\@end $tag" . $after_macro);
+                    add_prev ($text, $stack, $style->{'text'} . "\@end $tag");
                 }
                 unless (no_line($_))
                 {
@@ -9975,9 +9995,11 @@ sub scan_line($$$$;$)
         if (defined($state->{'raw'})) 
         {
             (dump_stack($text, $stack, $state), die "Bug for raw ($state->{'raw'})") if (! @$stack or ! ($stack->[-1]->{'style'} eq $state->{'raw'}));
-            if (s/^(.*?)\@end\s$state->{'raw'}$// or s/^(.*?)\@end\s$state->{'raw'}\s+//)
+            # macro_regexp
+            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $state->{'raw'}))
             # don't protect html, it is done by Texi2HTML::Config::raw if needed
             {
+                s/^(.*?)\@end\s$state->{'raw'}//;
                 print STDERR "# end raw $state->{'raw'}\n" if ($T2H_DEBUG & $DEBUG_FORMATS);
                 add_prev ($text, $stack, $1);
                 my $style = pop @$stack;
@@ -10071,26 +10093,30 @@ sub scan_line($$$$;$)
             next;
         }
 	# macro_regexp
-        if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)$//o)
+        #if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)$//o)
+        if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $end_tag = $2;
 	    #print STDERR "END_MACRO $end_tag\n";
 	    #dump_stack ($text, $stack, $state);
-            
+
+            # first handle @end formats registered as misc_commands. In the
+            # default case it is only @end detailmenu
+            my $end_macro = "end $end_tag";
+            if (defined($Texi2HTML::Config::misc_command{$end_macro}))
+            {
+                $_ = misc_command_text($_, $end_macro, $stack, $state, $text, $line_nr);
+                return unless (defined($_));
+                next;
+            }
+
             # First we test if the stack is not empty.
             # Then we test if the end tag is a format tag.
             # We then close paragraphs and preformatted at top of the stack.
             # We handle the end tag (even when it was not the tag which appears
             # on the top of the stack; in that case we close anything 
             # until that element)
-            $state->{'detailmenu'}-- if ($end_tag eq 'detailmenu' and $state->{'detailmenu'});
-            # FIXME handle below (look for misc_command) to let the user 
-            # keep that end tag. On the other hand it is only used for 
-            # end detailmenu, so maybe it should just go and detailmenu
-            # could be handled like a normal format. Last there could be 
-            # something similar than what is done for other misc_commands.
-            next if (defined($Texi2HTML::Config::misc_command{"end $end_tag"}));
             my $top_stack = top_stack($stack);
             if (!$top_stack)
             {
@@ -10192,7 +10218,8 @@ sub scan_line($$$$;$)
             }
             # We should now be able to handle the format
             if (defined($format_type{$end_tag}) and $format_type{$end_tag} ne 'fake')
-            {
+            {# remove the space or new line following the @end command
+                s/\s//;
                 end_format($text, $stack, $state, $end_tag, $line_nr);
                 begin_paragraph_after_command($state,$stack,$end_tag,$_);
             }
@@ -10256,21 +10283,6 @@ sub scan_line($$$$;$)
             }
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
-                # The strange condition associated with 'keep_texi' is 
-                # there because for an argument appearing on an @itemize 
-                # line (we're in 'check_item'), meant to be prepended to an 
-                # @item we don't want to keep @c or @comment as otherwise it 
-                # eats the @item line. Other commands could do that too but 
-                # then the user deserves what he gets.
-                if ($state->{'keep_texi'} and 
-                           (!$state->{'check_item'} or ($macro ne 'c' and $macro ne 'comment'))) 
-                {
-                    my ($line, $args);
-                    ($_, $line, $args) = preserve_command($_, $macro);
-                    add_prev($text, $stack, "\@$macro". $line);
-                    next;
-                }
-
                 # Handle the misc command
                 $_ = misc_command_text($_, $macro, $stack, $state, $text, $line_nr);
                 return unless (defined($_));
@@ -11571,7 +11583,7 @@ sub close_stack_texi_structure($$$$)
         elsif ($state->{'raw'})
         {
             echo_warn ("closing \@$state->{'raw'} raw format", $line_nr);
-            $string .= "\@end $state->{'raw'} ";
+            $string .= "\@end $state->{'raw'}";
         }
         if ($string ne '')
         {

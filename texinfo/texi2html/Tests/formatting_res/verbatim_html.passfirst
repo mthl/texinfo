@@ -89,7 +89,7 @@ verbatim_html.texi(,90)
 verbatim_html.texi(,91) text
 verbatim_html.texi(,92) 
 verbatim_html.texi(,93) 
-verbatim_html.texi(,94) @@@@ @ text before @end  verbatim @end verbatim  Text following end verbatim, must be exactly one space 
+verbatim_html.texi(,94) @@@@ @ text before @end  verbatim @end verbatim Text following end verbatim, must be exactly one space 
 verbatim_html.texi(,95) between end and verbatim. @@end verbatim doesn't need to begin at beginning 
 verbatim_html.texi(,96) of line.
 verbatim_html.texi(,98) 
@@ -105,7 +105,7 @@ verbatim_html.texi(,107)
 verbatim_html.texi(,109) Now html  @html 
 verbatim_html.texi(,110) <b>
 verbatim_html.texi(,111) some html </b> 
-verbatim_html.texi(,112) @end html  bidule ignored
+verbatim_html.texi(,112) @end html bidule ignored
 verbatim_html.texi(,113) 
 verbatim_html.texi(,114) @@end html begins the line, and there must be exactly one space between @@end
 verbatim_html.texi(,115) and html and thing following @@end html are ignored in info. Strangely
@@ -114,7 +114,7 @@ verbatim_html.texi(,118)
 verbatim_html.texi(,119) Now html valid for @TeX{}  @html 
 verbatim_html.texi(,120) <b>
 verbatim_html.texi(,121) some html </b> 
-verbatim_html.texi(,122) @end html
+verbatim_html.texi(,122) @end html 
 verbatim_html.texi(,123) Some text one the line following @@end html
 verbatim_html.texi(,124) 
 verbatim_html.texi(,125) And html on it's own line
