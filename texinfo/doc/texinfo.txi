@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
+@c $Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10953,15 +10953,24 @@ command.  Write the mathematical expression between braces, like this:
 (a + b)(a + b) = a^2 + 2ab + b^2
 @end example
 
-Thus, the @code{@@math} command has no effect on the Info and HTML
-output; @command{makeinfo} just reproduces the input, it does not try
-to interpret the mathematics in any way.
+The @code{@@math} command has no special effect on the Info and HTML
+output.  @command{makeinfo} expands any @code{@@}-commands as usual,
+but it does not try to produce good mathematical formatting in any
+way.
 
-@code{@@math} implies @code{@@tex}.  This not only makes it possible to
-write superscripts and subscripts (as in the above example), but also
-allows you to use any of the plain @TeX{} math control sequences.  It's
-conventional to use @samp{\} instead of @samp{@@} for these commands.
-As in:
+Plain @TeX{} commands are allowed in @code{@@math}.  This allows you
+to conveniently write superscripts and subscripts (as in the above
+example), and also to use all the plain @TeX{} math control sequences
+for symbols, functions, and so on, and thus get proper formatting in
+the @TeX{} output, at least.
+
+That is, as far as the @TeX{} output is concerned, @samp{\} is an
+escape character inside @code{@@math}, and in fact it's best to use
+@samp{\} instead of @samp{@@} for any such mathematical commands;
+otherwise, @command{makeinfo} will complain.  
+
+Here's an example:
+
 @example
 @@math@{\sin 2\pi \equiv \cos 3\pi@}
 @end example
@@ -10982,10 +10991,9 @@ As in:
 @findex \ @r{(literal \ in @code{@@math})}
 Since @samp{\} is an escape character inside @code{@@math}, you can use
 @code{@@\} to get a literal backslash (@code{\\} will work in @TeX{},
-but you'll get the literal @samp{\\} in Info).  @code{@@\} is not
+but you'd get the literal @samp{\\} in Info).  @code{@@\} is not
 defined outside of @code{@@math}, since a @samp{\} ordinarily produces a
 literal @samp{\}.
-
 
 @cindex Displayed equations
 @cindex Equations, displayed
@@ -18883,7 +18891,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
+$Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18957,7 +18965,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.206 2007-09-25 21:30:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

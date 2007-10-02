@@ -1,3 +1,8 @@
+2007-10-02  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (math): Make description more accurate.
+	Ideas by Patrice Dumas, 16 Sep 2007 12:02:46.
+
 2007-09-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/index.c (count_strn_chars): new fn.
