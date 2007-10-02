@@ -1,3 +1,10 @@
+2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: remove trailing new line in @html block (report 
+	from Graham Percival).
+	* Tests/formatting/block_EOL.texi: test for end of lines in raw
+	block formatting.
+
 2007-10-01  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: Handle @end commands entered as
@@ -6,7 +13,7 @@
 	when there is no reason to.
 	Handle right @end block commands followed by something else than a
 	spacing character (report from Graham Percival).
-	* Test/Formatting/symbol_after_block.texi: test for symbols after
+	* Tests/formatting/symbol_after_block.texi: test for symbols after
 	@end block commands.
 
 2007-09-30  Patrice Dumas  <dumas@centre-cired.fr>

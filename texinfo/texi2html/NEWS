@@ -40,6 +40,8 @@ This file records noteworthy changes.
 * Handle right @end block commands follwed by something else than a 
   spacing character.
 
+* Remove trailing end of line in @html block.
+
 1.78 (2007-06-05)
 
 * NEW FEATURES

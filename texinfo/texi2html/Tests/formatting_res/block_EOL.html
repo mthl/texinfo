@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Copying
-Copying
- -->
 <!-- Created on a sunny day by texi2html -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -46,81 +43,61 @@ ul.toc {list-style: none}
 
 <a name="Top"></a>
 <a name="SEC_Top"></a>
-<h1 class="unnumbered"> Symbol after block </h1>
+<h1 class="unnumbered"> Test for end of lines and block commands </h1>
 
-<p>Html:
-</p>
-In html. On the line.
+<a name="SEC1"></a>
+<h2 class="heading"> html </h2>
 
-In html@ On the line.
+<p>Block commands on a line
+in block
+in block l2end commands on a line.
+</p>
+<p>Block commands on a line. A dot in the end of the block
+in block
+in block l2.end commands on a line, after the block with a dot.
+</p>
+<p>Before the opening command in blockend commands on a line.
+</p>
+<p>Before the opening command in block after the closing command.
+</p>
+<p>Before the opening command in block. A symbol on a line.
+</p>
+<p>Before the opening command in block. A symbol after the closing command.
+</p>
+<a name="SEC2"></a>
+<h2 class="heading"> tex </h2>
 
-<p>Verbatim:
+<p>Block commands on a line
+end commands on a line.
 </p>
-<pre class="verbatim">In verbatim
-</pre>;
+<p>Before the opening command end commands on a line.
+</p>
+<p>Before the opening command  after the closing command.
+</p>
+<p>Before the opening command . A symbol on a line.
+</p>
+<p>Before the opening command . A symbol after the closing command.
+</p>
 
-<pre class="verbatim">In verbatim
-</pre>@
+<a name="SEC3"></a>
+<h2 class="heading"> verbatim </h2>
 
-<p>Table:
+<p>Block commands on a line
+</p><pre class="verbatim">in block
+</pre><p>end commands on a line.
 </p>
-<dl compact="compact">
-<dt>&bull; a</dt>
-<dd><p>l&ndash;ine
-</p></dd>
-</dl>
-<p>+</p>
-<dl compact="compact">
-<dt>&bull; a</dt>
-<dd><p>l&ndash;ine
-</p></dd>
-</dl>
-<p>@</p>
-<p>Itemize:
+<p>Before the opening command </p><pre class="verbatim">in block
+</pre><p>end commands on a line.
 </p>
-<ul class="toc">
-<li><em> e&ndash;mph item</em>
-</li></ul>
-<p>&rdquo;</p>
-<ul class="toc">
-<li><em> e&ndash;mph item</em>
-</li></ul>
-<p>@</p>
-<p>Multitable:
+<p>Before the opening command </p><pre class="verbatim">in block
+</pre> after the closing command.
+
+<p>Before the opening command </p><pre class="verbatim">in block
+</pre><p>. A symbol on a line.
 </p>
-<table>
-<thead><tr><th><p> mu&ndash;ltitable headitem </p></th><th><p> another tab
-</p></th></tr></thead>
-<tr><td><p> mu&ndash;ltitable item </p></td><td><p> multitable tab
-</p></td></tr>
-</table>
-<p>^</p>
-<table>
-<thead><tr><th><p> mu&ndash;ltitable headitem </p></th><th><p> another tab
-</p></th></tr></thead>
-<tr><td><p> mu&ndash;ltitable item </p></td><td><p> multitable tab
-</p></td></tr>
-</table>
-<p>{</p>
-<p>Flushleft:
-</p>
-<p align="left">flushleft
-</p><p>!</p>
-<p align="left">flushleft
-</p><p>@</p>
-<p>Copying:
-</p>
-<p>*
-</p>
-<p>@
-</p>
-<p>Copying
-Copying
-</p>
-<p>An html, all on one line:
-</p>
-<p>Hi, my name is Graham.
-</p>
+<p>Before the opening command </p><pre class="verbatim">in block
+</pre>. A symbol after the closing command.
+
 <hr size="1">
 <p>
  <font size="-1">
