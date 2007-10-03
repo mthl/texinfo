@@ -532,6 +532,9 @@ sub t2h_roff_normal_text($$$$)
    my $in_raw_text = shift;
    my $in_preformatted = shift;
    my $in_code =shift;
+   my $in_simple = shift;
+   my $style_stack = shift;
+
    $text = &$protect_text($text) unless($in_raw_text);
    if (! $in_code and !$in_preformatted and !$in_raw_text)
    {

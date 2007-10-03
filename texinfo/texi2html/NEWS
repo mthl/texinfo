@@ -27,6 +27,9 @@ This file records noteworthy changes.
   has been added, that should print the heading navigation of an element.
   Previously it was done in print_section.
 
+* change in the normal_text function reference API, now there is an 
+  input variable true if in simple text.
+
 * BUG FIXES
   ---------
 

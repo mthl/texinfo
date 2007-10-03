@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.188 2007-10-01 10:41:59 pertusus Exp $
+# $Id: texi2html.pl,v 1.189 2007-10-03 07:39:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -723,8 +723,10 @@ sub t2h_utf8_normal_text($$$$$)
     my $text = shift;
     my $in_raw_text = shift;
     my $in_preformatted = shift;
-    my $in_code =shift;
+    my $in_code = shift;
+    my $in_simple = shift;
     my $style_stack = shift;
+
     $text = &$protect_text($text) unless($in_raw_text);
     $text = uc($text) if (in_small_caps($style_stack));
 
@@ -746,6 +748,7 @@ sub t2h_cross_manual_normal_text($$$$$)
     my $in_raw_text = shift;
     my $in_preformatted = shift;
     my $in_code =shift;
+    my $in_simple =shift;
     my $style_stack = shift;
 
     $text = uc($text) if (in_small_caps($style_stack));
@@ -6086,6 +6089,8 @@ sub pass_text()
     my @head_lines = ();
     my $one_section = 1 if (@elements_list == 1);
 
+    push_state(\%state);
+
     if (@elements_list == 0)
     {
         warn "$WARN empty document\n";
@@ -6734,6 +6739,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         &$Texi2HTML::Config::print_page_foot($FH);
         close_out ($FH);
     }
+    pop_state();
 }
 
 # print section, close file if needed.
@@ -7849,7 +7855,7 @@ sub do_text($;$)
     my $state = shift;
     return $text if ($state->{'keep_texi'});
     my $remove_texi = 1 if ($state->{'remove_texi'} and !$state->{'simple_format'});
-    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $state->{'preformatted'}, $state->{'code_style'},$state->{'command_stack'}));
+    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $state->{'preformatted'}, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}));
 }
 
 sub end_simple_format($$)
@@ -8044,7 +8050,7 @@ sub do_xref($$$$)
     {
         $args[$i] = substitute_line($args[$i], $new_state);
     }
-    #print STDERR "(@args)\n";
+    #print STDERR "XREF: (@args)\n";
     
     if (($macro eq 'inforef') or ($args[3] ne '') or ($args[4] ne ''))
     {# external ref
@@ -8178,8 +8184,7 @@ sub do_acronym_like($$$$$)
               $text .= $line
          }
          $text =~ s/ $//;
-         my $simple_format_state = duplicate_state($state);
-         $explanation_simple_format = simple_format($simple_format_state,$text);
+         $explanation_simple_format = simple_format($state, $text);
          $explanation_text = substitute_line($text, duplicate_state($state));
     }
     return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, duplicate_state($state)), 
@@ -8377,12 +8382,14 @@ sub duplicate_state($)
            'keep_texi' => $state->{'keep_texi'}, 
            'keep_nr' => $state->{'keep_nr'}, 
            'preformatted_stack' => $state->{'preformatted_stack'},
-           'multiple_pass' => $state->{'multiple_pass'},
-# this is needed for preformatted
-           'command_stack' => [ @{$state->{'command_stack'}}  ],
-           'preformatted_context' => 
-                {'stack_at_beginning' => [ @{$state->{'command_stack'}}  ] }
+           'multiple_pass' => $state->{'multiple_pass'}
     };
+# this is needed for preformatted
+    my $command_stack = $state->{'command_stack'};
+    $command_stack = [] if (!defined($command_stack));
+    $new_state->{'command_stack'} = [ @$command_stack ];
+    $new_state->{'preformatted_context'} = {'stack_at_beginning' => [ @$command_stack ]};
+    $new_state->{'code_style'} = 0 if (!defined($new_state->{'code_style'}));
     return $new_state;
 }
 
@@ -8635,7 +8642,14 @@ sub remove_texi(@)
 sub simple_format($@)
 {
     my $state = shift;
-    $state = {} if (!defined($state));
+    if (!defined($state))
+    {
+        $state = {};
+    }
+    else
+    {
+        $state = duplicate_state($state);
+    }
     $state->{'remove_texi'} = 1;
     $state->{'simple_format'} = 1;
     # WARNING currently it is only used for lines. It may change in the future.
@@ -11981,6 +11995,28 @@ sub print_elements($)
     }
 }
 
+my @states_stack = ();
+
+sub push_state($)
+{
+   my $new_state = shift;
+   push @states_stack, $new_state;
+   $Texi2HTML::THISDOC{'state'} = $new_state;
+}
+
+sub pop_state()
+{
+   pop @states_stack;
+   if (@states_stack)
+   {
+       $Texi2HTML::THISDOC{'state'} = $states_stack[-1];
+   }
+   else
+   {
+       $Texi2HTML::THISDOC{'state'} = undef;
+   }
+}
+
 sub substitute_line($;$)
 {
     my $line = shift;
@@ -12012,6 +12048,7 @@ sub substitute_text($@)
     }
     $state->{'spool'} = [];
     #print STDERR "SUBST_TEXT begin\n";
+    push_state($state);
     
     while (@_ or @{$state->{'spool'}})
     {
@@ -12052,6 +12089,7 @@ sub substitute_text($@)
          close_stack(\$text, \@stack, $state, undef);
     }
     #print STDERR "SUBST_TEXT end\n";
+    pop_state();
     return $result . $text;
 }
 

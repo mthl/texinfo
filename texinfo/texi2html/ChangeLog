@@ -1,5 +1,15 @@
 2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl, T2h_i18n.pm: keep the state in the global hash
+	and use it in translations.
+	* texi2html.pl, texi2html.init, examples/*, doc/*: modify the 
+	normal_text function reference API, add an input variable true 
+	if in simple text.
+	* Tests/formatting/*: test for symbols kept in preformatted and 
+	@-commands in @*ref appearing in @example.
+
+2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.init: remove trailing new line in @html block (report 
 	from Graham Percival).
 	* Tests/formatting/block_EOL.texi: test for end of lines in raw

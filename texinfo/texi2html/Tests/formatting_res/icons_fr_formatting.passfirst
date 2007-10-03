@@ -401,7 +401,7 @@ formatting.texi(mymacro,506) @deftypemethod c--lass t--ype d--eftypemethod_name 
 formatting.texi(mymacro,506) d--eftypemethod
 formatting.texi(mymacro,506) @end deftypemethod
 formatting.texi(mymacro,506) 
-formatting.texi(mymacro,506) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,506) @code{@@xref@{c---hapter@@@@, cross r---ef name@@@@, t---itle@@@@, file n---ame@@@@, ma---nual@@@@@}} @xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}
 formatting.texi(mymacro,506) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
 formatting.texi(mymacro,506) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
 formatting.texi(mymacro,506) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
@@ -888,7 +888,7 @@ formatting.texi(mymacro,509) @deftypemethod c--lass t--ype d--eftypemethod_name 
 formatting.texi(mymacro,509) d--eftypemethod
 formatting.texi(mymacro,509) @end deftypemethod
 formatting.texi(mymacro,509) 
-formatting.texi(mymacro,509) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,509) @code{@@xref@{c---hapter@@@@, cross r---ef name@@@@, t---itle@@@@, file n---ame@@@@, ma---nual@@@@@}} @xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}
 formatting.texi(mymacro,509) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
 formatting.texi(mymacro,509) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
 formatting.texi(mymacro,509) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}

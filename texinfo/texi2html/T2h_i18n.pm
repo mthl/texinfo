@@ -305,11 +305,18 @@ sub pretty_date($)
 }
 
 my $error_no_en = 0;
+
+# arguments should already be converted
 sub get_string($;$$)
 {
     my $string = shift;
     my $arguments = shift;
     my $state = shift;
+    if (!defined($state) and defined($Texi2HTML::THISDOC{'state'}))
+    {
+        $state = main::duplicate_state($Texi2HTML::THISDOC{'state'});
+    }
+
     my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;
     if (! exists($T2H_LANGUAGES->{'en'}))
     {
@@ -367,6 +374,8 @@ sub get_string($;$$)
                 last;
             }
         }
+        # the arguments are not already there. But the @-commands in the 
+        # strings are substituted.
         $string = main::substitute_line($result, $state);
     }
     # now we substitute the arguments 
