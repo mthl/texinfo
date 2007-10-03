@@ -86,7 +86,7 @@ Invariant Sections, with the Front-Cover Texts being &ldquo;A GNU Manual,&rdquo;
 and with the Back-Cover Texts as in (a) below.  A copy of the license
 is included in the section entitled &quot;GNU Free Documentation License&quot;.
 </p>
-<p>(a) The FSF's Back-Cover Text is: &ldquo;You are free to copy and modify
+<p>(a) The FSF&rsquo;s Back-Cover Text is: &ldquo;You are free to copy and modify
 this GNU Manual.  Buying copies from GNU Press supports the FSF in
 developing GNU and promoting software freedom.&rdquo;
 </p></blockquote>
@@ -357,7 +357,7 @@ Setting Parameters for Backups and Restoration
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Choosing Files and Names for <code>tar</code>
 
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC98">6.1 Choosing and Naming Archive Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Choosing the Archive's Name
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC98">6.1 Choosing and Naming Archive Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Choosing the Archive&rsquo;s Name
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC99">6.2 Selecting Archive Members</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -671,7 +671,7 @@ member (or multiple members) into a file in the file system.  Extracting
 all the members of an archive is often called <em>extracting the
 archive</em>.  The term <em>unpack</em> can also be used to refer to the
 extraction of many or all the members of an archive.  Extracting an
-archive does not destroy the archive's structure, just as creating an
+archive does not destroy the archive&rsquo;s structure, just as creating an
 archive does not destroy the copies of the files that exist outside of
 the archive.  You may also <em>list</em> the members in a given archive
 (this is often thought of as &ldquo;printing&rdquo; them to the standard output,
@@ -707,7 +707,7 @@ stored.
 </p>
 <p>Initially, <code>tar</code> archives were used to store files conveniently on
 magnetic tape.  The name <code>tar</code> comes from this use; it stands for
-<code>t</code>ape <code>ar</code>chiver.  Despite the utility's name, <code>tar</code> can
+<code>t</code>ape <code>ar</code>chiver.  Despite the utility&rsquo;s name, <code>tar</code> can
 direct its output to available devices, files, or other programs (using
 pipes).  <code>tar</code> may even access remote devices or files (as archives).
 </p>
@@ -1024,7 +1024,7 @@ with tape drives.  See section <a href="#SEC143">Tapes and Other Archive Media</
 <p>In the examples, &lsquo;<samp>$</samp>&rsquo; represents a typical shell prompt.  It
 precedes lines you should type; to make this more clear, those lines are
 shown in <kbd>this font</kbd>, as opposed to lines which represent the
-computer's response; those lines are shown in <code>this font</code>, or
+computer&rsquo;s response; those lines are shown in <code>this font</code>, or
 sometimes &lsquo;<samp>like this</samp>&rsquo;.
 </p>
 
@@ -1234,7 +1234,7 @@ use <code>tar</code>; this option determines the name of the archive file
 that <code>tar</code> will work on.
 </p>
 <a name="IDX13"></a>
-<p>If you don't specify this argument, then <code>tar</code> will examine
+<p>If you don&rsquo;t specify this argument, then <code>tar</code> will examine
 the environment variable <code>TAPE</code>.  If it is set, its value will be
 used as the archive name.  Otherwise, <code>tar</code> will use the
 default archive, determined at the compile time. Usually it is
@@ -1344,7 +1344,7 @@ The full output consists of six fields:
 <ul>
 <li> File type and permissions in symbolic form.
 These are displayed in the same format as the first column of
-<code>ls -l</code> output (see <a href="fileutils.html#What-information-is-listed">format=verbose: (fileutils)What information is listed</a> section `Verbose listing' in <cite>GNU file utilities</cite>).
+<code>ls -l</code> output (see <a href="fileutils.html#What-information-is-listed">format=verbose: (fileutils)What information is listed</a> section &lsquo;Verbose listing&rsquo; in <cite>GNU file utilities</cite>).
 
 </li><li> Owner name and group separated by a slash character.
 If these data are not available (for example, when listing a &lsquo;<samp>v7</samp>&rsquo; format
@@ -1560,11 +1560,11 @@ this directory as &lsquo;<tt>practice</tt>&rsquo;; the <var>homedir</var> is pre
 <p>In general, you should check that the files to be archived exist where
 you think they do (in the working directory) by running <code>ls</code>.
 Because you just created the directory and the files and have changed to
-that directory, you probably don't need to do that this time.
+that directory, you probably don&rsquo;t need to do that this time.
 </p>
-<p>It is very important to make sure there isn't already a file in the
+<p>It is very important to make sure there isn&rsquo;t already a file in the
 working directory with the archive name you intend to use (in this case,
-&lsquo;<samp>collection.tar</samp>&rsquo;), or that you don't care about its contents.
+&lsquo;<samp>collection.tar</samp>&rsquo;), or that you don&rsquo;t care about its contents.
 Whenever you use &lsquo;<samp>create</samp>&rsquo;, <code>tar</code> will erase the current
 contents of the file named by &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo; (&lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;) if it exists.  <code>tar</code>
 will not tell you if you are about to overwrite an archive unless you
@@ -1620,7 +1620,7 @@ archive file you create.
 <p>The order of the options becomes more important when you begin to use
 short forms.  With short forms, if you type commands in the wrong order
 (even if you type them correctly in all other ways), you may end up with
-results you don't expect.  For this reason, it is a good idea to get
+results you don&rsquo;t expect.  For this reason, it is a good idea to get
 into the habit of typing options in the order that makes inherent sense.
 See section <a href="#SEC21">Short Forms with &lsquo;<samp>create</samp>&rsquo;</a>, for more information on this.
 </p>
@@ -1647,8 +1647,8 @@ find the archive file listed as well as the files you saw previously:
 <p>Creating the archive &lsquo;<samp>collection.tar</samp>&rsquo; did not destroy the copies of
 the files in the directory.
 </p>
-<p>Keep in mind that if you don't indicate an operation, <code>tar</code> will not
-run and will prompt you for one.  If you don't name any files, <code>tar</code>
+<p>Keep in mind that if you don&rsquo;t indicate an operation, <code>tar</code> will not
+run and will prompt you for one.  If you don&rsquo;t name any files, <code>tar</code>
 will complain.  You must have write access to the working directory,
 or else you will not be able to create an archive in that directory.
 </p>
@@ -2072,7 +2072,7 @@ all the files (including sub-directories) in that directory.
 
 <a name="IDX27"></a>
 <p>Creating an archive is only half the job&mdash;there is no point in storing
-files in an archive if you can't retrieve them.  The act of retrieving
+files in an archive if you can&rsquo;t retrieve them.  The act of retrieving
 members from an archive so they can be used and manipulated as
 unarchived files again is called <em>extraction</em>.  To extract files
 from an archive, use the &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo; or
@@ -2158,7 +2158,7 @@ no individual file names as arguments.  For example,
 arguments, as printed by &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;).  If you had
 mistakenly deleted one of the files you had placed in the archive
 &lsquo;<tt>collection.tar</tt>&rsquo; earlier (say, &lsquo;<tt>blues</tt>&rsquo;), you can extract it
-from the archive without changing the archive's structure.  Its
+from the archive without changing the archive&rsquo;s structure.  Its
 contents will be identical to the original file &lsquo;<tt>blues</tt>&rsquo; that you
 deleted. 
 </p>
@@ -2186,7 +2186,7 @@ extracted &lsquo;<samp>blues</samp>&rsquo;.  You can confirm this by running <co
 name is important.  <kbd>tar --extract --file=bfiles.tar birds</kbd>
 will fail, because there is no member named &lsquo;<tt>birds</tt>&rsquo;.  To extract
 the member named &lsquo;<tt>./birds</tt>&rsquo;, you must specify <kbd>tar
---extract --file=bfiles.tar ./birds</kbd>.  If you don't remember the
+--extract --file=bfiles.tar ./birds</kbd>.  If you don&rsquo;t remember the
 exact member names, use &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) option
 (see section <a href="#SEC23">How to List Archives</a>).  You can also extract those members that match a
 specific <em>globbing pattern</em>.  For example, to extract from
@@ -2248,11 +2248,11 @@ the file is extracted, <code>tar</code> will create the directory.
 </p>
 <p>We can demonstrate how to use &lsquo;<samp>--extract</samp>&rsquo; to extract a directory
 file with an example.  Change to the &lsquo;<tt>practice</tt>&rsquo; directory if you
-weren't there, and remove the files &lsquo;<tt>folk</tt>&rsquo; and &lsquo;<tt>jazz</tt>&rsquo;.  Then,
+weren&rsquo;t there, and remove the files &lsquo;<tt>folk</tt>&rsquo; and &lsquo;<tt>jazz</tt>&rsquo;.  Then,
 go back to the parent directory and extract the archive
 &lsquo;<tt>music.tar</tt>&rsquo;.  You may either extract the entire archive, or you may
 extract only the files you just deleted.  To extract the entire archive,
-don't give any file names as arguments after the archive name
+don&rsquo;t give any file names as arguments after the archive name
 &lsquo;<tt>music.tar</tt>&rsquo;.  To extract only the files you deleted, use the
 following command:
 </p>
@@ -2298,10 +2298,10 @@ of the file names when you extract those files from the archive.
 
 <p>Extracting files from archives can overwrite files that already exist.
 If you receive an archive from an untrusted source, you should make a
-new directory and extract into that directory, so that you don't have
+new directory and extract into that directory, so that you don&rsquo;t have
 to worry about the extraction overwriting one of your existing files.
 For example, if &lsquo;<tt>untrusted.tar</tt>&rsquo; came from somewhere else on the
-Internet, and you don't necessarily trust its contents, you can
+Internet, and you don&rsquo;t necessarily trust its contents, you can
 extract it as follows:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>mkdir newdir</kbd>
@@ -2335,7 +2335,7 @@ with &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;).
 <h3 class="subsection"> 2.8.5 Commands That Will Fail </h3>
 
 <p>Here are some sample commands you might try which will not work, and why
-they won't work.
+they won&rsquo;t work.
 </p>
 <p>If you try to use this command,
 </p>
@@ -2549,7 +2549,7 @@ sufficient for this.
 can also be read from a text file in the file system, using the
 &lsquo;<samp>--files-from=<var>file-of-names</var></samp>&rsquo; (&lsquo;<samp>-T <var>file-of-names</var></samp>&rsquo;) option.
 </p>
-<p>If you don't use any file name arguments, &lsquo;<samp>--append</samp>&rsquo; (&lsquo;<samp>-r</samp>&rsquo;),
+<p>If you don&rsquo;t use any file name arguments, &lsquo;<samp>--append</samp>&rsquo; (&lsquo;<samp>-r</samp>&rsquo;),
 &lsquo;<samp>--delete</samp>&rsquo; and &lsquo;<samp>--concatenate</samp>&rsquo; (&lsquo;<samp>--catenate</samp>&rsquo;,
 &lsquo;<samp>-A</samp>&rsquo;) will do nothing, while &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;)
 will usually yield a diagnostic and inhibit <code>tar</code> execution.
@@ -2571,7 +2571,7 @@ All abnormal exits, whether immediate or delayed, should always be
 clearly diagnosed on <code>stderr</code>, after a line stating the nature of
 the error.
 </p>
-<p><acronym>GNU</acronym> <code>tar</code> returns only a few exit statuses.  I'm really
+<p><acronym>GNU</acronym> <code>tar</code> returns only a few exit statuses.  I&rsquo;m really
 aiming simplicity in that area, for now.  If you are not using the
 &lsquo;<samp>--compare</samp>&rsquo; &lsquo;<samp>--diff</samp>&rsquo;, &lsquo;<samp>-d</samp>&rsquo;) option, zero means
 that everything went well, besides maybe innocuous warnings.  Nonzero
@@ -2611,7 +2611,7 @@ mode behaves.  For example, you may wish to change the way the output
 looks, or the format of the files that you wish to archive may require
 you to do something special in order to make the archive look right.
 </p>
-<p>You can customize and control <code>tar</code>'s performance by running
+<p>You can customize and control <code>tar</code>&rsquo;s performance by running
 <code>tar</code> with one or more options (such as &lsquo;<samp>--verbose</samp>&rsquo;
 (&lsquo;<samp>-v</samp>&rsquo;), which we used in the tutorial).  As we said in the
 tutorial, <em>options</em> are arguments to <code>tar</code> which are (as
@@ -2733,10 +2733,10 @@ long option names can be given unique abbreviations.  For example,
 other long option which begins with &lsquo;<samp>cre</samp>&rsquo;.  (One way to find
 this out is by trying it and seeing what happens; if a particular
 abbreviation could represent more than one option, <code>tar</code> will tell
-you that that abbreviation is ambiguous and you'll know that that
-abbreviation won't work.  You may also choose to run &lsquo;<samp>tar --help</samp>&rsquo;
+you that that abbreviation is ambiguous and you&rsquo;ll know that that
+abbreviation won&rsquo;t work.  You may also choose to run &lsquo;<samp>tar --help</samp>&rsquo;
 to see a list of options.  Be aware that if you run <code>tar</code> with a
-unique abbreviation for the long name of an option you didn't want to
+unique abbreviation for the long name of an option you didn&rsquo;t want to
 use, you are stuck; <code>tar</code> will perform the command as ordered.)
 </p>
 <p>Long options are meant to be obvious and easy to remember, and their
@@ -2804,7 +2804,7 @@ specific archive, here named &lsquo;<tt>archive.tar</tt>&rsquo;.
 immediately following the option letter, <em>without any intervening
 white space characters</em>.
 </p>
-<p>Short options' letters may be clumped together, but you are not
+<p>Short options&rsquo; letters may be clumped together, but you are not
 required to do this (as compared to old options; see below).  When
 short options are clumped as a set, use one (single) dash for them
 all, e.g., &lsquo;<samp><code>tar</code> -cvf</samp>&rsquo;.  Only the last option in
@@ -2817,7 +2817,7 @@ For example:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -v -b 20 -f /dev/rmt0</kbd>
 </pre></td></tr></table>
 
-<p>If you reorder short options' locations, be sure to move any arguments
+<p>If you reorder short options&rsquo; locations, be sure to move any arguments
 that belong to them.  If you do not move the arguments properly, you may
 end up overwriting files.
 </p>
@@ -2907,7 +2907,7 @@ non-<acronym>GNU</acronym>, support old options.  <acronym>GNU</acronym> <code>t
 supports them not only for historical reasons, but also because many
 people are used to them.  For compatibility with Unix <code>tar</code>,
 the first argument is always treated as containing command and option
-letters even if it doesn't start with &lsquo;<samp>-</samp>&rsquo;.  Thus, &lsquo;<samp>tar c</samp>&rsquo; is
+letters even if it doesn&rsquo;t start with &lsquo;<samp>-</samp>&rsquo;.  Thus, &lsquo;<samp>tar c</samp>&rsquo; is
 equivalent to &lsquo;<samp>tar -c</samp>&rsquo;: both of them specify the
 &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;) command to create an archive.
 </p>
@@ -3101,7 +3101,7 @@ See section <a href="#SEC57">Combining Archives with &lsquo;<samp>--concatenate<
 </p></dd>
 <dt> &lsquo;<samp>--delete</samp>&rsquo;</dt>
 <dd>
-<p>Deletes members from the archive.  Don't try this on a archive on a
+<p>Deletes members from the archive.  Don&rsquo;t try this on a archive on a
 tape!  See section <a href="#SEC58">Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a>.
 </p>
 <p><a name="g_t_002d_002ddiff"></a>
@@ -3193,7 +3193,7 @@ See section <a href="#SEC112">Absolute File Names</a>.
 <a name="IDX45"></a>
 </p></dd>
 <dt> &lsquo;<samp>--anchored</samp>&rsquo;</dt>
-<dd><p>A pattern must match an initial subsequence of the name's components.
+<dd><p>A pattern must match an initial subsequence of the name&rsquo;s components.
 See section <a href="#SEC105">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002datime_002dpreserve"></a>
@@ -3289,7 +3289,7 @@ record.  See section <a href="#SEC149">The Blocking Factor of an Archive</a>.
 <p>This option directs <code>tar</code> to print periodic checkpoint
 messages as it reads through the archive.  It is intended for when you
 want a visual indication that <code>tar</code> is still running, but
-don't want to see &lsquo;<samp>--verbose</samp>&rsquo; output.  For a detailed
+don&rsquo;t want to see &lsquo;<samp>--verbose</samp>&rsquo; output.  For a detailed
 description, see <a href="#Progress-information">Progress information</a>.
 </p>
 <p><a name="g_t_002d_002dcheck_002dlinks"></a>
@@ -3382,7 +3382,7 @@ containing a cache directory tag.  See section <a href="#SEC102">Excluding Some 
 <dt> &lsquo;<samp>-f <var>archive</var></samp>&rsquo;</dt>
 <dd>
 <p><code>tar</code> will use the file <var>archive</var> as the <code>tar</code> archive it
-performs operations on, rather than <code>tar</code>'s compilation dependent
+performs operations on, rather than <code>tar</code>&rsquo;s compilation dependent
 default.  See section <a href="#SEC14">The &lsquo;<samp>--file</samp>&rsquo; Option</a>.
 </p>
 <p><a name="g_t_002d_002dfiles_002dfrom"></a>
@@ -3666,7 +3666,7 @@ changed).  See section <a href="#SEC108">Operating Only on New Files</a>.
 <a name="IDX91"></a>
 </p></dd>
 <dt> &lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
-<dd><p>An exclude pattern can match any subsequence of the name's components.
+<dd><p>An exclude pattern can match any subsequence of the name&rsquo;s components.
 See section <a href="#SEC105">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dno_002ddelay_002ddirectory_002drestore"></a>
@@ -3731,7 +3731,7 @@ for ordinary users.
 </p></dd>
 <dt> &lsquo;<samp>--no-same-permissions</samp>&rsquo;</dt>
 <dd>
-<p>When extracting an archive, subtract the user's umask from files from
+<p>When extracting an archive, subtract the user&rsquo;s umask from files from
 the permissions specified in the archive.  This is the default behavior
 for ordinary users.
 </p>
@@ -3936,7 +3936,7 @@ discussion.
 <dt> &lsquo;<samp>-p</samp>&rsquo;</dt>
 <dd>
 <p>When <code>tar</code> is extracting an archive, it normally subtracts the
-users' umask from the permissions specified in the archive and uses
+users&rsquo; umask from the permissions specified in the archive and uses
 that number as the permissions to create the destination file.
 Specifying this option instructs <code>tar</code> that it should use the
 permissions directly from the archive.  See section <a href="#SEC75">Setting Access Permissions</a>.
@@ -4243,7 +4243,7 @@ archive.  See section <a href="#SEC158">Verifying Data as It is Stored</a>.
 </p></dd>
 <dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
 <dd>
-<p>Print information about the program's name, version, origin and legal
+<p>Print information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
 See section <a href="#SEC44"><acronym>GNU</acronym> <code>tar</code> documentation</a>.
 </p>
@@ -4692,7 +4692,7 @@ after finishing the extraction, as well as when receiving signal
 <a name="IDX168"></a>
 The &lsquo;<samp>--checkpoint</samp>&rsquo; option prints an occasional message
 as <code>tar</code> reads or writes the archive.  It is designed for
-those who don't need the more detailed (and voluminous) output of
+those who don&rsquo;t need the more detailed (and voluminous) output of
 &lsquo;<samp>--block-number</samp>&rsquo; (&lsquo;<samp>-R</samp>&rsquo;), but do want visual confirmation
 that <code>tar</code> is actually making forward progress.  By default it
 prints a message each 10 records read or written.  This can be changed
@@ -4927,7 +4927,7 @@ while it used to show them as &lsquo;<samp>Aug 30 1996</samp>&rsquo;. Preferably
 people should get used to ISO 8601 dates.  Local American dates should
 be made available again with full date localization support, once
 ready.  In the meantime, programs not being localizable for dates
-should prefer international dates, that's really the way to go.
+should prefer international dates, that&rsquo;s really the way to go.
 </p>
 <p>Look up <a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a> if you
 are curious, it contains a detailed explanation of the ISO 8601 standard.
@@ -4960,7 +4960,7 @@ are curious, it contains a detailed explanation of the ISO 8601 standard.
 to learn about further ways in which <code>tar</code> can help you.
 </p>
 <p>This chapter presents five, more advanced operations which you probably
-won't use on a daily basis, but which serve more specialized functions.
+won&rsquo;t use on a daily basis, but which serve more specialized functions.
 We also explain the different styles of options and why you might want
 to use one or another, or a combination of them in your <code>tar</code>
 commands.  Additionally, this chapter includes options which allow you to
@@ -5087,7 +5087,7 @@ they exist.
 
 
 <a name="IDX176"></a>
-<p>If you want to add files to an existing archive, you don't need to
+<p>If you want to add files to an existing archive, you don&rsquo;t need to
 create a new archive; you can use &lsquo;<samp>--append</samp>&rsquo; (&lsquo;<samp>-r</samp>&rsquo;).
 The archive must already exist in order to use &lsquo;<samp>--append</samp>&rsquo;.  (A
 related operation is the &lsquo;<samp>--update</samp>&rsquo; operation; you can use this
@@ -5103,7 +5103,7 @@ differently than any other set of archive members: for example, if you
 view an archive with &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;), you will see all
 of those members listed, with their data modification times, owners, etc.
 </p>
-<p>Other operations don't deal with these members as perfectly as you might
+<p>Other operations don&rsquo;t deal with these members as perfectly as you might
 prefer; if you were to use &lsquo;<samp>--extract</samp>&rsquo; to extract the archive,
 only the most recently added copy of a member with the same name as four
 other members would end up in the working directory.  This is because
@@ -5368,8 +5368,8 @@ the &lsquo;<samp>--backup</samp>&rsquo; option.  See section <a href="#SEC54">Mu
 <h4 class="subsubsection"> 4.2.3.1 How to Update an Archive Using &lsquo;<samp>--update</samp>&rsquo; </h4>
 
 <p>You must use file name arguments with the &lsquo;<samp>--update</samp>&rsquo;
-(&lsquo;<samp>-u</samp>&rsquo;) operation.  If you don't specify any files,
-<code>tar</code> won't act on any files and won't tell you that it didn't
+(&lsquo;<samp>-u</samp>&rsquo;) operation.  If you don&rsquo;t specify any files,
+<code>tar</code> won&rsquo;t act on any files and won&rsquo;t tell you that it didn&rsquo;t
 do anything (which may end up confusing you).
 </p>
 
@@ -5709,7 +5709,7 @@ metadata, stored in the archive.
 <var>permissions</var> for the archive members, rather than the permissions
 from the files.  <var>permissions</var> can be specified either as an octal
 number or as symbolic permissions, like with
-<code>chmod</code> (See <a href="fileutils.html#File-permissions">Permissions: (fileutils)File permissions</a> section `File permissions' in <cite><acronym>GNU</acronym> file utilities</cite>.  This reference
+<code>chmod</code> (See <a href="fileutils.html#File-permissions">Permissions: (fileutils)File permissions</a> section &lsquo;File permissions&rsquo; in <cite><acronym>GNU</acronym> file utilities</cite>.  This reference
 also has useful information for those not being overly familiar with
 the UNIX permission system).  Using latter syntax allows for
 more flexibility.  For example, the value &lsquo;<samp>a+rw</samp>&rsquo; adds read and write
@@ -5894,7 +5894,7 @@ pipe returns however much happens to be in the pipe, even if it is
 less than was requested.  If this option were not enabled, <code>tar</code>
 would fail as soon as it read an incomplete record from the pipe.
 </p>
-<p>If you're not sure of the blocking factor of an archive, you can
+<p>If you&rsquo;re not sure of the blocking factor of an archive, you can
 read the archive by specifying &lsquo;<samp>--read-full-records</samp>&rsquo; (&lsquo;<samp>-B</samp>&rsquo;) and
 &lsquo;<samp>--blocking-factor=<var>512-size</var></samp>&rsquo; (&lsquo;<samp>-b
 <var>512-size</var></samp>&rsquo;), using a blocking factor larger than what the archive
@@ -6518,7 +6518,7 @@ through a pipe.  This option is meaningless with &lsquo;<samp>--list</samp>&rsqu
 </dl>
 
 <p>This can be useful, for example, if you have a tar archive containing
-a big file and don't want to store the file on disk before processing
+a big file and don&rsquo;t want to store the file on disk before processing
 it.  You can use a command like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">tar -xOzf foo.tgz bigfile | process
@@ -6876,7 +6876,7 @@ containing many members having identical name, or when extracting archives
 on systems having file name limitations, making different members appear
 has having similar names through the side-effect of name truncation.
 (This is true only if we have a good scheme for truncated backup names,
-which I'm not sure at all: I suspect work is needed in this area.)
+which I&rsquo;m not sure at all: I suspect work is needed in this area.)
 When any existing file is backed up before being overwritten by extraction,
 then clashing files are automatically be renamed to be unique, and the
 true name is kept for only the last file of a series of clashing files.
@@ -6993,7 +6993,7 @@ archive with <code>uuencode</code> in order to transport it properly by
 mail).  Both machines do not have to use the same operating system, as
 long as they both support the <code>tar</code> program.
 </p>
-<p>For example, here is how you might copy a directory's contents from
+<p>For example, here is how you might copy a directory&rsquo;s contents from
 one disk to another, while preserving the dates, modes, owners and
 link-structure of all the files therein.  In this case, the transfer
 medium is a <em>pipe</em>, which is one a Unix redirection mechanism:
@@ -7149,7 +7149,7 @@ called <em>dumps</em>.
 <p>Full dumps should only be made when no other people or programs
 are modifying files in the file system.  If files are modified while
 <code>tar</code> is making the backup, they may not be stored properly in
-the archive, in which case you won't be able to restore them if you
+the archive, in which case you won&rsquo;t be able to restore them if you
 have to.  (Files not being modified are written with no trouble, and do
 not corrupt the entire archive.)
 </p>
@@ -7280,7 +7280,7 @@ $ <kbd>tar --create \
 </pre></td></tr></table>
 
 <p>Incremental dumps depend crucially on time stamps, so the results are
-unreliable if you modify a file's time stamps during dumping (e.g.,
+unreliable if you modify a file&rsquo;s time stamps during dumping (e.g.,
 with the &lsquo;<samp>--atime-preserve=replace</samp>&rsquo; option), or if you set the clock
 backwards.
 </p>
@@ -7458,7 +7458,7 @@ is allowed in this file.  Particularly, you may wish to define
 functions within that script (e.g., see <code>RESTORE_BEGIN</code> below).
 For more information about shell script syntax, please refer to
 <a href="http://www.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#ta g_02">the definition of the Shell Command Language</a>.  See also
-<a href="bashref.html#Top">(bashref)Top</a> section `Bash Features' in <cite>Bash Reference Manual</cite>.
+<a href="bashref.html#Top">(bashref)Top</a> section &lsquo;Bash Features&rsquo; in <cite>Bash Reference Manual</cite>.
 </p>
 <p>The shell variables controlling behavior of <code>backup</code> and
 <code>restore</code> are described in the following subsections.
@@ -7650,9 +7650,9 @@ is to exclude files containing security-sensitive information
 <dt><u>Backup variable:</u> <b>DUMP_REMIND_SCRIPT</b>
 <a name="IDX277"></a>
 </dt>
-<dd><p>Script to be run when it's time to insert a new tape in for the next
+<dd><p>Script to be run when it&rsquo;s time to insert a new tape in for the next
 volume.  Administrators may want to tailor this script for their site.
-If this variable isn't set, <acronym>GNU</acronym> <code>tar</code> will display its built-in
+If this variable isn&rsquo;t set, <acronym>GNU</acronym> <code>tar</code> will display its built-in
 prompt, and will expect confirmation from the console.  For the
 description of the default prompt, see <a href="#change-volume-prompt">change volume prompt</a>.
 </p>
@@ -7960,7 +7960,7 @@ run.  <var>Time</var> may take three forms:
 
 <p>You should start a script with a tape or disk mounted.  Once you
 start a script, it prompts you for new tapes or disks as it
-needs them.  Media volumes don't have to correspond to archive
+needs them.  Media volumes don&rsquo;t have to correspond to archive
 files &mdash; a multi-volume archive can be started in the middle of a
 tape that already contains the end of another multi-volume archive.
 The <code>restore</code> script prompts for media by its archive volume,
@@ -7996,7 +7996,7 @@ script:
 </dd>
 <dt> &lsquo;<samp>-f</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>--force</samp>&rsquo;</dt>
-<dd><p>Force backup even if today's log file already exists.
+<dd><p>Force backup even if today&rsquo;s log file already exists.
 </p>
 </dd>
 <dt> &lsquo;<samp>-v[<var>level</var>]</samp>&rsquo;</dt>
@@ -8018,7 +8018,7 @@ is 100, which means the highest debugging level.
 </dd>
 <dt> &lsquo;<samp>-V</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
-<dd><p>Display information about the program's name, version, origin and legal
+<dd><p>Display information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
 </p></dd>
 </dl>
@@ -8104,14 +8104,14 @@ is 100, which means the highest debugging level.
 </dd>
 <dt> &lsquo;<samp>-V</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
-<dd><p>Display information about the program's name, version, origin and legal
+<dd><p>Display information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
 </p></dd>
 </dl>
 
 <p>You should start the restore script with the media containing the
 first volume of the archive mounted.  The script will prompt for other
-volumes as they are needed.  If the archive is on tape, you don't need
+volumes as they are needed.  If the archive is on tape, you don&rsquo;t need
 to rewind the tape to to its beginning&mdash;if the tape head is
 positioned past the beginning of the archive, the script will rewind
 the tape as needed.  See section <a href="#SEC151">Tape Positions and Tape Marks</a>, for a discussion of tape
@@ -8151,13 +8151,13 @@ that determination.
 <p>Certain options to <code>tar</code> enable you to specify a name for your
 archive.  Other options let you decide which files to include or exclude
 from the archive, based on when or whether files were modified, whether
-the file names do or don't match specified patterns, or whether files
+the file names do or don&rsquo;t match specified patterns, or whether files
 are in specified directories.
 </p>
 <p>This chapter discusses these options in detail.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC98">6.1 Choosing and Naming Archive Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Choosing the Archive's Name
+<tr><td align="left" valign="top"><a href="#SEC98">6.1 Choosing and Naming Archive Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Choosing the Archive&rsquo;s Name
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC99">6.2 Selecting Archive Members</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -8229,7 +8229,7 @@ any operation.
 follow the &lsquo;<samp>-f</samp>&rsquo; option, since whatever directly follows &lsquo;<samp>-f</samp>&rsquo;
 <em>will</em> end up naming the archive.  If you neglect to specify an
 archive name, you may end up overwriting a file in the working directory
-with the archive you create since <code>tar</code> will use this file's name
+with the archive you create since <code>tar</code> will use this file&rsquo;s name
 for the archive name.
 </p>
 <p>An archive can be saved as a file in the file system, sent through a
@@ -8943,7 +8943,7 @@ patterns.  For example, the following invocation:
 names end in &lsquo;<samp>.txt</samp>&rsquo; and the file named &lsquo;<tt>[remarks]</tt>&rsquo;.
 </p>
 <p>Normally, a pattern matches a name if an initial subsequence of the
-name's components matches the pattern, where &lsquo;<samp>*</samp>&rsquo;, &lsquo;<samp>?</samp>&rsquo;, and
+name&rsquo;s components matches the pattern, where &lsquo;<samp>*</samp>&rsquo;, &lsquo;<samp>?</samp>&rsquo;, and
 &lsquo;<samp>[...]</samp>&rsquo; are the usual shell wildcards, &lsquo;<samp>\</samp>&rsquo; escapes wildcards,
 and wildcards can match &lsquo;<samp>/</samp>&rsquo;.
 </p>
@@ -8968,7 +8968,7 @@ below.  These options accumulate.  For example:
 <dt> &lsquo;<samp>--anchored</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
 <dd><p>If anchored, a pattern must match an initial subsequence
-of the name's components.  Otherwise, the pattern can match any
+of the name&rsquo;s components.  Otherwise, the pattern can match any
 subsequence.  Default is &lsquo;<samp>--no-anchored</samp>&rsquo; for exclusion members
 and &lsquo;<samp>--anchored</samp>&rsquo; inclusion members.
 </p>
@@ -8995,7 +8995,7 @@ name.  Otherwise, &lsquo;<samp>/</samp>&rsquo; is matched only by &lsquo;<samp>/
 <p>The &lsquo;<samp>--recursion</samp>&rsquo; and &lsquo;<samp>--no-recursion</samp>&rsquo; options
 (see section <a href="#SEC109">Descending into Directories</a>) also affect how member patterns are interpreted.  If
 recursion is in effect, a pattern matches a name if it matches any of
-the name's parent directories.
+the name&rsquo;s parent directories.
 </p>
 <p>The following table summarizes pattern-matching default values:
 </p>
@@ -9402,7 +9402,7 @@ form:
 <p>where <var>regexp</var> is a <em>regular expression</em>, <var>replace</var> is a
 replacement for each file name part that matches <var>regexp</var>.  Both
 <var>regexp</var> and <var>replace</var> are described in detail in
-<a href="sed.html#The-_0022s_0022-Command">The &quot;s&quot; Command: (sed)The &quot;s&quot; Command</a> section `The `s' Command' in <cite>GNU sed</cite>.
+<a href="sed.html#The-_0022s_0022-Command">The &quot;s&quot; Command: (sed)The &quot;s&quot; Command</a> section &lsquo;The &lsquo;s&rsquo; Command&rsquo; in <cite>GNU sed</cite>.
 </p>
 <p>Supported <var>flags</var> are:
 </p>
@@ -9417,7 +9417,7 @@ just the first.
 </p>
 </dd>
 <dt> &lsquo;<samp>x</samp>&rsquo;</dt>
-<dd><p><var>regexp</var> is an <em>extended regular expression</em> (see <a href="sed.html#Extended-regexps">Extended regular expressions: (sed)Extended regexps</a> section `Extended regular expressions' in <cite>GNU sed</cite>).
+<dd><p><var>regexp</var> is an <em>extended regular expression</em> (see <a href="sed.html#Extended-regexps">Extended regular expressions: (sed)Extended regexps</a> section &lsquo;Extended regular expressions&rsquo; in <cite>GNU sed</cite>).
 </p>
 </dd>
 <dt> &lsquo;<samp><var>number</var></samp>&rsquo;</dt>
@@ -9529,7 +9529,7 @@ to an archive, the archive will only include new files.  If you use
 only extract files newer than the <var>date</var> you specify.
 </p>
 <p>If you only want <code>tar</code> to make the date comparison based on
-modification of the file's data (rather than status
+modification of the file&rsquo;s data (rather than status
 changes), then use the &lsquo;<samp>--newer-mtime=<var>date</var></samp>&rsquo; option.
 </p>
 <p>You may use these options with any operation.  Note that these options
@@ -9560,7 +9560,7 @@ name; the data modification time of that file is used as the date.
 </dl>
 
 <p>These options limit <code>tar</code> to operate only on files which have
-been modified after the date specified.  A file's status is considered to have
+been modified after the date specified.  A file&rsquo;s status is considered to have
 changed if its contents have been modified, or if its owner,
 permissions, and so forth, have been changed.  (For more information on
 how to specify a date, see <a href="#SEC113">Date input formats</a>; remember that the
@@ -9569,7 +9569,7 @@ entire date argument must be quoted if it contains any spaces.)
 <p>Gurus would say that &lsquo;<samp>--after-date</samp>&rsquo; tests both the data
 modification time (<code>mtime</code>, the time the contents of the file
 were last modified) and the status change time (<code>ctime</code>, the time
-the file's status was last changed: owner, permissions, etc.)
+the file&rsquo;s status was last changed: owner, permissions, etc.)
 fields, while &lsquo;<samp>--newer-mtime</samp>&rsquo; tests only the <code>mtime</code>
 field.
 </p>
@@ -9642,7 +9642,7 @@ option) for the various files they contain.  However, you may not always
 want <code>tar</code> to act this way.
 </p>
 <a name="IDX341"></a>
-<p>The &lsquo;<samp>--no-recursion</samp>&rsquo; option inhibits <code>tar</code>'s recursive descent
+<p>The &lsquo;<samp>--no-recursion</samp>&rsquo; option inhibits <code>tar</code>&rsquo;s recursive descent
 into specified directories.  If you specify &lsquo;<samp>--no-recursion</samp>&rsquo;, you can
 use the <code>find</code> utility for hunting through levels of directories to
 construct a list of file names which you could then pass to <code>tar</code>.
@@ -9667,7 +9667,7 @@ directory entries themselves, but does not descend on them
 recursively.  Many people use <code>find</code> for locating files they
 want to back up, and since <code>tar</code> <em>usually</em> recursively
 descends on directories, they have to use the &lsquo;<samp>-not -type d</samp>&rsquo;
-test in their <code>find</code> invocation (see <a href="find.html#Type">Type: (find)Type</a> section `Type test' in <cite>Finding Files</cite>), as they usually do not want all the files in a
+test in their <code>find</code> invocation (see <a href="find.html#Type">Type: (find)Type</a> section &lsquo;Type test&rsquo; in <cite>Finding Files</cite>), as they usually do not want all the files in a
 directory. They then use the &lsquo;<samp>--files-from</samp>&rsquo; option to archive
 the files located via <code>find</code>.
 </p>
@@ -10381,7 +10381,7 @@ only for &lsquo;<samp>UTC</samp>&rsquo;; for example, &lsquo;<samp>UTC+05:30</sa
 <p>Time zone items other than &lsquo;<samp>UTC</samp>&rsquo; and &lsquo;<samp>Z</samp>&rsquo;
 are obsolescent and are not recommended, because they
 are ambiguous; for example, &lsquo;<samp>EST</samp>&rsquo; has a different meaning in
-Australia than in the United States.  Instead, it's better to use
+Australia than in the United States.  Instead, it&rsquo;s better to use
 unambiguous numeric time zone corrections like &lsquo;<samp>-0500</samp>&rsquo;, as
 described in the previous section.
 </p>
@@ -10611,7 +10611,7 @@ an epoch&mdash;a well-defined point of time.  On <acronym>GNU</acronym> and
 to <acronym>POSIX</acronym>, using negative counts, so that &lsquo;<samp>@-1</samp>&rsquo;
 represents 1969-12-31 23:59:59 <small>UTC</small>.
 </p>
-<p>Traditional Unix systems count seconds with 32-bit two's-complement
+<p>Traditional Unix systems count seconds with 32-bit two&rsquo;s-complement
 integers and can represent times from 1901-12-13 20:45:52 through
 2038-01-19 03:14:07 <small>UTC</small>.  More modern systems use 64-bit counts
 of seconds with nanosecond subcounts, and can represent all the times
@@ -10686,7 +10686,7 @@ using a non-<acronym>GNU</acronym> host that does not support the &lsquo;<samp>t
 database, you may need to use a <acronym>POSIX</acronym> rule instead.  Simple
 <acronym>POSIX</acronym> rules like &lsquo;<samp>UTC0</samp>&rsquo; specify a time zone without
 daylight saving time; other rules can specify simple daylight saving
-regimes.  See <a href="libc.html#TZ-Variable">(libc)TZ Variable</a> section `Specifying the Time Zone with <code>TZ</code>' in <cite>The GNU C Library</cite>.
+regimes.  See <a href="libc.html#TZ-Variable">(libc)TZ Variable</a> section &lsquo;Specifying the Time Zone with <code>TZ</code>&rsquo; in <cite>The GNU C Library</cite>.
 </p>
 <hr size="6">
 <a name="Authors-of-get_005fdate"></a>
@@ -10931,7 +10931,7 @@ For example:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cfz archive.tar.gz .</kbd>
 </pre></td></tr></table>
 
-<p>Reading compressed archive is even simpler: you don't need to specify
+<p>Reading compressed archive is even simpler: you don&rsquo;t need to specify
 any additional options as <acronym>GNU</acronym> <code>tar</code> recognizes its format
 automatically.  Thus, the following commands will list and extract the
 archive created in previous example:
@@ -10994,7 +10994,7 @@ override them, set <code>GZIP</code> environment variable, e.g.:
 </pre></td></tr></table>
 
 <a name="IDX392"></a>
-<p>About corrupted compressed archives: <code>gzip</code>'ed files have no
+<p>About corrupted compressed archives: <code>gzip</code>&rsquo;ed files have no
 redundancy, for maximum compression.  The adaptive nature of the
 compression scheme means that the compression tables are implicitly
 spread all over the archive.  If you lose a few blocks, the dynamic
@@ -11006,7 +11006,7 @@ compression in <acronym>GNU</acronym> <code>tar</code>.  This would allow for vi
 contents without decompression, and for resynchronizing decompression at
 every volume or file, in case of corrupted archives.  Doing so, we might
 lose some compressibility.  But this would have make recovering easier.
-So, there are pros and cons.  We'll see!
+So, there are pros and cons.  We&rsquo;ll see!
 </p>
 <a name="IDX393"></a>
 </dd>
@@ -11049,7 +11049,7 @@ and produce uncompressed data on the standard output.
 <p>The &lsquo;<samp>--use-compress-program</samp>&rsquo; option, in particular, lets you
 implement your own filters, not necessarily dealing with
 compression/decomression.  For example, suppose you wish to implement
-PGP encryption on top of compression, using <code>gpg</code> (see <a href="gpg.html#Top">gpg: (gpg)Top</a> section `gpg &mdash;- encryption and signing tool' in <cite>GNU Privacy Guard Manual</cite>).  The following script does that:  
+PGP encryption on top of compression, using <code>gpg</code> (see <a href="gpg.html#Top">gpg: (gpg)Top</a> section &lsquo;gpg &mdash;- encryption and signing tool&rsquo; in <cite>GNU Privacy Guard Manual</cite>).  The following script does that:  
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">#! /bin/sh
 case $1 in
@@ -11094,7 +11094,7 @@ archive signed with your private key:
 <h3 class="subsection"> 8.1.2 Archiving Sparse Files </h3>
 
 <p>Files in the file system occasionally have <em>holes</em>.  A <em>hole</em>
-in a file is a section of the file's contents which was never written.
+in a file is a section of the file&rsquo;s contents which was never written.
 The contents of a hole reads as all zeros.  On many operating systems,
 actual disk storage is not allocated for holes, but they are counted
 in the length of the file.  If you archive such a file, <code>tar</code>
@@ -11108,7 +11108,7 @@ are, and only archives the &ldquo;real contents&rdquo; of the file.  On
 extraction (using &lsquo;<samp>--sparse</samp>&rsquo; is not needed on extraction) any
 such files have holes created wherever the continuous stretches of zeros
 were found.  Thus, if you use &lsquo;<samp>--sparse</samp>&rsquo;, <code>tar</code> archives
-won't take more space than the original.
+won&rsquo;t take more space than the original.
 </p>
 <dl compact="compact">
 <dd><a name="IDX400"></a>
@@ -11210,7 +11210,7 @@ files that you own, unless you have superuser privileges.
 </p>
 <p>&lsquo;<samp>--atime-preserve=replace</samp>&rsquo; works on most systems, but it also
 restores the data modification time and updates the status change
-time.  Hence it doesn't interact with incremental dumps nicely
+time.  Hence it doesn&rsquo;t interact with incremental dumps nicely
 (see section <a href="#SEC88">Using <code>tar</code> to Perform Incremental Dumps</a>), and it can set access or data modification times
 incorrectly if other programs access the file while <code>tar</code> is
 running.
@@ -11218,7 +11218,7 @@ running.
 <p>&lsquo;<samp>--atime-preserve=system</samp>&rsquo; avoids changing the access time in
 the first place, if the operating system supports this.
 Unfortunately, this may or may not work on any given operating system
-or file system.  If <code>tar</code> knows for sure it won't work, it
+or file system.  If <code>tar</code> knows for sure it won&rsquo;t work, it
 complains right away.
 </p>
 <p>Currently &lsquo;<samp>--atime-preserve</samp>&rsquo; with no operand defaults to
@@ -11252,7 +11252,7 @@ they occupy.  Also, the <code>suid</code> or <code>sgid</code> attributes of
 files are easily and silently lost when files are given away.
 </p>
 <p>When writing an archive, <code>tar</code> writes the user id and user name
-separately.  If it can't find a user name (because the user id is not
+separately.  If it can&rsquo;t find a user name (because the user id is not
 in &lsquo;<tt>/etc/passwd</tt>&rsquo;), then it does not write one.  When restoring,
 it tries to look the name (if one was written) up in
 &lsquo;<tt>/etc/passwd</tt>&rsquo;.  If it fails, then it uses the user id stored in
@@ -11370,7 +11370,7 @@ archives more portable.
 <p>One golden rule is simplicity.  For example, limit your <code>tar</code>
 archives to contain only regular files and directories, avoiding
 other kind of special files.  Do not attempt to save sparse files or
-contiguous files as such.  Let's discuss a few more problems, in turn.
+contiguous files as such.  Let&rsquo;s discuss a few more problems, in turn.
 </p>
 
 
@@ -11424,7 +11424,7 @@ less.
 MSDOS, you should not rely on case distinction for file names, and you
 might use the <acronym>GNU</acronym> <code>doschk</code> program for helping you
 further diagnosing illegal MSDOS names, which are even more limited
-than System V's.
+than System V&rsquo;s.
 </p>
 <hr size="6">
 <a name="dereference"></a>
@@ -11513,7 +11513,7 @@ seldom be needed.  On the other hand, most modern <code>tar</code>s are
 able to read old format archives, so it might be safer for you to
 always use &lsquo;<samp>--format=v7</samp>&rsquo; for your distributions.  Notice,
 however, that &lsquo;<samp>ustar</samp>&rsquo; format is a better alternative, as it is
-free from many of &lsquo;<samp>v7</samp>&rsquo;'s drawbacks.
+free from many of &lsquo;<samp>v7</samp>&rsquo;&rsquo;s drawbacks.
 </p>
 <hr size="6">
 <a name="ustar"></a>
@@ -11791,7 +11791,7 @@ checksums while creating archives, as per <acronym>POSIX</acronym> standards.  O
 reading, <acronym>GNU</acronym> <code>tar</code> computes both checksums and
 accept any.  It is somewhat worrying that a lot of people may go
 around doing backup of their files using faulty (or at least
-non-standard) software, not learning about it until it's time to
+non-standard) software, not learning about it until it&rsquo;s time to
 restore their missing files with an incompatible file extractor, or
 vice versa.
 </p>
@@ -11800,18 +11800,18 @@ any on read, so <acronym>GNU</acronym> tar can read Sun tapes even with their
 wrong checksums.  <acronym>GNU</acronym> <code>tar</code> produces the standard
 checksum, however, raising incompatibilities with Sun.  That is to
 say, <acronym>GNU</acronym> <code>tar</code> has not been modified to
-<em>produce</em> incorrect archives to be read by buggy <code>tar</code>'s.
-I've been told that more recent Sun <code>tar</code> now read standard
+<em>produce</em> incorrect archives to be read by buggy <code>tar</code>&rsquo;s.
+I&rsquo;ve been told that more recent Sun <code>tar</code> now read standard
 archives, so maybe Sun did a similar patch, after all?
 </p>
 <p>The story seems to be that when Sun first imported <code>tar</code>
 sources on their system, they recompiled it without realizing that
 the checksums were computed differently, because of a change in
-the default signing of <code>char</code>'s in their compiler.  So they
+the default signing of <code>char</code>&rsquo;s in their compiler.  So they
 started computing checksums wrongly.  When they later realized their
 mistake, they merely decided to stay compatible with it, and with
 themselves afterwards.  Presumably, but I do not really know, HP-UX
-has chosen that their <code>tar</code> archives to be compatible with Sun's.
+has chosen that their <code>tar</code> archives to be compatible with Sun&rsquo;s.
 The current standards do not favor Sun <code>tar</code> format.  In any
 case, it now falls on the shoulders of SunOS and HP-UX users to get
 a <code>tar</code> able to read the good archives they receive.
@@ -11853,11 +11853,11 @@ timestamps not in the range 1970-01-01 00:00:00 through 2242-03-16
 12:56:31 <small>UTC</small>, you will have to chose between <acronym>GNU</acronym> and
 <acronym>POSIX</acronym> archive formats.  When considering which format to
 choose, bear in mind that the <acronym>GNU</acronym> format uses
-two's-complement base-256 notation to store values that do not fit
+two&rsquo;s-complement base-256 notation to store values that do not fit
 into standard <acronym>ustar</acronym> range.  Such archives can generally be
 read only by a <acronym>GNU</acronym> <code>tar</code> implementation.  Moreover, they sometimes
 cannot be correctly restored on another hosts even by <acronym>GNU</acronym> <code>tar</code>. For
-example, using two's complement representation for negative time
+example, using two&rsquo;s complement representation for negative time
 stamps that assumes a signed 32-bit <code>time_t</code> generates archives
 that are not portable to hosts with differing <code>time_t</code>
 representations.
@@ -12061,7 +12061,7 @@ a condensed file to its original form, by adding zero bloks (or
 <a href="http://www.gnu.org/software/tar/utils/xsparse.html"><acronym>GNU</acronym> <code>tar</code> home page</a>.
 </p>
 <a name="IDX414"></a>
-<p>Let's begin with archive members in <em>sparse format
+<p>Let&rsquo;s begin with archive members in <em>sparse format
 version 1.0</em><a name="DOCF18" href="#FOOT18">(18)</a>, which are the easiest to expand.
 The condensed file will contain both file map and file data, so no
 additional data will be needed to restore it.  If the original file
@@ -12174,7 +12174,7 @@ manually extract the headers.  We recommend the following algorithm:
 <li> 
 Consult the documentation for your <code>tar</code> implementation for an
 option that will print <em>block numbers</em> along with the archive
-listing (analogous to <acronym>GNU</acronym> <code>tar</code>'s &lsquo;<samp>-R</samp>&rsquo; option).  For example,
+listing (analogous to <acronym>GNU</acronym> <code>tar</code>&rsquo;s &lsquo;<samp>-R</samp>&rsquo; option).  For example,
 <code>star</code> has &lsquo;<samp>-block-number</samp>&rsquo;.
 
 </li><li>
@@ -12272,7 +12272,7 @@ with arbitrary pathname lengths, but other <code>cpio</code> implementations
 may crash unexplainedly trying to read them.
 </p>
 <p><code>tar</code> handles symbolic links in the form in which it comes in BSD;
-<code>cpio</code> doesn't handle symbolic links in the form in which it comes
+<code>cpio</code> doesn&rsquo;t handle symbolic links in the form in which it comes
 in System V prior to SVR4, and some vendors may have added symlinks
 to their system without enhancing <code>cpio</code> to know about them.
 Others may have enhanced it in a way other than the way I did it
@@ -12285,21 +12285,21 @@ can handle <code>tar</code> format input, and write it on output, and it
 probably handles symbolic links.  They may not have bothered doing
 anything to enhance <code>tar</code> as a result.)
 </p>
-<p><code>cpio</code> handles special files; traditional <code>tar</code> doesn't.
+<p><code>cpio</code> handles special files; traditional <code>tar</code> doesn&rsquo;t.
 </p>
 <p><code>tar</code> comes with V7, System III, System V, and BSD source;
 <code>cpio</code> comes only with System III, System V, and later BSD
 (4.3-tahoe and later).
 </p>
-<p><code>tar</code>'s way of handling multiple hard links to a file can handle
+<p><code>tar</code>&rsquo;s way of handling multiple hard links to a file can handle
 file systems that support 32-bit inumbers (e.g., the BSD file system);
 <code>cpio</code>s way requires you to play some games (in its &quot;binary&quot;
 format, i-numbers are only 16 bits, and in its &quot;portable ASCII&quot; format,
-they're 18 bits&mdash;it would have to play games with the &quot;file system ID&quot;
+they&rsquo;re 18 bits&mdash;it would have to play games with the &quot;file system ID&quot;
 field of the header to make sure that the file system ID/i-number pairs
-of different files were always different), and I don't know which
-<code>cpio</code>s, if any, play those games.  Those that don't might get
-confused and think two files are the same file when they're not, and
+of different files were always different), and I don&rsquo;t know which
+<code>cpio</code>s, if any, play those games.  Those that don&rsquo;t might get
+confused and think two files are the same file when they&rsquo;re not, and
 make hard links between them.
 </p>
 <p><code>tar</code>s way of handling multiple hard links to a file places only
@@ -12319,8 +12319,8 @@ of the names.
 at the unix scene,
 </p></blockquote>
 
-<p>It wasn't.  <code>cpio</code> first showed up in PWB/UNIX 1.0; no
-generally-available version of UNIX had <code>tar</code> at the time.  I don't
+<p>It wasn&rsquo;t.  <code>cpio</code> first showed up in PWB/UNIX 1.0; no
+generally-available version of UNIX had <code>tar</code> at the time.  I don&rsquo;t
 know whether any version that was generally available <em>within AT&amp;T</em>
 had <code>tar</code>, or, if so, whether the people within AT&amp;T who did
 <code>cpio</code> knew about it.
@@ -12341,9 +12341,9 @@ crashed archives at all.)
 
 <p>Theoretically it should be easier under <code>tar</code> since the blocking
 lets you find a header with some variation of &lsquo;<samp>dd skip=<var>nn</var></samp>&rsquo;.
-However, modern <code>cpio</code>'s and variations have an option to just
+However, modern <code>cpio</code>&rsquo;s and variations have an option to just
 search for the next file header after an error with a reasonable chance
-of resyncing.  However, lots of tape driver software won't allow you to
+of resyncing.  However, lots of tape driver software won&rsquo;t allow you to
 continue past a media error which should be the only reason for getting
 out of sync unless a file changed sizes while you were writing the
 archive.
@@ -12486,7 +12486,7 @@ machine.  If you give an alternate login name, it will be given to the
 Naturally, the remote machine must have an executable
 <code>/usr/libexec/rmt</code>.  This program is free software from the
 University of California, and a copy of the source code can be found
-with the sources for <code>tar</code>; it's compiled and installed by default.
+with the sources for <code>tar</code>; it&rsquo;s compiled and installed by default.
 The exact path to this utility is determined when configuring the package.
 It is &lsquo;<tt><var>prefix</var>/libexec/rmt</tt>&rsquo;, where <var>prefix</var> stands for
 your installation prefix.  This location may also be overridden at
@@ -12819,7 +12819,7 @@ out the record size itself.  On most of those, you can specify a
 blocking factor (with &lsquo;<samp>--blocking-factor</samp>&rsquo;) larger than the
 actual blocking factor, and then use the &lsquo;<samp>--read-full-records</samp>&rsquo;
 (&lsquo;<samp>-B</samp>&rsquo;) option.  (If you specify a blocking factor with
-&lsquo;<samp>--blocking-factor</samp>&rsquo; and don't use the
+&lsquo;<samp>--blocking-factor</samp>&rsquo; and don&rsquo;t use the
 &lsquo;<samp>--read-full-records</samp>&rsquo; option, then <code>tar</code> will not
 attempt to figure out the recording size itself.)  On some devices,
 you must always specify the record size exactly with
@@ -12831,7 +12831,7 @@ correctly.
 <p><code>tar</code> blocks are all fixed size (512 bytes), and its scheme for
 putting them into records is to put a whole number of them (one or
 more) into each record.  <code>tar</code> records are all the same size;
-at the end of the file there's a block containing all zeros, which
+at the end of the file there&rsquo;s a block containing all zeros, which
 is how you tell that the remainder of the last record(s) are garbage.
 </p>
 <p>In a standard <code>tar</code> file (no options), the block size is 512
@@ -12976,7 +12976,7 @@ reading that archive, however this is not typically the case.  Usually, you
 can use &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) without specifying a blocking factor&mdash;<code>tar</code>
 reports a non-default record size and then lists the archive members as
 it would normally.  To extract files from an archive with a non-standard
-blocking factor (particularly if you're not sure what the blocking factor
+blocking factor (particularly if you&rsquo;re not sure what the blocking factor
 is), you can usually use the &lsquo;<samp>--read-full-records</samp>&rsquo; (&lsquo;<samp>-B</samp>&rsquo;) option while
 specifying a blocking factor larger then the blocking factor of the archive
 (i.e.  &lsquo;<samp>tar --extract --read-full-records --blocking-factor=300</samp>&rsquo;.
@@ -13024,7 +13024,7 @@ updating the archive.
 <p>Apparently, Exabyte drives have a physical block size of 8K bytes.
 If we choose our blocksize as a multiple of 8k bytes, then the problem
 seems to disappear.  Id est, we are using block size of 112 right
-now, and we haven't had the problem since we switched&hellip;
+now, and we haven&rsquo;t had the problem since we switched&hellip;
 </p>
 <p>With <acronym>GNU</acronym> <code>tar</code> the blocking factor is limited only
 by the maximum record size of the device containing the archive, or by
@@ -13058,7 +13058,7 @@ topic:
 uncompress a compressed archive on tape, there is an option to turn
 the message off, but it breaks the regularity of simply having to use
 &lsquo;<samp><var>prog</var> -d</samp>&rsquo; for decompression.  It would be nice if gzip was
-silently ignoring any number of trailing zeros.  I'll ask Jean-loup
+silently ignoring any number of trailing zeros.  I&rsquo;ll ask Jean-loup
 Gailly, by sending a copy of this message to him.
 
 </li><li>
@@ -13203,7 +13203,7 @@ the error rates observed at rewriting time.
 
 <p>Most tape devices have two entries in the &lsquo;<tt>/dev</tt>&rsquo; directory, or
 entries that come in pairs, which differ only in the minor number for
-this device.  Let's take for example &lsquo;<tt>/dev/tape</tt>&rsquo;, which often
+this device.  Let&rsquo;s take for example &lsquo;<tt>/dev/tape</tt>&rsquo;, which often
 points to the only or usual tape device of a given system.  There might
 be a corresponding &lsquo;<tt>/dev/nrtape</tt>&rsquo; or &lsquo;<tt>/dev/ntape</tt>&rsquo;.  The simpler
 name is the <em>rewinding</em> version of the device, while the name
@@ -13316,8 +13316,8 @@ end, tape archive devices write magnetic <em>tape marks</em> on the
 archive media.  Tape drives write one tape mark between files,
 two at the end of all the file entries.
 </p>
-<p>If you think of data as a series of records &quot;rrrr&quot;'s, and tape marks as
-&quot;*&quot;'s, a tape might look like the following:
+<p>If you think of data as a series of records &quot;rrrr&quot;&rsquo;s, and tape marks as
+&quot;*&quot;&rsquo;s, a tape might look like the following:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">rrrr*rrrrrr*rrrrr*rr*rrrrr**-------------------------
 </pre></td></tr></table>
@@ -13427,7 +13427,7 @@ and <var>operation</var> is one of the following:
 
 
 
-<p>If you don't specify a <var>tapename</var>, <code>mt</code> uses the environment
+<p>If you don&rsquo;t specify a <var>tapename</var>, <code>mt</code> uses the environment
 variable <code>TAPE</code>; if <code>TAPE</code> is not set, <code>mt</code> will use
 the default device specified in your &lsquo;<tt>sys/mtio.h</tt>&rsquo; file
 (<code>DEFTAPE</code> variable).  If this is not defined, the program will
@@ -13643,7 +13643,7 @@ backups.
 </dl>
 
 <p>The <var>script-name</var> is executed without any command line
-arguments.  It inherits <code>tar</code>'s shell environment.
+arguments.  It inherits <code>tar</code>&rsquo;s shell environment.
 Additional data is passed to it via the following
 environment variables:
 </p>
@@ -13965,7 +13965,7 @@ tar: Archive not labeled to match `My volume'
 &lsquo;<tt>archive</tt>&rsquo; is not labelled at all.
 </p>
 <p>  Similarly, <code>tar</code> will refuse to list or extract the
-archive if its label doesn't match the <var>archive-label</var>
+archive if its label doesn&rsquo;t match the <var>archive-label</var>
 specified.  In those cases, <var>archive-label</var> argument is interpreted
 as a globbing-style pattern which must match the actual magnetic
 volume label.  See section <a href="#SEC102">Excluding Some Files</a>, for a precise description of how match
@@ -14086,7 +14086,7 @@ information on these operations.
 <p>Also, since <code>tar</code> normally strips leading &lsquo;<samp>/</samp>&rsquo; from file
 names (see section <a href="#SEC112">Absolute File Names</a>), a command like &lsquo;<samp>tar --verify -cf
 /tmp/foo.tar /etc</samp>&rsquo; will work as desired only if the working directory is
-&lsquo;<tt>/</tt>&rsquo;, as <code>tar</code> uses the archive's relative member names
+&lsquo;<tt>/</tt>&rsquo;, as <code>tar</code> uses the archive&rsquo;s relative member names
 (e.g., &lsquo;<tt>etc/motd</tt>&rsquo;) when verifying the archive.
 </p>
 <hr size="6">
@@ -14207,7 +14207,7 @@ of this issue and its implications.
 
 
 <p>.
-See <a href="automake.html#Options">tar-v7: (automake)Options</a> section `Changing Automake's Behavior' in <cite>GNU Automake</cite>, for a description on how to use various
+See <a href="automake.html#Options">tar-v7: (automake)Options</a> section &lsquo;Changing Automake&rsquo;s Behavior&rsquo; in <cite>GNU Automake</cite>, for a description on how to use various
 archive formats with <code>automake</code>.
 </p>
 <p>Future versions of <acronym>GNU</acronym> <code>tar</code> will understand &lsquo;<samp>-o</samp>&rsquo; only as a
@@ -14379,7 +14379,7 @@ $ <kbd>ARGP_HELP_FMT=long-opt-col=16 tar --help|grep ARCHIVE</kbd>
 <dt><u>Help Output:</u> offset <b>doc-opt-col</b>
 <a name="IDX459"></a>
 </dt>
-<dd><p>Column in which <em>doc options</em> start.  A doc option isn't actually
+<dd><p>Column in which <em>doc options</em> start.  A doc option isn&rsquo;t actually
 an option, but rather an arbitrary piece of documentation that is
 displayed in much the same manner as the options.  For example, in
 the description of &lsquo;<samp>--format</samp>&rsquo; option:
@@ -14847,7 +14847,7 @@ are archived with this field specified as zero.
 
 <p>The <code>mtime</code> field is the data modification time of the file at
 the time it was archived.  It is the ASCII representation of the octal
-value of the last time the file's contents were modified, represented
+value of the last time the file&rsquo;s contents were modified, represented
 as an integer number of
 seconds since January 1, 1970, 00:00 Coordinated Universal Time.
 </p>
@@ -14864,7 +14864,7 @@ type, the file will be extracted as if it were a regular file.  As this
 action occurs, <code>tar</code> issues a warning to the standard error.
 </p>
 <p>The <code>atime</code> and <code>ctime</code> fields are used in making incremental
-backups; they store, respectively, the particular file's access and
+backups; they store, respectively, the particular file&rsquo;s access and
 status change times.
 </p>
 <p>The <code>offset</code> is used by the &lsquo;<samp>--multi-volume</samp>&rsquo; (&lsquo;<samp>-M</samp>&rsquo;) option, when
@@ -16069,7 +16069,7 @@ authors of those manuals published them with restrictive terms&mdash;no
 copying, no modification, source files not available&mdash;which exclude
 them from the free software world.
 </p>
-<p>That wasn't the first time this sort of thing happened, and it was far
+<p>That wasn&rsquo;t the first time this sort of thing happened, and it was far
 from the last.  Many times we have heard a GNU user eagerly describe a
 manual that he is writing, his intended contribution to the community,
 only to learn that he had ruined everything by signing a publication
@@ -16098,12 +16098,12 @@ community.
 </p>
 <p>Some kinds of limits on the way modification is handled are
 acceptable.  For example, requirements to preserve the original
-author's copyright notice, the distribution terms, or the list of
+author&rsquo;s copyright notice, the distribution terms, or the list of
 authors, are ok.  It is also no problem to require modified versions
 to include notice that they were modified.  Even entire sections that
 may not be deleted or changed are acceptable, as long as they deal
 with nontechnical topics (like this one).  These kinds of restrictions
-are acceptable because they don't obstruct the community's normal use
+are acceptable because they don&rsquo;t obstruct the community&rsquo;s normal use
 of the manual.
 </p>
 <p>However, it must be possible to modify all the <em>technical</em>
@@ -16122,11 +16122,11 @@ the free software community.
 <p>If you are writing documentation, please insist on publishing it under
 the GNU Free Documentation License or another free documentation
 license.  Remember that this decision requires your approval&mdash;you
-don't have to let the publisher decide.  Some commercial publishers
+don&rsquo;t have to let the publisher decide.  Some commercial publishers
 will use a free license if you insist, but they will not propose the
 option; it is up to you to raise the issue and say firmly that this is
 what you want.  If the publisher you are dealing with refuses, please
-try other publishers.  If you're not sure whether a proposed license
+try other publishers.  If you&rsquo;re not sure whether a proposed license
 is free, write to <a href="mailto:licensing@gnu.org">licensing@gnu.org</a>.
 </p>
 <p>You can encourage commercial publishers to sell more free, copylefted
@@ -16243,7 +16243,7 @@ modifications and/or translated into another language.
 </p>
 <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
 of the Document that deals exclusively with the relationship of the
-publishers or authors of the Document to the Document's overall
+publishers or authors of the Document to the Document&rsquo;s overall
 subject (or to related matters) and contains nothing that could fall
 directly within that overall subject.  (Thus, if the Document is in
 part a textbook of mathematics, a Secondary Section may not explain
@@ -16295,7 +16295,7 @@ output purposes only.
 plus such following pages as are needed to hold, legibly, the material
 this License requires to appear in the title page.  For works in
 formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
-the text near the most prominent appearance of the work's title,
+the text near the most prominent appearance of the work&rsquo;s title,
 preceding the beginning of the body of the text.
 </p>
 <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
@@ -16334,7 +16334,7 @@ COPYING IN QUANTITY
 
 <p>If you publish printed copies (or copies in media that commonly have
 printed covers) of the Document, numbering more than 100, and the
-Document's license notice requires Cover Texts, you must enclose the
+Document&rsquo;s license notice requires Cover Texts, you must enclose the
 copies in covers that carry, clearly and legibly, all these Cover
 Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
 the back cover.  Both covers must also clearly and legibly identify
@@ -16410,7 +16410,7 @@ terms of this License, in the form shown in the Addendum below.
 
 </li><li>
 Preserve in that license notice the full lists of Invariant Sections
-and required Cover Texts given in the Document's license notice.
+and required Cover Texts given in the Document&rsquo;s license notice.
 
 </li><li>
 Include an unaltered copy of this License.
@@ -16460,7 +16460,7 @@ Preserve any Warranty Disclaimers.
 appendices that qualify as Secondary Sections and contain no material
 copied from the Document, you may at your option designate some or all
 of these sections as invariant.  To do this, add their titles to the
-list of Invariant Sections in the Modified Version's license notice.
+list of Invariant Sections in the Modified Version&rsquo;s license notice.
 These titles must be distinct from any other section titles.
 </p>
 <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
@@ -16529,14 +16529,14 @@ AGGREGATION WITH INDEPENDENT WORKS
 and independent documents or works, in or on a volume of a storage or
 distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
 resulting from the compilation is not used to limit the legal rights
-of the compilation's users beyond what the individual works permit.
+of the compilation&rsquo;s users beyond what the individual works permit.
 When the Document is included in an aggregate, this License does not
 apply to the other works in the aggregate which are not themselves
 derivative works of the Document.
 </p>
 <p>If the Cover Text requirement of section 3 is applicable to these
 copies of the Document, then if the Document is less than one half of
-the entire aggregate, the Document's Cover Texts may be placed on
+the entire aggregate, the Document&rsquo;s Cover Texts may be placed on
 covers that bracket the Document within the aggregate, or the
 electronic equivalent of covers if the Document is in electronic form.
 Otherwise they must appear on printed covers that bracket the whole
@@ -17666,7 +17666,7 @@ information on this and other changes.
 </p><h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>A side effect of this is that when
 &lsquo;<samp>--create</samp>&rsquo; is used with &lsquo;<samp>--verbose</samp>&rsquo; the resulting output
-is not, generally speaking, the same as the one you'd get running
+is not, generally speaking, the same as the one you&rsquo;d get running
 <kbd>tar --list</kbd> command.  This may be important if you use some
 scripts for comparing both outputs.  See <a href="#listing-member-and-file-names">listing member and file names</a>,
 for the information on how to handle this case.
@@ -17678,7 +17678,7 @@ for the information on how to handle this case.
 archive (see section <a href="#SEC136">Controlling Extended Header Keywords</a>).
 </p><h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>If you run <acronym>GNU</acronym> <code>tar</code> under a different locale, the
-translation to the locale's language will be used.
+translation to the locale&rsquo;s language will be used.
 </p><h3><a name="FOOT21" href="#DOCF21">(21)</a></h3>
 <p>See <a href="#g_t_002d_002drestrict">&ndash;restrict</a>, for more information about
 this option

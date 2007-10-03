@@ -89,7 +89,7 @@ in your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a
 </p>
 <p>  It is possible to specify files to be visited, Lisp files to be
 loaded, and functions to be called, by giving Emacs arguments in the
-shell command line.  See section <a href="#SEC41">Command Line Switches and Arguments</a>.  But we don't recommend
+shell command line.  See section <a href="#SEC41">Command Line Switches and Arguments</a>.  But we don&rsquo;t recommend
 doing this.  The feature exists mainly for compatibility with other
 editors.
 </p>
@@ -101,7 +101,7 @@ command-line argument to say which file to edit.
 </p>
 <p>  But starting a new Emacs each time you want to edit a different file
 does not make sense.  For one thing, this would be annoyingly slow.  For
-another, this would fail to take advantage of Emacs's ability to visit
+another, this would fail to take advantage of Emacs&rsquo;s ability to visit
 more than one file in a single editing session.  And it would lose the
 other accumulated context, such as registers, undo history, and the mark
 ring.
@@ -185,11 +185,11 @@ probably with <kbd>C-d</kbd> or &lsquo;<samp>exit</samp>&rsquo;, but it depends 
 you use.)  The only way on these systems to get back to the shell from
 which Emacs was run (to log out, for example) is to kill Emacs.
 </p>
-<p>  Suspending also fails if you run Emacs under a shell that doesn't
+<p>  Suspending also fails if you run Emacs under a shell that doesn&rsquo;t
 support suspending programs, even if the system itself does support it.
 In such a case, you can set the variable <code>cannot-suspend</code> to a
 non-<code>nil</code> value to force <kbd>C-z</kbd> to start an inferior shell.
-(One might also describe Emacs's parent shell as &ldquo;inferior&rdquo; for
+(One might also describe Emacs&rsquo;s parent shell as &ldquo;inferior&rdquo; for
 failing to support job control properly, but that is a matter of taste.)
 </p>
 <p>  When Emacs communicates directly with an X server and creates its own
@@ -396,14 +396,14 @@ order in which they appear in this table.
 <dl compact="compact">
 <dt> &lsquo;<samp>--show-dump-id</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>-sd</samp>&rsquo;</dt>
-<dd><p>Print the ID for the new portable dumper's dump file on the terminal and
+<dd><p>Print the ID for the new portable dumper&rsquo;s dump file on the terminal and
 exit.  (Prints an error message and exits if XEmacs was not configured
 &lsquo;<samp>--pdump</samp>&rsquo;.)
 </p>
 </dd>
 <dt> &lsquo;<samp>--no-dump-file</samp>&rsquo;</dt>
 <dt> &lsquo;<samp>-nd</samp>&rsquo;</dt>
-<dd><p>Don't load the dump file.  Roughly equivalent to old temacs.  (Ignored if
+<dd><p>Don&rsquo;t load the dump file.  Roughly equivalent to old temacs.  (Ignored if
 XEmacs was not configured &lsquo;<samp>--pdump</samp>&rsquo;.)
 </p>
 </dd>
@@ -753,7 +753,7 @@ very front, late ones somewhere in the middle, and last hierarchies are
 (you guessed it) last.
 </p>
 <p>By default, XEmacs expects an early package hierarchy in the
-subdirectory &lsquo;<tt>.xemacs/xemacs-packages</tt>&rsquo; of the user's home
+subdirectory &lsquo;<tt>.xemacs/xemacs-packages</tt>&rsquo; of the user&rsquo;s home
 directory.
 </p>
 <p>Moreover, XEmacs expects late hierarchies in the subdirectories
@@ -888,7 +888,7 @@ and <code>EMACSPATH</code>.
 <dt> <code>doc-directory</code></dt>
 <dd><a name="IDX128"></a>
 <p>Is the directory containing the architecture-specific &lsquo;<tt>DOC</tt>&rsquo; file
-that contains documentation for XEmacs' commands.
+that contains documentation for XEmacs&rsquo; commands.
 </p>
 </dd>
 <dt> <code>data-directory</code></dt>

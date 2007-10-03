@@ -150,7 +150,7 @@ the main trunk, or leave them on the branch.
 <h2 class="section"> 5.2 Creating a branch </h2>
 
 <p>You can create a branch with <code>tag -b</code>; for
-example, assuming you're in a working copy:
+example, assuming you&rsquo;re in a working copy:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs tag -b rel-1-0-patches
 </pre></td></tr></table>
@@ -176,7 +176,7 @@ working copy, by using <code>rtag</code>:
 <p>&lsquo;<samp>-r rel-1-0</samp>&rsquo; says that this branch should be
 rooted at the revision that
 corresponds to the tag &lsquo;<samp>rel-1-0</samp>&rsquo;.  It need not
-be the most recent revision &ndash; it's often useful to
+be the most recent revision &ndash; it&rsquo;s often useful to
 split a branch off an old revision (for example, when
 fixing a bug in a past release otherwise known to be
 stable).
@@ -253,7 +253,7 @@ leaving the main trunk and other branches unaffected.
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
 the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section <a href="cvs_4.html#SEC53">Sticky tags</a>)
-&ndash; that's <small>CVS</small>'s way of telling you the branch, if
+&ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs status -v driver.c backend.c
@@ -286,12 +286,12 @@ File: backend.c         Status: Up-to-date
 
 </pre></td></tr></table>
 
-<p>Don't be confused by the fact that the branch numbers
+<p>Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<samp>1.7.2</samp>&rsquo; and
 &lsquo;<samp>1.4.2</samp>&rsquo; respectively).  The branch tag is the
 same, &lsquo;<samp>rel-1-0-patches</samp>&rsquo;, and the files are
 indeed on the same branch.  The numbers simply reflect
-the point in each file's revision history at which the
+the point in each file&rsquo;s revision history at which the
 branch was made.  In the above example, one can deduce
 that &lsquo;<samp>driver.c</samp>&rsquo; had been through more changes than
 &lsquo;<samp>backend.c</samp>&rsquo; before this branch was created.
@@ -320,7 +320,7 @@ branch numbers are constructed.
 </tr></table>
 <h2 class="section"> 5.4 Branches and revisions </h2>
 
-<p>Ordinarily, a file's revision history is a linear
+<p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section <a href="cvs_4.html#SEC45">Revision numbers</a>):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">       +-----+    +-----+    +-----+    +-----+    +-----+

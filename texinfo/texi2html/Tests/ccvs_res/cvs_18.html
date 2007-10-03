@@ -725,7 +725,7 @@ programs are used for pre-commit checking to verify
 that the modified, added and removed files are really
 ready to be committed.  This could be used, for
 instance, to verify that the changed files conform to
-to your site's standards for coding practice.
+to your site&rsquo;s standards for coding practice.
 </p>
 <p>As mentioned earlier, each line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; file consists of a regular expression
@@ -863,13 +863,13 @@ adapted to the new format by the verification script
 that is run by &lsquo;<tt>verifymsg</tt>&rsquo;.
 </p>
 <p>An example of an update might be to change all
-occurrences of 'BugId:' to be 'DefectId:' (which can be
+occurrences of &rsquo;BugId:&rsquo; to be &rsquo;DefectId:&rsquo; (which can be
 useful if the rcstemplate has recently been changed and
 there are still checked-out user trees with cached
 copies in the CVS/Template file of the older version).
 </p>
 <p>Another example of an update might be to delete a line
-that contains 'BugID: none' from the log message after
+that contains &rsquo;BugID: none&rsquo; from the log message after
 validation of that value as being allowed is made.
 </p>
 <p>The following is a little silly example of a
@@ -1139,7 +1139,7 @@ still provided).
 </p>
 <p>The output will be a space separated string of tokens enclosed in
 quotation marks (<tt>&quot;</tt>).
-Any embedded dollar signs (<tt>$</tt>), backticks (<tt>`</tt>),
+Any embedded dollar signs (<tt>$</tt>), backticks (<tt>&lsquo;</tt>),
 backslashes (<tt>\</tt>), or quotation marks will be preceded
 by a backslash (this allows the shell to correctly parse it
 as a single string, regardless of the characters it contains).
@@ -1338,11 +1338,11 @@ be updated from the server.
 <h2 class="appendixsec"> C.5 Ignoring files via cvsignore </h2>
 
 <p>There are certain file names that frequently occur
-inside your working copy, but that you don't want to
+inside your working copy, but that you don&rsquo;t want to
 put under <small>CVS</small> control.  Examples are all the object
 files that you get while you compile your sources.
 Normally, when you run &lsquo;<samp>cvs update</samp>&rsquo;, it prints a
-line for each file it encounters that it doesn't know
+line for each file it encounters that it doesn&rsquo;t know
 about (see section <a href="cvs_16.html#SEC155">update output</a>).
 </p>
 <p><small>CVS</small> has a list of files (or sh(1) file name patterns)
@@ -1469,7 +1469,7 @@ the name of the file.
 </p>
 <p>After setting up &lsquo;<tt>checkoutlist</tt>&rsquo; in this fashion,
 the files listed there will function just like
-<small>CVS</small>'s built-in administrative files.  For example,
+<small>CVS</small>&rsquo;s built-in administrative files.  For example,
 when checking in one of the files you should get a
 message such as:
 </p>
@@ -1551,7 +1551,7 @@ several mechanisms to do that.
 &lsquo;<samp>~</samp>&rsquo; followed by &lsquo;<samp>/</samp>&rsquo; or the end of the line.
 Likewise for the home directory of <var>user</var>, use
 &lsquo;<samp>~<var>user</var></samp>&rsquo;.  These variables are expanded on
-the server machine, and don't get any reasonable
+the server machine, and don&rsquo;t get any reasonable
 expansion if pserver (see section <a href="cvs_2.html#SEC29">Direct connection with password authentication</a>)
 is in use; therefore user variables (see below) may be
 a better choice to customize behavior based on the user
@@ -1714,7 +1714,7 @@ setting is accepted, but it does nothing.
 </dd>
 <dt> <code>SystemAuth=<var>value</var></code></dt>
 <dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then pserver should check
-for users in the system's user database if not found in
+for users in the system&rsquo;s user database if not found in
 &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
 pserver users must exist in &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.
 The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
@@ -1734,7 +1734,7 @@ The default value is &lsquo;<samp>no</samp>&rsquo;.
 many commands at the top level of your working
 directory, rather than in one of the checked out
 subdirectories.  The &lsquo;<tt>CVS</tt>&rsquo; directory created there
-will mean you don't have to specify <code>CVSROOT</code> for
+will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
 &lsquo;<tt>CVS/Template</tt>&rsquo; file (see section <a href="cvs_2.html#SEC19">How data is stored in the working directory</a>).
 </p>
@@ -1757,7 +1757,7 @@ needs them.  For information on <small>CVS</small> locks, see
 <p>Before enabling the LockDir option, make sure that you
 have tracked down and removed any copies of <small>CVS</small> 1.9 or
 older.  Such versions neither support LockDir, nor will
-give an error indicating that they don't support it.
+give an error indicating that they don&rsquo;t support it.
 The result, if this is allowed to happen, is that some
 <small>CVS</small> users will put the locks one place, and others will
 put them another place, and therefore the repository
@@ -1788,7 +1788,7 @@ that the file should be checked with the filesystem
 &lsquo;<samp>stat()</samp>&rsquo; function to see if it has changed (see warning below)
 before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
 </p>
-<p><strong>Note: the `stat' mode can cause CVS to pause for up to
+<p><strong>Note: the &lsquo;stat&rsquo; mode can cause CVS to pause for up to
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</strong>
 </p>

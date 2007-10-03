@@ -96,14 +96,14 @@ format.
 <p>It is unlikely that you will ever write a Texinfo file that is
 intended only as an Info file and not as a printable document.  If you
 do, you might still use chapter structuring commands to create a
-heading at the top of each node&mdash;but you don't need to.
+heading at the top of each node&mdash;but you don&rsquo;t need to.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC73">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            A manual is like an upside down tree &hellip;
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC74">5.2 Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to divide a manual into parts.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC75">5.3 <code>@top</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The <code>@top</code> command, part of the `Top' node.
+<tr><td align="left" valign="top"><a href="#SEC75">5.3 <code>@top</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The <code>@top</code> command, part of the &lsquo;Top&rsquo; node.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC76">5.4 <code>@chapter</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     
 </td></tr>
@@ -119,9 +119,9 @@ heading at the top of each node&mdash;but you don't need to.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC82">5.10 The <code>@subsection</code>-like Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC83">5.11 The `subsub' Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Commands for the lowest level sections.
+<tr><td align="left" valign="top"><a href="#SEC83">5.11 The &lsquo;subsub&rsquo; Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Commands for the lowest level sections.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC84">5.12 <code>@raisesections</code> and <code>@lowersections</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to change commands' hierarchical level.
+<tr><td align="left" valign="top"><a href="#SEC84">5.12 <code>@raisesections</code> and <code>@lowersections</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to change commands&rsquo; hierarchical level.
 </td></tr>
 </table>
 
@@ -292,7 +292,7 @@ do not.
 <p>The <code>@top</code> command is a special sectioning command that you use
 only after an &lsquo;<samp>@node Top</samp>&rsquo; line at the beginning of a Texinfo file.
 The <code>@top</code> command tells the <code>makeinfo</code> formatter which node
-is the `Top' node, so it can use it as the root of the node tree if your
+is the &lsquo;Top&rsquo; node, so it can use it as the root of the node tree if your
 manual uses implicit pointers.  It has the same typesetting effect as
 <code>@unnumbered</code> (see section <a href="#SEC77"><code>@unnumbered</code> and <code>@appendix</code></a>).  For detailed information, see <a href="texinfo_7.html#SEC94">The <code>@top</code> Command</a>.
 </p>
@@ -614,10 +614,10 @@ contents.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.11 The `subsub' Commands </h2>
+<h2 class="section"> 5.11 The &lsquo;subsub&rsquo; Commands </h2>
 
 <p>The fourth and lowest level sectioning commands in Texinfo are the
-`subsub' commands.  They are:
+&lsquo;subsub&rsquo; commands.  They are:
 </p>
 <dl compact="compact">
 <dt> <code>@subsubsection</code></dt>
@@ -649,7 +649,7 @@ headings.
 </p></dd>
 </dl>
 
-<p>In Info,  `subsub' titles are underlined with periods.
+<p>In Info,  &lsquo;subsub&rsquo; titles are underlined with periods.
 For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@subsubsection This is a subsubsection
@@ -738,8 +738,8 @@ document will be lowered.
 <p>Repeated use of the commands continue to raise or lower the hierarchical
 level a step at a time.
 </p>
-<p>An attempt to raise above `chapters' reproduces chapter commands; an
-attempt to lower below `subsubsections' reproduces subsubsection
+<p>An attempt to raise above &lsquo;chapters&rsquo; reproduces chapter commands; an
+attempt to lower below &lsquo;subsubsections&rsquo; reproduces subsubsection
 commands.
 </p>
 <hr size="6">

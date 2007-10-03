@@ -159,7 +159,7 @@ interface to Lisp execution.  See section <a href="xemacs_25.html#SEC253">Major 
 </p>
 <p>  Each of the programming language modes defines the &lt;TAB&gt; key to run
 an indentation function that knows the indentation conventions of that
-language and updates the current line's indentation accordingly.  For
+language and updates the current line&rsquo;s indentation accordingly.  For
 example, in C mode &lt;TAB&gt; is bound to <code>c-indent-line</code>.  &lt;LFD&gt;
 is normally defined to do &lt;RET&gt; followed by &lt;TAB&gt;; thus it, too,
 indents in a mode-specific fashion.
@@ -232,9 +232,9 @@ parentheses, brackets, braces (depending on what must balance in the
 language you are working with), and escape characters that might be used
 to quote those.
 </p>
-<p>  The other commands deal with expressions or <em>sexps</em>.  The word `sexp'
+<p>  The other commands deal with expressions or <em>sexps</em>.  The word &lsquo;sexp&rsquo;
 is derived from <em>s-expression</em>, the term for a symbolic expression in
-Lisp.  In Emacs, the notion of `sexp' is not limited to Lisp.  It
+Lisp.  In Emacs, the notion of &lsquo;sexp&rsquo; is not limited to Lisp.  It
 refers to an expression in the language  your program is written in.
 Each programming language has its own major mode, which customizes the
 syntax tables so that expressions in that language count as sexps.
@@ -365,7 +365,7 @@ transposes the sexps ending after point and the mark.
 <kbd>C-M-f</kbd>.  In particular, a negative argument is useful for putting
 the mark at the beginning of the previous sexp.
 </p>
-<p>  The list and sexp commands' understanding of syntax is completely
+<p>  The list and sexp commands&rsquo; understanding of syntax is completely
 controlled by the syntax table.  Any character can, for example, be
 declared to be an opening delimiter and act like an open parenthesis.
 See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
@@ -546,7 +546,7 @@ appropriate indentation.
 </p>
 <p>  &lt;TAB&gt; indents the second and following lines of the body of a
 parenthetical grouping each under the preceding one; therefore, if you
-alter one line's indentation to be nonstandard, the lines below tend
+alter one line&rsquo;s indentation to be nonstandard, the lines below tend
 to follow it.  This is the right behavior in cases where the standard
 result of &lt;TAB&gt; does not look good.
 </p>
@@ -750,7 +750,7 @@ Correct C indentation is done on all the lines that are made this way.
 <a name="IDX941"></a>
 <p>  If <code>c-tab-always-indent</code> is non-<code>nil</code>, the &lt;TAB&gt; command
 in C mode does indentation only if point is at the left margin or within
-the line's indentation.  If there is non-whitespace to the left of point,
+the line&rsquo;s indentation.  If there is non-whitespace to the left of point,
 &lt;TAB&gt; just inserts a tab character in the buffer.  Normally,
 this variable is <code>nil</code>, and &lt;TAB&gt; always reindents the current line.
 </p>
@@ -765,7 +765,7 @@ mode will use.
 <dl compact="compact">
 <dt> <code>c-indent-level</code></dt>
 <dd><p>Indentation of C statements within surrounding block.  The surrounding
-block's indentation is the indentation of the line on which the
+block&rsquo;s indentation is the indentation of the line on which the
 open-brace appears.
 </p></dd>
 <dt> <code>c-continued-statement-offset</code></dt>
@@ -825,7 +825,7 @@ the variable to 4 and <code>c-indent-level</code> to 0, you can get this style:
 
 <p>  When <code>c-indent-level</code> is zero, the statements inside most braces
 line up exactly under the open brace.  An exception are braces in column
-zero, like those surrounding a function's body.  The statements inside
+zero, like those surrounding a function&rsquo;s body.  The statements inside
 those braces are not placed at column zero.  Instead,
 <code>c-brace-offset</code> and <code>c-continued-statement-offset</code> (see
 below) are added to produce a typical offset between brace levels, and
@@ -1098,7 +1098,7 @@ can explicitly set it to a number.  Alternatively, the command <kbd>C-x ;</kbd>
 (<code>set-comment-column</code>) sets the comment column to the column point is
 at.  <kbd>C-u C-x ;</kbd> sets the comment column to match the last comment
 before point in the buffer, and then calls <kbd>Meta-;</kbd> to align the
-current line's comment under the previous one.  Note that <kbd>C-u - C-x ;</kbd>
+current line&rsquo;s comment under the previous one.  Note that <kbd>C-u - C-x ;</kbd>
 runs the function <code>kill-comment</code> as described above.
 </p>
 <p>  <code>comment-column</code> is a per-buffer variable; altering the variable
@@ -1311,7 +1311,7 @@ and the current date.  Except for these header lines, every line in the
 change log starts with a tab.  One entry can describe several changes;
 each change starts with a line starting with a tab and a star.  <kbd>M-x
 add-change-log-entry</kbd> visits the change log file and creates a new entry
-unless the most recent entry is for today's date and your name.  In
+unless the most recent entry is for today&rsquo;s date and your name.  In
 either case, it adds a new line to start the description of another
 change just after the header line of the entry.  When <kbd>M-x
 add-change-log-entry</kbd> is finished, all is prepared for you to edit in
@@ -1382,7 +1382,7 @@ conventional name for a tags table file is &lsquo;<tt>TAGS</tt>&rsquo;.
 </p>
 <p>  Each entry in the tags table records the name of one tag, the name of the
 file that the tag is defined in (implicitly), and the position in that file
-of the tag's definition.
+of the tag&rsquo;s definition.
 </p>
 <p>  Just what names from the described files are recorded in the tags table
 depends on the programming language of the described file.  They
@@ -1395,7 +1395,7 @@ recorded is called a <em>tag</em>.
 <a name="IDX966"></a>
 <a name="IDX967"></a>
 <p>The Ebrowse is a separate facility tailored for C++, with tags and a
-class browser.  See <a href="../ebrowse/index.html#Top">(ebrowse)Top</a> section `Top' in <cite>Ebrowse User's Manual</cite>.
+class browser.  See <a href="../ebrowse/index.html#Top">(ebrowse)Top</a> section &lsquo;Top&rsquo; in <cite>Ebrowse User&rsquo;s Manual</cite>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC233">21.11.1 Source File Tag Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Tag syntax for various types of code and text files.
@@ -1809,7 +1809,7 @@ Tag Octave files:
 </pre></td></tr></table>
 
 <p>Note that tags are not generated for scripts so that you have to add a
-line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
+line by yourself of the form &lsquo;###key &lt;script-name&gt;&rsquo; if you want to jump
 to it.
 </p>
 </li><li>
@@ -1993,7 +1993,7 @@ searching the text of the tags table, it finds the first tag in the table
 that the specified substring appears in.  To find other tags that match
 the substring, give <code>find-tag</code> a numeric argument, as in <kbd>C-u
 M-.</kbd>.  This does not read a tag name, but continues searching the tag
-table's text for another tag containing the same substring last used.
+table&rsquo;s text for another tag containing the same substring last used.
 If your keyboard has a real &lt;META&gt; key, <kbd>M-0 M-.</kbd> is an easier
 alternative to <kbd>C-u M-.</kbd>.
 </p>

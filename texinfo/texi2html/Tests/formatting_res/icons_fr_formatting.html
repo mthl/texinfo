@@ -518,7 +518,7 @@ ul.toc {list-style: none}
 <tr><td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 
 <table class="menu" border="0" cellspacing="0">
@@ -544,7 +544,7 @@ asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; <br>
 strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> <br>
 kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 </p>
-<p>``simple-double--three&mdash;four&mdash;-''<br>
+<p>&lsquo;&lsquo;simple-double--three&mdash;four&mdash;-&rsquo;&rsquo;<br>
 </p>
 <a name="IDX1"></a>
 <a name="IDX2"></a>
@@ -555,16 +555,16 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @&quot;{U} &Uuml; 
 @~n &ntilde;
 @^a &acirc;
-@'e &eacute;
+@&rsquo;e &eacute;
 @=o &#333;
-@`i &igrave;
-@'{e} &eacute;
-@'{@dotless{i}} &iacute; 
+@&lsquo;i &igrave;
+@&rsquo;{e} &eacute;
+@&rsquo;{@dotless{i}} &iacute; 
 @dotless{i} i
 @dotless{ij} ij
-@`{@=E} &#274;` 
+@&lsquo;{@=E} &#274;` 
 @l{} &#322;
-@,{@'C} &#262;,
+@,{@&rsquo;C} &#262;,
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; <br>
 </p>
@@ -573,10 +573,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <br>
 @,@&quot;u ,&uuml;
 </p>
-<p>Invalid use of @':<br>
-@' '
+<p>Invalid use of @&rsquo;:<br>
+@&rsquo; &rsquo;
 <br>
-@'@&quot;u @'&quot;u
+@&rsquo;@&quot;u @'&quot;u
 </p>
 <p>@dotless{truc} truc
 </p>
@@ -1029,9 +1029,9 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
 
-<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> Voir <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@</a> section `t&mdash;itle@' dans <cite>ma&mdash;nual@</cite>
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' dans <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> voir <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' dans <cite>manual</cite>
+<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> Voir <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@</a> section &lsquo;t&mdash;itle@&rsquo; dans <cite>ma&mdash;nual@</cite>
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> voir <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@inforef{chapter, cross ref name, file name}</code> Voir <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
 </p>
 <p><code>@ref{chapter}</code> <a href="#SEC1">chapter</a>
@@ -1043,40 +1043,40 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@ref{chapter,cross ref name}</code> <a href="#SEC1">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="#SEC1">title</a>
 <code>@ref{chapter,,,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,,,manual}</code> section `chapter' dans <cite>manual</cite>
+<code>@ref{chapter,,,,manual}</code> section &lsquo;chapter&rsquo; dans <cite>manual</cite>
 <code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
 <code>@ref{node,,title}</code> @ref{node,,title}
 <code>@ref{node,,,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,,,manual}</code> section `node' dans <cite>manual</cite>
+<code>@ref{node,,,,manual}</code> section &lsquo;node&rsquo; dans <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="#SEC1">title</a>
 <code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,,,manual}</code> section `chapter' dans <cite>manual</cite>
+<code>@ref{chapter,cross ref name,,,manual}</code> section &lsquo;chapter&rsquo; dans <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
 <code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,,,manual}</code> section `node' dans <cite>manual</cite>
+<code>@ref{node,cross ref name,,,manual}</code> section &lsquo;node&rsquo; dans <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,title,,manual}</code> section `title' dans <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,title,,manual}</code> section `title' dans <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' dans <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">cross ref name: (file name)node</a> section `title' dans <cite>manual</cite>
+<code>@ref{node,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">cross ref name: (file name)node</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,title,,manual}</code> section `title' dans <cite>manual</cite>
+<code>@ref{chapter,,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,title,,manual}</code> section `title' dans <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section `title' dans <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">(file name)node</a> section `title' dans <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section `chapter' dans <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">(file name)node</a> section `node' dans <cite>manual</cite>
+<code>@ref{node,,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;chapter&rsquo; dans <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;node&rsquo; dans <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
 <code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
 <code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
 <code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,title,,manual}</code> section `title' dans <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">cross ref name: (file name)</a> section `title' dans <cite>manual</cite>
+<code>@ref{,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">cross ref name: (file name)</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)</a>
-<code>@ref{,,title,,manual}</code> section `title' dans <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">(file name)</a> section `title' dans <cite>manual</cite>
+<code>@ref{,,title,,manual}</code> section &lsquo;title&rsquo; dans <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">(file name)</a> section &lsquo;title&rsquo; dans <cite>manual</cite>
 <code>@ref{,,,file name,manual}</code> <a href="file name.html#Top">(file name)</a> <cite>manual</cite>
 </p>
 <p><code>@inforef{chapter, cross ref name, file name}</code> Voir <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
@@ -1093,7 +1093,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a> section `a comma, in title' dans <cite>a , in manual name</cite>
+<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a> section &lsquo;a comma, in title&rsquo; dans <cite>a , in manual name</cite>
 </p>
 <p><code>@ref{s--ect@comma{}ion}</code> <a href="#SEC2">A section</a>
 </p>
@@ -1727,7 +1727,7 @@ This is a very simple texi manual @  &lt;&gt;.
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-cp">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_0">&quot;</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top">&ldquo;</a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -1796,7 +1796,7 @@ This is a very simple texi manual @  &lt;&gt;.
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-fn">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_0">&quot;</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top"><code>``</code></a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -1964,7 +1964,7 @@ This is a very simple texi manual @  &lt;&gt;.
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-vr">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_0">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top"><code>a</code></a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -2013,7 +2013,7 @@ This is a very simple texi manual @  &lt;&gt;.
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-tp">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_0">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top"><code>d--eftp_name</code></a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -2031,8 +2031,8 @@ This is a very simple texi manual @  &lt;&gt;.
 <a name="chapter"></a>
 <a name="SEC1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left"><a href="#SEC_Top" title="Section pr&eacute;c&eacute;dente dans l'ordre de lecture"><img src="a_left.png" border="0" alt="Retour: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC2" title="Section suivante dans l'ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1 A section" align="middle"></a></td>
+<tr><td valign="middle" align="left"><a href="#SEC_Top" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"><img src="a_left.png" border="0" alt="Retour: Top section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC2" title="Section suivante dans l&rsquo;ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1 A section" align="middle"></a></td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"><img src="a_leftdouble_na.png" border="0" alt="RetourRapide" align="middle"></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Section sup&eacute;rieure"><img src="a_up.png" border="0" alt="Monter: Top section" align="middle"></a></td>
@@ -2044,7 +2044,7 @@ This is a very simple texi manual @  &lt;&gt;.
 <td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1 class="chapter"> 1. chapter </h1>
 
@@ -2064,8 +2064,8 @@ Menu comment
 <a name="s_002d_002dect_002cion"></a>
 <a name="SEC2"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left"><a href="#SEC1" title="Section pr&eacute;c&eacute;dente dans l'ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1. chapter" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC3" title="Section suivante dans l'ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1.1 subsection" align="middle"></a></td>
+<tr><td valign="middle" align="left"><a href="#SEC1" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1. chapter" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC3" title="Section suivante dans l&rsquo;ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1.1 subsection" align="middle"></a></td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"><a href="#SEC1" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"><img src="a_leftdouble.png" border="0" alt="RetourRapide: 1. chapter" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC1" title="Section sup&eacute;rieure"><img src="a_up.png" border="0" alt="Monter: 1. chapter" align="middle"></a></td>
@@ -2077,7 +2077,7 @@ Menu comment
 <td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h2 class="section"> 1.1 A section </h2>
 
@@ -2090,8 +2090,8 @@ Menu comment
 <a name="subsection"></a>
 <a name="SEC3"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left"><a href="#SEC2" title="Section pr&eacute;c&eacute;dente dans l'ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1 A section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC4" title="Section suivante dans l'ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1.1.1 subsubsection" align="middle"></a></td>
+<tr><td valign="middle" align="left"><a href="#SEC2" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1 A section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC4" title="Section suivante dans l&rsquo;ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 1.1.1.1 subsubsection" align="middle"></a></td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"><a href="#SEC1" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"><img src="a_leftdouble.png" border="0" alt="RetourRapide: 1. chapter" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC2" title="Section sup&eacute;rieure"><img src="a_up.png" border="0" alt="Monter: 1.1 A section" align="middle"></a></td>
@@ -2103,7 +2103,7 @@ Menu comment
 <td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h3 class="subsection"> 1.1.1 subsection </h3>
 
@@ -2118,8 +2118,8 @@ Menu comment
 <a name="subsubsection"></a>
 <a name="SEC4"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left"><a href="#SEC3" title="Section pr&eacute;c&eacute;dente dans l'ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1.1 subsection" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC5" title="Section suivante dans l'ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 2. chapter 2" align="middle"></a></td>
+<tr><td valign="middle" align="left"><a href="#SEC3" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1.1 subsection" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC5" title="Section suivante dans l&rsquo;ordre de lecture"><img src="a_right.png" border="0" alt="Avant: 2. chapter 2" align="middle"></a></td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"><a href="#SEC1" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"><img src="a_leftdouble.png" border="0" alt="RetourRapide: 1. chapter" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC3" title="Section sup&eacute;rieure"><img src="a_up.png" border="0" alt="Monter: 1.1.1 subsection" align="middle"></a></td>
@@ -2131,7 +2131,7 @@ Menu comment
 <td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h4 class="subsubsection"> 1.1.1.1 subsubsection </h4>
 
@@ -2139,7 +2139,7 @@ Menu comment
 <a name="chapter2"></a>
 <a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left"><a href="#SEC4" title="Section pr&eacute;c&eacute;dente dans l'ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1.1.1 subsubsection" align="middle"></a></td>
+<tr><td valign="middle" align="left"><a href="#SEC4" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"><img src="a_left.png" border="0" alt="Retour: 1.1.1.1 subsubsection" align="middle"></a></td>
 <td valign="middle" align="left"><img src="a_right_na.png" border="0" alt="Avant: 2. chapter 2" align="middle"></td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"><a href="#SEC1" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"><img src="a_leftdouble.png" border="0" alt="RetourRapide: 1. chapter" align="middle"></a></td>
@@ -2152,7 +2152,7 @@ Menu comment
 <td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1 class="centerchap" align="center"> 2. chapter 2 </h1>
 
@@ -2171,7 +2171,7 @@ Menu comment
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-cp">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_0">&quot;</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top">&ldquo;</a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -2238,7 +2238,7 @@ Menu comment
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-fn">
-<tr><td></td><th align="left">Entr&eacute;e d'index</th><th align="left"> Section</th></tr>
+<tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_0">&quot;</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC_Top"><code>``</code></a></td><td valign="top"><a href="#SEC_Top">Top section</a></td></tr>
@@ -2405,7 +2405,7 @@ Menu comment
 <tr><td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1>Notes de bas de page</h1>
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
@@ -2424,7 +2424,7 @@ Menu comment
 <tr><td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1>Table des mati&egrave;res</h1>
 <div class="contents">
@@ -2451,7 +2451,7 @@ Menu comment
 <tr><td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1>R&eacute;sum&eacute; du contenu</h1>
 <div class="shortcontents">
@@ -2466,7 +2466,7 @@ Menu comment
 <tr><td valign="middle" align="left"><a href="#SEC_Top" title="Couverture (top) du document"><img src="a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Contents" title="Table des mati&egrave;res"><img src="a_tableofcon.png" border="0" alt="Table des mati&egrave;res: Table des mati&egrave;res" align="middle"></a></td>
 <td valign="middle" align="left"><a href="#SEC_Top" title="Index"><img src="a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d'aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
+<td valign="middle" align="left"><a href="#SEC_About" title="A propos (page d&rsquo;aide)"><img src="a_help.png" border="0" alt="A propos: A propos de ce document" align="middle"></a></td>
 </tr></table>
 <h1>A propos de ce document</h1>
 <p>
@@ -2485,13 +2485,13 @@ Menu comment
   <tr>
     <td align="center"><img src="a_left.png" border="0" alt="Retour" align="middle"></td>
     <td align="center">Retour</td>
-    <td>Section pr&eacute;c&eacute;dente dans l'ordre de lecture</td>
+    <td>Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture</td>
     <td>1.2.2</td>
   </tr>
   <tr>
     <td align="center"><img src="a_right.png" border="0" alt="Avant" align="middle"></td>
     <td align="center">Avant</td>
-    <td>Section suivante dans l'ordre de lecture</td>
+    <td>Section suivante dans l&rsquo;ordre de lecture</td>
     <td>1.2.4</td>
   </tr>
   <tr>
@@ -2533,7 +2533,7 @@ Menu comment
   <tr>
     <td align="center"><img src="a_help.png" border="0" alt="A propos" align="middle"></td>
     <td align="center">A propos</td>
-    <td>A propos (page d'aide)</td>
+    <td>A propos (page d&rsquo;aide)</td>
     <td> &nbsp; </td>
   </tr>
 </table>

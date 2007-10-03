@@ -134,7 +134,7 @@ listed in the buffer named &lsquo;<samp>*compilation*</samp>&rsquo;.
 <p>  To run <code>make</code> or another compiler, type <kbd>M-x compile</kbd>.  This
 command reads a shell command line using the minibuffer, then executes
 the specified command line in an inferior shell with output going to the
-buffer named &lsquo;<samp>*compilation*</samp>&rsquo;.  By default, the current buffer's
+buffer named &lsquo;<samp>*compilation*</samp>&rsquo;.  By default, the current buffer&rsquo;s
 default directory is used as the working directory for the execution of
 the command; therefore, the makefile comes from this directory.
 </p>
@@ -192,7 +192,7 @@ This way, you can process the same set of errors again.
 lines on which matches were found.  To do this, type <kbd>M-x grep</kbd> with
 an argument line that contains the same arguments you would give to
 <code>grep</code>: a <code>grep</code>-style regexp (usually in single quotes to
-quote the shell's special characters) followed by filenames, which may
+quote the shell&rsquo;s special characters) followed by filenames, which may
 use wildcard characters.  The output from <code>grep</code> goes in the
 &lsquo;<samp>*compilation*</samp>&rsquo; buffer.  You can use <kbd>C-x `</kbd> to find the lines that
 match as if they were compilation errors.
@@ -201,10 +201,10 @@ match as if they were compilation errors.
 run in interactive mode.  In particular, this means that the shell starts
 up with no prompt.  If you find your usual shell prompt making an
 unsightly appearance in the &lsquo;<samp>*compilation*</samp>&rsquo; buffer, it means you
-have made a mistake in your shell's initialization file (&lsquo;<tt>.cshrc</tt>&rsquo;
+have made a mistake in your shell&rsquo;s initialization file (&lsquo;<tt>.cshrc</tt>&rsquo;
 or &lsquo;<tt>.shrc</tt>&rsquo; or &hellip;) by setting the prompt unconditionally.  The
 shell initialization file should set the prompt only if there already is
-a prompt.  Here's how to do it in <code>csh</code>:
+a prompt.  Here&rsquo;s how to do it in <code>csh</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">if ($?prompt) set prompt = ...
 </pre></td></tr></table>
@@ -374,7 +374,7 @@ should probably use <kbd>M-x load-file</kbd> for this case.
 <p>The variable is initialized by the <b>EMACSLOADPATH</b> environment
 variable. If no value is specified, the variable takes the default value
 specified in the file &lsquo;<tt>paths.h</tt>&rsquo; when Emacs was built. If a path
-isn't specified in &lsquo;<tt>paths.h</tt>&rsquo;, a default value is obtained from the
+isn&rsquo;t specified in &lsquo;<tt>paths.h</tt>&rsquo;, a default value is obtained from the
 file system, near the directory in which the Emacs executable resides.
 </p>
 <a name="IDX1030"></a>
@@ -536,7 +536,7 @@ file whose name ends in &lsquo;<tt>.el</tt>&rsquo; and use the new file as a Lis
 </p>
 <p>  You cannot currently byte-compile converted Mocklisp code.
 The reason is that converted Mocklisp code uses some special Lisp features
-to deal with Mocklisp's incompatible ideas of how arguments are evaluated
+to deal with Mocklisp&rsquo;s incompatible ideas of how arguments are evaluated
 and which values signify &ldquo;true&rdquo; or &ldquo;false&rdquo;.
 </p>
 <hr size="6">
@@ -696,7 +696,7 @@ examine the buffer that was being edited at the time of the error, and
 you can switch buffers, visit files, and perform any other editing
 operations.  However, the debugger is a recursive editing level
 (see section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</a>); it is a good idea to return to the backtrace
-buffer and explicitly exit the debugger when you don't want to use it any
+buffer and explicitly exit the debugger when you don&rsquo;t want to use it any
 more.  Exiting the debugger kills the backtrace buffer.
 </p>
 <a name="IDX1051"></a>
@@ -733,7 +733,7 @@ when you exit the frame.  To cancel this flag, use <kbd>u</kbd>.
 that invoke the debugger on exit are flagged with stars.
 </p></dd>
 <dt> <kbd>u</kbd></dt>
-<dd><p>Don't enter the debugger when the current frame is exited.  This
+<dd><p>Don&rsquo;t enter the debugger when the current frame is exited.  This
 cancels a <kbd>b</kbd> command on a frame.
 </p></dd>
 <dt> <kbd>e</kbd></dt>
@@ -756,12 +756,12 @@ was invoked due to exit from a Lisp call frame (as requested with <kbd>b</kbd>);
 then the value specified in the <kbd>r</kbd> command is used as the value of
 that frame.
 </p>
-<p>The debugger's return value also matters with many errors.  For example,
-<code>wrong-type-argument</code> errors will use the debugger's return value
+<p>The debugger&rsquo;s return value also matters with many errors.  For example,
+<code>wrong-type-argument</code> errors will use the debugger&rsquo;s return value
 instead of the invalid argument; <code>no-catch</code> errors will use the
 debugger value as a throw tag instead of the tag that was not found.
 If an error was signaled by calling the Lisp function <code>signal</code>,
-the debugger's return value is returned as the value of <code>signal</code>.
+the debugger&rsquo;s return value is returned as the value of <code>signal</code>.
 </p></dd>
 </dl>
 
@@ -790,7 +790,7 @@ the debugger's return value is returned as the value of <code>signal</code>.
 provided for evaluating Lisp expressions interactively inside Emacs.  Both
 the expressions you evaluate and their output goes in the buffer.
 </p>
-<p>  The &lsquo;<samp>*scratch*</samp>&rsquo; buffer's major mode is Lisp Interaction mode, which
+<p>  The &lsquo;<samp>*scratch*</samp>&rsquo; buffer&rsquo;s major mode is Lisp Interaction mode, which
 is the same as Emacs-Lisp mode except for one command, &lt;LFD&gt;.  In
 Emacs-Lisp mode, &lt;LFD&gt; is an indentation command.  In Lisp
 Interaction mode, &lt;LFD&gt; is bound to <code>eval-print-last-sexp</code>.  This
@@ -953,7 +953,7 @@ A single-file package is an aggregate collection of thematically
 related but otherwise independent lisp files.  These files are bundled 
 together for download convenience and individual files may be deleted at
 will without any loss of functionality.  However, we would recommend
-that you follow this rule of thumb: &quot;When in doubt, don't delete&quot;.
+that you follow this rule of thumb: &quot;When in doubt, don&rsquo;t delete&quot;.
 </li></ul>
 
 <hr size="6">
@@ -1022,7 +1022,7 @@ hierarchy.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.4 Source Packages </h3>
-<p>Source packages contain all of the Package author's (where appropriate
+<p>Source packages contain all of the Package author&rsquo;s (where appropriate
 in regular packages) source code plus all of the files necessary to
 build distribution tarballs (Unix Tar format files, gzipped for space
 savings).
@@ -1110,7 +1110,7 @@ access it via the menus:
 idea to install all packages and not interfere with the wishes of your
 users.
 </p>
-<p>If you can't find which package provides the feature you require, try
+<p>If you can&rsquo;t find which package provides the feature you require, try
 using the <code>package-get-package-provider</code> function. Eg., if you know 
 that you need <code>thingatpt</code>, type:
 </p>
@@ -1143,7 +1143,7 @@ one of the methods above for installing the package you want.
 <p>There are three main ways to install packages:
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Sumo">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              All at once, using the 'Sumo Tarball'.
+<tr><td align="left" valign="top"><a href="#Sumo">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              All at once, using the &rsquo;Sumo Tarball&rsquo;.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Manually">&bull; Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using individual package tarballs.
 </td></tr>
@@ -1167,7 +1167,7 @@ Download the file: &lsquo;<tt>xemacs-sumo.tar.gz</tt>&rsquo;
 </p>
 <p>For an XEmacs compiled with Mule you also need: &lsquo;<tt>xemacs-mule-sumo.tar.gz</tt>&rsquo;
 </p>
-<p>N.B. They are called 'Sumo Tarballs' for good reason. They are
+<p>N.B. They are called &rsquo;Sumo Tarballs&rsquo; for good reason. They are
 currently about 19MB and 4.5MB (gzipped) respectively.
 </p>
 <p>Install them by:
@@ -1190,7 +1190,7 @@ have the form &lsquo;<tt>name-&lt;version&gt;-pkg.tar.gz</tt>&rsquo; and are gzi
 a fresh install it is sufficient to untar the file at the top of the
 package hierarchy. 
 </p>
-<p>Note: If you are upgrading packages already installed, it's best to
+<p>Note: If you are upgrading packages already installed, it&rsquo;s best to
 remove the old package first <a href="#Removing-Packages">Removing Packages</a>.
 </p>
 <p>For example if we are installing the &lsquo;<tt>xemacs-base</tt>&rsquo;
@@ -1287,7 +1287,7 @@ installed and is up to date.
 <p>From here, you can select or unselect packages for installation using
 the &lt;RET&gt; key, the <kbd>Mouse-2</kbd> button or selecting &quot;Select&quot; from
 the (Popup) Menu.
-Once you've finished selecting the packages, you can
+Once you&rsquo;ve finished selecting the packages, you can
 press the <kbd>x</kbd> key (or use the menu) to actually install the
 packages. Note that you will have to restart XEmacs for XEmacs to
 recognize any new packages.
@@ -1340,7 +1340,7 @@ ones that you have chosen to install and offer to select
 those packages also.
 </p>
 <p>For novices and gurus alike, this step can save your bacon.
-It's easy to forget to install a critical package.
+It&rsquo;s easy to forget to install a critical package.
 </p>
 </li><li>
 Download and install the packages.
@@ -1368,7 +1368,7 @@ everything. A good minimal set of packages for XEmacs-latin1 would be
 edit-utils, fsf-compat, mail-lib, net-utils, os-utils, prog-modes,
 text-modes, time
 </p>
-<p>If you are using the XEmacs package tools, don't forget to do:
+<p>If you are using the XEmacs package tools, don&rsquo;t forget to do:
 </p>
 <p>	Packages -&gt; Add Required
 </p>
@@ -1387,7 +1387,7 @@ new version. In order to facilitate removal each package contains an
 &lsquo;<tt>pgkinfo/MANIFEST.pkgname</tt>&rsquo; file which list all the files belonging
 to the package. 
 </p>
-<p>No need to panic, you don't have to go through the
+<p>No need to panic, you don&rsquo;t have to go through the
 &lsquo;<tt>pkinfo/MANIFEST.pkgname</tt>&rsquo; and manually delete the files.  Instead, use
 <code>M-x package-get-delete-package RET</code>.
 </p>
@@ -1529,13 +1529,13 @@ the top level of the CVS module, &lsquo;<tt>xemacs-packages</tt>&rsquo;, contain
 file, &lsquo;<tt>Local.rules.template</tt>&rsquo;.  Simply copy that to
 &lsquo;<tt>Local.rules</tt>&rsquo; and edit it to suit your needs.
 </p>
-<p>These are the variables in 'Local.rules' that you will need to
+<p>These are the variables in &rsquo;Local.rules&rsquo; that you will need to
 address. 
 </p>
 <dl compact="compact">
 <dt> <var>symlink =</var> </dt>
-<dd><p>Set this to 't' if you want to do a &quot;run in place&quot;.
-Setting this doesn't work well with 'make bindist'
+<dd><p>Set this to &rsquo;t&rsquo; if you want to do a &quot;run in place&quot;.
+Setting this doesn&rsquo;t work well with &rsquo;make bindist&rsquo;
 </p>
 </dd>
 <dt> <var>XEMACS_PACKAGES =</var></dt>
@@ -1557,11 +1557,11 @@ name, change this.
 </dd>
 <dt> <var>BUILD_WITHOUT_MULE =</var></dt>
 <dd><p>Building from CVS defaults to building the Mule
-packages.  Set this to 't' if you don't want/have Mule
+packages.  Set this to &rsquo;t&rsquo; if you don&rsquo;t want/have Mule
 </p>
 </dd>
 <dt> <var>MULE_PACKAGES =</var></dt>
-<dd><p>Same as for 'XEMACS_PACKAGES' except you list the Mule
+<dd><p>Same as for &rsquo;XEMACS_PACKAGES&rsquo; except you list the Mule
 packages you want to install here. eg:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">      MULE_PACKAGES = mule-packages/mule-base mule-packages/skk
 </pre></td></tr></table>
@@ -1569,15 +1569,15 @@ packages you want to install here. eg:
 </dd>
 <dt> <var>MULE_STAGING = ${XEMACS_PACKAGES_BASE}/../Mule-Packages</var></dt>
 <dd><p>Set this to where you want Mule packages installed
-to.  Note:  'make bindist' does not use this variable.
+to.  Note:  &rsquo;make bindist&rsquo; does not use this variable.
 </p>
 </dd>
 <dt> <var>XEMACS = xemacs</var></dt>
-<dd><p>If your XEmacs isn't in your path, change this.
+<dd><p>If your XEmacs isn&rsquo;t in your path, change this.
 </p>
 </dd>
 <dt> <var>XEMACS_NATIVE_NT =</var></dt>
-<dd><p>Set this to 't' if you are building on WinNT.
+<dd><p>Set this to &rsquo;t&rsquo; if you are building on WinNT.
 </p>
 </dd>
 <dt> <var>INSTALL = install -c</var></dt>
@@ -1660,7 +1660,7 @@ as regular packages.
 &lsquo;<tt>Imakefile</tt>&rsquo; or an <code>automake</code> file: the complexity is hidden in
 generic rules files, in this case the &lsquo;<tt>XEmacs.rules</tt>&rsquo; include file
 in the top directory of the packages hierarchy.  Although a number of
-facilities are available for complex libraries, most simple packages'
+facilities are available for complex libraries, most simple packages&rsquo;
 &lsquo;<tt>Makefile</tt>&rsquo;s contain a copyright notice, a few variable definitions,
 an include for &lsquo;<tt>XEmacs.rules</tt>&rsquo;, and a couple of standard targets.
 </p>
@@ -1741,8 +1741,8 @@ or a future revision of this manual for details.
 <a name="SEC282"></a>
 <h2 class="heading"> Available Packages: </h2>
 <p>This section lists the Lisp packages that are currently available from
-xemacs.org and it's mirrors.  If a particular package that you are
-looking for isn't here, please send a message to the
+xemacs.org and it&rsquo;s mirrors.  If a particular package that you are
+looking for isn&rsquo;t here, please send a message to the
 <a href="mailto:xemacs-beta@xemacs.org">XEmacs Beta list</a>.
 </p>
 <p>This data is up to date as of September 22, 2002.
@@ -1836,7 +1836,7 @@ files in a directory.
 </dd>
 <dt> &lsquo;<tt>edit-utils</tt>&rsquo;</dt>
 <dd><p>Single file lisp packages for various XEmacs goodies.  Load this and
-weed out the junk you don't want.
+weed out the junk you don&rsquo;t want.
 </p>
 </dd>
 <dt> &lsquo;<tt>edt</tt>&rsquo;</dt>
@@ -1960,7 +1960,7 @@ weed out the junk you don't want.
 </p>
 </dd>
 <dt> &lsquo;<tt>mine</tt>&rsquo;</dt>
-<dd><p>Elisp implementation of the game 'Minehunt'.
+<dd><p>Elisp implementation of the game &rsquo;Minehunt&rsquo;.
 </p>
 </dd>
 <dt> &lsquo;<tt>misc-games</tt>&rsquo;</dt>
@@ -2028,7 +2028,7 @@ this, you should install needed DTDs yourself.
 </p>
 </dd>
 <dt> &lsquo;<tt>rmail</tt>&rsquo;</dt>
-<dd><p>An obsolete Emacs mailer.  If you do not already use it don't start.
+<dd><p>An obsolete Emacs mailer.  If you do not already use it don&rsquo;t start.
 </p>
 </dd>
 <dt> &lsquo;<tt>ruby-modes</tt>&rsquo;</dt>
@@ -2226,7 +2226,7 @@ screens (Japanese).
 </p>
 </dd>
 <dt> &lsquo;<tt>lookup</tt>&rsquo;</dt>
-<dd><p>Dictionary support. (This isn't an English dictionary program)
+<dd><p>Dictionary support. (This isn&rsquo;t an English dictionary program)
 </p>
 </dd>
 <dt> &lsquo;<tt>mule-base</tt>&rsquo;</dt>

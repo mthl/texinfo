@@ -72,7 +72,7 @@ certain command, you can probably skip everything here.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC2">1.1 What is CVS?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                What you can do with <small>CVS</small>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC3">1.2 What is CVS not?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Problems <small>CVS</small> doesn't try to solve
+<tr><td align="left" valign="top"><a href="#SEC3">1.2 What is CVS not?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Problems <small>CVS</small> doesn&rsquo;t try to solve
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC4">1.3 A sample session</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            A tour of basic <small>CVS</small> usage
 </td></tr>
@@ -119,7 +119,7 @@ versions.
 </p>
 <p><small>CVS</small> also helps you if you are part of a group of people working
 on the same project.  It is all too easy to overwrite
-each others' changes unless you are extremely careful.
+each others&rsquo; changes unless you are extremely careful.
 Some editors, like <small>GNU</small> Emacs, try to make sure that
 the same file is never modified by two people at the
 same time.  Unfortunately, if someone is using another
@@ -246,7 +246,7 @@ in conjunction with <small>CVS</small>.
 <p>Your managers and project leaders are expected to talk
 to you frequently enough to make certain you are aware
 of schedules, merge points, branch names and release
-dates.  If they don't, <small>CVS</small> can't help.
+dates.  If they don&rsquo;t, <small>CVS</small> can&rsquo;t help.
 </p>
 <p><small>CVS</small> is an instrument for making sources dance to
 your tune.  But you are the piper and the composer.  No
@@ -275,7 +275,7 @@ non-textual or distributed conflicts in program logic.
 <code>X</code> defined in file &lsquo;<tt>A</tt>&rsquo;.  At the same time,
 someone edits file &lsquo;<tt>B</tt>&rsquo;, adding new calls to
 function <code>X</code> using the old arguments.  You are
-outside the realm of <small>CVS</small>'s competence.
+outside the realm of <small>CVS</small>&rsquo;s competence.
 </p>
 <p>Acquire the habit of reading specs and talking to your
 peers.
@@ -318,7 +318,7 @@ nothing falls through the cracks.
 <dt> <small>CVS</small> is not an automated testing program</dt>
 <dd>
 <p>It should be possible to enforce mandatory use of a
-testsuite using the <code>commitinfo</code> file.  I haven't
+testsuite using the <code>commitinfo</code> file.  I haven&rsquo;t
 heard a lot about projects trying to do that or whether
 there are subtle gotchas, however.
 </p>
@@ -329,7 +329,7 @@ there are subtle gotchas, however.
 releases go through various steps, with various
 approvals as needed.  Generally, one can accomplish
 this with <small>CVS</small> but it might be a little more work.
-In some cases you'll want to use the &lsquo;<tt>commitinfo</tt>&rsquo;,
+In some cases you&rsquo;ll want to use the &lsquo;<tt>commitinfo</tt>&rsquo;,
 &lsquo;<tt>loginfo</tt>&rsquo;, &lsquo;<tt>rcsinfo</tt>&rsquo;, or &lsquo;<tt>verifymsg</tt>&rsquo;
 files, to require that certain steps be performed
 before cvs will allow a checkin.  Also consider whether
@@ -362,7 +362,7 @@ only once they have been proven.
 <h2 class="section"> 1.3 A sample session </h2>
 
 
-<p>As a way of introducing <small>CVS</small>, we'll go through a
+<p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
 centralized <em>repository</em> (see section <a href="cvs_2.html#SEC9">The Repository</a>); this
@@ -485,7 +485,7 @@ files which are modified.  For the <small>CVS</small> client,
 this list is based on comparing the modification time
 of the file against the modification time that the file
 had when it was last gotten or updated.  Therefore, if
-a file's modification time has changed but its contents
+a file&rsquo;s modification time has changed but its contents
 have not, it will show up as modified.  The simplest
 way to handle this is simply not to worry about it&mdash;if
 you proceed with the commit <small>CVS</small> will detect that

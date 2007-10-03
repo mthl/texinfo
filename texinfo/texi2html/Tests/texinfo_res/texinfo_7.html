@@ -181,7 +181,7 @@ file with three chapters, each of which contains two sections.
 <p>The &ldquo;root&rdquo; is at the top of the diagram and the &ldquo;leaves&rdquo; are at the
 bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
-called the `Top' node, and `Up' node pointers carry you closer to the
+called the &lsquo;Top&rsquo; node, and &lsquo;Up&rsquo; node pointers carry you closer to the
 root.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">                          Top
@@ -203,20 +203,20 @@ root.
 </pre></td></tr></table>
 
 <p>This <code>@node</code> line says that the name of this node is &ldquo;Chapter
-2&rdquo;, the name of the `Next' node is &ldquo;Chapter 3&rdquo;, the name of the
-`Previous' node is &ldquo;Chapter 1&rdquo;, and the name of the `Up' node is
+2&rdquo;, the name of the &lsquo;Next&rsquo; node is &ldquo;Chapter 3&rdquo;, the name of the
+&lsquo;Previous&rsquo; node is &ldquo;Chapter 1&rdquo;, and the name of the &lsquo;Up&rsquo; node is
 &ldquo;Top&rdquo;.  You can omit writing out these node names if your document is
 hierarchically organized (see section <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>), but the
 pointer relationships still obtain.
 </p>
-<blockquote><p><strong>Please Note:</strong> `Next' refers to the next node at the same
+<blockquote><p><strong>Please Note:</strong> &lsquo;Next&rsquo; refers to the next node at the same
 hierarchical level in the manual, not necessarily to the next node
 within the Texinfo file.  In the Texinfo file, the subsequent node may
 be at a lower level&mdash;a section-level node most often follows a
-chapter-level node, for example.  `Next' and `Previous' refer to nodes
-at the <em>same</em> hierarchical level.  (The `Top' node contains the
-exception to this rule.  Since the `Top' node is the only node at that
-level, `Next' refers to the first following node, which is almost always
+chapter-level node, for example.  &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; refer to nodes
+at the <em>same</em> hierarchical level.  (The &lsquo;Top&rsquo; node contains the
+exception to this rule.  Since the &lsquo;Top&rsquo; node is the only node at that
+level, &lsquo;Next&rsquo; refers to the first following node, which is almost always
 a chapter or chapter-level node.)
 </p></blockquote>
 
@@ -236,12 +236,12 @@ before the beginning of Section 2.1, like this:
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
 
-<p>In Info format, the `Next' and `Previous' pointers of a node usually
+<p>In Info format, the &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers of a node usually
 lead to other nodes at the same level&mdash;from chapter to chapter or from
-section to section (sometimes, as shown, the `Previous' pointer points
-up); an `Up' pointer usually leads to a node at the level above (closer
-to the `Top' node); and a `Menu' leads to nodes at a level below (closer
-to `leaves').  (A cross reference can point to a node at any level;
+section to section (sometimes, as shown, the &lsquo;Previous&rsquo; pointer points
+up); an &lsquo;Up&rsquo; pointer usually leads to a node at the level above (closer
+to the &lsquo;Top&rsquo; node); and a &lsquo;Menu&rsquo; leads to nodes at a level below (closer
+to &lsquo;leaves&rsquo;).  (A cross reference can point to a node at any level;
 see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 </p>
 <p>Usually, an <code>@node</code> command and a chapter structuring command are
@@ -301,12 +301,12 @@ subsubsection.
 line, and follow it with up to four arguments, separated by commas, on
 the rest of the same line.  The first argument is required; it is the
 name of this node.  The subsequent arguments are the names of the
-`Next', `Previous', and `Up' pointers, in that order, and may be omitted
+&lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers, in that order, and may be omitted
 if your Texinfo document is hierarchically organized (see section <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>).
 </p>
 <p>You may insert spaces before each name if you wish; the spaces are
 ignored.  You must write the name of the node and the names of the
-`Next', `Previous', and `Up' pointers all on the same line.  Otherwise,
+&lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers all on the same line.  Otherwise,
 the formatters fail.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for more information
 about nodes in Info.)
 </p>
@@ -335,7 +335,7 @@ see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC92">6.3.4 <code>@node</code> Line Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Keep names unique, without @-commands.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC93">6.3.5 The First Node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  How to write a `Top' node.
+<tr><td align="left" valign="top"><a href="#SEC93">6.3.5 The First Node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  How to write a &lsquo;Top&rsquo; node.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC94">6.3.6 The <code>@top</code> Sectioning Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to use the <code>@top</code> command.
 </td></tr>
@@ -366,20 +366,20 @@ see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 <p>The name of a node identifies the node.  The pointers enable
 you to reach other nodes and consist of the names of those nodes.
 </p>
-<p>Normally, a node's `Up' pointer contains the name of the node whose menu
-mentions that node.  The node's `Next' pointer contains the name of the
-node that follows that node in that menu and its `Previous' pointer
+<p>Normally, a node&rsquo;s &lsquo;Up&rsquo; pointer contains the name of the node whose menu
+mentions that node.  The node&rsquo;s &lsquo;Next&rsquo; pointer contains the name of the
+node that follows that node in that menu and its &lsquo;Previous&rsquo; pointer
 contains the name of the node that precedes it in that menu.  When a
-node's `Previous' node is the same as its `Up' node, both node pointers
+node&rsquo;s &lsquo;Previous&rsquo; node is the same as its &lsquo;Up&rsquo; node, both node pointers
 name the same node.
 </p>
-<p>Usually, the first node of a Texinfo file is the `Top' node, and its
-`Up' and `Previous' pointers point to the &lsquo;<tt>dir</tt>&rsquo; file, which
+<p>Usually, the first node of a Texinfo file is the &lsquo;Top&rsquo; node, and its
+&lsquo;Up&rsquo; and &lsquo;Previous&rsquo; pointers point to the &lsquo;<tt>dir</tt>&rsquo; file, which
 contains the main menu for all of Info.
 </p>
-<p>The `Top' node itself contains the main or master menu for the manual.
+<p>The &lsquo;Top&rsquo; node itself contains the main or master menu for the manual.
 Also, it is helpful to include a brief description of the manual in the
-`Top' node.  See section <a href="#SEC93">The First Node</a>, for information on how to write the
+&lsquo;Top&rsquo; node.  See section <a href="#SEC93">The First Node</a>, for information on how to write the
 first node of a Texinfo file.
 </p>
 <p>Even when you explicitly specify all pointers, that does not mean you
@@ -422,7 +422,7 @@ provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
 insert node pointers into the Info file it creates.  (See section <a href="texinfo_3.html#SEC21">Using Texinfo Mode</a>, and <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>.)
 </p>
-<p>Alternatively, you can insert the `Next', `Previous', and `Up'
+<p>Alternatively, you can insert the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
 pointers yourself.  If you do this, you may find it helpful to use the
 Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
 &lsquo;<samp>@node</samp>&rsquo; and a comment line listing the names of the pointers in
@@ -430,8 +430,8 @@ their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
 if you are not familiar with Texinfo.
 </p>
-<p>The template for a fully-written-out node line with `Next', `Previous',
-and `Up' pointers looks like this:
+<p>The template for a fully-written-out node line with &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;,
+and &lsquo;Up&rsquo; pointers looks like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
@@ -611,7 +611,7 @@ Case is significant.
 
 <p>The first node of a Texinfo file is the <em>Top</em> node, except in an
 included file (see section <a href="texinfo_25.html#SEC297">Include Files</a>).  The Top node should contain a
-short summary, copying permissions, and a master menu.  See section <a href="texinfo_4.html#SEC59">The `Top' Node and Master Menu</a>, for more information on the Top node contents and examples.
+short summary, copying permissions, and a master menu.  See section <a href="texinfo_4.html#SEC59">The &lsquo;Top&rsquo; Node and Master Menu</a>, for more information on the Top node contents and examples.
 </p>
 <p>Here is a description of the node pointers to be used in the Top node:
 </p>
@@ -620,7 +620,7 @@ short summary, copying permissions, and a master menu.  See section <a href="tex
 <a name="IDX106"></a>
 <a name="IDX107"></a>
 The Top node (which must be named &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;) should have
-as its `Up' node the name of a node in another file, where there is a
+as its &lsquo;Up&rsquo; node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
 <p>Usually, all Info files are installed in the same Info directory tree;
@@ -630,7 +630,7 @@ file, which contains the main menu for the Info system as a whole.
 </p>
 </li><li>
 <a name="IDX108"></a>
-On the other hand, do not define the `Previous' node of the Top node to
+On the other hand, do not define the &lsquo;Previous&rsquo; node of the Top node to
 be &lsquo;<samp>(dir)</samp>&rsquo;, as it causes confusing behavior for users: if you are
 in the Top node and hits &lt;DEL&gt; to go backwards, you wind up in the
 middle of the some other entry in the &lsquo;<tt>dir</tt>&rsquo; file, which has nothing
@@ -638,7 +638,7 @@ to do with what you were reading.
 
 </li><li>
 <a name="IDX109"></a>
-The `Next' node of the Top node should be the first chapter in your
+The &lsquo;Next&rsquo; node of the Top node should be the first chapter in your
 document.
 
 </li></ul>
@@ -679,7 +679,7 @@ define them.  This is recommended.  Thus:
 
 <p>A special sectioning command, <code>@top</code> should be used with the
 <code>@node Top</code> line.  The <code>@top</code> sectioning command tells
-<code>makeinfo</code> that it marks the `Top' node in the file.  It provides
+<code>makeinfo</code> that it marks the &lsquo;Top&rsquo; node in the file.  It provides
 the information that <code>makeinfo</code> needs to insert node pointers
 automatically.  Write the <code>@top</code> command at the beginning of the
 line immediately following the <code>@node Top</code> line.  Write the title
@@ -730,18 +730,18 @@ create or update pointers and menus.
 node pointers for a hierarchically organized file.
 </p>
 <p>When you take advantage of this feature, you do not need to write the
-`Next', `Previous', and `Up' pointers after the name of a node.
+&lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers after the name of a node.
 However, you must write a sectioning command, such as <code>@chapter</code>
 or <code>@section</code>, on the line immediately following each truncated
 <code>@node</code> line (except that comment lines may intervene).
 </p>
-<p>In addition, you must follow the `Top' <code>@node</code> line with a line
-beginning with <code>@top</code> to mark the `Top' node in the
+<p>In addition, you must follow the &lsquo;Top&rsquo; <code>@node</code> line with a line
+beginning with <code>@top</code> to mark the &lsquo;Top&rsquo; node in the
 file.  See section <a href="texinfo_6.html#SEC75"><code>@top</code></a>.
 </p>
-<p>Finally, you must write the name of each node (except for the `Top'
+<p>Finally, you must write the name of each node (except for the &lsquo;Top&rsquo;
 node) in a menu that is one or more hierarchical levels above the
-node's hierarchical level.
+node&rsquo;s hierarchical level.
 </p>
 <p>This node pointer insertion feature in <code>makeinfo</code> relieves you from
 the need to update menus and pointers manually or with Texinfo mode
@@ -794,13 +794,13 @@ See [the spot], page 1.
 </pre></td></tr></table>
 
 <p>As you can see, the <code>@anchor</code> command itself produces no output.
-This example defines an anchor `x-spot' just before the word `spot'.
+This example defines an anchor &lsquo;x-spot&rsquo; just before the word &lsquo;spot&rsquo;.
 You can refer to it later with an <code>@xref</code> or other cross-reference
 command, as shown.  See section <a href="texinfo_9.html#SEC104">Cross References</a>, for details on the
 cross-reference commands.
 </p>
 <p>It is best to put <code>@anchor</code> commands just before the position you
-wish to refer to; that way, the reader's eye is led on to the correct
+wish to refer to; that way, the reader&rsquo;s eye is led on to the correct
 text when they jump to the anchor.  You can put the <code>@anchor</code>
 command on a line by itself if that helps readability of the source.
 Spaces are always ignored after <code>@anchor</code>.
@@ -808,7 +808,7 @@ Spaces are always ignored after <code>@anchor</code>.
 <p>Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the <code>goto-node</code>
 command in standalone Info takes either an anchor name or a node name as
-an argument.  (See <a href="../info-stnd/goto_002dnode.html#goto_002dnode">(info-stnd)goto-node</a> section `goto-node' in <cite>GNU Info</cite>.)
+an argument.  (See <a href="../info-stnd/goto_002dnode.html#goto_002dnode">(info-stnd)goto-node</a> section &lsquo;goto-node&rsquo; in <cite>GNU Info</cite>.)
 </p>
 
 <hr size="6">

@@ -154,11 +154,11 @@ chapter.  This makes it easy to use the regular node and menu creating
 and updating commands to create the node pointers and menus within the
 included file.  However, the simple Emacs node and menu creating and
 updating commands do not work with multiple Texinfo files.  Thus you
-cannot use these commands to fill in the `Next', `Previous', and `Up'
+cannot use these commands to fill in the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
 pointers of the <code>@node</code> line that begins the included file.  Also,
 you cannot use the regular commands to create a master menu for the
-whole file.  Either you must insert the menus and the `Next',
-`Previous', and `Up' pointers by hand, or you must use the GNU Emacs
+whole file.  Either you must insert the menus and the &lsquo;Next&rsquo;,
+&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers by hand, or you must use the GNU Emacs
 Texinfo mode command, <code>texinfo-multiple-files-update</code>, that is
 designed for <code>@include</code> files.
 </p>
@@ -184,7 +184,7 @@ designed for <code>@include</code> files.
 <h2 class="section"> D.2 <code>texinfo-multiple-files-update</code> </h2>
 
 <p>GNU Emacs Texinfo mode provides the <code>texinfo-multiple-files-update</code>
-command.  This command creates or updates `Next', `Previous', and `Up'
+command.  This command creates or updates &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
 pointers of included files as well as those in the outer or overall
 Texinfo file, and it creates or updates a main menu in the outer file.
 Depending whether you call it with optional arguments, the command
@@ -197,12 +197,12 @@ included files or all of them:
 </p>
 <ul class="toc">
 <li>-
-Create or update the `Next', `Previous', and `Up' pointers of the
+Create or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of the
 first <code>@node</code> line in each file included in an outer or overall
 Texinfo file.
 
 </li><li>-
-Create or update the `Top' level node pointers of the outer or
+Create or update the &lsquo;Top&rsquo; level node pointers of the outer or
 overall file.
 
 </li><li>-
@@ -219,7 +219,7 @@ Create or update pointers in the first <code>@node</code> line in each
 included file.
 
 </li><li>-
-Create or update the `Top' level node pointers of the outer file.
+Create or update the &lsquo;Top&rsquo; level node pointers of the outer file.
 
 </li><li>-
 Create and insert a master menu in the outer file.  The master menu
@@ -232,7 +232,7 @@ is made from all the menus in all the included files.
 </p>
 <ul class="toc">
 <li>-
-Create or update <strong>all</strong> the `Next', `Previous', and `Up' pointers
+Create or update <strong>all</strong> the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers
 of all the included files.
 
 </li><li>-
@@ -240,7 +240,7 @@ Create or update <strong>all</strong> the menus of all the included
 files.
 
 </li><li>-
-Create or update the `Top' level node pointers of the outer or
+Create or update the &lsquo;Top&rsquo; level node pointers of the outer or
 overall file.
 
 </li><li>-
@@ -296,8 +296,8 @@ Usually, each is an <code>@chapter</code>, an <code>@appendix</code>, or an
 <code>@unnumbered</code> node.  Thus, normally, each included file contains
 one, and only one, chapter or equivalent-level node.
 </p>
-<p>The outer file should contain only <em>one</em> node, the `Top' node.  It
-should <em>not</em> contain any nodes besides the single `Top' node.  The
+<p>The outer file should contain only <em>one</em> node, the &lsquo;Top&rsquo; node.  It
+should <em>not</em> contain any nodes besides the single &lsquo;Top&rsquo; node.  The
 <code>texinfo-multiple-files-update</code> command will not process
 them.
 </p>
@@ -414,7 +414,7 @@ name as well as the node name. (See section <a href="texinfo_8.html#SEC103">Refe
 <p>Include files were designed primarily as a way to create a single,
 large printed manual out of several smaller Info files.  In a printed
 manual, all the references were within the same document, so TeX
-could automatically determine the references' page numbers.  The Info
+could automatically determine the references&rsquo; page numbers.  The Info
 formatting commands used include files only for creating joint
 indices; each of the individual Texinfo files had to be formatted for
 Info individually.  (Each, therefore, required its own

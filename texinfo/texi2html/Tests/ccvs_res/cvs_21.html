@@ -134,8 +134,8 @@ in &lsquo;<tt>inetd.conf</tt>&rsquo;.  See <a href="cvs_2.html#SEC29">Direct con
 <dd><p>This message indicates that you removed a file, and
 someone else modified it.  To resolve the conflict,
 first run &lsquo;<samp>cvs add <var>file</var></samp>&rsquo;.  If desired, look
-at the other party's modification to decide whether you
-still want to remove it.  If you don't want to remove
+at the other party&rsquo;s modification to decide whether you
+still want to remove it.  If you don&rsquo;t want to remove
 it, stop here.  If you do want to remove it, proceed
 with &lsquo;<samp>cvs remove <var>file</var></samp>&rsquo; and commit your
 removal.
@@ -146,7 +146,7 @@ removal.
 </pre></td></tr></table>
 <p>This message has been happening in a non-reproducible,
 occasional way when we run the client/server testsuite,
-both on Red Hat Linux 3.0.3 and 4.1.  We haven't been
+both on Red Hat Linux 3.0.3 and 4.1.  We haven&rsquo;t been
 able to figure out what causes it, nor is it known
 whether it is specific to linux (or even to this
 particular machine!).  If the problem does occur on
@@ -212,7 +212,7 @@ message which <small>CVS</small> 1.9 will print if you are
 running the <small>CVS</small> client and it is having trouble
 connecting to the server.  Current versions of <small>CVS</small>
 should print a much more specific error message.  If
-you get this message when you didn't mean to run the
+you get this message when you didn&rsquo;t mean to run the
 client at all, you probably forgot to specify
 <code>:local:</code>, as described in <a href="cvs_2.html#SEC9">The Repository</a>.
 </p>
@@ -278,7 +278,7 @@ has no effect on what <small>CVS</small> does.
 <dd><p>There is a known bug in the server for <small>CVS</small> 1.9.18
 and older which can cause this.  For me, this was
 reproducible if I used the &lsquo;<samp>-t</samp>&rsquo; global option.  It
-was fixed by Andy Piper's 14 Nov 1997 change to
+was fixed by Andy Piper&rsquo;s 14 Nov 1997 change to
 src/filesubr.c, if anyone is curious.
 If you see the message,
 you probably can just retry the operation which failed,
@@ -339,7 +339,7 @@ set to a non-empty value and re-create the RCS file.
 </p>
 </dd>
 <dt> <code>cvs [checkout aborted]: no such tag <var>tag</var></code></dt>
-<dd><p>This message means that <small>CVS</small> isn't familiar with
+<dd><p>This message means that <small>CVS</small> isn&rsquo;t familiar with
 the tag <var>tag</var>.  Usually this means that you have
 mistyped a tag name; however there are (relatively
 obscure) cases in which <small>CVS</small> will require you to
@@ -374,8 +374,8 @@ later; current versions of <small>CVS</small> do not run <small>RCS</small> prog
 </dd>
 <dt> <code>cvs [server aborted]: received broken pipe signal</code></dt>
 <dd><p>This message seems to be caused by a hard-to-track-down
-bug in <small>CVS</small> or the systems it runs on (we don't
-know&mdash;we haven't tracked it down yet!).  It seems to
+bug in <small>CVS</small> or the systems it runs on (we don&rsquo;t
+know&mdash;we haven&rsquo;t tracked it down yet!).  It seems to
 happen only after a <small>CVS</small> command has completed, and
 you should be able to just ignore the message.
 However, if you have discovered information concerning its
@@ -407,7 +407,7 @@ particular, the &lsquo;<tt>log.pl</tt>&rsquo; from <small>CVS</small> 1.3 and
 older expects the logfile as an argument whereas the
 &lsquo;<tt>log.pl</tt>&rsquo; from <small>CVS</small> 1.5 and newer expects the
 logfile to be specified with a &lsquo;<samp>-f</samp>&rsquo; option.  Of
-course, if you don't need &lsquo;<tt>log.pl</tt>&rsquo; you can just
+course, if you don&rsquo;t need &lsquo;<tt>log.pl</tt>&rsquo; you can just
 comment it out of &lsquo;<tt>loginfo</tt>&rsquo;.
 </p>
 </dd>
@@ -530,13 +530,13 @@ access method you are using.
 <dt> <code>:ext:</code></dt>
 <dd><p>Try running the rsh program from the command line.  For
 example: &quot;rsh servername cvs -v&quot; should print <small>CVS</small>
-version information.  If this doesn't work, you need to
+version information.  If this doesn&rsquo;t work, you need to
 fix it before you can worry about <small>CVS</small> problems.
 </p>
 <a name="IDX319"></a>
 </dd>
 <dt> <code>:server:</code></dt>
-<dd><p>You don't need a command line rsh program to use this
+<dd><p>You don&rsquo;t need a command line rsh program to use this
 access method, but if you have an rsh program around,
 it may be useful as a debugging tool.  Follow the
 directions given for :ext:.
@@ -545,7 +545,7 @@ directions given for :ext:.
 </dd>
 <dt> <code>:pserver:</code></dt>
 <dd><p>Errors along the lines of &quot;connection refused&quot; typically indicate
-that inetd isn't even listening for connections on port 2401
+that inetd isn&rsquo;t even listening for connections on port 2401
 whereas errors like &quot;connection reset by peer&quot;,
 &quot;received broken pipe signal&quot;, &quot;recv() from server: EOF&quot;,
 or &quot;end of file from server&quot;
@@ -573,9 +573,9 @@ correctly, it will respond with
 ...
 </pre></td></tr></table>
 
-<p>then you're missing the &lsquo;<samp>pserver</samp>&rsquo; command at the end of the
+<p>then you&rsquo;re missing the &lsquo;<samp>pserver</samp>&rsquo; command at the end of the
 line in &lsquo;<tt>inetd.conf</tt>&rsquo;; check to make sure that the entire command
-is on one line and that it's complete.
+is on one line and that it&rsquo;s complete.
 </p>
 <p>Likewise, if you get something like:
 </p>
@@ -586,7 +586,7 @@ CVS commands are:
 ...
 </pre></td></tr></table>
 
-<p>then you've misspelled &lsquo;<samp>pserver</samp>&rsquo; in some way.  If it isn't
+<p>then you&rsquo;ve misspelled &lsquo;<samp>pserver</samp>&rsquo; in some way.  If it isn&rsquo;t
 obvious, check for invisible control characters (particularly
 carriage returns) in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 </p>
@@ -600,12 +600,12 @@ echo program instead of cvs.  For example:
 <p>After making that change and instructing inetd to
 re-read its configuration file, &quot;telnet servername
 2401&quot; should show you the text hello and then the
-server should close the connection.  If this doesn't
+server should close the connection.  If this doesn&rsquo;t
 work, you need to fix it before you can worry about
 <small>CVS</small> problems.
 </p>
 <p>On AIX systems, the system will often have its own
-program trying to use port 2401.  This is AIX's problem
+program trying to use port 2401.  This is AIX&rsquo;s problem
 in the sense that port 2401 is registered for use with
 <small>CVS</small>.  I hear that there is an AIX patch available
 to address this problem.
@@ -620,7 +620,7 @@ documentation for more information.
 cvs [server aborted]: can't chdir(/root): Permission denied
 </pre></td></tr></table>
 
-<p>then you probably haven't specified &lsquo;<samp>-f</samp>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;.
+<p>then you probably haven&rsquo;t specified &lsquo;<samp>-f</samp>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by
 your system setting the <code>$HOME</code> environment variable
 for programs being run by inetd.  In this case, you can either
@@ -628,8 +628,8 @@ have inetd run a shell script that unsets <code>$HOME</code> and then runs
 <small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine
 environment.)
 </p>
-<p>If you can connect successfully for a while but then can't,
-you've probably hit inetd's rate limit.
+<p>If you can connect successfully for a while but then can&rsquo;t,
+you&rsquo;ve probably hit inetd&rsquo;s rate limit.
 (If inetd receives too many requests for the same service
 in a short period of time, it assumes that something is wrong
 and temporarily disables the service.)
@@ -677,7 +677,7 @@ or &lsquo;<tt>C:\cvs</tt>&rsquo;.
 If you are running <small>CVS</small> 1.9.18 or older, and
 <code>cvs update</code> finds a conflict and tries to
 merge, as described in <a href="cvs_10.html#SEC86">Conflicts example</a>, but
-doesn't tell you there were conflicts, then you may
+doesn&rsquo;t tell you there were conflicts, then you may
 have an old version of <small>RCS</small>.  The easiest solution
 probably is to upgrade to a current version of
 <small>CVS</small>, which does not rely on external <small>RCS</small>

@@ -131,7 +131,7 @@ file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
 &lsquo;<tt>/home/bob/info/info-test</tt>&rsquo; file as a menu entry in the
 &lsquo;<tt>/home/bob/info/dir</tt>&rsquo; file.  Emacs does the merging only when
 <kbd>M-x info</kbd> is first run, so if you want to set
-<code>Info-directory-list</code> in an Emacs session where you've already run
+<code>Info-directory-list</code> in an Emacs session where you&rsquo;ve already run
 <code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
 to recompose the &lsquo;<tt>dir</tt>&rsquo; file.
 </p>
@@ -172,7 +172,7 @@ In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DO
 </li></ul>
 
 <p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
-<code>INFOPATH</code> environment variable to initialize the value of Emacs's
+<code>INFOPATH</code> environment variable to initialize the value of Emacs&rsquo;s
 own <code>Info-directory-list</code> variable.  The stand-alone Info reader
 merges any files named &lsquo;<tt>dir</tt>&rsquo; in any directory listed in the
 <code>INFOPATH</code> variable into a single menu presented to you in the node
@@ -194,7 +194,7 @@ Leading or doubled colons are not treated specially.
 </p>
 <a name="IDX417"></a>
 <p>When you create your own &lsquo;<tt>dir</tt>&rsquo; file for use with
-<code>Info-directory-list</code> or <code>INFOPATH</code>, it's easiest to start by
+<code>Info-directory-list</code> or <code>INFOPATH</code>, it&rsquo;s easiest to start by
 copying an existing &lsquo;<tt>dir</tt>&rsquo; file and replace all the text after the
 &lsquo;<samp>* Menu:</samp>&rsquo; with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.

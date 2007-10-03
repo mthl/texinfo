@@ -536,33 +536,33 @@ really exist.  Here is a complete list of what is checked:
 </p>
 <ol>
 <li>
-If a `Next', `Previous', or `Up' node reference is a reference to a
+If a &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, or &lsquo;Up&rsquo; node reference is a reference to a
 node in the current file and is not an external reference such as to
 &lsquo;<tt>(dir)</tt>&rsquo;, then the referenced node must exist.
 
 </li><li>
-In every node, if the `Previous' node is different from the `Up' node,
-then the node pointed to by the `Previous' field must have a `Next'
+In every node, if the &lsquo;Previous&rsquo; node is different from the &lsquo;Up&rsquo; node,
+then the node pointed to by the &lsquo;Previous&rsquo; field must have a &lsquo;Next&rsquo;
 field which points back to this node.
 
 </li><li>
-Every node except the `Top' node must have an `Up' pointer.
+Every node except the &lsquo;Top&rsquo; node must have an &lsquo;Up&rsquo; pointer.
 
 </li><li>
-The node referenced by an `Up' pointer must itself reference the current
-node through a menu item, unless the node referenced by `Up'
-has the form `(<var>file</var>)'.
+The node referenced by an &lsquo;Up&rsquo; pointer must itself reference the current
+node through a menu item, unless the node referenced by &lsquo;Up&rsquo;
+has the form &lsquo;(<var>file</var>)&rsquo;.
 
 </li><li>
-If the `Next' reference of a node is not the same as the `Next' reference
-of the `Up' reference, then the node referenced by the `Next' pointer
-must have a `Previous' pointer that points back to the current node.
+If the &lsquo;Next&rsquo; reference of a node is not the same as the &lsquo;Next&rsquo; reference
+of the &lsquo;Up&rsquo; reference, then the node referenced by the &lsquo;Next&rsquo; pointer
+must have a &lsquo;Previous&rsquo; pointer that points back to the current node.
 This rule allows the last node in a section to point to the first node
 of the next chapter.
 
 </li><li>
-Every node except `Top' should be referenced by at least one other node,
-either via the `Previous' or `Next' links, or via a menu or a
+Every node except &lsquo;Top&rsquo; should be referenced by at least one other node,
+either via the &lsquo;Previous&rsquo; or &lsquo;Next&rsquo; links, or via a menu or a
 cross-reference.
 </li></ol>
 
@@ -666,7 +666,7 @@ the temporary buffer.
 <p>You can parse the error messages by typing <kbd>C-x `</kbd>
 (<code>next-error</code>).  This causes Emacs to go to and position the
 cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
-caused the error.  See <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
+caused the error.  See <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section &lsquo;Running <code>make</code> or Compilers Generally&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
 information about using the <code>next-error</code> command.
 </p>
 <p>In addition, you can kill the shell in which the <code>makeinfo</code>
@@ -705,9 +705,9 @@ variable in your &lsquo;<tt>.emacs</tt>&rsquo; initialization file.
 </pre></td></tr></table>
 
 <p>For more information, see<br>
-<a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
+<a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section &lsquo;Examining and Setting Variables&rsquo; in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section &lsquo;Init File&rsquo; in <cite>The GNU Emacs Manual</cite>, and<br>
 <a href="#SEC264">Options for <code>makeinfo</code></a>.
 </p>
 <hr size="6">
@@ -787,7 +787,7 @@ provides better error checking (see section <a href="#SEC266">Running <code>make
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
+including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">(emacs)Command Switches</a> section &lsquo;Command Line Switches and Arguments&rsquo; in <cite>The GNU Emacs Manual</cite>.)
 </p>
 <p>Here is a shell command to format all the files that end in
 &lsquo;<tt>.texinfo</tt>&rsquo; in the current directory:
@@ -938,7 +938,7 @@ subdirectory named &lsquo;<samp>emacs</samp>&rsquo;.  If that directory cannot b
 for any reason, then &lsquo;<samp>.html</samp>&rsquo; is appended to the directory name, as
 in &lsquo;<samp>emacs.html</samp>&rsquo; (this is necessary because sometimes the info file
 is named without an extension, e.g., &lsquo;<samp>texinfo</samp>&rsquo;).  If the
-&lsquo;<samp><var>name</var>.html</samp>&rsquo; directory can't be created either,
+&lsquo;<samp><var>name</var>.html</samp>&rsquo; directory can&rsquo;t be created either,
 <code>makeinfo</code> gives up.  In any case, the top-level output file within
 the directory is always named &lsquo;<samp>index.html</samp>&rsquo;.
 </p>
@@ -1055,17 +1055,17 @@ this:
 &hellip;
 </pre></td></tr></table>
 
-<p>Each of these menu entries points to the `Top' node of the Info file
+<p>Each of these menu entries points to the &lsquo;Top&rsquo; node of the Info file
 that is named in parentheses.  (The menu entry does not need to
-specify the `Top' node, since Info goes to the `Top' node if no node
+specify the &lsquo;Top&rsquo; node, since Info goes to the &lsquo;Top&rsquo; node if no node
 name is mentioned.  See section <a href="texinfo_8.html#SEC103">Nodes in Other Info Files</a>.)
 </p>
-<p>Thus, the &lsquo;<samp>Info</samp>&rsquo; entry points to the `Top' node of the
-&lsquo;<tt>info</tt>&rsquo; file and the &lsquo;<samp>Emacs</samp>&rsquo; entry points to the `Top' node
+<p>Thus, the &lsquo;<samp>Info</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node of the
+&lsquo;<tt>info</tt>&rsquo; file and the &lsquo;<samp>Emacs</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node
 of the &lsquo;<tt>emacs</tt>&rsquo; file.
 </p>
-<p>In each of the Info files, the `Up' pointer of the `Top' node refers
-back to the <code>dir</code> file.  For example, the line for the `Top'
+<p>In each of the Info files, the &lsquo;Up&rsquo; pointer of the &lsquo;Top&rsquo; node refers
+back to the <code>dir</code> file.  For example, the line for the &lsquo;Top&rsquo;
 node of the Emacs manual looks like this in Info:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
@@ -1189,7 +1189,7 @@ file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
 &lsquo;<tt>/home/bob/info/info-test</tt>&rsquo; file as a menu entry in the
 &lsquo;<tt>/home/bob/info/dir</tt>&rsquo; file.  Emacs does the merging only when
 <kbd>M-x info</kbd> is first run, so if you want to set
-<code>Info-directory-list</code> in an Emacs session where you've already run
+<code>Info-directory-list</code> in an Emacs session where you&rsquo;ve already run
 <code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
 to recompose the &lsquo;<tt>dir</tt>&rsquo; file.
 </p>
@@ -1230,7 +1230,7 @@ In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DO
 </li></ul>
 
 <p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
-<code>INFOPATH</code> environment variable to initialize the value of Emacs's
+<code>INFOPATH</code> environment variable to initialize the value of Emacs&rsquo;s
 own <code>Info-directory-list</code> variable.  The stand-alone Info reader
 merges any files named &lsquo;<tt>dir</tt>&rsquo; in any directory listed in the
 <code>INFOPATH</code> variable into a single menu presented to you in the node
@@ -1252,7 +1252,7 @@ Leading or doubled colons are not treated specially.
 </p>
 <a name="IDX417"></a>
 <p>When you create your own &lsquo;<tt>dir</tt>&rsquo; file for use with
-<code>Info-directory-list</code> or <code>INFOPATH</code>, it's easiest to start by
+<code>Info-directory-list</code> or <code>INFOPATH</code>, it&rsquo;s easiest to start by
 copying an existing &lsquo;<tt>dir</tt>&rsquo; file and replace all the text after the
 &lsquo;<samp>* Menu:</samp>&rsquo; with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
@@ -1302,7 +1302,7 @@ in this manual:
 @end direntry
 </pre></td></tr></table>
 
-<p>Here's what this produces in the Info file:
+<p>Here&rsquo;s what this produces in the Info file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
@@ -1321,7 +1321,7 @@ command.  If you use them later on in the input, <code>install-info</code>
 will not notice them.
 </p>
 <p>If you use <code>@dircategory</code> more than once in the Texinfo source,
-each usage specifies the `current' category; any subsequent
+each usage specifies the &lsquo;current&rsquo; category; any subsequent
 <code>@direntry</code> commands will add to that category.  
 </p>
 <p>Here are some recommended <code>@dircategory</code> categories:
@@ -1335,8 +1335,8 @@ TeX
 Individual utilities
 </pre></td></tr></table>
 
-<p>The idea is to include the `Invoking' node for every program installed
-by a package under `Individual utilities', and an entry for the manual
+<p>The idea is to include the &lsquo;Invoking&rsquo; node for every program installed
+by a package under &lsquo;Individual utilities&rsquo;, and an entry for the manual
 as a whole in the appropriate other category.
 </p>
 
@@ -1364,7 +1364,7 @@ as a whole in the appropriate other category.
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
 top-level &lsquo;<tt>dir</tt>&rsquo; file in the Info system (see the previous sections
-for an explanation of how the &lsquo;<tt>dir</tt>&rsquo; file works).  It's most often
+for an explanation of how the &lsquo;<tt>dir</tt>&rsquo; file works).  It&rsquo;s most often
 run as part of software installation, or when constructing a &lsquo;<tt>dir</tt>&rsquo; file
 for all manuals on a system.  Synopsis:
 </p>
@@ -1382,7 +1382,7 @@ read only one Info file and write only one &lsquo;<tt>dir</tt>&rsquo; file per i
 </p>
 <a name="IDX421"></a>
 <a name="IDX422"></a>
-<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
+<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section &lsquo;Invoking gzip&rsquo; in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to
@@ -1395,7 +1395,7 @@ open &lsquo;<tt><var>dir-file</var>.gz</tt>&rsquo;.
 <dd><a name="IDX423"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
-an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don't insert any new entries.
+an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert any new entries.
 </p>
 </dd>
 <dt> <code>--dir-file=<var>name</var></code></dt>
@@ -1413,7 +1413,7 @@ using the <var>dir-file</var> argument.
 <p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
 form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
-added.  If you don't specify any entries, they are determined from
+added.  If you don&rsquo;t specify any entries, they are determined from
 information in the Info file itself.
 </p>
 </dd>
@@ -1463,9 +1463,9 @@ a menu item.
 <dt> <code>-s <var>sec</var></code></dt>
 <dd><a name="IDX438"></a>
 <a name="IDX439"></a>
-<p>Put this file's entries in section <var>sec</var> of the directory.  If you
+<p>Put this file&rsquo;s entries in section <var>sec</var> of the directory.  If you
 specify more than one section, all the entries are added in each of the
-sections.  If you don't specify any sections, they are determined from
+sections.  If you don&rsquo;t specify any sections, they are determined from
 information in the Info file itself.
 </p>
 </dd>

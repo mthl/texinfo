@@ -128,7 +128,7 @@ the currency symbol for British English), but other Western European
 languages (French, Spanish, German) require more than 96 code positions
 for accented characters.  In fact, even with 8 bits to represent 96 more
 character (including accented characters and symbols such as currency
-symbols), some languages' alphabets remain incomplete (Croatian,
+symbols), some languages&rsquo; alphabets remain incomplete (Croatian,
 Polish).  (The 64 &quot;missing characters&quot; are reserved for control
 characters.)  Furthermore, many European languages have their own
 alphabets, which must conflict with the accented characters since the
@@ -141,12 +141,12 @@ most European languages to represented with one octet (byte) per
 character.  However, many Asian languages have thousands of characters
 and require two or more octets per character.  For multilingual
 purposes, the ISO 2022 standard establishes escape codes that allow
-switching encodings in midstream.  (It's also ISO 2022 that establishes
+switching encodings in midstream.  (It&rsquo;s also ISO 2022 that establishes
 the standard that code points 0-31 and 128-159 are control codes.)
 </p>
 <p>However, this is error-prone and complex for internal processing.  For
 this reason XEmacs uses an internal coding system which can encode all
-of the world's scripts.  Unfortunately, for historical reasons, this
+of the world&rsquo;s scripts.  Unfortunately, for historical reasons, this
 code is not Unicode, although we are moving in that direction.
 </p>
 <p>XEmacs translates between the internal character encoding and various
@@ -159,7 +159,7 @@ represent 1-octet ISO-8859-1 (which is satisfactory for most Western
 European use prior to the introduction of the Euro currency), 1-octet
 ISO-8859-15 (which substitutes the Euro for the rarely used &quot;generic
 currency&quot; symbol), 1-octet ISO-8859-5 (Cyrillic), or multioctet EUC-JP
-(Japanese).  There's no way to tell without being able to read!
+(Japanese).  There&rsquo;s no way to tell without being able to read!
 </p>
 <p>A number of heuristics are incorporated in Mule for automatic
 recognition, there are facilities for the user to set defaults, and
@@ -172,7 +172,7 @@ where necessary (rarely, we hope) to set coding systems directly.
 This illustrates various scripts.
 </p>
 <p>  Keyboards, even in the countries where these character sets are used,
-generally don't have keys for all the characters in them.  So XEmacs
+generally don&rsquo;t have keys for all the characters in them.  So XEmacs
 supports various <em>input methods</em>, typically one for each script or
 language, to make it convenient to type them.
 </p>
@@ -313,7 +313,7 @@ you want to enter them as separate characters?
 <p>  One way is to type the accent twice; that is a special feature for
 entering the separate letter and accent.  For example, <kbd>e ' '</kbd> gives
 you the two characters &lsquo;<samp>e'</samp>&rsquo;.  Another way is to type another letter
-after the <kbd>e</kbd>&mdash;something that won't combine with that&mdash;and
+after the <kbd>e</kbd>&mdash;something that won&rsquo;t combine with that&mdash;and
 immediately delete it.  For example, you could type <kbd>e e &lt;DEL&gt;
 '</kbd> to get separate &lsquo;<samp>e</samp>&rsquo; and &lsquo;<samp>'</samp>&rsquo;.
 </p>
@@ -480,7 +480,7 @@ are in different encoding from the encoding that is used by Mule for
 text in buffer.  Returning to the above example, we need to somehow tell
 XEmacs that we have different encodings of fonts and text and so it
 needs to convert characters between those encodings when displaying.
-That's what &lsquo;<samp>set-charset-ccl-program</samp>&rsquo; function is used for.  There
+That&rsquo;s what &lsquo;<samp>set-charset-ccl-program</samp>&rsquo; function is used for.  There
 are quite a few various CCL programs defined within XEmacs, and there is
 no comprehensive list of them, so you currently have to consult sources.
 </p>
@@ -582,7 +582,7 @@ exactly what to do for end-of-line conversion:
 </p>
 <dl compact="compact">
 <dt> <code>&hellip;-unix</code></dt>
-<dd><p>Don't do any end-of-line conversion; assume the file uses
+<dd><p>Don&rsquo;t do any end-of-line conversion; assume the file uses
 newline to separate lines.  (This is the convention normally used
 on Unix and GNU systems.)
 </p>

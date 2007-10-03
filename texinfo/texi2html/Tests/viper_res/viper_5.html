@@ -197,7 +197,7 @@ lines.
 <p>Note that &lsquo;<samp>%</samp>&rsquo; is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
 to mean current file.  If you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be
 escaped as &lsquo;<samp>\%</samp>&rsquo;. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
-command doesn't support the meta symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo;, because
+command doesn&rsquo;t support the meta symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo;, because
 file history is a better mechanism.
 <a name="IDX246"></a>
 Similarly, &lsquo;<samp>#</samp>&rsquo; expands to the previous file.  The previous file is
@@ -248,13 +248,13 @@ Brackets &lsquo;<samp>[]</samp>&rsquo; indicate optional parameters; &lsquo;<sam
 optional, usually defaulting to 1.  Brackets are elided for
 &lsquo;<samp>&lt;count&gt;</samp>&rsquo; to eschew obfuscation.
 </p>
-<p>Viper's idea of Vi's words is slightly different from Vi.  First, Viper
+<p>Viper&rsquo;s idea of Vi&rsquo;s words is slightly different from Vi.  First, Viper
 words understand Emacs symbol tables.  Therefore, all symbols declared to be
 alphanumeric in a symbol table can automatically be made part of the Viper
 word.  This is useful when, for instance, editing text containing European,
 Cyrillic, Japanese, etc., texts.
 </p>
-<p>Second, Viper lets you depart from Vi's idea of a word by changing the a
+<p>Second, Viper lets you depart from Vi&rsquo;s idea of a word by changing the a
 syntax preference via the customization widget (the variable
 <code>viper-syntax-preference</code>) or by executing
 <code>viper-set-syntax-preference</code> interactively.
@@ -263,7 +263,7 @@ syntax preference via the customization widget (the variable
 Viper considers only those symbols to be part of a word that are specified
 as word-symbols by the current Emacs syntax table (which may be different
 for different major modes) plus the underscore symbol <kbd>_</kbd>, minus the
-symbols that are not considered words in Vi (e.g., `,',;, etc.), but may be
+symbols that are not considered words in Vi (e.g., &lsquo;,&rsquo;,;, etc.), but may be
 considered as word-symbols by various Emacs major modes.  Reformed-Vi works
 very close to Vi, and it also recognizes words in other
 alphabets.  Therefore, this is the most appropriate mode for editing text
@@ -301,8 +301,8 @@ modes, you should execute, for example,
 
 <p>The above discussion concerns only the movement commands.  In regular
 expressions, words remain the same as in Emacs.  That is, the expressions
-<code>\w</code>, <code>\&gt;</code>, <code>\&lt;</code>, etc., use Emacs' idea of what is a word,
-and they don't look into the value of variable
+<code>\w</code>, <code>\&gt;</code>, <code>\&lt;</code>, etc., use Emacs&rsquo; idea of what is a word,
+and they don&rsquo;t look into the value of variable
 <code>viper-syntax-preference</code>.  This is because Viper avoids changing
 syntax tables in order to not thwart the various major modes that set these
 tables.
@@ -313,7 +313,7 @@ characters
 C, -, h!!!</em> The <kbd>^</kbd> is itself, never used to indicate a
 Control character.
 </p>
-<p>Finally, we note that Viper's Ex-style commands can be made to work on the
+<p>Finally, we note that Viper&rsquo;s Ex-style commands can be made to work on the
 current Emacs region.  This is done by typing a digit argument before
 <kbd>:</kbd>.  For instance, typing <kbd>1:</kbd> will propmt you with something like
 <em>:123,135</em>, assuming that the current region starts at line 123 and
@@ -547,7 +547,7 @@ parentheses.  You can change this by setting
 This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
 </p>
 <p>This latter feature is implemented as a vi-style keyboard macro.  If you
-don't want this macro, put
+don&rsquo;t want this macro, put
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-parsing-style-toggling-macro 'undefine)
 </pre></td></tr></table>
@@ -636,7 +636,7 @@ don't want this macro, put
 
 <p>Emacs mark is referred to in the region specifiers <kbd>r</kbd> and <kbd>R</kbd>.
 See section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>, and See section <a href="viper_3.html#SEC15">Basics</a>, for explanation.  Also
-see <a href="../emacs/Mark.html#Mark">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for an explanation of
+see <a href="../emacs/Mark.html#Mark">(emacs)Mark</a> section &lsquo;Mark&rsquo; in <cite>The GNU Emacs manual</cite>, for an explanation of
 the Emacs mark ring.
 </p>
 <a name="IDX323"></a>
@@ -652,7 +652,7 @@ the Emacs mark ring.
 <dd><p>Set the Emacs mark (see section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>) back to where it was last
 set with the <kbd>m.</kbd> command. This is useful when you set the mark with
 <kbd>m.</kbd>, but then some other command (such as <kbd>L</kbd> or <kbd>G</kbd>) changes
-it in a way that you didn't like.
+it in a way that you didn&rsquo;t like.
 </p></dd>
 <dt> <kbd>m &lt;</kbd></dt>
 <dd><p>Set the Emacs mark at beginning of buffer.
@@ -780,13 +780,13 @@ commands.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for more info
 </p></dd>
 <dt> <kbd>C-c M-p and C-c M-n</kbd></dt>
 <dd><p>In Vi state,
-these commands help peruse the history of Vi's destructive commands.
+these commands help peruse the history of Vi&rsquo;s destructive commands.
 Successive typing of <kbd>C-c M-p</kbd> causes Viper to search the history in
 the direction
 of older commands, while hitting <kbd>C-c M-n</kbd> does so in reverse
 order.  Each command in the history is displayed in the Minibuffer.  The
 displayed command can
-then be executed by typing `<kbd>.</kbd>'.
+then be executed by typing &lsquo;<kbd>.</kbd>&rsquo;.
 </p>
 <p>Since typing the above sequences of keys may be tedious, the
 functions doing the perusing can be bound to unused keyboard keys in the
@@ -992,7 +992,7 @@ delimiter.
 </p>
 <p>In Emacs, &lsquo;<samp>\&amp;</samp>&rsquo; stands for the last matched expression, so
 <kbd>s/[ab]+/\&amp;\&amp;/</kbd> will double the string matched by <kbd>[ab]</kbd>.
-Viper doesn't treat &lsquo;<samp>&amp;</samp>&rsquo; specially, unlike Vi: use &lsquo;<samp>\&amp;</samp>&rsquo; instead.
+Viper doesn&rsquo;t treat &lsquo;<samp>&amp;</samp>&rsquo; specially, unlike Vi: use &lsquo;<samp>\&amp;</samp>&rsquo; instead.
 </p>
 <p>Viper does not parse search patterns and does not expand special symbols
 found there (e.g., &lsquo;<samp>~</samp>&rsquo; is not expanded to the result of the previous
@@ -1127,7 +1127,7 @@ substitution).
 and execute the Ex &lt;cmd&gt; on each occurrence.
 </p></dd>
 <dt> <kbd>:[x,y]v/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
-<dd><p>Execute &lt;cmd&gt; on the lines that don't match.
+<dd><p>Execute &lt;cmd&gt; on the lines that don&rsquo;t match.
 </p></dd>
 <dt> <kbd>#g&lt;move&gt;</kbd></dt>
 <dd><p>Execute the last keyboard macro for each line in the region.
@@ -1411,7 +1411,7 @@ initialization: half a page).
 
 
 <p>In all file handling commands, space should be typed before entering the file
-name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don't
+name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don&rsquo;t
 put any space between the command and the modifier.
 </p>
 <p>Note that many Ex commands, e.g., <kbd>:w</kbd>, accept command arguments. The
@@ -1435,7 +1435,7 @@ visit files.
 <dt> <kbd>:[x,y] w</kbd></dt>
 <dd><p>Write the file.  Viper makes sure that a final newline is always added to
 any file where this newline is missing.  This is done by setting Emacs
-variable <code>require-final-newline</code> to <code>t</code>.  If you don't like this
+variable <code>require-final-newline</code> to <code>t</code>.  If you don&rsquo;t like this
 feature, use <code>setq-default</code> to set <code>require-final-newline</code> to
 <code>nil</code>.  This must be done in &lsquo;<tt>.viper</tt>&rsquo; file.
 </p></dd>
@@ -1721,7 +1721,7 @@ the VI sense if you have one window.
 </p>
 <p>Symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo; are also used in the Ex commands <kbd>:e</kbd> and
 <kbd>:r &lt;shell-cmd&gt;</kbd>.  The commands <kbd>:w</kbd> and the regular <kbd>:r
-&lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
+&lt;file&gt;</kbd> command don&rsquo;t support these meta symbols, because file history is a
 better mechanism.
 </p>
 <a name="IDX494"></a>
@@ -1814,7 +1814,7 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>autoindent-global</kbd></dt>
 <dt> <kbd>ai-global</kbd></dt>
-<dd><p>Same as `autoindent', but affects all buffers.
+<dd><p>Same as &lsquo;autoindent&rsquo;, but affects all buffers.
 </p></dd>
 <dt> <kbd>noautoindent</kbd></dt>
 <dt> <kbd>noai</kbd></dt>
@@ -1869,8 +1869,8 @@ If the user attempts to write to this file, confirmation will be requested.
 <dd><a name="IDX513"></a>
 <a name="IDX514"></a>
 <p>showmatch &ndash; Whenever you append a <kbd>)</kbd>, Vi shows
-its match if it's on the same page; also with
-<kbd>{</kbd> and <kbd>}</kbd>.  If there's no match, Vi will beep.
+its match if it&rsquo;s on the same page; also with
+<kbd>{</kbd> and <kbd>}</kbd>.  If there&rsquo;s no match, Vi will beep.
 </p></dd>
 <dt> <kbd>noshowmatch</kbd></dt>
 <dt> <kbd>nosm</kbd></dt>
@@ -1887,7 +1887,7 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>tabstop-global</kbd></dt>
 <dt> <kbd>ts-g</kbd></dt>
-<dd><p>Same as `tabstop', but affects all buffers.
+<dd><p>Same as &lsquo;tabstop&rsquo;, but affects all buffers.
 </p></dd>
 <dt> <kbd>wrapmargin=&lt;count&gt;</kbd></dt>
 <dt> <kbd>wm=&lt;count&gt;</kbd></dt>
@@ -1998,8 +1998,8 @@ to the original Viper state.  Works from Vi, Insert, Replace, and Emacs states.
 <dd><p>Emacs find-file, useful in Insert state
 </p></dd>
 <dt> <kbd>C-y</kbd></dt>
-<dd><p>Put back the last killed text.  Similar to Vi's <kbd>p</kbd>, but also works in
-Insert and Replace state.  This command doesn't work in Vi command state,
+<dd><p>Put back the last killed text.  Similar to Vi&rsquo;s <kbd>p</kbd>, but also works in
+Insert and Replace state.  This command doesn&rsquo;t work in Vi command state,
 since this binding is taken for something else.
 </p></dd>
 <dt> <kbd>M-y</kbd></dt>

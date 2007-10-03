@@ -100,7 +100,7 @@ of writing all documentation new in <acronym>HTML</acronym>, cause
 there is so much documentation in Texinfo all over
 the world.
 </p>
-<p>A few time ago <code>makeinfo</code> wasn't able to produce
+<p>A few time ago <code>makeinfo</code> wasn&rsquo;t able to produce
 <acronym>HTML</acronym> output format, but there are needth to have
 <acronym>HTML</acronym>. This was the borning hour for
 <code>texi2html</code>. The basic purpose of &lsquo;<tt>texi2html</tt>&rsquo;
@@ -159,7 +159,7 @@ This first is to use <code>makeinfo</code> itself to produce
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.2 Why &lsquo;<tt>texi2html</tt>&rsquo; and not &lsquo;<tt>makeinfo</tt>&rsquo;? </h2>
-<p>The basic idea of <code>makeinfo</code>'s <acronym>HTML</acronym>
+<p>The basic idea of <code>makeinfo</code>&rsquo;s <acronym>HTML</acronym>
 output was to get an readable <acronym>HTML</acronym> output.
 Nothing sophisticated nor good styling just readable.
 </p>
@@ -172,14 +172,14 @@ supported using differnt command line options and of course
 possible changings of the initialization file to fit your
 own needs.
 </p>
-<p>The main disadvantage of <acronym>makeinfo</acronym>'s
+<p>The main disadvantage of <acronym>makeinfo</acronym>&rsquo;s
 <acronym>HTML</acronym> output is your getting only one big file.
 This is of course readable but not very usable. The problem
 of this is, while you like to have splitted chapters or
 nodes the Texinfo source has to be read at minimum twice
 times. This makes it impossible to implement this in
 <code>makeinfo</code>. This would result in complete new
-implementation of <code>makeinfo</code>'s source.
+implementation of <code>makeinfo</code>&rsquo;s source.
 </p>
 <p>In contrast to the HTML produced by <code>makeinfo
 --html</code> (the <code>makeinfo</code> program is part of the
@@ -602,8 +602,8 @@ EOT
 </tr></table>
 <h1 class="chapter"> 6. Customizing HTML </h1>
 <p>If you like to read the following section, it is assumed
-you are famillar with <acronym>HTML</acronym>. If not, you shouldn't
-read this, cause you don't know what we are talking about.
+you are famillar with <acronym>HTML</acronym>. If not, you shouldn&rsquo;t
+read this, cause you don&rsquo;t know what we are talking about.
 </p>
 <p>Here you can find information how to change the
 <acronym>HTML</acronym> parts of a document. These are the
@@ -1078,7 +1078,7 @@ otherwise, do not center by default
 <p>used as indentation for block enclosing command
 <code>@example</code>, etc If not empty, must be enclosed in
 <code>&lt;td&gt;&lt;/td&gt;</code>
-<var>$T2H_EXAMPLE_INDENT_CELL</var> = '&lt;td&gt;&amp;nbsp;&lt;/td&gt;';
+<var>$T2H_EXAMPLE_INDENT_CELL</var> = &rsquo;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&rsquo;;
 </p>
 <hr size="6">
 <a name="IFOSampleIndentCell"></a>
@@ -1222,7 +1222,7 @@ entries
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.5.10 HREF Dir Instead File. </h3>
-<p>if set (e.g., to &lsquo;<tt>index.html</tt>&rsquo;) replace <strong>HREF</strong>'s
+<p>if set (e.g., to &lsquo;<tt>index.html</tt>&rsquo;) replace <strong>HREF</strong>&rsquo;s
 to this file  (i.e., to &lsquo;<tt>index.html</tt>&rsquo;) by &lsquo;<tt>./</tt>&rsquo;
 </p>
 <p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
@@ -1668,7 +1668,7 @@ separate pages for Top, ToC, Overview, Index, Glossary,
 About.  Otherwise, create a monolithic <acronym>HTML</acronym> file that
 contains the whole document.
 </p>
-<p>#$T2H_SPLIT = 'section';
+<p>#$T2H_SPLIT = &rsquo;section&rsquo;;
 $T2H_SPLIT = undef;
 </p>
 <hr size="6">
@@ -1905,7 +1905,7 @@ a new language, supply list of titles (see <var>$T2H_WORDS</var>),
 and use ISO 639 language codes (see e.g. perl module
 &lsquo;<tt>Locale-Codes-1.02.tar.gz</tt>&rsquo; for definitions).
 </p>
-<p>If you don't give a &lsquo;<samp>-lang</samp>&rsquo; then we got it from the
+<p>If you don&rsquo;t give a &lsquo;<samp>-lang</samp>&rsquo; then we got it from the
 Texinfo source file (@documentlanguage
 see <a href="Texinfo.html#documentlanguage">(Texinfo)documentlanguage</a>). If there is no
 <code>@documentlanguage</code> we use the default <code>en</code> for

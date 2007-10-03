@@ -53,7 +53,7 @@ ul.toc {list-style: none}
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    node 1
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC2">2. node 'a with braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    node with braces
+<tr><td align="left" valign="top"><a href="#SEC2">2. node &rsquo;a with braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    node with braces
 </td></tr>
 <tr><td align="left" valign="top"><a href="manual.html#A-node">&bull; node: (manual)A node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> node in another manual
 </td></tr>
@@ -63,7 +63,7 @@ a verbatim in menu comment </pre><pre class="verbatim"> verbatim on same line th
 bidule
 
 </pre><pre class="menu-comment">
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">3. node 'a without braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       node without braces
+</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">3. node &rsquo;a without braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       node without braces
 </td></tr>
 </table>
 
@@ -147,7 +147,7 @@ bidule
 
 
 <p>A list with bullet
-Before itemize, in that case @bullet isn'right, one needs @bullet{} (in info) </p><ul>
+Before itemize, in that case @bullet isn&rsquo;right, one needs @bullet{} (in info) </p><ul>
 <li> on the same line than item
 some text
 </li><li>
@@ -166,7 +166,7 @@ text
 
 
 @@@@ @ text before @end  verbatim </pre> Text following end verbatim, must be exactly one space 
-<p>between end and verbatim. @end verbatim doesn't need to begin at beginning 
+<p>between end and verbatim. @end verbatim doesn&rsquo;t need to begin at beginning 
 of line.
 </p>
 <p>In tex, @end verbatim must be on its own on a line.
@@ -186,7 +186,7 @@ the empty line following @end html is ignored but spaces are inserted.
 <p>Now html valid for TeX  <b>
 some html </b> Some text one the line following @end html
 </p>
-<p>And html on it's own line
+<p>And html on it&rsquo;s own line
 </p>
 <tt> an html tt</tt>
 
@@ -199,7 +199,7 @@ some html </b> Some text one the line following @end html
 <p>Ignore is the same than @html.
 </p>
 <p>Now ifnothtml on same line 
-@end ifnothtml doesn't need to begin the line, and there can be more
+@end ifnothtml doesn&rsquo;t need to begin the line, and there can be more
 than one space between @end and ifnothtml, but nothing more
 on the line.
 </p>
@@ -311,14 +311,14 @@ verb @c comment
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 2. node 'a with braces </h1>
+<h1 class="chapter"> 2. node &rsquo;a with braces </h1>
 <p>In the node with braces
 </p>
 <p>A footnote with an empty line within.
 <a name="DOCF1" href="#FOOT1">(1)</a> 
 </p>
-<p>Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
-in that case in info. tex doesn't like the paragraph break in the ref
+<p>Now a ref with a footnote within, there aren&rsquo;t 2 paragraphes in the footnote
+in that case in info. tex doesn&rsquo;t like the paragraph break in the ref
 <a href="#SEC1">within ref a footnote <a name="DOCF2" href="#FOOT2">(2)</a></a>.
 </p>
 <p>Conversely, a ref in a footnote
@@ -352,7 +352,7 @@ See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within 
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 3. node 'a without braces </h1>
+<h1 class="chapter"> 3. node &rsquo;a without braces </h1>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC4">3.1 node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -437,8 +437,8 @@ An example
 
 <ul class="toc">
   <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
-  <li><a name="TOC2" href="#SEC2">2. node 'a with braces</a></li>
-  <li><a name="TOC3" href="#SEC3">3. node 'a without braces</a>
+  <li><a name="TOC2" href="#SEC2">2. node &rsquo;a with braces</a></li>
+  <li><a name="TOC3" href="#SEC3">3. node &rsquo;a without braces</a>
   <ul class="toc">
     <li><a name="TOC4" href="#SEC4">3.1 node</a></li>
   </ul>

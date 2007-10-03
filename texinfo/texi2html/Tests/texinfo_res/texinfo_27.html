@@ -168,7 +168,7 @@ the text will not be formatted after the place where the error
 occurred (or more precisely, where it was detected).
 </p>
 <p>For example, if you accidentally end a menu with the command <code>@end
-menus</code> with an `s' on the end, instead of with <code>@end menu</code>, you
+menus</code> with an &lsquo;s&rsquo; on the end, instead of with <code>@end menu</code>, you
 will see an error message that says:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@end menus is not handled by texinfo
@@ -231,8 +231,8 @@ cross reference in this node and if you type a &lt;RET&gt; immediately
 after typing the Info <kbd>f</kbd> command, Info will attempt to go to the
 referenced node.  If you type <kbd>f catch &lt;TAB&gt; &lt;RET&gt;</kbd>, Info
 will complete the node name of the correctly written example and take
-you to the `Catching Mistakes' node.  (If you try this, you can return
-from the `Catching Mistakes' node by typing <kbd>l</kbd>
+you to the &lsquo;Catching Mistakes&rsquo; node.  (If you try this, you can return
+from the &lsquo;Catching Mistakes&rsquo; node by typing <kbd>l</kbd>
 (<code>Info-last</code>).)
 </p>
 
@@ -427,20 +427,20 @@ with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection<
 commands respectively.  If you move your cursor into the &lsquo;<samp>*Occur*</samp>&rsquo;
 window, you can position the cursor over one of the lines and use the
 <kbd>C-c C-c</kbd> command (<code>occur-mode-goto-occurrence</code>), to jump to
-the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>, for more
+the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section &lsquo;Using Occur&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
 information about <code>occur-mode-goto-occurrence</code>.
 </p>
 <p>The first line in the &lsquo;<samp>*Occur*</samp>&rsquo; window describes the <em>regular
 expression</em> specified by <var>texinfo-heading-pattern</var>.  This regular
 expression is the pattern that <code>texinfo-show-structure</code> looks for.
-See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section `Using Regular Expressions' in <cite>The GNU Emacs Manual</cite>,
+See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section &lsquo;Using Regular Expressions&rsquo; in <cite>The GNU Emacs Manual</cite>,
 for more information.
 </p>
 <p>When you invoke the <code>texinfo-show-structure</code> command, Emacs will
 display the structure of the whole buffer.  If you want to see the
 structure of just a part of the buffer, of one chapter, for example,
 use the <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command to mark the
-region.  (See <a href="../emacs/Narrowing.html#Narrowing">(emacs)Narrowing</a> section `Narrowing' in <cite>The GNU Emacs Manual</cite>.)  This is
+region.  (See <a href="../emacs/Narrowing.html#Narrowing">(emacs)Narrowing</a> section &lsquo;Narrowing&rsquo; in <cite>The GNU Emacs Manual</cite>.)  This is
 how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 </p>
@@ -484,7 +484,7 @@ command directly.  To do this, type
 </pre></td></tr></table>
 
 <p>and then, when prompted, type a <em>regexp</em>, a regular expression for
-the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
+the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section &lsquo;Regular Expressions&rsquo; in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
 the current location of the cursor in the buffer to the end of the
 buffer.  If you want to run <code>occur</code> on the whole buffer, place
 the cursor at the beginning of the buffer.
@@ -500,9 +500,9 @@ with &lsquo;<samp>@chapter</samp>&rsquo; in the middle of the line.
 or phrase, end the last word with a &lsquo;<samp>$</samp>&rsquo;; for example,
 &lsquo;<samp>catching mistakes$</samp>&rsquo;.  This can be helpful when you want to see
 all the nodes that are part of the same chapter or section and
-therefore have the same `Up' pointer.
+therefore have the same &lsquo;Up&rsquo; pointer.
 </p>
-<p>See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>,
+<p>See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section &lsquo;Using Occur&rsquo; in <cite>The GNU Emacs Manual</cite>,
 for more information.
 </p>
 <hr size="6">
@@ -527,7 +527,7 @@ for more information.
 <h2 class="section"> F.5 Finding Badly Referenced Nodes </h2>
 
 <p>You can use the <code>Info-validate</code> command to check whether any of
-the `Next', `Previous', `Up' or other node pointers fail to point to a
+the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, &lsquo;Up&rsquo; or other node pointers fail to point to a
 node.  This command checks that every node pointer points to an
 existing node.  The <code>Info-validate</code> command works only on Info
 files, not on Texinfo files.
@@ -578,7 +578,7 @@ type:
 </pre></td></tr></table>
 
 <p>Note that the <code>Info-validate</code> command requires an upper case
-`I'.  You may also need to create a tag table before running
+&lsquo;I&rsquo;.  You may also need to create a tag table before running
 <code>Info-validate</code>.  See section <a href="#SEC317">Tagifying a File</a>.
 </p>
 <p>If your file is valid, you will receive a message that says &ldquo;File appears
@@ -592,19 +592,19 @@ only the first node of this manual.  One of the messages said:
 <table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
 
-<p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a `Next' pointer that
+<p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a &lsquo;Next&rsquo; pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
 </p>
 <p>Now suppose we add a node named &lsquo;<samp>Texinfo Mode</samp>&rsquo; to our test case
-but we do not specify a `Previous' for this node.  Then we will get
+but we do not specify a &lsquo;Previous&rsquo; for this node.  Then we will get
 the following error message:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
 </pre></td></tr></table>
 
-<p>This is because every `Next' pointer should be matched by a
-`Previous' (in the node where the `Next' points) which points back.
+<p>This is because every &lsquo;Next&rsquo; pointer should be matched by a
+&lsquo;Previous&rsquo; (in the node where the &lsquo;Next&rsquo; points) which points back.
 </p>
 <p><code>Info-validate</code> also checks that all menu entries and cross references
 point to actual nodes.

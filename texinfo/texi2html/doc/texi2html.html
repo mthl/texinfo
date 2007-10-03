@@ -205,7 +205,7 @@ rewrite all the documentation in <acronym>HTML</acronym>, especially
 considering that there is so much Texinfo documentation in
 the world.
 </p>
-<p>Some time ago <code>makeinfo</code> wasn't able to produce
+<p>Some time ago <code>makeinfo</code> wasn&rsquo;t able to produce
 <acronym>HTML</acronym> output format, but people still wanted documentation in
 <acronym>HTML</acronym>.  This was the birthing hour for
 <code>texi2html</code>.  The basic purpose of <code>texi2html</code>
@@ -255,19 +255,19 @@ producing, have a look at the following sites:
 
 <p>You would like to produce <acronym>HTML</acronym> files from your existing Texinfo
 files?  There are two programs you can use to do this.  The first is
-<code>makeinfo</code> (see <a href="texinfo.html#Generating-HTML">(texinfo)Generating HTML</a> section `Generating HTML' in <cite>GNU Texinfo</cite>).
+<code>makeinfo</code> (see <a href="texinfo.html#Generating-HTML">(texinfo)Generating HTML</a> section &lsquo;Generating HTML&rsquo; in <cite>GNU Texinfo</cite>).
 The second is <code>texi2html</code>.
 </p>
-<p>The design goal of <code>makeinfo</code>'s <acronym>HTML</acronym> output was to produce
+<p>The design goal of <code>makeinfo</code>&rsquo;s <acronym>HTML</acronym> output was to produce
 readable <acronym>HTML</acronym> output. It is now possible to use <acronym>CSS</acronym>
 for <acronym>HTML</acronym> customization. Another possibility is to use intermediate 
 formats, like docbook or <code>makeinfo</code> <acronym>XML</acronym> 
 and <acronym>XSL</acronym> stylesheets to customize the resulting document. Still the 
-output produced by <code>makeinfo</code> isn't customizable.
+output produced by <code>makeinfo</code> isn&rsquo;t customizable.
 </p>
 <p>The current development of <code>texi2html</code> tries to
 provide for producing the more interesting and sophisticated <acronym>HTML</acronym>
-pages that today's Internet users have come to expect.
+pages that today&rsquo;s Internet users have come to expect.
 The goal behind <code>texi2html</code> is to generate attractive <acronym>HTML</acronym> by
 default but also to allow users considerable freedom to affect the final
 style and design of the output <acronym>HTML</acronym> pages.  This is achieved via
@@ -385,7 +385,7 @@ tested extensively on versions of <code>perl</code> below 5.6.
 To play nice with encodings you 
 also need the <code>Encode</code> and <code>Unicode::Normalize</code> modules.
 </p>
-<p>To rebuild the script perl isn't required in most cases. For more
+<p>To rebuild the script perl isn&rsquo;t required in most cases. For more
 information about advanced build features, see <a href="#SEC8">Advanced build features</a>.
 </p>
 <hr size="6">
@@ -508,7 +508,7 @@ code requires <code>Encode</code> and <code>Unicode::Normalize</code> modules.
 <code>Text::Unidecode</code> should be used or not. The default is to detect it 
 with a test. This code requires the <code>Text::Unidecode</code> module.
 </p>
-<p><code>perl</code> isn't 
+<p><code>perl</code> isn&rsquo;t 
 needed to build the script. the script is build by &lsquo;<tt>./configure</tt>&rsquo; 
 and a shell script launched by <code>make</code> which is a simple 
 wrapper around a <code>sed</code> one-liner. The <code>perl</code> command
@@ -519,8 +519,8 @@ itself.
 </p>
 <p>The translations are managed by a script <code>manage_i18n.pl</code>, created
 by <code>./configure</code>. <code>manage_i18n.pl</code> requires 
-<code>Data::Dumper</code> to function normally. If this module isn't there 
-<code>./configure</code> detects it and <code>manage_i18n.pl</code> doesn't
+<code>Data::Dumper</code> to function normally. If this module isn&rsquo;t there 
+<code>./configure</code> detects it and <code>manage_i18n.pl</code> doesn&rsquo;t
 really rebuild the translations, but only copy files. It is possible
 to use the <code>./configure</code> switch <a name="IDX4"></a>
 &lsquo;<samp>--enable-translations</samp>&rsquo;
@@ -637,11 +637,11 @@ argument, and also at <code>@section</code>, <code>@appendixsec</code> or
 </p></dd>
 <dt> &lsquo;<samp>node</samp>&rsquo;</dt>
 <dd><p>The document is split at every sectioning command.  It is not necessarily 
-split at each node, if the <code>@node</code> structure doesn't correspond with
+split at each node, if the <code>@node</code> structure doesn&rsquo;t correspond with
 the sectioning command structure (see below).
 </p></dd>
 <dt> &lsquo;<samp>none</samp>&rsquo;</dt>
-<dd><p>The document isn't split.  This is the default.
+<dd><p>The document isn&rsquo;t split.  This is the default.
 </p></dd>
 </dl>
 
@@ -649,10 +649,10 @@ the sectioning command structure (see below).
 elements in Texinfo: <code>@node</code> and the structuring commands (<code>@top</code>,
 <code>@section</code>, <code>@appendixsubsec</code>,  and so on).  A node just preceding
 a structuring command is considered to be part of the same sectioning element
-as that command.  If the <code>@node Top</code> isn't associated with a structuring
+as that command.  If the <code>@node Top</code> isn&rsquo;t associated with a structuring
 command it also defines a sectioning element.
 </p>
-<p>By default, nodes which aren't associated with a structuring command are not
+<p>By default, nodes which aren&rsquo;t associated with a structuring command are not
 considered to be sectioning commands.  They are always considered to be part
 of a sectioning element defined by a structuring command.  It is possible to
 change this behaviour via the <a name="IDX9"></a>
@@ -664,7 +664,7 @@ element.
 </p>
 <p>This default behaviour mimics <code>texi2dvi</code> behaviour, which ignores 
 <code>@node</code> commands for the purprose of sectioning, while the second
-looks like <code>makeinfo</code> behaviour (see <a href="texinfo.html#Two-Paths">(texinfo)Two Paths</a> section `Two Paths' in <cite>GNU Texinfo</cite>). 
+looks like <code>makeinfo</code> behaviour (see <a href="texinfo.html#Two-Paths">(texinfo)Two Paths</a> section &lsquo;Two Paths&rsquo; in <cite>GNU Texinfo</cite>). 
 </p>
 <p>As an illustration, the following table shows how a sample Texinfo document is
 divided into sectioning elements when <a name="IDX11"></a>
@@ -767,7 +767,7 @@ chapter text
 name. 
 </p>
 <p>By default, <code>texi2html</code> generates the manual file in the current 
-directory if the manual isn't split. A &lsquo;<samp>.html</samp>&rsquo; file extension is appended
+directory if the manual isn&rsquo;t split. A &lsquo;<samp>.html</samp>&rsquo; file extension is appended
 to the manual name.
 </p>
 <p>If the manual is split the files are put in a directory named after the
@@ -792,7 +792,7 @@ afile_abt.html     --&gt; About Page
 </pre></td></tr></table>
 
 <p>This default behavior may be modified by several command line options. If the
-output isn't split, the prefix file name may be overrided by the
+output isn&rsquo;t split, the prefix file name may be overrided by the
 <a name="IDX13"></a>
 &lsquo;<samp>--output</samp>&rsquo; command line option (variable <a name="IDX14"></a>
 <code>$OUT</code>). If the output
@@ -842,7 +842,7 @@ behaviour out of <code>texi2html</code> by specifying the
 <code>$NODE_FILES</code>).  
 The default is false for this option.
 If the output
-isn't split at nodes, <code>texi2html</code> will still output files named after
+isn&rsquo;t split at nodes, <code>texi2html</code> will still output files named after
 the nodes, without real content but redirecting to the right file.
 This trick enables the generated <acronym>HTML</acronym> manual to be a
 target for the cross-references of other manuals generated by
@@ -1068,7 +1068,7 @@ specified, and &lsquo;<samp>-</samp>&rsquo; stands for the standard input (array
 <code>@CSS_FILES</code>). 
 </p>
 <p>The option use is the same than for <code>makeinfo</code> and is described
-extensively in <a href="texinfo.html#HTML-CSS">(texinfo)HTML CSS</a> section `HTML CSS' in <cite>GNU Texinfo</cite>.
+extensively in <a href="texinfo.html#HTML-CSS">(texinfo)HTML CSS</a> section &lsquo;HTML CSS&rsquo; in <cite>GNU Texinfo</cite>.
 Briefly, the <acronym>CSS</acronym> <code>@import</code> lines from the external file
 <acronym>CSS</acronym> file are pasted  before the
 <code>texi2html</code> <acronym>CSS</acronym> rules, and the external file <acronym>CSS</acronym>
@@ -1164,7 +1164,7 @@ of the LaTeX2HTML program processing TeX regions (variable
 </p>
 <a name="IDX71"></a>
 <p>&lsquo;<samp>--l2h-tmp</samp>&rsquo; sets the directory used for temporary
-files, this name shouldn't contain a dot &lsquo;<samp>.</samp>&rsquo;
+files, this name shouldn&rsquo;t contain a dot &lsquo;<samp>.</samp>&rsquo;
 (variable is <a name="IDX72"></a>
 <code>$L2H_TMP</code>). Defaults to the current dir.
 </p>
@@ -1265,7 +1265,7 @@ that can be used to produce a CHM file.
 <h1 class="chapter"> 5. Overview of initialization files content and loading </h1>
 
 <p>The initialization files are <code>perl</code> files, read as explained 
-in <a href="#SEC17">Use initialization files for fine tuning</a>. You don't need to know much of <code>perl</code>
+in <a href="#SEC17">Use initialization files for fine tuning</a>. You don&rsquo;t need to know much of <code>perl</code>
 to do some simple changes in variable values, however, to be able to 
 really take advantage of all the features of the initialization file,
 a good knowledge of <code>perl</code> is required.
@@ -1547,7 +1547,7 @@ that section. Otherwise it is the element associated with the
 top element.
 </p>
 <p>The top element is formatted differently than a normal element if there
-is a <code>@top</code> section or the <code>@node Top</code> isn't associated 
+is a <code>@top</code> section or the <code>@node Top</code> isn&rsquo;t associated 
 with a sectioning command.
 </p></dd>
 <dt> <em>Misc elements</em></dt>
@@ -1560,12 +1560,12 @@ There are four misc elements:
 </li><li> About page
 </li></ol>
 
-<p>The <em>About page</em> shouldn't be present for documents consisting
+<p>The <em>About page</em> shouldn&rsquo;t be present for documents consisting
 in only one sectioning element, or for documents unsplit and without
 navigation information. The <em>Footnote page</em> should only
 be present if the footnotes appear on a separated page 
 (see section <a href="#SEC14">Page layout related command line options</a>), however a footnote element is present if
-the document isn't split. The <em>Table of contents</em> should only
+the document isn&rsquo;t split. The <em>Table of contents</em> should only
 be formatted if <code>@contents</code> is present in the document.
 Similarly the <em>Overview</em> should only appear if <code>@shortcontents</code>
 or <code>@summarycontents</code> is present. The Table of contents and 
@@ -1617,7 +1617,7 @@ $BIG_RULE = '&lt;hr size=&quot;6&quot;&gt;';
 
 <p>In the header some important meta data may be defined, like the
 title or style information, and textual informations may be present
-in comments. All this doesn't appear directly in the displayed 
+in comments. All this doesn&rsquo;t appear directly in the displayed 
 <acronym>HTML</acronym>, though.
 </p>
 <p>The page layout is mainly controlled by functions, the precise functions 
@@ -1733,7 +1733,7 @@ by default.
 
 <p>A lot of customization of the navigation panel may be achieved without
 redefining functions, with variables redefinition. 
-In case it isn't enough, it is also possible to redefine the function 
+In case it isn&rsquo;t enough, it is also possible to redefine the function 
 doing the navigation panel formatting.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -2174,7 +2174,7 @@ footnotestyle,
  exampleindent, firstparagraphindent, everyheading, everyfooting,
  evenheading, evenfooting, oddheading, oddfooting, setcontentsaftertitlepage,
 setshortcontentsaftertitlepage, frenchspacing.
-If the command doesn't have any arg, it will be true is it was set.
+If the command doesn&rsquo;t have any arg, it will be true is it was set.
 </p>
 
 <a name="SEC34"></a>
@@ -2392,7 +2392,7 @@ selector, the corresponding value is a style string.
 <code>$CSS_LINES</code>. If this 
 variable is defined the variable value is used instead of being 
 constructed using the <a name="IDX132"></a>
-<code>%css_map</code> entries. For example if you don't
+<code>%css_map</code> entries. For example if you don&rsquo;t
 want any css entries, set
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$CSS_LINES = '';
@@ -2404,7 +2404,7 @@ reference <code>$Texi2HTML::THISDOC{'css_import_lines'}</code> that contains the
 to modify the array corresponding with the array 
 reference <code>$Texi2HTML::THISDOC{'css_lines'}</code>  that contains 
 the normal <acronym>CSS</acronym> files lines (for details on what corresponds with
-those different lines, see <a href="texinfo.html#HTML-CSS">(texinfo)HTML CSS</a> section `HTML CSS' in <cite>GNU Texinfo</cite>).
+those different lines, see <a href="texinfo.html#HTML-CSS">(texinfo)HTML CSS</a> section &lsquo;HTML CSS&rsquo; in <cite>GNU Texinfo</cite>).
 The right place to modify these arrays is in a function appearing in 
 the <code>@command_handler_process</code> array 
 (see section <a href="#SEC91">Bypassing normal formatting</a>). Later, the <acronym>CSS</acronym> lines
@@ -2460,7 +2460,7 @@ These variables are empty by default.
 </p>
 <p>The HTML encoding of the resulting document is defined by
 <a name="IDX139"></a>
-<code>$ENCODING_NAME</code>. If the variable isn't defined,
+<code>$ENCODING_NAME</code>. If the variable isn&rsquo;t defined,
 the <code>@documentencoding</code> value is used, or the 
 <a name="IDX140"></a>
 <code>$OUT_ENCODING</code> value, if set. <code>$ENCODING_NAME</code> may
@@ -2471,7 +2471,7 @@ See section <a href="#SEC19">Setting the encodings</a>.
 <p>The description of the document may be specified in 
 <a name="IDX141"></a>
 <code>$DOCUMENT_DESCRIPTION</code>. If this variable is undef, the text 
-associated with <code>@documentdescription</code> is used, and if there isn't 
+associated with <code>@documentdescription</code> is used, and if there isn&rsquo;t 
 such test a default description is constructed using the document title and 
 the name of the first section of the file. 
 </p>
@@ -2771,7 +2771,7 @@ function references are:
 <dd><p><var>$filehandle</var> is the opened filehandle the function should write to.
 <var>$begin_page</var> is true if the element is the first in a page.
 This function should begin the Top element. At the time this function is called
-the top element text hasn't been parsed.
+the top element text hasn&rsquo;t been parsed.
 </p></dd></dl>
 
 <dl>
@@ -2828,7 +2828,7 @@ for example <code>@contents</code>,
 is set. This behaviour is more consistent with <code>texi2dvi</code>. 
 If <code>@setcontentsaftertitlepage</code> appears in the document,
 and even if <code>$INLINE_CONTENTS</code> is set, the table of contents are 
-merged in the title (which isn't output in the default case, see 
+merged in the title (which isn&rsquo;t output in the default case, see 
 <a href="#SEC49">Formatting of title page</a>).
 </p>
 <p>Several variables may be used to control the formatting of table of contents 
@@ -2922,7 +2922,7 @@ in case the document is split,
 </p></dd>
 </dl>
 
-<p>This function doesn't return anything but should fill the array corresponding
+<p>This function doesn&rsquo;t return anything but should fill the array corresponding
 with the 
 <a name="IDX178"></a>
 <code>$Texi2HTML::TOC_LINES</code> and
@@ -3151,7 +3151,7 @@ of the top element text (see section <a href="#SEC45">Top element text formattin
 <a name="IDX190"></a>
 </dt>
 <dd><p>Formatting of footnotes section or page in case footnotes are on a 
-separated page or the document isn't split.
+separated page or the document isn&rsquo;t split.
 </p></dd>
 </dl>
 
@@ -3530,7 +3530,7 @@ preformatted context and <a name="IDX213"></a>
 the values corresponding with two interfaces. The values may be strings or 
 hash references, and you can chose the interface depending on the one you 
 prefer. The interface with hash reference is a bit more flexible but might also
-be regarded as more complex. If you don't like either of these interfaces you
+be regarded as more complex. If you don&rsquo;t like either of these interfaces you
 can define your own.
 </p>
 <p>Some remarks are in order:
@@ -3784,7 +3784,7 @@ Thus <code>elem class=&quot;elem&quot;</code> leads to
 </tr></table>
 <h3 class="subsection"> 7.3.3 Defining the style and indicatric commands interface </h3>
 
-<p>If you don't like this scheme, it is possible to change how those commands
+<p>If you don&rsquo;t like this scheme, it is possible to change how those commands
 are processed by redefining the following function reference:
 </p>
 <dl>
@@ -3979,7 +3979,7 @@ constructs are expanded if needed and the text is upper-cased if in
 
 <p>Some characters are special, for example we have  &lsquo;<samp>&amp;</samp>&rsquo;, &lsquo;<samp>&quot;</samp>&rsquo;, 
 &lsquo;<samp>&lt;</samp>&rsquo; and &lsquo;<samp>&gt;</samp>&rsquo; in <acronym>HTML</acronym>. In some cases some
-pieces of text don't go through the above function, but still 
+pieces of text don&rsquo;t go through the above function, but still 
 needs to be protected to appear in text.
 This is done by the function associated with the function reference
 </p>
@@ -4067,7 +4067,7 @@ file by <code>texi2html</code> in the string. A &lsquo;<samp>%%</samp>&rsquo; wi
 as &lsquo;<samp>%</samp>&rsquo;.
 </p>
 <p>When a <code>@documentlanguage</code> appears in the document and the language
-wasn't set on the command line, it may be convenient for the user to
+wasn&rsquo;t set on the command line, it may be convenient for the user to
 redefine some variables based on the new language. There is a function 
 reference that may be used for that, it is called each time  a 
 <code>@documentlanguage</code> is encountered:
@@ -4077,7 +4077,7 @@ reference that may be used for that, it is called each time  a
 <a name="IDX233"></a>
 </dt>
 <dd><p>This function is called each time <code>@documentlanguage</code> is encountered
-and the language wasn't seet on the command line. It should be used
+and the language wasn&rsquo;t seet on the command line. It should be used
 to retranslate some strings based on the new language.
 </p></dd></dl>
 
@@ -4145,13 +4145,13 @@ external manual.
 node name mapped to an identifier acceptable as a file name. 
 <var>$xml_node_identifier</var> is the
 node name mapped to an identifier acceptable as an <acronym>XML</acronym> identifier.
-Those identifiers are built as explained in <a href="texinfo.html#HTML-Xref">(texinfo)HTML Xref</a> section `HTML Xref' in <cite>GNU Texinfo</cite>,
+Those identifiers are built as explained in <a href="texinfo.html#HTML-Xref">(texinfo)HTML Xref</a> section &lsquo;HTML Xref&rsquo; in <cite>GNU Texinfo</cite>,
 thus allowing for cross references to external manuals. <var>$file</var> is the
 manual or file name of the external reference. This function should return an
 href leading to the external manual.
 </p>
 <p>The default for this function is to make a reference compatible with 
-<code>makeinfo</code>  (see <a href="texinfo.html#HTML-Xref">(texinfo)HTML Xref</a> section `HTML Xref' in <cite>GNU Texinfo</cite>).
+<code>makeinfo</code>  (see <a href="texinfo.html#HTML-Xref">(texinfo)HTML Xref</a> section &lsquo;HTML Xref&rsquo; in <cite>GNU Texinfo</cite>).
 </p></dd></dl>
 
 <dl>
@@ -4468,7 +4468,7 @@ is used.
 <a href="#SEC67">Formatting (or not) a paragraph and a preformatted region</a>, and the name of the complex
 format will be available to the function formatting the text.
 </p>
-<p>If you aren't satisfied with this scheme, you can redefine the following
+<p>If you aren&rsquo;t satisfied with this scheme, you can redefine the following
 function reference for a better control over the complex format formatting:
 </p>
 <dl>
@@ -4682,10 +4682,10 @@ text is considered to be the attributes text of the element.
 If the text is empty nothing is added to the text.
 </li></ul>
 
-<p>In case the <code>%format_map</code> isn't used, a function reference called
+<p>In case the <code>%format_map</code> isn&rsquo;t used, a function reference called
 <code>$table_list</code>
 should be redefined, the associated function will be called each time
-a command isn't found in <code>%format_map</code>.
+a command isn&rsquo;t found in <code>%format_map</code>.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $whole_table_list <b>table_list</b><i> $command $text</i>
@@ -4783,7 +4783,7 @@ command is replaced by the text.
 </pre></td></tr></table>
 
 </li><li>
-If the command isn't a shortcut, it is associated with an array
+If the command isn&rsquo;t a shortcut, it is associated with an array
 reference. The first element is &lsquo;<samp>f</samp>&rsquo;, &lsquo;<samp>v</samp>&rsquo; or &lsquo;<samp>t</samp>&rsquo; corresponding
 with the index type (&lsquo;<samp>f</samp>&rsquo; for function, &lsquo;<samp>v</samp>&rsquo; for variable,
 &lsquo;<samp>t</samp>&rsquo; for type).
@@ -5206,7 +5206,7 @@ name of the node, and <var>$ending</var> is the text ending the link entry.
 <p>If the menu is to be formatted in a single preformatted environment,
 an entry for &lsquo;<samp>menu</samp>&rsquo; should be added to the <code>$complex_format_map</code>
 hash reference (see section <a href="#SEC70">Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a>).
-In the default case, if the user didn't add an entry himself, a very simple 
+In the default case, if the user didn&rsquo;t add an entry himself, a very simple 
 entry is used, with:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$complex_format_map-&gt;{'menu'} = { 'begin' =&gt; q{''} , 'end' =&gt; q{''},
@@ -5239,7 +5239,7 @@ node is used instead of the node name. If <a name="IDX272"></a>
 <code>$NODE_NAME_IN_MENU</code> is 
 true, however, node names are used. If <a name="IDX273"></a>
 <code>$AVOID_MENU_REDUNDANCY</code>
-is true and menu entry equal menu description the description isn't printed.
+is true and menu entry equal menu description the description isn&rsquo;t printed.
 This is the default. Likewise, if node or section name equal entry name, 
 do not print entry name.
 </p>
@@ -5777,7 +5777,7 @@ braces:
 <p>The function references are called like:
 </p>
 <dl>
-<dt><u>Function Reference:</u> $status <b>$command_handler{'$command'}</b><i>-&gt;{'init'} $command $text $count</i>
+<dt><u>Function Reference:</u> $status <b>$command_handler{&rsquo;$command&rsquo;}</b><i>-&gt;{&rsquo;init&rsquo;} $command $text $count</i>
 <a name="IDX295"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command name, <var>$text</var> is the text appearing 
@@ -5788,7 +5788,7 @@ discarded.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function Reference:</u> $result <b>$command_handler{'$command'}</b><i>-&gt;{'expand'} $command $count $state $text</i>
+<dt><u>Function Reference:</u> $result <b>$command_handler{&rsquo;$command&rsquo;}</b><i>-&gt;{&rsquo;expand&rsquo;} $command $count $state $text</i>
 <a name="IDX296"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command name, <var>$count</var> is a counter counting 
@@ -5917,12 +5917,12 @@ argument. If it is a number it is the number of args (separated by spaces).
 <dd><p>If true the args and the macro are kept, otherwise they are discarded.
 The defaut is to have <code>keep</code> undef for all the commands.
 If <code>keep</code> is true for <code>@verbatiminclude</code> the default
-action for this macro isn't done.
+action for this macro isn&rsquo;t done.
 </p></dd>
 </dl>
 
 
-<p>Commands which don't appear in the hashes 
+<p>Commands which don&rsquo;t appear in the hashes 
 <a name="IDX301"></a>
 <code>%simple_map</code>, <a name="IDX302"></a>
 <code>%simple_map_pre</code>,
@@ -6088,7 +6088,7 @@ by <code>make</code>.
 </tr></table>
 <h3 class="appendixsubsec"> A.1.2 Contributing translations to another language </h3>
 
-<p>If the language isn't currently supported, copy the &lsquo;<tt>en</tt>&rsquo; file in 
+<p>If the language isn&rsquo;t currently supported, copy the &lsquo;<tt>en</tt>&rsquo; file in 
 &lsquo;<tt>i18n</tt>&rsquo; to a file with name the two-letter ISO-639 
 language code of your language
  and then add your translations to the strings. You could also add your 
@@ -6155,7 +6155,7 @@ directory. This is achieved with
 ./manage_i18n.pl update
 </pre></td></tr></table>
 
-<p>These two commands won't work if you don't have the 
+<p>These two commands won&rsquo;t work if you don&rsquo;t have the 
 <code>Data::Dumper</code> module installed.
 And to merge the new translation files in &lsquo;<tt>translations.pl</tt>&rsquo;, do
 </p>
@@ -6218,7 +6218,7 @@ done in the formatting function.
 </li><li> End of line removal is done in formatting function of definition line
 formatting.
 </li><li> node_file_name now should only returns the node file, since the 
-redirection file isn't used anymore. element_file_name only is used for 
+redirection file isn&rsquo;t used anymore. element_file_name only is used for 
 file names, whatever NODES_FILES is.
 </li></ul>
 </li><li> changes between 1.66 and 1.68:
@@ -6243,16 +6243,16 @@ the output file). &lsquo;<samp>-subdir</samp>&rsquo; is retained for backward co
 </p>
 <p>If you want a backward compatibility you can use &lsquo;<samp>-subdir</samp>&rsquo; 
 for the output directory if the document is split, and &lsquo;<samp>-out-file</samp>&rsquo;
-if the document isn't split. This hasn't been tested extensively though.
+if the document isn&rsquo;t split. This hasn&rsquo;t been tested extensively though.
 </p></li><li> Many options has been obsoleted but they are retained for
 backward compatibility.
 </li><li> The init files are searched in new directories, however they 
 are still searched for in the old directories for backward
 compatibility.
-</li><li> the option &lsquo;<samp>--glossary</samp>&rsquo; doesn't do anything. Likely
+</li><li> the option &lsquo;<samp>--glossary</samp>&rsquo; doesn&rsquo;t do anything. Likely
 nothing specific is done regarding bibliographies. This has been
 decided because this added some semantics to the texinfo formatting 
-language that weren't part of texinfo. 
+language that weren&rsquo;t part of texinfo. 
 
 <p>It should be possible to do
 something similar with macros. See for example &lsquo;<tt>glossary.texi</tt>&rsquo; 
@@ -6260,11 +6260,11 @@ for glossary and &lsquo;<tt>my-bib-macros.texi</tt>&rsquo; for bibliography
 in the directory &lsquo;<tt>examples</tt>&rsquo;. In the web2c package there is
 an example of use of BibTeX, see <a href="http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/">http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/</a> (the examples for bibliography are taken from the
 texinfo home page <a href="http://www.gnu.org/software/texinfo/texinfo.html">http://www.gnu.org/software/texinfo/texinfo.html</a>).
-</p></li><li> don't use <code>T2H_CENTER_IMAGE</code>. <code>@center</code> should be used
+</p></li><li> don&rsquo;t use <code>T2H_CENTER_IMAGE</code>. <code>@center</code> should be used
 insead, it will give the right output for all the formats.
 </li><li> If a directory creation fails the program aborts. This is much safer.
 </li><li> The interface for internationalisation changed, although
-the previous wasn't documented a lot.
+the previous wasn&rsquo;t documented a lot.
 </li><li> the API described in this manual changed a lot. A important
 change was to use the <code>Texi2HTML::Config</code> names space instead of
 variables prefixed with &lsquo;<samp>T2H_</samp>&rsquo; or  &lsquo;<samp>t2h_</samp>&rsquo;. To cope with
@@ -6272,7 +6272,7 @@ the change the prefix should be removed from variables in init files.
 Some variables are now in <code>%Texi2HTML::THISDOC</code>.
 </li><li> <code>@ifinfo</code> regions are not expanded by default. This may lead
 to warnings or errors especially if the Top node is enclosed in 
-<code>@ifinfo</code>, as some node won't appear in menus. The quick fix
+<code>@ifinfo</code>, as some node won&rsquo;t appear in menus. The quick fix
 is to call <code>texi2html</code> with the option &lsquo;<samp>--ifinfo</samp>&rsquo; and
 the right way should be to make more use of <code>@ifnottex</code>.
 </li><li> The code appearing before the first node is now outputted, it was
@@ -6304,9 +6304,9 @@ behaviour. Enclosing in <code>@ifnothtml</code> would be much cleaner.
 <h1 class="chapter"> C. How little texi2html texinfo differs from GNU texinfo </h1>
 
 <p>For features documented in the texinfo manual, the texinfo interpretation
-by <code>texi2html</code> shouldn't differ from the interpretation of
+by <code>texi2html</code> shouldn&rsquo;t differ from the interpretation of
 <code>makeinfo</code> or <code>texi2dvi</code>. However for constructs with 
-unspecified behaviour <code>texi2html</code> often doesn't lead to the 
+unspecified behaviour <code>texi2html</code> often doesn&rsquo;t lead to the 
 same result than <code>makeinfo</code> or <code>texi2dvi</code>. <code>makeinfo</code>
 and <code>texi2dvi</code> are also inconsistent in most of these cases (or
 broken). You are urged not to use these features unless absolutely necessary.
@@ -6336,7 +6336,7 @@ it after the <code>@end</code>.
 <dd><p>The special @-commands are commands like <code>@pagesizes</code>, <code>@sp</code>,
 <code>@evenheading</code>, <code>@raisesections</code>, <code>@defindex</code> and a lot
 more. In many cases <code>makeinfo</code> and <code>texi2dvi</code> 
-don't parse those commands the same way too. <code>texi2html</code> may also
+don&rsquo;t parse those commands the same way too. <code>texi2html</code> may also
 show some differences in parsing of the arguments of these commands, 
 in case there are wrong arguments, and also ignore differently things
 following those commands. How user defined macros, set and values
@@ -6361,7 +6361,7 @@ The reference implementation is the <code>makeinfo</code> implementation as
 </p>
 <ul>
 <li> <code>@rmacro</code> and <code>@macro</code> behave exactly the same. In fact
-this goes against a documented behaviour, however if a user don't
+this goes against a documented behaviour, however if a user don&rsquo;t
 want a recursive macro he can simply avoid reusing the macro in the 
 definition. If somebody report that the feature is usefull we could try
 to implement it.
@@ -6371,14 +6371,14 @@ to implement it.
 <p>with the &lsquo;<samp>\</samp>&rsquo; being removed after the first expansion. Otherwise
 it is not possible to produce a <code>\@end macro</code> in a macro.
 </p></li><li> <code>@unmacro</code> is interpreted during the macro argument expansion.
-Don't know what <code>makeinfo</code> exactly do.
+Don&rsquo;t know what <code>makeinfo</code> exactly do.
 </li><li> Some <code>@value</code> may be expanded later than the others, those
 that are in special commands, like <code>@node</code>.
 </li></ul>
 
 </dd>
 <dt> <code>@,</code> in <code>@node</code></dt>
-<dd><p>Like <code>texi2dvi</code> but unlike <code>makeinfo</code> <code>@,</code> don't 
+<dd><p>Like <code>texi2dvi</code> but unlike <code>makeinfo</code> <code>@,</code> don&rsquo;t 
 break <code>@node</code> arguments like a regular &lsquo;<samp>,</samp>&rsquo;.
 </p></dd>
 <dt> Things before first node or preamble</dt>
@@ -6390,7 +6390,7 @@ interpreted or discarded as <code>makeinfo</code> or <code>texi2dvi</code> do.
 knows about.
 </p></dd>
 <dt> commands in <code>@ifset</code> and <code>@ifclear</code></dt>
-<dd><p><code>texi2html</code> doesn't need a proper nesting of internal <code>@ifset</code>
+<dd><p><code>texi2html</code> doesn&rsquo;t need a proper nesting of internal <code>@ifset</code>
 or <code>@ifclear</code> if they are in ignored or raw regions (like <code>@html</code>
 or <code>@verbatim</code>). For example the following is accepted by 
 <code>texi2html</code> and not by <code>makeinfo</code>:

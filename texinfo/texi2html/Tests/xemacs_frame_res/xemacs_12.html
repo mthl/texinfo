@@ -95,7 +95,7 @@ with the mouse.
 <p> To specify the text for a command to operate on, set <em>the
 mark</em> at one end of it, and move point to the other end.  The text
 between point and the mark is called <em>the region</em>.  You can move
-point or the mark to adjust the boundaries of the region.  It doesn't
+point or the mark to adjust the boundaries of the region.  It doesn&rsquo;t
 matter which one is set first chronologically, or which one comes
 earlier in the text.
 </p>  
@@ -375,7 +375,7 @@ command moves point to all the old marks on the ring, one by one.
 The marks you have seen go to the end of the ring, so no marks are lost.
 </p>
 <p>  Each buffer has its own mark ring.  All editing commands use the current
-buffer's mark ring.  In particular, <kbd>C-u C-&lt;SPC&gt;</kbd> always stays in
+buffer&rsquo;s mark ring.  In particular, <kbd>C-u C-&lt;SPC&gt;</kbd> always stays in
 the same buffer.
 </p>
 <p>  Many commands that can move long distances, such as <kbd>M-&lt;</kbd>
@@ -639,7 +639,7 @@ kill ring are known as <em>kill</em> commands.  Some other commands erase
 text but do not save it; they are known as <em>delete</em> commands.  (This
 distinction is made only for erasing text in the buffer.)
 </p>
-<p>The commands' names and individual descriptions use the words
+<p>The commands&rsquo; names and individual descriptions use the words
 &lsquo;<samp>kill</samp>&rsquo; and &lsquo;<samp>delete</samp>&rsquo; to indicate what they do.  If you perform
 a kill or delete command by mistake, use the <kbd>C-x u</kbd> (<code>undo</code>)
 command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a>). The delete commands include <kbd>C-d</kbd>
@@ -694,10 +694,10 @@ following it (<code>delete-indentation</code>).
 <p>  The most basic delete commands are <kbd>C-d</kbd> (<code>delete-char</code>) and
 &lt;DEL&gt; (<code>delete-backward-char</code>).  <kbd>C-d</kbd> deletes the
 character after point, the one the cursor is &ldquo;on top of&rdquo;.  Point
-doesn't move.  &lt;DEL&gt; deletes the character before the cursor, and
+doesn&rsquo;t move.  &lt;DEL&gt; deletes the character before the cursor, and
 moves point back.  You can delete newlines like any other characters in
 the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
-&lt;DEL&gt; aren't always delete commands; if you give them an argument,
+&lt;DEL&gt; aren&rsquo;t always delete commands; if you give them an argument,
 they kill instead, since they can erase more than one character this
 way.
 </p>
@@ -770,7 +770,7 @@ and the newlines that follow them (however, text on the current line
 before point is not killed).  With a negative argument, <kbd>C-k</kbd> kills
 back to a number of line beginnings.  An argument of -2 means
 kill back to the second line beginning.  If point is at the beginning of
-a line, that line beginning doesn't count, so <kbd>C-u - 2 C-k</kbd> with
+a line, that line beginning doesn&rsquo;t count, so <kbd>C-u - 2 C-k</kbd> with
 point at the front of a line kills the two previous lines.
 </p>
 <p>  <kbd>C-k</kbd> with an argument of zero kills all the text before point on the
@@ -970,7 +970,7 @@ does not actually cut anything.
 <p>  Normally, each kill command pushes a new block onto the kill ring.
 However, two or more kill commands in a row combine their text into a
 single entry, so that a single <kbd>C-y</kbd> yanks it all back. This means
-you don't have to kill all the text you want to yank in one command; you
+you don&rsquo;t have to kill all the text you want to yank in one command; you
 can kill line after line, or word after word, until you have killed what
 you want, then get it all back at once using <kbd>C-y</kbd>. (Thus we join
 television in leading people to kill thoughtlessly.)
@@ -1057,7 +1057,7 @@ ring, it moves to the last entry and starts moving forward from there.
 <p>  Once the text you are looking for is brought into the buffer, you can
 stop doing <kbd>M-y</kbd> commands and the text will stay there. Since the
 text is just a copy of the kill ring item, editing it in the buffer does
-not change what's in the ring.  As long you don't kill additional text,
+not change what&rsquo;s in the ring.  As long you don&rsquo;t kill additional text,
 the &ldquo;last yank&rdquo; pointer remains at the same place in the kill ring:
 repeating <kbd>C-y</kbd> will yank another copy of the same old kill.
 </p>
@@ -1161,7 +1161,7 @@ running Emacs process.  The <code>xclipboard</code> man page provides more detai
 </p>
 <p>Warning: If you use the &lsquo;<tt>xclipboard</tt>&rsquo; application, remember that it
 maintains a list of all things that have been pasted to the clipboard (that
-is, copied with the <b>Copy</b> command).  If you don't manually delete elements
+is, copied with the <b>Copy</b> command).  If you don&rsquo;t manually delete elements
 from this list by clicking on the <b>Delete</b> button in the <code>xclipboard</code>
 window, the clipboard will eventually consume a lot of memory.
 </p>
@@ -1281,7 +1281,7 @@ tells the X server that it owns the selection.  When another
 application asks the X server for the value of the selection, the X
 server requests the information from the owner. When you use
 selections, the selection data is not actually transferred unless
-someone wants it; the act of making a selection doesn't transfer data.
+someone wants it; the act of making a selection doesn&rsquo;t transfer data.
 Cut buffers are different: when you &quot;own&quot; a cut buffer, the data is
 actually transferred to the X server immediately, and survives the
 lifetime of the application.
@@ -1455,7 +1455,7 @@ accumulating text.  See section <a href="xemacs_13.html#SEC102">Registers</a>.
 <dd><p>Prepend region to contents of specified buffer.
 </p></dd>
 <dt> <kbd>M-x copy-to-buffer</kbd></dt>
-<dd><p>Copy region into specified buffer, deleting that buffer's old contents.
+<dd><p>Copy region into specified buffer, deleting that buffer&rsquo;s old contents.
 </p></dd>
 <dt> <kbd>M-x insert-buffer</kbd></dt>
 <dd><p>Insert contents of specified buffer into current buffer at point.
@@ -1498,7 +1498,7 @@ text directly into a file with <kbd>M-x append-to-file</kbd>, which takes
 end of the specified file.  The file is changed immediately on disk.
 This command is normally used with files that are <i>not</i> being visited
 in Emacs.  Using it on a file that Emacs is visiting can produce
-confusing results, because the file's text inside Emacs does not change
+confusing results, because the file&rsquo;s text inside Emacs does not change
 while the file itself changes.
 </p>
 <hr size="6">
@@ -1567,7 +1567,7 @@ moving rectangles, and commands for blank rectangles.
 the text (delete it) or save it as the &ldquo;last killed&rdquo; rectangle.  The
 commands for these two ways are <kbd>M-x delete-rectangle</kbd> and <kbd>M-x
 kill-rectangle</kbd>.  In either case, the portion of each line that falls inside
-the rectangle's boundaries is deleted, causing following text (if any) on
+the rectangle&rsquo;s boundaries is deleted, causing following text (if any) on
 the line to move left.
 </p>
 <p>  Note that &ldquo;killing&rdquo; a rectangle is not killing in the usual sense; the
@@ -1580,7 +1580,7 @@ commands are difficult to make sense of.
 </p>
 <p>  Inserting a rectangle is the opposite of deleting one.  You specify
 where to put the upper left corner by putting point there.  The
-rectangle's first line is inserted at point, the rectangle's second line
+rectangle&rsquo;s first line is inserted at point, the rectangle&rsquo;s second line
 is inserted at a point one line vertically down, and so on.  The number
 of lines affected is determined by the height of the saved rectangle.
 </p>

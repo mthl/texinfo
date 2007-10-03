@@ -96,7 +96,7 @@ previously given (see section <a href="texinfo_2.html#SEC11">Six Parts of a Texi
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC52">3.4 Title and Copyright Pages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Creating the title and copyright pages.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC59">3.5 The `Top' Node and Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Creating the `Top' node and master menu.
+<tr><td align="left" valign="top"><a href="#SEC59">3.5 The &lsquo;Top&rsquo; Node and Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Creating the &lsquo;Top&rsquo; node and master menu.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC62">3.6 Global Document Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Affecting formatting throughout.
 </td></tr>
@@ -541,7 +541,7 @@ this text once, and another command (<code>@insertcopying</code>) to
 insert the text at appropriate points.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC50">3.3.1 <code>@copying</code>: Declare copying permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Declare the document's copying permissions.
+<tr><td align="left" valign="top"><a href="#SEC50">3.3.1 <code>@copying</code>: Declare copying permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Declare the document&rsquo;s copying permissions.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC51">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Where to insert the permissions.
 </td></tr>
@@ -587,7 +587,7 @@ Permission is granted to &hellip;
 @end copying
 </pre></td></tr></table>
 
-<p>The <code>@quotation</code> has no legal significance; it's there to improve
+<p>The <code>@quotation</code> has no legal significance; it&rsquo;s there to improve
 readability in some contexts.
 </p>
 <p>See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>, for the full text to be used in GNU manuals.
@@ -596,7 +596,7 @@ which GNU and other free manuals are distributed.
 </p>
 <p>The text of <code>@copying</code> is output as a comment at the beginning of
 Info, HTML, and XML output files.  It is <em>not</em> output implicitly in
-plain text or TeX; it's up to you to use <code>@insertcopying</code> to
+plain text or TeX; it&rsquo;s up to you to use <code>@insertcopying</code> to
 emit the copying information.  See the next section for details.
 </p>
 <a name="IDX73"></a>
@@ -609,7 +609,7 @@ itself has the following legally defined sequence:
 </pre></td></tr></table>
 
 <a name="IDX74"></a>
-<p>The word `Copyright' must always be written in English, even if the
+<p>The word &lsquo;Copyright&rsquo; must always be written in English, even if the
 manual is otherwise in another language.  This is due to international
 law.
 </p>
@@ -621,10 +621,10 @@ commas.
 </p>
 <a name="IDX76"></a>
 <p>The copyright owner (or owners) is whoever holds legal copyright on the
-work.  In the case of works assigned to the FSF, the owner is `Free
-Software Foundation, Inc.'.
+work.  In the case of works assigned to the FSF, the owner is &lsquo;Free
+Software Foundation, Inc.&rsquo;.
 </p>
-<p>See <a href="../maintain/Copyright-Notices.html#Copyright-Notices">(maintain)Copyright Notices</a> section `Copyright Notices' in <cite>GNU Maintenance Instructions</cite>, for
+<p>See <a href="../maintain/Copyright-Notices.html#Copyright-Notices">(maintain)Copyright Notices</a> section &lsquo;Copyright Notices&rsquo; in <cite>GNU Maintenance Instructions</cite>, for
 additional information.
 </p>
 
@@ -659,8 +659,8 @@ itself, like this:
 must be used on the copyright page in the printed manual
 (see section <a href="#SEC56">Copyright Page</a>).
 </p>
-<p>Although it's not a legal requirement, we also strongly recommend using
-<code>@insertcopying</code> in the Top node of your manual (see section <a href="#SEC59">The `Top' Node and Master Menu</a>).  Here's why:
+<p>Although it&rsquo;s not a legal requirement, we also strongly recommend using
+<code>@insertcopying</code> in the Top node of your manual (see section <a href="#SEC59">The &lsquo;Top&rsquo; Node and Master Menu</a>).  Here&rsquo;s why:
 </p>
 <p>The <code>@copying</code> command itself causes the permissions text to
 appear in an Info file <em>before</em> the first node.  The text is also
@@ -702,7 +702,7 @@ automatically at the beginning of the XML output file.
 </tr></table>
 <h2 class="section"> 3.4 Title and Copyright Pages </h2>
 
-<p>In hard copy output, the manual's name and author are usually printed on
+<p>In hard copy output, the manual&rsquo;s name and author are usually printed on
 a title page.  Copyright information is usually printed on the back of
 the title page.
 </p>
@@ -787,8 +787,8 @@ version of the program to which the manual applies on the title page.
 If the manual changes more frequently than the program or is independent
 of it, you should also include an edition number<a name="DOCF5" href="texinfo_fot.html#FOOT5">(5)</a> for the manual.
 This helps readers keep track of which manual is for which version of
-the program.  (The `Top' node should also contain this information; see
-<a href="#SEC59">The `Top' Node and Master Menu</a>.)
+the program.  (The &lsquo;Top&rsquo; node should also contain this information; see
+<a href="#SEC59">The &lsquo;Top&rsquo; Node and Master Menu</a>.)
 </p>
 <p>Texinfo provides two main methods for creating a title page.  One method
 uses the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code> commands
@@ -1201,9 +1201,9 @@ See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for more informa
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 3.5 The `Top' Node and Master Menu </h2>
+<h2 class="section"> 3.5 The &lsquo;Top&rsquo; Node and Master Menu </h2>
 
-<p>The `Top' node is the node in which a reader enters an Info manual.  As
+<p>The &lsquo;Top&rsquo; node is the node in which a reader enters an Info manual.  As
 such, it should begin with the <code>@insertcopying</code> command
 (see section <a href="#SEC49">Document Permissions</a>) to provide a brief description of the
 manual (including the version number) and copying permissions, and end
@@ -1215,7 +1215,7 @@ any other general information you feel a reader would find helpful.
 containing the title of the document immediately after the <code>@node
 Top</code> line (see section <a href="texinfo_7.html#SEC94">The <code>@top</code> Sectioning Command</a>).
 </p>
-<p>The contents of the `Top' node should appear only in the online output;
+<p>The contents of the &lsquo;Top&rsquo; node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
 <code>@ifnottex</code> and <code>@end ifnottex</code> commands.  (TeX does not
 print either an <code>@node</code> line or a menu; they appear only in Info;
@@ -1500,7 +1500,7 @@ the form most often used for books and manuals.
 because there is no printing tradition of starting chapters or books on
 an even-numbered page.
 </p>
-<p>If you don't like the default headers that <code>@setchapternewpage</code>
+<p>If you don&rsquo;t like the default headers that <code>@setchapternewpage</code>
 sets, you can explicit control them with the <code>@headings</code> command.
 See section <a href="#SEC58">The <code>@headings</code> Command</a>.
 </p>
@@ -1514,7 +1514,7 @@ command has no effect on it.
 </p>
 <p>We recommend not including any <code>@setchapternewpage</code> command in
 your manual sources at all, since the desired output is not intrinsic to
-the document.  For a particular hard copy run, if you don't want the
+the document.  For a particular hard copy run, if you don&rsquo;t want the
 default option (no blank pages, same headers on all pages) use the
 &lsquo;<samp>--texinfo</samp>&rsquo; option to <code>texi2dvi</code> to specify the output
 you want.
@@ -1661,7 +1661,7 @@ formatting commands indent paragraphs as specified.  See section <a href="#SEC45
 <p>If the Texinfo file has a section containing the &ldquo;General Public
 License&rdquo; and the distribution information and a warranty disclaimer for
 the software that is documented, we recommend placing this right after
-the `Top' node.  The General Public License is very important to Project
+the &lsquo;Top&rsquo; node.  The General Public License is very important to Project
 GNU software.  It ensures that you and others will continue to have a
 right to use and share the software.
 </p>

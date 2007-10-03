@@ -63,10 +63,10 @@ ul.toc {list-style: none}
 
 <p>  Text you are editing in Emacs resides in an object called a
 <em>buffer</em>.  Each time you visit a file, Emacs creates a buffer to
-hold the file's text.  Each time you invoke Dired, Emacs creates a buffer
+hold the file&rsquo;s text.  Each time you invoke Dired, Emacs creates a buffer
 to hold the directory listing.  If you send a message with <kbd>C-x m</kbd>,
 a buffer named &lsquo;<samp>*mail*</samp>&rsquo; is used to hold the text of the message.
-When you ask for a command's documentation, it appears in a buffer
+When you ask for a command&rsquo;s documentation, it appears in a buffer
 called &lsquo;<samp>*Help*</samp>&rsquo;.
 </p>
 <a name="IDX644"></a>
@@ -78,13 +78,13 @@ buffer, as most commands do.
 </p>
 <p>  When Emacs creates multiple windows, each window has a chosen buffer which
 is displayed there, but at any time only one of the windows is selected and
-its chosen buffer is the selected buffer.  Each window's mode line displays
+its chosen buffer is the selected buffer.  Each window&rsquo;s mode line displays
 the name of the buffer the window is displaying (see section <a href="xemacs_19.html#SEC175">Multiple Windows</a>).
 </p>
 <p>  Each buffer has a name which can be of any length but is
 case-sensitive.  You can select a buffer using its name.  Most
 buffers are created when you visit files; their names are derived from
-the files' names.  You can also create an empty buffer with any name you
+the files&rsquo; names.  You can also create an empty buffer with any name you
 want.  A newly started Emacs has a buffer named &lsquo;<samp>*scratch*</samp>&rsquo; which
 you can use for evaluating Lisp expressions in Emacs.
 </p>
@@ -159,7 +159,7 @@ window.
 that display text.  You can also create a buffer explicitly by typing
 <kbd>C-x b <var>bufname</var> &lt;RET&gt;</kbd>, which creates a new, empty buffer
 that is not visiting any file, and selects it for editing.  The new
-buffer's major mode is determined by the value of
+buffer&rsquo;s major mode is determined by the value of
 <code>default-major-mode</code> (see section <a href="xemacs_21.html#SEC190">Major Modes</a>).  Buffers not visiting
 files are usually used for making notes to yourself.  If you try to save
 one, you are asked for the file name to use.
@@ -207,7 +207,7 @@ visiting a file to switch buffers.  See section <a href="xemacs_17.html#SEC136">
 <a name="IDX653"></a>
 <a name="IDX654"></a>
 <p>  To print a list of all existing buffers, type <kbd>C-x C-b</kbd>.  Each
-line in the list shows one buffer's name, major mode, and visited file.
+line in the list shows one buffer&rsquo;s name, major mode, and visited file.
 A &lsquo;<samp>*</samp>&rsquo; at the beginning of a line indicates the buffer has been
 &ldquo;modified&rdquo;.  If several buffers are modified, it may be time to save
 some with <kbd>C-x s</kbd> (see section <a href="xemacs_17.html#SEC137">Saving Files</a>).  A &lsquo;<samp>%</samp>&rsquo; indicates a read-only

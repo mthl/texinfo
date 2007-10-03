@@ -233,7 +233,7 @@ command.
 kinds within and after sentences.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC179">13.2.1 Not Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Sometimes a . doesn't end a sentence.
+<tr><td align="left" valign="top"><a href="#SEC179">13.2.1 Not Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Sometimes a . doesn&rsquo;t end a sentence.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC180">13.2.2 Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Sometimes it does.
 </td></tr>
@@ -342,7 +342,7 @@ Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 &lsquo;<samp>.</samp>&rsquo;; likewise for <code>@!</code> and <code>@?</code>.
 </p>
 <p>The meanings of <code>@:</code> and <code>@.</code> in Texinfo are designed to
-work well with the Emacs sentence motion commands (see <a href="../emacs/Sentences.html#Sentences">(emacs)Sentences</a> section `Sentences' in <cite>The GNU Emacs Manual</cite>).
+work well with the Emacs sentence motion commands (see <a href="../emacs/Sentences.html#Sentences">(emacs)Sentences</a> section &lsquo;Sentences&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>Do not put braces after any of these commands.
 </p>
@@ -517,7 +517,7 @@ possible, since accented characters are very common in some languages.
 </p></td></tr>
 <tr><td><p> <tt>@&quot;o</tt>              </p></td><td><p> &ouml;            </p></td><td><p> umlaut accent
 </p></td></tr>
-<tr><td><p> <tt>@'o</tt>              </p></td><td><p> &oacute;            </p></td><td><p> acute accent
+<tr><td><p> <tt>@&rsquo;o</tt>              </p></td><td><p> &oacute;            </p></td><td><p> acute accent
 </p></td></tr>
 <tr><td><p> <tt>@,{c}</tt>          </p></td><td><p> &ccedil;          </p></td><td><p> cedilla accent
 </p></td></tr>
@@ -525,7 +525,7 @@ possible, since accented characters are very common in some languages.
 </p></td></tr>
 <tr><td><p> <tt>@^o</tt>              </p></td><td><p> &ocirc;            </p></td><td><p> circumflex accent
 </p></td></tr>
-<tr><td><p> <tt>@`o</tt>              </p></td><td><p> &ograve;            </p></td><td><p> grave accent
+<tr><td><p> <tt>@&lsquo;o</tt>              </p></td><td><p> &ograve;            </p></td><td><p> grave accent
 </p></td></tr>
 <tr><td><p> <tt>@~o</tt>              </p></td><td><p> &otilde;            </p></td><td><p> tilde accent
 </p></td></tr>
@@ -666,7 +666,7 @@ the braces, the formatters would be confused.  See section <a href="texinfo_29.h
 <h3 class="subsection"> 13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">...</small>) </h3>
 
 <p>Use the <code>@dots{}</code> command to generate an ellipsis, which is
-three dots in a row, appropriately spaced, like this: `&hellip;'.  Do
+three dots in a row, appropriately spaced, like this: &lsquo;&hellip;&rsquo;.  Do
 not simply write three periods in the input file; that would work for
 the Info file output, but would produce the wrong amount of space
 between the periods in the printed manual.
@@ -728,8 +728,8 @@ type the braces, because <code>@itemize</code> supplies them.
 </tr></table>
 <h2 class="section"> 13.5 Inserting TeX and the Copyright Symbol </h2>
 
-<p>The logo `TeX' is typeset in a special fashion and it needs an
-@-command.  The copyright symbol, `&copy;', is also special.
+<p>The logo &lsquo;TeX&rsquo; is typeset in a special fashion and it needs an
+@-command.  The copyright symbol, &lsquo;&copy;&rsquo;, is also special.
 Each of these commands is followed by a pair of braces, &lsquo;<samp>{}</samp>&rsquo;,
 without any whitespace between the name of the command and the
 braces.
@@ -763,7 +763,7 @@ braces.
 </tr></table>
 <h3 class="subsection"> 13.5.1 <code>@TeX</code>{} (TeX) </h3>
 
-<p>Use the <code>@TeX{}</code> command to generate `TeX'.  In a printed
+<p>Use the <code>@TeX{}</code> command to generate &lsquo;TeX&rsquo;.  In a printed
 manual, this is a special logo that is different from three ordinary
 letters.  In Info, it just looks like &lsquo;<samp>TeX</samp>&rsquo;.  The
 <code>@TeX{}</code> command is unique among Texinfo commands in that the
@@ -791,7 +791,7 @@ letters.  In Info, it just looks like &lsquo;<samp>TeX</samp>&rsquo;.  The
 </tr></table>
 <h3 class="subsection"> 13.5.2 <code>@copyright</code>{} (&copy;) </h3>
 
-<p>Use the <code>@copyright{}</code> command to generate `&copy;'.  In
+<p>Use the <code>@copyright{}</code> command to generate &lsquo;&copy;&rsquo;.  In
 a printed manual, this is a &lsquo;<samp>c</samp>&rsquo; inside a circle, and in Info,
 this is &lsquo;<samp>(C)</samp>&rsquo;.
 </p>
@@ -817,7 +817,7 @@ this is &lsquo;<samp>(C)</samp>&rsquo;.
 </tr></table>
 <h2 class="section"> 13.6 <code>@pounds</code>{} (&pound;): Pounds Sterling </h2>
 
-<p>Use the <code>@pounds{}</code> command to generate `&pound;'.  In a
+<p>Use the <code>@pounds{}</code> command to generate &lsquo;&pound;&rsquo;.  In a
 printed manual, this is the symbol for the currency pounds sterling.
 In Info, it is a &lsquo;<samp>#</samp>&rsquo;.  Other currency symbols are unfortunately not
 available.
@@ -904,7 +904,7 @@ command.  Write the mathematical expression between braces, like this:
 </p>
 <p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
-allows you to use any of the plain TeX math control sequences.  It's
+allows you to use any of the plain TeX math control sequences.  It&rsquo;s
 conventional to use &lsquo;<samp>\</samp>&rsquo; instead of &lsquo;<samp>@</samp>&rsquo; for these commands.
 As in:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
@@ -917,7 +917,7 @@ As in:
 <a name="IDX224"></a>
 <p>Since &lsquo;<samp>\</samp>&rsquo; is an escape character inside <code>@math</code>, you can use
 <code>@\</code> to get a literal backslash (<code>\\</code> will work in TeX,
-but you'll get the literal &lsquo;<samp>\\</samp>&rsquo; in Info).  <code>@\</code> is not
+but you&rsquo;ll get the literal &lsquo;<samp>\\</samp>&rsquo; in Info).  <code>@\</code> is not
 defined outside of <code>@math</code>, since a &lsquo;<samp>\</samp>&rsquo; ordinarily produces a
 literal &lsquo;<samp>\</samp>&rsquo;.
 </p>
@@ -1211,7 +1211,7 @@ last line.
 designate the error message with the <code>@error{}</code> command.
 </p>
 <p>The <code>@error{}</code> command is displayed as &lsquo;<samp>error--&gt;</samp>&rsquo; in Info
-and as the word `error' in a box in the printed output.
+and as the word &lsquo;error&rsquo; in a box in the printed output.
 </p>
 <p>Thus,
 </p>
@@ -1422,7 +1422,7 @@ footnote.}; in the Texinfo source&hellip;
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal (the
 first ends the footnote and the second belongs to the sentence being
-footnoted), so don't worry that it looks odd.
+footnoted), so don&rsquo;t worry that it looks odd.
 </p>
 <p>In a printed manual or book, the reference mark for a footnote is a
 small, superscripted number; the text of the footnote appears at the
@@ -1430,7 +1430,7 @@ bottom of the page, below a horizontal line.
 </p>
 <p>In Info, the reference mark for a footnote is a pair of parentheses
 with the footnote number between them, like this: &lsquo;<samp>(1)</samp>&rsquo;.  The
-reference mark is followed by a cross-reference link to the footnote's
+reference mark is followed by a cross-reference link to the footnote&rsquo;s
 text.
 </p>
 <p>In the HTML output, footnote references are marked with a small,
@@ -1469,7 +1469,7 @@ footnote is located:
 <ul>
 <li><a name="IDX227"></a>
 </li><li>
-In the `End' node style, all the footnotes for a single node
+In the &lsquo;End&rsquo; node style, all the footnotes for a single node
 are placed at the end of that node.  The footnotes are separated from
 the rest of the node by a line of dashes with the word
 &lsquo;<samp>Footnotes</samp>&rsquo; within it.  Each footnote begins with an
@@ -1484,7 +1484,7 @@ the rest of the node by a line of dashes with the word
 
 <a name="IDX228"></a>
 </li><li>
-In the `Separate' node style, all the footnotes for a single
+In the &lsquo;Separate&rsquo; node style, all the footnotes for a single
 node are placed in an automatically constructed node of
 their own.  In this style, a &ldquo;footnote reference&rdquo; follows
 each &lsquo;<samp>(<var>n</var>)</samp>&rsquo; reference mark in the body of the
@@ -1493,10 +1493,10 @@ which you use to reach the footnote node.
 
 <p>The name of the node with the footnotes is constructed
 by appending &lsquo;<samp>-Footnotes</samp>&rsquo; to the name of the node
-that contains the footnotes. (Consequently, the footnotes'
+that contains the footnotes. (Consequently, the footnotes&rsquo;
 node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
-&lsquo;<tt>Footnotes-Footnotes</tt>&rsquo;!)  The footnotes' node has an
-`Up' node pointer that leads back to its parent node.
+&lsquo;<tt>Footnotes-Footnotes</tt>&rsquo;!)  The footnotes&rsquo; node has an
+&lsquo;Up&rsquo; node pointer that leads back to its parent node.
 </p>
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
@@ -1512,7 +1512,7 @@ formatted for Info in the separate node style:
 style.
 </p>
 <a name="IDX229"></a>
-<p>Use the <code>@footnotestyle</code> command to specify an Info file's
+<p>Use the <code>@footnotestyle</code> command to specify an Info file&rsquo;s
 footnote style.  Write this command at the beginning of a line followed
 by an argument, either &lsquo;<samp>end</samp>&rsquo; for the end node style or
 &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
@@ -1533,8 +1533,8 @@ footnotes as specified.)
 </p>
 <p>If you do not specify a footnote style, the formatting commands use
 their default style.  Currently, <code>texinfo-format-buffer</code> and
-<code>texinfo-format-region</code> use the `separate' style and
-<code>makeinfo</code> uses the `end' style.
+<code>texinfo-format-region</code> use the &lsquo;separate&rsquo; style and
+<code>makeinfo</code> uses the &lsquo;end&rsquo; style.
 </p>
 <p>This chapter contains two footnotes.
 </p>
@@ -1577,7 +1577,7 @@ TeX reads the file &lsquo;<tt><var>filename</var>.eps</tt>&rsquo; (Encapsulated 
 format).
 </li><li>
 <a name="IDX232"></a>
-PDFTeX reads &lsquo;<tt><var>filename</var>.pdf</tt>&rsquo; (Adobe's Portable Document Format).
+PDFTeX reads &lsquo;<tt><var>filename</var>.pdf</tt>&rsquo; (Adobe&rsquo;s Portable Document Format).
 </li><li>
 <code>makeinfo</code> uses &lsquo;<tt><var>filename</var>.txt</tt>&rsquo; verbatim for
 Info output (more or less as if it was an <code>@example</code>).

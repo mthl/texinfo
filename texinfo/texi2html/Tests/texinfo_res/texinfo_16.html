@@ -86,10 +86,10 @@ options, special forms and other such artifacts in a uniform
 format.
 </p>
 <p>In the Info file, a definition causes the entity
-category&mdash;`Function', `Variable', or whatever&mdash;to appear at the
+category&mdash;&lsquo;Function&rsquo;, &lsquo;Variable&rsquo;, or whatever&mdash;to appear at the
 beginning of the first line of the definition, followed by the
-entity's name and arguments.  In the printed manual, the command
-causes TeX to print the entity's name and its arguments on the left
+entity&rsquo;s name and arguments.  In the printed manual, the command
+causes TeX to print the entity&rsquo;s name and its arguments on the left
 margin and print the category next to the right margin.  In both
 output formats, the body of the definition is indented.  Also, the
 name of the entity is entered into the appropriate index:
@@ -107,7 +107,7 @@ a given name.  An appendix containing a summary should use
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC216">15.2 Optional and Repeated Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to handle optional and repeated arguments.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC217">15.3 Two or More `First' Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more `first' lines.
+<tr><td align="left" valign="top"><a href="#SEC217">15.3 Two or More &lsquo;First&rsquo; Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more &lsquo;first&rsquo; lines.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC218">15.4 The Definition Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          All the definition commands.
 </td></tr>
@@ -175,7 +175,7 @@ This command moves point forward @var{count} words
 </blockquote>
 
 <p>Capitalize the category name like a title.  If the name of the
-category contains spaces, as in the phrase `Interactive Command',
+category contains spaces, as in the phrase &lsquo;Interactive Command&rsquo;,
 write braces around it.  For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
@@ -319,9 +319,9 @@ example).
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 15.3 Two or More `First' Lines </h2>
+<h2 class="section"> 15.3 Two or More &lsquo;First&rsquo; Lines </h2>
 
-<p>To create two or more `first' or header lines for a definition, follow
+<p>To create two or more &lsquo;first&rsquo; or header lines for a definition, follow
 the first <code>@deffn</code> line by a line beginning with <code>@deffnx</code>.
 The <code>@deffnx</code> command works exactly like <code>@deffn</code>
 except that it does not generate extra vertical white space between it
@@ -347,10 +347,10 @@ These two search commands are similar except &hellip;
 <dd><p>These two search commands are similar except &hellip;
 </p></dd></dl>
 
-<p>Each definition command has an `x' form: <code>@defunx</code>,
+<p>Each definition command has an &lsquo;x&rsquo; form: <code>@defunx</code>,
 <code>@defvrx</code>, <code>@deftypefunx</code>, etc.
 </p>
-<p>The `x' forms work just like <code>@itemx</code>; see <a href="texinfo_12.html#SEC162"><code>@itemx</code></a>.
+<p>The &lsquo;x&rsquo; forms work just like <code>@itemx</code>; see <a href="texinfo_12.html#SEC162"><code>@itemx</code></a>.
 </p>
 <hr size="6">
 <a name="Def-Cmds-in-Detail"></a>
@@ -504,7 +504,7 @@ works like <code>@defun</code>.
 <dt> <code>@defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
-see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
+see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section &lsquo;Special Forms&rsquo; in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to &lsquo;<samp>@deffn {Special Form}
 &hellip;</samp>&rsquo; and works like <code>@defun</code>.
 </p></dd>
@@ -600,7 +600,7 @@ own.
 <dd><a name="IDX273"></a>
 <p>The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
-taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
+taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section &lsquo;Variables&rsquo; in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
 Option} &hellip;</samp>&rsquo; and works like <code>@defvar</code>.
 </p></dd>
 </dl>
@@ -697,7 +697,7 @@ paragraphs.
 would be a single line in a real Texinfo file.)
 </p>
 <p>In this instance, the procedure is classified as belonging to the
-package <code>stacks</code> rather than classified as a `procedure' and its
+package <code>stacks</code> rather than classified as a &lsquo;procedure&rsquo; and its
 data type is described as <code>private</code>.  (The name of the procedure
 is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 </p>
@@ -960,8 +960,8 @@ operation, and its arguments, if any.
 @end defop
 </pre></td></tr></table>
 
-<p><code>@defop</code> creates an entry, such as `<code>expose</code> on
-<code>windows</code>', in the index of functions.
+<p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
+<code>windows</code>&rsquo;, in the index of functions.
 </p>
 <a name="IDX282"></a>
 </dd>
@@ -1001,8 +1001,8 @@ the class <code>bar-class</code>.  The method takes an argument.
 @end defmethod
 </pre></td></tr></table>
 
-<p><code>@defmethod</code> creates an entry, such as `<code>bar-method</code> on
-<code>bar-class</code>', in the index of functions.
+<p><code>@defmethod</code> creates an entry, such as &lsquo;<code>bar-method</code> on
+<code>bar-class</code>&rsquo;, in the index of functions.
 </p>
 
 </dd>
@@ -1129,7 +1129,7 @@ commands.  The name of the function follows immediately after the
 <code>@defun</code> command and it is followed, on the same line, by the
 parameter list.
 </p>
-<p>Here is a definition from <a href="../elisp/Calling-Functions.html#Calling-Functions">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
+<p>Here is a definition from <a href="../elisp/Calling-Functions.html#Calling-Functions">(elisp)Calling Functions</a> section &lsquo;Calling Functions&rsquo; in <cite>The GNU Emacs Lisp Reference Manual</cite>.
 </p>
 <blockquote><dl>
 <dt><u>Function:</u> <b>apply</b><i> function &amp;rest arguments</i>

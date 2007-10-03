@@ -443,7 +443,7 @@ using single spaces to separate them, and the string is found even if
 there are multiple spaces, newlines or other punctuation between the words.
 </p>
 <p>  Word search is useful in editing documents formatted by text formatters.
-If you edit while looking at the printed, formatted version, you can't tell
+If you edit while looking at the printed, formatted version, you can&rsquo;t tell
 where the line breaks are in the source file.  Word search, allows you
 to search  without having to know the line breaks.
 </p>
@@ -500,8 +500,8 @@ traditionally offered.
 </p>
 <p> To gain a thorough understanding of regular expressions and how to use
 them to best advantage, we recommend that you study <cite>Mastering
-Regular Expressions, by Jeffrey E.F. Friedl, O'Reilly and Associates,
-1997</cite>. (It's known as the &quot;Hip Owls&quot; book, because of the picture on its
+Regular Expressions, by Jeffrey E.F. Friedl, O&rsquo;Reilly and Associates,
+1997</cite>. (It&rsquo;s known as the &quot;Hip Owls&quot; book, because of the picture on its
 cover.)  You might also read the manuals to <a href="../gawk/index.html#Top">(gawk)Top</a>,
 <a href="../ed/index.html#Top">(ed)Top</a>, <cite>sed</cite>, <cite>grep</cite>, <a href="../perl/index.html#Top">(perl)Top</a>,
 <a href="../regex/index.html#Top">(regex)Top</a>, <a href="../rx/index.html#Top">(rx)Top</a>, <cite>pcre</cite>, and <a href="../flex/index.html#Top">(flex)Top</a>, which
@@ -509,7 +509,7 @@ also make good use of regular expressions.
 </p>
 <p> The XEmacs regular expression syntax most closely resembles that of
 <cite>ed</cite>, or <cite>grep</cite>, the GNU versions of which all utilize the GNU
-<cite>regex</cite> library.  XEmacs' version of <cite>regex</cite> has recently been
+<cite>regex</cite> library.  XEmacs&rsquo; version of <cite>regex</cite> has recently been
 extended with some Perl&ndash;like capabilities, described in the next
 section.
 </p>
@@ -627,7 +627,7 @@ successfully.
 backtracking loops.  For example, it could take hours for the regular
 expression &lsquo;<samp>\(x+y*\)*a</samp>&rsquo; to match the sequence
 &lsquo;<samp>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxz</samp>&rsquo;.  The slowness is because
-Emacs must try each imaginable way of grouping the 35 &lsquo;<samp>x</samp>&rsquo;'s before
+Emacs must try each imaginable way of grouping the 35 &lsquo;<samp>x</samp>&rsquo;&rsquo;s before
 concluding that none of them can work.  To make sure your regular
 expressions run fast, check nested repetitions carefully.
 </p>
@@ -861,7 +861,7 @@ more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
 </p>
 <p>Using &lsquo;<samp>\(?: &hellip; \)</samp>&rsquo; rather than &lsquo;<samp>\( &hellip; \)</samp>&rsquo; when you
-don't need the captured substrings ought to speed up your programs some,
+don&rsquo;t need the captured substrings ought to speed up your programs some,
 since it shortens the code path followed by the regular expression
 engine, as well as the amount of memory allocation and string copying it
 must do.  The actual performance gain to be observed has not been
@@ -898,7 +898,7 @@ stand for them.
 </dl>
 
 <p>  The following regular expression constructs match the empty string&mdash;that is,
-they don't use up any characters&mdash;but whether they match depends on the
+they don&rsquo;t use up any characters&mdash;but whether they match depends on the
 context.
 </p>
 <dl compact="compact">
@@ -1115,7 +1115,7 @@ pattern.
 can refer to all or part of what is matched by the <var>regexp</var>.  &lsquo;<samp>\&amp;</samp>&rsquo;
 in <var>newstring</var> stands for the entire text being replaced.
 &lsquo;<samp>\<var>d</var></samp>&rsquo; in <var>newstring</var>, where <var>d</var> is a digit, stands for
-whatever matched the <var>d</var>'th parenthesized grouping in <var>regexp</var>.
+whatever matched the <var>d</var>&rsquo;th parenthesized grouping in <var>regexp</var>.
 For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; c[ad]+r &lt;RET&gt; \&amp;-safe &lt;RET&gt;

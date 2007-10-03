@@ -106,7 +106,7 @@ customized output in the Info file.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC239">18.1 Defining Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Defining and undefining new commands.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC240">18.2 Invoking Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Using a macro, once you've defined it.
+<tr><td align="left" valign="top"><a href="#SEC240">18.2 Invoking Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Using a macro, once you&rsquo;ve defined it.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC241">18.3 Macro Details</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Beyond basic macro usage.
 </td></tr>
@@ -194,7 +194,7 @@ a\arg\b
 @rmac{1@rmac{text}2}
 </pre></td></tr></table>
 
-<p>This produces the output `a1atextb2b'.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
+<p>This produces the output &lsquo;a1atextb2b&rsquo;.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
 &lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
 </p>
 <a name="IDX312"></a>
@@ -345,7 +345,7 @@ Macros containing a command which must be on a line by itself, such as a
 conditional, cannot be invoked in the middle of a line.
 
 </li><li>
-Commas in macro arguments, even if escaped by a backslash, don't
+Commas in macro arguments, even if escaped by a backslash, don&rsquo;t
 always work.
 
 </li><li>
@@ -411,7 +411,7 @@ Whitespace around the equals sign is ignored.  Thus:
 some other media (movies, for example), you might like to define a
 macro <code>@moviecite{}</code> that does the same thing as an ordinary
 <code>@cite{}</code> but conveys the extra semantic information as well.
-You'd do this as follows:
+You&rsquo;d do this as follows:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@alias moviecite = cite
 </pre></td></tr></table>
@@ -480,9 +480,9 @@ is intended for new markup commands (see section <a href="texinfo_10.html#SEC119
 </pre></td></tr></table>
 
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
-formatting command that inserts `//' before and `\\' after the argument
+formatting command that inserts &lsquo;//&rsquo; before and &lsquo;\\&rsquo; after the argument
 to <code>@phoo</code>.  You can then write <code>@phoo{bar}</code> wherever you
-want `//bar\\' highlighted in Info.
+want &lsquo;//bar\\&rsquo; highlighted in Info.
 </p>
 <p>Also, for TeX formatting, you could write 
 </p>

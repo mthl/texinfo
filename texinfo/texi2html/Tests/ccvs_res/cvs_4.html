@@ -61,7 +61,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 4. Revisions </h1>
 
-<p>For many uses of <small>CVS</small>, one doesn't need to worry
+<p>For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
 too much about revision numbers; <small>CVS</small> assigns
 numbers such as <code>1.1</code>, <code>1.2</code>, and so on, and
 that is all one needs to know.  However, some people
@@ -212,7 +212,7 @@ commit</code> can do that.  The &lsquo;<samp>-r</samp>&rsquo; option implies the
 files to be committed even if they are not modified.
 </p>
 <p>For example, to bring all your files up to
-revision 3.0 (including those that haven't changed),
+revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -r 3.0
@@ -288,14 +288,14 @@ starting with &lsquo;<samp>.</samp>&rsquo;, rather than being named analogously 
 <code>BASE</code> and <code>HEAD</code>, to avoid conflicts with
 actual tag names.
 </p>
-<p>You'll want to choose some convention for naming tags,
+<p>You&rsquo;ll want to choose some convention for naming tags,
 based on information such as the name of the program
 and the version number of the release.  For example,
 one might take the name of the program, immediately
 followed by the version number with &lsquo;<samp>.</samp>&rsquo; changed to
 &lsquo;<samp>-</samp>&rsquo;, so that <small>CVS</small> 1.9 would be tagged with the name
 <code>cvs1-9</code>.  If you choose a consistent convention,
-then you won't constantly be guessing whether a tag is
+then you won&rsquo;t constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
 taginfo file (see section <a href="cvs_8.html#SEC78">User-defined logging</a>).
@@ -569,7 +569,7 @@ trigger warnings and will not be deleted.
 </p>
 <p><strong>WARNING: Moving branch tags is very dangerous!  If you think
 you need the <code>-B</code> option, think again and ask your <small>CVS</small>
-administrator about it (if that isn't you).  There is almost certainly
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
 <a name="IDX110"></a>
@@ -597,7 +597,7 @@ name are ignored with a warning message.
 </p>
 <p><strong>WARNING: Moving branch tags is very dangerous!  If you think you
 need the <code>-B</code> option, think again and ask your <small>CVS</small>
-administrator about it (if that isn't you).  There is almost certainly
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
 <a name="IDX114"></a>
@@ -646,7 +646,7 @@ tags are applied to only files which have a revision
 corresponding to what is being tagged.  Files which did
 not exist yet, or which were already removed, simply
 omit the tag, and <small>CVS</small> knows to treat the absence
-of a tag as meaning that the file didn't exist as of
+of a tag as meaning that the file didn&rsquo;t exist as of
 that tag.
 </p>
 <p>However, this can lose a small amount of information.
@@ -667,7 +667,7 @@ specify this option in conjunction with &lsquo;<samp>-F</samp>&rsquo; when
 moving a tag.  If one moved a tag without &lsquo;<samp>-a</samp>&rsquo;,
 then the tag in the removed files might still refer to
 the old revision, rather than reflecting the fact that
-the file had been removed.  I don't think this is
+the file had been removed.  I don&rsquo;t think this is
 necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr size="6">
@@ -692,7 +692,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <h2 class="section"> 4.9 Sticky tags </h2>
 
 
-<p>Sometimes a working copy's revision has extra data
+<p>Sometimes a working copy&rsquo;s revision has extra data
 associated with it, for example it might be on a branch
 (see section <a href="cvs_5.html#SEC54">Branching and merging</a>), or restricted to
 versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
@@ -701,8 +701,8 @@ that is, it applies to subsequent commands in the
 working copy &ndash; we refer to it as <em>sticky</em>.
 </p>
 <p>Most of the time, stickiness is an obscure aspect of
-<small>CVS</small> that you don't need to think about.  However,
-even if you don't want to use the feature, you may need
+<small>CVS</small> that you don&rsquo;t need to think about.  However,
+even if you don&rsquo;t want to use the feature, you may need
 to know <em>something</em> about sticky tags (for
 example, how to avoid them!).
 </p>
@@ -765,7 +765,7 @@ VERS: 1.1
 $
 </pre></td></tr></table>
 
-<p>However, this isn't the easiest way, if you are asking
+<p>However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put
 &lsquo;<tt>file1</tt>&rsquo; back to the way it was as of revision
 1.1).  In that case you are better off using the

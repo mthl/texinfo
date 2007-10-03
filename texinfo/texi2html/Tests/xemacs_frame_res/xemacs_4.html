@@ -90,7 +90,7 @@ The biggest area usually displays the text you are editing.  It may
 consist of one window or of two or more windows if you need to look at two
 buffers a the same time.
 </li><li>
-Below each text window's last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
+Below each text window&rsquo;s last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
 is in inverse video if the terminal supports that.  If there are several
 XEmacs windows in one frame, each window has its own mode line.
 </li><li>
@@ -203,9 +203,9 @@ window.  The visible cursor also shows you which window is selected.  If
 the same buffer appears in more than one window, point can be moved in
 each window independently.
 </p>
-<p>  The term `point' comes from the character &lsquo;<samp>.</samp>&rsquo;, which was the
+<p>  The term &lsquo;point&rsquo; comes from the character &lsquo;<samp>.</samp>&rsquo;, which was the
 command in TECO (the language in which the original Emacs was written)
-for accessing the value now called `point'.
+for accessing the value now called &lsquo;point&rsquo;.
 </p>
 <hr size="6">
 <a name="Echo-Area"></a>
@@ -288,7 +288,7 @@ typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer
 </tr></table>
 <h2 class="section"> 1.3 The Mode Line </h2>
 
-<p>  Each text window's last line is a <em>mode line</em> which describes what is
+<p>  Each text window&rsquo;s last line is a <em>mode line</em> which describes what is
 going on in that window.  When there is only one text window, the mode line
 appears right above the echo area.  The mode line is in inverse video if
 the terminal supports that, starts and ends with dashes, and contains text
@@ -305,7 +305,7 @@ subsystem.
 </pre></td></tr></table>
 
 <p>This gives information about the buffer being displayed in the window: the
-buffer's name, what major and minor modes are in use, whether the buffer's
+buffer&rsquo;s name, what major and minor modes are in use, whether the buffer&rsquo;s
 text has been changed, and how far down the buffer you are currently
 looking.
 </p>
@@ -314,9 +314,9 @@ edited (the buffer is &ldquo;modified&rdquo;), or two dashes (&lsquo;<samp>--</s
 buffer has not been edited.  Exception: for a read-only buffer, it is
 &lsquo;<samp>%%</samp>&rsquo;.
 </p>
-<p>  <var>buf</var> is the name of the window's chosen <em>buffer</em>.  The chosen
+<p>  <var>buf</var> is the name of the window&rsquo;s chosen <em>buffer</em>.  The chosen
 buffer in the selected window (the window that the cursor is in) is also
-XEmacs's selected buffer, the buffer in which editing takes place.  When
+XEmacs&rsquo;s selected buffer, the buffer in which editing takes place.  When
 we speak of what some command does to &ldquo;the buffer&rdquo;, we mean the
 currently selected buffer.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>.
 </p>
@@ -335,7 +335,7 @@ Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#SEC190">M
 on how the modes differ and how you select one.
 </p>
 <p>  <var>minor</var> is a list of some of the <em>minor modes</em> that are turned on
-in the window's chosen buffer.  For example, &lsquo;<samp>Fill</samp>&rsquo; means that Auto
+in the window&rsquo;s chosen buffer.  For example, &lsquo;<samp>Fill</samp>&rsquo; means that Auto
 Fill mode is on.  <code>Abbrev</code> means that Word Abbrev mode is on.
 <code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#SEC352">Minor Modes</a>, for more
 information.  &lsquo;<samp>Narrow</samp>&rsquo; means that the buffer being displayed has
@@ -425,7 +425,7 @@ function, and on a tab in the gutter to switch buffers.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC16">1.9 XEmacs Gutters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How XEmacs uses gutters.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">1.10 Inhibiting Display of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          What if you don't like GUI?
+<tr><td align="left" valign="top"><a href="#SEC17">1.10 Inhibiting Display of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          What if you don&rsquo;t like GUI?
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC18">1.11 Changing the Position, Orientation, and Appearance of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Position, orientation, and appearance of GUI objects.
 </td></tr>
@@ -547,7 +547,7 @@ modeline (this includes the minibuffer window).
 <p>Additionally, a modeline can be dragged horizontally, in which case it
 scrolls its own text. This behavior is not enabled by default because it
 could be considered as disturbing when dragging vertically. When this
-behavior is enabled, the modeline's text can be dragged either in the
+behavior is enabled, the modeline&rsquo;s text can be dragged either in the
 same direction as the mouse, or in the opposite sense, making the
 modeline act as a scrollbar for its own text.
 </p>
@@ -633,7 +633,7 @@ in the list.
 </p>
 <p>Then &quot;uninteresting&quot; buffers, like internal XEmacs buffers, the
 <code>*Message Log*</code> buffer, and so on are deleted from the list.  Next,
-the frame's selected buffer is determined.  Buffers with a different
+the frame&rsquo;s selected buffer is determined.  Buffers with a different
 major mode from the selected buffer are removed from the list.  Finally,
 if the list is too long, the least recently used buffers are deleted
 from the list.  By default up to 6 most recently used buffers with the
@@ -683,7 +683,7 @@ changing the values of the variables <code>menubar-visible-p</code>,
 <code>scrollbars-visible-p</code>, <code>toolbar-visible-p</code>, or
 <code>gutter-buffers-tab-visible-p</code> respectively.  (The strange form of
 the last variable is due to the fact that gutters are often used to
-display transient widgets like progress gauges, which you probably don't
+display transient widgets like progress gauges, which you probably don&rsquo;t
 want to inhibit.  It is more likely that you want to inhibit the default
 display of the buffers tab widget, which is what that variable controls.
 This interface is subject to change depending on developer experience
@@ -745,7 +745,7 @@ visibility of specifically the left-side toolbar only, customize
 
 <p>XEmacs can be used with the X Window System and a window manager like
 MWM or TWM.  In that case, the X window manager opens, closes, and
-resizes XEmacs frames.  You use the window manager's mouse gestures to
+resizes XEmacs frames.  You use the window manager&rsquo;s mouse gestures to
 perform the operations.  Consult your window manager guide or reference
 manual for information on manipulating X windows.
 </p>
@@ -821,7 +821,7 @@ are using a broken window manager.
 
 </li><li>
 There is a new frame/modeline format directive, %S, which expands to
-the name of the current frame (a frame's name is distinct from its
+the name of the current frame (a frame&rsquo;s name is distinct from its
 title; the name is used for resource lookup, among other things, and the
 title is simply what appears above the window.)
 </li></ul>

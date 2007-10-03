@@ -88,33 +88,33 @@ really exist.  Here is a complete list of what is checked:
 </p>
 <ol>
 <li>
-If a `Next', `Previous', or `Up' node reference is a reference to a
+If a &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, or &lsquo;Up&rsquo; node reference is a reference to a
 node in the current file and is not an external reference such as to
 &lsquo;<tt>(dir)</tt>&rsquo;, then the referenced node must exist.
 
 </li><li>
-In every node, if the `Previous' node is different from the `Up' node,
-then the node pointed to by the `Previous' field must have a `Next'
+In every node, if the &lsquo;Previous&rsquo; node is different from the &lsquo;Up&rsquo; node,
+then the node pointed to by the &lsquo;Previous&rsquo; field must have a &lsquo;Next&rsquo;
 field which points back to this node.
 
 </li><li>
-Every node except the `Top' node must have an `Up' pointer.
+Every node except the &lsquo;Top&rsquo; node must have an &lsquo;Up&rsquo; pointer.
 
 </li><li>
-The node referenced by an `Up' pointer must itself reference the current
-node through a menu item, unless the node referenced by `Up'
-has the form `(<var>file</var>)'.
+The node referenced by an &lsquo;Up&rsquo; pointer must itself reference the current
+node through a menu item, unless the node referenced by &lsquo;Up&rsquo;
+has the form &lsquo;(<var>file</var>)&rsquo;.
 
 </li><li>
-If the `Next' reference of a node is not the same as the `Next' reference
-of the `Up' reference, then the node referenced by the `Next' pointer
-must have a `Previous' pointer that points back to the current node.
+If the &lsquo;Next&rsquo; reference of a node is not the same as the &lsquo;Next&rsquo; reference
+of the &lsquo;Up&rsquo; reference, then the node referenced by the &lsquo;Next&rsquo; pointer
+must have a &lsquo;Previous&rsquo; pointer that points back to the current node.
 This rule allows the last node in a section to point to the first node
 of the next chapter.
 
 </li><li>
-Every node except `Top' should be referenced by at least one other node,
-either via the `Previous' or `Next' links, or via a menu or a
+Every node except &lsquo;Top&rsquo; should be referenced by at least one other node,
+either via the &lsquo;Previous&rsquo; or &lsquo;Next&rsquo; links, or via a menu or a
 cross-reference.
 </li></ol>
 

@@ -87,7 +87,7 @@ file with three chapters, each of which contains two sections.
 <p>The &ldquo;root&rdquo; is at the top of the diagram and the &ldquo;leaves&rdquo; are at the
 bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
-called the `Top' node, and `Up' node pointers carry you closer to the
+called the &lsquo;Top&rsquo; node, and &lsquo;Up&rsquo; node pointers carry you closer to the
 root.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">                          Top
@@ -109,20 +109,20 @@ root.
 </pre></td></tr></table>
 
 <p>This <code>@node</code> line says that the name of this node is &ldquo;Chapter
-2&rdquo;, the name of the `Next' node is &ldquo;Chapter 3&rdquo;, the name of the
-`Previous' node is &ldquo;Chapter 1&rdquo;, and the name of the `Up' node is
+2&rdquo;, the name of the &lsquo;Next&rsquo; node is &ldquo;Chapter 3&rdquo;, the name of the
+&lsquo;Previous&rsquo; node is &ldquo;Chapter 1&rdquo;, and the name of the &lsquo;Up&rsquo; node is
 &ldquo;Top&rdquo;.  You can omit writing out these node names if your document is
 hierarchically organized (see section <a href="makeinfo-Pointer-Creation.html#SEC95">Creating Pointers with <code>makeinfo</code></a>), but the
 pointer relationships still obtain.
 </p>
-<blockquote><p><strong>Please Note:</strong> `Next' refers to the next node at the same
+<blockquote><p><strong>Please Note:</strong> &lsquo;Next&rsquo; refers to the next node at the same
 hierarchical level in the manual, not necessarily to the next node
 within the Texinfo file.  In the Texinfo file, the subsequent node may
 be at a lower level&mdash;a section-level node most often follows a
-chapter-level node, for example.  `Next' and `Previous' refer to nodes
-at the <em>same</em> hierarchical level.  (The `Top' node contains the
-exception to this rule.  Since the `Top' node is the only node at that
-level, `Next' refers to the first following node, which is almost always
+chapter-level node, for example.  &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; refer to nodes
+at the <em>same</em> hierarchical level.  (The &lsquo;Top&rsquo; node contains the
+exception to this rule.  Since the &lsquo;Top&rsquo; node is the only node at that
+level, &lsquo;Next&rsquo; refers to the first following node, which is almost always
 a chapter or chapter-level node.)
 </p></blockquote>
 
@@ -142,12 +142,12 @@ before the beginning of Section 2.1, like this:
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
 
-<p>In Info format, the `Next' and `Previous' pointers of a node usually
+<p>In Info format, the &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers of a node usually
 lead to other nodes at the same level&mdash;from chapter to chapter or from
-section to section (sometimes, as shown, the `Previous' pointer points
-up); an `Up' pointer usually leads to a node at the level above (closer
-to the `Top' node); and a `Menu' leads to nodes at a level below (closer
-to `leaves').  (A cross reference can point to a node at any level;
+section to section (sometimes, as shown, the &lsquo;Previous&rsquo; pointer points
+up); an &lsquo;Up&rsquo; pointer usually leads to a node at the level above (closer
+to the &lsquo;Top&rsquo; node); and a &lsquo;Menu&rsquo; leads to nodes at a level below (closer
+to &lsquo;leaves&rsquo;).  (A cross reference can point to a node at any level;
 see <a href="Cross-References.html#SEC104">Cross References</a>.)
 </p>
 <p>Usually, an <code>@node</code> command and a chapter structuring command are

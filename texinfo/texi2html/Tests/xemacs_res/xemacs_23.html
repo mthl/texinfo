@@ -211,7 +211,7 @@ commands that are not available in Text mode:
 <a name="IDX767"></a>
 <dl compact="compact">
 <dt> <kbd>M-n</kbd></dt>
-<dd><p>Move to the beginning of the next line that isn't an nroff command
+<dd><p>Move to the beginning of the next line that isn&rsquo;t an nroff command
 (<code>forward-text-line</code>).  An argument is a repeat count.
 </p></dd>
 <dt> <kbd>M-p</kbd></dt>
@@ -274,7 +274,7 @@ which are two distinct major modes that differ only slightly.  These
 modes are designed for editing the two different input formats.  The
 command <kbd>M-x tex-mode</kbd> looks at the contents of a buffer to
 determine whether it appears to be LaTeX input or not; it then
-selects the appropriate mode.  If it can't tell which is right (e.g.,
+selects the appropriate mode.  If it can&rsquo;t tell which is right (e.g.,
 the buffer is empty), the variable <code>tex-default-mode</code> controls
 which mode is used.
 </p>
@@ -447,7 +447,7 @@ look like without taking the time to format the entire file.
 </p>
 <dl compact="compact">
 <dt> <kbd>C-c C-r</kbd></dt>
-<dd><p>Invoke TeX on the current region, plus the buffer's header
+<dd><p>Invoke TeX on the current region, plus the buffer&rsquo;s header
 (<code>tex-region</code>).
 </p></dd>
 <dt> <kbd>C-c C-b</kbd></dt>
@@ -517,7 +517,7 @@ the buffer, <kbd>C-c C-r</kbd> assumes there is no header.
 </p>
 <p>  In LaTeX mode, the header begins with &lsquo;<samp>\documentstyle</samp>&rsquo; and ends
 with <br>&lsquo;<samp>\begin{document}</samp>&rsquo;.  These are commands that LaTeX requires
-you to use, so you don't need to do anything special to identify the
+you to use, so you don&rsquo;t need to do anything special to identify the
 header.
 </p>
 <a name="IDX794"></a>
@@ -790,10 +790,10 @@ invisible.
 visible (<code>show-children</code>).
 </p></dd>
 <dt> <kbd>M-x hide-entry</kbd></dt>
-<dd><p>Make this heading line's body invisible.
+<dd><p>Make this heading line&rsquo;s body invisible.
 </p></dd>
 <dt> <kbd>M-x show-entry</kbd></dt>
-<dd><p>Make this heading line's body visible.
+<dd><p>Make this heading line&rsquo;s body visible.
 </p></dd>
 </dl>
 
@@ -811,7 +811,7 @@ bodies are not affected.
 <a name="IDX815"></a>
 <p>  Two more powerful opposites are <kbd>C-c C-d</kbd> (<code>hide-subtree</code>) and
 <kbd>C-c C-s</kbd> (<code>show-subtree</code>).  Both should be used when point is
-on a heading line, and both apply to all the lines of that heading's
+on a heading line, and both apply to all the lines of that heading&rsquo;s
 <em>subtree</em>: its body, all its subheadings, both direct and indirect, and
 all of their bodies.  In other words, the subtree contains everything
 following this heading line, up to and not including the next heading of
@@ -947,7 +947,7 @@ which does not move point but sets the mark where <kbd>Meta-f</kbd> would move
 to.  It can be given arguments just like <kbd>Meta-f</kbd>.
 </p>
 <a name="IDX836"></a>
-<p>  The word commands' understanding of syntax is completely controlled by
+<p>  The word commands&rsquo; understanding of syntax is completely controlled by
 the syntax table.  For example, any character can be declared to be a word
 delimiter.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p>
@@ -1000,7 +1000,7 @@ current sentence, respectively.  They resemble <kbd>Control-a</kbd> and
 <kbd>Control-e</kbd>, which move to the beginning and end of a line.  Unlike
 their counterparts, <kbd>Meta-a</kbd> and <kbd>Meta-e</kbd> move over successive
 sentences if repeated or given numeric arguments.  Emacs assumes
-the typist's convention is followed, and thus considers a sentence to
+the typist&rsquo;s convention is followed, and thus considers a sentence to
 end wherever there is a &lsquo;<samp>.</samp>&rsquo;, &lsquo;<samp>?</samp>&rsquo;, or &lsquo;<samp>!</samp>&rsquo; followed by the
 end of a line or two spaces, with any number of &lsquo;<samp>)</samp>&rsquo;, &lsquo;<samp>]</samp>&rsquo;,
 &lsquo;<samp>'</samp>&rsquo;, or &lsquo;<samp>&quot;</samp>&rsquo; characters allowed in between.  A sentence also
@@ -1081,7 +1081,7 @@ and end only at blank lines.  As a result, the paragraph commands continue to
 be useful even though there are no paragraphs per se.
 </p>
 <p>  When there is a fill prefix, paragraphs are delimited by all lines
-which don't start with the fill prefix.  See section <a href="#SEC210">Filling Text</a>.
+which don&rsquo;t start with the fill prefix.  See section <a href="#SEC210">Filling Text</a>.
 </p>
 <a name="IDX846"></a>
 <a name="IDX847"></a>
@@ -1437,7 +1437,7 @@ new paragraph.
 <a name="IDX874"></a>
 <p>  To specify a fill prefix, move to a line that starts with the desired
 prefix, put point at the end of the prefix, and give the command
-<kbd>C-x .</kbd> (<code>set-fill-prefix</code>).  That's a period after the
+<kbd>C-x .</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
 <kbd>C-x</kbd>.  To turn off the fill prefix, specify an empty prefix: type
 <kbd>C-x .</kbd> with point at the beginning of a line.
 </p>

@@ -63,7 +63,7 @@ ul.toc {list-style: none}
 
 <p>  The basic unit of stored data in Unix is the <em>file</em>.  To edit a file,
 you must tell Emacs to examine the file and prepare a buffer containing a
-copy of the file's text.  This is called <em>visiting</em> the file.  Editing
+copy of the file&rsquo;s text.  This is called <em>visiting</em> the file.  Editing
 commands apply directly to text in the buffer; that is, to the copy inside
 Emacs.  Your changes appear in the file itself only when you <em>save</em> the
 buffer back into the file.
@@ -149,7 +149,7 @@ syntax for using ssh is
 </p>
 <p>  In both cases the &lsquo;<samp><var>user</var>@</samp>&rsquo; portion is optional (it defaults
 to your local user name).  <var>path-on-remote-host</var> may use the
-&lsquo;<samp>~</samp>&rsquo; notation to indicate <var>user</var>'s home directory on the remote
+&lsquo;<samp>~</samp>&rsquo; notation to indicate <var>user</var>&rsquo;s home directory on the remote
 host.  The default file name will reflect the remote host information.
 </p>
 <a name="IDX529"></a>
@@ -191,10 +191,10 @@ and type &lsquo;<tt>oryx</tt>&rsquo; and &lt;RET&gt; to create &lsquo;<tt>/u/rms
 Removing a directory is similar to creating one.  To remove a directory,
 use <code>remove-directory</code>; it takes one argument, a file name string.
 </p>
-<p>  The command <kbd>M-x pwd</kbd> prints the current buffer's default directory,
+<p>  The command <kbd>M-x pwd</kbd> prints the current buffer&rsquo;s default directory,
 and the command <kbd>M-x cd</kbd> sets it (to a value read using the
-minibuffer).  A buffer's default directory changes only when the <code>cd</code>
-command is used.  A file-visiting buffer's default directory is initialized
+minibuffer).  A buffer&rsquo;s default directory changes only when the <code>cd</code>
+command is used.  A file-visiting buffer&rsquo;s default directory is initialized
 to the directory of the file that is visited there.  If a buffer is created
 with <kbd>C-x b</kbd>, its default directory is copied from that of the
 buffer that was current at the time.
@@ -258,11 +258,11 @@ is performed only on filenames read as such using the minibuffer.
 (<code>find-alternate-file</code>).
 </p></dd>
 <dt> <kbd>C-x 4 C-f</kbd></dt>
-<dd><p>Visit a file, in another window (<code>find-file-other-window</code>).  Don't
+<dd><p>Visit a file, in another window (<code>find-file-other-window</code>).  Don&rsquo;t
 change this window.
 </p></dd>
 <dt> <kbd>C-x 5 C-f</kbd></dt>
-<dd><p>Visit a file, in another frame (<code>find-file-other-frame</code>).  Don't
+<dd><p>Visit a file, in another frame (<code>find-file-other-frame</code>).  Don&rsquo;t
 change this window or frame.
 </p></dd>
 </dl>
@@ -280,7 +280,7 @@ a file named &lsquo;<tt>/usr/rms/emacs.tex</tt>&rsquo; is displayed in a buffer 
 name is constructed by appending &lsquo;<samp>&lt;2&gt;</samp>&rsquo;, &lsquo;<samp>&lt;3&gt;</samp>&rsquo;,and so on, using
 the lowest number that makes a name that is not already in use.
 </p>
-<p>  Each window's mode line shows the name of the buffer that is being displayed
+<p>  Each window&rsquo;s mode line shows the name of the buffer that is being displayed
 in that window, so you can always tell what buffer you are editing.
 </p>
 <p>  The changes you make with Emacs are made in the Emacs buffer.  They do
@@ -331,8 +331,8 @@ the filename.
 </p>
 <a name="IDX544"></a>
 <a name="IDX545"></a>
-<p>If the variable <code>find-file-use-truenames</code>'s value is
-non-<code>nil</code>, a buffer's visited filename will always be traced back
+<p>If the variable <code>find-file-use-truenames</code>&rsquo;s value is
+non-<code>nil</code>, a buffer&rsquo;s visited filename will always be traced back
 to the real file. The filename will never be a symbolic link, and there
 will never be a symbolic link anywhere in its directory path. In other
 words, the <code>buffer-file-name</code> and <code>buffer-file-truename</code> will
@@ -348,7 +348,7 @@ given file is already in a buffer, instead of just
 a symbolic link to a file that is already in a buffer, the existing
 buffer will be found instead of a newly created one.  This works if any
 component of the pathname (including a non-terminal component) is a
-symbolic link as well, but doesn't work with hard links (nothing does).
+symbolic link as well, but doesn&rsquo;t work with hard links (nothing does).
 </p>
 <a name="IDX548"></a>
 <p>   If you want to create a file, just visit it.  Emacs prints
@@ -484,7 +484,7 @@ related command.  One thing you can do is type <kbd>M-~</kbd>
 (<code>not-modified</code>), which removes the indication that the buffer
 is modified.  If you do this, none of the save commands will believe
 that the buffer needs to be saved.  (&lsquo;<samp>~</samp>&rsquo; is often used as a
-mathematical symbol for `not'; thus <kbd>Meta-~</kbd> is `not', metafied.)
+mathematical symbol for &lsquo;not&rsquo;; thus <kbd>Meta-~</kbd> is &lsquo;not&rsquo;, metafied.)
 You could also use <code>set-visited-file-name</code> (see below) to mark the
 buffer as visiting a different file name, not in use for
 anything important. 
@@ -499,7 +499,7 @@ if you have not made more changes than the undo mechanism can remember.
 <p>  <kbd>M-x set-visited-file-name</kbd> alters the name of the file that the
 current buffer is visiting.  It prompts you for the new file name in the
 minibuffer.  You can also use <code>set-visited-file-name</code> on a buffer
-that is not visiting a file.  The buffer's name is changed to correspond
+that is not visiting a file.  The buffer&rsquo;s name is changed to correspond
 to the file it is now visiting unless the new name is already used by a
 different buffer; in that case, the buffer name is not changed.
 <code>set-visited-file-name</code> does not save the buffer in the newly
@@ -516,7 +516,7 @@ equivalent to <code>set-visited-file-name</code> followed by <kbd>C-x C-s</kbd>.
 same effect as <kbd>C-x C-w</kbd>; that is, it reads a file name, marks the
 buffer as visiting that file, and saves it there.  The default file name in
 a buffer that is not visiting a file is made by combining the buffer name
-with the buffer's default directory.
+with the buffer&rsquo;s default directory.
 </p>
 <p>  If Emacs is about to save a file and sees that the date of the latest
 version on disk does not match what Emacs last read or wrote, Emacs
@@ -526,7 +526,7 @@ See section <a href="#SEC142">Simultaneous Editing</a>.
 </p>
 <a name="IDX568"></a>
 <p>  If the variable <code>require-final-newline</code> is non-<code>nil</code>, Emacs
-puts a newline at the end of any file that doesn't already end in one,
+puts a newline at the end of any file that doesn&rsquo;t already end in one,
 every time a file is saved or written.
 </p>
 <a name="IDX569"></a>
@@ -620,7 +620,7 @@ the file again, a new backup file is made by the next save.
 <h4 class="subsubsection"> 14.3.1.1 Single or Numbered Backups </h4>
 
 <p>  If you choose to have a single backup file (the default),
-the backup file's name is constructed by appending &lsquo;<samp>~</samp>&rsquo; to the
+the backup file&rsquo;s name is constructed by appending &lsquo;<samp>~</samp>&rsquo; to the
 file name being edited; thus, the backup file for &lsquo;<tt>eval.c</tt>&rsquo; is
 &lsquo;<tt>eval.c~</tt>&rsquo;.
 </p>
@@ -653,7 +653,7 @@ Otherwise, make single backups.
 </dl>
 
 <p><code>version-control</code> may be set locally in an individual buffer to
-control the making of backups for that buffer's file.  For example,
+control the making of backups for that buffer&rsquo;s file.  For example,
 Rmail mode locally sets <code>version-control</code> to <code>never</code> to make sure
 that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p>
@@ -695,7 +695,7 @@ middle versions are deleted without notification.  If it is <code>nil</code>, th
 default, you are asked whether the excess middle versions should
 really be deleted.
 </p>
-<p>  You can also use Dired's <kbd>.</kbd> (Period) command to delete old versions.
+<p>  You can also use Dired&rsquo;s <kbd>.</kbd> (Period) command to delete old versions.
 See section <a href="#SEC163">Dired, the Directory Editor</a>.
 </p>
 <hr size="6">
@@ -726,9 +726,9 @@ become names for the backup file.  If you copy the old file instead,
 the alternate names remain names for the file that you are editing,
 and the contents accessed by those names will be the new contents.
 </p>
-<p>  How you make a backup file may also affect the file's owner
+<p>  How you make a backup file may also affect the file&rsquo;s owner
 and group.  If you use copying, they do not change.  If renaming is used,
-you become the file's owner, and the file's group becomes the default
+you become the file&rsquo;s owner, and the file&rsquo;s group becomes the default
 (different operating systems have different defaults for the group).
 </p>
 <p>  Having the owner change is usually a good idea, because then the owner
@@ -748,7 +748,7 @@ non-<code>nil</code>, copying is used.  Otherwise, if the variable
 done for files that have multiple names, but renaming may still be done when
 the file being edited has only one name.  If the variable
 <code>backup-by-copying-when-mismatch</code> is non-<code>nil</code>, copying is
-done if renaming would cause the file's owner or group to change.  
+done if renaming would cause the file&rsquo;s owner or group to change.  
 </p>
 <hr size="6">
 <a name="Interlocking"></a>
@@ -779,7 +779,7 @@ second user starts to change a file already being edited, and issues a
 warning.  When this is not possible, or if the second user has started
 to change the file despite the warning, Emacs checks when the file is
 saved, and issues a second warning when a user is about to overwrite a
-file containing another user's changes.  If you are the user editing the
+file containing another user&rsquo;s changes.  If you are the user editing the
 file, you can take corrective action at this point and prevent actual
 loss of work.
 </p>
@@ -817,7 +817,7 @@ editing of new files that do not really exist until they are saved.
 </p>
 <p>  Some systems are not configured to allow Emacs to make locks.  On
 these systems, Emacs cannot detect trouble in advance, but it can still
-detect it in time to prevent you from overwriting someone else's changes.
+detect it in time to prevent you from overwriting someone else&rsquo;s changes.
 </p>
 <p>  Every time Emacs saves a buffer, it first checks the last-modification
 date of the existing file on disk to see that it has not changed since the
@@ -831,7 +831,7 @@ cancel the save with <kbd>C-g</kbd> and investigate the situation.
 </p>
 <p>  The first thing you should do when notified that simultaneous editing
 has already taken place is to list the directory with <kbd>C-u C-x C-d</kbd>
-(see section <a href="#SEC161">Directory Listing</a>).  This will show the file's current
+(see section <a href="#SEC161">Directory Listing</a>).  This will show the file&rsquo;s current
 author.  You should attempt to contact that person and ask him not to
 continue editing.  Often the next step is to save the contents of your
 Emacs buffer under a different name, and use <code>diff</code> to compare the
@@ -899,7 +899,7 @@ may be in a totally different context than your last edits before
 reversion.
 </p>
 <p>A buffer reverted from its visited file is marked &ldquo;not modified&rdquo; until
-you make a change.  The buffer's modes will also be recalculated, by
+you make a change.  The buffer&rsquo;s modes will also be recalculated, by
 <code>normal-mode</code>.
 </p>
 <p>  Some kinds of buffers whose contents reflect data bases other than files,
@@ -999,7 +999,7 @@ turned on in that buffer.
 there is really no difference between auto-saving and explicit saving.
 </p>
 <a name="IDX580"></a>
-<p>  Emacs deletes a buffer's auto-save file when you explicitly save the
+<p>  Emacs deletes a buffer&rsquo;s auto-save file when you explicitly save the
 buffer.  To inhibit the deletion, set the variable
 <code>delete-auto-save-files</code> to <code>nil</code>.  Changing the visited file
 name with <kbd>C-x C-w</kbd> or <code>set-visited-file-name</code> renames any
@@ -1026,7 +1026,7 @@ auto-save file to correspond to the new visited name.
 </tr></table>
 <h3 class="subsection"> 14.5.2 Controlling Auto-Saving </h3>
 
-<p>  Each time you visit a file, auto-saving is turned on for that file's
+<p>  Each time you visit a file, auto-saving is turned on for that file&rsquo;s
 buffer if the variable <code>auto-save-default</code> is non-<code>nil</code> (but
 not in batch mode; see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  The default for this
 variable is <code>t</code>, so Emacs auto-saves buffers that visit files by
@@ -1194,7 +1194,7 @@ using.
 
 <p>   When a file is under version control, we also say that it is
 <em>registered</em> in the version control system.  Each registered file
-has a corresponding <em>master file</em> which represents the file's
+has a corresponding <em>master file</em> which represents the file&rsquo;s
 present state plus its change history, so that you can reconstruct from
 it either the current version or any specified earlier version.  Usually
 the master file also records a <em>log entry</em> for each version describing
@@ -1323,10 +1323,10 @@ last version checked in, use <kbd>C-x v u</kbd> (<code>vc-revert-buffer</code>).
 This cancels your last check-out, leaving the file unlocked.  If you want
 to make a different set of changes, you must first check the file out
 again.  <kbd>C-x v u</kbd> requires confirmation, unless it sees that 
-you haven't made any changes since the last checked-in version.
+you haven&rsquo;t made any changes since the last checked-in version.
 </p>
 <p>  <kbd>C-x v u</kbd> is also the command to use if you lock a file and then
-don't actually change it.
+don&rsquo;t actually change it.
 </p>
 <a name="IDX593"></a>
 <a name="IDX594"></a>
@@ -1424,7 +1424,7 @@ value from the function says to mistrust the file permissions.
 </p>
 <p>  If you find that the file permissions of work files are changed
 erroneously, set <code>vc-mistrust-permissions</code> to <code>t</code>.  Then VC
-always checks the master file to determine the file's status.
+always checks the master file to determine the file&rsquo;s status.
 </p>
 <a name="IDX603"></a>
 <p>  You can specify additional directories to search for version control
@@ -1453,7 +1453,7 @@ happens automatically.
 </tr></table>
 <h3 class="subsection"> 14.6.4 Log Entries </h3>
 
-<p>  When you're editing an initial comment or log entry for inclusion in a
+<p>  When you&rsquo;re editing an initial comment or log entry for inclusion in a
 master file, finish your entry by typing <kbd>C-c C-c</kbd>.
 </p>
 <dl compact="compact">
@@ -1463,8 +1463,8 @@ This finishes check-in.
 </p></dd>
 </dl>
 
-<p>  To abort check-in, just don't type <kbd>C-c C-c</kbd> in that buffer.  You
-can switch buffers and do other editing.  As long as you don't try to
+<p>  To abort check-in, just don&rsquo;t type <kbd>C-c C-c</kbd> in that buffer.  You
+can switch buffers and do other editing.  As long as you don&rsquo;t try to
 check in another file, the entry you were editing remains in its
 buffer, and you can go back to that buffer at any time to complete the
 check-in.
@@ -1510,7 +1510,7 @@ automatically from the version control log entries:
 <dt> <kbd>C-x v a</kbd></dt>
 <dd><a name="IDX605"></a>
 <a name="IDX606"></a>
-<p>Visit the current directory's change log file and create new entries for
+<p>Visit the current directory&rsquo;s change log file and create new entries for
 versions checked in since the most recent entry in the change log file
 (<code>vc-update-change-log</code>).
 </p>
@@ -1695,7 +1695,7 @@ output appears in a separate window.
 </p>
 <a name="IDX611"></a>
 <a name="IDX612"></a>
-<p>  When you are working on a large program, it's often useful to find all
+<p>  When you are working on a large program, it&rsquo;s often useful to find all
 the files that are currently locked, or all the files maintained in
 version control at all.  You can use <kbd>C-x v d</kbd> (<code>vc-directory</code>)
 to show all the locked files in or beneath the current directory.  This
@@ -1860,8 +1860,8 @@ or a snapshot against a named version.
 </tr></table>
 <h4 class="subsubsection"> 14.6.9.2 Snapshot Caveats </h4>
 
-<p>  VC's snapshot facilities are modeled on RCS's named-configuration
-support.  They use RCS's native facilities for this, so under VC
+<p>  VC&rsquo;s snapshot facilities are modeled on RCS&rsquo;s named-configuration
+support.  They use RCS&rsquo;s native facilities for this, so under VC
 snapshots made using RCS are visible even when you bypass VC.
 </p>
 <p>  For SCCS, VC implements snapshots itself.  The files it uses contain
@@ -1890,7 +1890,7 @@ files in the program probably refer to others by name.  At the very
 least, the makefile probably mentions the file that you renamed.  If you
 retrieve an old snapshot, the renamed file is retrieved under its new
 name, which is not the name that the makefile expects.  So the program
-won't really work as retrieved.
+won&rsquo;t really work as retrieved.
 </p>
 <hr size="6">
 <a name="Version-Headers"></a>
@@ -1933,7 +1933,7 @@ insert a suitable header string.
 <p>  The default header string is &lsquo;<samp>\$Id\$</samp>&rsquo; for RCS and &lsquo;<samp>\%W\%</samp>&rsquo;
 for SCCS. (The actual strings inserted do not have the backslashes
 in them.  They were placed in the Info source file so that the
-strings don't get interpreted as version-control headers when the
+strings don&rsquo;t get interpreted as version-control headers when the
 Info source files are maintained under version control.) You can
 specify other headers to insert by setting the variable
 <code>vc-header-alist</code>.  Its value is a list of elements of the form
@@ -2050,7 +2050,7 @@ for file directories.  The list consists of elements of the form
 <code>(FROM .  TO)</code>, each meaning to replace <code>FROM</code> with <code>TO</code>
 when it appears in a directory name.  This replacement is done when
 setting up the default directory of a newly visited file.  Every <code>FROM</code>
-string should start with `&lsquo;<samp>^</samp>&rsquo;'.
+string should start with &lsquo;&lsquo;<samp>^</samp>&rsquo;&rsquo;.
 </p>
 <p>Use this feature when you have directories which you normally refer to
 via absolute symbolic links.  Make <code>TO</code> the name of the link, and
@@ -2213,7 +2213,7 @@ commands.  Most Dired commands operate on the file described by the line
 that point is on.  Some commands perform operations immediately; others
 &ldquo;flag&rdquo; a file to be operated on later.
 </p>
-<p>  Most Dired commands that operate on the current line's file also treat a
+<p>  Most Dired commands that operate on the current line&rsquo;s file also treat a
 numeric argument as a repeat count, meaning to act on the files of the
 next few lines.  A negative argument means to operate on the files of the
 preceding lines, and leave point on the first of those lines.
@@ -2365,7 +2365,7 @@ subdirectory, <kbd>f</kbd> actually causes Dired to be invoked on that
 subdirectory.  See section <a href="#SEC136">Visiting Files</a>.
 </p></dd>
 <dt> <kbd>o</kbd></dt>
-<dd><p>Like <kbd>f</kbd>, but uses another window to display the file's buffer.  The
+<dd><p>Like <kbd>f</kbd>, but uses another window to display the file&rsquo;s buffer.  The
 Dired buffer remains visible in the first window.  This is like using
 <kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
 </p></dd>

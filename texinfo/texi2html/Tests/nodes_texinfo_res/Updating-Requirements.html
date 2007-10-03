@@ -83,14 +83,14 @@ ul.toc {list-style: none}
 
 <p>To use the updating commands, you must organize the Texinfo file
 hierarchically with chapters, sections, subsections, and the like.
-When you construct the hierarchy of the manual, do not `jump down'
-more than one level at a time: you can follow the `Top' node with a
+When you construct the hierarchy of the manual, do not &lsquo;jump down&rsquo;
+more than one level at a time: you can follow the &lsquo;Top&rsquo; node with a
 chapter, but not with a section; you can follow a chapter with a
-section, but not with a subsection.  However, you may `jump up' any
+section, but not with a subsection.  However, you may &lsquo;jump up&rsquo; any
 number of levels at one time&mdash;for example, from a subsection to a
 chapter.
 </p>
-<p>Each <code>@node</code> line, with the exception of the line for the `Top'
+<p>Each <code>@node</code> line, with the exception of the line for the &lsquo;Top&rsquo;
 node, must be followed by a line with a structuring command such as
 <code>@chapter</code>, <code>@section</code>, or
 <code>@unnumberedsubsec</code>.
@@ -115,22 +115,22 @@ must look either like this:
 @section Comments
 </pre></td></tr></table>
 
-<p>In this example, `Comments' is the name of both the node and the
-section.  The next node is called `Minimum' and the previous node is
-called `Conventions'.  The `Comments' section is within the `Overview'
-node, which is specified by the `Up' pointer.  (Instead of an
+<p>In this example, &lsquo;Comments&rsquo; is the name of both the node and the
+section.  The next node is called &lsquo;Minimum&rsquo; and the previous node is
+called &lsquo;Conventions&rsquo;.  The &lsquo;Comments&rsquo; section is within the &lsquo;Overview&rsquo;
+node, which is specified by the &lsquo;Up&rsquo; pointer.  (Instead of an
 <code>@comment</code> line, you may also write an <code>@ifinfo</code> line.)
 </p>
-<p>If a file has a `Top' node, it must be called &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;
+<p>If a file has a &lsquo;Top&rsquo; node, it must be called &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;
 and be the first node in the file.
 </p>
 <p>The menu updating commands create a menu of sections within a chapter,
 a menu of subsections within a section, and so on.  This means that
-you must have a `Top' node if you want a menu of chapters.
+you must have a &lsquo;Top&rsquo; node if you want a menu of chapters.
 </p>
 <p>Incidentally, the <code>makeinfo</code> command will create an Info file for a
-hierarchically organized Texinfo file that lacks `Next', `Previous' and
-`Up' pointers.  Thus, if you can be sure that your Texinfo file will be
+hierarchically organized Texinfo file that lacks &lsquo;Next&rsquo;, &lsquo;Previous&rsquo; and
+&lsquo;Up&rsquo; pointers.  Thus, if you can be sure that your Texinfo file will be
 formatted with <code>makeinfo</code>, you have no need for the update node
 commands.  (See section <a href="Creating-an-Info-File.html#SEC261">Creating an Info File</a>, for more information about
 <code>makeinfo</code>.)  However, both <code>makeinfo</code> and the

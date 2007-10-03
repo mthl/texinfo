@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 <p>Texinfo mode provides commands for automatically creating or updating
 menus and node pointers.  The commands are called &ldquo;update&rdquo; commands
 because their most frequent use is for updating a Texinfo file after you
-have worked on it; but you can use them to insert the `Next',
-`Previous', and `Up' pointers into an <code>@node</code> line that has none
+have worked on it; but you can use them to insert the &lsquo;Next&rsquo;,
+&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers into an <code>@node</code> line that has none
 and to create menus in a file that has none.
 </p>
 <p>If you do not use the updating commands, you need to write menus and
@@ -111,7 +111,7 @@ node pointers by hand, which is a tedious task.
 </p>
 <ul>
 <li>
-insert or update the `Next', `Previous', and `Up' pointers of a
+insert or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of a
 node,
 
 </li><li>
@@ -127,7 +127,7 @@ region or in a whole Texinfo file.
 <p>The updating commands work only with conventional Texinfo files, which
 are structured hierarchically like books.  In such files, a structuring
 command line must follow closely after each <code>@node</code> line, except
-for the `Top' <code>@node</code> line.  (A <em>structuring command line</em> is
+for the &lsquo;Top&rsquo; <code>@node</code> line.  (A <em>structuring command line</em> is
 a line beginning with <code>@chapter</code>, <code>@section</code>, or other
 similar command.)
 </p>
@@ -138,12 +138,12 @@ follows after a single <code>@comment</code> line or a single
 the <code>@node</code> line and the structuring command line; and you may
 interpose only an <code>@comment</code> line or an <code>@ifinfo</code> line.
 </p>
-<p>Commands which work on a whole buffer require that the `Top' node be
+<p>Commands which work on a whole buffer require that the &lsquo;Top&rsquo; node be
 followed by a node with an <code>@chapter</code> or equivalent-level command.
 The menu updating commands will not create a main or master menu for a
 Texinfo file that has only <code>@chapter</code>-level nodes!  The menu
 updating commands only create menus <em>within</em> nodes for lower level
-nodes.  To create a menu of chapters, you must provide a `Top'
+nodes.  To create a menu of chapters, you must provide a &lsquo;Top&rsquo;
 node.
 </p>
 <p>The menu updating commands remove menu entries that refer to other Info
@@ -174,7 +174,7 @@ update all the nodes and all the regular menus in the buffer before
 constructing the master menu.  (See section <a href="The-Top-Node.html#SEC59">The Top Node and Master Menu</a>, for more about a master menu.)
 </p>
 <p>For <code>texinfo-master-menu</code> to work, the Texinfo file must have a
-`Top' node and at least one subsequent node.
+&lsquo;Top&rsquo; node and at least one subsequent node.
 </p>
 <p>After extensively editing a Texinfo file, you can type the following:
 </p>
@@ -197,9 +197,9 @@ file.
 <dt> <kbd>C-c C-u C-n</kbd></dt>
 <dt> <kbd>M-x texinfo-update-node</kbd></dt>
 <dd><a name="IDX53"></a>
-<p>Insert the `Next', `Previous', and `Up' pointers for the node that point is
+<p>Insert the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers for the node that point is
 within (i.e., for the <code>@node</code> line preceding point).  If the
-<code>@node</code> line has pre-existing `Next', `Previous', or `Up'
+<code>@node</code> line has pre-existing &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, or &lsquo;Up&rsquo;
 pointers in it, the old pointers are removed and new ones inserted.
 With an argument (prefix argument, <kbd>C-u</kbd>, if interactive), this command
 updates all <code>@node</code> lines in the region (which is the text
@@ -225,7 +225,7 @@ different, the descriptions are not copied to the new menu.
 <dt> <kbd>C-c C-u C-e</kbd></dt>
 <dt> <kbd>M-x texinfo-every-node-update</kbd></dt>
 <dd><a name="IDX55"></a>
-<p>Insert or update the `Next', `Previous', and `Up' pointers for every
+<p>Insert or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers for every
 node in the buffer.
 </p>
 </dd>
@@ -258,7 +258,7 @@ C-u M-x texinfo-all-menus-update
 column to which menu descriptions are indented.  By default, the value
 is 32 although it is often useful to reduce it to as low as 24.  You
 can set the variable with the <kbd>M-x edit-options</kbd> command
-(see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>) or with the <kbd>M-x set-variable</kbd> command (see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>).
+(see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>) or with the <kbd>M-x set-variable</kbd> command (see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section &lsquo;Examining and Setting Variables&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>Also, the <code>texinfo-indent-menu-description</code> command may be used to
 indent existing menu descriptions to a specified column.  Finally, if

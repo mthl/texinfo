@@ -141,7 +141,7 @@ bindings (<code>describe-bindings</code>).
 </p></dd>
 <dt> <kbd>C-h c <var>key</var></kbd></dt>
 <dd><p>Print the name of the command that <var>key</var> runs
-(<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for `character'.  For more
+(<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for &lsquo;character&rsquo;.  For more
 extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
 </p></dd>
 <dt> <kbd>C-h d <var>function</var> &lt;RET&gt;</kbd></dt>
@@ -278,7 +278,7 @@ including function keys and mouse events.
 <h2 class="section"> 8.3 Help by Command or Variable Name </h2>
 
 <p>  <kbd>C-h f</kbd> (<code>describe-function</code>) reads the name of a Lisp
-function using the minibuffer, then displays that function's
+function using the minibuffer, then displays that function&rsquo;s
 documentation string in a window.  Since commands are Lisp functions,
 you can use the argument <var>function</var> to get the documentation of a
 command that you know by name.  For example,
@@ -299,7 +299,7 @@ expression <code>(make-vector len)</code> and want to make sure you are using
 <code>make-vector</code> properly, type <kbd>C-h f make-vector &lt;RET&gt;</kbd>.
 Because <kbd>C-h f</kbd> allows all function names, not just command names,
 you may find that some of your favorite abbreviations that work in
-<kbd>M-x</kbd> don't work in <kbd>C-h f</kbd>.  An abbreviation may be unique
+<kbd>M-x</kbd> don&rsquo;t work in <kbd>C-h f</kbd>.  An abbreviation may be unique
 among command names, yet fail to be unique when other function names are
 allowed.
 </p>
@@ -373,7 +373,7 @@ contain &lsquo;<samp>file</samp>&rsquo;, including <code>copy-file</code>, <code
 so on.  With each command name appears a brief description of how to use
 the command, and what keys you can currently invoke it with.  For
 example, it would say that you can invoke <code>find-file</code> by typing
-<kbd>C-x C-f</kbd>.  The <kbd>A</kbd> in <kbd>C-h A</kbd> stands for `Apropos';
+<kbd>C-x C-f</kbd>.  The <kbd>A</kbd> in <kbd>C-h A</kbd> stands for &lsquo;Apropos&rsquo;;
 <kbd>C-h A</kbd> runs the command <code>command-apropos</code>.  This command
 normally checks only commands (interactive functions); if you specify a
 prefix argument, it checks noninteractive functions as well.
@@ -381,7 +381,7 @@ prefix argument, it checks noninteractive functions as well.
 <p>  Because <kbd>C-h A</kbd> looks only for functions whose names contain the
 string you specify, you must use ingenuity in choosing the string.  If
 you are looking for commands for killing backwards and <kbd>C-h a
-kill-backwards &lt;RET&gt;</kbd> doesn't reveal any, don't give up.  Try just
+kill-backwards &lt;RET&gt;</kbd> doesn&rsquo;t reveal any, don&rsquo;t give up.  Try just
 <kbd>kill</kbd>, or just <kbd>backwards</kbd>, or just <kbd>back</kbd>.  Be persistent.
 Pretend you are playing Adventure.  Also note that you can use a regular
 expression as the argument, for more flexibility (see section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>).
@@ -412,7 +412,7 @@ regular expression.
 </p>
 <a name="IDX260"></a>
 <p>  The <code>apropos-value</code> command is like <code>apropos</code> except that it
-searches symbols' values for matches for the specified regular
+searches symbols&rsquo; values for matches for the specified regular
 expression.  This command does not check function definitions or
 property lists by default; specify a numeric argument if you want it to
 check them.
@@ -553,7 +553,7 @@ system will be available.  Type <kbd>h</kbd> after entering Info to run
 a tutorial on using Info.
 </p>
 <p>  If you specify a numeric argument, <kbd>C-h i</kbd> prompts for the name of
-a documentation file.  This way, you can browse a file which doesn't
+a documentation file.  This way, you can browse a file which doesn&rsquo;t
 have an entry in the top-level Info menu.  It is also handy when you
 need to get to the documentation quickly, and you know the exact name of
 the file.
@@ -574,7 +574,7 @@ commands <code>Info-elisp-ref</code> and
 <a name="IDX267"></a>
 <p>  If something surprising happens, and you are not sure what commands you
 typed, use <kbd>C-h l</kbd> (<code>view-lossage</code>).  <kbd>C-h l</kbd> prints the last
-100 command characters you typed in.  If you see commands that you don't
+100 command characters you typed in.  If you see commands that you don&rsquo;t
 know, you can use <kbd>C-h c</kbd> to find out what they do.
 </p>
 <a name="IDX268"></a>
@@ -591,7 +591,7 @@ which normally describes all the commands that are changed in this mode.
 mode that is not covered by <kbd>C-h m</kbd>.  <kbd>C-h b</kbd> displays a list of
 all the key bindings currently in effect, with the local bindings of the
 current major mode first, followed by the global bindings (see section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>).  <kbd>C-h s</kbd> displays the contents of the syntax table with
-explanations of each character's syntax (see section <a href="xemacs_30.html#SEC374">The Syntax Table</a>).
+explanations of each character&rsquo;s syntax (see section <a href="xemacs_30.html#SEC374">The Syntax Table</a>).
 </p>
 <p>  You can get a similar list for a particular prefix key by typing
 <kbd>C-h</kbd> after the prefix key.  (There are a few prefix keys for which

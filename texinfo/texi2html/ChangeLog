@@ -2,6 +2,7 @@
 
 	* texi2html.pl, texi2html.init: use relative file names for frame
 	file names (report from Graham Percival).
+	* texi2html.init: use entities for simple quotes in normal text.
 
 2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
 

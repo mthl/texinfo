@@ -152,15 +152,15 @@ to reproduce the problem.  Generally speaking, that means:
 </li><li> anything else that you think would be helpful.
 </li></ul>
 
-<p>When in doubt whether something is needed or not, include it.  It's
+<p>When in doubt whether something is needed or not, include it.  It&rsquo;s
 better to include too much than to leave out something important.
 </p>
 <a name="IDX2"></a>
 <p>Patches are most welcome; if possible, please make them with
-&lsquo;<samp>diff -c</samp>&rsquo; (see <a href="../diffutils/index.html#Top">(diffutils)Top</a> section `Overview' in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="../emacs/Change-Log.html#Change-Log">(emacs)Change Log</a> section `Change Log' in <cite>The GNU Emacs Manual</cite>).
+&lsquo;<samp>diff -c</samp>&rsquo; (see <a href="../diffutils/index.html#Top">(diffutils)Top</a> section &lsquo;Overview&rsquo; in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="../emacs/Change-Log.html#Change-Log">(emacs)Change Log</a> section &lsquo;Change Log&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>When sending patches, if possible please do not encode or split them in
-any way; it's much easier to deal with one plain text message, however
+any way; it&rsquo;s much easier to deal with one plain text message, however
 large, than many small ones.  <a href="ftp://ftp.gnu.org/gnu/sharutils/">GNU shar</a> is a convenient way of packaging multiple and/or binary files
 for email.
 </p>
@@ -197,13 +197,13 @@ Emacs Manual</cite> is a good example of a Texinfo file, as is this manual.
 </p>
 <p>To make a printed document, you process a Texinfo source file with the
 TeX typesetting program (but the Texinfo language is very different
-and much stricter than TeX's usual language, plain TeX).  This
+and much stricter than TeX&rsquo;s usual language, plain TeX).  This
 creates a DVI file that you can typeset and print as a book or report
 (see section <a href="texinfo_20.html#SEC244">Formatting and Printing Hardcopy</a>).
 </p>
 <a name="IDX3"></a>
 <p>To output an Info file, process your Texinfo source with the
-<code>makeinfo</code> utility or Emacs's <code>texinfo-format-buffer</code> command.
+<code>makeinfo</code> utility or Emacs&rsquo;s <code>texinfo-format-buffer</code> command.
 You can install the result in your Info tree (see section <a href="texinfo_21.html#SEC271">Installing an Info File</a>).
 </p>
 <p>To output an HTML file, run <code>makeinfo --html</code> on your Texinfo
@@ -266,7 +266,7 @@ output formats.  You might as well just write the man page directly.
 program <code>help2man</code> may be useful; it generates a traditional man
 page from the &lsquo;<samp>--help</samp>&rsquo; output of a program.  In fact, this is
 currently used to generate man pages for the Texinfo programs
-themselves.  It is GNU software written by Brendan O'Dea, available from
+themselves.  It is GNU software written by Brendan O&rsquo;Dea, available from
 <a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
 </p>
 
@@ -306,7 +306,7 @@ related nodes.
 <p>See <a href="../info/index.html#Top">info: (info)Top</a>, for more information about using Info.
 </p>
 <p>Each node of an Info file may have any number of child nodes that
-describe subtopics of the node's topic.  The names of child
+describe subtopics of the node&rsquo;s topic.  The names of child
 nodes are listed in a <em>menu</em> within the parent node; this
 allows you to use certain Info commands to move to one of the child
 nodes.  Generally, an Info file is organized like a book.  If a node
@@ -315,25 +315,25 @@ of sections; likewise, the child nodes of sections are at the level
 of subsections.
 </p>
 <p>All the children of any one parent are linked together in a
-bidirectional chain of `Next' and `Previous' pointers.  The `Next'
-pointer provides a link to the next section, and the `Previous' pointer
+bidirectional chain of &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers.  The &lsquo;Next&rsquo;
+pointer provides a link to the next section, and the &lsquo;Previous&rsquo; pointer
 provides a link to the previous section.  This means that all the nodes
 that are at the level of sections within a chapter are linked together.
 Normally the order in this chain is the same as the order of the
-children in the parent's menu.  Each child node records the parent node
-name as its `Up' pointer.  The last child has no `Next' pointer, and the
-first child has the parent both as its `Previous' and as its `Up'
+children in the parent&rsquo;s menu.  Each child node records the parent node
+name as its &lsquo;Up&rsquo; pointer.  The last child has no &lsquo;Next&rsquo; pointer, and the
+first child has the parent both as its &lsquo;Previous&rsquo; and as its &lsquo;Up&rsquo;
 pointer.<a name="DOCF2" href="texinfo_fot.html#FOOT2">(2)</a>
 </p>
 <p>The book-like structuring of an Info file into nodes that correspond
 to chapters, sections, and the like is a matter of convention, not a
-requirement.  The `Up', `Previous', and `Next' pointers of a node can
+requirement.  The &lsquo;Up&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Next&rsquo; pointers of a node can
 point to any other nodes, and a menu can contain any other nodes.
 Thus, the node structure can be any directed graph.  But it is usually
 more comprehensible to follow a structure that corresponds to the
 structure of chapters and sections in a printed book or report.
 </p>
-<p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
+<p>In addition to menus and to &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers, Info
 provides pointers of another kind, called references, that can be
 sprinkled throughout the text.  This is usually the best way to
 represent links that do not fit a hierarchical structure.
@@ -346,14 +346,14 @@ the node structure for the Info file and the section structure for the
 printed output.
 </p>
 <p>Generally, you enter an Info file through a node that by convention is
-named `Top'.  This node normally contains just a brief summary of the
-file's purpose, and a large menu through which the rest of the file is
+named &lsquo;Top&rsquo;.  This node normally contains just a brief summary of the
+file&rsquo;s purpose, and a large menu through which the rest of the file is
 reached.  From this node, you can either traverse the file
 systematically by going from node to node, or you can go to a specific
 node listed in the main menu, or you can search the index menus and then
 go directly to the node that has the information you want.  Alternatively,
 with the standalone Info program, you can specify specific menu items on
-the command line (see <a href="../info/index.html#Top">(info)Top</a> section `Top' in <cite>Info</cite>).
+the command line (see <a href="../info/index.html#Top">(info)Top</a> section &lsquo;Top&rsquo; in <cite>Info</cite>).
 </p>
 <p>If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit &lt;SPC&gt; repeatedly, or you get the whole
@@ -361,7 +361,7 @@ file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Exper
 </p>
 <p>The &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</tt>&rsquo; directory serves as the
 departure point for the whole Info system.  From it, you can reach the
-`Top' nodes of each of the documents in a complete Info system.
+&lsquo;Top&rsquo; nodes of each of the documents in a complete Info system.
 </p>
 <a name="IDX12"></a>
 <p>If you wish to refer to an Info file in a URI, you can use the
@@ -372,7 +372,7 @@ info:emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
 </pre></td></tr></table>
 
-<p>The <code>info</code> program itself does not follow URI's of any kind.
+<p>The <code>info</code> program itself does not follow URI&rsquo;s of any kind.
 </p>
 
 <hr size="6">
@@ -437,7 +437,7 @@ light-hearted, young and cheery.
 <p>TeX is freely distributable.  It is written in a superset of Pascal
 called WEB and can be compiled either in Pascal or (by using a
 conversion program that comes with the TeX distribution) in C.
-(See <a href="../emacs/TeX-Mode.html#TeX-Mode">(emacs)TeX Mode</a> section `TeX Mode' in <cite>The GNU Emacs Manual</cite>, for information
+(See <a href="../emacs/TeX-Mode.html#TeX-Mode">(emacs)TeX Mode</a> section &lsquo;TeX Mode&rsquo; in <cite>The GNU Emacs Manual</cite>, for information
 about TeX.)
 </p>
 <p>TeX is very powerful and has a great many features.  Because a
@@ -501,7 +501,7 @@ paragraph.)
 
 </li><li>
 Write a command such as <code>@chapter</code> at the beginning of a line
-followed by the command's arguments, in this case the chapter title, on
+followed by the command&rsquo;s arguments, in this case the chapter title, on
 the rest of the line.  (<code>@chapter</code> creates chapter titles.)
 
 </li><li>
@@ -519,7 +519,7 @@ Write a command such as <code>@example</code> on a line of its own; write the
 body-text on following lines; and write the matching <code>@end</code>
 command, <code>@end example</code> in this case, at the on a line of its own
 after the body-text. (<code>@example</code> &hellip; <code>@end example</code>
-indents and typesets body-text as an example.)  It's usually ok to
+indents and typesets body-text as an example.)  It&rsquo;s usually ok to
 indent environment commands like this, but in complicated and
 hard-to-define circumstances the extra spaces cause extra space to
 appear in the output, so beware.
@@ -573,12 +573,12 @@ an &lsquo;<samp>@</samp>&rsquo; character in front of it, like this: &lsquo;<sam
 
 </li><li>
 It is customary in TeX to use doubled single-quote characters to
-begin and end quotations: <tt>``&hellip;''</tt>.  This
+begin and end quotations: <tt>&lsquo;&lsquo;&hellip;&rsquo;&rsquo;</tt>.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled
 quotation marks, 
 and Info converts doubled single-quote characters to <small>ASCII</small>
-double-quotes: <tt>``&hellip;''</tt> becomes <tt>&quot;&hellip;&quot;</tt>.
+double-quotes: <tt>&lsquo;&lsquo;&hellip;&rsquo;&rsquo;</tt> becomes <tt>&quot;&hellip;&quot;</tt>.
 
 </li><li>
 Use three hyphens in a row, &lsquo;<samp>---</samp>&rsquo;, for a dash&mdash;like this.  In
@@ -719,7 +719,7 @@ file <strong>must</strong> begin with lines like this:
 </pre></td></tr></table>
 
 <a name="IDX19"></a>
-<p>Here's an explanation:
+<p>Here&rsquo;s an explanation:
 </p>
 <ul>
 <li>
@@ -737,7 +737,7 @@ tells TeX to open auxiliary files.  <strong>All text before
 The <code>@settitle</code> line specifies a title for the page headers (or
 footers) of the printed manual, and the default document description for
 the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; in HTML format.  Strictly speaking, <code>@settitle</code>
-is optional&mdash;if you don't mind your document being titled `Untitled'.
+is optional&mdash;if you don&rsquo;t mind your document being titled &lsquo;Untitled&rsquo;.
 
 </li><li>
 The <code>@bye</code> line at the end of the file on a line of its own tells
@@ -813,8 +813,8 @@ pages for the printed manual.  The segment must be enclosed between
 copyright page appear only in the printed manual.
 </p>
 </dd>
-<dt> <span class="roman">4. `Top' Node and Master Menu</span></dt>
-<dd><p>The `Top' node starts off the online output; it does not appear in the
+<dt> <span class="roman">4. &lsquo;Top&rsquo; Node and Master Menu</span></dt>
+<dd><p>The &lsquo;Top&rsquo; node starts off the online output; it does not appear in the
 printed manual.  We recommend including the copying permissions here as
 well as the segments above.  And it contains at least a top-level menu
 listing the chapters, and possibly a <em>Master Menu</em> listing all the
@@ -920,9 +920,9 @@ writing it out again; it is output on the back of the title page.  The
 </pre></td></tr></table>
 
 <a name="SEC16"></a>
-<h3 class="subheading"> Part 4: `Top' Node and Master Menu </h3>
+<h3 class="subheading"> Part 4: &lsquo;Top&rsquo; Node and Master Menu </h3>
 
-<p>The `Top' node contains the master menu for the Info file.  Since a
+<p>The &lsquo;Top&rsquo; node contains the master menu for the Info file.  Since a
 printed manual uses a table of contents rather than a menu, the master
 menu appears only in online output.  We also include the copying text
 again for the benefit of online readers.  And since the copying text
@@ -1055,7 +1055,7 @@ the &lsquo;<tt>ChangeLog</tt>&rsquo; file.  Our mistakes are our own.
 <a name="IDX27"></a>
 <a name="IDX28"></a>
 <a name="IDX29"></a>
-<p>A bit of history: in the 1970's at CMU, Brian Reid developed a program
+<p>A bit of history: in the 1970&rsquo;s at CMU, Brian Reid developed a program
 and format named Scribe to mark up documents for printing.  It used the
 <code>@</code> character to introduce commands, as Texinfo does.  Much more
 consequentially, it strived to describe document contents rather than

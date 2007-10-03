@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.124 2007-10-03 08:44:00 pertusus Exp $
+# $Id: texi2html.init,v 1.125 2007-10-03 09:34:36 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3645,8 +3645,8 @@ sub t2h_default_normal_text($$$$$$)
            $text =~ s/''/\&rdquo\;/g;
            if (! $in_simple)
            { # lquot and rquot don't seem to be accepted in title.
-           #    $text =~ s/'/$iso_symbols{"'"}/g if (defined ($iso_symbols{"'"}));
-           #    $text =~ s/`/$iso_symbols{'`'}/g if (defined ($iso_symbols{'`'}));
+               $text =~ s/'/$iso_symbols{"'"}/g if (defined ($iso_symbols{"'"}));
+               $text =~ s/`/$iso_symbols{'`'}/g if (defined ($iso_symbols{'`'}));
            }
        }
        else

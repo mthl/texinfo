@@ -82,10 +82,10 @@ and copy the modifications onto the main trunk.
 </p>
 <p>Use the <code>import</code> command to create and update
 the vendor branch.  When you import a new file,
-the vendor branch is made the `head' revision, so
+the vendor branch is made the &lsquo;head&rsquo; revision, so
 anyone that checks out a copy of the file gets that
 revision.  When a local modification is committed it is
-placed on the main trunk, and made the `head'
+placed on the main trunk, and made the &lsquo;head&rsquo;
 revision.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -210,7 +210,7 @@ not import more than one release of a product per day.
 More importantly, using the release tags allows <small>CVS</small> to detect files
 that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
-should do a merge like this even if <code>import</code> doesn't tell you to.
+should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 </p>
 <hr size="6">
 <a name="Reverting-local-changes"></a>
@@ -234,11 +234,11 @@ should do a merge like this even if <code>import</code> doesn't tell you to.
 <h2 class="section"> 13.3 Reverting to the latest vendor release </h2>
 
 <p>You can also revert local changes completely and return
-to the latest vendor release by changing the `head'
+to the latest vendor release by changing the &lsquo;head&rsquo;
 revision back to the vendor branch on all files.  For
 example, if you have a checked-out copy of the sources
 in &lsquo;<tt>~/work.d/wdiff</tt>&rsquo;, and you want to revert to the
-vendor's version for all the files in that directory,
+vendor&rsquo;s version for all the files in that directory,
 you would type:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd ~/work.d/wdiff
@@ -310,7 +310,7 @@ vendor, supply the &lsquo;<samp>-ko</samp>&rsquo; option to <code>cvs
 import</code> the first time you import the file.
 This will turn off keyword expansion
 for that file entirely, so if you want to be more
-selective you'll have to think about what you want
+selective you&rsquo;ll have to think about what you want
 and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 </p>
@@ -353,9 +353,9 @@ branch to import to.  The default is &lsquo;<samp>-b 1.1.1</samp>&rsquo;.
 </p>
 <p>For example, suppose that there are two teams, the red
 team and the blue team, that are sending you sources.
-You want to import the red team's efforts to branch
+You want to import the red team&rsquo;s efforts to branch
 1.1.1 and use the vendor tag RED.  You want to import
-the blue team's efforts to branch 1.1.3 and use the
+the blue team&rsquo;s efforts to branch 1.1.3 and use the
 vendor tag BLUE.  So the commands you might use are:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs import dir RED RED_1-0
@@ -370,9 +370,9 @@ example,
 </pre></td></tr></table>
 
 <p>Be careful; this kind of mismatch is sure to sow
-confusion or worse.  I can't think of a useful purpose
+confusion or worse.  I can&rsquo;t think of a useful purpose
 for the ability to specify a mismatch here, but if you
-discover such a use, don't.  <small>CVS</small> is likely to make this
+discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
 an error in some future release.
 </p>
 
