@@ -1,3 +1,8 @@
+2007-10-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (math): @math{k_{75}} is allowed, despite bare
+	braces.
+
 2007-10-02  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (math): Make description more accurate.

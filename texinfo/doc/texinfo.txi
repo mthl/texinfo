@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
+@c $Id: texinfo.txi,v 1.208 2007-10-03 19:00:31 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10958,16 +10958,23 @@ output.  @command{makeinfo} expands any @code{@@}-commands as usual,
 but it does not try to produce good mathematical formatting in any
 way.
 
-Plain @TeX{} commands are allowed in @code{@@math}.  This allows you
-to conveniently write superscripts and subscripts (as in the above
-example), and also to use all the plain @TeX{} math control sequences
-for symbols, functions, and so on, and thus get proper formatting in
-the @TeX{} output, at least.
+However, as far as the @TeX{} output is concerned, plain @TeX{}
+mathematical commands are allowed in @code{@@math}, starting with
+@samp{\}, and the plain @TeX{} math characters like @samp{^} and
+@samp{_} are also recognized.  In essence, @code{@@math} drops you
+into plain @TeX{} math mode.
 
-That is, as far as the @TeX{} output is concerned, @samp{\} is an
-escape character inside @code{@@math}, and in fact it's best to use
-@samp{\} instead of @samp{@@} for any such mathematical commands;
-otherwise, @command{makeinfo} will complain.  
+This allows you to conveniently write superscripts and subscripts (as
+in the above example), and also to use all the plain @TeX{} math
+control sequences for symbols, functions, and so on, and thus get
+proper formatting in the @TeX{} output, at least.
+
+It's best to use @samp{\} instead of @samp{@@} for any such
+mathematical commands; otherwise, @command{makeinfo} will complain.
+On the other hand, input with matching (but unescaped) braces, such as
+@samp{k_@{75@}}, is allowed inside @code{@@math}, although
+@command{makeinfo} would complain about the bare braces in regular
+input.
 
 Here's an example:
 
@@ -18891,7 +18898,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
+$Id: texinfo.txi,v 1.208 2007-10-03 19:00:31 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18965,7 +18972,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.207 2007-10-02 18:57:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.208 2007-10-03 19:00:31 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
