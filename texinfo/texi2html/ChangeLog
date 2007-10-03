@@ -1,3 +1,8 @@
+2007-10-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: use relative file names for frame
+	file names (report from Graham Percival).
+
 2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, T2h_i18n.pm: keep the state in the global hash

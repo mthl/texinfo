@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.123 2007-10-03 07:39:29 pertusus Exp $
+# $Id: texi2html.init,v 1.124 2007-10-03 08:44:00 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1306,13 +1306,16 @@ sub T2H_DEFAULT_print_navigation
 ######################################################################
 # Frames: this is from "Richard Y. Kim" <ryk@coho.net>
 # Should be improved to be more conforming to other _print* functions
-# FIXME pass toc_file and main_file as args or in $Texi2HTML::THISDOC ?
+# toc_file and main_file passed as args are relative to the texinfo manual
+# location, and therefore are not used.
 
 sub T2H_DEFAULT_print_frame
 {
     my $fh = shift;
     my $toc_file = shift;
     my $main_file = shift;
+    $main_file = $Texi2HTML::THISDOC{'filename'}->{'top'};
+    $toc_file = $Texi2HTML::THISDOC{'filename'}->{'toc_frame'};
     print $fh <<EOT;
 $FRAMESET_DOCTYPE
 <html>

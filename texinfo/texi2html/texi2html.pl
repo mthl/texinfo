@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.189 2007-10-03 07:39:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.190 2007-10-03 08:44:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2928,17 +2928,6 @@ else
 
 # Note that file extension has already been added here.
 
-# For use in init files
-$Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
-$Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
-$Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
-$Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
-$Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
-$Texi2HTML::THISDOC{'extension'} = $docu_ext;
-# FIXME document that
-$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
-$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
-
 
 my $docu_doc_file = "$docu_rdir$docu_doc"; 
 my $docu_toc_file  = "$docu_rdir$docu_toc";
@@ -2947,10 +2936,25 @@ my $docu_foot_file = "$docu_rdir$docu_foot";
 my $docu_about_file = "$docu_rdir$docu_about";
 my $docu_top_file  = "$docu_rdir$docu_top";
 
-my $docu_frame_file =     "$docu_rdir${docu_name}_frame";
-$docu_frame_file .= ".$docu_ext" if $docu_ext;
-my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame";
-$docu_toc_frame_file .= ".$docu_ext" if $docu_ext;
+my $docu_frame = "${docu_name}_frame";
+$docu_frame .= ".$docu_ext" if $docu_ext;
+my $docu_frame_file =     "$docu_rdir$docu_frame";
+my $docu_toc_frame = "${docu_name}_toc_frame";
+$docu_toc_frame .= ".$docu_ext" if $docu_ext;
+my $docu_toc_frame_file = "$docu_rdir$docu_toc_frame";
+
+# For use in init files
+$Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
+$Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
+$Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
+$Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
+$Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
+$Texi2HTML::THISDOC{'extension'} = $docu_ext;
+# FIXME document that
+$Texi2HTML::THISDOC{'filename'}->{'toc_frame'} = $docu_toc_frame;
+$Texi2HTML::THISDOC{'filename'}->{'frame'} = $docu_frame;
+$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
+$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
 
 #
 # _foo: internal variables to track @foo
