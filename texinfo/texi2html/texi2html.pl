@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.190 2007-10-03 08:44:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.191 2007-10-03 23:56:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -383,6 +383,7 @@ $list_item
 $comment
 $def_line
 $def_line_no_texi
+$heading_no_texi
 $raw
 $raw_no_texi
 $heading
@@ -1132,7 +1133,7 @@ my %no_line_macros = (
     'shortcaption' => 1,
 );
 
-foreach my $key (keys(%Texi2HTML::Config::misc_command))
+foreach my $key (keys(%Texi2HTML::Config::misc_command), keys(%sec2level))
 {
     $no_line_macros{$key} = 1;
 }
@@ -3445,6 +3446,42 @@ my %content_element =
     'shortcontents' => { 'id' => 'SEC_Overview', 'shortcontents' => 1, 'texi' => '_shortcontents' },
 );
 
+# common code for headings and sections
+sub new_section_heading($$$)
+{
+    my $command = shift;
+    my $name = shift;
+    my $state = shift;
+    $name = normalise_space($name);
+    $name = '' if (!defined($name));
+    $state->{'after_element'} = 1;
+    # no increase if in @copying and the like. Also no increase if it is top
+    # since top has number 0.
+    my $docid;
+    my $num;
+
+    if ($state->{'place'} eq $no_element_associated_place)
+    {
+        $docid = "SEC_hidden";
+        $num = "hidden";
+    }
+    else
+    {
+        $sec_num++ if($command ne 'top');
+        $num = $sec_num;
+        $docid = "SEC$sec_num";
+    }
+    my $section_ref = { 'texi' => $name,
+       'level' => $sec2level{$command},
+       'tag' => $command,
+       'sec_num' => $num,
+       'id' => $docid,
+    };
+    #print STDERR "AAAAAAAA new_section_heading $command $name $num\n";
+    return $section_ref;
+}
+
+
 #my $do_contents;            # do table of contents if true
 #my $do_scontents;           # do short table of contents if true
 my $novalidate = $Texi2HTML::Config::NOVALIDATE; # @novalidate appeared
@@ -3483,9 +3520,9 @@ sub pass_structure()
             #
             # analyze the tag
             #
-            if ($tag and $tag eq 'node' or defined($sec2level{$tag}) or $tag eq 'printindex')
+            if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex')
             {
-                $_ = substitute_texi_line($_); 
+                #$_ = substitute_texi_line($_); 
                 if ($tag eq 'node' or defined($sec2level{$tag}))
                 {# in pass structure node shouldn't appear in formats
                     close_stack_texi_structure(\$text, \@stack, $state, $line_nr);
@@ -3593,85 +3630,53 @@ sub pass_structure()
                 { # section or heading
                     if (/^\@$tag\s*(.*)$/)
                     {
-                        my $name = normalise_space($1);
-                        $name = '' if (!defined($name));
-                        my $level = $sec2level{$tag};
-                        $state->{'after_element'} = 1;
-                        my ($docid, $num);
-                        if($tag ne 'top')
+                        my $name = $1;
+                        my $section_ref = new_section_heading($tag, $name, $state);
+                        $section_ref->{'seen'} = 1;
+                        $section_ref->{'index_names'} = [];
+                        $section_ref->{'current_place'} = [];
+                        $section_ref->{'place'} = [];
+                        $section_ref->{'section'} = 1;
+
+                        if ($tag eq 'top')
                         {
-                            $sec_num++;
-                            $num = $sec_num;
-                            $docid = "SEC$sec_num";
+                            $section_ref->{'top'} = 1;
+                            $section_ref->{'number'} = '';
+                            $section_ref->{'id'} = "SEC_Top";
+                            $section_ref->{'sec_num'} = 0;
+                            $sections{0} = $section_ref;
+                            $section_top = $section_ref;
                         }
                         else
                         {
-                            $num = 0;
-                            $docid = "SEC_Top";
-                        }
-                        if ($tag !~ /heading/)
-                        {
-                            my $section_ref = { 'texi' => $name, 
-                               'level' => $level,
-                               'tag' => $tag,
-                               'sec_num' => $num,
-                               'section' => 1, 
-                               'id' => $docid,
-                               'seen' => 1,
-                               'index_names' => [],
-                               'current_place' => [],
-                               'place' => []
-                            };
-             
-                            if ($tag eq 'top')
-                            {
-                                $section_ref->{'top'} = 1;
-                                $section_ref->{'number'} = '';
-                                $sections{0} = $section_ref;
-                                $section_top = $section_ref;
-                            }
-                            $sections{$num} = $section_ref;
-                            merge_element_before_anything($section_ref);
-                            if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
-                            {
-                                my $node_ref = $state->{'node_ref'};
-                                $section_ref->{'node_ref'} = $node_ref;
-                                $section_ref->{'titlefont'} = $node_ref->{'titlefont'};
-                                $node_ref->{'with_section'} = $section_ref;
-                                $node_ref->{'top'} = 1 if ($tag eq 'top');
-                            }
-                            if (! $name and $level)
-                            {
-                               echo_warn ("$tag without name", $line_nr);
-                            }
-                            push @sections_list, $section_ref;
-                            push @all_elements, $section_ref;
-                            $state->{'element'} = $section_ref;
-                            $state->{'place'} = $section_ref->{'current_place'};
-                            my $node_ref = "NO NODE";
-                            my $node_texi ='';
-                            if ($state->{'node_ref'})
-                            {
-                                $node_ref = $state->{'node_ref'};
-                                $node_texi = $state->{'node_ref'}->{'texi'};
-                            }
-                            print STDERR "# pass_structure node($node_ref)$node_texi, tag \@$tag($level) ref $section_ref, num,id $num,$docid\n   $name\n"
-                               if $T2H_DEBUG & $DEBUG_ELEMENTS;
-                        }
-                        else 
-                        {
-                            my $section_ref = { 'texi' => $name, 
-                                'level' => $level,
-                                'heading' => 1,
-                                'tag' => $tag,
-                                'tag_level' => $tag,
-                                'sec_num' => $sec_num, 
-                                'id' => $docid,
-                                'number' => '' };
-                            $state->{'element'} = $section_ref;
-                            push @{$state->{'place'}}, $section_ref;
                             $sections{$sec_num} = $section_ref;
                         }
+                        merge_element_before_anything($section_ref);
+                        if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
+                        {
+                            my $node_ref = $state->{'node_ref'};
+                            $section_ref->{'node_ref'} = $node_ref;
+                            $section_ref->{'titlefont'} = $node_ref->{'titlefont'};
+                            $node_ref->{'with_section'} = $section_ref;
+                            $node_ref->{'top'} = 1 if ($tag eq 'top');
+                        }
+                        if (! $name and $section_ref->{'level'})
+                        {
+                            echo_warn ("$tag without name", $line_nr);
+                        }
+                        push @sections_list, $section_ref;
+                        push @all_elements, $section_ref;
+                        $state->{'element'} = $section_ref;
+                        $state->{'place'} = $section_ref->{'current_place'};
+                        my $node_ref = "NO NODE";
+                        my $node_texi ='';
+                        if ($state->{'node_ref'})
+                        {
+                            $node_ref = $state->{'node_ref'};
+                            $node_texi = $state->{'node_ref'}->{'texi'};
+                        }
+                        print STDERR "# pass_structure node($node_ref)$node_texi, tag \@$tag($section_ref->{'level'}) ref $section_ref, num,id $section_ref->{'sec_num'},$section_ref->{'id'}\n   $name\n"
+                           if $T2H_DEBUG & $DEBUG_ELEMENTS;
                     }
                 }
                 elsif (/^\@printindex\s+(\w+)/)
@@ -6342,7 +6347,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             my $tag = '';
             $tag = $1 if (/^\@(\w+)/ and !$index_pages);
 
-            if (($tag eq 'node') or defined($sec2level{$tag}) or $index_pages)
+            $sec_num++ if ($sec2level{$tag} and ($tag ne 'top'));
+
+            if (($tag eq 'node') or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $index_pages)
             {
                 if (@stack or (defined($text) and $text ne ''))
                 {# in pass text node and section shouldn't appear in formats
@@ -6352,25 +6359,16 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     push @section_lines, $text;
                     $text = '';
                 }
-                $sec_num++ if ($sec2level{$tag});
                 my $new_element;
                 my $current_element;
-                if ($tag =~ /heading/)
-                {# handle headings, they are not in element lists
-                    $current_element = $sections{$sec_num};
-                    #print STDERR "HEADING $_";
-                    if (! $element)
-                    {
-                        $new_element = shift @elements_list;
-                    }
-                    else
-                    {
-                        push (@section_lines, &$Texi2HTML::Config::anchor($current_element->{'id'}) . "\n");
-                        push @section_lines, &$Texi2HTML::Config::heading($current_element);
-                        next;
-                    }
-                }
-                elsif (!$index_pages)
+#                if ($tag =~ /heading/)
+#                {
+#                    my $heading_element = $sections{$sec_num};
+#                    push (@section_lines, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
+#                    push @section_lines, &$Texi2HTML::Config::heading($heading_element);
+#                }
+#                elsif (!$index_pages)
+                if (!$index_pages)
                 {# handle node and structuring elements
                     $current_element = shift (@all_elements);
                     ########################## begin debug section
@@ -9570,21 +9568,21 @@ sub scan_structure($$$$;$)
             my $end_tag = $2;
             #print STDERR "END STRUCTURE $end_tag\n";
             $state->{'detailmenu'}-- if ($end_tag eq 'detailmenu' and $state->{'detailmenu'});
-            if (defined($state->{'text_macro_stack'}) 
-               and @{$state->{'text_macro_stack'}} 
+            if (defined($state->{'text_macro_stack'})
+               and @{$state->{'text_macro_stack'}}
                and ($end_tag eq $state->{'text_macro_stack'}->[-1]))
             {
                 pop @{$state->{'text_macro_stack'}};
                 if (exists($region_lines{$end_tag}))
                 { # end a region_line macro, like documentdescription, copying
-                     print STDERR "Bug: end_tag $end_tag ne $state->{'region_lines'}->{'format'}" 
-                         if ( $end_tag ne $state->{'region_lines'}->{'format'});
-                     $state->{'region_lines'}->{'number'}--;
-                     if ($state->{'region_lines'}->{'number'} == 0)
-                     { 
-                         close_region($state);
-                     }
-		     #dump_stack($text, $stack, $state); 
+                    print STDERR "Bug: end_tag $end_tag ne $state->{'region_lines'}->{'format'}\n" 
+                        if ($end_tag ne $state->{'region_lines'}->{'format'});
+                    $state->{'region_lines'}->{'number'}--;
+                    if ($state->{'region_lines'}->{'number'} == 0)
+                    { 
+                        close_region($state);
+                    }
+		    #dump_stack($text, $stack, $state); 
                 }
                 if ($end_tag eq 'menu')
                 {
@@ -9635,8 +9633,24 @@ sub scan_structure($$$$;$)
                  add_prev ($text, $stack, "\@$macro".$line); 
                  next;
             }
+            if ($sec2level{$macro})
+            {
+                if (/^\s*(.*)$/)
+                {
+                    my $name = $1;
+                    my $section_ref = new_section_heading($macro, $name, $state);
+                    $section_ref->{'heading'} = 1;
+                    $section_ref->{'tag_level'} = $macro;
+                    $section_ref->{'number'} = '';
 
-            if ($macro =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'))
+                    $state->{'element'} = $section_ref;
+                    push @{$state->{'place'}}, $section_ref;
+                    $sections{$section_ref->{'sec_num'}} = $section_ref;
+                }
+                add_prev ($text, $stack, "\@$macro" .  $_);
+                last;
+            }
+            elsif ($macro =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'))
             {
                 my $index_prefix = $1;
                 my $key = $_;
@@ -10407,7 +10421,7 @@ sub scan_line($$$$;$)
             if ($state->{'keep_texi'})
             {
                 # We treat specially formats accepting {} on command line
-                if ($macro eq 'multitable' or defined($Texi2HTML::Config::def_map{$macro}))
+                if ($macro eq 'multitable' or defined($Texi2HTML::Config::def_map{$macro}) or defined($sec2level{$macro}))
                 {
                     add_prev($text, $stack, "\@$macro" . $_);
                     $_ = '';
@@ -10515,12 +10529,32 @@ sub scan_line($$$$;$)
                      add_prev($text, $stack, &$Texi2HTML::Config::def_line_no_texi($category, $name, $type, $arguments));
                      return;
                 }
+                elsif (defined($sec2level{$macro}))
+                {
+                    my $num = $sec_num;
+                    $num = "hidden" if ($state->{'multiple_pass'});
+                    my $heading_element = $sections{$num};
+                    add_prev($text, $stack, &$Texi2HTML::Config::heading_no_texi($heading_element, $macro, $_));
+                    return;
+                }
 
                 # ignore other macros
                 next;
             }
 
             # handle the other macros, in the context of some normal text
+            if (defined($sec2level{$macro}))
+            {
+                 #dump_stack($text, $stack, $state);
+                 my $num = $sec_num;
+                 $num = "hidden" if ($state->{'multiple_pass'});
+                 #print STDERR "AAAAAAAA heading_element $num $macro $_";
+                 my $heading_element = $sections{$num};
+                 add_prev($text, $stack, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
+                 add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $_, substitute_line($_), $state->{'preformatted'}));
+                 return;
+            }
+
             if (($macro =~ /^(\w+?)index$/) and ($1 ne 'print'))
             {
                 add_prev($text, $stack, do_index_entry_label($macro,$state,$line_nr));
@@ -11787,7 +11821,13 @@ sub close_stack($$$$;$$)
             }
             else
             {
-                dump_stack ($text, $stack, $state) if (!defined($style)); # bug
+                ########################## debug
+                if (!defined($style))
+                {
+                    print STDERR "Bug: style not defined, on stack\n";
+                    dump_stack ($text, $stack, $state); # bug
+                }
+                ########################## end debug
                 $string .= '}';
                 echo_warn ("closing \@-command $style", $line_nr) if ($style); 
             }
@@ -12337,6 +12377,7 @@ if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DO
         $Texi2HTML::Config::DOCUMENT_DESCRIPTION .= ' ' . $line;
     }
 }
+$sec_num = 0;
 # do copyright notice inserted in comment at the beginning of the files
 if (@{$region_lines{'copying'}})
 {

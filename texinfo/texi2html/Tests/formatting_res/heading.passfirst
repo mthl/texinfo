@@ -1,0 +1,36 @@
+heading.texi(,2) 
+heading.texi(,3) @setfilename headings.info
+heading.texi(,4) 
+heading.texi(,12) 
+heading.texi(,13) @heading before Top
+heading.texi(,14) 
+heading.texi(,15) @node Top
+heading.texi(,16) @top Test headings
+heading.texi(,17) 
+heading.texi(,18) @heading in top @@ @emph{heading}
+heading.texi(,19) 
+heading.texi(,20) @chapter A chapter
+heading.texi(,21) 
+heading.texi(,22) @footnote{
+heading.texi(,23) @heading heading in footnote @@ @emph{heading}
+heading.texi(,24) @cindex heading in footnote
+heading.texi(,25) @heading second heading in footnote @@ @emph{heading}
+heading.texi(,26) }
+heading.texi(,27) 
+heading.texi(,28) First insertcopying:
+heading.texi(,29) @insertcopying
+heading.texi(,30) 
+heading.texi(,31) Second insertcopying:
+heading.texi(,32) @insertcopying
+heading.texi(,33) 
+heading.texi(,34) @chapter index
+heading.texi(,35) 
+heading.texi(,36) @printindex cp
+heading.texi(,37) 
+heading.texi(,38) @quotation
+heading.texi(,39) 
+heading.texi(,40) @heading in quotation @@ @emph{heading}
+heading.texi(,41) 
+heading.texi(,42) @end quotation
+heading.texi(,43) 
+heading.texi(,44) @bye

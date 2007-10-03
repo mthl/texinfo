@@ -285,6 +285,7 @@ test_texi formatting tex.texi "-prefix tex_nol2h" 0 texi tex_nol2h
 test_texi formatting formats_in_menu.texi
 test_texi formatting comments.texi
 test_texi formatting comments.texi "-init redefine_need.init -prefix comments_redefined" 0 texi  comments_redefined 
+test_texi formatting heading.texi
 test_texi formatting equivalent_nodes.texi "" 5
 test_texi formatting indicateurl_paragraph.texi
 test_texi formatting bad_nesting.texi

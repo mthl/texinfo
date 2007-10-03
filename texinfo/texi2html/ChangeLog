@@ -1,3 +1,9 @@
+2007-10-04  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle headings more like normal
+	@-commands and not like sectionning commands.
+	* Tests/*: add tests for headings
+
 2007-10-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: use relative file names for frame

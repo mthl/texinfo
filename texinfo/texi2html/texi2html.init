@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.125 2007-10-03 09:34:36 pertusus Exp $
+# $Id: texi2html.init,v 1.126 2007-10-03 23:56:51 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3309,6 +3309,7 @@ $def_line_no_texi  = \&t2h_default_def_line_no_texi;
 $raw               = \&t2h_default_raw;
 $raw_no_texi       = \&t2h_default_raw_no_texi;
 $heading           = \&t2h_default_heading;
+$heading_no_texi   = \&t2h_default_heading_no_texi;
 $paragraph         = \&t2h_default_paragraph;
 $preformatted      = \&t2h_default_preformatted;
 $foot_line_and_ref = \&t2h_default_foot_line_and_ref;
@@ -4500,6 +4501,7 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
 #
 # argument:
 # an element. It is a hash reference for a node or a sectionning command.
+#             it may be the wrong one in case of headings.
 # The interesting keys are:
 # 'text': the heading text
 # 'text_nonumber': the heading text without section number
@@ -4508,26 +4510,60 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-sub t2h_default_heading($)
+sub t2h_default_heading($;$$$$)
 {
     my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+
+    my $text = $element->{'text'};
     my $level = 3;
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
     }
-    $level = 1 if ($level == 0);
-    my $text = $element->{'text'};
-    return '' if ($text !~ /\S/);
     my $class = $element->{'tag_level'};
     $class = 'unnumbered' if ($class eq 'top');
-    if (defined($element->{'tocid'}) and $TOC_LINKS)
+    # when it is a heading, the element may be wrong, so the command and the
+    # line are used...
+    if (defined($command) and $command =~ /heading/)
+    {
+        $level = $main::sec2level{$command} if (defined($main::sec2level{$command}));
+        if (defined($line)) 
+        {
+            $text = $line;
+            # this isn't done in main program in that case...
+            chomp ($text);
+            $text =~ s/^\s*//;
+        }
+        $class = $command;
+    }
+    elsif (defined($element->{'tocid'}) and $TOC_LINKS)
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
+    $level = 1 if ($level == 0);
+    return '' if ($text !~ /\S/);
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
-    return "<h$level class=\"$class\"$align> $text </h$level>\n";
+    if (!$in_preformatted)
+    {
+       return "<h$level class=\"$class\"$align> $text </h$level>\n";
+    }
+    else
+    {
+       return "<strong>$text</strong>\n";
+    }
+}
+
+sub t2h_default_heading_no_texi($$$)
+{
+    my $element = shift;
+    my $command = shift;
+    my $line = shift;
+    return main::remove_texi($line);
 }
 
 # formatting of raw regions
