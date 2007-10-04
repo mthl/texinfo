@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.191 2007-10-03 23:56:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.192 2007-10-04 10:12:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3454,7 +3454,6 @@ sub new_section_heading($$$)
     my $state = shift;
     $name = normalise_space($name);
     $name = '' if (!defined($name));
-    $state->{'after_element'} = 1;
     # no increase if in @copying and the like. Also no increase if it is top
     # since top has number 0.
     my $docid;
@@ -3627,11 +3626,13 @@ sub pass_structure()
                     }
                 }
                 elsif (defined($sec2level{$tag}))
-                { # section or heading
+                { # section
                     if (/^\@$tag\s*(.*)$/)
                     {
                         my $name = $1;
                         my $section_ref = new_section_heading($tag, $name, $state);
+                        $state->{'after_element'} = 1;
+
                         $section_ref->{'seen'} = 1;
                         $section_ref->{'index_names'} = [];
                         $section_ref->{'current_place'} = [];
@@ -6361,13 +6362,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 }
                 my $new_element;
                 my $current_element;
-#                if ($tag =~ /heading/)
-#                {
-#                    my $heading_element = $sections{$sec_num};
-#                    push (@section_lines, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
-#                    push @section_lines, &$Texi2HTML::Config::heading($heading_element);
-#                }
-#                elsif (!$index_pages)
+
                 if (!$index_pages)
                 {# handle node and structuring elements
                     $current_element = shift (@all_elements);
@@ -6551,7 +6546,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 if ($current_element->{'element'} and !$current_element->{'top'})
                 {
                     &$Texi2HTML::Config::print_element_header($FH, $first_section, $previous_is_top) if (!$one_section);
-                    push @section_lines, &$Texi2HTML::Config::heading($current_element) 
+                    my $line = $_;
+                    $line =~ s/\@$tag\s*//;
+                    push @section_lines, &$Texi2HTML::Config::heading($current_element, $tag, $line, substitute_line($line));
                 }
                 next;
             }

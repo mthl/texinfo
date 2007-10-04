@@ -2,6 +2,7 @@
 
 	* texi2html.pl, texi2html.init: handle headings more like normal
 	@-commands and not like sectionning commands.
+	Don't associate headings with the following index entries.
 	* Tests/*: add tests for headings
 
 2007-10-03  Patrice Dumas  <dumas@centre-cired.fr>
