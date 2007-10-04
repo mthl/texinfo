@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.192 2007-10-04 10:12:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.193 2007-10-04 11:47:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2979,6 +2979,7 @@ my $foot_num = 0;
 my $relative_foot_num = 0;
 my $idx_num = 0;
 my $sec_num = 0;
+my $head_num = 0;
 my $anchor_num = 0;
 
 #
@@ -3417,7 +3418,7 @@ my @all_elements = ();      # sectionning elements (nodes and sections)
                             # @sections_list @nodes_list, @elements_list
 my @elements_list;          # all the resulting elements in document order
 my %sections = ();          # sections hash. The key is the section number
-                            # headings are there, although they are not elements
+my %headings =();           # headings hash. The key is the heading number
 my $section_top;            # @top section
 my $element_top;            # Top element
 my $node_top;               # Top node
@@ -3459,24 +3460,23 @@ sub new_section_heading($$$)
     my $docid;
     my $num;
 
-    if ($state->{'place'} eq $no_element_associated_place)
-    {
-        $docid = "SEC_hidden";
-        $num = "hidden";
-    }
-    else
-    {
-        $sec_num++ if($command ne 'top');
-        $num = $sec_num;
-        $docid = "SEC$sec_num";
-    }
+#    if ($state->{'place'} eq $no_element_associated_place)
+#    {
+#        $docid = "SEC_hidden";
+#        $num = "hidden";
+#    }
+#    else
+#    {
+#        $sec_num++ if($command ne 'top');
+#        $num = $sec_num;
+#        $docid = "SEC$sec_num";
+#    }
     my $section_ref = { 'texi' => $name,
        'level' => $sec2level{$command},
        'tag' => $command,
-       'sec_num' => $num,
-       'id' => $docid,
     };
-    #print STDERR "AAAAAAAA new_section_heading $command $name $num\n";
+#       'sec_num' => $num,
+#       'id' => $docid,
     return $section_ref;
 }
 
@@ -3633,6 +3633,10 @@ sub pass_structure()
                         my $section_ref = new_section_heading($tag, $name, $state);
                         $state->{'after_element'} = 1;
 
+                        $sec_num++ if($tag ne 'top');
+                        
+                        $section_ref->{'sec_num'} = $sec_num;
+                        $section_ref->{'id'} = "SEC$sec_num";
                         $section_ref->{'seen'} = 1;
                         $section_ref->{'index_names'} = [];
                         $section_ref->{'current_place'} = [];
@@ -4390,8 +4394,8 @@ sub rearrange_elements()
     my $toplevel = 4;
     # correct level if raisesections or lowersections overflowed
     # and find toplevel level
-    # use %sections to modify also the headings
-    foreach my $section (values(%sections))
+    # use %sections and %headings to modify also the headings
+    foreach my $section (values(%sections), values(%headings))
     {
         my $level = $section->{'level'};
         if ($level > $MAX_LEVEL)
@@ -5771,11 +5775,28 @@ sub get_node($)
     return $element->{'node_ref'} if ($element->{'node_ref'});
     return $element;
 }
+
+sub do_section_names($$)
+{
+    my $number = shift;
+    my $section = shift;
+    #$section->{'name'} = substitute_line($section->{'texi'});
+    my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
+    $section->{'text'} = substitute_line($texi);
+    $section->{'text_nonumber'} = substitute_line($section->{'texi'});
+    # backward compatibility
+    $section->{'name'} = $section->{'text_nonumber'};
+    $section->{'no_texi'} = remove_texi($texi);
+    $section->{'simple_format'} = simple_format(undef,$texi);
+    $section->{'heading_texi'} = $texi;
+}
+
 # get the html names from the texi for all elements
 sub do_names()
 {
     print STDERR "# Doing ". scalar(keys(%nodes)) . " nodes, ".
-        scalar(keys(%sections)) . " sections in ". $#elements_list . 
+        scalar(keys(%sections)) . " sections, " .
+        scalar(keys(%headings)) . "headings in ". $#elements_list . 
         " elements\n" if ($T2H_DEBUG);
     # for nodes and anchors we haven't any state defined
     # This seems right, however, as we don't want @refs or @footnotes
@@ -5797,16 +5818,11 @@ sub do_names()
     }
     foreach my $number (keys(%sections))
     {
-        my $section = $sections{$number};
-        #$section->{'name'} = substitute_line($section->{'texi'});
-        my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
-        $section->{'text'} = substitute_line($texi);
-        $section->{'text_nonumber'} = substitute_line($section->{'texi'});
-        # backward compatibility
-        $section->{'name'} = $section->{'text_nonumber'};
-        $section->{'no_texi'} = remove_texi($texi);
-        $section->{'simple_format'} = simple_format(undef,$texi);
-        $section->{'heading_texi'} = $texi;
+        do_section_names($number, $sections{$number});
+    }
+    foreach my $number (keys(%headings))
+    {
+        do_section_names($number, $headings{$number});
     }
     my $tocnr = 1;
     foreach my $element (@elements_list)
@@ -6348,7 +6364,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             my $tag = '';
             $tag = $1 if (/^\@(\w+)/ and !$index_pages);
 
-            $sec_num++ if ($sec2level{$tag} and ($tag ne 'top'));
 
             if (($tag eq 'node') or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $index_pages)
             {
@@ -6360,6 +6375,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     push @section_lines, $text;
                     $text = '';
                 }
+                $sec_num++ if ($sec2level{$tag} and ($tag ne 'top'));
                 my $new_element;
                 my $current_element;
 
@@ -9636,13 +9652,24 @@ sub scan_structure($$$$;$)
                 {
                     my $name = $1;
                     my $section_ref = new_section_heading($macro, $name, $state);
+                    if ($state->{'place'} eq $no_element_associated_place)
+                    {
+                        $section_ref->{'id'} = "SEC_hidden";
+                        $section_ref->{'sec_num'} = "hidden";
+                    }
+                    else
+                    {
+                        $head_num++;
+                        $section_ref->{'id'} = "HEAD$head_num";
+                        $section_ref->{'sec_num'} = $head_num;
+                    }
                     $section_ref->{'heading'} = 1;
                     $section_ref->{'tag_level'} = $macro;
                     $section_ref->{'number'} = '';
 
                     $state->{'element'} = $section_ref;
                     push @{$state->{'place'}}, $section_ref;
-                    $sections{$section_ref->{'sec_num'}} = $section_ref;
+                    $headings{$section_ref->{'sec_num'}} = $section_ref;
                 }
                 add_prev ($text, $stack, "\@$macro" .  $_);
                 last;
@@ -10528,9 +10555,17 @@ sub scan_line($$$$;$)
                 }
                 elsif (defined($sec2level{$macro}))
                 {
-                    my $num = $sec_num;
-                    $num = "hidden" if ($state->{'multiple_pass'});
-                    my $heading_element = $sections{$num};
+                    my $num;
+                    if ($state->{'multiple_pass'})
+                    {
+                        $num = "hidden";
+                    }
+                    else
+                    {
+                        $head_num++;
+                        $num = $head_num;
+                    }
+                    my $heading_element = $headings{$num};
                     add_prev($text, $stack, &$Texi2HTML::Config::heading_no_texi($heading_element, $macro, $_));
                     return;
                 }
@@ -10543,10 +10578,17 @@ sub scan_line($$$$;$)
             if (defined($sec2level{$macro}))
             {
                  #dump_stack($text, $stack, $state);
-                 my $num = $sec_num;
-                 $num = "hidden" if ($state->{'multiple_pass'});
-                 #print STDERR "AAAAAAAA heading_element $num $macro $_";
-                 my $heading_element = $sections{$num};
+                 my $num;
+                 if ($state->{'multiple_pass'})
+                 {
+                    $num = "hidden";
+                 }
+                 else
+                 {
+                     $head_num++;
+                     $num = $head_num;
+                 }
+                 my $heading_element = $headings{$num};
                  add_prev($text, $stack, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
                  add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $_, substitute_line($_), $state->{'preformatted'}));
                  return;
@@ -12375,6 +12417,7 @@ if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DO
     }
 }
 $sec_num = 0;
+$head_num = 0;
 # do copyright notice inserted in comment at the beginning of the files
 if (@{$region_lines{'copying'}})
 {
@@ -12382,6 +12425,7 @@ if (@{$region_lines{'copying'}})
 }
 &$Texi2HTML::Config::toc_body(\@elements_list);
 $sec_num = 0;
+$head_num = 0;
 
 
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);

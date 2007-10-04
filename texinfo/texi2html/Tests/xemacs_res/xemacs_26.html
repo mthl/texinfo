@@ -42,21 +42,21 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Abbrevs"></a>
-<a name="SEC285"></a>
+<a name="SEC274"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_25.html#SEC284" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC286" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_25.html#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC275" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs_25.html#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 23. Abbrevs </h1>
@@ -74,7 +74,7 @@ Disabling Abbrev mode does not cause abbrev definitions to be discarded,
 but they do not expand until Abbrev mode is enabled again.  The command
 <kbd>M-x abbrev-mode</kbd> toggles Abbrev mode; with a numeric argument, it
 turns Abbrev mode on if the argument is positive, off otherwise.
-See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
+See section <a href="xemacs_30.html#SEC341">Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
 on when the variable is non-<code>nil</code>.  The variable <code>abbrev-mode</code>
 automatically becomes local to the current buffer when it is set.
 </p>
@@ -92,38 +92,38 @@ every session.
 <p>  A second kind of abbreviation facility is called the <em>dynamic
 expansion</em>.  Dynamic abbrev expansion happens only when you give an
 explicit command and the result of the expansion depends only on the
-current contents of the buffer.  See section <a href="#SEC290">Dynamic Abbrev Expansion</a>.
+current contents of the buffer.  See section <a href="#SEC279">Dynamic Abbrev Expansion</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC286">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Defining an abbrev, so it will expand when typed.
+<tr><td align="left" valign="top"><a href="#SEC275">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Defining an abbrev, so it will expand when typed.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC287">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Controlling expansion: prefixes, canceling expansion.
+<tr><td align="left" valign="top"><a href="#SEC276">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Controlling expansion: prefixes, canceling expansion.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC288">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Viewing or editing the entire list of defined abbrevs.
+<tr><td align="left" valign="top"><a href="#SEC277">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Viewing or editing the entire list of defined abbrevs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC289">23.4 Saving Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Saving the entire list of abbrevs for another session.
+<tr><td align="left" valign="top"><a href="#SEC278">23.4 Saving Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Saving the entire list of abbrevs for another session.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC290">23.5 Dynamic Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Abbreviations for words already in the buffer.
+<tr><td align="left" valign="top"><a href="#SEC279">23.5 Dynamic Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Abbreviations for words already in the buffer.
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Defining-Abbrevs"></a>
-<a name="SEC286"></a>
+<a name="SEC275"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC285" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC287" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC274" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC276" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 23.1 Defining Abbrevs </h2>
@@ -194,21 +194,21 @@ two definitions are independent for one abbrev.
 </p>
 <hr size="6">
 <a name="Expanding-Abbrevs"></a>
-<a name="SEC287"></a>
+<a name="SEC276"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC286" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC288" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC275" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC277" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 23.2 Controlling Abbrev Expansion </h2>
@@ -280,21 +280,21 @@ once.  The command is effective even if Abbrev mode is not enabled.
 </p>
 <hr size="6">
 <a name="Editing-Abbrevs"></a>
-<a name="SEC288"></a>
+<a name="SEC277"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC287" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC289" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC276" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC278" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 23.3 Examining and Editing Abbrevs </h2>
@@ -350,21 +350,21 @@ merely displays it in another window.
 </p>
 <hr size="6">
 <a name="Saving-Abbrevs"></a>
-<a name="SEC289"></a>
+<a name="SEC278"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC288" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC290" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC277" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC279" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 23.4 Saving Abbrevs </h2>
@@ -405,7 +405,7 @@ specified file.  The text stored in the file looks like the output of
 minibuffer and reads the specified file, defining abbrevs according to
 its contents.  <kbd>M-x quietly-read-abbrev-file</kbd> is the same but does
 not display a message in the echo area; it is actually useful primarily
-in the init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>. If you give an empty argument to
+in the init file.  See section <a href="xemacs_30.html#SEC366">The Init File</a>. If you give an empty argument to
 either of these functions, the file name Emacs uses is the value of the
 variable <code>abbrev-file-name</code>, which is by default
 <code>&quot;~/.abbrev_defs&quot;</code>.
@@ -426,21 +426,21 @@ the entire current buffer and defines abbrevs accordingly.
 </p>
 <hr size="6">
 <a name="Dynamic-Abbrevs"></a>
-<a name="SEC290"></a>
+<a name="SEC279"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC289" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC278" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC274" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 23.5 Dynamic Abbrev Expansion </h2>
@@ -475,8 +475,8 @@ has a definition as an ordinary abbrev.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC274" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_27.html#SEC280" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -484,7 +484,7 @@ has a definition as an ordinary abbrev.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

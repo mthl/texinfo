@@ -61,21 +61,21 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Format-with-tex_002ftexindex"></a>
-<a name="SEC246"></a>
+<a name="SEC222"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC245" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC247" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC221" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC223" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC220" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC220" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC236" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC284" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
@@ -95,7 +95,7 @@ any device (see the following sections).
 <a name="IDX320"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
-command automatically generates indices; see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
+command automatically generates indices; see section <a href="Format-with-texi2dvi.html#SEC223">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
 running the <code>tex</code> command, you first need a sorted index to work
 from.  The <code>texindex</code> command sorts indices.  (The source file
 &lsquo;<tt>texindex.c</tt>&rsquo; comes as part of the standard Texinfo distribution,
@@ -130,7 +130,7 @@ command reports but otherwise ignores such files.)
 <p>For each file specified, <code>texindex</code> generates a sorted index file
 whose name is made by appending &lsquo;<samp>s</samp>&rsquo; to the input file name.  The
 <code>@printindex</code> command looks for a file with that name
-(see section <a href="Printing-Indices-_0026-Menus.html#SEC69">Printing Indices and Menus</a>).  <code>texindex</code> does not alter the
+(see section <a href="Printing-Indices-_0026-Menus.html#SEC52">Printing Indices and Menus</a>).  <code>texindex</code> does not alter the
 raw index output file.
 </p>
 <p>After you have sorted the indices, you need to rerun the <code>tex</code>
@@ -167,7 +167,7 @@ written for the cross-references.
 
 <a name="IDX325"></a>
 <p>Alternatively, it&rsquo;s a one-step process: run <code>texi2dvi</code>
-(see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>).
+(see section <a href="Format-with-texi2dvi.html#SEC223">Format with <code>texi2dvi</code></a>).
 </p>
 <p>You need not run <code>texindex</code> each time after you run <code>tex</code>.  If
 you do not, on the next run, the <code>tex</code> formatting command will use
@@ -184,7 +184,7 @@ the usual auxiliary files that TeX creates and warnings TeX gives
 when cross-references are not satisfied are just nuisances.  You can
 avoid them with the <code>@novalidate</code> command, which you must give
 <em>before</em> the <code>@setfilename</code> command
-(see section <a href="setfilename.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
+(see section <a href="setfilename.html#SEC29"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
@@ -195,24 +195,24 @@ your file would look approximately like this:
 
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option
-(see section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>).
+(see section <a href="Pointer-Validation.html#SEC241">Pointer Validation</a>).
 </p>
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC245" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC247" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC221" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC223" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC220" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC220" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC236" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC284" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

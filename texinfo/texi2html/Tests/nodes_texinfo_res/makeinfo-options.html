@@ -61,21 +61,21 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="makeinfo-options"></a>
-<a name="SEC264"></a>
+<a name="SEC240"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Invoking-makeinfo.html#SEC263" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Pointer-Validation.html#SEC265" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Invoking-makeinfo.html#SEC239" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Pointer-Validation.html#SEC241" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC261" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC236" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC237" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC253" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC284" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
@@ -108,7 +108,7 @@ file and would also set the fill column to 70.
 <dt> <code>-D <var>var</var></code></dt>
 <dd><a name="IDX358"></a>
 <p>Cause the variable <var>var</var> to be defined.  This is equivalent to
-<code>@set <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+<code>@set <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC207"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
 <dt> <code>--commands-in-node-names</code></dt>
@@ -116,7 +116,7 @@ file and would also set the fill column to 70.
 <p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
-&lsquo;<samp>--no-validate</samp>&rsquo; is used.  See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>, for more
+&lsquo;<samp>--no-validate</samp>&rsquo; is used.  See section <a href="Pointer-Validation.html#SEC241">Pointer Validation</a>, for more
 details.
 </p>
 </dd>
@@ -153,7 +153,7 @@ is 72.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 <p>Set the footnote style to <var>style</var>, either &lsquo;<samp>end</samp>&rsquo; for the end
 node style (the default) or &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
 The value set by this option overrides the value set in a Texinfo file
-by an <code>@footnotestyle</code> command (see section <a href="Footnotes.html#SEC201">Footnotes</a>).  When the
+by an <code>@footnotestyle</code> command (see section <a href="Footnotes.html#SEC178">Footnotes</a>).  When the
 footnote style is &lsquo;<samp>separate</samp>&rsquo;, <code>makeinfo</code> makes a new node
 containing the footnotes found in the current node.  When the footnote
 style is &lsquo;<samp>end</samp>&rsquo;, <code>makeinfo</code> places the footnote references at
@@ -177,7 +177,7 @@ created.  With this option, they are preserved.
 </dd>
 <dt> <code>--html</code></dt>
 <dd><a name="IDX371"></a>
-<p>Generate HTML output rather than Info.  See section <a href="makeinfo-html.html#SEC270">Generating HTML</a>.  By
+<p>Generate HTML output rather than Info.  See section <a href="makeinfo-html.html#SEC246">Generating HTML</a>.  By
 default, the HTML output is split into one output file per source node,
 and the split output is written into a subdirectory with the name of the
 top-level info file.
@@ -220,7 +220,7 @@ distribution (as in an &lsquo;<tt>INSTALL</tt>&rsquo; file).
 <p>For HTML output, likewise omit menus.  And if &lsquo;<samp>--no-split</samp>&rsquo; is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
-See section <a href="makeinfo-html.html#SEC270">Generating HTML</a>.
+See section <a href="makeinfo-html.html#SEC246">Generating HTML</a>.
 </p>
 <p>In both cases, write to standard output by default (can still be
 overridden by &lsquo;<samp>-o</samp>&rsquo;).
@@ -233,7 +233,7 @@ overridden by &lsquo;<samp>-o</samp>&rsquo;).
 <p>Suppress the splitting stage of <code>makeinfo</code>.  By default, large
 output files (where the size is greater than 70k bytes) are split into
 smaller subfiles.  For Info output, each one is approximately 50k bytes.
-For HTML output, each file contains one node (see section <a href="makeinfo-html.html#SEC270">Generating HTML</a>).
+For HTML output, each file contains one node (see section <a href="makeinfo-html.html#SEC246">Generating HTML</a>).
 </p>
 </dd>
 <dt> <code>--no-pointer-validate</code></dt>
@@ -242,9 +242,9 @@ For HTML output, each file contains one node (see section <a href="makeinfo-html
 <a name="IDX385"></a>
 <a name="IDX386"></a>
 <p>Suppress the pointer-validation phase of <code>makeinfo</code>.  This can also
-be done with the <code>@novalidate</code> command (see section <a href="Use-TeX.html#SEC245">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
+be done with the <code>@novalidate</code> command (see section <a href="Use-TeX.html#SEC221">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
 checks are made to ensure that cross references can be resolved, etc.
-See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
+See section <a href="Pointer-Validation.html#SEC241">Pointer Validation</a>.
 </p>
 </dd>
 <dt> <code>--no-warn</code></dt>
@@ -273,10 +273,10 @@ current footnote number to 1 at the start of each node.
 <a name="IDX391"></a>
 <p>Specify that the output should be directed to <var>file</var> and not to the
 file name specified in the <code>@setfilename</code> command found in the
-Texinfo source (see section <a href="setfilename.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output
+Texinfo source (see section <a href="setfilename.html#SEC29"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output
 goes to standard output and &lsquo;<samp>--no-split</samp>&rsquo; is implied.  For split
 HTML output, <var>file</var> is the name for the directory into which all
-HTML nodes are written (see section <a href="makeinfo-html.html#SEC270">Generating HTML</a>).
+HTML nodes are written (see section <a href="makeinfo-html.html#SEC246">Generating HTML</a>).
 </p>
 </dd>
 <dt> <code>-P <var>dir</var></code></dt>
@@ -292,7 +292,7 @@ See &lsquo;<samp>-I</samp>&rsquo; for more details.
 <a name="IDX394"></a>
 <p>Set the paragraph indentation style to <var>indent</var>.  The value set by
 this option overrides the value set in a Texinfo file by an
-<code>@paragraphindent</code> command (see section <a href="paragraphindent.html#SEC65">Paragraph Indenting</a>).  The value
+<code>@paragraphindent</code> command (see section <a href="paragraphindent.html#SEC48">Paragraph Indenting</a>).  The value
 of <var>indent</var> is interpreted as follows:
 </p>
 <dl compact="compact">
@@ -322,7 +322,7 @@ references but also report a warning.  The default is 1000.
 </dd>
 <dt> <code>-U <var>var</var></code></dt>
 <dd><p>Cause <var>var</var> to be undefined.  This is equivalent to
-<code>@clear <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+<code>@clear <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC207"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
 <dt> <code>--verbose</code></dt>
@@ -349,19 +349,19 @@ warnings.
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Invoking-makeinfo.html#SEC263" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Pointer-Validation.html#SEC265" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Invoking-makeinfo.html#SEC239" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Pointer-Validation.html#SEC241" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC261" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC236" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC237" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC253" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC284" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>
