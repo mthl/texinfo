@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.127 2007-10-05 12:10:56 pertusus Exp $
+# $Id: texi2html.init,v 1.128 2007-10-05 22:55:13 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4631,6 +4631,9 @@ sub t2h_default_foot_line_and_ref($$$$$$$)
           &$anchor($footnote_id, $document_file . "#$place_id",
                    "($number_in_doc)")
           . "</h3>\n");
+    # this is a bit obscure, this allows to add an anchor only if formatted
+    # as part of the document.
+    $place_id = '' if ($state->{'outside_document'} or $state->{'multiple_pass'});
     return ($lines, &$anchor($place_id,  $footnote_file . "#$footnote_id", 
            "($number_in_doc)"));
 }

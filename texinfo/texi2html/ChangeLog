@@ -6,6 +6,10 @@
 	add more information relative to the special regions.
 	Treat more systematically the special regions with an initialization
 	code allowing to fill the state with relevant information.
+	Don't output footnote lines for footnotes not part of the document.
+	Better id generation for headings in region.
+	Better handling of anchors in special regions.
+	Prefix the targets in special regions with t_h.
 	* texi2html.pl, texi2html.init: use a formatting function for 
 	documentdescription and give more arguments to copying_comment.
 

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.194 2007-10-05 12:10:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.195 2007-10-05 22:55:13 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -118,6 +118,8 @@ else
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
+
+my $target_prefix = "t_h";
 
 # directories for texi2html init files
 my @texi2html_config_dirs = ('./');
@@ -7214,7 +7216,7 @@ sub do_anchor_label($$$$)
     my $state = shift;
     my $line_nr = shift;
 
-    return '' if ($state->{'region_pass'});
+    return '' if ($state->{'multiple_pass'} or $state->{'remove_texi'});
     $anchor = normalise_node($anchor);
     if (!exists($nodes{$anchor}) or !defined($nodes{$anchor}->{'id'}))
     {
@@ -8380,6 +8382,8 @@ sub do_footnote($$$$)
     my $foot_state = duplicate_state($doc_state);
     fill_state($foot_state);
 
+    push_state($foot_state);
+
     my ($foot_num, $relative_foot_num);
     if (!$foot_state->{'region'})
     {
@@ -8397,6 +8401,11 @@ sub do_footnote($$$$)
  
     my $docid  = "DOCF$$foot_num";
     my $footid = "FOOT$$foot_num";
+    if ($doc_state->{'region'})
+    {
+        $docid = $target_prefix . $doc_state->{'region'} . "_$docid";
+        $footid = $target_prefix . $doc_state->{'region'} . "_$footid";
+    }
     my $from_file = '';
     if ($doc_state->{'element'} and $Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES)
     { 
@@ -8414,7 +8423,15 @@ sub do_footnote($$$$)
     my @lines = substitute_text($foot_state, map {$_ = $_."\n"} split (/\n/, $text));
     my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
          $$relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $doc_state);
-    push(@foot_lines, @{$foot_lines});
+    if ($doc_state->{'outside_document'} or $doc_state->{'multiple_pass'})
+    {
+        $region_initial_state{$doc_state->{'region'}}->{'footnotes'}->{$$foot_num}->{$doc_state->{'region_pass'}} = $foot_lines;
+    }
+    else
+    {
+         push(@foot_lines, @{$foot_lines});
+    }
+    pop_state();
     return $foot_label;
 }
 
@@ -9743,10 +9760,14 @@ sub scan_structure($$$$;$)
                 {
                     my $name = $1;
                     my $heading_ref = new_section_heading($macro, $name, $state);
-                    if ($state->{'place'} eq $no_element_associated_place)
+                    #if ($state->{'place'} eq $no_element_associated_place)
+                    if (exists($state->{'region_lines'}) and $state->{'region_lines'}->{'format'})
                     {
-                        $heading_ref->{'id'} = "SEC_hidden";
-                        $heading_ref->{'sec_num'} = "hidden";
+                        my $region = $state->{'region_lines'}->{'format'};
+                        $state->{'region_lines'}->{'head_num'}++;
+                        my $num = $state->{'region_lines'}->{'head_num'};
+                        $heading_ref->{'id'} = "${target_prefix}${region}_HEAD$num";
+                        $heading_ref->{'sec_num'} = "${region}_$num";
                     }
                     else
                     {
@@ -10651,9 +10672,8 @@ sub scan_line($$$$;$)
                     my $num;
                     if ($state->{'region'})
                     {
-                        $num = "hidden";
                         $state->{'head_num'}++;
-                        #$num = $state->{'head_num'};
+                        $num = "$state->{'region'}_$state->{'head_num'}";
                     }
                     else
                     {
@@ -10676,8 +10696,8 @@ sub scan_line($$$$;$)
                  my $num;
                  if ($state->{'region'})
                  {
-                     $num = "hidden";
                      $state->{'head_num'}++;
+                     $num = "$state->{'region'}_$state->{'head_num'}";
                      #$num = $state->{'head_num'};
                  }
                  else
