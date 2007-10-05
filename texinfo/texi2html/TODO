@@ -120,3 +120,12 @@ texi and formatted result. And also give the fractions and maybe use them.
   Documentation should only done once the interface is stable.
 
 * roff is certainly not uptodate. At least the @quote* and @guillem*
+
+* ducument $documentdescription and $copying_comment. enhance titlepage
+  handling
+
+* test @anchor, @*index and @footnote in titlepage. Fix footnote handling
+  in special regions.
+
+* maybe be quiet during specail region expansion outside of document. It
+  is not very clear that it is wrong, though.

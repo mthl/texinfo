@@ -314,7 +314,7 @@ sub get_string($;$$)
     my $state = shift;
     if (!defined($state) and defined($Texi2HTML::THISDOC{'state'}))
     {
-        $state = main::duplicate_state($Texi2HTML::THISDOC{'state'});
+        $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
     }
 
     my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;

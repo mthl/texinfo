@@ -30,6 +30,8 @@ This file records noteworthy changes.
 * change in the normal_text function reference API, now there is an 
   input variable true if in simple text.
 
+* $Texi2HTML::THISDOC{copying} is now $Texi2HTML::THISDOC{copying_comment}.
+
 * BUG FIXES
   ---------
 

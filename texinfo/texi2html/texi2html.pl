@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.193 2007-10-04 11:47:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.194 2007-10-05 12:10:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -406,6 +406,7 @@ $sp
 $definition_category
 $table_list
 $copying_comment
+$documentdescription
 $index_summary_file_entry
 $index_summary_file_end
 $index_summary_file_begin
@@ -1112,6 +1113,30 @@ my %reference_sec2level = %sec2level;
           'documentdescription'  => [ ],
           'copying'              => [ ],
 );
+
+my %region_initial_state = (
+          'titlepage'            => { },
+          'documentdescription'  => { },
+          'copying'              => { },
+);
+
+# to determine if a command has to be processed the following are interesting 
+# (and can be faked):
+# 'region': the name of the special region we are processing
+# 'region_pass': the number of passes in that specific region (both outside
+#                of the main document, and in the main document)
+# 'multiple_pass': the number of pass in the formatting of the region in the
+#                  main document
+# 'outside_document': set to 1 if outside of the main document formatting
+foreach my $key (keys(%region_initial_state))
+{
+   $region_initial_state{$key}->{'multiple_pass'} = -1;
+   $region_initial_state{$key}->{'region_pass'} = 0;
+   $region_initial_state{$key}->{'num_head'} = 0;
+   $region_initial_state{$key}->{'foot_num'} = 0;
+   $region_initial_state{$key}->{'relative_foot_num'} = 0;
+   $region_initial_state{$key}->{'region'} = $key;
+}
 
 # those macros aren't considered as beginning a paragraph
 my %no_line_macros = (
@@ -2973,14 +2998,12 @@ my @index_labels = ();             # array corresponding with @?index commands
                                    # constructed during pass_texi, used to
                                    # put labels in pass_text
 #
-# initial counters
+# initial counters. Global variables for pass_structure.
 #
-my $foot_num = 0;
-my $relative_foot_num = 0;
-my $idx_num = 0;
-my $sec_num = 0;
-my $head_num = 0;
-my $anchor_num = 0;
+my $document_idx_num = 0;
+my $document_sec_num = 0;
+my $document_head_num = 0;
+my $document_anchor_num = 0;
 
 #
 # can I use ISO8859 characters? (HTML+)
@@ -3188,7 +3211,7 @@ sub texinfo_initialization($)
     }
     # reset the @set/@clear values
     %value = %value_initial;
-    set_special_names();
+#    set_special_names();
     foreach my $init_mac ('everyheading', 'everyfooting', 'evenheading', 
         'evenfooting', 'oddheading', 'oddfooting', 'headings', 
         'allowcodebreaks', 'frenchspacing', 'exampleindent', 
@@ -3460,23 +3483,10 @@ sub new_section_heading($$$)
     my $docid;
     my $num;
 
-#    if ($state->{'place'} eq $no_element_associated_place)
-#    {
-#        $docid = "SEC_hidden";
-#        $num = "hidden";
-#    }
-#    else
-#    {
-#        $sec_num++ if($command ne 'top');
-#        $num = $sec_num;
-#        $docid = "SEC$sec_num";
-#    }
     my $section_ref = { 'texi' => $name,
        'level' => $sec2level{$command},
        'tag' => $command,
     };
-#       'sec_num' => $num,
-#       'id' => $docid,
     return $section_ref;
 }
 
@@ -3633,10 +3643,10 @@ sub pass_structure()
                         my $section_ref = new_section_heading($tag, $name, $state);
                         $state->{'after_element'} = 1;
 
-                        $sec_num++ if($tag ne 'top');
+                        $document_sec_num++ if($tag ne 'top');
                         
-                        $section_ref->{'sec_num'} = $sec_num;
-                        $section_ref->{'id'} = "SEC$sec_num";
+                        $section_ref->{'sec_num'} = $document_sec_num;
+                        $section_ref->{'id'} = "SEC$document_sec_num";
                         $section_ref->{'seen'} = 1;
                         $section_ref->{'index_names'} = [];
                         $section_ref->{'current_place'} = [];
@@ -3654,7 +3664,7 @@ sub pass_structure()
                         }
                         else
                         {
-                            $sections{$sec_num} = $section_ref;
+                            $sections{$section_ref->{'sec_num'}} = $section_ref;
                         }
                         merge_element_before_anything($section_ref);
                         if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
@@ -5796,7 +5806,7 @@ sub do_names()
 {
     print STDERR "# Doing ". scalar(keys(%nodes)) . " nodes, ".
         scalar(keys(%sections)) . " sections, " .
-        scalar(keys(%headings)) . "headings in ". $#elements_list . 
+        scalar(keys(%headings)) . " headings in ". $#elements_list . 
         " elements\n" if ($T2H_DEBUG);
     # for nodes and anchors we haven't any state defined
     # This seems right, however, as we don't want @refs or @footnotes
@@ -5887,13 +5897,14 @@ sub enter_index_entry($$$$$$$)
     $key =~ s/^\s*//;
     my $entry = $key;
     # The $key is mostly usefull for alphabetical sorting
+    # FIXME this should be done later, during formatting.
     $key = remove_texi($key);
     my $id = '';
     # don't add a specific index target if after a section or the index
     # entry is in @copying or the like
     unless ($use_section_id or ($place eq $no_element_associated_place))
     {
-        $id = 'IDX' . ++$idx_num;
+        $id = 'IDX' . ++$document_idx_num;
     }
     my $index_entry = {
            'entry'    => $entry,
@@ -6073,6 +6084,13 @@ sub get_index($;$)
     return ($pages, $entries);
 }
 
+# these variables are global, so great care should be taken with
+# state->{'multiple_state'}, ->{'region'}, ->{'region_pass'} and
+# {'outside_document'}.
+my $global_head_num = 0;       # heading index. it is global for the main doc, 
+                               # and taken from the state if in multiple_pass.
+my $global_foot_num = 0;
+my $global_relative_foot_num = 0;
 my @foot_lines = ();           # footnotes
 my $copying_comment = '';      # comment constructed from text between
                                # @copying and @end copying with licence
@@ -6082,7 +6100,7 @@ my %acronyms_like = ();        # acronyms or similar commands associated texts
                                # hash references associating shorthands to
                                # texts.
 
-sub initialise_state($)
+sub fill_state($)
 {
     my $state = shift;
     $state->{'preformatted'} = 0 unless exists($state->{'preformatted'}); 
@@ -6091,6 +6109,7 @@ sub initialise_state($)
     $state->{'keep_texi'} = 0 unless exists($state->{'keep_texi'});
     $state->{'keep_nr'} = 0 unless exists($state->{'keep_nr'});
     $state->{'detailmenu'} = 0 unless exists($state->{'detailmenu'});     # number of opened detailed menus      
+    $state->{'sec_num'} = 0 unless exists($state->{'sec_num'});
     $state->{'table_list_stack'} = [ {'format' => "noformat"} ] unless exists($state->{'table_list_stack'});
     $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'}); 
     $state->{'preformatted_stack'} = [ '' ] unless exists($state->{'preformatted_stack'}); 
@@ -6098,13 +6117,17 @@ sub initialise_state($)
     $state->{'command_stack'} = [] unless exists($state->{'command_stack'});
     $state->{'quotation_stack'} = [] unless exists($state->{'quotation_stack'});
     # if there is no $state->{'element'} the first element is used
-    $state->{'element'} = $elements_list[0] unless (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'});
+    if ((!$state->{'element'} or $state->{'element'}->{'before_anything'}) and (@elements_list))
+    {
+        $state->{'element'} = $elements_list[0];
+    }
+        #$state->{'element'} = $elements_list[0] unless ((!@elements_list) or (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'}));
 }
 
 sub pass_text()
 {
     my %state;
-    initialise_state(\%state);
+    fill_state(\%state);
     my @stack;
     my $text;
     my $doc_nr;
@@ -6123,6 +6146,7 @@ sub pass_text()
         exit (0);
     }
 
+    set_special_names();
     # We set titlefont only if the titlefont appeared in the top element
     if (defined($element_top->{'titlefont'}))
     {
@@ -6246,7 +6270,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
     $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
 #    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
-    $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
@@ -6298,6 +6321,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::SIMPLE_TEXT{'Top'} = $top_simple_format;
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
 
+# FIXME format copying_comment, documentdescrition here?
+    $Texi2HTML::THISDOC{'copying_comment'} = $copying_comment;
     # must be after toc_body, but before titlepage
     foreach my $element_tag ('contents', 'shortcontents')
     {
@@ -6375,7 +6400,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     push @section_lines, $text;
                     $text = '';
                 }
-                $sec_num++ if ($sec2level{$tag} and ($tag ne 'top'));
+                $state{'sec_num'}++ if ($sec2level{$tag} and ($tag ne 'top'));
                 my $new_element;
                 my $current_element;
 
@@ -6776,7 +6801,7 @@ sub finish_element($$$$)
         if ($files{$element->{'file'}}->{'counter'})
         {# there are other elements in that page we are not on its foot
             $files{$element->{'file'}}->{'relative_foot_num'} 
-               = $relative_foot_num;
+               = $global_relative_foot_num;
             push @{$files{$element->{'file'}}->{'foot_lines'}},
                 @foot_lines;
         }
@@ -6788,7 +6813,7 @@ sub finish_element($$$$)
         }
         if ($new_element)
         {
-            $relative_foot_num = 
+            $global_relative_foot_num = 
                $files{$new_element->{'file'}}->{'relative_foot_num'};
         }
         @foot_lines = ();
@@ -7189,7 +7214,7 @@ sub do_anchor_label($$$$)
     my $state = shift;
     my $line_nr = shift;
 
-    return '' if ($state->{'multiple_pass'});
+    return '' if ($state->{'region_pass'});
     $anchor = normalise_node($anchor);
     if (!exists($nodes{$anchor}) or !defined($nodes{$anchor}->{'id'}))
     {
@@ -7487,13 +7512,53 @@ sub init_special($$)
     }
 }
 
+# FIXME we cannot go through the commands too 'often'. The error messages
+# are duplicated and global stuff is changed.
+# -> identify what is global
+# -> use local state
+sub do_special_region_lines($;$)
+{
+    my $region = shift;
+    my $state = shift;
+    if (!defined($state))
+    {
+        fill_state($state);
+        $state->{'outside_document'} = 1;
+    }
+    else
+    {
+        $region_initial_state{$region}->{'multiple_pass'}++;
+    }
+    return ('','') unless @{$region_lines{$region}};
+    my $new_state = duplicate_formatting_state($state);
+    foreach my $key (keys(%{$region_initial_state{$region}}))
+    {
+        $new_state->{$key} = $region_initial_state{$region}->{$key};
+    }
+    my $text = substitute_text($new_state, @{$region_lines{$region}});
+
+    $region_initial_state{$region}->{'region_pass'}++;
+
+    my $remove_texi_state = duplicate_formatting_state($state);
+    $remove_texi_state->{'remove_texi'} = 1;
+    foreach my $key (keys(%{$region_initial_state{$region}}))
+    {
+        $remove_texi_state->{$key} = $region_initial_state{$region}->{$key};
+    }
+    my $removed_texi = substitute_text($remove_texi_state, @{$region_lines{$region}});
+    $region_initial_state{$region}->{'region_pass'}++;
+    return ($text, $removed_texi);
+}
+
 sub do_insertcopying($)
 {
     my $state = shift;
-    return '' unless @{$region_lines{'copying'}};
-    my $insert_copying_state = duplicate_state($state);
-    $insert_copying_state->{'multiple_pass'} = 1;
-    return substitute_text($insert_copying_state, @{$region_lines{'copying'}});
+#    return '' unless @{$region_lines{'copying'}};
+#    my $insert_copying_state = duplicate_formatting_state($state);
+#    $insert_copying_state->{'multiple_pass'} = 1;
+#    return substitute_text($insert_copying_state, @{$region_lines{'copying'}});
+    my ($text, $comment) = do_special_region_lines('copying', $state);
+    return $text;
 }
 
 sub get_deff_index($$$)
@@ -7773,8 +7838,8 @@ sub end_format($$$$$)
         }
         my ($caption_lines, $shortcaption_lines) = &$Texi2HTML::Config::caption_shortcaption($state->{'float'});
         my ($caption_text, $shortcaption_text);
-        $caption_text = substitute_text(duplicate_state($state), @$caption_lines) if (defined($caption_lines));
-        $shortcaption_text = substitute_text(duplicate_state($state), @$shortcaption_lines) if (defined($shortcaption_lines));
+        $caption_text = substitute_text(duplicate_formatting_state($state), @$caption_lines) if (defined($caption_lines));
+        $shortcaption_text = substitute_text(duplicate_formatting_state($state), @$shortcaption_lines) if (defined($shortcaption_lines));
         add_prev($text, $stack, &$Texi2HTML::Config::float($format_ref->{'text'}, $state->{'float'}, $caption_text, $shortcaption_text));
         delete $state->{'float'};
     }
@@ -7931,7 +7996,7 @@ sub do_menu_link($$;$)
     my $file = $state->{'element'}->{'file'};
     my $node_name = normalise_node($menu_entry->{'node'});
 
-    my $substitution_state = duplicate_state($state);
+    my $substitution_state = duplicate_formatting_state($state);
     my $name = substitute_line($menu_entry->{'name'}, $substitution_state);
     my $node_formatted = substitute_line($menu_entry->{'node'}, $substitution_state);
 
@@ -8002,7 +8067,7 @@ sub do_menu_description($$)
 
     my $element = $menu_entry->{'menu_reference_element'};
 
-    return &$Texi2HTML::Config::menu_description($descr, duplicate_state($state),$element->{'text_nonumber'});
+    return &$Texi2HTML::Config::menu_description($descr, duplicate_formatting_state($state),$element->{'text_nonumber'});
 }
 
 sub do_xref($$$$)
@@ -8058,7 +8123,7 @@ sub do_xref($$$$)
     }
     
     my $i;
-    my $new_state = duplicate_state($state);
+    my $new_state = duplicate_formatting_state($state);
     $new_state->{'keep_texi'} = 0;
     $new_state->{'keep_nr'} = 0;
     for ($i = 0; $i < 5; $i++)
@@ -8200,9 +8265,9 @@ sub do_acronym_like($$$$$)
          }
          $text =~ s/ $//;
          $explanation_simple_format = simple_format($state, $text);
-         $explanation_text = substitute_line($text, duplicate_state($state));
+         $explanation_text = substitute_line($text, duplicate_formatting_state($state));
     }
-    return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, duplicate_state($state)), 
+    return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, duplicate_formatting_state($state)), 
        $with_explanation, $explanation_lines, $explanation_text, $explanation_simple_format);
 }
 
@@ -8278,7 +8343,7 @@ sub do_quotation_line($$$$$)
     $text_texi = undef if (defined($text_texi) and $text_texi=~/^\s*$/);
     if (defined($text_texi))
     {
-         $text = substitute_line($text_texi, duplicate_state($state));
+         $text = substitute_line($text_texi, duplicate_formatting_state($state));
          $text =~ s/\s*$//;
     }
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
@@ -8307,36 +8372,48 @@ sub do_footnote($$$$)
     my $args = shift;
     my $text = $args->[0];
     my $style_stack = shift;
-    my $state = shift;
+    my $doc_state = shift;
     my $line_nr = shift;
 
     $text .= "\n";
-    $foot_num++;
-    $relative_foot_num++;
-    my $docid  = "DOCF$foot_num";
-    my $footid = "FOOT$foot_num";
-    my $from_file = '';
-    if ($state->{'element'} and $Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES)
-    { 
-        $from_file = $state->{'element'}->{'file'};
-    }
-    my %state;
-    initialise_state(\%state); 
-    if ($Texi2HTML::Config::SEPARATED_FOOTNOTES)
+
+    my $foot_state = duplicate_state($doc_state);
+    fill_state($foot_state);
+
+    my ($foot_num, $relative_foot_num);
+    if (!$foot_state->{'region'})
     {
-        $state{'element'} = $footnote_element;
+        $foot_num = \$global_foot_num;
+        $relative_foot_num = \$global_relative_foot_num;
     }
     else
+    # FIXME when in multiple pass do more intelligent formatting
     {
-        $state{'element'} = $state->{'element'};
+        $foot_num = \$doc_state->{'foot_num'};
+        $relative_foot_num = \$doc_state->{'relative_foot_num'};
+    }
+    $$foot_num++;
+    $$relative_foot_num++;   
+ 
+    my $docid  = "DOCF$$foot_num";
+    my $footid = "FOOT$$foot_num";
+    my $from_file = '';
+    if ($doc_state->{'element'} and $Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES)
+    { 
+        $from_file = $doc_state->{'element'}->{'file'};
+    }
+    
+    if ($Texi2HTML::Config::SEPARATED_FOOTNOTES)
+    {
+        $foot_state->{'element'} = $footnote_element;
     }
     my $file = '';
     $file = $docu_foot if ($Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES);
     
     # FIXME use split_lines ? It seems to work like it is now ?
-    my @lines = substitute_text(\%state, map {$_ = $_."\n"} split (/\n/, $text));
-    my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref ($foot_num,
-         $relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $state);
+    my @lines = substitute_text($foot_state, map {$_ = $_."\n"} split (/\n/, $text));
+    my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
+         $$relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $doc_state);
     push(@foot_lines, @{$foot_lines});
     return $foot_label;
 }
@@ -8388,17 +8465,31 @@ sub do_image($$$$)
         $args[3], $args[4], $path_to_working_dir, $image);
 }
 
+# usefull if we want to duplicate only the global state, nothing related with
+# formatting
 sub duplicate_state($)
 {
     my $state = shift;
-    my $new_state = { 'element' => $state->{'element'}, 
-           'preformatted' => $state->{'preformatted'}, 
-           'code_style' => $state->{'code_style'}, 
-           'keep_texi' => $state->{'keep_texi'}, 
-           'keep_nr' => $state->{'keep_nr'}, 
-           'preformatted_stack' => $state->{'preformatted_stack'},
-           'multiple_pass' => $state->{'multiple_pass'}
+    my $new_state = { 'element' => $state->{'element'},
+         'multiple_pass' => $state->{'multiple_pass'},
+         'region_pass' => $state->{'region_pass'},
+         'region' => $state->{'region'},
+         'sec_num' => $state->{'sec_num'},
     };
+    return $new_state;
+}
+
+# duplicate global and formatting state.
+sub duplicate_formatting_state($)
+{
+    my $state = shift;
+    my $new_state = duplicate_state($state);
+
+    foreach my $format_key ('preformatted', 'code_style', 'keep_texi',
+          'keep_nr', 'preformatted_stack')
+    {
+        $new_state->{$format_key} = $state->{$format_key}; 
+    }
 # this is needed for preformatted
     my $command_stack = $state->{'command_stack'};
     $command_stack = [] if (!defined($command_stack));
@@ -8663,7 +8754,7 @@ sub simple_format($@)
     }
     else
     {
-        $state = duplicate_state($state);
+        $state = duplicate_formatting_state($state);
     }
     $state->{'remove_texi'} = 1;
     $state->{'simple_format'} = 1;
@@ -9391,8 +9482,8 @@ sub close_structure_command($$$$)
             echo_error ("Duplicate node for anchor found: $anchor", $line_nr);
             return '';
         }
-        $anchor_num++;
-        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $anchor_num};
+        $document_anchor_num++;
+        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $document_anchor_num};
         push @{$state->{'place'}}, $nodes{$anchor};
     }
     elsif ($cmd_ref->{'style'} eq 'footnote')
@@ -9651,25 +9742,25 @@ sub scan_structure($$$$;$)
                 if (/^\s*(.*)$/)
                 {
                     my $name = $1;
-                    my $section_ref = new_section_heading($macro, $name, $state);
+                    my $heading_ref = new_section_heading($macro, $name, $state);
                     if ($state->{'place'} eq $no_element_associated_place)
                     {
-                        $section_ref->{'id'} = "SEC_hidden";
-                        $section_ref->{'sec_num'} = "hidden";
+                        $heading_ref->{'id'} = "SEC_hidden";
+                        $heading_ref->{'sec_num'} = "hidden";
                     }
                     else
                     {
-                        $head_num++;
-                        $section_ref->{'id'} = "HEAD$head_num";
-                        $section_ref->{'sec_num'} = $head_num;
+                        $document_head_num++;
+                        $heading_ref->{'id'} = "HEAD$document_head_num";
+                        $heading_ref->{'sec_num'} = $document_head_num;
                     }
-                    $section_ref->{'heading'} = 1;
-                    $section_ref->{'tag_level'} = $macro;
-                    $section_ref->{'number'} = '';
+                    $heading_ref->{'heading'} = 1;
+                    $heading_ref->{'tag_level'} = $macro;
+                    $heading_ref->{'number'} = '';
 
-                    $state->{'element'} = $section_ref;
-                    push @{$state->{'place'}}, $section_ref;
-                    $headings{$section_ref->{'sec_num'}} = $section_ref;
+                    $state->{'element'} = $heading_ref;
+                    push @{$state->{'place'}}, $heading_ref;
+                    $headings{$heading_ref->{'sec_num'}} = $heading_ref;
                 }
                 add_prev ($text, $stack, "\@$macro" .  $_);
                 last;
@@ -10374,11 +10465,13 @@ sub scan_line($$$$;$)
                          {
                               my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float));
                               my $caption_lines = &$Texi2HTML::Config::listoffloats_caption($float);
-                              # we set 'multiple_pass' such that index entries
+                              # we set 'multiple_pass', 'region' and 
+                              # 'region_pass'such that index entries
                               # and anchors are not handled one more time;
                               # the caption has allready been formatted, 
                               # and these have been handled at the right place
-                              my $caption = substitute_text({ 'multiple_pass' => 1 }, @$caption_lines);
+                              # FIXME footnotes?
+                              my $caption = substitute_text({ 'multiple_pass' => 1, 'region' => 'listoffloats', 'region_pass' => 1 }, @$caption_lines);
                               push @listoffloats_entries, &$Texi2HTML::Config::listoffloats_entry($arg, $float, $float_style, $caption, href($float, $state->{'element'}->{'file'}));
                          }
                          add_prev($text, $stack, &$Texi2HTML::Config::listoffloats($arg, $style, \@listoffloats_entries));
@@ -10554,16 +10647,18 @@ sub scan_line($$$$;$)
                      return;
                 }
                 elsif (defined($sec2level{$macro}))
-                {
+                { #FIXME  there is certainly more intelligent stuff to do
                     my $num;
-                    if ($state->{'multiple_pass'})
+                    if ($state->{'region'})
                     {
                         $num = "hidden";
+                        $state->{'head_num'}++;
+                        #$num = $state->{'head_num'};
                     }
                     else
                     {
-                        $head_num++;
-                        $num = $head_num;
+#                        $global_head_num++;
+                        $num = $global_head_num;
                     }
                     my $heading_element = $headings{$num};
                     add_prev($text, $stack, &$Texi2HTML::Config::heading_no_texi($heading_element, $macro, $_));
@@ -10579,14 +10674,16 @@ sub scan_line($$$$;$)
             {
                  #dump_stack($text, $stack, $state);
                  my $num;
-                 if ($state->{'multiple_pass'})
+                 if ($state->{'region'})
                  {
-                    $num = "hidden";
+                     $num = "hidden";
+                     $state->{'head_num'}++;
+                     #$num = $state->{'head_num'};
                  }
                  else
                  {
-                     $head_num++;
-                     $num = $head_num;
+                     $global_head_num++;
+                     $num = $global_head_num;
                  }
                  my $heading_element = $headings{$num};
                  add_prev($text, $stack, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
@@ -12127,7 +12224,8 @@ sub substitute_text($@)
     }
     else
     {
-        initialise_state($state);
+#print STDERR "FILL_STATE substitute_text ($state->{'preformatted'}): @_\n";
+        fill_state($state);
     }
     $state->{'spool'} = [];
     #print STDERR "SUBST_TEXT begin\n";
@@ -12145,6 +12243,7 @@ sub substitute_text($@)
             $line = shift @_;
         }
         next unless (defined($line));
+        #{ my $p_line = $line; chomp($p_line); print STDERR "SUBST_TEXT $p_line\n"; }
         if ($state->{'structure'})
         {
             scan_structure ($line, \$text, \@stack, $state);
@@ -12223,7 +12322,9 @@ sub do_index_entry_label($$$)
     my $command = shift;
     my $state = shift;
     my $line_nr = shift;
-    return '' if ($state->{'multiple_pass'});
+    # index entries are not entered in special regions
+    return '' if ($state->{'region'});
+#    return '' if ($state->{'multiple_pass'} or $state->{'outside_document'});
     my $entry = shift @index_labels;
     if (!defined($entry))
     {
@@ -12404,31 +12505,26 @@ foreach my $handler(@Texi2HTML::Config::command_handler_process)
     &$handler;
 }
 
-if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENT_DESCRIPTION)))
-{
-    my $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
-    my @documentdescription = split (/\n/, $documentdescription);
-    $Texi2HTML::Config::DOCUMENT_DESCRIPTION = shift @documentdescription;
-    chomp $Texi2HTML::Config::DOCUMENT_DESCRIPTION;
-    foreach my $line (@documentdescription)
-    {
-        chomp $line;
-        $Texi2HTML::Config::DOCUMENT_DESCRIPTION .= ' ' . $line;
-    }
-}
-$sec_num = 0;
-$head_num = 0;
+# FIXME we do the regions formatting here, even if they never appear.
+# so we should be very carefull to take into accout 'outside_document' to
+# avoid messing with information that has to be set in the main document.
+# also the error messages will appear even though the corresponding 
+# texinfo is never used.
+# also the titlepage should be done here, and/or these should be moved
+# down in pass_text to have more information available when formatted,
+# like for titlepage.
+my ($region_text, $region_no_texi);
+($region_text, $region_no_texi) = do_special_region_lines('documentdescription');
+$documentdescription = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi);
+
 # do copyright notice inserted in comment at the beginning of the files
-if (@{$region_lines{'copying'}})
-{
-    $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'});
-}
+($region_text, $region_no_texi) = do_special_region_lines('copying');
+$copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'}, $region_text, $region_no_texi);
 &$Texi2HTML::Config::toc_body(\@elements_list);
-$sec_num = 0;
-$head_num = 0;
 
 
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
+
 
 pass_text();
 print STDERR "BUG: " . scalar(@index_labels) . " index entries pending\n" 

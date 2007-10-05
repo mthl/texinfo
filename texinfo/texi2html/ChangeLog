@@ -1,3 +1,14 @@
+2007-10-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: separate global variables of pass_structure and
+	pass_texi, prefix some of those vaiables, and clean variable and 
+	function names.
+	add more information relative to the special regions.
+	Treat more systematically the special regions with an initialization
+	code allowing to fill the state with relevant information.
+	* texi2html.pl, texi2html.init: use a formatting function for 
+	documentdescription and give more arguments to copying_comment.
+
 2007-10-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle headings more like normal

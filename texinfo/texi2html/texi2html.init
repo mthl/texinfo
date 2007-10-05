@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.126 2007-10-03 23:56:51 pertusus Exp $
+# $Id: texi2html.init,v 1.127 2007-10-05 12:10:56 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -748,7 +748,7 @@ $DATE = undef;
 # $Texi2HTML::THISDOC{fulltitle}      -- full title as set by @title...
 # $Texi2HTML::THISDOC{subtitle}       -- subtitle as set by @subtitle
 # $Texi2HTML::THISDOC{author}         -- author as set by @author
-# $Texi2HTML::THISDOC{copying}        -- text of @copying and @end copying in comment
+# $Texi2HTML::THISDOC{copying_comment}  -- text of @copying and @end copying in comment
 #
 # $Texi2HTML::THISDOC{program}          -- name and version of texi2html
 # $Texi2HTML::THISDOC{program_homepage} -- homepage for texi2html
@@ -1057,7 +1057,7 @@ sub T2H_DEFAULT_print_page_head($)
     print $fh <<EOT;
 $DOCTYPE
 <html>
-$Texi2HTML::THISDOC{'copying'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program} -->
+$Texi2HTML::THISDOC{'copying_comment'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program} -->
 <!--
 $Texi2HTML::THISDOC{program_authors}
 -->
@@ -3330,6 +3330,7 @@ $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
 $definition_category      = \&t2h_default_definition_category;
 $copying_comment          = \&t2h_default_copying_comment;
+$documentdescription      = \&t2h_default_documentdescription;
 $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
 $index_summary_file_end   = \&t2h_default_index_summary_file_end;
 $index_summary_file_begin = \&t2h_default_index_summary_file_begin;
@@ -4991,12 +4992,34 @@ sub t2h_default_index_entry($$$$)
 }
 
 
-sub t2h_default_copying_comment($)
+sub t2h_default_copying_comment($$$)
 {
     my $copying_lines = shift;
-    my $text = &$comment(main::remove_texi(@$copying_lines));
+    my $copying_text = shift;
+    my $copying_no_texi = shift;
+    return '' if ($copying_no_texi eq '');
+    my $text = &$comment($copying_no_texi);
     return $text;
 }
+
+sub t2h_default_documentdescription($$$)
+{
+    my $decription_lines = shift;
+    my $description_text = shift;
+    my $description_no_texi = shift;
+    return $DOCUMENT_DESCRIPTION if (defined($DOCUMENT_DESCRIPTION));
+    return '' if ($description_no_texi eq ''); 
+    my @documentdescription = split (/\n/, $description_no_texi);
+    $DOCUMENT_DESCRIPTION = shift @documentdescription;
+    chomp $DOCUMENT_DESCRIPTION;
+    foreach my $line (@documentdescription)
+    {
+        chomp $line;
+        $DOCUMENT_DESCRIPTION .= ' ' . $line;
+    }
+    return $DOCUMENT_DESCRIPTION;
+}
+
 # format a letter appearing in a summary for an index. The letter links to
 # the place where the index elements beginning with this letter are (called
 # a letter entry).

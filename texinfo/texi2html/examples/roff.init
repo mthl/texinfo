@@ -34,7 +34,7 @@ sub T2H_ROFF_print_page_head
 $AFTER_BODY_OPEN
 
 EOT
-    print $fh $Texi2HTML::THISDOC{'copying'} . "\n";
+    print $fh $Texi2HTML::THISDOC{'copying_comment'} . "\n";
     print $fh "" . &$comment("Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program}\n");
     print $fh "" . &$comment($Texi2HTML::THISDOC{program_authors});
     print $fh ".ds St " . protect_spaces($Texi2HTML::THISDOC{'title'}) . "\n";
