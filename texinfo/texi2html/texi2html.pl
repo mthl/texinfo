@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.195 2007-10-05 22:55:13 pertusus Exp $
+# $Id: texi2html.pl,v 1.196 2007-10-06 14:35:16 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1302,7 +1302,8 @@ $| = 1;
 my $I = \&Texi2HTML::I18n::get_string;
 
 my $T2H_USER; # user running the script
-my $documentdescription; # text in @documentdescription 
+my $documentdescription_text; # text in @documentdescription 
+my $titlepage_text; # text in titlepage
 
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
@@ -3424,6 +3425,7 @@ sub initialise_state_structure($)
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'sectionning_base'} = 0;         # current base sectionning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
+    # seems to be only debug
     if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
     {
         delete ($state->{'region_lines'});
@@ -5877,7 +5879,7 @@ sub do_names()
 #---############################################################################
 
 # called during pass_structure
-sub enter_index_entry($$$$$$$)
+sub enter_index_entry($$$$$$$$)
 {
     my $prefix = shift;
     my $line_nr = shift;
@@ -5886,6 +5888,7 @@ sub enter_index_entry($$$$$$$)
     my $element = shift;
     my $use_section_id = shift;
     my $command = shift;
+    my $region = shift;
     unless ($index_prefix_to_name{$prefix})
     {
         echo_error ("Undefined index command: ${prefix}index", $line_nr);
@@ -5895,6 +5898,7 @@ sub enter_index_entry($$$$$$$)
     {
         echo_warn ("Index entry before document: \@${prefix}index $key", $line_nr); 
     }
+    #print STDERR "($region) $key" if $region;
     $key =~ s/\s+$//;
     $key =~ s/^\s*//;
     my $entry = $key;
@@ -5902,9 +5906,11 @@ sub enter_index_entry($$$$$$$)
     # FIXME this should be done later, during formatting.
     $key = remove_texi($key);
     my $id = '';
+
+    my $index_entry_hidden = (($place eq $no_element_associated_place) or $region);
     # don't add a specific index target if after a section or the index
     # entry is in @copying or the like
-    unless ($use_section_id or ($place eq $no_element_associated_place))
+    unless ($use_section_id or $index_entry_hidden)
     {
         $id = 'IDX' . ++$document_idx_num;
     }
@@ -5923,7 +5929,7 @@ sub enter_index_entry($$$$$$$)
         echo_warn("Empty index entry for \@$command",$line_nr);
         # don't add the index entry to the list of index entries used for index
         # entry formatting,if the index entry appears in a region like copying 
-        push @index_labels, $index_entry unless ($place eq $no_element_associated_place);
+        push @index_labels, $index_entry unless $index_entry_hidden;
         return;
     }
     while (exists $index->{$prefix}->{$key})
@@ -5934,7 +5940,7 @@ sub enter_index_entry($$$$$$$)
     push @$place, $index_entry;
     # don't add the index entry to the list of index entries used for index
     # entry formatting,if the index entry appears in a region like copying 
-    push @index_labels, $index_entry unless ($place eq $no_element_associated_place);
+    push @index_labels, $index_entry unless ($index_entry_hidden);
 }
 
 # sort according to cmp if both $a and $b are alphabetical or non alphabetical, 
@@ -6271,7 +6277,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
     $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
-#    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
+#    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription_text;
     $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
@@ -6323,7 +6329,19 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::SIMPLE_TEXT{'Top'} = $top_simple_format;
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
 
-# FIXME format copying_comment, documentdescrition here?
+    # FIXME we do the regions formatting here, even if they never appear.
+    # so we should be very carefull to take into accout 'outside_document' to
+    # avoid messing with information that has to be set in the main document.
+    # also the error messages will appear even though the corresponding 
+    # texinfo is never used.
+    my ($region_text, $region_no_texi);
+    ($region_text, $region_no_texi) = do_special_region_lines('documentdescription');
+    $documentdescription_text = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi);
+    
+    # do copyright notice inserted in comment at the beginning of the files
+    ($region_text, $region_no_texi) = do_special_region_lines('copying');
+    $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'}, $region_text, $region_no_texi);
+
     $Texi2HTML::THISDOC{'copying_comment'} = $copying_comment;
     # must be after toc_body, but before titlepage
     foreach my $element_tag ('contents', 'shortcontents')
@@ -6332,10 +6350,10 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $element_tag, $content_element{$element_tag});
         @{$Texi2HTML::THISDOC{'inline_contents'}->{$element_tag}} = @$toc_lines if (defined($toc_lines));
     }
-    $Texi2HTML::TITLEPAGE = '';
-    $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
-        if (@{$region_lines{'titlepage'}});
-    &$Texi2HTML::Config::titlepage();
+    
+    ($region_text, $region_no_texi) = do_special_region_lines('titlepage');
+
+    $titlepage_text = &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi);
 
     &$Texi2HTML::Config::init_out();
     $to_encoding = $Texi2HTML::Config::OUT_ENCODING;
@@ -8391,7 +8409,6 @@ sub do_footnote($$$$)
         $relative_foot_num = \$global_relative_foot_num;
     }
     else
-    # FIXME when in multiple pass do more intelligent formatting
     {
         $foot_num = \$doc_state->{'foot_num'};
         $relative_foot_num = \$doc_state->{'relative_foot_num'};
@@ -8803,7 +8820,7 @@ sub enter_table_index_entry($$$$)
          my $element = $state->{'element'};
          $element = $state->{'node_ref'} unless ($element);
          enter_index_entry($index, $line_nr, $item->{'text'}, 
-            $state->{'place'}, $element, 0, $state->{'table_stack'}->[-1]);
+            $state->{'place'}, $element, 0, $state->{'table_stack'}->[-1], $state->{'region'});
          add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
 }
@@ -9519,7 +9536,7 @@ sub close_structure_command($$$$)
     }
     if (($cmd_ref->{'style'} eq 'titlefont') and ($cmd_ref->{'text'} =~ /\S/))
     {
-        $state->{'element'}->{'titlefont'} = $cmd_ref->{'text'} unless ((exists($state->{'region_lines'}) and ($state->{'region_lines'}->{'format'} eq 'titlepage')) or defined($state->{'element'}->{'titlefont'})) ;
+        $state->{'element'}->{'titlefont'} = $cmd_ref->{'text'} unless ((exists($state->{'region'}) and ($state->{'region'} eq 'titlepage')) or defined($state->{'element'}->{'titlefont'})) ;
     }
     if (defined($Texi2HTML::Config::command_handler{$cmd_ref->{'style'}}))
     {
@@ -9698,6 +9715,8 @@ sub scan_structure($$$$;$)
                 { # end a region_line macro, like documentdescription, copying
                     print STDERR "Bug: end_tag $end_tag ne $state->{'region_lines'}->{'format'}\n" 
                         if ($end_tag ne $state->{'region_lines'}->{'format'});
+                    print STDERR "Bug: end_tag $end_tag ne $state->{'region'}\n" 
+                        if ($end_tag ne $state->{'region'});
                     $state->{'region_lines'}->{'number'}--;
                     if ($state->{'region_lines'}->{'number'} == 0)
                     { 
@@ -9792,7 +9811,7 @@ sub scan_structure($$$$;$)
                 my $key = $_;
                 $key =~ s/^\s*//;
                 $_ = substitute_texi_line($_);
-                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro);
+                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro, $state->{'region'});
                 add_prev ($text, $stack, "\@$macro" .  $_);
                 last;
             }
@@ -9825,6 +9844,7 @@ sub scan_structure($$$$;$)
                         $state->{'region_lines'}->{'after_element'} = 1 if ($state->{'after_element'});
                         $state->{'region_lines'}->{'kept_place'} = $state->{'place'};
                         $state->{'place'} = $no_element_associated_place;
+                        $state->{'region'} = $macro;
                     }
                     else
                     {
@@ -9901,7 +9921,7 @@ sub scan_structure($$$$;$)
                 my $idx_macro = $macro;
                 $idx_macro =~ s/x$//;
                 enter_index_entry($prefix, $line_nr, $entry, $state->{'place'},
-                   $state->{'element'}, 0, $idx_macro) if ($prefix);
+                   $state->{'element'}, 0, $idx_macro, $state->{'region'}) if ($prefix);
                 s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
                 # the text is discarded but we must handle correctly bad
@@ -11878,6 +11898,7 @@ sub close_region($)
     delete $state->{'region_lines'}->{'after_element'};
     delete $state->{'region_lines'}->{'kept_place'};
     delete $state->{'region_lines'};
+    delete $state->{'region'};
 }
 
 # close the stack, closing macros and formats left open.
@@ -12525,21 +12546,7 @@ foreach my $handler(@Texi2HTML::Config::command_handler_process)
     &$handler;
 }
 
-# FIXME we do the regions formatting here, even if they never appear.
-# so we should be very carefull to take into accout 'outside_document' to
-# avoid messing with information that has to be set in the main document.
-# also the error messages will appear even though the corresponding 
-# texinfo is never used.
-# also the titlepage should be done here, and/or these should be moved
-# down in pass_text to have more information available when formatted,
-# like for titlepage.
-my ($region_text, $region_no_texi);
-($region_text, $region_no_texi) = do_special_region_lines('documentdescription');
-$documentdescription = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi);
-
-# do copyright notice inserted in comment at the beginning of the files
-($region_text, $region_no_texi) = do_special_region_lines('copying');
-$copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'}, $region_text, $region_no_texi);
+# maybe do that later to have more elements ready?
 &$Texi2HTML::Config::toc_body(\@elements_list);
 
 

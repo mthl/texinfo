@@ -250,11 +250,12 @@ test_texi floats float_copying.texi "-split chapter -output ."
 test_texi floats caption_not_closed.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
-test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes --css-ref http://some.where.com/css/style.css -prefix exotic_formatting -output ." 0 texi exotic_formatting
+test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-init ../../examples/html32.init -prefix formatting_html32" 0 texi formatting_html32
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
 test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting
+test_texi formatting formatting-regions.texi
 test_texi formatting quotes.texi
 test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple

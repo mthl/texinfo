@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.128 2007-10-05 22:55:13 pertusus Exp $
+# $Id: texi2html.init,v 1.129 2007-10-06 14:35:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1561,6 +1561,10 @@ EOT
 
 sub T2H_DEFAULT_titlepage()
 {
+    my $titlepage_lines = shift;
+    my $titlepage_text = shift;
+    my $titlepage_no_texi = shift;
+
     my $result = '';
     if (@{$Texi2HTML::THISDOC{'titles'}} 
         or @{$Texi2HTML::THISDOC{'subtitles'}} 
@@ -1582,6 +1586,8 @@ sub T2H_DEFAULT_titlepage()
         $result .= "</div>\n$DEFAULT_RULE\n";
     }
 
+    $Texi2HTML::TITLEPAGE = $titlepage_text;
+
     $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
     
     if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
@@ -1600,6 +1606,7 @@ sub T2H_DEFAULT_titlepage()
         }
         $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
+    return $Texi2HTML::TITLEPAGE;
 }
 
 # FIXME Honor DOCUMENT_DESCRIPTION? 

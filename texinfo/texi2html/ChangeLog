@@ -1,3 +1,12 @@
+2007-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle titlepage like other 
+	special regions. 
+	Don't add the index entries in footnote within special regions
+	* Tests/*: test for footnote in float caption and anchor and index
+	in that footnote.
+	test for titlepage with most of the constructs within.
+
 2007-10-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: separate global variables of pass_structure and

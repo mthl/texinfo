@@ -2,14 +2,20 @@
 @setfilename formatting.info
 @node Top
 @top Top section
+@ifnothtml
 
 @menu
+* constructs::
 * chapter::               chapter
 
 Menu comment
 
 * chapter2:description.   Chapter 2
 @end menu
+
+@end ifnothtml
+@node constructs
+@chapter constructs
 
 @macro mymacro
 
@@ -509,9 +515,13 @@ flushright
 @subtitle subtitle 2 --a
 @author author1 --a
 @author author2 --a
+
+Titlepage
 @mymacro
 
+insertcopying in titlepage
 @insertcopying
+end titlepage
 @end titlepage
 
 @mymacro{}
@@ -519,6 +529,9 @@ flushright
 @example
 @mymacro{}
 @end example
+
+insertcopying
+@insertcopying
 
 @cindex t--ruc
 @cindex T--ruc

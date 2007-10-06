@@ -9,7 +9,16 @@
 Public domain is not really a licence, as it means than 
 the author abandon his copyright.
 
-@caption{The Public Domain notice
+@caption{The Public Domain notice@footnote{
+The caption copying footnote
+@anchor{caption copying footnote anchor}
+
+@cindex indexed caption copying footnote
+
+see @ref{Copying and floats}.
+
+}
+
 @anchor{public domain anchor}
 @cindex indexed caption
 }
