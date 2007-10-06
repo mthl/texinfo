@@ -121,11 +121,10 @@ texi and formatted result. And also give the fractions and maybe use them.
 
 * roff is certainly not uptodate. At least the @quote* and @guillem*
 
-* ducument $documentdescription and $copying_comment. enhance titlepage
-  handling
+* ducument $documentdescription and $copying_comment. Document $titlepage.
 
-* test @anchor, @*index and @footnote in titlepage. Fix footnote handling
-  in special regions.
+* test @anchor, @*index and @footnote in titlepage, in a special file
+  like index_table/index_special_region.texi.
 
 * maybe be quiet during specail region expansion outside of document. It
   is not very clear that it is wrong, though.
