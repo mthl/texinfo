@@ -1,5 +1,5 @@
 \input texinfo @c -*-texinfo-*-
-@setfilename formatting.info
+@setfilename formatting-regions.info
 @node Top
 @top Top section
 @ifnothtml

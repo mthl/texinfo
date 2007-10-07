@@ -169,6 +169,8 @@ test_texi index_table more_before_top.texi "-init index_test.init -output . -spl
 test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
 test_texi index_table index_special_region.texi "-split chapter -output ."
+test_texi index_table index_special_region_no_region.texi "-split chapter -output ."
+test_texi index_table index_special_region_no_insertcopying.texi "-split chapter -output ."
 test_texi index_nodes ../index_table/index_nodes.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -split node -top-file index_nodes.html -output ."
 test_texi more_before_top_section ../index_table/more_before_top_section.texi "-init ../../examples/makeinfo.init -init ../index_table/index_test.init -output ."
 test_texi index_split_nodes ../index_table/index_split.texi "-init ../../examples/makeinfo.init -output . -init ../index_table/index_test.init"
@@ -220,6 +222,7 @@ test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
+test_texi sectionning recursive_copying.texi
 test_texi sectionning ../node_footnote/node_footnote.texi "--no-separated-footnotes"
 test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
 test_texi navigation navigation.texi
@@ -255,7 +258,7 @@ test_texi formatting formatting.texi "-init ../../examples/html32.init -prefix f
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
 test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting
-test_texi formatting formatting-regions.texi
+test_texi formatting formatting_regions.texi
 test_texi formatting quotes.texi
 test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.196 2007-10-06 14:35:16 pertusus Exp $
+# $Id: texi2html.pl,v 1.197 2007-10-07 12:07:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7234,7 +7234,9 @@ sub do_anchor_label($$$$)
     my $state = shift;
     my $line_nr = shift;
 
-    return '' if ($state->{'multiple_pass'} or $state->{'remove_texi'});
+    # FIXME anchor may appear twice when outside document and first time
+    # it appears in the document
+    return '' if (($state->{'region'} and $state->{'multiple_pass'} > 0) or $state->{'remove_texi'});
     $anchor = normalise_node($anchor);
     if (!exists($nodes{$anchor}) or !defined($nodes{$anchor}->{'id'}))
     {
@@ -7540,15 +7542,35 @@ sub do_special_region_lines($;$)
 {
     my $region = shift;
     my $state = shift;
+
+    # this case covers something like
+    # @copying
+    # @insertcopying
+    # @end copying
+    if (defined($state) and exists($state->{'region'}) and ($region eq $state->{'region'}))
+    {
+         echo_error("Recursively expanding region $region in $state->{'region'}");
+         return ('','');
+         
+    }
+
+    print STDERR "# do_special_region_lines for region $region" if ($T2H_DEBUG);
     if (!defined($state))
     {
         fill_state($state);
         $state->{'outside_document'} = 1;
+        print STDERR " outside document\n" if ($T2H_DEBUG);
+    }
+    elsif (!$state->{'outside_document'})
+    {
+        $region_initial_state{$region}->{'multiple_pass'}++;
+        print STDERR " multiple pass $region_initial_state{$region}->{'multiple_pass'}\n" if ($T2H_DEBUG);
     }
     else
     {
-        $region_initial_state{$region}->{'multiple_pass'}++;
+        print STDERR " in $state->{'region'}, outside document\n" if ($T2H_DEBUG);
     }
+
     return ('','') unless @{$region_lines{$region}};
     my $new_state = duplicate_formatting_state($state);
     foreach my $key (keys(%{$region_initial_state{$region}}))
@@ -7573,10 +7595,6 @@ sub do_special_region_lines($;$)
 sub do_insertcopying($)
 {
     my $state = shift;
-#    return '' unless @{$region_lines{'copying'}};
-#    my $insert_copying_state = duplicate_formatting_state($state);
-#    $insert_copying_state->{'multiple_pass'} = 1;
-#    return substitute_text($insert_copying_state, @{$region_lines{'copying'}});
     my ($text, $comment) = do_special_region_lines('copying', $state);
     return $text;
 }
@@ -8397,6 +8415,7 @@ sub do_footnote($$$$)
 
     $text .= "\n";
 
+#print STDERR "FOOTNOTE($global_foot_num, $doc_state->{'outside_document'} or $doc_state->{'multiple_pass'}) $text";
     my $foot_state = duplicate_state($doc_state);
     fill_state($foot_state);
 
@@ -8440,12 +8459,15 @@ sub do_footnote($$$$)
     my @lines = substitute_text($foot_state, map {$_ = $_."\n"} split (/\n/, $text));
     my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
          $$relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $doc_state);
-    if ($doc_state->{'outside_document'} or $doc_state->{'multiple_pass'})
+    if ($doc_state->{'outside_document'} or ($doc_state->{'region'} and $doc_state->{'multiple_pass'} > 0))
     {
+#print STDERR "multiple_pass $doc_state->{'multiple_pass'}, 'outside_document' $doc_state->{'outside_document'}\n";
+#print STDERR "REGION FOOTNOTE($$foot_num): $doc_state->{'region'} ($doc_state->{'region_pass'})\n";
         $region_initial_state{$doc_state->{'region'}}->{'footnotes'}->{$$foot_num}->{$doc_state->{'region_pass'}} = $foot_lines;
     }
     else
     {
+#print STDERR "GLOBAL FOOTNOTE($$foot_num)\n";
          push(@foot_lines, @{$foot_lines});
     }
     pop_state();
@@ -8509,6 +8531,7 @@ sub duplicate_state($)
          'region_pass' => $state->{'region_pass'},
          'region' => $state->{'region'},
          'sec_num' => $state->{'sec_num'},
+         'outside_document' => $state->{'outside_document'},
     };
     return $new_state;
 }

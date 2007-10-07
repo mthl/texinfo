@@ -1,8 +1,15 @@
+2007-10-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: better handling of special regions.
+	* Tests/*: test for more possibility regarding titlepage output 
+	or not with copying output or not.
+	rename formatting-regions to formatting_regions.
+
 2007-10-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle titlepage like other 
 	special regions. 
-	Don't add the index entries in footnote within special regions
+	Don't add the index entries in footnote within special regions.
 	* Tests/*: test for footnote in float caption and anchor and index
 	in that footnote.
 	test for titlepage with most of the constructs within.

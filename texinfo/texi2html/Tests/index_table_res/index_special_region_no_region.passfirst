@@ -1,0 +1,54 @@
+index_special_region_no_region.texi(,2) 
+index_special_region_no_region.texi(,3) @setfilename index_special_region-no_section.info
+index_special_region_no_region.texi(,4) 
+index_special_region_no_region.texi(,20) 
+index_special_region_no_region.texi(,34) 
+index_special_region_no_region.texi(,35) @node Top
+index_special_region_no_region.texi(,36) @top Top
+index_special_region_no_region.texi(,37) 
+index_special_region_no_region.texi(,38) @chapter Chapter
+index_special_region_no_region.texi(,39) 
+index_special_region_no_region.texi(,40) @c @insertcopying
+index_special_region_no_region.texi(,41) 
+index_special_region_no_region.texi(,42) This test demonstrates @@anchor and indices in @@copying
+index_special_region_no_region.texi(,43) and titlepage, and various wrong index entries.
+index_special_region_no_region.texi(,44) 
+index_special_region_no_region.texi(,45) @findex findex entry
+index_special_region_no_region.texi(,46) 
+index_special_region_no_region.texi(,47) @cindex
+index_special_region_no_region.texi(,48) @deffn{truc} { }
+index_special_region_no_region.texi(,49) @deffnx{truc}
+index_special_region_no_region.texi(,50) @deffnx{} {}
+index_special_region_no_region.texi(,51) @end deffn
+index_special_region_no_region.texi(,52) 
+index_special_region_no_region.texi(,53) @ftable
+index_special_region_no_region.texi(,54) @item
+index_special_region_no_region.texi(,55) @item fun
+index_special_region_no_region.texi(,56) @end ftable
+index_special_region_no_region.texi(,57) 
+index_special_region_no_region.texi(,58) @menu
+index_special_region_no_region.texi(,59) * Copying and indices::
+index_special_region_no_region.texi(,60) @end menu
+index_special_region_no_region.texi(,61) 
+index_special_region_no_region.texi(,62) @node Copying and indices
+index_special_region_no_region.texi(,63) @appendix Copying and indices
+index_special_region_no_region.texi(,64) 
+index_special_region_no_region.texi(,65) In the appendix, we print the indices and references.
+index_special_region_no_region.texi(,66) 
+index_special_region_no_region.texi(,67) @findex another fun
+index_special_region_no_region.texi(,68) 
+index_special_region_no_region.texi(,69) @cindex Copying appendix
+index_special_region_no_region.texi(,70) 
+index_special_region_no_region.texi(,71) @ref{Copying information} for the copying information.
+index_special_region_no_region.texi(,72) @ref{Public domain reference} for reference on the licence.
+index_special_region_no_region.texi(,73) 
+index_special_region_no_region.texi(,74) @ref{Titlepage anchor} for the titlepage.
+index_special_region_no_region.texi(,75) @ref{Titlepage footnote anchor} for reference on the titlepage.
+index_special_region_no_region.texi(,76) 
+index_special_region_no_region.texi(,77) @c @insertcopying
+index_special_region_no_region.texi(,78) 
+index_special_region_no_region.texi(,79) @printindex cp
+index_special_region_no_region.texi(,80) @printindex fn
+index_special_region_no_region.texi(,81) 
+index_special_region_no_region.texi(,82) @contents
+index_special_region_no_region.texi(,83) @bye

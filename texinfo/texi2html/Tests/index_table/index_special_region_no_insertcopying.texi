@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename index_special_region.info
+@setfilename index_special_region-no_insertcopying.info
 
 @copying 
 
@@ -36,7 +36,7 @@ This is a fine document.
 @top Top
 @chapter Chapter
 
-@insertcopying
+@c @insertcopying
 
 This test demonstrates @@anchor and indices in @@copying
 and titlepage, and various wrong index entries.
@@ -73,7 +73,7 @@ In the appendix, we print the indices and references.
 @ref{Titlepage anchor} for the titlepage.
 @ref{Titlepage footnote anchor} for reference on the titlepage.
 
-@insertcopying
+@c @insertcopying
 
 @printindex cp
 @printindex fn

@@ -123,8 +123,7 @@ texi and formatted result. And also give the fractions and maybe use them.
 
 * ducument $documentdescription and $copying_comment. Document $titlepage.
 
-* test @anchor, @*index and @footnote in titlepage, in a special file
-  like index_table/index_special_region.texi.
+* when titlepage is output, output the corresponding footnotes.
 
-* maybe be quiet during specail region expansion outside of document. It
+* maybe be quiet during special region expansion outside of document. It
   is not very clear that it is wrong, though.
