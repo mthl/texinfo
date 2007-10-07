@@ -3,6 +3,7 @@
 	* texi2html.pl: better handling of special regions.
 	* Tests/*: test for more possibility regarding titlepage output 
 	or not with copying output or not.
+	Use the actual state for titlepage generation in print_Top.
 	rename formatting-regions to formatting_regions.
 
 2007-10-06  Patrice Dumas  <dumas@centre-cired.fr>

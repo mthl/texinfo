@@ -121,9 +121,7 @@ texi and formatted result. And also give the fractions and maybe use them.
 
 * roff is certainly not uptodate. At least the @quote* and @guillem*
 
-* ducument $documentdescription and $copying_comment. Document $titlepage.
-
-* when titlepage is output, output the corresponding footnotes.
+* ducument $documentdescription, $copying_comment and $titlepage.
 
 * maybe be quiet during special region expansion outside of document. It
   is not very clear that it is wrong, though.

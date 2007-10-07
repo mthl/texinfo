@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.130 2007-10-07 12:07:09 pertusus Exp $
+# $Id: texi2html.init,v 1.131 2007-10-07 13:22:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -914,10 +914,10 @@ sub T2H_DEFAULT_print_Top($$)
     {
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview or table of contents
+        # redo the titlepage with the actual state
+        my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+        &$titlepage([],$titlepage_text, $titlepage_no_texi); 
         print $fh $Texi2HTML::TITLEPAGE;
-# FIXME the following could be better for footnotes to appear, but it 
-# seems the the state isn't correctly setup.
-#        print $fh "".main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
         if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'})
         {
              print $fh '<h2> ' . $Texi2HTML::NAME{'Overview'} . "</h2>\n" . "<blockquote\n";
