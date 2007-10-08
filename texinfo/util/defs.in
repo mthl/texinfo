@@ -65,12 +65,19 @@ test -z "$VERBOSE" && {
 # Make sure we override the user shell.
 SHELL='@SHELL@'
 export SHELL
-test -z "$TEXI2DVI" && TEXI2DVI=`cd $srcdir && pwd`/texi2dvi
 
-echo $PATH
+srcdir_abs=`cd $srcdir && pwd`
+test -z "$TEXI2DVI" && TEXI2DVI=$srcdir_abs/texi2dvi
+
+# be sure we use texi2dvi and texindex from our own directory, not
+# whatever happens to be in the path.
+echo "defs: prepending $srcdir_abs to PATH for testing."
+PATH=$srcdir_abs:$PATH
+
 # Some shells forget to export modified environment variables.
 # (See note about `export' in the Autoconf manual.)
 export PATH
+
 # User can override various tools used.
 test -z "$PERL" && PERL='@PERL@'
 
@@ -198,7 +205,6 @@ TEXI2DVI_run ()
     set x --debug --verbose ${1+"$@"}
     shift
   fi
-  type texi2dvi
   texi2dvi ${1+"$@"} 2>stderr >stdout || exitcode=$?
   cat stderr
   cat stdout

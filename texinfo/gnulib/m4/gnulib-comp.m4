@@ -53,6 +53,8 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_GETTIMEOFDAY
   gl_INLINE
   gl_LOCALCHARSET
+  gl_FUNC_MALLOC_POSIX
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MBSWIDTH
   gl_FUNC_MEMCPY
@@ -136,6 +138,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettimeofday.c
   lib/localcharset.c
   lib/localcharset.h
+  lib/malloc.c
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
@@ -204,6 +207,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/localcharset.m4
   m4/lock.m4
   m4/longlong.m4
+  m4/malloc.m4
   m4/malloca.m4
   m4/mbrtowc.m4
   m4/mbstate_t.m4

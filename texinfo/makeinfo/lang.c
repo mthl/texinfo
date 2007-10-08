@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.32 2007-08-16 17:42:20 karl Exp $
+   $Id: lang.c,v 1.33 2007-10-08 18:22:27 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -486,12 +486,273 @@ encoding_type encoding_table[] = {
   { ISO_8859_15, "iso-8859-15", (iso_map_type *) iso8859_15_map },
   { KOI8_R,      "koi8-r",      (iso_map_type *) koi8_map },
   { KOI8_U,      "koi8-u",      (iso_map_type *) koi8_map },
-  { UTF_8,       "utf-8",       asis_map },  /* fixxme: much more needed */
+  { UTF_8,       "utf-8",       asis_map },  /* specific code for this below */
   { last_encoding_code, NULL, NULL }
 };
 
 
-/* To update this list, download the current language table from
+/* List of HTML entities.  */
+static struct { const char *html; unsigned int unicode; } unicode_map[] = {
+/* Extracted from http://www.w3.org/TR/html401/sgml/entities.html through
+   sed -n -e 's|<!ENTITY \([^ ][^ ]*\) *CDATA "[&]#\([0-9][0-9]*\);".*|  { "\1", \2 },|p'
+   | LC_ALL=C sort -k2  */
+  { "AElig",     198 },
+  { "Aacute",    193 },
+  { "Acirc",     194 },
+  { "Agrave",    192 },
+  { "Alpha",     913 },
+  { "Aring",     197 },
+  { "Atilde",    195 },
+  { "Auml",      196 },
+  { "Beta",      914 },
+  { "Ccedil",    199 },
+  { "Chi",       935 },
+  { "Dagger",   8225 },
+  { "Delta",     916 },
+  { "ETH",       208 },
+  { "Eacute",    201 },
+  { "Ecirc",     202 },
+  { "Egrave",    200 },
+  { "Epsilon",   917 },
+  { "Eta",       919 },
+  { "Euml",      203 },
+  { "Gamma",     915 },
+  { "Iacute",    205 },
+  { "Icirc",     206 },
+  { "Igrave",    204 },
+  { "Iota",      921 },
+  { "Iuml",      207 },
+  { "Kappa",     922 },
+  { "Lambda",    923 },
+  { "Mu",        924 },
+  { "Ntilde",    209 },
+  { "Nu",        925 },
+  { "OElig",     338 },
+  { "Oacute",    211 },
+  { "Ocirc",     212 },
+  { "Ograve",    210 },
+  { "Omega",     937 },
+  { "Omicron",   927 },
+  { "Oslash",    216 },
+  { "Otilde",    213 },
+  { "Ouml",      214 },
+  { "Phi",       934 },
+  { "Pi",        928 },
+  { "Prime",    8243 },
+  { "Psi",       936 },
+  { "Rho",       929 },
+  { "Scaron",    352 },
+  { "Sigma",     931 },
+  { "THORN",     222 },
+  { "Tau",       932 },
+  { "Theta",     920 },
+  { "Uacute",    218 },
+  { "Ucirc",     219 },
+  { "Ugrave",    217 },
+  { "Upsilon",   933 },
+  { "Uuml",      220 },
+  { "Xi",        926 },
+  { "Yacute",    221 },
+  { "Yuml",      376 },
+  { "Zeta",      918 },
+  { "aacute",    225 },
+  { "acirc",     226 },
+  { "acute",     180 },
+  { "aelig",     230 },
+  { "agrave",    224 },
+  { "alefsym",  8501 },
+  { "alpha",     945 },
+  { "amp",        38 },
+  { "and",      8743 },
+  { "ang",      8736 },
+  { "aring",     229 },
+  { "asymp",    8776 },
+  { "atilde",    227 },
+  { "auml",      228 },
+  { "bdquo",    8222 },
+  { "beta",      946 },
+  { "brvbar",    166 },
+  { "bull",     8226 },
+  { "cap",      8745 },
+  { "ccedil",    231 },
+  { "cedil",     184 },
+  { "cent",      162 },
+  { "chi",       967 },
+  { "circ",      710 },
+  { "clubs",    9827 },
+  { "cong",     8773 },
+  { "copy",      169 },
+  { "crarr",    8629 },
+  { "cup",      8746 },
+  { "curren",    164 },
+  { "dArr",     8659 },
+  { "dagger",   8224 },
+  { "darr",     8595 },
+  { "deg",       176 },
+  { "delta",     948 },
+  { "diams",    9830 },
+  { "divide",    247 },
+  { "eacute",    233 },
+  { "ecirc",     234 },
+  { "egrave",    232 },
+  { "empty",    8709 },
+  { "emsp",     8195 },
+  { "ensp",     8194 },
+  { "epsilon",   949 },
+  { "equiv",    8801 },
+  { "eta",       951 },
+  { "eth",       240 },
+  { "euml",      235 },
+  { "euro",     8364 },
+  { "exist",    8707 },
+  { "fnof",      402 },
+  { "forall",   8704 },
+  { "frac12",    189 },
+  { "frac14",    188 },
+  { "frac34",    190 },
+  { "frasl",    8260 },
+  { "gamma",     947 },
+  { "ge",       8805 },
+  { "gt",         62 },
+  { "hArr",     8660 },
+  { "harr",     8596 },
+  { "hearts",   9829 },
+  { "hellip",   8230 },
+  { "iacute",    237 },
+  { "icirc",     238 },
+  { "iexcl",     161 },
+  { "igrave",    236 },
+  { "image",    8465 },
+  { "infin",    8734 },
+  { "int",      8747 },
+  { "iota",      953 },
+  { "iquest",    191 },
+  { "isin",     8712 },
+  { "iuml",      239 },
+  { "kappa",     954 },
+  { "lArr",     8656 },
+  { "lambda",    955 },
+  { "lang",     9001 },
+  { "laquo",     171 },
+  { "larr",     8592 },
+  { "lceil",    8968 },
+  { "ldquo",    8220 },
+  { "le",       8804 },
+  { "lfloor",   8970 },
+  { "lowast",   8727 },
+  { "loz",      9674 },
+  { "lrm",      8206 },
+  { "lsaquo",   8249 },
+  { "lsquo",    8216 },
+  { "lt",         60 },
+  { "macr",      175 },
+  { "mdash",    8212 },
+  { "micro",     181 },
+  { "middot",    183 },
+  { "minus",    8722 },
+  { "mu",        956 },
+  { "nabla",    8711 },
+  { "nbsp",      160 },
+  { "ndash",    8211 },
+  { "ne",       8800 },
+  { "ni",       8715 },
+  { "not",       172 },
+  { "notin",    8713 },
+  { "nsub",     8836 },
+  { "ntilde",    241 },
+  { "nu",        957 },
+  { "oacute",    243 },
+  { "ocirc",     244 },
+  { "oelig",     339 },
+  { "ograve",    242 },
+  { "oline",    8254 },
+  { "omega",     969 },
+  { "omicron",   959 },
+  { "oplus",    8853 },
+  { "or",       8744 },
+  { "ordf",      170 },
+  { "ordm",      186 },
+  { "oslash",    248 },
+  { "otilde",    245 },
+  { "otimes",   8855 },
+  { "ouml",      246 },
+  { "para",      182 },
+  { "part",     8706 },
+  { "permil",   8240 },
+  { "perp",     8869 },
+  { "phi",       966 },
+  { "pi",        960 },
+  { "piv",       982 },
+  { "plusmn",    177 },
+  { "pound",     163 },
+  { "prime",    8242 },
+  { "prod",     8719 },
+  { "prop",     8733 },
+  { "psi",       968 },
+  { "quot",       34 },
+  { "rArr",     8658 },
+  { "radic",    8730 },
+  { "rang",     9002 },
+  { "raquo",     187 },
+  { "rarr",     8594 },
+  { "rceil",    8969 },
+  { "rdquo",    8221 },
+  { "real",     8476 },
+  { "reg",       174 },
+  { "rfloor",   8971 },
+  { "rho",       961 },
+  { "rlm",      8207 },
+  { "rsaquo",   8250 },
+  { "rsquo",    8217 },
+  { "sbquo",    8218 },
+  { "scaron",    353 },
+  { "sdot",     8901 },
+  { "sect",      167 },
+  { "shy",       173 },
+  { "sigma",     963 },
+  { "sigmaf",    962 },
+  { "sim",      8764 },
+  { "spades",   9824 },
+  { "sub",      8834 },
+  { "sube",     8838 },
+  { "sum",      8721 },
+  { "sup",      8835 },
+  { "sup1",      185 },
+  { "sup2",      178 },
+  { "sup3",      179 },
+  { "supe",     8839 },
+  { "szlig",     223 },
+  { "tau",       964 },
+  { "there4",   8756 },
+  { "theta",     952 },
+  { "thetasym",  977 },
+  { "thinsp",   8201 },
+  { "thorn",     254 },
+  { "tilde",     732 },
+  { "times",     215 },
+  { "trade",    8482 },
+  { "uArr",     8657 },
+  { "uacute",    250 },
+  { "uarr",     8593 },
+  { "ucirc",     251 },
+  { "ugrave",    249 },
+  { "uml",       168 },
+  { "upsih",     978 },
+  { "upsilon",   965 },
+  { "uuml",      252 },
+  { "weierp",   8472 },
+  { "xi",        958 },
+  { "yacute",    253 },
+  { "yen",       165 },
+  { "yuml",      255 },
+  { "zeta",      950 },
+  { "zwj",      8205 },
+  { "zwnj",     8204 }
+};
+ 
+
+
+/* To update this list of language codes, download the current data from
    http://www.loc.gov/standards/iso639-2; specifically,
    http://www.loc.gov/standards/iso639-2/ISO-639-2_values_8bits-8559-1.txt.
    Run cut -d\| -f 3,4 <ISO-639-2_values_8bits-8559-1.txt | sort -u >/tmp/639.2
@@ -1051,20 +1312,48 @@ cm_documentlanguage (void)
 static int
 cm_search_iso_map (char *html)
 {
-  int i;
-  iso_map_type *iso = encoding_table[document_encoding_code].isotab;
-
-  /* If no conversion table for this encoding, quit.  */
-  if (!iso)
-    return -1;
-
-  for (i = 0; iso[i].html; i++)
+  if (document_encoding_code == UTF_8)
     {
-      if (strcmp (html, iso[i].html) == 0)
-        return i;
-    }
+      /* Binary search in unicode_map.  */
+      size_t low = 0;
+      size_t high = sizeof (unicode_map) / sizeof (unicode_map[0]);
 
-  return -1;
+      /* At each loop iteration, low < high; for indices < low the values are
+         smaller than HTML; for indices >= high the values are greater than HTML.
+         So, if HTML occurs in the list, it is at  low <= position < high.  */
+      do
+        {
+          size_t mid = low + (high - low) / 2; /* low <= mid < high */
+          int cmp = strcmp (unicode_map[mid].html, html);
+
+          if (cmp < 0)
+            low = mid + 1;
+          else if (cmp > 0)
+            high = mid;
+          else /* cmp == 0 */
+            return unicode_map[mid].unicode;
+        }
+      while (low < high);
+
+      return -1;
+    }
+  else
+    {
+      int i;
+      iso_map_type *iso = encoding_table[document_encoding_code].isotab;
+
+      /* If no conversion table for this encoding, quit.  */
+      if (!iso)
+        return -1;
+
+      for (i = 0; iso[i].html; i++)
+        {
+          if (strcmp (html, iso[i].html) == 0)
+            return i;
+        }
+
+      return -1;
+    }
 }
 
 
@@ -1146,6 +1435,39 @@ current_document_encoding (void)
 }
 
 
+/* Add RC per the current encoding.  */
+
+static void
+add_encoded_char_from_code (int rc)
+{
+  if (document_encoding_code == UTF_8)
+    {
+      if (rc < 0x80)
+        add_char (rc);
+      else if (rc < 0x800)
+        {
+          add_char (0xc0 | (rc >> 6));
+          add_char (0x80 | (rc & 0x3f));
+        }
+      else if (rc < 0x10000)
+        {
+          add_char (0xe0 | (rc >> 12));
+          add_char (0x80 | ((rc >> 6) & 0x3f));
+          add_char (0x80 | (rc & 0x3f));
+        }
+      else
+        {
+          add_char (0xf0 | (rc >> 18));
+          add_char (0x80 | ((rc >> 12) & 0x3f));
+          add_char (0x80 | ((rc >> 6) & 0x3f));
+          add_char (0x80 | (rc & 0x3f));
+        }
+    }
+  else
+    add_char (encoding_table[document_encoding_code].isotab[rc].bytecode);
+}
+
+
 /* If html or xml output, add &HTML_STR; to the output.  If not html and
    the user requested encoded output, add the real 8-bit character
    corresponding to HTML_STR from the translation tables.  Otherwise,
@@ -1164,7 +1486,7 @@ add_encoded_char (char *html_str, char *info_str)
       int rc = cm_search_iso_map (html_str);
       if (rc >= 0)
         /* We found it, add the real character.  */
-        add_char (encoding_table[document_encoding_code].isotab[rc].bytecode);
+        add_encoded_char_from_code (rc);
       else
         { /* We didn't find it, that seems bad.  */
           warning (_("invalid encoded character `%s'"), html_str);
@@ -1268,13 +1590,13 @@ cm_accent_generic_no_headers (int arg, int start, int end, int single,
 
           rc = cm_search_iso_map (buffer);
           if (rc >= 0)
-            /* A little bit tricky ;-)
-               Here we replace the character which has
-               been inserted in read_command with
-               the value we have found in converting table
-               Does there exist a better way to do this?  kama. */
-            output_paragraph[end - 1]
-              = encoding_table[document_encoding_code].isotab[rc].bytecode;
+            {
+              /* Here we replace the character which has
+                 been inserted in read_command with
+                 the value we have found in the conversion table.  */
+              output_paragraph_offset--;
+              add_encoded_char_from_code (rc);
+            }
           else
             { /* If we didn't find a translation for this character,
                  put the single instead. E.g., &Xuml; does not exist so X&uml;
