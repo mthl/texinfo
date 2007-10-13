@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.76 2007-09-26 20:53:39 karl Exp $
+   $Id: cmds.c,v 1.77 2007-10-13 23:44:34 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -1631,10 +1631,14 @@ cm_dircategory (void)
 
       if (!no_headers && !html)
         {
+          /* use add_* instead of insert_* because otherwise the
+             file header ("This is ...") will end up inside the
+             dir section markers.  */
           kill_self_indent (-1); /* make sure there's no indentation */
-          insert_string ("INFO-DIR-SECTION ");
-          insert_string (line);
-          insert ('\n');
+          cm_noindent (); /* make sure again */
+          add_word ("INFO-DIR-SECTION ");
+          add_word (line);
+          add_char ('\n');
         }
 
       free (line);

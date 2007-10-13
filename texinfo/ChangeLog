@@ -1,3 +1,10 @@
+2007-10-13  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_dircategory): use add_word instead of
+	insert_string so that the info file header ("This is ...") comes
+	after the INFO-DIR-SECTION magic.
+	Bug report from Katsumi Yamaoka, emacs-devel 10 Oct 2007 11:17:10.
+
 2007-10-08  Bruno Haible  <bruno@clisp.org>
 
 	* makeinfo/lang.c (unicode_map): New variable.
