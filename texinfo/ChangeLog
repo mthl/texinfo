@@ -1,3 +1,12 @@
+2007-10-19  Karl Berry  <karl@gnu.org>
+
+	* info/display.c (display_update_one_window): don't try to display
+	a window unless both width and height are >0.
+	* window/window.c (window_new_screen_size): try to ensure that
+	no window width/height ever becomes negative.
+	Bug report and ideas from Vitezslav Crhonek, 18 Oct 2007 15:15:51,
+	as well as https://bugzilla.redhat.com/show_bug.cgi?id=243971.
+
 2007-10-13  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_dircategory): use add_word instead of

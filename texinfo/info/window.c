@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.7 2007-07-01 21:20:31 karl Exp $
+   $Id: window.c,v 1.8 2007-10-19 18:43:20 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -249,8 +249,21 @@ window_new_screen_size (int width, int height)
               break;
             }
           else
-            win= win->next;
+            win = win->next;
         }
+    }
+
+  /* One more loop.  If any heights or widths have become negative,
+     set them to zero.  This can apparently happen with resizing down to
+     very small sizes.  Sadly, it is not apparent to me where in the
+     above calculations it goes wrong.  */
+  for (win = windows; win; win = win->next)
+    {
+      if (win->height < 0)
+        win->height = 0;
+
+      if (win->width < 0)
+        win->width = 0;
     }
 }
 
