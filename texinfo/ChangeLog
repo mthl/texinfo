@@ -1,3 +1,15 @@
+2007-10-24  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* util/gendocs.sh: New option --texi2html, to use texi2html for
+	creating HTML output.
+	Handle special conditional constructs in the template: %%IF
+	HTML_SECTION%% and %%IF HTML_CHAPTER%% (both closed with a
+	corresponding %%ENDIF) to conditionally enable parts of the output
+	depending on texi2html split outputs.
+	* util/gendocs_template: Conditionally enable section and chapter
+	split HTMLs.
+	* util/gendocs_template_min: Likewise.
+
 2007-10-19  Karl Berry  <karl@gnu.org>
 
 	* info/display.c (display_update_one_window): don't try to display
