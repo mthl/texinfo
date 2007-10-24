@@ -263,3 +263,6 @@ set args -o - --no-headers $ttests/doclang.tex
 # misaligned index
 set args -I $ks/groff/doc --enable-encoding groff.texinfo
 #set args $ttests/idxalign.tex
+
+# spurious </bookinfo>
+set args -o /tmp/b.xml --docbook $ttests/binutils.tex

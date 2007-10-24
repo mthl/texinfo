@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.38 2007-09-15 23:48:46 karl Exp $
+   $Id: node.c,v 1.39 2007-10-24 20:03:35 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -656,7 +656,6 @@ cm_node (void)
   no_indent = 1;
   if (xml)
     {
-      xml_begin_document (current_output_filename);
       xml_begin_node ();
       if (!docbook)
 	{

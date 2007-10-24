@@ -1,5 +1,5 @@
 /* xml.c -- xml output, both TexinfoML and Docbook.
-   $Id: xml.c,v 1.72 2007-07-01 21:20:33 karl Exp $
+   $Id: xml.c,v 1.73 2007-10-24 20:03:36 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -613,7 +613,7 @@ xml_element (char *name)
 }
 
 void
-xml_begin_document (char *output_filename)
+xml_begin_document (const char *output_basename)
 {
   if (book_started)
     return;
@@ -658,23 +658,29 @@ xml_begin_document (char *output_filename)
 
   if (strcmp (xml_element_list[PARA].name, "para"))
     {
-      printf ("internal error: xml_element_list table inconsistent");
+      warning ("internal error: xml_element_list table inconsistent");
       xexit (-1);
     }
 
   if (language_code != last_language_code)
     {
       if (docbook)
-	/* The toplevel <book> element needs an id attribute if you want to use
-	   the chunk.xml feature of the DocBook-XSL stylesheets. */
-        xml_insert_element_with_attribute (TEXINFO, START, "id=\"book-root\" lang=\"%s\"", language_table[language_code].abbrev);
+	/* The toplevel <book> element needs an id attribute if you want
+           to use the chunk.xml feature of the Docbook-XSL stylesheets.
+           Might as well use the output filename?  */
+        xml_insert_element_with_attribute (TEXINFO, START,
+                                           "id=\"%s\" lang=\"%s\"",
+                                         output_basename,
+                                         language_table[language_code].abbrev);
       else
-	xml_insert_element_with_attribute (TEXINFO, START, "xml:lang=\"%s\"", language_table[language_code].abbrev);
+	xml_insert_element_with_attribute (TEXINFO, START,
+                                           "xml:lang=\"%s\"",
+                                         language_table[language_code].abbrev);
     }
   if (!docbook)
     {
       xml_insert_element (SETFILENAME, START);
-      insert_string (output_filename);
+      insert_string (output_basename);
       xml_insert_element (SETFILENAME, END);
     }
 }
@@ -694,10 +700,9 @@ static void
 xml_push_current_element (int elt)
 {
   element_stack[element_stack_index++] = elt;
-  if (element_stack_index > 200)
-    printf ("*** stack overflow (%d - %s) ***\n",
-            element_stack_index,
-            xml_element_list[elt].name);
+  if (element_stack_index > 200)  /* fixxme, no hard limits */
+    warning ("internal error: xml stack overflow (%d - %s)",
+             element_stack_index, xml_element_list[elt].name);
 }
 
 static void
@@ -706,7 +711,8 @@ xml_pop_current_element (void)
   element_stack_index--;
   if (element_stack_index < 0)
     {
-      printf ("*** stack underflow (index %d) ***\n", element_stack_index);
+      warning ("internal error: xml stack underflow (index %d)",
+               element_stack_index);
       element_stack_index = 0;
     }
 }
@@ -1084,7 +1090,7 @@ xml_begin_node (void)
       xml_insert_element (BOOKINFO, END);
       xml_in_bookinfo = 0;
     }
-  if (xml_node_open && ! docbook)
+  if (xml_node_open && !docbook)
     {
       if (xml_node_level != -1)
         {

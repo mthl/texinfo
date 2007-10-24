@@ -1,5 +1,5 @@
 /* xml.h -- xml (including Docbook) output declarations.
-   $Id: xml.h,v 1.30 2007-07-01 21:20:33 karl Exp $
+   $Id: xml.h,v 1.31 2007-10-24 20:03:36 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -114,7 +114,7 @@ extern void xml_add_char (int character),
   xml_synindex (char *from, char *to),
   xml_start_para (void),
   xml_end_para (void),
-  xml_begin_document (char *output_filename),
+  xml_begin_document (const char *output_basename),
   xml_end_document (void),
   xml_start_menu_entry (char *tem),
   xml_end_menu (void),

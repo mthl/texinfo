@@ -1,3 +1,21 @@
+2007-10-24  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/node.c (cm_node),
+	* makeinfo/cmds.c (cm_settitle): no need to call xml_begin_document.
+	* makeinfo/makeinfo.c (convert_from_loaded_file): call
+	xml_begin_document in docbook case too, else some frontmatter
+	can be lost.
+	Bug report from Sam Varshavchik, 14 Oct 2007 12:10:04, for binutils.
+	
+	* makeinfo/insertion.c: formatting.
+
+	* makeinfo/xml.c (xml_begin_document): arg can be const;
+	use basename of @setfilename instead of "book-root".
+	(xml_push_current_element, xml_pop_current_element): use
+	warning fn for consistent formatting.
+
+	* util/dir-example: binutils update, etc.
+
 2007-10-24  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* util/gendocs.sh: New option --texi2html, to use texi2html for

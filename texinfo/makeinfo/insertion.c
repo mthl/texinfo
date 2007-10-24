@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.64 2007-07-01 21:20:32 karl Exp $
+   $Id: insertion.c,v 1.65 2007-10-24 20:03:35 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -526,7 +526,7 @@ begin_insertion (enum insertion_type type)
          output it right away since xml output is never split.
          For html, we output it specifically in html_output_head. 
          For plain text, there's no way to hide it, so the author must
-          use @insertcopying in the desired location.  */
+         use @insertcopying in the desired location.  */
       if (docbook)
 	{
 	  if (!xml_in_bookinfo)
@@ -542,7 +542,6 @@ begin_insertion (enum insertion_type type)
 
       if (docbook)
         xml_insert_element (LEGALNOTICE, END);
-
       break;
 
     case quotation:
