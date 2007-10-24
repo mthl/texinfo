@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.74 2007-10-08 18:22:27 karl Exp $
+$Id: dir-example,v 1.75 2007-10-24 19:54:16 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -90,7 +90,7 @@ Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
 * Automake: (automake).         Making GNU standards-compliant Makefiles.
-* Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
+* Binutils: (binutils).         The GNU binary utilities.
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * CVS: (cvs).                   Concurrent Versions System
@@ -214,7 +214,6 @@ C++ libraries
 GNU organization
 * Maintain: (maintain).         GNU maintainer guidelines.
 * Standards: (standards).        GNU coding standards.
-* Tasks: (tasks).               GNU task list.
 
 GNU music project
 * LilyPond: (lilypond).                        The GNU music typesetter.
@@ -249,42 +248,30 @@ Science
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
 
 Other things
-* Amd: (am-utils).              Filesystem automounter.
-* CMUCL: (cmu-user).            CMU Common Lisp.
-* File headers: (filehdr).      Bibliographic information for computer files.
-* GCP: (gcp).                   Game club protocol.
-* GIMP: (pdb).                  The GIMP procedural database.
-* HTML: (snafu).                Hypertext Markup Language 2.0 specification.
 * Jargon: (jargon).             The jargon file.
 * Netpbm: (netpbm).             Images/graphics manipulation programs.
 * JED: (jed).                   JED editor documentation.
-* octave: (octave).             Octave - A language for numerical computation.
-* Perl: (perl).                 Practical extraction and report language.
+* Octave: (octave).             Octave - A language for numerical computation.
 * PRCS: (prcs).                 Project revision control system.
 * Screen: (screen).             Terminal multiplexer.
 
 Individual utilities
 * aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
-* ar: (binutils)ar.                             Create/modify/extract archives.
+* addr2line: (binutils)addr2line. Convert addresses to file and line.
+* ar: (binutils)ar.             Create, modify, and extract from archives.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
-* autoconf: (autoconf)autoconf Invocation.
-                                How to create configuration scripts
-* autoheader: (autoconf)autoheader Invocation.
-                                How to create configuration templates
-* autom4te: (autoconf)autom4te Invocation.
-                                The Autoconf executables backbone
+* autoconf: (autoconf)autoconf Invocation. How to create configuration scripts.
+* autoheader: (autoconf)autoheader Invocation. How to create configuration templates
+* autom4te: (autoconf)autom4te Invocation. The Autoconf executables backbone.
 * automake: (automake)Invoking Automake.        Generating Makefile.in.
-* autoreconf: (autoconf)autoreconf Invocation.
-                                Remaking multiple `configure' scripts
-* autoscan: (autoconf)autoscan Invocation.
-                                Semi-automatic `configure.ac' writing
-* autoupdate: (autoconf)autoupdate Invocation.
-                                Automatic update of `configure.ac'
+* autoreconf: (autoconf)autoreconf Invocation. Remaking multiple `configure' scripts
+* autoscan: (autoconf)autoscan Invocation.     Semi-automatic `configure.ac' writing
+* autoupdate: (autoconf)autoupdate Invocation. Automatic update of `configure.ac'
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
 * base64: (coreutils)base64 invocation.         Base64 encode/decode data.
 * basename: (coreutils)basename invocation.     Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
-* c++filt: (binutils)c++filt.                   Demangle C++ symbols.
+* c++filt: (binutils)c++filt.	Filter to demangle encoded C++ symbols.
 * cat: (coreutils)cat invocation.               Concatenate and write files.
 * chgrp: (coreutils)chgrp invocation.           Change file groups.
 * chmod: (coreutils)chmod invocation.           Change file permissions.
@@ -301,6 +288,7 @@ Individual utilities
 * cut: (coreutils)cut invocation.               Print selected parts of lines.
 * cvs: (cvs)CVS commands.       Concurrent Versions System
 * cvsclient: (cvsclient).      The CVS client/server protocol.
+* cxxfilt: (binutils)c++filt.   MS-DOS name for c++filt.
 * date: (coreutils)date invocation.             Print/set system date and time.
 * dd: (coreutils)dd invocation.                 Copy and convert a file.
 * df: (coreutils)df invocation.                 Report file system disk usage.
@@ -309,6 +297,7 @@ Individual utilities
 * dir: (coreutils)dir invocation.               List directories briefly.
 * dircolors: (coreutils)dircolors invocation.   Color setup for ls.
 * dirname: (coreutils)dirname invocation.       Strip non-directory suffix.
+* dlltool: (binutils)dlltool.	Create files needed to build and use DLLs.
 * dmp: (web2c)Dmp invocation.                   Troff->MPX (MetaPost pictures).
 * du: (coreutils)du invocation.                 Report on disk usage.
 * dvicopy: (web2c)DVIcopy invocation.           Virtual font expansion
@@ -390,11 +379,11 @@ Individual utilities
 * newer: (web2c)Newer invocation.               Compare modification times.
 * nice: (coreutils)nice invocation.             Modify niceness.
 * nl: (coreutils)nl invocation.                 Number lines and write files.
-* nlmconv: (binutils)nlmconv.                   Convert object to NetWare LM.
-* nm: (binutils)nm.                             List symbols in object files.
+* nlmconv: (binutils)nlmconv.   Converts object code into an NLM.
+* nm: (binutils)nm.             List symbols from object files.
 * nohup: (coreutils)nohup invocation.           Immunize to hangups.
-* objcopy: (binutils)objcopy.                   Copy/translate object files.
-* objdump: (binutils)objdump.                   Display info from object files.
+* objcopy: (binutils)objcopy.	Copy and translate object files.
+* objdump: (binutils)objdump.   Display information from object files.
 * od: (coreutils)od invocation.                 Dump files in octal, etc.
 * paste: (coreutils)paste invocation.           Merge lines of files.
 * patch: (diff)Invoking patch.                  Apply a patch to a file.
@@ -415,8 +404,9 @@ Individual utilities
 * pwd: (coreutils)pwd invocation.               Print working directory.
 * query-pr: (gnats)Invoking query-pr.           Bug searching/reporting.
 * queue-pr: (gnats)queue-pr.                    Handling incoming traffic.
-* ranlib: (binutils)ranlib.                     Index archive file contents.
+* ranlib: (binutils)ranlib.     Generate index to archive contents.
 * rcp: (inetutils)rcp invocation.               Strip non-directory suffix.
+* readelf: (binutils)readelf.	Display the contents of ELF format files.
 * readlink: (coreutils)readlink invocation.     Print referent of a symlink.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
 * rexecd: (inetutils)rexecd invocation.         Remote execution server.
@@ -435,13 +425,13 @@ Individual utilities
 * shred: (coreutils)shred invocation.           Remove files more securely.
 * shuf: (coreutils)shuf invocation.             Shuffling text files.
 * sieve: (mailutils)sieve.                      Mail filtering utility.
-* size: (binutils)size.                         List object file section sizes.
+* size: (binutils)size.         List section sizes and total size.
 * sleep: (coreutils)sleep invocation.           Delay for a specified time.
 * sort: (coreutils)sort invocation.             Sort text files.
 * split: (coreutils)split invocation.           Split into fixed-size pieces.
 * stat: (coreutils)stat invocation.             Report file(system) status.
-* strings: (binutils)strings.                   List printable strings.
-* strip: (binutils)strip.                       Discard symbols.
+* strings: (binutils)strings.   List printable strings from files.
+* strip: (binutils)strip.       Discard symbols.
 * stty: (coreutils)stty invocation.             Print/change terminal settings.
 * su: (coreutils)su invocation.                 Modify user and group ID.
 * sum: (coreutils)sum invocation.               Print traditional checksum.
@@ -490,6 +480,8 @@ Individual utilities
 * weave: (web2c)Weave invocation.               WEB to TeX.
 * who: (coreutils)who invocation.               Print who is logged in.
 * whoami: (coreutils)whoami invocation.         Print effective user ID.
+* windmc: (binutils)windmc.	Generator for Windows message resources.
+* windres: (binutils)windres.	Manipulate Windows resources.
 * xargs: (find)Invoking xargs.                  Operating on many files.
 * xtokid: (id-utils)xtokid invocation.  	Testing mkid scanners.
 * yes: (coreutils)yes invocation.               Print a string indefinitely.
