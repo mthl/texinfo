@@ -1,3 +1,9 @@
+2007-10-31  Karl Berry  <karl@gnu.org>
+
+	* doc/txi-no.tex: rename to txi-nb.tex.
+	* po/no.po: remove.
+	* po/LINGUAS: remove no.	
+
 2007-10-24  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/node.c (cm_node),
