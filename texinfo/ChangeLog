@@ -1,3 +1,10 @@
+2007-11-16  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (info_error): use puts instead of fprintf if we
+	don't actually have any arguments.  Else
+	info --file=".%x.%x." will try to print NULL.
+	Report from Cody Rester, 16 Nov 2007 08:59:48.
+
 2007-10-31  Karl Berry  <karl@gnu.org>
 
 	* doc/txi-no.tex: rename to txi-nb.tex.
