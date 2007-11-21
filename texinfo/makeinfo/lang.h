@@ -1,5 +1,5 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.13 2007-07-01 21:20:32 karl Exp $
+   $Id: lang.h,v 1.14 2007-11-21 23:02:22 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2006, 2007
    Free Software Foundation, Inc.
@@ -23,9 +23,9 @@
 #define LANG_H
 
 /* The language code which can be changed through @documentlanguage
- * Actually we don't currently support this (may be in the future) ;-)
- * These code are the ISO-639 two letter codes.
- */
+   These code are the ISO-639 two letter codes.  */
+
+#undef hz /* AIX 4.3.3 */
 typedef enum
 { 
   aa, ab, ae, af, ak, am, an, ar, as, av, ay, az, ba, be, bg, bh, bi,
