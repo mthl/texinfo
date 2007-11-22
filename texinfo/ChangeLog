@@ -1,3 +1,7 @@
+2007-11-22  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* util/texi2dvi: Fix quoting for white space in file names.
+
 2007-11-21  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/lang.h (hz): #undef, since apparently it is defined on
