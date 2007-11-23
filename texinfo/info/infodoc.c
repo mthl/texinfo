@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.14 2007-08-26 12:58:56 karl Exp $
+   $Id: infodoc.c,v 1.15 2007-11-23 22:16:21 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -106,8 +106,8 @@ static char *info_internal_help_text[] = {
   N_("  %-10s  Move to the `next' node of this node.\n"),
   N_("  %-10s  Move to the `previous' node of this node.\n"),
   N_("  %-10s  Move `up' from this node.\n"),
-  N_("  %-10s  Pick menu item specified by name.\n"),
-  N_("              Picking a menu item causes another node to be selected.\n"),
+  N_("  %-10s  Pick menu item specified by name.\n\
+              Picking a menu item causes another node to be selected.\n"),
   N_("  %-10s  Follow a cross reference.  Reads name of reference.\n"),
   N_("  %-10s  Move to the last node seen in this window.\n"),
   N_("  %-10s  Skip to next hypertext link within this node.\n"),
@@ -126,18 +126,18 @@ static char *info_internal_help_text[] = {
   "\n",
   N_("Other commands:\n\
 ---------------\n"),
-  N_("  %-10s  Pick first ... ninth item in node's menu.\n"),
+  N_("  %-10s  Pick first...ninth item in node's menu.\n"),
   N_("  %-10s  Pick last item in node's menu.\n"),
-  /* This string and the one below are one sentence, so they need to be
+  /* The next four strings are each a unity, so they each need to be
      kept as one string for the translators.  */
   N_("  %-10s  Search for a specified string in the index entries of this Info\n\
               file, and select the node referenced by the first entry found.\n"),
-  N_("  %-10s  Move to node specified by name.\n"),
-  N_("              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
+  N_("  %-10s  Move to node specified by name.\n\
+              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
   N_("  %-10s  Search forward for a specified string,\n\
               and select the node in which the next occurrence is found.\n"),
-  N_("  %-10s  Search backward for a specified string\n"),
-  N_("              and select the node in which the next occurrence is found.\n"),
+  N_("  %-10s  Search backward for a specified string,\n\
+              and select the node in which the next occurrence is found.\n"),
   NULL
 };
 

@@ -1,3 +1,7 @@
+2007-11-23  Benno Schulenberg <bensberg@justemail.net>
+
+	* info/infodoc.c: keep help strings together for translation.
+
 2007-11-22  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* util/texi2dvi: Fix quoting for white space in file names.
