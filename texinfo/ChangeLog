@@ -1,3 +1,8 @@
+2007-11-25  Stephane Chazelas  <stephane_chazelas@yahoo.fr>
+
+	*  info/indices.c (info_next_index_match): use the line number
+	specified in the index entry, if available.
+
 2007-11-23  Benno Schulenberg <bensberg@justemail.net>
 
 	* info/infodoc.c: keep help strings together for translation.
