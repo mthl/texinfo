@@ -1,3 +1,8 @@
+2007-11-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (headings on off): clarify the meaning of
+	@headings on.  Report from Dilyan Palauzov, 25 Nov 2007 17:07:09.
+
 2007-11-25  Stephane Chazelas  <stephane_chazelas@yahoo.fr>
 
 	*  info/indices.c (info_next_index_match): use the line number
