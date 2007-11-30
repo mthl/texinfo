@@ -1,3 +1,8 @@
+2007-11-30  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* doc/Makeinfo.am: Rename txi-no.tex to txi-nb.tex (see
+	2007-10-31).
+	
 2007-11-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (headings on off): clarify the meaning of
