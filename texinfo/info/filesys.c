@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.9 2007-07-01 21:20:29 karl Exp $
+   $Id: filesys.c,v 1.10 2007-12-03 01:38:42 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -693,7 +693,7 @@ is_dir_name (char *filename)
       strcpy (trydir, "dir");
       strcat (trydir, info_suffixes[i]);
       
-      if (strcasecmp (filename, trydir) == 0)
+      if (mbscasecmp (filename, trydir) == 0)
         return 1;
 
       for (c = 0; compress_suffixes[c].suffix; c++)
@@ -701,7 +701,7 @@ is_dir_name (char *filename)
           char dir_compressed[50]; /* can be short */
           strcpy (dir_compressed, trydir); 
           strcat (dir_compressed, compress_suffixes[c].suffix);
-          if (strcasecmp (filename, dir_compressed) == 0)
+          if (mbscasecmp (filename, dir_compressed) == 0)
             return 1;
         }
     }  

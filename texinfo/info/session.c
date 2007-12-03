@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.20 2007-08-04 11:00:43 gray Exp $
+   $Id: session.c,v 1.21 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007 Free Software Foundation, Inc.
@@ -2373,9 +2373,9 @@ info_menu_or_ref_item (WINDOW *window, int count,
 
           for (i = 0; menu && (ref = menu[i]); i++)
             {
-              /* Need to use strcasecmp because LINE is downcased
+              /* Need to use mbscasecmp because LINE is downcased
                  inside info_read_completing_in_echo_area.  */
-              if (strcasecmp (line, ref->label) == 0)
+              if (mbscasecmp (line, ref->label) == 0)
                 {
                   /* ref->end is more accurate estimate of position
                      for menus than ref->start.  Go figure.  */
@@ -2653,11 +2653,11 @@ info_follow_menus (NODE *initial_node, char **menus,
 
           for (i = 0; (entry = menu[i]); i++)
             {
-              if (strcasecmp (entry->label, arg) == 0)
+              if (mbscasecmp (entry->label, arg) == 0)
                 break;
               else
                 if ((best_guess == -1)
-                    && (strncasecmp (entry->label, arg, strlen (arg)) == 0))
+                    && (mbsncasecmp (entry->label, arg, strlen (arg)) == 0))
                   best_guess = i;
             }
 
@@ -2834,10 +2834,10 @@ entry_in_menu (char *arg, REFERENCE **menu, int exact)
 
       for (i = 0; (entry = menu[i]); i++)
 	{
-	  if (strcasecmp (entry->label, arg) == 0)
+	  if (mbscasecmp (entry->label, arg) == 0)
 	    break;
 	  else
-	    if (strncasecmp (entry->label, arg, strlen (arg)) == 0)
+	    if (mbsncasecmp (entry->label, arg, strlen (arg)) == 0)
 	      best_guess = i;
 	}
 
@@ -4245,12 +4245,12 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
              we are looking at it, then don't bother calling the search
              function. */
           if (((dir < 0) &&
-	       ((case_sensitive ? strncmp : strncasecmp)
+	       ((case_sensitive ? strncmp : mbsncasecmp)
                             (window->node->contents + window->point,
                              isearch_string, isearch_string_index) == 0)) ||
               ((dir > 0) &&
                ((window->point - isearch_string_index) >= 0) &&
-	       ((case_sensitive ? strncmp : strncasecmp)
+	       ((case_sensitive ? strncmp : mbsncasecmp)
                             (window->node->contents +
                              (window->point - (isearch_string_index - 1)),
                              isearch_string, isearch_string_index) == 0)))

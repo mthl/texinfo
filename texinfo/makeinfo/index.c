@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.25 2007-09-26 20:53:40 karl Exp $
+   $Id: index.c,v 1.26 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -49,7 +49,7 @@ INDEX_ALIST **name_index_alist = NULL;
 static INDEX_ELT **the_indices = NULL;
 
 /* How to compare index entries for sorting.  May be set to strcoll.  */
-static int (*index_compare_fn) (const char *a, const char *b) = strcasecmp;
+static int (*index_compare_fn) (const char *a, const char *b) = mbscasecmp;
 
 /* Find which element in the known list of indices has this name.
    Returns -1 if NAME isn't found. */

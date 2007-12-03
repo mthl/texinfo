@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.8 2007-08-04 10:59:45 gray Exp $
+   $Id: info-utils.c,v 1.9 2007-12-03 01:38:42 karl Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007 Free Software Foundation, Inc.
 
@@ -249,7 +249,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
   tmp_search.end = binding->end;
   tmp_search.flags = S_FoldCase | S_SkipDest;
 
-  searching_for_menu_items = (strcasecmp (label, INFO_MENU_ENTRY_LABEL) == 0);
+  searching_for_menu_items = (mbscasecmp (label, INFO_MENU_ENTRY_LABEL) == 0);
 
   while ((position = search_forward (label, &tmp_search)) != -1)
     {

@@ -1,5 +1,5 @@
 /* xml.c -- xml output, both TexinfoML and Docbook.
-   $Id: xml.c,v 1.73 2007-10-24 20:03:36 karl Exp $
+   $Id: xml.c,v 1.74 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -605,7 +605,7 @@ xml_element (char *name)
   int i;
   for (i = 0; i<=PARA; i++)
     {
-      if (strcasecmp (name, texinfoml_element_list[i].name) == 0)
+      if (mbscasecmp (name, texinfoml_element_list[i].name) == 0)
         return i;
     }
   printf ("Error xml_element\n");
@@ -1367,15 +1367,15 @@ xml_insert_quotation (char *type, int arg)
       /* Let's assume it started.  */
       quotation_started = 1;
 
-      if (strcasecmp (type, "tip") == 0)
+      if (mbscasecmp (type, "tip") == 0)
         xml_insert_element (TIP, arg);
-      else if (strcasecmp (type, "note") == 0)
+      else if (mbscasecmp (type, "note") == 0)
         xml_insert_element (NOTE, arg);
-      else if (strcasecmp (type, "important") == 0)
+      else if (mbscasecmp (type, "important") == 0)
         xml_insert_element (IMPORTANT, arg);
-      else if (strcasecmp (type, "warning") == 0)
+      else if (mbscasecmp (type, "warning") == 0)
         xml_insert_element (WARNING, arg);
-      else if (strcasecmp (type, "caution") == 0)
+      else if (mbscasecmp (type, "caution") == 0)
         xml_insert_element (CAUTION, arg);
       else
         /* Didn't find a known quotation type :\ */

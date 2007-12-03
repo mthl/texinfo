@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.33 2007-10-08 18:22:27 karl Exp $
+   $Id: lang.c,v 1.34 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -1211,7 +1211,7 @@ default_country_for_lang (const char *ll_code)
   /* If we didn't find one to copy, warn and duplicate.  */
   if (c == principal_len)
     {
-      if (strcasecmp (ll_code, "en") == 0)
+      if (mbscasecmp (ll_code, "en") == 0)
         cc_code = xstrdup ("en_US");
       else
         {
@@ -1386,7 +1386,7 @@ cm_documentencoding (void)
       /* See if we have this encoding.  */
       for (enc = no_encoding+1; enc != last_encoding_code; enc++)
         {
-          if (strcasecmp (enc_arg, encoding_table[enc].encname) == 0)
+          if (mbscasecmp (enc_arg, encoding_table[enc].encname) == 0)
             {
               document_encoding_code = enc;
               break;

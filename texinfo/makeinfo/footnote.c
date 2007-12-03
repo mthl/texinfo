@@ -1,5 +1,5 @@
 /* footnote.c -- footnotes for Texinfo.
-   $Id: footnote.c,v 1.11 2007-07-01 21:20:32 karl Exp $
+   $Id: footnote.c,v 1.12 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2007 Free Software Foundation, Inc.
 
@@ -59,9 +59,9 @@ int footnote_count = 0;
 int
 set_footnote_style (char *string)
 {
-  if (strcasecmp (string, "separate") == 0)
+  if (mbscasecmp (string, "separate") == 0)
     footnote_style = separate_node;
-  else if (strcasecmp (string, "end") == 0)
+  else if (mbscasecmp (string, "end") == 0)
     footnote_style = end_node;
   else
     return -1;

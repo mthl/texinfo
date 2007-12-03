@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.9 2007-07-01 21:20:30 karl Exp $
+   $Id: nodes.c,v 1.10 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -118,8 +118,8 @@ info_get_node (char *filename, char *nodename)
   /* If the node not found was "Top", try again with different case,
      unless this was a man page.  */
   if (!node
-      && strcasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
-      && (nodename == NULL || strcasecmp (nodename, "Top") == 0))
+      && mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
+      && (nodename == NULL || mbscasecmp (nodename, "Top") == 0))
     {
       node = info_get_node_of_file_buffer ("Top", file_buffer);
       if (!node)
@@ -294,7 +294,7 @@ info_find_file_internal (char *filename, int get_tags)
 #if defined (HANDLE_MAN_PAGES)
   /* If the name of the file that we want is our special file buffer for
      Unix manual pages, then create the file buffer, and return it now. */
-  if (strcasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
+  if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
     file_buffer = create_manpage_file_buffer ();
   else
 #endif /* HANDLE_MAN_PAGES */
@@ -331,7 +331,7 @@ info_load_file_internal (char *filename, int get_tags)
      doesn't exist, then try again with the last part of the filename
      appearing in lowercase. */
   /* This is probably not needed at all on those systems which define
-     FILENAME_CMP to be strcasecmp.  But let's do it anyway, lest some
+     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
      network redirector supports case sensitivity.  */
   if (retcode < 0)
     {

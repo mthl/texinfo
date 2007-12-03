@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.10 2007-07-01 21:20:29 karl Exp $
+   $Id: echo-area.c,v 1.11 2007-12-03 01:38:42 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007
    Free Software Foundation, Inc.
@@ -853,7 +853,7 @@ info_read_completing_internal (WINDOW *window, char *prompt,
           /* If one of the completions matches exactly, then that is okay, so
              return the current line. */
           for (i = 0; i < completions_found_index; i++)
-            if (strcasecmp (completions_found[i]->label, line) == 0)
+            if (mbscasecmp (completions_found[i]->label, line) == 0)
               {
                 free (line);
                 line = xstrdup (completions_found[i]->label);
@@ -1208,7 +1208,7 @@ build_completions (void)
 
   for (i = 0; (entry = echo_area_completion_items[i]); i++)
     {
-      if (strncasecmp (request, entry->label, len) == 0)
+      if (mbsncasecmp (request, entry->label, len) == 0)
         add_pointer_to_array (entry, completions_found_index,
                               completions_found, completions_found_slots,
                               20, REFERENCE *);
@@ -1291,7 +1291,7 @@ compare_references (const void *entry1, const void *entry2)
   REFERENCE **e1 = (REFERENCE **) entry1;
   REFERENCE **e2 = (REFERENCE **) entry2;
 
-  return (strcasecmp ((*e1)->label, (*e2)->label));
+  return (mbscasecmp ((*e1)->label, (*e2)->label));
 }
 
 /* Prune duplicate entries from COMPLETIONS_FOUND. */

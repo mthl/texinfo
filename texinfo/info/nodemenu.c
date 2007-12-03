@@ -1,5 +1,5 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c,v 1.8 2007-07-01 21:20:30 karl Exp $
+   $Id: nodemenu.c,v 1.9 2007-12-03 01:38:42 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -115,7 +115,7 @@ compare_strings (const void *entry1, const void *entry2)
   char **e1 = (char **) entry1;
   char **e2 = (char **) entry2;
 
-  return (strcasecmp (*e1, *e2));
+  return (mbscasecmp (*e1, *e2));
 }
 
 /* The name of the nodemenu node. */

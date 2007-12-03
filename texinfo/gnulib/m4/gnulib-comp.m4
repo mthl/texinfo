@@ -59,16 +59,23 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MALLOC_POSIX
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
+  gl_MBCHAR
+  gl_FUNC_MBSCASECMP
+  gl_STRING_MODULE_INDICATOR([mbscasecmp])
+  gl_FUNC_MBSNCASECMP
+  gl_STRING_MODULE_INDICATOR([mbsncasecmp])
   gl_MBSWIDTH
+  gl_MBITER
+  gl_FUNC_MEMCHR
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
   gl_FUNC_SETENV
   gl_FUNC_UNSETENV
+  AM_STDBOOL_H
   gl_STDINT_H
   gl_STDLIB_H
-  gl_STRCASE
   gl_FUNC_STRDUP
   gl_STRING_MODULE_INDICATOR([strdup])
   gl_FUNC_STRERROR
@@ -160,8 +167,14 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
+  lib/mbchar.c
+  lib/mbchar.h
+  lib/mbscasecmp.c
+  lib/mbsncasecmp.c
   lib/mbswidth.c
   lib/mbswidth.h
+  lib/mbuiter.h
+  lib/memchr.c
   lib/memcpy.c
   lib/memmove.c
   lib/mkstemp.c
@@ -169,14 +182,15 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/ref-del.sin
   lib/setenv.c
   lib/setenv.h
+  lib/stdbool.in.h
   lib/stdint.in.h
   lib/stdlib.in.h
-  lib/strcasecmp.c
   lib/strdup.c
   lib/streq.h
   lib/strerror.c
   lib/string.in.h
-  lib/strncasecmp.c
+  lib/strnlen1.c
+  lib/strnlen1.h
   lib/sys_stat.in.h
   lib/sys_time.in.h
   lib/tempname.c
@@ -227,9 +241,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/longlong.m4
   m4/malloc.m4
   m4/malloca.m4
+  m4/mbchar.m4
+  m4/mbiter.m4
   m4/mbrtowc.m4
+  m4/mbscasecmp.m4
+  m4/mbsncasecmp.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
+  m4/memchr.m4
   m4/memcpy.m4
   m4/memmove.m4
   m4/mkstemp.m4
@@ -240,10 +259,10 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/progtest.m4
   m4/setenv.m4
   m4/size_max.m4
+  m4/stdbool.m4
   m4/stdint.m4
   m4/stdint_h.m4
   m4/stdlib_h.m4
-  m4/strcase.m4
   m4/strdup.m4
   m4/strerror.m4
   m4/string_h.m4

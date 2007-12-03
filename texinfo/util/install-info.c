@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.19 2007-09-21 22:49:26 karl Exp $
+   $Id: install-info.c,v 1.20 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007 Free Software Foundation, Inc.
@@ -410,7 +410,7 @@ menu_item_equal (const char *item, char term_char, const char *name)
   }
     
   /* First, ITEM must actually match NAME (usually it won't).  */
-  ret = strncasecmp (item_basename, name, name_len) == 0;
+  ret = mbsncasecmp (item_basename, name, name_len) == 0;
   if (ret)
     {
       /* Then, `foobar' doesn't match `foo', so be sure we've got all of
@@ -428,7 +428,7 @@ menu_item_equal (const char *item, char term_char, const char *name)
         {
           char *suffix = suffixes[i];
           unsigned suffix_len = strlen (suffix);
-          ret = strncasecmp (item_basename + name_len, suffix, suffix_len) == 0
+          ret = mbsncasecmp (item_basename + name_len, suffix, suffix_len) == 0
                 && item_basename[name_len + suffix_len] == term_char;
         }
     }

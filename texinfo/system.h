@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.6 2007-07-01 21:20:28 karl Exp $
+   $Id: system.h,v 1.7 2007-12-03 01:38:41 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007 Free Software Foundation, Inc.
@@ -78,14 +78,6 @@ extern char *strerror ();
 # define _POSIX_PATH_MAX 255
 #endif
 #define PATH_MAX _POSIX_PATH_MAX
-#endif
-
-#ifndef HAVE_DECL_STRCASECMP
-extern int strcasecmp ();
-#endif
-
-#ifndef HAVE_DECL_STRNCASECMP
-extern int strncasecmp ();
 #endif
 
 #ifndef HAVE_DECL_STRCOLL
@@ -192,8 +184,8 @@ extern int strcoll ();
 #  define STRIP_DOT_EXE	1
 # endif /* O_BINARY && !__CYGWIN__ */
   /* Back to any O_BINARY system.  */
-# define FILENAME_CMP	strcasecmp
-# define FILENAME_CMPN	strncasecmp
+# define FILENAME_CMP	mbscasecmp
+# define FILENAME_CMPN	mbsncasecmp
 # define FOPEN_RBIN	"rb"
 # define FOPEN_WBIN	"wb"
 # define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')

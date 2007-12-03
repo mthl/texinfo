@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.39 2007-10-24 20:03:35 karl Exp $
+   $Id: node.c,v 1.40 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
    Free Software Foundation, Inc.
@@ -136,7 +136,7 @@ write_tag_table_indirect (void)
 static void
 normalize_node_name (char *string)
 {
-  if (strcasecmp (string, "Top") == 0)
+  if (mbscasecmp (string, "Top") == 0)
     strcpy (string, "Top");
 }
 
@@ -581,7 +581,7 @@ cm_node (void)
   if (html && splitting
       /* If there is a Top node, it always goes into index.html.  So
 	 don't start a new HTML file for Top.  */
-      && (top_node_seen || strcasecmp (node, "Top") != 0))
+      && (top_node_seen || mbscasecmp (node, "Top") != 0))
     {
       /* We test *node here so that @node without a valid name won't
 	 start a new file name with a bogus name such as ".html".
@@ -843,7 +843,7 @@ cm_node (void)
                   prev = xstrdup (ref->next->node);
                 }
               else if (!ref->next
-                       && strcasecmp (ref->containing_node, "Top") == 0)
+                       && mbscasecmp (ref->containing_node, "Top") == 0)
                 {
                   free (prev);
                   prev = xstrdup (ref->containing_node);
@@ -949,7 +949,7 @@ cm_node (void)
 				output_stream) == NULL
 		      /* Paranoia: did someone change the way HTML
 			 files are finished up?  */
-		      || strcasecmp (end_line, html_end) != 0)
+		      || mbscasecmp (end_line, html_end) != 0)
 		    {
 		      line_error (_("Unexpected string at end of split-HTML file `%s'"),
 				  fname_for_this_node);
@@ -1529,7 +1529,7 @@ validate_file (TAG_ENTRY *tag_table)
 
       if (!tags->up
           && !(tags->flags & TAG_FLAG_ANCHOR)
-          && strcasecmp (tags->node, "Top") != 0)
+          && mbscasecmp (tags->node, "Top") != 0)
         line_error (_("`%s' has no Up field (perhaps incorrect sectioning?)"), tags->node);
       else if (tags->up)
         {
@@ -1629,7 +1629,7 @@ validate_file (TAG_ENTRY *tag_table)
           /* Notice that the node "Top" is special, and doesn't have to
              be referenced.   Anchors don't have to be referenced
              either, you might define them for another document.  */
-          if (strcasecmp (tags->node, "Top") != 0
+          if (mbscasecmp (tags->node, "Top") != 0
               && !(tags->flags & TAG_FLAG_ANCHOR))
             warning (_("unreferenced node `%s'"), tags->node);
         }

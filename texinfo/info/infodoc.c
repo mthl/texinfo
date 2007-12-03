@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.15 2007-11-23 22:16:21 karl Exp $
+   $Id: infodoc.c,v 1.16 2007-12-03 01:38:42 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -517,7 +517,7 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
     for (win = windows; win; win = win->next)
       {
         if (win->node && win->node->filename &&
-            (strcasecmp
+            (mbscasecmp
              (filename_non_directory (win->node->filename), "info") == 0) &&
             ((strcmp (win->node->nodename, "Help") == 0) ||
              (strcmp (win->node->nodename, "Help-Small-Screen") == 0)))

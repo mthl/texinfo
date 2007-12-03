@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.40 2007-09-15 23:48:45 karl Exp $
+   $Id: html.c,v 1.41 2007-12-03 01:38:43 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -659,10 +659,10 @@ add_anchor_name (char *nodename, int href)
      exact node on its file.  This is so several nodes could share the
      same file, in case of file-name clashes, but also for more
      accurate browser positioning.  */
-  if (strcasecmp (nodename, "(dir)") == 0)
+  if (mbscasecmp (nodename, "(dir)") == 0)
     /* Strip the parens, but keep the original letter-case.  */
     add_word_args ("%.3s", nodename + 1);
-  else if (strcasecmp (nodename, "top") == 0)
+  else if (mbscasecmp (nodename, "top") == 0)
     add_word ("Top");
   else
     add_escaped_anchor_name (nodename, href < 0);
@@ -727,7 +727,7 @@ nodename_to_filename_1 (char *nodename, int href)
   char *filename;
   char dirname[PATH_MAX];
 
-  if (strcasecmp (nodename, "Top") == 0)
+  if (mbscasecmp (nodename, "Top") == 0)
     {
       /* We want to convert references to the Top node into
 	 "index.html#Top".  */
@@ -736,7 +736,7 @@ nodename_to_filename_1 (char *nodename, int href)
       else
 	filename = xstrdup ("Top");
     }
-  else if (strcasecmp (nodename, "(dir)") == 0)
+  else if (mbscasecmp (nodename, "(dir)") == 0)
     /* We want to convert references to the (dir) node into
        "../index.html".  */
     filename = xstrdup ("../index.html");
