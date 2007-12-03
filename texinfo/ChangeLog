@@ -1,3 +1,16 @@
+2007-12-02  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (main): undo change of 2006-08-13 in this file,
+	so info can be easily tested in multibyte locales.
+
+	* all files: use the multibyte case comparison functions
+	mbscasecmp and mbsncasecmp from gnulib, instead of simply
+	strcasecmp and strncasecmp.  (1) gnulib strcase is buggy,
+	declaring the str* functions in string.h instead of strings.h,
+	leading to build failure on AIX 4.3.3 (report from Gary E. Barnes,
+	21 Nov 2007 12:37:12).  (2) we want to support multibyte locales
+	better anyway.
+
 2007-11-30  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* doc/Makeinfo.am: Rename txi-no.tex to txi-nb.tex (see
