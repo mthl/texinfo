@@ -1,23 +1,22 @@
-# translation of texinfo-4.9.92.po to Dutch
-# translation of texinfo-4.7.91.po to
-# Dutch messages for GNU texinfo
+# Translation of texinfo-4.9.92 to Dutch.
 # Copyright (C) 1998, 2004, 2005, 2007 Free Software Foundation, Inc.
 #
 # Ivo Timmermans <zarq@iname.com>, 1998.
 # Freek de Kruijf <f.de.kruijf@hetnet.nl>, 2004, 2005, 2007.
+# Benno Schulenberg <benno@vertaalt.nl>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.9.92\n"
+"Project-Id-Version: texinfo-4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2007-09-03 05:23-0700\n"
-"PO-Revision-Date: 2007-09-04 16:22+0200\n"
-"Last-Translator: Freek de Kruijf <f.de.kruijf@hetnet.nl>\n"
+"PO-Revision-Date: 2007-12-07 15:17+0100\n"
+"Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: gnulib/lib/error.c:126
 msgid "Unknown system error"
@@ -26,41 +25,39 @@ msgstr "Onbekende systeemfout"
 #: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: optie `%s' is niet eenduidig\n"
+msgstr "%s: optie '%s' is niet eenduidig\n"
 
 #: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: optie `--%s' staat geen argumenten toe\n"
+msgstr "%s: optie '--%s' staat geen argument toe\n"
 
 #: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: optie `%c%s' staat geen argument toe\n"
+msgstr "%s: optie '%c%s' staat geen argument toe\n"
 
 #: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
 #: gnulib/lib/getopt.c:995
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: optie `%s' vereist een argument\n"
+msgstr "%s: optie '%s' vereist een argument\n"
 
 #: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: onbekende optie `--%s'\n"
+msgstr "%s: onbekende optie '--%s'\n"
 
 #: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: onbekende optie `%c%s'\n"
+msgstr "%s: onbekende optie '%c%s'\n"
 
-# Dit is de POSIX versie van de volgende melding
 #: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: ongeldige optie -- %c\n"
 
-# Dezelfde tekst als hiervoor
 #: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
 #, c-format
 msgid "%s: invalid option -- %c\n"
@@ -75,111 +72,104 @@ msgstr "%s: optie vereist een argument -- %c\n"
 #: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: optie `-W %s' is niet eenduidig\n"
+msgstr "%s: optie '-W %s' is niet eenduidig\n"
 
 #: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: optie `-W %s' staat geen argumenten toe\n"
+msgstr "%s: optie '-W %s' staat geen argument toe\n"
 
 #: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
 msgid "memory exhausted"
-msgstr "Geen geheugen meer"
+msgstr "onvoldoende geheugen beschikbaar"
 
 #: info/echo-area.c:283 info/session.c:732
 msgid "Move forward a character"
-msgstr "Beweeg een teken naar voren"
+msgstr "Eén teken verder"
 
 #: info/echo-area.c:295 info/session.c:764
 msgid "Move backward a character"
-msgstr "Beweeg een teken naar achteren"
+msgstr "Eén teken terug"
 
 #: info/echo-area.c:307
 msgid "Move to the start of this line"
-msgstr "Ga naar het begin van deze regel"
+msgstr "Naar het begin van de regel"
 
 #: info/echo-area.c:312
 msgid "Move to the end of this line"
-msgstr "Ga naar het einde van deze regel"
+msgstr "Naar het einde van de regel"
 
 #: info/echo-area.c:320 info/session.c:805
 msgid "Move forward a word"
-msgstr "Beweeg een woord naar voren"
+msgstr "Eén woord verder"
 
 #: info/echo-area.c:360 info/session.c:878
 msgid "Move backward a word"
-msgstr "Beweeg een woord naar achteren"
+msgstr "Eén woord terug"
 
 #: info/echo-area.c:400
 msgid "Delete the character under the cursor"
-msgstr "Verwijder het teken onder de cursor"
+msgstr "Het teken onder de cursor verwijderen"
 
 #: info/echo-area.c:430
 msgid "Delete the character behind the cursor"
-msgstr "Verwijder het teken achter de cursor"
+msgstr "Het teken na de cursor verwijderen"
 
 #: info/echo-area.c:451
 msgid "Cancel or quit operation"
-msgstr "Annuleer of beëindig operatie"
+msgstr "Operatie annuleren of beëindigen"
 
-# completion?
 #: info/echo-area.c:466
 msgid "Accept (or force completion of) this line"
-msgstr "Accepteer (of forceer voltooiing van) deze regel"
+msgstr "Deze regel accepteren (of de voltooiing ervan forceren)"
 
 #: info/echo-area.c:471
 msgid "Insert next character verbatim"
-msgstr "Voeg volgend teken letterlijk in"
+msgstr "De volgende toets verbatim invoegen"
 
 #: info/echo-area.c:479
 msgid "Insert this character"
-msgstr "Voeg dit teken in"
+msgstr "Dit teken invoegen"
 
 #: info/echo-area.c:497
 msgid "Insert a TAB character"
-msgstr "Voeg een TAB code in"
+msgstr "Een TAB-teken invoegen"
 
 #: info/echo-area.c:504
 msgid "Transpose characters at point"
-msgstr "Transponeer karakters op dit punt"
+msgstr "De tekens op dit punt transponeren"
 
-# kill?
 #: info/echo-area.c:555
 msgid "Yank back the contents of the last kill"
-msgstr "Zet de inhoud van de laatste verwijdering terug"
+msgstr "Het laatst verwijderde terughalen"
 
 #: info/echo-area.c:562
 msgid "Kill ring is empty"
-msgstr "Verwijder-ring is leeg"
+msgstr "Verwijderingsbuffer is leeg"
 
-# kill?
 #: info/echo-area.c:575
 msgid "Yank back a previous kill"
-msgstr "Zet een eerdere verwijdering terug"
+msgstr "Een eerdere verwijdering terughalen"
 
-# kill?
 #: info/echo-area.c:608
 msgid "Kill to the end of the line"
-msgstr "Verwijder tot aan het einde van de regel"
+msgstr "Tot aan het eind van de regel verwijderen"
 
-# kill?
 #: info/echo-area.c:621
 msgid "Kill to the beginning of the line"
-msgstr "Verwijder tot aan het begin van de regel"
+msgstr "Tot aan het begin van de regel verwijderen"
 
-# kill?
 #: info/echo-area.c:633
 msgid "Kill the word following the cursor"
-msgstr "Verwijder het woord na de cursor"
+msgstr "Het woord na de cursor verwijderen"
 
-# kill?
 #: info/echo-area.c:652
 msgid "Kill the word preceding the cursor"
-msgstr "Verwijder het woord voor de cursor"
+msgstr "Het woord voor de cursor verwijderen"
 
 #: info/echo-area.c:867 info/echo-area.c:923
 msgid "No completions"
-msgstr "Geen voltooiïngen"
+msgstr "Geen voltooiingen"
 
 #: info/echo-area.c:869
 msgid "Not complete"
@@ -187,7 +177,7 @@ msgstr "Niet compleet"
 
 #: info/echo-area.c:910
 msgid "List possible completions"
-msgstr "Geef een lijst van mogelijke voltooiingen"
+msgstr "De mogelijke voltooiingen tonen"
 
 #: info/echo-area.c:927
 msgid "Sole completion"
@@ -195,34 +185,32 @@ msgstr "Enige voltooiing"
 
 #: info/echo-area.c:936
 msgid "One completion:\n"
-msgstr "Een voltooiing:\n"
+msgstr "Eén mogelijkheid:\n"
 
 #: info/echo-area.c:937
 #, c-format
 msgid "%d completions:\n"
-msgstr "%d voltooiingen:\n"
+msgstr "Er zijn %d mogelijkheden:\n"
 
 #: info/echo-area.c:1084
 msgid "Insert completion"
-msgstr "Voeg voltooiing in"
+msgstr "Een voltooiing invoegen"
 
 #: info/echo-area.c:1219
 msgid "Building completions..."
-msgstr "Voltooiingen aan het bouwen..."
+msgstr "Opbouwen van voltooiingen..."
 
 #: info/echo-area.c:1339
 msgid "Scroll the completions window"
-msgstr "Verschuif het voltooiingsvenster"
+msgstr "Het voltooiingsvenster scrollen"
 
 #: info/footnotes.c:212
 msgid "Footnotes could not be displayed"
-msgstr "De voetnoten konden niet weergegeven worden"
+msgstr "De voetnoten kunnen niet weergegeven worden"
 
 #: info/footnotes.c:238
 msgid "Show the footnotes associated with this node in another window"
-msgstr ""
-"Laat de voetnoten zien die met deze pagina verbonden zijn in een ander "
-"venster"
+msgstr "In een ander venster de voetnoten tonen die met deze pagina verbonden zijn"
 
 #: info/footnotes.h:26
 msgid "---------- Footnotes ----------"
@@ -230,11 +218,11 @@ msgstr "---------- Voetnoten ----------"
 
 #: info/indices.c:171
 msgid "Look up a string in the index for this file"
-msgstr "Zoek een tekenreeks op in de index voor dit bestand"
+msgstr "Een tekenreeks opzoeken in de index van dit bestand"
 
 #: info/indices.c:198
 msgid "Finding index entries..."
-msgstr "Zoeken naar index-ingangen..."
+msgstr "Zoeken naar index-items..."
 
 #: info/indices.c:206
 msgid "No indices found."
@@ -242,14 +230,11 @@ msgstr "Geen indexen gevonden."
 
 #: info/indices.c:216
 msgid "Index entry: "
-msgstr "Index-ingang: "
+msgstr "Index-item: "
 
 #: info/indices.c:324
-msgid ""
-"Go to the next matching index item from the last `\\[index-search]' command"
-msgstr ""
-"Ga naar de volgende overeenkomende index-ingang van het laatste `\\[index-"
-"search]' commando"
+msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgstr "Naar het volgende overeenkomende item van het laatste '\\[index-search]'-commando"
 
 #: info/indices.c:334
 msgid "No previous index search string."
@@ -257,12 +242,12 @@ msgstr "Geen eerdere index-zoektekenreeks."
 
 #: info/indices.c:341
 msgid "No index entries."
-msgstr "Geen index-ingangen."
+msgstr "Geen index-items."
 
 #: info/indices.c:374
 #, c-format
 msgid "No %sindex entries containing `%s'."
-msgstr "Geen index-ingangen %s die `%s' bevatten."
+msgstr "Er zijn geen index-items %s die '%s' bevatten."
 
 #: info/indices.c:375
 msgid "more "
@@ -275,24 +260,21 @@ msgstr "KAN DIT NIET ZIEN"
 #: info/indices.c:421
 #, c-format
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
-msgstr ""
-"`%s' gevonden in %s. (`\\[next-index-match]' probeert de volgende te vinden.)"
+msgstr "'%s' gevonden in %s -- ('\\[next-index-match]' zoekt de volgende)"
 
 #: info/indices.c:540
 #, c-format
 msgid "Scanning indices of `%s'..."
-msgstr "Zoeken in indexen van `%s'..."
+msgstr "Zoeken in de indexen van '%s'..."
 
 #: info/indices.c:595
 #, c-format
 msgid "No available info files have `%s' in their indices."
-msgstr "Geen van de beschikbare info-bestanden hebben `%s' in hun indexen."
+msgstr "Geen van de beschikbare Info-bestanden heeft '%s' in z'n index."
 
 #: info/indices.c:621
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr ""
-"Doorzoek alle bekende indexen van info-bestanden voor een tekenreeks en maak "
-"een menu"
+msgstr "Alle Info-bestandsindexen doorzoeken naar een tekenreeks en een menu maken"
 
 #: info/indices.c:625
 msgid "Index apropos: "
@@ -305,39 +287,36 @@ msgid ""
 "* Menu: Nodes whose indices contain `%s':\n"
 msgstr ""
 "\n"
-"* Menu: Pagina's waarvan de indexen `%s' bevatten:\n"
+"* Menu: Pagina's waarvan de indexen '%s' bevatten:\n"
 
 #: info/info.c:287 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
-msgstr "Probeer --help voor meer informatie.\n"
+msgstr "Gebruik '--help' voor meer informatie.\n"
 
 #: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
 #: util/install-info.c:1328 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL versie 3 of later <http://gnu.org/licenses/gpl."
-"html>\n"
-"Dit is vrije software: u bent vrij om het te wijzigen en het te "
-"verspreiden.\n"
-"Er is GEEN GARANTIE, voor zover de wet dat toestaat.\n"
+"Dit is vrije software: u mag het vrijelijk wijzigen en verder verspreiden.\n"
+"De precieze licentie is GPLv3+: GNU GPL versie 3 of later;\n"
+"zie http://gnu.org/licenses/gpl.html voor de volledige tekst.\n"
+"Er is GEEN GARANTIE, voor zover de wet dit toestaat.\n"
 
 #: info/info.c:511
 #, c-format
 msgid "no index entries found for `%s'\n"
-msgstr "geen index-ingangen gevonden voor `%s'\n"
+msgstr "geen index-items gevonden voor '%s'\n"
 
 #: info/info.c:603
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr ""
-"  -b, --speech-friendly        wees vriendelijk voor spraaksynthesizers.\n"
+msgstr "  -b, --speech-friendly        uitvoer toesnijden op spraaksynthesizers\n"
 
 #: info/info.c:610
 #, c-format
@@ -347,8 +326,7 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -379,56 +357,41 @@ msgid ""
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
 msgstr ""
-"Aanroep: %s [OPTIE]... [MENU-ITEM...]\n"
+"Gebruik:  %s [OPTIE]... [MENU-ITEM...]\n"
 "\n"
-"Lees documentatie in Info-formaat\n"
+"Documentatie in Info-opmaak lezen.\n"
 "\n"
 "Opties:\n"
-"      --apropos=STRING         zoek STRING in alle indexen van alle "
-"handleidingen.\n"
-"  -d, --directory=DIR          voeg DIR toe aan INFOPAD.\n"
-"      --dribble=BESTAND        onthoud toetsaanslagen in BESTAND.\n"
-"  -f, --file=BESTAND           specificeer te bekijken Info bestand.\n"
-"  -h, --help                   toon deze hulptekst en beëindig.\n"
-"      --index-search=STRING    ga naar de pagina waar de index STRING naar "
-"verwijst.\n"
-"  -n, --node=PAGINANAAM        specificeer pagina's in het eerste Info "
-"bestand.\n"
-"  -o, --output=BESTAND         schrijf de geselecteerde pagina's naar "
-"BESTAND.\n"
-"  -R, --raw-escapes            schrijf \"ruwe\" ANSI escapes (standaard).\n"
-"      --no-raw-escapes         schrijf escapes letterlijk weg.\n"
-"      --restore=BESTAND        lees de eerste toetsaanslagen uit BESTAND.\n"
-"  -O, --show-options, --usage  ga naar de pagina met de opties voor de "
-"commandoregel.\n"
-"%s      --subnodes               geef recursief alle menu-items.\n"
-"  -w, --where, --location      toon de fysieke plaats van het Infobestand.\n"
-"      --vi-keys                gebruik vi- en less-gelijkende "
-"toetsbindingen.\n"
-"      --version                geef de versie-informatie van Info en "
-"beëindig.\n"
+"      --apropos=TEKENREEKS     in alle Info-indexen naar deze tekenreeks zoeken\n"
+"  -d, --directory=MAP          deze map toevoegen aan het zoekpad 'INFOPATH'\n"
+"      --dribble=BESTAND        toetsaanslagen in dit bestand opslaan\n"
+"  -f, --file=BESTAND           het te bekijken Info-bestand\n"
+"  -h, --help                   deze hulptekst tonen en stoppen\n"
+"      --index-search=NAAM      de pagina tonen waarnaar dit index-item verwijst\n"
+"  -n, --node=PAGINANAAM        een te bezoeken pagina\n"
+"  -o, --output=BESTAND         de gekozen pagina's naar dit bestand schrijven\n"
+"  -R, --raw-escapes            \"ruwe\" ANSI-stuurcodes schrijven (standaard)\n"
+"      --no-raw-escapes         stuurcodes als tekst uitschrijven\n"
+"      --restore=BESTAND        de eerste toetsaanslagen uit dit bestand lezen\n"
+"  -O, --show-options, --usage  de pagina met de commandoregelopties tonen\n"
+"%s      --subnodes               recursief alle menu-items uitvoeren\n"
+"      --vi-keys                toetsbindingen als in 'vi' en 'less' gebruiken\n"
+"      --version                versie-informatie tonen en stoppen\n"
+"  -w, --where, --location      het volledige pad van het Info-bestand tonen\n"
 "\n"
-"Het eerste niet-optie argument, indien aanwezig, is de naam van de menu-"
-"ingang\n"
-"waarmee gestart dient te worden in alle inhoudbestanden langs INFOPATH.\n"
-"Als het niet aanwezig is dan voegt info alle inhoudbestanden samen en laat "
-"het\n"
-"resultaat zien.\n"
-"Alle overige argumenten worden beschouwd als de namen van menu-ingangen\n"
-"ten opzichte van de eerste bezochte pagina.\n"
+"Als 'info' zonder argumenten gestart wordt, dan toont het een overzicht van\n"
+"alle beschikbare documenten.  Als er argumenten gegeven worden, dan wordt het\n"
+"eerste argument begrepen als het te kiezen menu-item uit dat overzicht.\n"
+"Eventuele overige argumenten worden steeds begrepen als het te kiezen\n"
+"menu-item in de op dat moment bereikte pagina.\n"
 "\n"
 "Voorbeelden:\n"
-"  info                         laat het top-niveau inhoudmenu zien\n"
-"  info emacs                   begint bij de emacs pagina vanaf het "
-"topniveau\n"
-"  info emacs buffers           begint bij buffers-pagina in de emacs "
-"handleiding\n"
-"  info --show-options emacs    begint bij de pagina met de emacs opties van "
-"de\n"
-"                               commandoregel\n"
-"  info --subnodes -o out.txt emacs  dump de gehele handleiding in out.txt\n"
-"  info -f ./foo.info           laat het bestand ./foo.info zien en zoekt "
-"niet in inhoud\n"
+"  info                         het inhoudsmenu tonen (compleet overzicht)\n"
+"  info emacs                   de eerste pagina van het Emacs-document tonen\n"
+"  info emacs buffers           de 'Buffers'-pagina van het Emacs-document tonen\n"
+"  info --show-options emacs    de pagina met de Emacs-commandoregelopties tonen\n"
+"  info --subnodes -o em.txt emacs  het gehele Emacs-document in 'em.txt' dumpen\n"
+"  info -f ./foo.info           het bestand './foo.info' tonen\n"
 
 #: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/install-info.c:491 util/texindex.c:259
@@ -439,32 +402,32 @@ msgid ""
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
 "\n"
-"Stuur bug rapporten naar bug-texinfo@gnu.org,\n"
-"algemene vragen en discussie naar help-texinfo@gnu.org.\n"
-"Texinfo-homepagina: http://www.gnu.org/software/texinfo/\n"
-"Opmerkingen over de vertaling naar vertaling@vrijschrift.org"
+"Stuur foutrapportages naar <bug-texinfo@gnu.org>,\n"
+"algemene vragen en commentaar naar <help-texinfo@gnu.org>,\n"
+"en opmerkingen over de vertaling naar <vertaling@vrijschrift.org>.\n"
+"Texinfo-homepagina: http://www.gnu.org/software/texinfo/"
 
 #: info/info.c:683
 #, c-format
 msgid "Cannot find node `%s'."
-msgstr "Kan pagina `%s' niet vinden."
+msgstr "Kan pagina '%s' niet vinden."
 
 #: info/info.c:684
 #, c-format
 msgid "Cannot find node `(%s)%s'."
-msgstr "Kan pagina `(%s)%s' niet vinden."
+msgstr "Kan pagina '(%s)%s' niet vinden."
 
 #: info/info.c:685
 msgid "Cannot find a window!"
-msgstr "Kan een venster niet vinden!"
+msgstr "Kan geen venster vinden!"
 
 #: info/info.c:686
 msgid "Point doesn't appear within this window's node!"
-msgstr "Wijzer verschijnt niet binnen het paginavenster!"
+msgstr "Het punt bevindt zich niet in de pagina van dit venster!"
 
 #: info/info.c:687
 msgid "Cannot delete the last window."
-msgstr "Kan het laatste venster niet verwijderen."
+msgstr "Het laatste venster kan niet gesloten worden."
 
 #: info/info.c:688
 msgid "No menu in this node."
@@ -472,38 +435,38 @@ msgstr "Er is geen menu op deze pagina."
 
 #: info/info.c:689
 msgid "No footnotes in this node."
-msgstr "Geen voetnoten in deze pagina."
+msgstr "Er zijn geen voetnoten op deze pagina."
 
 #: info/info.c:690
 msgid "No cross references in this node."
-msgstr "Geen kruisverwijzingen in deze pagina."
+msgstr "Er zijn geen kruisverwijzingen op deze pagina."
 
 #: info/info.c:691
 #, c-format
 msgid "No `%s' pointer for this node."
-msgstr "Geen `%s' wijzer voor deze pagina."
+msgstr "Er is geen '%s'-koppeling op deze pagina."
 
 #: info/info.c:692
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
-msgstr "Onbekend Info-commando `%c'; probeer `?' voor help."
+msgstr "Onbekend Info-commando '%c'; typ '?' voor hulp."
 
 #: info/info.c:693
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
-msgstr "Terminal type `%s' is niet krachtig genoeg voor Info."
+msgstr "Terminaltype '%s' is niet krachtig genoeg voor Info."
 
 #: info/info.c:694
 msgid "You are already at the last page of this node."
-msgstr "U bent al bij de laatste subpagina van deze pagina."
+msgstr "U bent al aan het eind van deze pagina."
 
 #: info/info.c:695
 msgid "You are already at the first page of this node."
-msgstr "U bent al bij de eerste subpagina van deze pagina."
+msgstr "U bent al aan het begin van deze pagina."
 
 #: info/info.c:696
 msgid "Only one window."
-msgstr "Slechts een venster."
+msgstr "Slechts één venster."
 
 #: info/info.c:697
 msgid "Resulting window would be too small."
@@ -511,367 +474,322 @@ msgstr "Het resulterende venster zou te klein zijn."
 
 #: info/info.c:698
 msgid "Not enough room for a help window, please delete a window."
-msgstr "Niet genoeg ruimte voor een help-venster, verwijder een venster."
+msgstr "Niet genoeg ruimte voor een hulp-venster; sluit een venster."
 
 #: info/infodoc.c:45 info/infodoc.c:97
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
 msgstr ""
-"Basiscommando's in Info Vensters\n"
-"********************************\n"
+"Basiscommando's in Info-vensters\n"
+"================================\n"
 
 #: info/infodoc.c:48
 msgid "\\%-10[quit-help]  Quit this help.\n"
-msgstr "\\%-10[quit-help]  Verlaat deze help.\n"
+msgstr "\\%-10[quit-help]  Dit hulpvenster sluiten.\n"
 
 #: info/infodoc.c:49
 msgid "\\%-10[quit]  Quit Info altogether.\n"
-msgstr "\\%-10[quit]  Verlaat Info geheel en al.\n"
+msgstr "\\%-10[quit]  Info afsluiten.\n"
 
 #: info/infodoc.c:50
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
-msgstr "\\%-10[get-info-help-node]  Roep de Info tutorial op.\n"
+msgstr "\\%-10[get-info-help-node]  Korte Info-cursus oproepen.\n"
 
 #: info/infodoc.c:52 info/infodoc.c:104
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
 msgstr ""
-"Bezig andere pagina's te selecteren:\n"
-"------------------------------------\n"
+"Selecteren van andere pagina's:\n"
+"-------------------------------\n"
 
 #: info/infodoc.c:54
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
-msgstr "\\%-10[next-node]  Ga naar de \"volgende\" pagina van deze pagina.\n"
+msgstr "\\%-10[next-node]  Naar de volgende pagina.\n"
 
 #: info/infodoc.c:55
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
-msgstr "\\%-10[prev-node]  Ga naar de \"vorige\" pagina van deze pagina.\n"
+msgstr "\\%-10[prev-node]  Naar de voorgaande pagina.\n"
 
 #: info/infodoc.c:56
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "\\%-10[up-node]  Ga \"omhoog\" vanaf deze pagina.\n"
+msgstr "\\%-10[up-node]  Naar de bovenliggende pagina.\n"
 
 #: info/infodoc.c:57
 msgid ""
 "\\%-10[menu-item]  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
 msgstr ""
-"\\%-10[menu-item]  Maak een menukeuze via een naam.\n"
-"              Het maken van een menukeuze selecteert een andere pagina.\n"
+"\\%-10[menu-item]  Een menu-item kiezen door diens naam op te geven;\n"
+"              dit selecteert een andere pagina.\n"
 
 #: info/infodoc.c:59
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  Volg een kruisverwijzing.  Leest de naam van de "
-"verwijzing.\n"
+msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr "\\%-10[xref-item]  Een kruisverwijzing volgen door diens naam op te geven.\n"
 
 #: info/infodoc.c:60
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr ""
-"\\%-10[history-node]  Ga naar de laatste pagina gezien in dit venster.\n"
+msgstr "\\%-10[history-node]  Terug naar de laatst geziene pagina in dit venster.\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Spring naar de volgende hypertext-link [*].\n"
+msgstr "\\%-10[move-to-next-xref]  Naar de volgende koppeling springen [*].\n"
 
 #: info/infodoc.c:62
 msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]  Spring naar de voorgaande hypertext-link [*].\n"
+msgstr "\\%-10[move-to-prev-xref]  Naar de vorige koppeling springen [*].\n"
 
 #: info/infodoc.c:63
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Volg de hypertext-link onder de cursor.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  De koppeling onder de cursor volgen (<Enter>).\n"
 
 #: info/infodoc.c:64
-msgid ""
-"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-"node] (DIR)'.\n"
-msgstr ""
-"\\%-10[dir-node]  Ga naar de inhoudpagina.  Gelijk aan `\\[goto-node] "
-"(DIR)'.\n"
+msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
+msgstr "\\%-10[dir-node]  Naar de inhoudspagina; hetzelfde als '\\[goto-node] (DIR)'.\n"
 
 #: info/infodoc.c:65
-msgid ""
-"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr ""
-"\\%-10[top-node]  Ga naar de Top pagina.  Gelijk aan `\\[goto-node] Top'.\n"
+msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgstr "\\%-10[top-node]  Naar de eerste pagina van dit document; hetzelfde als '\\[goto-node] Top'.\n"
 
 #: info/infodoc.c:67
 msgid ""
 "[*]    Command acts within this node or the entire document, depending on\n"
 "the value of cursor-movement-scrolls variable\n"
 msgstr ""
-"[*]    Het commando werkt binnen deze pagina of het gehele document, hangt "
-"af van\n"
-"de waarde van de variabele voor cursor-beweging-verschuiving\n"
+"[*] Deze commando's werken binnen de huidige pagina of over het gehele document\n"
+"afhankelijk van de waarde van de variabele 'cursor-movement-scrolls'.\n"
 
 #: info/infodoc.c:70 info/infodoc.c:118
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
 msgstr ""
-"Bezig binnen een pagina te bewegen:\n"
-"-----------------------------------\n"
+"Bewegen binnen een pagina:\n"
+"--------------------------\n"
 
-# kill?
 #: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
-msgstr "\\%-10[beginning-of-node]  Ga naar het begin van deze pagina.\n"
+msgstr "\\%-10[beginning-of-node]  Naar het begin van deze pagina.\n"
 
 #: info/infodoc.c:73
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
-msgstr "\\%-10[end-of-node]  Ga naar het einde van deze pagina.\n"
+msgstr "\\%-10[end-of-node]  Naar het einde van deze pagina.\n"
 
 #: info/infodoc.c:74
 msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
-msgstr "\\%-10[next-line]  Verschuif 1 regel voorwaarts.\n"
+msgstr "\\%-10[next-line]  Eén regel verderscrollen.\n"
 
 #: info/infodoc.c:75
 msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
-msgstr "\\%-10[prev-line]  Verschuif 1 regel achterwaards.\n"
+msgstr "\\%-10[prev-line]  Eén regel terugscrollen.\n"
 
 #: info/infodoc.c:76
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "\\%-10[scroll-forward]  Verschuif een pagina voorwaarts.\n"
+msgstr "\\%-10[scroll-forward]  Eén blad verderscrollen.\n"
 
 #: info/infodoc.c:77
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "\\%-10[scroll-backward]  Verschuif een pagina achterwaards.\n"
+msgstr "\\%-10[scroll-backward]  Eén blad terugscrollen.\n"
 
 #: info/infodoc.c:79 info/infodoc.c:127
 msgid ""
 "Other commands:\n"
 "---------------\n"
 msgstr ""
-"Andere commando's:\n"
-"------------------\n"
+"Enkele andere commando's:\n"
+"-------------------------\n"
 
 #: info/infodoc.c:81
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
-msgstr ""
-"1...9       Maak de eerste ... negende keuze in het menu van deze pagina.\n"
+msgstr "1...9       Het eerste...negende item uit het menu op deze pagina kiezen.\n"
 
 #: info/infodoc.c:82
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
-msgstr ""
-"\\%-10[last-menu-item]  Kies de laatste keuze in het menu op deze pagina.\n"
+msgstr "\\%-10[last-menu-item]  Het laatste item uit het menu op deze pagina kiezen.\n"
 
 #: info/infodoc.c:83
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of "
-"this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  Zoek naar een gespecificeerde tekenreeks in de index "
-"van dit\n"
-"                 Info-bestand en selecteer de pagina behorende bij de "
-"eerste\n"
-"                 gevonden ingang.\n"
+"\\%-10[index-search]  Naar een tekenreeks zoeken in de index van dit Info-bestand,\n"
+"              en de pagina behorend bij het eerste gevonden item selecteren.\n"
 
 #: info/infodoc.c:85
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
-"\\%-10[goto-node]  Ga naar de pagina behorende bij naam.\n"
-"              U mag ook een bestandsnaam meegeven, zoals in (BESTANDSNAAM)"
-"PAGINANAAM.\n"
+"\\%-10[goto-node]  Naar een pagina gaan door diens naam op te geven; er mag een\n"
+"              bestandsnaam meegegeven worden via (BESTANDSNAAM)PAGINANAAM.\n"
 
 #: info/infodoc.c:87
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"\\%-10[search]  Zoek voorwaarts naar een gespecificeerde tekenreeks\n"
-"              en selecteer de pagina waarin de volgende gelijkenis is "
-"gevonden.\n"
+msgstr "\\%-10[search]  Voorwaarts zoeken naar een tekenreeks.\n"
 
 #: info/infodoc.c:89
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
-msgstr ""
-"\\%-10[search-backward]  Zoek achterwaarts naar een gespecificeerde "
-"tekenreeks\n"
-"              en selecteer de pagina waarin de voorgaande gelijkenis is "
-"gevonden.\n"
+"              and select the node in which the previous occurrence is found.\n"
+msgstr "\\%-10[search-backward]  Achterwaarts zoeken naar een tekenreeks.\n"
 
 #: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Quit this help.\n"
-msgstr "  %-10s  Verlaat deze help.\n"
+msgstr "  %-10s  Dit hulpvenster sluiten.\n"
 
 #: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
-msgstr "  %-10s  Verlaat Info geheel en al.\n"
+msgstr "  %-10s  Info afsluiten.\n"
 
 #: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
-msgstr "  %-10s  Roep de Info tutorial op.\n"
+msgstr "  %-10s  Korte Info-cursus oproepen.\n"
 
 #: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
-msgstr "  %-10s  Ga naar de `volgende' subpagina van deze pagina.\n"
+msgstr "  %-10s  Naar de volgende pagina.\n"
 
 #: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
-msgstr "  %-10s  Ga naar de `voorgaande' subpagina van deze pagina.\n"
+msgstr "  %-10s  Naar de voorgaande pagina.\n"
 
 #: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
-msgstr "  %-10s  Ga `omhoog' vanaf deze pagina.\n"
+msgstr "  %-10s  Naar de bovenliggende pagina.\n"
 
 #: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
-msgstr "  %-10s  Maak een menukeuze via een naam.\n"
+msgstr "  %-10s  Een menu-item kiezen door diens naam op te geven;\n"
 
 #: info/infodoc.c:110
 msgid "              Picking a menu item causes another node to be selected.\n"
-msgstr ""
-"              Het maken van een menukeuze selecteert een andere pagina.\n"
+msgstr "              dit selecteert een andere pagina.\n"
 
 #: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
-msgstr "  %-10s  Volg een kruisverwijzing.  Leest de naam van de verwijzing.\n"
+msgstr "  %-10s  Een kruisverwijzing volgen door diens naam op te geven.\n"
 
 #: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
-msgstr "  %-10s  Ga naar de laatste pagina gezien in dit venster.\n"
+msgstr "  %-10s  Terug naar de laatst geziene pagina in dit venster.\n"
 
 #: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
-msgstr "  %-10s  Spring naar de volgende hypertext-link in deze pagina.\n"
+msgstr "  %-10s  Naar de volgende koppeling springen.\n"
 
 #: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
-msgstr "  %-10s  Volg de hypertext-link onder de cursor.\n"
+msgstr "  %-10s  De koppeling onder de cursor volgen.\n"
 
 #: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
-msgstr "  %-10s  Ga naar de inhoudpagina.  Gelijk aan `g (DIR)'.\n"
+msgstr "  %-10s  Naar de inhoudspagina; hetzelde als 'g (DIR)'.\n"
 
 #: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
-msgstr "  %-10s  Ga naar de Top pagina.  Gelijk aan `g Top'.\n"
+msgstr "  %-10s  Naar de eerste pagina van dit document; hetzelfde als 'g Top'.\n"
 
 #: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
-msgstr "  %-10s  Verschuif een pagina voorwaarts.\n"
+msgstr "  %-10s  Eén blad verderscrollen.\n"
 
 #: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
-msgstr "  %-10s  Verschuif een pagina achterwaards.\n"
+msgstr "  %-10s  Eén blad terugscrollen.\n"
 
-# kill?
 #: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
-msgstr "  %-10s  Ga naar het begin van deze pagina.\n"
+msgstr "  %-10s  Naar het begin van deze pagina.\n"
 
 #: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
-msgstr "  %-10s  Ga naar het einde van deze pagina.\n"
+msgstr "  %-10s  Naar het einde van deze pagina.\n"
 
 #: info/infodoc.c:124
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
-msgstr "  %-10s  Verschuif 1 regel voorwaarts.\n"
+msgstr "  %-10s  Eén regel verderscrollen.\n"
 
 #: info/infodoc.c:125
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
-msgstr "  %-10s  Verschuif 1 regel achterwaards.\n"
+msgstr "  %-10s  Eén regel terugscrollen.\n"
 
 #: info/infodoc.c:129
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
-msgstr ""
-"  %-10s  Maak de eerste ... negende keuze in het menu van deze pagina.\n"
+msgstr "  %-10s  Het eerste...negende item uit het menu op deze pagina kiezen.\n"
 
 #: info/infodoc.c:130
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
-msgstr "  %-10s  Maak de laatste keuze in het menu van deze pagina.\n"
+msgstr "  %-10s  Het laatste item uit het menu op deze pagina kiezen.\n"
 
 #: info/infodoc.c:133
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+"              file, and select the node referenced by the first entry found.\n"
 msgstr ""
-"  %-10s  Zoek naar een gespecificeerde tekenreeks in de index van dit\n"
-"              Info-bestand en selecteer de pagina behorende bij de eerste\n"
-"              gevonden ingang.\n"
+"  %-10s  Naar een tekenreeks zoeken in de index van dit Info-bestand,\n"
+"              en de pagina behorend bij het eerste gevonden item selecteren.\n"
 
 #: info/infodoc.c:135
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
-msgstr "  %-10s  Ga naar de pagina gespecificeerd via een naam.\n"
+msgstr "  %-10s  Naar een pagina gaan door diens naam op te geven; er mag een\n"
 
 #: info/infodoc.c:136
-msgid ""
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
-msgstr ""
-"              U mag ook een bestandsnaam meegeven, zoals in (BESTANDSNAAM)"
-"PAGINANAAM.\n"
+msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgstr "              bestandsnaam meegegeven worden via (BESTANDSNAAM)PAGINANAAM.\n"
 
 #: info/infodoc.c:137
 #, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"  %-10s  Zoek voorwaarts naar een gespecificeerde tekenreeks\n"
-"              en selecteer de pagina waarin de volgende gelijkenis is "
-"gevonden.\n"
+msgstr "  %-10s  Voorwaarts zoeken naar een tekenreeks.\n"
 
 #: info/infodoc.c:139
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
-msgstr "  %-10s  Zoek achterwaarts naar een gespecificeerde tekenreeks\n"
+msgstr "  %-10s  Achterwaarts zoeken naar een tekenreeks.\n"
 
 #: info/infodoc.c:140
-msgid ""
-"              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"              en selecteer de pagina waarin de volgende gelijkenis is "
-"gevonden.\n"
+msgid "              and select the node in which the next occurrence is found.\n"
+msgstr "                                                                        \n"
 
 #: info/infodoc.c:320
 msgid "The current search path is:\n"
-msgstr "Het huidige zoekpad is:\n"
+msgstr "Het huidige zoekpad voor Info-bestanden is:\n"
 
 #: info/infodoc.c:324
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
 msgstr ""
-"Commando's beschikbaar in Info Vensters:\n"
+"Alle beschikbare commando's in Info-vensters:\n"
+"=============================================\n"
 "\n"
 
 #: info/infodoc.c:328
@@ -879,7 +797,8 @@ msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr ""
-"Commando's beschikbaar in het weergeefgebied:\n"
+"Beschikbare commando's in de echoregel:\n"
+"=======================================\n"
 "\n"
 
 #: info/infodoc.c:351
@@ -889,6 +808,7 @@ msgid ""
 "\n"
 msgstr ""
 "De volgende commando's kunnen alleen aangeroepen worden via %s:\n"
+"================================================================\n"
 "\n"
 
 #: info/infodoc.c:355
@@ -896,30 +816,30 @@ msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
 msgstr ""
-"De volgende commando's kunnen niet aangeroepen worden:\n"
+"De volgende commando's kunnen helemaal niet aangeroepen worden:\n"
+"===============================================================\n"
 "\n"
 
 #: info/infodoc.c:379
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr ""
-"--- Gebruik `\\[history-node]' of `\\[kill-node]' om te beëindigen ---\n"
+msgstr "--- Gebruik '\\[history-node]' of '\\[kill-node]' om af te sluiten ---\n"
 
 #: info/infodoc.c:489
 msgid "Display help message"
-msgstr "Geef een help boodschap"
+msgstr "Deze hulptekst tonen"
 
 #: info/infodoc.c:507
 msgid "Visit Info node `(info)Help'"
-msgstr "Ga naar Info-pagina `(info)Help'"
+msgstr "Naar Info-pagina '(info)Help'"
 
 #: info/infodoc.c:645
 msgid "Print documentation for KEY"
-msgstr "Geef uitleg over KEY"
+msgstr "Uitleg geven over een toets"
 
 #: info/infodoc.c:657
 #, c-format
 msgid "Describe key: %s"
-msgstr "Beschrijf toets: %s"
+msgstr "Te beschrijven toets: %s"
 
 #: info/infodoc.c:668
 #, c-format
@@ -938,7 +858,7 @@ msgstr "%s is gedefinieerd als %s."
 
 #: info/infodoc.c:1157
 msgid "Show what to type to execute a given command"
-msgstr "Laat zien wat in te typen om een gegeven commando uit te voeren"
+msgstr "Tonen wat ingetypt moet worden om een gegeven commando uit te voeren"
 
 #: info/infodoc.c:1161
 msgid "Where is command: "
@@ -947,7 +867,7 @@ msgstr "Waar is het commando: "
 #: info/infodoc.c:1183
 #, c-format
 msgid "`%s' is not on any keys"
-msgstr "`%s' is niet toegekend aan een toets"
+msgstr "'%s' is aan geen enkele toetscombinatie toegekend"
 
 #: info/infodoc.c:1190
 #, c-format
@@ -962,7 +882,7 @@ msgstr "%s kan aangeroepen worden via %s."
 #: info/infodoc.c:1199
 #, c-format
 msgid "There is no function named `%s'"
-msgstr "Er is geen functie met de naam `%s'"
+msgstr "Er is geen functie met de naam '%s'"
 
 #: info/infokey.c:170
 msgid "incorrect number of arguments"
@@ -971,26 +891,26 @@ msgstr "onjuist aantal argumenten"
 #: info/infokey.c:201
 #, c-format
 msgid "cannot open input file `%s'"
-msgstr "kan het invoerbestand `%s' niet openen"
+msgstr "kan invoerbestand '%s' niet openen"
 
 #: info/infokey.c:215
 #, c-format
 msgid "cannot create output file `%s'"
-msgstr "kan het uitvoerbestand `%s' niet aanmaken."
+msgstr "kan uitvoerbestand '%s' niet aanmaken"
 
 #: info/infokey.c:226
 #, c-format
 msgid "error writing to `%s'"
-msgstr "fout bij het schrijven naar `%s'"
+msgstr "fout bij het schrijven naar '%s'"
 
 #: info/infokey.c:232
 #, c-format
 msgid "error closing output file `%s'"
-msgstr "fout bij het sluiten van het uitvoerbestand `%s'"
+msgstr "fout bij het sluiten van uitvoerbestand '%s'"
 
 #: info/infokey.c:450
 msgid "key sequence too long"
-msgstr "toetsenreeks te lang"
+msgstr "toetsenreeks is te lang"
 
 #: info/infokey.c:529
 msgid "missing key sequence"
@@ -998,12 +918,12 @@ msgstr "ontbrekende toetsenreeks"
 
 #: info/infokey.c:610
 msgid "NUL character (\\000) not permitted"
-msgstr "NUL karakter (\\000) niet toegestaan"
+msgstr "NUL-teken (\\000) is niet toegestaan"
 
 #: info/infokey.c:641
 #, c-format
 msgid "NUL character (^%c) not permitted"
-msgstr "NUL karakter (^%c) niet toegestaan"
+msgstr "NUL-teken (^%c) is niet toegestaan"
 
 #: info/infokey.c:665
 msgid "missing action name"
@@ -1011,21 +931,21 @@ msgstr "ontbrekende actienaam"
 
 #: info/infokey.c:681 info/infokey.c:756
 msgid "section too long"
-msgstr "sectie te lang"
+msgstr "sectie is te lang"
 
 #: info/infokey.c:688
 #, c-format
 msgid "unknown action `%s'"
-msgstr "onbekende actie `%s'"
+msgstr "onbekende actie '%s'"
 
 #: info/infokey.c:698
 msgid "action name too long"
-msgstr "actienaam te lang"
+msgstr "actienaam is te lang"
 
 #: info/infokey.c:712
 #, c-format
 msgid "extra characters following action `%s'"
-msgstr "extra karakters na actie `%s'"
+msgstr "extra tekens na actie '%s'"
 
 #: info/infokey.c:723
 msgid "missing variable name"
@@ -1033,15 +953,15 @@ msgstr "ontbrekende naam van variabele"
 
 #: info/infokey.c:733
 msgid "missing `=' immediately after variable name"
-msgstr "ontbrekende `=' onmiddelijk na naam van variabele"
+msgstr "ontbrekende '=' na naam van variabele"
 
 #: info/infokey.c:741
 msgid "variable name too long"
-msgstr "naam van variabele te lang"
+msgstr "naam van variabele is te lang"
 
 #: info/infokey.c:765
 msgid "value too long"
-msgstr "waarde te lang"
+msgstr "waarde is te lang"
 
 #: info/infokey.c:890
 #, c-format
@@ -1061,87 +981,83 @@ msgid ""
 "  --help               display this help and exit.\n"
 "  --version            display version information and exit.\n"
 msgstr ""
-"Aanroep: %s [OPTIE]... [INVOERBESTAND]\n"
+"Gebruik:  %s [OPTIE]... [INVOERBESTAND]\n"
 "\n"
-"Compileer infokey-bronbestand naar een infokey-bestand.  Leest INVOERBESTAND "
-"(standaard\n"
-"$HOME/.infokey) en schrijft gecompileerde infokey-bestand naar (standaard) "
-"$HOME/.info.\n"
+"Een infokey-bronbestand naar een binair infokey-bestand compileren.\n"
+"Dit leest een INVOERBESTAND (standaard $HOME/.infokey) en schrijft\n"
+"het gecompileerde infokey-bestand (standaard) naar $HOME/.info.\n"
 "\n"
 "Opties:\n"
-"  --output BESTAND     uitvoer naar BESTAND in plaats van naar $HOME/.info\n"
-"  --help               laat deze helptekst zien en beëindig.\n"
-"  --version            laat versie informatie zien en beëindig.\n"
+"  --output BESTAND     uitvoer naar dit bestand schrijven\n"
+"  --help               deze hulptekst tonen en stoppen\n"
+"  --version            versie-informatie tonen en stoppen\n"
 
 #: info/infomap.c:1499
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
-msgstr "Negeer ongeldig infokey-bestand `%s' - te klein"
+msgstr "Infokey-bestand '%s' is te klein -- wordt genegeerd"
 
 #: info/infomap.c:1502
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
-msgstr "Negeer ongeldig infokey-bestand `%s' - te groot"
+msgstr "Infokey-bestand '%s' is te groot -- wordt genegeerd"
 
 #: info/infomap.c:1515
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
-msgstr "Fout bij lezen van infokey-bestand `%s' - kort lezen"
+msgstr "Fout bij lezen van infokey-bestand '%s' -- te weinig gelezen"
 
 #: info/infomap.c:1534
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
-"Ongeldig infokey-bestand `%s' (foute magische nummers) -- voer infokey uit "
-"om het op orde te brengen"
+"Ongeldig infokey-bestand '%s' (foute magische nummers) --\n"
+"voer 'infokey' uit om het op orde te brengen"
 
 #: info/infomap.c:1543
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
-"Uw infokey-bestand `%s' is verouderd -- voer infokey uit om het op orde te "
-"brengen"
+"Uw infokey-bestand '%s' is verouderd --\n"
+"voer 'infokey' uit om het op orde te brengen"
 
 #: info/infomap.c:1559
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
-"Ongeldig infokey-bestand `%s' (foute sectielengte) -- draai infokey om het "
-"op orde te brengen"
+"Ongeldig infokey-bestand '%s' (foute sectielengte) --\n"
+"voer 'infokey' uit om het op orde te brengen"
 
 #: info/infomap.c:1580
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
-"Ongeldig infokey-bestand `%s' (foute sectiecode) -- voer infokey uit om het "
-"op orde te brengen"
+"Ongeldig infokey-bestand '%s' (foute sectiecode) --\n"
+"voer 'infokey' uit om het op orde te brengen"
 
 #: info/infomap.c:1715
 msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr "Foute gegevens in infokey-bestand -- enkele toetskoppelingen genegeerd"
+msgstr "Foute gegevens in infokey-bestand -- enkele toetstoewijzingen zijn genegeerd"
 
 #: info/infomap.c:1765
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "Foute gegevens in infokey-bestand -- sommige definities genegeerd"
+msgstr "Foute gegevens in infokey-bestand -- sommige definities zijn genegeerd"
 
 #: info/m-x.c:68
 msgid "Read the name of an Info command and describe it"
-msgstr "Lees de naam van een Info-commando en geef een omschrijving"
+msgstr "De naam van een Info-commando lezen en een omschrijving ervan geven"
 
 #: info/m-x.c:72
 msgid "Describe command: "
-msgstr "Omschrijf commando: "
+msgstr "Te omschrijven commando: "
 
 #: info/m-x.c:95
 msgid "Read a command name in the echo area and execute it"
-msgstr "Lees de naam van een commando in de weergeefruimte en voer dat uit"
+msgstr "De naam van een commando in de echoregel lezen en deze uitvoeren"
 
 #: info/m-x.c:139
 msgid "Cannot execute an `echo-area' command here."
-msgstr "Kan hier geen `weergeefruimte'-commando uitvoeren."
+msgstr "Kan hier geen 'echoregel'-commando uitvoeren."
 
 #: info/m-x.c:153
 #, c-format
@@ -1150,12 +1066,12 @@ msgstr "Onbekend commando: %s"
 
 #: info/m-x.c:159
 msgid "Set the height of the displayed window"
-msgstr "Zet de hoogte van het weergeefvenster"
+msgstr "De hoogte van het weergavevenster instellen"
 
 #: info/m-x.c:172
 #, c-format
 msgid "Set screen height to (%d): "
-msgstr "Zet schermhoogte op (%d): "
+msgstr "Schermhoogte instellen op (%d): "
 
 #: info/makedoc.c:163 info/makedoc.c:171
 #, c-format
@@ -1163,13 +1079,13 @@ msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
-"   Bronbestanden veranderd om dit bestand in te voegen:\n"
+"   Doorzochte bronbestanden om dit bestand te maken omvatten:\n"
 "\n"
 
 #: info/makedoc.c:551
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
-msgstr "Kon het bestand %s niet manipuleren.\n"
+msgstr "Kan het bestand %s niet manipuleren.\n"
 
 #: info/nodemenu.c:30
 msgid ""
@@ -1180,29 +1096,28 @@ msgid ""
 msgstr ""
 "\n"
 "* Menu:\n"
-"  (Bestand)Pagina                  Regels  Grootte   Bevat Bestand\n"
-"  ---------------                  ------  -------   -------------"
+"  (Bestand)Pagina                   Regels  Bytes  Volledig pad\n"
+"  ---------------                   ------  -----  ------------"
 
 #: info/nodemenu.c:201
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use `\\[history-node]' in another window.\n"
 msgstr ""
-"Hier is het menu van pagina's die u recentelijk bekeken hebt.\n"
-"Selecteer er een uit dit menu, of gebruik `\\[history-node]' in een ander "
-"venster.\n"
+"Hier is een menu van pagina's die u recent bezocht hebt.\n"
+"Selecteer er een, of gebruik `\\[history-node]' in een ander venster.\n"
 
 #: info/nodemenu.c:223
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr "Maak een venster met een menu van alle thans bezochte pagina's"
+msgstr "Een venster openen met een menu van reeds bezochte pagina's"
 
 #: info/nodemenu.c:303
 msgid "Select a node which has been previously visited in a visible window"
-msgstr "Selecteer een pagina die voorheen bekeken is in een zichtbaar venster"
+msgstr "Een pagina selecteren die recent bekeken werd in een zichtbaar venster"
 
 #: info/nodemenu.c:316
 msgid "Select visited node: "
-msgstr "Selecteer een bezochte pagina: "
+msgstr "Te selecteren bezochte pagina: "
 
 #: info/nodemenu.c:336 info/session.c:2398
 #, c-format
@@ -1211,28 +1126,24 @@ msgstr "De verwijzing is verdwenen! (%s)."
 
 #: info/session.c:161
 #, c-format
-msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item."
-msgstr ""
-"Welkom bij Info versie %s. Typ \\[get-help-window] voor hulp, \\[menu-item] "
-"voor een menukeuze."
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgstr "Welkom bij Info versie %s.  Typ \\[get-help-window] voor hulp, \\[menu-item] om een menu-item te kiezen."
 
 #: info/session.c:622
 msgid "Move down to the next line"
-msgstr "Ga naar de volgende regel"
+msgstr "Naar de volgende regel"
 
 #: info/session.c:658
 msgid "Move up to the previous line"
-msgstr "Ga naar de vorige regel"
+msgstr "Naar de vorige regel"
 
 #: info/session.c:693
 msgid "Move to the end of the line"
-msgstr "Ga naar het einde van de regel"
+msgstr "Naar het einde van de regel"
 
 #: info/session.c:713
 msgid "Move to the start of the line"
-msgstr "Ga naar het begin van de regel"
+msgstr "Naar het begin van de regel"
 
 #: info/session.c:983 makeinfo/node.c:1437
 msgid "Next"
@@ -1240,20 +1151,20 @@ msgstr "Volgende"
 
 #: info/session.c:988
 msgid "Following Next node..."
-msgstr "'Volgende' pagina aan het volgen..."
+msgstr "Naar volgende gegaan."
 
 #: info/session.c:1006
 msgid "Selecting first menu item..."
-msgstr "Bezig de eerste keuze uit het menu te selecteren..."
+msgstr "Naar eerste menu-item gegaan."
 
 #: info/session.c:1018
 msgid "Selecting Next node..."
-msgstr "Bezig de 'volgende' pagina te selecteren..."
+msgstr "Naar volgende gegaan."
 
 #: info/session.c:1089
 #, c-format
 msgid "Moving Up %d time(s), then Next."
-msgstr "%d keer omhoog, dan 'volgende'."
+msgstr "Naar volgende gegaan, na %d keer omhoog."
 
 #: info/session.c:1113
 msgid "No more nodes within this document."
@@ -1261,154 +1172,147 @@ msgstr "Er zijn geen pagina's meer in dit document."
 
 #: info/session.c:1139
 msgid "No `Prev' for this node."
-msgstr "Geen 'vorige' in deze pagina."
+msgstr "Er is geen voorgaande van deze pagina."
 
 #: info/session.c:1144 info/session.c:1206
 msgid "Moving Prev in this window."
-msgstr "Bezig met 'vorige' in dit venster."
+msgstr "Naar voorgaande gegaan."
 
 #: info/session.c:1161
 msgid "No `Prev' or `Up' for this node within this document."
-msgstr "Geen 'vorige' of 'omhoog' in deze pagina binnen dit document."
+msgstr "Er is geen voorgaande of bovenliggende van deze pagina binnen dit document."
 
 #: info/session.c:1167
 msgid "Moving Up in this window."
-msgstr "Bezig met 'omhoog' in dit venster."
+msgstr "Naar bovenliggende gegaan."
 
 #: info/session.c:1217
 msgid "Moving to `Prev's last menu item."
-msgstr "Bezig met 'vorige' in het laatste keuzemenu."
+msgstr "Naar laatste menu-item van voorgaande gegaan."
 
 #: info/session.c:1229
 msgid "Move forwards or down through node structure"
-msgstr "Beweeg 'naar voren' of 'omlaag' door de paginastructuur"
+msgstr "Voorwaarts of omlaag door de paginastructuur lopen"
 
 #: info/session.c:1245
 msgid "Move backwards or up through node structure"
-msgstr "Beweeg naar achteren of omhoog door de paginastructuur"
+msgstr "Achterwaarts of omhoog door de paginastructuur lopen"
 
 #: info/session.c:1339
 msgid "Scroll forward in this window"
-msgstr "Verschuif voorwaarts in dit venster"
+msgstr "Verderscrollen in dit venster"
 
 #: info/session.c:1347
 msgid "Scroll forward in this window and set default window size"
-msgstr "Verschuif voorwaarts in dit venster en zet de standaard venstergrootte"
+msgstr "Verderscrollen in dit venster en de venstergrootte instellen"
 
 #: info/session.c:1355
 msgid "Scroll forward in this window staying within node"
-msgstr "Verschuif voorwaarts in dit venster en blijf binnen de pagina"
+msgstr "Binnen de pagina verderscrollen in dit venster"
 
 #: info/session.c:1363
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
-msgstr ""
-"Verschuif voorwaarts in dit venster, blijf binnen de pagina en zet de "
-"standaard venstergrootte"
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "Binnen de pagina verderscrollen in dit venster en de venstergrootte instellen"
 
 #: info/session.c:1371
 msgid "Scroll backward in this window"
-msgstr "Verschuif achteruit in dit venster"
+msgstr "Terugscrollen in dit venster"
 
 #: info/session.c:1379
 msgid "Scroll backward in this window and set default window size"
-msgstr "Verschuif achteruit in dit venster en zet de standaard verstergrootte"
+msgstr "Terugscrollen in dit venster en de venstergrootte instellen"
 
 #: info/session.c:1388
 msgid "Scroll backward in this window staying within node"
-msgstr "Verschuif achteruit in dit venster en blijf binnen de pagina"
+msgstr "Binnen de pagina terugscrollen in dit venster"
 
 #: info/session.c:1396
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
-msgstr ""
-"Verschuif achteruit in dit venster, blijf binnen de pagina en zet de "
-"standaard verstergrootte"
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "Binnen de pagina terugscrollen in dit venster en de venstergrootte instellen"
 
 #: info/session.c:1404
 msgid "Move to the start of this node"
-msgstr "Ga naar het begin van deze pagina"
+msgstr "Naar het begin van deze pagina"
 
 #: info/session.c:1411
 msgid "Move to the end of this node"
-msgstr "Ga naar het einde van deze pagina"
+msgstr "Naar het einde van deze pagina"
 
 #: info/session.c:1418
 msgid "Scroll down by lines"
-msgstr "Verschuif met regels omlaag "
+msgstr "Een aantal regels omlaagscrollen"
 
 #: info/session.c:1435
 msgid "Scroll up by lines"
-msgstr "Verschuif met regels omhoog "
+msgstr "Een aantal regels omhoogscrollen"
 
 #: info/session.c:1453
 msgid "Scroll down by half screen size"
-msgstr "Verschuif een halve pagina omlaag"
+msgstr "Een halve pagina omlaagscrollen"
 
 #: info/session.c:1479
 msgid "Scroll up by half screen size"
-msgstr "Verschuif een halve pagina omhoog"
+msgstr "Een halve pagina omhoogscrollen"
 
 #: info/session.c:1508
 msgid "Select the next window"
-msgstr "Selecteer het volgende venster"
+msgstr "Het volgende venster selecteren"
 
 #: info/session.c:1547
 msgid "Select the previous window"
-msgstr "Selecteer het vorige venster"
+msgstr "Het vorige venster selecteren"
 
 #: info/session.c:1598
 msgid "Split the current window"
-msgstr "Splits het huidige venster"
+msgstr "Het huidige venster splitsen"
 
 #: info/session.c:1679
 msgid "Delete the current window"
-msgstr "Verwijder het huidige venster"
+msgstr "Het huidige venster sluiten"
 
 #: info/session.c:1687
 msgid "Cannot delete a permanent window"
-msgstr "Kan een permanent venster niet verwijderen"
+msgstr "Een permanent venster kan niet gesloten worden."
 
 #: info/session.c:1719
 msgid "Delete all other windows"
-msgstr "Verwijder alle andere vensters"
+msgstr "Alle andere vensters sluiten"
 
 #: info/session.c:1765
 msgid "Scroll the other window"
-msgstr "Verschuif het andere venster"
+msgstr "In het andere venster verderscrollen"
 
 #: info/session.c:1786
 msgid "Scroll the other window backward"
-msgstr "Verschuif het andere venster achterwaarts"
+msgstr "In het andere venster terugscrollen"
 
 #: info/session.c:1792
 msgid "Grow (or shrink) this window"
-msgstr "Vergroot (of verklein) dit venster"
+msgstr "Dit venster vergroten of verkleinen"
 
 #: info/session.c:1803
 msgid "Divide the available screen space among the visible windows"
-msgstr "Verdeel de beschikbare schermruimte tussen de zichtbare vensters"
+msgstr "De beschikbare schermruimte verdelen tussen de zichtbare vensters"
 
 #: info/session.c:1810
 msgid "Toggle the state of line wrapping in the current window"
-msgstr "Verander de status van regelafbreken in het huidige venster"
+msgstr "Regelafbreking in het huidige venster omschakelen"
 
 #: info/session.c:1982
 msgid "Select the Next node"
-msgstr "Selecteer de volgende pagina"
+msgstr "De volgende pagina selecteren"
 
 #: info/session.c:1990
 msgid "Select the Prev node"
-msgstr "Selecteer de 'vorige' pagina"
+msgstr "De voorgaande pagina selecteren"
 
 #: info/session.c:1998
 msgid "Select the Up node"
-msgstr "Selecteer de 'omhoog' pagina"
+msgstr "De bovenliggende pagina selecteren"
 
 #: info/session.c:2005
 msgid "Select the last node in this file"
-msgstr "Selecteer de laatste pagina in dit bestand"
+msgstr "De laatste pagina in dit bestand selecteren"
 
 #: info/session.c:2032 info/session.c:2065
 msgid "This window has no additional nodes"
@@ -1416,151 +1320,150 @@ msgstr "Dit venster heeft geen extra pagina's"
 
 #: info/session.c:2038
 msgid "Select the first node in this file"
-msgstr "Selecteer de eerste pagina in dit bestand"
+msgstr "De eerste pagina in dit bestand selecteren"
 
 #: info/session.c:2072
 msgid "Select the last item in this node's menu"
-msgstr "Selecteer de laatste menukeuze van deze pagina"
+msgstr "Het laatste menu-item op deze pagina selecteren"
 
 #: info/session.c:2078
 msgid "Select this menu item"
-msgstr "Selecteer deze menukeuze"
+msgstr "Het huidige menu-item selecteren"
 
 #: info/session.c:2111
 #, c-format
 msgid "There aren't %d items in this menu."
-msgstr "Er zijn geen %d keuzes in dit menu."
+msgstr "Dit menu heeft geen %d items."
 
 #: info/session.c:2305 info/session.c:2306
 #, c-format
 msgid "Menu item (%s): "
-msgstr "Menukeuze (%s): "
+msgstr "Te kiezen menu-item (%s): "
 
 #: info/session.c:2309
 msgid "Menu item: "
-msgstr "Menukeuze: "
+msgstr "Te kiezen menu-item: "
 
 #: info/session.c:2316 info/session.c:2317
 #, c-format
 msgid "Follow xref (%s): "
-msgstr "Volg kruisverwijzing (%s): "
+msgstr "Te volgen verwijzing (%s): "
 
 #: info/session.c:2320
 msgid "Follow xref: "
-msgstr "Volg kruisverwijzing: "
+msgstr "Te volgen kruisverwijzing: "
 
 #: info/session.c:2449
 msgid "Read a menu item and select its node"
-msgstr "Lees een menukeuze en selecteer zijn pagina"
+msgstr "De naam van een menu-item lezen en diens pagina selecteren"
 
 #: info/session.c:2457
 msgid "Read a footnote or cross reference and select its node"
-msgstr "Lees een voetnoot of kruisverwijzing en selecteer zijn pagina"
+msgstr "De naam van een voetnoot of kruisverwijzing lezen en diens pagina selecteren"
 
 #: info/session.c:2463
 msgid "Move to the start of this node's menu"
-msgstr "Ga naar het begin van het menu van deze pagina"
+msgstr "Naar het begin van het menu op deze pagina"
 
 #: info/session.c:2487
 msgid "Visit as many menu items at once as possible"
-msgstr "Ga naar zo veel mogelijk menukeuzes tegelijk"
+msgstr "Zo veel mogelijk menu-items tegelijk bezoeken"
 
 #: info/session.c:2515
 msgid "Read a node name and select it"
-msgstr "Lees de naam van een pagina en selecteer die"
+msgstr "De naam van een pagina lezen en deze selecteren"
 
 #: info/session.c:2570 info/session.c:2575
 msgid "Goto node: "
-msgstr "Ga naar pagina: "
+msgstr "Te bezoeken pagina: "
 
 #: info/session.c:2639
 #, c-format
 msgid "No menu in node `%s'."
-msgstr "Geen menu in pagina `%s'."
+msgstr "Er is geen menu in pagina '%s'."
 
 #: info/session.c:2685
 #, c-format
 msgid "No menu item `%s' in node `%s'."
-msgstr "Er is geen menukeuze `%s' op pagina `%s'."
+msgstr "Er is geen menu-item '%s' op pagina '%s'."
 
 #: info/session.c:2715
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
-msgstr "Kan de pagina, waarnaar verwezen werd door `%s', niet vinden in `%s'."
+msgstr "Kan de pagina waarnaar verwezen werd door '%s' niet vinden in '%s'."
 
 #: info/session.c:2765
 msgid "Read a list of menus starting from dir and follow them"
-msgstr "Lees een lijst van menu's beginnend in inhoud en volg deze"
+msgstr "Een reeks menu-items lezen en deze vanaf de inhoudspagina volgen"
 
 #: info/session.c:2767
 msgid "Follow menus: "
-msgstr "Volg menu's: "
+msgstr "Te volgen reeks menu-items: "
 
 #: info/session.c:2960
 msgid "Find the node describing program invocation"
-msgstr "Zoek de pagina die de aanroep van het programma beschrijft"
+msgstr "De pagina zoeken die de aanroepwijze van het programma beschrijft"
 
 #: info/session.c:2962
 #, c-format
 msgid "Find Invocation node of [%s]: "
-msgstr "Zoek de pagina met de beschrijving van de aanroep van [%s]: "
+msgstr "Aanroepbeschrijving bekijken van [%s]: "
 
-# manpage?
 #: info/session.c:3000
 msgid "Read a manpage reference and select it"
-msgstr "Lees een man-paginaverwijzing en selecteer die"
+msgstr "Een man-paginaverwijzing lezen en deze selecteren"
 
 #: info/session.c:3004
 msgid "Get Manpage: "
-msgstr "Ga naar de man-pagina: "
+msgstr "Te bekijken man-pagina: "
 
 #: info/session.c:3034
 msgid "Select the node `Top' in this file"
-msgstr "Selecteer de `top'-pagina in dit bestand"
+msgstr "Naar de eerste pagina van dit bestand"
 
 #: info/session.c:3040
 msgid "Select the node `(dir)'"
-msgstr "Selecteer de pagina `(inhoud)'"
+msgstr "Naar de overzichts- of inhoudspagina"
 
 #: info/session.c:3057 info/session.c:3059
 #, c-format
 msgid "Kill node (%s): "
-msgstr "Verwijder pagina (%s): "
+msgstr "Te sluiten pagina (%s): "
 
 #: info/session.c:3111
 #, c-format
 msgid "Cannot kill node `%s'"
-msgstr "Kan pagina `%s' niet verwijderen"
+msgstr "Kan pagina '%s' niet sluiten"
 
 #: info/session.c:3121
 msgid "Cannot kill the last node"
-msgstr "Kan de laatste pagina niet verwijderen"
+msgstr "Kan niet verder terug dan de eerste pagina."
 
 #: info/session.c:3207
 msgid "Select the most recently selected node"
-msgstr "Selecteer de laatst geselecteerde pagina"
+msgstr "Terug naar de laatst geziene pagina"
 
 #: info/session.c:3213
 msgid "Kill this node"
-msgstr "Verwijder deze pagina"
+msgstr "Deze pagina sluiten"
 
 #: info/session.c:3221
 msgid "Read the name of a file and select it"
-msgstr "Lees de naam van een bestand en selecteer die"
+msgstr "De naam van een bestand lezen en deze selecteren"
 
 #: info/session.c:3225
 msgid "Find file: "
-msgstr "Zoek bestand: "
+msgstr "Te bezoeken bestand: "
 
 #: info/session.c:3242
 #, c-format
 msgid "Cannot find `%s'."
-msgstr "Kan `%s' niet vinden."
+msgstr "Kan '%s' niet vinden."
 
 #: info/session.c:3285 info/session.c:3403
 #, c-format
 msgid "Could not create output file `%s'."
-msgstr "Kan uitvoerbestand `%s' niet aanmaken."
+msgstr "Kan uitvoerbestand '%s' niet aanmaken."
 
 #: info/session.c:3299 info/session.c:3421 info/session.c:3481
 msgid "Done."
@@ -1569,43 +1472,43 @@ msgstr "Klaar."
 #: info/session.c:3354
 #, c-format
 msgid "Writing node %s..."
-msgstr "Bezig met schrijven van pagina %s..."
+msgstr "Schrijven van pagina %s..."
 
 #: info/session.c:3430
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr "Sluis(pipe) de inhoud van deze pagina door naar het INFO_PRINT_COMMAND"
+msgstr "De inhoud van deze pagina doorsluizen naar het INFO_PRINT_COMMAND"
 
 #: info/session.c:3465
 #, c-format
 msgid "Cannot open pipe to `%s'."
-msgstr "Kan de pipe naar `%s' niet openen."
+msgstr "Kan de pijp naar '%s' niet openen."
 
 #: info/session.c:3471
 #, c-format
 msgid "Printing node %s..."
-msgstr "Bezig met afdrukken van pagina %s..."
+msgstr "Afdrukken van pagina %s..."
 
 #: info/session.c:3701
 #, c-format
 msgid "Searching subfile %s ..."
-msgstr "Bezig met zoeken naar sub-bestand %s ..."
+msgstr "Zoeken naar subbestand %s..."
 
 #: info/session.c:3753
 msgid "Read a string and search for it case-sensitively"
-msgstr "Lees een tekenreeks en zoek daar naar hoofdlettergevoelig"
+msgstr "Een tekenreeks lezen en daar hoofdlettergevoelig naar zoeken"
 
 #: info/session.c:3760
 msgid "Read a string and search for it"
-msgstr "Lees een tekenreeks en zoek daar naar"
+msgstr "Een tekenreeks lezen en daar naar zoeken"
 
 #: info/session.c:3768
 msgid "Read a string and search backward for it"
-msgstr "Lees een tekenreeks en zoek daar naar achterwaarts"
+msgstr "Een tekenreeks lezen en daar achterwaarts naar zoeken"
 
 #: info/session.c:3804 info/session.c:3811
 #, c-format
 msgid "%s%sfor string [%s]: "
-msgstr "%s%svoor tekenreeks [%s]: "
+msgstr "%s%snaar [%s]: "
 
 #: info/session.c:3805 info/session.c:3812
 msgid "Search backward"
@@ -1613,7 +1516,7 @@ msgstr "Achterwaarts zoeken"
 
 #: info/session.c:3806 info/session.c:3812
 msgid "Search"
-msgstr "Zoek"
+msgstr "Zoeken"
 
 #: info/session.c:3807 info/session.c:3813
 msgid " case-sensitively "
@@ -1629,69 +1532,68 @@ msgstr "Niet gevonden."
 
 #: info/session.c:3870
 msgid "Repeat last search in the same direction"
-msgstr "Herhaal de laatste zoekopdracht in dezelfde richting"
+msgstr "De laatste zoekopdracht in dezelfde richting herhalen"
 
 #: info/session.c:3873 info/session.c:3883
 msgid "No previous search string"
-msgstr "Geen eerdere zoek-tekenreeks."
+msgstr "Geen eerdere zoektekenreeks"
 
 #: info/session.c:3880
 msgid "Repeat last search in the reverse direction"
-msgstr "Herhaal de laatste zoekopdracht in omgekeerde richting"
+msgstr "De laatste zoekopdracht in tegenovergestelde richting herhalen"
 
 #: info/session.c:3899 info/session.c:3905
 msgid "Search interactively for a string as you type it"
-msgstr "Zoek interactief naar een tekenreeks terwijl u het intypt"
+msgstr "Naar een tekenreeks zoeken terwijl u deze intypt"
 
 #: info/session.c:3985
 msgid "I-search backward: "
-msgstr "Achterwaarts I-zoeken: "
+msgstr "Achterwaarts typend-zoeken: "
 
 #: info/session.c:3987
 msgid "I-search: "
-msgstr "I-zoeken: "
+msgstr "Typend-zoeken: "
 
 #: info/session.c:4012 info/session.c:4014
 msgid "Failing "
-msgstr "Niet gelukt "
+msgstr "*Ongevonden* "
 
 #: info/session.c:4480
 msgid "Move to the previous cross reference"
-msgstr "Ga naar de vorige kruisverwijzing"
+msgstr "Naar de vorige kruisverwijzing springen"
 
 #: info/session.c:4498
 msgid "Move to the next cross reference"
-msgstr "Ga naar de volgende kruisverwijzing"
+msgstr "Naar de volgende kruisverwijzing springen"
 
 #: info/session.c:4520
 msgid "Select reference or menu item appearing on this line"
-msgstr "Selecteer verwijzing of menukeuze in deze regel"
+msgstr "De verwijzing of het menu-item in deze regel volgen"
 
 #: info/session.c:4543
 msgid "Cancel current operation"
-msgstr "Annuleer huidige operatie"
+msgstr "Huidige operatie annuleren"
 
-# Zie Cancel current action
+# zie 'Cancel current action'
 #: info/session.c:4550
 msgid "Quit"
-msgstr "Stoppen"
+msgstr "Geannuleerd"
 
 #: info/session.c:4559
 msgid "Move the cursor to a specific line of the window"
-msgstr "Beweeg de cursor naar een bepaalde regel in het venster"
+msgstr "De cursor op een bepaalde regel in het venster zetten"
 
 #: info/session.c:4591
 msgid "Redraw the display"
-msgstr "Herschrijf het venster"
+msgstr "Het venster opnieuw schrijven"
 
 #: info/session.c:4628
 msgid "Quit using Info"
-msgstr "Stop met Info"
+msgstr "Info afsluiten"
 
 #: info/session.c:4641
 msgid "Run command bound to this key's lowercase variant"
-msgstr ""
-"Voer commando uit behorende bij de kleine letter variant van deze toets"
+msgstr "Commando uitvoeren dat behooort bij de kleinelettervariant van deze toets"
 
 #: info/session.c:4652
 #, c-format
@@ -1706,102 +1608,94 @@ msgstr "\"%s\" is ongeldig"
 #: info/session.c:4656
 #, c-format
 msgid "`%s' is invalid"
-msgstr "`%s' is ongeldig"
+msgstr "'%s' is ongeldig"
 
 #: info/session.c:4870
 msgid "Add this digit to the current numeric argument"
-msgstr "Voeg dit cijfer toe aan het huidige numerieke argument"
+msgstr "Dit cijfer toevoegen aan het huidige numerieke argument"
 
 #: info/session.c:4879
 msgid "Start (or multiply by 4) the current numeric argument"
-msgstr ""
-"Begin een nieuw numeriek argument (of vermenigvuldig het huidige met 4)"
+msgstr "Een nieuw numeriek argument beginnen (of het huidige met 4 vermenigvuldigen)"
 
 #: info/session.c:4894
 msgid "Internally used by \\[universal-argument]"
-msgstr "Intern gebruikt door \\[universeel-argument]"
+msgstr "Intern gebruikt door \\[universal-argument]"
 
 #: info/tilde.c:336
 #, c-format
 msgid "readline: Out of virtual memory!\n"
-msgstr "readline: Geen virtueel geheugen meer!\n"
+msgstr "readline: onvoldoende geheugen beschikbaar\n"
 
 #: info/variables.c:37
 msgid "When \"On\", footnotes appear and disappear automatically"
-msgstr "Indien 'aan', voetnoten verschijnen en verdwijnen automatisch"
+msgstr "Indien 'aan', dan verschijnen en verdwijnen voetnoten automatisch"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr ""
-"Indien 'aan', het aanmaken of verwijderen van een venster verandert de "
-"grootte van andere vensters"
+msgstr "Indien 'aan', dan verandert het openen of sluiten van een venster de grootte van andere vensters"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
-msgstr "Indien 'aan', laat het scherm flikkeren in plaats van een belsignaal"
+msgstr "Indien 'aan', dan flitst het scherm in plaats van een belsignaal te geven"
 
 #: info/variables.c:49
 msgid "When \"On\", errors cause the bell to ring"
-msgstr "Indien 'aan', fouten zorgen voor een belsignaal"
+msgstr "Indien 'aan', dan zorgen fouten voor een belsignaal"
 
 #: info/variables.c:53
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr ""
-"Indien 'aan', Info haalt rommel weg voor bestanden die gedecomprimeerd "
-"moesten worden"
+msgstr "Indien 'aan', dan worden bestanden die gedecomprimeerd moesten worden verwijderd"
 
 #: info/variables.c:56
 msgid "When \"On\", the portion of the matched search string is highlighted"
-msgstr "Indien 'aan', het overeenkomende deel van de zoek-tekenreeks licht op"
+msgstr "Indien 'aan', dan licht het overeenkomende deel van de zoektekenreeks op"
 
 #: info/variables.c:60
 msgid "Controls what happens when scrolling is requested at the end of a node"
-msgstr ""
-"Stelt in wat er gebeurt als er aan het eind van een pagina gescrolled moet "
-"worden"
+msgstr "Stelt in wat er gebeurt als er aan het eind van een pagina gescrolled moet worden"
 
 #: info/variables.c:65
 msgid "Same as scroll-behaviour"
-msgstr "Hetzelfde als verschuif-gedrag"
+msgstr "Hetzelfde als 'scroll-behaviour'"
 
 #: info/variables.c:69
 msgid "The number lines to scroll when the cursor moves out of the window"
-msgstr ""
-"Het aantal regels dat gescrolled wordt als de cursor uit het venster gaat"
+msgstr "Het aantal regels dat gescrolled wordt als de cursor uit het venster gaat"
 
 #: info/variables.c:73
 msgid "Controls whether scroll-behavior affects cursor movement commands"
-msgstr "Stelt in hoe verschuif-gedrag de bewegingen van de cursor beïnvloedt"
+msgstr "Stelt in hoe 'scroll-behavior' de bewegingen van de cursor beïnvloedt"
 
 #: info/variables.c:77
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
-msgstr "Indien 'aan', Info accepteert ISO-Latin tekens en laat ze zien"
+msgstr "Indien 'aan', dan accepteert en toont Info ISO-Latin-tekens"
 
 #: info/variables.c:83
 msgid "Explain the use of a variable"
-msgstr "Leg het gebruik van een variabele uit"
+msgstr "De betekenis van een variabele uitleggen"
 
 #: info/variables.c:89
 msgid "Describe variable: "
-msgstr "Omschrijf variabele: "
+msgstr "Te omschrijven variabele: "
 
 #: info/variables.c:108
 msgid "Set the value of an Info variable"
-msgstr "Zet de waarde van een Info-variabele"
+msgstr "De waarde van een Info-variabele instellen"
 
 #: info/variables.c:114
 msgid "Set variable: "
-msgstr "Stel variabele in: "
+msgstr "In te stellen variabele: "
 
 #: info/variables.c:132
 #, c-format
 msgid "Set %s to value (%d): "
-msgstr "Geef %s de waarde (%d): "
+msgstr "Variabele %s deze waarde geven (%d): "
 
 #: info/variables.c:173
 #, c-format
 msgid "Set %s to value (%s): "
-msgstr "Geef %s de waarde (%s): "
+msgstr "Variabele %s deze waarde geven (%s): "
 
 #: info/window.c:1137
 msgid "--*** Tags out of Date ***"
@@ -1824,20 +1718,20 @@ msgstr "-%s%s-Info: (%s)%s, %d regels --%s--"
 #: info/window.c:1166
 #, c-format
 msgid " Subfile: %s"
-msgstr " Sub-bestand: %s"
+msgstr " Subbestand: %s"
 
 #: lib/xexit.c:54
 msgid "ferror on stdout\n"
-msgstr "ferror op stdout\n"
+msgstr "ferror() op standaarduitvoer\n"
 
 #: lib/xexit.c:59
 msgid "fflush error on stdout\n"
-msgstr "fflush-fout op stdout\n"
+msgstr "fflush()-fout op standaarduitvoer\n"
 
 #: makeinfo/cmds.c:544 makeinfo/cmds.c:566
 #, c-format
 msgid "arguments to @%s ignored"
-msgstr "argumenten bij @%s genegeerd"
+msgstr "argumenten van @%s zijn genegeerd"
 
 #: makeinfo/cmds.c:741
 msgid "January"
@@ -1865,7 +1759,7 @@ msgstr "juni"
 
 #: makeinfo/cmds.c:742
 msgid "July"
-msgstr "jJuli"
+msgstr "juli"
 
 #: makeinfo/cmds.c:742
 msgid "August"
@@ -1890,16 +1784,16 @@ msgstr "december"
 #: makeinfo/cmds.c:1095
 #, c-format
 msgid "unlikely character %c in @var"
-msgstr "onwaarschijnlijk karakter %c in @var"
+msgstr "onwaarschijnlijk teken '%c' in @var"
 
 #: makeinfo/cmds.c:1138
 msgid "@sc argument all uppercase, thus no effect"
-msgstr "@sc argument alles hoofdletters, dus geen effect"
+msgstr "argument van @sc is in hoofdletters, heeft dus geen effect"
 
 #: makeinfo/cmds.c:1193
 #, c-format
 msgid "`{' expected, but saw `%c'"
-msgstr "`{' verwacht, maar `%c' gevonden"
+msgstr "'{' werd verwacht, maar '%c' gevonden"
 
 #: makeinfo/cmds.c:1233
 msgid "end of file inside verb block"
@@ -1908,15 +1802,11 @@ msgstr "einde van bestand in een \"verb\"-blok"
 #: makeinfo/cmds.c:1241
 #, c-format
 msgid "`}' expected, but saw `%c'"
-msgstr "`}' verwacht, maar `%c' gevonden"
+msgstr "'}' werd verwacht, maar '%c' gevonden"
 
 #: makeinfo/cmds.c:1272
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-"@strong{Noot...} produceert een zeldzame kruisverwijzing in Info; kies een "
-"ander woord om dat te vermijden"
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Noot...} produceert een loze kruisverwijzing in Info; kies een ander woord om dat te vermijden"
 
 #: makeinfo/cmds.c:1471
 #, c-format
@@ -1926,12 +1816,12 @@ msgstr "%c%s is verouderd"
 #: makeinfo/cmds.c:1580
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@sp vereist een postief numeriek argument, niet `%s'"
+msgstr "@sp vereist een postief numeriek argument, niet '%s'"
 
 #: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
-msgstr "Fout argument voor %c%s"
+msgstr "Fout argument van %c%s"
 
 #: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
 msgid "asis"
@@ -1939,12 +1829,12 @@ msgstr "asis"
 
 #: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
 msgid "none"
-msgstr "geen"
+msgstr "none"
 
 #: makeinfo/cmds.c:1962
 #, c-format
 msgid "Bad argument to @%s"
-msgstr "Fout argument voor @%s"
+msgstr "Fout argument van @%s"
 
 #: makeinfo/cmds.c:1976
 msgid "insert"
@@ -1953,21 +1843,21 @@ msgstr "invoegen"
 #: makeinfo/cmds.c:1992
 #, c-format
 msgid "Bad argument to @%s: %s"
-msgstr "Fout argument voor @%s: %s"
+msgstr "Fout argument van @%s: %s"
 
 #: makeinfo/cmds.c:2075
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
-msgstr "Verwacht @%s aan of uit, niet `%s'"
+msgstr "@%s 'on' of 'off' werd verwacht, niet '%s'"
 
 #: makeinfo/cmds.c:2095
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr "Only @%s 10 of 11 is ondersteund, niet `%s'"
+msgstr "Bij @%s is alleen 10 of 11 mogelijk, niet '%s'"
 
 #: makeinfo/defun.c:83
 msgid "Missing `}' in @def arg"
-msgstr "Ontbrekende `}' in het argument voor @def"
+msgstr "Ontbrekende '}' in het argument van @def"
 
 #: makeinfo/defun.c:402
 msgid "Function"
@@ -2007,11 +1897,10 @@ msgstr "van"
 msgid "on"
 msgstr "aan"
 
-# Is die x een foutje?
 #: makeinfo/defun.c:711
 #, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "Moet in een `@%s' omgeving zitten om `@%s'x te gebruiken"
+msgstr "Moet in een '@%s'-omgeving zitten om '@%s' te kunnen gebruiken"
 
 #: makeinfo/files.c:434
 #, c-format
@@ -2021,21 +1910,21 @@ msgstr "%s: getwd: %s, %s\n"
 #: makeinfo/files.c:637
 #, c-format
 msgid "`%s' omitted before output filename"
-msgstr "`%s' overgeslagen voor een uitvoerbestandsnaam"
+msgstr "'%s' wordt weggelaten voor een uitvoerbestandsnaam"
 
 #: makeinfo/files.c:645
 #, c-format
 msgid "`%s' omitted since writing to stdout"
-msgstr "`%s' overgeslagen vanwege het schrijven naar \"stdout\""
+msgstr "'%s' wordt weggelaten vanwege het schrijven naar standaarduitvoer"
 
 #: makeinfo/files.c:693
 msgid "Output buffer not empty."
-msgstr "Uitvoerbuffer niet leeg."
+msgstr "Uitvoerbuffer is niet leeg."
 
 #: makeinfo/float.c:181
 #, c-format
 msgid "Requested float type `%s' not previously used"
-msgstr "Gevraagd drijvendekommatype `%s' niet eerder gebruikt"
+msgstr "Het gevraagde drijvendekommatype '%s' werd niet eerder gebruikt"
 
 #: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:924
 #: makeinfo/index.c:930 makeinfo/xref.c:133 makeinfo/xref.c:170
@@ -2046,22 +1935,20 @@ msgstr "Zie "
 #: makeinfo/footnote.c:149
 #, c-format
 msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "`%c%s' heeft een argument `{...}' nodig, niet slechts `%s'"
+msgstr "'%c%s' vereist een argument '{...}', niet slechts '%s'"
 
 #: makeinfo/footnote.c:164
 #, c-format
 msgid "No closing brace for footnote `%s'"
-msgstr "Geen afsluitende accolade voor voetnoot `%s'"
+msgstr "Ontbrekende sluitaccolade voor voetnoot '%s'"
 
-# mooi vertaald he?
 #: makeinfo/footnote.c:197
 msgid "Footnote defined without parent node"
-msgstr "Voetnoot gedefinieerd zonder referentie pagina"
+msgstr "Voetnoot gedefinieerd zonder referentiepagina"
 
-# mooi vertaald he?
 #: makeinfo/footnote.c:209
 msgid "Footnotes inside footnotes are not allowed"
-msgstr "Voetnoten in een voetnoot zijn niet toegestaan"
+msgstr "Voetnoten binnen een voetnoot zijn niet toegestaan"
 
 #: makeinfo/footnote.c:301 makeinfo/index.c:189
 msgid "Footnotes"
@@ -2070,12 +1957,12 @@ msgstr "Voetnoten"
 #: makeinfo/html.c:86
 #, c-format
 msgid "%s: could not open --css-file: %s"
-msgstr "%s: kan --css-bestand `%s' niet openen"
+msgstr "%s: kan '--css'-bestand '%s' niet openen"
 
 #: makeinfo/html.c:175
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d: --css-bestand eindigt in commentaar"
+msgstr "%s:%d: '--css'-bestand eindigt in commentaar"
 
 #: makeinfo/html.c:203
 msgid "Untitled"
@@ -2083,32 +1970,32 @@ msgstr "Naamloos"
 
 #: makeinfo/html.c:421
 msgid "[unexpected] no html tag to pop"
-msgstr "[unexpected] geen html tag aanwezig"
+msgstr "[onverwacht] geen html-tag aanwezig"
 
 #: makeinfo/html.c:764
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
-msgstr "[unexpected] ongeldige paginanaam: `%s'"
+msgstr "[onverwacht] ongeldige paginanaam: '%s'"
 
 #: makeinfo/index.c:169
 #, c-format
 msgid "Unknown index `%s'"
-msgstr "Onbekende index `%s'"
+msgstr "Onbekende index '%s'"
 
 #: makeinfo/index.c:234
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Info kan `:' in een indexingang niet aan `%s'"
+msgstr "Info kan ':' in indexitem '%s' niet aan"
 
 #: makeinfo/index.c:412
 #, c-format
 msgid "Index `%s' already exists"
-msgstr "Index `%s' bestaat al"
+msgstr "Index '%s' bestaat al"
 
 #: makeinfo/index.c:455
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "Onbekende index `%s' en/of `%s' in @synindex"
+msgstr "Onbekende index '%s' en/of '%s' in @synindex"
 
 #: makeinfo/index.c:661
 msgid "(line )"
@@ -2122,12 +2009,12 @@ msgstr "(regel %*d)"
 #: makeinfo/index.c:750
 #, c-format
 msgid "Unknown index `%s' in @printindex"
-msgstr "Onbekende index `%s' in @printindex"
+msgstr "Onbekende index '%s' in @printindex"
 
 #: makeinfo/index.c:819
 #, c-format
 msgid "Entry for index `%s' outside of any node"
-msgstr "Ingang voor index `%s' is buiten elke pagina"
+msgstr "Item voor index '%s' valt buiten elke pagina"
 
 #: makeinfo/index.c:822 makeinfo/index.c:858
 msgid "(outside of any node)"
@@ -2139,38 +2026,37 @@ msgstr "@item niet toegestaan in argument van @itemize"
 
 #: makeinfo/insertion.c:242
 msgid "Broken-Type in insertion_type_pname"
-msgstr "Verkeerd-Type in insertion_type_pname"
+msgstr "**Interne fout**: niet bestaande uitvoersoort in insertion_type_pname()"
 
 #: makeinfo/insertion.c:338
 msgid "Enumeration stack overflow"
-msgstr "Enumeratiestapel overloop"
+msgstr "Overloop van enumeratiestapel"
 
-# FIXME: hoe vertaal je `lettering'? tegenover enumerating
 #: makeinfo/insertion.c:370
 #, c-format
 msgid "lettering overflow, restarting at %c"
-msgstr "`lettering' overloop, start opnieuw bij %c"
+msgstr "de letters zijn op; herbegonnen bij %c"
 
 # FIXME: formatter?
 #: makeinfo/insertion.c:635
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
-msgstr "%s vereist een argument: de formatteerder voor %ckeuze"
+msgstr "%s vereist een argument: de formatteerder voor %c-item"
 
 #: makeinfo/insertion.c:723
 #, c-format
 msgid "%cfloat environments cannot be nested"
-msgstr "%cfloat omgevingen kunnen niet genest worden"
+msgstr "%cfloat-omgevingen kunnen niet genest worden"
 
 #: makeinfo/insertion.c:977
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
-msgstr "`@end' verwachtte `%s', maar `%s' gevonden"
+msgstr "'@end' verwachtte '%s', maar vond '%s'"
 
 #: makeinfo/insertion.c:1345
 #, c-format
 msgid "No matching `%cend %s'"
-msgstr "Geen overeenkomende `%cend %s'"
+msgstr "Geen overeenkomende '%cend %s'"
 
 #: makeinfo/insertion.c:1614
 #, c-format
@@ -2179,127 +2065,124 @@ msgstr "%s vereist een letter of cijfer"
 
 #: makeinfo/insertion.c:1707
 msgid "end of file inside verbatim block"
-msgstr "einde van bestand binnen een letterlijk blok"
+msgstr "einde van bestand binnen een verbatim blok"
 
 #: makeinfo/insertion.c:1931
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
-msgstr "@%s niet zinvol buiten een `@float' omgeving"
+msgstr "@%s is niet zinvol buiten een '@float'-omgeving"
 
 #: makeinfo/insertion.c:1967
 msgid "@menu seen before first @node, creating `Top' node"
-msgstr "@menu gevonden voor de eerste @node, bezig top-pagina aan te maken"
+msgstr "@menu gevonden vóór de eerste @node; aanmaken van Top-pagina"
 
 #: makeinfo/insertion.c:1968
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"uw @top pagina moet mogelijk ingepakt in @ifnottex in plaats van @ifinfo?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "uw @top-pagina moet mogelijk ingepakt worden in @ifnottex in plaats van @ifinfo?"
 
 #: makeinfo/insertion.c:1980
 msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr ""
-"@detailmenu gevonden voor de eerste pagina, bezig de top-pagina aan te maken"
+msgstr "@detailmenu gevonden voor de eerste pagina; aanmaken van Top-pagina"
 
 #: makeinfo/insertion.c:2036
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%s niet zinvol buiten `@titlepage' en `@quotation' omgevingen"
+msgstr "@%s is niet zinvol buiten '@titlepage'- en '@quotation'-omgevingen"
 
 #: makeinfo/insertion.c:2050
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "@%s niet zinvol buiten `@titlepage' omgeving"
+msgstr "@%s is niet zinvol buiten '@titlepage'-omgeving"
 
 #: makeinfo/insertion.c:2081
 #, c-format
 msgid "Unmatched `%c%s'"
-msgstr "Niet overeenkomende `%c%s'"
+msgstr "Ongepaarde '%c%s'"
 
 #: makeinfo/insertion.c:2086
 #, c-format
 msgid "`%c%s' needs something after it"
-msgstr "`%c%s' verwacht er iets na"
+msgstr "'%c%s' vereist een argument"
 
 #: makeinfo/insertion.c:2092
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "Verkeerd argument `%s' bij `@%s', `%s' wordt gebruikt"
+msgstr "Verkeerd argument '%s' van '@%s'; '%s' wordt gebruikt"
 
 #: makeinfo/insertion.c:2189
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
-msgstr "@%s is zinloos in een `@%s' blok"
+msgstr "@%s is zinloos in een '@%s'-blok"
 
 #: makeinfo/insertion.c:2198
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
-msgstr "@itemx is zinloos in een `%s' blok"
+msgstr "@itemx is zinloos in een '%s'-blok"
 
 #: makeinfo/insertion.c:2372
 #, c-format
 msgid "%c%s found outside of an insertion block"
-msgstr "%c%s buiten een invoeg-blok gevonden"
+msgstr "%c%s gevonden buiten een invoeg-blok"
 
 #: makeinfo/lang.c:957
 #, c-format
 msgid "no default territory known for language `%s'"
-msgstr "geen standaard territorium bekend voor taal `%s'"
+msgstr "geen standaardterritorium bekend voor taal '%s'"
 
 #: makeinfo/lang.c:1020
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
-msgstr "%s is geen geldige ISO 639 taalcode"
+msgstr "%s is geen geldige ISO 639-taalcode"
 
 #: makeinfo/lang.c:1110
 #, c-format
 msgid "unrecognized encoding name `%s'"
-msgstr "onbekende encodingnaam `%s'"
+msgstr "onbekende coderingsnaam '%s'"
 
 #: makeinfo/lang.c:1118
 #, c-format
 msgid "sorry, encoding `%s' not supported"
-msgstr "sorry, encoding `%s' wordt niet ondersteund"
+msgstr "sorry, codering '%s' wordt niet ondersteund"
 
 #: makeinfo/lang.c:1170
 #, c-format
 msgid "invalid encoded character `%s'"
-msgstr "ongeldig geëncodeerd karakter `%s'"
+msgstr "ongeldig gecodeerd teken '%s'"
 
 #: makeinfo/lang.c:1478
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s verwacht `i' of `j' als argument, niet `%c'"
+msgstr "%c%s verwacht 'i' of 'j' als argument, niet '%c'"
 
 #: makeinfo/lang.c:1482
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%s verwacht één enkele `i' of `j' als argument"
+msgstr "%c%s verwacht één enkele 'i' of 'j' als argument"
 
 #: makeinfo/macro.c:128
 #, c-format
 msgid "macro `%s' previously defined"
-msgstr "macro `%s' al eerder gedefinieerd"
+msgstr "macro '%s' is al eerder gedefinieerd"
 
 #: makeinfo/macro.c:132
 #, c-format
 msgid "here is the previous definition of `%s'"
-msgstr "hier is de vorige definitie van `%s'"
+msgstr "hier was de eerdere definitie van '%s'"
 
 #: makeinfo/macro.c:359
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr "\\ in macro-expansie gevolgd door `%s' in plaats van parameternaam"
+msgstr "'\\' in macro-expansie werd gevolgd door '%s' in plaats van een parameternaam"
 
 #: makeinfo/macro.c:401
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
-msgstr "Macro `%s' in regel %d aangeroepen met te veel argumenten"
+msgstr "Macro '%s' in regel %d wordt aangeroepen met te veel argumenten"
 
 #: makeinfo/macro.c:580
 #, c-format
 msgid "%cend macro not found"
-msgstr "%cend makro niet gevonden"
+msgstr "%cend-macro niet gevonden"
 
 #: makeinfo/macro.c:591
 msgid "@allow-recursion is deprecated; please use @rmacro instead"
@@ -2312,7 +2195,7 @@ msgstr "@quote-arg is verouderd; argumenten hebben standaard aanhalingstekens"
 #: makeinfo/macro.c:649
 #, c-format
 msgid "mismatched @end %s with @%s"
-msgstr "niet overeenkomend @end %s met @%s"
+msgstr "@end %s komt niet overeen met @%s"
 
 #: makeinfo/makeinfo.c:188
 #, c-format
@@ -2332,22 +2215,21 @@ msgstr "Verkeerd geplaatste %c"
 #: makeinfo/makeinfo.c:344
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Probeer `%s --help' voor meer informatie.\n"
+msgstr "Typ '%s --help' voor meer informatie.\n"
 
 #: makeinfo/makeinfo.c:347
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Aanroep: %s [OPTIE]... TEXINFO-BESTAND...\n"
+msgstr "Gebruik:  %s [OPTIE]... TEXINFO-BESTAND...\n"
 
 #: makeinfo/makeinfo.c:350
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
-"Vertaal texinfo brondocumentatie naar verschillende formaten, standaard gaat "
-"het om\n"
-"\"info\"-bestanden geschikt om online te lezen met Emacs of het "
-"onafhankelijke GNU-info.\n"
+"Texinfo-bestanden omzetten naar een bepaalde opmaak.\n"
+"Standaard worden 'Info'-bestanden aangemaakt.  Deze kunnen\n"
+"gelezen worden met 'emacs' of met het zelfstandige 'info'.\n"
 
 #: makeinfo/makeinfo.c:354
 #, c-format
@@ -2364,18 +2246,15 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 "Algemene opties:\n"
-"      --error-limit=NUM       stop na NUM fouten (standaard %d).\n"
-"      --document-language=STR te gebruiken lokalistie bij het vertalen van\n"
-"                                Texinfo-sleutelworden voor het "
-"uitvoerdocument\n"
-"                                (standaard C).\n"
-"      --force                 behoud de uitvoer ook bij fouten.\n"
-"      --help                  laat deze help zien en beëindig.\n"
-"      --no-validate           onderdruk kruisverwijzing controle op deze "
-"pagina.\n"
-"      --no-warn               onderdruk waarschuwingen (maar geen fouten).\n"
-"  -v, --verbose               laat zien wat er gedaan wordt.\n"
-"      --version               laat de versie zien en beëindig.\n"
+"      --error-limit=AANTAL    na dit aantal fouten stoppen (standaard %d)\n"
+"      --document-language=TAAL  te gebruiken lokalisatie (standaard C) bij het\n"
+"                                  vertalen van Texinfo-sleutelwoorden\n"
+"      --force                 uitvoerbestand behouden ook bij fouten\n"
+"      --help                  deze hulptekst tonen en stoppen\n"
+"      --no-validate           controle van kruisverwijzingen onderdrukken\n"
+"      --no-warn               waarschuwingen onderdrukken (maar fouten niet)\n"
+"  -v, --verbose               tonen wat er gedaan wordt\n"
+"      --version               versie-informatie tonen en stoppen\n"
 
 #: makeinfo/makeinfo.c:369
 #, no-wrap
@@ -2386,45 +2265,36 @@ msgid ""
 "      --xml                   output Texinfo XML rather than Info.\n"
 "      --plaintext             output plain text rather than Info.\n"
 msgstr ""
-"Uitvoerformaat selectie (standaard is het Info-formaat):\n"
-"      --docbook               uitvoer Docbook XML in plaats van Info.\n"
-"      --html                  uitvoer HTML in plaats van Info.\n"
-"      --xml                   uitvoer Texinfo XML in plaats van Info.\n"
-"      --plaintext             uitvoer platte tekst in plaats van Info.\n"
+"Opmaakselectie (standaard wordt Info-opmaak geproduceerd):\n"
+"      --docbook               Docbook-XML produceren\n"
+"      --html                  HTML produceren\n"
+"      --plaintext             platte tekst produceren\n"
+"      --xml                   Texinfo-XML produceren\n"
 
 #: makeinfo/makeinfo.c:377
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
 "                              ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output);\n"
 "                                also, write to standard output by default.\n"
 "      --no-split              suppress splitting of Info or HTML output,\n"
 "                              generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
 "  -o, --output=FILE           output to FILE (directory if split HTML),\n"
 msgstr ""
-"Algemene uitvoer opties:\n"
-"  -E, --macro-expand BEST     schrijf macro-geëxpandeerde broncode naar "
-"BEST.\n"
-"                              negeer elke @setfilename.\n"
-"      --no-headers            onderdruk paginascheiders, Pagina: regels, en "
-"menu's\n"
-"                                in de Info uitvoer (dus maak platte tekst)\n"
-"                                of in HTML (dus maak minder uitvoer);\n"
-"                                ook, schrijf standaard naar "
-"standaarduitvoer.\n"
-"      --no-split              onderdruk de splitsing van Info of HTML "
-"uitvoer,\n"
-"                              maak maar één uitvoerbestand.\n"
-"      --number-sections       schrijf hoodfstuk- en sectienummers.\n"
-"  -o, --output=BESTAND        schrijf naar BESTAND (map indien gesplitste "
-"HTML),\n"
+"Algemene uitvoeropties:\n"
+"  -E, --macro-expand BESTAND  macro-geëxpandeerde brontekst naar dit bestand\n"
+"                                schrijven, eventuele @setfilename's negeren\n"
+"      --no-headers            kopregels en menu's weglaten, zodat Info-uitvoer\n"
+"                                platte tekst wordt en HTML-uitvoer korter;\n"
+"                                standaard naar standaarduitvoer schrijven\n"
+"      --no-split              splitsing van Info- of HTML-uitvoer onderdrukken,\n"
+"                                slechts één uitvoerbestand aanmaken\n"
+"      --number-sections       hoofdstuk- en sectienummers produceren\n"
+"  -o, --output=BESTAND        uitvoerbestand (of map indien gesplitste HTML)\n"
 
 #: makeinfo/makeinfo.c:391
 #, c-format
@@ -2433,40 +2303,29 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Opties voor Info en platte tekst:\n"
-"      --disable-encoding      schrijf geen speciale karakters (b.v. met "
-"accenten) in\n"
-"                                Info-uitvoer gebaseerd op "
-"@documentencoding.\n"
-"      --enable-encoding       vervang --disable-encoding (standaard).\n"
-"      --fill-column=NUM       breek Info-regels af bij NUM karakters "
-"(standaard %d).\n"
-"      --footnote-style=STIJL  schrijf voetnoten in Info volgens de "
-"navolgende STIJL:\n"
-"                                `separate' zet ze in hun eigen pagina;\n"
-"                                `end' zet ze aan het einde van de pagina\n"
-"                                  waarin ze zijn gedefinieerd (standaard).\n"
-"      --paragraph-indent=VAL  laat Info-paragraven inspringen met VAL "
-"spaties (standaard %d).\n"
-"                                Als VAL `none' is, laat niet inspringen; als "
-"VAL\n"
-"                                `asis' is behoudt het bestaande inspringen.\n"
-"      --split-size=NUM        splits Info-bestanden bij de grootte NUM "
-"(standaard %d).\n"
+"      --disable-encoding      geen tekens met accenten in de uitvoer produceren\n"
+"      --enable-encoding       tekens met accenten toestaan (standaard)\n"
+"      --fill-column=AANTAL    regels afbreken op deze lengte (standaard %d)\n"
+"      --footnote-style=STIJL  voetnoten produceren volgens deze stijl; indien\n"
+"                                'end', dan aan het einde van de pagina waarin\n"
+"                                ze zijn gedefinieerd (standaard); indien\n"
+"                                'separate', dan in een aparte pagina\n"
+"      --paragraph-indent=XX   alinea's inspringen met XX spaties (standaard %d);\n"
+"                                indien 'none', dan niet inspringen; indien\n"
+"                                'asis', dan bestaande inspringing behouden\n"
+"      --split-size=GETAL      bestanden opsplitsen vanaf deze grootte\n"
+"                                (standaard %d bytes)\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2478,27 +2337,23 @@ msgid ""
 "                              produce file names in ASCII transliteration.\n"
 msgstr ""
 "Opties voor HTML:\n"
-"      --css-include=BESTAND   voeg BESTAND toe aan de HTML <style> uitvoer;\n"
-"                                lees standaardinvoer (stdin) als BESTAND is "
-"-.\n"
-"      --css-ref=URL           genereer een referentie naar een CSS-bestand.\n"
+"      --css-include=BESTAND   dit bestand in de uitvoer opnemen;\n"
+"                                als BESTAND '-' is, dan standaardinvoer lezen\n"
+"      --css-ref=URL           een referentie naar een CSS-bestand genereren\n"
 "      --transliterate-file-names\n"
-"                              maak bestandsnamen in ASCII-transliteratie.\n"
+"                              bestandsnamen met alleen ASCII-tekens produceren\n"
 
 #: makeinfo/makeinfo.c:418
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
-"d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
+"                                If VAL is 0, ignorable whitespace is dropped.\n"
 msgstr ""
 "Opties voor XML en Docbook:\n"
-"      --output-indent=VAL     laat XML elementen inspringen met VAL spaties "
-"(standaad %d).\n"
-"                                Als VAL 0 is, witruimte die weggelaten mag "
-"worden vervalt.\n"
+"      --output-indent=GETAL   XML-elementen met dit aantal spaties inspringen\n"
+"                                (standaard %d); indien 0, dan witruimte die\n"
+"                                weggelaten mag worden laten vervallen\n"
 
 #: makeinfo/makeinfo.c:425
 msgid ""
@@ -2510,12 +2365,11 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Invoerbestandopties:\n"
-"      --commands-in-node-names  sta @ commando's toe in paginanamen.\n"
-"  -D VAR                        definieer de variabele VAR, zoals met @set.\n"
-"  -I DIR                        voeg DIR achter het @include zoekpad.\n"
-"  -P DIR                        voeg DIR voor het @include zoekpad.\n"
-"  -U VAR                        verwijder de definitie van variabele VAR, "
-"zoals in @clear.\n"
+"      --commands-in-node-names  @-commando's in paginanamen toestaan\n"
+"  -D VAR                      de variabele VAR definiëren (als met '@set')\n"
+"  -I MAP                      MAP achteraantoevoegen aan @include-zoekpad\n"
+"  -P MAP                      MAP vooraantoevoegen aan @include-zoekpad\n"
+"  -U VAR                      variabele VAR wissen (als met '@clear')\n"
 
 #: makeinfo/makeinfo.c:434
 msgid ""
@@ -2536,24 +2390,21 @@ msgid ""
 "\n"
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
-"Conditionele verwerking in de invoer:\n"
-"  --ifdocbook       verwerk @ifdocbook en @docbook zelfs als\n"
-"                      geen Docbook wordt gemaakt.\n"
-"  --ifhtml          verwerk @ifhtml en @html zelfs als geen HTML gemaakt "
-"wordt.\n"
-"  --ifinfo          verwerk @ifinfo zelfs als geen Info gemaakt wordt.\n"
-"  --ifplaintext     verwerk @ifplaintext zelfs als geen platte tekst gemaakt "
-"wordt.\n"
-"  --iftex           verwerk @iftex en @tex; impliceert --no-split.\n"
-"  --ifxml           verwerk @ifxml en @xml.\n"
-"  --no-ifdocbook    verwerk geen @ifdocbook en @docbook tekst.\n"
-"  --no-ifhtml       verwerk geen @ifhtml en @html tekst.\n"
-"  --no-ifinfo       verwerk geen @ifinfo tekst.\n"
-"  --no-ifplaintext  verwerk geen @ifplaintext tekst.\n"
-"  --no-iftex        verwerk geen @iftex en @tex tekst.\n"
-"  --no-ifxml        verwerk geen @ifxml en @xml tekst.\n"
+"Conditionele verwerking van de invoer:\n"
+"  --ifdocbook       '@ifdocbook' en '@docbook' altijd verwerken\n"
+"  --ifhtml          '@ifhtml' en '@html' altijd verwerken\n"
+"  --ifinfo          '@ifinfo' altijd verwerken\n"
+"  --ifplaintext     '@ifplaintext' altijd verwerken\n"
+"  --iftex           '@iftex' en '@tex' verwerken; impliceert '--no-split'\n"
+"  --ifxml           '@ifxml' en '@xml' verwerken\n"
+"  --no-ifdocbook    '@ifdocbook' en '@docbook' niet verwerken\n"
+"  --no-ifhtml       '@ifhtml' en '@html' niet verwerken\n"
+"  --no-ifinfo       '@ifinfo' niet verwerken\n"
+"  --no-ifplaintext  '@ifplaintext' niet verwerken\n"
+"  --no-iftex        '@iftex' en '@tex' niet verwerken\n"
+"  --no-ifxml        '@ifxml' en '@xml' niet verwerken\n"
 "\n"
-"  Ook, voor de --no-ifFORMAT opties, verwerk geen @ifnotFORMAT tekst.\n"
+"  Voor de '--no-ifOPMAAK'-opties geldt: '@ifnotOPMAAK' _wel_ verwerken.\n"
 
 #: makeinfo/makeinfo.c:453
 msgid ""
@@ -2563,13 +2414,11 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
-"  De standaarden voor de @if... voorwaarden hangen af van het "
-"uitvoerformaat:\n"
-"  als HTML gemaakt wordt, --ifhtml is waar en de anderen zijn niet-waar;\n"
-"  als Info gemaakt wordt, --ifinfo is waar en de anderen zijn niet-waar;\n"
-"  als platte tekst gemaakt wordt, --ifplaintext is waar en de anderen zijn "
-"niet-waar;\n"
-"  als XML gemaakt wordt, --ifxml is waar en de anderen zijn niet-waar.\n"
+"  De standaarden voor de '@if...'-opdrachten hangen af van de uitvoeropmaak:\n"
+"  als HTML gemaakt wordt, staat '--ifhtml' aan en de anderen niet;\n"
+"  als Info gemaakt wordt, staat '--ifinfo' aan en de anderen niet;\n"
+"  als platte tekst gemaakt wordt, staat '--ifplaintext' aan en de anderen niet;\n"
+"  als XML gemaakt wordt, staat '--ifxml' aan en de anderen niet.\n"
 
 #: makeinfo/makeinfo.c:461
 msgid ""
@@ -2578,138 +2427,123 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Voorbeelden:\n"
-"  makeinfo foo.texi                      schrijf Info naar foo's "
-"@setfilename\n"
-"  makeinfo --html foo.texi               schrijf HTML naar @setfilename\n"
-"  makeinfo --xml foo.texi                schrijf Texinfo XML naar "
-"@setfilename\n"
-"  makeinfo --docbook foo.texi            schrijf DocBook XML naar "
-"@setfilename\n"
-"  makeinfo --no-headers foo.texi         schrijf platte tekst naar "
-"standaarduitvoer\n"
+"  makeinfo foo.texi                 Info schrijven (naar foo's @setfilename)\n"
+"  makeinfo --html foo.texi          HTML schrijven (naar foo's @setfilename)\n"
+"  makeinfo --xml foo.texi           Texinfo-XML schrijven (naar @setfilename)\n"
+"  makeinfo --docbook foo.texi       DocBook-XML schrijven (naar @setfilename)\n"
+"  makeinfo --no-headers foo.texi    platte tekst naar standaarduitvoer\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  maak html zonder paginaregels, "
-"menu's\n"
-"  makeinfo --number-sections foo.texi    maak Info met genummerde secties\n"
-"  makeinfo --no-split foo.texi           maak één Info bestand ongeacht de "
-"grootte\n"
+"  makeinfo --html --no-headers foo.texi  HTML zonder kopregels en menu's\n"
+"  makeinfo --number-sections foo.texi    Info met genummerde secties\n"
+"  makeinfo --no-split foo.texi           één Info-bestand ongeacht de grootte\n"
 
 #: makeinfo/makeinfo.c:619
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr "%s: Negeert onbegrijpelijke TEXINFO_OUTPUT_FORMAT waarde `%s'.\n"
+msgstr "%s: Onbekende waarde '%s' van TEXINFO_OUTPUT_FORMAT wordt genegeerd.\n"
 
 #: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
 #: makeinfo/makeinfo.c:761
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s: %s argument moet numeriek zijn, niet `%s'.\n"
+msgstr "%s: Argument van %s moet numeriek zijn, niet '%s'.\n"
 
-# Vanaf hier
 #: makeinfo/makeinfo.c:680
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
-msgstr "%s: kon uitvoer `%s' voor macro-expansie niet openen"
+msgstr "%s: Kan uitvoer '%s' voor macro-expansie niet openen"
 
-# Vanaf hier
 #: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr "%s: tweede uitvoer voor makro-expansie `%s' genegeerd.\n"
+msgstr "%s: Tweede uitvoer '%s' voor macro-expansie wordt genegeerd.\n"
 
 #: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: argument voor --paragraph-indent moet numeriek, `none' of `asis' zijn, "
-"niet `%s'.\n"
+msgstr "%s: Argument van --paragraph-indent moet numeriek, 'none' of 'asis' zijn, niet '%s'.\n"
 
 #: makeinfo/makeinfo.c:750
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: argument voor --footnote-style moet `separate' of `end' zijn, niet `%"
-"s'.\n"
+msgstr "%s: Argument van --footnote-style moet 'separate' of 'end' zijn, niet '%s'.\n"
 
 #: makeinfo/makeinfo.c:825
 #, c-format
 msgid "%s: missing file argument.\n"
-msgstr "%s: ontbrekend bestandsargument.\n"
+msgstr "%s: Ontbrekend bestandsargument.\n"
 
 #: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
 #, c-format
 msgid "Multiline command %c%s used improperly"
-msgstr "Multi-regel commando %c%s onjuist gebruikt"
+msgstr "Multi-regelcommando %c%s wordt onjuist gebruikt"
 
 #: makeinfo/makeinfo.c:1019
 #, c-format
 msgid "Expected `%s'"
-msgstr "Verwachtte `%s'"
+msgstr "Verwachtte '%s'"
 
 #: makeinfo/makeinfo.c:1498
 #, c-format
 msgid "Can't create directory `%s': %s"
-msgstr "Kan map `%s': %s niet aanmaken"
+msgstr "Kan map '%s' niet aanmaken: %s"
 
 #: makeinfo/makeinfo.c:1544
 #, c-format
 msgid "No `%s' found in `%s'"
-msgstr "Geen `%s' gevonden in `%s'"
+msgstr "Geen '%s' gevonden in '%s'"
 
 #: makeinfo/makeinfo.c:1624
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
-"%s: Macro-expansie naar de standaard uitvoer overgeslagen, want de uitvoer\n"
-"van Info gaat daar al heen.\n"
+"%s: Macro-expansie naar standaarduitvoer wordt overgeslagen,\n"
+"want de uitvoer van Info gaat daar al heen.\n"
 
 #: makeinfo/makeinfo.c:1657
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
-msgstr "Bezig met het maken van een %s-bestand `%s' van `%s'.\n"
+msgstr "Aanmaken van een %s-bestand '%s' uit '%s'.\n"
 
 #: makeinfo/makeinfo.c:1721
 #, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
-"%s: macro-uitvoerbestand `%s' verwijderd wegens fouten; gebruik --force om "
-"te bewaren.\n"
+"%s: Macro-uitvoerbestand '%s' wordt verwijderd wegens fouten;\n"
+"gebruik '--force' om het te behouden.\n"
 
 #: makeinfo/makeinfo.c:1776
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
-"%s: uitvoerbestand `%s' verwijderd wegens fouten; gebruik --force om te "
-"bewaren.\n"
+"%s: Uitvoerbestand '%s' wordt verwijderd wegens fouten;\n"
+"gebruik '--force' om het te behouden.\n"
 
 #: makeinfo/makeinfo.c:2070
 #, c-format
 msgid "Unknown command `%s'"
-msgstr "Onbekend commando `%s'"
+msgstr "Onbekend commando '%s'"
 
 #: makeinfo/makeinfo.c:2092
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
-msgstr "Gebruik `{...}' om een commando als argument mee te geven aan @%s"
+msgstr "Gebruik '{...}' om een commando als argument mee te geven aan @%s"
 
 #: makeinfo/makeinfo.c:2351
 #, c-format
 msgid "%c%s expected braces"
-msgstr "%c%s verwachtte `{...}'"
+msgstr "%c%s verwachtte '{...}'"
 
 #: makeinfo/makeinfo.c:2364
 msgid "Unmatched }"
-msgstr "Geen tegenhanger van }"
+msgstr "Ongepaarde }"
 
 #: makeinfo/makeinfo.c:2412
 msgid "NO_NAME!"
@@ -2718,31 +2552,31 @@ msgstr "GEEN_NAAM!"
 #: makeinfo/makeinfo.c:2433
 #, c-format
 msgid "%c%s missing close brace"
-msgstr "%c%s ontbrekende afsluitende accolade"
+msgstr "%c%s ontbrekende sluitaccolade"
 
 #: makeinfo/makeinfo.c:2611
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Dit is %s, gemaakt door makeinfo versie %s van %s.\n"
+msgstr "Dit is %s, gemaakt door 'makeinfo' versie %s van %s.\n"
 
 #: makeinfo/makeinfo.c:3436
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@image bestand `%s' (voor HTML) is niet leesbaar: %s"
+msgstr "@image-bestand '%s' (voor HTML) is niet leesbaar: %s"
 
 #: makeinfo/makeinfo.c:3442
 #, c-format
 msgid "No such file `%s'"
-msgstr "Geen bestand `%s' gevonden"
+msgstr "Geen bestand '%s' gevonden"
 
 #: makeinfo/makeinfo.c:3578
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@image bestand `%s' (voor tekst) is niet leesbaar: %s"
+msgstr "@image-bestand '%s' (voor tekst) is niet leesbaar: %s"
 
 #: makeinfo/makeinfo.c:3587
 msgid "@image missing filename argument"
-msgstr "ontbrekend bestandsnaam argument voor @image"
+msgstr "ontbrekend bestandsnaamargument van @image"
 
 #: makeinfo/makeinfo.c:3805
 #, c-format
@@ -2752,7 +2586,7 @@ msgstr "ongedefinieerde vlag: %s"
 #: makeinfo/makeinfo.c:3806
 #, c-format
 msgid "{No value for `%s'}"
-msgstr "{Geen waarde voor `%s'}"
+msgstr "{Geen waarde voor '%s'}"
 
 #: makeinfo/makeinfo.c:3858
 #, c-format
@@ -2762,40 +2596,40 @@ msgstr "%c%s vereist een naam"
 #: makeinfo/makeinfo.c:3964
 #, c-format
 msgid "Reached eof before matching @end %s"
-msgstr "Bereikte bestandseinde vòòr een bijbehorend @end %s"
+msgstr "Bestandseinde werd bereikt vóór een bijbehorende @end %s"
 
 #: makeinfo/makeinfo.c:4213
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr "`%.40s...' is te lang voor expansie; niet geëxpandeerd"
+msgstr "'%.40s...' is te lang voor expansie; is niet geëxpandeerd"
 
 #: makeinfo/multi.c:116
 msgid "Missing } in @multitable template"
-msgstr "Ontbrekende } in @multitable sjabloon"
+msgstr "Ontbrekende } in @multitable-sjabloon"
 
 #: makeinfo/multi.c:260
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
-msgstr "verloren tekst `%s' na @multitable genegeerd"
+msgstr "loze tekst '%s' na @multitable wordt genegeerd"
 
 #: makeinfo/multi.c:400
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
-msgstr "Te veel kolommen in `multitable' item (maximaal %d)"
+msgstr "Te veel kolommen in 'multitable'-item (maximaal %d)"
 
 #: makeinfo/multi.c:563
 #, c-format
 msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "[unexpected] kan kolom #%d niet selecteren in `multitabel'"
+msgstr "[onverwacht] kan kolom #%d niet selecteren in 'multitabel'"
 
 #: makeinfo/multi.c:592
 msgid "ignoring @tab outside of multitable"
-msgstr "@tab buiten een `multitable' genegeerd"
+msgstr "@tab buiten een 'multitabel' wordt genegeerd"
 
 #: makeinfo/multi.c:640
 #, c-format
 msgid "** Multicolumn output from last row:\n"
-msgstr "** `Multikolom' uitvoer van de laatste rij:\n"
+msgstr "** 'Multikolom'-uitvoer van de laatste rij:\n"
 
 #: makeinfo/multi.c:643
 #, c-format
@@ -2805,40 +2639,40 @@ msgstr "* kolom #%d: uitvoer = %s\n"
 #: makeinfo/node.c:279
 #, c-format
 msgid "Node `%s' previously defined at line %d"
-msgstr "macro `%s' al eerder gedefinieerd bij regel %d"
+msgstr "macro '%s' is al eerder gedefinieerd op regel %d"
 
 #: makeinfo/node.c:647
 #, c-format
 msgid "Formatting node %s...\n"
-msgstr "Pagina %s wordt geformatteerd...\n"
+msgstr "Pagina %s wordt opgemaakt...\n"
 
 #: makeinfo/node.c:715
 #, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr "Pagina `%s' vereist een sectiemakend commando (bijv., %c%s)"
+msgstr "Pagina '%s' vereist een sectiemakend commando (bijvoorbeeld %c%s)"
 
 #: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
-msgstr "Geen paginanaam gespecificeerd voor `%c%s' commando"
+msgstr "Er is geen paginanaam opgegeven voor commando '%c%s'"
 
 #: makeinfo/node.c:920 makeinfo/node.c:1161
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "Het anker `%s' en pagina `%s' verwijzen naar dezelfde bestandsnaam"
+msgstr "Het anker '%s' en pagina '%s' verwijzen naar dezelfde bestandsnaam"
 
 #: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
-msgstr "Dit @anchor commando is genegeerd; verwijzing ernaar werkt niet"
+msgstr "Dit @anchor-commando wordt genegeerd; verwijzingen ernaar zullen niet werken"
 
 #: makeinfo/node.c:925 makeinfo/node.c:1164
 msgid "Rename this anchor or use the `--no-split' option"
-msgstr "Geef dit anker een andere naam of gebruik de `--no-split' optie"
+msgstr "Geef dit anker een andere naam of gebruik de optie '--no-split'"
 
 #: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "Onverwachte tekenreeks aan het eind van een `split-HTML'-bestand `%s'"
+msgstr "Onverwachte tekenreeks aan het eind van 'split-HTML'-bestand '%s'"
 
 #: makeinfo/node.c:991
 msgid "Next:"
@@ -2846,7 +2680,7 @@ msgstr "Volgende:"
 
 #: makeinfo/node.c:1007
 msgid "Previous:"
-msgstr "Vorige:"
+msgstr "Voorgaande:"
 
 #: makeinfo/node.c:1021
 msgid "Up:"
@@ -2855,18 +2689,16 @@ msgstr "Omhoog:"
 #: makeinfo/node.c:1158
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "Ankers `%s' en `%s' verwijzen naar dezelfde bestandsnaam"
+msgstr "Ankers '%s' en '%s' verwijzen naar dezelfde bestandsnaam"
 
 #: makeinfo/node.c:1163
 msgid "@anchor command ignored; references to it will not work"
-msgstr "@anchor commando is genegeerd; verwijzing ernaar werkt niet"
+msgstr "@anchor-commando wordt genegeerd; verwijzing ernaar werkt niet"
 
 #: makeinfo/node.c:1360
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%s verwijst naar niet-bestaande pagina `%s' (misschien een onjuiste "
-"sectieindeling?)"
+msgstr "%s verwijst naar niet-bestaande pagina '%s' (misschien een onjuiste sectieindeling?)"
 
 #: makeinfo/node.c:1376
 msgid "Menu"
@@ -2876,39 +2708,35 @@ msgstr "Menu"
 msgid "Cross"
 msgstr "Kruis"
 
-# Deze zes meldingen:
-# next, prev en up niet vertalen, dit is wat er in de broncode staat.
-# Het is duidelijker indien onvertaald.
+# In de volgende meldingen zijn Next, Prev en Up duidelijker indien onvertaald.
 #: makeinfo/node.c:1460
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr ""
-"Het `next'-veld van pagina `%s' wijst nergens naar (misschien een onjuiste "
-"sectieindeling?)"
+msgstr "Het 'Next'-veld van pagina '%s' wijst nergens naar (misschien een onjuiste sectieindeling?)"
 
 #: makeinfo/node.c:1463
 #, c-format
 msgid "This node (%s) has the bad Prev"
-msgstr "Deze pagina (%s) is degene met het foute `vorige'-veld"
+msgstr "Deze pagina (%s) heeft het foute 'Prev'-veld"
 
 #: makeinfo/node.c:1475
 msgid "Prev"
-msgstr "Vorige"
+msgstr "Voorgaande"
 
 #: makeinfo/node.c:1518
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
-msgstr "Het `vorige'-veld van pagina `%s' wijst nergens naar"
+msgstr "Het 'Prev'-veld van pagina '%s' wijst nergens naar"
 
 #: makeinfo/node.c:1522
 #, c-format
 msgid "This node (%s) has the bad Next"
-msgstr "Deze pagina (%s) is degene met het foute `volgende'-veld"
+msgstr "Deze pagina (%s) heeft het foute 'Next'-veld"
 
 #: makeinfo/node.c:1534
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr "`%s' heeft geen `omhoog'-veld (misschien foute sectie indeling?)"
+msgstr "'%s' heeft geen 'Up'-veld (misschien een onjuiste sectieindeling?)"
 
 #: makeinfo/node.c:1537
 msgid "Up"
@@ -2917,24 +2745,22 @@ msgstr "Omhoog"
 #: makeinfo/node.c:1603
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"Pagina `%s' heeft geen menukeuze voor `%s' ondanks dat het het `omhoog'-doel "
-"is"
+msgstr "Pagina '%s' heeft geen menu-item voor '%s' ondanks dat het het 'Omhoog'-doel is"
 
 #: makeinfo/node.c:1635
 #, c-format
 msgid "unreferenced node `%s'"
-msgstr "naar pagina `%s' wordt niet verwezen"
+msgstr "naar pagina '%s' wordt niet verwezen"
 
 #: makeinfo/node.c:1725
 #, c-format
 msgid "Removing %s\n"
-msgstr "%s verwijderd\n"
+msgstr "Verwijderen van %s\n"
 
 #: makeinfo/node.c:1729
 #, c-format
 msgid "Can't remove file `%s': %s"
-msgstr "Kan bestand `%s': %s niet verwijderen"
+msgstr "Kan bestand '%s' niet verwijderen: %s"
 
 #: makeinfo/sectioning.c:122
 #, c-format
@@ -2944,12 +2770,12 @@ msgstr "Appendix %c"
 #: makeinfo/sectioning.c:467
 #, c-format
 msgid "Internal error (search_sectioning) `%s'!"
-msgstr "Interne fout (search_sectioning) `%s'!"
+msgstr "**Interne fout**: search_sectioning('%s')!"
 
 #: makeinfo/sectioning.c:563
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "Interne fout (search_sectioning) \"%s\"!"
+msgstr "**Interne fout**: search_sectioning('%s')!"
 
 #: makeinfo/sectioning.c:624
 #, c-format
@@ -2964,28 +2790,25 @@ msgstr "Pagina met %ctop als sectie bestaat al"
 #: makeinfo/sectioning.c:648
 #, c-format
 msgid "Here is the %ctop node"
-msgstr "Hier is de %ctop pagina"
+msgstr "Hier is de %ctop-pagina"
 
 #: makeinfo/sectioning.c:664
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
-msgstr "%ctop wordt voor %cnode gebruikt, de standaard %s wordt nu gebruikt"
+msgstr "%ctop wordt vóór %cnode gebruikt; de standaard %s wordt nu gebruikt"
 
 #: makeinfo/xml.c:1654
 #, c-format
 msgid "@image file `%s' unreadable: %s"
-msgstr "@image bestand `%s' onleesbaar: %s"
+msgstr "@image-bestand '%s' is onleesbaar: %s"
 
 #: makeinfo/xml.c:1999
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr ""
-"@headitem als laatste item in @multitable produceert foutieve Docbook "
-"documenten"
+msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+msgstr "@headitem als laatste item in @multitable produceert foutieve Docbook-documenten"
 
 #: makeinfo/xref.c:127
 msgid "First argument to cross-reference may not be empty"
-msgstr "Het eerste argument naar een kruisverwijzing mag niet leeg zijn"
+msgstr "Het eerste argument in een kruisverwijzing mag niet leeg zijn"
 
 #: makeinfo/xref.c:133 makeinfo/xref.c:170 makeinfo/xref.c:205
 #: makeinfo/xref.c:459
@@ -2995,29 +2818,29 @@ msgstr "zie "
 #: makeinfo/xref.c:157
 #, c-format
 msgid "See section ``%s'' in "
-msgstr "Zie sectie ``%s'' in "
+msgstr "Zie sectie ‘%s’ in "
 
 #: makeinfo/xref.c:252
 #, c-format
 msgid "Empty file name for HTML cross reference in `%s'"
-msgstr "Lege bestandsnaam voor HTML-kruisverwijzing in `%s'"
+msgstr "Lege bestandsnaam voor HTML-kruisverwijzing in '%s'"
 
 #: makeinfo/xref.c:387
 msgid "End of file reached while looking for `.' or `,'"
-msgstr "Einde van bestand bereikt bij het zoeken naar `.' of `,'"
+msgstr "Einde van bestand werd bereikt tijdens zoeken naar '.' of ','"
 
 #: makeinfo/xref.c:390
 #, c-format
 msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr "`.' of `,' moet volgen op @%s, niet `%c'"
+msgstr "'.' of ',' moet volgen op @%s, niet '%c'"
 
 #: makeinfo/xref.c:392
 msgid "for cross-references in parentheses, use @pxref"
-msgstr "Voor kruisverwijzingen tussen haakjes, gebruik @pxref."
+msgstr "Gebruik @pxref voor kruisverwijzingen tussen haakjes"
 
 #: makeinfo/xref.c:435
 msgid "First argument to @inforef may not be empty"
-msgstr "Het eerste argument naar @inforef mag niet leeg zijn"
+msgstr "Het eerste argument van @inforef mag niet leeg zijn"
 
 #: util/install-info.c:170
 #, c-format
@@ -3032,7 +2855,7 @@ msgstr " voor %s"
 #: util/install-info.c:444
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr "\tProbeer `%s --help' voor een volledige lijst van opties.\n"
+msgstr "\tTyp '%s --help' voor een volledige lijst van opties.\n"
 
 #: util/install-info.c:452
 #, c-format
@@ -3049,10 +2872,8 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
+"                     plus zero or more extra lines starting with whitespace.\n"
+"                     If you specify more than one entry, they are all added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -3077,49 +2898,41 @@ msgid ""
 " --silent          suppress warnings.\n"
 " --version         display version information and exit.\n"
 msgstr ""
-"Gebruik: %s [OPTIE]... [INFO-BESTAND [INHOUD-BESTAND]]\n"
+"Gebruik:  %s [OPTIE]... [INFO-BESTAND [INHOUDSBESTAND]]\n"
 "\n"
-"Installeer of verwijder inhoud-ingangen in INFO-BESTAND uit het Info\n"
-"inhoudbestand INHOUD-BESTAND.\n"
+"De items die voorkomen in INFO-BESTAND toevoegen aan of\n"
+"verwijderen uit het Info-inhoudsbestand INHOUDSBESTAND.\n"
 "\n"
 "Opties:\n"
-" --debug           laat zien wat er gedaan wordt.\n"
-"--delete           verwijder bestaande ingangen in INFO-BESTAND uit INHOUD-"
-"BESTAND;\n"
-"                     voeg geen nieuwe ingangen toe.\n"
-"--dir-file=NAAM    geef bestandsnaam van het Info inhoudbestand.\n"
-"                     Dit is equivalent aan het argument INHOUD-BESTAND.\n"
-"--entry=TEKST      voeg TEKST in als een Info inhoud-ingang.\n"
-"                     TEKST moet het uiterlijk hebben van een Info menukeuze "
-"regel\n"
-"                     met nul of meer extra regels beginnend met een\n"
-"                     `wit'-teken. Als u meer dan één ingang geeft, worden "
-"ze\n"
-"                     allemaal toegevoegd. Als u geen ingangen geeft, worden\n"
-"                     ze uit de informatie in het Info bestand gehaald.\n"
-"--help             geef deze hulp en beëindig.\n"
-"--info-file=BEST   geef een Info bestand om in de inhoud op te nemen.\n"
-"                     Dit is gelijkwaardig aan het argument INFO-BESTAND.\n"
-"--info-dir=MAP     zelfde als --dir-file=MAP/dir.\n"
-"--item=TEKST       zelfde als --entry=TEKST.\n"
-"                     Een Info inhoudsingang is eigenlijk een menukeuze.\n"
-"--quiet            onderdruk waarschuwingen.\n"
-"--remove           zelfde als --delete.\n"
-"--section=SEC      zet de ingangen in dit bestand in sectie SEC van de "
-"inhoud.\n"
-"                     Als u meer dan één sectie geeft, worden alle ingangen\n"
-"                     aan alle secties toegevoegd.\n"
-"                     Als u geen secties geeft, worden ze uit de informatie\n"
-"                     in het Info bestand zelf gehaald.\n"
-" --section-regex=R als een ingang wordt toegevoegd in een sectie die niet "
-"bestaat,\n"
-"                     zoek dan naar een sectie die overeen komt met basis "
-"reguliere expressie R\n"
-"                     (met negeren van verschil hoofd- en kleine letters)\n"
-"                     alvorens een nieuwe sectie te beginnen.\n"
-" --test            onderdruk het updaten van INHOUD-BESTAND.\n"
-" --silent          onderdruk waarschuwingen.\n"
-"--version          geef de versie en beëindig.\n"
+" --debug           tonen wat er gedaan wordt\n"
+" --delete          de items van INFO-BESTAND uit INHOUDSBESTAND verwijderen;\n"
+"                     geen nieuwe items toevoegen\n"
+" --dir-file=NAAM   de bestandsnaam van het Info-inhoudsbestand;\n"
+"                     equivalent aan het argument INHOUDSBESTAND\n"
+" --entry=TEKST     deze tekst toevoegen als een Info-inhoudsitem;\n"
+"                     de TEKST moet de vorm van een Info-menu-item hebben,\n"
+"                     met nul of meer extra regels beginnend met witruimte;\n"
+"                     indien u meer dan één item opgeeft, worden ze allemaal\n"
+"                     toegevoegd; als u geen items opgeeft, worden deze uit\n"
+"                     het gegeven Info-bestand gehaald\n"
+" --help            deze hulptekst tonen en stoppen\n"
+" --info-file=BEST  een Info-bestand waarvan de items opgenomen moeten worden;\n"
+"                     equivalent aan het argument INFO-BESTAND\n"
+" --info-dir=MAP    hetzelfde als '--dir-file=MAP/dir'\n"
+" --item=TEKST      hetzelfde als '--entry=TEKST'\n"
+" --quiet           waarschuwingen onderdrukken\n"
+" --remove          hetzelfde als '--delete'\n"
+" --section=SECTIE  de gevonden items aan deze sectie van de inhoud toevoegen;\n"
+"                     indien u meer dan één sectie opgeeft, worden de items aan\n"
+"                     al die secties toegevoegd; indien u geen secties opgeeft,\n"
+"                     dan wordt de informatie uit het Info-bestand zelf gehaald\n"
+" --section-regex=E als een item wordt toegevoegd in een sectie die niet bestaat,\n"
+"                     dan zoeken naar een sectie die overeenkomt met de gegeven\n"
+"                     reguliere expressie E (verschil tussen hoofd- en kleine\n"
+"                     letters negeren), anders een nieuwe sectie aanmaken\n"
+" --test            het INHOUDSBESTAND niet bijwerken, slechts doen alsof\n"
+" --silent          waarschuwingen onderdrukken\n"
+" --version         versie-informatie tonen en stoppen\n"
 
 #: util/install-info.c:518
 #, c-format
@@ -3140,119 +2953,112 @@ msgid ""
 "\n"
 "%s\n"
 msgstr ""
-"Dit is het bestand .../info/dir, dat de bovenste pagina\n"
-"van de Info hiërarchie bevat, genaamd (inhoud)Top.\n"
-"De eerste keer dat u Info start, begint u deze pagina te lezen.\n"
+"Dit is het bestand .../info/dir, dat de bovenste pagina van\n"
+"de Info-documentenhiërarchie bevat, genaamd '(dir)Top'.\n"
+"Info gestart zonder argumenten begint op deze pagina.\n"
 "\n"
-"%s\tDit is de bovenste pagina van de INFO boomstructuur\n"
+"%s\tDit is de top van de INFO-boom\n"
 "\n"
-"  Deze (de inhoudpagina) geeft een menu van hoofdonderwerpen.\n"
-"  Een \"q\" typen beëindigt, \"?\" geeft een lijst met alle Info commando's, "
-"\"d\"\n"
-"  brengt u hier terug, \"h\" geeft een handleiding voor eerste-keer-"
-"gebruikers,\n"
-"  \"mEmacs<Return>\" laat u naar de Emacs pagina's gaan, etc.\n"
-"\n"
-"  Binnen Emacs kunt u met muisknop 2 op een menukeuze of kruisverwijzing "
-"klikken\n"
-"  om er heen te gaan.\n"
+"  Deze inhoudspagina toont een menu met hoofdonderwerpen.\n"
+"  Een \"q\" sluit het programma af, een \"d\" brengt u hier terug,\n"
+"  \"?\" toont een hulpvenster met alle Info-commando's,\n"
+"  \"h\" gaat naar een handleiding voor nieuwe gebruikers,\n"
+"  \"mls<Enter>\" toont u de pagina's van het 'ls'-commando, enzovoort.\n"
 "\n"
 "%s\n"
 
 #: util/install-info.c:543
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
-msgstr "%s: kan (%s) niet lezen en kan (%s) niet aanmaken\n"
+msgstr "%s: kan deze niet lezen (%s) en niet aanmaken (%s)\n"
 
 #: util/install-info.c:630
 #, c-format
 msgid "%s: empty file"
-msgstr "%s: leeg bestand"
+msgstr "%s: is een leeg bestand"
 
 #: util/install-info.c:943 util/install-info.c:983
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
-msgstr "START-INFO-DIR-ENTRY zonder overeenkomende END-INFO-DIR-ENTRY"
+msgstr "START-INFO-DIR-ENTRY zonder bijpassende END-INFO-DIR-ENTRY"
 
 #: util/install-info.c:978
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
-msgstr "END-INFO-DIR-ENTRY zonder overeenkomende START-INFO-DIR-ENTRY"
+msgstr "END-INFO-DIR-ENTRY zonder bijpassende START-INFO-DIR-ENTRY"
 
 #: util/install-info.c:1225 util/install-info.c:1235
 #, c-format
 msgid "%s: already have dir file: %s\n"
-msgstr "%s: heeft reeds inhoudbestand: %s\n"
+msgstr "%s: hebben al een inhoudsbestand: %s\n"
 
 #: util/install-info.c:1274
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
-msgstr "%s: Geef het Info-bestand slechts een keer.\n"
+msgstr "%s: Geef het Info-bestand slechts één keer op.\n"
 
 #: util/install-info.c:1297
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
-msgstr "Extra reguliere expressie gespecificeerd, negeren van `%s'"
+msgstr "Extra reguliere expressie opgegeven; '%s' wordt genegeerd"
 
 #: util/install-info.c:1308
 #, c-format
 msgid "Error in regular expression `%s': %s"
-msgstr "Fout in reguliere expressie `%s': %s"
+msgstr "Fout in reguliere expressie '%s': %s"
 
 #: util/install-info.c:1353
 #, c-format
 msgid "excess command line argument `%s'"
-msgstr "commandoregel-argument `%s' is overbodig"
+msgstr "commandoregel-argument '%s' is overbodig"
 
 #: util/install-info.c:1357
 msgid "No input file specified; try --help for more information."
-msgstr "Geen invoerbestand gegeven; probeer --help voor meer informatie."
+msgstr "Geen invoerbestand gegeven; gebruik '--help' voor meer informatie."
 
 #: util/install-info.c:1360
 msgid "No dir file specified; try --help for more information."
-msgstr "Geen inhoudbestand gegeven; probeer --help voor meer informatie."
+msgstr "Geen inhoudsbestand gegeven; gebruik '--help' voor meer informatie."
 
 #: util/install-info.c:1384
 #, c-format
 msgid "no info dir entry in `%s'"
-msgstr "geen info inhoudsingang in `%s'"
+msgstr "geen Info-inhoudsitem in '%s'"
 
 #: util/install-info.c:1525
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
-msgstr "menukeuze `%s' bestaat al, voor bestand `%s'"
+msgstr "menu-item '%s' bestaat al, voor bestand '%s'"
 
 #: util/install-info.c:1548
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
-msgstr "geen ingangen voor `%s' gevonden; niets verwijderd"
+msgstr "geen items voor '%s' gevonden; niets verwijderd"
 
 #: util/texindex.c:223
 msgid "display this help and exit"
-msgstr "geef deze hulp en beëindig"
+msgstr "deze hulptekst tonen en stoppen"
 
 #: util/texindex.c:225
 msgid "send output to FILE"
-msgstr "stuur uitvoer naar BESTAND"
+msgstr "de uitvoer naar BESTAND sturen"
 
 #: util/texindex.c:227
 msgid "display version information and exit"
-msgstr "geef versie en beëindig"
+msgstr "versie-informatie tonen en stoppen"
 
 #: util/texindex.c:237
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Aanroep: %s [OPTIE]... BESTAND...\n"
+msgstr "Gebruik:  %s [OPTIE]... BESTAND...\n"
 
 #: util/texindex.c:238
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr "Maak een gesorteerde index voor elk TeX uitvoerbestand.\n"
+msgstr "Een gesorteerde index maken voor elk TeX-uitvoerbestand.\n"
 
 #: util/texindex.c:241
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr ""
-"Normaal gesproken is BESTAND... gespecificeerd als `foo.%c%c' voor een "
-"dokument `foo.texi'.\n"
+msgstr "Voor een document 'foo.texi' wordt het BESTAND gewoonlijk opgegeven als 'foo.%c%c'.\n"
 
 #: util/texindex.c:243
 #, c-format
@@ -3271,15 +3077,14 @@ msgstr "fout bij het heropenen van %s"
 #: util/texindex.c:758 util/texindex.c:786
 #, c-format
 msgid "%s: not a texinfo index file"
-msgstr "%s: geen texinfo inhoudbestand"
+msgstr "%s: is geen Texinfo-inhoudsbestand"
 
 #: util/texindex.c:993
 #, c-format
 msgid "No page number in %s"
 msgstr "Geen paginanummer in %s"
 
-# FIXME: secondary
 #: util/texindex.c:1066
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
-msgstr "ingang %s volgt een ingang met een alternatieve naam"
+msgstr "item %s volgt op een item met een alternatieve naam"
