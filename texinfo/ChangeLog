@@ -1,9 +1,14 @@
+2007-12-09  Benno Schulenberg  <bensberg@justemail.net>  (tiny change)
+
+	* makeinfo/makeinfo.c (usage): improve help message.
+	bug-texinfo mail of 02 Dec 2007 23:43:10 +0100.
+
 2007-12-09  Fabian Groffen  <grobian@gentoo.org>  (tiny change)
 
 	* info/makedoc.c (main): reorder calls following the Makefile
 	dependencies, for high-precision filesystems.  
 	http://bugs.gentoo.org/show_bug.cgi?id=200662
-	bug-texinfo mail from 3 Dec 2007 17:59:13 +0100.
+	bug-texinfo mail of 3 Dec 2007 17:59:13 +0100.
 	
 2007-12-02  Karl Berry  <karl@gnu.org>
 
