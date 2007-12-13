@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.21 2007-12-03 01:38:43 karl Exp $
+   $Id: session.c,v 1.22 2007-12-13 17:12:46 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007 Free Software Foundation, Inc.
@@ -1003,8 +1003,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           if (menu)
             {
               info_free_references (menu);
-              window_message_in_echo_area ((char *) _("Selecting first menu item..."),
-                  NULL, NULL);
               info_menu_digit (window, 1, '1');
               return 0;
             }
@@ -1015,8 +1013,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
         info_next_label_of_node (window->node);
         if (INFO_LABEL_FOUND ())
           {
-            window_message_in_echo_area ((char *) _("Selecting Next node..."),
-                NULL, NULL);
             info_handle_pointer ("Next", window);
             return 0;
           }
@@ -1085,10 +1081,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
                   /* This node has a "Next" pointer, and it is not the
                      same as the first menu item found in this node. */
-                  window_message_in_echo_area
-                    ((char *) _("Moving Up %d time(s), then Next."),
-                     (void *) (long) up_counter, NULL);
-
                   info_handle_pointer ("Next", window);
                   return 0;
                 }
@@ -1141,8 +1133,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
 	}
       else
         {
-          window_message_in_echo_area ((char *) _("Moving Prev in this window."),
-              NULL, NULL);
           info_handle_pointer ("Prev", window);
         }
       break;
@@ -1164,8 +1154,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
 	    }
           else
             {
-              window_message_in_echo_area ((char *) _("Moving Up in this window."),
-                  NULL, NULL);
               info_handle_pointer ("Up", window);
             }
         }
@@ -1213,8 +1201,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
                      (menu = info_menu_of_node (window->node)))
                 {
                   info_free_references (menu);
-                  window_message_in_echo_area
-                    ((char *) _("Moving to `Prev's last menu item."), NULL, NULL);
                   info_menu_digit (window, 1, '0');
                 }
             }

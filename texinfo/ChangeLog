@@ -1,3 +1,8 @@
+2007-12-13  Karl Berry  <karl@gnu.org>
+
+	* info/session.c: remove status report messages, said to be noise.
+	Report from Benno Schulenberg, 11 Dec 2007 00:19:57.
+
 2007-12-09  Benno Schulenberg  <bensberg@justemail.net>  (tiny change)
 
 	* makeinfo/makeinfo.c (usage): improve help message.
