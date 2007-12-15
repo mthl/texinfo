@@ -1,3 +1,8 @@
+2007-12-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\pdffontattr): only do the cmaps if this pdftex
+	primitive is defined, for the sake of those running ancient versions.
+
 2007-12-13  Karl Berry  <karl@gnu.org>
 
 	* info/session.c: remove status report messages, said to be noise.
