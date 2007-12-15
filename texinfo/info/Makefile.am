@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.13 2006-06-21 08:08:48 akim Exp $
+# $Id: Makefile.am,v 1.14 2007-12-15 14:32:51 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -54,6 +54,8 @@ generated_sources = doc.c key.c funs.h
 
 # We need a linear ordering to prevent race condition in parallel make.
 # See the node ``(automake)Multiple Outputs'' for an explanation.
+# Make sure this matches with order in which makedoc.c creates these
+# files.
 doc.c: key.c
 key.c: funs.h
 

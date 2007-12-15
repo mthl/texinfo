@@ -1,4 +1,4 @@
-$Id: TODO,v 1.38 2007-12-02 14:41:05 karl Exp $
+$Id: TODO,v 1.39 2007-12-15 14:32:51 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -39,6 +39,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     especially 
       http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
       http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
+  - Extend and improve the tests.
   - Get Info declared as a MIME Content-Type.
   - Likewise the `info:' URI scheme; a library consortium has proposed a
     completely different purpose for the URI scheme, but I don't know
@@ -49,7 +50,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Support reference card creation, perhaps by only paying attention to
     sectioning and @def... commands.
   - Allow @end (and other?) commands to be indented in the source.
-  - Extend and improve the tests.
 
 * Language:
   - @else for the @if... conditionals.
@@ -161,7 +161,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     @image (or other) files.  In subdirs.  Or something.
   - support info dir entries for other than the current info file name;
     see comments in menu_item_equal.
-  - merge features with Debian install-info, so we can have one program.
 
 * texindex:
   - read source file (specified by new option) for @documentlanguage
