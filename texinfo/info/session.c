@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.22 2007-12-13 17:12:46 karl Exp $
+   $Id: session.c,v 1.23 2007-12-16 22:42:18 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007 Free Software Foundation, Inc.
@@ -985,8 +985,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 	}
       else
         {
-          window_message_in_echo_area ((char *) _("Following Next node..."),
-              NULL, NULL);
           info_handle_pointer ("Next", window);
         }
       break;
@@ -1191,8 +1189,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
           /* Move to the previous node.  If this node now contains a menu,
              and we have not inhibited movement to it, move to the node
              corresponding to the last menu item. */
-          window_message_in_echo_area ((char *) _("Moving Prev in this window."),
-              NULL, NULL);
           info_handle_pointer ("Prev", window);
 
           if (!inhibit_menu_traversing)

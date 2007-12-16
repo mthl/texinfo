@@ -1,3 +1,8 @@
+2007-12-16  Karl Berry  <karl@gnu.org>
+
+	* info/session.c: remove more status messages.
+	Report frmo Benno Schulenberg, 16 Dec 2007 12:24:12.
+
 2007-12-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\pdffontattr): only do the cmaps if this pdftex
