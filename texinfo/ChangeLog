@@ -1,3 +1,10 @@
+2007-12-17  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Searching Commands): Document the new regex
+	search, a little.
+	(@copying): Update Back-Cover Text.
+	* doc/info.texi (@copying): Update Back-Cover Text.
+
 2007-12-17  Stephane Chazelas  <stephane_chazelas@yahoo.fr>
 
 	* info/infomap.c (R): new command info_toggle_regexp.
