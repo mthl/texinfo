@@ -1,7 +1,17 @@
+2007-12-17  Stephane Chazelas  <stephane_chazelas@yahoo.fr>
+
+	* info/infomap.c (R): new command info_toggle_regexp.
+	* info/session.c (use_regex): new static (true by default).
+	(info_toggle_regexp): new command.
+	* info/session.h (info_toggle_regexp): declare it.
+	* info/search.c (regexp_search): new fn.
+	* info/search.h (regexp_search): declare it.
+	Savannah bug 15572.
+
 2007-12-16  Karl Berry  <karl@gnu.org>
 
 	* info/session.c: remove more status messages.
-	Report frmo Benno Schulenberg, 16 Dec 2007 12:24:12.
+	Report from Benno Schulenberg, 16 Dec 2007 12:24:12.
 
 2007-12-15  Karl Berry  <karl@gnu.org>
 

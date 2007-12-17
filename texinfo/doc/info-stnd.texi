@@ -1,5 +1,5 @@
-\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.16 2007-09-06 01:02:31 karl Exp $
+vb\input texinfo.tex    @c -*-texinfo-*-
+@comment $Id: info-stnd.texi,v 1.17 2007-12-17 19:12:11 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -29,8 +29,9 @@ and with the Back-Cover Texts as in (a) below.  A copy of the
 license is included in the section entitled ``GNU Free Documentation
 License' in the Texinfo manual.
 
-(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
-this GNU Manual, like GNU software.''
+(a) The FSF's Back-Cover Text is: ``You are free to copy and modify
+this GNU Manual.  Buying copies from GNU Press supports the FSF in
+developing GNU and promoting software freedom.''
 @end quotation
 
 This document is part of a collection distributed under the GNU Free
@@ -940,11 +941,13 @@ areas within an Info file which discuss a particular topic.
 @kindex s
 @kindex /
 @findex search
-Read a string in the echo area and search for it.  If the string
-includes upper-case characters, the Info file is searched
-case-sensitively; otherwise Info ignores the letter case.  With a
-numeric argument of @var{N}, search for @var{N}th occurrence of the
-string.  Negative arguments search backwards.
+@cindex regular expression search
+Read a string in the echo area and search for it, either as a regular
+expression (by default) or a literal string.  If the string includes
+upper-case characters, the Info file is searched case-sensitively;
+otherwise Info ignores the letter case.  With a numeric argument of
+@var{N}, search for @var{N}th occurrence of the string.  Negative
+arguments search backwards.
 
 @item @key{?} (@code{search-backward}, vi-like operation)
 @kindex ?, vi-like operation
@@ -954,6 +957,14 @@ for that string.  If the string includes upper-case characters, the Info
 file is searched case-sensitively; otherwise Info ignores the letter
 case.  With a numeric argument of @var{N}, search for @var{N}th
 occurrence of the string.  Negative arguments search forward.
+
+@item @key{R} (@code{toggle-regexp})
+@kindex R
+@findex toggle-regexp
+Toggle between using regular expressions and literal strings for
+searching.  Info uses so-called `extended' regular expression syntax,
+similar to Emacs (@pxref{Regexps, , Using Regular Expressions, emacs,
+The GNU Emacs Manual}).
 
 @item @key{S} (@code{search-case-sensitively}
 @kindex S

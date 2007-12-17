@@ -1,5 +1,5 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
-   $Id: search.h,v 1.6 2007-07-01 21:20:31 karl Exp $
+   $Id: search.h,v 1.7 2007-12-17 19:12:11 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 /* The search functions take two arguments:
 
@@ -47,6 +47,7 @@ SEARCH_BINDING *copy_binding (SEARCH_BINDING *binding);
 extern long search_forward (char *string, SEARCH_BINDING *binding);
 extern long search_backward (char *input_string, SEARCH_BINDING *binding);
 extern long search (char *string, SEARCH_BINDING *binding);
+extern long regexp_search (char *regexp, SEARCH_BINDING *binding, long length);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
 
 /* Note that STRING_IN_LINE () always returns the offset of the 1st character
