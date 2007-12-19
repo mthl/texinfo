@@ -1,3 +1,9 @@
+2007-12-19  Norbert Preining  <preining@logic.at>  (tiny change)
+
+	* makeinfo/insertion.c (begin_insertion) <direntry>: use add_word
+	instead of insert_string, so that the "This is ..." line is
+	written before the START-INFO-DIR-ENTRY.
+
 2007-12-17  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi (Searching Commands): Document the new regex

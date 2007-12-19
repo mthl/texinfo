@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.65 2007-10-24 20:03:35 karl Exp $
+   $Id: insertion.c,v 1.66 2007-12-19 23:39:05 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
    Free Software Foundation, Inc.
@@ -488,7 +488,7 @@ begin_insertion (enum insertion_type type)
       close_single_paragraph ();
       filling_enabled = no_indent = 0;
       inhibit_paragraph_indentation = 1;
-      insert_string ("START-INFO-DIR-ENTRY\n");
+      add_word ("START-INFO-DIR-ENTRY\n");
       break;
 
     case documentdescription:
