@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.73 2007-09-10 00:36:29 karl Exp $
+# $Id: configure.ac,v 1.74 2007-12-24 00:24:06 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -213,7 +213,7 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c
-AM_GNU_GETTEXT_VERSION([0.16])
+AM_GNU_GETTEXT_VERSION([0.17])
 AM_GNU_GETTEXT([external])
 
 # The test suite.
