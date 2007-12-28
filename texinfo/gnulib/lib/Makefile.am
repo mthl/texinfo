@@ -352,9 +352,9 @@ EXTRA_libgnu_a_SOURCES += mkstemp.c
 ## begin gnulib module setenv
 
 
-EXTRA_DIST += setenv.c setenv.h unsetenv.c
+EXTRA_DIST += setenv.c
 
-EXTRA_libgnu_a_SOURCES += setenv.c unsetenv.c
+EXTRA_libgnu_a_SOURCES += setenv.c
 
 ## end   gnulib module setenv
 
@@ -434,13 +434,18 @@ stdlib.h: stdlib.in.h
 	      -e 's|@''GNULIB_MKDTEMP''@|$(GNULIB_MKDTEMP)|g' \
 	      -e 's|@''GNULIB_MKSTEMP''@|$(GNULIB_MKSTEMP)|g' \
 	      -e 's|@''GNULIB_PUTENV''@|$(GNULIB_PUTENV)|g' \
+	      -e 's|@''GNULIB_SETENV''@|$(GNULIB_SETENV)|g' \
+	      -e 's|@''GNULIB_UNSETENV''@|$(GNULIB_UNSETENV)|g' \
 	      -e 's|@''HAVE_CALLOC_POSIX''@|$(HAVE_CALLOC_POSIX)|g' \
 	      -e 's|@''HAVE_GETSUBOPT''@|$(HAVE_GETSUBOPT)|g' \
 	      -e 's|@''HAVE_MALLOC_POSIX''@|$(HAVE_MALLOC_POSIX)|g' \
 	      -e 's|@''HAVE_MKDTEMP''@|$(HAVE_MKDTEMP)|g' \
 	      -e 's|@''HAVE_REALLOC_POSIX''@|$(HAVE_REALLOC_POSIX)|g' \
+	      -e 's|@''HAVE_SETENV''@|$(HAVE_SETENV)|g' \
+	      -e 's|@''HAVE_UNSETENV''@|$(HAVE_UNSETENV)|g' \
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
+	      -e 's|@''VOID_UNSETENV''@|$(VOID_UNSETENV)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      < $(srcdir)/stdlib.in.h; \
 	} > $@-t
@@ -640,6 +645,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''REPLACE_CHOWN''@|$(REPLACE_CHOWN)|g' \
 	      -e 's|@''REPLACE_FCHDIR''@|$(REPLACE_FCHDIR)|g' \
 	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
+	      -e 's|@''REPLACE_GETPAGESIZE''@|$(REPLACE_GETPAGESIZE)|g' \
 	      -e 's|@''REPLACE_LCHOWN''@|$(REPLACE_LCHOWN)|g' \
 	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
 	      < $(srcdir)/unistd.in.h; \
@@ -672,6 +678,15 @@ libgnu_a_SOURCES += uniwidth/width.c
 EXTRA_DIST += uniwidth/cjk.h
 
 ## end   gnulib module uniwidth/width
+
+## begin gnulib module unsetenv
+
+
+EXTRA_DIST += unsetenv.c
+
+EXTRA_libgnu_a_SOURCES += unsetenv.c
+
+## end   gnulib module unsetenv
 
 ## begin gnulib module wchar
 

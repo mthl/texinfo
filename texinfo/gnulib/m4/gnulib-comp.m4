@@ -56,6 +56,8 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_GETTIMEOFDAY
   gl_INLINE
   gl_LOCALCHARSET
+  LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(top_builddir)/$gl_source_base\""
+  AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
   gl_FUNC_MALLOC_POSIX
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
@@ -72,7 +74,7 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
   gl_FUNC_SETENV
-  gl_FUNC_UNSETENV
+  gl_STDLIB_MODULE_INDICATOR([setenv])
   AM_STDBOOL_H
   gl_STDINT_H
   gl_STDLIB_H
@@ -87,6 +89,8 @@ AC_DEFUN([gl_INIT],
   AC_PROG_MKDIR_P
   gl_FUNC_GEN_TEMPNAME
   gl_UNISTD_H
+  gl_FUNC_UNSETENV
+  gl_STDLIB_MODULE_INDICATOR([unsetenv])
   gl_WCHAR_H
   gl_WCTYPE_H
   gl_FUNC_WCWIDTH
@@ -246,7 +250,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/ref-add.sin
   lib/ref-del.sin
   lib/setenv.c
-  lib/setenv.h
   lib/stdbool.in.h
   lib/stdint.in.h
   lib/stdlib.in.h
