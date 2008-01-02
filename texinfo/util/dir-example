@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.75 2007-10-24 19:54:16 karl Exp $
+$Id: dir-example,v 1.76 2008-01-02 01:40:00 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -77,11 +77,12 @@ Network applications
 * Wget: (wget).                 Non-interactive network downloader.
 
 Printing Tools
-* a2ps: (a2ps).                    PostScript Generating Utility
 * PreScript: (a2ps) PreScript.     Input language for a2ps
+* a2ps: (a2ps).                    PostScript Generating Utility
 * card: (a2ps) card.               Print Reference Cards
-* fixps: (a2ps) fixps.             Fixing Some Ill Designed PostScript Files
 * fixnt: (a2ps) fixnt.             Fixing Microsoft NT PostScript Files
+* fixps: (a2ps) fixps.             Fixing Some Ill Designed PostScript Files
+* ogonkify: (ogonkify).            Ogonkify
 * pdiff: (a2ps) pdiff.             Produce Pretty Comparison of Files
 * psmandup: (a2ps) psmandup.       Printing Duplex on Simplex Printers
 * psset: (a2ps) psset.             Inserting calls to setpagedevice
@@ -204,7 +205,6 @@ Software libraries
 * Mmalloc: (mmalloc).           The GNU mapped-malloc package.
 * Stabs: (stabs).               The "stabs" debugging information format.
 * Readline: (readline).         General command-line interface.
-* Regex: (regex).               Regular expressions.
 * Termcap: (termcap).           All about /etc/termcap.
 
 C++ libraries
