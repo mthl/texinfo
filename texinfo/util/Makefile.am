@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.31 2008-01-02 01:45:39 karl Exp $
+# $Id: Makefile.am,v 1.32 2008-01-02 17:46:55 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -47,9 +47,11 @@ CLEANFILES = $(pkgdata_DATA)
 XFAIL_TESTS =
 TESTS =	\
 bibtex.test \
-dvipdf.test \
 latex2html.test \
 texi2dvi.test
+
+# Let's not stress people's TeX installations.
+#dvipdf.test
 
 EXTRA_DIST += $(TESTS)
 

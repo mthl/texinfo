@@ -1,3 +1,8 @@
+2008-01-03  Karl Berry  <karl@tug.org>
+
+	* util/Makefile.am (TESTS): remove dvipdf.test, it is too
+	dependent on functional TeX installations.  Not our place to test that.
+
 2008-01-02  Karl Berry  <karl@tug.org>
 
 	* install-info/, install-info/tests/: new subdirectories.
