@@ -1,3 +1,18 @@
+2008-01-01  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (info_short_help): break help string into smaller
+	pieces, to help translators.
+	Suggestion from Benno Schulenberg, 01 Jan 2008 12:22:31.
+
+2008-01-01  Ben Asselstine  <benasselstine@gmail.com>  (tiny change)
+
+	* doc/info-stnd.texi (Invoking Info): document this.
+	* info/info.c (long_options, short_options): use -k as an alias
+	for --apropos.
+	(main): recognize it.
+	(info_short_help): document it.
+	(APROPOS_OPTION): no longer needed.
+
 2007-12-23  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.17.

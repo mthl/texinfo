@@ -1,8 +1,8 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.24 2008-01-02 00:46:26 karl Exp $
+   $Id: info.c,v 1.25 2008-01-02 00:54:29 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007 Free Software Foundation, Inc.
+   2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 #include "indices.h"
@@ -595,45 +595,54 @@ info_short_help (void)
   static const char speech_friendly_string[] = "";
 #endif
 
-
   printf (_("\
 Usage: %s [OPTION]... [MENU-ITEM...]\n\
 \n\
-Read documentation in Info format.\n\
-\n\
+Read documentation in Info format.\n"), program_name);
+  puts ("");
+
+  puts (_("\
 Options:\n\
   -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
   -d, --directory=DIR          add DIR to INFOPATH.\n\
       --dribble=FILENAME       remember user keystrokes in FILENAME.\n\
-  -f, --file=FILENAME          specify Info file to visit.\n\
+  -f, --file=FILENAME          specify Info file to visit."));
+
+  puts (_("\
   -h, --help                   display this help and exit.\n\
       --index-search=STRING    go to node pointed by index entry STRING.\n\
   -n, --node=NODENAME          specify nodes in first visited Info file.\n\
-  -o, --output=FILENAME        output selected nodes to FILENAME.\n\
+  -o, --output=FILENAME        output selected nodes to FILENAME."));
+
+  puts (_("\
   -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n\
       --no-raw-escapes         output escapes as literal text.\n\
       --restore=FILENAME       read initial keystrokes from FILENAME.\n\
-  -O, --show-options, --usage  go to command-line options node.\n%s\
+  -O, --show-options, --usage  go to command-line options node."));
+
+  printf ("%s", speech_friendly_string);
+
+  puts (_("\
       --subnodes               recursively output menu items.\n\
-  -w, --where, --location      print physical location of Info file.\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
-\n\
+  -w, --where, --location      print physical location of Info file."));
+
+  puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\
 it is searched for in all `dir' files along INFOPATH.\n\
 If it is not present, info merges all `dir' files and shows the result.\n\
 Any remaining arguments are treated as the names of menu\n\
-items relative to the initial node visited.\n\
-\n\
+items relative to the initial node visited."));
+
+  puts (_("\n\
 Examples:\n\
   info                       show top-level dir menu\n\
   info emacs                 start at emacs node from top-level dir\n\
   info emacs buffers         start at buffers node within emacs manual\n\
   info --show-options emacs  start at node with emacs' command line options\n\
   info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
-  info -f ./foo.info         show file ./foo.info, not searching dir\n\
-"),
-  program_name, speech_friendly_string);
+  info -f ./foo.info         show file ./foo.info, not searching dir"));
 
   puts (_("\n\
 Email bug reports to bug-texinfo@gnu.org,\n\
