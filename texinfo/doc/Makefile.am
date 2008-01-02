@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.35 2007-11-30 17:58:26 gray Exp $
+# $Id: Makefile.am,v 1.36 2008-01-02 01:36:15 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -67,7 +67,7 @@ common_mandeps = $(top_srcdir)/configure.ac
 man_rule_0 = \
 	program=`expr '/$@' : '.*/\(.*\)\.1'` && \
 	case $$program in makeinfo) dir=makeinfo;; info*) dir=info;; \
-		*) dir=util;; esac && \
+	        *install-info) dir=install-info;; *) dir=util;; esac && \
 	dir="$(top_builddir)/$(native_tools)/$$dir" && \
 	case $$program in info|install-info) program=g$$program;; \
 		esac
@@ -85,7 +85,7 @@ $(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
 $(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
 	@name="compile customizations for Info" && $(man_rule_bin)
-$(srcdir)/install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
+$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c $(common_mandeps)
 	@name="update info/dir entries" && $(man_rule_bin)
 
 # Here we need some postprocessing:

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.74 2007-12-24 00:24:06 karl Exp $
+# $Id: configure.ac,v 1.75 2008-01-02 01:36:15 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,7 +9,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.11], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.11.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -226,6 +226,8 @@ AC_CONFIG_FILES([
   doc/Makefile
   gnulib/lib/Makefile
   info/Makefile
+  install-info/Makefile
+  install-info/tests/Makefile
   lib/Makefile
   makeinfo/Makefile
   makeinfo/tests/Makefile

@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.20 2007-12-03 01:38:43 karl Exp $
+   $Id: install-info.c,v 1.1 2008-01-02 01:36:16 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007 Free Software Foundation, Inc.
@@ -20,6 +20,9 @@
 #include "system.h"
 #include <getopt.h>
 #include <regex.h>
+#include <argz.h>
+
+#define TAB_WIDTH 8
 
 static char *progname = "install-info";
 
@@ -46,8 +49,12 @@ struct line_data
   /* Vector containing pointers to the entries to add before this line.
      The vector is null-terminated.  */
   struct spec_entry **add_entries_before;
-  /* 1 means output any needed new sections before this line.  */
-  int add_sections_before;
+  /* Vector containing pointers to the sections to add before this line.
+     The vector is not null-terminated.  */
+  struct spec_section **add_sections_before;
+  /* The vector ADD_SECTIONS_BEFORE_HERE contains exactly this many
+     pointers to sections. */
+  int num_sections_to_add;
   /* 1 means don't output this line.  */
   int delete;
 };
@@ -77,6 +84,19 @@ struct spec_entry
   /* A pointer to a section that is beyond the end of the chain whose
      head is pointed to by entry_sections.  */
   struct spec_section *entry_sections_tail;
+  /* Non-zero means that the entry doesn't have a name specified.  This
+     can only happen if a --description preceeds a --name option. */
+  int missing_name;
+  /* Non-zero means that the entry doesn't have a description.  This
+     happens when a --name option is given prior to a --description 
+     option. */
+  int missing_description;
+  /* Non-zero means that the entry doesn't have an Info file specified.  
+     This means that the entry was taken from the command-line but it
+     only contains the name, and not the info file's basename, which
+     we get later on.  This only happens on entries that originate
+     from --name options. */
+  int missing_basename;
 };
 
 
@@ -119,35 +139,66 @@ struct menu_section
 
 struct option longopts[] =
 {
+  { "add-once",  no_argument, NULL, '1'},
+  { "align",     required_argument, NULL, 'A'},
+  { "append-new-sections", no_argument, NULL, 'a'},
+  { "calign",    required_argument, NULL, 'C'},
   { "debug",     no_argument, NULL, 'g' },
   { "delete",    no_argument, NULL, 'r' },
   { "dir-file",  required_argument, NULL, 'd' },
   { "entry",     required_argument, NULL, 'e' },
+  { "name",      required_argument, NULL, 't' },
+  { "menuentry", required_argument, NULL, 't' },
+  { "description", required_argument, NULL, 'c' },
   { "help",      no_argument, NULL, 'h' },
+  { "no-indent", no_argument, NULL, 'I' },
   { "infodir",   required_argument, NULL, 'D' },
   { "info-dir",  required_argument, NULL, 'D' },
   { "info-file", required_argument, NULL, 'i' },
   { "item",      required_argument, NULL, 'e' },
+  { "keep-old",  no_argument, NULL, 'k' },
+  { "maxwidth",  required_argument, NULL, 'W'},
+  { "max-width", required_argument, NULL, 'W'},
   { "quiet",     no_argument, NULL, 'q' },
   { "remove",    no_argument, NULL, 'r' },
   { "remove-exactly",    no_argument, NULL, 'x' },
   { "section",           required_argument, NULL, 's' },
-  { "section-regex",     required_argument, NULL, 'R' },
+  { "regex",     required_argument, NULL, 'R' },
   { "silent",    no_argument, NULL, 'q' },
   { "test",      no_argument, NULL, 'n' },
+  { "dry-run",   no_argument, NULL, 'n' },
   { "version",   no_argument, NULL, 'V' },
   { 0 }
 };
 
 regex_t *psecreg = NULL;
 
-/* Nonzero means that the name specified for the info file will be used
+/* Nonzero means that the name specified for the Info file will be used
    (without removing .gz, .info extension or leading path) to match the
    entries that must be removed.  */
 int remove_exactly = 0;
 
+/* Nonzero means that sections that don't have entries in them will be
+   deleted. */
+int remove_empty_sections = 1;
+
+/* Nonzero means that new Info entries into the DIR file will go into all 
+   sections that match with --section-regex or --section.  Zero means 
+   that new entries wil go into the first section that matches.*/
+int add_entries_into_all_matching_sections = 1;
+
+/* Nonzero means we do not replace same-named info entries. */
+int keep_old_flag = 0;
+
 /* Nonzero means --test was specified, to inhibit updating the dir file.  */
 int chicken_flag = 0;
+
+/* Zero means that entries will not be formatted when they are either 
+   added or replaced. */
+int indent_flag = 1;
+
+/* Zero means that new sections will be added at the end of the DIR file. */
+int order_new_sections_alphabetically_flag = 1;
 
 
 /* Error message functions.  */
@@ -465,12 +516,24 @@ Options:\n\
                      If you specify more than one entry, they are all added.\n\
                      If you don't specify any entries, they are determined\n\
                      from information in the Info file itself.\n\
+		     When removing TEXT is the name of the entry to remove.\n\
+		     TEXT is only removed as a last-ditch effort if the \n\
+		     entry as determined from the Info file is not present \n\
+		     and the basename of the Info file isn't found either.\n\
+ --name=TEXT       the name of the entry is TEXT.  Used with --description \n\
+                     to become synonymous with the --entry option.\n\
+ --menuentry=TEXT  same as --name=TEXT.\n\
+ --description=TEXT the description of the entry is TEXT.  It is used with \n\
+                     the --name option to become synonymous with the \n\
+		     --entry option.\n\
  --help            display this help and exit.\n\
  --info-file=FILE  specify Info file to install in the directory.\n\
                      This is equivalent to using the INFO-FILE argument.\n\
  --info-dir=DIR    same as --dir-file=DIR/dir.\n\
- --item=TEXT       same as --entry TEXT.\n\
+ --item=TEXT       same as --entry=TEXT.\n\
                      An Info directory entry is actually a menu item.\n\
+ --keep-old        do not replace entries, or remove empty sections.\n\
+ --no-indent       do not format new entries in the DIR file.\n\
  --quiet           suppress warnings.\n\
  --remove          same as --delete.\n\
  --remove-exactly  only remove if the info file name matches exactly;\n\
@@ -480,10 +543,11 @@ Options:\n\
                      are added in each of the sections.\n\
                      If you don't specify any sections, they are determined\n\
                      from information in the Info file itself.\n\
- --section-regex=R if an entry is added to a section that does not exist,\n\
-                     look for a section matching basic regular expression R\n\
-                     (and ignoring case) before starting a new section.\n\
+ --section R SEC   equivalent to --regex=R --section=SEC --add-once.\n\
+ --regex=R         put this file's entries in all sections that match the\n\
+                     regular expression R (ignoring case).\n\
  --test            suppress updating of DIR-FILE.\n\
+ --dry-run         same as --test.\n\
  --silent          suppress warnings.\n\
  --version         display version information and exit.\n\
 "), progname);
@@ -749,6 +813,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                 int n_entries_to_add, struct spec_entry *entries_to_add,
                 struct spec_section *input_sections, char *compression_program)
 {
+  int n_entries_added = 0;
   int i;
   FILE *output;
 
@@ -778,33 +843,34 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
             struct spec_entry *this = dir_lines[i].add_entries_before[j];
             if (this == 0)
               break;
+	    if (n_entries_added >= 1 && 
+		!add_entries_into_all_matching_sections)
+	      break;
             fputs (this->text, output);
+	    n_entries_added++;
           }
       /* If we decided to add some sections here
          because there are no such sections in the file,
-         output them now.  */
+         output them now.  
+         FIXME:  we add all sections here, but they should
+	 be interspersed throughout the DIR file in 
+	 alphabetic order. */
       if (dir_lines[i].add_sections_before)
         {
           struct spec_section *spec;
-          struct spec_section **sections;
-          int n_sections = 0;
           struct spec_entry *entry;
           struct spec_entry **entries;
           int n_entries = 0;
 
-          /* Count the sections and allocate a vector for all of them.  */
-          for (spec = input_sections; spec; spec = spec->next)
-            n_sections++;
-          sections = ((struct spec_section **)
-                      xmalloc (n_sections * sizeof (struct spec_section *)));
+	  /* If we specified --add-once, and we've added an entry, then
+	     it's time to bail. */
+	  if (n_entries_added >= 1 && 
+	      !add_entries_into_all_matching_sections)
+	    break;
 
-          /* Fill the vector SECTIONS with pointers to all the sections,
-             and sort them.  */
-          j = 0;
-          for (spec = input_sections; spec; spec = spec->next)
-            sections[j++] = spec;
-          qsort (sections, n_sections, sizeof (struct spec_section *),
-                 compare_section_names);
+          qsort (dir_lines[i].add_sections_before, 
+		 dir_lines[i].num_sections_to_add, 
+		 sizeof (struct spec_section *), compare_section_names);
 
           /* Count the entries and allocate a vector for all of them.  */
           for (entry = entries_to_add; entry; entry = entry->next)
@@ -823,9 +889,9 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
           /* Generate the new sections in alphabetical order.  In each
              new section, output all of the entries that belong to that
              section, in alphabetical order.  */
-          for (j = 0; j < n_sections; j++)
+          for (j = 0; j < dir_lines[i].num_sections_to_add; j++)
             {
-              spec = sections[j];
+              spec = dir_lines[i].add_sections_before[j];
               if (spec->missing)
                 {
                   int k;
@@ -833,6 +899,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                   putc ('\n', output);
                   fputs (spec->name, output);
                   putc ('\n', output);
+		  spec->missing = 0;
                   for (k = 0; k < n_entries; k++)
                     {
                       struct spec_section *spec1;
@@ -852,8 +919,8 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                 }
             }
 
+	  n_entries_added++;
           free (entries);
-          free (sections);
         }
 
       /* Output the original dir lines unless marked for deletion.  */
@@ -877,7 +944,8 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
    specifies.  Return the number of entries to add from this file.  */
 int
 parse_input (const struct line_data *lines, int nlines,
-             struct spec_section **sections, struct spec_entry **entries) 
+             struct spec_section **sections, struct spec_entry **entries,
+	     int delete_flag) 
 {
   int n_entries = 0;
   int prefix_length = strlen ("INFO-DIR-SECTION ");
@@ -885,7 +953,7 @@ parse_input (const struct line_data *lines, int nlines,
   int reset_tail = 0;
   char *start_of_this_entry = 0;
   int ignore_sections = *sections != 0;
-  int ignore_entries  = *entries  != 0;
+  int ignore_entries  = delete_flag ? 0: *entries  != 0;
 
   int i;
 
@@ -1000,14 +1068,13 @@ parse_input (const struct line_data *lines, int nlines,
   return n_entries;
 }
 
+
 /* Parse the dir file whose basename is BASE_NAME.  Find all the
    nodes, and their menus, and the sections of their menus.  */
 int
-parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
-                const char *base_name)
+parse_dir_file (struct line_data *lines, int nlines, struct node **nodes)
 {
   int node_header_flag = 0;
-  int something_deleted = 0;
   int i;
 
   *nodes = 0;
@@ -1094,6 +1161,29 @@ parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
           (*nodes)->last_section = next;
         }
 
+    }
+
+  /* Finish the info about the end of the last node.  */
+  if (*nodes != 0)
+    {
+      (*nodes)->end_line = nlines;
+      if ((*nodes)->last_section != 0)
+        (*nodes)->last_section->end_line = nlines;
+    }
+}
+
+
+/* Iterate through NLINES LINES looking for an entry that has a name
+   that matches NAME.  If such an entry is found, flag the entry for 
+   deletion later on. */
+
+int
+mark_entry_for_deletion (struct line_data *lines, int nlines, char *name)
+{
+  int something_deleted = 0;
+  int i;
+  for (i = 0; i < nlines; i++)
+    {
       /* Check for an existing entry that should be deleted.
          Delete all entries which specify this file name.  */
       if (*lines[i].start == '*')
@@ -1112,10 +1202,10 @@ parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
 
           if (*p == ':')
             { /* XEmacs-style entry, as in * Mew::Messaging.  */
-              if (menu_item_equal (q, ':', base_name))
+              if (menu_item_equal (q, ':', name))
                 {
                   lines[i].delete = 1;
-                  something_deleted = 1;
+		  something_deleted = 1;
                 }
             }
           else
@@ -1124,10 +1214,10 @@ parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
               if (*p == '(')         /* if at parenthesized (FILENAME) */
                 {
                   p++;
-                  if (menu_item_equal (p, ')', base_name))
+                  if (menu_item_equal (p, ')', name))
                     {
                       lines[i].delete = 1;
-                      something_deleted = 1;
+		      something_deleted = 1;
                     }
                 }
             }
@@ -1141,17 +1231,520 @@ parse_dir_file (struct line_data *lines, int nlines, struct node **nodes,
           lines[i].delete = lines[i - 1].delete;
         }
     }
-
-  /* Finish the info about the end of the last node.  */
-  if (*nodes != 0)
-    {
-      (*nodes)->end_line = nlines;
-      if ((*nodes)->last_section != 0)
-        (*nodes)->last_section->end_line = nlines;
-    }
-
   return something_deleted;
 }
+
+
+/* Assuming the current column is COLUMN, return the column that
+   printing C will move the cursor to.
+   The first column is 0.
+   This function is used to assist in indenting of entries. */
+
+static size_t
+adjust_column (size_t column, char c)
+{
+  if (c == '\b')
+    {
+      if (column > 0)
+	column--;
+    }
+  else if (c == '\r')
+    column = 0;
+  else if (c == '\t')
+    column += TAB_WIDTH - column % TAB_WIDTH;
+  else				/* if (isprint (c)) */
+    column++;
+  return column;
+}
+
+/* Indent the Info entry's NAME and DESCRIPTION.  Lines are wrapped at the
+   WIDTH column.  The description on first line is indented at the CALIGN-th 
+   column, and all subsequent lines are indented at the ALIGN-th column.  
+   The resulting Info entry is put into OUTSTR.
+   NAME is of the form "* TEXT (TEXT)[:TEXT].".
+ */
+static int
+format_entry (char *name, size_t name_len, char *desc, size_t desc_len, 
+	      int calign, int align, size_t width, 
+	      char **outstr, size_t *outstr_len)
+{
+  int i, j;
+  char c;
+  size_t column = 0;		/* Screen column where next char will go */
+  size_t offset_out = 0;	/* Index in `line_out' for next char. */
+  static char *line_out = NULL;
+  static size_t allocated_out = 0;
+  int saved_errno;
+  if (!desc || !name)
+    return 1;
+
+  *outstr = malloc (width  + 
+		    (((desc_len  + width) / (width - align)) * width) * 2 
+		    * sizeof (char));
+  *outstr[0] = '\0';
+
+  strncat (*outstr, name, name_len);
+
+  column = name_len;
+
+  if (name_len > calign - 2)
+    {
+      /* Name is too long to have description on the same line. */
+      if (desc_len > 1)
+	{
+	  strncat (*outstr, "\n", 1);
+	  column = 0;
+	  for (j = 0; j < calign - 1; j++)
+	    {
+	      column = adjust_column (column, ' ');
+	      strncat (*outstr, " ", 1);
+	    }
+	}
+    }
+  else
+    for (j = 0; j < calign - name_len - 1; j++)
+      {
+	if (desc_len <= 2)
+	  break;
+	column = adjust_column (column, ' ');
+	strncat (*outstr, " ", 1);
+      }
+
+  for (i = 0; i < desc_len; i++)
+    {
+      if (desc_len <= 2)
+	break;
+      c = desc[i];
+      if (offset_out + 1 >= allocated_out)
+	{
+	  allocated_out = offset_out + 1;
+	  line_out = (char *) realloc ((void *)line_out, allocated_out);
+	}
+
+      if (c == '\n')
+	{
+	  line_out[offset_out++] = c;
+	  strncat (*outstr, line_out, offset_out);
+	  column = offset_out = 0;
+	  continue;
+	}
+
+    rescan:
+      column = adjust_column (column, c);
+
+      if (column > width)
+	{
+	  /* This character would make the line too long.
+	     Print the line plus a newline, and make this character
+	     start the next line. */
+
+	  int found_blank = 0;
+	  size_t logical_end = offset_out;
+
+	  /* Look for the last blank. */
+	  while (logical_end)
+	    {
+	      --logical_end;
+	      if (isblank (toupper(line_out[logical_end])))
+		{
+		  found_blank = 1;
+		  break;
+		}
+	    }
+
+	  if (found_blank)
+	    {
+	      size_t i;
+
+	      /* Found a blank.  Don't output the part after it. */
+	      logical_end++;
+	      strncat (*outstr, line_out, logical_end);
+	      strncat (*outstr, "\n", 1);
+	      for (j = 0; j < align - 1; j++)
+		{
+		  column = adjust_column (column, ' ');
+		  strncat (*outstr, " ", 1);
+		}
+
+	      /* Move the remainder to the beginning of the next 
+		 line.
+		 The areas being copied here might overlap. */
+	      memmove (line_out, line_out + logical_end,
+		       offset_out - logical_end);
+	      offset_out -= logical_end;
+	      for (column = i = 0; i < offset_out; i++)
+		column = adjust_column (column, line_out[i]);
+	      goto rescan;
+	    }
+
+	  if (offset_out == 0)
+	    {
+	      line_out[offset_out++] = c;
+	      continue;
+	    }
+
+	  line_out[offset_out++] = '\n';
+	  strncat (*outstr, line_out, offset_out);
+	  column = offset_out = 0;
+	  goto rescan;
+	}
+
+      line_out[offset_out++] = c;
+    }
+
+  saved_errno = errno;
+
+  if (desc_len <= 2)
+    strncat (*outstr, "\n", 1);
+
+  if (offset_out)
+    strncat (*outstr, line_out, offset_out);
+
+  *outstr_len = strlen (*outstr);
+  return 1;
+}
+
+
+/* Extract the NAME and DESCRIPTION from ENTRY.  NAME and DESCRIPTION must be
+   free'd.
+ */
+static void
+split_entry (char *entry, char **name, size_t *name_len, char **description, size_t *description_len)
+{
+  FILE *ostream;
+  char *endptr;
+
+  /* on the first line, the description starts after the first period. */
+  char *ptr = strchr (entry, '.');
+  /* Maybe there's no period, and no description */
+  if (!ptr)
+    {
+      size_t length = strlen (entry);
+      if (length == 0)
+	return;
+      *name = strdup (ptr);
+      *name_len = length + 1;
+      return;
+    }
+
+  /* The name is everything up to and including the period. */
+  *name_len = (size_t) (ptr - entry + 1);
+  *name = xmalloc (*name_len + 1);
+  (*name)[0] = '\0';
+  strncat (*name, entry, *name_len);
+
+  ptr++;
+  *description = xmalloc (strlen (entry));
+  (*description)[0] = '\0';
+
+  while (ptr[0] != '\0')
+    {
+
+      /* Eat up the whitespace after the name, and at the start of a line. */
+      while (isspace(ptr[0]))
+	ptr++;
+
+      /* Okay, we're at the start of the description. */
+      if (ptr[0] == '\0')
+	continue;
+
+      /* See how far the description goes... */
+      endptr = strchr (ptr, '\n');
+      /* Either the description continues up to the next newline. */
+      if (endptr)
+	{
+	  size_t length  = (size_t) (endptr - ptr) / sizeof (char);
+	  strncat (*description, ptr, length);
+	  ptr = endptr;
+	  /* First of all, we eat the newline here.  But then what?
+	     Sometimes the newline separates 2 sentences, so we
+	     end up with the next word starting directly after the period,
+	     instead of after the customary 2 spaces in english. 
+	     If the previous character was a `.', then we should add 2
+	     spaces if there is anything on the next line.
+	     if it's a comma, then we should put one space.
+	     If it's neither, we just put a space.
+	     If it's some other whitespace, we shouldn't do anything. */
+	  ptr++;
+	  if (length > 1 && strlen (ptr) > 0)
+	    {
+	      endptr--;
+	      /* *ENDPTR is the 2nd last character */
+	      if (*endptr == '.')
+		strncat (*description, "  ", 2);
+	      else if (!isspace (*endptr))
+		strncat (*description, " ", 1);
+	    }
+	}
+      /* Or the description continues to the end of the string. */
+      else
+	{
+	  /* Just show the rest when there's no newline. */
+	  size_t length = strlen (ptr);
+	  strncat (*description, ptr, length);
+	  ptr += length;
+	}
+    }
+  /* Descriptions end in a new line. */
+  strncat (*description, "\n", 1);
+  *description_len = strlen (*description);
+}
+
+
+/* Indent all ENTRIES according to some formatting options. 
+   CALIGN_CLI is the starting column for the first line of the description.
+   ALIGN_CLI is the starting column for all subsequent lines of the 
+   description.  MAXWIDTH_CLI is the number of columns in the line. 
+   When CALIGN_CLI, ALIGN_CLI, or MAXWIDTH_CLI is -1, choose a sane default. */
+
+static void
+reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli, 
+		      int maxwidth_cli)
+{
+  struct spec_entry *entry;
+  for (entry = entries; entry; entry = entry->next)
+    {
+      int calign = -1, align = -1, maxwidth = -1;
+      char *name = NULL, *desc = NULL;
+      size_t name_len = 0, desc_len = 0;
+      split_entry (entry->text, &name, &name_len, &desc, &desc_len);
+      free (entry->text);
+
+      /* Specify sane defaults if we need to */
+      if (calign_cli == -1 || align_cli == -1)
+	{
+	  struct spec_section *section;
+	  calign = calign_cli;
+	  align = align_cli;
+	  for (section = entry->entry_sections; 
+	       section && section != entry->entry_sections_tail;
+	       section = section->next)
+	    {
+	      if (!strcmp (section->name, "Individual utilities"))
+		{
+		  if (calign == -1)
+		    calign = 48 + 1;
+		  if (align == -1)
+		    align = 50 + 1;
+		  break;
+		}
+	    }
+	  if (calign == -1)
+	    calign = 32 + 1;
+	  if (align == -1)
+	    align = 34 + 1;
+	}
+      else
+	{
+	  calign = calign_cli;
+	  align = align_cli;
+	}
+
+      if (maxwidth_cli == -1)
+	maxwidth = 79;
+
+      format_entry (name, name_len, desc, desc_len, calign, align, 
+		    maxwidth, &entry->text, &entry->text_len);
+    }
+}
+
+/* Insert NAME into every entry in ENTRIES that requires it. 
+   NAME is the basename of the Info file being installed. 
+   The idea here is that there was a --name on the command-line
+   and we need to put the basename in the empty parentheses. */
+void
+add_missing_basenames (struct spec_entry *entries, char *name)
+{
+  struct spec_entry *entry;
+  for (entry = entries; entry; entry = entry->next)
+    {
+      if (entry->missing_basename)
+	{
+	  /* Insert NAME into the right place in ENTRY->TEXT. */
+	  char *info, *rest;
+	  size_t name_len = strlen (name);
+	  char *ptr = strstr (entry->text, ": ().");
+	  if (!ptr)
+	    return;
+	  ptr[0] = '\0';
+	  rest = ptr += sizeof (": ().");
+
+	  info = xmalloc (name_len +  6);
+	  snprintf (info, name_len + 6, ": (%s).", name);
+	  char *text = concat (entry->text, info, rest);
+	  free (info);
+	  if (entry->text)
+	    free (entry->text);
+	  entry->text = text;
+	  entry->text_len = strlen (entry->text);
+	  entry->missing_name = 0;
+	  entry->missing_basename = 0;
+	}
+    }
+}
+
+
+/* Add NAME to the start of any entry in ENTRIES that is missing a name 
+   component.  If NAME doesn't start with `*', it is formatted to look 
+   like an Info entry.  */
+void
+add_missing_names (struct spec_entry *entries, char *name)
+{
+  struct spec_entry *entry;
+  for (entry = entries; entry; entry = entry->next)
+    {
+      if (entry->missing_name)
+	{
+	  char *text;
+	  /* Prepend NAME onto ENTRY->TEXT. */
+	  int add_nl = 1;
+	  if (entry->text)
+	    if (entry->text[entry->text_len - 1] == '\n')
+	      add_nl = 0;
+
+	  if (name[0] == '*')
+	    text = concat (name, entry->text == NULL ? "" : entry->text, 
+			   add_nl ? "\n" : "");
+	  else
+	    {
+	      size_t full_name_len = strlen (name) * 2 + 9;
+	      char *full_name = xmalloc (full_name_len);
+	      snprintf (full_name, full_name_len, "* %s: (%s).", name, name);
+	      text = concat (full_name, 
+			     entry->text == NULL ? "" : entry->text, 
+			     add_nl ? "\n" : "");
+	      free (full_name);
+	    }
+	  if (entry->text)
+	    free (entry->text);
+	  entry->text = text;
+	  entry->text_len = strlen (entry->text);
+	  entry->missing_name = 0;
+	  entry->missing_basename = 0;
+	}
+    }
+}
+
+/* Append DESC to every entry in ENTRIES that needs it. */
+
+void
+add_missing_descriptions (struct spec_entry *entries, char *desc)
+{
+  struct spec_entry *entry;
+  for (entry = entries; entry; entry = entry->next)
+    {
+      if (entry->missing_description)
+	{
+	  int add_nl = 1;
+	  if (entry->text)
+	    if (entry->text[entry->text_len - 1] == '\n')
+	      add_nl = 0;
+	  /* Append DESC onto ENTRY->TEXT. */
+	  char *text = concat (entry->text == NULL ? "" : entry->text, desc,
+			       add_nl ? "\n" : "");
+	  if (entry->text)
+	    free (entry->text);
+	  entry->text = text;
+	  entry->text_len = strlen (entry->text);
+	}
+    }
+}
+
+
+/* Detect old-style Debian `--section REGEX TITLE' semantics in ARGV.
+   When detected the options are munged to look like:
+     `--regex REGEX --section TITLE --add-once'
+   Return 1 if munging took place, return 0 if not.
+   Otherwise return a negative number if something went wrong.
+   NEW_ARGC, and NEW_ARGV are filled with the newly munged options
+   when munging took place.
+ */
+static int
+munge_old_style_debian_options (int argc, char **argv, 
+				int *new_argc, char ***new_argv)
+{
+  char *opt = NULL;
+  int i, err;
+  char *argz = NULL;
+  size_t argz_len = 0;
+  const char *regex, *title;
+  int munge = 0;
+
+  /* Flip through the options to detect the old `--section REGEX TITLE' 
+     syntax */
+  for (i = 0; i < argc; i++)
+    {
+      if (strcmp (argv[i], "--section") == 0)
+	{
+	  FILE *fileptr;
+	  /* Go forward one arg and obtain the REGEX. */
+	  if (i + 1 < argc)
+	    i++;
+	  else
+	    return -1;
+	  regex = argv[i];
+	  /* Go forward another arg and obtain the TITLE. */
+	  if (i + 1 < argc)
+	    i++;
+	  else
+	    return -1;
+	  title = argv[i];
+	  /* When the title starts with a `-' it's probably an option,
+	     and not a title. */
+	  if (title[0] == '-')
+	    break;
+	  /* When the title is a filename it's probably an Info file, or
+	     a dir file, and not a title. */
+	  fileptr = fopen (title, "r");
+	  if (fileptr)
+	    {
+	      fclose (fileptr);
+	      break;
+	    }
+	  /* Okay, it looks like we're using the old debian syntax 
+	     for --section. */
+	  munge = 1;
+	
+	  /* Okay, we munge the options to look like this:
+	     --regex=REGEX --section=TITLE --add-once */
+	  if (asprintf (&opt, "--regex=%s", regex) == -1)
+	    err = 1;
+	  if (!err)
+	    err = argz_add (&argz, &argz_len, opt);
+	  free (opt); opt = NULL;
+
+	  if (asprintf (&opt, "--section=%s", title) == -1)
+	    err = 1;
+	  if (!err)
+	    err = argz_add (&argz, &argz_len, opt);
+	  free (opt); opt = NULL;
+
+	  if (!err)
+	    err = argz_add (&argz, &argz_len, "--add-once");
+	}
+      else
+	err = argz_add (&argz, &argz_len, argv[i]); 
+      if (err)
+	return -1;
+    }
+
+  if (munge)
+    {
+      *new_argc = argz_count (argz, argz_len);
+      *new_argv = xmalloc ((*new_argc + 1) * sizeof (char *));
+
+      opt = NULL; i = 0;
+      while ((opt = argz_next (argz, argz_len, opt)))
+	{
+	  (*new_argv)[i] = xstrdup (opt);
+	  i++;
+	}
+      (*new_argv)[*new_argc] = NULL;
+    }
+  free (argz);
+  return munge;
+}
+
 
 int
 main (int argc, char *argv[])
@@ -1160,6 +1753,9 @@ main (int argc, char *argv[])
   char *compression_program;
   char *infile_sans_info;
   char *infile = 0, *dirfile = 0;
+  int calign = -1;
+  int align  = -1;
+  int maxwidth = -1;
 
   /* Record the text of the Info file, as a sequence of characters
      and as a sequence of lines.  */
@@ -1171,6 +1767,7 @@ main (int argc, char *argv[])
   /* Record here the specified section names and directory entries.  */
   struct spec_section *input_sections = NULL;
   struct spec_entry *entries_to_add = NULL;
+  struct spec_entry *entries_to_add_from_file = NULL;
   int n_entries_to_add = 0;
 
   /* Record the old text of the dir file, as plain characters,
@@ -1202,9 +1799,12 @@ main (int argc, char *argv[])
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 
+  munge_old_style_debian_options (argc, argv, &argc, &argv);
+
   while (1)
     {
-      int opt = getopt_long (argc, argv, "i:d:e:s:hHr", longopts, 0);
+      int opt = getopt_long (argc, argv, 
+			     "i:d:e:s:t:E:c:C:W:A:hHrk1Ia", longopts, 0);
 
       if (opt == EOF)
         break;
@@ -1218,6 +1818,79 @@ main (int argc, char *argv[])
 
         case 1:
           abort ();
+
+        case '1':
+	  add_entries_into_all_matching_sections = 0;
+          break;
+
+        case 'a':
+	  order_new_sections_alphabetically_flag = 0;
+          break;
+
+        case 'A':
+	  {
+	    char *end = NULL;
+	    unsigned long int val;
+	    val = strtoul (optarg, &end, 0);
+	    if (end == NULL || end == optarg || *end != '\0')
+	      suggest_asking_for_help ();
+	    align = val;
+	    if (align <= 0)
+	      suggest_asking_for_help ();
+	  }
+	  break;
+
+        case 'c':
+	
+	  {
+	    struct spec_entry *next;
+	    size_t length = strlen (optarg);
+
+	    if (!entries_to_add)
+	      {
+		next = 
+		  (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
+	    
+		next->text = NULL;
+		next->text_len = 0;
+		next->entry_sections = NULL;
+		next->entry_sections_tail = NULL;
+		next->missing_name = 1;
+		next->missing_basename = 1;
+		next->next = entries_to_add;
+		entries_to_add = next;
+		n_entries_to_add++;
+	      }
+	    else
+	      next = entries_to_add;
+		
+	    next->missing_description = 0;
+	    if (next->text)
+	      {
+		char *nl = strrchr (next->text, '\n');
+		if (nl)
+		  nl[0] = '\0';
+	      }
+	    /* Concat the description onto the current entry, adding a 
+	       newline if we need one. */
+	    next->text = concat (next->text == NULL ? "" : next->text, optarg, 
+				 optarg[length - 1] == '\n' ? "" : "\n");
+	    next->text_len = strlen (next->text);
+	  }
+	  break;
+
+        case 'C':
+	  {
+	    char *end = NULL;
+	    unsigned long int val;
+	    val = strtoul (optarg, &end, 0);
+	    if (end == NULL || end == optarg || *end != '\0')
+	      suggest_asking_for_help ();
+	    calign = val;
+	    if (calign <= 0)
+	      suggest_asking_for_help ();
+	  }
+	  break;
 
         case 'd':
           if (dirfile)
@@ -1239,6 +1912,44 @@ main (int argc, char *argv[])
           dirfile = concat (optarg, "", "/dir");
           break;
 
+        case 't':
+	  {
+            struct spec_entry *next
+              = (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
+
+	    size_t length;
+	    if (optarg[0] != '*')
+	      {
+		/* Make enough space for "* foo: ().\n". */
+		length = strlen (optarg) + 9;
+		next->text = xmalloc (length);
+		snprintf (next->text, length, "* %s: ().\n", optarg);
+		next->missing_basename = 1;
+		/* The basename will be inserted in between the parentheses
+		   at a later time.  See add_missing_basenames. */
+	      }
+	    else
+	      {
+		/* Make enough space for "foo\n". */
+		length = strlen (optarg) + 2;
+		next->text = xmalloc (length);
+		snprintf (next->text, length, "%s\n", optarg);
+		next->missing_basename = 0;
+		/* FIXME: check for info entry correctness in TEXT. 
+		   e.g. `* Aaa: (bbb).' */
+	      }
+
+            next->text_len = length - 1;
+            next->entry_sections = NULL;
+            next->entry_sections_tail = NULL;
+            next->next = entries_to_add;
+	    next->missing_name = 0;
+	    next->missing_description = 1;
+            entries_to_add = next;
+            n_entries_to_add++;
+	  }
+          break;
+
         case 'e':
           {
             struct spec_entry *next
@@ -1254,6 +1965,9 @@ main (int argc, char *argv[])
             next->entry_sections = NULL;
             next->entry_sections_tail = NULL;
             next->next = entries_to_add;
+	    next->missing_name = 0;
+	    next->missing_basename = 0;
+	    next->missing_description = 0;
             entries_to_add = next;
             n_entries_to_add++;
           }
@@ -1278,6 +1992,14 @@ main (int argc, char *argv[])
           infile = optarg;
           break;
 
+        case 'I':
+	  indent_flag = 0;
+          break;
+
+        case 'k':
+          keep_old_flag = 1;
+          break;
+
         case 'n':
           chicken_flag = 1;
           break;
@@ -1294,10 +2016,13 @@ main (int argc, char *argv[])
           {
             int error;
             if (psecreg)
-              warning (_("Extra regular expression specified, ignoring `%s'"),
-                       optarg, 0);
-            else
-              psecreg = (regex_t *) xmalloc (sizeof (regex_t));
+	      {
+		warning 
+		  (_("Extra regular expression specified, ignoring `%s'"),
+		   optarg, 0);
+		break;
+	      }
+	    psecreg = (regex_t *) xmalloc (sizeof (regex_t));
 
 	    error = regcomp (psecreg, optarg, REG_ICASE|REG_NOSUB);
             if (error != 0)
@@ -1332,6 +2057,19 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 	      "2007");
           xexit (0);
 
+        case 'W':
+	  {
+	    char *end = NULL;
+	    unsigned long int val;
+	    val = strtoul (optarg, &end, 0);
+	    if (end == NULL || end == optarg || *end != '\0')
+	      suggest_asking_for_help ();
+	    maxwidth = val;
+	    if (maxwidth <= 0)
+	      suggest_asking_for_help ();
+	  }
+	  break;
+
         case 'x':
           delete_flag = 1;
           remove_exactly = 1;
@@ -1359,65 +2097,38 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (!dirfile)
     fatal (_("No dir file specified; try --help for more information."), 0, 0);
 
-  /* Read the Info file and parse it into lines, unless we're deleting.  */
-  if (!delete_flag)
-    {
-      if (debug_flag)
-        printf ("debug: reading input file %s\n", infile);
-      input_data = readfile (infile, &input_size, NULL, NULL, NULL);
-      input_lines = findlines (input_data, input_size, &input_nlines);
-    }
-
-  i = parse_input (input_lines, input_nlines,
-                   &input_sections, &entries_to_add);
-  if (i > n_entries_to_add)
-    n_entries_to_add = i;
-
-  if (!delete_flag)
-    {
-      if (entries_to_add == 0)
-        { /* No need to abort here, the original info file may not
-             have the requisite Texinfo commands.  This is not
-             something an installer should have to correct (it's a
-             problem for the maintainer), and there's no need to cause
-             subsequent parts of `make install' to fail.  */
-          warning (_("no info dir entry in `%s'"), infile, 0);
-          xexit (0);
-        }
-
-      /* If the entries came from the command-line arguments, their
-         entry_sections pointers are not yet set.  Walk the chain of
-         the entries and for each entry update entry_sections to point
-         to the head of the list of sections where this entry should
-         be put.  Note that all the entries specified on the command
-         line get put into ALL the sections we've got, either from the
-         Info file, or (under --section) from the command line,
-         because in the loop below every entry inherits the entire
-         chain of sections.  */
-      if (n_entries_to_add > 0 && entries_to_add->entry_sections == NULL)
-        {
-          struct spec_entry *ep;
-
-          /* If we got no sections, default to "Miscellaneous".  */
-          if (input_sections == NULL)
-            {
-              input_sections = (struct spec_section *)
-                xmalloc (sizeof (struct spec_section));
-              input_sections->name = "Miscellaneous";
-              input_sections->next = NULL;
-              input_sections->missing = 1;
-            }
-          for (ep = entries_to_add; ep; ep = ep->next)
-            ep->entry_sections = input_sections;
-        }
-    }
-
   /* Now read in the Info dir file.  */
   if (debug_flag)
     printf ("debug: reading dir file %s\n", dirfile);
   dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
                        &opened_dirfilename, &compression_program);
   dir_lines = findlines (dir_data, dir_size, &dir_nlines);
+
+  parse_dir_file (dir_lines, dir_nlines, &dir_nodes);
+
+  if (!delete_flag)
+    {
+      /* Find which sections match our regular expression. */
+      if (psecreg)
+	{
+	  struct node *node;
+	  struct menu_section *section;
+	  for (node = dir_nodes; node ; node = node->next)
+	    for (section = node->sections; section ; section = section->next)
+	      if (regexec (psecreg, section->name, 0, NULL, 0) == 0)
+		{
+		  /* we have a match! */
+		  struct spec_section *next = 
+		    (struct spec_section *) xmalloc 
+		    (sizeof (struct spec_section));
+		  next->name = section->name;
+		  next->next = input_sections;
+		  next->missing = 0;
+		  input_sections = next;
+		}
+	}
+
+    }
 
   /* We will be comparing the entries in the dir file against the
      current filename, so need to strip off any directory prefix and/or
@@ -1435,8 +2146,183 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   } else
     infile_sans_info = xstrdup(infile);
 
-  something_deleted
-    = parse_dir_file (dir_lines, dir_nlines, &dir_nodes, infile_sans_info);
+  /* Now Read the Info file and parse it into lines, unless we're 
+     removing exactly.  */
+  if (!remove_exactly)
+    {
+      if (debug_flag)
+        printf ("debug: reading input file %s\n", infile);
+      input_data = readfile (infile, &input_size, NULL, NULL, NULL);
+      input_lines = findlines (input_data, input_size, &input_nlines);
+    }
+
+  i = parse_input (input_lines, input_nlines,
+                   &input_sections, &entries_to_add_from_file, delete_flag);
+  if (!delete_flag)
+    {
+      /* If there are no entries on the command-line at all, so we use the 
+	 entries found in the Info file itself (if any). */
+      if (entries_to_add == NULL)
+	{
+	  entries_to_add = entries_to_add_from_file;
+	  n_entries_to_add = i;
+	}
+      /* There are entries on the command-line, and they override the entries
+	 found in the Info file. */
+      else if (entries_to_add)
+	{
+	  if (entries_to_add_from_file == NULL)
+	    {
+	      /* No entries found in the file anyway.  Fill in any 
+	         missing names with the info file's basename.  We're out
+		 of luck for any missing descriptions. */
+	      add_missing_names (entries_to_add, infile_sans_info);
+	      //add_missing_descriptions (entries_to_add, "\n");
+	    }
+	  else
+	    {
+	      /* Fill in any missing names or descriptions with what was
+		 found in the Info file. */
+	      char *desc = NULL;
+	      size_t desc_len = 0;
+	      char *name = NULL;
+	      size_t name_len = 0;
+	      split_entry (entries_to_add_from_file->text, &name, &name_len,
+			   &desc, &desc_len);
+	      if (name)
+		{
+		  /* If the name doesn't look right, bail and use the 
+		     name based on the Info file. */
+		  if (name[0] != '*')
+		    add_missing_names (entries_to_add, infile_sans_info);
+		  else
+		    add_missing_names (entries_to_add, name);
+		  free (name);
+		}
+
+	      if (desc)
+		{
+		  add_missing_descriptions (entries_to_add, desc);
+		  free (desc);
+		}
+	    }
+	}
+	    
+      /* Lastly, fill in any missing basenames that might still be hanging
+         around from --name options on the command-line. */
+      add_missing_basenames (entries_to_add, infile_sans_info);
+
+      /* Reformat the new entries if we're doing that. */
+      if (indent_flag)
+	{
+	  char *no_indent = getenv ("INSTALL_INFO_NO_INDENT");
+	  if (!no_indent)
+	    reformat_new_entries (entries_to_add, calign, align, maxwidth);
+	}
+
+      /* If we got no sections, default to "Miscellaneous".  */
+      if (input_sections == NULL)
+	{
+	  input_sections = (struct spec_section *)
+	    xmalloc (sizeof (struct spec_section));
+	  input_sections->name = "Miscellaneous";
+	  input_sections->next = NULL;
+	  input_sections->missing = 1;
+	}
+
+      if (entries_to_add == 0)
+        { /* No need to abort here, the original info file may not
+             have the requisite Texinfo commands.  This is not
+             something an installer should have to correct (it's a
+             problem for the maintainer), and there's no need to cause
+             subsequent parts of `make install' to fail.  */
+	  if (!quiet_flag)
+	    warning (_("no info dir entry in `%s'"), infile, 0);
+          xexit (0);
+        }
+
+      /* If the entries came from the command-line arguments, their
+         entry_sections pointers are not yet set.  Walk the chain of
+         the entries and for each entry update entry_sections to point
+         to the head of the list of sections where this entry should
+         be put.  Note that all the entries specified on the command
+         line get put into ALL the sections we've got, either from the
+         Info file, or (under --section) from the command line,
+         because in the loop below every entry inherits the entire
+         chain of sections.  */
+      if (n_entries_to_add > 0 && entries_to_add->entry_sections == NULL)
+        {
+          struct spec_entry *ep;
+
+          for (ep = entries_to_add; ep; ep = ep->next)
+            ep->entry_sections = input_sections;
+        }
+    }
+
+  if (delete_flag)
+    {
+      something_deleted = mark_entry_for_deletion (dir_lines, dir_nlines, 
+						   infile_sans_info);
+      if (!something_deleted && !remove_exactly)
+	{
+	  struct spec_entry *entry;
+	  for (entry = entries_to_add; entry; entry = entry->next)
+	    {
+	      /* If the entry came from the info file... */
+	      if (entry->entry_sections != NULL)
+		{
+		  char *name = extract_menu_item_name (entry->text);
+		  something_deleted = 
+		    mark_entry_for_deletion (dir_lines, dir_nlines, name);
+		  free (name);
+		}
+	    }
+      
+	  if (!something_deleted)
+	    {
+	      struct spec_entry *entry;
+	      for (entry = entries_to_add; entry; entry = entry->next)
+		{
+		  /* If the entry came from the command-line... */
+		  if (entry->entry_sections == NULL)
+		    something_deleted = 
+		      mark_entry_for_deletion (dir_lines, dir_nlines, 
+					       entry->text);
+		}
+	    }
+	}
+    }
+    
+  /* Check for sections with zero entries and mark them for deletion. */
+  if (delete_flag && something_deleted && !keep_old_flag)
+    {
+      struct node *node;
+      struct menu_section *section;
+      int section_empty;
+
+      for (node = dir_nodes; node ; node = node->next)
+	for (section = node->sections; section ; section = section->next)
+	  {
+	    section_empty = 1;
+            for (i = section->end_line; i > section->start_line; i--)
+	      {
+		if (dir_lines[i - 1].delete == 0 && 
+		    dir_lines[i - 1].size != 0)
+		  {
+		    section_empty = 0;
+		    break;
+		  }
+	      }
+
+	    if (section_empty)
+	      {
+		/* This gets rid of any trailing empty lines at the end  
+		   of the section, and the title too. */
+		for (i = section->end_line; i >= section->start_line; i--)
+		  dir_lines[i - 1].delete = 1;
+	      }
+	  }
+    }
 
   /* Decide where to add the new entries (unless --delete was used).
      Find the menu sections to add them in.
@@ -1448,31 +2334,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       struct menu_section *section;
       struct spec_section *spec;
 
-      for (spec = input_sections; spec; spec = spec->next)
-        {
-          int found = 0;
-          /* Check if the section specified (e.g. in the info file) exists */
-          for (node = dir_nodes; node && found == 0; node = node->next)
-            for (section = node->sections;
-                 section && found == 0;
-                 section = section->next)
-              if (strcmp (spec->name, section->name) == 0)
-                found = 1;
-
-          /* If it does not exist, but the user specified a regular expression,
-             try to find a section that matches this regex.  */
-          if (!found && psecreg)
-            for (node = dir_nodes; node && found == 0; node = node->next)
-              for (section = node->sections;
-                   section && found == 0;
-                   section = section->next)
-                if (regexec (psecreg, section->name, 0, NULL, 0) == 0)
-                  {
-                    spec->name = section->name;
-                    spec->missing = 0;
-                    found = 1;
-                  }
-        }
       for (node = dir_nodes; node; node = node->next)
         for (section = node->sections; section; section = section->next)
           {
@@ -1486,6 +2347,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                 break;
             if (spec)
               {
+		int entries_added = 0;
                 int add_at_line = section->end_line;
                 struct spec_entry *entry;
                 /* Say we have found at least one section with this name,
@@ -1522,26 +2384,105 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                                                 dir_lines[i].start,
                                                 dir_lines[i].size)
                             && !dir_lines[i].delete)
-                          fatal (_("menu item `%s' already exists, for file `%s'"),
-                                 extract_menu_item_name (entry->text),
-                                 extract_menu_file_name (dir_lines[i].start));
+			  {
+			    if (keep_old_flag)
+			      {
+				add_at_line = -1;
+				break;
+			      }
+			    else
+			      {
+				int j;
+				dir_lines[i].delete = 1;
+				for (j = i + 1; j < section->end_line; j++)
+				  {
+				    if (dir_lines[j].start[0] == '*')
+				      break;
+				    dir_lines[j].delete = 1;
+				  }
+			      }
+			  }
                         if (dir_lines[i].start[0] == '*'
                             && menu_line_lessp (entry->text, entry->text_len,
                                                 dir_lines[i].start,
                                                 dir_lines[i].size))
                           add_at_line = i;
                       }
+		    if (add_at_line < 0)
+		      continue;
                     insert_entry_here (entry, add_at_line,
                                        dir_lines, n_entries_to_add);
                   }
               }
           }
 
-      /* Mark the end of the Top node as the place to add any
-         new sections that are needed.  */
+    }
+  /* Decide where to add the new sections (unless --delete was used).
+     Alphabetically find the menu sections to add them before.  */
+  if (!delete_flag)
+    {
+      struct node *node;
+      struct node *top = NULL;
+
+      /* Find the `Top' node. */
       for (node = dir_nodes; node; node = node->next)
         if (node->name && strcmp (node->name, "Top") == 0)
-          dir_lines[node->end_line].add_sections_before = 1;
+	  top = node;
+
+      if (top)
+	{
+	  struct spec_section *spec;
+	  int found = 0;
+	  struct line_data *target_line = NULL;
+	  for (spec = input_sections; spec; spec = spec->next)
+	    {
+	      found = 0;
+	      target_line = NULL;
+	      if (!spec->missing)
+		continue;
+	      if (order_new_sections_alphabetically_flag)
+		{
+		  struct menu_section *section;
+		  struct menu_section *prev_section = NULL;
+	      
+		  /* Look for the first section name that 
+		     exceeds SPEC->NAME. */
+		  for (section = top->sections; section ; 
+		       section = section->next)
+		    {
+		      found = (mbscasecmp (spec->name, section->name) < 0);
+		      if (found)
+			{
+			  /* Mark the section for addition at this point. */
+			  if (prev_section)
+			    target_line = &dir_lines[prev_section->end_line];
+			  else
+			    target_line = 
+			      &dir_lines[top->sections->start_line - 2];
+
+			  break;
+			}
+		      prev_section = section;
+		    }
+		}
+		  
+	      /* When we can't put a section anywhere, we put it at the 
+		 bottom of the file. */
+	      if (!found)
+		target_line = &dir_lines[top->end_line];
+
+	      /* Add the section to our list of sections being added
+	         at this point of the DIR file. */
+	      target_line->num_sections_to_add++;
+	      target_line->add_sections_before = 
+		(struct spec_section **) xrealloc 
+		(target_line->add_sections_before, 
+		 (target_line->num_sections_to_add *
+		  sizeof (struct spec_section *)));
+	      i = target_line->num_sections_to_add - 1;
+	      target_line->add_sections_before[i] = spec;
+	    }
+	}
     }
 
   if (delete_flag && !something_deleted && !quiet_flag)
@@ -1587,7 +2528,8 @@ findlines (char *data, int size, int *nlinesp)
             }
           lines[filled].start = &data[i];
           lines[filled].add_entries_before = 0;
-          lines[filled].add_sections_before = 0;
+          lines[filled].add_sections_before = NULL;
+          lines[filled].num_sections_to_add = 0;
           lines[filled].delete = 0;
           if (filled > 0)
             lines[filled - 1].size
@@ -1602,7 +2544,8 @@ findlines (char *data, int size, int *nlinesp)
   /* Do not leave garbage in the last element.  */
   lines[filled].start = NULL;
   lines[filled].add_entries_before = NULL;
-  lines[filled].add_sections_before = 0;
+  lines[filled].add_sections_before = NULL;
+  lines[filled].num_sections_to_add = 0;
   lines[filled].delete = 0;
   lines[filled].size = 0;
 
@@ -1648,7 +2591,7 @@ compare_entries_text (const void *p1, const void *p2)
     len2 = strlen (text2);
   else
     len2 = colon2 - text2;
-  return strncmp (text1, text2, len1 <= len2 ? len1 : len2);
+  return mbsncasecmp (text1, text2, len1 <= len2 ? len1 : len2);
 }
 
 /* Insert ENTRY into the add_entries_before vector

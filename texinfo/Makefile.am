@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.21 2007-07-01 18:44:23 karl Exp $
+# $Id: Makefile.am,v 1.22 2008-01-02 01:36:15 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -26,13 +26,14 @@ TEXINFO_TEX = doc/texinfo.tex
 
 if TOOLS_ONLY
   # Build native tools only.
-  SUBDIRS = lib info makeinfo util
+  SUBDIRS = lib info install-info makeinfo util
 else
   # All subdirectories.
   # Do libs first since the C programs depend on it.
   # Do doc last so makeinfo will be built when we get there.
   # Others are alphabetical.
-  SUBDIRS = $(native_tools) gnulib/lib lib info makeinfo po util doc
+  SUBDIRS = $(native_tools) gnulib/lib lib \
+            install-info info makeinfo po util doc 
 endif
 
 # One special target for installers to use by hand if desired.

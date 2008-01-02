@@ -1,4 +1,4 @@
-# Copyright (C) 2005, 2006 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -21,10 +21,12 @@ info/infomap.c
 info/m-x.c
 info/makedoc.c
 info/nodemenu.c
+info/search.c
 info/session.c
 info/tilde.c
 info/variables.c
 info/window.c
+install-info/install-info.c
 lib/xexit.c
 makeinfo/cmds.c
 makeinfo/defun.c
@@ -42,5 +44,4 @@ makeinfo/node.c
 makeinfo/sectioning.c
 makeinfo/xml.c
 makeinfo/xref.c
-util/install-info.c
 util/texindex.c

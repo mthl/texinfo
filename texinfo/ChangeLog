@@ -1,3 +1,39 @@
+2008-01-02  Karl Berry  <karl@tug.org>
+
+	* install-info/, install-info/tests/: new subdirectories.
+	* util/Makefile.am: move install-info stuff to its own dir, with tests.
+	* configure.ac,
+	* Makefile.am (SUBDIRS): take care of new dirs.
+	* doc/Makefile.am (install-info.1): new source location for man page.
+	* po/POTFILES.in: update source list.
+
+2008-01-02  Ben Asselstine  <benasselstine@gmail.com>
+
+	* install-info/install-info.c: much work toward Debian compatibility.
+	(line_data): new member num_sections to add; change type of
+	add_entries_before.
+	(spec_entry): new members missing_name, missing_description, 
+	missing_basename.
+	(longopts): new options --name, --menuentry, --description,
+	--no-indent, --keep-old, --maxwidth, --max-width,
+	--section-regex, --dry-run.
+        (remove_empty_sections, add_entries_into_all_matching_sections,
+        keep_old_flag, indent_flag,
+        order_new_sections_alphabetically_flag): new globals.
+        (print_help): list new options.
+        (output_dirfile): count sections added, and possibly sort them.
+        (parse_input): handle delete_flag.
+        (parse_dir_file): write the end of the last node.
+        (mark_entry_for_deletion, adjust_column, format_entry,
+        split_entry, reformat_new_entries, add_missing_basenames,
+        add_missing_names, add_missing_descriptions,
+        munge_old_style_debian_options): new fns.
+        (main): new variables calign, align, maxwidth,
+        entries_to_add_from_file; munge per debian if needed; handle new
+        options.
+        (compare_entries_text): use mbsncasecmp.
+	* doc/texinfo.txi (Invoking install-info): mention the new options.
+
 2008-01-01  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (info_short_help): break help string into smaller
