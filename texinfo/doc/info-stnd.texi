@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.17 2007-12-17 19:12:11 karl Exp $
+@comment $Id: info-stnd.texi,v 1.18 2008-01-02 00:46:25 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -18,7 +18,7 @@ a program for viewing documents in Info format (usually created from
 Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -132,15 +132,16 @@ The program accepts the following options:
 @table @code
 @anchor{--apropos}
 @item --apropos=@var{string}
+@itemx -k @var{string}
 @cindex Searching all indices
 @cindex Info files@r{, searching all indices}
 @cindex Apropos@r{, in Info files}
 Specify a string to search in every index of every Info file installed
-on your system.  Info looks up the named @var{string} in all the indices
-it can find, prints the results to standard output, and then exits.  If
-you are not sure which Info file explains certain issues, this option is
-your friend.  Note that if your system has a lot of Info files
-installed, searching all of them might take some time.
+on your system.  Info looks up the named @var{string} in all the
+indices it can find, prints the results to standard output, and then
+exits.  If you are not sure which Info file explains certain issues,
+this option is your friend.  (If your system has a lot of Info files
+installed, searching all of them might take some time!)
 
 You can invoke the apropos command from inside Info; see
 @ref{Searching Commands}.

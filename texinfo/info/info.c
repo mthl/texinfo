@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.23 2007-12-03 01:49:07 karl Exp $
+   $Id: info.c,v 1.24 2008-01-02 00:46:26 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007 Free Software Foundation, Inc.
@@ -94,12 +94,11 @@ int speech_friendly = 0;
 /* Structure describing the options that Info accepts.  We pass this structure
    to getopt_long ().  If you add or otherwise change this structure, you must
    also change the string which follows it. */
-#define APROPOS_OPTION 1
 #define DRIBBLE_OPTION 2
 #define RESTORE_OPTION 3
 #define IDXSRCH_OPTION 4
 static struct option long_options[] = {
-  { "apropos", 1, 0, APROPOS_OPTION },
+  { "apropos", 1, 0, 'k' },
   { "directory", 1, 0, 'd' },
   { "dribble", 1, 0, DRIBBLE_OPTION },
   { "file", 1, 0, 'f' },
@@ -125,9 +124,9 @@ static struct option long_options[] = {
 
 /* String describing the shorthand versions of the long options found above. */
 #ifdef __MSDOS__
-static char *short_options = "d:n:f:ho:ORswb";
+static char *short_options = "k:d:n:f:ho:ORswb";
 #else
-static char *short_options = "d:n:f:ho:ORws";
+static char *short_options = "k:d:n:f:ho:ORws";
 #endif
 
 /* When non-zero, the Info window system has been initialized. */
@@ -246,7 +245,7 @@ main (int argc, char *argv[])
 #endif /* __MSDOS__ */
 
           /* User has specified a string to search all indices for. */
-        case APROPOS_OPTION:
+        case 'k':
           apropos_p = 1;
           maybe_free (apropos_search_string);
           apropos_search_string = xstrdup (optarg);
@@ -603,7 +602,7 @@ Usage: %s [OPTION]... [MENU-ITEM...]\n\
 Read documentation in Info format.\n\
 \n\
 Options:\n\
-      --apropos=STRING         look up STRING in all indices of all manuals.\n\
+  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
   -d, --directory=DIR          add DIR to INFOPATH.\n\
       --dribble=FILENAME       remember user keystrokes in FILENAME.\n\
   -f, --file=FILENAME          specify Info file to visit.\n\
