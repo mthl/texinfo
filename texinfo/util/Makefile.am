@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.30 2008-01-02 01:36:32 karl Exp $
+# $Id: Makefile.am,v 1.31 2008-01-02 01:45:39 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-SUBDIRS = tests
+#SUBDIRS = tests
 bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
 
