@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.25 2008-01-02 00:54:29 karl Exp $
+   $Id: info.c,v 1.26 2008-01-02 22:57:55 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -588,13 +588,6 @@ info_error (char *format, void *arg1, void *arg2)
 static void
 info_short_help (void)
 {
-#ifdef __MSDOS__
-  static const char speech_friendly_string[] = N_("\
-  -b, --speech-friendly        be friendly to speech synthesizers.\n");
-#else
-  static const char speech_friendly_string[] = "";
-#endif
-
   printf (_("\
 Usage: %s [OPTION]... [MENU-ITEM...]\n\
 \n\
@@ -620,7 +613,10 @@ Options:\n\
       --restore=FILENAME       read initial keystrokes from FILENAME.\n\
   -O, --show-options, --usage  go to command-line options node."));
 
-  printf ("%s", speech_friendly_string);
+#ifdef __MSDOS__
+  puts (_("\
+  -b, --speech-friendly        be friendly to speech synthesizers."));
+#endif
 
   puts (_("\
       --subnodes               recursively output menu items.\n\

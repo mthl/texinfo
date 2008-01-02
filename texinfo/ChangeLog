@@ -1,4 +1,9 @@
-2008-01-03  Karl Berry  <karl@tug.org>
+2008-01-02  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (info_short_help) [__MSDOS__]: puts -b string directly.
+	Suggestion from Benno.
+
+2008-01-02  Karl Berry  <karl@tug.org>
 
 	* util/Makefile.am (TESTS): remove dvipdf.test, it is too
 	dependent on functional TeX installations.  Not our place to test that.
@@ -136,7 +141,7 @@
 	*  info/indices.c (info_next_index_match): use the line number
 	specified in the index entry, if available.
 
-2007-11-23  Benno Schulenberg <bensberg@justemail.net>
+2007-11-23  Benno Schulenberg <bensberg@justemail.net>  (tiny change)
 
 	* info/infodoc.c: keep help strings together for translation.
 
