@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.211 2008-01-02 01:41:50 karl Exp $
+@c $Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -38,8 +38,8 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
-1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
-Foundation, Inc.
+1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -5742,9 +5742,12 @@ node provides the page reference only for references within the same
 document.@refill
 
 @item
-The cross reference name for the Info reference, if it is to be different
-from the node name.  If you include this argument, it becomes
-the first part of the cross reference.  It is usually omitted.@refill
+The cross reference name for the Info reference, if it is to be
+different from the node name or the topic description.  If you
+include this argument, it becomes the first part of the cross reference.
+It is usually omitted; then the topic description (third argument) is
+used if it was specified; if that was omitted as well, the node name
+is used.
 
 @item
 A topic description or section name.  Often, this is the title of the
@@ -18987,7 +18990,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.211 2008-01-02 01:41:50 karl Exp $
+$Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19061,7 +19064,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.211 2008-01-02 01:41:50 karl Exp $
+@comment $Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

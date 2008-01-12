@@ -1,3 +1,8 @@
+2008-01-12  Bruno Haible  <bruno@clisp.org>
+
+	* doc/texinfo.txi (Cross Reference Parts): better description of arg2.
+	bug-texinfo mail of 12 Jan 2008 15:52:23 +0100.
+
 2008-01-02  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (info_short_help) [__MSDOS__]: puts -b string directly.
