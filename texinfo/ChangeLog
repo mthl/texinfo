@@ -1,3 +1,8 @@
+2008-01-13  Bruno Haible  <bruno@clisp.org>
+
+	* util/gendocs.sh (curdate): Execute 'date' command in the locale
+	specified by SETLANG.
+
 2008-01-12  Bruno Haible  <bruno@clisp.org>
 
 	* doc/texinfo.txi (Cross Reference Parts): better description of arg2.
