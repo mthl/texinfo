@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.157 2008-01-02 01:36:15 karl Exp $
+$Id: NEWS,v 1.158 2008-01-14 19:17:21 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -23,7 +23,24 @@ one of the relevant sections:
 -------------------------------------------------------------------------------
 
 * install-info:
-  . Much work towards compatibility with Debian's independent implementation.
+  . Much work towards compatibility with Debian's independent
+    implementation.  Changes in behavior:
+    - new entries are formatted to start at column 34 by default.
+    - existing entries are replaced by default.
+    - new sections are alphabetized among existing sections.
+    - if an entry being removed is the last one in a section, the
+      section is also removed.
+  . Also many new options:
+    --section REGEX TITLE.
+    --no-indent: disable formatting of new entries.
+    --menuentry, --name: specify left-hand side of an entry.
+    --dry-run: alias for --test.
+    --regex REGEX: renamed from --section regex, adds to all sections
+      matching REGEX by default.
+    --add-once: add only to first specified or matching section.
+    --align COL: start description at column COL.
+    --calign COL: start continuation lines in description at COL.
+    --max-width COL: wrap the description at COL.
   . New section in the Texinfo manual describing all this.
 
 * Info:
