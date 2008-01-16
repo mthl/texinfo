@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
+@c $Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3702,6 +3702,8 @@ for the chapters, chapter-like sections, and the appendices.
 The second part contains nodes for the indices.
 
 @item
+@findex detailmenu
+@cindex Detailed menu
 The third and subsequent parts contain a listing of the other, lower
 level nodes, often ordered by chapter.  This way, rather than go
 through an intermediary menu, an inquirer can go directly to a
@@ -4862,11 +4864,20 @@ Requirements}).  The subsequent arguments are the names of the `Next',
 your Texinfo document is hierarchically organized (@pxref{makeinfo
 Pointer Creation}).
 
-You may insert spaces before each name if you wish; the spaces are
-ignored.  You must write the name of the node and (if present) the names
-of the `Next', `Previous', and `Up' pointers all on the same line.
-Otherwise, the formatters fail.  (@inforef{Top, info, info}, for more
-information about nodes in Info.)
+@opindex accesskey@r{, in HTML output}
+Whether the node pointers are specified implicitly or explicitly, the
+HTML output from @command{makeinfo} for each node includes links to
+the `Next', `Previous', and `Up' nodes.  The HTML also uses the
+@code{accesskey} attribute with the values @samp{n}, @samp{p}, and
+@samp{u} respectively.  This allows people using web browsers to
+follow the nagivation using (typically) @kbd{M-@var{letter}}, e.g.,
+@kbd{M-n} for the `Next' node, from anywhere within the node.
+
+You may insert spaces before each name on the @code{@@node} line if
+you wish; the spaces are ignored.  You must write the name of the node
+and (if present) the names of the `Next', `Previous', and `Up'
+pointers all on the same line.  Otherwise, the formatters fail.
+(@inforef{Top, info, info}, for more information about nodes in Info.)
 
 Usually, you write one of the chapter-structuring command lines
 immediately after an @code{@@node} line---for example, an
@@ -5174,8 +5185,9 @@ Thus, in practice, a Top node starts like this:
 @cindex Pointer creation with @code{makeinfo}
 @cindex Automatic pointer creation with @code{makeinfo}
 
-The @code{makeinfo} program has a feature for automatically determining
-node pointers for a hierarchically organized document.
+The @code{makeinfo} program has a feature for automatically
+determining node pointers for a hierarchically organized document.  We
+highly recommend using it.
 
 When you take advantage of this feature, you do not need to write the
 `Next', `Previous', and `Up' pointers after the name of a node.
@@ -5191,7 +5203,14 @@ Finally, you must write the name of each node (except for the `Top'
 node) in a menu that is one or more hierarchical levels above the
 node's hierarchical level.
 
-This implicit node pointer insertion feature in @code{makeinfo}
+@cindex Detail menu
+@findex detailmenu
+If you use a detailed menu in your master menu (@pxref{Master Menu
+Parts}), mark it with the @code{@@detailmenu @@dots@{@} @@end
+detailmenu} environment, or @command{makeinfo} will get confused,
+typically about the last and/or first node in the document.
+
+This implicit node pointer creation feature in @code{makeinfo}
 relieves you from the need to update menus and pointers manually or
 with Texinfo mode commands.  (@xref{Updating Nodes and Menus}.)
 
@@ -5202,17 +5221,7 @@ sectioning commands at all (for example, if you never intend the
 document to be printed).  The special procedure for handling the short
 text before a menu (@pxref{Menus}) also disables this
 feature, for that group of nodes.  In those cases, you will need to
-explicitly specify the pointers.
-
-@opindex accesskey@r{, in HTML output}
-Whether the nodes are specified implicitly or explicitly, the HTML
-output from @command{makeinfo} includes links to the `Next',
-`Previous', and `Up' nodes.  The HTML also uses the @code{accesskey}
-attribute with the values @samp{n}, @samp{p}, and @samp{u}
-respectively.  This allows people using web browsers to follow
-the nagivation using (typically) @kbd{M-@var{letter}}, e.g.,
-@kbd{M-n} for the `Next' node, from anywhere within the node.
-
+explicitly specify all pointers.
 
 @node anchor
 @section @code{@@anchor}: Defining Arbitrary Cross-reference Targets
@@ -18990,7 +18999,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
+$Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19064,7 +19073,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.212 2008-01-12 17:04:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,12 @@
+2008-01-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Makeinfo Pointer Creation): mention the 
+	need for @detailmenu here, too.
+
+2008-01-14  Karl Berry  <karl@gnu.org>
+
+	* NEWS: install-info NEWS details.
+
 2008-01-13  Bruno Haible  <bruno@clisp.org>
 
 	* util/gendocs.sh (curdate): Execute 'date' command in the locale
