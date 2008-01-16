@@ -1,5 +1,8 @@
 2008-01-16  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Invoking makeinfo): --document-language default
+	is @documentlanguage, as of 4.11.
+
 	* doc/texinfo.txi (Makeinfo Pointer Creation): mention the 
 	need for @detailmenu here, too.
 

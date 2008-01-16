@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
+@c $Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10708,8 +10708,7 @@ are also supported:  @code{@@guillemotleft} and
 ``guillemot'' is a bird species (a type of auk).
 
 Traditions for quotation mark usage vary to a great extent between
-languages (see
-@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage#Overview}).
+languages (@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage@/#Overview}).
 Texinfo does not provide commands for typesetting quotation marks
 according to the numerous traditions.  Therefore, you have to choose
 the commands appropriate for the language of your manual.  Sometimes
@@ -15420,12 +15419,10 @@ Generate Docbook output rather than Info.
 @item --document-language=@var{lang}
 @opindex --document-language
 @vindex LANG
-Use @var{lang} for translations of Texinfo keywords which end up in
-the output document.  The default is (xxshould be) the locale
-specified by the @code{@@documentlanguage} command if there is one
-(@pxref{documentlanguage}), else the locale used for translations of
-@code{makeinfo}'s diagnostic messages, i.e., the @env{LANG}
-environment variable.
+Use @var{lang} to translate Texinfo keywords which end up in the
+output document.  The default is the locale specified by the
+@code{@@documentlanguage} command if there is one
+(@pxref{documentlanguage}).
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
@@ -18999,7 +18996,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
+$Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19073,7 +19070,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.213 2008-01-16 18:19:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
