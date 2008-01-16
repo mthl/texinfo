@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.105 2007-11-22 22:52:04 karl Exp $
+# $Id: texi2dvi,v 1.106 2008-01-16 19:35:12 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+# 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.105 $'
+rcs_revision='$Revision: 1.106 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -512,7 +512,7 @@ absolute_filenames ()
 
 # output_base_name FILE
 # ---------------------
-# The name of the FILE possibly renamed to satisfy --output.
+# The name of FILE, possibly renamed to satisfy --output.
 output_base_name ()
 {
   case $oname in
@@ -527,12 +527,21 @@ output_base_name ()
 
 # move_to_dest FILE...
 # --------------------
-# Move the FILE to the place where the user expects it.  FILE can be
-# the principal output (in which case -o directly apply), or an auxiliary
-# file with the same base name.
+# Move FILE to the place where the user expects it.  Truly move it, that
+# is, it must not remain in its build location unless that is also the
+# output location.  (Otherwise it might appear as an extra file in make
+# distcheck.)
+# 
+# FILE can be the principal output (in which case -o directly applies), or
+# an auxiliary file with the same base name.
 move_to_dest ()
 {
   local dest
+  local destfile
+  local destdir
+  local destbase
+  local sourcedir
+  local sourcebase
 
   for file
   do
@@ -545,17 +554,32 @@ move_to_dest ()
       error 1 "no such file or directory: $file"
     fi
     if test -n "$dest"; then
-      # avoid complaint from cmp if given a directory.
-      # do the cmp in the first place to avoid a complaint from cp
-      # if we try to copy a file onto itself.
+      # We need to know whether $dest is a directory.
       if test -d "$dest"; then
-        testdest="$dest/$file"
+        destdir=$dest
+        destfile=$dest/$file
       else
-        testdest="$dest"
+        destdir="`dirname $dest`"
+        destfile=$dest
       fi
-      if cmp -s "$file" "$testdest"; then :; else
-        verbose "Moving $file to $dest"
-        mv "$file" "$dest"
+      # We want to compare the source location and the output location,
+      # and if they are different, do the move.  But if they are the
+      # same, we must preserve the source.  Since we can't assume
+      # stat(1) or test -ef is available, resort to comparing the
+      # directory names, canonicalized with pwd.  We can't use cmp -s
+      # since the output file might not actually change from run to run;
+      # e.g., TeX DVI output is timestamped to only the nearest minute.
+      destdir=`cd $destdir && pwd`
+      destbase=`basename $destfile`
+      #
+      sourcedir=`dirname $file`
+      sourcedir=`cd $sourcedir && pwd`
+      sourcebase=`basename $file`
+      #
+      if test "$sourcedir/$sourcebase" != "$destdir/$destbase"; then
+        verbose "Moving $file to $destfile"
+        rm -f "$destfile"
+        mv "$file" "$destfile"
       fi
     fi
   done
