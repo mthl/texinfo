@@ -1,3 +1,8 @@
+2008-01-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Info Directories): mention starting at 0
+	and what-cursor-position when figuring column positions.
+
 2008-01-16  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (move_to_dest): compare with filenames, rather

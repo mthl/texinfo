@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
+@c $Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2187,7 +2187,7 @@ This updates all the nodes and menus.@refill
 
 The @code{texinfo-column-for-description} variable specifies the
 column to which menu descriptions are indented.  By default, the value
-is 32 although it is often useful to reduce it to as low as 24.  You
+is 32 although it can be useful to reduce it to as low as 24.  You
 can set the variable via customization (@pxref{Changing an Option,,,
 emacs, The GNU Emacs Manual}) or with the @kbd{M-x set-variable}
 command (@pxref{Examining, , Examining and Setting Variables, emacs,
@@ -16311,12 +16311,14 @@ command.  If you use them later on in the input, @code{install-info}
 will not notice them.
 
 @code{install-info} will automatically reformat the description of the
-menu entries it is adding.  As a matter of convention, the description of
-the main entry (above, @samp{The GNU documentation format}) should start
-at column 32.  This will make it align with most others.  Description for 
-individual utilities best start in column 48, where possible.
-For more information about formatting see the @samp{--calign}, @samp{--align},
-and @samp{--max-width} options in @ref{Invoking install-info}.
+menu entries it is adding.  As a matter of convention, the description
+of the main entry (above, @samp{The GNU documentation format}) should
+start at column 32, starting at zero (as in
+@code{what-cursor-position} in Emacs).  This will make it align with
+most others.  Description for individual utilities best start in
+column 48, where possible.  For more information about formatting see
+the @samp{--calign}, @samp{--align}, and @samp{--max-width} options in
+@ref{Invoking install-info}.
 
 If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
@@ -18996,7 +18998,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
+$Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19070,7 +19072,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.214 2008-01-16 19:07:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
