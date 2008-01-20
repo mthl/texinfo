@@ -1,8 +1,8 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.1 2008-01-02 01:36:16 karl Exp $
+   $Id: install-info.c,v 1.2 2008-01-20 19:45:17 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007 Free Software Foundation, Inc.
+   2005, 2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -500,17 +500,25 @@ suggest_asking_for_help (void)
 void
 print_help (void)
 {
-  printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n\
-\n\
-Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n\
-\n\
+  printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"), progname);
+  puts ("");
+  puts (_("Add or remove entries in INFO-FILE from the Info directory DIR-FILE."));
+  puts ("");
+
+  puts (_("\
 Options:\n\
- --debug           report what is being done.\n\
- --delete          delete existing entries for INFO-FILE from DIR-FILE;\n\
+ --debug            report what is being done.\n\
+ --delete           delete existing entries for INFO-FILE from DIR-FILE;\n\
                      don't insert any new entries.\n\
- --dir-file=NAME   specify file name of Info directory file.\n\
-                     This is equivalent to using the DIR-FILE argument.\n\
- --entry=TEXT      insert TEXT as an Info directory entry.\n\
+ --description=TEXT the description of the entry is TEXT; used with\n\
+                     the --name option to become synonymous with the\n\
+		     --entry option.\n\
+ --dir-file=NAME    specify file name of Info directory file;\n\
+                     equivalent to using the DIR-FILE argument.\n\
+ --dry-run          same as --test."));
+
+  puts (_("\
+ --entry=TEXT       insert TEXT as an Info directory entry.\n\
                      TEXT should have the form of an Info menu item line\n\
                      plus zero or more extra lines starting with whitespace.\n\
                      If you specify more than one entry, they are all added.\n\
@@ -519,38 +527,38 @@ Options:\n\
 		     When removing TEXT is the name of the entry to remove.\n\
 		     TEXT is only removed as a last-ditch effort if the \n\
 		     entry as determined from the Info file is not present \n\
-		     and the basename of the Info file isn't found either.\n\
- --name=TEXT       the name of the entry is TEXT.  Used with --description \n\
+		     and the basename of the Info file isn't found either."));
+
+  puts (_("\
+ --help             display this help and exit.\n\
+ --info-dir=DIR     same as --dir-file=DIR/dir.\n\
+ --info-file=FILE   specify Info file to install in the directory;\n\
+                     equivalent to using the INFO-FILE argument.\n\
+ --item=TEXT        same as --entry=TEXT.\n\
+ --keep-old         do not replace entries, or remove empty sections.\n\
+ --menuentry=TEXT   same as --name=TEXT.\n\
+ --name=TEXT        the name of the entry is TEXT; used with --description\n\
                      to become synonymous with the --entry option.\n\
- --menuentry=TEXT  same as --name=TEXT.\n\
- --description=TEXT the description of the entry is TEXT.  It is used with \n\
-                     the --name option to become synonymous with the \n\
-		     --entry option.\n\
- --help            display this help and exit.\n\
- --info-file=FILE  specify Info file to install in the directory.\n\
-                     This is equivalent to using the INFO-FILE argument.\n\
- --info-dir=DIR    same as --dir-file=DIR/dir.\n\
- --item=TEXT       same as --entry=TEXT.\n\
-                     An Info directory entry is actually a menu item.\n\
- --keep-old        do not replace entries, or remove empty sections.\n\
- --no-indent       do not format new entries in the DIR file.\n\
- --quiet           suppress warnings.\n\
- --remove          same as --delete.\n\
- --remove-exactly  only remove if the info file name matches exactly;\n\
-                     .info and/or .gz suffixes are not ignored.\n\
- --section=SEC     put this file's entries in section SEC of the directory.\n\
+ --no-indent        do not format new entries in the DIR file.\n\
+ --quiet            suppress warnings."));
+
+  puts (_("\
+ --regex=R          put this file's entries in all sections that match the\n\
+                     regular expression R (ignoring case).\n\
+ --remove           same as --delete.\n\
+ --remove-exactly   only remove if the info file name matches exactly;\n\
+                     suffixes such as .info and .gz are not ignored.\n\
+ --section=SEC      put this file's entries in section SEC of the directory.\n\
                      If you specify more than one section, all the entries\n\
                      are added in each of the sections.\n\
                      If you don't specify any sections, they are determined\n\
                      from information in the Info file itself.\n\
- --section R SEC   equivalent to --regex=R --section=SEC --add-once.\n\
- --regex=R         put this file's entries in all sections that match the\n\
-                     regular expression R (ignoring case).\n\
- --test            suppress updating of DIR-FILE.\n\
- --dry-run         same as --test.\n\
- --silent          suppress warnings.\n\
- --version         display version information and exit.\n\
-"), progname);
+ --section R SEC    equivalent to --regex=R --section=SEC --add-once."));
+
+  puts (_("\
+ --silent           suppress warnings.\n\
+ --test             suppress updating of DIR-FILE.\n\
+ --version          display version information and exit."));
 
   puts (_("\n\
 Email bug reports to bug-texinfo@gnu.org,\n\

@@ -1,3 +1,8 @@
+2008-01-20  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (print_help): split up big help string,
+	some rewording.
+
 2008-01-19  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_tex): use verbose, not echo, so -q is respected.
