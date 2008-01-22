@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.26 2008-01-02 22:57:55 karl Exp $
+   $Id: info.c,v 1.27 2008-01-22 01:03:00 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -396,6 +396,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   {
     const char *errstr;
     char *errarg1, *errarg2;
+
+   /* If they say info -O info, we want to show them the invocation node
+      for standalone info; there's nothing useful in info.texi.  */
+   if (goto_invocation_p && argv[optind]
+       && mbscasecmp (argv[optind], "info") == 0)
+     argv[optind] = "info-stnd";
 
     NODE *new_initial_node = info_follow_menus (initial_node, argv + optind,
         &errstr, &errarg1, &errarg2);

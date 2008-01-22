@@ -8,4 +8,6 @@ set env TERM xterm
 
 #set args --restore $ttests/setscreen.drib
 #set args somedoc
-set args --restore /tmp/q ./foobar
+#set args --restore /tmp/q ./foobar
+
+set args -O info
