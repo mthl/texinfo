@@ -266,3 +266,6 @@ set args -I $ks/groff/doc --enable-encoding groff.texinfo
 
 # spurious </bookinfo>
 set args -o /tmp/b.xml --docbook $ttests/binutils.tex
+
+# removing wrong direntry indentation in source
+set args -o - $ttests/direntryspace.tex

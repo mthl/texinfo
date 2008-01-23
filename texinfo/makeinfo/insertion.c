@@ -1,8 +1,8 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.66 2007-12-19 23:39:05 karl Exp $
+   $Id: insertion.c,v 1.67 2008-01-23 19:28:21 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
-   Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+   2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -476,7 +476,7 @@ begin_insertion (enum insertion_type type)
       if (xml)
         {
           xml_insert_element (DETAILMENU, START);
-          skip_whitespace_and_newlines();
+          skip_whitespace_and_newlines ();
         }
       else
         in_fixed_width_font++;
@@ -489,6 +489,11 @@ begin_insertion (enum insertion_type type)
       filling_enabled = no_indent = 0;
       inhibit_paragraph_indentation = 1;
       add_word ("START-INFO-DIR-ENTRY\n");
+      
+      /* The zsh manual, maybe others, wrongly indents the * line of the
+         direntry in the source.  Ignore that whitespace.  */
+      skip_whitespace_and_newlines ();
+      no_discard++;
       break;
 
     case documentdescription:
