@@ -1,7 +1,13 @@
+2008-01-24  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (What is Info): that's C-x C-c to exit, not
+	C-x C-x.  Report from Benno, 24 Jan 2008 00:40:04.
+
 2008-01-23  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/insertion.c (begin_insertion) <direntry>: ignore
-	whitespace beginning a * line inside @direntry.
+	whitespace beginning the first * line inside @direntry,
+	to work around the zsh manual.
 	Report from Norbert Preining, 14 Jan 2008 09:09:01.
 
 2008-01-21  Karl Berry  <karl@gnu.org>
