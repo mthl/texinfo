@@ -11,7 +11,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-$EMACSSRC/man/info.texi			doc
+$EMACSSRC/doc/misc/info.texi		doc
 #$TEXMFROOT/tex/generic/dvips/epsf.tex	doc
 
 
