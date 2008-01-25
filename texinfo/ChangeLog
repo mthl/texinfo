@@ -1,5 +1,9 @@
 2008-01-24  Karl Berry  <karl@gnu.org>
 
+	* info/session.c (info_move_to_xref): must use fixed-string
+	searches for these Info keywords that contain *.
+	Report from Ben Asselstine, 29 Dec 2007 11:21:40 (et al.).
+
 	* doc/info-stnd.texi (What is Info): that's C-x C-c to exit, not
 	C-x C-x.  Report from Benno, 24 Jan 2008 00:40:04.
 

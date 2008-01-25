@@ -1,8 +1,8 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.24 2007-12-17 19:12:11 karl Exp $
+   $Id: session.c,v 1.25 2008-01-25 01:23:51 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007 Free Software Foundation, Inc.
+   2004, 2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -4367,6 +4367,10 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   long placement = -1;
   long start = 0;
   NODE *node = window->node;
+  int save_use_regex = use_regex;
+
+  /* Most of our keywords contain * characters; don't use regexes.  */
+  use_regex = 0;
 
   if (dir < 0)
     start = node->nodelen;
@@ -4403,6 +4407,7 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   if (firstmenu == -1 && firstxref == -1)
     {
       info_error ((char *) msg_no_xref_node, NULL, NULL);
+      use_regex = save_use_regex;
       return cursor_movement_scrolls_p;
     }
 
@@ -4429,6 +4434,9 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
         nextmenu = info_search_in_node
           (INFO_MENU_ENTRY_LABEL, node, nextmenu + dir, (WINDOW *)NULL, dir, 0);
     }
+
+  /* No more searches, back to whatever the user wanted.  */
+  use_regex = save_use_regex;
 
   /* If there is both a next menu entry, and a next xref entry, choose the
      one which occurs first.  Otherwise, select the one which actually
