@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
+@c $Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18998,7 +18998,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
+$Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19072,7 +19072,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.215 2008-01-18 19:39:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -19094,9 +19094,9 @@ and with the Back-Cover Texts as in (a) below.  A copy of the
 license is included in the section entitled ``GNU Free Documentation
 License.''
 
-(a) The FSF's Back-Cover Text is: ``You are free to copy and modify
-this GNU Manual.  Buying copies from GNU Press supports the FSF in
-developing GNU and promoting software freedom.''
+(a) The FSF's Back-Cover Text is: ``You have the freedom to
+copy and modify this GNU manual.  Buying copies from the FSF
+supports it in developing GNU and promoting software freedom.''
 @end quotation
 @end copying
 

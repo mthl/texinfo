@@ -1,3 +1,8 @@
+2008-01-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi, doc/info-stnd.texi (Back-Cover Text): new
+	wording from rms.
+
 2008-01-24  Karl Berry  <karl@gnu.org>
 
 	* info/session.c (info_move_to_xref): must use fixed-string
