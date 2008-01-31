@@ -1,3 +1,8 @@
+2008-01-31  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (convert_from_loaded_file): move
+	xml_begin_document to after we are sure the output file is open.
+
 2008-01-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi, doc/info-stnd.texi (Back-Cover Text): new
@@ -7511,7 +7516,7 @@
 	* version 4.6.
 
 
-Copyright 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+Copyright 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright

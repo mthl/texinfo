@@ -1,8 +1,8 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.114 2007-12-10 00:55:10 karl Exp $
+   $Id: makeinfo.c,v 1.115 2008-01-31 17:46:22 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -1648,9 +1648,6 @@ convert_from_loaded_file (char *name)
 
   set_current_output_filename (real_output_filename);
   
-  if (xml)
-    xml_begin_document (filename_part (output_filename));
-
   if (verbose_mode)
     printf (_("Making %s file `%s' from `%s'.\n"),
             no_headers ? "text"
@@ -1664,6 +1661,9 @@ convert_from_loaded_file (char *name)
       fs_error (real_output_filename);
       goto finished;
     }
+
+  if (xml)
+    xml_begin_document (filename_part (output_filename));
 
   /* Make the displayable filename from output_filename.  Only the base
      portion of the filename need be displayed. */
