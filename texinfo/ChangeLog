@@ -1,5 +1,21 @@
 2008-01-31  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Click Sequences): new section to document new
+	commands @arrow, @clicksequence, @click, and @clickstyle.
+	* doc/texinfo.tex (\clicksequence, \click, \clickstyle): define them.
+	* makeinfo/cmds.h,
+	* makeinfo/cmds.c (cm_arrow, cm_click, cm_clicksequence,
+	cm_clickstyle): new fns.
+	* insertion.h,
+	* insertion.c (get_item_function): no longer static.
+	* xml.h,
+	* xml.c (CLICK, CLICKSEQUENCE): new elements.
+	* util/texinfo.dtd (Inline.misc): add click and clicksequence.
+	(rarr): new entity.
+
+	* makeinfo/xml.c (xml_insert_entity): only do XML checks if we are
+	actually outputting XML; this routine is also used for HTML output.
+
 	* makeinfo/makeinfo.c (convert_from_loaded_file): move
 	xml_begin_document to after we are sure the output file is open.
 

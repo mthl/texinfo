@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
+@c $Id: texinfo.txi,v 1.217 2008-01-31 18:33:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -452,6 +452,7 @@ Special Insertions
 * textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
+* Click Sequences::             Inserting GUI usage sequences.
 * Glyphs::                      How to indicate results of evaluation,
                                  expansion of macros, errors, etc.
 
@@ -10051,6 +10052,7 @@ These are:
 * textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
+* Click Sequences::             Inserting GUI usage sequences.
 * Glyphs::                      How to indicate results of evaluation,
                                  expansion of macros, errors, etc.
 @end menu
@@ -11012,6 +11014,56 @@ literal @samp{\}.
 @cindex Equations, displayed
 For displayed equations, you must at present use @TeX{} directly
 (@pxref{Raw Formatter Commands}).
+
+
+@node Click Sequences
+@section Click Sequences
+@cindex Click sequences
+@cindex Sequence of clicks
+
+@findex clicksequence
+When documenting graphical interfaces, it is necessary to describe
+sequences such as `Click on @samp{File}, then choose @samp{Open}, then
+@dots{}'.  Texinfo offers commands @code{@@clicksequence} and
+@code{click} to represent this, typically used like this:
+
+@example
+@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
+@end example
+
+@noindent
+which produces:
+
+@display
+@dots{} @clicksequence{File @click{} Open} @dots{}
+@end display
+
+@findex click
+@findex arrow
+The @code{@@click} command produces a simple right arrow (@samp{->} in
+Info) by default; this glyph is also available independently via the
+command @code{@@arrow@{@}}.
+
+@findex clickstyle
+You can change the glyph produced by @code{@@click} with the command
+@code{@@clickstyle}, which takes a command name as its single argument
+on the rest of the line, much like @code{@@itemize} and friends
+(@pxref{itemize,,@code{@@itemize}}).  The command should produce a
+glyph, and the usual empty braces @samp{@{@}} are omitted.  Here's an
+example:
+
+@example
+@@clickstyle @@result
+@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
+@end example
+
+@noindent
+now produces:
+
+@display
+@clickstyle @result
+@dots{} @clicksequence{File @click{} Open} @dots{}
+@end display
 
 
 @node Glyphs
@@ -17343,10 +17395,14 @@ title appears in the table of contents of a printed manual.  In Info,
 the title is underlined with periods.  @xref{subsubsection,, The
 `subsub' Commands}.@refill
 
+@item @@arrow@{@}
+Produce a normal right arrow glyph: @samp{@arrow{}}.  Used by default
+for @code{@@click}.  @xref{Click Sequences}.
+
 @item @@asis
 Used following @code{@@table}, @code{@@ftable}, and @code{@@vtable} to
 print the table's first column without highlighting (``as is'').
-@xref{Two-column Tables, , Making a Two-column Table}.@refill
+@xref{Two-column Tables}.
 
 @item @@author @var{author}
 Typeset @var{author} flushleft and underline it.  @xref{title
@@ -17409,6 +17465,18 @@ Defining the Entries of an Index}.@refill
 @item @@cite@{@var{reference}@}
 Highlight the name of a book or other reference that lacks a
 companion Info file.  @xref{cite, , @code{@@cite}}.@refill
+
+@item @@click@{@}
+Represent a single ``click'' in a GUI.  Used within
+@code{@@clicksequence}.  @xref{Click Sequences}.
+
+@item @@clicksequence@{@var{action} @@click@{@} @var{action}@}
+Represent a sequence of clicks in a GUI.  @xref{Click Sequences}.
+
+@item @@clickstyle @@@var{cmd}
+Execute @@@var{cmd} for each @code{@@click}; the default is
+@code{@@arrow}.  The usual following empty braces on @@@var{cmd} are
+omitted.  @xref{Click Sequences}.
 
 @item @@clear @var{flag}
 Unset @var{flag}, preventing the Texinfo formatting commands from
@@ -18998,7 +19066,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
+$Id: texinfo.txi,v 1.217 2008-01-31 18:33:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19072,7 +19140,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.216 2008-01-30 19:40:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.217 2008-01-31 18:33:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

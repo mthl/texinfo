@@ -269,3 +269,6 @@ set args -o /tmp/b.xml --docbook $ttests/binutils.tex
 
 # removing wrong direntry indentation in source
 set args -o - $ttests/direntryspace.tex
+
+# seg fault
+set args -o /tmp/  --xml $ttests/click.tex

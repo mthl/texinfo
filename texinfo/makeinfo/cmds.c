@@ -1,8 +1,8 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.78 2007-10-24 20:03:35 karl Exp $
+   $Id: cmds.c,v 1.79 2008-01-31 18:33:27 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
-   Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+   2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -100,6 +100,7 @@ COMMAND command_table[] = {
   { "appendixsec", cm_appendixsec, NO_BRACE_ARGS },
   { "appendixsubsec", cm_appendixsubsec, NO_BRACE_ARGS },
   { "appendixsubsubsec", cm_appendixsubsubsec, NO_BRACE_ARGS },
+  { "arrow", cm_arrow, BRACE_ARGS },
   { "asis", cm_no_op, BRACE_ARGS },
   { "author", cm_author, NO_BRACE_ARGS },
   { "b", cm_b, BRACE_ARGS },
@@ -115,6 +116,9 @@ COMMAND command_table[] = {
   { "cindex", cm_cindex, NO_BRACE_ARGS },
   { "cite", cm_cite, BRACE_ARGS },
   { "clear", cm_clear, NO_BRACE_ARGS },
+  { "click", cm_click, BRACE_ARGS },
+  { "clicksequence", cm_clicksequence, BRACE_ARGS },
+  { "clickstyle", cm_clickstyle, NO_BRACE_ARGS },
   { "code", cm_code, BRACE_ARGS },
   { "comma", cm_comma, BRACE_ARGS },
   { "command", cm_code, BRACE_ARGS },
@@ -1714,9 +1718,54 @@ cm_center (void)
       filling_enabled = save_filling_enabled;
       indented_fill = save_indented_fill;
       close_single_paragraph ();
-      if (looking_at("\n"))
+      if (looking_at ("\n"))
         insert ('\n');
     }
+}
+
+
+/* Define what @click{} does.  */
+static char *click_command = "@arrow";
+
+void
+cm_clickstyle (void)
+{
+  click_command = get_item_function ();
+
+  if (looking_at ("\n"))
+    {
+      input_text_offset++;
+      line_number++;
+    }
+}
+
+/* @clicksequence{File @click{} Open} */
+void
+cm_clicksequence (int arg)
+{
+  if (xml)
+    xml_insert_element (CLICKSEQUENCE, arg);
+}
+
+void
+cm_click (int arg)
+{
+  if (xml)
+    xml_insert_element (CLICK, arg);
+  else if (arg == END)
+    execute_string ("%s{}", click_command);
+}
+
+
+/* Generic right arrow, default clickstyle.  */
+void
+cm_arrow (int arg)
+{
+  if (arg == END)
+    if (html || xml)
+      xml_insert_entity ("rarr");
+    else
+      add_word ("->");
 }
 
 /* Show what an expression returns. */

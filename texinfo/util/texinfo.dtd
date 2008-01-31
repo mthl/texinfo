@@ -1,8 +1,8 @@
-<!-- $Id: texinfo.dtd,v 1.12 2007-07-15 11:51:12 olegkat Exp $
+<!-- $Id: texinfo.dtd,v 1.13 2008-01-31 18:33:27 karl Exp $
    Document Type Definition for Texinfo XML output (the '-'-xml option).
 
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software
-  Foundation, Inc.
+  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+  Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -107,7 +107,7 @@
                           | dfn | cite | key | kbd | var | acronym | url"> 
 <!ENTITY % Inline.math "math | dmn">
 <!ENTITY % Inline.reference "xref | inforef | indexterm | email | uref">
-<!ENTITY % Inline.misc "logo | punct">
+<!ENTITY % Inline.misc "click | clicksequence | logo | punct">
 
 <!ENTITY % Inline.phrase
            "%Inline.emphasize;  | %Inline.misc; | %Inline.fonts;
@@ -492,7 +492,8 @@
 <!ENTITY aring "&#xe5;">
 <!ENTITY szlig "&#xdf;">
 
-<!ENTITY rArr "&#x21D2;">
+<!ENTITY rarr "&#x2192;">
+<!ENTITY rArr "&#x21d2;">
 
 <!ENTITY macr "&#xaf;">
 

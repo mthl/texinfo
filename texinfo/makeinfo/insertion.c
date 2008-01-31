@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.67 2008-01-23 19:28:21 karl Exp $
+   $Id: insertion.c,v 1.68 2008-01-31 18:33:27 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -143,7 +143,7 @@ current_item_function (void)
    change it to "@ ", since "@" by itself is not a command.  This makes
    "@ ", "@\t", and "@\n" all the same, but their default meanings are
    the same anyway, and let's not worry about supporting redefining them.  */
-static char *
+char *
 get_item_function (void)
 {
   char *item_function;

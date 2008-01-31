@@ -1,7 +1,7 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.13 2007-07-15 11:51:12 olegkat Exp $
+   $Id: cmds.h,v 1.14 2008-01-31 18:33:27 karl Exp $
 
-   Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007
+   Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -88,7 +88,11 @@ extern void cm_anchor (int arg),
 /* Special insertions.  */
 extern void cm_LaTeX (int arg),
   cm_TeX (int arg),
+  cm_arrow (int arg),
   cm_bullet (int arg),
+  cm_click (int arg),
+  cm_clicksequence (int arg),
+  cm_clickstyle (void),
   cm_colon (void),
   cm_comma (int arg),
   cm_copyright (int arg),

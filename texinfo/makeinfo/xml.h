@@ -1,7 +1,7 @@
 /* xml.h -- xml (including Docbook) output declarations.
-   $Id: xml.h,v 1.31 2007-10-24 20:03:36 karl Exp $
+   $Id: xml.h,v 1.32 2008-01-31 18:33:28 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007
+   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -79,6 +79,7 @@ enum xml_element
   ITEMIZE, ITEMFUNCTION, ITEM, ENUMERATE, TABLE, TABLEITEM, TABLETERM,
   INDEXTERM, 
   MATH, DIMENSION,
+  CLICKSEQUENCE, CLICK,
   XREF, XREFNODENAME, XREFINFONAME, XREFPRINTEDDESC, XREFINFOFILE,
     XREFPRINTEDNAME, 
   INFOREF, INFOREFNODENAME, INFOREFREFNAME, INFOREFINFONAME, 

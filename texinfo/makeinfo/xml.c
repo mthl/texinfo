@@ -1,7 +1,7 @@
 /* xml.c -- xml output, both TexinfoML and Docbook.
-   $Id: xml.c,v 1.74 2007-12-03 01:38:43 karl Exp $
+   $Id: xml.c,v 1.75 2008-01-31 18:33:27 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007
+   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -164,6 +164,9 @@ element texinfoml_element_list [] = {
   { "math",                0, 1, 0 },
 
   { "dmn",                 0, 1, 0 },
+
+  { "clicksequence",       0, 1, 0 },
+  { "click",               0, 1, 0 },
 
   { "xref",                0, 1, 0 },
   { "xrefnodename",        0, 1, 0 },
@@ -378,6 +381,9 @@ element docbook_element_list [] = {
   { "",                    0, 1, 0 }, /* MATH */
 
   { "",                    0, 1, 0 }, /* DIMENSION */
+
+  { "",                    0, 1, 0 }, /* CLICKSEQUENCE */
+  { "",                    0, 1, 0 }, /* CLICK */
 
   { "xref",                0, 1, 0 }, /* XREF */
   { "link",                0, 1, 0 }, /* XREFNODENAME */
@@ -1050,15 +1056,18 @@ xml_insert_entity (char *entity_name)
 {
   int saved_escape_html = escape_html;
 
-  if (!book_started)
-    return;
-  if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
-    return;
+  if (xml)
+    {
+    if (!book_started)
+      return;
+    if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
+      return;
 
-  if (!xml_in_para && !xml_no_para && !only_macro_expansion
-      && xml_element_list[xml_current_element ()].contains_para
-      && !in_fixed_width_font)
-    xml_start_para ();
+    if (!xml_in_para && !xml_no_para && !only_macro_expansion
+        && xml_element_list[xml_current_element ()].contains_para
+        && !in_fixed_width_font)
+      xml_start_para ();
+  }
 
   escape_html = 0;
   add_char ('&');
