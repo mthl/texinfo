@@ -1,3 +1,10 @@
+2008-02-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\includezzz): simply do the \input (instead of
+	trickily expanding it after the }) a la \verbatiminput; otherwise,
+	@value expansions are not done.  The trickery just seems unnecessary.
+	Report from Joseph S. Myers, 1 Feb 2008 01:11:11.
+
 2008-02-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\ptextop): save plain tex \top (a math symbol).
