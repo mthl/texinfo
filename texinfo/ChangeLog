@@ -1,3 +1,9 @@
+2008-02-10  Karl Berry  <karl@gnu.org>
+
+	* info/session.c (show_isearch_prompt): Start with "Regexp" if
+	it's a regexp i-search.
+	Report from Ralf Wildenhues, 8 Feb 2008 23:30:51.
+
 2008-02-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\includezzz): simply do the \input (instead of

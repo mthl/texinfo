@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.25 2008-01-25 01:23:51 karl Exp $
+   $Id: session.c,v 1.26 2008-02-10 18:44:22 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -3980,9 +3980,11 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
   unsigned int prompt_len, p_rep_index, p_rep_size;
 
   if (dir < 0)
-    prefix = _("I-search backward: ");
+    prefix = use_regex ? _("Regexp I-search backward: ")
+                       : _("I-search backward: ");
   else
-    prefix = _("I-search: ");
+    prefix = use_regex ? _("Regexp I-search: ")
+                       : _("I-search: ");
 
   p_rep_index = p_rep_size = 0;
   p_rep = (char *)NULL;
