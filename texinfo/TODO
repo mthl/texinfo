@@ -1,9 +1,9 @@
-$Id: TODO,v 1.40 2007-12-19 22:45:50 karl Exp $
+$Id: TODO,v 1.41 2008-02-10 00:05:26 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation.
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -64,7 +64,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - @exercise/@answer command for, e.g., gawk.
   - Allow @hsep/@vsep at @item, instead of just in template.
   - Support automatic line numbering of examples.
-  - Better macro syntax.
+  - Better macro syntax, including a separate @inlinemacro (or
+    something) to distinguish macros that swallow their final newline
+    and those that don't.
   - Better def... command syntax.
   - Allow : in node names for info files, for names like
     `class::method'.  Likewise index entries.  A quoting mechanism such
