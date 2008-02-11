@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.26 2008-02-10 18:44:22 karl Exp $
+   $Id: session.c,v 1.27 2008-02-11 16:47:13 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -4238,9 +4238,19 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
             break;
           }
       
-
-      if (search_result == 0)
+      /* Regex isearch means we better search again every time.  We
+         might have had a failed search for "\", for example, but now we
+         have "\.".  */
+      if (use_regex)
         {
+          search_result = info_search_internal (isearch_string,
+                                                window, dir, case_sensitive);
+        }
+      else if (search_result == 0)
+        { /* I don't understand why we test for search_result being
+             zero; it means if the search failed we don't search again. 
+             Clearly the special check isn't applicable to regex search
+             anyway.  --karl, 11feb08.  */
           /* Check to see if the current search string is right here.  If
              we are looking at it, then don't bother calling the search
              function. */

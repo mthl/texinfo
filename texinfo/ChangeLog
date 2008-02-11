@@ -1,8 +1,15 @@
+2008-02-11  Karl Berry  <karl@gnu.org>
+
+	* info/session.c (incremental_search): if a regex search,
+	search every time through the loop, not only if the search
+	succeeded.
+	Bug report from Ralf Wildenhues, 8 Feb 2008 23:30:51.
+
 2008-02-10  Karl Berry  <karl@gnu.org>
 
 	* info/session.c (show_isearch_prompt): Start with "Regexp" if
 	it's a regexp i-search.
-	Report from Ralf Wildenhues, 8 Feb 2008 23:30:51.
+	Suggestion from Ralf Wildenhues, 8 Feb 2008 23:30:51.
 
 2008-02-04  Karl Berry  <karl@gnu.org>
 

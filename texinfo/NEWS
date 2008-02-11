@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.160 2008-01-31 18:33:27 karl Exp $
+$Id: NEWS,v 1.161 2008-02-11 16:47:13 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -48,8 +48,9 @@ one of the relevant sections:
   . New section in the Texinfo manual describing all this.
 
 * Info:
-  . regular expression searches are now the default; the new R command
-    toggles between regexp and literal-string searches.
+  . regular expression searches are now the default for both regular
+    and incremental searches.
+  . the new R command toggles between regexp and literal-string searches.
   . the precise line number specified in index entries is used if available.
   . --usage=info shows usage for standalone Info.
 
