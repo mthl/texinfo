@@ -3,19 +3,11 @@
 # Karl Eichwalder <ke@ke.Central.DE>, 1996.
 # Karl Eichwalder <ke@suse.de>, 1997, 1998, 1999.
 # Karl Eichwalder <ke@gnu.franken.de>, 1999, 2000.
-# Michael Piefel <piefel@informatik.hu-berlin.de>, 2001, 2002, 2003, 2004, 2005, 2007.
+# Michael Piefel <piefel@informatik.hu-berlin.de>, 2001-2005, 2007, 2008.
 #
 # 2004-03-31
 # Along with this new update, I changed the quotes to
 # „German“ as opposed to »French« quotes.
-# MPi
-#
-# 2003-06-01
-# All translations revised for current CVS.
-# wl
-#
-# 2001-05-14
-# Update: version 4.0b
 # MPi
 #
 # 2000-02-28 08:25:03 CET
@@ -23,29 +15,9 @@
 # Reported by Thomas Esken, 1999-09-13.
 # -ke-
 #
-# 1999-10-07 20:56:42 CEST
-# Update: version 4.0
-# -ke-
-#
-# 1999-08-18 07:48:14 CEST
-# Update: version 3.12q.
-# -ke-
-#
-# 1999-07-28 08:56:22 CEST
-# Update: version 3.12n.
-# -ke-
-#
 # 1999-04-20 21:51:54 CEST
 # Update: version 3.12h.
 # reuse getopt translations from wget.
-# -ke-
-#
-# 1999-02-06 20:24:24 MET
-# Update: version 3.12c.
-# -ke-
-#
-# 1998-05-03 12:25:13 MEST
-# Cosmetic changes.
 # -ke-
 #
 # 1998-04-05 18:25:42 MEST
@@ -62,7 +34,7 @@ msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2007-09-03 05:23-0700\n"
-"PO-Revision-Date: 2007-09-28 13:09+0200\n"
+"PO-Revision-Date: 2008-02-14 13:02+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1052,7 +1024,7 @@ msgid ""
 "  --help               display this help and exit.\n"
 "  --version            display version information and exit.\n"
 msgstr ""
-"Auruf: %s [OPTION]... [EINGABE-DATEI]\n"
+"Aufruf: %s [OPTION]... [EINGABE-DATEI]\n"
 "\n"
 "Infokey-Quelldatei in Infokey-Datei kompilieren. Liest EINGABE-DATEI\n"
 "(Voreinstellung $HOME/.infokey) und schreibt kompilierte Tastaturdatei\n"
@@ -2870,7 +2842,7 @@ msgstr "%c%s ist obsolet; %c%s stattdessen benutzen"
 #: makeinfo/sectioning.c:640
 #, c-format
 msgid "Node with %ctop as a section already exists"
-msgstr "Knoten mit %ctop als Abschnitt exisiert bereits"
+msgstr "Knoten mit %ctop als Abschnitt existiert bereits"
 
 #: makeinfo/sectioning.c:648
 #, c-format
@@ -3189,17 +3161,6 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 #~ msgid "node `%s' has been referenced %d times"
 #~ msgstr "Knoten „%s“ wurde %d mal referenziert"
 
-# Hier de-Standard-Formulierung einsetzen!
-#~ msgid ""
-#~ "There is NO warranty.  You may redistribute this software\n"
-#~ "under the terms of the GNU General Public License.\n"
-#~ "For more information about these matters, see the files named COPYING.\n"
-#~ msgstr ""
-#~ "Es gibt KEINERLEI Garantie. Sie können diese Software unter den\n"
-#~ "Bedingungen der GNU General Public License weiterverteilen.\n"
-#~ "Für weiterführende Informationen zu diesen Fragen\n"
-#~ "konsultieren Sie bitte die Datei namens COPYING.\n"
-
 #~ msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
 #~ msgstr "  %-10s  Eine Zeichenkette in den Indexeinträgen dieser Info-Datei suchen\n"
 
@@ -3210,19 +3171,6 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 
 #~ msgid "  %-10s  Search forward for a specified string,\n"
 #~ msgstr "  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den Knoten\n"
-
-# Hier de-Standard-Formulierung einsetzen!
-#~ msgid ""
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "There is NO warranty.  You may redistribute this software\n"
-#~ "under the terms of the GNU General Public License.\n"
-#~ "For more information about these matters, see the files named COPYING.\n"
-#~ msgstr ""
-#~ "Copyright © %s Free Software Foundation, Inc.\n"
-#~ "Es gibt KEINERLEI Garantie. Sie können diese Software unter den\n"
-#~ "Bedingungen der GNU General Public License weiterverteilen.\n"
-#~ "Für weiterführende Informationen zu diesen Fragen\n"
-#~ "konsultieren Sie bitte die Datei namens COPYING.\n"
 
 #~ msgid "@quote-arg only useful for single-argument macros"
 #~ msgstr "@quote-Argument nur sinnvoll, wenn das Makro nur ein Argument hat"
