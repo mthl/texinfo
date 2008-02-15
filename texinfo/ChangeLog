@@ -1,3 +1,9 @@
+2008-02-15  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (handle_include): set in_fixed_width_font
+	for expanding the filename argument, so -- doesn't become -.
+	Bug report from Daniel Richard G., 13 Feb 2008 01:50:00.
+
 2008-02-11  Karl Berry  <karl@gnu.org>
 
 	* info/session.c (incremental_search): if a regex search,

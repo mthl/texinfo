@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.79 2008-01-31 18:33:27 karl Exp $
+   $Id: cmds.c,v 1.80 2008-02-15 17:53:25 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -1895,7 +1895,13 @@ handle_include (int verbatim_include)
   get_rest_of_line (0, &arg);
   /* We really only want to expand @value, but it's easier to just do
      everything.  TeX will only work with @value.  */
-  filename = text_expansion (arg);
+  {
+    int save_in_fixed_width_font = in_fixed_width_font;
+    in_fixed_width_font = 1;  /* do not change -- to -, etc.  */
+    filename = text_expansion (arg);
+    in_fixed_width_font = save_in_fixed_width_font;    
+  }
+
   free (arg);
   
   if (macro_expansion_output_stream && !executing_string)
