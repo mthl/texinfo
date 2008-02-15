@@ -1,5 +1,7 @@
 2008-02-15  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\tex): spurious space in redefinition of \top.
+
 	* makeinfo/cmds.c (handle_include): set in_fixed_width_font
 	for expanding the filename argument, so -- doesn't become -.
 	Bug report from Daniel Richard G., 13 Feb 2008 01:50:00.
