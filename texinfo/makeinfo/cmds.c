@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.80 2008-02-15 17:53:25 karl Exp $
+   $Id: cmds.c,v 1.81 2008-02-16 19:19:37 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -1289,7 +1289,9 @@ cm_cite (int arg, int position)
     {
       if (arg == START)
         add_char ('`');
-      else
+      else if (!looking_at ("}'"))
+        /* In the simple case of, e.g.,  ... @cite{Foo}'s ...
+           don't output a double ''.  */
         add_char ('\'');
     }
 }

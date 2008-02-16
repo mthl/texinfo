@@ -1,3 +1,9 @@
+2008-02-16  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_cite): avoid double apostrophe in
+	Info output of, e.g., ... @cite{Foo}'s ...
+	Report from Bob Chassell.
+
 2008-02-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\tex): spurious space in redefinition of \top.
