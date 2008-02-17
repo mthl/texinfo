@@ -272,3 +272,6 @@ set args -o - $ttests/direntryspace.tex
 
 # seg fault
 set args -o /tmp/  --xml $ttests/click.tex
+
+# double ' after @cite
+set args -o - $ttests/cite.tex

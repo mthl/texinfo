@@ -11,4 +11,4 @@ set env TERM xterm
 #set args --restore /tmp/q ./foobar
 #set args -O info
 
-set args --restore $ttests/tab.drib
+set args --restore $ttests/drib.isearch
