@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.115 2008-01-31 17:46:22 karl Exp $
+   $Id: makeinfo.c,v 1.116 2008-02-17 19:07:58 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -3102,7 +3102,7 @@ close_paragraph (void)
   int i;
 
   /* We don't need these newlines in XML and Docbook outputs for
-     paragraph seperation.  We have <para> element for that.  */
+     paragraph separation.  We have the <para> element for that.  */
   if (xml)
     return;
 

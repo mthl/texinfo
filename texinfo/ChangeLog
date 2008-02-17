@@ -1,3 +1,12 @@
+2008-02-17  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c: typos in comments.
+	
+	* makeinfo/cmds.c (cm_direntry): call close_single_paragraph,
+	instead of add_char('\n'), or the INFO-DIR-SECTION lines from two
+	consecutive @dircategory's are munged together.
+	Bug report from Ralf Angeli, 16 Feb 2008 18:59:42.
+
 2008-02-16  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: path_sep is ; on mingw as well as cygwin.

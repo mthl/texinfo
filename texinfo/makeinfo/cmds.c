@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.81 2008-02-16 19:19:37 karl Exp $
+   $Id: cmds.c,v 1.82 2008-02-17 19:07:58 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -1643,7 +1643,7 @@ cm_dircategory (void)
           cm_noindent (); /* make sure again */
           add_word ("INFO-DIR-SECTION ");
           add_word (line);
-          add_char ('\n');
+          close_single_paragraph ();  /* newline */
         }
 
       free (line);

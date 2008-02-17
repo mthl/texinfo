@@ -275,3 +275,6 @@ set args -o /tmp/  --xml $ttests/click.tex
 
 # double ' after @cite
 set args -o - $ttests/cite.tex
+
+# conglomerated INFO-DIR-SECTIONs
+set args -o - $ttests/dircat2.tex
