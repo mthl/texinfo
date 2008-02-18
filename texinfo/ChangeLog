@@ -1,5 +1,7 @@
 2008-02-17  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi: path_sep is : on djgpp too.  From Eli Z.
+
 	* makeinfo/makeinfo.c: typos in comments.
 	
 	* makeinfo/cmds.c (cm_direntry): call close_single_paragraph,
@@ -9,7 +11,7 @@
 
 2008-02-16  Karl Berry  <karl@gnu.org>
 
-	* util/texi2dvi: path_sep is ; on mingw as well as cygwin.
+	* util/texi2dvi: path_sep is : on mingw as well as cygwin.
 	Report from: FX Coudert, 16 Feb 2008 15:43:15.
 
 	* makeinfo/cmds.c (cm_cite): avoid double apostrophe in

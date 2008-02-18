@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.108 2008-02-16 22:58:27 karl Exp $
+# $Id: texi2dvi,v 1.109 2008-02-18 00:15:28 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.108 $'
+rcs_revision='$Revision: 1.109 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -175,10 +175,10 @@ newline='
 IFS=" 	$newline"
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS -- except for Cygwin, where COMSPEC might be
-# inherited, but : is used.
+# directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
+# might be inherited, but : is used.
 if test -n "$COMSPEC$ComSpec" \
-   && uname | $EGREP -iv 'cygwin|mingw' >/dev/null; then
+   && uname | $EGREP -iv 'cygwin|mingw|djgpp' >/dev/null; then
   path_sep=";"
 else
   path_sep=":"
