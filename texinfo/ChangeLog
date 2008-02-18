@@ -1,5 +1,7 @@
 2008-02-17  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi (EGREP): need egrep early.
+
 	* util/texi2dvi: path_sep is : on djgpp too.  From Eli Z.
 
 	* makeinfo/makeinfo.c: typos in comments.
