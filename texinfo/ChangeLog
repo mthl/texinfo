@@ -1,3 +1,14 @@
+2008-02-19  Karl Berry  <karl@gnu.org>
+
+	* info/infodoc.c (info_internal_help_text): rearrangements.
+	* info/session.c (cursor_movement_scrolls_p): 1 by default.
+	* info/window.c (window_scroll_step): 1 by default.
+	* info/infomap.c <key bindings>: h to info_get_help_window,
+	H to info_get_info_help_node,
+	PgUp to info_scroll_backward, PgDown to info_scroll_forward,
+	move q to after C-x C-c .
+	Suggestions from Benno Schulenberg, 04 Jan 2008 23:20:46.
+
 2008-02-17  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (EGREP): need egrep early.

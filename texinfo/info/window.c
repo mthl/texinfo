@@ -1,7 +1,7 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.8 2007-10-19 18:43:20 karl Exp $
+   $Id: window.c,v 1.9 2008-02-19 14:58:29 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -917,11 +917,11 @@ recalculate_line_starts (WINDOW *window)
   calculate_line_starts (window);
 }
 
-/* Global variable control redisplay of scrolled windows.  If non-zero, it
-   is the desired number of lines to scroll the window in order to make
-   point visible.  A user might set this to 1 for smooth scrolling.  If
-   set to zero, the line containing point is centered within the window. */
-int window_scroll_step = 0;
+/* Global variable control redisplay of scrolled windows.  If non-zero,
+   it is the desired number of lines to scroll the window in order to
+   make point visible.  A value of 1 produces smooth scrolling.  If set
+   to zero, the line containing point is centered within the window. */
+int window_scroll_step = 1;
 
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
 void

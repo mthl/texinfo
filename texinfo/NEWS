@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.161 2008-02-11 16:47:13 karl Exp $
+$Id: NEWS,v 1.162 2008-02-19 14:58:29 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -48,8 +48,16 @@ one of the relevant sections:
   . New section in the Texinfo manual describing all this.
 
 * Info:
-  . regular expression searches are now the default for both regular
-    and incremental searches.
+  Our goal with these changes to the default interface is to make Info
+  documents more easily and quickly readable, especially by non-experts.
+  . the PageUp and PageDown keys move through the whole document by
+    default, instead of just the current node.
+  . the h command shows the basic help, and H starts the Info tutorial.
+  . the scroll-step variable is set to 1 by default, for smooth scrolling.
+  . the cursor-movement-scrolls-p variable is set to 1 by default, so
+    link searches look through the whole document.
+  . regular expression searches are supported, and are the default for
+    both regular and incremental searches.
   . the new R command toggles between regexp and literal-string searches.
   . the precise line number specified in index entries is used if available.
   . --usage=info shows usage for standalone Info.

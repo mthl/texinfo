@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.27 2008-02-11 16:47:13 karl Exp $
+   $Id: session.c,v 1.28 2008-02-19 14:58:29 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -959,7 +959,7 @@ char *info_scroll_choices[] = {
 };
 
 /* Controls whether scroll-behavior affects line movement commands */
-int cursor_movement_scrolls_p = 0;
+int cursor_movement_scrolls_p = 1;
 
 /* Default window sizes for scrolling commands.  */
 int default_window_size = -1;   /* meaning 1 window-full */

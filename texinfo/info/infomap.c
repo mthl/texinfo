@@ -1,7 +1,7 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.14 2007-12-17 19:12:11 karl Exp $
+   $Id: infomap.c,v 1.15 2008-02-19 14:58:29 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -269,6 +269,7 @@ keymap_bind_keyseq (Keymap map,
   return 1;
 }
 
+
 /* Initialize the standard info keymaps. */
 
 Keymap info_keymap = NULL;
@@ -312,9 +313,9 @@ initialize_emacs_like_keymaps ()
         = ((Keymap) echo_area_keymap[ESC].function)[i].function
         = info_add_digit_to_numeric_arg;
     }
-  ((Keymap) info_keymap[ESC].function)['-'].function =
-    ((Keymap) echo_area_keymap[ESC].function)['-'].function =
-      info_add_digit_to_numeric_arg;
+  ((Keymap) info_keymap[ESC].function)['-'].function
+    = ((Keymap) echo_area_keymap[ESC].function)['-'].function
+    = info_add_digit_to_numeric_arg;
 
   info_keymap['-'].function = info_add_digit_to_numeric_arg;
 
@@ -495,7 +496,7 @@ initialize_emacs_like_keymaps ()
 
   /* Arrow key bindings for Info windows keymap. */
   map = info_keymap;
-  keymap_bind_keyseq (map, term_kN, &map[Control ('v')]); /* pagedown */
+  keymap_bind_keyseq (map, term_kN, &map[SPC]);           /* pagedown */
   keymap_bind_keyseq (map, term_ku, &map[Control ('p')]); /* up */
   keymap_bind_keyseq (map, "\033OA", &map[Control ('p')]);
   keymap_bind_keyseq (map, "\033[A", &map[Control ('p')]);
@@ -508,9 +509,9 @@ initialize_emacs_like_keymaps ()
   keymap_bind_keyseq (map, term_kl, &map[Control ('b')]); /* left */
   keymap_bind_keyseq (map, "\033OD", &map[Control ('b')]);
   keymap_bind_keyseq (map, "\033[D", &map[Control ('b')]);
-  keymap_bind_keyseq (map, term_kh, &map['b']); /* home */
-  keymap_bind_keyseq (map, term_ke, &map['e']); /* end */
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
+  keymap_bind_keyseq (map, term_kh, &map['b']);           /* home */
+  keymap_bind_keyseq (map, term_ke, &map['e']);           /* end */
+  keymap_bind_keyseq (map, term_kD, &map[DEL]);           /* delete */
 
   map = (Keymap)info_keymap[ESC].function;
   keymap_bind_keyseq (map, term_kl, &map['b']); /* left */
@@ -519,7 +520,7 @@ initialize_emacs_like_keymaps ()
   keymap_bind_keyseq (map, term_kr, &map['f']); /* right */
   keymap_bind_keyseq (map, "\033OB", &map['f']);
   keymap_bind_keyseq (map, "\033[B", &map['f']);
-  keymap_bind_keyseq (map, term_kN, &map[Control ('v')]); /* pagedown */
+  keymap_bind_keyseq (map, term_kN, &map[SPC]); /* pagedown */
   keymap_bind_keyseq (map, term_kP, &map[DEL]); /* pageup */
   keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
 
@@ -527,9 +528,10 @@ initialize_emacs_like_keymaps ()
      `ESC map' section, is something like:
     keymap_bind_keyseq (map, term_kP, &((KeyMap)map[ESC].function).map['v']);
   */
-  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map['v']); /* pageup */
+  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map[DEL]); /* pageup */
 }
 
+
 static void
 initialize_vi_like_keymaps ()
 {
@@ -552,21 +554,21 @@ initialize_vi_like_keymaps ()
     echo_area_keymap[i].function = ea_insert;
 
   echo_area_keymap[ESC].type = ISKMAP;
-  echo_area_keymap[ESC].function = (InfoCommand *)keymap_make_keymap ();
+  echo_area_keymap[ESC].function = (InfoCommand *) keymap_make_keymap ();
   echo_area_keymap[Control ('x')].type = ISKMAP;
-  echo_area_keymap[Control ('x')].function =
-    (InfoCommand *)keymap_make_keymap ();
+  echo_area_keymap[Control ('x')].function
+    = (InfoCommand *)keymap_make_keymap ();
 
   /* Bind numeric arg functions for both echo area and info window maps. */
   for (i = '0'; i < '9' + 1; i++)
     {
-      info_keymap[i].function =
-        ((Keymap) echo_area_keymap[ESC].function)[i].function =
-        info_add_digit_to_numeric_arg;
+      info_keymap[i].function
+        = ((Keymap) echo_area_keymap[ESC].function)[i].function
+        = info_add_digit_to_numeric_arg;
     }
-  info_keymap['-'].function =
-    ((Keymap) echo_area_keymap[ESC].function)['-'].function =
-      info_add_digit_to_numeric_arg;
+  info_keymap['-'].function
+    = ((Keymap) echo_area_keymap[ESC].function)['-'].function
+    = info_add_digit_to_numeric_arg;
 
   /* Bind the echo area routines. */
   map = echo_area_keymap;
@@ -822,7 +824,7 @@ initialize_vi_like_keymaps ()
      `ESC map' section, is something like:
     keymap_bind_keyseq (map, term_kP, &((KeyMap)map[ESC].function).map['v']);
   */
-  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map['v']); /* pageup */
+  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map[DEL]); /* pageup */
 }
 
 void
@@ -889,14 +891,14 @@ static unsigned char default_emacs_like_info_keys[] =
         'f', NUL,                       A_info_xref_item,
         'g', NUL,                       A_info_goto_node,
         'G', NUL,                       A_info_menu_sequence,
-        'h', NUL,                       A_info_get_info_help_node,
+        'h', NUL,                       A_info_get_help_window,
+        'H', NUL,                       A_info_get_info_help_node,
         'i', NUL,                       A_info_index_search,
         'l', NUL,                       A_info_history_node,
         'm', NUL,                       A_info_menu_item,
         'n', NUL,                       A_info_next_node,
         'O', NUL,                       A_info_goto_invocation_node,
         'p', NUL,                       A_info_prev_node,
-        'q', NUL,                       A_info_quit,
         'r', NUL,                       A_info_xref_item,
         'R', NUL,                       A_info_toggle_regexp,
         's', NUL,                       A_info_search,
@@ -968,12 +970,15 @@ static unsigned char default_emacs_like_info_keys[] =
         CONTROL('x'), 't', NUL,         A_info_tile_windows,
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
 
+        /* We want help to report q, not C-x C-c.  */
+        'q', NUL,                       A_info_quit,
+
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
         define everything with both of the usual prefixes.  */
 
-        SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward_page_only,
-        SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward_page_only,
+        SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
+        SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
         SK_ESCAPE, SK_UP_ARROW, NUL,            A_info_prev_line,
         '\033', 'O', 'A', NUL,                  A_info_prev_line,
         '\033', '[', 'A', NUL,                  A_info_prev_line,
@@ -1191,7 +1196,6 @@ static unsigned char default_vi_like_info_keys[] =
         'N', NUL,                       A_info_search_previous,
         'O', NUL,                       A_info_goto_invocation_node,
         'p', NUL,                       A_info_prev_node,
-        'q', NUL,                       A_info_quit,
         'Q', NUL,                       A_info_quit,
         ':', 'q', NUL,                  A_info_quit,
         ':', 'Q', NUL,                  A_info_quit,
@@ -1259,12 +1263,15 @@ static unsigned char default_vi_like_info_keys[] =
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
         CONTROL('x'), ',', NUL,         A_info_next_index_match,
 
+        /* We want help to report q, not C-x C-c.  */
+        'q', NUL,                       A_info_quit,
+
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
         define everything with both of the usual prefixes.  */
 
-        SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward_page_only,
-        SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward_page_only,
+        SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
+        SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
         SK_ESCAPE, SK_UP_ARROW, NUL,            A_info_up_line,
         '\033', 'O', 'A', NUL,                  A_info_up_line,
         '\033', '[', 'A', NUL,                  A_info_up_line,

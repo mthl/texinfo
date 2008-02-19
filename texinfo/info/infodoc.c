@@ -1,8 +1,8 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.16 2007-12-03 01:38:42 karl Exp $
+   $Id: infodoc.c,v 1.17 2008-02-19 14:58:29 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006, 2007
-   Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
+   2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -51,16 +51,13 @@ static char *info_internal_help_text[] = {
   "\n",
   N_("Selecting other nodes:\n\
 ----------------------\n"),
-  N_("\\%-10[next-node]  Move to the \"next\" node of this node.\n"),
-  N_("\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"),
-  N_("\\%-10[up-node]  Move \"up\" from this node.\n"),
-  N_("\\%-10[menu-item]  Pick menu item specified by name.\n\
-              Picking a menu item causes another node to be selected.\n"),
-  N_("\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"),
-  N_("\\%-10[history-node]  Move to the last node seen in this window.\n"),
+  N_("\\%-10[global-next-node]  Move to the next node in the document.\n"),
+  N_("\\%-10[global-prev-node]  Move to the previous node in the document.\n"),
   N_("\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"),
-  N_("\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"),
   N_("\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"),
+  N_("\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"),
+  N_("\\%-10[up-node]  Move \"up\" from this node.\n"),
+  N_("\\%-10[history-node]  Move to the last node seen in this window.\n"),
   N_("\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"),
   N_("\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"),
   "\n",
@@ -69,25 +66,29 @@ static char *info_internal_help_text[] = {
   "\n",
   N_("Moving within a node:\n\
 ---------------------\n"),
-  N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
+  N_("\\%-10[beginning-of-node]  Go to the beginning this node.\n"),
   N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
-  N_("\\%-10[next-line]  Scroll forward 1 line.\n"),
-  N_("\\%-10[prev-line]  Scroll backward 1 line.\n"),
-  N_("\\%-10[scroll-forward]  Scroll forward a page.\n"),
-  N_("\\%-10[scroll-backward]  Scroll backward a page.\n"),
+  N_("\\%-10[next-line]  Scroll forward one line.\n"),
+  N_("\\%-10[prev-line]  Scroll backward one line.\n"),
+  N_("\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"),
+  N_("\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"),
   "\n",
   N_("Other commands:\n\
 ---------------\n"),
-  N_("1...9       Pick first...ninth item in this node's menu.\n"),
-  N_("\\%-10[last-menu-item]  Pick last item in this node's menu.\n"),
-  N_("\\%-10[index-search]  Search for a specified string in the index entries of this Info\n\
-              file, and select the node referenced by the first entry found.\n"),
-  N_("\\%-10[goto-node]  Move to node specified by name.\n\
-              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
   N_("\\%-10[search]  Search forward for a specified string\n\
               and select the node in which the next occurrence is found.\n"),
   N_("\\%-10[search-backward]  Search backward for a specified string\n\
               and select the node in which the previous occurrence is found.\n"),
+  N_("1...9       Pick first...ninth item in this node's menu.\n"),
+  N_("\\%-10[last-menu-item]  Pick last item in this node's menu.\n"),
+  N_("\\%-10[menu-item]  Pick menu item specified by name.\n"),
+  N_("\\%-10[index-search]  Search for a specified string in the index entries of this Info\n\
+              file, and select the node referenced by the first entry found.\n"),
+  N_("\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"),
+  N_("\\%-10[goto-node]  Move to node specified by name.\n\
+              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
+  N_("\\%-10[next-node]  Move to the next node of current section.\n"),
+  N_("\\%-10[prev-node]  Move to the previous node of current section.\n"),
   NULL
 };
 
