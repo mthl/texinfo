@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-02-21 11:08-0800\n"
+"POT-Creation-Date: 2008-02-21 15:36-0800\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -480,7 +480,7 @@ msgid "Not enough room for a help window, please delete a window."
 msgstr "Ikke nok plass for et hjelpevindu, vennligst slett et vindu."
 
 # The next translation should match the length of this one
-#: info/infodoc.c:45 info/infodoc.c:98
+#: info/infodoc.c:45 info/infodoc.c:94
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -501,7 +501,7 @@ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Starte Infoopplæring.\n"
 
 # The next translation should match the length of this one
-#: info/infodoc.c:52 info/infodoc.c:105
+#: info/infodoc.c:52 info/infodoc.c:101
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -532,22 +532,15 @@ msgid ""
 msgstr "\\%-10[dir-node]  Følge hypertekstlenken under markøren.\n"
 
 #: info/infodoc.c:58
-#, fuzzy
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]  Flytte til neste hypertekstlenke innen denne "
-"noden.\n"
-
-#: info/infodoc.c:59
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "\\%-10[up-node]  Flytte «opp» fra denne noden.\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:59
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr ""
 "\\%-10[history-node]  Flytte til den siste noden sett i dette vinduet.\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:60
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
@@ -555,20 +548,14 @@ msgstr ""
 "\\%-10[dir-node]  Flytte til «katalog»-noden.  Det samme som «\\[goto-node] "
 "(DIR)».\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:61
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr ""
 "\\%-10[top-node]  Flytte til «Top»-noden.  Det samme som «\\[goto-node] Top».\n"
 
-#: info/infodoc.c:64
-msgid ""
-"[*]    Command acts within this node or the entire document, depending on\n"
-"the value of cursor-movement-scrolls variable\n"
-msgstr ""
-
 # The next translation should match the length of this one
-#: info/infodoc.c:67 info/infodoc.c:119
+#: info/infodoc.c:63 info/infodoc.c:115
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -576,37 +563,37 @@ msgstr ""
 "Flytte innen en node:\n"
 "---------------------\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:65
 #, fuzzy
-msgid "\\%-10[beginning-of-node]  Go to the beginning this node.\n"
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Gå til begynnelsen av denne noden.\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:66
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Gå til slutten av denne noden.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:67
 #, fuzzy
 msgid "\\%-10[next-line]  Scroll forward one line.\n"
 msgstr "\\%-10[next-line]  Rulle forover 1 linje.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:68
 #, fuzzy
 msgid "\\%-10[prev-line]  Scroll backward one line.\n"
 msgstr "\\%-10[prev-line]  Rulle bakover 1 linje.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:69
 #, fuzzy
 msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
 msgstr "\\%-10[scroll-forward]  Rulle forover en side.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
 msgstr "\\%-10[scroll-backward]  Rulle bakover en side.\n"
 
 # The next translation should match the length of this one
-#: info/infodoc.c:76 info/infodoc.c:128
+#: info/infodoc.c:72 info/infodoc.c:124
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -614,7 +601,7 @@ msgstr ""
 "Andre kommandoer:\n"
 "-----------------\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:74
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -622,7 +609,7 @@ msgstr ""
 "\\%-10[search]  Søke forover etter en angitt streng\n"
 "              og velge den noden som den neste forekomsten blir funnet i.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:76
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
 "              and select the node in which the previous occurrence is "
@@ -631,22 +618,22 @@ msgstr ""
 "\\%-10[search-backward]  Søke baklengs etter en angitt streng\n"
 "              og velge den noden som den neste forekomsten blir funnet i.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:78
 #, fuzzy
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
 msgstr "  %-10s  Velge første ... niende punkt i nodens meny.\n"
 
-#: info/infodoc.c:83
+#: info/infodoc.c:79
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Velge det siste punktet i nodens meny.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:80
 #, fuzzy
 msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
 msgstr "  %-10s  Velge menypunkt spesifisert ved navn.\n"
 
-#: info/infodoc.c:85
+#: info/infodoc.c:81
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -658,14 +645,14 @@ msgstr ""
 "              infofilen og velge noden til det første innslaget som blir "
 "funnet.\n"
 
-#: info/infodoc.c:87
+#: info/infodoc.c:83
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr ""
 "\\%-10[history-node]  Følge en kryssreferanse.  Leser navnet til "
 "referansen.\n"
 
-#: info/infodoc.c:88
+#: info/infodoc.c:84
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -674,47 +661,47 @@ msgstr ""
 "              Du kan like godt inkludere et filnavn, som i (FILNAVN)"
 "NODENAVN.\n"
 
-#: info/infodoc.c:90
+#: info/infodoc.c:86
 #, fuzzy
 msgid "\\%-10[next-node]  Move to the next node of current section.\n"
 msgstr "\\%-10[next-node]  Flytte til neste node etter denne noden.\n"
 
-#: info/infodoc.c:91
+#: info/infodoc.c:87
 #, fuzzy
 msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
 msgstr "\\%-10[prev-node]  Flytte til forrige node før denne noden.\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:97
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Avslutte denne hjelpen.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Avslutte Info fullstendig.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Starte Infoopplæring.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Flytte til «neste»-noden etter denne noden.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Flytte til «forrige»-noden før denne noden.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Flytte «opp» fra denne noden.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:106
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
@@ -723,77 +710,77 @@ msgstr ""
 "\\%-10[menu-item]  Velge et menypunkt angitt ved navn.\n"
 "              Valg av et menypunkt fører til at en annen node blir valgt.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Følge en kryssreferanse.  Leser navnet til referansen.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Flytte til den siste noden sett i dette vinduet.\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Flytte til neste hypertekstlenke innen denne noden.\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Følge hypertekstlenken under markøren.\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Flytte til «katalog»-noden.  Det samme som «g (DIR)».\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Flytte til «Top»-noden.  Det samme som «g Top».\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Rulle forover en side.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Rulle bakover en side.\n"
 
-#: info/infodoc.c:123
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Gå til begynnelsen av denne noden.\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Gå til slutten av denne noden.\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Rulle forover 1 linje.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Rulle bakover 1 linje.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:126
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Velge første ... niende punkt i nodens meny.\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Velge det siste punktet i nodens meny.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:130
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -805,7 +792,7 @@ msgstr ""
 "              infofilen og velge noden til det første innslaget som blir "
 "funnet.\n"
 
-#: info/infodoc.c:136
+#: info/infodoc.c:132
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
@@ -815,7 +802,7 @@ msgstr ""
 "              Du kan like godt inkludere et filnavn, som i (FILNAVN)"
 "NODENAVN.\n"
 
-#: info/infodoc.c:138
+#: info/infodoc.c:134
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -824,7 +811,7 @@ msgstr ""
 "\\%-10[search]  Søke forover etter en angitt streng\n"
 "              og velge den noden som den neste forekomsten blir funnet i.\n"
 
-#: info/infodoc.c:140
+#: info/infodoc.c:136
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
@@ -833,11 +820,11 @@ msgstr ""
 "\\%-10[search]  Søke forover etter en angitt streng\n"
 "              og velge den noden som den neste forekomsten blir funnet i.\n"
 
-#: info/infodoc.c:321
+#: info/infodoc.c:317
 msgid "The current search path is:\n"
 msgstr "Gjeldende søkesti er:\n"
 
-#: info/infodoc.c:325
+#: info/infodoc.c:321
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -845,7 +832,7 @@ msgstr ""
 "Kommandoer tilgjengelig i Infovinduer:\n"
 "\n"
 
-#: info/infodoc.c:329
+#: info/infodoc.c:325
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -853,7 +840,7 @@ msgstr ""
 "Kommandoer tilgjengelig i ekkoområdet:\n"
 "\n"
 
-#: info/infodoc.c:352
+#: info/infodoc.c:348
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -862,7 +849,7 @@ msgstr ""
 "Følgende kommandoer kan bare bli påkallet via %s:\n"
 "\n"
 
-#: info/infodoc.c:356
+#: info/infodoc.c:352
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -870,66 +857,66 @@ msgstr ""
 "Følgende kommandoer kan ikke bli påkallet i det hele tatt:\n"
 "\n"
 
-#: info/infodoc.c:380
+#: info/infodoc.c:376
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr "--- Bruk «\\[history-node]» eller «\\[kill-node]» for å avslutte ---\n"
 
-#: info/infodoc.c:490
+#: info/infodoc.c:486
 msgid "Display help message"
 msgstr "Vise hjelpemelding"
 
-#: info/infodoc.c:508
+#: info/infodoc.c:504
 msgid "Visit Info node `(info)Help'"
 msgstr "Vise infonoden «(info)Help»"
 
-#: info/infodoc.c:646
+#: info/infodoc.c:642
 msgid "Print documentation for KEY"
 msgstr "Skrive ut dokumentasjonen for KEY"
 
-#: info/infodoc.c:658
+#: info/infodoc.c:654
 #, c-format
 msgid "Describe key: %s"
 msgstr "Beskriv tast: %s"
 
-#: info/infodoc.c:669
+#: info/infodoc.c:665
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s er udefinert."
 
-#: info/infodoc.c:685 info/infodoc.c:714
+#: info/infodoc.c:681 info/infodoc.c:710
 #, c-format
 msgid "%s is undefined."
 msgstr "%s er udefinert."
 
-#: info/infodoc.c:735
+#: info/infodoc.c:731
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s er definert som %s."
 
-#: info/infodoc.c:1158
+#: info/infodoc.c:1154
 msgid "Show what to type to execute a given command"
 msgstr "Vise hva som må tastes for å utføre en gitt kommando"
 
-#: info/infodoc.c:1162
+#: info/infodoc.c:1158
 msgid "Where is command: "
 msgstr "Hvor er kommandoen: "
 
-#: info/infodoc.c:1184
+#: info/infodoc.c:1180
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "«%s» er ikke på noen taster"
 
-#: info/infodoc.c:1191
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s kan bare bli påkallet via %s."
 
-#: info/infodoc.c:1195
+#: info/infodoc.c:1191
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s kan bli påkallet via %s."
 
-#: info/infodoc.c:1200
+#: info/infodoc.c:1196
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Det finnes ingen funksjon ved navn «%s»"
@@ -3111,6 +3098,12 @@ msgstr "Ingen sidenummer i %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "oppføring %s følger en oppføring med et annet navn"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-prev-xref]  Flytte til neste hypertekstlenke innen denne "
+#~ "noden.\n"
 
 #, fuzzy
 #~ msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-02-21 11:08-0800\n"
+"POT-Creation-Date: 2008-02-21 15:36-0800\n"
 "PO-Revision-Date: 2007-09-04 23:30+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -476,7 +476,7 @@ msgstr "Cửa sổ kết quả quá nhỏ."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 
-#: info/infodoc.c:45 info/infodoc.c:98
+#: info/infodoc.c:45 info/infodoc.c:94
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -498,7 +498,7 @@ msgstr ""
 "\\%-10[get-info-help-node]  gọi trợ lý hướng dẫn Info.\n"
 "\t\t\t(_lấy nút trợ giúp Info_)\n"
 
-#: info/infodoc.c:52 info/infodoc.c:105
+#: info/infodoc.c:52 info/infodoc.c:101
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -529,21 +529,16 @@ msgstr ""
 "\tnằm dưới con trỏ (_chọn tham chiếu dòng này_)\n"
 
 #: info/infodoc.c:58
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]\t\tNhảy về liên kết siêu văn bản trước [*].\n"
-
-#: info/infodoc.c:59
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "\\%-10[up-node]  Chuyển lên từ nút này (_lên nút_).\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:59
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr ""
 "\\%-10[history-node]\tTới nút cuối hiển thị trong cửa sổ này.\n"
 "\t\t(_nút lịch sử_)\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:60
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
@@ -551,21 +546,12 @@ msgstr ""
 "\\%-10[dir-node]  \tTới nút « thư mục ». Bằng « \\[goto-node] (THƯ MỤC) ».\n"
 "\t\t(_nút thư mục_)\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:61
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Tới nút đầu. Bằng « \\[goto-node] Trên ».\n"
 
-#: info/infodoc.c:64
-msgid ""
-"[*]    Command acts within this node or the entire document, depending on\n"
-"the value of cursor-movement-scrolls variable\n"
-msgstr ""
-"[*]\tLệnh hoạt động bên trong nút thông tin này hay bên trong toàn tài liệu, "
-"phụ thuộc vào giá trị của biến « cursor-movement-scrolls » (con trỏ di chuyển "
-"cuộn)\n"
-
-#: info/infodoc.c:67 info/infodoc.c:119
+#: info/infodoc.c:63 info/infodoc.c:115
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -573,36 +559,36 @@ msgstr ""
 "Di chuyển bên trong nút thông tin:\n"
 "━━━━━━━\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:65
 #, fuzzy
-msgid "\\%-10[beginning-of-node]  Go to the beginning this node.\n"
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Về đầu của nút này (_đầu của nút_).\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:66
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Tới cuối của nút này (_cuối của nút_).\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:67
 #, fuzzy
 msgid "\\%-10[next-line]  Scroll forward one line.\n"
 msgstr "\\%-10[next-line]  Cuộn tới 1 dòng (_dòng kế_).\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:68
 #, fuzzy
 msgid "\\%-10[prev-line]  Scroll backward one line.\n"
 msgstr "\\%-10[prev-line]  Cuộn lùi 1 dòng (_dòng trước_).\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:69
 #, fuzzy
 msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
 msgstr "\\%-10[scroll-forward]  Cuộn tới 1 trang (_cuộn tới_).\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
 msgstr "\\%-10[scroll-backward]  Cuộn lùi 1 trang (_cuộn ngược_).\n"
 
-#: info/infodoc.c:76 info/infodoc.c:128
+#: info/infodoc.c:72 info/infodoc.c:124
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -610,7 +596,7 @@ msgstr ""
 "Lệnh khác:\n"
 "━━━━\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:74
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -618,7 +604,7 @@ msgstr ""
 "\\%-10[search]  Tìm tới chuỗi đã xác định, cũng chọn nút trong đó\n"
 "\ttìm mục tương ứng kế tiếp.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:76
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
 "              and select the node in which the previous occurrence is "
@@ -627,22 +613,22 @@ msgstr ""
 "\\%-10[search-backward]  Tìm lùi chuỗi đã xác định, cũng chọn nút trong đó\n"
 "\ttìm mục tương ứng trước.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:78
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
 msgstr ""
 "1...9    Chọn mục thứ nhất đến thứ chín trong trình đơn của nút thông tin "
 "này.\n"
 
-#: info/infodoc.c:83
+#: info/infodoc.c:79
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Chọn mục cuối trong trình đơn của nút này.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:80
 #, fuzzy
 msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
 msgstr "  %-10s  Chọn mục trình đơn xác định theo tên.\n"
 
-#: info/infodoc.c:85
+#: info/infodoc.c:81
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -652,14 +638,14 @@ msgstr ""
 "\\%-10[index-search]  Tìm kiếm chuỗi đã xác định trong các mục chỉ mục của "
 "tập tin Info này, cũng chọn nút tới đó mục đầu đã tìm có chỉ.\n"
 
-#: info/infodoc.c:87
+#: info/infodoc.c:83
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr ""
 "\\%-10[xref-item]  \tTheo tham chiếu chéo. Đọc tên tham chiếu.\n"
 "\t\t(_mục tham chiếu chéo_)\n"
 
-#: info/infodoc.c:88
+#: info/infodoc.c:84
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -667,47 +653,47 @@ msgstr ""
 "\\%-10[goto-node]  Chuyển tới nút tên này.\n"
 "\tCũng có thể nhập vào tên tập tin, theo dạng (TÊN_TẬP_TIN)TÊN_NÚT.\n"
 
-#: info/infodoc.c:90
+#: info/infodoc.c:86
 #, fuzzy
 msgid "\\%-10[next-node]  Move to the next node of current section.\n"
 msgstr "\\%-10[next-node]  Tới nút kế tiếp của nút này (_nút kế tiếp_).\n"
 
-#: info/infodoc.c:91
+#: info/infodoc.c:87
 #, fuzzy
 msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
 msgstr "\\%-10[prev-node]  Về nút trước của nút này (_nút trước_).\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:97
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Thoát khỏi trợ giúp này.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Thoát hoàn toàn Info.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Gọi trợ lý hướng dẫn Info.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Tới nút « kế » của nút này.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Về nút « lùi » của nút này.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Chuyển « lên » từ nút này.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:106
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
@@ -717,77 +703,77 @@ msgstr ""
 "\tViệc chọn mục trình đơn thì gây ra chọn nút khác.\n"
 "\t\t(_mục trình đơn_)\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Theo một tham chiếu chéo. Đọc tên tham chiếu.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Tới nút cuối hiển thị trong cửa sổ này.\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Nhảy tới liên kết siêu văn bản kế tiếp bên trong nút này.\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Theo liên kết siêu văn bản nằm dưới con trỏ.\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Tới nút « thư mục ». Bằng « g (THƯ_MỤC) ».\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Tới nút Đầu. Bằng « g Trên ».\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Cuộn tới 1 trang.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Cuộn lùi 1 trang.\n"
 
-#: info/infodoc.c:123
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Về đầu nút này.\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Tới cuối nút này.\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Cuộn tới 1 dòng.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Cuộn lùi 1 dòng.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:126
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Chọn mục thứ nhất đến thứ chín trong trình đơn của nút.\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Chọn mục cuối trong trình đơn của nút.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:130
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -797,7 +783,7 @@ msgstr ""
 "  %-10s  Tìm kiếm chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút tới đó mục đầu đã tìm có chỉ.\n"
 
-#: info/infodoc.c:136
+#: info/infodoc.c:132
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
@@ -806,7 +792,7 @@ msgstr ""
 "\\%-10[goto-node]  Chuyển tới nút tên này.\n"
 "\tCũng có thể nhập vào tên tập tin, theo dạng (TÊN_TẬP_TIN)TÊN_NÚT.\n"
 
-#: info/infodoc.c:138
+#: info/infodoc.c:134
 #, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -815,7 +801,7 @@ msgstr ""
 "  %-10s  Tìm kiếm tới chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
 
-#: info/infodoc.c:140
+#: info/infodoc.c:136
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
@@ -824,11 +810,11 @@ msgstr ""
 "  %-10s  Tìm kiếm tới chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
 
-#: info/infodoc.c:321
+#: info/infodoc.c:317
 msgid "The current search path is:\n"
 msgstr "Đường dẫn tìm kiếm hiện thời:\n"
 
-#: info/infodoc.c:325
+#: info/infodoc.c:321
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -836,7 +822,7 @@ msgstr ""
 "Các lệnh sẵn sàng trong cửa sổ Info:\n"
 "\n"
 
-#: info/infodoc.c:329
+#: info/infodoc.c:325
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -844,7 +830,7 @@ msgstr ""
 "Các lệnh sẵn sàng trong vùng phản hồi:\n"
 "\n"
 
-#: info/infodoc.c:352
+#: info/infodoc.c:348
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -853,75 +839,75 @@ msgstr ""
 "Theo đây có những lệnh có thể được gọi chỉ bằng %s:\n"
 "\n"
 
-#: info/infodoc.c:356
+#: info/infodoc.c:352
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
 msgstr "Theo đây có những lệnh không thể gọi:\n"
 
-#: info/infodoc.c:380
+#: info/infodoc.c:376
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- Dùng « \\[history-node] » hay « \\[kill-node] » để thoát ---\n"
 "[history-node\t\tnút lược sử\n"
 "kill node\t\t\tnút giết]\n"
 
-#: info/infodoc.c:490
+#: info/infodoc.c:486
 msgid "Display help message"
 msgstr "Hiển thị thông điệp trợ giúp"
 
-#: info/infodoc.c:508
+#: info/infodoc.c:504
 msgid "Visit Info node `(info)Help'"
 msgstr "Xem nút Info « (info)Help »"
 
-#: info/infodoc.c:646
+#: info/infodoc.c:642
 msgid "Print documentation for KEY"
 msgstr "In ra tài liệu hướng dẫn cho KHÓA"
 
-#: info/infodoc.c:658
+#: info/infodoc.c:654
 #, c-format
 msgid "Describe key: %s"
 msgstr "Diễn tả khoá: %s"
 
-#: info/infodoc.c:669
+#: info/infodoc.c:665
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "Chưa định nghĩa ESC %s."
 
-#: info/infodoc.c:685 info/infodoc.c:714
+#: info/infodoc.c:681 info/infodoc.c:710
 #, c-format
 msgid "%s is undefined."
 msgstr "Chưa định nghĩa %s."
 
-#: info/infodoc.c:735
+#: info/infodoc.c:731
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s đã được định nghĩa thành %s."
 
-#: info/infodoc.c:1158
+#: info/infodoc.c:1154
 msgid "Show what to type to execute a given command"
 msgstr "Hiển thị chuỗi cần gõ để thực hiện lệnh đã cho"
 
-#: info/infodoc.c:1162
+#: info/infodoc.c:1158
 msgid "Where is command: "
 msgstr "Lệnh ở đâu : "
 
-#: info/infodoc.c:1184
+#: info/infodoc.c:1180
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "« %s » không phải trên khoá nào"
 
-#: info/infodoc.c:1191
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s có thể được gọi chỉ bằng %s."
 
-#: info/infodoc.c:1195
+#: info/infodoc.c:1191
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s có thể được gọi bằng %s."
 
-#: info/infodoc.c:1200
+#: info/infodoc.c:1196
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Không có hàm tên « %s »"
@@ -3165,6 +3151,19 @@ msgstr "Không có số thứ tự trang trong %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "mục nhập %s nằm theo một mục nhập có tên phụ"
+
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-prev-xref]\t\tNhảy về liên kết siêu văn bản trước [*].\n"
+
+#~ msgid ""
+#~ "[*]    Command acts within this node or the entire document, depending "
+#~ "on\n"
+#~ "the value of cursor-movement-scrolls variable\n"
+#~ msgstr ""
+#~ "[*]\tLệnh hoạt động bên trong nút thông tin này hay bên trong toàn tài "
+#~ "liệu, phụ thuộc vào giá trị của biến « cursor-movement-scrolls » (con trỏ "
+#~ "di chuyển cuộn)\n"
 
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
