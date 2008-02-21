@@ -2,6 +2,9 @@
 
 	* pretest 4.11.90.
 
+	* info/infodoc.c (info_internal_help_text): more simplifications.
+	Suggestions from Benno Schulenberg, 21 Feb 2008 23:35:38.
+
 	* install-info/tests/ii-0041-test,
 	* install-info/tests/ii-0041-test: ensure target dir file is rw.
 

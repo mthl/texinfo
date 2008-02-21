@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.17 2008-02-19 14:58:29 karl Exp $
+   $Id: infodoc.c,v 1.18 2008-02-21 23:36:16 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -55,18 +55,14 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[global-prev-node]  Move to the previous node in the document.\n"),
   N_("\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"),
   N_("\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"),
-  N_("\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"),
   N_("\\%-10[up-node]  Move \"up\" from this node.\n"),
   N_("\\%-10[history-node]  Move to the last node seen in this window.\n"),
   N_("\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"),
   N_("\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"),
   "\n",
-  N_("[*]    Command acts within this node or the entire document, depending on\n"
-     "the value of cursor-movement-scrolls variable\n"),
-  "\n",
   N_("Moving within a node:\n\
 ---------------------\n"),
-  N_("\\%-10[beginning-of-node]  Go to the beginning this node.\n"),
+  N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
   N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
   N_("\\%-10[next-line]  Scroll forward one line.\n"),
   N_("\\%-10[prev-line]  Scroll backward one line.\n"),
