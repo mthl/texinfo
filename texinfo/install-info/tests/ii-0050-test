@@ -20,6 +20,10 @@ if [ "x$?" != "x0" ]; then
   exit 1
 fi
 
+
+# when copying in distcheck, source will be readonly.
+chmod u+rw $outputdirfile || exit $?
+
 ${install_info} --remove ${testdir}/ii-0050-input-info-file $outputdirfile
 retval=$?
 if [ "x$retval" != "x0" ]; then
