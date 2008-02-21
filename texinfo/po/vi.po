@@ -1,12 +1,12 @@
 # Vietnamese translation for TexInfo.
 # Copyright © 2007 Free Software Foundation, Inc.
 # Clytie Siddall <clytie@riverland.net.au>, 2006-2007.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-09-03 05:23-0700\n"
+"POT-Creation-Date: 2008-02-21 11:08-0800\n"
 "PO-Revision-Date: 2007-09-04 23:30+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -16,76 +16,77 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: LocFactoryEditor 1.7b1\n"
 
-#: gnulib/lib/error.c:126
+#: gnulib/lib/error.c:125
 msgid "Unknown system error"
 msgstr "Lỗi hệ thống không rõ"
 
-#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
+#: gnulib/lib/getopt.c:530 gnulib/lib/getopt.c:546
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: tùy chọn « %s » là mơ hồ\n"
 
-#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
+#: gnulib/lib/getopt.c:579 gnulib/lib/getopt.c:583
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « --%s » không cho phép đối số\n"
 
-#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
+#: gnulib/lib/getopt.c:592 gnulib/lib/getopt.c:597
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « %c%s » không cho phép đối số\n"
 
-#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
-#: gnulib/lib/getopt.c:995
+#: gnulib/lib/getopt.c:640 gnulib/lib/getopt.c:659 gnulib/lib/getopt.c:975
+#: gnulib/lib/getopt.c:994
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: tùy chọn « %s » cần đến đối số\n"
 
-#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
+#: gnulib/lib/getopt.c:697 gnulib/lib/getopt.c:700
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: không nhận ra tùy chọn « --%s »\n"
 
-#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
+#: gnulib/lib/getopt.c:708 gnulib/lib/getopt.c:711
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: không nhận ra tùy chọn « %c%s »\n"
 
-#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
+#: gnulib/lib/getopt.c:763 gnulib/lib/getopt.c:766
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: không cho phép tùy chọn « -- %c »\n"
 
-#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
+#: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: tùy chọn không hợp lệ « -- %c »\n"
 
-#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
-#: gnulib/lib/getopt.c:1066
+#: gnulib/lib/getopt.c:827 gnulib/lib/getopt.c:843 gnulib/lib/getopt.c:1047
+#: gnulib/lib/getopt.c:1065
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: tùy chọn cần đến đối số « -- %c »\n"
 
-#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
+#: gnulib/lib/getopt.c:896 gnulib/lib/getopt.c:912
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: tùy chọn « -W %s » là mơ hồ\n"
 
-#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
+#: gnulib/lib/getopt.c:936 gnulib/lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « -W %s » không cho phép đối số\n"
 
-#: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
+#: gnulib/lib/xalloc-die.c:34 gnulib/lib/xsetenv.c:37
+#, c-format
 msgid "memory exhausted"
 msgstr "hết bộ nhớ hoàn toàn"
 
-#: info/echo-area.c:283 info/session.c:732
+#: info/echo-area.c:283 info/session.c:735
 msgid "Move forward a character"
 msgstr "Tiếp một ký tự"
 
-#: info/echo-area.c:295 info/session.c:764
+#: info/echo-area.c:295 info/session.c:767
 msgid "Move backward a character"
 msgstr "Lùi một ký tự"
 
@@ -97,11 +98,11 @@ msgstr "Về đầu dòng này"
 msgid "Move to the end of this line"
 msgstr "Tới cuối dòng này"
 
-#: info/echo-area.c:320 info/session.c:805
+#: info/echo-area.c:320 info/session.c:808
 msgid "Move forward a word"
 msgstr "Tiếp một từ"
 
-#: info/echo-area.c:360 info/session.c:878
+#: info/echo-area.c:360 info/session.c:881
 msgid "Move backward a word"
 msgstr "Lùi một từ"
 
@@ -235,8 +236,8 @@ msgstr "Mục nhập chỉ mục: "
 msgid ""
 "Go to the next matching index item from the last `\\[index-search]' command"
 msgstr ""
-"Tới mục chỉ mục khớp kế tiếp từ lệnh «[index-search]» (tìm kiếm chỉ mục) "
-"cuối cùng."
+"Tới mục chỉ mục khớp kế tiếp từ lệnh «[index-search]» (tìm kiếm chỉ mục) cuối "
+"cùng."
 
 #: info/indices.c:334
 msgid "No previous index search string."
@@ -267,27 +268,27 @@ msgstr ""
 
 # Type: text
 # Description
-#: info/indices.c:540
+#: info/indices.c:549
 #, c-format
 msgid "Scanning indices of `%s'..."
 msgstr "Đang quét các chỉ mục của « %s »..."
 
-#: info/indices.c:595
+#: info/indices.c:604
 #, c-format
 msgid "No available info files have `%s' in their indices."
 msgstr "Không có tập tin thông tin sẵn sàng chứa « %s » trong chỉ mục ."
 
-#: info/indices.c:621
+#: info/indices.c:630
 msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr ""
 "Grovel mọi chỉ mục của tập tin thông tin (info) tìm chuỗi và xây dựng trình "
 "đơn"
 
-#: info/indices.c:625
+#: info/indices.c:634
 msgid "Index apropos: "
 msgstr "Chỉ mục apropos: "
 
-#: info/indices.c:653
+#: info/indices.c:662
 #, c-format
 msgid ""
 "\n"
@@ -296,13 +297,13 @@ msgstr ""
 "\n"
 "* Trình đơn: nút có chỉ mục chứa « %s »:\n"
 
-#: info/info.c:287 info/infokey.c:899
+#: info/info.c:273 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « --help » để xem thông tin thêm.\n"
 
-#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
-#: util/install-info.c:1328 util/texindex.c:295
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2061
+#: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -317,48 +318,72 @@ msgstr ""
 "Đây là phần mềm tự do : bạn có quyền thay đổi và phát hành lại nó.\n"
 "KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép\n"
 
-#: info/info.c:511
+#: info/info.c:503
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: info/info.c:603
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr ""
-"  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói.\n"
-"\t\t(_thân thiện với tiếng nói_)\n"
-
-#: info/info.c:610
+#: info/info.c:597
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 "\n"
 "Read documentation in Info format.\n"
-"\n"
+msgstr ""
+
+#: info/info.c:603
+msgid ""
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
+"  -k, --apropos=STRING         look up STRING in all indices of all "
 "manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
-"  -f, --file=FILENAME          specify Info file to visit.\n"
+"  -f, --file=FILENAME          specify Info file to visit."
+msgstr ""
+
+#: info/info.c:610
+msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+"  -o, --output=FILENAME        output selected nodes to FILENAME."
+msgstr ""
+
+#: info/info.c:616
+msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
 "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
-"  -O, --show-options, --usage  go to command-line options node.\n"
-"%s      --subnodes               recursively output menu items.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+
+#: info/info.c:623
+#, fuzzy
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr ""
+"  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói.\n"
+"\t\t(_thân thiện với tiếng nói_)\n"
+
+#: info/info.c:627
+msgid ""
+"      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file."
+msgstr ""
+
+#: info/info.c:633
+msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
 "it is searched for in all `dir' files along INFOPATH.\n"
 "If it is not present, info merges all `dir' files and shows the result.\n"
 "Any remaining arguments are treated as the names of menu\n"
-"items relative to the initial node visited.\n"
+"items relative to the initial node visited."
+msgstr ""
+
+#: info/info.c:640
+msgid ""
 "\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
@@ -366,66 +391,11 @@ msgid ""
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
-"Cách sử dụng: %s [TÙY_CHỌN]... [MỤC_TRÌNH_ĐƠN...]\n"
-"\n"
-"Đọc tài liệu có định dạng Info.\n"
-"\n"
-"Tùy chọn:\n"
-"      --apropos=CHUỖI         tra tìm chuỗi này trong mọi chủ mục của mọi sổ "
-"tay.\n"
-"  -d, --directory=THƯ_MỤC          thêm thư mục này vào đường dẫn INFOPATH.\n"
-"      --dribble=TÊN_TẬP_TIN       ghi nhớ các động tác gõ phím vào tập tin "
-"tên này.\n"
-"  -f, --file=TÊN_TẬP_TIN          xác định tập tin Info cần thăm (_tập "
-"tin_).\n"
-"  -h, --help                   hiển thị trợ giúp này rồi thoát (_trợ giúp_)\n"
-"      --index-search=CHUỖI    tới nút thông tin tới đó chuỗi này chỉ trong "
-"chỉ mục.\n"
-"\t\t(_tìm kiếm trong chỉ mục_)\n"
-"  -n, --node=TÊN_NÚT          xác định các nút thông tin trong tập tin Info "
-"thăm thứ nhất.\n"
-"  -o, --output=TÊN_TẬP_TIN        xuất ra tập tin này các nút thông tin đã "
-"chọn.\n"
-"\t\t(_kết xuất_)\n"
-"  -R, --raw-escapes            xuất các ký tự thoát ANSI « thô » (mặc định)\n"
-"\t\t(_các sự thoát thô_)\n"
-"      --no-raw-escapes         xuất các ký tự thoát theo văn bản nghĩa chữ.\n"
-"\t\t(_không có sự thoát thô_)\n"
-"      --restore=TÊN_TẬP_TIN       đọc các động tác gõ phím đầu tiên từ tập "
-"tin này.\n"
-"\t\t(_phục hồi _)\n"
-"  -O, --show-options, --usage  tới nút thông tin hiển thị các tùy chọn dòng "
-"lệnh.\n"
-"\t\t(_hiện tùy chọn, cách sử dụng_)\n"
-"%s      --subnodes               xuất đệ quy các mục trình đơn.\n"
-"\t\t(_các nút phụ_)\n"
-"  -w, --where, --location      in a địa điểm vật lý của tập tin Info.\n"
-"\t\t(_ở đâu, địa điểm_)\n"
-"      --vi-keys               dùng tổ hợp phím kiểu Vi và Less (_các phím "
-"Vi_).\n"
-"      --version                hiển thị thông tin phiên bản rồi thoát "
-"(_phiên bản_)\n"
-"\n"
-"Đối số khác tùy chọn thứ nhất, nếu có, là mục trình đơn từ đó cần bắt đầu ;\n"
-"tìm kiếm nó trong mọi thư mục « dir » trên đường dẫn INFOPATH.\n"
-"Không có thì Info trộn mọi tập tin « dir » rồi hiển thị kết quả.\n"
-"Đối số còn lại nào được xử lý như tên mục trình đơn tương đối\n"
-"với nút đầu tiên đã thăm.\n"
-"\n"
-"Mẫu thí dụ :\n"
-"  info                       hiển thị trình đơn thư mục cấp đầu\n"
-"  info emacs                 bắt đầu ở nút emacs từ thư mục cấp đầu\n"
-"  info emacs buffers        bắt đầu ở nút buffers bên trong sổ tay emacs\n"
-"  info --show-options emacs  bắt đầu ở nút chứa các tùy chọn dòng lệnh "
-"emacs\n"
-"  info --subnodes -o out.txt emacs  đổ toàn bộ sổ tay ra tập tin out.txt\n"
-"  info -f ./phu.info         hiện tập tin « ./phu.info », không tìm kiếm "
-"trong thư mục\n"
 
-#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
-#: util/install-info.c:491 util/texindex.c:259
+#: info/info.c:649 info/infokey.c:918 install-info/install-info.c:563
+#: makeinfo/makeinfo.c:474 util/texindex.c:259
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -506,7 +476,7 @@ msgstr "Cửa sổ kết quả quá nhỏ."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 
-#: info/infodoc.c:45 info/infodoc.c:97
+#: info/infodoc.c:45 info/infodoc.c:98
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -528,7 +498,7 @@ msgstr ""
 "\\%-10[get-info-help-node]  gọi trợ lý hướng dẫn Info.\n"
 "\t\t\t(_lấy nút trợ giúp Info_)\n"
 
-#: info/infodoc.c:52 info/infodoc.c:104
+#: info/infodoc.c:52 info/infodoc.c:105
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -537,32 +507,35 @@ msgstr ""
 "━━━━━━━\n"
 
 #: info/infodoc.c:54
-msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
+#, fuzzy
+msgid "\\%-10[global-next-node]  Move to the next node in the document.\n"
 msgstr "\\%-10[next-node]  Tới nút kế tiếp của nút này (_nút kế tiếp_).\n"
 
 #: info/infodoc.c:55
-msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
+#, fuzzy
+msgid "\\%-10[global-prev-node]  Move to the previous node in the document.\n"
 msgstr "\\%-10[prev-node]  Về nút trước của nút này (_nút trước_).\n"
 
 #: info/infodoc.c:56
-msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "\\%-10[up-node]  Chuyển lên từ nút này (_lên nút_).\n"
+msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
+msgstr ""
+"\\%-10[move-to-next-xref]\t\tNhảy tới liên kết siêu văn bản kế tiếp [*].\n"
 
 #: info/infodoc.c:57
 msgid ""
-"\\%-10[menu-item]  Pick menu item specified by name.\n"
-"              Picking a menu item causes another node to be selected.\n"
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
 msgstr ""
-"\\%-10[menu-item]\tChọn mục trình đơn xác định theo tên.\n"
-"\tViệc chọn mục trình đơn thì gây ra chọn nút khác.\n"
-"\t\t(_mục trình đơn_)\n"
+"\\%-10[select-reference-this-line]\tTheo liên kết siêu văn bản\n"
+"\tnằm dưới con trỏ (_chọn tham chiếu dòng này_)\n"
+
+#: info/infodoc.c:58
+msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+msgstr ""
+"\\%-10[move-to-prev-xref]\t\tNhảy về liên kết siêu văn bản trước [*].\n"
 
 #: info/infodoc.c:59
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  \tTheo tham chiếu chéo. Đọc tên tham chiếu.\n"
-"\t\t(_mục tham chiếu chéo_)\n"
+msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
+msgstr "\\%-10[up-node]  Chuyển lên từ nút này (_lên nút_).\n"
 
 #: info/infodoc.c:60
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
@@ -571,23 +544,6 @@ msgstr ""
 "\t\t(_nút lịch sử_)\n"
 
 #: info/infodoc.c:61
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-next-xref]\t\tNhảy tới liên kết siêu văn bản kế tiếp [*].\n"
-
-#: info/infodoc.c:62
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]\t\tNhảy về liên kết siêu văn bản trước [*].\n"
-
-#: info/infodoc.c:63
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]\tTheo liên kết siêu văn bản\n"
-"\tnằm dưới con trỏ (_chọn tham chiếu dòng này_)\n"
-
-#: info/infodoc.c:64
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
@@ -595,21 +551,21 @@ msgstr ""
 "\\%-10[dir-node]  \tTới nút « thư mục ». Bằng « \\[goto-node] (THƯ MỤC) ».\n"
 "\t\t(_nút thư mục_)\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:62
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Tới nút đầu. Bằng « \\[goto-node] Trên ».\n"
 
-#: info/infodoc.c:67
+#: info/infodoc.c:64
 msgid ""
 "[*]    Command acts within this node or the entire document, depending on\n"
 "the value of cursor-movement-scrolls variable\n"
 msgstr ""
 "[*]\tLệnh hoạt động bên trong nút thông tin này hay bên trong toàn tài liệu, "
-"phụ thuộc vào giá trị của biến « cursor-movement-scrolls » (con trỏ di "
-"chuyển cuộn)\n"
+"phụ thuộc vào giá trị của biến « cursor-movement-scrolls » (con trỏ di chuyển "
+"cuộn)\n"
 
-#: info/infodoc.c:70 info/infodoc.c:118
+#: info/infodoc.c:67 info/infodoc.c:119
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -617,31 +573,36 @@ msgstr ""
 "Di chuyển bên trong nút thông tin:\n"
 "━━━━━━━\n"
 
-#: info/infodoc.c:72
-msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#: info/infodoc.c:69
+#, fuzzy
+msgid "\\%-10[beginning-of-node]  Go to the beginning this node.\n"
 msgstr "\\%-10[beginning-of-node]  Về đầu của nút này (_đầu của nút_).\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:70
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Tới cuối của nút này (_cuối của nút_).\n"
 
-#: info/infodoc.c:74
-msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+#: info/infodoc.c:71
+#, fuzzy
+msgid "\\%-10[next-line]  Scroll forward one line.\n"
 msgstr "\\%-10[next-line]  Cuộn tới 1 dòng (_dòng kế_).\n"
 
-#: info/infodoc.c:75
-msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward one line.\n"
 msgstr "\\%-10[prev-line]  Cuộn lùi 1 dòng (_dòng trước_).\n"
 
-#: info/infodoc.c:76
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
 msgstr "\\%-10[scroll-forward]  Cuộn tới 1 trang (_cuộn tới_).\n"
 
-#: info/infodoc.c:77
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+#: info/infodoc.c:74
+#, fuzzy
+msgid "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
 msgstr "\\%-10[scroll-backward]  Cuộn lùi 1 trang (_cuộn ngược_).\n"
 
-#: info/infodoc.c:79 info/infodoc.c:127
+#: info/infodoc.c:76 info/infodoc.c:128
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -649,17 +610,39 @@ msgstr ""
 "Lệnh khác:\n"
 "━━━━\n"
 
-#: info/infodoc.c:81
+#: info/infodoc.c:78
+msgid ""
+"\\%-10[search]  Search forward for a specified string\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"\\%-10[search]  Tìm tới chuỗi đã xác định, cũng chọn nút trong đó\n"
+"\ttìm mục tương ứng kế tiếp.\n"
+
+#: info/infodoc.c:80
+msgid ""
+"\\%-10[search-backward]  Search backward for a specified string\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
+msgstr ""
+"\\%-10[search-backward]  Tìm lùi chuỗi đã xác định, cũng chọn nút trong đó\n"
+"\ttìm mục tương ứng trước.\n"
+
+#: info/infodoc.c:82
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
 msgstr ""
 "1...9    Chọn mục thứ nhất đến thứ chín trong trình đơn của nút thông tin "
 "này.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Chọn mục cuối trong trình đơn của nút này.\n"
 
-#: info/infodoc.c:83
+#: info/infodoc.c:84
+#, fuzzy
+msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
+msgstr "  %-10s  Chọn mục trình đơn xác định theo tên.\n"
+
+#: info/infodoc.c:85
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -669,7 +652,14 @@ msgstr ""
 "\\%-10[index-search]  Tìm kiếm chuỗi đã xác định trong các mục chỉ mục của "
 "tập tin Info này, cũng chọn nút tới đó mục đầu đã tìm có chỉ.\n"
 
-#: info/infodoc.c:85
+#: info/infodoc.c:87
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr ""
+"\\%-10[xref-item]  \tTheo tham chiếu chéo. Đọc tên tham chiếu.\n"
+"\t\t(_mục tham chiếu chéo_)\n"
+
+#: info/infodoc.c:88
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -677,133 +667,127 @@ msgstr ""
 "\\%-10[goto-node]  Chuyển tới nút tên này.\n"
 "\tCũng có thể nhập vào tên tập tin, theo dạng (TÊN_TẬP_TIN)TÊN_NÚT.\n"
 
-#: info/infodoc.c:87
-msgid ""
-"\\%-10[search]  Search forward for a specified string\n"
-"              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"\\%-10[search]  Tìm tới chuỗi đã xác định, cũng chọn nút trong đó\n"
-"\ttìm mục tương ứng kế tiếp.\n"
+#: info/infodoc.c:90
+#, fuzzy
+msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+msgstr "\\%-10[next-node]  Tới nút kế tiếp của nút này (_nút kế tiếp_).\n"
 
-#: info/infodoc.c:89
-msgid ""
-"\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
-msgstr ""
-"\\%-10[search-backward]  Tìm lùi chuỗi đã xác định, cũng chọn nút trong đó\n"
-"\ttìm mục tương ứng trước.\n"
+#: info/infodoc.c:91
+#, fuzzy
+msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
+msgstr "\\%-10[prev-node]  Về nút trước của nút này (_nút trước_).\n"
 
-#: info/infodoc.c:100
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Thoát khỏi trợ giúp này.\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Thoát hoàn toàn Info.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Gọi trợ lý hướng dẫn Info.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Tới nút « kế » của nút này.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Về nút « lùi » của nút này.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Chuyển « lên » từ nút này.\n"
 
-#: info/infodoc.c:109
-#, c-format
-msgid "  %-10s  Pick menu item specified by name.\n"
-msgstr "  %-10s  Chọn mục trình đơn xác định theo tên.\n"
-
 #: info/infodoc.c:110
-msgid "              Picking a menu item causes another node to be selected.\n"
-msgstr "              Việc chọn mục trình đơn thì gây ra nút khác được chọn.\n"
+#, fuzzy, c-format
+msgid ""
+"  %-10s  Pick menu item specified by name.\n"
+"              Picking a menu item causes another node to be selected.\n"
+msgstr ""
+"\\%-10[menu-item]\tChọn mục trình đơn xác định theo tên.\n"
+"\tViệc chọn mục trình đơn thì gây ra chọn nút khác.\n"
+"\t\t(_mục trình đơn_)\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Theo một tham chiếu chéo. Đọc tên tham chiếu.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Tới nút cuối hiển thị trong cửa sổ này.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Nhảy tới liên kết siêu văn bản kế tiếp bên trong nút này.\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Theo liên kết siêu văn bản nằm dưới con trỏ.\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Tới nút « thư mục ». Bằng « g (THƯ_MỤC) ».\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Tới nút Đầu. Bằng « g Trên ».\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Cuộn tới 1 trang.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Cuộn lùi 1 trang.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Về đầu nút này.\n"
 
-#: info/infodoc.c:123
+#: info/infodoc.c:124
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Tới cuối nút này.\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:125
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Cuộn tới 1 dòng.\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:126
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Cuộn lùi 1 dòng.\n"
 
-#: info/infodoc.c:129
-#, c-format
-msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
+#: info/infodoc.c:130
+#, fuzzy, c-format
+msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Chọn mục thứ nhất đến thứ chín trong trình đơn của nút.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Chọn mục cuối trong trình đơn của nút.\n"
 
-#: info/infodoc.c:133
+#: info/infodoc.c:134
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -813,19 +797,16 @@ msgstr ""
 "  %-10s  Tìm kiếm chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút tới đó mục đầu đã tìm có chỉ.\n"
 
-#: info/infodoc.c:135
-#, c-format
-msgid "  %-10s  Move to node specified by name.\n"
-msgstr "  %-10s  Tới nút xác định theo tên.\n"
-
 #: info/infodoc.c:136
+#, fuzzy, c-format
 msgid ""
+"  %-10s  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
-"              Cũng có thể nhập vào tên tập tin, theo dạng « (TÊN_TẬP_TIN)"
-"TÊN_NÚT ».\n"
+"\\%-10[goto-node]  Chuyển tới nút tên này.\n"
+"\tCũng có thể nhập vào tên tập tin, theo dạng (TÊN_TẬP_TIN)TÊN_NÚT.\n"
 
-#: info/infodoc.c:137
+#: info/infodoc.c:138
 #, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -834,21 +815,20 @@ msgstr ""
 "  %-10s  Tìm kiếm tới chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
 
-#: info/infodoc.c:139
-#, c-format
-msgid "  %-10s  Search backward for a specified string\n"
-msgstr "  %-10s  Tìm lùi chuỗi đã xác định\n"
-
 #: info/infodoc.c:140
+#, fuzzy, c-format
 msgid ""
+"  %-10s  Search backward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
-msgstr "              và chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
+msgstr ""
+"  %-10s  Tìm kiếm tới chuỗi đã xác định trong các mục chỉ mục\n"
+"\tcủa nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
 
-#: info/infodoc.c:320
+#: info/infodoc.c:321
 msgid "The current search path is:\n"
 msgstr "Đường dẫn tìm kiếm hiện thời:\n"
 
-#: info/infodoc.c:324
+#: info/infodoc.c:325
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -856,7 +836,7 @@ msgstr ""
 "Các lệnh sẵn sàng trong cửa sổ Info:\n"
 "\n"
 
-#: info/infodoc.c:328
+#: info/infodoc.c:329
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -864,7 +844,7 @@ msgstr ""
 "Các lệnh sẵn sàng trong vùng phản hồi:\n"
 "\n"
 
-#: info/infodoc.c:351
+#: info/infodoc.c:352
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -873,75 +853,75 @@ msgstr ""
 "Theo đây có những lệnh có thể được gọi chỉ bằng %s:\n"
 "\n"
 
-#: info/infodoc.c:355
+#: info/infodoc.c:356
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
 msgstr "Theo đây có những lệnh không thể gọi:\n"
 
-#: info/infodoc.c:379
+#: info/infodoc.c:380
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- Dùng « \\[history-node] » hay « \\[kill-node] » để thoát ---\n"
 "[history-node\t\tnút lược sử\n"
 "kill node\t\t\tnút giết]\n"
 
-#: info/infodoc.c:489
+#: info/infodoc.c:490
 msgid "Display help message"
 msgstr "Hiển thị thông điệp trợ giúp"
 
-#: info/infodoc.c:507
+#: info/infodoc.c:508
 msgid "Visit Info node `(info)Help'"
 msgstr "Xem nút Info « (info)Help »"
 
-#: info/infodoc.c:645
+#: info/infodoc.c:646
 msgid "Print documentation for KEY"
 msgstr "In ra tài liệu hướng dẫn cho KHÓA"
 
-#: info/infodoc.c:657
+#: info/infodoc.c:658
 #, c-format
 msgid "Describe key: %s"
 msgstr "Diễn tả khoá: %s"
 
-#: info/infodoc.c:668
+#: info/infodoc.c:669
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "Chưa định nghĩa ESC %s."
 
-#: info/infodoc.c:684 info/infodoc.c:713
+#: info/infodoc.c:685 info/infodoc.c:714
 #, c-format
 msgid "%s is undefined."
 msgstr "Chưa định nghĩa %s."
 
-#: info/infodoc.c:734
+#: info/infodoc.c:735
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s đã được định nghĩa thành %s."
 
-#: info/infodoc.c:1157
+#: info/infodoc.c:1158
 msgid "Show what to type to execute a given command"
 msgstr "Hiển thị chuỗi cần gõ để thực hiện lệnh đã cho"
 
-#: info/infodoc.c:1161
+#: info/infodoc.c:1162
 msgid "Where is command: "
 msgstr "Lệnh ở đâu : "
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "« %s » không phải trên khoá nào"
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s có thể được gọi chỉ bằng %s."
 
-#: info/infodoc.c:1194
+#: info/infodoc.c:1195
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s có thể được gọi bằng %s."
 
-#: info/infodoc.c:1199
+#: info/infodoc.c:1200
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Không có hàm tên « %s »"
@@ -1057,22 +1037,22 @@ msgstr ""
 "  --help               \t\thiển thị trợ giúp này rồi thoát.\n"
 "  --version            \t\thiển thị thông tin phiên bản rồi thoát.\n"
 
-#: info/infomap.c:1499
+#: info/infomap.c:1508
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Đang bỏ qua tập tin infokey không hợp lệ « %s »: quá nhỏ"
 
-#: info/infomap.c:1502
+#: info/infomap.c:1511
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Đang bỏ qua tập tin infokey không hợp lệ « %s »: quá lớn"
 
-#: info/infomap.c:1515
+#: info/infomap.c:1524
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Gặp lỗi khi đọc tập tin infokey « %s»: đọc ngắn"
 
-#: info/infomap.c:1534
+#: info/infomap.c:1543
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -1080,13 +1060,12 @@ msgstr ""
 "Tập tin infokey « %s » không hợp lệ (số ma thuật sai): hãy chạy infokey để "
 "cập nhật nó"
 
-#: info/infomap.c:1543
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr ""
-"Tập tin infokey « %s » của bạn quá cũ : hãy chạy infokey để cập nhật nó"
+msgstr "Tập tin infokey « %s » của bạn quá cũ : hãy chạy infokey để cập nhật nó"
 
-#: info/infomap.c:1559
+#: info/infomap.c:1568
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -1094,7 +1073,7 @@ msgstr ""
 "Tập tin infokey « %s » không hợp lệ (độ dài phần sai): hãy chạy infokey để "
 "cập nhật nó"
 
-#: info/infomap.c:1580
+#: info/infomap.c:1589
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -1102,15 +1081,14 @@ msgstr ""
 "Tập tin infokey « %s » không hợp lệ (mã phần sai): hãy chạy infokey để cập "
 "nhật nó"
 
-#: info/infomap.c:1715
+#: info/infomap.c:1724
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số tổ hợp phím"
 
-#: info/infomap.c:1765
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
-"Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số cách thiết lập « var "
-"»"
+"Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số cách thiết lập « var »"
 
 #: info/m-x.c:68
 msgid "Read the name of an Info command and describe it"
@@ -1142,7 +1120,7 @@ msgstr "Lập độ cao của cửa sổ hiển thị"
 msgid "Set screen height to (%d): "
 msgstr "Lập độ cao của màn hình thành (%d): "
 
-#: info/makedoc.c:163 info/makedoc.c:171
+#: info/makedoc.c:166 info/makedoc.c:174
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
@@ -1151,7 +1129,7 @@ msgstr ""
 "   Các tập tin mã nguồn đã grovel để tạo tập tin này bao gồm:\n"
 "\n"
 
-#: info/makedoc.c:551
+#: info/makedoc.c:556
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Không thể thao tác tập tin %s.\n"
@@ -1189,12 +1167,17 @@ msgstr "Chọn nút đã xem trước, trong cửa sổ hiện rõ"
 msgid "Select visited node: "
 msgstr "Chọn nút đã xem: "
 
-#: info/nodemenu.c:336 info/session.c:2398
+#: info/nodemenu.c:336 info/session.c:2394
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Tham chiếu đã biến mật. (%s)"
 
-#: info/session.c:161
+#: info/search.c:161
+#, c-format
+msgid "regexp error: %s"
+msgstr ""
+
+#: info/session.c:164
 #, c-format
 msgid ""
 "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
@@ -1204,109 +1187,78 @@ msgstr ""
 "\t \\[get-help-window]\t\tđể xem trợ giúp,\n"
 "\t\\[menu-item] \t\t\tcho mục trình đơn."
 
-#: info/session.c:622
+#: info/session.c:625
 msgid "Move down to the next line"
 msgstr "Tới dòng kế"
 
-#: info/session.c:658
+#: info/session.c:661
 msgid "Move up to the previous line"
 msgstr "Về dòng trước"
 
-#: info/session.c:693
+#: info/session.c:696
 msgid "Move to the end of the line"
 msgstr "Tới cuối dòng"
 
-#: info/session.c:713
+#: info/session.c:716
 msgid "Move to the start of the line"
 msgstr "Về đầu dòng"
 
-#: info/session.c:983 makeinfo/node.c:1437
+#: info/session.c:986
 msgid "Next"
 msgstr "Kế"
 
-#: info/session.c:988
-msgid "Following Next node..."
-msgstr "Đang theo nút Kế..."
-
-# Type: text
-# Description
-#: info/session.c:1006
-msgid "Selecting first menu item..."
-msgstr "Đang chọn mục trình đơn đầu..."
-
-#: info/session.c:1018
-msgid "Selecting Next node..."
-msgstr "Đang chọn nút Kế..."
-
-#: info/session.c:1089
-#, c-format
-msgid "Moving Up %d time(s), then Next."
-msgstr "Đang chuyển Lên %d lần, rồi Kế"
-
-#: info/session.c:1113
+#: info/session.c:1106
 msgid "No more nodes within this document."
 msgstr "Không có nút nữa trong tài liệu này."
 
-#: info/session.c:1139
+#: info/session.c:1132
 msgid "No `Prev' for this node."
 msgstr "Không có « Lùi » cho nút này"
 
-#: info/session.c:1144 info/session.c:1206
-msgid "Moving Prev in this window."
-msgstr "Đang chuyển Lùi trong cửa sổ này."
-
-#: info/session.c:1161
+#: info/session.c:1152
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr "Không có « Lùi » hay « Lên » cho nút này trong tài liệu này."
 
-#: info/session.c:1167
-msgid "Moving Up in this window."
-msgstr "Đang chuyển Lên trong cửa sổ này."
-
-#: info/session.c:1217
-msgid "Moving to `Prev's last menu item."
-msgstr "Đang chuyển tới mục trình đơn cuối của « Lùi »."
-
-#: info/session.c:1229
+#: info/session.c:1214
 msgid "Move forwards or down through node structure"
 msgstr "Chuyển tới hay xuống qua cấu trúc nút"
 
-#: info/session.c:1245
+#: info/session.c:1230
 msgid "Move backwards or up through node structure"
 msgstr "Chuyển lùi hay lên qua cấu trúc nút"
 
-#: info/session.c:1339
+#: info/session.c:1324
 msgid "Scroll forward in this window"
 msgstr "Cuộn tới trong cửa sổ này"
 
-#: info/session.c:1347
+#: info/session.c:1332
 msgid "Scroll forward in this window and set default window size"
 msgstr "Cuộn tới trong cửa sổ này và lập kích cỡ cửa sổ mặc định"
 
-#: info/session.c:1355
+#: info/session.c:1340
 msgid "Scroll forward in this window staying within node"
 msgstr "Cuộn tới trong cửa sổ này mà còn lại trong nút này"
 
-#: info/session.c:1363
+#: info/session.c:1348
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Cuộn tới trong cửa sổ này, mà còn lại trong nút này và lập kích cỡ cửa sổ "
 "mặc định"
 
-#: info/session.c:1371
+#: info/session.c:1356
 msgid "Scroll backward in this window"
 msgstr "Cuộn lùi trong cửa sổ này"
 
-#: info/session.c:1379
+#: info/session.c:1364
 msgid "Scroll backward in this window and set default window size"
 msgstr "Cuộn lùi trong cửa sổ này và lập kích cỡ cửa sổ mặc định"
 
-#: info/session.c:1388
+#: info/session.c:1373
 msgid "Scroll backward in this window staying within node"
 msgstr "Cuộn lùi trong cửa sổ này, mà còn lại trong nút này"
 
-#: info/session.c:1396
+#: info/session.c:1381
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1314,327 +1266,352 @@ msgstr ""
 "Cuộn lùi trong cửa sổ này, mà còn lại trong nút này và lập kích cỡ cửa sổ "
 "mặc định"
 
-#: info/session.c:1404
+#: info/session.c:1389
 msgid "Move to the start of this node"
 msgstr "Về đầu nút này"
 
-#: info/session.c:1411
+#: info/session.c:1396
 msgid "Move to the end of this node"
 msgstr "Tới cuối nút này"
 
-#: info/session.c:1418
+#: info/session.c:1403
 msgid "Scroll down by lines"
 msgstr "Cuộn xuống theo dòng"
 
-#: info/session.c:1435
+#: info/session.c:1420
 msgid "Scroll up by lines"
 msgstr "Cuộn lên theo dòng"
 
-#: info/session.c:1453
+#: info/session.c:1438
 msgid "Scroll down by half screen size"
 msgstr "Cuộn xuống theo nửa màn hình"
 
-#: info/session.c:1479
+#: info/session.c:1464
 msgid "Scroll up by half screen size"
 msgstr "Cuộn lên theo nửa màn hình"
 
-#: info/session.c:1508
+#: info/session.c:1493
 msgid "Select the next window"
 msgstr "Chọn cửa sổ kế"
 
-#: info/session.c:1547
+#: info/session.c:1532
 msgid "Select the previous window"
 msgstr "Chọn cửa sổ lùi"
 
-#: info/session.c:1598
+#: info/session.c:1583
 msgid "Split the current window"
 msgstr "Chia tách cửa sổ hiện có"
 
-#: info/session.c:1679
+#: info/session.c:1664
 msgid "Delete the current window"
 msgstr "Xóa cửa sổ hiện có"
 
-#: info/session.c:1687
+#: info/session.c:1672
 msgid "Cannot delete a permanent window"
 msgstr "Không thể xóa cửa sổ lâu bền"
 
-#: info/session.c:1719
+#: info/session.c:1704
 msgid "Delete all other windows"
 msgstr "Xóa các cửa sổ khác"
 
-#: info/session.c:1765
+#: info/session.c:1750
 msgid "Scroll the other window"
 msgstr "Cuộn cửa sổ khác"
 
-#: info/session.c:1786
+#: info/session.c:1771
 msgid "Scroll the other window backward"
 msgstr "Cuộn lùi cửa sổ khác"
 
-#: info/session.c:1792
+#: info/session.c:1777
 msgid "Grow (or shrink) this window"
 msgstr "Phóng to (hay thu nhỏ) cửa sổ này"
 
-#: info/session.c:1803
+#: info/session.c:1788
 msgid "Divide the available screen space among the visible windows"
 msgstr "Chia chỗ màn hình sẵn sàng ra các cửa sổ hiện rõ"
 
-#: info/session.c:1810
+#: info/session.c:1795
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Bật tắt tính trạng ngắt dòng trong cửa sổ hiện thời"
 
-#: info/session.c:1982
+#: info/session.c:1802
+msgid "Toggle the usage of regular expressions in searches"
+msgstr ""
+
+#: info/session.c:1806
+#, fuzzy
+msgid "Using regular expressions for searches."
+msgstr "Gặp lỗi trong biểu thức chính quy « %s »: %s"
+
+#: info/session.c:1807
+msgid "Using literal strings for searches."
+msgstr ""
+
+#: info/session.c:1978
 msgid "Select the Next node"
 msgstr "Chọn nút Kế"
 
-#: info/session.c:1990
+#: info/session.c:1986
 msgid "Select the Prev node"
 msgstr "Chọn nút Lùi"
 
-#: info/session.c:1998
+#: info/session.c:1994
 msgid "Select the Up node"
 msgstr "Chọn nút Lên"
 
-#: info/session.c:2005
+#: info/session.c:2001
 msgid "Select the last node in this file"
 msgstr "Chọn nút cuối trong tập tin này"
 
-#: info/session.c:2032 info/session.c:2065
+#: info/session.c:2028 info/session.c:2061
 msgid "This window has no additional nodes"
 msgstr "Cửa sổ này không có nút thêm"
 
-#: info/session.c:2038
+#: info/session.c:2034
 msgid "Select the first node in this file"
 msgstr "Chọn nút đầu trong tập tin này"
 
-#: info/session.c:2072
+#: info/session.c:2068
 msgid "Select the last item in this node's menu"
 msgstr "Chọn mục cuối trong trình đơn nút này"
 
-#: info/session.c:2078
+#: info/session.c:2074
 msgid "Select this menu item"
 msgstr "Chọn mục trình đơn này"
 
-#: info/session.c:2111
+#: info/session.c:2107
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Không có %d mục trong trình đơn này."
 
-#: info/session.c:2305 info/session.c:2306
+#: info/session.c:2301 info/session.c:2302
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Mục trình đơn (%s): "
 
-#: info/session.c:2309
+#: info/session.c:2305
 msgid "Menu item: "
 msgstr "Mục trình đơn: "
 
-#: info/session.c:2316 info/session.c:2317
+#: info/session.c:2312 info/session.c:2313
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Theo tham chiếu chéo (%s): "
 
-#: info/session.c:2320
+#: info/session.c:2316
 msgid "Follow xref: "
 msgstr "Theo tham chiếu chéo : "
 
-#: info/session.c:2449
+#: info/session.c:2445
 msgid "Read a menu item and select its node"
 msgstr "Đọc mục trình đơn và chọn nút của nó"
 
-#: info/session.c:2457
+#: info/session.c:2453
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Đọc cước chú hay tham chiếu chéo và chọn nút của nó"
 
-#: info/session.c:2463
+#: info/session.c:2459
 msgid "Move to the start of this node's menu"
 msgstr "Về đầu trình đơn của nút này"
 
-#: info/session.c:2487
+#: info/session.c:2483
 msgid "Visit as many menu items at once as possible"
 msgstr "Xem đồng thời càng nhiều mục trình đơn càng có thể"
 
-#: info/session.c:2515
+#: info/session.c:2511
 msgid "Read a node name and select it"
 msgstr "Đọc tên nút và chọn nó"
 
-#: info/session.c:2570 info/session.c:2575
+#: info/session.c:2566 info/session.c:2571
 msgid "Goto node: "
 msgstr "Tới nút: "
 
-#: info/session.c:2639
+#: info/session.c:2635
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Không có trình đơn trong nút « %s »."
 
-#: info/session.c:2685
+#: info/session.c:2681
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Không có mục trình đơn « %s » trong nút « %s »."
 
-#: info/session.c:2715
+#: info/session.c:2711
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Không tìm thấy nút được tham chiếu bởi « %s » trong « %s »."
 
-#: info/session.c:2765
+#: info/session.c:2761
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Đọc danh sách các trình đơn bắt đầu từ « thư mục » và theo chúng"
 
-#: info/session.c:2767
+#: info/session.c:2763
 msgid "Follow menus: "
 msgstr "Theo trình đơn: "
 
-#: info/session.c:2960
+#: info/session.c:2956
 msgid "Find the node describing program invocation"
 msgstr "Tìm nút diễn tả cuộc gọi chương trình"
 
-#: info/session.c:2962
+#: info/session.c:2958
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Tìm nút gọi của [%s]: "
 
-#: info/session.c:3000
+#: info/session.c:2996
 msgid "Read a manpage reference and select it"
 msgstr "Đọc tham chiếu trang hướng dẫn (man) và chọn nó"
 
-#: info/session.c:3004
+#: info/session.c:3000
 msgid "Get Manpage: "
 msgstr "Lấy trang Man: "
 
-#: info/session.c:3034
+#: info/session.c:3030
 msgid "Select the node `Top' in this file"
 msgstr "Chọn « Trên » trong tập tin này"
 
-#: info/session.c:3040
+#: info/session.c:3036
 msgid "Select the node `(dir)'"
 msgstr "Chọn nút « thư mục »"
 
-#: info/session.c:3057 info/session.c:3059
+#: info/session.c:3053 info/session.c:3055
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Giết nút (%s): "
 
-#: info/session.c:3111
+#: info/session.c:3107
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Không thể giết nút « %s »"
 
-#: info/session.c:3121
+#: info/session.c:3117
 msgid "Cannot kill the last node"
 msgstr "Không thể giết nút cuối"
 
-#: info/session.c:3207
+#: info/session.c:3203
 msgid "Select the most recently selected node"
 msgstr "Chọn nút mới chọn"
 
-#: info/session.c:3213
+#: info/session.c:3209
 msgid "Kill this node"
 msgstr "Giết nút này"
 
-#: info/session.c:3221
+#: info/session.c:3217
 msgid "Read the name of a file and select it"
 msgstr "Đọc tên tập tin và chọn nó"
 
-#: info/session.c:3225
+#: info/session.c:3221
 msgid "Find file: "
 msgstr "Tìm tập tin: "
 
-#: info/session.c:3242
+#: info/session.c:3238
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Không tìm thấy « %s »"
 
-#: info/session.c:3285 info/session.c:3403
+#: info/session.c:3281 info/session.c:3399
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Không thể tạo tập tin xuất « %s »."
 
-#: info/session.c:3299 info/session.c:3421 info/session.c:3481
+#: info/session.c:3295 info/session.c:3417 info/session.c:3477
 msgid "Done."
 msgstr "Hoàn tất."
 
-#: info/session.c:3354
+#: info/session.c:3350
 #, c-format
 msgid "Writing node %s..."
 msgstr "Đang ghi nút %s..."
 
-#: info/session.c:3430
+#: info/session.c:3426
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Gửi nội dung của nút nay qua ống dẫn kiểu « INFO_PRINT_COMMAND » (Info in ra "
 "lệnh)"
 
-#: info/session.c:3465
+#: info/session.c:3461
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Không thể mở ống dẫn đến « %s »."
 
-#: info/session.c:3471
+#: info/session.c:3467
 #, c-format
 msgid "Printing node %s..."
 msgstr "Đang in nút %s..."
 
-#: info/session.c:3701
+#: info/session.c:3699
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Đang tìm kiếm tập tin phụ %s..."
 
-#: info/session.c:3753
+#: info/session.c:3751
 msgid "Read a string and search for it case-sensitively"
 msgstr "Đọc chuỗi và tìm kiếm nó, phân biệt chữ hoa/thường"
 
-#: info/session.c:3760
+#: info/session.c:3758
 msgid "Read a string and search for it"
 msgstr "Đọc chuỗi và tìm kiếm nó"
 
-#: info/session.c:3768
+#: info/session.c:3766
 msgid "Read a string and search backward for it"
 msgstr "Đọc chuỗi và tìm kiếm lùi nó"
 
-#: info/session.c:3804 info/session.c:3811
-#, c-format
-msgid "%s%sfor string [%s]: "
+#: info/session.c:3802 info/session.c:3808
+#, fuzzy, c-format
+msgid "%s%s%s [%s]: "
 msgstr "%s%scho chuỗi [%s]: "
 
-#: info/session.c:3805 info/session.c:3812
-msgid "Search backward"
+#: info/session.c:3803 info/session.c:3809
+msgid "Regexp search"
+msgstr ""
+
+#: info/session.c:3804 info/session.c:3810
+#, fuzzy
+msgid " case-sensitively"
+msgstr " phân biết chữ hoa/thường "
+
+#: info/session.c:3805 info/session.c:3811
+#, fuzzy
+msgid " backward"
 msgstr "Tìm lùi"
 
-#: info/session.c:3806 info/session.c:3812
+#: info/session.c:3809
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: info/session.c:3807 info/session.c:3813
-msgid " case-sensitively "
-msgstr " phân biết chữ hoa/thường "
-
-#: info/session.c:3808 info/session.c:3813
-msgid " "
-msgstr " "
-
-#: info/session.c:3852
+#: info/session.c:3850
 msgid "Search failed."
 msgstr "Lỗi tìm kiếm."
 
-#: info/session.c:3870
+#: info/session.c:3868
 msgid "Repeat last search in the same direction"
 msgstr "Làm lại việc tìm kiếm cuối, về cùng phía hướng"
 
-#: info/session.c:3873 info/session.c:3883
+#: info/session.c:3871 info/session.c:3881
 msgid "No previous search string"
 msgstr "Không có chuỗi tìm kiếm trước"
 
-#: info/session.c:3880
+#: info/session.c:3878
 msgid "Repeat last search in the reverse direction"
 msgstr "Làm lại việc tìm kiếm cuối, về ngược phía hướng"
 
-#: info/session.c:3899 info/session.c:3905
+#: info/session.c:3897 info/session.c:3903
 msgid "Search interactively for a string as you type it"
 msgstr "Tìm kiếm tương tác chuỗi đang gõ"
 
-#: info/session.c:3985
+#: info/session.c:3983
+#, fuzzy
+msgid "Regexp I-search backward: "
+msgstr "Tìm kiếm ngược I: "
+
+#: info/session.c:3984
 msgid "I-search backward: "
 msgstr "Tìm kiếm ngược I: "
+
+#: info/session.c:3986
+#, fuzzy
+msgid "Regexp I-search: "
+msgstr "Tìm kiếm I: "
 
 #: info/session.c:3987
 msgid "I-search: "
@@ -1644,66 +1621,66 @@ msgstr "Tìm kiếm I: "
 msgid "Failing "
 msgstr "Đang thất bại "
 
-#: info/session.c:4480
+#: info/session.c:4498
 msgid "Move to the previous cross reference"
 msgstr "Về tham chiếu chéo trước"
 
-#: info/session.c:4498
+#: info/session.c:4516
 msgid "Move to the next cross reference"
 msgstr "Tới tham chiếu chéo kế"
 
-#: info/session.c:4520
+#: info/session.c:4538
 msgid "Select reference or menu item appearing on this line"
 msgstr "Chọn tham chiếu hay mục trình đơn xuất hiện trên dòng này"
 
-#: info/session.c:4543
+#: info/session.c:4561
 msgid "Cancel current operation"
 msgstr "Hủy thao tác đang chạy"
 
-#: info/session.c:4550
+#: info/session.c:4568
 msgid "Quit"
 msgstr "Thoát"
 
-#: info/session.c:4559
+#: info/session.c:4577
 msgid "Move the cursor to a specific line of the window"
 msgstr "Chuyển con chạy tới một đóng riêng trong cửa sổ"
 
-#: info/session.c:4591
+#: info/session.c:4609
 msgid "Redraw the display"
 msgstr "Vẽ lại màn hình"
 
-#: info/session.c:4628
+#: info/session.c:4646
 msgid "Quit using Info"
 msgstr "Thoát khỏi Info"
 
-#: info/session.c:4641
+#: info/session.c:4659
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Chạy lệnh đã đóng kết đến biến thế chữ thường của phím này"
 
-#: info/session.c:4652
+#: info/session.c:4670
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Lệnh không rõ (%s)."
 
-#: info/session.c:4655
+#: info/session.c:4673
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "« %s » không hợp lệ"
 
-#: info/session.c:4656
+#: info/session.c:4674
 #, c-format
 msgid "`%s' is invalid"
 msgstr "« %s » không hợp lệ"
 
-#: info/session.c:4870
+#: info/session.c:4888
 msgid "Add this digit to the current numeric argument"
 msgstr "Thêm chữ số này vào đối số thuộc số hiện thời"
 
-#: info/session.c:4879
+#: info/session.c:4897
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Bắt đầu (hoặc nhân với 4) đối số thuộc số hiện thời)"
 
-#: info/session.c:4894
+#: info/session.c:4912
 msgid "Internally used by \\[universal-argument]"
 msgstr "Dùng bên trong bởi « \\[universal-argument] » (đối số toàn thể)"
 
@@ -1782,28 +1759,231 @@ msgstr "Lập %s thành giá trị (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Lập %s thành giá trị (%s): "
 
-#: info/window.c:1137
+#: info/window.c:1150
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Thẻ quá cũ ***"
 
-#: info/window.c:1148
+#: info/window.c:1161
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), dòng ----, "
 
-#: info/window.c:1155
+#: info/window.c:1168
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d dòng --%s--"
 
-#: info/window.c:1159
+#: info/window.c:1172
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d dòng --%s--"
 
-#: info/window.c:1166
+#: info/window.c:1179
 #, c-format
 msgid " Subfile: %s"
 msgstr " Tập tin phụ: %s"
+
+#: install-info/install-info.c:221
+#, c-format
+msgid "%s: warning: "
+msgstr "%s: cảnh báo : "
+
+#: install-info/install-info.c:270
+#, c-format
+msgid " for %s"
+msgstr " cho %s"
+
+#: install-info/install-info.c:495
+#, c-format
+msgid "\tTry `%s --help' for a complete list of options.\n"
+msgstr ""
+"\tHãy thử lệnh trợ giúp « %s --help » để xem danh sách tùy chọn hoàn toàn.\n"
+
+#: install-info/install-info.c:503
+#, fuzzy, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr ""
+"Cách sử dụng: %s [TÙY_CHỌN]... TTT...\n"
+"\n"
+"[TTT\t\tTập Tin Texinfo]\n"
+
+#: install-info/install-info.c:505
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+msgstr ""
+
+#: install-info/install-info.c:508
+msgid ""
+"Options:\n"
+" --debug            report what is being done.\n"
+" --delete           delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                     don't insert any new entries.\n"
+" --description=TEXT the description of the entry is TEXT; used with\n"
+"                     the --name option to become synonymous with the\n"
+"\t\t     --entry option.\n"
+" --dir-file=NAME    specify file name of Info directory file;\n"
+"                     equivalent to using the DIR-FILE argument.\n"
+" --dry-run          same as --test."
+msgstr ""
+
+#: install-info/install-info.c:520
+msgid ""
+" --entry=TEXT       insert TEXT as an Info directory entry.\n"
+"                     TEXT should have the form of an Info menu item line\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
+"                     If you don't specify any entries, they are determined\n"
+"                     from information in the Info file itself.\n"
+"\t\t     When removing TEXT is the name of the entry to remove.\n"
+"\t\t     TEXT is only removed as a last-ditch effort if the \n"
+"\t\t     entry as determined from the Info file is not present \n"
+"\t\t     and the basename of the Info file isn't found either."
+msgstr ""
+
+#: install-info/install-info.c:532
+msgid ""
+" --help             display this help and exit.\n"
+" --info-dir=DIR     same as --dir-file=DIR/dir.\n"
+" --info-file=FILE   specify Info file to install in the directory;\n"
+"                     equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT        same as --entry=TEXT.\n"
+" --keep-old         do not replace entries, or remove empty sections.\n"
+" --menuentry=TEXT   same as --name=TEXT.\n"
+" --name=TEXT        the name of the entry is TEXT; used with --description\n"
+"                     to become synonymous with the --entry option.\n"
+" --no-indent        do not format new entries in the DIR file.\n"
+" --quiet            suppress warnings."
+msgstr ""
+
+#: install-info/install-info.c:545
+msgid ""
+" --regex=R          put this file's entries in all sections that match the\n"
+"                     regular expression R (ignoring case).\n"
+" --remove           same as --delete.\n"
+" --remove-exactly   only remove if the info file name matches exactly;\n"
+"                     suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC      put this file's entries in section SEC of the "
+"directory.\n"
+"                     If you specify more than one section, all the entries\n"
+"                     are added in each of the sections.\n"
+"                     If you don't specify any sections, they are determined\n"
+"                     from information in the Info file itself.\n"
+" --section R SEC    equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+
+#: install-info/install-info.c:558
+msgid ""
+" --silent           suppress warnings.\n"
+" --test             suppress updating of DIR-FILE.\n"
+" --version          display version information and exit."
+msgstr ""
+
+#: install-info/install-info.c:590
+#, c-format
+msgid ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"%s\n"
+msgstr ""
+"Đây là tập tin « .../info/dir », mà chứa nút đầu của phân cấp Info,\n"
+"có tên Trên: (dir)Top.\n"
+"Lần đầu tiên chạy Info thì bạn xem nút này.\n"
+"\n"
+"%s\tĐây là đầu cây INFO\n"
+"\n"
+"  Đây (nút Thư mục) đưa ra trình đơn các chủ đề chính.\n"
+"  Phím tắt:\n"
+"   • q\t\tthoát\n"
+"   • ?\t\t\tliệt kê các lệnh Info\n"
+"   • d\t\ttrở về đây\n"
+"   • h\t\thiện trợ giúp cho người mới dùng Info\n"
+"   • mEmacs<Return>\tthăm sổ tay Emacs\n"
+"v.v.\n"
+"  Trong Emacs, bạn có thể nhấn cái nút chuột 2 vào mục trình đơn\n"
+"  hay vào tham chiếu chéo, để chọn nó.\n"
+"\n"
+"%s\n"
+
+#: install-info/install-info.c:615
+#, c-format
+msgid "%s: could not read (%s) and could not create (%s)\n"
+msgstr "%s: không thể đọc (%s) và không thể tạo (%s)\n"
+
+#: install-info/install-info.c:702
+#, c-format
+msgid "%s: empty file"
+msgstr "%s: tập tin rỗng"
+
+#: install-info/install-info.c:1019 install-info/install-info.c:1059
+msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+msgstr ""
+"Có « START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) mà không có « END-INFO-"
+"DIR-ENTRY » (mục nhập thư mục Info kết thúc) tương ứng"
+
+#: install-info/install-info.c:1054
+msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+msgstr ""
+"Có « END-INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) mà không có « START-"
+"INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) tương ứng"
+
+#: install-info/install-info.c:1906 install-info/install-info.c:1916
+#, c-format
+msgid "%s: already have dir file: %s\n"
+msgstr "%s: đã có tập tin thư mục: %s\n"
+
+#: install-info/install-info.c:1996
+#, c-format
+msgid "%s: Specify the Info file only once.\n"
+msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần.\n"
+
+#: install-info/install-info.c:2029
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr "Biểu thức chính quy thêm được ghi rõ nên bỏ qua « %s »"
+
+#: install-info/install-info.c:2041
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr "Gặp lỗi trong biểu thức chính quy « %s »: %s"
+
+#: install-info/install-info.c:2099
+#, c-format
+msgid "excess command line argument `%s'"
+msgstr "đối số dòng lệnh thừa « %s »"
+
+#: install-info/install-info.c:2103
+msgid "No input file specified; try --help for more information."
+msgstr ""
+"Chưa ghi rõ tập tin nhập vào. Hãy chạy lệnh trợ giúp « --help » để xem thông "
+"tin thêm."
+
+#: install-info/install-info.c:2106
+msgid "No dir file specified; try --help for more information."
+msgstr ""
+"Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp « --help » để xem thông "
+"tin thêm."
+
+#: install-info/install-info.c:2248
+#, c-format
+msgid "no info dir entry in `%s'"
+msgstr "không có mục nhập thư mục Info trong « %s »"
+
+#: install-info/install-info.c:2497
+#, c-format
+msgid "no entries found for `%s'; nothing deleted"
+msgstr "không tìm thấy mục nhập cho « %s » nên không xóa gì"
 
 #: lib/xexit.c:54
 msgid "ferror on stdout\n"
@@ -1813,83 +1993,83 @@ msgstr "lỗi ferror trên thiết bị xuất chuẩn\n"
 msgid "fflush error on stdout\n"
 msgstr "lỗi fflush trên thiết bị xuất chuẩn\n"
 
-#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
+#: makeinfo/cmds.c:549 makeinfo/cmds.c:571
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "các đối số tới @%s bị bỏ qua"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "February"
 msgstr "Tháng Hai"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "March"
 msgstr "Tháng Ba"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "April"
 msgstr "Tháng Tư"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "May"
 msgstr "Tháng Năm"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "August"
 msgstr "Tháng Tám"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "September"
 msgstr "Tháng Chín"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "October"
 msgstr "Tháng Mười"
 
-#: makeinfo/cmds.c:743
+#: makeinfo/cmds.c:748
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: makeinfo/cmds.c:743
+#: makeinfo/cmds.c:748
 msgid "December"
 msgstr "Tháng Chạp"
 
-#: makeinfo/cmds.c:1095
+#: makeinfo/cmds.c:1098
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "gặp ký tự bất thường %c trong @var"
 
-#: makeinfo/cmds.c:1138
+#: makeinfo/cmds.c:1141
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "đối số @sc hoàn toàn chữ hoa nên không có tác động"
 
-#: makeinfo/cmds.c:1193
+#: makeinfo/cmds.c:1196
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "mong đợi « { » còn gặp « %c »"
 
-#: makeinfo/cmds.c:1233
+#: makeinfo/cmds.c:1236
 msgid "end of file inside verb block"
 msgstr "kết thức tập tin bên trong khối động từ"
 
-#: makeinfo/cmds.c:1241
+#: makeinfo/cmds.c:1244
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "mong đợi « } » còn gặp « %c »"
 
-#: makeinfo/cmds.c:1272
+#: makeinfo/cmds.c:1275
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -1902,44 +2082,44 @@ msgstr ""
 msgid "%c%s is obsolete"
 msgstr "%c%s quá cũ"
 
-#: makeinfo/cmds.c:1580
+#: makeinfo/cmds.c:1579
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "« @sp » cần đến một đối số dương thuộc số, không phải « %s »"
 
-#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1990 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Đối số sai tới %c%s"
 
-#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:2000 makeinfo/makeinfo.c:4270
 msgid "asis"
 msgstr "như thế"
 
-#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
+#: makeinfo/cmds.c:2002 makeinfo/cmds.c:2032 makeinfo/makeinfo.c:4272
 msgid "none"
 msgstr "không có"
 
-#: makeinfo/cmds.c:1962
+#: makeinfo/cmds.c:2016
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Đối số sai tới @%s"
 
-#: makeinfo/cmds.c:1976
+#: makeinfo/cmds.c:2030
 msgid "insert"
 msgstr "chèn"
 
-#: makeinfo/cmds.c:1992
+#: makeinfo/cmds.c:2046
 #, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Đối số sai tới @%s: %s"
 
-#: makeinfo/cmds.c:2075
+#: makeinfo/cmds.c:2129
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "Mong đợi @%s bật hay tắt, không phải « %s »"
 
-#: makeinfo/cmds.c:2095
+#: makeinfo/cmds.c:2149
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Chỉ hỗ trợ @%s 10 hay 11, không phải « %s »"
@@ -1947,44 +2127,6 @@ msgstr "Chỉ hỗ trợ @%s 10 hay 11, không phải « %s »"
 #: makeinfo/defun.c:83
 msgid "Missing `}' in @def arg"
 msgstr "Thiếu « } » trong đối số xác định @def"
-
-#: makeinfo/defun.c:402
-msgid "Function"
-msgstr "Hàm"
-
-#: makeinfo/defun.c:405
-msgid "Macro"
-msgstr "Vĩ lệnh"
-
-#: makeinfo/defun.c:408
-msgid "Special Form"
-msgstr "Dạng đặc biệt"
-
-#: makeinfo/defun.c:412
-msgid "Variable"
-msgstr "Biến"
-
-#: makeinfo/defun.c:415
-msgid "User Option"
-msgstr "Tùy chọn người dùng"
-
-#: makeinfo/defun.c:419
-msgid "Instance Variable"
-msgstr "Biến tức thời"
-
-#: makeinfo/defun.c:423
-msgid "Method"
-msgstr "Phương pháp"
-
-#: makeinfo/defun.c:499 makeinfo/defun.c:504 makeinfo/defun.c:544
-#: makeinfo/defun.c:643 makeinfo/xml.c:2135
-msgid "of"
-msgstr "của"
-
-#: makeinfo/defun.c:508 makeinfo/defun.c:512 makeinfo/defun.c:516
-#: makeinfo/defun.c:550 makeinfo/defun.c:649 makeinfo/xml.c:2140
-msgid "on"
-msgstr "trên"
 
 #: makeinfo/defun.c:711
 #, c-format
@@ -2015,9 +2157,8 @@ msgstr "Bộ đệm xuất không rỗng."
 msgid "Requested float type `%s' not previously used"
 msgstr "Kiểu nổi đã yêu cầu « %s » không phải được dùng trước"
 
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:924
-#: makeinfo/index.c:930 makeinfo/xref.c:133 makeinfo/xref.c:170
-#: makeinfo/xref.c:205
+#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:948
+#: makeinfo/index.c:954
 msgid "See "
 msgstr "Xem "
 
@@ -2042,7 +2183,7 @@ msgstr "Cước chú đã xác định mà không có nút cha"
 msgid "Footnotes inside footnotes are not allowed"
 msgstr "Không cho phép cước chú bên trong cước chú (lồng nhau)"
 
-#: makeinfo/footnote.c:301 makeinfo/index.c:189
+#: makeinfo/footnote.c:301 makeinfo/index.c:187
 msgid "Footnotes"
 msgstr "Cước chú"
 
@@ -2056,10 +2197,6 @@ msgstr "%s: không thể mở tập tin CSS « --css-file »: %s"
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: tập tin CSS « --css-file » kết thúc với ghi chú"
 
-#: makeinfo/html.c:203
-msgid "Untitled"
-msgstr "Không tên"
-
 #: makeinfo/html.c:421
 msgid "[unexpected] no html tag to pop"
 msgstr "[bất thường] không có thẻ HTML cần bật"
@@ -2069,46 +2206,46 @@ msgstr "[bất thường] không có thẻ HTML cần bật"
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[bất thường] tên nút không hợp lệ: « %s »"
 
-#: makeinfo/index.c:169
+#: makeinfo/index.c:167
 #, c-format
 msgid "Unknown index `%s'"
 msgstr "Chỉ mục lạ « %s »"
 
-#: makeinfo/index.c:234
+#: makeinfo/index.c:232
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
 msgstr "Info không thể xử lý dấu hai chấm « : » trong mục nhập chỉ mục « %s »"
 
-#: makeinfo/index.c:412
+#: makeinfo/index.c:410
 #, c-format
 msgid "Index `%s' already exists"
 msgstr "Chỉ mục « %s » đã có."
 
-#: makeinfo/index.c:455
+#: makeinfo/index.c:453
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "Chỉ mục lạ « %s » và/hay « %s » trong @synindex"
 
-#: makeinfo/index.c:661
+#: makeinfo/index.c:676
 msgid "(line )"
 msgstr "(dòng)"
 
-#: makeinfo/index.c:669
+#: makeinfo/index.c:684
 #, c-format
 msgid "(line %*d)"
 msgstr "(dòng %*d)"
 
-#: makeinfo/index.c:750
+#: makeinfo/index.c:764
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Chỉ mục lạ « %s » trong @printindex"
 
-#: makeinfo/index.c:819
+#: makeinfo/index.c:833
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Mục nhập cho chỉ mục « %s » nằm ở ngoại nút nào"
 
-#: makeinfo/index.c:822 makeinfo/index.c:858
+#: makeinfo/index.c:836 makeinfo/index.c:872
 msgid "(outside of any node)"
 msgstr "(ở ngoại nút nào)"
 
@@ -2119,8 +2256,7 @@ msgstr "không cho phép @item trong đối số tới @itemize"
 #: makeinfo/insertion.c:242
 msgid "Broken-Type in insertion_type_pname"
 msgstr ""
-"« Broken-Type » (kiểu bị hỏng) trong « insertion_type_pname » (tên p kiểu "
-"chèn)"
+"« Broken-Type » (kiểu bị hỏng) trong « insertion_type_pname » (tên p kiểu chèn)"
 
 #: makeinfo/insertion.c:338
 msgid "Enumeration stack overflow"
@@ -2131,127 +2267,127 @@ msgstr "Tràn đống đếm"
 msgid "lettering overflow, restarting at %c"
 msgstr "tràn vẽ chữ, khởi chạy lại tại %c"
 
-#: makeinfo/insertion.c:635
+#: makeinfo/insertion.c:639
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s cần thiết một đối số: bộ định dạng cho %citem"
 
-#: makeinfo/insertion.c:723
+#: makeinfo/insertion.c:727
 #, c-format
 msgid "%cfloat environments cannot be nested"
 msgstr "Môi trường %cfloat không thể được lồng nhau"
 
-#: makeinfo/insertion.c:977
+#: makeinfo/insertion.c:981
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "« @end » mong đợi « %s », còn gặp « %s »"
 
-#: makeinfo/insertion.c:1345
+#: makeinfo/insertion.c:1349
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "Không có « %cend %s » tương ứng"
 
-#: makeinfo/insertion.c:1614
+#: makeinfo/insertion.c:1618
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s cần thiết chữ hay chữ số"
 
-#: makeinfo/insertion.c:1707
+#: makeinfo/insertion.c:1711
 msgid "end of file inside verbatim block"
 msgstr "kết thúc tập tin bên trong khối đúng nguyên văn"
 
-#: makeinfo/insertion.c:1931
+#: makeinfo/insertion.c:1935
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s không có nghĩa bên ngoài môi trường « @float » (nổi)"
 
-#: makeinfo/insertion.c:1967
+#: makeinfo/insertion.c:1971
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "gặp @menu trước @node đầu thì tạo nút « Trên »"
 
-#: makeinfo/insertion.c:1968
+#: makeinfo/insertion.c:1972
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "có lẽ nút « @top » (trên) của bạn nên được bao bọc bằng @ifnottex thay cho "
 "@ifinfo ?"
 
-#: makeinfo/insertion.c:1980
+#: makeinfo/insertion.c:1984
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "gặp @detailmenu trước nút đầu thì tạo nút « Trên »"
 
-#: makeinfo/insertion.c:2036
+#: makeinfo/insertion.c:2040
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 "@%s không có nghĩa bên ngoài môi trường  « @titlepage » và « @quotation »"
 
-#: makeinfo/insertion.c:2050
+#: makeinfo/insertion.c:2054
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s không có nghĩa bên ngoài môi trường  « @titlepage »"
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2085
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Chưa khớp « %c%s »"
 
-#: makeinfo/insertion.c:2086
+#: makeinfo/insertion.c:2090
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "« %c%s » cần gì đó theo nó"
 
-#: makeinfo/insertion.c:2092
+#: makeinfo/insertion.c:2096
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Đối số sai « %s » tới « %s » nên dùng « %s »"
 
-#: makeinfo/insertion.c:2189
+#: makeinfo/insertion.c:2193
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s không có nghĩa bên trong khối « @%s »"
 
-#: makeinfo/insertion.c:2198
+#: makeinfo/insertion.c:2202
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx không có nghĩa bên trong khối « %s »"
 
-#: makeinfo/insertion.c:2372
+#: makeinfo/insertion.c:2376
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "gặp %c%s bên ngoài một khối chèn"
 
-#: makeinfo/lang.c:957
+#: makeinfo/lang.c:1218
 #, c-format
 msgid "no default territory known for language `%s'"
 msgstr "không biết vùng lãnh thổ mặc định cho ngôn ngữ « %s »"
 
-#: makeinfo/lang.c:1020
+#: makeinfo/lang.c:1281
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s không phải mã ngôn ngữ kiểu ISO 639 hợp lệ"
 
-#: makeinfo/lang.c:1110
+#: makeinfo/lang.c:1399
 #, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "không nhận ra tên bảng mã « %s »"
 
-#: makeinfo/lang.c:1118
+#: makeinfo/lang.c:1407
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "tiếc là không hỗ trợ bảng mã « %s »"
 
-#: makeinfo/lang.c:1170
+#: makeinfo/lang.c:1492
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ký tự đã mã hóa không hợp lệ: « %s »"
 
-#: makeinfo/lang.c:1478
+#: makeinfo/lang.c:1800
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s mong đợi « i » hay « j » làm đối số, không phải « %c »"
 
-#: makeinfo/lang.c:1482
+#: makeinfo/lang.c:1804
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s mong đợi một ký tự riêng lẻ « i » hay « j » làm đối số"
@@ -2305,7 +2441,7 @@ msgstr "Quá nhiều lỗi nên thôi.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: cảnh báo : "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2295
 #, c-format
 msgid "Misplaced %c"
 msgstr "Định vị sai %c"
@@ -2378,10 +2514,11 @@ msgstr ""
 "      --plaintext           \txuất văn bản thô thay cho Info (_nhập thô_).\n"
 
 #: makeinfo/makeinfo.c:377
+#, fuzzy
 msgid ""
 "General output options:\n"
-"  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
-"                              ignoring any @setfilename.\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
 "      --no-headers            suppress node separators, Node: lines, and "
 "menus\n"
 "                                from Info output (thus producing plain "
@@ -2389,10 +2526,11 @@ msgid ""
 "                                or from HTML (thus producing shorter "
 "output);\n"
 "                                also, write to standard output by default.\n"
-"      --no-split              suppress splitting of Info or HTML output,\n"
-"                              generate only one output file.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (directory if split HTML),\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
 msgstr ""
 "Tùy chọn xuất chung:\n"
 "  -E, --macro-expand TẬP_TIN     xuất vào tập tin này nguồn đã mở rộng\n"
@@ -2634,7 +2772,7 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
+#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4119
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Lệnh đa dòng %c%s dùng sai"
@@ -2644,116 +2782,111 @@ msgstr "Lệnh đa dòng %c%s dùng sai"
 msgid "Expected `%s'"
 msgstr "Mong đợi « %s »"
 
-#: makeinfo/makeinfo.c:1498
+#: makeinfo/makeinfo.c:1496
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Không thể tạo thư mục « %s »: %s"
 
-#: makeinfo/makeinfo.c:1544
+#: makeinfo/makeinfo.c:1542
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Không tìm thấy « %s » trong « %s »."
 
-#: makeinfo/makeinfo.c:1624
+#: makeinfo/makeinfo.c:1622
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: đang nhảy qua phần mở rộng vĩ lệnh ra thiết bị xuất chuẩn vì kết xuất "
 "Info đang đi ra đó.\n"
 
-#: makeinfo/makeinfo.c:1657
+#: makeinfo/makeinfo.c:1652
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Đang tạo tập tin %s « %s » từ « %s ».\n"
 
-#: makeinfo/makeinfo.c:1721
+#: makeinfo/makeinfo.c:1719
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
-"%s: đang gỡ bỏ tập tin xuất vĩ lệnh « %s » do lỗi; hãy dùng tùy chọn « --"
-"force » (buộc) để bảo tồn nó.\n"
+"%s: đang gỡ bỏ tập tin xuất vĩ lệnh « %s » do lỗi; hãy dùng tùy chọn « --force "
+"» (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:1776
+#: makeinfo/makeinfo.c:1774
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: đang gỡ bỏ tập tin xuất « %s » do lỗi; hãy dùng tùy chọn « --force "
 "» (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:2070
+#: makeinfo/makeinfo.c:2068
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Lệnh lạ « %s »"
 
-#: makeinfo/makeinfo.c:2092
+#: makeinfo/makeinfo.c:2090
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Dùng dấu ngoặc móc {} để đưa ra lệnh dạng đối số tới @%s"
 
-#: makeinfo/makeinfo.c:2351
+#: makeinfo/makeinfo.c:2349
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s mong đợi dấu ngoặc móc {}"
 
-#: makeinfo/makeinfo.c:2364
+#: makeinfo/makeinfo.c:2362
 msgid "Unmatched }"
 msgstr "Chưa khớp }"
 
-#: makeinfo/makeinfo.c:2412
+#: makeinfo/makeinfo.c:2410
 msgid "NO_NAME!"
 msgstr "Không có tên."
 
-#: makeinfo/makeinfo.c:2433
+#: makeinfo/makeinfo.c:2431
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s: thiếu dấu ngoặc móc đóng « } »"
 
-#: makeinfo/makeinfo.c:2611
-#, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Đây là %s, tạo bởi makeinfo phiên bản %s từ %s.\n"
-
-#: makeinfo/makeinfo.c:3436
+#: makeinfo/makeinfo.c:3434
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "Tập tin @image « %s » (cho HTML) không đọc được: %s"
 
-#: makeinfo/makeinfo.c:3442
+#: makeinfo/makeinfo.c:3440
 #, c-format
 msgid "No such file `%s'"
 msgstr "Không có tập tin như vậy « %s »"
 
-#: makeinfo/makeinfo.c:3578
+#: makeinfo/makeinfo.c:3576
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "Tập tin @image « %s » (cho văn bản) không đọc được: %s"
 
-#: makeinfo/makeinfo.c:3587
+#: makeinfo/makeinfo.c:3585
 msgid "@image missing filename argument"
 msgstr "@image thiếu đối số tên tập tin"
 
-#: makeinfo/makeinfo.c:3805
+#: makeinfo/makeinfo.c:3803
 #, c-format
 msgid "undefined flag: %s"
 msgstr "chưa xác định cờ : %s"
 
-#: makeinfo/makeinfo.c:3806
+#: makeinfo/makeinfo.c:3804
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Không có giá trị cho « %s »}"
 
-#: makeinfo/makeinfo.c:3858
+#: makeinfo/makeinfo.c:3856
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s cần đến tên"
 
-#: makeinfo/makeinfo.c:3964
+#: makeinfo/makeinfo.c:3962
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Đã tới kết thúc tập tin trước khi khớp @end %s"
 
-#: makeinfo/makeinfo.c:4213
+#: makeinfo/makeinfo.c:4211
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "« %.40s... » quá dài để mở rộng nên chưa mở rộng"
@@ -2801,124 +2934,96 @@ msgstr "Nút « %s » được xác định trước tại dòng %d"
 msgid "Formatting node %s...\n"
 msgstr "Đang định dạng nút %s...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:714
 #, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Nút « %s » cần đến lệnh chia ra từng phần (v.d. %c%s)"
 
-#: makeinfo/node.c:879
+#: makeinfo/node.c:878
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Chưa ghi rõ tên nút cho lệnh « %c%s »"
 
-#: makeinfo/node.c:920 makeinfo/node.c:1161
+#: makeinfo/node.c:919 makeinfo/node.c:1160
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Neo « %s » và nút « %s » ánh xạ với cùng một tên tập tin"
 
-#: makeinfo/node.c:923
+#: makeinfo/node.c:922
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Lệnh @anchor bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:925 makeinfo/node.c:1164
+#: makeinfo/node.c:924 makeinfo/node.c:1163
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 "Thay đổi tên neo này, hoặc dùng tùy chọn « --no-split » (không chia tách)"
 
-#: makeinfo/node.c:955
+#: makeinfo/node.c:954
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Gặp chuỗi bất thường tại kết thúc tập tin HTML-tách « %s »"
 
-#: makeinfo/node.c:991
-msgid "Next:"
-msgstr "Kế:"
-
-#: makeinfo/node.c:1007
-msgid "Previous:"
-msgstr "Lùi:"
-
-#: makeinfo/node.c:1021
-msgid "Up:"
-msgstr "Lên:"
-
-#: makeinfo/node.c:1158
+#: makeinfo/node.c:1157
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Cả hai neo « %s » và « %s » đều ánh xạ với cùng một tên tập tin"
 
-#: makeinfo/node.c:1163
+#: makeinfo/node.c:1162
 msgid "@anchor command ignored; references to it will not work"
 msgstr "Lệnh @anchor bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:1360
+#: makeinfo/node.c:1359
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s tham chiếu đến nút không tồn tại « %s » (có lẽ đã chia ra từng phần không "
 "đúng?)"
 
-#: makeinfo/node.c:1376
-msgid "Menu"
-msgstr "Trình đơn"
-
-#: makeinfo/node.c:1378
-msgid "Cross"
-msgstr "Chéo"
-
-#: makeinfo/node.c:1460
+#: makeinfo/node.c:1459
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
-"Không có gì chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng "
-"phần không đúng?)"
+"Không có gì chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng phần "
+"không đúng?)"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Nút này (%s) có Lùi sai"
 
-#: makeinfo/node.c:1475
-msgid "Prev"
-msgstr "Lùi"
-
-#: makeinfo/node.c:1518
+#: makeinfo/node.c:1517
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Không có gì chỉ tới trường trước của nút « %s »"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Nút này (%s) có Kế sai"
 
-#: makeinfo/node.c:1534
+#: makeinfo/node.c:1533
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "« %s » không có trường Lên (có lẽ đã chia ra từng phần không đúng?)"
 
-#: makeinfo/node.c:1537
-msgid "Up"
-msgstr "Lên"
-
-#: makeinfo/node.c:1603
+#: makeinfo/node.c:1602
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
-"Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên "
-"của nó"
+"Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên của "
+"nó"
 
-#: makeinfo/node.c:1635
+#: makeinfo/node.c:1634
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
 
-#: makeinfo/node.c:1725
+#: makeinfo/node.c:1724
 #, c-format
 msgid "Removing %s\n"
 msgstr "Đang gỡ bỏ %s\n"
 
-#: makeinfo/node.c:1729
+#: makeinfo/node.c:1728
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Không thể gỡ bỏ tập tin « %s »: %s"
@@ -2958,30 +3063,28 @@ msgstr "Đây là nút %ctop"
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop được dùng trước %cnode nên dùng giá trị mặc định %s"
 
-#: makeinfo/xml.c:1654
+#: makeinfo/xml.c:1669
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Không thể đọc tập tin @image « %s »: %s"
 
-#: makeinfo/xml.c:1999
+#: makeinfo/xml.c:2014
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""
 "@headitem như mục cuối của @multitable thì tạo tài liệu Docbook không hợp lệ"
 
+#: makeinfo/xml.c:2150
+msgid "of"
+msgstr "của"
+
+#: makeinfo/xml.c:2155
+msgid "on"
+msgstr "trên"
+
 #: makeinfo/xref.c:127
 msgid "First argument to cross-reference may not be empty"
 msgstr "Đối số đầu tới tham chiếu chéo có lẽ không rỗng"
-
-#: makeinfo/xref.c:133 makeinfo/xref.c:170 makeinfo/xref.c:205
-#: makeinfo/xref.c:459
-msgid "see "
-msgstr "xem "
-
-#: makeinfo/xref.c:157
-#, c-format
-msgid "See section ``%s'' in "
-msgstr "Xem phần « %s » trong "
 
 #: makeinfo/xref.c:252
 #, c-format
@@ -2995,8 +3098,7 @@ msgstr "Tới kết thúc tập tin trong khi tìm dấu chấm « . » hay dấ
 #: makeinfo/xref.c:390
 #, c-format
 msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr ""
-"@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
+msgstr "@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
 
 #: makeinfo/xref.c:392
 msgid "for cross-references in parentheses, use @pxref"
@@ -3005,214 +3107,6 @@ msgstr "đối với tham chiếu chéo trong ngoặc, hãy dùng @pxref"
 #: makeinfo/xref.c:435
 msgid "First argument to @inforef may not be empty"
 msgstr "Đối số đầu tới @inforef có lẽ không rỗng"
-
-#: util/install-info.c:170
-#, c-format
-msgid "%s: warning: "
-msgstr "%s: cảnh báo : "
-
-#: util/install-info.c:219
-#, c-format
-msgid " for %s"
-msgstr " cho %s"
-
-#: util/install-info.c:444
-#, c-format
-msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr ""
-"\tHãy thử lệnh trợ giúp « %s --help » để xem danh sách tùy chọn hoàn toàn.\n"
-
-#: util/install-info.c:452
-#, c-format
-msgid ""
-"Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
-"\n"
-"Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
-"\n"
-"Options:\n"
-" --debug           report what is being done.\n"
-" --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
-"                     don't insert any new entries.\n"
-" --dir-file=NAME   specify file name of Info directory file.\n"
-"                     This is equivalent to using the DIR-FILE argument.\n"
-" --entry=TEXT      insert TEXT as an Info directory entry.\n"
-"                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
-"                     If you don't specify any entries, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --help            display this help and exit.\n"
-" --info-file=FILE  specify Info file to install in the directory.\n"
-"                     This is equivalent to using the INFO-FILE argument.\n"
-" --info-dir=DIR    same as --dir-file=DIR/dir.\n"
-" --item=TEXT       same as --entry TEXT.\n"
-"                     An Info directory entry is actually a menu item.\n"
-" --quiet           suppress warnings.\n"
-" --remove          same as --delete.\n"
-" --remove-exactly  only remove if the info file name matches exactly;\n"
-"                     .info and/or .gz suffixes are not ignored.\n"
-" --section=SEC     put this file's entries in section SEC of the directory.\n"
-"                     If you specify more than one section, all the entries\n"
-"                     are added in each of the sections.\n"
-"                     If you don't specify any sections, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --section-regex=R if an entry is added to a section that does not exist,\n"
-"                     look for a section matching basic regular expression R\n"
-"                     (and ignoring case) before starting a new section.\n"
-" --test            suppress updating of DIR-FILE.\n"
-" --silent          suppress warnings.\n"
-" --version         display version information and exit.\n"
-msgstr ""
-"Cách sử dụng: %s [TÙY_CHỌN]... [TẬP_TIN_INFO [TẬP_TIN_THƯ_MỤC]]\n"
-"\n"
-"Thêm hay gỡ bỏ mục nhập trong TẬP_TIN_INFO vào/ra TẬP_TIN_THƯ_MỤC Info.\n"
-"\n"
-"Tùy chọn:\n"
-" --debug           thông báo việc đang được làm (_gỡ lỗi_).\n"
-" --delete         xoá các mục nhập tồn tại ra TẬP_TIN_INFO;\n"
-"\t\tđừng chèn mục nhập mới nào (_xoá_).\n"
-" --dir-file=TÊN   xác định tên tập tin của tập tin thư mục Info.\n"
-"\t\tBằng đối số TẬP_TIN_THƯ_MỤC.\n"
-" --entry=VĂN_BẢN      chèn văn bản này làm mục nhập thư mục Info.\n"
-"\t\tVăn bản này nên có dạng một dòng mục trình đơn Info,\n"
-"\t\tcộng với ≥0 dòng thêm bắt đầu với khoảng trắng.\n"
-"\t\tGhi rõ nhiều mục nhập thì thêm tất cả.\n"
-"\t\tKhông ghi rõ mục nhập nào thì mục nhập được xác định\n"
-"\t\ttừ thông tin trong tập tin Info chính nó (_mục nhập_).\n"
-" --info-file=TẬP_TIN\tghi rõ tập tin Info cần cài đặt vào thư mục.\n"
-"\t\tBằng đối số TẬP_TIN_INFO.\n"
-" --info-dir=THƯ_MỤC \tbằng « --dir-file=THƯ_MỤC/thư_mục ».\n"
-" --item=VĂN_BẢN       \tbằng « --entry VĂN_BẢN ».\n"
-"\t\tMột mục nhập thư mục Info thật là một mục trình đơn.\n"
-" --quiet           thu hồi các cảnh báo (_im_).\n"
-" --remove          bằng « --delete » (_gỡ bỏ_).\n"
-" --remove-exactly  \tchỉ gỡ bỏ nếu tên tập tin Info khớp chính xác;\n"
-"\t\thậu phương .info và/hay .gz bị bỏ qua.\n"
-" --section=PHẦN\t\tđể các mục nhập của tập tin này vào phần thư mục này.\n"
-"\t\tGhi rõ nhiều phần thì mọi mục nhập được thêm vào mỗi phần.\n"
-"\t\tKhông ghi rõ phần nào thì phần được xác định từ thông tin\n"
-"\t\ttrong tập tin Info chính nó.\n"
-" --section-regex=BTCQ\tThêm mục nhập vào phần chưa tồn tại\n"
-"\t\tthì tìm phần tương ứng với biểu thức chính quy cơ bản BTCQ\n"
-"\t\t(cũng không phân biệt chữ hoa/thường) trước khi bắt đầu phần mới.\n"
-"\t\t(_phần biểu thức chính quy_)\n"
-" --test            thu hồi khả năng cập nhật TẬP_TIN_THƯ_MỤC (_thử ra_).\n"
-" --silent          thu hồi các cảnh báo (_câm_).\n"
-" --version         hiển thị thông tin phiên bản rồi thoát (_phiên bản_).\n"
-
-#: util/install-info.c:518
-#, c-format
-msgid ""
-"This is the file .../info/dir, which contains the\n"
-"topmost node of the Info hierarchy, called (dir)Top.\n"
-"The first time you invoke Info you start off looking at this node.\n"
-"\n"
-"%s\tThis is the top of the INFO tree\n"
-"\n"
-"  This (the Directory node) gives a menu of major topics.\n"
-"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
-"  \"h\" gives a primer for first-timers,\n"
-"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
-"\n"
-"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
-"  to select it.\n"
-"\n"
-"%s\n"
-msgstr ""
-"Đây là tập tin « .../info/dir », mà chứa nút đầu của phân cấp Info,\n"
-"có tên Trên: (dir)Top.\n"
-"Lần đầu tiên chạy Info thì bạn xem nút này.\n"
-"\n"
-"%s\tĐây là đầu cây INFO\n"
-"\n"
-"  Đây (nút Thư mục) đưa ra trình đơn các chủ đề chính.\n"
-"  Phím tắt:\n"
-"   • q\t\tthoát\n"
-"   • ?\t\t\tliệt kê các lệnh Info\n"
-"   • d\t\ttrở về đây\n"
-"   • h\t\thiện trợ giúp cho người mới dùng Info\n"
-"   • mEmacs<Return>\tthăm sổ tay Emacs\n"
-"v.v.\n"
-"  Trong Emacs, bạn có thể nhấn cái nút chuột 2 vào mục trình đơn\n"
-"  hay vào tham chiếu chéo, để chọn nó.\n"
-"\n"
-"%s\n"
-
-#: util/install-info.c:543
-#, c-format
-msgid "%s: could not read (%s) and could not create (%s)\n"
-msgstr "%s: không thể đọc (%s) và không thể tạo (%s)\n"
-
-#: util/install-info.c:630
-#, c-format
-msgid "%s: empty file"
-msgstr "%s: tập tin rỗng"
-
-#: util/install-info.c:943 util/install-info.c:983
-msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
-msgstr ""
-"Có « START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) mà không có « END-"
-"INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) tương ứng"
-
-#: util/install-info.c:978
-msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
-msgstr ""
-"Có « END-INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) mà không có « "
-"START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) tương ứng"
-
-#: util/install-info.c:1225 util/install-info.c:1235
-#, c-format
-msgid "%s: already have dir file: %s\n"
-msgstr "%s: đã có tập tin thư mục: %s\n"
-
-#: util/install-info.c:1274
-#, c-format
-msgid "%s: Specify the Info file only once.\n"
-msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần.\n"
-
-#: util/install-info.c:1297
-#, c-format
-msgid "Extra regular expression specified, ignoring `%s'"
-msgstr "Biểu thức chính quy thêm được ghi rõ nên bỏ qua « %s »"
-
-#: util/install-info.c:1308
-#, c-format
-msgid "Error in regular expression `%s': %s"
-msgstr "Gặp lỗi trong biểu thức chính quy « %s »: %s"
-
-#: util/install-info.c:1353
-#, c-format
-msgid "excess command line argument `%s'"
-msgstr "đối số dòng lệnh thừa « %s »"
-
-#: util/install-info.c:1357
-msgid "No input file specified; try --help for more information."
-msgstr ""
-"Chưa ghi rõ tập tin nhập vào. Hãy chạy lệnh trợ giúp « --help » để xem thông "
-"tin thêm."
-
-#: util/install-info.c:1360
-msgid "No dir file specified; try --help for more information."
-msgstr ""
-"Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp « --help » để xem thông "
-"tin thêm."
-
-#: util/install-info.c:1384
-#, c-format
-msgid "no info dir entry in `%s'"
-msgstr "không có mục nhập thư mục Info trong « %s »"
-
-#: util/install-info.c:1525
-#, c-format
-msgid "menu item `%s' already exists, for file `%s'"
-msgstr "mục trình đơn « %s » đã có, cho tập tin « %s »"
-
-#: util/install-info.c:1548
-#, c-format
-msgid "no entries found for `%s'; nothing deleted"
-msgstr "không tìm thấy mục nhập cho « %s » nên không xóa gì"
 
 #: util/texindex.c:223
 msgid "display this help and exit"
@@ -3272,6 +3166,296 @@ msgstr "Không có số thứ tự trang trong %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "mục nhập %s nằm theo một mục nhập có tên phụ"
 
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "Cách sử dụng: %s [TÙY_CHỌN]... [MỤC_TRÌNH_ĐƠN...]\n"
+#~ "\n"
+#~ "Đọc tài liệu có định dạng Info.\n"
+#~ "\n"
+#~ "Tùy chọn:\n"
+#~ "      --apropos=CHUỖI         tra tìm chuỗi này trong mọi chủ mục của mọi "
+#~ "sổ tay.\n"
+#~ "  -d, --directory=THƯ_MỤC          thêm thư mục này vào đường dẫn "
+#~ "INFOPATH.\n"
+#~ "      --dribble=TÊN_TẬP_TIN       ghi nhớ các động tác gõ phím vào tập "
+#~ "tin tên này.\n"
+#~ "  -f, --file=TÊN_TẬP_TIN          xác định tập tin Info cần thăm (_tập "
+#~ "tin_).\n"
+#~ "  -h, --help                   hiển thị trợ giúp này rồi thoát (_trợ "
+#~ "giúp_)\n"
+#~ "      --index-search=CHUỖI    tới nút thông tin tới đó chuỗi này chỉ "
+#~ "trong chỉ mục.\n"
+#~ "\t\t(_tìm kiếm trong chỉ mục_)\n"
+#~ "  -n, --node=TÊN_NÚT          xác định các nút thông tin trong tập tin "
+#~ "Info thăm thứ nhất.\n"
+#~ "  -o, --output=TÊN_TẬP_TIN        xuất ra tập tin này các nút thông tin "
+#~ "đã chọn.\n"
+#~ "\t\t(_kết xuất_)\n"
+#~ "  -R, --raw-escapes            xuất các ký tự thoát ANSI « thô » (mặc "
+#~ "định)\n"
+#~ "\t\t(_các sự thoát thô_)\n"
+#~ "      --no-raw-escapes         xuất các ký tự thoát theo văn bản nghĩa "
+#~ "chữ.\n"
+#~ "\t\t(_không có sự thoát thô_)\n"
+#~ "      --restore=TÊN_TẬP_TIN       đọc các động tác gõ phím đầu tiên từ "
+#~ "tập tin này.\n"
+#~ "\t\t(_phục hồi _)\n"
+#~ "  -O, --show-options, --usage  tới nút thông tin hiển thị các tùy chọn "
+#~ "dòng lệnh.\n"
+#~ "\t\t(_hiện tùy chọn, cách sử dụng_)\n"
+#~ "%s      --subnodes               xuất đệ quy các mục trình đơn.\n"
+#~ "\t\t(_các nút phụ_)\n"
+#~ "  -w, --where, --location      in a địa điểm vật lý của tập tin Info.\n"
+#~ "\t\t(_ở đâu, địa điểm_)\n"
+#~ "      --vi-keys               dùng tổ hợp phím kiểu Vi và Less (_các phím "
+#~ "Vi_).\n"
+#~ "      --version                hiển thị thông tin phiên bản rồi thoát "
+#~ "(_phiên bản_)\n"
+#~ "\n"
+#~ "Đối số khác tùy chọn thứ nhất, nếu có, là mục trình đơn từ đó cần bắt "
+#~ "đầu ;\n"
+#~ "tìm kiếm nó trong mọi thư mục « dir » trên đường dẫn INFOPATH.\n"
+#~ "Không có thì Info trộn mọi tập tin « dir » rồi hiển thị kết quả.\n"
+#~ "Đối số còn lại nào được xử lý như tên mục trình đơn tương đối\n"
+#~ "với nút đầu tiên đã thăm.\n"
+#~ "\n"
+#~ "Mẫu thí dụ :\n"
+#~ "  info                       hiển thị trình đơn thư mục cấp đầu\n"
+#~ "  info emacs                 bắt đầu ở nút emacs từ thư mục cấp đầu\n"
+#~ "  info emacs buffers        bắt đầu ở nút buffers bên trong sổ tay emacs\n"
+#~ "  info --show-options emacs  bắt đầu ở nút chứa các tùy chọn dòng lệnh "
+#~ "emacs\n"
+#~ "  info --subnodes -o out.txt emacs  đổ toàn bộ sổ tay ra tập tin out.txt\n"
+#~ "  info -f ./phu.info         hiện tập tin « ./phu.info », không tìm kiếm "
+#~ "trong thư mục\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "              Việc chọn mục trình đơn thì gây ra nút khác được chọn.\n"
+
+#~ msgid "  %-10s  Move to node specified by name.\n"
+#~ msgstr "  %-10s  Tới nút xác định theo tên.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Cũng có thể nhập vào tên tập tin, theo dạng « (TÊN_TẬP_TIN)"
+#~ "TÊN_NÚT ».\n"
+
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  Tìm lùi chuỗi đã xác định\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              và chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "Đang theo nút Kế..."
+
+# Type: text
+# Description
+#~ msgid "Selecting first menu item..."
+#~ msgstr "Đang chọn mục trình đơn đầu..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "Đang chọn nút Kế..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "Đang chuyển Lên %d lần, rồi Kế"
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr "Đang chuyển Lùi trong cửa sổ này."
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "Đang chuyển Lên trong cửa sổ này."
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "Đang chuyển tới mục trình đơn cuối của « Lùi »."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Function"
+#~ msgstr "Hàm"
+
+#~ msgid "Macro"
+#~ msgstr "Vĩ lệnh"
+
+#~ msgid "Special Form"
+#~ msgstr "Dạng đặc biệt"
+
+#~ msgid "Variable"
+#~ msgstr "Biến"
+
+#~ msgid "User Option"
+#~ msgstr "Tùy chọn người dùng"
+
+#~ msgid "Instance Variable"
+#~ msgstr "Biến tức thời"
+
+#~ msgid "Method"
+#~ msgstr "Phương pháp"
+
+#~ msgid "Untitled"
+#~ msgstr "Không tên"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr "Đây là %s, tạo bởi makeinfo phiên bản %s từ %s.\n"
+
+#~ msgid "Next:"
+#~ msgstr "Kế:"
+
+#~ msgid "Previous:"
+#~ msgstr "Lùi:"
+
+#~ msgid "Up:"
+#~ msgstr "Lên:"
+
+#~ msgid "Menu"
+#~ msgstr "Trình đơn"
+
+#~ msgid "Cross"
+#~ msgstr "Chéo"
+
+#~ msgid "Prev"
+#~ msgstr "Lùi"
+
+#~ msgid "Up"
+#~ msgstr "Lên"
+
+#~ msgid "see "
+#~ msgstr "xem "
+
+#~ msgid "See section ``%s'' in "
+#~ msgstr "Xem phần « %s » trong "
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --debug           report what is being done.\n"
+#~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
+#~ "                     don't insert any new entries.\n"
+#~ " --dir-file=NAME   specify file name of Info directory file.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
+#~ "                     TEXT should have the form of an Info menu item line\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --help            display this help and exit.\n"
+#~ " --info-file=FILE  specify Info file to install in the directory.\n"
+#~ "                     This is equivalent to using the INFO-FILE argument.\n"
+#~ " --info-dir=DIR    same as --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       same as --entry TEXT.\n"
+#~ "                     An Info directory entry is actually a menu item.\n"
+#~ " --quiet           suppress warnings.\n"
+#~ " --remove          same as --delete.\n"
+#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
+#~ "                     .info and/or .gz suffixes are not ignored.\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                     are added in each of the sections.\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --section-regex=R if an entry is added to a section that does not "
+#~ "exist,\n"
+#~ "                     look for a section matching basic regular expression "
+#~ "R\n"
+#~ "                     (and ignoring case) before starting a new section.\n"
+#~ " --test            suppress updating of DIR-FILE.\n"
+#~ " --silent          suppress warnings.\n"
+#~ " --version         display version information and exit.\n"
+#~ msgstr ""
+#~ "Cách sử dụng: %s [TÙY_CHỌN]... [TẬP_TIN_INFO [TẬP_TIN_THƯ_MỤC]]\n"
+#~ "\n"
+#~ "Thêm hay gỡ bỏ mục nhập trong TẬP_TIN_INFO vào/ra TẬP_TIN_THƯ_MỤC Info.\n"
+#~ "\n"
+#~ "Tùy chọn:\n"
+#~ " --debug           thông báo việc đang được làm (_gỡ lỗi_).\n"
+#~ " --delete         xoá các mục nhập tồn tại ra TẬP_TIN_INFO;\n"
+#~ "\t\tđừng chèn mục nhập mới nào (_xoá_).\n"
+#~ " --dir-file=TÊN   xác định tên tập tin của tập tin thư mục Info.\n"
+#~ "\t\tBằng đối số TẬP_TIN_THƯ_MỤC.\n"
+#~ " --entry=VĂN_BẢN      chèn văn bản này làm mục nhập thư mục Info.\n"
+#~ "\t\tVăn bản này nên có dạng một dòng mục trình đơn Info,\n"
+#~ "\t\tcộng với ≥0 dòng thêm bắt đầu với khoảng trắng.\n"
+#~ "\t\tGhi rõ nhiều mục nhập thì thêm tất cả.\n"
+#~ "\t\tKhông ghi rõ mục nhập nào thì mục nhập được xác định\n"
+#~ "\t\ttừ thông tin trong tập tin Info chính nó (_mục nhập_).\n"
+#~ " --info-file=TẬP_TIN\tghi rõ tập tin Info cần cài đặt vào thư mục.\n"
+#~ "\t\tBằng đối số TẬP_TIN_INFO.\n"
+#~ " --info-dir=THƯ_MỤC \tbằng « --dir-file=THƯ_MỤC/thư_mục ».\n"
+#~ " --item=VĂN_BẢN       \tbằng « --entry VĂN_BẢN ».\n"
+#~ "\t\tMột mục nhập thư mục Info thật là một mục trình đơn.\n"
+#~ " --quiet           thu hồi các cảnh báo (_im_).\n"
+#~ " --remove          bằng « --delete » (_gỡ bỏ_).\n"
+#~ " --remove-exactly  \tchỉ gỡ bỏ nếu tên tập tin Info khớp chính xác;\n"
+#~ "\t\thậu phương .info và/hay .gz bị bỏ qua.\n"
+#~ " --section=PHẦN\t\tđể các mục nhập của tập tin này vào phần thư mục này.\n"
+#~ "\t\tGhi rõ nhiều phần thì mọi mục nhập được thêm vào mỗi phần.\n"
+#~ "\t\tKhông ghi rõ phần nào thì phần được xác định từ thông tin\n"
+#~ "\t\ttrong tập tin Info chính nó.\n"
+#~ " --section-regex=BTCQ\tThêm mục nhập vào phần chưa tồn tại\n"
+#~ "\t\tthì tìm phần tương ứng với biểu thức chính quy cơ bản BTCQ\n"
+#~ "\t\t(cũng không phân biệt chữ hoa/thường) trước khi bắt đầu phần mới.\n"
+#~ "\t\t(_phần biểu thức chính quy_)\n"
+#~ " --test            thu hồi khả năng cập nhật TẬP_TIN_THƯ_MỤC (_thử ra_).\n"
+#~ " --silent          thu hồi các cảnh báo (_câm_).\n"
+#~ " --version         hiển thị thông tin phiên bản rồi thoát (_phiên bản_).\n"
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "mục trình đơn « %s » đã có, cho tập tin « %s »"
+
 #~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 #~ msgstr ""
 #~ "\\%-10[menu-digit]  Chọn mục thứ nhất đến thứ chính trong trình đơn của "
@@ -3316,8 +3500,7 @@ msgstr "mục nhập %s nằm theo một mục nhập có tên phụ"
 #~ "Để gọi thông tin thêm về chủ đề này thì hãy xem tập tin có tên COPYING.\n"
 
 #~ msgid "@quote-arg only useful for single-argument macros"
-#~ msgstr ""
-#~ "« @quote-arg » (đối số trích dẫn) chỉ hữu ích cho bộ lệnh đối số đơn"
+#~ msgstr "« @quote-arg » (đối số trích dẫn) chỉ hữu ích cho bộ lệnh đối số đơn"
 
 #~ msgid "Table of Contents"
 #~ msgstr "Mục lục"

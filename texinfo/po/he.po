@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-09-03 05:23-0700\n"
+"POT-Creation-Date: 2008-02-21 11:08-0800\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -14,77 +14,77 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnulib/lib/error.c:126
+#: gnulib/lib/error.c:125
 msgid "Unknown system error"
 msgstr ""
 
-#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
+#: gnulib/lib/getopt.c:530 gnulib/lib/getopt.c:546
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s תינכת רובע יעמשמ-דח וניא `%s' ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
+#: gnulib/lib/getopt.c:579 gnulib/lib/getopt.c:583
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s תינכת רובע טנמוגרא לבקמ וניא `--%s' ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
+#: gnulib/lib/getopt.c:592 gnulib/lib/getopt.c:597
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s תינכת רובע טנמוגרא לבקמ וניא `%c%s' ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
-#: gnulib/lib/getopt.c:995
+#: gnulib/lib/getopt.c:640 gnulib/lib/getopt.c:659 gnulib/lib/getopt.c:975
+#: gnulib/lib/getopt.c:994
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s תינכת רובע טנמוגרא בייחמ `%s' ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
+#: gnulib/lib/getopt.c:697 gnulib/lib/getopt.c:700
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s תינכת רובע `--%s' ההוזמ-יתלב ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
+#: gnulib/lib/getopt.c:708 gnulib/lib/getopt.c:711
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s תינכת רובע `%c%s' ההוזמ-יתלב ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
+#: gnulib/lib/getopt.c:763 gnulib/lib/getopt.c:766
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: יקוח-יתלב ןייפאמ -- %c\n"
 
-#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
+#: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s תינכת רובע יוגש ןייפאמ -- %c\n"
 
-#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
-#: gnulib/lib/getopt.c:1066
+#: gnulib/lib/getopt.c:827 gnulib/lib/getopt.c:843 gnulib/lib/getopt.c:1047
+#: gnulib/lib/getopt.c:1065
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: טנמוגרא בייחמ ןייפאמ -- %c\n"
 
-#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
+#: gnulib/lib/getopt.c:896 gnulib/lib/getopt.c:912
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s תינכת רובע יעמשמ-דח וניא `-W %s' ןייפאמ\n"
 
-#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
+#: gnulib/lib/getopt.c:936 gnulib/lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s תינכת רובע טנמוגרא לבקמ וניא `-W %s' ןייפאמ\n"
 
-#: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
-#, fuzzy
+#: gnulib/lib/xalloc-die.c:34 gnulib/lib/xsetenv.c:37
+#, fuzzy, c-format
 msgid "memory exhausted"
 msgstr "ילאטריוה ןורכזה רמגנ"
 
-#: info/echo-area.c:283 info/session.c:732
+#: info/echo-area.c:283 info/session.c:735
 msgid "Move forward a character"
 msgstr "המידק דחא ות ןמס זזה"
 
-#: info/echo-area.c:295 info/session.c:764
+#: info/echo-area.c:295 info/session.c:767
 msgid "Move backward a character"
 msgstr "הרוחא דחא ות ןמס זזה"
 
@@ -96,11 +96,11 @@ msgstr "הרושה תליחתל ןמס זזה"
 msgid "Move to the end of this line"
 msgstr "הרושה ףוסל ןמס זזה"
 
-#: info/echo-area.c:320 info/session.c:805
+#: info/echo-area.c:320 info/session.c:808
 msgid "Move forward a word"
 msgstr "המידק תחא הלימ ןמס זזה"
 
-#: info/echo-area.c:360 info/session.c:878
+#: info/echo-area.c:360 info/session.c:881
 msgid "Move backward a word"
 msgstr "הרוחא תחא הלימ ןמס זזה"
 
@@ -260,26 +260,26 @@ msgstr "!תואריהל ךירצ וניאש טסקט"
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
 msgstr "(.דוע אוצמל הסני `\\[next-index-match]') .\"%s\" טירפ %s-ב יתאצמ"
 
-#: info/indices.c:540
+#: info/indices.c:549
 #, fuzzy, c-format
 msgid "Scanning indices of `%s'..."
 msgstr "...\"%s\" לש םיסקדניאה לכ תא קרוס"
 
-#: info/indices.c:595
+#: info/indices.c:604
 #, fuzzy, c-format
 msgid "No available info files have `%s' in their indices."
 msgstr ".ולש סקדניאב \"%s\" ליכמ ןאכ םינקתומהמ Info ץבוק ףא"
 
-#: info/indices.c:621
+#: info/indices.c:630
 msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr ""
 "תאצמש הממ טירפת הנבו תזורחמ םהב שפח ,םיעודי Info יצבק לש םיסקדניאה לכב טטח"
 
-#: info/indices.c:625
+#: info/indices.c:634
 msgid "Index apropos: "
 msgstr "Index apropos: "
 
-#: info/indices.c:653
+#: info/indices.c:662
 #, fuzzy, c-format
 msgid ""
 "\n"
@@ -288,13 +288,13 @@ msgstr ""
 "\n"
 "* Menu: (תומיאתמה תואקספהו \"%s\" םיליכמה סקדניא יטירפ)\n"
 
-#: info/info.c:287 info/infokey.c:899
+#: info/info.c:273 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr ".רתוי בר עדימ תגצהל --help הסנ\n"
 
-#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
-#: util/install-info.c:1328 util/texindex.c:295
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2061
+#: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -304,47 +304,71 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:511
+#: info/info.c:503
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "`%s' תזורחמ םיליכמה סקדניא יטירפ ןיא\n"
 
-#: info/info.c:603
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr ""
-"      .רוביד זתנסמל ומיאתהל ידכ ךסמל הביתכ ןפוא הנש -b, --speech-friendly\n"
-
-#: info/info.c:610
-#, fuzzy, c-format
+#: info/info.c:597
+#, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 "\n"
 "Read documentation in Info format.\n"
-"\n"
+msgstr ""
+
+#: info/info.c:603
+msgid ""
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
+"  -k, --apropos=STRING         look up STRING in all indices of all "
 "manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
-"  -f, --file=FILENAME          specify Info file to visit.\n"
+"  -f, --file=FILENAME          specify Info file to visit."
+msgstr ""
+
+#: info/info.c:610
+msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+"  -o, --output=FILENAME        output selected nodes to FILENAME."
+msgstr ""
+
+#: info/info.c:616
+msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
 "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
-"  -O, --show-options, --usage  go to command-line options node.\n"
-"%s      --subnodes               recursively output menu items.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+
+#: info/info.c:623
+#, fuzzy
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr ""
+"      .רוביד זתנסמל ומיאתהל ידכ ךסמל הביתכ ןפוא הנש -b, --speech-friendly\n"
+
+#: info/info.c:627
+msgid ""
+"      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file."
+msgstr ""
+
+#: info/info.c:633
+msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
 "it is searched for in all `dir' files along INFOPATH.\n"
 "If it is not present, info merges all `dir' files and shows the result.\n"
 "Any remaining arguments are treated as the names of menu\n"
-"items relative to the initial node visited.\n"
+"items relative to the initial node visited."
+msgstr ""
+
+#: info/info.c:640
+msgid ""
 "\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
@@ -352,48 +376,11 @@ msgid ""
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
-"            %s [םינייפאמ]... [...טירפתמ םיפיעס] :שומיש ןפוא\n"
-"\n"
-"                        .Info טמרופב םיכורעה דועית יצבקב ןייע\n"
-"\n"
-"                                                                :םינייפאמ\n"
-"     .שמתשמל ךירדמ לכ לש םיסקדניאה לכב SUBJECT שפח      --apropos=SUBJECT\n"
-"                 .INFOPATH-ב המישרל DIR היקית ףסוה  -d, --directory=DIR\n"
-"          .FILENAME ץבוקב םישקמה תוציחל לכ תא םושר      --dribble=FILENAME\n"
-"               .FILENAME ץבוקב רשא שמתשמ ךירדמ גצה  -f, --file=FILENAME\n"
-"                      .תינכתהמ אצו הז הרזע ךסמ גצה  -h, --help\n"
-".הילא ליבומ סקדניאהש הקסיפ גצהו סקדניאב תזורחמ שפח      --index-"
-"search=STRING\n"
-"          .ןושאר Info ץבוק ךותמ NODENAME הקסיפ גצה  -n, --node=NODENAME\n"
-"           .FILENAME ץבוק ךותל ורחבנש תואקסיפ בותכ  -o, --output=FILENAME\n"
-"              .man יפדמ ANSI לש הרקבה יוות קלסת לא  -R, --raw-escapes\n"
-"                 .FILENAME ץבוקמ םישקמ תוציחל רזחש      --restore=FILENAME\n"
-"         .הדוקפה תרוש לש םינייפאמ תטרפמה הקסיפ גצה  -O, --show-options, --"
-"usage\n"
-"%s   .טלפל ןלוכ בותכו יביסרוקר רדסב תואקסיפ ןיב רובע      --subnodes\n"
-"            .Less וא vi-ל המודב תודוקפל םישקמ רושק      --vi-keys\n"
-"                    .אצו תינכותה תסריג לע עדימ גצה      --version\n"
-"\n"
-";ליחתהל שי ונממש טירפתמ ףיעס ןייצמ ,םייק אוה םא ,ןייפאמ וניאש ןושאר טנמוגרא\n"
-"                  .INFOPATH תמישר ךרואל `dir' יצבק לכב הז ףיעס שפחת תינכותה\n"
-"     .`dir' יצבק לכמ בכרומה טירפת גיצת info ,ןייפאמ וניאש טנמוגרא ףא ןיא םא\n"
-"                טירפתהמ לחה ,טירפת יפיעס תומשכ ושרופי ןושארל רבעמ םיטנמוגרא\n"
-"                                                     .הגצוהש הנושארה הקסיפב\n"
-"\n"
-"                                                                   :תואמגוד\n"
-"                          dir ץבוקמ בא-טירפת גצה  info\n"
-"       emacs טירפ עיבצמ הילא הקסיפל ךל בא-טירפתמ  info emacs\n"
-"buffers טירפל ךשמה םשמו emacs ףיעסל ךל בא-טירפתמ  info emacs buffers\n"
-"   emacs לש הדוקפה תרוש ינייפאמ תראתמה הקסיפ גצה  info --show-options emacs\n"
-"    dir טירפת ךרד רובעל ילבמ ./foo.info ץבוק גצה  info -f ./foo.info\n"
-"\n"
-"                           ,bug-texinfo@gnu.org-ל הלקת יחוויד חולשל אנ\n"
-"                   .help-texinfo@gnu.org-ל ןוידל םיאשונו תויללכ תולאשו\n"
 
-#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
-#: util/install-info.c:491 util/texindex.c:259
+#: info/info.c:649 info/infokey.c:918 install-info/install-info.c:563
+#: makeinfo/makeinfo.c:474 util/texindex.c:259
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -474,7 +461,7 @@ msgstr ".ידמ רתוי ןטק היה ןולחה"
 msgid "Not enough room for a help window, please delete a window."
 msgstr ".והשלכ ןולח קוחמל אנ ;הרזע ןולח גיצהל םוקמ קיפסמ ןיא"
 
-#: info/infodoc.c:45 info/infodoc.c:97
+#: info/infodoc.c:45 info/infodoc.c:98
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -494,7 +481,7 @@ msgstr "\\%-10[quit]  Info תינכתמ ירמגל אצ\n"
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Info שמתשמל ךירדמ גצה\n"
 
-#: info/infodoc.c:52 info/infodoc.c:104
+#: info/infodoc.c:52 info/infodoc.c:105
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -503,67 +490,56 @@ msgstr ""
 "                           ---------------------\n"
 
 #: info/infodoc.c:54
-msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
+#, fuzzy
+msgid "\\%-10[global-next-node]  Move to the next node in the document.\n"
 msgstr "\\%-10[next-node]  תיחכונ הקסיפ ירחא האבה הקסיפל רובע\n"
 
 #: info/infodoc.c:55
-msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
+#, fuzzy
+msgid "\\%-10[global-prev-node]  Move to the previous node in the document.\n"
 msgstr "\\%-10[prev-node]  תיחכונ הקסיפ ינפלש הקסיפל רובע\n"
 
 #: info/infodoc.c:56
-msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "\\%-10[up-node]  תיחכונ הקסיפ לש בא-תקסיפל רובע\n"
+#, fuzzy
+msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
+msgstr "\\%-10[move-to-next-xref]  תיחכונ הקסיפב אבה רושיקל ןמס זזה\n"
 
 #: info/infodoc.c:57
 msgid ""
-"\\%-10[menu-item]  Pick menu item specified by name.\n"
-"              Picking a menu item causes another node to be selected.\n"
-msgstr ""
-"\\%-10[menu-item]  ומש י\"פע טירפתמ ףיעס רחב\n"
-"            .תרחא הקסיפל רבעמל תמרוג טירפתמ הריחב\n"
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  וילע אצמנ ןמסהש רושיק ירחא בוקע\n"
+
+#: info/infodoc.c:58
+#, fuzzy
+msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+msgstr "\\%-10[move-to-prev-xref]  תיחכונ הקסיפב םדוקה רושיקל ןמס זזה\n"
 
 #: info/infodoc.c:59
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr "\\%-10[xref-item]  רושיקה םש ארוק ;רושיק רחא בוקע\n"
+msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
+msgstr "\\%-10[up-node]  תיחכונ הקסיפ לש בא-תקסיפל רובע\n"
 
 #: info/infodoc.c:60
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "\\%-10[history-node]  הז ןולחב הגצוהש הנורחאה הקסיפל רוזח\n"
 
 #: info/infodoc.c:61
-#, fuzzy
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
-msgstr "\\%-10[move-to-next-xref]  תיחכונ הקסיפב אבה רושיקל ןמס זזה\n"
-
-#: info/infodoc.c:62
-#, fuzzy
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr "\\%-10[move-to-prev-xref]  תיחכונ הקסיפב םדוקה רושיקל ןמס זזה\n"
-
-#: info/infodoc.c:63
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  וילע אצמנ ןמסהש רושיק ירחא בוקע\n"
-
-#: info/infodoc.c:64
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
 msgstr "\\%-10[dir-node]  `\\[goto-node] (DIR)'-ל ךרע-הווש ;DIR הקסיפל רובע\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:62
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  `\\[goto-node] Top'-ל ךרע-הווש ;Top הקסיפל רובע\n"
 
-#: info/infodoc.c:67
+#: info/infodoc.c:64
 msgid ""
 "[*]    Command acts within this node or the entire document, depending on\n"
 "the value of cursor-movement-scrolls variable\n"
 msgstr ""
 
-#: info/infodoc.c:70 info/infodoc.c:118
+#: info/infodoc.c:67 info/infodoc.c:119
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -571,33 +547,36 @@ msgstr ""
 "                           :הקסיפ ךותב ןמס תעונת\n"
 "                           ---------------------\n"
 
-#: info/infodoc.c:72
-msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#: info/infodoc.c:69
+#, fuzzy
+msgid "\\%-10[beginning-of-node]  Go to the beginning this node.\n"
 msgstr "\\%-10[beginning-of-node]  תיחכונ הקסיפ תליחתל ןמס זזה\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:70
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  תיחכונ הקסיפ ףוסל ןמס זזה\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:71
 #, fuzzy
-msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+msgid "\\%-10[next-line]  Scroll forward one line.\n"
 msgstr "  %-10s  המידק תחא הרוש ןמס זזה\n"
 
-#: info/infodoc.c:75
+#: info/infodoc.c:72
 #, fuzzy
-msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgid "\\%-10[prev-line]  Scroll backward one line.\n"
 msgstr "  %-10s  הרוחא תחא הרוש ןמס זזה\n"
 
-#: info/infodoc.c:76
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "\\%-10[scroll-forward]  המידק דחא ףד לולג\n"
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
+msgstr "\\%-10[scroll-forward]  המידק תחא הרוש ןמס זזה\n"
 
-#: info/infodoc.c:77
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+#: info/infodoc.c:74
+#, fuzzy
+msgid "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
 msgstr "\\%-10[scroll-backward]  הרוחא דחא ףד לולג\n"
 
-#: info/infodoc.c:79 info/infodoc.c:127
+#: info/infodoc.c:76 info/infodoc.c:128
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -605,17 +584,39 @@ msgstr ""
 "                                   :תורחא תודוקפ\n"
 "                                   -------------\n"
 
-#: info/infodoc.c:81
+#: info/infodoc.c:78
+msgid ""
+"\\%-10[search]  Search forward for a specified string\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"\\%-10[search]  הז Info ץוקב ךליאו ןאכמ תזורחמ שפח\n"
+"                    .תזורחמה האצמנ הב הקסיפל רובעו\n"
+
+#: info/infodoc.c:80
+msgid ""
+"\\%-10[search-backward]  Search backward for a specified string\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
+msgstr ""
+"\\%-10[search-backward]  הז Info ץוקב הרוחאו ןאכמ תזורחמ שפח\n"
+"                              .תזורחמה האצמנ הב הקסיפל רובעו\n"
+
+#: info/infodoc.c:82
 #, fuzzy
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
 msgstr "  %-10s  תיחכונה הקסיפה טירפתב יעישת דע ןושאר ףיעס רחב\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  תיחכונה הקסיפה טירפתב ןורחא ףיעס רחב\n"
 
-#: info/infodoc.c:83
+#: info/infodoc.c:84
+#, fuzzy
+msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
+msgstr "  %-10s  ומש י\"פע טירפתמ ףיעס רחב\n"
+
+#: info/infodoc.c:85
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -625,7 +626,12 @@ msgstr ""
 "\\%-10[index-search]  רובעו הז Info ץבוק לש םיסקדניאב תזורחמ שפח\n"
 "                 םאות אצמנש ןושאר סקדניא טירפ העיבצמ הילא הקסיפל\n"
 
-#: info/infodoc.c:85
+#: info/infodoc.c:87
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr "\\%-10[xref-item]  רושיקה םש ארוק ;רושיק רחא בוקע\n"
+
+#: info/infodoc.c:88
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -633,133 +639,126 @@ msgstr ""
 "\\%-10[goto-node]  המש י\"פע הקסיפל רובע\n"
 "              .(FILENAME)NODENAME-ב ומכ הקסיפה םשמ קלחכ ץבוק םש ןייצל ןתינ\n"
 
-#: info/infodoc.c:87
-msgid ""
-"\\%-10[search]  Search forward for a specified string\n"
-"              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"\\%-10[search]  הז Info ץוקב ךליאו ןאכמ תזורחמ שפח\n"
-"                    .תזורחמה האצמנ הב הקסיפל רובעו\n"
+#: info/infodoc.c:90
+#, fuzzy
+msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+msgstr "\\%-10[next-node]  תיחכונ הקסיפ ירחא האבה הקסיפל רובע\n"
 
-#: info/infodoc.c:89
-msgid ""
-"\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
-msgstr ""
-"\\%-10[search-backward]  הז Info ץוקב הרוחאו ןאכמ תזורחמ שפח\n"
-"                              .תזורחמה האצמנ הב הקסיפל רובעו\n"
+#: info/infodoc.c:91
+#, fuzzy
+msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
+msgstr "\\%-10[prev-node]  תיחכונ הקסיפ ינפלש הקסיפל רובע\n"
 
-#: info/infodoc.c:100
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  הז הרזע ןולח רוגס\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Info תינכתמ ירמגל אצ\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Info שמתשמל ךירדמ גצה\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  תיחכונ הקסיפ ירחא האבה הקסיפל רובע\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  תיחכונ הקסיפ ינפלש הקסיפל רובע\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  תיחכונ הקסיפ לש בא-תקסיפל רובע\n"
 
-#: info/infodoc.c:109
-#, c-format
-msgid "  %-10s  Pick menu item specified by name.\n"
-msgstr "  %-10s  ומש י\"פע טירפתמ ףיעס רחב\n"
-
 #: info/infodoc.c:110
-msgid "              Picking a menu item causes another node to be selected.\n"
-msgstr "              .תרחא הקסיפל רבעמל תמרוג טירפתמ הריחב\n"
+#, fuzzy, c-format
+msgid ""
+"  %-10s  Pick menu item specified by name.\n"
+"              Picking a menu item causes another node to be selected.\n"
+msgstr ""
+"\\%-10[menu-item]  ומש י\"פע טירפתמ ףיעס רחב\n"
+"            .תרחא הקסיפל רבעמל תמרוג טירפתמ הריחב\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  רושיקה םש ארוק ;רושיק רחא בוקע\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  הז ןולחב הגצוהש הנורחאה הקסיפל רוזח\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  תיחכונ הקסיפב אבה רושיקל ןמס זזה\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  וילע אצמנ ןמסהש רושיק ירחא בוקע\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  `g (DIR)'-ל ךרע-הווש ;DIR הקסיפל רובע\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  `g Top'-ל ךרע-הווש ;Top הקסיפל רובע\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  המידק דחא ףד לולג\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  הרוחא דחא ףד לולג\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  תיחכונ הקסיפ תליחתל ןמס זזה\n"
 
-#: info/infodoc.c:123
+#: info/infodoc.c:124
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s תיחכונ הקסיפ ףוסל ןמס זזה\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:125
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  המידק תחא הרוש ןמס זזה\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:126
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  הרוחא תחא הרוש ןמס זזה\n"
 
-#: info/infodoc.c:129
-#, c-format
-msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
+#: info/infodoc.c:130
+#, fuzzy, c-format
+msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  תיחכונה הקסיפה טירפתב יעישת דע ןושאר ףיעס רחב\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  תיחכונה הקסיפה טירפתב ןורחא ףיעס רחב\n"
 
-#: info/infodoc.c:133
+#: info/infodoc.c:134
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -769,18 +768,16 @@ msgstr ""
 "\\%-10[index-search]  רובעו הז Info ץבוק לש םיסקדניאב תזורחמ שפח\n"
 "                 םאות אצמנש ןושאר סקדניא טירפ העיבצמ הילא הקסיפל\n"
 
-#: info/infodoc.c:135
-#, c-format
-msgid "  %-10s  Move to node specified by name.\n"
-msgstr "  %-10s  המש י\"פע הקסיפל רובע\n"
-
 #: info/infodoc.c:136
+#, fuzzy, c-format
 msgid ""
+"  %-10s  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
+"\\%-10[goto-node]  המש י\"פע הקסיפל רובע\n"
 "              .(FILENAME)NODENAME-ב ומכ הקסיפה םשמ קלחכ ץבוק םש ןייצל ןתינ\n"
 
-#: info/infodoc.c:137
+#: info/infodoc.c:138
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -789,21 +786,20 @@ msgstr ""
 "\\%-10[search]  הז Info ץוקב ךליאו ןאכמ תזורחמ שפח\n"
 "                    .תזורחמה האצמנ הב הקסיפל רובעו\n"
 
-#: info/infodoc.c:139
-#, c-format
-msgid "  %-10s  Search backward for a specified string\n"
-msgstr "  %-10s  הז Info ץבוקב הרוחאו ןאכמ תזורחמ שפח\n"
-
 #: info/infodoc.c:140
+#, fuzzy, c-format
 msgid ""
+"  %-10s  Search backward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
-msgstr "              .תזורחמה האצמנ הב הקסיפל רובעו\n"
+msgstr ""
+"\\%-10[search]  הז Info ץוקב ךליאו ןאכמ תזורחמ שפח\n"
+"                    .תזורחמה האצמנ הב הקסיפל רובעו\n"
 
-#: info/infodoc.c:320
+#: info/infodoc.c:321
 msgid "The current search path is:\n"
 msgstr "                               :איה תיחכונ שופיח תמישר\n"
 
-#: info/infodoc.c:324
+#: info/infodoc.c:325
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -811,7 +807,7 @@ msgstr ""
 "                                 :Info תונולחב תוירשפא תודוקפ\n"
 "\n"
 
-#: info/infodoc.c:328
+#: info/infodoc.c:329
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -819,7 +815,7 @@ msgstr ""
 "                                :תודוקפה תרושב תוירשפא תודוקפ\n"
 "\n"
 
-#: info/infodoc.c:351
+#: info/infodoc.c:352
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -828,7 +824,7 @@ msgstr ""
 "                :דבלב %s תועצמאב ליעפהל ןתינ תואבה תודוקפה תא\n"
 "\n"
 
-#: info/infodoc.c:355
+#: info/infodoc.c:356
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -836,66 +832,66 @@ msgstr ""
 "                        :ללכ הלעפהל תונתינ ןניא תואבה תודוקפה\n"
 "\n"
 
-#: info/infodoc.c:379
+#: info/infodoc.c:380
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr "--- `\\[kill-node]' וא `\\[history-node]' שקה האיציל ---\n"
 
-#: info/infodoc.c:489
+#: info/infodoc.c:490
 msgid "Display help message"
 msgstr "הרזע ךסמ גצה"
 
-#: info/infodoc.c:507
+#: info/infodoc.c:508
 msgid "Visit Info node `(info)Help'"
 msgstr "Info תכרעמב שומישל ךירדמ גצה"
 
-#: info/infodoc.c:645
+#: info/infodoc.c:646
 msgid "Print documentation for KEY"
 msgstr "םיוסמ שקמ רובע דועית גצה"
 
-#: info/infodoc.c:657
+#: info/infodoc.c:658
 #, c-format
 msgid "Describe key: %s"
 msgstr "Describe key: %s"
 
-#: info/infodoc.c:668
+#: info/infodoc.c:669
 #, c-format
 msgid "ESC %s is undefined."
 msgstr ".רדגומ וניא \"ESC %s\""
 
-#: info/infodoc.c:684 info/infodoc.c:713
+#: info/infodoc.c:685 info/infodoc.c:714
 #, c-format
 msgid "%s is undefined."
 msgstr ".רדגומ וניא \"%s\""
 
-#: info/infodoc.c:734
+#: info/infodoc.c:735
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s is defined to %s."
 
-#: info/infodoc.c:1157
+#: info/infodoc.c:1158
 msgid "Show what to type to execute a given command"
 msgstr "תמיוסמ הדוקפ תלעפהל דילקהל המ גצה"
 
-#: info/infodoc.c:1161
+#: info/infodoc.c:1162
 msgid "Where is command: "
 msgstr "Where is command: "
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "והשלכ שקמל הרושק הניא `%s' הדוקפה"
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr ".`%s' תלעפהל הדיחיה ךרדה אוה `%s'"
 
-#: info/infodoc.c:1194
+#: info/infodoc.c:1195
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr ".%s הדוקפה תא ליעפי %s"
 
-#: info/infodoc.c:1199
+#: info/infodoc.c:1200
 #, c-format
 msgid "There is no function named `%s'"
 msgstr ".תמייק הניא `%s' םשב היצקנופ"
@@ -1008,51 +1004,51 @@ msgstr ""
 "                  .אצו תינכתה תסריג לע עדימ גצה   --version\n"
 "\n"
 
-#: info/infomap.c:1499
+#: info/infomap.c:1508
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "ןיקת infokey ץבוק תויהל ידכב ידמ ןטק -- `%s' ץבוקמ םלעתמ"
 
-#: info/infomap.c:1502
+#: info/infomap.c:1511
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "ןיקת infokey ץבוק תויהל ידכב ידמ לודג -- `%s' ץבוקמ םלעתמ"
 
-#: info/infomap.c:1515
+#: info/infomap.c:1524
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "ארקנ ץבוקה לכ אל - `%s' infokey ץבוק תאירקב הלקת"
 
-#: info/infomap.c:1534
+#: info/infomap.c:1543
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "ונוכדע ךרוצל infokey ץרה -- (יוגש םסק רפסמ) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1543
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "ונוכדע ךרוצל infokey ץרה -- ןכדועמ וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1559
+#: info/infomap.c:1568
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "ונוכדע ךרוצל infokey ץרה -- (יוגש קלח ךרוא) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1580
+#: info/infomap.c:1589
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr "ונוכדע ךרוצל infokey ץרה -- (יוגש קלח דוק) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1715
+#: info/infomap.c:1724
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "הנלעפת אל תודחא םישקמ תורדגה -- infokey ץבוקב םייוגש םינותנ"
 
-#: info/infomap.c:1765
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "ףקותב אל תודחא םינתשמ תורדגה -- infokey ץבוקב םייוגש םינותנ"
 
@@ -1086,7 +1082,7 @@ msgstr "גצומה ןולחה הבוג תא הנש"
 msgid "Set screen height to (%d): "
 msgstr "Set screen height to (%d): "
 
-#: info/makedoc.c:163 info/makedoc.c:171
+#: info/makedoc.c:166 info/makedoc.c:174
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
@@ -1095,7 +1091,7 @@ msgstr ""
 "                  :םיללוכ הז ץבוקל ודבועש רוקמ יצבק\n"
 "\n"
 
-#: info/makedoc.c:551
+#: info/makedoc.c:556
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr ".%s ץבוק דבעל ןתינ אל\n"
@@ -1132,12 +1128,17 @@ msgstr "תונולחה דחאב םדוק תגצה התוא הקסיפ רחב"
 msgid "Select visited node: "
 msgstr "Select visited node: "
 
-#: info/nodemenu.c:336 info/session.c:2398
+#: info/nodemenu.c:336 info/session.c:2394
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "!םלענ (%s) רושיקה לש דעיה"
 
-#: info/session.c:161
+#: info/search.c:161
+#, c-format
+msgid "regexp error: %s"
+msgstr ""
+
+#: info/session.c:164
 #, c-format
 msgid ""
 "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
@@ -1146,343 +1147,326 @@ msgstr ""
 ".גצומה טירפתהמ הריחבל \\[menu-item] ,ארזע תלבקל \\[get-help-window] שקה .%s "
 "אסריג Info תינכתל םיאבה םיכורב"
 
-#: info/session.c:622
+#: info/session.c:625
 msgid "Move down to the next line"
 msgstr "האבה הרושל ןמס זזה"
 
-#: info/session.c:658
+#: info/session.c:661
 msgid "Move up to the previous line"
 msgstr "תמדוקה הרושל ןמס זזה"
 
-#: info/session.c:693
+#: info/session.c:696
 msgid "Move to the end of the line"
 msgstr "הרושה ףוסל ןמס זזה"
 
-#: info/session.c:713
+#: info/session.c:716
 msgid "Move to the start of the line"
 msgstr "הזז סמן לתחילת השורה"
 
-#: info/session.c:983 makeinfo/node.c:1437
+#: info/session.c:986
 msgid "Next"
 msgstr "Next הדש"
 
-#: info/session.c:988
-msgid "Following Next node..."
-msgstr "...האבה הקסיפל רבוע"
-
-#: info/session.c:1006
-msgid "Selecting first menu item..."
-msgstr "...טירפתהמ ןושאר ףיעס רחוב"
-
-#: info/session.c:1018
-msgid "Selecting Next node..."
-msgstr "...האבה הקסיפב רחוב"
-
-#: info/session.c:1089
-#, c-format
-msgid "Moving Up %d time(s), then Next."
-msgstr ".האבה הקסיפה רחוב זאו ,תואקסיפה ץעב תו/המר %d הלוע"
-
-#: info/session.c:1113
+#: info/session.c:1106
 msgid "No more nodes within this document."
 msgstr ".הז ךמסמב תואקסיפ רתוי ןיא"
 
-#: info/session.c:1139
+#: info/session.c:1132
 msgid "No `Prev' for this node."
 msgstr ".וז הקסיפב `Prev' רושיק ןיא"
 
-#: info/session.c:1144 info/session.c:1206
-msgid "Moving Prev in this window."
-msgstr ".הז ןולחב תמדוק הקסיפל רבוע"
-
-#: info/session.c:1161
+#: info/session.c:1152
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr ".וז הקסיפ רובע `Up'-ו `Prev' ללוכ וניא הז ךמסמ"
 
-#: info/session.c:1167
-msgid "Moving Up in this window."
-msgstr ".הז ןולחב םאה תקספל רבוע"
-
-#: info/session.c:1217
-msgid "Moving to `Prev's last menu item."
-msgstr ".תמדוק הקסיפ לש טירפתב ןורחא ףיעסל רבוע"
-
-#: info/session.c:1229
+#: info/session.c:1214
 msgid "Move forwards or down through node structure"
 msgstr ".תואקסיפה הנבמב רתוי קומע וא המידק עונ"
 
-#: info/session.c:1245
+#: info/session.c:1230
 msgid "Move backwards or up through node structure"
 msgstr ".תואקסיפה הנבמב הלעמ יפלכ וא הרוחא עונ"
 
-#: info/session.c:1339
+#: info/session.c:1324
 msgid "Scroll forward in this window"
 msgstr ".הז ןולחב המידק לולג"
 
-#: info/session.c:1347
+#: info/session.c:1332
 msgid "Scroll forward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב המידק לולג"
 
-#: info/session.c:1355
+#: info/session.c:1340
 msgid "Scroll forward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1363
+#: info/session.c:1348
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1371
+#: info/session.c:1356
 msgid "Scroll backward in this window"
 msgstr "הז ןולחב הרוחא לולג"
 
-#: info/session.c:1379
+#: info/session.c:1364
 msgid "Scroll backward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב הרוחא לולג"
 
-#: info/session.c:1388
+#: info/session.c:1373
 msgid "Scroll backward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1396
+#: info/session.c:1381
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1404
+#: info/session.c:1389
 msgid "Move to the start of this node"
 msgstr "וז הקסיפ תליחתל ןמס זזה"
 
-#: info/session.c:1411
+#: info/session.c:1396
 msgid "Move to the end of this node"
 msgstr "וז הקסיפ ףוסל ןמס זזה"
 
-#: info/session.c:1418
+#: info/session.c:1403
 msgid "Scroll down by lines"
 msgstr "הטמ יפלכ תורוש N לולג"
 
-#: info/session.c:1435
+#: info/session.c:1420
 msgid "Scroll up by lines"
 msgstr "הלעמ יפלכ תורוש N לולג"
 
-#: info/session.c:1453
+#: info/session.c:1438
 msgid "Scroll down by half screen size"
 msgstr "הטמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1479
+#: info/session.c:1464
 msgid "Scroll up by half screen size"
 msgstr "הלעמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1508
+#: info/session.c:1493
 msgid "Select the next window"
 msgstr "אבה ןולחב רחב"
 
-#: info/session.c:1547
+#: info/session.c:1532
 msgid "Select the previous window"
 msgstr "םדוקה ןולחב רחב"
 
-#: info/session.c:1598
+#: info/session.c:1583
 msgid "Split the current window"
 msgstr "םיינשל יחכונה ןולחה קלח"
 
-#: info/session.c:1679
+#: info/session.c:1664
 msgid "Delete the current window"
 msgstr "יחכונה ןולחה תא רסה"
 
-#: info/session.c:1687
+#: info/session.c:1672
 msgid "Cannot delete a permanent window"
 msgstr "עובק ןולח ריסהל ןתינ אל"
 
-#: info/session.c:1719
+#: info/session.c:1704
 msgid "Delete all other windows"
 msgstr "יחכונה דבלמ תונולחה לכ תא רסה"
 
-#: info/session.c:1765
+#: info/session.c:1750
 msgid "Scroll the other window"
 msgstr "אבה ןולחב לולג"
 
-#: info/session.c:1786
+#: info/session.c:1771
 msgid "Scroll the other window backward"
 msgstr "אבה ןולחב הרוחא לולג"
 
-#: info/session.c:1792
+#: info/session.c:1777
 msgid "Grow (or shrink) this window"
 msgstr "הז ןולח (ןטקה וא) לדגה"
 
-#: info/session.c:1803
+#: info/session.c:1788
 msgid "Divide the available screen space among the visible windows"
 msgstr "םיגצומה תונולחה לכ ןיב הגוצתה חטש קלח"
 
-#: info/session.c:1810
+#: info/session.c:1795
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "יחכונה ןולחב ושלגש תורוש תגצה בצמ הנש"
 
-#: info/session.c:1982
+#: info/session.c:1802
+msgid "Toggle the usage of regular expressions in searches"
+msgstr ""
+
+#: info/session.c:1806
+msgid "Using regular expressions for searches."
+msgstr ""
+
+#: info/session.c:1807
+msgid "Using literal strings for searches."
+msgstr ""
+
+#: info/session.c:1978
 msgid "Select the Next node"
 msgstr "האבה הקסיפב רובע"
 
-#: info/session.c:1990
+#: info/session.c:1986
 msgid "Select the Prev node"
 msgstr "תמדוקה הקסיפל רובע"
 
-#: info/session.c:1998
+#: info/session.c:1994
 msgid "Select the Up node"
 msgstr "לעמש הקסיפל רובע"
 
-#: info/session.c:2005
+#: info/session.c:2001
 msgid "Select the last node in this file"
 msgstr "הז ךמסמב הנורחאה הקסיפל רובע"
 
-#: info/session.c:2032 info/session.c:2065
+#: info/session.c:2028 info/session.c:2061
 msgid "This window has no additional nodes"
 msgstr "הז ןולחב תואקסיפ רתוי ןיא"
 
-#: info/session.c:2038
+#: info/session.c:2034
 msgid "Select the first node in this file"
 msgstr "הז ךמסמב הנושארה הקסיפל רובע"
 
-#: info/session.c:2072
+#: info/session.c:2068
 msgid "Select the last item in this node's menu"
 msgstr "וזה הקסיפה טירפתמ ןורחאה ףיעסב רחב"
 
-#: info/session.c:2078
+#: info/session.c:2074
 msgid "Select this menu item"
 msgstr "טירפתהמ הז ףיעסב רחב"
 
-#: info/session.c:2111
+#: info/session.c:2107
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr ".םיפיעס %d ןיא הז טירפתב"
 
-#: info/session.c:2305 info/session.c:2306
+#: info/session.c:2301 info/session.c:2302
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menu item (%s): "
 
-#: info/session.c:2309
+#: info/session.c:2305
 msgid "Menu item: "
 msgstr "Menu item: "
 
-#: info/session.c:2316 info/session.c:2317
+#: info/session.c:2312 info/session.c:2313
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Follow xref (%s): "
 
-#: info/session.c:2320
+#: info/session.c:2316
 msgid "Follow xref: "
 msgstr "Follow xref: "
 
-#: info/session.c:2449
+#: info/session.c:2445
 msgid "Read a menu item and select its node"
 msgstr "המיאתמה הקסיפל רובעו טירפתמ ףיעס םש ארק"
 
-#: info/session.c:2457
+#: info/session.c:2453
 msgid "Read a footnote or cross reference and select its node"
 msgstr "המיאתמה הקסיפל רובעו רושיק וא הרעה לש םש ארק"
 
-#: info/session.c:2463
+#: info/session.c:2459
 msgid "Move to the start of this node's menu"
 msgstr "וז הקסיפב טירפתה תליחתל ןמס זזה"
 
-#: info/session.c:2487
+#: info/session.c:2483
 msgid "Visit as many menu items at once as possible"
 msgstr "הז טירפתמ םיפיעס לש רשפאה לככ בר רפסמ גצה"
 
-#: info/session.c:2515
+#: info/session.c:2511
 msgid "Read a node name and select it"
 msgstr "הילא רובעו הקסיפ לש םש ארק"
 
-#: info/session.c:2570 info/session.c:2575
+#: info/session.c:2566 info/session.c:2571
 msgid "Goto node: "
 msgstr "Goto node: "
 
-#: info/session.c:2639
+#: info/session.c:2635
 #, c-format
 msgid "No menu in node `%s'."
 msgstr ".םיטירפת `%s' ןיא הקסיפב"
 
-#: info/session.c:2685
+#: info/session.c:2681
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr ".`%s' ףיעס ןיא `%s' הקסיפ לש טירפתב"
 
-#: info/session.c:2715
+#: info/session.c:2711
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr ".`%s' ףיעסב הילא רשקמ `%s'-ב טירפתה רשא הקסיפ יתאצמ אל"
 
-#: info/session.c:2765
+#: info/session.c:2761
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "םהירחא בוקעו dir-מ הליחתמה טירפת יפיעס תרדיס ארק"
 
-#: info/session.c:2767
+#: info/session.c:2763
 msgid "Follow menus: "
 msgstr "Follow menus: "
 
-#: info/session.c:2960
+#: info/session.c:2956
 msgid "Find the node describing program invocation"
 msgstr "תינכתה ץירהל דציכ תראתמה הקסיפה תא אצמ"
 
-#: info/session.c:2962
+#: info/session.c:2958
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Find Invocation node of [%s]: "
 
-#: info/session.c:3000
+#: info/session.c:2996
 msgid "Read a manpage reference and select it"
 msgstr "ותוא גצהו manpage-ל היינפה ארק"
 
-#: info/session.c:3004
+#: info/session.c:3000
 msgid "Get Manpage: "
 msgstr "Get Manpage: "
 
-#: info/session.c:3034
+#: info/session.c:3030
 msgid "Select the node `Top' in this file"
 msgstr "הז ךמסמב (`Top') תישארה הקסיפל רובע"
 
-#: info/session.c:3040
+#: info/session.c:3036
 msgid "Select the node `(dir)'"
 msgstr "`(dir)' הקסיפל רובע"
 
-#: info/session.c:3057 info/session.c:3059
+#: info/session.c:3053 info/session.c:3055
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Kill node (%s): "
 
-#: info/session.c:3111
+#: info/session.c:3107
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "`%s' הקסיפ קלסל תורשפא ןיא"
 
-#: info/session.c:3121
+#: info/session.c:3117
 msgid "Cannot kill the last node"
 msgstr "הדיחי הקסיפ קלסל תורשפא ןיא"
 
-#: info/session.c:3207
+#: info/session.c:3203
 msgid "Select the most recently selected node"
 msgstr "הגצוהש הנורחאה הקסיפל רוזח"
 
-#: info/session.c:3213
+#: info/session.c:3209
 msgid "Kill this node"
 msgstr "וז הקסיפ קלס"
 
-#: info/session.c:3221
+#: info/session.c:3217
 msgid "Read the name of a file and select it"
 msgstr "ותוא גצהו ץבוק לש םש ארק"
 
-#: info/session.c:3225
+#: info/session.c:3221
 msgid "Find file: "
 msgstr "Find file: "
 
-#: info/session.c:3242
+#: info/session.c:3238
 #, c-format
 msgid "Cannot find `%s'."
 msgstr ".אצמנ אל `%s' ץבוק"
 
-#: info/session.c:3285 info/session.c:3403
+#: info/session.c:3281 info/session.c:3399
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr ".`%s' טלפ ץבוק תריציב הלקת"
@@ -1490,96 +1474,108 @@ msgstr ".`%s' טלפ ץבוק תריציב הלקת"
 # Note that this needs to make sense when displayed to the _right_ of
 # the translated "Writing node foo..." and  "Printing node foo...",
 # no matter whether the following word is masculine or feminine!
-#: info/session.c:3299 info/session.c:3421 info/session.c:3481
+#: info/session.c:3295 info/session.c:3417 info/session.c:3477
 msgid "Done."
 msgstr "ב החלצה"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3354
+#: info/session.c:3350
 #, c-format
 msgid "Writing node %s..."
 msgstr "`%s' הקסיפ טלפ"
 
-#: info/session.c:3430
+#: info/session.c:3426
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "INFO_PRINT_COMMAND ךרד וז הקסיפ ןכות ספדה"
 
-#: info/session.c:3465
+#: info/session.c:3461
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr ".`%s'-ל קיפא תחיתפב הלקת"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3471
+#: info/session.c:3467
 #, c-format
 msgid "Printing node %s..."
 msgstr "%s הקסיפ תספדה"
 
-#: info/session.c:3701
+#: info/session.c:3699
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "... %s ץבוק-תת קרוס"
 
-#: info/session.c:3753
+#: info/session.c:3751
 msgid "Read a string and search for it case-sensitively"
 msgstr "תוישירב תובשחתה ךות התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3760
+#: info/session.c:3758
 msgid "Read a string and search for it"
 msgstr "התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3768
+#: info/session.c:3766
 msgid "Read a string and search backward for it"
 msgstr "הרוחא התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3804 info/session.c:3811
-#, c-format
-msgid "%s%sfor string [%s]: "
+#: info/session.c:3802 info/session.c:3808
+#, fuzzy, c-format
+msgid "%s%s%s [%s]: "
 msgstr "%s%sfor string [%s]: "
+
+#: info/session.c:3803 info/session.c:3809
+msgid "Regexp search"
+msgstr ""
+
+#: info/session.c:3804 info/session.c:3810
+#, fuzzy
+msgid " case-sensitively"
+msgstr " case-sensitively "
 
 # The following 4 are untranslated because they are used with the
 # format string above in a prompt, and we don't translate prompts.
-#: info/session.c:3805 info/session.c:3812
-msgid "Search backward"
+#: info/session.c:3805 info/session.c:3811
+#, fuzzy
+msgid " backward"
 msgstr "Search backward"
 
-#: info/session.c:3806 info/session.c:3812
+#: info/session.c:3809
 msgid "Search"
 msgstr "Search"
 
-#: info/session.c:3807 info/session.c:3813
-msgid " case-sensitively "
-msgstr " case-sensitively "
-
-#: info/session.c:3808 info/session.c:3813
-msgid " "
-msgstr " "
-
-#: info/session.c:3852
+#: info/session.c:3850
 msgid "Search failed."
 msgstr ".האצמנ אל תזורחמה"
 
-#: info/session.c:3870
+#: info/session.c:3868
 msgid "Repeat last search in the same direction"
 msgstr "ןוויכ ותואב ןורחא שופיח לע רוזח"
 
-#: info/session.c:3873 info/session.c:3883
+#: info/session.c:3871 info/session.c:3881
 msgid "No previous search string"
 msgstr "ןורחא שופיחמ תזורחמ ןיא"
 
-#: info/session.c:3880
+#: info/session.c:3878
 msgid "Repeat last search in the reverse direction"
 msgstr "ךופה ןוויכב ןורחא שופיח לע רוזח"
 
-#: info/session.c:3899 info/session.c:3905
+#: info/session.c:3897 info/session.c:3903
 msgid "Search interactively for a string as you type it"
 msgstr "התוא ה/דילקמ ה/תאש ידכ ךות תזורחמ שפח"
 
-#: info/session.c:3985
+#: info/session.c:3983
+#, fuzzy
+msgid "Regexp I-search backward: "
+msgstr "I-search backward: "
+
+#: info/session.c:3984
 msgid "I-search backward: "
 msgstr "I-search backward: "
+
+#: info/session.c:3986
+#, fuzzy
+msgid "Regexp I-search: "
+msgstr "I-search: "
 
 #: info/session.c:3987
 msgid "I-search: "
@@ -1590,66 +1586,66 @@ msgstr "I-search: "
 msgid "Failing "
 msgstr "Failing "
 
-#: info/session.c:4480
+#: info/session.c:4498
 msgid "Move to the previous cross reference"
 msgstr "םדוקה רושיקל ןמס זזה"
 
-#: info/session.c:4498
+#: info/session.c:4516
 msgid "Move to the next cross reference"
 msgstr "אבה רושיקל ןמס זזה"
 
-#: info/session.c:4520
+#: info/session.c:4538
 msgid "Select reference or menu item appearing on this line"
 msgstr "תיחכונה הרושב עיפומה טירפתמ ףיעס וא רושיק רחא בוקע"
 
-#: info/session.c:4543
+#: info/session.c:4561
 msgid "Cancel current operation"
 msgstr "תיחכונ הלועפ לטב"
 
-#: info/session.c:4550
+#: info/session.c:4568
 msgid "Quit"
 msgstr "לטוב"
 
-#: info/session.c:4559
+#: info/session.c:4577
 msgid "Move the cursor to a specific line of the window"
 msgstr "הז ןולחב תמיוסמ הרושל ןמס זזה"
 
-#: info/session.c:4591
+#: info/session.c:4609
 msgid "Redraw the display"
 msgstr "הגוצת שדח"
 
-#: info/session.c:4628
+#: info/session.c:4646
 msgid "Quit using Info"
 msgstr "Info תינכותמ אצ"
 
-#: info/session.c:4641
+#: info/session.c:4659
 msgid "Run command bound to this key's lowercase variant"
 msgstr "הז שקמ לש תונטק תויתוא תסריגל הרושקה הדוקפ לעפה"
 
-#: info/session.c:4652
+#: info/session.c:4670
 #, c-format
 msgid "Unknown command (%s)."
 msgstr ".(%s) תרכומ-יתלב הדוקפ"
 
-#: info/session.c:4655
+#: info/session.c:4673
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:4656
+#: info/session.c:4674
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:4870
+#: info/session.c:4888
 msgid "Add this digit to the current numeric argument"
 msgstr "יחכונ ירמונ טנמוגראל וז הרפס ףסוה"
 
-#: info/session.c:4879
+#: info/session.c:4897
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "4-ב םייק ךרע לופכ וא ,ירמונ טנמוגרא לש הדלקה לחתה"
 
-#: info/session.c:4894
+#: info/session.c:4912
 msgid "Internally used by \\[universal-argument]"
 msgstr "וז הדוקפב שמתשמ \\[universal-argument]"
 
@@ -1729,28 +1725,216 @@ msgstr "Set %s to value (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Set %s to value (%s): "
 
-#: info/window.c:1137
+#: info/window.c:1150
 msgid "--*** Tags out of Date ***"
 msgstr "--*** תנכדועמ הניא Tags תלבט ***-- "
 
-#: info/window.c:1148
+#: info/window.c:1161
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), lines ----, "
 
-#: info/window.c:1155
+#: info/window.c:1168
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d lines --%s--"
 
-#: info/window.c:1159
+#: info/window.c:1172
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d lines --%s--"
 
-#: info/window.c:1166
+#: info/window.c:1179
 #, c-format
 msgid " Subfile: %s"
 msgstr " Subfile: %s"
+
+#: install-info/install-info.c:221
+#, c-format
+msgid "%s: warning: "
+msgstr "%s: warning: "
+
+#: install-info/install-info.c:270
+#, c-format
+msgid " for %s"
+msgstr " for %s"
+
+#: install-info/install-info.c:495
+#, c-format
+msgid "\tTry `%s --help' for a complete list of options.\n"
+msgstr ".םינייפאמ לש האלמ המישר תלבקל `%s --help' הסנ\n"
+
+#: install-info/install-info.c:503
+#, fuzzy, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr "%s [םינייפאמ]... TEXINFO-ץבוק... :שומישה ןפוא\n"
+
+#: install-info/install-info.c:505
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+msgstr ""
+
+#: install-info/install-info.c:508
+msgid ""
+"Options:\n"
+" --debug            report what is being done.\n"
+" --delete           delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                     don't insert any new entries.\n"
+" --description=TEXT the description of the entry is TEXT; used with\n"
+"                     the --name option to become synonymous with the\n"
+"\t\t     --entry option.\n"
+" --dir-file=NAME    specify file name of Info directory file;\n"
+"                     equivalent to using the DIR-FILE argument.\n"
+" --dry-run          same as --test."
+msgstr ""
+
+#: install-info/install-info.c:520
+msgid ""
+" --entry=TEXT       insert TEXT as an Info directory entry.\n"
+"                     TEXT should have the form of an Info menu item line\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
+"                     If you don't specify any entries, they are determined\n"
+"                     from information in the Info file itself.\n"
+"\t\t     When removing TEXT is the name of the entry to remove.\n"
+"\t\t     TEXT is only removed as a last-ditch effort if the \n"
+"\t\t     entry as determined from the Info file is not present \n"
+"\t\t     and the basename of the Info file isn't found either."
+msgstr ""
+
+#: install-info/install-info.c:532
+msgid ""
+" --help             display this help and exit.\n"
+" --info-dir=DIR     same as --dir-file=DIR/dir.\n"
+" --info-file=FILE   specify Info file to install in the directory;\n"
+"                     equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT        same as --entry=TEXT.\n"
+" --keep-old         do not replace entries, or remove empty sections.\n"
+" --menuentry=TEXT   same as --name=TEXT.\n"
+" --name=TEXT        the name of the entry is TEXT; used with --description\n"
+"                     to become synonymous with the --entry option.\n"
+" --no-indent        do not format new entries in the DIR file.\n"
+" --quiet            suppress warnings."
+msgstr ""
+
+#: install-info/install-info.c:545
+msgid ""
+" --regex=R          put this file's entries in all sections that match the\n"
+"                     regular expression R (ignoring case).\n"
+" --remove           same as --delete.\n"
+" --remove-exactly   only remove if the info file name matches exactly;\n"
+"                     suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC      put this file's entries in section SEC of the "
+"directory.\n"
+"                     If you specify more than one section, all the entries\n"
+"                     are added in each of the sections.\n"
+"                     If you don't specify any sections, they are determined\n"
+"                     from information in the Info file itself.\n"
+" --section R SEC    equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+
+#: install-info/install-info.c:558
+msgid ""
+" --silent           suppress warnings.\n"
+" --test             suppress updating of DIR-FILE.\n"
+" --version          display version information and exit."
+msgstr ""
+
+#: install-info/install-info.c:590
+#, fuzzy, c-format
+msgid ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"%s\n"
+msgstr ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"* Menu:\n"
+
+#: install-info/install-info.c:615
+#, c-format
+msgid "%s: could not read (%s) and could not create (%s)\n"
+msgstr "%s ץבוק לש (%s) האירקב ןהו (%s) הריציב ןה הלקת\n"
+
+#: install-info/install-info.c:702
+#, c-format
+msgid "%s: empty file"
+msgstr "קיר וניה %s ץבוק"
+
+#: install-info/install-info.c:1019 install-info/install-info.c:1059
+msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+msgstr "םאות END-INFO-DIR-ENTRY אלל START-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1054
+msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+msgstr "םאות START-INFO-DIR-ENTRY אלל END-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1906 install-info/install-info.c:1916
+#, c-format
+msgid "%s: already have dir file: %s\n"
+msgstr ""
+
+#: install-info/install-info.c:1996
+#, c-format
+msgid "%s: Specify the Info file only once.\n"
+msgstr ".דבלב תחא םעפ %s-ל Info ץבוק ןייצל ןתינ\n"
+
+#: install-info/install-info.c:2029
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr ""
+
+#: install-info/install-info.c:2041
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr ""
+
+#: install-info/install-info.c:2099
+#, c-format
+msgid "excess command line argument `%s'"
+msgstr "`%s' רתוימ טנמוגרא"
+
+#: install-info/install-info.c:2103
+msgid "No input file specified; try --help for more information."
+msgstr ".הרזע תלבקל --help הסנ ;טלק ץבוק ןויצ ןיא"
+
+#: install-info/install-info.c:2106
+msgid "No dir file specified; try --help for more information."
+msgstr ".הרזע תלבקל --help הסנ ;dir ץבוק ןויצ ןיא"
+
+#: install-info/install-info.c:2248
+#, c-format
+msgid "no info dir entry in `%s'"
+msgstr "`%s'-ב ישאר טירפת יפיעס ןיא"
+
+#: install-info/install-info.c:2497
+#, c-format
+msgid "no entries found for `%s'; nothing deleted"
+msgstr "קחמנ אל םולכ ;`%s' רובע טירפת יפיעס ואצמנ אל"
 
 #: lib/xexit.c:54
 msgid "ferror on stdout\n"
@@ -1760,83 +1944,83 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
+#: makeinfo/cmds.c:549 makeinfo/cmds.c:571
 #, fuzzy, c-format
 msgid "arguments to @%s ignored"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "January"
 msgstr "ראוני"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "February"
 msgstr "ראורבפ"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "March"
 msgstr "ץרמ"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "April"
 msgstr "לירפא"
 
-#: makeinfo/cmds.c:741
+#: makeinfo/cmds.c:746
 msgid "May"
 msgstr "יאמ"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "June"
 msgstr "ינוי"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "July"
 msgstr "ילוי"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "August"
 msgstr "טסוגוא"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "September"
 msgstr "רבמטפס"
 
-#: makeinfo/cmds.c:742
+#: makeinfo/cmds.c:747
 msgid "October"
 msgstr "רבוטקוא"
 
-#: makeinfo/cmds.c:743
+#: makeinfo/cmds.c:748
 msgid "November"
 msgstr "רבמבונ"
 
-#: makeinfo/cmds.c:743
+#: makeinfo/cmds.c:748
 msgid "December"
 msgstr "רבמצד"
 
-#: makeinfo/cmds.c:1095
+#: makeinfo/cmds.c:1098
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "@var ךותב %c ריבס-יתלב ות"
 
-#: makeinfo/cmds.c:1138
+#: makeinfo/cmds.c:1141
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "טקפא לכ @sc-ל ןיא ןכל ,תולודג תויתואב ולוכ @sc לש טנמוגרא"
 
-#: makeinfo/cmds.c:1193
+#: makeinfo/cmds.c:1196
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "%c אצמנ ךא ,`{' ל\"צ"
 
-#: makeinfo/cmds.c:1233
+#: makeinfo/cmds.c:1236
 msgid "end of file inside verb block"
 msgstr "verb ךותב ץבוק ףוס"
 
-#: makeinfo/cmds.c:1241
+#: makeinfo/cmds.c:1244
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "%c אצמנ ךא ,`}' ל\"צ"
 
-#: makeinfo/cmds.c:1272
+#: makeinfo/cmds.c:1275
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -1847,44 +2031,44 @@ msgstr ""
 msgid "%c%s is obsolete"
 msgstr "ןשוימ וניה %c%s"
 
-#: makeinfo/cmds.c:1580
+#: makeinfo/cmds.c:1579
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "`%s' אל ,יבויח רפסמ אוהש טנמוגרא שרוד @sp"
 
-#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1990 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:2000 makeinfo/makeinfo.c:4270
 msgid "asis"
 msgstr "אוהש ומכ"
 
-#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
+#: makeinfo/cmds.c:2002 makeinfo/cmds.c:2032 makeinfo/makeinfo.c:4272
 msgid "none"
 msgstr "ןיא"
 
-#: makeinfo/cmds.c:1962
+#: makeinfo/cmds.c:2016
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:1976
+#: makeinfo/cmds.c:2030
 msgid "insert"
 msgstr ""
 
-#: makeinfo/cmds.c:1992
+#: makeinfo/cmds.c:2046
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: makeinfo/cmds.c:2075
+#: makeinfo/cmds.c:2129
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:2095
+#: makeinfo/cmds.c:2149
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -1892,45 +2076,6 @@ msgstr ""
 #: makeinfo/defun.c:83
 msgid "Missing `}' in @def arg"
 msgstr "@def לש טנמוגראב `}' רסח"
-
-# It would be hilarious to translate those...
-#: makeinfo/defun.c:402
-msgid "Function"
-msgstr "Function"
-
-#: makeinfo/defun.c:405
-msgid "Macro"
-msgstr "Macro"
-
-#: makeinfo/defun.c:408
-msgid "Special Form"
-msgstr "Special Form"
-
-#: makeinfo/defun.c:412
-msgid "Variable"
-msgstr "Variable"
-
-#: makeinfo/defun.c:415
-msgid "User Option"
-msgstr "User Option"
-
-#: makeinfo/defun.c:419
-msgid "Instance Variable"
-msgstr "Instance Variable"
-
-#: makeinfo/defun.c:423
-msgid "Method"
-msgstr "Method"
-
-#: makeinfo/defun.c:499 makeinfo/defun.c:504 makeinfo/defun.c:544
-#: makeinfo/defun.c:643 makeinfo/xml.c:2135
-msgid "of"
-msgstr "of"
-
-#: makeinfo/defun.c:508 makeinfo/defun.c:512 makeinfo/defun.c:516
-#: makeinfo/defun.c:550 makeinfo/defun.c:649 makeinfo/xml.c:2140
-msgid "on"
-msgstr "on"
 
 #: makeinfo/defun.c:711
 #, fuzzy, c-format
@@ -1961,9 +2106,8 @@ msgstr ""
 msgid "Requested float type `%s' not previously used"
 msgstr ""
 
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:924
-#: makeinfo/index.c:930 makeinfo/xref.c:133 makeinfo/xref.c:170
-#: makeinfo/xref.c:205
+#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:948
+#: makeinfo/index.c:954
 msgid "See "
 msgstr "See "
 
@@ -1985,7 +2129,7 @@ msgstr "הקסיפל ץוחמ םיילוש תרעה"
 msgid "Footnotes inside footnotes are not allowed"
 msgstr "םיילוש תורעה ךותב םיילוש תורעהב הכימת ןיא"
 
-#: makeinfo/footnote.c:301 makeinfo/index.c:189
+#: makeinfo/footnote.c:301 makeinfo/index.c:187
 msgid "Footnotes"
 msgstr "םיילוש תורעה"
 
@@ -1999,10 +2143,6 @@ msgstr ""
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:203
-msgid "Untitled"
-msgstr "תרתוכ אלל"
-
 #: makeinfo/html.c:421
 msgid "[unexpected] no html tag to pop"
 msgstr ""
@@ -2012,46 +2152,46 @@ msgstr ""
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "`%s' :יוגש (node) הקסיפ םש"
 
-#: makeinfo/index.c:169
+#: makeinfo/index.c:167
 #, c-format
 msgid "Unknown index `%s'"
 msgstr "`%s' רכומ-יתלב סקדניא"
 
-#: makeinfo/index.c:234
+#: makeinfo/index.c:232
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
 msgstr "`%s' סקדניא טירפב `:' ללגב לשכיי Info"
 
-#: makeinfo/index.c:412
+#: makeinfo/index.c:410
 #, c-format
 msgid "Index `%s' already exists"
 msgstr "רדגומ רבכ `%s' סקדניא"
 
-#: makeinfo/index.c:455
+#: makeinfo/index.c:453
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "רכומ-יתלב סקדניא וניה @synindex-ב `%s' וא `%s'"
 
-#: makeinfo/index.c:661
+#: makeinfo/index.c:676
 msgid "(line )"
 msgstr ""
 
-#: makeinfo/index.c:669
+#: makeinfo/index.c:684
 #, c-format
 msgid "(line %*d)"
 msgstr ""
 
-#: makeinfo/index.c:750
+#: makeinfo/index.c:764
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex-ב `%s' רכומ-יתלב סקדניא"
 
-#: makeinfo/index.c:819
+#: makeinfo/index.c:833
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "הקסיפ לכל ץוחמ רדגומ `%s' סקדניא טירפ"
 
-#: makeinfo/index.c:822 makeinfo/index.c:858
+#: makeinfo/index.c:836 makeinfo/index.c:872
 msgid "(outside of any node)"
 msgstr "(הקסיפ לכל ץוחמ)"
 
@@ -2072,124 +2212,124 @@ msgstr "@enumerate-ב תינסחמ תשילג"
 msgid "lettering overflow, restarting at %c"
 msgstr "%c-ב שדחמ ליחתמ ,ולצונ תויתואה לכ"
 
-#: makeinfo/insertion.c:635
+#: makeinfo/insertion.c:639
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s תארוהב %citem רובע בוציע תטיש :טנמוגרא שרדנ"
 
-#: makeinfo/insertion.c:723
+#: makeinfo/insertion.c:727
 #, c-format
 msgid "%cfloat environments cannot be nested"
 msgstr ""
 
-#: makeinfo/insertion.c:977
+#: makeinfo/insertion.c:981
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`%s' אצמנ םלוא ,`%s' ל\"צ `@end' ירחא"
 
-#: makeinfo/insertion.c:1345
+#: makeinfo/insertion.c:1349
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "םאות `%cend %s' רסח"
 
-#: makeinfo/insertion.c:1614
+#: makeinfo/insertion.c:1618
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "הרפס וא תוא שרוד %s"
 
-#: makeinfo/insertion.c:1707
+#: makeinfo/insertion.c:1711
 msgid "end of file inside verbatim block"
 msgstr "verbatim ךותב ץבוק ףוס"
 
-#: makeinfo/insertion.c:1931
+#: makeinfo/insertion.c:1935
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:1967
+#: makeinfo/insertion.c:1971
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "`Top' תקסיפ רצוי ,הנושארה הקסיפה ינפל אצמנ @menu"
 
-#: makeinfo/insertion.c:1968
+#: makeinfo/insertion.c:1972
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "?@ifinfo םוקמב @ifnottex-ב תפקומ תויהל התיה הכירצ @top תקסיפ יכ ןכתייה"
 
-#: makeinfo/insertion.c:1980
+#: makeinfo/insertion.c:1984
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "`Top' תקסיפ רצוי ,הנושארה הקסיפה ינפל אצמנ @detailmenu"
 
-#: makeinfo/insertion.c:2036
+#: makeinfo/insertion.c:2040
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: makeinfo/insertion.c:2050
+#: makeinfo/insertion.c:2054
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2081
+#: makeinfo/insertion.c:2085
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "גוז-ןב ול ןיאש `%c%s'"
 
-#: makeinfo/insertion.c:2086
+#: makeinfo/insertion.c:2090
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "וירחא אוביש והשמ ךירצ `%c%s'"
 
-#: makeinfo/insertion.c:2092
+#: makeinfo/insertion.c:2096
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "`%s'-ל טנמוגראכ םיאתמ וניא `%s'-ש םושמ `%s'-ב יתשמתשה"
 
-#: makeinfo/insertion.c:2189
+#: makeinfo/insertion.c:2193
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2198
+#: makeinfo/insertion.c:2202
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "`%s' ךותב @itemx-ל תועמשמ ןיא"
 
-#: makeinfo/insertion.c:2372
+#: makeinfo/insertion.c:2376
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "הסנכה קולב לכל ץוחמ %c%s אצמנ"
 
-#: makeinfo/lang.c:957
+#: makeinfo/lang.c:1218
 #, c-format
 msgid "no default territory known for language `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:1020
+#: makeinfo/lang.c:1281
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "ISO 639 י\"ע םירכומה ןושלה ינמיסמ דחא וניא %s"
 
-#: makeinfo/lang.c:1110
+#: makeinfo/lang.c:1399
 #, fuzzy, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "`%s' רכומ-יתלב דודיק םש"
 
-#: makeinfo/lang.c:1118
+#: makeinfo/lang.c:1407
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "ךמתנ וניא `%s' דודיק ,םירעטצמ"
 
-#: makeinfo/lang.c:1170
+#: makeinfo/lang.c:1492
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "`%s' יוגש דדוקמ ות"
 
-#: makeinfo/lang.c:1478
+#: makeinfo/lang.c:1800
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "`j' וא `i' תויהל בייח רשא ,%c%s לש טנמוגרא תויהל םיאתמ וניא `%c'"
 
-#: makeinfo/lang.c:1482
+#: makeinfo/lang.c:1804
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "טנמוגראכ `j' וא `i' דיחי ות לבקמ %c%s"
@@ -2243,7 +2383,7 @@ msgstr ".םיידי יתמרה  !תאיגש ידמ רתוי\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: warning: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2295
 #, c-format
 msgid "Misplaced %c"
 msgstr "ומוקמב וניאש %c"
@@ -2308,8 +2448,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "General output options:\n"
-"  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
-"                              ignoring any @setfilename.\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
 "      --no-headers            suppress node separators, Node: lines, and "
 "menus\n"
 "                                from Info output (thus producing plain "
@@ -2317,10 +2457,11 @@ msgid ""
 "                                or from HTML (thus producing shorter "
 "output);\n"
 "                                also, write to standard output by default.\n"
-"      --no-split              suppress splitting of Info or HTML output,\n"
-"                              generate only one output file.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (directory if split HTML),\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
 msgstr ""
 "                                                       :םייללכ טלפ ינייפאמ\n"
 "       ,FILE ץבוקל ורקאמ תבחרה רחאל רוקמ בותכ  -E, --macro-expand FILE\n"
@@ -2513,7 +2654,7 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
+#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4119
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
@@ -2523,110 +2664,105 @@ msgstr ""
 msgid "Expected `%s'"
 msgstr "`%s' יופצ היה ןאכ"
 
-#: makeinfo/makeinfo.c:1498
+#: makeinfo/makeinfo.c:1496
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "`%s' היקית תריציב (%s) הלקת"
 
-#: makeinfo/makeinfo.c:1544
+#: makeinfo/makeinfo.c:1542
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "`%s' אצמנ אל `%s' ץבוקב"
 
-#: makeinfo/makeinfo.c:1624
+#: makeinfo/makeinfo.c:1622
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr "%s: .םשל ןווכמ טלפש םושמ וטמשוי ינקת טלפ ץורעל ורקאמ תובחרה\n"
 
-#: makeinfo/makeinfo.c:1657
+#: makeinfo/makeinfo.c:1652
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr ".%s טמרופב `%s'-ל `%s' ץבוק דבעמ\n"
 
-#: makeinfo/makeinfo.c:1721
+#: makeinfo/makeinfo.c:1719
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s: .ורמשל --force-ב שמתשה ;תולקת בקע קחמיי `%s' ורקאמ תובחרה ץבוק\n"
 
-#: makeinfo/makeinfo.c:1776
+#: makeinfo/makeinfo.c:1774
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s: .ורמשל --force-ב שמתשה ;תולקת בקע קחמיי `%s' טלפ ץבוק\n"
 
-#: makeinfo/makeinfo.c:2070
+#: makeinfo/makeinfo.c:2068
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "`%s' תרכומ-יתלב הארוה"
 
-#: makeinfo/makeinfo.c:2092
+#: makeinfo/makeinfo.c:2090
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "םילסלוסמ םיירגוסב ךרוצ שי ,@%s-ל טנמוגרא היהת הארוהש ידכ"
 
-#: makeinfo/makeinfo.c:2351
+#: makeinfo/makeinfo.c:2349
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "`{...}'-ל הפיצ %c%s"
 
-#: makeinfo/makeinfo.c:2364
+#: makeinfo/makeinfo.c:2362
 msgid "Unmatched }"
 msgstr "גוז-ןב ול ןיאש }"
 
-#: makeinfo/makeinfo.c:2412
+#: makeinfo/makeinfo.c:2410
 msgid "NO_NAME!"
 msgstr "NO_NAME!"
 
-#: makeinfo/makeinfo.c:2433
+#: makeinfo/makeinfo.c:2431
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s-ל רסח ינמי רגוס"
 
-#: makeinfo/makeinfo.c:2611
-#, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "This is %s, produced by makeinfo version %s from %s.\n"
-
-#: makeinfo/makeinfo.c:3436
+#: makeinfo/makeinfo.c:3434
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "(HTML רובע שרדנ) @image רובע `%s' ץבוק תאירקב (%s) הלקת"
 
-#: makeinfo/makeinfo.c:3442
+#: makeinfo/makeinfo.c:3440
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "`%s' אצמנ אל `%s' ץבוקב"
 
-#: makeinfo/makeinfo.c:3578
+#: makeinfo/makeinfo.c:3576
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "(טסכט רובע שרדנ) @image רובע `%s' ץבוק תאירקב (%s) הלקת"
 
-#: makeinfo/makeinfo.c:3587
+#: makeinfo/makeinfo.c:3585
 msgid "@image missing filename argument"
 msgstr "@image תארוהב רסח ץבוק םש"
 
-#: makeinfo/makeinfo.c:3805
+#: makeinfo/makeinfo.c:3803
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3806
+#: makeinfo/makeinfo.c:3804
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{No value for `%s'}"
 
-#: makeinfo/makeinfo.c:3858
+#: makeinfo/makeinfo.c:3856
 #, c-format
 msgid "%c%s requires a name"
 msgstr "םש שרוד %c%s"
 
-#: makeinfo/makeinfo.c:3964
+#: makeinfo/makeinfo.c:3962
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "םאות @end %s ינפל רמגנ טלק ץבוק"
 
-#: makeinfo/makeinfo.c:4213
+#: makeinfo/makeinfo.c:4211
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "בחרוי אל ;וביחרהל ידכמ ךורא `%.40s...'"
@@ -2675,117 +2811,89 @@ msgstr "`%s' הקסיפ תרדגה רבכ %d הרושב"
 msgid "Formatting node %s...\n"
 msgstr "...%s הקסיפ דבעמ תעכ\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:714
 #, fuzzy, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "`%s' הקסיפב (%c%s ןוגכ) קוסיפ תארוהב ךרוצ שי"
 
-#: makeinfo/node.c:879
+#: makeinfo/node.c:878
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "הקסיפ םש אלל `%c%s' הארוה"
 
-#: makeinfo/node.c:920 makeinfo/node.c:1161
+#: makeinfo/node.c:919 makeinfo/node.c:1160
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "ץבוק םש ותואל תומגרותמ `%s' רושיק תיותו `%s' הקסיפ"
 
-#: makeinfo/node.c:923
+#: makeinfo/node.c:922
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "ולעפי אל וז תיות לא םירושיק ;עצובת אל וז @anchor תארוה"
 
-#: makeinfo/node.c:925 makeinfo/node.c:1164
+#: makeinfo/node.c:924 makeinfo/node.c:1163
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "`--no-split' ןייפאמב שמתשה וא תיותה םש הנש"
 
-#: makeinfo/node.c:955
+#: makeinfo/node.c:954
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "`%s' קלוחמ HTML ץבוק םויסב היופצ-יתלב תזורחמ"
 
-#: makeinfo/node.c:991
-msgid "Next:"
-msgstr "Next:"
-
-#: makeinfo/node.c:1007
-msgid "Previous:"
-msgstr "Previous:"
-
-#: makeinfo/node.c:1021
-msgid "Up:"
-msgstr "Up:"
-
-#: makeinfo/node.c:1158
+#: makeinfo/node.c:1157
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "ץבוק םש ותואל תומגרותמ `%s-ו `%s' רושיק תויות"
 
-#: makeinfo/node.c:1163
+#: makeinfo/node.c:1162
 msgid "@anchor command ignored; references to it will not work"
 msgstr "ולעפי אל וז תיות לא םירושיק ;עצובת אל @anchor תארוה"
 
-#: makeinfo/node.c:1360
+#: makeinfo/node.c:1359
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%sב `%s' תמייק הנניאש הקסיפל היינפה"
 
-#: makeinfo/node.c:1376
-msgid "Menu"
-msgstr "טירפת"
-
-#: makeinfo/node.c:1378
-msgid "Cross"
-msgstr "רושיק"
-
-#: makeinfo/node.c:1460
+#: makeinfo/node.c:1459
 #, fuzzy, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr "הרזח העיבצמ הניא `%s' הקסיפ לש Next הדשב הקסיפה"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "יוגש Prev הדש תלעב איה (%s) וז הקסיפ"
 
-#: makeinfo/node.c:1475
-msgid "Prev"
-msgstr "Prev הדש"
-
-#: makeinfo/node.c:1518
+#: makeinfo/node.c:1517
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "הרזח העיבצמ הניא `%s' הקסיפ לש Prev הדשב הקסיפה"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "יוגש Next הדש תלעב איה (%s) וז הקסיפ"
 
-#: makeinfo/node.c:1534
+#: makeinfo/node.c:1533
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1537
-msgid "Up"
-msgstr "Up הדש"
-
-#: makeinfo/node.c:1603
+#: makeinfo/node.c:1602
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "הרזחב עיבצמש טירפת ףיעס ןיא לבא ,`%s' לע עיבצמ `%s' הקסיפ לש Up הדש"
 
-#: makeinfo/node.c:1635
+#: makeinfo/node.c:1634
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "רושיק ףא ןיא `%s' הקסיפל"
 
-#: makeinfo/node.c:1725
+#: makeinfo/node.c:1724
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1729
+#: makeinfo/node.c:1728
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "`%s' היקית תריציב (%s) הלקת"
@@ -2825,29 +2933,27 @@ msgstr "%ctop תקסיפ לש םוקמה והז"
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "ימצעב @node יתפסוה ,%cnode ינפל %ctop-ב השמתשה %s הקסיפ"
 
-#: makeinfo/xml.c:1654
+#: makeinfo/xml.c:1669
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image רובע `%s' ץבוק תאירקב (%s) הלקת"
 
-#: makeinfo/xml.c:1999
+#: makeinfo/xml.c:2014
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""
 
+#: makeinfo/xml.c:2150
+msgid "of"
+msgstr "of"
+
+#: makeinfo/xml.c:2155
+msgid "on"
+msgstr "on"
+
 #: makeinfo/xref.c:127
 msgid "First argument to cross-reference may not be empty"
 msgstr "קיר תויהל לוכי וניא רושיק לש ןושאר טנמוגרא"
-
-#: makeinfo/xref.c:133 makeinfo/xref.c:170 makeinfo/xref.c:205
-#: makeinfo/xref.c:459
-msgid "see "
-msgstr "see "
-
-#: makeinfo/xref.c:157
-#, c-format
-msgid "See section ``%s'' in "
-msgstr ""
 
 #: makeinfo/xref.c:252
 #, c-format
@@ -2871,195 +2977,6 @@ msgstr ".םירושיק ןיא וז הקסיפב"
 #: makeinfo/xref.c:435
 msgid "First argument to @inforef may not be empty"
 msgstr "קיר תויהל לוכי וניא @inforef לש ןושאר טנמוגרא"
-
-#: util/install-info.c:170
-#, c-format
-msgid "%s: warning: "
-msgstr "%s: warning: "
-
-#: util/install-info.c:219
-#, c-format
-msgid " for %s"
-msgstr " for %s"
-
-#: util/install-info.c:444
-#, c-format
-msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr ".םינייפאמ לש האלמ המישר תלבקל `%s --help' הסנ\n"
-
-#: util/install-info.c:452
-#, fuzzy, c-format
-msgid ""
-"Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
-"\n"
-"Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
-"\n"
-"Options:\n"
-" --debug           report what is being done.\n"
-" --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
-"                     don't insert any new entries.\n"
-" --dir-file=NAME   specify file name of Info directory file.\n"
-"                     This is equivalent to using the DIR-FILE argument.\n"
-" --entry=TEXT      insert TEXT as an Info directory entry.\n"
-"                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
-"                     If you don't specify any entries, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --help            display this help and exit.\n"
-" --info-file=FILE  specify Info file to install in the directory.\n"
-"                     This is equivalent to using the INFO-FILE argument.\n"
-" --info-dir=DIR    same as --dir-file=DIR/dir.\n"
-" --item=TEXT       same as --entry TEXT.\n"
-"                     An Info directory entry is actually a menu item.\n"
-" --quiet           suppress warnings.\n"
-" --remove          same as --delete.\n"
-" --remove-exactly  only remove if the info file name matches exactly;\n"
-"                     .info and/or .gz suffixes are not ignored.\n"
-" --section=SEC     put this file's entries in section SEC of the directory.\n"
-"                     If you specify more than one section, all the entries\n"
-"                     are added in each of the sections.\n"
-"                     If you don't specify any sections, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --section-regex=R if an entry is added to a section that does not exist,\n"
-"                     look for a section matching basic regular expression R\n"
-"                     (and ignoring case) before starting a new section.\n"
-" --test            suppress updating of DIR-FILE.\n"
-" --silent          suppress warnings.\n"
-" --version         display version information and exit.\n"
-msgstr ""
-"          %s [OPTION]... [INFO-FILE [DIR-FILE]] :שומישה ןפוא\n"
-"\n"
-"                                                                :םינייפאמ\n"
-"  ;INFO-FILE רובע םימייק טירפת יפיעס DIR-FILE-מ קחמ   --delete\n"
-"                      .םישדח טירפת יפיעס ףיסות לא\n"
-"                   .ישאר Info טירפת לש ץבוק םש ןייצ   --dir-file=NAME\n"
-"            .DIR-FILE טנמוגראב שומישל ךרע-הווש הז\n"
-"                  .Info לש טירפת ףיעסכ TEXT-ב שמתשה   --entry=TEXT\n"
-"    Info טירפת ףיעס תרוש לש הרוצב תויהל ךירצ TEXT\n"
-"     .םיחוורב תוליחתמה תורוש המכ תפסותל תורשפא םע\n"
-"     םיפיעסה לכ ,תחא םעפמ רתוי --entry-ב שמתשת םא\n"
-"                                     .ופסותי וללה\n"
-"    ךותמ ובשוחי טירפת יפיעס ,--entry-ב שומיש ןיאב\n"
-"                         .ומצע Info ץבוק לש ןכותה\n"
-"                       .תינכתהמ אצו אז הרזע ךסמ גצה   --help\n"
-"                  .ישארה טירפתב הנקתהל ץבוק םש ןייצ   --info-file=FILE\n"
-"           .INFO-FILE טנמוגראב שומישל ךרע-הווש הז\n"
-"                   .\"--dir-file=DIR/dir\"-ל ךרע-הווש   --info-dir=DIR\n"
-"                         .\"--entry=TEXT\"-ל ךרע-הווש   --item=TEXT\n"
-"        .טירפת לש ףיעס השעמל אוה Info ךירדמב ףיעס\n"
-"                              .הרהזא תואדוה גיצת לא   --quiet\n"
-"                             .\"--delete\"-ל ךרע-הווש   --remove\n"
-"  .ישארה טירפתה לש SEC קלחב הז ץבוק ךותמ םיפיעס םקמ   --section=SEC\n"
-" טירפתה יפיעס ,תחא םעפמ רתוי --section-ב שמתשת םא\n"
-"        .תנייצש ישארה טירפתה יקלחמ דחא לכל ופסותי\n"
-"        עבקיי טירפתב קלחה ,--section-ב שומיש ןיאב\n"
-"                    .ומצע Info ץבוק לש ןכותה ךותמ\n"
-"                      .אצו תינכתה תסריג לע עדימ גצה   --version\n"
-"\n"
-
-#: util/install-info.c:518
-#, fuzzy, c-format
-msgid ""
-"This is the file .../info/dir, which contains the\n"
-"topmost node of the Info hierarchy, called (dir)Top.\n"
-"The first time you invoke Info you start off looking at this node.\n"
-"\n"
-"%s\tThis is the top of the INFO tree\n"
-"\n"
-"  This (the Directory node) gives a menu of major topics.\n"
-"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
-"  \"h\" gives a primer for first-timers,\n"
-"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
-"\n"
-"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
-"  to select it.\n"
-"\n"
-"%s\n"
-msgstr ""
-"This is the file .../info/dir, which contains the\n"
-"topmost node of the Info hierarchy, called (dir)Top.\n"
-"The first time you invoke Info you start off looking at this node.\n"
-"\n"
-"%s\tThis is the top of the INFO tree\n"
-"\n"
-"  This (the Directory node) gives a menu of major topics.\n"
-"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
-"  \"h\" gives a primer for first-timers,\n"
-"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
-"\n"
-"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
-"  to select it.\n"
-"\n"
-"* Menu:\n"
-
-#: util/install-info.c:543
-#, c-format
-msgid "%s: could not read (%s) and could not create (%s)\n"
-msgstr "%s ץבוק לש (%s) האירקב ןהו (%s) הריציב ןה הלקת\n"
-
-#: util/install-info.c:630
-#, c-format
-msgid "%s: empty file"
-msgstr "קיר וניה %s ץבוק"
-
-#: util/install-info.c:943 util/install-info.c:983
-msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
-msgstr "םאות END-INFO-DIR-ENTRY אלל START-INFO-DIR-ENTRY"
-
-#: util/install-info.c:978
-msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
-msgstr "םאות START-INFO-DIR-ENTRY אלל END-INFO-DIR-ENTRY"
-
-#: util/install-info.c:1225 util/install-info.c:1235
-#, c-format
-msgid "%s: already have dir file: %s\n"
-msgstr ""
-
-#: util/install-info.c:1274
-#, c-format
-msgid "%s: Specify the Info file only once.\n"
-msgstr ".דבלב תחא םעפ %s-ל Info ץבוק ןייצל ןתינ\n"
-
-#: util/install-info.c:1297
-#, c-format
-msgid "Extra regular expression specified, ignoring `%s'"
-msgstr ""
-
-#: util/install-info.c:1308
-#, c-format
-msgid "Error in regular expression `%s': %s"
-msgstr ""
-
-#: util/install-info.c:1353
-#, c-format
-msgid "excess command line argument `%s'"
-msgstr "`%s' רתוימ טנמוגרא"
-
-#: util/install-info.c:1357
-msgid "No input file specified; try --help for more information."
-msgstr ".הרזע תלבקל --help הסנ ;טלק ץבוק ןויצ ןיא"
-
-#: util/install-info.c:1360
-msgid "No dir file specified; try --help for more information."
-msgstr ".הרזע תלבקל --help הסנ ;dir ץבוק ןויצ ןיא"
-
-#: util/install-info.c:1384
-#, c-format
-msgid "no info dir entry in `%s'"
-msgstr "`%s'-ב ישאר טירפת יפיעס ןיא"
-
-#: util/install-info.c:1525
-#, c-format
-msgid "menu item `%s' already exists, for file `%s'"
-msgstr "`%s' ףיעס ישארה טירפתב םייק רבכ `%s' ץבוקל"
-
-#: util/install-info.c:1548
-#, c-format
-msgid "no entries found for `%s'; nothing deleted"
-msgstr "קחמנ אל םולכ ;`%s' רובע טירפת יפיעס ואצמנ אל"
 
 #: util/texindex.c:223
 msgid "display this help and exit"
@@ -3116,6 +3033,282 @@ msgstr "דומע רפסמ ןיא %s-ב"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "            %s [םינייפאמ]... [...טירפתמ םיפיעס] :שומיש ןפוא\n"
+#~ "\n"
+#~ "                        .Info טמרופב םיכורעה דועית יצבקב ןייע\n"
+#~ "\n"
+#~ "                                                                :"
+#~ "םינייפאמ\n"
+#~ "     .שמתשמל ךירדמ לכ לש םיסקדניאה לכב SUBJECT שפח      --"
+#~ "apropos=SUBJECT\n"
+#~ "                 .INFOPATH-ב המישרל DIR היקית ףסוה  -d, --directory=DIR\n"
+#~ "          .FILENAME ץבוקב םישקמה תוציחל לכ תא םושר      --"
+#~ "dribble=FILENAME\n"
+#~ "               .FILENAME ץבוקב רשא שמתשמ ךירדמ גצה  -f, --file=FILENAME\n"
+#~ "                      .תינכתהמ אצו הז הרזע ךסמ גצה  -h, --help\n"
+#~ ".הילא ליבומ סקדניאהש הקסיפ גצהו סקדניאב תזורחמ שפח      --index-"
+#~ "search=STRING\n"
+#~ "          .ןושאר Info ץבוק ךותמ NODENAME הקסיפ גצה  -n, --node=NODENAME\n"
+#~ "           .FILENAME ץבוק ךותל ורחבנש תואקסיפ בותכ  -o, --"
+#~ "output=FILENAME\n"
+#~ "              .man יפדמ ANSI לש הרקבה יוות קלסת לא  -R, --raw-escapes\n"
+#~ "                 .FILENAME ץבוקמ םישקמ תוציחל רזחש      --"
+#~ "restore=FILENAME\n"
+#~ "         .הדוקפה תרוש לש םינייפאמ תטרפמה הקסיפ גצה  -O, --show-options, --"
+#~ "usage\n"
+#~ "%s   .טלפל ןלוכ בותכו יביסרוקר רדסב תואקסיפ ןיב רובע      --subnodes\n"
+#~ "            .Less וא vi-ל המודב תודוקפל םישקמ רושק      --vi-keys\n"
+#~ "                    .אצו תינכותה תסריג לע עדימ גצה      --version\n"
+#~ "\n"
+#~ ";ליחתהל שי ונממש טירפתמ ףיעס ןייצמ ,םייק אוה םא ,ןייפאמ וניאש ןושאר "
+#~ "טנמוגרא\n"
+#~ "                  .INFOPATH תמישר ךרואל `dir' יצבק לכב הז ףיעס שפחת "
+#~ "תינכותה\n"
+#~ "     .`dir' יצבק לכמ בכרומה טירפת גיצת info ,ןייפאמ וניאש טנמוגרא ףא ןיא "
+#~ "םא\n"
+#~ "                טירפתהמ לחה ,טירפת יפיעס תומשכ ושרופי ןושארל רבעמ "
+#~ "םיטנמוגרא\n"
+#~ "                                                     .הגצוהש הנושארה "
+#~ "הקסיפב\n"
+#~ "\n"
+#~ "                                                                   :"
+#~ "תואמגוד\n"
+#~ "                          dir ץבוקמ בא-טירפת גצה  info\n"
+#~ "       emacs טירפ עיבצמ הילא הקסיפל ךל בא-טירפתמ  info emacs\n"
+#~ "buffers טירפל ךשמה םשמו emacs ףיעסל ךל בא-טירפתמ  info emacs buffers\n"
+#~ "   emacs לש הדוקפה תרוש ינייפאמ תראתמה הקסיפ גצה  info --show-options "
+#~ "emacs\n"
+#~ "    dir טירפת ךרד רובעל ילבמ ./foo.info ץבוק גצה  info -f ./foo.info\n"
+#~ "\n"
+#~ "                           ,bug-texinfo@gnu.org-ל הלקת יחוויד חולשל אנ\n"
+#~ "                   .help-texinfo@gnu.org-ל ןוידל םיאשונו תויללכ תולאשו\n"
+
+#~ msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+#~ msgstr "\\%-10[scroll-forward]  המידק דחא ףד לולג\n"
+
+#~ msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+#~ msgstr "\\%-10[scroll-backward]  הרוחא דחא ףד לולג\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr "              .תרחא הקסיפל רבעמל תמרוג טירפתמ הריחב\n"
+
+#~ msgid "  %-10s  Move to node specified by name.\n"
+#~ msgstr "  %-10s  המש י\"פע הקסיפל רובע\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              .(FILENAME)NODENAME-ב ומכ הקסיפה םשמ קלחכ ץבוק םש ןייצל "
+#~ "ןתינ\n"
+
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  הז Info ץבוקב הרוחאו ןאכמ תזורחמ שפח\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              .תזורחמה האצמנ הב הקסיפל רובעו\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "...האבה הקסיפל רבוע"
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "...טירפתהמ ןושאר ףיעס רחוב"
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "...האבה הקסיפב רחוב"
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr ".האבה הקסיפה רחוב זאו ,תואקסיפה ץעב תו/המר %d הלוע"
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr ".הז ןולחב תמדוק הקסיפל רבוע"
+
+#~ msgid "Moving Up in this window."
+#~ msgstr ".הז ןולחב םאה תקספל רבוע"
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr ".תמדוק הקסיפ לש טירפתב ןורחא ףיעסל רבוע"
+
+#~ msgid " "
+#~ msgstr " "
+
+# It would be hilarious to translate those...
+#~ msgid "Function"
+#~ msgstr "Function"
+
+#~ msgid "Macro"
+#~ msgstr "Macro"
+
+#~ msgid "Special Form"
+#~ msgstr "Special Form"
+
+#~ msgid "Variable"
+#~ msgstr "Variable"
+
+#~ msgid "User Option"
+#~ msgstr "User Option"
+
+#~ msgid "Instance Variable"
+#~ msgstr "Instance Variable"
+
+#~ msgid "Method"
+#~ msgstr "Method"
+
+#~ msgid "Untitled"
+#~ msgstr "תרתוכ אלל"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr "This is %s, produced by makeinfo version %s from %s.\n"
+
+#~ msgid "Next:"
+#~ msgstr "Next:"
+
+#~ msgid "Previous:"
+#~ msgstr "Previous:"
+
+#~ msgid "Up:"
+#~ msgstr "Up:"
+
+#~ msgid "Menu"
+#~ msgstr "טירפת"
+
+#~ msgid "Cross"
+#~ msgstr "רושיק"
+
+#~ msgid "Prev"
+#~ msgstr "Prev הדש"
+
+#~ msgid "Up"
+#~ msgstr "Up הדש"
+
+#~ msgid "see "
+#~ msgstr "see "
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --debug           report what is being done.\n"
+#~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
+#~ "                     don't insert any new entries.\n"
+#~ " --dir-file=NAME   specify file name of Info directory file.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
+#~ "                     TEXT should have the form of an Info menu item line\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --help            display this help and exit.\n"
+#~ " --info-file=FILE  specify Info file to install in the directory.\n"
+#~ "                     This is equivalent to using the INFO-FILE argument.\n"
+#~ " --info-dir=DIR    same as --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       same as --entry TEXT.\n"
+#~ "                     An Info directory entry is actually a menu item.\n"
+#~ " --quiet           suppress warnings.\n"
+#~ " --remove          same as --delete.\n"
+#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
+#~ "                     .info and/or .gz suffixes are not ignored.\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                     are added in each of the sections.\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --section-regex=R if an entry is added to a section that does not "
+#~ "exist,\n"
+#~ "                     look for a section matching basic regular expression "
+#~ "R\n"
+#~ "                     (and ignoring case) before starting a new section.\n"
+#~ " --test            suppress updating of DIR-FILE.\n"
+#~ " --silent          suppress warnings.\n"
+#~ " --version         display version information and exit.\n"
+#~ msgstr ""
+#~ "          %s [OPTION]... [INFO-FILE [DIR-FILE]] :שומישה ןפוא\n"
+#~ "\n"
+#~ "                                                                :"
+#~ "םינייפאמ\n"
+#~ "  ;INFO-FILE רובע םימייק טירפת יפיעס DIR-FILE-מ קחמ   --delete\n"
+#~ "                      .םישדח טירפת יפיעס ףיסות לא\n"
+#~ "                   .ישאר Info טירפת לש ץבוק םש ןייצ   --dir-file=NAME\n"
+#~ "            .DIR-FILE טנמוגראב שומישל ךרע-הווש הז\n"
+#~ "                  .Info לש טירפת ףיעסכ TEXT-ב שמתשה   --entry=TEXT\n"
+#~ "    Info טירפת ףיעס תרוש לש הרוצב תויהל ךירצ TEXT\n"
+#~ "     .םיחוורב תוליחתמה תורוש המכ תפסותל תורשפא םע\n"
+#~ "     םיפיעסה לכ ,תחא םעפמ רתוי --entry-ב שמתשת םא\n"
+#~ "                                     .ופסותי וללה\n"
+#~ "    ךותמ ובשוחי טירפת יפיעס ,--entry-ב שומיש ןיאב\n"
+#~ "                         .ומצע Info ץבוק לש ןכותה\n"
+#~ "                       .תינכתהמ אצו אז הרזע ךסמ גצה   --help\n"
+#~ "                  .ישארה טירפתב הנקתהל ץבוק םש ןייצ   --info-file=FILE\n"
+#~ "           .INFO-FILE טנמוגראב שומישל ךרע-הווש הז\n"
+#~ "                   .\"--dir-file=DIR/dir\"-ל ךרע-הווש   --info-dir=DIR\n"
+#~ "                         .\"--entry=TEXT\"-ל ךרע-הווש   --item=TEXT\n"
+#~ "        .טירפת לש ףיעס השעמל אוה Info ךירדמב ףיעס\n"
+#~ "                              .הרהזא תואדוה גיצת לא   --quiet\n"
+#~ "                             .\"--delete\"-ל ךרע-הווש   --remove\n"
+#~ "  .ישארה טירפתה לש SEC קלחב הז ץבוק ךותמ םיפיעס םקמ   --section=SEC\n"
+#~ " טירפתה יפיעס ,תחא םעפמ רתוי --section-ב שמתשת םא\n"
+#~ "        .תנייצש ישארה טירפתה יקלחמ דחא לכל ופסותי\n"
+#~ "        עבקיי טירפתב קלחה ,--section-ב שומיש ןיאב\n"
+#~ "                    .ומצע Info ץבוק לש ןכותה ךותמ\n"
+#~ "                      .אצו תינכתה תסריג לע עדימ גצה   --version\n"
+#~ "\n"
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "`%s' ףיעס ישארה טירפתב םייק רבכ `%s' ץבוקל"
 
 #~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 #~ msgstr "\\%-10[menu-digit]  תיחכונה הקסיפה טירפתב יעישת דע ןושאר ףיעס רחב\n"
@@ -3203,9 +3396,3 @@ msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 
 #~ msgid "`%s' has no Up field"
 #~ msgstr "Up הדש ןיא `%s'-ל"
-
-#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
-#~ msgstr "\\%-10[scroll-forward]  המידק תחא הרוש ןמס זזה\n"
-
-#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
-#~ msgstr "\\%-10[scroll-backward]  הרוחא דחא ףד לולג\n"
