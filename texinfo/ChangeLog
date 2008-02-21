@@ -1,3 +1,10 @@
+2008-02-21  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.11.90.
+
+	* install-info/tests/ii-0041-test,
+	* install-info/tests/ii-0041-test: ensure target dir file is rw.
+
 2008-02-19  Karl Berry  <karl@gnu.org>
 
 	* info/infodoc.c (info_internal_help_text): rearrangements.
