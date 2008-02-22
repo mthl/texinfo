@@ -1,6 +1,8 @@
 2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de>  (tiny change)
 
 	* configure.ac (--enable-multiplatform): also set libdir.
+	* util/defs.in (PATH): include @abs_builddir@.
+	* util/texi2dvi (usage): consistently escape \$HOME.
 
 2008-02-21  Karl Berry  <karl@gnu.org>
 
