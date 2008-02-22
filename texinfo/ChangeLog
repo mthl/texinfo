@@ -1,3 +1,7 @@
+2008-02-22  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.11.90.
+
 2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de>  (tiny change)
 
 	* configure.ac (--enable-multiplatform): also set libdir.
@@ -5,8 +9,6 @@
 	* util/texi2dvi (usage): consistently escape \$HOME.
 
 2008-02-21  Karl Berry  <karl@gnu.org>
-
-	* pretest 4.11.90.
 
 	* info/infodoc.c (info_internal_help_text): more simplifications.
 	Suggestions from Benno Schulenberg, 21 Feb 2008 23:35:38.
