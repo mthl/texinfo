@@ -43,6 +43,7 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([AC_LIBSOURCES], m4_defn([gl_LIBSOURCES]))
   gl_source_base='gnulib/lib'
   gl_FUNC_ALLOCA
+  gl_FUNC_ARGZ
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
@@ -218,6 +219,8 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/link-warning.h
   lib/alloca.in.h
+  lib/argz.c
+  lib/argz.in.h
   lib/config.charset
   lib/error.c
   lib/error.h
@@ -279,6 +282,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xsetenv.h
   m4/absolute-header.m4
   m4/alloca.m4
+  m4/argz.m4
   m4/codeset.m4
   m4/eealloc.m4
   m4/error.m4
