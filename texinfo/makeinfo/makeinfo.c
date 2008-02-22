@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.116 2008-02-17 19:07:58 karl Exp $
+   $Id: makeinfo.c,v 1.117 2008-02-22 19:18:25 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -784,7 +784,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2007");
+	      "2008");
           xexit (0);
           break;
 

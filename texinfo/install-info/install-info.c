@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.2 2008-01-20 19:45:17 karl Exp $
+   $Id: install-info.c,v 1.3 2008-02-22 19:18:25 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -2062,7 +2062,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2007");
+	      "2008");
           xexit (0);
 
         case 'W':
