@@ -1,3 +1,7 @@
+2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de>  (tiny change)
+
+	* configure.ac (--enable-multiplatform): also set libdir.
+
 2008-02-21  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.90.
