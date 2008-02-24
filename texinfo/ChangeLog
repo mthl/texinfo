@@ -1,3 +1,9 @@
+2008-02-24  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (spec_entry) <text_len>: declare
+	as size_t instead of int, to avoid warning.
+	In report from Juan Manuel Guerrero, 24 Feb 2008 22:06:35.
+
 2008-02-22  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.90.

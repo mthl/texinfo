@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.3 2008-02-22 19:18:25 karl Exp $
+   $Id: install-info.c,v 1.4 2008-02-24 23:27:29 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -77,7 +77,7 @@ struct spec_entry
 {
   struct spec_entry *next;
   char *text;
-  int text_len;
+  size_t text_len;
   /* A pointer to the list of sections to which this entry should be
      added.  */
   struct spec_section *entry_sections;
