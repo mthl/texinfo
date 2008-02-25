@@ -1,4 +1,4 @@
-$Id: TODO,v 1.43 2008-02-21 19:08:24 karl Exp $
+$Id: TODO,v 1.44 2008-02-25 00:21:29 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -146,6 +146,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     http://wiki.linuxfromscratch.org/patches/browser/trunk/texinfo/texinfo-4.8-multibyte-1.patch
     
   - The help message does not report Down/Up for next/prev-line.
+  - When scrolling through the help text, it should stop at the end, not
+    report "No more nodes" and go back to the beginning.
   - It would be nice for h in the help window to quit help.
   - It would be nice to be able to specify a preferred key to report in
     the help message, instead of using the last one set; cf. q vs. C-x C-c.
@@ -165,7 +167,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     Perhaps code from the pinfo viewer can be reused:
     http://zeus.polsl.gliwice.pl/~pborys/.
   - More sample .infokey files, so people can choose without writing their own.
-  - q within help should quit help like C-x 0.
   - Incorporate an X-based viewer, perhaps the old GNU xinfo widget
      (http://www.gnu.org/software/xinfo) or saxinfo
      or tkinfo (http://www.math.ucsb.edu/~boldt/tkinfo/).

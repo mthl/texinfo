@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.18 2008-02-21 23:36:16 karl Exp $
+   $Id: infodoc.c,v 1.19 2008-02-25 00:21:29 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -42,26 +42,22 @@ static char *internal_info_help_node_contents = (char *)NULL;
 #if defined(INFOKEY)
 
 static char *info_internal_help_text[] = {
-  N_("Basic Commands in Info Windows\n\
+  N_("Basic Info command keys\n\
 ******************************\n"),
   "\n",
-  N_("\\%-10[quit-help]  Quit this help.\n"),
+  N_("\\%-10[quit-help]  Close this help window.\n"),
   N_("\\%-10[quit]  Quit Info altogether.\n"),
   N_("\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"),
   "\n",
-  N_("Selecting other nodes:\n\
-----------------------\n"),
-  N_("\\%-10[global-next-node]  Move to the next node in the document.\n"),
-  N_("\\%-10[global-prev-node]  Move to the previous node in the document.\n"),
-  N_("\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"),
-  N_("\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"),
-  N_("\\%-10[up-node]  Move \"up\" from this node.\n"),
-  N_("\\%-10[history-node]  Move to the last node seen in this window.\n"),
-  N_("\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"),
-  N_("\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"),
+  N_("\\%-10[global-next-node]  Go to the next node in the document.\n"),
+  N_("\\%-10[global-prev-node]  Go to the previous node in the document.\n"),
+  N_("\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"),
+  N_("\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"),
+  N_("\\%-10[history-node]  Go back to the last node seen in this window.\n"),
+  N_("\\%-10[up-node]  Go up one level.\n"),
+  N_("\\%-10[top-node]  Go to the top node of this document.\n"),
+  N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
   "\n",
-  N_("Moving within a node:\n\
----------------------\n"),
   N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
   N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
   N_("\\%-10[next-line]  Scroll forward one line.\n"),
@@ -69,8 +65,6 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"),
   N_("\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"),
   "\n",
-  N_("Other commands:\n\
----------------\n"),
   N_("\\%-10[search]  Search forward for a specified string\n\
               and select the node in which the next occurrence is found.\n"),
   N_("\\%-10[search-backward]  Search backward for a specified string\n\
@@ -371,10 +365,6 @@ create_internal_info_help_node (int help_is_only_window_p)
       maybe_free (exec_keys);
 #endif /* NAMED_FUNCTIONS */
 
-      printf_to_message_buffer
-        ("%s", replace_in_documentation
-         ((char *) _("--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"), 0),
-         NULL, NULL);
       node = message_buffer_to_node ();
       internal_info_help_node_contents = node->contents;
     }
@@ -971,7 +961,7 @@ replace_in_documentation (char *string, int help_is_only_window_p)
 
             /* If we have only one window (because the window size was too
                small to split it), we have to quit help by going back one
-               noew in the history list, not deleting the window.  */
+               node in the history list, not deleting the window.  */
               if (strcmp (rep_name, "quit-help") == 0)
                 fun_name = help_is_only_window_p ? "history-node"
                                                  : "delete-window";

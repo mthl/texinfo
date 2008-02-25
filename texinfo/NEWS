@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.162 2008-02-19 14:58:29 karl Exp $
+$Id: NEWS,v 1.163 2008-02-25 00:21:29 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -53,6 +53,7 @@ one of the relevant sections:
   . the PageUp and PageDown keys move through the whole document by
     default, instead of just the current node.
   . the h command shows the basic help, and H starts the Info tutorial.
+  . the newly-bound x command deletes the current window, e.g., within help.
   . the scroll-step variable is set to 1 by default, for smooth scrolling.
   . the cursor-movement-scrolls-p variable is set to 1 by default, so
     link searches look through the whole document.

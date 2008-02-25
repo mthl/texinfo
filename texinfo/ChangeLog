@@ -1,5 +1,11 @@
 2008-02-24  Karl Berry  <karl@gnu.org>
 
+	* info/infomap.c (x): bind to delete_window.
+	* info/infodoc.c (info_internal_help_text): more rearrangements.
+	(create_internal_info_help_node: omit incorrect exiting suggestion
+		at end.
+	Suggestions from Benno Schulenberg, 24 Feb 2008 22:56:44.
+
 	* install-info/install-info.c (munge_old_style_debian_options):
 	avoid use of asprintf, just xmalloc ourselves.
 	In report from Juan Manuel Guerrero, 24 Feb 2008 22:06:35.	

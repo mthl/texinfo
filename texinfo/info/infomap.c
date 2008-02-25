@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.15 2008-02-19 14:58:29 karl Exp $
+   $Id: infomap.c,v 1.16 2008-02-25 00:21:30 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -970,8 +970,9 @@ static unsigned char default_emacs_like_info_keys[] =
         CONTROL('x'), 't', NUL,         A_info_tile_windows,
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
 
-        /* We want help to report q, not C-x C-c.  */
+        /* We want help to report q, not C-x C-c, etc.  */
         'q', NUL,                       A_info_quit,
+        'x', NUL,                       A_info_delete_window,
 
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
@@ -1263,8 +1264,9 @@ static unsigned char default_vi_like_info_keys[] =
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
         CONTROL('x'), ',', NUL,         A_info_next_index_match,
 
-        /* We want help to report q, not C-x C-c.  */
+        /* We want help to report q, not C-x C-c, etc.  */
         'q', NUL,                       A_info_quit,
+        'x', NUL,                       A_info_delete_window,
 
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
