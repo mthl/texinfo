@@ -44,6 +44,8 @@ AC_DEFUN([gl_INIT],
   gl_source_base='gnulib/lib'
   gl_FUNC_ALLOCA
   gl_FUNC_ARGZ
+  gl_ENVIRON
+  gl_UNISTD_MODULE_INDICATOR([environ])
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
@@ -285,6 +287,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/argz.m4
   m4/codeset.m4
   m4/eealloc.m4
+  m4/environ.m4
   m4/error.m4
   m4/exitfail.m4
   m4/extensions.m4
