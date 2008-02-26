@@ -1,4 +1,7 @@
-2008-02-26  Karl Berry  <karl@gnu.org>
+2008-02-26  Brendan O'Dea <bod@debian.org>  (tiny change)
+
+	* util/texi2dvi: slightly reformat usage message for help2man.
+	(sent by peb 26 Feb 2008 12:01:11)
 
 	* install-info/install-info.c (print_help): keep two spaces
 	between option name and description, or help2man can't do a good job.

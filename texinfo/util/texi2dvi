@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.112 2008-02-22 23:35:06 karl Exp $
+# $Id: texi2dvi,v 1.113 2008-02-26 17:09:39 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.112 $'
+rcs_revision='$Revision: 1.113 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -105,25 +105,25 @@ can also be set using the environment variable TEXI2DVI_BUILD_MODE.
 
 Valid MODEs are:
   \`local'      compile in the current directory, leaving all the auxiliary
-		 files around.  This is the traditional TeX use.
+	       files around.  This is the traditional TeX use.
   \`tidy'       compile in a local *.t2d directory, where the auxiliary files
-		 are left.  Output files are copied back to the original file.
+	       are left.  Output files are copied back to the original file.
   \`clean'      same as \`tidy', but remove the auxiliary directory afterwards.
-		 Every compilation therefore requires the full cycle.
+	       Every compilation therefore requires the full cycle.
 
 Using the \`tidy' mode brings several advantages:
-  - the current directory is not cluttered with plethora of temporary files.
-  - clutter can be even reduced using --build-dir=dir: all the *.t2d
-    directories are stored there.
-  - clutter can be reduced to zero using,e.g., --build-dir=/tmp/\$USER.t2d or
-    --build-dir=\$HOME/.t2d.
-  - the output file is updated after every succesful TeX run, for
-    sake of concurrent visualization of the output.  In a \`local' build
-    the viewer stops during the whole TeX run.
-  - if the compilation fails, the previous state of the output file
-    is preserved.
-  - PDF and DVI compilation are kept in separate subdirectories
-    preventing any possibility of auxiliary file incompatibility.
+  -   the current directory is not cluttered with plethora of temporary files.
+  -   clutter can be even reduced using --build-dir=dir: all the *.t2d
+      directories are stored there.
+  -   clutter can be reduced to zero using,e.g., --build-dir=/tmp/\$USER.t2d or
+      --build-dir=\$HOME/.t2d.
+  -   the output file is updated after every succesful TeX run, for
+      sake of concurrent visualization of the output.  In a \`local' build
+      the viewer stops during the whole TeX run.
+  -   if the compilation fails, the previous state of the output file
+      is preserved.
+  -   PDF and DVI compilation are kept in separate subdirectories
+      preventing any possibility of auxiliary file incompatibility.
 
 On the other hand, because \`tidy' compilation takes place in another
 directory, occasionally TeX won't be able to find some files (e.g., when
