@@ -242,10 +242,12 @@ argz_count (const char *argz, size_t argz_len)
 
   assert ((argz && argz_len) || (!argz && !argz_len));
   
-  while (--argz_len > 0)
+  while (argz_len > 0)
     {
-      if (argz[argz_len] == EOS_CHAR)
-        count++;
+      size_t part_len = strlen (argz);
+      argz += part_len + 1;
+      argz_len -= part_len + 1;
+      count++;
     }
   
   return count;
