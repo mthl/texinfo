@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.5 2008-02-24 23:52:56 karl Exp $
+   $Id: install-info.c,v 1.6 2008-02-26 16:58:17 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -452,7 +452,7 @@ menu_item_equal (const char *item, char term_char, const char *name)
      26mar04.  */
   if (!remove_exactly) {
   while (*item_basename && !IS_SLASH (*item_basename)
-	 && *item_basename != term_char)
+         && *item_basename != term_char)
     item_basename++;
   if (! *item_basename || *item_basename == term_char)
     item_basename = item;  /* no /, use original */
@@ -507,60 +507,62 @@ print_help (void)
 
   puts (_("\
 Options:\n\
- --debug            report what is being done.\n\
- --delete           delete existing entries for INFO-FILE from DIR-FILE;\n\
-                     don't insert any new entries.\n\
- --description=TEXT the description of the entry is TEXT; used with\n\
-                     the --name option to become synonymous with the\n\
-		     --entry option.\n\
- --dir-file=NAME    specify file name of Info directory file;\n\
-                     equivalent to using the DIR-FILE argument.\n\
- --dry-run          same as --test."));
+ --debug             report what is being done.\n\
+ --delete            delete existing entries for INFO-FILE from DIR-FILE;\n\
+                      don't insert any new entries.\n\
+ --description=TEXT  the description of the entry is TEXT; used with\n\
+                      the --name option to become synonymous with the\n\
+                      --entry option.\n\
+ --dir-file=NAME     specify file name of Info directory file;\n\
+                      equivalent to using the DIR-FILE argument.\n\
+ --dry-run           same as --test."));
 
   puts (_("\
- --entry=TEXT       insert TEXT as an Info directory entry.\n\
-                     TEXT should have the form of an Info menu item line\n\
-                     plus zero or more extra lines starting with whitespace.\n\
-                     If you specify more than one entry, they are all added.\n\
-                     If you don't specify any entries, they are determined\n\
-                     from information in the Info file itself.\n\
-		     When removing TEXT is the name of the entry to remove.\n\
-		     TEXT is only removed as a last-ditch effort if the \n\
-		     entry as determined from the Info file is not present \n\
-		     and the basename of the Info file isn't found either."));
+ --entry=TEXT        insert TEXT as an Info directory entry.\n\
+                      TEXT is written as an Info menu item line followed\n\
+                       by zero or more extra lines starting with whitespace.\n\
+                      If you specify more than one entry, all are added.\n\
+                      If you don't specify any entries, they are determined\n\
+                       from information in the Info file itself.\n\
+                      When removing, TEXT specifies the entry to remove.\n\
+                      TEXT is only removed as a last resort, if the\n\
+                      entry as determined from the Info file is not present,\n\
+                      and the basename of the Info file isn't found either."));
 
   puts (_("\
- --help             display this help and exit.\n\
- --info-dir=DIR     same as --dir-file=DIR/dir.\n\
- --info-file=FILE   specify Info file to install in the directory;\n\
-                     equivalent to using the INFO-FILE argument.\n\
- --item=TEXT        same as --entry=TEXT.\n\
- --keep-old         do not replace entries, or remove empty sections.\n\
- --menuentry=TEXT   same as --name=TEXT.\n\
- --name=TEXT        the name of the entry is TEXT; used with --description\n\
-                     to become synonymous with the --entry option.\n\
- --no-indent        do not format new entries in the DIR file.\n\
- --quiet            suppress warnings."));
+ --help              display this help and exit.\n\
+ --info-dir=DIR      same as --dir-file=DIR/dir.\n\
+ --info-file=FILE    specify Info file to install in the directory;\n\
+                      equivalent to using the INFO-FILE argument.\n\
+ --item=TEXT         same as --entry=TEXT.\n\
+ --keep-old          do not replace entries, or remove empty sections.\n\
+ --menuentry=TEXT    same as --name=TEXT.\n\
+ --name=TEXT         the name of the entry is TEXT; used with --description\n\
+                      to become synonymous with the --entry option.\n\
+ --no-indent         do not format new entries in the DIR file.\n\
+ --quiet             suppress warnings."));
 
   puts (_("\
- --regex=R          put this file's entries in all sections that match the\n\
-                     regular expression R (ignoring case).\n\
- --remove           same as --delete.\n\
- --remove-exactly   only remove if the info file name matches exactly;\n\
-                     suffixes such as .info and .gz are not ignored.\n\
- --section=SEC      put this file's entries in section SEC of the directory.\n\
-                     If you specify more than one section, all the entries\n\
-                     are added in each of the sections.\n\
-                     If you don't specify any sections, they are determined\n\
-                     from information in the Info file itself.\n\
- --section R SEC    equivalent to --regex=R --section=SEC --add-once."));
+ --regex=R           put this file's entries in all sections that match the\n\
+                      regular expression R (ignoring case).\n\
+ --remove            same as --delete.\n\
+ --remove-exactly    only remove if the info file name matches exactly;\n\
+                      suffixes such as .info and .gz are not ignored.\n\
+ --section=SEC       put entries in section SEC of the directory.\n\
+                      If you specify more than one section, all the entries\n\
+                       are added in each of the sections.\n\
+                      If you don't specify any sections, they are determined\n\
+                       from information in the Info file itself.\n\
+ --section R SEC     equivalent to --regex=R --section=SEC --add-once."));
 
   puts (_("\
- --silent           suppress warnings.\n\
- --test             suppress updating of DIR-FILE.\n\
- --version          display version information and exit."));
+ --silent            suppress warnings.\n\
+ --test              suppress updating of DIR-FILE.\n\
+ --version           display version information and exit."));
 
-  puts (_("\n\
+  puts ("");
+  
+  puts (_("\
 Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"));
@@ -851,18 +853,18 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
             struct spec_entry *this = dir_lines[i].add_entries_before[j];
             if (this == 0)
               break;
-	    if (n_entries_added >= 1 && 
-		!add_entries_into_all_matching_sections)
-	      break;
+            if (n_entries_added >= 1 && 
+                !add_entries_into_all_matching_sections)
+              break;
             fputs (this->text, output);
-	    n_entries_added++;
+            n_entries_added++;
           }
       /* If we decided to add some sections here
          because there are no such sections in the file,
          output them now.  
          FIXME:  we add all sections here, but they should
-	 be interspersed throughout the DIR file in 
-	 alphabetic order. */
+         be interspersed throughout the DIR file in 
+         alphabetic order. */
       if (dir_lines[i].add_sections_before)
         {
           struct spec_section *spec;
@@ -870,15 +872,15 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
           struct spec_entry **entries;
           int n_entries = 0;
 
-	  /* If we specified --add-once, and we've added an entry, then
-	     it's time to bail. */
-	  if (n_entries_added >= 1 && 
-	      !add_entries_into_all_matching_sections)
-	    break;
+          /* If we specified --add-once, and we've added an entry, then
+             it's time to bail. */
+          if (n_entries_added >= 1 && 
+              !add_entries_into_all_matching_sections)
+            break;
 
           qsort (dir_lines[i].add_sections_before, 
-		 dir_lines[i].num_sections_to_add, 
-		 sizeof (struct spec_section *), compare_section_names);
+                 dir_lines[i].num_sections_to_add, 
+                 sizeof (struct spec_section *), compare_section_names);
 
           /* Count the entries and allocate a vector for all of them.  */
           for (entry = entries_to_add; entry; entry = entry->next)
@@ -907,7 +909,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                   putc ('\n', output);
                   fputs (spec->name, output);
                   putc ('\n', output);
-		  spec->missing = 0;
+                  spec->missing = 0;
                   for (k = 0; k < n_entries; k++)
                     {
                       struct spec_section *spec1;
@@ -927,7 +929,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                 }
             }
 
-	  n_entries_added++;
+          n_entries_added++;
           free (entries);
         }
 
@@ -953,7 +955,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
 int
 parse_input (const struct line_data *lines, int nlines,
              struct spec_section **sections, struct spec_entry **entries,
-	     int delete_flag) 
+             int delete_flag) 
 {
   int n_entries = 0;
   int prefix_length = strlen ("INFO-DIR-SECTION ");
@@ -1213,7 +1215,7 @@ mark_entry_for_deletion (struct line_data *lines, int nlines, char *name)
               if (menu_item_equal (q, ':', name))
                 {
                   lines[i].delete = 1;
-		  something_deleted = 1;
+                  something_deleted = 1;
                 }
             }
           else
@@ -1225,7 +1227,7 @@ mark_entry_for_deletion (struct line_data *lines, int nlines, char *name)
                   if (menu_item_equal (p, ')', name))
                     {
                       lines[i].delete = 1;
-		      something_deleted = 1;
+                      something_deleted = 1;
                     }
                 }
             }
@@ -1254,13 +1256,13 @@ adjust_column (size_t column, char c)
   if (c == '\b')
     {
       if (column > 0)
-	column--;
+        column--;
     }
   else if (c == '\r')
     column = 0;
   else if (c == '\t')
     column += TAB_WIDTH - column % TAB_WIDTH;
-  else				/* if (isprint (c)) */
+  else                          /* if (isprint (c)) */
     column++;
   return column;
 }
@@ -1273,13 +1275,13 @@ adjust_column (size_t column, char c)
  */
 static int
 format_entry (char *name, size_t name_len, char *desc, size_t desc_len, 
-	      int calign, int align, size_t width, 
-	      char **outstr, size_t *outstr_len)
+              int calign, int align, size_t width, 
+              char **outstr, size_t *outstr_len)
 {
   int i, j;
   char c;
-  size_t column = 0;		/* Screen column where next char will go */
-  size_t offset_out = 0;	/* Index in `line_out' for next char. */
+  size_t column = 0;            /* Screen column where next char will go */
+  size_t offset_out = 0;        /* Index in `line_out' for next char. */
   static char *line_out = NULL;
   static size_t allocated_out = 0;
   int saved_errno;
@@ -1287,8 +1289,8 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
     return 1;
 
   *outstr = malloc (width  + 
-		    (((desc_len  + width) / (width - align)) * width) * 2 
-		    * sizeof (char));
+                    (((desc_len  + width) / (width - align)) * width) * 2 
+                    * sizeof (char));
   *outstr[0] = '\0';
 
   strncat (*outstr, name, name_len);
@@ -1299,103 +1301,103 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
     {
       /* Name is too long to have description on the same line. */
       if (desc_len > 1)
-	{
-	  strncat (*outstr, "\n", 1);
-	  column = 0;
-	  for (j = 0; j < calign - 1; j++)
-	    {
-	      column = adjust_column (column, ' ');
-	      strncat (*outstr, " ", 1);
-	    }
-	}
+        {
+          strncat (*outstr, "\n", 1);
+          column = 0;
+          for (j = 0; j < calign - 1; j++)
+            {
+              column = adjust_column (column, ' ');
+              strncat (*outstr, " ", 1);
+            }
+        }
     }
   else
     for (j = 0; j < calign - name_len - 1; j++)
       {
-	if (desc_len <= 2)
-	  break;
-	column = adjust_column (column, ' ');
-	strncat (*outstr, " ", 1);
+        if (desc_len <= 2)
+          break;
+        column = adjust_column (column, ' ');
+        strncat (*outstr, " ", 1);
       }
 
   for (i = 0; i < desc_len; i++)
     {
       if (desc_len <= 2)
-	break;
+        break;
       c = desc[i];
       if (offset_out + 1 >= allocated_out)
-	{
-	  allocated_out = offset_out + 1;
-	  line_out = (char *) realloc ((void *)line_out, allocated_out);
-	}
+        {
+          allocated_out = offset_out + 1;
+          line_out = (char *) realloc ((void *)line_out, allocated_out);
+        }
 
       if (c == '\n')
-	{
-	  line_out[offset_out++] = c;
-	  strncat (*outstr, line_out, offset_out);
-	  column = offset_out = 0;
-	  continue;
-	}
+        {
+          line_out[offset_out++] = c;
+          strncat (*outstr, line_out, offset_out);
+          column = offset_out = 0;
+          continue;
+        }
 
     rescan:
       column = adjust_column (column, c);
 
       if (column > width)
-	{
-	  /* This character would make the line too long.
-	     Print the line plus a newline, and make this character
-	     start the next line. */
+        {
+          /* This character would make the line too long.
+             Print the line plus a newline, and make this character
+             start the next line. */
 
-	  int found_blank = 0;
-	  size_t logical_end = offset_out;
+          int found_blank = 0;
+          size_t logical_end = offset_out;
 
-	  /* Look for the last blank. */
-	  while (logical_end)
-	    {
-	      --logical_end;
-	      if (isblank (toupper(line_out[logical_end])))
-		{
-		  found_blank = 1;
-		  break;
-		}
-	    }
+          /* Look for the last blank. */
+          while (logical_end)
+            {
+              --logical_end;
+              if (isblank (toupper(line_out[logical_end])))
+                {
+                  found_blank = 1;
+                  break;
+                }
+            }
 
-	  if (found_blank)
-	    {
-	      size_t i;
+          if (found_blank)
+            {
+              size_t i;
 
-	      /* Found a blank.  Don't output the part after it. */
-	      logical_end++;
-	      strncat (*outstr, line_out, logical_end);
-	      strncat (*outstr, "\n", 1);
-	      for (j = 0; j < align - 1; j++)
-		{
-		  column = adjust_column (column, ' ');
-		  strncat (*outstr, " ", 1);
-		}
+              /* Found a blank.  Don't output the part after it. */
+              logical_end++;
+              strncat (*outstr, line_out, logical_end);
+              strncat (*outstr, "\n", 1);
+              for (j = 0; j < align - 1; j++)
+                {
+                  column = adjust_column (column, ' ');
+                  strncat (*outstr, " ", 1);
+                }
 
-	      /* Move the remainder to the beginning of the next 
-		 line.
-		 The areas being copied here might overlap. */
-	      memmove (line_out, line_out + logical_end,
-		       offset_out - logical_end);
-	      offset_out -= logical_end;
-	      for (column = i = 0; i < offset_out; i++)
-		column = adjust_column (column, line_out[i]);
-	      goto rescan;
-	    }
+              /* Move the remainder to the beginning of the next 
+                 line.
+                 The areas being copied here might overlap. */
+              memmove (line_out, line_out + logical_end,
+                       offset_out - logical_end);
+              offset_out -= logical_end;
+              for (column = i = 0; i < offset_out; i++)
+                column = adjust_column (column, line_out[i]);
+              goto rescan;
+            }
 
-	  if (offset_out == 0)
-	    {
-	      line_out[offset_out++] = c;
-	      continue;
-	    }
+          if (offset_out == 0)
+            {
+              line_out[offset_out++] = c;
+              continue;
+            }
 
-	  line_out[offset_out++] = '\n';
-	  strncat (*outstr, line_out, offset_out);
-	  column = offset_out = 0;
-	  goto rescan;
-	}
+          line_out[offset_out++] = '\n';
+          strncat (*outstr, line_out, offset_out);
+          column = offset_out = 0;
+          goto rescan;
+        }
 
       line_out[offset_out++] = c;
     }
@@ -1429,7 +1431,7 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
     {
       size_t length = strlen (entry);
       if (length == 0)
-	return;
+        return;
       *name = strdup (ptr);
       *name_len = length + 1;
       return;
@@ -1450,48 +1452,48 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
 
       /* Eat up the whitespace after the name, and at the start of a line. */
       while (isspace(ptr[0]))
-	ptr++;
+        ptr++;
 
       /* Okay, we're at the start of the description. */
       if (ptr[0] == '\0')
-	continue;
+        continue;
 
       /* See how far the description goes... */
       endptr = strchr (ptr, '\n');
       /* Either the description continues up to the next newline. */
       if (endptr)
-	{
-	  size_t length  = (size_t) (endptr - ptr) / sizeof (char);
-	  strncat (*description, ptr, length);
-	  ptr = endptr;
-	  /* First of all, we eat the newline here.  But then what?
-	     Sometimes the newline separates 2 sentences, so we
-	     end up with the next word starting directly after the period,
-	     instead of after the customary 2 spaces in english. 
-	     If the previous character was a `.', then we should add 2
-	     spaces if there is anything on the next line.
-	     if it's a comma, then we should put one space.
-	     If it's neither, we just put a space.
-	     If it's some other whitespace, we shouldn't do anything. */
-	  ptr++;
-	  if (length > 1 && strlen (ptr) > 0)
-	    {
-	      endptr--;
-	      /* *ENDPTR is the 2nd last character */
-	      if (*endptr == '.')
-		strncat (*description, "  ", 2);
-	      else if (!isspace (*endptr))
-		strncat (*description, " ", 1);
-	    }
-	}
+        {
+          size_t length  = (size_t) (endptr - ptr) / sizeof (char);
+          strncat (*description, ptr, length);
+          ptr = endptr;
+          /* First of all, we eat the newline here.  But then what?
+             Sometimes the newline separates 2 sentences, so we
+             end up with the next word starting directly after the period,
+             instead of after the customary 2 spaces in english. 
+             If the previous character was a `.', then we should add 2
+             spaces if there is anything on the next line.
+             if it's a comma, then we should put one space.
+             If it's neither, we just put a space.
+             If it's some other whitespace, we shouldn't do anything. */
+          ptr++;
+          if (length > 1 && strlen (ptr) > 0)
+            {
+              endptr--;
+              /* *ENDPTR is the 2nd last character */
+              if (*endptr == '.')
+                strncat (*description, "  ", 2);
+              else if (!isspace (*endptr))
+                strncat (*description, " ", 1);
+            }
+        }
       /* Or the description continues to the end of the string. */
       else
-	{
-	  /* Just show the rest when there's no newline. */
-	  size_t length = strlen (ptr);
-	  strncat (*description, ptr, length);
-	  ptr += length;
-	}
+        {
+          /* Just show the rest when there's no newline. */
+          size_t length = strlen (ptr);
+          strncat (*description, ptr, length);
+          ptr += length;
+        }
     }
   /* Descriptions end in a new line. */
   strncat (*description, "\n", 1);
@@ -1507,7 +1509,7 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
 
 static void
 reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli, 
-		      int maxwidth_cli)
+                      int maxwidth_cli)
 {
   struct spec_entry *entry;
   for (entry = entries; entry; entry = entry->next)
@@ -1520,39 +1522,39 @@ reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli,
 
       /* Specify sane defaults if we need to */
       if (calign_cli == -1 || align_cli == -1)
-	{
-	  struct spec_section *section;
-	  calign = calign_cli;
-	  align = align_cli;
-	  for (section = entry->entry_sections; 
-	       section && section != entry->entry_sections_tail;
-	       section = section->next)
-	    {
-	      if (!strcmp (section->name, "Individual utilities"))
-		{
-		  if (calign == -1)
-		    calign = 48 + 1;
-		  if (align == -1)
-		    align = 50 + 1;
-		  break;
-		}
-	    }
-	  if (calign == -1)
-	    calign = 32 + 1;
-	  if (align == -1)
-	    align = 34 + 1;
-	}
+        {
+          struct spec_section *section;
+          calign = calign_cli;
+          align = align_cli;
+          for (section = entry->entry_sections; 
+               section && section != entry->entry_sections_tail;
+               section = section->next)
+            {
+              if (!strcmp (section->name, "Individual utilities"))
+                {
+                  if (calign == -1)
+                    calign = 48 + 1;
+                  if (align == -1)
+                    align = 50 + 1;
+                  break;
+                }
+            }
+          if (calign == -1)
+            calign = 32 + 1;
+          if (align == -1)
+            align = 34 + 1;
+        }
       else
-	{
-	  calign = calign_cli;
-	  align = align_cli;
-	}
+        {
+          calign = calign_cli;
+          align = align_cli;
+        }
 
       if (maxwidth_cli == -1)
-	maxwidth = 79;
+        maxwidth = 79;
 
       format_entry (name, name_len, desc, desc_len, calign, align, 
-		    maxwidth, &entry->text, &entry->text_len);
+                    maxwidth, &entry->text, &entry->text_len);
     }
 }
 
@@ -1567,27 +1569,27 @@ add_missing_basenames (struct spec_entry *entries, char *name)
   for (entry = entries; entry; entry = entry->next)
     {
       if (entry->missing_basename)
-	{
-	  /* Insert NAME into the right place in ENTRY->TEXT. */
-	  char *info, *rest;
-	  size_t name_len = strlen (name);
-	  char *ptr = strstr (entry->text, ": ().");
-	  if (!ptr)
-	    return;
-	  ptr[0] = '\0';
-	  rest = ptr += sizeof (": ().");
+        {
+          /* Insert NAME into the right place in ENTRY->TEXT. */
+          char *info, *rest;
+          size_t name_len = strlen (name);
+          char *ptr = strstr (entry->text, ": ().");
+          if (!ptr)
+            return;
+          ptr[0] = '\0';
+          rest = ptr += sizeof (": ().");
 
-	  info = xmalloc (name_len +  6);
-	  snprintf (info, name_len + 6, ": (%s).", name);
-	  char *text = concat (entry->text, info, rest);
-	  free (info);
-	  if (entry->text)
-	    free (entry->text);
-	  entry->text = text;
-	  entry->text_len = strlen (entry->text);
-	  entry->missing_name = 0;
-	  entry->missing_basename = 0;
-	}
+          info = xmalloc (name_len +  6);
+          snprintf (info, name_len + 6, ": (%s).", name);
+          char *text = concat (entry->text, info, rest);
+          free (info);
+          if (entry->text)
+            free (entry->text);
+          entry->text = text;
+          entry->text_len = strlen (entry->text);
+          entry->missing_name = 0;
+          entry->missing_basename = 0;
+        }
     }
 }
 
@@ -1602,34 +1604,34 @@ add_missing_names (struct spec_entry *entries, char *name)
   for (entry = entries; entry; entry = entry->next)
     {
       if (entry->missing_name)
-	{
-	  char *text;
-	  /* Prepend NAME onto ENTRY->TEXT. */
-	  int add_nl = 1;
-	  if (entry->text)
-	    if (entry->text[entry->text_len - 1] == '\n')
-	      add_nl = 0;
+        {
+          char *text;
+          /* Prepend NAME onto ENTRY->TEXT. */
+          int add_nl = 1;
+          if (entry->text)
+            if (entry->text[entry->text_len - 1] == '\n')
+              add_nl = 0;
 
-	  if (name[0] == '*')
-	    text = concat (name, entry->text == NULL ? "" : entry->text, 
-			   add_nl ? "\n" : "");
-	  else
-	    {
-	      size_t full_name_len = strlen (name) * 2 + 9;
-	      char *full_name = xmalloc (full_name_len);
-	      snprintf (full_name, full_name_len, "* %s: (%s).", name, name);
-	      text = concat (full_name, 
-			     entry->text == NULL ? "" : entry->text, 
-			     add_nl ? "\n" : "");
-	      free (full_name);
-	    }
-	  if (entry->text)
-	    free (entry->text);
-	  entry->text = text;
-	  entry->text_len = strlen (entry->text);
-	  entry->missing_name = 0;
-	  entry->missing_basename = 0;
-	}
+          if (name[0] == '*')
+            text = concat (name, entry->text == NULL ? "" : entry->text, 
+                           add_nl ? "\n" : "");
+          else
+            {
+              size_t full_name_len = strlen (name) * 2 + 9;
+              char *full_name = xmalloc (full_name_len);
+              snprintf (full_name, full_name_len, "* %s: (%s).", name, name);
+              text = concat (full_name, 
+                             entry->text == NULL ? "" : entry->text, 
+                             add_nl ? "\n" : "");
+              free (full_name);
+            }
+          if (entry->text)
+            free (entry->text);
+          entry->text = text;
+          entry->text_len = strlen (entry->text);
+          entry->missing_name = 0;
+          entry->missing_basename = 0;
+        }
     }
 }
 
@@ -1642,19 +1644,19 @@ add_missing_descriptions (struct spec_entry *entries, char *desc)
   for (entry = entries; entry; entry = entry->next)
     {
       if (entry->missing_description)
-	{
-	  int add_nl = 1;
-	  if (entry->text)
-	    if (entry->text[entry->text_len - 1] == '\n')
-	      add_nl = 0;
-	  /* Append DESC onto ENTRY->TEXT. */
-	  char *text = concat (entry->text == NULL ? "" : entry->text, desc,
-			       add_nl ? "\n" : "");
-	  if (entry->text)
-	    free (entry->text);
-	  entry->text = text;
-	  entry->text_len = strlen (entry->text);
-	}
+        {
+          int add_nl = 1;
+          if (entry->text)
+            if (entry->text[entry->text_len - 1] == '\n')
+              add_nl = 0;
+          /* Append DESC onto ENTRY->TEXT. */
+          char *text = concat (entry->text == NULL ? "" : entry->text, desc,
+                               add_nl ? "\n" : "");
+          if (entry->text)
+            free (entry->text);
+          entry->text = text;
+          entry->text_len = strlen (entry->text);
+        }
     }
 }
 
@@ -1669,7 +1671,7 @@ add_missing_descriptions (struct spec_entry *entries, char *desc)
  */
 static int
 munge_old_style_debian_options (int argc, char **argv, 
-				int *new_argc, char ***new_argv)
+                                int *new_argc, char ***new_argv)
 {
   char *opt = NULL;
   int i, err;
@@ -1683,59 +1685,59 @@ munge_old_style_debian_options (int argc, char **argv,
   for (i = 0; i < argc; i++)
     {
       if (strcmp (argv[i], "--section") == 0)
-	{
-	  FILE *fileptr;
-	  /* Go forward one arg and obtain the REGEX. */
-	  if (i + 1 < argc)
-	    i++;
-	  else
-	    return -1;
-	  regex = argv[i];
-	  /* Go forward another arg and obtain the TITLE. */
-	  if (i + 1 < argc)
-	    i++;
-	  else
-	    return -1;
-	  title = argv[i];
-	  /* When the title starts with a `-' it's probably an option,
-	     and not a title. */
-	  if (title[0] == '-')
-	    break;
-	  /* When the title is a filename it's probably an Info file, or
-	     a dir file, and not a title. */
-	  fileptr = fopen (title, "r");
-	  if (fileptr)
-	    {
-	      fclose (fileptr);
-	      break;
-	    }
-	  /* Okay, it looks like we're using the old debian syntax 
-	     for --section. */
-	  munge = 1;
-	
-	  /* Okay, we munge the options to look like this:
-	     --regex=REGEX --section=TITLE --add-once */
+        {
+          FILE *fileptr;
+          /* Go forward one arg and obtain the REGEX. */
+          if (i + 1 < argc)
+            i++;
+          else
+            return -1;
+          regex = argv[i];
+          /* Go forward another arg and obtain the TITLE. */
+          if (i + 1 < argc)
+            i++;
+          else
+            return -1;
+          title = argv[i];
+          /* When the title starts with a `-' it's probably an option,
+             and not a title. */
+          if (title[0] == '-')
+            break;
+          /* When the title is a filename it's probably an Info file, or
+             a dir file, and not a title. */
+          fileptr = fopen (title, "r");
+          if (fileptr)
+            {
+              fclose (fileptr);
+              break;
+            }
+          /* Okay, it looks like we're using the old debian syntax 
+             for --section. */
+          munge = 1;
+        
+          /* Okay, we munge the options to look like this:
+             --regex=REGEX --section=TITLE --add-once */
           opt = xmalloc (strlen (regex) + sizeof ("--regex="));
-	  if (sprintf (opt, "--regex=%s", regex) == -1)
-	    err = 1;
-	  if (!err)
-	    err = argz_add (&argz, &argz_len, opt);
-	  free (opt); opt = NULL;
+          if (sprintf (opt, "--regex=%s", regex) == -1)
+            err = 1;
+          if (!err)
+            err = argz_add (&argz, &argz_len, opt);
+          free (opt); opt = NULL;
 
           opt = xmalloc (strlen (regex) + sizeof ("--section="));
-	  if (sprintf (opt, "--section=%s", title) == -1)
-	    err = 1;
-	  if (!err)
-	    err = argz_add (&argz, &argz_len, opt);
-	  free (opt); opt = NULL;
+          if (sprintf (opt, "--section=%s", title) == -1)
+            err = 1;
+          if (!err)
+            err = argz_add (&argz, &argz_len, opt);
+          free (opt); opt = NULL;
 
-	  if (!err)
-	    err = argz_add (&argz, &argz_len, "--add-once");
-	}
+          if (!err)
+            err = argz_add (&argz, &argz_len, "--add-once");
+        }
       else
-	err = argz_add (&argz, &argz_len, argv[i]); 
+        err = argz_add (&argz, &argz_len, argv[i]); 
       if (err)
-	return -1;
+        return -1;
     }
 
   if (munge)
@@ -1745,10 +1747,10 @@ munge_old_style_debian_options (int argc, char **argv,
 
       opt = NULL; i = 0;
       while ((opt = argz_next (argz, argz_len, opt)))
-	{
-	  (*new_argv)[i] = xstrdup (opt);
-	  i++;
-	}
+        {
+          (*new_argv)[i] = xstrdup (opt);
+          i++;
+        }
       (*new_argv)[*new_argc] = NULL;
     }
   free (argz);
@@ -1814,7 +1816,7 @@ main (int argc, char *argv[])
   while (1)
     {
       int opt = getopt_long (argc, argv, 
-			     "i:d:e:s:t:E:c:C:W:A:hHrk1Ia", longopts, 0);
+                             "i:d:e:s:t:E:c:C:W:A:hHrk1Ia", longopts, 0);
 
       if (opt == EOF)
         break;
@@ -1830,77 +1832,77 @@ main (int argc, char *argv[])
           abort ();
 
         case '1':
-	  add_entries_into_all_matching_sections = 0;
+          add_entries_into_all_matching_sections = 0;
           break;
 
         case 'a':
-	  order_new_sections_alphabetically_flag = 0;
+          order_new_sections_alphabetically_flag = 0;
           break;
 
         case 'A':
-	  {
-	    char *end = NULL;
-	    unsigned long int val;
-	    val = strtoul (optarg, &end, 0);
-	    if (end == NULL || end == optarg || *end != '\0')
-	      suggest_asking_for_help ();
-	    align = val;
-	    if (align <= 0)
-	      suggest_asking_for_help ();
-	  }
-	  break;
+          {
+            char *end = NULL;
+            unsigned long int val;
+            val = strtoul (optarg, &end, 0);
+            if (end == NULL || end == optarg || *end != '\0')
+              suggest_asking_for_help ();
+            align = val;
+            if (align <= 0)
+              suggest_asking_for_help ();
+          }
+          break;
 
         case 'c':
-	
-	  {
-	    struct spec_entry *next;
-	    size_t length = strlen (optarg);
+        
+          {
+            struct spec_entry *next;
+            size_t length = strlen (optarg);
 
-	    if (!entries_to_add)
-	      {
-		next = 
-		  (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
-	    
-		next->text = NULL;
-		next->text_len = 0;
-		next->entry_sections = NULL;
-		next->entry_sections_tail = NULL;
-		next->missing_name = 1;
-		next->missing_basename = 1;
-		next->next = entries_to_add;
-		entries_to_add = next;
-		n_entries_to_add++;
-	      }
-	    else
-	      next = entries_to_add;
-		
-	    next->missing_description = 0;
-	    if (next->text)
-	      {
-		char *nl = strrchr (next->text, '\n');
-		if (nl)
-		  nl[0] = '\0';
-	      }
-	    /* Concat the description onto the current entry, adding a 
-	       newline if we need one. */
-	    next->text = concat (next->text == NULL ? "" : next->text, optarg, 
-				 optarg[length - 1] == '\n' ? "" : "\n");
-	    next->text_len = strlen (next->text);
-	  }
-	  break;
+            if (!entries_to_add)
+              {
+                next = 
+                  (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
+            
+                next->text = NULL;
+                next->text_len = 0;
+                next->entry_sections = NULL;
+                next->entry_sections_tail = NULL;
+                next->missing_name = 1;
+                next->missing_basename = 1;
+                next->next = entries_to_add;
+                entries_to_add = next;
+                n_entries_to_add++;
+              }
+            else
+              next = entries_to_add;
+                
+            next->missing_description = 0;
+            if (next->text)
+              {
+                char *nl = strrchr (next->text, '\n');
+                if (nl)
+                  nl[0] = '\0';
+              }
+            /* Concat the description onto the current entry, adding a 
+               newline if we need one. */
+            next->text = concat (next->text == NULL ? "" : next->text, optarg, 
+                                 optarg[length - 1] == '\n' ? "" : "\n");
+            next->text_len = strlen (next->text);
+          }
+          break;
 
         case 'C':
-	  {
-	    char *end = NULL;
-	    unsigned long int val;
-	    val = strtoul (optarg, &end, 0);
-	    if (end == NULL || end == optarg || *end != '\0')
-	      suggest_asking_for_help ();
-	    calign = val;
-	    if (calign <= 0)
-	      suggest_asking_for_help ();
-	  }
-	  break;
+          {
+            char *end = NULL;
+            unsigned long int val;
+            val = strtoul (optarg, &end, 0);
+            if (end == NULL || end == optarg || *end != '\0')
+              suggest_asking_for_help ();
+            calign = val;
+            if (calign <= 0)
+              suggest_asking_for_help ();
+          }
+          break;
 
         case 'd':
           if (dirfile)
@@ -1923,41 +1925,41 @@ main (int argc, char *argv[])
           break;
 
         case 't':
-	  {
+          {
             struct spec_entry *next
               = (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
 
-	    size_t length;
-	    if (optarg[0] != '*')
-	      {
-		/* Make enough space for "* foo: ().\n". */
-		length = strlen (optarg) + 9;
-		next->text = xmalloc (length);
-		snprintf (next->text, length, "* %s: ().\n", optarg);
-		next->missing_basename = 1;
-		/* The basename will be inserted in between the parentheses
-		   at a later time.  See add_missing_basenames. */
-	      }
-	    else
-	      {
-		/* Make enough space for "foo\n". */
-		length = strlen (optarg) + 2;
-		next->text = xmalloc (length);
-		snprintf (next->text, length, "%s\n", optarg);
-		next->missing_basename = 0;
-		/* FIXME: check for info entry correctness in TEXT. 
-		   e.g. `* Aaa: (bbb).' */
-	      }
+            size_t length;
+            if (optarg[0] != '*')
+              {
+                /* Make enough space for "* foo: ().\n". */
+                length = strlen (optarg) + 9;
+                next->text = xmalloc (length);
+                snprintf (next->text, length, "* %s: ().\n", optarg);
+                next->missing_basename = 1;
+                /* The basename will be inserted in between the parentheses
+                   at a later time.  See add_missing_basenames. */
+              }
+            else
+              {
+                /* Make enough space for "foo\n". */
+                length = strlen (optarg) + 2;
+                next->text = xmalloc (length);
+                snprintf (next->text, length, "%s\n", optarg);
+                next->missing_basename = 0;
+                /* FIXME: check for info entry correctness in TEXT. 
+                   e.g. `* Aaa: (bbb).' */
+              }
 
             next->text_len = length - 1;
             next->entry_sections = NULL;
             next->entry_sections_tail = NULL;
             next->next = entries_to_add;
-	    next->missing_name = 0;
-	    next->missing_description = 1;
+            next->missing_name = 0;
+            next->missing_description = 1;
             entries_to_add = next;
             n_entries_to_add++;
-	  }
+          }
           break;
 
         case 'e':
@@ -1975,9 +1977,9 @@ main (int argc, char *argv[])
             next->entry_sections = NULL;
             next->entry_sections_tail = NULL;
             next->next = entries_to_add;
-	    next->missing_name = 0;
-	    next->missing_basename = 0;
-	    next->missing_description = 0;
+            next->missing_name = 0;
+            next->missing_basename = 0;
+            next->missing_description = 0;
             entries_to_add = next;
             n_entries_to_add++;
           }
@@ -2003,7 +2005,7 @@ main (int argc, char *argv[])
           break;
 
         case 'I':
-	  indent_flag = 0;
+          indent_flag = 0;
           break;
 
         case 'k':
@@ -2026,15 +2028,15 @@ main (int argc, char *argv[])
           {
             int error;
             if (psecreg)
-	      {
-		warning 
-		  (_("Extra regular expression specified, ignoring `%s'"),
-		   optarg, 0);
-		break;
-	      }
-	    psecreg = (regex_t *) xmalloc (sizeof (regex_t));
+              {
+                warning 
+                  (_("Extra regular expression specified, ignoring `%s'"),
+                   optarg, 0);
+                break;
+              }
+            psecreg = (regex_t *) xmalloc (sizeof (regex_t));
 
-	    error = regcomp (psecreg, optarg, REG_ICASE|REG_NOSUB);
+            error = regcomp (psecreg, optarg, REG_ICASE|REG_NOSUB);
             if (error != 0)
               {
                 int errbuf_size = regerror (error, psecreg, NULL, 0);
@@ -2064,21 +2066,21 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2008");
+              "2008");
           xexit (0);
 
         case 'W':
-	  {
-	    char *end = NULL;
-	    unsigned long int val;
-	    val = strtoul (optarg, &end, 0);
-	    if (end == NULL || end == optarg || *end != '\0')
-	      suggest_asking_for_help ();
-	    maxwidth = val;
-	    if (maxwidth <= 0)
-	      suggest_asking_for_help ();
-	  }
-	  break;
+          {
+            char *end = NULL;
+            unsigned long int val;
+            val = strtoul (optarg, &end, 0);
+            if (end == NULL || end == optarg || *end != '\0')
+              suggest_asking_for_help ();
+            maxwidth = val;
+            if (maxwidth <= 0)
+              suggest_asking_for_help ();
+          }
+          break;
 
         case 'x':
           delete_flag = 1;
@@ -2120,23 +2122,23 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     {
       /* Find which sections match our regular expression. */
       if (psecreg)
-	{
-	  struct node *node;
-	  struct menu_section *section;
-	  for (node = dir_nodes; node ; node = node->next)
-	    for (section = node->sections; section ; section = section->next)
-	      if (regexec (psecreg, section->name, 0, NULL, 0) == 0)
-		{
-		  /* we have a match! */
-		  struct spec_section *next = 
-		    (struct spec_section *) xmalloc 
-		    (sizeof (struct spec_section));
-		  next->name = section->name;
-		  next->next = input_sections;
-		  next->missing = 0;
-		  input_sections = next;
-		}
-	}
+        {
+          struct node *node;
+          struct menu_section *section;
+          for (node = dir_nodes; node ; node = node->next)
+            for (section = node->sections; section ; section = section->next)
+              if (regexec (psecreg, section->name, 0, NULL, 0) == 0)
+                {
+                  /* we have a match! */
+                  struct spec_section *next = 
+                    (struct spec_section *) xmalloc 
+                    (sizeof (struct spec_section));
+                  next->name = section->name;
+                  next->next = input_sections;
+                  next->missing = 0;
+                  input_sections = next;
+                }
+        }
 
     }
 
@@ -2171,74 +2173,74 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (!delete_flag)
     {
       /* If there are no entries on the command-line at all, so we use the 
-	 entries found in the Info file itself (if any). */
+         entries found in the Info file itself (if any). */
       if (entries_to_add == NULL)
-	{
-	  entries_to_add = entries_to_add_from_file;
-	  n_entries_to_add = i;
-	}
+        {
+          entries_to_add = entries_to_add_from_file;
+          n_entries_to_add = i;
+        }
       /* There are entries on the command-line, and they override the entries
-	 found in the Info file. */
+         found in the Info file. */
       else if (entries_to_add)
-	{
-	  if (entries_to_add_from_file == NULL)
-	    {
-	      /* No entries found in the file anyway.  Fill in any 
-	         missing names with the info file's basename.  We're out
-		 of luck for any missing descriptions. */
-	      add_missing_names (entries_to_add, infile_sans_info);
-	      //add_missing_descriptions (entries_to_add, "\n");
-	    }
-	  else
-	    {
-	      /* Fill in any missing names or descriptions with what was
-		 found in the Info file. */
-	      char *desc = NULL;
-	      size_t desc_len = 0;
-	      char *name = NULL;
-	      size_t name_len = 0;
-	      split_entry (entries_to_add_from_file->text, &name, &name_len,
-			   &desc, &desc_len);
-	      if (name)
-		{
-		  /* If the name doesn't look right, bail and use the 
-		     name based on the Info file. */
-		  if (name[0] != '*')
-		    add_missing_names (entries_to_add, infile_sans_info);
-		  else
-		    add_missing_names (entries_to_add, name);
-		  free (name);
-		}
+        {
+          if (entries_to_add_from_file == NULL)
+            {
+              /* No entries found in the file anyway.  Fill in any 
+                 missing names with the info file's basename.  We're out
+                 of luck for any missing descriptions. */
+              add_missing_names (entries_to_add, infile_sans_info);
+              //add_missing_descriptions (entries_to_add, "\n");
+            }
+          else
+            {
+              /* Fill in any missing names or descriptions with what was
+                 found in the Info file. */
+              char *desc = NULL;
+              size_t desc_len = 0;
+              char *name = NULL;
+              size_t name_len = 0;
+              split_entry (entries_to_add_from_file->text, &name, &name_len,
+                           &desc, &desc_len);
+              if (name)
+                {
+                  /* If the name doesn't look right, bail and use the 
+                     name based on the Info file. */
+                  if (name[0] != '*')
+                    add_missing_names (entries_to_add, infile_sans_info);
+                  else
+                    add_missing_names (entries_to_add, name);
+                  free (name);
+                }
 
-	      if (desc)
-		{
-		  add_missing_descriptions (entries_to_add, desc);
-		  free (desc);
-		}
-	    }
-	}
-	    
+              if (desc)
+                {
+                  add_missing_descriptions (entries_to_add, desc);
+                  free (desc);
+                }
+            }
+        }
+            
       /* Lastly, fill in any missing basenames that might still be hanging
          around from --name options on the command-line. */
       add_missing_basenames (entries_to_add, infile_sans_info);
 
       /* Reformat the new entries if we're doing that. */
       if (indent_flag)
-	{
-	  char *no_indent = getenv ("INSTALL_INFO_NO_INDENT");
-	  if (!no_indent)
-	    reformat_new_entries (entries_to_add, calign, align, maxwidth);
-	}
+        {
+          char *no_indent = getenv ("INSTALL_INFO_NO_INDENT");
+          if (!no_indent)
+            reformat_new_entries (entries_to_add, calign, align, maxwidth);
+        }
 
       /* If we got no sections, default to "Miscellaneous".  */
       if (input_sections == NULL)
-	{
-	  input_sections = (struct spec_section *)
-	    xmalloc (sizeof (struct spec_section));
-	  input_sections->name = "Miscellaneous";
-	  input_sections->next = NULL;
-	  input_sections->missing = 1;
-	}
+        {
+          input_sections = (struct spec_section *)
+            xmalloc (sizeof (struct spec_section));
+          input_sections->name = "Miscellaneous";
+          input_sections->next = NULL;
+          input_sections->missing = 1;
+        }
 
       if (entries_to_add == 0)
         { /* No need to abort here, the original info file may not
@@ -2246,8 +2248,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
              something an installer should have to correct (it's a
              problem for the maintainer), and there's no need to cause
              subsequent parts of `make install' to fail.  */
-	  if (!quiet_flag)
-	    warning (_("no info dir entry in `%s'"), infile, 0);
+          if (!quiet_flag)
+            warning (_("no info dir entry in `%s'"), infile, 0);
           xexit (0);
         }
 
@@ -2272,35 +2274,35 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (delete_flag)
     {
       something_deleted = mark_entry_for_deletion (dir_lines, dir_nlines, 
-						   infile_sans_info);
+                                                   infile_sans_info);
       if (!something_deleted && !remove_exactly)
-	{
-	  struct spec_entry *entry;
-	  for (entry = entries_to_add; entry; entry = entry->next)
-	    {
-	      /* If the entry came from the info file... */
-	      if (entry->entry_sections != NULL)
-		{
-		  char *name = extract_menu_item_name (entry->text);
-		  something_deleted = 
-		    mark_entry_for_deletion (dir_lines, dir_nlines, name);
-		  free (name);
-		}
-	    }
+        {
+          struct spec_entry *entry;
+          for (entry = entries_to_add; entry; entry = entry->next)
+            {
+              /* If the entry came from the info file... */
+              if (entry->entry_sections != NULL)
+                {
+                  char *name = extract_menu_item_name (entry->text);
+                  something_deleted = 
+                    mark_entry_for_deletion (dir_lines, dir_nlines, name);
+                  free (name);
+                }
+            }
       
-	  if (!something_deleted)
-	    {
-	      struct spec_entry *entry;
-	      for (entry = entries_to_add; entry; entry = entry->next)
-		{
-		  /* If the entry came from the command-line... */
-		  if (entry->entry_sections == NULL)
-		    something_deleted = 
-		      mark_entry_for_deletion (dir_lines, dir_nlines, 
-					       entry->text);
-		}
-	    }
-	}
+          if (!something_deleted)
+            {
+              struct spec_entry *entry;
+              for (entry = entries_to_add; entry; entry = entry->next)
+                {
+                  /* If the entry came from the command-line... */
+                  if (entry->entry_sections == NULL)
+                    something_deleted = 
+                      mark_entry_for_deletion (dir_lines, dir_nlines, 
+                                               entry->text);
+                }
+            }
+        }
     }
     
   /* Check for sections with zero entries and mark them for deletion. */
@@ -2311,27 +2313,27 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       int section_empty;
 
       for (node = dir_nodes; node ; node = node->next)
-	for (section = node->sections; section ; section = section->next)
-	  {
-	    section_empty = 1;
+        for (section = node->sections; section ; section = section->next)
+          {
+            section_empty = 1;
             for (i = section->end_line; i > section->start_line; i--)
-	      {
-		if (dir_lines[i - 1].delete == 0 && 
-		    dir_lines[i - 1].size != 0)
-		  {
-		    section_empty = 0;
-		    break;
-		  }
-	      }
+              {
+                if (dir_lines[i - 1].delete == 0 && 
+                    dir_lines[i - 1].size != 0)
+                  {
+                    section_empty = 0;
+                    break;
+                  }
+              }
 
-	    if (section_empty)
-	      {
-		/* This gets rid of any trailing empty lines at the end  
-		   of the section, and the title too. */
-		for (i = section->end_line; i >= section->start_line; i--)
-		  dir_lines[i - 1].delete = 1;
-	      }
-	  }
+            if (section_empty)
+              {
+                /* This gets rid of any trailing empty lines at the end  
+                   of the section, and the title too. */
+                for (i = section->end_line; i >= section->start_line; i--)
+                  dir_lines[i - 1].delete = 1;
+              }
+          }
     }
 
   /* Decide where to add the new entries (unless --delete was used).
@@ -2357,7 +2359,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                 break;
             if (spec)
               {
-		int entries_added = 0;
+                int entries_added = 0;
                 int add_at_line = section->end_line;
                 struct spec_entry *entry;
                 /* Say we have found at least one section with this name,
@@ -2394,32 +2396,32 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                                                 dir_lines[i].start,
                                                 dir_lines[i].size)
                             && !dir_lines[i].delete)
-			  {
-			    if (keep_old_flag)
-			      {
-				add_at_line = -1;
-				break;
-			      }
-			    else
-			      {
-				int j;
-				dir_lines[i].delete = 1;
-				for (j = i + 1; j < section->end_line; j++)
-				  {
-				    if (dir_lines[j].start[0] == '*')
-				      break;
-				    dir_lines[j].delete = 1;
-				  }
-			      }
-			  }
+                          {
+                            if (keep_old_flag)
+                              {
+                                add_at_line = -1;
+                                break;
+                              }
+                            else
+                              {
+                                int j;
+                                dir_lines[i].delete = 1;
+                                for (j = i + 1; j < section->end_line; j++)
+                                  {
+                                    if (dir_lines[j].start[0] == '*')
+                                      break;
+                                    dir_lines[j].delete = 1;
+                                  }
+                              }
+                          }
                         if (dir_lines[i].start[0] == '*'
                             && menu_line_lessp (entry->text, entry->text_len,
                                                 dir_lines[i].start,
                                                 dir_lines[i].size))
                           add_at_line = i;
                       }
-		    if (add_at_line < 0)
-		      continue;
+                    if (add_at_line < 0)
+                      continue;
                     insert_entry_here (entry, add_at_line,
                                        dir_lines, n_entries_to_add);
                   }
@@ -2437,62 +2439,62 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* Find the `Top' node. */
       for (node = dir_nodes; node; node = node->next)
         if (node->name && strcmp (node->name, "Top") == 0)
-	  top = node;
+          top = node;
 
       if (top)
-	{
-	  struct spec_section *spec;
-	  int found = 0;
-	  struct line_data *target_line = NULL;
-	  for (spec = input_sections; spec; spec = spec->next)
-	    {
-	      found = 0;
-	      target_line = NULL;
-	      if (!spec->missing)
-		continue;
-	      if (order_new_sections_alphabetically_flag)
-		{
-		  struct menu_section *section;
-		  struct menu_section *prev_section = NULL;
-	      
-		  /* Look for the first section name that 
-		     exceeds SPEC->NAME. */
-		  for (section = top->sections; section ; 
-		       section = section->next)
-		    {
-		      found = (mbscasecmp (spec->name, section->name) < 0);
-		      if (found)
-			{
-			  /* Mark the section for addition at this point. */
-			  if (prev_section)
-			    target_line = &dir_lines[prev_section->end_line];
-			  else
-			    target_line = 
-			      &dir_lines[top->sections->start_line - 2];
+        {
+          struct spec_section *spec;
+          int found = 0;
+          struct line_data *target_line = NULL;
+          for (spec = input_sections; spec; spec = spec->next)
+            {
+              found = 0;
+              target_line = NULL;
+              if (!spec->missing)
+                continue;
+              if (order_new_sections_alphabetically_flag)
+                {
+                  struct menu_section *section;
+                  struct menu_section *prev_section = NULL;
+              
+                  /* Look for the first section name that 
+                     exceeds SPEC->NAME. */
+                  for (section = top->sections; section ; 
+                       section = section->next)
+                    {
+                      found = (mbscasecmp (spec->name, section->name) < 0);
+                      if (found)
+                        {
+                          /* Mark the section for addition at this point. */
+                          if (prev_section)
+                            target_line = &dir_lines[prev_section->end_line];
+                          else
+                            target_line = 
+                              &dir_lines[top->sections->start_line - 2];
 
-			  break;
-			}
-		      prev_section = section;
-		    }
-		}
-		  
-	      /* When we can't put a section anywhere, we put it at the 
-		 bottom of the file. */
-	      if (!found)
-		target_line = &dir_lines[top->end_line];
+                          break;
+                        }
+                      prev_section = section;
+                    }
+                }
+                  
+              /* When we can't put a section anywhere, we put it at the 
+                 bottom of the file. */
+              if (!found)
+                target_line = &dir_lines[top->end_line];
 
-	      /* Add the section to our list of sections being added
-	         at this point of the DIR file. */
-	      target_line->num_sections_to_add++;
-	      target_line->add_sections_before = 
-		(struct spec_section **) xrealloc 
-		(target_line->add_sections_before, 
-		 (target_line->num_sections_to_add *
-		  sizeof (struct spec_section *)));
-	      i = target_line->num_sections_to_add - 1;
-	      target_line->add_sections_before[i] = spec;
-	    }
-	}
+              /* Add the section to our list of sections being added
+                 at this point of the DIR file. */
+              target_line->num_sections_to_add++;
+              target_line->add_sections_before = 
+                (struct spec_section **) xrealloc 
+                (target_line->add_sections_before, 
+                 (target_line->num_sections_to_add *
+                  sizeof (struct spec_section *)));
+              i = target_line->num_sections_to_add - 1;
+              target_line->add_sections_before[i] = spec;
+            }
+        }
     }
 
   if (delete_flag && !something_deleted && !quiet_flag)

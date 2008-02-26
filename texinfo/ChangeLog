@@ -1,3 +1,8 @@
+2008-02-26  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (print_help): keep two spaces
+	between option name and description, or help2man can't do a good job.
+
 2008-02-26  Peter Breitenlohner <peb@mppmu.mpg.de>
 
 	* info/doc.h, info/echo-area.c, info/echo-area.h,
