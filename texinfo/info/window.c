@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.9 2008-02-19 14:58:29 karl Exp $
+   $Id: window.c,v 1.10 2008-02-26 16:51:06 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -1269,7 +1269,7 @@ window_clear_echo_area (void)
    printf () hair is present.  The message appears immediately.  If there was
    already a message appearing in the echo area, it is removed. */
 void
-window_message_in_echo_area (char *format, void *arg1, void *arg2)
+window_message_in_echo_area (const char *format, void *arg1, void *arg2)
 {
   free_echo_area ();
   echo_area_node = build_message_node (format, arg1, arg2);
@@ -1286,7 +1286,7 @@ static int old_echo_area_nodes_index = 0;
 static int old_echo_area_nodes_slots = 0;
 
 void
-message_in_echo_area (char *format, void *arg1, void *arg2)
+message_in_echo_area (const char *format, void *arg1, void *arg2)
 {
   if (echo_area_node)
     {
@@ -1336,7 +1336,7 @@ message_buffer_resize (int length)
 /* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
    ARG2. */
 static void
-build_message_buffer (char *format, void *arg1, void *arg2, void *arg3)
+build_message_buffer (const char *format, void *arg1, void *arg2, void *arg3)
 {
   register int i, len;
   void *args[3];
@@ -1360,7 +1360,7 @@ build_message_buffer (char *format, void *arg1, void *arg2, void *arg3)
       else
         {
           char c;
-          char *fmt_start = format + i;
+          const char *fmt_start = format + i;
           char *fmt;
           int fmt_len, formatted_len;
 	  int paramed = 0;
@@ -1483,7 +1483,7 @@ build_message_buffer (char *format, void *arg1, void *arg2, void *arg3)
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
    contents. */
 NODE *
-build_message_node (char *format, void *arg1, void *arg2)
+build_message_node (const char *format, void *arg1, void *arg2)
 {
   NODE *node;
 
@@ -1525,7 +1525,7 @@ initialize_message_buffer (void)
 
 /* Print FORMAT with ARG1,2 to the end of the current message buffer. */
 void
-printf_to_message_buffer (char *format, void *arg1, void *arg2, void *arg3)
+printf_to_message_buffer (const char *format, void *arg1, void *arg2, void *arg3)
 {
   build_message_buffer (format, arg1, arg2, arg3);
 }

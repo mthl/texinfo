@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.16 2008-02-22 19:21:18 karl Exp $
+   $Id: infokey.c,v 1.17 2008-02-26 16:51:05 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
@@ -638,7 +638,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      else
 		{
 		  syntax_error (filename, lnum,
-                      (char *) _("NUL character (^%c) not permitted"),
+                      _("NUL character (^%c) not permitted"),
                       (void *) (long) c, NULL, NULL, NULL);
 		  error = 1;
 		}
@@ -662,7 +662,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      rescan = 1;
 	      if (alen == 0)
 		{
-		  syntax_error (filename, lnum, (char *) _("missing action name"),
+		  syntax_error (filename, lnum, _("missing action name"),
 				(void *) (long) c, NULL, NULL, NULL);
 		  error = 1;
 		}

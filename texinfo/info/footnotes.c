@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.7 2007-07-01 21:20:29 karl Exp $
+   $Id: footnotes.c,v 1.8 2008-02-26 16:51:05 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007 Free Software
    Foundation, Inc.
@@ -209,7 +209,7 @@ info_get_or_remove_footnotes (WINDOW *window)
           /* If we are hacking automatic footnotes, and there are footnotes
              but we couldn't display them, print a message to that effect. */
           if (auto_footnotes_p)
-            inform_in_echo_area ((char *) _("Footnotes could not be displayed"));
+            inform_in_echo_area (_("Footnotes could not be displayed"));
           return (FN_UNABLE);
         }
     }
@@ -256,11 +256,11 @@ DECLARE_INFO_COMMAND (info_show_footnotes,
       switch (result)
         {
         case FN_UNFOUND:
-          info_error ((char *) msg_no_foot_node, NULL, NULL);
+          info_error (msg_no_foot_node, NULL, NULL);
           break;
 
         case FN_UNABLE:
-          info_error ((char *) msg_win_too_small, NULL, NULL);
+          info_error (msg_win_too_small, NULL, NULL);
           break;
         }
     }

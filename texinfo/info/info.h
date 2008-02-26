@@ -1,5 +1,5 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h,v 1.7 2007-07-01 21:20:30 karl Exp $
+   $Id: info.h,v 1.8 2008-02-26 16:51:05 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -125,7 +125,7 @@ extern int raw_escapes_p;
 /* Print FORMAT with ARG1 and ARG2.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
-extern void info_error (char *format, void *arg1, void *arg2);
+extern void info_error (const char *format, void *arg1, void *arg2);
 
 extern void add_file_directory_to_path (char *filename);
 
@@ -154,6 +154,6 @@ extern void set_variable_to_value (char *name, char *value);
 #endif /* INFOKEY */
 
 /* Found in m-x.c.  */
-extern char *read_function_name (char *prompt, WINDOW *window);
+extern char *read_function_name (const char *prompt, WINDOW *window);
 
 #endif /* !INFO_H */

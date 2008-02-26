@@ -1,3 +1,20 @@
+2008-02-26  Peter Breitenlohner <peb@mppmu.mpg.de>
+
+	* info/doc.h, info/echo-area.c, info/echo-area.h,
+	info/footnotes.c, info/indices.c, info/info.c, info/info.h,
+	info/infodoc.c, info/infokey.c, info/infomap.c, info/m-x.c,
+	info/nodemenu.c, info/session.c, info/session.h,
+	info/variables.c, info/variables.h, info/window.c,
+	info/window.h:
+	declare constant strings as such and remove
+	many `(char *)' casts -- in particular for `_(...)'.
+	Avoid gcc warnings (for --disable-nls and maybe without).
+
+2008-02-25  Karl Berry  <karl@gnu.org>
+
+	* autogen.sh: run autoconf before autoheader, then automake
+        (per autoreconf).
+
 2008-02-24  Karl Berry  <karl@gnu.org>
 
 	* info/infomap.c (x): bind to delete_window.
@@ -18,7 +35,7 @@
 
 	* pretest 4.11.90.
 
-2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de>  (tiny change)
+2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de> 
 
 	* configure.ac (--enable-multiplatform): also set libdir.
 	* util/defs.in (PATH): include @abs_builddir@.

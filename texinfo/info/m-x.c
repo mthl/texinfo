@@ -1,5 +1,5 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c,v 1.6 2007-07-01 21:20:30 karl Exp $
+   $Id: m-x.c,v 1.7 2008-02-26 16:51:05 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -32,7 +32,7 @@
    name.  A return value of NULL indicates that no function name could
    be read. */
 char *
-read_function_name (char *prompt, WINDOW *window)
+read_function_name (const char *prompt, WINDOW *window)
 {
   register int i;
   char *line;
@@ -69,7 +69,7 @@ DECLARE_INFO_COMMAND (describe_command,
 {
   char *line;
 
-  line = read_function_name ((char *) _("Describe command: "), window);
+  line = read_function_name (_("Describe command: "), window);
 
   if (!line)
     {
@@ -136,7 +136,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
         (strncmp (line, "echo-area-", 10) == 0))
       {
         free (line);
-        info_error ((char *) _("Cannot execute an `echo-area' command here."),
+        info_error (_("Cannot execute an `echo-area' command here."),
             NULL, NULL);
         return;
       }
@@ -150,7 +150,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
     if (InfoFunction(command))
       (*InfoFunction(command)) (active_window, count, 0);
     else
-      info_error ((char *) _("Undefined command: %s"), line, NULL);
+      info_error (_("Undefined command: %s"), line, NULL);
   }
 }
 

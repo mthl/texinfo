@@ -1,5 +1,5 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h,v 1.7 2007-07-01 21:20:29 karl Exp $
+   $Id: echo-area.h,v 1.8 2008-02-26 16:51:05 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -36,25 +36,25 @@ extern void inform_in_echo_area (const char *message);
 extern void echo_area_inform_of_deleted_window (WINDOW *window);
 extern void echo_area_prep_read (void);
 extern VFunction *ea_last_executed_command;
-extern char * info_read_completing_internal (WINDOW *window, char *prompt,
+extern char * info_read_completing_internal (WINDOW *window, const char *prompt,
     REFERENCE **completions, int force);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
    or NULL if the user aborted out of this read.  WINDOW is the currently
    active window, so that we can restore it when we need to.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
-extern char *info_read_in_echo_area (WINDOW *window, char *prompt);
+extern char *info_read_in_echo_area (WINDOW *window, const char *prompt);
 
 /* Read a line in the echo area with completion over COMPLETIONS.
    Takes arguments of WINDOW, PROMPT, and COMPLETIONS, a REFERENCE **. */
 char *info_read_completing_in_echo_area (WINDOW *window,
-    char *prompt, REFERENCE **completions);
+    const char *prompt, REFERENCE **completions);
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it.  Takes arguments of WINDOW, PROMPT, and COMPLETIONS,
    a REFERENCE **. */
 extern char *info_read_maybe_completing (WINDOW *window,
-    char *prompt, REFERENCE **completions);
+    const char *prompt, REFERENCE **completions);
 
 extern void ea_insert (WINDOW *window, int count, unsigned char key);
 extern void ea_quoted_insert (WINDOW *window, int count, unsigned char key);

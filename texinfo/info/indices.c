@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.9 2007-11-25 19:25:34 karl Exp $
+   $Id: indices.c,v 1.10 2008-02-26 16:51:05 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -195,7 +195,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
       info_free_references (index_index);
-      window_message_in_echo_area ((char *) _("Finding index entries..."),
+      window_message_in_echo_area (_("Finding index entries..."),
           NULL, NULL);
       index_index = info_indices_of_file_buffer (fb);
     }
@@ -203,7 +203,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
   /* If there is no index, quit now. */
   if (!index_index)
     {
-      info_error ((char *) _("No indices found."), NULL, NULL);
+      info_error (_("No indices found."), NULL, NULL);
       return;
     }
 
@@ -213,7 +213,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
     line = xstrdup (search_string);
   else
     {
-      line = info_read_maybe_completing (window, (char *) _("Index entry: "),
+      line = info_read_maybe_completing (window, _("Index entry: "),
                                          index_index);
       window = active_window;
 
@@ -331,14 +331,14 @@ DECLARE_INFO_COMMAND (info_next_index_match,
      yet. */
   if (!index_search)
     {
-      info_error ((char *) _("No previous index search string."), NULL, NULL);
+      info_error (_("No previous index search string."), NULL, NULL);
       return;
     }
 
   /* If there is no index, that is an error. */
   if (!index_index)
     {
-      info_error ((char *) _("No index entries."), NULL, NULL);
+      info_error (_("No index entries."), NULL, NULL);
       return;
     }
 
@@ -371,7 +371,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   /* If that failed, print an error. */
   if ((i < 0) || (!index_index[i]))
     {
-      info_error ((char *) _("No %sindex entries containing `%s'."),
+      info_error (_("No %sindex entries containing `%s'."),
                   index_offset > 0 ? (char *) _("more ") : "", index_search);
       return;
     }
@@ -418,7 +418,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       char *format;
 
       format = replace_in_documentation
-        ((char *) _("Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"),
+        (_("Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"),
          0);
 
       window_message_in_echo_area (format, match, (char *) name);
@@ -432,7 +432,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 
   if (!node)
     {
-      info_error ((char *) msg_cant_file_node,
+      info_error (msg_cant_file_node,
                   index_index[i]->filename, index_index[i]->nodename);
       return;
     }
@@ -546,7 +546,7 @@ apropos_in_all_indices (char *search_string, int inform)
 	  }
 
         if (this_fb && inform)
-          message_in_echo_area ((char *) _("Scanning indices of `%s'..."),
+          message_in_echo_area (_("Scanning indices of `%s'..."),
               files_name, NULL);
 
         this_index = info_indices_of_file_buffer (this_fb);
@@ -611,7 +611,7 @@ info_apropos (char *string)
   apropos_list = apropos_in_all_indices (string, 0);
 
   if (!apropos_list)
-    info_error ((char *) _(APROPOS_NONE), string, NULL);
+    info_error (_(APROPOS_NONE), string, NULL);
   else
     {
       register int i;
@@ -631,7 +631,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 {
   char *line;
 
-  line = info_read_in_echo_area (window, (char *) _("Index apropos: "));
+  line = info_read_in_echo_area (window, _("Index apropos: "));
 
   window = active_window;
 
@@ -651,7 +651,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
       apropos_list = apropos_in_all_indices (line, 1);
 
       if (!apropos_list)
-        info_error ((char *) _(APROPOS_NONE), line, NULL);
+        info_error (_(APROPOS_NONE), line, NULL);
       else
         {
           register int i;
@@ -659,7 +659,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
           initialize_message_buffer ();
           printf_to_message_buffer
-            ((char *) _("\n* Menu: Nodes whose indices contain `%s':\n"),
+            (_("\n* Menu: Nodes whose indices contain `%s':\n"),
              line, NULL, NULL);
           line_buffer = (char *)xmalloc (500);
 

@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.7 2007-08-04 11:01:22 gray Exp $
+   $Id: variables.c,v 1.8 2008-02-26 16:51:06 karl Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -86,7 +86,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
   char *description;
 
   /* Get the variable's name. */
-  var = read_variable_name ((char *) _("Describe variable: "), window);
+  var = read_variable_name (_("Describe variable: "), window);
 
   if (!var)
     return;
@@ -111,7 +111,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
   char *line;
 
   /* Get the variable's name and value. */
-  var = read_variable_name ((char *) _("Set variable: "), window);
+  var = read_variable_name (_("Set variable: "), window);
 
   if (!var)
     return;
@@ -210,7 +210,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
 VARIABLE_ALIST *
-read_variable_name (char *prompt, WINDOW *window)
+read_variable_name (const char *prompt, WINDOW *window)
 {
   register int i;
   char *line;

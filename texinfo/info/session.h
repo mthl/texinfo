@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.8 2007-12-17 19:12:11 karl Exp $
+   $Id: session.h,v 1.9 2008-02-26 16:51:06 karl Exp $
 
    Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -109,7 +109,7 @@ extern void begin_multiple_window_info_session (char *filename,
     char **nodenames);
 extern void begin_info_session (NODE *initial_node);
 extern void begin_info_session_with_error (NODE *initial_node,
-    char *format, void *arg1, void *arg2);
+    const char *format, void *arg1, void *arg2);
 extern void info_session (void);
 extern void initialize_info_session (NODE *node, int clear_screen);
 extern void info_read_and_dispatch (void);
