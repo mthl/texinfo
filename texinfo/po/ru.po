@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-02-21 15:36-0800\n"
+"POT-Creation-Date: 2008-02-27 10:26-0800\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2061
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2065
 #: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
@@ -384,8 +384,8 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:649 info/infokey.c:918 install-info/install-info.c:563
-#: makeinfo/makeinfo.c:474 util/texindex.c:259
+#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: util/texindex.c:259
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -468,122 +468,98 @@ msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
 
-#: info/infodoc.c:45 info/infodoc.c:94
-msgid ""
-"Basic Commands in Info Windows\n"
-"******************************\n"
+#: info/infodoc.c:45
+msgid "Basic Info command keys\n"
 msgstr ""
-"Основные команды в окнах Info\n"
-"******************************\n"
 
-#: info/infodoc.c:48
-msgid "\\%-10[quit-help]  Quit this help.\n"
+#: info/infodoc.c:47
+#, fuzzy
+msgid "\\%-10[quit-help]  Close this help window.\n"
 msgstr "\\%-10[quit-help]  Покинуть эту справку.\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:48
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "\\%-10[quit]  Покинуть также Info.\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:49
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Вызвать обучающее руководство.\n"
 
-#: info/infodoc.c:52 info/infodoc.c:101
-msgid ""
-"Selecting other nodes:\n"
-"----------------------\n"
-msgstr ""
-"Выбор другой ноды:\n"
-"------------------\n"
+#: info/infodoc.c:51
+#, fuzzy
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line]  Прокрутить на страницу вперед.\n"
+
+#: info/infodoc.c:52
+#, fuzzy
+msgid "\\%-10[prev-line]  Move up one line.\n"
+msgstr "\\%-10[prev-line]  Прокрутить на страницу назад.\n"
+
+#: info/infodoc.c:53
+#, fuzzy
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward]  Прокрутить на страницу вперед.\n"
 
 #: info/infodoc.c:54
 #, fuzzy
-msgid "\\%-10[global-next-node]  Move to the next node in the document.\n"
-msgstr "\\%-10[next-node]  Перейти к \"следующей\" ноде.\n"
+msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+msgstr "\\%-10[scroll-backward]  Прокрутить на страницу назад.\n"
 
 #: info/infodoc.c:55
-#, fuzzy
-msgid "\\%-10[global-prev-node]  Move to the previous node in the document.\n"
-msgstr "\\%-10[prev-node]  Перейти к \"предыдущей\" ноде.\n"
-
-#: info/infodoc.c:56
-#, fuzzy
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой "
-"ноде.\n"
-
-#: info/infodoc.c:57
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
-
-#: info/infodoc.c:58
-msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "\\%-10[up-node]  Перейти к ноде \"вверх\".\n"
-
-#: info/infodoc.c:59
-msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr "\\%-10[history-node]  Перейти на последнюю ноду в этом окне.\n"
-
-#: info/infodoc.c:60
-msgid ""
-"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-"node] (DIR)'.\n"
-msgstr "\\%-10[dir-node]  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
-
-#: info/infodoc.c:61
-msgid ""
-"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr "\\%-10[top-node]  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
-
-#: info/infodoc.c:63 info/infodoc.c:115
-msgid ""
-"Moving within a node:\n"
-"---------------------\n"
-msgstr ""
-"Перемещение внутри ноды:\n"
-"------------------------\n"
-
-#: info/infodoc.c:65
 #, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Переместиться в начало этой ноды.\n"
 
-#: info/infodoc.c:66
+#: info/infodoc.c:56
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Переместиться в конец этой ноды.\n"
 
-#: info/infodoc.c:67
+#: info/infodoc.c:58
 #, fuzzy
-msgid "\\%-10[next-line]  Scroll forward one line.\n"
-msgstr "\\%-10[next-line]  Прокрутить на страницу вперед.\n"
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr "\\%-10[next-node]  Перейти к \"следующей\" ноде.\n"
 
-#: info/infodoc.c:68
+#: info/infodoc.c:59
 #, fuzzy
-msgid "\\%-10[prev-line]  Scroll backward one line.\n"
-msgstr "\\%-10[prev-line]  Прокрутить на страницу назад.\n"
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr "\\%-10[prev-node]  Перейти к \"предыдущей\" ноде.\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:60
 #, fuzzy
-msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
-msgstr "\\%-10[scroll-forward]  Прокрутить на страницу вперед.\n"
-
-#: info/infodoc.c:70
-#, fuzzy
-msgid "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
-msgstr "\\%-10[scroll-backward]  Прокрутить на страницу назад.\n"
-
-#: info/infodoc.c:72 info/infodoc.c:124
-msgid ""
-"Other commands:\n"
-"---------------\n"
+msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr ""
-"Другие команды:\n"
-"---------------\n"
+"\\%-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой "
+"ноде.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:61
+#, fuzzy
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
+
+#: info/infodoc.c:62
+#, fuzzy
+msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+msgstr "\\%-10[history-node]  Перейти на последнюю ноду в этом окне.\n"
+
+#: info/infodoc.c:63
+#, fuzzy
+msgid "\\%-10[up-node]  Go up one level.\n"
+msgstr "\\%-10[up-node]  Перейти к ноде \"вверх\".\n"
+
+#: info/infodoc.c:64
+#, fuzzy
+msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+msgstr "\\%-10[end-of-node]  Переместиться в конец этой ноды.\n"
+
+#: info/infodoc.c:65
+#, fuzzy
+msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+msgstr "\\%-10[end-of-node]  Переместиться в конец этой ноды.\n"
+
+#: info/infodoc.c:67
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -592,46 +568,34 @@ msgstr ""
 "в\n"
 "              ноде, в которой найдено следующее вхождение.\n"
 
-#: info/infodoc.c:76
-msgid ""
-"\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
-msgstr ""
-"\\%-10[search-backward]  Искать указанную строку в текущем Info-файле в\n"
-"              ноде, в которой найдено следующее вхождение.\n"
-
-#: info/infodoc.c:78
+#: info/infodoc.c:69
 #, fuzzy
 msgid "1...9       Pick first...ninth item in this node's menu.\n"
 msgstr "  %-10s  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Выбрать последний пункт меню в текущей ноде\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
 msgstr "  %-10s  Перейти к заданному пункту меню.\n"
 
-#: info/infodoc.c:81
-msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of "
-"this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[index-search]  Search for a specified string in the index.\n"
 msgstr ""
-"\\%-10[index-search]  Искать заданную строку в алфавитных указателях\n"
-"              Info-файла и выбрать ноду по первой найденной ссылке.\n"
+"  %-10s  Произвести поиск заданной строки среди вхождений именных указателей "
+"этого\n"
 
-#: info/infodoc.c:83
+#: info/infodoc.c:73
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr "\\%-10[xref-item]  Перейти по ссылке.  Считывает имя ссылки.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:74
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -639,47 +603,55 @@ msgstr ""
 "\\%-10[goto-node]  Перейти к ноде, заданной по имени.\n"
 "              Вы можете задать также имя файла, например (ФАЙЛ)НОДА.\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:76
 #, fuzzy
 msgid "\\%-10[next-node]  Move to the next node of current section.\n"
 msgstr "\\%-10[next-node]  Перейти к \"следующей\" ноде.\n"
 
-#: info/infodoc.c:87
+#: info/infodoc.c:77
 #, fuzzy
 msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
 msgstr "\\%-10[prev-node]  Перейти к \"предыдущей\" ноде.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:84
+msgid ""
+"Basic Commands in Info Windows\n"
+"******************************\n"
+msgstr ""
+"Основные команды в окнах Info\n"
+"******************************\n"
+
+#: info/infodoc.c:87
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Покинуть эту справку.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:88
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Покинуть также Info.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:89
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Вызвать обучающее руководство.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:93
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Перейти к `следующей' ноде.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:94
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Перейти к `предыдущей' ноде.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:95
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Перейти к ноде `вверх'.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:96
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
@@ -688,77 +660,93 @@ msgstr ""
 "\\%-10[menu-item]  Перейти к пункту меню, задаваемому по имени.\n"
 "              При переходе к заданному пункту меню выбирается другая нода.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Перейти по ссылке.  Считывает имя ссылки.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Перейти на последнюю ноду в этом окне.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Переместиться к следующей гиперссылке в этой ноде.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Перейти по гиперссылке под курсором.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:105
+msgid ""
+"Moving within a node:\n"
+"---------------------\n"
+msgstr ""
+"Перемещение внутри ноды:\n"
+"------------------------\n"
+
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Прокрутить на страницу вперед.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Прокрутить на страницу назад.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Переместиться в начало этой ноды.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Переместиться в конец этой ноды.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Прокрутить на страницу вперед.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Прокрутить на страницу назад.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:114
+msgid ""
+"Other commands:\n"
+"---------------\n"
+msgstr ""
+"Другие команды:\n"
+"---------------\n"
+
+#: info/infodoc.c:116
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Выбрать последний пункт меню в текущей ноде\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:120
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -768,7 +756,7 @@ msgstr ""
 "\\%-10[index-search]  Искать заданную строку в алфавитных указателях\n"
 "              Info-файла и выбрать ноду по первой найденной ссылке.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:122
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
@@ -777,7 +765,7 @@ msgstr ""
 "\\%-10[goto-node]  Перейти к ноде, заданной по имени.\n"
 "              Вы можете задать также имя файла, например (ФАЙЛ)НОДА.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:124
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -787,7 +775,7 @@ msgstr ""
 "в\n"
 "              ноде, в которой найдено следующее вхождение.\n"
 
-#: info/infodoc.c:136
+#: info/infodoc.c:126
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
@@ -797,11 +785,11 @@ msgstr ""
 "в\n"
 "              ноде, в которой найдено следующее вхождение.\n"
 
-#: info/infodoc.c:317
+#: info/infodoc.c:307
 msgid "The current search path is:\n"
 msgstr "Текущий путь поиска:\n"
 
-#: info/infodoc.c:321
+#: info/infodoc.c:311
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -809,7 +797,7 @@ msgstr ""
 "Команды, доступные в окнах Info:\n"
 "\n"
 
-#: info/infodoc.c:325
+#: info/infodoc.c:315
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -817,7 +805,7 @@ msgstr ""
 "Команды, доступные в эхо-области:\n"
 "\n"
 
-#: info/infodoc.c:348
+#: info/infodoc.c:338
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -826,7 +814,7 @@ msgstr ""
 "Следующие команды могут быть вызваны только с помощью %s:\n"
 "\n"
 
-#: info/infodoc.c:352
+#: info/infodoc.c:342
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -834,70 +822,73 @@ msgstr ""
 "Следующие команды вообще не могут быть вызваны:\n"
 "\n"
 
-#: info/infodoc.c:376
-msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr ""
-"--- Используйте `\\[history-node]' или `\\[kill-node]' для выхода ---\n"
-
-#: info/infodoc.c:486
+#: info/infodoc.c:472
 msgid "Display help message"
 msgstr "Показать справку"
 
-#: info/infodoc.c:504
+#: info/infodoc.c:490
 msgid "Visit Info node `(info)Help'"
 msgstr "Обратиться к Info-ноде `(info)Help'"
 
-#: info/infodoc.c:642
+#: info/infodoc.c:628
 msgid "Print documentation for KEY"
 msgstr "Показать информацию о КЛАВИШЕ"
 
-#: info/infodoc.c:654
+#: info/infodoc.c:640
 #, c-format
 msgid "Describe key: %s"
 msgstr "Описать клавишу: %s"
 
-#: info/infodoc.c:665
+#: info/infodoc.c:651
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s неопределено."
 
-#: info/infodoc.c:681 info/infodoc.c:710
+#: info/infodoc.c:667 info/infodoc.c:696
 #, c-format
 msgid "%s is undefined."
 msgstr "%s неопределено."
 
-#: info/infodoc.c:731
+#: info/infodoc.c:717
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s привязано к %s."
 
-#: info/infodoc.c:1154
+#: info/infodoc.c:1140
 msgid "Show what to type to execute a given command"
 msgstr "Показывает, что нужно напечатать, чтобы выполнить данную команду"
 
-#: info/infodoc.c:1158
+#: info/infodoc.c:1144
 msgid "Where is command: "
 msgstr "Команда: "
 
-#: info/infodoc.c:1180
+#: info/infodoc.c:1166
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "`%s' не привязана ни к каким клавишам"
 
-#: info/infodoc.c:1187
+#: info/infodoc.c:1173
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s может быть вызвана только с помощью %s."
 
-#: info/infodoc.c:1191
+#: info/infodoc.c:1177
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s может быть вызвана с помощью %s."
 
-#: info/infodoc.c:1196
+#: info/infodoc.c:1182
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Функции с именем `%s' нет"
+
+#: info/infodoc.c:91
+msgid ""
+"Selecting other nodes:\n"
+"----------------------\n"
+msgstr ""
+"Выбор другой ноды:\n"
+"------------------\n"
 
 #: info/infokey.c:170
 msgid "incorrect number of arguments"
@@ -1008,22 +999,22 @@ msgstr ""
 "  --help                       показать эту справку и выйти\n"
 "  --version                    показать информацию о версии и выйти\n"
 
-#: info/infomap.c:1508
+#: info/infomap.c:947
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Неправильный файл infokey `%s' игнорируется - слишком маленький"
 
-#: info/infomap.c:1511
+#: info/infomap.c:950
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Неправильный файл infokey `%s' игнорируется - слишком большой"
 
-#: info/infomap.c:1524
+#: info/infomap.c:963
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Ошибка чтения файла infokey `%s' - чтение прервано"
 
-#: info/infomap.c:1543
+#: info/infomap.c:982
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -1031,19 +1022,19 @@ msgstr ""
 "Файл infokey `%s' неприемлем (неверная сигнатура) -- запустите infokey, "
 "чтобы обновить его"
 
-#: info/infomap.c:1552
+#: info/infomap.c:991
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Файл infokey `%s' устарел -- запустите infokey, чтобы обновить его"
 
-#: info/infomap.c:1568
+#: info/infomap.c:1007
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 
-#: info/infomap.c:1589
+#: info/infomap.c:1028
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -1051,12 +1042,12 @@ msgstr ""
 "Файл infokey `%s' неприемлем (неверный код раздела) -- запустите infokey, "
 "чтобы обновить его"
 
-#: info/infomap.c:1724
+#: info/infomap.c:1163
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 "Поврежденные данные в файле infokey -- некоторые привязки проигнорированы"
 
-#: info/infomap.c:1774
+#: info/infomap.c:1213
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "Поврежденные данные в файле infokey -- некоторые установки переменных "
@@ -1778,72 +1769,84 @@ msgstr ""
 #: install-info/install-info.c:508
 msgid ""
 "Options:\n"
-" --debug            report what is being done.\n"
-" --delete           delete existing entries for INFO-FILE from DIR-FILE;\n"
-"                     don't insert any new entries.\n"
-" --description=TEXT the description of the entry is TEXT; used with\n"
-"                     the --name option to become synonymous with the\n"
-"\t\t     --entry option.\n"
-" --dir-file=NAME    specify file name of Info directory file;\n"
-"                     equivalent to using the DIR-FILE argument.\n"
-" --dry-run          same as --test."
+" --debug             report what is being done.\n"
+" --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                      don't insert any new entries.\n"
+" --description=TEXT  the description of the entry is TEXT; used with\n"
+"                      the --name option to become synonymous with the\n"
+"                      --entry option.\n"
+" --dir-file=NAME     specify file name of Info directory file;\n"
+"                      equivalent to using the DIR-FILE argument.\n"
+" --dry-run           same as --test."
 msgstr ""
 
 #: install-info/install-info.c:520
 msgid ""
-" --entry=TEXT       insert TEXT as an Info directory entry.\n"
-"                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
+" --entry=TEXT        insert TEXT as an Info directory entry.\n"
+"                      TEXT is written as an Info menu item line followed\n"
+"                       by zero or more extra lines starting with "
 "whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
-"                     If you don't specify any entries, they are determined\n"
-"                     from information in the Info file itself.\n"
-"\t\t     When removing TEXT is the name of the entry to remove.\n"
-"\t\t     TEXT is only removed as a last-ditch effort if the \n"
-"\t\t     entry as determined from the Info file is not present \n"
-"\t\t     and the basename of the Info file isn't found either."
+"                      If you specify more than one entry, all are added.\n"
+"                      If you don't specify any entries, they are determined\n"
+"                       from information in the Info file itself.\n"
+"                      When removing, TEXT specifies the entry to remove.\n"
+"                      TEXT is only removed as a last resort, if the\n"
+"                      entry as determined from the Info file is not "
+"present,\n"
+"                      and the basename of the Info file isn't found either."
 msgstr ""
 
 #: install-info/install-info.c:532
 msgid ""
-" --help             display this help and exit.\n"
-" --info-dir=DIR     same as --dir-file=DIR/dir.\n"
-" --info-file=FILE   specify Info file to install in the directory;\n"
-"                     equivalent to using the INFO-FILE argument.\n"
-" --item=TEXT        same as --entry=TEXT.\n"
-" --keep-old         do not replace entries, or remove empty sections.\n"
-" --menuentry=TEXT   same as --name=TEXT.\n"
-" --name=TEXT        the name of the entry is TEXT; used with --description\n"
-"                     to become synonymous with the --entry option.\n"
-" --no-indent        do not format new entries in the DIR file.\n"
-" --quiet            suppress warnings."
+" --help              display this help and exit.\n"
+" --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+" --info-file=FILE    specify Info file to install in the directory;\n"
+"                      equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT         same as --entry=TEXT.\n"
+" --keep-old          do not replace entries, or remove empty sections.\n"
+" --menuentry=TEXT    same as --name=TEXT.\n"
+" --name=TEXT         the name of the entry is TEXT; used with --description\n"
+"                      to become synonymous with the --entry option.\n"
+" --no-indent         do not format new entries in the DIR file.\n"
+" --quiet             suppress warnings."
 msgstr ""
 
 #: install-info/install-info.c:545
 msgid ""
-" --regex=R          put this file's entries in all sections that match the\n"
-"                     regular expression R (ignoring case).\n"
-" --remove           same as --delete.\n"
-" --remove-exactly   only remove if the info file name matches exactly;\n"
-"                     suffixes such as .info and .gz are not ignored.\n"
-" --section=SEC      put this file's entries in section SEC of the "
-"directory.\n"
-"                     If you specify more than one section, all the entries\n"
-"                     are added in each of the sections.\n"
-"                     If you don't specify any sections, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --section R SEC    equivalent to --regex=R --section=SEC --add-once."
+" --regex=R           put this file's entries in all sections that match the\n"
+"                      regular expression R (ignoring case).\n"
+" --remove            same as --delete.\n"
+" --remove-exactly    only remove if the info file name matches exactly;\n"
+"                      suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC       put entries in section SEC of the directory.\n"
+"                      If you specify more than one section, all the entries\n"
+"                       are added in each of the sections.\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
+"                       from information in the Info file itself.\n"
+" --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
 
 #: install-info/install-info.c:558
 msgid ""
-" --silent           suppress warnings.\n"
-" --test             suppress updating of DIR-FILE.\n"
-" --version          display version information and exit."
+" --silent            suppress warnings.\n"
+" --test              suppress updating of DIR-FILE.\n"
+" --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:590
+#: install-info/install-info.c:565
+#, fuzzy
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Об ошибках сообщайте по адресу bug-texinfo@gnu.org,\n"
+"общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
+"Домашная страница Texinfo: http://www.gnu.org/software/texinfo/"
+
+#: install-info/install-info.c:592
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1878,67 +1881,67 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:615
+#: install-info/install-info.c:617
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: невозможно прочитать (%s) и создать (%s)\n"
 
-#: install-info/install-info.c:702
+#: install-info/install-info.c:704
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: пустой файл"
 
-#: install-info/install-info.c:1019 install-info/install-info.c:1059
+#: install-info/install-info.c:1021 install-info/install-info.c:1061
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY без соответствующего END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1054
+#: install-info/install-info.c:1056
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY без соответствующего START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1906 install-info/install-info.c:1916
+#: install-info/install-info.c:1910 install-info/install-info.c:1920
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: уже существует файл dir: %s\n"
 
-#: install-info/install-info.c:1996
+#: install-info/install-info.c:2000
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Можно задать только один Info-файл.\n"
 
-#: install-info/install-info.c:2029
+#: install-info/install-info.c:2033
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2041
+#: install-info/install-info.c:2045
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr ""
 
-#: install-info/install-info.c:2099
+#: install-info/install-info.c:2103
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "излишний аргумент `%s'"
 
-#: install-info/install-info.c:2103
+#: install-info/install-info.c:2107
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Не задан входной файл.\n"
 "Попробуйте `%s --help' для получения более подробного описания."
 
-#: install-info/install-info.c:2106
+#: install-info/install-info.c:2110
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Не задан файл каталога.\n"
 "Попробуйте `%s --help' для получения более подробного описания."
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2252
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "в `%s' нет вхождения для каталога Info"
 
-#: install-info/install-info.c:2497
+#: install-info/install-info.c:2501
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "не найдено вхождений для `%s'; ничего не удалено"
@@ -3106,6 +3109,38 @@ msgstr "В %s нет номера страницы"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
 
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr ""
+#~ "\\%-10[dir-node]  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
+
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ msgstr "\\%-10[top-node]  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
+
+#~ msgid ""
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[search-backward]  Искать указанную строку в текущем Info-файле в\n"
+#~ "              ноде, в которой найдено следующее вхождение.\n"
+
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index entries "
+#~ "of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Искать заданную строку в алфавитных указателях\n"
+#~ "              Info-файла и выбрать ноду по первой найденной ссылке.\n"
+
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr ""
+#~ "--- Используйте `\\[history-node]' или `\\[kill-node]' для выхода ---\n"
+
 #, fuzzy
 #~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
 #~ msgstr ""
@@ -3419,12 +3454,6 @@ msgstr "за вхождением %s следует вхождение с вторичным именем"
 
 #~ msgid "do not keep temporary files around after processing (default)"
 #~ msgstr "не сохранять временные файлы (по умолчанию)"
-
-#~ msgid ""
-#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
-#~ msgstr ""
-#~ "  %-10s  Произвести поиск заданной строки среди вхождений именных "
-#~ "указателей этого\n"
 
 #~ msgid ""
 #~ "              file, and select the node referenced by the first entry "
