@@ -1,3 +1,11 @@
+2008-02-27  Karl Berry  <karl@gnu.org>
+
+	* info/infomap.c [!INFOKEY]: remove this whole block.  It is too
+	confusing having two sets of key bindings.
+
+	* info/infodoc.c (info_internal_help_text): more tweaks.
+	Suggestions from Benno Schulenberg, 26 Feb 2008 00:34:22.	
+
 2008-02-26  Brendan O'Dea <bod@debian.org>  (tiny change)
 
 	* util/texi2dvi: slightly reformat usage message for help2man.

@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.20 2008-02-26 16:51:05 karl Exp $
+   $Id: infodoc.c,v 1.21 2008-02-27 18:19:34 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -30,10 +30,10 @@
 static char *info_help_nodename = "*Info Help*";
 
 /* A node containing printed key bindings and their documentation. */
-static NODE *internal_info_help_node = (NODE *)NULL;
+static NODE *internal_info_help_node = NULL;
 
 /* A pointer to the contents of the help node. */
-static char *internal_info_help_node_contents = (char *)NULL;
+static char *internal_info_help_node_contents = NULL;
 
 /* The (more or less) static text which appears in the internal info
    help node.  The actual key bindings are inserted.  Keep the
@@ -42,12 +42,18 @@ static char *internal_info_help_node_contents = (char *)NULL;
 #if defined(INFOKEY)
 
 static char *info_internal_help_text[] = {
-  N_("Basic Info command keys\n\
-******************************\n"),
+  N_("Basic Info command keys\n"),
   "\n",
   N_("\\%-10[quit-help]  Close this help window.\n"),
   N_("\\%-10[quit]  Quit Info altogether.\n"),
   N_("\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"),
+  "\n",
+  N_("\\%-10[next-line]  Move down one line.\n"),
+  N_("\\%-10[prev-line]  Move up one line.\n"),
+  N_("\\%-10[scroll-forward]  Scroll forward one screenful.\n"),
+  N_("\\%-10[scroll-backward]  Scroll backward one screenful.\n"),
+  N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
+  N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
   "\n",
   N_("\\%-10[global-next-node]  Go to the next node in the document.\n"),
   N_("\\%-10[global-prev-node]  Go to the previous node in the document.\n"),
@@ -58,22 +64,12 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[top-node]  Go to the top node of this document.\n"),
   N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
   "\n",
-  N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
-  N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
-  N_("\\%-10[next-line]  Scroll forward one line.\n"),
-  N_("\\%-10[prev-line]  Scroll backward one line.\n"),
-  N_("\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"),
-  N_("\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"),
-  "\n",
   N_("\\%-10[search]  Search forward for a specified string\n\
               and select the node in which the next occurrence is found.\n"),
-  N_("\\%-10[search-backward]  Search backward for a specified string\n\
-              and select the node in which the previous occurrence is found.\n"),
   N_("1...9       Pick first...ninth item in this node's menu.\n"),
   N_("\\%-10[last-menu-item]  Pick last item in this node's menu.\n"),
   N_("\\%-10[menu-item]  Pick menu item specified by name.\n"),
-  N_("\\%-10[index-search]  Search for a specified string in the index entries of this Info\n\
-              file, and select the node referenced by the first entry found.\n"),
+  N_("\\%-10[index-search]  Search for a specified string in the index.\n"),
   N_("\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"),
   N_("\\%-10[goto-node]  Move to node specified by name.\n\
               You may include a filename as well, as in (FILENAME)NODENAME.\n"),

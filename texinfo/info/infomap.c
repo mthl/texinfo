@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.17 2008-02-26 16:51:05 karl Exp $
+   $Id: infomap.c,v 1.18 2008-02-27 18:19:34 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -275,569 +275,6 @@ keymap_bind_keyseq (Keymap map,
 Keymap info_keymap = NULL;
 Keymap echo_area_keymap = NULL;
 
-#if !defined(INFOKEY)
-
-static void
-initialize_emacs_like_keymaps ()
-{
-  int i;
-  Keymap map;
-
-  if (!info_keymap)
-    {
-      info_keymap = keymap_make_keymap ();
-      echo_area_keymap = keymap_make_keymap ();
-    }
-
-  info_keymap[ESC].type = ISKMAP;
-  info_keymap[ESC].function = (InfoCommand *)keymap_make_keymap ();
-  info_keymap[Control ('x')].type = ISKMAP;
-  info_keymap[Control ('x')].function = (InfoCommand *)keymap_make_keymap ();
-
-  /* Bind the echo area insert routines.  Let's make all characters
-     insertable by default, regardless of which character set we might
-     be using.  */
-  for (i = 0; i < 256; i++)
-    echo_area_keymap[i].function = ea_insert;
-
-  echo_area_keymap[ESC].type = ISKMAP;
-  echo_area_keymap[ESC].function = (InfoCommand *) keymap_make_keymap ();
-  echo_area_keymap[Control ('x')].type = ISKMAP;
-  echo_area_keymap[Control ('x')].function
-    = (InfoCommand *) keymap_make_keymap ();
-
-  /* Bind numeric arg functions for both echo area and info window maps. */
-  for (i = '0'; i < '9' + 1; i++)
-    {
-      ((Keymap) info_keymap[ESC].function)[i].function
-        = ((Keymap) echo_area_keymap[ESC].function)[i].function
-        = info_add_digit_to_numeric_arg;
-    }
-  ((Keymap) info_keymap[ESC].function)['-'].function
-    = ((Keymap) echo_area_keymap[ESC].function)['-'].function
-    = info_add_digit_to_numeric_arg;
-
-  info_keymap['-'].function = info_add_digit_to_numeric_arg;
-
-  /* Bind the echo area routines. */
-  map = echo_area_keymap;
-
-  map[Control ('a')].function = ea_beg_of_line;
-  map[Control ('b')].function = ea_backward;
-  map[Control ('d')].function = ea_delete;
-  map[Control ('e')].function = ea_end_of_line;
-  map[Control ('f')].function = ea_forward;
-  map[Control ('g')].function = ea_abort;
-  map[Control ('h')].function = ea_rubout;
-  map[Control ('k')].function = ea_kill_line;
-  map[Control ('l')].function = info_redraw_display;
-  map[Control ('q')].function = ea_quoted_insert;
-  map[Control ('t')].function = ea_transpose_chars;
-  map[Control ('u')].function = info_universal_argument;
-  map[Control ('y')].function = ea_yank;
-
-  map[LFD].function = ea_newline;
-  map[RET].function = ea_newline;
-  map[SPC].function = ea_complete;
-  map[TAB].function = ea_complete;
-  map['?'].function = ea_possible_completions;
-#ifdef __MSDOS__
-  /* PC users will lynch me if I don't give them their usual DEL effect...  */
-  map[DEL].function = ea_delete;
-#else
-  map[DEL].function = ea_rubout;
-#endif
-
-  /* Bind the echo area ESC keymap. */
-  map = (Keymap)echo_area_keymap[ESC].function;
-
-  map[Control ('g')].function = ea_abort;
-  map[Control ('v')].function = ea_scroll_completions_window;
-  map['b'].function = ea_backward_word;
-  map['d'].function = ea_kill_word;
-  map['f'].function = ea_forward_word;
-#if defined (NAMED_FUNCTIONS)
-  /* map['x'].function = info_execute_command; */
-#endif /* NAMED_FUNCTIONS */
-  map['y'].function = ea_yank_pop;
-  map['?'].function = ea_possible_completions;
-  map[TAB].function = ea_tab_insert;
-  map[DEL].function = ea_backward_kill_word;
-
-  /* Bind the echo area Control-x keymap. */
-  map = (Keymap)echo_area_keymap[Control ('x')].function;
-
-  map['o'].function = info_next_window;
-  map[DEL].function = ea_backward_kill_line;
-
-  /* Arrow key bindings for echo area keymaps.  It seems that some
-     terminals do not match their termcap entries, so it's best to just
-     define everything with both of the usual prefixes.  */
-  map = echo_area_keymap;
-  keymap_bind_keyseq (map, term_ku, &map[Control ('p')]); /* up */
-  keymap_bind_keyseq (map, "\033OA", &map[Control ('p')]);
-  keymap_bind_keyseq (map, "\033[A", &map[Control ('p')]);
-  keymap_bind_keyseq (map, term_kd, &map[Control ('n')]); /* down */
-  keymap_bind_keyseq (map, "\033OB", &map[Control ('n')]);
-  keymap_bind_keyseq (map, "\033[B", &map[Control ('n')]);
-  keymap_bind_keyseq (map, term_kr, &map[Control ('f')]); /* right */
-  keymap_bind_keyseq (map, "\033OC", &map[Control ('f')]);
-  keymap_bind_keyseq (map, "\033[C", &map[Control ('f')]);
-  keymap_bind_keyseq (map, term_kl, &map[Control ('b')]); /* left */
-  keymap_bind_keyseq (map, "\033OD", &map[Control ('b')]);
-  keymap_bind_keyseq (map, "\033[D", &map[Control ('b')]);
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-  keymap_bind_keyseq (map, term_kh, &map[Control ('a')]); /* home */
-  keymap_bind_keyseq (map, term_ke, &map[Control ('e')]); /* end */
-
-  map = (Keymap)echo_area_keymap[ESC].function;
-  keymap_bind_keyseq (map, term_kl, &map['b']); /* left */
-  keymap_bind_keyseq (map, "\033OA", &map['b']);
-  keymap_bind_keyseq (map, "\033[A", &map['b']);
-  keymap_bind_keyseq (map, term_kr, &map['f']); /* right */
-  keymap_bind_keyseq (map, "\033OB", &map['f']);
-  keymap_bind_keyseq (map, "\033[B", &map['f']);
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  map = (Keymap)echo_area_keymap[Control ('x')].function;
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  /* Bind commands for Info window keymaps. */
-  map = info_keymap;
-  map[TAB].function = info_move_to_next_xref;
-  map[LFD].function = info_select_reference_this_line;
-  map[RET].function = info_select_reference_this_line;
-  map[SPC].function = info_scroll_forward;
-  map[Control ('a')].function = info_beginning_of_line;
-  map[Control ('b')].function = info_backward_char;
-  map[Control ('e')].function = info_end_of_line;
-  map[Control ('f')].function = info_forward_char;
-  map[Control ('g')].function = info_abort_key;
-  map[Control ('h')].function = info_get_help_window;
-  map[Control ('l')].function = info_redraw_display;
-  map[Control ('n')].function = info_next_line;
-  map[Control ('p')].function = info_prev_line;
-  map[Control ('r')].function = isearch_backward;
-  map[Control ('s')].function = isearch_forward;
-  map[Control ('u')].function = info_universal_argument;
-  map[Control ('v')].function = info_scroll_forward_page_only;
-  map[','].function = info_next_index_match;
-  map['/'].function = info_search;
-
-  for (i = '1'; i < '9' + 1; i++)
-    map[i].function = info_menu_digit;
-  map['0'].function = info_last_menu_item;
-
-  map['<'].function = info_first_node;
-  map['>'].function = info_last_node;
-  map['?'].function = info_get_help_window;
-  map['['].function = info_global_prev_node;
-  map[']'].function = info_global_next_node;
-
-  map['b'].function = info_beginning_of_node;
-  map['d'].function = info_dir_node;
-  map['e'].function = info_end_of_node;
-  map['f'].function = info_xref_item;
-  map['g'].function = info_goto_node;
-  map['G'].function = info_menu_sequence;
-  map['h'].function = info_get_info_help_node;
-  map['i'].function = info_index_search;
-  map['I'].function = info_goto_invocation_node;
-  map['l'].function = info_history_node;
-  map['m'].function = info_menu_item;
-  map['n'].function = info_next_node;
-  map['O'].function = info_goto_invocation_node;
-  map['p'].function = info_prev_node;
-  map['q'].function = info_quit;
-  map['r'].function = info_xref_item;
-  map['R'].function = info_toggle_regexp;
-  map['s'].function = info_search;
-  map['S'].function = info_search_case_sensitively;
-  map['t'].function = info_top_node;
-  map['u'].function = info_up_node;
-  map[DEL].function = info_scroll_backward;
-
-  /* Bind members in the ESC map for Info windows. */
-  map = (Keymap)info_keymap[ESC].function;
-  map[Control ('f')].function = info_show_footnotes;
-  map[Control ('g')].function = info_abort_key;
-  map[TAB].function = info_move_to_prev_xref;
-  map[Control ('v')].function = info_scroll_other_window;
-  map['<'].function = info_beginning_of_node;
-  map['>'].function = info_end_of_node;
-  map['b'].function = info_backward_word;
-  map['f'].function = info_forward_word;
-  map['r'].function = info_move_to_window_line;
-  map['v'].function = info_scroll_backward_page_only;
-#if defined (NAMED_FUNCTIONS)
-  map['x'].function = info_execute_command;
-#endif /* NAMED_FUNCTIONS */
-  map[DEL].function = info_scroll_other_window_backward;
-
-  /* Bind members in the Control-X map for Info windows. */
-  map = (Keymap)info_keymap[Control ('x')].function;
-
-  map[Control ('b')].function = list_visited_nodes;
-  map[Control ('c')].function = info_quit;
-  map[Control ('f')].function = info_view_file;
-  map[Control ('g')].function = info_abort_key;
-  map[Control ('v')].function = info_view_file;
-  map['0'].function = info_delete_window;
-  map['1'].function = info_keep_one_window;
-  map['2'].function = info_split_window;
-  map['^'].function = info_grow_window;
-  map['b'].function = select_visited_node;
-  map['k'].function = info_kill_node;
-  map['n'].function = info_search_next;
-  map['N'].function = info_search_previous;
-  map['o'].function = info_next_window;
-  map['t'].function = info_tile_windows;
-  map['w'].function = info_toggle_wrap;
-
-  /* Arrow key bindings for Info windows keymap. */
-  map = info_keymap;
-  keymap_bind_keyseq (map, term_kN, &map[SPC]);           /* pagedown */
-  keymap_bind_keyseq (map, term_ku, &map[Control ('p')]); /* up */
-  keymap_bind_keyseq (map, "\033OA", &map[Control ('p')]);
-  keymap_bind_keyseq (map, "\033[A", &map[Control ('p')]);
-  keymap_bind_keyseq (map, term_kd, &map[Control ('n')]); /* down */
-  keymap_bind_keyseq (map, "\033OB", &map[Control ('n')]);
-  keymap_bind_keyseq (map, "\033[B", &map[Control ('n')]);
-  keymap_bind_keyseq (map, term_kr, &map[Control ('f')]); /* right */
-  keymap_bind_keyseq (map, "\033OC", &map[Control ('f')]);
-  keymap_bind_keyseq (map, "\033[C", &map[Control ('f')]);
-  keymap_bind_keyseq (map, term_kl, &map[Control ('b')]); /* left */
-  keymap_bind_keyseq (map, "\033OD", &map[Control ('b')]);
-  keymap_bind_keyseq (map, "\033[D", &map[Control ('b')]);
-  keymap_bind_keyseq (map, term_kh, &map['b']);           /* home */
-  keymap_bind_keyseq (map, term_ke, &map['e']);           /* end */
-  keymap_bind_keyseq (map, term_kD, &map[DEL]);           /* delete */
-
-  map = (Keymap)info_keymap[ESC].function;
-  keymap_bind_keyseq (map, term_kl, &map['b']); /* left */
-  keymap_bind_keyseq (map, "\033OA", &map['b']);
-  keymap_bind_keyseq (map, "\033[A", &map['b']);
-  keymap_bind_keyseq (map, term_kr, &map['f']); /* right */
-  keymap_bind_keyseq (map, "\033OB", &map['f']);
-  keymap_bind_keyseq (map, "\033[B", &map['f']);
-  keymap_bind_keyseq (map, term_kN, &map[SPC]); /* pagedown */
-  keymap_bind_keyseq (map, term_kP, &map[DEL]); /* pageup */
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  /* The alternative to this definition of a `main map' key in the
-     `ESC map' section, is something like:
-    keymap_bind_keyseq (map, term_kP, &((KeyMap)map[ESC].function).map['v']);
-  */
-  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map[DEL]); /* pageup */
-}
-
-
-static void
-initialize_vi_like_keymaps ()
-{
-  int i;
-  Keymap map;
-
-  if (!info_keymap)
-    {
-      info_keymap = keymap_make_keymap ();
-      echo_area_keymap = keymap_make_keymap ();
-    }
-
-  info_keymap[ESC].type = ISKMAP;
-  info_keymap[ESC].function = (InfoCommand *)keymap_make_keymap ();
-  info_keymap[Control ('x')].type = ISKMAP;
-  info_keymap[Control ('x')].function = (InfoCommand *)keymap_make_keymap ();
-
-  /* Bind the echo area insert routines. */
-  for (i = 0; i < 256; i++)
-    echo_area_keymap[i].function = ea_insert;
-
-  echo_area_keymap[ESC].type = ISKMAP;
-  echo_area_keymap[ESC].function = (InfoCommand *) keymap_make_keymap ();
-  echo_area_keymap[Control ('x')].type = ISKMAP;
-  echo_area_keymap[Control ('x')].function
-    = (InfoCommand *)keymap_make_keymap ();
-
-  /* Bind numeric arg functions for both echo area and info window maps. */
-  for (i = '0'; i < '9' + 1; i++)
-    {
-      info_keymap[i].function
-        = ((Keymap) echo_area_keymap[ESC].function)[i].function
-        = info_add_digit_to_numeric_arg;
-    }
-  info_keymap['-'].function
-    = ((Keymap) echo_area_keymap[ESC].function)['-'].function
-    = info_add_digit_to_numeric_arg;
-
-  /* Bind the echo area routines. */
-  map = echo_area_keymap;
-
-  map[Control ('a')].function = ea_beg_of_line;
-  map[Control ('b')].function = ea_backward;
-  map[Control ('d')].function = ea_delete;
-  map[Control ('e')].function = ea_end_of_line;
-  map[Control ('f')].function = ea_forward;
-  map[Control ('g')].function = ea_abort;
-  map[Control ('h')].function = ea_rubout;
-  map[Control ('k')].function = ea_kill_line;
-  map[Control ('l')].function = info_redraw_display;
-  map[Control ('q')].function = ea_quoted_insert;
-  map[Control ('t')].function = ea_transpose_chars;
-  map[Control ('u')].function = ea_abort;
-  map[Control ('v')].function = ea_quoted_insert;
-  map[Control ('y')].function = ea_yank;
-
-  map[LFD].function = ea_newline;
-  map[RET].function = ea_newline;
-  map[SPC].function = ea_complete;
-  map[TAB].function = ea_complete;
-  map['?'].function = ea_possible_completions;
-#ifdef __MSDOS__
-  /* PC users will lynch me if I don't give them their usual DEL effect...  */
-  map[DEL].function = ea_delete;
-#else
-  map[DEL].function = ea_rubout;
-#endif
-
-  /* Bind the echo area ESC keymap. */
-  map = (Keymap)echo_area_keymap[ESC].function;
-
-  map[Control ('g')].function = ea_abort;
-  map[Control ('h')].function = ea_backward_kill_word;
-  map[Control ('v')].function = ea_scroll_completions_window;
-  map['0'].function = ea_beg_of_line;
-  map['$'].function = ea_end_of_line;
-  map['b'].function = ea_backward_word;
-  map['d'].function = ea_kill_word;
-  map['f'].function = ea_forward_word;
-  map['h'].function = ea_backward;
-  map['l'].function = ea_forward;
-  map['w'].function = ea_forward_word;
-  map['x'].function = ea_delete;
-  map['X'].function = ea_kill_word;
-  map['y'].function = ea_yank_pop;
-  map['?'].function = ea_possible_completions;
-  map[TAB].function = ea_tab_insert;
-  map[DEL].function = ea_kill_word;
-
-  /* Bind the echo area Control-x keymap. */
-  map = (Keymap)echo_area_keymap[Control ('x')].function;
-
-  map['o'].function = info_next_window;
-  map[DEL].function = ea_backward_kill_line;
-
-  /* Arrow key bindings for echo area keymaps.  It seems that some
-     terminals do not match their termcap entries, so it's best to just
-     define everything with both of the usual prefixes.  */
-  map = echo_area_keymap;
-  keymap_bind_keyseq (map, term_ku, &map[Control ('p')]); /* up */
-  keymap_bind_keyseq (map, "\033OA", &map[Control ('p')]);
-  keymap_bind_keyseq (map, "\033[A", &map[Control ('p')]);
-  keymap_bind_keyseq (map, term_kd, &map[Control ('n')]); /* down */
-  keymap_bind_keyseq (map, "\033OB", &map[Control ('n')]);
-  keymap_bind_keyseq (map, "\033[B", &map[Control ('n')]);
-  keymap_bind_keyseq (map, term_kr, &map[Control ('f')]); /* right */
-  keymap_bind_keyseq (map, "\033OC", &map[Control ('f')]);
-  keymap_bind_keyseq (map, "\033[C", &map[Control ('f')]);
-  keymap_bind_keyseq (map, term_kl, &map[Control ('b')]); /* left */
-  keymap_bind_keyseq (map, "\033OD", &map[Control ('b')]);
-  keymap_bind_keyseq (map, "\033[D", &map[Control ('b')]);
-  keymap_bind_keyseq (map, term_kh, &map[Control ('a')]); /* home */
-  keymap_bind_keyseq (map, term_ke, &map[Control ('e')]); /* end */
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  map = (Keymap)echo_area_keymap[ESC].function;
-  keymap_bind_keyseq (map, term_kl, &map['b']); /* left */
-  keymap_bind_keyseq (map, "\033OA", &map['b']);
-  keymap_bind_keyseq (map, "\033[A", &map['b']);
-  keymap_bind_keyseq (map, term_kr, &map['f']); /* right */
-  keymap_bind_keyseq (map, "\033OB", &map['f']);
-  keymap_bind_keyseq (map, "\033[B", &map['f']);
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  map = (Keymap)echo_area_keymap[Control ('x')].function;
-  keymap_bind_keyseq (map, term_kD, &map[DEL]);
-
-  /* Bind commands for Info window keymaps. */
-  map = info_keymap;
-  map[TAB].function = info_move_to_next_xref;
-  map[LFD].function = info_down_line;
-  map[RET].function = info_down_line;
-  map[SPC].function = info_scroll_forward;
-  map[Control ('a')].function = info_beginning_of_line;
-  map[Control ('b')].function = info_scroll_backward_page_only;
-  map[Control ('d')].function = info_scroll_half_screen_down;
-  map[Control ('e')].function = info_down_line;
-  map[Control ('f')].function = info_scroll_forward_page_only;
-  map[Control ('g')].function = info_abort_key;
-  map[Control ('k')].function = info_up_line;
-  map[Control ('l')].function = info_redraw_display;
-  map[Control ('n')].function = info_down_line;
-  map[Control ('p')].function = info_up_line;
-  map[Control ('r')].function = info_redraw_display;
-  map[Control ('s')].function = isearch_forward;
-  map[Control ('u')].function = info_scroll_half_screen_up;
-  map[Control ('v')].function = info_scroll_forward_page_only;
-  map[Control ('y')].function = info_up_line;
-  map[','].function = info_next_index_match;
-  map['/'].function = info_search;
-
-  for (i = '1'; i < '9' + 1; i++)
-    ((Keymap) info_keymap[ESC].function)[i].function = info_menu_digit;
-  ((Keymap) info_keymap[ESC].function)['0'].function = info_last_menu_item;
-
-  map['<'].function = info_first_node;
-  map['>'].function = info_last_node;
-  map['?'].function = info_search_backward;
-  map['['].function = info_global_prev_node;
-  map[']'].function = info_global_next_node;
-  map['\''].function = info_history_node;
-
-  map['b'].function = info_scroll_backward;
-  map['d'].function = info_scroll_half_screen_down;
-  map['e'].function = info_down_line;
-  map['E'].function = info_view_file;
-  map['f'].function = info_scroll_forward_page_only;
-  map['F'].function = info_scroll_forward_page_only;
-  map['g'].function = info_first_node;
-  map['G'].function = info_last_node;
-  map['h'].function = info_get_help_window;
-  map['H'].function = info_get_help_window;
-  map['i'].function = info_index_search;
-  map['I'].function = info_goto_invocation_node;
-  map['j'].function = info_next_line;
-  map['k'].function = info_prev_line;
-  map['l'].function = info_history_node;
-  map['m'].function = info_menu_item;
-  map['n'].function = info_search_next;
-  map['N'].function = info_search_previous;
-  map['O'].function = info_goto_invocation_node;
-  map['p'].function = info_prev_node;
-  map['q'].function = info_quit;
-  map['Q'].function = info_quit;
-  map['r'].function = info_redraw_display;
-  map['R'].function = info_toggle_regexp;
-  map['s'].function = info_search;
-  map['S'].function = info_search_case_sensitively;
-  map['t'].function = info_top_node;
-  map['u'].function = info_scroll_half_screen_up;
-  map['w'].function = info_scroll_backward_page_only_set_window;
-  map['y'].function = info_up_line;
-  map['z'].function = info_scroll_forward_page_only_set_window;
-  map['Z'].function = NULL;     /* unbind, so it works to bind "ZZ" below */
-  map[DEL].function = info_scroll_backward;
-  keymap_bind_keyseq (map, term_kD, &map[DEL]);
-  keymap_bind_keyseq (map, ":q", &map['q']);
-  keymap_bind_keyseq (map, ":Q", &map['q']);
-  keymap_bind_keyseq (map, "ZZ", &map['q']);
-
-  /* Bind members in the ESC map for Info windows. */
-  map = (Keymap)info_keymap[ESC].function;
-  map[Control ('f')].function = info_show_footnotes;
-  map[Control ('g')].function = info_abort_key;
-  map[TAB].function = info_move_to_prev_xref;
-  map[SPC].function = info_scroll_forward_page_only;
-  map[Control ('v')].function = info_scroll_other_window;
-  map['<'].function = info_beginning_of_node;
-  map['>'].function = info_end_of_node;
-  map['/'].function = info_search;
-  map['?'].function = info_search_backward;
-  map['b'].function = info_beginning_of_node;
-  map['d'].function = info_dir_node;
-  map['e'].function = info_end_of_node;
-  map['f'].function = info_xref_item;
-  map['g'].function = info_select_reference_this_line;
-  map['h'].function = info_get_info_help_node;
-  map['m'].function = info_menu_item;
-  map['n'].function = info_search;
-  map['N'].function = info_search_backward;
-  map['r'].function = isearch_backward;
-  map['s'].function = isearch_forward;
-  map['t'].function = info_top_node;
-  map['v'].function = info_scroll_backward_page_only;
-#if defined (NAMED_FUNCTIONS)
-  map['x'].function = info_execute_command;
-#endif /* NAMED_FUNCTIONS */
-  map[DEL].function = info_scroll_other_window_backward;
-
-  /* Bind members in the Control-X map for Info windows. */
-  map = (Keymap)info_keymap[Control ('x')].function;
-
-  map[Control ('b')].function = list_visited_nodes;
-  map[Control ('c')].function = info_quit;
-  map[Control ('f')].function = info_view_file;
-  map[Control ('g')].function = info_abort_key;
-  map[Control ('v')].function = info_view_file;
-  map[LFD].function = info_select_reference_this_line;
-  map[RET].function = info_select_reference_this_line;
-  map['0'].function = info_delete_window;
-  map['1'].function = info_keep_one_window;
-  map['2'].function = info_split_window;
-  map['^'].function = info_grow_window;
-  map['b'].function = select_visited_node;
-  map['g'].function = info_goto_node;
-  map['i'].function = info_index_search;
-  map['I'].function = info_goto_invocation_node;
-  map['k'].function = info_kill_node;
-  map['n'].function = info_next_node;
-  map['o'].function = info_next_window;
-  map['O'].function = info_goto_invocation_node;
-  map['p'].function = info_prev_node;
-  map['r'].function = info_xref_item;
-  map['t'].function = info_tile_windows;
-  map['u'].function = info_up_node;
-  map['w'].function = info_toggle_wrap;
-  map[','].function = info_next_index_match;
-  keymap_bind_keyseq (info_keymap, ":e", &map[Control ('v')]);
-
-  /* Arrow key bindings for Info windows keymap. */
-  map = info_keymap;
-  keymap_bind_keyseq (map, term_kN, &map[Control ('v')]); /* pagedown */
-  keymap_bind_keyseq (map, term_ku, &map[Control ('p')]); /* up */
-  keymap_bind_keyseq (map, "\033OA", &map[Control ('p')]);
-  keymap_bind_keyseq (map, "\033[A", &map[Control ('p')]);
-  keymap_bind_keyseq (map, term_kd, &map[Control ('n')]); /* down */
-  keymap_bind_keyseq (map, "\033OB", &map[Control ('n')]);
-  keymap_bind_keyseq (map, "\033[B", &map[Control ('n')]);
-  keymap_bind_keyseq (map, term_kr, &map[Control ('f')]); /* right */
-  keymap_bind_keyseq (map, "\033OC", &map[Control ('f')]);
-  keymap_bind_keyseq (map, "\033[C", &map[Control ('f')]);
-  keymap_bind_keyseq (map, term_kl, &map[Control ('b')]); /* left */
-  keymap_bind_keyseq (map, "\033OD", &map[Control ('b')]);
-  keymap_bind_keyseq (map, "\033[D", &map[Control ('b')]);
-  keymap_bind_keyseq (map, term_kh, &map['b']); /* home */
-  keymap_bind_keyseq (map, term_ke, &map['e']); /* end */
-
-  map = (Keymap)info_keymap[ESC].function;
-  keymap_bind_keyseq (map, term_kl, &map['b']); /* left */
-  keymap_bind_keyseq (map, "\033OA", &map['b']);
-  keymap_bind_keyseq (map, "\033[A", &map['b']);
-  keymap_bind_keyseq (map, term_kr, &map['f']); /* right */
-  keymap_bind_keyseq (map, "\033OB", &map['f']);
-  keymap_bind_keyseq (map, "\033[B", &map['f']);
-  keymap_bind_keyseq (map, term_kN, &map[Control ('v')]); /* pagedown */
-  keymap_bind_keyseq (map, term_kP, &map[DEL]); /* pageup */
-  keymap_bind_keyseq (map, term_kD, &map[DEL]); /* delete */
-
-  /* The alternative to this definition of a `main map' key in the
-     `ESC map' section, is something like:
-    keymap_bind_keyseq (map, term_kP, &((KeyMap)map[ESC].function).map['v']);
-  */
-  keymap_bind_keyseq (info_keymap/*sic*/, term_kP, &map[DEL]); /* pageup */
-}
-
-void
-initialize_info_keymaps ()
-{
-  if (vi_keys_p)
-    initialize_vi_like_keymaps ();
-  else
-    initialize_emacs_like_keymaps ();
-}
-
-#else /* defined(INFOKEY) */
-
 /* Make sure that we don't have too many command codes defined. */
 
 #if A_NCOMMANDS > A_MAX_COMMAND + 1
@@ -854,7 +291,6 @@ static unsigned char default_emacs_like_info_keys[] =
         TAB, NUL,                       A_info_move_to_next_xref,
         LFD, NUL,                       A_info_select_reference_this_line,
         RET, NUL,                       A_info_select_reference_this_line,
-        SPC, NUL,                       A_info_scroll_forward,
         CONTROL('a'), NUL,              A_info_beginning_of_line,
         CONTROL('b'), NUL,              A_info_backward_char,
         CONTROL('e'), NUL,              A_info_end_of_line,
@@ -905,7 +341,6 @@ static unsigned char default_emacs_like_info_keys[] =
         'S', NUL,                       A_info_search_case_sensitively,
         't', NUL,                       A_info_top_node,
         'u', NUL,                       A_info_up_node,
-        DEL, NUL,                       A_info_scroll_backward,
         ESC, '0', NUL,                  A_info_add_digit_to_numeric_arg,
         ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
         ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
@@ -973,6 +408,8 @@ static unsigned char default_emacs_like_info_keys[] =
         /* We want help to report q, not C-x C-c, etc.  */
         'q', NUL,                       A_info_quit,
         'x', NUL,                       A_info_delete_window,
+        SPC, NUL,                       A_info_scroll_forward,
+        DEL, NUL,                       A_info_scroll_backward,
 
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
@@ -1132,7 +569,6 @@ static unsigned char default_vi_like_info_keys[] =
         TAB, NUL,                       A_info_move_to_next_xref,
         LFD, NUL,                       A_info_down_line,
         RET, NUL,                       A_info_down_line,
-        SPC, NUL,                       A_info_scroll_forward,
         CONTROL('a'), NUL,              A_info_beginning_of_line,
         CONTROL('b'), NUL,              A_info_scroll_backward_page_only,
         CONTROL('d'), NUL,              A_info_scroll_half_screen_down,
@@ -1210,7 +646,6 @@ static unsigned char default_vi_like_info_keys[] =
         'w', NUL,                       A_info_scroll_backward_page_only_set_window,
         'y', NUL,                       A_info_up_line,
         'z', NUL,                       A_info_scroll_forward_page_only_set_window,
-        DEL, NUL,                       A_info_scroll_backward,
         ESC, CONTROL('f'), NUL,         A_info_show_footnotes,
         ESC, CONTROL('g'), NUL,         A_info_abort_key,
         ESC, TAB, NUL,                  A_info_move_to_prev_xref,
@@ -1267,6 +702,8 @@ static unsigned char default_vi_like_info_keys[] =
         /* We want help to report q, not C-x C-c, etc.  */
         'q', NUL,                       A_info_quit,
         'x', NUL,                       A_info_delete_window,
+        SPC, NUL,                       A_info_scroll_forward,
+        DEL, NUL,                       A_info_scroll_backward,
 
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
@@ -1431,7 +868,7 @@ static unsigned int user_vars_len;
  * Return the size of a file, or 0 if the size can't be determined.
  */
 static unsigned long
-filesize(int f)
+filesize (int f)
 {
         long pos = lseek(f, 0L, SEEK_CUR);
         long sz = -1L;
@@ -1447,7 +884,7 @@ filesize(int f)
    Integers are stored as two bytes, low order first, in radix INFOKEY_RADIX.
  */
 static int
-getint(unsigned char **sp)
+getint (unsigned char **sp)
 {
         int n;
 
@@ -1462,7 +899,7 @@ getint(unsigned char **sp)
 /* Fetch the contents of the standard infokey file "$HOME/.info".  Return
    true if ok, false if not.  */
 static int
-fetch_user_maps(void)
+fetch_user_maps (void)
 {
         char *filename = NULL;
         char *homedir;
@@ -1837,5 +1274,4 @@ initialize_info_keymaps (void)
     section_to_vars(user_vars, user_vars_len);
 }
 
-#endif /* defined(INFOKEY) */
 /* vim: set sw=2 cino={1s>2sn-s^-se-s: */
