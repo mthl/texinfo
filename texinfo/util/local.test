@@ -25,7 +25,11 @@ set -e
 
 # Make sure quotes are used to protect the value.  See the comment in
 # texi2dvi itself about local.
-if $EGREP "^ *local [a-zA-Z_0-9]*=[^\"']" $TEXI2DVI; then
+if sed -e 's/^[	 ]*#.*//' $TEXI2DVI |
+    $EGREP "\blocal [a-zA-Z_0-9]*=[^\"']" |
+    $EGREP -v "\blocal [a-zA-Z_0-9]*=[a-zA-Z0-9]*$" |
+    grep .
+then
   false
 else
   true

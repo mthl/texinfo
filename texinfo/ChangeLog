@@ -1,10 +1,18 @@
+2008-02-28  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: Don't use "local foo=`cmd`", because in that case
+	failures of cmd, including with set -e, will go unnoticed.  So
+	always first declare with local, then run the assignment.
+	(index_file_p): Adjust to be usable with index.sty.
+	* util/local.test: Make the test more robust.
+
 2008-02-27  Karl Berry  <karl@gnu.org>
 
 	* info/infomap.c [!INFOKEY]: remove this whole block.  It is too
 	confusing having two sets of key bindings.
 
 	* info/infodoc.c (info_internal_help_text): more tweaks.
-	Suggestions from Benno Schulenberg, 26 Feb 2008 00:34:22.	
+	Suggestions from Benno Schulenberg, 26 Feb 2008 00:34:22.
 
 2008-02-26  Brendan O'Dea <bod@debian.org>  (tiny change)
 
@@ -41,7 +49,7 @@
 
 	* install-info/install-info.c (munge_old_style_debian_options):
 	avoid use of asprintf, just xmalloc ourselves.
-	In report from Juan Manuel Guerrero, 24 Feb 2008 22:06:35.	
+	In report from Juan Manuel Guerrero, 24 Feb 2008 22:06:35.
 
 	* install-info/install-info.c (spec_entry) <text_len>: declare
 	as size_t instead of int, to avoid warning.
@@ -51,7 +59,7 @@
 
 	* pretest 4.11.90.
 
-2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de> 
+2008-02-22  Peter Breitenlohner <peb@mppmu.mpg.de>
 
 	* configure.ac (--enable-multiplatform): also set libdir.
 	* util/defs.in (PATH): include @abs_builddir@.
@@ -83,7 +91,7 @@
 	* util/texi2dvi: path_sep is : on djgpp too.  From Eli Z.
 
 	* makeinfo/makeinfo.c: typos in comments.
-	
+
 	* makeinfo/cmds.c (cm_direntry): call close_single_paragraph,
 	instead of add_char('\n'), or the INFO-DIR-SECTION lines from two
 	consecutive @dircategory's are munged together.
@@ -203,7 +211,7 @@
 	* doc/texinfo.txi (Invoking makeinfo): --document-language default
 	is @documentlanguage, as of 4.11.
 
-	* doc/texinfo.txi (Makeinfo Pointer Creation): mention the 
+	* doc/texinfo.txi (Makeinfo Pointer Creation): mention the
 	need for @detailmenu here, too.
 
 2008-01-14  Karl Berry  <karl@gnu.org>
@@ -244,7 +252,7 @@
 	* install-info/install-info.c: much work toward Debian compatibility.
 	(line_data): new member num_sections to add; change type of
 	add_entries_before.
-	(spec_entry): new members missing_name, missing_description, 
+	(spec_entry): new members missing_name, missing_description,
 	missing_basename.
 	(longopts): new options --name, --menuentry, --description,
 	--no-indent, --keep-old, --maxwidth, --max-width,
@@ -331,10 +339,10 @@
 2007-12-09  Fabian Groffen  <grobian@gentoo.org>  (tiny change)
 
 	* info/makedoc.c (main): reorder calls following the Makefile
-	dependencies, for high-precision filesystems.  
+	dependencies, for high-precision filesystems.
 	http://bugs.gentoo.org/show_bug.cgi?id=200662
 	bug-texinfo mail of 3 Dec 2007 17:59:13 +0100.
-	
+
 2007-12-02  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (main): undo change of 2006-08-13 in this file,
@@ -352,7 +360,7 @@
 
 	* doc/Makeinfo.am: Rename txi-no.tex to txi-nb.tex (see
 	2007-10-31).
-	
+
 2007-11-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (headings on off): clarify the meaning of
@@ -388,7 +396,7 @@
 
 	* doc/txi-no.tex: rename to txi-nb.tex.
 	* po/no.po: remove.
-	* po/LINGUAS: remove no.	
+	* po/LINGUAS: remove no.
 
 2007-10-24  Karl Berry  <karl@gnu.org>
 
@@ -398,7 +406,7 @@
 	xml_begin_document in docbook case too, else some frontmatter
 	can be lost.
 	Bug report from Sam Varshavchik, 14 Oct 2007 12:10:04, for binutils.
-	
+
 	* makeinfo/insertion.c: formatting.
 
 	* makeinfo/xml.c (xml_begin_document): arg can be const;
@@ -463,7 +471,7 @@
 	reported by Werner Lemberg, 16 Sep 2007 16:48:47.
 
 	* makeinfo/cmds.c,
-	* makeinfo/xref.c: #include "index.h", instead of explicit	
+	* makeinfo/xref.c: #include "index.h", instead of explicit
 	extern printing_index.
 	* makeinfo/index.c (the_indices, index_element_compare): can be static.
 	* makeinfo/index.h: make order of decls match index.c.
@@ -599,7 +607,7 @@
 
 	* pretest 4.9.91.
 	* doc/texinfo.txi (Inserting Quotes): wording.
-	
+
 	* util/Makefile.am (TESTS): remove local.test.  It fails and I
 	would prefer not to replace local with a shell function anyway.
 

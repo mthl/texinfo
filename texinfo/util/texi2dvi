@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.113 2008-02-26 17:09:39 karl Exp $
+# $Id: texi2dvi,v 1.114 2008-02-28 14:01:56 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.113 $'
+rcs_revision='$Revision: 1.114 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -488,7 +488,8 @@ absolute_filenames ()
   local replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
 		       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
 		       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
-  local res=`echo "$1" | eval sed $replace_empty`
+  local res
+  res=`echo "$1" | eval sed $replace_empty`
   save_IFS=$IFS
   IFS=$path_sep
   set x $res; shift
@@ -517,8 +518,10 @@ output_base_name ()
 {
   case $oname in
     '') echo "$1";;
-     *) local out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
-	local file_ext=`echo "$1" | sed 's/^.*\.//'`
+     *) local out_noext
+	out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
+	local file_ext
+	file_ext=`echo "$1" | sed 's/^.*\.//'`
 	echo "$out_noext.$file_ext"
       ;;
   esac
@@ -625,11 +628,12 @@ bibaux_file_p ()
 # index_file_p FILE
 # -----------------
 # Return with success with FILE is an index file.
+# When index.sty is used, there is a space before the brace.
 index_file_p ()
 {
   test -f "$1" || return 1
   case `sed '1q' $1` in
-    "\\entry{"*|"\\indexentry{"*) return 0;;
+    "\\entry{"*|"\\indexentry{"*|"\\indexentry {"*) return 0;;
     *) return 1;;
   esac
 }
@@ -1110,7 +1114,8 @@ run_makeinfo ()
     work_src=$workdir/src
     ensure_dir "$work_src"
     in_src=$work_src/$in_base
-    local miincludes=`list_prefix includes -I`
+    local miincludes
+    miincludes=`list_prefix includes -I`
     verbose "Macro-expanding $command_line_filename to $in_src ..."
     # eval $makeinfo because it might be defined as something complex
     # (running missing) and then we end up with things like '"-I"',
