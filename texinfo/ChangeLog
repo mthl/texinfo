@@ -1,3 +1,8 @@
+2008-02-28  Karl Berry  <karl@gnu.org>
+
+	* info/infodoc.c (info_internal_help_text): more tweaks.
+	Suggestions from Benno Schulenberg, 27 Feb 2008 23:44:17.
+
 2008-02-28  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (absolute): Add a missing "local".
@@ -19,6 +24,8 @@
 	* util/local.test: Make the test more robust.
 
 2008-02-27  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.11.91.
 
 	* info/infomap.c [!INFOKEY]: remove this whole block.  It is too
 	confusing having two sets of key bindings.

@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.21 2008-02-27 18:19:34 karl Exp $
+   $Id: infodoc.c,v 1.22 2008-02-28 14:47:37 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -48,10 +48,10 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[quit]  Quit Info altogether.\n"),
   N_("\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"),
   "\n",
-  N_("\\%-10[next-line]  Move down one line.\n"),
   N_("\\%-10[prev-line]  Move up one line.\n"),
-  N_("\\%-10[scroll-forward]  Scroll forward one screenful.\n"),
+  N_("\\%-10[next-line]  Move down one line.\n"),
   N_("\\%-10[scroll-backward]  Scroll backward one screenful.\n"),
+  N_("\\%-10[scroll-forward]  Scroll forward one screenful.\n"),
   N_("\\%-10[beginning-of-node]  Go to the beginning of this node.\n"),
   N_("\\%-10[end-of-node]  Go to the end of this node.\n"),
   "\n",
@@ -59,22 +59,21 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[global-prev-node]  Go to the previous node in the document.\n"),
   N_("\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"),
   N_("\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"),
-  N_("\\%-10[history-node]  Go back to the last node seen in this window.\n"),
+  N_("\\%-10[history-node]  Return to the previous node seen in this window.\n"),
   N_("\\%-10[up-node]  Go up one level.\n"),
   N_("\\%-10[top-node]  Go to the top node of this document.\n"),
   N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
   "\n",
-  N_("\\%-10[search]  Search forward for a specified string\n\
-              and select the node in which the next occurrence is found.\n"),
-  N_("1...9       Pick first...ninth item in this node's menu.\n"),
-  N_("\\%-10[last-menu-item]  Pick last item in this node's menu.\n"),
-  N_("\\%-10[menu-item]  Pick menu item specified by name.\n"),
-  N_("\\%-10[index-search]  Search for a specified string in the index.\n"),
-  N_("\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"),
-  N_("\\%-10[goto-node]  Move to node specified by name.\n\
-              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
-  N_("\\%-10[next-node]  Move to the next node of current section.\n"),
-  N_("\\%-10[prev-node]  Move to the previous node of current section.\n"),
+  N_("\\%-10[search]  Search forward for a specified string.\n"),
+  N_("\\%-10[index-search]  Search for a specified string in the index, and\n\
+              select the node referenced by the first entry found.\n"),
+  N_("1...9       Pick the first...ninth item in this node's menu.\n"),
+  N_("\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"),
+  N_("\\%-10[menu-item]  Pick a menu item specified by name.\n"),
+  N_("\\%-10[xref-item]  Follow a cross reference specified by name.\n"),
+  N_("\\%-10[goto-node]  Go to a node specified by name.\n"),
+  N_("\\%-10[next-node]  Move to the next node within the current section.\n"),
+  N_("\\%-10[prev-node]  Move to the previous node within the current section.\n"),
   NULL
 };
 
@@ -303,10 +302,10 @@ create_internal_info_help_node (int help_is_only_window_p)
 #endif /* !INFOKEY */
         }
 
-      printf_to_message_buffer ("---------------------\n\n", NULL, NULL, NULL);
+      printf_to_message_buffer ("---------------------\n", NULL, NULL, NULL);
       printf_to_message_buffer (_("The current search path is:\n"),
           NULL, NULL, NULL);
-      printf_to_message_buffer ("  %s\n", infopath, NULL, NULL);
+      printf_to_message_buffer ("%s\n", infopath, NULL, NULL);
       printf_to_message_buffer ("---------------------\n\n", NULL, NULL, NULL);
       printf_to_message_buffer (_("Commands available in Info windows:\n\n"),
           NULL, NULL, NULL);
