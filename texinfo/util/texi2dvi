@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.115 2008-02-28 14:12:32 akim Exp $
+# $Id: texi2dvi,v 1.116 2008-02-28 14:14:47 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.115 $'
+rcs_revision='$Revision: 1.116 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -268,6 +268,7 @@ absolute ()
       ;;
    *) local slashes
       slashes=`echo "$1" | sed -n 's,.*[^/]\(/*\)$,\1,p'`
+      local rel
       rel=$orig_pwd/`func_dirname "$1"`
       if test -d "$rel"; then
 	(cd "$rel" 2>/dev/null &&

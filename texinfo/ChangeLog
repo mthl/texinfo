@@ -1,5 +1,9 @@
 2008-02-28  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi (absolute): Add a missing "local".
+
+2008-02-28  Akim Demaille  <akim@epita.fr>
+
 	Let texi2dvi keep the trailing //.
 	* bin/texi2dvi ($space, $tab): New.
 	($IFS): Use them to be robust to zealous white space cleanups.
