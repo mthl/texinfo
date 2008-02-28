@@ -1,5 +1,13 @@
 2008-02-28  Akim Demaille  <akim@epita.fr>
 
+	Let texi2dvi keep the trailing //.
+	* bin/texi2dvi ($space, $tab): New.
+	($IFS): Use them to be robust to zealous white space cleanups.
+	(absolute): Preserve the trailing slashes.
+	(tex_envvars): Add MPINPUTS, MFINPUTS, and TFMFONTS.
+
+2008-02-28  Akim Demaille  <akim@epita.fr>
+
 	* util/texi2dvi: Don't use "local foo=`cmd`", because in that case
 	failures of cmd, including with set -e, will go unnoticed.  So
 	always first declare with local, then run the assignment.

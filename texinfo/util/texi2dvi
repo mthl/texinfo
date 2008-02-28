@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.114 2008-02-28 14:01:56 akim Exp $
+# $Id: texi2dvi,v 1.115 2008-02-28 14:12:32 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.114 $'
+rcs_revision='$Revision: 1.115 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -115,8 +115,8 @@ Using the \`tidy' mode brings several advantages:
   -   the current directory is not cluttered with plethora of temporary files.
   -   clutter can be even reduced using --build-dir=dir: all the *.t2d
       directories are stored there.
-  -   clutter can be reduced to zero using,e.g., --build-dir=/tmp/\$USER.t2d or
-      --build-dir=\$HOME/.t2d.
+  -   clutter can be reduced to zero using, e.g., --build-dir=/tmp/\$USER.t2d
+      or --build-dir=\$HOME/.t2d.
   -   the output file is updated after every succesful TeX run, for
       sake of concurrent visualization of the output.  In a \`local' build
       the viewer stops during the whole TeX run.
@@ -170,9 +170,11 @@ orig_pwd=`pwd`
 # http://lists.gnu.org/archive/html/automake-patches/2006-05/msg00008.html
 # We need space, tab and new line, in precisely that order.  And don't leave
 # trailing blanks.
+space=' '
+tab='	'
 newline='
 '
-IFS=" 	$newline"
+IFS="$space$tab$newline"
 
 # In case someone crazy insists on using grep -E.
 : ${EGREP=egrep}
@@ -264,10 +266,13 @@ absolute ()
       # Absolute paths don't need to be expanded.
       echo "$1"
       ;;
-   *) local rel=$orig_pwd/`func_dirname "$1"`
+   *) local slashes
+      slashes=`echo "$1" | sed -n 's,.*[^/]\(/*\)$,\1,p'`
+      rel=$orig_pwd/`func_dirname "$1"`
       if test -d "$rel"; then
 	(cd "$rel" 2>/dev/null &&
-	 local n=`pwd`/`basename "$1"`
+	 local n
+	 n=`pwd`/`basename "$1"`"$slashes"
 	 echo "$n")
       else
 	error 1 "not a directory: $rel"
@@ -467,7 +472,8 @@ out_lang_ext ()
 
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
 # Likewise for bibtex and makeindex.
-tex_envvars="BIBINPUTS BSTINPUTS DVIPSHEADERS INDEXSTYLE TEXINPUTS"
+tex_envvars="BIBINPUTS BSTINPUTS DVIPSHEADERS INDEXSTYLE MFINPUTS MPINPUTS \
+TEXINPUTS TFMFONTS"
 for var in $tex_envvars; do
   eval ${var}_orig=\$$var
   export $var
@@ -534,7 +540,7 @@ output_base_name ()
 # is, it must not remain in its build location unless that is also the
 # output location.  (Otherwise it might appear as an extra file in make
 # distcheck.)
-# 
+#
 # FILE can be the principal output (in which case -o directly applies), or
 # an auxiliary file with the same base name.
 move_to_dest ()
