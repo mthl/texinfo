@@ -1,3 +1,7 @@
+2008-02-29  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.11.92.
+
 2008-02-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\includezzz): \edef the filename in order
