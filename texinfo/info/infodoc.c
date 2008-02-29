@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.23 2008-02-29 01:06:40 karl Exp $
+   $Id: infodoc.c,v 1.24 2008-02-29 22:20:52 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -65,8 +65,8 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
   "\n",
   N_("\\%-10[search]  Search forward for a specified string.\n"),
-  N_("\\%-10[search-next]  Repeat last search in same direction.\n"),
-  N_("\\%-10[search-previous]  Repeat last search in reverse direction.\n"),
+  N_("\\%-10[search-previous]  Search for previous occurrence.\n"),
+  N_("\\%-10[search-next]  Search for next occurrence.\n"),
   N_("\\%-10[index-search]  Search for a specified string in the index, and\n\
               select the node referenced by the first entry found.\n"),
   N_("\\%-10[abort-key]  Cancel the current operation.\n"),

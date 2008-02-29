@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.19 2008-02-29 01:06:40 karl Exp $
+   $Id: infomap.c,v 1.20 2008-02-29 22:20:53 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -444,8 +444,8 @@ static unsigned char default_emacs_like_info_keys[] =
         'x', NUL,                       A_info_delete_window,
         SPC, NUL,                       A_info_scroll_forward,
         DEL, NUL,                       A_info_scroll_backward,
-        '{', NUL,                       A_info_search_next,
-        '}', NUL,                       A_info_search_previous,
+        '{', NUL,                       A_info_search_previous,
+        '}', NUL,                       A_info_search_next,
         CONTROL('g'), NUL,              A_info_abort_key,
         SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_prev_line,
         SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_next_line,
@@ -742,8 +742,8 @@ static unsigned char default_vi_like_info_keys[] =
         'x', NUL,                       A_info_delete_window,
         SPC, NUL,                       A_info_scroll_forward,
         DEL, NUL,                       A_info_scroll_backward,
-        '{', NUL,                       A_info_search_next,
-        '}', NUL,                       A_info_search_previous,
+        '{', NUL,                       A_info_search_previous,
+        '}', NUL,                       A_info_search_next,
         CONTROL('g'), NUL,              A_info_abort_key,
         SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_up_line,
         SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_down_line,
