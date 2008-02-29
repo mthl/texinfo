@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-02-27 10:26-0800\n"
+"POT-Creation-Date: 2008-02-29 23:59+0100\n"
 "PO-Revision-Date: 2007-09-04 17:32+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -487,23 +487,23 @@ msgstr "\\%-10[get-info-help-node]  Uruchomienie tutoriala Info.\n"
 
 #: info/infodoc.c:51
 #, fuzzy
-msgid "\\%-10[next-line]  Move down one line.\n"
-msgstr "\\%-10[next-line]  Przewiniêcie do przodu o 1 liniê.\n"
-
-#: info/infodoc.c:52
-#, fuzzy
 msgid "\\%-10[prev-line]  Move up one line.\n"
 msgstr "\\%-10[prev-line]  Przewiniêcie do ty³u o 1 liniê.\n"
 
-#: info/infodoc.c:53
+#: info/infodoc.c:52
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
-msgstr "\\%-10[scroll-forward]  Przewiniêcie do przodu o stronê.\n"
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line]  Przewiniêcie do przodu o 1 liniê.\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:53
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
 msgstr "\\%-10[scroll-backward]  Przewiniêcie do ty³u o stronê.\n"
+
+#: info/infodoc.c:54
+#, fuzzy
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward]  Przewiniêcie do przodu o stronê.\n"
 
 #: info/infodoc.c:55
 #, fuzzy
@@ -562,57 +562,73 @@ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
 msgstr "\\%-10[end-of-node]  Przej¶cie na koniec tego wêz³a.\n"
 
 #: info/infodoc.c:67
-msgid ""
-"\\%-10[search]  Search forward for a specified string\n"
-"              and select the node in which the next occurrence is found.\n"
-msgstr ""
-"\\%-10[search]  Szukanie podanego ³añcucha w przód\n"
-"              i wybranie wêz³a, w którym znaleziono nastêpne wyst±pienie.\n"
+#, fuzzy
+msgid "\\%-10[search]  Search forward for a specified string.\n"
+msgstr "  %-10s  Szukanie podanego ³añcucha w ty³\n"
+
+#: info/infodoc.c:68
+#, fuzzy
+msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+msgstr "\\%-10[prev-node]  Przej¶cie do wêz³a \"poprzedni\" tego wêz³a.\n"
 
 #: info/infodoc.c:69
-msgid "1...9       Pick first...ninth item in this node's menu.\n"
-msgstr ""
-"1...9       Wybranie pierwszego ... dziewi±tego elementu z menu wêz³a.\n"
+#, fuzzy
+msgid "\\%-10[search-next]  Search for next occurrence.\n"
+msgstr "  %-10s  Szukanie podanego ³añcucha w ty³\n"
 
 #: info/infodoc.c:70
-msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
-msgstr "\\%-10[last-menu-item]  Wybranie ostatniego elementu z menu wêz³a.\n"
-
-#: info/infodoc.c:71
 #, fuzzy
-msgid "\\%-10[menu-item]  Pick menu item specified by name.\n"
-msgstr "  %-10s  Wybranie elementu menu zadanego nazw±.\n"
+msgid ""
+"\\%-10[index-search]  Search for a specified string in the index, and\n"
+"              select the node referenced by the first entry found.\n"
+msgstr ""
+"\\%-10[index-search]  Szukanie podanego ³añcucha we wpisach indeksu tego "
+"pliku Info\n"
+"              i wybranie wêz³a wskazywanego przez pierwszy znaleziony wpis.\n"
 
 #: info/infodoc.c:72
 #, fuzzy
-msgid "\\%-10[index-search]  Search for a specified string in the index.\n"
-msgstr "  %-10s  Szukanie podanego ³añcucha w ty³\n"
-
-#: info/infodoc.c:73
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  Przej¶cie za odsy³aczem. Odczytuje nazwê odsy³acza.\n"
+msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+msgstr "Anulowanie bie¿±cej operacji"
 
 #: info/infodoc.c:74
-msgid ""
-"\\%-10[goto-node]  Move to node specified by name.\n"
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+#, fuzzy
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
 msgstr ""
-"\\%-10[goto-node]  Przej¶cie do wêz³a zadanego nazw±.\n"
-"              Mo¿na do³±czyæ tak¿e nazwê pliku w postaci (PLIK)WÊZE£.\n"
+"1...9       Wybranie pierwszego ... dziewi±tego elementu z menu wêz³a.\n"
+
+#: info/infodoc.c:75
+#, fuzzy
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+msgstr "\\%-10[last-menu-item]  Wybranie ostatniego elementu z menu wêz³a.\n"
 
 #: info/infodoc.c:76
 #, fuzzy
-msgid "\\%-10[next-node]  Move to the next node of current section.\n"
-msgstr "\\%-10[next-node]  Przej¶cie do wêz³a \"nastêpny\" tego wêz³a.\n"
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+msgstr "  %-10s  Wybranie elementu menu zadanego nazw±.\n"
 
 #: info/infodoc.c:77
 #, fuzzy
-msgid "\\%-10[prev-node]  Move to the previous node of current section.\n"
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+msgstr ""
+"\\%-10[xref-item]  Przej¶cie za odsy³aczem. Odczytuje nazwê odsy³acza.\n"
+
+#: info/infodoc.c:78
+#, fuzzy
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+msgstr "  %-10s  Przej¶cie do wêz³a zadanego nazw±.\n"
+
+#: info/infodoc.c:79
+#, fuzzy
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr "\\%-10[next-node]  Przej¶cie do wêz³a \"nastêpny\" tego wêz³a.\n"
+
+#: info/infodoc.c:80
+#, fuzzy
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
 msgstr "\\%-10[prev-node]  Przej¶cie do wêz³a \"poprzedni\" tego wêz³a.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:87
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -620,37 +636,37 @@ msgstr ""
 "Podstawowe polecenia w oknach Info\n"
 "**********************************\n"
 
-#: info/infodoc.c:87
+#: info/infodoc.c:90
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Opuszczenie tej pomocy.\n"
 
-#: info/infodoc.c:88
+#: info/infodoc.c:91
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Opuszczenie ca³ego Info.\n"
 
-#: info/infodoc.c:89
+#: info/infodoc.c:92
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Uruchomienie tutoriala Info.\n"
 
-#: info/infodoc.c:93
+#: info/infodoc.c:96
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Przej¶cie do wêz³a `nastêpny' tego wêz³a.\n"
 
-#: info/infodoc.c:94
+#: info/infodoc.c:97
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Przej¶cie do wêz³a `poprzedni' tego wêz³a.\n"
 
-#: info/infodoc.c:95
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Przej¶cie do wêz³a `w górê' tego wêz³a.\n"
 
-#: info/infodoc.c:96
+#: info/infodoc.c:99
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
@@ -659,39 +675,39 @@ msgstr ""
 "\\%-10[menu-item]  Wybranie elementu menu zadanego nazw±.\n"
 "              Wybranie elementu menu powoduje wybranie innego wêz³a.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Przej¶cie za odsy³aczem. Odczytuje nazwê odsy³acza.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Przej¶cie do ostatniego wêz³a widocznego w tym oknie.\n"
 
-#: info/infodoc.c:100
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr ""
 "  %-10s  Przej¶cie do nastêpnego odno¶nika hipertekstowego w tym wê¼le.\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Przej¶cie za odno¶nikiem hipertekstowym pod kursorem.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr ""
 "  %-10s  Przej¶cie do wêz³a `directory' (katalog). Równoznaczne `g (DIR)'.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Przej¶cie do wêz³a Szczytowy. Równoznaczne `g Top'.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:108
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -699,37 +715,37 @@ msgstr ""
 "Poruszanie siê w ramach wêz³a:\n"
 "------------------------------\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Przewiniêcie do przodu o stronê.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Przewiniêcie do ty³u o stronê.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Przej¶cie na pocz±tek tego wêz³a.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Przej¶cie na koniec tego wêz³a.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Przewiniêcie do przodu o 1 liniê.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Przewiniêcie do ty³u o 1 liniê.\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:117
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -737,17 +753,17 @@ msgstr ""
 "Inne polecenia:\n"
 "---------------\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:119
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Wybranie pierwszego ... dziewi±tego elementu z menu wêz³a.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Wybranie ostatniego elementu z menu wêz³a.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:123
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -757,7 +773,7 @@ msgstr ""
 "  %-10s  Szukanie podanego ³añcucha we wpisach indeksu tego pliku Info\n"
 "              i wybranie wêz³a wskazywanego przez pierwszy znaleziony wpis.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:125
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
@@ -766,7 +782,7 @@ msgstr ""
 "\\%-10[goto-node]  Przej¶cie do wêz³a zadanego nazw±.\n"
 "              Mo¿na do³±czyæ tak¿e nazwê pliku w postaci (PLIK)WÊZE£.\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:127
 #, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -775,7 +791,7 @@ msgstr ""
 "  %-10s  Szukanie podanego ³añcucha w przód\n"
 "              i wybranie wêz³a, w którym znaleziono nastêpne wyst±pienie.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:129
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
@@ -784,11 +800,11 @@ msgstr ""
 "  %-10s  Szukanie podanego ³añcucha w przód\n"
 "              i wybranie wêz³a, w którym znaleziono nastêpne wyst±pienie.\n"
 
-#: info/infodoc.c:307
+#: info/infodoc.c:310
 msgid "The current search path is:\n"
 msgstr "Aktualna ¶cie¿ka poszukiwania to:\n"
 
-#: info/infodoc.c:311
+#: info/infodoc.c:314
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -796,7 +812,7 @@ msgstr ""
 "Polecenia dostêpne w oknach Info:\n"
 "\n"
 
-#: info/infodoc.c:315
+#: info/infodoc.c:318
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -804,7 +820,7 @@ msgstr ""
 "Polecenia dostêpne w obszarze echo:\n"
 "\n"
 
-#: info/infodoc.c:338
+#: info/infodoc.c:341
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -813,7 +829,7 @@ msgstr ""
 "Nastêpuj±ce polecenia mo¿na wywo³aæ tylko przez %s:\n"
 "\n"
 
-#: info/infodoc.c:342
+#: info/infodoc.c:345
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -821,67 +837,67 @@ msgstr ""
 "Nastêpuj±cych poleceñ nie mo¿na w ogóle wywo³aæ:\n"
 "\n"
 
-#: info/infodoc.c:472
+#: info/infodoc.c:475
 msgid "Display help message"
 msgstr "Wy¶wietlenie pomocy"
 
-#: info/infodoc.c:490
+#: info/infodoc.c:493
 msgid "Visit Info node `(info)Help'"
 msgstr "Odwiedzenie wêz³a Info `(info)Help'"
 
-#: info/infodoc.c:628
+#: info/infodoc.c:631
 msgid "Print documentation for KEY"
 msgstr "Wy¶wietlenie dokumentacji dla KLAWISZA"
 
-#: info/infodoc.c:640
+#: info/infodoc.c:643
 #, c-format
 msgid "Describe key: %s"
 msgstr "Opis klawisza: %s"
 
-#: info/infodoc.c:651
+#: info/infodoc.c:654
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s jest niezdefiniowany."
 
-#: info/infodoc.c:667 info/infodoc.c:696
+#: info/infodoc.c:670 info/infodoc.c:699
 #, c-format
 msgid "%s is undefined."
 msgstr "%s jest niezdefiniowany."
 
-#: info/infodoc.c:717
+#: info/infodoc.c:720
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s jest zdefiniowany na %s."
 
-#: info/infodoc.c:1140
+#: info/infodoc.c:1143
 msgid "Show what to type to execute a given command"
 msgstr "Pokazanie co nacisn±æ, aby wykonaæ zadane polecenie"
 
-#: info/infodoc.c:1144
+#: info/infodoc.c:1147
 msgid "Where is command: "
 msgstr "Polecenie do znalezienia: "
 
-#: info/infodoc.c:1166
+#: info/infodoc.c:1169
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "`%s' nie ma pod ¿adnym klawiszem"
 
-#: info/infodoc.c:1173
+#: info/infodoc.c:1176
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s mo¿na wywo³aæ tylko przez %s."
 
-#: info/infodoc.c:1177
+#: info/infodoc.c:1180
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s mo¿na wywo³aæ przez %s."
 
-#: info/infodoc.c:1182
+#: info/infodoc.c:1185
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Nie ma funkcji o nazwie `%s'"
 
-#: info/infodoc.c:91
+#: info/infodoc.c:94
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -997,53 +1013,53 @@ msgstr ""
 "  --help               wy¶wietlenie tej pomocy i zakoñczenie.\n"
 "  --version            wy¶wietlenie informacji o wersji i zakoñczenie.\n"
 
-#: info/infomap.c:947
+#: info/infomap.c:955
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Zignorowany b³êdny plik infokey `%s' - zbyt ma³y"
 
-#: info/infomap.c:950
+#: info/infomap.c:958
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Zignorowany b³êdny plik infokey `%s' - zbyt du¿y"
 
-#: info/infomap.c:963
+#: info/infomap.c:971
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "B³±d podczas czytania pliku infokey `%s' - skrócony odczyt"
 
-#: info/infomap.c:982
+#: info/infomap.c:990
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "B³êdny plik infokey `%s' (z³e liczby magiczne) - mo¿na go uaktualniæ infokey"
 
-#: info/infomap.c:991
+#: info/infomap.c:999
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
 "Plik infokey `%s' jest przestarza³y - mo¿na go uaktualniæ poleceniem infokey"
 
-#: info/infomap.c:1007
+#: info/infomap.c:1015
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "B³êdny plik infokey `%s' (z³a d³ugo¶æ sekcji) - mo¿na go uaktualniæ infokey"
 
-#: info/infomap.c:1028
+#: info/infomap.c:1036
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 "B³êdny plik infokey `%s' (z³y kod sekcji) - mo¿na go uaktualniæ przez infokey"
 
-#: info/infomap.c:1163
+#: info/infomap.c:1171
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "B³êdne dane w pliku infokey - czê¶æ przypisañ klawiszy zignorowana"
 
-#: info/infomap.c:1213
+#: info/infomap.c:1221
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "B³êdne dane w pliku infokey - czê¶æ ustawieñ zmiennych zignorowana"
 
@@ -3100,6 +3116,26 @@ msgid "entry %s follows an entry with a secondary name"
 msgstr "wpis %s wyst±pi³ po wpisie z dodatkow± nazw±"
 
 #~ msgid ""
+#~ "\\%-10[search]  Search forward for a specified string\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Szukanie podanego ³añcucha w przód\n"
+#~ "              i wybranie wêz³a, w którym znaleziono nastêpne "
+#~ "wyst±pienie.\n"
+
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Przej¶cie do wêz³a zadanego nazw±.\n"
+#~ "              Mo¿na do³±czyæ tak¿e nazwê pliku w postaci (PLIK)WÊZE£.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+#~ msgstr "\\%-10[next-node]  Przej¶cie do wêz³a \"nastêpny\" tego wêz³a.\n"
+
+#~ msgid ""
 #~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 #~ "node] (DIR)'.\n"
 #~ msgstr ""
@@ -3121,17 +3157,6 @@ msgstr "wpis %s wyst±pi³ po wpisie z dodatkow± nazw±"
 #~ "\\%-10[search-backward]  Szukanie podanego ³añcucha w ty³\n"
 #~ "              i wybranie wêz³a, w którym znaleziono poprzednie "
 #~ "wyst±pienie.\n"
-
-#~ msgid ""
-#~ "\\%-10[index-search]  Search for a specified string in the index entries "
-#~ "of this Info\n"
-#~ "              file, and select the node referenced by the first entry "
-#~ "found.\n"
-#~ msgstr ""
-#~ "\\%-10[index-search]  Szukanie podanego ³añcucha we wpisach indeksu tego "
-#~ "pliku Info\n"
-#~ "              i wybranie wêz³a wskazywanego przez pierwszy znaleziony "
-#~ "wpis.\n"
 
 #~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 #~ msgstr ""
@@ -3250,9 +3275,6 @@ msgstr "wpis %s wyst±pi³ po wpisie z dodatkow± nazw±"
 #~ "              Picking a menu item causes another node to be selected.\n"
 #~ msgstr ""
 #~ "              Wybranie elementu menu powoduje wybranie innego wêz³a.\n"
-
-#~ msgid "  %-10s  Move to node specified by name.\n"
-#~ msgstr "  %-10s  Przej¶cie do wêz³a zadanego nazw±.\n"
 
 #~ msgid ""
 #~ "              You may include a filename as well, as in (FILENAME)"
