@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.22 2008-02-28 14:47:37 karl Exp $
+   $Id: infodoc.c,v 1.23 2008-02-29 01:06:40 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -59,21 +59,25 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[global-prev-node]  Go to the previous node in the document.\n"),
   N_("\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"),
   N_("\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"),
-  N_("\\%-10[history-node]  Return to the previous node seen in this window.\n"),
+  N_("\\%-10[history-node]  Go back to the last node seen in this window.\n"),
   N_("\\%-10[up-node]  Go up one level.\n"),
   N_("\\%-10[top-node]  Go to the top node of this document.\n"),
   N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
   "\n",
   N_("\\%-10[search]  Search forward for a specified string.\n"),
+  N_("\\%-10[search-next]  Repeat last search in same direction.\n"),
+  N_("\\%-10[search-previous]  Repeat last search in reverse direction.\n"),
   N_("\\%-10[index-search]  Search for a specified string in the index, and\n\
               select the node referenced by the first entry found.\n"),
+  N_("\\%-10[abort-key]  Cancel the current operation.\n"),
+  "\n",
   N_("1...9       Pick the first...ninth item in this node's menu.\n"),
   N_("\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"),
   N_("\\%-10[menu-item]  Pick a menu item specified by name.\n"),
   N_("\\%-10[xref-item]  Follow a cross reference specified by name.\n"),
   N_("\\%-10[goto-node]  Go to a node specified by name.\n"),
-  N_("\\%-10[next-node]  Move to the next node within the current section.\n"),
-  N_("\\%-10[prev-node]  Move to the previous node within the current section.\n"),
+  N_("\\%-10[next-node]  Go to the next node on this level.\n"),
+  N_("\\%-10[prev-node]  Go to the previous node on this level.\n"),
   NULL
 };
 

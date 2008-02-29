@@ -1,7 +1,9 @@
 2008-02-28  Karl Berry  <karl@gnu.org>
 
 	* info/infodoc.c (info_internal_help_text): more tweaks.
-	Suggestions from Benno Schulenberg, 27 Feb 2008 23:44:17.
+	* info/infomap.c: move up/down to end, too.
+	Suggestions from Benno Schulenberg, 27 Feb 2008 23:44:17
+	and 28 Feb 2008 22:49:27.
 
 2008-02-28  Akim Demaille  <akim@epita.fr>
 

@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.18 2008-02-27 18:19:34 karl Exp $
+   $Id: infomap.c,v 1.19 2008-02-29 01:06:40 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -295,7 +295,6 @@ static unsigned char default_emacs_like_info_keys[] =
         CONTROL('b'), NUL,              A_info_backward_char,
         CONTROL('e'), NUL,              A_info_end_of_line,
         CONTROL('f'), NUL,              A_info_forward_char,
-        CONTROL('g'), NUL,              A_info_abort_key,
         CONTROL('h'), NUL,              A_info_get_help_window,
         CONTROL('l'), NUL,              A_info_redraw_display,
         CONTROL('n'), NUL,              A_info_next_line,
@@ -405,22 +404,14 @@ static unsigned char default_emacs_like_info_keys[] =
         CONTROL('x'), 't', NUL,         A_info_tile_windows,
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
 
-        /* We want help to report q, not C-x C-c, etc.  */
-        'q', NUL,                       A_info_quit,
-        'x', NUL,                       A_info_delete_window,
-        SPC, NUL,                       A_info_scroll_forward,
-        DEL, NUL,                       A_info_scroll_backward,
-
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
         define everything with both of the usual prefixes.  */
 
         SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
         SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
-        SK_ESCAPE, SK_UP_ARROW, NUL,            A_info_prev_line,
         '\033', 'O', 'A', NUL,                  A_info_prev_line,
         '\033', '[', 'A', NUL,                  A_info_prev_line,
-        SK_ESCAPE, SK_DOWN_ARROW, NUL,          A_info_next_line,
         '\033', 'O', 'B', NUL,                  A_info_next_line,
         '\033', '[', 'B', NUL,                  A_info_next_line,
         SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_info_forward_char,
@@ -447,8 +438,20 @@ static unsigned char default_emacs_like_info_keys[] =
         ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_info_backward_word,
         ESC, '\033', 'O', 'D', NUL,             A_info_backward_word,
         ESC, '\033', '[', 'D', NUL,             A_info_backward_word,
+
+        /* We want help to report q, not C-x C-c, etc.  */
+        'q', NUL,                       A_info_quit,
+        'x', NUL,                       A_info_delete_window,
+        SPC, NUL,                       A_info_scroll_forward,
+        DEL, NUL,                       A_info_scroll_backward,
+        '{', NUL,                       A_info_search_next,
+        '}', NUL,                       A_info_search_previous,
+        CONTROL('g'), NUL,              A_info_abort_key,
+        SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_prev_line,
+        SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_next_line,
 };
 
+
 static unsigned char default_emacs_like_ea_keys[] =
 {
         0,      /* suppress-default-keybindings flag */
@@ -552,6 +555,7 @@ static unsigned char default_emacs_like_ea_keys[] =
         CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
 };
 
+
 static unsigned char default_vi_like_info_keys[] =
 {
         0,      /* suppress-default-keybindings flag */
@@ -574,7 +578,6 @@ static unsigned char default_vi_like_info_keys[] =
         CONTROL('d'), NUL,              A_info_scroll_half_screen_down,
         CONTROL('e'), NUL,              A_info_down_line,
         CONTROL('f'), NUL,              A_info_scroll_forward_page_only,
-        CONTROL('g'), NUL,              A_info_abort_key,
         CONTROL('k'), NUL,              A_info_up_line,
         CONTROL('l'), NUL,              A_info_redraw_display,
         CONTROL('n'), NUL,              A_info_down_line,
@@ -699,22 +702,14 @@ static unsigned char default_vi_like_info_keys[] =
         CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
         CONTROL('x'), ',', NUL,         A_info_next_index_match,
 
-        /* We want help to report q, not C-x C-c, etc.  */
-        'q', NUL,                       A_info_quit,
-        'x', NUL,                       A_info_delete_window,
-        SPC, NUL,                       A_info_scroll_forward,
-        DEL, NUL,                       A_info_scroll_backward,
-
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
         define everything with both of the usual prefixes.  */
 
         SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
         SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
-        SK_ESCAPE, SK_UP_ARROW, NUL,            A_info_up_line,
         '\033', 'O', 'A', NUL,                  A_info_up_line,
         '\033', '[', 'A', NUL,                  A_info_up_line,
-        SK_ESCAPE, SK_DOWN_ARROW, NUL,          A_info_down_line,
         '\033', 'O', 'B', NUL,                  A_info_down_line,
         '\033', '[', 'B', NUL,                  A_info_down_line,
         SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_info_scroll_forward_page_only,
@@ -741,8 +736,20 @@ static unsigned char default_vi_like_info_keys[] =
         ESC, '\033', 'O', 'D', NUL,             A_info_beginning_of_node,
         ESC, '\033', '[', 'D', NUL,             A_info_beginning_of_node,
         CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
+
+        /* We want help to report q, not C-x C-c, etc.  */
+        'q', NUL,                       A_info_quit,
+        'x', NUL,                       A_info_delete_window,
+        SPC, NUL,                       A_info_scroll_forward,
+        DEL, NUL,                       A_info_scroll_backward,
+        '{', NUL,                       A_info_search_next,
+        '}', NUL,                       A_info_search_previous,
+        CONTROL('g'), NUL,              A_info_abort_key,
+        SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_up_line,
+        SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_down_line,
 };
 
+
 static unsigned char default_vi_like_ea_keys[] =
 {
         0,      /* suppress-default-keybindings flag */
@@ -857,6 +864,7 @@ static unsigned char default_vi_like_ea_keys[] =
         CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
 };
 
+
 static unsigned char *user_info_keys;
 static unsigned int user_info_keys_len;
 static unsigned char *user_ea_keys;
