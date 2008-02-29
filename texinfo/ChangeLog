@@ -1,5 +1,12 @@
 2008-02-28  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\includezzz): \edef the filename in order
+	to expand @value constructs (include-value).  This fix
+	from Joseph S. Myers, 1 Feb 2008 01:11:11.
+	Document that the \expandafter trickery is necessary in order to
+	read the file outside of a group (mac-incl).
+	This report from John Mandereau, 28 Feb 2008 22:12:34.
+
 	* info/infodoc.c (info_internal_help_text): more tweaks.
 	* info/infomap.c: move up/down to end, too.
 	Suggestions from Benno Schulenberg, 27 Feb 2008 23:44:17
