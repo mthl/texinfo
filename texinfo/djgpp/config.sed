@@ -59,10 +59,10 @@ am__leading_dot=_
 # the package has not been configured for.
 /MISSING=/,/^$/ {
   /^fi$/ a\
-am_missing_run=`echo "$am_missing_run" | sed 's%/dev.*/texinfo-\\{0,1\\}4\\.[0-9][a-z]\\{0,1\\}%${top_srcdir}%;s%.:.*/texinfo-\\{0,1\\}4\\.[0-9][a-z]\\{0,1\\}%${top_srcdir}%'`
+am_missing_run=`echo "$am_missing_run" | sed 's%/dev.*/texinfo-\\{0,1\\}4\\.[0-9][0-9]\\{0,1\\}\\.\\{0,1\\}[0-9]\\{0,2\\}[a-z]\\{0,1\\}%${top_srcdir}%;s%.:.*/texinfo-\\{0,1\\}4\\.[0-9][0-9]\\{0,1\\}\\.\\{0,1\\}[0-9]\\{0,2\\}[a-z]\\{0,1\\}%${top_srcdir}%'`
 }
 /^install_sh=/a\
-install_sh=`echo "$install_sh" | sed 's%/dev.*/texinfo-\\{0,1\\}4\\.[0-9][a-z]\\{0,1\\}%${top_srcdir}%;s%.:.*/texinfo-\\{0,1\\}4\\.[0-9][a-z]\\{0,1\\}%${top_srcdir}%'`
+install_sh=`echo "$install_sh" | sed 's%/dev.*/texinfo-\\{0,1\\}4\\.[0-9][0-9]\\{0,1\\}\\.\\{0,1\\}[0-9]\\{0,2\\}[a-z]\\{0,1\\}%${top_srcdir}%;s%.:.*/texinfo-\\{0,1\\}4\\.[0-9][0-9]\\{0,1\\}\\.\\{0,1\\}[0-9]\\{0,2\\}[a-z]\\{0,1\\}%${top_srcdir}%'`
 
 # On DOS/WIN systems every partition has its own root directory,
 # so do not make any assumptions about absolute paths or the
