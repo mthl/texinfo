@@ -1,3 +1,10 @@
+2008-03-01  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+
+	DJGPP specific issues.
+	* system.h [O_BINARY]: Use HAVE_DRIVE in IS_ABSOLUTE.
+	* djgpp/config.sed: Fix regex pattern to handle version numbers that
+	looks like 4.NN.NN
+
 2008-02-29  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.92.
