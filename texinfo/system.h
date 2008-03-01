@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.7 2007-12-03 01:38:41 karl Exp $
+   $Id: system.h,v 1.8 2008-03-01 21:15:58 juan_g Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007 Free Software Foundation, Inc.
@@ -190,7 +190,7 @@ extern int strcoll ();
 # define FOPEN_WBIN	"wb"
 # define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')
 # define IS_SLASH(c)	((c) == '/' || (c) == '\\')
-# define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || ((n)[0] && (n)[1] == ':'))
+# define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || HAVE_DRIVE(n))
 # define PIPE_USE_FORK	0
 # define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
 
