@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.78 2008-02-29 22:21:41 karl Exp $
+# $Id: configure.ac,v 1.79 2008-03-02 19:39:14 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -13,7 +13,7 @@ AC_INIT([GNU Texinfo], [4.11.92], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE([dist-bzip2 readme-alpha])
+AM_INIT_AUTOMAKE([dist-lzma readme-alpha])
 
 # Minimum Autoconf version required.
 AC_PREREQ(2.59)

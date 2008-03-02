@@ -1,3 +1,7 @@
+2008-03-02  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AM_INIT_AUTOMAKE): dist-lzma instead of dist-bzip2.
+
 2008-03-01  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	DJGPP specific issues.
