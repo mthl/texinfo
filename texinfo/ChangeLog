@@ -1,5 +1,8 @@
 2008-03-04  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/session.c (_scroll_backward): Place cursor at the end of
+	node if cursor_movement_scrolls_p is on.
+
 	* Makefile.am (AUTOMAKE_OPTIONS): Raise version requirement to
 	1.10.1. This is needed for dist-lzma.
 
