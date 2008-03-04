@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.8 2008-02-26 16:51:06 karl Exp $
+   $Id: variables.c,v 1.9 2008-03-04 09:45:15 gray Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -77,6 +77,11 @@ VARIABLE_ALIST info_variables[] = {
       N_("When \"On\", Info accepts and displays ISO Latin characters"),
       &ISO_Latin_p, (char **)on_off_choices },
 
+  { "scroll-last-node",
+    N_("What to do when a scrolling command is issued at the end of the "
+       "last node"),
+    &scroll_last_node, (char**)scroll_last_node_choices },
+  
   { (char *)NULL, (char *)NULL, (int *)NULL, (char **)NULL }
 };
 
