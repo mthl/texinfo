@@ -1,3 +1,23 @@
+2008-03-04  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Raise version requirement to
+	1.10.1. This is needed for dist-lzma.
+
+	* system.h: Include <ctype.h>
+	* info/session.c (scroll_last_node_choices, scroll_last_node): New
+	variables.
+	(forward_move_node_structure): Special behavior when a scrolling
+	command is issued while on the last node.
+	* info/session.h (scroll_last_node_choices, scroll_last_node): New
+	variables.
+	(SLN_Stop,SLN_Scroll,SLN_Top): New defines.
+	* info/variables.c (info_variables): New variable
+	scroll-last-node.
+	* info/variables.h (scroll_last_node): New variable.
+	* doc/info-stnd.texi: Document scrolling behavior at the last node
+	and the scroll-last-node variable.
+	* NEWS: Document scrolling behavior at the last node.
+
 2008-03-02  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AM_INIT_AUTOMAKE): dist-lzma instead of dist-bzip2.
