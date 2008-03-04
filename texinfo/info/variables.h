@@ -1,5 +1,5 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h,v 1.8 2008-02-26 16:51:06 karl Exp $
+   $Id: variables.h,v 1.9 2008-03-04 09:45:27 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -62,5 +62,6 @@ extern int info_scroll_behaviour;
 extern int window_scroll_step;
 extern int cursor_movement_scrolls_p;
 extern int ISO_Latin_p;
+extern int scroll_last_node;
 
 #endif /* not INFO_VARIABLES_H */
