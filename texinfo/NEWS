@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.163 2008-02-25 00:21:29 karl Exp $
+$Id: NEWS,v 1.164 2008-03-04 09:46:03 gray Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -62,6 +62,15 @@ one of the relevant sections:
   . the new R command toggles between regexp and literal-string searches.
   . the precise line number specified in index entries is used if available.
   . --usage=info shows usage for standalone Info.
+
+  When a scrolling command is issued at the end of the last node, info does
+  not scroll and displays the message "No more nodes within this document."
+  This differs from prior versions, which obeyed the scrolling command even
+  on the last node.
+
+  The scrolling behavior at the last node is controlled by the infokeys
+  variable `scroll-last-node' (see the documentation). To restore old
+  behavior, set scroll-last-node=Scroll.
 
 * Distribution:
   . language support for no removed/renamed to nb, per Norwegian translators.
