@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.20 2008-01-30 19:40:13 karl Exp $
+@comment $Id: info-stnd.texi,v 1.21 2008-03-04 09:45:52 gray Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -1923,6 +1923,32 @@ Try to get the first item in this node's menu, or failing that, the
 This behavior is identical to using the @samp{]}
 (@code{global-next-node}) and @samp{[} (@code{global-prev-node})
 commands.
+
+@item scroll-last-node
+@vindex scroll-last-node
+Control what happens when a scrolling command is issued at the end of
+the last node. Possible values are:
+
+@table @code
+@item Stop
+Do not scroll. Display the @samp{No more nodes within this document.}
+message. This is the default.
+
+@item Scroll
+Scroll as usual. Since the last node is usually an index, this means
+that the very first node from the menu will be selected.
+
+@item Top
+Go to the top node of this document.
+@end table
+
+This variable is in effect only if @code{scroll-behaviour} is set to
+@code{Continuous}.
+
+Notice that the default behavior has changed in version 4.12. Previous
+versions behaved as if @code{scroll-last-node=Scroll} was set. This
+behavior was counter-intuitive, therefore since version 4.12 the
+default is to stop at the last node.
 
 @item Next Only
 Only try to get the @samp{Next} node.
