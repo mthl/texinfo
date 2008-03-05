@@ -1,3 +1,11 @@
+2008-03-05  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* configure.ac (AM_INIT_AUTOMAKE): Move all automake options here.
+	Add dist-bzip2 for completeness.
+	* Makefile.am (AUTOMAKE_OPTIONS): Remove in favor of
+	AM_INIT_AUTOMAKE.
+	* AUTHORS: Update the URL of Translation Project.
+
 2008-03-04  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/session.c (_scroll_backward): Place cursor at the end of
