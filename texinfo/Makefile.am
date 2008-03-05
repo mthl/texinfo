@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.23 2008-03-04 09:43:55 gray Exp $
+# $Id: Makefile.am,v 1.24 2008-03-05 09:05:04 gray Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -9,9 +9,6 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-# Be sure we're using the right version of Automake.
-AUTOMAKE_OPTIONS = 1.10.1 readme-alpha
 
 # Find our headers and gnulib headers.
 ACLOCAL_AMFLAGS = -I gnulib/m4
