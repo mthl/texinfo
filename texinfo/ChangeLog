@@ -1,5 +1,9 @@
 2008-03-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/session.c (last_node_p): Remove unused variable.
+	(info_search_internal): Print a message if the search wraps over
+	the end or beginning of the document.
+
 	* configure.ac (AM_INIT_AUTOMAKE): Move all automake options here.
 	Add dist-bzip2 for completeness.
 	* Makefile.am (AUTOMAKE_OPTIONS): Remove in favor of
