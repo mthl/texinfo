@@ -1,5 +1,8 @@
 2008-03-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* util/gendocs.sh: Pass --node-files to texi2html only together
+	with the --split option.
+
 	* info/session.c (last_node_p): Remove unused variable.
 	(info_search_internal): Print a message if the search wraps over
 	the end or beginning of the document.
