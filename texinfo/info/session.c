@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.31 2008-03-04 11:47:36 gray Exp $
+   $Id: session.c,v 1.32 2008-03-05 10:04:10 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -981,8 +981,6 @@ int default_scroll_size = -1;   /* meaning half screen size */
 static int
 last_node_p (NODE *node)
 {
-  int last_node = 0;
-	
   info_next_label_of_node (node);
   if (!INFO_LABEL_FOUND ())
     {
@@ -3695,6 +3693,7 @@ info_search_internal (char *string, WINDOW *window,
       register int current_tag = 0, number_of_tags;
       char *last_subfile;
       TAG *tag;
+      char *msg = NULL;
 
       /* Find number of tags and current tag. */
       last_subfile = (char *)NULL;
@@ -3717,7 +3716,7 @@ info_search_internal (char *string, WINDOW *window,
       while (1)
         {
           NODE *node;
-
+	  
           /* Allow C-g to quit the search, failing it if pressed. */
           return_if_control_g (-1);
 
@@ -3725,10 +3724,16 @@ info_search_internal (char *string, WINDOW *window,
           for (i = current_tag + dir; i != current_tag; i += dir)
             {
               if (i < 0)
-                i = number_of_tags - 1;
+		{
+		  msg = N_("Restarting search from the end of the document");
+		  i = number_of_tags - 1;
+		}
               else if (i == number_of_tags)
-                i = 0;
-
+		{
+		  msg = N_("Restarting search from the beginning of the document");
+		  i = 0;
+		}
+	      
               tag = file_buffer->tags[i];
               if (tag->nodelen != 0)
                 break;
@@ -3778,7 +3783,12 @@ info_search_internal (char *string, WINDOW *window,
               /* Yes!  We win. */
               remember_window_and_node (window, node);
               if (!echo_area_is_active)
-                window_clear_echo_area ();
+		{
+		  if (msg)
+		    window_message_in_echo_area ("%s", gettext (msg), NULL);
+		  else
+		    window_clear_echo_area ();
+		}
               return (0);
             }
 
