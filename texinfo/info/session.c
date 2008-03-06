@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.32 2008-03-05 10:04:10 gray Exp $
+   $Id: session.c,v 1.33 2008-03-06 06:51:04 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -3725,12 +3725,12 @@ info_search_internal (char *string, WINDOW *window,
             {
               if (i < 0)
 		{
-		  msg = N_("Restarting search from the end of the document");
+		  msg = N_("Search continued from the end of the document.");
 		  i = number_of_tags - 1;
 		}
               else if (i == number_of_tags)
 		{
-		  msg = N_("Restarting search from the beginning of the document");
+		  msg = N_("Search continued from the beginning of the document.");
 		  i = 0;
 		}
 	      
