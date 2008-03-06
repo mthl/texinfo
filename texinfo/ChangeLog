@@ -1,3 +1,9 @@
+2008-03-06  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/session.c (info_search_internal): Reword wrap-around
+	messages.
+	* configure.ac (AM_INIT_AUTOMAKE): Finally remove dist-bzip2.
+
 2008-03-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* util/gendocs.sh: Pass --node-files to texi2html only together
