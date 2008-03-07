@@ -1,3 +1,8 @@
+2008-03-04  Joseph Myers  <joseph@codesourcery.com>  (tiny change)
+
+	* doc/texinfo.tex (\includezzz): Use \turnoffactive before
+	expanding @value.
+
 2008-03-06  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/session.c (info_search_internal): Reword wrap-around
