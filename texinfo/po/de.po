@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-02-29 23:59+0100\n"
+"POT-Creation-Date: 2008-03-08 15:35+0100\n"
 "PO-Revision-Date: 2008-02-14 13:02+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -45,59 +45,59 @@ msgstr ""
 msgid "Unknown system error"
 msgstr "Unbekannter Systemfehler"
 
-#: gnulib/lib/getopt.c:530 gnulib/lib/getopt.c:546
+#: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: Option „%s“ ist nicht eindeutig\n"
 
-#: gnulib/lib/getopt.c:579 gnulib/lib/getopt.c:583
+#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: Option „--%s“ erlaubt kein Argument\n"
 
-#: gnulib/lib/getopt.c:592 gnulib/lib/getopt.c:597
+#: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: Option „%c%s“ erlaubt kein Argument\n"
 
-#: gnulib/lib/getopt.c:640 gnulib/lib/getopt.c:659 gnulib/lib/getopt.c:975
-#: gnulib/lib/getopt.c:994
+#: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
+#: gnulib/lib/getopt.c:990
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: Option „%s“ benötigt ein Argument\n"
 
-#: gnulib/lib/getopt.c:697 gnulib/lib/getopt.c:700
+#: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: nicht erkannte Option „--%s“\n"
 
-#: gnulib/lib/getopt.c:708 gnulib/lib/getopt.c:711
+#: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: nicht erkannte Option „%c%s“\n"
 
-#: gnulib/lib/getopt.c:763 gnulib/lib/getopt.c:766
+#: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: ungültige Option -- %c\n"
 
-#: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
+#: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: ungültige Option -- %c\n"
 
-#: gnulib/lib/getopt.c:827 gnulib/lib/getopt.c:843 gnulib/lib/getopt.c:1047
-#: gnulib/lib/getopt.c:1065
+#: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
+#: gnulib/lib/getopt.c:1061
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: Option benötigt ein Argument -- %c\n"
 
-#: gnulib/lib/getopt.c:896 gnulib/lib/getopt.c:912
+#: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: Option „-W %s“ ist nicht eindeutig\n"
 
-#: gnulib/lib/getopt.c:936 gnulib/lib/getopt.c:954
+#: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: Option „-W %s“ erlaubt kein Argument\n"
@@ -548,22 +548,10 @@ msgstr "\\%-10[end-of-node]  Zum Ende dieses Knotens gehen.\n"
 
 #: info/infodoc.c:58
 #, fuzzy
-msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
-msgstr ""
-"\\%-10[next-node]  Zum nächsten Knoten („next“) dieses Knotens gehen.\n"
-
-#: info/infodoc.c:59
-#, fuzzy
-msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
-msgstr ""
-"\\%-10[prev-node]  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
-
-#: info/infodoc.c:60
-#, fuzzy
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "\\%-10[move-to-next-xref]  Zur nächsten Verknüpfung springen [*].\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:59
 #, fuzzy
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
@@ -572,47 +560,99 @@ msgstr ""
 "\\%-10[select-reference-this-line]  Der Verknüpfung unter dem Cursor "
 "folgen.\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:60
 #, fuzzy
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
 msgstr ""
 "\\%-10[history-node]  Zum letzten in diesem Fenster schon besuchten Knoten "
 "gehen.\n"
 
+#: info/infodoc.c:62
+#, fuzzy
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr ""
+"\\%-10[prev-node]  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
+
 #: info/infodoc.c:63
+#, fuzzy
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr ""
+"\\%-10[next-node]  Zum nächsten Knoten („next“) dieses Knotens gehen.\n"
+
+#: info/infodoc.c:64
+#, fuzzy
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+msgstr ""
+"\\%-10[prev-node]  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
+
+#: info/infodoc.c:65
+#, fuzzy
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr ""
+"\\%-10[next-node]  Zum nächsten Knoten („next“) dieses Knotens gehen.\n"
+
+#: info/infodoc.c:66
 #, fuzzy
 msgid "\\%-10[up-node]  Go up one level.\n"
 msgstr "\\%-10[up-node]  Von diesem Knoten aus aufwärts („up“) gehen.\n"
 
-#: info/infodoc.c:64
+#: info/infodoc.c:67
 #, fuzzy
 msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "\\%-10[end-of-node]  Zum Ende dieses Knotens gehen.\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:68
 #, fuzzy
 msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
 msgstr "\\%-10[end-of-node]  Zum Ende dieses Knotens gehen.\n"
 
-#: info/infodoc.c:67
+#: info/infodoc.c:70
+#, fuzzy
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+msgstr ""
+"1...9       Ersten ... neunten Eintrag aus dem Menü des Knotens wählen.\n"
+
+#: info/infodoc.c:71
+#, fuzzy
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+msgstr ""
+"\\%-10[last-menu-item]  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
+
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+msgstr "  %-10s  Einen Menüeintrag nach dem Namen auswählen.\n"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+msgstr ""
+"\\%-10[xref-item]  Einem Querverweis folgen. Liest den Namen des Verweises.\n"
+
+#: info/infodoc.c:74
+#, fuzzy
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+msgstr "  %-10s  Knoten nach Namen auswählen und dorthin springen. Ein\n"
+
+#: info/infodoc.c:76
 #, fuzzy
 msgid "\\%-10[search]  Search forward for a specified string.\n"
 msgstr ""
 "  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den Knoten\n"
 
-#: info/infodoc.c:68
+#: info/infodoc.c:77
 #, fuzzy
 msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
 msgstr ""
 "\\%-10[prev-node]  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:78
 #, fuzzy
 msgid "\\%-10[search-next]  Search for next occurrence.\n"
 msgstr ""
 "  %-10s  Eine Zeichenkette in den Indexeinträgen dieser Info-Datei suchen\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:79
 #, fuzzy
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
@@ -623,52 +663,12 @@ msgstr ""
 "              suchen und zu dem Knoten springen, auf den der erste\n"
 "              gefundene Eintrag verweist.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:81
 #, fuzzy
 msgid "\\%-10[abort-key]  Cancel the current operation.\n"
 msgstr "Momentane Operation abbrechen"
 
-#: info/infodoc.c:74
-#, fuzzy
-msgid "1...9       Pick the first...ninth item in this node's menu.\n"
-msgstr ""
-"1...9       Ersten ... neunten Eintrag aus dem Menü des Knotens wählen.\n"
-
-#: info/infodoc.c:75
-#, fuzzy
-msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
-msgstr ""
-"\\%-10[last-menu-item]  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
-
-#: info/infodoc.c:76
-#, fuzzy
-msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
-msgstr "  %-10s  Einen Menüeintrag nach dem Namen auswählen.\n"
-
-#: info/infodoc.c:77
-#, fuzzy
-msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
-msgstr ""
-"\\%-10[xref-item]  Einem Querverweis folgen. Liest den Namen des Verweises.\n"
-
-#: info/infodoc.c:78
-#, fuzzy
-msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
-msgstr "  %-10s  Knoten nach Namen auswählen und dorthin springen. Ein\n"
-
-#: info/infodoc.c:79
-#, fuzzy
-msgid "\\%-10[next-node]  Go to the next node on this level.\n"
-msgstr ""
-"\\%-10[next-node]  Zum nächsten Knoten („next“) dieses Knotens gehen.\n"
-
-#: info/infodoc.c:80
-#, fuzzy
-msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
-msgstr ""
-"\\%-10[prev-node]  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
-
-#: info/infodoc.c:87
+#: info/infodoc.c:89
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -676,37 +676,37 @@ msgstr ""
 "Grundbefehle in Info-Fenstern\n"
 "*****************************\n"
 
-#: info/infodoc.c:90
+#: info/infodoc.c:92
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Diese Hilfe verlassen.\n"
 
-#: info/infodoc.c:91
+#: info/infodoc.c:93
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Info gänzlich beenden.\n"
 
-#: info/infodoc.c:92
+#: info/infodoc.c:94
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Das Info-Tutorial aufrufen.\n"
 
-#: info/infodoc.c:96
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Zum nächsten Knoten („next“) dieses Knotens gehen.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Zum vorherigen Knoten („prev“) dieses Knotens gehen.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Von diesem Knoten aus aufwärts („up“) gehen.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:101
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
@@ -716,37 +716,37 @@ msgstr ""
 "              Auswahl eines Menüeintrags führt zu Auswahl eines anderen\n"
 "              Knotens.\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Einem Querverweis folgen. Liest den Namen des Verweises.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Zum letzten in diesem Fenster gezeigten Knoten gehen.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Zur nächsten Verknüpfung auf dieser Seite springen.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Der Verknüpfung unter dem Cursor folgen.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Zum „directory“-Knoten springen. Das gleiche wie „g (DIR)“.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Zum „Top“-Knoten springen. Das gleiche wie „g Top“.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:110
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -754,37 +754,37 @@ msgstr ""
 "Bewegung innerhalb eines Knotens:\n"
 "---------------------------------\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Eine Seite vorblättern.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Eine Seite zurückblättern.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Zum Anfang dieses Knotens gehen.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Zum Ende dieses Knotens gehen.\n"
 
-#: info/infodoc.c:114
+#: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Eine Zeile vorblättern.\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Eine Zeile zurückblättern.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:119
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -792,17 +792,17 @@ msgstr ""
 "Weitere Befehle:\n"
 "----------------\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:121
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  Ersten ... neunten Eintrag aus dem Menü des Knotens wählen.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
 
-#: info/infodoc.c:123
+#: info/infodoc.c:125
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -813,7 +813,7 @@ msgstr ""
 "              suchen und den Knoten wählen, auf den der erste gefundene\n"
 "              Eintrag verweist.\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:127
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
@@ -822,7 +822,7 @@ msgstr ""
 "\\%-10[goto-node]  Knoten nach Namen auswählen und dorthin springen. Ein\n"
 "              Dateiname kann mit angegeben werden, also (DATEI)KNOTENNAME.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:129
 #, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
@@ -831,7 +831,7 @@ msgstr ""
 "  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den\n"
 "              Knoten wählen, in dem der nächste Eintrag gefunden wurde.\n"
 
-#: info/infodoc.c:129
+#: info/infodoc.c:131
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
@@ -840,11 +840,11 @@ msgstr ""
 "  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den\n"
 "              Knoten wählen, in dem der nächste Eintrag gefunden wurde.\n"
 
-#: info/infodoc.c:310
+#: info/infodoc.c:312
 msgid "The current search path is:\n"
 msgstr "Der momentane Suchpfad ist:\n"
 
-#: info/infodoc.c:314
+#: info/infodoc.c:316
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -852,7 +852,7 @@ msgstr ""
 "Befehle, die in Info-Fenstern verfügbar sind:\n"
 "\n"
 
-#: info/infodoc.c:318
+#: info/infodoc.c:320
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -860,7 +860,7 @@ msgstr ""
 "Befehle, die im Echo-Bereich verfügbar sind:\n"
 "\n"
 
-#: info/infodoc.c:341
+#: info/infodoc.c:343
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -869,7 +869,7 @@ msgstr ""
 "Die folgenden Befehle können nur durch %s aufgerufen werden:\n"
 "\n"
 
-#: info/infodoc.c:345
+#: info/infodoc.c:347
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -877,67 +877,67 @@ msgstr ""
 "Die folgenden Befehle können überhaupt nicht aufgerufen werden:\n"
 "\n"
 
-#: info/infodoc.c:475
+#: info/infodoc.c:477
 msgid "Display help message"
 msgstr "Diesen Hilfe-Text anzeigen"
 
-#: info/infodoc.c:493
+#: info/infodoc.c:495
 msgid "Visit Info node `(info)Help'"
 msgstr "Info-Knoten „(info)Help“ besuchen"
 
-#: info/infodoc.c:631
+#: info/infodoc.c:633
 msgid "Print documentation for KEY"
 msgstr "Dokumentation für KEY ausgeben"
 
-#: info/infodoc.c:643
+#: info/infodoc.c:645
 #, c-format
 msgid "Describe key: %s"
 msgstr "Beschreibe Taste: %s"
 
-#: info/infodoc.c:654
+#: info/infodoc.c:656
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s ist nicht definiert."
 
-#: info/infodoc.c:670 info/infodoc.c:699
+#: info/infodoc.c:672 info/infodoc.c:701
 #, c-format
 msgid "%s is undefined."
 msgstr "%s ist nicht definiert."
 
-#: info/infodoc.c:720
+#: info/infodoc.c:722
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s ist definiert als %s."
 
-#: info/infodoc.c:1143
+#: info/infodoc.c:1145
 msgid "Show what to type to execute a given command"
 msgstr "Anzeigen, was einzugeben ist, um einen gegebenen Befehl auszuführen"
 
-#: info/infodoc.c:1147
+#: info/infodoc.c:1149
 msgid "Where is command: "
 msgstr "Wo ist der Befehl: "
 
-#: info/infodoc.c:1169
+#: info/infodoc.c:1171
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "Keine Taste mit „%s“ belegt"
 
-#: info/infodoc.c:1176
+#: info/infodoc.c:1178
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s kann nur durch %s aufgerufen werden."
 
-#: info/infodoc.c:1180
+#: info/infodoc.c:1182
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s kann durch %s aufgerufen werden."
 
-#: info/infodoc.c:1185
+#: info/infodoc.c:1187
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Es gibt keine Funktion mit Namen „%s“"
 
-#: info/infodoc.c:94
+#: info/infodoc.c:96
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -1186,7 +1186,7 @@ msgstr ""
 msgid "Select visited node: "
 msgstr "Wähle besuchten Knoten aus: "
 
-#: info/nodemenu.c:336 info/session.c:2394
+#: info/nodemenu.c:336 info/session.c:2438
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Der Verweis ist verschwunden! (%s)."
@@ -1221,65 +1221,65 @@ msgstr "Zum Ende dieser Zeile bewegen"
 msgid "Move to the start of the line"
 msgstr "Zum Anfang der Zeile bewegen"
 
-#: info/session.c:986
+#: info/session.c:1007
 msgid "Next"
 msgstr "nächstes"
 
-#: info/session.c:1106
+#: info/session.c:1023 info/session.c:1148
 msgid "No more nodes within this document."
 msgstr "Keine weiteren Knoten in diesem Dokument."
 
-#: info/session.c:1132
+#: info/session.c:1174
 msgid "No `Prev' for this node."
 msgstr "Kein „voriges“ (Prev) für diesem Knoten."
 
-#: info/session.c:1152
+#: info/session.c:1194
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr ""
 "Kein „voriges“ (Prev) oder „aufwärts“ (Up) für diesen Knoten innerhalb "
 "dieses Dokuments."
 
-#: info/session.c:1214
+#: info/session.c:1256
 msgid "Move forwards or down through node structure"
 msgstr "Vorwärts oder abwärts durch die Knotenstruktur bewegen"
 
-#: info/session.c:1230
+#: info/session.c:1272
 msgid "Move backwards or up through node structure"
 msgstr "Zurück oder aufwärts durch die Knotenstruktur bewegen"
 
-#: info/session.c:1324
+#: info/session.c:1368
 msgid "Scroll forward in this window"
 msgstr "In diesem Fenster vorwärts blättern"
 
-#: info/session.c:1332
+#: info/session.c:1376
 msgid "Scroll forward in this window and set default window size"
 msgstr ""
 "In diesem Fenster vorwärts blättern und die Standard-Fenstergröße setzen"
 
-#: info/session.c:1340
+#: info/session.c:1384
 msgid "Scroll forward in this window staying within node"
 msgstr "In diesem Fenster vorwärts blättern ohne den Knoten zu verlassen"
 
-#: info/session.c:1348
+#: info/session.c:1392
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "In diesem Fenster vorwärts blättern (ohne den Knoten zu verlassen)\n"
 "     und Standard-Fenstergröße setzen"
 
-#: info/session.c:1356
+#: info/session.c:1400
 msgid "Scroll backward in this window"
 msgstr "In diesem Fenster zurückblättern"
 
-#: info/session.c:1364
+#: info/session.c:1408
 msgid "Scroll backward in this window and set default window size"
 msgstr "In diesem Fenster zurückblättern und die Standard-Fenstergröße setzen"
 
-#: info/session.c:1373
+#: info/session.c:1417
 msgid "Scroll backward in this window staying within node"
 msgstr "In diesem Fenster zurückblättern ohne den Knoten zu verlassen"
 
-#: info/session.c:1381
+#: info/session.c:1425
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1287,426 +1287,435 @@ msgstr ""
 "In diesem Fenster zurück blättern (ohne den Knoten zu verlassen)\n"
 "     und Standard-Fenstergröße setzen"
 
-#: info/session.c:1389
+#: info/session.c:1433
 msgid "Move to the start of this node"
 msgstr "Zum Anfang dieses Knotens bewegen"
 
-#: info/session.c:1396
+#: info/session.c:1440
 msgid "Move to the end of this node"
 msgstr "Zum Ende dieses Knotens bewegen"
 
-#: info/session.c:1403
+#: info/session.c:1447
 msgid "Scroll down by lines"
 msgstr "Zeilenweise vorblättern"
 
-#: info/session.c:1420
+#: info/session.c:1464
 msgid "Scroll up by lines"
 msgstr "Zeilenweise zurück blättern"
 
-#: info/session.c:1438
+#: info/session.c:1482
 msgid "Scroll down by half screen size"
 msgstr "Einen halben Bildschirm vorblättern"
 
-#: info/session.c:1464
+#: info/session.c:1508
 msgid "Scroll up by half screen size"
 msgstr "Einen halben Bildschirm zurückblättern"
 
-#: info/session.c:1493
+#: info/session.c:1537
 msgid "Select the next window"
 msgstr "Das nächste Fenster auswählen"
 
-#: info/session.c:1532
+#: info/session.c:1576
 msgid "Select the previous window"
 msgstr "Das vorige Fenster auswählen"
 
-#: info/session.c:1583
+#: info/session.c:1627
 msgid "Split the current window"
 msgstr "Aktuelles Fenster unterteilen"
 
-#: info/session.c:1664
+#: info/session.c:1708
 msgid "Delete the current window"
 msgstr "Aktuelles Fenster löschen"
 
-#: info/session.c:1672
+#: info/session.c:1716
 msgid "Cannot delete a permanent window"
 msgstr "Ein permanentes Fenster kann nicht gelöscht werden"
 
-#: info/session.c:1704
+#: info/session.c:1748
 msgid "Delete all other windows"
 msgstr "Alle anderen Fenster löschen"
 
-#: info/session.c:1750
+#: info/session.c:1794
 msgid "Scroll the other window"
 msgstr "Im anderen Fenster vorblättern"
 
-#: info/session.c:1771
+#: info/session.c:1815
 msgid "Scroll the other window backward"
 msgstr "Im anderen Fenster zurück blättern"
 
-#: info/session.c:1777
+#: info/session.c:1821
 msgid "Grow (or shrink) this window"
 msgstr "Aktuelles Fenster vergrößern (oder verkleinern)"
 
-#: info/session.c:1788
+#: info/session.c:1832
 msgid "Divide the available screen space among the visible windows"
 msgstr ""
 "Den vorhandenen Bildschirmplatz unter allen sichtbaren Fenstern aufteilen"
 
-#: info/session.c:1795
+#: info/session.c:1839
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Den Status des Zeilenumbruchs im aktuellen Fenster umschalten"
 
-#: info/session.c:1802
+#: info/session.c:1846
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1806
+#: info/session.c:1850
 #, fuzzy
 msgid "Using regular expressions for searches."
 msgstr "Fehler in regulärem Ausdruck „%s“: %s"
 
-#: info/session.c:1807
+#: info/session.c:1851
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:1978
+#: info/session.c:2022
 msgid "Select the Next node"
 msgstr "Den „nächsten“ Knoten (Next) auswählen"
 
-#: info/session.c:1986
+#: info/session.c:2030
 msgid "Select the Prev node"
 msgstr "Den „vorigen“ Knoten (Prev) auswählen"
 
-#: info/session.c:1994
+#: info/session.c:2038
 msgid "Select the Up node"
 msgstr "Den übergeordneten Knoten auswählen („aufwärts“, Up)"
 
-#: info/session.c:2001
+#: info/session.c:2045
 msgid "Select the last node in this file"
 msgstr "Den letzten Knoten dieser Datei auswählen"
 
-#: info/session.c:2028 info/session.c:2061
+#: info/session.c:2072 info/session.c:2105
 msgid "This window has no additional nodes"
 msgstr "Dieses Fenster hat keine weiteren Knoten"
 
-#: info/session.c:2034
+#: info/session.c:2078
 msgid "Select the first node in this file"
 msgstr "Den ersten Knoten dieser Datei auswählen"
 
-#: info/session.c:2068
+#: info/session.c:2112
 msgid "Select the last item in this node's menu"
 msgstr "Den letzten Menüeintrag dieses Knotens auswählen"
 
-#: info/session.c:2074
+#: info/session.c:2118
 msgid "Select this menu item"
 msgstr "Diesen Menüeintrag auswählen"
 
-#: info/session.c:2107
+#: info/session.c:2151
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Es sind keine %d Einträge in diesem Menü."
 
-#: info/session.c:2301 info/session.c:2302
+#: info/session.c:2345 info/session.c:2346
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menüeintrag (%s): "
 
-#: info/session.c:2305
+#: info/session.c:2349
 msgid "Menu item: "
 msgstr "Menüeintrag: "
 
-#: info/session.c:2312 info/session.c:2313
+#: info/session.c:2356 info/session.c:2357
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Folge xref (%s): "
 
-#: info/session.c:2316
+#: info/session.c:2360
 msgid "Follow xref: "
 msgstr "Folge xref: "
 
-#: info/session.c:2445
+#: info/session.c:2489
 msgid "Read a menu item and select its node"
 msgstr "Einen Menüeintrag lesen und seinen Knoten auswählen"
 
-#: info/session.c:2453
+#: info/session.c:2497
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Fußnote oder Querverweis lesen und den Knoten auswählen"
 
-#: info/session.c:2459
+#: info/session.c:2503
 msgid "Move to the start of this node's menu"
 msgstr "Zum Anfang des Menüs dieses Knotens bewegen"
 
-#: info/session.c:2483
+#: info/session.c:2527
 msgid "Visit as many menu items at once as possible"
 msgstr "So viele Menüeinträge wie möglich auf einmal besuchen"
 
-#: info/session.c:2511
+#: info/session.c:2555
 msgid "Read a node name and select it"
 msgstr "Den Namen eines Knotens lesen und diesen auswählen"
 
-#: info/session.c:2566 info/session.c:2571
+#: info/session.c:2610 info/session.c:2615
 msgid "Goto node: "
 msgstr "Gehe zu Knoten: "
 
-#: info/session.c:2635
+#: info/session.c:2679
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Kein Menü im Knoten „%s“."
 
-#: info/session.c:2681
+#: info/session.c:2725
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Kein Menüeintrag „%s“ im Knoten „%s“."
 
-#: info/session.c:2711
+#: info/session.c:2755
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Kann keinen Knoten finden, der von „%s“ in „%s“ referenziert wird."
 
-#: info/session.c:2761
+#: info/session.c:2805
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Menüliste lesen; bei „dir“ beginnen und ihnen folgen"
 
-#: info/session.c:2763
+#: info/session.c:2807
 msgid "Follow menus: "
 msgstr "Folge Menüs: "
 
-#: info/session.c:2956
+#: info/session.c:3000
 msgid "Find the node describing program invocation"
 msgstr "Den Knoten finden, der den Programmaufruf beschreibt"
 
-#: info/session.c:2958
+#: info/session.c:3002
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Finde den Programmaufruf-Knoten von [%s]: "
 
-#: info/session.c:2996
+#: info/session.c:3040
 msgid "Read a manpage reference and select it"
 msgstr "Einen Verweis auf eine Manpage lesen und diese auswählen"
 
-#: info/session.c:3000
+#: info/session.c:3044
 msgid "Get Manpage: "
 msgstr "Hole Manpage: "
 
-#: info/session.c:3030
+#: info/session.c:3074
 msgid "Select the node `Top' in this file"
 msgstr "Den Knoten „Top“ dieser Datei auswählen"
 
-#: info/session.c:3036
+#: info/session.c:3080
 msgid "Select the node `(dir)'"
 msgstr "Den Knoten „(dir)“ auswählen"
 
-#: info/session.c:3053 info/session.c:3055
+#: info/session.c:3097 info/session.c:3099
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Lösche Information über Knoten (%s): "
 
-#: info/session.c:3107
+#: info/session.c:3151
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Kann Information über Knoten „%s“ nicht löschen"
 
-#: info/session.c:3117
+#: info/session.c:3161
 msgid "Cannot kill the last node"
 msgstr "Information über den letzten Knoten kann nicht gelöscht werden"
 
-#: info/session.c:3203
+#: info/session.c:3247
 msgid "Select the most recently selected node"
 msgstr "Den zuletzt gewählten Knoten auswählen"
 
-#: info/session.c:3209
+#: info/session.c:3253
 msgid "Kill this node"
 msgstr "Information über diesen Knoten löschen"
 
-#: info/session.c:3217
+#: info/session.c:3261
 msgid "Read the name of a file and select it"
 msgstr "Den Namen einer Datei lesen und diese auswählen"
 
-#: info/session.c:3221
+#: info/session.c:3265
 msgid "Find file: "
 msgstr "Finde Datei: "
 
-#: info/session.c:3238
+#: info/session.c:3282
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Kann „%s“ nicht finden."
 
-#: info/session.c:3281 info/session.c:3399
+#: info/session.c:3325 info/session.c:3443
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Ausgabe-Datei „%s“ kann nicht angelegt werden."
 
-#: info/session.c:3295 info/session.c:3417 info/session.c:3477
+#: info/session.c:3339 info/session.c:3461 info/session.c:3521
 msgid "Done."
 msgstr "Fertig."
 
-#: info/session.c:3350
+#: info/session.c:3394
 #, c-format
 msgid "Writing node %s..."
 msgstr "Knoten „%s“ wird geschrieben..."
 
-#: info/session.c:3426
+#: info/session.c:3470
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Den Inhalt dieses Knotens an INFO_PRINT_COMMAND weiterreichen\n"
 "     (mittels einer Pipe)"
 
-#: info/session.c:3461
+#: info/session.c:3505
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Kann Daten nicht nach „%s“ weiterreichen (mittels einer Pipe)."
 
-#: info/session.c:3467
+#: info/session.c:3511
 #, c-format
 msgid "Printing node %s..."
 msgstr "Knoten „%s“ wird gedruckt..."
 
-#: info/session.c:3699
+#: info/session.c:3728
+msgid "Search continued from the end of the document."
+msgstr ""
+
+#: info/session.c:3733
+#, fuzzy
+msgid "Search continued from the beginning of the document."
+msgstr "Bis zum Anfang der Zeile löschen"
+
+#: info/session.c:3750
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Unterdatei „%s“ wird durchsucht..."
 
-#: info/session.c:3751
+#: info/session.c:3807
 msgid "Read a string and search for it case-sensitively"
 msgstr ""
 "Eine Zeichenkette einlesen und danach gemäß Groß-/Kleinschreibung suchen"
 
-#: info/session.c:3758
+#: info/session.c:3814
 msgid "Read a string and search for it"
 msgstr "Eine Zeichenkette einlesen und danach suchen"
 
-#: info/session.c:3766
+#: info/session.c:3822
 msgid "Read a string and search backward for it"
 msgstr "Eine Zeichenkette einlesen und danach in Rückwärtsrichtung suchen"
 
-#: info/session.c:3802 info/session.c:3808
+#: info/session.c:3858 info/session.c:3864
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%snach Zeichenkette [%s]: "
 
-#: info/session.c:3803 info/session.c:3809
+#: info/session.c:3859 info/session.c:3865
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3804 info/session.c:3810
+#: info/session.c:3860 info/session.c:3866
 #, fuzzy
 msgid " case-sensitively"
 msgstr " gemäß Groß-/Kleinschreibung "
 
-#: info/session.c:3805 info/session.c:3811
+#: info/session.c:3861 info/session.c:3867
 #, fuzzy
 msgid " backward"
 msgstr "Suche in Rückwärtsrichtung "
 
-#: info/session.c:3809
+#: info/session.c:3865
 msgid "Search"
 msgstr "Suche"
 
-#: info/session.c:3850
+#: info/session.c:3906
 msgid "Search failed."
 msgstr "Suche fehlgeschlagen."
 
-#: info/session.c:3868
+#: info/session.c:3924
 msgid "Repeat last search in the same direction"
 msgstr "Letzte Suche in der gleichen Richtung wiederholen"
 
-#: info/session.c:3871 info/session.c:3881
+#: info/session.c:3927 info/session.c:3937
 msgid "No previous search string"
 msgstr "Keine vorherige Such-Zeichenkette."
 
-#: info/session.c:3878
+#: info/session.c:3934
 msgid "Repeat last search in the reverse direction"
 msgstr "Letzte Suche in der entgegengesetzten Richtung wiederholen"
 
-#: info/session.c:3897 info/session.c:3903
+#: info/session.c:3953 info/session.c:3959
 msgid "Search interactively for a string as you type it"
 msgstr "Interaktiv eine Zeichenkette während der Eingabe suchen"
 
-#: info/session.c:3983
+#: info/session.c:4039
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "Interactive Suche in Rückwärtsrichtung: "
 
-#: info/session.c:3984
+#: info/session.c:4040
 msgid "I-search backward: "
 msgstr "Interactive Suche in Rückwärtsrichtung: "
 
-#: info/session.c:3986
+#: info/session.c:4042
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "Interaktive Suche: "
 
-#: info/session.c:3987
+#: info/session.c:4043
 msgid "I-search: "
 msgstr "Interaktive Suche: "
 
 # checkit
-#: info/session.c:4012 info/session.c:4014
+#: info/session.c:4068 info/session.c:4070
 msgid "Failing "
 msgstr "Fehlgeschlagen "
 
-#: info/session.c:4498
+#: info/session.c:4554
 msgid "Move to the previous cross reference"
 msgstr "Zum vorigen Querverweis bewegen"
 
-#: info/session.c:4516
+#: info/session.c:4572
 msgid "Move to the next cross reference"
 msgstr "Zum nächsten Querverweis bewegen"
 
-#: info/session.c:4538
+#: info/session.c:4594
 msgid "Select reference or menu item appearing on this line"
 msgstr "Verweis oder Menüeintrag auswählen, der auf dieser Zeile erscheint"
 
-#: info/session.c:4561
+#: info/session.c:4617
 msgid "Cancel current operation"
 msgstr "Momentane Operation abbrechen"
 
-#: info/session.c:4568
+#: info/session.c:4624
 msgid "Quit"
 msgstr "Beenden"
 
-#: info/session.c:4577
+#: info/session.c:4633
 msgid "Move the cursor to a specific line of the window"
 msgstr "Den Cursor zu einer bestimmten Zeile des Fensters bewegen"
 
-#: info/session.c:4609
+#: info/session.c:4665
 msgid "Redraw the display"
 msgstr "Anzeige erneut darstellen"
 
-#: info/session.c:4646
+#: info/session.c:4702
 msgid "Quit using Info"
 msgstr "Info beenden"
 
-#: info/session.c:4659
+#: info/session.c:4715
 msgid "Run command bound to this key's lowercase variant"
 msgstr ""
 "Befehl ausführen, der an die kleingeschriebene Variante dieser\n"
 "     Taste gebunden ist"
 
-#: info/session.c:4670
+#: info/session.c:4726
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Unbekannter Befehl (%s)."
 
-#: info/session.c:4673
+#: info/session.c:4729
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "„%s“ ist ungültig"
 
-#: info/session.c:4674
+#: info/session.c:4730
 #, c-format
 msgid "`%s' is invalid"
 msgstr "„%s“ ist ungültig"
 
-#: info/session.c:4888
+#: info/session.c:4944
 msgid "Add this digit to the current numeric argument"
 msgstr "Diese Zahl dem aktuellen numerischen Argument hinzufügen"
 
-#: info/session.c:4897
+#: info/session.c:4953
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Beginne (oder multipliziere mit 4) das aktuelle numerische Argument"
 
-#: info/session.c:4912
+#: info/session.c:4968
 msgid "Internally used by \\[universal-argument]"
 msgstr "Intern verwendet von \\[universal-argument]"
 
@@ -1765,28 +1774,34 @@ msgstr "Bestimmt, ob scroll-behavior Cursorbewegungsbefehle beeinflusst"
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Wenn „On“, dann akzeptiert Info ISO-Latin-Zeichen und zeigt diese an"
 
-#: info/variables.c:83
+#: info/variables.c:81
+#, fuzzy
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
+msgstr "Kontrolliert, was passiert, wenn am Ende eines Knotens geblättert wird"
+
+#: info/variables.c:88
 msgid "Explain the use of a variable"
 msgstr "Den Zweck einer Variablen erklären"
 
-#: info/variables.c:89
+#: info/variables.c:94
 msgid "Describe variable: "
 msgstr "Beschreibe Variable: "
 
-#: info/variables.c:108
+#: info/variables.c:113
 msgid "Set the value of an Info variable"
 msgstr "Den Wert einer Info-Variablen setzen"
 
-#: info/variables.c:114
+#: info/variables.c:119
 msgid "Set variable: "
 msgstr "Setze Variable: "
 
-#: info/variables.c:132
+#: info/variables.c:137
 #, c-format
 msgid "Set %s to value (%d): "
 msgstr "Setze %s auf den Wert (%d): "
 
-#: info/variables.c:173
+#: info/variables.c:178
 #, c-format
 msgid "Set %s to value (%s): "
 msgstr "Setze %s auf den Wert (%s): "
