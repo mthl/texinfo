@@ -1,5 +1,7 @@
 2008-03-07  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.11.93.
+
 	* info/infodoc.c (info_internal_help_text): reorder, regroup.
 	Suggestion from Benno Schulenberg, 06 Mar 2008 11:59:06.
 
