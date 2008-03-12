@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: texinfo-4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2008-03-08 15:35+0100\n"
-"PO-Revision-Date: 2008-03-09 15:06+0100\n"
+"PO-Revision-Date: 2008-03-11 22:55+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -1169,23 +1169,23 @@ msgstr "Volgende"
 
 #: info/session.c:1023 info/session.c:1148
 msgid "No more nodes within this document."
-msgstr "Er zijn geen pagina's meer in dit document."
+msgstr "Dit is de laatste pagina van dit document."
 
 #: info/session.c:1174
 msgid "No `Prev' for this node."
-msgstr "Er is geen voorgaande van deze pagina."
+msgstr "Er is geen voorgaande pagina op dit niveau."
 
 #: info/session.c:1194
 msgid "No `Prev' or `Up' for this node within this document."
-msgstr "Er is geen voorgaande of bovenliggende van deze pagina binnen dit document."
+msgstr "Dit is de eerste pagina van dit document."
 
 #: info/session.c:1256
 msgid "Move forwards or down through node structure"
-msgstr "Voorwaarts of omlaag door de paginastructuur"
+msgstr "Voorwaarts door alle pagina's van een document bladeren"
 
 #: info/session.c:1272
 msgid "Move backwards or up through node structure"
-msgstr "Achterwaarts of omhoog door de paginastructuur"
+msgstr "Achterwaarts door alle pagina's van een document bladeren"
 
 #: info/session.c:1368
 msgid "Scroll forward in this window"
@@ -1301,19 +1301,19 @@ msgstr "Zoeken gebruikt letterlijke tekst."
 
 #: info/session.c:2022
 msgid "Select the Next node"
-msgstr "De volgende pagina selecteren"
+msgstr "Naar de volgende pagina op dit niveau"
 
 #: info/session.c:2030
 msgid "Select the Prev node"
-msgstr "De voorgaande pagina selecteren"
+msgstr "Naar de voorgaande pagina op dit niveau"
 
 #: info/session.c:2038
 msgid "Select the Up node"
-msgstr "De bovenliggende pagina selecteren"
+msgstr "Naar de bovenliggende pagina"
 
 #: info/session.c:2045
 msgid "Select the last node in this file"
-msgstr "De laatste pagina in dit bestand selecteren"
+msgstr "Naar de laatste pagina van dit document"
 
 #: info/session.c:2072 info/session.c:2105
 msgid "This window has no additional nodes"
@@ -1321,7 +1321,7 @@ msgstr "Dit venster heeft geen extra pagina's."
 
 #: info/session.c:2078
 msgid "Select the first node in this file"
-msgstr "De eerste pagina in dit bestand selecteren"
+msgstr "Naar de eerste pagina van dit document"
 
 #: info/session.c:2112
 msgid "Select the last item in this node's menu"
