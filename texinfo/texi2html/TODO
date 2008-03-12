@@ -125,3 +125,5 @@ texi and formatted result. And also give the fractions and maybe use them.
 
 * maybe be quiet during special region expansion outside of document. It
   is not very clear that it is wrong, though.
+
+* document program_string

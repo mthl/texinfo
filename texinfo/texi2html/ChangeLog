@@ -1,3 +1,13 @@
+2008-03-12  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/mediawiki.init: add
+	the program_string reference.
+	* examples/mediawiki.init: cleanup perl warnings.
+	* texi2html.pl: element_file_name called with doc sets docu_doc
+	and not docu_top (Reinhold Kainhofer).
+	* Tests/test.sh: more robust for files with spaces.
+	* Tests/*: add tests for mediawiki output.
+
 2007-10-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: better handling of special regions.

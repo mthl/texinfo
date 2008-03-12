@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.5 2007-10-07 13:22:46 pertusus Exp $
+# $Id: mediawiki.init,v 1.6 2008-03-12 10:24:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -57,6 +57,7 @@ $SIMPLE_MENU = 1;
 
 $print_page_head	      = \&mediawiki_print_page_head;
 $print_page_foot	      = \&mediawiki_print_page_foot;
+$program_string		      = \&mediawiki_program_string;
 
 sub mediawiki_print_page_head($)
 {
@@ -64,7 +65,7 @@ sub mediawiki_print_page_head($)
     print $fh "$AFTER_BODY_OPEN\n" if $AFTER_BODY_OPEN;
 }
 
-sub program_string()
+sub mediawiki_program_string()
 {
     my $user = $Texi2HTML::THISDOC{'user'};
     my $date = $Texi2HTML::THISDOC{'today'};
@@ -93,7 +94,7 @@ sub program_string()
 sub mediawiki_print_page_foot($)
 {
     my $fh = shift;
-    my $program_string = program_string();
+    my $program_string = &$program_string();
     print $fh $program_string, "\n";
     print $fh $PRE_BODY_CLOSE, "\n" if $PRE_BODY_CLOSE;
 }
@@ -151,13 +152,13 @@ sub mediawiki_anchor($;$$$)
 # there is a " the resulting text is also enclosed within `'
 
 # default is {'args' => ['normal'], 'attribute' => ''},   
-$style_map{'titlefont'} => {'function' => \&mediawiki_titlefont};
-$style_map{'option'} => {'args' => ['code'],
-			 'attribute' => 'code',
-			 'quote' => '"'};
-$style_map{'samp'} => {'args' => ['code'],
-		       'attribute' => 'code',
-		       'quote' => '"'};
+$style_map{'titlefont'} = {'function' => \&mediawiki_titlefont};
+#$style_map{'option'} = {'args' => ['code'],
+#			 'attribute' => 'code',
+#			 'quote' => '"'};
+#$style_map{'samp'} = {'args' => ['code'],
+#		       'attribute' => 'code',
+#		       'quote' => '"'};
 
 
 

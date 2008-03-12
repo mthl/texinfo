@@ -1,0 +1,223 @@
+<div id="History-browsing"></div>
+<div id="SEC75"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#SEC74  &lt; ]|</td>
+<td valign="middle" align="left">|[[#SEC76| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#SEC66  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+== History browsing ==
+
+
+<p>Once you have used <small>CVS</small> to store a version control
+history&mdash;what files have changed when, how, and by
+whom, there are a variety of mechanisms for looking
+through the history.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC76| log messages]]::<nowiki>                Log messages
+</nowiki>&bull;[[#SEC77| history database]]::<nowiki>            The history database
+</nowiki>&bull;[[#SEC78| user-defined logging]]::<nowiki>        User-defined logging
+</nowiki>&bull;[[#SEC79| annotate]]::<nowiki>                    What revision modified each line of a file?
+</nowiki></pre>
+<hr size="6">
+<div id="log-messages"></div>
+<div id="SEC76"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#SEC75| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC77| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#SEC75| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC75| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+=== Log messages ===
+
+<p>Whenever you commit a file you specify a log message.
+</p>
+<p>To look through the log messages which have been
+specified for every revision which has been committed,
+use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#SEC143 log&mdash;Print out log information for files]).
+</p>
+<hr size="6">
+<div id="history-database"></div>
+<div id="SEC77"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#SEC76| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC78| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#SEC75| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC75| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+=== The history database ===
+
+<p>You can use the history file (see section [cvs: Reference manual for Administrative files#SEC178 The history file]) to
+log various <small>CVS</small> actions.  To retrieve the
+information from the history file, use the <code>cvs
+history</code> command (see section [cvs: Guide to CVS commands#SEC137 history&mdash;Show status of files and users]).
+</p>
+<p>Note: you can control what is logged to this file by using the
+&lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
+(see section [cvs: Reference manual for Administrative files#SEC180 The CVSROOT/config configuration file]).
+</p>
+
+<hr size="6">
+<div id="user_002ddefined-logging"></div>
+<div id="SEC78"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#SEC77| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC79| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#SEC75| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC75| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+=== User-defined logging ===
+
+<p>You can customize <small>CVS</small> to log various kinds of
+actions, in whatever manner you choose.  These
+mechanisms operate by executing a script at various
+times.  The script might append a message to a file
+listing the information and the programmer who created
+it, or send mail to a group of developers, or, perhaps,
+post a message to a particular newsgroup.  To log
+commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see section [cvs: Reference manual for Administrative files#SEC172 Loginfo]).
+To log commits, checkouts, exports, and tags,
+respectively, you can also use the &lsquo;<samp>-i</samp>&rsquo;,
+&lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
+modules file.  For a more flexible way of giving
+notifications to various users, which requires less in
+the way of keeping centralized scripts up to date, use
+the <code>cvs watch add</code> command (see section [cvs: Multiple developers#SEC91 Telling CVS to notify you]); this command is useful even if you are not
+using <code>cvs watch on</code>.
+</p>
+<div id="IDX133"></div>
+<div id="IDX134"></div>
+<p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
+when someone executes a <code>tag</code> or <code>rtag</code>
+command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
+for administrative files (see section [cvs: Reference manual for Administrative files#SEC157 Reference manual for Administrative files]), where each line is a regular expression
+followed by a command to execute.  The arguments passed
+to the command are, in order, the <var>tagname</var>,
+<var>operation</var> (<code>add</code> for <code>tag</code>,
+<code>mov</code> for <code>tag -F</code>, and <code>del</code> for
+<code>tag -d</code>), <var>repository</var>, and any remaining are
+pairs of <var>filename</var> <var>revision</var>.  A non-zero
+exit of the filter program will cause the tag to be
+aborted.
+</p>
+<p>Here is an example of using taginfo to log tag and rtag
+commands.  In the taginfo file put:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL /usr/local/cvsroot/CVSROOT/loggit
+</nowiki></pre></td></tr></table>
+
+<p>Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
+following script:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
+echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
+</nowiki></pre></td></tr></table>
+
+<hr size="6">
+<div id="annotate"></div>
+<div id="SEC79"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#SEC78| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#SEC75| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#SEC75| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+=== Annotate command ===
+
+<dl>
+<dt><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i>
+<div id="IDX135"></div>
+</dt>
+<dd><p>For each file in <var>files</var>, print the head revision
+of the trunk, together with information on the last
+modification for each line.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs annotate ssfile
+Annotations for ssfile
+***************
+1.1          (mary     27-Mar-96): ssfile line 1
+1.2          (joe      28-Mar-96): ssfile line 2
+</nowiki></pre></td></tr></table>
+
+<p>The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines.
+The <code>ssfile line 1</code> line was checked in by
+<code>mary</code> on March 27.  Then, on March 28, <code>joe</code>
+added a line <code>ssfile line 2</code>, without modifying
+the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
+tell you anything about lines which have been deleted
+or replaced; you need to use <code>cvs diff</code> for that
+(see section [cvs: Guide to CVS commands#SEC130 diff&mdash;Show differences between revisions]).
+</p>
+</dd></dl>
+
+<p>The options to <code>cvs annotate</code> are listed in
+[cvs: Quick reference to CVS commands#SEC156 Quick reference to CVS commands], and can be used to select the files
+and revisions to annotate.  The options are described
+in more detail there and in [cvs: Guide to CVS commands#SEC119 Common command options].
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#SEC75| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

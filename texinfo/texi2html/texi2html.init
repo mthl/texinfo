@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.131 2007-10-07 13:22:45 pertusus Exp $
+# $Id: texi2html.init,v 1.132 2008-03-12 10:24:12 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -812,6 +812,7 @@ $css_lines                 = \&T2H_DEFAULT_css_lines;
 $print_redirection_page    = \&T2H_DEFAULT_print_redirection_page;
 $node_file_name            = \&T2H_DEFAULT_node_file_name;
 $inline_contents           = \&T2H_DEFAULT_inline_contents;
+$program_string            = \&T2H_DEFAULT_program_string;
 
 ########################################################################
 # Layout for html for every sections
@@ -1082,7 +1083,7 @@ $AFTER_BODY_OPEN
 EOT
 }
 
-sub program_string()
+sub T2H_DEFAULT_program_string()
 {
     my $user = $Texi2HTML::THISDOC{'user'};
     my $date = $Texi2HTML::THISDOC{'today'};
@@ -1119,7 +1120,7 @@ sub T2H_DEFAULT_end_section($$)
 sub T2H_DEFAULT_print_page_foot($)
 {
     my $fh = shift;
-    my $program_string = program_string();
+    my $program_string = &$program_string();
     print $fh <<EOT;
 <p>
  <font size="-1">
@@ -1439,7 +1440,7 @@ sub T2H_DEFAULT_css_lines ($$)
 # and all global variables like $ADDRESS are not available.
 $PRE_ABOUT = sub
 {
-    return '  ' . program_string() .  "\n";
+    return '  ' . &$program_string() .  "\n";
 };
 
 # If customizing $AFTER_ABOUT, be sure to put the content inside <p></p>.

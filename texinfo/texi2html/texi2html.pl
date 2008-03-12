@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.197 2007-10-07 12:07:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.198 2008-03-12 10:24:12 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -361,6 +361,7 @@ $finish_out
 $node_file_name
 $element_file_name
 $inline_contents
+$program_string
 
 $protect_text
 $anchor
@@ -2948,9 +2949,9 @@ else
     }
     if (defined $Texi2HTML::Config::element_file_name)
     {
-        my $docu_name = &$Texi2HTML::Config::element_file_name
+        my $docu_doc_set = &$Texi2HTML::Config::element_file_name
            (undef, "doc", $docu_name);
-        $docu_top = $docu_name if (defined($docu_name));
+        $docu_doc = $docu_doc_set if (defined($docu_doc_set));
     } 
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }

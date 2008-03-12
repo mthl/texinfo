@@ -80,32 +80,33 @@ dir_res=${dir}_res
 [ -d $dir_res ] || return
 echo "  diffs:"
 previous_good='no'
-for file in `ls $dir_res` ; do
+for full_file in "$dir_res"/* ; do
+	file=`basename "$full_file"`
 	found='no'
-	if [ -d $dir_res/$file -a $dir_res/$file = $dir_res/'CVS' ]; then continue
-	elif [ -d $dir_res/$file ]; then
+	if [ -d "${dir_res}/${file}" -a "$dir_res/$file" = "${dir_res}/CVS" ]; then continue
+	elif [ -d "${dir_res}/$file" ]; then
 		file_or_dir=dir
-		if [ ! -d $dir/$file ]; then
+		if [ ! -d "${dir}/$file" ]; then
 			result=1
 		else
 			found='yes'
-			diff --recursive $dir_res/$file $dir/$file 2>&1 > /dev/null
+			diff --recursive "${dir_res}/$file" "${dir}/$file" 2>&1 > /dev/null
 			result=$?
 		fi
-	elif [ -f $dir_res/$file ]; then
+	elif [ -f "${dir_res}/$file" ]; then
 		file_or_dir=file
-		if [ ! -f $dir/$file ]; then
+		if [ ! -f "${dir}/$file" ]; then
 			result=1
 		else
 			found='yes'
 			if [ $ignore_tags = 'yes' ]; then
-				temp_file=$dir/${file}_tempnotag
-				sed 's/\$\([[:alpha:]]\+\):.*\$/\$\1\$/g' $dir/${file} > $temp_file
-				sed 's/\$\([[:alpha:]]\+\):.*\$/\$\1\$/g' $dir_res/$file | diff - $temp_file 2>&1 > /dev/null
+				temp_file="${dir}/${file}_tempnotag"
+				sed 's/\$\([[:alpha:]]\+\):.*\$/\$\1\$/g' "${dir}/${file}" > $temp_file
+				sed 's/\$\([[:alpha:]]\+\):.*\$/\$\1\$/g' "${dir_res}/$file" | diff - $temp_file 2>&1 > /dev/null
 				result=$?
 				rm $temp_file
 			else			
-				diff $dir_res/$file $dir/$file 2>&1 > /dev/null
+				diff "${dir_res}/$file" "${dir}/$file" 2>&1 > /dev/null
 				result=$?
 			fi
 		fi
@@ -372,5 +373,7 @@ test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
 test_texi tar ../tar_texi/tar.texi 
+test_texi ccvs_mediawiki ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init -split chapter -output ." 0 texinfo
+test_texi ccvs_mediawiki_nosplit ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init" 0 texinfo
 test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
