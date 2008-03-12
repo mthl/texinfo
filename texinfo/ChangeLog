@@ -1,3 +1,9 @@
+2008-03-12  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/session.c (_scroll_backward): Avoid wrapping to the end of
+	page when a backward scrolling is requested on the top node.
+	Patch proposed by Benno Schulenberg.
+
 2008-03-07  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.93.
