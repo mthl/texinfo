@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.32 2008-01-02 17:46:55 karl Exp $
+# $Id: Makefile.am,v 1.33 2008-03-14 18:38:37 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -10,7 +10,6 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-#SUBDIRS = tests
 bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
 
@@ -35,7 +34,7 @@ texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
 	sed 's/__VERSION__/@VERSION@/g' $(srcdir)/texinfo-cat.in >$@
 
 # Most of these are for fun.  The only official/installed ones are the
-# texi2* scripts.
+# *texi2* scripts.
 #
 EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
@@ -44,19 +43,15 @@ EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   $(dist_pkgdata_DATA) texinfo-cat.in
 CLEANFILES = $(pkgdata_DATA)
 
-XFAIL_TESTS =
-TESTS =	\
-bibtex.test \
-latex2html.test \
-texi2dvi.test
-
-# Let's not stress people's TeX installations.
+# Let's not stress people's TeX installations, etc.
+#XFAIL_TESTS =
+#TESTS =	\
+#bibtex.test \
 #dvipdf.test
-
-EXTRA_DIST += $(TESTS)
-
-# Each test case depends on defs.
-check_SCRIPTS = defs
-
-distclean-local:
-	-rm -rf testSubDir
+#latex2html.test \
+#texi2dvi.test
+#EXTRA_DIST += $(TESTS)
+## Each test case depends on defs.
+#check_SCRIPTS = defs
+#distclean-local:
+#	-rm -rf testSubDir

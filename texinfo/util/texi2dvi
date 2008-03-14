@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.116 2008-02-28 14:14:47 akim Exp $
+# $Id: texi2dvi,v 1.117 2008-03-14 18:38:37 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.116 $'
+rcs_revision='$Revision: 1.117 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -558,7 +558,7 @@ move_to_dest ()
     case $tidy:$oname in
       true:)  dest=$orig_pwd;;
       false:) dest=;;
-      *:*)    dest=$(output_base_name "$file");;
+      *:*)    dest=`output_base_name "$file"`;;
     esac
     if test ! -f "$file"; then
       error 1 "no such file or directory: $file"
@@ -684,13 +684,13 @@ generated_files_get ()
   while read file; do
     echo $file
     case $in_lang in
-      (texinfo)
+      texinfo)
 	# texindex: texinfo.cp -> texinfo.cps
        if index_file_p $file; then
 	 echo ${file}s
        fi
        ;;
-      (latex)
+      latex)
        # bibtex: *.aux -> *.bbl and *.blg.
 	if aux_file_p $file; then
 	  echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
@@ -781,7 +781,7 @@ xref_files_changed ()
 # Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
-  case $in_lang:$(out_lang_tex) in
+  case $in_lang:`out_lang_tex` in
     latex:dvi)   tex=${LATEX:-latex};;
     latex:pdf)   tex=${PDFLATEX:-pdflatex};;
     texinfo:dvi)
@@ -908,7 +908,7 @@ run_bibtex ()
 	      && grep '^\\bibdata' "$in_noext.aux") \
 	>&6 2>&1; \
   then
-    for f in $(generated_files_get "$in_noext" bibaux_file_p)
+    for f in `generated_files_get "$in_noext" bibaux_file_p`
     do
       run $bibtex "$f"
     done
@@ -938,7 +938,7 @@ run_index ()
 # ---------------
 run_thumbpdf ()
 {
-  if test $(out_lang_tex) = pdf \
+  if test `out_lang_tex` = pdf \
      && test -r "$in_noext.log" \
      && grep 'thumbpdf\.sty'  "$in_noext.log" >&6 2>&1; \
   then
@@ -972,7 +972,7 @@ run_dvipdf ()
   # 'input -o output'.  They all seem to accept 'input' only,
   # outputting using the expected file name.
   run $dvipdf "$1"
-  if test ! -f $(echo "$1" | sed -e 's/\.dvi$/.pdf/'); then
+  if test ! -f `echo "$1" | sed -e 's/\.dvi$/.pdf/'`; then
     error 1 "$0: cannot find output file"
   fi
 }
@@ -1015,12 +1015,12 @@ run_tex_suite ()
   # dvipdf or ps).
   case $out_lang in
     dvipdf)
-      run_dvipdf "$in_noext.$(out_lang_tex)"
-      move_to_dest "$in_noext.$(out_lang_ext)"
+      run_dvipdf "$in_noext.`out_lang_tex`"
+      move_to_dest "$in_noext.`out_lang_ext`"
       ;;
     ps)
-      dvips -o "$in_noext.$(out_lang_ext)" "$in_noext.$(out_lang_tex)"
-      move_to_dest "$in_noext.$(out_lang_ext)"
+      dvips -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
+      move_to_dest "$in_noext.`out_lang_ext`"
       ;;
   esac
 
@@ -1283,7 +1283,7 @@ run_hevea ()
 # Run the TeX (or HeVeA).
 run_core_conversion ()
 {
-  case $in_lang:$(out_lang_tex) in
+  case $in_lang:`out_lang_tex` in
     *:dvi|*:pdf)
 	run_tex;;
     latex:html|latex:text|latex:info)
@@ -1353,7 +1353,7 @@ mostly_clean ()
   shift
   $tidy || {
     local log="$work_build/$in_noext.log"
-    set X ${1+"$@"} "$log" $(generated_files_get "$work_build/$in_noext")
+    set X ${1+"$@"} "$log" `generated_files_get "$work_build/$in_noext"`
     shift
   }
   remove ${1+"$@"}
@@ -1619,7 +1619,7 @@ input_file_name_decode ()
   if test x"$oname" != x; then
     out_name=$oname
   else
-    out_name=$in_noext.$(out_lang_ext)
+    out_name=$in_noext.`out_lang_ext`
   fi
   out_dir=`func_dirname "$out_name"`
   out_dir_abs=`absolute "$out_dir"`
@@ -1662,7 +1662,7 @@ do
   # Sometimes there are incompatibilities between auxiliary files for
   # DVI and PDF.  The contents can also change whether we work on PDF
   # and/or DVI.  So keep separate spaces for each.
-  workdir=$t2ddir/$(out_lang_tex)
+  workdir=$t2ddir/`out_lang_tex`
   ensure_dir "$workdir"
 
   # _build.  In a tidy build, where the auxiliary files are output.

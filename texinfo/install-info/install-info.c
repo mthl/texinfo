@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.6 2008-02-26 16:58:17 karl Exp $
+   $Id: install-info.c,v 1.7 2008-03-14 18:38:36 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -1081,7 +1081,7 @@ parse_input (const struct line_data *lines, int nlines,
 
 /* Parse the dir file whose basename is BASE_NAME.  Find all the
    nodes, and their menus, and the sections of their menus.  */
-int
+static void
 parse_dir_file (struct line_data *lines, int nlines, struct node **nodes)
 {
   int node_header_flag = 0;
@@ -1421,7 +1421,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
 static void
 split_entry (char *entry, char **name, size_t *name_len, char **description, size_t *description_len)
 {
-  FILE *ostream;
   char *endptr;
 
   /* on the first line, the description starts after the first period. */
@@ -1571,7 +1570,7 @@ add_missing_basenames (struct spec_entry *entries, char *name)
       if (entry->missing_basename)
         {
           /* Insert NAME into the right place in ENTRY->TEXT. */
-          char *info, *rest;
+          char *info, *rest, *text;
           size_t name_len = strlen (name);
           char *ptr = strstr (entry->text, ": ().");
           if (!ptr)
@@ -1581,7 +1580,7 @@ add_missing_basenames (struct spec_entry *entries, char *name)
 
           info = xmalloc (name_len +  6);
           snprintf (info, name_len + 6, ": (%s).", name);
-          char *text = concat (entry->text, info, rest);
+          text = concat (entry->text, info, rest);
           free (info);
           if (entry->text)
             free (entry->text);
@@ -1645,12 +1644,13 @@ add_missing_descriptions (struct spec_entry *entries, char *desc)
     {
       if (entry->missing_description)
         {
+          char *text;
           int add_nl = 1;
           if (entry->text)
             if (entry->text[entry->text_len - 1] == '\n')
               add_nl = 0;
           /* Append DESC onto ENTRY->TEXT. */
-          char *text = concat (entry->text == NULL ? "" : entry->text, desc,
+          text = concat (entry->text == NULL ? "" : entry->text, desc,
                                add_nl ? "\n" : "");
           if (entry->text)
             free (entry->text);
@@ -2189,7 +2189,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                  missing names with the info file's basename.  We're out
                  of luck for any missing descriptions. */
               add_missing_names (entries_to_add, infile_sans_info);
-              //add_missing_descriptions (entries_to_add, "\n");
+              /* add_missing_descriptions (entries_to_add, "\n"); */
             }
           else
             {
@@ -2359,7 +2359,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                 break;
             if (spec)
               {
-                int entries_added = 0;
                 int add_at_line = section->end_line;
                 struct spec_entry *entry;
                 /* Say we have found at least one section with this name,
