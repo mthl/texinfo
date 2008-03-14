@@ -1,12 +1,13 @@
 2008-03-14  Karl Berry  <karl@gnu.org>
 
 	* install-info/install-info.c: portability fixes.
-	(): use \f not \x1f.
 	(parse_dir_file): declare void, since it is.
 	(split_entry): Remove unused variable ostream.
 	(add_missing_basenames, add_missing_descriptions): Avoid
 		declarations after statements.
 	(main): Do not use // comments.
+	(format_entry): avoid using isblank, linking fails on osf-alpha,
+	others.
 	* util/texi2dvi: use `...` instead of $(...).  Avoid
 	(...) as case labels.
 

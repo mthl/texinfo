@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.7 2008-03-14 18:38:36 karl Exp $
+   $Id: install-info.c,v 1.8 2008-03-14 19:00:28 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -1355,7 +1355,8 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
           while (logical_end)
             {
               --logical_end;
-              if (isblank (toupper(line_out[logical_end])))
+              if (line_out[logical_end]) == ' '
+                  || line_out[logical_end] == '\t')
                 {
                   found_blank = 1;
                   break;
