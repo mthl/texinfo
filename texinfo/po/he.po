@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-08 15:35+0100\n"
+"POT-Creation-Date: 2008-03-15 01:30+0100\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr ".רתוי בר עדימ תגצהל --help הסנ\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2065
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2066
 #: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
@@ -1120,7 +1120,7 @@ msgstr "תונולחה דחאב םדוק תגצה התוא הקסיפ רחב"
 msgid "Select visited node: "
 msgstr "Select visited node: "
 
-#: info/nodemenu.c:336 info/session.c:2438
+#: info/nodemenu.c:336 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "!םלענ (%s) רושיקה לש דעיה"
@@ -1179,286 +1179,286 @@ msgstr ".תואקסיפה הנבמב רתוי קומע וא המידק עונ"
 msgid "Move backwards or up through node structure"
 msgstr ".תואקסיפה הנבמב הלעמ יפלכ וא הרוחא עונ"
 
-#: info/session.c:1368
+#: info/session.c:1369
 msgid "Scroll forward in this window"
 msgstr ".הז ןולחב המידק לולג"
 
-#: info/session.c:1376
+#: info/session.c:1377
 msgid "Scroll forward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב המידק לולג"
 
-#: info/session.c:1384
+#: info/session.c:1385
 msgid "Scroll forward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1392
+#: info/session.c:1393
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1400
+#: info/session.c:1401
 msgid "Scroll backward in this window"
 msgstr "הז ןולחב הרוחא לולג"
 
-#: info/session.c:1408
+#: info/session.c:1409
 msgid "Scroll backward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב הרוחא לולג"
 
-#: info/session.c:1417
+#: info/session.c:1418
 msgid "Scroll backward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1425
+#: info/session.c:1426
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1433
+#: info/session.c:1434
 msgid "Move to the start of this node"
 msgstr "וז הקסיפ תליחתל ןמס זזה"
 
-#: info/session.c:1440
+#: info/session.c:1441
 msgid "Move to the end of this node"
 msgstr "וז הקסיפ ףוסל ןמס זזה"
 
-#: info/session.c:1447
+#: info/session.c:1448
 msgid "Scroll down by lines"
 msgstr "הטמ יפלכ תורוש N לולג"
 
-#: info/session.c:1464
+#: info/session.c:1465
 msgid "Scroll up by lines"
 msgstr "הלעמ יפלכ תורוש N לולג"
 
-#: info/session.c:1482
+#: info/session.c:1483
 msgid "Scroll down by half screen size"
 msgstr "הטמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1508
+#: info/session.c:1509
 msgid "Scroll up by half screen size"
 msgstr "הלעמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1537
+#: info/session.c:1538
 msgid "Select the next window"
 msgstr "אבה ןולחב רחב"
 
-#: info/session.c:1576
+#: info/session.c:1577
 msgid "Select the previous window"
 msgstr "םדוקה ןולחב רחב"
 
-#: info/session.c:1627
+#: info/session.c:1628
 msgid "Split the current window"
 msgstr "םיינשל יחכונה ןולחה קלח"
 
-#: info/session.c:1708
+#: info/session.c:1709
 msgid "Delete the current window"
 msgstr "יחכונה ןולחה תא רסה"
 
-#: info/session.c:1716
+#: info/session.c:1717
 msgid "Cannot delete a permanent window"
 msgstr "עובק ןולח ריסהל ןתינ אל"
 
-#: info/session.c:1748
+#: info/session.c:1749
 msgid "Delete all other windows"
 msgstr "יחכונה דבלמ תונולחה לכ תא רסה"
 
-#: info/session.c:1794
+#: info/session.c:1795
 msgid "Scroll the other window"
 msgstr "אבה ןולחב לולג"
 
-#: info/session.c:1815
+#: info/session.c:1816
 msgid "Scroll the other window backward"
 msgstr "אבה ןולחב הרוחא לולג"
 
-#: info/session.c:1821
+#: info/session.c:1822
 msgid "Grow (or shrink) this window"
 msgstr "הז ןולח (ןטקה וא) לדגה"
 
-#: info/session.c:1832
+#: info/session.c:1833
 msgid "Divide the available screen space among the visible windows"
 msgstr "םיגצומה תונולחה לכ ןיב הגוצתה חטש קלח"
 
-#: info/session.c:1839
+#: info/session.c:1840
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "יחכונה ןולחב ושלגש תורוש תגצה בצמ הנש"
 
-#: info/session.c:1846
+#: info/session.c:1847
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1850
+#: info/session.c:1851
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1851
+#: info/session.c:1852
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2022
+#: info/session.c:2023
 msgid "Select the Next node"
 msgstr "האבה הקסיפב רובע"
 
-#: info/session.c:2030
+#: info/session.c:2031
 msgid "Select the Prev node"
 msgstr "תמדוקה הקסיפל רובע"
 
-#: info/session.c:2038
+#: info/session.c:2039
 msgid "Select the Up node"
 msgstr "לעמש הקסיפל רובע"
 
-#: info/session.c:2045
+#: info/session.c:2046
 msgid "Select the last node in this file"
 msgstr "הז ךמסמב הנורחאה הקסיפל רובע"
 
-#: info/session.c:2072 info/session.c:2105
+#: info/session.c:2073 info/session.c:2106
 msgid "This window has no additional nodes"
 msgstr "הז ןולחב תואקסיפ רתוי ןיא"
 
-#: info/session.c:2078
+#: info/session.c:2079
 msgid "Select the first node in this file"
 msgstr "הז ךמסמב הנושארה הקסיפל רובע"
 
-#: info/session.c:2112
+#: info/session.c:2113
 msgid "Select the last item in this node's menu"
 msgstr "וזה הקסיפה טירפתמ ןורחאה ףיעסב רחב"
 
-#: info/session.c:2118
+#: info/session.c:2119
 msgid "Select this menu item"
 msgstr "טירפתהמ הז ףיעסב רחב"
 
-#: info/session.c:2151
+#: info/session.c:2152
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr ".םיפיעס %d ןיא הז טירפתב"
 
-#: info/session.c:2345 info/session.c:2346
+#: info/session.c:2346 info/session.c:2347
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menu item (%s): "
 
-#: info/session.c:2349
+#: info/session.c:2350
 msgid "Menu item: "
 msgstr "Menu item: "
 
-#: info/session.c:2356 info/session.c:2357
+#: info/session.c:2357 info/session.c:2358
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Follow xref (%s): "
 
-#: info/session.c:2360
+#: info/session.c:2361
 msgid "Follow xref: "
 msgstr "Follow xref: "
 
-#: info/session.c:2489
+#: info/session.c:2490
 msgid "Read a menu item and select its node"
 msgstr "המיאתמה הקסיפל רובעו טירפתמ ףיעס םש ארק"
 
-#: info/session.c:2497
+#: info/session.c:2498
 msgid "Read a footnote or cross reference and select its node"
 msgstr "המיאתמה הקסיפל רובעו רושיק וא הרעה לש םש ארק"
 
-#: info/session.c:2503
+#: info/session.c:2504
 msgid "Move to the start of this node's menu"
 msgstr "וז הקסיפב טירפתה תליחתל ןמס זזה"
 
-#: info/session.c:2527
+#: info/session.c:2528
 msgid "Visit as many menu items at once as possible"
 msgstr "הז טירפתמ םיפיעס לש רשפאה לככ בר רפסמ גצה"
 
-#: info/session.c:2555
+#: info/session.c:2556
 msgid "Read a node name and select it"
 msgstr "הילא רובעו הקסיפ לש םש ארק"
 
-#: info/session.c:2610 info/session.c:2615
+#: info/session.c:2611 info/session.c:2616
 msgid "Goto node: "
 msgstr "Goto node: "
 
-#: info/session.c:2679
+#: info/session.c:2680
 #, c-format
 msgid "No menu in node `%s'."
 msgstr ".םיטירפת `%s' ןיא הקסיפב"
 
-#: info/session.c:2725
+#: info/session.c:2726
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr ".`%s' ףיעס ןיא `%s' הקסיפ לש טירפתב"
 
-#: info/session.c:2755
+#: info/session.c:2756
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr ".`%s' ףיעסב הילא רשקמ `%s'-ב טירפתה רשא הקסיפ יתאצמ אל"
 
-#: info/session.c:2805
+#: info/session.c:2806
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "םהירחא בוקעו dir-מ הליחתמה טירפת יפיעס תרדיס ארק"
 
-#: info/session.c:2807
+#: info/session.c:2808
 msgid "Follow menus: "
 msgstr "Follow menus: "
 
-#: info/session.c:3000
+#: info/session.c:3001
 msgid "Find the node describing program invocation"
 msgstr "תינכתה ץירהל דציכ תראתמה הקסיפה תא אצמ"
 
-#: info/session.c:3002
+#: info/session.c:3003
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Find Invocation node of [%s]: "
 
-#: info/session.c:3040
+#: info/session.c:3041
 msgid "Read a manpage reference and select it"
 msgstr "ותוא גצהו manpage-ל היינפה ארק"
 
-#: info/session.c:3044
+#: info/session.c:3045
 msgid "Get Manpage: "
 msgstr "Get Manpage: "
 
-#: info/session.c:3074
+#: info/session.c:3075
 msgid "Select the node `Top' in this file"
 msgstr "הז ךמסמב (`Top') תישארה הקסיפל רובע"
 
-#: info/session.c:3080
+#: info/session.c:3081
 msgid "Select the node `(dir)'"
 msgstr "`(dir)' הקסיפל רובע"
 
-#: info/session.c:3097 info/session.c:3099
+#: info/session.c:3098 info/session.c:3100
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Kill node (%s): "
 
-#: info/session.c:3151
+#: info/session.c:3152
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "`%s' הקסיפ קלסל תורשפא ןיא"
 
-#: info/session.c:3161
+#: info/session.c:3162
 msgid "Cannot kill the last node"
 msgstr "הדיחי הקסיפ קלסל תורשפא ןיא"
 
-#: info/session.c:3247
+#: info/session.c:3248
 msgid "Select the most recently selected node"
 msgstr "הגצוהש הנורחאה הקסיפל רוזח"
 
-#: info/session.c:3253
+#: info/session.c:3254
 msgid "Kill this node"
 msgstr "וז הקסיפ קלס"
 
-#: info/session.c:3261
+#: info/session.c:3262
 msgid "Read the name of a file and select it"
 msgstr "ותוא גצהו ץבוק לש םש ארק"
 
-#: info/session.c:3265
+#: info/session.c:3266
 msgid "Find file: "
 msgstr "Find file: "
 
-#: info/session.c:3282
+#: info/session.c:3283
 #, c-format
 msgid "Cannot find `%s'."
 msgstr ".אצמנ אל `%s' ץבוק"
 
-#: info/session.c:3325 info/session.c:3443
+#: info/session.c:3326 info/session.c:3444
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr ".`%s' טלפ ץבוק תריציב הלקת"
@@ -1466,187 +1466,187 @@ msgstr ".`%s' טלפ ץבוק תריציב הלקת"
 # Note that this needs to make sense when displayed to the _right_ of
 # the translated "Writing node foo..." and  "Printing node foo...",
 # no matter whether the following word is masculine or feminine!
-#: info/session.c:3339 info/session.c:3461 info/session.c:3521
+#: info/session.c:3340 info/session.c:3462 info/session.c:3522
 msgid "Done."
 msgstr "ב החלצה"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3394
+#: info/session.c:3395
 #, c-format
 msgid "Writing node %s..."
 msgstr "`%s' הקסיפ טלפ"
 
-#: info/session.c:3470
+#: info/session.c:3471
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "INFO_PRINT_COMMAND ךרד וז הקסיפ ןכות ספדה"
 
-#: info/session.c:3505
+#: info/session.c:3506
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr ".`%s'-ל קיפא תחיתפב הלקת"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3511
+#: info/session.c:3512
 #, c-format
 msgid "Printing node %s..."
 msgstr "%s הקסיפ תספדה"
 
-#: info/session.c:3728
+#: info/session.c:3729
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3733
+#: info/session.c:3734
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "הרוש תליחת דע קחמ"
 
-#: info/session.c:3750
+#: info/session.c:3751
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "... %s ץבוק-תת קרוס"
 
-#: info/session.c:3807
+#: info/session.c:3808
 msgid "Read a string and search for it case-sensitively"
 msgstr "תוישירב תובשחתה ךות התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3814
+#: info/session.c:3815
 msgid "Read a string and search for it"
 msgstr "התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3822
+#: info/session.c:3823
 msgid "Read a string and search backward for it"
 msgstr "הרוחא התוא שפחו תזורחמ ארק"
 
-#: info/session.c:3858 info/session.c:3864
+#: info/session.c:3859 info/session.c:3865
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%sfor string [%s]: "
 
-#: info/session.c:3859 info/session.c:3865
+#: info/session.c:3860 info/session.c:3866
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3861 info/session.c:3867
 #, fuzzy
 msgid " case-sensitively"
 msgstr " case-sensitively "
 
 # The following 4 are untranslated because they are used with the
 # format string above in a prompt, and we don't translate prompts.
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3862 info/session.c:3868
 #, fuzzy
 msgid " backward"
 msgstr "Search backward"
 
-#: info/session.c:3865
+#: info/session.c:3866
 msgid "Search"
 msgstr "Search"
 
-#: info/session.c:3906
+#: info/session.c:3907
 msgid "Search failed."
 msgstr ".האצמנ אל תזורחמה"
 
-#: info/session.c:3924
+#: info/session.c:3925
 msgid "Repeat last search in the same direction"
 msgstr "ןוויכ ותואב ןורחא שופיח לע רוזח"
 
-#: info/session.c:3927 info/session.c:3937
+#: info/session.c:3928 info/session.c:3938
 msgid "No previous search string"
 msgstr "ןורחא שופיחמ תזורחמ ןיא"
 
-#: info/session.c:3934
+#: info/session.c:3935
 msgid "Repeat last search in the reverse direction"
 msgstr "ךופה ןוויכב ןורחא שופיח לע רוזח"
 
-#: info/session.c:3953 info/session.c:3959
+#: info/session.c:3954 info/session.c:3960
 msgid "Search interactively for a string as you type it"
 msgstr "התוא ה/דילקמ ה/תאש ידכ ךות תזורחמ שפח"
 
-#: info/session.c:4039
+#: info/session.c:4040
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "I-search backward: "
 
-#: info/session.c:4040
+#: info/session.c:4041
 msgid "I-search backward: "
 msgstr "I-search backward: "
 
-#: info/session.c:4042
+#: info/session.c:4043
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "I-search: "
 
-#: info/session.c:4043
+#: info/session.c:4044
 msgid "I-search: "
 msgstr "I-search: "
 
 # Untranslated because is used with the I-search: prompt.
-#: info/session.c:4068 info/session.c:4070
+#: info/session.c:4069 info/session.c:4071
 msgid "Failing "
 msgstr "Failing "
 
-#: info/session.c:4554
+#: info/session.c:4555
 msgid "Move to the previous cross reference"
 msgstr "םדוקה רושיקל ןמס זזה"
 
-#: info/session.c:4572
+#: info/session.c:4573
 msgid "Move to the next cross reference"
 msgstr "אבה רושיקל ןמס זזה"
 
-#: info/session.c:4594
+#: info/session.c:4595
 msgid "Select reference or menu item appearing on this line"
 msgstr "תיחכונה הרושב עיפומה טירפתמ ףיעס וא רושיק רחא בוקע"
 
-#: info/session.c:4617
+#: info/session.c:4618
 msgid "Cancel current operation"
 msgstr "תיחכונ הלועפ לטב"
 
-#: info/session.c:4624
+#: info/session.c:4625
 msgid "Quit"
 msgstr "לטוב"
 
-#: info/session.c:4633
+#: info/session.c:4634
 msgid "Move the cursor to a specific line of the window"
 msgstr "הז ןולחב תמיוסמ הרושל ןמס זזה"
 
-#: info/session.c:4665
+#: info/session.c:4666
 msgid "Redraw the display"
 msgstr "הגוצת שדח"
 
-#: info/session.c:4702
+#: info/session.c:4703
 msgid "Quit using Info"
 msgstr "Info תינכותמ אצ"
 
-#: info/session.c:4715
+#: info/session.c:4716
 msgid "Run command bound to this key's lowercase variant"
 msgstr "הז שקמ לש תונטק תויתוא תסריגל הרושקה הדוקפ לעפה"
 
-#: info/session.c:4726
+#: info/session.c:4727
 #, c-format
 msgid "Unknown command (%s)."
 msgstr ".(%s) תרכומ-יתלב הדוקפ"
 
-#: info/session.c:4729
+#: info/session.c:4730
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:4730
+#: info/session.c:4731
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:4944
+#: info/session.c:4945
 msgid "Add this digit to the current numeric argument"
 msgstr "יחכונ ירמונ טנמוגראל וז הרפס ףסוה"
 
-#: info/session.c:4953
+#: info/session.c:4954
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "4-ב םייק ךרע לופכ וא ,ירמונ טנמוגרא לש הדלקה לחתה"
 
-#: info/session.c:4968
+#: info/session.c:4969
 msgid "Internally used by \\[universal-argument]"
 msgstr "וז הדוקפב שמתשמ \\[universal-argument]"
 
@@ -1912,40 +1912,40 @@ msgstr "םאות END-INFO-DIR-ENTRY אלל START-INFO-DIR-ENTRY"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "םאות START-INFO-DIR-ENTRY אלל END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1910 install-info/install-info.c:1920
+#: install-info/install-info.c:1911 install-info/install-info.c:1921
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr ""
 
-#: install-info/install-info.c:2000
+#: install-info/install-info.c:2001
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr ".דבלב תחא םעפ %s-ל Info ץבוק ןייצל ןתינ\n"
 
-#: install-info/install-info.c:2033
+#: install-info/install-info.c:2034
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2045
+#: install-info/install-info.c:2046
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr ""
 
-#: install-info/install-info.c:2103
+#: install-info/install-info.c:2104
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "`%s' רתוימ טנמוגרא"
 
-#: install-info/install-info.c:2107
+#: install-info/install-info.c:2108
 msgid "No input file specified; try --help for more information."
 msgstr ".הרזע תלבקל --help הסנ ;טלק ץבוק ןויצ ןיא"
 
-#: install-info/install-info.c:2110
+#: install-info/install-info.c:2111
 msgid "No dir file specified; try --help for more information."
 msgstr ".הרזע תלבקל --help הסנ ;dir ץבוק ןויצ ןיא"
 
-#: install-info/install-info.c:2252
+#: install-info/install-info.c:2253
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s'-ב ישאר טירפת יפיעס ןיא"

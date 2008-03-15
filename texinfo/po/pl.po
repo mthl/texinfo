@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-08 15:35+0100\n"
+"POT-Creation-Date: 2008-03-15 01:30+0100\n"
 "PO-Revision-Date: 2008-03-09 13:15+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -231,8 +231,10 @@ msgid "Index entry: "
 msgstr "Wpis indeksu: "
 
 #: info/indices.c:324
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
-msgstr "Przej¶cie do nastêpnego pasuj±cego elementu z ostatniego `\\[index-search]'"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
+msgstr ""
+"Przej¶cie do nastêpnego pasuj±cego elementu z ostatniego `\\[index-search]'"
 
 #: info/indices.c:334
 msgid "No previous index search string."
@@ -258,7 +260,8 @@ msgstr "NIE MO¯NA TEGO ZOBACZYÆ"
 #: info/indices.c:421
 #, c-format
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
-msgstr "Znaleziono `%s' w %s. (`\\[next-index-match]' próbuje znale¼æ nastêpne.)"
+msgstr ""
+"Znaleziono `%s' w %s. (`\\[next-index-match]' próbuje znale¼æ nastêpne.)"
 
 #: info/indices.c:549
 #, c-format
@@ -292,18 +295,21 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Wiêcej informacji mo¿na uzyskaæ przez --help.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2065
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2066
 #: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"Licencja GPLv3+: GNU GPL wersja 3 lub pó¼niejsza <http://www.gnu.org/licenses/gpl.html>\n"
-"To jest oprogramowanie wolnodostêpne: mo¿na je modyfikowaæ i rozpowszechniaæ.\n"
+"Licencja GPLv3+: GNU GPL wersja 3 lub pó¼niejsza <http://www.gnu.org/"
+"licenses/gpl.html>\n"
+"To jest oprogramowanie wolnodostêpne: mo¿na je modyfikowaæ i "
+"rozpowszechniaæ.\n"
 "Nie ma ¯ADNEJ GWARANCJI w zakresie dopuszczalnym przez prawo.\n"
 
 #: info/info.c:503
@@ -325,7 +331,8 @@ msgstr ""
 #: info/info.c:603
 msgid ""
 "Options:\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit."
@@ -344,7 +351,8 @@ msgid ""
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
 "  -o, --output=FILENAME        output selected nodes to FILENAME."
 msgstr ""
-"  -h, --help                   wy¶wietlenie tego opisu i zakoñczenie dzia³ania.\n"
+"  -h, --help                   wy¶wietlenie tego opisu i zakoñczenie "
+"dzia³ania.\n"
 "      --index-search=£AÑCUCH   przej¶cie do wêz³a za £AÑCUCHEM w indeksie.\n"
 "  -n, --node=WÊZE£             podanie wêz³a w pierwszym odwiedzanym pliku.\n"
 "  -o, --output=PLIK            zapis wybranych wêz³ów do PLIKU."
@@ -357,8 +365,10 @@ msgid ""
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
 "  -R, --raw-escapes            wypisywanie sekwencji ANSI (domy¶lne).\n"
-"      --no-raw-escapes         wypisywanie sekwencji jako dos³ownego tekstu.\n"
-"      --restore=PLIK           czytanie pocz±tkowej sekwencji klawiszy z PLIKU.\n"
+"      --no-raw-escapes         wypisywanie sekwencji jako dos³ownego "
+"tekstu.\n"
+"      --restore=PLIK           czytanie pocz±tkowej sekwencji klawiszy z "
+"PLIKU.\n"
 "  -O, --show-options, --usage  przej¶cie do wêz³a z opcjami linii poleceñ."
 
 #: info/info.c:623
@@ -373,8 +383,10 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
 "      --subnodes               rekurencyjne wypisanie elementów menu.\n"
-"      --vi-keys                u¿ywanie klawiszy w stylu programów vi i less.\n"
-"      --version                wy¶wietlenie informacji o wersji i zakoñczenie.\n"
+"      --vi-keys                u¿ywanie klawiszy w stylu programów vi i "
+"less.\n"
+"      --version                wy¶wietlenie informacji o wersji i "
+"zakoñczenie.\n"
 "  -w, --where, --location      wy¶wietlenie fizycznego po³o¿enia pliku Info."
 
 #: info/info.c:633
@@ -388,10 +400,12 @@ msgid ""
 msgstr ""
 "\n"
 "Pierwszy argument nie bêd±cy opcj±, je¶li jest obecny, jest wpisem menu, od\n"
-"którego program ma zacz±æ pracê; jest poszukiwany we wszystkich plikach `dir'\n"
+"którego program ma zacz±æ pracê; jest poszukiwany we wszystkich plikach "
+"`dir'\n"
 "le¿±cych w INFOPATH.\n"
 "Je¶li nie jest obecny, info ³±czy wszystkie pliki `dir' i pokazuje wynik.\n"
-"Wszystkie pozosta³e argumenty s± traktowane jako nazwy elementów menu wzglêdem\n"
+"Wszystkie pozosta³e argumenty s± traktowane jako nazwy elementów menu "
+"wzglêdem\n"
 "pocz±tkowo odwiedzonego wêz³a."
 
 #: info/info.c:640
@@ -409,10 +423,13 @@ msgstr ""
 "Przyk³ady:\n"
 "  info                       pokazanie menu katalogów g³ównego poziomu\n"
 "  info emacs                 rozpoczêcie od wêz³a emacs z g³ównego katalogu\n"
-"  info emacs buffers         rozpoczêcie od wêz³a buffers w podrêczniku emacsa\n"
-"  info --show-options emacs  rozpoczêcie od wêz³a z opisem linii poleceñ emacsa\n"
+"  info emacs buffers         rozpoczêcie od wêz³a buffers w podrêczniku "
+"emacsa\n"
+"  info --show-options emacs  rozpoczêcie od wêz³a z opisem linii poleceñ "
+"emacsa\n"
 "  info --subnodes -o out.txt emacs  zapisanie ca³ego podrêcznika do out.txt\n"
-"  info -f ./foo.info         pokazanie pliku ./foo.info bez szukania w katalogu"
+"  info -f ./foo.info         pokazanie pliku ./foo.info bez szukania w "
+"katalogu"
 
 #: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/texindex.c:259
@@ -538,15 +555,22 @@ msgstr "\\%-10[end-of-node]  Przej¶cie na koniec tego wêz³a.\n"
 
 #: info/infodoc.c:58
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
-msgstr "\\%-10[move-to-next-xref]  Przej¶cie do nastêpnego odno¶nika hipertekstowego.\n"
+msgstr ""
+"\\%-10[move-to-next-xref]  Przej¶cie do nastêpnego odno¶nika "
+"hipertekstowego.\n"
 
 #: info/infodoc.c:59
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  Przej¶cie za odno¶nikiem hipertekstowym pod kursorem.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Przej¶cie za odno¶nikiem hipertekstowym "
+"pod kursorem.\n"
 
 #: info/infodoc.c:60
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
-msgstr "\\%-10[history-node]  Przej¶cie do ostatniego wêz³a widocznego w tym oknie.\n"
+msgstr ""
+"\\%-10[history-node]  Przej¶cie do ostatniego wêz³a widocznego w tym oknie.\n"
 
 #: info/infodoc.c:62
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
@@ -578,7 +602,8 @@ msgstr "\\%-10[dir-node]  Przej¶cie do wêz³a g³ównego katalogu.\n"
 
 #: info/infodoc.c:70
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
-msgstr "1...9       Wybranie pierwszego ... dziewi±tego elementu z menu wêz³a.\n"
+msgstr ""
+"1...9       Wybranie pierwszego ... dziewi±tego elementu z menu wêz³a.\n"
 
 #: info/infodoc.c:71
 msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
@@ -613,7 +638,8 @@ msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
 "              select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  Szukanie podanego ³añcucha we wpisach indeksu tego pliku Info\n"
+"\\%-10[index-search]  Szukanie podanego ³añcucha we wpisach indeksu tego "
+"pliku Info\n"
 "              i wybranie wêz³a wskazywanego przez pierwszy znaleziony wpis.\n"
 
 #: info/infodoc.c:81
@@ -680,7 +706,8 @@ msgstr "  %-10s  Przej¶cie do ostatniego wêz³a widocznego w tym oknie.\n"
 #: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
-msgstr "  %-10s  Przej¶cie do nastêpnego odno¶nika hipertekstowego w tym wê¼le.\n"
+msgstr ""
+"  %-10s  Przej¶cie do nastêpnego odno¶nika hipertekstowego w tym wê¼le.\n"
 
 #: info/infodoc.c:106
 #, c-format
@@ -690,7 +717,8 @@ msgstr "  %-10s  Przej¶cie za odno¶nikiem hipertekstowym pod kursorem.\n"
 #: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
-msgstr "  %-10s  Przej¶cie do wêz³a `directory' (katalog). Równoznaczne `g (DIR)'.\n"
+msgstr ""
+"  %-10s  Przej¶cie do wêz³a `directory' (katalog). Równoznaczne `g (DIR)'.\n"
 
 #: info/infodoc.c:108
 #, c-format
@@ -757,7 +785,8 @@ msgstr "  %-10s  Wybranie ostatniego elementu z menu wêz³a.\n"
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
 "  %-10s  Szukanie podanego ³añcucha we wpisach indeksu tego pliku Info\n"
 "              i wybranie wêz³a wskazywanego przez pierwszy znaleziony wpis.\n"
@@ -1019,23 +1048,30 @@ msgstr "B³±d podczas czytania pliku infokey `%s' - skrócony odczyt"
 
 #: info/infomap.c:990
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "B³êdny plik infokey `%s' (z³e liczby magiczne) - mo¿na go uaktualniæ infokey"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"B³êdny plik infokey `%s' (z³e liczby magiczne) - mo¿na go uaktualniæ infokey"
 
 #: info/infomap.c:999
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr "Plik infokey `%s' jest przestarza³y - mo¿na go uaktualniæ poleceniem infokey"
+msgstr ""
+"Plik infokey `%s' jest przestarza³y - mo¿na go uaktualniæ poleceniem infokey"
 
 #: info/infomap.c:1015
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "B³êdny plik infokey `%s' (z³a d³ugo¶æ sekcji) - mo¿na go uaktualniæ infokey"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"B³êdny plik infokey `%s' (z³a d³ugo¶æ sekcji) - mo¿na go uaktualniæ infokey"
 
 #: info/infomap.c:1036
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "B³êdny plik infokey `%s' (z³y kod sekcji) - mo¿na go uaktualniæ przez infokey"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"B³êdny plik infokey `%s' (z³y kod sekcji) - mo¿na go uaktualniæ przez infokey"
 
 #: info/infomap.c:1171
 msgid "Bad data in infokey file -- some key bindings ignored"
@@ -1111,7 +1147,8 @@ msgstr ""
 
 #: info/nodemenu.c:223
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr "Utworzenie okna zawieraj±cego menu wszystkich aktualnie odwiedzanych wêz³ów"
+msgstr ""
+"Utworzenie okna zawieraj±cego menu wszystkich aktualnie odwiedzanych wêz³ów"
 
 #: info/nodemenu.c:303
 msgid "Select a node which has been previously visited in a visible window"
@@ -1121,7 +1158,7 @@ msgstr "Wybranie wêz³a, który by³ poprzednio odwiedzony w widocznym oknie"
 msgid "Select visited node: "
 msgstr "Wybranie widocznego wêz³a: "
 
-#: info/nodemenu.c:336 info/session.c:2438
+#: info/nodemenu.c:336 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Odsy³acz znikn±³! (%s)."
@@ -1133,8 +1170,12 @@ msgstr "b³±d wyra¿enia regularnego: %s"
 
 #: info/session.c:164
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "Witamy w Info w wersji %s. \\[get-help-window] pokazuje pomoc, \\[menu-item] wybiera element menu."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Witamy w Info w wersji %s. \\[get-help-window] pokazuje pomoc, \\[menu-item] "
+"wybiera element menu."
 
 #: info/session.c:625
 msgid "Move down to the next line"
@@ -1166,7 +1207,8 @@ msgstr "Nie ma wêz³a `Poprzedni' dla tego wêz³a."
 
 #: info/session.c:1194
 msgid "No `Prev' or `Up' for this node within this document."
-msgstr "Nie ma wêz³ów `Poprzedni' ani `W górê' dla tego wêz³a w tym dokumencie."
+msgstr ""
+"Nie ma wêz³ów `Poprzedni' ani `W górê' dla tego wêz³a w tym dokumencie."
 
 #: info/session.c:1256
 msgid "Move forwards or down through node structure"
@@ -1176,454 +1218,460 @@ msgstr "Przej¶cie do przodu lub w dó³ struktury wêz³a"
 msgid "Move backwards or up through node structure"
 msgstr "Przej¶cie do ty³u lub w górê struktury wêz³a"
 
-#: info/session.c:1368
+#: info/session.c:1369
 msgid "Scroll forward in this window"
 msgstr "Przewijanie do przodu w tym oknie"
 
-#: info/session.c:1376
+#: info/session.c:1377
 msgid "Scroll forward in this window and set default window size"
-msgstr "Przewijanie do przodu w tym oknie i ustawienie domy¶lnego rozmiaru okna"
+msgstr ""
+"Przewijanie do przodu w tym oknie i ustawienie domy¶lnego rozmiaru okna"
 
-#: info/session.c:1384
+#: info/session.c:1385
 msgid "Scroll forward in this window staying within node"
 msgstr "Przewijanie do przodu w tym oknie pozostaj±c wewn±trz wêz³a"
 
-#: info/session.c:1392
-msgid "Scroll forward in this window staying within node and set default window size"
-msgstr "Przewijanie do przodu w tym oknie wewn. wêz³a i ust. domy¶lnego rozmiaru okna"
+#: info/session.c:1393
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Przewijanie do przodu w tym oknie wewn. wêz³a i ust. domy¶lnego rozmiaru okna"
 
-#: info/session.c:1400
+#: info/session.c:1401
 msgid "Scroll backward in this window"
 msgstr "Przewijanie do ty³u w tym oknie"
 
-#: info/session.c:1408
+#: info/session.c:1409
 msgid "Scroll backward in this window and set default window size"
 msgstr "Przewijanie do ty³u w tym oknie i ustawienie domy¶lnego rozmiaru okna"
 
-#: info/session.c:1417
+#: info/session.c:1418
 msgid "Scroll backward in this window staying within node"
 msgstr "Przewijanie do ty³u w tym oknie pozostaj±c wewn±trz wêz³a"
 
-#: info/session.c:1425
-msgid "Scroll backward in this window staying within node and set default window size"
-msgstr "Przewijanie do ty³u w tym oknie wewn. wêz³a i ust. domy¶lnego rozmiaru okna"
+#: info/session.c:1426
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Przewijanie do ty³u w tym oknie wewn. wêz³a i ust. domy¶lnego rozmiaru okna"
 
-#: info/session.c:1433
+#: info/session.c:1434
 msgid "Move to the start of this node"
 msgstr "Przej¶cie na pocz±tek tego wêz³a"
 
-#: info/session.c:1440
+#: info/session.c:1441
 msgid "Move to the end of this node"
 msgstr "Przej¶cie na koniec tego wêz³a"
 
-#: info/session.c:1447
+#: info/session.c:1448
 msgid "Scroll down by lines"
 msgstr "Przewijanie w dó³ po linii"
 
-#: info/session.c:1464
+#: info/session.c:1465
 msgid "Scroll up by lines"
 msgstr "Przewijanie w górê po linii"
 
-#: info/session.c:1482
+#: info/session.c:1483
 msgid "Scroll down by half screen size"
 msgstr "Przewijanie w dó³ po po³owie rozmiaru ekranu"
 
-#: info/session.c:1508
+#: info/session.c:1509
 msgid "Scroll up by half screen size"
 msgstr "Przewijanie w górê po po³owie rozmiaru ekranu"
 
-#: info/session.c:1537
+#: info/session.c:1538
 msgid "Select the next window"
 msgstr "Wybranie nastêpnego okna"
 
-#: info/session.c:1576
+#: info/session.c:1577
 msgid "Select the previous window"
 msgstr "Wybranie poprzedniego okna"
 
-#: info/session.c:1627
+#: info/session.c:1628
 msgid "Split the current window"
 msgstr "Podzielenie aktualnego okna"
 
-#: info/session.c:1708
+#: info/session.c:1709
 msgid "Delete the current window"
 msgstr "Usuniêcie aktualnego okna"
 
-#: info/session.c:1716
+#: info/session.c:1717
 msgid "Cannot delete a permanent window"
 msgstr "Nie mo¿na usun±æ sta³ego okna"
 
-#: info/session.c:1748
+#: info/session.c:1749
 msgid "Delete all other windows"
 msgstr "Usuniêcie wszystkich innych okien"
 
-#: info/session.c:1794
+#: info/session.c:1795
 msgid "Scroll the other window"
 msgstr "Przewijanie innego okna"
 
-#: info/session.c:1815
+#: info/session.c:1816
 msgid "Scroll the other window backward"
 msgstr "Przewijanie innego okna do ty³u"
 
-#: info/session.c:1821
+#: info/session.c:1822
 msgid "Grow (or shrink) this window"
 msgstr "Powiêkszenie (lub zmniejszenie) tego okna"
 
-#: info/session.c:1832
+#: info/session.c:1833
 msgid "Divide the available screen space among the visible windows"
 msgstr "Podzielenie dostêpnego miejsca na ekranie miêdzy widoczne okna"
 
-#: info/session.c:1839
+#: info/session.c:1840
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Zmiana stanu zawijania linii w aktualnym oknie"
 
-#: info/session.c:1846
+#: info/session.c:1847
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Prze³±czenie u¿ywania wyra¿eñ regularnych przy wyszukiwaniu"
 
-#: info/session.c:1850
+#: info/session.c:1851
 msgid "Using regular expressions for searches."
 msgstr "U¿ywanie wyra¿eñ regularnych przy wyszukiwaniu."
 
-#: info/session.c:1851
+#: info/session.c:1852
 msgid "Using literal strings for searches."
 msgstr "U¿ywanie dos³ownego tekstu przy wyszukiwaniu."
 
-#: info/session.c:2022
+#: info/session.c:2023
 msgid "Select the Next node"
 msgstr "Wybranie wêz³a Nastêpny"
 
-#: info/session.c:2030
+#: info/session.c:2031
 msgid "Select the Prev node"
 msgstr "Wybranie wêz³a Poprzedni"
 
-#: info/session.c:2038
+#: info/session.c:2039
 msgid "Select the Up node"
 msgstr "Wybranie wêz³a W górê"
 
-#: info/session.c:2045
+#: info/session.c:2046
 msgid "Select the last node in this file"
 msgstr "Wybranie ostatniego wêz³a w tym pliku"
 
-#: info/session.c:2072 info/session.c:2105
+#: info/session.c:2073 info/session.c:2106
 msgid "This window has no additional nodes"
 msgstr "To okno nie ma dodatkowych wêz³ów"
 
-#: info/session.c:2078
+#: info/session.c:2079
 msgid "Select the first node in this file"
 msgstr "Wybranie pierwszego wêz³a w tym pliku"
 
-#: info/session.c:2112
+#: info/session.c:2113
 msgid "Select the last item in this node's menu"
 msgstr "Wybranie ostatniego elementu w menu tego wêz³a"
 
-#: info/session.c:2118
+#: info/session.c:2119
 msgid "Select this menu item"
 msgstr "Wybranie tego elementu menu"
 
-#: info/session.c:2151
+#: info/session.c:2152
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Nie ma %d elementów w tym menu."
 
-#: info/session.c:2345 info/session.c:2346
+#: info/session.c:2346 info/session.c:2347
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Element menu (%s): "
 
-#: info/session.c:2349
+#: info/session.c:2350
 msgid "Menu item: "
 msgstr "Element menu: "
 
-#: info/session.c:2356 info/session.c:2357
+#: info/session.c:2357 info/session.c:2358
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Przej¶cie za odno¶nikiem (%s): "
 
-#: info/session.c:2360
+#: info/session.c:2361
 msgid "Follow xref: "
 msgstr "Przej¶cie za odno¶nikiem: "
 
-#: info/session.c:2489
+#: info/session.c:2490
 msgid "Read a menu item and select its node"
 msgstr "Odczytanie elementu menu i wybranie jego wêz³a"
 
-#: info/session.c:2497
+#: info/session.c:2498
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Odczytanie przypisu lub odsy³acza i wybranie jego wêz³a"
 
-#: info/session.c:2503
+#: info/session.c:2504
 msgid "Move to the start of this node's menu"
 msgstr "Przej¶cie na pocz±tek menu tego wêz³a"
 
-#: info/session.c:2527
+#: info/session.c:2528
 msgid "Visit as many menu items at once as possible"
 msgstr "Odwiedzenie jednocze¶nie jak najwiêkszej liczby elementów menu"
 
-#: info/session.c:2555
+#: info/session.c:2556
 msgid "Read a node name and select it"
 msgstr "Odczytanie nazwy wêz³a i wybranie go"
 
-#: info/session.c:2610 info/session.c:2615
+#: info/session.c:2611 info/session.c:2616
 msgid "Goto node: "
 msgstr "Przej¶cie do wêz³a: "
 
-#: info/session.c:2679
+#: info/session.c:2680
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Brak menu w wê¼le `%s'."
 
-#: info/session.c:2725
+#: info/session.c:2726
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Brak elementu menu `%s' w wê¼le `%s'."
 
-#: info/session.c:2755
+#: info/session.c:2756
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a wskazywanego przez `%s' w `%s'."
 
-#: info/session.c:2805
+#: info/session.c:2806
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Odczytanie listy menu pocz±wszy od katalogu i pod±¿anie za ni±"
 
-#: info/session.c:2807
+#: info/session.c:2808
 msgid "Follow menus: "
 msgstr "Pod±¿anie za menu: "
 
-#: info/session.c:3000
+#: info/session.c:3001
 msgid "Find the node describing program invocation"
 msgstr "Szukanie wêz³a opisuj±cego wywo³anie programu"
 
-#: info/session.c:3002
+#: info/session.c:3003
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Szukanie wêz³a Invocation dla [%s]: "
 
-#: info/session.c:3040
+#: info/session.c:3041
 msgid "Read a manpage reference and select it"
 msgstr "Odczytanie odno¶nika do strony podrêcznika i wybranie go"
 
-#: info/session.c:3044
+#: info/session.c:3045
 msgid "Get Manpage: "
 msgstr "Pobranie strony podrêcznika: "
 
-#: info/session.c:3074
+#: info/session.c:3075
 msgid "Select the node `Top' in this file"
 msgstr "Wybranie wêz³a `Szczytowy' w tym pliku"
 
-#: info/session.c:3080
+#: info/session.c:3081
 msgid "Select the node `(dir)'"
 msgstr "Wybranie wêz³a `(dir)'"
 
-#: info/session.c:3097 info/session.c:3099
+#: info/session.c:3098 info/session.c:3100
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Zabicie wêz³a (%s): "
 
-#: info/session.c:3151
+#: info/session.c:3152
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Nie mo¿na zabiæ wêz³a `%s'"
 
-#: info/session.c:3161
+#: info/session.c:3162
 msgid "Cannot kill the last node"
 msgstr "Nie mo¿na zabiæ ostatniego wêz³a"
 
-#: info/session.c:3247
+#: info/session.c:3248
 msgid "Select the most recently selected node"
 msgstr "Wybranie ostatnio wybranego wêz³a"
 
-#: info/session.c:3253
+#: info/session.c:3254
 msgid "Kill this node"
 msgstr "Zabicie tego wêz³a"
 
-#: info/session.c:3261
+#: info/session.c:3262
 msgid "Read the name of a file and select it"
 msgstr "Odczytanie nazwy pliku i wybranie go"
 
-#: info/session.c:3265
+#: info/session.c:3266
 msgid "Find file: "
 msgstr "Szukanie pliku: "
 
-#: info/session.c:3282
+#: info/session.c:3283
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Nie mo¿na znale¼æ `%s'."
 
-#: info/session.c:3325 info/session.c:3443
+#: info/session.c:3326 info/session.c:3444
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Nie mo¿na utworzyæ pliku wyj¶ciowego `%s'."
 
-#: info/session.c:3339 info/session.c:3461 info/session.c:3521
+#: info/session.c:3340 info/session.c:3462 info/session.c:3522
 msgid "Done."
 msgstr "Gotowe."
 
-#: info/session.c:3394
+#: info/session.c:3395
 #, c-format
 msgid "Writing node %s..."
 msgstr "Zapisywanie wêz³a %s..."
 
-#: info/session.c:3470
+#: info/session.c:3471
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Przepuszczenie zawarto¶ci tego pliku przez INFO_PRINT_COMMAND"
 
-#: info/session.c:3505
+#: info/session.c:3506
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Nie mo¿na otworzyæ potoku do `%s'."
 
-#: info/session.c:3511
+#: info/session.c:3512
 #, c-format
 msgid "Printing node %s..."
 msgstr "Drukowanie wêz³a %s..."
 
-#: info/session.c:3728
+#: info/session.c:3729
 msgid "Search continued from the end of the document."
 msgstr "Kontynuacja szukania od koñca dokumentu."
 
-#: info/session.c:3733
+#: info/session.c:3734
 msgid "Search continued from the beginning of the document."
 msgstr "Kontynuacja szukania od pocz±tku dokumentu."
 
-#: info/session.c:3750
+#: info/session.c:3751
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Szukanie podpliku %s ..."
 
-#: info/session.c:3807
+#: info/session.c:3808
 msgid "Read a string and search for it case-sensitively"
 msgstr "Odczytanie ³añcucha i poszukiwanie go uwzglêdniaj±c wielko¶æ liter"
 
-#: info/session.c:3814
+#: info/session.c:3815
 msgid "Read a string and search for it"
 msgstr "Odczytanie ³añcucha i poszukiwanie go"
 
-#: info/session.c:3822
+#: info/session.c:3823
 msgid "Read a string and search backward for it"
 msgstr "Odczytanie ³añcucha i poszukiwanie go w ty³"
 
-#: info/session.c:3858 info/session.c:3864
+#: info/session.c:3859 info/session.c:3865
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:3859 info/session.c:3865
+#: info/session.c:3860 info/session.c:3866
 msgid "Regexp search"
 msgstr "Szukanie wyr.reg."
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3861 info/session.c:3867
 msgid " case-sensitively"
 msgstr " uwzgl. wielko¶æ liter"
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3862 info/session.c:3868
 msgid " backward"
 msgstr " wstecz"
 
-#: info/session.c:3865
+#: info/session.c:3866
 msgid "Search"
 msgstr "Szukanie"
 
-#: info/session.c:3906
+#: info/session.c:3907
 msgid "Search failed."
 msgstr "Wyszukiwanie nie powiod³o siê."
 
-#: info/session.c:3924
+#: info/session.c:3925
 msgid "Repeat last search in the same direction"
 msgstr "Powtórzenie ostatniego poszukiwania w tym samym kierunku"
 
-#: info/session.c:3927 info/session.c:3937
+#: info/session.c:3928 info/session.c:3938
 msgid "No previous search string"
 msgstr "Brak poprzedniego szukanego ³añcucha"
 
-#: info/session.c:3934
+#: info/session.c:3935
 msgid "Repeat last search in the reverse direction"
 msgstr "Powtórzenie ostatniego poszukiwania w odwrotnym kierunku"
 
-#: info/session.c:3953 info/session.c:3959
+#: info/session.c:3954 info/session.c:3960
 msgid "Search interactively for a string as you type it"
 msgstr "Interaktywne poszukiwanie ³añcucha w trakcie wpisywania go"
 
-#: info/session.c:4039
+#: info/session.c:4040
 msgid "Regexp I-search backward: "
 msgstr "Interaktywne szukanie wyr.reg. wstecz: "
 
-#: info/session.c:4040
+#: info/session.c:4041
 msgid "I-search backward: "
 msgstr "Interaktywne szukanie wstecz: "
 
-#: info/session.c:4042
+#: info/session.c:4043
 msgid "Regexp I-search: "
 msgstr "Interaktywne szukanie wyr.reg.: "
 
-#: info/session.c:4043
+#: info/session.c:4044
 msgid "I-search: "
 msgstr "Interaktywne szukanie: "
 
-#: info/session.c:4068 info/session.c:4070
+#: info/session.c:4069 info/session.c:4071
 msgid "Failing "
 msgstr "Bez powodzenia "
 
-#: info/session.c:4554
+#: info/session.c:4555
 msgid "Move to the previous cross reference"
 msgstr "Przej¶cie do poprzedniego odsy³acza"
 
-#: info/session.c:4572
+#: info/session.c:4573
 msgid "Move to the next cross reference"
 msgstr "Przej¶cie do nastêpnego odsy³acza"
 
-#: info/session.c:4594
+#: info/session.c:4595
 msgid "Select reference or menu item appearing on this line"
 msgstr "Wybranie odsy³acza lub elementu menu wystêpuj±cego w tej linii"
 
-#: info/session.c:4617
+#: info/session.c:4618
 msgid "Cancel current operation"
 msgstr "Anulowanie bie¿±cej operacji"
 
-#: info/session.c:4624
+#: info/session.c:4625
 msgid "Quit"
 msgstr "Wyj¶cie"
 
-#: info/session.c:4633
+#: info/session.c:4634
 msgid "Move the cursor to a specific line of the window"
 msgstr "Przesuniêcie kursora do podanej linii w oknie"
 
-#: info/session.c:4665
+#: info/session.c:4666
 msgid "Redraw the display"
 msgstr "Odrysowanie ekranu"
 
-#: info/session.c:4702
+#: info/session.c:4703
 msgid "Quit using Info"
 msgstr "Wyj¶cie z Info"
 
-#: info/session.c:4715
+#: info/session.c:4716
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Uruchomienie polecenia przypisanego do wariantu klawisza z ma³± liter±"
 
-#: info/session.c:4726
+#: info/session.c:4727
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Nieznane polecenie (%s)."
 
-#: info/session.c:4729
+#: info/session.c:4730
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" jest niepoprawne"
 
-#: info/session.c:4730
+#: info/session.c:4731
 #, c-format
 msgid "`%s' is invalid"
 msgstr "`%s' jest niepoprawne"
 
-#: info/session.c:4944
+#: info/session.c:4945
 msgid "Add this digit to the current numeric argument"
 msgstr "Dodanie tej cyfry do aktualnego argumentu liczbowego"
 
-#: info/session.c:4953
+#: info/session.c:4954
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Rozpoczêcie (lub pomno¿enie przez 4) aktualnego argumentu liczbowego"
 
-#: info/session.c:4968
+#: info/session.c:4969
 msgid "Internally used by \\[universal-argument]"
 msgstr "Wewnêtrznie u¿ywane przez \\[universal-argument]"
 
@@ -1677,7 +1725,8 @@ msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Je¶li \"On\", Info przyjmuje i wy¶wietla znaki ISO Latin"
 
 #: info/variables.c:81
-msgid "What to do when a scrolling command is issued at the end of the last node"
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
 msgstr "Co robiæ kiedy polecenie przewijania wydano na koñcu ostatniego wêz³a"
 
 #: info/variables.c:88
@@ -1751,7 +1800,8 @@ msgstr "Sk³adnia: %s [OPCJA]... [PLIK-INFO [PLIK-DIR]]\n"
 
 #: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
-msgstr "Dodanie lub usuniêcie wpisów dla PLIKU-INFO w pliku katalogu PLIK-KATALOGU."
+msgstr ""
+"Dodanie lub usuniêcie wpisów dla PLIKU-INFO w pliku katalogu PLIK-KATALOGU."
 
 #: install-info/install-info.c:508
 msgid ""
@@ -1779,24 +1829,31 @@ msgstr ""
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with whitespace.\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself.\n"
 "                      When removing, TEXT specifies the entry to remove.\n"
 "                      TEXT is only removed as a last resort, if the\n"
-"                      entry as determined from the Info file is not present,\n"
+"                      entry as determined from the Info file is not "
+"present,\n"
 "                      and the basename of the Info file isn't found either."
 msgstr ""
 " --entry=TEKST        wstawienie TEKSTU jako wpisu katalogu Info.\n"
 "                        TEKST powinien mieæ formê linii elementu menu Info\n"
-"                        z zerem lub wiêcej linii zaczynaj±cymi siê od spacji.\n"
-"                      Je¶li podano wiêcej ni¿ jeden wpis, wszystkie s± dodawane.\n"
-"                      Je¶li nie podano ¿adnego wpisu, s± okre¶lane na podstawie\n"
+"                        z zerem lub wiêcej linii zaczynaj±cymi siê od "
+"spacji.\n"
+"                      Je¶li podano wiêcej ni¿ jeden wpis, wszystkie s± "
+"dodawane.\n"
+"                      Je¶li nie podano ¿adnego wpisu, s± okre¶lane na "
+"podstawie\n"
 "                        informacji w samym pliku Info.\n"
 "                      Przy usuwaniu TEKST okre¶la wpis do usuniêcia.\n"
-"                      TEKST jest usuwany tylko w ostateczno¶ci, je¶li nie ma\n"
-"                        wpisu okre¶lonego przez plik Info ani nazwy pliku Info."
+"                      TEKST jest usuwany tylko w ostateczno¶ci, je¶li nie "
+"ma\n"
+"                        wpisu okre¶lonego przez plik Info ani nazwy pliku "
+"Info."
 
 #: install-info/install-info.c:532
 msgid ""
@@ -1819,7 +1876,8 @@ msgstr ""
 " --item=TEKST         to samo co --entry=TEKST.\n"
 " --keep-old           nie zastêpowanie wpisów, nie usuwanie pustych sekcji.\n"
 " --menuentry=TEKST    to samo co --name=TEKST.\n"
-" --name=TEKST         nazwa wpisu to TEKST; u¿ywane wraz z --description jest\n"
+" --name=TEKST         nazwa wpisu to TEKST; u¿ywane wraz z --description "
+"jest\n"
 "                        odpowiednikiem opcji --entry.\n"
 " --no-indent          nie formatowanie nowych wpisów w pliku DIR.\n"
 " --quiet              pominiêcie ostrze¿eñ."
@@ -1834,21 +1892,26 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are determined\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
 "                       from information in the Info file itself.\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
 " --regex=WYRA¯ENIE    umieszczenie wpisów tego pliku we wszystkich sekcjach\n"
-"                        pasuj±cych do WYRA¯ENIA regularnego (bez uwzglêdnienia\n"
+"                        pasuj±cych do WYRA¯ENIA regularnego (bez "
+"uwzglêdnienia\n"
 "                        wielko¶ci liter).\n"
 " --remove             to samo co --delete.\n"
-" --remove-exactly     usuniêcie tylko je¶li nazwa pliku info pasuje dok³adnie;\n"
+" --remove-exactly     usuniêcie tylko je¶li nazwa pliku info pasuje "
+"dok³adnie;\n"
 "                        przyrostki takie jak .info i .gz nie s± ignorowane.\n"
 " --section=SEKCJA     umieszczenie wpisów dla tego pliku w danej SEKCJI\n"
 "                        katalogu.\n"
-"                      Je¶li podano wiêcej ni¿ jedn± sekcjê, wszystkie wpisy s±\n"
+"                      Je¶li podano wiêcej ni¿ jedn± sekcjê, wszystkie wpisy "
+"s±\n"
 "                        dodawane do ka¿dej z sekcji.\n"
-"                      Je¶li nie podano ¿adnej sekcji, s± okre¶lane na podstawie\n"
+"                      Je¶li nie podano ¿adnej sekcji, s± okre¶lane na "
+"podstawie\n"
 "                        informacji w samym pliku Info.\n"
 " --section WYR SEK    odpowiednik --regex=WYR --section=SEK --add-once."
 
@@ -1898,7 +1961,8 @@ msgstr ""
 "%s\tOto wierzcho³ek drzewa INFO\n"
 "\n"
 "  To (wêze³ Katalog) zawiera menu dla g³ównych tematów.\n"
-"  Naci¶niêcie \"q\" koñczy przegl±danie, \"?\" wy¶wietla wszystkie polecenia\n"
+"  Naci¶niêcie \"q\" koñczy przegl±danie, \"?\" wy¶wietla wszystkie "
+"polecenia\n"
 "  Info, \"d\" wraca tutaj, \"h\" pokazuje wprowadzenie dla nowicjuszy,\n"
 "  \"mEmacs<Return>\" odwiedza podrêcznik Emacsa itd.\n"
 "\n"
@@ -1925,40 +1989,40 @@ msgstr "START-INFO-DIR-ENTRY bez odpowiadaj±cego END-INFO-DIR-ENTRY"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY bez odpowiadaj±cego START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1910 install-info/install-info.c:1920
+#: install-info/install-info.c:1911 install-info/install-info.c:1921
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: plik katalogu ju¿ istnieje: %s\n"
 
-#: install-info/install-info.c:2000
+#: install-info/install-info.c:2001
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Nale¿y podaæ plik Info tylko raz.\n"
 
-#: install-info/install-info.c:2033
+#: install-info/install-info.c:2034
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Podano dodatkowe wyra¿enie regularne, zignorowano `%s'"
 
-#: install-info/install-info.c:2045
+#: install-info/install-info.c:2046
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "B³±d w wyra¿eniu regularnym `%s': %s"
 
-#: install-info/install-info.c:2103
+#: install-info/install-info.c:2104
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "nadmiarowy argument linii poleceñ `%s'"
 
-#: install-info/install-info.c:2107
+#: install-info/install-info.c:2108
 msgid "No input file specified; try --help for more information."
 msgstr "Nie podano pliku wej¶ciowego; --help mo¿e podaæ wiêcej informacji."
 
-#: install-info/install-info.c:2110
+#: install-info/install-info.c:2111
 msgid "No dir file specified; try --help for more information."
 msgstr "Nie podano pliku katalogu; --help mo¿e podaæ wiêcej informacji."
 
-#: install-info/install-info.c:2252
+#: install-info/install-info.c:2253
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "brak wpisu do katalogu info w `%s'"
@@ -2053,8 +2117,12 @@ msgid "`}' expected, but saw `%c'"
 msgstr "oczekiwano `}', ale napotkano `%c'"
 
 #: makeinfo/cmds.c:1275
-msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
-msgstr "@string{Note...} tworzy nieprawdziwe odniesienia w Info; nale¿y przeredagowaæ aby zapobiec temu"
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@string{Note...} tworzy nieprawdziwe odniesienia w Info; nale¿y "
+"przeredagowaæ aby zapobiec temu"
 
 #: makeinfo/cmds.c:1471
 #, c-format
@@ -2281,7 +2349,8 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "napotkano @menu przed pierwszym @node, tworzenie wêz³a `Top'"
 
 #: makeinfo/insertion.c:1972
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "mo¿e wêze³ @top powinien byæ otoczony @ifnottex, a nie @ifinfo?"
 
 #: makeinfo/insertion.c:1984
@@ -2432,7 +2501,8 @@ msgid ""
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
 "T³umaczenie ¼ród³owej dokumentacji Texinfo do ró¿nych innych formatów,\n"
-"domy¶lnie plików Info nadaj±cych siê do czytania pod Emacsem lub samodzielnym\n"
+"domy¶lnie plików Info nadaj±cych siê do czytania pod Emacsem lub "
+"samodzielnym\n"
 "GNU Info.\n"
 
 #: makeinfo/makeinfo.c:354
@@ -2452,14 +2522,16 @@ msgstr ""
 "Opcje ogólne:\n"
 "      --error-limit=ILE       zakoñczenie po ILU b³êdach (domy¶lnie %d).\n"
 "      --document-language=£AÑC lokalizacja u¿ywana przy t³umaczeniu s³ów\n"
-"                                kluczowych Texinfo dla dokumentu wyj¶ciowego\n"
+"                                kluczowych Texinfo dla dokumentu "
+"wyj¶ciowego\n"
 "                                (domy¶lnie C).\n"
 "      --force                 zachowanie wyj¶cia nawet w przypadku b³êdów.\n"
 "      --help                  wy¶wietlenie tego opisu i zakoñczenie.\n"
 "      --no-validate           pominiêcie kontroli odsy³aczy miêdzy wêz³ami.\n"
 "      --no-warn               pominiêcie ostrze¿eñ (ale nie b³êdów).\n"
 "  -v, --verbose               wyja¶nianie co siê dzieje.\n"
-"      --version               wy¶wietlenie informacji o wersji i zakoñczenie.\n"
+"      --version               wy¶wietlenie informacji o wersji i "
+"zakoñczenie.\n"
 
 #: makeinfo/makeinfo.c:369
 #, no-wrap
@@ -2481,22 +2553,30 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and menus\n"
-"                                from Info output (thus producing plain text)\n"
-"                                or from HTML (thus producing shorter output);\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
 "                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML output,\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
 "                                generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
 "  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
 msgstr ""
 "Ogólne opcje dotycz±ce wyj¶cia:\n"
 "  -E, --macro-expand=PLIK     zapis ¼róde³ z rozwiniêtymi makrami do PLIKU.\n"
-"      --no-headers            pominiêcie separatorów wêz³ów, linii Node oraz\n"
-"                                menu z wyj¶cia Info (zapisanie czystego tekstu)\n"
+"      --no-headers            pominiêcie separatorów wêz³ów, linii Node "
+"oraz\n"
+"                                menu z wyj¶cia Info (zapisanie czystego "
+"tekstu)\n"
 "                                lub z HTML (zapisanie krótszego pliku);\n"
-"                                tak¿e pisanie domy¶lnie na standardowe wyj¶cie.\n"
-"      --no-split              pominiêcie dzielenia Info lub HTML, generowanie\n"
+"                                tak¿e pisanie domy¶lnie na standardowe "
+"wyj¶cie.\n"
+"      --no-split              pominiêcie dzielenia Info lub HTML, "
+"generowanie\n"
 "                                tylko jednego pliku wyj¶ciowego.\n"
 "      --number-sections       zapisywanie numerów rozdzia³ów i sekcji.\n"
 "  -o, --output=PLIK           zapisanie do PLIKU (lub katalogu w przypadku\n"
@@ -2509,29 +2589,41 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, in\n"
-"                                which they are defined (this is the default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Opcje dla Info i czystego tekstu:\n"
-"      --disable-encoding      bez zapisu znaków z akcentami i specjalnych do\n"
-"                                pliku Info w zale¿no¶ci od @documentencoding.\n"
-"      --fill-column=ILE       ³amanie linii Info po ILU znakach (domy¶lnie %d).\n"
+"      --disable-encoding      bez zapisu znaków z akcentami i specjalnych "
+"do\n"
+"                                pliku Info w zale¿no¶ci od "
+"@documentencoding.\n"
+"      --fill-column=ILE       ³amanie linii Info po ILU znakach (domy¶lnie %"
+"d).\n"
 "      --footnote-style=STYL   zapis stopek w Info zgodnie ze STYLEM:\n"
-"                                `separate' - umieszczenie ich we w³asnym wê¼le;\n"
-"                                `end' - umieszczenie na koñcu wêz³a, w którym\n"
+"                                `separate' - umieszczenie ich we w³asnym "
+"wê¼le;\n"
+"                                `end' - umieszczenie na koñcu wêz³a, w "
+"którym\n"
 "                                  zosta³y zdefiniowane (domy¶lne).\n"
-"      --paragraph-indent=ILE  wciêcia akapitów Info o ILE spacji (domy¶lnie %d).\n"
+"      --paragraph-indent=ILE  wciêcia akapitów Info o ILE spacji (domy¶lnie %"
+"d).\n"
 "                                Je¶li ILE to `none' lub `brak', bez wciêæ;\n"
-"                                je¶li ILE to `asis' lub `zachowaj', zachowanie\n"
+"                                je¶li ILE to `asis' lub `zachowaj', "
+"zachowanie\n"
 "                                istniej±cych wciêæ.\n"
-"      --split-size=ROZMIAR    podzia³ Info na pliki o ROZMIARZE (domy¶lnie %d).\n"
+"      --split-size=ROZMIAR    podzia³ Info na pliki o ROZMIARZE (domy¶lnie %"
+"d).\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2554,8 +2646,10 @@ msgstr ""
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
-"                                If VAL is 0, ignorable whitespace is dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+"d).\n"
+"                                If VAL is 0, ignorable whitespace is "
+"dropped.\n"
 msgstr ""
 "Opcje dla XML i Docbooka:\n"
 "      --output-indent=ILE     wciêcia elementów XML o ILE spacji (domy¶lnie\n"
@@ -2578,7 +2672,8 @@ msgstr ""
 "                                  poszukiwañ dla @include.\n"
 "  -P KATALOG                    do³±czenie KATALOGU na koñcu ¶cie¿ki\n"
 "                                  poszukiwañ dla @include.\n"
-"  -U ZMIENNA                    usuniêcie definicji ZMIENNEJ, tak jak @clear.\n"
+"  -U ZMIENNA                    usuniêcie definicji ZMIENNEJ, tak jak "
+"@clear.\n"
 
 #: makeinfo/makeinfo.c:434
 msgid ""
@@ -2600,12 +2695,15 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 "Warunkowe przetwarzanie wej¶cia:\n"
-"  --ifdocbook       przetwarzanie @ifdocbook i @docbook nawet je¶li nie jest\n"
+"  --ifdocbook       przetwarzanie @ifdocbook i @docbook nawet je¶li nie "
+"jest\n"
 "                      generowany Docbook.\n"
 "  --ifhtml          przetwarzanie @ifhtml i @html nawet je¶li nie jest\n"
 "                      generowany HTML.\n"
-"  --ifinfo          przetwarzanie @ifinfo nawet je¶li nie jest generowane Info.\n"
-"  --ifplaintext     przetwarzanie @ifplaintext nawet je¶li nie jest generowany\n"
+"  --ifinfo          przetwarzanie @ifinfo nawet je¶li nie jest generowane "
+"Info.\n"
+"  --ifplaintext     przetwarzanie @ifplaintext nawet je¶li nie jest "
+"generowany\n"
 "                      czysty tekst.\n"
 "  --iftex           przetwarzanie @iftex i @tex; wymusza --no-split.\n"
 "  --ifxml           przetwarzanie @ifxml i @xml.\n"
@@ -2629,7 +2727,8 @@ msgstr ""
 "  Domy¶lne opcje dla warunków @if... zale¿± od formatu wyj¶ciowego:\n"
 "  je¶li generowany jest HTML, --ifhtml jest w³±czone, a reszta wy³±czona;\n"
 "  je¶li generowane jest Info, --ifinfo jest w³±czone, a reszta wy³±czona;\n"
-"  je¶li generowany jest tekst, --ifplaintext jest w³±czony, a inne wy³±czone;\n"
+"  je¶li generowany jest tekst, --ifplaintext jest w³±czony, a inne "
+"wy³±czone;\n"
 "  je¶li generowany jest XML, --ifxml jest w³±czone, a reszta wy³±czona.\n"
 
 #: makeinfo/makeinfo.c:461
@@ -2639,23 +2738,31 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Przyk³ady:\n"
-"  makeinfo foo.texi                       zapisanie Info do @setfilename z foo\n"
+"  makeinfo foo.texi                       zapisanie Info do @setfilename z "
+"foo\n"
 "  makeinfo --html foo.texi                zapisanie HTML do @setfilename\n"
-"  makeinfo --xml foo.texi                 zapisanie Texinfo XML do @setfilename\n"
-"  makeinfo --docbook foo.texi             zapisanie DocBook XML do @setfilename\n"
+"  makeinfo --xml foo.texi                 zapisanie Texinfo XML do "
+"@setfilename\n"
+"  makeinfo --docbook foo.texi             zapisanie DocBook XML do "
+"@setfilename\n"
 "  makeinfo --no-headers foo.texi          zapisanie czystego tekstu na\n"
 "                                            standardowe wyj¶cie\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi   zapisanie HTML bez linii wêz³ów i menu\n"
-"  makeinfo --number-sections foo.texi     zapisanie Info z numerowanymi sekcjami\n"
-"  makeinfo --no-split foo.texi            zapisanie jednego wielkiego pliku Info\n"
+"  makeinfo --html --no-headers foo.texi   zapisanie HTML bez linii wêz³ów i "
+"menu\n"
+"  makeinfo --number-sections foo.texi     zapisanie Info z numerowanymi "
+"sekcjami\n"
+"  makeinfo --no-split foo.texi            zapisanie jednego wielkiego pliku "
+"Info\n"
 
 #: makeinfo/makeinfo.c:619
 #, c-format
@@ -2681,12 +2788,14 @@ msgstr "%s: zignorowano drugie wyj¶cie `%s' do zapisu rozwiniêæ makr.\n"
 #: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr "%s: argument --paragraph-indent musi byæ liczb±/`none'/`asis', a nie `%s'.\n"
+msgstr ""
+"%s: argument --paragraph-indent musi byæ liczb±/`none'/`asis', a nie `%s'.\n"
 
 #: makeinfo/makeinfo.c:750
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%s: argumentem --footnote-style musi byæ `separate' lub `end', a nie `%s'.\n"
+msgstr ""
+"%s: argumentem --footnote-style musi byæ `separate' lub `end', a nie `%s'.\n"
 
 #: makeinfo/makeinfo.c:825
 #, c-format
@@ -2716,7 +2825,8 @@ msgstr "Nie znaleziono `%s' w `%s'"
 #: makeinfo/makeinfo.c:1622
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr "%s: nie zapisywanie rozwiniêæ makr na stdout, bo tam zapisywane jest Info.\n"
+msgstr ""
+"%s: nie zapisywanie rozwiniêæ makr na stdout, bo tam zapisywane jest Info.\n"
 
 #: makeinfo/makeinfo.c:1652
 #, c-format
@@ -2725,13 +2835,18 @@ msgstr "Tworzenie pliku %s `%s' z `%s'.\n"
 
 #: makeinfo/makeinfo.c:1719
 #, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s: Usuwanie pliku wyj¶cia makr `%s' z powodu b³êdów; --force pozwoli zachowaæ.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Usuwanie pliku wyj¶cia makr `%s' z powodu b³êdów; --force pozwoli "
+"zachowaæ.\n"
 
 #: makeinfo/makeinfo.c:1774
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s: Usuwanie pliku wyj¶ciowego `%s' z powodu b³êdów; --force pozwoli zachowaæ.\n"
+msgstr ""
+"%s: Usuwanie pliku wyj¶ciowego `%s' z powodu b³êdów; --force pozwoli "
+"zachowaæ.\n"
 
 #: makeinfo/makeinfo.c:2068
 #, c-format
@@ -2741,7 +2856,8 @@ msgstr "Nieznane polecenie `%s'"
 #: makeinfo/makeinfo.c:2090
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
-msgstr "Nale¿y u¿yæ nawiasów klamrowych, aby podaæ polecenie jako argument dla @%s"
+msgstr ""
+"Nale¿y u¿yæ nawiasów klamrowych, aby podaæ polecenie jako argument dla @%s"
 
 #: makeinfo/makeinfo.c:2349
 #, c-format
@@ -2888,12 +3004,14 @@ msgstr "zignorowano polecenie @anchor; wskazania na nie nie bêd± dzia³a³y"
 #: makeinfo/node.c:1359
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr "%s wskazuje na nieistniej±cy wêze³ `%s' (mo¿e b³êdny podzia³ na sekcje?)"
+msgstr ""
+"%s wskazuje na nieistniej±cy wêze³ `%s' (mo¿e b³êdny podzia³ na sekcje?)"
 
 #: makeinfo/node.c:1459
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "Pole Nastêpny wêz³a `%s' nie wskazywane (mo¿e b³êdny podzia³ na sekcje?)"
+msgstr ""
+"Pole Nastêpny wêz³a `%s' nie wskazywane (mo¿e b³êdny podzia³ na sekcje?)"
 
 #: makeinfo/node.c:1462
 #, c-format
@@ -2918,7 +3036,8 @@ msgstr "`%s' nie ma pola W górê (mo¿e b³êdny podzia³ na sekcje?)"
 #: makeinfo/node.c:1602
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Wêze³ `%s' nie ma elementu menu dla `%s' pomimo bycia jego celem W górê"
+msgstr ""
+"Wêze³ `%s' nie ma elementu menu dla `%s' pomimo bycia jego celem W górê"
 
 #: makeinfo/node.c:1634
 #, c-format
@@ -2976,8 +3095,11 @@ msgid "@image file `%s' unreadable: %s"
 msgstr "Plik @image `%s' nieczytelny: %s"
 
 #: makeinfo/xml.c:2014
-msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr "@headitem jako ostatni element @multitable tworzy niepoprawne dokumenty Docbook"
+msgid ""
+"@headitem as the last item of @multitable produces invalid Docbook documents"
+msgstr ""
+"@headitem jako ostatni element @multitable tworzy niepoprawne dokumenty "
+"Docbook"
 
 #: makeinfo/xml.c:2150
 msgid "of"
@@ -3033,12 +3155,14 @@ msgstr "Sk³adnia: %s [OPCJA]... PLIK...\n"
 #: util/texindex.c:238
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr "Generowanie posortowanego indeksu dla ka¿dego PLIKU wyj¶ciowego w TeXu.\n"
+msgstr ""
+"Generowanie posortowanego indeksu dla ka¿dego PLIKU wyj¶ciowego w TeXu.\n"
 
 #: util/texindex.c:241
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr "Zazwyczaj PLIK... podaje siê jako `foo.%c%c' dla dokumentu `foo.texi'.\n"
+msgstr ""
+"Zazwyczaj PLIK... podaje siê jako `foo.%c%c' dla dokumentu `foo.texi'.\n"
 
 #: util/texindex.c:243
 #, c-format
