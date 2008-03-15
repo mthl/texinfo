@@ -282,7 +282,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xmalloc.c
   lib/xsetenv.c
   lib/xsetenv.h
-  m4/absolute-header.m4
   m4/alloca.m4
   m4/argz.m4
   m4/codeset.m4

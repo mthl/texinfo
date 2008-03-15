@@ -34,15 +34,6 @@ libgnu_a_LIBADD = $(gl_LIBOBJS)
 libgnu_a_DEPENDENCIES = $(gl_LIBOBJS)
 EXTRA_libgnu_a_SOURCES =
 
-## begin gnulib module absolute-header
-
-# Use this preprocessor expression to decide whether #include_next works.
-# Do not rely on a 'configure'-time test for this, since the expression
-# might appear in an installed header, which is used by some other compiler.
-HAVE_INCLUDE_NEXT = (__GNUC__ || 60000000 <= __DECC_VER)
-
-## end   gnulib module absolute-header
-
 ## begin gnulib module alloca-opt
 
 BUILT_SOURCES += $(ALLOCA_H)
