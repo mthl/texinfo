@@ -1,5 +1,7 @@
 2008-03-14  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.11.94.
+
 	* install-info/install-info.c: portability fixes.
 	(parse_dir_file): declare void, since it is.
 	(split_entry): Remove unused variable ostream.
