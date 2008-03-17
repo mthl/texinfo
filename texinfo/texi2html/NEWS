@@ -33,6 +33,10 @@ This file records noteworthy changes.
 
 * $Texi2HTML::THISDOC{copying} is now $Texi2HTML::THISDOC{copying_comment}.
 
+* TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
+
+* TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
+
 * BUG FIXES
   ---------
 

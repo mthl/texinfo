@@ -1877,13 +1877,13 @@ The variable value is inserted after the short table of contents text.
 The variable value is inserted before the table of contents text.
 @item $AFTER_TOC_LINES
 The variable value is inserted after the table of contents text.
-@item $TOC_LIST_STYLE
-This should contain a css style used for the list style if the tables of
-content are formatted with a list.
-@item $TOC_LIST_ATTRIBUTE
-This should contain an attribute text used for the list element if the tables of
-content are formatted with a list. It is used for lists when there is 
-no bullet.
+@item $NO_BULLET_LIST_STYLE
+This should contain a css style used for the list style when there
+is no bullet.
+@item $NO_BULLET_LIST_ATTRIBUTE
+This should contain an attribute text used for the list element when there
+is no bullet. For example it is used in the tables of if they are 
+formatted with a list.
 @end vtable
 
 More control on the table of contents and short table of contents formatting
@@ -3989,6 +3989,8 @@ function reference is now done in $print_element_header.
 @item there is a new argument for $normal_text.
 @item the @code{copying} key of %Texi2HTML::THISDOC is now called
 @code{copying_comment}.
+@item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
+@item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

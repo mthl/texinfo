@@ -33,7 +33,7 @@ fail=$1; shift
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
 [ -z $basename ] && basename=`basename $texi_file .$suffix`
-options="-test $options"
+options="$options -test"
 stderr_file=$basename.2
 echo "making test: $dir/$texi_file $options"
 if [ ! -d $dir ]; then
@@ -369,11 +369,12 @@ test_texi xemacs xemacs.texi "-split chapter -ifinfo -output ."
 test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo -output ."
 test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
 test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
-#test_texi texinfo-4.11 texinfo.txi "-split chapter -output ." 0 txi texinfo
+#test_texi texinfo-4.12 texinfo.txi "-split chapter -output ." 0 txi texinfo
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
 test_texi tar ../tar_texi/tar.texi 
 test_texi ccvs_mediawiki ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init -split chapter -output ." 0 texinfo
 test_texi ccvs_mediawiki_nosplit ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init" 0 texinfo
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+# takes too long
+#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
 #test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags

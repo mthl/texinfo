@@ -1,5 +1,5 @@
 
-$TOC_LIST_ATTRIBUTE = $TOC_LIST_ATTRIBUTE .  " style=\"$TOC_LIST_STYLE\"";
+$NO_BULLET_LIST_ATTRIBUTE = $NO_BULLET_LIST_ATTRIBUTE . " style=\"$NO_BULLET_LIST_STYLE\"";
 
 # we empty CSS_LINES as all styles are inlined
 $CSS_LINES = "";

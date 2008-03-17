@@ -1,9 +1,14 @@
 2008-03-17  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: @itemize should produce bullets by
-	default (report from Reinhold Kainhofer)
+	default (report from Reinhold Kainhofer, and bugfix)
 	* texi2html.init: handle @click, @clickstyle, @click, @arrow,
 	@clicksequence
+	* texi2html.pl: defer setting the date after all initializations
+	are done.
+	* texi2html.pl, texi2html.init, doc: TOC_LIST_ATTRIBUTE replaced by
+	NO_BULLET_LIST_ATTRIBUTE, TOC_LIST_STYLE replaced by 
+	NO_BULLET_LIST_STYLE
 	* Tests/formatting/comments.texi,formatting.texi,clean.texi:
 	test for @click, @clickstyle, @click, @arrow, @clicksequence
 

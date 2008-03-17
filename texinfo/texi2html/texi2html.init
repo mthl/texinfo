@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.133 2008-03-17 10:36:57 pertusus Exp $
+# $Id: texi2html.init,v 1.134 2008-03-17 23:23:44 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -368,8 +368,8 @@ $TOP_NODE_UP = '(dir)';
 $MENU_PRE_STYLE = 'font-family: serif';
 
 # This controls the ul style for toc
-$TOC_LIST_STYLE = 'list-style: none';
-$TOC_LIST_ATTRIBUTE = ' class="toc"';
+$NO_BULLET_LIST_STYLE = 'list-style: none';
+$NO_BULLET_LIST_ATTRIBUTE = ' class="toc"';
 
 # These lines are inserted before and after the shortcontents 
 $BEFORE_OVERVIEW = "<div class=\"shortcontents\">\n";
@@ -1368,7 +1368,7 @@ EOT
 
 # Relevant configuration variables are:
 # $NUMBER_SECTIONS
-# $TOC_LIST_ATTRIBUTE: usefull in case a list is used
+# $NO_BULLET_LIST_ATTRIBUTE: usefull in case a list is used
 # $FRAMES: @Texi2HTML::OVERVIEW is used in one of the frames. 
 # $BEFORE_OVERVIEW
 # $AFTER_OVERVIEW
@@ -2853,7 +2853,7 @@ sub t2h_default_click($$$$$)
     my $cmd = $Texi2HTML::THISDOC{'clickstyle'};
     $cmd = 'arrow' if (!defined($cmd) or ($cmd eq ''));
 
-    $hash = \%things_map;
+    my $hash = \%things_map;
     if ($context eq 'pre')
     {
         $hash = \%pre_map;
@@ -3311,7 +3311,7 @@ my %misc_command_old = (
 
 %css_map = 
      (
-         'ul.toc'                 => "$TOC_LIST_STYLE",
+         'ul.toc'                 => "$NO_BULLET_LIST_STYLE",
          'pre.menu-comment'       => "$MENU_PRE_STYLE",
          'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
          'a.summary-letter'       => 'text-decoration: none',
@@ -4395,7 +4395,7 @@ sub t2h_default_table_list($$$$$$)
     if ($format eq 'itemize')
     {
         return "<ul>\n" . $text . "</ul>\n" if (($command eq 'bullet') or (($command eq '') and ($prepended eq '')));
-        return "<ul$TOC_LIST_ATTRIBUTE>\n" . $text . "</ul>\n";
+        return "<ul$NO_BULLET_LIST_ATTRIBUTE>\n" . $text . "</ul>\n";
     }
 }
 

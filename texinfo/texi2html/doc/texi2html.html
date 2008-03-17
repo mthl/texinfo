@@ -31,7 +31,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on March, 17 2008 by texi2html @PACKAGE_VERSION@ -->
+<!-- Created on March, 18 2008 by texi2html 1.79 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -48,7 +48,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta name="keywords" content="Texi2HTML &ndash; Texinfo to HTML v1.79">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html @PACKAGE_VERSION@">
+<meta name="Generator" content="texi2html 1.79">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -2867,18 +2867,18 @@ and short table of contents:
 </dt>
 <dd><p>The variable value is inserted after the table of contents text.
 </p></dd>
-<dt> <code>$TOC_LIST_STYLE</code>
+<dt> <code>$NO_BULLET_LIST_STYLE</code>
 <a name="IDX175"></a>
 </dt>
-<dd><p>This should contain a css style used for the list style if the tables of
-content are formatted with a list.
+<dd><p>This should contain a css style used for the list style when there
+is no bullet.
 </p></dd>
-<dt> <code>$TOC_LIST_ATTRIBUTE</code>
+<dt> <code>$NO_BULLET_LIST_ATTRIBUTE</code>
 <a name="IDX176"></a>
 </dt>
-<dd><p>This should contain an attribute text used for the list element if the tables of
-content are formatted with a list. It is used for lists when there is 
-no bullet.
+<dd><p>This should contain an attribute text used for the list element when there
+is no bullet. For example it is used in the tables of if they are 
+formatted with a list.
 </p></dd>
 </dl>
 
@@ -6200,6 +6200,8 @@ function reference is now done in $print_element_header.
 </li><li> there is a new argument for $normal_text.
 </li><li> the <code>copying</code> key of %Texi2HTML::THISDOC is now called
 <code>copying_comment</code>.
+</li><li> TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
+</li><li> TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 </li></ul>
 </li><li> API changes between 1.76 and 1.78: 
 <ul>
@@ -6669,6 +6671,8 @@ text
 <tr><td></td><td valign="top"><a href="#IDX276"><code>$MENU_PRE_STYLE</code></a></td><td valign="top"><a href="#SEC79">7.15.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX274"><code>$MENU_SYMBOL</code></a></td><td valign="top"><a href="#SEC79">7.15.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX89"><code>$MIDDLE_RULE</code></a></td><td valign="top"><a href="#SEC24">6.2 Page layout and navigation panel overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX176"><code>$NO_BULLET_LIST_ATTRIBUTE</code></a></td><td valign="top"><a href="#SEC42">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX175"><code>$NO_BULLET_LIST_STYLE</code></a></td><td valign="top"><a href="#SEC42">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX25"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX198"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#SEC47">6.12 Customizing the file names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX272"><code>$NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#SEC79">7.15.4 The formatting of the menu in a table</a></td></tr>
@@ -6717,8 +6721,6 @@ text
 <tr><td></td><td valign="top"><a href="#IDX178"><code>$Texi2HTML::TOC_LINES</code></a></td><td valign="top"><a href="#SEC42">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX23"><code>$TOC_FILE</code></a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX67"><code>$TOC_LINKS</code></a></td><td valign="top"><a href="#SEC15">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX176"><code>$TOC_LIST_ATTRIBUTE</code></a></td><td valign="top"><a href="#SEC42">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX175"><code>$TOC_LIST_STYLE</code></a></td><td valign="top"><a href="#SEC42">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX21"><code>$TOP_FILE</code></a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX91"><code>$TOP_HEADING</code></a></td><td valign="top"><a href="#HEAD1">Element labels</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX27"><code>$TRANSLITERATE_NODE</code></a></td><td valign="top"><a href="#SEC11">4.2 Setting output file and directory names</a></td></tr>
@@ -7117,7 +7119,7 @@ text
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>March, 17 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>March, 18 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7219,7 +7221,7 @@ text
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>March, 17 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>March, 18 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

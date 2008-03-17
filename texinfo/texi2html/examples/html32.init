@@ -11,7 +11,7 @@ $BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" ali
 # this controls the pre style for menus
 $MENU_PRE_STYLE = '';
 
-$TOC_LIST_STYLE ='';
+$NO_BULLET_LIST_STYLE ='';
 
 $USE_ISO = 0;
 $MENU_SYMBOL = '*';
@@ -28,7 +28,7 @@ $AFTER_TOC_LINES = '';
 $L2H_HTML_VERSION = "3.2";
 
 # no class in html 32
-$TOC_LIST_ATTRIBUTE = '';
+$NO_BULLET_LIST_ATTRIBUTE = '';
 
 # no css
 $CSS_LINES = "";

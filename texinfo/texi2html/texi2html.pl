@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.199 2008-03-17 10:36:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.200 2008-03-17 23:23:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -280,8 +280,8 @@ $SIMPLE_MENU
 $MENU_SYMBOL
 $OPEN_QUOTE_SYMBOL
 $CLOSE_QUOTE_SYMBOL
-$TOC_LIST_STYLE
-$TOC_LIST_ATTRIBUTE
+$NO_BULLET_LIST_STYLE
+$NO_BULLET_LIST_ATTRIBUTE
 $TOP_NODE_FILE
 $TOP_NODE_UP
 $NODE_FILE_EXTENSION
@@ -503,7 +503,7 @@ sub T2H_GPL_toc_body($)
     my $elements_list = shift;
     return unless ($DO_CONTENTS or $DO_SCONTENTS or $FRAMES);
     my $current_level = 0;
-    my $ul_style = $NUMBER_SECTIONS ? $TOC_LIST_ATTRIBUTE : ''; 
+    my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : ''; 
     foreach my $element (@$elements_list)
     {
         next if ($element->{'top'} or $element->{'index_page'});
@@ -585,6 +585,10 @@ sub T2H_GPL_style($$$$$$$$$)
     {
         #print STDERR "GPL_STYLE $command ($style)\n";
         #print STDERR " @$args\n";
+        if (ref($style->{'args'}) ne 'ARRAY')
+        {
+            print STDERR "BUG: args not an array for command `$command'\n";
+        }
         $do_quotes = $style->{'quote'};
         if ((@{$style->{'args'}} == 1) and defined($style->{'attribute'}))
         {
@@ -969,6 +973,15 @@ my $WORDS_IN_PAGE;
 package main;
 
 #
+# flush stdout and stderr after every write
+#
+select(STDERR);
+$| = 1;
+select(STDOUT);
+$| = 1;
+
+my $I = \&Texi2HTML::I18n::get_string;
+#
 # pre-defined indices
 #
 
@@ -1292,16 +1305,6 @@ foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 #                                                                              #
 #---############################################################################
 
-#
-# flush stdout and stderr after every write
-#
-select(STDERR);
-$| = 1;
-select(STDOUT);
-$| = 1;
-
-my $I = \&Texi2HTML::I18n::get_string;
-
 my $T2H_USER; # user running the script
 my $documentdescription_text; # text in @documentdescription 
 my $titlepage_text; # text in titlepage
@@ -1371,6 +1374,24 @@ sub load_init_file
     }
 }
 
+sub set_date()
+{
+    if (!$Texi2HTML::Config::TEST)
+    {
+        print STDERR "# Setting date in $Texi2HTML::THISDOC{'current_lang'}\n" if ($T2H_DEBUG);
+        $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($Texi2HTML::THISDOC{'current_lang'});  # like "20 September 1993";
+    }
+    else
+    {
+        $Texi2HTML::THISDOC{'today'} = 'a sunny day';
+    }
+    $Texi2HTML::THISDOC{'today'} = $Texi2HTML::Config::DATE 
+        if (defined($Texi2HTML::Config::DATE));
+    $::things_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
+    $::pre_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
+    $::texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
+}
+
 my $cmd_line_lang = 0; # 1 if lang was succesfully set by the command line 
                        # in that case @documentlanguage is ignored.
 my $lang_set = 0; # 1 if lang was set
@@ -1410,21 +1431,17 @@ sub set_document_language ($;$$$)
             print STDERR "# using '$language' as document language\n" if ($T2H_VERBOSE);
             $Texi2HTML::THISDOC{'current_lang'} = $language;
             $lang_set = 1;
-            $cmd_line_lang = 1 if ($from_command_line);
-            if (!$Texi2HTML::Config::TEST)
+            # when processing the command line everything isn't already 
+            # set, so we cannot set the date. It is done as soon as possible
+            # after arguments parsing and initializations.
+            if ($from_command_line)
             {
-                print STDERR "# Setting date in $Texi2HTML::THISDOC{'current_lang'}\n" if ($T2H_DEBUG);
-                $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($Texi2HTML::THISDOC{'current_lang'});  # like "20 September 1993";
+                $cmd_line_lang = 1;
             }
             else
             {
-                $Texi2HTML::THISDOC{'today'} = 'a sunny day';
+                set_date();
             }
-            $Texi2HTML::THISDOC{'today'} = $Texi2HTML::Config::DATE 
-                if (defined($Texi2HTML::Config::DATE));
-            $::things_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
-            $::pre_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
-            $::texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
             return 1;
         }
     }
@@ -2413,8 +2430,8 @@ $T2H_OPTIONS -> {'help'} =
 };
 
 # this avoids getOptions defining twice 'help' and 'version'.
-$T2H_OBSOLETE_OPTIONS -> {'help'} = 0;
-$T2H_OBSOLETE_OPTIONS -> {'version'} = 0;
+$T2H_OBSOLETE_OPTIONS->{'help'} = 0;
+$T2H_OBSOLETE_OPTIONS->{'version'} = 0;
 
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
@@ -2440,6 +2457,10 @@ if (@ARGV > 1)
     }
 }
 
+# $T2H_DEBUG and $T2H_VERBOSE are shorthands
+$T2H_DEBUG = $Texi2HTML::Config::DEBUG;
+$T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
+
 #
 # read texi2html extensions (if any)
 # It is obsolete (obsoleted by -init-file). we keep it for backward
@@ -2462,13 +2483,9 @@ if ($progdir && ($progdir ne './'))
     }
 }
 
-# $T2H_DEBUG and $T2H_VERBOSE are shorthands
-$T2H_DEBUG = $Texi2HTML::Config::DEBUG;
-$T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
 $Texi2HTML::THISDOC{'debug_l2h'} = 0;
 $Texi2HTML::THISDOC{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
-
 
 #+++############################################################################
 #                                                                              #
@@ -3029,7 +3046,8 @@ if ($Texi2HTML::Config::USE_ISO)
     $Texi2HTML::Config::CLOSE_QUOTE_SYMBOL = $Texi2HTML::Config::iso_symbols{"'"} 
        if (exists($Texi2HTML::Config::iso_symbols{"'"}) and ($Texi2HTML::Config::CLOSE_QUOTE_SYMBOL eq "'"));
 }
-
+ 
+set_date() if ($cmd_line_lang);
 
 
 # process a css file
