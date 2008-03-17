@@ -1882,7 +1882,8 @@ This should contain a css style used for the list style if the tables of
 content are formatted with a list.
 @item $TOC_LIST_ATTRIBUTE
 This should contain an attribute text used for the list element if the tables of
-content are formatted with a list.
+content are formatted with a list. It is used for lists when there is 
+no bullet.
 @end vtable
 
 More control on the table of contents and short table of contents formatting

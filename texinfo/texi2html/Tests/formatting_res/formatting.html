@@ -108,6 +108,8 @@ Invalid use of @':
 @guilsinglleft <
 @guilsinglright >
 @textdegree o
+@euro Euro
+@arrow ->
 
 @TeX, but without brace TeX
 
@@ -187,6 +189,10 @@ Invalid use of @':
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} file@verb{:jk _" %@:}
 @image{@file{f-ile}@@@.,aze,az,alt,@file{file ext} e-xt@} @file{f-ile}@@@.
 
+
+@clicksequence{click @click{} A} click -> A
+After clickstyle =>
+@clicksequence{click @click{} A} click => A
 
 a q-uotation
 
@@ -644,6 +650,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @guilsinglleft &lsaquo;
 @guilsinglright &rsaquo;
 @textdegree &deg;
+@euro &euro;
+@arrow &rarr;
 </p>
 <p>@TeX, but without brace TeX
 </p>
@@ -727,10 +735,14 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <br>
 <br>
 
+<p><code>@clicksequence{click @click{} A}</code> click &rarr; A
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> click &rArr; A
+</p>
 <blockquote><p>a q&ndash;uotation
 </p></blockquote>
 
-<ul class="toc">
+<ul>
 <li> i&ndash;temize
 </li></ul>
 
@@ -1256,6 +1268,8 @@ Invalid use of @':
 @guilsinglleft &lsaquo;
 @guilsinglright &rsaquo;
 @textdegree &deg;
+@euro &euro;
+@arrow &rarr;
 
 @TeX, but without brace TeX
 
@@ -1339,10 +1353,14 @@ Invalid use of @':
 
 
 
+<code>@clicksequence{click @click{} A}</code> click &rarr; A
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> click &rArr; A
+
 </pre><blockquote><pre class="example">a q--uotation
 </pre></blockquote>
 <pre class="example">
-</pre><ul class="toc">
+</pre><ul>
 <li><pre class="example"> i--temize
 </pre></li></ul>
 <pre class="example">

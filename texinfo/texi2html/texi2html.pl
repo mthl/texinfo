@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.198 2008-03-12 10:24:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.199 2008-03-17 10:36:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3219,7 +3219,7 @@ sub texinfo_initialization($)
     foreach my $init_mac ('everyheading', 'everyfooting', 'evenheading', 
         'evenfooting', 'oddheading', 'oddfooting', 'headings', 
         'allowcodebreaks', 'frenchspacing', 'exampleindent', 
-        'firstparagraphindent', 'paragraphindent')
+        'firstparagraphindent', 'paragraphindent', 'clickstyle')
     {
         $Texi2HTML::THISDOC{$init_mac} = undef;
         delete $Texi2HTML::THISDOC{$init_mac};
@@ -3838,6 +3838,17 @@ sub common_misc_commands($$$$)
         else
         {
             echo_warn ("Missing argument for \@$macro", $line_nr) if (!$pass);
+        }
+    }
+    elsif ($macro eq 'clickstyle')
+    {
+        if ($line =~ /^\s+@([^\s\{\}\@]+)/)
+        {
+            $Texi2HTML::THISDOC{$macro} = $1;
+        }
+        else
+        {
+            echo_error ("\@$macro should only accept a macro as argument", $line_nr) if ($pass == 1);
         }
     }
     if ($pass)
@@ -7728,7 +7739,7 @@ sub parse_format_command($$)
 {
     my $line = shift;
     my $tag = shift;
-    my $command = 'asis';
+    my $command = '';
     # macro_regexp
     if ($line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?\s/)
     {
@@ -7915,7 +7926,7 @@ sub end_format($$$$$)
         }
         else
         { # table or list handler defined by the user
-            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}));
+            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}, $format_ref->{'formatted_command'}, $format_ref->{'prepended'}));
         }
     } 
     elsif ($format_type{$format} eq 'menu')
@@ -10975,6 +10986,7 @@ sub scan_line($$$$;$)
                         my $command;
                         my $prepended;
                         ($prepended, $command) = parse_format_command($_,$macro);
+                        $command = 'asis' if (($command eq '') and ($macro ne 'itemize'));
                         $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'term' => 0 };
                         $_ = '';
                     }
@@ -11373,7 +11385,7 @@ sub add_term($$$$;$)
     #dump_stack($text, $stack, $state);
     close_stack($text, $stack, $state, $line_nr, undef, 'term');
     my $term = pop @$stack;
-    my $command_formatted;
+    my $formatted_command;
     chomp ($term->{'text'});
     if (exists($::style_map_ref->{$format->{'command'}}) and 
        !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and ($style_type{$format->{'command'}} eq 'style'))
@@ -11389,7 +11401,8 @@ sub add_term($$$$;$)
     }
     elsif (exists($::things_map_ref->{$format->{'command'}}))
     {
-        $command_formatted = do_simple($format->{'command'}, '', $state);
+        $formatted_command = do_simple($format->{'command'}, '', $state);
+        $format->{'formatted_command'} = $formatted_command;
     }
     my $index_label;
     if ($format->{'format'} =~ /^(f|v)/o)
@@ -11397,7 +11410,7 @@ sub add_term($$$$;$)
         $index_label = do_index_entry_label($format->{'format'}, $state,$line_nr);
         print STDERR "Bug: no index entry for $text" unless defined($index_label);
     }
-    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $command_formatted,$state->{'command_stack'}));
+    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $formatted_command,$state->{'command_stack'}));
     unless ($end)
     {
         push (@$stack, { 'format' => 'line', 'text' => '' });
@@ -11554,6 +11567,7 @@ sub add_item($$$$;$)
         if (defined($format->{'command'}) and exists($::things_map_ref->{$format->{'command'}}))
         {
             $formatted_command = do_simple($format->{'command'}, '', $state);
+            $format->{'formatted_command'} = $formatted_command;
         }
 	#chomp($item->{'text'});
         add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}));

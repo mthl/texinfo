@@ -90,7 +90,21 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@ordf @ordf{}
 @@ordm @ordm{}
 @@comma @comma{}
+@@quotedblleft @quotedblleft{}
+@@quotedblright @quotedblright{}
+@@quoteleft @quoteleft{}
+@@quoteright @quoteright{}
+@@quotedblbase @quotedblbase{}
+@@quotesinglbase @quotesinglbase{}
+@@guillemetleft @guillemetleft{}
+@@guillemetright @guillemetright{}
+@@guillemotleft @guillemotleft{}
+@@guillemotright @guillemotright{}
+@@guilsinglleft @guilsinglleft{}
+@@guilsinglright @guilsinglright{}
+@@textdegree @textdegree{}
 @@euro @euro{}
+@@arrow @arrow{}
 @c @@le @le{}
 @c @@ge @ge{}
 
@@ -177,6 +191,13 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
 @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @result
+After clickstyle @result{}
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @arrow
+
 
 @quotation
 a q--uotation
@@ -480,6 +501,21 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@ordf @ordf{}
 @@ordm @ordm{}
 @@comma @comma{}
+@@quotedblleft @quotedblleft{}
+@@quotedblright @quotedblright{}
+@@quoteleft @quoteleft{}
+@@quoteright @quoteright{}
+@@quotedblbase @quotedblbase{}
+@@quotesinglbase @quotesinglbase{}
+@@guillemetleft @guillemetleft{}
+@@guillemetright @guillemetright{}
+@@guillemotleft @guillemotleft{}
+@@guillemotright @guillemotright{}
+@@guilsinglleft @guilsinglleft{}
+@@guilsinglright @guilsinglright{}
+@@textdegree @textdegree{}
+@@euro @euro{}
+@@arrow @arrow{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@asis@{--a@}} @asis{--a}
@@ -543,6 +579,12 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
 @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @result
+After clickstyle @result{}
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @arrow
 
 
 @quotation

@@ -164,40 +164,56 @@ comments.texi(,190) Text line after the comment followed by a comment @sp 1
 comments.texi(,191) Text line after the text line followed by the comment.
 comments.texi(,193) @sp 2 a number after sp
 comments.texi(,195) 
-comments.texi(,196) Menu:
-comments.texi(,197) @menu
-comments.texi(,198) * node::
-comments.texi(,199) * bidule::
-comments.texi(,200) * bidule2::
-comments.texi(,201) * undefined::
-comments.texi(,202) @end menu
+comments.texi(,196) @clickstyle @result
+comments.texi(,197) 
+comments.texi(,198) A @click{} (result).
+comments.texi(,199) 
+comments.texi(,200) @clickstyle @result on the same line
+comments.texi(,201) 
+comments.texi(,202) A @click{} (result on the same line).
 comments.texi(,203) 
-comments.texi(,204) @node node
-comments.texi(,205) @chapter chapter
-comments.texi(,206) @menu
-comments.texi(,207) * truc::
-comments.texi(,208) @end menu
+comments.texi(,204) @clickstyle @nocmd
+comments.texi(,205) 
+comments.texi(,206) A @click{} (nocmd).
+comments.texi(,207) 
+comments.texi(,208) @clickstyle something
 comments.texi(,209) 
-comments.texi(,210) @node truc
-comments.texi(,211) @section section
-comments.texi(,212) 
-comments.texi(,213) first @@contents @contents line following first content
-comments.texi(,214) second @@contents @contents line following second content
-comments.texi(,215) Third content on the following line on his own
-comments.texi(,216) @contents
-comments.texi(,217) Line following contents
-comments.texi(,218) 
-comments.texi(,219) @node bidule
-comments.texi(,220) @chapter bidule
-comments.texi(,221) 
-comments.texi(,222) @@shortcontents @shortcontents eol
-comments.texi(,223) @@shortcontents @shortcontents eol
-comments.texi(,224) @@summarycontents @summarycontents line following summarycontents
+comments.texi(,210) A @click{} (something).
+comments.texi(,211) 
+comments.texi(,212) Menu:
+comments.texi(,213) @menu
+comments.texi(,214) * node::
+comments.texi(,215) * bidule::
+comments.texi(,216) * bidule2::
+comments.texi(,217) * undefined::
+comments.texi(,218) @end menu
+comments.texi(,219) 
+comments.texi(,220) @node node
+comments.texi(,221) @chapter chapter
+comments.texi(,222) @menu
+comments.texi(,223) * truc::
+comments.texi(,224) @end menu
 comments.texi(,225) 
-comments.texi(,226) @node bidule2
-comments.texi(,227) @chapter last
+comments.texi(,226) @node truc
+comments.texi(,227) @section section
 comments.texi(,228) 
-comments.texi(,229) @c no ref ignored because of novalidate
-comments.texi(,230) @ref{machin}
-comments.texi(,231) 
-comments.texi(,232) @bye
+comments.texi(,229) first @@contents @contents line following first content
+comments.texi(,230) second @@contents @contents line following second content
+comments.texi(,231) Third content on the following line on his own
+comments.texi(,232) @contents
+comments.texi(,233) Line following contents
+comments.texi(,234) 
+comments.texi(,235) @node bidule
+comments.texi(,236) @chapter bidule
+comments.texi(,237) 
+comments.texi(,238) @@shortcontents @shortcontents eol
+comments.texi(,239) @@shortcontents @shortcontents eol
+comments.texi(,240) @@summarycontents @summarycontents line following summarycontents
+comments.texi(,241) 
+comments.texi(,242) @node bidule2
+comments.texi(,243) @chapter last
+comments.texi(,244) 
+comments.texi(,245) @c no ref ignored because of novalidate
+comments.texi(,246) @ref{machin}
+comments.texi(,247) 
+comments.texi(,248) @bye

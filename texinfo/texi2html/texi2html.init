@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.132 2008-03-12 10:24:12 pertusus Exp $
+# $Id: texi2html.init,v 1.133 2008-03-17 10:36:57 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1776,6 +1776,7 @@ $simple_map_pre{'*'} = "\n";
 # FIXME i18n
                'error'        => 'error--&gt;',
                'expansion'    => '==&gt;',
+               'arrow'        => '->',
                'minus'        => '-',
                'point'        => '-!-',
                'print'        => '-|',
@@ -1853,6 +1854,7 @@ $pre_map{'enddots'} = '...';
 # FIXME i18n
                'error'        => 'error-->',
                'expansion'    => '==>',
+               'arrow'        => '->',
                'minus'        => '-',
                'point'        => '-!-',
                'print'        => '-|',
@@ -1927,6 +1929,7 @@ $pre_map{'enddots'} = '...';
                'equiv', '==',
                'error', 'error-->',
                'expansion', '==>',
+               'arrow',  '->',
                'minus', '-',
                'point', '-!-',
                'print', '-|',
@@ -1993,6 +1996,8 @@ $pre_map{'enddots'} = '...';
                'equiv'        => '2261',
                'error'        => '',
                'expansion'    => '2192',
+# FIXME ask on texinfo list
+#               'arrow'               => '2192',
                'minus'        => '2212', # in mathematical operators
 #               'minus'        => '002D', # in latin1
                'point'        => '2605',
@@ -2121,6 +2126,7 @@ foreach my $symbol(keys(%unicode_map))
          'bullet'    => '&bull;',
          'result'    => '&rArr;',
          'expansion' => '&rarr;',
+         'arrow'     => '&rarr;',
          'point'     => '&lowast;',
          "'"         => '&rsquo;',
          '`'         => '&lsquo;',
@@ -2148,6 +2154,7 @@ my %old_style_map = (
       'asis',       '',
       'b',          'b',
       'cite',       'cite',
+      'clicksequence', '',
       'code',       'code',
       'command',    'code',
       'ctrl',       '&default_ctrl', 
@@ -2180,6 +2187,8 @@ my %old_style_map = (
       'asis',       {},
       'b',          {'attribute' => 'b'},
       'cite',       {'attribute' => 'cite'},
+      'clicksequence', {},
+      'click',      {'function' => \&t2h_default_click_normal},
       'code',       {'args' => ['code'], 'attribute' => 'code'},
       'command',    {'args' => ['code'], 'attribute' => 'code'},
       'ctrl',       {'function' => \&t2h_default_ctrl,'type' => 'simple_style'}, 
@@ -2820,6 +2829,43 @@ sub t2h_default_email($$)
     return &$anchor('', "mailto:$mail", $text);
 }
 
+sub t2h_default_click_normal($$$)
+{
+    return t2h_default_click('normal', @_);
+}
+
+sub t2h_default_click_pre($$$)
+{
+    return t2h_default_click('pre', @_);
+}
+
+sub t2h_default_click_texi($$$)
+{
+    return t2h_default_click('texi', @_);
+}
+
+sub t2h_default_click($$$$$)
+{
+    my $context = shift;
+    my $command = shift;
+    my $args = shift;
+    my $arg = shift @$args;
+    my $cmd = $Texi2HTML::THISDOC{'clickstyle'};
+    $cmd = 'arrow' if (!defined($cmd) or ($cmd eq ''));
+
+    $hash = \%things_map;
+    if ($context eq 'pre')
+    {
+        $hash = \%pre_map;
+    }
+    elsif ($context eq 'texi')
+    {
+        $hash = \%texi_map;
+    }
+    return $hash->{$cmd} . $arg if (exists($hash->{$cmd}));
+    return $arg;
+}
+
 sub t2h_default_hyphenation($$)
 {
     my $command = shift;
@@ -2903,10 +2949,12 @@ foreach my $command (keys(%style_map))
 #$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_pre{'sc'} = {};
 $style_map_pre{'titlefont'} = {};
+$style_map_pre{'click'}->{'function'} = \&t2h_default_click_pre;
 
 #$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_texi{'sc'} = {};
 $style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
+$style_map_texi{'click'}->{'function'} = \&t2h_default_click_texi;
 
 ####### special styles. You shouldn't need to change them
 my %special_style = (
@@ -3109,6 +3157,7 @@ foreach my $key (keys(%def_map))
         'setshortcontentsaftertitlepage' => {}, # no arg
         'detailmenu' => {'skip' => 'whitespace'}, # no arg
         'end detailmenu' => {'skip' => 'whitespace'}, # no arg
+        'clickstyle' => {'skip' => 'line'}, # arg should be an @-command
         'bye' => {'skip' => 'line'}, # no arg
         # set, clear
         'set' => {'skip' => 'line'}, # special arg
@@ -4337,6 +4386,7 @@ sub t2h_default_table_list($$$$$$)
     my $text = shift;
     my $command = shift;
     my $formatted_command = shift;
+    my $prepended = shift;
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
@@ -4344,7 +4394,7 @@ sub t2h_default_table_list($$$$$$)
           exists($special_list_commands{$format}->{$command}));
     if ($format eq 'itemize')
     {
-        return "<ul>\n" . $text . "</ul>\n" if ($command eq 'bullet');
+        return "<ul>\n" . $text . "</ul>\n" if (($command eq 'bullet') or (($command eq '') and ($prepended eq '')));
         return "<ul$TOC_LIST_ATTRIBUTE>\n" . $text . "</ul>\n";
     }
 }

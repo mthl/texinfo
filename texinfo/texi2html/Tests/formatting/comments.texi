@@ -193,6 +193,22 @@ Text line after the text line followed by the comment.
 @sp 2 a number after sp
 @end ifnottex
 
+@clickstyle @result
+
+A @click{} (result).
+
+@clickstyle @result on the same line
+
+A @click{} (result on the same line).
+
+@clickstyle @nocmd
+
+A @click{} (nocmd).
+
+@clickstyle something
+
+A @click{} (something).
+
 Menu:
 @menu
 * node::

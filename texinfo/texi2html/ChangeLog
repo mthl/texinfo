@@ -1,3 +1,12 @@
+2008-03-17  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: @itemize should produce bullets by
+	default (report from Reinhold Kainhofer)
+	* texi2html.init: handle @click, @clickstyle, @click, @arrow,
+	@clicksequence
+	* Tests/formatting/comments.texi,formatting.texi,clean.texi:
+	test for @click, @clickstyle, @click, @arrow, @clicksequence
+
 2008-03-12  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, examples/mediawiki.init: add

@@ -125,6 +125,8 @@ Invalid use of @@':@*
 @@guilsinglleft @guilsinglleft{}
 @@guilsinglright @guilsinglright{}
 @@textdegree @textdegree{}
+@@euro @euro{}
+@@arrow @arrow{}
 
 @@TeX, but without brace @TeX
 
@@ -206,6 +208,12 @@ Invalid use of @@':@*
 
 @sp
 @sp 2
+
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @result
+After clickstyle @result{}
+@code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+@clickstyle @arrow
 
 @quotation
 a q--uotation
