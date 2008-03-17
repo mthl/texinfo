@@ -1,3 +1,9 @@
+2008-03-17  Karl Berry  <karl@gnu.org>
+
+	* texinfo.tex (\xrefX): avoid TeX expansions of _ etc.
+	in the info filename argument (#4).
+	Report from Ralf Wildenhues, 15 Mar 2008 11:23:38.
+
 2008-03-14  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.94.
