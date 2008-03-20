@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.200 2008-03-17 23:23:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.201 2008-03-20 01:42:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4477,6 +4477,7 @@ sub rearrange_elements()
     my @previous_numbers = ();   # holds the number of the previous sections
                                  # at the same and upper levels
     my @previous_sections = ();  # holds the ref of the previous sections
+    my $previous_toplevel;
     
     foreach my $section (@sections_list)
     {
@@ -4484,11 +4485,27 @@ sub rearrange_elements()
         print STDERR "BUG: node or section_ref defined for section $section->{'texi'}\n"
             if (exists($section->{'node'}) or exists($section->{'section_ref'}));
         ########################### end debug
-        next if ($section->{'top'});
+        #next if ($section->{'top'});
         print STDERR "Bug level undef for ($section) $section->{'texi'}\n" if (!defined($section->{'level'}));
-        $section->{'toplevel'} = 1 if ($section->{'level'} == $toplevel);
+        # we track the toplevel next and previous because there is no
+        # strict child parent relationship between chapters and top. Indeed
+        # a chapter may appear before @top, it may be better to consider them
+        # on the same toplevel.
+        if ($section->{'level'} <= $toplevel)
+        {
+            $section->{'toplevel'} = 1;
+            if (defined($previous_toplevel))
+            {
+                $previous_toplevel->{'toplevelnext'} = $section;
+                $section->{'toplevelprev'} = $previous_toplevel; 
+            }
+            $previous_toplevel = $section;
+        }
         # undef things under that section level
-        for (my $level = $section->{'level'} + 1; $level < $MAX_LEVEL + 1 ; $level++)
+        my $section_level = $section->{'level'};
+        # if it is the top element, the previous chapter is not wiped out
+        $section_level++ if ($section->{'tag'} eq 'top');
+        for (my $level = $section_level + 1; $level < $MAX_LEVEL + 1 ; $level++)
         {
             $previous_numbers[$level] = undef;
             $previous_sections[$level] = undef;
@@ -4499,7 +4516,7 @@ sub rearrange_elements()
         {
             $previous_numbers[$toplevel] = 'A';
             $in_appendix = 1;
-            $number_set = 1 if ($section->{'level'} == $toplevel);
+            $number_set = 1 if ($section->{'level'} <= $toplevel);
         }
         if (!defined($previous_numbers[$section->{'level'}]) and !$number_set)
         {
@@ -4519,7 +4536,7 @@ sub rearrange_elements()
         # construct the section number
         $section->{'number'} = '';
 
-        unless ($section->{'tag'} =~ /unnumbered/)
+        unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'top')
         { 
             my $level = $section->{'level'};
             while ($level > $toplevel)
@@ -4548,11 +4565,11 @@ sub rearrange_elements()
             $prev_section->{'sectionnext'} = $section;
         }
         # find the up section
-        if ($section->{'level'} == $toplevel)
-        {
-            $section->{'sectionup'} = undef;
-        }
-        else
+#        if ($section->{'level'} == $toplevel)
+#        {
+#            $section->{'sectionup'} = undef;
+#        }
+#        else
         {
             my $level = $section->{'level'} - 1;
             while (!defined($previous_sections[$level]) and ($level >= 0))
@@ -5185,6 +5202,7 @@ sub rearrange_elements()
         my $back = $element->{'back'} if defined($element->{'back'});
         my $forward = $element->{'forward'};
         my $sectionnext = $element->{'sectionnext'};
+        my $toplevelnext = $element->{'toplevelnext'};
         my $index_num = 0;
         my @waiting_elements = (); # elements (nodes) not used for sectionning 
                                  # waiting to be associated with an element
@@ -5204,8 +5222,10 @@ sub rearrange_elements()
                 else
                 {  
                     $current_element->{'sectionnext'} = $checked_element;
+                    $current_element->{'toplevelnext'} = $checked_element if ($current_element->{'toplevel'});
                     $current_element->{'following'} = $checked_element;
                     $checked_element->{'sectionprev'} = $current_element;
+                    $checked_element->{'toplevelprev'} = $current_element if ($current_element->{'toplevel'});
                 }
                 $current_element = $checked_element;
                 $checked_element->{'back'} = $back;
@@ -5277,6 +5297,7 @@ sub rearrange_elements()
                             print STDERR "Bug: checked element wasn't seen" if 
                                  (!$checked_element->{'seen'});
                             $element->{'sectionprev'}->{'sectionnext'} = $checked_element if (exists($element->{'sectionprev'}));
+                            $element->{'toplevelprev'}->{'toplevelnext'} = $checked_element if (exists($element->{'toplevelprev'}));
                             push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                             foreach my $index(@{$current_element->{'indices'}})
                             {
@@ -5313,6 +5334,7 @@ sub rearrange_elements()
                              'back' => $back,
                              'prev' => $back,
                              'sectionnext' => $sectionnext,
+                             'toplevelnext' => $toplevelnext,
                              'following' => $current_element->{'following'},
                              'nodeup' => $current_element->{'nodeup'},
                              'nodenext' => $current_element->{'nodenext'},
@@ -5342,6 +5364,7 @@ sub rearrange_elements()
                             $back->{'forward'} = $index_page;
                             $back->{'nodenext'} = $index_page;
                             $back->{'sectionnext'} = $index_page unless ($back->{'top'});
+                            $back->{'toplevelnext'} = $index_page if ($element->{'toplevel'});
                             $back->{'following'} = $index_page;
                             $back = $index_page;
                             $index_page->{'toplevel'} = 1 if ($element->{'top'});
@@ -5383,8 +5406,23 @@ sub rearrange_elements()
         next unless (defined($up));
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
         # fastforward is the next element on same level than the upper parent
-        # element
-        $element->{'fastforward'} = $up->{'sectionnext'} if (exists ($up->{'sectionnext'}));
+        # element.
+#        if (exists ($up->{'sectionnext'}))
+#        {
+#            $element->{'fastforward'} = $up->{'sectionnext'}
+#        }
+#        # there is an exception for the top element, in that case
+#        # the first chapter should be the fastforward element.
+#        elsif ($up->{'top'} and (exists($up->{'child'})) and $up->{'child'}->{'toplevel'})
+#        {
+#            $element->{'fastforward'} = $up->{'child'};
+#        }
+#        # and another exception when a toplevel element precedes
+#        # the @top element
+        if (exists ($up->{'toplevelnext'}))
+        {
+            $element->{'fastforward'} = $up->{'toplevelnext'}
+        }
         # if the element isn't at the highest level, fastback is the 
         # highest parent element
         if ($up and ($up ne $element))
@@ -5685,6 +5723,8 @@ sub rearrange_elements()
         print STDERR "  b: $element->{'back'}->{'texi'}\n" if (defined($element->{'back'}));
         print STDERR "  p: $element->{'prev'}->{'texi'}\n" if (defined($element->{'prev'}));
         print STDERR "  n: $element->{'sectionnext'}->{'texi'}\n" if (defined($element->{'sectionnext'}));
+	print STDERR "  t_n: $element->{'toplevelnext'}->{'texi'}\n" if (defined($element->{'toplevelnext'}));
+	print STDERR "  t_p: $element->{'toplevelprev'}->{'texi'}\n" if (defined($element->{'toplevelprev'}));
         print STDERR "  n_u: $element->{'nodeup'}->{'texi'}\n" if (defined($element->{'nodeup'}));
         print STDERR "  f: $element->{'forward'}->{'texi'}\n" if (defined($element->{'forward'}));
         print STDERR "  follow: $element->{'following'}->{'texi'}\n" if (defined($element->{'following'}));
@@ -5693,6 +5733,25 @@ sub rearrange_elements()
 	print STDERR "  m_u: $element->{'menu_up'}->{'texi'}\n" if (defined($element->{'menu_up'}));
 	print STDERR "  m_ch: $element->{'menu_child'}->{'texi'}\n" if (defined($element->{'menu_child'}));
         print STDERR "  ff: $element->{'fastforward'}->{'texi'}\n" if (defined($element->{'fastforward'}));
+        my $section_childs = '';
+        if (defined($element->{'section_childs'}))
+        {
+            foreach my $child (@{$element->{'section_childs'}})
+            {
+                $section_childs .= "$child->{'texi'}|";
+            }
+        }
+        print STDERR "  s_chs: $section_childs\n" if ($section_childs ne '');
+        my $node_childs = '';
+        if (defined($element->{'node_childs'}))
+        {
+            foreach my $child (@{$element->{'node_childs'}})
+            {
+                $node_childs .= "$child->{'texi'}|";
+            }
+        }
+        print STDERR "  n_chs: $node_childs\n" if ($node_childs ne '');
+
         if (defined($element->{'menu_up_hash'}))
         {
             print STDERR "  parent nodes:\n";

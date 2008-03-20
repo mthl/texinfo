@@ -1,3 +1,10 @@
+2008-03-20  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: treat the @top element like any section element, 
+	except that the previous chapter is still considered to be the 
+	previous element at its level.
+	Find previous and next toplevel better.
+
 2008-03-17  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: @itemize should produce bullets by
