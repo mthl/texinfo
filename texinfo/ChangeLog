@@ -1,3 +1,7 @@
+2008-03-20  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (main): avoid declaration after statement.
+
 2008-03-17  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\xrefX): avoid TeX expansions of _ etc.
