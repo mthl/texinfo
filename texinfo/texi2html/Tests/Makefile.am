@@ -13,7 +13,8 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      navigation_chapter_no_nav_vert navigation_section_no_header \
      navigation_chapter_vert navigation_section_no_nav \
      navigation_node navigation_section_no_nav_vert \
-     navigation_node_no_header navigation_section_vert 
+     navigation_node_no_header navigation_section_vert ccvs_mediawiki \
+     ccvs_mediawiki_nosplit
 
 
 
@@ -28,6 +29,8 @@ regenerate:
           formatting_res/tex_in_copying.2 formatting_res/math_not_closed.2 \
 	  tex_httex_res/tex.2 tex_httex_res/*_tex4ht_*.html
 	-rm -f singular_res/*_l2h.html singular_res/sing.2
+	cp ccvs_mediawiki/cvs:* ccvs_mediawiki_res
+	cp ccvs_mediawiki_nosplit/cvs ccvs_mediawiki_nosplit_res
 
 clean-local:
 	for dir in ${SUBDIR_TESTS}; do \

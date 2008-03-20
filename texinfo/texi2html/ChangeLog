@@ -4,6 +4,8 @@
 	except that the previous chapter is still considered to be the 
 	previous element at its level.
 	Find previous and next toplevel better.
+	* Makefile.am,...: better handling of mediawiki tests and regenerate
+	with automake 1.10.1.
 
 2008-03-17  Patrice Dumas  <dumas@centre-cired.fr>
 
