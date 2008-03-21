@@ -1,3 +1,9 @@
+2008-03-21  Karl Berry  <karl@gnu.org>
+
+	* info/session.c (_scroll_forward): leave cursor on last line.
+	(_scroll_backward): use info_beginning_of_node for consistency.
+	Changes proposed by Benno Schulenberg, 21 Mar 2008 16:31:27.
+
 2008-03-20  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (main): avoid declaration after statement.
