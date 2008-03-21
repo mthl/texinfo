@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.9.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-15 01:30+0100\n"
+"POT-Creation-Date: 2008-03-21 19:03+0100\n"
 "PO-Revision-Date: 2007-10-20 22:20-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -314,12 +314,12 @@ msgstr ""
 "Bu özgür yazýlýmdýr: deðiþtirip daðýtma özgürlüðüne sahipsiniz.\n"
 "Yasalarýn elverdiði ölçüde HÝÇBÝR GARANTÝ yoktur.\n"
 
-#: info/info.c:503
+#: info/info.c:504
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "`%s' için indeks girdisi yok.\n"
 
-#: info/info.c:597
+#: info/info.c:598
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -327,7 +327,7 @@ msgid ""
 "Read documentation in Info format.\n"
 msgstr ""
 
-#: info/info.c:603
+#: info/info.c:604
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -337,7 +337,7 @@ msgid ""
 "  -f, --file=FILENAME          specify Info file to visit."
 msgstr ""
 
-#: info/info.c:610
+#: info/info.c:611
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -345,7 +345,7 @@ msgid ""
 "  -o, --output=FILENAME        output selected nodes to FILENAME."
 msgstr ""
 
-#: info/info.c:616
+#: info/info.c:617
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -353,13 +353,13 @@ msgid ""
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
 
-#: info/info.c:623
+#: info/info.c:624
 #, fuzzy
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 "  -b, --speech-friendly       konuþma sentezcilerine dostça davranýr.\n"
 
-#: info/info.c:627
+#: info/info.c:628
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -367,7 +367,7 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
 
-#: info/info.c:633
+#: info/info.c:634
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -377,7 +377,7 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 
-#: info/info.c:640
+#: info/info.c:641
 msgid ""
 "\n"
 "Examples:\n"
@@ -389,7 +389,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -402,72 +402,72 @@ msgstr ""
 "genel soru ve tartýþmalarý help-texinfo@gnu.org'a gönderiniz.\n"
 "Texinfo anasayfasý: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:683
+#: info/info.c:684
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "`%s' düðümü bulunamadý."
 
-#: info/info.c:684
+#: info/info.c:685
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "`(%s)%s' düðümü bulunamadý."
 
-#: info/info.c:685
+#: info/info.c:686
 msgid "Cannot find a window!"
 msgstr "Bir pencere bulunamadý!"
 
-#: info/info.c:686
+#: info/info.c:687
 msgid "Point doesn't appear within this window's node!"
 msgstr "Orasý bu pencerenin düðümü gibi görünmüyor!"
 
-#: info/info.c:687
+#: info/info.c:688
 msgid "Cannot delete the last window."
 msgstr "Son pencere silinemez."
 
-#: info/info.c:688
+#: info/info.c:689
 msgid "No menu in this node."
 msgstr "Bu düðümde menü yok."
 
-#: info/info.c:689
+#: info/info.c:690
 msgid "No footnotes in this node."
 msgstr "Bu düðümde dipnot yok."
 
-#: info/info.c:690
+#: info/info.c:691
 msgid "No cross references in this node."
 msgstr "Bu düðümde çapraz baþvuru yok."
 
-#: info/info.c:691
+#: info/info.c:692
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Bu düðüm için `%s' yer gösterici yok."
 
-#: info/info.c:692
+#: info/info.c:693
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Info komutu `%c' bilinmiyor; yardým almak için `?' deneyin."
 
-#: info/info.c:693
+#: info/info.c:694
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "`%s' terminal türü Info çalýþtýrmak için yeterince akýllý deðil."
 
-#: info/info.c:694
+#: info/info.c:695
 msgid "You are already at the last page of this node."
 msgstr "Zaten bu düðümün son sayfasýndasýnýz."
 
-#: info/info.c:695
+#: info/info.c:696
 msgid "You are already at the first page of this node."
 msgstr "Zaten bu düðümün ilk sayfasýndasýnýz."
 
-#: info/info.c:696
+#: info/info.c:697
 msgid "Only one window."
 msgstr "Sadece bir pencere."
 
-#: info/info.c:697
+#: info/info.c:698
 msgid "Resulting window would be too small."
 msgstr "Pencere çok küçük olacaktý."
 
-#: info/info.c:698
+#: info/info.c:699
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Bir yardým penceresi için yer yok, lütfen bir pencere silin."
 
@@ -1144,7 +1144,7 @@ msgstr "Daha önce, görünür bir pencereden uðradýðýnýz bir düðüm seçiniz"
 msgid "Select visited node: "
 msgstr "Uðramýþ olduðunuz düðümü seçiniz: "
 
-#: info/nodemenu.c:336 info/session.c:2439
+#: info/nodemenu.c:336 info/session.c:2440
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referans yokoldu! (%s)."
@@ -1203,467 +1203,467 @@ msgstr "Düðüm yapýsý içinde ileriye ya da aþaðýya gider"
 msgid "Move backwards or up through node structure"
 msgstr "Düðüm yapýsý içinde geriye ya da yukarýya gider"
 
-#: info/session.c:1369
+#: info/session.c:1370
 msgid "Scroll forward in this window"
 msgstr "Bu pencerede ileriye doðru kaydýrýr"
 
-#: info/session.c:1377
+#: info/session.c:1378
 msgid "Scroll forward in this window and set default window size"
 msgstr ""
 "Bu pencerede ileriye doðru kaydýrýr ve öntanýmlý pencere boyutuna ayarlar"
 
-#: info/session.c:1385
+#: info/session.c:1386
 msgid "Scroll forward in this window staying within node"
 msgstr "Bu pencerede, düðüm içinde kalarak ileriye doðru kaydýrýr"
 
-#: info/session.c:1393
+#: info/session.c:1394
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Bu pencerede, düðüm içinde kalarak ileriye doðru kaydýrýr ve öntanýmlý "
 "pencere boyutunu ayarlar"
 
-#: info/session.c:1401
+#: info/session.c:1402
 msgid "Scroll backward in this window"
 msgstr "Bu pencerede geriye doðru kaydýrýr"
 
-#: info/session.c:1409
+#: info/session.c:1410
 msgid "Scroll backward in this window and set default window size"
 msgstr ""
 "Bu pencerede geriye doðru kaydýrýr ve öntanýmlý pencere boyutunu ayarlar"
 
-#: info/session.c:1418
+#: info/session.c:1419
 msgid "Scroll backward in this window staying within node"
 msgstr "Bu pencerede, düðüm içinde kalarak geriye doðru kaydýrýr"
 
-#: info/session.c:1426
+#: info/session.c:1427
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr "geri ve set öntanýmlý"
 
-#: info/session.c:1434
+#: info/session.c:1435
 msgid "Move to the start of this node"
 msgstr "Bu düðümün baþlangýcýna gider"
 
-#: info/session.c:1441
+#: info/session.c:1442
 msgid "Move to the end of this node"
 msgstr "Bu düðümün sonuna gider"
 
-#: info/session.c:1448
+#: info/session.c:1449
 msgid "Scroll down by lines"
 msgstr "Aþaðýya doðru satýr kaydýrýr"
 
-#: info/session.c:1465
+#: info/session.c:1466
 msgid "Scroll up by lines"
 msgstr "Yukarýya doðru satýr kaydýrýr"
 
-#: info/session.c:1483
+#: info/session.c:1484
 msgid "Scroll down by half screen size"
 msgstr "Aþaðýya doðru yarým ekran boyutu kaydýrýr"
 
-#: info/session.c:1509
+#: info/session.c:1510
 msgid "Scroll up by half screen size"
 msgstr "Yukarýya doðru yarým ekran boyutu kaydýrýr"
 
-#: info/session.c:1538
+#: info/session.c:1539
 msgid "Select the next window"
 msgstr "Sonraki pencereyi seçer"
 
-#: info/session.c:1577
+#: info/session.c:1578
 msgid "Select the previous window"
 msgstr "Önceki pencereyi seçer"
 
-#: info/session.c:1628
+#: info/session.c:1629
 msgid "Split the current window"
 msgstr "Mevcut pencereyi böler"
 
-#: info/session.c:1709
+#: info/session.c:1710
 msgid "Delete the current window"
 msgstr "Mevcut pencereyi siler"
 
-#: info/session.c:1717
+#: info/session.c:1718
 msgid "Cannot delete a permanent window"
 msgstr "Kalýcý bir pencere silinemez"
 
-#: info/session.c:1749
+#: info/session.c:1750
 msgid "Delete all other windows"
 msgstr "Diðer tüm pencereleri siler"
 
-#: info/session.c:1795
+#: info/session.c:1796
 msgid "Scroll the other window"
 msgstr "Diðer pencereyi kaydýrýr"
 
-#: info/session.c:1816
+#: info/session.c:1817
 msgid "Scroll the other window backward"
 msgstr "Diðer pencereyi geriye doðru kaydýrýr"
 
-#: info/session.c:1822
+#: info/session.c:1823
 msgid "Grow (or shrink) this window"
 msgstr "Bu pencereyi büyütür (ya da küçültür)"
 
-#: info/session.c:1833
+#: info/session.c:1834
 msgid "Divide the available screen space among the visible windows"
 msgstr "Mevcut ekran boþluðunu görünür pencereler arasýnda bölüþtürür"
 
-#: info/session.c:1840
+#: info/session.c:1841
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Mevcut penceredeki satýr sarma durumunu deðiþtirir"
 
-#: info/session.c:1847
+#: info/session.c:1848
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1851
+#: info/session.c:1852
 #, fuzzy
 msgid "Using regular expressions for searches."
 msgstr "Düzenli ifadede hata `%s': %s"
 
-#: info/session.c:1852
+#: info/session.c:1853
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2023
+#: info/session.c:2024
 msgid "Select the Next node"
 msgstr "Sonraki düðümü seçer"
 
-#: info/session.c:2031
+#: info/session.c:2032
 msgid "Select the Prev node"
 msgstr "Önceki düðümü seçer"
 
-#: info/session.c:2039
+#: info/session.c:2040
 msgid "Select the Up node"
 msgstr "Üstteki düðümü seçer"
 
-#: info/session.c:2046
+#: info/session.c:2047
 msgid "Select the last node in this file"
 msgstr "Bu dosyadaki son düðümü seçer"
 
-#: info/session.c:2073 info/session.c:2106
+#: info/session.c:2074 info/session.c:2107
 msgid "This window has no additional nodes"
 msgstr "Bu pencerenin baþka düðümü yok"
 
-#: info/session.c:2079
+#: info/session.c:2080
 msgid "Select the first node in this file"
 msgstr "Bu dosyadaki ilk düðümü seçer"
 
-#: info/session.c:2113
+#: info/session.c:2114
 msgid "Select the last item in this node's menu"
 msgstr "Bu düðümün menüsündeki son öðeyi seçer"
 
-#: info/session.c:2119
+#: info/session.c:2120
 msgid "Select this menu item"
 msgstr "Bu menü öðesini seçer"
 
-#: info/session.c:2152
+#: info/session.c:2153
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Bu menüde %d adet öðe yok."
 
-#: info/session.c:2346 info/session.c:2347
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menü öðesi (%s): "
 
-#: info/session.c:2350
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "Menü öðesi: "
 
-#: info/session.c:2357 info/session.c:2358
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Ýzlenecek xref (%s): "
 
-#: info/session.c:2361
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "Ýzlenecek xref: "
 
-#: info/session.c:2490
+#: info/session.c:2491
 msgid "Read a menu item and select its node"
 msgstr "Bir menü öðesini okur ve düðümünü seçer"
 
-#: info/session.c:2498
+#: info/session.c:2499
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Oku yada ve select"
 
-#: info/session.c:2504
+#: info/session.c:2505
 msgid "Move to the start of this node's menu"
 msgstr "Bu düðüm menüsünün baþlangýcýna gider"
 
-#: info/session.c:2528
+#: info/session.c:2529
 msgid "Visit as many menu items at once as possible"
 msgstr "Tek seferde mümkün olan en fazla sayýda menü öðesine uðrar"
 
-#: info/session.c:2556
+#: info/session.c:2557
 msgid "Read a node name and select it"
 msgstr "Bir düðüm adý okur ve seçer"
 
-#: info/session.c:2611 info/session.c:2616
+#: info/session.c:2612 info/session.c:2617
 msgid "Goto node: "
 msgstr "Düðüme gider: "
 
-#: info/session.c:2680
+#: info/session.c:2681
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Menüsü olmayan düðüm `%s'."
 
-#: info/session.c:2726
+#: info/session.c:2727
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "`%2$s' düðümünde `%1$s' menü öðesi yok."
 
-#: info/session.c:2756
+#: info/session.c:2757
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "`%2$s''de `%1$s' tarafýndan baþvurulan düðüm bulunamadý."
 
-#: info/session.c:2806
+#: info/session.c:2807
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Dizinden baþlayarak bir menü listesini oku ve izle"
 
-#: info/session.c:2808
+#: info/session.c:2809
 msgid "Follow menus: "
 msgstr "Menüleri izle: "
 
-#: info/session.c:3001
+#: info/session.c:3002
 msgid "Find the node describing program invocation"
 msgstr "Program çaðýrmayý açýklayan düðümü bulur"
 
-#: info/session.c:3003
+#: info/session.c:3004
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "[%s]'in çaðýrma düðümünü bulur: "
 
-#: info/session.c:3041
+#: info/session.c:3042
 msgid "Read a manpage reference and select it"
 msgstr "Bir klavuz sayfasý baþvurusunu okur ve seçer"
 
-#: info/session.c:3045
+#: info/session.c:3046
 msgid "Get Manpage: "
 msgstr "Alýnacak klavuz sayfasý: "
 
-#: info/session.c:3075
+#: info/session.c:3076
 msgid "Select the node `Top' in this file"
 msgstr "Bu dosyadaki `En Üst' düðümü seç"
 
-#: info/session.c:3081
+#: info/session.c:3082
 msgid "Select the node `(dir)'"
 msgstr "`(dizin)' düðümünü seç"
 
-#: info/session.c:3098 info/session.c:3100
+#: info/session.c:3099 info/session.c:3101
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Düðümü öldür (%s): "
 
-#: info/session.c:3152
+#: info/session.c:3153
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Öldürülemeyen düðüm `%s' "
 
-#: info/session.c:3162
+#: info/session.c:3163
 msgid "Cannot kill the last node"
 msgstr "Son düðüm öldürülemiyor"
 
-#: info/session.c:3248
+#: info/session.c:3249
 msgid "Select the most recently selected node"
 msgstr "En son seçilen düðümü seçer"
 
-#: info/session.c:3254
+#: info/session.c:3255
 msgid "Kill this node"
 msgstr "Bu düðümü öldürür"
 
-#: info/session.c:3262
+#: info/session.c:3263
 msgid "Read the name of a file and select it"
 msgstr "Bir dosyanýn adýný okur ve seçer"
 
-#: info/session.c:3266
+#: info/session.c:3267
 msgid "Find file: "
 msgstr "Dosyayý bul: "
 
-#: info/session.c:3283
+#: info/session.c:3284
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "`%s' bulunamýyor."
 
-#: info/session.c:3326 info/session.c:3444
+#: info/session.c:3327 info/session.c:3445
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Çýktý dosyasý `%s' oluþturulamýyor."
 
-#: info/session.c:3340 info/session.c:3462 info/session.c:3522
+#: info/session.c:3341 info/session.c:3463 info/session.c:3523
 msgid "Done."
 msgstr "Bitti."
 
-#: info/session.c:3395
+#: info/session.c:3396
 #, c-format
 msgid "Writing node %s..."
 msgstr "%s düðümü yazýlýyor..."
 
-#: info/session.c:3471
+#: info/session.c:3472
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Bu düðümün içeriðini INFO_PRINT_COMMAND üzerinden veri yolla"
 
-#: info/session.c:3506
+#: info/session.c:3507
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Veri yolu `%s''e açýlamýyor."
 
-#: info/session.c:3512
+#: info/session.c:3513
 #, c-format
 msgid "Printing node %s..."
 msgstr "%s düðümü yazdýrýlýyor..."
 
-#: info/session.c:3729
+#: info/session.c:3730
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3734
+#: info/session.c:3735
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "Satýrýn baþýna kadar siler"
 
-#: info/session.c:3751
+#: info/session.c:3752
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "%s altdosyasý aranýyor ..."
 
-#: info/session.c:3808
+#: info/session.c:3809
 msgid "Read a string and search for it case-sensitively"
 msgstr "Bir dizge okur ve onu büyük/küçük harf duyarlý þekilde arar"
 
-#: info/session.c:3815
+#: info/session.c:3816
 msgid "Read a string and search for it"
 msgstr "Bir dizge okur ve (onu) arar"
 
-#: info/session.c:3823
+#: info/session.c:3824
 msgid "Read a string and search backward for it"
 msgstr "Bir dizge okur ve (onu) geriye doðru arar"
 
-#: info/session.c:3859 info/session.c:3865
+#: info/session.c:3860 info/session.c:3866
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s için dizge [%s]: "
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3861 info/session.c:3867
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3862 info/session.c:3868
 #, fuzzy
 msgid " case-sensitively"
 msgstr " büyük/küçük harf duyarlý þekilde "
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy
 msgid " backward"
 msgstr "Geriye doðru ara"
 
-#: info/session.c:3866
+#: info/session.c:3867
 msgid "Search"
 msgstr "Ara"
 
-#: info/session.c:3907
+#: info/session.c:3908
 msgid "Search failed."
 msgstr "Arama baþarýsýz"
 
-#: info/session.c:3925
+#: info/session.c:3926
 msgid "Repeat last search in the same direction"
 msgstr "Son aramayý ayný yönde yineler"
 
-#: info/session.c:3928 info/session.c:3938
+#: info/session.c:3929 info/session.c:3939
 msgid "No previous search string"
 msgstr "Daha önceden arama dizgesi yok"
 
-#: info/session.c:3935
+#: info/session.c:3936
 msgid "Repeat last search in the reverse direction"
 msgstr "Son aramayý ters yönde yineler"
 
-#: info/session.c:3954 info/session.c:3960
+#: info/session.c:3955 info/session.c:3961
 msgid "Search interactively for a string as you type it"
 msgstr "Bir dizgeyi siz yazarken etkileþimli þekilde arar"
 
-#: info/session.c:4040
+#: info/session.c:4041
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "I-arama, geriye doðru: "
 
-#: info/session.c:4041
+#: info/session.c:4042
 msgid "I-search backward: "
 msgstr "I-arama, geriye doðru: "
 
-#: info/session.c:4043
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "I-arama: "
 
-#: info/session.c:4044
+#: info/session.c:4045
 msgid "I-search: "
 msgstr "I-arama: "
 
-#: info/session.c:4069 info/session.c:4071
+#: info/session.c:4070 info/session.c:4072
 msgid "Failing "
 msgstr "Baþarýlamýyor "
 
-#: info/session.c:4555
+#: info/session.c:4556
 msgid "Move to the previous cross reference"
 msgstr "Önceki çapraz baþvuruya gider"
 
-#: info/session.c:4573
+#: info/session.c:4574
 msgid "Move to the next cross reference"
 msgstr "Sonraki çapraz baþvuruya gider"
 
-#: info/session.c:4595
+#: info/session.c:4596
 msgid "Select reference or menu item appearing on this line"
 msgstr "Bu satýrdaki referans ya da menü öðesini seçer"
 
-#: info/session.c:4618
+#: info/session.c:4619
 msgid "Cancel current operation"
 msgstr "Mevcut iþlemi iptal eder"
 
-#: info/session.c:4625
+#: info/session.c:4626
 msgid "Quit"
 msgstr "Çýk"
 
-#: info/session.c:4634
+#: info/session.c:4635
 msgid "Move the cursor to a specific line of the window"
 msgstr "Ýmleci pencerenin belirli bir satýrýna taþýr"
 
-#: info/session.c:4666
+#: info/session.c:4667
 msgid "Redraw the display"
 msgstr "Görüntüyü yeniden çizer"
 
-#: info/session.c:4703
+#: info/session.c:4704
 msgid "Quit using Info"
 msgstr "Info'dan çýkar"
 
-#: info/session.c:4716
+#: info/session.c:4717
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Bu tuþun küçük harfine atanmýþ komutu yürütür"
 
-#: info/session.c:4727
+#: info/session.c:4728
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Bilinmeyen komut (%s)."
 
-#: info/session.c:4730
+#: info/session.c:4731
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" geçersiz"
 
-#: info/session.c:4731
+#: info/session.c:4732
 #, c-format
 msgid "`%s' is invalid"
 msgstr "`%s' geçersiz"
 
-#: info/session.c:4945
+#: info/session.c:4946
 msgid "Add this digit to the current numeric argument"
 msgstr "Mevcut sayýsal argümana bu sayýyý ekle"
 
-#: info/session.c:4954
+#: info/session.c:4955
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Mevcut sayýsal argümaný baþlat (ya da 4'le çarp)"
 
-#: info/session.c:4969
+#: info/session.c:4970
 msgid "Internally used by \\[universal-argument]"
 msgstr "Dahili olarak \\[universal argument] tarafýndan kullanýlýyor"
 

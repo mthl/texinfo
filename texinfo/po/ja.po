@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-15 01:30+0100\n"
+"POT-Creation-Date: 2008-03-21 19:03+0100\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -304,12 +304,12 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:503
+#: info/info.c:504
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "`%s' に対する項目が見つかりません\n"
 
-#: info/info.c:597
+#: info/info.c:598
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -317,7 +317,7 @@ msgid ""
 "Read documentation in Info format.\n"
 msgstr ""
 
-#: info/info.c:603
+#: info/info.c:604
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -327,7 +327,7 @@ msgid ""
 "  -f, --file=FILENAME          specify Info file to visit."
 msgstr ""
 
-#: info/info.c:610
+#: info/info.c:611
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -335,7 +335,7 @@ msgid ""
 "  -o, --output=FILENAME        output selected nodes to FILENAME."
 msgstr ""
 
-#: info/info.c:616
+#: info/info.c:617
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -343,12 +343,12 @@ msgid ""
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
 
-#: info/info.c:623
+#: info/info.c:624
 #, fuzzy
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr " --speech-friendly        音声合成器に対する親和性を高める\n"
 
-#: info/info.c:627
+#: info/info.c:628
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -356,7 +356,7 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
 
-#: info/info.c:633
+#: info/info.c:634
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -366,7 +366,7 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 
-#: info/info.c:640
+#: info/info.c:641
 msgid ""
 "\n"
 "Examples:\n"
@@ -378,7 +378,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:474
 #: util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -391,72 +391,72 @@ msgstr ""
 "Email によるバグレポートは bug-texinfo@gnu.org、\n"
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
-#: info/info.c:683
+#: info/info.c:684
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "`%s' ノードが見つかりません。"
 
-#: info/info.c:684
+#: info/info.c:685
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "`(%s)%s' ノードが見つかりません"
 
-#: info/info.c:685
+#: info/info.c:686
 msgid "Cannot find a window!"
 msgstr "ウィンドウが見つかりません"
 
-#: info/info.c:686
+#: info/info.c:687
 msgid "Point doesn't appear within this window's node!"
 msgstr "このウィンドウノード内にポイントが現れません！"
 
-#: info/info.c:687
+#: info/info.c:688
 msgid "Cannot delete the last window."
 msgstr "最後のウィンドウは削除できません"
 
-#: info/info.c:688
+#: info/info.c:689
 msgid "No menu in this node."
 msgstr "このノードにメニューはありません。"
 
-#: info/info.c:689
+#: info/info.c:690
 msgid "No footnotes in this node."
 msgstr "このノードに脚注はありません。"
 
-#: info/info.c:690
+#: info/info.c:691
 msgid "No cross references in this node."
 msgstr "このノードに相互参照はありません。"
 
-#: info/info.c:691
+#: info/info.c:692
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "このノードの `%s' ポインタがありません。"
 
-#: info/info.c:692
+#: info/info.c:693
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知の Info コマンド `%c' -- `?' でヘルプを見てください。"
 
-#: info/info.c:693
+#: info/info.c:694
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "端末タイプ `%s' は Info を動かせるほど利口ではありません"
 
-#: info/info.c:694
+#: info/info.c:695
 msgid "You are already at the last page of this node."
 msgstr "ここはもう、このノードの最終ページです。"
 
-#: info/info.c:695
+#: info/info.c:696
 msgid "You are already at the first page of this node."
 msgstr "ここはもう、このノードの最初のページです。"
 
-#: info/info.c:696
+#: info/info.c:697
 msgid "Only one window."
 msgstr "唯一のウィンドウ。"
 
-#: info/info.c:697
+#: info/info.c:698
 msgid "Resulting window would be too small."
 msgstr "結果ウィンドウが小さすぎる様です"
 
-#: info/info.c:698
+#: info/info.c:699
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "ヘルプウィンドウ用の場所が足りません、ウィンドウを一つ削除してください。"
@@ -1121,7 +1121,7 @@ msgstr "表示されているウィンドウ内の、以前訪れた事のあるノードを選択"
 msgid "Select visited node: "
 msgstr "訪れたノードを選択: "
 
-#: info/nodemenu.c:336 info/session.c:2439
+#: info/nodemenu.c:336 info/session.c:2440
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "その参照は消えました! (%s)。"
@@ -1180,38 +1180,38 @@ msgstr "ノード構造を通じて進めたり下がったりする"
 msgid "Move backwards or up through node structure"
 msgstr "ノード構造を通じて戻ったり上がったりする"
 
-#: info/session.c:1369
+#: info/session.c:1370
 msgid "Scroll forward in this window"
 msgstr "このウィンドウをスクロールダウン"
 
-#: info/session.c:1377
+#: info/session.c:1378
 msgid "Scroll forward in this window and set default window size"
 msgstr "このウィンドウをスクロールし、デフォルトウィンドウサイズを設定"
 
-#: info/session.c:1385
+#: info/session.c:1386
 msgid "Scroll forward in this window staying within node"
 msgstr "このウィンドウをノード範囲内で前方スクロール"
 
-#: info/session.c:1393
+#: info/session.c:1394
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "このウィンドウをノード範囲内で前方スクロールし、デフォルトウィンドウサイズを"
 "設定"
 
-#: info/session.c:1401
+#: info/session.c:1402
 msgid "Scroll backward in this window"
 msgstr "このウィンドウを逆スクロール"
 
-#: info/session.c:1409
+#: info/session.c:1410
 msgid "Scroll backward in this window and set default window size"
 msgstr "このウィンドウを逆スクロールし、デフォルトウィンドウサイズを設定"
 
-#: info/session.c:1418
+#: info/session.c:1419
 msgid "Scroll backward in this window staying within node"
 msgstr "このウィンドウをノード範囲内で後方スクロール"
 
-#: info/session.c:1426
+#: info/session.c:1427
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1219,427 +1219,427 @@ msgstr ""
 "このウィンドウをノード範囲内で後方スクロールし、デフォルトウィンドウサイズを"
 "設定"
 
-#: info/session.c:1434
+#: info/session.c:1435
 msgid "Move to the start of this node"
 msgstr "このノードの最初に移動"
 
-#: info/session.c:1441
+#: info/session.c:1442
 msgid "Move to the end of this node"
 msgstr "このノードの最後に移動"
 
-#: info/session.c:1448
+#: info/session.c:1449
 msgid "Scroll down by lines"
 msgstr "行数によるスクロール"
 
-#: info/session.c:1465
+#: info/session.c:1466
 msgid "Scroll up by lines"
 msgstr "行数による逆スクロール"
 
-#: info/session.c:1483
+#: info/session.c:1484
 msgid "Scroll down by half screen size"
 msgstr "画面サイズの半分スクロール"
 
-#: info/session.c:1509
+#: info/session.c:1510
 msgid "Scroll up by half screen size"
 msgstr "画面サイズの半分逆スクロール"
 
-#: info/session.c:1538
+#: info/session.c:1539
 msgid "Select the next window"
 msgstr "次のウィンドウを選択"
 
-#: info/session.c:1577
+#: info/session.c:1578
 msgid "Select the previous window"
 msgstr "前のウィンドウを選択"
 
-#: info/session.c:1628
+#: info/session.c:1629
 msgid "Split the current window"
 msgstr "現在のウィンドウを分割"
 
-#: info/session.c:1709
+#: info/session.c:1710
 msgid "Delete the current window"
 msgstr "現在のウィンドウを削除"
 
-#: info/session.c:1717
+#: info/session.c:1718
 msgid "Cannot delete a permanent window"
 msgstr "永久ウィンドウは削除できません"
 
-#: info/session.c:1749
+#: info/session.c:1750
 msgid "Delete all other windows"
 msgstr "他のウィンドウを削除"
 
-#: info/session.c:1795
+#: info/session.c:1796
 msgid "Scroll the other window"
 msgstr "他のウィンドウをスクロール"
 
-#: info/session.c:1816
+#: info/session.c:1817
 msgid "Scroll the other window backward"
 msgstr "他のウィンドウを逆スクロール"
 
-#: info/session.c:1822
+#: info/session.c:1823
 msgid "Grow (or shrink) this window"
 msgstr "このウィンドウを大きくする(または小さくする)"
 
-#: info/session.c:1833
+#: info/session.c:1834
 msgid "Divide the available screen space among the visible windows"
 msgstr "可視ウィンドウの利用可能スクリーン空間を分割する"
 
-#: info/session.c:1840
+#: info/session.c:1841
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "現在のウィンドウに禁則処理を施す"
 
-#: info/session.c:1847
+#: info/session.c:1848
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1851
+#: info/session.c:1852
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1852
+#: info/session.c:1853
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2023
+#: info/session.c:2024
 msgid "Select the Next node"
 msgstr "次 ノードを選択"
 
-#: info/session.c:2031
+#: info/session.c:2032
 msgid "Select the Prev node"
 msgstr "前 ノードを選択"
 
-#: info/session.c:2039
+#: info/session.c:2040
 msgid "Select the Up node"
 msgstr "上 ノードを選択"
 
-#: info/session.c:2046
+#: info/session.c:2047
 msgid "Select the last node in this file"
 msgstr "このファイルの最後のノードを選択"
 
-#: info/session.c:2073 info/session.c:2106
+#: info/session.c:2074 info/session.c:2107
 msgid "This window has no additional nodes"
 msgstr "このウィンドウにはノードが付いていません"
 
-#: info/session.c:2079
+#: info/session.c:2080
 msgid "Select the first node in this file"
 msgstr "このファイルの最初のノードを選択"
 
-#: info/session.c:2113
+#: info/session.c:2114
 msgid "Select the last item in this node's menu"
 msgstr "このノードのメニュー内での最後の項目を選択"
 
-#: info/session.c:2119
+#: info/session.c:2120
 msgid "Select this menu item"
 msgstr "このメニュー項目を選択"
 
-#: info/session.c:2152
+#: info/session.c:2153
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "このメニューに %d 個の項目がありません。"
 
-#: info/session.c:2346 info/session.c:2347
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "メニュー項目 (%s): "
 
-#: info/session.c:2350
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "メニュー項目: "
 
-#: info/session.c:2357 info/session.c:2358
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "参照先 (%s): "
 
-#: info/session.c:2361
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "参照先: "
 
-#: info/session.c:2490
+#: info/session.c:2491
 msgid "Read a menu item and select its node"
 msgstr "メニューを読んで、そのノードを選択する"
 
-#: info/session.c:2498
+#: info/session.c:2499
 msgid "Read a footnote or cross reference and select its node"
 msgstr "脚注や相互参照を読んで、そのノードを選択する"
 
-#: info/session.c:2504
+#: info/session.c:2505
 msgid "Move to the start of this node's menu"
 msgstr "このノードメニューの先頭に移動する"
 
-#: info/session.c:2528
+#: info/session.c:2529
 msgid "Visit as many menu items at once as possible"
 msgstr "可能な限り多くのメニュー項目へ一度に訪れる"
 
-#: info/session.c:2556
+#: info/session.c:2557
 msgid "Read a node name and select it"
 msgstr "ノード名を読んで、選択する"
 
-#: info/session.c:2611 info/session.c:2616
+#: info/session.c:2612 info/session.c:2617
 msgid "Goto node: "
 msgstr "ノードへ移動: "
 
-#: info/session.c:2680
+#: info/session.c:2681
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "ノード `%s' にメニューがありません。"
 
-#: info/session.c:2726
+#: info/session.c:2727
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "メニューアイテム `%s' はノード `%s' 中にはありません"
 
-#: info/session.c:2756
+#: info/session.c:2757
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "`%s' から参照されているノードを見つけられません(`%s' 中)"
 
-#: info/session.c:2806
+#: info/session.c:2807
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "dir からメニュー開始リストを読み、それを辿る"
 
-#: info/session.c:2808
+#: info/session.c:2809
 msgid "Follow menus: "
 msgstr "メニューに続く: "
 
-#: info/session.c:3001
+#: info/session.c:3002
 msgid "Find the node describing program invocation"
 msgstr "プログラム起動に関する説明のノードを見つける"
 
-#: info/session.c:3003
+#: info/session.c:3004
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "[%s] の起動ノードを見つける: "
 
-#: info/session.c:3041
+#: info/session.c:3042
 msgid "Read a manpage reference and select it"
 msgstr "man ページへの参照を読んで、選択する"
 
-#: info/session.c:3045
+#: info/session.c:3046
 msgid "Get Manpage: "
 msgstr "Man ページを表示: "
 
-#: info/session.c:3075
+#: info/session.c:3076
 msgid "Select the node `Top' in this file"
 msgstr "このファイルの `先頭' ノードを選択"
 
-#: info/session.c:3081
+#: info/session.c:3082
 msgid "Select the node `(dir)'"
 msgstr "`(dir)'ノードを選択する"
 
-#: info/session.c:3098 info/session.c:3100
+#: info/session.c:3099 info/session.c:3101
 #, c-format
 msgid "Kill node (%s): "
 msgstr "ノードの切り取り (%s): "
 
-#: info/session.c:3152
+#: info/session.c:3153
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "`%s' ノードを切り取れません"
 
-#: info/session.c:3162
+#: info/session.c:3163
 msgid "Cannot kill the last node"
 msgstr "最後のノードは切り取れません"
 
-#: info/session.c:3248
+#: info/session.c:3249
 msgid "Select the most recently selected node"
 msgstr "最後に選択されたノードを選択する"
 
-#: info/session.c:3254
+#: info/session.c:3255
 msgid "Kill this node"
 msgstr "このノードを切り取る"
 
-#: info/session.c:3262
+#: info/session.c:3263
 msgid "Read the name of a file and select it"
 msgstr "ファイル名を読んで選択する"
 
-#: info/session.c:3266
+#: info/session.c:3267
 msgid "Find file: "
 msgstr "ファイルを見つける: "
 
-#: info/session.c:3283
+#: info/session.c:3284
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "`%s' を見つけられません。"
 
-#: info/session.c:3326 info/session.c:3444
+#: info/session.c:3327 info/session.c:3445
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "出力ファイル `%s' を作成できません。"
 
-#: info/session.c:3340 info/session.c:3462 info/session.c:3522
+#: info/session.c:3341 info/session.c:3463 info/session.c:3523
 msgid "Done."
 msgstr "完了。"
 
-#: info/session.c:3395
+#: info/session.c:3396
 #, c-format
 msgid "Writing node %s..."
 msgstr "ノード %s の書き込み..."
 
-#: info/session.c:3471
+#: info/session.c:3472
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "INFO_PRINT_COMMAND によってこのノードの内容をパイプする"
 
-#: info/session.c:3506
+#: info/session.c:3507
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "`%s' へのパイプを開けません。"
 
-#: info/session.c:3512
+#: info/session.c:3513
 #, c-format
 msgid "Printing node %s..."
 msgstr "ノード `%s' を印刷..."
 
-#: info/session.c:3729
+#: info/session.c:3730
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3734
+#: info/session.c:3735
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "行頭までを切り取る"
 
-#: info/session.c:3751
+#: info/session.c:3752
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "副ファイル %s を探しています ..."
 
-#: info/session.c:3808
+#: info/session.c:3809
 msgid "Read a string and search for it case-sensitively"
 msgstr "文字列を読み、大文字小文字の区別をつけて検索する"
 
-#: info/session.c:3815
+#: info/session.c:3816
 msgid "Read a string and search for it"
 msgstr "文字列を読んで検索する"
 
-#: info/session.c:3823
+#: info/session.c:3824
 msgid "Read a string and search backward for it"
 msgstr "文字列を読んで後方検索する"
 
-#: info/session.c:3859 info/session.c:3865
+#: info/session.c:3860 info/session.c:3866
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "文字列への%s%s [%s]: "
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3861 info/session.c:3867
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3862 info/session.c:3868
 #, fuzzy
 msgid " case-sensitively"
 msgstr "(大文字小文字の区別をつけて) "
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy
 msgid " backward"
 msgstr "後方検索"
 
-#: info/session.c:3866
+#: info/session.c:3867
 msgid "Search"
 msgstr "検索"
 
-#: info/session.c:3907
+#: info/session.c:3908
 msgid "Search failed."
 msgstr "検索に失敗。"
 
-#: info/session.c:3925
+#: info/session.c:3926
 msgid "Repeat last search in the same direction"
 msgstr "同一方向で最後の検索を繰り返す"
 
-#: info/session.c:3928 info/session.c:3938
+#: info/session.c:3929 info/session.c:3939
 msgid "No previous search string"
 msgstr "前の検索文字列がありません"
 
-#: info/session.c:3935
+#: info/session.c:3936
 msgid "Repeat last search in the reverse direction"
 msgstr "逆方向で最後の検索を繰り返す"
 
-#: info/session.c:3954 info/session.c:3960
+#: info/session.c:3955 info/session.c:3961
 msgid "Search interactively for a string as you type it"
 msgstr "入力した文字列の対話的な検索"
 
-#: info/session.c:4040
+#: info/session.c:4041
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "逐次後方検索: "
 
-#: info/session.c:4041
+#: info/session.c:4042
 msgid "I-search backward: "
 msgstr "逐次後方検索: "
 
-#: info/session.c:4043
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "逐次検索: "
 
-#: info/session.c:4044
+#: info/session.c:4045
 msgid "I-search: "
 msgstr "逐次検索: "
 
-#: info/session.c:4069 info/session.c:4071
+#: info/session.c:4070 info/session.c:4072
 msgid "Failing "
 msgstr "失敗 "
 
-#: info/session.c:4555
+#: info/session.c:4556
 msgid "Move to the previous cross reference"
 msgstr "前の相互参照に移動"
 
-#: info/session.c:4573
+#: info/session.c:4574
 msgid "Move to the next cross reference"
 msgstr "次の相互参照に移動"
 
-#: info/session.c:4595
+#: info/session.c:4596
 msgid "Select reference or menu item appearing on this line"
 msgstr "参照または、この行に現れたメニュー項目を選択"
 
-#: info/session.c:4618
+#: info/session.c:4619
 msgid "Cancel current operation"
 msgstr "現在の操作を中止"
 
-#: info/session.c:4625
+#: info/session.c:4626
 msgid "Quit"
 msgstr "止めました"
 
-#: info/session.c:4634
+#: info/session.c:4635
 msgid "Move the cursor to a specific line of the window"
 msgstr "ウィンドウの指定行にカーソルを移動"
 
-#: info/session.c:4666
+#: info/session.c:4667
 msgid "Redraw the display"
 msgstr "画面の再描画"
 
-#: info/session.c:4703
+#: info/session.c:4704
 msgid "Quit using Info"
 msgstr "Info の使用を終了"
 
-#: info/session.c:4716
+#: info/session.c:4717
 msgid "Run command bound to this key's lowercase variant"
 msgstr "このキーの小文字にバインドされたコマンドを実行"
 
-#: info/session.c:4727
+#: info/session.c:4728
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "不明なコマンド (%s) です。"
 
-#: info/session.c:4730
+#: info/session.c:4731
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" は無効です"
 
-#: info/session.c:4731
+#: info/session.c:4732
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" は無効です"
 
-#: info/session.c:4945
+#: info/session.c:4946
 msgid "Add this digit to the current numeric argument"
 msgstr "現在の数値引数にこの数値を加える"
 
-#: info/session.c:4954
+#: info/session.c:4955
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "現在の数値引数を開始(又は 4 倍する)"
 
-#: info/session.c:4969
+#: info/session.c:4970
 msgid "Internally used by \\[universal-argument]"
 msgstr "内部的に \\[universal-argument] によって利用されます"
 
