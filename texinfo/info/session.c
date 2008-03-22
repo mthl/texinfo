@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.35 2008-03-21 17:55:08 karl Exp $
+   $Id: session.c,v 1.36 2008-03-22 23:11:09 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -4476,7 +4476,8 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 
   if (firstmenu == -1 && firstxref == -1)
     {
-      info_error (msg_no_xref_node, NULL, NULL);
+      if (!cursor_movement_scrolls_p)
+        info_error (msg_no_xref_node, NULL, NULL);
       use_regex = save_use_regex;
       return cursor_movement_scrolls_p;
     }

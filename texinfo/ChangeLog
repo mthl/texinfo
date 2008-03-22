@@ -1,3 +1,9 @@
+2008-03-22  Karl Berry  <karl@gnu.org>
+
+	* info/session.c (info_move_to_xref): conditionalize "no xref"
+	message on cursor_movement_scrolls_p.  Proposed by
+	Benno, 22 Mar 2008 15:17:49.
+
 2008-03-21  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.95.
@@ -1193,7 +1199,7 @@
 	inclusion entirely, apparently with gnulib string.h suffices.
 	Report from Brian Dessent, 31 Oct 2006 15:50:34.
 
-2007-02-21  Brian Dessent  <brian@dessent.net>
+2007-02-21  Brian Dessent  <brian@dessent.net>  (tiny change)
 
 	* info/info.c,
 	* info/infokey.c,
