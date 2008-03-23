@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.134 2008-03-17 23:23:44 pertusus Exp $
+# $Id: texi2html.init,v 1.135 2008-03-23 15:03:43 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -409,6 +409,15 @@ $L2H_HTML_VERSION = "4.0";
 # use the information given by menus to complete the node directions
 $USE_MENU_DIRECTIONS = 1;
 
+# use accesskey in hrefs
+$USE_ACCESSKEY = 0;
+
+# use rel= and rev= in hrefs. Currently only rel is used
+$USE_REL_REV = 0;
+
+# generate <link> elements in head
+$USE_LINKS = 0;
+
 # specify in this array which "buttons" should appear in which order
 # in the navigation panel for sections; use ' ' for empty buttons (space)
 @SECTION_BUTTONS =
@@ -444,6 +453,11 @@ $USE_MENU_DIRECTIONS = 1;
 #     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
     );
 
+@LINKS_BUTTONS =
+    (
+      'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
+    );
+
 $ICONS = 0;
 
 # insert here name of icon images for buttons
@@ -469,7 +483,9 @@ $ICONS = 0;
      'About' ,      '',
      'First',       '',
      'Last',        '',
-     ' ',           ''
+     'NextFile',    '',
+     'PrevFile',    '',
+     ' ',           '',
     );
 
 # insert here name of icon images for these, if button is inactive
@@ -494,6 +510,8 @@ $ICONS = 0;
      'About',       '',
      'First',       '',
      'Last',        '',
+     'NextFile',    '',
+     'PrevFile',    '',
     );
 
 @IMAGE_EXTENSIONS = ('png','jpg','jpeg','gif');
@@ -528,7 +546,9 @@ sub t2h_default_translate_names()
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',
      'First',       ' |&lt; ',
-     'Last',        ' &gt;| '
+     'Last',        ' &gt;| ',
+     'NextFile',    &$I('Next file'),
+     'PrevFile',    &$I('Previous file'),
     );
 
     %BUTTONS_GOTO =
@@ -552,6 +572,8 @@ sub t2h_default_translate_names()
      'About' ,      &$I('About (help)'),
      'First',       &$I('First section in reading order'),
      'Last',        &$I('Last section in reading order'),
+     'NextFile',    &$I('Forward section in next file'),
+     'PrevFile',    &$I('Back section in previous file'),
     );
 
     %BUTTONS_NAME =
@@ -575,8 +597,62 @@ sub t2h_default_translate_names()
      'FastForward', &$I('FastForward'),
      'About',       &$I('About'),
      'First',       &$I('First'),
-     'Last',        &$I('Last')
+     'Last',        &$I('Last'),
+     'NextFile',    &$I('NextFile'),
+     'PrevFile',    &$I('PrevFile'),
     );
+
+    %BUTTONS_ACCESSKEY =
+    (
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'This',        '',
+     'Back',        'p',
+     'FastBack',    '',
+     'Prev',        'p',
+     'Up',          'u',
+     'Next',        'n',
+     'NodeUp',      'u',
+     'NodeNext',    'n',
+     'NodePrev',    'p',
+     'Following',   '',
+     'Forward',     'n',
+     'FastForward', '',
+     'About' ,      '',
+     'First',       '',
+     'Last',        '',
+     'NextFile',    '',
+     'PrevFile',    '',
+    );
+
+# see http://www.w3.org/TR/REC-html40/types.html#type-links
+    %BUTTONS_REL =
+    (
+     'Top',         'start',
+     'Contents',    'contents',
+     'Overview',    '',
+     'Index',       'index',
+     'This',        '',
+     'Back',        'previous',
+     'FastBack',    '',
+     'Prev',        'previous',
+     'Up',          'up',
+     'Next',        'next',
+     'NodeUp',      'up',
+     'NodeNext',    'next',
+     'NodePrev',    'previous',
+     'Following',   '',
+     'Forward',     'next',
+     'FastForward', '',
+     'About' ,      'help',
+     'First',       '',
+     'Last',        '',
+     'NextFile',    'next',
+     'PrevFile',    'previous',
+    );
+
 }
 
 
@@ -1043,6 +1119,7 @@ sub T2H_DEFAULT_print_section_header
     }
 }
 
+
 ###################################################################
 # Layout of standard header and footer
 #
@@ -1058,6 +1135,23 @@ sub T2H_DEFAULT_print_page_head($)
          ($description ne '');
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING_NAME\">" if (defined($ENCODING_NAME) and ($ENCODING_NAME ne ''));
+    my $links = '';
+    if ($USE_LINKS)
+    {
+        foreach my $link (@LINKS_BUTTONS)
+        {
+#print STDERR "$link!!$Texi2HTML::HREF{$link}\n";
+            if (defined($Texi2HTML::HREF{$link}))
+            {
+                my $title = '';
+                $title = " title=\"$Texi2HTML::SIMPLE_TEXT{$link}\"" if (defined($Texi2HTML::SIMPLE_TEXT{$link}));
+                my $rel = '';
+                $rel = " rel=\"$BUTTONS_REL{$link}\"" if (defined($BUTTONS_REL{$link}));
+                $links .= "<link href=\"$Texi2HTML::HREF{$link}\"${rel}${title}>\n";
+            }
+        }
+    }
+
     print $fh <<EOT;
 $DOCTYPE
 <html>
@@ -1074,7 +1168,7 @@ $description
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-$CSS_LINES
+${links}$CSS_LINES
 $EXTRA_HEAD
 </head>
 
@@ -1242,10 +1336,23 @@ sub T2H_DEFAULT_print_navigation
             {             # use given text
                 if ($Texi2HTML::HREF{$button_href})
                 {
+                  my $anchor_attributes = '';
+                  if ($SPLIT eq 'node')
+                  {
+                    if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button_href})) and ($BUTTONS_ACCESSKEY{$button_href} ne ''))
+                    {
+                        $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$button_href}\"";
+                    }
+                    if ($USE_REL_REV and (defined($BUTTONS_REL{$button_href})) and ($BUTTONS_REL{$button_href} ne ''))
+                    {
+                        $anchor_attributes .= " rel=\"$BUTTONS_REL{$button_href}\"";
+                    }
+                  }
                   print $fh "" .
                         &$anchor('',
                                     $Texi2HTML::HREF{$button_href},
-                                    $$text
+                                    $$text,
+                                    $anchor_attributes
                                    ) 
                                     ;
                 }
@@ -1267,6 +1374,17 @@ sub T2H_DEFAULT_print_navigation
         {                       # button is active
             my $btitle = $BUTTONS_GOTO{$button} ?
                 'title="' . $BUTTONS_GOTO{$button} . '"' : '';
+            if ($SPLIT eq 'node')
+            {
+                if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button})) and ($BUTTONS_ACCESSKEY{$button} ne ''))
+                {
+                    $btitle .= " accesskey=\"$BUTTONS_ACCESSKEY{$button}\"";
+                }
+                if ($USE_REL_REV and (defined($BUTTONS_REL{$button})) and ($BUTTONS_REL{$button} ne ''))
+                {
+                    $btitle .= " rel=\"$BUTTONS_REL{$button}\"";
+                }
+            }
             if ($ICONS && $ACTIVE_ICONS{$button})
             {                   # use icon
                 print $fh '' .
@@ -1467,6 +1585,8 @@ $AFTER_ABOUT = '';
      'About',       ' &nbsp; ',
      'First',       '1.',
      'Last',        '1.2.4',
+     'NextFile',    ' &nbsp; ',
+     'PrevFile',    ' &nbsp; ',
     );
 
 sub T2H_DEFAULT_about_body
@@ -3847,6 +3967,9 @@ sub t2h_default_def($)
 
 }
 
+# tracks menu entry index
+my $menu_entry_index;
+
 # a whole menu
 #
 # argument:
@@ -3857,6 +3980,7 @@ sub t2h_default_def($)
 sub t2h_default_menu($)
 {
     my $text = shift;
+    $menu_entry_index=0;
     if ($text =~ /\S/)
     {
         return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">\n" 
@@ -3879,7 +4003,10 @@ sub t2h_default_simple_menu_link($$$$$$)
         $name .= ':' if ($name ne '');
         $entry = "$MENU_SYMBOL$name$node";
     }
-    $entry = &$anchor('', $href, $entry) if ($href);
+    $menu_entry_index++;
+    my $accesskey;
+    $accesskey = "accesskey=\"$menu_entry_index\"" if (($SPLIT eq 'node') and $USE_ACCESSKEY and ($menu_entry_index < 10));
+    $entry = &$anchor('', $href, $entry, $accesskey) if ($href);
     $entry .= $ending if ($preformatted);
     $entry .= '&nbsp;' unless $preformatted;
     return $entry;
@@ -3911,7 +4038,10 @@ sub t2h_default_menu_link($$$$$$)
         $name .= ':' if ($name ne '');
         $entry = "$MENU_SYMBOL$name$node";
     }
-    $entry = &$anchor ('', $href, $entry) if (defined($href));
+    $menu_entry_index++;
+    my $accesskey;
+    $accesskey = "accesskey=\"$menu_entry_index\"" if (($SPLIT eq 'node') and $USE_ACCESSKEY and ($menu_entry_index < 10));
+    $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
     return $entry if ($SIMPLE_MENU); 
     if ($state->{'preformatted'})
     {

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.201 2008-03-20 01:42:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.202 2008-03-23 15:03:43 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -278,6 +278,9 @@ $ICONS
 $UNNUMBERED_SYMBOL_IN_MENU
 $SIMPLE_MENU
 $MENU_SYMBOL
+$USE_ACCESSKEY
+$USE_REL_REV
+$USE_LINKS
 $OPEN_QUOTE_SYMBOL
 $CLOSE_QUOTE_SYMBOL
 $NO_BULLET_LIST_STYLE
@@ -299,11 +302,14 @@ $DATE
 %BUTTONS_NAME
 %BUTTONS_GOTO
 %BUTTONS_EXAMPLE
+%BUTTONS_ACCESSKEY
+%BUTTONS_REL
 @CHAPTER_BUTTONS
 @MISC_BUTTONS
 @SECTION_BUTTONS
 @SECTION_FOOTER_BUTTONS
 @NODE_FOOTER_BUTTONS
+@LINKS_BUTTONS
 @IMAGE_EXTENSIONS
 );
 
@@ -1028,7 +1034,7 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
 
 my @element_directions = ('Up', 'Forward', 'Back', 'Next', 'Prev', 
 'SectionNext', 'SectionPrev', 'SectionUp', 'FastForward', 'FastBack', 
-'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following' );
+'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following', 'NextFile', 'PrevFile');
 $::simple_map_ref = \%Texi2HTML::Config::simple_map;
 $::simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
 $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
@@ -2760,6 +2766,8 @@ my $docu_foot;           # document's footnotes
 my $docu_about;          # about this document
 my $docu_top;            # document top
 my $docu_doc;            # document (or document top of split)
+my $docu_frame;          # main frame file
+my $docu_toc_frame;      # toc frame file
 
 die "Need exactly one file to translate\n$T2H_FAILURE_TEXT" unless @ARGV == 1;
 my $docu = shift(@ARGV);
@@ -2975,6 +2983,27 @@ else
 
 # Note that file extension has already been added here.
 
+if ($Texi2HTML::Config::FRAMES)
+{
+    if (defined $Texi2HTML::Config::element_file_name)
+    {
+        $docu_frame = &$Texi2HTML::Config::element_file_name
+            (undef, "frame", $docu_name);
+        $docu_toc_frame = &$Texi2HTML::Config::element_file_name
+            (undef, "toc_frame", $docu_name);
+    }
+}
+
+if (!defined($docu_frame))
+{
+    $docu_frame  = "${docu_name}_frame";
+    $docu_frame .= ".$docu_ext" if (defined($docu_ext));
+}
+if (!defined($docu_toc_frame))
+{
+    $docu_toc_frame  = "${docu_name}_toc_frame";
+    $docu_toc_frame .= ".$docu_ext" if (defined($docu_ext));
+}
 
 my $docu_doc_file = "$docu_rdir$docu_doc"; 
 my $docu_toc_file  = "$docu_rdir$docu_toc";
@@ -2982,12 +3011,7 @@ my $docu_stoc_file = "$docu_rdir$docu_stoc";
 my $docu_foot_file = "$docu_rdir$docu_foot";
 my $docu_about_file = "$docu_rdir$docu_about";
 my $docu_top_file  = "$docu_rdir$docu_top";
-
-my $docu_frame = "${docu_name}_frame";
-$docu_frame .= ".$docu_ext" if $docu_ext;
-my $docu_frame_file =     "$docu_rdir$docu_frame";
-my $docu_toc_frame = "${docu_name}_toc_frame";
-$docu_toc_frame .= ".$docu_ext" if $docu_ext;
+my $docu_frame_file = "$docu_rdir$docu_frame";
 my $docu_toc_frame_file = "$docu_rdir$docu_toc_frame";
 
 # For use in init files
@@ -5452,18 +5476,10 @@ sub rearrange_elements()
     }
 
     my $index_nr = 0;
-    # convert directions in direction with first letter in all caps, to be
-    # consistent with the convention used in the .init file.
     # find id for nodes and indices
     foreach my $element (@elements_list)
     {
         $element->{'this'} = $element;
-        foreach my $direction (@element_directions)
-        {
-            my $direction_no_caps = $direction;
-            $direction_no_caps =~ tr/A-Z/a-z/;
-            $element->{$direction} = $element->{$direction_no_caps};
-        }
         if ($element->{'index_page'})
         {
             $element->{'id'} = "INDEX" . $index_nr;
@@ -5674,6 +5690,56 @@ sub rearrange_elements()
             $content_element{$content_type} = undef;
         }
     }
+    print STDERR "# find NextFile and PrevFile\n" 
+       if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    foreach my $element (@elements_list)
+    {
+        my $current_element = $element;
+        my $file = $current_element->{'file'};
+        my $previous_file;
+        while ($current_element->{'back'})
+        {
+            $current_element = $current_element->{'back'};
+            if ($current_element->{'file'} ne $file)
+            {
+                $previous_file = $current_element->{'file'};
+                last;
+            }
+        }
+        if (defined($previous_file))
+        {
+            while ($current_element->{'back'})
+            {
+                if ($current_element->{'back'}->{'file'} ne $previous_file)
+                {
+                    last;
+                }
+                $current_element = $current_element->{'back'};
+            }
+            $element->{'prevfile'} = $current_element;
+        }
+
+        $current_element = $element;
+        while ($current_element->{'forward'})
+        {
+            $current_element = $current_element->{'forward'};
+            if ($current_element->{'file'} ne $file)
+            {
+                 $element->{'nextfile'} = $current_element;
+            }
+        }
+    }
+    # convert directions in direction with first letter in all caps, to be
+    # consistent with the convention used in the .init file.
+    foreach my $element (@elements_list)
+    {
+        foreach my $direction (@element_directions)
+        {
+            my $direction_no_caps = $direction;
+            $direction_no_caps =~ tr/A-Z/a-z/;
+            $element->{$direction} = $element->{$direction_no_caps};
+        }
+    }
 
     ########################### debug prints
     foreach my $file (keys(%files))
@@ -5733,6 +5799,8 @@ sub rearrange_elements()
 	print STDERR "  m_u: $element->{'menu_up'}->{'texi'}\n" if (defined($element->{'menu_up'}));
 	print STDERR "  m_ch: $element->{'menu_child'}->{'texi'}\n" if (defined($element->{'menu_child'}));
         print STDERR "  ff: $element->{'fastforward'}->{'texi'}\n" if (defined($element->{'fastforward'}));
+        print STDERR "  n_f: $element->{'nextfile'}->{'texi'}\n" if (defined($element->{'nextfile'}));
+        print STDERR "  p_f: $element->{'prevfile'}->{'texi'}\n" if (defined($element->{'prevfile'}));
         my $section_childs = '';
         if (defined($element->{'section_childs'}))
         {
@@ -6609,8 +6677,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                         my $elem = $element->{$direction};
                         $Texi2HTML::NODE{$direction} = undef;
                         $Texi2HTML::HREF{$direction} = undef;
-                        next unless (defined($elem));
                         #print STDERR "$direction ";
+                        next unless (defined($elem));
                         if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'} or !$elem->{'seen'})
                         {
                             $Texi2HTML::NODE{$direction} = $elem->{'text'};
@@ -10085,14 +10153,15 @@ sub scan_structure($$$$;$)
             }
             else
             {
-                add_prev($text, $stack, "\@$macro");
+                $_ = do_unknown (1, $macro, $_, $text, $stack, $state, $line_nr);
             }
             next;
         }
         #elsif(s/^([^{}@]*)\@(.)//o)
         elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
         {
-            add_prev($text, $stack, $1 . "\@$2");
+            add_prev($text, $stack, $1);
+            $_ = do_unknown (1, $2, $_, $text, $stack, $state, $line_nr);
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
@@ -11139,13 +11208,13 @@ sub scan_line($$$$;$)
                 return if (/^\s*$/);
                 next;
             }
-            $_ = do_unknown ($macro, $_, $text, $stack, $state, $line_nr);
+            $_ = do_unknown (2, $macro, $_, $text, $stack, $state, $line_nr);
             next;
         }
         elsif(s/^([^{}@,]*)\@([^\s\}\{\@]*)//o)
         { # A macro with a character which shouldn't appear in macro name
             add_prev($text, $stack, do_text($1, $state));
-            $_ = do_unknown ($2, $_, $text, $stack, $state, $line_nr);
+            $_ = do_unknown (2, $2, $_, $text, $stack, $state, $line_nr);
             next;
         }
         elsif (s/^([^{},]*)([{}])//o or (@$stack and 
@@ -11809,8 +11878,9 @@ sub do_simple($$$;$$$$)
     return $result;
 }
 
-sub do_unknown($$$$$$)
+sub do_unknown($$$$$$$)
 {
+    my $pass = shift;
     my $macro = shift;
     my $line = shift;
     my $text = shift;
@@ -11818,17 +11888,23 @@ sub do_unknown($$$$$$)
     my $state = shift;
     my $line_nr = shift;
     #print STDERR "do_unknown: $macro ::: $line"; 
-    my ($result_line, $result, $result_text, $message) = &$Texi2HTML::Config::unknown($macro, $line,$stack,$state);
+
+    my ($result_line, $result, $result_text, $message) = &$Texi2HTML::Config::unknown($macro, $line, $pass, $stack,$state);
     if ($result)
     {
          add_prev ($text, $stack, $result_text) if (defined($result_text));
          echo_warn($message, $line_nr) if (defined($message));
          return $result_line;
     }
-    else
+    elsif ($pass == 2)
     {
          echo_warn ("Unknown command `\@$macro' (left as is)", $line_nr);
          add_prev ($text, $stack, do_text("\@$macro"));
+         return $line;
+    }
+    elsif ($pass == 1)
+    {
+         add_prev ($text, $stack, "\@$macro");
          return $line;
     }
 }

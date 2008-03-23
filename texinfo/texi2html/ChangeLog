@@ -1,3 +1,17 @@
+2008-03-23  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, doc/*, examples/makeinfo.init: 
+	use accesskey attribute and link element if set in the init file.
+	Add FileNext and FilePrev directions (for link, but can be used
+	anywhere).
+	* texi2html.pl, examples/*: change in unknown function reference API,
+	now there is a pass argument to be able to handle unknown macros in 
+	other passes than the last.
+	* i18n/de: update translation (Reinhold Kainhofer).
+	* texi2html.pl, doc/*: handle frame files like other files, and
+	document them.
+	* texi2html.pl, doc/*: use do_unknown and unknown in pass 1 too.
+
 2008-03-20  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: treat the @top element like any section element, 

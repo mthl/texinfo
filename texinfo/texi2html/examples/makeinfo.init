@@ -25,6 +25,12 @@ $WORDS_IN_PAGE = 200;
 
 $SEPARATED_FOOTNOTES = 0;
 
+$USE_ACCESSKEY = 1;
+
+$USE_REL_REV = 1;
+
+$USE_LINKS = 1;
+
 @SECTION_BUTTONS =
     (
      \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
@@ -161,6 +167,7 @@ sub makeinfo_like_listoffloats($$$)
 sub makeinfo_like_menu($)
 {
     my $text = shift;
+    $menu_entry_index=0;
     if ($text =~ /\S/)
     {
         return "<ul>\n" 
@@ -193,7 +200,10 @@ sub makeinfo_like_menu_link($$$$$$)
         $name .= ':' if ($name ne '');
         $entry = "$name$node";
     }
-    $entry = &$anchor ('', $href, $entry) if (defined($href));
+    $menu_entry_index++;
+    my $accesskey;
+    $accesskey = "accesskey=\"$menu_entry_index\"" if (($SPLIT eq 'node') and $USE_ACCESSKEY and ($menu_entry_index < 10));
+    $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
     return $entry if ($SIMPLE_MENU); 
 #    if ($state->{'preformatted'})
 #    {

@@ -34,10 +34,6 @@ h? unnumbered chapter appendix...,
 h1 settitle (title before contents, if not set by titlefont),
 h1 titlefont (@titlefont),
 
-* use <link> for navigation, maybe wait before this is done in makeinfo
-(see http://www.w3.org/TR/REC-html40/types.html#h-6.12 and
-http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
-
 * Document Texi2HTML::THIS_ELEMENT
 
 * Document $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
@@ -127,3 +123,19 @@ texi and formatted result. And also give the fractions and maybe use them.
   is not very clear that it is wrong, though.
 
 * document program_string
+
+* antispam @email
+<script type="text/javascript">
+<!--
+/* This hacks the DOM so that copy&paste in Firefox ignores the "nospam"
+   spans. */
+function clean_antispam() {
+  document.getElementById("span1").firstChild.nodeValue = "";
+  document.getElementById("span2").firstChild.nodeValue = "";
+}
+//-->
+</script>
+
+<body onLoad="clean_antispam()">
+<tt>&lt;bug-gnulib<span id="span1" style="display:none;">-nospam</span>&#64;<span id="span2" style="display:none;">nospam.</span>gnu.org&gt;</tt>
+</body>

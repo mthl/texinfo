@@ -17,6 +17,8 @@ This file records noteworthy changes.
 * new option --transliterate-file-names, produce file names in ASCII 
   transliteration (set in the default case).
 
+* use accesskey and rel attributes, use link element if set in the init file.
+
 * COMPATIBILITY
   -------------
 
@@ -30,6 +32,10 @@ This file records noteworthy changes.
 
 * change in the normal_text function reference API, now there is an 
   input variable true if in simple text.
+
+* change in unknown function reference API, now there is a pass argument
+  to be able to handle unknown macros in other passes than the last.
+  Report from Reinhold Kainhofer.
 
 * $Texi2HTML::THISDOC{copying} is now $Texi2HTML::THISDOC{copying_comment}.
 
@@ -47,12 +53,14 @@ This file records noteworthy changes.
   is used. Using tex4ht for html generation should also lead to a correct
   result.
 
-* Handle right @end block commands follwed by something else than a 
+* Handle right @end block commands followed by something else than a 
   spacing character.
 
 * Remove trailing end of line in @html block.
 
 * @itemize should produce bullets by default. Report from Reinhold Kainhofer.
+
+* handle frame files like other files. Report from Reinhold Kainhofer.
 
 1.78 (2007-06-05)
 

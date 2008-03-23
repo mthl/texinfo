@@ -556,12 +556,13 @@ sub t2h_roff_normal_text($$$$)
     return $text;
 }
 
-sub t2h_roff_unknown($$)
+sub t2h_roff_unknown($$$)
 {
     my $macro = shift;
     my $line = shift;
-     
-    if ($macro eq '*')
+    my $pass = shift;
+
+    if ($macro eq '*' and $pass == 2)
     {
         $line = '' if ($line =~ /^\s*$/);
         return ($line, 1, "\n.br\n", undef);

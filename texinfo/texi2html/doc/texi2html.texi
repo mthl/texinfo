@@ -1220,6 +1220,10 @@ Next node in node reading order
 Up section
 @item NodeUp
 Up node
+@item FileNext
+Forward element first in the next page (or file)
+@item FilePrev
+Backward element first in the previous page (or file)
 @end table
 
 @c --------------------------------------------------------
@@ -1288,6 +1292,9 @@ navigation.
 @item @@MISC_BUTTONS
 These buttons appear at the beginning of special and sections  
 and at the end of these section pages if the output is split.
+@item @@LINKS_BUTTONS
+These are used for @code{<link>} elements if they are output in the
+headers.
 @end vtable
 
 The array specify the buttons displayed in navigation panels, 
@@ -1337,6 +1344,16 @@ description of the icon. The corresponding strings are in
 @variable{%BUTTONS_NAME}  for the button name and  @code{%NAVIGATION_TEXT}
 for the description.
 @end table
+
+If @variable{$USE_ACCESSKEY} is set, the @code{accesskey} attribute 
+is used in navigation if split at nodes. In that case the 
+@variable{%BUTTONS_ACCESSKEY} hash is used for the access key.
+
+Similarly, if 
+If @variable{$USE_REL_REV} is set, the @code{rel} attribute 
+is used in navigation if split at nodes. In that case the 
+@variable{%BUTTONS_REL} hash is used for the rel attribute.
+
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Panel formatting function
@@ -1444,6 +1461,10 @@ Overview (also called short table of contents) element file name.
 About element file name.
 @item foot
 Footnotes element file name.
+@item frame
+Main frame file.
+@item toc_frame
+Table of contents frame file name.
 @end table
 @item destination_directory
 Destination directory for the resulting files.
@@ -1660,6 +1681,11 @@ The @code{<body>} element attributes may be set by defining the
 variable @variable{$BODYTEXT}. If you want to define that variable
 dynamically, you should use the @code{init_out} function reference
 (@pxref{Output initialization}).
+
+@code{<link>} element are used in the header if @variable{$USE_LINKS}
+is set. @variable{@@LINKS_BUTTONS} determines which links are used.
+@variable{%BUTTONS_REL} determines the link type associated with the
+@code{rel} attribute.
 
 The default functions call the function associated with 
 @variable{$print_head_navigation} to format the navigation panel for the 
@@ -2100,7 +2126,10 @@ The element text without section number.
 @var{$type} is empty for normal elements. 
 For the top element it is @samp{top}, for the table of contents it 
 is @samp{toc}, for the overview it is @samp{stoc}, for the
-footnotes it is @samp{foot} and for about is @samp{about}.
+footnotes it is @samp{foot} and for about is @samp{about}. If 
+frames are used (@pxref{Page layout options}), the function reference
+is also called for @samp{frame}, the frame file name, and 
+@samp{toc_frame} the table of content frame file name.
 @var{$docu_name} is the basename of the texinfo manual.
 The result is the element or special element file name.
 @end deftypefn
@@ -2165,6 +2194,8 @@ be redefined.
 * Three contexts::               there are three different contexts for command
                                  expansion: normal text, preformatted text and
                                  strings.
+* Three passes::                 @command{texi2html} process texinfo in 3 passes.
+                                 In almost every cases, you shouldn't care.
 * Commands without argument:: 
 * Style and accent commands::    
 * Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image}, @code{@@sp}, @code{@@acronym}, @code{@@abbr}
@@ -2202,6 +2233,17 @@ menu comments (@pxref{Menus}). The preformatted regions are usually
 rendered in @code{<pre>} elements in @acronym{HTML}.
 The string context occurs when rendering strings without formatting elements,
 in comments or titles for example.
+
+@c --------------------------------------------------------
+@node Three passes
+@section Three passes: macro expansion, document structure and output
+
+There are three passes in @command{texi2html}. During 
+pass 0, the @code{@@macro} are 
+expanded, in pass 1 the document structure is gathered and in pass 2
+the result is output. In most cases you shouldn't care about
+it, as almost all of the output customization is done in pass 2.
+Only if you want to do something before the pass 2 should you care.
 
 @c --------------------------------------------------------
 @node Commands without argument
@@ -3253,6 +3295,10 @@ part of the menu;
 The simple formatting is used if @variable{$SIMPLE_MENU} is true, 
 otherwise the format with tables is used (this is the default).
 
+If @variable{$USE_ACCESSKEY} is set, the @code{accesskey} attribute 
+is used in anchors if split at nodes. In that case the @variable{%BUTTONS_ACCESSKEY}
+hash is used for the access key.
+
 To understand how the formatting of menus is controlled, the different
 parts of a menu are first described, then how to control the formatting
 of each of these parts, for each possible formatting.
@@ -3826,9 +3872,10 @@ Commands which don't appear in the hashes
 @code{%misc_command} but with @code{keep} true are processed by the 
 following function reference:
 
-@deftypefn {Function Reference} {($result_line, $result, $result_text, $message)} unknown $command $line
+@deftypefn {Function Reference} {($result_line, $result, $result_text, $message)} unknown $command $line $pass
 @var{$command} is the @@-command, @var{$line} is the line following the 
-@var{$command}. @var{$result} is a boolean. If it is true then the other return
+@var{$command}. @var{$pass} is the pass of texi2html (@pxref{Three passes}). 
+@var{$result} is a boolean. If it is true then the other return
 values are taken into account otherwise the default actions are
 used. In case @var{$result} is true, @var{$result_line} is the new line 
 to be processed further, @var{$result_text} is the resulting formatted text 
@@ -3991,6 +4038,7 @@ function reference is now done in $print_element_header.
 @code{copying_comment}.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 @item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
+@item the $unknown function reference has a new argument, the pass.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet
