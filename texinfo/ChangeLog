@@ -1,3 +1,8 @@
+2008-03-23  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (TEX): unset if it refers to a directory; I think
+	the University of Utah installation does this.
+
 2008-03-22  Karl Berry  <karl@gnu.org>
 
 	* info/session.c (info_move_to_xref): conditionalize "no xref"
