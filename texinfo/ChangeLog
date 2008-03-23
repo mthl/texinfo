@@ -1,3 +1,7 @@
+2008-03-23  Benno Schulenberg  <bensberg@justemail.net>  (tiny change)
+
+	* info/session.c (_scroll_backward): better cursor placement.
+
 2008-03-23  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (TEX): unset if it refers to a directory; I think

@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.36 2008-03-22 23:11:09 karl Exp $
+   $Id: session.c,v 1.37 2008-03-23 23:32:22 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -1349,10 +1349,11 @@ _scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour)
 	  
           if ((desired_top < 0) && (window->pagetop == 0))
             {
-              if (backward_move_node_structure (window, behaviour))
-	        info_beginning_of_node (window, 1, 0);
-	      else if (cursor_movement_scrolls_p)
+              if ((backward_move_node_structure (window, behaviour) == 0)
+                  && (cursor_movement_scrolls_p))
 		info_end_of_node (window, 1, 0);
+              window->point = (window->line_starts[window->pagetop]
+                               - window->node->contents);
               return;
             }
         }
@@ -1363,6 +1364,8 @@ _scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour)
         desired_top = 0;
 
       set_window_pagetop (window, desired_top);
+      window->point = (window->line_starts[window->pagetop]
+                       - window->node->contents);
     }
 }
 
