@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.33 2008-03-14 18:38:37 karl Exp $
+# $Id: Makefile.am,v 1.34 2008-03-25 10:51:20 akim Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -43,15 +43,20 @@ EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   $(dist_pkgdata_DATA) texinfo-cat.in
 CLEANFILES = $(pkgdata_DATA)
 
+
 # Let's not stress people's TeX installations, etc.
-#XFAIL_TESTS =
-#TESTS =	\
-#bibtex.test \
-#dvipdf.test
-#latex2html.test \
-#texi2dvi.test
-#EXTRA_DIST += $(TESTS)
-## Each test case depends on defs.
-#check_SCRIPTS = defs
-#distclean-local:
-#	-rm -rf testSubDir
+if MAINTAINER_MODE
+TESTS =						\
+bibtex.test					\
+dvipdf.test					\
+latex2html.test					\
+local.test					\
+texi2dvi.test
+
+EXTRA_DIST += $(TESTS)
+
+# Each test case depends on defs.
+check_SCRIPTS = defs
+distclean-local:
+	-rm -rf testSubDir
+endif

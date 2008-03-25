@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2003, 2005, 2007  Free Software Foundation, Inc.
+# Copyright (C) 2003, 2005, 2007, 2008  Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -37,11 +37,21 @@ fi
 
 
 # Make sure each name is used only once.
-if sed -n 's/.*local \([a-zA-Z_0-9]*\)\(=.*\|\)$/\1/gp' $TEXI2DVI |
+if sed -n -e 's/^#.*//' \
+          -e 's/local \([a-zA-Z_0-9]*\)/\1/gp' $TEXI2DVI |
     sort |
     uniq -c |
     grep -v '^.*1 ' |
     grep .
+then
+  false
+else
+  true
+fi
+
+
+# Make sure we don't use $().
+if $FGREP '$(' $TEXI2DVI
 then
   false
 else

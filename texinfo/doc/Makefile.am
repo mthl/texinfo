@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.36 2008-01-02 01:36:15 karl Exp $
+# $Id: Makefile.am,v 1.37 2008-03-25 10:51:19 akim Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -14,7 +14,7 @@
 info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 DISTCLEANFILES = texinfo texinfo-* info*.info*
 
-man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 \
+man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1  \
            info.5 texinfo.5
 
 # Use the programs built in our distribution, taking account of possible
@@ -95,21 +95,30 @@ $(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
 	rm $@.tmp
 
-$(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
+$(srcdir)/texindex.1: $(util_srcdir)/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 
+## ---------- ##
+## texi2dvi.  ##
+## ---------- ##
+
+man_MANS += texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
+util_srcdir = $(top_srcdir)/util
+# Do not depend on the current user's settings.
+unset_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY
+
 common_texi2dvi_deps = $(common_mandeps) \
-                       $(top_srcdir)/util/texi2dvi $(top_srcdir)/util/texi2pdf
+                       $(util_srcdir)/texi2dvi $(util_srcdir)/texi2pdf
 
 $(srcdir)/texi2dvi.1: $(common_texi2dvi_deps)
-	$(HELP2MAN) --name="convert Texinfo documents to DVI" $(top_srcdir)/util/texi2dvi >$@
+	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to DVI" $(util_srcdir)/texi2dvi >$@
 
 $(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
-	$(HELP2MAN) --name="convert Texinfo documents to PDF" $(top_srcdir)/util/texi2pdf >$@
+	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
 
 $(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
-	$(HELP2MAN) --name="convert Texinfo documents to PDF" $(top_srcdir)/util/pdftexi2dvi >$@
+	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@
 
 # Do not create info files for distribution.
 dist-info:

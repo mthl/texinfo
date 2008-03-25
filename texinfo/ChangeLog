@@ -1,3 +1,13 @@
+2008-03-25  Akim Demaille  <akim@epita.fr>
+
+	* doc/Makefile.am: Use srcdir where appropriate.
+	(man_MANS): Also install texi2pdf.1 and pdftexi2dvi.1.
+	(unset_envvars): New.
+	Use it.
+	* util/local.test: Check we don't use $().
+	Simplify sed usage: don't use \| which is not portable enough.
+	* util/Makefile.am: Re-enable tests, in maintainer mode.
+
 2008-03-23  Benno Schulenberg  <bensberg@justemail.net>  (tiny change)
 
 	* info/session.c (_scroll_backward): better cursor placement.
