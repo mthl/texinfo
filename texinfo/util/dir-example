@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.76 2008-01-02 01:40:00 karl Exp $
+$Id: dir-example,v 1.77 2008-03-25 15:09:14 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -213,7 +213,8 @@ C++ libraries
 
 GNU organization
 * Maintain: (maintain).         GNU maintainer guidelines.
-* Standards: (standards).        GNU coding standards.
+* Maintaining Findutils: (find-maint).        Maintaining GNU findutils.
+* Standards: (standards).       GNU coding standards.
 
 GNU music project
 * LilyPond: (lilypond).                        The GNU music typesetter.
