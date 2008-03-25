@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.14 2008-03-23 16:32:43 karl Exp $
+$Id: README.dev,v 1.15 2008-03-25 13:51:20 karl Exp $
 This README.dev file describes the development environment.
 
   Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008
@@ -42,8 +42,11 @@ and then run
   ../gnulib/gnulib-tool --update
 in your top-level Texinfo directory.  (gnulib-tool is in the gnulib CVS tree.)
 
-For the record, the first time invocation was
-  gnulib-tool --import --m4-base=gnulib/m4 --source-base=gnulib/lib getopt
-The currently-used gnulib modules and other gnulib information are
-recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
-gnulib, you can update the files with gnulib-tool --import.
+For the record, a first time invocation would be
+  gnulib-tool --import --m4-base=gnulib/m4 --source-base=gnulib/lib \
+              --no-vc-files getopt
+
+Many more modules have been added since.  The currently-used gnulib
+modules and other gnulib information are recorded in
+gnulib/m4/gnulib-cache.m4.  Given a source checkout of gnulib, you can
+update the files with gnulib-tool --import.

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.3 2008-02-25 23:39:32 karl Exp $
+# $Id: autogen.sh,v 1.4 2008-03-25 13:51:20 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -29,7 +29,7 @@ $chicken eval $cmd || exit 1
 
 echo
 echo "Now run configure with your desired options, for instance:"
-echo "  ./configure CFLAGS=-g --enable-maintainer-mode"
+echo "  ./configure CFLAGS='-g --enable-maintainer-mode"
 echo
 echo "You MUST use --enable-maintainer-mode when building Texinfo"
 echo "from the CVS sources, or the build will fail."
