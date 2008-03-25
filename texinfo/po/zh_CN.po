@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-21 19:03+0100\n"
+"POT-Creation-Date: 2008-03-25 11:46+0100\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -1116,7 +1116,7 @@ msgstr "选择一个已经在可见的窗口中访问的节点"
 msgid "Select visited node: "
 msgstr "选择已访问的节点："
 
-#: info/nodemenu.c:336 info/session.c:2440
+#: info/nodemenu.c:336 info/session.c:2443
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "引用消失了！(%s)。"
@@ -1175,462 +1175,462 @@ msgstr "在节点结构中向前或向下层移动"
 msgid "Move backwards or up through node structure"
 msgstr "在节点结构中向后或向上层移动"
 
-#: info/session.c:1370
+#: info/session.c:1373
 msgid "Scroll forward in this window"
 msgstr "在本窗口中向前滚动"
 
-#: info/session.c:1378
+#: info/session.c:1381
 msgid "Scroll forward in this window and set default window size"
 msgstr "在本窗口中向前滚动并设置为默认窗口大小"
 
-#: info/session.c:1386
+#: info/session.c:1389
 msgid "Scroll forward in this window staying within node"
 msgstr "在本窗口中向前滚动(不穿越节点)"
 
-#: info/session.c:1394
+#: info/session.c:1397
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "在本窗口中向前滚动(不穿越节点)并设置默认窗口大小"
 
-#: info/session.c:1402
+#: info/session.c:1405
 msgid "Scroll backward in this window"
 msgstr "在本窗口中向后滚动"
 
-#: info/session.c:1410
+#: info/session.c:1413
 msgid "Scroll backward in this window and set default window size"
 msgstr "在本窗口中向后滚动并设置为默认窗口大小"
 
-#: info/session.c:1419
+#: info/session.c:1422
 msgid "Scroll backward in this window staying within node"
 msgstr "在本窗口中向后滚动(不穿越节点)"
 
-#: info/session.c:1427
+#: info/session.c:1430
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr "在本窗口中向后滚动(不穿越节点)并设置为默认窗口大小"
 
-#: info/session.c:1435
+#: info/session.c:1438
 msgid "Move to the start of this node"
 msgstr "移动到本节点的开头"
 
-#: info/session.c:1442
+#: info/session.c:1445
 msgid "Move to the end of this node"
 msgstr "移动到本节点的末尾"
 
-#: info/session.c:1449
+#: info/session.c:1452
 msgid "Scroll down by lines"
 msgstr "按行向下滚动"
 
-#: info/session.c:1466
+#: info/session.c:1469
 msgid "Scroll up by lines"
 msgstr "按行向上滚动"
 
-#: info/session.c:1484
+#: info/session.c:1487
 msgid "Scroll down by half screen size"
 msgstr "向下滚动半个屏幕"
 
-#: info/session.c:1510
+#: info/session.c:1513
 msgid "Scroll up by half screen size"
 msgstr "向上滚动半个屏幕"
 
-#: info/session.c:1539
+#: info/session.c:1542
 msgid "Select the next window"
 msgstr "选择下一个窗口"
 
-#: info/session.c:1578
+#: info/session.c:1581
 msgid "Select the previous window"
 msgstr "选择上一个窗口"
 
-#: info/session.c:1629
+#: info/session.c:1632
 msgid "Split the current window"
 msgstr "拆分当前窗口"
 
-#: info/session.c:1710
+#: info/session.c:1713
 msgid "Delete the current window"
 msgstr "删除当前窗口"
 
-#: info/session.c:1718
+#: info/session.c:1721
 msgid "Cannot delete a permanent window"
 msgstr "无法删除永久窗口"
 
-#: info/session.c:1750
+#: info/session.c:1753
 msgid "Delete all other windows"
 msgstr "删除所有其它窗口"
 
-#: info/session.c:1796
+#: info/session.c:1799
 msgid "Scroll the other window"
 msgstr "滚动其它窗口"
 
-#: info/session.c:1817
+#: info/session.c:1820
 msgid "Scroll the other window backward"
 msgstr "向后滚动其它窗口"
 
-#: info/session.c:1823
+#: info/session.c:1826
 msgid "Grow (or shrink) this window"
 msgstr "扩大(或缩小)本窗口"
 
-#: info/session.c:1834
+#: info/session.c:1837
 msgid "Divide the available screen space among the visible windows"
 msgstr "在可见的窗口间分配可用的屏幕空间"
 
-#: info/session.c:1841
+#: info/session.c:1844
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "在当前窗口中切换行卷绕状态"
 
-#: info/session.c:1848
+#: info/session.c:1851
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1852
+#: info/session.c:1855
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1853
+#: info/session.c:1856
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2024
+#: info/session.c:2027
 msgid "Select the Next node"
 msgstr "选择下一个节点"
 
-#: info/session.c:2032
+#: info/session.c:2035
 msgid "Select the Prev node"
 msgstr "选择上一个节点"
 
-#: info/session.c:2040
+#: info/session.c:2043
 msgid "Select the Up node"
 msgstr "选择上层节点"
 
-#: info/session.c:2047
+#: info/session.c:2050
 msgid "Select the last node in this file"
 msgstr "选择本文件的最后一个节点"
 
-#: info/session.c:2074 info/session.c:2107
+#: info/session.c:2077 info/session.c:2110
 msgid "This window has no additional nodes"
 msgstr "该窗口没有附加节点"
 
-#: info/session.c:2080
+#: info/session.c:2083
 msgid "Select the first node in this file"
 msgstr "选择本文件的第一个节点"
 
-#: info/session.c:2114
+#: info/session.c:2117
 msgid "Select the last item in this node's menu"
 msgstr "选择本节点菜单中的最后一项"
 
-#: info/session.c:2120
+#: info/session.c:2123
 msgid "Select this menu item"
 msgstr "选择本菜单项目"
 
-#: info/session.c:2153
+#: info/session.c:2156
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "本菜单中没有第 %d 个项目。"
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2350 info/session.c:2351
 #, c-format
 msgid "Menu item (%s): "
 msgstr "菜单项 (%s)："
 
-#: info/session.c:2351
+#: info/session.c:2354
 msgid "Menu item: "
 msgstr "菜单项："
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2361 info/session.c:2362
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "跟随交叉引用 (%s)："
 
-#: info/session.c:2362
+#: info/session.c:2365
 msgid "Follow xref: "
 msgstr "跟随交叉引用："
 
-#: info/session.c:2491
+#: info/session.c:2494
 msgid "Read a menu item and select its node"
 msgstr "读取菜单项并选择它的节点"
 
-#: info/session.c:2499
+#: info/session.c:2502
 msgid "Read a footnote or cross reference and select its node"
 msgstr "读取脚注或交叉引用并选择它的节点"
 
-#: info/session.c:2505
+#: info/session.c:2508
 msgid "Move to the start of this node's menu"
 msgstr "移动到本节点菜单的开头"
 
-#: info/session.c:2529
+#: info/session.c:2532
 msgid "Visit as many menu items at once as possible"
 msgstr "立刻访问尽可能多的菜单项"
 
-#: info/session.c:2557
+#: info/session.c:2560
 msgid "Read a node name and select it"
 msgstr "读取节点名并选择它"
 
-#: info/session.c:2612 info/session.c:2617
+#: info/session.c:2615 info/session.c:2620
 msgid "Goto node: "
 msgstr "转到节点："
 
-#: info/session.c:2681
+#: info/session.c:2684
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "节点“%s”中没有菜单。"
 
-#: info/session.c:2727
+#: info/session.c:2730
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "节点“%2$s”中没有菜单项“%1$s”。"
 
-#: info/session.c:2757
+#: info/session.c:2760
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "无法在“%2$s”中找到由“%1$s”引用的节点。"
 
-#: info/session.c:2807
+#: info/session.c:2810
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "读取自 dir 开始的菜单的列表并跟随它们"
 
-#: info/session.c:2809
+#: info/session.c:2812
 msgid "Follow menus: "
 msgstr "跟随菜单："
 
-#: info/session.c:3002
+#: info/session.c:3005
 msgid "Find the node describing program invocation"
 msgstr "寻找说明程序调用的节点"
 
-#: info/session.c:3004
+#: info/session.c:3007
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "寻找 [%s] 的调用节点："
 
-#: info/session.c:3042
+#: info/session.c:3045
 msgid "Read a manpage reference and select it"
 msgstr "读取一个 man 手册的引用并选择它"
 
-#: info/session.c:3046
+#: info/session.c:3049
 msgid "Get Manpage: "
 msgstr "获取 man 手册："
 
-#: info/session.c:3076
+#: info/session.c:3079
 msgid "Select the node `Top' in this file"
 msgstr "选择本文件中的“顶”节点"
 
-#: info/session.c:3082
+#: info/session.c:3085
 msgid "Select the node `(dir)'"
 msgstr "选择节点“(dir)”"
 
-#: info/session.c:3099 info/session.c:3101
+#: info/session.c:3102 info/session.c:3104
 #, c-format
 msgid "Kill node (%s): "
 msgstr "删除节点 (%s)："
 
-#: info/session.c:3153
+#: info/session.c:3156
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "无法删除节点“%s”"
 
-#: info/session.c:3163
+#: info/session.c:3166
 msgid "Cannot kill the last node"
 msgstr "无法删除最后的节点"
 
-#: info/session.c:3249
+#: info/session.c:3252
 msgid "Select the most recently selected node"
 msgstr "选择最近选择的节点"
 
-#: info/session.c:3255
+#: info/session.c:3258
 msgid "Kill this node"
 msgstr "删除本节点"
 
-#: info/session.c:3263
+#: info/session.c:3266
 msgid "Read the name of a file and select it"
 msgstr "读取文件名并选择它"
 
-#: info/session.c:3267
+#: info/session.c:3270
 msgid "Find file: "
 msgstr "寻找文件："
 
-#: info/session.c:3284
+#: info/session.c:3287
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "无法寻找“%s”。"
 
-#: info/session.c:3327 info/session.c:3445
+#: info/session.c:3330 info/session.c:3448
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "无法创建输出文件“%s”。"
 
-#: info/session.c:3341 info/session.c:3463 info/session.c:3523
+#: info/session.c:3344 info/session.c:3466 info/session.c:3526
 msgid "Done."
 msgstr "完成。"
 
-#: info/session.c:3396
+#: info/session.c:3399
 #, c-format
 msgid "Writing node %s..."
 msgstr "正在写入节点 %s..."
 
-#: info/session.c:3472
+#: info/session.c:3475
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "通过管道将本节点的内容输出到 INFO_PRINT_COMMAND"
 
-#: info/session.c:3507
+#: info/session.c:3510
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "无法打开到“%s”的管道。"
 
-#: info/session.c:3513
+#: info/session.c:3516
 #, c-format
 msgid "Printing node %s..."
 msgstr "正在打印节点 %s..."
 
-#: info/session.c:3730
+#: info/session.c:3733
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3735
+#: info/session.c:3738
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "剪切至本行开头"
 
-#: info/session.c:3752
+#: info/session.c:3755
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "正在搜索子文件 %s ..."
 
-#: info/session.c:3809
+#: info/session.c:3812
 msgid "Read a string and search for it case-sensitively"
 msgstr "读取一个字符串并以大小写敏感的方式搜索它"
 
-#: info/session.c:3816
+#: info/session.c:3819
 msgid "Read a string and search for it"
 msgstr "读取一个字符串并搜索它"
 
-#: info/session.c:3824
+#: info/session.c:3827
 msgid "Read a string and search backward for it"
 msgstr "读取一个字符串并向后搜索它"
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%2$s%1$s字符串 [%3$s]："
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3864 info/session.c:3870
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3865 info/session.c:3871
 #, fuzzy
 msgid " case-sensitively"
 msgstr "大小写敏感地"
 
-#: info/session.c:3863 info/session.c:3869
+#: info/session.c:3866 info/session.c:3872
 #, fuzzy
 msgid " backward"
 msgstr "向后搜索"
 
-#: info/session.c:3867
+#: info/session.c:3870
 msgid "Search"
 msgstr "搜索"
 
-#: info/session.c:3908
+#: info/session.c:3911
 msgid "Search failed."
 msgstr "搜索失败。"
 
-#: info/session.c:3926
+#: info/session.c:3929
 msgid "Repeat last search in the same direction"
 msgstr "以相同的方向重复最后的搜索"
 
-#: info/session.c:3929 info/session.c:3939
+#: info/session.c:3932 info/session.c:3942
 msgid "No previous search string"
 msgstr "没有上次搜索字符串"
 
-#: info/session.c:3936
+#: info/session.c:3939
 msgid "Repeat last search in the reverse direction"
 msgstr "以相反的方向重复最后的搜索"
 
-#: info/session.c:3955 info/session.c:3961
+#: info/session.c:3958 info/session.c:3964
 msgid "Search interactively for a string as you type it"
 msgstr "在你输入的同时交互式地搜索字符串"
 
-#: info/session.c:4041
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "向后递增搜索："
 
-#: info/session.c:4042
+#: info/session.c:4045
 msgid "I-search backward: "
 msgstr "向后递增搜索："
 
-#: info/session.c:4044
+#: info/session.c:4047
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "递增搜索："
 
-#: info/session.c:4045
+#: info/session.c:4048
 msgid "I-search: "
 msgstr "递增搜索："
 
-#: info/session.c:4070 info/session.c:4072
+#: info/session.c:4073 info/session.c:4075
 msgid "Failing "
 msgstr "失败 "
 
-#: info/session.c:4556
+#: info/session.c:4560
 msgid "Move to the previous cross reference"
 msgstr "移动到上一个交叉引用"
 
-#: info/session.c:4574
+#: info/session.c:4578
 msgid "Move to the next cross reference"
 msgstr "移动到下一个交叉引用"
 
-#: info/session.c:4596
+#: info/session.c:4600
 msgid "Select reference or menu item appearing on this line"
 msgstr "选择出现在本行中的引用或菜单项"
 
-#: info/session.c:4619
+#: info/session.c:4623
 msgid "Cancel current operation"
 msgstr "取消当前操作"
 
-#: info/session.c:4626
+#: info/session.c:4630
 msgid "Quit"
 msgstr "退出"
 
-#: info/session.c:4635
+#: info/session.c:4639
 msgid "Move the cursor to a specific line of the window"
 msgstr "将光标移动到窗口的指定行"
 
-#: info/session.c:4667
+#: info/session.c:4671
 msgid "Redraw the display"
 msgstr "重画显示"
 
-#: info/session.c:4704
+#: info/session.c:4708
 msgid "Quit using Info"
 msgstr "退出 Info"
 
-#: info/session.c:4717
+#: info/session.c:4721
 msgid "Run command bound to this key's lowercase variant"
 msgstr "运行到绑定到本按键的小写版本的命令"
 
-#: info/session.c:4728
+#: info/session.c:4732
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "未知的命令 (%s)。"
 
-#: info/session.c:4731
+#: info/session.c:4735
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "“%s”为非法"
 
-#: info/session.c:4732
+#: info/session.c:4736
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "“%s”为非法"
 
-#: info/session.c:4946
+#: info/session.c:4950
 msgid "Add this digit to the current numeric argument"
 msgstr "将本数字添加到当前数值参数中"
 
-#: info/session.c:4955
+#: info/session.c:4959
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "开启(或乘以 4)当前数值参数"
 
-#: info/session.c:4970
+#: info/session.c:4974
 msgid "Internally used by \\[universal-argument]"
 msgstr "由 \\[universal-argument] 内部使用"
 

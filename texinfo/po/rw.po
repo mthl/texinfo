@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-21 19:03+0100\n"
+"POT-Creation-Date: 2008-03-25 11:46+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -1182,7 +1182,7 @@ msgstr "a in a Kigaragara Idirishya"
 msgid "Select visited node: "
 msgstr ""
 
-#: info/nodemenu.c:336 info/session.c:2440
+#: info/nodemenu.c:336 info/session.c:2443
 #, fuzzy, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Indango"
@@ -1250,44 +1250,44 @@ msgstr "Cyangwa Hasi Gihinguranya Imiterere"
 msgid "Move backwards or up through node structure"
 msgstr "Inyuma Cyangwa Hejuru Gihinguranya Imiterere"
 
-#: info/session.c:1370
+#: info/session.c:1373
 #, fuzzy
 msgid "Scroll forward in this window"
 msgstr "Imbere in iyi Idirishya"
 
-#: info/session.c:1378
+#: info/session.c:1381
 #, fuzzy
 msgid "Scroll forward in this window and set default window size"
 msgstr "Imbere in iyi Idirishya Na Gushyiraho Mburabuzi Idirishya Ingano"
 
-#: info/session.c:1386
+#: info/session.c:1389
 #, fuzzy
 msgid "Scroll forward in this window staying within node"
 msgstr "Imbere in iyi Idirishya muri"
 
-#: info/session.c:1394
+#: info/session.c:1397
 #, fuzzy
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "Imbere in iyi Idirishya muri Na Gushyiraho Mburabuzi Idirishya Ingano"
 
-#: info/session.c:1402
+#: info/session.c:1405
 #, fuzzy
 msgid "Scroll backward in this window"
 msgstr "subira inyuma in iyi Idirishya"
 
-#: info/session.c:1410
+#: info/session.c:1413
 #, fuzzy
 msgid "Scroll backward in this window and set default window size"
 msgstr ""
 "subira inyuma in iyi Idirishya Na Gushyiraho Mburabuzi Idirishya Ingano"
 
-#: info/session.c:1419
+#: info/session.c:1422
 #, fuzzy
 msgid "Scroll backward in this window staying within node"
 msgstr "subira inyuma in iyi Idirishya muri"
 
-#: info/session.c:1427
+#: info/session.c:1430
 #, fuzzy
 msgid ""
 "Scroll backward in this window staying within node and set default window "
@@ -1295,490 +1295,490 @@ msgid ""
 msgstr ""
 "subira inyuma in iyi Idirishya muri Na Gushyiraho Mburabuzi Idirishya Ingano"
 
-#: info/session.c:1435
+#: info/session.c:1438
 #, fuzzy
 msgid "Move to the start of this node"
 msgstr "Kuri i Gutangira Bya iyi"
 
-#: info/session.c:1442
+#: info/session.c:1445
 #, fuzzy
 msgid "Move to the end of this node"
 msgstr "Kuri i Impera Bya iyi"
 
-#: info/session.c:1449
+#: info/session.c:1452
 #, fuzzy
 msgid "Scroll down by lines"
 msgstr "Hasi ku Imirongo"
 
-#: info/session.c:1466
+#: info/session.c:1469
 #, fuzzy
 msgid "Scroll up by lines"
 msgstr "Hejuru ku Imirongo"
 
-#: info/session.c:1484
+#: info/session.c:1487
 #, fuzzy
 msgid "Scroll down by half screen size"
 msgstr "Hasi ku Mugaragaza Ingano"
 
-#: info/session.c:1510
+#: info/session.c:1513
 #, fuzzy
 msgid "Scroll up by half screen size"
 msgstr "Hejuru ku Mugaragaza Ingano"
 
-#: info/session.c:1539
+#: info/session.c:1542
 #, fuzzy
 msgid "Select the next window"
 msgstr "i Komeza>> Idirishya"
 
-#: info/session.c:1578
+#: info/session.c:1581
 #, fuzzy
 msgid "Select the previous window"
 msgstr "i Ibanjirije Idirishya"
 
-#: info/session.c:1629
+#: info/session.c:1632
 #, fuzzy
 msgid "Split the current window"
 msgstr "i KIGEZWEHO Idirishya"
 
-#: info/session.c:1710
+#: info/session.c:1713
 #, fuzzy
 msgid "Delete the current window"
 msgstr "i KIGEZWEHO Idirishya"
 
-#: info/session.c:1718
+#: info/session.c:1721
 #, fuzzy
 msgid "Cannot delete a permanent window"
 msgstr "Gusiba a Idirishya"
 
-#: info/session.c:1750
+#: info/session.c:1753
 #, fuzzy
 msgid "Delete all other windows"
 msgstr "Byose Ikindi"
 
-#: info/session.c:1796
+#: info/session.c:1799
 #, fuzzy
 msgid "Scroll the other window"
 msgstr "i Ikindi Idirishya"
 
-#: info/session.c:1817
+#: info/session.c:1820
 #, fuzzy
 msgid "Scroll the other window backward"
 msgstr "i Ikindi Idirishya subira inyuma"
 
-#: info/session.c:1823
+#: info/session.c:1826
 #, fuzzy
 msgid "Grow (or shrink) this window"
 msgstr "Cyangwa Kugabanuka iyi Idirishya"
 
-#: info/session.c:1834
+#: info/session.c:1837
 #, fuzzy
 msgid "Divide the available screen space among the visible windows"
 msgstr "i Bihari Mugaragaza Umwanya i Kigaragara"
 
-#: info/session.c:1841
+#: info/session.c:1844
 #, fuzzy
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "i Leta Bya Umurongo in i KIGEZWEHO Idirishya"
 
-#: info/session.c:1848
+#: info/session.c:1851
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1852
+#: info/session.c:1855
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1853
+#: info/session.c:1856
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2024
+#: info/session.c:2027
 #, fuzzy
 msgid "Select the Next node"
 msgstr "i"
 
-#: info/session.c:2032
+#: info/session.c:2035
 #, fuzzy
 msgid "Select the Prev node"
 msgstr "i"
 
-#: info/session.c:2040
+#: info/session.c:2043
 #, fuzzy
 msgid "Select the Up node"
 msgstr "i"
 
-#: info/session.c:2047
+#: info/session.c:2050
 #, fuzzy
 msgid "Select the last node in this file"
 msgstr "i Iheruka in iyi IDOSIYE"
 
-#: info/session.c:2074 info/session.c:2107
+#: info/session.c:2077 info/session.c:2110
 #, fuzzy
 msgid "This window has no additional nodes"
 msgstr "Idirishya Oya"
 
-#: info/session.c:2080
+#: info/session.c:2083
 #, fuzzy
 msgid "Select the first node in this file"
 msgstr "i Itangira in iyi IDOSIYE"
 
-#: info/session.c:2114
+#: info/session.c:2117
 #, fuzzy
 msgid "Select the last item in this node's menu"
 msgstr "i Iheruka Ikintu in iyi Ibikubiyemo"
 
-#: info/session.c:2120
+#: info/session.c:2123
 #, fuzzy
 msgid "Select this menu item"
 msgstr "iyi Ibikubiyemo Ikintu"
 
-#: info/session.c:2153
+#: info/session.c:2156
 #, fuzzy, c-format
 msgid "There aren't %d items in this menu."
 msgstr "in iyi Ibikubiyemo"
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2350 info/session.c:2351
 #, fuzzy, c-format
 msgid "Menu item (%s): "
 msgstr "Ikintu"
 
-#: info/session.c:2351
+#: info/session.c:2354
 #, fuzzy
 msgid "Menu item: "
 msgstr "Ikintu"
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2361 info/session.c:2362
 #, fuzzy, c-format
 msgid "Follow xref (%s): "
 msgstr "X- Ngenderwaho"
 
-#: info/session.c:2362
+#: info/session.c:2365
 #, fuzzy
 msgid "Follow xref: "
 msgstr "X- Ngenderwaho"
 
-#: info/session.c:2491
+#: info/session.c:2494
 #, fuzzy
 msgid "Read a menu item and select its node"
 msgstr "a Ibikubiyemo Ikintu Na Guhitamo"
 
-#: info/session.c:2499
+#: info/session.c:2502
 #, fuzzy
 msgid "Read a footnote or cross reference and select its node"
 msgstr "a Ubusobanuro mpezarupapuro Cyangwa Kwambukiranya Indango Na Guhitamo"
 
-#: info/session.c:2505
+#: info/session.c:2508
 #, fuzzy
 msgid "Move to the start of this node's menu"
 msgstr "Kuri i Gutangira Bya iyi Ibikubiyemo"
 
-#: info/session.c:2529
+#: info/session.c:2532
 #, fuzzy
 msgid "Visit as many menu items at once as possible"
 msgstr "Nka Ibikubiyemo ku Rimwe Nka"
 
-#: info/session.c:2557
+#: info/session.c:2560
 #, fuzzy
 msgid "Read a node name and select it"
 msgstr "a Izina: Na Guhitamo"
 
-#: info/session.c:2612 info/session.c:2617
+#: info/session.c:2615 info/session.c:2620
 msgid "Goto node: "
 msgstr ""
 
-#: info/session.c:2681
+#: info/session.c:2684
 #, fuzzy, c-format
 msgid "No menu in node `%s'."
 msgstr "Ibikubiyemo in"
 
-#: info/session.c:2727
+#: info/session.c:2730
 #, fuzzy, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Ibikubiyemo Ikintu in"
 
-#: info/session.c:2757
+#: info/session.c:2760
 #, fuzzy, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Kuri Gushaka ku in"
 
-#: info/session.c:2807
+#: info/session.c:2810
 #, fuzzy
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "a Urutonde Bya Ibikubiyemo Bivuye Na"
 
-#: info/session.c:2809
+#: info/session.c:2812
 #, fuzzy
 msgid "Follow menus: "
 msgstr "Ibikubiyemo"
 
-#: info/session.c:3002
+#: info/session.c:3005
 #, fuzzy
 msgid "Find the node describing program invocation"
 msgstr "i Porogaramu"
 
-#: info/session.c:3004
+#: info/session.c:3007
 #, fuzzy, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Bya"
 
-#: info/session.c:3042
+#: info/session.c:3045
 #, fuzzy
 msgid "Read a manpage reference and select it"
 msgstr "a Indango Na Guhitamo"
 
-#: info/session.c:3046
+#: info/session.c:3049
 msgid "Get Manpage: "
 msgstr ""
 
-#: info/session.c:3076
+#: info/session.c:3079
 #, fuzzy
 msgid "Select the node `Top' in this file"
 msgstr "i in iyi IDOSIYE"
 
-#: info/session.c:3082
+#: info/session.c:3085
 #, fuzzy
 msgid "Select the node `(dir)'"
 msgstr "i"
 
-#: info/session.c:3099 info/session.c:3101
+#: info/session.c:3102 info/session.c:3104
 #, c-format
 msgid "Kill node (%s): "
 msgstr ""
 
-#: info/session.c:3153
+#: info/session.c:3156
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr ""
 
-#: info/session.c:3163
+#: info/session.c:3166
 #, fuzzy
 msgid "Cannot kill the last node"
 msgstr "i Iheruka"
 
-#: info/session.c:3249
+#: info/session.c:3252
 #, fuzzy
 msgid "Select the most recently selected node"
 msgstr "i Byahiswemo"
 
-#: info/session.c:3255
+#: info/session.c:3258
 #, fuzzy
 msgid "Kill this node"
 msgstr "iyi"
 
-#: info/session.c:3263
+#: info/session.c:3266
 #, fuzzy
 msgid "Read the name of a file and select it"
 msgstr "i Izina: Bya a IDOSIYE Na Guhitamo"
 
-#: info/session.c:3267
+#: info/session.c:3270
 #, fuzzy
 msgid "Find file: "
 msgstr "IDOSIYE"
 
-#: info/session.c:3284
+#: info/session.c:3287
 #, fuzzy, c-format
 msgid "Cannot find `%s'."
 msgstr "Gushaka"
 
-#: info/session.c:3327 info/session.c:3445
+#: info/session.c:3330 info/session.c:3448
 #, fuzzy, c-format
 msgid "Could not create output file `%s'."
 msgstr "OYA Kurema Ibisohoka IDOSIYE"
 
-#: info/session.c:3341 info/session.c:3463 info/session.c:3523
+#: info/session.c:3344 info/session.c:3466 info/session.c:3526
 msgid "Done."
 msgstr "Byakozwe."
 
-#: info/session.c:3396
+#: info/session.c:3399
 #, c-format
 msgid "Writing node %s..."
 msgstr ""
 
-#: info/session.c:3472
+#: info/session.c:3475
 #, fuzzy
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "i Ibigize Bya iyi Gihinguranya"
 
-#: info/session.c:3507
+#: info/session.c:3510
 #, fuzzy, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Gufungura Kuri"
 
-#: info/session.c:3513
+#: info/session.c:3516
 #, c-format
 msgid "Printing node %s..."
 msgstr ""
 
-#: info/session.c:3730
+#: info/session.c:3733
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3735
+#: info/session.c:3738
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "Kuri i Itangiriro Bya i Umurongo"
 
-#: info/session.c:3752
+#: info/session.c:3755
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr ""
 
-#: info/session.c:3809
+#: info/session.c:3812
 #, fuzzy
 msgid "Read a string and search for it case-sensitively"
 msgstr "a Ikurikiranyanyuguti Na Gushaka kugirango"
 
-#: info/session.c:3816
+#: info/session.c:3819
 #, fuzzy
 msgid "Read a string and search for it"
 msgstr "a Ikurikiranyanyuguti Na Gushaka kugirango"
 
-#: info/session.c:3824
+#: info/session.c:3827
 #, fuzzy
 msgid "Read a string and search backward for it"
 msgstr "a Ikurikiranyanyuguti Na Gushaka subira inyuma kugirango"
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%sforIkurikiranyanyuguti"
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3864 info/session.c:3870
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3865 info/session.c:3871
 msgid " case-sensitively"
 msgstr ""
 
-#: info/session.c:3863 info/session.c:3869
+#: info/session.c:3866 info/session.c:3872
 #, fuzzy
 msgid " backward"
 msgstr "Gushaka usubira inyuma"
 
-#: info/session.c:3867
+#: info/session.c:3870
 msgid "Search"
 msgstr "Gushaka"
 
-#: info/session.c:3908
+#: info/session.c:3911
 #, fuzzy
 msgid "Search failed."
 msgstr "Byanze"
 
-#: info/session.c:3926
+#: info/session.c:3929
 #, fuzzy
 msgid "Repeat last search in the same direction"
 msgstr "Iheruka Gushaka in i Icyerekezo"
 
-#: info/session.c:3929 info/session.c:3939
+#: info/session.c:3932 info/session.c:3942
 #, fuzzy
 msgid "No previous search string"
 msgstr "Ibanjirije Gushaka Ikurikiranyanyuguti"
 
-#: info/session.c:3936
+#: info/session.c:3939
 #, fuzzy
 msgid "Repeat last search in the reverse direction"
 msgstr "Iheruka Gushaka in i Ihindurakerekezo Icyerekezo"
 
-#: info/session.c:3955 info/session.c:3961
+#: info/session.c:3958 info/session.c:3964
 #, fuzzy
 msgid "Search interactively for a string as you type it"
 msgstr "kugirango a Ikurikiranyanyuguti Nka Ubwoko"
 
-#: info/session.c:4041
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "Gushaka subira inyuma"
 
-#: info/session.c:4042
+#: info/session.c:4045
 #, fuzzy
 msgid "I-search backward: "
 msgstr "Gushaka subira inyuma"
 
-#: info/session.c:4044
+#: info/session.c:4047
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "Gushaka"
 
-#: info/session.c:4045
+#: info/session.c:4048
 #, fuzzy
 msgid "I-search: "
 msgstr "Gushaka"
 
-#: info/session.c:4070 info/session.c:4072
+#: info/session.c:4073 info/session.c:4075
 msgid "Failing "
 msgstr ""
 
-#: info/session.c:4556
+#: info/session.c:4560
 #, fuzzy
 msgid "Move to the previous cross reference"
 msgstr "Kuri i Ibanjirije Kwambukiranya Indango"
 
-#: info/session.c:4574
+#: info/session.c:4578
 #, fuzzy
 msgid "Move to the next cross reference"
 msgstr "Kuri i Komeza>> Kwambukiranya Indango"
 
-#: info/session.c:4596
+#: info/session.c:4600
 #, fuzzy
 msgid "Select reference or menu item appearing on this line"
 msgstr "Indango Cyangwa Ibikubiyemo Ikintu ku iyi Umurongo"
 
-#: info/session.c:4619
+#: info/session.c:4623
 #, fuzzy
 msgid "Cancel current operation"
 msgstr "KIGEZWEHO"
 
-#: info/session.c:4626
+#: info/session.c:4630
 msgid "Quit"
 msgstr "Kuvamo"
 
-#: info/session.c:4635
+#: info/session.c:4639
 #, fuzzy
 msgid "Move the cursor to a specific line of the window"
 msgstr "i indanga Kuri a Umurongo Bya i Idirishya"
 
-#: info/session.c:4667
+#: info/session.c:4671
 #, fuzzy
 msgid "Redraw the display"
 msgstr "i Kugaragaza"
 
-#: info/session.c:4704
+#: info/session.c:4708
 #, fuzzy
 msgid "Quit using Info"
 msgstr "ikoresha"
 
-#: info/session.c:4717
+#: info/session.c:4721
 #, fuzzy
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Komandi: Kuri iyi Inyuguti nto"
 
-#: info/session.c:4728
+#: info/session.c:4732
 #, fuzzy, c-format
 msgid "Unknown command (%s)."
 msgstr "Komandi:"
 
-#: info/session.c:4731
+#: info/session.c:4735
 #, fuzzy, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\"ni Sibyo"
 
-#: info/session.c:4732
+#: info/session.c:4736
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "`%s'ni Sibyo"
 
-#: info/session.c:4946
+#: info/session.c:4950
 #, fuzzy
 msgid "Add this digit to the current numeric argument"
 msgstr "iyi Kuri i KIGEZWEHO Bikurikije umubare"
 
-#: info/session.c:4955
+#: info/session.c:4959
 #, fuzzy
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Gutangira Cyangwa Gukuba ku 4. i KIGEZWEHO Bikurikije umubare"
 
-#: info/session.c:4970
+#: info/session.c:4974
 #, fuzzy
 msgid "Internally used by \\[universal-argument]"
 msgstr "ku Ky'isi yose"

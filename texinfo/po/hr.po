@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-21 19:03+0100\n"
+"POT-Creation-Date: 2008-03-25 11:46+0100\n"
 "PO-Revision-Date: 2002-04-26 13:49-MET+DST (UTC+2)\n"
 "Last-Translator: Mirsad Todorovac <mtodorov_69@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -1145,7 +1145,7 @@ msgstr "Izaberi èvor koji je prethodno bio posjeæen u vidljivi prozor"
 msgid "Select visited node: "
 msgstr "Izaberi posjeæeni èvor: "
 
-#: info/nodemenu.c:336 info/session.c:2440
+#: info/nodemenu.c:336 info/session.c:2443
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referenca je nestala! (%s)."
@@ -1204,40 +1204,40 @@ msgstr "Idi naprijed ili nani¾e kruz strukturu èvorova"
 msgid "Move backwards or up through node structure"
 msgstr "Idi unatrag ili gore kroz strukturu èvorova"
 
-#: info/session.c:1370
+#: info/session.c:1373
 msgid "Scroll forward in this window"
 msgstr "'Skrolaj' prema gore u ovom prozoru"
 
-#: info/session.c:1378
+#: info/session.c:1381
 msgid "Scroll forward in this window and set default window size"
 msgstr ""
 "'Skrolaj' prema dolje u ovom prozoru i postavi inicijalnu velièinu prozora"
 
-#: info/session.c:1386
+#: info/session.c:1389
 msgid "Scroll forward in this window staying within node"
 msgstr "'Skrolaj' prema dolje u ovom prozoru ostajuæi unutar èvora"
 
-#: info/session.c:1394
+#: info/session.c:1397
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "'Skrolaj' prema dolje u ovom prozoru ostajuæi unutar èvora i postavi "
 "inicijalnu velièinu prozora"
 
-#: info/session.c:1402
+#: info/session.c:1405
 msgid "Scroll backward in this window"
 msgstr "'Skrolaj' prema gore u ovom prozoru"
 
-#: info/session.c:1410
+#: info/session.c:1413
 msgid "Scroll backward in this window and set default window size"
 msgstr ""
 "'Skrolaj' prema gore u ovom prozoru i postavi inicijalnu velièinu prozora"
 
-#: info/session.c:1419
+#: info/session.c:1422
 msgid "Scroll backward in this window staying within node"
 msgstr "'Skrolaj' prema gore u ovom prozoru ostajuæi unutar èvora"
 
-#: info/session.c:1427
+#: info/session.c:1430
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1245,428 +1245,428 @@ msgstr ""
 "'Skrolaj' prema gore u ovom prozoru ostajuæi unutar èvora i postavi "
 "inicijalnu velièinu prozora"
 
-#: info/session.c:1435
+#: info/session.c:1438
 msgid "Move to the start of this node"
 msgstr "Pomakni se na poèetak trenutnog èvora"
 
-#: info/session.c:1442
+#: info/session.c:1445
 msgid "Move to the end of this node"
 msgstr "Pomakni se na kraj trenutnog èvora"
 
-#: info/session.c:1449
+#: info/session.c:1452
 msgid "Scroll down by lines"
 msgstr "'Skrolaj' dolje za redaka"
 
-#: info/session.c:1466
+#: info/session.c:1469
 msgid "Scroll up by lines"
 msgstr "'Skrolaj' gore za redaka"
 
-#: info/session.c:1484
+#: info/session.c:1487
 msgid "Scroll down by half screen size"
 msgstr "'Skrolaj' dolje za polovinu velièine ekrana"
 
-#: info/session.c:1510
+#: info/session.c:1513
 msgid "Scroll up by half screen size"
 msgstr "'Skrolaj' gore za polovinu velièine ekrana"
 
-#: info/session.c:1539
+#: info/session.c:1542
 msgid "Select the next window"
 msgstr "Selektiraj slijedeæi prozor"
 
-#: info/session.c:1578
+#: info/session.c:1581
 msgid "Select the previous window"
 msgstr "Selektiraj prethodni prozor"
 
-#: info/session.c:1629
+#: info/session.c:1632
 msgid "Split the current window"
 msgstr "Raspolovi trenutni prozor"
 
-#: info/session.c:1710
+#: info/session.c:1713
 msgid "Delete the current window"
 msgstr "Obri¹i trenutni prozor"
 
-#: info/session.c:1718
+#: info/session.c:1721
 msgid "Cannot delete a permanent window"
 msgstr "Ne mogu obrisati permanentni prozor"
 
-#: info/session.c:1750
+#: info/session.c:1753
 msgid "Delete all other windows"
 msgstr "Obri¹i sve ostale prozore"
 
-#: info/session.c:1796
+#: info/session.c:1799
 msgid "Scroll the other window"
 msgstr "'Skrolaj' drugi prozor"
 
-#: info/session.c:1817
+#: info/session.c:1820
 msgid "Scroll the other window backward"
 msgstr "'Skrolaj' drugi prozor unazad"
 
-#: info/session.c:1823
+#: info/session.c:1826
 msgid "Grow (or shrink) this window"
 msgstr "Poveæaj (ili smanji) ovaj prozor"
 
-#: info/session.c:1834
+#: info/session.c:1837
 msgid "Divide the available screen space among the visible windows"
 msgstr "Podijeli vidljivu povr¹inu ekrana izmeðu vidljivih prozora"
 
-#: info/session.c:1841
+#: info/session.c:1844
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Promijeni stanje prelamanja linija u trenutnom prozoru"
 
-#: info/session.c:1848
+#: info/session.c:1851
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1852
+#: info/session.c:1855
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1853
+#: info/session.c:1856
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2024
+#: info/session.c:2027
 msgid "Select the Next node"
 msgstr "Prika¾i Next (slijedeæi) èvor"
 
-#: info/session.c:2032
+#: info/session.c:2035
 msgid "Select the Prev node"
 msgstr "Prika¾i Prev (prethodni) èvor"
 
-#: info/session.c:2040
+#: info/session.c:2043
 msgid "Select the Up node"
 msgstr "Prika¾i Up (gornji) èvor"
 
-#: info/session.c:2047
+#: info/session.c:2050
 msgid "Select the last node in this file"
 msgstr "Prika¾i posljednji èvor u ovoj datoteci"
 
-#: info/session.c:2074 info/session.c:2107
+#: info/session.c:2077 info/session.c:2110
 msgid "This window has no additional nodes"
 msgstr "Ovaj prozor nema dodatnih èvorova"
 
-#: info/session.c:2080
+#: info/session.c:2083
 msgid "Select the first node in this file"
 msgstr "Prika¾i prvi èvor u ovoj datoteci"
 
-#: info/session.c:2114
+#: info/session.c:2117
 msgid "Select the last item in this node's menu"
 msgstr "Prika¾i zadnji èvor u ovoj datoteci"
 
-#: info/session.c:2120
+#: info/session.c:2123
 msgid "Select this menu item"
 msgstr "Selektiraj ovu stavku menija"
 
-#: info/session.c:2153
+#: info/session.c:2156
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Nema %d stavaka u ovom meniju."
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2350 info/session.c:2351
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Stavka menija (%s): "
 
-#: info/session.c:2351
+#: info/session.c:2354
 msgid "Menu item: "
 msgstr "Stavka menija: "
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2361 info/session.c:2362
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Slijedi xref (%s): "
 
-#: info/session.c:2362
+#: info/session.c:2365
 msgid "Follow xref: "
 msgstr "Slijedi xref: "
 
-#: info/session.c:2491
+#: info/session.c:2494
 msgid "Read a menu item and select its node"
 msgstr "Èitaj stavku menija i selektiraj njen èvor"
 
-#: info/session.c:2499
+#: info/session.c:2502
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Èitaj fusnotu ili referencu i selektiraj njezin èvor"
 
-#: info/session.c:2505
+#: info/session.c:2508
 msgid "Move to the start of this node's menu"
 msgstr "Idi na poèetak menija ovog èvora"
 
-#: info/session.c:2529
+#: info/session.c:2532
 msgid "Visit as many menu items at once as possible"
 msgstr "Posjeti ¹to je vi¹e moguæe stavki odjednom"
 
-#: info/session.c:2557
+#: info/session.c:2560
 msgid "Read a node name and select it"
 msgstr "Èitaj ime èvora i selektiraj ga"
 
-#: info/session.c:2612 info/session.c:2617
+#: info/session.c:2615 info/session.c:2620
 msgid "Goto node: "
 msgstr "Idi na èvor: "
 
-#: info/session.c:2681
+#: info/session.c:2684
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Nema menija u èvoru `%s'."
 
-#: info/session.c:2727
+#: info/session.c:2730
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Nema stavke menija `%s' u èvoru `%s'."
 
-#: info/session.c:2757
+#: info/session.c:2760
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Ne mogu naæi èvor referenciran od `%s' u `%s'."
 
-#: info/session.c:2807
+#: info/session.c:2810
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Èitaj listu menija poèev¹i od dir i slijedi ih"
 
-#: info/session.c:2809
+#: info/session.c:2812
 msgid "Follow menus: "
 msgstr "Slijedi menije: "
 
-#: info/session.c:3002
+#: info/session.c:3005
 msgid "Find the node describing program invocation"
 msgstr "Pronaði èvor koji opisuje pozivanje programa"
 
-#: info/session.c:3004
+#: info/session.c:3007
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Naði èvor pozivanja (Invocation) od [%s]: "
 
-#: info/session.c:3042
+#: info/session.c:3045
 msgid "Read a manpage reference and select it"
 msgstr "Proèitaj referentnu man stranicu i selektiraj je"
 
-#: info/session.c:3046
+#: info/session.c:3049
 msgid "Get Manpage: "
 msgstr "Dobavi man stranicu: "
 
-#: info/session.c:3076
+#: info/session.c:3079
 msgid "Select the node `Top' in this file"
 msgstr "Selektiraj èvor `Top' u ovoj datoteci"
 
-#: info/session.c:3082
+#: info/session.c:3085
 msgid "Select the node `(dir)'"
 msgstr "Selektiraj èvor `(dir)'"
 
-#: info/session.c:3099 info/session.c:3101
+#: info/session.c:3102 info/session.c:3104
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Poni¹ti èvor (%s): "
 
-#: info/session.c:3153
+#: info/session.c:3156
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Ne mogu poni¹titi èvor `%s'"
 
-#: info/session.c:3163
+#: info/session.c:3166
 msgid "Cannot kill the last node"
 msgstr "Ne mogu poni¹titi zadnji èvor"
 
-#: info/session.c:3249
+#: info/session.c:3252
 msgid "Select the most recently selected node"
 msgstr "Selektiraj najzadnji odabrani èvor"
 
-#: info/session.c:3255
+#: info/session.c:3258
 msgid "Kill this node"
 msgstr "Poni¹ti ovaj èvor"
 
-#: info/session.c:3263
+#: info/session.c:3266
 msgid "Read the name of a file and select it"
 msgstr "Proèitaj ime datoteke i selektiraj ga"
 
-#: info/session.c:3267
+#: info/session.c:3270
 msgid "Find file: "
 msgstr "Naði datoteku: "
 
-#: info/session.c:3284
+#: info/session.c:3287
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Ne mogu naæi `%s'."
 
-#: info/session.c:3327 info/session.c:3445
+#: info/session.c:3330 info/session.c:3448
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Ne mogu kreirati izlaznu datoteku `%s'."
 
-#: info/session.c:3341 info/session.c:3463 info/session.c:3523
+#: info/session.c:3344 info/session.c:3466 info/session.c:3526
 msgid "Done."
 msgstr "Gotovo."
 
-#: info/session.c:3396
+#: info/session.c:3399
 #, c-format
 msgid "Writing node %s..."
 msgstr "Ispisujem èvor %s..."
 
-#: info/session.c:3472
+#: info/session.c:3475
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Propusti sadr¾aj ovog èvora kroz cjevovod (pipe) prema INFO_PRINT_COMMAND"
 
-#: info/session.c:3507
+#: info/session.c:3510
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Ne mogu otvoriti cjevovod (pipe) prema `%s'."
 
-#: info/session.c:3513
+#: info/session.c:3516
 #, c-format
 msgid "Printing node %s..."
 msgstr "Ispisujem èvor %s..."
 
-#: info/session.c:3730
+#: info/session.c:3733
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3735
+#: info/session.c:3738
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "Obri¹i tekst do poèetka retka"
 
-#: info/session.c:3752
+#: info/session.c:3755
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Tra¾im poddatoteku %s ..."
 
-#: info/session.c:3809
+#: info/session.c:3812
 msgid "Read a string and search for it case-sensitively"
 msgstr "Èitaj niz znakova i kreni u potragu za njim (case-sensitive)"
 
-#: info/session.c:3816
+#: info/session.c:3819
 msgid "Read a string and search for it"
 msgstr "Èitaj niz znakova i potra¾i ga"
 
-#: info/session.c:3824
+#: info/session.c:3827
 msgid "Read a string and search backward for it"
 msgstr "Èitaj niz znakova i potra¾i ga unatrag"
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%sza niz znakova [%s]: "
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3864 info/session.c:3870
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3865 info/session.c:3871
 #, fuzzy
 msgid " case-sensitively"
 msgstr " (case-sensitive) "
 
-#: info/session.c:3863 info/session.c:3869
+#: info/session.c:3866 info/session.c:3872
 #, fuzzy
 msgid " backward"
 msgstr "Tra¾i unazad"
 
-#: info/session.c:3867
+#: info/session.c:3870
 msgid "Search"
 msgstr "Tra¾i"
 
-#: info/session.c:3908
+#: info/session.c:3911
 msgid "Search failed."
 msgstr "Pretra¾ivanje neuspjelo."
 
-#: info/session.c:3926
+#: info/session.c:3929
 msgid "Repeat last search in the same direction"
 msgstr "Ponovi zadnje pretra¾ivanje u istom pravcu"
 
-#: info/session.c:3929 info/session.c:3939
+#: info/session.c:3932 info/session.c:3942
 msgid "No previous search string"
 msgstr "Nema prethodnog tra¾enog niza"
 
-#: info/session.c:3936
+#: info/session.c:3939
 msgid "Repeat last search in the reverse direction"
 msgstr "Ponovi zadnje pretra¾ivanje u suprotnom pravcu"
 
-#: info/session.c:3955 info/session.c:3961
+#: info/session.c:3958 info/session.c:3964
 msgid "Search interactively for a string as you type it"
 msgstr "Tra¾i niz interaktivno kako ga tipkate"
 
-#: info/session.c:4041
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "I-pretraga unazad: "
 
-#: info/session.c:4042
+#: info/session.c:4045
 msgid "I-search backward: "
 msgstr "I-pretraga unazad: "
 
-#: info/session.c:4044
+#: info/session.c:4047
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "I-pretraga: "
 
-#: info/session.c:4045
+#: info/session.c:4048
 msgid "I-search: "
 msgstr "I-pretraga: "
 
-#: info/session.c:4070 info/session.c:4072
+#: info/session.c:4073 info/session.c:4075
 msgid "Failing "
 msgstr "Neuspjela "
 
-#: info/session.c:4556
+#: info/session.c:4560
 msgid "Move to the previous cross reference"
 msgstr "Idi na prethodnu referencu"
 
-#: info/session.c:4574
+#: info/session.c:4578
 msgid "Move to the next cross reference"
 msgstr "Idi na slijedeæu referencu"
 
-#: info/session.c:4596
+#: info/session.c:4600
 msgid "Select reference or menu item appearing on this line"
 msgstr "Selektiraj referencu ili stavku menija koja se pojavljuje u retku"
 
-#: info/session.c:4619
+#: info/session.c:4623
 msgid "Cancel current operation"
 msgstr "Poni¹ti trenutnu operaciju"
 
-#: info/session.c:4626
+#: info/session.c:4630
 msgid "Quit"
 msgstr "Zavr¹i (Quit)"
 
-#: info/session.c:4635
+#: info/session.c:4639
 msgid "Move the cursor to a specific line of the window"
 msgstr "Pomakni kurzor na specificirani redak prozora"
 
-#: info/session.c:4667
+#: info/session.c:4671
 msgid "Redraw the display"
 msgstr "Osvje¾i prikaz"
 
-#: info/session.c:4704
+#: info/session.c:4708
 msgid "Quit using Info"
 msgstr "Zavr¹i kori¹tenje Info-a"
 
-#: info/session.c:4717
+#: info/session.c:4721
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Izvr¹i naredbu povezanu s malim slovom varijantom ove tipke"
 
-#: info/session.c:4728
+#: info/session.c:4732
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Nepoznata naredba (%s)."
 
-#: info/session.c:4731
+#: info/session.c:4735
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" je neispravno"
 
-#: info/session.c:4732
+#: info/session.c:4736
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" je neispravno"
 
-#: info/session.c:4946
+#: info/session.c:4950
 msgid "Add this digit to the current numeric argument"
 msgstr "Dodaj ovu znamenku trenutnom numerièkom argumentu"
 
-#: info/session.c:4955
+#: info/session.c:4959
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Zapoèni (ili pomno¾i s 4) trenutni numerièki argument"
 
-#: info/session.c:4970
+#: info/session.c:4974
 msgid "Internally used by \\[universal-argument]"
 msgstr "Interno kori¹ten od \\[universal-argument]"
 

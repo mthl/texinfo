@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2e\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-21 19:03+0100\n"
+"POT-Creation-Date: 2008-03-25 11:46+0100\n"
 "PO-Revision-Date: 2002-11-08 09:13GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -1139,7 +1139,7 @@ msgstr "Vælg et emne, som tidligere har været besøgt i et synligt vindue"
 msgid "Select visited node: "
 msgstr "Vælg besøgt emne: "
 
-#: info/nodemenu.c:336 info/session.c:2440
+#: info/nodemenu.c:336 info/session.c:2443
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referencen forsvandt! (%s)."
@@ -1198,464 +1198,464 @@ msgstr "Gå frem eller ned gennem emne-strukturen"
 msgid "Move backwards or up through node structure"
 msgstr "Gå tilbage eller op gennem emne-strukturen"
 
-#: info/session.c:1370
+#: info/session.c:1373
 msgid "Scroll forward in this window"
 msgstr "Rul tilbage i vinduet"
 
-#: info/session.c:1378
+#: info/session.c:1381
 msgid "Scroll forward in this window and set default window size"
 msgstr "Rul frem i vinduet og sæt standard vinduesstørrelse"
 
-#: info/session.c:1386
+#: info/session.c:1389
 msgid "Scroll forward in this window staying within node"
 msgstr "Rul frem i vinduet i samme emne"
 
-#: info/session.c:1394
+#: info/session.c:1397
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "Rul frem i vinduet i samme emne og sæt standard vinduesstørrelse"
 
-#: info/session.c:1402
+#: info/session.c:1405
 msgid "Scroll backward in this window"
 msgstr "Rul tilbage i vinduet"
 
-#: info/session.c:1410
+#: info/session.c:1413
 msgid "Scroll backward in this window and set default window size"
 msgstr "Rul tilbage i vinduet og sæt standard vinduesstørrelse"
 
-#: info/session.c:1419
+#: info/session.c:1422
 msgid "Scroll backward in this window staying within node"
 msgstr "Rul tilbage i vinduet indenfor samme emne"
 
-#: info/session.c:1427
+#: info/session.c:1430
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr ""
 "Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
 
-#: info/session.c:1435
+#: info/session.c:1438
 msgid "Move to the start of this node"
 msgstr "Gå til starten af dette emne"
 
-#: info/session.c:1442
+#: info/session.c:1445
 msgid "Move to the end of this node"
 msgstr "Gå til slutningen af dette emne"
 
-#: info/session.c:1449
+#: info/session.c:1452
 msgid "Scroll down by lines"
 msgstr "Rul N linjer ned"
 
-#: info/session.c:1466
+#: info/session.c:1469
 msgid "Scroll up by lines"
 msgstr "Rul N linjer op"
 
-#: info/session.c:1484
+#: info/session.c:1487
 msgid "Scroll down by half screen size"
 msgstr "Rul en halv skærmstørrelse ned"
 
-#: info/session.c:1510
+#: info/session.c:1513
 msgid "Scroll up by half screen size"
 msgstr "Rul en halv skærmstørrelse op"
 
-#: info/session.c:1539
+#: info/session.c:1542
 msgid "Select the next window"
 msgstr "Vælg det næste vindue"
 
-#: info/session.c:1578
+#: info/session.c:1581
 msgid "Select the previous window"
 msgstr "Vælg det forrige vindue"
 
-#: info/session.c:1629
+#: info/session.c:1632
 msgid "Split the current window"
 msgstr "Opdel nuværende vindue"
 
-#: info/session.c:1710
+#: info/session.c:1713
 msgid "Delete the current window"
 msgstr "Slet nuværende vindue"
 
-#: info/session.c:1718
+#: info/session.c:1721
 msgid "Cannot delete a permanent window"
 msgstr "Kan ikke slette et permanent vindue"
 
-#: info/session.c:1750
+#: info/session.c:1753
 msgid "Delete all other windows"
 msgstr "Slet alle andre vinduer"
 
-#: info/session.c:1796
+#: info/session.c:1799
 msgid "Scroll the other window"
 msgstr "Rul det andet vindue"
 
-#: info/session.c:1817
+#: info/session.c:1820
 msgid "Scroll the other window backward"
 msgstr "Rul det andet vindue baglæns"
 
-#: info/session.c:1823
+#: info/session.c:1826
 msgid "Grow (or shrink) this window"
 msgstr "Forstør (eller formindsk) dette vindue"
 
-#: info/session.c:1834
+#: info/session.c:1837
 msgid "Divide the available screen space among the visible windows"
 msgstr "Fordel det tilgængelige skærmområde mellem de synlige vinduer"
 
-#: info/session.c:1841
+#: info/session.c:1844
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Vælg/fravælg linjeombrydning i nuværende vindue"
 
-#: info/session.c:1848
+#: info/session.c:1851
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1852
+#: info/session.c:1855
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1853
+#: info/session.c:1856
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2024
+#: info/session.c:2027
 msgid "Select the Next node"
 msgstr "Vælg emnet Næste"
 
-#: info/session.c:2032
+#: info/session.c:2035
 msgid "Select the Prev node"
 msgstr "Vælg emnet Forrige"
 
-#: info/session.c:2040
+#: info/session.c:2043
 msgid "Select the Up node"
 msgstr "Vælg emnet 'Op'"
 
-#: info/session.c:2047
+#: info/session.c:2050
 msgid "Select the last node in this file"
 msgstr "Vælg det sidste emne i filen"
 
-#: info/session.c:2074 info/session.c:2107
+#: info/session.c:2077 info/session.c:2110
 msgid "This window has no additional nodes"
 msgstr "Dette vindue har ingen yderligere emner"
 
-#: info/session.c:2080
+#: info/session.c:2083
 msgid "Select the first node in this file"
 msgstr "Vælg det første emne i filen"
 
-#: info/session.c:2114
+#: info/session.c:2117
 msgid "Select the last item in this node's menu"
 msgstr "Vælg det sidste punkt i emnets menu"
 
-#: info/session.c:2120
+#: info/session.c:2123
 msgid "Select this menu item"
 msgstr "Vælg dette menupunkt"
 
-#: info/session.c:2153
+#: info/session.c:2156
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "Der er ikke %d punkter i denne menu."
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2350 info/session.c:2351
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menupunkt (%s): "
 
-#: info/session.c:2351
+#: info/session.c:2354
 msgid "Menu item: "
 msgstr "Menupunkt: "
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2361 info/session.c:2362
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Følg krydsreference (%s): "
 
-#: info/session.c:2362
+#: info/session.c:2365
 msgid "Follow xref: "
 msgstr "Følg krydsreference: "
 
-#: info/session.c:2491
+#: info/session.c:2494
 msgid "Read a menu item and select its node"
 msgstr "Indlæs et menupunkt og vælg dets emne"
 
-#: info/session.c:2499
+#: info/session.c:2502
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Indlæs en fodnote eller krydsreference og vælg dets emne"
 
-#: info/session.c:2505
+#: info/session.c:2508
 msgid "Move to the start of this node's menu"
 msgstr "Flyt til starten af dette emnes menu"
 
-#: info/session.c:2529
+#: info/session.c:2532
 msgid "Visit as many menu items at once as possible"
 msgstr "Besøg så mange menupunkter på en gang, som det er muligt"
 
-#: info/session.c:2557
+#: info/session.c:2560
 msgid "Read a node name and select it"
 msgstr "Indlæs et emnenavn og vælg det"
 
-#: info/session.c:2612 info/session.c:2617
+#: info/session.c:2615 info/session.c:2620
 msgid "Goto node: "
 msgstr "Gå til emne: "
 
-#: info/session.c:2681
+#: info/session.c:2684
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "Ingen menu i emne '%s'."
 
-#: info/session.c:2727
+#: info/session.c:2730
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Intet menupunkt '%s' i emne '%s'."
 
-#: info/session.c:2757
+#: info/session.c:2760
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Kunne ikke finde emnet, der refereres til af '%s' i '%s'."
 
-#: info/session.c:2807
+#: info/session.c:2810
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Indlæs en liste med menuer, der starter i katalog, og følg dem"
 
-#: info/session.c:2809
+#: info/session.c:2812
 msgid "Follow menus: "
 msgstr "Følg menuer: "
 
-#: info/session.c:3002
+#: info/session.c:3005
 msgid "Find the node describing program invocation"
 msgstr "Find emnet, der beskriver hvordan programmet startes"
 
-#: info/session.c:3004
+#: info/session.c:3007
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Find programstart emne for [%s]: "
 
-#: info/session.c:3042
+#: info/session.c:3045
 msgid "Read a manpage reference and select it"
 msgstr "Indlæs en man-side reference og vælg den"
 
-#: info/session.c:3046
+#: info/session.c:3049
 msgid "Get Manpage: "
 msgstr "Hent man-side: "
 
-#: info/session.c:3076
+#: info/session.c:3079
 msgid "Select the node `Top' in this file"
 msgstr "Vælg emnet 'Top' i filen"
 
-#: info/session.c:3082
+#: info/session.c:3085
 msgid "Select the node `(dir)'"
 msgstr "Vælg emnet '(katalog)'"
 
-#: info/session.c:3099 info/session.c:3101
+#: info/session.c:3102 info/session.c:3104
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Fjern emne (%s): "
 
-#: info/session.c:3153
+#: info/session.c:3156
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Kan ikke fjerne emnet '%s'"
 
-#: info/session.c:3163
+#: info/session.c:3166
 msgid "Cannot kill the last node"
 msgstr "Kan ikke fjerne det sidste emne"
 
-#: info/session.c:3249
+#: info/session.c:3252
 msgid "Select the most recently selected node"
 msgstr "Vælg det sidst valgt emne"
 
-#: info/session.c:3255
+#: info/session.c:3258
 msgid "Kill this node"
 msgstr "Fjern dette emne"
 
-#: info/session.c:3263
+#: info/session.c:3266
 msgid "Read the name of a file and select it"
 msgstr "Indlæs et filnavn og vælg det"
 
-#: info/session.c:3267
+#: info/session.c:3270
 msgid "Find file: "
 msgstr "Find fil: "
 
-#: info/session.c:3284
+#: info/session.c:3287
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Kan ikke finde '%s'."
 
-#: info/session.c:3327 info/session.c:3445
+#: info/session.c:3330 info/session.c:3448
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Kunne ikke oprette uddatafil '%s'."
 
-#: info/session.c:3341 info/session.c:3463 info/session.c:3523
+#: info/session.c:3344 info/session.c:3466 info/session.c:3526
 msgid "Done."
 msgstr "Færdig."
 
-#: info/session.c:3396
+#: info/session.c:3399
 #, c-format
 msgid "Writing node %s..."
 msgstr "Skriver emnet %s..."
 
-#: info/session.c:3472
+#: info/session.c:3475
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Udskriv indholdet af dette emne (ved videreførsel gennem INFO_PRINT_COMMAND)"
 
-#: info/session.c:3507
+#: info/session.c:3510
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Kan ikke åbne videreførsel til '%s'."
 
-#: info/session.c:3513
+#: info/session.c:3516
 #, c-format
 msgid "Printing node %s..."
 msgstr "Udskriver emnet %s..."
 
-#: info/session.c:3730
+#: info/session.c:3733
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3735
+#: info/session.c:3738
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "Slet bagud til linjestart"
 
-#: info/session.c:3752
+#: info/session.c:3755
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Leder efter underfilen %s ..."
 
-#: info/session.c:3809
+#: info/session.c:3812
 msgid "Read a string and search for it case-sensitively"
 msgstr "Indlæs en tekst og søg efter den uden versalfølsomhed"
 
-#: info/session.c:3816
+#: info/session.c:3819
 msgid "Read a string and search for it"
 msgstr "Indlæs en tekst og søg for den"
 
-#: info/session.c:3824
+#: info/session.c:3827
 msgid "Read a string and search backward for it"
 msgstr "Indlæs en tekst og søg baglæns efter den"
 
-#: info/session.c:3860 info/session.c:3866
+#: info/session.c:3863 info/session.c:3869
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%sefter tekst [%s]: "
 
-#: info/session.c:3861 info/session.c:3867
+#: info/session.c:3864 info/session.c:3870
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3862 info/session.c:3868
+#: info/session.c:3865 info/session.c:3871
 #, fuzzy
 msgid " case-sensitively"
 msgstr " versalfølsomt"
 
-#: info/session.c:3863 info/session.c:3869
+#: info/session.c:3866 info/session.c:3872
 #, fuzzy
 msgid " backward"
 msgstr "Søg baglæns"
 
-#: info/session.c:3867
+#: info/session.c:3870
 msgid "Search"
 msgstr "Søg"
 
-#: info/session.c:3908
+#: info/session.c:3911
 msgid "Search failed."
 msgstr "Søgning mislykkedes."
 
-#: info/session.c:3926
+#: info/session.c:3929
 msgid "Repeat last search in the same direction"
 msgstr "Gentag sidste søgning i samme retning"
 
-#: info/session.c:3929 info/session.c:3939
+#: info/session.c:3932 info/session.c:3942
 msgid "No previous search string"
 msgstr "Ingen tidligere søgetekst"
 
-#: info/session.c:3936
+#: info/session.c:3939
 msgid "Repeat last search in the reverse direction"
 msgstr "Gentag sidste søgning i modsat retning"
 
-#: info/session.c:3955 info/session.c:3961
+#: info/session.c:3958 info/session.c:3964
 msgid "Search interactively for a string as you type it"
 msgstr "Søg interaktivt efter en tekst, mens du skriver den"
 
-#: info/session.c:4041
+#: info/session.c:4044
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "I-søgning baglæns: "
 
-#: info/session.c:4042
+#: info/session.c:4045
 msgid "I-search backward: "
 msgstr "I-søgning baglæns: "
 
-#: info/session.c:4044
+#: info/session.c:4047
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "I-søgning: "
 
-#: info/session.c:4045
+#: info/session.c:4048
 msgid "I-search: "
 msgstr "I-søgning: "
 
-#: info/session.c:4070 info/session.c:4072
+#: info/session.c:4073 info/session.c:4075
 msgid "Failing "
 msgstr "Fejler "
 
-#: info/session.c:4556
+#: info/session.c:4560
 msgid "Move to the previous cross reference"
 msgstr "Gå til foregående krydsreference"
 
-#: info/session.c:4574
+#: info/session.c:4578
 msgid "Move to the next cross reference"
 msgstr "Gå til næste krydsreference"
 
-#: info/session.c:4596
+#: info/session.c:4600
 msgid "Select reference or menu item appearing on this line"
 msgstr "Vælg reference eller menupunkt, der optræder på denne linje"
 
-#: info/session.c:4619
+#: info/session.c:4623
 msgid "Cancel current operation"
 msgstr "Afbryd nuværende aktivitet"
 
-#: info/session.c:4626
+#: info/session.c:4630
 msgid "Quit"
 msgstr "Afslut"
 
-#: info/session.c:4635
+#: info/session.c:4639
 msgid "Move the cursor to a specific line of the window"
 msgstr "Flyt markør til bestemt linje i vinduet"
 
-#: info/session.c:4667
+#: info/session.c:4671
 msgid "Redraw the display"
 msgstr "Gentegn skærmen"
 
-#: info/session.c:4704
+#: info/session.c:4708
 msgid "Quit using Info"
 msgstr "Afslut info"
 
-#: info/session.c:4717
+#: info/session.c:4721
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Kør kommandoen, der er bundet til denne tasts småbogstavs-variant"
 
-#: info/session.c:4728
+#: info/session.c:4732
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Ukendt kommando (%s)."
 
-#: info/session.c:4731
+#: info/session.c:4735
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" er ugyldig"
 
-#: info/session.c:4732
+#: info/session.c:4736
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" er ugyldig"
 
-#: info/session.c:4946
+#: info/session.c:4950
 msgid "Add this digit to the current numeric argument"
 msgstr "Tilføj dette tegn til det nuværende numeriske parameter"
 
-#: info/session.c:4955
+#: info/session.c:4959
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Start (eller gang med 4) det nuværende numeriske parameter"
 
-#: info/session.c:4970
+#: info/session.c:4974
 msgid "Internally used by \\[universal-argument]"
 msgstr "Bruges internt af \\[universal-argument]"
 
