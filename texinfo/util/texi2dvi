@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.118 2008-03-23 15:21:40 karl Exp $
+# $Id: texi2dvi,v 1.119 2008-03-25 15:33:42 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.118 $'
+rcs_revision='$Revision: 1.119 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.11) $rcs_version
@@ -193,7 +193,7 @@ fi
 CDPATH=${ZSH_VERSION+.}$path_sep
 
 # If $TEX is set to a directory, don't use it.
-test -d "$TEX" && unset TEX
+test -n "$TEX" && test -d "$TEX" && unset TEX
 
 # 
 ## --------------------- ##

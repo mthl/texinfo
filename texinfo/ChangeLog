@@ -1,6 +1,11 @@
+2008-03-25  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (TEX): only unset it if it was nonempty and a
+	directory.
+
 2008-03-25  Akim Demaille  <akim@epita.fr>
 
-	* doc/Makefile.am: Use srcdir where appropriate.
+	* doc/Makefile.am: Use util_srcdir (new var) where appropriate.
 	(man_MANS): Also install texi2pdf.1 and pdftexi2dvi.1.
 	(unset_envvars): New.
 	Use it.
