@@ -1,3 +1,11 @@
+2008-03-25  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use do_unknown and unknown in pass 0 too.
+	* texi2html.init, examples/makeinfo.init: honor USE_ACCESSKEY
+	even if not split at node (report from Reinhold Kainhofer).
+	* texi2html.pl, texi2html.init, ChangeLog: correct typo in 
+	already (report from Reinhold Kainhofer).
+
 2008-03-23  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, doc/*, examples/makeinfo.init: 
@@ -290,7 +298,7 @@
 2006-08-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: fixes for split indices.
-	Fix detection of allready present heading.
+	Fix detection of already present heading.
 	Don't split top element accross pages because of split indices.
 	Simplify the file name determination.
 	* Tests/*: add a test case for split indices in chapter
@@ -460,7 +468,7 @@
 
 	* texi2html.init,texi2html.pl: clean the encoding related code by 
 	adding more variables associated with the different encodings.
-	Remove unneeded conversion code, given that the text is allready
+	Remove unneeded conversion code, given that the text is already
 	in the perl internal encoding.
 	* doc/, NEWS: document the changes.
 	* texi2html.pl: put explicitely the ref on hashes in the main 
@@ -1074,7 +1082,7 @@
 	don't use (encoding) in open, but set it in binmode (perl seems
 	unhappy otherwise ?).
 	* texi2html.init: don't enclose paragraph in <p> when it is the first
-	paragraph of enumerate or itemize, as the <li> is allready something
+	paragraph of enumerate or itemize, as the <li> is already something
 	like a begining of paragraph.
 
 2004-03-25  Derek Price  <derek@ximbiot.com>
@@ -1192,7 +1200,7 @@
 	* texi2html.pl: put cross manual reference and unicode related
 	functions in the main program (instead of T2h_unicode.pm,
 	T2h_nounicode.pm).
-	Don't add no-... options when there are allready the options added.
+	Don't add no-... options when there are already the options added.
 	* T2h_unicode.pm, T2h_nounicode.pm: remove.
 
 2004-02-07  Patrice Dumas  <dumas@centre-cired.fr> 
@@ -2090,7 +2098,7 @@
 2003-04-28  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: No heading for top, as print_Top 
-	allready does it.
+	already does it.
 	if $T2H_USE_NODES (command line -use-nodes) is set, the nodes are
 	used as sections when they are not associated with a section.
 	find sections structure before handling nodes.
@@ -2243,7 +2251,7 @@
 	* Tests: small fixes, more tests showing brokeness of texi2html
 	for some features and info and tex differences. 
 	A change in texinfo.txi to permit handling of verb despite some 
-	substitutions have allready been done
+	substitutions have already been done
 	* texi2html.pl: add comment about the formats in texinfo 4.5
 	setlocale is used in case of tests to avoid change in ordering of 
 	indices while testing against a reference file
@@ -2265,10 +2273,10 @@
 	* texi2html.pl: added handling of overbar accent @= is transformed
 	in =
 	the handling of multi lines macro is done in a function, scan_line
-	which scans a line, keeping a record of the text allready ready,
+	which scans a line, keeping a record of the text already ready,
 	the macro stack and a state which for now only contains 'verb' if in
 	@verb macro. The @verb macro is handled by this function (but since
-	things have allready been substituted, it cannot give the right 
+	things have already been substituted, it cannot give the right 
 	result easily)
 
 2003-02-19  Patrice Dumas <dumas@centre-cired.fr>

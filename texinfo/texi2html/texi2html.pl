@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.202 2008-03-23 15:03:43 pertusus Exp $
+# $Id: texi2html.pl,v 1.203 2008-03-25 23:17:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1569,7 +1569,7 @@ sub cross_manual_links()
                         $node_seen = $other_node;
                         last if ($nodes{$other_node}->{'seen'})
                     }
-                    echo_error("Node equivalent with `$node->{'texi'}' allready used `$node_seen'");
+                    echo_error("Node equivalent with `$node->{'texi'}' already used `$node_seen'");
                     push @{$other_node_array}, $node->{'texi'};
                 }
                 else 
@@ -3651,8 +3651,8 @@ sub pass_structure()
                                 }
                                 else
                                 { # All the refs are going to point to the first Top
-                                    echo_warn ("Top node allready exists", $line_nr);
-                                    #warn "$WARN Top node allready exists\n";
+                                    echo_warn ("Top node already exists", $line_nr);
+                                    #warn "$WARN Top node already exists\n";
                                 }
                             }
                             unless (@nodes_list)
@@ -4441,7 +4441,7 @@ sub equivalent_nodes($)
     return @equivalent_nodes;
 }
 
-my %files = ();   # keys are files. This is used to avoid reusing an allready
+my %files = ();   # keys are files. This is used to avoid reusing an already
                   # used file name
 my %empty_indices = (); # value is true for an index name key if the index 
                         # is empty
@@ -4813,7 +4813,7 @@ sub rearrange_elements()
         }
     }
     
-    # nodes are attached to the section preceding them if not allready 
+    # nodes are attached to the section preceding them if not already 
     # associated with a section
     # here we don't set @{$element->{'nodes'}} since it may be changed 
     # below if split by indices. Therefore we only set 
@@ -6203,7 +6203,7 @@ sub get_index($;$)
     }
     # add the index name itself to the index names searched for index
     # prefixes. Only those found associated by synindex or syncodeindex are 
-    # allready there (unless this code has allready been called).
+    # already there (unless this code has already been called).
     if ($index_names{$index_name}->{'code'})
     {
         $index_names{$index_name}->{'associated_indices_code'}->{$index_name} = 1;
@@ -9355,7 +9355,7 @@ sub scan_texi($$$$;$)
                     {
                          if (exists($macros->{$name}))
                          {
-                             echo_warn ("macro `$name' allready defined " . 
+                             echo_warn ("macro `$name' already defined " . 
                                  format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
                          }
                          
@@ -9604,7 +9604,7 @@ sub scan_texi($$$$;$)
             }
             else
             {
-                add_prev($text, $stack, "\@$macro") unless($state->{'ignored'});
+                $_ = do_unknown(0, $macro, $_, $text, $stack, $state, $line_nr);
             }
             next;
         }
@@ -9613,13 +9613,14 @@ sub scan_texi($$$$;$)
         {# ARG_EXPANSION
             # No need to warn here for @ followed by a character that
             # is not in any @-command and it is done later
-            add_prev($text, $stack, $1 . "\@$2") unless($state->{'ignored'});
+            add_prev($text, $stack, $1) unless($state->{'ignored'});
+            $_ = do_unknown(0, $2, $_, $text, $stack, $state, $line_nr);
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
         {
          # in ignored section we cannot be sure that there is an @-command
-         # allready opened so we must discard the text.
+         # already opened so we must discard the text.
          # ARG_EXPANSION
             add_prev($text, $stack, $1) unless($state->{'ignored'});
             if ($2 eq '{')
@@ -10133,7 +10134,7 @@ sub scan_structure($$$$;$)
                 {
                     if (/^$/)
                     {
-                        # We allready warned in pass texi
+                        # We already warned in pass texi
                         #warn "$ERROR verb at end of line";
                     }
                     else
@@ -10690,7 +10691,7 @@ sub scan_line($$$$;$)
                               # we set 'multiple_pass', 'region' and 
                               # 'region_pass'such that index entries
                               # and anchors are not handled one more time;
-                              # the caption has allready been formatted, 
+                              # the caption has already been formatted, 
                               # and these have been handled at the right place
                               # FIXME footnotes?
                               my $caption = substitute_text({ 'multiple_pass' => 1, 'region' => 'listoffloats', 'region_pass' => 1 }, @$caption_lines);
@@ -11905,6 +11906,11 @@ sub do_unknown($$$$$$$)
     elsif ($pass == 1)
     {
          add_prev ($text, $stack, "\@$macro");
+         return $line;
+    }
+    elsif ($pass == 0)
+    {
+         add_prev ($text, $stack, "\@$macro") unless($state->{'ignored'});
          return $line;
     }
 }

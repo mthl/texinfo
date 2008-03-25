@@ -1346,13 +1346,13 @@ for the description.
 @end table
 
 If @variable{$USE_ACCESSKEY} is set, the @code{accesskey} attribute 
-is used in navigation if split at nodes. In that case the 
-@variable{%BUTTONS_ACCESSKEY} hash is used for the access key.
+is used in navigation. In that case the @variable{%BUTTONS_ACCESSKEY} 
+hash is used for the access key.
 
 Similarly, if 
-If @variable{$USE_REL_REV} is set, the @code{rel} attribute 
-is used in navigation if split at nodes. In that case the 
-@variable{%BUTTONS_REL} hash is used for the rel attribute.
+If @variable{$USE_REL_REV} is set, the @code{rel} attribute is used 
+in navigation. In that case the @variable{%BUTTONS_REL} hash is used for 
+the rel attribute.
 
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -3296,7 +3296,7 @@ The simple formatting is used if @variable{$SIMPLE_MENU} is true,
 otherwise the format with tables is used (this is the default).
 
 If @variable{$USE_ACCESSKEY} is set, the @code{accesskey} attribute 
-is used in anchors if split at nodes. In that case the @variable{%BUTTONS_ACCESSKEY}
+is used in anchors. In that case the @variable{%BUTTONS_ACCESSKEY}
 hash is used for the access key.
 
 To understand how the formatting of menus is controlled, the different
