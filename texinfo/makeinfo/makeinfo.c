@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.117 2008-02-22 19:18:25 karl Exp $
+   $Id: makeinfo.c,v 1.118 2008-03-26 23:57:11 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -3266,9 +3266,9 @@ indent (int amount)
 }
 
 /* Search forward for STRING in input_text.
-   FROM says where where to start. */
+   FROM says where to start. */
 int
-search_forward (char *string, int from)
+search_forward (const char *string, int from)
 {
   int len = strlen (string);
 

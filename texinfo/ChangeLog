@@ -1,3 +1,9 @@
+2008-03-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (search_forward): use const.
+	Also (from William Xu) fix typo in comment.
+	* makeinfo/makeinfo.h (search_forward): change decl.
+
 2008-03-25  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (TEX): only unset it if it was nonempty and a
