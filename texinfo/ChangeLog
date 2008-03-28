@@ -1,3 +1,9 @@
+2008-03-28  Karl Berry  <karl@gnu.org>
+
+	* info/Makefile.am (funs.h): change target from all of
+	$(generated_sources) to avoid problems with parallel builds.
+	From Michael Haubenwallner, 20 Mar 2008 22:52:20.
+
 2008-03-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (search_forward): use const.
