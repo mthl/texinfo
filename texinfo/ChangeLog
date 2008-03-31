@@ -1,3 +1,11 @@
+2008-03-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dopdfimage): try .PDF too.
+	(\imagexxx): reduce space around vmode image to \medskip from \bigskip.
+	Start \noindent paragraph for vmode image so that @quotation etc.
+	indentation will be respected.
+	Report from Reinhold Kainhofer, 28 Mar 2008 17:33:05.
+
 2008-03-28  Karl Berry  <karl@gnu.org>
 
 	* info/Makefile.am (funs.h): change target from all of

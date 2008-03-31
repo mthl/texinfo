@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.218 2008-03-12 22:50:01 karl Exp $
+@c $Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9308,7 +9308,7 @@ since they are most often part of a displayed figure or example.
 @node Image Syntax
 @subsection Image Syntax
 
-Here is the basic synopsis of the @code{@@image} command:
+Here is the synopsis of the @code{@@image} command:
 
 @example
 @@image@{@var{filename}@r{[,} @var{width}@r{[,} @var{height}@r{[,} @var{alttext}@r{[, }@var{extension}@r{]]]]}@}
@@ -9331,8 +9331,8 @@ format).
 @pindex pdf image inclusions
 pdf@TeX{} reads @file{@var{filename}.png}, @file{@var{filename}.jpg},
 @file{@var{filename}.jpeg}, or @file{@var{filename}.pdf} (in that
-order).  The PDF format cannot support EPS images, so they must be
-converted first.
+order).  It also tries uppercase versions of the extensions.  The PDF
+format cannot support EPS images, so they must be converted first.
 @item
 @code{makeinfo} includes @file{@var{filename}.txt} verbatim for
 Info output (more or less as if it was an @code{@@example}).
@@ -9353,12 +9353,11 @@ will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
 The @var{width} and @var{height} arguments are described in the next
 section.
 
-For @TeX{} output, if an image is the first thing in a paragraph, for
-example if you want two images side-by-side, you must precede it with
-@code{@@noindent} (@pxref{noindent,,@code{@@noindent}}).  Otherwise it
-will be displayed on a line by itself, left-justified.  If you want it
-centered, use @code{@@center} (@pxref{titlefont center
-sp,,@code{@@titlefont @@center @@sp}}).
+For @TeX{} output, if an image is the only thing in a paragraph it
+will ordinarily be displayed on a line by itself, respecting the
+current environment indentation, but without the normal paragraph
+indentation.  If you want it centered, use @code{@@center}
+(@pxref{titlefont center sp,,@code{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
@@ -19066,7 +19065,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.218 2008-03-12 22:50:01 karl Exp $
+$Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19140,7 +19139,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.218 2008-03-12 22:50:01 karl Exp $
+@comment $Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
