@@ -1,3 +1,7 @@
+2008-04-02  Jim Meyering  <jim@meyering.net>  (tiny change)
+
+	* doc/texinfo.tex: fix typos in comments.
+
 2008-03-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\dopdfimage): try .PDF too.
