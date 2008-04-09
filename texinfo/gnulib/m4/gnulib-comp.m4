@@ -327,7 +327,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/memmove.m4
   m4/mkstemp.m4
   m4/nls.m4
-  m4/onceonly_2_57.m4
+  m4/onceonly.m4
   m4/po.m4
   m4/printf-posix.m4
   m4/progtest.m4
