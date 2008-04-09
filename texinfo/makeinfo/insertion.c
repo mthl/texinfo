@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.68 2008-01-31 18:33:27 karl Exp $
+   $Id: insertion.c,v 1.69 2008-04-09 16:10:45 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -561,8 +561,8 @@ begin_insertion (enum insertion_type type)
           last_char_was_newline = no_indent = 0;
           indented_fill = filling_enabled = 1;
           inhibit_paragraph_indentation = 1;
+          current_indent += default_indentation_increment;
         }
-      current_indent += default_indentation_increment;
       if (xml)
         xml_insert_quotation (insertion_stack->item_function, START);
       else if (strlen(insertion_stack->item_function))
@@ -1221,7 +1221,7 @@ end_insertion (enum insertion_type type)
          without a change in indentation. */
       if (type != format && type != smallformat && type != quotation)
         current_indent -= example_indentation_increment;
-      else if (type == quotation)
+      else if (type == quotation && !html)
         current_indent -= default_indentation_increment;
 
       if (html)
