@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.70 2008-04-09 16:35:51 karl Exp $
+   $Id: insertion.c,v 1.71 2008-04-09 17:31:10 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -1679,11 +1679,12 @@ handle_verbatim_environment (int find_end_verbatim)
       xml_insert_element (VERBATIM, START);
     }
 
-  { /* Ignore the remainder of the @verbatim line.  */
-    char *junk;
-    get_rest_of_line (0, &junk);
-    free (junk);
-  }
+  if (find_end_verbatim)
+    { /* Ignore the remainder of the @verbatim line.  */
+      char *junk;
+      get_rest_of_line (0, &junk);
+      free (junk);
+    }
   
   while (input_text_offset < input_text_length)
     {
