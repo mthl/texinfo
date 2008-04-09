@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.82 2008-02-17 19:07:58 karl Exp $
+   $Id: cmds.c,v 1.83 2008-04-09 17:07:31 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -45,6 +45,9 @@ static void cm_exampleindent (void),
      cm_firstparagraphindent (void),
      cm_fonttextsize (void),
      cm_frenchspacing (void),
+     cm_geq (int arg),
+     cm_leq (int arg),
+     cm_minus (int arg),
      cm_novalidate (void),
      cm_paragraphindent (void);
 
@@ -218,6 +221,7 @@ COMMAND command_table[] = {
   { "format", cm_format, NO_BRACE_ARGS },
   { "frenchspacing", cm_frenchspacing, NO_BRACE_ARGS },
   { "ftable", cm_ftable, NO_BRACE_ARGS },
+  { "geq", cm_geq, BRACE_ARGS },
   { "group", cm_group, NO_BRACE_ARGS },
   { "guillemetleft", cm_special_char, BRACE_ARGS },
   { "guillemetright", cm_special_char, BRACE_ARGS },
@@ -261,6 +265,7 @@ COMMAND command_table[] = {
   { "key", cm_key, BRACE_ARGS },
   { "kindex", cm_kindex, NO_BRACE_ARGS },
   { "l", cm_special_char, BRACE_ARGS },
+  { "leq", cm_leq, BRACE_ARGS },
   { "lisp", cm_lisp, NO_BRACE_ARGS },
   { "listoffloats", cm_listoffloats, NO_BRACE_ARGS },
   { "lowersections", cm_lowersections, NO_BRACE_ARGS },
@@ -502,7 +507,35 @@ cm_bullet (int arg)
     }
 }
 
-void
+static void
+cm_geq (int arg)
+{
+  if (arg == START)
+    {
+      if (xml)
+        xml_insert_entity ("ge");
+      else if (html)
+        add_word ("&ge;");
+      else
+        insert_string (">=");
+    }
+}
+
+static void
+cm_leq (int arg)
+{
+  if (arg == START)
+    {
+      if (xml)
+        xml_insert_entity ("le");
+      else if (html)
+        add_word ("&le;");
+      else
+        insert_string ("<=");
+    }
+}
+
+static void
 cm_minus (int arg)
 {
   if (arg == START)

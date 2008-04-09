@@ -1,5 +1,5 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.14 2008-01-31 18:33:27 karl Exp $
+   $Id: cmds.h,v 1.15 2008-04-09 17:07:31 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -105,7 +105,6 @@ extern void cm_LaTeX (int arg),
   cm_insert_copying (void),
   cm_guilsinglleft (int arg),
   cm_guilsinglright (int arg),
-  cm_minus (int arg),
   cm_point (int arg),
   cm_print (int arg),
   cm_punct (int arg),

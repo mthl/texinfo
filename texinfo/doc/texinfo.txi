@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
+@c $Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -451,6 +451,7 @@ Special Insertions
 * pounds::                      How to insert the pounds currency symbol.
 * textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
+* geq leq::                     How to insert greater/less-than-or-equal signs.
 * math::                        How to format a mathematical expression.
 * Click Sequences::             Inserting GUI usage sequences.
 * Glyphs::                      How to indicate results of evaluation,
@@ -9128,7 +9129,7 @@ an @code{@@group} (@pxref{group,,@code{@@group}}).
 
 
 @node float
-@subsection @code{@@float} [@var{type}][,@var{label}]: Floating material
+@subsection @code{@@float} [@var{type}][,@var{label}]: Floating Material
 @findex float
 @cindex Float environment
 
@@ -9245,7 +9246,7 @@ environments such as @code{@@example}, or other complex constructs.
 
 
 @node listoffloats
-@subsection @code{@@listoffloats}: Tables of contents for floats
+@subsection @code{@@listoffloats}: Tables of Contents for Floats
 @findex listoffloats
 @cindex List of floats
 @cindex Floats, list of
@@ -10050,6 +10051,7 @@ These are:
 * pounds::                      How to insert the pounds currency symbol.
 * textdegree::                  How to insert the degrees symbol.
 * minus::                       How to insert a minus sign.
+* geq leq::                     How to insert greater/less-than-or-equal signs.
 * math::                        How to format a mathematical expression.
 * Click Sequences::             Inserting GUI usage sequences.
 * Glyphs::                      How to indicate results of evaluation,
@@ -10811,6 +10813,9 @@ between the name of the command and the braces.
 @subsection @code{@@TeX}@{@} (@TeX{}) and @code{@@LaTeX}@{@} (@LaTeX{})
 @findex TeX
 @findex LaTeX
+@cindex Logos, @TeX{}
+@cindex @TeX{} logo
+@cindex @LaTeX{} logo
 
 Use the @code{@@TeX@{@}} command to generate `@TeX{}'.  In a printed
 manual, this is a special logo that is different from three ordinary
@@ -10830,6 +10835,7 @@ that they use both uppercase and lowercase letters.
 @node copyright symbol
 @subsection @code{@@copyright@{@}} (@copyright{})
 @findex copyright
+@cindex Copyright symbol
 
 Use the @code{@@copyright@{@}} command to generate the copyright
 symbol, `@copyright{}'.  Where possible, this is a @samp{c}
@@ -10839,6 +10845,7 @@ inside a circle; in Info, this is @samp{(C)}.
 @node registered symbol
 @subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
 @findex registeredsymbol
+@cindex Registered symbol
 
 Use the @code{@@registeredsymbol@{@}} command to generate the
 registered symbol, `@registeredsymbol{}'.  Where possible, this is an
@@ -10846,8 +10853,9 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 
 
 @node euro
-@section @code{@@euro}@{@} (@euro{}): Euro currency symbol
+@section @code{@@euro}@{@} (@euro{}): Euro Currency Symbol
 @findex euro
+@cindex Euro symbol
 
 Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
 possible, this is the symbol for the Euro currency, invented as part
@@ -10883,6 +10891,7 @@ instructions.
 @node pounds
 @section @code{@@pounds}@{@} (@pounds{}): Pounds Sterling
 @findex pounds
+@cindex Pounds symbol
 
 Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
 possible, this is the symbol for the currency pounds sterling.  In
@@ -10890,8 +10899,9 @@ Info, it is a @samp{#}.
 
 
 @node textdegree
-@section @code{@@textdegree}@{@} (@textdegree{}): Degrees symbol
-@findex pounds
+@section @code{@@textdegree}@{@} (@textdegree{}): Degrees Symbol
+@findex textdegree
+@cindex Degree symbol
 
 Use the @code{@@textdegree@{@}} command to generate `@textdegree{}'.
 Where possible, this is the normal symbol for degrees.  In plain text
@@ -10901,6 +10911,7 @@ and Info output, it is an @samp{o}.
 @node minus
 @section @code{@@minus}@{@} (@minus{}): Inserting a Minus Sign
 @findex minus
+@cindex Minus sign
 
 @cindex Em dash, compared to minus sign
 @cindex Hyphen, compared to minus
@@ -10928,6 +10939,17 @@ fixed-width font they use.
 When you use @code{@@minus} to specify the mark beginning each entry in
 an itemized list, you do not need to type the braces
 (@pxref{itemize, , @code{@@itemize}}).
+
+
+@node geq leq
+@section @code{@@geq@{@}} (@geq{}) and @code{@@leq@{@}} (@leq{}): Inserting relations
+@findex geq
+@findex leq
+
+Use the @code{@@geq@{@}} and @code{@@geq@{@}} commands to generate
+greater-than-or-equal and less-than-equal-signs, `@geq{}' and
+`@leq{}'.  In plain text and Info output, these are the ASCII
+sequences @samp{>=} and @samp{<=}.
 
 
 @node math
@@ -11019,6 +11041,7 @@ For displayed equations, you must at present use @TeX{} directly
 @section Click Sequences
 @cindex Click sequences
 @cindex Sequence of clicks
+@cindex GUI click sequence
 
 @findex clicksequence
 When documenting graphical interfaces, it is necessary to describe
@@ -11077,7 +11100,7 @@ evaluation or an expansion using @samp{@result{}} or
 @samp{@expansion{}}.  Likewise, there are commands to insert glyphs
 to indicate
 printed output, error messages, equivalence of expressions, and the
-location of point.@refill
+location of point.
 
 The glyph-insertion commands do not need to be used within an example, but
 most often they are.  Every  glyph-insertion command is followed by a pair of
@@ -11581,7 +11604,7 @@ these commands have any effect there.
 
 
 @node allowcodebreaks
-@section @code{@@allowcodebreaks}: Control line breaks in @code{@@code}
+@section @code{@@allowcodebreaks}: Control Line Breaks in @code{@@code}
 
 @findex allowcodebreaks
 @cindex Breaks, within @code{@@code}
@@ -17827,6 +17850,9 @@ index of functions.  Pair with @code{@@end ftable}.  The same as
 @code{@@table}, except for indexing.  @xref{ftable vtable, ,
 @code{@@ftable} and @code{@@vtable}}.@refill
 
+@item @@geq@{@}
+Generate a greater-than-or-equal sign, `@geq{}'.  @xref{geq leq}.
+
 @item @@group
 Hold text together that must appear on one printed page.  Pair with
 @code{@@end group}.  Not relevant to Info.  @xref{group, ,
@@ -17973,6 +17999,9 @@ respectively: @L{}, @l{}.
 @item @@LaTeX@{@}
 Insert the logo @LaTeX{}.  @xref{tex, , @TeX{} and @LaTeX{}}.
 
+@item @@leq@{@}
+Generate a less-than-or-equal sign, `@leq{}'.  @xref{geq leq}.
+
 @item @@lisp
 Begin an example of Lisp code.  Indent text, do not fill, and select
 fixed-width font.  Pair with @code{@@end lisp}.  @xref{lisp, , @code{@@lisp}}.
@@ -18006,7 +18035,7 @@ Mark the beginning of a menu of nodes in Info.  No effect in a printed
 manual.  Pair with @code{@@end menu}.  @xref{Menus}.@refill
 
 @item @@minus@{@}
-Generate a minus sign, `@minus{}'.  @xref{minus, , @code{@@minus}}.@refill
+Generate a minus sign, `@minus{}'.  @xref{minus, , @code{@@minus}}.
 
 @item @@multitable @var{column-width-spec}
 Begin a multi-column table.  Pair with @code{@@end multitable}.
@@ -18015,15 +18044,15 @@ Begin a multi-column table.  Pair with @code{@@end multitable}.
 @item @@need @var{n}
 Start a new page in a printed manual if fewer than @var{n} mils
 (thousandths of an inch) remain on the current page.  @xref{need, ,
-@code{@@need}}.@refill
+@code{@@need}}.
 
 @item @@node @var{name}, @var{next}, @var{previous}, @var{up}
 Define the beginning of a new node in Info, and serve as a locator for
-references for @TeX{}.  @xref{node, , @code{@@node}}.@refill
+references for @TeX{}.  @xref{node, , @code{@@node}}.
 
 @item @@noindent
 Prevent text from being indented as if it were a new paragraph.
-@xref{noindent, , @code{@@noindent}}.@refill
+@xref{noindent, , @code{@@noindent}}.
 
 @item @@novalidate
 Suppress validation of node references, omit creation of auxiliary files
@@ -19065,7 +19094,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
+$Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19139,7 +19168,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.219 2008-03-31 18:02:42 karl Exp $
+@comment $Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
