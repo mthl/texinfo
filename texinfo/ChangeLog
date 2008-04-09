@@ -1,3 +1,9 @@
+2008-04-09  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/insertion.c (handle_verbatim): ignore rest of @verbatim
+	line, including the newline.
+	Report from Thien-Thi Nguyen, 01 Apr 2008 11:14:48.
+
 2008-04-09  Reinhold Kainhofer  <reinhold@kainhofer.com>  (tiny change)
 
 	* makeinfo/insertion.c (begin_insertion): do not indent via

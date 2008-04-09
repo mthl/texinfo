@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.69 2008-04-09 16:10:45 karl Exp $
+   $Id: insertion.c,v 1.70 2008-04-09 16:35:51 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -1634,14 +1634,20 @@ cm_enumerate (void)
   do_enumeration (enumerate, "1");
 }
 
-/*  Handle verbatim environment:
+
+
+/* Handle verbatim environment:
     find_end_verbatim == 0:  process until end of file
     find_end_verbatim != 0:  process until 'COMMAND_PREFIXend verbatim'
                              or end of file
 
-  We cannot simply copy input stream onto output stream; as the
-  verbatim environment may be encapsulated in an @example environment,
-  for example. */
+   No indentation is inserted: this is verbatim after all.
+   If you want indentation, enclose @verbatim in @example.
+
+   Thus, we cannot simply copy the input to the output, since the
+   verbatim environment may be encapsulated in an @example environment,
+   for example. */
+
 void
 handle_verbatim_environment (int find_end_verbatim)
 {
@@ -1649,7 +1655,6 @@ handle_verbatim_environment (int find_end_verbatim)
   int seen_end = 0;
   int save_filling_enabled = filling_enabled;
   int save_inhibit_paragraph_indentation = inhibit_paragraph_indentation;
-  int save_escape_html = escape_html;
 
   if (!insertion_stack)
     close_single_paragraph (); /* no blank lines if not at outer level */
@@ -1657,11 +1662,6 @@ handle_verbatim_environment (int find_end_verbatim)
   filling_enabled = 0;
   in_fixed_width_font++;
   last_char_was_newline = 0;
-
-  /* No indentation: this is verbatim after all
-     If you want indent, enclose @verbatim in @example
-       current_indent += default_indentation_increment;
-   */
 
   if (html)
     { /* If inside @example, we'll be preceded by the indentation
@@ -1679,6 +1679,12 @@ handle_verbatim_environment (int find_end_verbatim)
       xml_insert_element (VERBATIM, START);
     }
 
+  { /* Ignore the remainder of the @verbatim line.  */
+    char *junk;
+    get_rest_of_line (0, &junk);
+    free (junk);
+  }
+  
   while (input_text_offset < input_text_length)
     {
       character = curchar ();
