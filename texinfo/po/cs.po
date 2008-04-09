@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-25 11:46+0100\n"
+"POT-Creation-Date: 2008-04-09 10:31-0700\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1950,131 +1950,131 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:549 makeinfo/cmds.c:571
+#: makeinfo/cmds.c:582 makeinfo/cmds.c:604
 #, fuzzy, c-format
 msgid "arguments to @%s ignored"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "January"
 msgstr "Leden"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "February"
 msgstr "Únor"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "March"
 msgstr "Bøezen"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "April"
 msgstr "Duben"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "May"
 msgstr "Kvìten"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "June"
 msgstr "Èerven"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "July"
 msgstr "Èervenec"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "August"
 msgstr "Srpen"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "September"
 msgstr "Záøí"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "October"
 msgstr "Øíjen"
 
-#: makeinfo/cmds.c:748
+#: makeinfo/cmds.c:781
 msgid "November"
 msgstr "Listopad"
 
-#: makeinfo/cmds.c:748
+#: makeinfo/cmds.c:781
 msgid "December"
 msgstr "Prosinec"
 
-#: makeinfo/cmds.c:1098
+#: makeinfo/cmds.c:1131
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "nepravdìpodobný znak %c ve @var"
 
-#: makeinfo/cmds.c:1141
+#: makeinfo/cmds.c:1174
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc argument je celý velkými písmeny, zbyteènì"
 
-#: makeinfo/cmds.c:1196
+#: makeinfo/cmds.c:1229
 #, fuzzy, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
 
-#: makeinfo/cmds.c:1236
+#: makeinfo/cmds.c:1269
 msgid "end of file inside verb block"
 msgstr ""
 
-#: makeinfo/cmds.c:1244
+#: makeinfo/cmds.c:1277
 #, fuzzy, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
 
-#: makeinfo/cmds.c:1275
+#: makeinfo/cmds.c:1308
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: makeinfo/cmds.c:1471
+#: makeinfo/cmds.c:1504
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "Pøíkaz %c%s je zastaralý"
 
-#: makeinfo/cmds.c:1579
+#: makeinfo/cmds.c:1612
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp vy¾aduje kladný èíselný argument a ne `%s'"
 
-#: makeinfo/cmds.c:1990 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:2023 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:2000 makeinfo/makeinfo.c:4270
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4270
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:2002 makeinfo/cmds.c:2032 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4272
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:2016
+#: makeinfo/cmds.c:2049
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:2030
+#: makeinfo/cmds.c:2063
 msgid "insert"
 msgstr ""
 
-#: makeinfo/cmds.c:2046
+#: makeinfo/cmds.c:2079
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:2129
+#: makeinfo/cmds.c:2162
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:2149
+#: makeinfo/cmds.c:2182
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2244,65 +2244,65 @@ msgstr "Chybí odpovídající `%cend %s'"
 msgid "%s requires letter or digit"
 msgstr "%s vy¾aduje písmeno nebo èíslici"
 
-#: makeinfo/insertion.c:1711
+#: makeinfo/insertion.c:1718
 msgid "end of file inside verbatim block"
 msgstr ""
 
-#: makeinfo/insertion.c:1935
+#: makeinfo/insertion.c:1942
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s není myslitelné uvnitø `@%s' bloku"
 
-#: makeinfo/insertion.c:1971
+#: makeinfo/insertion.c:1978
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu spatøeno pøed prvním @node, vytvoøen uzel `Top'"
 
-#: makeinfo/insertion.c:1972
+#: makeinfo/insertion.c:1979
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "proto¾e vá¹ uzel @top by mìl být uzavøen v @ifnottex spí¹e ne¾ v @ifinfo?"
 
-#: makeinfo/insertion.c:1984
+#: makeinfo/insertion.c:1991
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu spatøeno pøed prvním uzlem, vytvoøen uzel `Top'"
 
-#: makeinfo/insertion.c:2040
+#: makeinfo/insertion.c:2047
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: makeinfo/insertion.c:2054
+#: makeinfo/insertion.c:2061
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s není myslitelné uvnitø `@%s' bloku"
 
-#: makeinfo/insertion.c:2085
+#: makeinfo/insertion.c:2092
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Nepárový `%c%s'"
 
-#: makeinfo/insertion.c:2090
+#: makeinfo/insertion.c:2097
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "`%c%s' potøebuje nìjaký argument"
 
-#: makeinfo/insertion.c:2096
+#: makeinfo/insertion.c:2103
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Chybný argument pro `%s', `%s', pou¾ívám `%s'"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2200
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s není myslitelné uvnitø `@%s' bloku"
 
-#: makeinfo/insertion.c:2202
+#: makeinfo/insertion.c:2209
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx není myslitelný uvnitø `%s' bloku"
 
-#: makeinfo/insertion.c:2376
+#: makeinfo/insertion.c:2383
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s nalezen mimo vkládaný blok"

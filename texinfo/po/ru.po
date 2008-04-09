@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-03-25 11:46+0100\n"
+"POT-Creation-Date: 2008-04-09 10:31-0700\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1981,83 +1981,83 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:549 makeinfo/cmds.c:571
+#: makeinfo/cmds.c:582 makeinfo/cmds.c:604
 #, c-format
 msgid "arguments to @%s ignored"
 msgstr "аргументы для @%s игнорированы"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "January"
 msgstr "января"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "February"
 msgstr "февраля"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "March"
 msgstr "марта"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "April"
 msgstr "апреля"
 
-#: makeinfo/cmds.c:746
+#: makeinfo/cmds.c:779
 msgid "May"
 msgstr "мая"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "June"
 msgstr "июня"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "July"
 msgstr "июля"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "August"
 msgstr "августа"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "September"
 msgstr "сентября"
 
-#: makeinfo/cmds.c:747
+#: makeinfo/cmds.c:780
 msgid "October"
 msgstr "октября"
 
-#: makeinfo/cmds.c:748
+#: makeinfo/cmds.c:781
 msgid "November"
 msgstr "ноября"
 
-#: makeinfo/cmds.c:748
+#: makeinfo/cmds.c:781
 msgid "December"
 msgstr "декабря"
 
-#: makeinfo/cmds.c:1098
+#: makeinfo/cmds.c:1131
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "маловероятный знак %c в @var"
 
-#: makeinfo/cmds.c:1141
+#: makeinfo/cmds.c:1174
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "весь аргумент @sc набран заглавными буквами, результата не будет"
 
-#: makeinfo/cmds.c:1196
+#: makeinfo/cmds.c:1229
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "ожидалось `{', встречено `%c'"
 
-#: makeinfo/cmds.c:1236
+#: makeinfo/cmds.c:1269
 msgid "end of file inside verb block"
 msgstr "конец файла встречен внутри неоконченного блока"
 
-#: makeinfo/cmds.c:1244
+#: makeinfo/cmds.c:1277
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "ожидалось `}', встречено `%c'"
 
-#: makeinfo/cmds.c:1275
+#: makeinfo/cmds.c:1308
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2065,50 +2065,50 @@ msgstr ""
 "@strong{Note...} создает в Info ложную перекрестную ссылку; перефразируйте "
 "текст, чтобы избежать этого"
 
-#: makeinfo/cmds.c:1471
+#: makeinfo/cmds.c:1504
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "Команда %c%s устарела и не используется"
 
-#: makeinfo/cmds.c:1579
+#: makeinfo/cmds.c:1612
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "команде @sp нужно указать положительный числовой аргумент, а не `%s'"
 
-#: makeinfo/cmds.c:1990 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:2023 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Плохой аргумент для %c%s"
 
-#: makeinfo/cmds.c:2000 makeinfo/makeinfo.c:4270
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4270
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:2002 makeinfo/cmds.c:2032 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4272
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:2016
+#: makeinfo/cmds.c:2049
 #, c-format
 msgid "Bad argument to @%s"
 msgstr "Плохой аргумент для @%s"
 
 # ???
-#: makeinfo/cmds.c:2030
+#: makeinfo/cmds.c:2063
 msgid "insert"
 msgstr "insert"
 
-#: makeinfo/cmds.c:2046
+#: makeinfo/cmds.c:2079
 #, fuzzy, c-format
 msgid "Bad argument to @%s: %s"
 msgstr "Плохой аргумент для @%s"
 
-#: makeinfo/cmds.c:2129
+#: makeinfo/cmds.c:2162
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: makeinfo/cmds.c:2149
+#: makeinfo/cmds.c:2182
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
@@ -2279,65 +2279,65 @@ msgstr "Нет парной `%cend %s'"
 msgid "%s requires letter or digit"
 msgstr "%s требует буквы или цифры"
 
-#: makeinfo/insertion.c:1711
+#: makeinfo/insertion.c:1718
 msgid "end of file inside verbatim block"
 msgstr "конец файла встречен внутри неоконченного блока"
 
-#: makeinfo/insertion.c:1935
+#: makeinfo/insertion.c:1942
 #, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s не имеет смысла вне блока `@float'"
 
-#: makeinfo/insertion.c:1971
+#: makeinfo/insertion.c:1978
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu встречено перед первой @node, будет создана нода `Top'"
 
-#: makeinfo/insertion.c:1972
+#: makeinfo/insertion.c:1979
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "вероятно, ваша нода @top должна быть в блоке @ifnottex, а не в @ifinfo?"
 
-#: makeinfo/insertion.c:1984
+#: makeinfo/insertion.c:1991
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu встречено перед первой @node, будет создана нода `Top'"
 
-#: makeinfo/insertion.c:2040
+#: makeinfo/insertion.c:2047
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s не имеет смысла вне блока `@titlepage' или `@quotation'"
 
-#: makeinfo/insertion.c:2054
+#: makeinfo/insertion.c:2061
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s не имеет смысла вне блока `@titlepage'"
 
-#: makeinfo/insertion.c:2085
+#: makeinfo/insertion.c:2092
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Непарная `%c%s'"
 
-#: makeinfo/insertion.c:2090
+#: makeinfo/insertion.c:2097
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "После `%c%s' должно что-то идти"
 
-#: makeinfo/insertion.c:2096
+#: makeinfo/insertion.c:2103
 #, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Плохой аргумент `%s' для `@%s', будет использован `%s'"
 
-#: makeinfo/insertion.c:2193
+#: makeinfo/insertion.c:2200
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s не имеет смысла внутри блока `@%s'"
 
-#: makeinfo/insertion.c:2202
+#: makeinfo/insertion.c:2209
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx не имеет смысла внутри блока `%s'"
 
-#: makeinfo/insertion.c:2376
+#: makeinfo/insertion.c:2383
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s встречена вне блока вставки"

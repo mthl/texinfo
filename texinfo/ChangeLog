@@ -1,7 +1,9 @@
 2008-04-09  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.11.96.
+
 	* doc/texinfo.txi (geq leq): New node to document new commands
-	@geq and @leq, suggested by Arnold Robbins.
+	@geq{} and @leq{}, suggested by Arnold Robbins.
 	* doc/texinfo.tex (\geq, \leq): new macros.
 	* makeinfo/cmds.c (cm_geq, cm_leq): new fns.
 	(cm_minus): make static.
