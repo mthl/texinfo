@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.165 2008-03-05 00:02:03 karl Exp $
+$Id: NEWS,v 1.166 2008-04-09 16:20:04 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -70,7 +70,7 @@ one of the relevant sections:
   . language support for no removed/renamed to nb, per Norwegian translators.
   . new translation: es.
   . bug fixes in make check (and elsewhere).
-  . gettext 0.17, automake 1.10.1.
+  . gettext 0.17, automake 1.10.1, autoconf 2.62.
 
 
 4.11 (9 September 2007)
