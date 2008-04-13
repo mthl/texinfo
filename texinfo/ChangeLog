@@ -1,3 +1,9 @@
+2008-04-13  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+
+	DJGPP specific issues.
+	* djgpp/config.sed: Fixes required to use configure scripts generated
+	by autoconf 2.62.
+
 2008-04-09  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.11.96.
