@@ -2,6 +2,9 @@
 
 	* Version 4.12.
 
+	* util/texi2dvi: allow more characters special to plain TeX
+	in the directory name in tidy mode (but not the base file name).
+	
 	* util/texi2dvi: more quoting of file name args for the sake of
 	names containing whitespace.  A spurious message still results.
 
