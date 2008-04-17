@@ -1,6 +1,15 @@
-2008-04-16  Karl Berry  <karl@gnu.org>
+2008-04-17  Karl Berry  <karl@gnu.org>
 
 	* Version 4.12.
+
+	* util/texi2dvi: more quoting of file name args for the sake of
+	names containing whitespace.  A spurious message still results.
+
+	* install-info/tests/defs.in: new file.
+	* configure.ac: generate install-info/tests/defs.
+	* install-info/tests/ii-*-test: source it.
+	* install-info/tests/Makefile.am: do not use export,
+	which is only supported by GNU make.
 
 2008-04-13  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
