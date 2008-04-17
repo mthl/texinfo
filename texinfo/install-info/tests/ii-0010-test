@@ -11,9 +11,7 @@
 #a Makefile.
 
 
-#testdir and install_info come from Makefile.am and are equivalent to:
-#install_info=${top_builddir}/util/ginstall-info
-#testdir=${top_srcdir}/util/tests/install-info
+. ./defs || exit 1
 
 outputdirfile=`mktemp`
 cp ${testdir}/ii-0010-input-dir-file $outputdirfile

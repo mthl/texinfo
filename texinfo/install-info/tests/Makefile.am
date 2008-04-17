@@ -1,3 +1,4 @@
+# $Id: Makefile.am,v 1.2 2008-04-17 17:54:17 karl Exp $
 # Makefile.am for texinfo/util/tests/install-info.
 # Run automake in ../../../ to produce Makefile.in from this.
 #
@@ -8,13 +9,6 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-export top_srcdir
-export top_builddir
-install_info=${top_builddir}/install-info/ginstall-info
-testdir=${top_srcdir}/install-info/tests
-export install_info
-export testdir
 
 TESTS=ii-0001-test ii-0002-test ii-0003-test ii-0004-test ii-0005-test \
 ii-0006-test ii-0007-test ii-0008-test ii-0009-test ii-0010-test \

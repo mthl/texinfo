@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.86 2008-04-16 16:33:24 karl Exp $
+# $Id: configure.ac,v 1.87 2008-04-17 17:54:16 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -219,6 +219,7 @@ AM_GNU_GETTEXT_VERSION([0.17])
 AM_GNU_GETTEXT([external])
 
 # The test suite.
+AC_CONFIG_FILES([install-info/tests/defs])
 AC_CONFIG_FILES([util/defs])
 AC_CHECK_PROGS([HEVEA], [hevea], [])
 AC_CHECK_PROGS([TEX], [tex], [])
