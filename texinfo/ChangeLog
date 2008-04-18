@@ -1,6 +1,13 @@
-2008-04-17  Karl Berry  <karl@gnu.org>
+2008-04-18  Karl Berry  <karl@gnu.org>
 
 	* Version 4.12.
+
+	* doc/texinfo.tex (\math): \let the Texinfo accent commands
+	(\" \' ... \dotaccent) to their plain TeX math equivalents
+	(\ddot \acute ... \dot), where possible.
+	Report from John Mandereau, 17 Apr 2008 17:53:28.
+
+2008-04-17  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: allow more characters special to plain TeX
 	in the directory name in tidy mode (but not the base file name).
