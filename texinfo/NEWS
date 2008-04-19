@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.168 2008-04-16 16:33:24 karl Exp $
+$Id: NEWS,v 1.169 2008-04-19 17:03:13 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -30,6 +30,7 @@ one of the relevant sections:
   . new commands @geq{} and @leq{} for the normal >= and <= relations.
 
 * install-info:
+  . lzma compression supported.
   . Much work towards compatibility with Debian's independent
     implementation.  Changes in behavior:
     - new entries are formatted to start at column 34 by default.
@@ -68,6 +69,7 @@ one of the relevant sections:
     nodes.  To restore the old behavior, set scroll-last-node=Scroll.
   . the precise line number specified in index entries is used if available.
   . --usage=info shows usage for standalone Info.
+  . lzma compression supported.
 
 * Distribution:
   . language support for no removed/renamed to nb, per Norwegian translators.

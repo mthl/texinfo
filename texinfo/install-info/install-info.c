@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.9 2008-03-15 00:27:57 karl Exp $
+   $Id: install-info.c,v 1.10 2008-04-19 17:03:14 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -405,6 +405,11 @@ strip_info_suffix (char *fname)
       len -= 4;
       ret[len] = 0;
     }
+  else if (len > 5 && FILENAME_CMP (ret + len - 5, ".lzma") == 0)
+   {
+      len -= 5;
+      ret[len] =0;
+   }
 
   if (len > 5 && FILENAME_CMP (ret + len - 5, ".info") == 0)
     {
@@ -640,7 +645,7 @@ open_possibly_compressed_file (char *filename,
 {
   char *local_opened_filename, *local_compression_program;
   int nread;
-  char data[4];
+  char data[13];
   FILE *f;
 
   /* We let them pass NULL if they don't want this info, but it's easier
@@ -659,6 +664,12 @@ open_possibly_compressed_file (char *filename,
       free (*opened_filename);
       *opened_filename = concat (filename, ".bz2", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+  if (!f)
+    {
+     free (*opened_filename);
+     *opened_filename = concat (filename, ".lzma", "");
+     f = fopen (*opened_filename, FOPEN_RBIN);
     }
 
 #ifdef __MSDOS__
@@ -716,17 +727,31 @@ open_possibly_compressed_file (char *filename,
 #else
     *compression_program = "gzip";
 #endif
-  else if(data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
+  else if (data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
 #ifndef STRIP_DOT_EXE
     *compression_program = "bzip2.exe";
 #else
     *compression_program = "bzip2";
 #endif
-  else if(data[0] == 'B' && data[1] == 'Z' && data[2] == '0')
+  else if (data[0] == 'B' && data[1] == 'Z' && data[2] == '0')
 #ifndef STRIP_DOT_EXE
     *compression_program = "bzip.exe";
 #else
     *compression_program = "bzip";
+#endif
+    /* We (try to) match against old lzma format (which lacks proper
+       header, two first matches), as well as the new format (last match).  */
+  else if ((data[9] == 0x00 && data[10] == 0x00 && data[11] == 0x00
+            && data[12] == 0x00)
+           || (data[5] == '\xFF' && data[6] == '\xFF' && data[7] == '\xFF'
+               && data[8] == '\xFF' && data[9] == '\xFF' && data[10] == '\xFF'
+               && data[11] == '\xFF' && data[12] == '\xFF') 
+           || (data[0] == '\xFF' && data[1] == 'L' && data[2] == 'Z'
+               && data[3] == 'M' && data[4] == 'A' && data[5] == 0x00))
+#ifndef STRIP_DOT_EXE
+    *compression_program = "lzma.exe";
+#else
+    *compression_program = "lzma";
 #endif
   else
     *compression_program = NULL;

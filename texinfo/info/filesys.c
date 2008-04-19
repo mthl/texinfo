@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.10 2007-12-03 01:38:42 karl Exp $
+   $Id: filesys.c,v 1.11 2008-04-19 17:03:13 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -55,6 +55,7 @@ static char *info_suffixes[] = {
 static COMPRESSION_ALIST compress_suffixes[] = {
   { ".gz", "gunzip" },
   { ".bz2", "bunzip2" },
+  { ".lzma", "unlzma" },
   { ".z", "gunzip" },
   { ".Z", "uncompress" },
   { ".Y", "unyabba" },
