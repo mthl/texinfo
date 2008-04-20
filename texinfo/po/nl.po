@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-04-16 09:28-0700\n"
+"POT-Creation-Date: 2008-04-19 10:05-0700\n"
 "PO-Revision-Date: 2008-03-30 19:22+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -300,7 +300,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Gebruik '--help' voor meer informatie.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2066
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2091
 #: makeinfo/makeinfo.c:783 util/texindex.c:295
 #, c-format
 msgid ""
@@ -1802,23 +1802,23 @@ msgstr "%s: waarschuwing: "
 msgid " for %s"
 msgstr " voor %s"
 
-#: install-info/install-info.c:495
+#: install-info/install-info.c:500
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tTyp '%s --help' voor een volledige lijst van opties.\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:508
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Gebruik:  %s [OPTIE]... [INFO-BESTAND [INHOUDSBESTAND]]\n"
 
-#: install-info/install-info.c:505
+#: install-info/install-info.c:510
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 "De items die voorkomen in INFO-BESTAND toevoegen aan of\n"
 "verwijderen uit het Info-inhoudsbestand INHOUDSBESTAND."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:513
 msgid ""
 "Options:\n"
 " --debug             report what is being done.\n"
@@ -1843,7 +1843,7 @@ msgstr ""
 "                        equivalent aan het argument INHOUDSBESTAND\n"
 " --dry-run            hetzelfde als '--test'"
 
-#: install-info/install-info.c:520
+#: install-info/install-info.c:525
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry.\n"
 "                      TEXT is written as an Info menu item line followed\n"
@@ -1869,7 +1869,7 @@ msgstr ""
 "uit\n"
 "                        het gegeven Info-bestand gehaald"
 
-#: install-info/install-info.c:532
+#: install-info/install-info.c:537
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1895,7 +1895,7 @@ msgstr ""
 " --no-indent          nieuwe items in het inhoudsbestand niet opmaken\n"
 " --quiet              waarschuwingen onderdrukken"
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:550
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1929,7 +1929,7 @@ msgstr ""
 "gehaald\n"
 " --section EXP SEC    hetzelfde asl '--regex=EXP --section=SEC --add-once'"
 
-#: install-info/install-info.c:558
+#: install-info/install-info.c:563
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1939,7 +1939,7 @@ msgstr ""
 " --test               het INHOUDSBESTAND niet bijwerken, slechts doen alsof\n"
 " --version            versie-informatie tonen en stoppen"
 
-#: install-info/install-info.c:565
+#: install-info/install-info.c:570
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -1950,7 +1950,7 @@ msgstr ""
 "en opmerkingen over de vertaling naar <vertaling@vrijschrift.org>.\n"
 "Texinfo-homepagina: http://www.gnu.org/software/texinfo/"
 
-#: install-info/install-info.c:592
+#: install-info/install-info.c:597
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1983,63 +1983,63 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:617
+#: install-info/install-info.c:622
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: kan deze niet lezen (%s) en niet aanmaken (%s)\n"
 
-#: install-info/install-info.c:704
+#: install-info/install-info.c:715
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: is een leeg bestand"
 
-#: install-info/install-info.c:1021 install-info/install-info.c:1061
+#: install-info/install-info.c:1046 install-info/install-info.c:1086
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY zonder bijpassende END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1056
+#: install-info/install-info.c:1081
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY zonder bijpassende START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1911 install-info/install-info.c:1921
+#: install-info/install-info.c:1936 install-info/install-info.c:1946
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: hebben al een inhoudsbestand: %s\n"
 
-#: install-info/install-info.c:2001
+#: install-info/install-info.c:2026
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Geef het Info-bestand slechts één keer op.\n"
 
-#: install-info/install-info.c:2034
+#: install-info/install-info.c:2059
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Extra reguliere expressie opgegeven; '%s' wordt genegeerd"
 
-#: install-info/install-info.c:2046
+#: install-info/install-info.c:2071
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Fout in reguliere expressie '%s': %s"
 
-#: install-info/install-info.c:2104
+#: install-info/install-info.c:2129
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "commandoregel-argument '%s' is overbodig"
 
-#: install-info/install-info.c:2108
+#: install-info/install-info.c:2133
 msgid "No input file specified; try --help for more information."
 msgstr "Geen invoerbestand gegeven; gebruik '--help' voor meer informatie."
 
-#: install-info/install-info.c:2111
+#: install-info/install-info.c:2136
 msgid "No dir file specified; try --help for more information."
 msgstr "Geen inhoudsbestand gegeven; gebruik '--help' voor meer informatie."
 
-#: install-info/install-info.c:2253
+#: install-info/install-info.c:2278
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "geen Info-inhoudsitem in '%s'"
 
-#: install-info/install-info.c:2501
+#: install-info/install-info.c:2526
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "geen items voor '%s' gevonden; er is niets verwijderd"
