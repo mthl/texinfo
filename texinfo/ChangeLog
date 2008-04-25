@@ -1,3 +1,8 @@
+2008-04-25  Peter Breitenlohner <peb@mppmu.mpg.de>
+
+	* info/session.c (info_search_internal): cast to `char *' in
+	order to avoid compiler warning.
+
 2008-04-23  Bruno Haible  <bruno@clisp.org>
 
 	Allow "gendocs -o /some/absolute/dir".

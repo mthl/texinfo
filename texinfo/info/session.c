@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.37 2008-03-23 23:32:22 karl Exp $
+   $Id: session.c,v 1.38 2008-04-25 18:28:29 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -3790,7 +3790,7 @@ info_search_internal (char *string, WINDOW *window,
               if (!echo_area_is_active)
 		{
 		  if (msg)
-		    window_message_in_echo_area ("%s", gettext (msg), NULL);
+		    window_message_in_echo_area ("%s", (char *) _(msg), NULL);
 		  else
 		    window_clear_echo_area ();
 		}
