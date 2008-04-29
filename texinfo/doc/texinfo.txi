@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
+@c $Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14558,7 +14558,7 @@ information when debugging @file{texinfo.tex}.
 Several options are provided for handling documents, written in
 character sets other than ASCII. The
 @option{--translate-file=@var{file}} option instructs
-@command{texi2dv} to translate input into internal @TeX{} character
+@command{texi2dvi} to translate input into internal @TeX{} character
 set using @dfn{translation file} @var{file} (@pxref{TCX files, TCX
 files, TCX files: Character translations, web2c, Web2c: A @TeX{}
 implementation}).
@@ -19094,7 +19094,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
+$Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19168,7 +19168,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.220 2008-04-09 17:07:31 karl Exp $
+@comment $Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
