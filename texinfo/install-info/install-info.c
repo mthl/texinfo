@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.10 2008-04-19 17:03:14 karl Exp $
+   $Id: install-info.c,v 1.11 2008-04-30 22:17:08 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -1457,7 +1457,7 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
       size_t length = strlen (entry);
       if (length == 0)
         return;
-      *name = strdup (ptr);
+      *name = strdup (entry);
       *name_len = length + 1;
       return;
     }

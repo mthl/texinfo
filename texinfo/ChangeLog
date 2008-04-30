@@ -1,3 +1,8 @@
+2008-04-30  Thomas Thorberger  <thor@erlm.siemens.de>  (tiny change)
+
+	* install-info/install-info.c (split_entry): use valid pointer
+	entry, not ptr.  bug-texinfo mail 30 Apr 2008 11:59:57.
+
 2008-04-25  Peter Breitenlohner <peb@mppmu.mpg.de>
 
 	* info/session.c (info_search_internal): cast to `char *' in
