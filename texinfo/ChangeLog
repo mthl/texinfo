@@ -1,3 +1,9 @@
+2008-05-05  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Stand-alone Info): rename node from What is Info?
+	for sake of xref in info.texi.
+	* doc/info.texi (Top): xref.
+
 2008-04-30  Thomas Thorberger  <thor@erlm.siemens.de>  (tiny change)
 
 	* install-info/install-info.c (split_entry): use valid pointer
