@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.9 2007-12-03 01:38:42 karl Exp $
+   $Id: info-utils.c,v 1.10 2008-05-10 14:39:04 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007 Free Software Foundation, Inc.
 
@@ -478,59 +478,85 @@ canonicalize_whitespace (char *string)
 }
 
 /* String representation of a char returned by printed_representation (). */
-static char the_rep[10];
+static char *the_rep;
+static size_t the_rep_size;
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
 char *
-printed_representation (unsigned char character, int hpos)
+printed_representation (const unsigned char *cp, size_t len, size_t hpos,
+			/* Return: */
+			size_t *plen)
 {
   register int i = 0;
   int printable_limit = ISO_Latin_p ? 255 : 127;
-
-  if (raw_escapes_p && character == '\033')
-    the_rep[i++] = character;
-  /* Show CTRL-x as ^X.  */
-  else if (iscntrl (character) && character < 127)
+#define REPSPACE(s)                                            \
+  do                                                           \
+    {                                                          \
+      while (the_rep_size < s) 			               \
+	{						       \
+	  if (the_rep_size == 0)			       \
+	    the_rep_size = 8; /* Initial allocation */	       \
+	  the_rep = x2realloc (the_rep, &the_rep_size);	       \
+	}						       \
+    }                                                          \
+  while (0)
+    
+#define SC(c)                                                  \
+  do                                                           \
+    {                                                          \
+      REPSPACE(i + 1);                                         \
+      the_rep[i++] = c;                                        \
+    }                                                          \
+  while (0)
+  
+  for (; len > 0; cp++, len--)
     {
-      switch (character)
-        {
-        case '\r':
-        case '\n':
-          the_rep[i++] = character;
-          break;
+      if (raw_escapes_p && *cp == '\033')
+	SC(*cp);
+      /* Show CTRL-x as ^X.  */
+      else if (iscntrl (*cp) && *cp < 127)
+	{
+	  switch (*cp)
+	    {
+	    case '\r':
+	    case '\n':
+	      SC(*cp);
+	      break;
 
-        case '\t':
-          {
-            int tw;
+	    case '\t':
+	      {
+		int tw;
 
-            tw = ((hpos + 8) & 0xf8) - hpos;
-            while (i < tw)
-              the_rep[i++] = ' ';
-          }
-          break;
-
-        default:
-          the_rep[i++] = '^';
-          the_rep[i++] = (character | 0x40);
-        }
+		tw = ((hpos + 8) & 0xf8) - hpos;
+		while (i < tw)
+		  SC(' ');
+		break;
+	      }
+	      
+	    default:
+	      SC('^');
+	      SC(*cp | 0x40);
+	    }
+	}
+      /* Show META-x as 0370.  */
+      else if (*cp > printable_limit)
+	{
+	  REPSPACE (i + 5);
+	  sprintf (the_rep + i, "\\%0o", *cp);
+	  i = strlen (the_rep);
+	}
+      else if (*cp == DEL)
+	{
+	  SC('^');
+	  SC('?');
+	}
+      else
+	SC(*cp);
     }
-  /* Show META-x as 0370.  */
-  else if (character > printable_limit)
-    {
-      sprintf (the_rep + i, "\\%0o", character);
-      i = strlen (the_rep);
-    }
-  else if (character == DEL)
-    {
-      the_rep[i++] = '^';
-      the_rep[i++] = '?';
-    }
-  else
-    the_rep[i++] = character;
-
-  the_rep[i] = 0;
-
+  
+  SC(0);
+  *plen = i;
   return the_rep;
 }
 

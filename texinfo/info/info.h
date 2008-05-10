@@ -1,5 +1,5 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h,v 1.8 2008-02-26 16:51:05 karl Exp $
+   $Id: info.h,v 1.9 2008-05-10 14:39:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -42,6 +42,10 @@ typedef char *CFunction ();
 #include "echo-area.h"
 #include "footnotes.h"
 #include "gc.h"
+
+#include "string.h"
+#include "mbiter.h"
+#include "mbchar.h"
 
 #define info_toupper(x) (islower (x) ? toupper (x) : x)
 #define info_tolower(x) (isupper (x) ? tolower (x) : x)

@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.10 2008-02-26 16:51:06 karl Exp $
+   $Id: window.c,v 1.11 2008-05-10 14:39:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -793,120 +793,39 @@ window_physical_lines (NODE *node)
   return (lines);
 }
 
-/* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are pointers to the actual text within WINDOW->NODE. */
+
+struct calc_closure {
+  WINDOW *win;
+  int line_starts_slots; /* FIXME: size_t */
+};
+
+static int
+_calc_line_starts (void *closure, size_t line_index,
+		   const char *src_line,
+		   char *printed_line, size_t pl_index, size_t pl_count)
+{
+  struct calc_closure *cp = closure;
+  add_pointer_to_array (src_line,
+			cp->win->line_count, cp->win->line_starts,
+			cp->line_starts_slots, 100, char *);
+  return 0;
+}
+
 void
 calculate_line_starts (WINDOW *window)
 {
-  register int i, hpos;
-  char **line_starts = NULL;
-  int line_starts_index = 0, line_starts_slots = 0;
-  int bump_index;
-  NODE *node;
+  struct calc_closure closure;
 
   window->line_starts = NULL;
   window->line_count = 0;
-  node = window->node;
 
-  if (!node)
+  if (!window->node)
     return;
-
-  /* Grovel the node starting at the top, and for each line calculate the
-     width of the characters appearing in that line.  Add each line start
-     to our array. */
-  i = 0;
-  hpos = 0;
-  bump_index = 0;
-
-  while (i < node->nodelen)
-    {
-      char *line = node->contents + i;
-      unsigned int cwidth, c;
-
-      add_pointer_to_array (line, line_starts_index, line_starts,
-                            line_starts_slots, 100, char *);
-      if (bump_index)
-        {
-          i++;
-          bump_index = 0;
-        }
-
-      while (1)
-        {
-	  /* The cast to unsigned char is for 8-bit characters, which
-	     could be passed as negative integers to character_width
-	     and wreak havoc on some naive implementations of iscntrl.  */
-          c = (unsigned char) node->contents[i];
-
-	  /* Support ANSI escape sequences for -R.  */
-	  if (raw_escapes_p
-	      && c == '\033'
-	      && node->contents[i+1] == '['
-	      && isdigit (node->contents[i+2]))
-	    {
-	      if (node->contents[i+3] == 'm')
-		{
-		  i += 3;
-		  cwidth = 0;
-		}
-	      else if (isdigit (node->contents[i+3])
-		       && node->contents[i+4] == 'm')
-		{
-		  i += 4;
-		  cwidth = 0;
-		}
-	      else
-		cwidth = character_width (c, hpos);
-	    }
-	  else
-	    cwidth = character_width (c, hpos);
-
-          /* If this character fits within this line, just do the next one. */
-          if ((hpos + cwidth) < (unsigned int) window->width)
-            {
-              i++;
-              hpos += cwidth;
-              continue;
-            }
-          else
-            {
-              /* If this character would position the cursor at the start of
-                 the next printed screen line, then do the next line. */
-              if (c == '\n' || c == '\r' || c == '\t')
-                {
-                  i++;
-                  hpos = 0;
-                  break;
-                }
-              else
-                {
-                  /* This character passes the window width border.  Postion
-                     the cursor after the printed character, but remember this
-                     line start as where this character is.  A bit tricky. */
-
-                  /* If this window doesn't wrap lines, proceed to the next
-                     physical line here. */
-                  if (window->flags & W_NoWrap)
-                    {
-                      hpos = 0;
-                      while (i < node->nodelen && node->contents[i] != '\n')
-                        i++;
-
-                      if (node->contents[i] == '\n')
-                        i++;
-                    }
-                  else
-                    {
-                      hpos = the_screen->width - hpos;
-                      bump_index++;
-                    }
-                  break;
-                }
-            }
-        }
-    }
-  window->line_starts = line_starts;
-  window->line_count = line_starts_index;
+  
+  closure.win = window;
+  closure.line_starts_slots = 0;
+  process_node_text (window, window->node->contents, 0,
+		     _calc_line_starts, &closure);
 }
 
 /* Given WINDOW, recalculate the line starts for the node it displays. */
@@ -917,6 +836,7 @@ recalculate_line_starts (WINDOW *window)
   calculate_line_starts (window);
 }
 
+
 /* Global variable control redisplay of scrolled windows.  If non-zero,
    it is the desired number of lines to scroll the window in order to
    make point visible.  A value of 1 produces smooth scrolling.  If set
