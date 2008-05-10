@@ -1,3 +1,28 @@
+2008-05-10  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Handle multibyte encodings correctly.
+	
+	* info/display.c (ITER_SETBYTES,ITER_LIMIT): New defines.
+	(process_node_text): New function.
+	(display_node_text): New function.
+	(display_update_one_window): Correctly process multibyte
+	characters.
+	* info/display.h (process_node_text): New function prototype.
+	* info/info-utils.c (printed_representation): Rewrite to take into
+	account multibyte sequences.
+	* info/info-utils.h (printed_representation): Change prototype.
+	* info/info.h: Include string.h, mbiter.h and mbchar.h.
+	* info/window.c (calculate_line_starts ): Rewrite using
+	process_node_text to take into account multibyte characters.
+
+	Bootstrap from GNU gnulib 2008-04-23 06:09:44:
+	
+	* gnulib/lib/Makefile.am: Import mbchar, mbiter and mbschr.
+	* gnulib/lib/sys_stat.in.h, gnulib/lib/wctype.in.h,
+	gnulib/lib/sys/stat.h, gnulib/m4/gnulib-cache.m4,
+	gnulib/m4/gnulib-comp.m4, gnulib/m4/sys_stat_h.m4,
+	gnulib/m4/wctype.m4: Updated files.
+
 2008-05-05  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi (Stand-alone Info): rename node from What is Info?
