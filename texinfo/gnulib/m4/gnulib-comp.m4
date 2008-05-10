@@ -66,10 +66,17 @@ AC_DEFUN([gl_INIT],
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MBCHAR
+  gl_MBITER
   gl_FUNC_MBSCASECMP
   gl_STRING_MODULE_INDICATOR([mbscasecmp])
+  gl_FUNC_MBSCHR
+  gl_STRING_MODULE_INDICATOR([mbschr])
+  gl_FUNC_MBSLEN
+  gl_STRING_MODULE_INDICATOR([mbslen])
   gl_FUNC_MBSNCASECMP
   gl_STRING_MODULE_INDICATOR([mbsncasecmp])
+  gl_FUNC_MBSSTR
+  gl_STRING_MODULE_INDICATOR([mbsstr])
   gl_MBSWIDTH
   gl_MBITER
   gl_FUNC_MEMCHR
@@ -87,6 +94,8 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
   gl_HEADER_STRING_H
+  gl_FUNC_STRNLEN
+  gl_STRING_MODULE_INDICATOR([strnlen])
   gl_HEADER_SYS_STAT_H
   AC_PROG_MKDIR_P
   gl_HEADER_SYS_TIME_H
@@ -245,8 +254,12 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/malloca.valgrind
   lib/mbchar.c
   lib/mbchar.h
+  lib/mbiter.h
   lib/mbscasecmp.c
+  lib/mbschr.c
+  lib/mbslen.c
   lib/mbsncasecmp.c
+  lib/mbsstr.c
   lib/mbswidth.c
   lib/mbswidth.h
   lib/mbuiter.h
@@ -260,10 +273,12 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stdbool.in.h
   lib/stdint.in.h
   lib/stdlib.in.h
+  lib/str-kmp.h
   lib/strdup.c
   lib/streq.h
   lib/strerror.c
   lib/string.in.h
+  lib/strnlen.c
   lib/strnlen1.c
   lib/strnlen1.h
   lib/sys_stat.in.h
@@ -321,7 +336,10 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbiter.m4
   m4/mbrtowc.m4
   m4/mbscasecmp.m4
+  m4/mbschr.m4
+  m4/mbslen.m4
   m4/mbsncasecmp.m4
+  m4/mbsstr.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
   m4/memchr.m4
@@ -342,6 +360,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strdup.m4
   m4/strerror.m4
   m4/string_h.m4
+  m4/strnlen.m4
   m4/sys_stat_h.m4
   m4/sys_time_h.m4
   m4/tempname.m4
