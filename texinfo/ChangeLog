@@ -1,3 +1,8 @@
+2008-05-11  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/0051: new test for periods in item names.
+	Bug report from Ulrich Mueller, 7 May 2008 01:56:38.
+
 2008-05-10  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Handle multibyte encodings correctly.
