@@ -1,3 +1,9 @@
+2008-05-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/display.c (find_diff): New function.
+	(display_node_text): When computing differences between old and
+	new lines use character, not byte offsets.
+
 2008-05-12  Karl Berry  <karl@gnu.org>
 
 	* install-info.c (split_entry, add_missing_basenames,
