@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.13 2008-05-10 14:39:04 gray Exp $
+   $Id: display.c,v 1.14 2008-05-12 23:34:09 gray Exp $
 
    Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007
    Free Software Foundation, Inc.
@@ -422,6 +422,25 @@ struct display_node_closure {
   DISPLAY_LINE **display;
 };
 
+static int
+find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
+{
+  mbi_iterator_t itra, itrb;
+  int i = 0;
+  int pos = 0;
+  
+  for (i = 0, mbi_init (itra, a, alen), mbi_init (itrb, b, blen);
+       mbi_avail (itra) && mbi_avail (itrb);
+       mbi_advance (itra), mbi_advance (itrb))
+    {
+      if (mb_cmp (mbi_cur (itra), mbi_cur (itrb)))
+	break;
+      pos += mb_len (mbi_cur (itra));
+    }
+  *ppos = pos;
+  return i;
+}
+
 int
 display_node_text(void *closure, size_t line_index,
 		  const char *src_line,
@@ -439,7 +458,7 @@ display_node_text(void *closure, size_t line_index,
   /* If the window is very small, entry might be NULL. */
   if (entry)
     {
-      int i;
+      int i, off;
 	      
       /* If the screen line is inversed, then we have to clear
 	 the line from the screen first.  Why, I don't know.
@@ -455,21 +474,18 @@ display_node_text(void *closure, size_t line_index,
 	  entry->text[0] = '\0';
 	  entry->textlen = 0;
 	}
-	      
-      /* Find the offset where these lines differ. */
-      /* FIXME: Use mb here as well, should I? */
-      for (i = 0; i < pl_index; i++)
-	if (printed_line[i] != entry->text[i])
-	  break;
+
+      i = find_diff (printed_line, pl_index,
+		     entry->text, strlen (entry->text), &off);
 
       /* If the lines are not the same length, or if they differed
 	 at all, we must do some redrawing. */
-      if (i != pl_index || pl_count != entry->textlen)
+      if (i != pl_count || pl_count != entry->textlen)
 	{
 	  /* Move to the proper point on the terminal. */
-	  terminal_goto_xy (i, line_index + win->first_row);
+	  terminal_goto_xy (i, win->first_row + line_index);
 	  /* If there is any text to print, print it. */
-	  if (i != pl_index)
+	  if (i != pl_count)
 	    terminal_put_text (printed_line + i);
 	  
 	  /* If the printed text didn't extend all the way to the edge
@@ -491,7 +507,7 @@ display_node_text(void *closure, size_t line_index,
 	       display_initialize_display) for screenwidth
 	       bytes only.  */
 	    entry->text = xrealloc (entry->text, strlen (printed_line) + 1);
-	  strcpy (entry->text + i, printed_line + i);
+	  strcpy (entry->text + off, printed_line + off);
 	  entry->textlen = pl_count;
 	  
 	  /* Lines showing node text are not in inverse.  Only modelines
