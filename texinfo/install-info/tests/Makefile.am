@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.2 2008-04-17 17:54:17 karl Exp $
+# $Id: Makefile.am,v 1.3 2008-05-12 18:50:59 karl Exp $
 # Makefile.am for texinfo/util/tests/install-info.
 # Run automake in ../../../ to produce Makefile.in from this.
 #
@@ -19,7 +19,8 @@ ii-0026-test ii-0027-test ii-0028-test ii-0029-test ii-0030-test \
 ii-0031-test ii-0032-test ii-0033-test ii-0034-test ii-0035-test \
 ii-0036-test ii-0037-test ii-0038-test ii-0039-test ii-0040-test \
 ii-0041-test ii-0042-test ii-0043-test ii-0044-test ii-0045-test \
-ii-0046-test ii-0047-test ii-0048-test ii-0049-test ii-0050-test
+ii-0046-test ii-0047-test ii-0048-test ii-0049-test ii-0050-test \
+ii-0051-test ii-0052-test
 
 noinst_SCRIPTS=$(TESTS)
 
@@ -221,4 +222,12 @@ ii-0050-input-dir-file.gz \
 ii-0050-input-info-file \
 ii-0050-expected-dir-file.gz \
 ii-0050-test \
+ii-0051-input-dir-file \
+ii-0051-input-info-file \
+ii-0051-expected-dir-file \
+ii-0052-test \
+ii-0052-input-dir-file \
+ii-0052-input-info-file \
+ii-0052-expected-dir-file \
+ii-0052-test \
 README

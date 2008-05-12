@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.11 2008-04-30 22:17:08 karl Exp $
+   $Id: install-info.c,v 1.12 2008-05-12 18:50:59 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -1449,8 +1449,14 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
 {
   char *endptr;
 
-  /* on the first line, the description starts after the first period. */
+  /* on the first line, the description starts after the first ". ";
+     that's a period and space -- our heuristic to handle item names like
+     "config.status", and node names like "config.status Invocation".  */
   char *ptr = strchr (entry, '.');
+  while (ptr && ptr[1] != ' ' && ptr[1] != '\t') {
+    ptr = strchr (ptr + 1, '.');
+  }
+  
   /* Maybe there's no period, and no description */
   if (!ptr)
     {
@@ -1474,7 +1480,6 @@ split_entry (char *entry, char **name, size_t *name_len, char **description, siz
 
   while (ptr[0] != '\0')
     {
-
       /* Eat up the whitespace after the name, and at the start of a line. */
       while (isspace(ptr[0]))
         ptr++;
@@ -1598,14 +1603,14 @@ add_missing_basenames (struct spec_entry *entries, char *name)
           /* Insert NAME into the right place in ENTRY->TEXT. */
           char *info, *rest, *text;
           size_t name_len = strlen (name);
-          char *ptr = strstr (entry->text, ": ().");
+          char *ptr = strstr (entry->text, ": (). ");
           if (!ptr)
             return;
           ptr[0] = '\0';
-          rest = ptr += sizeof (": ().");
+          rest = ptr += strlen (": (). ");
 
-          info = xmalloc (name_len +  6);
-          snprintf (info, name_len + 6, ": (%s).", name);
+          info = xmalloc (name_len + 7);
+          snprintf (info, name_len + 7, ": (%s). ", name);
           text = concat (entry->text, info, rest);
           free (info);
           if (entry->text)
@@ -1672,8 +1677,8 @@ add_missing_descriptions (struct spec_entry *entries, char *desc)
         {
           char *text;
           int add_nl = 1;
-          if (entry->text)
-            if (entry->text[entry->text_len - 1] == '\n')
+          if (strlen (desc) > 1)
+            if (desc[strlen (desc) - 1] == '\n')
               add_nl = 0;
           /* Append DESC onto ENTRY->TEXT. */
           text = concat (entry->text == NULL ? "" : entry->text, desc,
@@ -1910,8 +1915,11 @@ main (int argc, char *argv[])
                   nl[0] = '\0';
               }
             /* Concat the description onto the current entry, adding a 
-               newline if we need one. */
-            next->text = concat (next->text == NULL ? "" : next->text, optarg, 
+               newline if we need one.  Prepend a space if we have no
+               previous text, since eventually we will be adding the
+               "* foo ()." and we want to end up with a ". " for parsing.  */
+            next->text = concat (next->text ? next->text : " ",
+                                 optarg, 
                                  optarg[length - 1] == '\n' ? "" : "\n");
             next->text_len = strlen (next->text);
           }
@@ -1958,20 +1966,20 @@ main (int argc, char *argv[])
             size_t length;
             if (optarg[0] != '*')
               {
-                /* Make enough space for "* foo: ().\n". */
+                /* Make enough space for "* foo: (). ". */
                 length = strlen (optarg) + 9;
                 next->text = xmalloc (length);
-                snprintf (next->text, length, "* %s: ().\n", optarg);
+                snprintf (next->text, length, "* %s: (). ", optarg);
                 next->missing_basename = 1;
                 /* The basename will be inserted in between the parentheses
                    at a later time.  See add_missing_basenames. */
               }
             else
               {
-                /* Make enough space for "foo\n". */
+                /* Make enough space for "foo ". */
                 length = strlen (optarg) + 2;
                 next->text = xmalloc (length);
-                snprintf (next->text, length, "%s\n", optarg);
+                snprintf (next->text, length, "%s ", optarg);
                 next->missing_basename = 0;
                 /* FIXME: check for info entry correctness in TEXT. 
                    e.g. `* Aaa: (bbb).' */

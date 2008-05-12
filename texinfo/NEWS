@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.170 2008-04-20 13:30:00 karl Exp $
+$Id: NEWS,v 1.171 2008-05-12 18:50:59 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -9,7 +9,7 @@ See the manual for detailed information.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-*** IMPORTANT NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
+*** NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
 
 As of version 4.2, Texinfo has a new command @copying to define the
 copyright and copying permissions for a manual.  If you haven't already,
@@ -22,6 +22,10 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* info:
+  - support for multibyte encodings such as UTF-8.
+
+
 4.12 (20 April 2008)
 
 * Language:

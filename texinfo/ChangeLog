@@ -1,3 +1,13 @@
+2008-05-12  Karl Berry  <karl@gnu.org>
+
+	* install-info.c (split_entry, add_missing_basenames,
+	add_mission_descriptions, --name and --description parsing):
+	use ". " to delimit the description from the node name,
+	rather than just ".", since we want to support nodes and names
+	containing "config.status".
+	* doc/texinfo.txi (Menu Parts): mention need for ". ".
+	(Invoking install-info): mention bzip2 and lzma checks.
+
 2008-05-11  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (usage): give -l input samples as latex and texinfo,

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
+@c $Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5397,18 +5397,20 @@ The name of the node (required).
 A description of the item (optional).
 @end enumerate
 
-The template for a menu entry looks like this:@refill
+The template for a generic menu entry looks like this (but see the
+next section for one more possibility):
 
 @example
 * @var{menu-entry-name}: @var{node-name}.   @var{description}
 @end example
 
 Follow the menu entry name with a single colon and follow the node name
-with tab, comma, period, or newline.@refill
+with tab, comma, newline, or the two characters period and space
+(@samp{. }).
 
 In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
 command.  The menu entry name is what the user types after the @kbd{m}
-command.@refill
+command.
 
 The third part of a menu entry is a descriptive phrase or sentence.
 Menu entry names and node names are often short; the description
@@ -5420,7 +5422,6 @@ with the first (and all others).  It's up to you.
 
 
 @node Less Cluttered Menu Entry
-@comment  node-name,  next,  previous,  up
 @section Less Cluttered Menu Entry
 @cindex Two part menu entry
 @cindex Double-colon menu entries
@@ -5430,13 +5431,13 @@ with the first (and all others).  It's up to you.
 
 When the menu entry name and node name are the same, you can write
 the name immediately after the asterisk and space at the beginning of
-the line and follow the name with two colons.@refill
+the line and follow the name with two colons.
 
 @need 800
 For example, write
 
 @example
-* Name::                                    @var{description}
+* Name::                        @var{description}
 @end example
 
 @need 800
@@ -5444,14 +5445,14 @@ For example, write
 instead of
 
 @example
-* Name: Name.                               @var{description}
+* Name: Name.                   @var{description}
 @end example
 
-You should use the node name for the menu entry name whenever possible,
-since it reduces visual clutter in the menu.@refill
+You should indeed use the node name for the menu entry name whenever
+possible, since it reduces visual clutter in the menu.
+
 
 @node Menu Example
-@comment  node-name,  next,  previous,  up
 @section A Menu Example
 @cindex Menu example
 @cindex Example menu
@@ -16451,14 +16452,17 @@ read only one Info file and write only one @file{dir} file per invocation.
 If @var{dir-file} (however specified) does not exist,
 @code{install-info} creates it if possible (with no entries).
 
-@cindex Compressed files, reading
+@cindex Compressed dir files, reading
+@cindex Bzipped dir files, reading
+@cindex LZMA-compressed dir files, reading
 @cindex Dir files, compressed
-If any input file is compressed with @code{gzip} (@pxref{Invoking
-gzip,,,gzip, Gzip}), @code{install-info} automatically uncompresses it
+If any input file is compressed with @code{gzip} (@pxref{Top,,,gzip,
+Gzip}), @code{install-info} automatically uncompresses it
 for reading.  And if @var{dir-file} is compressed, @code{install-info}
 also automatically leaves it compressed after writing any changes.
 If @var{dir-file} itself does not exist, @code{install-info} tries to
-open @file{@var{dir-file}.gz}.
+open @file{@var{dir-file}.gz}, @file{@var{dir-file}.bz2}, and 
+@file{@var{dir-file}.lzma}, in that order.
 
 Options:
 
@@ -16563,13 +16567,15 @@ Same as @samp{--name}.
 
 @item --name=@var{text}
 @opindex --name=@var{text}
-Specify the name portion of the menu entry.  If the @var{text} does not start
-with an asterisk @samp{*}, it is presumed to be the text after the @samp{*} 
-and before the parentheses that specify the Info file.  Otherwise @var{text} 
-is taken verbatim, and is meant to include the text up to and including the 
-first dot @samp{.}.  If you don't specify the name (either via @samp{--entry}, 
-@samp{--item} or this option), it is taken from the Info file itself.  If 
-the Info does not contain the name, the basename of the Info file is used.
+Specify the name portion of the menu entry.  If the @var{text} does
+not start with an asterisk @samp{*}, it is presumed to be the text
+after the @samp{*} and before the parentheses that specify the Info
+file.  Otherwise @var{text} is taken verbatim, and is taken as
+defining the text up to and including the first period (a space is
+appended if necessary).  If you don't specify the name (either via
+@samp{--entry}, @samp{--item} or this option), it is taken from the
+Info file itself.  If the Info does not contain the name, the basename
+of the Info file is used.
 
 @item --no-indent
 @opindex --no-indent
@@ -16604,13 +16610,15 @@ a section, the menu entries are put into the Miscellaneous section.
 Same as @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
 
 @code{install-info} tries to detect when this alternate syntax is used, 
-but does not always guess correctly!  Here is the heuristic that 
+but does not always guess correctly.  Here is the heuristic that 
 @code{install-info} uses:
 @enumerate
 @item
-If the second argument to @code{--section} starts with a hyphen, the original syntax is presumed.
+If the second argument to @code{--section} starts with a hyphen, the
+original syntax is presumed.
 @item
-If the second argument to @code{--section} is a file that can be opened, the original syntax is presumed
+If the second argument to @code{--section} is a file that can be
+opened, the original syntax is presumed.
 @item
 Otherwise the alternate syntax is used.
 @end enumerate
@@ -19094,7 +19102,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
+$Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19168,7 +19176,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.221 2008-04-29 23:01:21 karl Exp $
+@comment $Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
