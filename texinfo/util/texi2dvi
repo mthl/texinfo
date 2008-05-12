@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.122 2008-04-17 18:45:49 karl Exp $
+# $Id: texi2dvi,v 1.123 2008-05-12 00:01:55 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.122 $'
+rcs_revision='$Revision: 1.123 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.12) $rcs_version
@@ -79,7 +79,7 @@ TeX tuning:
       --dvi                  output a DVI file [default]
   -e, -E, --expand           force macro expansion using makeinfo
   -I DIR                     search DIR for Texinfo files
-  -l, --language=LANG        specify the LANG of FILE (LaTeX or Texinfo)
+  -l, --language=LANG        specify LANG for FILE, either latex or texinfo
       --no-line-error        do not pass --file-line-error to TeX
   -p, --pdf                  use pdftex or pdflatex for processing
   -r, --recode               call recode before TeX to translate input

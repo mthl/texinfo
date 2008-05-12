@@ -1,6 +1,10 @@
 2008-05-11  Karl Berry  <karl@gnu.org>
 
-	* install-info/tests/0051: new test for periods in item names.
+	* util/texi2dvi (usage): give -l input samples as latex and texinfo,
+	not LaTeX and Texinfo. 
+	Report from Hilmar Preusse, 10 May 2008 15:03:23, Debian bug #472758.
+
+	* install-info/tests/0051, 52: new tests for periods in item names.
 	Bug report from Ulrich Mueller, 7 May 2008 01:56:38.
 
 2008-05-10  Sergey Poznyakoff  <gray@gnu.org.ua>
