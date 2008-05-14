@@ -127,6 +127,8 @@ Invalid use of @@':@*
 @@textdegree @textdegree{}
 @@euro @euro{}
 @@arrow @arrow{}
+@@leq @leq{}
+@@geq @geq{}
 
 @@TeX, but without brace @TeX
 

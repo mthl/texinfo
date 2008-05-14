@@ -1,3 +1,7 @@
+2008-05-15  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init, Tests/*, examples/*: handle @leq and @geq.
+
 2008-03-25  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use do_unknown and unknown in pass 0 too.

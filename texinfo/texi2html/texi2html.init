@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.136 2008-03-25 23:17:24 pertusus Exp $
+# $Id: texi2html.init,v 1.137 2008-05-14 23:34:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1916,6 +1916,8 @@ $simple_map_pre{'*'} = "\n";
                'ordm'         => '&ordm;',
                'comma'        => ',',
                'euro'         => '&euro;',
+               'geq'          => '&ge;',
+               'leq'          => '&le;',
                'tie'          => '&nbsp;',
                'textdegree'          => '&deg;',
                'quotedblleft'          => '&ldquo;',
@@ -1992,6 +1994,8 @@ $pre_map{'enddots'} = '...';
                'ordm'         => 'o',
                'comma'        => ',',
                'euro'         => 'Euro',
+               'geq'          => '>=',
+               'leq'          => '<=',
                'tie'          => ' ',
                'textdegree'          => 'o',
                'quotedblleft'          => '``',
@@ -2070,6 +2074,8 @@ $pre_map{'enddots'} = '...';
                'ordm'         => 'o',
                'comma'        => ',',
                'euro'         => 'Euro',
+               'geq'          => '>=',
+               'leq'          => '<=',
                'tie'          => ' ',
                'textdegree'          => 'o',
                'quotedblleft'          => '``',
@@ -2136,6 +2142,8 @@ $pre_map{'enddots'} = '...';
                'ordm'         => '00BA',
                'comma'        => '002C',
                'euro'         => '20AC',
+               'geq'          => '2265',
+               'leq'          => '2264',
                'tie'          => '',
 #               'tie'          => '0020',
 # FIXME ask on texinfo list

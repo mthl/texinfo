@@ -39,6 +39,8 @@ $things_map{'OE'} = '&#140;';
 $things_map{'dots'} = '<small>...</small>';
 $things_map{'enddots'} = '<small>...</small>';
 $things_map{'euro'} = 'Euro';
+$things_map{'geq'} = '>=';
+$things_map{'leq'} = '<=';
 $things_map{'quotedblleft'} = '``';
 $things_map{'quotedblright'} = "''";
 $things_map{'quoteleft'} = '`';

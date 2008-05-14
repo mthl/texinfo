@@ -105,8 +105,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@textdegree @textdegree{}
 @@euro @euro{}
 @@arrow @arrow{}
-@c @@le @le{}
-@c @@ge @ge{}
+@@leq @leq{}
+@@geq @geq{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}
@@ -516,6 +516,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@textdegree @textdegree{}
 @@euro @euro{}
 @@arrow @arrow{}
+@@leq @leq{}
+@@geq @geq{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@asis@{--a@}} @asis{--a}
