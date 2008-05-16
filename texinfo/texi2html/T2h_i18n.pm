@@ -300,7 +300,7 @@ sub pretty_date($)
     # obachman: Let's do it as the Americans do
     #return($MONTH_NAMES->{$lang}[$mon] . ", " . $mday . " " . $year);
 	#return(sprintf(&$I('T2H_today'), (get_string($MONTH_NAMES[$mon]), $mday, $year)));
-	return &$I('%{month}, %{day} %{year}', { 'month' => get_string($MONTH_NAMES[$mon]),
+	return &$I('%{month} %{day}, %{year}', { 'month' => get_string($MONTH_NAMES[$mon]),
           'day' => $mday, 'year' => $year });
 }
 

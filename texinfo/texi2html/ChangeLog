@@ -1,3 +1,11 @@
+2008-05-16  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* T2h_i18n.pm,i18n/*: correct the presentation of the date (report
+	from Karl Berry).
+	* texi2html.pl: remove an infinite loop workaround, the up for an
+	element should never be itself. This has certainly be fixed on
+	2008-03-20, by treating top like any other element.
+
 2008-05-15  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, Tests/*, examples/*: handle @leq and @geq.

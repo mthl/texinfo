@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.203 2008-03-25 23:17:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.204 2008-05-16 09:33:00 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4589,28 +4589,17 @@ sub rearrange_elements()
             $prev_section->{'sectionnext'} = $section;
         }
         # find the up section
-#        if ($section->{'level'} == $toplevel)
-#        {
-#            $section->{'sectionup'} = undef;
-#        }
-#        else
+        my $level = $section->{'level'} - 1;
+        while (!defined($previous_sections[$level]) and ($level >= 0))
         {
-            my $level = $section->{'level'} - 1;
-            while (!defined($previous_sections[$level]) and ($level >= 0))
-            {
-                 $level--;
-            }
-            if ($level >= 0)
-            {
-                $section->{'sectionup'} = $previous_sections[$level];
-                # 'child' is the first child
-                $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'});
-                push @{$section->{'sectionup'}->{'section_childs'}}, $section;
-            }
-            else
-            {
-                 $section->{'sectionup'} = undef;
-            }
+            $level--;
+        }
+        if ($level >= 0)
+        {
+            $section->{'sectionup'} = $previous_sections[$level];
+            # 'child' is the first child
+            $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'});
+            push @{$section->{'sectionup'}->{'section_childs'}}, $section;
         }
         $previous_sections[$section->{'level'}] = $section;
         # This is what is used in the .init file. 
@@ -5197,13 +5186,12 @@ sub rearrange_elements()
                 while ($up->{'up'} and !$element->{'following'})
                 {
                     print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'up'});
                     $up = $up->{'up'};
                     if ($up->{'sectionnext'})
                     {
                         $element->{'following'} = get_node ($up->{'sectionnext'});
                     }
-                    # avoid infinite loop if the top is up for itself
-                    last if ($up->{'toplevel'} or $up->{'top'});
                 }
             }
         }
