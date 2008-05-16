@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
+@c $Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10950,7 +10950,7 @@ an itemized list, you do not need to type the braces
 Use the @code{@@geq@{@}} and @code{@@geq@{@}} commands to generate
 greater-than-or-equal and less-than-equal-signs, `@geq{}' and
 `@leq{}'.  In plain text and Info output, these are the ASCII
-sequences @samp{>=} and @samp{<=}.
+sequences @samp{>=} and @samp{<=}.  The 
 
 
 @node math
@@ -17061,9 +17061,9 @@ In standard Texinfo, node names may not contain @@-commands.
 which partially supports it (@pxref{Invoking makeinfo}), but it is not
 robust and not recommended.
 
-Thus, @command{makeinfo} also does not fully implement this part of
-the HTML cross-reference algorithm, but it is documented here for the
-sake of completeness.
+Thus, @command{makeinfo} does not fully implement this part of the
+HTML cross-reference algorithm, but it is documented here for the sake
+of completeness.
 
 First, comments are removed.
 
@@ -17084,10 +17084,10 @@ The following commands are replaced by constant text, as shown.  If
 any of these commands have non-empty arguments, as in
 @code{@@TeX@{bad@}}, it is an error, and the result is unspecified.
 `(space)' means a space character, `(nothing)' means the empty string,
-etc.  The notation `U+@var{xxxx}' means Unicode code point @var{xxxx}.
-There are further transformations of many of these expansions for the
-final file or target name, such as space characters to @samp{-}, etc.,
-according to the other rules.
+etc.  The notation `U+@var{xxxx}' means Unicode code point @var{xxxx}
+(in hex, as usual).  There are further transformations of many of
+these expansions for the final file or target name, such as space
+characters to @samp{-}, etc., according to the other rules.
 
 @multitable @columnfractions .3 .5
 @item @code{@@(newline)}        @tab (space)
@@ -17104,6 +17104,7 @@ according to the other rules.
 @item @code{@@@}}               @tab @samp{@}}
 @item @code{@@LaTeX}            @tab @samp{LaTeX}
 @item @code{@@TeX}              @tab @samp{TeX}
+@item @code{@@arrow}            @tab U+2192
 @item @code{@@bullet}           @tab U+2022
 @item @code{@@comma}            @tab @samp{,}
 @item @code{@@copyright}        @tab U+00A9
@@ -17114,6 +17115,8 @@ according to the other rules.
 @item @code{@@euro}             @tab U+20AC
 @item @code{@@exclamdown}       @tab U+00A1
 @item @code{@@expansion}        @tab U+2192
+@item @code{@@geq}              @tab U+2265
+@item @code{@@leq}              @tab U+2264
 @item @code{@@minus}            @tab U+2212
 @item @code{@@ordf}             @tab U+00AA
 @item @code{@@ordm}             @tab U+00BA
@@ -17123,8 +17126,12 @@ according to the other rules.
 @item @code{@@questiondown}     @tab U+00BF
 @item @code{@@registeredsymbol} @tab U+00AE
 @item @code{@@result}           @tab U+21D2
+@item @code{@@textdegree}       @tab U+00B0
 @item @code{@@tie}              @tab (space)
 @end multitable
+
+Quotation mark commands are likewise replaced by their Unicode values
+(@pxref{Inserting Quotation Marks}).
 
 An @code{@@acronym} or @code{@@abbr} command is replaced by the first
 argument, followed by the second argument in parentheses, if present.
@@ -19102,7 +19109,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
+$Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19176,7 +19183,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.222 2008-05-12 18:50:59 karl Exp $
+@comment $Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

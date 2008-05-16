@@ -1,3 +1,9 @@
+2008-05-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Xref Command Expansion): add @leq,
+	@geq, @arrow, @textdegree Unicodes.  Suggestion from 
+	Patrice Dumas, 15 May 2008 01:02:37.
+
 2008-05-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/display.c (find_diff): New function.
