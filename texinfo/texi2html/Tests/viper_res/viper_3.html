@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Improvements-over-Vi"></a>
 <a name="SEC14"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="viper_2.html#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="viper_2.html#Unimplemented-Features" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper_2.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="viper_2.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 2. Improvements over Vi </h1>
@@ -66,25 +66,25 @@ includes better implementation of existing commands, new commands, and
 the facilities provided by Emacs.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC15">2.1 Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Basic Viper differences, Multi-file effects.
+<tr><td align="left" valign="top"><a href="#Basics">2.1 Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Basic Viper differences, Multi-file effects.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC16">2.2 Undo and Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Multiple undo, auto-save, backups and changes
+<tr><td align="left" valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Multiple undo, auto-save, backups and changes
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">2.3 History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 History for Ex and Vi commands.
+<tr><td align="left" valign="top"><a href="#History">2.3 History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 History for Ex and Vi commands.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC18">2.4 Macros and Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Keyboard Macros (extended &quot;.&quot;) @reg execution.
+<tr><td align="left" valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Keyboard Macros (extended &quot;.&quot;) @reg execution.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC19">2.5 Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Filename and Command Completion for Ex.
+<tr><td align="left" valign="top"><a href="#Completion">2.5 Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Filename and Command Completion for Ex.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC20">2.6 Improved Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Incremental Search and Buffer Content Search.
+<tr><td align="left" valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Incremental Search and Buffer Content Search.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC21">2.7 Abbreviation Facilities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Normal Abbrevs, Templates, and Dynamic Abbrevs.
+<tr><td align="left" valign="top"><a href="#Abbreviation-Facilities">2.7 Abbreviation Facilities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Normal Abbrevs, Templates, and Dynamic Abbrevs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC22">2.8 Movement and Markers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Screen Editor movements, viewing textmarkers.
+<tr><td align="left" valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Screen Editor movements, viewing textmarkers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC23">2.9 New Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands that do not exist in Vi.
+<tr><td align="left" valign="top"><a href="#New-Commands">2.9 New Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands that do not exist in Vi.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC24">2.10 Useful Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         A Sampling of some Emacs packages, and things
+<tr><td align="left" valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         A Sampling of some Emacs packages, and things
                             you should know about.
 </td></tr>
 </table>
@@ -93,19 +93,19 @@ the facilities provided by Emacs.
 <a name="Basics"></a>
 <a name="SEC15"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Undo-and-Backups" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.1 Basics </h2>
@@ -147,8 +147,8 @@ enlarged so that it will become the smallest region properly containing the
 region and consisting of whole lines (we call this process <em>expanding
 the region</em>), and then the enlarged region will be affected by the modifying
 command.
-Text Deletion Commands (see section <a href="viper_5.html#SEC38">Deleting Text</a>), Change commands
-(see section <a href="viper_5.html#SEC39">Changing Text</a>), even Shell Commands (see section <a href="viper_5.html#SEC46">Shell Commands</a>)
+Text Deletion Commands (see section <a href="viper_5.html#Deleting-Text">Deleting Text</a>), Change commands
+(see section <a href="viper_5.html#Changing-Text">Changing Text</a>), even Shell Commands (see section <a href="viper_5.html#Shell-Commands">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
 Thus, type <kbd>dw</kbd> to delete a word, <kbd>&gt;}</kbd> to shift a paragraph, or
 <kbd>!'afmt</kbd> to format a region from &lsquo;<samp>point</samp>&rsquo; to textmarker
@@ -164,34 +164,34 @@ position <em>point</em> and the <em>mark</em> is called the <em>region</em>.
 region).
 <kbd>dr</kbd> will now delete the region, <kbd>&gt;r</kbd> will shift it, etc.
 <kbd>r,R</kbd> are not motion commands, however.  The special mark is set by
-<kbd>m.</kbd> and other commands.  See section <a href="viper_5.html#SEC35">Marking</a>, for more info.
+<kbd>m.</kbd> and other commands.  See section <a href="viper_5.html#Marking">Marking</a>, for more info.
 </p>
 <p>Viper also adds counts to most commands for which it would make sense.
 </p>
 <p>In the Overview chapter, some Multiple File issues were discussed
-(see section <a href="viper_2.html#SEC12">Multiple Files in Viper</a>).  In addition to the files, Emacs has
+(see section <a href="viper_2.html#Multiple-Files-in-Viper">Multiple Files in Viper</a>).  In addition to the files, Emacs has
 buffers.  These can be seen in the <kbd>:args</kbd> list and switched using
 <kbd>:next</kbd> if you type <kbd>:set ex-cycle-through-non-files t</kbd>, or
 specify <code>(setq ex-cycle-through-non-files t)</code> in your &lsquo;<tt>.viper</tt>&rsquo;
-file.  See section <a href="viper_4.html#SEC25">Customization</a>, for details.
+file.  See section <a href="viper_4.html#Customization">Customization</a>, for details.
 </p>
 <hr size="6">
 <a name="Undo-and-Backups"></a>
 <a name="SEC16"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.2 Undo and Backups </h2>
@@ -219,7 +219,7 @@ to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html#B
 <p>The results of the 9 previous changes are available in the 9 numeric
 registers, as in Vi.  The extra goody is the ability to <em>view</em> these
 registers, in addition to being able to access them through <kbd>p</kbd> and
-<kbd>M-y</kbd> (See section <a href="viper_2.html#SEC9">Insert State</a>, for details.)
+<kbd>M-y</kbd> (See section <a href="viper_2.html#Insert-State">Insert State</a>, for details.)
 The Viper command <kbd>] register</kbd> will display the contents of any
 register, numeric or alphabetical.  The related command <kbd>[ textmarker</kbd>
 will show the text around the textmarker.  &lsquo;<samp>register</samp>&rsquo; and &lsquo;<samp>textmarker</samp>&rsquo;
@@ -229,19 +229,19 @@ can be any letters from a through z.
 <a name="History"></a>
 <a name="SEC17"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Undo-and-Backups" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Macros-and-Registers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.3 History </h2>
@@ -272,7 +272,7 @@ simply type Return to execute.
 <p>The history of insertions  can be perused by
 typing <kbd>C-c M-p</kbd> and <kbd>C-c M-n</kbd> while in Insert or Replace state.
 The history of destructive Vi commands can be perused via the same keys
-when Viper is in Vi state.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+when Viper is in Vi state.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p>
 <p>All Ex commands have a file history.  For instance, typing <kbd>:e</kbd>, space
 and then <kbd>M-p</kbd> will bring up the name of the previously typed file
@@ -287,19 +287,19 @@ expressions keep a history on those items.
 <a name="Macros-and-Registers"></a>
 <a name="SEC18"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#History" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Completion" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.4 Macros and Registers </h2>
@@ -339,26 +339,26 @@ details.
 <kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
 Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </p>
-<p>Viper also provides Vi-style macros.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for details.
+<p>Viper also provides Vi-style macros.  See section <a href="viper_4.html#Vi-Macros">Vi Macros</a>, for details.
 </p>
 
 <hr size="6">
 <a name="Completion"></a>
 <a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Macros-and-Registers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improved-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.5 Completion </h2>
@@ -374,19 +374,19 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 <a name="Improved-Search"></a>
 <a name="SEC20"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC21" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Completion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbreviation-Facilities" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.6 Improved Search </h2>
@@ -415,7 +415,7 @@ in a program.  The search can be repeated by <kbd>n</kbd> or reversed by <kbd>N<
 <p>Emacs provides incremental search.  As you type the string in, the
 cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
-<kbd>C-r</kbd>.  See section <a href="viper_4.html#SEC25">Customization</a>, to find out how to change the bindings
+<kbd>C-r</kbd>.  See section <a href="viper_4.html#Customization">Customization</a>, to find out how to change the bindings
 of <kbd>C-r or C-s</kbd>.
 For details, see <a href="../emacs/Incremental-Search.html#Incremental-Search">(emacs)Incremental Search</a> section &lsquo;Incremental Search&rsquo; in <cite>The GNU Emacs Manual</cite> 
 </p>
@@ -427,7 +427,7 @@ Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
 <a name="IDX55"></a>
 
 <p>On a window display, Viper supports mouse search, i.e., you can search for a
-word by clicking on it.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+word by clicking on it.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p>
 <p>Finally, on a window display, Viper highlights search patterns as it finds
 them.  This is done through what is known as <em>faces</em> in Emacs.  The
@@ -451,19 +451,19 @@ faces are grouped together under Viper&rsquo;s
 <a name="Abbreviation-Facilities"></a>
 <a name="SEC21"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC20" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC22" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Improved-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Movement-and-Markers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.7 Abbreviation Facilities </h2>
@@ -492,19 +492,19 @@ Facilities like this make Vi&rsquo;s <kbd>:ab</kbd> command obsolete.
 <a name="Movement-and-Markers"></a>
 <a name="SEC22"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC21" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC23" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Abbreviation-Facilities" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#New-Commands" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.8 Movement and Markers </h2>
@@ -581,19 +581,19 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <a name="New-Commands"></a>
 <a name="SEC23"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC22" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC24" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Movement-and-Markers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Useful-Packages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.9 New Commands </h2>
@@ -609,7 +609,7 @@ hit <kbd>C-x</kbd> followed by <kbd>2</kbd>, then the current window will be spl
 into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
 command from the current major mode.  &lt;ESC&gt; will do the same, if you
 configure &lt;ESC&gt; as Meta by setting <code>viper-no-multiple-ESC</code> to nil
-in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
+in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="viper_4.html#Customization">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
 <dt> <kbd>\</kbd></dt>
@@ -711,7 +711,7 @@ The function used for spelling is determined from the variable
 <a name="IDX85"></a>
 
 <p>Begin/end keyboard macro.  @register has a different meaning when used after
-a <kbd>@#</kbd>.  See section <a href="#SEC18">Macros and Registers</a>, for details
+a <kbd>@#</kbd>.  See section <a href="#Macros-and-Registers">Macros and Registers</a>, for details
 </p></dd>
 <dt> <kbd>[]</kbd></dt>
 <dd><a name="IDX86"></a>
@@ -720,13 +720,13 @@ a <kbd>@#</kbd>.  See section <a href="#SEC18">Macros and Registers</a>, for det
 <dt> <kbd>g &lt;<em>movement command</em>&gt;</kbd></dt>
 <dd><p>Search buffer for text delimited by movement command.  The canonical
 example is <kbd>gw</kbd> to search for the word under the cursor.
-See section <a href="#SEC20">Improved Search</a>, for details.
+See section <a href="#Improved-Search">Improved Search</a>, for details.
 </p></dd>
 <dt> <kbd>C-g and C-]</kbd></dt>
 <dd><a name="IDX87"></a>
 <a name="IDX88"></a>
 <p>Quit and Abort Recursive edit.  These may be necessary on occasion.
-See section <a href="viper_2.html#SEC8">Vi State</a>, for a reason.
+See section <a href="viper_2.html#Vi-State">Vi State</a>, for a reason.
 </p></dd>
 <dt> <kbd>C-c C-g</kbd></dt>
 <dd><a name="IDX89"></a>
@@ -741,7 +741,7 @@ case-sensitive/case-insensitive search modes and plain vanilla/regular
 expression search.  With the prefix argument 1, i.e.,
 <kbd>1 C-c /</kbd>, this toggles case-sensitivity; with the prefix argument 2,
 toggles plain vanilla search and search using
-regular expressions.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for alternative ways to invoke
+regular expressions.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for alternative ways to invoke
 this function.
 <a name="IDX91"></a>
 <a name="IDX92"></a>
@@ -766,7 +766,7 @@ histories, such as the history of search strings, Ex commands, etc.
 <p>In Insert or Replace state, these commands let  the user
 peruse the history of insertion strings used in previous insert or replace
 commands.  Try to hit <kbd>C-c M-p</kbd> or <kbd>C-c M-n</kbd> repeatedly and see what
-happens.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more.
+happens.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for more.
 </p>
 <p>In Vi state, these commands let the user peruse the history of Vi-style
 destructive commands, such as <kbd>dw</kbd>, <kbd>J</kbd>, <kbd>a</kbd>, etc.
@@ -777,7 +777,7 @@ an appropriate command is found, it can be executed by typing &lsquo;<kbd>.</kbd
 </p>
 <p>Since typing <kbd>C-c M-p</kbd> is tedious, it is more convenient to bind an
 appropriate function to a function key on the keyboard and use that key.
-See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p>
 </dd>
 <dt> <kbd>Ex commands</kbd></dt>
@@ -787,35 +787,35 @@ See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 <a name="IDX105"></a>
 <p>The commands <kbd>:args</kbd>, <kbd>:next</kbd>, <kbd>:pre</kbd> behave
 differently.  <kbd>:pwd</kbd> exists to get current directory.
-The commands <kbd>:b</kbd> and <kbd>:B</kbd> switch buffers around.  See section <a href="viper_5.html#SEC44">File and Buffer Handling</a>, for details.
+The commands <kbd>:b</kbd> and <kbd>:B</kbd> switch buffers around.  See section <a href="viper_5.html#File-and-Buffer-Handling">File and Buffer Handling</a>, for details.
 There are also the new commands <kbd>:RelatedFile</kbd> and
 <kbd>PreviousRelatedFile</kbd> (which abbreviate to <kbd>R</kbd> and <kbd>P</kbd>,
-respectively.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+respectively.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 <a name="IDX106"></a>
 <a name="IDX107"></a>
 </p></dd>
 </dl>
 
 <p>Apart from the new commands, many old commands have been enhanced.  Most
-notably, Vi style macros are much more powerful in Viper than in Vi.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for details.
+notably, Vi style macros are much more powerful in Viper than in Vi.  See section <a href="viper_4.html#Vi-Macros">Vi Macros</a>, for details.
 </p>
 <hr size="6">
 <a name="Useful-Packages"></a>
 <a name="SEC24"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#New-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.10 Useful Packages </h2>
@@ -910,8 +910,8 @@ and &lsquo;<samp>wuarchive.wustl.edu</samp>&rsquo;
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="viper_4.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -919,7 +919,7 @@ and &lsquo;<samp>wuarchive.wustl.edu</samp>&rsquo;
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_7.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Environment-variables"></a>
 <a name="SEC181"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_18.html#SEC180" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_20.html#SEC182" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_18.html#config" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_20.html#Compatibility" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_18.html#SEC157" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_20.html#SEC182" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs_18.html#Administrative-files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_20.html#Compatibility" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix"> D. All environment variables which affect CVS </h1>
@@ -69,13 +69,13 @@ that affect <small>CVS</small>.
 </dd>
 <dt> <code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should ignore. See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>.
+<small>CVS</small> should ignore. See section <a href="cvs_18.html#cvsignore">Ignoring files via cvsignore</a>.
 </p>
 <a name="IDX293"></a>
 </dd>
 <dt> <code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should treat as wrappers. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
+<small>CVS</small> should treat as wrappers. See section <a href="cvs_18.html#Wrappers">The cvswrappers file</a>.
 </p>
 <a name="IDX294"></a>
 <a name="IDX295"></a>
@@ -100,7 +100,7 @@ read-only NFS repositories.
 </dd>
 <dt> <code>$CVSUMASK</code></dt>
 <dd><p>Controls permissions of files in the repository.  See
-<a href="cvs_2.html#SEC13">File permissions</a>.
+<a href="cvs_2.html#File-permissions">File permissions</a>.
 </p>
 </dd>
 <dt> <code>$CVSROOT</code></dt>
@@ -128,8 +128,8 @@ directory.
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
 <code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
-See <a href="cvs_1.html#SEC6">Committing your changes</a> for more or
-<a href="cvs_16.html#SEC118">Global options</a> for alternative ways of specifying a
+See <a href="cvs_1.html#Committing-your-changes">Committing your changes</a> for more or
+<a href="cvs_16.html#Global-options">Global options</a> for alternative ways of specifying a
 log editor.
 </p>
 <a name="IDX300"></a>
@@ -160,7 +160,7 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 <dt> <code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
-see section <a href="cvs_2.html#SEC28">Connecting with rsh</a>.
+see section <a href="cvs_2.html#Connecting-via-rsh">Connecting with rsh</a>.
 </p>
 </dd>
 <dt> <code>$CVS_SERVER</code></dt>
@@ -171,20 +171,20 @@ necessary arguments) when accessing a remote repository
 using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
 The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
 the default value for <code>:fork:</code> is the name used to run the client.
-see section <a href="cvs_2.html#SEC28">Connecting with rsh</a>
+see section <a href="cvs_2.html#Connecting-via-rsh">Connecting with rsh</a>
 </p>
 </dd>
 <dt> <code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
-see section <a href="cvs_2.html#SEC31">Using the client with password authentication</a>
+see section <a href="cvs_2.html#Password-authentication-client">Using the client with password authentication</a>
 </p>
 </dd>
 <dt> <code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
-see section <a href="cvs_2.html#SEC26">Remote repositories</a>
+see section <a href="cvs_2.html#Remote-repositories">Remote repositories</a>
 </p>
 <a name="IDX305"></a>
 </dd>
@@ -249,7 +249,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 <dd><a name="IDX314"></a>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
-<code>TMPDIR</code>.  See section <a href="cvs_16.html#SEC118">Global options</a>, for a
+<code>TMPDIR</code>.  See section <a href="cvs_16.html#Global-options">Global options</a>, for a
 description of how to specify this.
 Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).
@@ -277,16 +277,16 @@ files.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_18.html#SEC157" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_20.html#SEC182" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_18.html#Administrative-files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_20.html#Compatibility" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

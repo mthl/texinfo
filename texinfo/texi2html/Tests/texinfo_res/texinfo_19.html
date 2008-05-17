@@ -63,19 +63,19 @@ ul.toc {list-style: none}
 <a name="Defining-New-Texinfo-Commands"></a>
 <a name="SEC214"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="texinfo_18.html#SEC213" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC215" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="texinfo_18.html#documentencoding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-Macros" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo_18.html#SEC211" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_18.html#Internationalization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 18. Defining New Texinfo Commands </h1>
@@ -91,7 +91,7 @@ time you use the macro.
 
 <p>Incidentally, these macros have nothing to do with the <code>@defmac</code>
 command, which is for documenting macros in the subject of the manual
-(see section <a href="texinfo_16.html#SEC191">The Template for a Definition</a>).
+(see section <a href="texinfo_16.html#Def-Cmd-Template">The Template for a Definition</a>).
 </p>
 </li><li>
 &lsquo;<samp>@alias</samp>&rsquo; is a convenient way to define a new name for an existing
@@ -104,15 +104,15 @@ customized output in the Info file.
 </li></ul>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC215">18.1 Defining Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Defining and undefining new commands.
+<tr><td align="left" valign="top"><a href="#Defining-Macros">18.1 Defining Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Defining and undefining new commands.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC216">18.2 Invoking Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Using a macro, once you&rsquo;ve defined it.
+<tr><td align="left" valign="top"><a href="#Invoking-Macros">18.2 Invoking Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Using a macro, once you&rsquo;ve defined it.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC217">18.3 Macro Details</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Beyond basic macro usage.
+<tr><td align="left" valign="top"><a href="#Macro-Details">18.3 Macro Details</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Beyond basic macro usage.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC218">18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Command aliases.
+<tr><td align="left" valign="top"><a href="#alias">18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Command aliases.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC219">18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Customized highlighting.
+<tr><td align="left" valign="top"><a href="#definfoenclose">18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Customized highlighting.
 </td></tr>
 </table>
 
@@ -121,19 +121,19 @@ customized output in the Info file.
 <a name="Defining-Macros"></a>
 <a name="SEC215"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC214" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC216" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Invoking-Macros" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.1 Defining Macros </h2>
@@ -212,19 +212,19 @@ For example:
 <a name="Invoking-Macros"></a>
 <a name="SEC216"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC215" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC217" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Defining-Macros" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Macro-Details" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.2 Invoking Macros </h2>
@@ -314,19 +314,19 @@ Twice: \p\ &amp; \p\.
 <a name="Macro-Details"></a>
 <a name="SEC217"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC216" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC218" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Invoking-Macros" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#alias" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.3 Macro Details </h2>
@@ -373,25 +373,25 @@ It is best to avoid comments inside macro definitions.
 
 <p>If some macro feature causes errors when producing the printed version
 of a manual, try expanding the macros with <code>makeinfo</code> by
-invoking <code>texi2dvi</code> with the &lsquo;<samp>-e</samp>&rsquo; option; see <a href="texinfo_20.html#SEC223">Format with <code>texi2dvi</code></a>.
+invoking <code>texi2dvi</code> with the &lsquo;<samp>-e</samp>&rsquo; option; see <a href="texinfo_20.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>.
 </p>
 <hr size="6">
 <a name="alias"></a>
 <a name="SEC218"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC217" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC219" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Macro-Details" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#definfoenclose" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo; </h2>
@@ -426,19 +426,19 @@ command is not redundant.  (It was also heavily used in the Jargon File!)
 <a name="definfoenclose"></a>
 <a name="SEC219"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC218" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#alias" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting </h2>
@@ -471,7 +471,7 @@ you intended as the start delimiter string.
 enclosure definition will override the built-in definition.
 </p> 
 <p>An enclosure command defined this way takes one argument in braces; this
-is intended for new markup commands (see section <a href="texinfo_10.html#SEC99">Marking Words and Phrases</a>).
+is intended for new markup commands (see section <a href="texinfo_10.html#Marking-Text">Marking Words and Phrases</a>).
 </p>
 <a name="IDX318"></a>
 <p>For example, you can write:
@@ -515,16 +515,16 @@ indirectly.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_20.html#SEC220" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_20.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

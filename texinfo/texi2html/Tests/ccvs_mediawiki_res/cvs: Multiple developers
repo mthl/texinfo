@@ -1,19 +1,19 @@
 <div id="Multiple-developers"></div>
 <div id="SEC83"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Handling binary files#SEC82  &lt; ]|</td>
-<td valign="middle" align="left">|[[#SEC84| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
+<td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Handling binary files#SEC80  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Multiple developers ==
@@ -26,7 +26,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see section [cvs: Guide to CVS commands#SEC121 admin options]).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see section [cvs: Guide to CVS commands#admin-options admin options]).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -55,31 +55,31 @@ models work, and some of the issues involved in
 choosing between them.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC84| File status]]::<nowiki>                 A file can be in several states
-</nowiki>&bull;[[#SEC85| Updating a file]]::<nowiki>             Bringing a file up-to-date
-</nowiki>&bull;[[#SEC86| Conflicts example]]::<nowiki>           An informative example
-</nowiki>&bull;[[#SEC87| Informing others]]::<nowiki>            To cooperate you must inform
-</nowiki>&bull;[[#SEC88| Concurrency]]::<nowiki>                 Simultaneous repository access
-</nowiki>&bull;[[#SEC89| Watches]]::<nowiki>                     Mechanisms to track who is editing files
-</nowiki>&bull;[[#SEC95| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#File-status| File status]]::<nowiki>                 A file can be in several states
+</nowiki>&bull;[[#Updating-a-file| Updating a file]]::<nowiki>             Bringing a file up-to-date
+</nowiki>&bull;[[#Conflicts-example| Conflicts example]]::<nowiki>           An informative example
+</nowiki>&bull;[[#Informing-others| Informing others]]::<nowiki>            To cooperate you must inform
+</nowiki>&bull;[[#Concurrency| Concurrency]]::<nowiki>                 Simultaneous repository access
+</nowiki>&bull;[[#Watches| Watches]]::<nowiki>                     Mechanisms to track who is editing files
+</nowiki>&bull;[[#Choosing-a-model| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
 </nowiki></pre>
 <hr size="6">
 <div id="File-status"></div>
 <div id="SEC84"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC83| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC85| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === File status ===
@@ -148,7 +148,7 @@ to allow an <code>update</code> to complete.
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
-resolve the conflict as described in [[#SEC86|Conflicts example]].
+resolve the conflict as described in [[#Conflicts-example|Conflicts example]].
 </p>
 </dd>
 <dt> Unknown</dt>
@@ -168,10 +168,10 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-[cvs: Quick reference to CVS commands#SEC156 Quick reference to CVS commands].  For information on its <code>Sticky tag</code>
-and <code>Sticky date</code> output, see [cvs: Revisions#SEC53 Sticky tags].
+[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see [cvs: Revisions#Sticky-tags Sticky tags].
 For information on its <code>Sticky options</code> output,
-see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: Guide to CVS commands#SEC154 update options].
+see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: Guide to CVS commands#update-options update options].
 </p>
 <p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
@@ -191,25 +191,25 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see [cvs: Quick reference to CVS commands#SEC156 Quick reference to CVS commands].
+these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
 </p>
 <hr size="6">
 <div id="Updating-a-file"></div>
 <div id="SEC85"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC84| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC86| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Bringing a file up to date ===
@@ -238,26 +238,26 @@ close to any of the changes you have made, an
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See section [cvs: Guide to CVS commands#SEC153 update&mdash;Bring work tree in sync with repository], for a complete description of the
+See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository], for a complete description of the
 <code>update</code> command.
 </p>
 <hr size="6">
 <div id="Conflicts-example"></div>
 <div id="SEC86"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC85| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC87| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Conflicts example ===
@@ -426,19 +426,19 @@ See the documentation for pcl-cvs.
 <div id="Informing-others"></div>
 <div id="SEC87"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC86| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC88| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Informing others about commits ===
@@ -446,8 +446,8 @@ See the documentation for pcl-cvs.
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
 &lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
-used to automate this process.  See section [cvs: Reference manual for Administrative files#SEC158 The modules file].
-See section [cvs: Reference manual for Administrative files#SEC172 Loginfo].  You can use these features of <small>CVS</small>
+used to automate this process.  See section [cvs: Reference manual for Administrative files#modules The modules file].
+See section [cvs: Reference manual for Administrative files#loginfo Loginfo].  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
@@ -456,19 +456,19 @@ newsgroup.
 <div id="Concurrency"></div>
 <div id="SEC88"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC87| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Several developers simultaneously attempting to run CVS ===
@@ -497,7 +497,7 @@ start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
-(see section [[#SEC83|Multiple developers]]).
+(see section [[#Multiple-developers|Multiple developers]]).
 </p>
 <p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
@@ -535,19 +535,19 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <div id="Watches"></div>
 <div id="SEC89"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC88| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC90| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Mechanisms to track who is editing files ===
@@ -572,29 +572,29 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC90| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
-</nowiki>&bull;[[#SEC91| Getting Notified]]::<nowiki>            Telling CVS to notify you
-</nowiki>&bull;[[#SEC92| Editing files]]::<nowiki>               How to edit a file which is being watched
-</nowiki>&bull;[[#SEC93| Watch information]]::<nowiki>           Information about who is watching and editing
-</nowiki>&bull;[[#SEC94| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-a-watch| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
+</nowiki>&bull;[[#Getting-Notified| Getting Notified]]::<nowiki>            Telling CVS to notify you
+</nowiki>&bull;[[#Editing-files| Editing files]]::<nowiki>               How to edit a file which is being watched
+</nowiki>&bull;[[#Watch-information| Watch information]]::<nowiki>           Information about who is watching and editing
+</nowiki>&bull;[[#Watches-Compatibility| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-a-watch"></div>
 <div id="SEC90"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC89| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC91| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Telling CVS to watch certain files ====
@@ -622,7 +622,7 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#SEC117 Default options and the ~/.cvsrc file]).
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
@@ -646,19 +646,19 @@ watch on</code>.
 <div id="Getting-Notified"></div>
 <div id="SEC91"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC90| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC92| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Telling CVS to notify you ====
@@ -700,7 +700,7 @@ They can do this in several ways, by:
 applying the <code>cvs unedit</code> command (described below) to the file
 
 </li><li>
-applying the <code>cvs release</code> command (see section [cvs: Guide to CVS commands#SEC149 release&mdash;Indicate that a Module is no longer in use]) to the file&rsquo;s parent directory
+applying the <code>cvs release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]) to the file&rsquo;s parent directory
 (or recursively to a directory more than one level up)
 
 </li><li>
@@ -744,9 +744,9 @@ watches for the specified actions are removed.
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
-files (see section [cvs: The Repository#SEC20 The administrative files]).  This
+files (see section [cvs: The Repository#Intro-administrative-files The administrative files]).  This
 file follows the usual conventions for administrative
-files (see section [cvs: Reference manual for Administrative files#SEC167 The common syntax]), where each line is a regular
+files (see section [cvs: Reference manual for Administrative files#syntax The common syntax]), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest
@@ -787,19 +787,19 @@ changing.
 <div id="Editing-files"></div>
 <div id="SEC92"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC91| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC93| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== How to edit a file which is being watched ====
@@ -809,7 +809,7 @@ read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
-for obtaining a copy of the sources (see section [cvs: Overview#SEC5 Getting the source]), an operation which those systems call a
+for obtaining a copy of the sources (see section [cvs: Overview#Getting-the-source Getting the source]), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
 <div id="IDX173"></div>
@@ -859,7 +859,7 @@ notification for any of <var>files</var>.
 <p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see section [cvs: Guide to CVS commands#SEC153 update&mdash;Bring work tree in sync with repository]).
+(see section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository]).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -876,19 +876,19 @@ successful <small>CVS</small> command.
 <div id="Watch-information"></div>
 <div id="SEC93"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC92| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC94| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Information about who is watching and editing ====
@@ -925,19 +925,19 @@ containing the file.
 <div id="Watches-Compatibility"></div>
 <div id="SEC94"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC93| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC95| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC89| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Using watches with old versions of CVS ====
@@ -965,19 +965,19 @@ that will restore the repository to a state which
 <div id="Choosing-a-model"></div>
 <div id="SEC95"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC94| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC83| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Choosing between reserved or unreserved checkouts ===
@@ -1023,7 +1023,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in [[#SEC89|Mechanisms to track who is editing files]]
+<p>The watches features described above in [[#Watches|Mechanisms to track who is editing files]]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else
@@ -1037,16 +1037,16 @@ checkout worlds.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC83| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -19,6 +19,8 @@ This file records noteworthy changes.
 
 * use accesskey and rel attributes, use link element if set in the init file.
 
+* use node id as targets for sections.
+
 * COMPATIBILITY
   -------------
 

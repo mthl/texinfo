@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.204 2008-05-16 09:33:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.205 2008-05-17 22:41:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -211,6 +211,7 @@ $FRAMES
 $SHOW_MENU
 $NUMBER_SECTIONS
 $USE_NODES
+$USE_NODE_TARGET
 $USE_UNICODE
 $USE_UNIDECODE
 $TRANSLITERATE_NODE
@@ -546,7 +547,7 @@ sub T2H_GPL_toc_body($)
         $file = $element->{'file'} if ($SPLIT);
         my $text = $element->{'text'};
         #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
-        my $entry = "<li>" . &$anchor ($element->{'tocid'}, "$file#$element->{'id'}",$text);
+        my $entry = "<li>" . &$anchor ($element->{'tocid'}, "$file#$element->{'target'}",$text);
         push (@{$Texi2HTML::TOC_LINES}, $ind . $entry);
         push(@{$Texi2HTML::OVERVIEW}, $entry. "</li>\n") if ($level == 1);
     }
@@ -3505,6 +3506,7 @@ my %special_commands;       # hash for the commands specially handled
 my $footnote_element = 
 { 
     'id' => 'SEC_Foot',
+    'target' => 'SEC_Foot',
     'file' => $docu_foot,
     'footnote' => 1,
     'element' => 1,
@@ -3513,8 +3515,10 @@ my $footnote_element =
 
 my %content_element =
 (
-    'contents' => { 'id' => 'SEC_Contents', 'contents' => 1, 'texi' => '_contents' },
-    'shortcontents' => { 'id' => 'SEC_Overview', 'shortcontents' => 1, 'texi' => '_shortcontents' },
+    'contents' => { 'id' => 'SEC_Contents', 'target' => 'SEC_Contents',
+         'contents' => 1, 'texi' => '_contents' },
+    'shortcontents' => { 'id' => 'SEC_Overview', 'target' => 'SEC_Overview', 
+        'shortcontents' => 1, 'texi' => '_shortcontents' },
 );
 
 # common code for headings and sections
@@ -5416,21 +5420,10 @@ sub rearrange_elements()
     {
         my $up = get_top($element);
         next unless (defined($up));
+        # take the opportunity to set the first chapter with index 
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
         # fastforward is the next element on same level than the upper parent
         # element.
-#        if (exists ($up->{'sectionnext'}))
-#        {
-#            $element->{'fastforward'} = $up->{'sectionnext'}
-#        }
-#        # there is an exception for the top element, in that case
-#        # the first chapter should be the fastforward element.
-#        elsif ($up->{'top'} and (exists($up->{'child'})) and $up->{'child'}->{'toplevel'})
-#        {
-#            $element->{'fastforward'} = $up->{'child'};
-#        }
-#        # and another exception when a toplevel element precedes
-#        # the @top element
         if (exists ($up->{'toplevelnext'}))
         {
             $element->{'fastforward'} = $up->{'toplevelnext'}
@@ -5464,13 +5457,14 @@ sub rearrange_elements()
     }
 
     my $index_nr = 0;
-    # find id for nodes and indices
+    # find id for indices
     foreach my $element (@elements_list)
     {
         $element->{'this'} = $element;
         if ($element->{'index_page'})
         {
             $element->{'id'} = "INDEX" . $index_nr;
+            $element->{'target'} = $element->{'id'};
             $index_nr++;
         }
     }
@@ -5511,7 +5505,7 @@ sub rearrange_elements()
             $float->{'nr'} = $float->{'absolute_nr'};
         }
     }
-    
+
     if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
     { 
         foreach my $key (keys(%nodes))
@@ -5519,6 +5513,20 @@ sub rearrange_elements()
             my $node = $nodes{$key};
             next if ($node->{'external_node'} or $node->{'index_page'});
             $node->{'id'} = node_to_id($node->{'cross_manual_target'});
+            # FIXME if NEW_CROSSREF_STYLE false is it done for anchors?
+            $node->{'target'} = $node->{'id'};
+        }
+    }
+
+    foreach my $section (@sections_list)
+    {
+        if ($Texi2HTML::Config::USE_NODE_TARGET and $section->{'node_ref'})
+        {
+            $section->{'target'} = $section->{'node_ref'}->{'target'};
+        }
+        else
+        {
+            $section->{'target'} = $section->{'id'};
         }
     }
 
@@ -5616,7 +5624,8 @@ sub rearrange_elements()
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = $element->{'file'};
-                $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
+                #$place->{'id'} = $element->{'id'} unless defined($place->{'id'});
+                $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
             }
             if ($element->{'nodes'})
             {
@@ -5638,7 +5647,8 @@ sub rearrange_elements()
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = $element->{'file'};
-                $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
+                #$place->{'id'} = $element->{'id'} unless defined($place->{'id'});
+                $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
             }
         }
         foreach my $node(@nodes_list)
@@ -5651,7 +5661,8 @@ sub rearrange_elements()
     foreach my $place(@{$footnote_element->{'place'}})
     {
         $place->{'file'} = $footnote_element->{'file'};
-        $place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
+        #$place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
+        $place->{'target'} = $footnote_element->{'target'} unless defined($place->{'target'});
     }
     # if setcontentsaftertitlepage is set, the contents should be associated
     # with the titlepage. That's wat is done there.
@@ -5664,7 +5675,8 @@ sub rearrange_elements()
     {
 #print STDERR "entry $place->{'entry'} texi $place->{'texi'}\n";
         $place->{'file'} = $element_top->{'file'};
-        $place->{'id'} = $element_top->{'id'} unless defined($place->{'id'});
+        #$place->{'id'} = $element_top->{'id'} unless defined($place->{'id'});
+        $place->{'target'} = $element_top->{'target'} unless defined($place->{'target'});
         $place->{'element'} =  $element_top if (exists($place->{'element'}));
     }
     foreach my $content_type(keys(%content_element))
@@ -6454,8 +6466,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $about_file = $docu_about;
     }
     $Texi2HTML::THISDOC{'toc_file'} = $toc_file; 
-    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'id'} if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
-    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'id'} if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
+    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'target'} if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
+    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'target'} if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
     $Texi2HTML::HREF{'Footnotes'} = $foot_file. '#SEC_Foot';
     $Texi2HTML::HREF{'About'} = $about_file . '#SEC_About' unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
@@ -7338,7 +7350,7 @@ sub href($$)
     my $file = shift;
     return '' unless defined($element);
     my $href = '';
-    print STDERR "Bug: $element->{'texi'}, id undef\n" if (!defined($element->{'id'}));
+    print STDERR "Bug: $element->{'texi'}, target undef\n" if (!defined($element->{'target'}));
     print STDERR "Bug: $element->{'texi'}, file undef\n" if (!defined($element->{'file'}));
 #foreach my $key (keys(%{$element}))
 #{
@@ -7346,7 +7358,7 @@ sub href($$)
 #   print STDERR "$key: $value\n";
 #}print STDERR "\n";
     $href .= $element->{'file'} if (defined($element->{'file'}) and $file ne $element->{'file'});
-    $href .= "#$element->{'id'}" if (defined($element->{'id'}));
+    $href .= "#$element->{'target'}" if (defined($element->{'target'}));
     return $href;
 }
 
@@ -8820,14 +8832,14 @@ sub do_index_summary_file($)
             # file the real element is prefered. If they aren't on the same file
             # the entry id is choosed as it means that the real element
             # and the index entry are separated by a printindex.
-            print STDERR "id undef ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'id'}));
+            print STDERR "target undef in summary file ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'target'}));
             if ($entry->{'file'} eq $indexed_element->{'file'})
             {
-                $origin_href .= '#' . $indexed_element->{'id'};
+                $origin_href .= '#' . $indexed_element->{'target'};
             }
             else
             {
-                $origin_href .= '#' . $entry->{'id'} ;
+                $origin_href .= '#' . $entry->{'target'} ;
             }
         }
         &$Texi2HTML::Config::index_summary_file_entry ($name,
@@ -8916,14 +8928,14 @@ sub do_index_entries($$$)
                # aren't in the same file the entry id is choosed as it means 
                # that the indexed_element element and the index entry are 
                # separated by a printindex.
-               print STDERR "id undef ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'id'}));
+               print STDERR "target undef ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'target'}));
                if ($entry->{'file'} eq $indexed_element->{'file'})
                {
-                   $origin_href .= '#' . $indexed_element->{'id'};
+                   $origin_href .= '#' . $indexed_element->{'target'};
                }
                else
                {
-                   $origin_href .= '#' . $entry->{'id'} ;
+                   $origin_href .= '#' . $entry->{'target'} ;
                }
            }
 	   #print STDERR "SUBHREF in index entry `$entry->{'entry'}' for `$entry_element->{'texi'}'\n";
@@ -9963,6 +9975,9 @@ sub scan_structure($$$$;$)
                         $heading_ref->{'id'} = "HEAD$document_head_num";
                         $heading_ref->{'sec_num'} = $document_head_num;
                     }
+                    # this is only used when there is a index entry after the 
+                    # heading
+                    $heading_ref->{'target'} = $heading_ref->{'id'};
                     $heading_ref->{'heading'} = 1;
                     $heading_ref->{'tag_level'} = $macro;
                     $heading_ref->{'number'} = '';
@@ -10070,6 +10085,7 @@ sub scan_structure($$$$;$)
                         $float->{'texi'} = $label_texi;
                         $float->{'seen'} = 1;
                         $float->{'id'} = $label_texi;
+                        $float->{'target'} = $label_texi;
 #print STDERR "FLOAT: $float $float->{'texi'}, place $state->{'place'}\n";
                         push @{$state->{'place'}}, $float;
                         $float->{'element'} = $state->{'element'};

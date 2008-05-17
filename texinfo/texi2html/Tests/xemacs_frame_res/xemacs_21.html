@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Major-Modes"></a>
 <a name="SEC190"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_20.html#SEC189" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC191" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_20.html#Specify-Coding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Choosing-Modes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_20.html#Mule" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#Indentation" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 18. Major Modes </h1>
@@ -65,7 +65,7 @@ ul.toc {list-style: none}
 Emacs for editing text of a particular sort.  The major modes are mutually
 exclusive;  at any time, each buffer has one major mode.  The mode line
 normally contains the name of the current major mode in parentheses.
-See section <a href="xemacs_4.html#SEC10">The Mode Line</a>.
+See section <a href="xemacs_4.html#Mode-Line">The Mode Line</a>.
 </p>
 <p>  The least specialized major mode is called <em>Fundamental mode</em>.  This
 mode has no mode-specific redefinitions or variable settings.  Each
@@ -79,26 +79,26 @@ more specifically adapted to the language being edited.  &lt;TAB&gt;,
 &lt;DEL&gt;, and &lt;LFD&gt; are changed frequently.  In addition, commands
 which handle comments use the mode to determine how to delimit comments.
 Many major modes redefine the syntactical properties of characters
-appearing in the buffer.  See section <a href="xemacs_30.html#SEC363">The Syntax Table</a>.
+appearing in the buffer.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 </p>
 <p>  The major modes fall into three major groups.  Lisp mode (which has
 several variants), C mode, and Muddle mode are for specific programming
 languages.  Text mode, Nroff mode, TeX mode, and Outline mode are for
 editing English text.  The remaining major modes are not intended for use
 on users&rsquo; files; they are used in buffers created by Emacs for specific
-purposes and include Dired mode for buffers made by Dired (see section <a href="xemacs_17.html#SEC163">Dired, the Directory Editor</a>),
-Mail mode for buffers made by <kbd>C-x m</kbd> (see section <a href="xemacs_28.html#SEC285">Sending Mail</a>), and Shell
+purposes and include Dired mode for buffers made by Dired (see section <a href="xemacs_17.html#Dired">Dired, the Directory Editor</a>),
+Mail mode for buffers made by <kbd>C-x m</kbd> (see section <a href="xemacs_28.html#Sending-Mail">Sending Mail</a>), and Shell
 mode for buffers used for communicating with an inferior shell process
-(see section <a href="xemacs_29.html#SEC328">Interactive Inferior Shell</a>).
+(see section <a href="xemacs_29.html#Interactive-Shell">Interactive Inferior Shell</a>).
 </p>
 <p>  Most programming language major modes specify that only blank lines
 separate paragraphs.  This is so that the paragraph commands remain useful.
-See section <a href="xemacs_23.html#SEC208">Paragraphs</a>.  They also cause Auto Fill mode to use the definition of
+See section <a href="xemacs_23.html#Paragraphs">Paragraphs</a>.  They also cause Auto Fill mode to use the definition of
 &lt;TAB&gt; to indent the new lines it creates.  This is because most lines
-in a program are usually indented.  See section <a href="xemacs_22.html#SEC192">Indentation</a>.
+in a program are usually indented.  See section <a href="xemacs_22.html#Indentation">Indentation</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC191">18.1 Choosing Major Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     How major modes are specified or chosen.
+<tr><td align="left" valign="top"><a href="#Choosing-Modes">18.1 Choosing Major Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     How major modes are specified or chosen.
 </td></tr>
 </table>
 
@@ -106,19 +106,19 @@ in a program are usually indented.  See section <a href="xemacs_22.html#SEC192">
 <a name="Choosing-Modes"></a>
 <a name="SEC191"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC190" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Major-Modes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#Indentation" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Major-Modes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Major-Modes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#Indentation" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 18.1 Choosing Major Modes </h2>
@@ -170,7 +170,7 @@ default mode based on the file name.
 However, Emacs does not look for anything except the mode name.
 </p>
 <p>The major mode can also be specified in a local variables list.
-See section <a href="xemacs_30.html#SEC351">Local Variables in Files</a>.
+See section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>.
 </p>
 <a name="IDX737"></a>
 <p>  When you visit a file that does not specify a major mode to use, or
@@ -182,16 +182,16 @@ taken from the previously selected buffer.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Major-Modes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_22.html#Indentation" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

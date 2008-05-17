@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Repository"></a>
 <a name="SEC9"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_1.html#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_1.html#Viewing-differences" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Specifying-a-repository" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs_1.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 2. The Repository </h1>
@@ -89,7 +89,7 @@ access a repository directory, so the repository
 <code>:local:/usr/local/cvsroot</code> means that the
 repository is in &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; on the
 computer running <small>CVS</small>.  For information on other
-access methods, see <a href="#SEC26">Remote repositories</a>.
+access methods, see <a href="#Remote-repositories">Remote repositories</a>.
 </p>
 <p>If the access method is omitted, then if the repository
 starts with &lsquo;<samp>/</samp>&rsquo;, then <code>:local:</code> is
@@ -108,22 +108,22 @@ administrative files for <small>CVS</small>.  The other directories contain the 
 user-defined modules.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC10">2.1 Telling CVS where your repository is</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC11">2.2 How data is stored in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          The structure of the repository
+<tr><td align="left" valign="top"><a href="#Specifying-a-repository">2.1 Telling CVS where your repository is</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Repository-storage">2.2 How data is stored in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          The structure of the repository
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC19">2.3 How data is stored in the working directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The structure of working directories
+<tr><td align="left" valign="top"><a href="#Working-directory-storage">2.3 How data is stored in the working directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The structure of working directories
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC20">2.4 The administrative files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Defining modules
+<tr><td align="left" valign="top"><a href="#Intro-administrative-files">2.4 The administrative files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Defining modules
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC22">2.5 Multiple repositories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC23">2.6 Creating a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC24">2.7 Backing up a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC25">2.8 Moving a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC26">2.9 Remote repositories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Accessing repositories on remote machines
+<tr><td align="left" valign="top"><a href="#Multiple-repositories">2.5 Multiple repositories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Creating-a-repository">2.6 Creating a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Backing-up">2.7 Backing up a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Moving-a-repository">2.8 Moving a repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Remote-repositories">2.9 Remote repositories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Accessing repositories on remote machines
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC36">2.10 Read-only repository access</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Granting read-only access to the repository
+<tr><td align="left" valign="top"><a href="#Read_002donly-access">2.10 Read-only repository access</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Granting read-only access to the repository
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC37">2.11 Temporary directories for the server</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  The server creates temporary directories
+<tr><td align="left" valign="top"><a href="#Server-temporary-directory">2.11 Temporary directories for the server</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  The server creates temporary directories
 </td></tr>
 </table>
 
@@ -131,19 +131,19 @@ user-defined modules.
 <a name="Specifying-a-repository"></a>
 <a name="SEC10"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Repository" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.1 Telling CVS where your repository is </h2>
@@ -197,19 +197,19 @@ should be two ways of referring to the same repository.
 <a name="Repository-storage"></a>
 <a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Specifying-a-repository" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.2 How data is stored in the repository </h2>
@@ -224,22 +224,22 @@ changes need not be disruptive.
 <p>However, in some cases it may be necessary to
 understand how <small>CVS</small> stores data in the repository,
 for example you might need to track down <small>CVS</small> locks
-(see section <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>) or you might need to deal with
+(see section <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>) or you might need to deal with
 the file permissions appropriate for the repository.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC12">2.2.1 Where files are stored within the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            What files are stored in the repository
+<tr><td align="left" valign="top"><a href="#Repository-files">2.2.1 Where files are stored within the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            What files are stored in the repository
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC13">2.2.2 File permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC14">2.2.3 File Permission issues specific to Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Issues specific to Windows
+<tr><td align="left" valign="top"><a href="#File-permissions">2.2.2 File permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Windows-permissions">2.2.3 File Permission issues specific to Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Issues specific to Windows
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC15">2.2.4 The attic</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Some files are stored in the Attic
+<tr><td align="left" valign="top"><a href="#Attic">2.2.4 The attic</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Some files are stored in the Attic
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC16">2.2.5 The CVS directory in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Additional information in CVS directory
+<tr><td align="left" valign="top"><a href="#CVS-in-repository">2.2.5 The CVS directory in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Additional information in CVS directory
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">2.2.6 CVS locks in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       CVS locks control concurrent accesses
+<tr><td align="left" valign="top"><a href="#Locks">2.2.6 CVS locks in the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       CVS locks control concurrent accesses
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC18">2.2.7 How files are stored in the CVSROOT directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             A few things about CVSROOT are different
+<tr><td align="left" valign="top"><a href="#CVSROOT-storage">2.2.7 How files are stored in the CVSROOT directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             A few things about CVSROOT are different
 </td></tr>
 </table>
 
@@ -247,19 +247,19 @@ the file permissions appropriate for the repository.
 <a name="Repository-files"></a>
 <a name="SEC12"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC13" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Repository-storage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-permissions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.1 Where files are stored within the repository </h3>
@@ -351,27 +351,27 @@ files in this format.
 </p>
 <p>The <small>RCS</small> files used in <small>CVS</small> differ in a few
 ways from the standard format.  The biggest difference
-is magic branches; for more information see <a href="cvs_5.html#SEC59">Magic branch numbers</a>.  Also in <small>CVS</small> the valid tag names
+is magic branches; for more information see <a href="cvs_5.html#Magic-branch-numbers">Magic branch numbers</a>.  Also in <small>CVS</small> the valid tag names
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
-rules see <a href="cvs_4.html#SEC48">Tags&ndash;Symbolic revisions</a>.
+rules see <a href="cvs_4.html#Tags">Tags&ndash;Symbolic revisions</a>.
 </p>
 <hr size="6">
 <a name="File-permissions"></a>
 <a name="SEC13"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Repository-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Windows-permissions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.2 File permissions </h3>
@@ -395,10 +395,10 @@ a per-directory basis.
 </p>
 <p>Note that users must also have write access to check
 out files, because <small>CVS</small> needs to create lock files
-(see section <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>).  You can use LockDir in CVSROOT/config
+(see section <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>).  You can use LockDir in CVSROOT/config
 to put the lock files somewhere other than in the repository
 if you want to allow read-only access to some directories
-(see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+(see section <a href="cvs_18.html#config">The CVSROOT/config configuration file</a>).
 </p>
 <p>Also note that users must have write access to the
 &lsquo;<tt>CVSROOT/val-tags</tt>&rsquo; file.  <small>CVS</small> uses it to keep
@@ -424,10 +424,10 @@ not affect the file permissions in the working
 directory; such files have the permissions which are
 typical for newly created files, except that sometimes
 <small>CVS</small> creates them read-only (see the sections on
-watches, <a href="cvs_10.html#SEC90">Telling CVS to watch certain files</a>; -r, <a href="cvs_16.html#SEC118">Global options</a>; or <code>CVSREAD</code>, <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).
+watches, <a href="cvs_10.html#Setting-a-watch">Telling CVS to watch certain files</a>; -r, <a href="cvs_16.html#Global-options">Global options</a>; or <code>CVSREAD</code>, <a href="cvs_19.html#Environment-variables">All environment variables which affect CVS</a>).
 </p>
 <p>Note that using the client/server <small>CVS</small>
-(see section <a href="#SEC26">Remote repositories</a>), there is no good way to
+(see section <a href="#Remote-repositories">Remote repositories</a>), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
 has no effect.  If you are connecting with <code>rsh</code>, you
 can set <code>CVSUMASK</code> in &lsquo;<tt>.bashrc</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo;, as
@@ -438,7 +438,7 @@ of <small>CVS</small>; do not rely on the setting of
 </p>
 <p>Using pserver, you will generally need stricter
 permissions on the <small>CVSROOT</small> directory and
-directories above it in the tree; see <a href="#SEC32">Security considerations with password authentication</a>.
+directories above it in the tree; see <a href="#Password-authentication-security">Security considerations with password authentication</a>.
 </p>
 <a name="IDX24"></a>
 <a name="IDX25"></a>
@@ -461,25 +461,25 @@ possibly providing a false sense of security or opening
 security holes wider than the ones you are trying to
 fix, so read the documentation on pserver security
 carefully if you are considering this option
-(<a href="#SEC32">Security considerations with password authentication</a>).
+(<a href="#Password-authentication-security">Security considerations with password authentication</a>).
 </p>
 <hr size="6">
 <a name="Windows-permissions"></a>
 <a name="SEC14"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#File-permissions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Attic" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.3 File Permission issues specific to Windows </h3>
@@ -500,25 +500,25 @@ implications of enabling that option, nor do I know
 whether there is something which <small>CVS</small> could be doing
 differently in order to avoid the problem.  If you find
 something out, please let us know as described in
-<a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
+<a href="cvs_23.html#BUGS">Dealing with bugs in CVS or this manual</a>.
 </p>
 <hr size="6">
 <a name="Attic"></a>
 <a name="SEC15"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Windows-permissions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#CVS-in-repository" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.4 The attic </h3>
@@ -555,19 +555,19 @@ non-<code>dead</code> state.
 <a name="CVS-in-repository"></a>
 <a name="SEC16"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Attic" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Locks" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.5 The CVS directory in the repository </h3>
@@ -580,7 +580,7 @@ so implementations should silently ignore additional
 files.
 </p>
 <p>This behavior is implemented only by <small>CVS</small> 1.7 and
-later; for details see <a href="cvs_10.html#SEC94">Using watches with old versions of CVS</a>.
+later; for details see <a href="cvs_10.html#Watches-Compatibility">Using watches with old versions of CVS</a>.
 </p>
 <p>The format of the fileattr file is a series of entries
 of the following form (where &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;
@@ -664,25 +664,25 @@ there must be a single tab character there and no spaces.
 <a name="Locks"></a>
 <a name="SEC17"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#CVS-in-repository" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#CVSROOT-storage" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.6 CVS locks in the repository </h3>
 
 <p>For an introduction to <small>CVS</small> locks focusing on
-user-visible behavior, see <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>.  The
+user-visible behavior, see <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>.  The
 following section is aimed at people who are writing
 tools which want to access a <small>CVS</small> repository without
 interfering with other tools accessing the same
@@ -754,19 +754,19 @@ further discussion/rationale.
 <a name="CVSROOT-storage"></a>
 <a name="SEC18"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Locks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Working-directory-storage" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository-storage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.7 How files are stored in the CVSROOT directory </h3>
@@ -792,10 +792,10 @@ file, <small>CVS</small> should print
 
 <p>and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
-something wrong (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).  To add your own files
+something wrong (see section <a href="cvs_23.html#BUGS">Dealing with bugs in CVS or this manual</a>).  To add your own files
 to the files to be updated in this fashion, you can add
 them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
-(see section <a href="cvs_18.html#SEC177">The checkoutlist file</a>).
+(see section <a href="cvs_18.html#checkoutlist">The checkoutlist file</a>).
 </p>
 <a name="IDX30"></a>
 <a name="IDX31"></a>
@@ -814,25 +814,25 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 &lsquo;<tt>modules.pag</tt>&rsquo;, and/or &lsquo;<tt>modules.dir</tt>&rsquo;.
 </p>
 <p>For information on the meaning of the various
-administrative files, see <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>.
+administrative files, see <a href="cvs_18.html#Administrative-files">Reference manual for Administrative files</a>.
 </p>
 <hr size="6">
 <a name="Working-directory-storage"></a>
 <a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#CVSROOT-storage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Intro-administrative-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.3 How data is stored in the working directory </h2>
@@ -870,7 +870,7 @@ such systems either.
 <dl compact="compact">
 <dt> &lsquo;<tt>Root</tt>&rsquo;</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
-described in <a href="#SEC10">Telling CVS where your repository is</a>.
+described in <a href="#Specifying-a-repository">Telling CVS where your repository is</a>.
 </p>
 <a name="IDX33"></a>
 <a name="IDX34"></a>
@@ -947,7 +947,7 @@ modified a program should take the timestamp of the file
 and simply do a string compare with <var>timestamp</var>.
 If there was a conflict, <var>conflict</var> can be set to
 the modification time of the file after the file has been
-written with conflict markers (see section <a href="cvs_10.html#SEC86">Conflicts example</a>).
+written with conflict markers (see section <a href="cvs_10.html#Conflicts-example">Conflicts example</a>).
 Thus if <var>conflict</var> is subsequently the same as the actual
 modification time of the file it means that the user
 has obviously not resolved the conflict.  <var>options</var>
@@ -1058,7 +1058,7 @@ per-directory sticky tags or dates are used for things
 like applying to files which are newly added; they
 might not be the same as the sticky tags or dates on
 individual files.  For general information on sticky
-tags and dates, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
+tags and dates, see <a href="cvs_4.html#Sticky-tags">Sticky tags</a>.
 </p>
 <a name="IDX49"></a>
 <a name="IDX50"></a>
@@ -1117,7 +1117,7 @@ then (atomically where possible), rename it to
 </dd>
 <dt> &lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
-&lsquo;<tt>rcsinfo</tt>&rsquo; file (see section <a href="cvs_18.html#SEC175">Rcsinfo</a>).  It is only used
+&lsquo;<tt>rcsinfo</tt>&rsquo; file (see section <a href="cvs_18.html#rcsinfo">Rcsinfo</a>).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
 &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 </p></dd>
@@ -1127,26 +1127,26 @@ by the client; the non-client/server <small>CVS</small> consults
 <a name="Intro-administrative-files"></a>
 <a name="SEC20"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Working-directory-storage" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC21" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.4 The administrative files </h2>
 
 
 <p>The directory &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains some <em>administrative
-files</em>.  See section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>, for a complete description.
+files</em>.  See section <a href="cvs_18.html#Administrative-files">Reference manual for Administrative files</a>, for a complete description.
 You can use <small>CVS</small> without any of these files, but
 some commands work better when at least the
 &lsquo;<tt>modules</tt>&rsquo; file is properly set up.
@@ -1173,25 +1173,25 @@ above are examples of such lines.
 
 <p>The line that defines the module called &lsquo;<samp>modules</samp>&rsquo;
 uses features that are not explained here.
-See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full explanation of all the
+See section <a href="cvs_18.html#modules">The modules file</a>, for a full explanation of all the
 available features.
 </p>
 <hr size="6">
 <a name="SEC21"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC20" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC22" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Intro-administrative-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-repositories" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC20" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Intro-administrative-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.4.1 Editing administrative files </h3>
@@ -1211,18 +1211,18 @@ revisions.
 <a name="SEC22"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC21" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC23" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-a-repository" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.5 Multiple repositories </h2>
@@ -1237,7 +1237,7 @@ variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (on
 you have checked out a working directory) by simply
 allowing <small>CVS</small> to use the repository that was used
 to check out the working directory
-(see section <a href="#SEC10">Telling CVS where your repository is</a>).
+(see section <a href="#Specifying-a-repository">Telling CVS where your repository is</a>).
 </p>
 <p>The big advantage of having multiple repositories is
 that they can reside on different servers.  With <small>CVS</small>
@@ -1266,19 +1266,19 @@ and server1, to update everything else.
 <a name="Creating-a-repository"></a>
 <a name="SEC23"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC22" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC24" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Multiple-repositories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backing-up" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.6 Creating a repository </h2>
@@ -1288,7 +1288,7 @@ and server1, to update everything else.
 machine and disk on which you want to store the
 revision history of the source files.  CPU and memory
 requirements are modest, so most machines should be
-adequate.  For details see <a href="#SEC27">Server requirements</a>.
+adequate.  For details see <a href="#Server-requirements">Server requirements</a>.
 </p>
 <p>To estimate disk space
 requirements, if you are importing RCS files from
@@ -1311,13 +1311,13 @@ mode; the client machines need not have any access to
 it other than via the <small>CVS</small> protocol.  It is not
 possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
-able to create lock files (see section <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>).
+able to create lock files (see section <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>).
 </p>
 <a name="IDX61"></a>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
-(see section <a href="#SEC9">The Repository</a>).  For example,
+(see section <a href="#Repository">The Repository</a>).  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d /usr/local/cvsroot init
 </pre></td></tr></table>
@@ -1329,25 +1329,25 @@ repository.
 </p>
 <p><code>cvs init</code> will enable history logging; if you
 don&rsquo;t want that, remove the history file after running
-<code>cvs init</code>.  See section <a href="cvs_18.html#SEC178">The history file</a>.
+<code>cvs init</code>.  See section <a href="cvs_18.html#history-file">The history file</a>.
 </p>
 <hr size="6">
 <a name="Backing-up"></a>
 <a name="SEC24"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC25" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Creating-a-repository" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-a-repository" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.7 Backing up a repository </h2>
@@ -1368,7 +1368,7 @@ server, or similar mechanisms.  The details would
 depend on your operating system and how you have
 <small>CVS</small> set up.  To lock <small>CVS</small>, you would create
 &lsquo;<tt>#cvs.rfl</tt>&rsquo; locks in each repository directory.
-See <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>, for more on <small>CVS</small> locks.
+See <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>, for more on <small>CVS</small> locks.
 Having said all this, if you just back up without any
 of these precautions, the results are unlikely to be
 particularly dire.  Restoring from backup, the
@@ -1405,19 +1405,19 @@ the changes into the repository.
 <a name="Moving-a-repository"></a>
 <a name="SEC25"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC24" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Backing-up" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.8 Moving a repository </h2>
@@ -1438,7 +1438,7 @@ other way to make sure that you don&rsquo;t lose any
 changes.  If you really do want to reuse the existing
 working directory, it should be possible with manual
 surgery on the &lsquo;<tt>CVS/Repository</tt>&rsquo; files.  You can
-see <a href="#SEC19">How data is stored in the working directory</a>, for information on
+see <a href="#Working-directory-storage">How data is stored in the working directory</a>, for information on
 the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; files, but
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
@@ -1447,19 +1447,19 @@ isn&rsquo;t worth it.
 <a name="Remote-repositories"></a>
 <a name="SEC26"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC25" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC27" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Moving-a-repository" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Server-requirements" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.9 Remote repositories </h2>
@@ -1481,7 +1481,7 @@ the format of the repository name is:
 <p>Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
 password in each created directory.  <code>cvs login</code> first instead
-(see section <a href="#SEC31">Using the client with password authentication</a>).
+(see section <a href="#Password-authentication-client">Using the client with password authentication</a>).
 </p>
 <p>The details of exactly what needs to be set up depend
 on how you are connecting to the server.
@@ -1489,20 +1489,20 @@ on how you are connecting to the server.
 <p>If <var>method</var> is not specified, and the repository
 name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
-described in <a href="#SEC28">Connecting with rsh</a>.
+described in <a href="#Connecting-via-rsh">Connecting with rsh</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC27">2.9.1 Server requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Memory and other resources for servers
+<tr><td align="left" valign="top"><a href="#Server-requirements">2.9.1 Server requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Memory and other resources for servers
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC28">2.9.2 Connecting with rsh</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using the <code>rsh</code> program to connect
+<tr><td align="left" valign="top"><a href="#Connecting-via-rsh">2.9.2 Connecting with rsh</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using the <code>rsh</code> program to connect
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC29">2.9.3 Direct connection with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Direct connections using passwords
+<tr><td align="left" valign="top"><a href="#Password-authenticated">2.9.3 Direct connection with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Direct connections using passwords
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC33">2.9.4 Direct connection with GSSAPI</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Direct connections using GSSAPI
+<tr><td align="left" valign="top"><a href="#GSSAPI-authenticated">2.9.4 Direct connection with GSSAPI</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Direct connections using GSSAPI
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC34">2.9.5 Direct connection with kerberos</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Direct connections with kerberos
+<tr><td align="left" valign="top"><a href="#Kerberos-authenticated">2.9.5 Direct connection with kerberos</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Direct connections with kerberos
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC35">2.9.6 Connecting with fork</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Using a forked <code>cvs server</code> to connect
+<tr><td align="left" valign="top"><a href="#Connecting-via-fork">2.9.6 Connecting with fork</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Using a forked <code>cvs server</code> to connect
 </td></tr>
 </table>
 
@@ -1510,19 +1510,19 @@ described in <a href="#SEC28">Connecting with rsh</a>.
 <a name="Server-requirements"></a>
 <a name="SEC27"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC26" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC28" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Remote-repositories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Connecting-via-rsh" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.1 Server requirements </h3>
@@ -1538,7 +1538,7 @@ should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
-<a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>, so we can update this documentation).
+<a href="cvs_23.html#BUGS">Dealing with bugs in CVS or this manual</a>, so we can update this documentation).
 </p>
 <p>The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server
@@ -1579,25 +1579,25 @@ operating system in question should have little
 trouble.
 </p>
 <p>For information on disk space requirements, see
-<a href="#SEC23">Creating a repository</a>.
+<a href="#Creating-a-repository">Creating a repository</a>.
 </p>
 <hr size="6">
 <a name="Connecting-via-rsh"></a>
 <a name="SEC28"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC27" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC29" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Server-requirements" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authenticated" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.2 Connecting with rsh </h3>
@@ -1682,19 +1682,19 @@ the same on both the local and remote hosts.)
 <a name="Password-authenticated"></a>
 <a name="SEC29"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC28" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC30" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Connecting-via-rsh" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authentication-server" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.3 Direct connection with password authentication </h3>
@@ -1709,11 +1709,11 @@ not available.
 some adjustments on both the server and client sides.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC30">2.9.3.1 Setting up the server for password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Setting up the server
+<tr><td align="left" valign="top"><a href="#Password-authentication-server">2.9.3.1 Setting up the server for password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Setting up the server
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC31">2.9.3.2 Using the client with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Using the client
+<tr><td align="left" valign="top"><a href="#Password-authentication-client">2.9.3.2 Using the client with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Using the client
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC32">2.9.3.3 Security considerations with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   What this method does and does not do
+<tr><td align="left" valign="top"><a href="#Password-authentication-security">2.9.3.3 Security considerations with password authentication</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   What this method does and does not do
 </td></tr>
 </table>
 
@@ -1721,26 +1721,26 @@ some adjustments on both the server and client sides.
 <a name="Password-authentication-server"></a>
 <a name="SEC30"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC29" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC31" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Password-authenticated" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authentication-client" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC29" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authenticated" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 2.9.3.1 Setting up the server for password authentication </h4>
 
 <p>First of all, you probably want to tighten the
 permissions on the &lsquo;<tt>$CVSROOT</tt>&rsquo; and
-&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See <a href="#SEC32">Security considerations with password authentication</a>, for more details.
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See <a href="#Password-authentication-security">Security considerations with password authentication</a>, for more details.
 </p>
 <a name="IDX70"></a>
 <a name="IDX71"></a>
@@ -1761,8 +1761,8 @@ connection on the right port.  By default, the port
 number is 2401; it would be different if your client
 were compiled with <code>CVS_AUTH_PORT</code> defined to
 something else, though.  This can also be specified in the CVSROOT variable
-(see section <a href="#SEC26">Remote repositories</a>) or overridden with the CVS_CLIENT_PORT
-environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).
+(see section <a href="#Remote-repositories">Remote repositories</a>) or overridden with the CVS_CLIENT_PORT
+environment variable (see section <a href="cvs_19.html#Environment-variables">All environment variables which affect CVS</a>).
 </p>
 <p>        If your <code>inetd</code> allows raw port numbers in
 &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;, then the following (all on a
@@ -1820,16 +1820,16 @@ the <code>port</code> line.)
 to reread its initialization files.
 </p>
 <p>If you are having trouble setting this up, see
-<a href="cvs_21.html#SEC185">Trouble making a connection to a CVS server</a>.
+<a href="cvs_21.html#Connection">Trouble making a connection to a CVS server</a>.
 </p>
 <a name="IDX82"></a>
 <a name="IDX83"></a>
 <p>Because the client stores and transmits passwords in
-cleartext (almost&mdash;see <a href="#SEC32">Security considerations with password authentication</a>, for details), a separate <small>CVS</small> password
+cleartext (almost&mdash;see <a href="#Password-authentication-security">Security considerations with password authentication</a>, for details), a separate <small>CVS</small> password
 file is generally used, so people don&rsquo;t compromise
 their regular passwords when they access the
 repository.  This file is
-&lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; (see section <a href="#SEC20">The administrative files</a>).  It uses a colon-separated
+&lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; (see section <a href="#Intro-administrative-files">The administrative files</a>).  It uses a colon-separated
 format, similar to &lsquo;<tt>/etc/passwd</tt>&rsquo; on Unix systems,
 except that it has fewer fields: <small>CVS</small> username,
 optional password, and an optional system username for
@@ -1854,7 +1854,7 @@ paste in passwords directly from regular Unix
 including an empty password.  (This is typical for
 sites granting anonymous read-only access; for
 information on how to do the &quot;read-only&quot; part, see
-<a href="#SEC36">Read-only repository access</a>.)
+<a href="#Read_002donly-access">Read-only repository access</a>.)
 </p>
 <p>The second and third lines will grant access to
 <code>bach</code> and <code>spwang</code> if they supply their
@@ -1922,7 +1922,7 @@ does not exist, then the server can try to authenticate
 the username and password using the operating system&rsquo;s
 user-lookup routines (this &quot;fallback&quot; behavior can be
 disabled by setting <code>SystemAuth=no</code> in the
-<small>CVS</small> &lsquo;<tt>config</tt>&rsquo; file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+<small>CVS</small> &lsquo;<tt>config</tt>&rsquo; file, see section <a href="cvs_18.html#config">The CVSROOT/config configuration file</a>).
 </p>
 <p>The default fallback behaviour is to look in 
 &lsquo;<tt>/etc/passwd</tt>&rsquo; for this system password unless your
@@ -1982,7 +1982,7 @@ feature should not be used if you may not have control of the name
 authentication might be a security risk: <small>CVS</small>
 operations would then be authenticated with that user&rsquo;s
 regular login password, and the password flies across
-the network in plaintext.  See <a href="#SEC32">Security considerations with password authentication</a> for more on this.
+the network in plaintext.  See <a href="#Password-authentication-security">Security considerations with password authentication</a> for more on this.
 This may be more of a problem with PAM authentication
 because it is likely that the source of the system 
 password is some central authentication service like
@@ -2010,7 +2010,7 @@ necessary.
 one-time-passwords (OTP) for <small>CVS</small> authentication/authorization.  If
 OTPs are desired, the administrator may wish to encourage the use of
 one of the other Client/Server access methods.  See the section on
-see section <a href="#SEC26">Remote repositories</a> for a list of other methods.
+see section <a href="#Remote-repositories">Remote repositories</a> for a list of other methods.
 </p>
 <p>Right now, the only way to put a password in the
 <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file is to paste it there from
@@ -2023,26 +2023,26 @@ rather than via <small>CVS</small>.  This is because of the
 possible security risks of having the &lsquo;<tt>passwd</tt>&rsquo;
 file checked out to people&rsquo;s working copies.  If you do
 want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
-&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see <a href="cvs_18.html#SEC177">The checkoutlist file</a>.
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see <a href="cvs_18.html#checkoutlist">The checkoutlist file</a>.
 </p>
 
 <hr size="6">
 <a name="Password-authentication-client"></a>
 <a name="SEC31"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC30" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC32" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Password-authentication-server" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authentication-security" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC29" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authenticated" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 2.9.3.2 Using the client with password authentication </h4>
@@ -2118,7 +2118,7 @@ server side, in which case you&rsquo;ll have to re-run
 <p>Note that if the &lsquo;<samp>:pserver:</samp>&rsquo; were not present in
 the repository specification, <small>CVS</small> would assume it
 should use <code>rsh</code> to connect with the server
-instead (see section <a href="#SEC28">Connecting with rsh</a>).
+instead (see section <a href="#Connecting-via-rsh">Connecting with rsh</a>).
 </p>
 <p>Of course, once you have a working copy checked out and
 are running <small>CVS</small> commands from within it, there is
@@ -2135,19 +2135,19 @@ removed from the <code>CVS_PASSFILE</code> by using the
 <a name="Password-authentication-security"></a>
 <a name="SEC32"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC31" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC33" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Password-authentication-client" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#GSSAPI-authenticated" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC29" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Password-authenticated" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 2.9.3.3 Security considerations with password authentication </h4>
@@ -2160,7 +2160,7 @@ system administrator accidentally looking at the file),
 and will not prevent even a naive attacker from gaining
 the password.
 </p>
-<p>The separate <small>CVS</small> password file (see section <a href="#SEC30">Setting up the server for password authentication</a>) allows people
+<p>The separate <small>CVS</small> password file (see section <a href="#Password-authentication-server">Setting up the server for password authentication</a>) allows people
 to use a different password for repository access than
 for login access.  On the other hand, once a user has
 non-read-only
@@ -2193,19 +2193,19 @@ security, get Kerberos.
 <a name="GSSAPI-authenticated"></a>
 <a name="SEC33"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC32" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC34" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Password-authentication-security" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Kerberos-authenticated" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.4 Direct connection with GSSAPI </h3>
@@ -2236,13 +2236,13 @@ request encryption.
 </p>
 <p>GSSAPI connections are handled on the server side by
 the same server which handles the password
-authentication server; see <a href="#SEC30">Setting up the server for password authentication</a>.  If you are using a GSSAPI mechanism such as
+authentication server; see <a href="#Password-authentication-server">Setting up the server for password authentication</a>.  If you are using a GSSAPI mechanism such as
 Kerberos which provides for strong authentication, you
 will probably want to disable the ability to
 authenticate via cleartext passwords.  To do so, create
 an empty &lsquo;<tt>CVSROOT/passwd</tt>&rsquo; password file, and set
 <code>SystemAuth=no</code> in the config file
-(see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+(see section <a href="cvs_18.html#config">The CVSROOT/config configuration file</a>).
 </p>
 <p>The GSSAPI server uses a principal name of
 cvs/<var>hostname</var>, where <var>hostname</var> is the
@@ -2259,25 +2259,25 @@ example,
 <a name="Kerberos-authenticated"></a>
 <a name="SEC34"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC33" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#GSSAPI-authenticated" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Connecting-via-fork" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.5 Direct connection with kerberos </h3>
 
 <p>The easiest way to use kerberos is to use the kerberos
-<code>rsh</code>, as described in <a href="#SEC28">Connecting with rsh</a>.
+<code>rsh</code>, as described in <a href="#Connecting-via-rsh">Connecting with rsh</a>.
 The main disadvantage of using rsh is that all the data
 needs to pass through additional programs, so it may be
 slower.  So if you have kerberos installed you can
@@ -2305,9 +2305,9 @@ request encryption.
 <p>You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
-specify it in the <code>CVSROOT</code> (see section <a href="#SEC26">Remote repositories</a>)
+specify it in the <code>CVSROOT</code> (see section <a href="#Remote-repositories">Remote repositories</a>)
 or the <code>CVS_CLIENT_PORT</code> environment variable
-(see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>) on the client.
+(see section <a href="cvs_19.html#Environment-variables">All environment variables which affect CVS</a>) on the client.
 </p>
 <a name="IDX88"></a>
 <p>When you want to use <small>CVS</small>, get a ticket in the
@@ -2325,19 +2325,19 @@ connection via rsh; this version will not do so.
 <a name="Connecting-via-fork"></a>
 <a name="SEC35"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC34" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC36" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Kerberos-authenticated" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Read_002donly-access" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-repositories" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.9.6 Connecting with fork </h3>
@@ -2375,26 +2375,26 @@ environment variable.
 <a name="Read_002donly-access"></a>
 <a name="SEC36"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC35" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC37" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Connecting-via-fork" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Server-temporary-directory" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.10 Read-only repository access </h2>
 
 <p>        It is possible to grant read-only repository
 access to people using the password-authenticated
-server (see section <a href="#SEC29">Direct connection with password authentication</a>).  (The
+server (see section <a href="#Password-authenticated">Direct connection with password authentication</a>).  (The
 other access methods do not have explicit support for
 read-only users because those methods all assume login
 access to the repository machine anyway, and therefore
@@ -2406,7 +2406,7 @@ those <small>CVS</small> operations which do not modify the
 repository, except for certain &ldquo;administrative&rdquo; files
 (such as lock files and the history file).  It may be
 desirable to use this feature in conjunction with
-user-aliasing (see section <a href="#SEC30">Setting up the server for password authentication</a>).
+user-aliasing (see section <a href="#Password-authentication-server">Setting up the server for password authentication</a>).
 </p>
 <p>Unlike with previous versions of <small>CVS</small>, read-only
 users should be able merely to read the repository, and
@@ -2448,7 +2448,7 @@ read-only users still need to be listed in the
 &lsquo;<tt>readers</tt>&rsquo; file.
 </p>
 <p>        Note: if your <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo;
-file maps cvs users onto system users (see section <a href="#SEC30">Setting up the server for password authentication</a>), make sure you deny or grant
+file maps cvs users onto system users (see section <a href="#Password-authentication-server">Setting up the server for password authentication</a>), make sure you deny or grant
 read-only access using the <em>cvs</em> usernames, not
 the system usernames.  That is, the &lsquo;<tt>readers</tt>&rsquo; and
 &lsquo;<tt>writers</tt>&rsquo; files contain cvs usernames, which may
@@ -2475,19 +2475,19 @@ read-only access.
 <a name="Server-temporary-directory"></a>
 <a name="SEC37"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC36" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Read_002donly-access" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Repository" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.11 Temporary directories for the server </h2>
@@ -2501,8 +2501,8 @@ directories.  They are named
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the &lsquo;<samp>-T</samp>&rsquo; global option (see section <a href="cvs_16.html#SEC118">Global options</a>), 
-the <code>TMPDIR</code> environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>), 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see section <a href="cvs_16.html#Global-options">Global options</a>), 
+the <code>TMPDIR</code> environment variable (see section <a href="cvs_19.html#Environment-variables">All environment variables which affect CVS</a>), 
 or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
 </p>
 <p>In most cases the server will remove the temporary
@@ -2532,16 +2532,16 @@ number <var>pid</var>, it is safe to do so.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC9" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_3.html#SEC38" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Repository" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_3.html#Starting-a-new-project" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

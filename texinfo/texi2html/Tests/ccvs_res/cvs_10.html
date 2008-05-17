@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Multiple-developers"></a>
 <a name="SEC83"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_9.html#SEC82" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC84" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_9.html#Binary-howto" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-status" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 10. Multiple developers </h1>
@@ -69,7 +69,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see section <a href="cvs_16.html#SEC121">admin options</a>).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see section <a href="cvs_16.html#admin-options">admin options</a>).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -99,17 +99,17 @@ choosing between them.
 </p>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC84">10.1 File status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 A file can be in several states
+<tr><td align="left" valign="top"><a href="#File-status">10.1 File status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 A file can be in several states
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC85">10.2 Bringing a file up to date</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC86">10.3 Conflicts example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           An informative example
+<tr><td align="left" valign="top"><a href="#Updating-a-file">10.2 Bringing a file up to date</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Conflicts-example">10.3 Conflicts example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           An informative example
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC87">10.4 Informing others about commits</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            To cooperate you must inform
+<tr><td align="left" valign="top"><a href="#Informing-others">10.4 Informing others about commits</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            To cooperate you must inform
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC88">10.5 Several developers simultaneously attempting to run CVS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Simultaneous repository access
+<tr><td align="left" valign="top"><a href="#Concurrency">10.5 Several developers simultaneously attempting to run CVS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Simultaneous repository access
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC89">10.6 Mechanisms to track who is editing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC95">10.7 Choosing between reserved or unreserved checkouts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Reserved or unreserved checkouts?
+<tr><td align="left" valign="top"><a href="#Watches">10.6 Mechanisms to track who is editing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Choosing-a-model">10.7 Choosing between reserved or unreserved checkouts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Reserved or unreserved checkouts?
 </td></tr>
 </table>
 
@@ -117,19 +117,19 @@ choosing between them.
 <a name="File-status"></a>
 <a name="SEC84"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC83" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC85" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Multiple-developers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Updating-a-file" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.1 File status </h2>
@@ -198,7 +198,7 @@ to allow an <code>update</code> to complete.
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
-resolve the conflict as described in <a href="#SEC86">Conflicts example</a>.
+resolve the conflict as described in <a href="#Conflicts-example">Conflicts example</a>.
 </p>
 </dd>
 <dt> Unknown</dt>
@@ -218,10 +218,10 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-<a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
-and <code>Sticky date</code> output, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
+<a href="cvs_17.html#Invoking-CVS">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see <a href="cvs_4.html#Sticky-tags">Sticky tags</a>.
 For information on its <code>Sticky options</code> output,
-see the &lsquo;<samp>-k</samp>&rsquo; option in <a href="cvs_16.html#SEC154">update options</a>.
+see the &lsquo;<samp>-k</samp>&rsquo; option in <a href="cvs_16.html#update-options">update options</a>.
 </p>
 <p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
@@ -241,25 +241,25 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
+these options, see <a href="cvs_17.html#Invoking-CVS">Quick reference to CVS commands</a>.
 </p>
 <hr size="6">
 <a name="Updating-a-file"></a>
 <a name="SEC85"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC84" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC86" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#File-status" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Conflicts-example" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.2 Bringing a file up to date </h2>
@@ -288,26 +288,26 @@ close to any of the changes you have made, an
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See section <a href="cvs_16.html#SEC153">update&mdash;Bring work tree in sync with repository</a>, for a complete description of the
+See section <a href="cvs_16.html#update">update&mdash;Bring work tree in sync with repository</a>, for a complete description of the
 <code>update</code> command.
 </p>
 <hr size="6">
 <a name="Conflicts-example"></a>
 <a name="SEC86"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC85" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC87" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Updating-a-file" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Informing-others" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.3 Conflicts example </h2>
@@ -476,19 +476,19 @@ See the documentation for pcl-cvs.
 <a name="Informing-others"></a>
 <a name="SEC87"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC86" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC88" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Conflicts-example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Concurrency" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.4 Informing others about commits </h2>
@@ -496,8 +496,8 @@ See the documentation for pcl-cvs.
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
 &lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
-used to automate this process.  See section <a href="cvs_18.html#SEC158">The modules file</a>.
-See section <a href="cvs_18.html#SEC172">Loginfo</a>.  You can use these features of <small>CVS</small>
+used to automate this process.  See section <a href="cvs_18.html#modules">The modules file</a>.
+See section <a href="cvs_18.html#loginfo">Loginfo</a>.  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
@@ -506,19 +506,19 @@ newsgroup.
 <a name="Concurrency"></a>
 <a name="SEC88"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC87" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Informing-others" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.5 Several developers simultaneously attempting to run CVS </h2>
@@ -547,7 +547,7 @@ start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
-(see section <a href="#SEC83">Multiple developers</a>).
+(see section <a href="#Multiple-developers">Multiple developers</a>).
 </p>
 <p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
@@ -585,19 +585,19 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <a name="Watches"></a>
 <a name="SEC89"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC88" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC90" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Concurrency" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Setting-a-watch" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.6 Mechanisms to track who is editing files </h2>
@@ -623,11 +623,11 @@ but <small>CVS</small> is not able to enforce this behavior.
 </p>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC90">10.6.1 Telling CVS to watch certain files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC91">10.6.2 Telling CVS to notify you</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC92">10.6.3 How to edit a file which is being watched</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC93">10.6.4 Information about who is watching and editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC94">10.6.5 Using watches with old versions of CVS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Watches interact poorly with CVS 1.6 or earlier
+<tr><td align="left" valign="top"><a href="#Setting-a-watch">10.6.1 Telling CVS to watch certain files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Getting-Notified">10.6.2 Telling CVS to notify you</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Editing-files">10.6.3 How to edit a file which is being watched</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Watch-information">10.6.4 Information about who is watching and editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Watches-Compatibility">10.6.5 Using watches with old versions of CVS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Watches interact poorly with CVS 1.6 or earlier
 </td></tr>
 </table>
 
@@ -635,19 +635,19 @@ but <small>CVS</small> is not able to enforce this behavior.
 <a name="Setting-a-watch"></a>
 <a name="SEC90"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC89" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC91" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Watches" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-Notified" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 10.6.1 Telling CVS to watch certain files </h3>
@@ -675,7 +675,7 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.html#g_t_007e_002f_002ecvsrc">Default options and the ~/.cvsrc file</a>).
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
@@ -699,19 +699,19 @@ watch on</code>.
 <a name="Getting-Notified"></a>
 <a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC90" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC92" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Setting-a-watch" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Editing-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 10.6.2 Telling CVS to notify you </h3>
@@ -753,7 +753,7 @@ They can do this in several ways, by:
 applying the <code>cvs unedit</code> command (described below) to the file
 
 </li><li>
-applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC149">release&mdash;Indicate that a Module is no longer in use</a>) to the file&rsquo;s parent directory
+applying the <code>cvs release</code> command (see section <a href="cvs_16.html#release">release&mdash;Indicate that a Module is no longer in use</a>) to the file&rsquo;s parent directory
 (or recursively to a directory more than one level up)
 
 </li><li>
@@ -797,9 +797,9 @@ watches for the specified actions are removed.
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
-files (see section <a href="cvs_2.html#SEC20">The administrative files</a>).  This
+files (see section <a href="cvs_2.html#Intro-administrative-files">The administrative files</a>).  This
 file follows the usual conventions for administrative
-files (see section <a href="cvs_18.html#SEC167">The common syntax</a>), where each line is a regular
+files (see section <a href="cvs_18.html#syntax">The common syntax</a>), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest
@@ -840,19 +840,19 @@ changing.
 <a name="Editing-files"></a>
 <a name="SEC92"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC91" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC93" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Getting-Notified" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watch-information" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 10.6.3 How to edit a file which is being watched </h3>
@@ -862,7 +862,7 @@ read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
-for obtaining a copy of the sources (see section <a href="cvs_1.html#SEC5">Getting the source</a>), an operation which those systems call a
+for obtaining a copy of the sources (see section <a href="cvs_1.html#Getting-the-source">Getting the source</a>), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
 <a name="IDX173"></a>
@@ -912,7 +912,7 @@ notification for any of <var>files</var>.
 <p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see section <a href="cvs_16.html#SEC153">update&mdash;Bring work tree in sync with repository</a>).
+(see section <a href="cvs_16.html#update">update&mdash;Bring work tree in sync with repository</a>).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -929,19 +929,19 @@ successful <small>CVS</small> command.
 <a name="Watch-information"></a>
 <a name="SEC93"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC92" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC94" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Editing-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches-Compatibility" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 10.6.4 Information about who is watching and editing </h3>
@@ -978,19 +978,19 @@ containing the file.
 <a name="Watches-Compatibility"></a>
 <a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC93" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC95" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Watch-information" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Choosing-a-model" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC89" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Watches" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 10.6.5 Using watches with old versions of CVS </h3>
@@ -1018,19 +1018,19 @@ that will restore the repository to a state which
 <a name="Choosing-a-model"></a>
 <a name="SEC95"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC94" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Watches-Compatibility" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC83" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-developers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.7 Choosing between reserved or unreserved checkouts </h2>
@@ -1076,7 +1076,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in <a href="#SEC89">Mechanisms to track who is editing files</a>
+<p>The watches features described above in <a href="#Watches">Mechanisms to track who is editing files</a>
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else
@@ -1090,16 +1090,16 @@ checkout worlds.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_11.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Multiple-developers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_11.html#Revision-management" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

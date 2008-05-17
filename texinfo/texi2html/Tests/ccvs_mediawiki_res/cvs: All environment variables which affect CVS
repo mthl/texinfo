@@ -1,19 +1,19 @@
 <div id="Environment-variables"></div>
 <div id="SEC181"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#SEC180  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#SEC182  &gt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#config  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#SEC157  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#SEC182  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == All environment variables which affect CVS ==
@@ -26,13 +26,13 @@ that affect <small>CVS</small>.
 </dd>
 <dt> <code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should ignore. See section [cvs: Reference manual for Administrative files#SEC176 Ignoring files via cvsignore].
+<small>CVS</small> should ignore. See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
 </p>
 <div id="IDX293"></div>
 </dd>
 <dt> <code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should treat as wrappers. See section [cvs: Reference manual for Administrative files#SEC165 The cvswrappers file].
+<small>CVS</small> should treat as wrappers. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
 </p>
 <div id="IDX294"></div>
 <div id="IDX295"></div>
@@ -57,7 +57,7 @@ read-only NFS repositories.
 </dd>
 <dt> <code>$CVSUMASK</code></dt>
 <dd><p>Controls permissions of files in the repository.  See
-[cvs: The Repository#SEC13 File permissions].
+[cvs: The Repository#File-permissions File permissions].
 </p>
 </dd>
 <dt> <code>$CVSROOT</code></dt>
@@ -85,8 +85,8 @@ directory.
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
 <code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
-See [cvs: Overview#SEC6 Committing your changes] for more or
-[cvs: Guide to CVS commands#SEC118 Global options] for alternative ways of specifying a
+See [cvs: Overview#Committing-your-changes Committing your changes] for more or
+[cvs: Guide to CVS commands#Global-options Global options] for alternative ways of specifying a
 log editor.
 </p>
 <div id="IDX300"></div>
@@ -117,7 +117,7 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 <dt> <code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
-see section [cvs: The Repository#SEC28 Connecting with rsh].
+see section [cvs: The Repository#Connecting-via-rsh Connecting with rsh].
 </p>
 </dd>
 <dt> <code>$CVS_SERVER</code></dt>
@@ -128,20 +128,20 @@ necessary arguments) when accessing a remote repository
 using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
 The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
 the default value for <code>:fork:</code> is the name used to run the client.
-see section [cvs: The Repository#SEC28 Connecting with rsh]
+see section [cvs: The Repository#Connecting-via-rsh Connecting with rsh]
 </p>
 </dd>
 <dt> <code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
-see section [cvs: The Repository#SEC31 Using the client with password authentication]
+see section [cvs: The Repository#Password-authentication-client Using the client with password authentication]
 </p>
 </dd>
 <dt> <code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
-see section [cvs: The Repository#SEC26 Remote repositories]
+see section [cvs: The Repository#Remote-repositories Remote repositories]
 </p>
 <div id="IDX305"></div>
 </dd>
@@ -206,7 +206,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 <dd><div id="IDX314"></div>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
-<code>TMPDIR</code>.  See section [cvs: Guide to CVS commands#SEC118 Global options], for a
+<code>TMPDIR</code>.  See section [cvs: Guide to CVS commands#Global-options Global options], for a
 description of how to specify this.
 Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).
@@ -234,16 +234,16 @@ files.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#SEC157  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#SEC182  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

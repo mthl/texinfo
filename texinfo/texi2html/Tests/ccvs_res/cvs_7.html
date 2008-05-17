@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Adding-and-removing"></a>
 <a name="SEC66"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_6.html#SEC65" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC67" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_6.html#Recursive-behavior" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_6.html#SEC65" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs_6.html#Recursive-behavior" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 7. Adding, removing, and renaming files and directories </h1>
@@ -71,31 +71,31 @@ modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC67">7.1 Adding files to a directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Adding files
+<tr><td align="left" valign="top"><a href="#Adding-files">7.1 Adding files to a directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Adding files
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC68">7.2 Removing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC69">7.3 Removing directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC70">7.4 Moving and renaming files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC74">7.5 Moving and renaming directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Removing-files">7.2 Removing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Removing-directories">7.3 Removing directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Moving-files">7.4 Moving and renaming files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Moving-directories">7.5 Moving and renaming directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
 <a name="Adding-files"></a>
 <a name="SEC67"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC66" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC68" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.1 Adding files to a directory </h2>
@@ -105,7 +105,7 @@ this in <small>CVS</small> vary depending on the situation.
 <ul>
 <li>
 You must have a working copy of the directory.
-See section <a href="cvs_1.html#SEC5">Getting the source</a>.
+See section <a href="cvs_1.html#Getting-the-source">Getting the source</a>.
 
 </li><li>
 Create the new file inside your working copy of the directory.
@@ -113,7 +113,7 @@ Create the new file inside your working copy of the directory.
 </li><li>
 Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section <a href="cvs_9.html#SEC80">Handling binary files</a>).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section <a href="cvs_9.html#Binary-files">Handling binary files</a>).
 
 </li><li>
 Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
@@ -142,27 +142,27 @@ The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See section <a href="cvs_16.html#SEC139">import&mdash;Import sources into CVS, using vendor branches</a>.
+the <code>import</code> command instead.  See section <a href="cvs_16.html#import">import&mdash;Import sources into CVS, using vendor branches</a>.
 </p>
 <p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See section <a href="#SEC68">Removing files</a>, for an
+command intervened.  See section <a href="#Removing-files">Removing files</a>, for an
 example.
 </p>
 <p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
 this file will be checked out; for more information see
-<a href="cvs_12.html#SEC102">Substitution modes</a>.
+<a href="cvs_12.html#Substitution-modes">Substitution modes</a>.
 </p>
 <p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see section <a href="cvs_18.html#SEC178">The history file</a>).  It will also be
+it is enabled, see section <a href="cvs_18.html#history-file">The history file</a>).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See section <a href="cvs_16.html#SEC120">admin&mdash;Administration</a>.  If you omit the
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section <a href="cvs_16.html#admin">admin&mdash;Administration</a>.  If you omit the
 &lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -175,27 +175,27 @@ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </pre></td></tr></table>
 
 <p>When you add a file it is added only on the branch
-which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
+which you are working on (see section <a href="cvs_5.html#Branching-and-merging">Branching and merging</a>).  You can
 later merge the additions to another branch if you want
-(see section <a href="cvs_5.html#SEC63">Merging can add or remove files</a>).
+(see section <a href="cvs_5.html#Merging-adds-and-removals">Merging can add or remove files</a>).
 </p>
 <hr size="6">
 <a name="Removing-files"></a>
 <a name="SEC68"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC67" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC69" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Adding-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-directories" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.2 Removing files </h2>
@@ -210,7 +210,7 @@ but remain able to retrieve old revisions:
 <ul>
 <li>
 Make sure that you have not made any uncommitted
-modifications to the file.  See section <a href="cvs_1.html#SEC8">Viewing differences</a>,
+modifications to the file.  See section <a href="cvs_1.html#Viewing-differences">Viewing differences</a>,
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
 the file without committing your changes, you will of
@@ -248,7 +248,7 @@ specified to <code>checkout</code> or <code>update</code>.
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
+options, see <a href="cvs_17.html#Invoking-CVS">Quick reference to CVS commands</a>.
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -307,27 +307,27 @@ U oj.c
 </pre></td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
-which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
+which you are working on (see section <a href="cvs_5.html#Branching-and-merging">Branching and merging</a>).  You can
 later merge the removals to another branch if you want
-(see section <a href="cvs_5.html#SEC63">Merging can add or remove files</a>).
+(see section <a href="cvs_5.html#Merging-adds-and-removals">Merging can add or remove files</a>).
 </p>
 <hr size="6">
 <a name="Removing-directories"></a>
 <a name="SEC69"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC68" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC70" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Removing-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.3 Removing directories </h2>
@@ -362,19 +362,19 @@ are checking out contains any files in that directory.
 <a name="Moving-files"></a>
 <a name="SEC70"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC69" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC71" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Removing-directories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Outside" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.4 Moving and renaming files </h2>
@@ -382,17 +382,17 @@ are checking out contains any files in that directory.
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See section <a href="#SEC74">Moving and renaming directories</a>.).
+directory is even harder.  See section <a href="#Moving-directories">Moving and renaming directories</a>.).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC71">7.4.1 The Normal way to Rename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     The normal way to Rename
+<tr><td align="left" valign="top"><a href="#Outside">7.4.1 The Normal way to Rename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     The normal way to Rename
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC72">7.4.2 Moving the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      A tricky, alternative way
+<tr><td align="left" valign="top"><a href="#Inside">7.4.2 Moving the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      A tricky, alternative way
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC73">7.4.3 Copying the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Another tricky, alternative way
+<tr><td align="left" valign="top"><a href="#Rename-by-copying">7.4.3 Copying the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Another tricky, alternative way
 </td></tr>
 </table>
 
@@ -400,19 +400,19 @@ directory is even harder.  See section <a href="#SEC74">Moving and renaming dire
 <a name="Outside"></a>
 <a name="SEC71"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC70" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Moving-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inside" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.4.1 The Normal way to Rename </h3>
@@ -440,25 +440,25 @@ time of the rename.
 <p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
-information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
+information see <a href="cvs_4.html#Assigning-revisions">Assigning revisions</a>.
 </p>
 <hr size="6">
 <a name="Inside"></a>
 <a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC71" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC73" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Outside" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rename-by-copying" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.4.2 Moving the history file </h3>
@@ -502,19 +502,19 @@ commands while you move it.
 <a name="Rename-by-copying"></a>
 <a name="SEC73"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC72" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC74" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Inside" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-directories" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC70" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.4.3 Copying the history file </h3>
@@ -568,27 +568,27 @@ You cannot easily see the history of the file across the rename.
 <a name="Moving-directories"></a>
 <a name="SEC74"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC73" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Rename-by-copying" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC66" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.5 Moving and renaming directories </h2>
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-<a href="#SEC71">The Normal way to Rename</a>.  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
-option, as described in <a href="#SEC69">Removing directories</a>.
+<a href="#Outside">The Normal way to Rename</a>.  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in <a href="#Removing-directories">Removing directories</a>.
 </p>
 <p>If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
@@ -630,16 +630,16 @@ name of the directories.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_8.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

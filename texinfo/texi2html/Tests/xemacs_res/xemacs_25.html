@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Running"></a>
 <a name="SEC251"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_24.html#SEC250" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC252" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_24.html#Asm-Mode" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Compilation" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_24.html#SEC215" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_24.html#Programs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 22. Compiling and Testing Programs </h1>
@@ -66,21 +66,21 @@ making changes in programs.  This chapter deals with commands that assist
 in the larger process of developing and maintaining programs.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC252">22.1 Running &ldquo;make&rdquo;, or Compilers Generally</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Compiling programs in languages other than Lisp
+<tr><td align="left" valign="top"><a href="#Compilation">22.1 Running &ldquo;make&rdquo;, or Compilers Generally</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Compiling programs in languages other than Lisp
                         (C, Pascal, etc.)
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC253">22.2 Major Modes for Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Various modes for editing Lisp programs, with
+<tr><td align="left" valign="top"><a href="#Lisp-Modes">22.2 Major Modes for Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Various modes for editing Lisp programs, with
                        different facilities for running the Lisp programs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC254">22.3 Libraries of Lisp Code for Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Creating Lisp programs to run in Emacs.
+<tr><td align="left" valign="top"><a href="#Lisp-Libraries">22.3 Libraries of Lisp Code for Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Creating Lisp programs to run in Emacs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC258">22.4 Evaluating Emacs-Lisp Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Executing a single Lisp expression in Emacs.
+<tr><td align="left" valign="top"><a href="#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Executing a single Lisp expression in Emacs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC259">22.5 The Emacs-Lisp Debugger</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Debugging Lisp programs running in Emacs.
+<tr><td align="left" valign="top"><a href="#Lisp-Debug">22.5 The Emacs-Lisp Debugger</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Debugging Lisp programs running in Emacs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC260">22.6 Lisp Interaction Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Executing Lisp in an Emacs buffer.
+<tr><td align="left" valign="top"><a href="#Lisp-Interaction">22.6 Lisp Interaction Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Executing Lisp in an Emacs buffer.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC261">22.7 Running an External Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Communicating through Emacs with a separate Lisp.
+<tr><td align="left" valign="top"><a href="#External-Lisp">22.7 Running an External Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Communicating through Emacs with a separate Lisp.
 </td></tr>
 </table>
 
@@ -88,19 +88,19 @@ in the larger process of developing and maintaining programs.
 <a name="Compilation"></a>
 <a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC253" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Running" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Modes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.1 Running &ldquo;make&rdquo;, or Compilers Generally </h2>
@@ -146,7 +146,7 @@ again.  The first <kbd>M-x compile</kbd> provides <code>make -k</code> as the de
 The default is taken from the variable <code>compile-command</code>; if the
 appropriate compilation command for a file is something other than
 <code>make -k</code>, it can be useful to have the file specify a local value for
-<code>compile-command</code> (see section <a href="xemacs_30.html#SEC351">Local Variables in Files</a>).
+<code>compile-command</code> (see section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>).
 </p>
 <a name="IDX1021"></a>
 <p>  When you start a compilation, the buffer &lsquo;<samp>*compilation*</samp>&rsquo; is
@@ -213,19 +213,19 @@ a prompt.  Here&rsquo;s how to do it in <code>csh</code>:
 <a name="Lisp-Modes"></a>
 <a name="SEC253"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Compilation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.2 Major Modes for Lisp </h2>
@@ -238,22 +238,22 @@ expressions.
 <dt> Emacs-Lisp mode</dt>
 <dd><p>The mode for editing source files of programs to run in Emacs Lisp.
 This mode defines <kbd>C-M-x</kbd> to evaluate the current defun.
-See section <a href="#SEC254">Libraries of Lisp Code for Emacs</a>.
+See section <a href="#Lisp-Libraries">Libraries of Lisp Code for Emacs</a>.
 </p></dd>
 <dt> Lisp Interaction mode</dt>
 <dd><p>The mode for an interactive session with Emacs Lisp.  It defines
 &lt;LFD&gt; to evaluate the sexp before point and insert its value in the
-buffer.  See section <a href="#SEC260">Lisp Interaction Buffers</a>.
+buffer.  See section <a href="#Lisp-Interaction">Lisp Interaction Buffers</a>.
 </p></dd>
 <dt> Lisp mode</dt>
 <dd><p>The mode for editing source files of programs that run in other dialects
 of Lisp than Emacs Lisp.  This mode defines <kbd>C-M-x</kbd> to send the
-current defun to an inferior Lisp process.  See section <a href="#SEC261">Running an External Lisp</a>.
+current defun to an inferior Lisp process.  See section <a href="#External-Lisp">Running an External Lisp</a>.
 </p></dd>
 <dt> Inferior Lisp mode</dt>
 <dd><p>The mode for an interactive session with an inferior Lisp process.
 This mode combines the special features of Lisp mode and Shell mode
-(see section <a href="xemacs_29.html#SEC329">Shell Mode</a>).
+(see section <a href="xemacs_29.html#Shell-Mode">Shell Mode</a>).
 </p></dd>
 <dt> Scheme mode</dt>
 <dd><p>Like Lisp mode but for Scheme programs.
@@ -267,33 +267,33 @@ This mode combines the special features of Lisp mode and Shell mode
 <a name="Lisp-Libraries"></a>
 <a name="SEC254"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC253" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC255" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lisp-Modes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Loading" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.3 Libraries of Lisp Code for Emacs </h2>
 
 <p>  Lisp code for Emacs editing commands is stored in files whose names
 conventionally end in &lsquo;<tt>.el</tt>&rsquo;.  This ending tells Emacs to edit them in
-Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
+Emacs-Lisp mode (see section <a href="#Lisp-Modes">Major Modes for Lisp</a>).
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC255">22.3.1 Loading Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Loading libraries of Lisp code into Emacs for use.
+<tr><td align="left" valign="top"><a href="#Loading">22.3.1 Loading Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Loading libraries of Lisp code into Emacs for use.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC256">22.3.2 Compiling Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Compiling a library makes it load and run faster.
+<tr><td align="left" valign="top"><a href="#Compiling-Libraries">22.3.2 Compiling Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Compiling a library makes it load and run faster.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC257">22.3.3 Converting Mocklisp to Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Converting Mocklisp to Lisp so XEmacs can run it.
+<tr><td align="left" valign="top"><a href="#Mocklisp">22.3.3 Converting Mocklisp to Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Converting Mocklisp to Lisp so XEmacs can run it.
 </td></tr>
 </table>
 
@@ -301,19 +301,19 @@ Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 <a name="Loading"></a>
 <a name="SEC255"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC256" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Compiling-Libraries" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.3.1 Loading Libraries </h3>
@@ -418,19 +418,19 @@ it does prevent execution of the rest of the <code>forms</code>.
 <a name="Compiling-Libraries"></a>
 <a name="SEC256"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC255" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC257" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Loading" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mocklisp" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.3.2 Compiling Libraries </h3>
@@ -512,19 +512,19 @@ refers to a variable or constant, that is shown, too.
 <a name="Mocklisp"></a>
 <a name="SEC257"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC256" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC258" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Compiling-Libraries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Eval" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.3.3 Converting Mocklisp to Lisp </h3>
@@ -543,19 +543,19 @@ and which values signify &ldquo;true&rdquo; or &ldquo;false&rdquo;.
 <a name="Lisp-Eval"></a>
 <a name="SEC258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC257" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC259" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Mocklisp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Debug" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.4 Evaluating Emacs-Lisp Expressions </h2>
@@ -639,19 +639,19 @@ world in step with the source file.
 <a name="Lisp-Debug"></a>
 <a name="SEC259"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC258" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC260" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lisp-Eval" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lisp-Interaction" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.5 The Emacs-Lisp Debugger </h2>
@@ -680,7 +680,7 @@ debugger as soon as <var>fun-name</var> is called. Use
 debugger when called.  (Redefining the function also does this.)  To enter
 the debugger from some other place in Lisp code, you must insert the
 expression <code>(debug)</code> there and install the changed code with
-<kbd>C-M-x</kbd>.  See section <a href="#SEC258">Evaluating Emacs-Lisp Expressions</a>.
+<kbd>C-M-x</kbd>.  See section <a href="#Lisp-Eval">Evaluating Emacs-Lisp Expressions</a>.
 </p>
 <p>  When the debugger is entered, it displays the previously selected buffer
 in one window and a buffer named &lsquo;<samp>*Backtrace*</samp>&rsquo; in another window.  The
@@ -695,7 +695,7 @@ usual Emacs editing commands are available; you can switch windows to
 examine the buffer that was being edited at the time of the error, and
 you can switch buffers, visit files, and perform any other editing
 operations.  However, the debugger is a recursive editing level
-(see section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>); it is a good idea to return to the backtrace
+(see section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>); it is a good idea to return to the backtrace
 buffer and explicitly exit the debugger when you don&rsquo;t want to use it any
 more.  Exiting the debugger kills the backtrace buffer.
 </p>
@@ -769,19 +769,19 @@ the debugger&rsquo;s return value is returned as the value of <code>signal</code
 <a name="Lisp-Interaction"></a>
 <a name="SEC260"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC261" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lisp-Debug" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#External-Lisp" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.6 Lisp Interaction Buffers </h2>
@@ -814,19 +814,19 @@ Interaction mode.
 <a name="External-Lisp"></a>
 <a name="SEC261"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC260" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lisp-Interaction" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 22.7 Running an External Lisp </h2>
@@ -846,7 +846,7 @@ from Lisp will go into the buffer, advancing point, and any &ldquo;terminal
 input&rdquo; for Lisp comes from text in the buffer.  To give input to Lisp, go
 to the end of the buffer and type the input, terminated by &lt;RET&gt;.  The
 &lsquo;<samp>*lisp*</samp>&rsquo; buffer is in Inferior Lisp mode, which has all the
-special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#SEC329">Shell Mode</a>).
+special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#Shell-Mode">Shell Mode</a>).
 </p>
 <a name="IDX1054"></a>
 <p>  Use Lisp mode to run the source files of programs in external Lisps.
@@ -868,23 +868,23 @@ to be run in another Lisp system) and Emacs-Lisp mode (for editing Lisp
 programs to be run in Emacs): in both modes it has the effect of installing
 the function definition that point is in, but the way of doing so is
 different according to where the relevant Lisp environment is found.
-See section <a href="#SEC253">Major Modes for Lisp</a>.
+See section <a href="#Lisp-Modes">Major Modes for Lisp</a>.
 </p><hr size="6">
 <a name="Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC261" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC263" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#External-Lisp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Package-Terminology" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 
@@ -900,36 +900,36 @@ This gives an installer the ability to tailor an XEmacs installation for
 local needs with safe removal of unnecessary code.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC263">22.8.1 Package Flavors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Understanding different kinds of packages.
+<tr><td align="left" valign="top"><a href="#Package-Terminology">22.8.1 Package Flavors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Understanding different kinds of packages.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC267">22.8.5 Getting Started</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to install packages.
+<tr><td align="left" valign="top"><a href="#Installing-Packages">22.8.5 Getting Started</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to install packages.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC270">22.8.8 Prerequisites for Building Source Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Building packages from CVS sources.
+<tr><td align="left" valign="top"><a href="#Building-Packages">22.8.8 Prerequisites for Building Source Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Building packages from CVS sources.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Local_002erules-File">&bull; Local.rules File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    This is an important file that you must create.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Creating-Packages">&bull; Creating Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The basics.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC272">22.8.10 Normal Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  A brief directory of packaged LISP.
+<tr><td align="left" valign="top"><a href="#Available-Packages">22.8.10 Normal Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  A brief directory of packaged LISP.
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Package-Terminology"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC262" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Packages" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC264" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="HEAD1"></a>
@@ -959,19 +959,19 @@ that you follow this rule of thumb: &quot;When in doubt, don&rsquo;t delete&quot
 <hr size="6">
 <a name="SEC264"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC263" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Package-Terminology" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC265" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.2 Package Distributions </h3>
@@ -987,16 +987,16 @@ bytecompiled lisp and creating tarballs for distribution.
 <tr><td valign="middle" align="left">[<a href="#SEC264" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC266" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.3 Binary Packages </h3>
@@ -1007,18 +1007,18 @@ hierarchy.
 <a name="SEC266"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC265" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC267" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-Packages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.4 Source Packages </h3>
@@ -1035,16 +1035,16 @@ savings).
 <tr><td valign="middle" align="left">[<a href="#SEC266" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC268" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="HEAD2"></a>
@@ -1066,23 +1066,23 @@ non-essential packages were made optional.
 <hr size="6">
 <a name="SEC268"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Installing-Packages" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC269" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.6 Choosing the Packages You Need </h3>
-<p>The <a href="#SEC272">Normal Packages</a> can currently be found in the same ftp directory
+<p>The <a href="#Available-Packages">Normal Packages</a> can currently be found in the same ftp directory
 where you grabbed the core distribution from, and are located in the
 subdirectory &lsquo;<tt>packages</tt>&rsquo;.  Package file names follow
 the naming convention &lsquo;<tt>&lt;package-name&gt;-&lt;version&gt;-pkg.tar.gz</tt>&rsquo;.
@@ -1092,7 +1092,7 @@ Alternatively, if you have copies of the packages locally, you can
 install packages from a local disk or CDROM.
 </p>
 <p>The file &lsquo;<tt>etc/PACKAGES</tt>&rsquo; in the core distribution contains a list of
-the <a href="#SEC272">Normal Packages</a> at the time of the XEmacs release.
+the <a href="#Available-Packages">Normal Packages</a> at the time of the XEmacs release.
 </p>
 <p>You can also get a list of available packages, and whether or not they
 are installed, using the visual package browser and installer.  You can
@@ -1124,18 +1124,18 @@ one of the methods above for installing the package you want.
 <a name="SEC269"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC268" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC270" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Building-Packages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.7 XEmacs and Installing Packages </h3>
@@ -1375,7 +1375,7 @@ text-modes, time
 <p>To make sure you have everything that the packages you have chosen to
 install need.
 </p>
-<p>See also <a href="#SEC272">Normal Packages</a> for further descriptions of the individual
+<p>See also <a href="#Available-Packages">Normal Packages</a> for further descriptions of the individual
 packages.
 </p>
 <a name="Removing-Packages"></a>
@@ -1400,16 +1400,16 @@ this for you.
 <tr><td valign="middle" align="left">[<a href="#SEC269" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC271" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="HEAD8"></a>
@@ -1447,19 +1447,19 @@ this for you.
 <hr size="6">
 <a name="SEC271"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC270" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC272" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Building-Packages" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Available-Packages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.9 What You Can Do With Source Packages </h3>
@@ -1726,16 +1726,16 @@ or a future revision of this manual for details.
 <tr><td valign="middle" align="left">[<a href="#SEC271" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC273" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="HEAD11"></a>
@@ -2177,19 +2177,19 @@ buffer.
 <hr size="6">
 <a name="SEC273"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC272" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Available-Packages" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC262" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Packages" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 22.8.11 Mule Support (mule) </h3>
@@ -2246,16 +2246,16 @@ separate process running as a dictionary server.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC274" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

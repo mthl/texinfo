@@ -331,7 +331,7 @@ sub chm_toc_body($)
         }
         $text .= chm_text($element->{'texi'});
         $text =~ s/^\s*//;
-        push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'id'}\">\n</OBJECT> </LI>\n");
+        push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'target'}\">\n</OBJECT> </LI>\n");
         if (!$chm_files{$element->{'file'}})
         {
              $hhp_lines .= "$element->{'file'}\n";

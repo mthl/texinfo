@@ -1,19 +1,19 @@
 <div id="Administrative-files"></div>
 <div id="SEC157"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#SEC156  &lt; ]|</td>
-<td valign="middle" align="left">|[[#SEC158| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt; ]|</td>
+<td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#SEC156  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Reference manual for Administrative files ==
@@ -23,39 +23,39 @@
 supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a limited
 fashion without any of them, but if they are set up
 properly they can help make life easier.  For a
-discussion of how to edit them, see [cvs: The Repository#SEC20 The administrative files].
+discussion of how to edit them, see [cvs: The Repository#Intro-administrative-files The administrative files].
 </p>
 <p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC158| modules]]::<nowiki>                     Defining modules
-</nowiki>&bull;[[#SEC165| Wrappers]]::<nowiki>                    Specify binary-ness based on file name
-</nowiki>&bull;[[#SEC166| commit files]]::<nowiki>                The commit support files (commitinfo,
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#modules| modules]]::<nowiki>                     Defining modules
+</nowiki>&bull;[[#Wrappers| Wrappers]]::<nowiki>                    Specify binary-ness based on file name
+</nowiki>&bull;[[#commit-files| commit files]]::<nowiki>                The commit support files (commitinfo,
                                 verifymsg, editinfo, loginfo)
-</nowiki>&bull;[[#SEC175| rcsinfo]]::<nowiki>                     Templates for the log messages
-</nowiki>&bull;[[#SEC176| cvsignore]]::<nowiki>                   Ignoring files via cvsignore
-</nowiki>&bull;[[#SEC177| checkoutlist]]::<nowiki>                Adding your own administrative files
-</nowiki>&bull;[[#SEC178| history file]]::<nowiki>                History information
-</nowiki>&bull;[[#SEC179| Variables]]::<nowiki>                   Various variables are expanded
-</nowiki>&bull;[[#SEC180| config]]::<nowiki>                      Miscellaneous CVS configuration
+</nowiki>&bull;[[#rcsinfo| rcsinfo]]::<nowiki>                     Templates for the log messages
+</nowiki>&bull;[[#cvsignore| cvsignore]]::<nowiki>                   Ignoring files via cvsignore
+</nowiki>&bull;[[#checkoutlist| checkoutlist]]::<nowiki>                Adding your own administrative files
+</nowiki>&bull;[[#history-file| history file]]::<nowiki>                History information
+</nowiki>&bull;[[#Variables| Variables]]::<nowiki>                   Various variables are expanded
+</nowiki>&bull;[[#config| config]]::<nowiki>                      Miscellaneous CVS configuration
 </nowiki></pre>
 <hr size="6">
 <div id="modules"></div>
 <div id="SEC158"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC157| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC159| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The modules file ===
@@ -83,31 +83,31 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC159| Alias modules]]::<nowiki>             The simplest kind of module
-</nowiki>&bull;[[#SEC160| Regular modules]]::<nowiki>
-</nowiki>&bull;[[#SEC161| Ampersand modules]]::<nowiki>
-</nowiki>&bull;[[#SEC162| Excluding directories]]::<nowiki>     Excluding directories from a module
-</nowiki>&bull;[[#SEC163| Module options]]::<nowiki>            Regular and ampersand modules can take options
-</nowiki>&bull;[[#SEC164| Module program options]]::<nowiki>    How the modules ``program options'' programs
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Alias-modules| Alias modules]]::<nowiki>             The simplest kind of module
+</nowiki>&bull;[[#Regular-modules| Regular modules]]::<nowiki>
+</nowiki>&bull;[[#Ampersand-modules| Ampersand modules]]::<nowiki>
+</nowiki>&bull;[[#Excluding-directories| Excluding directories]]::<nowiki>     Excluding directories from a module
+</nowiki>&bull;[[#Module-options| Module options]]::<nowiki>            Regular and ampersand modules can take options
+</nowiki>&bull;[[#Module-program-options| Module program options]]::<nowiki>    How the modules ``program options'' programs
                               are run. 
 </nowiki></pre>
 <hr size="6">
 <div id="Alias-modules"></div>
 <div id="SEC159"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC158| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC160| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Alias modules ====
@@ -153,19 +153,19 @@ U first-dir/sdir/sfile
 <div id="Regular-modules"></div>
 <div id="SEC160"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC159| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC161| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Regular modules ====
@@ -224,19 +224,19 @@ $
 <div id="Ampersand-modules"></div>
 <div id="SEC161"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC160| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC162| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Ampersand modules ====
@@ -290,19 +290,19 @@ a future release of <small>CVS</small>.
 <div id="Excluding-directories"></div>
 <div id="SEC162"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC161| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC163| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Excluding directories ====
@@ -324,19 +324,19 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 <div id="Module-options"></div>
 <div id="SEC163"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC162| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC164| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Module options ====
@@ -366,7 +366,7 @@ argument, the module name.
 <dt> <code>-o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
-argument, the module name.  See [[#SEC164|How the modules file &ldquo;program options&rdquo; programs are run]] for
+argument, the module name.  See [[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]] for
 information on how <var>prog</var> is called.
 </p>
 <div id="IDX256"></div>
@@ -391,11 +391,11 @@ module are tagged with <code>rtag</code>.  <var>prog</var> runs
 with two arguments: the module name and the symbolic
 tag specified to <code>rtag</code>.  It is not run
 when <code>tag</code> is executed.  Generally you will find
-that taginfo is a better solution (see section [cvs: History browsing#SEC78 User-defined logging]).
+that taginfo is a better solution (see section [cvs: History browsing#user_002ddefined-logging User-defined logging]).
 </p></dd>
 </dl>
 
-<p>You should also see see section [[#SEC164|How the modules file &ldquo;program options&rdquo; programs are run]] about how the
+<p>You should also see see section [[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]] about how the
 &ldquo;program options&rdquo; programs are run.
 </p>
 
@@ -403,19 +403,19 @@ that taginfo is a better solution (see section [cvs: History browsing#SEC78 User
 <div id="Module-program-options"></div>
 <div id="SEC164"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC163| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC165| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC158| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== How the modules file &ldquo;program options&rdquo; programs are run ====
@@ -440,19 +440,19 @@ completed.
 <div id="Wrappers"></div>
 <div id="SEC165"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC164| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The cvswrappers file ===
@@ -483,7 +483,7 @@ copy one version of your file over the other, wiping
 out the previous contents.</strong>
 The &lsquo;<samp>-m</samp>&rsquo; wrapper option only affects behavior when
 merging is done on update; it does not affect how files
-are stored.  See [cvs: Handling binary files#SEC80 Handling binary files], for more on
+are stored.  See [cvs: Handling binary files#Binary-files Handling binary files], for more on
 binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
@@ -510,26 +510,26 @@ directory, treating files whose name ends in
 <div id="commit-files"></div>
 <div id="SEC166"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC165| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC167| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The commit support files ===
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
-committed (see section [[#SEC158|The modules file]]).  The files described in
+committed (see section [[#modules|The modules file]]).  The files described in
 this section provide other, more flexible, ways to run
 programs whenever something is committed.
 </p>
@@ -551,7 +551,7 @@ the commit will be aborted.
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [[#SEC175|Rcsinfo]]).
+template (see section [[#rcsinfo|Rcsinfo]]).
 </p>
 </dd>
 <dt> &lsquo;<tt>editinfo</tt>&rsquo;</dt>
@@ -559,7 +559,7 @@ template (see section [[#SEC175|Rcsinfo]]).
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [[#SEC175|Rcsinfo]]).  (obsolete)
+template (see section [[#rcsinfo|Rcsinfo]]).  (obsolete)
 </p>
 </dd>
 <dt> &lsquo;<tt>loginfo</tt>&rsquo;</dt>
@@ -572,30 +572,30 @@ imagination is the limit!
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC167| syntax]]::<nowiki>                      The common syntax
-</nowiki>&bull;[[#SEC168| commitinfo]]::<nowiki>                  Pre-commit checking
-</nowiki>&bull;[[#SEC169| verifymsg]]::<nowiki>                   How are log messages evaluated?
-</nowiki>&bull;[[#SEC170| editinfo]]::<nowiki>                    Specifying how log messages are created
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#syntax| syntax]]::<nowiki>                      The common syntax
+</nowiki>&bull;[[#commitinfo| commitinfo]]::<nowiki>                  Pre-commit checking
+</nowiki>&bull;[[#verifymsg| verifymsg]]::<nowiki>                   How are log messages evaluated?
+</nowiki>&bull;[[#editinfo| editinfo]]::<nowiki>                    Specifying how log messages are created
                                 (obsolete)
-</nowiki>&bull;[[#SEC172| loginfo]]::<nowiki>                     Where should log messages be sent?
+</nowiki>&bull;[[#loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
 </nowiki></pre>
 <hr size="6">
 <div id="syntax"></div>
 <div id="SEC167"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC166| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC168| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== The common syntax ====
@@ -635,19 +635,19 @@ is used as a file name or command-line as appropriate.
 <div id="commitinfo"></div>
 <div id="SEC168"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC167| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC169| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Commitinfo ====
@@ -690,14 +690,14 @@ matching regular expression or the name &lsquo;<samp>DEFAULT</samp>&rsquo;.
 <p>The command will be run in the root of the workspace
 containing the new versions of any files the user would like
 to modify (commit), <em>or in a copy of the workspace on
-the server (see section [cvs: The Repository#SEC26 Remote repositories])</em>.  If a file is
+the server (see section [cvs: The Repository#Remote-repositories Remote repositories])</em>.  If a file is
 being removed, there will be no copy of the file under the
 current directory.  If a file is being added, there will be
 no corresponding archive file in the repository unless the
 file is being resurrected.
 </p>
 <p>Note that both the repository directory and the corresponding
-Attic (see section [cvs: The Repository#SEC15 The attic]) directory may need to be checked to
+Attic (see section [cvs: The Repository#Attic The attic]) directory may need to be checked to
 locate the archive file corresponding to any given file being
 committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
@@ -709,19 +709,19 @@ to the command.
 <div id="verifymsg"></div>
 <div id="SEC169"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC168| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC170| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Verifying log messages ====
@@ -770,7 +770,7 @@ either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
 </p>
-<p>See section [[#SEC180|The CVSROOT/config configuration file]], for more on CVSROOT/config options.
+<p>See section [[#config|The CVSROOT/config configuration file]], for more on CVSROOT/config options.
 </p>
 <p>It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
 interact directly with the user in the various
@@ -780,7 +780,7 @@ there is no protocol support for communicating between
 <code>ext</code> and <code>server</code> methods, it is possible
 for CVS to become confused by the characters going
 along the same channel as the CVS protocol
-messages. See [cvs: The Repository#SEC26 Remote repositories], for more
+messages. See [cvs: The Repository#Remote-repositories Remote repositories], for more
 information on client/server setups.  In addition, at the time
 the &lsquo;<tt>verifymsg</tt>&rsquo; script runs, the CVS
 server has locks in place in the repository.  If control is
@@ -862,19 +862,19 @@ fi
 <div id="editinfo"></div>
 <div id="SEC170"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC169| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC171| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Editinfo ====
@@ -882,8 +882,8 @@ fi
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
 messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
-(see section [cvs: All environment variables which affect CVS#SEC181 All environment variables which affect CVS]) or the &lsquo;<samp>-e</samp>&rsquo; global
-option (see section [cvs: Guide to CVS commands#SEC118 Global options]).  See [[#SEC169|Verifying log messages]],
+(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see section [cvs: Guide to CVS commands#Global-options Global options]).  See [[#verifymsg|Verifying log messages]],
 for information on the use of the &lsquo;<tt>verifymsg</tt>&rsquo;
 feature for evaluating log messages.</strong>
 </p>
@@ -900,7 +900,7 @@ file, the editor specified in the environment variable
 <code>$CVSEDITOR</code> is used instead.  If that variable is
 not set, then the environment variable <code>$EDITOR</code>
 is used instead.  If that variable is not
-set a default will be used.  See [cvs: Overview#SEC6 Committing your changes].
+set a default will be used.  See [cvs: Overview#Committing-your-changes Committing your changes].
 </p>
 <p>The &lsquo;<tt>editinfo</tt>&rsquo; file is often most useful together
 with the &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can be used to
@@ -932,25 +932,25 @@ commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
 There is no good workaround for this; use
 &lsquo;<tt>verifymsg</tt>&rsquo; instead.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC171| editinfo example]]::<nowiki>            Editinfo example
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#editinfo-example| editinfo example]]::<nowiki>            Editinfo example
 </nowiki></pre>
 <hr size="6">
 <div id="editinfo-example"></div>
 <div id="SEC171"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC170| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC172| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC170| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#editinfo| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ===== Editinfo example =====
@@ -1004,19 +1004,19 @@ done
 <div id="loginfo"></div>
 <div id="SEC172"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC171| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC173| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC166| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Loginfo ====
@@ -1039,7 +1039,7 @@ matching regular expression or &lsquo;<samp>DEFAULT</samp>&rsquo;.
 </p>
 <p>The first matching regular expression is used.
 </p>
-<p>See section [[#SEC166|The commit support files]], for a description of the syntax of
+<p>See section [[#commit-files|The commit support files]], for a description of the syntax of
 the &lsquo;<tt>loginfo</tt>&rsquo; file.
 </p>
 <p>The user may specify a format string as
@@ -1091,28 +1091,28 @@ name of the repository will be generated.
 </p>
 <p>Note: when <small>CVS</small> is accessing a remote repository,
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the <em>remote</em>
-(i.e., server) side, not the client side (see section [cvs: The Repository#SEC26 Remote repositories]).
+(i.e., server) side, not the client side (see section [cvs: The Repository#Remote-repositories Remote repositories]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC173| loginfo example]]::<nowiki>             Loginfo example
-</nowiki>&bull;[[#SEC174| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#loginfo-example| loginfo example]]::<nowiki>             Loginfo example
+</nowiki>&bull;[[#Keeping-a-checked-out-copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
 </nowiki></pre>
 <hr size="6">
 <div id="loginfo-example"></div>
 <div id="SEC173"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC172| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC174| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC172| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ===== Loginfo example =====
@@ -1145,19 +1145,19 @@ like this:
 <div id="Keeping-a-checked-out-copy"></div>
 <div id="SEC174"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC173| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC175| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC172| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ===== Keeping a checked out copy =====
@@ -1189,19 +1189,19 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 <div id="rcsinfo"></div>
 <div id="SEC175"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC174| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC176| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Rcsinfo ===
@@ -1210,7 +1210,7 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 edit when filling out the commit log.  The
 &lsquo;<tt>rcsinfo</tt>&rsquo; file has a syntax similar to the
 &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>commitinfo</tt>&rsquo; and &lsquo;<tt>loginfo</tt>&rsquo;
-files.  See section [[#SEC167|The common syntax]].  Unlike the other files the second
+files.  See section [[#syntax|The common syntax]].  Unlike the other files the second
 part is <em>not</em> a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
@@ -1229,7 +1229,7 @@ commit -m <var>message</var></samp>&rsquo; or &lsquo;<samp>cvs commit -f
 <var>file</var></samp>&rsquo; that log message will override the
 template.
 </p>
-<p>See section [[#SEC169|Verifying log messages]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
+<p>See section [[#verifymsg|Verifying log messages]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
 file.
 </p>
 <p>When <small>CVS</small> is accessing a remote repository,
@@ -1248,19 +1248,19 @@ be updated from the server.
 <div id="cvsignore"></div>
 <div id="SEC176"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC175| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC177| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Ignoring files via cvsignore ===
@@ -1271,7 +1271,7 @@ put under <small>CVS</small> control.  Examples are all the object
 files that you get while you compile your sources.
 Normally, when you run &lsquo;<samp>cvs update</samp>&rsquo;, it prints a
 line for each file it encounters that it doesn&rsquo;t know
-about (see section [cvs: Guide to CVS commands#SEC155 update output]).
+about (see section [cvs: Guide to CVS commands#update-output update output]).
 </p>
 <p><small>CVS</small> has a list of files (or sh(1) file name patterns)
 that it should ignore while running <code>update</code>,
@@ -1358,19 +1358,19 @@ way to specify comments.
 <div id="checkoutlist"></div>
 <div id="SEC177"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC176| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC178| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The checkoutlist file ===
@@ -1407,40 +1407,40 @@ message such as:
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
 </p>
-<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see section [cvs: The Repository#SEC30 Setting up the server for password authentication]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
+<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see section [cvs: The Repository#Password-authentication-server Setting up the server for password authentication]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
 recommended for security reasons.
 </p>
 <p>For information about keeping a checkout out copy in a
 more general context than the one provided by
-&lsquo;<tt>checkoutlist</tt>&rsquo;, see [[#SEC174|Keeping a checked out copy]].
+&lsquo;<tt>checkoutlist</tt>&rsquo;, see [[#Keeping-a-checked-out-copy|Keeping a checked out copy]].
 </p>
 <hr size="6">
 <div id="history-file"></div>
 <div id="SEC178"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC177| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC179| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The history file ===
 
 <p>The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
 to log information for the <code>history</code> command
-(see section [cvs: Guide to CVS commands#SEC137 history&mdash;Show status of files and users]).  This file must be created to turn
+(see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).  This file must be created to turn
 on logging.  This is done automatically if the
 <code>cvs init</code> command is used to set up the
-repository (see section [cvs: The Repository#SEC23 Creating a repository]).
+repository (see section [cvs: The Repository#Creating-a-repository Creating a repository]).
 </p>
 <p>The file format of the &lsquo;<tt>history</tt>&rsquo; file is
 documented only in comments in the <small>CVS</small> source
@@ -1452,19 +1452,19 @@ format changes with future releases of <small>CVS</small>.
 <div id="Variables"></div>
 <div id="SEC179"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC178| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC180| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#config| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Expansions in administrative files ===
@@ -1480,7 +1480,7 @@ several mechanisms to do that.
 Likewise for the home directory of <var>user</var>, use
 &lsquo;<samp>~<var>user</var></samp>&rsquo;.  These variables are expanded on
 the server machine, and don&rsquo;t get any reasonable
-expansion if pserver (see section [cvs: The Repository#SEC29 Direct connection with password authentication])
+expansion if pserver (see section [cvs: The Repository#Password-authenticated Direct connection with password authentication])
 is in use; therefore user variables (see below) may be
 a better choice to customize behavior based on the user
 running <small>CVS</small>.
@@ -1499,7 +1499,7 @@ internal variables are:
 <dt> <code>CVSROOT</code></dt>
 <dd><div id="IDX273"></div>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
-See section [cvs: The Repository#SEC9 The Repository], for a description of the various
+See section [cvs: The Repository#Repository The Repository], for a description of the various
 ways to specify this, but note that the internal
 variable contains just the directory and not any
 of the access method information.
@@ -1523,7 +1523,7 @@ error.
 <dt> <code>VISUAL</code></dt>
 <dd><div id="IDX277"></div>
 <p>These all expand to the same value, which is the editor
-that <small>CVS</small> is using.  See section [cvs: Guide to CVS commands#SEC118 Global options], for how
+that <small>CVS</small> is using.  See section [cvs: Guide to CVS commands#Global-options Global options], for how
 to specify this.
 </p>
 </dd>
@@ -1533,7 +1533,7 @@ to specify this.
 server machine).
 When using pserver, this is the user specified in the repository
 specification which need not be the same as the username the
-server is running as (see section [cvs: The Repository#SEC30 Setting up the server for password authentication]).
+server is running as (see section [cvs: The Repository#Password-authentication-server Setting up the server for password authentication]).
 Do not confuse this with the environment variable of the same name.
 </p></dd>
 </dl>
@@ -1548,7 +1548,7 @@ administrative file contains
 specify the global option &lsquo;<samp>-s</samp>&rsquo; to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
-&lsquo;<tt>.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#SEC117 Default options and the ~/.cvsrc file]).
+&lsquo;<tt>.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
 </p>
 <p>For example, if you want the administrative file to
 refer to a test directory you might create a user
@@ -1598,19 +1598,19 @@ Do not confuse this with the internal variable of the same name.
 <div id="config"></div>
 <div id="SEC180"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC179| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC157| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The CVSROOT/config configuration file ===
@@ -1646,7 +1646,7 @@ for users in the system&rsquo;s user database if not found in
 &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
 pserver users must exist in &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.
 The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
-[cvs: The Repository#SEC29 Direct connection with password authentication].
+[cvs: The Repository#Password-authenticated Direct connection with password authentication].
 </p>
 
 <div id="IDX286"></div>
@@ -1664,7 +1664,7 @@ directory, rather than in one of the checked out
 subdirectories.  The &lsquo;<tt>CVS</tt>&rsquo; directory created there
 will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
-&lsquo;<tt>CVS/Template</tt>&rsquo; file (see section [cvs: The Repository#SEC19 How data is stored in the working directory]).
+&lsquo;<tt>CVS/Template</tt>&rsquo; file (see section [cvs: The Repository#Working-directory-storage How data is stored in the working directory]).
 </p>
 <div id="IDX287"></div>
 </dd>
@@ -1680,7 +1680,7 @@ the repository.
 You need to create <var>directory</var>, but
 <small>CVS</small> will create subdirectories of <var>directory</var> as it
 needs them.  For information on <small>CVS</small> locks, see
-[cvs: Multiple developers#SEC88 Several developers simultaneously attempting to run CVS].
+[cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS].
 </p>
 <p>Before enabling the LockDir option, make sure that you
 have tracked down and removed any copies of <small>CVS</small> 1.9 or
@@ -1696,7 +1696,7 @@ repository with LockDir enabled.
 <div id="IDX288"></div>
 </dd>
 <dt> <code>LogHistory=<var>value</var></code></dt>
-<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: Guide to CVS commands#SEC137 history&mdash;Show status of files and users]).
+<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).
 Default of &lsquo;<samp>TOEFWUCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
 all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
@@ -1720,14 +1720,14 @@ before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</strong>
 </p>
-<p>See section [[#SEC169|Verifying log messages]], for more information on how verifymsg
+<p>See section [[#verifymsg|Verifying log messages]], for more information on how verifymsg
 may be used.
 </p>
 <div id="IDX291"></div>
 </dd>
 <dt> <code>UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
-command (see section [cvs: Guide to CVS commands#SEC120 admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
+command (see section [cvs: Guide to CVS commands#admin admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
 The <var>value</var> string is a list of single character options
 which should be allowed.  If a user who is not a member of the
 <code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
@@ -1735,7 +1735,7 @@ option which is not listed they will will receive an error message
 reporting that the option is restricted.
 </p>
 <p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
-ignore the <code>UserAdminOptions</code> keyword (see section [cvs: Guide to CVS commands#SEC120 admin&mdash;Administration]).
+ignore the <code>UserAdminOptions</code> keyword (see section [cvs: Guide to CVS commands#admin admin&mdash;Administration]).
 </p>
 <p>When not specified, <code>UserAdminOptions</code> defaults to
 &lsquo;<samp>k</samp>&rsquo;.  In other words, it defaults to allowing
@@ -1752,16 +1752,16 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC157| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#SEC181  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

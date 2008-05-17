@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.137 2008-05-14 23:34:09 pertusus Exp $
+# $Id: texi2html.init,v 1.138 2008-05-17 22:41:06 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -293,6 +293,9 @@ $USE_NUMERIC_ENTITY = 1;
 
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
+
+# if set, use node anchors for sections targets
+$USE_NODE_TARGET = 1;
 
 # new style for crossrefs
 $NEW_CROSSREF_STYLE = 1;
@@ -2116,8 +2119,7 @@ $pre_map{'enddots'} = '...';
                'equiv'        => '2261',
                'error'        => '',
                'expansion'    => '2192',
-# FIXME ask on texinfo list
-#               'arrow'               => '2192',
+               'arrow'        => '2192',
                'minus'        => '2212', # in mathematical operators
 #               'minus'        => '002D', # in latin1
                'point'        => '2605',
@@ -2146,8 +2148,7 @@ $pre_map{'enddots'} = '...';
                'leq'          => '2264',
                'tie'          => '',
 #               'tie'          => '0020',
-# FIXME ask on texinfo list
-#               'textdegree'          => '',
+               'textdegree'          => '00B0',
                'quotedblleft'          => '201C',
                'quotedblright'          => '201D',
                'quoteleft'          => '2018',

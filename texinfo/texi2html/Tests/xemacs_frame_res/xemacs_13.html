@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Registers"></a>
 <a name="SEC102"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_12.html#SEC101" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC103" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_12.html#Rectangles" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegPos" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_12.html#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_12.html#Mark" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 10. Registers </h1>
@@ -66,7 +66,7 @@ positions for later use.  Once you save text or a rectangle in a
 register, you can copy it into the buffer once or many times; a position
 saved in a register is used by moving point to that position.
 Rectangles can also be copied into and out of registers
-(see section <a href="xemacs_12.html#SEC101">Rectangles</a>).
+(see section <a href="xemacs_12.html#Rectangles">Rectangles</a>).
 </p>
 <a name="IDX350"></a>
 <p>  Each register has a name which is a single character.  A register can
@@ -87,19 +87,19 @@ view-register</kbd>.
 displays the contents of the specified register.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC103">10.1 Saving Positions in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Saving positions in registers.
+<tr><td align="left" valign="top"><a href="#RegPos">10.1 Saving Positions in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Saving positions in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC104">10.2 Saving Text in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Saving text in registers.
+<tr><td align="left" valign="top"><a href="#RegText">10.2 Saving Text in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Saving text in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC105">10.3 Saving Rectangles in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Saving rectangles in registers.
+<tr><td align="left" valign="top"><a href="#RegRect">10.3 Saving Rectangles in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Saving rectangles in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC106">10.4 Saving Window Configurations in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Saving window configurations in registers.
+<tr><td align="left" valign="top"><a href="#RegConfig">10.4 Saving Window Configurations in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Saving window configurations in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC108">10.6 Keeping File Names in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            File names in registers.
+<tr><td align="left" valign="top"><a href="#RegFiles">10.6 Keeping File Names in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            File names in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC107">10.5 Keeping Numbers in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Numbers in registers.
+<tr><td align="left" valign="top"><a href="#RegNumbers">10.5 Keeping Numbers in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Numbers in registers.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC109">10.7 Bookmarks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Bookmarks are like registers, but persistent.
+<tr><td align="left" valign="top"><a href="#Bookmarks">10.7 Bookmarks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Bookmarks are like registers, but persistent.
 </td></tr>
 </table>
 
@@ -107,19 +107,19 @@ displays the contents of the specified register.
 <a name="RegPos"></a>
 <a name="SEC103"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC102" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC104" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Registers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegText" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.1 Saving Positions in Registers </h2>
@@ -160,19 +160,19 @@ that were visiting files.
 <a name="RegText"></a>
 <a name="SEC104"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC103" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC105" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegPos" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegRect" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.2 Saving Text in Registers </h2>
@@ -213,25 +213,25 @@ and the mark before it.
 <a name="RegRect"></a>
 <a name="SEC105"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC104" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC106" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegText" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegConfig" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.3 Saving Rectangles in Registers </h2>
 
 <p>  A register can contain a rectangle instead of lines of text.  The rectangle
-is represented as a list of strings.  See section <a href="xemacs_12.html#SEC101">Rectangles</a>, for basic
+is represented as a list of strings.  See section <a href="xemacs_12.html#Rectangles">Rectangles</a>, for basic
 information on rectangles and how to specify rectangles in a buffer.
 </p>
 <dl compact="compact">
@@ -255,25 +255,25 @@ rectangle) (<code>insert-register</code>).
 that, or inserts a rectangle if the register contains one.
 </p>
 <p>  See also the command <code>sort-columns</code>, which you can think of
-as sorting a rectangle.  See section <a href="xemacs_29.html#SEC325">Sorting Text</a>.
+as sorting a rectangle.  See section <a href="xemacs_29.html#Sorting">Sorting Text</a>.
 </p>
 <hr size="6">
 <a name="RegConfig"></a>
 <a name="SEC106"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC105" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC107" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegRect" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegNumbers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.4 Saving Window Configurations in Registers </h2>
@@ -303,26 +303,26 @@ instead, use <kbd>C-u C-x r j <var>r</var></kbd>.
 <a name="RegNumbers"></a>
 <a name="SEC107"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC106" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC108" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegConfig" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#RegFiles" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.5 Keeping Numbers in Registers </h2>
 
 <p>  There are commands to store a number in a register, to insert
 the number in the buffer in decimal, and to increment it.  These commands
-can be useful in keyboard macros (see section <a href="xemacs_30.html#SEC352">Keyboard Macros</a>).
+can be useful in keyboard macros (see section <a href="xemacs_30.html#Keyboard-Macros">Keyboard Macros</a>).
 </p>
 <dl compact="compact">
 <dt> <kbd>C-u <var>number</var> C-x r n <var>reg</var></kbd></dt>
@@ -348,19 +348,19 @@ sort of register contents into the buffer.
 <a name="RegFiles"></a>
 <a name="SEC108"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC107" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC109" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegNumbers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Bookmarks" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.6 Keeping File Names in Registers </h2>
@@ -387,19 +387,19 @@ restore a frame configuration.)
 <a name="Bookmarks"></a>
 <a name="SEC109"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC108" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#RegFiles" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC102" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Registers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 10.7 Bookmarks </h2>
@@ -411,7 +411,7 @@ prototypical use of bookmarks is to record &ldquo;where you were reading&rdquo; 
 various files.
 </p>
 <p>  Note: bookmark.el is distributed in edit-utils package.  You need to
-install that to use bookmark facility (see section <a href="xemacs_25.html#SEC262">Packages</a>).
+install that to use bookmark facility (see section <a href="xemacs_25.html#Packages">Packages</a>).
 </p>
 <dl compact="compact">
 <dt> <kbd>C-x r m &lt;RET&gt;</kbd></dt>
@@ -514,16 +514,16 @@ points to.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC102" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Buffers"></a>
 <a name="SEC169"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_17.html#SEC168" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC170" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_17.html#Misc-File-Ops" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Select-Buffer" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_17.html#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_17.html#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 15. Using Multiple Buffers </h1>
@@ -79,7 +79,7 @@ buffer, as most commands do.
 <p>  When Emacs creates multiple windows, each window has a chosen buffer which
 is displayed there, but at any time only one of the windows is selected and
 its chosen buffer is the selected buffer.  Each window&rsquo;s mode line displays
-the name of the buffer the window is displaying (see section <a href="xemacs_19.html#SEC175">Multiple Windows</a>).
+the name of the buffer the window is displaying (see section <a href="xemacs_19.html#Windows">Multiple Windows</a>).
 </p>
 <p>  Each buffer has a name which can be of any length but is
 case-sensitive.  You can select a buffer using its name.  Most
@@ -90,20 +90,20 @@ you can use for evaluating Lisp expressions in Emacs.
 </p>
 <p>  Each buffer records what file it is visiting, whether it is
 modified, and what major mode and minor modes are in effect in it
-(see section <a href="xemacs_21.html#SEC190">Major Modes</a>).  Any Emacs variable can be made <em>local to</em> a
+(see section <a href="xemacs_21.html#Major-Modes">Major Modes</a>).  Any Emacs variable can be made <em>local to</em> a
 particular buffer, meaning its value in that buffer can be different from
-the value in other buffers.  See section <a href="xemacs_30.html#SEC350">Local Variables</a>.
+the value in other buffers.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC170">15.1 Creating and Selecting Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Creating a new buffer or reselecting an old one.
+<tr><td align="left" valign="top"><a href="#Select-Buffer">15.1 Creating and Selecting Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Creating a new buffer or reselecting an old one.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC171">15.2 Listing Existing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Getting a list of buffers that exist.
+<tr><td align="left" valign="top"><a href="#List-Buffers">15.2 Listing Existing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Getting a list of buffers that exist.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC172">15.3 Miscellaneous Buffer Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Renaming; changing read-onliness; copying text.
+<tr><td align="left" valign="top"><a href="#Misc-Buffer">15.3 Miscellaneous Buffer Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Renaming; changing read-onliness; copying text.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC173">15.4 Killing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Killing buffers you no longer need.
+<tr><td align="left" valign="top"><a href="#Kill-Buffer">15.4 Killing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Killing buffers you no longer need.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC174">15.5 Operating on Several Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to go through the list of all buffers
+<tr><td align="left" valign="top"><a href="#Several-Buffers">15.5 Operating on Several Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to go through the list of all buffers
                      and operate variously on several of them.
 </td></tr>
 </table>
@@ -112,19 +112,19 @@ the value in other buffers.  See section <a href="xemacs_30.html#SEC350">Local V
 <a name="Select-Buffer"></a>
 <a name="SEC170"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC169" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC171" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#List-Buffers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.1 Creating and Selecting Buffers </h2>
@@ -151,7 +151,7 @@ the value in other buffers.  See section <a href="xemacs_30.html#SEC350">Local V
 <p>  To select a buffer named <var>bufname</var>, type <kbd>C-x b <var>bufname</var>
 &lt;RET&gt;</kbd>.  This is the command <code>switch-to-buffer</code> with argument
 <var>bufname</var>.  You can use completion on an abbreviation for the buffer
-name you want (see section <a href="xemacs_9.html#SEC63">Completion</a>).  An empty argument to <kbd>C-x b</kbd>
+name you want (see section <a href="xemacs_9.html#Completion">Completion</a>).  An empty argument to <kbd>C-x b</kbd>
 specifies the most recently selected buffer that is not displayed in any
 window.
 </p>
@@ -160,7 +160,7 @@ that display text.  You can also create a buffer explicitly by typing
 <kbd>C-x b <var>bufname</var> &lt;RET&gt;</kbd>, which creates a new, empty buffer
 that is not visiting any file, and selects it for editing.  The new
 buffer&rsquo;s major mode is determined by the value of
-<code>default-major-mode</code> (see section <a href="xemacs_21.html#SEC190">Major Modes</a>).  Buffers not visiting
+<code>default-major-mode</code> (see section <a href="xemacs_21.html#Major-Modes">Major Modes</a>).  Buffers not visiting
 files are usually used for making notes to yourself.  If you try to save
 one, you are asked for the file name to use.
 </p>
@@ -175,25 +175,25 @@ is displayed. If you supply an argument of 0, the current buffer is
 moved to the bottom of the buffer stack.
 </p>
 <p>  Note that you can also use <kbd>C-x C-f</kbd> and any other command for
-visiting a file to switch buffers.  See section <a href="xemacs_17.html#SEC136">Visiting Files</a>.
+visiting a file to switch buffers.  See section <a href="xemacs_17.html#Visiting">Visiting Files</a>.
 </p>
 <hr size="6">
 <a name="List-Buffers"></a>
 <a name="SEC171"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC170" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC172" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Select-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Misc-Buffer" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.2 Listing Existing Buffers </h2>
@@ -210,7 +210,7 @@ visiting a file to switch buffers.  See section <a href="xemacs_17.html#SEC136">
 line in the list shows one buffer&rsquo;s name, major mode, and visited file.
 A &lsquo;<samp>*</samp>&rsquo; at the beginning of a line indicates the buffer has been
 &ldquo;modified&rdquo;.  If several buffers are modified, it may be time to save
-some with <kbd>C-x s</kbd> (see section <a href="xemacs_17.html#SEC137">Saving Files</a>).  A &lsquo;<samp>%</samp>&rsquo; indicates a read-only
+some with <kbd>C-x s</kbd> (see section <a href="xemacs_17.html#Saving">Saving Files</a>).  A &lsquo;<samp>%</samp>&rsquo; indicates a read-only
 buffer.  A &lsquo;<samp>.</samp>&rsquo; marks the selected buffer.  Here is an example of a
 buffer list:
 </p>
@@ -241,19 +241,19 @@ commands which are bound to keys in the &lsquo;<samp>*Buffer List*</samp>&rsquo;
 <a name="Misc-Buffer"></a>
 <a name="SEC172"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC171" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC173" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#List-Buffers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Kill-Buffer" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.3 Miscellaneous Buffer Operations </h2>
@@ -292,31 +292,31 @@ specify a name that is used by a different buffer, an error is signalled and
 renaming is not done.
 </p>
 <a name="IDX660"></a>
-<p>  <kbd>M-x view-buffer</kbd> is similar to <kbd>M-x view-file</kbd> (see section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>), but it examines an already existing Emacs buffer.  View mode
+<p>  <kbd>M-x view-buffer</kbd> is similar to <kbd>M-x view-file</kbd> (see section <a href="xemacs_17.html#Misc-File-Ops">Miscellaneous File Operations</a>), but it examines an already existing Emacs buffer.  View mode
 provides convenient commands for scrolling through the buffer but not
 for changing it.  When you exit View mode, the resulting value of point
 remains in effect.
 </p>
 <p>To copy text from one buffer to another, use the commands <kbd>M-x
-append-to-buffer</kbd> and <kbd>M-x insert-buffer</kbd>.  See section <a href="xemacs_12.html#SEC100">Accumulating Text</a>.
+append-to-buffer</kbd> and <kbd>M-x insert-buffer</kbd>.  See section <a href="xemacs_12.html#Accumulating-Text">Accumulating Text</a>.
 </p>
 <hr size="6">
 <a name="Kill-Buffer"></a>
 <a name="SEC173"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC172" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC174" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Misc-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Several-Buffers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.4 Killing Buffers </h2>
@@ -355,19 +355,19 @@ for confirmation just like <code>kill-buffer</code>.
 <a name="Several-Buffers"></a>
 <a name="SEC174"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC173" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Kill-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC169" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.5 Operating on Several Buffers </h2>
@@ -481,16 +481,16 @@ the commands described here.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC169" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_19.html#SEC175" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_19.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

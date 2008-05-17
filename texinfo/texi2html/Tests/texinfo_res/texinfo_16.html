@@ -63,19 +63,19 @@ ul.toc {list-style: none}
 <a name="Definition-Commands"></a>
 <a name="SEC190"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="texinfo_15.html#SEC189" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC191" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="texinfo_15.html#need" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Template" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo_15.html#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_15.html#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 15. Definition Commands </h1>
@@ -102,18 +102,18 @@ a given name.  An appendix containing a summary should use
 <code>@table</code> rather than the definition commands.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC191">15.1 The Template for a Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to structure a description using a
+<tr><td align="left" valign="top"><a href="#Def-Cmd-Template">15.1 The Template for a Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to structure a description using a
                                   definition command.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC192">15.2 Optional and Repeated Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to handle optional and repeated arguments.
+<tr><td align="left" valign="top"><a href="#Optional-Arguments">15.2 Optional and Repeated Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to handle optional and repeated arguments.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC193">15.3 Two or More &lsquo;First&rsquo; Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more &lsquo;first&rsquo; lines.
+<tr><td align="left" valign="top"><a href="#deffnx">15.3 Two or More &lsquo;First&rsquo; Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more &lsquo;first&rsquo; lines.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC194">15.4 The Definition Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          All the definition commands.
+<tr><td align="left" valign="top"><a href="#Def-Cmds-in-Detail">15.4 The Definition Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          All the definition commands.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC201">15.5 Conventions for Writing Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for writing definitions.
+<tr><td align="left" valign="top"><a href="#Def-Cmd-Conventions">15.5 Conventions for Writing Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for writing definitions.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC202">15.6 A Sample Function Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Sample-Function-Definition">15.6 A Sample Function Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 </table>
 
@@ -121,19 +121,19 @@ a given name.  An appendix containing a summary should use
 <a name="Def-Cmd-Template"></a>
 <a name="SEC191"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC190" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC192" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Optional-Arguments" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.1 The Template for a Definition </h2>
@@ -227,7 +227,7 @@ is less than 1, @code{(point-max)} otherwise.
 </p></dd></dl>
 </blockquote>
 
-<p>See section <a href="#SEC202">A Sample Function Definition</a>, for a more detailed example of a function
+<p>See section <a href="#Sample-Function-Definition">A Sample Function Definition</a>, for a more detailed example of a function
 definition, including the use of <code>@example</code> inside the
 definition.
 </p>
@@ -241,19 +241,19 @@ in <code>@deffn</code> and all the other definition commands.
 <a name="Optional-Arguments"></a>
 <a name="SEC192"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC191" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC193" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Def-Cmd-Template" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#deffnx" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.2 Optional and Repeated Arguments </h2>
@@ -304,19 +304,19 @@ example).
 <a name="deffnx"></a>
 <a name="SEC193"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC192" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Optional-Arguments" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.3 Two or More &lsquo;First&rsquo; Lines </h2>
@@ -350,25 +350,25 @@ These two search commands are similar except &hellip;
 <p>Each definition command has an &lsquo;x&rsquo; form: <code>@defunx</code>,
 <code>@defvrx</code>, <code>@deftypefunx</code>, etc.
 </p>
-<p>The &lsquo;x&rsquo; forms work just like <code>@itemx</code>; see <a href="texinfo_12.html#SEC139"><code>@itemx</code></a>.
+<p>The &lsquo;x&rsquo; forms work just like <code>@itemx</code>; see <a href="texinfo_12.html#itemx"><code>@itemx</code></a>.
 </p>
 <hr size="6">
 <a name="Def-Cmds-in-Detail"></a>
 <a name="SEC194"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC193" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC195" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#deffnx" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Functions-Commands" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.4 The Definition Commands </h2>
@@ -386,17 +386,17 @@ of variables.
 can be used for other programming languages.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC195">15.4.1 Functions and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for functions and similar entities.
+<tr><td align="left" valign="top"><a href="#Functions-Commands">15.4.1 Functions and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for functions and similar entities.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC196">15.4.2 Variables and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for variables and similar entities.
+<tr><td align="left" valign="top"><a href="#Variables-Commands">15.4.2 Variables and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for variables and similar entities.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC197">15.4.3 Functions in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for functions in typed languages.
+<tr><td align="left" valign="top"><a href="#Typed-Functions">15.4.3 Functions in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for functions in typed languages.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC198">15.4.4 Variables in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for variables in typed languages.
+<tr><td align="left" valign="top"><a href="#Typed-Variables">15.4.4 Variables in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for variables in typed languages.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC199">15.4.5 Object-Oriented Programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands for object-oriented programming.
+<tr><td align="left" valign="top"><a href="#Abstract-Objects">15.4.5 Object-Oriented Programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands for object-oriented programming.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC200">15.4.6 Data Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The definition command for data types.
+<tr><td align="left" valign="top"><a href="#Data-Types">15.4.6 Data Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The definition command for data types.
 </td></tr>
 </table>
 
@@ -404,19 +404,19 @@ can be used for other programming languages.
 <a name="Functions-Commands"></a>
 <a name="SEC195"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC194" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC196" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables-Commands" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.1 Functions and Similar Entities </h3>
@@ -514,19 +514,19 @@ see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a>
 <a name="Variables-Commands"></a>
 <a name="SEC196"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC195" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC197" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Functions-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Functions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.2 Variables and Similar Entities </h3>
@@ -610,19 +610,19 @@ Option} &hellip;</samp>&rsquo; and works like <code>@defvar</code>.
 <a name="Typed-Functions"></a>
 <a name="SEC197"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC196" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC198" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Variables-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Variables" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.3 Functions in Typed Languages </h3>
@@ -742,25 +742,25 @@ for functions in typed languages.  The command is equivalent to
 <a name="Typed-Variables"></a>
 <a name="SEC198"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC197" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC199" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Typed-Functions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-Objects" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.4 Variables in Typed Languages </h3>
 
 <p>Variables in typed languages are handled in a manner similar to
-functions in typed languages.  See section <a href="#SEC197">Functions in Typed Languages</a>.  The general
+functions in typed languages.  See section <a href="#Typed-Functions">Functions in Typed Languages</a>.  The general
 definition command <code>@deftypevr</code> corresponds to
 <code>@deftypefn</code> and the specialized definition command
 <code>@deftypevar</code> corresponds to <code>@deftypefun</code>.
@@ -839,19 +839,19 @@ to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.
 <a name="Abstract-Objects"></a>
 <a name="SEC199"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC198" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC200" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Typed-Variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-Types" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.5 Object-Oriented Programming </h3>
@@ -1021,19 +1021,19 @@ to the <code>@defmethod</code> command with the addition of the
 <a name="Data-Types"></a>
 <a name="SEC200"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC199" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC201" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Abstract-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Conventions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC194" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 15.4.6 Data Types </h3>
@@ -1079,19 +1079,19 @@ of a definition of <code>pair</code>.
 <a name="Def-Cmd-Conventions"></a>
 <a name="SEC201"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC200" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC202" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Data-Types" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sample-Function-Definition" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.5 Conventions for Writing Definitions </h2>
@@ -1107,19 +1107,19 @@ argument actually is of that type.
 <a name="Sample-Function-Definition"></a>
 <a name="SEC202"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC201" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Def-Cmd-Conventions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC190" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 15.6 A Sample Function Definition </h2>
@@ -1208,16 +1208,16 @@ that for functions except that variables do not take arguments.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_17.html#SEC203" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_17.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

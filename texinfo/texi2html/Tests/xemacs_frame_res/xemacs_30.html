@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Customization"></a>
 <a name="SEC340"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_29.html#SEC339" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC341" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_29.html#Emulation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Minor-Modes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_29.html#SEC289" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_29.html#Reading-Mail" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 27. Customization </h1>
@@ -70,35 +70,35 @@ have no effect on other Emacs jobs you may run at the same time or
 later.  The only way an Emacs job can affect anything outside of it is
 by writing a file; in particular, the only way to make a customization
 &lsquo;permanent&rsquo; is to put something in your init file or other appropriate
-file to do the customization in each session.  See section <a href="#SEC366">The Init File</a>.
+file to do the customization in each session.  See section <a href="#Init-File">The Init File</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC341">27.1 Minor Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Each minor mode is one feature you can turn on
+<tr><td align="left" valign="top"><a href="#Minor-Modes">27.1 Minor Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Each minor mode is one feature you can turn on
                      independently of any others.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC342">27.2 Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Many Emacs commands examine Emacs variables
+<tr><td align="left" valign="top"><a href="#Variables">27.2 Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Many Emacs commands examine Emacs variables
                      to decide what to do; by setting variables,
                      you can control their functioning.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC352">27.3 Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> A keyboard macro records a sequence of keystrokes
+<tr><td align="left" valign="top"><a href="#Keyboard-Macros">27.3 Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> A keyboard macro records a sequence of keystrokes
                      to be replayed with a single command.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC356">27.4 Customizing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    The keymaps say what command each key runs.
+<tr><td align="left" valign="top"><a href="#Key-Bindings">27.4 Customizing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    The keymaps say what command each key runs.
                      By changing them, you can &quot;redefine keys&quot;.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC363">27.5 The Syntax Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          The syntax table controls how words and expressions
+<tr><td align="left" valign="top"><a href="#Syntax">27.5 The Syntax Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          The syntax table controls how words and expressions
                      are parsed.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC366">27.6 The Init File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to write common customizations in the init file.
+<tr><td align="left" valign="top"><a href="#Init-File">27.6 The Init File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to write common customizations in the init file.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC370">27.7 Changing the Bell Sound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Changing how Emacs sounds the bell.
+<tr><td align="left" valign="top"><a href="#Audible-Bell">27.7 Changing the Bell Sound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Changing how Emacs sounds the bell.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC371">27.8 Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Changing the fonts and colors of a region of text.
+<tr><td align="left" valign="top"><a href="#Faces">27.8 Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Changing the fonts and colors of a region of text.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC373">27.9 Frame Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Controlling the presence and positions of the
+<tr><td align="left" valign="top"><a href="#Frame-Components">27.9 Frame Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Controlling the presence and positions of the
                      menubar, toolbars, and gutters.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC374">27.10 X Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     X resources controlling various aspects of the
+<tr><td align="left" valign="top"><a href="#X-Resources">27.10 X Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     X resources controlling various aspects of the
                      behavior of XEmacs.
 </td></tr>
 </table>
@@ -107,19 +107,19 @@ file to do the customization in each session.  See section <a href="#SEC366">The
 <a name="Minor-Modes"></a>
 <a name="SEC341"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC340" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Customization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.1 Minor Modes </h2>
@@ -144,7 +144,7 @@ negative argument always turns it off.
 <a name="IDX1467"></a>
 <p>  Auto Fill mode allows you to enter filled text without breaking lines
 explicitly.  Emacs inserts newlines as necessary to prevent lines from
-becoming too long.  See section <a href="xemacs_23.html#SEC210">Filling Text</a>.
+becoming too long.  See section <a href="xemacs_23.html#Filling">Filling Text</a>.
 </p>
 <a name="IDX1468"></a>
 <a name="IDX1469"></a>
@@ -157,25 +157,25 @@ mode, it changes to &lsquo;<samp>FOOGAR</samp>&rsquo;, instead of &lsquo;<samp>F
 <a name="IDX1471"></a>
 <p>  Abbrev mode allows you to define abbreviations that automatically expand
 as you type them.  For example, &lsquo;<samp>amd</samp>&rsquo; might expand to &lsquo;<samp>abbrev
-mode</samp>&rsquo;.  See section <a href="xemacs_26.html#SEC274">Abbrevs</a>, for full information.
+mode</samp>&rsquo;.  See section <a href="xemacs_26.html#Abbrevs">Abbrevs</a>, for full information.
 </p>
 <hr size="6">
 <a name="Variables"></a>
 <a name="SEC342"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC341" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC343" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Minor-Modes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Examining" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.2 Variables </h2>
@@ -201,22 +201,22 @@ exist for the sake of customization.  Emacs does not (usually) change the
 values of these variables; instead, you set the values, and thereby alter
 and control the behavior of certain Emacs commands.  These variables are
 called <em>options</em>.  Most options are documented in this manual and
-appear in the Variable Index (see section <a href="xemacs_42.html#SEC404">Variable Index</a>).
+appear in the Variable Index (see section <a href="xemacs_42.html#Variable-Index">Variable Index</a>).
 </p>
 <p>  One example of a variable which is an option is <code>fill-column</code>, which
 specifies the position of the right margin (as a number of characters from
-the left margin) to be used by the fill commands (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
+the left margin) to be used by the fill commands (see section <a href="xemacs_23.html#Filling">Filling Text</a>).
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC343">27.2.1 Examining and Setting Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Examining or setting one variable&rsquo;s value.
+<tr><td align="left" valign="top"><a href="#Examining">27.2.1 Examining and Setting Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Examining or setting one variable&rsquo;s value.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC344">27.2.2 Easy Customization Interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Convenient and easy customization of variables.
+<tr><td align="left" valign="top"><a href="#Easy-Customization">27.2.2 Easy Customization Interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Convenient and easy customization of variables.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC349">27.2.3 Editing Variable Values</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Examining or editing list of all variables&rsquo; values.
+<tr><td align="left" valign="top"><a href="#Edit-Options">27.2.3 Editing Variable Values</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Examining or editing list of all variables&rsquo; values.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC350">27.2.4 Local Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Per-buffer values of variables.
+<tr><td align="left" valign="top"><a href="#Locals">27.2.4 Local Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Per-buffer values of variables.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC351">27.2.5 Local Variables in Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How files can specify variable values.
+<tr><td align="left" valign="top"><a href="#File-Variables">27.2.5 Local Variables in Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How files can specify variable values.
 </td></tr>
 </table>
 
@@ -224,19 +224,19 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <a name="Examining"></a>
 <a name="SEC343"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC342" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC344" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Easy-Customization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.2.1 Examining and Setting Variables </h3>
@@ -295,19 +295,19 @@ except where explicitly stated, affects only the current Emacs session.
 <a name="Easy-Customization"></a>
 <a name="SEC344"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC343" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC345" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Examining" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization-Groups" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.2.2 Easy Customization Interface </h3>
@@ -322,14 +322,14 @@ settings permanently.  (Not all Emacs user options are included in this
 structure as of yet, but we are adding the rest.)
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC345">27.2.2.1 Customization Groups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Customization-Groups">27.2.2.1 Customization Groups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
                              How options are classified in a structure.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC346">27.2.2.2 Changing an Option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit a value and set an option.
+<tr><td align="left" valign="top"><a href="#Changing-an-Option">27.2.2.2 Changing an Option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit a value and set an option.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC347">27.2.2.3 Customizing Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit the attributes of a face.
+<tr><td align="left" valign="top"><a href="#Face-Customization">27.2.2.3 Customizing Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit the attributes of a face.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC348">27.2.2.4 Customizing Specific Items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Making a customization buffer for specific
+<tr><td align="left" valign="top"><a href="#Specific-Customization">27.2.2.4 Customizing Specific Items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Making a customization buffer for specific
                                 options, faces, or groups.
 </td></tr>
 </table>
@@ -338,19 +338,19 @@ structure as of yet, but we are adding the rest.)
 <a name="Customization-Groups"></a>
 <a name="SEC345"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC344" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC346" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Easy-Customization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Changing-an-Option" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC344" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Easy-Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.2.2.1 Customization Groups </h4>
@@ -425,19 +425,19 @@ This is the way to set values in it.
 <a name="Changing-an-Option"></a>
 <a name="SEC346"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC345" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC347" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Customization-Groups" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Face-Customization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC344" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Easy-Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.2.2.2 Changing an Option </h4>
@@ -554,7 +554,7 @@ C-j</kbd>,
 <p>  Setting the option changes its value in the current Emacs session;
 <em>saving</em> the value changes it for future sessions as well.  This
 works by writing code into your init file so as to set the option
-variable again each time you start Emacs.  See section <a href="#SEC366">The Init File</a>.  To save
+variable again each time you start Emacs.  See section <a href="#Init-File">The Init File</a>.  To save
 the option, invoke &lsquo;<samp>[State]</samp>&rsquo; and select the &lsquo;<samp>Save for Future
 Sessions</samp>&rsquo; operation.
 </p>
@@ -601,19 +601,19 @@ items in the buffer that could meaningfully be set, saved or reset.
 <a name="Face-Customization"></a>
 <a name="SEC347"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC346" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC348" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Changing-an-Option" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Specific-Customization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC344" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Easy-Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.2.2.3 Customizing Faces </h4>
@@ -645,11 +645,11 @@ before the attribute name indicates whether the attribute is
 attribute by invoking that field.  When the attribute is enabled, you
 can change the attribute value in the usual ways.
 </p>
-<p>See section <a href="#SEC371">Faces</a>, for description of how <code>face-frob-from-locale-first</code>
+<p>See section <a href="#Faces">Faces</a>, for description of how <code>face-frob-from-locale-first</code>
 variable affects changing &lsquo;<samp>Bold</samp>&rsquo; and &lsquo;<samp>Italic</samp>&rsquo; attributes.
 </p>
 <p>  Setting, saving and resetting a face work like the same operations for
-options (see section <a href="#SEC346">Changing an Option</a>).
+options (see section <a href="#Changing-an-Option">Changing an Option</a>).
 </p>
 <p>  A face can specify different appearances for different types of
 display.  For example, a face can make text red on a color display, but
@@ -662,19 +662,19 @@ get from invoking &lsquo;<samp>[State]</samp>&rsquo;.
 <a name="Specific-Customization"></a>
 <a name="SEC348"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC347" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC349" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Face-Customization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Edit-Options" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC344" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Easy-Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.2.2.4 Customizing Specific Items </h4>
@@ -746,19 +746,19 @@ faces that you have set but not saved.
 <a name="Edit-Options"></a>
 <a name="SEC349"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC348" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC350" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Specific-Customization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Locals" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.2.3 Editing Variable Values </h3>
@@ -822,19 +822,19 @@ it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 <a name="Locals"></a>
 <a name="SEC350"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC349" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC351" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Edit-Options" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-Variables" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.2.4 Local Variables </h3>
@@ -925,19 +925,19 @@ the case of:
 <a name="File-Variables"></a>
 <a name="SEC351"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC350" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC352" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Locals" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keyboard-Macros" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC342" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.2.5 Local Variables in Files </h3>
@@ -1002,7 +1002,7 @@ list.  That is inappropriate.  Whether you use Auto Fill mode or not is
 a matter of personal taste, not a matter of the contents of particular
 files.  If you want to use Auto Fill, set up major mode hooks with your
 init file to turn it on (when appropriate) for you alone
-(see section <a href="#SEC366">The Init File</a>).  Don&rsquo;t try to use a local variable list that would
+(see section <a href="#Init-File">The Init File</a>).  Don&rsquo;t try to use a local variable list that would
 impose your taste on everyone working with the file.
 </p>
 <p>XEmacs allows you to specify local variables in the first line
@@ -1038,19 +1038,19 @@ and ignores this variable.
 <a name="Keyboard-Macros"></a>
 <a name="SEC352"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC351" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC353" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#File-Variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basic-Kbd-Macro" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.3 Keyboard Macros </h2>
@@ -1102,11 +1102,11 @@ defined and also has been executed once.  You can then execute the same
 set of commands again by invoking the macro.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC353">27.3.1 Basic Use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Defining and running keyboard macros.
+<tr><td align="left" valign="top"><a href="#Basic-Kbd-Macro">27.3.1 Basic Use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Defining and running keyboard macros.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC354">27.3.2 Naming and Saving Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Giving keyboard macros names; saving them in files.
+<tr><td align="left" valign="top"><a href="#Save-Kbd-Macro">27.3.2 Naming and Saving Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Giving keyboard macros names; saving them in files.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC355">27.3.3 Executing Macros With Variations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Keyboard macros that do different things each use.
+<tr><td align="left" valign="top"><a href="#Kbd-Macro-Query">27.3.3 Executing Macros With Variations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Keyboard macros that do different things each use.
 </td></tr>
 </table>
 
@@ -1114,19 +1114,19 @@ set of commands again by invoking the macro.
 <a name="Basic-Kbd-Macro"></a>
 <a name="SEC353"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC352" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC354" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Keyboard-Macros" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Save-Kbd-Macro" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC352" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keyboard-Macros" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.3.1 Basic Use </h3>
@@ -1173,19 +1173,19 @@ a consequence it re-executes the macro as previously defined.
 <a name="Save-Kbd-Macro"></a>
 <a name="SEC354"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC353" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC355" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Basic-Kbd-Macro" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Kbd-Macro-Query" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC352" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keyboard-Macros" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.3.2 Naming and Saving Keyboard Macros </h3>
@@ -1195,7 +1195,7 @@ next one, you must give it a name using <kbd>M-x name-last-kbd-macro</kbd>.
 This reads a name as an argument using the minibuffer and defines that name
 to execute the macro.  The macro name is a Lisp symbol, and defining it in
 this way makes it a valid command name for calling with <kbd>M-x</kbd> or for
-binding a key to with <code>global-set-key</code> (see section <a href="#SEC357">Keymaps</a>).  If you
+binding a key to with <code>global-set-key</code> (see section <a href="#Keymaps">Keymaps</a>).  If you
 specify a name that has a prior definition other than another keyboard
 macro, Emacs prints an error message and nothing is changed.
 </p>
@@ -1211,8 +1211,8 @@ you want to save the definition in.  Then use the command:
 macro with the same definition it has now.  You need not understand Lisp
 code to do this, because <code>insert-kbd-macro</code> writes the Lisp code for you.
 Then save the file.  You can load the file with <code>load-file</code>
-(see section <a href="xemacs_25.html#SEC254">Libraries of Lisp Code for Emacs</a>).  If the file you save in is your initialization file
-(see section <a href="#SEC366">The Init File</a>), then the macro will be defined each
+(see section <a href="xemacs_25.html#Lisp-Libraries">Libraries of Lisp Code for Emacs</a>).  If the file you save in is your initialization file
+(see section <a href="#Init-File">The Init File</a>), then the macro will be defined each
 time you run Emacs.
 </p>
 <p>  If you give <code>insert-kbd-macro</code> a prefix argument, it creates
@@ -1224,19 +1224,19 @@ load the file.
 <a name="Kbd-Macro-Query"></a>
 <a name="SEC355"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC354" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC356" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Save-Kbd-Macro" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Key-Bindings" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC352" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keyboard-Macros" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.3.3 Executing Macros With Variations </h3>
@@ -1270,25 +1270,25 @@ keyboard, both when you type it during the definition of the macro and
 when it is executed from the macro.  During definition, the editing you do
 inside the recursive edit does not become part of the macro.  During macro
 execution, the recursive edit gives you a chance to do some particularized
-editing.  See section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>.
+editing.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
 <hr size="6">
 <a name="Key-Bindings"></a>
 <a name="SEC356"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC355" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC357" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Kbd-Macro-Query" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keymaps" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.4 Customizing Key Bindings </h2>
@@ -1305,12 +1305,12 @@ a Lisp symbol whose name usually consists of lower case letters and
 hyphens.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC357">27.4.1 Keymaps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Definition of the keymap data structure.
+<tr><td align="left" valign="top"><a href="#Keymaps">27.4.1 Keymaps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Definition of the keymap data structure.
                Names of Emacs&rsquo;s standard keymaps.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC358">27.4.2 Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to redefine one key&rsquo;s meaning conveniently.
+<tr><td align="left" valign="top"><a href="#Rebinding">27.4.2 Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to redefine one key&rsquo;s meaning conveniently.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC362">27.4.3 Disabling Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Disabling a command means confirmation is required
+<tr><td align="left" valign="top"><a href="#Disabling">27.4.3 Disabling Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Disabling a command means confirmation is required
                 before it can be executed.  This is done to protect
                 beginners from surprises.
 </td></tr>
@@ -1320,19 +1320,19 @@ hyphens.
 <a name="Keymaps"></a>
 <a name="SEC357"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC356" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC358" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Key-Bindings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rebinding" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC356" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Key-Bindings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.4.1 Keymaps </h3>
@@ -1439,19 +1439,19 @@ keymap for <kbd>C-x</kbd> commands is used.
 <a name="Rebinding"></a>
 <a name="SEC358"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC357" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC359" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Keymaps" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Interactive-Rebinding" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC356" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Key-Bindings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.4.2 Changing Key Bindings </h3>
@@ -1463,28 +1463,28 @@ definitions for the same key.  Or you can change the current buffer&rsquo;s
 local map, which affects all buffers using the same major mode.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC359">27.4.2.1 Changing Key Bindings Interactively</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC360">27.4.2.2 Changing Key Bindings Programmatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC361">27.4.2.3 Using Strings for Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Interactive-Rebinding">27.4.2.1 Changing Key Bindings Interactively</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Programmatic-Rebinding">27.4.2.2 Changing Key Bindings Programmatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Key-Bindings-Using-Strings">27.4.2.3 Using Strings for Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
 <a name="Interactive-Rebinding"></a>
 <a name="SEC359"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC358" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC360" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Rebinding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Programmatic-Rebinding" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC358" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rebinding" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.4.2.1 Changing Key Bindings Interactively </h4>
@@ -1539,7 +1539,7 @@ another character is read, and so on.  For example,
 <p>  The most general way to modify a keymap is the function
 <code>define-key</code>, used in Lisp code (such as your init file).
 <code>define-key</code> takes three arguments: the keymap, the key to modify
-in it, and the new definition.  See section <a href="#SEC366">The Init File</a>, for an example.
+in it, and the new definition.  See section <a href="#Init-File">The Init File</a>, for an example.
 <code>substitute-key-definition</code> is used similarly; it takes three
 arguments, an old definition, a new definition, and a keymap, and
 redefines in that keymap all keys that were previously defined with the
@@ -1549,19 +1549,19 @@ old definition to have the new definition instead.
 <a name="Programmatic-Rebinding"></a>
 <a name="SEC360"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC359" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC361" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Interactive-Rebinding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Key-Bindings-Using-Strings" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC358" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rebinding" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.4.2.2 Changing Key Bindings Programmatically </h4>
@@ -1611,7 +1611,7 @@ A cons, <code>(keymap . char)</code>, meaning use the definition of
 <p>For backward compatibility, XEmacs allows you to specify key
 sequences as strings.  However, the preferred method is to use the
 representations of key sequences as vectors of keystrokes.
-See section <a href="xemacs_5.html#SEC21">Keystrokes, Key Sequences, and Key Bindings</a>, for more information about the rules for constructing
+See section <a href="xemacs_5.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>, for more information about the rules for constructing
 key sequences.
 </p>
 <p>Emacs allows you to abbreviate representations for key sequences in 
@@ -1657,19 +1657,19 @@ abbreviation as an alternate representation.)
 <a name="Key-Bindings-Using-Strings"></a>
 <a name="SEC361"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC360" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC362" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Programmatic-Rebinding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Disabling" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC358" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rebinding" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 27.4.2.3 Using Strings for Changing Key Bindings </h4>
@@ -1725,19 +1725,19 @@ similar fashion:
 <a name="Disabling"></a>
 <a name="SEC362"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC361" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC363" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Key-Bindings-Using-Strings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syntax" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC356" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Key-Bindings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.4.3 Disabling Commands </h3>
@@ -1754,7 +1754,7 @@ Lisp expressions such as:
 <table><tr><td>&nbsp;</td><td><pre class="example">(put 'delete-region 'disabled t)
 </pre></td></tr></table>
 
-<p>See section <a href="#SEC366">The Init File</a>.
+<p>See section <a href="#Init-File">The Init File</a>.
 </p>
 <p>  If the value of the <code>disabled</code> property is a string, that string
 is included in the message printed when the command is used:
@@ -1767,7 +1767,7 @@ is included in the message printed when the command is used:
 <a name="IDX1527"></a>
 <p>  You can disable a command either by editing the init file
 directly or with the command <kbd>M-x disable-command</kbd>, which edits the
-init file for you.  See section <a href="#SEC366">The Init File</a>.
+init file for you.  See section <a href="#Init-File">The Init File</a>.
 </p>
 <p>  When you attempt to invoke a disabled command interactively in Emacs,
 a window is displayed containing the command&rsquo;s name, its
@@ -1788,19 +1788,19 @@ programs.
 <a name="Syntax"></a>
 <a name="SEC363"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC362" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC364" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Disabling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syntax-Entry" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.5 The Syntax Table </h2>
@@ -1816,9 +1816,9 @@ call it &ldquo;the&rdquo; syntax table.  A syntax table is a Lisp object, a vect
 length 256 whose elements are numbers.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC364">27.5.1 Information About Each Character</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    What the syntax table records for each character.
+<tr><td align="left" valign="top"><a href="#Syntax-Entry">27.5.1 Information About Each Character</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    What the syntax table records for each character.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC365">27.5.2 Altering Syntax Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to change the information.
+<tr><td align="left" valign="top"><a href="#Syntax-Change">27.5.2 Altering Syntax Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to change the information.
 </td></tr>
 </table>
 
@@ -1826,19 +1826,19 @@ length 256 whose elements are numbers.
 <a name="Syntax-Entry"></a>
 <a name="SEC364"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC363" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC365" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Syntax" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syntax-Change" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC363" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syntax" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.5.1 Information About Each Character </h3>
@@ -1955,19 +1955,19 @@ comment terminator is a newline but not every newline ends a comment.
 <a name="Syntax-Change"></a>
 <a name="SEC365"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC364" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC366" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Syntax-Entry" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-File" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC363" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syntax" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.5.2 Altering Syntax Information </h3>
@@ -1991,7 +1991,7 @@ argument defaults to the current buffer&rsquo;s syntax table.
 <ol>
 <li>
 The first character in the string specifies the syntactic class.  It
-is one of the characters in the previous table (see section <a href="#SEC364">Information About Each Character</a>).
+is one of the characters in the previous table (see section <a href="#Syntax-Entry">Information About Each Character</a>).
 
 </li><li>
 The second character is the matching delimiter.  For a character that
@@ -2029,19 +2029,19 @@ and some English to explain that string if necessary.
 <a name="Init-File"></a>
 <a name="SEC366"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC365" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC367" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Syntax-Change" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-Syntax" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.6 The Init File </h2>
@@ -2050,8 +2050,8 @@ and some English to explain that string if necessary.
 or the file &lsquo;<tt>.emacs</tt>&rsquo; (whichever comes first) in your home directory.
 This file, if it exists, should contain Lisp code.  It is called your
 initialization file or <em>init file</em>.  Use the command line switch
-&lsquo;<samp>-q</samp>&rsquo; to tell Emacs whether to load an init file (see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  Use the command line switch &lsquo;<samp>-user-init-file</samp>&rsquo;
-(see section <a href="xemacs_6.html#SEC41">Command Line Switches and Arguments</a>) to tell Emacs to load a different file
+&lsquo;<samp>-q</samp>&rsquo; to tell Emacs whether to load an init file (see section <a href="xemacs_6.html#Entering-Emacs">Entering and Exiting Emacs</a>).  Use the command line switch &lsquo;<samp>-user-init-file</samp>&rsquo;
+(see section <a href="xemacs_6.html#Command-Switches">Command Line Switches and Arguments</a>) to tell Emacs to load a different file
 instead of &lsquo;<tt>~/.xemacs/init.el</tt>&rsquo;/&lsquo;<tt>~/.emacs</tt>&rsquo;.
 </p>
 <p>When the init file is read, the variable <code>user-init-file</code> says
@@ -2069,11 +2069,11 @@ first; if it sets <code>inhibit-default-init</code> non-<code>nil</code>, then
 byte-compile it to &lsquo;<tt>~/.xemacs/init.elc</tt>&rsquo; or &lsquo;<tt>~/.emacs.elc</tt>&rsquo;.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC367">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Syntax of constants in Emacs Lisp.
+<tr><td align="left" valign="top"><a href="#Init-Syntax">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Syntax of constants in Emacs Lisp.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC368">27.6.2 Init File Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to do some things with an init file.
+<tr><td align="left" valign="top"><a href="#Init-Examples">27.6.2 Init File Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to do some things with an init file.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC369">27.6.3 Terminal-Specific Initialization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Each terminal type can have an init file.
+<tr><td align="left" valign="top"><a href="#Terminal-Init">27.6.3 Terminal-Specific Initialization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Each terminal type can have an init file.
 </td></tr>
 </table>
 
@@ -2081,19 +2081,19 @@ byte-compile it to &lsquo;<tt>~/.xemacs/init.elc</tt>&rsquo; or &lsquo;<tt>~/.em
 <a name="Init-Syntax"></a>
 <a name="SEC367"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC366" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC368" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Init-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-Examples" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC366" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.6.1 Init File Syntax </h3>
@@ -2102,7 +2102,7 @@ byte-compile it to &lsquo;<tt>~/.xemacs/init.elc</tt>&rsquo; or &lsquo;<tt>~/.em
 expressions.  Each consists of a function name followed by
 arguments, all surrounded by parentheses.  For example, <code>(setq
 fill-column 60)</code> represents a call to the function <code>setq</code> which is
-used to set the variable <code>fill-column</code> (see section <a href="xemacs_23.html#SEC210">Filling Text</a>) to 60.
+used to set the variable <code>fill-column</code> (see section <a href="xemacs_23.html#Filling">Filling Text</a>) to 60.
 </p>
 <p>  The second argument to <code>setq</code> is an expression for the new value
 of the variable.  This can be a constant, a variable, or a function call
@@ -2163,19 +2163,19 @@ require one and some contexts require the other.
 <a name="Init-Examples"></a>
 <a name="SEC368"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC367" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC369" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Init-Syntax" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Terminal-Init" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC366" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.6.2 Init File Examples </h3>
@@ -2248,7 +2248,7 @@ Load the installed Lisp library named &lsquo;<tt>foo</tt>&rsquo; (actually a fil
 
 <p>When the argument to <code>load</code> is a relative pathname, not starting
 with &lsquo;<samp>/</samp>&rsquo; or &lsquo;<samp>~</samp>&rsquo;, <code>load</code> searches the directories in
-<code>load-path</code> (see section <a href="xemacs_25.html#SEC255">Loading Libraries</a>).
+<code>load-path</code> (see section <a href="xemacs_25.html#Loading">Loading Libraries</a>).
 </p>
 </li><li>
 Load the compiled Lisp file &lsquo;<tt>foo.elc</tt>&rsquo; from your home directory.
@@ -2328,19 +2328,19 @@ Enable the use of the command <code>eval-expression</code> without confirmation.
 <a name="Terminal-Init"></a>
 <a name="SEC369"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC368" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC370" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Init-Examples" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Audible-Bell" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC366" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Init-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.6.3 Terminal-Specific Initialization </h3>
@@ -2368,13 +2368,13 @@ the library &lsquo;<tt>term/aaa</tt>&rsquo;.  The code in the library can use
 <p>  The library&rsquo;s name is constructed by concatenating the value of the
 variable <code>term-file-prefix</code> and the terminal type.  Your init
 file can prevent the loading of the terminal-specific library by setting
-<code>term-file-prefix</code> to <code>nil</code>.  See section <a href="#SEC366">The Init File</a>.
+<code>term-file-prefix</code> to <code>nil</code>.  See section <a href="#Init-File">The Init File</a>.
 </p>
 <a name="IDX1533"></a>
 <p>  The value of the variable <code>term-setup-hook</code>, if not <code>nil</code>, is
 called as a function of no arguments at the end of Emacs initialization,
 after both your init file and any terminal-specific library have been
-read.  See section <a href="#SEC366">The Init File</a>.  You can set the value in the init file to
+read.  See section <a href="#Init-File">The Init File</a>.  You can set the value in the init file to
 override part of any of the terminal-specific libraries and to define
 initializations for terminals that do not have a library.
 </p>
@@ -2382,19 +2382,19 @@ initializations for terminals that do not have a library.
 <a name="Audible-Bell"></a>
 <a name="SEC370"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC369" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC371" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Terminal-Init" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Faces" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.7 Changing the Bell Sound </h2>
@@ -2513,19 +2513,19 @@ kernel of Emacs uses.
 <a name="Faces"></a>
 <a name="SEC371"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC370" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Audible-Bell" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC372" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.8 Faces </h2>
@@ -2544,19 +2544,19 @@ the X resource manager.
 <hr size="6">
 <a name="SEC372"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC371" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC373" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Faces" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame-Components" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC371" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Faces" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.8.1 Customizing Faces </h3>
@@ -2652,7 +2652,7 @@ in non-Mule environments mentioned above: face being changed still looks
 right in all frames.
 </p>
 <p>How predefined faces might be set up for different frames in such an
-environments is described in <a href="#SEC378">Face Resources</a>.
+environments is described in <a href="#Face-Resources">Face Resources</a>.
 </p>
 <a name="IDX1546"></a>
 <p>You can set the background color of the specified <var>face</var> with the
@@ -2706,18 +2706,18 @@ frame; otherwise, it is changed in all frames.
 <a name="SEC373"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC372" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.9 Frame Components </h2>
@@ -2733,19 +2733,19 @@ as the menubar, toolbars, and gutters.
 <a name="X-Resources"></a>
 <a name="SEC374"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC373" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC375" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Frame-Components" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Geometry-Resources" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.10 X Resources </h2>
@@ -2784,17 +2784,17 @@ its own name or the same name as another, depending on the name passed to the
 </pre></td></tr></table>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC375">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Controlling the size and position of frames.
+<tr><td align="left" valign="top"><a href="#Geometry-Resources">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Controlling the size and position of frames.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC376">27.10.2 Iconic Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Controlling whether frames come up iconic.
+<tr><td align="left" valign="top"><a href="#Iconic-Resources">27.10.2 Iconic Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Controlling whether frames come up iconic.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC377">27.10.3 Resource List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          List of resources settable on a frame or device.
+<tr><td align="left" valign="top"><a href="#Resource-List">27.10.3 Resource List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          List of resources settable on a frame or device.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC378">27.10.4 Face Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Controlling faces using resources.
+<tr><td align="left" valign="top"><a href="#Face-Resources">27.10.4 Face Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Controlling faces using resources.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC379">27.10.5 Widgets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The widget hierarchy for XEmacs.
+<tr><td align="left" valign="top"><a href="#Widgets">27.10.5 Widgets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The widget hierarchy for XEmacs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC380">27.10.6 Menubar Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Specifying resources for the menubar.
+<tr><td align="left" valign="top"><a href="#Menubar-Resources">27.10.6 Menubar Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Specifying resources for the menubar.
 </td></tr>
 </table>
 
@@ -2802,19 +2802,19 @@ its own name or the same name as another, depending on the name passed to the
 <a name="Geometry-Resources"></a>
 <a name="SEC375"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC374" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC376" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#X-Resources" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Iconic-Resources" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.1 Geometry Resources </h3>
@@ -2892,19 +2892,19 @@ frames created in various ways.
 <a name="Iconic-Resources"></a>
 <a name="SEC376"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC375" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC377" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Geometry-Resources" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Resource-List" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.2 Iconic Resources </h3>
@@ -2919,19 +2919,19 @@ name) by using the <code>Emacs*FRAME-NAME.iconic</code> resource.
 <a name="Resource-List"></a>
 <a name="SEC377"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC376" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC378" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Iconic-Resources" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Face-Resources" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.3 Resource List </h3>
@@ -2940,7 +2940,7 @@ name) by using the <code>Emacs*FRAME-NAME.iconic</code> resource.
 </p>
 <dl compact="compact">
 <dt> <code>geometry</code> (class <code>Geometry</code>): string</dt>
-<dd><p>Initial geometry for the frame.  See section <a href="#SEC375">Geometry Resources</a>, for a
+<dd><p>Initial geometry for the frame.  See section <a href="#Geometry-Resources">Geometry Resources</a>, for a
 complete discussion of how this works.
 </p>
 </dd>
@@ -3099,19 +3099,19 @@ resources are used to initialize the variables
 <a name="Face-Resources"></a>
 <a name="SEC378"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC377" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC379" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Resource-List" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Widgets" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.4 Face Resources </h3>
@@ -3246,19 +3246,19 @@ should use those forms.  See the man pages for &lsquo;<samp>X(1)</samp>&rsquo;,
 <a name="Widgets"></a>
 <a name="SEC379"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC378" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC380" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Face-Resources" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Menubar-Resources" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.5 Widgets </h3>
@@ -3284,19 +3284,19 @@ XEmacs executable (usually &lsquo;<samp>xemacs</samp>&rsquo;), and
 <a name="Menubar-Resources"></a>
 <a name="SEC380"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC379" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC381" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Widgets" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quitting" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC374" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#X-Resources" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.10.6 Menubar Resources </h3>
@@ -3341,19 +3341,19 @@ appropriate for the toolkit in use.
 <a name="Quitting"></a>
 <a name="SEC381"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC380" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Menubar-Resources" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.11 Quitting and Aborting </h2>
@@ -3398,7 +3398,7 @@ command if it is typed while Emacs is waiting for input.
 </p>
 <p>If you quit twice in a row before the first <kbd>C-g</kbd> is recognized, you
 activate the &ldquo;emergency escape&rdquo; feature and return to the shell.
-See section <a href="#SEC387">Emergency Escape</a>.
+See section <a href="#Emergency-Escape">Emergency Escape</a>.
 </p>
 <a name="IDX1553"></a>
 <a name="IDX1554"></a>
@@ -3410,7 +3410,7 @@ of a recursive editing level and cancel the command which invoked it.
 Quitting with <kbd>C-g</kbd> does not do this, and could not do this because it
 is used to cancel a partially typed command <i>within</i> the recursive
 editing level.  Both operations are useful.  For example, if you are in the
-Emacs debugger (see section <a href="xemacs_25.html#SEC259">The Emacs-Lisp Debugger</a>) and have typed <kbd>C-u 8</kbd> to enter a
+Emacs debugger (see section <a href="xemacs_25.html#Lisp-Debug">The Emacs-Lisp Debugger</a>) and have typed <kbd>C-u 8</kbd> to enter a
 numeric argument, you can cancel that argument with <kbd>C-g</kbd> and remain in
 the debugger.
 </p>
@@ -3422,29 +3422,29 @@ goes out all levels at once.  Both <kbd>C-]</kbd> and <kbd>M-x top-level</kbd> a
 like all other commands and unlike <kbd>C-g</kbd> in that they are effective
 only when Emacs is ready for a command.  <kbd>C-]</kbd> is an ordinary key and
 has its meaning only because of its binding in the keymap.
-See section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>.
+See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
 <p>  <kbd>C-x u</kbd> (<code>undo</code>) is not strictly speaking a way of cancelling a
 command, but you can think of it as cancelling a command already finished
-executing.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.
+executing.  See section <a href="xemacs_8.html#Undo">Undoing Changes</a>.
 </p>
 <hr size="6">
 <a name="Lossage"></a>
 <a name="SEC382"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC381" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC383" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Quitting" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Stuck-Recursive" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.12 Dealing With Emacs Trouble </h2>
@@ -3453,18 +3453,18 @@ executing.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.
 and how to recognize them and correct them.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC383">27.12.1 Recursive Editing Levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    &lsquo;[...]&rsquo; in mode line around the parentheses.
+<tr><td align="left" valign="top"><a href="#Stuck-Recursive">27.12.1 Recursive Editing Levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    &lsquo;[...]&rsquo; in mode line around the parentheses.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC384">27.12.2 Garbage on the Screen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Garbage on the screen.
+<tr><td align="left" valign="top"><a href="#Screen-Garbled">27.12.2 Garbage on the Screen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Garbage on the screen.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC385">27.12.3 Garbage in the Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Garbage in the text.
+<tr><td align="left" valign="top"><a href="#Text-Garbled">27.12.3 Garbage in the Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Garbage in the text.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC386">27.12.4 Spontaneous Entry to Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Spontaneous entry to incremental search.
+<tr><td align="left" valign="top"><a href="#Unasked_002dfor-Search">27.12.4 Spontaneous Entry to Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Spontaneous entry to incremental search.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC387">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Emergency escape&mdash;
+<tr><td align="left" valign="top"><a href="#Emergency-Escape">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Emergency escape&mdash;
                         What to do if Emacs stops responding.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC388">27.12.6 Help for Total Frustration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  When you are at your wits&rsquo; end.
+<tr><td align="left" valign="top"><a href="#Total-Frustration">27.12.6 Help for Total Frustration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  When you are at your wits&rsquo; end.
 </td></tr>
 </table>
 
@@ -3472,19 +3472,19 @@ and how to recognize them and correct them.
 <a name="Stuck-Recursive"></a>
 <a name="SEC383"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC382" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC384" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Lossage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Screen-Garbled" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.1 Recursive Editing Levels </h3>
@@ -3497,25 +3497,25 @@ that contain the names of the major and minor modes, you have entered a
 recursive editing level.  If you did not do this on purpose, or if you
 don&rsquo;t understand what that means, you should just get out of the recursive
 editing level.  To do so, type <kbd>M-x top-level</kbd>.  This is called getting
-back to top level.  See section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>.
+back to top level.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
 <hr size="6">
 <a name="Screen-Garbled"></a>
 <a name="SEC384"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC383" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC385" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Stuck-Recursive" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Text-Garbled" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.2 Garbage on the Screen </h3>
@@ -3541,19 +3541,19 @@ that have or lack specific features.
 <a name="Text-Garbled"></a>
 <a name="SEC385"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC384" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC386" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Screen-Garbled" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Unasked_002dfor-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.3 Garbage in the Text </h3>
@@ -3566,25 +3566,25 @@ results.
 <p>  If a large portion of text appears to be missing at the beginning or
 end of the buffer, check for the word &lsquo;<samp>Narrow</samp>&rsquo; in the mode line.
 If it appears, the text is still present, but marked off-limits.
-To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_29.html#SEC333">Narrowing</a>.
+To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_29.html#Narrowing">Narrowing</a>.
 </p>
 <hr size="6">
 <a name="Unasked_002dfor-Search"></a>
 <a name="SEC386"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC385" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC387" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Text-Garbled" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Emergency-Escape" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.4 Spontaneous Entry to Incremental Search </h3>
@@ -3604,19 +3604,19 @@ control to be used, until you can get a properly designed terminal.
 <a name="Emergency-Escape"></a>
 <a name="SEC387"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC386" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC388" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Unasked_002dfor-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Total-Frustration" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.5 Emergency Escape </h3>
@@ -3662,19 +3662,19 @@ or to create another window and run another program.
 <a name="Total-Frustration"></a>
 <a name="SEC388"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC387" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC389" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Emergency-Escape" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Bugs" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC382" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Lossage" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.12.6 Help for Total Frustration </h3>
@@ -3697,19 +3697,19 @@ doctor know you are finished.
 <a name="Bugs"></a>
 <a name="SEC389"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC388" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Total-Frustration" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC390" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 27.13 Reporting Bugs </h2>
@@ -3724,19 +3724,19 @@ to do so effectively, you must know when and how to do it.
 <hr size="6">
 <a name="SEC390"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC389" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Bugs" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC391" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC389" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Bugs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.13.1 When Is There a Bug </h3>
@@ -3788,18 +3788,18 @@ with the manual, one of them must be wrong, so report the bug.
 <a name="SEC391"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC390" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC389" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Bugs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 27.13.2 How to Report a Bug </h3>
@@ -3855,7 +3855,7 @@ showing how the Lisp program in Emacs arrived at the error.  To make the
 backtrace, you must execute the Lisp expression 
 <code>(setq debug-on-error t)</code> before the error happens (that is to
 say, you must execute that expression and then make the bug happen).  This
-causes the Lisp debugger to run (see section <a href="xemacs_25.html#SEC259">The Emacs-Lisp Debugger</a>).  The debugger&rsquo;s
+causes the Lisp debugger to run (see section <a href="xemacs_25.html#Lisp-Debug">The Emacs-Lisp Debugger</a>).  The debugger&rsquo;s
 backtrace can be copied as text into the bug report.  This use of the
 debugger is possible only if you know how to make the bug happen again.  Do
 note the error message the first time the bug happens, so if you can&rsquo;t make
@@ -3863,7 +3863,7 @@ it happen again, you can report at least that.
 </p>
 <p>  Check whether any programs you have loaded into the Lisp world, including
 your init file, set any variables that may affect the functioning of
-Emacs.  See section <a href="#SEC366">The Init File</a>.  Also, see whether the problem happens in a
+Emacs.  See section <a href="#Init-File">The Init File</a>.  Also, see whether the problem happens in a
 freshly started Emacs without loading your init file (start Emacs with
 the <code>-q</code> switch to prevent loading the init file).  If the problem
 does <var>not</var> occur then, it is essential that we know the contents of
@@ -3912,7 +3912,7 @@ terminal will be written in the specified termscript file as well, until
 the Emacs process is killed.  If the problem happens when Emacs starts
 up, put this expression into your init file so that the termscript file
 will be open when Emacs displays the screen for the first time.
-See section <a href="#SEC366">The Init File</a>. Be warned: it is often difficult, and sometimes
+See section <a href="#Init-File">The Init File</a>. Be warned: it is often difficult, and sometimes
 impossible, to fix a terminal-dependent bug without access to a terminal
 of the type that stimulates the bug.
 </p>
@@ -3937,16 +3937,16 @@ configuration problems.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC340" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_31.html#SEC392" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_31.html#Glossary" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -1407,6 +1407,10 @@ The element node name
 The element name after removal of texi commands
 @end vtable
 
+If @variable{$USE_NODE_TARGET} is set, the node anchors are used as 
+target for the section HREF, if there is a node associated to
+that section.
+
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Global informations
 @subsection Accessing global informations
@@ -3563,6 +3567,8 @@ The label with @@-commands.
 @item id
 The unique identifier associated with the label. Usefull to make an anchor
 or a reference.
+@item target
+The target that can be used to refer to that float.
 @item element
 A reference on a structure representing the element the float appear in.
 @end table
@@ -4038,7 +4044,7 @@ function reference is now done in $print_element_header.
 @code{copying_comment}.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 @item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
-@item the $unknown function reference has a new argument, the pass.
+@item the $unknown function reference has a new argument, the pass number.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

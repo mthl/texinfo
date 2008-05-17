@@ -63,19 +63,19 @@ ul.toc {list-style: none}
 <a name="Breaks"></a>
 <a name="SEC182"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="texinfo_14.html#SEC181" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC183" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="texinfo_14.html#Images" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Line-Breaks" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo_14.html#SEC151" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_14.html#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 14. Making and Preventing Breaks </h1>
@@ -99,19 +99,19 @@ commands.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Break-Commands">&bull; Break Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Cause and prevent splits.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC183">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to force a single line to use two lines.
+<tr><td align="left" valign="top"><a href="#Line-Breaks">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to force a single line to use two lines.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC184">14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to tell TeX about hyphenation points.
+<tr><td align="left" valign="top"><a href="#g_t_002d-and-hyphenation">14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to tell TeX about hyphenation points.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC185">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                           How to prevent unwanted line breaks.
+<tr><td align="left" valign="top"><a href="#w">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                           How to prevent unwanted line breaks.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC186">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                          How to insert blank lines.
+<tr><td align="left" valign="top"><a href="#sp">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                          How to insert blank lines.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC187">14.5 <code>@page</code>: Start a New Page</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to force the start of a new page.
+<tr><td align="left" valign="top"><a href="#page">14.5 <code>@page</code>: Start a New Page</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to force the start of a new page.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC188">14.6 <code>@group</code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to prevent unwanted page breaks.
+<tr><td align="left" valign="top"><a href="#group">14.6 <code>@group</code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to prevent unwanted page breaks.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC189">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Another way to prevent unwanted page breaks.
+<tr><td align="left" valign="top"><a href="#need">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Another way to prevent unwanted page breaks.
 </td></tr>
 </table>
 
@@ -170,19 +170,19 @@ files do not have pages.
 <a name="Line-Breaks"></a>
 <a name="SEC183"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC182" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC184" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Breaks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#g_t_002d-and-hyphenation" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.1 <code>@*</code>: Generate Line Breaks </h2>
@@ -228,19 +228,19 @@ break.
 <a name="g_t_002d-and-hyphenation"></a>
 <a name="SEC184"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC183" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC185" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Line-Breaks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#w" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate </h2>
@@ -256,7 +256,7 @@ wish to help TeX out.  Texinfo supports two commands for this:
 <dt> <code>@-</code></dt>
 <dd><p>Insert a discretionary hyphen, i.e., a place where TeX can (but does
 not have to) hyphenate.  This is especially useful when you notice an
-overfull hbox is due to TeX missing a hyphenation (see section <a href="texinfo_20.html#SEC230">Overfull &ldquo;hboxes&rdquo;</a>).  TeX will not insert any hyphenation points itself into a
+overfull hbox is due to TeX missing a hyphenation (see section <a href="texinfo_20.html#Overfull-hboxes">Overfull &ldquo;hboxes&rdquo;</a>).  TeX will not insert any hyphenation points itself into a
 word containing <code>@-</code>.
 </p>
 </dd>
@@ -276,19 +276,19 @@ words match exactly, so give all necessary variants.
 <a name="w"></a>
 <a name="SEC185"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC184" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC186" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#g_t_002d-and-hyphenation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#sp" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks </h2>
@@ -321,19 +321,19 @@ line.  For example:
 <a name="sp"></a>
 <a name="SEC186"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC185" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC187" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#w" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#page" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines </h2>
@@ -356,19 +356,19 @@ example,
 <a name="page"></a>
 <a name="SEC187"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC186" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC188" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#sp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#group" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.5 <code>@page</code>: Start a New Page </h2>
@@ -383,19 +383,19 @@ section of a Texinfo file to start the copyright page.
 <a name="group"></a>
 <a name="SEC188"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC187" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC189" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#page" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#need" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.6 <code>@group</code>: Prevent Page Breaks </h2>
@@ -411,7 +411,7 @@ output they have no effect at all.
 variety of contexts, its current implementation works reliably only
 within <code>@example</code> and variants, and within <code>@display</code>,
 <code>@format</code>, <code>@flushleft</code> and <code>@flushright</code>.
-See section <a href="texinfo_11.html#SEC120">Quotations and Examples</a>.  (What all these commands have in
+See section <a href="texinfo_11.html#Quotations-and-Examples">Quotations and Examples</a>.  (What all these commands have in
 common is that each line of input produces a line of output.)  In
 other contexts, <code>@group</code> can cause anomalous vertical
 spacing.
@@ -445,19 +445,19 @@ TeX.
 <a name="need"></a>
 <a name="SEC189"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC188" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#group" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks </h2>
@@ -482,16 +482,16 @@ lines at the bottoms of printed pages).
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC182" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_16.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#SEC284" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

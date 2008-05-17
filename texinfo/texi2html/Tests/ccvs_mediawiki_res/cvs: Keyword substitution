@@ -1,19 +1,19 @@
 <div id="Keyword-substitution"></div>
 <div id="SEC98"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Revision management#SEC97  &lt; ]|</td>
-<td valign="middle" align="left">|[[#SEC99| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[cvs: Revision management#When-to-commit  &lt; ]|</td>
+<td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Revision management#SEC96  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Keyword substitution ==
@@ -35,30 +35,30 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC99| Keyword list]]::<nowiki>                   Keywords
-</nowiki>&bull;[[#SEC100| Using keywords]]::<nowiki>                 Using keywords
-</nowiki>&bull;[[#SEC101| Avoiding substitution]]::<nowiki>          Avoiding substitution
-</nowiki>&bull;[[#SEC102| Substitution modes]]::<nowiki>             Substitution modes
-</nowiki>&bull;[[#SEC103| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
-</nowiki>&bull;[[#SEC104| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Keyword-list| Keyword list]]::<nowiki>                   Keywords
+</nowiki>&bull;[[#Using-keywords| Using keywords]]::<nowiki>                 Using keywords
+</nowiki>&bull;[[#Avoiding-substitution| Avoiding substitution]]::<nowiki>          Avoiding substitution
+</nowiki>&bull;[[#Substitution-modes| Substitution modes]]::<nowiki>             Substitution modes
+</nowiki>&bull;[[#Configuring-keyword-expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
+</nowiki>&bull;[[#Log-keyword| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
 </nowiki></pre>
 <hr size="6">
 <div id="Keyword-list"></div>
 <div id="SEC99"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC98| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC100| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Keyword List ===
@@ -88,7 +88,7 @@ existing installations if $<i></i>CVSHeader$ is already
 in the files for a different purpose. This keyword may
 be excluded using the <code>KeywordExpansion=eCVSHeader</code>
 in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file. 
-See [[#SEC103|Configuring Keyord Expansion]] for more details.
+See [[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more details.
 </p>
 <div id="IDX184"></div>
 </dd>
@@ -152,7 +152,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section [[#SEC104|Problems with the $<i></i>Log$ keyword.]].
+See section [[#Log-keyword|Problems with the $<i></i>Log$ keyword.]].
 </p>
 <div id="IDX190"></div>
 </dd>
@@ -173,7 +173,7 @@ See section [[#SEC104|Problems with the $<i></i>Log$ keyword.]].
 </dd>
 <dt> <code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
-assigned with <code>cvs admin -s</code>&mdash;see [cvs: Guide to CVS commands#SEC121 admin options].
+assigned with <code>cvs admin -s</code>&mdash;see [cvs: Guide to CVS commands#admin-options admin options].
 </p>
 <div id="IDX194"></div>
 </dd>
@@ -201,7 +201,7 @@ tag&rdquo; feature. It was used in conjunction with the
 what they called the <code>tagexpand=</code> option. In
 <small>CVS</small> this other option is known as the
 <code>KeywordExpand</code> option. 
-See [[#SEC103|Configuring Keyord Expansion]] for more
+See [[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more
 details.
 </p>
 <p>Examples from popular projects include:
@@ -221,7 +221,7 @@ conflicts that arise during an import of a new version.
 <p>All keyword expansion except the local keyword may be
 disabled using the <code>KeywordExpansion</code> option in
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see 
-[[#SEC103|Configuring Keyord Expansion]] for more details.
+[[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more details.
 </p>
 </dd>
 </dl>
@@ -230,19 +230,19 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 <div id="Using-keywords"></div>
 <div id="SEC100"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC99| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC101| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Using keywords ===
@@ -296,19 +296,19 @@ magic <small>SCCS</small> phrase, like this:
 <div id="Avoiding-substitution"></div>
 <div id="SEC101"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC100| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC102| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Avoiding substitution ===
@@ -321,7 +321,7 @@ into something like &lsquo;<samp>$<i></i>Author: ceder $</samp>&rsquo;.
 </p>
 <p>There is unfortunately no way to selectively turn off
 keyword substitution.  You can use &lsquo;<samp>-ko</samp>&rsquo;
-(see section [[#SEC102|Substitution modes]]) to turn off keyword
+(see section [[#Substitution-modes|Substitution modes]]) to turn off keyword
 substitution entirely.
 </p>
 <p>In many cases you can avoid using keywords in
@@ -335,28 +335,28 @@ and <code>troff</code> you can embed the null-character
 <p>It is also possible to specify an explicit list of
 keywords to include or exclude using the
 <code>KeywordExpand</code> option in the
-&lsquo;<tt>CVSROOT/config</tt>&rsquo; file&ndash;see [[#SEC103|Configuring Keyord Expansion]]
+&lsquo;<tt>CVSROOT/config</tt>&rsquo; file&ndash;see [[#Configuring-keyword-expansion|Configuring Keyord Expansion]]
 for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
-[[#SEC99|Keyword List]].
+[[#Keyword-list|Keyword List]].
 </p>
 <hr size="6">
 <div id="Substitution-modes"></div>
 <div id="SEC102"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC101| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC103| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Substitution modes ===
@@ -368,7 +368,7 @@ option to <code>cvs add</code> and <code>cvs admin</code>; the
 latter is set by the &lsquo;<samp>-k</samp>&rsquo; or &lsquo;<samp>-A</samp>&rsquo; options to <code>cvs
 checkout</code> or <code>cvs update</code>.  <code>cvs diff</code> also
 has a &lsquo;<samp>-k</samp>&rsquo; option.  For some examples,
-see [cvs: Handling binary files#SEC80 Handling binary files], and [cvs: Branching and merging#SEC64 Merging and keywords].
+see [cvs: Handling binary files#Binary-files Handling binary files], and [cvs: Branching and merging#Merging-and-keywords Merging and keywords].
 </p>
 <p>The modes available are:
 </p>
@@ -393,7 +393,7 @@ keyword, generate the string <code>$<i></i>Revision$</code>
 instead of <code>$<i></i>Revision: 5.7 $</code>.  This option
 is useful to ignore differences due to keyword
 substitution when comparing different revisions of a
-file (see section [cvs: Branching and merging#SEC64 Merging and keywords]).
+file (see section [cvs: Branching and merging#Merging-and-keywords Merging and keywords]).
 </p>
 </dd>
 <dt> &lsquo;<samp>-ko</samp>&rsquo;</dt>
@@ -413,7 +413,7 @@ appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
 only to terminate lines, this is very similar to
 &lsquo;<samp>-ko</samp>&rsquo;.  For more information on binary files, see
-[cvs: Handling binary files#SEC80 Handling binary files].  In <small>CVS</small> version 1.12.2 and later
+[cvs: Handling binary files#Binary-files Handling binary files].  In <small>CVS</small> version 1.12.2 and later
 &lsquo;<samp>-kb</samp>&rsquo;, as set by <code>cvs add</code>, <code>cvs admin</code>, or
 <code>cvs import</code> may not be overridden by a &lsquo;<samp>-k</samp>&rsquo; option
 specified on the command line.
@@ -431,7 +431,7 @@ the keyword names are removed, so this option should be
 used with care.
 </p>
 <p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
-export</code>&mdash;see section [cvs: Guide to CVS commands#SEC135 export&mdash;Export sources from CVS, similar to checkout].  But be aware that doesn&rsquo;t
+export</code>&mdash;see section [cvs: Guide to CVS commands#export export&mdash;Export sources from CVS, similar to checkout].  But be aware that doesn&rsquo;t
 handle an export containing binary files correctly.
 </p>
 </dd>
@@ -441,19 +441,19 @@ handle an export containing binary files correctly.
 <div id="Configuring-keyword-expansion"></div>
 <div id="SEC103"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC102| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC104| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Configuring Keyord Expansion ===
@@ -546,19 +546,19 @@ recognized.
 <div id="Log-keyword"></div>
 <div id="SEC104"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC103| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC98| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Problems with the $<i></i>Log$ keyword. ===
@@ -591,16 +591,16 @@ interfere with everyday source file browsing.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC98| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#SEC105  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

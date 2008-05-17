@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Files"></a>
 <a name="SEC134"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_16.html#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_16.html#Spelling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-Names" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 14. File Handling </h1>
@@ -85,26 +85,26 @@ the operations described below, making remote file use transparent
 and append to files, and operate on file directories.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC135">14.1 File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to type and edit file name arguments.
+<tr><td align="left" valign="top"><a href="#File-Names">14.1 File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to type and edit file name arguments.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC136">14.2 Visiting Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Visiting a file prepares Emacs to edit the file.
+<tr><td align="left" valign="top"><a href="#Visiting">14.2 Visiting Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Visiting a file prepares Emacs to edit the file.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC137">14.3 Saving Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Saving makes your changes permanent.
+<tr><td align="left" valign="top"><a href="#Saving">14.3 Saving Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Saving makes your changes permanent.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC143">14.4 Reverting a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Reverting cancels all the changes not saved.
+<tr><td align="left" valign="top"><a href="#Reverting">14.4 Reverting a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Reverting cancels all the changes not saved.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC144">14.5 Auto-Saving: Protection Against Disasters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Auto Save periodically protects against loss of data.
+<tr><td align="left" valign="top"><a href="#Auto-Save">14.5 Auto-Saving: Protection Against Disasters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Auto Save periodically protects against loss of data.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC148">14.6 Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Version control systems (RCS and SCCS).
+<tr><td align="left" valign="top"><a href="#Version-Control">14.6 Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Version control systems (RCS and SCCS).
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC161">14.7 Listing a File Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Listing the contents of a file directory.
+<tr><td align="left" valign="top"><a href="#ListDir">14.7 Listing a File Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Listing the contents of a file directory.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC162">14.8 Comparing Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Finding where two files differ.
+<tr><td align="left" valign="top"><a href="#Comparing-Files">14.8 Comparing Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Finding where two files differ.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC163">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &ldquo;Editing&rdquo; a directory to delete, rename, etc.
+<tr><td align="left" valign="top"><a href="#Dired">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &ldquo;Editing&rdquo; a directory to delete, rename, etc.
                      the files in it.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC168">14.10 Miscellaneous File Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Other things you can do on files.
+<tr><td align="left" valign="top"><a href="#Misc-File-Ops">14.10 Miscellaneous File Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Other things you can do on files.
 </td></tr>
 </table>
 
@@ -112,19 +112,19 @@ and append to files, and operate on file directories.
 <a name="File-Names"></a>
 <a name="SEC135"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Visiting" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.1 File Names </h2>
@@ -132,8 +132,8 @@ and append to files, and operate on file directories.
 <p>  Most Emacs commands that operate on a file require you to specify the
 file name.  (Saving and reverting are exceptions; the buffer knows which
 file name to use for them.)  File names are specified in the minibuffer
-(see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>).  <em>Completion</em> is available, to make it easier to
-specify long file names.  See section <a href="xemacs_9.html#SEC63">Completion</a>.
+(see section <a href="xemacs_9.html#Minibuffer">The Minibuffer</a>).  <em>Completion</em> is available, to make it easier to
+specify long file names.  See section <a href="xemacs_9.html#Completion">Completion</a>.
 </p>
 <p>  There is always a <em>default file name</em> which is used if you
 enter an empty argument by typing just &lt;RET&gt;.  Normally the default
@@ -169,7 +169,7 @@ which does not specify a directory, it is short for &lsquo;<tt>/u/rms/gnu/foo</t
 would stand for the filename &lsquo;<tt>/u/rms/gnu/new/foo</tt>&rsquo;.
 </p>
 <p>  When visiting a remote file via EFS or TRAMP, the remote directory
-becomes the default directory (see section <a href="#SEC136">Visiting Files</a>) for that buffer, just
+becomes the default directory (see section <a href="#Visiting">Visiting Files</a>) for that buffer, just
 as a local directory would.
 </p>
 <a name="IDX530"></a>
@@ -211,7 +211,7 @@ inhibit the insertion of the default directory, set the variable
 <p>  Note that it is legitimate to type an absolute file name after you
 enter the minibuffer, ignoring the presence of the default directory
 name.  The final minibuffer contents may look invalid, but that is not
-so.  See section <a href="xemacs_9.html#SEC61">Minibuffers for File Names</a>.
+so.  See section <a href="xemacs_9.html#Minibuffer-File">Minibuffers for File Names</a>.
 </p>
 <p>  &lsquo;<samp>$</samp>&rsquo; in a file name is used to substitute environment variables.  For
 example, if you have used the shell command &lsquo;<samp>setenv FOO rms/hacks</samp>&rsquo; to
@@ -232,19 +232,19 @@ is performed only on filenames read as such using the minibuffer.
 <a name="Visiting"></a>
 <a name="SEC136"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#File-Names" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Saving" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.2 Visiting Files </h2>
@@ -287,7 +287,7 @@ in that window, so you can always tell what buffer you are editing.
 not take effect in the file that you visit, or any other permanent
 place, until you <em>save</em> the buffer.  Saving the buffer means that
 Emacs writes the current contents of the buffer into its visited file.
-See section <a href="#SEC137">Saving Files</a>.
+See section <a href="#Saving">Saving Files</a>.
 </p>
 <a name="IDX539"></a>
 <p>  If a buffer contains changes that have not been saved, the buffer is said
@@ -303,8 +303,8 @@ the command with the name of the file you wish to visit, terminated by a
 &lt;RET&gt;.  If you are using XEmacs under X, you can also use the
 <b>Open...</b> command from the <b>File</b> menu bar item. 
 </p>
-<p>  The file name is read using the minibuffer (see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>), with
-defaulting and completion in the standard manner (see section <a href="#SEC135">File Names</a>).
+<p>  The file name is read using the minibuffer (see section <a href="xemacs_9.html#Minibuffer">The Minibuffer</a>), with
+defaulting and completion in the standard manner (see section <a href="#File-Names">File Names</a>).
 While in the minibuffer, you can abort <kbd>C-x C-f</kbd> by typing <kbd>C-g</kbd>.
 </p>
 <p>  <kbd>C-x C-f</kbd> has completed successfully when text appears on the
@@ -317,7 +317,7 @@ the name of the file that Emacs was trying to visit.
 another copy.  It selects the existing buffer containing that file.
 However, before doing so, it checks that the file itself has not changed
 since you visited or saved it last.  If the file has changed, Emacs
-prints a warning message.  See section <a href="#SEC142">Simultaneous Editing</a>.
+prints a warning message.  See section <a href="#Interlocking">Simultaneous Editing</a>.
 </p>
 <a name="IDX543"></a>
 <p>You can switch to a specific file called out in the current buffer by
@@ -367,7 +367,7 @@ is not visiting a file.
 </p>
 <a name="IDX551"></a>
 <p>  If the file you specify is actually a directory, Dired is called on
-that directory (see section <a href="#SEC163">Dired, the Directory Editor</a>).  To inhibit this, set the variable
+that directory (see section <a href="#Dired">Dired, the Directory Editor</a>).  To inhibit this, set the variable
 <code>find-file-run-dired</code> to <code>nil</code>; then it is an error to try to
 visit a directory.
 </p>
@@ -379,7 +379,7 @@ window.  The window that was selected before <kbd>C-x 4 f</kbd> continues to
 show the same buffer it was already showing.  If you use this command when
 only one window is being displayed, that window is split in two, with one
 window showing the same buffer as before, and the other one showing the
-newly requested file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
+newly requested file.  See section <a href="xemacs_19.html#Windows">Multiple Windows</a>.
 </p>
 <a name="IDX554"></a>
 <a name="IDX555"></a>
@@ -411,19 +411,19 @@ runs the <code>find-file-not-found-hooks</code> first.
 <a name="Saving"></a>
 <a name="SEC137"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Visiting" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.3 Saving Files </h2>
@@ -491,7 +491,7 @@ anything important.
 </p>
 <p>You can also undo all the changes made since the file was visited or
 saved, by reading the text from the file again.  This is called
-<em>reverting</em>.  See section <a href="#SEC143">Reverting a Buffer</a>.  Alternatively, you can undo all the
+<em>reverting</em>.  See section <a href="#Reverting">Reverting a Buffer</a>.  Alternatively, you can undo all the
 changes by repeating the undo command <kbd>C-x u</kbd>; but this only works
 if you have not made more changes than the undo mechanism can remember.
 </p>
@@ -522,7 +522,7 @@ with the buffer&rsquo;s default directory.
 version on disk does not match what Emacs last read or wrote, Emacs
 notifies you of this fact, because it probably indicates a problem caused
 by simultaneous editing and requires your immediate attention.
-See section <a href="#SEC142">Simultaneous Editing</a>.
+See section <a href="#Interlocking">Simultaneous Editing</a>.
 </p>
 <a name="IDX568"></a>
 <p>  If the variable <code>require-final-newline</code> is non-<code>nil</code>, Emacs
@@ -542,9 +542,9 @@ not done. Use the hook variable <code>after-save-hook</code> to list
 all the functions to be called after writing out a buffer to a file.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC138">14.3.1 Backup Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How Emacs saves the old version of your file.
+<tr><td align="left" valign="top"><a href="#Backup">14.3.1 Backup Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How Emacs saves the old version of your file.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC142">14.3.2 Protection Against Simultaneous Editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How Emacs protects against simultaneous editing
+<tr><td align="left" valign="top"><a href="#Interlocking">14.3.2 Protection Against Simultaneous Editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How Emacs protects against simultaneous editing
                   of one file by two users.
 </td></tr>
 </table>
@@ -553,19 +553,19 @@ all the functions to be called after writing out a buffer to a file.
 <a name="Backup"></a>
 <a name="SEC138"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Saving" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup-Names" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Saving" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.3.1 Backup Files </h3>
@@ -589,12 +589,12 @@ the current editing session; however, if you kill the buffer and then visit
 the file again, a new backup file is made by the next save.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC139">14.3.1.1 Single or Numbered Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		How backup files are named;
+<tr><td align="left" valign="top"><a href="#Backup-Names">14.3.1.1 Single or Numbered Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		How backup files are named;
 				Choosing single or numbered backup files.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC140">14.3.1.2 Automatic Deletion of Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Emacs deletes excess numbered backups.
+<tr><td align="left" valign="top"><a href="#Backup-Deletion">14.3.1.2 Automatic Deletion of Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Emacs deletes excess numbered backups.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC141">14.3.1.3 Copying vs. Renaming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Backups can be made by copying or renaming.
+<tr><td align="left" valign="top"><a href="#Backup-Copying">14.3.1.3 Copying vs. Renaming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Backups can be made by copying or renaming.
 </td></tr>
 </table>
 
@@ -602,19 +602,19 @@ the file again, a new backup file is made by the next save.
 <a name="Backup-Names"></a>
 <a name="SEC139"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Backup" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup-Deletion" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 14.3.1.1 Single or Numbered Backups </h4>
@@ -655,25 +655,25 @@ Otherwise, make single backups.
 <p><code>version-control</code> may be set locally in an individual buffer to
 control the making of backups for that buffer&rsquo;s file.  For example,
 Rmail mode locally sets <code>version-control</code> to <code>never</code> to make sure
-that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#SEC350">Local Variables</a>.
+that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
 <hr size="6">
 <a name="Backup-Deletion"></a>
 <a name="SEC140"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC141" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Backup-Names" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup-Copying" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 14.3.1.2 Automatic Deletion of Backups </h4>
@@ -696,25 +696,25 @@ default, you are asked whether the excess middle versions should
 really be deleted.
 </p>
 <p>  You can also use Dired&rsquo;s <kbd>.</kbd> (Period) command to delete old versions.
-See section <a href="#SEC163">Dired, the Directory Editor</a>.
+See section <a href="#Dired">Dired, the Directory Editor</a>.
 </p>
 <hr size="6">
 <a name="Backup-Copying"></a>
 <a name="SEC141"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC142" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Backup-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Interlocking" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Backup" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 14.3.1.3 Copying vs. Renaming </h4>
@@ -736,7 +736,7 @@ is always the person who last edited the file.  Occasionally there is a
 file whose owner should not change.  Since most files should change
 owners, it is a good idea to use local variable lists to set 
 <code>backup-by-copying-when-mismatch</code> for the special cases where the 
-owner should not change (see section <a href="xemacs_30.html#SEC351">Local Variables in Files</a>).
+owner should not change (see section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>).
 </p>
 <a name="IDX573"></a>
 <a name="IDX574"></a>
@@ -754,19 +754,19 @@ done if renaming would cause the file&rsquo;s owner or group to change.
 <a name="Interlocking"></a>
 <a name="SEC142"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC143" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Backup-Copying" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Reverting" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Saving" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.3.2 Protection Against Simultaneous Editing </h3>
@@ -831,7 +831,7 @@ cancel the save with <kbd>C-g</kbd> and investigate the situation.
 </p>
 <p>  The first thing you should do when notified that simultaneous editing
 has already taken place is to list the directory with <kbd>C-u C-x C-d</kbd>
-(see section <a href="#SEC161">Directory Listing</a>).  This will show the file&rsquo;s current
+(see section <a href="#ListDir">Directory Listing</a>).  This will show the file&rsquo;s current
 author.  You should attempt to contact that person and ask him not to
 continue editing.  Often the next step is to save the contents of your
 Emacs buffer under a different name, and use <code>diff</code> to compare the
@@ -855,19 +855,19 @@ mode for new files.
 <a name="Reverting"></a>
 <a name="SEC143"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Interlocking" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.4 Reverting a Buffer </h2>
@@ -882,7 +882,7 @@ very extensive changes, you must confirm it with <kbd>yes</kbd>.
 that is more recent than the visited file by providing a prefix
 argument.  If a recent auto-save file exists, <code>revert-buffer</code>
 offers to read the auto-save file instead of the visited file
-(see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).  Emacs asks you about the auto-save file before the
+(see section <a href="#Auto-Save">Auto-Saving: Protection Against Disasters</a>).  Emacs asks you about the auto-save file before the
 request for confirmation of the <kbd>revert-buffer</kbd> operation, and
 demands <kbd>y</kbd> or <kbd>n</kbd> as an answer.  If you have started to type
 <kbd>yes</kbd> to confirm the revert operation, the <kbd>y</kbd> will answer the
@@ -912,19 +912,19 @@ reports an error when asked to do so.
 <a name="Auto-Save"></a>
 <a name="SEC144"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC145" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Reverting" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save-Files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.5 Auto-Saving: Protection Against Disasters </h2>
@@ -943,11 +943,11 @@ so that they do not interfere with the execution of commands you have been
 typing.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC145">14.5.1 Auto-Save Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Auto-Save-Files">14.5.1 Auto-Save Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC146">14.5.2 Controlling Auto-Saving</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Auto-Save-Control">14.5.2 Controlling Auto-Saving</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC147">14.5.3 Recovering Data from Auto-Saves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Recovering text from auto-save files.
+<tr><td align="left" valign="top"><a href="#Recover">14.5.3 Recovering Data from Auto-Saves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Recovering text from auto-save files.
 </td></tr>
 </table>
 
@@ -955,19 +955,19 @@ typing.
 <a name="Auto-Save-Files"></a>
 <a name="SEC145"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC144" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC146" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Auto-Save" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save-Control" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.5.1 Auto-Save Files </h3>
@@ -1009,26 +1009,26 @@ auto-save file to correspond to the new visited name.
 <a name="Auto-Save-Control"></a>
 <a name="SEC146"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC145" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC147" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Auto-Save-Files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Recover" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.5.2 Controlling Auto-Saving </h3>
 
 <p>  Each time you visit a file, auto-saving is turned on for that file&rsquo;s
 buffer if the variable <code>auto-save-default</code> is non-<code>nil</code> (but
-not in batch mode; see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  The default for this
+not in batch mode; see section <a href="xemacs_6.html#Entering-Emacs">Entering and Exiting Emacs</a>).  The default for this
 variable is <code>t</code>, so Emacs auto-saves buffers that visit files by
 default.  You can use the command <kbd>M-x auto-save-mode</kbd> to turn
 auto-saving for a buffer on or off.  Like other minor mode commands,
@@ -1065,19 +1065,19 @@ buffer.
 <a name="Recover"></a>
 <a name="SEC147"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC146" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Auto-Save-Control" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Auto-Save" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.5.3 Recovering Data from Auto-Saves </h3>
@@ -1109,19 +1109,19 @@ with <kbd>M-x auto-save-mode</kbd>.
 <a name="Version-Control"></a>
 <a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC147" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC149" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Recover" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Concepts-of-VC" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.6 Version Control </h2>
@@ -1141,32 +1141,32 @@ RCS or SCCS, so you hardly have to know which one of them you are
 using.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC149">14.6.1 Concepts of Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Basic version control information;
+<tr><td align="left" valign="top"><a href="#Concepts-of-VC">14.6.1 Concepts of Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Basic version control information;
                                   checking files in and out.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC150">14.6.2 Editing with Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for editing a file maintained
+<tr><td align="left" valign="top"><a href="#Editing-with-VC">14.6.2 Editing with Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for editing a file maintained
                                   with version control.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC151">14.6.3 Variables Affecting Check-in and Check-out</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Variables that affect the commands used
+<tr><td align="left" valign="top"><a href="#Variables-for-Check_002din_002fout">14.6.3 Variables Affecting Check-in and Check-out</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Variables that affect the commands used
                                   to check files in or out.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC152">14.6.4 Log Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Logging your changes.
+<tr><td align="left" valign="top"><a href="#Log-Entries">14.6.4 Log Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Logging your changes.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC153">14.6.5 Change Logs and VC</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Generating a change log file from log
+<tr><td align="left" valign="top"><a href="#Change-Logs-and-VC">14.6.5 Change Logs and VC</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Generating a change log file from log
                                   entries. 
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC154">14.6.6 Examining And Comparing Old Versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Examining and comparing old versions.
+<tr><td align="left" valign="top"><a href="#Old-Versions">14.6.6 Examining And Comparing Old Versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Examining and comparing old versions.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC155">14.6.7 VC Status Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Commands to view the VC status of files and
+<tr><td align="left" valign="top"><a href="#VC-Status">14.6.7 VC Status Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Commands to view the VC status of files and
                                   look at log entries.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC156">14.6.8 Renaming VC Work Files and Master Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             A command to rename both the source and
+<tr><td align="left" valign="top"><a href="#Renaming-and-VC">14.6.8 Renaming VC Work Files and Master Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             A command to rename both the source and
                                   master file correctly.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC157">14.6.9 Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to make and use snapshots, a set of
+<tr><td align="left" valign="top"><a href="#Snapshots">14.6.9 Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to make and use snapshots, a set of
                                   file versions that can be treated as a unit.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC160">14.6.10 Inserting Version Control Headers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Inserting version control headers into
+<tr><td align="left" valign="top"><a href="#Version-Headers">14.6.10 Inserting Version Control Headers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Inserting version control headers into
                                   working files.
 </td></tr>
 </table>
@@ -1175,19 +1175,19 @@ using.
 <a name="Concepts-of-VC"></a>
 <a name="SEC149"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC150" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Version-Control" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Editing-with-VC" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.1 Concepts of Version Control </h3>
@@ -1222,25 +1222,25 @@ can do both of them with a single Emacs command: <kbd>C-x C-q</kbd>
 (<code>vc-toggle-read-only</code>).
 </p>
 <p>  A <em>snapshot</em> is a coherent collection of versions of the various
-files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
+files that make up a program.  See section <a href="#Snapshots">Snapshots</a>.
 </p>
 <hr size="6">
 <a name="Editing-with-VC"></a>
 <a name="SEC150"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC151" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Concepts-of-VC" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables-for-Check_002din_002fout" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.2 Editing with Version Control </h3>
@@ -1378,19 +1378,19 @@ argument, it reads the version number with the minibuffer.
 <a name="Variables-for-Check_002din_002fout"></a>
 <a name="SEC151"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC152" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Editing-with-VC" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Log-Entries" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.3 Variables Affecting Check-in and Check-out </h3>
@@ -1436,19 +1436,19 @@ happens automatically.
 <a name="Log-Entries"></a>
 <a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC151" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC153" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Variables-for-Check_002din_002fout" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-Logs-and-VC" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.4 Log Entries </h3>
@@ -1485,25 +1485,25 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 <a name="Change-Logs-and-VC"></a>
 <a name="SEC153"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC154" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Log-Entries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Old-Versions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.5 Change Logs and VC </h3>
 
 <p>  If you use RCS for a program and also maintain a change log file for
-it (see section <a href="xemacs_24.html#SEC231">Change Logs</a>), you can generate change log entries
+it (see section <a href="xemacs_24.html#Change-Log">Change Logs</a>), you can generate change log entries
 automatically from the version control log entries:
 </p>
 <dl compact="compact">
@@ -1599,19 +1599,19 @@ to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 <a name="Old-Versions"></a>
 <a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC153" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC155" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Change-Logs-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#VC-Status" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.6 Examining And Comparing Old Versions </h3>
@@ -1653,7 +1653,7 @@ numbers, then compares those versions of the specified file.
 <p>  If you supply a directory name instead of the name of a work file,
 this command compares the two specified versions of all registered files
 in that directory and its subdirectories.  You can also specify a
-snapshot name (see section <a href="#SEC157">Snapshots</a>) instead of one or both version
+snapshot name (see section <a href="#Snapshots">Snapshots</a>) instead of one or both version
 numbers.
 </p>
 <p>  You can specify a checked-in version by its number; you can specify
@@ -1665,25 +1665,25 @@ in a special buffer in another window.  Unlike the <kbd>M-x diff</kbd>
 command, <kbd>C-x v =</kbd> does not try to find the changes in the old and
 new versions.  This is because one or both versions normally do not
 exist as files.  They exist only in the records of the master file.
-See section <a href="#SEC162">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
+See section <a href="#Comparing-Files">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
 </p>
 <hr size="6">
 <a name="VC-Status"></a>
 <a name="SEC155"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC154" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC156" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Old-Versions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Renaming-and-VC" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.7 VC Status Commands </h3>
@@ -1723,19 +1723,19 @@ change.
 <a name="Renaming-and-VC"></a>
 <a name="SEC156"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC155" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC157" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#VC-Status" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Snapshots" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.8 Renaming VC Work Files and Master Files </h3>
@@ -1743,9 +1743,9 @@ change.
 <p>  When you rename a registered file, you must also rename its master
 file correspondingly to get proper results.  Use <code>vc-rename-file</code>
 to rename the source file as you specify, and rename its master file
-accordingly.  It also updates any snapshots (see section <a href="#SEC157">Snapshots</a>) that
+accordingly.  It also updates any snapshots (see section <a href="#Snapshots">Snapshots</a>) that
 mention the file, so that they use the new name; despite this, the
-snapshot thus modified may not completely work (see section <a href="#SEC159">Snapshot Caveats</a>).
+snapshot thus modified may not completely work (see section <a href="#Snapshot-Caveats">Snapshot Caveats</a>).
 </p>
 <p>  You cannot use <code>vc-rename-file</code> on a file that is locked by
 someone else.
@@ -1754,19 +1754,19 @@ someone else.
 <a name="Snapshots"></a>
 <a name="SEC157"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC156" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC158" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Renaming-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Making-Snapshots" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.9 Snapshots </h3>
@@ -1777,9 +1777,9 @@ snapshot is a <em>release</em>, a (theoretically) stable version of the
 system that is ready for distribution to users.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC158">14.6.9.1 Making and Using Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		The snapshot facilities.
+<tr><td align="left" valign="top"><a href="#Making-Snapshots">14.6.9.1 Making and Using Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		The snapshot facilities.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC159">14.6.9.2 Snapshot Caveats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Things to be careful of when using snapshots.
+<tr><td align="left" valign="top"><a href="#Snapshot-Caveats">14.6.9.2 Snapshot Caveats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Things to be careful of when using snapshots.
 </td></tr>
 </table>
 
@@ -1787,19 +1787,19 @@ system that is ready for distribution to users.
 <a name="Making-Snapshots"></a>
 <a name="SEC158"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC157" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC159" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Snapshot-Caveats" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC157" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Snapshots" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 14.6.9.1 Making and Using Snapshots </h4>
@@ -1835,7 +1835,7 @@ the list of file names and which version belongs to the snapshot.  Thus,
 you need not hesitate to create snapshots whenever they are useful.
 </p>
 <p>  You can give a snapshot name as an argument to <kbd>C-x v =</kbd> or
-<kbd>C-x v ~</kbd> (see section <a href="#SEC154">Examining And Comparing Old Versions</a>).  Thus, you can use it to compare a
+<kbd>C-x v ~</kbd> (see section <a href="#Old-Versions">Examining And Comparing Old Versions</a>).  Thus, you can use it to compare a
 snapshot against the current files, or two snapshots against each other,
 or a snapshot against a named version.
 </p>
@@ -1843,19 +1843,19 @@ or a snapshot against a named version.
 <a name="Snapshot-Caveats"></a>
 <a name="SEC159"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC158" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC160" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Making-Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Headers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC157" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Snapshots" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection"> 14.6.9.2 Snapshot Caveats </h4>
@@ -1896,19 +1896,19 @@ won&rsquo;t really work as retrieved.
 <a name="Version-Headers"></a>
 <a name="SEC160"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC159" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC161" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Snapshot-Caveats" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#ListDir" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC148" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Version-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.6.10 Inserting Version Control Headers </h3>
@@ -1985,19 +1985,19 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 <a name="ListDir"></a>
 <a name="SEC161"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC160" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC162" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Version-Headers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparing-Files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.7 Listing a File Directory </h2>
@@ -2060,19 +2060,19 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <a name="Comparing-Files"></a>
 <a name="SEC162"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC161" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC163" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#ListDir" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.8 Comparing Files </h2>
@@ -2088,7 +2088,7 @@ source files.  You can also move to a particular hunk of changes and
 type <kbd>C-c C-c</kbd> to find the corresponding source location.  You can
 also use the other special commands of Compilation mode: &lt;SPC&gt; and
 &lt;DEL&gt; for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
-See section <a href="xemacs_25.html#SEC252">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
+See section <a href="xemacs_25.html#Compilation">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
 </p>
 <a name="IDX626"></a>
 <p>  The command <kbd>M-x diff-backup</kbd> compares a specified file with its most
@@ -2103,7 +2103,7 @@ window with that in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time in each
 window, until the next characters in the two windows are different.  Then
 the command is finished.  For more information about windows in Emacs,
-<a href="xemacs_19.html#SEC175">Multiple Windows</a>.
+<a href="xemacs_19.html#Windows">Multiple Windows</a>.
 </p>
 <a name="IDX629"></a>
 <p>  With a numeric argument, <code>compare-windows</code> ignores changes in
@@ -2114,19 +2114,19 @@ non-<code>nil</code>, it ignores differences in case as well.
 <a name="Dired"></a>
 <a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC162" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC164" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Comparing-Files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired-Enter" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.9 Dired, the Directory Editor </h2>
@@ -2137,13 +2137,13 @@ directory.  You can use the normal Emacs commands to move around in this
 buffer and special Dired commands to operate on the files.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC164">14.9.1 Entering Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to invoke Dired.
+<tr><td align="left" valign="top"><a href="#Dired-Enter">14.9.1 Entering Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to invoke Dired.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC165">14.9.2 Editing in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Editing the Dired buffer.
+<tr><td align="left" valign="top"><a href="#Dired-Edit">14.9.2 Editing in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Editing the Dired buffer.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC166">14.9.3 Deleting Files With Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Deleting files with Dired.
+<tr><td align="left" valign="top"><a href="#Dired-Deletion">14.9.3 Deleting Files With Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Deleting files with Dired.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC167">14.9.4 Immediate File Operations in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Other file operations through Dired.
+<tr><td align="left" valign="top"><a href="#Dired-Immed">14.9.4 Immediate File Operations in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Other file operations through Dired.
 </td></tr>
 </table>
 
@@ -2151,19 +2151,19 @@ buffer and special Dired commands to operate on the files.
 <a name="Dired-Enter"></a>
 <a name="SEC164"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC163" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC165" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Dired" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired-Edit" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC163" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.9.1 Entering Dired </h3>
@@ -2187,19 +2187,19 @@ window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd
 <a name="Dired-Edit"></a>
 <a name="SEC165"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC164" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC166" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Dired-Enter" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired-Deletion" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC163" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.9.2 Editing in Dired </h3>
@@ -2238,19 +2238,19 @@ buffer are lost when this is done.
 <a name="Dired-Deletion"></a>
 <a name="SEC166"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC165" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC167" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Dired-Edit" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired-Immed" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC163" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.9.3 Deleting Files With Dired </h3>
@@ -2273,11 +2273,11 @@ them.
 </p></dd>
 <dt> <kbd>#</kbd></dt>
 <dd><p>Flag all auto-save files (files whose names start and end with &lsquo;<samp>#</samp>&rsquo;)
-for deletion (see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).
+for deletion (see section <a href="#Auto-Save">Auto-Saving: Protection Against Disasters</a>).
 </p></dd>
 <dt> <kbd>~</kbd></dt>
 <dd><p>Flag all backup files (files whose names end with &lsquo;<samp>~</samp>&rsquo;) for deletion
-(see section <a href="#SEC138">Backup Files</a>).
+(see section <a href="#Backup">Backup Files</a>).
 </p></dd>
 <dt> <kbd>. <span class="roman">(Period)</span></kbd></dt>
 <dd><p>Flag excess numeric backup files for deletion.  The oldest and newest
@@ -2333,19 +2333,19 @@ file to keep.
 <a name="Dired-Immed"></a>
 <a name="SEC167"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC166" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC168" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Dired-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Misc-File-Ops" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC163" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dired" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 14.9.4 Immediate File Operations in Dired </h3>
@@ -2362,12 +2362,12 @@ to copy to, using the minibuffer.
 <dd><p>Visits the file described on the current line.  It is just like typing
 <kbd>C-x C-f</kbd> and supplying that file name.  If the file on this line is a
 subdirectory, <kbd>f</kbd> actually causes Dired to be invoked on that
-subdirectory.  See section <a href="#SEC136">Visiting Files</a>.
+subdirectory.  See section <a href="#Visiting">Visiting Files</a>.
 </p></dd>
 <dt> <kbd>o</kbd></dt>
 <dd><p>Like <kbd>f</kbd>, but uses another window to display the file&rsquo;s buffer.  The
 Dired buffer remains visible in the first window.  This is like using
-<kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
+<kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#Windows">Multiple Windows</a>.
 </p></dd>
 <dt> <kbd>R</kbd></dt>
 <dd><p>Renames the file described on the current line.  You must supply a file
@@ -2376,7 +2376,7 @@ name to rename to, using the minibuffer.
 <dt> <kbd>v</kbd></dt>
 <dd><p>Views the file described on this line using <kbd>M-x view-file</kbd>.  Viewing a
 file is like visiting it, but is slanted toward moving around in the file
-conveniently and does not allow changing the file.  See section <a href="#SEC168">View File</a>.  Viewing a file that is a directory runs Dired on that
+conveniently and does not allow changing the file.  See section <a href="#Misc-File-Ops">View File</a>.  Viewing a file that is a directory runs Dired on that
 directory.
 </p></dd>
 </dl>
@@ -2385,19 +2385,19 @@ directory.
 <a name="Misc-File-Ops"></a>
 <a name="SEC168"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC167" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Dired-Immed" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.10 Miscellaneous File Operations </h2>
@@ -2425,12 +2425,12 @@ contents of the file <var>new</var>.
 <a name="IDX638"></a>
 <p>  <kbd>M-x delete-file</kbd> deletes a specified file, like the <code>rm</code>
 command in the shell.  If you are deleting many files in one directory, it
-may be more convenient to use Dired (see section <a href="#SEC163">Dired, the Directory Editor</a>).
+may be more convenient to use Dired (see section <a href="#Dired">Dired, the Directory Editor</a>).
 </p>
 <a name="IDX639"></a>
 <p>  <kbd>M-x insert-file</kbd> inserts a copy of the contents of a specified
 file into the current buffer at point, leaving point unchanged before the
-contents and the mark after them.  See section <a href="xemacs_12.html#SEC79">Selecting Text</a>.
+contents and the mark after them.  See section <a href="xemacs_12.html#Mark">Selecting Text</a>.
 </p>
 <a name="IDX640"></a>
 <p>  <kbd>M-x make-symbolic-link</kbd> reads two file names <var>old</var> and
@@ -2463,16 +2463,16 @@ cursor motion commands.  To exit from viewing, type <kbd>C-c</kbd>.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

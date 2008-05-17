@@ -1,3 +1,11 @@
+2008-05-18  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: complete unicode mapping for @-commands.
+	* texi2html.pl, Tests/*, doc/*: separate id of element from what
+	should be used to target the element. This allows to 
+	use node id as target for sections (suggestion from Karl Berry). 
+	This is done if $USE_NODE_TARGET is set (the default).
+
 2008-05-16  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* T2h_i18n.pm,i18n/*: correct the presentation of the date (report

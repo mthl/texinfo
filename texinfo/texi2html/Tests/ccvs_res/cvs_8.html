@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="History-browsing"></a>
 <a name="SEC75"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="cvs_7.html#SEC74" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC76" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="cvs_7.html#Moving-directories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#log-messages" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs_7.html#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs_7.html#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 8. History browsing </h1>
@@ -68,10 +68,10 @@ whom, there are a variety of mechanisms for looking
 through the history.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC76">8.1 Log messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC77">8.2 The history database</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC78">8.3 User-defined logging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC79">8.4 Annotate command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    What revision modified each line of a file?
+<tr><td align="left" valign="top"><a href="#log-messages">8.1 Log messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#history-database">8.2 The history database</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#user_002ddefined-logging">8.3 User-defined logging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#annotate">8.4 Annotate command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    What revision modified each line of a file?
 </td></tr>
 </table>
 
@@ -79,19 +79,19 @@ through the history.
 <a name="log-messages"></a>
 <a name="SEC76"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC75" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC77" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#History-browsing" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#history-database" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.1 Log messages </h2>
@@ -100,56 +100,56 @@ through the history.
 </p>
 <p>To look through the log messages which have been
 specified for every revision which has been committed,
-use the <code>cvs log</code> command (see section <a href="cvs_16.html#SEC143">log&mdash;Print out log information for files</a>).
+use the <code>cvs log</code> command (see section <a href="cvs_16.html#log">log&mdash;Print out log information for files</a>).
 </p>
 <hr size="6">
 <a name="history-database"></a>
 <a name="SEC77"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC76" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC78" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#log-messages" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#user_002ddefined-logging" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.2 The history database </h2>
 
-<p>You can use the history file (see section <a href="cvs_18.html#SEC178">The history file</a>) to
+<p>You can use the history file (see section <a href="cvs_18.html#history-file">The history file</a>) to
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
-history</code> command (see section <a href="cvs_16.html#SEC137">history&mdash;Show status of files and users</a>).
+history</code> command (see section <a href="cvs_16.html#history">history&mdash;Show status of files and users</a>).
 </p>
 <p>Note: you can control what is logged to this file by using the
 &lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
-(see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+(see section <a href="cvs_18.html#config">The CVSROOT/config configuration file</a>).
 </p>
 
 <hr size="6">
 <a name="user_002ddefined-logging"></a>
 <a name="SEC78"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC77" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC79" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#history-database" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#annotate" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.3 User-defined logging </h2>
@@ -161,14 +161,14 @@ times.  The script might append a message to a file
 listing the information and the programmer who created
 it, or send mail to a group of developers, or, perhaps,
 post a message to a particular newsgroup.  To log
-commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see section <a href="cvs_18.html#SEC172">Loginfo</a>).
+commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see section <a href="cvs_18.html#loginfo">Loginfo</a>).
 To log commits, checkouts, exports, and tags,
 respectively, you can also use the &lsquo;<samp>-i</samp>&rsquo;,
 &lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
 modules file.  For a more flexible way of giving
 notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
-the <code>cvs watch add</code> command (see section <a href="cvs_10.html#SEC91">Telling CVS to notify you</a>); this command is useful even if you are not
+the <code>cvs watch add</code> command (see section <a href="cvs_10.html#Getting-Notified">Telling CVS to notify you</a>); this command is useful even if you are not
 using <code>cvs watch on</code>.
 </p>
 <a name="IDX133"></a>
@@ -176,7 +176,7 @@ using <code>cvs watch on</code>.
 <p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
 command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
-for administrative files (see section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>), where each line is a regular expression
+for administrative files (see section <a href="cvs_18.html#Administrative-files">Reference manual for Administrative files</a>), where each line is a regular expression
 followed by a command to execute.  The arguments passed
 to the command are, in order, the <var>tagname</var>,
 <var>operation</var> (<code>add</code> for <code>tag</code>,
@@ -203,19 +203,19 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <a name="annotate"></a>
 <a name="SEC79"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC78" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#user_002ddefined-logging" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History-browsing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.4 Annotate command </h2>
@@ -242,28 +242,28 @@ added a line <code>ssfile line 2</code>, without modifying
 the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
 tell you anything about lines which have been deleted
 or replaced; you need to use <code>cvs diff</code> for that
-(see section <a href="cvs_16.html#SEC130">diff&mdash;Show differences between revisions</a>).
+(see section <a href="cvs_16.html#diff">diff&mdash;Show differences between revisions</a>).
 </p>
 </dd></dl>
 
 <p>The options to <code>cvs annotate</code> are listed in
-<a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, and can be used to select the files
+<a href="cvs_17.html#Invoking-CVS">Quick reference to CVS commands</a>, and can be used to select the files
 and revisions to annotate.  The options are described
-in more detail there and in <a href="cvs_16.html#SEC119">Common command options</a>.
+in more detail there and in <a href="cvs_16.html#Common-options">Common command options</a>.
 </p>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC75" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="cvs_9.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#History-browsing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="cvs_9.html#Binary-files" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="cvs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

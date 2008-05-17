@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Search"></a>
 <a name="SEC115"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_14.html#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC116" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_14.html#Display-Vars" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Incremental-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_14.html#SEC110" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 12. Searching and Replacement </h1>
@@ -73,21 +73,21 @@ replacement command called <code>query-replace</code> which asks interactively
 which occurrences to replace.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC116">12.1 Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Search happens as you type the string.
+<tr><td align="left" valign="top"><a href="#Incremental-Search">12.1 Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Search happens as you type the string.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC118">12.2 Non-Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Specify entire string and then search.
+<tr><td align="left" valign="top"><a href="#Non_002dIncremental-Search">12.2 Non-Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Specify entire string and then search.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC119">12.3 Word Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Search for sequence of words.
+<tr><td align="left" valign="top"><a href="#Word-Search">12.3 Word Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Search for sequence of words.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC120">12.4 Regular Expression Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Search for match for a regexp.
+<tr><td align="left" valign="top"><a href="#Regexp-Search">12.4 Regular Expression Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Search for match for a regexp.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC121">12.5 Syntax of Regular Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Syntax of regular expressions.
+<tr><td align="left" valign="top"><a href="#Regexps">12.5 Syntax of Regular Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Syntax of regular expressions.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC122">12.6 Searching and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            To ignore case while searching, or not.
+<tr><td align="left" valign="top"><a href="#Search-Case">12.6 Searching and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            To ignore case while searching, or not.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC123">12.7 Replacement Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Search, and replace some or all matches.
+<tr><td align="left" valign="top"><a href="#Replace">12.7 Replacement Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Search, and replace some or all matches.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC128">12.8 Other Search-and-Loop Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Operating on all matches for some regexp.
+<tr><td align="left" valign="top"><a href="#Other-Repeating-Search">12.8 Other Search-and-Loop Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Operating on all matches for some regexp.
 </td></tr>
 </table>
 
@@ -95,19 +95,19 @@ which occurrences to replace.
 <a name="Incremental-Search"></a>
 <a name="SEC116"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Search" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC117" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.1 Incremental Search </h2>
@@ -319,19 +319,19 @@ is automatically added to the search string in isearch-mode.
 <hr size="6">
 <a name="SEC117"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC116" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC118" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Incremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Non_002dIncremental-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC116" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Incremental-Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 12.1.1 Slow Terminal Incremental Search </h3>
@@ -364,18 +364,18 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 <a name="SEC118"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC119" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Word-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.2 Non-Incremental Search </h2>
@@ -414,25 +414,25 @@ non-incremental search.
 <p> Non-incremental searches performed using <kbd>C-s &lt;RET&gt;</kbd> do
 not call <code>search-forward</code> right away.  They first check
 if the next character is <kbd>C-w</kbd>, which requests a word search.
-See section <a href="#SEC119">Word Search</a>.
+See section <a href="#Word-Search">Word Search</a>.
 </p>
 <hr size="6">
 <a name="Word-Search"></a>
 <a name="SEC119"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Non_002dIncremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexp-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.3 Word Search </h2>
@@ -460,7 +460,7 @@ to search  without having to know the line breaks.
 with <kbd>C-s &lt;RET&gt; C-w</kbd> followed by the search string, which
 must always be terminated with another &lt;RET&gt;.  Being non-incremental, this
 search does not start until the argument is terminated.  It works by
-constructing a regular expression and searching for that.  See section <a href="#SEC120">Regular Expression Search</a>.
+constructing a regular expression and searching for that.  See section <a href="#Regexp-Search">Regular Expression Search</a>.
 </p>
 <p> You can do a backward word search with <kbd>C-r &lt;RET&gt; C-w</kbd>.
 </p>
@@ -476,19 +476,19 @@ is the traditional Emacs sequence of keys for word search.
 <a name="Regexp-Search"></a>
 <a name="SEC120"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC121" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Word-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexps" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.4 Regular Expression Search </h2>
@@ -547,19 +547,19 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <a name="Regexps"></a>
 <a name="SEC121"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Regexp-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search-Case" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.5 Syntax of Regular Expressions </h2>
@@ -874,7 +874,7 @@ available prior to XEmacs 20.3, nor is it available in FSF Emacs.
 <dt> <kbd>\w</kbd></dt>
 <dd><a name="IDX469"></a>
 <p>matches any word-constituent character.  The editor syntax table
-determines which characters these are.  See section <a href="xemacs_30.html#SEC363">The Syntax Table</a>.
+determines which characters these are.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 </p>
 </dd>
 <dt> <kbd>\W</kbd></dt>
@@ -887,7 +887,7 @@ determines which characters these are.  See section <a href="xemacs_30.html#SEC3
 <p>matches any character whose syntax is <var>code</var>.  Here <var>code</var> is a
 character that represents a syntax code: thus, &lsquo;<samp>w</samp>&rsquo; for word
 constituent, &lsquo;<samp>-</samp>&rsquo; for whitespace, &lsquo;<samp>(</samp>&rsquo; for open parenthesis,
-etc.  See section <a href="xemacs_30.html#SEC363">The Syntax Table</a>, for a list of syntax codes and the characters that
+etc.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>, for a list of syntax codes and the characters that
 stand for them.
 </p>
 </dd>
@@ -967,19 +967,19 @@ times.
 <a name="Search-Case"></a>
 <a name="SEC122"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC121" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Regexps" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.6 Searching and Case </h2>
@@ -994,7 +994,7 @@ or &lsquo;<samp>A</samp>&rsquo; or &lsquo;<samp>b</samp>&rsquo; or &lsquo;<samp>
 <code>case-fold-search</code> to <code>nil</code>.  Then all letters must match
 exactly, including case. <code>case-fold-search</code> is a per-buffer
 variable; altering it affects only the current buffer, but
-there is a default value which you can change as well.  See section <a href="xemacs_30.html#SEC350">Local Variables</a>. 
+there is a default value which you can change as well.  See section <a href="xemacs_30.html#Locals">Local Variables</a>. 
 You can also use <b>Case Sensitive Search</b> from the <b>Options</b> menu 
 on your screen.
 </p>
@@ -1002,19 +1002,19 @@ on your screen.
 <a name="Replace"></a>
 <a name="SEC123"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Search-Case" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Unconditional-Replace" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.7 Replacement Commands </h2>
@@ -1027,16 +1027,16 @@ occurrence of a pattern, whether to replace it.
 </p>
 <p>  The replace commands all replace one string (or regexp) with one
 replacement string.  It is possible to perform several replacements in
-parallel using the command <code>expand-region-abbrevs</code>.  See section <a href="xemacs_26.html#SEC276">Controlling Abbrev Expansion</a>.
+parallel using the command <code>expand-region-abbrevs</code>.  See section <a href="xemacs_26.html#Expanding-Abbrevs">Controlling Abbrev Expansion</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC124">12.7.1 Unconditional Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Replacing all matches for a string.
+<tr><td align="left" valign="top"><a href="#Unconditional-Replace">12.7.1 Unconditional Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Replacing all matches for a string.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC125">12.7.2 Regexp Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Replacing all matches for a regexp.
+<tr><td align="left" valign="top"><a href="#Regexp-Replace">12.7.2 Regexp Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Replacing all matches for a regexp.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC126">12.7.3 Replace Commands and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How replacements preserve case of letters.
+<tr><td align="left" valign="top"><a href="#Replacement-and-Case">12.7.3 Replace Commands and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How replacements preserve case of letters.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC127">12.7.4 Query Replace</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to use querying.
+<tr><td align="left" valign="top"><a href="#Query-Replace">12.7.4 Query Replace</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to use querying.
 </td></tr>
 </table>
 
@@ -1044,19 +1044,19 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <a name="Unconditional-Replace"></a>
 <a name="SEC124"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexp-Replace" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 12.7.1 Unconditional Replacement </h3>
@@ -1076,7 +1076,7 @@ use the command <kbd>M-x replace-string</kbd> with the two arguments
 want to cover the whole buffer you must go to the beginning first.  By
 default, all occurrences up to the end of the buffer are replaced.  To
 limit replacement to part of the buffer, narrow to that part of the
-buffer before doing the replacement (see section <a href="xemacs_29.html#SEC333">Narrowing</a>).
+buffer before doing the replacement (see section <a href="xemacs_29.html#Narrowing">Narrowing</a>).
 </p>
 <p>  When <code>replace-string</code> exits, point is left at the last occurrence
 replaced.  The value of point when the <code>replace-string</code> command was
@@ -1090,19 +1090,19 @@ by word boundaries.
 <a name="Regexp-Replace"></a>
 <a name="SEC125"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Unconditional-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replacement-and-Case" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 12.7.2 Regexp Replacement </h3>
@@ -1134,19 +1134,19 @@ in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
 <a name="Replacement-and-Case"></a>
 <a name="SEC126"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Regexp-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Query-Replace" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 12.7.3 Replace Commands and Case </h3>
@@ -1172,19 +1172,19 @@ replacement string is not done.
 <a name="Query-Replace"></a>
 <a name="SEC127"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC126" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC128" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Replacement-and-Case" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-Repeating-Search" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 12.7.4 Query Replace </h3>
@@ -1245,7 +1245,7 @@ already been made, &lt;DEL&gt; and &lt;SPC&gt; are equivalent.  At this
 point, you can type <kbd>C-r</kbd> (see below) to alter the replaced text.  To
 undo the replacement, you can type <kbd>C-x u</kbd>. 
 This exits the <code>query-replace</code>.  If you want to do further
-replacement you must use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> to restart (see section <a href="xemacs_9.html#SEC69">Repeating Minibuffer Commands</a>).
+replacement you must use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> to restart (see section <a href="xemacs_9.html#Repetition">Repeating Minibuffer Commands</a>).
 </p>
 </dd>
 <dt> <kbd>&lt;ESC&gt;</kbd></dt>
@@ -1271,7 +1271,7 @@ only one previous replacement location is kept during <code>query-replace</code>
 <dd><p>to enter a recursive editing level, in case the occurrence needs to be
 edited rather than just replaced with <var>newstring</var>.  When you are
 done, exit the recursive editing level with <kbd>C-M-c</kbd> and the next
-occurrence will be displayed.  See section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>.
+occurrence will be displayed.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
 </dd>
 <dt> <kbd>C-w</kbd></dt>
@@ -1295,25 +1295,25 @@ answer.
 <p>  If you type any other character, Emacs exits the <code>query-replace</code>, and
 executes the character as a command.  To restart the <code>query-replace</code>,
 use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, which repeats the <code>query-replace</code> because it
-used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#SEC69">C-x ESC ESC</a>.
+used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#Repetition">C-x ESC ESC</a>.
 </p>
 <hr size="6">
 <a name="Other-Repeating-Search"></a>
 <a name="SEC128"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Query-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.8 Other Search-and-Loop Commands </h2>
@@ -1362,16 +1362,16 @@ specified regexp.
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC115" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

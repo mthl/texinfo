@@ -44,19 +44,19 @@ ul.toc {list-style: none}
 <a name="Frame"></a>
 <a name="SEC7"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_3.html#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="xemacs_3.html#Intro" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Point" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs_3.html#SEC6" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_3.html#Intro" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 1. The XEmacs Frame </h1>
@@ -66,7 +66,7 @@ ul.toc {list-style: none}
 <dd><p>In many environments, such as a tty terminal, an XEmacs frame
 literally takes up the whole screen.  If you are
 running XEmacs in a multi-window system like the X Window System, the
-XEmacs frame takes up one X window.  See section <a href="#SEC19">Using XEmacs Under the X Window System</a>, for more
+XEmacs frame takes up one X window.  See section <a href="#XEmacs-under-X">Using XEmacs Under the X Window System</a>, for more
 information.
 </p>
 </dd>
@@ -90,17 +90,17 @@ The biggest area usually displays the text you are editing.  It may
 consist of one window or of two or more windows if you need to look at two
 buffers a the same time.
 </li><li>
-Below each text window&rsquo;s last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
+Below each text window&rsquo;s last line is a <em>mode line</em> (see section <a href="#Mode-Line">The Mode Line</a>), which describes what is going on in that window.  The mode line
 is in inverse video if the terminal supports that.  If there are several
 XEmacs windows in one frame, each window has its own mode line.
 </li><li>
 At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
-window</em>(see section <a href="#SEC9">The Echo Area</a>).  It is used by XEmacs to exchange information
+window</em>(see section <a href="#Echo-Area">The Echo Area</a>).  It is used by XEmacs to exchange information
 with the user.  There is only one echo area per XEmacs frame.
 </li><li>
 If you are running XEmacs under a graphical windowing system, a
 menu bar at the top of the frame makes shortcuts to several of the
-commands available (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
+commands available (see section <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>).
 </li><li>
 Under a graphical windowing system, a
 toolbar at the top of the frame, just under the menu bar if it exists,
@@ -116,7 +116,7 @@ introduced in XEmacs version 21.2.  (Not yet documented.)
 </li></ul>
 
 <p>  You can subdivide the XEmacs frame into multiple text windows, and use
-each window for a different file (see section <a href="xemacs_19.html#SEC175">Multiple Windows</a>).  Multiple XEmacs
+each window for a different file (see section <a href="xemacs_19.html#Windows">Multiple Windows</a>).  Multiple XEmacs
 windows are tiled vertically on the XEmacs frame.  The upper XEmacs window
 is separated from the lower window by its mode line.
 </p>
@@ -135,18 +135,18 @@ visible in all XEmacs windows containing that buffer.
 </p>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC8">1.1 Point</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        The place in the text where editing commands operate.
+<tr><td align="left" valign="top"><a href="#Point">1.1 Point</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        The place in the text where editing commands operate.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC9">1.2 The Echo Area</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Short messages appear at the bottom of the frame.
+<tr><td align="left" valign="top"><a href="#Echo-Area">1.2 The Echo Area</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Short messages appear at the bottom of the frame.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC10">1.3 The Mode Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        Interpreting the mode line.
+<tr><td align="left" valign="top"><a href="#Mode-Line">1.3 The Mode Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        Interpreting the mode line.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC11">1.4 GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Menubar, toolbars, gutters.
+<tr><td align="left" valign="top"><a href="#GUI-Components">1.4 GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Menubar, toolbars, gutters.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC19">1.12 Using XEmacs Under the X Window System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Some information on using XEmacs under the X
+<tr><td align="left" valign="top"><a href="#XEmacs-under-X">1.12 Using XEmacs Under the X Window System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Some information on using XEmacs under the X
                         Window System.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC20">1.13 Using XEmacs Under Microsoft Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Some information on using XEmacs under
+<tr><td align="left" valign="top"><a href="#XEmacs-under-MS-Windows">1.13 Using XEmacs Under Microsoft Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Some information on using XEmacs under
                         Microsoft Windows.
 </td></tr>
 </table>
@@ -155,19 +155,19 @@ visible in all XEmacs windows containing that buffer.
 <a name="Point"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Frame" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Echo-Area" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.1 Point </h2>
@@ -211,19 +211,19 @@ for accessing the value now called &lsquo;point&rsquo;.
 <a name="Echo-Area"></a>
 <a name="SEC9"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Point" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mode-Line" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.2 The Echo Area </h2>
@@ -241,7 +241,7 @@ so far are echoed.  This is intended to <em>prompt</em> you for the rest of
 the command.  Once echoing has started, the rest of the command is echoed
 immediately as you type it.  This behavior is designed to give confident
 users fast response, while giving hesitant users maximum feedback.  You
-can change this behavior by setting a variable (see section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>).
+can change this behavior by setting a variable (see section <a href="xemacs_14.html#Display-Vars">Variables Controlling Display</a>).
 </li><li>
   If you issue a command that cannot be executed, XEmacs may print an
 <em>error message</em> in the echo area.  Error messages are accompanied by
@@ -264,26 +264,26 @@ that is used for reading arguments to commands, such as the name of a
 file to be edited.  When the minibuffer is in use, the echo area displays
 with a prompt string that usually ends with a colon.  The cursor
 appears after the prompt.  You can always get out of the minibuffer by
-typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer</a>.
+typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#Minibuffer">The Minibuffer</a>.
 </li></ul>
 
 <hr size="6">
 <a name="Mode-Line"></a>
 <a name="SEC10"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Echo-Area" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#GUI-Components" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.3 The Mode Line </h2>
@@ -318,7 +318,7 @@ buffer has not been edited.  Exception: for a read-only buffer, it is
 buffer in the selected window (the window that the cursor is in) is also
 XEmacs&rsquo;s selected buffer, the buffer in which editing takes place.  When
 we speak of what some command does to &ldquo;the buffer&rdquo;, we mean the
-currently selected buffer.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>.
+currently selected buffer.  See section <a href="xemacs_18.html#Buffers">Using Multiple Buffers</a>.
 </p>
 <p>  <var>pos</var> tells you whether there is additional text above the top of
 the screen or below the bottom.  If your file is small and it is
@@ -331,17 +331,17 @@ top of the screen.
 <p>  <var>major</var> is the name of the <em>major mode</em> in effect in the buffer.  At
 any time, each buffer is in one and only one major mode.
 The available major modes include Fundamental mode (the least specialized),
-Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#SEC190">Major Modes</a>, for details
+Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#Major-Modes">Major Modes</a>, for details
 on how the modes differ and how you select one.
 </p>
 <p>  <var>minor</var> is a list of some of the <em>minor modes</em> that are turned on
 in the window&rsquo;s chosen buffer.  For example, &lsquo;<samp>Fill</samp>&rsquo; means that Auto
 Fill mode is on.  <code>Abbrev</code> means that Word Abbrev mode is on.
-<code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#SEC341">Minor Modes</a>, for more
+<code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>, for more
 information.  &lsquo;<samp>Narrow</samp>&rsquo; means that the buffer being displayed has
 editing restricted to only a portion of its text.  This is not really a
-minor mode, but is like one.  See section <a href="xemacs_29.html#SEC333">Narrowing</a>.  <code>Def</code> means that a
-keyboard macro is being defined.  See section <a href="xemacs_30.html#SEC352">Keyboard Macros</a>.
+minor mode, but is like one.  See section <a href="xemacs_29.html#Narrowing">Narrowing</a>.  <code>Def</code> means that a
+keyboard macro is being defined.  See section <a href="xemacs_30.html#Keyboard-Macros">Keyboard Macros</a>.
 </p>
 <p>  Some buffers display additional information after the minor modes.  For
 example, Rmail buffers display the current message number and the total
@@ -354,7 +354,7 @@ the modes.  If XEmacs is in one recursive editing level within another,
 double square brackets appear, and so on.  Since information on
 recursive editing applies to XEmacs in general and not to any one buffer,
 the square brackets appear in every mode line on the screen or not in
-any of them.  See section <a href="xemacs_29.html#SEC335">Recursive Editing Levels</a>.
+any of them.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
 <a name="IDX4"></a>
 <p>  XEmacs can optionally display the time and system load in all mode lines.
@@ -385,19 +385,19 @@ background colors appropriately.
 <a name="GUI-Components"></a>
 <a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Mode-Line" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Menubar-Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.4 GUI Components </h2>
@@ -415,19 +415,19 @@ menubar to pull down a menu, on a button in the toolbar to invoke a
 function, and on a tab in the gutter to switch buffers.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC12">1.5 The XEmacs Menubar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses the menubar.
+<tr><td align="left" valign="top"><a href="#Menubar-Basics">1.5 The XEmacs Menubar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses the menubar.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC13">1.6 XEmacs Scrollbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses scrollbars.
+<tr><td align="left" valign="top"><a href="#Scrollbar-Basics">1.6 XEmacs Scrollbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses scrollbars.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC14">1.7 XEmacs Mode Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses modelines.
+<tr><td align="left" valign="top"><a href="#Mode-Line-Basics">1.7 XEmacs Mode Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses modelines.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC15">1.8 XEmacs Toolbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses toolbars.
+<tr><td align="left" valign="top"><a href="#Toolbar-Basics">1.8 XEmacs Toolbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses toolbars.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC16">1.9 XEmacs Gutters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How XEmacs uses gutters.
+<tr><td align="left" valign="top"><a href="#Gutter-Basics">1.9 XEmacs Gutters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How XEmacs uses gutters.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">1.10 Inhibiting Display of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          What if you don&rsquo;t like GUI?
+<tr><td align="left" valign="top"><a href="#Inhibiting">1.10 Inhibiting Display of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          What if you don&rsquo;t like GUI?
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC18">1.11 Changing the Position, Orientation, and Appearance of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Position, orientation, and appearance of GUI objects.
+<tr><td align="left" valign="top"><a href="#Customizing">1.11 Changing the Position, Orientation, and Appearance of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Position, orientation, and appearance of GUI objects.
 </td></tr>
 </table>
 
@@ -435,19 +435,19 @@ function, and on a tab in the gutter to switch buffers.
 <a name="Menubar-Basics"></a>
 <a name="SEC12"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC13" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#GUI-Components" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Scrollbar-Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.5 The XEmacs Menubar </h2>
@@ -467,7 +467,7 @@ execution.
 </p>
 <p>XEmacs provides a very dynamic environment, and the Lisp language makes
 for highly flexible applications.  The menubar reflects this: many menus
-(eg, the &lsquo;<samp>Buffers</samp>&rsquo; menu, see section <a href="xemacs_5.html#SEC35">The Buffers Menu</a>) contain items
+(eg, the &lsquo;<samp>Buffers</samp>&rsquo; menu, see section <a href="xemacs_5.html#Buffers-Menu">The Buffers Menu</a>) contain items
 determined by the current state of XEmacs, and most major modes and many
 minor modes add items to menus and even whole menus to the menubar.  In
 fact, some applications like w3.el and VM provide so many menus that
@@ -480,26 +480,26 @@ a buffer in the appropriate major mode).
 </p>
 <p>Other menus which are typically available are the &lsquo;<samp>Options</samp>&rsquo;,
 &lsquo;<samp>Tools</samp>&rsquo;, &lsquo;<samp>Buffers</samp>&rsquo;, &lsquo;<samp>Apps</samp>&rsquo;, and &lsquo;<samp>Mule</samp>&rsquo; menus.  For
-detailed descriptions of these menus, <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>.  (In 21.2
+detailed descriptions of these menus, <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>.  (In 21.2
 XEmacsen, the &lsquo;<samp>Mule</samp>&rsquo; menu will be moved under &lsquo;<samp>Options</samp>&rsquo;.)
 </p>
 <hr size="6">
 <a name="Scrollbar-Basics"></a>
 <a name="SEC13"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Menubar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mode-Line-Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.6 XEmacs Scrollbars </h2>
@@ -523,19 +523,19 @@ horizontal scrollbar.
 <a name="Mode-Line-Basics"></a>
 <a name="SEC14"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Scrollbar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toolbar-Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.7 XEmacs Mode Lines </h2>
@@ -558,19 +558,19 @@ the &lsquo;<samp>Options</samp>&rsquo; menu.
 <a name="Toolbar-Basics"></a>
 <a name="SEC15"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Mode-Line-Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Gutter-Basics" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.8 XEmacs Toolbars </h2>
@@ -589,19 +589,19 @@ mail-specific operations like sending, saving, and deleting messages.
 <a name="Gutter-Basics"></a>
 <a name="SEC16"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Toolbar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inhibiting" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.9 XEmacs Gutters </h2>
@@ -643,19 +643,19 @@ same mode are displayed on tabs in the gutter.
 <a name="Inhibiting"></a>
 <a name="SEC17"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Gutter-Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customizing" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.10 Inhibiting Display of GUI Components </h2>
@@ -703,19 +703,19 @@ visibility of specifically the left-side toolbar only, customize
 <a name="Customizing"></a>
 <a name="SEC18"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Inhibiting" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#XEmacs-under-X" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.11 Changing the Position, Orientation, and Appearance of GUI Components </h2>
@@ -726,19 +726,19 @@ visibility of specifically the left-side toolbar only, customize
 <a name="XEmacs-under-X"></a>
 <a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Customizing" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#XEmacs-under-MS-Windows" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.12 Using XEmacs Under the X Window System </h2>
@@ -750,7 +750,7 @@ perform the operations.  Consult your window manager guide or reference
 manual for information on manipulating X windows.
 </p>
 <p>When you are working under X, each X window (that is, each XEmacs frame)
-has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
+has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>).
 </p>
 <a name="IDX6"></a>
 <a name="IDX7"></a>
@@ -830,19 +830,19 @@ title is simply what appears above the window.)
 <a name="XEmacs-under-MS-Windows"></a>
 <a name="SEC20"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#XEmacs-under-X" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.13 Using XEmacs Under Microsoft Windows </h2>
@@ -856,16 +856,16 @@ used in XEmacs.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#SEC402" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

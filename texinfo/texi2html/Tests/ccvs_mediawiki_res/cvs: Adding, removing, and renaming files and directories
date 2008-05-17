@@ -1,19 +1,19 @@
 <div id="Adding-and-removing"></div>
 <div id="SEC66"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Recursive behavior#SEC65  &lt; ]|</td>
-<td valign="middle" align="left">|[[#SEC67| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
+<td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#SEC65  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#SEC_Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Adding, removing, and renaming files and directories ==
@@ -27,29 +27,29 @@ fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC67| Adding files]]::<nowiki>                Adding files
-</nowiki>&bull;[[#SEC68| Removing files]]::<nowiki>              Removing files
-</nowiki>&bull;[[#SEC69| Removing directories]]::<nowiki>        Removing directories
-</nowiki>&bull;[[#SEC70| Moving files]]::<nowiki>                Moving and renaming files
-</nowiki>&bull;[[#SEC74| Moving directories]]::<nowiki>          Moving and renaming directories
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Adding-files| Adding files]]::<nowiki>                Adding files
+</nowiki>&bull;[[#Removing-files| Removing files]]::<nowiki>              Removing files
+</nowiki>&bull;[[#Removing-directories| Removing directories]]::<nowiki>        Removing directories
+</nowiki>&bull;[[#Moving-files| Moving files]]::<nowiki>                Moving and renaming files
+</nowiki>&bull;[[#Moving-directories| Moving directories]]::<nowiki>          Moving and renaming directories
 </nowiki></pre>
 <hr size="6">
 <div id="Adding-files"></div>
 <div id="SEC67"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC66| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC68| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC66| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Adding files to a directory ===
@@ -59,7 +59,7 @@ this in <small>CVS</small> vary depending on the situation.
 <ul>
 <li>
 You must have a working copy of the directory.
-See section [cvs: Overview#SEC5 Getting the source].
+See section [cvs: Overview#Getting-the-source Getting the source].
 
 </li><li>
 Create the new file inside your working copy of the directory.
@@ -67,7 +67,7 @@ Create the new file inside your working copy of the directory.
 </li><li>
 Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section [cvs: Handling binary files#SEC80 Handling binary files]).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section [cvs: Handling binary files#Binary-files Handling binary files]).
 
 </li><li>
 Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
@@ -96,27 +96,27 @@ The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See section [cvs: Guide to CVS commands#SEC139 import&mdash;Import sources into CVS, using vendor branches].
+the <code>import</code> command instead.  See section [cvs: Guide to CVS commands#import import&mdash;Import sources into CVS, using vendor branches].
 </p>
 <p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See section [[#SEC68|Removing files]], for an
+command intervened.  See section [[#Removing-files|Removing files]], for an
 example.
 </p>
 <p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
 this file will be checked out; for more information see
-[cvs: Keyword substitution#SEC102 Substitution modes].
+[cvs: Keyword substitution#Substitution-modes Substitution modes].
 </p>
 <p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see section [cvs: Reference manual for Administrative files#SEC178 The history file]).  It will also be
+it is enabled, see section [cvs: Reference manual for Administrative files#history-file The history file]).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See section [cvs: Guide to CVS commands#SEC120 admin&mdash;Administration].  If you omit the
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin admin&mdash;Administration].  If you omit the
 &lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -129,27 +129,27 @@ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </nowiki></pre></td></tr></table>
 
 <p>When you add a file it is added only on the branch
-which you are working on (see section [cvs: Branching and merging#SEC54 Branching and merging]).  You can
+which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
 later merge the additions to another branch if you want
-(see section [cvs: Branching and merging#SEC63 Merging can add or remove files]).
+(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
 </p>
 <hr size="6">
 <div id="Removing-files"></div>
 <div id="SEC68"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC67| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC69| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC66| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Removing files ===
@@ -164,7 +164,7 @@ but remain able to retrieve old revisions:
 <ul>
 <li>
 Make sure that you have not made any uncommitted
-modifications to the file.  See section [cvs: Overview#SEC8 Viewing differences],
+modifications to the file.  See section [cvs: Overview#Viewing-differences Viewing differences],
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
 the file without committing your changes, you will of
@@ -202,7 +202,7 @@ specified to <code>checkout</code> or <code>update</code>.
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see [cvs: Quick reference to CVS commands#SEC156 Quick reference to CVS commands].
+options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -261,27 +261,27 @@ U oj.c
 </nowiki></pre></td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
-which you are working on (see section [cvs: Branching and merging#SEC54 Branching and merging]).  You can
+which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
 later merge the removals to another branch if you want
-(see section [cvs: Branching and merging#SEC63 Merging can add or remove files]).
+(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
 </p>
 <hr size="6">
 <div id="Removing-directories"></div>
 <div id="SEC69"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC68| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC70| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC66| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Removing directories ===
@@ -316,19 +316,19 @@ are checking out contains any files in that directory.
 <div id="Moving-files"></div>
 <div id="SEC70"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC69| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC71| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC66| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Moving and renaming files ===
@@ -336,32 +336,32 @@ are checking out contains any files in that directory.
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See section [[#SEC74|Moving and renaming directories]].).
+directory is even harder.  See section [[#Moving-directories|Moving and renaming directories]].).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#SEC71| Outside]]::<nowiki>                     The normal way to Rename
-</nowiki>&bull;[[#SEC72| Inside]]::<nowiki>                      A tricky, alternative way
-</nowiki>&bull;[[#SEC73| Rename by copying]]::<nowiki>           Another tricky, alternative way
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Outside| Outside]]::<nowiki>                     The normal way to Rename
+</nowiki>&bull;[[#Inside| Inside]]::<nowiki>                      A tricky, alternative way
+</nowiki>&bull;[[#Rename-by-copying| Rename by copying]]::<nowiki>           Another tricky, alternative way
 </nowiki></pre>
 <hr size="6">
 <div id="Outside"></div>
 <div id="SEC71"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC70| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC72| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC70| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== The Normal way to Rename ====
@@ -389,25 +389,25 @@ time of the rename.
 <p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
-information see [cvs: Revisions#SEC47 Assigning revisions].
+information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
 <hr size="6">
 <div id="Inside"></div>
 <div id="SEC72"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC71| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC73| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC70| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Moving the history file ====
@@ -451,19 +451,19 @@ commands while you move it.
 <div id="Rename-by-copying"></div>
 <div id="SEC73"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC72| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC74| &gt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC70| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Copying the history file ====
@@ -517,27 +517,27 @@ You cannot easily see the history of the file across the rename.
 <div id="Moving-directories"></div>
 <div id="SEC74"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC73| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC66| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Moving and renaming directories ===
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[[#SEC71|The Normal way to Rename]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
-option, as described in [[#SEC69|Removing directories]].
+[[#Outside|The Normal way to Rename]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in [[#Removing-directories|Removing directories]].
 </p>
 <p>If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
@@ -579,16 +579,16 @@ name of the directories.
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC66| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#SEC75  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#SEC_Top|Top]]|</td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
 <td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC189 Index]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].
