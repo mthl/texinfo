@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.12 2008-05-12 18:50:59 karl Exp $
+   $Id: install-info.c,v 1.13 2008-05-18 16:54:02 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008 Free Software Foundation, Inc.
@@ -1445,15 +1445,17 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
    free'd.
  */
 static void
-split_entry (char *entry, char **name, size_t *name_len, char **description, size_t *description_len)
+split_entry (const char *entry, char **name, size_t *name_len,
+             char **description, size_t *description_len)
 {
   char *endptr;
 
   /* on the first line, the description starts after the first ". ";
      that's a period and space -- our heuristic to handle item names like
-     "config.status", and node names like "config.status Invocation".  */
+     "config.status", and node names like "config.status Invocation".
+     Also accept period-tab and period-newline.  */
   char *ptr = strchr (entry, '.');
-  while (ptr && ptr[1] != ' ' && ptr[1] != '\t') {
+  while (ptr && ptr[1] != ' ' && ptr[1] != '\t' && ptr[1] != '\n') {
     ptr = strchr (ptr + 1, '.');
   }
   
