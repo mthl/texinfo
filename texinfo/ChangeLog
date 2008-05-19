@@ -1,3 +1,18 @@
+2008-05-11  Duncan Murdoch <murdoch@stats.uwo.ca>
+
+	Added --internal-links option to print file of internal links:
+	* makeinfo/makeinfo.c (OPT_INTERNAL_LINKS, long_options, main, usage):
+        add command-line option.
+	(convert_from_loaded_file): write the file.
+	* makeinfo/html.c (internal_links_filename,
+	internal_links_stream, escaped_anchor_name): new globals and fn.
+	(add_escaped_anchor): call escaped_anchor_name.
+	* makeinfo/html.h: declare them.
+	* makeinfo/index.c (cm_printindex): write out indexed links.
+	* makeinfo/toc.c (toc_add_entry, contents_update_html): write out
+	TOC entries, use escaped_anchor_name rather than duplicating code.
+        * doc/texinfo.txi (Invoking makeinfo): document it.
+
 2008-05-18  Karl Berry  <karl@gnu.org>
 
 	* install-info/install-info.c (split_entry): split at period-newline,

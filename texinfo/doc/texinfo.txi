@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
+@c $Id: texinfo.txi,v 1.224 2008-05-19 18:26:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15578,6 +15578,13 @@ For the specified format, process @samp{@@if@var{format}} and
 format.  For instance, if @option{--iftex} is specified, then
 @samp{@@iftex} and @samp{@@tex} blocks will be read.  
 
+@item --internal-links=@var{file} 
+@opindex --internal-links=@var{file}
+In HTML mode, output a tab separated file containing three columns:
+the internal link to an indexed item or item in the table of contents, 
+the name of the index (or "toc") in which it occurs, and the term
+which was indexed or entered.
+
 @item --macro-expand=@var{file}
 @itemx -E @var{file}
 @opindex --macro-expand=@var{file}
@@ -19109,7 +19116,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
+$Id: texinfo.txi,v 1.224 2008-05-19 18:26:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19183,7 +19190,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.223 2008-05-16 16:52:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.224 2008-05-19 18:26:47 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

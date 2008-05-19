@@ -1,7 +1,7 @@
 /* toc.c -- table of contents handling.
-   $Id: toc.c,v 1.11 2007-09-15 23:48:46 karl Exp $
+   $Id: toc.c,v 1.12 2008-05-19 18:26:48 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2007
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ static int toc_counter = 0;
 int
 toc_add_entry (char *tocname, int level, char *node_name, char *anchor)
 {
-  char *tocname_and_node, *expanded_node, *d;
+  char *expanded_node, *d;
   char *s = NULL;
   char *filename = NULL;
 
@@ -79,40 +79,22 @@ toc_add_entry (char *tocname, int level, char *node_name, char *anchor)
 	  else
 	    filename = filename_part (current_output_filename);
 	}
-      /* Sigh...  Need to HTML-escape the expanded node name like
-         add_anchor_name does, except that we are not writing this to
-         the output, so can't use add_anchor_name...  */
-      /* The factor 5 in the next allocation is because the maximum
-         expansion of HTML-escaping is for the & character, which is
-         output as "&amp;".  2 is for "> that separates node from tocname.  */
-      d = tocname_and_node = (char *)xmalloc (2 + 5 * strlen (expanded_node)
-                                              + strlen (tocname) + 1);
       if (!anchor)
-        {
-          for (; *s; s++)
-            {
-              if (cr_or_whitespace (*s))
-                *d++ = '-';
-              else if (! URL_SAFE_CHAR (*s))
-                {
-                  sprintf (d, "_00%x", (unsigned char) *s);
-                  /* do this manually since sprintf returns char * on
-                     SunOS 4 and other old systems.  */
-                  while (*d)
-                    d++;
-                }
-              else
-                *d++ = *s;
-            }
-          strcpy (d, "\">");
-        }
+        /* Need to HTML-escape the expanded node name like
+            add_anchor_name does...  */
+        d = escaped_anchor_name (expanded_node);
       else
         /* Section outside any node, they provided explicit anchor.  */
-        strcpy (d, anchor);
+        d = xstrdup(anchor);
+        
+      /* Add space for the "> which may be needed, and the tocname */  
+      d = xrealloc (d, strlen (d) + strlen (tocname) + 3);
+      if (!anchor)
+        strcat (d, "\">");
       strcat (d, tocname);
       free (tocname);       /* it was malloc'ed by substring() */
       free (expanded_node);
-      toc_entry_alist[toc_counter]->name = tocname_and_node;
+      toc_entry_alist[toc_counter]->name = d;
     }
   else
     toc_entry_alist[toc_counter]->name = tocname;
@@ -240,6 +222,14 @@ contents_update_html (void)
 		p++;
 	      add_word_args ("name=\"toc_%.*s\" ",
 		       p - toc_entry_alist[i]->name, toc_entry_alist[i]->name);
+              /* save the link if necessary */		       
+              if (internal_links_stream) 
+                {
+                  fprintf (internal_links_stream, "%s#toc_%.*s\ttoc\t%s\n",
+                      splitting ? toc_entry_alist[i]->html_file : "",
+                      p - toc_entry_alist[i]->name, toc_entry_alist[i]->name,
+                      p + 2);
+                }
 	    }
 	  add_word_args ("href=\"%s#%s</a>\n",
 		   splitting ? toc_entry_alist[i]->html_file : "",

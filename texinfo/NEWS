@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.172 2008-05-18 16:54:01 karl Exp $
+$Id: NEWS,v 1.173 2008-05-19 18:26:47 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -22,11 +22,16 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* makeinfo:
+  . new option --internal-links for HTML output, to write a tsv file
+    mapping indexed/toc terms to links, for easy reference from external
+    documents.
+ 
 * info:
-  - support for multibyte encodings such as UTF-8.
+  . support for multibyte encodings such as UTF-8.
 
 * install-info:
-  - bug fix: support config.status again.
+  . bug fix: support config.status again.
 
 
 4.12 (20 April 2008)
@@ -58,7 +63,7 @@ one of the relevant sections:
     --max-width COL: wrap the description at COL.
   . New section in the Texinfo manual describing all this.
 
-* Info:
+* info:
   Our goal with these changes to the default interface is to make Info
   documents more easily and quickly readable, especially by non-experts.
   . the PageUp and PageDown keys move through the whole document by

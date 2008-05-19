@@ -1,7 +1,8 @@
 /* html.h -- declarations for html-related utilities.
-   $Id: html.h,v 1.10 2007-07-01 21:20:32 karl Exp $
+   $Id: html.h,v 1.11 2008-05-19 18:26:48 karl Exp $
 
-   Copyright (C) 1999, 2000, 2002, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2002, 2004, 2007, 2008
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,6 +31,10 @@ typedef struct hstack
 /* Nonzero if we have output a title, from @titlefont or @settitle.  */
 extern int html_title_written;
 
+/* Filename to which to write list of index entries, and stream for them */
+extern char *internal_links_filename;
+extern FILE *internal_links_stream;
+
 /* Perform the <head> output.  */
 extern void html_output_head (void);
 
@@ -43,6 +48,7 @@ extern void insert_html_tag (int start_or_end, char *tag);
 extern void add_link (char *nodename, char *attributes);
 
 /* Escape URL-special characters.  */
+extern char *escaped_anchor_name (const char *name);
 extern void add_escaped_anchor_name (char *name, int old);
 
 /* See html.c.  */

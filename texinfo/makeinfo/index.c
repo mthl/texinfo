@@ -1,7 +1,7 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.26 2007-12-03 01:38:43 karl Exp $
+   $Id: index.c,v 1.27 2008-05-19 18:26:48 karl Exp $
 
-   Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007
+   Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -757,6 +757,7 @@ cm_printindex (void)
       int saved_line_number = line_number;
       char *saved_input_filename = input_filename;
       unsigned output_line_number_len;
+      FILE *saved_output_stream = output_stream;
 
       index = index_list (index_name);
       if (index == (INDEX_ELT *)-1)
@@ -880,6 +881,16 @@ cm_printindex (void)
                 add_word_args ("#%s</a>", index_node);
 
               add_html_block_elt ("</li>");
+
+              if (internal_links_stream)
+                {
+                  char *escaped = escaped_anchor_name (index->entry_text);
+                  fprintf (internal_links_stream, "%s#index-%s-%d\t%s\t%s\n",
+                      (splitting && index->output_file) ? index->output_file : "",
+                      escaped, index->entry_number, index_name, 
+                      index->entry_text);
+                  free (escaped);
+                }              
             }
           else if (xml && docbook)
             {

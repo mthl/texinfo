@@ -1,7 +1,7 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.41 2007-12-03 01:38:43 karl Exp $
+   $Id: html.c,v 1.42 2008-05-19 18:26:47 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,11 @@
 #include "sectioning.h"
 
 
+
+/* Filename to which to write list of index entries */
+char *internal_links_filename = NULL;
+FILE *internal_links_stream = NULL;
+
 /* Append CHAR to BUFFER, (re)allocating as necessary.  We don't handle
    null characters.  */
 
@@ -579,6 +584,7 @@ insert_html_tag (int start_or_end, char *tag)
 
 /* Output an HTML <link> to the filename for NODE, including the
    other string as extra attributes. */
+
 void
 add_link (char *nodename, char *attributes)
 {
@@ -594,6 +600,36 @@ add_link (char *nodename, char *attributes)
       if (escaped_nodename != nodename)
         free (escaped_nodename);
     }
+}
+
+/* Copy a name with characters escaped as appropriate for an anchor
+   name, i.e., escape URL special characters with our _00hh convention.
+   (See the manual for details on the new scheme.) */
+   
+char *
+escaped_anchor_name (const char *name)
+{
+  /* The factor 5 in the next allocation allows all chars to be expanded.  */
+  char *res = xmalloc (5 * strlen (name) + 1);
+  char *d = res;
+  
+  for (; *name; name++)
+    {
+      if (cr_or_whitespace (*name))
+        *d++ = '-';
+      else if (! URL_SAFE_CHAR (*name))
+        {
+          sprintf (d, "_00%x", (unsigned char) *name);
+          /* do this manually since sprintf returns char * on
+             SunOS 4 and other old systems.  */
+          while (*d)
+            d++;
+        }
+      else
+        *d++ = *name;
+    }
+  *d = 0;
+  return res;
 }
 
 /* Output NAME with characters escaped as appropriate for an anchor
@@ -618,21 +654,21 @@ add_escaped_anchor_name (char *name, int old)
          have a nonletter.  */
       add_word ("g_t");
     }
-
-  for (; *name; name++)
+  if (!old) 
+    {
+      char *expanded = escaped_anchor_name (name);
+      add_word (expanded);
+      free (expanded);
+    }
+  else for (; *name; name++)
     {
       if (cr_or_whitespace (*name))
         add_char ('-');
 
-      else if (!old && !URL_SAFE_CHAR (*name))
+      else if (!URL_SAFE_CHAR (*name) && !OLD_URL_SAFE_CHAR (*name))
         /* Cast so characters with the high bit set are treated as >128,
-           for example o-umlaut should be 246, not -10.  */
-        add_word_args ("_00%x", (unsigned char) *name);
-
-      else if (old && !URL_SAFE_CHAR (*name) && !OLD_URL_SAFE_CHAR (*name))
-        /* Different output convention, but still cast as above.  */
+           for example o-umlaut should be 246, not -10.  */ 
         add_word_args ("%%%x", (unsigned char) *name);
-
       else
         add_char (*name);
     }

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.118 2008-03-26 23:57:11 karl Exp $
+   $Id: makeinfo.c,v 1.119 2008-05-19 18:26:48 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -411,6 +411,7 @@ Options for HTML:\n\
       --css-include=FILE      include FILE in HTML <style> output;\n\
                                 read stdin if FILE is -.\n\
       --css-ref=URL           generate reference to a CSS file.\n\
+      --internal-links=FILE   produce list of internal links in FILE.\n\
       --transliterate-file-names\n\
                               produce file names in ASCII transliteration.\n\
 "));
@@ -483,6 +484,7 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"));
 
 #define OPT_CSSREF    256
 #define OPT_TRANSLITERATE_FILE_NAMES 257
+#define OPT_INTERNAL_LINKS 258
 
 struct option long_options[] =
 {
@@ -505,6 +507,7 @@ struct option long_options[] =
   { "ifplaintext", 0, &process_plaintext, 1 },
   { "iftex", 0, &process_tex, 1 },
   { "ifxml", 0, &process_xml, 1 },
+  { "internal-links", 1, 0, OPT_INTERNAL_LINKS },
   { "macro-expand", 1, 0, 'E' },
   { "no-headers", 0, &no_headers, 1 },
   { "no-ifdocbook", 0, &process_docbook, 0 },
@@ -720,6 +723,22 @@ main (int argc, char *argv[])
             }
           break;
 
+	case OPT_INTERNAL_LINKS:
+	  if (!internal_links_stream)
+	    {
+	      internal_links_filename = xstrdup (optarg);
+	      internal_links_stream = strcmp (optarg, "-") == 0 ? stdout :
+                fopen (optarg, "w");
+              if (!internal_links_stream)
+                error (_("%s: could not open internal links output `%s'"),
+                       progname, optarg);
+            }
+          else
+            fprintf (stderr,
+            	     _("%s: ignoring second internal links output `%s'.\n"),
+            	     progname, optarg);
+          break;
+	  
         case 'o': /* --output */
           command_output_filename = xstrdup (optarg);
           save_command_output_filename = command_output_filename;
@@ -1777,6 +1796,26 @@ _("%s: Removing macro output file `%s' due to errors; use --force to preserve.\n
             perror (real_output_filename);
         }
     }
+
+  if (internal_links_stream)
+    {
+      if (internal_links_stream != stdout
+          && fclose (internal_links_stream) != 0)
+        fs_error(internal_links_filename);
+      internal_links_stream = NULL;
+      if (errors_printed && !force
+          && strcmp (internal_links_filename, "-") != 0
+          && FILENAME_CMP (internal_links_filename, NULL_DEVICE) != 0
+          && FILENAME_CMP (internal_links_filename, ALSO_NULL_DEVICE) != 0)
+        {
+          fprintf (stderr,
+_("%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"),
+                   progname, internal_links_filename);
+          if (unlink (internal_links_filename) < 0)
+            perror (internal_links_filename);
+        }
+    }
+     
   free (real_output_filename);
 }
 
