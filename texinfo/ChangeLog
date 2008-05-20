@@ -1,4 +1,9 @@
-2008-05-11  Duncan Murdoch <murdoch@stats.uwo.ca>
+2008-05-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (cm_image): need another byte for fullname.
+	Report from Patrice Dumas, 15 May 2008 00:40:03.
+
+2008-05-19  Duncan Murdoch <murdoch@stats.uwo.ca>
 
 	Added --internal-links option to print file of internal links:
 	* makeinfo/makeinfo.c (OPT_INTERNAL_LINKS, long_options, main, usage):
