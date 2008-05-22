@@ -1,3 +1,9 @@
+2008-05-22  Karl Berry  <karl@tug.org>
+
+	* pretest 4.12.90.
+	
+	* install-info/tests/Makefile.am (EXTRA_DIST): missed ii-0051-test.
+
 2008-05-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (cm_image): need another byte for fullname.

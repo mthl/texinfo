@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-04-19 10:05-0700\n"
+"POT-Creation-Date: 2008-05-22 18:24+0200\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -311,8 +311,8 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mer informasjon.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2091
-#: makeinfo/makeinfo.c:783 util/texindex.c:295
+#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -397,7 +397,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:474
+#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -1766,25 +1766,25 @@ msgstr "Sette %s til verdien (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Sette %s til verdien (%s): "
 
-#: info/window.c:1150
+#: info/window.c:1070
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Tagger er ute av synk ***"
 
-#: info/window.c:1161
+#: info/window.c:1081
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linjer ----, "
 
-#: info/window.c:1168
+#: info/window.c:1088
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d linjer --%s--"
 
-#: info/window.c:1172
+#: info/window.c:1092
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d linjer --%s--"
 
-#: info/window.c:1179
+#: info/window.c:1099
 #, c-format
 msgid " Subfile: %s"
 msgstr " Delfil: %s"
@@ -1947,45 +1947,45 @@ msgstr "START-INFO-DIR-ENTRY uten tilhørende END-INFO-DIR-ENTRY"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY uten tilhørende START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1936 install-info/install-info.c:1946
+#: install-info/install-info.c:1946 install-info/install-info.c:1956
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: har allerede en dirfil: %s\n"
 
-#: install-info/install-info.c:2026
+#: install-info/install-info.c:2036
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Spesifiser infofilen bare en gang.\n"
 
-#: install-info/install-info.c:2059
+#: install-info/install-info.c:2069
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2071
+#: install-info/install-info.c:2081
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr ""
 
-#: install-info/install-info.c:2129
+#: install-info/install-info.c:2139
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "overflødig argument på kommandolinjen «%s»"
 
-#: install-info/install-info.c:2133
+#: install-info/install-info.c:2143
 msgid "No input file specified; try --help for more information."
 msgstr "Ingen innfil angitt; prøv --help for mer informasjon."
 
-#: install-info/install-info.c:2136
+#: install-info/install-info.c:2146
 msgid "No dir file specified; try --help for more information."
 msgstr "Ingen dir-fil angitt; prøv --help for mer informasjon."
 
-#: install-info/install-info.c:2278
+#: install-info/install-info.c:2288
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "ingen info-dir-oppføring i «%s»"
 
-#: install-info/install-info.c:2526
+#: install-info/install-info.c:2536
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "fant ingen oppføringer for «%s»; ingenting slettet"
@@ -2097,11 +2097,11 @@ msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Ugyldig argument til %c%s"
 
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4270
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
 msgid "none"
 msgstr "none"
 
@@ -2162,8 +2162,8 @@ msgstr "Outputbuffer er ikke tomt."
 msgid "Requested float type `%s' not previously used"
 msgstr ""
 
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:948
-#: makeinfo/index.c:954
+#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
+#: makeinfo/index.c:965
 msgid "See "
 msgstr "Se "
 
@@ -2189,21 +2189,21 @@ msgstr "Fotnoter i fotnoter er ikke tillatt"
 msgid "Footnotes"
 msgstr "Fotnoter"
 
-#: makeinfo/html.c:86
+#: makeinfo/html.c:91
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: makeinfo/html.c:175
+#: makeinfo/html.c:180
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-file endte i en kommentar"
 
-#: makeinfo/html.c:421
+#: makeinfo/html.c:426
 msgid "[unexpected] no html tag to pop"
 msgstr "[uforventet] kunne ikke poppe neste htmltagg"
 
-#: makeinfo/html.c:764
+#: makeinfo/html.c:800
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[uforventet] ugyldig nodenavn: «%s»"
@@ -2237,17 +2237,17 @@ msgstr "(linje )"
 msgid "(line %*d)"
 msgstr "(linje %*d)"
 
-#: makeinfo/index.c:764
+#: makeinfo/index.c:765
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Ukjent indeks «%s» i @printindex"
 
-#: makeinfo/index.c:833
+#: makeinfo/index.c:834
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Innslag for indeksen «%s» utenfor node"
 
-#: makeinfo/index.c:836 makeinfo/index.c:872
+#: makeinfo/index.c:837 makeinfo/index.c:873
 msgid "(outside of any node)"
 msgstr "(utenfor noder)"
 
@@ -2439,7 +2439,7 @@ msgstr "For mange feil!  Ga opp.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: advarsel: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2295
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
 #, c-format
 msgid "Misplaced %c"
 msgstr "Feilplassert %c"
@@ -2585,6 +2585,7 @@ msgid ""
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
 "                                read stdin if FILE is -.\n"
 "      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
 "      --transliterate-file-names\n"
 "                              produce file names in ASCII transliteration.\n"
 msgstr ""
@@ -2592,7 +2593,7 @@ msgstr ""
 "      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
 "                                  les stdin dersom FIL er -.\n"
 
-#: makeinfo/makeinfo.c:418
+#: makeinfo/makeinfo.c:419
 #, fuzzy, c-format
 msgid ""
 "Options for XML and Docbook:\n"
@@ -2607,7 +2608,7 @@ msgstr ""
 "                                  Dersom ANT er 0, blir ignorerbart tomrom "
 "ikke brukt.\n"
 
-#: makeinfo/makeinfo.c:425
+#: makeinfo/makeinfo.c:426
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2627,7 +2628,7 @@ msgstr ""
 "  -U VAR                         udefiner variabelen VAR, som om @clear "
 "brukes.\n"
 
-#: makeinfo/makeinfo.c:434
+#: makeinfo/makeinfo.c:435
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2663,7 +2664,7 @@ msgstr ""
 "  --no-iftex         ikke behandle @iftex og @tex.\n"
 "  --no-ifxml         ikke behandle @ifxml og @xml.\n"
 
-#: makeinfo/makeinfo.c:453
+#: makeinfo/makeinfo.c:454
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2677,7 +2678,7 @@ msgstr ""
 "  dersom ren tekst genereres er --ifplaintext påslått og de andre av;\n"
 "  dersom XML genereres er --ifxml påslått og de andre av.\n"
 
-#: makeinfo/makeinfo.c:461
+#: makeinfo/makeinfo.c:462
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2704,75 +2705,85 @@ msgstr ""
 "  makeinfo --number-sections foo.texi   skrive Info med nummererte avsnitt\n"
 "  makeinfo --no-split foo.texi          skrive en Infofil uansett størrelse\n"
 
-#: makeinfo/makeinfo.c:619
+#: makeinfo/makeinfo.c:622
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorerer ugjenkjennelig TEXINFO_OUTPUT_FORMAT-verdi «%s».\n"
 
-#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
-#: makeinfo/makeinfo.c:761
+#: makeinfo/makeinfo.c:670 makeinfo/makeinfo.c:696 makeinfo/makeinfo.c:720
+#: makeinfo/makeinfo.c:780
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
 
-#: makeinfo/makeinfo.c:680
+#: makeinfo/makeinfo.c:683
 #, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
 
-#: makeinfo/makeinfo.c:685
+#: makeinfo/makeinfo.c:688
 #, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
 
-#: makeinfo/makeinfo.c:732
+#: makeinfo/makeinfo.c:733
+#, fuzzy, c-format
+msgid "%s: could not open internal links output `%s'"
+msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
+
+#: makeinfo/makeinfo.c:738
+#, fuzzy, c-format
+msgid "%s: ignoring second internal links output `%s'.\n"
+msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
+
+#: makeinfo/makeinfo.c:751
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
 
-#: makeinfo/makeinfo.c:750
+#: makeinfo/makeinfo.c:769
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
 
-#: makeinfo/makeinfo.c:825
+#: makeinfo/makeinfo.c:844
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filargument.\n"
 
-#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4119
+#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Flerlinjekommandoen %c%s brukes ikke riktig"
 
-#: makeinfo/makeinfo.c:1019
+#: makeinfo/makeinfo.c:1038
 #, c-format
 msgid "Expected `%s'"
 msgstr "Forventet «%s»"
 
-#: makeinfo/makeinfo.c:1496
+#: makeinfo/makeinfo.c:1515
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan ikke opprette katalogen «%s»: %s"
 
-#: makeinfo/makeinfo.c:1542
+#: makeinfo/makeinfo.c:1561
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Ingen «%s» funnet i «%s»"
 
-#: makeinfo/makeinfo.c:1622
+#: makeinfo/makeinfo.c:1641
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Hopper over makroekspansjon til stdout siden Info-output også sendes "
 "dit.\n"
 
-#: makeinfo/makeinfo.c:1652
+#: makeinfo/makeinfo.c:1671
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Lager %s-filen «%s» fra «%s».\n"
 
-#: makeinfo/makeinfo.c:1719
+#: makeinfo/makeinfo.c:1738
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2780,80 +2791,88 @@ msgstr ""
 "%s: Fjerner makroutskriftsfilen «%s» på grunn av feil; bruk --force for å "
 "bevare.\n"
 
-#: makeinfo/makeinfo.c:1774
+#: makeinfo/makeinfo.c:1793
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å bevare.\n"
 
-#: makeinfo/makeinfo.c:2068
+#: makeinfo/makeinfo.c:1812
+#, fuzzy, c-format
+msgid ""
+"%s: Removing internal links output file `%s' due to errors; use --force to "
+"preserve.\n"
+msgstr ""
+"%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å bevare.\n"
+
+#: makeinfo/makeinfo.c:2107
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Ukjent kommando «%s»"
 
-#: makeinfo/makeinfo.c:2090
+#: makeinfo/makeinfo.c:2129
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
 
-#: makeinfo/makeinfo.c:2349
+#: makeinfo/makeinfo.c:2388
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s forventet krøllparanteser"
 
-#: makeinfo/makeinfo.c:2362
+#: makeinfo/makeinfo.c:2401
 msgid "Unmatched }"
 msgstr "Umatchet }"
 
-#: makeinfo/makeinfo.c:2410
+#: makeinfo/makeinfo.c:2449
 msgid "NO_NAME!"
 msgstr "INTET_NAVN!"
 
-#: makeinfo/makeinfo.c:2431
+#: makeinfo/makeinfo.c:2470
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s mangler avsluttende krøllparentes"
 
-#: makeinfo/makeinfo.c:3434
+#: makeinfo/makeinfo.c:3476
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3440
+#: makeinfo/makeinfo.c:3482
 #, c-format
 msgid "No such file `%s'"
 msgstr "«%s» er ingen fil"
 
-#: makeinfo/makeinfo.c:3576
+#: makeinfo/makeinfo.c:3618
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-fil «%s» (for tekstformat) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3585
+#: makeinfo/makeinfo.c:3627
 msgid "@image missing filename argument"
 msgstr "@image mangler filnavn"
 
-#: makeinfo/makeinfo.c:3803
+#: makeinfo/makeinfo.c:3845
 #, c-format
 msgid "undefined flag: %s"
 msgstr "udefinert flagg: %s"
 
-#: makeinfo/makeinfo.c:3804
+#: makeinfo/makeinfo.c:3846
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Ingen verdi for «%s»}"
 
-#: makeinfo/makeinfo.c:3856
+#: makeinfo/makeinfo.c:3898
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s krever et navn"
 
-#: makeinfo/makeinfo.c:3962
+#: makeinfo/makeinfo.c:4004
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Traff slutt-på-filen før matchende @end %s"
 
-#: makeinfo/makeinfo.c:4211
+#: makeinfo/makeinfo.c:4253
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for lang for ekspansjon; ikke ekspandert"
