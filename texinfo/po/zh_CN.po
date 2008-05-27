@@ -1,314 +1,315 @@
-# SOME DESCRIPTIVE TITLE.
+# Chinese Simplified translation about texinfo.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 # Wang Li <charles@linux.net.cn>, 2002.
-#
+# Ji ZhengYu <zhengyuji@gmail.com>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.2\n"
+"Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2008-05-22 18:24+0200\n"
-"PO-Revision-Date: 2002-05-06 16:10+0800\n"
-"Last-Translator: Wang Li <charles@linux.net.cn>\n"
-"Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
+"PO-Revision-Date: 2008-05-26 21:05+0800\n"
+"Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
+"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=gb2312\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: gnulib/lib/error.c:125
 msgid "Unknown system error"
-msgstr ""
+msgstr "æœªçŸ¥çš„ç³»ç»Ÿé”™è¯¯"
 
 #: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s£ºÑ¡Ïî¡°%s¡±º¬Òå²»Ã÷È·\n"
+msgstr "%sï¼šé€‰é¡¹â€œ%sâ€å«ä¹‰ä¸æ˜ç¡®\n"
 
 #: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s£ºÑ¡Ïî¡°--%s¡±²»½ÓÊÜ²ÎÊı\n"
+msgstr "%sï¼šé€‰é¡¹â€œ--%sâ€ä¸æ¥å—å‚æ•°\n"
 
 #: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s£ºÑ¡Ïî¡°%c%s¡±²»½ÓÊÜ²ÎÊı\n"
+msgstr "%sï¼šé€‰é¡¹â€œ%c%sâ€ä¸æ¥å—å‚æ•°\n"
 
 #: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
 #: gnulib/lib/getopt.c:990
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s£ºÑ¡Ïî¡°%s¡±ĞèÒªÒ»¸ö²ÎÊı\n"
+msgstr "%sï¼šé€‰é¡¹â€œ%sâ€éœ€è¦ä¸€ä¸ªå‚æ•°\n"
 
 #: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s£º²»ÄÜÊ¶±ğµÄÑ¡Ïî¡°--%s¡±\n"
+msgstr "%sï¼šä¸èƒ½è¯†åˆ«çš„é€‰é¡¹â€œ--%sâ€\n"
 
 #: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s£º²»ÄÜÊ¶±ğµÄÑ¡Ïî¡°%c%s¡±\n"
+msgstr "%sï¼šä¸èƒ½è¯†åˆ«çš„é€‰é¡¹â€œ%c%sâ€\n"
 
 #: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
 #, c-format
 msgid "%s: illegal option -- %c\n"
-msgstr "%s£º·Ç·¨Ñ¡Ïî -- %c\n"
+msgstr "%sï¼šéæ³•é€‰é¡¹ -- %c\n"
 
 #: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
 #, c-format
 msgid "%s: invalid option -- %c\n"
-msgstr "%s£ºÎŞĞ§Ñ¡Ïî -- %c\n"
+msgstr "%sï¼šæ— æ•ˆé€‰é¡¹ -- %c\n"
 
 #: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
 #: gnulib/lib/getopt.c:1061
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
-msgstr "%s£ºÑ¡ÏîĞèÒªÒ»¸ö²ÎÊı -- %c\n"
+msgstr "%sï¼šé€‰é¡¹éœ€è¦ä¸€ä¸ªå‚æ•° -- %c\n"
 
 #: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s£ºÑ¡Ïî¡°-W %s¡±µÄº¬Òå²»Çå\n"
+msgstr "%sï¼šé€‰é¡¹â€œ-W %sâ€çš„å«ä¹‰ä¸æ¸…\n"
 
 #: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s£ºÑ¡Ïî¡°-W %s¡±²»½ÓÊÜ²ÎÊı\n"
+msgstr "%sï¼šé€‰é¡¹â€œ-W %sâ€ä¸æ¥å—å‚æ•°\n"
 
 #: gnulib/lib/xalloc-die.c:34 gnulib/lib/xsetenv.c:37
-#, fuzzy, c-format
+#, c-format
 msgid "memory exhausted"
-msgstr "ĞéÄâÄÚ´æºÄ¾¡"
+msgstr "è™šæ‹Ÿå†…å­˜è€—å°½"
 
 #: info/echo-area.c:283 info/session.c:735
 msgid "Move forward a character"
-msgstr "ÏòÇ°ÒÆ¶¯Ò»¸ö×Ö·û"
+msgstr "å‘å‰ç§»åŠ¨ä¸€ä¸ªå­—ç¬¦"
 
 #: info/echo-area.c:295 info/session.c:767
 msgid "Move backward a character"
-msgstr "ÏòºóÒÆ¶¯Ò»¸ö×Ö·û"
+msgstr "å‘åç§»åŠ¨ä¸€ä¸ªå­—ç¬¦"
 
 #: info/echo-area.c:307
 msgid "Move to the start of this line"
-msgstr "ÒÆ¶¯µ½±¾ĞĞµÄ¿ªÍ·"
+msgstr "ç§»åŠ¨åˆ°æœ¬è¡Œçš„å¼€å¤´"
 
 #: info/echo-area.c:312
 msgid "Move to the end of this line"
-msgstr "ÒÆ¶¯µ½±¾ĞĞµÄÄ©Î²"
+msgstr "ç§»åŠ¨åˆ°æœ¬è¡Œçš„æœ«å°¾"
 
 #: info/echo-area.c:320 info/session.c:808
 msgid "Move forward a word"
-msgstr "ÏòÇ°ÒÆ¶¯Ò»¸öµ¥´Ê"
+msgstr "å‘å‰ç§»åŠ¨ä¸€ä¸ªå•è¯"
 
 #: info/echo-area.c:360 info/session.c:881
 msgid "Move backward a word"
-msgstr "ÏòºóÒÆ¶¯Ò»¸öµ¥´Ê"
+msgstr "å‘åç§»åŠ¨ä¸€ä¸ªå•è¯"
 
 #: info/echo-area.c:400
 msgid "Delete the character under the cursor"
-msgstr "É¾³ı¹â±êÎ»ÖÃµÄ×Ö·û"
+msgstr "åˆ é™¤å…‰æ ‡ä½ç½®çš„å­—ç¬¦"
 
 #: info/echo-area.c:430
 msgid "Delete the character behind the cursor"
-msgstr "É¾³ı¹â±êÖ®ºóµÄ×Ö·û"
+msgstr "åˆ é™¤å…‰æ ‡ä¹‹åçš„å­—ç¬¦"
 
 #: info/echo-area.c:451
 msgid "Cancel or quit operation"
-msgstr "È¡Ïû»òÍË³ö²Ù×÷"
+msgstr "å–æ¶ˆæˆ–é€€å‡ºæ“ä½œ"
 
 #: info/echo-area.c:466
 msgid "Accept (or force completion of) this line"
-msgstr "½ÓÊÜ(»òÇ¿ÖÆÍê³É)±¾ĞĞ"
+msgstr "æ¥å—(æˆ–å¼ºåˆ¶å®Œæˆ)æœ¬è¡Œ"
 
 #: info/echo-area.c:471
 msgid "Insert next character verbatim"
-msgstr "Ô­Ñù²åÈëÏÂÒ»¸ö×Ö·û"
+msgstr "åŸæ ·æ’å…¥ä¸‹ä¸€ä¸ªå­—ç¬¦"
 
 #: info/echo-area.c:479
 msgid "Insert this character"
-msgstr "²åÈë¸Ã×Ö·û"
+msgstr "æ’å…¥è¯¥å­—ç¬¦"
 
 #: info/echo-area.c:497
 msgid "Insert a TAB character"
-msgstr "²åÈëÒ»¸ö tab ×Ö·û"
+msgstr "æ’å…¥ä¸€ä¸ª tab å­—ç¬¦"
 
 #: info/echo-area.c:504
 msgid "Transpose characters at point"
-msgstr "±ä»»¹â±ê´¦×Ö·ûµÄ´ÎĞò"
+msgstr "å˜æ¢å…‰æ ‡å¤„å­—ç¬¦çš„æ¬¡åº"
 
 #: info/echo-area.c:555
 msgid "Yank back the contents of the last kill"
-msgstr "Õ³Ìù×îºóÒ»´Î¼ôÇĞµÄÄÚÈİ"
+msgstr "ç²˜è´´æœ€åä¸€æ¬¡å‰ªåˆ‡çš„å†…å®¹"
 
 #: info/echo-area.c:562
 msgid "Kill ring is empty"
-msgstr "¼ôÌù²¾Îª¿Õ"
+msgstr "å‰ªè´´ç°¿ä¸ºç©º"
 
 #: info/echo-area.c:575
 msgid "Yank back a previous kill"
-msgstr "Õ³ÌùÉÏ´Î¼ôÇĞ"
+msgstr "ç²˜è´´ä¸Šæ¬¡å‰ªåˆ‡"
 
 #: info/echo-area.c:608
 msgid "Kill to the end of the line"
-msgstr "¼ôÇĞÖÁ±¾ĞĞÄ©Î²"
+msgstr "å‰ªåˆ‡è‡³æœ¬è¡Œæœ«å°¾"
 
 #: info/echo-area.c:621
 msgid "Kill to the beginning of the line"
-msgstr "¼ôÇĞÖÁ±¾ĞĞ¿ªÍ·"
+msgstr "å‰ªåˆ‡è‡³æœ¬è¡Œå¼€å¤´"
 
 #: info/echo-area.c:633
 msgid "Kill the word following the cursor"
-msgstr "¼ôÇĞ¹â±êÖ®ºóµÄµ¥´Ê"
+msgstr "å‰ªåˆ‡å…‰æ ‡ä¹‹åçš„å•è¯"
 
 #: info/echo-area.c:652
 msgid "Kill the word preceding the cursor"
-msgstr "¼ôÇĞ¹â±êÖ®Ç°µÄµ¥´Ê"
+msgstr "å‰ªåˆ‡å…‰æ ‡ä¹‹å‰çš„å•è¯"
 
 #: info/echo-area.c:867 info/echo-area.c:923
 msgid "No completions"
-msgstr "Ã»ÓĞ²¹Æë"
+msgstr "æ²¡æœ‰è¡¥é½"
 
 #: info/echo-area.c:869
 msgid "Not complete"
-msgstr "Î´²¹Æë"
+msgstr "æœªè¡¥é½"
 
 #: info/echo-area.c:910
 msgid "List possible completions"
-msgstr "ÁĞ¾Ù¿ÉÄÜµÄ²¹Æë"
+msgstr "åˆ—ä¸¾å¯èƒ½çš„è¡¥é½"
 
 #: info/echo-area.c:927
 msgid "Sole completion"
-msgstr "Î¨Ò»µÄ²¹Æë"
+msgstr "å”¯ä¸€çš„è¡¥é½"
 
 #: info/echo-area.c:936
 msgid "One completion:\n"
-msgstr "Ò»¸ö²¹Æë£º\n"
+msgstr "ä¸€ä¸ªè¡¥é½ï¼š\n"
 
 #: info/echo-area.c:937
 #, c-format
 msgid "%d completions:\n"
-msgstr "%d ¸ö²¹Æë£º\n"
+msgstr "%d ä¸ªè¡¥é½ï¼š\n"
 
 #: info/echo-area.c:1084
 msgid "Insert completion"
-msgstr "²åÈë²¹Æë"
+msgstr "æ’å…¥è¡¥é½"
 
 #: info/echo-area.c:1219
 msgid "Building completions..."
-msgstr "ÕıÔÚ´´½¨²¹Æë..."
+msgstr "æ­£åœ¨åˆ›å»ºè¡¥é½..."
 
 #: info/echo-area.c:1339
 msgid "Scroll the completions window"
-msgstr "¹ö¶¯²¹Æë´°¿Ú"
+msgstr "æ»šåŠ¨è¡¥é½çª—å£"
 
 #: info/footnotes.c:212
 msgid "Footnotes could not be displayed"
-msgstr "ÎŞ·¨ÏÔÊ¾½Å×¢"
+msgstr "æ— æ³•æ˜¾ç¤ºè„šæ³¨"
 
 #: info/footnotes.c:238
 msgid "Show the footnotes associated with this node in another window"
-msgstr "ÔÚÁíÒ»¸ö´°¿ÚÖĞÏÔÊ¾ÓÚ¸Ã½ÚµãÏà¹ØµÄ½Å×¢"
+msgstr "åœ¨å¦ä¸€ä¸ªçª—å£ä¸­æ˜¾ç¤ºäºè¯¥èŠ‚ç‚¹ç›¸å…³çš„è„šæ³¨"
 
 #: info/footnotes.h:26
 msgid "---------- Footnotes ----------"
-msgstr "---------- ½Å×¢ ----------"
+msgstr "---------- è„šæ³¨ ----------"
 
 #: info/indices.c:171
 msgid "Look up a string in the index for this file"
-msgstr "ÔÚ±¾ÎÄ¼şµÄË÷ÒıÖĞËÑË÷×Ö·û´®"
+msgstr "åœ¨æœ¬æ–‡ä»¶çš„ç´¢å¼•ä¸­æœç´¢å­—ç¬¦ä¸²"
 
 #: info/indices.c:198
 msgid "Finding index entries..."
-msgstr "ÕıÔÚËÑË÷Ë÷ÒıÌõÄ¿..."
+msgstr "æ­£åœ¨æœç´¢ç´¢å¼•æ¡ç›®..."
 
 #: info/indices.c:206
 msgid "No indices found."
-msgstr "Î´ÕÒµ½Ë÷Òı¡£"
+msgstr "æœªæ‰¾åˆ°ç´¢å¼•ã€‚"
 
 #: info/indices.c:216
 msgid "Index entry: "
-msgstr "Ë÷ÒıÌõÄ¿£º"
+msgstr "ç´¢å¼•æ¡ç›®ï¼š"
 
 #: info/indices.c:324
-msgid ""
-"Go to the next matching index item from the last `\\[index-search]' command"
-msgstr "´Ó×îºóÒ»¸ö¡°\\[index-search]¡±ÃüÁî×ªÒÆµ½ÏÂÒ»¸öÆ¥ÅäµÄË÷ÒıÏîÄ¿"
+msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgstr "ä»æœ€åä¸€ä¸ªâ€œ\\[index-search]â€å‘½ä»¤è½¬ç§»åˆ°ä¸‹ä¸€ä¸ªåŒ¹é…çš„ç´¢å¼•é¡¹ç›®"
 
 #: info/indices.c:334
 msgid "No previous index search string."
-msgstr "Ã»ÓĞÉÏÒ»¸öË÷ÒıËÑË÷×Ö·û´®¡£"
+msgstr "æ²¡æœ‰ä¸Šä¸€ä¸ªç´¢å¼•æœç´¢å­—ç¬¦ä¸²ã€‚"
 
 #: info/indices.c:341
 msgid "No index entries."
-msgstr "Ã»ÓĞË÷ÒıÌõÄ¿¡£"
+msgstr "æ²¡æœ‰ç´¢å¼•æ¡ç›®ã€‚"
 
 #: info/indices.c:374
-#, fuzzy, c-format
+#, c-format
 msgid "No %sindex entries containing `%s'."
-msgstr "Ã»ÓĞ %sË÷ÒıÌõÄ¿º¬ÓĞ¡°%s¡±¡£"
+msgstr "æ²¡æœ‰ %sç´¢å¼•æ¡ç›®å«æœ‰â€œ%sâ€ã€‚"
 
 #: info/indices.c:375
 msgid "more "
-msgstr "¸ü¶à "
+msgstr "æ›´å¤š "
 
 #: info/indices.c:385
 msgid "CAN'T SEE THIS"
-msgstr "¿´²»µ½Õâ¸ö"
+msgstr "çœ‹ä¸åˆ°è¿™ä¸ª"
 
 #: info/indices.c:421
-#, fuzzy, c-format
+#, c-format
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
-msgstr ""
-"ÔÚ %2$s ÖĞÕÒµ½¡°%1$s¡±¡£(¡°\\[next-index-match]¡±½«ÊÔÍ¼Ñ°ÕÒÏÂÒ»¸öÆ¥Åä¡£)"
+msgstr "åœ¨ %2$s ä¸­æ‰¾åˆ°â€œ%1$sâ€ã€‚(â€œ\\[next-index-match]â€å°†è¯•å›¾å¯»æ‰¾ä¸‹ä¸€ä¸ªåŒ¹é…ã€‚)"
 
 #: info/indices.c:549
-#, fuzzy, c-format
+#, c-format
 msgid "Scanning indices of `%s'..."
-msgstr "ÕıÔÚËÑË÷¡°%s¡±µÄË÷Òı..."
+msgstr "æ­£åœ¨æœç´¢â€œ%sâ€çš„ç´¢å¼•..."
 
 #: info/indices.c:604
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have `%s' in their indices."
-msgstr "ÔÚ¿ÉÓÃµÄ info ÎÄ¼şµÄË÷ÒıÖĞ¾ù²»º¬ÓĞ¡°%s¡±¡£"
+msgstr "åœ¨å¯ç”¨çš„ info æ–‡ä»¶çš„ç´¢å¼•ä¸­å‡ä¸å«æœ‰â€œ%sâ€ã€‚"
 
 #: info/indices.c:630
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr "ÕûÀíËùÓĞÒÑÖª info ÎÄ¼şº¬ÓĞ±»²éÑ¯×Ö·û´®µÄË÷Òı²¢½¨Á¢Ò»¸ö²Ëµ¥"
+msgstr "æ•´ç†æ‰€æœ‰å·²çŸ¥ info æ–‡ä»¶å«æœ‰è¢«æŸ¥è¯¢å­—ç¬¦ä¸²çš„ç´¢å¼•å¹¶å»ºç«‹ä¸€ä¸ªèœå•"
 
 #: info/indices.c:634
 msgid "Index apropos: "
-msgstr "Ë÷Òıº¬ÓĞ£º"
+msgstr "ç´¢å¼•å«æœ‰ï¼š"
 
 #: info/indices.c:662
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "* Menu: Nodes whose indices contain `%s':\n"
 msgstr ""
 "\n"
-"* ²Ëµ¥£ºÆäË÷Òıº¬ÓĞ¡°%s¡±µÄ½Úµã£º\n"
+"* èœå•ï¼šå…¶ç´¢å¼•å«æœ‰â€œ%sâ€çš„èŠ‚ç‚¹ï¼š\n"
 
 #: info/info.c:273 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
-msgstr "³¢ÊÔ --¸ü¶àµÄÇóÖúĞÅÏ¢¡£\n"
+msgstr "å°è¯• --æ›´å¤šçš„æ±‚åŠ©ä¿¡æ¯ã€‚\n"
 
 #: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 
 #: info/info.c:504
 #, c-format
 msgid "no index entries found for `%s'\n"
-msgstr "ÕÒ²»µ½º¬ÓĞ¡°%s¡±µÄË÷Òı\n"
+msgstr "æ‰¾ä¸åˆ°å«æœ‰â€œ%sâ€çš„ç´¢å¼•\n"
 
 #: info/info.c:598
 #, c-format
@@ -317,16 +318,23 @@ msgid ""
 "\n"
 "Read documentation in Info format.\n"
 msgstr ""
+"ç”¨æ³•: %s [OPTION]... [MENU-ITEM...]\n"
+"\n"
+"ä»¥ Info æ ¼å¼é˜…è¯»æ–‡æ¡£ã€‚\n"
 
 #: info/info.c:604
 msgid ""
 "Options:\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit."
 msgstr ""
+"é€‰é¡¹:\n"
+"  -k, --apropos=STRING         åœ¨æ‰€æœ‰æ‰‹å†Œé¡µçš„ç´¢å¼•ä¸­æŸ¥æ‰¾ STRINGã€‚\n"
+"  -d, --directory=DIR          å°† DIR æ·»åŠ è‡³ INFOPATHã€‚\n"
+"      --dribble=FILENAME       å°†ç”¨æˆ·çš„å‡»é”®æ¡ç›®åœ¨ FILENAME ä¸­ã€‚\n"
+"  -f, --file=FILENAME          æŒ‡å®šæƒ³æµè§ˆçš„ Info æ–‡ä»¶ã€‚"
 
 #: info/info.c:611
 msgid ""
@@ -335,6 +343,10 @@ msgid ""
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
 "  -o, --output=FILENAME        output selected nodes to FILENAME."
 msgstr ""
+"  -h, --help                   æ˜¾ç¤ºæ­¤å¸®åŠ©å¹¶é€€å‡ºã€‚\n"
+"      --index-search=STRING    è·³è½¬è‡³ç´¢å¼•æ¡ç›® STRING æ‰€æŒ‡çš„èŠ‚ç‚¹ã€‚\n"
+"  -n, --node=NODENAME          åœ¨é¦–ä¸ªæµè§ˆè¿‡çš„ Info æ–‡ä»¶ä¸­æŒ‡å®šèŠ‚ç‚¹ã€‚\n"
+"  -o, --output=FILENAME        å°†é€‰ä¸­çš„èŠ‚ç‚¹å…¨è¾“å‡ºè‡³ FILENAMEã€‚"
 
 #: info/info.c:617
 msgid ""
@@ -343,10 +355,15 @@ msgid ""
 "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
+"  -R, --raw-escapes            è¾“å‡ºâ€œåŸå§‹â€çš„ ANSI è½¬ä¹‰ç¬¦(é»˜è®¤)ã€‚\n"
+"      --no-raw-escapes         å°†è½¬ä¹‰ç¬¦è¾“å‡ºä¸ºæ™®é€šæ–‡æœ¬ã€‚\n"
+"      --restore=FILENAME       ä» FILENAME ä¸­è¯»å–åˆå§‹å‡»é”®æ¡ç›®ã€‚\n"
+"  -O, --show-options, --usage  è·³è½¬è‡³å‘½ä»¤è¡Œé€‰é¡¹èŠ‚ç‚¹ã€‚"
 
 #: info/info.c:624
+#, fuzzy
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
-msgstr ""
+msgstr "  -b, --speech-friendly        å¯¹å‘éŸ³å™¨å‹å¥½ã€‚"
 
 #: info/info.c:628
 msgid ""
@@ -355,6 +372,10 @@ msgid ""
 "      --version                display version information and exit.\n"
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
+"      --subnodes               é€’å½’è¾“å‡ºèœå•é¡¹ã€‚\n"
+"      --vi-keys                ä½¿ç”¨ç±»ä¼¼äº vi å’Œ less çš„æŒ‰é”®ç»‘å®šã€‚\n"
+"      --version                æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
+"  -w, --where, --location      æ‰“å° Info æ–‡ä»¶åœ¨ç³»ç»Ÿä¸­çš„ä½ç½®ã€‚"
 
 #: info/info.c:634
 msgid ""
@@ -365,6 +386,12 @@ msgid ""
 "Any remaining arguments are treated as the names of menu\n"
 "items relative to the initial node visited."
 msgstr ""
+"\n"
+"å¦‚æœå­˜åœ¨ç¬¬ä¸€ä¸ªéé€‰é¡¹å‚æ•°ï¼Œå®ƒå°†æ˜¯ä¸ªç”¨äºèµ·å§‹çš„èœå•æ¡ç›®ï¼›\n"
+"æ‰€æœ‰åœ¨ INFOPATH å˜é‡åè·Ÿç€çš„â€œdirâ€æ–‡ä»¶éƒ½ä¼šæœç´¢æ­¤æ¡ç›®ã€‚\n"
+"å¦‚æœä¸å­˜åœ¨æ­¤å‚æ•°ï¼Œinfo åˆå¹¶æ‰€æœ‰â€œdirâ€æ–‡ä»¶å¹¶æ˜¾ç¤ºç»“æœã€‚\n"
+"ä»»ä½•åç»­å‚æ•°éƒ½è¢«è®¤ä¸ºæ˜¯ä¸åˆå§‹æµè§ˆ\n"
+"èŠ‚ç‚¹æœ‰å…³çš„èœå•é¡¹åç§°ã€‚"
 
 #: info/info.c:641
 msgid ""
@@ -377,6 +404,14 @@ msgid ""
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
+"\n"
+"ä¾‹å¦‚:\n"
+"  info                       æ˜¾ç¤ºé¡¶çº§ç›®å½•èœå•\n"
+"  info emacs                 ä»é¡¶çº§ç›®å½•æµè§ˆ emacs èŠ‚ç‚¹\n"
+"  info emacs buffers         åœ¨ emacs æ‰‹å†Œé¡µä¸­æµè§ˆ buffers èŠ‚ç‚¹\n"
+"  info --show-options emacs  æµè§ˆä¸ emacs çš„å‘½ä»¤è¡Œé€‰é¡¹æœ‰å…³çš„èŠ‚ç‚¹\n"
+"  info --subnodes -o out.txt emacs  å°†æ•´ä¸ªæ‰‹å†Œé¡µè¾“å‡ºè‡³ out.txt\n"
+"  info -f ./foo.info         æ˜¾ç¤ºæ–‡ä»¶ ./foo.infoï¼Œè€Œä¸æ˜¯æŸ¥æ‰¾ç›®å½•"
 
 #: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
@@ -387,411 +422,383 @@ msgid ""
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
 "\n"
-"Çë½«´íÎó±¨¸æ·¢ËÍµ½ bug-texinfo@gnu.org£¬\n"
-"Ò»°ãµÄÎÊÌâºÍÌÖÂÛÇë·¢ËÍµ½ help-texinfo@gnu.org¡£\n"
-"Texinfo Ö÷Ò³£ºhttp://www.gnu.org/software/texinfo/"
+"è¯·å°†é”™è¯¯æŠ¥å‘Šå‘é€åˆ° bug-texinfo@gnu.orgï¼Œ\n"
+"ä¸€èˆ¬çš„é—®é¢˜å’Œè®¨è®ºè¯·å‘é€åˆ° help-texinfo@gnu.orgã€‚\n"
+"Texinfo ä¸»é¡µï¼šhttp://www.gnu.org/software/texinfo/"
 
 #: info/info.c:684
 #, c-format
 msgid "Cannot find node `%s'."
-msgstr "ÎŞ·¨ÕÒµ½½Úµã¡°%s¡±¡£"
+msgstr "æ— æ³•æ‰¾åˆ°èŠ‚ç‚¹â€œ%sâ€ã€‚"
 
 #: info/info.c:685
 #, c-format
 msgid "Cannot find node `(%s)%s'."
-msgstr "ÎŞ·¨ÕÒµ½½Úµã¡°(%s)%s¡±¡£"
+msgstr "æ— æ³•æ‰¾åˆ°èŠ‚ç‚¹â€œ(%s)%sâ€ã€‚"
 
 #: info/info.c:686
 msgid "Cannot find a window!"
-msgstr "ÎŞ·¨ÕÒµ½Ò»¸ö´°¿Ú£¡"
+msgstr "æ— æ³•æ‰¾åˆ°ä¸€ä¸ªçª—å£ï¼"
 
 #: info/info.c:687
 msgid "Point doesn't appear within this window's node!"
-msgstr "¹â±êÃ»ÓĞ³öÏÖÔÚ¸Ã´°¿ÚµÄ½ÚµãÖ®ÖĞ£¡"
+msgstr "å…‰æ ‡æ²¡æœ‰å‡ºç°åœ¨è¯¥çª—å£çš„èŠ‚ç‚¹ä¹‹ä¸­ï¼"
 
 #: info/info.c:688
 msgid "Cannot delete the last window."
-msgstr "ÎŞ·¨É¾³ı×îºóµÄ´°¿Ú¡£"
+msgstr "æ— æ³•åˆ é™¤æœ€åçš„çª—å£ã€‚"
 
 #: info/info.c:689
 msgid "No menu in this node."
-msgstr "¸Ã½ÚµãÖĞÃ»ÓĞ²Ëµ¥¡£"
+msgstr "è¯¥èŠ‚ç‚¹ä¸­æ²¡æœ‰èœå•ã€‚"
 
 #: info/info.c:690
 msgid "No footnotes in this node."
-msgstr "¸Ã½ÚµãÖĞÃ»ÓĞ½Å×¢¡£"
+msgstr "è¯¥èŠ‚ç‚¹ä¸­æ²¡æœ‰è„šæ³¨ã€‚"
 
 #: info/info.c:691
 msgid "No cross references in this node."
-msgstr "¸Ã½ÚµãÖĞÃ»ÓĞ½»²æÒıÓÃ¡£"
+msgstr "è¯¥èŠ‚ç‚¹ä¸­æ²¡æœ‰äº¤å‰å¼•ç”¨ã€‚"
 
 #: info/info.c:692
 #, c-format
 msgid "No `%s' pointer for this node."
-msgstr "¸Ã½ÚµãÖĞÃ»ÓĞ¡°%s¡±Ö¸Õë"
+msgstr "è¯¥èŠ‚ç‚¹ä¸­æ²¡æœ‰â€œ%sâ€æŒ‡é’ˆ"
 
 #: info/info.c:693
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
-msgstr "Î´ÖªµÄ Info ÃüÁî¡°%c¡±£»ÇëÒÔ¡°?¡±»ñµÃ°ïÖú¡£"
+msgstr "æœªçŸ¥çš„ Info å‘½ä»¤â€œ%câ€ï¼›è¯·ä»¥â€œ?â€è·å¾—å¸®åŠ©ã€‚"
 
 #: info/info.c:694
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
-msgstr "ÖÕ¶ËÀàĞÍ¡°%s¡±µÄÄÜÁ¦²»×ãÒÔÖ§³Ö Info µÄÔËĞĞ¡£"
+msgstr "ç»ˆç«¯ç±»å‹â€œ%sâ€çš„èƒ½åŠ›ä¸è¶³ä»¥æ”¯æŒ Info çš„è¿è¡Œã€‚"
 
 #: info/info.c:695
 msgid "You are already at the last page of this node."
-msgstr "ÄúÒÑ¾­ÔÚ¸Ã½ÚµãµÄ×îºóÒ»¸öÒ³ÃæÖĞÁË¡£"
+msgstr "æ‚¨å·²ç»åœ¨è¯¥èŠ‚ç‚¹çš„æœ€åä¸€ä¸ªé¡µé¢ä¸­äº†ã€‚"
 
 #: info/info.c:696
 msgid "You are already at the first page of this node."
-msgstr "ÄúÒÑ¾­ÔÚ¸Ã½ÚµãµÄµÚÒ»Ò³ÖĞÁË¡£"
+msgstr "æ‚¨å·²ç»åœ¨è¯¥èŠ‚ç‚¹çš„ç¬¬ä¸€é¡µä¸­äº†ã€‚"
 
 #: info/info.c:697
 msgid "Only one window."
-msgstr "Ö»ÓĞÒ»¸ö´°¿Ú¡£"
+msgstr "åªæœ‰ä¸€ä¸ªçª—å£ã€‚"
 
 #: info/info.c:698
 msgid "Resulting window would be too small."
-msgstr "½á¹û´°¿Ú½«»áÌ«Ğ¡¡£"
+msgstr "ç»“æœçª—å£å°†ä¼šå¤ªå°ã€‚"
 
 #: info/info.c:699
 msgid "Not enough room for a help window, please delete a window."
-msgstr "Ã»ÓĞ×ã¹»µÄ¿Õ¼äÓÃÓÚÇóÖú´°¿Ú£¬ÇëÉ¾³ıÒ»¸ö´°¿Ú¡£"
+msgstr "æ²¡æœ‰è¶³å¤Ÿçš„ç©ºé—´ç”¨äºæ±‚åŠ©çª—å£ï¼Œè¯·åˆ é™¤ä¸€ä¸ªçª—å£ã€‚"
 
 #: info/infodoc.c:45
 msgid "Basic Info command keys\n"
-msgstr ""
+msgstr "åŸºæœ¬ Info å‘½ä»¤æŒ‰é”®\n"
 
 #: info/infodoc.c:47
-#, fuzzy
 msgid "\\%-10[quit-help]  Close this help window.\n"
-msgstr "\\%-10[quit-help]  ÍË³ö¸ÃÇóÖú¡£\n"
+msgstr "\\%-10[quit-help]  å…³é—­æ­¤å¸®åŠ©çª—å£ã€‚\n"
 
 #: info/infodoc.c:48
 msgid "\\%-10[quit]  Quit Info altogether.\n"
-msgstr "\\%-10[quit]  Ò»²¢ÍË³ö Info¡£\n"
+msgstr "\\%-10[quit]  ä¸€å¹¶é€€å‡º Infoã€‚\n"
 
 #: info/infodoc.c:49
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
-msgstr "\\%-10[get-info-help-node]  µ÷ÓÃ Info ½Ì³Ì¡£\n"
+msgstr "\\%-10[get-info-help-node]  è°ƒç”¨ Info æ•™ç¨‹ã€‚\n"
 
 #: info/infodoc.c:51
-#, fuzzy
 msgid "\\%-10[prev-line]  Move up one line.\n"
-msgstr "  %-10s  Ïòºó¹ö¶¯Ò»ĞĞ¡£\n"
+msgstr "\\%-10[prev-line]  å‘ä¸Šç§»åŠ¨ä¸€è¡Œã€‚\n"
 
 #: info/infodoc.c:52
-#, fuzzy
 msgid "\\%-10[next-line]  Move down one line.\n"
-msgstr "  %-10s  ÏòÇ°¹ö¶¯Ò»ĞĞ¡£\n"
+msgstr "\\%-10[next-line]  å‘ä¸‹ç§»åŠ¨ä¸€è¡Œã€‚\n"
 
 #: info/infodoc.c:53
-#, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
-msgstr "\\%-10[scroll-backward]  Ïòºó¹ö¶¯Ò»Ò³¡£\n"
+msgstr "\\%-10[scroll-backward]  å‘åæ»šåŠ¨ä¸€é¡µã€‚\n"
 
 #: info/infodoc.c:54
-#, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
-msgstr "\\%-10[scroll-forward]  ÏòÇ°¹ö¶¯Ò»Ò³¡£\n"
+msgstr "\\%-10[scroll-forward]  å‘å‰æ»šåŠ¨ä¸€é¡µã€‚\n"
 
 #: info/infodoc.c:55
-#, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
-msgstr "\\%-10[beginning-of-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¿ªÍ·¡£\n"
+msgstr "\\%-10[beginning-of-node]  ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„å¼€å¤´ã€‚\n"
 
 #: info/infodoc.c:56
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
-msgstr "\\%-10[end-of-node]  ÒÆ¶¯µ½±¾½ÚµãµÄÄ©Î²¡£\n"
+msgstr "\\%-10[end-of-node]  ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„æœ«å°¾ã€‚\n"
 
 #: info/infodoc.c:58
-#, fuzzy
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
-msgstr "\\%-10[move-to-next-xref]  Ìø×ªµ½±¾½ÚµãÖĞµÄÏÂÒ»¸ö³¬ÎÄ±¾Á¬½Ó¡£\n"
+msgstr "\\%-10[move-to-next-xref]  è·³è½¬åˆ°ä¸‹ä¸€ä¸ªè¶…æ–‡æœ¬è¿æ¥ã€‚\n"
 
 #: info/infodoc.c:59
-#, fuzzy
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
-"cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  ¸úËæ¹â±êÏÂµÄ³¬ÎÄ±¾Á¬½Ó¡£\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  è·Ÿéšå…‰æ ‡ä¸‹çš„è¶…æ–‡æœ¬è¿æ¥ã€‚\n"
 
 #: info/infodoc.c:60
-#, fuzzy
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
-msgstr "\\%-10[history-node]  ÒÆ¶¯µ½±¾´°¿ÚµÄ×îºóÒ»¸ö¿É¼ûµÄ½Úµã¡£\n"
+msgstr "\\%-10[history-node]  ç§»åŠ¨åˆ°æœ¬çª—å£çš„æœ€åé˜…è¯»è¿‡çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:62
-#, fuzzy
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
-msgstr "\\%-10[prev-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏÒ»¸ö¡±½Úµã¡£\n"
+msgstr "\\%-10[global-prev-node]  ç§»åŠ¨åˆ°æœ¬æ–‡æ¡£çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:63
-#, fuzzy
 msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
-msgstr "\\%-10[next-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÏÂÒ»¸ö¡±½Úµã¡£\n"
+msgstr "\\%-10[global-next-node]  ç§»åŠ¨åˆ°æœ¬æ–‡æ¡£çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:64
-#, fuzzy
 msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
-msgstr "\\%-10[prev-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏÒ»¸ö¡±½Úµã¡£\n"
+msgstr "\\%-10[prev-node]  ç§»åŠ¨åˆ°åŒçº§çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:65
-#, fuzzy
 msgid "\\%-10[next-node]  Go to the next node on this level.\n"
-msgstr "\\%-10[next-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÏÂÒ»¸ö¡±½Úµã¡£\n"
+msgstr "\\%-10[next-node]  ç§»åŠ¨åˆ°åŒçº§çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:66
-#, fuzzy
 msgid "\\%-10[up-node]  Go up one level.\n"
-msgstr "\\%-10[up-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏ²ã¡±½Úµã¡£\n"
+msgstr "\\%-10[up-node]  ä¸Šç§»ä¸€å±‚ã€‚\n"
 
 #: info/infodoc.c:67
-#, fuzzy
 msgid "\\%-10[top-node]  Go to the top node of this document.\n"
-msgstr "\\%-10[end-of-node]  ÒÆ¶¯µ½±¾½ÚµãµÄÄ©Î²¡£\n"
+msgstr "\\%-10[top-node]  ç§»åˆ°æ­¤æ–‡æ¡£çš„é¡¶å±‚èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:68
-#, fuzzy
 msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
-msgstr "\\%-10[end-of-node]  ÒÆ¶¯µ½±¾½ÚµãµÄÄ©Î²¡£\n"
+msgstr "\\%-10[dir-node]  ç§»åŠ¨åˆ°ä¸»â€œç›®å½•â€èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:70
-#, fuzzy
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
-msgstr "  %-10s  Ñ¡È¡½Úµã²Ëµ¥ÖĞµÄµÚÒ»ÖÁµÚ¾Å¸öÏîÄ¿¡£\n"
+msgstr "1...9\t\té€‰å–èŠ‚ç‚¹èœå•ä¸­çš„ç¬¬ä¸€è‡³ç¬¬ä¹ä¸ªé¡¹ç›®ã€‚\n"
 
 #: info/infodoc.c:71
-#, fuzzy
 msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
-msgstr "\\%-10[last-menu-item]  Ñ¡È¡½Úµã²Ëµ¥µÄ×îºóÒ»¸öÏîÄ¿¡£\n"
+msgstr "\\%-10[last-menu-item]  é€‰å–èŠ‚ç‚¹èœå•çš„æœ€åä¸€ä¸ªé¡¹ç›®ã€‚\n"
 
 #: info/infodoc.c:72
-#, fuzzy
 msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
-msgstr "  %-10s  Ñ¡È¡ÓÉÃû³ÆÖ¸¶¨µÄ²Ëµ¥ÏîÄ¿¡£\n"
+msgstr "\\%-10[menu-item]  é€‰å–ç”±åç§°æŒ‡å®šçš„èœå•é¡¹ç›®ã€‚\n"
 
 #: info/infodoc.c:73
 #, fuzzy
 msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
-msgstr "\\%-10[xref-item]  ¸úËæ½»²æÒıÓÃ¡£¶ÁÈ¡ÒıÓÃµÄÃû³Æ¡£\n"
+msgstr "\\%-10[xref-item]  è·Ÿéšç”±åç§°æŒ‡å®šçš„äº¤å‰å¼•ç”¨ã€‚\n"
 
 #: info/infodoc.c:74
-#, fuzzy
 msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½ÓÉÃû×ÖÖ¸¶¨µÄ½Úµã¡£\n"
+msgstr "\\%-10[goto-node]  ç§»åŠ¨åˆ°ç”±åå­—æŒ‡å®šçš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:76
-#, fuzzy
 msgid "\\%-10[search]  Search forward for a specified string.\n"
-msgstr "  %-10s  ÏòÇ°ËÑË÷Ö¸¶¨µÄ×Ö·û´®£¬\n"
+msgstr "\\%-10[search]  å‘å‰æœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ã€‚\n"
 
 #: info/infodoc.c:77
-#, fuzzy
 msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
-msgstr "\\%-10[prev-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏÒ»¸ö¡±½Úµã¡£\n"
+msgstr "\\%-10[search-previous]  æŸ¥æ‰¾ä¸Šä¸€ä¸ªå‡ºç°ç‚¹ã€‚\n"
 
 #: info/infodoc.c:78
-#, fuzzy
 msgid "\\%-10[search-next]  Search for next occurrence.\n"
-msgstr "  %-10s  ÔÚ±¾ Info ÎÄ¼şÖĞµÄË÷ÒıÌõÄ¿ÖĞËÑË÷Ö¸¶¨µÄ×Ö·û´®£¬\n"
+msgstr "\\%-10[search-next]  æŸ¥æ‰¾ä¸‹ä¸€ä¸ªå‡ºç°ç‚¹ã€‚\n"
 
 #: info/infodoc.c:79
-#, fuzzy
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
 "              select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  ÔÚ±¾ Info ÎÄ¼şµÄË÷ÒıÌõÄ¿ÖĞËÑË÷Ö¸¶¨µÄ×Ö·û´®£¬\n"
-"              ²¢Ñ¡ÔñµÚÒ»¸öÕÒµ½µÄÌõÄ¿ËùÒıÓÃµÄ½Úµã¡£\n"
+"\\%-10[index-search]  åœ¨ç´¢å¼•æ¡ç›®ä¸­æœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ï¼Œ\n"
+"              å¹¶é€‰æ‹©ç¬¬ä¸€ä¸ªæ‰¾åˆ°çš„æ¡ç›®æ‰€å¼•ç”¨çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:81
-#, fuzzy
 msgid "\\%-10[abort-key]  Cancel the current operation.\n"
-msgstr "È¡Ïûµ±Ç°²Ù×÷"
+msgstr "\\%-10[abort-key]  å–æ¶ˆå½“å‰æ“ä½œã€‚\n"
 
 #: info/infodoc.c:89
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
 msgstr ""
-"Info ´°¿ÚÖĞµÄ»ù±¾ÃüÁî\n"
+"Info çª—å£ä¸­çš„åŸºæœ¬å‘½ä»¤\n"
 "******************************\n"
 
 #: info/infodoc.c:92
 #, c-format
 msgid "  %-10s  Quit this help.\n"
-msgstr "  %-10s  ÍË³ö±¾ÇóÖú¡£\n"
+msgstr "  %-10s  é€€å‡ºæœ¬æ±‚åŠ©ã€‚\n"
 
 #: info/infodoc.c:93
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
-msgstr "  %-10s  Ò»²¢ÍË³ö Info¡£\n"
+msgstr "  %-10s  ä¸€å¹¶é€€å‡º Infoã€‚\n"
 
 #: info/infodoc.c:94
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
-msgstr "  %-10s  µ÷ÓÃ Info ½Ì³Ì¡£\n"
+msgstr "  %-10s  è°ƒç”¨ Info æ•™ç¨‹ã€‚\n"
 
 #: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÏÂÒ»¸ö¡±½Úµã¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„â€œä¸‹ä¸€ä¸ªâ€èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏÒ»¸ö¡±½Úµã¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„â€œä¸Šä¸€ä¸ªâ€èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÉÏ²ã¡±½Úµã¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„â€œä¸Šå±‚â€èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:101
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
 msgstr ""
-"\\%-10[menu-item]  Ñ¡È¡ÓÉÃû³ÆÖ¸¶¨µÄ²Ëµ¥ÏîÄ¿¡£\n"
-"              Ñ¡È¡Ò»¸ö²Ëµ¥ÏîÄ¿µ¼ÖÂÑ¡ÖĞÁíÒ»¸ö½Úµã¡£\n"
+"  %-10s  é€‰å–ç”±åç§°æŒ‡å®šçš„èœå•é¡¹ç›®ã€‚\n"
+"              é€‰å–ä¸€ä¸ªèœå•é¡¹ç›®å¯¼è‡´é€‰ä¸­å¦ä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:103
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
-msgstr "  %-10s  ¸úËæ½»²æÒıÓÃ¡£¶ÁÈ¡ÒıÓÃµÄÃû³Æ¡£\n"
+msgstr "  %-10s  è·Ÿéšäº¤å‰å¼•ç”¨ã€‚è¯»å–å¼•ç”¨çš„åç§°ã€‚\n"
 
 #: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½±¾´°¿ÚÖĞµÄ×îºóÒ»¸ö¿É¼ûµÄ½Úµã¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°æœ¬çª—å£ä¸­çš„æœ€åä¸€ä¸ªå¯è§çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
-msgstr "  %-10s  Ìø×ªµ½±¾½ÚµãÖĞµÄÏÂÒ»¸ö³¬ÎÄ±¾Á¬½Ó¡£\n"
+msgstr "  %-10s  è·³è½¬åˆ°æœ¬èŠ‚ç‚¹ä¸­çš„ä¸‹ä¸€ä¸ªè¶…æ–‡æœ¬è¿æ¥ã€‚\n"
 
 #: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
-msgstr "  %-10s  ¸úËæ¹â±êÎ»ÖÃµÄ³¬ÎÄ±¾Á¬½Ó¡£\n"
+msgstr "  %-10s  è·Ÿéšå…‰æ ‡ä½ç½®çš„è¶…æ–‡æœ¬è¿æ¥ã€‚\n"
 
 #: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½¡°directory¡±½Úµã¡£µÈ¼ÛÓÚ¡°g (DIR)¡±¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°â€œdirectoryâ€èŠ‚ç‚¹ã€‚ç­‰ä»·äºâ€œg (DIR)â€ã€‚\n"
 
 #: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
-msgstr "  %-10s  ÒÆ¶¯µ½¶¥²ã½Úµã¡£µÈ¼ÛÓÚ¡°g Top¡±¡£\n"
+msgstr "  %-10s  ç§»åŠ¨åˆ°é¡¶å±‚èŠ‚ç‚¹ã€‚ç­‰ä»·äºâ€œg Topâ€ã€‚\n"
 
 #: info/infodoc.c:110
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
 msgstr ""
-"ÔÚÒ»¸ö½ÚµãÖĞÒÆ¶¯£º\n"
+"åœ¨ä¸€ä¸ªèŠ‚ç‚¹ä¸­ç§»åŠ¨ï¼š\n"
 "---------------------\n"
 
 #: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
-msgstr "  %-10s  ÏòÇ°¹ö¶¯Ò»Ò³¡£\n"
+msgstr "  %-10s  å‘å‰æ»šåŠ¨ä¸€é¡µã€‚\n"
 
 #: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
-msgstr "  %-10s  Ïòºó¹ö¶¯Ò»Ò³¡£\n"
+msgstr "  %-10s  å‘åæ»šåŠ¨ä¸€é¡µã€‚\n"
 
 #: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
-msgstr "  %-10s  ×ªÒÆµ½±¾½ÚµãµÄ¿ªÍ·¡£\n"
+msgstr "  %-10s  è½¬ç§»åˆ°æœ¬èŠ‚ç‚¹çš„å¼€å¤´ã€‚\n"
 
 #: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
-msgstr "  %-10s  ×ªÒÆµ½±¾½ÚµãµÄÄ©Î²¡£\n"
+msgstr "  %-10s  è½¬ç§»åˆ°æœ¬èŠ‚ç‚¹çš„æœ«å°¾ã€‚\n"
 
 #: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
-msgstr "  %-10s  ÏòÇ°¹ö¶¯Ò»ĞĞ¡£\n"
+msgstr "  %-10s  å‘å‰æ»šåŠ¨ä¸€è¡Œã€‚\n"
 
 #: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
-msgstr "  %-10s  Ïòºó¹ö¶¯Ò»ĞĞ¡£\n"
+msgstr "  %-10s  å‘åæ»šåŠ¨ä¸€è¡Œã€‚\n"
 
 #: info/infodoc.c:119
 msgid ""
 "Other commands:\n"
 "---------------\n"
 msgstr ""
-"ÆäËüÃüÁî£º\n"
+"å…¶å®ƒå‘½ä»¤ï¼š\n"
 "---------------\n"
 
 #: info/infodoc.c:121
-#, fuzzy, c-format
+#, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
-msgstr "  %-10s  Ñ¡È¡½Úµã²Ëµ¥ÖĞµÄµÚÒ»ÖÁµÚ¾Å¸öÏîÄ¿¡£\n"
+msgstr "  %-10s  é€‰å–èŠ‚ç‚¹èœå•ä¸­çš„ç¬¬ä¸€è‡³ç¬¬ä¹ä¸ªé¡¹ç›®ã€‚\n"
 
 #: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
-msgstr "  %-10s  Ñ¡È¡½Úµã²Ëµ¥ÖĞµÄ×îºóÒ»¸öÏîÄ¿¡£\n"
+msgstr "  %-10s  é€‰å–èŠ‚ç‚¹èœå•ä¸­çš„æœ€åä¸€ä¸ªé¡¹ç›®ã€‚\n"
 
 #: info/infodoc.c:125
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+"              file, and select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  ÔÚ±¾ Info ÎÄ¼şµÄË÷ÒıÌõÄ¿ÖĞËÑË÷Ö¸¶¨µÄ×Ö·û´®£¬\n"
-"              ²¢Ñ¡ÔñµÚÒ»¸öÕÒµ½µÄÌõÄ¿ËùÒıÓÃµÄ½Úµã¡£\n"
+"  %-10s  åœ¨æœ¬ Info æ–‡ä»¶çš„ç´¢å¼•æ¡ç›®ä¸­æœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ï¼Œ\n"
+"              å¹¶é€‰æ‹©ç¬¬ä¸€ä¸ªæ‰¾åˆ°çš„æ¡ç›®æ‰€å¼•ç”¨çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:127
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
-"\\%-10[goto-node]  ÒÆ¶¯µ½ÓÉÃû×ÖÖ¸¶¨µÄ½Úµã¡£\n"
-"              Äú»¹¿ÉÒÔÒÔ (ÎÄ¼şÃû)½ÚµãÃû µÄĞÎÊ½¸ø³öÎÄ¼şÃû¡£\n"
+"  %-10s   ç§»åŠ¨åˆ°ç”±åå­—æŒ‡å®šçš„èŠ‚ç‚¹ã€‚\n"
+"              æ‚¨ä¹Ÿå¯åœ¨ (FILENAME)NODENAME ä¸­åŒ…å«æ–‡ä»¶åã€‚\n"
 
 #: info/infodoc.c:129
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
-"\\%-10[search]  ÏòÇ°ËÑË÷Ö¸¶¨µÄ×Ö·û´®\n"
-"              ²¢Ñ¡ÔñËùÕÒµ½µÄÏÂÒ»¸öÊµÀıËùÔÚµÄ½Úµã¡£\n"
+"  %-10s    å‘å‰æœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ï¼Œ\n"
+"              å¹¶é€‰æ‹©æ‰€æ‰¾åˆ°çš„ä¸‹ä¸€ä¸ªå®ä¾‹æ‰€åœ¨çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:131
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
-"\\%-10[search]  ÏòÇ°ËÑË÷Ö¸¶¨µÄ×Ö·û´®\n"
-"              ²¢Ñ¡ÔñËùÕÒµ½µÄÏÂÒ»¸öÊµÀıËùÔÚµÄ½Úµã¡£\n"
+"  %-10s    å‘åæœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ï¼Œ\n"
+"              å¹¶é€‰æ‹©æ‰€æ‰¾åˆ°çš„ä¸‹ä¸€ä¸ªå®ä¾‹æ‰€åœ¨çš„èŠ‚ç‚¹ã€‚\n"
 
 #: info/infodoc.c:312
 msgid "The current search path is:\n"
-msgstr "µ±Ç°ËÑË÷Â·¾¶Îª£º\n"
+msgstr "å½“å‰æœç´¢è·¯å¾„ä¸ºï¼š\n"
 
 #: info/infodoc.c:316
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
 msgstr ""
-"Info ´°¿ÚÖĞ¿ÉÓÃµÄÃüÁî£º\n"
+"Info çª—å£ä¸­å¯ç”¨çš„å‘½ä»¤ï¼š\n"
 "\n"
 
 #: info/infodoc.c:320
@@ -799,7 +806,7 @@ msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr ""
-"»ØÏÔÇøÖĞ¿ÉÓÃµÄÃüÁî£º\n"
+"å›æ˜¾åŒºä¸­å¯ç”¨çš„å‘½ä»¤ï¼š\n"
 "\n"
 
 #: info/infodoc.c:343
@@ -808,7 +815,7 @@ msgid ""
 "The following commands can only be invoked via %s:\n"
 "\n"
 msgstr ""
-"ÒÔÏÂÃüÁîÖ»ÄÜÍ¨¹ı %s µ÷ÓÃ£º\n"
+"ä»¥ä¸‹å‘½ä»¤åªèƒ½é€šè¿‡ %s è°ƒç”¨ï¼š\n"
 "\n"
 
 #: info/infodoc.c:347
@@ -816,160 +823,160 @@ msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
 msgstr ""
-"ÒÔÏÂÃüÁî¸ù±¾ÎŞ·¨µ÷ÓÃ£º\n"
+"ä»¥ä¸‹å‘½ä»¤æ ¹æœ¬æ— æ³•è°ƒç”¨ï¼š\n"
 "\n"
 
 #: info/infodoc.c:477
 msgid "Display help message"
-msgstr "ÏÔÊ¾ÇóÖúÏûÏ¢"
+msgstr "æ˜¾ç¤ºæ±‚åŠ©æ¶ˆæ¯"
 
 #: info/infodoc.c:495
 msgid "Visit Info node `(info)Help'"
-msgstr "·ÃÎÊ Info ½Úµã¡°(info)Help¡±"
+msgstr "è®¿é—® Info èŠ‚ç‚¹â€œ(info)Helpâ€"
 
 #: info/infodoc.c:633
 msgid "Print documentation for KEY"
-msgstr "´òÓ¡¹ØÓÚ KEY µÄÎÄµµ"
+msgstr "æ‰“å°å…³äº KEY çš„æ–‡æ¡£"
 
 #: info/infodoc.c:645
 #, c-format
 msgid "Describe key: %s"
-msgstr "ËµÃ÷°´¼ü£º%s"
+msgstr "è¯´æ˜æŒ‰é”®ï¼š%s"
 
 #: info/infodoc.c:656
 #, c-format
 msgid "ESC %s is undefined."
-msgstr "ESC %s Î´¶¨Òå¡£"
+msgstr "ESC %s æœªå®šä¹‰ã€‚"
 
 #: info/infodoc.c:672 info/infodoc.c:701
 #, c-format
 msgid "%s is undefined."
-msgstr "%s Î´¶¨Òå¡£"
+msgstr "%s æœªå®šä¹‰ã€‚"
 
 #: info/infodoc.c:722
 #, c-format
 msgid "%s is defined to %s."
-msgstr "%s ±»¶¨ÒåÎª %s¡£"
+msgstr "%s è¢«å®šä¹‰ä¸º %sã€‚"
 
 #: info/infodoc.c:1145
 msgid "Show what to type to execute a given command"
-msgstr "ÏÔÊ¾Ö´ĞĞ¸ø¶¨ÃüÁîËùĞèµÄ°´¼ü"
+msgstr "æ˜¾ç¤ºæ‰§è¡Œç»™å®šå‘½ä»¤æ‰€éœ€çš„æŒ‰é”®"
 
 #: info/infodoc.c:1149
 msgid "Where is command: "
-msgstr ""
+msgstr "å‘½ä»¤ä¸º:"
 
 #: info/infodoc.c:1171
 #, c-format
 msgid "`%s' is not on any keys"
-msgstr "¡°%s¡±Î´°ó¶¨µ½ÈÎºÎ°´¼ü"
+msgstr "â€œ%sâ€æœªç»‘å®šåˆ°ä»»ä½•æŒ‰é”®"
 
 #: info/infodoc.c:1178
 #, c-format
 msgid "%s can only be invoked via %s."
-msgstr "%s ²»ÄÜÍ¨¹ı %s µ÷ÓÃ¡£"
+msgstr "%s ä¸èƒ½é€šè¿‡ %s è°ƒç”¨ã€‚"
 
 #: info/infodoc.c:1182
 #, c-format
 msgid "%s can be invoked via %s."
-msgstr "%s ¿ÉÒÔÍ¨¹ı %s µ÷ÓÃ¡£"
+msgstr "%s å¯ä»¥é€šè¿‡ %s è°ƒç”¨ã€‚"
 
 #: info/infodoc.c:1187
 #, c-format
 msgid "There is no function named `%s'"
-msgstr "Ã»ÓĞÃûÎª¡°%s¡±µÄº¯Êı"
+msgstr "æ²¡æœ‰åä¸ºâ€œ%sâ€çš„å‡½æ•°"
 
 #: info/infodoc.c:96
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
 msgstr ""
-"Ñ¡ÔñÆäËü½Úµã£º\n"
+"é€‰æ‹©å…¶å®ƒèŠ‚ç‚¹ï¼š\n"
 "----------------------\n"
 
 #: info/infokey.c:170
 msgid "incorrect number of arguments"
-msgstr "´íÎóµÄ²ÎÊıÊı"
+msgstr "é”™è¯¯çš„å‚æ•°æ•°"
 
 #: info/infokey.c:201
 #, c-format
 msgid "cannot open input file `%s'"
-msgstr "ÎŞ·¨´ò¿ªÊäÈëÎÄ¼ş¡°%s¡±"
+msgstr "æ— æ³•æ‰“å¼€è¾“å…¥æ–‡ä»¶â€œ%sâ€"
 
 #: info/infokey.c:215
 #, c-format
 msgid "cannot create output file `%s'"
-msgstr "ÎŞ·¨´´½¨Êä³öÎÄ¼ş¡°%s¡±"
+msgstr "æ— æ³•åˆ›å»ºè¾“å‡ºæ–‡ä»¶â€œ%sâ€"
 
 #: info/infokey.c:226
 #, c-format
 msgid "error writing to `%s'"
-msgstr "Ğ´Èë¡°%s¡±Ê±³ö´í"
+msgstr "å†™å…¥â€œ%sâ€æ—¶å‡ºé”™"
 
 #: info/infokey.c:232
 #, c-format
 msgid "error closing output file `%s'"
-msgstr "¹Ø±ÕÊä³öÎÄ¼ş¡°%s¡±Ê±³ö´í"
+msgstr "å…³é—­è¾“å‡ºæ–‡ä»¶â€œ%sâ€æ—¶å‡ºé”™"
 
 #: info/infokey.c:450
 msgid "key sequence too long"
-msgstr "°´¼üĞòÁĞ¹ı³¤"
+msgstr "æŒ‰é”®åºåˆ—è¿‡é•¿"
 
 #: info/infokey.c:529
 msgid "missing key sequence"
-msgstr "ÒÅÂ©°´¼üĞòÁĞ"
+msgstr "é—æ¼æŒ‰é”®åºåˆ—"
 
 #: info/infokey.c:610
 msgid "NUL character (\\000) not permitted"
-msgstr "²»ÔÊĞíµÄ¿Õ×Ö·û (\\\\000)"
+msgstr "ä¸å…è®¸çš„ç©ºå­—ç¬¦ (\\\\000)"
 
 #: info/infokey.c:641
 #, c-format
 msgid "NUL character (^%c) not permitted"
-msgstr "²»ÔÊĞíµÄ¿Õ×Ö·û (^%c)"
+msgstr "ä¸å…è®¸çš„ç©ºå­—ç¬¦ (^%c)"
 
 #: info/infokey.c:665
 msgid "missing action name"
-msgstr "ÒÅÂ©¶¯×÷Ãû³Æ"
+msgstr "é—æ¼åŠ¨ä½œåç§°"
 
 #: info/infokey.c:681 info/infokey.c:756
 msgid "section too long"
-msgstr "½ÚÌ«³¤"
+msgstr "èŠ‚å¤ªé•¿"
 
 #: info/infokey.c:688
 #, c-format
 msgid "unknown action `%s'"
-msgstr "Î´ÖªµÄ¶¯×÷¡°%s¡±"
+msgstr "æœªçŸ¥çš„åŠ¨ä½œâ€œ%sâ€"
 
 #: info/infokey.c:698
 msgid "action name too long"
-msgstr "¶¯×÷Ãû¹ı³¤"
+msgstr "åŠ¨ä½œåè¿‡é•¿"
 
 #: info/infokey.c:712
 #, c-format
 msgid "extra characters following action `%s'"
-msgstr "¶¯×÷¡°%s¡±Ö®ºó³öÏÖ¶îÍâµÄ×Ö·û"
+msgstr "åŠ¨ä½œâ€œ%sâ€ä¹‹åå‡ºç°é¢å¤–çš„å­—ç¬¦"
 
 #: info/infokey.c:723
 msgid "missing variable name"
-msgstr "ÒÅÂ©±äÁ¿Ãû"
+msgstr "é—æ¼å˜é‡å"
 
 #: info/infokey.c:733
 msgid "missing `=' immediately after variable name"
-msgstr "±äÁ¿ÃûÖ®ºóÒÅÂ©ÁË¡°=¡±"
+msgstr "å˜é‡åä¹‹åé—æ¼äº†â€œ=â€"
 
 #: info/infokey.c:741
 msgid "variable name too long"
-msgstr "±äÁ¿Ãû¹ı³¤"
+msgstr "å˜é‡åè¿‡é•¿"
 
 #: info/infokey.c:765
 msgid "value too long"
-msgstr "Öµ¹ı³¤"
+msgstr "å€¼è¿‡é•¿"
 
 #: info/infokey.c:890
 #, c-format
 msgid "\"%s\", line %u: "
-msgstr "¡°%s¡±£¬ĞĞ %u£º"
+msgstr "â€œ%sâ€ï¼Œè¡Œ %uï¼š"
 
 #: info/infokey.c:906
 #, c-format
@@ -984,91 +991,88 @@ msgid ""
 "  --help               display this help and exit.\n"
 "  --version            display version information and exit.\n"
 msgstr ""
-"ÓÃ·¨£º%s [Ñ¡Ïî]... [ÊäÈëÎÄ¼ş]\n"
+"ç”¨æ³•ï¼š%s [é€‰é¡¹]... [è¾“å…¥æ–‡ä»¶]\n"
 "\n"
-"½« infokey Ô´ÎÄ¼ş±àÒëÎª infokey ÎÄ¼ş¡£¶ÁÈ¡ÊäÈëÎÄ¼ş(Ä¬ÈÏÎª\n"
-"$HOME/.infokey) ²¢½«±àÒëÍê³ÉµÄ¼üÎÄ¼şĞ´Èëµ½ (Ä¬ÈÏÎª) $HOME/.info¡£\n"
+"å°† infokey æºæ–‡ä»¶ç¼–è¯‘ä¸º infokey æ–‡ä»¶ã€‚è¯»å–è¾“å…¥æ–‡ä»¶(é»˜è®¤ä¸º\n"
+"$HOME/.infokey) å¹¶å°†ç¼–è¯‘å®Œæˆçš„é”®æ–‡ä»¶å†™å…¥åˆ° (é»˜è®¤ä¸º) $HOME/.infoã€‚\n"
 "\n"
-"Ñ¡Ïî£º\n"
-"  --output FILE        Êä³öµ½ÎÄ¼ş FILE ¶ø²»ÊÇ $HOME/.info ÖĞ¡£\n"
-"  --help               ÏÔÊ¾¸ÃÇóÖúĞÅÏ¢²¢ÍË³ö¡£\n"
-"  --version            ÏÔÊ¾°æ±¾ĞÅÏ¢²¢ÍË³ö¡£\n"
+"é€‰é¡¹ï¼š\n"
+"  --output FILE        è¾“å‡ºåˆ°æ–‡ä»¶ FILE è€Œä¸æ˜¯ $HOME/.info ä¸­ã€‚\n"
+"  --help               æ˜¾ç¤ºè¯¥æ±‚åŠ©ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
+"  --version            æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
 
 #: info/infomap.c:955
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
-msgstr "ºöÂÔ·Ç·¨µÄ infokey ÎÄ¼ş¡°%s¡± - Ì«Ğ¡"
+msgstr "å¿½ç•¥éæ³•çš„ infokey æ–‡ä»¶â€œ%sâ€ - å¤ªå°"
 
 #: info/infomap.c:958
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
-msgstr "ºöÂÔ·Ç·¨µÄ infokey ÎÄ¼ş¡°%s¡± - Ì«´ó"
+msgstr "å¿½ç•¥éæ³•çš„ infokey æ–‡ä»¶â€œ%sâ€ - å¤ªå¤§"
 
 #: info/infomap.c:971
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
-msgstr "¶ÁÈë infokey ÎÄ¼ş¡°%s¡±Ê±³ö´í - ¶ÁÈëÖĞ¶Ï"
+msgstr "è¯»å…¥ infokey æ–‡ä»¶â€œ%sâ€æ—¶å‡ºé”™ - è¯»å…¥ä¸­æ–­"
 
 #: info/infomap.c:990
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "·Ç·¨µÄ infokey ÎÄ¼ş¡°%s¡± (´íÎóµÄ magic ±àºÅ) -- ÔËĞĞ infokey ÒÔ±ã¸üĞÂ"
+msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr "éæ³•çš„ infokey æ–‡ä»¶â€œ%sâ€ (é”™è¯¯çš„ magic ç¼–å·) -- è¿è¡Œ infokey ä»¥ä¾¿æ›´æ–°"
 
 #: info/infomap.c:999
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr "ÄúµÄ infokey ÎÄ¼ş¡°%s¡± ¹ıÊ±ÁË -- ÔËĞĞ infokey ÒÔ±ã¸üĞÂ"
+msgstr "æ‚¨çš„ infokey æ–‡ä»¶â€œ%sâ€ è¿‡æ—¶äº† -- è¿è¡Œ infokey ä»¥ä¾¿æ›´æ–°"
 
 #: info/infomap.c:1015
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "·Ç·¨µÄ infokey ÎÄ¼ş¡°%s¡± (´íÎóµÄ½Ú³¤¶È) -- ÔËĞĞ infokey ÒÔ±ã¸üĞÂ"
+msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr "éæ³•çš„ infokey æ–‡ä»¶â€œ%sâ€ (é”™è¯¯çš„èŠ‚é•¿åº¦) -- è¿è¡Œ infokey ä»¥ä¾¿æ›´æ–°"
 
 #: info/infomap.c:1036
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "·Ç·¨µÄ infokey ÎÄ¼ş¡°%s¡± (´íÎóµÄ½Ú±àÂë) -- ÔËĞĞ infokey ÒÔ±ã¸üĞÂ"
+msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr "éæ³•çš„ infokey æ–‡ä»¶â€œ%sâ€ (é”™è¯¯çš„èŠ‚ç¼–ç ) -- è¿è¡Œ infokey ä»¥ä¾¿æ›´æ–°"
 
 #: info/infomap.c:1171
 msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr "infokey ÎÄ¼şÖĞµÄ´íÎóÊı¾İ -- ºöÂÔÄ³Ğ©°´¼ü°ó¶¨"
+msgstr "infokey æ–‡ä»¶ä¸­çš„é”™è¯¯æ•°æ® -- å¿½ç•¥æŸäº›æŒ‰é”®ç»‘å®š"
 
 #: info/infomap.c:1221
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "infokey ÎÄ¼şÖĞµÄ´íÎóÊı¾İ -- ºöÂÔÄ³Ğ©±äÁ¿ÉèÖÃ"
+msgstr "infokey æ–‡ä»¶ä¸­çš„é”™è¯¯æ•°æ® -- å¿½ç•¥æŸäº›å˜é‡è®¾ç½®"
 
 #: info/m-x.c:68
 msgid "Read the name of an Info command and describe it"
-msgstr "¶ÁÈ¡ Info ÃüÁîÃû³Æ²¢ËµÃ÷Ëü"
+msgstr "è¯»å– Info å‘½ä»¤åç§°å¹¶è¯´æ˜å®ƒ"
 
 #: info/m-x.c:72
 msgid "Describe command: "
-msgstr "ËµÃ÷ÃüÁî£º"
+msgstr "è¯´æ˜å‘½ä»¤ï¼š"
 
 #: info/m-x.c:95
 msgid "Read a command name in the echo area and execute it"
-msgstr "ÔÚ»ØÏÔÇø¶ÁÈëÃüÁîÃû²¢Ö´ĞĞËü"
+msgstr "åœ¨å›æ˜¾åŒºè¯»å…¥å‘½ä»¤åå¹¶æ‰§è¡Œå®ƒ"
 
 #: info/m-x.c:139
 msgid "Cannot execute an `echo-area' command here."
-msgstr "ÎŞ·¨ÔÚÕâÀïÔËĞĞ¡°»ØÏÔÇø¡±ÃüÁî¡£"
+msgstr "æ— æ³•åœ¨è¿™é‡Œè¿è¡Œâ€œå›æ˜¾åŒºâ€å‘½ä»¤ã€‚"
 
 #: info/m-x.c:153
-#, fuzzy, c-format
+#, c-format
 msgid "Undefined command: %s"
-msgstr "Î´ÖªµÄÃüÁî¡°%s¡±"
+msgstr "æœªå®šä¹‰çš„å‘½ä»¤: %s"
 
 #: info/m-x.c:159
 msgid "Set the height of the displayed window"
-msgstr "Éè¶¨ÏÔÊ¾´°¿ÚµÄ¸ß¶È"
+msgstr "è®¾å®šæ˜¾ç¤ºçª—å£çš„é«˜åº¦"
 
 #: info/m-x.c:172
 #, c-format
 msgid "Set screen height to (%d): "
-msgstr "½«ÆÁÄ»¸ß¶ÈÉèÖÃÎª (%d)£º"
+msgstr "å°†å±å¹•é«˜åº¦è®¾ç½®ä¸º (%d)ï¼š"
 
 #: info/makedoc.c:166 info/makedoc.c:174
 #, c-format
@@ -1076,13 +1080,13 @@ msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
-"   ÕûÀíÔ´ÎÄ¼şÒÔÊ¹±¾ÎÄ¼ş°üÀ¨£º\n"
+"   æ•´ç†æºæ–‡ä»¶ä»¥ä½¿æœ¬æ–‡ä»¶åŒ…æ‹¬ï¼š\n"
 "\n"
 
 #: info/makedoc.c:556
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
-msgstr "ÎŞ·¨²Ù×÷ÎÄ¼ş %s¡£\n"
+msgstr "æ— æ³•æ“ä½œæ–‡ä»¶ %sã€‚\n"
 
 #: info/nodemenu.c:30
 msgid ""
@@ -1092,8 +1096,8 @@ msgid ""
 "  ----------                        -----   ----   ---------------"
 msgstr ""
 "\n"
-"* ²Ëµ¥£º\n"
-"  (ÎÄ¼ş)½Úµã                         ĞĞ      ´óĞ¡    º¬ÓĞÎÄ¼ş\n"
+"* èœå•ï¼š\n"
+"  (æ–‡ä»¶)èŠ‚ç‚¹                         è¡Œ      å¤§å°    å«æœ‰æ–‡ä»¶\n"
 "  ----------                        -----   ----   ---------------"
 
 #: info/nodemenu.c:201
@@ -1101,666 +1105,653 @@ msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use `\\[history-node]' in another window.\n"
 msgstr ""
-"ÕâÀïÊÇÄú×î½ü·ÃÎÊ½ÚµãµÄ²Ëµ¥¡£\n"
-"´Ó²Ëµ¥ÖĞÑ¡ÔñÒ»¸ö£¬»òÔÚÆäËü´°¿ÚÖĞÊ¹ÓÃ¡°\\[history-node]¡±¡£\n"
+"è¿™é‡Œæ˜¯æ‚¨æœ€è¿‘è®¿é—®èŠ‚ç‚¹çš„èœå•ã€‚\n"
+"ä»èœå•ä¸­é€‰æ‹©ä¸€ä¸ªï¼Œæˆ–åœ¨å…¶å®ƒçª—å£ä¸­ä½¿ç”¨â€œ\\[history-node]â€ã€‚\n"
 
 #: info/nodemenu.c:223
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr "Ê¹Ò»¸ö´°¿Úº¬ÓĞÒ»¸ö°üÀ¨ËùÓĞµ±Ç°·ÃÎÊ½ÚµãµÄ²Ëµ¥"
+msgstr "ä½¿ä¸€ä¸ªçª—å£å«æœ‰ä¸€ä¸ªåŒ…æ‹¬æ‰€æœ‰å½“å‰è®¿é—®èŠ‚ç‚¹çš„èœå•"
 
 #: info/nodemenu.c:303
 msgid "Select a node which has been previously visited in a visible window"
-msgstr "Ñ¡ÔñÒ»¸öÒÑ¾­ÔÚ¿É¼ûµÄ´°¿ÚÖĞ·ÃÎÊµÄ½Úµã"
+msgstr "é€‰æ‹©ä¸€ä¸ªå·²ç»åœ¨å¯è§çš„çª—å£ä¸­è®¿é—®çš„èŠ‚ç‚¹"
 
 #: info/nodemenu.c:316
 msgid "Select visited node: "
-msgstr "Ñ¡ÔñÒÑ·ÃÎÊµÄ½Úµã£º"
+msgstr "é€‰æ‹©å·²è®¿é—®çš„èŠ‚ç‚¹ï¼š"
 
 #: info/nodemenu.c:336 info/session.c:2443
 #, c-format
 msgid "The reference disappeared! (%s)."
-msgstr "ÒıÓÃÏûÊ§ÁË£¡(%s)¡£"
+msgstr "å¼•ç”¨æ¶ˆå¤±äº†ï¼(%s)ã€‚"
 
 #: info/search.c:161
 #, c-format
 msgid "regexp error: %s"
-msgstr ""
+msgstr "æ­£åˆ™è¡¨è¾¾å¼é”™è¯¯: %s"
 
 #: info/session.c:164
 #, c-format
-msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item."
-msgstr ""
-"»¶Ó­Ê¹ÓÃ Info %s °æ¡£ÊäÈë \\[get-help-window] ÒÔ»ñµÃ°ïÖú£¬\\[menu-item] ½«µÃ"
-"µ½²Ëµ¥¡£"
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgstr "æ¬¢è¿ä½¿ç”¨ Info %s ç‰ˆã€‚è¾“å…¥ \\[get-help-window] ä»¥è·å¾—å¸®åŠ©ï¼Œ\\[menu-item] å°†å¾—åˆ°èœå•ã€‚"
 
 #: info/session.c:625
 msgid "Move down to the next line"
-msgstr "ÏòÏÂÒÆ¶¯µ½ÏÂÒ»ĞĞ"
+msgstr "å‘ä¸‹ç§»åŠ¨åˆ°ä¸‹ä¸€è¡Œ"
 
 #: info/session.c:661
 msgid "Move up to the previous line"
-msgstr "ÏòÉÏÒÆ¶¯µ½ÉÏÒ»ĞĞ"
+msgstr "å‘ä¸Šç§»åŠ¨åˆ°ä¸Šä¸€è¡Œ"
 
 #: info/session.c:696
 msgid "Move to the end of the line"
-msgstr "ÒÆ¶¯µ½ĞĞµÄÄ©Î²"
+msgstr "ç§»åŠ¨åˆ°è¡Œçš„æœ«å°¾"
 
 #: info/session.c:716
 msgid "Move to the start of the line"
-msgstr "ÒÆ¶¯µ½ĞĞµÄ¿ªÍ·"
+msgstr "ç§»åŠ¨åˆ°è¡Œçš„å¼€å¤´"
 
 #: info/session.c:1007
 msgid "Next"
-msgstr "ÏÂÒ»¸ö"
+msgstr "ä¸‹ä¸€ä¸ª"
 
 #: info/session.c:1023 info/session.c:1148
 msgid "No more nodes within this document."
-msgstr "±¾ÎÄµµÖĞÃ»ÓĞ¸ü¶àµÄ½Úµã¡£"
+msgstr "æœ¬æ–‡æ¡£ä¸­æ²¡æœ‰æ›´å¤šçš„èŠ‚ç‚¹ã€‚"
 
 #: info/session.c:1174
 msgid "No `Prev' for this node."
-msgstr "±¾½ÚµãÃ»ÓĞ¡°ÉÏÒ»¸ö¡±¡£"
+msgstr "æœ¬èŠ‚ç‚¹æ²¡æœ‰â€œä¸Šä¸€ä¸ªâ€ã€‚"
 
 #: info/session.c:1194
 msgid "No `Prev' or `Up' for this node within this document."
-msgstr "ÔÚ±¾ÎÄµµÖĞÃ»ÓĞ±¾½ÚµãµÄ¡°ÉÏÒ»¸ö¡±»ò¡°ÉÏ²ã¡±½Úµã¡£"
+msgstr "åœ¨æœ¬æ–‡æ¡£ä¸­æ²¡æœ‰æœ¬èŠ‚ç‚¹çš„â€œä¸Šä¸€ä¸ªâ€æˆ–â€œä¸Šå±‚â€èŠ‚ç‚¹ã€‚"
 
 #: info/session.c:1256
 msgid "Move forwards or down through node structure"
-msgstr "ÔÚ½Úµã½á¹¹ÖĞÏòÇ°»òÏòÏÂ²ãÒÆ¶¯"
+msgstr "åœ¨èŠ‚ç‚¹ç»“æ„ä¸­å‘å‰æˆ–å‘ä¸‹å±‚ç§»åŠ¨"
 
 #: info/session.c:1272
 msgid "Move backwards or up through node structure"
-msgstr "ÔÚ½Úµã½á¹¹ÖĞÏòºó»òÏòÉÏ²ãÒÆ¶¯"
+msgstr "åœ¨èŠ‚ç‚¹ç»“æ„ä¸­å‘åæˆ–å‘ä¸Šå±‚ç§»åŠ¨"
 
 #: info/session.c:1373
 msgid "Scroll forward in this window"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòÇ°¹ö¶¯"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘å‰æ»šåŠ¨"
 
 #: info/session.c:1381
 msgid "Scroll forward in this window and set default window size"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòÇ°¹ö¶¯²¢ÉèÖÃÎªÄ¬ÈÏ´°¿Ú´óĞ¡"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘å‰æ»šåŠ¨å¹¶è®¾ç½®ä¸ºé»˜è®¤çª—å£å¤§å°"
 
 #: info/session.c:1389
 msgid "Scroll forward in this window staying within node"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòÇ°¹ö¶¯(²»´©Ô½½Úµã)"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘å‰æ»šåŠ¨(ä¸ç©¿è¶ŠèŠ‚ç‚¹)"
 
 #: info/session.c:1397
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòÇ°¹ö¶¯(²»´©Ô½½Úµã)²¢ÉèÖÃÄ¬ÈÏ´°¿Ú´óĞ¡"
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘å‰æ»šåŠ¨(ä¸ç©¿è¶ŠèŠ‚ç‚¹)å¹¶è®¾ç½®é»˜è®¤çª—å£å¤§å°"
 
 #: info/session.c:1405
 msgid "Scroll backward in this window"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòºó¹ö¶¯"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘åæ»šåŠ¨"
 
 #: info/session.c:1413
 msgid "Scroll backward in this window and set default window size"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòºó¹ö¶¯²¢ÉèÖÃÎªÄ¬ÈÏ´°¿Ú´óĞ¡"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘åæ»šåŠ¨å¹¶è®¾ç½®ä¸ºé»˜è®¤çª—å£å¤§å°"
 
 #: info/session.c:1422
 msgid "Scroll backward in this window staying within node"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòºó¹ö¶¯(²»´©Ô½½Úµã)"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘åæ»šåŠ¨(ä¸ç©¿è¶ŠèŠ‚ç‚¹)"
 
 #: info/session.c:1430
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
-msgstr "ÔÚ±¾´°¿ÚÖĞÏòºó¹ö¶¯(²»´©Ô½½Úµã)²¢ÉèÖÃÎªÄ¬ÈÏ´°¿Ú´óĞ¡"
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "åœ¨æœ¬çª—å£ä¸­å‘åæ»šåŠ¨(ä¸ç©¿è¶ŠèŠ‚ç‚¹)å¹¶è®¾ç½®ä¸ºé»˜è®¤çª—å£å¤§å°"
 
 #: info/session.c:1438
 msgid "Move to the start of this node"
-msgstr "ÒÆ¶¯µ½±¾½ÚµãµÄ¿ªÍ·"
+msgstr "ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„å¼€å¤´"
 
 #: info/session.c:1445
 msgid "Move to the end of this node"
-msgstr "ÒÆ¶¯µ½±¾½ÚµãµÄÄ©Î²"
+msgstr "ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹çš„æœ«å°¾"
 
 #: info/session.c:1452
 msgid "Scroll down by lines"
-msgstr "°´ĞĞÏòÏÂ¹ö¶¯"
+msgstr "æŒ‰è¡Œå‘ä¸‹æ»šåŠ¨"
 
 #: info/session.c:1469
 msgid "Scroll up by lines"
-msgstr "°´ĞĞÏòÉÏ¹ö¶¯"
+msgstr "æŒ‰è¡Œå‘ä¸Šæ»šåŠ¨"
 
 #: info/session.c:1487
 msgid "Scroll down by half screen size"
-msgstr "ÏòÏÂ¹ö¶¯°ë¸öÆÁÄ»"
+msgstr "å‘ä¸‹æ»šåŠ¨åŠä¸ªå±å¹•"
 
 #: info/session.c:1513
 msgid "Scroll up by half screen size"
-msgstr "ÏòÉÏ¹ö¶¯°ë¸öÆÁÄ»"
+msgstr "å‘ä¸Šæ»šåŠ¨åŠä¸ªå±å¹•"
 
 #: info/session.c:1542
 msgid "Select the next window"
-msgstr "Ñ¡ÔñÏÂÒ»¸ö´°¿Ú"
+msgstr "é€‰æ‹©ä¸‹ä¸€ä¸ªçª—å£"
 
 #: info/session.c:1581
 msgid "Select the previous window"
-msgstr "Ñ¡ÔñÉÏÒ»¸ö´°¿Ú"
+msgstr "é€‰æ‹©ä¸Šä¸€ä¸ªçª—å£"
 
 #: info/session.c:1632
 msgid "Split the current window"
-msgstr "²ğ·Öµ±Ç°´°¿Ú"
+msgstr "æ‹†åˆ†å½“å‰çª—å£"
 
 #: info/session.c:1713
 msgid "Delete the current window"
-msgstr "É¾³ıµ±Ç°´°¿Ú"
+msgstr "åˆ é™¤å½“å‰çª—å£"
 
 #: info/session.c:1721
 msgid "Cannot delete a permanent window"
-msgstr "ÎŞ·¨É¾³ıÓÀ¾Ã´°¿Ú"
+msgstr "æ— æ³•åˆ é™¤æ°¸ä¹…çª—å£"
 
 #: info/session.c:1753
 msgid "Delete all other windows"
-msgstr "É¾³ıËùÓĞÆäËü´°¿Ú"
+msgstr "åˆ é™¤æ‰€æœ‰å…¶å®ƒçª—å£"
 
 #: info/session.c:1799
 msgid "Scroll the other window"
-msgstr "¹ö¶¯ÆäËü´°¿Ú"
+msgstr "æ»šåŠ¨å…¶å®ƒçª—å£"
 
 #: info/session.c:1820
 msgid "Scroll the other window backward"
-msgstr "Ïòºó¹ö¶¯ÆäËü´°¿Ú"
+msgstr "å‘åæ»šåŠ¨å…¶å®ƒçª—å£"
 
 #: info/session.c:1826
 msgid "Grow (or shrink) this window"
-msgstr "À©´ó(»òËõĞ¡)±¾´°¿Ú"
+msgstr "æ‰©å¤§(æˆ–ç¼©å°)æœ¬çª—å£"
 
 #: info/session.c:1837
 msgid "Divide the available screen space among the visible windows"
-msgstr "ÔÚ¿É¼ûµÄ´°¿Ú¼ä·ÖÅä¿ÉÓÃµÄÆÁÄ»¿Õ¼ä"
+msgstr "åœ¨å¯è§çš„çª—å£é—´åˆ†é…å¯ç”¨çš„å±å¹•ç©ºé—´"
 
 #: info/session.c:1844
 msgid "Toggle the state of line wrapping in the current window"
-msgstr "ÔÚµ±Ç°´°¿ÚÖĞÇĞ»»ĞĞ¾íÈÆ×´Ì¬"
+msgstr "åœ¨å½“å‰çª—å£ä¸­åˆ‡æ¢è¡Œå·ç»•çŠ¶æ€"
 
 #: info/session.c:1851
 msgid "Toggle the usage of regular expressions in searches"
-msgstr ""
+msgstr "åˆ‡æ¢æŸ¥å¯»æ—¶æ­£åˆ™è¡¨è¾¾å¼çš„ç”¨æ³•"
 
 #: info/session.c:1855
 msgid "Using regular expressions for searches."
-msgstr ""
+msgstr "ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ¥æŸ¥å¯»"
 
 #: info/session.c:1856
 msgid "Using literal strings for searches."
-msgstr ""
+msgstr "ä½¿ç”¨æ™®é€šå­—ç¬¦ä¸²æ¥æŸ¥å¯»"
 
 #: info/session.c:2027
 msgid "Select the Next node"
-msgstr "Ñ¡ÔñÏÂÒ»¸ö½Úµã"
+msgstr "é€‰æ‹©ä¸‹ä¸€ä¸ªèŠ‚ç‚¹"
 
 #: info/session.c:2035
 msgid "Select the Prev node"
-msgstr "Ñ¡ÔñÉÏÒ»¸ö½Úµã"
+msgstr "é€‰æ‹©ä¸Šä¸€ä¸ªèŠ‚ç‚¹"
 
 #: info/session.c:2043
 msgid "Select the Up node"
-msgstr "Ñ¡ÔñÉÏ²ã½Úµã"
+msgstr "é€‰æ‹©ä¸Šå±‚èŠ‚ç‚¹"
 
 #: info/session.c:2050
 msgid "Select the last node in this file"
-msgstr "Ñ¡Ôñ±¾ÎÄ¼şµÄ×îºóÒ»¸ö½Úµã"
+msgstr "é€‰æ‹©æœ¬æ–‡ä»¶çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹"
 
 #: info/session.c:2077 info/session.c:2110
 msgid "This window has no additional nodes"
-msgstr "¸Ã´°¿ÚÃ»ÓĞ¸½¼Ó½Úµã"
+msgstr "è¯¥çª—å£æ²¡æœ‰é™„åŠ èŠ‚ç‚¹"
 
 #: info/session.c:2083
 msgid "Select the first node in this file"
-msgstr "Ñ¡Ôñ±¾ÎÄ¼şµÄµÚÒ»¸ö½Úµã"
+msgstr "é€‰æ‹©æœ¬æ–‡ä»¶çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹"
 
 #: info/session.c:2117
 msgid "Select the last item in this node's menu"
-msgstr "Ñ¡Ôñ±¾½Úµã²Ëµ¥ÖĞµÄ×îºóÒ»Ïî"
+msgstr "é€‰æ‹©æœ¬èŠ‚ç‚¹èœå•ä¸­çš„æœ€åä¸€é¡¹"
 
 #: info/session.c:2123
 msgid "Select this menu item"
-msgstr "Ñ¡Ôñ±¾²Ëµ¥ÏîÄ¿"
+msgstr "é€‰æ‹©æœ¬èœå•é¡¹ç›®"
 
 #: info/session.c:2156
 #, c-format
 msgid "There aren't %d items in this menu."
-msgstr "±¾²Ëµ¥ÖĞÃ»ÓĞµÚ %d ¸öÏîÄ¿¡£"
+msgstr "æœ¬èœå•ä¸­æ²¡æœ‰ç¬¬ %d ä¸ªé¡¹ç›®ã€‚"
 
 #: info/session.c:2350 info/session.c:2351
 #, c-format
 msgid "Menu item (%s): "
-msgstr "²Ëµ¥Ïî (%s)£º"
+msgstr "èœå•é¡¹ (%s)ï¼š"
 
 #: info/session.c:2354
 msgid "Menu item: "
-msgstr "²Ëµ¥Ïî£º"
+msgstr "èœå•é¡¹ï¼š"
 
 #: info/session.c:2361 info/session.c:2362
 #, c-format
 msgid "Follow xref (%s): "
-msgstr "¸úËæ½»²æÒıÓÃ (%s)£º"
+msgstr "è·Ÿéšäº¤å‰å¼•ç”¨ (%s)ï¼š"
 
 #: info/session.c:2365
 msgid "Follow xref: "
-msgstr "¸úËæ½»²æÒıÓÃ£º"
+msgstr "è·Ÿéšäº¤å‰å¼•ç”¨ï¼š"
 
 #: info/session.c:2494
 msgid "Read a menu item and select its node"
-msgstr "¶ÁÈ¡²Ëµ¥Ïî²¢Ñ¡ÔñËüµÄ½Úµã"
+msgstr "è¯»å–èœå•é¡¹å¹¶é€‰æ‹©å®ƒçš„èŠ‚ç‚¹"
 
 #: info/session.c:2502
 msgid "Read a footnote or cross reference and select its node"
-msgstr "¶ÁÈ¡½Å×¢»ò½»²æÒıÓÃ²¢Ñ¡ÔñËüµÄ½Úµã"
+msgstr "è¯»å–è„šæ³¨æˆ–äº¤å‰å¼•ç”¨å¹¶é€‰æ‹©å®ƒçš„èŠ‚ç‚¹"
 
 #: info/session.c:2508
 msgid "Move to the start of this node's menu"
-msgstr "ÒÆ¶¯µ½±¾½Úµã²Ëµ¥µÄ¿ªÍ·"
+msgstr "ç§»åŠ¨åˆ°æœ¬èŠ‚ç‚¹èœå•çš„å¼€å¤´"
 
 #: info/session.c:2532
 msgid "Visit as many menu items at once as possible"
-msgstr "Á¢¿Ì·ÃÎÊ¾¡¿ÉÄÜ¶àµÄ²Ëµ¥Ïî"
+msgstr "ç«‹åˆ»è®¿é—®å°½å¯èƒ½å¤šçš„èœå•é¡¹"
 
 #: info/session.c:2560
 msgid "Read a node name and select it"
-msgstr "¶ÁÈ¡½ÚµãÃû²¢Ñ¡ÔñËü"
+msgstr "è¯»å–èŠ‚ç‚¹åå¹¶é€‰æ‹©å®ƒ"
 
 #: info/session.c:2615 info/session.c:2620
 msgid "Goto node: "
-msgstr "×ªµ½½Úµã£º"
+msgstr "è½¬åˆ°èŠ‚ç‚¹ï¼š"
 
 #: info/session.c:2684
 #, c-format
 msgid "No menu in node `%s'."
-msgstr "½Úµã¡°%s¡±ÖĞÃ»ÓĞ²Ëµ¥¡£"
+msgstr "èŠ‚ç‚¹â€œ%sâ€ä¸­æ²¡æœ‰èœå•ã€‚"
 
 #: info/session.c:2730
 #, c-format
 msgid "No menu item `%s' in node `%s'."
-msgstr "½Úµã¡°%2$s¡±ÖĞÃ»ÓĞ²Ëµ¥Ïî¡°%1$s¡±¡£"
+msgstr "èŠ‚ç‚¹â€œ%2$sâ€ä¸­æ²¡æœ‰èœå•é¡¹â€œ%1$sâ€ã€‚"
 
 #: info/session.c:2760
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
-msgstr "ÎŞ·¨ÔÚ¡°%2$s¡±ÖĞÕÒµ½ÓÉ¡°%1$s¡±ÒıÓÃµÄ½Úµã¡£"
+msgstr "æ— æ³•åœ¨â€œ%2$sâ€ä¸­æ‰¾åˆ°ç”±â€œ%1$sâ€å¼•ç”¨çš„èŠ‚ç‚¹ã€‚"
 
 #: info/session.c:2810
 msgid "Read a list of menus starting from dir and follow them"
-msgstr "¶ÁÈ¡×Ô dir ¿ªÊ¼µÄ²Ëµ¥µÄÁĞ±í²¢¸úËæËüÃÇ"
+msgstr "è¯»å–è‡ª dir å¼€å§‹çš„èœå•çš„åˆ—è¡¨å¹¶è·Ÿéšå®ƒä»¬"
 
 #: info/session.c:2812
 msgid "Follow menus: "
-msgstr "¸úËæ²Ëµ¥£º"
+msgstr "è·Ÿéšèœå•ï¼š"
 
 #: info/session.c:3005
 msgid "Find the node describing program invocation"
-msgstr "Ñ°ÕÒËµÃ÷³ÌĞòµ÷ÓÃµÄ½Úµã"
+msgstr "å¯»æ‰¾è¯´æ˜ç¨‹åºè°ƒç”¨çš„èŠ‚ç‚¹"
 
 #: info/session.c:3007
 #, c-format
 msgid "Find Invocation node of [%s]: "
-msgstr "Ñ°ÕÒ [%s] µÄµ÷ÓÃ½Úµã£º"
+msgstr "å¯»æ‰¾ [%s] çš„è°ƒç”¨èŠ‚ç‚¹ï¼š"
 
 #: info/session.c:3045
 msgid "Read a manpage reference and select it"
-msgstr "¶ÁÈ¡Ò»¸ö man ÊÖ²áµÄÒıÓÃ²¢Ñ¡ÔñËü"
+msgstr "è¯»å–ä¸€ä¸ª man æ‰‹å†Œçš„å¼•ç”¨å¹¶é€‰æ‹©å®ƒ"
 
 #: info/session.c:3049
 msgid "Get Manpage: "
-msgstr "»ñÈ¡ man ÊÖ²á£º"
+msgstr "è·å– man æ‰‹å†Œï¼š"
 
 #: info/session.c:3079
 msgid "Select the node `Top' in this file"
-msgstr "Ñ¡Ôñ±¾ÎÄ¼şÖĞµÄ¡°¶¥¡±½Úµã"
+msgstr "é€‰æ‹©æœ¬æ–‡ä»¶ä¸­çš„â€œé¡¶â€èŠ‚ç‚¹"
 
 #: info/session.c:3085
 msgid "Select the node `(dir)'"
-msgstr "Ñ¡Ôñ½Úµã¡°(dir)¡±"
+msgstr "é€‰æ‹©èŠ‚ç‚¹â€œ(dir)â€"
 
 #: info/session.c:3102 info/session.c:3104
 #, c-format
 msgid "Kill node (%s): "
-msgstr "É¾³ı½Úµã (%s)£º"
+msgstr "åˆ é™¤èŠ‚ç‚¹ (%s)ï¼š"
 
 #: info/session.c:3156
 #, c-format
 msgid "Cannot kill node `%s'"
-msgstr "ÎŞ·¨É¾³ı½Úµã¡°%s¡±"
+msgstr "æ— æ³•åˆ é™¤èŠ‚ç‚¹â€œ%sâ€"
 
 #: info/session.c:3166
 msgid "Cannot kill the last node"
-msgstr "ÎŞ·¨É¾³ı×îºóµÄ½Úµã"
+msgstr "æ— æ³•åˆ é™¤æœ€åçš„èŠ‚ç‚¹"
 
 #: info/session.c:3252
 msgid "Select the most recently selected node"
-msgstr "Ñ¡Ôñ×î½üÑ¡ÔñµÄ½Úµã"
+msgstr "é€‰æ‹©æœ€è¿‘é€‰æ‹©çš„èŠ‚ç‚¹"
 
 #: info/session.c:3258
 msgid "Kill this node"
-msgstr "É¾³ı±¾½Úµã"
+msgstr "åˆ é™¤æœ¬èŠ‚ç‚¹"
 
 #: info/session.c:3266
 msgid "Read the name of a file and select it"
-msgstr "¶ÁÈ¡ÎÄ¼şÃû²¢Ñ¡ÔñËü"
+msgstr "è¯»å–æ–‡ä»¶åå¹¶é€‰æ‹©å®ƒ"
 
 #: info/session.c:3270
 msgid "Find file: "
-msgstr "Ñ°ÕÒÎÄ¼ş£º"
+msgstr "å¯»æ‰¾æ–‡ä»¶ï¼š"
 
 #: info/session.c:3287
 #, c-format
 msgid "Cannot find `%s'."
-msgstr "ÎŞ·¨Ñ°ÕÒ¡°%s¡±¡£"
+msgstr "æ— æ³•å¯»æ‰¾â€œ%sâ€ã€‚"
 
 #: info/session.c:3330 info/session.c:3448
 #, c-format
 msgid "Could not create output file `%s'."
-msgstr "ÎŞ·¨´´½¨Êä³öÎÄ¼ş¡°%s¡±¡£"
+msgstr "æ— æ³•åˆ›å»ºè¾“å‡ºæ–‡ä»¶â€œ%sâ€ã€‚"
 
 #: info/session.c:3344 info/session.c:3466 info/session.c:3526
 msgid "Done."
-msgstr "Íê³É¡£"
+msgstr "å®Œæˆã€‚"
 
 #: info/session.c:3399
 #, c-format
 msgid "Writing node %s..."
-msgstr "ÕıÔÚĞ´Èë½Úµã %s..."
+msgstr "æ­£åœ¨å†™å…¥èŠ‚ç‚¹ %s..."
 
 #: info/session.c:3475
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr "Í¨¹ı¹ÜµÀ½«±¾½ÚµãµÄÄÚÈİÊä³öµ½ INFO_PRINT_COMMAND"
+msgstr "é€šè¿‡ç®¡é“å°†æœ¬èŠ‚ç‚¹çš„å†…å®¹è¾“å‡ºåˆ° INFO_PRINT_COMMAND"
 
 #: info/session.c:3510
 #, c-format
 msgid "Cannot open pipe to `%s'."
-msgstr "ÎŞ·¨´ò¿ªµ½¡°%s¡±µÄ¹ÜµÀ¡£"
+msgstr "æ— æ³•æ‰“å¼€åˆ°â€œ%sâ€çš„ç®¡é“ã€‚"
 
 #: info/session.c:3516
 #, c-format
 msgid "Printing node %s..."
-msgstr "ÕıÔÚ´òÓ¡½Úµã %s..."
+msgstr "æ­£åœ¨æ‰“å°èŠ‚ç‚¹ %s..."
 
 #: info/session.c:3733
 msgid "Search continued from the end of the document."
-msgstr ""
+msgstr "ä»æ–‡æ¡£åº•éƒ¨ç»§ç»­æŸ¥å¯»ã€‚"
 
 #: info/session.c:3738
-#, fuzzy
 msgid "Search continued from the beginning of the document."
-msgstr "¼ôÇĞÖÁ±¾ĞĞ¿ªÍ·"
+msgstr "ä»æ­¤æ–‡æ¡£çš„å¼€å¤´ç»§ç»­æŸ¥æ‰¾ã€‚"
 
 #: info/session.c:3755
 #, c-format
 msgid "Searching subfile %s ..."
-msgstr "ÕıÔÚËÑË÷×ÓÎÄ¼ş %s ..."
+msgstr "æ­£åœ¨æœç´¢å­æ–‡ä»¶ %s ..."
 
 #: info/session.c:3812
 msgid "Read a string and search for it case-sensitively"
-msgstr "¶ÁÈ¡Ò»¸ö×Ö·û´®²¢ÒÔ´óĞ¡Ğ´Ãô¸ĞµÄ·½Ê½ËÑË÷Ëü"
+msgstr "è¯»å–ä¸€ä¸ªå­—ç¬¦ä¸²å¹¶ä»¥å¤§å°å†™æ•æ„Ÿçš„æ–¹å¼æœç´¢å®ƒ"
 
 #: info/session.c:3819
 msgid "Read a string and search for it"
-msgstr "¶ÁÈ¡Ò»¸ö×Ö·û´®²¢ËÑË÷Ëü"
+msgstr "è¯»å–ä¸€ä¸ªå­—ç¬¦ä¸²å¹¶æœç´¢å®ƒ"
 
 #: info/session.c:3827
 msgid "Read a string and search backward for it"
-msgstr "¶ÁÈ¡Ò»¸ö×Ö·û´®²¢ÏòºóËÑË÷Ëü"
+msgstr "è¯»å–ä¸€ä¸ªå­—ç¬¦ä¸²å¹¶å‘åæœç´¢å®ƒ"
 
 #: info/session.c:3863 info/session.c:3869
-#, fuzzy, c-format
+#, c-format
 msgid "%s%s%s [%s]: "
-msgstr "%2$s%1$s×Ö·û´® [%3$s]£º"
+msgstr "%s%s%s [%s]: "
 
 #: info/session.c:3864 info/session.c:3870
 msgid "Regexp search"
-msgstr ""
+msgstr "æ­£åˆ™è¡¨è¾¾å¼æŸ¥æ‰¾"
 
 #: info/session.c:3865 info/session.c:3871
-#, fuzzy
 msgid " case-sensitively"
-msgstr "´óĞ¡Ğ´Ãô¸ĞµØ"
+msgstr "å¤§å°å†™æ•æ„Ÿ"
 
 #: info/session.c:3866 info/session.c:3872
-#, fuzzy
 msgid " backward"
-msgstr "ÏòºóËÑË÷"
+msgstr "å‘åæœç´¢"
 
 #: info/session.c:3870
 msgid "Search"
-msgstr "ËÑË÷"
+msgstr "æœç´¢"
 
 #: info/session.c:3911
 msgid "Search failed."
-msgstr "ËÑË÷Ê§°Ü¡£"
+msgstr "æœç´¢å¤±è´¥ã€‚"
 
 #: info/session.c:3929
 msgid "Repeat last search in the same direction"
-msgstr "ÒÔÏàÍ¬µÄ·½ÏòÖØ¸´×îºóµÄËÑË÷"
+msgstr "ä»¥ç›¸åŒçš„æ–¹å‘é‡å¤æœ€åçš„æœç´¢"
 
 #: info/session.c:3932 info/session.c:3942
 msgid "No previous search string"
-msgstr "Ã»ÓĞÉÏ´ÎËÑË÷×Ö·û´®"
+msgstr "æ²¡æœ‰ä¸Šæ¬¡æœç´¢å­—ç¬¦ä¸²"
 
 #: info/session.c:3939
 msgid "Repeat last search in the reverse direction"
-msgstr "ÒÔÏà·´µÄ·½ÏòÖØ¸´×îºóµÄËÑË÷"
+msgstr "ä»¥ç›¸åçš„æ–¹å‘é‡å¤æœ€åçš„æœç´¢"
 
 #: info/session.c:3958 info/session.c:3964
 msgid "Search interactively for a string as you type it"
-msgstr "ÔÚÄãÊäÈëµÄÍ¬Ê±½»»¥Ê½µØËÑË÷×Ö·û´®"
+msgstr "åœ¨ä½ è¾“å…¥çš„åŒæ—¶äº¤äº’å¼åœ°æœç´¢å­—ç¬¦ä¸²"
 
 #: info/session.c:4044
-#, fuzzy
 msgid "Regexp I-search backward: "
-msgstr "ÏòºóµİÔöËÑË÷£º"
+msgstr "å‘åå¢é‡æœç´¢æ­£åˆ™è¡¨è¾¾å¼: "
 
 #: info/session.c:4045
 msgid "I-search backward: "
-msgstr "ÏòºóµİÔöËÑË÷£º"
+msgstr "å‘åå¢é‡æœç´¢ï¼š"
 
 #: info/session.c:4047
-#, fuzzy
 msgid "Regexp I-search: "
-msgstr "µİÔöËÑË÷£º"
+msgstr "å¢é‡æœç´¢æ­£åˆ™è¡¨è¾¾å¼: "
 
 #: info/session.c:4048
 msgid "I-search: "
-msgstr "µİÔöËÑË÷£º"
+msgstr "å¢é‡æœç´¢ï¼š"
 
 #: info/session.c:4073 info/session.c:4075
 msgid "Failing "
-msgstr "Ê§°Ü "
+msgstr "å¤±è´¥ "
 
 #: info/session.c:4560
 msgid "Move to the previous cross reference"
-msgstr "ÒÆ¶¯µ½ÉÏÒ»¸ö½»²æÒıÓÃ"
+msgstr "ç§»åŠ¨åˆ°ä¸Šä¸€ä¸ªäº¤å‰å¼•ç”¨"
 
 #: info/session.c:4578
 msgid "Move to the next cross reference"
-msgstr "ÒÆ¶¯µ½ÏÂÒ»¸ö½»²æÒıÓÃ"
+msgstr "ç§»åŠ¨åˆ°ä¸‹ä¸€ä¸ªäº¤å‰å¼•ç”¨"
 
 #: info/session.c:4600
 msgid "Select reference or menu item appearing on this line"
-msgstr "Ñ¡Ôñ³öÏÖÔÚ±¾ĞĞÖĞµÄÒıÓÃ»ò²Ëµ¥Ïî"
+msgstr "é€‰æ‹©å‡ºç°åœ¨æœ¬è¡Œä¸­çš„å¼•ç”¨æˆ–èœå•é¡¹"
 
 #: info/session.c:4623
 msgid "Cancel current operation"
-msgstr "È¡Ïûµ±Ç°²Ù×÷"
+msgstr "å–æ¶ˆå½“å‰æ“ä½œ"
 
 #: info/session.c:4630
 msgid "Quit"
-msgstr "ÍË³ö"
+msgstr "é€€å‡º"
 
 #: info/session.c:4639
 msgid "Move the cursor to a specific line of the window"
-msgstr "½«¹â±êÒÆ¶¯µ½´°¿ÚµÄÖ¸¶¨ĞĞ"
+msgstr "å°†å…‰æ ‡ç§»åŠ¨åˆ°çª—å£çš„æŒ‡å®šè¡Œ"
 
 #: info/session.c:4671
 msgid "Redraw the display"
-msgstr "ÖØ»­ÏÔÊ¾"
+msgstr "é‡ç”»æ˜¾ç¤º"
 
 #: info/session.c:4708
 msgid "Quit using Info"
-msgstr "ÍË³ö Info"
+msgstr "é€€å‡º Info"
 
 #: info/session.c:4721
 msgid "Run command bound to this key's lowercase variant"
-msgstr "ÔËĞĞµ½°ó¶¨µ½±¾°´¼üµÄĞ¡Ğ´°æ±¾µÄÃüÁî"
+msgstr "è¿è¡Œåˆ°ç»‘å®šåˆ°æœ¬æŒ‰é”®çš„å°å†™ç‰ˆæœ¬çš„å‘½ä»¤"
 
 #: info/session.c:4732
 #, c-format
 msgid "Unknown command (%s)."
-msgstr "Î´ÖªµÄÃüÁî (%s)¡£"
+msgstr "æœªçŸ¥çš„å‘½ä»¤ (%s)ã€‚"
 
 #: info/session.c:4735
 #, c-format
 msgid "\"%s\" is invalid"
-msgstr "¡°%s¡±Îª·Ç·¨"
+msgstr "â€œ%sâ€ä¸ºéæ³•"
 
 #: info/session.c:4736
-#, fuzzy, c-format
+#, c-format
 msgid "`%s' is invalid"
-msgstr "¡°%s¡±Îª·Ç·¨"
+msgstr "â€œ%sâ€æ˜¯æ— æ•ˆçš„"
 
 #: info/session.c:4950
 msgid "Add this digit to the current numeric argument"
-msgstr "½«±¾Êı×ÖÌí¼Óµ½µ±Ç°ÊıÖµ²ÎÊıÖĞ"
+msgstr "å°†æœ¬æ•°å­—æ·»åŠ åˆ°å½“å‰æ•°å€¼å‚æ•°ä¸­"
 
 #: info/session.c:4959
 msgid "Start (or multiply by 4) the current numeric argument"
-msgstr "¿ªÆô(»ò³ËÒÔ 4)µ±Ç°ÊıÖµ²ÎÊı"
+msgstr "å¼€å¯(æˆ–ä¹˜ä»¥ 4)å½“å‰æ•°å€¼å‚æ•°"
 
 #: info/session.c:4974
 msgid "Internally used by \\[universal-argument]"
-msgstr "ÓÉ \\[universal-argument] ÄÚ²¿Ê¹ÓÃ"
+msgstr "ç”± \\[universal-argument] å†…éƒ¨ä½¿ç”¨"
 
 #: info/tilde.c:336
 #, c-format
 msgid "readline: Out of virtual memory!\n"
-msgstr "readline£ºĞéÄâÄÚ´æºÄ¾¡£¡\n"
+msgstr "readlineï¼šè™šæ‹Ÿå†…å­˜è€—å°½ï¼\n"
 
 #: info/variables.c:37
 msgid "When \"On\", footnotes appear and disappear automatically"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬½Å×¢½«×Ô¶¯³öÏÖ»òÏûÊ§"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼Œè„šæ³¨å°†è‡ªåŠ¨å‡ºç°æˆ–æ¶ˆå¤±"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬´´½¨»òÉ¾³ı´°¿ÚÊ±¸Ä±äÆäËü´°¿ÚµÄ´óĞ¡"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼Œåˆ›å»ºæˆ–åˆ é™¤çª—å£æ—¶æ”¹å˜å…¶å®ƒçª—å£çš„å¤§å°"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬½«Ë¢ĞÂÆÁÄ»¶ø²»ÊÇÃùµÑ"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼Œå°†åˆ·æ–°å±å¹•è€Œä¸æ˜¯é¸£ç¬›"
 
 #: info/variables.c:49
 msgid "When \"On\", errors cause the bell to ring"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬³ö´íÊ±½«ÃùµÑ"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼Œå‡ºé”™æ—¶å°†é¸£ç¬›"
 
 #: info/variables.c:53
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬Info À¬»øÊÕ¼¯ÄÇĞ©±ØĞë½âÑ¹ËõµÄÎÄ¼ş"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼ŒInfo åƒåœ¾æ”¶é›†é‚£äº›å¿…é¡»è§£å‹ç¼©çš„æ–‡ä»¶"
 
 #: info/variables.c:56
 msgid "When \"On\", the portion of the matched search string is highlighted"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬ËÑË÷×Ö·û´®µÄÆ¥Åä²¿·Ö½«±»Í»³öÏÔÊ¾"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼Œæœç´¢å­—ç¬¦ä¸²çš„åŒ¹é…éƒ¨åˆ†å°†è¢«çªå‡ºæ˜¾ç¤º"
 
 #: info/variables.c:60
 msgid "Controls what happens when scrolling is requested at the end of a node"
-msgstr "¿ØÖÆÔÚ½ÚµãÄ©Î²Ê±³öÏÖ¹ö¶¯ÇëÇó½«·¢ÉúÊ²Ã´"
+msgstr "æ§åˆ¶åœ¨èŠ‚ç‚¹æœ«å°¾æ—¶å‡ºç°æ»šåŠ¨è¯·æ±‚å°†å‘ç”Ÿä»€ä¹ˆ"
 
 #: info/variables.c:65
 msgid "Same as scroll-behaviour"
-msgstr ""
+msgstr "ç­‰åŒäºæ»šåŠ¨è¡Œä¸º"
 
 #: info/variables.c:69
 msgid "The number lines to scroll when the cursor moves out of the window"
-msgstr "µ±¹â±êÒÆ³ö´°¿ÚÊÇËù¹ö¶¯µÄĞĞÊı"
+msgstr "å½“å…‰æ ‡ç§»å‡ºçª—å£æ˜¯æ‰€æ»šåŠ¨çš„è¡Œæ•°"
 
 #: info/variables.c:73
 msgid "Controls whether scroll-behavior affects cursor movement commands"
-msgstr ""
+msgstr "æ§åˆ¶æ»šåŠ¨è¡Œä¸ºæ˜¯å¦å½±å“å…‰æ ‡ç§»åŠ¨å‘½ä»¤"
 
 #: info/variables.c:77
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
-msgstr "ÔÚ¡°¿ª¡±Ê±£¬Info ½ÓÊÜ²¢ÏÔÊ¾ ISO À­¶¡×Ö·û"
+msgstr "åœ¨â€œå¼€â€æ—¶ï¼ŒInfo æ¥å—å¹¶æ˜¾ç¤º ISO æ‹‰ä¸å­—ç¬¦"
 
 #: info/variables.c:81
 #, fuzzy
-msgid ""
-"What to do when a scrolling command is issued at the end of the last node"
-msgstr "¿ØÖÆÔÚ½ÚµãÄ©Î²Ê±³öÏÖ¹ö¶¯ÇëÇó½«·¢ÉúÊ²Ã´"
+msgid "What to do when a scrolling command is issued at the end of the last node"
+msgstr "æ§åˆ¶åœ¨èŠ‚ç‚¹æœ«å°¾æ—¶å‡ºç°æ»šåŠ¨è¯·æ±‚å°†å‘ç”Ÿä»€ä¹ˆ"
 
 #: info/variables.c:88
 msgid "Explain the use of a variable"
-msgstr "½âÊÍ±äÁ¿µÄÓÃ·¨"
+msgstr "è§£é‡Šå˜é‡çš„ç”¨æ³•"
 
 #: info/variables.c:94
 msgid "Describe variable: "
-msgstr "ËµÃ÷±äÁ¿£º"
+msgstr "è¯´æ˜å˜é‡ï¼š"
 
 #: info/variables.c:113
 msgid "Set the value of an Info variable"
-msgstr "Éè¶¨ Info ±äÁ¿µÄÖµ"
+msgstr "è®¾å®š Info å˜é‡çš„å€¼"
 
 #: info/variables.c:119
 msgid "Set variable: "
-msgstr "Éè¶¨±äÁ¿£º"
+msgstr "è®¾å®šå˜é‡ï¼š"
 
 #: info/variables.c:137
 #, c-format
 msgid "Set %s to value (%d): "
-msgstr "½« %s Éè¶¨ÎªÖµ (%d)£º"
+msgstr "å°† %s è®¾å®šä¸ºå€¼ (%d)ï¼š"
 
 #: info/variables.c:178
 #, c-format
 msgid "Set %s to value (%s): "
-msgstr "½« %s Éè¶¨ÎªÖµ (%s)£º"
+msgstr "å°† %s è®¾å®šä¸ºå€¼ (%s)ï¼š"
 
 #: info/window.c:1070
 msgid "--*** Tags out of Date ***"
-msgstr "--*** ±ê¼Ç¹ıÆÚ ***"
+msgstr "--*** æ ‡è®°è¿‡æœŸ ***"
 
 #: info/window.c:1081
 msgid "-----Info: (), lines ----, "
-msgstr "-----Info£º()£¬ĞĞ ----£¬"
+msgstr "-----Infoï¼š()ï¼Œè¡Œ ----ï¼Œ"
 
 #: info/window.c:1088
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
-msgstr "-%s---Info£º%s£¬%d ĞĞ --%s--"
+msgstr "-%s---Infoï¼š%sï¼Œ%d è¡Œ --%s--"
 
 #: info/window.c:1092
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
-msgstr "-%s%s-Info£º(%s)%s£¬%d ĞĞ --%s--"
+msgstr "-%s%s-Infoï¼š(%s)%sï¼Œ%d è¡Œ --%s--"
 
 #: info/window.c:1099
 #, c-format
 msgid " Subfile: %s"
-msgstr " ×ÓÎÄ¼ş£º%s"
+msgstr " å­æ–‡ä»¶ï¼š%s"
 
 #: install-info/install-info.c:221
 #, c-format
 msgid "%s: warning: "
-msgstr "%s£º¾¯¸æ£º"
+msgstr "%sï¼šè­¦å‘Šï¼š"
 
 #: install-info/install-info.c:270
 #, c-format
 msgid " for %s"
-msgstr ""
+msgstr " %s"
 
 #: install-info/install-info.c:500
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr "\tÊÔÓÃ¡°%s --help¡±ÒÔ»ñµÃÑ¡ÏîµÄÍêÕûÁĞ±í¡£\n"
+msgstr "\tè¯•ç”¨â€œ%s --helpâ€ä»¥è·å¾—é€‰é¡¹çš„å®Œæ•´åˆ—è¡¨ã€‚\n"
 
 #: install-info/install-info.c:508
-#, fuzzy, c-format
+#, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
-msgstr "ÓÃ·¨£º%s [Ñ¡Ïî]... TEXINFO-ÎÄ¼ş...\n"
+msgstr "ç”¨æ³•: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 
 #: install-info/install-info.c:510
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
-msgstr ""
+msgstr "ä» Info ç›®å½• DIR-FILE çš„ INFO-FILE æ–‡ä»¶ä¸­æ·»åŠ æˆ–ç§»é™¤æ¡ç›®ã€‚"
 
 #: install-info/install-info.c:513
 msgid ""
@@ -1775,22 +1766,40 @@ msgid ""
 "                      equivalent to using the DIR-FILE argument.\n"
 " --dry-run           same as --test."
 msgstr ""
+"é€‰é¡¹:\n"
+" --debug             æŠ¥å‘Šæ­£åœ¨å¤„ç†çš„äº‹ã€‚\n"
+" --delete            ä» DIR-FILE ä¸­åˆ é™¤å­˜åœ¨çš„ INFO-FILE æ¡ç›®ï¼›\n"
+"                      ä¸æ’å…¥ä»»ä½•æ–°çš„æ¡ç›®ã€‚\n"
+" --description=TEXT  æ¡ç›®çš„è¯´æ˜ä¸º TEXTï¼›ä¸ --name é€‰é¡¹\n"
+"                      åŒç”¨è·Ÿä¸ --entry é€‰é¡¹åŒç”¨\n"
+"                      æ˜¯ä¸€æ ·çš„ã€‚\n"
+" --dir-file=NAME     æŒ‡å®š Info ç›®å½•æ–‡ä»¶çš„æ–‡ä»¶åï¼›\n"
+"                      ç­‰åŒäºä½¿ç”¨ DIR-FILE å‚æ•°ã€‚\n"
+" --dry-run           ç­‰åŒäº --testã€‚"
 
 #: install-info/install-info.c:525
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with "
-"whitespace.\n"
+"                       by zero or more extra lines starting with whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself.\n"
 "                      When removing, TEXT specifies the entry to remove.\n"
 "                      TEXT is only removed as a last resort, if the\n"
-"                      entry as determined from the Info file is not "
-"present,\n"
+"                      entry as determined from the Info file is not present,\n"
 "                      and the basename of the Info file isn't found either."
 msgstr ""
+" --entry=TEXT        æ’å…¥ TEXT ä½œä¸ºä¸€ä¸ª Info ç›®å½•æ¡ç›®ã€‚\n"
+"                      æ‰€å†™å…¥çš„ TEXT è¦ä½œä¸ºä¸€ä¸ª Info èœå•é¡¹åè·Ÿ\n"
+"                       0 ä¸ªæˆ–å¤šä¸ªä»¥ç©ºæ ¼å¼€å§‹çš„è¡Œã€‚\n"
+"                      å¦‚æœæ‚¨æŒ‡å®šä¸€ä¸ªä»¥ä¸Šçš„æ¡ç›®ï¼Œå°†æ·»åŠ æ‰€æœ‰æ¡ç›®ã€‚\n"
+"                      å¦‚æœæ‚¨æœªæŒ‡å®šä»»ä½•æ¡ç›®ï¼Œå®ƒä»¬ç”±æ¥è‡ª Info æ–‡ä»¶\n"
+"                       è‡ªèº«çš„ä¿¡æ¯å†³å®šã€‚\n"
+"                      åˆ é™¤æ—¶ï¼Œ TEXT æŒ‡å®šäº†è¦åˆ é™¤çš„æ¡ç›®ã€‚\n"
+"                      ä»…å½“ Info æ–‡ä»¶ä¸­ä½œä¸ºåˆ é™¤å®šä¹‰çš„æ¡ç›®ä¸å­˜åœ¨ï¼Œ\n"
+"                      å¹¶ä¸”è¿˜æ‰¾ä¸åˆ° Info æ–‡ä»¶çš„ç›®å½•åï¼Œ\n"
+"\t\t\té‚£ TEXT æ‰ä¼šä½œä¸ºæœ€åçš„åˆ é™¤æ‰‹æ®µã€‚"
 
 #: install-info/install-info.c:537
 msgid ""
@@ -1806,6 +1815,17 @@ msgid ""
 " --no-indent         do not format new entries in the DIR file.\n"
 " --quiet             suppress warnings."
 msgstr ""
+" --help              æ˜¾ç¤ºæ­¤å¸®åŠ©å¹¶é€€å‡ºã€‚\n"
+" --info-dir=DIR      ç­‰åŒäº --dir-file=DIR/dirã€‚\n"
+" --info-file=FILE    åœ¨ç›®å½•ä¸­æŒ‡å®šè¦å®‰è£…çš„ Info æ–‡ä»¶ï¼›\n"
+"                      ç­‰åŒäºä½¿ç”¨ INFO-FILE å‚æ•°ã€‚\n"
+" --item=TEXT         ç­‰åŒäº --entry=TEXTã€‚\n"
+" --keep-old          ä¸è¦æ›¿æ¢æ¡ç›®ï¼Œæˆ–æ˜¯åˆ é™¤ç©ºç™½å­—æ®µã€‚\n"
+" --menuentry=TEXT    ç­‰åŒäº --name=TEXTã€‚\n"
+" --name=TEXT         æ¡ç›®åä¸º TEXTï¼›ä¸ --description åŒç”¨\n"
+"                      è·Ÿä¸ --entry é€‰é¡¹åŒç”¨æ˜¯ä¸€æ ·çš„ã€‚\n"
+" --no-indent         ä¸è¦åœ¨ DIR æ–‡ä»¶ä¸­æ ¼å¼åŒ–æ–°çš„æ¡ç›®ã€‚\n"
+" --quiet             ä¸è¦è¾“å‡ºè­¦å‘Šã€‚"
 
 #: install-info/install-info.c:550
 msgid ""
@@ -1817,11 +1837,21 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are "
-"determined\n"
+"                      If you don't specify any sections, they are determined\n"
 "                       from information in the Info file itself.\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
+" --regex=R           å°†æ­¤æ–‡ä»¶çš„æ¡ç›®æ”¾å…¥æ‰€æœ‰åŒ¹é…æ­£åˆ™è¡¨è¾¾å¼\n"
+"\t\t\t R(å¿½ç•¥å¤§å°å†™)çš„å­—æ®µã€‚\n"
+" --remove            ç­‰åŒäº --deleteã€‚\n"
+" --remove-exactly    ä»…å½“å®Œå…¨åŒ¹é… info æ–‡ä»¶åæ—¶æ‰åˆ é™¤ï¼›\n"
+"                      ä¸è¦å¿½ç•¥ç±»ä¼¼ .info å’Œ .gz è¿™æ ·çš„åç¼€ã€‚\n"
+" --section=SEC       å°†æ¡ç›®æ”¾å…¥ç›®å½•çš„ SEC å­—æ®µã€‚\n"
+"                      å¦‚æœæ‚¨æŒ‡å®šä¸€ä¸ªä»¥ä¸Šçš„å­—æ®µï¼Œæ‰€æœ‰çš„æ¡ç›®å°†è¢«æ·»åŠ è‡³\n"
+"                       æ¯ä¸ªå­—æ®µã€‚\n"
+"                      å¦‚æœæ‚¨æœªæŒ‡å®šä»»ä½•å­—æ®µï¼Œå®ƒä»¬å°†ç”± Info æ–‡ä»¶\n"
+"                       è‡ªèº«çš„ä¿¡æ¯æ¥å†³å®šã€‚\n"
+" --section R SEC     ç­‰åŒäº --regex=R --section=SEC --add-onceã€‚"
 
 #: install-info/install-info.c:563
 msgid ""
@@ -1829,18 +1859,19 @@ msgid ""
 " --test              suppress updating of DIR-FILE.\n"
 " --version           display version information and exit."
 msgstr ""
+" --silent            ä¸è¾“å‡ºè­¦å‘Šã€‚\n"
+" --test              ä¸æ›´æ–° DIR-FILEã€‚\n"
+" --version           æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚"
 
 #: install-info/install-info.c:570
-#, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Çë½«´íÎó±¨¸æ·¢ËÍµ½ bug-texinfo@gnu.org£¬\n"
-"Ò»°ãµÄÎÊÌâºÍÌÖÂÛÇë·¢ËÍµ½ help-texinfo@gnu.org¡£\n"
-"Texinfo Ö÷Ò³£ºhttp://www.gnu.org/software/texinfo/"
+"è¯·å°†é”™è¯¯æŠ¥å‘Šå‘é€åˆ° bug-texinfo@gnu.orgï¼Œ\n"
+"ä¸€èˆ¬çš„é—®é¢˜å’Œè®¨è®ºè¯·å‘é€åˆ° help-texinfo@gnu.orgã€‚\n"
+"Texinfo ä¸»é¡µï¼šhttp://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:597
 #, fuzzy, c-format
@@ -1861,187 +1892,185 @@ msgid ""
 "\n"
 "%s\n"
 msgstr ""
-"ÕâÊÇÎÄ¼ş .../info/dir£¬Ëüº¬ÓĞ Info ²ã´Î\n"
-"½á¹¹µÄ×î¶¥²ã½Úµã£¬³ÆÎª (dir)Top¡£\n"
-"ÄúµÚÒ»´Îµ÷ÓÃ Info Äú½«´Ó¸Ã½Úµã¿ªÊ¼¡£\n"
+"è¿™æ˜¯æ–‡ä»¶ .../info/dirï¼Œå®ƒå«æœ‰ Info å±‚æ¬¡\n"
+"ç»“æ„çš„æœ€é¡¶å±‚èŠ‚ç‚¹ï¼Œç§°ä¸º (dir)Topã€‚\n"
+"æ‚¨ç¬¬ä¸€æ¬¡è°ƒç”¨ Info æ‚¨å°†ä»è¯¥èŠ‚ç‚¹å¼€å§‹ã€‚\n"
 "\n"
-"%s\tÕâÊÇ INFO Ê÷µÄ¶¥\n"
+"%s\tè¿™æ˜¯ INFO æ ‘çš„é¡¶\n"
 "\n"
-"  ÕâÀï (the Directory node) ¸ø³öÁËÖ÷ÒªÖ÷ÌâµÄ²Ëµ¥¡£\n"
-"  ÊäÈë¡°q¡±½«ÍË³ö£¬ÊäÈë¡°?¡±½«ÁĞ¾ÙËùÓĞ Info ÃüÁî£¬ÊäÈë\n"
-"  ¡°d¡±½«·µ»ØÕâÀï¡£ÊäÈë¡°h¡±½«¸ø³õ´ÎÊ¹ÓÃµÄÓÃ»§Ò»¸öÕªÒª£¬\n"
-"  ÊäÈë¡°mEmacs<Return>¡±½«·ÃÎÊ Emacs ÊÖ²á£¬µÈµÈ¡£\n"
+"  è¿™é‡Œ (the Directory node) ç»™å‡ºäº†ä¸»è¦ä¸»é¢˜çš„èœå•ã€‚\n"
+"  è¾“å…¥â€œqâ€å°†é€€å‡ºï¼Œè¾“å…¥â€œ?â€å°†åˆ—ä¸¾æ‰€æœ‰ Info å‘½ä»¤ï¼Œè¾“å…¥\n"
+"  â€œdâ€å°†è¿”å›è¿™é‡Œã€‚è¾“å…¥â€œhâ€å°†ç»™åˆæ¬¡ä½¿ç”¨çš„ç”¨æˆ·ä¸€ä¸ªæ‘˜è¦ï¼Œ\n"
+"  è¾“å…¥â€œmEmacs<Return>â€å°†è®¿é—® Emacs æ‰‹å†Œï¼Œç­‰ç­‰ã€‚\n"
 "\n"
-"  ÔÚ EmacsÖĞ£¬Äú¿ÉÒÔÔÚ²Ëµ¥ÏîÄ¿»ò½»²æÒıÓÃÉÏµã»÷Êó±êÓÒ¼üÒÔ\n"
-"  Ñ¡ÔñËü¡£\n"
+"  åœ¨ Emacsä¸­ï¼Œæ‚¨å¯ä»¥åœ¨èœå•é¡¹ç›®æˆ–äº¤å‰å¼•ç”¨ä¸Šç‚¹å‡»é¼ æ ‡å³é”®ä»¥\n"
+"  é€‰æ‹©å®ƒã€‚\n"
 "\n"
-"* ²Ëµ¥£º\n"
+"* èœå•ï¼š\n"
 
 #: install-info/install-info.c:622
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
-msgstr "%s£º¼´ÎŞ·¨¶ÁÈë (%s) Ò²ÎŞ·¨´´½¨ (%s)\n"
+msgstr "%sï¼šå³æ— æ³•è¯»å…¥ (%s) ä¹Ÿæ— æ³•åˆ›å»º (%s)\n"
 
 #: install-info/install-info.c:715
 #, c-format
 msgid "%s: empty file"
-msgstr "%s£º¿ÕÎÄ¼ş"
+msgstr "%sï¼šç©ºæ–‡ä»¶"
 
 #: install-info/install-info.c:1046 install-info/install-info.c:1086
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
-msgstr "START-INFO-DIR-ENTRY Ã»ÓĞÆ¥ÅäµÄ END-INFO-DIR-ENTRY"
+msgstr "START-INFO-DIR-ENTRY æ²¡æœ‰åŒ¹é…çš„ END-INFO-DIR-ENTRY"
 
 #: install-info/install-info.c:1081
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
-msgstr "END-INFO-DIR-ENTRY Ã»ÓĞÆ¥ÅäµÄ START-INFO-DIR-ENTRY"
+msgstr "END-INFO-DIR-ENTRY æ²¡æœ‰åŒ¹é…çš„ START-INFO-DIR-ENTRY"
 
 #: install-info/install-info.c:1946 install-info/install-info.c:1956
 #, c-format
 msgid "%s: already have dir file: %s\n"
-msgstr ""
+msgstr "%s: å·²ç»å­˜åœ¨äº† dir æ–‡ä»¶: %s\n"
 
 #: install-info/install-info.c:2036
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
-msgstr "%s£ºInfo ÎÄ¼şÖ»Ó¦¸ÃÖ¸¶¨Ò»´Î¡£\n"
+msgstr "%sï¼šInfo æ–‡ä»¶åªåº”è¯¥æŒ‡å®šä¸€æ¬¡ã€‚\n"
 
 #: install-info/install-info.c:2069
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
-msgstr ""
+msgstr "æŒ‡å®šäº†é¢å¤–çš„æ­£åˆ™è¡¨è¾¾å¼ï¼Œå¿½ç•¥ â€œ%sâ€"
 
 #: install-info/install-info.c:2081
 #, c-format
 msgid "Error in regular expression `%s': %s"
-msgstr ""
+msgstr "æ­£åˆ™è¡¨è¾¾å¼â€œ%sâ€ä¸­å­˜åœ¨é”™è¯¯: %s"
 
 #: install-info/install-info.c:2139
 #, c-format
 msgid "excess command line argument `%s'"
-msgstr "¶àÓàµÄÃüÁîĞĞ²ÎÊı¡°%s¡±"
+msgstr "å¤šä½™çš„å‘½ä»¤è¡Œå‚æ•°â€œ%sâ€"
 
 #: install-info/install-info.c:2143
 msgid "No input file specified; try --help for more information."
-msgstr "Ã»ÓĞÖ¸¶¨Êä³öÎÄ¼ş£»ÊÔÓÃ --help ÒÔ»ñµÃ¸ü¶àĞÅÏ¢¡£"
+msgstr "æ²¡æœ‰æŒ‡å®šè¾“å‡ºæ–‡ä»¶ï¼›è¯•ç”¨ --help ä»¥è·å¾—æ›´å¤šä¿¡æ¯ã€‚"
 
 #: install-info/install-info.c:2146
 msgid "No dir file specified; try --help for more information."
-msgstr "Ã»ÓĞÖ¸¶¨Ä¿Â¼ÎÄ¼ş£»ÊÔÓÃ --help ÒÔ»ñµÃ¸ü¶àĞÅÏ¢¡£"
+msgstr "æ²¡æœ‰æŒ‡å®šç›®å½•æ–‡ä»¶ï¼›è¯•ç”¨ --help ä»¥è·å¾—æ›´å¤šä¿¡æ¯ã€‚"
 
 #: install-info/install-info.c:2288
 #, c-format
 msgid "no info dir entry in `%s'"
-msgstr "¡°%s¡±ÖĞÃ»ÓĞ info Ä¿Â¼ÌõÄ¿"
+msgstr "â€œ%sâ€ä¸­æ²¡æœ‰ info ç›®å½•æ¡ç›®"
 
 #: install-info/install-info.c:2536
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
-msgstr "ÕÒ²»µ½¹ØÓÚ¡°%s¡±µÄÌõÄ¿£»Î´É¾³ı"
+msgstr "æ‰¾ä¸åˆ°å…³äºâ€œ%sâ€çš„æ¡ç›®ï¼›æœªåˆ é™¤"
 
 #: lib/xexit.c:54
 msgid "ferror on stdout\n"
-msgstr ""
+msgstr "æ ‡å‡†è¾“å‡ºä¸Š ferror é”™è¯¯\n"
 
 #: lib/xexit.c:59
 msgid "fflush error on stdout\n"
-msgstr ""
+msgstr "æ ‡å‡†è¾“å‡ºä¸Š fflush é”™è¯¯\n"
 
 #: makeinfo/cmds.c:582 makeinfo/cmds.c:604
-#, fuzzy, c-format
+#, c-format
 msgid "arguments to @%s ignored"
-msgstr "%c%s µÄ´íÎó²ÎÊı"
+msgstr "@%s çš„å‚æ•°è¢«å¿½ç•¥äº†"
 
 #: makeinfo/cmds.c:779
 msgid "January"
-msgstr "Ò»ÔÂ"
+msgstr "ä¸€æœˆ"
 
 #: makeinfo/cmds.c:779
 msgid "February"
-msgstr "¶şÔÂ"
+msgstr "äºŒæœˆ"
 
 #: makeinfo/cmds.c:779
 msgid "March"
-msgstr "ÈıÔÂ"
+msgstr "ä¸‰æœˆ"
 
 #: makeinfo/cmds.c:779
 msgid "April"
-msgstr "ËÄÔÂ"
+msgstr "å››æœˆ"
 
 #: makeinfo/cmds.c:779
 msgid "May"
-msgstr "ÎåÔÂ"
+msgstr "äº”æœˆ"
 
 #: makeinfo/cmds.c:780
 msgid "June"
-msgstr "ÁùÔÂ"
+msgstr "å…­æœˆ"
 
 #: makeinfo/cmds.c:780
 msgid "July"
-msgstr "ÆßÔÂ"
+msgstr "ä¸ƒæœˆ"
 
 #: makeinfo/cmds.c:780
 msgid "August"
-msgstr "°ËÔÂ"
+msgstr "å…«æœˆ"
 
 #: makeinfo/cmds.c:780
 msgid "September"
-msgstr "¾ÅÔÂ"
+msgstr "ä¹æœˆ"
 
 #: makeinfo/cmds.c:780
 msgid "October"
-msgstr "Ê®ÔÂ"
+msgstr "åæœˆ"
 
 #: makeinfo/cmds.c:781
 msgid "November"
-msgstr "Ê®Ò»ÔÂ"
+msgstr "åä¸€æœˆ"
 
 #: makeinfo/cmds.c:781
 msgid "December"
-msgstr "Ê®¶şÔÂ"
+msgstr "åäºŒæœˆ"
 
 #: makeinfo/cmds.c:1131
 #, c-format
 msgid "unlikely character %c in @var"
-msgstr "@var ÖĞ²»¿É¿¿µÄ×Ö·û %c"
+msgstr "@var ä¸­ä¸å¯é çš„å­—ç¬¦ %c"
 
 #: makeinfo/cmds.c:1174
 msgid "@sc argument all uppercase, thus no effect"
-msgstr "@sc µÄ²ÎÊıÈ«²¿Îª´óĞ´£¬Òò´ËÎŞĞ§"
+msgstr "@sc çš„å‚æ•°å…¨éƒ¨ä¸ºå¤§å†™ï¼Œå› æ­¤æ— æ•ˆ"
 
 #: makeinfo/cmds.c:1229
 #, c-format
 msgid "`{' expected, but saw `%c'"
-msgstr "Ó¦Îª¡°{¡±£¬µ«¿´µ½ÁË¡°%c¡±"
+msgstr "åº”ä¸ºâ€œ{â€ï¼Œä½†çœ‹åˆ°äº†â€œ%câ€"
 
 #: makeinfo/cmds.c:1269
 msgid "end of file inside verb block"
-msgstr "ÎÄ¼şÔÚÔ­ÎÄ¿éÖĞ½áÊø"
+msgstr "æ–‡ä»¶åœ¨åŸæ–‡å—ä¸­ç»“æŸ"
 
 #: makeinfo/cmds.c:1277
 #, c-format
 msgid "`}' expected, but saw `%c'"
-msgstr "Ó¦Îª¡°}¡±£¬µ«¿´µ½ÁË¡°%c¡±"
+msgstr "åº”ä¸ºâ€œ}â€ï¼Œä½†çœ‹åˆ°äº†â€œ%câ€"
 
 #: makeinfo/cmds.c:1308
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Note...} åœ¨ Info ä¸­å½¢æˆäº†ä¸€ä¸ªå‡çš„äº¤å‰å¼•ç”¨ï¼›å¯é€šè¿‡é‡å†™é¿å…æ­¤äº‹"
 
 #: makeinfo/cmds.c:1504
 #, c-format
 msgid "%c%s is obsolete"
-msgstr "%c%s ÒÑ¹ıÊ±"
+msgstr "%c%s å·²è¿‡æ—¶"
 
 #: makeinfo/cmds.c:1612
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@sp ĞèÒªÕıÊı²ÎÊı£¬¶ø²»ÊÇ¡°%s¡±"
+msgstr "@sp éœ€è¦æ­£æ•°å‚æ•°ï¼Œè€Œä¸æ˜¯â€œ%sâ€"
 
 #: makeinfo/cmds.c:2023 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
-msgstr "%c%s µÄ´íÎó²ÎÊı"
+msgstr "%c%s çš„é”™è¯¯å‚æ•°"
 
 #: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
 msgid "asis"
@@ -2052,363 +2081,363 @@ msgid "none"
 msgstr "none"
 
 #: makeinfo/cmds.c:2049
-#, fuzzy, c-format
+#, c-format
 msgid "Bad argument to @%s"
-msgstr "%c%s µÄ´íÎó²ÎÊı"
+msgstr "@%s çš„å‚æ•°é”™è¯¯"
 
 #: makeinfo/cmds.c:2063
 msgid "insert"
-msgstr ""
+msgstr "æ’å…¥"
 
 #: makeinfo/cmds.c:2079
-#, fuzzy, c-format
+#, c-format
 msgid "Bad argument to @%s: %s"
-msgstr "%c%s µÄ´íÎó²ÎÊı"
+msgstr "@%s çš„é”™è¯¯å‚æ•°: %s"
 
 #: makeinfo/cmds.c:2162
 #, c-format
 msgid "Expected @%s on or off, not `%s'"
-msgstr ""
+msgstr "åº”å½“ @%s å¼€å¯æˆ–å…³é—­ï¼Œè€Œä¸æ˜¯â€œ%sâ€"
 
 #: makeinfo/cmds.c:2182
 #, c-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr ""
+msgstr "ä»…æ”¯æŒ @%s 10 æˆ– 11ï¼Œè€Œä¸æ˜¯â€œ%sâ€"
 
 #: makeinfo/defun.c:83
 msgid "Missing `}' in @def arg"
-msgstr "@def µÄ²ÎÊıÒÅÂ©ÁË¡°}¡±"
+msgstr "@def çš„å‚æ•°é—æ¼äº†â€œ}â€"
 
 #: makeinfo/defun.c:711
 #, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
-msgstr ""
+msgstr "å¿…é¡»åœ¨â€œ@%sâ€ç¯å¢ƒå˜é‡ä¸­ä½¿ç”¨â€œ@%sâ€"
 
 #: makeinfo/files.c:434
 #, c-format
 msgid "%s: getwd: %s, %s\n"
-msgstr "%s£ºgetwd£º%s£¬%s\n"
+msgstr "%sï¼šgetwdï¼š%sï¼Œ%s\n"
 
 #: makeinfo/files.c:637
 #, c-format
 msgid "`%s' omitted before output filename"
-msgstr ""
+msgstr "åœ¨è¾“å‡ºæ–‡ä»¶åå‰é—æ¼äº†â€œ%sâ€"
 
 #: makeinfo/files.c:645
 #, c-format
 msgid "`%s' omitted since writing to stdout"
-msgstr ""
+msgstr "å†™å…¥æ ‡å‡†è¾“å‡ºå‰é—æ¼äº†â€œ%sâ€"
 
 #: makeinfo/files.c:693
 msgid "Output buffer not empty."
-msgstr ""
+msgstr "è¾“å‡ºç¼“å†²åŒºéç©ºã€‚"
 
 #: makeinfo/float.c:181
 #, c-format
 msgid "Requested float type `%s' not previously used"
-msgstr ""
+msgstr "æ‰€è¦çš„æµ®ç‚¹ç±»å‹â€œ%sâ€ä¸æ˜¯ä¸Šæ¬¡æ‰€ç”¨çš„"
 
 #: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
 #: makeinfo/index.c:965
 msgid "See "
-msgstr "²ÎÔÄ "
+msgstr "å‚é˜… "
 
 #: makeinfo/footnote.c:149
 #, c-format
 msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "¡°%c%s¡±ĞèÒª²ÎÊı¡°{...}¡±£¬¶ø²»½ö½öÊÇ¡°%s¡±"
+msgstr "â€œ%c%sâ€éœ€è¦å‚æ•°â€œ{...}â€ï¼Œè€Œä¸ä»…ä»…æ˜¯â€œ%sâ€"
 
 #: makeinfo/footnote.c:164
 #, c-format
 msgid "No closing brace for footnote `%s'"
-msgstr "½Å×¢¡°%s¡±Ã»ÓĞ±ÕºÏ»¨À¨ºÅ"
+msgstr "è„šæ³¨â€œ%sâ€æ²¡æœ‰é—­åˆèŠ±æ‹¬å·"
 
 #: makeinfo/footnote.c:197
 msgid "Footnote defined without parent node"
-msgstr "¶¨ÒåµÄ½Å×¢Ã»ÓĞ¸¸½Úµã"
+msgstr "å®šä¹‰çš„è„šæ³¨æ²¡æœ‰çˆ¶èŠ‚ç‚¹"
 
 #: makeinfo/footnote.c:209
 msgid "Footnotes inside footnotes are not allowed"
-msgstr "½Å×¢ÄÚµÄ½Å×¢ÊÇ²»ÔÊĞíµÄ"
+msgstr "è„šæ³¨å†…çš„è„šæ³¨æ˜¯ä¸å…è®¸çš„"
 
 #: makeinfo/footnote.c:301 makeinfo/index.c:187
 msgid "Footnotes"
-msgstr "½Å×¢"
+msgstr "è„šæ³¨"
 
 #: makeinfo/html.c:91
 #, c-format
 msgid "%s: could not open --css-file: %s"
-msgstr ""
+msgstr "%s: æ— æ³•æ‰“å¼€ --css-file: %s"
 
 #: makeinfo/html.c:180
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
-msgstr ""
+msgstr "%s:%d: --css-file ä»¥æ³¨é‡Šç»“å°¾"
 
 #: makeinfo/html.c:426
 msgid "[unexpected] no html tag to pop"
-msgstr ""
+msgstr "[æœªé¢„æ–™åˆ°çš„] æ—  html æ ‡è®°å¼¹å‡º "
 
 #: makeinfo/html.c:800
-#, fuzzy, c-format
+#, c-format
 msgid "[unexpected] invalid node name: `%s'"
-msgstr "ÎŞĞ§µÄ½Å×¢Ãû£º¡°%s¡±"
+msgstr "[æœªé¢„æ–™åˆ°çš„] æ— æ•ˆçš„èŠ‚ç‚¹åç§°: â€œ%sâ€"
 
 #: makeinfo/index.c:167
 #, c-format
 msgid "Unknown index `%s'"
-msgstr "Î´ÖªµÄË÷Òı¡°%s¡±"
+msgstr "æœªçŸ¥çš„ç´¢å¼•â€œ%sâ€"
 
 #: makeinfo/index.c:232
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Info ÎŞ·¨´¦ÀíË÷ÒıÌõÄ¿¡°%s¡±ÖĞµÄ¡°:¡±"
+msgstr "Info æ— æ³•å¤„ç†ç´¢å¼•æ¡ç›®â€œ%sâ€ä¸­çš„â€œ:â€"
 
 #: makeinfo/index.c:410
 #, c-format
 msgid "Index `%s' already exists"
-msgstr "Ë÷Òı¡°%s¡±ÒÑ¾­´æÔÚ"
+msgstr "ç´¢å¼•â€œ%sâ€å·²ç»å­˜åœ¨"
 
 #: makeinfo/index.c:453
 #, c-format
 msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "@synindex ÖĞµÄÎ´ÖªË÷Òı¡°%s¡±ºÍ/»ò¡°%s¡±"
+msgstr "@synindex ä¸­çš„æœªçŸ¥ç´¢å¼•â€œ%sâ€å’Œ/æˆ–â€œ%sâ€"
 
 #: makeinfo/index.c:676
 msgid "(line )"
-msgstr ""
+msgstr "(è¡Œ )"
 
 #: makeinfo/index.c:684
 #, c-format
 msgid "(line %*d)"
-msgstr ""
+msgstr "(è¡Œ %*d)"
 
 #: makeinfo/index.c:765
 #, c-format
 msgid "Unknown index `%s' in @printindex"
-msgstr "@printindex ÖĞµÄÎ´ÖªË÷Òı¡°%s¡±"
+msgstr "@printindex ä¸­çš„æœªçŸ¥ç´¢å¼•â€œ%sâ€"
 
 #: makeinfo/index.c:834
 #, c-format
 msgid "Entry for index `%s' outside of any node"
-msgstr "¹ØÓÚË÷Òı¡°%s¡±µÄÌõÄ¿³¬³öÁËËùÓĞ½Úµã"
+msgstr "å…³äºç´¢å¼•â€œ%sâ€çš„æ¡ç›®è¶…å‡ºäº†æ‰€æœ‰èŠ‚ç‚¹"
 
 #: makeinfo/index.c:837 makeinfo/index.c:873
 msgid "(outside of any node)"
-msgstr "(³¬³öÈÎºÎ½Úµã)"
+msgstr "(è¶…å‡ºä»»ä½•èŠ‚ç‚¹)"
 
 #: makeinfo/insertion.c:161
+#, fuzzy
 msgid "@item not allowed in argument to @itemize"
-msgstr ""
+msgstr "å‚æ•°ä¸­ä¸å…è®¸ @item æ”¹ä¸º @itemize"
 
 #: makeinfo/insertion.c:242
 msgid "Broken-Type in insertion_type_pname"
-msgstr "insertion_type_pname ÖĞµÄ´íÎóÀàĞÍ"
+msgstr "insertion_type_pname ä¸­çš„é”™è¯¯ç±»å‹"
 
 #: makeinfo/insertion.c:338
 msgid "Enumeration stack overflow"
-msgstr "Ã¶¾ÙÕ»Òç³ö"
+msgstr "æšä¸¾æ ˆæº¢å‡º"
 
 #: makeinfo/insertion.c:370
 #, c-format
 msgid "lettering overflow, restarting at %c"
-msgstr "×Ö·û±àºÅÒç³ö£¬´Ó %c ÖØĞÂ¿ªÊ¼"
+msgstr "å­—ç¬¦ç¼–å·æº¢å‡ºï¼Œä» %c é‡æ–°å¼€å§‹"
 
 #: makeinfo/insertion.c:639
 #, c-format
 msgid "%s requires an argument: the formatter for %citem"
-msgstr ""
+msgstr "%s éœ€è¦ä¸€ä¸ªå‚æ•°: %citem çš„æ ¼å¼åŒ–å‚æ•°"
 
 #: makeinfo/insertion.c:727
 #, c-format
 msgid "%cfloat environments cannot be nested"
-msgstr ""
+msgstr "%cfloat ç¯å¢ƒå˜é‡ä¸èƒ½åµŒå¥—"
 
 #: makeinfo/insertion.c:981
 #, c-format
 msgid "`@end' expected `%s', but saw `%s'"
-msgstr "¡°@end¡±ĞèÒª¡°%s¡±£¬µ«¿´µ½¡°%s¡±"
+msgstr "â€œ@endâ€éœ€è¦â€œ%sâ€ï¼Œä½†çœ‹åˆ°â€œ%sâ€"
 
 #: makeinfo/insertion.c:1349
 #, c-format
 msgid "No matching `%cend %s'"
-msgstr "Ã»ÓĞÆ¥ÅäµÄ¡°%cend %s¡±"
+msgstr "æ²¡æœ‰åŒ¹é…çš„â€œ%cend %sâ€"
 
 #: makeinfo/insertion.c:1618
 #, c-format
 msgid "%s requires letter or digit"
-msgstr "%s ĞèÒª×ÖÄ¸»òÊı×Ö"
+msgstr "%s éœ€è¦å­—æ¯æˆ–æ•°å­—"
 
 #: makeinfo/insertion.c:1718
 msgid "end of file inside verbatim block"
-msgstr "ÎÄ¼şÔÚÔ­ÎÄ¿éÖĞ½áÊø"
+msgstr "æ–‡ä»¶åœ¨åŸæ–‡å—ä¸­ç»“æŸ"
 
 #: makeinfo/insertion.c:1942
-#, fuzzy, c-format
+#, c-format
 msgid "@%s not meaningful outside `@float' environment"
-msgstr "ÔÚ¡°@%2$s¡±¿éÖĞ¡°@%1$s¡±ÊÇÃ»ÓĞÒâÒåµÄ"
+msgstr "â€œ@floatâ€ç¯å¢ƒå˜é‡å¤–çš„ @%s æ˜¯æ²¡æœ‰æ„ä¹‰çš„"
 
 #: makeinfo/insertion.c:1978
 msgid "@menu seen before first @node, creating `Top' node"
-msgstr "ÔÚµÚÒ»¸ö½ÚµãÖ®Ç°Óöµ½ @menu£¬ÕıÔÚ´´½¨¡°¶¥¡±½Úµã"
+msgstr "åœ¨ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ä¹‹å‰é‡åˆ° @menuï¼Œæ­£åœ¨åˆ›å»ºâ€œé¡¶â€èŠ‚ç‚¹"
 
 #: makeinfo/insertion.c:1979
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "ÄúµÄ @top ½Úµã¿ÉÄÜÓ¦¸Ã°üº¬ÔÚ @ifnottex ¶ø²»ÊÇ @ifinfo ÖĞ£¿"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "æ‚¨çš„ @top èŠ‚ç‚¹å¯èƒ½åº”è¯¥åŒ…å«åœ¨ @ifnottex è€Œä¸æ˜¯ @ifinfo ä¸­ï¼Ÿ"
 
 #: makeinfo/insertion.c:1991
 msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr "ÔÚµÚÒ»¸ö½ÚµãÖ®Ç°Óöµ½ @detailmenu£¬ÕıÔÚ´´½¨¡°¶¥¡±½Úµã"
+msgstr "åœ¨ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ä¹‹å‰é‡åˆ° @detailmenuï¼Œæ­£åœ¨åˆ›å»ºâ€œé¡¶â€èŠ‚ç‚¹"
 
 #: makeinfo/insertion.c:2047
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr ""
+msgstr "åœ¨â€œ@titlepageâ€å’Œâ€œ@quotationâ€ç¯å¢ƒå˜é‡å¤– @%s æ— æ„ä¹‰"
 
 #: makeinfo/insertion.c:2061
-#, fuzzy, c-format
+#, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "ÔÚ¡°@%2$s¡±¿éÖĞ¡°@%1$s¡±ÊÇÃ»ÓĞÒâÒåµÄ"
+msgstr "â€œ@titlepageâ€ç¯å¢ƒå˜é‡å¤–çš„ @%s æ˜¯æ²¡æœ‰æ„ä¹‰çš„"
 
 #: makeinfo/insertion.c:2092
 #, c-format
 msgid "Unmatched `%c%s'"
-msgstr "Î´Æ¥ÅäµÄ¡°%c%s¡±"
+msgstr "æœªåŒ¹é…çš„â€œ%c%sâ€"
 
 #: makeinfo/insertion.c:2097
 #, c-format
 msgid "`%c%s' needs something after it"
-msgstr "¡°%c%s¡±Ö®ºóĞèÒªÓĞĞ©Ê²Ã´"
+msgstr "â€œ%c%sâ€ä¹‹åéœ€è¦æœ‰äº›ä»€ä¹ˆ"
 
 #: makeinfo/insertion.c:2103
-#, fuzzy, c-format
+#, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "¡°%s¡±µÄ´íÎó²ÎÊı£¬¡°%s¡±£¬Ê¹ÓÃ¡°%s¡±"
+msgstr "â€œ%sâ€çš„é”™è¯¯å‚æ•°â€œ@%sâ€ï¼Œä½¿ç”¨â€œ%sâ€"
 
 #: makeinfo/insertion.c:2200
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
-msgstr "ÔÚ¡°@%2$s¡±¿éÖĞ¡°@%1$s¡±ÊÇÃ»ÓĞÒâÒåµÄ"
+msgstr "åœ¨â€œ@%2$sâ€å—ä¸­â€œ@%1$sâ€æ˜¯æ²¡æœ‰æ„ä¹‰çš„"
 
 #: makeinfo/insertion.c:2209
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
-msgstr "ÔÚ¡°%s¡±¿éÖĞ @itemx ÊÇÃ»ÓĞÒâÒåµÄ"
+msgstr "åœ¨â€œ%sâ€å—ä¸­ @itemx æ˜¯æ²¡æœ‰æ„ä¹‰çš„"
 
 #: makeinfo/insertion.c:2383
 #, c-format
 msgid "%c%s found outside of an insertion block"
-msgstr "ÔÚ²åÈë¿éÖ®Íâ·¢ÏÖÁË %c%s"
+msgstr "åœ¨æ’å…¥å—ä¹‹å¤–å‘ç°äº† %c%s"
 
 #: makeinfo/lang.c:1218
 #, c-format
 msgid "no default territory known for language `%s'"
-msgstr ""
+msgstr "è¯­è¨€â€œ%sâ€æ— å·²çŸ¥çš„é»˜è®¤åœ°åŒº"
 
 #: makeinfo/lang.c:1281
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
-msgstr "%s ÔÚ ISO 639 ÓïÑÔ±àÂëÖĞÊÇÎŞĞ§µÄ"
+msgstr "%s åœ¨ ISO 639 è¯­è¨€ç¼–ç ä¸­æ˜¯æ— æ•ˆçš„"
 
 #: makeinfo/lang.c:1399
-#, fuzzy, c-format
+#, c-format
 msgid "unrecognized encoding name `%s'"
-msgstr "²»ÄÜÊ¶±ğµÄ±àÂëÃû³Æ¡°%s¡±"
+msgstr "ä¸èƒ½è¯†åˆ«çš„ç¼–ç åç§°â€œ%sâ€"
 
 #: makeinfo/lang.c:1407
 #, c-format
 msgid "sorry, encoding `%s' not supported"
-msgstr "±§Ç¸£¬²»Ö§³Ö±àÂë¡°%s¡±"
+msgstr "æŠ±æ­‰ï¼Œä¸æ”¯æŒç¼–ç â€œ%sâ€"
 
 #: makeinfo/lang.c:1492
 #, c-format
 msgid "invalid encoded character `%s'"
-msgstr "ÎŞĞ§µÄ±àÂë×Ö·û¡°%s¡±"
+msgstr "æ— æ•ˆçš„ç¼–ç å­—ç¬¦â€œ%sâ€"
 
 #: makeinfo/lang.c:1800
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s µÄ²ÎÊıÓ¦Îª¡°i¡±»ò¡°j¡±£¬¶ø²»ÊÇ¡°%c¡±"
+msgstr "%c%s çš„å‚æ•°åº”ä¸ºâ€œiâ€æˆ–â€œjâ€ï¼Œè€Œä¸æ˜¯â€œ%câ€"
 
 #: makeinfo/lang.c:1804
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%s ĞèÒªÒÔµ¥¸ö×Ö·û¡°i¡±»ò¡°j¡±Îª²ÎÊı"
+msgstr "%c%s éœ€è¦ä»¥å•ä¸ªå­—ç¬¦â€œiâ€æˆ–â€œjâ€ä¸ºå‚æ•°"
 
 #: makeinfo/macro.c:128
 #, c-format
 msgid "macro `%s' previously defined"
-msgstr "ºê¡°%s¡±ÒÑÔÚÇ°Ãæ¶¨Òå"
+msgstr "å®â€œ%sâ€å·²åœ¨å‰é¢å®šä¹‰"
 
 #: makeinfo/macro.c:132
 #, c-format
 msgid "here is the previous definition of `%s'"
-msgstr "ÕâÀïÊÇ¡°%s¡±Ç°ÃæµÄ¶¨Òå"
+msgstr "è¿™é‡Œæ˜¯â€œ%sâ€å‰é¢çš„å®šä¹‰"
 
 #: makeinfo/macro.c:359
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr ""
+msgstr "\\ ä»¥å¸¦æœ‰â€œ%sâ€çš„å®å±•å¼€å¼ä»£æ›¿å‚æ•°åç§°"
 
 #: makeinfo/macro.c:401
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
-msgstr "ÔÚµÚ %2$d ĞĞÖĞÒÔ¹ı¶àµÄ²ÎÊıµ÷ÓÃºê¡°%1$s¡±"
+msgstr "åœ¨ç¬¬ %2$d è¡Œä¸­ä»¥è¿‡å¤šçš„å‚æ•°è°ƒç”¨å®â€œ%1$sâ€"
 
 #: makeinfo/macro.c:580
 #, c-format
 msgid "%cend macro not found"
-msgstr "ÕÒ²»µ½ºê %cend"
+msgstr "æ‰¾ä¸åˆ°å® %cend"
 
 #: makeinfo/macro.c:591
 msgid "@allow-recursion is deprecated; please use @rmacro instead"
-msgstr ""
+msgstr "ä¸èµæˆä½¿ç”¨ @allow-recursionï¼›è¯·ä½¿ç”¨ @rmacro ä»£æ›¿ "
 
 #: makeinfo/macro.c:606
 msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr ""
+msgstr "ä¸èµæˆä½¿ç”¨ @quote-argï¼›å‚æ•°æ˜¯é»˜è®¤å¼•ç”¨çš„"
 
 #: makeinfo/macro.c:649
 #, c-format
 msgid "mismatched @end %s with @%s"
-msgstr "@end %s ºÍ @%s ²»Æ¥Åä"
+msgstr "@end %s å’Œ @%s ä¸åŒ¹é…"
 
 #: makeinfo/makeinfo.c:188
 #, c-format
 msgid "Too many errors!  Gave up.\n"
-msgstr "¹ı¶àµÄ´íÎó£¡·ÅÆú¡£\n"
+msgstr "è¿‡å¤šçš„é”™è¯¯ï¼æ”¾å¼ƒã€‚\n"
 
 #: makeinfo/makeinfo.c:306
 #, c-format
 msgid "%s:%d: warning: "
-msgstr "%s£º%d£º¾¯¸æ£º"
+msgstr "%sï¼š%dï¼šè­¦å‘Šï¼š"
 
 #: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
 #, c-format
 msgid "Misplaced %c"
-msgstr "´íÎó·ÅÖÃµÄ %c"
+msgstr "é”™è¯¯æ”¾ç½®çš„ %c"
 
 #: makeinfo/makeinfo.c:344
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "ÊÔÓÃ¡°%s --help¡±ÒÔ»ñÈ¡¸ü¶àĞÅÏ¢¡£\n"
+msgstr "è¯•ç”¨â€œ%s --helpâ€ä»¥è·å–æ›´å¤šä¿¡æ¯ã€‚\n"
 
 #: makeinfo/makeinfo.c:347
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "ÓÃ·¨£º%s [Ñ¡Ïî]... TEXINFO-ÎÄ¼ş...\n"
+msgstr "ç”¨æ³•ï¼š%s [é€‰é¡¹]... TEXINFO-æ–‡ä»¶...\n"
 
 #: makeinfo/makeinfo.c:350
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
-"½« Texinfo Ô´ÎÄ¼ş×ª»»ÎªÆäËü¸÷ÖÖ¸ñÊ½£¬Ä¬ÈÏ×ª»»ÎªÊÊÓÚ\n"
-"ÓÉ Emacs »ò¶ÀÁ¢ GNU Info ÔÚÏßä¯ÀÀµÄ Info ÎÄ¼ş¡£\n"
+"å°† Texinfo æºæ–‡ä»¶è½¬æ¢ä¸ºå…¶å®ƒå„ç§æ ¼å¼ï¼Œé»˜è®¤è½¬æ¢ä¸ºé€‚äº\n"
+"ç”± Emacs æˆ–ç‹¬ç«‹ GNU Info åœ¨çº¿æµè§ˆçš„ Info æ–‡ä»¶ã€‚\n"
 
 #: makeinfo/makeinfo.c:354
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "General options:\n"
 "      --error-limit=NUM       quit after NUM errors (default %d).\n"
@@ -2421,18 +2450,19 @@ msgid ""
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
-"Í¨ÓÃÑ¡Ïî£º\n"
-"      --error-limit=NUM       ÔÚ NUM ¸ö´íÎóºóÍË³ö (Ä¬ÈÏÎª %d).\n"
-"      --force                 ¼´Ê±³öÏÖ´íÎóÒ²±£ÁôÊä³öÎÄ¼ş¡£\n"
-"      --help                  ÏÔÊ¾¸ÃÇóÖúĞÅÏ¢²¢ÍË³ö¡£\n"
-"      --no-validate           ²»½øĞĞ½»²æÒıÓÃ¼ì²é¡£\n"
-"      --no-warn               ²»Êä³ö¾¯¸æ (²»Éæ¼°´íÎó)¡£\n"
-"      --reference-limit=NUM   ¶ÔÖÁ¶à NUM ¸öÒıÓÃ½øĞĞ¾¯¸æ (Ä¬ÈÏÎª %d)¡£\n"
-"  -v, --verbose               ½âÊÍ¶¼×öÁËĞ©Ê²Ã´¡£\n"
-"      --version               ÏÔÊ¾°æ±¾ĞÅÏ¢²¢ÍË³ö¡£\n"
+"é€šç”¨é€‰é¡¹ï¼š\n"
+"      --error-limit=NUM       åœ¨ NUM ä¸ªé”™è¯¯åé€€å‡º (é»˜è®¤ä¸º %d)ã€‚\n"
+"      --document-language=STR ä¸ºè¾“å‡ºçš„æ–‡æ¡£ç¿»è¯‘ Texinfo å…³é”®å­—æ—¶æ‰€ç”¨\n"
+"                               çš„åœ°åŒºä»£ç (é»˜è®¤ä¸º C)ã€‚\n"
+"      --force                 å³ä½¿å‡ºç°é”™è¯¯ä¹Ÿä¿ç•™è¾“å‡ºæ–‡ä»¶ã€‚\n"
+"      --help                  æ˜¾ç¤ºè¯¥æ±‚åŠ©ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
+"      --no-validate           ä¸è¿›è¡Œäº¤å‰å¼•ç”¨æ£€æŸ¥ã€‚\n"
+"      --no-warn               ä¸è¾“å‡ºè­¦å‘Š (ä¸æ¶‰åŠé”™è¯¯)ã€‚\n"
+"  -v, --verbose               è§£é‡Šéƒ½åšäº†äº›ä»€ä¹ˆã€‚\n"
+"      --version               æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
 
 #: makeinfo/makeinfo.c:369
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -2440,10 +2470,11 @@ msgid ""
 "      --xml                   output Texinfo XML rather than Info.\n"
 "      --plaintext             output plain text rather than Info.\n"
 msgstr ""
-"Êä³ö¸ñÊ½Ñ¡Ôñ (Ä¬ÈÏÉú³É Info ÎÄ¼ş)£º\n"
-"      --docbook             Êä³ö DocBook ¶ø²»ÊÇ Info¡£\n"
-"      --html                Êä³ö HTML ¶ø²»ÊÇ Info¡£\n"
-"      --xml                 Êä³ö XML (TexinfoML) ¶ø²»ÊÇ Info¡£\n"
+"è¾“å‡ºæ ¼å¼é€‰æ‹© (é»˜è®¤ç”Ÿæˆ Info æ–‡ä»¶)ï¼š\n"
+"      --docbook             è¾“å‡º DocBook è€Œä¸æ˜¯ Infoã€‚\n"
+"      --html                è¾“å‡º HTML è€Œä¸æ˜¯ Infoã€‚\n"
+"      --xml                 è¾“å‡º XML (TexinfoML) è€Œä¸æ˜¯ Infoã€‚\n"
+"      --plaintext           è¾“å‡ºæ™®é€šæ–‡æœ¬è€Œä¸æ˜¯ Infoã€‚\n"
 
 #: makeinfo/makeinfo.c:377
 #, fuzzy
@@ -2451,63 +2482,56 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output);\n"
 "                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
+"      --no-split              suppress the splitting of Info or HTML output,\n"
 "                                generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
 "  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
 msgstr ""
-"Í¨ÓÃÊä³öÑ¡Ïî£º\n"
-"  -E, --macro-expand FILE   ½«ºêÀ©Õ¹Ô´Êä³öµ½ÎÄ¼ş FILE¡£\n"
-"                            ºöÂÔËùÓĞ @setfilename¡£\n"
-"      --no-headers          ²»ÔÚ Info Êä³ö»ò HTML Êä³öÖĞÉú³É½Úµã·Ö¸ô·û£¬\n"
-"                              ½Úµã£ºĞĞ£¬ºÍ²Ëµ¥¡£´Ó¶øÉú³ÉÆÕÍ¨ÎÄ±¾(Info\n"
-"                              Êä³ö)»ò½Ï¶ÌµÄÊä³ö(HTML Êä³ö)£»\n"
-"                              ´ËÍâ, Ä¬ÈÏÊä³öµ½±ê×¼Êä³ö¡£\n"
-"      --no-split            ²»ÊÇÉú³É·Ö¸îµÄ Info »ò HTML Êä³ö£¬\n"
-"                            ¶øÊÇÉú³Éµ¥¸öÊä³öÎÄ¼ş¡£\n"
-"      --number-sections     Êä³öÕÂ½Ú±àºÅ¡£\n"
-"  -o, --output=FILE         Êä³öµ½ÎÄ¼ş FILE (Èç¹ûÊÇ·Ö¸îµÄ HTML ÔòÎªÄ¿Â¼)£¬\n"
+"é€šç”¨è¾“å‡ºé€‰é¡¹ï¼š\n"
+"  -E, --macro-expand FILE   å°†å®æ‰©å±•æºè¾“å‡ºåˆ°æ–‡ä»¶ FILEã€‚\n"
+"                            å¿½ç•¥æ‰€æœ‰ @setfilenameã€‚\n"
+"      --no-headers          ä¸åœ¨ Info è¾“å‡ºæˆ– HTML è¾“å‡ºä¸­ç”ŸæˆèŠ‚ç‚¹åˆ†éš”ç¬¦ï¼Œ\n"
+"                              èŠ‚ç‚¹ï¼šè¡Œï¼Œå’Œèœå•ã€‚ä»è€Œç”Ÿæˆæ™®é€šæ–‡æœ¬(Info\n"
+"                              è¾“å‡º)æˆ–è¾ƒçŸ­çš„è¾“å‡º(HTML è¾“å‡º)ï¼›\n"
+"                              æ­¤å¤–, é»˜è®¤è¾“å‡ºåˆ°æ ‡å‡†è¾“å‡ºã€‚\n"
+"      --no-split            ä¸æ˜¯ç”Ÿæˆåˆ†å‰²çš„ Info æˆ– HTML è¾“å‡ºï¼Œ\n"
+"                            è€Œæ˜¯ç”Ÿæˆå•ä¸ªè¾“å‡ºæ–‡ä»¶ã€‚\n"
+"      --number-sections     è¾“å‡ºç« èŠ‚ç¼–å·ã€‚\n"
+"  -o, --output=FILE         è¾“å‡ºåˆ°æ–‡ä»¶ FILE (å¦‚æœæ˜¯åˆ†å‰²çš„ HTML åˆ™ä¸ºç›®å½•)ï¼Œ\n"
 
 #: makeinfo/makeinfo.c:391
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
-"Info ºÍÆÕÍ¨ÎÄ±¾Ñ¡Ïî£º\n"
-"      --enable-encoding       ¸ù¾İ @documentencoding Êä³ö Info Êä³öÖĞµÄ\n"
-"                                ÖØÒôºÍÌØÊâ×Ö·û¡£\n"
-"      --fill-column=NUM       ÔÚµÚ NUM ¸ö×Ö·û´¦ÇĞ·Ö Info ĞĞ (Ä¬ÈÏÎª %d)¡£\n"
-"      --footnote-style=STYLE  ¸ù¾İ STYLE Êä³ö Info ÖĞµÄ½Å×¢£º\n"
-"                                ¡°separate¡±½«½Å×¢ÖÃÓÚ¶ÀÁ¢µÄ½Úµã£»\n"
-"                                ¡°end¡±½«½Å×¢ÖÃÓÚ¶¨ÒåËüµÄ½ÚµãµÄÄ©Î²(Ä¬ÈÏ)¡£\n"
-"      --paragraph-indent=VAL  ½« Info ¶Î¶ÔÆëµ½ VAL ¸ö¿Õ¸ñ (Ä¬ÈÏÎª %d).\n"
-"                                Èç¹û VAL Îª¡°none¡±£¬Ôò²»¶ÔÆë£»Èç¹û VAL Îª\n"
-"                                ¡°asis¡±£¬±£ÁôÏÖÓĞµÄ¶ÔÆë¡£\n"
-"      --split-size=NUM        ÔÚ´óĞ¡ NUM µÄÊ±ºò²ğ·Ö Info ÎÄ¼ş (Ä¬ÈÏÎª %d)¡£\n"
+"Info å’Œæ™®é€šæ–‡æœ¬é€‰é¡¹ï¼š\n"
+"      --disable-encoding      ä¸è¦æ ¹æ® @documentencoding è¾“å‡º Info è¾“å‡ºä¸­çš„\n"
+"                                é‡éŸ³å’Œç‰¹æ®Šå­—ç¬¦ã€‚\n"
+"      --enable-encoding       è¦†ç›– --disable-encoding è®¾ç½®(é»˜è®¤)ã€‚\n"
+"      --fill-column=NUM       åœ¨ç¬¬ NUM ä¸ªå­—ç¬¦å¤„åˆ‡åˆ† Info è¡Œ (é»˜è®¤ä¸º %d)ã€‚\n"
+"      --footnote-style=STYLE  æ ¹æ® STYLE è¾“å‡º Info ä¸­çš„è„šæ³¨ï¼š\n"
+"                                â€œseparateâ€å°†è„šæ³¨ç½®äºç‹¬ç«‹çš„èŠ‚ç‚¹ï¼›\n"
+"                                â€œendâ€å°†è„šæ³¨ç½®äºå®šä¹‰å®ƒçš„èŠ‚ç‚¹çš„æœ«å°¾(é»˜è®¤)ã€‚\n"
+"      --paragraph-indent=VAL  å°† Info æ®µå¯¹é½åˆ° VAL ä¸ªç©ºæ ¼ (é»˜è®¤ä¸º %d).\n"
+"                                å¦‚æœ VAL ä¸ºâ€œnoneâ€ï¼Œåˆ™ä¸å¯¹é½ï¼›å¦‚æœ VAL ä¸º\n"
+"                                â€œasisâ€ï¼Œä¿ç•™ç°æœ‰çš„å¯¹é½ã€‚\n"
+"      --split-size=NUM        åœ¨å¤§å° NUM çš„æ—¶å€™æ‹†åˆ† Info æ–‡ä»¶ (é»˜è®¤ä¸º %d)ã€‚\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2519,16 +2543,24 @@ msgid ""
 "      --transliterate-file-names\n"
 "                              produce file names in ASCII transliteration.\n"
 msgstr ""
+"HTML é€‰é¡¹:\n"
+"      --css-include=FILE      åœ¨ HTML <style> è¾“å‡ºä¸­åŒ…å« FILEï¼›\n"
+"                                å¦‚æœ FILE æ˜¯ - å°†ä»æ ‡å‡†è¾“å…¥è¯»å–å†…å®¹ã€‚\n"
+"      --css-ref=URL           ç”Ÿæˆä¸€ä¸ª CSS æ–‡ä»¶çš„å‚è€ƒã€‚\n"
+"      --internal-links=FILE   ç”Ÿæˆ FILE ä¸­å†…éƒ¨è¿æ¥åˆ—è¡¨ã€‚\n"
+"      --transliterate-file-names\n"
+"                              ä»¥ ASCII å­—ä¹‰ç”Ÿæˆæ–‡ä»¶åã€‚\n"
 
 #: makeinfo/makeinfo.c:419
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
-"d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
+"                                If VAL is 0, ignorable whitespace is dropped.\n"
 msgstr ""
+"XML å’Œ Docbook é€‰é¡¹:\n"
+"      --output-indent=VAL     ç”¨ VAL ä¸ªç©ºæ ¼ç¼©è¿› XML å…ƒç´ (é»˜è®¤ %d)ã€‚\n"
+"                                å¦‚æœ VAL ä¸º 0ï¼Œå°†ä¸¢å¼ƒå¯å¿½ç•¥çš„ç©ºæ ¼ã€‚\n"
 
 #: makeinfo/makeinfo.c:426
 #, fuzzy
@@ -2540,15 +2572,14 @@ msgid ""
 "  -P DIR                        prepend DIR to the @include search path.\n"
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
-"ÊäÈëÎÄ¼şÑ¡Ïî£º\n"
-"      --commands-in-node-names   ÔÊĞíÔÚ½ÚµãÃûÖĞÊ¹ÓÃ @ ÃüÁî¡£\n"
-"  -D VAR                         ¶¨Òå±äÁ¿ VAR£¬¾ÍÏó @set¡£\n"
-"  -I DIR                         ½« DIR ¸½¼Óµ½ @include ËÑË÷Â·¾¶Ö®ºó¡£\n"
-"  -P DIR                         ½« DIR ×·¼Óµ½ @include ËÑË÷Â·¾¶Ö®Ç°¡£\n"
-"  -U VAR                         È¡Ïû±äÁ¿ VAR µÄ¶¨Òå£¬¾ÍÏó @clear¡£\n"
+"è¾“å…¥æ–‡ä»¶é€‰é¡¹ï¼š\n"
+"      --commands-in-node-names   å…è®¸åœ¨èŠ‚ç‚¹åä¸­ä½¿ç”¨ @ å‘½ä»¤ã€‚\n"
+"  -D VAR                         å®šä¹‰å˜é‡ VARï¼Œå°±è±¡ @setã€‚\n"
+"  -I DIR                         å°† DIR é™„åŠ åˆ° @include æœç´¢è·¯å¾„ä¹‹åã€‚\n"
+"  -P DIR                         å°† DIR è¿½åŠ åˆ° @include æœç´¢è·¯å¾„ä¹‹å‰ã€‚\n"
+"  -U VAR                         å–æ¶ˆå˜é‡ VAR çš„å®šä¹‰ï¼Œå°±è±¡ @clearã€‚\n"
 
 #: makeinfo/makeinfo.c:435
-#, fuzzy
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2567,18 +2598,19 @@ msgid ""
 "\n"
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
-"ÊäÈëÖĞµÄÌõ¼ş´¦Àí£º\n"
-"  --ifhtml          ¼´Ê¹²»ÊÇÉú³É HTML Ò²´¦Àí @ifhtml ºÍ @html¡£\n"
-"  --ifinfo          ¼´Ê¹²»ÊÇÉú³É Info Ò²´¦Àí @ifinfo¡£\n"
-"  --ifplaintext     ¼´Ê¹²»ÊÇÉú³ÉÆÕÍ¨ÎÄ±¾Ò²´¦Àí @ifplaintext¡£\n"
-"  --iftex           ´¦Àí @iftex ºÍ @tex£»Òşº¬ --no-split¡£\n"
-"  --no-ifhtml       ²»Òª´¦Àí @ifhtml ºÍ @html ÎÄ±¾¡£\n"
-"  --no-ifinfo       ²»Òª´¦Àí @ifinfo ÎÄ±¾¡£\n"
-"  --no-ifplaintext  ²»Òª´¦Àí @ifplaintext ÎÄ±¾¡£\n"
-"  --no-iftex        ²»Òª´¦Àí @iftex ºÍ @tex ÎÄ±¾¡£\n"
+"è¾“å…¥ä¸­çš„æ¡ä»¶å¤„ç†ï¼š\n"
+"  --ifdocbook       å³ä½¿ä¸ç”Ÿæˆ Docbook \n"
+"                     ä¹Ÿå¤„ç† @ifdocbook å’Œ @docbookã€‚\n"
+"  --ifhtml          å³ä½¿ä¸æ˜¯ç”Ÿæˆ HTML ä¹Ÿå¤„ç† @ifhtml å’Œ @htmlã€‚\n"
+"  --ifinfo          å³ä½¿ä¸æ˜¯ç”Ÿæˆ Info ä¹Ÿå¤„ç† @ifinfoã€‚\n"
+"  --ifplaintext     å³ä½¿ä¸æ˜¯ç”Ÿæˆæ™®é€šæ–‡æœ¬ä¹Ÿå¤„ç† @ifplaintextã€‚\n"
+"  --iftex           å¤„ç† @iftex å’Œ @texï¼›éšå« --no-splitã€‚\n"
+"  --no-ifhtml       ä¸è¦å¤„ç† @ifhtml å’Œ @html æ–‡æœ¬ã€‚\n"
+"  --no-ifinfo       ä¸è¦å¤„ç† @ifinfo æ–‡æœ¬ã€‚\n"
+"  --no-ifplaintext  ä¸è¦å¤„ç† @ifplaintext æ–‡æœ¬ã€‚\n"
+"  --no-iftex        ä¸è¦å¤„ç† @iftex å’Œ @tex æ–‡æœ¬ã€‚\n"
 
 #: makeinfo/makeinfo.c:454
-#, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2586,442 +2618,435 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
-"  @if... Ìõ¼şµÄÄ¬ÈÏÖµÒĞÀµÓÚÊä³ö¸ñÊ½£º\n"
-"  Èç¹ûÉú³É HTML£¬Ôò --ifhtml Ä¬ÈÏ¿ªÆô¶øÆäËüµÄÄ¬ÈÏ¹Ø±Õ£»\n"
-"  Èç¹ûÉú³É Info£¬Ôò --ifinfo Ä¬ÈÏ¿ªÆô¶øÆäËüµÄÄ¬ÈÏ¹Ø±Õ£»\n"
-"  Èç¹ûÉú³ÉÆÕÍ¨ÎÄ±¾£¬Ôò --ifplaintext Ä¬ÈÏ¿ªÆô¶øÆäËüÄ¬ÈÏ¹Ø±Õ£»\n"
+"  @if... æ¡ä»¶çš„é»˜è®¤å€¼å€šèµ–äºè¾“å‡ºæ ¼å¼ï¼š\n"
+"  å¦‚æœç”Ÿæˆ HTMLï¼Œåˆ™ --ifhtml é»˜è®¤å¼€å¯è€Œå…¶å®ƒçš„é»˜è®¤å…³é—­ï¼›\n"
+"  å¦‚æœç”Ÿæˆ Infoï¼Œåˆ™ --ifinfo é»˜è®¤å¼€å¯è€Œå…¶å®ƒçš„é»˜è®¤å…³é—­ï¼›\n"
+"  å¦‚æœç”Ÿæˆæ™®é€šæ–‡æœ¬ï¼Œåˆ™ --ifplaintext é»˜è®¤å¼€å¯è€Œå…¶å®ƒé»˜è®¤å…³é—­ï¼›\n"
+"  å¦‚æœç”Ÿæˆ XMLï¼Œåˆ™ --ifxml é»˜è®¤å¼€å¯è€Œå…¶å®ƒé»˜è®¤å…³é—­ã€‚\n"
 
 #: makeinfo/makeinfo.c:462
-#, fuzzy
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
-"Ê¾Àı£º\n"
-"  makeinfo foo.texi                     ½« Info Ğ´Èëµ½ foo µÄ @setfilename\n"
-"  makeinfo --html foo.texi              ½« HTML Ğ´Èëµ½ @setfilename\n"
-"  makeinfo --xml foo.texi               ½« XML Ğ´Èëµ½ @setfilename\n"
-"  makeinfo --docbook foo.texi           ½« DocBook XML Ğ´Èëµ½ @setfilename\n"
-"  makeinfo --no-headers foo.texi        ½«ÆÕÍ¨ÎÄ±¾Ğ´Èëµ½±ê×¼Êä³ö\n"
+"ç¤ºä¾‹ï¼š\n"
+"  makeinfo foo.texi                     å°† Info å†™å…¥åˆ° foo çš„ @setfilename\n"
+"  makeinfo --html foo.texi              å°† HTML å†™å…¥åˆ° @setfilename\n"
+"  makeinfo --xml foo.texi               å°† Texinfo XML å†™å…¥åˆ° @setfilename\n"
+"  makeinfo --docbook foo.texi           å°† DocBook XML å†™å…¥åˆ° @setfilename\n"
+"  makeinfo --no-headers foo.texi        å°†æ™®é€šæ–‡æœ¬å†™å…¥åˆ°æ ‡å‡†è¾“å‡º\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi Êä³ö html ¶ø²»Êä³ö½ÚµãĞĞºÍ²Ëµ¥\n"
-"  makeinfo --number-sections foo.texi   Êä³ö´øÓĞ±àºÅµÄ½ÚµÄ Info\n"
-"  makeinfo --no-split foo.texi          Êä³öµ¥¸ö Info ÎÄ¼ş¶ø²»ÂÛ´óĞ¡\n"
+"  makeinfo --html --no-headers foo.texi è¾“å‡º html è€Œä¸è¾“å‡ºèŠ‚ç‚¹è¡Œå’Œèœå•\n"
+"  makeinfo --number-sections foo.texi   è¾“å‡ºå¸¦æœ‰ç¼–å·çš„èŠ‚çš„ Info\n"
+"  makeinfo --no-split foo.texi          è¾“å‡ºå•ä¸ª Info æ–‡ä»¶è€Œä¸è®ºå¤§å°\n"
 
 #: makeinfo/makeinfo.c:622
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr ""
+msgstr "%s: å¿½ç•¥ä¸å¯è¾¨è®¤çš„ TEXINFO_OUTPUT_FORMAT å€¼â€œ%sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:670 makeinfo/makeinfo.c:696 makeinfo/makeinfo.c:720
 #: makeinfo/makeinfo.c:780
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s£º%s ²ÎÊı±ØĞëÎªÊıÖµ£¬¶ø²»ÊÇ¡°%s¡±¡£\n"
+msgstr "%sï¼š%s å‚æ•°å¿…é¡»ä¸ºæ•°å€¼ï¼Œè€Œä¸æ˜¯â€œ%sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:683
-#, fuzzy, c-format
+#, c-format
 msgid "%s: could not open macro expansion output `%s'"
-msgstr "ÎŞ·¨´ò¿ªºêÀ©Õ¹Êä³ö¡°%s¡±"
+msgstr "%s: æ— æ³•æ‰“å¼€å®æ‰©å±•è¾“å‡ºâ€œ%sâ€"
 
 #: makeinfo/makeinfo.c:688
-#, fuzzy, c-format
+#, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr "ÎŞ·¨´ò¿ªºêÀ©Õ¹Êä³ö¡°%s¡±"
+msgstr "%s: æ— æ³•æ‰“å¼€å®æ‰©å±•è¾“å‡ºâ€œ%sâ€\n"
 
 #: makeinfo/makeinfo.c:733
-#, fuzzy, c-format
+#, c-format
 msgid "%s: could not open internal links output `%s'"
-msgstr "ÎŞ·¨´ò¿ªºêÀ©Õ¹Êä³ö¡°%s¡±"
+msgstr "%s: æ— æ³•æ‰“å¼€å®æ‰©å±•è¾“å‡ºâ€œ%sâ€"
 
 #: makeinfo/makeinfo.c:738
-#, fuzzy, c-format
+#, c-format
 msgid "%s: ignoring second internal links output `%s'.\n"
-msgstr "ÎŞ·¨´ò¿ªºêÀ©Õ¹Êä³ö¡°%s¡±"
+msgstr "%s: å¿½ç•¥äºŒæ¬¡å†…éƒ¨è¿æ¥è¾“å‡ºâ€œ%sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:751
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s£º--paragraph-indent µÄ²ÎÊı±ØĞëÎªÊıÖµ/¡°none¡±/¡°asis¡±£¬¶ø²»ÊÇ¡°%s¡±¡£\n"
+msgstr "%sï¼š--paragraph-indent çš„å‚æ•°å¿…é¡»ä¸ºæ•°å€¼/â€œnoneâ€/â€œasisâ€ï¼Œè€Œä¸æ˜¯â€œ%sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:769
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s£º--footnote-style µÄ²ÎÊı±ØĞëÎª¡°separate¡±»ò¡°end¡±£¬¶ø²»ÊÇ¡°%s¡±¡£\n"
+msgstr "%sï¼š--footnote-style çš„å‚æ•°å¿…é¡»ä¸ºâ€œseparateâ€æˆ–â€œendâ€ï¼Œè€Œä¸æ˜¯â€œ%sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:844
 #, c-format
 msgid "%s: missing file argument.\n"
-msgstr "%s£ºÒÅÂ©ÎÄ¼ş²ÎÊı¡£\n"
+msgstr "%sï¼šé—æ¼æ–‡ä»¶å‚æ•°ã€‚\n"
 
 #: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
 #, c-format
 msgid "Multiline command %c%s used improperly"
-msgstr ""
+msgstr "ä½¿ç”¨äº†ä¸åˆé€‚çš„å¤šè¡Œå‘½ä»¤ %c%s"
 
 #: makeinfo/makeinfo.c:1038
 #, c-format
 msgid "Expected `%s'"
-msgstr "Ó¦Îª¡°%s¡±"
+msgstr "åº”ä¸ºâ€œ%sâ€"
 
 #: makeinfo/makeinfo.c:1515
 #, c-format
 msgid "Can't create directory `%s': %s"
-msgstr "ÎŞ·¨´´½¨Ä¿Â¼¡°%s¡±£º%s"
+msgstr "æ— æ³•åˆ›å»ºç›®å½•â€œ%sâ€ï¼š%s"
 
 #: makeinfo/makeinfo.c:1561
 #, c-format
 msgid "No `%s' found in `%s'"
-msgstr "ÔÚ¡°%2$s¡±ÖĞÕÒ²»µ½¡°%1$s¡±"
+msgstr "åœ¨â€œ%2$sâ€ä¸­æ‰¾ä¸åˆ°â€œ%1$sâ€"
 
 #: makeinfo/makeinfo.c:1641
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr ""
+msgstr "%s: è·³è¿‡å±•å¼€è‡³æ ‡å‡†è¾“å‡ºçš„å®ï¼Œç”±äº Info çš„è¾“å‡ºè¦ä½¿ç”¨æ ‡å‡†è¾“å‡ºã€‚\n"
 
 #: makeinfo/makeinfo.c:1671
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
-msgstr "´Ó¡°%3$s¡±´´½¨ %1$s ÎÄ¼ş¡°%2$s¡±¡£\n"
+msgstr "ä»â€œ%3$sâ€åˆ›å»º %1$s æ–‡ä»¶â€œ%2$sâ€ã€‚\n"
 
 #: makeinfo/makeinfo.c:1738
 #, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s£ºÓÉÓÚ´íÎóÉ¾³ıºêÊä³öÎÄ¼ş¡°%s¡±£»ÓÃ --force ±£ÁôºêÊä³ö¡£\n"
+msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%sï¼šç”±äºé”™è¯¯åˆ é™¤å®è¾“å‡ºæ–‡ä»¶â€œ%sâ€ï¼›ç”¨ --force ä¿ç•™å®è¾“å‡ºã€‚\n"
 
 #: makeinfo/makeinfo.c:1793
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s£ºÓÉÓÚ´íÎóÉ¾³ıºêÊä³öÎÄ¼ş¡°%s¡±£»ÓÃ --force ±£ÁôºêÊä³ö¡£\n"
+msgstr "%sï¼šç”±äºé”™è¯¯åˆ é™¤å®è¾“å‡ºæ–‡ä»¶â€œ%sâ€ï¼›ç”¨ --force ä¿ç•™å®è¾“å‡ºã€‚\n"
 
 #: makeinfo/makeinfo.c:1812
-#, fuzzy, c-format
-msgid ""
-"%s: Removing internal links output file `%s' due to errors; use --force to "
-"preserve.\n"
-msgstr "%s£ºÓÉÓÚ´íÎóÉ¾³ıºêÊä³öÎÄ¼ş¡°%s¡±£»ÓÃ --force ±£ÁôºêÊä³ö¡£\n"
+#, c-format
+msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%sï¼šç”±äºé”™è¯¯åˆ é™¤å†…éƒ¨è¿æ¥è¾“å‡ºæ–‡ä»¶â€œ%sâ€ï¼›ç”¨ --force ä¿ç•™ã€‚\n"
 
 #: makeinfo/makeinfo.c:2107
 #, c-format
 msgid "Unknown command `%s'"
-msgstr "Î´ÖªµÄÃüÁî¡°%s¡±"
+msgstr "æœªçŸ¥çš„å‘½ä»¤â€œ%sâ€"
 
 #: makeinfo/makeinfo.c:2129
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
-msgstr "Ê¹ÓÃ»¨À¨ºÅ½«Ò»¸öÃüÁîÓÃ×÷ @%s µÄ²ÎÊı"
+msgstr "ä½¿ç”¨èŠ±æ‹¬å·å°†ä¸€ä¸ªå‘½ä»¤ç”¨ä½œ @%s çš„å‚æ•°"
 
 #: makeinfo/makeinfo.c:2388
-#, fuzzy, c-format
+#, c-format
 msgid "%c%s expected braces"
-msgstr "%c%s ĞèÒª¡°{...}¡±"
+msgstr "%c%s éœ€è¦èŠ±æ‹¬å·"
 
 #: makeinfo/makeinfo.c:2401
 msgid "Unmatched }"
-msgstr "²»Æ¥ÅäµÄ }"
+msgstr "ä¸åŒ¹é…çš„ }"
 
 #: makeinfo/makeinfo.c:2449
 msgid "NO_NAME!"
-msgstr "ÎŞÃû×Ö£¡"
+msgstr "æ— åå­—ï¼"
 
 #: makeinfo/makeinfo.c:2470
 #, c-format
 msgid "%c%s missing close brace"
-msgstr "%c%s ÒÅÂ©±ÕºÏ»¨À¨ºÅ"
+msgstr "%c%s é—æ¼é—­åˆèŠ±æ‹¬å·"
 
 #: makeinfo/makeinfo.c:3476
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@image ÎÄ¼ş¡°%s¡±(¶Ô HTML)²»¿É¶Á£º%s"
+msgstr "@image æ–‡ä»¶â€œ%sâ€(å¯¹ HTML)ä¸å¯è¯»ï¼š%s"
 
 #: makeinfo/makeinfo.c:3482
-#, fuzzy, c-format
+#, c-format
 msgid "No such file `%s'"
-msgstr "ÔÚ¡°%2$s¡±ÖĞÕÒ²»µ½¡°%1$s¡±"
+msgstr "æ²¡æœ‰é‚£æ ·çš„æ–‡ä»¶â€œ%sâ€"
 
 #: makeinfo/makeinfo.c:3618
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@image ÎÄ¼ş¡°%s¡±(¶ÔÎÄ±¾)²»¿É¶Á£º%s"
+msgstr "@image æ–‡ä»¶â€œ%sâ€(å¯¹æ–‡æœ¬)ä¸å¯è¯»ï¼š%s"
 
 #: makeinfo/makeinfo.c:3627
 msgid "@image missing filename argument"
-msgstr "@image ÒÅÂ©ÎÄ¼şÃû²ÎÊı"
+msgstr "@image é—æ¼æ–‡ä»¶åå‚æ•°"
 
 #: makeinfo/makeinfo.c:3845
 #, c-format
 msgid "undefined flag: %s"
-msgstr ""
+msgstr "æœªå®šä¹‰çš„æ ‡è¯†: %s"
 
 #: makeinfo/makeinfo.c:3846
 #, c-format
 msgid "{No value for `%s'}"
-msgstr "{Ã»ÓĞ¡°%s¡±µÄÖµ}"
+msgstr "{æ²¡æœ‰â€œ%sâ€çš„å€¼}"
 
 #: makeinfo/makeinfo.c:3898
 #, c-format
 msgid "%c%s requires a name"
-msgstr "%c%s ĞèÒªÒ»¸öÃû×Ö"
+msgstr "%c%s éœ€è¦ä¸€ä¸ªåå­—"
 
 #: makeinfo/makeinfo.c:4004
 #, c-format
 msgid "Reached eof before matching @end %s"
-msgstr "ÎÄ¼şÔÚÓöµ½Æ¥ÅäµÄ @end %s Ç°¾Í½áÊøÁË"
+msgstr "æ–‡ä»¶åœ¨é‡åˆ°åŒ¹é…çš„ @end %s å‰å°±ç»“æŸäº†"
 
 #: makeinfo/makeinfo.c:4253
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr "¡°%.40s...¡±À©Õ¹ÆğÀ´Ì«³¤£»Î´À©Õ¹"
+msgstr "â€œ%.40s...â€æ‰©å±•èµ·æ¥å¤ªé•¿ï¼›æœªæ‰©å±•"
 
 #: makeinfo/multi.c:116
 msgid "Missing } in @multitable template"
-msgstr "@multitable Ä£°åÖĞÒÅÂ©ÁË }"
+msgstr "@multitable æ¨¡æ¿ä¸­é—æ¼äº† }"
 
 #: makeinfo/multi.c:260
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
-msgstr "ºöÂÔ @multitable Ö®ºóµÄ¹ıÊ£ÎÄ±¾¡°%s¡±"
+msgstr "å¿½ç•¥ @multitable ä¹‹åçš„è¿‡å‰©æ–‡æœ¬â€œ%sâ€"
 
 #: makeinfo/multi.c:400
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
-msgstr "ÔÚ¶àÁĞ±í¸ñÏîÄ¿ÖĞº¬ÓĞÌ«¶àµÄÁĞ (×î´óÎª %d)"
+msgstr "åœ¨å¤šåˆ—è¡¨æ ¼é¡¹ç›®ä¸­å«æœ‰å¤ªå¤šçš„åˆ— (æœ€å¤§ä¸º %d)"
 
 #: makeinfo/multi.c:563
-#, fuzzy, c-format
+#, c-format
 msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "ÎŞ·¨ÔÚ¶àÁĞ±í¸ñÖĞÑ¡ÔñµÚ %d ÁĞ"
+msgstr "[æœªé¢„æ–™åˆ°çš„é”™è¯¯] æ— æ³•åœ¨å¤šåˆ—è¡¨æ ¼ä¸­é€‰æ‹©ç¬¬ #%d åˆ—"
 
 #: makeinfo/multi.c:592
 msgid "ignoring @tab outside of multitable"
-msgstr "ºöÂÔ¶àÁĞ±í¸ñÍâµÄ @tab"
+msgstr "å¿½ç•¥å¤šåˆ—è¡¨æ ¼å¤–çš„ @tab"
 
 #: makeinfo/multi.c:640
 #, c-format
 msgid "** Multicolumn output from last row:\n"
-msgstr "** ×îºóÒ»ĞĞµÄ¶àÁĞÊä³ö£º\n"
+msgstr "** æœ€åä¸€è¡Œçš„å¤šåˆ—è¾“å‡ºï¼š\n"
 
 #: makeinfo/multi.c:643
 #, c-format
 msgid "* column #%d: output = %s\n"
-msgstr "* ÁĞ #%d£ºÊä³ö = %s\n"
+msgstr "* åˆ— #%dï¼šè¾“å‡º = %s\n"
 
 #: makeinfo/node.c:279
 #, c-format
 msgid "Node `%s' previously defined at line %d"
-msgstr "½Úµã¡°%s¡±ÔÚÇ°ÃæµÄ(µÚ %d ĞĞ)¶¨Òå"
+msgstr "èŠ‚ç‚¹â€œ%sâ€åœ¨å‰é¢çš„(ç¬¬ %d è¡Œ)å®šä¹‰"
 
 #: makeinfo/node.c:647
 #, c-format
 msgid "Formatting node %s...\n"
-msgstr "ÕıÔÚ¸ñÊ½»¯½Úµã %s...\n"
+msgstr "æ­£åœ¨æ ¼å¼åŒ–èŠ‚ç‚¹ %s...\n"
 
 #: makeinfo/node.c:714
-#, fuzzy, c-format
+#, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr "½Úµã¡°%s¡±ĞèÒªÒ»¸ö½ÚÃüÁî (ÀıÈç£º%c%s)"
+msgstr "èŠ‚ç‚¹â€œ%sâ€éœ€è¦ä¸€ä¸ªæ®µè½å‘½ä»¤ (ä¾‹å¦‚ï¼š%c%s)"
 
 #: makeinfo/node.c:878
 #, c-format
 msgid "No node name specified for `%c%s' command"
-msgstr "Ã»ÓĞÎª¡°%c%s¡±ÃüÁîÖ¸¶¨½ÚÃû³Æ"
+msgstr "æ²¡æœ‰ä¸ºâ€œ%c%sâ€å‘½ä»¤æŒ‡å®šèŠ‚åç§°"
 
 #: makeinfo/node.c:919 makeinfo/node.c:1160
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "Anchor¡°%s¡±ºÍ½Úµã¡°%s¡±Ó³Éäµ½Í¬Ò»¸öÎÄ¼şÃû"
+msgstr "Anchorâ€œ%sâ€å’ŒèŠ‚ç‚¹â€œ%sâ€æ˜ å°„åˆ°åŒä¸€ä¸ªæ–‡ä»¶å"
 
 #: makeinfo/node.c:922
 msgid "This @anchor command ignored; references to it will not work"
-msgstr "ºöÂÔ¸Ã @anchor ÃüÁî£»¶ÔËüµÄÒıÓÃ½«ÎŞ·¨¹¤×÷"
+msgstr "å¿½ç•¥è¯¥ @anchor å‘½ä»¤ï¼›å¯¹å®ƒçš„å¼•ç”¨å°†æ— æ³•å·¥ä½œ"
 
 #: makeinfo/node.c:924 makeinfo/node.c:1163
 msgid "Rename this anchor or use the `--no-split' option"
-msgstr "ÖØÃüÃû anchor »òÊ¹ÓÃ¡°--no-split¡±Ñ¡Ïî"
+msgstr "é‡å‘½å anchor æˆ–ä½¿ç”¨â€œ--no-splitâ€é€‰é¡¹"
 
 #: makeinfo/node.c:954
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "ÔÚ·ÖÁ¢ HTML ÎÄ¼ş¡°%s¡±µÄÄ©Î²µÄÒâÍâ×Ö·û´®"
+msgstr "åœ¨åˆ†ç«‹ HTML æ–‡ä»¶â€œ%sâ€çš„æœ«å°¾çš„æ„å¤–å­—ç¬¦ä¸²"
 
 #: makeinfo/node.c:1157
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "Anchor¡°%s¡±ºÍ¡°%s¡±Ó³Éäµ½Í¬Ò»¸öÎÄ¼şÃû"
+msgstr "Anchorâ€œ%sâ€å’Œâ€œ%sâ€æ˜ å°„åˆ°åŒä¸€ä¸ªæ–‡ä»¶å"
 
 #: makeinfo/node.c:1162
 msgid "@anchor command ignored; references to it will not work"
-msgstr "ºöÂÔ @anchor ÃüÁî£»¶ÔËüµÄÒıÓÃ½«²»ÄÜ¹¤×÷"
+msgstr "å¿½ç•¥ @anchor å‘½ä»¤ï¼›å¯¹å®ƒçš„å¼•ç”¨å°†ä¸èƒ½å·¥ä½œ"
 
 #: makeinfo/node.c:1359
-#, fuzzy, c-format
+#, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr "%sÒıÓÃµ½²»´æÔÚµÄ½Úµã¡°%s¡±"
+msgstr "%s å¼•ç”¨åˆ°ä¸å­˜åœ¨çš„èŠ‚ç‚¹â€œ%sâ€(ä¹Ÿè®¸å­—æ®µä¸æ­£ç¡®ï¼Ÿ)"
 
 #: makeinfo/node.c:1459
-#, fuzzy, c-format
+#, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "½Úµã¡°%s¡±µÄÏÂÒ»¸öÓòÃ»ÓĞÖ¸Ïò"
+msgstr "èŠ‚ç‚¹â€œ%sâ€çš„ä¸‹ä¸€ä¸ªåŸŸæ²¡æœ‰æŒ‡å‘(ä¹Ÿè®¸å­—æ®µä¸æ­£ç¡®ï¼Ÿ)"
 
 #: makeinfo/node.c:1462
 #, c-format
 msgid "This node (%s) has the bad Prev"
-msgstr "¸Ã½Úµã (%s) º¬ÓĞ´íÎóµÄÉÏÒ»¸ö"
+msgstr "è¯¥èŠ‚ç‚¹ (%s) å«æœ‰é”™è¯¯çš„ä¸Šä¸€ä¸ª"
 
 #: makeinfo/node.c:1517
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
-msgstr "½Úµã¡°%s¡±µÄÉÏÒ»¸öÓòÃ»ÓĞÖ¸Ïò"
+msgstr "èŠ‚ç‚¹â€œ%sâ€çš„ä¸Šä¸€ä¸ªåŸŸæ²¡æœ‰æŒ‡å‘"
 
 #: makeinfo/node.c:1521
 #, c-format
 msgid "This node (%s) has the bad Next"
-msgstr "¸Ã½Úµã (%s) º¬ÓĞ´íÎóµÄÏÂÒ»¸ö"
+msgstr "è¯¥èŠ‚ç‚¹ (%s) å«æœ‰é”™è¯¯çš„ä¸‹ä¸€ä¸ª"
 
 #: makeinfo/node.c:1533
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr ""
+msgstr "â€œ%sâ€æ—  Up å­—æ®µ(ä¹Ÿè®¸å­—æ®µä¸æ­£ç¡®ï¼Ÿ)"
 
 #: makeinfo/node.c:1602
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "¾¡¹Ü½Úµã¡°%s¡±ÊÇ¡°%s¡±µÄÉÏ²ã½Úµã£¬µ«È±ÉÙÏà¹ØµÄ²Ëµ¥Ïî"
+msgstr "å°½ç®¡èŠ‚ç‚¹â€œ%sâ€æ˜¯â€œ%sâ€çš„ä¸Šå±‚èŠ‚ç‚¹ï¼Œä½†ç¼ºå°‘ç›¸å…³çš„èœå•é¡¹"
 
 #: makeinfo/node.c:1634
 #, c-format
 msgid "unreferenced node `%s'"
-msgstr "Î´ÒıÓÃµÄ½Úµã¡°%s¡±"
+msgstr "æœªå¼•ç”¨çš„èŠ‚ç‚¹â€œ%sâ€"
 
 #: makeinfo/node.c:1724
 #, c-format
 msgid "Removing %s\n"
-msgstr ""
+msgstr "åˆ é™¤ %s\n"
 
 #: makeinfo/node.c:1728
-#, fuzzy, c-format
+#, c-format
 msgid "Can't remove file `%s': %s"
-msgstr "ÎŞ·¨´´½¨Ä¿Â¼¡°%s¡±£º%s"
+msgstr "æ— æ³•åˆ é™¤æ–‡ä»¶â€œ%sâ€ï¼š%s"
 
 #: makeinfo/sectioning.c:122
-#, fuzzy, c-format
+#, c-format
 msgid "Appendix %c"
-msgstr "¸½Â¼ %c "
+msgstr "é™„å½• %c "
 
 #: makeinfo/sectioning.c:467
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (search_sectioning) `%s'!"
-msgstr "ÄÚ²¿´íÎó (search_sectioning) ¡°%s¡±£¡"
+msgstr "å†…éƒ¨é”™è¯¯ (search_sectioning) â€œ%sâ€ï¼"
 
 #: makeinfo/sectioning.c:563
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "ÄÚ²¿´íÎó (search_sectioning) ¡°%s¡±£¡"
+msgstr "å†…éƒ¨é”™è¯¯ (search_sectioning) â€œ%sâ€ï¼"
 
 #: makeinfo/sectioning.c:624
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
-msgstr "%c%s ÒÑ¹ıÊ±£»ÓÃ %c%s ´úÌæ"
+msgstr "%c%s å·²è¿‡æ—¶ï¼›ç”¨ %c%s ä»£æ›¿"
 
 #: makeinfo/sectioning.c:640
 #, c-format
 msgid "Node with %ctop as a section already exists"
-msgstr "´øÓĞ %ctop µÄ½Úµã×÷ÎªÒ»¸ö½ÚÒÑ¾­´æÔÚ"
+msgstr "å¸¦æœ‰ %ctop çš„èŠ‚ç‚¹ä½œä¸ºä¸€ä¸ªèŠ‚å·²ç»å­˜åœ¨"
 
 #: makeinfo/sectioning.c:648
 #, c-format
 msgid "Here is the %ctop node"
-msgstr "ÕâÀïÊÇ %ctop ½Úµã"
+msgstr "è¿™é‡Œæ˜¯ %ctop èŠ‚ç‚¹"
 
 #: makeinfo/sectioning.c:664
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
-msgstr "%ctop ÔÚ %cnode Ö®Ç°Ê¹ÓÃ£¬Ä¬ÈÏÎª %s"
+msgstr "%ctop åœ¨ %cnode ä¹‹å‰ä½¿ç”¨ï¼Œé»˜è®¤ä¸º %s"
 
 #: makeinfo/xml.c:1669
 #, c-format
 msgid "@image file `%s' unreadable: %s"
-msgstr "@image ÎÄ¼ş¡°%s¡±²»¿É¶Á£º%s"
+msgstr "@image æ–‡ä»¶â€œ%sâ€ä¸å¯è¯»ï¼š%s"
 
 #: makeinfo/xml.c:2014
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr ""
+msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+msgstr "ä½œä¸º @multitable çš„æœ€åä¸€ä¸ªé¡¹ç›®ï¼Œ@headitem ç”Ÿæˆæ— æ•ˆçš„ Docbook æ–‡æ¡£"
 
 #: makeinfo/xml.c:2150
+#, fuzzy
 msgid "of"
-msgstr ""
+msgstr "çš„"
 
 #: makeinfo/xml.c:2155
+#, fuzzy
 msgid "on"
-msgstr ""
+msgstr "å…³äº"
 
 #: makeinfo/xref.c:127
 msgid "First argument to cross-reference may not be empty"
-msgstr "½»²æÒıÓÃµÄµÚÒ»¸ö²ÎÊı²»ÄÜÎª¿Õ"
+msgstr "äº¤å‰å¼•ç”¨çš„ç¬¬ä¸€ä¸ªå‚æ•°ä¸èƒ½ä¸ºç©º"
 
 #: makeinfo/xref.c:252
 #, c-format
 msgid "Empty file name for HTML cross reference in `%s'"
-msgstr ""
+msgstr "ä¸ºâ€œ%sâ€ä¸­çš„ HTML äº¤å‰å¼•ç”¨æ¸…ç©ºæ–‡ä»¶å"
 
 #: makeinfo/xref.c:387
 msgid "End of file reached while looking for `.' or `,'"
-msgstr ""
+msgstr "æŸ¥æ‰¾â€œã€‚â€æˆ–â€œï¼Œâ€æ—¶é‡åˆ°äº†æ–‡ä»¶ç»“å°¾"
 
 #: makeinfo/xref.c:390
-#, fuzzy, c-format
+#, c-format
 msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr "¡°.¡±»ò¡°,¡±Ö®ºó±ØĞëÎª½»²æÒıÓÃ£¬¶ø²»ÊÇ %c"
+msgstr "â€œ.â€æˆ–â€œ,â€ä¹‹åå¿…é¡»ä¸º @%sï¼Œè€Œä¸æ˜¯â€œ%câ€"
 
 #: makeinfo/xref.c:392
-#, fuzzy
 msgid "for cross-references in parentheses, use @pxref"
-msgstr "¸Ã½ÚµãÖĞÃ»ÓĞ½»²æÒıÓÃ¡£"
+msgstr "è¦ä½¿ç”¨æ‹¬å·ä¸­çš„äº¤å‰å¼•ç”¨ï¼Œè¯·ä½¿ç”¨ @pxref"
 
 #: makeinfo/xref.c:435
 msgid "First argument to @inforef may not be empty"
-msgstr "@inforef µÄµÚÒ»¸ö²ÎÊı²»ÄÜÎª¿Õ"
+msgstr "@inforef çš„ç¬¬ä¸€ä¸ªå‚æ•°ä¸èƒ½ä¸ºç©º"
 
 #: util/texindex.c:223
 msgid "display this help and exit"
-msgstr "ÏÔÊ¾¸ÃÇóÖúĞÅÏ¢²¢ÍË³ö"
+msgstr "æ˜¾ç¤ºè¯¥æ±‚åŠ©ä¿¡æ¯å¹¶é€€å‡º"
 
 #: util/texindex.c:225
 msgid "send output to FILE"
-msgstr "½«Êä³öËÍÈë FILE"
+msgstr "å°†è¾“å‡ºé€å…¥ FILE"
 
 #: util/texindex.c:227
 msgid "display version information and exit"
-msgstr "ÏÔÊ¾°æ±¾ĞÅÏ¢²¢ÍË³ö"
+msgstr "æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡º"
 
 #: util/texindex.c:237
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "ÓÃ·¨£º%s [Ñ¡Ïî]... ÎÄ¼ş...\n"
+msgstr "ç”¨æ³•ï¼š%s [é€‰é¡¹]... æ–‡ä»¶...\n"
 
 #: util/texindex.c:238
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr "ÎªÃ¿¸ö TeX Êä³öÎÄ¼şÉú³ÉÅÅĞòµÄË÷Òı¡£\n"
+msgstr "ä¸ºæ¯ä¸ª TeX è¾“å‡ºæ–‡ä»¶ç”Ÿæˆæ’åºçš„ç´¢å¼•ã€‚\n"
 
 #: util/texindex.c:241
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr "¶ÔÓÚÎÄµµ¡°foo.texi¡±£¬FILE... Í¨³£Îª¡°foo.%c%c¡±µÄĞÎÊ½¡£\n"
+msgstr "å¯¹äºæ–‡æ¡£â€œfoo.texiâ€ï¼ŒFILE... é€šå¸¸ä¸ºâ€œfoo.%c%câ€çš„å½¢å¼ã€‚\n"
 
 #: util/texindex.c:243
 #, c-format
@@ -3030,92 +3055,46 @@ msgid ""
 "Options:\n"
 msgstr ""
 "\n"
-"Ñ¡Ïî£º\n"
+"é€‰é¡¹ï¼š\n"
 
 #: util/texindex.c:743
 #, c-format
 msgid "failure reopening %s"
-msgstr "ÖØĞÂ´ò¿ª %s Ê§°Ü"
+msgstr "é‡æ–°æ‰“å¼€ %s å¤±è´¥"
 
 #: util/texindex.c:758 util/texindex.c:786
 #, c-format
 msgid "%s: not a texinfo index file"
-msgstr "%s£º²»ÊÇ texinfo Ë÷ÒıÎÄ¼ş"
+msgstr "%sï¼šä¸æ˜¯ texinfo ç´¢å¼•æ–‡ä»¶"
 
 #: util/texindex.c:993
 #, c-format
 msgid "No page number in %s"
-msgstr "%s ÖĞÃ»ÓĞÒ³Âë"
+msgstr "%s ä¸­æ²¡æœ‰é¡µç "
 
 #: util/texindex.c:1066
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
-msgstr "ÌõÄ¿ %s ³öÏÖÔÚ¾ßÓĞ´ÎÒªÃû³ÆµÄÌõÄ¿Ö®ºó"
+msgstr "æ¡ç›® %s å‡ºç°åœ¨å…·æœ‰æ¬¡è¦åç§°çš„æ¡ç›®ä¹‹å"
 
 #~ msgid ""
-#~ "\\%-10[search]  Search forward for a specified string\n"
-#~ "              and select the node in which the next occurrence is found.\n"
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
 #~ msgstr ""
-#~ "\\%-10[search]  ÏòÇ°ËÑË÷Ö¸¶¨µÄ×Ö·û´®\n"
-#~ "              ²¢Ñ¡ÔñËùÕÒµ½µÄÏÂÒ»¸öÊµÀıËùÔÚµÄ½Úµã¡£\n"
+#~ "ç‰ˆæƒæ‰€æœ‰ (C) %s è‡ªç”±è½¯ä»¶åŸºé‡‘ä¼šã€‚\n"
+#~ "æœ¬è½¯ä»¶æ²¡æœ‰ä»»ä½•æ‹…ä¿ã€‚æ‚¨å¯ä»¥æŒ‰ç…§é€šç”¨\n"
+#~ "å…¬å…±è®¸å¯è¯(GPL)çš„æ¡æ¬¾å‘è¡Œæœ¬è½¯ä»¶ã€‚\n"
+#~ "è¿™æ–¹é¢çš„è¯¦æƒ…ï¼Œè¯·é˜…è¯»åä¸º COPYING çš„æ–‡ä»¶ã€‚\n"
 
-#~ msgid ""
-#~ "\\%-10[goto-node]  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
-#~ msgstr ""
-#~ "\\%-10[goto-node]  ÒÆ¶¯µ½ÓÉÃû×ÖÖ¸¶¨µÄ½Úµã¡£\n"
-#~ "              Äú»¹¿ÉÒÔÒÔ (ÎÄ¼şÃû)½ÚµãÃû µÄĞÎÊ½¸ø³öÎÄ¼şÃû¡£\n"
-
-#, fuzzy
-#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
-#~ msgstr "\\%-10[next-node]  ÒÆ¶¯µ½±¾½ÚµãµÄ¡°ÏÂÒ»¸ö¡±½Úµã¡£\n"
-
-#~ msgid ""
-#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-#~ "node] (DIR)'.\n"
-#~ msgstr ""
-#~ "\\%-10[dir-node]  ÒÆ¶¯µ½¡°directory¡±½Úµã¡£µÈ¼ÛÓÚ¡°\\[goto-node] "
-#~ "(DIR)¡±¡£\n"
-
-#~ msgid ""
-#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
-#~ "Top'.\n"
-#~ msgstr "\\%-10[top-node]  ÒÆ¶¯µ½¶¥²ã½Úµã¡£µÈ¼ÛÓÚ¡°\\[goto-node] Top¡±¡£\n"
-
-#, fuzzy
-#~ msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
-#~ msgstr "\\%-10[scroll-forward]  ÏòÇ°¹ö¶¯Ò»ĞĞ¡£\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
-#~ msgstr "\\%-10[scroll-backward]  Ïòºó¹ö¶¯Ò»ĞĞ¡£\n"
-
-#~ msgid ""
-#~ "\\%-10[search-backward]  Search backward for a specified string\n"
-#~ "              and select the node in which the previous occurrence is "
-#~ "found.\n"
-#~ msgstr ""
-#~ "\\%-10[search-backward]  ÏòºóËÑË÷Ö¸¶¨µÄ×Ö·û´®\n"
-#~ "              ²¢Ñ¡ÔñËùÕÒµ½µÄÉÏÒ»¸öÊµÀıËùÔÚµÄ½Úµã¡£\n"
-
-#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-#~ msgstr "--- ÓÃ¡°\\[history-node]¡±»ò¡°\\[kill-node]¡±ÍË³ö ---\n"
-
-#, fuzzy
-#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-#~ msgstr "\\%-10[move-to-prev-xref]  Ìø×ªµ½±¾½ÚµãÖĞµÄÉÏÒ»¸ö³¬ÎÄ±¾Á¬½Ó¡£\n"
-
-#, fuzzy
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 #~ "\n"
 #~ "Read documentation in Info format.\n"
 #~ "\n"
 #~ "Options:\n"
-#~ "      --apropos=STRING         look up STRING in all indices of all "
-#~ "manuals.\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all manuals.\n"
 #~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 #~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 #~ "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -3123,17 +3102,14 @@ msgstr "ÌõÄ¿ %s ³öÏÖÔÚ¾ßÓĞ´ÎÒªÃû³ÆµÄÌõÄ¿Ö®ºó"
 #~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
 #~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
 #~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
-#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
-#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "  -R, --raw-escapes            don't remove ANSI escapes from man pages.\n"
 #~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
 #~ "  -O, --show-options, --usage  go to command-line options node.\n"
 #~ "%s      --subnodes               recursively output menu items.\n"
-#~ "  -w, --where, --location      print physical location of Info file.\n"
 #~ "      --vi-keys                use vi-like and less-like key bindings.\n"
 #~ "      --version                display version information and exit.\n"
 #~ "\n"
-#~ "The first non-option argument, if present, is the menu entry to start "
-#~ "from;\n"
+#~ "The first non-option argument, if present, is the menu entry to start from;\n"
 #~ "it is searched for in all `dir' files along INFOPATH.\n"
 #~ "If it is not present, info merges all `dir' files and shows the result.\n"
 #~ "Any remaining arguments are treated as the names of menu\n"
@@ -3143,154 +3119,214 @@ msgstr "ÌõÄ¿ %s ³öÏÖÔÚ¾ßÓĞ´ÎÒªÃû³ÆµÄÌõÄ¿Ö®ºó"
 #~ "  info                       show top-level dir menu\n"
 #~ "  info emacs                 start at emacs node from top-level dir\n"
 #~ "  info emacs buffers         start at buffers node within emacs manual\n"
-#~ "  info --show-options emacs  start at node with emacs' command line "
-#~ "options\n"
-#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info --show-options emacs  start at node with emacs' command line options\n"
 #~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
 #~ msgstr ""
-#~ "ÓÃ·¨£º%s [Ñ¡Ïî]... [²Ëµ¥Ïî...]\n"
+#~ "ç”¨æ³•ï¼š%s [é€‰é¡¹]... [èœå•é¡¹...]\n"
 #~ "\n"
-#~ "ÔÄ¶Á Info ¸ñÊ½µÄÎÄµµ¡£\n"
+#~ "é˜…è¯» Info æ ¼å¼çš„æ–‡æ¡£ã€‚\n"
 #~ "\n"
-#~ "Ñ¡Ïî£º\n"
-#~ "      --apropos=STRING         ÔÚËùÓĞÊÖ²áµÄËùÓĞË÷ÒıÖĞËÑË÷ STRING¡£\n"
-#~ "  -d, --directory=DIR          ½«Ä¿Â¼ DIR Ìí¼Óµ½ INFOPATH ÖĞ¡£\n"
-#~ "      --dribble=FILENAME       ½«ÓÃ»§µÄ°´¼ü¼ÇÂ¼ÔÚÎÄ¼ş FILENAME ÖĞ¡£\n"
-#~ "  -f, --file=FILENAME          Ö¸¶¨ÒªÔÄ¶ÁµÄ Info ÎÄ¼ş¡£\n"
-#~ "  -h, --help                   ÏÔÊ¾¸ÃÇóÖúĞÅÏ¢²¢ÍË³ö¡£\n"
-#~ "      --index-search=STRING    ×ªÒÆµ½Ë÷ÒıÌõÄ¿ STRING ËùÖ¸ÏòµÄ½Úµã¡£\n"
-#~ "  -n, --node=NODENAME          Ö¸¶¨Ê×ÏÈÔÄ¶ÁµÄ Info ÎÄ¼şÖĞµÄ½Úµã¡£\n"
-#~ "  -o, --output=FILENAME        ½«Ñ¡ÖĞµÄ½ÚµãÊä³öµ½ÎÄ¼ş FILENAME ÖĞ¡£\n"
-#~ "  -R, --raw-escapes            ²»ÒªÉ¾³ıÀ´×Ô man Ò³ÃæµÄ ANSI ×ªÒå·û¡£\n"
-#~ "      --restore=FILENAME       ´ÓÎÄ¼ş FILENAME ÖĞ¶ÁÈ¡³õÊ¼°´¼ü¡£\n"
-#~ "  -O, --show-options, --usage  ×ªÒÆµ½ÃüÁîĞĞÑ¡Ïî½Úµã¡£\n"
-#~ "%s      --subnodes               µİ¹éÊä³ö²Ëµ¥ÌõÄ¿¡£\n"
-#~ "      --vi-keys                Ê¹ÓÃÀà vi ºÍÀà less µÄ°´¼ü°ó¶¨¡£\n"
-#~ "      --version                ÏÔÊ¾°æ±¾ĞÅÏ¢²¢ÍË³ö¡£\n"
+#~ "é€‰é¡¹ï¼š\n"
+#~ "      --apropos=STRING         åœ¨æ‰€æœ‰æ‰‹å†Œçš„æ‰€æœ‰ç´¢å¼•ä¸­æœç´¢ STRINGã€‚\n"
+#~ "  -d, --directory=DIR          å°†ç›®å½• DIR æ·»åŠ åˆ° INFOPATH ä¸­ã€‚\n"
+#~ "      --dribble=FILENAME       å°†ç”¨æˆ·çš„æŒ‰é”®æ¡ç›®åœ¨æ–‡ä»¶ FILENAME ä¸­ã€‚\n"
+#~ "  -f, --file=FILENAME          æŒ‡å®šè¦é˜…è¯»çš„ Info æ–‡ä»¶ã€‚\n"
+#~ "  -h, --help                   æ˜¾ç¤ºè¯¥æ±‚åŠ©ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
+#~ "      --index-search=STRING    è½¬ç§»åˆ°ç´¢å¼•æ¡ç›® STRING æ‰€æŒ‡å‘çš„èŠ‚ç‚¹ã€‚\n"
+#~ "  -n, --node=NODENAME          æŒ‡å®šé¦–å…ˆé˜…è¯»çš„ Info æ–‡ä»¶ä¸­çš„èŠ‚ç‚¹ã€‚\n"
+#~ "  -o, --output=FILENAME        å°†é€‰ä¸­çš„èŠ‚ç‚¹è¾“å‡ºåˆ°æ–‡ä»¶ FILENAME ä¸­ã€‚\n"
+#~ "  -R, --raw-escapes            ä¸è¦åˆ é™¤æ¥è‡ª man é¡µé¢çš„ ANSI è½¬ä¹‰ç¬¦ã€‚\n"
+#~ "      --restore=FILENAME       ä»æ–‡ä»¶ FILENAME ä¸­è¯»å–åˆå§‹æŒ‰é”®ã€‚\n"
+#~ "  -O, --show-options, --usage  è½¬ç§»åˆ°å‘½ä»¤è¡Œé€‰é¡¹èŠ‚ç‚¹ã€‚\n"
+#~ "%s      --subnodes               é€’å½’è¾“å‡ºèœå•æ¡ç›®ã€‚\n"
+#~ "      --vi-keys                ä½¿ç”¨ç±» vi å’Œç±» less çš„æŒ‰é”®ç»‘å®šã€‚\n"
+#~ "      --version                æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
 #~ "\n"
-#~ "Èç¹û´æÔÚ·ÇÑ¡Ïî²ÎÊı£¬ÔòµÚÒ»¸ö·ÇÑ¡Ïî²ÎÊı¾ÍÊÇÆğµã²Ëµ¥ÌõÄ¿£»\n"
-#~ "ËüÊÇ´Ó INFOPATH ÖĞµÄ¡°dir¡±ÎÄ¼şÖĞËÑË÷¶øµÃµÄ¡£\n"
-#~ "Èç¹ûËÑË÷²»µ½£¬info ¾ÍºÏ²¢ËùÓĞµÄ¡°dir¡±ÎÄ¼ş²¢ÏÔÊ¾ºÏ²¢½á¹û¡£\n"
-#~ "ËùÓĞÊ£ÓàµÄ²ÎÊı¾ù×÷ÎªÏà¶ÔÓÚÔÄ¶ÁµÄ³õÊ¼½ÚµãµÄ²Ëµ¥ÏîÄ¿Ãû³Æ¡£\n"
+#~ "å¦‚æœå­˜åœ¨éé€‰é¡¹å‚æ•°ï¼Œåˆ™ç¬¬ä¸€ä¸ªéé€‰é¡¹å‚æ•°å°±æ˜¯èµ·ç‚¹èœå•æ¡ç›®ï¼›\n"
+#~ "å®ƒæ˜¯ä» INFOPATH ä¸­çš„â€œdirâ€æ–‡ä»¶ä¸­æœç´¢è€Œå¾—çš„ã€‚\n"
+#~ "å¦‚æœæœç´¢ä¸åˆ°ï¼Œinfo å°±åˆå¹¶æ‰€æœ‰çš„â€œdirâ€æ–‡ä»¶å¹¶æ˜¾ç¤ºåˆå¹¶ç»“æœã€‚\n"
+#~ "æ‰€æœ‰å‰©ä½™çš„å‚æ•°å‡ä½œä¸ºç›¸å¯¹äºé˜…è¯»çš„åˆå§‹èŠ‚ç‚¹çš„èœå•é¡¹ç›®åç§°ã€‚\n"
 #~ "\n"
-#~ "Ê¾Àı£º\n"
-#~ "  info                       ÏÔÊ¾¶¥²ãÄ¿Â¼²Ëµ¥\n"
-#~ "  info emacs                 ´Ó¶¥²ãÄ¿Â¼ÖĞµÄ emacs ½Úµã¿ªÊ¼\n"
-#~ "  info emacs buffers         ´Ó emacs ÊÖ²áµÄ buffers ½Úµã¿ªÊ¼\n"
-#~ "  info --show-options emacs  ´Ó emacs µÄÃüÁîĞĞÑ¡Ïî½Úµã¿ªÊ¼\n"
-#~ "  info -f ./foo.info         ÏÔÊ¾ÎÄ¼ş ./foo.info£¬¶ø²»ÊÇËÑË÷Ä¿Â¼\n"
+#~ "ç¤ºä¾‹ï¼š\n"
+#~ "  info                       æ˜¾ç¤ºé¡¶å±‚ç›®å½•èœå•\n"
+#~ "  info emacs                 ä»é¡¶å±‚ç›®å½•ä¸­çš„ emacs èŠ‚ç‚¹å¼€å§‹\n"
+#~ "  info emacs buffers         ä» emacs æ‰‹å†Œçš„ buffers èŠ‚ç‚¹å¼€å§‹\n"
+#~ "  info --show-options emacs  ä» emacs çš„å‘½ä»¤è¡Œé€‰é¡¹èŠ‚ç‚¹å¼€å§‹\n"
+#~ "  info -f ./foo.info         æ˜¾ç¤ºæ–‡ä»¶ ./foo.infoï¼Œè€Œä¸æ˜¯æœç´¢ç›®å½•\n"
+
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
+#~ msgstr "\\%-10[move-to-prev-xref]  è·³è½¬åˆ°æœ¬èŠ‚ç‚¹ä¸­çš„ä¸Šä¸€ä¸ªè¶…æ–‡æœ¬è¿æ¥ã€‚\n"
+
+#~ msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
+#~ msgstr "\\%-10[dir-node]  ç§»åŠ¨åˆ°â€œdirectoryâ€èŠ‚ç‚¹ã€‚ç­‰ä»·äºâ€œ\\[goto-node] (DIR)â€ã€‚\n"
+
+#~ msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+#~ msgstr "\\%-10[top-node]  ç§»åŠ¨åˆ°é¡¶å±‚èŠ‚ç‚¹ã€‚ç­‰ä»·äºâ€œ\\[goto-node] Topâ€ã€‚\n"
+
+#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+#~ msgstr "\\%-10[scroll-forward]  å‘å‰æ»šåŠ¨ä¸€è¡Œã€‚\n"
+
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "\\%-10[scroll-backward]  å‘åæ»šåŠ¨ä¸€è¡Œã€‚\n"
+
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr "\\%-10[menu-digit]  é€‰å–èŠ‚ç‚¹èœå•ä¸­çš„ç¬¬ä¸€è‡³ç¬¬ä¹ä¸ªé¡¹ç›®ã€‚\n"
 
 #~ msgid ""
-#~ "              Picking a menu item causes another node to be selected.\n"
-#~ msgstr "              Ñ¡È¡Ò»¸ö²Ëµ¥ÏîÄ¿½«Ñ¡ÖĞÁíÒ»¸ö½Úµã¡£\n"
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search-backward]  å‘åæœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²\n"
+#~ "              å¹¶é€‰æ‹©æ‰€æ‰¾åˆ°çš„ä¸Šä¸€ä¸ªå®ä¾‹æ‰€åœ¨çš„èŠ‚ç‚¹ã€‚\n"
 
-#~ msgid ""
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
-#~ msgstr "              Äú»¹¿ÉÒÔÍ¬Ê±¸ø³öÎÄ¼şÃû£¬ĞÎÊ½Îª (ÎÄ¼şÃû)½ÚµãÃû¡£\n"
+#~ msgid "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr "              é€‰å–ä¸€ä¸ªèœå•é¡¹ç›®å°†é€‰ä¸­å¦ä¸€ä¸ªèŠ‚ç‚¹ã€‚\n"
+
+#~ msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ msgstr "  %-10s  åœ¨æœ¬ Info æ–‡ä»¶ä¸­çš„ç´¢å¼•æ¡ç›®ä¸­æœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²ï¼Œ\n"
+
+#~ msgid "              file, and select the node referenced by the first entry found.\n"
+#~ msgstr "              å¹¶é€‰æ‹©ç¬¬ä¸€ä¸ªæ‰¾åˆ°çš„æ¡ç›®æ‰€å¼•ç”¨çš„èŠ‚ç‚¹ã€‚\n"
+
+#~ msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+#~ msgstr "              æ‚¨è¿˜å¯ä»¥åŒæ—¶ç»™å‡ºæ–‡ä»¶åï¼Œå½¢å¼ä¸º (æ–‡ä»¶å)èŠ‚ç‚¹åã€‚\n"
+
+#~ msgid "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              å¹¶é€‰æ‹©æ‰¾åˆ°çš„ä¸‹ä¸€ä¸ªå®ä¾‹æ‰€åœ¨çš„èŠ‚ç‚¹ã€‚\n"
 
 #~ msgid "  %-10s  Search backward for a specified string\n"
-#~ msgstr "  %-10s  ÏòºóËÑË÷Ö¸¶¨µÄ×Ö·û´®\n"
+#~ msgstr "  %-10s  å‘åæœç´¢æŒ‡å®šçš„å­—ç¬¦ä¸²\n"
 
-#~ msgid ""
-#~ "              and select the node in which the next occurrence is found.\n"
-#~ msgstr "              ²¢Ñ¡ÔñÕÒµ½µÄÏÂÒ»¸öÊµÀıËùÔÚµÄ½Úµã¡£\n"
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr "--- ç”¨â€œ\\[history-node]â€æˆ–â€œ\\[kill-node]â€é€€å‡º ---\n"
 
 #~ msgid "Following Next node..."
-#~ msgstr "¸úËæÏÂÒ»¸ö½Úµã..."
+#~ msgstr "è·Ÿéšä¸‹ä¸€ä¸ªèŠ‚ç‚¹..."
 
 #~ msgid "Selecting first menu item..."
-#~ msgstr "Ñ¡ÔñµÚÒ»¸ö²Ëµ¥Ïî..."
+#~ msgstr "é€‰æ‹©ç¬¬ä¸€ä¸ªèœå•é¡¹..."
 
 #~ msgid "Selecting Next node..."
-#~ msgstr "Ñ¡ÔñÏÂÒ»¸ö½Úµã..."
+#~ msgstr "é€‰æ‹©ä¸‹ä¸€ä¸ªèŠ‚ç‚¹..."
 
 #~ msgid "Moving Up %d time(s), then Next."
-#~ msgstr "ÏòÉÏÒÆ¶¯ %d ´Î£¬¶øºóºóÒÆ¡£"
+#~ msgstr "å‘ä¸Šç§»åŠ¨ %d æ¬¡ï¼Œè€Œååç§»ã€‚"
 
 #~ msgid "Moving Prev in this window."
-#~ msgstr "ÔÚ±¾´°¿ÚÖĞÏòÉÏÒÆ¶¯¡£"
+#~ msgstr "åœ¨æœ¬çª—å£ä¸­å‘ä¸Šç§»åŠ¨ã€‚"
 
 #~ msgid "Moving Up in this window."
-#~ msgstr "ÔÚ±¾´°¿ÚÖĞÏòÉÏ²ãÒÆ¶¯"
+#~ msgstr "åœ¨æœ¬çª—å£ä¸­å‘ä¸Šå±‚ç§»åŠ¨"
 
 #~ msgid "Moving to `Prev's last menu item."
-#~ msgstr "ÒÆ¶¯µ½Ç°Ò»¸öµÄ×îºóÒ»¸ö²Ëµ¥ÏîÄ¿¡£"
+#~ msgstr "ç§»åŠ¨åˆ°å‰ä¸€ä¸ªçš„æœ€åä¸€ä¸ªèœå•é¡¹ç›®ã€‚"
 
 #~ msgid " "
 #~ msgstr " "
 
+#~ msgid "\"\" is invalid"
+#~ msgstr "â€œâ€ä¸ºéæ³•"
+
 #~ msgid "Function"
-#~ msgstr "º¯Êı"
+#~ msgstr "å‡½æ•°"
 
 #~ msgid "Macro"
-#~ msgstr "ºê"
+#~ msgstr "å®"
 
 #~ msgid "Special Form"
-#~ msgstr "ÌØÊâĞÎÊ½"
+#~ msgstr "ç‰¹æ®Šå½¢å¼"
 
 #~ msgid "Variable"
-#~ msgstr "±äÁ¿"
+#~ msgstr "å˜é‡"
 
 #~ msgid "User Option"
-#~ msgstr "ÓÃ»§Ñ¡Ïî"
+#~ msgstr "ç”¨æˆ·é€‰é¡¹"
 
 #~ msgid "Instance Variable"
-#~ msgstr "ÊµÀı±äÁ¿"
+#~ msgstr "å®ä¾‹å˜é‡"
 
 #~ msgid "Method"
-#~ msgstr "·½·¨"
+#~ msgstr "æ–¹æ³•"
 
 #~ msgid "Untitled"
-#~ msgstr "ÎŞ±êÌâ"
+#~ msgstr "æ— æ ‡é¢˜"
+
+#~ msgid "%s is an invalid ISO code, using %c"
+#~ msgstr "%s æ˜¯éæ³•çš„ ISO ç ï¼Œä½¿ç”¨ %c"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr "@quote-arg åªå¯¹å•å‚æ•°å®æœ‰ç”¨"
+
+#~ msgid "Cannot specify more than one macro expansion output"
+#~ msgstr "æ— æ³•æŒ‡å®šå¤šä¸ªå®æ‰©å±•è¾“å‡º"
+
+#~ msgid "File exists, but is not a directory"
+#~ msgstr "æ–‡ä»¶å­˜åœ¨ï¼Œä½†ä¸æ˜¯ç›®å½•"
 
 #~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
-#~ msgstr "ÕâÊÇ %s£¬ÓÉ makeinfo °æ±¾ %s ´Ó %s Éú³É¡£\n"
-
-#~ msgid "Next:"
-#~ msgstr "ÏÂÒ»¸ö£º"
-
-#~ msgid "Previous:"
-#~ msgstr "ÉÏÒ»¸ö£º"
-
-#~ msgid "Up:"
-#~ msgstr "ÉÏ²ã£º"
-
-#~ msgid "Menu"
-#~ msgstr "²Ëµ¥"
-
-#~ msgid "Cross"
-#~ msgstr "½»²æÒıÓÃ"
-
-#~ msgid "Prev"
-#~ msgstr "ÉÏÒ»¸ö"
-
-#~ msgid "Up"
-#~ msgstr "ÉÏ²ã"
+#~ msgstr "è¿™æ˜¯ %sï¼Œç”± makeinfo ç‰ˆæœ¬ %s ä» %s ç”Ÿæˆã€‚\n"
 
 #~ msgid "see "
-#~ msgstr "²ÎÔÄ "
+#~ msgstr "å‚é˜… "
 
-#, fuzzy
+#~ msgid "No `%s.png' or `.jpg', and no extension supplied"
+#~ msgstr "ä¸æ˜¯â€œ%s.pngâ€æˆ–â€œ.jpgâ€ï¼Œè€Œä¸”æ²¡æœ‰ç»™å‡ºæ‰©å±•å"
+
+#~ msgid "Node:"
+#~ msgstr "èŠ‚ç‚¹ï¼š"
+
+#~ msgid "Next:"
+#~ msgstr "ä¸‹ä¸€ä¸ªï¼š"
+
+#~ msgid "Previous:"
+#~ msgstr "ä¸Šä¸€ä¸ªï¼š"
+
+#~ msgid "Up:"
+#~ msgstr "ä¸Šå±‚ï¼š"
+
+#~ msgid "Menu"
+#~ msgstr "èœå•"
+
+#~ msgid "Cross"
+#~ msgstr "äº¤å‰å¼•ç”¨"
+
+#~ msgid "Prev"
+#~ msgstr "ä¸Šä¸€ä¸ª"
+
+#~ msgid "`%s' has no Up field"
+#~ msgstr "â€œ%sâ€æ²¡æœ‰ä¸Šå±‚åŸŸ"
+
+#~ msgid "Up"
+#~ msgstr "ä¸Šå±‚"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "èŠ‚ç‚¹â€œ%sâ€å·²è¢«å¼•ç”¨äº† %d æ¬¡"
+
+#~ msgid "Table of Contents"
+#~ msgstr "ç›®å½•"
+
+#~ msgid "Short Contents"
+#~ msgstr "ç®€çŸ­ç›®å½•"
+
+#~ msgid "%s: TOC should be here, but it was not found"
+#~ msgstr "%sï¼šç›®å½•åº”è¯¥åœ¨è¿™é‡Œï¼Œä½†å®ƒå¹¶æœªå‡ºç°"
+
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 #~ "\n"
-#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "Install or delete dir entries from INFO-FILE in the Info directory file\n"
+#~ "DIR-FILE.\n"
 #~ "\n"
 #~ "Options:\n"
-#~ " --debug           report what is being done.\n"
 #~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
 #~ "                     don't insert any new entries.\n"
 #~ " --dir-file=NAME   specify file name of Info directory file.\n"
 #~ "                     This is equivalent to using the DIR-FILE argument.\n"
 #~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 #~ "                     TEXT should have the form of an Info menu item line\n"
-#~ "                     plus zero or more extra lines starting with "
-#~ "whitespace.\n"
-#~ "                     If you specify more than one entry, they are all "
-#~ "added.\n"
-#~ "                     If you don't specify any entries, they are "
-#~ "determined\n"
+#~ "                     plus zero or more extra lines starting with whitespace.\n"
+#~ "                     If you specify more than one entry, they are all added.\n"
+#~ "                     If you don't specify any entries, they are determined\n"
 #~ "                     from information in the Info file itself.\n"
 #~ " --help            display this help and exit.\n"
 #~ " --info-file=FILE  specify Info file to install in the directory.\n"
@@ -3300,135 +3336,55 @@ msgstr "ÌõÄ¿ %s ³öÏÖÔÚ¾ßÓĞ´ÎÒªÃû³ÆµÄÌõÄ¿Ö®ºó"
 #~ "                     An Info directory entry is actually a menu item.\n"
 #~ " --quiet           suppress warnings.\n"
 #~ " --remove          same as --delete.\n"
-#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
-#~ "                     .info and/or .gz suffixes are not ignored.\n"
-#~ " --section=SEC     put this file's entries in section SEC of the "
-#~ "directory.\n"
-#~ "                     If you specify more than one section, all the "
-#~ "entries\n"
+#~ " --section=SEC     put this file's entries in section SEC of the directory.\n"
+#~ "                     If you specify more than one section, all the entries\n"
 #~ "                     are added in each of the sections.\n"
-#~ "                     If you don't specify any sections, they are "
-#~ "determined\n"
+#~ "                     If you don't specify any sections, they are determined\n"
 #~ "                     from information in the Info file itself.\n"
-#~ " --section-regex=R if an entry is added to a section that does not "
-#~ "exist,\n"
-#~ "                     look for a section matching basic regular expression "
-#~ "R\n"
-#~ "                     (and ignoring case) before starting a new section.\n"
-#~ " --test            suppress updating of DIR-FILE.\n"
-#~ " --silent          suppress warnings.\n"
 #~ " --version         display version information and exit.\n"
 #~ msgstr ""
-#~ "ÓÃ·¨£º%s [Ñ¡Ïî]... [INFO-ÎÄ¼ş [DIR-ÎÄ¼ş]]\n"
+#~ "ç”¨æ³•ï¼š%s [é€‰é¡¹]... [INFO-æ–‡ä»¶ [DIR-æ–‡ä»¶]]\n"
 #~ "\n"
-#~ "½« INFO-ÎÄ¼şÖĞµÄÄ¿Â¼ÌõÄ¿°²×°µ½ Info Ä¿Â¼ÎÄ¼ş DIR-ÎÄ¼şÖĞ£¬»ò´ÓÖĞ\n"
-#~ "É¾³ı¡£\n"
+#~ "å°† INFO-æ–‡ä»¶ä¸­çš„ç›®å½•æ¡ç›®å®‰è£…åˆ° Info ç›®å½•æ–‡ä»¶ DIR-æ–‡ä»¶ä¸­ï¼Œæˆ–ä»ä¸­\n"
+#~ "åˆ é™¤ã€‚\n"
 #~ "\n"
-#~ "Ñ¡Ïî£º\n"
-#~ " --delete          ´Ó DIR-ÎÄ¼şÖĞÉ¾³ı¹ØÓÚ INFO-ÎÄ¼şµÄÏÖÓĞÌõÄ¿£»\n"
-#~ "                     ²»É¾³ıÈÎºÎĞÂÌõÄ¿¡£\n"
-#~ " --dir-file=NAME   Ö¸¶¨ Info Ä¿Â¼ÎÄ¼şµÄÎÄ¼şÃû¡£\n"
-#~ "                     ÕâµÈ¼ÛÓÚÊ¹ÓÃ DIR-ÎÄ¼ş²ÎÊı¡£\n"
-#~ " --entry=TEXT      ½« TEXT ×÷Îª Info Ä¿Â¼ÌõÄ¿²åÈë¡£\n"
-#~ "                     TEXT µÄĞÎÊ½Ó¦¸ÃÊÇ Info ²Ëµ¥ÏîÄ¿\n"
-#~ "                     ĞĞÒÔ¼°Áã¸ö»ò¶à¸öÒÔ¿Õ°×¿ªÍ·µÄĞĞ¡£\n"
-#~ "                     Èç¹ûÄúÖ¸Ã÷¶à¸öÌõÄ¿£¬½«È«²¿Ìí¼Ó¡£\n"
-#~ "                     Èç¹ûÄúÎ´Ö¸Ã÷ÈÎºÎÌõÄ¿£¬ËüÃÇ½«´Ó\n"
-#~ "                     Info ÎÄ¼ş×ÔÉíµÄĞÅÏ¢À´ÅĞ¶Ï¡£\n"
-#~ " --help            ÏÔÊ¾±¾ÇóÖúĞÅÏ¢²¢ÍË³ö¡£\n"
-#~ " --info-file=FILE  Ö¸¶¨Òª°²×°µ½Ä¿Â¼ÖĞµÄ Info ÎÄ¼ş¡£\n"
-#~ "                     ÕâµÈ¼ÛÓÚÊ¹ÓÃ INFO-ÎÄ¼ş²ÎÊı¡£\n"
-#~ " --info-dir=DIR    µÈÍ¬ÓÚ --dir-file=DIR/dir¡£\n"
-#~ " --item=TEXT       µÈÍ¬ÓÚ --entry ÎÄ±¾¡£\n"
-#~ "                     Info Ä¿Â¼ÌõÄ¿Êµ¼ÊÉÏÊÇ²Ëµ¥ÏîÄ¿¡£\n"
-#~ " --quiet           ²»ÒªÊä³ö¾¯¸æ¡£\n"
-#~ " --remove          µÈÍ¬ÓÚ --delete¡£\n"
-#~ " --section=SEC     ½«¸ÃÎÄ¼şµÄÌõÄ¿´æ´¢µ½Ä¿Â¼µÄ½Ú SEC ÖĞ¡£\n"
-#~ "                     Èç¹ûÄúÖ¸Ã÷¶àÓÚÒ»¸ö½Ú£¬½«¼ÓÈë¸÷¸ö\n"
-#~ "                     ½ÚÖĞµÄËùÓĞÌõÄ¿¡£\n"
-#~ "                     Èç¹ûÄúÎ´Ö¸Ã÷ÈÎºÎ½Ú£¬½«¸ù¾İ Info\n"
-#~ "                     ÎÄ¼ş×ÔÉíµÄĞÅÏ¢À´ÅĞ¶ÏËüÃÇ¡£\n"
-#~ " --version         ÏÔÊ¾°æ±¾ĞÅÏ¢²¢ÍË³ö¡£\n"
-
-#~ msgid "menu item `%s' already exists, for file `%s'"
-#~ msgstr "ÔÚÎÄ¼ş¡°%2$s¡±ÖĞ²Ëµ¥Ïî¡°%1$s¡±ÒÑ´æÔÚ"
-
-#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-#~ msgstr "\\%-10[menu-digit]  Ñ¡È¡½Úµã²Ëµ¥ÖĞµÄµÚÒ»ÖÁµÚ¾Å¸öÏîÄ¿¡£\n"
-
-#~ msgid "node `%s' has been referenced %d times"
-#~ msgstr "½Úµã¡°%s¡±ÒÑ±»ÒıÓÃÁË %d ´Î"
-
-#, fuzzy
-#~ msgid ""
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
-#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
-#~ "under the terms of the GNU General Public License.\n"
-#~ "For more information about these matters, see the file named COPYING.\n"
-#~ msgstr ""
-#~ "°æÈ¨ËùÓĞ (C) %s ×ÔÓÉÈí¼ş»ù½ğ»á¡£\n"
-#~ "±¾Èí¼şÃ»ÓĞÈÎºÎµ£±£¡£Äú¿ÉÒÔ°´ÕÕÍ¨ÓÃ\n"
-#~ "¹«¹²Ğí¿ÉÖ¤(GPL)µÄÌõ¿î·¢ĞĞ±¾Èí¼ş¡£\n"
-#~ "Õâ·½ÃæµÄÏêÇé£¬ÇëÔÄ¶ÁÃûÎª COPYING µÄÎÄ¼ş¡£\n"
-
-#~ msgid "@quote-arg only useful for single-argument macros"
-#~ msgstr "@quote-arg Ö»¶Ôµ¥²ÎÊıºêÓĞÓÃ"
-
-#~ msgid "Table of Contents"
-#~ msgstr "Ä¿Â¼"
-
-#~ msgid "Short Contents"
-#~ msgstr "¼ò¶ÌÄ¿Â¼"
-
-#~ msgid "keep temporary files around after processing"
-#~ msgstr "ÔÚ´¦ÀíÖ®ºó±£ÁôÁÙÊ±ÎÄ¼ş"
-
-#~ msgid "do not keep temporary files around after processing (default)"
-#~ msgstr "ÔÚ´¦ÀíÖ®ºóÉ¾³ıÁÙÊ±ÎÄ¼ş (Ä¬ÈÏ)"
-
-#~ msgid ""
-#~ "              file, and select the node referenced by the first entry "
-#~ "found.\n"
-#~ msgstr "              ²¢Ñ¡ÔñµÚÒ»¸öÕÒµ½µÄÌõÄ¿ËùÒıÓÃµÄ½Úµã¡£\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "There is NO warranty.  You may redistribute this software\n"
-#~ "under the terms of the GNU General Public License.\n"
-#~ "For more information about these matters, see the files named COPYING.\n"
-#~ msgstr ""
-#~ "°æÈ¨ËùÓĞ (C) %s ×ÔÓÉÈí¼ş»ù½ğ»á¡£\n"
-#~ "±¾Èí¼şÃ»ÓĞÈÎºÎµ£±£¡£Äú¿ÉÒÔ°´ÕÕÍ¨ÓÃ\n"
-#~ "¹«¹²Ğí¿ÉÖ¤(GPL)µÄÌõ¿î·¢ĞĞ±¾Èí¼ş¡£\n"
-#~ "Õâ·½ÃæµÄÏêÇé£¬ÇëÔÄ¶ÁÃûÎª COPYING µÄÎÄ¼ş¡£\n"
+#~ "é€‰é¡¹ï¼š\n"
+#~ " --delete          ä» DIR-æ–‡ä»¶ä¸­åˆ é™¤å…³äº INFO-æ–‡ä»¶çš„ç°æœ‰æ¡ç›®ï¼›\n"
+#~ "                     ä¸åˆ é™¤ä»»ä½•æ–°æ¡ç›®ã€‚\n"
+#~ " --dir-file=NAME   æŒ‡å®š Info ç›®å½•æ–‡ä»¶çš„æ–‡ä»¶åã€‚\n"
+#~ "                     è¿™ç­‰ä»·äºä½¿ç”¨ DIR-æ–‡ä»¶å‚æ•°ã€‚\n"
+#~ " --entry=TEXT      å°† TEXT ä½œä¸º Info ç›®å½•æ¡ç›®æ’å…¥ã€‚\n"
+#~ "                     TEXT çš„å½¢å¼åº”è¯¥æ˜¯ Info èœå•é¡¹ç›®\n"
+#~ "                     è¡Œä»¥åŠé›¶ä¸ªæˆ–å¤šä¸ªä»¥ç©ºç™½å¼€å¤´çš„è¡Œã€‚\n"
+#~ "                     å¦‚æœæ‚¨æŒ‡æ˜å¤šä¸ªæ¡ç›®ï¼Œå°†å…¨éƒ¨æ·»åŠ ã€‚\n"
+#~ "                     å¦‚æœæ‚¨æœªæŒ‡æ˜ä»»ä½•æ¡ç›®ï¼Œå®ƒä»¬å°†ä»\n"
+#~ "                     Info æ–‡ä»¶è‡ªèº«çš„ä¿¡æ¯æ¥åˆ¤æ–­ã€‚\n"
+#~ " --help            æ˜¾ç¤ºæœ¬æ±‚åŠ©ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
+#~ " --info-file=FILE  æŒ‡å®šè¦å®‰è£…åˆ°ç›®å½•ä¸­çš„ Info æ–‡ä»¶ã€‚\n"
+#~ "                     è¿™ç­‰ä»·äºä½¿ç”¨ INFO-æ–‡ä»¶å‚æ•°ã€‚\n"
+#~ " --info-dir=DIR    ç­‰åŒäº --dir-file=DIR/dirã€‚\n"
+#~ " --item=TEXT       ç­‰åŒäº --entry æ–‡æœ¬ã€‚\n"
+#~ "                     Info ç›®å½•æ¡ç›®å®é™…ä¸Šæ˜¯èœå•é¡¹ç›®ã€‚\n"
+#~ " --quiet           ä¸è¦è¾“å‡ºè­¦å‘Šã€‚\n"
+#~ " --remove          ç­‰åŒäº --deleteã€‚\n"
+#~ " --section=SEC     å°†è¯¥æ–‡ä»¶çš„æ¡ç›®å­˜å‚¨åˆ°ç›®å½•çš„èŠ‚ SEC ä¸­ã€‚\n"
+#~ "                     å¦‚æœæ‚¨æŒ‡æ˜å¤šäºä¸€ä¸ªèŠ‚ï¼Œå°†åŠ å…¥å„ä¸ª\n"
+#~ "                     èŠ‚ä¸­çš„æ‰€æœ‰æ¡ç›®ã€‚\n"
+#~ "                     å¦‚æœæ‚¨æœªæŒ‡æ˜ä»»ä½•èŠ‚ï¼Œå°†æ ¹æ® Info\n"
+#~ "                     æ–‡ä»¶è‡ªèº«çš„ä¿¡æ¯æ¥åˆ¤æ–­å®ƒä»¬ã€‚\n"
+#~ " --version         æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯å¹¶é€€å‡ºã€‚\n"
 
 #~ msgid "%s: Specify the Info directory only once.\n"
-#~ msgstr "%s£ºInfo Ä¿Â¼Ö»Ó¦¸ÃÖ¸¶¨Ò»´Î¡£\n"
+#~ msgstr "%sï¼šInfo ç›®å½•åªåº”è¯¥æŒ‡å®šä¸€æ¬¡ã€‚\n"
 
-#~ msgid "\"\" is invalid"
-#~ msgstr "¡°¡±Îª·Ç·¨"
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "åœ¨æ–‡ä»¶â€œ%2$sâ€ä¸­èœå•é¡¹â€œ%1$sâ€å·²å­˜åœ¨"
 
-#~ msgid "%s is an invalid ISO code, using %c"
-#~ msgstr "%s ÊÇ·Ç·¨µÄ ISO Âë£¬Ê¹ÓÃ %c"
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "åœ¨å¤„ç†ä¹‹åä¿ç•™ä¸´æ—¶æ–‡ä»¶"
 
-#~ msgid "Cannot specify more than one macro expansion output"
-#~ msgstr "ÎŞ·¨Ö¸¶¨¶à¸öºêÀ©Õ¹Êä³ö"
-
-#~ msgid "File exists, but is not a directory"
-#~ msgstr "ÎÄ¼ş´æÔÚ£¬µ«²»ÊÇÄ¿Â¼"
-
-#~ msgid "Node:"
-#~ msgstr "½Úµã£º"
-
-#~ msgid "%s: TOC should be here, but it was not found"
-#~ msgstr "%s£ºÄ¿Â¼Ó¦¸ÃÔÚÕâÀï£¬µ«Ëü²¢Î´³öÏÖ"
-
-#~ msgid "No `%s.png' or `.jpg', and no extension supplied"
-#~ msgstr "²»ÊÇ¡°%s.png¡±»ò¡°.jpg¡±£¬¶øÇÒÃ»ÓĞ¸ø³öÀ©Õ¹Ãû"
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "åœ¨å¤„ç†ä¹‹ååˆ é™¤ä¸´æ—¶æ–‡ä»¶ (é»˜è®¤)"
 
 #~ msgid "%s; for file `%s'.\n"
-#~ msgstr "%s£»ÎÄ¼ş¡°%s¡±¡£\n"
-
-#~ msgid "`%s' has no Up field"
-#~ msgstr "¡°%s¡±Ã»ÓĞÉÏ²ãÓò"
+#~ msgstr "%sï¼›æ–‡ä»¶â€œ%sâ€ã€‚\n"
