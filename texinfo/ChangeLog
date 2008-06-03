@@ -1,3 +1,8 @@
+2008-06-03  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_makeinfo): = not ==.
+	From Ralf W, 3 Jun 2008 21:12:30.
+
 2008-05-22  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.90.
