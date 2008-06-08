@@ -84,6 +84,8 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_MEMCHR
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMOVE
+  gl_FUNC_MEMPCPY
+  gl_STRING_MODULE_INDICATOR([mempcpy])
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
   gl_FUNC_SETENV
@@ -91,11 +93,15 @@ AC_DEFUN([gl_INIT],
   AM_STDBOOL_H
   gl_STDINT_H
   gl_STDLIB_H
+  gl_FUNC_STPCPY
+  gl_STRING_MODULE_INDICATOR([stpcpy])
   gl_FUNC_STRDUP
   gl_STRING_MODULE_INDICATOR([strdup])
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
   gl_HEADER_STRING_H
+  gl_FUNC_STRNDUP
+  gl_STRING_MODULE_INDICATOR([strndup])
   gl_FUNC_STRNLEN
   gl_STRING_MODULE_INDICATOR([strnlen])
   gl_HEADER_SYS_STAT_H
@@ -280,6 +286,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memchr.c
   lib/memcpy.c
   lib/memmove.c
+  lib/mempcpy.c
   lib/mkstemp.c
   lib/ref-add.sin
   lib/ref-del.sin
@@ -287,11 +294,13 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stdbool.in.h
   lib/stdint.in.h
   lib/stdlib.in.h
+  lib/stpcpy.c
   lib/str-kmp.h
   lib/strdup.c
   lib/streq.h
   lib/strerror.c
   lib/string.in.h
+  lib/strndup.c
   lib/strnlen.c
   lib/strnlen1.c
   lib/strnlen1.h
@@ -359,6 +368,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/memchr.m4
   m4/memcpy.m4
   m4/memmove.m4
+  m4/mempcpy.m4
   m4/mkstemp.m4
   m4/nls.m4
   m4/onceonly.m4
@@ -371,9 +381,11 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdint.m4
   m4/stdint_h.m4
   m4/stdlib_h.m4
+  m4/stpcpy.m4
   m4/strdup.m4
   m4/strerror.m4
   m4/string_h.m4
+  m4/strndup.m4
   m4/strnlen.m4
   m4/sys_stat_h.m4
   m4/sys_time_h.m4

@@ -9,7 +9,7 @@ define out
 p output_paragraph+output_paragraph_offset
 end
 
-#set env MALLOC_CHECK_ 2
+set env MALLOC_CHECK_ 2
 set env ttests ../@tests
 
 #set args -o /tmp/out --no-validate ../@ttests/outside.texi
@@ -278,3 +278,6 @@ set args -o - $ttests/cite.tex
 
 # conglomerated INFO-DIR-SECTIONs
 set args -o - $ttests/dircat2.tex
+
+# seg fault on -- in arg5 to @image
+set args -o - $ttests/image--.tex

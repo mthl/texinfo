@@ -376,6 +376,15 @@ EXTRA_libgnu_a_SOURCES += memmove.c
 
 ## end   gnulib module memmove
 
+## begin gnulib module mempcpy
+
+
+EXTRA_DIST += mempcpy.c
+
+EXTRA_libgnu_a_SOURCES += mempcpy.c
+
+## end   gnulib module mempcpy
+
 ## begin gnulib module mkstemp
 
 
@@ -497,6 +506,15 @@ EXTRA_DIST += stdlib.in.h
 
 ## end   gnulib module stdlib
 
+## begin gnulib module stpcpy
+
+
+EXTRA_DIST += stpcpy.c
+
+EXTRA_libgnu_a_SOURCES += stpcpy.c
+
+## end   gnulib module stpcpy
+
 ## begin gnulib module strdup
 
 
@@ -595,6 +613,15 @@ MOSTLYCLEANFILES += string.h string.h-t
 EXTRA_DIST += string.in.h
 
 ## end   gnulib module string
+
+## begin gnulib module strndup
+
+
+EXTRA_DIST += strndup.c
+
+EXTRA_libgnu_a_SOURCES += strndup.c
+
+## end   gnulib module strndup
 
 ## begin gnulib module strnlen
 
