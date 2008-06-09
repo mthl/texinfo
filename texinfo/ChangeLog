@@ -1,3 +1,29 @@
+2008-06-10  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix cursor positioning in multibyte locales.
+	
+	* info/display.c (process_node_text): Move to window.c
+	* info/display.h (process_node_text): Move to window.h
+	(handle_tag): New prototype.
+
+	* info/window.c (window_get_cursor_column): Rewrite using
+	window_point_to_column.
+	(window_chars_to_goal): Change signature.
+	(process_node_text): Move from display.c
+	(window_line_map_init, window_compute_line_map)
+	(window_point_to_column): New functions.
+	* info/window.h (LINE_MAP): New data type.
+	(WINDOW): New member line_map.
+	(window_chars_to_goal): Change prototype.
+	(window_line_map_init, window_compute_line_map)
+	(window_point_to_column): New prototypes.
+	
+	* info/echo-area.c (ea_tab_insert, ea_kill_word)
+	(ea_backward_kill_w): Call window_line_map_init.
+	* info/session.c (move_to_new_line): Change call to
+	window_chars_to_goal.
+	(info_end_of_line, info_beginning_of_line): Use line map.
+
 2008-06-09  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/info-utils.c (printed_representation): Fix length
