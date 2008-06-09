@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.38 2008-04-25 18:28:29 karl Exp $
+   $Id: session.c,v 1.39 2008-06-09 22:53:30 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -613,7 +613,7 @@ move_to_new_line (int old, int new, WINDOW *window)
       window->goal_column = goal;
 
       window->point = window->line_starts[new] - window->node->contents;
-      window->point += window_chars_to_goal (window->line_starts[new], goal);
+      window->point += window_chars_to_goal (window, goal);
       info_show_point (window);
     }
 }
@@ -695,15 +695,10 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
 /* Move WINDOW's point to the end of the true line. */
 DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
 {
-  register int point, len;
-  register char *buffer;
+  int point;
 
-  buffer = window->node->contents;
-  len = window->node->nodelen;
-
-  for (point = window->point;
-       (point < len) && (buffer[point] != '\n');
-       point++);
+  window_compute_line_map (window);
+  point = window->line_map.map[window->line_map.used - 1];
 
   if (point != window->point)
     {
@@ -715,15 +710,10 @@ DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
 /* Move WINDOW's point to the beginning of the true line. */
 DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line"))
 {
-  register int point;
-  register char *buffer;
+  int point;
 
-  buffer = window->node->contents;
-  point = window->point;
-
-  for (; (point) && (buffer[point - 1] != '\n'); point--);
-
-  /* If at a line start already, do nothing. */
+  window_compute_line_map (window);
+  point = window->line_map.map[0];
   if (point != window->point)
     {
       window->point = point;
