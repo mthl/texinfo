@@ -1,5 +1,5 @@
 /* display.h -- How the display in Info is done.
-   $Id: display.h,v 1.7 2008-05-10 14:39:04 gray Exp $
+   $Id: display.h,v 1.8 2008-06-09 22:51:20 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -74,9 +74,6 @@ extern void display_scroll_display (int start, int end, int amount);
 extern void display_scroll_line_starts (WINDOW *window, int old_pagetop,
     char **old_starts, int old_count);
 
-extern size_t process_node_text
-        (WINDOW *win, char *start, int do_tags,
-         int (*fun) (void *, size_t, const char *, char *, size_t, size_t),
-	 void *closure);
+void handle_tag (char *tag);
 
 #endif /* not INFO_DISPLAY_H */
