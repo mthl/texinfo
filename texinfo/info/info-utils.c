@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.10 2008-05-10 14:39:04 gray Exp $
+   $Id: info-utils.c,v 1.11 2008-06-09 11:09:15 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007 Free Software Foundation, Inc.
 
@@ -556,7 +556,7 @@ printed_representation (const unsigned char *cp, size_t len, size_t hpos,
     }
   
   SC(0);
-  *plen = i;
+  *plen = i - 1;
   return the_rep;
 }
 
