@@ -1,3 +1,8 @@
+2008-06-09  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/info-utils.c (printed_representation): Fix length
+	calculation. 
+
 2008-06-03  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_makeinfo): = not ==.
