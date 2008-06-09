@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.12 2008-02-26 16:51:05 karl Exp $
+   $Id: echo-area.c,v 1.13 2008-06-09 22:52:57 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007
    Free Software Foundation, Inc.
@@ -492,6 +492,7 @@ DECLARE_INFO_COMMAND (ea_insert, _("Insert this character"))
   input_line[input_line_point] = key;
   input_line_point++;
   input_line_end++;
+  window_line_map_init (window);
 }
 
 DECLARE_INFO_COMMAND (ea_tab_insert, _("Insert a TAB character"))
@@ -645,6 +646,7 @@ DECLARE_INFO_COMMAND (ea_kill_word, _("Kill the word following the cursor"))
 
       input_line_point = orig_point;
     }
+  window_line_map_init (window);
 }
 
 /* Delete from point to the start of the current word. */
@@ -662,6 +664,7 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
       if (input_line_point != orig_point)
         ea_kill_text (orig_point, input_line_point);
     }
+  window_line_map_init (window);
 }
 
 /* The way to kill something.  This appends or prepends to the last
