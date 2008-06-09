@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.7 2008-02-26 16:51:06 karl Exp $
+   $Id: window.h,v 1.8 2008-06-09 22:52:22 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -35,6 +35,17 @@
    window.  This number includes the modeline of the window. */
 #define WINDOW_MIN_SIZE (WINDOW_MIN_HEIGHT + 1)
 
+/* A line map structure keeps a table of point values corresponding to
+   column offsets within the current line.  It is used to convert
+   point values into columns on screen and vice versa. */
+typedef struct line_map_struct
+{
+  size_t nline;    /* Line number for which the map is computed. */
+  size_t size;     /* Number of elements map can accomodate */
+  size_t used;     /* Number of used map slots */
+  int *map;        /* The map itself */
+} LINE_MAP;
+
 /* The exact same elements are used within the WINDOW_STATE structure and a
    subsection of the WINDOW structure.  We could define a structure which
    contains this elements, and include that structure in each of WINDOW_STATE
@@ -64,6 +75,7 @@ typedef struct window_struct
   int goal_column;      /* The column we would like the cursor to appear in. */
   Keymap keymap;        /* Keymap used to read commands in this window. */
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
+  LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
   char **line_starts;   /* Array of printed line starts for this node. */
   int line_count;       /* Number of lines appearing in LINE_STARTS. */
@@ -233,8 +245,19 @@ extern int window_get_cursor_column (WINDOW *window);
 extern void window_get_state (WINDOW *window, SEARCH_STATE *state);
 extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
 
-/* Count the number of characters in LINE that precede the printed column
-   offset of GOAL. */
-extern int window_chars_to_goal (char *line, int goal);
+/* Count the number of characters in current line of WIN that precede
+   the printed column offset of GOAL. */
+extern int window_chars_to_goal (WINDOW *win, int goal);
+
+extern size_t process_node_text
+        (WINDOW *win, char *start, int do_tags,
+         int (*fun) (void *, size_t, const char *, char *, size_t, size_t),
+	 void *closure);
+
+extern void window_compute_line_map (WINDOW *win);
+
+int window_point_to_column (WINDOW *win, long point, long *np);
+
+void window_line_map_init (WINDOW *win);
 
 #endif /* not INFO_WINDOW_H */
