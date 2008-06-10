@@ -1,5 +1,20 @@
 2008-06-10  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/session.c (_looking_at_newline, point_next_line)
+	(point_prev_line, point_forward_char, point_backward_char)
+	(point_skip_ws_forward, point_skip_ws_backward)
+	(point_forward_word, point_backward_word): New functions.
+	(info_end_of_line, info_forward_char, info_backward_char)
+	(info_forward_word, info_backward_word): Reimplement to work
+	correctly in multibytes locales.
+	* info/window.c (window_scan_line): New function.
+	(window_compute_line_map): Rewrite using window_scan_line.
+	(window_end_of_line): New function.
+	* info/window.h (LINE_MAP): Change type of map to long.
+	(window_end_of_line): New prototype.
+
+2008-06-10  Sergey Poznyakoff  <gray@gnu.org.ua>
+	
 	Fix cursor positioning in multibyte locales.
 	
 	* info/display.c (process_node_text): Move to window.c
