@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.12 2008-06-09 22:51:48 gray Exp $
+   $Id: window.c,v 1.13 2008-06-10 11:37:30 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -950,8 +950,6 @@ window_get_cursor_column (WINDOW *window)
 int
 window_chars_to_goal (WINDOW *win, int goal)
 {
-  int i;
-  
   window_compute_line_map (win);
   if (goal >= win->line_map.used)
     goal = win->line_map.used - 1;
@@ -1747,7 +1745,7 @@ line_map_init (LINE_MAP *map, int line)
 }
 
 static void
-line_map_add (LINE_MAP *map, int pos)
+line_map_add (LINE_MAP *map, long pos)
 {
   if (map->used == map->size)
     {
@@ -1761,25 +1759,42 @@ line_map_add (LINE_MAP *map, int pos)
   map->map[map->used++] = pos;
 }
 
+/* Initialize (clear) WIN's line map. */
 void
 window_line_map_init (WINDOW *win)
 {
   win->line_map.used = 0;
 }
 
-void
-window_compute_line_map (WINDOW *win)
+/* Scan the line number LINE in WIN.  If PHYS is true, stop scanning at
+   the end of physical line, i.e. at the newline character.  Otherwise,
+   stop it at the end of logical line.
+
+   If FUN is supplied, call it for each processed multibyte character.
+   Arguments of FUN are
+
+     closure  -  Function-specific data passed as 5th argument to
+                 window_scan_line;
+     cpos     -  Current point value;
+     replen   -  Size of screen representation of this character, in
+                 columns.  This value may be 0 (for ANSI sequences and
+		 info tags), or > 1 (for tabs).
+ */
+int
+window_scan_line (WINDOW *win, int line, int phys,
+		  void (*fun) (void *closure, long cpos, int replen),
+		  void *closure)
 {
   mbi_iterator_t iter;
-  int line = window_line_of_point (win);
-  int cpos = win->line_starts[line] - win->node->contents;
+  long cpos = win->line_starts[line] - win->node->contents;
   int delim = 0;
-
-  if (win->line_map.nline == line && win->line_map.used)
-    return;
-  line_map_init (&win->line_map, line);
-  if (!win->node)
-    return;
+  char *endp;
+  
+  if (!phys && line + 1 < win->line_count)
+    endp = win->line_starts[line + 1];
+  else
+    endp = win->node->contents + win->node->nodelen;
+  
   for (mbi_init (iter,
 		 win->line_starts[line], 
 		 win->node->contents + win->node->nodelen -
@@ -1789,7 +1804,10 @@ window_compute_line_map (WINDOW *win)
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
       int cur_len = mb_len (mbi_cur (iter));
-      int i, replen;
+      int replen;
+
+      if (cur_ptr >= endp)
+	break;
       
       if (mb_isprint (mbi_cur (iter)))
 	{
@@ -1828,12 +1846,50 @@ window_compute_line_map (WINDOW *win)
 				  &replen);
 	}
 
-      for (i = 0; i < replen; i++)
-	line_map_add (&win->line_map, cpos);
+      if (fun)
+	fun (closure, cpos, replen);
       cpos += cur_len;
     }
+  return cpos;
 }
 
+static void
+add_line_map (void *closure, long cpos, int replen)
+{
+  WINDOW *win = closure;
+
+  while (replen--)
+    line_map_add (&win->line_map, cpos);
+}
+
+/* Compute the line map for the current line in WIN. */
+void
+window_compute_line_map (WINDOW *win)
+{
+  int line = window_line_of_point (win);
+
+  if (win->line_map.nline == line && win->line_map.used)
+    return;
+  line_map_init (&win->line_map, line);
+  if (win->node)
+    window_scan_line (win, line, 0, add_line_map, win);
+}
+
+/* Return offset of the end of current physical line.
+ */
+long
+window_end_of_line (WINDOW *win)
+{
+  int line = window_line_of_point (win);
+  if (win->node)
+    return window_scan_line (win, line, 1, NULL, NULL) - 1;
+  return 0;
+}
+
+/* Translate the value of POINT into a column number.  If NP is given
+   store there the value of point corresponding to the beginning of a
+   multibyte character in this column.
+ */
 int
 window_point_to_column (WINDOW *win, long point, long *np)
 {
