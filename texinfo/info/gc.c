@@ -1,7 +1,7 @@
 /* gc.c -- Functions to remember and garbage collect unused node contents.
-   $Id: gc.c,v 1.6 2007-07-01 22:32:12 karl Exp $
+   $Id: gc.c,v 1.7 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2004, 2007, 2008 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 /* Array of pointers to the contents of gc-able nodes.  A pointer on this
    list can be garbage collected when no info window contains a node whose
    contents member match the pointer. */
-static char **gcable_pointers = (char **)NULL;
+static char **gcable_pointers = NULL;
 static int gcable_pointers_index = 0;
 static int gcable_pointers_slots = 0;
 
@@ -45,7 +45,7 @@ gc_pointers (void)
 {
   register int i, j, k;
   INFO_WINDOW *iw;
-  char **new = (char **)NULL;
+  char **new = NULL;
   int new_index = 0;
   int new_slots = 0;
 

@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.41 2008-06-11 09:02:11 gray Exp $
+   $Id: session.c,v 1.42 2008-06-11 09:55:43 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -77,7 +77,7 @@ void
 begin_multiple_window_info_session (char *filename, char **nodenames)
 {
   register int i;
-  WINDOW *window = (WINDOW *)NULL;
+  WINDOW *window = NULL;
 
   for (i = 0; nodenames[i]; i++)
     {
@@ -240,7 +240,7 @@ info_read_and_dispatch (void)
           if (ea_last_executed_command == (VFunction *) ea_newline ||
               info_aborted_echo_area)
             {
-              ea_last_executed_command = (VFunction *)NULL;
+              ea_last_executed_command = NULL;
               done = 1;
             }
 
@@ -311,7 +311,7 @@ info_set_input_from_file (char *filename)
   if (!stream)
     return;
 
-  if ((info_input_stream != (FILE *)NULL) &&
+  if ((info_input_stream != NULL) &&
       (info_input_stream != stdin))
     fclose (info_input_stream);
 
@@ -326,13 +326,13 @@ static INFO_WINDOW *
 get_info_window_of_window (WINDOW *window)
 {
   register int i;
-  INFO_WINDOW *info_win = (INFO_WINDOW *)NULL;
+  INFO_WINDOW *info_win = NULL;
 
   for (i = 0; info_windows && (info_win = info_windows[i]); i++)
     if (info_win->window == window)
       break;
 
-  return (info_win);
+  return info_win;
 }
 
 /* Reset the remembered pagetop and point of WINDOW to WINDOW's current
@@ -365,11 +365,11 @@ remember_window_and_node (WINDOW *window, NODE *node)
   /* If the window wasn't already on our list, then make a new entry. */
   if (!info_win)
     {
-      info_win = (INFO_WINDOW *)xmalloc (sizeof (INFO_WINDOW));
+      info_win = xmalloc (sizeof (INFO_WINDOW));
       info_win->window = window;
-      info_win->nodes = (NODE **)NULL;
-      info_win->pagetops = (int *)NULL;
-      info_win->points = (long *)NULL;
+      info_win->nodes = NULL;
+      info_win->pagetops = NULL;
+      info_win->points = NULL;
       info_win->current = 0;
       info_win->nodes_index = 0;
       info_win->nodes_slots = 0;
@@ -439,7 +439,7 @@ void
 forget_window_and_nodes (WINDOW *window)
 {
   register int i;
-  INFO_WINDOW *info_win = (INFO_WINDOW *)NULL;
+  INFO_WINDOW *info_win = NULL;
 
   for (i = 0; info_windows && (info_win = info_windows[i]); i++)
     if (info_win->window == window)
@@ -455,7 +455,7 @@ forget_window_and_nodes (WINDOW *window)
         }
 
       info_windows_index--;
-      info_windows[info_windows_index] = (INFO_WINDOW *)NULL;
+      info_windows[info_windows_index] = NULL;
 
       if (info_win->nodes)
         {
@@ -1088,7 +1088,7 @@ int info_scroll_behaviour = IS_Continuous;
 /* Choices used by the completer when reading a value for the user-visible
    variable "scroll-behaviour". */
 char *info_scroll_choices[] = {
-  "Continuous", "Next Only", "Page Only", (char *)NULL
+  "Continuous", "Next Only", "Page Only", NULL
 };
 
 /* Controls whether scroll-behavior affects line movement commands */
@@ -1270,7 +1270,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                     {
                       info_win->nodes_index--;
                       free (info_win->nodes[info_win->nodes_index]);
-                      info_win->nodes[info_win->nodes_index] = (NODE *)NULL;
+                      info_win->nodes[info_win->nodes_index] = NULL;
                     }
                   info_win->current = old_current;
                   window->node = info_win->nodes[old_current];
@@ -1805,7 +1805,7 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
         {
           register int i, j;
           INFO_WINDOW *iw;
-          NODE *node = (NODE *)NULL;
+          NODE *node = NULL;
           char *filename;
 
           for (i = 0; (iw = info_windows[i]); i++)
@@ -2025,7 +2025,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   NODE *node;
   char *filename, *nodename, *file_system_error;
 
-  file_system_error = (char *)NULL;
+  file_system_error = NULL;
 
   filename = entry->filename;
   if (!filename)
@@ -2107,7 +2107,7 @@ info_handle_pointer (char *label, WINDOW *window)
       char *filename, *nodename;
       NODE *node;
 
-      filename = nodename = (char *)NULL;
+      filename = nodename = NULL;
 
       if (info_parsed_filename)
         filename = xstrdup (info_parsed_filename);
@@ -2184,7 +2184,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
 {
   register int i;
   FILE_BUFFER *fb = file_buffer_of_window (window);
-  NODE *node = (NODE *)NULL;
+  NODE *node = NULL;
 
   if (fb && fb->tags)
     {
@@ -2216,7 +2216,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
 DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
 {
   FILE_BUFFER *fb = file_buffer_of_window (window);
-  NODE *node = (NODE *)NULL;
+  NODE *node = NULL;
 
   /* If no explicit argument, or argument of zero, default to the
      first node.  */
@@ -2453,7 +2453,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
                       }
                   }
 
-                defentry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
+                defentry = xmalloc (sizeof (REFERENCE));
                 defentry->label = xstrdup (refs[which]->label);
                 defentry->filename = refs[which]->filename;
                 defentry->nodename = refs[which]->nodename;
@@ -2519,7 +2519,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
           if (defentry)
             line = xstrdup (defentry->label);
           else
-            line = (char *)NULL;
+            line = NULL;
         }
     }
   else
@@ -2569,7 +2569,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
           if (best != -1)
             entry = menu[best];
           else
-            entry = (REFERENCE *)NULL;
+            entry = NULL;
         }
 
       if (!entry && defentry)
@@ -2700,7 +2700,7 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
   {
     register int fbi, i;
     FILE_BUFFER *current;
-    REFERENCE **items = (REFERENCE **)NULL;
+    REFERENCE **items = NULL;
     int items_index = 0;
     int items_slots = 0;
 
@@ -2715,9 +2715,9 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
         fb = info_loaded_files[fbi];
         this_is_the_current_fb = (current == fb);
 
-        entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
-        entry->filename = entry->nodename = (char *)NULL;
-        entry->label = (char *)xmalloc (4 + strlen (fb->filename));
+        entry = xmalloc (sizeof (REFERENCE));
+        entry->filename = entry->nodename = NULL;
+        entry->label = xmalloc (4 + strlen (fb->filename));
         sprintf (entry->label, "(%s)*", fb->filename);
 
         add_pointer_to_array
@@ -2727,13 +2727,13 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
           {
             for (i = 0; fb->tags[i]; i++)
               {
-                entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
-                entry->filename = entry->nodename = (char *)NULL;
+                entry = xmalloc (sizeof (REFERENCE));
+                entry->filename = entry->nodename = NULL;
                 if (this_is_the_current_fb)
                   entry->label = xstrdup (fb->tags[i]->nodename);
                 else
                   {
-                    entry->label = (char *) xmalloc
+                    entry->label = xmalloc
                       (4 + strlen (fb->filename) +
                        strlen (fb->tags[i]->nodename));
                     sprintf (entry->label, "(%s)%s",
@@ -3148,8 +3148,8 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
                                    : window->node->filename;
   default_program_name = program_name_from_file_name (file_name);
 
-  prompt = (char *)xmalloc (strlen (default_program_name) +
-                            strlen (invocation_prompt));
+  prompt = xmalloc (strlen (default_program_name) +
+		    strlen (invocation_prompt));
   sprintf (prompt, invocation_prompt, default_program_name);
   line = info_read_in_echo_area (window, prompt);
   free (prompt);
@@ -3193,7 +3193,7 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
     {
       char *goto_command;
 
-      goto_command = (char *)xmalloc
+      goto_command = xmalloc
         (4 + strlen (MANPAGE_FILE_BUFFER_NAME) + strlen (line));
 
       sprintf (goto_command, "(%s)%s", MANPAGE_FILE_BUFFER_NAME, line);
@@ -3238,9 +3238,9 @@ read_nodename_to_kill (WINDOW *window)
 
   for (iw = 0; (info_win = info_windows[iw]); iw++)
     {
-      REFERENCE *entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
+      REFERENCE *entry = xmalloc (sizeof (REFERENCE));
       entry->label = xstrdup (info_win->window->node->nodename);
-      entry->filename = entry->nodename = (char *)NULL;
+      entry->filename = entry->nodename = NULL;
 
       add_pointer_to_array (entry, menu_index, menu, menu_slots, 10,
                             REFERENCE *);
@@ -3479,7 +3479,7 @@ dump_nodes_to_file (char *filename, char **nodenames,
 }
 
 /* A place to remember already dumped nodes. */
-static char **dumped_already = (char **)NULL;
+static char **dumped_already = NULL;
 static int dumped_already_index = 0;
 static int dumped_already_slots = 0;
 
@@ -3538,7 +3538,7 @@ dump_node_to_stream (char *filename, char *nodename,
      and dump each one recursively. */
   if (dump_subnodes)
     {
-      REFERENCE **menu = (REFERENCE **)NULL;
+      REFERENCE **menu = NULL;
 
       /* If this node is an Index, do not dump the menu references. */
       if (string_in_line ("Index", node->nodename) == -1)
@@ -3682,7 +3682,7 @@ static void info_gc_file_buffers (void);
 static void info_search_1 (WINDOW *window, int count,
     unsigned char key, int case_sensitive, int ask_for_string);
 
-static char *search_string = (char *)NULL;
+static char *search_string = NULL;
 static int search_string_size = 0;
 static int isearch_is_active = 0;
 
@@ -3695,15 +3695,15 @@ file_buffer_of_window (WINDOW *window)
 {
   /* If this window has no node, then it has no file buffer. */
   if (!window->node)
-    return ((FILE_BUFFER *)NULL);
+    return NULL;
 
   if (window->node->parent)
-    return (info_find_file (window->node->parent));
+    return info_find_file (window->node->parent);
 
   if (window->node->filename)
-    return (info_find_file (window->node->filename));
+    return info_find_file (window->node->filename);
 
-  return ((FILE_BUFFER *)NULL);
+  return NULL;
 }
 
 /* Search for STRING in NODE starting at START.  Return -1 if the string
@@ -3740,7 +3740,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
     }
 
   if (binding.start < 0)
-    return (-1);
+    return -1;
 
   /* For incremental searches, we always wish to skip past the string. */
   if (isearch_is_active)
@@ -3758,7 +3758,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
       window->point = offset;
       window_adjust_pagetop (window);
     }
-  return (offset);
+  return offset;
 }
 
 long
@@ -3787,7 +3787,7 @@ info_target_search_node (NODE *node, char *string, long int start)
   while (i)
     {
       target[i] = '\0';
-      offset = info_search_in_node (target, node, start, (WINDOW *)NULL, 1, 0);
+      offset = info_search_in_node (target, node, start, NULL, 1, 0);
 
       if (offset != -1)
         break;
@@ -3796,7 +3796,7 @@ info_target_search_node (NODE *node, char *string, long int start)
       for (; i && (!whitespace (target[i]) && (target[i] != ',')); i--);
     }
   free (target);
-  return (offset);
+  return offset;
 }
 
 /* Search for STRING starting in WINDOW.  The starting position is determined
@@ -3845,7 +3845,7 @@ info_search_internal (char *string, WINDOW *window,
       /* We won! */
       if (!echo_area_is_active && !isearch_is_active)
         window_clear_echo_area ();
-      return (0);
+      return 0;
     }
   
   start = 0;
@@ -3853,7 +3853,7 @@ info_search_internal (char *string, WINDOW *window,
   /* The string wasn't found in the current node.  Search through the
      window's file buffer, iff the current node is not "*". */
   if (!file_buffer || (strcmp (initial_nodename, "*") == 0))
-    return (-1);
+    return -1;
 
   /* If this file has tags, search through every subfile, starting at
      this node's subfile and node.  Otherwise, search through the
@@ -3866,7 +3866,7 @@ info_search_internal (char *string, WINDOW *window,
       char *msg = NULL;
 
       /* Find number of tags and current tag. */
-      last_subfile = (char *)NULL;
+      last_subfile = NULL;
       for (i = 0; file_buffer->tags[i]; i++)
         if (strcmp (initial_nodename, file_buffer->tags[i]->nodename) == 0)
           {
@@ -3878,7 +3878,7 @@ info_search_internal (char *string, WINDOW *window,
 
       /* If there is no last_subfile, our tag wasn't found. */
       if (!last_subfile)
-        return (-1);
+        return -1;
 
       /* Search through subsequent nodes, wrapping around to the top
          of the info file until we find the string or return to this
@@ -3911,7 +3911,7 @@ info_search_internal (char *string, WINDOW *window,
 
           /* If we got past out starting point, bail out.  */
           if (i == current_tag)
-            return (-1);
+            return -1;
           current_tag = i;
 
           if (!echo_area_is_active && (last_subfile != tag->filename))
@@ -3937,7 +3937,7 @@ info_search_internal (char *string, WINDOW *window,
                                 filename_non_directory (file_buffer->filename),
                                 tag->nodename);
                 }
-              return (-1);
+              return -1;
             }
 
           if (dir < 0)
@@ -3959,7 +3959,7 @@ info_search_internal (char *string, WINDOW *window,
 		  else
 		    window_clear_echo_area ();
 		}
-              return (0);
+              return 0;
             }
 
           /* No.  Free this node, and make sure that we haven't passed
@@ -3967,10 +3967,10 @@ info_search_internal (char *string, WINDOW *window,
           free (node);
 
           if (strcmp (initial_nodename, tag->nodename) == 0)
-            return (-1);
+            return -1;
         }
     }
-  return (-1);
+  return -1;
 }
 
 DECLARE_INFO_COMMAND (info_search_case_sensitively,
@@ -4019,17 +4019,17 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
   /* Read a string from the user, defaulting the search to SEARCH_STRING. */
   if (!search_string)
     {
-      search_string = (char *)xmalloc (search_string_size = 100);
+      search_string = xmalloc (search_string_size = 100);
       search_string[0] = '\0';
     }
 
   if (ask_for_string)
     {
-      prompt = (char *)xmalloc (strlen (_("%s%s%s [%s]: "))
-                                + strlen (_("Regexp search"))
-                                + strlen (_(" case-sensitively"))
-                                + strlen (_(" backward"))
-                                + strlen (search_string));
+      prompt = xmalloc (strlen (_("%s%s%s [%s]: "))
+			+ strlen (_("Regexp search"))
+			+ strlen (_(" case-sensitively"))
+			+ strlen (_(" backward"))
+			+ strlen (search_string));
 
       sprintf (prompt, _("%s%s%s [%s]: "),
                use_regex ? _("Regexp search") : _("Search"),
@@ -4049,7 +4049,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
       if (*line)
         {
           if (strlen (line) + 1 > (unsigned int) search_string_size)
-            search_string = (char *) xrealloc
+            search_string = xrealloc
               (search_string, (search_string_size += 50 + strlen (line)));
 
           strcpy (search_string, line);
@@ -4134,16 +4134,16 @@ DECLARE_INFO_COMMAND (isearch_backward,
 
 /* Incrementally search for a string as it is typed. */
 /* The last accepted incremental search string. */
-static char *last_isearch_accepted = (char *)NULL;
+static char *last_isearch_accepted = NULL;
 
 /* The current incremental search string. */
-static char *isearch_string = (char *)NULL;
+static char *isearch_string = NULL;
 static int isearch_string_index = 0;
 static int isearch_string_size = 0;
 static unsigned char isearch_terminate_search_key = ESC;
 
 /* Array of search states. */
-static SEARCH_STATE **isearch_states = (SEARCH_STATE **)NULL;
+static SEARCH_STATE **isearch_states = NULL;
 static int isearch_states_index = 0;
 static int isearch_states_slots = 0;
 
@@ -4153,7 +4153,7 @@ push_isearch (WINDOW *window, int search_index, int direction, int failing)
 {
   SEARCH_STATE *state;
 
-  state = (SEARCH_STATE *)xmalloc (sizeof (SEARCH_STATE));
+  state = xmalloc (sizeof (SEARCH_STATE));
   window_get_state (window, state);
   state->search_index = search_index;
   state->direction = direction;
@@ -4179,7 +4179,7 @@ pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing)
       *failing = state->failing;
 
       free (state);
-      isearch_states[isearch_states_index] = (SEARCH_STATE *)NULL;
+      isearch_states[isearch_states_index] = NULL;
     }
 }
 
@@ -4192,7 +4192,7 @@ free_isearch_states (void)
   for (i = 0; i < isearch_states_index; i++)
     {
       free (isearch_states[i]);
-      isearch_states[i] = (SEARCH_STATE *)NULL;
+      isearch_states[i] = NULL;
     }
   isearch_states_index = 0;
 }
@@ -4214,7 +4214,7 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
                        : _("I-search: ");
 
   p_rep_index = p_rep_size = 0;
-  p_rep = (char *)NULL;
+  p_rep = NULL;
   for (i = 0; string[i]; i++)
     {
       char *rep;
@@ -4228,7 +4228,7 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
           rep = pretty_keyname (string[i]);
         }
       if ((p_rep_index + strlen (rep) + 1) >= p_rep_size)
-        p_rep = (char *)xrealloc (p_rep, p_rep_size += 100);
+        p_rep = xrealloc (p_rep, p_rep_size += 100);
 
       strcpy (p_rep + p_rep_index, rep);
       p_rep_index += strlen (rep);
@@ -4270,7 +4270,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
 
   isearch_string_index = 0;
   if (!isearch_string_size)
-    isearch_string = (char *)xmalloc (isearch_string_size = 50);
+    isearch_string = xmalloc (isearch_string_size = 50);
 
   /* Show the search string in the echo area. */
   isearch_string[isearch_string_index] = '\0';
@@ -4280,7 +4280,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
 
   while (isearch_is_active)
     {
-      VFunction *func = (VFunction *)NULL;
+      VFunction *func = NULL;
       int quoted = 0;
 
       /* If a recent display was interrupted, then do the redisplay now if
@@ -4340,7 +4340,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
             insert_and_search:
 
               if (isearch_string_index + 2 >= isearch_string_size)
-                isearch_string = (char *)xrealloc
+                isearch_string = xrealloc
                   (isearch_string, isearch_string_size += 100);
 
               isearch_string[isearch_string_index++] = key;
@@ -4592,7 +4592,7 @@ info_gc_file_buffers (void)
       if (!fb_referenced_p)
         {
           free (fb->contents);
-          fb->contents = (char *)NULL;
+          fb->contents = NULL;
         }
     }
 }
@@ -4625,7 +4625,7 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
      found is moved to. */
 
   firstmenu = info_search_in_node
-    (INFO_MENU_ENTRY_LABEL, node, start, (WINDOW *)NULL, dir, 0);
+    (INFO_MENU_ENTRY_LABEL, node, start, NULL, dir, 0);
 
   /* FIRSTMENU may point directly to the line defining the menu.  Skip that
      and go directly to the first item. */
@@ -4636,11 +4636,11 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 
       if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
         firstmenu = info_search_in_node
-          (INFO_MENU_ENTRY_LABEL, node, firstmenu + dir, (WINDOW *)NULL, dir, 0);
+          (INFO_MENU_ENTRY_LABEL, node, firstmenu + dir, NULL, dir, 0);
     }
 
   firstxref =
-    info_search_in_node (INFO_XREF_LABEL, node, start, (WINDOW *)NULL, dir, 0);
+    info_search_in_node (INFO_XREF_LABEL, node, start, NULL, dir, 0);
 
 #if defined (HANDLE_MAN_PAGES)
   if ((firstxref == -1) && (node->flags & N_IsManPage))
@@ -4661,10 +4661,10 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
      Try hard to find the next available one. */
 
   nextmenu = info_search_in_node
-    (INFO_MENU_ENTRY_LABEL, node, window->point + dir, (WINDOW *)NULL, dir, 0);
+    (INFO_MENU_ENTRY_LABEL, node, window->point + dir, NULL, dir, 0);
 
   nextxref = info_search_in_node
-    (INFO_XREF_LABEL, node, window->point + dir, (WINDOW *)NULL, dir, 0);
+    (INFO_XREF_LABEL, node, window->point + dir, NULL, dir, 0);
 
 #if defined (HANDLE_MAN_PAGES)
   if ((nextxref == -1) && (node->flags & N_IsManPage) && (firstxref != -1))
@@ -4678,7 +4678,7 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 
       if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
         nextmenu = info_search_in_node
-          (INFO_MENU_ENTRY_LABEL, node, nextmenu + dir, (WINDOW *)NULL, dir, 0);
+          (INFO_MENU_ENTRY_LABEL, node, nextmenu + dir, NULL, dir, 0);
     }
 
   /* No more searches, back to whatever the user wanted.  */
@@ -4803,7 +4803,7 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
 
   info_initialize_numeric_arg ();
   info_clear_pending_input ();
-  info_last_executed_command = (VFunction *)NULL;
+  info_last_executed_command = NULL;
 }
 
 /* Move the cursor to the desired line of the window. */
@@ -4913,7 +4913,7 @@ dispatch_error (char *keyseq)
 }
 
 /* Keeping track of key sequences. */
-static char *info_keyseq = (char *)NULL;
+static char *info_keyseq = NULL;
 static int info_keyseq_index = 0;
 static int info_keyseq_size = 0;
 static int info_keyseq_displayed_p = 0;
@@ -4982,7 +4982,8 @@ info_get_another_input_char (void)
           FD_SET (fileno (info_input_stream), &readfds);
           timer.tv_sec = 1;
           timer.tv_usec = 750;
-          ready = select (fileno(info_input_stream)+1, &readfds, (fd_set *)NULL, (fd_set *)NULL, &timer);
+          ready = select (fileno(info_input_stream)+1, &readfds,
+			  NULL, NULL, &timer);
 #else
           ready = 0;
 #endif /* FD_SET */
@@ -4992,7 +4993,7 @@ info_get_another_input_char (void)
   if (!ready)
     display_info_keyseq (1);
 
-  return (info_get_input_char ());
+  return info_get_input_char ();
 }
 
 /* Do the command associated with KEY in MAP.  If the associated command is
@@ -5025,7 +5026,7 @@ info_dispatch_on_key (unsigned char key, Keymap map)
         VFunction *func;
 
         func = InfoFunction(map[key].function);
-        if (func != (VFunction *)NULL)
+        if (func != NULL)
           {
             /* Special case info_do_lowercase_version (). */
             if (func == (VFunction *) info_do_lowercase_version)
@@ -5083,7 +5084,7 @@ info_dispatch_on_key (unsigned char key, Keymap map)
 
     case ISKMAP:
       add_char_to_keyseq (key);
-      if (map[key].function != (InfoCommand *)NULL)
+      if (map[key].function != NULL)
         {
           unsigned char newkey;
 
@@ -5245,7 +5246,7 @@ info_set_pending_input (unsigned char key)
 unsigned char
 info_input_pending_p (void)
 {
-  return (pending_input_character);
+  return pending_input_character;
 }
 
 /* Largest number of characters that we can read in advance. */
@@ -5277,9 +5278,9 @@ static int
 info_input_buffer_space_available (void)
 {
   if (pop_index > push_index)
-    return (pop_index - push_index);
+    return pop_index - push_index;
   else
-    return (sizeof (info_input_buffer) - (push_index - pop_index));
+    return sizeof (info_input_buffer) - (push_index - pop_index);
 }
 
 /* Get a key from the buffer of characters to be read.
@@ -5289,21 +5290,21 @@ static int
 info_get_key_from_typeahead (unsigned char *key)
 {
   if (push_index == pop_index)
-    return (0);
+    return 0;
 
   *key = info_input_buffer[pop_index++];
 
   if ((unsigned int) pop_index >= sizeof (info_input_buffer))
     pop_index = 0;
 
-  return (1);
+  return 1;
 }
 
 int
 info_any_buffered_input_p (void)
 {
   info_gather_typeahead ();
-  return (push_index != pop_index);
+  return push_index != pop_index;
 }
 
 /* If characters are available to be read, then read them and stuff them into

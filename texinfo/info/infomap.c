@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.20 2008-02-29 22:20:53 karl Exp $
+   $Id: infomap.c,v 1.21 2008-06-11 09:55:42 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -45,7 +45,7 @@ keymap_make_keymap (void)
   for (i = 0; i < 256; i++)
     {
       keymap[i].type = ISFUNC;
-      keymap[i].function = (InfoCommand *)NULL;
+      keymap[i].function = NULL;
     }
 
   for (i = 'A'; i < ('Z' + 1); i++)
@@ -58,7 +58,7 @@ keymap_make_keymap (void)
       keymap[i].function = InfoCmd(info_do_lowercase_version);
     }
 
-  return (keymap);
+  return keymap;
 }
 
 #if defined(INFOKEY)
@@ -98,7 +98,7 @@ add_function_keyseq (InfoCommand *function,
       function == InfoCmd(info_do_lowercase_version) ||
       function == InfoCmd(ea_insert))
     return;
-  ks = (FUNCTION_KEYSEQ *)xmalloc (sizeof(FUNCTION_KEYSEQ));
+  ks = xmalloc (sizeof(FUNCTION_KEYSEQ));
   ks->next = function->keys;
   ks->map = rootmap;
   ks->keyseq = xstrdup(keyseq);
@@ -161,7 +161,7 @@ keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot)
           break;
         }
     }
-  return (keymap);
+  return keymap;
 }
 
 /* Free the keymap and its descendants. */
@@ -963,7 +963,7 @@ fetch_user_maps (void)
         }
 
         /* Read the file into a buffer. */
-        buf = (unsigned char *)xmalloc((int)len);
+        buf = xmalloc((int)len);
         nread = read(f, buf, (unsigned int) len);
         close(f);
         if ((unsigned int) nread != len)

@@ -1,7 +1,7 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c,v 1.7 2008-02-26 16:51:05 karl Exp $
+   $Id: m-x.c,v 1.8 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ read_function_name (const char *prompt, WINDOW *window)
 {
   register int i;
   char *line;
-  REFERENCE **array = (REFERENCE **)NULL;
+  REFERENCE **array = NULL;
   int array_index = 0, array_slots = 0;
 
   /* Make an array of REFERENCE which actually contains the names of
@@ -45,10 +45,10 @@ read_function_name (const char *prompt, WINDOW *window)
     {
       REFERENCE *entry;
 
-      entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
+      entry = xmalloc (sizeof (REFERENCE));
       entry->label = xstrdup (function_doc_array[i].func_name);
-      entry->nodename = (char *)NULL;
-      entry->filename = (char *)NULL;
+      entry->nodename = NULL;
+      entry->filename = NULL;
 
       add_pointer_to_array
         (entry, array_index, array, array_slots, 200, REFERENCE *);
@@ -61,7 +61,7 @@ read_function_name (const char *prompt, WINDOW *window)
   if (!echo_area_is_active)
     window_clear_echo_area ();
 
-  return (line);
+  return line;
 }
 
 DECLARE_INFO_COMMAND (describe_command,
@@ -98,7 +98,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
   char *keys;
   char *prompt;
 
-  prompt = (char *)xmalloc (20);
+  prompt = xmalloc (20);
 
   keys = where_is (info_keymap, InfoCmd(info_execute_command));
   /* If the where_is () function thinks that this command doesn't exist,

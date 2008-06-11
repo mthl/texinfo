@@ -1,7 +1,7 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.8 2008-06-11 09:02:11 gray Exp $
+   $Id: search.c,v 1.9 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -41,13 +41,13 @@ make_binding (char *buffer, long int start, long int end)
 {
   SEARCH_BINDING *binding;
 
-  binding = (SEARCH_BINDING *)xmalloc (sizeof (SEARCH_BINDING));
+  binding = xmalloc (sizeof (SEARCH_BINDING));
   binding->buffer = buffer;
   binding->start = start;
   binding->end = end;
   binding->flags = 0;
 
-  return (binding);
+  return binding;
 }
 
 /* Make a copy of BINDING without duplicating the data. */
@@ -58,7 +58,7 @@ copy_binding (SEARCH_BINDING *binding)
 
   copy = make_binding (binding->buffer, binding->start, binding->end);
   copy->flags = binding->flags;
-  return (copy);
+  return copy;
 }
 
 
@@ -81,7 +81,7 @@ search (char *string, SEARCH_BINDING *binding)
   else
     result = search_forward (string, binding);
 
-  return (result);
+  return result;
 }
 
 /* Search forwards or backwards for anything matching the regexp in the text
@@ -188,8 +188,8 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
               /* match list full. Initially allocate 256 entries, then double
                  every time we fill it */
               match_alloc = (match_alloc > 0 ? match_alloc * 2 : 256);
-              matches = (regmatch_t*) xrealloc (matches,
-                                            match_alloc * sizeof(regmatch_t));
+              matches = xrealloc (matches,
+				  match_alloc * sizeof(regmatch_t));
             }
 
           result = regexec (&preg, &previous_content[start],
@@ -269,7 +269,7 @@ search_forward (char *string, SEARCH_BINDING *binding)
 {
   register int c, i, len;
   register char *buff, *end;
-  char *alternate = (char *)NULL;
+  char *alternate = NULL;
 
   len = strlen (string);
 
@@ -310,7 +310,7 @@ search_forward (char *string, SEARCH_BINDING *binding)
             free (alternate);
           if (binding->flags & S_SkipDest)
             buff += len;
-          return ((long) (buff - binding->buffer));
+          return buff - binding->buffer;
         }
 
       buff++;
@@ -319,7 +319,7 @@ search_forward (char *string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return ((long) -1);
+  return -1;
 }
 
 /* Search for STRING backwards through the text delimited in BINDING. */
@@ -329,12 +329,12 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
   register int c, i, len;
   register char *buff, *end;
   char *string;
-  char *alternate = (char *)NULL;
+  char *alternate = NULL;
 
   len = strlen (input_string);
 
   /* Reverse the characters in the search string. */
-  string = (char *)xmalloc (1 + len);
+  string = xmalloc (1 + len);
   for (c = 0, i = len - 1; input_string[c]; c++, i--)
     string[i] = input_string[c];
 
@@ -379,7 +379,7 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
 
           if (binding->flags & S_SkipDest)
             buff -= len;
-          return ((long) (1 + (buff - binding->buffer)));
+          return 1 + buff - binding->buffer;
         }
 
       buff--;
@@ -389,7 +389,7 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return ((long) -1);
+  return -1;
 }
 
 /* Find STRING in LINE, returning the offset of the end of the string.
@@ -410,7 +410,7 @@ string_in_line (char *string, char *line)
   binding.end = end;
   binding.flags = S_FoldCase | S_SkipDest;
 
-  return (search_forward (string, &binding));
+  return search_forward (string, &binding);
 }
 
 /* Return non-zero if STRING is the first text to appear at BINDING. */
@@ -424,7 +424,7 @@ looking_at (char *string, SEARCH_BINDING *binding)
   /* If the string was not found, SEARCH_END is -1.  If the string was found,
      but not right away, SEARCH_END is != binding->start.  Otherwise, the
      string was found at binding->start. */
-  return (search_end == binding->start);
+  return search_end == binding->start;
 }
 
 /* **************************************************************** */
@@ -446,7 +446,7 @@ skip_whitespace (char *string)
   register int i;
 
   for (i = 0; string && whitespace (string[i]); i++);
-  return (i);
+  return i;
 }
 
 /* Return the index of the first non-whitespace or newline character in
@@ -457,7 +457,7 @@ skip_whitespace_and_newlines (char *string)
   register int i;
 
   for (i = 0; string && whitespace_or_newline (string[i]); i++);
-  return (i);
+  return i;
 }
 
 /* Return the index of the first whitespace character in STRING. */
@@ -467,7 +467,7 @@ skip_non_whitespace (char *string)
   register int i;
 
   for (i = 0; string && string[i] && !whitespace (string[i]); i++);
-  return (i);
+  return i;
 }
 
 /* Return the index of the first non-node character in STRING.  Note that
@@ -489,7 +489,7 @@ skip_node_characters (char *string, int newlines_okay)
      nodename proper.  In that case, a period at the start of the nodename
      indicates an empty nodename. */
   if (string && *string == '.')
-    return (0);
+    return 0;
 
   if (string && *string == '(')
     {
@@ -530,7 +530,7 @@ skip_node_characters (char *string, int newlines_okay)
             (string[i + 1] == ')'))))
         break;
     }
-  return (i);
+  return i;
 }
 
 
@@ -562,8 +562,8 @@ find_node_separator (SEARCH_BINDING *binding)
         ((body[i] == INFO_COOKIE) &&
          (body[i + 1] == '\n' ||
           (body[i + 1] == INFO_FF && body[i + 2] == '\n'))))
-      return (i);
-  return (-1);
+      return i;
+  return -1;
 }
 
 /* Return the length of the node separator characters that BODY is
@@ -579,15 +579,15 @@ skip_node_separator (char *body)
     i++;
 
   if (body[i++] != INFO_COOKIE)
-    return (0);
+    return 0;
 
   if (body[i] == INFO_FF)
     i++;
 
   if (body[i++] != '\n')
-    return (0);
+    return 0;
 
-  return (i);
+  return i;
 }
 
 /* Return the number of characters from STRING to the start of
@@ -602,7 +602,7 @@ skip_line (char *string)
   if (string[i] == '\n')
     i++;
 
-  return (i);
+  return i;
 }
 
 /* Return the absolute position of the beginning of a tags table in this
@@ -625,9 +625,9 @@ find_tags_table (SEARCH_BINDING *binding)
           + tmp_search.start);
 
       if (looking_at (TAGS_TABLE_BEG_LABEL, &tmp_search))
-        return (position);
+        return position;
     }
-  return (-1);
+  return -1;
 }
 
 /* Return the absolute position of the node named NODENAME in BINDING.
@@ -671,7 +671,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
        if ((offset == namelen) &&
            (tmp_search.buffer[tmp_search.start] == nodename[0]) &&
            (strncmp (tmp_search.buffer + tmp_search.start, nodename, offset) == 0))
-         return (position);
+         return position;
     }
-  return (-1);
+  return -1;
 }

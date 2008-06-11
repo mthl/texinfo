@@ -1,5 +1,15 @@
 2008-06-11  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/dir.c, info/display.c, info/dribble.c, info/echo-area.c
+	info/filesys.c, info/footnotes.c, info/gc.c, info/indices.c,
+	info/info-utils.c, info/info.c, info/infodoc.c, info/infokey.c,
+	info/infomap.c, info/m-x.c, info/makedoc.c, info/man.c,
+	info/nodemenu.c, info/nodes.c, info/pcterm.c, info/search.c,
+	info/session.c, info/terminal.c, info/tilde.c, info/variables.c,
+	info/window.c: Avoid useless type casts.
+
+2008-06-11  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Fix incremental regexp searches (bug reported by Bruno Haible).
 	
 	* info/search.c (regexp_search): Take an additional argument,

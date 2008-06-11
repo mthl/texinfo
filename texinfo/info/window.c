@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.13 2008-06-10 11:37:30 gray Exp $
+   $Id: window.c,v 1.14 2008-06-11 09:55:43 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -281,7 +281,7 @@ window_make_window (NODE *node)
 
   /* If there isn't enough room to make another window, return now. */
   if ((active_window->height / 2) < WINDOW_MIN_SIZE)
-    return (NULL);
+    return NULL;
 
   /* Make and initialize the new window.
      The fudging about with -1 and +1 is because the following window in the
@@ -346,7 +346,7 @@ window_make_window (NODE *node)
   if (window->next)
     window->next->prev = window;
 #endif /* !SPLIT_BEFORE_ACTIVE */
-  return (window);
+  return window;
 }
 
 /* These useful macros make it possible to read the code in
@@ -743,7 +743,7 @@ character_width (int character, int hpos)
   else if (character == DEL)
     width = 2;
 
-  return (width);
+  return width;
 }
 
 /* Return the number of characters it takes to display STRING on the screen
@@ -772,7 +772,7 @@ string_width (char *string, int hpos)
       width += this_char_width;
       hpos += this_char_width;
     }
-  return (width);
+  return width;
 }
 
 /* Quickly guess the approximate number of lines that NODE would
@@ -784,14 +784,14 @@ window_physical_lines (NODE *node)
   char *contents;
 
   if (!node)
-    return (0);
+    return 0;
 
   contents = node->contents;
   for (i = 0, lines = 1; i < node->nodelen; i++)
     if (contents[i] == '\n')
       lines++;
 
-  return (lines);
+  return lines;
 }
 
 
@@ -920,7 +920,7 @@ window_line_of_point (WINDOW *window)
         break;
     }
 
-  return (i - 1);
+  return i - 1;
 }
 
 /* Get and return the goal column for this window. */
@@ -928,14 +928,14 @@ int
 window_get_goal_column (WINDOW *window)
 {
   if (!window->node)
-    return (-1);
+    return -1;
 
   if (window->goal_column != -1)
-    return (window->goal_column);
+    return window->goal_column;
 
   /* Okay, do the work.  Find the printed offset of the cursor
      in this window. */
-  return (window_get_cursor_column (window));
+  return window_get_cursor_column (window);
 }
 
 /* Get and return the printed column offset of the cursor in this window. */
@@ -1260,7 +1260,7 @@ build_message_buffer (const char *format, void *arg1, void *arg2, void *arg3)
 	  }
 
           fmt_len = format + i - fmt_start + 1;
-          fmt = (char *) xmalloc (fmt_len + 1);
+          fmt = xmalloc (fmt_len + 1);
           strncpy (fmt, fmt_start, fmt_len);
           fmt[fmt_len] = '\0';
 
@@ -1364,7 +1364,7 @@ build_message_node (const char *format, void *arg1, void *arg2)
   build_message_buffer (format, arg1, arg2, 0);
 
   node = message_buffer_to_node ();
-  return (node);
+  return node;
 }
 
 /* Convert the contents of the message buffer to a node. */
@@ -1386,7 +1386,7 @@ message_buffer_to_node (void)
   strcpy (node->contents, message_buffer);
   node->contents[node->nodelen - 1] = '\n';
   node->contents[node->nodelen] = '\0';
-  return (node);
+  return node;
 }
 
 /* Useful functions can be called from outside of window.c. */
@@ -1411,11 +1411,11 @@ message_buffer_length_this_line (void)
   register int i;
 
   if (!message_buffer_index)
-    return (0);
+    return 0;
 
   for (i = message_buffer_index; i && message_buffer[i - 1] != '\n'; i--);
 
-  return (string_width (message_buffer + i, 0));
+  return string_width (message_buffer + i, 0);
 }
 
 /* Pad STRING to COUNT characters by inserting blanks. */
@@ -1435,7 +1435,7 @@ pad_to (int count, char *string)
     }
   string[i] = '\0';
 
-  return (i);
+  return i;
 }
 
 
@@ -1645,7 +1645,7 @@ process_node_text (WINDOW *win, char *start,
           if (delim)
             {
               printed_line[pl_index] = '\0';
-              carried_over_ptr = (char *)NULL;
+              carried_over_ptr = NULL;
             }
 	  else
 	    {

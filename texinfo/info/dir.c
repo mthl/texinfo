@@ -1,7 +1,8 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.7 2007-07-01 21:20:29 karl Exp $
+   $Id: dir.c,v 1.8 2008-06-11 09:55:41 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2004, 2007, 
+   2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +35,7 @@ static void insert_text_into_fb_at_binding (FILE_BUFFER *fb,
 void maybe_build_dir_node (char *dirname);
 
 static char *dirs_to_add[] = {
-  "dir", "localdir", (char *)NULL
+  "dir", "localdir", NULL
 };
 
 
@@ -278,7 +279,7 @@ insert_text_into_fb_at_binding (FILE_BUFFER *fb,
   start = binding->start;
   end = fb->filesize;
 
-  contents = (char *)xmalloc (fb->filesize + textlen + 1);
+  contents = xmalloc (fb->filesize + textlen + 1);
   memcpy (contents, fb->contents, start);
   memcpy (contents + start, text, textlen);
   memcpy (contents + start + textlen, fb->contents + start, end - start);

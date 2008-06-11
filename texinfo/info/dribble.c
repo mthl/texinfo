@@ -1,7 +1,7 @@
 /* dribble.c -- dribble files for Info.
-   $Id: dribble.c,v 1.6 2007-07-01 21:20:29 karl Exp $
+   $Id: dribble.c,v 1.7 2008-06-11 09:55:41 gray Exp $
 
-   Copyright (C) 1993, 1998, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1998, 2004, 2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 
 /* When non-zero, it is a stream to write all input characters to for the
    duration of this info session. */
-FILE *info_dribble_file = (FILE *)NULL;
+FILE *info_dribble_file = NULL;
 
 /* Open a dribble file named NAME, perhaps closing an already open one.
    This sets the global variable INFO_DRIBBLE_FILE to the open stream. */
@@ -39,9 +39,9 @@ open_dribble_file (char *name)
 #if defined (HAVE_SETVBUF)
   if (info_dribble_file)
 #  if defined (SETVBUF_REVERSED)
-    setvbuf (info_dribble_file, _IONBF, (char *)NULL, 1);
+    setvbuf (info_dribble_file, _IONBF, NULL, 1);
 #  else
-    setvbuf (info_dribble_file, (char *)NULL, _IONBF, 1);
+    setvbuf (info_dribble_file, NULL, _IONBF, 1);
 #  endif /* !SETVBUF_REVERSED */
 #endif /* HAVE_SETVBUF */
 }
@@ -54,7 +54,7 @@ close_dribble_file (void)
     {
       fflush (info_dribble_file);
       fclose (info_dribble_file);
-      info_dribble_file = (FILE *)NULL;
+      info_dribble_file = NULL;
     }
 }
 

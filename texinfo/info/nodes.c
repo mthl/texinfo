@@ -1,8 +1,8 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.10 2007-12-03 01:38:43 karl Exp $
+   $Id: nodes.c,v 1.11 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007
-   Free Software Foundation, Inc.
+   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
+   2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -162,7 +162,7 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
      a node. */
   if (strcmp (nodename, "*") == 0)
     {
-      node = (NODE *)xmalloc (sizeof (NODE));
+      node = xmalloc (sizeof (NODE));
       node->filename = file_buffer->fullpath;
       node->parent   = NULL;
       node->nodename = xstrdup ("*");
@@ -728,8 +728,8 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
         if (colon == -1)
           break;
 
-        subfile = (SUBFILE *)xmalloc (sizeof (SUBFILE));
-        subfile->filename = (char *)xmalloc (colon);
+        subfile = xmalloc (sizeof (SUBFILE));
+        subfile->filename = xmalloc (colon);
         strncpy (subfile->filename, line, colon - 1);
         subfile->filename[colon - 1] = 0;
         subfile->first_byte = (long) atol (line + colon);
@@ -790,13 +790,13 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
 
         for (i = 0; subfiles[i]; i++);
 
-        file_buffer->subfiles = (char **) xmalloc ((1 + i) * sizeof (char *));
+        file_buffer->subfiles = xmalloc ((1 + i) * sizeof (char *));
 
         for (i = 0; subfiles[i]; i++)
           {
             char *fullpath;
 
-            fullpath = (char *) xmalloc
+            fullpath = xmalloc
               (2 + strlen (subfiles[i]->filename) + len_containing_dir);
 
             sprintf (fullpath, "%s/%s",

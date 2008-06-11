@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.30 2008-03-20 18:37:58 karl Exp $
+   $Id: info.c,v 1.31 2008-06-11 09:55:42 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ char *program_name = "info";
 static int apropos_p = 0;
 
 /* Variable containing the string to search for when apropos_p is non-zero. */
-static char *apropos_search_string = (char *)NULL;
+static char *apropos_search_string = NULL;
 
 /* Non-zero means search all indices for INDEX_SEARCH_STRING.  Unlike
    apropos, this puts the user at the node, running info. */
@@ -46,7 +46,7 @@ static int goto_invocation_p = 0;
 
 /* Variable containing the string to search for when index_search_p is
    non-zero. */
-static char *index_search_string = (char *)NULL;
+static char *index_search_string = NULL;
 
 /* Non-zero means print version info only. */
 static int print_version_p = 0;
@@ -56,17 +56,17 @@ static int print_help_p = 0;
 
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
-static char **user_nodenames = (char **)NULL;
+static char **user_nodenames = NULL;
 static int user_nodenames_index = 0;
 static int user_nodenames_slots = 0;
 
 /* String specifying the first file to load.  This string can only be set
    by the user specifying "--file" on the command line. */
-static char *user_filename = (char *)NULL;
+static char *user_filename = NULL;
 
 /* String specifying the name of the file to dump nodes to.  This value is
    filled if the user speficies "--output" on the command line. */
-static char *user_output_filename = (char *)NULL;
+static char *user_output_filename = NULL;
 
 /* Non-zero indicates that when "--output" is specified, all of the menu
    items of the specified nodes (and their subnodes as well) should be
@@ -278,7 +278,7 @@ main (int argc, char *argv[])
   /* If the output device is not a terminal, and no output filename has been
      specified, make user_output_filename be "-", so that the info is written
      to stdout, and turn on the dumping of subnodes. */
-  if ((!isatty (fileno (stdout))) && (user_output_filename == (char *)NULL))
+  if ((!isatty (fileno (stdout))) && (user_output_filename == NULL))
     {
       user_output_filename = xstrdup ("-");
       dump_subnodes = 1;
@@ -453,7 +453,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               {
                 terminal_prep_terminal ();
                 terminal_clear_screen ();
-                info_last_executed_command = (VFunction *)NULL;
+                info_last_executed_command = NULL;
 
                 if (index_search_p)
                   do_info_index_search (windows, 0, index_search_string);

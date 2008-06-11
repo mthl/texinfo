@@ -1,7 +1,7 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.9 2008-03-04 09:45:15 gray Exp $
+   $Id: variables.c,v 1.10 2008-06-11 09:55:43 gray Exp $
 
-   Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007
+   Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 
 /* Choices used by the completer when reading a zero/non-zero value for
    a variable. */
-static char *on_off_choices[] = { "Off", "On", (char *)NULL };
+static char *on_off_choices[] = { "Off", "On", NULL };
 
 VARIABLE_ALIST info_variables[] = {
   { "automatic-footnotes",
@@ -67,7 +67,7 @@ VARIABLE_ALIST info_variables[] = {
 
   { "scroll-step",
       N_("The number lines to scroll when the cursor moves out of the window"),
-      &window_scroll_step, (char **)NULL },
+      &window_scroll_step, NULL },
 
   { "cursor-movement-scrolls",
     N_("Controls whether scroll-behavior affects cursor movement commands"),
@@ -82,7 +82,7 @@ VARIABLE_ALIST info_variables[] = {
        "last node"),
     &scroll_last_node, (char**)scroll_last_node_choices },
   
-  { (char *)NULL, (char *)NULL, (int *)NULL, (char **)NULL }
+  { NULL }
 };
 
 DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
@@ -96,8 +96,8 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
   if (!var)
     return;
 
-  description = (char *)xmalloc (20 + strlen (var->name)
-				 + strlen (_(var->doc)));
+  description = xmalloc (20 + strlen (var->name)
+			 + strlen (_(var->doc)));
 
   if (var->choices)
     sprintf (description, "%s (%s): %s.",
@@ -158,7 +158,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
     else
       {
         register int i;
-        REFERENCE **array = (REFERENCE **)NULL;
+        REFERENCE **array = NULL;
         int array_index = 0;
         int array_slots = 0;
 
@@ -166,10 +166,10 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
           {
             REFERENCE *entry;
 
-            entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
+            entry = xmalloc (sizeof (REFERENCE));
             entry->label = xstrdup (var->choices[i]);
-            entry->nodename = (char *)NULL;
-            entry->filename = (char *)NULL;
+            entry->nodename = NULL;
+            entry->filename = NULL;
 
             add_pointer_to_array
               (entry, array_index, array, array_slots, 10, REFERENCE *);
@@ -237,14 +237,14 @@ read_variable_name (const char *prompt, WINDOW *window)
   if (!line)
     {
       info_abort_key (active_window, 0, 0);
-      return ((VARIABLE_ALIST *)NULL);
+      return NULL;
     }
 
   /* User accepted "default"?  (There is none.) */
   if (!*line)
     {
       free (line);
-      return ((VARIABLE_ALIST *)NULL);
+      return NULL;
     }
 
   /* Find the variable in our list of variables. */
@@ -253,9 +253,9 @@ read_variable_name (const char *prompt, WINDOW *window)
       break;
 
   if (!info_variables[i].name)
-    return ((VARIABLE_ALIST *)NULL);
+    return NULL;
   else
-    return (&(info_variables[i]));
+    return &info_variables[i];
 }
 
 /* Make an array of REFERENCE which actually contains the names of the
@@ -264,23 +264,23 @@ REFERENCE **
 make_variable_completions_array (void)
 {
   register int i;
-  REFERENCE **array = (REFERENCE **)NULL;
+  REFERENCE **array = NULL;
   int array_index = 0, array_slots = 0;
 
   for (i = 0; info_variables[i].name; i++)
     {
       REFERENCE *entry;
 
-      entry = (REFERENCE *) xmalloc (sizeof (REFERENCE));
+      entry = xmalloc (sizeof (REFERENCE));
       entry->label = xstrdup (info_variables[i].name);
-      entry->nodename = (char *)NULL;
-      entry->filename = (char *)NULL;
+      entry->nodename = NULL;
+      entry->filename = NULL;
 
       add_pointer_to_array
         (entry, array_index, array, array_slots, 200, REFERENCE *);
     }
 
-  return (array);
+  return array;
 }
 
 #if defined(INFOKEY)

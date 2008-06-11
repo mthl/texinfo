@@ -1,7 +1,8 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.7 2007-07-01 21:20:31 karl Exp $
+   $Id: pcterm.c,v 1.8 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1998, 1999, 2003, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -491,7 +492,7 @@ find_sequence (int key)
     if (key == DJGPP_keytab[i].inkey)
       return DJGPP_keytab[i].sequence;
 
-  return (unsigned const char *)NULL;
+  return NULL;
 }
 
 /* Return zero if a key is pending in the
@@ -528,7 +529,7 @@ pc_term_chars_avail (void)
       return 0;
     }
   else
-    return (long)strlen (buffered + buf_idx);
+    return strlen (buffered + buf_idx);
 }
 
 /* Our special terminal keyboard reader.  It will be called by

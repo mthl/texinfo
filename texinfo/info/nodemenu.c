@@ -1,7 +1,7 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c,v 1.10 2008-02-26 16:51:05 karl Exp $
+   $Id: nodemenu.c,v 1.11 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -27,10 +27,10 @@ NODE * get_visited_nodes (Function *filter_func);
 static const char *
 nodemenu_format_info (void)
 {
-  return (_("\n\
+  return _("\n\
 * Menu:\n\
   (File)Node                        Lines   Size   Containing File\n\
-  ----------                        -----   ----   ---------------"));
+  ----------                        -----   ----   ---------------");
 }
 
 /* Produce a formatted line of information about NODE.  Here is what we want
@@ -48,10 +48,10 @@ format_node_info (NODE *node)
 {
   register int i, len;
   char *parent, *containing_file;
-  static char *line_buffer = (char *)NULL;
+  static char *line_buffer = NULL;
 
   if (!line_buffer)
-    line_buffer = (char *)xmalloc (1000);
+    line_buffer = xmalloc (1000);
 
   if (node->parent)
     {
@@ -60,7 +60,7 @@ format_node_info (NODE *node)
         parent = node->parent;
     }
   else
-    parent = (char *)NULL;
+    parent = NULL;
 
   containing_file = node->filename;
 
@@ -68,7 +68,7 @@ format_node_info (NODE *node)
     sprintf (line_buffer, "* %s::", node->nodename);
   else
     {
-      char *file = (char *)NULL;
+      char *file = NULL;
 
       if (parent)
         file = parent;
@@ -115,7 +115,7 @@ compare_strings (const void *entry1, const void *entry2)
   char **e1 = (char **) entry1;
   char **e2 = (char **) entry2;
 
-  return (mbscasecmp (*e1, *e2));
+  return mbscasecmp (*e1, *e2);
 }
 
 /* The name of the nodemenu node. */
@@ -131,11 +131,11 @@ get_visited_nodes (Function *filter_func)
   register int i, iw_index;
   INFO_WINDOW *info_win;
   NODE *node;
-  char **lines = (char **)NULL;
+  char **lines = NULL;
   int lines_index = 0, lines_slots = 0;
 
   if (!info_windows)
-    return ((NODE *)NULL);
+    return NULL;
 
   for (iw_index = 0; (info_win = info_windows[iw_index]); iw_index++)
     {
@@ -175,7 +175,7 @@ get_visited_nodes (Function *filter_func)
           if (FILENAME_CMP (lines[i], lines[i + 1]) == 0)
             {
               free (lines[i]);
-              lines[i] = (char *)NULL;
+              lines[i] = NULL;
             }
           else
             newlen++;
@@ -183,12 +183,12 @@ get_visited_nodes (Function *filter_func)
 
       /* We have free ()'d and marked all of the duplicate slots.
          Copy the live slots rather than pruning the dead slots. */
-      temp = (char **)xmalloc ((1 + newlen) * sizeof (char *));
+      temp = xmalloc ((1 + newlen) * sizeof (char *));
       for (i = 0, j = 0; i < lines_index; i++)
         if (lines[i])
           temp[j++] = lines[i];
 
-      temp[j] = (char *)NULL;
+      temp[j] = NULL;
       free (lines);
       lines = temp;
       lines_index = newlen;
@@ -205,7 +205,7 @@ Select one from this menu, or use `\\[history-node]' in another window.\n"), 0),
   printf_to_message_buffer ("%s\n", (char *) nodemenu_format_info (),
       NULL, NULL);
 
-  for (i = 0; (lines != (char **)NULL) && (i < lines_index); i++)
+  for (i = 0; (lines != NULL) && (i < lines_index); i++)
     {
       printf_to_message_buffer ("%s\n", lines[i], NULL, NULL);
       free (lines[i]);
@@ -216,7 +216,7 @@ Select one from this menu, or use `\\[history-node]' in another window.\n"), 0),
 
   node = message_buffer_to_node ();
   add_gcable_pointer (node->contents);
-  return (node);
+  return node;
 }
 
 DECLARE_INFO_COMMAND (list_visited_nodes,
@@ -255,7 +255,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
 
       old_active = active_window;
       active_window = window;
-      new = window_make_window ((NODE *)NULL);
+      new = window_make_window (NULL);
       active_window = old_active;
     }
 
@@ -265,7 +265,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
 
   /* Lines do not wrap in this window. */
   new->flags |= W_NoWrap;
-  node = get_visited_nodes ((Function *)NULL);
+  node = get_visited_nodes (NULL);
   name_internal_node (node, nodemenu_nodename);
 
 #if 0
@@ -306,7 +306,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
   NODE *node;
   REFERENCE **menu;
 
-  node = get_visited_nodes ((Function *)NULL);
+  node = get_visited_nodes (NULL);
 
   menu = info_menu_of_node (node);
   free (node);

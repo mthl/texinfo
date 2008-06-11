@@ -1,8 +1,8 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.11 2007-12-03 01:38:42 karl Exp $
+    $Id: man.c,v 1.12 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2007
-   Free Software Foundation, Inc.
+   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
+   2007, 2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ static char *get_manpage_contents (char *pagename);
 NODE *
 make_manpage_node (char *pagename)
 {
-  return (info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename));
+  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename);
 }
 
 NODE *
@@ -93,8 +93,7 @@ get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
           hlen = strlen (header);
           plen = strlen (page);
           newsize = (oldsize + hlen + plen);
-          file_buffer->contents =
-            (char *)xrealloc (file_buffer->contents, 1 + newsize);
+          file_buffer->contents = xrealloc (file_buffer->contents, 1 + newsize);
           memcpy (file_buffer->contents + oldsize, header, hlen);
           memcpy (file_buffer->contents + oldsize + hlen, page, plen);
           file_buffer->contents[newsize] = '\0';
@@ -146,7 +145,7 @@ get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
       node = manpage_node_of_file_buffer (file_buffer, pagename);
     }
 
-  return (node);
+  return node;
 }
 
 FILE_BUFFER *
@@ -157,10 +156,10 @@ create_manpage_file_buffer (void)
   file_buffer->fullpath = xstrdup (MANPAGE_FILE_BUFFER_NAME);
   file_buffer->finfo.st_size = 0;
   file_buffer->filesize = 0;
-  file_buffer->contents = (char *)NULL;
+  file_buffer->contents = NULL;
   file_buffer->flags = (N_IsInternal | N_CannotGC | N_IsManPage);
 
-  return (file_buffer);
+  return file_buffer;
 }
 
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
@@ -191,7 +190,7 @@ executable_file_in_path (char *filename, char *path)
           temp_dirname = expanded_dirname;
         }
 
-      temp = (char *)xmalloc (34 + strlen (temp_dirname) + strlen (filename));
+      temp = xmalloc (34 + strlen (temp_dirname) + strlen (filename));
       strcpy (temp, temp_dirname);
       if (!IS_SLASH (temp[(strlen (temp)) - 1]))
         strcat (temp, "/");
@@ -211,23 +210,23 @@ executable_file_in_path (char *filename, char *path)
 	  /* If we have found a regular executable file, then use it. */
 	  if ((statable) && (S_ISREG (finfo.st_mode)) &&
 	      (access (temp, X_OK) == 0))
-	    return (temp);
+	    return temp;
 	}
 
       free (temp);
     }
-  return ((char *)NULL);
+  return NULL;
 }
 
 /* Return the full pathname of the system man page formatter. */
 static char *
 find_man_formatter (void)
 {
-  return (executable_file_in_path ("man", (char *)getenv ("PATH")));
+  return executable_file_in_path ("man", (char *)getenv ("PATH"));
 }
 
-static char *manpage_pagename = (char *)NULL;
-static char *manpage_section  = (char *)NULL;
+static char *manpage_pagename = NULL;
+static char *manpage_section  = NULL;
 
 static void
 get_page_and_section (char *pagename)
@@ -240,12 +239,12 @@ get_page_and_section (char *pagename)
   if (manpage_section)
     free (manpage_section);
 
-  manpage_pagename = (char *)NULL;
-  manpage_section  = (char *)NULL;
+  manpage_pagename = NULL;
+  manpage_section  = NULL;
 
   for (i = 0; pagename[i] != '\0' && pagename[i] != '('; i++);
 
-  manpage_pagename = (char *)xmalloc (1 + i);
+  manpage_pagename = xmalloc (1 + i);
   strncpy (manpage_pagename, pagename, i);
   manpage_pagename[i] = '\0';
 
@@ -257,7 +256,7 @@ get_page_and_section (char *pagename)
 
       for (i = start; pagename[i] != '\0' && pagename[i] != ')'; i++);
 
-      manpage_section = (char *)xmalloc (1 + (i - start));
+      manpage_section = xmalloc (1 + (i - start));
       strncpy (manpage_section, pagename + start, (i - start));
       manpage_section[i - start] = '\0';
     }
@@ -274,18 +273,18 @@ reap_children (int sig)
 static char *
 get_manpage_contents (char *pagename)
 {
-  static char *formatter_args[4] = { (char *)NULL };
+  static char *formatter_args[4] = { NULL };
   int pipes[2];
   pid_t child;
   RETSIGTYPE (*sigsave) (int signum);
   char *formatted_page = NULL;
   int arg_index = 1;
 
-  if (formatter_args[0] == (char *)NULL)
+  if (formatter_args[0] == NULL)
     formatter_args[0] = find_man_formatter ();
 
-  if (formatter_args[0] == (char *)NULL)
-    return ((char *)NULL);
+  if (formatter_args[0] == NULL)
+    return NULL;
 
   get_page_and_section (pagename);
 
@@ -295,7 +294,7 @@ get_manpage_contents (char *pagename)
     formatter_args[arg_index++] = "-a";    
 
   formatter_args[arg_index++] = manpage_pagename;
-  formatter_args[arg_index] = (char *)NULL;
+  formatter_args[arg_index] = NULL;
 
   /* Open a pipe to this program, read the output, and save it away
      in FORMATTED_PAGE.  The reader end of the pipe is pipes[0]; the
@@ -307,7 +306,7 @@ get_manpage_contents (char *pagename)
 
   child = fork ();
   if (child == -1)
-    return ((char *)NULL);
+    return NULL;
 
   if (child != 0)
     {
@@ -367,13 +366,13 @@ get_manpage_contents (char *pagename)
       close (fd_err);
     dup2 (save_stderr, fileno (stderr));
     if (fpipe == 0)
-      return ((char *)NULL);
+      return NULL;
     formatted_page = read_from_fd (fileno (fpipe));
     if (pclose (fpipe) == -1)
       {
 	if (formatted_page)
 	  free (formatted_page);
-	return ((char *)NULL);
+	return NULL;
       }
   }
 #endif /* !PIPE_USE_FORK */
@@ -382,7 +381,7 @@ get_manpage_contents (char *pagename)
   if (formatted_page)
     clean_manpage (formatted_page);
 
-  return (formatted_page);
+  return formatted_page;
 }
 
 static void
@@ -392,7 +391,7 @@ clean_manpage (char *manpage)
   int newline_count = 0;
   char *newpage;
 
-  newpage = (char *)xmalloc (1 + strlen (manpage));
+  newpage = xmalloc (1 + strlen (manpage));
 
   for (i = 0, j = 0; (newpage[j] = manpage[i]); i++, j++)
     {
@@ -445,8 +444,8 @@ clean_manpage (char *manpage)
 static NODE *
 manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
 {
-  NODE *node = (NODE *)NULL;
-  TAG *tag = (TAG *)NULL;
+  NODE *node = NULL;
+  TAG *tag = NULL;
 
   if (file_buffer->contents)
     {
@@ -461,26 +460,26 @@ manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
 
   if (tag)
     {
-      node = (NODE *)xmalloc (sizeof (NODE));
+      node = xmalloc (sizeof (NODE));
       node->filename = file_buffer->filename;
       node->nodename = xstrdup (tag->nodename);
       node->contents = file_buffer->contents + tag->nodestart;
       node->nodelen = tag->nodelen;
       node->flags    = 0;
       node->display_pos = 0;
-      node->parent   = (char *)NULL;
+      node->parent   = NULL;
       node->flags = (N_HasTagsTable | N_IsManPage);
       node->contents += skip_node_separator (node->contents);
     }
 
-  return (node);
+  return node;
 }
 
 static char *
 read_from_fd (int fd)
 {
   struct timeval timeout;
-  char *buffer = (char *)NULL;
+  char *buffer = NULL;
   int bsize = 0;
   int bindex = 0;
   int select_result;
@@ -512,7 +511,7 @@ read_from_fd (int fd)
         while (!done)
           {
             while ((bindex + 1024) > (bsize))
-              buffer = (char *)xrealloc (buffer, (bsize += 1024));
+              buffer = xrealloc (buffer, (bsize += 1024));
             buffer[bindex] = '\0';
 
             amount_read = read (fd, buffer + bindex, 1023);
@@ -532,13 +531,13 @@ read_from_fd (int fd)
       }
     }
 
-  if ((buffer != (char *)NULL) && (*buffer == '\0'))
+  if ((buffer != NULL) && (*buffer == '\0'))
     {
       free (buffer);
-      buffer = (char *)NULL;
+      buffer = NULL;
     }
 
-  return (buffer);
+  return buffer;
 }
 
 static char *reference_section_starters[] =
@@ -551,7 +550,7 @@ static char *reference_section_starters[] =
   "\nSEE\tALSO",
   "SEE ALSO\n",
   "SEE\tALSO\n",
-  (char *)NULL
+  NULL
 };
 
 static SEARCH_BINDING frs_binding;
@@ -567,7 +566,7 @@ find_reference_section (NODE *node)
   frs_binding.end = node->nodelen;
   frs_binding.flags = S_SkipDest;
 
-  for (i = 0; reference_section_starters[i] != (char *)NULL; i++)
+  for (i = 0; reference_section_starters[i] != NULL; i++)
     {
       position = search_forward (reference_section_starters[i], &frs_binding);
       if (position != -1)
@@ -575,7 +574,7 @@ find_reference_section (NODE *node)
     }
 
   if (position == -1)
-    return ((SEARCH_BINDING *)NULL);
+    return NULL;
 
   /* We found the start of the reference section, and point is right after
      the string which starts it.  The text from here to the next header
@@ -592,22 +591,22 @@ find_reference_section (NODE *node)
         }
     }
 
-  return (&frs_binding);
+  return &frs_binding;
 }
 
 REFERENCE **
 xrefs_of_manpage (NODE *node)
 {
   SEARCH_BINDING *reference_section;
-  REFERENCE **refs = (REFERENCE **)NULL;
+  REFERENCE **refs = NULL;
   int refs_index = 0;
   int refs_slots = 0;
   long position;
 
   reference_section = find_reference_section (node);
 
-  if (reference_section == (SEARCH_BINDING *)NULL)
-    return ((REFERENCE **)NULL);
+  if (reference_section == NULL)
+    return NULL;
 
   /* Grovel the reference section building a list of references found there.
      A reference is alphabetic characters followed by non-whitespace text
@@ -644,8 +643,8 @@ xrefs_of_manpage (NODE *node)
           REFERENCE *entry;
           int len = end - start;
 
-          entry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
-          entry->label = (char *)xmalloc (1 + len);
+          entry = xmalloc (sizeof (REFERENCE));
+          entry->label = xmalloc (1 + len);
           strncpy (entry->label, (reference_section->buffer) + start, len);
           entry->label[len] = '\0';
           entry->filename = xstrdup (node->filename);
@@ -660,7 +659,7 @@ xrefs_of_manpage (NODE *node)
       reference_section->start = position + 1;
     }
 
-  return (refs);
+  return refs;
 }
 
 long
@@ -704,7 +703,7 @@ locate_manpage_xref (NODE *node, long int start, int dir)
 
       info_free_references (refs);
     }
-  return (position);
+  return position;
 }
 
 /* This one was a little tricky.  The binding buffer that is passed in has
@@ -715,14 +714,14 @@ manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
 {
   register int i;
   REFERENCE **all_refs = xrefs_of_manpage (node);
-  REFERENCE **brefs = (REFERENCE **)NULL;
+  REFERENCE **brefs = NULL;
   REFERENCE *entry;
   int brefs_index = 0;
   int brefs_slots = 0;
   int start, end;
 
   if (!all_refs)
-    return ((REFERENCE **)NULL);
+    return NULL;
 
   start = binding->start + (binding->buffer - node->contents);
   end = binding->end + (binding->buffer - node->contents);
@@ -744,5 +743,5 @@ manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
     }
 
   free (all_refs);
-  return (brefs);
+  return brefs;
 }

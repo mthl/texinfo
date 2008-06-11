@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.25 2008-03-08 01:55:39 karl Exp $
+   $Id: infodoc.c,v 1.26 2008-06-11 09:55:42 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -188,7 +188,7 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
 {
   register int i;
   unsigned prefix_len = strlen (prefix);
-  char *new_prefix = (char *)xmalloc (prefix_len + 2);
+  char *new_prefix = xmalloc (prefix_len + 2);
 
   strncpy (new_prefix, prefix, prefix_len);
   new_prefix[prefix_len + 1] = '\0';
@@ -599,7 +599,7 @@ function_name (InfoCommand *cmd)
     if (InfoFunction(cmd) == function_doc_array[i].func)
       break;
 
-  return (function_doc_array[i].func_name);
+  return function_doc_array[i].func_name;
 
 #endif /* !INFOKEY */
 }
@@ -614,7 +614,7 @@ named_function (char *name)
     if (strcmp (function_doc_array[i].func_name, name) == 0)
       break;
 
-  return (DocInfoCmd(&function_doc_array[i]));
+  return DocInfoCmd(&function_doc_array[i]);
 }
 #endif /* NAMED_FUNCTIONS */
 
@@ -625,9 +625,9 @@ key_documentation (char key, Keymap map)
   InfoCommand *function = map[key].function;
 
   if (function)
-    return (function_documentation (function));
+    return function_documentation (function);
   else
-    return ((char *)NULL);
+    return NULL;
 }
 
 DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
@@ -667,7 +667,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
       *k++ = keystroke;
       *k = '\0';
 
-      if (map[keystroke].function == (InfoCommand *)NULL)
+      if (map[keystroke].function == NULL)
         {
           message_in_echo_area (_("%s is undefined."),
               pretty_keyseq (keys), NULL);
@@ -696,7 +696,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
                                        ? Meta (tolower (UnMeta (keystroke)))
                                        : tolower (keystroke);
 
-              if (map[lowerkey].function == (InfoCommand *)NULL)
+              if (map[lowerkey].function == NULL)
                 {
                   message_in_echo_area (_("%s is undefined."),
                                         pretty_keyseq (keys), NULL);
@@ -713,7 +713,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
           fundoc = function_documentation (map[keystroke].function);
 
-          message = (char *)xmalloc
+          message = xmalloc
             (10 + strlen (keyname) + strlen (fundoc) + strlen (funname));
 
 #if defined (NAMED_FUNCTIONS)
@@ -776,7 +776,7 @@ pretty_keyname (unsigned char key)
           rep = rep_buffer;
         }
     }
-  return (rep);
+  return rep;
 }
 
 /* Return the pretty printable string which represents KEYSEQ. */
@@ -791,7 +791,7 @@ pretty_keyseq (char *keyseq)
   keyseq_rep[0] = '\0';
   if (*keyseq)
     pretty_keyseq_internal (keyseq, keyseq_rep);
-  return (keyseq_rep);
+  return keyseq_rep;
 }
 
 static void
@@ -862,7 +862,7 @@ pretty_keyseq_internal (char *keyseq, char *rep)
 }
 
 /* Return a pointer to the last character in s that is found in f. */
-static char *
+static const char *
 strrpbrk (const char *s, const char *f)
 {
   register const char *e = s + strlen(s);
@@ -872,7 +872,7 @@ strrpbrk (const char *s, const char *f)
     {
       for (t = f; *t; t++)
         if (*e == *t)
-          return (char *)e;
+          return e;
     }
   return NULL;
 }
@@ -883,10 +883,10 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
 {
   unsigned reslen = strlen (string);
   register int i, start, next;
-  static char *result = (char *)NULL;
+  static char *result = NULL;
 
   maybe_free (result);
-  result = (char *)xmalloc (1 + reslen);
+  result = xmalloc (1 + reslen);
 
   i = next = start = 0;
 
@@ -918,7 +918,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                       while (isdigit(string[j]))
                         j++;
                     }
-                  fmt = (char *)xmalloc (j - i + 2);
+                  fmt = xmalloc (j - i + 2);
                   strncpy (fmt, string + i + 1, j - i);
                   fmt[j - i - 1] = 's';
                   fmt[j - i] = '\0';
@@ -956,7 +956,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               /* Move to the end of the function name. */
               for (i = start; string[i] && (string[i] != ']'); i++);
 
-              rep_name = (char *)xmalloc (1 + i - start);
+              rep_name = xmalloc (1 + i - start);
               strncpy (rep_name, string + start, i - start);
               rep_name[i - start] = '\0';
 
@@ -982,13 +982,14 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
 
               if (arg)
                 {
-                  char *argrep, *p;
+                  char *argrep;
+		  const char *p;
 
                   argrep = where_is (info_keymap, InfoCmd(info_add_digit_to_numeric_arg));
                   p = argrep ? strrpbrk (argrep, "0123456789-") : NULL;
                   if (p)
                     {
-                      argstr = (char *)xmalloc (p - argrep + 21);
+                      argstr = xmalloc (p - argrep + 21);
                       strncpy (argstr, argrep, p - argrep);
                       sprintf (argstr + (p - argrep), "%d", arg);
                     }
@@ -999,7 +1000,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               if (!rep)
                 rep = "N/A";
               replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
-              repstr = (char *)xmalloc (replen);
+              repstr = xmalloc (replen);
               repstr[0] = '\0';
               if (argstr)
                 {
@@ -1019,7 +1020,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               if (next + replen > reslen)
                 {
                   reslen = next + replen + 1;
-                  result = (char *)xrealloc (result, reslen + 1);
+                  result = xrealloc (result, reslen + 1);
                 }
 
               if (fmt)
@@ -1039,12 +1040,12 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
         }
     }
   strcpy (result + next, string + start);
-  return (result);
+  return result;
 }
 
 /* Return a string of characters which could be typed from the keymap
    MAP to invoke FUNCTION. */
-static char *where_is_rep = (char *)NULL;
+static char *where_is_rep = NULL;
 static int where_is_rep_index = 0;
 static int where_is_rep_size = 0;
 
@@ -1054,7 +1055,7 @@ where_is (Keymap map, InfoCommand *cmd)
   char *rep;
 
   if (!where_is_rep_size)
-    where_is_rep = (char *)xmalloc (where_is_rep_size = 100);
+    where_is_rep = xmalloc (where_is_rep_size = 100);
   where_is_rep_index = 0;
 
   rep = where_is_internal (map, cmd);
@@ -1076,7 +1077,7 @@ where_is (Keymap map, InfoCommand *cmd)
 
       rep = where_is_rep;
     }
-  return (rep);
+  return rep;
 }
 
 /* Return the printed rep of the keystrokes that invoke FUNCTION,
@@ -1112,7 +1113,7 @@ where_is_internal (Keymap map, InfoCommand *cmd)
     if ((map[i].type == ISFUNC) && map[i].function == cmd)
       {
         sprintf (where_is_rep + where_is_rep_index, "%s", pretty_keyname (i));
-        return (where_is_rep);
+        return where_is_rep;
       }
 
   /* Okay, search subsequent maps for this function. */
@@ -1130,7 +1131,7 @@ where_is_internal (Keymap map, InfoCommand *cmd)
           rep = where_is_internal ((Keymap)map[i].function, cmd);
 
           if (rep)
-            return (where_is_rep);
+            return where_is_rep;
 
           where_is_rep_index = saved_index;
         }

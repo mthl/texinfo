@@ -1,7 +1,7 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.10 2008-02-26 16:51:05 karl Exp $
+   $Id: indices.c,v 1.11 2008-06-11 09:55:42 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,17 @@ int show_index_match = 1;
 
 /* In the Info sense, an index is a menu.  This variable holds the last
    parsed index. */
-static REFERENCE **index_index = (REFERENCE **)NULL;
+static REFERENCE **index_index = NULL;
 
 /* The offset of the most recently selected index element. */
 static int index_offset = 0;
 
 /* Variable which holds the last string searched for. */
-static char *index_search = (char *)NULL;
+static char *index_search = NULL;
 
 /* A couple of "globals" describing where the initial index was found. */
-static char *initial_index_filename = (char *)NULL;
-static char *initial_index_nodename = (char *)NULL;
+static char *initial_index_filename = NULL;
+static char *initial_index_nodename = NULL;
 
 /* A structure associating index names with index offset ranges. */
 typedef struct {
@@ -47,7 +47,7 @@ typedef struct {
 } INDEX_NAME_ASSOC;
 
 /* An array associating index nodenames with index offset ranges. */
-static INDEX_NAME_ASSOC **index_nodenames = (INDEX_NAME_ASSOC **)NULL;
+static INDEX_NAME_ASSOC **index_nodenames = NULL;
 static int index_nodenames_index = 0;
 static int index_nodenames_slots = 0;
 
@@ -60,7 +60,7 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
   INDEX_NAME_ASSOC *assoc;
 
   for (last = 0; array[last + 1]; last++);
-  assoc = (INDEX_NAME_ASSOC *)xmalloc (sizeof (INDEX_NAME_ASSOC));
+  assoc = xmalloc (sizeof (INDEX_NAME_ASSOC));
   assoc->name = xstrdup (node->nodename);
 
   if (!index_nodenames_index)
@@ -91,24 +91,24 @@ info_indices_of_window (WINDOW *window)
 
   fb = file_buffer_of_window (window);
 
-  return (info_indices_of_file_buffer (fb));
+  return info_indices_of_file_buffer (fb);
 }
 
 REFERENCE **
 info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 {
   register int i;
-  REFERENCE **result = (REFERENCE **)NULL;
+  REFERENCE **result = NULL;
 
   /* No file buffer, no indices. */
   if (!file_buffer)
-    return ((REFERENCE **)NULL);
+    return NULL;
 
   /* Reset globals describing where the index was found. */
   maybe_free (initial_index_filename);
   maybe_free (initial_index_nodename);
-  initial_index_filename = (char *)NULL;
-  initial_index_nodename = (char *)NULL;
+  initial_index_filename = NULL;
+  initial_index_nodename = NULL;
 
   if (index_nodenames)
     {
@@ -119,7 +119,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
         }
 
       index_nodenames_index = 0;
-      index_nodenames[0] = (INDEX_NAME_ASSOC *)NULL;
+      index_nodenames[0] = NULL;
     }
 
   /* Grovel the names of the nodes found in this file. */
@@ -164,7 +164,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     if (!result[i]->filename)
       result[i]->filename = xstrdup (file_buffer->filename);
 
-  return (result);
+  return result;
 }
 
 DECLARE_INFO_COMMAND (info_index_search,
@@ -186,7 +186,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
 
   /* The user is selecting a new search string, so flush the old one. */
   maybe_free (index_search);
-  index_search = (char *)NULL;
+  index_search = NULL;
 
   /* If this window's file is not the same as the one that we last built an
      index for, build and remember an index now. */
@@ -475,8 +475,8 @@ REFERENCE **
 apropos_in_all_indices (char *search_string, int inform)
 {
   register int i, dir_index;
-  REFERENCE **all_indices = (REFERENCE **)NULL;
-  REFERENCE **dir_menu = (REFERENCE **)NULL;
+  REFERENCE **all_indices = NULL;
+  REFERENCE **dir_menu = NULL;
   NODE *dir_node;
 
   dir_node = info_get_node ("dir", "Top");
@@ -573,7 +573,7 @@ apropos_in_all_indices (char *search_string, int inform)
   /* Build a list of the references which contain SEARCH_STRING. */
   if (all_indices)
     {
-      REFERENCE *entry, **apropos_list = (REFERENCE **)NULL;
+      REFERENCE *entry, **apropos_list = NULL;
       int apropos_list_index = 0;
       int apropos_list_slots = 0;
 
@@ -597,7 +597,7 @@ apropos_in_all_indices (char *search_string, int inform)
       free (all_indices);
       all_indices = apropos_list;
     }
-  return (all_indices);
+  return all_indices;
 }
 
 #define APROPOS_NONE \
@@ -661,7 +661,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
           printf_to_message_buffer
             (_("\n* Menu: Nodes whose indices contain `%s':\n"),
              line, NULL, NULL);
-          line_buffer = (char *)xmalloc (500);
+          line_buffer = xmalloc (500);
 
           for (i = 0; apropos_list[i]; i++)
             {
@@ -719,7 +719,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
             old_active = active_window;
             active_window = window;
-            new = window_make_window ((NODE *)NULL);
+            new = window_make_window (NULL);
             active_window = old_active;
           }
 

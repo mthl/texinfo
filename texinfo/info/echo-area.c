@@ -1,7 +1,7 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.13 2008-06-09 22:52:57 gray Exp $
+   $Id: echo-area.c,v 1.14 2008-06-11 09:55:41 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-VFunction *ea_last_executed_command = (VFunction *)NULL;
+VFunction *ea_last_executed_command = NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
@@ -49,7 +49,7 @@ static int input_line_point;
 static int input_line_beg;
 static int input_line_end;
 static NODE input_line_node = {
-  (char *)NULL, (char *)NULL, (char *)NULL, input_line,
+  NULL, NULL, NULL, input_line,
   EA_MAX_INPUT, 0, N_IsInternal
 };
 
@@ -66,12 +66,12 @@ static int completions_window_p (WINDOW *window);
 /* If non-null, this is a window which was specifically created to display
    possible completions output.  We remember it so we can delete it when
    appropriate. */
-static WINDOW *echo_area_completions_window = (WINDOW *)NULL;
+static WINDOW *echo_area_completions_window = NULL;
 
 /* Variables which keep track of the window which was active prior to
    entering the echo area. */
-static WINDOW *calling_window = (WINDOW *)NULL;
-static NODE *calling_window_node = (NODE *)NULL;
+static WINDOW *calling_window = NULL;
+static NODE *calling_window_node = NULL;
 static long calling_window_point = 0;
 static long calling_window_pagetop = 0;
 
@@ -96,7 +96,7 @@ remember_calling_window (WINDOW *window)
 static void
 restore_calling_window (void)
 {
-  register WINDOW *win, *compwin = (WINDOW *)NULL;
+  register WINDOW *win, *compwin = NULL;
 
   /* If the calling window is still visible, and it is the window that
      we used for completions output, then restore the calling window. */
@@ -110,7 +110,7 @@ restore_calling_window (void)
           window_set_node_of_window (calling_window, calling_window_node);
           calling_window->point = calling_window_point;
           calling_window->pagetop = calling_window_pagetop;
-          compwin = (WINDOW *)NULL;
+          compwin = NULL;
           break;
         }
     }
@@ -144,7 +144,7 @@ restore_calling_window (void)
              calls echo_area_inform_of_deleted_window (), which does the
              right thing. */
 #if defined (UNNECESSARY)
-          echo_area_completions_window = (WINDOW *)NULL;
+          echo_area_completions_window = NULL;
 #endif /* UNNECESSARY */
 
           if (next)
@@ -178,7 +178,7 @@ echo_area_after_read (void)
   if (info_aborted_echo_area)
     {
       info_aborted_echo_area = 0;
-      return_value = (char *)NULL;
+      return_value = NULL;
     }
   else
     {
@@ -187,12 +187,12 @@ echo_area_after_read (void)
       else
         {
           int line_len = input_line_end - input_line_beg;
-          return_value = (char *) xmalloc (1 + line_len);
+          return_value = xmalloc (1 + line_len);
           strncpy (return_value, &input_line[input_line_beg], line_len);
           return_value[line_len] = '\0';
         }
     }
-  return (return_value);
+  return return_value;
 }
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
@@ -241,7 +241,7 @@ info_read_in_echo_area (WINDOW *window, const char *prompt)
     pop_echo_area ();
 
   /* Return the results to the caller. */
-  return (line);
+  return line;
 }
 
 /* (re) Initialize the echo area node. */
@@ -545,7 +545,7 @@ DECLARE_INFO_COMMAND (ea_transpose_chars, _("Transpose characters at point"))
 /*                                                                  */
 /* **************************************************************** */
 
-static char **kill_ring = (char **)NULL;
+static char **kill_ring = NULL;
 static int kill_ring_index = 0; /* Number of kills appearing in KILL_RING. */
 static int kill_ring_slots = 0; /* Number of slots allocated to KILL_RING. */
 static int kill_ring_loc = 0;   /* Location of current yank pointer. */
@@ -691,7 +691,7 @@ ea_kill_text (int from, int to)
 
   /* Remember the text that we are about to delete. */
   distance = to - from;
-  killed_text = (char *)xmalloc (1 + distance);
+  killed_text = xmalloc (1 + distance);
   strncpy (killed_text, &input_line[from], distance);
   killed_text[distance] = '\0';
 
@@ -711,7 +711,7 @@ ea_kill_text (int from, int to)
 
       slot = kill_ring_loc;
       old = kill_ring[slot];
-      new = (char *)xmalloc (1 + strlen (old) + strlen (killed_text));
+      new = xmalloc (1 + strlen (old) + strlen (killed_text));
 
       if (killing_backwards)
         {
@@ -740,9 +740,9 @@ ea_kill_text (int from, int to)
         slot = 0;
 
       if (slot + 1 > kill_ring_slots)
-        kill_ring = (char **) xrealloc
-          (kill_ring,
-           (kill_ring_slots += max_retained_kills) * sizeof (char *));
+        kill_ring = xrealloc (kill_ring,
+			      (kill_ring_slots += max_retained_kills)
+			      * sizeof (char *));
 
       if (slot != kill_ring_index)
         free (kill_ring[slot]);
@@ -765,12 +765,12 @@ ea_kill_text (int from, int to)
 /* **************************************************************** */
 
 /* Pointer to an array of REFERENCE to complete over. */
-static REFERENCE **echo_area_completion_items = (REFERENCE **)NULL;
+static REFERENCE **echo_area_completion_items = NULL;
 
 /* Sorted array of REFERENCE * which is the possible completions found in
    the variable echo_area_completion_items.  If there is only one element,
    it is the only possible completion. */
-static REFERENCE **completions_found = (REFERENCE **)NULL;
+static REFERENCE **completions_found = NULL;
 static int completions_found_index = 0;
 static int completions_found_slots = 0;
 
@@ -781,7 +781,7 @@ static REFERENCE *LCD_completion;
 static void build_completions (void), completions_must_be_rebuilt (void);
 
 /* Variable which holds the output of completions. */
-static NODE *possible_completions_output_node = (NODE *)NULL;
+static NODE *possible_completions_output_node = NULL;
 
 static char *compwin_name = "*Completions*";
 
@@ -795,7 +795,7 @@ completions_window_p (WINDOW *window)
       (strcmp (window->node->nodename, compwin_name) == 0))
     result = 1;
 
-  return (result);
+  return result;
 }
 
 /* Workhorse for completion readers.  If FORCE is non-zero, the user cannot
@@ -883,14 +883,14 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   display_cursor_at_point (active_window);
   fflush (stdout);
 
-  echo_area_completion_items = (REFERENCE **)NULL;
+  echo_area_completion_items = NULL;
   completions_must_be_rebuilt ();
 
   /* If there is a previous loop waiting for us, restore it now. */
   if (echo_area_is_active)
     pop_echo_area ();
 
-  return (line);
+  return line;
 }
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
@@ -898,7 +898,7 @@ char *
 info_read_completing_in_echo_area (WINDOW *window,
     const char *prompt, REFERENCE **completions)
 {
-  return (info_read_completing_internal (window, prompt, completions, 1));
+  return info_read_completing_internal (window, prompt, completions, 1);
 }
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
@@ -907,7 +907,7 @@ char *
 info_read_maybe_completing (WINDOW *window,
     const char *prompt, REFERENCE **completions)
 {
-  return (info_read_completing_internal (window, prompt, completions, 0));
+  return info_read_completing_internal (window, prompt, completions, 0);
 }
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
@@ -1149,23 +1149,23 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 
 /* Utility REFERENCE used to store possible LCD. */
 static REFERENCE LCD_reference = {
-    (char *)NULL, (char *)NULL, (char *)NULL, 0, 0, 0
+    NULL, NULL, NULL, 0, 0, 0
 };
 
 static void remove_completion_duplicates (void);
 
 /* Variables which remember the state of the most recent call
    to build_completions (). */
-static char *last_completion_request = (char *)NULL;
-static REFERENCE **last_completion_items = (REFERENCE **)NULL;
+static char *last_completion_request = NULL;
+static REFERENCE **last_completion_items = NULL;
 
 /* How to tell the completion builder to reset internal state. */
 static void
 completions_must_be_rebuilt (void)
 {
   maybe_free (last_completion_request);
-  last_completion_request = (char *)NULL;
-  last_completion_items = (REFERENCE **)NULL;
+  last_completion_request = NULL;
+  last_completion_items = NULL;
 }
 
 /* Build a list of possible completions from echo_area_completion_items,
@@ -1182,14 +1182,14 @@ build_completions (void)
   if (!echo_area_completion_items)
     {
       completions_found_index = 0;
-      LCD_completion = (REFERENCE *)NULL;
+      LCD_completion = NULL;
       return;
     }
 
   /* Check to see if this call to build completions is the same as the last
      call to build completions. */
   len = input_line_end - input_line_beg;
-  request = (char *)xmalloc (1 + len);
+  request = xmalloc (1 + len);
   strncpy (request, &input_line[input_line_beg], len);
   request[len] = '\0';
 
@@ -1207,7 +1207,7 @@ build_completions (void)
 
   /* Always start at the beginning of the list. */
   completions_found_index = 0;
-  LCD_completion = (REFERENCE *)NULL;
+  LCD_completion = NULL;
 
   for (i = 0; (entry = echo_area_completion_items[i]); i++)
     {
@@ -1258,7 +1258,7 @@ build_completions (void)
       }
 
     maybe_free (LCD_reference.label);
-    LCD_reference.label = (char *)xmalloc (1 + shortest);
+    LCD_reference.label = xmalloc (1 + shortest);
     /* Since both the sorting done inside remove_completion_duplicates
        and all the comparisons above are case-insensitive, it's
        possible that the completion we are going to return is
@@ -1294,7 +1294,7 @@ compare_references (const void *entry1, const void *entry2)
   REFERENCE **e1 = (REFERENCE **) entry1;
   REFERENCE **e2 = (REFERENCE **) entry2;
 
-  return (mbscasecmp ((*e1)->label, (*e2)->label));
+  return mbscasecmp ((*e1)->label, (*e2)->label);
 }
 
 /* Prune duplicate entries from COMPLETIONS_FOUND. */
@@ -1316,14 +1316,14 @@ remove_completion_duplicates (void)
     {
       if (strcmp (completions_found[i]->label,
                   completions_found[i + 1]->label) == 0)
-        completions_found[i] = (REFERENCE *)NULL;
+        completions_found[i] = NULL;
       else
         newlen++;
     }
 
   /* We have marked all the dead slots.  It is faster to copy the live slots
      twice than to prune the dead slots one by one. */
-  temp = (REFERENCE **)xmalloc ((1 + newlen) * sizeof (REFERENCE *));
+  temp = xmalloc ((1 + newlen) * sizeof (REFERENCE *));
   for (i = 0, j = 0; i < completions_found_index; i++)
     if (completions_found[i])
       temp[j++] = completions_found[i];
@@ -1331,7 +1331,7 @@ remove_completion_duplicates (void)
   for (i = 0; i < newlen; i++)
     completions_found[i] = temp[i];
 
-  completions_found[i] = (REFERENCE *)NULL;
+  completions_found[i] = NULL;
   completions_found_index = newlen;
   free (temp);
 }
@@ -1373,7 +1373,7 @@ echo_area_inform_of_deleted_window (WINDOW *window)
   /* If this window was the echo_area_completions_window, then notice that
      the window has been deleted. */
   if (window == echo_area_completions_window)
-    echo_area_completions_window = (WINDOW *)NULL;
+    echo_area_completions_window = NULL;
 }
 
 /* **************************************************************** */
@@ -1393,7 +1393,7 @@ typedef struct {
   WINDOW *compwin;
 } PUSHED_EA;
 
-static PUSHED_EA **pushed_echo_areas = (PUSHED_EA **)NULL;
+static PUSHED_EA **pushed_echo_areas = NULL;
 static int pushed_echo_areas_index = 0;
 static int pushed_echo_areas_slots = 0;
 
@@ -1403,7 +1403,7 @@ push_echo_area (void)
 {
   PUSHED_EA *pushed;
 
-  pushed = (PUSHED_EA *)xmalloc (sizeof (PUSHED_EA));
+  pushed = xmalloc (sizeof (PUSHED_EA));
   pushed->line = xstrdup (input_line);
   pushed->prompt = input_line_prompt;
   pushed->point = input_line_point;
@@ -1417,7 +1417,7 @@ push_echo_area (void)
   add_pointer_to_array (pushed, pushed_echo_areas_index, pushed_echo_areas,
                         pushed_echo_areas_slots, 4, PUSHED_EA *);
 
-  echo_area_completion_items = (REFERENCE **)NULL;
+  echo_area_completion_items = NULL;
 }
 
 static void
@@ -1450,7 +1450,7 @@ pop_echo_area (void)
 
       /* If the window wasn't found, then it has already been deleted. */
       if (!win)
-        echo_area_completions_window = (WINDOW *)NULL;
+        echo_area_completions_window = NULL;
     }
 
   free (popped);
@@ -1465,9 +1465,9 @@ echo_area_stack_contains_completions_p (void)
 
   for (i = 0; i < pushed_echo_areas_index; i++)
     if (pushed_echo_areas[i]->compwin)
-      return (1);
+      return 1;
 
-  return (0);
+  return 0;
 }
 
 /* **************************************************************** */
@@ -1493,8 +1493,7 @@ pause_or_input (void)
   FD_SET (fileno (stdin), &readfds);
   timer.tv_sec = 2;
   timer.tv_usec = 0;
-  ready = select (fileno (stdin) + 1, &readfds, (fd_set *) NULL,
-                  (fd_set *) NULL, &timer);
+  ready = select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
 #endif /* FD_SET */
 }
 

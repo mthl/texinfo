@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.17 2008-02-26 16:51:05 karl Exp $
+   $Id: infokey.c,v 1.18 2008-06-11 09:55:42 gray Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
@@ -35,11 +35,11 @@ static int print_help_p = 0;
 
 /* String specifying the source file.  This is set by the user on the
    command line, or a default is used. */
-static char *input_filename = (char *) NULL;
+static char *input_filename = NULL;
 
 /* String specifying the name of the file to output to.  This is
    set by the user on the command line, or a default is used. */
-static char *output_filename = (char *) NULL;
+static char *output_filename = NULL;
 
 /* Structure describing the options that Infokey accepts.  We pass this
    structure to getopt_long ().  If you add or otherwise change this

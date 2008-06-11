@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.15 2008-06-09 22:51:08 gray Exp $
+   $Id: display.c,v 1.16 2008-06-11 09:55:41 gray Exp $
 
-   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007
+   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ void handle_tag_end (char *tag);
 
 /* An array of display lines which tell us what is currently visible on
    the display.  */
-DISPLAY_LINE **the_display = (DISPLAY_LINE **)NULL;
+DISPLAY_LINE **the_display = NULL;
 
 /* Non-zero means do no output. */
 int display_inhibited = 0;
@@ -493,17 +493,17 @@ make_display (int width, int height)
   register int i;
   DISPLAY_LINE **display;
 
-  display = (DISPLAY_LINE **)xmalloc ((1 + height) * sizeof (DISPLAY_LINE *));
+  display = xmalloc ((1 + height) * sizeof (DISPLAY_LINE *));
 
   for (i = 0; i < height; i++)
     {
-      display[i] = (DISPLAY_LINE *)xmalloc (sizeof (DISPLAY_LINE));
-      display[i]->text = (char *)xmalloc (1 + width);
+      display[i] = xmalloc (sizeof (DISPLAY_LINE));
+      display[i]->text = xmalloc (1 + width);
       display[i]->textlen = 0;
       display[i]->inverse = 0;
     }
-  display[i] = (DISPLAY_LINE *)NULL;
-  return (display);
+  display[i] = NULL;
+  return display;
 }
 
 /* Free the storage allocated to DISPLAY. */
