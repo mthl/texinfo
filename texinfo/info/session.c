@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.42 2008-06-11 09:55:43 gray Exp $
+   $Id: session.c,v 1.43 2008-06-11 17:38:33 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -760,7 +760,9 @@ point_backward_char (WINDOW *win)
   int col;
 
   window_compute_line_map (win);
-  col = window_point_to_column (win, point, &point) - 1;
+  col = window_point_to_column (win, point, &point);
+  for (; col >= 0 && win->line_map.map[col] == point; col--)
+    ;
   if (col < 0)
     {
       if (point_prev_line (win))
