@@ -1,3 +1,17 @@
+2008-06-11  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix incremental regexp searches (bug reported by Bruno Haible).
+	
+	* info/search.c (regexp_search): Take an additional argument,
+	pret.  Return the final state of search binding if it is given.
+	* info/search.h (regexp_search): Update prototype.
+	* info/session.c (info_search_in_node_internal): New function.
+	(info_search_in_node): Rewrite as a wrapper over
+	info_search_in_node_internal.
+	(info_search_internal): Take an additional argument.  Initialize
+	window->point from it if it is given.
+	Use info_search_in_node_internal.
+
 2008-06-10  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/session.c (_looking_at_newline, point_next_line)

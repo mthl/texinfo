@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.40 2008-06-10 11:37:12 gray Exp $
+   $Id: session.c,v 1.41 2008-06-11 09:02:11 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -3709,12 +3709,19 @@ file_buffer_of_window (WINDOW *window)
 /* Search for STRING in NODE starting at START.  Return -1 if the string
    was not found, or the location of the string if it was.  If WINDOW is
    passed as non-null, set the window's node to be NODE, its point to be
-   the found string, and readjust the window's pagetop.  Final argument
-   DIR says which direction to search in.  If it is positive, search
-   forward, else backwards. */
-long
-info_search_in_node (char *string, NODE *node, long int start,
-    WINDOW *window, int dir, int case_sensitive)
+   the found string, and readjust the window's pagetop.  The DIR argument
+   says which direction to search in.  If it is positive, search
+   forward, else backwards.
+
+   The last argument, RESBND, makes sense only when USE_REGEX is set.
+   If the regexp search succeeds, RESBND is filled with the final state
+   of the search binding.  In particular, its START and END fields contain
+   bounds of the found string instance.
+*/
+static long
+info_search_in_node_internal (char *string, NODE *node, long int start,
+			      WINDOW *window, int dir, int case_sensitive,
+			      SEARCH_BINDING *resbnd)
 {
   SEARCH_BINDING binding;
   long offset;
@@ -3740,7 +3747,7 @@ info_search_in_node (char *string, NODE *node, long int start,
     binding.flags |= S_SkipDest;
 
   offset = (use_regex ? 
-            regexp_search (string, &binding, node->nodelen):
+            regexp_search (string, &binding, node->nodelen, resbnd):
             search (string, &binding));
 
   if (offset != -1 && window)
@@ -3752,6 +3759,14 @@ info_search_in_node (char *string, NODE *node, long int start,
       window_adjust_pagetop (window);
     }
   return (offset);
+}
+
+long
+info_search_in_node (char *string, NODE *node, long int start,
+		     WINDOW *window, int dir, int case_sensitive)
+{
+  return info_search_in_node_internal (string, node, start,
+				       window, dir, case_sensitive, NULL);
 }
 
 /* Search NODE, looking for the largest possible match of STRING.  Start the
@@ -3784,32 +3799,47 @@ info_target_search_node (NODE *node, char *string, long int start)
   return (offset);
 }
 
-/* Search for STRING starting in WINDOW at point.  If the string is found
-   in this node, set point to that position.  Otherwise, get the file buffer
-   associated with WINDOW's node, and search through each node in that file.
+/* Search for STRING starting in WINDOW.  The starting position is determined
+   by DIR and RESBND argument.  If the latter is given, and its START field
+   is not -1, it gives starting position.  Otherwise, the search begins at
+   window point + DIR.
+
+   If the string is found in this node, set point to that position.
+   Otherwise, get the file buffer associated with WINDOW's node, and search
+   through each node in that file.
+
+   If the search succeeds and RESBND is given, its START and END fields
+   contain bounds of the found string instance (only for regexp searches).
+   
    If the search fails, return non-zero, else zero.  Side-effect window
    leaving the node and point where the string was found current. */
 static int
 info_search_internal (char *string, WINDOW *window,
-    int dir, int case_sensitive)
+		      int dir, int case_sensitive,
+		      SEARCH_BINDING *resbnd)
 {
   register int i;
   FILE_BUFFER *file_buffer;
   char *initial_nodename;
-  long ret, start = 0;
+  long ret, start;
 
   file_buffer = file_buffer_of_window (window);
   initial_nodename = window->node->nodename;
 
-  /* This used to begin from window->point, unless this was a repeated
-     search command.  But invoking search with an argument loses with
-     that logic, since info_last_executed_command is then set to
-     info_add_digit_to_numeric_arg.  I think there's no sense in
-     ``finding'' a string that is already under the cursor, anyway.  */
-  ret = info_search_in_node
-        (string, window->node, window->point + dir, window, dir,
-         case_sensitive);
-
+  if (resbnd && resbnd->start != -1)
+    start = resbnd->start;
+  else
+    /* This used to begin from window->point, unless this was a repeated
+       search command.  But invoking search with an argument loses with
+       that logic, since info_last_executed_command is then set to
+       info_add_digit_to_numeric_arg.  I think there's no sense in
+       ``finding'' a string that is already under the cursor, anyway.  */
+    start = window->point + dir;
+  
+  ret = info_search_in_node_internal
+        (string, window->node, start, window, dir,
+         case_sensitive, resbnd);
+  
   if (ret != -1)
     {
       /* We won! */
@@ -3817,7 +3847,9 @@ info_search_internal (char *string, WINDOW *window,
         window_clear_echo_area ();
       return (0);
     }
-
+  
+  start = 0;
+  
   /* The string wasn't found in the current node.  Search through the
      window's file buffer, iff the current node is not "*". */
   if (!file_buffer || (strcmp (initial_nodename, "*") == 0))
@@ -3912,8 +3944,8 @@ info_search_internal (char *string, WINDOW *window,
             start = tag->nodelen;
 
           ret =
-            info_search_in_node (string, node, start, window, dir,
-                                 case_sensitive);
+            info_search_in_node_internal (string, node, start, window, dir,
+					  case_sensitive, resbnd);
 
           /* Did we find the string in this node? */
           if (ret != -1)
@@ -4038,7 +4070,8 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
   old_pagetop = active_window->pagetop;
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
-                                   active_window, direction, case_sensitive);
+                                   active_window, direction, case_sensitive,
+				   NULL);
 
   if (result != 0 && !info_error_was_printed)
     info_error (_("Search failed."), NULL, NULL);
@@ -4222,6 +4255,9 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   SEARCH_STATE mystate, orig_state;
   char *p;
   int case_sensitive = 0;
+  SEARCH_BINDING bnd;
+
+  bnd.start = -1;
 
   if (count < 0)
     dir = -1;
@@ -4347,7 +4383,10 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                       /* Search again in the same direction.  This means start
                          from a new place if the last search was successful. */
                       if (search_result == 0)
-                        window->point += dir;
+			{
+			  window->point += dir;
+			  bnd.start = -1;
+			}
                     }
                 }
               else
@@ -4438,13 +4477,12 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
       if (use_regex)
         {
           search_result = info_search_internal (isearch_string,
-                                                window, dir, case_sensitive);
+                                                window, dir, case_sensitive,
+						&bnd);
         }
       else if (search_result == 0)
-        { /* I don't understand why we test for search_result being
-             zero; it means if the search failed we don't search again. 
-             Clearly the special check isn't applicable to regex search
-             anyway.  --karl, 11feb08.  */
+        { /* We test for search_result being zero because a non-zero
+	     value means the string was not found in entire document. */
           /* Check to see if the current search string is right here.  If
              we are looking at it, then don't bother calling the search
              function. */
@@ -4464,7 +4502,8 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
             }
           else
             search_result = info_search_internal (isearch_string,
-                                                  window, dir, case_sensitive);
+                                                  window, dir, case_sensitive,
+						  NULL);
         }
 
       /* If this search failed, and we didn't already have a failed search,

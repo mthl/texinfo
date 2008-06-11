@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.7 2007-12-17 19:12:11 karl Exp $
+   $Id: search.c,v 1.8 2008-06-11 09:02:11 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -86,9 +86,15 @@ search (char *string, SEARCH_BINDING *binding)
 
 /* Search forwards or backwards for anything matching the regexp in the text
    delimited by BINDING. The search is forwards if BINDING->start is greater
-   than BINDING->end. */
+   than BINDING->end.
+
+   If PRET is specified, it receives a copy of BINDING at the end of a
+   succeded search.  Its START and END fields contain bounds of the found
+   string instance. 
+*/
 long
-regexp_search (char *regexp, SEARCH_BINDING *binding, long length)
+regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
+	       SEARCH_BINDING *pret)
 {
   static char *previous_regexp = NULL;
   static char *previous_content = NULL;
@@ -98,10 +104,9 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length)
   static int match_alloc = 0;
   static int match_count = 0;
   regoff_t pos;
-  long result;
 
   if (previous_regexp == NULL
-      || (binding->flags & S_FoldCase != was_insensitive)
+      || ((binding->flags & S_FoldCase) != was_insensitive)
       || (strcmp (previous_regexp, regexp) != 0))
     {
       /* need to compile a new regexp */
@@ -219,7 +224,16 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length)
       for (i = match_count - 1; i >= 0; i--)
         {
           if (matches[i].rm_so <= pos)
-            return matches[i].rm_so;
+	    {
+	      if (pret)
+		{
+		  pret->buffer = binding->buffer;
+		  pret->flags = binding->flags;
+		  pret->start = matches[i].rm_so;
+		  pret->end = matches[i].rm_eo;
+		}
+	      return matches[i].rm_so;
+	    }
         }
     }
   else
@@ -230,6 +244,13 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length)
         {
           if (matches[i].rm_so >= pos)
             {
+	      if (pret)
+		{
+		  pret->buffer = binding->buffer;
+		  pret->flags = binding->flags;
+		  pret->start = matches[i].rm_so;
+		  pret->end = matches[i].rm_eo;
+		}
               if (binding->flags & S_SkipDest)
                 return matches[i].rm_eo;
               else
