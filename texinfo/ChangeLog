@@ -1,5 +1,8 @@
 2008-06-11  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/session.c (point_backward_char): Skip columns until
+	previous point is reached.
+
 	* info/dir.c, info/display.c, info/dribble.c, info/echo-area.c
 	info/filesys.c, info/footnotes.c, info/gc.c, info/indices.c,
 	info/info-utils.c, info/info.c, info/infodoc.c, info/infokey.c,
