@@ -1,3 +1,11 @@
+2008-06-12  Yavor Doganov  <yavor@gnu.org>  (tiny change)
+
+	* util/gendocs_template:
+	1. Link to the new FSF online store.
+	2. /server/footer-min.html is no longer necessary and we should remove
+            it at some point.  It would be easier if less articles include it.
+	3. Bump copyright year.
+
 2008-06-12  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.91.
