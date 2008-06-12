@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-05-22 18:24+0200\n"
+"POT-Creation-Date: 2008-06-12 18:02+0200\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -82,11 +82,11 @@ msgstr "%s: pøepínaè `-W %s' musí být zadán bez argumentu\n"
 msgid "memory exhausted"
 msgstr "virtuální pamì» vyèerpána"
 
-#: info/echo-area.c:283 info/session.c:735
+#: info/echo-area.c:283 info/session.c:966
 msgid "Move forward a character"
 msgstr "Posun na následující znak"
 
-#: info/echo-area.c:295 info/session.c:767
+#: info/echo-area.c:295 info/session.c:993
 msgid "Move backward a character"
 msgstr "Posun na pøedcházející znak"
 
@@ -98,11 +98,11 @@ msgstr "Pøesun na zaèátek tohoto øádku"
 msgid "Move to the end of this line"
 msgstr "Pøesun na konec tohoto øádku"
 
-#: info/echo-area.c:320 info/session.c:808
+#: info/echo-area.c:320 info/session.c:1025
 msgid "Move forward a word"
 msgstr "Posun na následující slovo"
 
-#: info/echo-area.c:360 info/session.c:881
+#: info/echo-area.c:360 info/session.c:1049
 msgid "Move backward a word"
 msgstr "Posun na pøedcházející slovo"
 
@@ -130,76 +130,76 @@ msgstr "Vlo¾ení dal¹ího znaku bez interpretace jeho funkce"
 msgid "Insert this character"
 msgstr "Vlo¾ení tohoto znaku"
 
-#: info/echo-area.c:497
+#: info/echo-area.c:498
 msgid "Insert a TAB character"
 msgstr "Vlo¾ení tabelátoru"
 
-#: info/echo-area.c:504
+#: info/echo-area.c:505
 msgid "Transpose characters at point"
 msgstr "Pøemístìní znaku na pozici"
 
-#: info/echo-area.c:555
+#: info/echo-area.c:556
 msgid "Yank back the contents of the last kill"
 msgstr "Vlo¾ení toho co bylo naposled smazáno"
 
-#: info/echo-area.c:562
+#: info/echo-area.c:563
 msgid "Kill ring is empty"
 msgstr "Kruhový buffer smazaných oblastí je prázdný"
 
-#: info/echo-area.c:575
+#: info/echo-area.c:576
 msgid "Yank back a previous kill"
 msgstr "Vlo¾ení naposledy smazaného úseku"
 
-#: info/echo-area.c:608
+#: info/echo-area.c:609
 msgid "Kill to the end of the line"
 msgstr "Smazání v¹eho od kurzoru a¾ do konce øádku"
 
-#: info/echo-area.c:621
+#: info/echo-area.c:622
 msgid "Kill to the beginning of the line"
 msgstr "Smazání v¹eho od zaèátku øádku do kurzoru"
 
-#: info/echo-area.c:633
+#: info/echo-area.c:634
 msgid "Kill the word following the cursor"
 msgstr "Smazání slova, od kurzoru do konce slova"
 
-#: info/echo-area.c:652
+#: info/echo-area.c:654
 msgid "Kill the word preceding the cursor"
 msgstr "Smazání slova, od zaèátku slova do kurzoru"
 
-#: info/echo-area.c:867 info/echo-area.c:923
+#: info/echo-area.c:870 info/echo-area.c:926
 msgid "No completions"
 msgstr "Doplnìní neexistují"
 
-#: info/echo-area.c:869
+#: info/echo-area.c:872
 msgid "Not complete"
 msgstr "Nekompletní"
 
-#: info/echo-area.c:910
+#: info/echo-area.c:913
 msgid "List possible completions"
 msgstr "Seznam mo¾ných doplnìní"
 
-#: info/echo-area.c:927
+#: info/echo-area.c:930
 msgid "Sole completion"
 msgstr "Jedinné doplnìní"
 
-#: info/echo-area.c:936
+#: info/echo-area.c:939
 msgid "One completion:\n"
 msgstr "Jedno doplnìní:\n"
 
-#: info/echo-area.c:937
+#: info/echo-area.c:940
 #, c-format
 msgid "%d completions:\n"
 msgstr "%d doplnìní:\n"
 
-#: info/echo-area.c:1084
+#: info/echo-area.c:1087
 msgid "Insert completion"
 msgstr "Vlo¾ení doplnìní"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1222
 msgid "Building completions..."
 msgstr "Hledám doplnìní..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1342
 msgid "Scroll the completions window"
 msgstr "Odrolování obsahu okna s doplnìními"
 
@@ -846,30 +846,30 @@ msgstr "%s je nedefinováno."
 msgid "%s is defined to %s."
 msgstr "Klávesa %s je definována pro pøíkaz %s."
 
-#: info/infodoc.c:1145
+#: info/infodoc.c:1146
 msgid "Show what to type to execute a given command"
 msgstr "Ukázání co napsat pro spu¹tìní daného pøíkazu"
 
-#: info/infodoc.c:1149
+#: info/infodoc.c:1150
 msgid "Where is command: "
 msgstr "Kde je pøíkaz: "
 
-#: info/infodoc.c:1171
+#: info/infodoc.c:1172
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "Pøíkaz `%s' není na ¾ádné klávese"
 
-#: info/infodoc.c:1178
+#: info/infodoc.c:1179
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "Pøíkaz %s mù¾e být vyvolán pouze pomocí %s."
 
-#: info/infodoc.c:1182
+#: info/infodoc.c:1183
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "Pøíkaz %s mù¾e být vyvolán pomocí %s."
 
-#: info/infodoc.c:1187
+#: info/infodoc.c:1188
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Funkce `%s' není známa"
@@ -1104,12 +1104,12 @@ msgstr "Zobrazení uzlu, který byl zobrazen pøed tímto"
 msgid "Select visited node: "
 msgstr "Vyberte nav¹tívený uzel: "
 
-#: info/nodemenu.c:336 info/session.c:2443
+#: info/nodemenu.c:336 info/session.c:2578
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Odkaz se ztratil! (%s)."
 
-#: info/search.c:161
+#: info/search.c:166
 #, c-format
 msgid "regexp error: %s"
 msgstr ""
@@ -1131,501 +1131,501 @@ msgstr "Posun dolù na dal¹í øádek"
 msgid "Move up to the previous line"
 msgstr "Posun nahoru na pøedchozí øádek"
 
-#: info/session.c:696
+#: info/session.c:931
 msgid "Move to the end of the line"
 msgstr "Pøesun na konec øádku"
 
-#: info/session.c:716
+#: info/session.c:942
 msgid "Move to the start of the line"
 msgstr "Pøesun na zaèátek øádku"
 
-#: info/session.c:1007
+#: info/session.c:1142
 msgid "Next"
 msgstr "Dal¹í"
 
-#: info/session.c:1023 info/session.c:1148
+#: info/session.c:1158 info/session.c:1283
 msgid "No more nodes within this document."
 msgstr "V tomto dokumentu ji¾ nejsou dal¹í uzly."
 
-#: info/session.c:1174
+#: info/session.c:1309
 msgid "No `Prev' for this node."
 msgstr "Pro tento uzel není pøedchozí uzel."
 
-#: info/session.c:1194
+#: info/session.c:1329
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr "V tomto dokumentu není pro tento uzel pøedchozí nebo vy¹¹í uzel."
 
-#: info/session.c:1256
+#: info/session.c:1391
 msgid "Move forwards or down through node structure"
 msgstr "Pøesun na následující uzel nebo na první ni¾¹í v uzlové struktuøe"
 
-#: info/session.c:1272
+#: info/session.c:1407
 msgid "Move backwards or up through node structure"
 msgstr "Pøesun na pøedchozí uzel nebo na první vy¹¹í v uzlové struktuøe"
 
-#: info/session.c:1373
+#: info/session.c:1508
 msgid "Scroll forward in this window"
 msgstr "Posun o stránku dolù v tomto oknì"
 
-#: info/session.c:1381
+#: info/session.c:1516
 msgid "Scroll forward in this window and set default window size"
 msgstr "Posun dopøedu v tomto oknì a nastavení implicitní velikosti okna"
 
-#: info/session.c:1389
+#: info/session.c:1524
 #, fuzzy
 msgid "Scroll forward in this window staying within node"
 msgstr "Posun o stránku dolù v tomto oknì"
 
-#: info/session.c:1397
+#: info/session.c:1532
 #, fuzzy
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "Posun dopøedu v tomto oknì a nastavení implicitní velikosti okna"
 
-#: info/session.c:1405
+#: info/session.c:1540
 msgid "Scroll backward in this window"
 msgstr "Posun o stránku nahoru v tomto oknì"
 
-#: info/session.c:1413
+#: info/session.c:1548
 msgid "Scroll backward in this window and set default window size"
 msgstr "Posun dozadu v tomto oknì a nastavení implicitní velikosti okna"
 
-#: info/session.c:1422
+#: info/session.c:1557
 #, fuzzy
 msgid "Scroll backward in this window staying within node"
 msgstr "Posun o stránku nahoru v tomto oknì"
 
-#: info/session.c:1430
+#: info/session.c:1565
 #, fuzzy
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr "Posun dozadu v tomto oknì a nastavení implicitní velikosti okna"
 
-#: info/session.c:1438
+#: info/session.c:1573
 msgid "Move to the start of this node"
 msgstr "Posun na zaèátek tohoto uzlu"
 
-#: info/session.c:1445
+#: info/session.c:1580
 msgid "Move to the end of this node"
 msgstr "Posun na konec tohoto uzlu"
 
-#: info/session.c:1452
+#: info/session.c:1587
 msgid "Scroll down by lines"
 msgstr "Posun dolù po øádcích"
 
-#: info/session.c:1469
+#: info/session.c:1604
 msgid "Scroll up by lines"
 msgstr "Posun nahoru po øádcích"
 
-#: info/session.c:1487
+#: info/session.c:1622
 msgid "Scroll down by half screen size"
 msgstr "Posun dolù o polovinu velikosti obrazovky"
 
-#: info/session.c:1513
+#: info/session.c:1648
 msgid "Scroll up by half screen size"
 msgstr "Posun nahoru o polovinu velikosti obrazovky"
 
-#: info/session.c:1542
+#: info/session.c:1677
 msgid "Select the next window"
 msgstr "Výbìr následujícího okna"
 
-#: info/session.c:1581
+#: info/session.c:1716
 msgid "Select the previous window"
 msgstr "Výbìr pøedchozího okna"
 
-#: info/session.c:1632
+#: info/session.c:1767
 msgid "Split the current window"
 msgstr "Rozdìlení aktuálního okna"
 
-#: info/session.c:1713
+#: info/session.c:1848
 msgid "Delete the current window"
 msgstr "Smazání aktuálního okna"
 
-#: info/session.c:1721
+#: info/session.c:1856
 msgid "Cannot delete a permanent window"
 msgstr "Permanentní okno nelze smazat"
 
-#: info/session.c:1753
+#: info/session.c:1888
 msgid "Delete all other windows"
 msgstr "Smazání v¹ech ostatních oknen"
 
-#: info/session.c:1799
+#: info/session.c:1934
 msgid "Scroll the other window"
 msgstr "Posun druhého okna o stránku dolù"
 
-#: info/session.c:1820
+#: info/session.c:1955
 msgid "Scroll the other window backward"
 msgstr "Posun druhého okna o stránku zpìt"
 
-#: info/session.c:1826
+#: info/session.c:1961
 msgid "Grow (or shrink) this window"
 msgstr "Zmìna velikosti okna"
 
-#: info/session.c:1837
+#: info/session.c:1972
 msgid "Divide the available screen space among the visible windows"
 msgstr "Zvìt¹ení nebo zmen¹ení oken na obrazovce tak, aby byla stejnì velká"
 
-#: info/session.c:1844
+#: info/session.c:1979
 msgid "Toggle the state of line wrapping in the current window"
 msgstr ""
 "Zmìna stavu zalamování v aktuálním oknì (zapnuto->vypni, vypnuto->zapni)"
 
-#: info/session.c:1851
+#: info/session.c:1986
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:1855
+#: info/session.c:1990
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:1856
+#: info/session.c:1991
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2027
+#: info/session.c:2162
 msgid "Select the Next node"
 msgstr "Zobrazení následujícího uzlu"
 
-#: info/session.c:2035
+#: info/session.c:2170
 msgid "Select the Prev node"
 msgstr "Zobrazení pøedchozího uzlu"
 
-#: info/session.c:2043
+#: info/session.c:2178
 msgid "Select the Up node"
 msgstr "Zobrazení vy¹¹ího uzlu"
 
-#: info/session.c:2050
+#: info/session.c:2185
 msgid "Select the last node in this file"
 msgstr "Zobrazení posledního uzlu v tomto souboru"
 
-#: info/session.c:2077 info/session.c:2110
+#: info/session.c:2212 info/session.c:2245
 msgid "This window has no additional nodes"
 msgstr "Toto okno nemá více dal¹ích uzlù"
 
-#: info/session.c:2083
+#: info/session.c:2218
 msgid "Select the first node in this file"
 msgstr "Zobrazení prvního uzlu v tomto souboru"
 
-#: info/session.c:2117
+#: info/session.c:2252
 msgid "Select the last item in this node's menu"
 msgstr "Zobrazení poslední polo¾ky menu tohoto uzlu"
 
-#: info/session.c:2123
+#: info/session.c:2258
 msgid "Select this menu item"
 msgstr "Zobrazení této polo¾ky menu"
 
-#: info/session.c:2156
+#: info/session.c:2291
 #, c-format
 msgid "There aren't %d items in this menu."
 msgstr "V tomto menu není %d. polo¾ka"
 
-#: info/session.c:2350 info/session.c:2351
+#: info/session.c:2485 info/session.c:2486
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Polo¾ka menu (%s): "
 
-#: info/session.c:2354
+#: info/session.c:2489
 msgid "Menu item: "
 msgstr "Polo¾ka menu: "
 
-#: info/session.c:2361 info/session.c:2362
+#: info/session.c:2496 info/session.c:2497
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Následování køí¾ového odkazu (%s): "
 
-#: info/session.c:2365
+#: info/session.c:2500
 msgid "Follow xref: "
 msgstr "Následování køí¾ového odkazu: "
 
-#: info/session.c:2494
+#: info/session.c:2629
 msgid "Read a menu item and select its node"
 msgstr "Zadání jména polo¾ky menu a následné zobrazení"
 
-#: info/session.c:2502
+#: info/session.c:2637
 msgid "Read a footnote or cross reference and select its node"
 msgstr ""
 "Zadání jména poznámky pod èarou nebo køí¾ového odkazu a následné zobrazení"
 
-#: info/session.c:2508
+#: info/session.c:2643
 msgid "Move to the start of this node's menu"
 msgstr "Pøesun na zaèátek menu tohoto uzlu"
 
-#: info/session.c:2532
+#: info/session.c:2667
 msgid "Visit as many menu items at once as possible"
 msgstr ""
 "Nav¹tívení tolika polo¾ek menu, kolik je mo¾no. Ka¾dá polo¾ka v jiném oknì."
 
-#: info/session.c:2560
+#: info/session.c:2695
 msgid "Read a node name and select it"
 msgstr "Zadání jména uzlu a jeho následné zobrazení"
 
-#: info/session.c:2615 info/session.c:2620
+#: info/session.c:2750 info/session.c:2755
 msgid "Goto node: "
 msgstr "Pøesun na uzel: "
 
-#: info/session.c:2684
+#: info/session.c:2819
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "V uzlu `%s' není menu."
 
-#: info/session.c:2730
+#: info/session.c:2865
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "Polo¾ka menu `%s' v uzlu `%s' není."
 
-#: info/session.c:2760
+#: info/session.c:2895
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "Uzel, na který se odkazuje `%s' v `%s', nelze najít."
 
-#: info/session.c:2810
+#: info/session.c:2945
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Ètení seznamu menu zaèínajíce v adresáøi a pokraèujíce dále"
 
-#: info/session.c:2812
+#: info/session.c:2947
 msgid "Follow menus: "
 msgstr "Následování menu: "
 
-#: info/session.c:3005
+#: info/session.c:3140
 msgid "Find the node describing program invocation"
 msgstr "Nalezení uzlu popisujícího pøepínaèe programu"
 
-#: info/session.c:3007
+#: info/session.c:3142
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Nalezení uzlu s pøepínaèi programu [%s]: "
 
-#: info/session.c:3045
+#: info/session.c:3180
 msgid "Read a manpage reference and select it"
 msgstr "Zadání jména manuálové stránky a následné zobrazení"
 
-#: info/session.c:3049
+#: info/session.c:3184
 msgid "Get Manpage: "
 msgstr "Manuálová stránka: "
 
-#: info/session.c:3079
+#: info/session.c:3214
 msgid "Select the node `Top' in this file"
 msgstr "Zobrazení nejvy¹¹ího uzlu v tomto souboru"
 
-#: info/session.c:3085
+#: info/session.c:3220
 msgid "Select the node `(dir)'"
 msgstr "Zobrazení uzlu `(dir)'"
 
-#: info/session.c:3102 info/session.c:3104
+#: info/session.c:3237 info/session.c:3239
 #, c-format
 msgid "Kill node (%s): "
 msgstr "Zru¹ení uzlu (%s): "
 
-#: info/session.c:3156
+#: info/session.c:3291
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "Uzel `%s' nelze zru¹it"
 
-#: info/session.c:3166
+#: info/session.c:3301
 msgid "Cannot kill the last node"
 msgstr "Poslední uzel nelze zru¹it"
 
-#: info/session.c:3252
+#: info/session.c:3387
 msgid "Select the most recently selected node"
 msgstr "Zobrazení poslední dobou nejvíce nav¹tìvovaných uzlù"
 
-#: info/session.c:3258
+#: info/session.c:3393
 msgid "Kill this node"
 msgstr "Zru¹ení tohoto uzlu"
 
-#: info/session.c:3266
+#: info/session.c:3401
 msgid "Read the name of a file and select it"
 msgstr "Zadání jména souboru a jeho následné zobrazení"
 
-#: info/session.c:3270
+#: info/session.c:3405
 msgid "Find file: "
 msgstr "Nalezení souboru: "
 
-#: info/session.c:3287
+#: info/session.c:3422
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "Nelze najít `%s'."
 
-#: info/session.c:3330 info/session.c:3448
+#: info/session.c:3465 info/session.c:3583
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "Výstupní soubor `%s' nelze vytvoøit."
 
-#: info/session.c:3344 info/session.c:3466 info/session.c:3526
+#: info/session.c:3479 info/session.c:3601 info/session.c:3661
 msgid "Done."
 msgstr "Dokonèeno."
 
-#: info/session.c:3399
+#: info/session.c:3534
 #, c-format
 msgid "Writing node %s..."
 msgstr "Zapisování uzlu %s..."
 
-#: info/session.c:3475
+#: info/session.c:3610
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Poslání obsahu tohoto uzlu pøíkazu INFO_PRINT_COMMAND"
 
-#: info/session.c:3510
+#: info/session.c:3645
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "Rouru do `%s' nelze otevøít."
 
-#: info/session.c:3516
+#: info/session.c:3651
 #, c-format
 msgid "Printing node %s..."
 msgstr "Probíhá tisk uzlu %s..."
 
-#: info/session.c:3733
+#: info/session.c:3900
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3738
+#: info/session.c:3905
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "Smazání v¹eho od zaèátku øádku do kurzoru"
 
-#: info/session.c:3755
+#: info/session.c:3922
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Probíhá hledání podsouboru %s..."
 
-#: info/session.c:3812
+#: info/session.c:3979
 msgid "Read a string and search for it case-sensitively"
 msgstr "Pøeètení øetìzce a jeho vyhledání (zále¾í na velikosti písmen)"
 
-#: info/session.c:3819
+#: info/session.c:3986
 msgid "Read a string and search for it"
 msgstr "Pøeètení øetìzce a jeho vyhledání"
 
-#: info/session.c:3827
+#: info/session.c:3994
 msgid "Read a string and search backward for it"
 msgstr "Pøeètení øetìzce a jeho vyhledání (zpìtné)"
 
-#: info/session.c:3863 info/session.c:3869
+#: info/session.c:4030 info/session.c:4036
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%søetìzce [%s]: "
 
-#: info/session.c:3864 info/session.c:3870
+#: info/session.c:4031 info/session.c:4037
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:3865 info/session.c:3871
+#: info/session.c:4032 info/session.c:4038
 #, fuzzy
 msgid " case-sensitively"
 msgstr " (velikost rozhoduje)"
 
-#: info/session.c:3866 info/session.c:3872
+#: info/session.c:4033 info/session.c:4039
 #, fuzzy
 msgid " backward"
 msgstr "Zpìtné hledání"
 
-#: info/session.c:3870
+#: info/session.c:4037
 msgid "Search"
 msgstr "Hledání"
 
-#: info/session.c:3911
+#: info/session.c:4079
 msgid "Search failed."
 msgstr "Nebylo nalezeno."
 
-#: info/session.c:3929
+#: info/session.c:4097
 msgid "Repeat last search in the same direction"
 msgstr "Opakování posledního hledání tím samým smìrem"
 
-#: info/session.c:3932 info/session.c:3942
+#: info/session.c:4100 info/session.c:4110
 msgid "No previous search string"
 msgstr "Není pøedchozí hledaný øetìzec"
 
-#: info/session.c:3939
+#: info/session.c:4107
 msgid "Repeat last search in the reverse direction"
 msgstr "Opakování posledního hledání opaèným smìrem"
 
-#: info/session.c:3958 info/session.c:3964
+#: info/session.c:4126 info/session.c:4132
 msgid "Search interactively for a string as you type it"
 msgstr "Vyhledávání zadávaného øetìzce hned pøi zadávání"
 
-#: info/session.c:4044
+#: info/session.c:4212
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "zpìtné interaktivní hledání: "
 
-#: info/session.c:4045
+#: info/session.c:4213
 msgid "I-search backward: "
 msgstr "zpìtné interaktivní hledání: "
 
-#: info/session.c:4047
+#: info/session.c:4215
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "interaktivní hledání: "
 
-#: info/session.c:4048
+#: info/session.c:4216
 msgid "I-search: "
 msgstr "interaktivní hledání: "
 
-#: info/session.c:4073 info/session.c:4075
+#: info/session.c:4241 info/session.c:4243
 msgid "Failing "
 msgstr "Bezvýsledné "
 
-#: info/session.c:4560
+#: info/session.c:4734
 msgid "Move to the previous cross reference"
 msgstr "Pøesun na pøedcházející køí¾ový odkaz"
 
-#: info/session.c:4578
+#: info/session.c:4752
 msgid "Move to the next cross reference"
 msgstr "Pøesun na následující køí¾ový odkaz"
 
-#: info/session.c:4600
+#: info/session.c:4774
 msgid "Select reference or menu item appearing on this line"
 msgstr "Zobrazení odkazu nebo polo¾ky menu, která je na tomto øádku"
 
-#: info/session.c:4623
+#: info/session.c:4797
 msgid "Cancel current operation"
 msgstr "Zru¹ení aktuální operace"
 
-#: info/session.c:4630
+#: info/session.c:4804
 msgid "Quit"
 msgstr "Ukonèení operace"
 
-#: info/session.c:4639
+#: info/session.c:4813
 msgid "Move the cursor to a specific line of the window"
 msgstr "Pøesun kurzoru na zadaný øádek okna"
 
-#: info/session.c:4671
+#: info/session.c:4845
 msgid "Redraw the display"
 msgstr "Pøekreslení obrazovky"
 
-#: info/session.c:4708
+#: info/session.c:4882
 msgid "Quit using Info"
 msgstr "Ukonèení Infa"
 
-#: info/session.c:4721
+#: info/session.c:4895
 msgid "Run command bound to this key's lowercase variant"
 msgstr ""
 
-#: info/session.c:4732
+#: info/session.c:4906
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Neznámý pøíkaz (%s)."
 
-#: info/session.c:4735
+#: info/session.c:4909
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "Sekvence kláves \"%s\" je neplatná"
 
-#: info/session.c:4736
+#: info/session.c:4910
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "Sekvence kláves \"%s\" je neplatná"
 
-#: info/session.c:4950
+#: info/session.c:5125
 msgid "Add this digit to the current numeric argument"
 msgstr "Pøidání této èíslice do aktuálního èíselného argumentu"
 
-#: info/session.c:4959
+#: info/session.c:5134
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Zaèátek (nebo dìlení ètyømi) aktuálního èíselného argumentu"
 
-#: info/session.c:4974
+#: info/session.c:5149
 msgid "Internally used by \\[universal-argument]"
 msgstr "Vnitønì u¾íváno funkcí \\[universal-argument]"
 
@@ -1713,25 +1713,25 @@ msgstr "Nastavení promìnné %s na hodnotu (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Nastavení promìnné %s na hodnotu (%s): "
 
-#: info/window.c:1070
+#: info/window.c:1023
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Znaèky jsou zastatalé ***"
 
-#: info/window.c:1081
+#: info/window.c:1034
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), øádkù ----, "
 
-#: info/window.c:1088
+#: info/window.c:1041
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, øádkù: %d --%s--"
 
-#: info/window.c:1092
+#: info/window.c:1045
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, øádkù: %d --%s--"
 
-#: info/window.c:1099
+#: info/window.c:1052
 #, c-format
 msgid " Subfile: %s"
 msgstr " Podsoubor: %s"
