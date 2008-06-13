@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.9 2008-06-10 11:37:47 gray Exp $
+   $Id: window.h,v 1.10 2008-06-13 12:17:11 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -253,6 +253,8 @@ extern size_t process_node_text
         (WINDOW *win, char *start, int do_tags,
          int (*fun) (void *, size_t, const char *, char *, size_t, size_t),
 	 void *closure);
+
+void clean_manpage (char *manpage);
 
 extern void window_compute_line_map (WINDOW *win);
 

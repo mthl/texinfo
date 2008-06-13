@@ -1,3 +1,12 @@
+2008-06-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/man.c (clean_manpage): Remove.
+	(get_manpage_contents): Remove the kludge introduced 2006-08-13.
+	* info/window.c (process_node_text): ANSI escapes have visible
+	length of 0.
+	(clean_manpage): Multibyte-safe implementation.
+	* info/window.h (clean_manpage): New prototype.
+
 2008-06-12  Yavor Doganov  <yavor@gnu.org>  (tiny change)
 
 	* util/gendocs_template:
