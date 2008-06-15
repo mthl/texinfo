@@ -1,3 +1,8 @@
+2008-06-15  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* autogen.sh: Fix quotation typo.
+	* gnulib/lib/configmake.h, gnulib/lib/stdbool_.h: Remove.
+
 2008-06-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/man.c (clean_manpage): Remove.
