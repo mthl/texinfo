@@ -1,3 +1,13 @@
+2008-06-16  Akim Demaille  <demaille@gostai.com>
+
+	Support -I dir1:dir2, as per the documentation.
+	Reported by Vincent Ordy.
+	* bin/texi2dvi: (list_concat_dirs): New.
+	Currently mostly a copy of absolute_filenames, but the latter
+	is scheduled for removal.
+	Use list_concat_dirs for -I support.
+	(--I*): Remove, not documented anywhere, and too accepting.
+
 2008-06-15  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* autogen.sh: Fix quotation typo.

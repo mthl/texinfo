@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.124 2008-06-03 23:02:46 karl Exp $
+# $Id: texi2dvi,v 1.125 2008-06-16 10:19:51 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.124 $'
+rcs_revision='$Revision: 1.125 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.12) $rcs_version
@@ -388,6 +388,42 @@ list_append ()
   eval $la_l=\""$@"\"
 }
 
+
+# list_concat_dirs LIST-NAME DIR-LIST
+# -----------------------------------
+# Append to LIST-NAME all the components (included empty) from
+# the $path_sep separated list DIR-LIST.  Make the paths absolute.
+list_concat_dirs ()
+{
+  local lcd_list="$1"
+  # Empty path components are meaningful to tex.  We rewrite them as
+  # `EMPTY' so they don't get lost when we split on $path_sep.
+  # Hopefully no one will have an actual directory named EMPTY.
+  local replace_EMPTY="-e 's/^$path_sep/EMPTY$path_sep/g' \
+                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+  save_IFS=$IFS
+  IFS=$path_sep
+  set x `echo "$2" | eval sed $replace_EMPTY`; shift
+  IFS=$save_IFS
+  local dir
+  for dir
+  do
+    case $dir in
+      EMPTY)
+       list_append $lcd_list ""
+       ;;
+      *)
+       if test -d $dir; then
+          dir=`absolute "$dir"`
+         list_append $lcd_list "$dir"
+       fi
+       ;;
+    esac
+  done
+}
+
+
 # list_prefix LIST-NAME SEP -> STRING
 # -----------------------------------
 # Return a string that is composed of the LIST-NAME with each item
@@ -488,16 +524,15 @@ done
 # ---------------------------------------
 # Convert relative paths to absolute paths, so we can run in another
 # directory (e.g., in tidy build mode, or during the macro-support
-# detection).
-#
-# Empty path components are meaningful to tex.  We rewrite them
-# as `EMPTY' so they don't get lost when we split on $path_sep.
-# Hopefully no one will have an actual directory named EMPTY.
+# detection).  Prepend ".".
 absolute_filenames ()
 {
+  # Empty path components are meaningful to tex.  We rewrite them as
+  # `EMPTY' so they don't get lost when we split on $path_sep.
+  # Hopefully no one will have an actual directory named EMPTY.
   local replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
-		       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-		       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
   local res
   res=`echo "$1" | eval sed $replace_empty`
   save_IFS=$IFS
@@ -703,7 +738,7 @@ generated_files_get ()
     esac
   done |
   # Filter existing files matching the criterion.
-  # 
+  #
   # With an input file name containing a space, this produces a
   # "command not found" message (and filtering is ineffective).
   # The situation with a newline is presumably even worse.
@@ -853,19 +888,19 @@ run_tex ()
   # we'd like to handle arbitrary input file names, such as a~b.tex.
   # This isn't a general way to do it :), though it does work, kind of.
   # cmd="$cmd '${escape}catcode126=12 \input '"
-  
+
   # TeX's \input does not (easily or reliably) support whitespace
   # characters or other special characters in file names.  Our intensive
   # use of absolute file names makes this worse: the enclosing directory
   # names may include white spaces.  Improve the situation using a
   # symbolic link to the filename in the current directory, in tidy mode
   # only.  Do not alter in_input.
-  # 
+  #
   # The filename is almost always tokenized using plain TeX conventions
   # (the exception would be if the user made a texinfo.fmt file).  Not
   # all the plain TeX special characters cause trouble, but there's no
   # harm in making the link.
-  # 
+  #
   case $tidy:`func_dirname "$in_input"` in
     true:*["$space$tab$newline\"#\$%\\^_{}"]*)
       _run_tex_file_name=`basename "$in_input"`
@@ -1333,7 +1368,7 @@ compile ()
     eval val="\$common\$${var}_orig"
     # Convert relative paths to absolute paths, so we can run in another
     # directory (e.g., in clean build mode, or during the macro-support
-    # detection).
+    # detection). ".:" is added here.
     val=`absolute_filenames "$val"`
     eval $var="\"$val\""
     export $var
@@ -1438,12 +1473,7 @@ while test x"$1" != x"$arg_sep"; do
     -e | -E | --expand) expand=t;;
     -h | --help) echo "$usage"; exit 0;;
 	 --html) out_lang=html;;
-    -I | --I*)
-      shift
-      # Use absolute dir names in the includes.
-      val=`absolute "$1"`
-      list_append includes "$val"
-      ;;
+    -I)   shift; list_concat_dirs includes "$1";;
     --info) out_lang=info;;
     -l | --lang | --language) shift; set_language=$1;;
     --mostly-clean) action=mostly-clean;;
