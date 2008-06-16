@@ -40,7 +40,7 @@
 2008-06-11  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Fix incremental regexp searches (bug reported by Bruno Haible).
-	
+
 	* info/search.c (regexp_search): Take an additional argument,
 	pret.  Return the final state of search binding if it is given.
 	* info/search.h (regexp_search): Update prototype.
@@ -67,9 +67,9 @@
 	(window_end_of_line): New prototype.
 
 2008-06-10  Sergey Poznyakoff  <gray@gnu.org.ua>
-	
+
 	Fix cursor positioning in multibyte locales.
-	
+
 	* info/display.c (process_node_text): Move to window.c
 	* info/display.h (process_node_text): Move to window.h
 	(handle_tag): New prototype.
@@ -85,7 +85,7 @@
 	(window_chars_to_goal): Change prototype.
 	(window_line_map_init, window_compute_line_map)
 	(window_point_to_column): New prototypes.
-	
+
 	* info/echo-area.c (ea_tab_insert, ea_kill_word)
 	(ea_backward_kill_w): Call window_line_map_init.
 	* info/session.c (move_to_new_line): Change call to
@@ -95,7 +95,7 @@
 2008-06-09  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/info-utils.c (printed_representation): Fix length
-	calculation. 
+	calculation.
 
 2008-06-03  Karl Berry  <karl@gnu.org>
 
@@ -105,7 +105,7 @@
 2008-05-22  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.90.
-	
+
 	* install-info/tests/Makefile.am (EXTRA_DIST): missed ii-0051-test.
 
 2008-05-20  Karl Berry  <karl@gnu.org>
@@ -136,7 +136,7 @@
 2008-05-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Xref Command Expansion): add @leq,
-	@geq, @arrow, @textdegree Unicodes.  Suggestion from 
+	@geq, @arrow, @textdegree Unicodes.  Suggestion from
 	Patrice Dumas, 15 May 2008 01:02:37.
 
 2008-05-13  Sergey Poznyakoff  <gray@gnu.org.ua>
@@ -158,7 +158,7 @@
 2008-05-11  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (usage): give -l input samples as latex and texinfo,
-	not LaTeX and Texinfo. 
+	not LaTeX and Texinfo.
 	Report from Hilmar Preusse, 10 May 2008 15:03:23, Debian bug #472758.
 
 	* install-info/tests/0051, 52: new tests for periods in item names.
@@ -167,7 +167,7 @@
 2008-05-10  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Handle multibyte encodings correctly.
-	
+
 	* info/display.c (ITER_SETBYTES,ITER_LIMIT): New defines.
 	(process_node_text): New function.
 	(display_node_text): New function.
@@ -182,7 +182,7 @@
 	process_node_text to take into account multibyte characters.
 
 	Bootstrap from GNU gnulib 2008-04-23 06:09:44:
-	
+
 	* gnulib/lib/Makefile.am: Import mbchar, mbiter and mbschr.
 	* gnulib/lib/sys_stat.in.h, gnulib/lib/wctype.in.h,
 	gnulib/lib/sys/stat.h, gnulib/m4/gnulib-cache.m4,
@@ -230,7 +230,7 @@
 
 	* util/texi2dvi: allow more characters special to plain TeX
 	in the directory name in tidy mode (but not the base file name).
-	
+
 	* util/texi2dvi: more quoting of file name args for the sake of
 	names containing whitespace.  A spurious message still results.
 
