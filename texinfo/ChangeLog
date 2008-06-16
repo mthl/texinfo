@@ -1,3 +1,11 @@
+2008-06-16  Akim Demaille  <akim@epita.fr>
+
+	texi2dvi: avoid "\n" in echos to please Bash 3.2.
+	It is virtually impossible to find a safe means to use
+	echo with \n in it.  So use cat and here docs.
+	* bin/texi2dvi ($usage): Remove, replaced by...
+	(usage): this function.
+
 2008-06-16  Akim Demaille  <demaille@gostai.com>
 
 	Support -I dir1:dir2, as per the documentation.
