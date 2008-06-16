@@ -1,5 +1,11 @@
 2008-06-16  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi (version): New function, to replace...
+	($version): this.
+	(usage): Document --dvipdf.
+
+2008-06-16  Akim Demaille  <akim@epita.fr>
+
 	* util/texi2dvi: Sort functions.
 
 2008-06-16  Akim Demaille  <akim@epita.fr>

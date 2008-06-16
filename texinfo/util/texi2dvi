@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.127 2008-06-16 10:28:07 akim Exp $
+# $Id: texi2dvi,v 1.128 2008-06-16 10:33:25 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,16 +33,9 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.127 $'
+rcs_revision='$Revision: 1.128 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
-version="texi2dvi (GNU Texinfo 4.12) $rcs_version
-
-Copyright (C) 2008 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-"
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
 build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
@@ -307,6 +300,7 @@ General options:
 TeX tuning:
   -@                         use @input instead of \input for preloaded Texinfo
       --dvi                  output a DVI file [default]
+      --dvipdf               output a PDF file via DVI (using dvipdf)
   -e, -E, --expand           force macro expansion using makeinfo
   -I DIR                     search DIR for Texinfo files
   -l, --language=LANG        specify LANG for FILE, either latex or texinfo
@@ -383,6 +377,21 @@ verbose ()
   fi
 }
 
+
+# version
+# -------
+# Display version info and exit succesfully.
+version ()
+{
+  cat <<EOF
+texi2dvi (GNU Texinfo 4.12) $rcs_version
+
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+EOF
+}
 
 
 ## ---------------- ##
@@ -1507,7 +1516,7 @@ while test x"$1" != x"$arg_sep"; do
     --text) out_lang=text;;
     --translate-file ) shift; translate_file="$1";;
     --tidy) build_mode=tidy;;
-    -v | --vers*) echo "$version"; exit 0;;
+    -v | --vers*) version;;
     -V | --verb*) verb=true;;
     --) # What remains are not options.
       shift
