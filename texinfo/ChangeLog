@@ -1,5 +1,9 @@
 2008-06-16  Akim Demaille  <akim@epita.fr>
 
+	* util/texi2dvi: Sort functions.
+
+2008-06-16  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: avoid "\n" in echos to please Bash 3.2.
 	It is virtually impossible to find a safe means to use
 	echo with \n in it.  So use cat and here docs.
