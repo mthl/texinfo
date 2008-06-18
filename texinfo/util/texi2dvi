@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.128 2008-06-16 10:33:25 akim Exp $
+# $Id: texi2dvi,v 1.129 2008-06-18 08:19:22 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.128 $'
+rcs_revision='$Revision: 1.129 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -269,6 +269,15 @@ run ()
 # Display usage and exit successfully.
 usage ()
 {
+  # We used to simply have `echo "$usage"', but coping with the
+  # changing behavior of `echo' is much harder than simply using a
+  # here-doc.
+  #
+  #             echo '\noto'   echo '\\noto'   echo -e '\\noto'
+  # bash 3.1      \noto           \\noto          \noto
+  # bash 3.2       %oto           \noto           -e \noto
+  #
+  # where % denotes the eol character.
   cat <<EOF
 Usage: $program [OPTION]... FILE...
 
@@ -391,6 +400,7 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 EOF
+  exit 0
 }
 
 

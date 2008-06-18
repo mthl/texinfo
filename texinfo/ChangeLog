@@ -1,3 +1,9 @@
+2008-06-18  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (usage): More comments.
+	(version): exit 0.
+	Reported by Karl Berry.
+
 2008-06-16  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (version): New function, to replace...
