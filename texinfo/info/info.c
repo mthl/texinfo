@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.31 2008-06-11 09:55:42 gray Exp $
+   $Id: info.c,v 1.32 2008-06-28 08:09:08 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -109,6 +109,8 @@ static struct option long_options[] = {
   { "output", 1, 0, 'o' },
   { "raw-escapes", 0, &raw_escapes_p, 1 },
   { "no-raw-escapes", 0, &raw_escapes_p, 0 },
+  { "show-malformed-multibytes", 0, &show_malformed_multibyte_p, 1 },
+  { "no-show-malformed-multibytes", 0, &show_malformed_multibyte_p, 0 },
   { "restore", 1, 0, RESTORE_OPTION },
   { "show-options", 0, 0, 'O' },
   { "subnodes", 0, &dump_subnodes, 1 },
