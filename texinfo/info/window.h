@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.10 2008-06-13 12:17:11 gray Exp $
+   $Id: window.h,v 1.11 2008-06-28 08:10:02 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -106,6 +106,8 @@ extern WINDOW *windows;         /* List of visible Info windows. */
 extern WINDOW *active_window;   /* The currently active window. */
 extern WINDOW *the_screen;      /* The Info screen is just another window. */
 extern WINDOW *the_echo_area;   /* THE_ECHO_AREA is a window in THE_SCREEN. */
+
+extern int show_malformed_multibyte_p; /* Show malformed multibyte sequences */
 
 /* Global variable control redisplay of scrolled windows.  If non-zero, it
    is the desired number of lines to scroll the window in order to make
