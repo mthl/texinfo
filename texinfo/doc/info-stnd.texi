@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.22 2008-05-05 18:22:54 karl Exp $
+@comment $Id: info-stnd.texi,v 1.23 2008-06-28 08:10:24 gray Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -271,6 +271,11 @@ Read keystrokes from @var{dribble-file}, presumably recorded during
 previous Info session (see the description of the @samp{--dribble}
 option above).  When the keystrokes in the files are all read, Info
 reverts its input to the usual interactive operation.
+
+@item --show-malformed-multibytes
+@itemx --no-show-malformed-multibytes
+  Show malformed multibyte sequences in the output.  By default, such
+sequences are dropped.
 
 @anchor{--show-options}
 @cindex command-line options, how to find
