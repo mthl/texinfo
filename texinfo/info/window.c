@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.15 2008-06-13 12:17:11 gray Exp $
+   $Id: window.c,v 1.16 2008-06-28 08:09:49 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -45,6 +45,9 @@ WINDOW *active_window = NULL;
 /* Macro returns the amount of space that the echo area truly requires relative
    to the entire screen. */
 #define echo_area_required (1 + the_echo_area->height)
+
+/* Show malformed multibyte sequences */
+int show_malformed_multibyte_p = 0;
 
 /* Initalize the window system by creating THE_SCREEN and THE_ECHO_AREA.
    Create the first window ever.
@@ -1613,7 +1616,7 @@ process_node_text (WINDOW *win, char *start,
 	      replen = cur_len;
             }
         }
-      else
+      else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
 	{
 	  /* FIXME: I'm not sure it's the best way to deal with unprintable
 	     multibyte characters */
@@ -1766,7 +1769,7 @@ clean_manpage (char *manpage)
 	      np += cur_len;
 	      ITER_SETBYTES (iter, cur_len);
 	    }
-	  else
+	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
 	    *np++ = *cur_ptr;
 	}
       else
