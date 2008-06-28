@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.13 2008-06-13 12:17:11 gray Exp $
+    $Id: man.c,v 1.14 2008-06-28 08:09:32 gray Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008 Free Software Foundation, Inc.
@@ -221,7 +221,9 @@ executable_file_in_path (char *filename, char *path)
 static char *
 find_man_formatter (void)
 {
-  return executable_file_in_path ("man", getenv ("PATH"));
+  char *man_command = getenv ("INFO_MAN_COMMAND");
+  return man_command ? man_command :
+                       executable_file_in_path ("man", getenv ("PATH"));
 }
 
 static char *manpage_pagename = NULL;
