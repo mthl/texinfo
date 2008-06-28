@@ -1,3 +1,17 @@
+2008-06-28  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/info.c (long_option): New options
+	--show-malformed-multibytes and --no-show-malformed-multibytes
+	* info/man.c (find_man_formatter): If INFO_MAN_COMMAND is
+	specified, use its value as man command.
+	* info/window.c (show_malformed_multibyte_p): New variable.
+	(process_node_text): Ignore malformed multibyte characters unless
+	show_malformed_multibyte_p is set.
+	* info/window.h (show_malformed_multibyte_p): New extern.
+
+	* doc/info-stnd.texi (Invoking Info): Document new options.
+	* NEWS: Likewise.
+
 2008-06-18  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (usage): More comments.
@@ -39,6 +53,9 @@
 
 2008-06-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	Fix length calculation for strings containing ANSI escapes.
+	Bug reported by Benno Schulenberg.
+	
 	* info/man.c (clean_manpage): Remove.
 	(get_manpage_contents): Remove the kludge introduced 2006-08-13.
 	* info/window.c (process_node_text): ANSI escapes have visible
