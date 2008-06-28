@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.174 2008-05-23 13:08:43 karl Exp $
+$Id: NEWS,v 1.175 2008-06-28 08:10:43 gray Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -29,7 +29,11 @@ one of the relevant sections:
  
 * info:
   . support for multibyte encodings such as UTF-8.
-
+  . new option --show-malformed-multibytes, to display malformed multibyte
+  sequences.
+  . new environment variable INFO_MAN_COMMAND sets the name of man binary
+  (use it if you a need to override PATH settings).
+  
 * install-info:
   . bug fix: support names with embedded periods (e.g., config.status) again.
 
