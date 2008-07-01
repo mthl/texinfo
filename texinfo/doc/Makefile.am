@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.37 2008-03-25 10:51:19 akim Exp $
+# $Id: Makefile.am,v 1.38 2008-07-01 23:08:22 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -105,17 +105,20 @@ $(srcdir)/texindex.1: $(util_srcdir)/texindex.c $(common_mandeps)
 
 man_MANS += texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
 util_srcdir = $(top_srcdir)/util
+
 # Do not depend on the current user's settings.
-unset_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY
+# We need to include util_srcdir in PATH so texi2pdf can find texi2dvi.
+change_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY; \
+  PATH="$(util_srcdir):$${PATH}"; export PATH
 
 common_texi2dvi_deps = $(common_mandeps) \
                        $(util_srcdir)/texi2dvi $(util_srcdir)/texi2pdf
 
 $(srcdir)/texi2dvi.1: $(common_texi2dvi_deps)
-	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to DVI" $(util_srcdir)/texi2dvi >$@
+	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to DVI" $(util_srcdir)/texi2dvi >$@
 
 $(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
-	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
+	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
 
 $(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
 	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@

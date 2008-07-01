@@ -1,3 +1,9 @@
+2008-07-01  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (change_envvars): include util_srcdir in PATH
+	so texi2pdf can find texi2dvi for making the man pages.
+	Report from Michael Haubenwallner, 01 Jul 2008 14:33:18.
+
 2008-06-28  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/info.c (long_option): New options
