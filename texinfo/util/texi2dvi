@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.129 2008-06-18 08:19:22 akim Exp $
+# $Id: texi2dvi,v 1.130 2008-07-02 23:21:15 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.129 $'
+rcs_revision='$Revision: 1.130 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -762,10 +762,12 @@ generated_files_get ()
        fi
        ;;
       latex)
-       # bibtex: *.aux -> *.bbl and *.blg.
 	if aux_file_p $file; then
+          # bibtex: *.aux -> *.bbl and *.blg.
 	  echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
-	 echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
+          echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
+          # -recorder: .fls
+          echo $file | sed 's/^\(.*\)\.aux$/\1.fls/'
        fi
        ;;
     esac

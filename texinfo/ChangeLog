@@ -1,3 +1,9 @@
+2008-07-02  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (generated_files_get): find .fls files too.
+	(from the -recorder option.)
+	Suggestion from Wybo Dekker.
+
 2008-07-01  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (change_envvars): include util_srcdir in PATH
