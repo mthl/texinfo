@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.38 2008-07-01 23:08:22 karl Exp $
+# $Id: Makefile.am,v 1.39 2008-07-03 13:03:22 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -121,7 +121,7 @@ $(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
 	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
 
 $(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
-	$(unset_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@
+	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@
 
 # Do not create info files for distribution.
 dist-info:
