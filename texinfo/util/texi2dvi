@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.130 2008-07-02 23:21:15 karl Exp $
+# $Id: texi2dvi,v 1.131 2008-07-04 08:14:01 akim Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.130 $'
+rcs_revision='$Revision: 1.131 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -940,9 +940,9 @@ run_tex ()
     true:*["$space$tab$newline\"#\$%\\^_{}"]*)
       _run_tex_file_name=`basename "$in_input"`
       if test ! -f "$_run_tex_file_name"; then
-	verbose ln -s "$in_input"
-	rm -f "$_run_tex_file_name"
-	ln -s "$_run_tex_file_name"
+	# It might not be a file, clear it.
+	run rm -f "$_run_tex_file_name"
+	run ln -s "$in_input"
       fi
       cmd="$cmd '$_run_tex_file_name'"
       ;;

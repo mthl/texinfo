@@ -1,3 +1,13 @@
+2008-07-04  Akim Demaille  <akim@epita.fr>
+
+	texi2dvi: Fix -t.
+	* util/texi2dvi (run_tex): The code that installs a symlink was
+	installing the symlink directly to itself, instead of towards the
+	actual source file.  I wonder how it worked.  As a result -t was
+	not taken into account.
+	Fix the symlink creation.
+	* util/texi2dvi.test (one_run): Test -t support.
+
 2008-07-03  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (pdftexi2dvi.1): use change_envvars here too.
@@ -71,7 +81,7 @@
 
 	Fix length calculation for strings containing ANSI escapes.
 	Bug reported by Benno Schulenberg.
-	
+
 	* info/man.c (clean_manpage): Remove.
 	(get_manpage_contents): Remove the kludge introduced 2006-08-13.
 	* info/window.c (process_node_text): ANSI escapes have visible

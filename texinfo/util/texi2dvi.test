@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -28,8 +28,13 @@ set -e
 one_run ()
 {
   # Testing the local build mode.
-  create_input_texi </dev/null
-  TEXI2DVI_pass $(optionset_get 1 "$@") input.texi
+  # Use @foo to check that -t works properly.
+  echo "@foo" | create_input_texi
+  TEXI2DVI_pass $(optionset_get 1 "$@") \
+     -t '@macro foo' \
+     -t 'Foo'        \
+     -t '@end macro' \
+     input.texi
   # There should only be the expected FILES and the input file.
   assert_and_remove_files $(optionset_get 2 "$@") input.texi
 }
