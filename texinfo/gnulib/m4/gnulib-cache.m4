@@ -19,7 +19,26 @@
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
-gl_MODULES([argz getopt gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memcpy memmove mkstemp strdup strerror xalloc xsetenv])
+gl_MODULES([
+  argz
+  getopt
+  gettext
+  mbchar
+  mbiter
+  mbscasecmp
+  mbschr
+  mbslen
+  mbsncasecmp
+  mbsstr
+  mbswidth
+  memcpy
+  memmove
+  mkstemp
+  strdup
+  strerror
+  xalloc
+  xsetenv
+])
 gl_AVOID([])
 gl_SOURCE_BASE([gnulib/lib])
 gl_M4_BASE([gnulib/m4])
