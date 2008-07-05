@@ -9,7 +9,7 @@
 
 . ./defs
 
-outputdirfile=`mktemp`
+outputdirfile=`mktemp XXXXXXXX`
 cp ${testdir}/ii-0053-input-dir-file $outputdirfile
 
 # Have to handle newlines in input dir entries, too.

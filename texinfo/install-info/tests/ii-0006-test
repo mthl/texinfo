@@ -6,13 +6,10 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#
-#This script requires `mktemp' and `diff' and is designed to be run from
-#a Makefile.
 
 . ./defs || exit 1
 
-outputdirfile=`mktemp`
+outputdirfile=`mktemp XXXXXXXX`
 cp ${testdir}/ii-0006-input-dir-file $outputdirfile
 if [ "x$?" != "x0" ]; then
   exit 1

@@ -1,3 +1,8 @@
+2008-07-05  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/*-test: use mktemp XXXXXXXX for BSD.
+	Report from Unga, 29 Jun 2008 08:29:54.
+
 2008-07-04  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: Fix -t.
