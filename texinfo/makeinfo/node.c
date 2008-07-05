@@ -1,7 +1,7 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.40 2007-12-03 01:38:43 karl Exp $
+   $Id: node.c,v 1.41 2008-07-05 23:57:29 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -975,8 +975,6 @@ cm_node (void)
       if (splitting || !no_headers)
         { /* Navigation bar. */
           add_html_block_elt ("<div class=\"node\">\n");
-          /* The <p> avoids the links area running on with old Lynxen. */
-          add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
 
           /* In the split HTML case, the filename is wrong for the 
              old-style converted names, but we'll add them anyway, for
@@ -984,6 +982,11 @@ cm_node (void)
              no_headers) nonsplit case.)  */
           add_html_names (node);
 
+          /* Do this after adding the anchors, so the browser rendering
+             can be better.  The <p> avoids the links area running on
+             with old Lynxen.  */
+          add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
+          
           if (next)
             {
               tem = expansion (next, 0);

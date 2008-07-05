@@ -1,3 +1,8 @@
+2008-07-05  Robert Kiesling  <rkiesling@earthlink.net>  (tiny change)
+
+	* makeinfo/node.c (cm_node): move <p> to after anchors, closer to
+	<div>.
+
 2008-07-05  Karl Berry  <karl@gnu.org>
 
 	* install-info/tests/*-test: use mktemp XXXXXXXX for BSD.
