@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-06-12 18:02+0200\n"
+"POT-Creation-Date: 2008-07-06 02:01+0200\n"
 "PO-Revision-Date: 2008-05-24 16:21+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -298,12 +298,12 @@ msgstr ""
 "\n"
 "* Trình đơn: nút có chỉ mục chứa « %s »:\n"
 
-#: info/info.c:273 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « --help » để xem thông tin thêm.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
@@ -319,12 +319,12 @@ msgstr ""
 "Đây là phần mềm tự do : bạn có quyền thay đổi và phát hành lại nó.\n"
 "KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép\n"
 
-#: info/info.c:504
+#: info/info.c:506
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: info/info.c:598
+#: info/info.c:600
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -335,7 +335,7 @@ msgstr ""
 "\n"
 "Đọc tài liệu hướng dẫn theo định dạng Info.\n"
 
-#: info/info.c:604
+#: info/info.c:606
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -351,7 +351,7 @@ msgstr ""
 "      --dribble=TẬP_TIN       lưu các cú bấm phím vào tập tin này.\n"
 "  -f, --file=TẬP_TIN          ghi rõ tập tin Info cần thăm."
 
-#: info/info.c:611
+#: info/info.c:613
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -364,7 +364,7 @@ msgstr ""
 "tiên.\n"
 "  -o, --output=TẬP_TIN        xuất các nút đã chọn vào tập tin này."
 
-#: info/info.c:617
+#: info/info.c:619
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -376,12 +376,12 @@ msgstr ""
 "      --restore=TẬP_TIN       đọc các cú bấm phím đầu tiên từ tập tin này.\n"
 "  -O, --show-options, --usage  \tđi tới nút chứa các tùy chọn dòng lệnh."
 
-#: info/info.c:624
+#: info/info.c:626
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 "  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói"
 
-#: info/info.c:628
+#: info/info.c:630
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -393,7 +393,7 @@ msgstr ""
 "      --version                hiển thị thông tin phiên bản rồi thoát\n"
 "  -w, --where, --location      in vị trí vật lý của tập tin Info."
 
-#: info/info.c:634
+#: info/info.c:636
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -410,7 +410,7 @@ msgstr ""
 "Bất cứ đối số còn lại nào được xử lý như tên của mục trình đơn\n"
 "tương đối với nút đầu tiên được thăm."
 
-#: info/info.c:641
+#: info/info.c:643
 msgid ""
 "\n"
 "Examples:\n"
@@ -433,7 +433,7 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin « ./foo.info », không tìm kiếm "
 "thư mục"
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -446,72 +446,72 @@ msgstr ""
 "và gửi câu hỏi chung, thảo luận v.v. cho <help-texinfo@gnu.org>.\n"
 "Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:684
+#: info/info.c:686
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Không tìm thấy nút thông tin « %s »."
 
-#: info/info.c:685
+#: info/info.c:687
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Không tìm thấy nút thông tin « (%s)%s »."
 
-#: info/info.c:686
+#: info/info.c:688
 msgid "Cannot find a window!"
 msgstr "Không tìm thấy cửa sổ."
 
-#: info/info.c:687
+#: info/info.c:689
 msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện bên trong cái nút thông tin của cửa sổ này."
 
-#: info/info.c:688
+#: info/info.c:690
 msgid "Cannot delete the last window."
 msgstr "Không thể xóa cửa sổ cuối cùng."
 
-#: info/info.c:689
+#: info/info.c:691
 msgid "No menu in this node."
 msgstr "Không có trình đơn trong nút thông tin này."
 
-#: info/info.c:690
+#: info/info.c:692
 msgid "No footnotes in this node."
 msgstr "Không có cước chú trong nút thông tin này."
 
-#: info/info.c:691
+#: info/info.c:693
 msgid "No cross references in this node."
 msgstr "Không có tham chiếu chéo trong nút thông tin này."
 
-#: info/info.c:692
+#: info/info.c:694
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Không có con trỏ « %s » cho nút thông tin này."
 
-#: info/info.c:693
+#: info/info.c:695
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Không nhận ra lệnh Info « %c »: hãy thử lệnh « ? » để xem trợ giúp."
 
-#: info/info.c:694
+#: info/info.c:696
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Thiết bị cuối kiểu « %s » không đủ khéo để chạy Info."
 
-#: info/info.c:695
+#: info/info.c:697
 msgid "You are already at the last page of this node."
 msgstr "Bạn ở trang cuối cùng của nút thông tin này."
 
-#: info/info.c:696
+#: info/info.c:698
 msgid "You are already at the first page of this node."
 msgstr "Bạn ở trang đầu tiên của nút thông tin này."
 
-#: info/info.c:697
+#: info/info.c:699
 msgid "Only one window."
 msgstr "Chỉ một cửa sổ."
 
-#: info/info.c:698
+#: info/info.c:700
 msgid "Resulting window would be too small."
 msgstr "Cửa sổ kết quả quá nhỏ."
 
-#: info/info.c:699
+#: info/info.c:701
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 
@@ -1760,25 +1760,25 @@ msgstr "Lập %s thành giá trị (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Lập %s thành giá trị (%s): "
 
-#: info/window.c:1023
+#: info/window.c:1026
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Thẻ quá cũ ***"
 
-#: info/window.c:1034
+#: info/window.c:1037
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), dòng ----, "
 
-#: info/window.c:1041
+#: info/window.c:1044
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d dòng --%s--"
 
-#: info/window.c:1045
+#: info/window.c:1048
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d dòng --%s--"
 
-#: info/window.c:1052
+#: info/window.c:1055
 #, c-format
 msgid " Subfile: %s"
 msgstr " Tập tin phụ: %s"
@@ -3017,7 +3017,7 @@ msgstr "Nút « %s » cần đến lệnh chia ra từng phần (v.d. %c%s)"
 msgid "No node name specified for `%c%s' command"
 msgstr "Chưa ghi rõ tên nút cho lệnh « %c%s »"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1160
+#: makeinfo/node.c:919 makeinfo/node.c:1163
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Neo « %s » và nút « %s » ánh xạ với cùng một tên tập tin"
@@ -3026,7 +3026,7 @@ msgstr "Neo « %s » và nút « %s » ánh xạ với cùng một tên tập ti
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Lệnh @anchor bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1163
+#: makeinfo/node.c:924 makeinfo/node.c:1166
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 "Thay đổi tên neo này, hoặc dùng tùy chọn « --no-split » (không chia tách)"
@@ -3036,67 +3036,67 @@ msgstr ""
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Gặp chuỗi bất thường tại kết thúc tập tin HTML-tách « %s »"
 
-#: makeinfo/node.c:1157
+#: makeinfo/node.c:1160
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Cả hai neo « %s » và « %s » đều ánh xạ với cùng một tên tập tin"
 
-#: makeinfo/node.c:1162
+#: makeinfo/node.c:1165
 msgid "@anchor command ignored; references to it will not work"
 msgstr "Lệnh @anchor bị bỏ qua nên tham chiếu đến nó sẽ không hoạt động"
 
-#: makeinfo/node.c:1359
+#: makeinfo/node.c:1362
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s tham chiếu đến nút không tồn tại « %s » (có lẽ đã chia ra từng phần không "
 "đúng?)"
 
-#: makeinfo/node.c:1459
+#: makeinfo/node.c:1462
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "Không có gì chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng phần "
 "không đúng?)"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1465
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Nút này (%s) có Lùi sai"
 
-#: makeinfo/node.c:1517
+#: makeinfo/node.c:1520
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Không có gì chỉ tới trường trước của nút « %s »"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1524
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Nút này (%s) có Kế sai"
 
-#: makeinfo/node.c:1533
+#: makeinfo/node.c:1536
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "« %s » không có trường Lên (có lẽ đã chia ra từng phần không đúng?)"
 
-#: makeinfo/node.c:1602
+#: makeinfo/node.c:1605
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên của "
 "nó"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1637
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
 msgstr "Đang gỡ bỏ %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1731
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Không thể gỡ bỏ tập tin « %s »: %s"

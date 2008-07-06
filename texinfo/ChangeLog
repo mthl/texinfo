@@ -1,3 +1,7 @@
+2008-07-06  Karl Berry  <karl@tug.org>
+
+	* pretest 4.12.92.
+
 2008-07-05  Robert Kiesling  <rkiesling@earthlink.net>  (tiny change)
 
 	* makeinfo/node.c (cm_node): move <p> to after anchors, closer to

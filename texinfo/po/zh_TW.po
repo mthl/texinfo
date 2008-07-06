@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-06-12 18:02+0200\n"
+"POT-Creation-Date: 2008-07-06 02:01+0200\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -288,12 +288,12 @@ msgstr ""
 "\n"
 "* Menu: 其索引中包含 \"%s\" 的節點:\n"
 
-#: info/info.c:273 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "試試 --help 以取得更多的資訊.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
@@ -304,12 +304,12 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:504
+#: info/info.c:506
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "找不到包含 `%s' 的索引項目\n"
 
-#: info/info.c:598
+#: info/info.c:600
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -317,7 +317,7 @@ msgid ""
 "Read documentation in Info format.\n"
 msgstr ""
 
-#: info/info.c:604
+#: info/info.c:606
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -327,7 +327,7 @@ msgid ""
 "  -f, --file=FILENAME          specify Info file to visit."
 msgstr ""
 
-#: info/info.c:611
+#: info/info.c:613
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -335,7 +335,7 @@ msgid ""
 "  -o, --output=FILENAME        output selected nodes to FILENAME."
 msgstr ""
 
-#: info/info.c:617
+#: info/info.c:619
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -343,11 +343,11 @@ msgid ""
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
 
-#: info/info.c:624
+#: info/info.c:626
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 
-#: info/info.c:628
+#: info/info.c:630
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -355,7 +355,7 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
 
-#: info/info.c:634
+#: info/info.c:636
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -365,7 +365,7 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 
-#: info/info.c:641
+#: info/info.c:643
 msgid ""
 "\n"
 "Examples:\n"
@@ -377,7 +377,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -390,72 +390,72 @@ msgstr ""
 "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
 
-#: info/info.c:684
+#: info/info.c:686
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "找不到 `%s' 節點."
 
-#: info/info.c:685
+#: info/info.c:687
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "找不到 `(%s)%s' 節點."
 
-#: info/info.c:686
+#: info/info.c:688
 msgid "Cannot find a window!"
 msgstr "找不到分隔視窗!"
 
-#: info/info.c:687
+#: info/info.c:689
 msgid "Point doesn't appear within this window's node!"
 msgstr "游標位置不在本分隔視窗的節點內!"
 
-#: info/info.c:688
+#: info/info.c:690
 msgid "Cannot delete the last window."
 msgstr "無法刪除上一個分隔視窗."
 
-#: info/info.c:689
+#: info/info.c:691
 msgid "No menu in this node."
 msgstr "本節點沒有選單."
 
-#: info/info.c:690
+#: info/info.c:692
 msgid "No footnotes in this node."
 msgstr "本節點沒有註腳."
 
-#: info/info.c:691
+#: info/info.c:693
 msgid "No cross references in this node."
 msgstr "本節點沒有交互參照."
 
-#: info/info.c:692
+#: info/info.c:694
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "本節點沒有 `%s' pointer."
 
-#: info/info.c:693
+#: info/info.c:695
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令 `%c'; 試試 `?' 以取得求助資訊."
 
-#: info/info.c:694
+#: info/info.c:696
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "終端機類型 `%s' 無法支援執行 Info 所需的需求."
 
-#: info/info.c:695
+#: info/info.c:697
 msgid "You are already at the last page of this node."
 msgstr "您已在本節點的最後一頁."
 
-#: info/info.c:696
+#: info/info.c:698
 msgid "You are already at the first page of this node."
 msgstr "您已在本節點的第一頁."
 
-#: info/info.c:697
+#: info/info.c:699
 msgid "Only one window."
 msgstr "只有一個分隔視窗."
 
-#: info/info.c:698
+#: info/info.c:700
 msgid "Resulting window would be too small."
 msgstr "產生的分隔視窗會太小."
 
-#: info/info.c:699
+#: info/info.c:701
 msgid "Not enough room for a help window, please delete a window."
 msgstr "剩下的空間太小, 無法容納求助分隔視窗, 請刪除一個分隔視窗."
 
@@ -1697,25 +1697,25 @@ msgstr "設定 %s 的數值 (%d): "
 msgid "Set %s to value (%s): "
 msgstr "設定 %s 的數值 (%s): "
 
-#: info/window.c:1023
+#: info/window.c:1026
 msgid "--*** Tags out of Date ***"
 msgstr ""
 
-#: info/window.c:1034
+#: info/window.c:1037
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), 行數  ----, "
 
-#: info/window.c:1041
+#: info/window.c:1044
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, 共 %d 行 --%s--"
 
-#: info/window.c:1045
+#: info/window.c:1048
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, 共 %d 行 --%s--"
 
-#: info/window.c:1052
+#: info/window.c:1055
 #, c-format
 msgid " Subfile: %s"
 msgstr " 子檔案: %s"
@@ -2763,7 +2763,7 @@ msgstr "節點 `%s' 必須使用分段命令 (sectioning command) (例如: %c%s)"
 msgid "No node name specified for `%c%s' command"
 msgstr "`%c%s' 命令中未指定節點名稱"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1160
+#: makeinfo/node.c:919 makeinfo/node.c:1163
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr ""
@@ -2772,7 +2772,7 @@ msgstr ""
 msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:924 makeinfo/node.c:1163
+#: makeinfo/node.c:924 makeinfo/node.c:1166
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 
@@ -2781,61 +2781,61 @@ msgstr ""
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr ""
 
-#: makeinfo/node.c:1157
+#: makeinfo/node.c:1160
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr ""
 
-#: makeinfo/node.c:1162
+#: makeinfo/node.c:1165
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:1359
+#: makeinfo/node.c:1362
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s 參照到不存在的節點: `%s'"
 
-#: makeinfo/node.c:1459
+#: makeinfo/node.c:1462
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1465
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "本節點 (%s) 的 前一個 (Prev) 節點有問題"
 
-#: makeinfo/node.c:1517
+#: makeinfo/node.c:1520
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr ""
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1524
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "本節點 (%s) 的 下一個 (Next) 節點有問題"
 
-#: makeinfo/node.c:1533
+#: makeinfo/node.c:1536
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1602
+#: makeinfo/node.c:1605
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1637
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "未被參照的節點 `%s'"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1731
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "無法建立輸出檔案 `%s'."

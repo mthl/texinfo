@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-06-12 18:02+0200\n"
+"POT-Creation-Date: 2008-07-06 02:01+0200\n"
 "PO-Revision-Date: 2008-05-23 09:25+0100\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -323,12 +323,12 @@ msgstr ""
 "\n"
 "* Menü: Knoten, deren Indizes „%s“ enthalten:\n"
 
-#: info/info.c:273 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "„--help“ gibt weitere Informationen.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
@@ -344,12 +344,12 @@ msgstr ""
 "Dies ist freie Software: Sie können sie ändern und weiter verteilen.\n"
 "Es gibt KEINERLEI Garantie, soweit es das Gesetz erlaubt.\n"
 
-#: info/info.c:504
+#: info/info.c:506
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "Keine Indexeinträge für „%s“ gefunden\n"
 
-#: info/info.c:598
+#: info/info.c:600
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -360,7 +360,7 @@ msgstr ""
 "\n"
 "Zum Lesen von Dokumentation, die im Info-Format vorliegt.\n"
 
-#: info/info.c:604
+#: info/info.c:606
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -375,7 +375,7 @@ msgstr ""
 "      --dribble=DATEI       Tasteneingaben des Nutzers in DATEI merken\n"
 "  -f, --file=DATEI          zu besuchende Info-DATEI angeben"
 
-#: info/info.c:611
+#: info/info.c:613
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -389,7 +389,7 @@ msgstr ""
 "                              angeben\n"
 "  -o, --output=DATEI        ausgewählte Knoten nach DATEI ausgeben"
 
-#: info/info.c:617
+#: info/info.c:619
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -402,11 +402,11 @@ msgstr ""
 "  -O, --show-options, --usage  zum Knoten mit den Optionen für den\n"
 "                              Befehlsaufruf gehen"
 
-#: info/info.c:624
+#: info/info.c:626
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly     zu Sprachsynthesizern freundlich sein."
 
-#: info/info.c:628
+#: info/info.c:630
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -418,7 +418,7 @@ msgstr ""
 "      --version             Programmversion anzeigen\n"
 "  -w, --where, --location   physischen Ort des Info-Datei anzeigen"
 
-#: info/info.c:634
+#: info/info.c:636
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -436,7 +436,7 @@ msgstr ""
 "Verbleibende Parameter werden als Namen von Menüeinträgen des ersten zu\n"
 "besuchenden Knotens angesehen."
 
-#: info/info.c:641
+#: info/info.c:643
 msgid ""
 "\n"
 "Examples:\n"
@@ -460,7 +460,7 @@ msgstr ""
 "schreiben\n"
 "  info -f ./foo.info         datei ./foo.info anzeigen"
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -474,72 +474,72 @@ msgstr ""
 "schicken, allgemeine Fragen und Gedankenaustausch an help-texinfo@gnu.org.\n"
 "Texinfos Homepage: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:684
+#: info/info.c:686
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Knoten „%s“ nicht gefunden."
 
-#: info/info.c:685
+#: info/info.c:687
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Knoten „(%s)%s“ nicht gefunden."
 
-#: info/info.c:686
+#: info/info.c:688
 msgid "Cannot find a window!"
 msgstr "Kein Fenster gefunden!"
 
-#: info/info.c:687
+#: info/info.c:689
 msgid "Point doesn't appear within this window's node!"
 msgstr "Momentane Position erscheint nicht in dem Knoten dieses Fensters!"
 
-#: info/info.c:688
+#: info/info.c:690
 msgid "Cannot delete the last window."
 msgstr "Kann das letzte Fenster nicht löschen!"
 
-#: info/info.c:689
+#: info/info.c:691
 msgid "No menu in this node."
 msgstr "Kein Menü in diesem Knoten."
 
-#: info/info.c:690
+#: info/info.c:692
 msgid "No footnotes in this node."
 msgstr "Keine Fußnoten in diesem Knoten."
 
-#: info/info.c:691
+#: info/info.c:693
 msgid "No cross references in this node."
 msgstr "Keine Querverweise in diesem Knoten."
 
-#: info/info.c:692
+#: info/info.c:694
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Kein „%s“-Verweis für diesem Knoten."
 
-#: info/info.c:693
+#: info/info.c:695
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Unbekannter Info-Befehl „%c“. „?“ eingeben, um Hilfe zu bekommen."
 
-#: info/info.c:694
+#: info/info.c:696
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Der Terminaltyp „%s“ ist nicht fähig genug, um Info auszuführen."
 
-#: info/info.c:695
+#: info/info.c:697
 msgid "You are already at the last page of this node."
 msgstr "Sie sind bereits auf der letzten Seite dieses Knotens."
 
-#: info/info.c:696
+#: info/info.c:698
 msgid "You are already at the first page of this node."
 msgstr "Sie sind bereits auf der ersten Seite dieses Knotens."
 
-#: info/info.c:697
+#: info/info.c:699
 msgid "Only one window."
 msgstr "Nur ein Fenster."
 
-#: info/info.c:698
+#: info/info.c:700
 msgid "Resulting window would be too small."
 msgstr "Das entstehende Fenster wäre zu klein."
 
-#: info/info.c:699
+#: info/info.c:701
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nicht genügend Platz für ein Hilfefenster. Bitte ein Fenster löschen."
 
@@ -1808,25 +1808,25 @@ msgstr "Setze %s auf den Wert (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Setze %s auf den Wert (%s): "
 
-#: info/window.c:1023
+#: info/window.c:1026
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Tags veraltet ***"
 
-#: info/window.c:1034
+#: info/window.c:1037
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), Zeilen ----, "
 
-#: info/window.c:1041
+#: info/window.c:1044
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d Zeilen --%s--"
 
-#: info/window.c:1045
+#: info/window.c:1048
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d Zeilen --%s--"
 
-#: info/window.c:1052
+#: info/window.c:1055
 #, c-format
 msgid " Subfile: %s"
 msgstr " Unterdatei: %s"
@@ -3066,7 +3066,7 @@ msgstr "Knoten „%s“ benötigt einen Abschnittsbefehl (z.B. %c%s)"
 msgid "No node name specified for `%c%s' command"
 msgstr "Kein Knotenname für den Befehl „%c%s“ angegeben"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1160
+#: makeinfo/node.c:919 makeinfo/node.c:1163
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Anker „%s“ und Knoten „%s“ zeigen auf gleichen Dateinamen."
@@ -3076,7 +3076,7 @@ msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 "Dieser @anchor-Befehl wird ignoriert, da Verweise auf ihn nicht funktionieren"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1163
+#: makeinfo/node.c:924 makeinfo/node.c:1166
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Entweder diesen Anker umbenennen oder Option „--no-split“ verwenden"
 
@@ -3085,72 +3085,72 @@ msgstr "Entweder diesen Anker umbenennen oder Option „--no-split“ verwenden"
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Unerwartete Zeichenkette am Ende der gesplitteten HTML-Datei „%s“"
 
-#: makeinfo/node.c:1157
+#: makeinfo/node.c:1160
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Anker „%s“ und „%s“ zeigen auf gleichen Dateinamen."
 
-#: makeinfo/node.c:1162
+#: makeinfo/node.c:1165
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 "@anchor-Befehl wird ignoriert, da Referenzen auf ihn nicht funktionieren"
 
-#: makeinfo/node.c:1359
+#: makeinfo/node.c:1362
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%sverweis auf nicht existierenden Knoten „%s“ (vielleicht @section statt "
 "@subsection o.ä.?)"
 
-#: makeinfo/node.c:1459
+#: makeinfo/node.c:1462
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "Auf das Feld „nächstes“ (Next) des Knotens „%s“ wird nicht verwiesen "
 "(vielleicht @section statt @subsection o.ä.?)"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1465
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr ""
 "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld „voriges“ (Prev)"
 
-#: makeinfo/node.c:1517
+#: makeinfo/node.c:1520
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Auf das Feld „voriges“ (Prev) des Knotens „%s“ wird nicht verwiesen"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1524
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr ""
 "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld „nächstes“ (Next)"
 
-#: makeinfo/node.c:1533
+#: makeinfo/node.c:1536
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 "„%s“ hat kein Feld „aufwärts“ (Up) (vielleicht @section statt @subsection o."
 "ä.?)"
 
-#: makeinfo/node.c:1602
+#: makeinfo/node.c:1605
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Dem Knoten „%s“ fehlt ein Menüeintrag für „%s“, obwohl er dessen Ziel für "
 "„aufwärts“ (Up) ist"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1637
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "Nicht referenzierter Knoten „%s“"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
 msgstr "Entferne %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1731
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Kann Datei „%s“ nicht entfernen: %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.11.93.es\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-06-12 18:02+0200\n"
+"POT-Creation-Date: 2008-07-06 02:01+0200\n"
 "PO-Revision-Date: 2008-04-03 16:29+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -297,12 +297,12 @@ msgstr ""
 "\n"
 "* Menú: Nodos cuyos índices contienen `%s':\n"
 
-#: info/info.c:273 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Pruebe la opción `--help' para obtener más información.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
@@ -318,13 +318,13 @@ msgstr ""
 "Esto es software libre: usted es libre de cambiarlo y redistribuirlo.\n"
 "Dicho software es provisto SIN GARANTÍA, hasta donde permite la ley.\n"
 
-#: info/info.c:504
+#: info/info.c:506
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr ""
 "No se encontraron entradas de índice que concuerden con la palabra `%s'\n"
 
-#: info/info.c:598
+#: info/info.c:600
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -335,7 +335,7 @@ msgstr ""
 "\n"
 "Muestra documentación escrita en formato Info.\n"
 
-#: info/info.c:604
+#: info/info.c:606
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -352,7 +352,7 @@ msgstr ""
 "                                 el usuario desde el fichero FICHERO.\n"
 "  -f, --file=FICHERO           el FICHERO Info que visitar."
 
-#: info/info.c:611
+#: info/info.c:613
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -366,7 +366,7 @@ msgstr ""
 "  -o, --output=FICHERO         guardar los nodos seleccionados en este "
 "FICHERO."
 
-#: info/info.c:617
+#: info/info.c:619
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -383,13 +383,13 @@ msgstr ""
 "                                 línea de comandos del programa al que el\n"
 "                                 fichero Info en cuestión se refiere."
 
-#: info/info.c:624
+#: info/info.c:626
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 "  -b, --speech-friendly        actúa acorde a como sintetizadores de voz\n"
 "                                 esperan que programas que los usan lo hagan."
 
-#: info/info.c:628
+#: info/info.c:630
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -405,7 +405,7 @@ msgstr ""
 "  -w, --where, --location      mostrar la ruta física del fichero Info en\n"
 "                                 cuestión."
 
-#: info/info.c:634
+#: info/info.c:636
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -426,7 +426,7 @@ msgstr ""
 "del\n"
 "menú con respecto al nodo inicial visitado."
 
-#: info/info.c:641
+#: info/info.c:643
 msgid ""
 "\n"
 "Examples:\n"
@@ -450,7 +450,7 @@ msgstr ""
 "  info -f ./foo.info         muestra el fichero `./foo.info', sin buscar en\n"
 "                               el directorio"
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -464,73 +464,73 @@ msgstr ""
 "Texinfo en general pueden ser dirigidas a <help-texinfo@gnu.org>.\n"
 "El sitio web de Texinfo es: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:684
+#: info/info.c:686
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Nodo `%s' no fue encontrado."
 
-#: info/info.c:685
+#: info/info.c:687
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "El nodo `(%s)%s' no fue encontrado."
 
-#: info/info.c:686
+#: info/info.c:688
 msgid "Cannot find a window!"
 msgstr "No podría encontrar una ventana!"
 
-#: info/info.c:687
+#: info/info.c:689
 msgid "Point doesn't appear within this window's node!"
 msgstr "El cursor no parece estar sobre nodo alguno en esta ventana!"
 
-#: info/info.c:688
+#: info/info.c:690
 msgid "Cannot delete the last window."
 msgstr "No se puede eliminar la última ventana."
 
-#: info/info.c:689
+#: info/info.c:691
 msgid "No menu in this node."
 msgstr "No existe un menú en este nodo."
 
-#: info/info.c:690
+#: info/info.c:692
 msgid "No footnotes in this node."
 msgstr "No hay notas de pie de página en este nodo."
 
-#: info/info.c:691
+#: info/info.c:693
 msgid "No cross references in this node."
 msgstr "No hay enlaces en este nodo."
 
-#: info/info.c:692
+#: info/info.c:694
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Este nodo no contiene enlace alguno a `%s'."
 
-#: info/info.c:693
+#: info/info.c:695
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr ""
 "`%c' no es un comando conocido; pruebe usted con `?' para acceder a la ayuda."
 
-#: info/info.c:694
+#: info/info.c:696
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "El tipo de terminal `%s' es incapaz de ejecutar Info."
 
-#: info/info.c:695
+#: info/info.c:697
 msgid "You are already at the last page of this node."
 msgstr "Usted ya se encuentra en la última página de este nodo."
 
-#: info/info.c:696
+#: info/info.c:698
 msgid "You are already at the first page of this node."
 msgstr "Usted ya se encuentra en la primera página de este nodo."
 
-#: info/info.c:697
+#: info/info.c:699
 msgid "Only one window."
 msgstr "Una única ventana."
 
-#: info/info.c:698
+#: info/info.c:700
 msgid "Resulting window would be too small."
 msgstr "La ventana resultante sería demasiado pequeña."
 
-#: info/info.c:699
+#: info/info.c:701
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "No hay pantalla suficiente como para albergar la ventana de ayuda, elimine "
@@ -1815,25 +1815,25 @@ msgstr "Dar a %s el valor (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Dar a %s el valor (%s): "
 
-#: info/window.c:1023
+#: info/window.c:1026
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Etiquetas antiguas ***"
 
-#: info/window.c:1034
+#: info/window.c:1037
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), líneas ----, "
 
-#: info/window.c:1041
+#: info/window.c:1044
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d líneas --%s--"
 
-#: info/window.c:1045
+#: info/window.c:1048
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d líneas --%s--"
 
-#: info/window.c:1052
+#: info/window.c:1055
 #, c-format
 msgid " Subfile: %s"
 msgstr " Sub-fichero: %s"
@@ -3185,7 +3185,7 @@ msgstr "El nodo `%s' requiere un comando de sección, como por ejemplo `%c%s'"
 msgid "No node name specified for `%c%s' command"
 msgstr "No se ha especificado nombre de nodo alguno para el comando `%c%s'"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1160
+#: makeinfo/node.c:919 makeinfo/node.c:1163
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "El enlace `%s' y el nodo `%s' apuntan al mismo fichero"
@@ -3196,7 +3196,7 @@ msgstr ""
 "Este comando `@anchor' será ignorado; referencias a este no estarán "
 "disponibles"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1163
+#: makeinfo/node.c:924 makeinfo/node.c:1166
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Renombre este enlace o use la opción `--no-split'"
 
@@ -3205,70 +3205,70 @@ msgstr "Renombre este enlace o use la opción `--no-split'"
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Texto inesperado al final del fichero multi-página HMTL `%s'"
 
-#: makeinfo/node.c:1157
+#: makeinfo/node.c:1160
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Los enlaces `%s' y `%s' apuntan al mismo fichero"
 
-#: makeinfo/node.c:1162
+#: makeinfo/node.c:1165
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 "El comando `@anchor' será ignorado; referencias a este no estarán disponibles"
 
-#: makeinfo/node.c:1359
+#: makeinfo/node.c:1362
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "`%s' hace referencia a un nodo inexistente (`%s'), quizás debido a un "
 "seccionado incorrecto del documento"
 
-#: makeinfo/node.c:1459
+#: makeinfo/node.c:1462
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "El próximo campo del nodo `%s' no apunta a lugar alguno, quizás debido a un "
 "seccionado incorrecto del documento"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1465
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Este nodo (%s) contiene una referencia inválida en el campo `Prev'"
 
-#: makeinfo/node.c:1517
+#: makeinfo/node.c:1520
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "El campo `Prev' del nodo `%s' no apunta a sitio alguno"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1524
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Este nodo (%s) contiene una referencia inválida en el campo `Next'"
 
-#: makeinfo/node.c:1533
+#: makeinfo/node.c:1536
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 "`%s' no contiene referencia a `Up', quizás debido a un seccionado incorrecto "
 "del documento"
 
-#: makeinfo/node.c:1602
+#: makeinfo/node.c:1605
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "El nodo `%s' carece de elemento de menú alguno para `%s' aunque consta como "
 "destino para `Up'"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1637
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "Nodo `%s' no referenciado"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
 msgstr "Eliminando %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1731
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "No se pudo eliminar `%s': %s"

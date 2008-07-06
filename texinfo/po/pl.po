@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-06-12 18:02+0200\n"
+"POT-Creation-Date: 2008-07-06 02:01+0200\n"
 "PO-Revision-Date: 2008-05-26 18:13+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -290,12 +290,12 @@ msgstr ""
 "\n"
 "* Menu: Wêz³y, których indeksy zawieraj± `%s':\n"
 
-#: info/info.c:273 info/infokey.c:899
+#: info/info.c:275 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Wiêcej informacji mo¿na uzyskaæ przez --help.\n"
 
-#: info/info.c:292 info/infokey.c:145 install-info/install-info.c:2101
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
 #: makeinfo/makeinfo.c:802 util/texindex.c:295
 #, c-format
 msgid ""
@@ -312,12 +312,12 @@ msgstr ""
 "rozpowszechniaæ.\n"
 "Nie ma ¯ADNEJ GWARANCJI w zakresie dopuszczalnym przez prawo.\n"
 
-#: info/info.c:504
+#: info/info.c:506
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "nie znaleziono wpisów w indeksie dla `%s'\n"
 
-#: info/info.c:598
+#: info/info.c:600
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -328,7 +328,7 @@ msgstr ""
 "\n"
 "Przegl±danie dokumentacji w formacie Info.\n"
 
-#: info/info.c:604
+#: info/info.c:606
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -344,7 +344,7 @@ msgstr ""
 "      --dribble=PLIK           zapamiêtanie sekwencji klawiszy w PLIKU.\n"
 "  -f, --file=PLIK              podanie pliku Info do odwiedzenia."
 
-#: info/info.c:611
+#: info/info.c:613
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -357,7 +357,7 @@ msgstr ""
 "  -n, --node=WÊZE£             podanie wêz³a w pierwszym odwiedzanym pliku.\n"
 "  -o, --output=PLIK            zapis wybranych wêz³ów do PLIKU."
 
-#: info/info.c:617
+#: info/info.c:619
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -371,11 +371,11 @@ msgstr ""
 "PLIKU.\n"
 "  -O, --show-options, --usage  przej¶cie do wêz³a z opcjami linii poleceñ."
 
-#: info/info.c:624
+#: info/info.c:626
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly        tryb przyjazny dla syntezatorów mowy."
 
-#: info/info.c:628
+#: info/info.c:630
 msgid ""
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -389,7 +389,7 @@ msgstr ""
 "zakoñczenie.\n"
 "  -w, --where, --location      wy¶wietlenie fizycznego po³o¿enia pliku Info."
 
-#: info/info.c:634
+#: info/info.c:636
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -408,7 +408,7 @@ msgstr ""
 "wzglêdem\n"
 "pocz±tkowo odwiedzonego wêz³a."
 
-#: info/info.c:641
+#: info/info.c:643
 msgid ""
 "\n"
 "Examples:\n"
@@ -431,7 +431,7 @@ msgstr ""
 "  info -f ./foo.info         pokazanie pliku ./foo.info bez szukania w "
 "katalogu"
 
-#: info/info.c:650 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -444,72 +444,72 @@ msgstr ""
 "bug-texinfo@gnu.org, a ogólne pytania i dyskusjê na help-texinfo@gnu.org.\n"
 "Strona domowa texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:684
+#: info/info.c:686
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `%s'."
 
-#: info/info.c:685
+#: info/info.c:687
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `(%s)%s'."
 
-#: info/info.c:686
+#: info/info.c:688
 msgid "Cannot find a window!"
 msgstr "Nie mo¿na znale¼æ okna!"
 
-#: info/info.c:687
+#: info/info.c:689
 msgid "Point doesn't appear within this window's node!"
 msgstr "Kropka nie wystêpuje w wê¼le z tego okna!"
 
-#: info/info.c:688
+#: info/info.c:690
 msgid "Cannot delete the last window."
 msgstr "Nie mo¿na usun±æ ostatniego okna."
 
-#: info/info.c:689
+#: info/info.c:691
 msgid "No menu in this node."
 msgstr "Brak menu w tym wê¼le."
 
-#: info/info.c:690
+#: info/info.c:692
 msgid "No footnotes in this node."
 msgstr "Brak przypisów w tym wê¼le."
 
-#: info/info.c:691
+#: info/info.c:693
 msgid "No cross references in this node."
 msgstr "Brak odsy³aczy w tym wê¼le."
 
-#: info/info.c:692
+#: info/info.c:694
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Brak wska¼nika `%s' dla tego wêz³a."
 
-#: info/info.c:693
+#: info/info.c:695
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Nieznane polecenie Info `%c'; `?' przywo³uje pomoc."
 
-#: info/info.c:694
+#: info/info.c:696
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Typ terminala `%s' nie jest wystarczaj±cy do uruchomienia Info."
 
-#: info/info.c:695
+#: info/info.c:697
 msgid "You are already at the last page of this node."
 msgstr "To ju¿ jest ostatnia strona tego wêz³a."
 
-#: info/info.c:696
+#: info/info.c:698
 msgid "You are already at the first page of this node."
 msgstr "To ju¿ jest pierwsza strona tego wêz³a."
 
-#: info/info.c:697
+#: info/info.c:699
 msgid "Only one window."
 msgstr "Tylko jedno okno."
 
-#: info/info.c:698
+#: info/info.c:700
 msgid "Resulting window would be too small."
 msgstr "Wynikowe okno by³oby zbyt ma³e."
 
-#: info/info.c:699
+#: info/info.c:701
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Za ma³o miejsca na okno pomocy, proszê usun±æ okno."
 
@@ -1755,25 +1755,25 @@ msgstr "Ustawienie %s na warto¶æ (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Ustawienie %s na warto¶æ (%s): "
 
-#: info/window.c:1023
+#: info/window.c:1026
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Znaczniki s± nieaktualne ***"
 
-#: info/window.c:1034
+#: info/window.c:1037
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linii ----, "
 
-#: info/window.c:1041
+#: info/window.c:1044
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d linii --%s--"
 
-#: info/window.c:1045
+#: info/window.c:1048
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d linii --%s--"
 
-#: info/window.c:1052
+#: info/window.c:1055
 #, c-format
 msgid " Subfile: %s"
 msgstr " Podplik: %s"
@@ -2996,7 +2996,7 @@ msgstr "Wêze³ `%s' wymaga polecenia wybieraj±cego (np. %c%s)"
 msgid "No node name specified for `%c%s' command"
 msgstr "Nie podano nazwy wêz³a dla polecenia `%c%s'"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1160
+#: makeinfo/node.c:919 makeinfo/node.c:1163
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Znacznik `%s' i wêze³ `%s' odwzorowuj± siê na t± sam± nazwê pliku"
@@ -3005,7 +3005,7 @@ msgstr "Znacznik `%s' i wêze³ `%s' odwzorowuj± siê na t± sam± nazwê pliku"
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Zignorowano to polecenie @anchor; wskazania na nie nie bêd± dzia³a³y"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1163
+#: makeinfo/node.c:924 makeinfo/node.c:1166
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Nale¿y zmieniæ ten znacznik lub u¿yæ opcji `--no-split'"
 
@@ -3014,64 +3014,64 @@ msgstr "Nale¿y zmieniæ ten znacznik lub u¿yæ opcji `--no-split'"
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Nieoczekiwany ³añcuch na koñcu pliku dzielonego HTML `%s'"
 
-#: makeinfo/node.c:1157
+#: makeinfo/node.c:1160
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Znaczniki `%s' i `%s' odwzorowuj± siê na t± sam± nazwê pliku"
 
-#: makeinfo/node.c:1162
+#: makeinfo/node.c:1165
 msgid "@anchor command ignored; references to it will not work"
 msgstr "zignorowano polecenie @anchor; wskazania na nie nie bêd± dzia³a³y"
 
-#: makeinfo/node.c:1359
+#: makeinfo/node.c:1362
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s wskazuje na nieistniej±cy wêze³ `%s' (mo¿e b³êdny podzia³ na sekcje?)"
 
-#: makeinfo/node.c:1459
+#: makeinfo/node.c:1462
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "Pole Nastêpny wêz³a `%s' nie wskazywane (mo¿e b³êdny podzia³ na sekcje?)"
 
-#: makeinfo/node.c:1462
+#: makeinfo/node.c:1465
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Ten wêze³ (%s) ma z³e pole Poprzedni"
 
-#: makeinfo/node.c:1517
+#: makeinfo/node.c:1520
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Pole Poprzedni wêz³a `%s' nie wskazywane"
 
-#: makeinfo/node.c:1521
+#: makeinfo/node.c:1524
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Ten wêze³ (%s) ma z³e pole Nastêpny"
 
-#: makeinfo/node.c:1533
+#: makeinfo/node.c:1536
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "`%s' nie ma pola W górê (mo¿e b³êdny podzia³ na sekcje?)"
 
-#: makeinfo/node.c:1602
+#: makeinfo/node.c:1605
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Wêze³ `%s' nie ma elementu menu dla `%s' pomimo bycia jego celem W górê"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1637
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "nie wskazywany wêze³ `%s'"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
 msgstr "Usuwanie %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1731
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Nie mo¿na usun±æ pliku `%s': %s"
