@@ -5,6 +5,10 @@
 
 2008-07-05  Karl Berry  <karl@gnu.org>
 
+	* install-info/tests/ii-0041-test, ii-0050-test: with template,
+	have to handle compressed output files differently, or
+	the temp files are left behind by distclean.
+
 	* install-info/tests/*-test: use mktemp XXXXXXXX for BSD.
 	Report from Unga, 29 Jun 2008 08:29:54.
 

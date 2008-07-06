@@ -9,7 +9,8 @@
 
 . ./defs || exit 1
 
-outputdirfile=`mktemp XXXXXXXX`.gz
+tempfile=`mktemp XXXXXXXX`
+outputdirfile=$tempfile.gz
 cp ${testdir}/ii-0041-input-dir-file.gz $outputdirfile
 if [ "x$?" != "x0" ]; then
   exit 1
@@ -27,5 +28,5 @@ fi
 zdiff ${testdir}/ii-0041-expected-dir-file.gz $outputdirfile
 retval=$?
 
-rm -f $outputdirfile
+rm -f $tempfile $outputdirfile
 exit $retval
