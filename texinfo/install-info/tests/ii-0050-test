@@ -9,7 +9,7 @@
 
 . ./defs || exit 1
 
-tempfile=`mktemp XXXXXXXX`
+tempfile=`mktemp ii50-XXXXXXXX`
 outputdirfile=$tempfile.gz
 cp ${testdir}/ii-0050-input-dir-file.gz $outputdirfile
 if [ "x$?" != "x0" ]; then

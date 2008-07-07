@@ -1,3 +1,7 @@
+2008-07-07  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/*-test: prefix the template with ii##.
+
 2008-07-06  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.92.

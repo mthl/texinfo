@@ -9,7 +9,7 @@
 
 . ./defs || exit 1
 
-outputdirfile=`mktemp XXXXXXXX`
+outputdirfile=`mktemp ii03-XXXXXXXX`
 cp ${testdir}/ii-0003-input-dir-file $outputdirfile
 if [ "x$?" != "x0" ]; then
   exit 1
