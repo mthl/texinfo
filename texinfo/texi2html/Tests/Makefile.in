@@ -125,6 +125,7 @@ sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
@@ -143,7 +144,7 @@ SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      navigation_chapter_vert navigation_section_no_nav \
      navigation_node navigation_section_no_nav_vert \
      navigation_node_no_header navigation_section_vert ccvs_mediawiki \
-     ccvs_mediawiki_nosplit
+     ccvs_mediawiki_nosplit no_monolithic complex_no_monolithic
 
 all: all-am
 

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.138 2008-05-17 22:41:06 pertusus Exp $
+# $Id: texi2html.init,v 1.139 2008-07-11 23:47:44 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -233,6 +233,14 @@ $EXTERNAL_DIR = undef;
 # if this is set, latex2html is used for generation of math content.
 $L2H = '';
 
+# -transliterate-file-names 
+# transliterate node names for external refs (and internal if NODE_FILES)
+$TRANSLITERATE_NODE = 1;
+
+# -monolithic
+# output only one file including ToC. It only makes sense when not split
+$MONOLITHIC = 1;
+
 # -css-include
 # All the specified css files are used. More precisely the @import sections
 # are added to the beginning of the CSS_LINES the remaining is added at
@@ -299,9 +307,6 @@ $USE_NODE_TARGET = 1;
 
 # new style for crossrefs
 $NEW_CROSSREF_STYLE = 1;
-
-# transliterate node names for external refs (and internal if NODE_FILES)
-$TRANSLITERATE_NODE = 1;
 
 # if set and menu entry equals menu description, then do not print 
 # menu description.
@@ -519,6 +524,14 @@ $ICONS = 0;
 
 @IMAGE_EXTENSIONS = ('png','jpg','jpeg','gif');
 
+
+%misc_pages_targets = (
+   'Overview' => 'SEC_Overview',
+   'Contents' => 'SEC_Contents',
+   'Footnotes' => 'SEC_Foot',
+   'About' => 'SEC_About'
+);
+
 $init_out    = \&t2h_default_init_out;
 $finish_out    = \&t2h_default_finish_out;
 
@@ -657,7 +670,6 @@ sub t2h_default_translate_names()
     );
 
 }
-
 
 # We have to do this dynamically because of internationalization and because
 # in body $LANG could be used.
@@ -1040,18 +1052,19 @@ sub T2H_DEFAULT_print_misc_header
 {
     my $fh = shift;
     my $buttons = shift;
-    &$print_page_head($fh) if $SPLIT;
-    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
+    my $new_file = shift;
+    &$print_page_head($fh) if ($new_file);
+    &$print_head_navigation($fh, $buttons) if ($new_file or $SECTION_NAVIGATION);
 }
 
 sub T2H_DEFAULT_print_misc_footer
 {
     my $fh = shift;
     my $buttons = shift;
-    my $nwords = shift;
+    my $new_file = shift;
     &$print_foot_navigation($fh, $buttons);
     print $fh "$SMALL_RULE\n";
-    if ($SPLIT)
+    if ($new_file)
     {
         &$print_navigation($fh, $buttons);# if ($SPLIT ne 'node');
         &$print_page_foot($fh);
@@ -1061,11 +1074,12 @@ sub T2H_DEFAULT_print_misc_footer
 sub T2H_DEFAULT_print_misc
 {
     my $fh = shift;
+    my $new_file = shift;
     my $buttons = \@MISC_BUTTONS;
-    &$print_misc_header($fh, $buttons);
+    &$print_misc_header($fh, $buttons, $new_file);
     print $fh "<h1>$Texi2HTML::NAME{This}</h1>\n";
     main::print_lines($fh);
-    &$print_misc_footer($fh, $buttons);
+    &$print_misc_footer($fh, $buttons, $new_file);
 }
 ##################################################################
 # section_footer is only called if SPLIT eq 'section'
@@ -4822,6 +4836,10 @@ sub t2h_default_foot_line_and_ref($$$$$$$)
     my $lines = shift;
     my $state = shift;
     
+    if ($document_file eq $footnote_file)
+    {
+        $document_file = $footnote_file = '';
+    }
     unshift (@$lines, '<h3>' . 
           &$anchor($footnote_id, $document_file . "#$place_id",
                    "($number_in_doc)")

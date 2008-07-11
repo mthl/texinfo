@@ -48,6 +48,8 @@ This file records noteworthy changes.
 * BUG FIXES
   ---------
 
+* --no-monolithic is reenabled.
+
 * @, followed by an argument without brace is now handled. Report from 
   Jorge Barros de Abreu.
 

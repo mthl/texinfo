@@ -1,3 +1,15 @@
+2008-06-02  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: dynamically determine file hrefs for
+	misc elements. Generalize code common for all misc elements. 
+	In toc and footnotes use real filenames instead of empty filenames 
+	when not split.
+	monolithic option is not obsolete and does something different from 
+	no split (toc, about... are in different files if set to no).
+	Code cleanups in rearrange_elements.
+	* Tests/*: add a test for -no-monolithic.
+	* */Makefile.in: use autoconf 2.62
+
 2008-05-18  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: complete unicode mapping for @-commands.

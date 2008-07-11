@@ -225,6 +225,8 @@ test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
 test_texi sectionning recursive_copying.texi
 test_texi sectionning ../node_footnote/node_footnote.texi "--no-separated-footnotes"
+test_texi no_monolithic no_monolithic.texi "-no-monolithic"
+test_texi complex_no_monolithic ../no_monolithic/no_monolithic.texi "-no-monolithic -init only_toc_out.init"
 test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
 test_texi navigation navigation.texi
 test_texi navigation navigation.texi "--no-sec-nav -prefix navigation_no_nav" 0 texi navigation_no_nav

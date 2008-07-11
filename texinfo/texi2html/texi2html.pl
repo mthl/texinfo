@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.205 2008-05-17 22:41:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.206 2008-07-11 23:47:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -219,6 +219,7 @@ $NODE_FILES
 $NODE_NAME_IN_MENU
 $AVOID_MENU_REDUNDANCY
 $SECTION_NAVIGATION
+$MONOLITHIC
 $SHORTEXTN 
 $EXTENSION
 $OUT 
@@ -477,6 +478,7 @@ $complex_format_map
 %ascii_things_map
 %numeric_entity_map
 %perl_charset_to_html
+%misc_pages_targets
 %iso_symbols
 %misc_command
 %css_map
@@ -543,13 +545,18 @@ sub T2H_GPL_toc_body($)
         {
             push(@{$Texi2HTML::TOC_LINES}, "</li>\n");
         }
-        my $file = '';
-        $file = $element->{'file'} if ($SPLIT);
+#        my $file = '';
+#        $file = $element->{'file'} if ($SPLIT or !$MONOLITHIC);
+        my $dest_for_toc = $element->{'file'};
+        my $dest_for_stoc = $element->{'file'};
+        $dest_for_toc = '' if ($dest_for_toc eq $Texi2HTML::THISDOC{'toc_file'});
+        $dest_for_stoc = '' if ($dest_for_stoc eq $Texi2HTML::THISDOC{'stoc_file'});
         my $text = $element->{'text'};
         #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
-        my $entry = "<li>" . &$anchor ($element->{'tocid'}, "$file#$element->{'target'}",$text);
-        push (@{$Texi2HTML::TOC_LINES}, $ind . $entry);
-        push(@{$Texi2HTML::OVERVIEW}, $entry. "</li>\n") if ($level == 1);
+        my $toc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_toc#$element->{'target'}",$text);
+        my $stoc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_stoc#$element->{'target'}",$text);
+        push (@{$Texi2HTML::TOC_LINES}, $ind . $toc_entry);
+        push(@{$Texi2HTML::OVERVIEW}, $stoc_entry. "</li>\n") if ($level == 1);
     }
     while (0 < $current_level)
     {
@@ -2155,6 +2162,13 @@ $T2H_OPTIONS -> {'transliterate-file-names'} =
  verbose => 'produce file names in ASCII transliteration',
 };
 
+$T2H_OPTIONS -> {'monolithic'} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::MONOLITHIC,
+ verbose => 'output only one file including ToC, About...',
+ noHelp => 1
+};
 ##
 ## obsolete cmd line options
 ##
@@ -2332,13 +2346,6 @@ $T2H_OBSOLETE_OPTIONS -> {expandtex} =
  linkage => sub {push @Texi2HTML::Config::EXPAND, 'tex';},
  verbose => 'obsolete, use "-expand tex" instead',
  noHelp => 2,
-};
-$T2H_OBSOLETE_OPTIONS -> {monolithic} =
-{
- type => '!',
- linkage => sub {$Texi2HTML::Config::SPLIT = '';},
- verbose => 'obsolete, use "-split no" instead',
- noHelp => 2
 };
 $T2H_OBSOLETE_OPTIONS -> {split_node} =
 {
@@ -2927,11 +2934,33 @@ if ($Texi2HTML::Config::SHORTEXTN)
     $docu_ext = "htm";
 }
 
+$Texi2HTML::THISDOC{'extension'} = $docu_ext;
+$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
+$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
+
 $docu_doc = $docu_name . ($docu_ext ? ".$docu_ext" : ""); # document's contents
 if ($Texi2HTML::Config::SPLIT)
 {
     $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
+}
+else
+{
+    if ($Texi2HTML::Config::OUT)
+    {
+        $docu_doc = $Texi2HTML::Config::OUT;
+        $docu_doc =~ s|.*/||;
+    }
+    if (defined $Texi2HTML::Config::element_file_name)
+    {
+        my $docu_doc_set = &$Texi2HTML::Config::element_file_name
+           (undef, "doc", $docu_name);
+        $docu_doc = $docu_doc_set if (defined($docu_doc_set));
+    } 
+    $docu_top = $docu_doc;
+}
 
+if ($Texi2HTML::Config::SPLIT or !$Texi2HTML::Config::MONOLITHIC)
+{
     if (defined $Texi2HTML::Config::element_file_name)
     {
         $docu_toc = &$Texi2HTML::Config::element_file_name
@@ -2968,18 +2997,7 @@ if ($Texi2HTML::Config::SPLIT)
 }
 else
 {
-    if ($Texi2HTML::Config::OUT)
-    {
-        $docu_doc = $Texi2HTML::Config::OUT;
-        $docu_doc =~ s|.*/||;
-    }
-    if (defined $Texi2HTML::Config::element_file_name)
-    {
-        my $docu_doc_set = &$Texi2HTML::Config::element_file_name
-           (undef, "doc", $docu_name);
-        $docu_doc = $docu_doc_set if (defined($docu_doc_set));
-    } 
-    $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
+    $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_doc;
 }
 
 # Note that file extension has already been added here.
@@ -3021,12 +3039,9 @@ $Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
 $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
 $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
 $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
-$Texi2HTML::THISDOC{'extension'} = $docu_ext;
 # FIXME document that
 $Texi2HTML::THISDOC{'filename'}->{'toc_frame'} = $docu_toc_frame;
 $Texi2HTML::THISDOC{'filename'}->{'frame'} = $docu_frame;
-$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
-$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
 
 #
 # _foo: internal variables to track @foo
@@ -3505,8 +3520,8 @@ my %special_commands;       # hash for the commands specially handled
 # and anchors in footnotes
 my $footnote_element = 
 { 
-    'id' => 'SEC_Foot',
-    'target' => 'SEC_Foot',
+    'id' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
+    'target' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
     'file' => $docu_foot,
     'footnote' => 1,
     'element' => 1,
@@ -3515,9 +3530,12 @@ my $footnote_element =
 
 my %content_element =
 (
-    'contents' => { 'id' => 'SEC_Contents', 'target' => 'SEC_Contents',
+    'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+         'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
          'contents' => 1, 'texi' => '_contents' },
-    'shortcontents' => { 'id' => 'SEC_Overview', 'target' => 'SEC_Overview', 
+    'shortcontents' => { 
+        'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
+        'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
         'shortcontents' => 1, 'texi' => '_shortcontents' },
 );
 
@@ -3673,15 +3691,15 @@ sub pass_structure()
                         next;
                     }
 
-                    if ($node_next)
+                    if (defined($node_next) and ($node_next !~ /^\s*$/))
                     {
                         $node_ref->{'node_next'} = normalise_node($node_next);
                     }
-                    if ($node_prev)
+                    if (defined($node_prev) and ($node_prev !~ /^\s*$/))
                     {
                         $node_ref->{'node_prev'} = normalise_node($node_prev);
                     }
-                    if ($node_up)
+                    if (defined($node_up) and ($node_up !~ /^\s*$/))
                     { 
                         $node_ref->{'node_up'} = normalise_node($node_up);
                     }
@@ -3734,6 +3752,7 @@ sub pass_structure()
                         push @all_elements, $section_ref;
                         $state->{'element'} = $section_ref;
                         $state->{'place'} = $section_ref->{'current_place'};
+                        ################# debug 
                         my $node_ref = "NO NODE";
                         my $node_texi ='';
                         if ($state->{'node_ref'})
@@ -3743,6 +3762,7 @@ sub pass_structure()
                         }
                         print STDERR "# pass_structure node($node_ref)$node_texi, tag \@$tag($section_ref->{'level'}) ref $section_ref, num,id $section_ref->{'sec_num'},$section_ref->{'id'}\n   $name\n"
                            if $T2H_DEBUG & $DEBUG_ELEMENTS;
+                        ################# end debug 
                     }
                 }
                 elsif (/^\@printindex\s+(\w+)/)
@@ -4628,26 +4648,28 @@ sub rearrange_elements()
     # nodes and make a second pass for these nodes afterwards.
     my @nodes_with_unknown_directions = ();
 
-    my @node_directions = ('node_prev', 'node_next', 'node_up');
+    my %node_directions = (
+         'node_prev' => 'nodeprev',
+         'node_next' => 'nodenext',
+         'node_up' => 'nodeup');
     # handle nodes 
     # the node_prev... are texinfo strings, find the associated node references
     print STDERR "# Resolve nodes directions\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $node (@nodes_list)
     {
-        foreach my $direction (@node_directions)
-        { 
-            if (defined($node->{$direction}) and !ref($node->{$direction})
-                and ($node->{$direction} ne ''))
+        foreach my $direction (keys(%node_directions))
+        {
+            if (defined($node->{$direction}))
             {
                 if ($nodes{$node->{$direction}} and $nodes{$node->{$direction}}->{'seen'})
                 {
-                     $node->{$direction} = $nodes{$node->{$direction}};
+                     $node->{$node_directions{$direction}} = $nodes{$node->{$direction}};
                 }
                 elsif (($node->{$direction} =~ /^\(.*\)/) or $novalidate)
                 { # ref to an external node
                     if (exists($nodes{$node->{$direction}}))
                     {
-                        $node->{$direction} = $nodes{$node->{$direction}};
+                        $node->{$node_directions{$direction}} = $nodes{$node->{$direction}};
                     }
                     else
                     {
@@ -4657,7 +4679,7 @@ sub rearrange_elements()
                         my $node_ref = { 'texi' => $node->{$direction} };
                         $node_ref->{'external_node'} = 1 if ($node->{$direction} =~ /^\(.*\)/);
                         $nodes{$node->{$direction}} = $node_ref;
-                        $node->{$direction} = $node_ref;
+                        $node->{$node_directions{$direction}} = $node_ref;
                     }
                 }
                 else
@@ -4677,10 +4699,9 @@ sub rearrange_elements()
     # (have same node id) than an existing node
     foreach my $node (@nodes_with_unknown_directions)
     {
-        foreach my $direction (@node_directions)
+        foreach my $direction (keys(%node_directions))
         { 
-            if (defined($node->{$direction}) and !ref($node->{$direction})
-                and ($node->{$direction} ne ''))
+            if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
             {
                 echo_warn ("$direction `$node->{$direction}' for `$node->{'texi'}' not found");
                 my @equivalent_nodes = equivalent_nodes($node->{$direction});
@@ -4696,11 +4717,7 @@ sub rearrange_elements()
                 if (defined($node_seen))
                 {
                     echo_warn (" ---> but equivalent node `$node_seen' found");
-                    $node->{$direction} = $nodes{$node_seen};
-                }
-                else
-                {
-                    delete $node->{$direction};
+                    $node->{$node_directions{$direction}} = $nodes{$node_seen};
                 }
             }
         }
@@ -4916,11 +4933,7 @@ sub rearrange_elements()
 
         # use values deduced from menus to complete missing up, next, prev
         # or from sectionning commands if automatic sectionning
-        if ($node->{'node_up'})
-        {
-            $node->{'nodeup'} = $node->{'node_up'};
-        }
-        elsif ($node->{'automatic_directions'} and $node->{'section_ref'})
+        if (!$node->{'nodeup'} and $node->{'automatic_directions'} and $node->{'section_ref'})
         {
             if (defined($node_top) and ($node eq $node_top))
             { # Top node has a special up, which is (dir) by default
@@ -4965,38 +4978,32 @@ sub rearrange_elements()
             }
         }
 
-        # Find next node
-        if ($node->{'node_next'})
-        {
-            $node->{'nodenext'} = $node->{'node_next'};
-        }
+        # Find next node if not already found
+        if ($node->{'nodenext'}) {}
         elsif ($node->{'texi'} eq 'Top')
         { # special case as said in the texinfo manual
             $node->{'nodenext'} = $node->{'menu_child'} if ($node->{'menu_child'});
         }
-        elsif ($node->{'automatic_directions'})
+        elsif ($node->{'automatic_directions'} and defined($node->{'section_ref'}))
         {
-            if (defined($node->{'section_ref'}))
+            my $next;
+            my $section = $node->{'section_ref'};
+            if (defined($section->{'sectionnext'}))
             {
-                my $next;
-                my $section = $node->{'section_ref'};
+                $next = get_node($section->{'sectionnext'})
+            }
+            else 
+            {
+                while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
+                {
+                    $section = $section->{'sectionup'};
+                }
                 if (defined($section->{'sectionnext'}))
                 {
-                    $next = get_node($section->{'sectionnext'})
+                    $next = get_node($section->{'sectionnext'});
                 }
-                else 
-                {
-                    while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
-                    {
-                        $section = $section->{'sectionup'};
-                    }
-                    if (defined($section->{'sectionnext'}))
-                    {
-                        $next = get_node($section->{'sectionnext'});
-                    }
-                }
-                $node->{'nodenext'} = $next;
             }
+            $node->{'nodenext'} = $next;
         }
         # next we try menus. makeinfo don't do that
         if (!defined($node->{'nodenext'}) and $node->{'menu_next'} 
@@ -5005,11 +5012,7 @@ sub rearrange_elements()
             $node->{'nodenext'} = $node->{'menu_next'};
         }
         # Find prev node
-        if ($node->{'node_prev'})
-        {
-            $node->{'nodeprev'} = $node->{'node_prev'};
-        }
-        elsif ($node->{'automatic_directions'})
+        if (!$node->{'nodeprev'} and $node->{'automatic_directions'})
         {
             if (defined($node->{'section_ref'}))
             {
@@ -5129,10 +5132,10 @@ sub rearrange_elements()
     foreach my $element (@elements_list)
     {
         $element->{'element'} = 1;
-        # complete the up for toplevel elements now that element_top is defined
         print STDERR "# fwd and back for $element->{'texi'}\n" 
             if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        # at that point no node may be toplevel, only sections. 
+        # complete the up for toplevel elements now that element_top is defined.
+        # at that point no node may be toplevel, only sections.
         if ($element->{'toplevel'} and ($element ne $element_top))
         {
             $element->{'sectionup'} = $element_top;
@@ -5172,10 +5175,11 @@ sub rearrange_elements()
             {
                  $element->{'nodeprev'} = get_node($element->{'sectionprev'});
             }
-            if (defined($element->{'up'}))
+            if (defined($element->{'sectionup'}))
             {
-                 $element->{'nodeup'} = get_node($element->{'up'});
+                 $element->{'nodeup'} = get_node($element->{'sectionup'});
             }
+
             if ($element->{'child'})
             {
                 $element->{'following'} = get_node($element->{'child'});
@@ -5184,14 +5188,14 @@ sub rearrange_elements()
             {
                 $element->{'following'} = get_node($element->{'sectionnext'});
             }
-            elsif ($element->{'up'})
+            elsif ($element->{'sectionup'})
             {
                 my $up = $element;
-                while ($up->{'up'} and !$element->{'following'})
+                while ($up->{'sectionup'} and !$element->{'following'})
                 {
                     print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'up'});
-                    $up = $up->{'up'};
+                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'sectionup'});
+                    $up = $up->{'sectionup'};
                     if ($up->{'sectionnext'})
                     {
                         $element->{'following'} = get_node ($up->{'sectionnext'});
@@ -5675,7 +5679,6 @@ sub rearrange_elements()
     {
 #print STDERR "entry $place->{'entry'} texi $place->{'texi'}\n";
         $place->{'file'} = $element_top->{'file'};
-        #$place->{'id'} = $element_top->{'id'} unless defined($place->{'id'});
         $place->{'target'} = $element_top->{'target'} unless defined($place->{'target'});
         $place->{'element'} =  $element_top if (exists($place->{'element'}));
     }
@@ -5690,6 +5693,17 @@ sub rearrange_elements()
             $content_element{$content_type} = undef;
         }
     }
+    my ($toc_file, $stoc_file);
+    $toc_file = $docu_toc;
+    $stoc_file = $docu_stoc;
+    if ($Texi2HTML::Config::INLINE_CONTENTS)
+    {
+        $toc_file = $content_element{'contents'}->{'file'} if (defined($content_element{'contents'}));
+        $stoc_file = $content_element{'shortcontents'}->{'file'} if (defined($content_element{'shortcontents'}));
+    }
+    $Texi2HTML::THISDOC{'toc_file'} = $toc_file; 
+    $Texi2HTML::THISDOC{'stoc_file'} = $stoc_file; 
+    
     print STDERR "# find NextFile and PrevFile\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
@@ -5788,6 +5802,7 @@ sub rearrange_elements()
         print STDERR "  fb: $element->{'fastback'}->{'texi'}\n" if (defined($element->{'fastback'}));
         print STDERR "  b: $element->{'back'}->{'texi'}\n" if (defined($element->{'back'}));
         print STDERR "  p: $element->{'prev'}->{'texi'}\n" if (defined($element->{'prev'}));
+        print STDERR "  u: $element->{'sectionup'}->{'texi'}\n" if (defined($element->{'sectionup'}));
         print STDERR "  n: $element->{'sectionnext'}->{'texi'}\n" if (defined($element->{'sectionnext'}));
 	print STDERR "  t_n: $element->{'toplevelnext'}->{'texi'}\n" if (defined($element->{'toplevelnext'}));
 	print STDERR "  t_p: $element->{'toplevelprev'}->{'texi'}\n" if (defined($element->{'toplevelprev'}));
@@ -6449,27 +6464,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             #print STDERR "$element:$i: $Texi2HTML::THISDOC{$element}->[$i]\n";
         }
     }
-    # prepare TOC, OVERVIEW...
-    my ($toc_file, $stoc_file, $foot_file, $about_file);
-    # if not split the references are to the same file
-    $toc_file = $stoc_file = $foot_file = $about_file = '';
-    if ($Texi2HTML::Config::SPLIT)
-    {
-        $toc_file = $docu_toc;
-        $stoc_file = $docu_stoc;
-        if ($Texi2HTML::Config::INLINE_CONTENTS)
-        {
-            $toc_file = $content_element{'contents'}->{'file'} if (defined($content_element{'contents'}));
-            $stoc_file = $content_element{'shortcontents'}->{'file'} if (defined($content_element{'shortcontents'}));
-        }
-        $foot_file = $docu_foot;
-        $about_file = $docu_about;
-    }
-    $Texi2HTML::THISDOC{'toc_file'} = $toc_file; 
-    $Texi2HTML::HREF{'Contents'} = $toc_file.'#'.$content_element{'contents'}->{'target'} if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
-    $Texi2HTML::HREF{'Overview'} = $stoc_file.'#'.$content_element{'shortcontents'}->{'target'} if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
-    $Texi2HTML::HREF{'Footnotes'} = $foot_file. '#SEC_Foot';
-    $Texi2HTML::HREF{'About'} = $about_file . '#SEC_About' unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
+
+    my $do_about = 0;
+    $do_about = 1 unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
@@ -6672,6 +6669,16 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                         $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $element->{'file'});
                         $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $element->{'file'});
                     }
+                    else 
+                    {
+                        $Texi2HTML::HREF{'Contents'} = file_target_href($Texi2HTML::THISDOC{'toc_file'}, $element->{'file'}, $content_element{'contents'}->{'target'}) if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
+                        $Texi2HTML::HREF{'Overview'} = file_target_href($Texi2HTML::THISDOC{'stoc_file'}, $element->{'file'}, $content_element{'shortcontents'}->{'target'}) if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
+                    }
+                    if ($do_about)
+                    {
+                         $Texi2HTML::HREF{'About'} = file_target_href($docu_about, $element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'About'});
+                    }
+                    $Texi2HTML::HREF{'Footnotes'} = file_target_href($docu_foot, $element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'Footnotes'});
                     foreach my $direction (@element_directions)
                     {
                         my $elem = $element->{$direction};
@@ -6878,79 +6885,86 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
 
         $Texi2HTML::THIS_ELEMENT = undef;
     }
-    if (@foot_lines)
-    {
-        print STDERR "# writing Footnotes in $docu_foot_file\n" if $T2H_VERBOSE;
-        $FH = open_out ($docu_foot_file)
-            if $Texi2HTML::Config::SPLIT;
-        $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'Footnotes'};
-        $Texi2HTML::HREF{'Footnotes'} = '#' . $footnote_element->{'id'};
-        $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Footnotes'};
-        $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Footnotes'};
-        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Footnotes'};
-        $Texi2HTML::THIS_SECTION = \@foot_lines;
-        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($footnote_element->{'id'}) . "\n" ];
-        &$Texi2HTML::Config::print_Footnotes($FH);
-        close_out($FH, $docu_foot_file) 
-               if ($Texi2HTML::Config::SPLIT);
-        $Texi2HTML::HREF{'Footnotes'} = $Texi2HTML::HREF{'This'};
-    }
-
-    if (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS)
-    {
-        print STDERR "# writing Toc in $docu_toc_file\n" if $T2H_VERBOSE;
-        $FH = open_out ($docu_toc_file)
-            if $Texi2HTML::Config::SPLIT;
-        $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'Contents'};
-        $Texi2HTML::HREF{'Contents'} = "#SEC_Contents";
-        $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Contents'};
-        $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Contents'};
-        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Contents'};
-        $Texi2HTML::THIS_SECTION = $Texi2HTML::TOC_LINES;
-        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Contents") . "\n" ];
-        &$Texi2HTML::Config::print_Toc($FH);
-        close_out($FH, $docu_toc_file) 
-               if ($Texi2HTML::Config::SPLIT);
-        $Texi2HTML::HREF{'Contents'} = $Texi2HTML::HREF{'This'};
-    }
-
-    if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS)
-    {
-        print STDERR "# writing Overview in $docu_stoc_file\n" if $T2H_VERBOSE;
-        $FH = open_out ($docu_stoc_file)
-            if $Texi2HTML::Config::SPLIT;
-        $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'Overview'};
-        $Texi2HTML::HREF{'Overview'} = "#SEC_Overview";
-        $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'Overview'};
-        $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'Overview'};
-        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'Overview'};
-        $Texi2HTML::THIS_SECTION = $Texi2HTML::OVERVIEW;
-        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Overview") . "\n" ];
-        &$Texi2HTML::Config::print_Overview($FH);
-        close_out($FH,$docu_stoc_file) 
-               if ($Texi2HTML::Config::SPLIT);
-        $Texi2HTML::HREF{'Overview'} = $Texi2HTML::HREF{This};
-    }
     my $about_body;
-    if ($about_body = &$Texi2HTML::Config::about_body())
+    $about_body = &$Texi2HTML::Config::about_body();
+    # @foot_lines is emptied in finish_element if SEPARATED_FOOTNOTES
+    my %misc_page_infos = (
+       'Footnotes' => { 'file' => $docu_foot_file, 
+          'process' => $Texi2HTML::Config::print_Footnotes,
+          'section' => \@foot_lines },
+       'Contents' => { 'file' => $docu_toc_file,
+           'process' => $Texi2HTML::Config::print_Toc,
+           'section' => $Texi2HTML::TOC_LINES },
+       'Overview' => { 'file' => $docu_stoc_file,
+           'process' => $Texi2HTML::Config::print_Overview,
+           'section' => $Texi2HTML::OVERVIEW },
+       'About' => { 'file' => $docu_about_file,
+            'process' => $Texi2HTML::Config::print_About,
+            'section' => [$about_body] }
+    );
+    $misc_page_infos{'Footnotes'}->{'do'} = 1 if (@foot_lines);
+    $misc_page_infos{'Contents'}->{'do'} = 1 if 
+       (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS);
+    $misc_page_infos{'Overview'}->{'do'} = 1 if
+       (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS);
+    $misc_page_infos{'About'}->{'do'} = 1 if ($about_body);
+         
+    foreach my $misc_page('Footnotes', 'Contents', 'Overview', 'About')
     {
-        print STDERR "# writing About in $docu_about_file\n" if $T2H_VERBOSE;
-        $FH = open_out ($docu_about_file)
-            if $Texi2HTML::Config::SPLIT;
-
-        $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{'About'};
-        $Texi2HTML::HREF{'About'} = "#SEC_About";
-        $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{'About'};
-        $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{'About'};
-        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{'About'};
-        $Texi2HTML::THIS_SECTION = [$about_body];
-        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_About") . "\n" ];
-        &$Texi2HTML::Config::print_About($FH);
-        close_out($FH, $docu_stoc_file) 
-               if ($Texi2HTML::Config::SPLIT);
-        $Texi2HTML::HREF{'About'} = $Texi2HTML::HREF{'This'};
+        next unless ($misc_page_infos{$misc_page}->{'do'});
+        my $file = $misc_page_infos{$misc_page}->{'file'};
+        print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
+        my $saved_FH;
+        my $open_new;
+        if ($file ne $docu_doc)
+        {
+            $saved_FH = $FH;
+            # FIXME the file may have the same name than another file
+            $FH = open_out ($file);
+            print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
+            $open_new = 1;
+        }
+        else
+        {
+            print STDERR "# writing $misc_page in current file\n" if $T2H_VERBOSE;
+        }
+        foreach my $href_page (keys(%misc_page_infos))
+        {
+            $Texi2HTML::HREF{$href_page} = file_target_href(
+               $misc_page_infos{$href_page}->{'file'}, $file,
+               $Texi2HTML::Config::misc_pages_targets{$href_page})
+                 if ($misc_page_infos{$href_page}->{'do'});
+        }
+        #print STDERR "Doing hrefs for $misc_page First ";
+        $Texi2HTML::HREF{'First'} = href($element_first, $file);
+        #print STDERR "Last ";
+        $Texi2HTML::HREF{'Last'} = href($element_last, $file);
+        #print STDERR "Index ";
+        $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $file) if (defined($element_chapter_index));
+        #print STDERR "Top ";
+        $Texi2HTML::HREF{'Top'} = href($element_top, $file);
+        if ($Texi2HTML::Config::INLINE_CONTENTS)
+        {
+            $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $file);
+            $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $file);
+        }
+        $Texi2HTML::HREF{$misc_page} = '#' . $Texi2HTML::Config::misc_pages_targets{$misc_page};
+        $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{$misc_page};
+        $Texi2HTML::NAME{'This'} = $Texi2HTML::NAME{$misc_page};
+        $Texi2HTML::NO_TEXI{'This'} = $Texi2HTML::NO_TEXI{$misc_page};
+        $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{$misc_page};
+        $Texi2HTML::THIS_SECTION = $misc_page_infos{$misc_page}->{'section'}
+            if defined($misc_page_infos{$misc_page}->{'section'});
+        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($Texi2HTML::Config::misc_pages_targets{$misc_page}) . "\n" ];
+        &{$misc_page_infos{$misc_page}->{'process'}}($FH, $open_new);
+        
+        if ($open_new)
+        {
+            close_out($FH, $docu_foot_file);
+            $FH = $saved_FH;
+        }
     }
-
+        
     unless ($Texi2HTML::Config::SPLIT)
     {
         &$Texi2HTML::Config::print_page_foot($FH);
@@ -7359,6 +7373,17 @@ sub href($$)
 #}print STDERR "\n";
     $href .= $element->{'file'} if (defined($element->{'file'}) and $file ne $element->{'file'});
     $href .= "#$element->{'target'}" if (defined($element->{'target'}));
+    return $href;
+}
+
+sub file_target_href($$$)
+{
+    my $dest_file = shift;
+    my $orig_file = shift;
+    my $target = shift;
+    my $href = '';
+    $href .= $dest_file if (defined($dest_file) and ($dest_file ne $orig_file));
+    $href .= "#$target" if (defined($target));
     return $href;
 }
 
@@ -8599,8 +8624,8 @@ sub do_footnote($$$$)
         $docid = $target_prefix . $doc_state->{'region'} . "_$docid";
         $footid = $target_prefix . $doc_state->{'region'} . "_$footid";
     }
-    my $from_file = '';
-    if ($doc_state->{'element'} and $Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES)
+    my $from_file = $docu_doc;
+    if ($doc_state->{'element'})
     { 
         $from_file = $doc_state->{'element'}->{'file'};
     }
@@ -8609,13 +8634,11 @@ sub do_footnote($$$$)
     {
         $foot_state->{'element'} = $footnote_element;
     }
-    my $file = '';
-    $file = $docu_foot if ($Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SEPARATED_FOOTNOTES);
     
     # FIXME use split_lines ? It seems to work like it is now ?
     my @lines = substitute_text($foot_state, map {$_ = $_."\n"} split (/\n/, $text));
     my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
-         $$relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $doc_state);
+         $$relative_foot_num, $footid, $docid, $from_file, $foot_state->{'element'}->{'file'}, \@lines, $doc_state);
     if ($doc_state->{'outside_document'} or ($doc_state->{'region'} and $doc_state->{'multiple_pass'} > 0))
     {
 #print STDERR "multiple_pass $doc_state->{'multiple_pass'}, 'outside_document' $doc_state->{'outside_document'}\n";
@@ -10841,7 +10864,7 @@ sub scan_line($$$$;$)
                 next;
             }
             # the following macros are modified or ignored if we are 
-            # removing texi, and they are not handled like macros in text
+            # removing texi, and they are not handled like macros in normal text
             if ($state->{'remove_texi'})
             {
                  # handle specially some macros
@@ -10895,7 +10918,7 @@ sub scan_line($$$$;$)
                 next;
             }
 
-            # handle the other macros, in the context of some normal text
+            # handle the other macros, we are in the context of normal text
             if (defined($sec2level{$macro}))
             {
                  #dump_stack($text, $stack, $state);
