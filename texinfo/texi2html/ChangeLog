@@ -2,6 +2,8 @@
 
 	* texi2html.pl, doc/*: synchronize command-line switches with 
 	makeinfo.
+	* i18n/fr, Tests/*: revised french translation from Jean-Charles
+	Malahieude.
 
 2008-07-18  Patrice Dumas  <dumas@centre-cired.fr>
 
