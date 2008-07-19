@@ -46,6 +46,13 @@ This file records noteworthy changes.
 
 * TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 
+* changes in command line switches to synchronize with makeinfo:
+  --number becomes --number-sections
+  --separated-footnotes becomes --footnote-style
+  --sec-nav becomes --header
+  --Verbose becomes --verbose
+  --lang becomes --document-language
+
 * BUG FIXES
   ---------
 

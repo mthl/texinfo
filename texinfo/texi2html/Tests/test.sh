@@ -224,30 +224,30 @@ test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
 test_texi sectionning recursive_copying.texi
-test_texi sectionning ../node_footnote/node_footnote.texi "--no-separated-footnotes"
+test_texi sectionning ../node_footnote/node_footnote.texi "--footnote-style=end"
 test_texi no_monolithic no_monolithic.texi "-no-monolithic"
 test_texi complex_no_monolithic ../no_monolithic/no_monolithic.texi "-no-monolithic -init only_toc_out.init"
-test_texi node_footnote node_footnote.texi "-use-node -node-files --no-separated-footnotes -split node -output ."
+test_texi node_footnote node_footnote.texi "-use-node -node-files --footnote-style=end -split node -output ."
 test_texi navigation navigation.texi
-test_texi navigation navigation.texi "--no-sec-nav -prefix navigation_no_nav" 0 texi navigation_no_nav
+test_texi navigation navigation.texi "--no-header -prefix navigation_no_nav" 0 texi navigation_no_nav
 test_texi navigation navigation.texi "-init ../../examples/noheaders.init -prefix navigation_no_headers" 0 texi navigation_no_headers
 test_texi navigation navigation.texi "-init vertical_nav.init -prefix navigation_vert" 0 texi navigation_vert
-test_texi navigation navigation.texi "-init vertical_nav.init --no-sec-nav -prefix navigation_no_nav_vert" 0 texi navigation_no_nav_vert
+test_texi navigation navigation.texi "-init vertical_nav.init --no-header -prefix navigation_no_nav_vert" 0 texi navigation_no_nav_vert
 test_texi navigation_chapter ../navigation/navigation.texi "-split chapter -output ."
 test_texi navigation_section ../navigation/navigation.texi "-split section -output ."
 test_texi navigation_node ../navigation/navigation.texi "-split node -output ."
-test_texi navigation_chapter_no_nav ../navigation/navigation.texi "-split chapter -no-sec-nav -output ."
-test_texi navigation_section_no_nav ../navigation/navigation.texi "-split section -no-sec-nav -output ."
-test_texi navigation_node_no_nav ../navigation/navigation.texi "-split node -no-sec-nav -output ."
+test_texi navigation_chapter_no_nav ../navigation/navigation.texi "-split chapter -no-header -output ."
+test_texi navigation_section_no_nav ../navigation/navigation.texi "-split section -no-header -output ."
+test_texi navigation_node_no_nav ../navigation/navigation.texi "-split node -no-header -output ."
 test_texi navigation_chapter_no_header ../navigation/navigation.texi "-split chapter -init ../../examples/noheaders.init -output ."
 test_texi navigation_section_no_header ../navigation/navigation.texi "-split section -init ../../examples/noheaders.init -output ."
 test_texi navigation_node_no_header ../navigation/navigation.texi "-split node -init ../../examples/noheaders.init -output ."
 test_texi navigation_chapter_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split chapter -output ."
 test_texi navigation_section_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split section -output ."
 test_texi navigation_node_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split node -output ."
-test_texi navigation_chapter_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split chapter -no-sec-nav -output ."
-test_texi navigation_section_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split section -no-sec-nav -output ."
-test_texi navigation_node_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split node -no-sec-nav -output ."
+test_texi navigation_chapter_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split chapter -no-header -output ."
+test_texi navigation_section_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split section -no-header -output ."
+test_texi navigation_node_no_nav_vert ../navigation/navigation.texi "-init ../navigation/vertical_nav.init -split node -no-header -output ."
 
 test_texi floats float.texi
 #test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
@@ -256,10 +256,10 @@ test_texi floats float_copying.texi "-split chapter -output ."
 test_texi floats caption_not_closed.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
-test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -no-separated-footnotes --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css -prefix exotic_formatting -output ." 0 texi exotic_formatting
+test_texi formatting formatting.texi "-split section -no-header -nonumber-sections -toc-links -def-table -short-ref -footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-init ../../examples/html32.init -prefix formatting_html32" 0 texi formatting_html32
-test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
-test_texi formatting formatting.texi "-lang fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
+test_texi formatting formatting.texi "-document-language fr -prefix fr_formatting" 0 texi fr_formatting
+test_texi formatting formatting.texi "-document-language fr -prefix icons_fr_formatting -init icons.init" 0 texi icons_fr_formatting
 test_texi formatting formatting.texi "-prefix weird_quotes_formatting -init weird_quotes.init" 0 texi weird_quotes_formatting
 test_texi formatting formatting_regions.texi
 test_texi formatting quotes.texi

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.207 2008-07-19 16:10:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.208 2008-07-19 21:00:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1480,6 +1480,23 @@ sub set_expansion($$)
     }
 }
 
+# manage footnote style
+sub set_footnote_style($$)
+{
+    if ($_[1] eq 'separate')
+    {
+         $Texi2HTML::Config::SEPARATED_FOOTNOTES = 1;
+    }
+    elsif ($_[1] eq 'end')
+    {
+         $Texi2HTML::Config::SEPARATED_FOOTNOTES = 0;
+    }
+    else
+    {
+         echo_error ('Bad argument for --footnote-style');
+    }
+}
+
 
 # find the encoding alias.
 # with encoding support (USE_UNICODE), may return undef if no alias was found
@@ -1931,7 +1948,7 @@ $T2H_OPTIONS -> {'menu'} =
  verbose => 'output Texinfo menus',
 };
 
-$T2H_OPTIONS -> {'number'} =
+$T2H_OPTIONS -> {'number-sections'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
@@ -1952,12 +1969,11 @@ $T2H_OPTIONS -> {'node-files'} =
  verbose => 'produce one file per node for cross references'
 };
 
-$T2H_OPTIONS -> {'separated-footnotes'} =
+$T2H_OPTIONS -> {'footnote-style'} =
 {
- type => '!',
- linkage => \$Texi2HTML::Config::SEPARATED_FOOTNOTES,
- verbose => 'footnotes on a separated page',
- noHelp => 1,
+ type => '=s',
+ linkage => sub {set_footnote_style ($_[0], $_[1]);},
+ verbose => 'output footnotes separate|end',
 };
 
 $T2H_OPTIONS -> {'toc-links'} =
@@ -1974,11 +1990,19 @@ $T2H_OPTIONS -> {'split'} =
  verbose => 'split document on section|chapter|node else no splitting',
 };
 
-$T2H_OPTIONS -> {'sec-nav'} =
+$T2H_OPTIONS -> {'no-split'} =
+{
+ type => '!',
+ linkage => sub {$Texi2HTML::Config::SPLIT = '';},
+ verbose => 'no splitting of document',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {'header'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
- verbose => 'output navigation panels for each section',
+ verbose => 'output navigation headers for each section',
 };
 
 $T2H_OPTIONS -> {'subdir'} =
@@ -2040,18 +2064,18 @@ $T2H_OPTIONS -> {'def-table'} =
  noHelp  => 1,
 };
 
-$T2H_OPTIONS -> {'Verbose'} =
+$T2H_OPTIONS -> {'verbose'} =
 {
  type => '!',
  linkage=> \$Texi2HTML::Config::VERBOSE,
  verbose => 'print progress info to stdout',
 };
 
-$T2H_OPTIONS -> {'lang'} =
+$T2H_OPTIONS -> {'document-language'} =
 {
  type => '=s',
  linkage => sub {set_document_language($_[1], 1)},
- verbose => 'use $s as document language (ISO 639 encoding)',
+ verbose => 'use $s as document language',
 };
 
 $T2H_OPTIONS -> {'ignore-preamble-text'} =
@@ -2182,6 +2206,40 @@ $T2H_OBSOLETE_OPTIONS -> {'out-file'} =
  noHelp => 2
 };
 
+$T2H_OBSOLETE_OPTIONS -> {'lang'} =
+{
+ type => '=s',
+ linkage => sub {set_document_language($_[1], 1)},
+ verbose => 'obsolete, use "--document-language" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {'number'} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
+ verbose => 'obsolete, use "--number-sections" instead',
+ noHelp => 2
+};
+
+
+$T2H_OBSOLETE_OPTIONS -> {'separated-footnotes'} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::SEPARATED_FOOTNOTES,
+ verbose => 'obsolete, use "--footnote-style" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {'Verbose'} =
+{
+ type => '!',
+ linkage=> \$Texi2HTML::Config::VERBOSE,
+ verbose => 'obsolete, use "--verbose" instead',
+ noHelp => 2
+};
+
+
 $T2H_OBSOLETE_OPTIONS -> {init_file} =
 {
  type => '=s',
@@ -2266,7 +2324,15 @@ $T2H_OBSOLETE_OPTIONS -> {sec_nav} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
- verbose => 'obsolete, use "-sec-nav" instead',
+ verbose => 'obsolete, use "-header" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {'sec-nav'} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
+ verbose => 'obsolete, use "--header" instead',
  noHelp  => 2
 };
 

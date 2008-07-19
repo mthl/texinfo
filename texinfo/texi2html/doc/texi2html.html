@@ -31,7 +31,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on July 18, 2008 by texi2html 1.79 -->
+<!-- Created on July 19, 2008 by texi2html 1.79 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -993,14 +993,16 @@ to use frames.
 </p>
 <p>It is also possible to suppress the section navigation panel with
 <a name="IDX43"></a>
-&lsquo;<samp>--nosec-nav</samp>&rsquo; (variable <a name="IDX44"></a>
+&lsquo;<samp>--no-headers</samp>&rsquo; (variable <a name="IDX44"></a>
 <code>$SECTION_NAVIGATION</code>, the default
 is to output all the navigation panels), and to specify
 whether footnotes should appear at the foot of the same page which contains
-the reference to the note or on a separate page with
-<a name="IDX45"></a>
-&lsquo;<samp>--separated-footnotes</samp>&rsquo; (variable <a name="IDX46"></a>
-<code>$SEPARATED_FOOTNOTES</code>).
+the reference to the note with <a name="IDX45"></a>
+&lsquo;<samp>--footnote-style</samp>&rsquo; set to
+&lsquo;<samp>end</samp>&rsquo; or on a separate page with &lsquo;<samp>--footnote-style</samp>&rsquo; 
+set to &lsquo;<samp>separate</samp>&rsquo; (variable <a name="IDX46"></a>
+<code>$SEPARATED_FOOTNOTES</code> set to 0 
+or 1).
 The default is to have separated footnotes.
 </p>
 <hr size="6">
@@ -1110,7 +1112,7 @@ commands, rather than <acronym>HTML</acronym> definition tables (variable
 </p>
 </dd>
 <dt> <a name="IDX64"></a>
-<p>&lsquo;<samp>--number</samp>&rsquo;
+<p>&lsquo;<samp>--number-sections</samp>&rsquo;
 </p></dt>
 <dd><p>If this option is set, sections are numbered (variable
 <a name="IDX65"></a>
@@ -1219,7 +1221,8 @@ in the &lsquo;<tt>/usr/local/share/texi2html/</tt>&rsquo; directory.
 <p>A file is also included based on the language selected,
 by <a name="IDX78"></a>
 <code>$LANG</code>, <a name="IDX79"></a>
-&lsquo;<samp>--lang</samp>&rsquo; or <code>@documentlanguage</code>.
+&lsquo;<samp>--document-language</samp>&rsquo; or 
+<code>@documentlanguage</code>.
 If no language was selected &lsquo;<samp>en</samp>&rsquo; is considered to be
 the language. All the files with name the language name in 
 &lsquo;<tt>/usr/local/share/texi2html/i18n/</tt>&rsquo;, 
@@ -4112,7 +4115,7 @@ various places, at the page footers, on the help page, for special
 section headings, buttons alt text and so on. These strings are
 customizable. The string chosen depends on the language of the
 document (set by <a name="IDX239"></a>
-&lsquo;<samp>--lang</samp>&rsquo;, <a name="IDX240"></a>
+&lsquo;<samp>--document-language</samp>&rsquo;, <a name="IDX240"></a>
 <code>$LANG</code> or 
 <code>@documentlanguage</code>). This is the basis for internationalization
 as it allows for strings translations.
@@ -6297,6 +6300,12 @@ function reference is now done in $print_element_header.
 </li><li> TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 </li><li> TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 </li><li> the $unknown function reference has a new argument, the pass number.
+</li><li> &lsquo;<samp>--sec-nav</samp>&rsquo; is replaced by &lsquo;<samp>--headers</samp>&rsquo;.
+</li><li> &lsquo;<samp>--Verbose</samp>&rsquo; is replaced by &lsquo;<samp>--verbose</samp>&rsquo;.
+</li><li> &lsquo;<samp>--lang</samp>&rsquo; is replaced by &lsquo;<samp>--document-language</samp>&rsquo;.
+</li><li> &lsquo;<samp>--separated-footnotes</samp>&rsquo; is replaced by &lsquo;<samp>--footnote-style</samp>&rsquo;.
+</li><li> &lsquo;<samp>--lang</samp>&rsquo; is replaced by &lsquo;<samp>--document-language</samp>&rsquo;.
+
 </li></ul>
 </li><li> API changes between 1.76 and 1.78: 
 <ul>
@@ -6580,12 +6589,15 @@ text
 <tr><th><a name="SEC97_1">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX60">def-table</a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX47">doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX79">document-language</a></td><td valign="top"><a href="#Using-init-files">4.8 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX239">document-language</a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX35">D<var>var</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.4 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_2">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX4">enable-translations</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_3">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX45">footnote-style</a></td><td valign="top"><a href="#Page-layout-options">4.5 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX41">frames</a></td><td valign="top"><a href="#Page-layout-options">4.5 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX49">frameset-doctype</a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX48">frameset-doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
@@ -6606,20 +6618,18 @@ text
 <tr><td></td><td valign="top"><a href="#IDX73">l2h-file</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX69">l2h-l2h=<var>program</var></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX71">l2h-tmp</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.7 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX79">lang</a></td><td valign="top"><a href="#Using-init-files">4.8 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX239">lang</a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX33">lang=<var>lang</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.4 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_7">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX6">menu</a></td><td valign="top"><a href="#Invoking-texi2html">4. Invoking <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_8">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX43">no-headers</a></td><td valign="top"><a href="#Page-layout-options">4.5 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX29">no-if&lt;region&gt;</a></td><td valign="top"><a href="#Expansion">4.3 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX24">node-files</a></td><td valign="top"><a href="#Output-files">4.2 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX5">nomenu</a></td><td valign="top"><a href="#Invoking-texi2html">4. Invoking <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX31">nomenu</a></td><td valign="top"><a href="#Expansion">4.3 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX43">nosec-nav</a></td><td valign="top"><a href="#Page-layout-options">4.5 Page layout related command line options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX64">number</a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX64">number-sections</a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_9">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX13">output</a></td><td valign="top"><a href="#Output-files">4.2 Setting output file and directory names</a></td></tr>
@@ -6632,7 +6642,6 @@ text
 <tr><td></td><td valign="top"><a href="#IDX16">prefix</a></td><td valign="top"><a href="#Output-files">4.2 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC97_11">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX45">separated-footnotes</a></td><td valign="top"><a href="#Page-layout-options">4.5 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX18">short-ext</a></td><td valign="top"><a href="#Output-files">4.2 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX62">short-ref</a></td><td valign="top"><a href="#Style-options">4.6 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX7">split</a></td><td valign="top"><a href="#Splitting-output">4.1 Specifying where to split the generated document</a></td></tr>
@@ -7226,7 +7235,7 @@ text
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>July 18, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>July 19, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7328,7 +7337,7 @@ text
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>July 18, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>July 19, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

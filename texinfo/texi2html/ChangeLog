@@ -1,3 +1,8 @@
+2008-07-19  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, doc/*: synchronize command-line switches with 
+	makeinfo.
+
 2008-07-18  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: get rid of m_cedilla, instead a specific function

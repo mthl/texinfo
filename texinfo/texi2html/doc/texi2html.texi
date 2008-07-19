@@ -770,11 +770,13 @@ content appears (variable @variable{$FRAMES}). The default is not
 to use frames.
 
 It is also possible to suppress the section navigation panel with
-@longopt{nosec-nav} (variable @variable{$SECTION_NAVIGATION}, the default
+@longopt{no-headers} (variable @variable{$SECTION_NAVIGATION}, the default
 is to output all the navigation panels), and to specify
 whether footnotes should appear at the foot of the same page which contains
-the reference to the note or on a separate page with
-@longopt{separated-footnotes} (variable @variable{$SEPARATED_FOOTNOTES}).
+the reference to the note with @longopt{footnote-style} set to
+@samp{end} or on a separate page with @option{--footnote-style} 
+set to @samp{separate} (variable @variable{$SEPARATED_FOOTNOTES} set to 0 
+or 1).
 The default is to have separated footnotes.
 
 @c --------------------------------------------------------
@@ -839,7 +841,7 @@ commands, rather than @acronym{HTML} definition tables (variable
 If this option is set, cross-references are given without section numbers
 (variable @variable{$SHORT_REF}). Default is false.
 
-@item @longopt{number}
+@item @longopt{number-sections}
 If this option is set, sections are numbered (variable
 @variable{$NUMBER_SECTIONS}).  This is the default.
 
@@ -898,7 +900,8 @@ directory, in the @file{/usr/local/etc/texi2html/} directory and lastly
 in the @file{/usr/local/share/texi2html/} directory.
 
 A file is also included based on the language selected,
-by @variable{$LANG}, @longopt{lang} or @code{@@documentlanguage}.
+by @variable{$LANG}, @longopt{document-language} or 
+@code{@@documentlanguage}.
 If no language was selected @samp{en} is considered to be
 the language. All the files with name the language name in 
 @file{/usr/local/share/texi2html/i18n/}, 
@@ -2656,7 +2659,7 @@ Empty lines are left as is by default except right after a definition
 various places, at the page footers, on the help page, for special 
 section headings, buttons alt text and so on. These strings are
 customizable. The string chosen depends on the language of the
-document (set by @longopt{lang}, @variable{$LANG} or 
+document (set by @longopt{document-language}, @variable{$LANG} or 
 @code{@@documentlanguage}). This is the basis for internationalization
 as it allows for strings translations.
 
@@ -4050,6 +4053,12 @@ function reference is now done in $print_element_header.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 @item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 @item the $unknown function reference has a new argument, the pass number.
+@item @option{--sec-nav} is replaced by @option{--headers}.
+@item @option{--Verbose} is replaced by @option{--verbose}.
+@item @option{--lang} is replaced by @option{--document-language}.
+@item @option{--separated-footnotes} is replaced by @option{--footnote-style}.
+@item @option{--lang} is replaced by @option{--document-language}.
+
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet
