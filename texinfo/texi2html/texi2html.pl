@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.206 2008-07-11 23:47:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.207 2008-07-19 16:10:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3559,6 +3559,60 @@ sub new_section_heading($$$)
     return $section_ref;
 }
 
+sub scan_node_line($)
+{
+    my $node_line = shift;
+    $node_line =~ s/^\@node\s+//;
+    $node_line =~ s/\s*$//;
+
+    my @command_stack;
+    my @results;
+    my $node_arg = '';
+    while (1)
+    {
+        if ($node_line =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $node_line =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $node_line =~ s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
+        {
+            $node_arg .= $1;
+            my $macro = $2;
+            $node_arg .= "\@$macro";
+            $macro = $alias{$macro} if (exists($alias{$macro}));
+            if ($node_line =~ s/^{//)
+            {
+                push @command_stack, $macro;
+                $node_arg .= '{';
+            }
+            
+        }
+        elsif ($node_line =~ s/^([^{},]*)([{}])//o)
+        {
+            $node_arg .= $1 . $2;
+            my $brace = $2;
+            if (@command_stack)
+            {
+                pop @command_stack;
+            }
+        }
+        elsif ($node_line =~ s/^([^,]*)[,]//o)
+        {
+            $node_arg .= $1;
+            if (@command_stack)
+            { 
+                $node_arg .= ',';
+            }
+            else
+            {
+                push @results, normalise_node($node_arg);
+                $node_arg = '';
+            }
+        }
+        else 
+        {
+            $node_arg .= $node_line;
+            push @results, normalise_node($node_arg);
+            return @results;
+        }
+    }
+}
 
 #my $do_contents;            # do table of contents if true
 #my $do_scontents;           # do short table of contents if true
@@ -3619,12 +3673,11 @@ sub pass_structure()
                 {
                     my $node_ref;
                     my $auto_directions;
-                    $auto_directions = 1 unless (/,/o);
-                    my ($node, $node_next, $node_prev, $node_up) = split(/,/, $_);
-                    $node =~ s/^\@node\s+// if ($node);
-                    if ($node)
+                    my @node_res = scan_node_line($_);
+                    $auto_directions = 1 if (scalar(@node_res) == 1);
+                    my ($node, $node_next, $node_prev, $node_up) = @node_res;
+                    if (defined($node) and ($node ne ''))
                     {
-                        $node = normalise_space($node);
                         if (exists($nodes{$node}) and defined($nodes{$node})
                              and $nodes{$node}->{'seen'})
                         {
@@ -3691,17 +3744,17 @@ sub pass_structure()
                         next;
                     }
 
-                    if (defined($node_next) and ($node_next !~ /^\s*$/))
+                    if (defined($node_next) and ($node_next ne ''))
                     {
-                        $node_ref->{'node_next'} = normalise_node($node_next);
+                        $node_ref->{'node_next'} = $node_next;
                     }
-                    if (defined($node_prev) and ($node_prev !~ /^\s*$/))
+                    if (defined($node_prev) and ($node_prev ne ''))
                     {
-                        $node_ref->{'node_prev'} = normalise_node($node_prev);
+                        $node_ref->{'node_prev'} = $node_prev;
                     }
-                    if (defined($node_up) and ($node_up !~ /^\s*$/))
+                    if (defined($node_up) and ($node_up ne ''))
                     { 
-                        $node_ref->{'node_up'} = normalise_node($node_up);
+                        $node_ref->{'node_up'} = $node_up;
                     }
                 }
                 elsif (defined($sec2level{$tag}))
@@ -7946,13 +7999,14 @@ sub parse_multitable($$)
     my $line_nr = shift;
     # first find the table width
     my $table_width = 0;
+    my $fractions;
+    my $elements;
     if ($line =~ s/^\s+\@columnfractions\s+//)
     {
-        my @fractions = split /\s+/, $line;
-        $table_width = $#fractions + 1;
-        while (@fractions)
+        @$fractions = split /\s+/, $line;
+        $table_width = scalar(@$fractions) + 1;
+        foreach my $fraction (@$fractions)
         {
-            my $fraction = shift @fractions;
             unless ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
             { 
                 echo_error ("column fraction not a number: $fraction", $line_nr);
@@ -7970,7 +8024,10 @@ sub parse_multitable($$)
             ($element, $line, $spaces) = next_bracketed($line, $line_nr);
             if ($element =~ /^\{/)
             {
-                $table_width++; 
+                $table_width++;
+                $element =~ s/^\{//;
+                $element =~ s/\}\s*$//;
+                push @$elements, $element;
             }
             else
             {
@@ -7978,7 +8035,7 @@ sub parse_multitable($$)
             }
         }
     }
-    return ($table_width);
+    return ($table_width, $fractions, $elements);
 }
 
 sub end_format($$$$$)
@@ -9592,38 +9649,7 @@ sub scan_texi($$$$;$)
                         $state->{'verb'} = $1;
                     }
                 }
-                elsif ($macro eq ',')
-                {
-                    $macro = 'm_cedilla';
-                }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
-            }
-            elsif ($macro eq ',')
-            { # a @, not followed by an opening brace {, something like @,c.
-                # we catch syntax errors at that point because
-                # m_cedilla is a normal macro name, not a special
-                # macro character, like , is. 
-                # So, for example @m_cedilla{@} would be very wrong while 
-                # @,@ is less problematic.
-                # A side effect of that special handling is that strange
-                # use of @, will not result in the same result than strange 
-                # use of other accent commands.
-                if (s/^(.)//)
-                {
-                    my $cedilla_char = $1;
-                    if ($cedilla_char eq '@' or $cedilla_char eq '}')
-                    { 
-                       $_ = "\@m_cedilla{}"  .$cedilla_char. $_;
-                    }
-                    else
-                    {
-                       $_ = "\@m_cedilla" . "{$1}" .$_;
-                    }
-                }
-                else 
-                {# @, followed by an end of line
-                    next;
-                }
             }
             else
             {
@@ -10737,10 +10763,6 @@ sub scan_line($$$$;$)
                 } 
                 return undef;
             }
-            if ($macro eq 'm_cedilla' and !$state->{'keep_texi'})
-            {
-                $macro = ',';
-            }
             # This is a @macroname{...} construct. We add it on top of stack
             # It will be handled when we encounter the '}'
             # There is a special case for def macros as @deffn{def} is licit
@@ -10989,7 +11011,13 @@ sub scan_line($$$$;$)
                     echo_warn ("\@$macro outside of table or list", $line_nr);
                     next;
                 }
-                push @$stack, {'format' => 'row', 'text' => '', 'item_cmd' => $macro };
+                my $row = {'format' => 'row', 'text' => '', 'item_cmd' => $macro };
+                if ($format->{'max_columns'})
+                {
+                    $row->{'columnfractions'} = $format->{'columnfractions'};
+                    $row->{'prototype_row'} = $format->{'prototype_row'};
+                }
+                push @$stack, $row;
                 if ($format->{'max_columns'})
                 {
                     push @$stack, {'format' => 'cell', 'text' => ''};
@@ -11173,13 +11201,13 @@ sub scan_line($$$$;$)
                     }
                     elsif ($macro eq 'multitable')
                     {
-                        my $max_columns = parse_multitable ($_, $line_nr);
+                        my ($max_columns, $fractions, $elements) = parse_multitable ($_, $line_nr);
                         if (!$max_columns)
                         {
                             echo_warn ("empty multitable", $line_nr);
                             $max_columns = 0;
                         }
-                        $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'cell' => 1 };
+                        $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'columnfractions' => $fractions, 'prototype_row' => $elements, 'cell' => 1 };
                     }
                     $format->{'first'} = 1;
                     $format->{'paragraph_number'} = 0;
@@ -11193,7 +11221,7 @@ sub scan_line($$$$;$)
                     {
                         if ($format->{'max_columns'})
                         {
-                            push @$stack, { 'format' => 'row', 'text' => '', 'item_cmd' => $macro };
+                            push @$stack, { 'format' => 'row', 'text' => '', 'item_cmd' => $macro, 'columnfractions' => $format->{'columnfractions'}, 'prototype_row' => $format->{'prototype_row'} };
                             push @$stack, { 'format' => 'cell', 'text' => ''};
                         }
                         else 
@@ -11245,6 +11273,8 @@ sub scan_line($$$$;$)
             $_ = do_unknown (2, $2, $_, $text, $stack, $state, $line_nr);
             next;
         }
+        # a brace, or an end of line and 'cmd_line' is on the top
+        # of the stack
         elsif (s/^([^{},]*)([{}])//o or (@$stack and 
              defined($stack->[-1]->{'style'}) and
              ($stack->[-1]->{'style'} eq 'cmd_line') and /^([^{},]*)$/o))
@@ -11269,8 +11299,8 @@ sub scan_line($$$$;$)
             }
             elsif (defined($brace) and ($brace eq '}') and 
                     (!@$stack or (!defined($stack->[-1]->{'style'}))
-            # a non empty stack, but with 'cmd_line' as first item on the stack
-            # is like an empty stack
+            # with a non empty stack, but with 'cmd_line' as first item on 
+            # the stack there should not be a }
                        or ($stack->[-1]->{'style'} eq 'cmd_line'))
             # braces are allowed in math
                     or $state->{'math_brace'})
@@ -11521,7 +11551,8 @@ sub close_arg($$$)
 }
 
 # add a special style on the top of the stack. This is used for commands
-# that extend until the end of the line
+# that extend until the end of the line. Also add an entry in the @-command
+# hashes for this fakes stlye.
 sub open_cmd_line($$$$)
 {
     my $stack = shift;
@@ -11626,7 +11657,7 @@ sub add_row($$$$)
     }
     add_cell($text, $stack, $state);
     my $row = pop @$stack;    
-    add_prev($text, $stack, &$Texi2HTML::Config::row($row->{'text'}, $row->{'item_cmd'}));
+    add_prev($text, $stack, &$Texi2HTML::Config::row($row->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}));
     return $format;
 }
 
@@ -11644,7 +11675,7 @@ sub add_cell($$$$)
         my $cell = pop @$stack;
         my $row = top_stack($stack);
         print STDERR "Bug: top_stack of cell not a row\n" if (!defined($row) or !defined($row->{'format'}) or ($row->{'format'} ne 'row'));
-        add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}));
         $format->{'cell'}++;
     }
     return $format;

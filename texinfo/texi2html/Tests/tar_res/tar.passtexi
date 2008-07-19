@@ -633,7 +633,7 @@
 ../tar_texi/tar.texi(GNUTAR,590) @acronym{GNU} @command{tar}../tar_texi/tar.texi(GNUTAR,590)  was originally written by John Gilmore,
 ../tar_texi/tar.texi(,591) and modified by many people.  The @acronym{GNU} enhancements were
 ../tar_texi/tar.texi(,592) written by Jay Fenlason, then Joy Kendall, and the whole package has
-../tar_texi/tar.texi(,593) been further maintained by Thomas Bushnell, n/BSG, Fran@m_cedilla{c}ois
+../tar_texi/tar.texi(,593) been further maintained by Thomas Bushnell, n/BSG, Fran@,{c}ois
 ../tar_texi/tar.texi(,594) Pinard, Paul Eggert, and finally Sergey Poznyakoff with the help of
 ../tar_texi/tar.texi(,595) numerous and kind users.
 ../tar_texi/tar.texi(,596) 
@@ -655,7 +655,7 @@
 ../tar_texi/tar.texi(,612) manual, borrowing notes from the original man page from John Gilmore.
 ../tar_texi/tar.texi(,613) This was withdrawn in version 1.11.  Thomas Bushnell, n/BSG and Amy
 ../tar_texi/tar.texi(GNUTAR,614) Gorin worked on a tutorial and manual for ../tar_texi/tar.texi(GNUTAR,614) @acronym{GNU} @command{tar}../tar_texi/tar.texi(GNUTAR,614) .
-../tar_texi/tar.texi(,615) Fran@m_cedilla{c}ois Pinard put version 1.11.8 of the manual together by
+../tar_texi/tar.texi(,615) Fran@,{c}ois Pinard put version 1.11.8 of the manual together by
 ../tar_texi/tar.texi(,616) taking information from all these sources and merging them.  Melissa
 ../tar_texi/tar.texi(,617) Weisshaus finally edited and redesigned the book to create version
 ../tar_texi/tar.texi(,618) 1.12.  The book for versions from 1.14 up to 1.15.92 were edited
@@ -8523,7 +8523,7 @@
 ../tar_texi/getdate.texi(,548) 
 ../tar_texi/getdate.texi(,549) @cindex Pinard, F.
 ../tar_texi/getdate.texi(,550) @cindex Berry, K.
-../tar_texi/getdate.texi(,551) This chapter was originally produced by Fran@m_cedilla{c}ois Pinard
+../tar_texi/getdate.texi(,551) This chapter was originally produced by Fran@,{c}ois Pinard
 ../tar_texi/getdate.texi(,552) (@email{pinard@@iro.umontreal.ca}) from the @file{getdate.y} source code,
 ../tar_texi/getdate.texi(,553) and then edited by K.@: Berry (@email{kb@@cs.umb.edu}).
 ../tar_texi/tar.texi(,7629) 
@@ -10165,7 +10165,7 @@
 ../tar_texi/tar.texi(,9304) When I wrote @code{PD TAR}, I used the historically correct terminology
 ../tar_texi/tar.texi(,9305) (@command{tar} writes data records, which are grouped into blocks).
 ../tar_texi/tar.texi(,9306) It appears that the bogus terminology made it into @acronym{POSIX} (no surprise
-../tar_texi/tar.texi(,9307) here), and now Fran@m_cedilla{c}ois has migrated that terminology back
+../tar_texi/tar.texi(,9307) here), and now Fran@,{c}ois has migrated that terminology back
 ../tar_texi/tar.texi(,9308) into the source code too.
 ../tar_texi/tar.texi(,9309) @end quotation
 ../tar_texi/tar.texi(,9310) 

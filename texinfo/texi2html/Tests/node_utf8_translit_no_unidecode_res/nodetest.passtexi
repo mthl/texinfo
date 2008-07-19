@@ -232,13 +232,13 @@
 ../formatting/nodetest_utf8.texi(,236) @chapter cedilla accent
 ../formatting/nodetest_utf8.texi(,237) @menu
 ../formatting/nodetest_utf8.texi(,238) * ç::    ç.
-../formatting/nodetest_utf8.texi(,239) * @m_cedilla{C}::    @m_cedilla{C}.
+../formatting/nodetest_utf8.texi(,239) * @,{C}::    @,{C}.
 ../formatting/nodetest_utf8.texi(,240) @end menu
 ../formatting/nodetest_utf8.texi(,241) @c
 ../formatting/nodetest_utf8.texi(,242) @node ç,,,cedilla accent
 ../formatting/nodetest_utf8.texi(,243) @section ç
-../formatting/nodetest_utf8.texi(,244) @node @m_cedilla{C},,,cedilla accent
-../formatting/nodetest_utf8.texi(,245) @section @m_cedilla{C}
+../formatting/nodetest_utf8.texi(,244) @node @,{C},,,cedilla accent
+../formatting/nodetest_utf8.texi(,245) @section @,{C}
 ../formatting/nodetest_utf8.texi(,246) @c
 ../formatting/nodetest_utf8.texi(,247) @node rest,,Top,Top
 ../formatting/nodetest_utf8.texi(,248) @chapter rest

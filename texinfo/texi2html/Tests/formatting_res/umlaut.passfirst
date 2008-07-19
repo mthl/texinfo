@@ -40,11 +40,11 @@ umlaut.texi(,52) @'z @'q @'r
 umlaut.texi(,53) @'Z @'Q @'R
 umlaut.texi(,54) 
 umlaut.texi(,55) valid Cedilla:@*
-umlaut.texi(,56) @m_cedilla{c} @m_cedilla{C}
+umlaut.texi(,56) @,{c} @,{C}
 umlaut.texi(,57) 
 umlaut.texi(,58) 
 umlaut.texi(,59) non valid Cedilla:@*
-umlaut.texi(,60) @m_cedilla{H} @m_cedilla{h}
+umlaut.texi(,60) @,{H} @,{h}
 umlaut.texi(,61) 
 umlaut.texi(,62) macron:@*
 umlaut.texi(,63) @=o

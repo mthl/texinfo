@@ -1525,7 +1525,7 @@
 ../texinfo/texinfo.txi(,1537) @command{info} programs.  Karl Berry has continued maintenance since
 ../texinfo/texinfo.txi(,1538) Texinfo 3.8 (manual edition 2.22).
 ../texinfo/texinfo.txi(,1539) 
-../texinfo/texinfo.txi(,1540) @cindex Pinard, Fran@m_cedilla{c}ois
+../texinfo/texinfo.txi(,1540) @cindex Pinard, Fran@,{c}ois
 ../texinfo/texinfo.txi(,1541) @cindex Zuhn, David D.
 ../texinfo/texinfo.txi(,1542) @cindex Weisshaus, Melissa
 ../texinfo/texinfo.txi(,1543) @cindex Zaretskii, Eli
@@ -1533,7 +1533,7 @@
 ../texinfo/texinfo.txi(,1545) @cindex Weinberg, Zack
 ../texinfo/texinfo.txi(,1546) Our thanks go out to all who helped improve this work, particularly the
 ../texinfo/texinfo.txi(,1547) indefatigable Eli Zaretskii and Andreas Schwab, who have provided
-../texinfo/texinfo.txi(,1548) patches beyond counting.  Fran@m_cedilla{c}ois Pinard and @w{David D.@: Zuhn},
+../texinfo/texinfo.txi(,1548) patches beyond counting.  Fran@,{c}ois Pinard and @w{David D.@: Zuhn},
 ../texinfo/texinfo.txi(,1549) tirelessly recorded and reported mistakes and obscurities.  Zack
 ../texinfo/texinfo.txi(,1550) Weinberg did the impossible by implementing the macro syntax in
 ../texinfo/texinfo.txi(,1551) @file{texinfo.tex}.  Special thanks go to Melissa Weisshaus for her
@@ -9174,7 +9174,7 @@
 ../texinfo/texinfo.txi(,9367) @item Command               @tab Output         @tab What
 ../texinfo/texinfo.txi(,9368) @item @t{@@"o}              @tab @"o            @tab umlaut accent
 ../texinfo/texinfo.txi(,9369) @item @t{@@'o}              @tab @'o            @tab acute accent
-../texinfo/texinfo.txi(,9370) @item @t{@@,@{c@}}          @tab @m_cedilla{c}          @tab cedilla accent
+../texinfo/texinfo.txi(,9370) @item @t{@@,@{c@}}          @tab @,{c}          @tab cedilla accent
 ../texinfo/texinfo.txi(,9371) @item @t{@@=o}              @tab @=o            @tab macron/overbar accent
 ../texinfo/texinfo.txi(,9372) @item @t{@@^o}              @tab @^o            @tab circumflex accent
 ../texinfo/texinfo.txi(,9373) @item @t{@@`o}              @tab @`o            @tab grave accent
@@ -14574,7 +14574,7 @@
 ../texinfo/texinfo.txi(,15012) an @code{@@refill} command.  @xref{Line Breaks}.
 ../texinfo/texinfo.txi(,15013) 
 ../texinfo/texinfo.txi(,15014) @item @@,@{@var{c}@}
-../texinfo/texinfo.txi(,15015) Generate a cedilla accent under @var{c}, as in @m_cedilla{c}.  @xref{Inserting
+../texinfo/texinfo.txi(,15015) Generate a cedilla accent under @var{c}, as in @,{c}.  @xref{Inserting
 ../texinfo/texinfo.txi(,15016) Accents}.
 ../texinfo/texinfo.txi(,15017) 
 ../texinfo/texinfo.txi(,15018) @item @@-

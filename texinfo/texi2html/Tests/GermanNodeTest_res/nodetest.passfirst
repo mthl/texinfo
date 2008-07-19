@@ -44,7 +44,7 @@ nodetest.texi(,44) @end menu
 nodetest.texi(,45) @c
 nodetest.texi(,46) @node @"a,,,Umlaut
 nodetest.texi(,47) @section @"a
-nodetest.texi(,48) ref to @m_cedilla{c} @ref{@m_cedilla{c}}.
+nodetest.texi(,48) ref to @,{c} @ref{@,{c}}.
 nodetest.texi(,49) @node @"e,,,Umlaut
 nodetest.texi(,50) @section @"e
 nodetest.texi(,51) @node @"i,,,Umlaut 
@@ -250,17 +250,17 @@ nodetest.texi(,253) @c
 nodetest.texi(,254) @node cedilla accent,,Top,Top
 nodetest.texi(,255) @chapter cedilla accent
 nodetest.texi(,256) @menu
-nodetest.texi(,257) * @m_cedilla{c}::    @m_cedilla{c}.
-nodetest.texi(,258) * @m_cedilla{C}::    @m_cedilla{C}.
-nodetest.texi(,259) * @m_cedilla{c} no brace:: @m_cedilla{c} no brace.
+nodetest.texi(,257) * @,{c}::    @,{c}.
+nodetest.texi(,258) * @,{C}::    @,{C}.
+nodetest.texi(,259) * @,c no brace:: @,c no brace.
 nodetest.texi(,260) @end menu
 nodetest.texi(,261) @c
-nodetest.texi(,262) @node @m_cedilla{c},,,cedilla accent
-nodetest.texi(,263) @section @m_cedilla{c}
-nodetest.texi(,264) @node @m_cedilla{C},,,cedilla accent
-nodetest.texi(,265) @section @m_cedilla{C}
-nodetest.texi(,266) @node @m_cedilla{c} no brace,,,cedilla accent
-nodetest.texi(,267) @section @m_cedilla{c} no brace
+nodetest.texi(,262) @node @,{c},,,cedilla accent
+nodetest.texi(,263) @section @,{c}
+nodetest.texi(,264) @node @,{C},,,cedilla accent
+nodetest.texi(,265) @section @,{C}
+nodetest.texi(,266) @node @,c no brace,,,cedilla accent
+nodetest.texi(,267) @section @,c no brace
 nodetest.texi(,268) @c
 nodetest.texi(,269) @node rest,,Top,Top
 nodetest.texi(,270) @chapter rest

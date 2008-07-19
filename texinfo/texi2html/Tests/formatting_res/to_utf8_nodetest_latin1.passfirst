@@ -232,13 +232,13 @@ nodetest_latin1.texi(,235) @node cedilla accent,,Top,Top
 nodetest_latin1.texi(,236) @chapter cedilla accent
 nodetest_latin1.texi(,237) @menu
 nodetest_latin1.texi(,238) * ç::    ç.
-nodetest_latin1.texi(,239) * @m_cedilla{C}::    @m_cedilla{C}.
+nodetest_latin1.texi(,239) * @,{C}::    @,{C}.
 nodetest_latin1.texi(,240) @end menu
 nodetest_latin1.texi(,241) @c
 nodetest_latin1.texi(,242) @node ç,,,cedilla accent
 nodetest_latin1.texi(,243) @section ç
-nodetest_latin1.texi(,244) @node @m_cedilla{C},,,cedilla accent
-nodetest_latin1.texi(,245) @section @m_cedilla{C}
+nodetest_latin1.texi(,244) @node @,{C},,,cedilla accent
+nodetest_latin1.texi(,245) @section @,{C}
 nodetest_latin1.texi(,246) @c
 nodetest_latin1.texi(,247) @node rest,,Top,Top
 nodetest_latin1.texi(,248) @chapter rest

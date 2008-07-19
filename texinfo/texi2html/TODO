@@ -80,8 +80,6 @@ Don't know if it's right.
 @end macro
 @end ifset
 
-* @m_cedilla appears in output with --macro-expand. That's a bug.
-
 * in chm.init (Jose Fonseca)
 
 [WINDOWS]

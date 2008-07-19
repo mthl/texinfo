@@ -31,7 +31,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on July 12, 2008 by texi2html 1.79 -->
+<!-- Created on July 18, 2008 by texi2html 1.79 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -80,31 +80,31 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="settitle">Texi2HTML</h1>
 <table>
-<tr><td><p> Portions of <code>texi2html</code>
+<tr><td width="12%"><p> Portions of <code>texi2html</code>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 1999, 2000 Lionel Cons<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 1999, 2000 Lionel Cons<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 1999, 2000 Karl Berry<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 1999, 2000 Karl Berry<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 1999, 2000 Olaf Bachmann<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 1999, 2000 Olaf Bachmann<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 2001, 2002, 2003, 2004, 2005, 2006 Derek Price<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 2001, 2002, 2003, 2004, 2005, 2006 Derek Price<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; many others.<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; many others.<br>
 </p></td></tr>
-<tr><td> </td><td>
+<tr><td width="12%"> </td><td width="88%">
 </td></tr>
-<tr><td> </td><td>
+<tr><td width="12%"> </td><td width="88%">
 </td></tr>
-<tr><td><p> Portions of this manual
+<tr><td width="12%"><p> Portions of this manual
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 1999, 2000 Karl Heinz Marbaise (manual)<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 1999, 2000 Karl Heinz Marbaise (manual)<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 2003, 2007 Derek Price (manual)<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 2003, 2007 Derek Price (manual)<br>
 </p></td></tr>
-<tr><td> </td><td><p> Copyright &copy; 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)<br>
+<tr><td width="12%"> </td><td width="88%"><p> Copyright &copy; 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)<br>
 </p></td></tr>
 </table>
 
@@ -671,16 +671,16 @@ divided into sectioning elements when <a name="IDX11"></a>
 &lsquo;<samp>--use-nodes</samp>&rsquo; is used and not:
 </p>
 <table>
-<tr><td><p> Texinfo code
-</p></td><td>
-</td><td>
+<tr><td width="20%"><p> Texinfo code
+</p></td><td width="10%">
+</td><td width="20%">
 <p>default case
-</p></td><td>
-</td><td>
+</p></td><td width="10%">
+</td><td width="20%">
 <p>with <a name="IDX12"></a>
 &lsquo;<samp>--use-nodes</samp>&rsquo;
 </p></td></tr>
-<tr><td>
+<tr><td width="20%">
 <br>
 <br>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
@@ -695,8 +695,8 @@ node3 text
 @chapter node 3
 chapter text
 </pre></td></tr></table>
-</td><td>
-</td><td>
+</td><td width="10%">
+</td><td width="20%">
 <p>first element:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
@@ -715,8 +715,8 @@ node3 text
 chapter text
 </pre></td></tr></table>
 
-</td><td>
-</td><td>
+</td><td width="10%">
+</td><td width="20%">
 <p>first element:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
@@ -4699,24 +4699,29 @@ the <code>@item</code> line. <var>$text</var> is the corresponding text.
 with two function references. One for a cell, and the other for a row.
 </p>
 <dl>
-<dt><u>Function Reference:</u> $multitable_cell <b>cell</b><i> $text</i>
+<dt><u>Function Reference:</u> $multitable_cell <b>cell</b><i> $text $item_command $columnfractions $prototype_row</i>
 <a name="IDX257"></a>
 </dt>
 <dd><p>This function is used to format the text of a multitable cell, the text 
 following a <code>@item</code> or a <code>@tab</code>.
-<var>$text</var> is the corresponding text. 
+<var>$text</var> is the corresponding text. <var>$item_command</var> is the command 
+used to introduce the row, such that it is possible to distinguish 
+between <code>@item</code> and <code>@headitem</code>.
+<var>$columnfractions</var> is a reference on an array 
+containing the <code>@columnfraction</code> arguments, if any, and 
+<var>$prototype_row</var> is a reference on an array containing the row prototypes
+given on the <code>@multitable</code> line, if any.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function Reference:</u> $multitable_row <b>row</b><i> $text $item_command</i>
+<dt><u>Function Reference:</u> $multitable_row <b>row</b><i> $text $item_command $columnfractions $prototype_row</i>
 <a name="IDX258"></a>
 </dt>
 <dd><p>This function is used to format a multitable row. <var>$text</var> is
 the row text, with cells allready formatted with the <a name="IDX259"></a>
 <code>$cell</code>
-function reference. <var>$item_command</var> is the command used to introduce 
-the row, such that it is possible to distinguish between <code>@item</code> and
-<code>@headitem</code>.
+function reference. <var>$item_command</var>, <var>$columnfractions</var> and
+<var>$prototype_row</var> are the same than in the function reference above.
 </p></dd></dl>
 </dd>
 </dl>
@@ -7221,7 +7226,7 @@ text
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>July 12, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>July 18, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7323,7 +7328,7 @@ text
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>July 12, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>July 18, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

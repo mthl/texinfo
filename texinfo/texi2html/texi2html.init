@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.139 2008-07-11 23:47:44 pertusus Exp $
+# $Id: texi2html.init,v 1.140 2008-07-19 16:10:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3179,6 +3179,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
        'vtable'      =>  'dl compact="compact"',
        'ftable'      =>  'dl compact="compact"',
        'group'       =>  '',
+#       'detailmenu'       =>  '',
        );
 
 %special_list_commands = (
@@ -4472,11 +4473,17 @@ sub t2h_default_table_line($)
     return '';
 }
 
+my $cell_nr = -1;
+
 # row in multitable
-sub t2h_default_row($$)
+sub t2h_default_row($$;$$)
 {
     my $text = shift;
     my $macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+
+    $cell_nr = -1;
 
     if ($text =~ /\S/)
     {
@@ -4490,16 +4497,28 @@ sub t2h_default_row($$)
 }
 
 # cell in multitable
-sub t2h_default_cell($$)
+sub t2h_default_cell($$;$$)
 {
     my $text = shift;
     my $row_macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+
+    $cell_nr++;
+    my $fractions = '';
+
+    if (defined($columnfractions) and (ref($columnfractions) eq 'ARRAY')
+         and exists($columnfractions->[$cell_nr]))
+    {
+        my $fraction = sprintf('%d', 100*$columnfractions->[$cell_nr]);
+        $fractions = " width=\"$fraction%\"";
+    }
 
     if ($row_macro eq 'headitem')
     {
-        return '<th>' . $text . '</th>';
+        return "<th${fractions}>" . $text . '</th>';
     }
-    return '<td>' . $text . '</td>';
+    return "<td${fractions}>" . $text . '</td>';
 }
 
 # format an item in a list

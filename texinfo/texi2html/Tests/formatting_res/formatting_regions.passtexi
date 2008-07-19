@@ -38,14 +38,14 @@ formatting_regions.texi(mymacro,509) @@dotless@{i@} @dotless{i}
 formatting_regions.texi(mymacro,509) @@dotless@{ij@} @dotless{ij}
 formatting_regions.texi(mymacro,509) @@`@{@@=E@} @`{@=E} 
 formatting_regions.texi(mymacro,509) @@l@{@} @l{}
-formatting_regions.texi(mymacro,509) @@,@{@@'C@} @m_cedilla{@'C}
-formatting_regions.texi(mymacro,509) @@,c @m_cedilla{c}
-formatting_regions.texi(mymacro,509) @@,c@@"u @m_cedilla{c}@"u @*
+formatting_regions.texi(mymacro,509) @@,@{@@'C@} @,{@'C}
+formatting_regions.texi(mymacro,509) @@,c @,c
+formatting_regions.texi(mymacro,509) @@,c@@"u @,c@"u @*
 formatting_regions.texi(mymacro,509) 
 formatting_regions.texi(mymacro,509) Somehow invalid use of @@,:@*
-formatting_regions.texi(mymacro,509) @@, 
+formatting_regions.texi(mymacro,509) @@, @,
 formatting_regions.texi(mymacro,509) @*
-formatting_regions.texi(mymacro,509) @@,@@"u @m_cedilla{}@"u
+formatting_regions.texi(mymacro,509) @@,@@"u @,@"u
 formatting_regions.texi(mymacro,509) 
 formatting_regions.texi(mymacro,509) Invalid use of @@':@*
 formatting_regions.texi(mymacro,509) @@' @'
@@ -180,8 +180,8 @@ formatting_regions.texi(mymacro,509) @code{@@udotaccent@{a@}} @udotaccent{a}
 formatting_regions.texi(mymacro,509) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 formatting_regions.texi(mymacro,509) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,509) @code{@@v@{--a@}} @v{--a}
-formatting_regions.texi(mymacro,509) @code{@@,@{c@}} @m_cedilla{c}
-formatting_regions.texi(mymacro,509) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting_regions.texi(mymacro,509) @code{@@,@{c@}} @,{c}
+formatting_regions.texi(mymacro,509) @code{@@,@{--c@}} @,{--c}
 formatting_regions.texi(mymacro,509) @code{@@dotless@{--a@}} @dotless{--a}
 formatting_regions.texi(mymacro,509) @code{@@dotless@{a@}} @dotless{a}
 formatting_regions.texi(mymacro,509) @code{@@footnote@{in footnote@}} @footnote{in footnote}
@@ -533,14 +533,14 @@ formatting_regions.texi(mymacro,520) @@dotless@{i@} @dotless{i}
 formatting_regions.texi(mymacro,520) @@dotless@{ij@} @dotless{ij}
 formatting_regions.texi(mymacro,520) @@`@{@@=E@} @`{@=E} 
 formatting_regions.texi(mymacro,520) @@l@{@} @l{}
-formatting_regions.texi(mymacro,520) @@,@{@@'C@} @m_cedilla{@'C}
-formatting_regions.texi(mymacro,520) @@,c @m_cedilla{c}
-formatting_regions.texi(mymacro,520) @@,c@@"u @m_cedilla{c}@"u @*
+formatting_regions.texi(mymacro,520) @@,@{@@'C@} @,{@'C}
+formatting_regions.texi(mymacro,520) @@,c @,c
+formatting_regions.texi(mymacro,520) @@,c@@"u @,c@"u @*
 formatting_regions.texi(mymacro,520) 
 formatting_regions.texi(mymacro,520) Somehow invalid use of @@,:@*
-formatting_regions.texi(mymacro,520) @@, 
+formatting_regions.texi(mymacro,520) @@, @,
 formatting_regions.texi(mymacro,520) @*
-formatting_regions.texi(mymacro,520) @@,@@"u @m_cedilla{}@"u
+formatting_regions.texi(mymacro,520) @@,@@"u @,@"u
 formatting_regions.texi(mymacro,520) 
 formatting_regions.texi(mymacro,520) Invalid use of @@':@*
 formatting_regions.texi(mymacro,520) @@' @'
@@ -675,8 +675,8 @@ formatting_regions.texi(mymacro,520) @code{@@udotaccent@{a@}} @udotaccent{a}
 formatting_regions.texi(mymacro,520) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 formatting_regions.texi(mymacro,520) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,520) @code{@@v@{--a@}} @v{--a}
-formatting_regions.texi(mymacro,520) @code{@@,@{c@}} @m_cedilla{c}
-formatting_regions.texi(mymacro,520) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting_regions.texi(mymacro,520) @code{@@,@{c@}} @,{c}
+formatting_regions.texi(mymacro,520) @code{@@,@{--c@}} @,{--c}
 formatting_regions.texi(mymacro,520) @code{@@dotless@{--a@}} @dotless{--a}
 formatting_regions.texi(mymacro,520) @code{@@dotless@{a@}} @dotless{a}
 formatting_regions.texi(mymacro,520) @code{@@footnote@{in footnote@}} @footnote{in footnote}
@@ -1024,14 +1024,14 @@ formatting_regions.texi(mymacro,527) @@dotless@{i@} @dotless{i}
 formatting_regions.texi(mymacro,527) @@dotless@{ij@} @dotless{ij}
 formatting_regions.texi(mymacro,527) @@`@{@@=E@} @`{@=E} 
 formatting_regions.texi(mymacro,527) @@l@{@} @l{}
-formatting_regions.texi(mymacro,527) @@,@{@@'C@} @m_cedilla{@'C}
-formatting_regions.texi(mymacro,527) @@,c @m_cedilla{c}
-formatting_regions.texi(mymacro,527) @@,c@@"u @m_cedilla{c}@"u @*
+formatting_regions.texi(mymacro,527) @@,@{@@'C@} @,{@'C}
+formatting_regions.texi(mymacro,527) @@,c @,c
+formatting_regions.texi(mymacro,527) @@,c@@"u @,c@"u @*
 formatting_regions.texi(mymacro,527) 
 formatting_regions.texi(mymacro,527) Somehow invalid use of @@,:@*
-formatting_regions.texi(mymacro,527) @@, 
+formatting_regions.texi(mymacro,527) @@, @,
 formatting_regions.texi(mymacro,527) @*
-formatting_regions.texi(mymacro,527) @@,@@"u @m_cedilla{}@"u
+formatting_regions.texi(mymacro,527) @@,@@"u @,@"u
 formatting_regions.texi(mymacro,527) 
 formatting_regions.texi(mymacro,527) Invalid use of @@':@*
 formatting_regions.texi(mymacro,527) @@' @'
@@ -1166,8 +1166,8 @@ formatting_regions.texi(mymacro,527) @code{@@udotaccent@{a@}} @udotaccent{a}
 formatting_regions.texi(mymacro,527) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 formatting_regions.texi(mymacro,527) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,527) @code{@@v@{--a@}} @v{--a}
-formatting_regions.texi(mymacro,527) @code{@@,@{c@}} @m_cedilla{c}
-formatting_regions.texi(mymacro,527) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting_regions.texi(mymacro,527) @code{@@,@{c@}} @,{c}
+formatting_regions.texi(mymacro,527) @code{@@,@{--c@}} @,{--c}
 formatting_regions.texi(mymacro,527) @code{@@dotless@{--a@}} @dotless{--a}
 formatting_regions.texi(mymacro,527) @code{@@dotless@{a@}} @dotless{a}
 formatting_regions.texi(mymacro,527) @code{@@footnote@{in footnote@}} @footnote{in footnote}
@@ -1511,14 +1511,14 @@ formatting_regions.texi(mymacro,530) @@dotless@{i@} @dotless{i}
 formatting_regions.texi(mymacro,530) @@dotless@{ij@} @dotless{ij}
 formatting_regions.texi(mymacro,530) @@`@{@@=E@} @`{@=E} 
 formatting_regions.texi(mymacro,530) @@l@{@} @l{}
-formatting_regions.texi(mymacro,530) @@,@{@@'C@} @m_cedilla{@'C}
-formatting_regions.texi(mymacro,530) @@,c @m_cedilla{c}
-formatting_regions.texi(mymacro,530) @@,c@@"u @m_cedilla{c}@"u @*
+formatting_regions.texi(mymacro,530) @@,@{@@'C@} @,{@'C}
+formatting_regions.texi(mymacro,530) @@,c @,c
+formatting_regions.texi(mymacro,530) @@,c@@"u @,c@"u @*
 formatting_regions.texi(mymacro,530) 
 formatting_regions.texi(mymacro,530) Somehow invalid use of @@,:@*
-formatting_regions.texi(mymacro,530) @@, 
+formatting_regions.texi(mymacro,530) @@, @,
 formatting_regions.texi(mymacro,530) @*
-formatting_regions.texi(mymacro,530) @@,@@"u @m_cedilla{}@"u
+formatting_regions.texi(mymacro,530) @@,@@"u @,@"u
 formatting_regions.texi(mymacro,530) 
 formatting_regions.texi(mymacro,530) Invalid use of @@':@*
 formatting_regions.texi(mymacro,530) @@' @'
@@ -1653,8 +1653,8 @@ formatting_regions.texi(mymacro,530) @code{@@udotaccent@{a@}} @udotaccent{a}
 formatting_regions.texi(mymacro,530) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 formatting_regions.texi(mymacro,530) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,530) @code{@@v@{--a@}} @v{--a}
-formatting_regions.texi(mymacro,530) @code{@@,@{c@}} @m_cedilla{c}
-formatting_regions.texi(mymacro,530) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting_regions.texi(mymacro,530) @code{@@,@{c@}} @,{c}
+formatting_regions.texi(mymacro,530) @code{@@,@{--c@}} @,{--c}
 formatting_regions.texi(mymacro,530) @code{@@dotless@{--a@}} @dotless{--a}
 formatting_regions.texi(mymacro,530) @code{@@dotless@{a@}} @dotless{a}
 formatting_regions.texi(mymacro,530) @code{@@footnote@{in footnote@}} @footnote{in footnote}

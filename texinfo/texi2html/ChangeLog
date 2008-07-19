@@ -1,3 +1,16 @@
+2008-07-18  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: get rid of m_cedilla, instead a specific function
+	for the node parsing, scan_node_line, is used.
+	* Tests/formatting/detailmenus.texi: new test case for detailmenu.
+
+2008-07-16  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: give columnfractions and row
+	prototypes to the multitable cell and row formatting functions.
+	* texi2html.init: use columnfractions to determine the cell
+	widths.
+
 2008-06-12  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: dynamically determine file hrefs for

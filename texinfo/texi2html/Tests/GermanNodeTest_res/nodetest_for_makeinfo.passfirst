@@ -44,7 +44,7 @@ nodetest_for_makeinfo.texi(,44) @end menu
 nodetest_for_makeinfo.texi(,45) @c
 nodetest_for_makeinfo.texi(,46) @node @"a,,,Umlaut
 nodetest_for_makeinfo.texi(,47) @section @"a
-nodetest_for_makeinfo.texi(,48) ref to @m_cedilla{c} @ref{cedilla}.
+nodetest_for_makeinfo.texi(,48) ref to @,{c} @ref{cedilla}.
 nodetest_for_makeinfo.texi(,49) @node @"e,,,Umlaut
 nodetest_for_makeinfo.texi(,50) @section @"e
 nodetest_for_makeinfo.texi(,51) @node @"i,,,Umlaut 
@@ -250,14 +250,14 @@ nodetest_for_makeinfo.texi(,253) @c
 nodetest_for_makeinfo.texi(,254) @node cedilla accent,,Top,Top
 nodetest_for_makeinfo.texi(,255) @chapter cedilla accent
 nodetest_for_makeinfo.texi(,256) @menu
-nodetest_for_makeinfo.texi(,257) * cedilla ::    @m_cedilla{c}.
-nodetest_for_makeinfo.texi(,258) * Cedilla ::    @m_cedilla{C}.
+nodetest_for_makeinfo.texi(,257) * cedilla ::    @,{c}.
+nodetest_for_makeinfo.texi(,258) * Cedilla ::    @,{C}.
 nodetest_for_makeinfo.texi(,259) @end menu
 nodetest_for_makeinfo.texi(,260) @c
 nodetest_for_makeinfo.texi(,261) @node cedilla,,,cedilla accent
-nodetest_for_makeinfo.texi(,262) @section @m_cedilla{c}
+nodetest_for_makeinfo.texi(,262) @section @,{c}
 nodetest_for_makeinfo.texi(,263) @node Cedilla ,,,cedilla accent
-nodetest_for_makeinfo.texi(,264) @section @m_cedilla{C}
+nodetest_for_makeinfo.texi(,264) @section @,{C}
 nodetest_for_makeinfo.texi(,265) @c
 nodetest_for_makeinfo.texi(,266) @node rest,,Top,Top
 nodetest_for_makeinfo.texi(,267) @chapter rest

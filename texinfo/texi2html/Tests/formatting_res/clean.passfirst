@@ -180,8 +180,8 @@ clean.texi(,180) @code{@@udotaccent@{a@}} @udotaccent{a}
 clean.texi(,181) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 clean.texi(,182) @code{@@v@{a@}} @v{a}
 clean.texi(,183) @code{@@v@{--a@}} @v{--a}
-clean.texi(,184) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(,185) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(,184) @code{@@,@{c@}} @,{c}
+clean.texi(,185) @code{@@,@{--c@}} @,{--c}
 clean.texi(,186) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 clean.texi(,187) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 clean.texi(,188) 
@@ -571,8 +571,8 @@ clean.texi(mymacro,820) @code{@@udotaccent@{a@}} @udotaccent{a}
 clean.texi(mymacro,820) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 clean.texi(mymacro,820) @code{@@v@{a@}} @v{a}
 clean.texi(mymacro,820) @code{@@v@{--a@}} @v{--a}
-clean.texi(mymacro,820) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(mymacro,820) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(mymacro,820) @code{@@,@{c@}} @,{c}
+clean.texi(mymacro,820) @code{@@,@{--c@}} @,{--c}
 clean.texi(mymacro,820) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 clean.texi(mymacro,820) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 clean.texi(mymacro,820) 
@@ -962,8 +962,8 @@ clean.texi(mymacro,823) @code{@@udotaccent@{a@}} @udotaccent{a}
 clean.texi(mymacro,823) @code{@@udotaccent@{--a@}} @udotaccent{--a}
 clean.texi(mymacro,823) @code{@@v@{a@}} @v{a}
 clean.texi(mymacro,823) @code{@@v@{--a@}} @v{--a}
-clean.texi(mymacro,823) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(mymacro,823) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(mymacro,823) @code{@@,@{c@}} @,{c}
+clean.texi(mymacro,823) @code{@@,@{--c@}} @,{--c}
 clean.texi(mymacro,823) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 clean.texi(mymacro,823) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 clean.texi(mymacro,823) 

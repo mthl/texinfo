@@ -44,7 +44,7 @@
 ../GermanNodeTest/nodetest.texi(,45) @c
 ../GermanNodeTest/nodetest.texi(,46) @node @"a,,,Umlaut
 ../GermanNodeTest/nodetest.texi(,47) @section @"a
-../GermanNodeTest/nodetest.texi(,48) ref to @m_cedilla{c} @ref{@m_cedilla{c}}.
+../GermanNodeTest/nodetest.texi(,48) ref to @,{c} @ref{@,{c}}.
 ../GermanNodeTest/nodetest.texi(,49) @node @"e,,,Umlaut
 ../GermanNodeTest/nodetest.texi(,50) @section @"e
 ../GermanNodeTest/nodetest.texi(,51) @node @"i,,,Umlaut 
@@ -250,17 +250,17 @@
 ../GermanNodeTest/nodetest.texi(,254) @node cedilla accent,,Top,Top
 ../GermanNodeTest/nodetest.texi(,255) @chapter cedilla accent
 ../GermanNodeTest/nodetest.texi(,256) @menu
-../GermanNodeTest/nodetest.texi(,257) * @m_cedilla{c}::    @m_cedilla{c}.
-../GermanNodeTest/nodetest.texi(,258) * @m_cedilla{C}::    @m_cedilla{C}.
-../GermanNodeTest/nodetest.texi(,259) * @m_cedilla{c} no brace:: @m_cedilla{c} no brace.
+../GermanNodeTest/nodetest.texi(,257) * @,{c}::    @,{c}.
+../GermanNodeTest/nodetest.texi(,258) * @,{C}::    @,{C}.
+../GermanNodeTest/nodetest.texi(,259) * @,c no brace:: @,c no brace.
 ../GermanNodeTest/nodetest.texi(,260) @end menu
 ../GermanNodeTest/nodetest.texi(,261) @c
-../GermanNodeTest/nodetest.texi(,262) @node @m_cedilla{c},,,cedilla accent
-../GermanNodeTest/nodetest.texi(,263) @section @m_cedilla{c}
-../GermanNodeTest/nodetest.texi(,264) @node @m_cedilla{C},,,cedilla accent
-../GermanNodeTest/nodetest.texi(,265) @section @m_cedilla{C}
-../GermanNodeTest/nodetest.texi(,266) @node @m_cedilla{c} no brace,,,cedilla accent
-../GermanNodeTest/nodetest.texi(,267) @section @m_cedilla{c} no brace
+../GermanNodeTest/nodetest.texi(,262) @node @,{c},,,cedilla accent
+../GermanNodeTest/nodetest.texi(,263) @section @,{c}
+../GermanNodeTest/nodetest.texi(,264) @node @,{C},,,cedilla accent
+../GermanNodeTest/nodetest.texi(,265) @section @,{C}
+../GermanNodeTest/nodetest.texi(,266) @node @,c no brace,,,cedilla accent
+../GermanNodeTest/nodetest.texi(,267) @section @,c no brace
 ../GermanNodeTest/nodetest.texi(,268) @c
 ../GermanNodeTest/nodetest.texi(,269) @node rest,,Top,Top
 ../GermanNodeTest/nodetest.texi(,270) @chapter rest

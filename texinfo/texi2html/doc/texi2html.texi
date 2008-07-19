@@ -3031,18 +3031,23 @@ the @code{@@item} line. @var{$text} is the corresponding text.
 The multitable elements formatting is controlled by the functions associated
 with two function references. One for a cell, and the other for a row.
 
-@deftypefn {Function Reference} $multitable_cell cell $text
+@deftypefn {Function Reference} $multitable_cell cell $text $item_command $columnfractions $prototype_row
 This function is used to format the text of a multitable cell, the text 
 following a @code{@@item} or a @code{@@tab}.
-@var{$text} is the corresponding text. 
+@var{$text} is the corresponding text. @var{$item_command} is the command 
+used to introduce the row, such that it is possible to distinguish 
+between @code{@@item} and @code{@@headitem}.
+@var{$columnfractions} is a reference on an array 
+containing the @code{@@columnfraction} arguments, if any, and 
+@var{$prototype_row} is a reference on an array containing the row prototypes
+given on the @code{@@multitable} line, if any.
 @end deftypefn
 
-@deftypefn {Function Reference} $multitable_row row $text $item_command
+@deftypefn {Function Reference} $multitable_row row $text $item_command $columnfractions $prototype_row
 This function is used to format a multitable row. @var{$text} is
 the row text, with cells allready formatted with the @variable{$cell}
-function reference. @var{$item_command} is the command used to introduce 
-the row, such that it is possible to distinguish between @code{@@item} and
-@code{@@headitem}.
+function reference. @var{$item_command}, @var{$columnfractions} and
+@var{$prototype_row} are the same than in the function reference above.
 @end deftypefn
 @end table
 
