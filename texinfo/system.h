@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.9 2008-03-04 09:44:06 gray Exp $
+   $Id: system.h,v 1.10 2008-07-26 17:13:26 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007, 2008 Free Software Foundation, Inc.
@@ -55,9 +55,13 @@ extern char *substring (const char *, const char *);
 #define N_(String) (String)
 
 /* Additional gnulib includes.  */
+#include "mbchar.h"
 #include "mbswidth.h"
 #include "xalloc.h"
 #include "xsetenv.h"
+#if HAVE_MBRTOWC
+#include "mbiter.h"
+#endif
 
 #include <errno.h>
 #ifndef errno

@@ -82,7 +82,11 @@ AC_DEFUN([gl_INIT],
   gl_MBSWIDTH
   gl_MBITER
   gl_FUNC_MEMCHR
+  gl_FUNC_MEMCMP
   gl_FUNC_MEMCPY
+  gl_FUNC_MEMMEM
+  gl_FUNC_MEMMEM_SIMPLE
+  gl_STRING_MODULE_INDICATOR([memmem])
   gl_FUNC_MEMMOVE
   gl_FUNC_MEMPCPY
   gl_STRING_MODULE_INDICATOR([mempcpy])
@@ -118,10 +122,10 @@ AC_DEFUN([gl_INIT],
   gl_WCHAR_MODULE_INDICATOR([wcwidth])
   gl_XALLOC
   m4_ifval(gl_LIBSOURCES_LIST, [
-    m4_syscmd([test ! -d ]gl_LIBSOURCES_DIR[ ||
+    m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
       for gl_file in ]gl_LIBSOURCES_LIST[ ; do
-        if test ! -r ]gl_LIBSOURCES_DIR[/$gl_file ; then
-          echo "missing file ]gl_LIBSOURCES_DIR[/$gl_file" >&2
+        if test ! -r ]m4_defn([gl_LIBSOURCES_DIR])[/$gl_file ; then
+          echo "missing file ]m4_defn([gl_LIBSOURCES_DIR])[/$gl_file" >&2
           exit 1
         fi
       done])dnl
@@ -157,10 +161,10 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='tests'
   m4_ifval(gltests_LIBSOURCES_LIST, [
-    m4_syscmd([test ! -d ]gltests_LIBSOURCES_DIR[ ||
+    m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
       for gl_file in ]gltests_LIBSOURCES_LIST[ ; do
-        if test ! -r ]gltests_LIBSOURCES_DIR[/$gl_file ; then
-          echo "missing file ]gltests_LIBSOURCES_DIR[/$gl_file" >&2
+        if test ! -r ]m4_defn([gltests_LIBSOURCES_DIR])[/$gl_file ; then
+          echo "missing file ]m4_defn([gltests_LIBSOURCES_DIR])[/$gl_file" >&2
           exit 1
         fi
       done])dnl
@@ -284,7 +288,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbswidth.h
   lib/mbuiter.h
   lib/memchr.c
+  lib/memcmp.c
   lib/memcpy.c
+  lib/memmem.c
   lib/memmove.c
   lib/mempcpy.c
   lib/mkstemp.c
@@ -296,6 +302,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stdlib.in.h
   lib/stpcpy.c
   lib/str-kmp.h
+  lib/str-two-way.h
   lib/strdup.c
   lib/streq.h
   lib/strerror.c
@@ -366,7 +373,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbstate_t.m4
   m4/mbswidth.m4
   m4/memchr.m4
+  m4/memcmp.m4
   m4/memcpy.m4
+  m4/memmem.m4
   m4/memmove.m4
   m4/mempcpy.m4
   m4/mkstemp.m4
