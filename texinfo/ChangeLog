@@ -1,3 +1,8 @@
+2008-07-27  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (xref_files_save): null out TAR_OPTIONS.
+	From Jim Meyering.
+
 2008-07-27  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.93.

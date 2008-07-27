@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.131 2008-07-04 08:14:01 akim Exp $
+# $Id: texi2dvi,v 1.132 2008-07-27 23:14:03 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.131 $'
+rcs_revision='$Revision: 1.132 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -800,6 +800,10 @@ xref_files_save ()
     # The following line improves `cp $xref_files_orig "$work_bak"'
     # by preserving the directory parts.  Think of
     # cp chap1/main.aux chap2/main.aux $work_bak.
+    #
+    # Users may have, e.g., --keep-old-files.  Don't let this interfere.
+    # (Don't use unset for the sake of ancient shells.)
+    TAR_OPTIONS=; export TAR_OPTIONS
     tar cf - $xref_files_orig | (cd "$work_bak" && tar xf -)
   fi
 }
