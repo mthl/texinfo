@@ -60,14 +60,15 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.209 2008-07-28 11:42:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.210 2008-07-28 12:55:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
 
 # Authors (appears in comments):
 my $T2H_AUTHORS = <<EOT;
-Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
             Olaf Bachmann <obachman\@mathematik.uni-kl.de>
             and many others.

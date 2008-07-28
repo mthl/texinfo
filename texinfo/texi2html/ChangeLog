@@ -7,6 +7,9 @@
 	able to open a menu_comment right after a beginning of a menu, of
 	a detailmenu, or right after the end of those commands.
 	add command line option --error-limit.
+	* texi2html.pl: better comment about texi2html that states more 
+	clearly that the authors are the texi2html authors (from Reinhold
+	Kainhofer).
 
 2008-07-19  Patrice Dumas  <dumas@centre-cired.fr>
 

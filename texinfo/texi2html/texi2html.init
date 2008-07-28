@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.141 2008-07-28 11:42:20 pertusus Exp $
+# $Id: texi2html.init,v 1.142 2008-07-28 12:55:51 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1191,10 +1191,8 @@ sub T2H_DEFAULT_print_page_head($)
     print $fh <<EOT;
 $DOCTYPE
 <html>
-$Texi2HTML::THISDOC{'copying_comment'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program} -->
-<!--
-$Texi2HTML::THISDOC{program_authors}
--->
+$Texi2HTML::THISDOC{'copying_comment'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program}
+$Texi2HTML::THISDOC{program_authors}-->
 <head>
 <title>$longtitle</title>
 
