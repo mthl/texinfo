@@ -1,3 +1,13 @@
+2008-07-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle a menu_comment like a normal
+	format. detailmenu isn't a misc_command anymore, but is handled like a
+	normal format, like a menu @-command.
+	put format opening in a separate subsection, begin_format, to be
+	able to open a menu_comment right after a beginning of a menu, of
+	a detailmenu, or right after the end of those commands.
+	add command line option --error-limit.
+
 2008-07-19  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, doc/*: synchronize command-line switches with 

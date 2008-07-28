@@ -491,6 +491,7 @@ obtained by prepending @samp{no} or @samp{no-} to the switch name. For example
 @longopt{nomenu} does the reverse of @longopt{menu}.
 
 @menu
+* General options::
 * Splitting output::          The @acronym{HTML} output may be split at 
                               different levels
 * Output files::
@@ -501,6 +502,22 @@ obtained by prepending @samp{no} or @samp{no-} to the switch name. For example
 * Expanding TeX regions::
 * Using init files::          Specifying initialization files for fine tuning
 @end menu
+
+@c --------------------------------------------------------
+@node General options
+@section General options
+
+Miscellaneous general options:
+@table @asis
+@item @longopt{error-limit=@var{num}}
+Quit after @var{num} errors (default 1000), (variable @variable{$ERROR_LIMIT}).
+@item @longopt{help}
+Display a short help and exit.
+@item @longopt{verbose}
+Be verbose.
+@item @longopt{version}
+Display version information and exit.
+@end table
 
 @c --------------------------------------------------------
 @node Splitting output
@@ -3386,10 +3403,21 @@ should be used similarly than for the menu link. @var{$element_text}
 is the heading of the element associated with the node.
 @end deftypefn
 
-@deftypefn {Function Reference} $menu_comment menu_comment $text
-@var{$text} is the text of the menu comment. It is always in a preformatted 
-environment.
-@end deftypefn
+The @dfn{menu comment} part is formatted like a normal command, 
+called @code{menu_comment}. The default is to have it be formatted
+like a @ref{Complex formats}, with
+@example
+$complex_format_map->@{'menu_comment'@} =
+@{
+   'begin' => q@{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"@},
+   'end' => q@{"</th></tr>"@}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
+@}
+@end example
+
+@c @deftypefn {Function Reference} $menu_comment menu_comment $text
+@c @var{$text} is the text of the menu comment. It is always in a preformatted 
+@c environment.
+@c @end deftypefn
 
 Another function reference corresponds with a special case. It
 is used when a menu entry appears within another block command, to
@@ -3408,7 +3436,8 @@ name of the node, and @var{$ending} is the text ending the link entry.
 @subsection  Simple menu formatting in a preformatted environment
 
 If the menu is to be formatted in a single preformatted environment,
-an entry for @samp{menu} should be added to the @code{$complex_format_map}
+an entry for @samp{menu} and @samp{detailmenu} 
+should be added to the @code{$complex_format_map}
 hash reference (@pxref{Complex formats}).
 In the default case, if the user didn't add an entry himself, a very simple 
 entry is used, with:
@@ -3441,9 +3470,10 @@ associated with this preformatted text is determined by
 The css class associated with menu comments is @code{menu-comments}.
 
 The following function reference controls the formatting of a wole menu
-in that case:
+or a detailmenu in that case:
 
-@deftypefn {Function Reference} $menu menu $menu_components_text
+@deftypefn {Function Reference} $menu menu_command $command $menu_components_text
+@var{$command} is the menu command, currently @samp{menu} or @samp{detailmenu}.
 @var{$menu_components_text} is the formatted menu components text, obtained
 as explained above.
 @end deftypefn
@@ -4058,7 +4088,12 @@ function reference is now done in $print_element_header.
 @item @option{--lang} is replaced by @option{--document-language}.
 @item @option{--separated-footnotes} is replaced by @option{--footnote-style}.
 @item @option{--lang} is replaced by @option{--document-language}.
-
+@item @code{&$menu_comment} is removed, @code{menu_comment} is now handled
+  like an @@-command.
+@item @code{@@detailmenu} is now formatted more like @code{@@menu}, and
+the @code{&$menu} function reference is replaced by @code{&$menu_command}.
+@code{&$menu} is kept for backward compatibility. If @code{&$menu} is defined, 
+@code{@@detailmenu} is ignored.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

@@ -53,6 +53,10 @@ This file records noteworthy changes.
   --Verbose becomes --verbose
   --lang becomes --document-language
 
+* change handling of @detailmenu and menu comments, with (among other changes)
+  the menu function reference replaced by the menu_command function reference
+  also handling @detailmenu.
+
 * BUG FIXES
   ---------
 

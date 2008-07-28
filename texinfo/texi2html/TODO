@@ -137,3 +137,14 @@ function clean_antispam() {
 <body onLoad="clean_antispam()">
 <tt>&lt;bug-gnulib<span id="span1" style="display:none;">-nospam</span>&#64;<span id="span2" style="display:none;">nospam.</span>gnu.org&gt;</tt>
 </body>
+
+* menu_description is menucomment in makeinfo. It is stopped by an empty line
+  or a command with $format_type{$command} eq 'menu'
+  menuentry is the menunode+menutitle+menucomment
+  menu_comment has no name in makeinfo and is treated as normal text.
+
+* Tests/formatting/code_not_closed.texi should trigger 2 errors, none
+  are triggered currently.
+
+* a FIXME in Tests/formatting/detailmenus.texi with a warning missing 
+  for a menu entry for a spurious entry with no corresponding node entry.

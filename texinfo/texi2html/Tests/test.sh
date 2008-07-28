@@ -266,6 +266,7 @@ test_texi formatting quotes.texi
 test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple
 test_texi formatting detailmenus.texi
+test_texi formatting detailmenus.texi "-init simple_menu.init -prefix detailmenus_simple" 0 texi detailmenus_simple
 test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting commands_in_ifset.texi
 test_texi formatting ../GermanNodeTest/nodetest.texi "-split chapter -output ."
@@ -297,6 +298,7 @@ test_texi formatting heading.texi
 test_texi formatting equivalent_nodes.texi "" 5
 test_texi formatting indicateurl_paragraph.texi
 test_texi formatting bad_nesting.texi
+test_texi formatting code_not_closed.texi
 test_texi formatting formats_not_closed.texi "" 12
 test_texi formatting commands_not_closed.texi "" 4
 test_texi formatting math_not_closed.texi "--l2h --iftex" 8

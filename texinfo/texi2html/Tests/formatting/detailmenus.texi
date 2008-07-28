@@ -1,6 +1,6 @@
 \input texinfo   @c -*-texinfo-*-
 @comment %**start of header
-@setfilename menus.info
+@setfilename detailmenus.info
 
 @node Top
 @top Top
@@ -41,7 +41,7 @@ Menu comment
 
 @menu 
 * s--ect@comma{}ion:: s--ect@comma{}ion
-* subsubsection::
+* subsubsection::                        FIXME this should lead to a warning
 @end menu
 
 @node s--ect@comma{}ion
