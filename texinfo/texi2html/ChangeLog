@@ -10,6 +10,10 @@
 	* texi2html.pl: better comment about texi2html that states more 
 	clearly that the authors are the texi2html authors (from Reinhold
 	Kainhofer).
+	Handle better codepoints above 0xFFFF (Reinhold Kainhofer report).
+	Add $Texi2HTML::THISDOC{'input_file_name'} for the file given on the 
+	command line (report from Reinhold Kainhofer).
+
 
 2008-07-19  Patrice Dumas  <dumas@centre-cired.fr>
 

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.210 2008-07-28 12:55:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.211 2008-07-28 16:53:26 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1650,13 +1650,21 @@ sub unicode_to_protected($)
         }
         elsif ($text =~ s/^(.)//o)
         {
-             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
+             my $char = $1;
+             if (exists($Texi2HTML::Config::ascii_character_map{$char}))
              {
-                 $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$1});
+                 $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$char});
              }
              else
              {
-                 $result .= '_' . lc(sprintf("%04x",ord($1)));
+                 if (ord($char) <= hex(0xFFFF)) 
+                 {
+                     $result .= '_' . lc(sprintf("%04x",ord($char)));
+                 }
+                 else
+                 {
+                     $result .= '__' . lc(sprintf("%06x",ord($char)));
+                 }
              }
         }
         else
@@ -1681,15 +1689,16 @@ sub unicode_to_transliterate($)
         }
         elsif ($text =~ s/^(.)//o)
         {
-             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
+             my $char = $1;
+             if (exists($Texi2HTML::Config::ascii_character_map{$char}))
              {
-                 $result .= $1;
+                 $result .= $char;
              }
-             elsif (exists($Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($1)))}))
+             elsif (ord($char) <= hex(0xFFFF) and exists($Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($char)))}))
              {
-                 $result .= $Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($1)))};
+                 $result .= $Texi2HTML::Config::transliterate_map{uc(sprintf("%04x",ord($char)))};
              }
-             elsif (exists($Texi2HTML::Config::unicode_diacritical{uc(sprintf("%04x",ord($1)))}))
+             elsif (ord($char) <= hex(0xFFFF) and exists($Texi2HTML::Config::unicode_diacritical{uc(sprintf("%04x",ord($char)))}))
              {
                  $result .= '';
              }
@@ -1697,11 +1706,11 @@ sub unicode_to_transliterate($)
              {
                  if ($Texi2HTML::Config::USE_UNIDECODE)
                  {
-                      $result .= unidecode($1);
+                      $result .= unidecode($char);
                  }
                  else
                  {
-                      $result .= $1;
+                      $result .= $char;
                  }
              }
         }
@@ -3012,7 +3021,10 @@ if ($Texi2HTML::Config::SHORTEXTN)
 }
 
 $Texi2HTML::THISDOC{'extension'} = $docu_ext;
+$Texi2HTML::THISDOC{'input_file_name'} = $docu;
+# undocummented, should never be used.
 $Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
+$Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
 $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
 
 $docu_doc = $docu_name . ($docu_ext ? ".$docu_ext" : ""); # document's contents
@@ -6568,7 +6580,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
     $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
 #    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription_text;
-    $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
     $Texi2HTML::THISDOC{'titles'} = [] if (!defined($Texi2HTML::THISDOC{'titles'}));

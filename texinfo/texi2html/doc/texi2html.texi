@@ -1490,6 +1490,8 @@ Main frame file.
 @item toc_frame
 Table of contents frame file name.
 @end table
+@item input_file_name
+Name of the texinfo manual file given on the command line.
 @item destination_directory
 Destination directory for the resulting files.
 @item extension

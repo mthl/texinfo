@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.142 2008-07-28 12:55:51 pertusus Exp $
+# $Id: texi2html.init,v 1.143 2008-07-28 16:53:26 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -866,6 +866,7 @@ $DATE = undef;
 # $Texi2HTML::THISDOC{today}            -- date formatted with pretty_date
 # $Texi2HTML::THISDOC{toc_file}         -- table of contents file
 # $Texi2HTML::THISDOC{file_base_name}   -- base name of the texinfo manual file
+# $Texi2HTML::THISDOC{input_file_name}  -- name of the texinfo manual file
 # $Texi2HTML::THISDOC{destination_directory}
                                  #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script

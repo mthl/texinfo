@@ -62,7 +62,7 @@ sub tex4ht_init
 {
   # set file names
   $tex4ht_initial_dir = Cwd::abs_path;
-  $tex4ht_out_dir = "$Texi2HTML::THISDOC{'out_dir'}";
+  $tex4ht_out_dir = "$Texi2HTML::THISDOC{'destination_directory'}";
   $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
   my $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
   $commands{'math'}->{'style'} = $STYLE_MATH;
