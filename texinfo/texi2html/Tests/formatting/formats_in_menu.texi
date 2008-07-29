@@ -17,8 +17,10 @@ comment
 * (info):: before verbatim @verbatim
 some @ verb{' atim
 * (texinfo):: in @ verbatim
+
 @end verbatim
 * (manual2):: $@html
+
 <i></i>
 @end html
 Log$
@@ -30,6 +32,7 @@ After menu
 @menu
 * (manual):: @table @asis
 @item item
+
 * (node)::
 menu comment ?
 * (node2):: description ?

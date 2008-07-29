@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.143 2008-07-28 16:53:26 pertusus Exp $
+# $Id: texi2html.init,v 1.144 2008-07-29 11:57:25 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -767,7 +767,7 @@ sub t2h_default_init_out()
         }
         #$format_map{'menu_comment'} = '' if (!defined($format_map{'menu_comment'}));
     }
-    elsif (!defined($complex_format_map->{'menu_comment'}))
+    elsif (!defined($format_map{'menu_comment'}) and !defined($complex_format_map->{'menu_comment'}))
     {
         $complex_format_map->{'menu_comment'} = 
         {

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.211 2008-07-28 16:53:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.212 2008-07-29 11:57:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -8594,6 +8594,7 @@ sub close_menu($$$$)
 }
 
 # Format menu link
+# FIXME also pass node and name?
 sub do_menu_link($$;$)
 {
     my $state = shift;
@@ -8602,9 +8603,14 @@ sub do_menu_link($$;$)
     my $menu_entry = $state->{'menu_entry'};
     my $file = $state->{'element'}->{'file'};
     my $node_name = normalise_node($menu_entry->{'node'});
+    # FIXME normalise_node here? Currently it is not passed down anyway
+    my $name = normalise_node($menu_entry->{'name'});
 
     my $substitution_state = duplicate_formatting_state($state);
-    my $name = substitute_line($menu_entry->{'name'}, $substitution_state);
+    # FIXME the same state is used, but it corresponds with the fact that the 
+    # name follows the node. 
+    # normalise_node is not used, so that spaces are kept, like makeinfo.
+    my $name_formatted = substitute_line($menu_entry->{'name'}, $substitution_state);
     my $node_formatted = substitute_line($menu_entry->{'node'}, $substitution_state);
 
     my $entry = '';
@@ -8662,8 +8668,8 @@ sub do_menu_link($$;$)
     # save the element used for the href for the description
     $menu_entry->{'menu_reference_element'} = $element;
 
-    return &$Texi2HTML::Config::menu_link($entry, $substitution_state, $href, $node_formatted, $name, $menu_entry->{'ending'}) unless ($simple);
-    return &$Texi2HTML::Config::simple_menu_link($entry, $state->{'preformatted'}, $href, $node_formatted, $name, $menu_entry->{'ending'});
+    return &$Texi2HTML::Config::menu_link($entry, $substitution_state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, ) unless ($simple);
+    return &$Texi2HTML::Config::simple_menu_link($entry, $state->{'preformatted'}, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'});
 }
 
 sub do_menu_description($$)
@@ -10656,6 +10662,8 @@ sub scan_line($$$$;$)
                 { # we are within a macro or a format. In that case we use
                   # a simplified formatting of menu which should be right whatever
                   # the context. In this case there is no 'menu_description'.
+                  # FIXME simply setting $menu_entry = undef doesn't work,
+                  # this is certainly wrong, and should be investigated.
                     my $menu_entry = $state->{'menu_entry'};
                     $state->{'menu_entry'} = { 'name' => $name, 'node' => $node,
                        'ending' => $ending };
@@ -10669,9 +10677,8 @@ sub scan_line($$$$;$)
             if ($state->{'menu_entry'} and !$new_menu_entry)
             {
                 my $top_stack = top_stack($stack);
-                if (/^\s+\S.*$/ or (!$top_stack->{'format'} or ($top_stack->{'format'} ne 'menu_description')))
+                if (/\S/ or (!$top_stack->{'format'} or ($top_stack->{'format'} ne 'menu_description')))
                 { # description continues
-                  # FIXME detailmenu should stop description
                     $menu_description_in_format = 1 if ($top_stack->{'format'} and ($top_stack->{'format'} ne 'menu_description'));
                     print STDERR "# Description continues\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 }

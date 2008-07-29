@@ -11,19 +11,21 @@ not_closed_in_menu.texi(,11) Some text.
 not_closed_in_menu.texi(,12) 
 not_closed_in_menu.texi(,13) @menu
 not_closed_in_menu.texi(,14) * (manual):: desc
-not_closed_in_menu.texi(,15) @table @bullet
-not_closed_in_menu.texi(,16) @item item
-not_closed_in_menu.texi(,17) comment
-not_closed_in_menu.texi(,18) * (manual2)::
-not_closed_in_menu.texi(,19) @end menu
-not_closed_in_menu.texi(,20) 
-not_closed_in_menu.texi(,21) @menu
-not_closed_in_menu.texi(,22) * (info):: before deff @deffn bidule truc chose
-not_closed_in_menu.texi(,23) deffn text
-not_closed_in_menu.texi(,24) @end menu
-not_closed_in_menu.texi(,25) After menu
-not_closed_in_menu.texi(,26) 
-not_closed_in_menu.texi(,27) @menu
-not_closed_in_menu.texi(,28) * (manual_in_menu):: desc2
-not_closed_in_menu.texi(,29) 
-not_closed_in_menu.texi(,30) @bye
+not_closed_in_menu.texi(,15) 
+not_closed_in_menu.texi(,16) @table @bullet
+not_closed_in_menu.texi(,17) @item item
+not_closed_in_menu.texi(,18) comment
+not_closed_in_menu.texi(,19) * (manual2)::
+not_closed_in_menu.texi(,20) @end menu
+not_closed_in_menu.texi(,21) 
+not_closed_in_menu.texi(,22) @menu
+not_closed_in_menu.texi(,23) * (info):: before deff @deffn bidule truc chose
+not_closed_in_menu.texi(,24) 
+not_closed_in_menu.texi(,25) deffn text
+not_closed_in_menu.texi(,26) @end menu
+not_closed_in_menu.texi(,27) After menu
+not_closed_in_menu.texi(,28) 
+not_closed_in_menu.texi(,29) @menu
+not_closed_in_menu.texi(,30) * (manual_in_menu):: desc2
+not_closed_in_menu.texi(,31) 
+not_closed_in_menu.texi(,32) @bye

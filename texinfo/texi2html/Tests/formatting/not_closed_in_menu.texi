@@ -12,6 +12,7 @@ Some text.
 
 @menu
 * (manual):: desc
+
 @table @bullet
 @item item
 comment
@@ -20,6 +21,7 @@ comment
 
 @menu
 * (info):: before deff @deffn bidule truc chose
+
 deffn text
 @end menu
 After menu
