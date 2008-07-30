@@ -1,3 +1,14 @@
+2008-07-30  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add 3 function references to avoid
+	using anchor for different label formatting and allows to customize
+	the labels.
+	Give the element in argument of more function references.
+	Always give the name to simple_menu_link and menu_link, and a new 
+	argument tells if there was an explicit name.
+	Node names are formatted with code_style true.
+	Keep @*contents for misc_command processing if it should be kept.
+
 2008-07-29  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: a menu comment is started by a blank line, and not

@@ -588,13 +588,13 @@ Menu comment
 @subsection subsection
 
 @menu
-* subsubsection::
+* subsubsection ``simple-double--three---four----''::
 @end menu
 
 @anchor{anchor}
 
-@node subsubsection
-@subsubsection subsubsection
+@node subsubsection ``simple-double--three---four----''
+@subsubsection subsubsection ``simple-double--three---four----''
 
 @node chapter2
 @centerchap chapter 2

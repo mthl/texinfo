@@ -1856,6 +1856,15 @@ and the page layout
 @node Special pages content
 @subsection Customizing the content of the special pages
 
+The label for the special elements, except for the Top element
+is formatted according to the function reference @variable{$misc_element_label}:
+
+@deftypefn {Function Reference} $misc_element_label misc_element_label $identifier $page_name
+@var{$identifier} is the identifier associated with the special element.
+@var{$page_name} is the special element name. It should return a label that
+can be used for references to the special element.
+@end deftypefn
+
 @menu
 * Top element text::
 * Contents and Overview text::
@@ -2547,9 +2556,18 @@ The formatting of special simple commands is controlled by functions. To
 customize the output, the corresponding function references should be
 redefined. All these functions return a formatted text.
 
-The formatting of anchors is controlled by @variable{$anchor}, but the function
-associated with the function reference does more, it is usefull
-to produce a reference target or link.
+The formatting of anchors is controlled by @variable{$anchor_label}.
+
+@deftypefn {Function Reference} $anchor_label anchor_label $identifier $anchor
+@var{$identifier} is the anchor identifier, @var{$anchor}is the @code{@@anchor}
+argument.
+@end deftypefn
+
+In the default case, it uses a function reference,  @variable{$anchor}
+ that can do
+a reference target or link. It is especially relevant for @acronym{HTML}
+but can be used in other formats, it is a rather common element
+of different formats.
 @deftypefn {Function Reference} $anchor anchor $identifier $href $text $attributes
 If @var{$identifier} is not empty, this value should be used to create
 a target for links (typically associated with a name or id 
@@ -3249,6 +3267,15 @@ letters for top level appendix numbering. This function should return the
 texinfo text corresponding with the numbered heading.
 @end deftypefn
 
+The label associated with the heading that can appear before the 
+heading itself and even before the navigation panel is customized with the
+following function reference:
+@deftypefn {Function Reference} $element_label element_label $identifier \%element_reference
+@var{$identifier} is the identifier associated with the heading.
+@var{\%element_reference} is the same as above.
+@end deftypefn
+
+
 @c --------------------------------------------------------
 @node Special regions
 @section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche}, @code{@@quotation})
@@ -3388,7 +3415,7 @@ because we are in @@emph@}.
 
 Three function references are associated with the formatting of the 
 different parts of a menu:
-@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending
+@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending $has_name
 @var{$section} is the section name corresponding with the link, @var{$href}
 is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
 holds informations about the current context. The only key which could be
@@ -3397,6 +3424,8 @@ context. @xref{Three contexts}.
 @var{$node} is the node name, @var{$name} is the
 name of the node. @var{$ending} is the text ending the link entry, 
 in general @samp{::} followed by some spaces.
+@var{$has_name} is true if the entry has an explicit name, otherwise
+@var{$name} has been constructed using the formatted node name.
 @end deftypefn
 
 @deftypefn {Function Reference} $description menu_description $description_text \%state $element_text
@@ -3426,11 +3455,13 @@ is used when a menu entry appears within another block command, to
 avoid the possibilities of invalid @acronym{HTML} production.
 In that case the menu description and menu comments are not formatted 
 specially, but treated like normal text.
-@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending
+@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending $has_name
 @var{$link_text} is the text corresponding with the link name, @var{$href}
 is the link hypertextual reference.
 @var{$node} is the node name, @var{$name} is the
 name of the node, and @var{$ending} is the text ending the link entry.
+@var{$has_name} is true if the entry has an explicit name, otherwise
+@var{$name} has been constructed using the formatted node name.
 @end deftypefn
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -4080,6 +4111,9 @@ version 1.68.
 @item what was done in the beginning of the $print_section 
 function reference is now done in $print_element_header.
 @item there is a new argument for $normal_text.
+@item there is a new argument for $menu_link and $simple_menu_link, and the 
+name argument is always set, even if there is no explicit name. The new 
+argument is true if there really was an explicit name.
 @item the @code{copying} key of %Texi2HTML::THISDOC is now called
 @code{copying_comment}.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.

@@ -1065,13 +1065,13 @@ formatting.texi(,587) @node subsection
 formatting.texi(,588) @subsection subsection
 formatting.texi(,589) 
 formatting.texi(,590) @menu
-formatting.texi(,591) * subsubsection::
+formatting.texi(,591) * subsubsection ``simple-double--three---four----''::
 formatting.texi(,592) @end menu
 formatting.texi(,593) 
 formatting.texi(,594) @anchor{anchor}
 formatting.texi(,595) 
-formatting.texi(,596) @node subsubsection
-formatting.texi(,597) @subsubsection subsubsection
+formatting.texi(,596) @node subsubsection ``simple-double--three---four----''
+formatting.texi(,597) @subsubsection subsubsection ``simple-double--three---four----''
 formatting.texi(,598) 
 formatting.texi(,599) @node chapter2
 formatting.texi(,600) @centerchap chapter 2

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.212 2008-07-29 11:57:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.213 2008-07-30 12:23:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -273,6 +273,7 @@ $INDEX_CHAPTER
 $SPLIT_INDEX
 $HREF_DIR_INSTEAD_FILE
 $USE_MENU_DIRECTIONS
+$USE_UP_FOR_ADJACENT_NODES
 $AFTER_BODY_OPEN
 $PRE_BODY_CLOSE
 $EXTRA_HEAD
@@ -373,8 +374,12 @@ $element_file_name
 $inline_contents
 $program_string
 
+$preserve_misc_command
 $protect_text
 $anchor
+$anchor_label
+$element_label
+$misc_element_label
 $def_item
 $def
 $menu
@@ -3471,79 +3476,6 @@ sub pass_texi()
     print STDERR "# end of pass texi\n" if $T2H_VERBOSE;
 }
 
-# return the line after preserving things according to misc_command map.
-sub preserve_command($$)
-{
-    my $line = shift;
-    my $macro = shift;
-    my $text = '';
-    my $args = '';
-    my $skip_spec = '';
-    my $arg_spec = '';
-
-    $skip_spec = $Texi2HTML::Config::misc_command{$macro}->{'skip'}
-        if (defined($Texi2HTML::Config::misc_command{$macro}->{'skip'}));
-    $arg_spec = $Texi2HTML::Config::misc_command{$macro}->{'arg'}
-        if (defined($Texi2HTML::Config::misc_command{$macro}->{'arg'}));
-
-    if ($arg_spec eq 'line')
-    {
-        $text .= $line;
-        $args .= $line;
-        $line = '';
-    }
-    elsif ($arg_spec)
-    {
-        my $arg_nr = $Texi2HTML::Config::misc_command{$macro}->{'arg'};
-        while ($arg_nr)
-        {
-            $line =~ s/(\s+\S*)//o;
-            $text .= $1 if defined($1);
-            $args .= $1 if defined($1);
-            $arg_nr--;
-        }
-    }
-   
-    if ($macro eq 'bye')
-    {
-        $line = '';
-        $text = "\n";
-    }
-    elsif ($skip_spec eq 'linespace')
-    {
-        if ($line =~ /^\s*$/o)
-        {
-            $line =~ s/([ \t]*)//o;
-            $text .= $1;
-        }
-    }
-    elsif ($skip_spec eq 'linewhitespace')
-    {
-        if ($line =~ /^\s*$/o)
-        {
-            $text .= $line;
-            $line = '';
-        }	
-    }
-    elsif ($skip_spec eq 'line')
-    {
-        $text .= $line;
-        $line = '';
-    }
-    elsif ($skip_spec eq 'whitespace')
-    {
-        $line =~ s/(\s*)//o;
-        $text .=  $1;
-    }
-    elsif ($skip_spec eq 'space')
-    {
-        $line =~ s/([ \t]*)//o;
-        $text .= $1;
-    }
-    $line = '' if (!defined($line));
-    return ($line, $text, $args);
-}
-
 #+++###########################################################################
 #                                                                             #
 # Pass structure: parse document structure                                    #
@@ -4197,7 +4129,7 @@ sub misc_command_texi($$$$)
       }
    }
 
-   ($text, $line, $args) = preserve_command($line, $macro);
+   ($text, $line, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
    return ($text, $line);
 }
 
@@ -4390,7 +4322,7 @@ sub misc_command_structure($$$$)
         common_misc_commands($macro, $line, 1, $line_nr);
     }
 
-    ($text, $line, $args) = preserve_command($line, $macro);
+    ($text, $line, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
     return ($text, $line);
 }
 
@@ -4432,7 +4364,7 @@ sub misc_command_text($$$$$$)
     if ($state->{'keep_texi'} and 
         (!$state->{'check_item'} or ($macro ne 'c' and $macro ne 'comment'))) 
     {
-        ($remaining, $skipped, $args) = preserve_command($line, $macro);
+        ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
         add_prev($text, $stack, "\@$macro". $skipped);
         return $remaining;
     }
@@ -4512,7 +4444,7 @@ sub misc_command_text($$$$$$)
         common_misc_commands($macro, $line, 2, $line_nr);
     }
 
-    ($remaining, $skipped, $args) = preserve_command($line, $macro);
+    ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
     return ($skipped) if ($keep);
     return $remaining if ($remaining ne '');
     return undef;
@@ -5112,7 +5044,11 @@ sub rearrange_elements()
         if ($node->{'nodenext'}) {}
         elsif ($node->{'texi'} eq 'Top')
         { # special case as said in the texinfo manual
-            $node->{'nodenext'} = $node->{'menu_child'} if ($node->{'menu_child'});
+            if ($node->{'menu_child'})
+            {
+                $node->{'nodenext'} = $node->{'menu_child'};
+                $node->{'menu_child'}->{'nodeprev'} = $node;
+            }
         }
         elsif ($node->{'automatic_directions'} and defined($node->{'section_ref'}))
         {
@@ -5122,8 +5058,8 @@ sub rearrange_elements()
             {
                 $next = get_node($section->{'sectionnext'})
             }
-            else 
-            {
+            elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES) 
+            { # makeinfo don't do that
                 while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
                 {
                     $section = $section->{'sectionup'};
@@ -5151,8 +5087,8 @@ sub rearrange_elements()
                 {
                     $node->{'nodeprev'} = get_node($section->{'sectionprev'});
                 }
-                elsif (defined($section->{'sectionup'}))
-                {
+                elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES and defined($section->{'sectionup'}))
+                { # makeinfo don't do that
                     $node->{'nodeprev'} = get_node($section->{'sectionup'});
                 }
             }
@@ -6122,10 +6058,10 @@ sub do_names()
         next if ($nodes{$node}->{'index_page'}); # some nodes are index pages.
         my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
            $nodes{$node}->{'texi'}, undef);
-        $nodes{$node}->{'text'} = substitute_line ($texi);
+        $nodes{$node}->{'text'} = substitute_line ($texi, {'code_style' => 1});
         $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
-        # backward compatibility
-        $nodes{$node}->{'name'} = $nodes{$node}->{'text_nonumber'};
+        # backward compatibility -> maybe used to have the name without code_style ?
+        $nodes{$node}->{'name'} = substitute_line($texi);
         $nodes{$node}->{'no_texi'} = remove_texi($texi);
         $nodes{$node}->{'simple_format'} = simple_format(undef, $texi);
         $nodes{$node}->{'heading_texi'} = $texi;
@@ -6863,15 +6799,15 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                         else
                         {
                              &$Texi2HTML::Config::print_page_head($FH) if ($do_page_head);
-                             &$Texi2HTML::Config::print_chapter_header($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
-                             &$Texi2HTML::Config::print_section_header($FH) if $Texi2HTML::Config::SPLIT eq 'section';
+                             &$Texi2HTML::Config::print_chapter_header($FH, $element) if $Texi2HTML::Config::SPLIT eq 'chapter';
+                             &$Texi2HTML::Config::print_section_header($FH, $element) if $Texi2HTML::Config::SPLIT eq 'section';
                         }
                         $first_section = 1;
                     }
                     print STDERR "." if ($T2H_VERBOSE);
                     print STDERR "\n" if ($T2H_DEBUG);
                 }
-                my $label = &$Texi2HTML::Config::anchor($current_element->{'id'}) . "\n";
+                my $label = &$Texi2HTML::Config::element_label($current_element->{'id'}, $current_element);
                 if (@section_lines)
                 {
                     push (@section_lines, $label);
@@ -6943,7 +6879,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     my $toc_lines = &$Texi2HTML::Config::inline_contents($FH, $tag, $content_element{$element_tag});
                     push (@section_lines, @$toc_lines) if (defined($toc_lines)) ;
                 }
-                next;
+                next unless (exists($Texi2HTML::Config::misc_command{$tag}) and $Texi2HTML::Config::misc_command{$tag}->{'keep'});
             }
         }
         scan_line($_, \$text, \@stack, \%state, $line_nr);
@@ -7084,7 +7020,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::SIMPLE_TEXT{'This'} = $Texi2HTML::SIMPLE_TEXT{$misc_page};
         $Texi2HTML::THIS_SECTION = $misc_page_infos{$misc_page}->{'section'}
             if defined($misc_page_infos{$misc_page}->{'section'});
-        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($Texi2HTML::Config::misc_pages_targets{$misc_page}) . "\n" ];
+        $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::misc_element_label($Texi2HTML::Config::misc_pages_targets{$misc_page}, $misc_page) ];
         &{$misc_page_infos{$misc_page}->{'process'}}($FH, $open_new);
         
         if ($open_new)
@@ -7144,7 +7080,7 @@ sub finish_element($$$$)
         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
         print STDERR "[Top]" if ($T2H_VERBOSE);
         $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
-        &$Texi2HTML::Config::print_Top($FH, ($element->{'titlefont'} or $element->{'index_page'}));
+        &$Texi2HTML::Config::print_Top($FH, ($element->{'titlefont'} or $element->{'index_page'}), $element);
         my $end_page = 0;
         if ($Texi2HTML::Config::SPLIT)
         {
@@ -7153,20 +7089,20 @@ sub finish_element($$$$)
                 $end_page = 1;
             }
         }
-        &$Texi2HTML::Config::print_Top_footer($FH, $end_page);
+        &$Texi2HTML::Config::print_Top_footer($FH, $end_page, $element);
         close_out($FH, $top_file) if ($end_page);
     }
     else
     {
         print STDERR "# do element $element->{'texi'}\n"
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        &$Texi2HTML::Config::print_section($FH, $first_section);
+        &$Texi2HTML::Config::print_section($FH, $first_section, 0, $element);
         if (defined($new_element) and ($new_element->{'file'} ne $element->{'file'}))
         {
              if (!$files{$element->{'file'}}->{'counter'})
              {
-                 &$Texi2HTML::Config::print_chapter_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'chapter');
-                 &$Texi2HTML::Config::print_section_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'section');
+                 &$Texi2HTML::Config::print_chapter_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'chapter');
+                 &$Texi2HTML::Config::print_section_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'section');
                  #print STDERR "Close file after $element->{'texi'}\n";
                  &$Texi2HTML::Config::print_page_foot($FH);
                  close_out($FH);
@@ -7180,23 +7116,23 @@ sub finish_element($$$$)
         {
             if ($Texi2HTML::Config::SPLIT)
             { # end of last splitted section
-                &$Texi2HTML::Config::print_chapter_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'chapter');
-                &$Texi2HTML::Config::print_section_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'section');
+                &$Texi2HTML::Config::print_chapter_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'chapter');
+                &$Texi2HTML::Config::print_section_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'section');
                 &$Texi2HTML::Config::print_page_foot($FH);
                 close_out($FH);
             }
             else
             {
-                &$Texi2HTML::Config::end_section($FH, 1);
+                &$Texi2HTML::Config::end_section($FH, 1, $element);
             }
         }
         elsif ($new_element->{'top'})
         {
-            &$Texi2HTML::Config::end_section($FH, 1);
+            &$Texi2HTML::Config::end_section($FH, 1, $element);
         }
         else
         {
-            &$Texi2HTML::Config::end_section($FH);
+            &$Texi2HTML::Config::end_section($FH, 0, $element);
         }
     }
 }
@@ -7556,7 +7492,7 @@ sub do_anchor_label($$$$)
     {
         print STDERR "Bug: unknown anchor `$anchor'\n";
     }
-    return &$Texi2HTML::Config::anchor($nodes{$anchor}->{'id'});
+    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor);
 }
 
 sub get_format_command($)
@@ -8603,15 +8539,28 @@ sub do_menu_link($$;$)
     my $menu_entry = $state->{'menu_entry'};
     my $file = $state->{'element'}->{'file'};
     my $node_name = normalise_node($menu_entry->{'node'});
-    # FIXME normalise_node here? Currently it is not passed down anyway
+    # normalise_node is used in fact to determine if name is empty. 
+    # It is not passed down to the function reference.
     my $name = normalise_node($menu_entry->{'name'});
-
     my $substitution_state = duplicate_formatting_state($state);
-    # FIXME the same state is used, but it corresponds with the fact that the 
-    # name follows the node. 
+
+    my $node_substitution_state = duplicate_formatting_state($state);
+    my $name_substitution_state = duplicate_formatting_state($state);
     # normalise_node is not used, so that spaces are kept, like makeinfo.
-    my $name_formatted = substitute_line($menu_entry->{'name'}, $substitution_state);
-    my $node_formatted = substitute_line($menu_entry->{'node'}, $substitution_state);
+    # also code_style is used, like makeinfo.
+    $node_substitution_state->{'code_style'} = 1;
+    my $node_formatted = substitute_line($menu_entry->{'node'}, $node_substitution_state);
+    my $name_formatted;
+    my $has_name = 0;
+    if (defined($name) and $name ne '')
+    {
+        $name_formatted = substitute_line($menu_entry->{'name'}, $name_substitution_state);
+        $has_name = 1;
+    }
+    else
+    {
+        $name_formatted = substitute_line($menu_entry->{'node'}, $name_substitution_state);
+    }
 
     my $entry = '';
     my $href;
@@ -8668,8 +8617,8 @@ sub do_menu_link($$;$)
     # save the element used for the href for the description
     $menu_entry->{'menu_reference_element'} = $element;
 
-    return &$Texi2HTML::Config::menu_link($entry, $substitution_state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, ) unless ($simple);
-    return &$Texi2HTML::Config::simple_menu_link($entry, $state->{'preformatted'}, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'});
+    return &$Texi2HTML::Config::menu_link($entry, $substitution_state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name) unless ($simple);
+    return &$Texi2HTML::Config::simple_menu_link($entry, $state->{'preformatted'}, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name);
 }
 
 sub do_menu_description($$)
@@ -8740,7 +8689,7 @@ sub do_xref($$$$)
     $new_state->{'keep_texi'} = 0;
     $new_state->{'keep_nr'} = 0;
     for ($i = 0; $i < 5; $i++)
-    {
+    { # FIXME for nodes code_style 
         $args[$i] = substitute_line($args[$i], $new_state);
     }
     #print STDERR "XREF: (@args)\n";
@@ -11287,7 +11236,7 @@ sub scan_line($$$$;$)
                      $num = $global_head_num;
                  }
                  my $heading_element = $headings{$num};
-                 add_prev($text, $stack, &$Texi2HTML::Config::anchor($heading_element->{'id'}) . "\n");
+                 add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element));
                  add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $_, substitute_line($_), $state->{'preformatted'}));
                  return;
             }

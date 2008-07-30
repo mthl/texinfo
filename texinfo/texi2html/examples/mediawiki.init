@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.6 2008-03-12 10:24:16 pertusus Exp $
+# $Id: mediawiki.init,v 1.7 2008-07-30 12:23:40 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -569,14 +569,16 @@ sub mediawiki_index_summary($$)
 # a simple menu entry ref in case we aren't in a standard menu context
 $simple_menu_link  = \&mediawiki_simple_menu_link;
 
-sub mediawiki_simple_menu_link($$$$$$)
+sub mediawiki_simple_menu_link($$$$$$$)
 {
     my $entry = shift;
     my $preformatted = shift; # We assume this is true.
     my $href = shift;
     my $node = shift;
-    my $name = shift;
+    my $title = shift;
     my $ending = shift;
+    my $has_title = shift;
+    $title = '' unless ($has_title);
     $ending = '' unless defined $ending;
     $entry = "</nowiki>";
     $entry .= "$MENU_SYMBOL";
@@ -586,8 +588,8 @@ sub mediawiki_simple_menu_link($$$$$$)
     }
     else
     {
-	$name .= ":" if $name;
-	$entry .= "$name$node";
+	$title .= ":" if ($title ne '');
+	$entry .= "$title$node";
     }
     $entry .= $ending;
     $entry .= "<nowiki>";

@@ -36,6 +36,10 @@ This file records noteworthy changes.
 * change in the normal_text function reference API, now there is an 
   input variable true if in simple text.
 
+* change in the menu_entry and simple_menu_entry function reference API,
+  the name is always assed, and a new argument tells if there was an
+  explicit name.
+
 * change in unknown function reference API, now there is a pass argument
   to be able to handle unknown macros in other passes than the last.
   Report from Reinhold Kainhofer.

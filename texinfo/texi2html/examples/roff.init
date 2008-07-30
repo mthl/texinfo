@@ -633,15 +633,18 @@ sub t2h_roff_menu($)
 }
 
 # a simple menu entry ref in case we aren't in a standard menu context
-sub t2h_roff_simple_menu_link($$$$$)
+sub t2h_roff_simple_menu_link($$$$$$$)
 {
-    my $text = shift;
+    my $entry = shift;
+    my $preformatted = shift; # We assume this is true.
     my $href = shift;
     my $node = shift;
-    my $name = shift;
+    my $title = shift;
     my $ending = shift;
-    $name .= ':' if ($name ne '');
-    return "$MENU_SYMBOL$name$node$ending";
+    my $has_title = shift;
+    $title = '' unless ($has_title);
+    $title .= ':' if ($title ne '');
+    return "$MENU_SYMBOL$title$node$ending";
 }
 
 # formats a menu entry link pointing to a node or section 
@@ -658,14 +661,16 @@ sub t2h_roff_simple_menu_link($$$$$)
 #     of a href= attribute in a <a> element).
 sub t2h_roff_menu_link($$$$$$)
 {
-    my $text = shift;
+    my $entry = shift;
     my $state = shift;
     my $href = shift;
     my $node = shift;
-    my $name = shift;
+    my $title = shift;
     my $ending = shift;
-    $name .= ':' if ($name ne '');
-    return "$MENU_SYMBOL$name$node$ending";
+    my $has_title = shift;
+    $title = '' unless ($has_title);
+    $title .= ':' if ($title ne '');
+    return "$MENU_SYMBOL$title$node$ending";
 }
 
 # formats a menu entry description, ie the text appearing after the node

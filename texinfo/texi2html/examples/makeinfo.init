@@ -9,6 +9,11 @@ $SPLIT = 'node';
 
 $NODE_FILES = 1;
 
+# to mimic makeinfo the following have to be set.
+#$USE_MENU_DIRECTIONS = 0;
+
+#$USE_UP_FOR_ADJACENT_NODES = 0;
+
 $SECTION_NAVIGATION = 1;
 
 $SHORT_REF = 1;
@@ -187,18 +192,21 @@ sub makeinfo_like_menu($)
 # href is optionnal. It is the reference to the section or the node anchor
 #     which should be used to make the link (typically it is the argument 
 #     of a href= attribute in a <a> element).
-sub makeinfo_like_menu_link($$$$$$)
+sub makeinfo_like_menu_link($$$$$$$)
 {
     my $entry = shift;
     my $state = shift;
     my $href = shift;
     my $node = shift;
-    my $name = shift;
+    my $title = shift;
     my $ending = shift;
+    my $has_title = shift;
+    $title = '' unless ($has_title);
     if (($entry eq '') or $NODE_NAME_IN_MENU or $state->{'preformatted'})
     {
-        $name .= ':' if ($name ne '');
-        $entry = "$name$node";
+        
+        $title .= ':' if ($title ne '');
+        $entry = "$title$node";
     }
     $menu_entry_index++;
     my $accesskey;
