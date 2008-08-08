@@ -5768,7 +5768,8 @@ described above.
 <a name="IDX313"></a>
 </dt>
 <dd><p><var>$index_text</var> is the text of all the index entries grouped by letter
-appearing in that page formatted as above. <var>index_name</var> is the name of
+appearing in that page formatted as above. It is undef if there are
+no entries or theindex name isn&rsquo;t known. <var>index_name</var> is the name of
 the index, the argument of <code>@printindex</code>.
 </p></dd></dl>
 </dd>
@@ -6645,6 +6646,8 @@ argument is true if there really was an explicit name.
   the text_formatted argument is.
 </li><li> definition index entries are now formatted with $definition_index_entry,
   not with $definition_category anymore.
+</li><li> $print_index is called if it appears, even if the index is not defined or
+  there are no index entries.
 </li><li>  top element heading may now be done in heading. It means that nothing 
   should be returned if the heading is done in another function 
   (like print_Top).

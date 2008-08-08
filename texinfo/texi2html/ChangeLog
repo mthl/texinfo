@@ -1,3 +1,9 @@
+2008-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use relative file names for hrefs for misc 
+	elements (patch from Reinhold Kainhofer reinhold at kainhofer
+	dot com).
+
 2008-08-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: move initialisations before the functions that

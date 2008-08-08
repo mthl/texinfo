@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.214 2008-08-08 12:07:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.215 2008-08-08 12:22:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6981,15 +6981,19 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     # @foot_lines is emptied in finish_element if SEPARATED_FOOTNOTES
     my %misc_page_infos = (
        'Footnotes' => { 'file' => $docu_foot_file, 
+          'relative_file' => $docu_foot, 
           'process' => $Texi2HTML::Config::print_Footnotes,
           'section' => \@foot_lines },
        'Contents' => { 'file' => $docu_toc_file,
+           'relative_file' => $docu_toc, 
            'process' => $Texi2HTML::Config::print_Toc,
            'section' => $Texi2HTML::TOC_LINES },
        'Overview' => { 'file' => $docu_stoc_file,
+           'relative_file' => $docu_stoc, 
            'process' => $Texi2HTML::Config::print_Overview,
            'section' => $Texi2HTML::OVERVIEW },
        'About' => { 'file' => $docu_about_file,
+           'relative_file' => $docu_about, 
             'process' => $Texi2HTML::Config::print_About,
             'section' => [$about_body] }
     );
@@ -7004,6 +7008,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     {
         next unless ($misc_page_infos{$misc_page}->{'do'});
         my $file = $misc_page_infos{$misc_page}->{'file'};
+        my $relative_file = $misc_page_infos{$misc_page}->{'relative_file'};
         print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
         my $saved_FH;
         my $open_new;
@@ -7022,7 +7027,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         foreach my $href_page (keys(%misc_page_infos))
         {
             $Texi2HTML::HREF{$href_page} = file_target_href(
-               $misc_page_infos{$href_page}->{'file'}, $file,
+               $misc_page_infos{$href_page}->{'relative_file'}, $relative_file,
                $Texi2HTML::Config::misc_pages_targets{$href_page})
                  if ($misc_page_infos{$href_page}->{'do'});
         }
