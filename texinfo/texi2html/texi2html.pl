@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.215 2008-08-08 12:22:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.216 2008-08-08 13:30:35 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7012,12 +7012,12 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
         my $saved_FH;
         my $open_new;
-        if ($file ne $docu_doc)
+        if ($relative_file ne $docu_doc)
         {
             $saved_FH = $FH;
             # FIXME the file may have the same name than another file
             $FH = open_out ($file);
-            print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
+            print STDERR "# Opening $file for $misc_page\n" if $T2H_VERBOSE;
             $open_new = 1;
         }
         else

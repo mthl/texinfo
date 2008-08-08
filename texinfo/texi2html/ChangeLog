@@ -2,7 +2,8 @@
 
 	* texi2html.pl: use relative file names for hrefs for misc 
 	elements (patch from Reinhold Kainhofer reinhold at kainhofer
-	dot com).
+	dot com). And also to determine if the file has to be reopened
+	(report from Reinhold).
 
 2008-08-07  Patrice Dumas  <dumas@centre-cired.fr>
 
@@ -16,7 +17,7 @@
 	%region_formats_kept.
 	Give also the prototypes lengths for multitables.
 	@-commands in stop_paragraph_command close paragraphs.
-	external nodes begin with ( (report from Rainhold).
+	external nodes begin with ( (report from Reinhold).
 	* texi2html.pl, texi2html.init: With USE_SETFILENAME, the filename 
 	is taken from @setfilename, if found, like makeinfo.
 	With IGNORE_BEFORE_SETFILENAME, everything before @setfilename is 
