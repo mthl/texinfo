@@ -714,6 +714,15 @@ sub t2h_roff_table_item($$$$$)
     my $format = shift;
     my $command = shift;
     my $formatted_command = shift;
+    my $style_stack = shift; 
+    my $text_formatted = shift;
+    my $text_formatted_leading_spaces = shift;
+    my $text_formatted_trailing_spaces = shift;
+
+    if (defined($text_formatted))
+    {   
+        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+    }
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
     $text = '.ip ' . $formatted_command . protect_spaces($text) . "\n";

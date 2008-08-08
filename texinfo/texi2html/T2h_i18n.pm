@@ -306,6 +306,8 @@ sub pretty_date($)
 
 my $error_no_en = 0;
 
+my %missing_strings;
+
 # arguments should already be converted
 sub get_string($;$$)
 {
@@ -328,7 +330,14 @@ sub get_string($;$$)
     }
     else
     {
-        print STDERR "i18n: missing string $string\n" unless (exists ($T2H_LANGUAGES->{'en'}->{$string}));
+        unless (exists ($T2H_LANGUAGES->{'en'}->{$string}))
+        {
+            unless (exists($missing_strings{$string}))
+            {
+                print STDERR "i18n: missing string $string\n";
+                $missing_strings{$string} = 1;
+            }
+        }
         if (defined ($T2H_LANGUAGES->{$language}->{$string}) and
            ($T2H_LANGUAGES->{$language}->{$string} ne ''))
         {

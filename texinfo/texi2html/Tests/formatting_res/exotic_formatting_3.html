@@ -138,7 +138,7 @@ Invalid use of @':
 @i{-a} -a
 @kbd{-a} -a
 @key{-a} -a
-@math{-a} -a
+@math{-a} -a- {frac{1}{2}}
 @option{-a} -a
 @r{-a} -a
 @samp{-a} -a
@@ -151,6 +151,10 @@ Invalid use of @':
 @uref{-a,-b} -a,-b
 @uref{-a} -a
 @uref{,-b} ,-b
+@uref{-a,-b,-c} -a,-b,-c
+@uref{,-b,-c} ,-b,-c
+@uref{-a,,-c} -a,,-c
+@uref{,,-c} ,,-c
 @url{-a,-b} -a,-b
 @url{-a,} -a,
 @url{,-b} ,-b
@@ -180,14 +184,18 @@ Invalid use of @':
 @footnote{in footnote} 
 @footnote{in footnote2} 
 
-@image{f-ile,,e-xt} f-ile
-@image{f-ile,,,,e-xt} f-ile
+@image{f-ile} f-ile
+@image{f-ile,l-i} f-ile
+@image{f-ile,,l-e} f-ile
 @image{f-ile,,,alt} f-ile
+@image{f-ile,,,,e-d-xt} f-ile
 @image{f-ile,aze,az,alt,e-xt} f-ile
 @image{f-ile,aze,,a-lt} f-ile
-@image{f-ile} f-ile
-@image{,,e-xt} 
-@image{,,,e-xt} 
+@image{f-ile,,,alt@verb{:jk _" %}} f-ile
+@image{,1-xt} 
+@image{,,2-xt} 
+@image{,,,3-xt} 
+@image{f-ile,aze,az,@verb{:jk _" %@:} @b{in b "},e-xt} f-ile
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} file@verb{:jk _" %@:}
 @image{@file{f-ile}@@@.,aze,az,alt,@file{file ext} e-xt@} @file{f-ile}@@@.
 
@@ -226,6 +234,8 @@ a q-uotation
 
  mu-ltitable headitem  another tab
  mu-ltitable item  multitable tab
+ mu-ltitable item 2  multitable tab 2
+ lone mu-ltitable item
 
 
 
@@ -265,8 +275,7 @@ s-mallformat
 d-effn
 
 
- de-ffn_name ar-guments     cate-gory
-   more args  even more so
+ de-ffn_name ar-guments    more args  even more so    cate-gory
 def-fn
 
  
@@ -296,6 +305,7 @@ def-fn
 Various deff lines
  after a deff item    truc
 text in def item for second def item
+ a b c d e f g h i    truc
  deffnx before end deffn    truc
 
 
@@ -346,7 +356,7 @@ d-efmac
 d-efspec
 
 
- d-efvar_name    Variable
+ d-efvar_name argvar argvar1    Variable
 d-efvar
 
 
@@ -439,6 +449,8 @@ d-eftypemethod
 @inforef{,cross ref name } 
 @inforef{,,file name} 
 @inforef{,cross ref name, file name} 
+@inforef{} 
+@inforef{chapter, cross ref name, file name, spurious arg} 
 
 @ref{s-ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
@@ -538,7 +550,7 @@ ul.toc {list-style: none}
 </tr></table>
 <a name="s_002d_002dect_002cion"></a>
 <a name="SEC2"></a>
-<h2 class="section"> <a href="exotic_formatting_toc.html#TOC2">A section</a> </h2>
+<h2 class="section"><a href="exotic_formatting_toc.html#TOC2">A section</a></h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsection">subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
@@ -548,7 +560,7 @@ ul.toc {list-style: none}
 <hr size="6">
 <a name="subsection"></a>
 <a name="SEC3"></a>
-<h3 class="subsection"> <a href="exotic_formatting_toc.html#TOC3">subsection</a> </h3>
+<h3 class="subsection"><a href="exotic_formatting_toc.html#TOC3">subsection</a></h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -560,7 +572,7 @@ ul.toc {list-style: none}
 <hr size="6">
 <a name="subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
 <a name="SEC4"></a>
-<h4 class="subsubsection"> <a href="exotic_formatting_toc.html#TOC4">subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</a> </h4>
+<h4 class="subsubsection"><a href="exotic_formatting_toc.html#TOC4">subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</a></h4>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -11,7 +11,8 @@ No label but caption.
 @caption{Not closed caption
 
 The caption trigger a keep_texi, so everything until the end of the file
-is in the caption.
+is in the caption. Also the caption is formatted twice which leads to 2
+error messages.
 
 @end float
 

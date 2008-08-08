@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 5. Branching and merging </h1>
+<h1 class="chapter">5. Branching and merging</h1>
 
 <p><small>CVS</small> allows you to isolate changes onto a separate
 line of development, known as a <em>branch</em>.  When you
@@ -109,7 +109,7 @@ copy the changes onto another branch.
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.1 What branches are good for </h2>
+<h2 class="section">5.1 What branches are good for</h2>
 
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
@@ -146,7 +146,7 @@ the main trunk, or leave them on the branch.
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.2 Creating a branch </h2>
+<h2 class="section">5.2 Creating a branch</h2>
 
 <p>You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
@@ -210,7 +210,7 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.3 Accessing branches </h2>
+<h2 class="section">5.3 Accessing branches</h2>
 
 <p>You can retrieve a branch in one of two ways: by
 checking it out fresh from the repository, or by
@@ -317,7 +317,7 @@ branch numbers are constructed.
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.4 Branches and revisions </h2>
+<h2 class="section">5.4 Branches and revisions</h2>
 
 <p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section <a href="cvs_4.html#Revision-numbers">Revision numbers</a>):
@@ -398,7 +398,7 @@ special meaning.  See section <a href="cvs_13.html#Tracking-sources">Tracking th
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.5 Magic branch numbers </h2>
+<h2 class="section">5.5 Magic branch numbers</h2>
 
 
 <p>This section describes a <small>CVS</small> feature called
@@ -463,7 +463,7 @@ no way to see how the tag was assigned yesterday).
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.6 Merging an entire branch </h2>
+<h2 class="section">5.6 Merging an entire branch</h2>
 
 <p>You can merge changes made on a branch into your working copy by giving
 the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag to the <code>update</code> subcommand.  With one
@@ -541,7 +541,7 @@ not produce the desired result.  See section <a href="#Merging-adds-and-removals
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.7 Merging from a branch several times </h2>
+<h2 class="section">5.7 Merging from a branch several times</h2>
 
 <p>Continuing our example, the revision tree now looks
 like this:
@@ -622,7 +622,7 @@ the trunk, and then use that tag for subsequent merges:
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.8 Merging differences between any two revisions </h2>
+<h2 class="section">5.8 Merging differences between any two revisions</h2>
 
 <p>With two &lsquo;<samp>-j <var>revision</var></samp>&rsquo; flags, the <code>update</code>
 (and <code>checkout</code>) command can merge the differences
@@ -682,7 +682,7 @@ $
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.9 Merging can add or remove files </h2>
+<h2 class="section">5.9 Merging can add or remove files</h2>
 
 <p>If the changes which you are merging involve removing
 or adding some files, <code>update -j</code> will reflect
@@ -732,7 +732,7 @@ to be sure that all intended changes are propagated in the merge.
 <td valign="middle" align="left">[<a href="cvs_24.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.10 Merging and keywords </h2>
+<h2 class="section">5.10 Merging and keywords</h2>
 
 <p>If you merge files containing keywords (see section <a href="cvs_12.html#Keyword-substitution">Keyword substitution</a>), you will normally get numerous
 conflicts during the merge, because the keywords are

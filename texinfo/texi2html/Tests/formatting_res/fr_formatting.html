@@ -138,7 +138,7 @@ Invalid use of @':
 @i{-a} -a
 @kbd{-a} -a
 @key{-a} -a
-@math{-a} -a
+@math{-a} -a- {frac{1}{2}}
 @option{-a} -a
 @r{-a} -a
 @samp{-a} -a
@@ -151,6 +151,10 @@ Invalid use of @':
 @uref{-a,-b} -a,-b
 @uref{-a} -a
 @uref{,-b} ,-b
+@uref{-a,-b,-c} -a,-b,-c
+@uref{,-b,-c} ,-b,-c
+@uref{-a,,-c} -a,,-c
+@uref{,,-c} ,,-c
 @url{-a,-b} -a,-b
 @url{-a,} -a,
 @url{,-b} ,-b
@@ -180,14 +184,18 @@ Invalid use of @':
 @footnote{in footnote} 
 @footnote{in footnote2} 
 
-@image{f-ile,,e-xt} f-ile
-@image{f-ile,,,,e-xt} f-ile
+@image{f-ile} f-ile
+@image{f-ile,l-i} f-ile
+@image{f-ile,,l-e} f-ile
 @image{f-ile,,,alt} f-ile
+@image{f-ile,,,,e-d-xt} f-ile
 @image{f-ile,aze,az,alt,e-xt} f-ile
 @image{f-ile,aze,,a-lt} f-ile
-@image{f-ile} f-ile
-@image{,,e-xt} 
-@image{,,,e-xt} 
+@image{f-ile,,,alt@verb{:jk _" %}} f-ile
+@image{,1-xt} 
+@image{,,2-xt} 
+@image{,,,3-xt} 
+@image{f-ile,aze,az,@verb{:jk _" %@:} @b{in b "},e-xt} f-ile
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} file@verb{:jk _" %@:}
 @image{@file{f-ile}@@@.,aze,az,alt,@file{file ext} e-xt@} @file{f-ile}@@@.
 
@@ -226,6 +234,8 @@ a q-uotation
 
  mu-ltitable headitem  another tab
  mu-ltitable item  multitable tab
+ mu-ltitable item 2  multitable tab 2
+ lone mu-ltitable item
 
 
 
@@ -265,8 +275,7 @@ c-ategory: d-effn_name a-rguments...
 d-effn
 
 
-cate-gory: de-ffn_name ar-guments 
-   more args  even more so
+cate-gory: de-ffn_name ar-guments    more args  even more so
 def-fn
 
  
@@ -296,6 +305,7 @@ truc: machin bidule chose and { and after
 Various deff lines
 truc: after a deff item
 text in def item for second def item
+truc: a b c d e f g h i
 truc: deffnx before end deffn
 
 
@@ -346,7 +356,7 @@ Special Form: d-efspec_name a-rguments...
 d-efspec
 
 
-Variable: d-efvar_name
+Variable: d-efvar_name argvar argvar1
 d-efvar
 
 
@@ -439,6 +449,8 @@ d-eftypemethod
 @inforef{,cross ref name } 
 @inforef{,,file name} 
 @inforef{,cross ref name, file name} 
+@inforef{} 
+@inforef{chapter, cross ref name, file name, spurious arg} 
 
 @ref{s-ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
@@ -681,7 +693,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> &lt;&ndash;a&gt;
-<code>@math{--a}</code> <em>&ndash;a</em>
+<code>@math{--a}</code> <em>&ndash;a- frac12</em>
 <code>@option{--a}</code> &lsquo;<samp>--a</samp>&rsquo;
 <code>@r{--a}</code> <span class="roman">&ndash;a</span>
 <code>@samp{--a}</code> &lsquo;<samp>--a</samp>&rsquo;
@@ -689,11 +701,15 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <span class="sansserif">&ndash;a</span>
-<code>@titlefont{--a}</code> <h1 class="titlefont">&ndash;a</h1>
-<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
+<code>@titlefont{--a}</code> </p><h1 class="titlefont">&ndash;a</h1>
+<p><code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">&ndash;b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> &ndash;b
+<code>@uref{--a,--b,--c}</code> <a href="--a">&ndash;c</a>
+<code>@uref{,--b,--c}</code> &ndash;c
+<code>@uref{--a,,--c}</code> <a href="--a">&ndash;c</a>
+<code>@uref{,,--c}</code> &ndash;c
 <code>@url{--a,--b}</code> <a href="--a">&ndash;b</a>
 <code>@url{--a,}</code> <a href="--a">--a</a>
 <code>@url{,--b}</code> &ndash;b
@@ -723,15 +739,19 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@footnote{in footnote}</code> <a name="DOCF1" href="#FOOT1">(1)</a>
 <code>@footnote{in footnote2}</code> <a name="DOCF2" href="#FOOT2">(2)</a>
 </p>
-<p><code>@image{f--ile,,e--xt}</code> <img src="./f--ile.jpg" alt="f--ile">
-<code>@image{f--ile,,,,e--xt}</code> <img src="./f--ile.e--xt" alt="f--ile">
+<p><code>@image{f--ile}</code> <img src="./f--ile.jpg" alt="f--ile">
+<code>@image{f--ile,l--i}</code> <img src="./f--ile.jpg" alt="f--ile">
+<code>@image{f--ile,,l--e}</code> <img src="./f--ile.jpg" alt="f--ile">
 <code>@image{f--ile,,,alt}</code> <img src="./f--ile.jpg" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="./f--ile.e--xt" alt="f--ile">
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="./f--ile.e--xt" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
-<code>@image{f--ile}</code> <img src="./f--ile.jpg" alt="f--ile">
-<code>@image{,,e--xt}</code> 
-<code>@image{,,,e--xt}</code> 
-<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="file@verb{:jk _&quot; %@:}.jpg" alt="alt@verb{:jk _&quot; %@:}">
+<code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> <img src="f-ile.jpg" alt="altjk _&quot; %@">
+<code>@image{,1--xt}</code> 
+<code>@image{,,2--xt}</code> 
+<code>@image{,,,3--xt}</code> 
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="./f--ile.e--xt" alt="jk _&quot; %@ in b &quot;">
+<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="file@verb{:jk _&quot; %@:}.jpg" alt="altjk _&quot; %@">
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="@file{f--ile}@@@..@file{file ext} e--xt@}" alt="alt">
 </p>
 <br>
@@ -783,6 +803,10 @@ After clickstyle &rArr;
 </p></th></tr></thead>
 <tr><td width="600%"><p> mu&ndash;ltitable item </p></td><td width="700%"><p> multitable tab
 </p></td></tr>
+<tr><td width="600%"><p> mu&ndash;ltitable item 2 </p></td><td width="700%"><p> multitable tab 2
+</p></td></tr>
+<tr><td width="600%"><p> lone mu&ndash;ltitable item
+</p></td></tr>
 </table>
 
 <table><tr><td>&nbsp;</td><td><pre class="example">e--xample  some
@@ -811,14 +835,14 @@ After clickstyle &rArr;
 </pre></td></tr></table>
 
 <dl>
-<dt><u>c&ndash;ategory:</u> <b>d&ndash;effn_name</b><i> a&ndash;rguments...</i>
+<dt><u>c&ndash;ategory:</u> <b>d&ndash;effn_name</b><i> a--rguments...</i>
 <a name="IDX5"></a>
 </dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
 <dl>
-<dt><u>cate&ndash;gory:</u> <b>de&ndash;ffn_name</b><i> ar&ndash;guments &nbsp;   more args <br> even more so</i>
+<dt><u>cate&ndash;gory:</u> <b>de&ndash;ffn_name</b><i> ar--guments    more args <br> even more so</i>
 <a name="IDX6"></a>
 </dt>
 <dd><p>def&ndash;fn
@@ -899,148 +923,151 @@ After clickstyle &rArr;
 <a name="IDX30"></a>
 </dt>
 <dd><p>text in def item for second def item
-</p></dd><dt><u>truc:</u> <b>deffnx</b><i> before end deffn</i>
+</p></dd><dt><u>truc:</u> <b>a</b><i> b c d e <b>f g</b> h i</i>
 <a name="IDX31"></a>
 </dt>
-</dl>
-
-<dl>
-<dt><u>empty:</u> <b>deffn</b>
+<dt><u>truc:</u> <b>deffnx</b><i> before end deffn</i>
 <a name="IDX32"></a>
 </dt>
 </dl>
 
 <dl>
-<dt><u>empty:</u> <b>deffn</b><i> with deffnx</i>
+<dt><u>empty:</u> <b>deffn</b>
 <a name="IDX33"></a>
 </dt>
-<dt><u>empty:</u> <b>deffnx</b>
+</dl>
+
+<dl>
+<dt><u>empty:</u> <b>deffn</b><i> with deffnx</i>
 <a name="IDX34"></a>
+</dt>
+<dt><u>empty:</u> <b>deffnx</b>
+<a name="IDX35"></a>
 </dt>
 </dl>
 
 <dl>
 <dt><u>c&ndash;ategory:</u> <b>d&ndash;efvr_name</b>
-<a name="IDX35"></a>
+<a name="IDX36"></a>
 </dt>
 <dd><p>d&ndash;efvr
 </p></dd></dl>
 
 <dl>
-<dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypefn_name</b><i> a&ndash;rguments...</i>
-<a name="IDX36"></a>
+<dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypefn_name</b><i> a--rguments...</i>
+<a name="IDX37"></a>
 </dt>
 <dd><p>d&ndash;eftypefn
 </p></dd></dl>
 
 <dl>
-<dt><u>c&ndash;ategory de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeop_name</b><i> a&ndash;rguments...</i>
-<a name="IDX37"></a>
+<dt><u>c&ndash;ategory de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeop_name</b><i> a--rguments...</i>
+<a name="IDX38"></a>
 </dt>
 <dd><p>d&ndash;eftypeop
 </p></dd></dl>
 
 <dl>
 <dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypevr_name</b>
-<a name="IDX38"></a>
+<a name="IDX39"></a>
 </dt>
 <dd><p>d&ndash;eftypevr
 </p></dd></dl>
 
 <dl>
 <dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efcv_name</b>
-<a name="IDX39"></a>
+<a name="IDX40"></a>
 </dt>
 <dd><p>d&ndash;efcv
 </p></dd></dl>
 
 <dl>
-<dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efop_name</b><i> a&ndash;rguments...</i>
-<a name="IDX40"></a>
+<dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efop_name</b><i> a--rguments...</i>
+<a name="IDX41"></a>
 </dt>
 <dd><p>d&ndash;efop
 </p></dd></dl>
 
 <dl>
-<dt><u>c&ndash;ategory:</u> <b>d&ndash;eftp_name</b><i> a&ndash;ttributes...</i>
-<a name="IDX41"></a>
+<dt><u>c&ndash;ategory:</u> <b>d&ndash;eftp_name</b><i> a--ttributes...</i>
+<a name="IDX42"></a>
 </dt>
 <dd><p>d&ndash;eftp
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>d&ndash;efun_name</b><i> a&ndash;rguments...</i>
-<a name="IDX42"></a>
+<dt><u>Function:</u> <b>d&ndash;efun_name</b><i> a--rguments...</i>
+<a name="IDX43"></a>
 </dt>
 <dd><p>d&ndash;efun
 </p></dd></dl>
 
 <dl>
-<dt><u>Macro:</u> <b>d&ndash;efmac_name</b><i> a&ndash;rguments...</i>
-<a name="IDX43"></a>
+<dt><u>Macro:</u> <b>d&ndash;efmac_name</b><i> a--rguments...</i>
+<a name="IDX44"></a>
 </dt>
 <dd><p>d&ndash;efmac
 </p></dd></dl>
 
 <dl>
-<dt><u>Special Form:</u> <b>d&ndash;efspec_name</b><i> a&ndash;rguments...</i>
-<a name="IDX44"></a>
+<dt><u>Special Form:</u> <b>d&ndash;efspec_name</b><i> a--rguments...</i>
+<a name="IDX45"></a>
 </dt>
 <dd><p>d&ndash;efspec
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>d&ndash;efvar_name</b>
-<a name="IDX45"></a>
+<dt><u>Variable:</u> <b>d&ndash;efvar_name</b><i> argvar argvar1</i>
+<a name="IDX46"></a>
 </dt>
 <dd><p>d&ndash;efvar
 </p></dd></dl>
 
 <dl>
 <dt><u>User Option:</u> <b>d&ndash;efopt_name</b>
-<a name="IDX46"></a>
+<a name="IDX47"></a>
 </dt>
 <dd><p>d&ndash;efopt
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> t&ndash;ype <b>d&ndash;eftypefun_name</b><i> a&ndash;rguments...</i>
-<a name="IDX47"></a>
+<dt><u>Function:</u> t&ndash;ype <b>d&ndash;eftypefun_name</b><i> a--rguments...</i>
+<a name="IDX48"></a>
 </dt>
 <dd><p>d&ndash;eftypefun
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> t&ndash;ype <b>d&ndash;eftypevar_name</b>
-<a name="IDX48"></a>
+<a name="IDX49"></a>
 </dt>
 <dd><p>d&ndash;eftypevar
 </p></dd></dl>
 
 <dl>
 <dt><u>Instance Variable de c&ndash;lass:</u> <b>d&ndash;efivar_name</b>
-<a name="IDX49"></a>
+<a name="IDX50"></a>
 </dt>
 <dd><p>d&ndash;efivar
 </p></dd></dl>
 
 <dl>
 <dt><u>Instance Variable de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeivar_name</b>
-<a name="IDX50"></a>
+<a name="IDX51"></a>
 </dt>
 <dd><p>d&ndash;eftypeivar
 </p></dd></dl>
 
 <dl>
-<dt><u>Method de c&ndash;lass:</u> <b>d&ndash;efmethod_name</b><i> a&ndash;rguments...</i>
-<a name="IDX51"></a>
+<dt><u>Method de c&ndash;lass:</u> <b>d&ndash;efmethod_name</b><i> a--rguments...</i>
+<a name="IDX52"></a>
 </dt>
 <dd><p>d&ndash;efmethod
 </p></dd></dl>
 
 <dl>
-<dt><u>Method de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypemethod_name</b><i> a&ndash;rguments...</i>
-<a name="IDX52"></a>
+<dt><u>Method de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypemethod_name</b><i> a--rguments...</i>
+<a name="IDX53"></a>
 </dt>
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
@@ -1106,6 +1133,8 @@ After clickstyle &rArr;
 <code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 
 <code>@inforef{,cross ref name, file name}</code> 
+<code>@inforef{}</code> 
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> Voir <a href="file name, spurious arg.html#chapter">cross ref name: (file name, spurious arg)chapter</a>
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
@@ -1121,7 +1150,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 
 <dl compact="compact">
 <dt> a
-<a name="IDX53"></a>
+<a name="IDX54"></a>
 </dt>
 <dd><p>l&ndash;ine
 </p></dd>
@@ -1129,7 +1158,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 
 <dl compact="compact">
 <dt>- a
-<a name="IDX54"></a>
+<a name="IDX55"></a>
 </dt>
 <dd><p>l&ndash;ine
 </p></dd>
@@ -1172,7 +1201,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 ``simple-double--three---four----''
 
 
-<a name="IDX55"></a><a name="IDX56"></a><a name="IDX57"></a><a name="IDX58"></a>
+<a name="IDX56"></a><a name="IDX57"></a><a name="IDX58"></a><a name="IDX59"></a>
 @&quot;u &uuml; 
 @&quot;{U} &Uuml; 
 @~n &ntilde;
@@ -1301,7 +1330,7 @@ Invalid use of @':
 <code>@i{--a}</code> <i>--a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> &lt;--a&gt;
-<code>@math{--a}</code> <em>--a</em>
+<code>@math{--a}</code> <em>--a- frac12</em>
 <code>@option{--a}</code> &lsquo;<samp>--a</samp>&rsquo;
 <code>@r{--a}</code> <span class="roman">--a</span>
 <code>@samp{--a}</code> &lsquo;<samp>--a</samp>&rsquo;
@@ -1314,6 +1343,10 @@ Invalid use of @':
 <code>@uref{--a,--b}</code> <a href="--a">--b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> --b
+<code>@uref{--a,--b,--c}</code> <a href="--a">--c</a>
+<code>@uref{,--b,--c}</code> --c
+<code>@uref{--a,,--c}</code> <a href="--a">--c</a>
+<code>@uref{,,--c}</code> --c
 <code>@url{--a,--b}</code> <a href="--a">--b</a>
 <code>@url{--a,}</code> <a href="--a">--a</a>
 <code>@url{,--b}</code> --b
@@ -1343,15 +1376,19 @@ Invalid use of @':
 <code>@footnote{in footnote}</code> <a name="DOCF3" href="#FOOT3">(3)</a>
 <code>@footnote{in footnote2}</code> <a name="DOCF4" href="#FOOT4">(4)</a>
 
-<code>@image{f--ile,,e--xt}</code> [ f--ile ]
-<code>@image{f--ile,,,,e--xt}</code> [ f--ile ]
+<code>@image{f--ile}</code> [ f--ile ]
+<code>@image{f--ile,l--i}</code> [ f--ile ]
+<code>@image{f--ile,,l--e}</code> [ f--ile ]
 <code>@image{f--ile,,,alt}</code> [ alt ]
+<code>@image{f--ile,,,,e-d-xt}</code> [ f--ile ]
 <code>@image{f--ile,aze,az,alt,e--xt}</code> [ alt ]
 <code>@image{f-ile,aze,,a--lt}</code> [ a&ndash;lt ]
-<code>@image{f--ile}</code> [ f--ile ]
-<code>@image{,,e--xt}</code> 
-<code>@image{,,,e--xt}</code> 
-<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> [ alt@verb{:jk _&quot; %@:} ]
+<code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> [ altjk _&quot; %@ ]
+<code>@image{,1--xt}</code> 
+<code>@image{,,2--xt}</code> 
+<code>@image{,,,3--xt}</code> 
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> [ jk _&quot; %@ in b &quot; ]
+<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> [ altjk _&quot; %@ ]
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> [ alt ]
 
 
@@ -1403,6 +1440,10 @@ After clickstyle &rArr;
 </pre></th></tr></thead>
 <tr><td width="600%"><pre class="example"> mu--ltitable item </pre></td><td width="700%"><pre class="example"> multitable tab
 </pre></td></tr>
+<tr><td width="600%"><pre class="example"> mu--ltitable item 2 </pre></td><td width="700%"><pre class="example"> multitable tab 2
+</pre></td></tr>
+<tr><td width="600%"><pre class="example"> lone mu--ltitable item
+</pre></td></tr>
 </table>
 <pre class="example">
 </pre><table><tr><td>&nbsp;</td><td><pre class="example">e--xample  some
@@ -1431,189 +1472,191 @@ After clickstyle &rArr;
 </pre></td></tr></table>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory:</u> <b>d&ndash;effn_name</b><i> a&ndash;rguments...</i>
-<a name="IDX59"></a></dt>
+<dt><u>c&ndash;ategory:</u> <b>d&ndash;effn_name</b><i> a--rguments...</i>
+<a name="IDX60"></a></dt>
 <dd><pre class="example">d--effn
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>cate&ndash;gory:</u> <b>de&ndash;ffn_name</b><i> ar&ndash;guments &nbsp;   more args <br> even more so</i>
-<a name="IDX60"></a></dt>
+<dt><u>cate&ndash;gory:</u> <b>de&ndash;ffn_name</b><i> ar--guments    more args <br> even more so</i>
+<a name="IDX61"></a></dt>
 <dd><pre class="example">def--fn
 </pre></dd></dl>
 <pre class="example"> 
 </pre><dl>
 <dt><u>fset:</u> <b><var>i</var></b><i> a g</i>
-<a name="IDX61"></a></dt>
-<dt><u>cmde:</u> <b>truc</b>
 <a name="IDX62"></a></dt>
-<dt><u>Command:</u> <b>log trap</b>
+<dt><u>cmde:</u> <b>truc</b>
 <a name="IDX63"></a></dt>
-<dt><u>Command:</u> <b> log trap1</b>
+<dt><u>Command:</u> <b>log trap</b>
 <a name="IDX64"></a></dt>
-<dt><u>Command:</u> <b>log trap2 </b>
+<dt><u>Command:</u> <b> log trap1</b>
 <a name="IDX65"></a></dt>
-<dt><u>cmde:</u> <b><b>id ule</b></b><i> truc</i>
+<dt><u>Command:</u> <b>log trap2 </b>
 <a name="IDX66"></a></dt>
-<dt><u>cmde2:</u> <b><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></b><i> truc</i>
+<dt><u>cmde:</u> <b><b>id ule</b></b><i> truc</i>
 <a name="IDX67"></a></dt>
-<dt><u><b>id &lsquo;<samp>i</samp>&rsquo; ule</b>:</u>
+<dt><u>cmde2:</u> <b><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></b><i> truc</i>
 <a name="IDX68"></a></dt>
-<dt><u>:</u>
+<dt><u><b>id &lsquo;<samp>i</samp>&rsquo; ule</b>:</u>
 <a name="IDX69"></a></dt>
-<dt><u>aaa:</u>
-<a name="IDX70"></a></dt>
 <dt><u>:</u>
+<a name="IDX70"></a></dt>
+<dt><u>aaa:</u>
 <a name="IDX71"></a></dt>
 <dt><u>:</u>
 <a name="IDX72"></a></dt>
-<dt><u>:</u> <b>machin</b>
+<dt><u>:</u>
 <a name="IDX73"></a></dt>
-<dt><u>:</u> <b>bidule machin</b>
+<dt><u>:</u> <b>machin</b>
 <a name="IDX74"></a></dt>
-<dt><u>truc:</u> <b>machin</b>
+<dt><u>:</u> <b>bidule machin</b>
 <a name="IDX75"></a></dt>
-<dt><u>truc:</u>
+<dt><u>truc:</u> <b>machin</b>
 <a name="IDX76"></a></dt>
 <dt><u>truc:</u>
 <a name="IDX77"></a></dt>
-<dt><u>:</u>
+<dt><u>truc:</u>
 <a name="IDX78"></a></dt>
-<dt><u>truc:</u> <b>followed</b><i> by a comment</i>
+<dt><u>:</u>
 <a name="IDX79"></a></dt>
-<dt><u>truc:</u> <b>machin</b><i> bidule chose and </i>
+<dt><u>truc:</u> <b>followed</b><i> by a comment</i>
 <a name="IDX80"></a></dt>
-<dt><u>truc:</u> <b>machin</b><i> bidule chose and  after</i>
+<dt><u>truc:</u> <b>machin</b><i> bidule chose and </i>
 <a name="IDX81"></a></dt>
-<dt><u>truc:</u> <b>machin</b><i> bidule chose and {</i>
+<dt><u>truc:</u> <b>machin</b><i> bidule chose and  after</i>
 <a name="IDX82"></a></dt>
-<dt><u>truc:</u> <b>machin</b><i> bidule chose and { and after</i>
+<dt><u>truc:</u> <b>machin</b><i> bidule chose and {</i>
 <a name="IDX83"></a></dt>
+<dt><u>truc:</u> <b>machin</b><i> bidule chose and { and after</i>
+<a name="IDX84"></a></dt>
 <dd><pre class="example">Various deff lines
 </pre></dd><dt><u>truc:</u> <b>after</b><i> a deff item</i>
-<a name="IDX84"></a></dt>
-<dd><pre class="example">text in def item for second def item
-</pre></dd><dt><u>truc:</u> <b>deffnx</b><i> before end deffn</i>
 <a name="IDX85"></a></dt>
+<dd><pre class="example">text in def item for second def item
+</pre></dd><dt><u>truc:</u> <b>a</b><i> b c d e <b>f g</b> h i</i>
+<a name="IDX86"></a></dt>
+<dt><u>truc:</u> <b>deffnx</b><i> before end deffn</i>
+<a name="IDX87"></a></dt>
 </dl>
 <pre class="example">
 </pre><dl>
 <dt><u>empty:</u> <b>deffn</b>
-<a name="IDX86"></a></dt>
-</dl>
-<pre class="example">
-</pre><dl>
-<dt><u>empty:</u> <b>deffn</b><i> with deffnx</i>
-<a name="IDX87"></a></dt>
-<dt><u>empty:</u> <b>deffnx</b>
 <a name="IDX88"></a></dt>
 </dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory:</u> <b>d&ndash;efvr_name</b>
+<dt><u>empty:</u> <b>deffn</b><i> with deffnx</i>
 <a name="IDX89"></a></dt>
+<dt><u>empty:</u> <b>deffnx</b>
+<a name="IDX90"></a></dt>
+</dl>
+<pre class="example">
+</pre><dl>
+<dt><u>c&ndash;ategory:</u> <b>d&ndash;efvr_name</b>
+<a name="IDX91"></a></dt>
 <dd><pre class="example">d--efvr
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypefn_name</b><i> a&ndash;rguments...</i>
-<a name="IDX90"></a></dt>
+<dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypefn_name</b><i> a--rguments...</i>
+<a name="IDX92"></a></dt>
 <dd><pre class="example">d--eftypefn
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeop_name</b><i> a&ndash;rguments...</i>
-<a name="IDX91"></a></dt>
+<dt><u>c&ndash;ategory de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeop_name</b><i> a--rguments...</i>
+<a name="IDX93"></a></dt>
 <dd><pre class="example">d--eftypeop
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>c&ndash;ategory:</u> t&ndash;ype <b>d&ndash;eftypevr_name</b>
-<a name="IDX92"></a></dt>
+<a name="IDX94"></a></dt>
 <dd><pre class="example">d--eftypevr
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efcv_name</b>
-<a name="IDX93"></a></dt>
+<a name="IDX95"></a></dt>
 <dd><pre class="example">d--efcv
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efop_name</b><i> a&ndash;rguments...</i>
-<a name="IDX94"></a></dt>
+<dt><u>c&ndash;ategory de c&ndash;lass:</u> <b>d&ndash;efop_name</b><i> a--rguments...</i>
+<a name="IDX96"></a></dt>
 <dd><pre class="example">d--efop
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c&ndash;ategory:</u> <b>d&ndash;eftp_name</b><i> a&ndash;ttributes...</i>
-<a name="IDX95"></a></dt>
+<dt><u>c&ndash;ategory:</u> <b>d&ndash;eftp_name</b><i> a--ttributes...</i>
+<a name="IDX97"></a></dt>
 <dd><pre class="example">d--eftp
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Function:</u> <b>d&ndash;efun_name</b><i> a&ndash;rguments...</i>
-<a name="IDX96"></a></dt>
+<dt><u>Function:</u> <b>d&ndash;efun_name</b><i> a--rguments...</i>
+<a name="IDX98"></a></dt>
 <dd><pre class="example">d--efun
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Macro:</u> <b>d&ndash;efmac_name</b><i> a&ndash;rguments...</i>
-<a name="IDX97"></a></dt>
+<dt><u>Macro:</u> <b>d&ndash;efmac_name</b><i> a--rguments...</i>
+<a name="IDX99"></a></dt>
 <dd><pre class="example">d--efmac
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Special Form:</u> <b>d&ndash;efspec_name</b><i> a&ndash;rguments...</i>
-<a name="IDX98"></a></dt>
+<dt><u>Special Form:</u> <b>d&ndash;efspec_name</b><i> a--rguments...</i>
+<a name="IDX100"></a></dt>
 <dd><pre class="example">d--efspec
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Variable:</u> <b>d&ndash;efvar_name</b>
-<a name="IDX99"></a></dt>
+<dt><u>Variable:</u> <b>d&ndash;efvar_name</b><i> argvar argvar1</i>
+<a name="IDX101"></a></dt>
 <dd><pre class="example">d--efvar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>User Option:</u> <b>d&ndash;efopt_name</b>
-<a name="IDX100"></a></dt>
+<a name="IDX102"></a></dt>
 <dd><pre class="example">d--efopt
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Function:</u> t&ndash;ype <b>d&ndash;eftypefun_name</b><i> a&ndash;rguments...</i>
-<a name="IDX101"></a></dt>
+<dt><u>Function:</u> t&ndash;ype <b>d&ndash;eftypefun_name</b><i> a--rguments...</i>
+<a name="IDX103"></a></dt>
 <dd><pre class="example">d--eftypefun
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>Variable:</u> t&ndash;ype <b>d&ndash;eftypevar_name</b>
-<a name="IDX102"></a></dt>
+<a name="IDX104"></a></dt>
 <dd><pre class="example">d--eftypevar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>Instance Variable de c&ndash;lass:</u> <b>d&ndash;efivar_name</b>
-<a name="IDX103"></a></dt>
+<a name="IDX105"></a></dt>
 <dd><pre class="example">d--efivar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
 <dt><u>Instance Variable de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypeivar_name</b>
-<a name="IDX104"></a></dt>
+<a name="IDX106"></a></dt>
 <dd><pre class="example">d--eftypeivar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Method de c&ndash;lass:</u> <b>d&ndash;efmethod_name</b><i> a&ndash;rguments...</i>
-<a name="IDX105"></a></dt>
+<dt><u>Method de c&ndash;lass:</u> <b>d&ndash;efmethod_name</b><i> a--rguments...</i>
+<a name="IDX107"></a></dt>
 <dd><pre class="example">d--efmethod
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Method de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypemethod_name</b><i> a&ndash;rguments...</i>
-<a name="IDX106"></a></dt>
+<dt><u>Method de c&ndash;lass:</u> t&ndash;ype <b>d&ndash;eftypemethod_name</b><i> a--rguments...</i>
+<a name="IDX108"></a></dt>
 <dd><pre class="example">d--eftypemethod
 </pre></dd></dl>
 <pre class="example">
@@ -1678,6 +1721,8 @@ After clickstyle &rArr;
 <code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 
 <code>@inforef{,cross ref name, file name}</code> 
+<code>@inforef{}</code> 
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> Voir <a href="file name, spurious arg.html#chapter">cross ref name: (file name, spurious arg)chapter</a>
 
 <code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
@@ -1693,14 +1738,14 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 <pre class="example">
 </pre><dl compact="compact">
 <dt><tt> a</tt>
-<a name="IDX107"></a></dt>
+<a name="IDX109"></a></dt>
 <dd><pre class="example">l--ine
 </pre></dd>
 </dl>
 <pre class="example">
 </pre><dl compact="compact">
 <dt><tt>- a</tt>
-<a name="IDX108"></a></dt>
+<a name="IDX110"></a></dt>
 <dd><pre class="example">l--ine
 </pre></dd>
 </dl>
@@ -1723,8 +1768,6 @@ This is a very simple texi manual @  &lt;&gt;.
 </pre>
 </td></tr></table>
 
-<a name="IDX109"></a>
-<a name="IDX110"></a>
 <a name="IDX111"></a>
 <a name="IDX112"></a>
 <a name="IDX113"></a>
@@ -1733,6 +1776,8 @@ This is a very simple texi manual @  &lt;&gt;.
 <a name="IDX116"></a>
 <a name="IDX117"></a>
 <a name="IDX118"></a>
+<a name="IDX119"></a>
+<a name="IDX120"></a>
 
 
 <p>cp
@@ -1757,26 +1802,26 @@ This is a very simple texi manual @  &lt;&gt;.
 <tr><td></td><td valign="top"><a href="#Top">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX2">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX56">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX57">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX1">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX55">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX56">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX111">.</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX113">.</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX112">?</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX114">?</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_4">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX113">a</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX115">a</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_5">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX109">t&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX110">T&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX111">t&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX112">T&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC_Top_0" class="summary-letter"><b>&quot;</b></a>
@@ -1828,132 +1873,136 @@ This is a very simple texi manual @  &lt;&gt;.
 <tr><td></td><td valign="top"><a href="#Top"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX3"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX57"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX58"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX4"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX58"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX59"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX116"><code>.</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX118"><code>.</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX117"><code>?</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX119"><code>?</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_4">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX54"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX108"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX118"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX31"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX55"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX86"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX110"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX120"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX30"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX84"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX85"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_5">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX20"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX74"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX75"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_6">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX5"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX59"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX60"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX43"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX97"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX44"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX99"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX51"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX105"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX52"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX107"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX40"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX94"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX41"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX96"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX44"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX98"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX45"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX100"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX36"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX90"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX37"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX92"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX47"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX101"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX48"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX103"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX52"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX106"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX53"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX108"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX37"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX91"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX38"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX93"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX42"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX96"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX43"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX98"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX6"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX60"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX61"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX32"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX33"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX86"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX87"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX34"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX88"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX89"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX31"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX34"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX85"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX88"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX32"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX35"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX87"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX90"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_7">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX25"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX79"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX80"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_8">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX7"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX61"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX62"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX13"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX67"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX68"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX12"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX66"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX67"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_9">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX9"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX63"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX64"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX10"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX64"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX65"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX11"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX65"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX66"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_10">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
@@ -1974,20 +2023,20 @@ This is a very simple texi manual @  &lt;&gt;.
 <tr><td></td><td valign="top"><a href="#IDX27"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX28"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX29"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX73"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX75"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX80"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX74"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX76"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX81"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX82"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX83"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX84"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_11">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX114"><code>t--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX115"><code>T--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX116"><code>t--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX117"><code>T--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX8"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX62"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX63"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC_Top_0" class="summary-letter"><b>&quot;</b></a>
@@ -2029,42 +2078,42 @@ This is a very simple texi manual @  &lt;&gt;.
 <tr><th><a name="SEC_Top_0">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX53"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX107"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX54"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX109"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC_Top_1">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Top"><code>d--efcv_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Top"><code>d--efcv_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX39"><code>d--efcv_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX93"><code>d--efcv_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Top"><code>d--efivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Top"><code>d--efivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX49"><code>d--efivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX103"><code>d--efivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>d--efcv_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>d--efcv_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX40"><code>d--efcv_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX95"><code>d--efcv_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>d--efivar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>d--efivar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX50"><code>d--efivar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX105"><code>d--efivar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX46"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX100"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX47"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX102"><code>d--efopt_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX50"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX104"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX51"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX106"><code>d--eftypeivar_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX48"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX102"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX49"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX104"><code>d--eftypevar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX38"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX92"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX39"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX94"><code>d--eftypevr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX45"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX99"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX46"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX101"><code>d--efvar_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX35"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX89"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX36"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX91"><code>d--efvr_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC_Top_0" class="summary-letter"><b>A</b></a>
@@ -2087,8 +2136,8 @@ This is a very simple texi manual @  &lt;&gt;.
 <tr><th><a name="SEC_Top_0">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX41"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX95"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX42"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX97"><code>d--eftp_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC_Top_0" class="summary-letter"><b>D</b></a>
@@ -2116,7 +2165,7 @@ This is a very simple texi manual @  &lt;&gt;.
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 1. chapter </h1>
+<h1 class="chapter">1. chapter</h1>
 
 <p><a name="DOCF5" href="#FOOT5">(5)</a>
 </p>
@@ -2149,7 +2198,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.1 A section </h2>
+<h2 class="section">1.1 A section</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsection">1.1.1 subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
@@ -2175,7 +2224,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 1.1.1 subsection </h3>
+<h3 class="subsection">1.1.1 subsection</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.1 subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2203,7 +2252,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 1.1.1.1 subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; </h4>
+<h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</h4>
 
 <hr size="6">
 <a name="chapter2"></a>
@@ -2224,7 +2273,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h1 class="centerchap" align="center"> 2. chapter 2 </h1>
+<h1 class="centerchap" align="center">2. chapter 2</h1>
 
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>
  &nbsp; 
@@ -2247,26 +2296,26 @@ Menu comment
 <tr><td></td><td valign="top"><a href="#Top">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX2">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX56">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX57">&ldquo;</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX1">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX55">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX56">&ndash;option</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX111">.</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX113">.</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX112">?</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX114">?</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_4">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX113">a</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX115">a</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_5">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX109">t&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX110">T&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX111">t&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX112">T&ndash;ruc</a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>
@@ -2316,132 +2365,136 @@ Menu comment
 <tr><td></td><td valign="top"><a href="#Top"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX3"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX57"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX58"><code>``</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX4"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX58"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX59"><code>--foption</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX116"><code>.</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX118"><code>.</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX117"><code>?</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX119"><code>?</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_4">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX54"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX108"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX118"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Top"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX31"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX55"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX86"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX110"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX120"><code>a</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX30"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX84"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX85"><code>after</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_5">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX20"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX74"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX75"><code>bidule machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_6">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX5"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX59"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX60"><code>d--effn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX43"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX97"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX44"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX99"><code>d--efmac_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX51"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX105"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX52"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX107"><code>d--efmethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX40"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX94"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX41"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX96"><code>d--efop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX44"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX98"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX45"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX100"><code>d--efspec_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX36"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX90"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX37"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX92"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX47"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX101"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX48"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX103"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX52"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX106"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX53"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX108"><code>d--eftypemethod_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX37"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX91"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX38"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX93"><code>d--eftypeop_name de c--lass</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX42"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX96"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX43"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX98"><code>d--efun_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX6"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX60"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX61"><code>de--ffn_name</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX32"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX33"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX86"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX87"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX34"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX88"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX89"><code>deffn</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX31"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX34"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX85"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX88"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX32"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX35"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX87"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX90"><code>deffnx</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_7">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX25"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX79"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX80"><code>followed</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_8">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX7"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX61"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX62"><code><var>i</var></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX13"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX67"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX68"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX12"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX66"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX67"><code><b>id ule</b></code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_9">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX9"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX63"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX64"><code>log trap</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX10"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX64"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX65"><code>log trap1</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX11"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX65"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX66"><code>log trap2</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_10">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
@@ -2462,20 +2515,20 @@ Menu comment
 <tr><td></td><td valign="top"><a href="#IDX27"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX28"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX29"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX73"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX75"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX80"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX74"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX76"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX81"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX82"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX83"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX84"><code>machin</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_11">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX114"><code>t--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX115"><code>T--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX116"><code>t--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX117"><code>T--ruc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Top"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX8"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX62"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX63"><code>truc</code></a></td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>

@@ -44,6 +44,12 @@ This file records noteworthy changes.
   to be able to handle unknown macros in other passes than the last.
   Report from Reinhold Kainhofer.
 
+* in table_item the text is not formatted with the format command, 
+  the text_formatted argument is.
+
+* definition index entries are now formatted with $definition_index_entry,
+  not with $definition_category anymore.
+
 * $Texi2HTML::THISDOC{copying} is now $Texi2HTML::THISDOC{copying_comment}.
 
 * TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
@@ -60,6 +66,22 @@ This file records noteworthy changes.
 * change handling of @detailmenu and menu comments, with (among other changes)
   the menu function reference replaced by the menu_command function reference
   also handling @detailmenu.
+
+* everything before @setfilename is not outputted, like makeinfo. The previous
+  behaviour can be restored with $IGNORE_BEFORE_SETFILENAME = 0;
+
+* Now there is an argtype possibility for definition specification 
+  and the arg meaning changed. The whole definition parsing is now more
+  like makeinfo.
+
+* internal_ref and external_ref don't change inforef to xref anymore.
+
+* top element heading may now be done in heading. It means that nothing 
+  should be returned if the heading is done in another function 
+  (like print_Top).
+
+* print_index is called if it appears, even if the index is not defined or
+  there are no index entries.
 
 * BUG FIXES
   ---------

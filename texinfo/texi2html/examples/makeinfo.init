@@ -9,6 +9,10 @@ $SPLIT = 'node';
 
 $NODE_FILES = 1;
 
+$USE_SETFILENAME = 1;
+
+$IGNORE_BEFORE_SETFILENAME = 1;
+
 # to mimic makeinfo the following have to be set.
 #$USE_MENU_DIRECTIONS = 0;
 
@@ -127,6 +131,7 @@ sub makeinfo_like_print_index($$)
 {
     my $text = shift;
     my $name = shift;
+    return '' if (!defined($text));
     return "<ul class=\"index-$name\" compact>\n" . $text . "</ul>\n";
 }
 

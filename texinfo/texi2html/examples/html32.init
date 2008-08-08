@@ -70,6 +70,8 @@ $style_map{'titlefont'} = {'function' => \&t2h_html32_titlefont,
             'type' => 'simple_style'};
 $style_map_pre{'titlefont'} = {};
 
+$format_map{'multitable'} = 'table';
+
 # Avoid adding h1 if the text is empty
 # no class in html 3.2
 sub t2h_html32_titlefont($$$)
@@ -96,6 +98,8 @@ $listoffloats      = \&t2h_html32_listoffloats;
 $float             = \&t2h_html32_float;
 $acronym_like      = \&t2h_html32_acronym_like;
 $row               = \&t2h_html32_row;
+$cell              = \&t2h_html32_cell;
+
 
 
 # &quot; is not in html 3.2
@@ -246,6 +250,7 @@ sub t2h_html32_print_index($$)
 {
     my $text = shift;
     my $name = shift;
+    return '' if (!defined($text));
     return "<table border=\"0\">\n" .
     "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
@@ -328,4 +333,18 @@ sub t2h_html32_row($$)
          return '<tr>' . $text . '</tr>' . "\n";
     }
     return '';
+}
+
+# cell in multitable
+sub t2h_html32_cell($$)
+{
+    my $text = shift;
+    my $row_macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    if ($row_macro eq 'headitem')
+    {
+        return "<th>" . $text . '</th>';
+    }
+    return "<td>" . $text . '</td>';
 }

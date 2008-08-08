@@ -8,8 +8,7 @@ def_cmds.texi(mymacro,142) @deffn c--ategory d--effn_name a--rguments...
 def_cmds.texi(mymacro,142) d--effn
 def_cmds.texi(mymacro,142) @end deffn
 def_cmds.texi(mymacro,142) 
-def_cmds.texi(mymacro,142) @deffn cate--gory de--ffn_name ar--guments @
-def_cmds.texi(mymacro,142)    more args @* even more so
+def_cmds.texi(mymacro,142) @deffn cate--gory de--ffn_name ar--guments    more args @* even more so
 def_cmds.texi(mymacro,142) def--fn
 def_cmds.texi(mymacro,142) @end deffn
 def_cmds.texi(mymacro,142) 
@@ -123,13 +122,11 @@ def_cmds.texi(mymacro,142) @deftypemethod c--lass t--ype d--eftypemethod_name a-
 def_cmds.texi(mymacro,142) d--eftypemethod
 def_cmds.texi(mymacro,142) @end deftypemethod
 def_cmds.texi(mymacro,142) 
-def_cmds.texi(mymacro,142) @deffn category name args { @
-def_cmds.texi(mymacro,142)   more args
+def_cmds.texi(mymacro,142) @deffn category name args {   more args
 def_cmds.texi(mymacro,142) deffn with @{
 def_cmds.texi(mymacro,142) @end deffn 
 def_cmds.texi(mymacro,142) 
-def_cmds.texi(mymacro,142) @deffn category name args } @
-def_cmds.texi(mymacro,142)   more args
+def_cmds.texi(mymacro,142) @deffn category name args }   more args
 def_cmds.texi(mymacro,142) deffn with @}
 def_cmds.texi(mymacro,142) @end deffn 
 def_cmds.texi(mymacro,142) 
@@ -139,8 +136,7 @@ def_cmds.texi(mymacro,145) @deffn c--ategory d--effn_name a--rguments...
 def_cmds.texi(mymacro,145) d--effn
 def_cmds.texi(mymacro,145) @end deffn
 def_cmds.texi(mymacro,145) 
-def_cmds.texi(mymacro,145) @deffn cate--gory de--ffn_name ar--guments @
-def_cmds.texi(mymacro,145)    more args @* even more so
+def_cmds.texi(mymacro,145) @deffn cate--gory de--ffn_name ar--guments    more args @* even more so
 def_cmds.texi(mymacro,145) def--fn
 def_cmds.texi(mymacro,145) @end deffn
 def_cmds.texi(mymacro,145) 
@@ -254,16 +250,137 @@ def_cmds.texi(mymacro,145) @deftypemethod c--lass t--ype d--eftypemethod_name a-
 def_cmds.texi(mymacro,145) d--eftypemethod
 def_cmds.texi(mymacro,145) @end deftypemethod
 def_cmds.texi(mymacro,145) 
-def_cmds.texi(mymacro,145) @deffn category name args { @
-def_cmds.texi(mymacro,145)   more args
+def_cmds.texi(mymacro,145) @deffn category name args {   more args
 def_cmds.texi(mymacro,145) deffn with @{
 def_cmds.texi(mymacro,145) @end deffn 
 def_cmds.texi(mymacro,145) 
-def_cmds.texi(mymacro,145) @deffn category name args } @
-def_cmds.texi(mymacro,145)   more args
+def_cmds.texi(mymacro,145) @deffn category name args }   more args
 def_cmds.texi(mymacro,145) deffn with @}
 def_cmds.texi(mymacro,145) @end deffn 
 def_cmds.texi(mymacro,145) 
 def_cmds.texi(,146) @end example
 def_cmds.texi(,147) 
-def_cmds.texi(,148) @bye
+def_cmds.texi(,148) @c deffn
+def_cmds.texi(,150) @deffn Command @var{forward--char} @var{nchars} {argument2} {argument3}         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,151) @end deffn
+def_cmds.texi(,152) 
+def_cmds.texi(,153) @c defvr
+def_cmds.texi(,155) @defvr Variable fill-column {argument1} {argument2}         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,156) @end defvr
+def_cmds.texi(,157) 
+def_cmds.texi(,158) @c deftypefn
+def_cmds.texi(,159) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
+def_cmds.texi(,160) @end deftypefn
+def_cmds.texi(,161) 
+def_cmds.texi(,163) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})         (arg in brace, {[something} @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) ct@*@* last
+def_cmds.texi(,164) @end deftypefn
+def_cmds.texi(,165) 
+def_cmds.texi(,166) @deftypefn {Library Function} int foobug {[something}
+def_cmds.texi(,167) @end deftypefn
+def_cmds.texi(,168) 
+def_cmds.texi(,170) @deftypefn stacks private push (@var{s}:in out stack;                  @var{n}:in integer) ; ;barg aarg; ; end
+def_cmds.texi(,171) @end deftypefn
+def_cmds.texi(,172) 
+def_cmds.texi(,173) @c deftypevr
+def_cmds.texi(,175) @deftypevr {Global Flag} int enable         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,176) @end deftypevr
+def_cmds.texi(,177) 
+def_cmds.texi(,178) @c deftp
+def_cmds.texi(,180) @deftp {Data type} pair car cdr         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,181) @end deftp
+def_cmds.texi(,182) 
+def_cmds.texi(,183) @c defcv
+def_cmds.texi(,185) @defcv {Class Option} Window border-pattern         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,186) @end defcv
+def_cmds.texi(,187) 
+def_cmds.texi(,188) @c deftypecv
+def_cmds.texi(,190) @deftypecv {Class Option2} Window @code{int} border-pattern         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,191) @end deftypecv
+def_cmds.texi(,192) 
+def_cmds.texi(,193) @c defop
+def_cmds.texi(,195) @defop Operation windows expose         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,196) @end defop
+def_cmds.texi(,197) 
+def_cmds.texi(,198) @c deftypeop
+def_cmds.texi(,200) @deftypeop Operation2 W,indow @code{int} expose         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,201) @end deftypeop
+def_cmds.texi(,202) 
+def_cmds.texi(,203) @deftypeop Operation5 Window @code{int} expose type arg
+def_cmds.texi(,204) @end deftypeop
+def_cmds.texi(,205) 
+def_cmds.texi(,206) @deftypeop Operation3 {W,indow} @code{int} {e,xpose} type arg
+def_cmds.texi(,207) @end deftypeop
+def_cmds.texi(,208) 
+def_cmds.texi(,209) @deftypeop Operation4 {,Window} @code{int} {,expose} type arg
+def_cmds.texi(,210) @end deftypeop
+def_cmds.texi(,211) 
+def_cmds.texi(,212) @deftypeop Operation6 W,indow @code{int} e,xpose type arg
+def_cmds.texi(,213) @end deftypeop
+def_cmds.texi(,214) 
+def_cmds.texi(,215) @deftypeop Operation7 ,Window @code{int} ,expose type arg
+def_cmds.texi(,216) @end deftypeop
+def_cmds.texi(,217) 
+def_cmds.texi(,218) @deftypeop Operation13 {W)indow} @code{int} {e)xpose} type arg
+def_cmds.texi(,219) @end deftypeop
+def_cmds.texi(,220) 
+def_cmds.texi(,221) @deftypeop Operation14 {)Window} @code{int} {)expose} type arg
+def_cmds.texi(,222) @end deftypeop
+def_cmds.texi(,223) 
+def_cmds.texi(,224) @deftypeop Operation16 W)indow @code{int} e)xpose type arg
+def_cmds.texi(,225) @end deftypeop
+def_cmds.texi(,226) 
+def_cmds.texi(,227) @deftypeop Operation17 )Window @code{int} )expose type arg
+def_cmds.texi(,228) @end deftypeop
+def_cmds.texi(,229) 
+def_cmds.texi(,230) @deftypeop Operation18 {W;indow} @code{int} {e;xpose} type arg
+def_cmds.texi(,231) @end deftypeop
+def_cmds.texi(,232) 
+def_cmds.texi(,233) @deftypeop Operation19 {;Window} @code{int} {;expose} type arg
+def_cmds.texi(,234) @end deftypeop
+def_cmds.texi(,235) 
+def_cmds.texi(,236) @deftypeop Operation20 W;indow @code{int} e;xpose type arg
+def_cmds.texi(,237) @end deftypeop
+def_cmds.texi(,238) 
+def_cmds.texi(,239) @deftypeop Operation21 ;Window @code{int} ;expose type arg
+def_cmds.texi(,240) @end deftypeop
+def_cmds.texi(,241) 
+def_cmds.texi(,242) @deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+def_cmds.texi(,243) @end deftypeop
+def_cmds.texi(,244) 
+def_cmds.texi(,245) @c deffn
+def_cmds.texi(,246) @deffn
+def_cmds.texi(,247) @end deffn
+def_cmds.texi(,248) 
+def_cmds.texi(,249) @c defvr
+def_cmds.texi(,250) @defvr
+def_cmds.texi(,251) @end defvr
+def_cmds.texi(,252) 
+def_cmds.texi(,253) @c deftypefn
+def_cmds.texi(,254) @deftypefn
+def_cmds.texi(,255) @end deftypefn
+def_cmds.texi(,256) 
+def_cmds.texi(,257) @c deftypeop
+def_cmds.texi(,258) @deftypeop
+def_cmds.texi(,259) @end deftypeop
+def_cmds.texi(,260) 
+def_cmds.texi(,261) @c deftypevr
+def_cmds.texi(,262) @deftypevr
+def_cmds.texi(,263) @end deftypevr
+def_cmds.texi(,264) 
+def_cmds.texi(,265) @c defcv
+def_cmds.texi(,266) @defcv
+def_cmds.texi(,267) @end defcv
+def_cmds.texi(,268) 
+def_cmds.texi(,269) @c deftypecv
+def_cmds.texi(,270) @deftypecv
+def_cmds.texi(,271) @end deftypecv
+def_cmds.texi(,272) 
+def_cmds.texi(,273) @c defop
+def_cmds.texi(,274) @defop
+def_cmds.texi(,275) @end defop
+def_cmds.texi(,276) 
+def_cmds.texi(,277) @c deftp
+def_cmds.texi(,278) @deftp
+def_cmds.texi(,279) @end deftp
+def_cmds.texi(,280) 
+def_cmds.texi(,281) @bye

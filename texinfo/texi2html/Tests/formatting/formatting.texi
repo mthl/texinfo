@@ -155,7 +155,7 @@ Invalid use of @@':@*
 @code{@@i@{--a@}} @i{--a}
 @code{@@kbd@{--a@}} @kbd{--a}
 @code{@@key@{--a@}} @key{--a}
-@code{@@math@{--a@}} @math{--a}
+@code{@@math@{--a@}} @math{--a@minus{} {\frac{1}{2}}}
 @code{@@option@{--a@}} @option{--a}
 @code{@@r@{--a@}} @r{--a}
 @code{@@samp@{--a@}} @samp{--a}
@@ -168,6 +168,10 @@ Invalid use of @@':@*
 @code{@@uref@{--a,--b@}} @uref{--a,--b}
 @code{@@uref@{--a@}} @uref{--a}
 @code{@@uref@{,--b@}} @uref{,--b}
+@code{@@uref@{--a,--b,--c@}} @uref{--a,--b,--c}
+@code{@@uref@{,--b,--c@}} @uref{,--b,--c}
+@code{@@uref@{--a,,--c@}} @uref{--a,,--c}
+@code{@@uref@{,,--c@}} @uref{,,--c}
 @code{@@url@{--a,--b@}} @url{--a,--b}
 @code{@@url@{--a,@}} @url{--a,}
 @code{@@url@{,--b@}} @url{,--b}
@@ -197,14 +201,18 @@ Invalid use of @@':@*
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
-@code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
-@code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+@code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
 @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
 @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-@code{@@image@{f--ile@}} @image{f--ile}
-@code{@@image@{,,e--xt@}} @image{,,e--xt}
-@code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+@code{@@image@{f-ile,,,alt@@verb@{:jk _" %@:@}@}} @image{f-ile,,,alt@verb{:jk _" %@:}}
+@code{@@image@{,1--xt@}} @image{,1--xt}
+@code{@@image@{,,2--xt@}} @image{,,2--xt}
+@code{@@image@{,,,3--xt@}} @image{,,,3--xt}
+@code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
 @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
 @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
 
@@ -257,6 +265,8 @@ a q--uotation
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
 @end multitable
 
 @example
@@ -329,6 +339,7 @@ Various deff lines
 @deffnx {truc} after a deff item
 @c comment
 text in def item for second def item
+@deffnx {truc} a b c d e @b{f g} {h i}
 @deffnx {truc} deffnx before end deffn
 @end deffn
 
@@ -379,7 +390,7 @@ d--efmac
 d--efspec
 @end defspec
 
-@defvar d--efvar_name
+@defvar d--efvar_name argvar argvar1
 d--efvar
 @end defvar
 
@@ -472,6 +483,8 @@ d--eftypemethod
 @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
 @code{@@inforef@{,,file name@}} @inforef{,,file name}
 @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+@code{@@inforef@{@}} @inforef{}
+@code{@@inforef@{chapter, cross ref name, file name, spurious arg@}} @inforef{chapter, cross ref name, file name, spurious arg}
 
 @code{@@ref@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
 ref, a comma@@comma@{@} in title, a comma@@comma@{@} in file, a @@comma@{@} in manual name @}}

@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 14. File Handling </h1>
+<h1 class="chapter">14. File Handling</h1>
 
 <p>  The basic unit of stored data in Unix is the <em>file</em>.  To edit a file,
 you must tell Emacs to examine the file and prepare a buffer containing a
@@ -126,7 +126,7 @@ and append to files, and operate on file directories.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.1 File Names </h2>
+<h2 class="section">14.1 File Names</h2>
 
 <p>  Most Emacs commands that operate on a file require you to specify the
 file name.  (Saving and reverting are exceptions; the buffer knows which
@@ -246,7 +246,7 @@ is performed only on filenames read as such using the minibuffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.2 Visiting Files </h2>
+<h2 class="section">14.2 Visiting Files</h2>
 
 <dl compact="compact">
 <dt> <kbd>C-x C-f</kbd></dt>
@@ -425,7 +425,7 @@ runs the <code>find-file-not-found-hooks</code> first.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.3 Saving Files </h2>
+<h2 class="section">14.3 Saving Files</h2>
 
 <p>  <em>Saving</em> a buffer in Emacs means writing its contents back into the file
 that was visited in the buffer.
@@ -567,7 +567,7 @@ all the functions to be called after writing out a buffer to a file.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.3.1 Backup Files </h3>
+<h3 class="subsection">14.3.1 Backup Files</h3>
 
 <p>  Because Unix does not provide version numbers in file names, rewriting a
 file in Unix automatically destroys all record of what the file used to
@@ -616,7 +616,7 @@ the file again, a new backup file is made by the next save.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 14.3.1.1 Single or Numbered Backups </h4>
+<h4 class="subsubsection">14.3.1.1 Single or Numbered Backups</h4>
 
 <p>  If you choose to have a single backup file (the default),
 the backup file&rsquo;s name is constructed by appending &lsquo;<samp>~</samp>&rsquo; to the
@@ -675,7 +675,7 @@ that there is only one backup for an Rmail file.  See section <a href="xemacs_30
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 14.3.1.2 Automatic Deletion of Backups </h4>
+<h4 class="subsubsection">14.3.1.2 Automatic Deletion of Backups</h4>
 
 <p>  To prevent unlimited consumption of disk space, Emacs can delete numbered
 backup versions automatically.  Generally Emacs keeps the first few backups
@@ -716,7 +716,7 @@ See section <a href="#Dired">Dired, the Directory Editor</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 14.3.1.3 Copying vs. Renaming </h4>
+<h4 class="subsubsection">14.3.1.3 Copying vs. Renaming</h4>
 
 <p>  You can make backup files by copying the old file or by renaming it.
 This makes a difference when the old file has multiple names.  If you
@@ -768,7 +768,7 @@ done if renaming would cause the file&rsquo;s owner or group to change.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.3.2 Protection Against Simultaneous Editing </h3>
+<h3 class="subsection">14.3.2 Protection Against Simultaneous Editing</h3>
 
 <p>  Simultaneous editing occurs when two users visit the same file, both
 make changes, and both save their changes.  If no one was informed that
@@ -869,7 +869,7 @@ mode for new files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.4 Reverting a Buffer </h2>
+<h2 class="section">14.4 Reverting a Buffer</h2>
 
 <p>  If you have made extensive changes to a file and then change your mind
 about them, you can get rid of all changes by reading in the previous
@@ -926,7 +926,7 @@ reports an error when asked to do so.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.5 Auto-Saving: Protection Against Disasters </h2>
+<h2 class="section">14.5 Auto-Saving: Protection Against Disasters</h2>
 
 <p>  Emacs saves all the visited files from time to time (based on counting
 your keystrokes) without being asked.  This is called <em>auto-saving</em>.
@@ -969,7 +969,7 @@ typing.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.5.1 Auto-Save Files </h3>
+<h3 class="subsection">14.5.1 Auto-Save Files</h3>
 
 <p>  Auto-saving does not normally write to the files you visited, because
 it can be undesirable to save a program that is in an inconsistent
@@ -1023,7 +1023,7 @@ auto-save file to correspond to the new visited name.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.5.2 Controlling Auto-Saving </h3>
+<h3 class="subsection">14.5.2 Controlling Auto-Saving</h3>
 
 <p>  Each time you visit a file, auto-saving is turned on for that file&rsquo;s
 buffer if the variable <code>auto-save-default</code> is non-<code>nil</code> (but
@@ -1079,7 +1079,7 @@ buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.5.3 Recovering Data from Auto-Saves </h3>
+<h3 class="subsection">14.5.3 Recovering Data from Auto-Saves</h3>
 
 <p>  If you want to use the contents of an auto-save file to recover from a
 loss of data, use the command <kbd>M-x recover-file &lt;RET&gt; <var>file</var>
@@ -1123,7 +1123,7 @@ with <kbd>M-x auto-save-mode</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.6 Version Control </h2>
+<h2 class="section">14.6 Version Control</h2>
 
 <p>  <em>Version control systems</em> are packages that can record multiple
 versions of a source file, usually storing the unchanged parts of the
@@ -1189,7 +1189,7 @@ using.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.1 Concepts of Version Control </h3>
+<h3 class="subsection">14.6.1 Concepts of Version Control</h3>
 
 <p>   When a file is under version control, we also say that it is
 <em>registered</em> in the version control system.  Each registered file
@@ -1242,7 +1242,7 @@ files that make up a program.  See section <a href="#Snapshots">Snapshots</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.2 Editing with Version Control </h3>
+<h3 class="subsection">14.6.2 Editing with Version Control</h3>
 
 <p>  When you visit a file that is maintained using version control, the
 mode line displays &lsquo;<samp>RCS</samp>&rsquo; or &lsquo;<samp>SCCS</samp>&rsquo; to inform you that version
@@ -1392,7 +1392,7 @@ argument, it reads the version number with the minibuffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.3 Variables Affecting Check-in and Check-out </h3>
+<h3 class="subsection">14.6.3 Variables Affecting Check-in and Check-out</h3>
 
 <p>  If <code>vc-suppress-confirm</code> is non-<code>nil</code>, then <kbd>C-x C-q</kbd>
 and <kbd>C-x v i</kbd> can save the current buffer without asking, and
@@ -1450,7 +1450,7 @@ happens automatically.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.4 Log Entries </h3>
+<h3 class="subsection">14.6.4 Log Entries</h3>
 
 <p>  When you&rsquo;re editing an initial comment or log entry for inclusion in a
 master file, finish your entry by typing <kbd>C-c C-c</kbd>.
@@ -1499,7 +1499,7 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.5 Change Logs and VC </h3>
+<h3 class="subsection">14.6.5 Change Logs and VC</h3>
 
 <p>  If you use RCS for a program and also maintain a change log file for
 it (see section <a href="xemacs_24.html#Change-Log">Change Logs</a>), you can generate change log entries
@@ -1613,7 +1613,7 @@ to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.6 Examining And Comparing Old Versions </h3>
+<h3 class="subsection">14.6.6 Examining And Comparing Old Versions</h3>
 
 <dl compact="compact">
 <dt> <kbd>C-x v ~ <var>version</var> &lt;RET&gt;</kbd></dt>
@@ -1685,7 +1685,7 @@ See section <a href="#Comparing-Files">Comparing Files</a>, for more information
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.7 VC Status Commands </h3>
+<h3 class="subsection">14.6.7 VC Status Commands</h3>
 
 <p>  To view the detailed version control status and history of a file,
 type <kbd>C-x v l</kbd> (<code>vc-print-log</code>).  It displays the history of
@@ -1737,7 +1737,7 @@ change.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.8 Renaming VC Work Files and Master Files </h3>
+<h3 class="subsection">14.6.8 Renaming VC Work Files and Master Files</h3>
 
 <p>  When you rename a registered file, you must also rename its master
 file correspondingly to get proper results.  Use <code>vc-rename-file</code>
@@ -1768,7 +1768,7 @@ someone else.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.9 Snapshots </h3>
+<h3 class="subsection">14.6.9 Snapshots</h3>
 
 <p>  A <em>snapshot</em> is a named set of file versions (one for each
 registered file) that you can treat as a unit.  One important kind of
@@ -1801,7 +1801,7 @@ system that is ready for distribution to users.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 14.6.9.1 Making and Using Snapshots </h4>
+<h4 class="subsubsection">14.6.9.1 Making and Using Snapshots</h4>
 
 <p>  There are two basic commands for snapshots; one makes a
 snapshot with a given name, the other retrieves a named snapshot.
@@ -1857,7 +1857,7 @@ or a snapshot against a named version.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h4 class="subsubsection"> 14.6.9.2 Snapshot Caveats </h4>
+<h4 class="subsubsection">14.6.9.2 Snapshot Caveats</h4>
 
 <p>  VC&rsquo;s snapshot facilities are modeled on RCS&rsquo;s named-configuration
 support.  They use RCS&rsquo;s native facilities for this, so under VC
@@ -1910,7 +1910,7 @@ won&rsquo;t really work as retrieved.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.6.10 Inserting Version Control Headers </h3>
+<h3 class="subsection">14.6.10 Inserting Version Control Headers</h3>
 
 <p>   Sometimes it is convenient to put version identification strings
 directly into working files.  Certain special strings called
@@ -1999,7 +1999,7 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.7 Listing a File Directory </h2>
+<h2 class="section">14.7 Listing a File Directory</h2>
 
 <p>  Files are organized by Unix into <em>directories</em>.  A <em>directory
 listing</em> is a list of all the files in a directory.  Emacs provides
@@ -2074,7 +2074,7 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.8 Comparing Files </h2>
+<h2 class="section">14.8 Comparing Files</h2>
 
 <p>  The command <kbd>M-x diff</kbd> compares two files, displaying the
 differences in an Emacs buffer named &lsquo;<samp>*Diff*</samp>&rsquo;.  It works by running
@@ -2128,7 +2128,7 @@ non-<code>nil</code>, it ignores differences in case as well.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.9 Dired, the Directory Editor </h2>
+<h2 class="section">14.9 Dired, the Directory Editor</h2>
 
 <p>  Dired makes it easy to delete or visit many of the files in a single
 directory at once.  It creates an Emacs buffer containing a listing of the
@@ -2165,7 +2165,7 @@ buffer and special Dired commands to operate on the files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.9.1 Entering Dired </h3>
+<h3 class="subsection">14.9.1 Entering Dired</h3>
 
 <p>  To invoke dired, type <kbd>C-x d</kbd> or <kbd>M-x dired</kbd>.  The command reads a
 directory name or wildcard file name pattern as a minibuffer argument just
@@ -2201,7 +2201,7 @@ window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.9.2 Editing in Dired </h3>
+<h3 class="subsection">14.9.2 Editing in Dired</h3>
 
 <p>  Once the Dired buffer exists, you can switch freely between it and other
 Emacs buffers.  Whenever the Dired buffer is selected, certain special
@@ -2252,7 +2252,7 @@ buffer are lost when this is done.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.9.3 Deleting Files With Dired </h3>
+<h3 class="subsection">14.9.3 Deleting Files With Dired</h3>
 
 <p>  The primary use of Dired is to flag files for deletion and then delete
 them.
@@ -2347,7 +2347,7 @@ file to keep.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 14.9.4 Immediate File Operations in Dired </h3>
+<h3 class="subsection">14.9.4 Immediate File Operations in Dired</h3>
 
 <p>  Some file operations in Dired take place immediately when they are
 requested.
@@ -2399,7 +2399,7 @@ directory.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 14.10 Miscellaneous File Operations </h2>
+<h2 class="section">14.10 Miscellaneous File Operations</h2>
 
 <p>  Emacs has commands for performing many other operations on files.
 All operate on one file; they do not accept wildcard file names.

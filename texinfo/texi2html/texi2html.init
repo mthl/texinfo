@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.145 2008-07-30 12:23:34 pertusus Exp $
+# $Id: texi2html.init,v 1.146 2008-08-08 12:07:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -303,6 +303,13 @@ $INLINE_CONTENTS = 0;
 # corresponding textual entity.
 $USE_NUMERIC_ENTITY = 1;
 
+# if this variable is true, @setfilename is used if found to determine the
+# out file name
+$USE_SETFILENAME = 0;
+
+# if true, begin outputting at @setfilename, if this command is present.
+$IGNORE_BEFORE_SETFILENAME = 1;
+
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
 
@@ -311,6 +318,9 @@ $USE_NODE_TARGET = 1;
 
 # new style for crossrefs
 $NEW_CROSSREF_STYLE = 1;
+
+# top heading is always at the beginning of the element.
+$TOP_HEADING_AT_BEGINNING = 1;
 
 # if set and menu entry equals menu description, then do not print 
 # menu description.
@@ -969,9 +979,10 @@ sub T2H_DEFAULT_print_section
     }
 }
 
-sub T2H_DEFAULT_one_section($)
+sub T2H_DEFAULT_one_section($$)
 {
     my $fh = shift;
+    my $element = shift;
     main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     main::print_lines($fh);
     print $fh "$SMALL_RULE\n";
@@ -1024,8 +1035,10 @@ sub T2H_DEFAULT_print_Top($$$)
     {
         # if top-level node has content, then print it with extra header
         #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
+#        print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
+#            unless ($has_top_heading);
         print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
-            unless ($has_top_heading);
+             if ($TOP_HEADING_AT_BEGINNING and !$has_top_heading);
         $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
@@ -1034,6 +1047,7 @@ sub T2H_DEFAULT_print_Top($$$)
         # print fulltitle, subtitle, author, Overview or table of contents
         # redo the titlepage with the actual state
         my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+
         &$titlepage([],$titlepage_text, $titlepage_no_texi); 
         print $fh $Texi2HTML::TITLEPAGE;
         if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'})
@@ -2297,6 +2311,10 @@ foreach my $symbol(keys(%unicode_map))
          '`'         => '&lsquo;',
         );
 
+%stop_paragraph_command = (
+ 'titlefont' => 1
+);
+
 # not used currently for html, but used in chm.init
 %numeric_entity_map = ();
 
@@ -3197,12 +3215,42 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
     $simple_format_style_map_texi{$accent_command}->{'function'} = \&t2h_default_accent;
 }
 
+# regions expanded or not depending on the value of this hash.
+# @EXPAND sets entries in this hash, and you should better use
+# @EXPAND unless you know what you are doing.
+%texi_formats_map = (
+     'iftex' => 0, 
+     'ignore' => 0, 
+     'menu' => 0, 
+     'ifplaintext' => 0, 
+     'ifinfo' => 0,
+     'ifxml' => 0,
+     'ifhtml' => 0, 
+     'ifdocbook' => 0, 
+     'html' => 0, 
+     'tex' => 0, 
+     'xml' => 0,
+     'titlepage' => 1, 
+     'documentdescription' => 1, 
+     'copying' => 1, 
+     'ifnothtml' => 1, 
+     'ifnottex' => 1, 
+     'ifnotplaintext' => 1, 
+     'ifnotinfo' => 1,
+     'ifnotxml' => 1,
+     'ifnotdocbook' => 1, 
+     'direntry' => 0,
+     'verbatim' => 'raw', 
+     'ifclear' => 'value', 
+     'ifset' => 'value' ,
+     );
+    
 %format_map = (
 #       'quotation'   =>  'blockquote',
        # lists
 #       'itemize'     =>  'ul',
        'enumerate'   =>  'ol',
-       'multitable'  =>  'table',
+#       'multitable'  =>  'table',
        'table'       =>  'dl compact="compact"',
        'vtable'      =>  'dl compact="compact"',
        'ftable'      =>  'dl compact="compact"',
@@ -3264,13 +3312,13 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     # basic commands
     'deffn', [ 'f', 'category', 'name', 'arg' ],
     'defvr', [ 'v', 'category', 'name' ],
-    'deftypefn', [ 'f', 'category', 'type', 'name', 'arg' ],
-    'deftypeop', [ 'f', 'category', 'class' , 'type', 'name', 'arg' ],
+    'deftypefn', [ 'f', 'category', 'type', 'name', 'argtype' ],
+    'deftypeop', [ 'f', 'category', 'class' , 'type', 'name', 'argtype' ],
     'deftypevr', [ 'v', 'category', 'type', 'name' ],
     'defcv', [ 'v', 'category', 'class' , 'name' ],
     'deftypecv', [ 'v', 'category', 'class' , 'type', 'name' ],
     'defop', [ 'f', 'category', 'class' , 'name', 'arg' ],
-    'deftp', [ 't', 'category', 'name', 'arg' ],
+    'deftp', [ 't', 'category', 'name', 'argtype' ],
     # shortcuts
     # FIXME i18n
     'defun', 'deffn Function',
@@ -3285,6 +3333,10 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'defmethod', 'defop Method',
     'deftypemethod', 'deftypeop Method',
          );
+
+$def_always_delimiters = "()[]";
+$def_in_type_delimiters = ",;";
+$def_argument_separator_delimiters = "()[],";
 
 # basic x commands
 foreach my $key (keys(%def_map))
@@ -3333,7 +3385,7 @@ foreach my $key (keys(%def_map))
         'c' => {'arg' => 'line'},
         # in preamble
         'novalidate' => {}, # no arg
-        'dircategory'=> {'skip' => 'line'}, # line. Position with regard 
+        'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
                          # with direntry is significant
         'pagesizes' => {'skip' => 'line', 'arg' => 2}, # can have 2 args 
                                  # or one? 200mm,150mm 11.5in
@@ -3547,6 +3599,7 @@ $index_entry_label = \&t2h_default_index_entry_label;
 $index_summary     = \&t2h_default_index_summary;
 $summary_letter    = \&t2h_default_summary_letter;
 $index_entry       = \&t2h_default_index_entry;
+$index_entry_command = \&t2h_default_index_entry_command;
 $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_print_index;
 $protect_text      = \&t2h_default_protect_text;
@@ -3555,6 +3608,7 @@ $complex_format    = \&t2h_default_complex_format;
 $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
 $definition_category      = \&t2h_default_definition_category;
+$definition_index_entry   = \&t2h_default_definition_index_entry;
 $copying_comment          = \&t2h_default_copying_comment;
 $documentdescription      = \&t2h_default_documentdescription;
 $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
@@ -3563,7 +3617,8 @@ $index_summary_file_begin = \&t2h_default_index_summary_file_begin;
 $empty_line               = \&t2h_default_empty_line;
 $unknown                  = \&t2h_default_unknown;
 $unknown_style            = \&t2h_default_unknown_style;
-$caption_shortcaption     = \&t2h_caption_shortcaption;
+$caption_shortcaption     = \&t2h_default_caption_shortcaption;
+$caption_shortcaption_command  = \&t2h_default_caption_shortcaption_command;
 $float                     = \&t2h_default_float;
 $listoffloats             = \&t2h_default_listoffloats;
 $listoffloats_entry       = \&t2h_default_listoffloats_entry;
@@ -3580,8 +3635,13 @@ $element_label              = \&t2h_element_label;
 $misc_element_label         = \&t2h_misc_element_label;
 $anchor_label               = \&t2h_anchor_label;
 $preserve_misc_command      = \&t2h_default_preserve_misc_command;
+$format_list_item_texi      = \&t2h_default_format_list_item_texi;
+$begin_format_texi          = \&t2h_default_begin_format_texi;
+$insertcopying              = \&t2h_default_insertcopying;
 
 # return the line after preserving things according to misc_command map.
+# You should not change it. It is here, nevertheless, to be used
+# in other function references if needed.
 sub t2h_default_preserve_misc_command($$)
 {
     my $line = shift;
@@ -3591,10 +3651,10 @@ sub t2h_default_preserve_misc_command($$)
     my $skip_spec = '';
     my $arg_spec = '';
 
-    $skip_spec = $Texi2HTML::Config::misc_command{$macro}->{'skip'}
-        if (defined($Texi2HTML::Config::misc_command{$macro}->{'skip'}));
-    $arg_spec = $Texi2HTML::Config::misc_command{$macro}->{'arg'}
-        if (defined($Texi2HTML::Config::misc_command{$macro}->{'arg'}));
+    $skip_spec = $misc_command{$macro}->{'skip'}
+        if (defined($misc_command{$macro}->{'skip'}));
+    $arg_spec = $misc_command{$macro}->{'arg'}
+        if (defined($misc_command{$macro}->{'arg'}));
 
     if ($arg_spec eq 'line')
     {
@@ -3604,7 +3664,7 @@ sub t2h_default_preserve_misc_command($$)
     }
     elsif ($arg_spec)
     {
-        my $arg_nr = $Texi2HTML::Config::misc_command{$macro}->{'arg'};
+        my $arg_nr = $misc_command{$macro}->{'arg'};
         while ($arg_nr)
         {
             $line =~ s/(\s+\S*)//o;
@@ -3656,6 +3716,21 @@ sub t2h_default_preserve_misc_command($$)
     }
     $line = '' if (!defined($line));
     return ($line, $text, $args);
+}
+
+my @t2h_default_multitable_stack = ();
+
+# this is called each time a format begins. Here it is used to keep a
+# record of the multitables to have a faithful count of the cell nr.
+sub t2h_default_begin_format_texi($$$)
+{
+    my $command = shift;
+    my $line = shift;
+    my $state = shift;
+
+    push (@t2h_default_multitable_stack, -1) if ($command eq 'multitable');
+
+    return $line;
 }
 
 # This function is called whenever a complex format is processed
@@ -3721,7 +3796,7 @@ sub t2h_default_unknown_style($$$$)
     return (0, undef, undef);
 }
 
-sub t2h_caption_shortcaption($)
+sub t2h_default_caption_shortcaption($)
 {
     my $float = shift;
     my $caption_lines;
@@ -3775,6 +3850,16 @@ sub t2h_caption_shortcaption($)
          $shortcaption_lines->[0] = '@strong{' . $style . '}' . "\n";
     }
     return ($caption_lines, $shortcaption_lines);
+}
+
+# everything is done in &$float
+sub t2h_default_caption_shortcaption_command($$$$)
+{
+   my $command = shift;
+   my $text = shift;
+   my $texi_lines = shift;
+   my $float_element = shift;
+   return '';
 }
 
 sub t2h_default_float($$$$$)
@@ -3874,6 +3959,12 @@ sub t2h_default_listoffloats($$$)
     return $result . "</dl>\n";
 } 
 
+sub t2h_default_insertcopying($)
+{
+    my $text = shift;
+    return $text;
+}
+
 # This function is used to protect characters which are special in html 
 # in inline text:  &, ", <, and >. 
 #
@@ -3942,6 +4033,7 @@ sub t2h_default_normal_text($$$$$$)
    my $in_preformatted = shift;
    my $in_code = shift;
    my $in_simple = shift;
+#print STDERR "Bug: in_raw_text in_simple $text\n" if ($in_raw_text and $in_simple);
    my $style_stack = shift;
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
    $text = &$protect_text($text) unless($in_raw_text);
@@ -4051,17 +4143,39 @@ sub t2h_default_def_item($)
     return '';
 }
 
-sub t2h_default_definition_category($$$)
+sub t2h_default_definition_category($$$$)
 {
     my $name = shift;
     my $class = shift;
     my $style = shift;
+    my $command = shift;
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
         return &$I('%{name} on %{class}', { 'name' => $name, 'class' => $class });
     }
     elsif ($style eq 'v')
+    {
+        return &$I('%{name} of %{class}', { 'name' => $name, 'class' => $class });
+    }
+    else
+    {
+        return $name;
+    }
+}
+
+sub t2h_default_definition_index_entry($$$$)
+{
+    my $name = shift;
+    my $class = shift;
+    my $style = shift;
+    my $command = shift;
+    return ($name) if (!defined($class) or $class =~ /^\s*$/);
+    if ($style eq 'f')
+    {
+        return &$I('%{name} on %{class}', { 'name' => $name, 'class' => $class });
+    }
+    elsif ($style eq 'v' and $command ne 'defcv')
     {
         return &$I('%{name} of %{class}', { 'name' => $name, 'class' => $class });
     }
@@ -4410,7 +4524,7 @@ sub t2h_default_external_href($$$)
 # href linking to the html page containing the referenced node. A typical
 #     use for this href is a href attribute in an <a> element
 # an optionnal cross reference name
-sub t2h_default_external_ref($$$$$$)
+sub t2h_default_external_ref($$$$$$$$)
 {
     my $type = shift;
     my $section = shift;
@@ -4418,6 +4532,8 @@ sub t2h_default_external_ref($$$$$$)
     my $file_node = shift;
     my $href = shift;
     my $cross_ref = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
 
     $file_node = "$cross_ref: $file_node" if (($file_node ne '') and ($cross_ref ne ''));
     $file_node = &$anchor('', $href, $file_node) if ($file_node ne '');
@@ -4440,7 +4556,7 @@ sub t2h_default_external_ref($$$$$$)
               return &$I('see %{node_file_href}', { 'node_file_href' => $file_node });
          }
     }
-    if ($type eq 'xref')
+    if ($type eq 'xref' or $type eq 'inforef')
     {
          if (($book ne '') and ($file_node ne ''))
          {
@@ -4490,13 +4606,15 @@ sub t2h_default_external_ref($$$$$$)
 # boolean true if the reference is a reference to a section
 # 
 # $SHORT_REF should be used.
-sub t2h_default_internal_ref($$$$$)
+sub t2h_default_internal_ref($$$$$$$)
 {
     my $type = shift;
     my $href = shift;
     my $short_name = shift;
     my $name = shift;
     my $is_section = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
 
     if (! $SHORT_REF)
     {
@@ -4506,7 +4624,7 @@ sub t2h_default_internal_ref($$$$$)
             return &$I('see section %{reference_name}', { 'reference_name' => $name }) if ($is_section);
             return &$I('see %{reference_name}', { 'reference_name' => $name });
         }
-        elsif ($type eq 'xref')
+        elsif ($type eq 'xref' or $type eq 'inforef')
         {
             return &$I('See section %{reference_name}', { 'reference_name' => $name }) if ($is_section);
             return &$I('See %{reference_name}', { 'reference_name' => $name });
@@ -4523,7 +4641,7 @@ sub t2h_default_internal_ref($$$$$)
         {
             return &$I('see %{reference_name}', { 'reference_name' => $name });
         }
-        elsif ($type eq 'xref')
+        elsif ($type eq 'xref' or $type eq 'inforef')
         {
             return &$I('See %{reference_name}', { 'reference_name' => $name });
         }
@@ -4556,7 +4674,7 @@ sub teletyped_in_stack($)
 }
 
 # text after @item in table, vtable and ftable
-sub t2h_default_table_item($$$$$$)
+sub t2h_default_table_item($$$$$$$$$)
 {
     my $text = shift;
     my $index_label = shift;
@@ -4564,7 +4682,16 @@ sub t2h_default_table_item($$$$$$)
     my $command = shift;
     my $formatted_command = shift;
     my $style_stack = shift;
+    my $text_formatted = shift;
+    my $text_formatted_leading_spaces = shift;
+    my $text_formatted_trailing_spaces = shift;
+    my $item_cmd = shift;
+
     #print STDERR "-> $format (@$style_stack)\n";
+    if (defined($text_formatted) and !exists $special_list_commands{$format}->{$command})
+    {
+        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+    }
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
     if (teletyped_in_stack($style_stack))
@@ -4588,7 +4715,7 @@ sub t2h_default_table_line($)
     return '';
 }
 
-my $cell_nr = -1;
+#my $cell_nr = -1;
 
 # row in multitable
 sub t2h_default_row($$;$$)
@@ -4597,8 +4724,10 @@ sub t2h_default_row($$;$$)
     my $macro = shift;
     my $columnfractions = shift;
     my $prototype_row = shift;
+    my $prototype_lengths = shift;
 
-    $cell_nr = -1;
+    # this is used to keep the cell number
+    $t2h_default_multitable_stack[-1] = -1;
 
     if ($text =~ /\S/)
     {
@@ -4618,8 +4747,10 @@ sub t2h_default_cell($$;$$)
     my $row_macro = shift;
     my $columnfractions = shift;
     my $prototype_row = shift;
+    my $prototype_lengths = shift;
 
-    $cell_nr++;
+    $t2h_default_multitable_stack[-1]++;
+    my $cell_nr = $t2h_default_multitable_stack[-1];
     my $fractions = '';
 
     if (defined($columnfractions) and (ref($columnfractions) eq 'ARRAY')
@@ -4636,6 +4767,25 @@ sub t2h_default_cell($$;$$)
     return "<td${fractions}>" . $text . '</td>';
 }
 
+sub t2h_default_format_list_item_texi($$$$)
+{
+    my $format = shift;
+    my $line = shift;
+    my $prepended = shift;
+    my $command = shift;
+
+    my $result_line;
+    my $open_command = 0;
+
+    if (defined($prepended) and $prepended ne '')
+    {
+         $result_line = $prepended . ' ' . $line;
+    }
+    $open_command = 1 if (defined($command));
+    return ($result_line, $open_command);
+}
+
+
 # format an item in a list
 #
 # argument:
@@ -4643,7 +4793,7 @@ sub t2h_default_cell($$;$$)
 # format of the list (itemize or enumerate)
 # command passed as argument to the format
 # formatted_command leading command formatted, if it is a thing command
-sub t2h_default_list_item($$$$$$$)
+sub t2h_default_list_item($$$$$$$$)
 {
     my $text = shift;
     my $format = shift;
@@ -4652,32 +4802,53 @@ sub t2h_default_list_item($$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+    my $prepended = shift;
 
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
+    my $prepend = '';
+#    if (defined($prepended) and $prepended ne '')
+#    {
+#        $prepend = $prepended;
+#    }
+#    elsif ($formatted_command ne '')
+    if ($formatted_command ne '')
+    {
+        $prepend = $formatted_command;
+    }
     if ($text =~ /\S/)
     {
-        return '<li>' . $formatted_command . $text . '</li>';
+        return '<li>' . $prepend . $text . '</li>';
     }
     return '';
 }
 
-sub t2h_default_table_list($$$$$$)
+sub t2h_default_table_list($$$$$$$$$)
 {
-    my $format = shift;
+    my $format_command = shift;
     my $text = shift;
     my $command = shift;
     my $formatted_command = shift;
     my $prepended = shift;
+# enumerate
     my $item_nr = shift;
     my $enumerate_style = shift;
-    my $number = shift;
+# multitable
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+#    my $number = shift;
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
-    if ($format eq 'itemize')
+    if ($format_command eq 'itemize')
     {
         return "<ul>\n" . $text . "</ul>\n" if (($command eq 'bullet') or (($command eq '') and ($prepended eq '')));
         return "<ul$NO_BULLET_LIST_ATTRIBUTE>\n" . $text . "</ul>\n";
+    }
+    elsif ($format_command eq 'multitable')
+    {
+        pop @t2h_default_multitable_stack;
+        return &$format('multitable', 'table', $text);
     }
 }
 
@@ -4854,22 +5025,42 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-sub t2h_default_heading($;$$$$)
+sub t2h_default_heading($;$$$$$)
 {
     my $element = shift;
     my $command = shift;
     my $texi_line = shift;
     my $line = shift;
     my $in_preformatted = shift;
+    my $one_section = shift;
 
-    my $text = $element->{'text'};
     my $level = 3;
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
     }
+    my $text = $element->{'text'};
     my $class = $element->{'tag_level'};
     $class = 'unnumbered' if ($class eq 'top');
+    my $align = '';
+    $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
+    if ($element->{'top'} and not $element->{'index_page'})
+    {
+       return '' if ($element->{'titlefont'});
+       $level = 1;
+       $text = $Texi2HTML::NAME{'Top'};
+       if ($one_section and $TOP_HEADING_AT_BEGINNING)
+       {
+          unshift @{$Texi2HTML::THIS_SECTION}, "<h$level class=\"$class\"$align>$text</h$level>\n"; 
+          return '';
+       }
+       return '' if ($TOP_HEADING_AT_BEGINNING);
+       if (!$one_section)
+       {
+          $class = 'settitle';
+          return "<h$level class=\"$class\"$align>$text</h$level>\n";
+       }
+    }
     # when it is a heading, the element may be wrong, so the command and the
     # line are used...
     if (defined($command) and $command =~ /heading/)
@@ -4890,11 +5081,9 @@ sub t2h_default_heading($;$$$$)
     }
     $level = 1 if ($level == 0);
     return '' if ($text !~ /\S/);
-    my $align = '';
-    $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
     if (!$in_preformatted)
     {
-       return "<h$level class=\"$class\"$align> $text </h$level>\n";
+       return "<h$level class=\"$class\"$align>$text</h$level>\n";
     }
     else
     {
@@ -4927,7 +5116,7 @@ sub t2h_default_raw($$)
     }
     else
     {
-        warn "$WARN (bug) unknown style $style\n";
+        main::echo_warn ("Raw style $style not handled");
         return &$protect_text($text);
     }
 }
@@ -5054,6 +5243,8 @@ sub t2h_default_image($$$$$$$$$$$)
         main::echo_warn ("no image file for $base, (using $file)");
     } 
     $alt = &$protect_text($base) if (!defined($alt) or ($alt eq ''));
+    # dirty hack to avoid " that can be here because of a @verb 
+    $alt =~ s/"/&quot;/g;
     return "[ $alt ]" if ($preformatted);
     # it is possible that $file_name is more correct as it allows the user
     # to chose the relative path.
@@ -5090,27 +5281,53 @@ sub t2h_default_address($$)
 # target identifier
 # boolean true if in preformatted format
 # FIXME document the remaining 
-sub t2h_default_index_entry_label($$)
+sub t2h_default_index_entry_label($$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
-    
+    my $entry = shift;
+    my $index_name = shift;
+    my $index_command = shift;
+    my $texi_entry = shift;
+    my $formatted_entry = shift;
+
     return '' if (!defined($identifier) or ($identifier !~ /\S/));
     my $label = &$anchor($identifier);
     return $label . "\n" if (!$preformatted);
     return $label;
 }
 
-# process definition commands line @deffn for example
-sub t2h_default_def_line($$$$$)
+sub t2h_default_index_entry_command($$$$$)
 {
-   my $category = shift;
+   my $command = shift;
+   my $index_name = shift;
+   my $label = shift;
+   my $entry_texi = shift;
+   my $entry_formatted = shift;
+
+   return $label;
+}
+
+# process definition commands line @deffn for example
+sub t2h_default_def_line($$$$$$$$$$$$$$$$)
+{
+   my $category_prepared = shift;
    my $name = shift;
    my $type = shift;
    my $arguments = shift;
    my $index_label = shift;
+   my $arguments_array = shift;
+   my $arguments_type_array = shift;
+   my $unformatted_arguments_array = shift;
+   my $command = shift;
+   my $class_name = shift;
+   my $category = shift;
+   my $class = shift;
+   my $style = shift;
+   my $original_command = shift;
+
    $index_label = '' if (!defined($index_label));
-   $category = '' if (!defined($category) or ($category =~ /^\s*$/));
+   $category_prepared = '' if (!defined($category_prepared) or ($category_prepared =~ /^\s*$/));
    $name = '' if (!defined($name) or ($name =~ /^\s*$/));
    $type = '' if (!defined($type) or $type =~ /^\s*$/);
    if (!defined($arguments) or $arguments =~ /^\s*$/)
@@ -5128,13 +5345,13 @@ sub t2h_default_def_line($$$$$)
    $type_name .= $arguments . "\n";
    if (! $DEF_TABLE)
    {
-       return '<dt>'. '<u>' . $category . ':</u>' . $type_name . $index_label . "</dt>\n";
+       return '<dt>'. '<u>' . $category_prepared . ':</u>' . $type_name . $index_label . "</dt>\n";
    }
    else
    {
        
        return "<tr>\n<td align=\"left\">" . $type_name . 
-       "</td>\n<td align=\"right\">" . $category . $index_label . "</td>\n" . "</tr>\n";
+       "</td>\n<td align=\"right\">" . $category_prepared . $index_label . "</td>\n" . "</tr>\n";
    }
 }
 
@@ -5265,13 +5482,6 @@ sub t2h_default_quotation($$$)
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
-#    my $argument_style_texi = shift;
-#    my $argument_style_id = shift;
-#    if (defined($argument_text))
-#    {
-#         return '<blockquote>' . &$I('%{style}:%{quotation}',
-#          {'style' => $argument_text, 'quotation' => $text}) . '</blockquote>' ;
-#    }
     return '<blockquote>' . $text . "</blockquote>\n";
 }
 
@@ -5296,6 +5506,7 @@ sub t2h_default_print_index($$)
 {
     my $text = shift;
     my $name = shift;
+    return '' if (!defined($text));
     return "<table border=\"0\" class=\"index-$name\">\n" .
     "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .

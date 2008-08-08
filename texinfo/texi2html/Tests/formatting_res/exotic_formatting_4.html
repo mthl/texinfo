@@ -138,7 +138,7 @@ Invalid use of @':
 @i{-a} -a
 @kbd{-a} -a
 @key{-a} -a
-@math{-a} -a
+@math{-a} -a- {frac{1}{2}}
 @option{-a} -a
 @r{-a} -a
 @samp{-a} -a
@@ -151,6 +151,10 @@ Invalid use of @':
 @uref{-a,-b} -a,-b
 @uref{-a} -a
 @uref{,-b} ,-b
+@uref{-a,-b,-c} -a,-b,-c
+@uref{,-b,-c} ,-b,-c
+@uref{-a,,-c} -a,,-c
+@uref{,,-c} ,,-c
 @url{-a,-b} -a,-b
 @url{-a,} -a,
 @url{,-b} ,-b
@@ -180,14 +184,18 @@ Invalid use of @':
 @footnote{in footnote} 
 @footnote{in footnote2} 
 
-@image{f-ile,,e-xt} f-ile
-@image{f-ile,,,,e-xt} f-ile
+@image{f-ile} f-ile
+@image{f-ile,l-i} f-ile
+@image{f-ile,,l-e} f-ile
 @image{f-ile,,,alt} f-ile
+@image{f-ile,,,,e-d-xt} f-ile
 @image{f-ile,aze,az,alt,e-xt} f-ile
 @image{f-ile,aze,,a-lt} f-ile
-@image{f-ile} f-ile
-@image{,,e-xt} 
-@image{,,,e-xt} 
+@image{f-ile,,,alt@verb{:jk _" %}} f-ile
+@image{,1-xt} 
+@image{,,2-xt} 
+@image{,,,3-xt} 
+@image{f-ile,aze,az,@verb{:jk _" %@:} @b{in b "},e-xt} f-ile
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} file@verb{:jk _" %@:}
 @image{@file{f-ile}@@@.,aze,az,alt,@file{file ext} e-xt@} @file{f-ile}@@@.
 
@@ -226,6 +234,8 @@ a q-uotation
 
  mu-ltitable headitem  another tab
  mu-ltitable item  multitable tab
+ mu-ltitable item 2  multitable tab 2
+ lone mu-ltitable item
 
 
 
@@ -265,8 +275,7 @@ s-mallformat
 d-effn
 
 
- de-ffn_name ar-guments     cate-gory
-   more args  even more so
+ de-ffn_name ar-guments    more args  even more so    cate-gory
 def-fn
 
  
@@ -296,6 +305,7 @@ def-fn
 Various deff lines
  after a deff item    truc
 text in def item for second def item
+ a b c d e f g h i    truc
  deffnx before end deffn    truc
 
 
@@ -346,7 +356,7 @@ d-efmac
 d-efspec
 
 
- d-efvar_name    Variable
+ d-efvar_name argvar argvar1    Variable
 d-efvar
 
 
@@ -439,6 +449,8 @@ d-eftypemethod
 @inforef{,cross ref name } 
 @inforef{,,file name} 
 @inforef{,cross ref name, file name} 
+@inforef{} 
+@inforef{chapter, cross ref name, file name, spurious arg} 
 
 @ref{s-ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
@@ -538,7 +550,7 @@ ul.toc {list-style: none}
 </tr></table>
 <a name="chapter2"></a>
 <a name="SEC5"></a>
-<h1 class="centerchap" align="center"> <a href="exotic_formatting_toc.html#TOC5">chapter 2</a> </h1>
+<h1 class="centerchap" align="center"><a href="exotic_formatting_toc.html#TOC5">chapter 2</a></h1>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>
  &nbsp; 
@@ -561,26 +573,26 @@ ul.toc {list-style: none}
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top">&ldquo;</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top">&ldquo;</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX2">&ldquo;</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX56">&ldquo;</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX57">&ldquo;</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top">&ndash;option</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top">&ndash;option</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX1">&ndash;option</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX55">&ndash;option</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX56">&ndash;option</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX111">.</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX113">.</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX112">?</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX114">?</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_4">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX113">a</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX115">a</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_5">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX109">t&ndash;ruc</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX110">T&ndash;ruc</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX111">t&ndash;ruc</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX112">T&ndash;ruc</a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>
@@ -616,11 +628,11 @@ ul.toc {list-style: none}
  &nbsp; 
 <a href="#SEC5_8" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC5_9" class="summary-letter"><b>L</b></a>
+<a href="exotic_formatting_5.html#INDEX1_0" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="exotic_formatting_5.html#INDEX1_0" class="summary-letter"><b>M</b></a>
+<a href="exotic_formatting_5.html#INDEX1_1" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="exotic_formatting_5.html#INDEX1_1" class="summary-letter"><b>T</b></a>
+<a href="exotic_formatting_5.html#INDEX1_2" class="summary-letter"><b>T</b></a>
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-fn">
@@ -630,132 +642,122 @@ ul.toc {list-style: none}
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>``</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>``</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX3"><code>``</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX57"><code>``</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX58"><code>``</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_1">-</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>--foption</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>--foption</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX4"><code>--foption</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX58"><code>--foption</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX59"><code>--foption</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_2">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX116"><code>.</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX118"><code>.</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_3">?</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX117"><code>?</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX119"><code>?</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_4">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX54"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX108"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX118"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX31"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX55"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX86"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX110"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX120"><code>a</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>after</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>after</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX30"><code>after</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX84"><code>after</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX85"><code>after</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_5">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>bidule machin</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>bidule machin</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX20"><code>bidule machin</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX74"><code>bidule machin</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX75"><code>bidule machin</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_6">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--effn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX5"><code>d--effn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX59"><code>d--effn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX60"><code>d--effn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX43"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX97"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX44"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX99"><code>d--efmac_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX51"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX105"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX52"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX107"><code>d--efmethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX40"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX94"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX41"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX96"><code>d--efop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX44"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX98"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX45"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX100"><code>d--efspec_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX36"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX90"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX37"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX92"><code>d--eftypefn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX47"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX101"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX48"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX103"><code>d--eftypefun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX52"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX106"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX53"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX108"><code>d--eftypemethod_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX37"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX91"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX38"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX93"><code>d--eftypeop_name on c--lass</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX42"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX96"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX43"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX98"><code>d--efun_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>de--ffn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX6"><code>de--ffn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX60"><code>de--ffn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX61"><code>de--ffn_name</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX32"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX33"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX86"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX87"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX34"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX88"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX89"><code>deffn</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX31"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX34"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX85"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX88"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX32"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX35"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX87"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX90"><code>deffnx</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_7">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>followed</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>followed</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX25"><code>followed</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX79"><code>followed</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX80"><code>followed</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC5_8">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><var>i</var></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><var>i</var></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX7"><code><var>i</var></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX61"><code><var>i</var></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX62"><code><var>i</var></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX13"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX67"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX68"><code><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code><b>id ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX12"><code><b>id ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX66"><code><b>id ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC5_9">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX9"><code>log trap</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX63"><code>log trap</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap1</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap1</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX10"><code>log trap1</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX64"><code>log trap1</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap2</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#Top"><code>log trap2</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX11"><code>log trap2</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
-<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX65"><code>log trap2</code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
+<tr><td></td><td valign="top"><a href="exotic_formatting.html#IDX67"><code><b>id ule</b></code></a></td><td valign="top"><a href="exotic_formatting.html#Top">Top section</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC5_0" class="summary-letter"><b>&quot;</b></a>
@@ -777,11 +779,11 @@ ul.toc {list-style: none}
  &nbsp; 
 <a href="#SEC5_8" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC5_9" class="summary-letter"><b>L</b></a>
+<a href="exotic_formatting_5.html#INDEX1_0" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="exotic_formatting_5.html#INDEX1_0" class="summary-letter"><b>M</b></a>
+<a href="exotic_formatting_5.html#INDEX1_1" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="exotic_formatting_5.html#INDEX1_1" class="summary-letter"><b>T</b></a>
+<a href="exotic_formatting_5.html#INDEX1_2" class="summary-letter"><b>T</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">

@@ -43,9 +43,10 @@ sub T2H_NOHEAD_print_section
     my $nw = main::print_lines($fh);
 }
 
-sub T2H_NOHEAD_one_section($)
+sub T2H_NOHEAD_one_section($$)
 {
     my $fh = shift;
+    my $element = shift;
     main::print_lines($fh);
     print $fh "$SMALL_RULE\n";
     &$print_page_foot($fh);

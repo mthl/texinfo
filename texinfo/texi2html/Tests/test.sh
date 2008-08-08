@@ -267,6 +267,7 @@ test_texi formatting menus.texi
 test_texi formatting menus.texi "-init simple_menu.init -prefix menus_simple" 0 texi menus_simple
 test_texi formatting detailmenus.texi
 test_texi formatting detailmenus.texi "-init simple_menu.init -prefix detailmenus_simple" 0 texi detailmenus_simple
+test_texi formatting nodename_parentheses.texi
 test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting commands_in_ifset.texi
 test_texi formatting ../GermanNodeTest/nodetest.texi "-split chapter -output ."
@@ -282,6 +283,7 @@ test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
 test_texi formatting def_cmds.texi
 test_texi formatting def_cmd_dble.texi
+test_texi formatting def_end_of_line.texi
 test_texi formatting imbrications.texi "" 2
 test_texi formatting complex_command_in_simple_command.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
@@ -376,6 +378,7 @@ test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
 test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo #ignore_tags
 #test_texi texinfo-4.12 texinfo.txi "-split chapter -output ." 0 txi texinfo
 test_texi nodes_texinfo ../texinfo/texinfo.txi "-split node -node-files -ifinfo -output . -I ../texinfo" 0 txi texinfo   #ignore_tags
+#test_texi texinfo_4_12_93 texinfo.txi "" 0 txi texinfo
 test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
 test_texi tar ../tar_texi/tar.texi 
 test_texi ccvs_mediawiki ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init -split chapter -output ." 0 texinfo

@@ -148,3 +148,22 @@ function clean_antispam() {
 
 * a FIXME in Tests/formatting/detailmenus.texi with a warning missing 
   for a menu entry for a spurious entry with no corresponding node entry.
+
+* the code of xml.c in makeinfo shows specific treatement of & in 
+  definition arguments. I don't know what it corresponds with. All
+  the definition argument parsing stuff is certainly worth asking
+  on the texinfo list.
+
+* makeinfo can proceed more than one file on the command line. The options
+  that are for one file (like -o ) apply to the first file only.
+
+* something like
+@math{@minus{} {\frac{1}{2}}} 
+  leads to errors in makeinfo about misplaced { } because it seems that
+  @minus turns on texinfo mode or the like, while
+@math{{\frac{1}{2}} @minus{}}
+  is error free.
+
+* formatting/nodename_parentheses.texi gives wrong output.
+
+* Formatting of ?@: and similar constructs should be possible.

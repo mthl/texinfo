@@ -281,8 +281,7 @@ formatting_regions.texi(mymacro,527) @deffn c--ategory d--effn_name a--rguments.
 formatting_regions.texi(mymacro,527) d--effn
 formatting_regions.texi(mymacro,527) @end deffn
 formatting_regions.texi(mymacro,527) 
-formatting_regions.texi(mymacro,527) @deffn cate--gory de--ffn_name ar--guments @
-formatting_regions.texi(mymacro,527)    more args @* even more so
+formatting_regions.texi(mymacro,527) @deffn cate--gory de--ffn_name ar--guments    more args @* even more so
 formatting_regions.texi(mymacro,527) def--fn
 formatting_regions.texi(mymacro,527) @end deffn
 formatting_regions.texi(mymacro,527)  
@@ -768,8 +767,7 @@ formatting_regions.texi(mymacro,530) @deffn c--ategory d--effn_name a--rguments.
 formatting_regions.texi(mymacro,530) d--effn
 formatting_regions.texi(mymacro,530) @end deffn
 formatting_regions.texi(mymacro,530) 
-formatting_regions.texi(mymacro,530) @deffn cate--gory de--ffn_name ar--guments @
-formatting_regions.texi(mymacro,530)    more args @* even more so
+formatting_regions.texi(mymacro,530) @deffn cate--gory de--ffn_name ar--guments    more args @* even more so
 formatting_regions.texi(mymacro,530) def--fn
 formatting_regions.texi(mymacro,530) @end deffn
 formatting_regions.texi(mymacro,530)  

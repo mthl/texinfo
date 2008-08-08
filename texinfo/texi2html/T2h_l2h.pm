@@ -444,7 +444,7 @@ sub do_tex($$$$)
         warn "$ERROR l2h(BUG): can't extract content $count from html\n";
         # try simple (ordinary) substitution (without l2h)
         $result .= "<!-- l2h: ". __LINE__ . " use texi2html -->" if ($debug);
-        $result .= main::substitute_text({}, $l2h_to_latex[$count]);
+        $result .= main::substitute_text({}, undef, $l2h_to_latex[$count]);
     }
     $result .= "<!-- l2h_end $l2h_name $count -->" if ($debug);
     return $result;

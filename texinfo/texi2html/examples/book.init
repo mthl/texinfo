@@ -185,6 +185,8 @@ sub book_heading($)
 {
     my $element = shift;
     my $level = 3;
+
+    return '' if ($element->{'top'});
     if (!$element->{'node'})
     {
         $level = $element->{'level'};

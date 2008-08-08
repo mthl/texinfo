@@ -1,3 +1,56 @@
+2008-08-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: move initialisations before the functions that
+	use the global values.
+	Treat setfilename like a normal misc command, not like titlepage
+	commands.
+	Set rightly (dir) as up node for Top, even if there are no automatic
+	directions.
+	region lines are kept if may be reparsed in the last pass if in
+	%region_formats_kept.
+	Give also the prototypes lengths for multitables.
+	@-commands in stop_paragraph_command close paragraphs.
+	external nodes begin with ( (report from Rainhold).
+	* texi2html.pl, texi2html.init: With USE_SETFILENAME, the filename 
+	is taken from @setfilename, if found, like makeinfo.
+	With IGNORE_BEFORE_SETFILENAME, everything before @setfilename is 
+	ignored (now the default).
+	With TOP_HEADING_AT_BEGINNING false, the top heading appears where
+	top heading command is, not always at the beginning of the top
+	element.
+	Put %texi_formats_map (former %text_macros) and 
+	%no_line_commands (former %no_line_macros) in Texi2HTML::Config.
+	New function reference, definition_index_entry to format definition
+	index entries separately from definition categories.
+	A new funtion reference begin_format_texi to be able to do something
+	at a format opening. Used to set a stack for multitable to make 
+	sure that the cell is the top multitable cell. With this change, the
+	begin_format_texi, row, table_list function reference are
+	interdependent.
+	Pass inforef macros to the formatting references, and also the *ref
+	command parameters unmodified.
+	New caption_shortcaption_command function reference that can be used
+	when a caption is closed.
+	New index_entry_command function reference used for @*index lines.
+	Pass more information to def_line, cell, list_item and many others.
+	add insertcopying for insertcopying formatting.
+	* examples/xml.init: init file to produce xml like makeinfo --xml.
+
+2008-08-04  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: parse definition lines like makeinfo
+	does.
+
+2008-08-01  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: pass line_nr down more functions.
+
+2008-07-31  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use simple_format for image alt text.
+	Allow no_line_macro to be set by the user, and use cindex for
+	all the index commands.
+
 2008-07-30  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: add 3 function references to avoid

@@ -281,7 +281,7 @@ EOT
 sub chm_text($)
 {
     my $text = shift;
-    return main::simple_format(undef,$text);
+    return main::simple_format(undef,undef,$text);
 
 # the following doesn't work as html 1.x doesn't accept utf8
     $::simple_map_texi_ref = \%chm_simple_map_texi;
