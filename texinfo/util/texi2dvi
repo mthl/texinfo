@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.132 2008-07-27 23:14:03 karl Exp $
+# $Id: texi2dvi,v 1.133 2008-08-11 00:18:29 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.132 $'
+rcs_revision='$Revision: 1.133 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -579,8 +579,14 @@ absolute_filenames ()
 	res=$res$path_sep
 	;;
       *)
-	if test -d $dir; then
+	if test -d "$dir"; then
 	  res=$res$path_sep`absolute "$dir"`
+	else
+	  # Even if $dir is not a directory, preserve it in the path.
+	  # It might contain metacharacters that TeX will expand in
+	  # turn, e.g., /some/path/{a,b,c}.  This will not get the
+	  # implicit absolutification of the path, but we can't help that.
+	  res=$res$path_sep$dir
 	fi
 	;;
     esac

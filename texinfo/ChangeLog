@@ -1,3 +1,10 @@
+2008-08-10  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (absolute_filenames): preserve even non-directories
+	in the returned path, in case they contain metacharacters
+	meaningful to TeX, such as braces.
+	Bug report from Werner Lemberg, 10 Aug 2008 08:26:58.
+
 2008-07-27  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (xref_files_save): null out TAR_OPTIONS.
