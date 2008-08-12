@@ -1,0 +1,1310 @@
+$EXTENSION = "xml";
+$DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+    <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>';
+$USE_MENU_DIRECTIONS = 0;
+$USE_UP_FOR_ADJACENT_NODES = 0;
+$USE_NUMERIC_ENTITY = 0;
+$USE_SETFILENAME = 1;
+@EXPAND = ('docbook');
+@IMAGE_EXTENSIONS = ('jpg', 'txt');
+$USE_ISO = 1;
+$SHOW_MENU = 0;
+
+$misc_command{'c'}->{'keep'} = 1;
+$misc_command{'comment'}->{'keep'} = 1;
+$misc_command{'settitle'}->{'keep'} = 1;
+
+delete $style_map{'sc'}->{'attribute'};
+$style_map{'code'}->{'attribute'} = 'literal';
+$style_map{'strong'}->{'attribute'} = 'emphasis role="bold"';
+$style_map{'kbd'}->{'attribute'} = 'userinput';
+$style_map{'w'}->{'end'} = '<!-- /@w -->';
+$style_map{'='}->{'function'} = \&docbook_macron;
+$style_map{'b'}->{'attribute'} = 'emphasis role="bold"';
+$style_map{'cite'}->{'attribute'} = 'citetitle';
+$style_map{'command'}->{'attribute'} = 'command';
+$style_map{'dfn'}->{'attribute'} = 'firstterm';
+$style_map{'emph'}->{'attribute'} = 'emphasis';
+$style_map{'env'}->{'attribute'} = 'envar';
+$style_map{'file'}->{'attribute'} = 'filename';
+$style_map{'i'}->{'attribute'} = 'wordasword';
+$style_map{'key'}->{'attribute'} = 'keycap';
+$style_map{'option'}->{'attribute'} = 'option';
+$style_map{'t'}->{'attribute'} = 'literal';
+delete $style_map{'sansserif'}->{'attribute'};
+delete $style_map{'r'}->{'attribute'};
+$style_map{'indicateurl'}->{'attribute'} = 'wordasword';
+delete $style_map{'indicateurl'}->{'begin'};
+delete $style_map{'indicateurl'}->{'end'};
+$style_map{'var'}->{'attribute'} = 'replaceable';
+delete $style_map{'verb'}->{'attribute'};
+$style_map{'email'}->{'function'} = \&docbook_email;
+$style_map{'math'}->{'function'} = \&docbook_math;
+$style_map{'uref'}->{'function'} = \&docbook_uref;
+$style_map{'url'}->{'function'} = \&docbook_uref;
+$style_map{'titlefont'}->{'function'} = \&docbook_titlefont;
+$style_map{'samp'}->{'function'} = \&docbook_samp;
+delete $style_map{'samp'}->{'attribute'};
+#$style_map{'samp'}->{'attribute'} = 'literal';
+#$style_map{'samp'}->{'begin'} = '&lsquo;';
+#$style_map{'samp'}->{'end'} = '&rsquo;';
+
+my $kept_footnote_function = $style_map{'footnote'}->{'function'};
+$style_map{'footnote'}->{'function'} = \&docbook_footnote;
+
+%style_map_pre = %style_map;
+
+$style_map{'b'}->{'attribute'} = 'lineannotation';
+$style_map{'i'}->{'attribute'} = 'lineannotation';
+$style_map{'r'}->{'attribute'} = 'lineannotation';
+
+$colon_command_punctuation_characters{'.'} = '&period;';
+$colon_command_punctuation_characters{':'} = '&colon;';
+$colon_command_punctuation_characters{'?'} = '&quest;';
+$colon_command_punctuation_characters{'!'} = '&excl;';
+
+delete $stop_paragraph_command{'titlefont'};
+
+# FIXME
+delete $special_accents{'ringaccent'};
+
+foreach my $style (keys(%style_map))
+{
+   delete ($style_map{$style}->{'quote'});
+}
+
+my $docbook_in_footnote = 0;
+sub docbook_footnote($$$$$)
+{
+    $docbook_in_footnote = 1;
+    my $result = &$kept_footnote_function(@_);
+    $docbook_in_footnote = 0;
+    return $result;
+}
+
+sub docbook_macron($$)
+{
+    my $accent = shift;
+    my $args = shift;
+    return $args->[0] . "&macr;";
+}
+
+sub docbook_samp($$)
+{
+    shift;
+    my $args = shift;
+    return "&lsquo;<literal>$args->[0]</literal>&rsquo;";
+}
+
+sub docbook_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    if (defined($text) and $text =~ /\S/)
+    {
+        return docbook_add_id('ulink').' url="mailto:'.main::normalise_space($mail).'">'.$text.'</ulink>';
+    }
+    return docbook_add_id('email').">$mail</email>";
+}
+
+sub docbook_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    $url = main::normalise_space($url);
+    $text = '' if (!defined($text));
+    $replacement = '' if (!defined($replacement));
+    $replacement = $text if ($replacement eq '');
+    $replacement = $url if ($replacement eq '');
+    $replacement = main::normalise_space($replacement);
+    
+    return docbook_add_id('ulink')." url=\"$url\">$replacement</ulink>";
+}
+
+# FIXME
+sub docbook_titlefont($$)
+{
+    shift;
+    my $args = shift;
+    return "$args->[0]";
+}
+
+sub docbook_math($$)
+{
+    shift;
+    my $args = shift;
+    my $text = shift @$args;
+    $text =~ s/[{}]//g;
+    return $text;
+}
+
+$simple_map{' '} = ' ';
+# or '' ?
+$simple_map{'*'} = "\n";
+$simple_map{"\t"} = ' ';
+$simple_map{"\n"} = ' ';
+
+%simple_map_pre = %simple_map;
+
+# FIXME right?
+$things_map{'l'} = '/l';
+$things_map{'L'} = '/L';
+$things_map{'TeX'} = '&tex;';
+$things_map{'LaTeX'} = '&latex;';
+$things_map{'enddots'} = '&hellip;.';
+$things_map{'minus'} = '&minus;';
+# FIXME &lowast;
+$iso_symbols{'point'} = '-!-';
+# FIXME &equiv;
+$iso_symbols{'equiv'} = '==';
+delete $iso_symbols{"'"};
+delete $iso_symbols{'`'};
+$things_map{'quotedblbase'} = '&ldquor;';
+$things_map{'quotesinglbase'} = '&lsquor;';
+
+%pre_map = %things_map;
+
+$no_pagraph_commands{'cindex'} = 0;
+$no_pagraph_commands{'float'} = 0;
+
+%docbook_complex_format = (
+   'example' => 'screen',
+   'smallexample' => 'screen',
+   'display' => 'literallayout',
+   'smalldisplay' => 'literallayout',
+   'lisp' => 'programlisting',
+   'smalllisp' => 'programlisting',
+   'format' => 'abstract',
+   'smallformat' => 'screen'
+);
+
+$region_formats_kept{'copying'} = 1;
+
+$format_map{'copying'} = 'copying';
+
+delete $format_map{'enumerate'};
+foreach my $table ('table', 'ftable', 'vtable')
+{
+   #$format_map{$table} = 'table';
+   delete $format_map{$table};
+}
+
+delete $iso_symbols{'`'};
+$print_Top = \&docbook_print_Top;
+$print_Top_footer = \&docbook_print_Top_footer;
+$print_page_head = \&docbook_print_page_head;
+$print_navigation = \&docbook_noop;
+$toc_body = \&docbook_noop;
+$about_body = \&docbook_noop;
+$print_page_foot = \&docbook_print_page_foot;
+$end_section = \&docbook_end_section;
+$one_section = \&docbook_one_section;
+
+$heading = \&docbook_heading;
+#$heading_texi = \&docbook_heading_texi;
+$paragraph = \&docbook_paragraph;
+$preformatted = \&docbook_preformatted;
+$misc_element_label = \&docbook_noop;
+$element_label = \&docbook_element_label;
+$anchor_label = \&docbook_anchor_label;
+$index_entry_label = \&docbook_index_entry_label;
+$index_entry_command = \&docbook_index_entry_command;
+$listoffloats = \&docbook_noop;
+$acronym_like = \&docbook_acronym_like;
+$foot_line_and_ref = \&docbook_foot_line_and_ref;
+$image = \&docbook_image;
+$image_files = \&docbook_image_files;
+$sp = \&docbook_sp;
+$table_list = \&docbook_table_list;
+$row = \&docbook_row;
+$cell = \&docbook_cell;
+$list_item = \&docbook_list_item;
+$format_list_item_texi = \&docbook_format_list_item_texi;
+$unknown = \&docbook_misc_commands;
+$begin_format_texi = \&docbook_begin_format_texi;
+$def_line = \&docbook_def_line;
+$def = \&docbook_def;
+$def_item = \&docbook_def_item;
+$print_index = \&docbook_print_index;
+$index_summary = \&docbook_index_summary;
+$external_ref = \&docbook_external_ref;
+$internal_ref = \&docbook_internal_ref;
+$table_item = \&docbook_table_item;
+$table_line = \&docbook_table_line;
+$float = \&docbook_float;
+#$caption_shortcaption = \&docbook_caption_shortcaption;
+#$caption_shortcaption_command = \&docbook_caption_shortcaption_command;
+#$normal_text = \&docbook_normal_text;
+#$paragraph_style_command = \&docbook_paragraph_style_command;
+$raw = \&docbook_raw;
+$cartouche = \&docbook_cartouche;
+
+$complex_format = \&docbook_complex_format;
+$format = \&docbook_format;
+$quotation = \&docbook_quotation;
+$quotation_prepend_text = \&docbook_quotation_prepend_text;
+$style = \&docbook_style;
+$insertcopying = \&docbook_insertcopying;
+
+sub docbook_print_page_head($)
+{
+    my $fh = shift;
+    print $fh <<EOT;
+<?xml version="1.0"?>
+$DOCTYPE
+<book id="$Texi2HTML::THISDOC{file_base_name}.$EXTENSION" lang="$Texi2HTML::THISDOC{'current_lang'}">
+EOT
+}
+
+sub docbook_print_page_foot($)
+{
+    my $fh = shift;
+    print $fh <<EOT;
+</book><!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-indent-step:1
+sgml-indent-data:nil
+End:
+-->
+EOT
+}
+
+my %docbook_sections = (
+  'top'  => 'chapter',
+  'chapter'  => 'chapter',
+  'unnumbered'  => 'chapter',
+  'centerchap'  => 'chapter',
+  'appendix' => 'appendix',
+  'majorheading' => 'other',
+  'chapheading' => 'other',
+  'heading' => 'sect1',
+  'subheading' => 'sect2',
+  'subsubheading' => 'sect3',
+  2 => 'sect1',
+  3 => 'sect2',
+  4 => 'sect3'
+);
+
+sub docbook_print_Top($$$)
+{
+    my $fh = shift;
+    my $has_top_heading = shift;
+    my $element = shift;
+    #print $fh "".docbook_heading($element);
+    main::print_lines($fh, $Texi2HTML::THIS_SECTION);
+}
+
+sub docbook_element_tag($)
+{
+   my $element = shift;
+#print STDERR "$element->{'texi'}, $element->{'tag_level'}, $element->{'level'}\n";
+   return $docbook_sections{$element->{'tag_level'}} if (exists($docbook_sections{$element->{'tag_level'}}));
+   return $docbook_sections{$element->{'level'}} if (exists($docbook_sections{$element->{'level'}}));
+}
+
+sub docbook_node_id($)
+{
+   my $node_texi = shift;
+   my $node = main::remove_texi($node_texi);
+   $node =~ s/[\s\"]/-/g;
+   return &$protect_text($node);
+}
+
+my $docbook_pending_node_id = undef;
+
+sub docbook_add_id($)
+{
+    my $element = shift;
+    my $result = "<$element";
+    if (defined($docbook_pending_node_id) and (!$docbook_in_footnote or $element eq 'footnote'))
+    {
+        $result .= " id=\"$docbook_pending_node_id\"";
+        $docbook_pending_node_id = undef;
+    }
+    return $result;
+}
+
+sub docbook_heading($;$$$$)
+{
+    my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+
+    if (defined($command) and $command =~ /heading/)
+    {
+        if (defined($line))
+        {
+            $text = $line;
+            # this isn't done in main program in that case...
+            chomp ($text);
+            $text =~ s/^\s*//;
+        }
+        return docbook_add_id('bridgehead')." renderas=\"$docbook_sections{$command}\">$text</bridgehead>\n";
+    }
+
+    my $node_element = $element;
+#    if ($element->{'node'})
+#    {
+#        $node_element = $element;
+#    }
+#    elsif (defined($element->{'node_ref'}))
+    if (defined($element->{'node_ref'}))
+    {
+        $node_element = $element->{'node_ref'};
+    }
+
+    my $result = '';
+
+# FIXME verify xreflabel 
+    if (!$element->{'node'})
+    {
+        my $id = $node_element->{'text_nonumber'};
+        $id =~ s/ /-/g;
+        my $title = $element->{'text_nonumber'};
+        my $label = '';
+        my $xreflabel = '';
+        if ($element->{'number'})
+        {
+            my $label_nr = $element->{'number'};
+            $label_nr =~ s/\.$//;
+            $label = $label_nr;
+        }
+        else
+        {
+            my $xreftitle = $title;
+            $xreflabel = " xreflabel=\"$xreftitle\"";
+        }
+        $result .= '<' . docbook_element_tag($element) . " label=\"${label}\"${xreflabel} id=\"$id\">\n<title>$title</title>\n";
+    }
+    return $result;
+}
+
+sub docbook_element_label($$$$)
+{
+    my $id = shift;
+    my $element = shift;
+    my $command = shift;
+    my $line = shift;
+
+    if ($element->{'node'} and !$element->{'with_section'})
+    {
+        $docbook_pending_node_id = docbook_node_id($element->{'texi'});
+    }
+    elsif ($command !~ /heading/)
+    {
+        $docbook_pending_node_id = undef;
+    }
+    return '';
+}
+
+sub docbook_paragraph($$$$$$$$$$$$)
+{
+    my $text = shift;
+    my $align = shift;
+    my $indent = shift;
+    my $paragraph_command = shift;
+    my $paragraph_command_formatted = shift;
+    my $paragraph_number = shift;
+    my $format = shift;
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+    my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
+
+    foreach my $style(t2h_collect_styles($command_stack_at_begin))
+    {
+       $text = t2h_begin_style($style, $text);
+    }
+    foreach my $style(t2h_collect_styles($command_stack_at_end))
+    {
+       $text = t2h_end_style($style, $text);
+    }
+
+    # no para in multitables, caption and shortcaptions.
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    return $text if ($top_stack eq 'multitable' or $top_stack eq 'shortcaption' or $top_stack eq 'caption' or $top_stack eq 'documentdescription');
+
+    if ($text =~ /\S/)
+    {
+       #return docbook_add_id('para').">$text</para>";
+       return "<para>$text</para>";
+    }
+    return $text;
+}
+
+my %def_format_docbook = (
+  'deffn' => [ ['function', 'name'] ],
+   'defvr' => [ ['varname', 'name'] ],
+   'deftypefn' => [ [ 'returnvalue', 'type' ], ['function', 'name'] ], 
+   'deftypeop' => [ ['returnvalue', 'type'], ['methodname', 'name'] ], 
+   'deftypevr' => [ ['returnvalue', 'type'], ['varname', 'name'] ], 
+   'defcv' => [ ['classname', 'class'], ['property', 'name'] ], 
+   'deftypecv' => [ ['returnvalue', 'type'], ['property', 'name'] ], 
+   'defop' => [ ['classname', 'class'], ['methodname', 'name'] ], 
+   'deftp' => [ ['structname', 'name'] ] 
+);
+
+my %def_argument_types_docbook = (
+  'param' => 'replaceable', 
+  'paramtype' => 'type', 
+  'delimiter' => ''
+);
+
+sub docbook_def_line($$$$$$$$$$$$$$$)
+{
+   my $category_prepared = shift;
+   my $name = shift;
+   my $type = shift;
+   my $arguments = shift;
+   my $index_label = shift;
+   my $arguments_array = shift;
+   my $arguments_type_array = shift;
+   my $unformatted_arguments_array = shift;
+   my $command = shift;
+   my $class_name = shift;
+   my $category = shift;
+   my $class = shift;
+   my $style = shift;
+   my $original_command = shift;
+
+   my %unformatted_arguments = ();
+
+   my @unformatted_args = @$unformatted_arguments_array;
+   foreach my $type (@$arguments_type_array)
+   {
+      my $unformatted_arg = shift @unformatted_args;
+      $unformatted_arguments{$type} = $unformatted_arg;
+   }
+   # FIXME unformatted!
+   my $result = "<synopsis role=\"$unformatted_arguments{'category'}\"><indexterm role=\""
+    .$main::index_prefix_to_name{$style}."\"><primary>$class_name</primary></indexterm>";
+
+   my %arguments = ( 'prepared_category' => $category_prepared,
+         'category' => $category,
+         'name' => $name,
+         'type' => $type,
+         'class' => $class
+    );
+   foreach my $type (keys(%arguments))
+   {
+      $arguments{$type} = '' if (!defined($arguments{$type}));
+   }
+
+   foreach my $mandatory_arg (@{$def_format_docbook{$command}})
+   {
+      my $elem = $mandatory_arg->[0];
+      #if ($elem eq 'returnvalue' and $unformatted_arguments{$mandatory_arg->[1]} =~ /^\s*\@code\{/)
+      if ($elem eq 'returnvalue' and $unformatted_arguments{$mandatory_arg->[1]} =~ /\@code\{/)
+      {
+      # FIXME unformatted
+          my $arg_without_at_command = $unformatted_arguments{$mandatory_arg->[1]};
+          #$arg_without_at_command =~ s/\s*\@code\{//;
+          #$arg_without_at_command =~ s/\}\s*$//;
+          while ($arg_without_at_command =~ /\@code\{([^\{\}]*)\}/)
+          {
+              $arg_without_at_command =~ s/\@code\{([^\{\}]*)\}/$1/;
+          }
+          $result .= "<$elem>$arg_without_at_command</$elem>";
+      }
+      else
+      {
+          $result .= "<$elem>$arguments{$mandatory_arg->[1]}</$elem>";
+      }
+   }
+
+   my @types = @$arguments_type_array;
+   @unformatted_args = @$unformatted_arguments_array;
+   foreach my $arg (@$arguments_array)
+   {
+      my $type = shift @types;
+      my $unformatted = shift @unformatted_args;
+      if (exists ($def_argument_types_docbook{$type}))
+      {
+         if ($def_argument_types_docbook{$type} and
+                ($type eq 'paramtype' or ($unformatted !~ /^\s*\@var\{/)))
+         {
+            $result .= "<$def_argument_types_docbook{$type}>$arg</$def_argument_types_docbook{$type}>";
+         }
+         else
+         {
+            $result .= $arg;
+         }
+      }
+   }
+
+   $result .= "</synopsis>\n";
+   return $result;
+}
+
+# FIXME 
+# @deffn 
+# @c comment
+# @end deffn
+# leads to the creation of a <definitionitem> with a comment within, 
+# while there should be no definitionitem 
+sub docbook_def_item($)
+{
+    my $text = shift;
+    if ($text =~ /\S/)
+    {
+       return '<blockquote>' . $text . '</blockquote>';
+    }
+    return '';
+}
+
+sub docbook_def($)
+{
+   my $text = shift;
+   return docbook_add_id('informalfigure').'>'.$text.'</informalfigure>';
+}
+
+sub docbook_preformatted($$$$$$$$$$$$)
+{
+    my $text = shift;
+    my $pre_style = shift;
+    my $class = shift;
+    my $leading_command = shift;
+    my $leading_command_formatted = shift;
+    my $preformatted_number = shift;
+    my $format = shift;
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+    my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
+
+    return $text;
+}
+
+sub docbook_misc_commands($$$$$)
+{
+    my $macro = shift;
+    my $line = shift;
+    my $pass = shift;
+    my $stack = shift;
+    my $state = shift;
+#print STDERR "$macro $pass $line";
+    return ($line, 0, undef, undef) unless ($pass == 2);
+    return ($line, 0, undef, undef) unless defined($misc_command{$macro});
+
+    my ($result_line, $text, $args) = &$preserve_misc_command ($line, $macro);
+#print STDERR "$macro $pass $line";
+#print STDERR "ARGS @$args\n" if defined ($args);
+    if ($macro eq 'c' or $macro eq 'comment' and scalar(@$args))
+    {
+       my $comment_line = $args->[0];
+       chomp ($comment_line);
+       # makeinfo remove all the leading spaces
+       $comment_line =~ s/^\s//;
+       $result_text = &$comment ($comment_line);
+    }
+    elsif ($macro eq 'settitle')
+    {
+     # FIXME to be formatted?
+       my $arg = $args->[0];
+       $arg =~ s/^\s*//;
+       chomp($arg);
+       $result_text = "<title>$arg</title>\n";
+    }
+    else
+    {
+       return ($line, 0, undef, undef);
+    }
+    return ($result_line, 1, $result_text, undef);
+}
+
+sub docbook_foot_line_and_ref($$$$$$$)
+{
+    my $number_in_doc = shift;
+    my $number_in_page = shift;
+    my $footnote_id = shift;
+    my $place_id = shift;
+    my $document_file = shift;
+    my $footnote_file = shift;
+    my $lines = shift;
+    my $state = shift;
+
+    my $result = docbook_add_id('footnote').'>';
+    foreach my $line (@$lines)
+    {
+       $result .= $line;
+    }
+    return ([], $result . '</footnote>');
+}
+
+sub docbook_any_ref($$$)
+{
+    my $type = shift;
+    my $args = shift;
+    my $unformatted_args = shift;
+
+    if ($type eq 'inforef')
+    {
+        my $node_file = "($args->[2])$args->[0]";
+        if ($args->[1] ne '')
+        {
+            return "*note $args->[1]: $node_file";
+        }
+        else
+        {
+            return "*note ${node_file}::";
+        }
+    }
+    else
+    {
+        if (($args->[3] ne '') or ($args->[4] ne ''))
+        {
+            return '' if ($args->[4] eq '');
+            my $section_name = $args->[2];
+            $section_name = $args->[0] if ($section_name eq '');
+            if ($type eq 'ref')
+            {
+                return &$I('section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+            }
+            elsif ($type eq 'xref')
+            {
+                return &$I('See section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+            }
+            elsif ($type eq 'pxref')
+            {
+                return &$I('see section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+            }
+        }
+        my $link = docbook_node_id($unformatted_args->[0]);
+        my $title = $args->[2];
+        $title = $args->[1] if ($title eq '');
+        if ($title eq '')
+        {
+            if ($type eq 'ref')
+            {
+                return &$I('%{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+            }
+            elsif ($type eq 'pxref')
+            {
+                return &$I('see %{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+            }
+            elsif ($type eq 'xref')
+            {
+                return &$I('See %{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+            }
+        }
+        else
+        {
+            if ($type eq 'ref')
+            {
+                return &$I('%{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+            }
+            elsif ($type eq 'pxref')
+            {
+                return &$I('see %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+            }
+            elsif ($type eq 'xref')
+            {
+                return &$I('See %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+            }
+        }
+    }
+}
+
+sub docbook_external_ref($$$$$$)
+{
+    my $type = shift;
+    my $section = shift;
+    my $book = shift;
+    my $file_node = shift;
+    my $href = shift;
+    my $cross_ref = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
+    
+    return docbook_any_ref ($type, $formatted_args, $args_texi);
+}
+
+sub docbook_internal_ref($$$$$)
+{
+    my $type = shift;
+    my $href = shift;
+    my $short_name = shift;
+    my $name = shift;
+    my $is_section = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
+
+    return docbook_any_ref ($type, $formatted_args, $args_texi );
+}
+
+sub docbook_index_entry_command($$$$$)
+{               
+   my $command = shift;
+   my $index_name = shift;
+   my $label = shift;
+   my $entry_texi = shift;
+   my $entry_formatted = shift;
+
+   return $label if (defined($label) and $label ne '');
+   return docbook_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted);
+}
+
+sub docbook_index_entry_label($$$$$)
+{   
+    my $identifier = shift;
+    my $preformatted = shift;
+    my $entry = shift;
+    my $index_name = shift;
+    my $index_command = shift;
+    my $texi_entry = shift;
+    my $formatted_entry = shift;
+
+    return "<indexterm role=\"${index_name}\"><primary>${formatted_entry}</primary></indexterm>";
+}
+
+sub docbook_footing($)
+{
+    my $element = shift;
+
+    my $result = '';
+
+    return '' if ($element->{'node'});
+    return '</'.docbook_element_tag($element).">\n" if ($element->{'level'} == 0);
+    return '' if ($element->{'child'});
+    $result .= '</'.docbook_element_tag($element).">\n";
+
+    return $result if ($element->{'sectionnext'} or $element->{'level'} == 1);
+    my $current = $element;
+    while ($current->{'level'} != 1 and $current->{'sectionup'} and (!$current->{'sectionup'}->{'sectionnext'} or $current->{'sectionup'}->{'level'} == 1))
+    {
+        $current = $current->{'sectionup'};
+        $result .= '</'.docbook_element_tag($current).">\n";
+    }
+    return $result;
+}
+
+sub docbook_end_section($$$)
+{
+    my $fh = shift;
+    my $end_foot_navigation = shift;
+    my $element = shift;
+    print $fh "". docbook_footing($element);
+}
+
+sub docbook_print_Top_footer($$)
+{
+    my $fh = shift;
+    my $end_page = shift;
+    my $element = shift;
+
+    print $fh "". docbook_footing($element);
+}
+
+sub docbook_one_section($$)
+{
+    my $fh = shift;
+    my $element = shift;
+    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
+    main::print_lines($fh);
+    print $fh "". docbook_footing($element);
+    &$print_foot_navigation($fh);
+    &$print_page_foot($fh);
+}
+
+sub docbook_insertcopying($)
+{
+    my $text = shift;
+    return $text;
+    #return "<bookinfo>\n<legalnotice>\n$text</bookinfo>\n</legalnotice>\n";
+}
+
+sub docbook_acronym_like($$$$$$)
+{
+    my $command = shift;
+    my $acronym_texi = shift;
+    my $acronym_text = shift;
+    my $with_explanation = shift;
+    my $explanation_lines = shift;
+    my $explanation_text = shift;
+    my $explanation_simply_formatted = shift;
+
+    $command = 'abbrev' if ($command eq 'abbr');
+    my $result = docbook_add_id($command).">$acronym_text</${command}>";
+    if ($with_explanation)
+    {
+        $result .= " ($explanation_text)";
+    }
+    return $result;
+}
+
+
+sub docbook_image_files($$)
+{
+    my $base = shift;
+    my $extension = shift;
+    my @files = ();
+    return @files if (!defined($base) or ($base eq ''));
+# FIXME doesn't look at extension argument
+#    push @files,"$base.$extension" if (defined($extension) and ($extension ne ''));
+    foreach my $ext (@IMAGE_EXTENSIONS)
+    {
+        push @files, "$base.$ext";
+    }
+    return @files;
+}
+
+
+sub docbook_image($$$$$$$$$$$)
+{
+    my $file = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    my $file_name = shift;
+    my $alt = shift;
+    my $width = shift;
+    my $height = shift;
+    my $raw_alt = shift;
+    my $extension = shift;
+    my $working_dir = shift;
+    my $file_path = shift;
+
+    if (!defined($file_path) or $file_path eq '')
+    {
+#        if (defined($extension) and $extension ne '')
+#        {
+#            $file = "$base.$extension";
+#        }
+#        else
+#        {
+            $file = "$base.jpg";
+            $extension = 'jpg';
+#        }
+        main::echo_warn ("no image file for $base, (using $file)");
+    }
+
+    my $format = uc($extension);
+
+    my $begin = docbook_add_id('inlinemediaobject').'>';
+    my $end = '</inlinemediaobject>';
+    if ($preformatted)
+    {
+         $begin = docbook_add_id('informalfigure').'><mediaobject>';
+         $end = '</mediaobject></informalfigure>';
+    }
+
+    return "$begin<imageobject><imagedata fileref=\"$file\" format=\"$format\"></imagedata></imageobject>$end";
+}
+
+sub docbook_format_list_item_texi($$$$)
+{
+    my $format = shift;
+    my $line = shift;
+    my $prepended = shift;
+    my $command = shift;
+
+    return (undef, 0);
+}
+
+my @docbook_multitable_stack = ();
+my @docbook_table_stack = ();
+
+# row in multitable
+sub docbook_row($$;$$)
+{
+    my $text = shift;
+    my $macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+
+    my $result = '';
+    if ($macro eq 'headitem')
+    {
+         if ($docbook_multitable_stack[-1] != 0)
+         {
+             $result .= "<thead>";
+             $result = "</tbody>" . $result if ($docbook_multitable_stack[-1] == 1);
+             $docbook_multitable_stack[-1] = 0;
+         }
+    }
+    elsif ($docbook_multitable_stack[-1] != 1)
+    {
+         $result .= "<tbody>";
+         $result = "</thead>" . $result if ($docbook_multitable_stack[-1] == 0);
+         $docbook_multitable_stack[-1] = 1;
+    }
+    $result .= "<row>$text</row>";
+    
+    return $result;
+}
+
+# cell in multitable
+sub docbook_cell($$;$$)
+{
+    my $text = shift;
+    my $row_macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+
+    return "<entry>" . $text . '</entry>';
+}
+
+sub docbook_table_item($$$$$$$$$)
+{
+    my $text = shift;
+    my $index_label = shift;
+    my $format = shift;
+    my $command = shift;
+    my $formatted_command = shift;
+    my $style_stack = shift;
+    my $text_formatted = shift;
+    my $text_formatted_leading_spaces = shift;
+    my $text_formatted_trailing_spaces = shift;
+    my $item_cmd = shift;
+
+    $formatted_command = '' if (!defined($formatted_command));
+
+    if (defined($text_formatted))
+    {
+        $text_item = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+    }
+    else
+    {
+        $text_item = $text;
+    }
+
+    my $result = '';
+    if ($item_cmd eq 'item')
+    {
+        $result .= '</varlistentry>' if ($docbook_table_stack[-1] == 1);
+        $docbook_table_stack[-1] = 1;
+        $result .= '<varlistentry>';
+    }
+    $result .= '<term>';
+    $result .= $formatted_command . $text_item ."</term>\n";
+    return $result;
+}
+
+sub docbook_table_line($)
+{
+    my $text = shift;
+    if ($text =~ /\S/)
+    {
+        return "<listitem>$text</listitem>";
+    }
+    else
+    {
+        return '';
+    }
+}
+
+sub docbook_list_item($$$$$$$$$)
+{
+    my $text = shift;
+    my $format = shift;
+    my $command = shift;
+    my $formatted_command = shift;
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+    my $number = shift;
+    my $prepended = shift;
+    my $prepended_formatted = shift;
+
+    return '<listitem>' . $text . "</listitem>\n";
+}
+
+sub docbook_table_list($$$$$$$$$)
+{
+    my $format_command = shift;
+    my $text = shift;
+    my $command = shift;
+    my $formatted_command = shift;
+# enumerate
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+# itemize
+    my $prepended = shift;
+    my $prepended_formatted = shift;
+# multitable
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $number = shift;
+    
+    $result = "<$format_command>";
+    if ($format_command eq 'itemize')
+    {
+        my $itemfunction;
+        #$prepended_formatted =~ s/^\s*// if (defined($prepended_formatted));
+        $prepended =~ s/^\s*// if (defined($prepended));
+        #if (defined($formatted_command) and $formatted_command ne '')
+        if (defined($command) and $command ne '')
+        {
+            #$itemfunction = $formatted_command;
+            $itemfunction = $command;
+            #$itemfunction .= " $prepended_formatted" if (defined($prepended_formatted) and $prepended_formatted ne '');
+            $itemfunction .= " $prepended" if (defined($prepended) and $prepended ne '');
+        }
+        #elsif (defined($prepended_formatted))
+        elsif (defined($prepended))
+        {
+            #$itemfunction = $prepended_formatted;
+            $itemfunction = $prepended;
+        }
+        my $mark = '';
+       $mark = " mark=\"$itemfunction\"" if (defined($itemfunction) and $itemfunction ne '');
+        return "<itemizedlist${mark}>$text</itemizedlist>";
+    }
+    elsif ($format_command eq 'enumerate')
+    {
+        my $numeration='arabic';
+        if (defined($enumerate_style) and $enumerate_style ne '')
+        {
+           if ($enumerate_style =~ /^[A-Z]/)
+           {
+               $numeration = 'upperalpha';
+           }
+           elsif ($enumerate_style =~ /^[a-z]/)
+           {
+               $numeration = 'loweralpha';
+           }
+        }
+        return docbook_add_id('orderedlist') ." numeration=\"$numeration\">$text</orderedlist>";
+    }
+    elsif ($format_command eq 'multitable')
+    {
+       my $result = docbook_add_id('informaltable').'><tgroup cols="'.$number.'">';
+       my $fractions;
+       my $multiply = 1;
+       if (defined($columnfractions) and (ref($columnfractions) eq 'ARRAY')
+           and scalar(@$columnfractions))
+       {
+           $fractions = [ @$columnfractions ];
+           $multiply = 100;
+       }
+       elsif (defined($prototype_lengths) and (ref($prototype_lengths) eq 'ARRAY')
+           and scalar(@$prototype_lengths))
+       {
+           $fractions = [ @$prototype_lengths ];
+       }
+       
+       if (defined ($fractions))
+       {
+           foreach my $fraction (@$fractions)
+           {
+               $result .= '<colspec colwidth="'.($fraction*$multiply).'*"></colspec>';
+           }
+       }
+       $text .= "</tbody>" if ($docbook_multitable_stack[-1] == 1);
+       $text .= "</thead>" if ($docbook_multitable_stack[-1] == 0);
+       pop @docbook_multitable_stack;
+       return $result . "$text</tgroup></informaltable>";
+    }
+    elsif ($format_command =~ /^(v|f)?table$/)
+    {
+       $result = docbook_add_id('variablelist').'>';
+       $text .= '</varlistentry>' if ($docbook_table_stack[-1] == 1);
+       pop @docbook_table_stack;
+       return $result . "$text</variablelist>\n";
+    }
+}
+
+sub docbook_begin_format_texi($$$)
+{
+    my $command = shift;
+    my $line = shift;
+    my $state = shift;
+
+    push (@docbook_multitable_stack, -1) if ($command eq 'multitable');
+    push (@docbook_table_stack, 0) if ($command =~ /^(v|f)?table/);
+    return $line;
+}
+
+# FIXME
+sub docbook_sp($$)
+{
+   my $number = shift;
+   my $preformatted = shift;
+   return "";
+}
+
+sub docbook_index_summary($$)
+{
+    my $alpha = shift;
+    my $nonalpha = shift;
+    return '';
+}
+
+sub docbook_print_index($$)
+{
+    my $text = shift;
+    my $name = shift;
+    return docbook_add_id('index')."></index>\n";
+}
+
+sub docbook_complex_format($$)
+{
+    my $name = shift;
+    my $text = shift;
+    return '' if ($text eq '');
+    my $result = docbook_add_id($docbook_complex_format{$name}).'>' .$text."</$docbook_complex_format{$name}>";
+    return $result;
+}
+
+sub docbook_format($$)
+{
+    my $name = shift;
+    my $element = shift;
+    my $text = shift;
+    return '' if ($text eq '');
+    return $text if ($format_map{$name} eq '');
+    if ($name eq 'copying')
+    {
+        return "<bookinfo>\n<legalnotice>\n$text</legalnotice>\n</bookinfo>\n";
+    }
+    return docbook_add_id($format_map{$name}).'>' .$text."</$format_map{$name}>";
+}
+
+my @docbook_special_quotation = ('note', 'caution', 'important', 'tip', 'warning');
+
+sub docbook_quotation_prepend_text($)
+{
+    my $argument_text = shift;
+
+    return undef if (!defined($argument_text) or $argument_text =~ /^$/);
+
+    chomp($argument_text);
+    my $text = $argument_text;
+    $text =~ s/^\s*//;
+    $text =~ s/\s*$//;
+
+    return undef if (grep {lc($text) eq $_} @docbook_special_quotation);
+    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $argument_text}, {'keep_texi' => 1});
+}
+
+
+sub docbook_quotation($$$)
+{
+    my $text = shift;
+    my $argument_text = shift;
+    my $argument_text_texi = shift;
+
+    $argument_text_texi = '' if (!defined($argument_text_texi));
+    $argument_text_texi =~ s/^\s*//;
+    $argument_text_texi =~ s/\s*$//;
+    my $command = 'blockquote';
+    if (grep {lc($argument_text_texi) eq $_} @docbook_special_quotation)
+    {
+       $command = lc($argument_text_texi);
+    }
+    return  docbook_add_id($command).'>' . $text . "</$command>\n";
+}
+
+sub docbook_style($$$$$$$$$)
+{
+    my $style = shift;
+    my $command = shift;
+    my $text = shift;
+    my $args = shift;
+    my $no_close =shift;
+    my $no_open = shift;
+    my $line_nr = shift;
+    my $state = shift;
+    my $command_stack = shift;
+
+    my $result = $text;
+    $style = $style_map{$command};
+    if (exists($style->{'function'}))
+    {
+        my $function = $style->{'function'};
+        $result = &$function($command, $args, $command_stack, $state, $line_nr);
+    }
+    elsif (exists($style->{'attribute'}))
+    {
+        my $attribute = $style->{'attribute'};
+        my $attribute_text = '';
+        if ($attribute =~ /^(\w+)(\s+.*)/)
+        {
+            $attribute = $1;
+            $attribute_text = $2;
+        }
+
+        $result = docbook_add_id($attribute)."$attribute_text>$text</$attribute>";
+    }
+    if (exists($style->{'begin'}))
+    {
+        $result = $style->{'begin'} . $result;
+    }
+    if (exists($style->{'end'}))
+    {
+        $result .= $style->{'end'};
+    }
+    return $result;
+}
+
+sub docbook_raw($$)
+{
+    my $style = shift;
+    my $text = shift;
+
+    if ($style eq 'verbatim')
+    {
+        return docbook_add_id('screen').'>' . &$protect_text($text) . '</screen>';
+    }
+    elsif ($style eq 'docbook')
+    {
+        chomp ($text);
+        return $text;
+    }
+    else
+    {
+        main::echo_warn ("Raw style $style not handled");
+        return &$protect_text($text);
+    }
+}
+
+sub docbook_cartouche($$)
+{
+    my $text = shift;
+
+    return "$text";
+}
+
+sub docbook_anchor_label($$)
+{
+    my $id = shift;
+    my $anchor_text = shift;
+    return '<anchor id="'. &$protect_text($anchor_text) . '"></anchor>';
+}
+
+sub docbook_float($$$$$)
+{
+    my $text = shift;
+    my $float = shift;
+    my $caption = shift;
+    my $shortcaption = shift;
+
+    my $label_texi = $float->{'texi'};
+    return $text if (!defined($label_texi) or $label_texi eq '');
+
+    return docbook_anchor_label('',$label_texi) . $text;
+}
+
+sub docbook_noop
+{
+    return '';
+}
+
+1;

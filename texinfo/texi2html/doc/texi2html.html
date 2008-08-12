@@ -31,7 +31,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on August 8, 2008 by texi2html 1.79
+<!-- Created on August 12, 2008 by texi2html 1.79
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -3477,48 +3477,50 @@ be redefined.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    
+<tr><td align="left" valign="top"><a href="#Punctuation-commands">7.4 Punctuation commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         <code>@:</code>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Anchors-images-and-spaces">7.5 Formatting of special simple commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Formatting of <code>@anchor</code>, <code>@image</code>, <code>@sp</code>, <code>@acronym</code>, <code>@abbr</code>
+<tr><td align="left" valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Text">7.6 Processing special characters in text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Some characters are processed specially
+<tr><td align="left" valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Formatting of <code>@anchor</code>, <code>@image</code>, <code>@sp</code>, <code>@acronym</code>, <code>@abbr</code>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      <code>texi2html</code> write some strings in the output
+<tr><td align="left" valign="top"><a href="#Text">7.7 Processing special characters in text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Some characters are processed specially
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      <code>texi2html</code> write some strings in the output
                                  different for each languages
 </td></tr>
-<tr><td align="left" valign="top"><a href="#References">7.8 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#References">7.9 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           <code>@center</code>, <code>@flushleft</code>&hellip;
+<tr><td align="left" valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           <code>@center</code>, <code>@flushleft</code>&hellip;
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Paragraph-and-preformatted-region">7.10 Formatting (or not) a paragraph and a preformatted region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Paragraph-and-preformatted-region">7.11 Formatting (or not) a paragraph and a preformatted region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Complex-formats">7.11 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              <code>@example</code>, <code>@display</code>&hellip;
+<tr><td align="left" valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              <code>@example</code>, <code>@display</code>&hellip;
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Lists-tables">7.12 Customizing the formatting of lists and tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Lists-tables">7.13 Customizing the formatting of lists and tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Definitions">7.13 Definition commands formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Definitions">7.14 Definition commands formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Headings">7.14 Customizing headings formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Headings">7.15 Customizing headings formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Special-regions">7.15 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              <code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>
+<tr><td align="left" valign="top"><a href="#Special-regions">7.16 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              <code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Menus">7.16 Menu formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    
+<tr><td align="left" valign="top"><a href="#Menus">7.17 Menu formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Indices">7.17 Indices formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Indices">7.18 Indices formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Floats-and-lists-of-floats">7.18 Floats and lists of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   <code>@float</code> and <code>@listoffloats</code>
+<tr><td align="left" valign="top"><a href="#Floats-and-lists-of-floats">7.19 Floats and lists of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   <code>@float</code> and <code>@listoffloats</code>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Footnotes">7.19 Customizing the footnotes formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Footnotes">7.20 Customizing the footnotes formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Customizing-format-opening">7.20 Customizing format opening</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to run some code when a format is opened
+<tr><td align="left" valign="top"><a href="#Customizing-format-opening">7.21 Customizing format opening</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to run some code when a format is opened
                                  (like <code>@table</code>, <code>@flushleft</code>, <code>@example</code>&hellip;
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
+<tr><td align="left" valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Handling-special-regions">7.22 Handling special regions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Keep <code>@titlepage</code>, <code>@documentdescription</code> or <code>@copying</code>
+<tr><td align="left" valign="top"><a href="#Handling-special-regions">7.23 Handling special regions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Keep <code>@titlepage</code>, <code>@documentdescription</code> or <code>@copying</code>
                                  and format <code>@insertcopying</code>
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   You can handle specifically other commands
+<tr><td align="left" valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   You can handle specifically other commands
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
@@ -3587,7 +3589,7 @@ Only if you want to do something before the pass 2 should you care.
 <a name="SEC53"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Three-passes" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Style-and-accent-commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Punctuation-commands" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#Customizing-HTML" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Customizing-HTML" title="Up section"> Up </a>]</td>
@@ -3644,11 +3646,53 @@ in normal and preformatted context, write in your init file:
 $simple_map_pre{'-'} = '&amp;shy;';
 </pre></td></tr></table>
 
+
 <hr size="6">
-<a name="Style-and-accent-commands"></a>
+<a name="Punctuation-commands"></a>
 <a name="SEC54"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Commands-without-argument" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Style-and-accent-commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Customizing-HTML" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customizing-HTML" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Internationalization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.4 Punctuation commands</h2>
+
+<p>The formatting of a punctuation character followed by <code></code> is determined
+by the hash <a name="IDX228"></a>
+<code>%colon_command_punctuation_characters</code>. If a <code></code>
+command is preceded by a character in th is hash, it is replaced by the 
+associated value. In the default case, the associated value is also the 
+character, so this leave the punctuation character unmodified.
+</p>
+<p>The following function reference may be redefined to handle characters
+that are in <code>%colon_command_punctuation_characters</code>:
+</p>
+<dl>
+<dt><u>Function Reference:</u> $punctuation <b>$colon_command</b><i> $character</i>
+<a name="IDX229"></a>
+</dt>
+<dd><p>The <var>$character</var> is a character appearing in 
+<code>%colon_command_punctuation_characters</code> and preceding a <code></code> 
+command. In the default case the associated value in
+<code>%colon_command_punctuation_characters</code> is returned.
+</p></dd></dl>
+
+<hr size="6">
+<a name="Style-and-accent-commands"></a>
+<a name="SEC55"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Punctuation-commands" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Hash-reference-interface" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#Customizing-HTML" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
@@ -3663,7 +3707,7 @@ $simple_map_pre{'-'} = '&amp;shy;';
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.4 Customizing accent, style and other simple commands</h2>
+<h2 class="section">7.5 Customizing accent, style and other simple commands</h2>
 
 <p>The formatting of the <acronym>HTML</acronym> produced by style and indicatric 
 commands (<code>@tt</code>, <code>@code</code>, 
@@ -3672,10 +3716,10 @@ commands taking argument (<code>@'</code>, <code>@udotaccent</code>, <code>@dotl
 and miscalleneous commands (<code>@email</code>, <code>@verb</code>, <code>@w</code>, 
 <code>@uref</code>, <code>@math</code>, <code>@asis</code>) is controlled by two hash in the
 default case, 
-<a name="IDX228"></a>
-<code>%style_map</code> for normal context, <a name="IDX229"></a>
+<a name="IDX230"></a>
+<code>%style_map</code> for normal context, <a name="IDX231"></a>
 <code>%style_map_pre</code> for
-preformatted context and <a name="IDX230"></a>
+preformatted context and <a name="IDX232"></a>
 <code>%style_map_texi</code> in string context. 
 </p>
 <p>The key of the hashes are the command names. There are two possibilities for
@@ -3691,24 +3735,24 @@ can define your own.
 <li> 
 The nonlettered accent commands which following character is considered
 to be the argument (like in <code>@`a</code>) should be keys of the
-hash <a name="IDX231"></a>
+hash <a name="IDX233"></a>
 <code>%accent_map</code> hash, even if no value is associated.
 </li><li>
 <code>@math</code> is handled differently if LaTeX2HTML is used.
 </li></ul>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Hash-reference-interface">7.4.1 An interface for commands formatting with a hash reference</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Hash-reference-interface">7.5.1 An interface for commands formatting with a hash reference</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#String-interface">7.4.2 An interface for commands formatting with a string</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#String-interface">7.5.2 An interface for commands formatting with a string</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Define-your-own-interface">7.4.3 Defining the style and indicatric commands interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Define-your-own-interface">7.5.3 Defining the style and indicatric commands interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Hash-reference-interface"></a>
-<a name="SEC55"></a>
+<a name="SEC56"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Style-and-accent-commands" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#String-interface" title="Next section in reading order"> &gt; </a>]</td>
@@ -3725,7 +3769,7 @@ hash <a name="IDX231"></a>
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.4.1 An interface for commands formatting with a hash reference</h3>
+<h3 class="subsection">7.5.1 An interface for commands formatting with a hash reference</h3>
 
 <p>The key of the hashes are the command names. The value determine how the command argument
 is formatted. This value is a reference on a hash. In this hash each key 
@@ -3800,9 +3844,9 @@ Thus <code>elem class=&quot;elem&quot;</code> leads to
 <dt> &lsquo;<samp>quotes</samp>&rsquo;</dt>
 <dd>
 <p>If the corresponding value is true, the result is 
-enclosed in quotes <a name="IDX232"></a>
+enclosed in quotes <a name="IDX234"></a>
 <code>$OPEN_QUOTE_SYMBOL</code> and 
-<a name="IDX233"></a>
+<a name="IDX235"></a>
 <code>$CLOSE_QUOTE_SYMBOL</code>, with defaults 
 &lsquo;<samp>`</samp>&rsquo; and &lsquo;<samp>'</samp>&rsquo;. 
 </p>
@@ -3839,7 +3883,7 @@ of the @-command.
 
 <hr size="6">
 <a name="String-interface"></a>
-<a name="SEC56"></a>
+<a name="SEC57"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Hash-reference-interface" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Define-your-own-interface" title="Next section in reading order"> &gt; </a>]</td>
@@ -3856,14 +3900,14 @@ of the @-command.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.4.2 An interface for commands formatting with a string</h3>
+<h3 class="subsection">7.5.2 An interface for commands formatting with a string</h3>
 
 <p>The keys of the hashes are the command names. The value determine 
 how the command argument
 is formatted. If the value begins with &lsquo;<samp>&quot;</samp>&rsquo;, the result is 
-enclosed in quotes <a name="IDX234"></a>
+enclosed in quotes <a name="IDX236"></a>
 <code>$OPEN_QUOTE_SYMBOL</code> and 
-<a name="IDX235"></a>
+<a name="IDX237"></a>
 <code>$CLOSE_QUOTE_SYMBOL</code>, with defaults 
 &lsquo;<samp>`</samp>&rsquo; and &lsquo;<samp>'</samp>&rsquo;. 
 </p>
@@ -3917,7 +3961,7 @@ Thus <code>elem class=&quot;elem&quot;</code> leads to
 
 <hr size="6">
 <a name="Define-your-own-interface"></a>
-<a name="SEC57"></a>
+<a name="SEC58"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#String-interface" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Anchors-images-and-spaces" title="Next section in reading order"> &gt; </a>]</td>
@@ -3934,14 +3978,14 @@ Thus <code>elem class=&quot;elem&quot;</code> leads to
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.4.3 Defining the style and indicatric commands interface</h3>
+<h3 class="subsection">7.5.3 Defining the style and indicatric commands interface</h3>
 
 <p>If you don&rsquo;t like this scheme, it is possible to change how those commands
 are processed by redefining the following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $resulting_text <b>style</b><i> $style $command $text $args $no_close $no_open $line_nr $state $command_stack</i>
-<a name="IDX236"></a>
+<a name="IDX238"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command, <var>$style</var> is the value associated with 
 the <var>$command</var> in the <code>%style_map</code>, <code>%style_map_pre</code> 
@@ -3970,7 +4014,7 @@ the @-command being formatted.
 
 <hr size="6">
 <a name="Anchors-images-and-spaces"></a>
-<a name="SEC58"></a>
+<a name="SEC59"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Define-your-own-interface" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Text" title="Next section in reading order"> &gt; </a>]</td>
@@ -3987,24 +4031,24 @@ the @-command being formatted.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.5 Formatting of special simple commands</h2>
+<h2 class="section">7.6 Formatting of special simple commands</h2>
 
 <p>The formatting of special simple commands is controlled by functions. To
 customize the output, the corresponding function references should be
 redefined. All these functions return a formatted text.
 </p>
-<p>The formatting of anchors is controlled by <a name="IDX237"></a>
+<p>The formatting of anchors is controlled by <a name="IDX239"></a>
 <code>$anchor_label</code>.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $anchor_label <b>anchor_label</b><i> $identifier $anchor</i>
-<a name="IDX238"></a>
+<a name="IDX240"></a>
 </dt>
 <dd><p><var>$identifier</var> is the anchor identifier, <var>$anchor</var>is the <code>@anchor</code>
 argument.
 </p></dd></dl>
 
-<p>In the default case, it uses a function reference,  <a name="IDX239"></a>
+<p>In the default case, it uses a function reference,  <a name="IDX241"></a>
 <code>$anchor</code>
  that can do
 a reference target or link. It is especially relevant for <acronym>HTML</acronym>
@@ -4012,7 +4056,7 @@ but can be used in other formats, it is a rather common element
 of different formats.
 </p><dl>
 <dt><u>Function Reference:</u> $anchor <b>anchor</b><i> $identifier $href $text $attributes</i>
-<a name="IDX240"></a>
+<a name="IDX242"></a>
 </dt>
 <dd><p>If <var>$identifier</var> is not empty, this value should be used to create
 a target for links (typically associated with a name or id 
@@ -4028,14 +4072,14 @@ It should be reasonable to assume that the attributes are for a <code>&lt;a&gt;<
 </p></dd></dl>
 
 <p>To customize the images produced by <code>@image</code>, the first possibility 
-is to modify the <a name="IDX241"></a>
+is to modify the <a name="IDX243"></a>
 <code>@IMAGE_EXTENSIONS</code>, which holds a list of 
 filename extensions for image files. It is also possible to redefine
 the function used to determine the filename of the image:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $filename <b>image_files</b><i> $basename $extension</i>
-<a name="IDX242"></a>
+<a name="IDX244"></a>
 </dt>
 <dd><p><var>$basename</var> is the first <code>@image</code> argument, <var>$extension</var>
 is the corresponding <code>@image</code> argument. This function reference 
@@ -4047,7 +4091,7 @@ program should look for.
 the formatting of <code>@image</code> by redefining:
 </p><dl>
 <dt><u>Function Reference:</u> $image <b>image</b><i> $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_relative_path</i>
-<a name="IDX243"></a>
+<a name="IDX245"></a>
 </dt>
 <dd><p><var>$file_path</var> is the image file name with the path, <var>$basename</var>  
 the file name without extension (the first <code>@image</code> argument). 
@@ -4066,7 +4110,7 @@ directory. <var>$file_relative_path</var> is the file name relative to the
 <p>The formatting of <code>@sp</code> is controlled by:
 </p><dl>
 <dt><u>Function Reference:</u> $sp <b>sp</b><i> $number $preformatted</i>
-<a name="IDX244"></a>
+<a name="IDX246"></a>
 </dt>
 <dd><p><var>$number</var> is the numeric argument of <code>@sp</code>.
 <var>$preformatted</var> is true if the <code>@sp</code> appears in preformatted text.
@@ -4075,7 +4119,7 @@ directory. <var>$file_relative_path</var> is the file name relative to the
 <p>The formatting of <code>@acronym</code> and <code>@abbr</code> is controlled by:
 </p><dl>
 <dt><u>Function Reference:</u> $acronym <b>acronym_like</b><i> $acronym_texi $acronym_text $with_explanation \@explanation_lines $explanation_text $explanation_simply_formatted</i>
-<a name="IDX245"></a>
+<a name="IDX247"></a>
 </dt>
 <dd><p><var>$acronym_texi</var> is the acronym argument with texinfo @-commands, 
 <var>$acronym_text</var> is formatted. 
@@ -4094,7 +4138,7 @@ to be in an attribute.
 
 <hr size="6">
 <a name="Text"></a>
-<a name="SEC59"></a>
+<a name="SEC60"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Anchors-images-and-spaces" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Strings" title="Next section in reading order"> &gt; </a>]</td>
@@ -4111,7 +4155,7 @@ to be in an attribute.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.6 Processing special characters in text</h2>
+<h2 class="section">7.7 Processing special characters in text</h2>
 
 <p>Some characters are processed especially in text: &lsquo;<samp>---</samp>&rsquo;, &lsquo;<samp>--</samp>&rsquo;,
 &lsquo;<samp>``</samp>&rsquo; and &lsquo;<samp>''</samp>&rsquo;. This is done only if in normal text and not in 
@@ -4124,7 +4168,7 @@ of protecting special characters
 
 <dl>
 <dt><u>Function Reference:</u> $processed_text <b>normal_text</b><i> $text $in_raw_text $in_preformatted $in_code $in_simple $command_stack</i>
-<a name="IDX246"></a>
+<a name="IDX248"></a>
 </dt>
 <dd><p>The function processes <var>$text</var> and returns <var>$processed_text</var>. 
 The other arguments give some information about the context of the text.
@@ -4151,7 +4195,7 @@ This is done by the function associated with the function reference
 </p>
 <dl>
 <dt><u>Function Reference:</u> $protected_text <b>protect_text</b><i> $text</i>
-<a name="IDX247"></a>
+<a name="IDX249"></a>
 </dt>
 <dd><p>The function processes the unprotected text <var>$text</var> and returns
 the resulting protected text <var>$protected_text</var>.
@@ -4162,7 +4206,7 @@ be usefull if empty lines are to be removed for example
 </p>
 <dl>
 <dt><u>Function Reference:</u> $resulting_text <b>empty_line</b><i> $empty_line $state</i>
-<a name="IDX248"></a>
+<a name="IDX250"></a>
 </dt>
 <dd><p>This function processes an <var>$empty_line</var> and returns the resulting
 text <var>$resulting_text</var>. <var>$state</var> is a structure that holds informations
@@ -4173,7 +4217,7 @@ Empty lines are left as is by default except right after a definition
 
 <hr size="6">
 <a name="Strings"></a>
-<a name="SEC60"></a>
+<a name="SEC61"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Text" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#References" title="Next section in reading order"> &gt; </a>]</td>
@@ -4190,20 +4234,20 @@ Empty lines are left as is by default except right after a definition
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.7 Customizing strings written by <code>texi2html</code></h2>
+<h2 class="section">7.8 Customizing strings written by <code>texi2html</code></h2>
 
 
 <p><code>texi2html</code> writes some strings in the generated document at
 various places, at the page footers, on the help page, for special 
 section headings, buttons alt text and so on. These strings are
 customizable. The string chosen depends on the language of the
-document (set by <a name="IDX249"></a>
-&lsquo;<samp>--document-language</samp>&rsquo;, <a name="IDX250"></a>
+document (set by <a name="IDX251"></a>
+&lsquo;<samp>--document-language</samp>&rsquo;, <a name="IDX252"></a>
 <code>$LANG</code> or 
 <code>@documentlanguage</code>). This is the basis for internationalization
 as it allows for strings translations.
 </p>
-<p>The strings are found in a hash reference, <a name="IDX251"></a>
+<p>The strings are found in a hash reference, <a name="IDX253"></a>
 <code>$LANGUAGES</code>. 
 Each key is a language code. The associated value is also a hash
 reference. The key is an english string and the associated value
@@ -4240,7 +4284,7 @@ reference that may be used for that, it is called each time  a
 </p>
 <dl>
 <dt><u>Function Reference:</u> <b>$translate_names</b>
-<a name="IDX252"></a>
+<a name="IDX254"></a>
 </dt>
 <dd><p>This function is called each time <code>@documentlanguage</code> is encountered
 and the language wasn&rsquo;t seet on the command line. It should be used
@@ -4252,7 +4296,7 @@ to retranslate some strings based on the new language.
 </p>
 <hr size="6">
 <a name="References"></a>
-<a name="SEC61"></a>
+<a name="SEC62"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Strings" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Reference-to-external-manual" title="Next section in reading order"> &gt; </a>]</td>
@@ -4269,18 +4313,18 @@ to retranslate some strings based on the new language.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.8 References</h2>
+<h2 class="section">7.9 References</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Reference-to-external-manual">7.8.1 Reference to external manual</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Internal-reference">7.8.2 Reference to an internal node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Internal-reference">7.9.2 Reference to an internal node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Reference-to-external-manual"></a>
-<a name="SEC62"></a>
+<a name="SEC63"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#References" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Internal-reference" title="Next section in reading order"> &gt; </a>]</td>
@@ -4297,7 +4341,7 @@ to retranslate some strings based on the new language.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.8.1 Reference to external manual</h3>
+<h3 class="subsection">7.9.1 Reference to external manual</h3>
 
 <p>The references are produced with two function references, one for the
 hypertextual reference construction, the other for the full reference to 
@@ -4305,7 +4349,7 @@ external manual.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $href <b>external_href</b><i> $node $node_identifier $xml_node_identifier $manual_file_name</i>
-<a name="IDX253"></a>
+<a name="IDX255"></a>
 </dt>
 <dd><p><var>$node</var> is the node name, with @-commands. <var>$node_identifer</var> is the
 node name mapped to an identifier acceptable as a file name. 
@@ -4322,7 +4366,7 @@ href leading to the external manual.
 
 <dl>
 <dt><u>Function Reference:</u> $text <b>external_ref</b><i> $command $section $book $node_and_file $href $cross_ref_name \@args_texi \@formatted_args</i>
-<a name="IDX254"></a>
+<a name="IDX256"></a>
 </dt>
 <dd><p>This function formats a reference to an external texinfo manual.
 The <var>$command</var> is the ref command (<code>ref</code>, <code>xref</code> or 
@@ -4344,7 +4388,7 @@ This function returns the full formatted text of the external reference.
 
 <hr size="6">
 <a name="Internal-reference"></a>
-<a name="SEC63"></a>
+<a name="SEC64"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Reference-to-external-manual" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Alignement-commands" title="Next section in reading order"> &gt; </a>]</td>
@@ -4361,13 +4405,13 @@ This function returns the full formatted text of the external reference.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.8.2 Reference to an internal node</h3>
+<h3 class="subsection">7.9.2 Reference to an internal node</h3>
 
 <p>A function reference is available for internal references.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $text <b>internal_ref</b><i> $command $href $short_name $name $is_section \@args_texi \@formatted_args</i>
-<a name="IDX255"></a>
+<a name="IDX257"></a>
 </dt>
 <dd><p>This function formats a reference to a node in the current manual.
 The <var>$command</var> is the ref command (<code>ref</code>, <code>xref</code> or 
@@ -4388,7 +4432,7 @@ reference.
 
 <hr size="6">
 <a name="Alignement-commands"></a>
-<a name="SEC64"></a>
+<a name="SEC65"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Internal-reference" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Paragraph-and-preformatted-region" title="Next section in reading order"> &gt; </a>]</td>
@@ -4405,13 +4449,13 @@ reference.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.9 Commands used for centering and flushing of text</h2>
+<h2 class="section">7.10 Commands used for centering and flushing of text</h2>
 
 
 <p>When a command controlling the alignement of text is used (<code>@center</code>,
 <code>@flushleft</code> and <code>@flushright</code>), the main program takes
 care of opening and closing paragraphs. The alignement commands are the
-key of the <a name="IDX256"></a>
+key of the <a name="IDX258"></a>
 <code>%paragraph_style</code> hash. 
 The value is used in the function doing the formatting of the paragraphs. 
 See section <a href="#Paragraph-and-preformatted-region">Formatting (or not) a paragraph and a preformatted region</a>.
@@ -4421,7 +4465,7 @@ appearing in the command block.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $result <b>paragraph_style_command</b><i> $command $text</i>
-<a name="IDX257"></a>
+<a name="IDX259"></a>
 </dt>
 <dd><p><var>$command</var> is the command name, <var>$text</var> is the text appearing within
 the command. This function returns a formatted text.
@@ -4430,7 +4474,7 @@ The default is to return the text unmodified.
 
 <hr size="6">
 <a name="Paragraph-and-preformatted-region"></a>
-<a name="SEC65"></a>
+<a name="SEC66"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Alignement-commands" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Paragraph-and-preformatted-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -4447,19 +4491,19 @@ The default is to return the text unmodified.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.10 Formatting (or not) a paragraph and a preformatted region</h2>
+<h2 class="section">7.11 Formatting (or not) a paragraph and a preformatted region</h2>
 
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Paragraph-and-preformatted-formatting">7.10.1 Paragraph and preformatted region formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Paragraph-and-preformatted-formatting"></a>
-<a name="SEC66"></a>
+<a name="SEC67"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Paragraph-and-preformatted-region" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Avoiding-paragraphs" title="Next section in reading order"> &gt; </a>]</td>
@@ -4476,7 +4520,7 @@ The default is to return the text unmodified.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.10.1 Paragraph and preformatted region formatting</h3>
+<h3 class="subsection">7.11.1 Paragraph and preformatted region formatting</h3>
 
 
 <p>The formatting of a paragraph region or a preformatted region, is controlled
@@ -4484,7 +4528,7 @@ by function references:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $paragraph_text <b>paragraph</b><i> $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin</i>
-<a name="IDX258"></a>
+<a name="IDX260"></a>
 </dt>
 <dd><p>This function formats a paragraph. <var>$text</var> is the text of the paragraph,
 <var>$alignement</var> is the empty string when no alignement command has
@@ -4519,7 +4563,7 @@ the item in the list, <var>$enumerate_style</var> is the argument of the enumera
 
 <dl>
 <dt><u>Function Reference:</u> $preformatted_text <b>preformatted</b><i> $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin</i>
-<a name="IDX259"></a>
+<a name="IDX261"></a>
 </dt>
 <dd><p>This function formats a preformatted region. <var>$text</var> is the text of the
 preformatted region, <var>$style</var> is the css style associated with that
@@ -4559,7 +4603,7 @@ the item in the list, <var>$enumerate_style</var> is the argument of the enumera
 
 <hr size="6">
 <a name="Avoiding-paragraphs"></a>
-<a name="SEC67"></a>
+<a name="SEC68"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Paragraph-and-preformatted-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Complex-formats" title="Next section in reading order"> &gt; </a>]</td>
@@ -4576,15 +4620,15 @@ the item in the list, <var>$enumerate_style</var> is the argument of the enumera
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.10.2 Avoiding paragraphs in formats</h3>
+<h3 class="subsection">7.11.2 Avoiding paragraphs in formats</h3>
 
 
 <p>It is possible to avoid that a format closes the previous paragraph or
 preformatted region and reopens one, by putting the format command in a 
-hash, <a name="IDX260"></a>
+hash, <a name="IDX262"></a>
 <code>%format_in_paragraph</code> with a true value.
 </p>
-<p>If the value of <a name="IDX261"></a>
+<p>If the value of <a name="IDX263"></a>
 <code>%no_paragraph_commands</code> associated with a command is
 true, no paragraph is started by the command if outside of a paragraph
 (after an empty line, for example). If the value is set to 0, it will start
@@ -4592,14 +4636,14 @@ a paragraph. If the value is not set, reasonable defaults are
 set.
 </p>
 <p>It is also possible to stop a paragraph when an @-command happens by
-putting the @-command in the <a name="IDX262"></a>
+putting the @-command in the <a name="IDX264"></a>
 <code>%stop_paragraph_command</code> hash
 associated with a true value.
 </p>
 
 <hr size="6">
 <a name="Complex-formats"></a>
-<a name="SEC68"></a>
+<a name="SEC69"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Avoiding-paragraphs" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Lists-tables" title="Next section in reading order"> &gt; </a>]</td>
@@ -4616,7 +4660,7 @@ associated with a true value.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.11 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</h2>
+<h2 class="section">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</h2>
 
 
 <p>Here we see how a whole complex format is formatted. For the formatting
@@ -4625,7 +4669,7 @@ of the text, see <a href="#Paragraph-and-preformatted-region">Formatting (or not
 <p>The formatting of the complex formats is ultimately controlled by a
 function, however the default for this function uses a hash reference and 
 changing the hash reference values should be enough in most cases. This
-hash reference is called <a name="IDX263"></a>
+hash reference is called <a name="IDX265"></a>
 <code>$complex_format_map</code>. It has a key for each
 of the complex format commands (<code>example</code>, <code>smallexample</code>, 
 <code>lisp</code>, <code>smalllisp</code>, <code>display</code>, <code>smalldisplay</code>, 
@@ -4660,7 +4704,7 @@ function reference for a better control over the complex format formatting:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $complex_format_text <b>complex_format</b><i> $format_name $preformatted_text</i>
-<a name="IDX264"></a>
+<a name="IDX266"></a>
 </dt>
 <dd><p><var>$format_name</var> is the complex format name, <var>$preformatted_text</var> is the 
 text allready formatted as described in <a href="#Paragraph-and-preformatted-region">Formatting (or not) a paragraph and a preformatted region</a>.
@@ -4669,7 +4713,7 @@ This function returns the whole complex format.
 
 <hr size="6">
 <a name="Lists-tables"></a>
-<a name="SEC69"></a>
+<a name="SEC70"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Complex-formats" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Table-and-list-items" title="Next section in reading order"> &gt; </a>]</td>
@@ -4686,7 +4730,7 @@ This function returns the whole complex format.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.12 Customizing the formatting of lists and tables</h2>
+<h2 class="section">7.13 Customizing the formatting of lists and tables</h2>
 
 <p>The formatting of lists and tables is done at two levels:
 </p><ul>
@@ -4697,15 +4741,15 @@ At the level of the individual items, rows or cells of the list or table.
 </li></ul>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Table-and-list-items">7.12.1 Formatting individual table and list items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Table-and-list-items">7.13.1 Formatting individual table and list items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Whole-table-list">7.12.2 Formatting of a whole table or list</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Whole-table-list">7.13.2 Formatting of a whole table or list</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Table-and-list-items"></a>
-<a name="SEC70"></a>
+<a name="SEC71"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lists-tables" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Whole-table-list" title="Next section in reading order"> &gt; </a>]</td>
@@ -4722,7 +4766,7 @@ At the level of the individual items, rows or cells of the list or table.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.12.1 Formatting individual table and list items</h3>
+<h3 class="subsection">7.13.1 Formatting individual table and list items</h3>
 
 <p>In texinfo it is possible to give <code>@itemize</code> or table command (hereafter
 called a <em>format command</em>) a <em>formatting command</em>. 
@@ -4732,7 +4776,7 @@ For example <code>@minus</code> is the formatting command here:
 
 <p>The default is to apply the command to the text item, however it is possible
 to avoid it.
-The hash <a name="IDX265"></a>
+The hash <a name="IDX267"></a>
 <code>%special_list_commands</code> has an entry for each of the 
 format command. Each of these entries is a hash reference. If a formatting
 command is a key of the hash reference, then the formatting command is not
@@ -4754,7 +4798,7 @@ achieved with the following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> ( <b>$result_line</b><i>, $open_command) format_list_item_texi $format $line $prepended $command</i>
-<a name="IDX266"></a>
+<a name="IDX268"></a>
 </dt>
 <dd><p>The <var>$format</var> is the list or table @-command, 
 <var>$line</var> is the item line, <var>$command</var> is the <em>format command</em>,
@@ -4768,8 +4812,8 @@ is true, the <em>format command</em> is opened for the line.
 <dt> <em>lists</em></dt>
 <dd><p>The items of lists are formatted using the following function reference:
 </p><dl>
-<dt><u>Function Reference:</u> $list_item <b>list_item</b><i> $text $format $command $formatted_command $item_number $enumerate_style $number</i>
-<a name="IDX267"></a>
+<dt><u>Function Reference:</u> $list_item <b>list_item</b><i> $text $format $command $formatted_command $item_number $enumerate_style $number $prepended_texi $prepended_formatted</i>
+<a name="IDX269"></a>
 </dt>
 <dd><p>This function formats the text between <code>@item</code> commands. <var>$text</var> 
 is the text corresponding with the item. <var>$format</var> is the type of format,
@@ -4780,6 +4824,11 @@ formatted if it is a leading command, like <code>@minus</code>.
 <p>If the <var>$format</var> is an enumerate, <var>$item_number</var> is the number of 
 the item in the list, <var>$enumerate_style</var> is the argument of the enumerate,
 <var>$number</var> is the number or letter corresponding with this item. 
+</p>
+<p>If the <var>$format</var> is an itemize, <var>$prepended_texi</var> is the text that
+appeared on the itemize line, maybe after the formatting command
+(if any), and <var>$prepended_formatted</var> is the corresponding text, 
+formatted.
 </p></dd></dl>
 
 </dd>
@@ -4792,7 +4841,7 @@ following lines, corresponding with the second column text.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $table_item <b>table_item</b><i> $item_text $index_label_text $format $command $formatted_command $command_stack $text_formatted $text_formatted_leading_spaces $text_formatted_trailing_spaces $item_command</i>
-<a name="IDX268"></a>
+<a name="IDX270"></a>
 </dt>
 <dd><p>This function is used to format the text on the <code>@item</code> line.
 <var>$text_item</var> is the text line. In case there is an index entry 
@@ -4814,7 +4863,7 @@ are the spaces removed before closing the format.
 
 <dl>
 <dt><u>Function Reference:</u> $table_line <b>table_line</b><i> $text</i>
-<a name="IDX269"></a>
+<a name="IDX271"></a>
 </dt>
 <dd><p>This function is used to format the text on the lines following
 the <code>@item</code> line. <var>$text</var> is the corresponding text. 
@@ -4827,8 +4876,8 @@ The multitable elements formatting is controlled by the functions associated
 with two function references. One for a cell, and the other for a row.
 </p>
 <dl>
-<dt><u>Function Reference:</u> $multitable_cell <b>cell</b><i> $text $item_command \@columnfractions \@prototype_row \@prototype_lengths</i>
-<a name="IDX270"></a>
+<dt><u>Function Reference:</u> $multitable_cell <b>cell</b><i> $text $item_command \@columnfractions \@prototype_row \@prototype_lengths $column_number</i>
+<a name="IDX272"></a>
 </dt>
 <dd><p>This function is used to format the text of a multitable cell, the text 
 following a <code>@item</code> or a <code>@tab</code>.
@@ -4841,17 +4890,19 @@ containing the <code>@columnfraction</code> arguments, if any, and
 given on the <code>@multitable</code> line, if any.
 <var>\@prototype_lengths</var> array contains the lengths of the row prototypes
 formatted.
+<var>$column_number</var> is the maximal number of columns.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function Reference:</u> $multitable_row <b>row</b><i> $text $item_command \@columnfractions \@prototype_row \@prototype_lengths</i>
-<a name="IDX271"></a>
+<dt><u>Function Reference:</u> $multitable_row <b>row</b><i> $text $item_command \@columnfractions \@prototype_row \@prototype_lengths $column_number</i>
+<a name="IDX273"></a>
 </dt>
 <dd><p>This function is used to format a multitable row. <var>$text</var> is
-the row text, with cells allready formatted with the <a name="IDX272"></a>
+the row text, with cells allready formatted with the <a name="IDX274"></a>
 <code>$cell</code>
 function reference. <var>$item_command</var>, <var>\@columnfractions</var>, 
-<var>\@prototype_row</var>  and <var>\@prototype_lengths</var> are the same than in the function reference above.
+<var>\@prototype_row</var>, <var>\@prototype_lengths</var>
+and <var>$column_number</var> are the same than in the function reference above.
 </p>
 </dd></dl>
 </dd>
@@ -4865,7 +4916,7 @@ multitables is kept to know the cell number.
 </p>
 <hr size="6">
 <a name="Whole-table-list"></a>
-<a name="SEC71"></a>
+<a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Table-and-list-items" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Definitions" title="Next section in reading order"> &gt; </a>]</td>
@@ -4882,9 +4933,9 @@ multitables is kept to know the cell number.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.12.2 Formatting of a whole table or list</h3>
+<h3 class="subsection">7.13.2 Formatting of a whole table or list</h3>
 
-<p>If the Texinfo command is a key of the <a name="IDX273"></a>
+<p>If the Texinfo command is a key of the <a name="IDX275"></a>
 <code>%format_map</code>, the associated
 value is used to specify the formatting of the construct, otherwise a function 
 is called. 
@@ -4910,31 +4961,33 @@ should be redefined, the associated function will be called each time
 a command isn&rsquo;t found in <code>%format_map</code>.
 </p>
 <dl>
-<dt><u>Function Reference:</u> $whole_table_list <b>table_list</b><i> $format_command $text $command $formatted_command $prepended $item_nr  $enumerate_style \@columnfractions \@prototype_row \@prototype_lengths</i>
-<a name="IDX274"></a>
+<dt><u>Function Reference:</u> $whole_table_list <b>table_list</b><i> $format_command $text $command $formatted_command $item_nr $enumerate_style $prepended_texi $prepended_formatted \@columnfractions \@prototype_row \@prototype_lengths $column_number</i>
+<a name="IDX276"></a>
 </dt>
 <dd><p><var>$format_command</var> is the Texinfo command name, <var>$text</var> is the 
 formatted items. <var>$command</var> is the <em>format command</em> given in argument
 to the format command, <var>$formatted_command</var> is the same, but formatted.
-<var>prepended</var> is the remaining text on the format command line.
+<var>$prepended_texi</var> is the remaining text on the format command line,
+<var>$prepended_formatted</var> is the same, but formatted.
 Only relevant in <code>@enumerate</code>, <var>$item_nr</var> is the item number, and 
 <var>$enumerate_style</var> is the <code>@enumerate</code> style. Only relevant in 
 <code>@multitable</code>
 <var>\@columnfractions</var> is a reference on an array 
 containing the <code>@columnfraction</code> arguments, if any, 
 <var>\@prototype_row</var> is a reference on an array containing the row prototypes
-given on the <code>@multitable</code> line, if any and
+given on the <code>@multitable</code> line, if any,
 <var>\@prototype_lengths</var> array contains the lengths of the row prototypes
-formatted.
+formatted and
+<var>$column_number</var> is the maximal number of columns.
 </p></dd></dl>
 
-<p>If you still want to use <a name="IDX275"></a>
+<p>If you still want to use <a name="IDX277"></a>
 <code>%format_map</code> but differently from 
 the default, it is possible to redefine the following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $whole_table_list <b>format</b><i> $command $format $text</i>
-<a name="IDX276"></a>
+<a name="IDX278"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command, <var>$format</var> is the entry associated with
 <var>$command</var> in <code>%format_map</code>. <var>$text</var> is the formatted items.
@@ -4942,7 +4995,7 @@ the default, it is possible to redefine the following function reference:
 
 <hr size="6">
 <a name="Definitions"></a>
-<a name="SEC72"></a>
+<a name="SEC73"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Whole-table-list" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Definition-line" title="Next section in reading order"> &gt; </a>]</td>
@@ -4959,7 +5012,7 @@ the default, it is possible to redefine the following function reference:
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.13 Definition commands formatting</h2>
+<h2 class="section">7.14 Definition commands formatting</h2>
 
 <p>The formatting of definition commands is controlled by a main hash,
 3 strings and another hash, and and five
@@ -4968,15 +5021,15 @@ interpreted, the functions control the formatting of the definition line
 and the definition function text.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Definition-formatting">7.13.2 Customization of the definition formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Definition-formatting">7.14.2 Customization of the definition formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Definition-line"></a>
-<a name="SEC73"></a>
+<a name="SEC74"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Definitions" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Definition-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -4993,9 +5046,9 @@ and the definition function text.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.13.1 Customizing the interpretation of a definition line</h3>
+<h3 class="subsection">7.14.1 Customizing the interpretation of a definition line</h3>
 
-<p>The keys of the hash <a name="IDX277"></a>
+<p>The keys of the hash <a name="IDX279"></a>
 <code>%def_map</code> are definition command names.
 There are two types of entries:
 </p>
@@ -5049,19 +5102,19 @@ so it is subject to change. Strings allow to determine the delimiters:
 </p>
 <dl compact="compact">
 <dt> <code>$def_argument_separator_delimiters</code>
-<a name="IDX278"></a>
+<a name="IDX280"></a>
 </dt>
 <dd><p>Characters that separate arguments, currently <code>()[],</code>.
 </p></dd>
 <dt> <code>$def_always_delimiters</code>
-<a name="IDX279"></a>
+<a name="IDX281"></a>
 </dt>
 <dd><p>Character that are always delimiters, if they appear in a type or a 
 parameter,
 <code>()[]</code>.
 </p></dd>
 <dt> <code>$def_in_type_delimiters</code>
-<a name="IDX280"></a>
+<a name="IDX282"></a>
 </dt>
 <dd><p>Character that are considered as delimiters only if in a type. In
 a parameter they are part of the parameter.
@@ -5071,7 +5124,7 @@ a parameter they are part of the parameter.
 
 <hr size="6">
 <a name="Definition-formatting"></a>
-<a name="SEC74"></a>
+<a name="SEC75"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Definition-line" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Headings" title="Next section in reading order"> &gt; </a>]</td>
@@ -5088,7 +5141,7 @@ a parameter they are part of the parameter.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.13.2 Customization of the definition formatting</h3>
+<h3 class="subsection">7.14.2 Customization of the definition formatting</h3>
 
 <p>Five functions are used when formatting a definition command:
 </p>
@@ -5096,7 +5149,7 @@ a parameter they are part of the parameter.
 <dt> <strong>category name</strong></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $category <b>definition_category</b><i> $category $class $style $command</i>
-<a name="IDX281"></a>
+<a name="IDX283"></a>
 </dt>
 <dd><p>This function precise a category name associating a class 
 <var>$class</var> (if given) with <var>$category</var>. The <var>$style</var> of the
@@ -5106,7 +5159,7 @@ for type. The <var>$command</var> is the definition @-command.
 
 <dl>
 <dt><u>Function Reference:</u> $entry <b>definition_index_entry</b><i> $name $class $style $command</i>
-<a name="IDX282"></a>
+<a name="IDX284"></a>
 </dt>
 <dd><p>This function precise a name associating a class 
 <var>$class</var> (if given) with <var>$name</var>. This is used to do an index
@@ -5119,10 +5172,10 @@ for type. The <var>$command</var> is the definition @-command.
 <dt> <strong>formatting of the definition line</strong></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $line <b>def_line</b><i> $class_category_class $name $type $arguments $index_label \@arguments_array \@arguments_type_array \@unformatted_arguments_array $command $class_name $category $class $style $original_command</i>
-<a name="IDX283"></a>
+<a name="IDX285"></a>
 </dt>
 <dd><p>This function formats the definition line. <var>$class_category</var> is the category
-formatted with <a name="IDX284"></a>
+formatted with <a name="IDX286"></a>
 <code>$definition_category</code>, <var>$name</var>, <var>$type</var> and 
 <var>arguments</var> are the element of the definition line. <var>$index_label</var> is
 the text inserted at the place where an index entry appears. 
@@ -5145,7 +5198,7 @@ definition @-command.
 <dt> <strong>definition text</strong></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $definition_text <b>def_item</b><i> $text</i>
-<a name="IDX285"></a>
+<a name="IDX287"></a>
 </dt>
 <dd><p>This function formats the definition text, <var>$text</var>.
 </p></dd></dl>
@@ -5154,7 +5207,7 @@ definition @-command.
 <dt> <strong>the whole definition</strong></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $definition <b>def</b><i> $text</i>
-<a name="IDX286"></a>
+<a name="IDX288"></a>
 </dt>
 <dd><p>This function formats the whole definition. The definition line and text 
 formatted by the above functions are in <var>$text</var>.
@@ -5165,7 +5218,7 @@ formatted by the above functions are in <var>$text</var>.
 
 <hr size="6">
 <a name="Headings"></a>
-<a name="SEC75"></a>
+<a name="SEC76"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Definition-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Special-regions" title="Next section in reading order"> &gt; </a>]</td>
@@ -5182,13 +5235,13 @@ formatted by the above functions are in <var>$text</var>.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.14 Customizing headings formatting</h2>
+<h2 class="section">7.15 Customizing headings formatting</h2>
 
 <p>A function controls the formatting of sectioning element headings, 
 with the corresponding function reference:
 </p><dl>
 <dt><u>Function Reference:</u> $heading_text <b>heading</b><i> \%element_reference</i>
-<a name="IDX287"></a>
+<a name="IDX289"></a>
 </dt>
 <dd><p>The <var>\%element_reference</var> is a reference on a hash corresponding
 with the sectioning element. The following keys are of interest:
@@ -5220,7 +5273,7 @@ with the sectioning element. The following keys are of interest:
 with the following function reference (called for headings and nodes):
 </p><dl>
 <dt><u>Function Reference:</u> $result_texi <b>heading_texi</b><i> $heading_command $heading $number</i>
-<a name="IDX288"></a>
+<a name="IDX290"></a>
 </dt>
 <dd><p><var>$heading_command</var> is the sectioning @-command of that heading. 
 <var>$heading</var> is the texinfo for that heading. <var>$number</var> is the
@@ -5233,17 +5286,19 @@ texinfo text corresponding with the numbered heading.
 heading itself and even before the navigation panel is customized with the
 following function reference:
 </p><dl>
-<dt><u>Function Reference:</u> $element_label <b>element_label</b><i> $identifier \%element_reference</i>
-<a name="IDX289"></a>
+<dt><u>Function Reference:</u> $element_label <b>element_label</b><i> $identifier \%element_reference $command $unformatted_line</i>
+<a name="IDX291"></a>
 </dt>
 <dd><p><var>$identifier</var> is the identifier associated with the heading.
-<var>\%element_reference</var> is the same as above.
+<var>\%element_reference</var> is the same as above. <var>$command</var> is the @-command
+appearing on the line, and <var>$unformatted_line</var> is the line, 
+unformatted.
 </p></dd></dl>
 
 
 <hr size="6">
 <a name="Special-regions"></a>
-<a name="SEC76"></a>
+<a name="SEC77"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Headings" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Menus" title="Next section in reading order"> &gt; </a>]</td>
@@ -5260,14 +5315,14 @@ following function reference:
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.15 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</h2>
+<h2 class="section">7.16 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</h2>
 
 <p>Regions corresponding with raw text, like <code>@verbatim</code>, <code>@html</code>
 or <code>@tex</code> are formatted according to the following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $raw_region <b>raw</b><i> $command $text</i>
-<a name="IDX290"></a>
+<a name="IDX292"></a>
 </dt>
 <dd><p><var>$command</var> is the command name, <var>$text</var> is the raw text.
 </p></dd></dl>
@@ -5280,7 +5335,7 @@ function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $cartouche <b>cartouche</b><i> $text</i>
-<a name="IDX291"></a>
+<a name="IDX293"></a>
 </dt>
 <dd><p><var>$text</var> is the text appearing within the cartouche.
 </p></dd></dl>
@@ -5291,7 +5346,7 @@ it allows to prepend a string to the quotation text:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $prepended_string <b>quotation_prepend_text</b><i> $text</i>
-<a name="IDX292"></a>
+<a name="IDX294"></a>
 </dt>
 <dd><p><var>$text</var> is the argument of the quotation with @-commands not 
 interpreted. This function
@@ -5303,7 +5358,7 @@ can return a string which will be prepended to the quotation text.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $quotation <b>quotation</b><i> $quotation_text $argument_text $argument_text_texi</i>
-<a name="IDX293"></a>
+<a name="IDX295"></a>
 </dt>
 <dd><p><var>$quotation_text</var> is the quotation text, formatted, with the text 
 prepended by the function above. <var>$argument_text</var> is the argument 
@@ -5314,7 +5369,7 @@ of the <code>@quotation</code>, simply formatted.
 
 <hr size="6">
 <a name="Menus"></a>
-<a name="SEC77"></a>
+<a name="SEC78"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Special-regions" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Menu-parts" title="Next section in reading order"> &gt; </a>]</td>
@@ -5331,7 +5386,7 @@ of the <code>@quotation</code>, simply formatted.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.16 Menu formatting</h2>
+<h2 class="section">7.17 Menu formatting</h2>
 
 <p>There are two possibilities for menu formatting:
 </p>
@@ -5342,13 +5397,13 @@ in <a href="#Complex-formats">Formatting of complex formats (<code>@example</cod
 part of the menu; 
 </li></ul>
 
-<p>The simple formatting is used if <a name="IDX294"></a>
+<p>The simple formatting is used if <a name="IDX296"></a>
 <code>$SIMPLE_MENU</code> is true, 
 otherwise the format with tables is used (this is the default).
 </p>
-<p>If <a name="IDX295"></a>
+<p>If <a name="IDX297"></a>
 <code>$USE_ACCESSKEY</code> is set, the <code>accesskey</code> attribute 
-is used in anchors. In that case the <a name="IDX296"></a>
+is used in anchors. In that case the <a name="IDX298"></a>
 <code>%BUTTONS_ACCESSKEY</code>
 hash is used for the access key.
 </p>
@@ -5357,22 +5412,22 @@ parts of a menu are first described, then how to control the formatting
 of each of these parts, for each possible formatting.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Menu-parts">7.16.1 The structure of a menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  A menu consists in menu entry and menu 
+<tr><td align="left" valign="top"><a href="#Menu-parts">7.17.1 The structure of a menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  A menu consists in menu entry and menu 
                                 comments
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Menu-components-formatting">7.16.2 The formatting of the different menu components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Menu-components-formatting">7.17.2 The formatting of the different menu components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Simple-menu-formatting">7.16.3 Simple menu formatting in a preformatted environment</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      formatting of a whole menu in a simple 
+<tr><td align="left" valign="top"><a href="#Simple-menu-formatting">7.17.3 Simple menu formatting in a preformatted environment</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      formatting of a whole menu in a simple 
                                 preformatted environement
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       formatting of a whole menu in a
+<tr><td align="left" valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       formatting of a whole menu in a
                                 table environment
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Menu-parts"></a>
-<a name="SEC78"></a>
+<a name="SEC79"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Menus" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Menu-components-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -5389,7 +5444,7 @@ of each of these parts, for each possible formatting.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.16.1 The structure of a menu</h3>
+<h3 class="subsection">7.17.1 The structure of a menu</h3>
 
 <p>In <code>texi2html</code>, a menu is considered to be composed of 2 parts, the
 <em>menu entries</em> and the <em>menu comments</em>. Menu entries are further 
@@ -5426,7 +5481,7 @@ because we are in @emph}.
 
 <hr size="6">
 <a name="Menu-components-formatting"></a>
-<a name="SEC79"></a>
+<a name="SEC80"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Menu-parts" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Simple-menu-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -5443,13 +5498,13 @@ because we are in @emph}.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.16.2 The formatting of the different menu components</h3>
+<h3 class="subsection">7.17.2 The formatting of the different menu components</h3>
 
 <p>Three function references are associated with the formatting of the 
 different parts of a menu:
 </p><dl>
 <dt><u>Function Reference:</u> $link <b>menu_link</b><i> $section \%state $href $node $name $ending $has_name</i>
-<a name="IDX297"></a>
+<a name="IDX299"></a>
 </dt>
 <dd><p><var>$section</var> is the section name corresponding with the link, <var>$href</var>
 is the link hypertextual reference. <var>$href</var> may be absent. <var>\%state</var>
@@ -5465,7 +5520,7 @@ in general &lsquo;<samp>::</samp>&rsquo; followed by some spaces.
 
 <dl>
 <dt><u>Function Reference:</u> $description <b>menu_description</b><i> $description_text \%state $element_text</i>
-<a name="IDX298"></a>
+<a name="IDX300"></a>
 </dt>
 <dd><p><var>$description_text</var> is the text of the menu description. <var>\%state</var>
 should be used similarly than for the menu link. <var>$element_text</var>
@@ -5490,7 +5545,7 @@ In that case the menu description and menu comments are not formatted
 specially, but treated like normal text.
 </p><dl>
 <dt><u>Function Reference:</u> $link <b>simple_menu_link</b><i> $link_text $href $node $name $ending $has_name</i>
-<a name="IDX299"></a>
+<a name="IDX301"></a>
 </dt>
 <dd><p><var>$link_text</var> is the text corresponding with the link name, <var>$href</var>
 is the link hypertextual reference.
@@ -5502,7 +5557,7 @@ name of the node, and <var>$ending</var> is the text ending the link entry.
 
 <hr size="6">
 <a name="Simple-menu-formatting"></a>
-<a name="SEC80"></a>
+<a name="SEC81"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Menu-components-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Table-menu-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -5519,7 +5574,7 @@ name of the node, and <var>$ending</var> is the text ending the link entry.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.16.3 Simple menu formatting in a preformatted environment</h3>
+<h3 class="subsection">7.17.3 Simple menu formatting in a preformatted environment</h3>
 
 <p>If the menu is to be formatted in a single preformatted environment,
 an entry for &lsquo;<samp>menu</samp>&rsquo; and &lsquo;<samp>detailmenu</samp>&rsquo; 
@@ -5534,7 +5589,7 @@ entry is used, with:
 
 <hr size="6">
 <a name="Table-menu-formatting"></a>
-<a name="SEC81"></a>
+<a name="SEC82"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Simple-menu-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Indices" title="Next section in reading order"> &gt; </a>]</td>
@@ -5551,28 +5606,28 @@ entry is used, with:
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.16.4 The formatting of the menu in a table</h3>
+<h3 class="subsection">7.17.4 The formatting of the menu in a table</h3>
 
 <p>In the default case, the name of the section corresponding with the 
-node is used instead of the node name. If <a name="IDX300"></a>
+node is used instead of the node name. If <a name="IDX302"></a>
 <code>$NODE_NAME_IN_MENU</code> is 
-true, however, node names are used. If <a name="IDX301"></a>
+true, however, node names are used. If <a name="IDX303"></a>
 <code>$AVOID_MENU_REDUNDANCY</code>
 is true and menu entry equal menu description the description isn&rsquo;t printed.
 This is the default. Likewise, if node or section name equal entry name, 
 do not print entry name.
 </p>
-<p>A symbol, <a name="IDX302"></a>
+<p>A symbol, <a name="IDX304"></a>
 <code>$MENU_SYMBOL</code> is put at the beginning of menu entries
 when the node name is used. The default is &lsquo;<samp>&amp;bull;</samp>&rsquo;.
-If <a name="IDX303"></a>
+If <a name="IDX305"></a>
 <code>$UNNUMBERED_SYMBOL_IN_MENU</code> is true it is 
 also put at the beginning of unnumbered section names. This is not
 done by default.
 </p>
 <p>The menu comments are considered to be preformatted text. The style 
 associated with this preformatted text is determined by 
-<a name="IDX304"></a>
+<a name="IDX306"></a>
 <code>$MENU_PRE_STYLE</code>. Default is &lsquo;<samp>font-family: serif</samp>&rsquo;.
 The css class associated with menu comments is <code>menu-comments</code>.
 </p>
@@ -5581,7 +5636,7 @@ or a detailmenu in that case:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $menu <b>menu_command</b><i> $command $menu_components_text</i>
-<a name="IDX305"></a>
+<a name="IDX307"></a>
 </dt>
 <dd><p><var>$command</var> is the menu command, currently &lsquo;<samp>menu</samp>&rsquo; or &lsquo;<samp>detailmenu</samp>&rsquo;.
 <var>$menu_components_text</var> is the formatted menu components text, obtained
@@ -5590,7 +5645,7 @@ as explained above.
 
 <hr size="6">
 <a name="Indices"></a>
-<a name="SEC82"></a>
+<a name="SEC83"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Table-menu-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Index-entry-place" title="Next section in reading order"> &gt; </a>]</td>
@@ -5607,7 +5662,7 @@ as explained above.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.17 Indices formatting</h2>
+<h2 class="section">7.18 Indices formatting</h2>
 
 <p>Two different things needs to be handled for indices formatting, the place
 where the index term appears, the index entry, and the index list itself.
@@ -5615,16 +5670,16 @@ The indexing commands like <code>@cindex</code> determines where index entries
 appear, and the index list is printed with a <code>@printindex</code> command. 
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Index-entry-place">7.17.1 Formatting of index entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Index entries in the main document are 
+<tr><td align="left" valign="top"><a href="#Index-entry-place">7.18.1 Formatting of index entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Index entries in the main document are 
                                   targets for hypertext references
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Index-list">7.17.2 Customizing the formatting of index lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Customizing the formatting of the index list
+<tr><td align="left" valign="top"><a href="#Index-list">7.18.2 Customizing the formatting of index lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Customizing the formatting of the index list
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Index-entry-place"></a>
-<a name="SEC83"></a>
+<a name="SEC84"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Indices" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Index-list" title="Next section in reading order"> &gt; </a>]</td>
@@ -5641,7 +5696,7 @@ appear, and the index list is printed with a <code>@printindex</code> command.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.17.1 Formatting of index entries</h3>
+<h3 class="subsection">7.18.1 Formatting of index entries</h3>
 
 <p>Index entry places in the main text may be the target for hypertext 
 references. Their formatting
@@ -5650,7 +5705,7 @@ reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $target <b>index_entry_label</b><i> $identifier $preformatted $entry $index_name  $index_command $texi_entry $formatted_entry</i>
-<a name="IDX306"></a>
+<a name="IDX308"></a>
 </dt>
 <dd><p><var>$identifier</var> should be used to create
 a target for links (typically associated with a name or id 
@@ -5667,7 +5722,7 @@ a table. <var>$texi_entry</var> is th eindex entry with @-commands, and
 formatted using the following function reference:
 </p><dl>
 <dt><u>Function Reference:</u> $index_entry <b>index_entry_command</b><i> $command $index_name $label $entry_texi $entry_formatted</i>
-<a name="IDX307"></a>
+<a name="IDX309"></a>
 </dt>
 <dd><p><var>$command</var>, <var>$index_name</var>, <var>$entry_texi</var> and <var>$entry_formatted</var>
 are the same as above, and <var>$label</var> is what could be used as a label,
@@ -5676,7 +5731,7 @@ formatted using the function above.
 
 <hr size="6">
 <a name="Index-list"></a>
-<a name="SEC84"></a>
+<a name="SEC85"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Index-entry-place" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Floats-and-lists-of-floats" title="Next section in reading order"> &gt; </a>]</td>
@@ -5693,7 +5748,7 @@ formatted using the function above.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.17.2 Customizing the formatting of index lists</h3>
+<h3 class="subsection">7.18.2 Customizing the formatting of index lists</h3>
 
 <p>The index entries are sorted alphabetically. A whole index list is 
 considered to be composed of letter entries. A letter entry is composed
@@ -5704,7 +5759,7 @@ be a non alphabetical character, but we call it letter here.
 and should be used to jump directly to a letter entry. Indices lists
 may be split across pages, thus the different letters may appear on different
 files. The number of index entries appearing on each page is determined
-by a variable <a name="IDX308"></a>
+by a variable <a name="IDX310"></a>
 <code>$SPLIT_INDEX</code> if set. The default is to split
 indices after 100 entries.
 </p>
@@ -5715,7 +5770,7 @@ function references:
 <dt> <em>formatting of a letter in a summary</em></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $letter <b>summary_letter</b><i> $letter $file $identifier</i>
-<a name="IDX309"></a>
+<a name="IDX311"></a>
 </dt>
 <dd><p>This function is used to format a letter appearing in a summary, refering
 to a letter entry in the index list.
@@ -5730,7 +5785,7 @@ letter entry.
 <dt> <em>formatting of a summary</em></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $summary <b>index_summary</b><i> \@alphabetical_letters \@nonalphabetical_letters</i>
-<a name="IDX310"></a>
+<a name="IDX312"></a>
 </dt>
 <dd><p><var>\@alphabetical_letters</var> and <var>\@nonalphabetical_letters</var> contain the
 formatted summary letters, formatted with the above function.
@@ -5740,7 +5795,7 @@ formatted summary letters, formatted with the above function.
 <dt> <em>formatting of an index entry</em></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $entry <b>index_entry</b><i> $entry_href $entry_text $section_href $section_heading</i>
-<a name="IDX311"></a>
+<a name="IDX313"></a>
 </dt>
 <dd><p><var>$entry_href</var> is a reference to the place where the index entry 
 appeared, <var>$entry_text</var> is the corresponding text. <var>$section_href</var>
@@ -5752,7 +5807,7 @@ the index entry, <var>$section_heading</var> is the heading of the element.
 <dt> <em>formatting of letter entry</em></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $letter_entry <b>index_letter</b><i> $letter $identifier $index_entries_text</i>
-<a name="IDX312"></a>
+<a name="IDX314"></a>
 </dt>
 <dd><p>This function formats a letter entry, consisting in all the index entries 
 beginning with this letter. <var>$letter</var> is the letter, <var>$identifier</var> 
@@ -5765,7 +5820,7 @@ described above.
 <dt> <em>formatting of whole index</em></dt>
 <dd><dl>
 <dt><u>Function Reference:</u> $index <b>print_index</b><i> $index_text $index_name</i>
-<a name="IDX313"></a>
+<a name="IDX315"></a>
 </dt>
 <dd><p><var>$index_text</var> is the text of all the index entries grouped by letter
 appearing in that page formatted as above. It is undef if there are
@@ -5777,7 +5832,7 @@ the index, the argument of <code>@printindex</code>.
 
 <hr size="6">
 <a name="Floats-and-lists-of-floats"></a>
-<a name="SEC85"></a>
+<a name="SEC86"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Index-list" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Floats" title="Next section in reading order"> &gt; </a>]</td>
@@ -5794,7 +5849,7 @@ the index, the argument of <code>@printindex</code>.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.18 Floats and lists of floats</h2>
+<h2 class="section">7.19 Floats and lists of floats</h2>
 
 <p>Floats appear in the <code>@float</code> environment, optionaly with a style
 and a label, and with optionnal <code>@caption</code> and <code>@shortcaption</code>. 
@@ -5850,15 +5905,15 @@ or a reference.
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Floats">7.18.1 Formatting a float</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                           Formatting of floats
+<tr><td align="left" valign="top"><a href="#Floats">7.19.1 Formatting a float</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                           Formatting of floats
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Lists-of-floats">7.18.2 Formatting lists of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Formatting the lists of floats 
+<tr><td align="left" valign="top"><a href="#Lists-of-floats">7.19.2 Formatting lists of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Formatting the lists of floats 
 </td></tr>
 </table>
 
 <hr size="6">
 <a name="Floats"></a>
-<a name="SEC86"></a>
+<a name="SEC87"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Floats-and-lists-of-floats" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Lists-of-floats" title="Next section in reading order"> &gt; </a>]</td>
@@ -5875,7 +5930,7 @@ or a reference.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.18.1 Formatting a float</h3>
+<h3 class="subsection">7.19.1 Formatting a float</h3>
 
 <p>First there is an occasion to construct a texinfo text for the caption, using
 the caption texinfo lines and the informations in the float structure.
@@ -5884,7 +5939,7 @@ is used here:
 </p>
 <dl>
 <dt><u>Function Reference:</u> (\@caption_lines_returned, \@shortcaption_lines_returned) <b>caption_shortcaption</b><i> \%float \@caption_lines \@shortcaption_lines</i>
-<a name="IDX314"></a>
+<a name="IDX316"></a>
 </dt>
 <dd><p><var>\%float</var> is the structure defined above. <var>\@caption_lines</var> and 
 <var>\@shortcaption_lines</var> are references on arrays containing the 
@@ -5897,7 +5952,7 @@ containing the texinfo lines for the caption and shortcaption.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $text <b>float</b><i> $float_text \%float $caption_text $shortcaption_text</i>
-<a name="IDX315"></a>
+<a name="IDX317"></a>
 </dt>
 <dd><p><var>$float_text</var> is the text appearing within the <code>@float</code>, formatted.
 <var>\%float</var> is still the structure defined above. <var>$caption_text</var> and
@@ -5910,7 +5965,7 @@ with t hefollowing function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $text <b>caption_shortcaption_command</b><i> $command $formatted_caption \@texi_lines \%float</i>
-<a name="IDX316"></a>
+<a name="IDX318"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command, &lsquo;<samp>caption</samp>&rsquo; or &lsquo;<samp>shortcaption</samp>&rsquo;.
 <var>$formatted_caption</var> is the caption text, formatted, while 
@@ -5924,7 +5979,7 @@ this time without any formatting.
 
 <hr size="6">
 <a name="Lists-of-floats"></a>
-<a name="SEC87"></a>
+<a name="SEC88"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Floats" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Footnotes" title="Next section in reading order"> &gt; </a>]</td>
@@ -5941,7 +5996,7 @@ this time without any formatting.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">7.18.2 Formatting lists of floats</h3>
+<h3 class="subsection">7.19.2 Formatting lists of floats</h3>
 
 <p>A list of floats is introduced by <code>@listoffloats</code>. The argument of
 <code>@listoffloats</code> is the <em>style</em>. First the style texinfo can be 
@@ -5949,7 +6004,7 @@ modified with the following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $style_texi_returned <b>listoffloats_style</b><i> $style_texi</i>
-<a name="IDX317"></a>
+<a name="IDX319"></a>
 </dt>
 <dd><p><var>$style_texi</var> is the <code>@listoffloats</code> argument with texinfo 
 @-commands kept. It is possible to make changes to the <var>$style_texi</var> and
@@ -5963,7 +6018,7 @@ are formatted in the main program, with the following function references:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $float_style_texi_returned <b>listoffloats_float_style</b><i> $style_texi \%float</i>
-<a name="IDX318"></a>
+<a name="IDX320"></a>
 </dt>
 <dd><p><var>$style_texi</var> is the style, and <var>\%float</var> is the structure described 
 above. This function reference returns a style to be formatted in the
@@ -5972,7 +6027,7 @@ main program.
 
 <dl>
 <dt><u>Function Reference:</u> $caption_texi_returned <b>listoffloats_caption</b><i> \%float</i>
-<a name="IDX319"></a>
+<a name="IDX321"></a>
 </dt>
 <dd><p><var>\%float</var> is the structure described 
 above. This function reference returns a caption to be formatted in the
@@ -5983,7 +6038,7 @@ main program.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $listoffloats_entry <b>listoffloats_entry</b><i> $style_texi \%float $float_style $caption $href</i>
-<a name="IDX320"></a>
+<a name="IDX322"></a>
 </dt>
 <dd><p><var>$style_texi</var> is the style with @-commands, <var>$float_style</var> is the
 style returned by the above function and formatted. <var>$caption</var> is the
@@ -5996,7 +6051,7 @@ the float location.
 </p>
 <dl>
 <dt><u>Function Reference:</u> $listoffloats <b>listoffloats</b><i> $style_texi $style \@listoffloats_entries</i>
-<a name="IDX321"></a>
+<a name="IDX323"></a>
 </dt>
 <dd><p><var>$style_texi</var> is the style with @-commands, <var>$style</var> is the
 style returned by the above function and formatted. The array reference 
@@ -6006,7 +6061,7 @@ function.
 
 <hr size="6">
 <a name="Footnotes"></a>
-<a name="SEC88"></a>
+<a name="SEC89"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lists-of-floats" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Customizing-format-opening" title="Next section in reading order"> &gt; </a>]</td>
@@ -6023,7 +6078,7 @@ function.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.19 Customizing the footnotes formatting</h2>
+<h2 class="section">7.20 Customizing the footnotes formatting</h2>
 
 <p>Each footnote is associated with a footnote entry. Several footnote entries
 are grouped in a footnote section. When a footnote appears, two things must
@@ -6035,7 +6090,7 @@ of the footnotes:
 </p>
 <dl>
 <dt><u>Function Reference:</u> (\@lines $text_for_document) <b>foot_line_and_ref</b><i> $number_in_doc $number_in_page $footnote_id $place_id $document_file $footnote_file \@lines \%state</i>
-<a name="IDX322"></a>
+<a name="IDX324"></a>
 </dt>
 <dd><p><var>$number_in_doc</var> is the footnote number in the whole document, 
 <var>$number_in_page</var> is the footnote number in the current page.
@@ -6068,7 +6123,7 @@ the determination of the footnote locations, <a href="#Page-layout-options">Page
 </p>
 <dl>
 <dt><u>Function Reference:</u> <b>foot_section</b><i> \@footnotes_lines</i>
-<a name="IDX323"></a>
+<a name="IDX325"></a>
 </dt>
 <dd><p>This function formats a group of footnotes. <var>\@footnotes_lines</var> is a
 reference on an array holding the lines of all the footnote entries
@@ -6077,7 +6132,7 @@ formatted as explained above. This function modifies the reference.
 
 <hr size="6">
 <a name="Customizing-format-opening"></a>
-<a name="SEC89"></a>
+<a name="SEC90"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Footnotes" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Bypassing-normal-formatting" title="Next section in reading order"> &gt; </a>]</td>
@@ -6094,7 +6149,7 @@ formatted as explained above. This function modifies the reference.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.20 Customizing format opening</h2>
+<h2 class="section">7.21 Customizing format opening</h2>
 
 <p>The following function reference is called when a format is opened.
 A format is any @-command that ends with a <code>@end</code> except 
@@ -6104,7 +6159,7 @@ and <code>@html</code>).
 </p>
 <dl>
 <dt><u>Function Reference:</u> $line <b>begin_format_texi</b><i> $command $line \%state</i>
-<a name="IDX324"></a>
+<a name="IDX326"></a>
 </dt>
 <dd><p>The <var>$command</var> is the format command, the <var>$line</var> is the 
 line following the @-command, <var>\%state</var> is a reference on
@@ -6118,7 +6173,7 @@ See <a href="#Multitable-formatting">Multitable formatting</a>.
 
 <hr size="6">
 <a name="Bypassing-normal-formatting"></a>
-<a name="SEC90"></a>
+<a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Customizing-format-opening" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Handling-special-regions" title="Next section in reading order"> &gt; </a>]</td>
@@ -6135,7 +6190,7 @@ See <a href="#Multitable-formatting">Multitable formatting</a>.
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.21 Bypassing normal formatting</h2>
+<h2 class="section">7.22 Bypassing normal formatting</h2>
 
 <p>It is possible to bypass completely the normal formatting of @-commands 
 with braces and raw regions 
@@ -6153,7 +6208,7 @@ some cleaning after the expansion pass. These possibilities are used for
 the interface to LaTeX2HTML 
 (see section <a href="#Expanding-TeX-regions">Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a>), and the examples are taken from that use.  
 </p>
-<p>The @-commands that are keys of the <a name="IDX325"></a>
+<p>The @-commands that are keys of the <a name="IDX327"></a>
 <code>%command_handler</code> hash 
 are collected in the collecting pass and expanded in the expansion
 pass using user defined functions. The associated value is a reference on
@@ -6181,7 +6236,7 @@ braces:
 </p>
 <dl>
 <dt><u>Function Reference:</u> $status <b>$command_handler</b><i>{&rsquo;$command&rsquo;}-&gt;{&rsquo;init&rsquo;} $command $text $count</i>
-<a name="IDX326"></a>
+<a name="IDX328"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command name, <var>$text</var> is the text appearing 
 within the @-command. <var>$count</var> is a counter counting how many times
@@ -6192,7 +6247,7 @@ discarded.
 
 <dl>
 <dt><u>Function Reference:</u> $result <b>$command_handler</b><i>{&rsquo;$command&rsquo;}-&gt;{&rsquo;expand&rsquo;} $command $count $state $text</i>
-<a name="IDX327"></a>
+<a name="IDX329"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command name, <var>$count</var> is a counter counting 
 how many times this @-command appeared. <var>$state</var> is a reference on a 
@@ -6203,20 +6258,20 @@ empty. <var>$result</var> is the expanded resulting text.
 <p>There are three places for user defined functions, associated with arrays:
 </p><dl compact="compact">
 <dt> <code>@command_handler_init</code>
-<a name="IDX328"></a>
+<a name="IDX330"></a>
 </dt>
 <dd><p>The function references in that array are called before the collecting pass.
 At that time the information available is essentially the file names.
 </p></dd>
 <dt> <code>@command_handler_process</code> 
-<a name="IDX329"></a>
+<a name="IDX331"></a>
 </dt>
 <dd><p>The function references in that array are called between the collecting
 pass and the expansion pass. At that time all the special @-commands  
 have been collected as explained above but no output has been produced.
 </p></dd>
 <dt> <code>@command_handler_finish</code>
-<a name="IDX330"></a>
+<a name="IDX332"></a>
 </dt>
 <dd><p>he function references in that array are called after the end of the
 output generation.
@@ -6233,7 +6288,7 @@ push @command_handler_finish, \&amp;Texi2HTML::LaTeX2HTML::finish;
 
 <hr size="6">
 <a name="Handling-special-regions"></a>
-<a name="SEC91"></a>
+<a name="SEC92"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Bypassing-normal-formatting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Other-and-unknown-commands" title="Next section in reading order"> &gt; </a>]</td>
@@ -6250,18 +6305,18 @@ push @command_handler_finish, \&amp;Texi2HTML::LaTeX2HTML::finish;
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.22 Handling special regions</h2>
+<h2 class="section">7.23 Handling special regions</h2>
 
 <p>Special regions <code>@titlepage</code>, <code>@documentdescription</code> and
  <code>@copying</code> are removed from the document before the last pass in the
 default case. They can be kept if the value associated with the @-command
-in the <a name="IDX331"></a>
+in the <a name="IDX333"></a>
 <code>%region_formats_kept</code> hash is true.
 </p>
 <p>The <code>@insertcopying</code> @-command is formatted by 
 </p><dl>
 <dt><u>Function Reference:</u> $insertcopying <b>insertcopying</b><i> $text</i>
-<a name="IDX332"></a>
+<a name="IDX334"></a>
 </dt>
 <dd><p><var>$text</var> is the text appearing in <code>@copying</code>, formatted.
 </p></dd></dl>
@@ -6271,7 +6326,7 @@ in the <a name="IDX331"></a>
 
 <hr size="6">
 <a name="Other-and-unknown-commands"></a>
-<a name="SEC92"></a>
+<a name="SEC93"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Handling-special-regions" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Internationalization" title="Next section in reading order"> &gt; </a>]</td>
@@ -6288,7 +6343,7 @@ in the <a name="IDX331"></a>
 <td valign="middle" align="left">[<a href="#Indexop" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">7.23 Customizing other commands, and unknown commands</h2>
+<h2 class="section">7.24 Customizing other commands, and unknown commands</h2>
 
 
 
@@ -6309,7 +6364,7 @@ them such that it is possible to handle them specially, with the
 same function than the one used for unknown commands.
 </p>
 <p>Those special commands without braces are the key of a hash:
-<a name="IDX333"></a>
+<a name="IDX335"></a>
 <code>%misc_command</code>. The associated value is a reference on a
 hash enabling to set the properties of these commands. The
 keys of this hash reference is the name of a property, the value
@@ -6363,17 +6418,17 @@ action for this macro isn&rsquo;t done.
 
 
 <p>Commands which don&rsquo;t appear in the hashes 
-<a name="IDX334"></a>
-<code>%simple_map</code>, <a name="IDX335"></a>
-<code>%simple_map_pre</code>,
 <a name="IDX336"></a>
+<code>%simple_map</code>, <a name="IDX337"></a>
+<code>%simple_map_pre</code>,
+<a name="IDX338"></a>
 <code>%simple_map_texi</code> and <code>%misc_command</code>, or that appear in
 <code>%misc_command</code> but with <code>keep</code> true are processed by the 
 following function reference:
 </p>
 <dl>
 <dt><u>Function Reference:</u> ($result_line, $result, $result_text, $message) <b>unknown</b><i> $command $line $pass</i>
-<a name="IDX337"></a>
+<a name="IDX339"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command, <var>$line</var> is the line following the 
 <var>$command</var>. <var>$pass</var> is the pass of texi2html (see section <a href="#Three-passes">Three passes: macro expansion, document structure and output</a>). 
@@ -6386,16 +6441,16 @@ with line number added by <code>texi2html</code>.
 </p></dd></dl>
 
 <p>Commands with braces not specified above 
-nor in <a name="IDX338"></a>
-<code>%style_map</code>, <a name="IDX339"></a>
+nor in <a name="IDX340"></a>
+<code>%style_map</code>, <a name="IDX341"></a>
 <code>%style_map_pre</code> and
-<a name="IDX340"></a>
+<a name="IDX342"></a>
 <code>%style_map_texi</code> are processed 
 by the following function reference
 </p>
 <dl>
 <dt><u>Function Reference:</u> ($result, $result_text, $message) <b>unknown_style</b><i> $command $text</i>
-<a name="IDX341"></a>
+<a name="IDX343"></a>
 </dt>
 <dd><p><var>$command</var> is the @-command, <var>$text</var> is the text appearing within 
 the braces (allready formatted). <var>$result</var> is a boolean. If it is true then
@@ -6411,7 +6466,7 @@ with line number added by <code>texi2html</code>.
 
 <hr size="6">
 <a name="Internationalization"></a>
-<a name="SEC93"></a>
+<a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Other-and-unknown-commands" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Translating-strings" title="Next section in reading order"> &gt; </a>]</td>
@@ -6444,7 +6499,7 @@ strings.
 
 <hr size="6">
 <a name="Translating-strings"></a>
-<a name="SEC94"></a>
+<a name="SEC95"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Internationalization" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Supported-language" title="Next section in reading order"> &gt; </a>]</td>
@@ -6474,7 +6529,7 @@ strings.
 
 <hr size="6">
 <a name="Supported-language"></a>
-<a name="SEC95"></a>
+<a name="SEC96"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Translating-strings" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#New-language" title="Next section in reading order"> &gt; </a>]</td>
@@ -6510,7 +6565,7 @@ by <code>make</code>.
 </p>
 <hr size="6">
 <a name="New-language"></a>
-<a name="SEC96"></a>
+<a name="SEC97"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Supported-language" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Adding-new-strings" title="Next section in reading order"> &gt; </a>]</td>
@@ -6552,7 +6607,7 @@ take precedence (see section <a href="#Using-init-files">Use initialization file
 </p>
 <hr size="6">
 <a name="Adding-new-strings"></a>
-<a name="SEC97"></a>
+<a name="SEC98"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#New-language" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Incompatibilities" title="Next section in reading order"> &gt; </a>]</td>
@@ -6608,7 +6663,7 @@ is added to &lsquo;<tt>Makefile.am</tt>&rsquo; in the <code>i18n_files</code> va
 </p>
 <hr size="6">
 <a name="Incompatibilities"></a>
-<a name="SEC98"></a>
+<a name="SEC99"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Adding-new-strings" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Specificities" title="Next section in reading order"> &gt; </a>]</td>
@@ -6754,7 +6809,7 @@ behaviour. Enclosing in <code>@ifnothtml</code> would be much cleaner.
 
 <hr size="6">
 <a name="Specificities"></a>
-<a name="SEC99"></a>
+<a name="SEC100"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Incompatibilities" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Indexop" title="Next section in reading order"> &gt; </a>]</td>
@@ -6891,7 +6946,7 @@ text
 
 <hr size="6">
 <a name="Indexop"></a>
-<a name="SEC100"></a>
+<a name="SEC101"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Specificities" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Indexvr" title="Next section in reading order"> &gt; </a>]</td>
@@ -6909,68 +6964,68 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">D. Command Line Option Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC100_0" class="summary-letter"><b>C</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC101_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC100_1" class="summary-letter"><b>D</b></a>
+<a href="#SEC101_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC100_2" class="summary-letter"><b>E</b></a>
+<a href="#SEC101_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC100_3" class="summary-letter"><b>F</b></a>
+<a href="#SEC101_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC100_4" class="summary-letter"><b>H</b></a>
+<a href="#SEC101_4" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC100_5" class="summary-letter"><b>I</b></a>
+<a href="#SEC101_5" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC100_6" class="summary-letter"><b>L</b></a>
+<a href="#SEC101_6" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC100_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC101_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC100_8" class="summary-letter"><b>N</b></a>
+<a href="#SEC101_8" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC100_9" class="summary-letter"><b>O</b></a>
+<a href="#SEC101_9" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC100_10" class="summary-letter"><b>P</b></a>
+<a href="#SEC101_10" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC100_11" class="summary-letter"><b>S</b></a>
+<a href="#SEC101_11" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC100_12" class="summary-letter"><b>T</b></a>
+<a href="#SEC101_12" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC100_13" class="summary-letter"><b>U</b></a>
+<a href="#SEC101_13" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC100_14" class="summary-letter"><b>V</b></a>
+<a href="#SEC101_14" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC100_15" class="summary-letter"><b>W</b></a>
+<a href="#SEC101_15" class="summary-letter"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-op">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_0">C</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_0">C</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX60">css-include=<var>file</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX62">css-ref=<var>URL</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_1">D</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_1">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX66">def-table</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX53">doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX85">document-language</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX249">document-language</a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX251">document-language</a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX41">D<var>var</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_2">E</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_2">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX4">enable-translations</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX7">error-limit=<var>num</var></a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_3">F</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_3">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX51">footnote-style</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX47">frames</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX55">frameset-doctype</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX54">frameset-doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_4">H</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_4">H</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX9">help</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX64">html-xref-prefix=<var>path</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_5">I</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_5">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX45">I<var>dir</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX34">if&lt;region&gt;</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX148">include-css</a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
@@ -6978,17 +7033,17 @@ text
 <tr><td></td><td valign="top"><a href="#IDX83">init-file</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX58">iso</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_6">L</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_6">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX74">l2h</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX79">l2h-file</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX75">l2h-l2h=<var>program</var></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX77">l2h-tmp</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX39">lang=<var>lang</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_7">M</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_7">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX6">menu</a></td><td valign="top"><a href="#Invoking-texi2html">4. Invoking <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_8">N</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_8">N</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX49">no-headers</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX35">no-if&lt;region&gt;</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX30">node-files</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
@@ -6996,79 +7051,79 @@ text
 <tr><td></td><td valign="top"><a href="#IDX37">nomenu</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX70">number-sections</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_9">O</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_9">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX18">output</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX20">output</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_10">P</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_10">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX43">P<var>dir</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX1">pkgdatadir=<var>dir</var></a></td><td valign="top"><a href="#Installing">3.3 Installing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX80">pkgdatadir=dir</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX21">prefix</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_11">S</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_11">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX23">short-ext</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX68">short-ref</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX12">split</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX81">sysconfdir=dir</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_12">T</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_12">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX27">toc-file</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX72">toc-links</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX25">top-file</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX32">transliterate-file-names</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_13">U</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_13">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX14">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX16">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX17">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX42">U<var>var</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_14">V</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_14">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX10">verbose</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX11">version</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC100_15">W</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC101_15">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX2">with-unicode</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX3">with-unidecode</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC100_0" class="summary-letter"><b>C</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC101_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC100_1" class="summary-letter"><b>D</b></a>
+<a href="#SEC101_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC100_2" class="summary-letter"><b>E</b></a>
+<a href="#SEC101_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC100_3" class="summary-letter"><b>F</b></a>
+<a href="#SEC101_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC100_4" class="summary-letter"><b>H</b></a>
+<a href="#SEC101_4" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC100_5" class="summary-letter"><b>I</b></a>
+<a href="#SEC101_5" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC100_6" class="summary-letter"><b>L</b></a>
+<a href="#SEC101_6" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC100_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC101_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC100_8" class="summary-letter"><b>N</b></a>
+<a href="#SEC101_8" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC100_9" class="summary-letter"><b>O</b></a>
+<a href="#SEC101_9" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC100_10" class="summary-letter"><b>P</b></a>
+<a href="#SEC101_10" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC100_11" class="summary-letter"><b>S</b></a>
+<a href="#SEC101_11" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC100_12" class="summary-letter"><b>T</b></a>
+<a href="#SEC101_12" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC100_13" class="summary-letter"><b>U</b></a>
+<a href="#SEC101_13" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC100_14" class="summary-letter"><b>V</b></a>
+<a href="#SEC101_14" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC100_15" class="summary-letter"><b>W</b></a>
+<a href="#SEC101_15" class="summary-letter"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
 <a name="Indexvr"></a>
-<a name="SEC101"></a>
+<a name="SEC102"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Indexop" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Indexcp" title="Next section in reading order"> &gt; </a>]</td>
@@ -7086,43 +7141,43 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">E. Variable Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC101_0" class="summary-letter"><b>$</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC102_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#SEC101_1" class="summary-letter"><b>%</b></a>
+<a href="#SEC102_1" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC101_2" class="summary-letter"><b>@</b></a>
+<a href="#SEC102_2" class="summary-letter"><b>@</b></a>
 </td></tr></table>
 <table border="0" class="index-vr">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC101_0">$</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC102_0">$</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX150"><code>$AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX189"><code>$AFTER_OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX191"><code>$AFTER_TOC_LINES</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX91"><code>$anchor</code></a></td><td valign="top"><a href="#Redefining-functions">5.2 Redefining functions in initialization files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX239"><code>$anchor</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.5 Formatting of special simple commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX237"><code>$anchor_label</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.5 Formatting of special simple commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX301"><code>$AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX241"><code>$anchor</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX239"><code>$anchor_label</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX303"><code>$AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX188"><code>$BEFORE_OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX190"><code>$BEFORE_TOC_LINES</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX96"><code>$BIG_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX137"><code>$BODYTEXT</code></a></td><td valign="top"><a href="#Output-initialization">6.5 Preparing the output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX154"><code>$BODYTEXT</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX272"><code>$cell</code></a></td><td valign="top"><a href="#Table-and-list-items">7.12.1 Formatting individual table and list items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX233"><code>$CLOSE_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#Hash-reference-interface">7.4.1 An interface for commands formatting with a hash reference</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX235"><code>$CLOSE_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.4.2 An interface for commands formatting with a string</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX263"><code>$complex_format_map</code></a></td><td valign="top"><a href="#Complex-formats">7.11 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX274"><code>$cell</code></a></td><td valign="top"><a href="#Table-and-list-items">7.13.1 Formatting individual table and list items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX235"><code>$CLOSE_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#Hash-reference-interface">7.5.1 An interface for commands formatting with a hash reference</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX237"><code>$CLOSE_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.5.2 An interface for commands formatting with a string</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX265"><code>$complex_format_map</code></a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX143"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX145"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX147"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX171"><code>$DATE</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX279"><code>$def_always_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX278"><code>$def_argument_separator_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX280"><code>$def_in_type_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX281"><code>$def_always_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX280"><code>$def_argument_separator_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX282"><code>$def_in_type_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX67"><code>$DEF_TABLE</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX90"><code>$DEFAULT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX94"><code>$DEFAULT_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX284"><code>$definition_category</code></a></td><td valign="top"><a href="#Definition-formatting">7.13.2 Customization of the definition formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX286"><code>$definition_category</code></a></td><td valign="top"><a href="#Definition-formatting">7.14.2 Customization of the definition formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX186"><code>$DO_CONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX187"><code>$DO_SCONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX56"><code>$DOCTYPE</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
@@ -7145,21 +7200,21 @@ text
 <tr><td></td><td valign="top"><a href="#IDX78"><code>$L2H_TMP</code></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX40"><code>$LANG</code></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX84"><code>$LANG</code></a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX250"><code>$LANG</code></a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX251"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX252"><code>$LANG</code></a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX253"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#Translating-strings"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX304"><code>$MENU_PRE_STYLE</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX302"><code>$MENU_SYMBOL</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX306"><code>$MENU_PRE_STYLE</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX304"><code>$MENU_SYMBOL</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX95"><code>$MIDDLE_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX180"><code>$misc_element_label</code></a></td><td valign="top"><a href="#Special-pages-content">6.11.1 Customizing the content of the special pages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX193"><code>$NO_BULLET_LIST_ATTRIBUTE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX192"><code>$NO_BULLET_LIST_STYLE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX31"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX215"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#File-names">6.12 Customizing the file names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX300"><code>$NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX302"><code>$NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX71"><code>$NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX232"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#Hash-reference-interface">7.4.1 An interface for commands formatting with a hash reference</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX234"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.4.2 An interface for commands formatting with a string</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX234"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#Hash-reference-interface">7.5.1 An interface for commands formatting with a hash reference</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX236"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.5.2 An interface for commands formatting with a string</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX19"><code>$OUT</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX88"><code>$OUT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX152"><code>$OUT_ENCODING</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
@@ -7185,10 +7240,10 @@ text
 <tr><td></td><td valign="top"><a href="#IDX69"><code>$SHORT_REF</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX24"><code>$SHORTEXTN</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX38"><code>$SHOW_MENU</code></a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX294"><code>$SIMPLE_MENU</code></a></td><td valign="top"><a href="#Menus">7.16 Menu formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX296"><code>$SIMPLE_MENU</code></a></td><td valign="top"><a href="#Menus">7.17 Menu formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX93"><code>$SMALL_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX13"><code>$SPLIT</code></a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX308"><code>$SPLIT_INDEX</code></a></td><td valign="top"><a href="#Index-list">7.17.2 Customizing the formatting of index lists</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX310"><code>$SPLIT_INDEX</code></a></td><td valign="top"><a href="#Index-list">7.18.2 Customizing the formatting of index lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Translating-strings"><code>$T2H_OBSOLETE_STRINGS</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX110"><code>$Texi2HTML::NODE{Next}</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX130"><code>$Texi2HTML::OVERVIEW</code></a></td><td valign="top"><a href="#HEAD4">Section lines</a></td></tr>
@@ -7205,9 +7260,9 @@ text
 <tr><td></td><td valign="top"><a href="#IDX26"><code>$TOP_FILE</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX97"><code>$TOP_HEADING</code></a></td><td valign="top"><a href="#HEAD1">Element labels</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX33"><code>$TRANSLITERATE_NODE</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX303"><code>$UNNUMBERED_SYMBOL_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX305"><code>$UNNUMBERED_SYMBOL_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX115"><code>$USE_ACCESSKEY</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX295"><code>$USE_ACCESSKEY</code></a></td><td valign="top"><a href="#Menus">7.16 Menu formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX297"><code>$USE_ACCESSKEY</code></a></td><td valign="top"><a href="#Menus">7.17 Menu formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX59"><code>$USE_ISO</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX155"><code>$USE_LINKS</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX124"><code>$USE_NODE_TARGET</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
@@ -7220,47 +7275,48 @@ text
 <tr><td></td><td valign="top"><a href="#IDX106"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX135"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#Global-functions">6.4.3 Function usefull in page formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC101_1">%</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX231"><code>%accent_map</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a></td></tr>
+<tr><th><a name="SEC102_1">%</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX233"><code>%accent_map</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX112"><code>%ACTIVE_ICONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX116"><code>%BUTTONS_ACCESSKEY</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX296"><code>%BUTTONS_ACCESSKEY</code></a></td><td valign="top"><a href="#Menus">7.16 Menu formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX298"><code>%BUTTONS_ACCESSKEY</code></a></td><td valign="top"><a href="#Menus">7.17 Menu formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX140"><code>%BUTTONS_GOTO</code></a></td><td valign="top"><a href="#Output-initialization">6.5 Preparing the output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX114"><code>%BUTTONS_NAME</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX139"><code>%BUTTONS_NAME</code></a></td><td valign="top"><a href="#Output-initialization">6.5 Preparing the output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX118"><code>%BUTTONS_REL</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX157"><code>%BUTTONS_REL</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX325"><code>%command_handler</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX228"><code>%colon_command_punctuation_characters</code></a></td><td valign="top"><a href="#Punctuation-commands">7.4 Punctuation commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX327"><code>%command_handler</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX142"><code>%css_map</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX144"><code>%css_map</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX277"><code>%def_map</code></a></td><td valign="top"><a href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX260"><code>%format_in_paragraph</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX273"><code>%format_map</code></a></td><td valign="top"><a href="#Whole-table-list">7.12.2 Formatting of a whole table or list</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX275"><code>%format_map</code></a></td><td valign="top"><a href="#Whole-table-list">7.12.2 Formatting of a whole table or list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX279"><code>%def_map</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX262"><code>%format_in_paragraph</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX275"><code>%format_map</code></a></td><td valign="top"><a href="#Whole-table-list">7.13.2 Formatting of a whole table or list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX277"><code>%format_map</code></a></td><td valign="top"><a href="#Whole-table-list">7.13.2 Formatting of a whole table or list</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX126"><code>%main::value</code></a></td><td valign="top"><a href="#HEAD3">Flags</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX127"><code>%main::value</code></a></td><td valign="top"><a href="#HEAD3">Flags</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX333"><code>%misc_command</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX335"><code>%misc_command</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX111"><code>%NAVIGATION_TEXT</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX138"><code>%NAVIGATION_TEXT</code></a></td><td valign="top"><a href="#Output-initialization">6.5 Preparing the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX261"><code>%no_paragraph_commands</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX256"><code>%paragraph_style</code></a></td><td valign="top"><a href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX263"><code>%no_paragraph_commands</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX258"><code>%paragraph_style</code></a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX113"><code>%PASSIVE_ICONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX226"><code>%pre_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX331"><code>%region_formats_kept</code></a></td><td valign="top"><a href="#Handling-special-regions">7.22 Handling special regions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX333"><code>%region_formats_kept</code></a></td><td valign="top"><a href="#Handling-special-regions">7.23 Handling special regions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX222"><code>%simple_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX334"><code>%simple_map</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX336"><code>%simple_map</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX223"><code>%simple_map_pre</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX335"><code>%simple_map_pre</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX337"><code>%simple_map_pre</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX224"><code>%simple_map_texi</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX336"><code>%simple_map_texi</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX265"><code>%special_list_commands</code></a></td><td valign="top"><a href="#Table-and-list-items">7.12.1 Formatting individual table and list items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX262"><code>%stop_paragraph_command</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX228"><code>%style_map</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX338"><code>%style_map</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX229"><code>%style_map_pre</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX339"><code>%style_map_pre</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX230"><code>%style_map_texi</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX340"><code>%style_map_texi</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX338"><code>%simple_map_texi</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX267"><code>%special_list_commands</code></a></td><td valign="top"><a href="#Table-and-list-items">7.13.1 Formatting individual table and list items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX264"><code>%stop_paragraph_command</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX230"><code>%style_map</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX340"><code>%style_map</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX231"><code>%style_map_pre</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX341"><code>%style_map_pre</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX232"><code>%style_map_texi</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX342"><code>%style_map_texi</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX121"><code>%Texi2HTML::HREF</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX120"><code>%Texi2HTML::NAME</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX123"><code>%Texi2HTML::NO_TEXI</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
@@ -7269,15 +7325,15 @@ text
 <tr><td></td><td valign="top"><a href="#IDX227"><code>%texi_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX225"><code>%things_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC101_2">@</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC102_2">@</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX107"><code>@CHAPTER_BUTTONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX330"><code>@command_handler_finish</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX328"><code>@command_handler_init</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX329"><code>@command_handler_process</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX332"><code>@command_handler_finish</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX330"><code>@command_handler_init</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX331"><code>@command_handler_process</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX61"><code>@CSS_FILES</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX63"><code>@CSS_REFS</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX36"><code>@EXPAND</code></a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX241"><code>@IMAGE_EXTENSIONS</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.5 Formatting of special simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX243"><code>@IMAGE_EXTENSIONS</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX46"><code>@INCLUDE_DIRS</code></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX109"><code>@LINKS_BUTTONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX156"><code>@LINKS_BUTTONS</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
@@ -7288,15 +7344,15 @@ text
 <tr><td></td><td valign="top"><a href="#IDX103"><code>@SECTION_FOOTER_BUTTONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC101_0" class="summary-letter"><b>$</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC102_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#SEC101_1" class="summary-letter"><b>%</b></a>
+<a href="#SEC102_1" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC101_2" class="summary-letter"><b>@</b></a>
+<a href="#SEC102_2" class="summary-letter"><b>@</b></a>
 </td></tr></table>
 <hr size="6">
 <a name="Indexcp"></a>
-<a name="SEC102"></a>
+<a name="SEC103"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Indexvr" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[ &gt; ]</td>
@@ -7314,117 +7370,117 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">F. Concept Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC102_0" class="summary-letter"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC103_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC102_1" class="summary-letter"><b>B</b></a>
+<a href="#SEC103_1" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC102_2" class="summary-letter"><b>C</b></a>
+<a href="#SEC103_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC102_3" class="summary-letter"><b>D</b></a>
+<a href="#SEC103_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC102_4" class="summary-letter"><b>E</b></a>
+<a href="#SEC103_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC102_5" class="summary-letter"><b>F</b></a>
+<a href="#SEC103_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC102_6" class="summary-letter"><b>I</b></a>
+<a href="#SEC103_6" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC102_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC103_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC102_8" class="summary-letter"><b>P</b></a>
+<a href="#SEC103_8" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC102_9" class="summary-letter"><b>R</b></a>
+<a href="#SEC103_9" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC102_10" class="summary-letter"><b>S</b></a>
+<a href="#SEC103_10" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC102_11" class="summary-letter"><b>T</b></a>
+<a href="#SEC103_11" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC102_12" class="summary-letter"><b>U</b></a>
+<a href="#SEC103_12" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_0">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Avoiding-paragraphs">Avoid paragraph opening</a></td><td valign="top"><a href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></td></tr>
+<tr><th><a name="SEC103_0">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Avoiding-paragraphs">Avoid paragraph opening</a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_1">B</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC103_1">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Top">bug report</a></td><td valign="top"><a href="#Top">Texi2HTML</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_2">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">centering</a></td><td valign="top"><a href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Complex-formats">complex format</a></td><td valign="top"><a href="#Complex-formats">7.11 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
+<tr><th><a name="SEC103_2">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Alignement-commands">centering</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Complex-formats">complex format</a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Using-init-files">&lsquo;<tt>Config</tt>&rsquo;</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Installation">configure</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#Style-options"><acronym>CSS</acronym></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#css"><acronym>CSS</acronym></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_3">D</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC103_3">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Obtaining-texi2html">downloading <code>texi2html</code> source</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_4">E</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC103_4">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Overview">examples of manuals</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Reference-to-external-manual">external manual</a></td><td valign="top"><a href="#Reference-to-external-manual">7.8.1 Reference to external manual</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Reference-to-external-manual">external manual</a></td><td valign="top"><a href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_5">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">flushing text</a></td><td valign="top"><a href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></td></tr>
+<tr><th><a name="SEC103_5">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Alignement-commands">flushing text</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_6">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Strings">i18n</a></td><td valign="top"><a href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><th><a name="SEC103_6">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Strings">i18n</a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#Translating-strings">i18n</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Installation">Installation</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#Using-init-files">internationalization</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Adding-new-strings">internationalized strings</a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_7">M</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC103_7">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#whytexi2html">makeinfo</a></td><td valign="top"><a href="#whytexi2html">1.1 Why <code>texi2html</code> and not <code>makeinfo</code>?</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Adding-new-strings"><code>manage_i18n.pl</code></a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_8">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">paragraph</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.10.1 Paragraph and preformatted region formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">preformatted region</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.10.1 Paragraph and preformatted region formatting</a></td></tr>
+<tr><th><a name="SEC103_8">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">paragraph</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">preformatted region</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_9">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#References">reference</a></td><td valign="top"><a href="#References">7.8 References</a></td></tr>
+<tr><th><a name="SEC103_9">R</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#References">reference</a></td><td valign="top"><a href="#References">7.9 References</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_10">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">skipped command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><th><a name="SEC103_10">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">skipped command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Obtaining-texi2html">source code for <code>texi2html</code>, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_11">T</a></th><td></td><td></td></tr>
+<tr><th><a name="SEC103_11">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#Obtaining-texi2html"><code>texi2html</code> source, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#Overview">Texinfo</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">text alignement</a></td><td valign="top"><a href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#Alignement-commands">text alignement</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#Translating-strings">Translation</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC102_12">U</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">unknown command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></td></tr>
+<tr><th><a name="SEC103_12">U</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">unknown command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC102_0" class="summary-letter"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC103_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC102_1" class="summary-letter"><b>B</b></a>
+<a href="#SEC103_1" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC102_2" class="summary-letter"><b>C</b></a>
+<a href="#SEC103_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC102_3" class="summary-letter"><b>D</b></a>
+<a href="#SEC103_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC102_4" class="summary-letter"><b>E</b></a>
+<a href="#SEC103_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC102_5" class="summary-letter"><b>F</b></a>
+<a href="#SEC103_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC102_6" class="summary-letter"><b>I</b></a>
+<a href="#SEC103_6" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC102_7" class="summary-letter"><b>M</b></a>
+<a href="#SEC103_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC102_8" class="summary-letter"><b>P</b></a>
+<a href="#SEC103_8" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC102_9" class="summary-letter"><b>R</b></a>
+<a href="#SEC103_9" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC102_10" class="summary-letter"><b>S</b></a>
+<a href="#SEC103_10" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC102_11" class="summary-letter"><b>T</b></a>
+<a href="#SEC103_11" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC102_12" class="summary-letter"><b>U</b></a>
+<a href="#SEC103_12" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -7525,76 +7581,77 @@ variable set in an init file,  <a name="IDX29"></a>
     <li><a name="TOC51" href="#Three-contexts">7.1 Three contexts for expansions: preformatted, normal and string</a></li>
     <li><a name="TOC52" href="#Three-passes">7.2 Three passes: macro expansion, document structure and output</a></li>
     <li><a name="TOC53" href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></li>
-    <li><a name="TOC54" href="#Style-and-accent-commands">7.4 Customizing accent, style and other simple commands</a>
+    <li><a name="TOC54" href="#Punctuation-commands">7.4 Punctuation commands</a></li>
+    <li><a name="TOC55" href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a>
     <ul class="toc">
-      <li><a name="TOC55" href="#Hash-reference-interface">7.4.1 An interface for commands formatting with a hash reference</a></li>
-      <li><a name="TOC56" href="#String-interface">7.4.2 An interface for commands formatting with a string</a></li>
-      <li><a name="TOC57" href="#Define-your-own-interface">7.4.3 Defining the style and indicatric commands interface</a></li>
+      <li><a name="TOC56" href="#Hash-reference-interface">7.5.1 An interface for commands formatting with a hash reference</a></li>
+      <li><a name="TOC57" href="#String-interface">7.5.2 An interface for commands formatting with a string</a></li>
+      <li><a name="TOC58" href="#Define-your-own-interface">7.5.3 Defining the style and indicatric commands interface</a></li>
     </ul></li>
-    <li><a name="TOC58" href="#Anchors-images-and-spaces">7.5 Formatting of special simple commands</a></li>
-    <li><a name="TOC59" href="#Text">7.6 Processing special characters in text</a></li>
-    <li><a name="TOC60" href="#Strings">7.7 Customizing strings written by <code>texi2html</code></a></li>
-    <li><a name="TOC61" href="#References">7.8 References</a>
+    <li><a name="TOC59" href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></li>
+    <li><a name="TOC60" href="#Text">7.7 Processing special characters in text</a></li>
+    <li><a name="TOC61" href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></li>
+    <li><a name="TOC62" href="#References">7.9 References</a>
     <ul class="toc">
-      <li><a name="TOC62" href="#Reference-to-external-manual">7.8.1 Reference to external manual</a></li>
-      <li><a name="TOC63" href="#Internal-reference">7.8.2 Reference to an internal node</a></li>
+      <li><a name="TOC63" href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></li>
+      <li><a name="TOC64" href="#Internal-reference">7.9.2 Reference to an internal node</a></li>
     </ul></li>
-    <li><a name="TOC64" href="#Alignement-commands">7.9 Commands used for centering and flushing of text</a></li>
-    <li><a name="TOC65" href="#Paragraph-and-preformatted-region">7.10 Formatting (or not) a paragraph and a preformatted region</a>
+    <li><a name="TOC65" href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></li>
+    <li><a name="TOC66" href="#Paragraph-and-preformatted-region">7.11 Formatting (or not) a paragraph and a preformatted region</a>
     <ul class="toc">
-      <li><a name="TOC66" href="#Paragraph-and-preformatted-formatting">7.10.1 Paragraph and preformatted region formatting</a></li>
-      <li><a name="TOC67" href="#Avoiding-paragraphs">7.10.2 Avoiding paragraphs in formats</a></li>
+      <li><a name="TOC67" href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></li>
+      <li><a name="TOC68" href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></li>
     </ul></li>
-    <li><a name="TOC68" href="#Complex-formats">7.11 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></li>
-    <li><a name="TOC69" href="#Lists-tables">7.12 Customizing the formatting of lists and tables</a>
+    <li><a name="TOC69" href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></li>
+    <li><a name="TOC70" href="#Lists-tables">7.13 Customizing the formatting of lists and tables</a>
     <ul class="toc">
-      <li><a name="TOC70" href="#Table-and-list-items">7.12.1 Formatting individual table and list items</a></li>
-      <li><a name="TOC71" href="#Whole-table-list">7.12.2 Formatting of a whole table or list</a></li>
+      <li><a name="TOC71" href="#Table-and-list-items">7.13.1 Formatting individual table and list items</a></li>
+      <li><a name="TOC72" href="#Whole-table-list">7.13.2 Formatting of a whole table or list</a></li>
     </ul></li>
-    <li><a name="TOC72" href="#Definitions">7.13 Definition commands formatting</a>
+    <li><a name="TOC73" href="#Definitions">7.14 Definition commands formatting</a>
     <ul class="toc">
-      <li><a name="TOC73" href="#Definition-line">7.13.1 Customizing the interpretation of a definition line</a></li>
-      <li><a name="TOC74" href="#Definition-formatting">7.13.2 Customization of the definition formatting</a></li>
+      <li><a name="TOC74" href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></li>
+      <li><a name="TOC75" href="#Definition-formatting">7.14.2 Customization of the definition formatting</a></li>
     </ul></li>
-    <li><a name="TOC75" href="#Headings">7.14 Customizing headings formatting</a></li>
-    <li><a name="TOC76" href="#Special-regions">7.15 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</a></li>
-    <li><a name="TOC77" href="#Menus">7.16 Menu formatting</a>
+    <li><a name="TOC76" href="#Headings">7.15 Customizing headings formatting</a></li>
+    <li><a name="TOC77" href="#Special-regions">7.16 Formatting of special regions (<code>@verbatim</code>, <code>@cartouche</code>, <code>@quotation</code>)</a></li>
+    <li><a name="TOC78" href="#Menus">7.17 Menu formatting</a>
     <ul class="toc">
-      <li><a name="TOC78" href="#Menu-parts">7.16.1 The structure of a menu</a></li>
-      <li><a name="TOC79" href="#Menu-components-formatting">7.16.2 The formatting of the different menu components</a></li>
-      <li><a name="TOC80" href="#Simple-menu-formatting">7.16.3 Simple menu formatting in a preformatted environment</a></li>
-      <li><a name="TOC81" href="#Table-menu-formatting">7.16.4 The formatting of the menu in a table</a></li>
+      <li><a name="TOC79" href="#Menu-parts">7.17.1 The structure of a menu</a></li>
+      <li><a name="TOC80" href="#Menu-components-formatting">7.17.2 The formatting of the different menu components</a></li>
+      <li><a name="TOC81" href="#Simple-menu-formatting">7.17.3 Simple menu formatting in a preformatted environment</a></li>
+      <li><a name="TOC82" href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></li>
     </ul></li>
-    <li><a name="TOC82" href="#Indices">7.17 Indices formatting</a>
+    <li><a name="TOC83" href="#Indices">7.18 Indices formatting</a>
     <ul class="toc">
-      <li><a name="TOC83" href="#Index-entry-place">7.17.1 Formatting of index entries</a></li>
-      <li><a name="TOC84" href="#Index-list">7.17.2 Customizing the formatting of index lists</a></li>
+      <li><a name="TOC84" href="#Index-entry-place">7.18.1 Formatting of index entries</a></li>
+      <li><a name="TOC85" href="#Index-list">7.18.2 Customizing the formatting of index lists</a></li>
     </ul></li>
-    <li><a name="TOC85" href="#Floats-and-lists-of-floats">7.18 Floats and lists of floats</a>
+    <li><a name="TOC86" href="#Floats-and-lists-of-floats">7.19 Floats and lists of floats</a>
     <ul class="toc">
-      <li><a name="TOC86" href="#Floats">7.18.1 Formatting a float</a></li>
-      <li><a name="TOC87" href="#Lists-of-floats">7.18.2 Formatting lists of floats</a></li>
+      <li><a name="TOC87" href="#Floats">7.19.1 Formatting a float</a></li>
+      <li><a name="TOC88" href="#Lists-of-floats">7.19.2 Formatting lists of floats</a></li>
     </ul></li>
-    <li><a name="TOC88" href="#Footnotes">7.19 Customizing the footnotes formatting</a></li>
-    <li><a name="TOC89" href="#Customizing-format-opening">7.20 Customizing format opening</a></li>
-    <li><a name="TOC90" href="#Bypassing-normal-formatting">7.21 Bypassing normal formatting</a></li>
-    <li><a name="TOC91" href="#Handling-special-regions">7.22 Handling special regions</a></li>
-    <li><a name="TOC92" href="#Other-and-unknown-commands">7.23 Customizing other commands, and unknown commands</a></li>
+    <li><a name="TOC89" href="#Footnotes">7.20 Customizing the footnotes formatting</a></li>
+    <li><a name="TOC90" href="#Customizing-format-opening">7.21 Customizing format opening</a></li>
+    <li><a name="TOC91" href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></li>
+    <li><a name="TOC92" href="#Handling-special-regions">7.23 Handling special regions</a></li>
+    <li><a name="TOC93" href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></li>
   </ul></li>
-  <li><a name="TOC93" href="#Internationalization">A. Internationalization</a>
+  <li><a name="TOC94" href="#Internationalization">A. Internationalization</a>
   <ul class="toc">
-    <li><a name="TOC94" href="#Translating-strings">A.1 Translating strings</a>
+    <li><a name="TOC95" href="#Translating-strings">A.1 Translating strings</a>
     <ul class="toc">
-      <li><a name="TOC95" href="#Supported-language">A.1.1 Contributing to existing translations</a></li>
-      <li><a name="TOC96" href="#New-language">A.1.2 Contributing translations to another language</a></li>
+      <li><a name="TOC96" href="#Supported-language">A.1.1 Contributing to existing translations</a></li>
+      <li><a name="TOC97" href="#New-language">A.1.2 Contributing translations to another language</a></li>
     </ul></li>
-    <li><a name="TOC97" href="#Adding-new-strings">A.2 Adding new strings written to document</a></li>
+    <li><a name="TOC98" href="#Adding-new-strings">A.2 Adding new strings written to document</a></li>
   </ul></li>
-  <li><a name="TOC98" href="#Incompatibilities">B. Incompatibilities with previous versions</a></li>
-  <li><a name="TOC99" href="#Specificities">C. How little texi2html texinfo differs from GNU texinfo</a></li>
-  <li><a name="TOC100" href="#Indexop">D. Command Line Option Index</a></li>
-  <li><a name="TOC101" href="#Indexvr">E. Variable Index</a></li>
-  <li><a name="TOC102" href="#Indexcp">F. Concept Index</a></li>
+  <li><a name="TOC99" href="#Incompatibilities">B. Incompatibilities with previous versions</a></li>
+  <li><a name="TOC100" href="#Specificities">C. How little texi2html texinfo differs from GNU texinfo</a></li>
+  <li><a name="TOC101" href="#Indexop">D. Command Line Option Index</a></li>
+  <li><a name="TOC102" href="#Indexvr">E. Variable Index</a></li>
+  <li><a name="TOC103" href="#Indexcp">F. Concept Index</a></li>
 </ul>
 </div>
 <hr size="1">
@@ -7615,12 +7672,12 @@ variable set in an init file,  <a name="IDX29"></a>
 <li><a name="TOC19" href="#Initialization-files">5. Overview of initialization files content and loading</a></li>
 <li><a name="TOC23" href="#Changing-the-page-layout">6. Fine tuning of the page layout</a></li>
 <li><a name="TOC50" href="#Customizing-HTML">7. Customizing <acronym>HTML</acronym> and text style in init files</a></li>
-<li><a name="TOC93" href="#Internationalization">A. Internationalization</a></li>
-<li><a name="TOC98" href="#Incompatibilities">B. Incompatibilities with previous versions</a></li>
-<li><a name="TOC99" href="#Specificities">C. How little texi2html texinfo differs from GNU texinfo</a></li>
-<li><a name="TOC100" href="#Indexop">D. Command Line Option Index</a></li>
-<li><a name="TOC101" href="#Indexvr">E. Variable Index</a></li>
-<li><a name="TOC102" href="#Indexcp">F. Concept Index</a></li>
+<li><a name="TOC94" href="#Internationalization">A. Internationalization</a></li>
+<li><a name="TOC99" href="#Incompatibilities">B. Incompatibilities with previous versions</a></li>
+<li><a name="TOC100" href="#Specificities">C. How little texi2html texinfo differs from GNU texinfo</a></li>
+<li><a name="TOC101" href="#Indexop">D. Command Line Option Index</a></li>
+<li><a name="TOC102" href="#Indexvr">E. Variable Index</a></li>
+<li><a name="TOC103" href="#Indexcp">F. Concept Index</a></li>
 </ul>
 </div>
 <hr size="1">
@@ -7633,7 +7690,7 @@ variable set in an init file,  <a name="IDX29"></a>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>August 8, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August 12, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7735,7 +7792,7 @@ variable set in an init file,  <a name="IDX29"></a>
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>August 8, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>August 12, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

@@ -2234,6 +2234,7 @@ be redefined.
 * Three passes::                 @command{texi2html} process texinfo in 3 passes.
                                  In almost every cases, you shouldn't care.
 * Commands without argument:: 
+* Punctuation commands::         @code{@@:}
 * Style and accent commands::    
 * Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image}, @code{@@sp}, @code{@@acronym}, @code{@@abbr}
 * Text::                         Some characters are processed specially
@@ -2324,6 +2325,27 @@ in normal and preformatted context, write in your init file:
 $simple_map@{'-'@} = '&shy;';
 $simple_map_pre@{'-'@} = '&shy;';
 @end example
+
+
+@c --------------------------------------------------------
+@node Punctuation commands
+@section Punctuation commands
+
+The formatting of a punctuation character followed by @code{@:} is determined
+by the hash @variable{%colon_command_punctuation_characters}. If a @code{@:}
+command is preceded by a character in th is hash, it is replaced by the 
+associated value. In the default case, the associated value is also the 
+character, so this leave the punctuation character unmodified.
+
+The following function reference may be redefined to handle characters
+that are in @code{%colon_command_punctuation_characters}:
+
+@deftypefn {Function Reference} $punctuation $colon_command $character
+The @var{$character} is a character appearing in 
+@code{%colon_command_punctuation_characters} and preceding a @code{@:} 
+command. In the default case the associated value in
+@code{%colon_command_punctuation_characters} is returned.
+@end deftypefn
 
 @c --------------------------------------------------------
 @node Style and accent commands
@@ -3067,7 +3089,7 @@ is true, the @dfn{format command} is opened for the line.
 @table @emph
 @item lists
 The items of lists are formatted using the following function reference:
-@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command $item_number $enumerate_style $number
+@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command $item_number $enumerate_style $number $prepended_texi $prepended_formatted
 This function formats the text between @code{@@item} commands. @var{$text} 
 is the text corresponding with the item. @var{$format} is the type of format,
 @samp{itemize} or @samp{enumerate}. @var{$command} is the formatting command
@@ -3077,6 +3099,11 @@ formatted if it is a leading command, like @code{@@minus}.
 If the @var{$format} is an enumerate, @var{$item_number} is the number of 
 the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 @var{$number} is the number or letter corresponding with this item. 
+
+If the @var{$format} is an itemize, @var{$prepended_texi} is the text that
+appeared on the itemize line, maybe after the formatting command
+(if any), and @var{$prepended_formatted} is the corresponding text, 
+formatted.
 @end deftypefn
 
 @item two column tables
@@ -3115,7 +3142,7 @@ the @code{@@item} line. @var{$text} is the corresponding text.
 The multitable elements formatting is controlled by the functions associated
 with two function references. One for a cell, and the other for a row.
 
-@deftypefn {Function Reference} $multitable_cell cell $text $item_command \@@columnfractions \@@prototype_row \@@prototype_lengths
+@deftypefn {Function Reference} $multitable_cell cell $text $item_command \@@columnfractions \@@prototype_row \@@prototype_lengths $column_number
 This function is used to format the text of a multitable cell, the text 
 following a @code{@@item} or a @code{@@tab}.
 @var{$text} is the corresponding text. @var{$item_command} is the command 
@@ -3127,13 +3154,15 @@ containing the @code{@@columnfraction} arguments, if any, and
 given on the @code{@@multitable} line, if any.
 @var{\@@prototype_lengths} array contains the lengths of the row prototypes
 formatted.
+@var{$column_number} is the maximal number of columns.
 @end deftypefn
 
-@deftypefn {Function Reference} $multitable_row row $text $item_command \@@columnfractions \@@prototype_row \@@prototype_lengths
+@deftypefn {Function Reference} $multitable_row row $text $item_command \@@columnfractions \@@prototype_row \@@prototype_lengths $column_number
 This function is used to format a multitable row. @var{$text} is
 the row text, with cells allready formatted with the @variable{$cell}
 function reference. @var{$item_command}, @var{\@@columnfractions}, 
-@var{\@@prototype_row}  and @var{\@@prototype_lengths} are the same than in the function reference above.
+@var{\@@prototype_row}, @var{\@@prototype_lengths}
+and @var{$column_number} are the same than in the function reference above.
 
 @end deftypefn
 @end table
@@ -3172,20 +3201,22 @@ In case the @code{%format_map} isn't used, a function reference called
 should be redefined, the associated function will be called each time
 a command isn't found in @code{%format_map}.
 
-@deftypefn {Function Reference} $whole_table_list table_list $format_command $text $command $formatted_command $prepended $item_nr  $enumerate_style \@@columnfractions \@@prototype_row \@@prototype_lengths
+@deftypefn {Function Reference} $whole_table_list table_list $format_command $text $command $formatted_command $item_nr $enumerate_style $prepended_texi $prepended_formatted \@@columnfractions \@@prototype_row \@@prototype_lengths $column_number
 @var{$format_command} is the Texinfo command name, @var{$text} is the 
 formatted items. @var{$command} is the @dfn{format command} given in argument
 to the format command, @var{$formatted_command} is the same, but formatted.
-@var{prepended} is the remaining text on the format command line.
+@var{$prepended_texi} is the remaining text on the format command line,
+@var{$prepended_formatted} is the same, but formatted.
 Only relevant in @code{@@enumerate}, @var{$item_nr} is the item number, and 
 @var{$enumerate_style} is the @code{@@enumerate} style. Only relevant in 
 @code{@@multitable}
 @var{\@@columnfractions} is a reference on an array 
 containing the @code{@@columnfraction} arguments, if any, 
 @var{\@@prototype_row} is a reference on an array containing the row prototypes
-given on the @code{@@multitable} line, if any and
+given on the @code{@@multitable} line, if any,
 @var{\@@prototype_lengths} array contains the lengths of the row prototypes
-formatted.
+formatted and
+@var{$column_number} is the maximal number of columns.
 @end deftypefn
 
 If you still want to use @variable{%format_map} but differently from 
@@ -3381,9 +3412,11 @@ texinfo text corresponding with the numbered heading.
 The label associated with the heading that can appear before the 
 heading itself and even before the navigation panel is customized with the
 following function reference:
-@deftypefn {Function Reference} $element_label element_label $identifier \%element_reference
+@deftypefn {Function Reference} $element_label element_label $identifier \%element_reference $command $unformatted_line
 @var{$identifier} is the identifier associated with the heading.
-@var{\%element_reference} is the same as above.
+@var{\%element_reference} is the same as above. @var{$command} is the @@-command
+appearing on the line, and @var{$unformatted_line} is the line, 
+unformatted.
 @end deftypefn
 
 

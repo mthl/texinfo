@@ -167,3 +167,68 @@ function clean_antispam() {
 * formatting/nodename_parentheses.texi gives wrong output.
 
 * Formatting of ?@: and similar constructs should be possible.
+
+* in @example, makeinfo --xml 
+
+@ followed by a space
+&space;@ followed by a tab
+&space;@ followed 
+
+texi2html
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed 
+
+* in xml 
+@itemize
+@item i--temize
+@end itemize
+
+makeinfo:
+<itemize><itemfunction>&bullet;</itemfunction><item>
+i--temize
+</item>
+        </itemize>
+texi2html:
+<itemize><itemfunction>&bullet;</itemfunction><item> i--temize
+</item>
+</itemize>
+
+* in xml
+@itemize @bullet{} a--n itemize line
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+makeinfo:
+<itemize><itemfunction>&bullet; a--n itemize line</itemfunction><item>
+i--tem 1
+</item>
+<item>
+i--tem 2
+</item>
+        </itemize>
+texi2html:
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item> i--tem 1
+</item>
+<item> i--tem 2
+</item>
+</itemize>
+
+* in xml
+@enumerate
+@item e--numerate
+@end enumerate
+
+makeinfo:
+<enumerate first="1"><item>
+e--numerate
+</item>
+        </enumerate>
+texi2html:
+<enumerate first="1"><item> e--numerate
+</item>
+</enumerate>
+

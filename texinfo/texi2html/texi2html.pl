@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.216 2008-08-08 13:30:35 pertusus Exp $
+# $Id: texi2html.pl,v 1.217 2008-08-12 15:13:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -457,6 +457,7 @@ $heading_texi
 $index_element_heading_texi
 $format_list_item_texi
 $begin_format_texi
+$colon_command
 
 $PRE_ABOUT
 $AFTER_ABOUT
@@ -511,6 +512,7 @@ $complex_format_map
 $def_always_delimiters
 $def_in_type_delimiters
 $def_argument_separator_delimiters
+%colon_command_punctuation_characters
 @command_handler_init
 @command_handler_process
 @command_handler_finish
@@ -6823,7 +6825,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     print STDERR "." if ($T2H_VERBOSE);
                     print STDERR "\n" if ($T2H_DEBUG);
                 }
-                my $label = &$Texi2HTML::Config::element_label($current_element->{'id'}, $current_element);
+                my $label = &$Texi2HTML::Config::element_label($current_element->{'id'}, $current_element, $tag, $_);
                 if (@section_lines)
                 {
                     push (@section_lines, $label);
@@ -6938,18 +6940,6 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             push @section_lines, @foot_lines;
         }
         $Texi2HTML::THIS_HEADER = \@head_lines;
-        if ($element->{'top'})
-        {
-            print STDERR "Bug: `$element->{'texi'}' level undef\n" if (!$element->{'node'} and !defined($element->{'level'}));
-#            $element->{'level'} = 1 if (!defined($element->{'level'}));
-#            $element->{'node'} = 0; # otherwise Texi2HTML::Config::heading may uses the node level
-#            $element->{'text'} = $Texi2HTML::NAME{'Top'};
-            print STDERR "[Top]" if ($T2H_VERBOSE);
-#            unless ($element->{'titlefont'} or $element->{'index_page'})
-#            {
-#                unshift @section_lines, &$Texi2HTML::Config::heading($element);
-#            }
-        }
         print STDERR "# Write the section $element->{'texi'}\n" if ($T2H_VERBOSE);
         &$Texi2HTML::Config::one_section($FH, $element);
         close_out($FH);
@@ -7032,17 +7022,17 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                  if ($misc_page_infos{$href_page}->{'do'});
         }
         #print STDERR "Doing hrefs for $misc_page First ";
-        $Texi2HTML::HREF{'First'} = href($element_first, $file);
+        $Texi2HTML::HREF{'First'} = href($element_first, $relative_file);
         #print STDERR "Last ";
-        $Texi2HTML::HREF{'Last'} = href($element_last, $file);
+        $Texi2HTML::HREF{'Last'} = href($element_last, $relative_file);
         #print STDERR "Index ";
-        $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $file) if (defined($element_chapter_index));
+        $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $relative_file) if (defined($element_chapter_index));
         #print STDERR "Top ";
-        $Texi2HTML::HREF{'Top'} = href($element_top, $file);
+        $Texi2HTML::HREF{'Top'} = href($element_top, $relative_file);
         if ($Texi2HTML::Config::INLINE_CONTENTS)
         {
-            $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $file);
-            $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $file);
+            $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $relative_file);
+            $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $relative_file);
         }
         $Texi2HTML::HREF{$misc_page} = '#' . $Texi2HTML::Config::misc_pages_targets{$misc_page};
         $Texi2HTML::HREF{'This'} = $Texi2HTML::HREF{$misc_page};
@@ -7056,7 +7046,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         
         if ($open_new)
         {
-            close_out($FH, $docu_foot_file);
+            close_out($FH, $file);
             $FH = $saved_FH;
         }
     }
@@ -7276,7 +7266,7 @@ sub close_out($;$)
     my $FH = shift;
     my $file = shift;
     $file = '' if (!defined($file));
-    return if ($Texi2HTML::Config::OUT eq '');
+    #return if ($Texi2HTML::Config::OUT eq '');
     close ($FH) || die "$ERROR: Error occurred when closing $file: $!\n";
 }
 
@@ -8130,7 +8120,7 @@ sub parse_multitable($$)
     if ($line =~ s/^\s+\@columnfractions\s+//)
     {
         @$fractions = split /\s+/, $line;
-        $table_width = scalar(@$fractions) + 1;
+        $table_width = scalar(@$fractions);
         foreach my $fraction (@$fractions)
         {
             unless ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
@@ -8321,7 +8311,7 @@ sub end_format($$$$$)
         }
         else
         { # table or list handler defined by the user
-            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}, $format_ref->{'formatted_command'}, $format_ref->{'prepended'}, $format_ref->{'item_nr'}, $format_ref->{'spec'}, $format_ref->{'columnfractions'}, $format_ref->{'prototype_row'}, $format_ref->{'prototype_lengths'}));
+            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}, $format_ref->{'formatted_command'}, $format_ref->{'item_nr'}, $format_ref->{'spec'}, $format_ref->{'prepended'}, $format_ref->{'prepended_formatted'}, $format_ref->{'columnfractions'}, $format_ref->{'prototype_row'}, $format_ref->{'prototype_lengths'}, $format_ref->{'max_columns'}));
         }
     } 
     elsif ($format eq 'quotation')
@@ -8495,21 +8485,26 @@ sub begin_format($$$$$$)
         foreach my $arg (@$args_array)
         {
             my $type = shift @types;
+            my $substitution_state = duplicate_formatting_state($state);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             {
                 if ($arg =~ /^\s*\@/)
                 {
-                    push @formatted_args, substitute_line($arg, undef, $line_nr);
+                    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
+                    #push @formatted_args, substitute_line($arg, undef, $line_nr);
                 }
                 else
                 {
-                    push @formatted_args, substitute_line($arg, {'code_style' => 1}, $line_nr);
+                    $substitution_state->{'code_style'}++;
+                    #push @formatted_args, substitute_line($arg, {'code_style' => 1}, $line_nr);
+                    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
                 }
                 $arguments .= $formatted_args[-1];
             }
             else
             {
-                push @formatted_args, substitute_line($arg, undef, $line_nr);
+                push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
+                #push @formatted_args, substitute_line($arg, undef, $line_nr);
                 $formatted_arguments{$type} = $formatted_args[-1];
             }
         }
@@ -8572,7 +8567,9 @@ sub begin_format($$$$$$)
             my $prepended;
             ($prepended, $command) = parse_format_command($line,$macro);
             $command = 'asis' if (($command eq '') and ($macro ne 'itemize'));
-            $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'term' => 0 };
+            my $prepended_formatted;
+            $prepended_formatted = substitute_line($prepended, {'multiple_pass' => 1}) if (defined($prepended));
+            $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'prepended_formatted' => $prepended_formatted, 'term' => 0 };
             $line = '';
         }
         elsif ($macro eq 'enumerate')
@@ -8896,8 +8893,6 @@ sub do_xref($$$$)
     {
        $file_of_node_texi = $1;
        $file_of_node = substitute_line($file_of_node_texi, $new_state);
-       # FIXME should not be needed
-       #$node_without_file_texi = normalise_node($node_without_file_texi);
        $node_name = substitute_line($node_without_file_texi, $new_state);
        $file_arg_or_node_texi = $file_of_node_texi if ($file_arg_or_node_texi eq '');
        $file_arg_or_node = $file_of_node if ($file_arg_or_node eq '');
@@ -11198,8 +11193,16 @@ sub scan_line($$$$;$)
         # macro_regexp
         elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
         {
-            add_prev($text, $stack, do_text($1, $state));
+            my $before_macro = $1;
             my $macro = $2;
+            my $punct;
+            if (!$state->{'keep_texi'} and $macro eq ':' and $before_macro =~ /(.)$/ and $Texi2HTML::Config::colon_command_punctuation_characters{$1})
+            {
+                $before_macro =~ s/(.)$//;
+                $punct = $1;
+            }
+            add_prev($text, $stack, do_text($before_macro, $state));
+            add_prev($text, $stack, &$Texi2HTML::Config::colon_command($punct)) if (defined($punct));
             $macro = $alias{$macro} if (exists($alias{$macro}));
 	    #print STDERR "MACRO $macro\n";
 	    #print STDERR "LINE $_";
@@ -11497,7 +11500,7 @@ sub scan_line($$$$;$)
                      $num = $global_head_num;
                  }
                  my $heading_element = $headings{$num};
-                 add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element));
+                 add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element, $macro, $_));
                  add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $_, substitute_line($_), $state->{'preformatted'}));
                  return;
             }
@@ -11645,9 +11648,9 @@ sub scan_line($$$$;$)
             my $leading_text = $1;
             my $brace = $2;
             add_prev($text, $stack, do_text($leading_text, $state));
-            if (defined($brace) and ($brace eq '{'))
+            if (defined($brace) and ($brace eq '{')) #}
             {
-                add_prev($text, $stack, do_text('{',$state));
+                add_prev($text, $stack, do_text('{',$state)); #}
                 if ($state->{'math_style'})
                 {
                     $state->{'math_brace'}++;
@@ -12037,7 +12040,7 @@ sub add_row($$$$)
     }
     add_cell($text, $stack, $state);
     my $row = pop @$stack;    
-    add_prev($text, $stack, &$Texi2HTML::Config::row($row->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}, $row->{'prototype_lengths'}));
+    add_prev($text, $stack, &$Texi2HTML::Config::row($row->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}, $row->{'prototype_lengths'}, $format->{'max_columns'}));
     return $format;
 }
 
@@ -12055,7 +12058,7 @@ sub add_cell($$$$)
         my $cell = pop @$stack;
         my $row = top_stack($stack);
         print STDERR "Bug: top_stack of cell not a row\n" if (!defined($row) or !defined($row->{'format'}) or ($row->{'format'} ne 'row'));
-        add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}, $row->{'prototype_lengths'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}, $row->{'columnfractions'}, $row->{'prototype_row'}, $row->{'prototype_lengths'}, $format->{'max_columns'}));
         $format->{'cell'}++;
     }
     return $format;
@@ -12155,7 +12158,7 @@ sub add_item($$$$;$)
             $format->{'formatted_command'} = $formatted_command;
         }
 	#chomp($item->{'text'});
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}, $format->{'prepended'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}, $format->{'prepended'}, $format->{'prepended_formatted'}));
     } 
     if ($format->{'first'})
     {

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.146 2008-08-08 12:07:22 pertusus Exp $
+# $Id: texi2html.init,v 1.147 2008-08-12 15:13:50 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1931,6 +1931,13 @@ $simple_map_pre{'*'} = "\n";
 %simple_map_pre_math = %simple_map_math;
 %simple_map_texi_math = %simple_map_math;
 
+%colon_command_punctuation_characters = (
+   '.' => '.',
+   ':' => ':',
+   '?' => '?',
+   '!' => '!'
+);
+
 #
 # texinfo "things" (@foo{}) to HTML ones
 #
@@ -2872,11 +2879,13 @@ sub default_ctrl($$)
    return "^$_[0]";
 }
 
+# obsolete, no warning, but noop
 sub t2h_default_ctrl($$$)
 {
     shift;
     my $args = shift;
-   return "^$args->[0]";
+    #return "^$args->[0]";
+    return "$args->[0]";
 }
 
 sub default_sc_pre($$)
@@ -3230,6 +3239,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
      'html' => 0, 
      'tex' => 0, 
      'xml' => 0,
+     'docbook' => 0,
      'titlepage' => 1, 
      'documentdescription' => 1, 
      'copying' => 1, 
@@ -3631,13 +3641,14 @@ $quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
 $paragraph_style_command  = \&t2h_default_paragraph_style_command;
 $heading_texi             = \&t2h_default_heading_texi;
 $index_element_heading_texi = \&t2h_default_index_element_heading_texi;
-$element_label              = \&t2h_element_label;
-$misc_element_label         = \&t2h_misc_element_label;
-$anchor_label               = \&t2h_anchor_label;
+$element_label              = \&t2h_default_element_label;
+$misc_element_label         = \&t2h_default_misc_element_label;
+$anchor_label               = \&t2h_default_anchor_label;
 $preserve_misc_command      = \&t2h_default_preserve_misc_command;
 $format_list_item_texi      = \&t2h_default_format_list_item_texi;
 $begin_format_texi          = \&t2h_default_begin_format_texi;
 $insertcopying              = \&t2h_default_insertcopying;
+$colon_command              = \&t2h_default_colon_command;
 
 # return the line after preserving things according to misc_command map.
 # You should not change it. It is here, nevertheless, to be used
@@ -4725,6 +4736,7 @@ sub t2h_default_row($$;$$)
     my $columnfractions = shift;
     my $prototype_row = shift;
     my $prototype_lengths = shift;
+    my $column_number = shift;
 
     # this is used to keep the cell number
     $t2h_default_multitable_stack[-1] = -1;
@@ -4748,6 +4760,7 @@ sub t2h_default_cell($$;$$)
     my $columnfractions = shift;
     my $prototype_row = shift;
     my $prototype_lengths = shift;
+    my $column_number = shift;
 
     $t2h_default_multitable_stack[-1]++;
     my $cell_nr = $t2h_default_multitable_stack[-1];
@@ -4793,7 +4806,7 @@ sub t2h_default_format_list_item_texi($$$$)
 # format of the list (itemize or enumerate)
 # command passed as argument to the format
 # formatted_command leading command formatted, if it is a thing command
-sub t2h_default_list_item($$$$$$$$)
+sub t2h_default_list_item($$$$$$$$$)
 {
     my $text = shift;
     my $format = shift;
@@ -4803,6 +4816,7 @@ sub t2h_default_list_item($$$$$$$$)
     my $enumerate_style = shift;
     my $number = shift;
     my $prepended = shift;
+    my $prepended_formatted = shift;
 
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
@@ -4829,14 +4843,17 @@ sub t2h_default_table_list($$$$$$$$$)
     my $text = shift;
     my $command = shift;
     my $formatted_command = shift;
-    my $prepended = shift;
 # enumerate
     my $item_nr = shift;
     my $enumerate_style = shift;
+# itemize
+    my $prepended = shift;
+    my $prepended_formatted = shift;
 # multitable
     my $columnfractions = shift;
     my $prototype_row = shift;
     my $prototype_lengths = shift;
+    my $column_number = shift;
 #    my $number = shift;
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
@@ -5649,25 +5666,35 @@ sub t2h_default_index_element_heading_texi($$$)
     return "$heading_texi: $first_letter";
 }
 
-sub t2h_element_label($$)
+sub t2h_default_element_label($$$$)
 {
     my $id = shift;
     my $element = shift;
+    my $command = shift;
+    my $line = shift;
+
     return &$anchor($id) . "\n";
 }
 
-sub t2h_misc_element_label($$)
+sub t2h_default_misc_element_label($$)
 {
     my $id = shift;
     my $misc_page_name = shift;
     return &$anchor($id) . "\n";
 }
 
-sub t2h_anchor_label($$)
+sub t2h_default_anchor_label($$)
 {
     my $id = shift;
     my $anchor_text = shift;
     return &$anchor($id);
+}
+
+sub t2h_default_colon_command($)
+{
+   my $punctuation_character = shift;
+   return $colon_command_punctuation_characters{$punctuation_character} if defined($colon_command_punctuation_characters{$punctuation_character});
+   return $punctuation_character;
 }
 
 1;

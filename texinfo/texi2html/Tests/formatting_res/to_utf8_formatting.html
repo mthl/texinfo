@@ -471,14 +471,18 @@ l–ine
 
 
 
-flushleft
+c–artouche
 
 
 
-flushright
+f–lushleft
 
 
- centered line
+
+f–lushright
+
+
+ ce–ntered line
 
 \input texinfo @c -*-texinfo-*-
 
@@ -681,7 +685,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@cite{--a}</code> <cite>–a</cite>
 <code>@code{--a}</code> <code>--a</code>
 <code>@command{--a}</code> <code>--a</code>
-<code>@ctrl{--a}</code> ^–a
+<code>@ctrl{--a}</code> –a
 <code>@dfn{--a}</code> <em>–a</em>
 <code>@dmn{--a}</code> –a
 <code>@email{--a,--b}</code> <a href="mailto:--a">–b</a>
@@ -1164,11 +1168,15 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </p></dd>
 </dl>
 
-<p align="left">flushleft
+<table class="cartouche" border="1"><tr><td>
+<p>c–artouche
+</p></td></tr></table>
+
+<p align="left">f–lushleft
 </p>
-<p align="right">flushright
+<p align="right">f–lushright
 </p>
-<p align="center"> centered line
+<p align="center"> ce–ntered line
 </p>
 <pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
@@ -1318,7 +1326,7 @@ Invalid use of @':
 <code>@cite{--a}</code> <cite>--a</cite>
 <code>@code{--a}</code> <code>--a</code>
 <code>@command{--a}</code> <code>--a</code>
-<code>@ctrl{--a}</code> ^--a
+<code>@ctrl{--a}</code> --a
 <code>@dfn{--a}</code> <em>--a</em>
 <code>@dmn{--a}</code> --a
 <code>@email{--a,--b}</code> <a href="mailto:--a">--b</a>
@@ -1472,13 +1480,14 @@ After clickstyle ⇒
 </pre></td></tr></table>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory:</u> <b>d–effn_name</b><i> a--rguments...</i>
+<dt><u>c--ategory:</u> <b>d--effn_name</b><i> a--rguments...</i>
 <a name="IDX60"></a></dt>
 <dd><pre class="example">d--effn
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>cate–gory:</u> <b>de–ffn_name</b><i> ar--guments    more args <br> even more so</i>
+<dt><u>cate--gory:</u> <b>de--ffn_name</b><i> ar--guments    more args 
+ even more so</i>
 <a name="IDX61"></a></dt>
 <dd><pre class="example">def--fn
 </pre></dd></dl>
@@ -1553,109 +1562,109 @@ After clickstyle ⇒
 </dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory:</u> <b>d–efvr_name</b>
+<dt><u>c--ategory:</u> <b>d--efvr_name</b>
 <a name="IDX91"></a></dt>
 <dd><pre class="example">d--efvr
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory:</u> t–ype <b>d–eftypefn_name</b><i> a--rguments...</i>
+<dt><u>c--ategory:</u> t--ype <b>d--eftypefn_name</b><i> a--rguments...</i>
 <a name="IDX92"></a></dt>
 <dd><pre class="example">d--eftypefn
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory on c–lass:</u> t–ype <b>d–eftypeop_name</b><i> a--rguments...</i>
+<dt><u>c--ategory on c--lass:</u> t--ype <b>d--eftypeop_name</b><i> a--rguments...</i>
 <a name="IDX93"></a></dt>
 <dd><pre class="example">d--eftypeop
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory:</u> t–ype <b>d–eftypevr_name</b>
+<dt><u>c--ategory:</u> t--ype <b>d--eftypevr_name</b>
 <a name="IDX94"></a></dt>
 <dd><pre class="example">d--eftypevr
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory of c–lass:</u> <b>d–efcv_name</b>
+<dt><u>c--ategory of c--lass:</u> <b>d--efcv_name</b>
 <a name="IDX95"></a></dt>
 <dd><pre class="example">d--efcv
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory on c–lass:</u> <b>d–efop_name</b><i> a--rguments...</i>
+<dt><u>c--ategory on c--lass:</u> <b>d--efop_name</b><i> a--rguments...</i>
 <a name="IDX96"></a></dt>
 <dd><pre class="example">d--efop
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>c–ategory:</u> <b>d–eftp_name</b><i> a--ttributes...</i>
+<dt><u>c--ategory:</u> <b>d--eftp_name</b><i> a--ttributes...</i>
 <a name="IDX97"></a></dt>
 <dd><pre class="example">d--eftp
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Function:</u> <b>d–efun_name</b><i> a--rguments...</i>
+<dt><u>Function:</u> <b>d--efun_name</b><i> a--rguments...</i>
 <a name="IDX98"></a></dt>
 <dd><pre class="example">d--efun
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Macro:</u> <b>d–efmac_name</b><i> a--rguments...</i>
+<dt><u>Macro:</u> <b>d--efmac_name</b><i> a--rguments...</i>
 <a name="IDX99"></a></dt>
 <dd><pre class="example">d--efmac
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Special Form:</u> <b>d–efspec_name</b><i> a--rguments...</i>
+<dt><u>Special Form:</u> <b>d--efspec_name</b><i> a--rguments...</i>
 <a name="IDX100"></a></dt>
 <dd><pre class="example">d--efspec
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Variable:</u> <b>d–efvar_name</b><i> argvar argvar1</i>
+<dt><u>Variable:</u> <b>d--efvar_name</b><i> argvar argvar1</i>
 <a name="IDX101"></a></dt>
 <dd><pre class="example">d--efvar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>User Option:</u> <b>d–efopt_name</b>
+<dt><u>User Option:</u> <b>d--efopt_name</b>
 <a name="IDX102"></a></dt>
 <dd><pre class="example">d--efopt
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Function:</u> t–ype <b>d–eftypefun_name</b><i> a--rguments...</i>
+<dt><u>Function:</u> t--ype <b>d--eftypefun_name</b><i> a--rguments...</i>
 <a name="IDX103"></a></dt>
 <dd><pre class="example">d--eftypefun
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Variable:</u> t–ype <b>d–eftypevar_name</b>
+<dt><u>Variable:</u> t--ype <b>d--eftypevar_name</b>
 <a name="IDX104"></a></dt>
 <dd><pre class="example">d--eftypevar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Instance Variable of c–lass:</u> <b>d–efivar_name</b>
+<dt><u>Instance Variable of c--lass:</u> <b>d--efivar_name</b>
 <a name="IDX105"></a></dt>
 <dd><pre class="example">d--efivar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Instance Variable of c–lass:</u> t–ype <b>d–eftypeivar_name</b>
+<dt><u>Instance Variable of c--lass:</u> t--ype <b>d--eftypeivar_name</b>
 <a name="IDX106"></a></dt>
 <dd><pre class="example">d--eftypeivar
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Method on c–lass:</u> <b>d–efmethod_name</b><i> a--rguments...</i>
+<dt><u>Method on c--lass:</u> <b>d--efmethod_name</b><i> a--rguments...</i>
 <a name="IDX107"></a></dt>
 <dd><pre class="example">d--efmethod
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>Method on c–lass:</u> t–ype <b>d–eftypemethod_name</b><i> a--rguments...</i>
+<dt><u>Method on c--lass:</u> t--ype <b>d--eftypemethod_name</b><i> a--rguments...</i>
 <a name="IDX108"></a></dt>
 <dd><pre class="example">d--eftypemethod
 </pre></dd></dl>
@@ -1750,11 +1759,15 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </pre></dd>
 </dl>
 <pre class="example">
-</pre><pre class="example">flushleft
+</pre><table class="cartouche" border="1"><tr><td>
+<pre class="example">c--artouche
+</pre></td></tr></table>
+<pre class="example">
+</pre><pre class="example">f--lushleft
 </pre><pre class="example">
-</pre><pre class="example">flushright
+</pre><pre class="example">f--lushright
 </pre><pre class="example">
-</pre><pre class="example"> centered line
+</pre><pre class="example"> ce--ntered line
 </pre>
 <pre class="verbatim">\input texinfo @c -*-texinfo-*-
 

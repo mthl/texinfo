@@ -279,6 +279,7 @@ test_texi formatting nodetest_utf8.texi "-init no_unicode.init -prefix no_unicod
 test_texi formatting nodetest_latin1.texi "-init no_unicode.init -prefix no_unicode_nodetest_latin1" 0 texi no_unicode_nodetest_latin1
 test_texi formatting ../GermanNodeTest/nodetest.texi "-init no_unicode.init -prefix no_unicode_nodetest" 0 texi no_unicode_nodetest
 test_texi formatting testkb.texi
+test_texi formatting punctuation.texi
 test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
 test_texi formatting def_cmds.texi

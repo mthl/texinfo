@@ -195,6 +195,11 @@ right multitable
 @multitable @columnfractions 6 7
 @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
 
+Columnfraction multitable with an ignored cell
+@multitable @columnfractions 0.3 0.4
+@item 1-1 @tab 1-2 @tab 1-3 (ignored)
+@end multitable
+
 multitable beginning with @@tab
 @multitable {@samp{@verb{.something.}}} {sec}
 @tab after first tab 

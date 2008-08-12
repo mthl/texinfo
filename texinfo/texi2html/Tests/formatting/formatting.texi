@@ -508,15 +508,19 @@ l--ine
 l--ine
 @end ftable
 
+@cartouche
+c--artouche
+@end cartouche
+
 @flushleft
-flushleft
+f--lushleft
 @end flushleft
 
 @flushright
-flushright
+f--lushright
 @end flushright
 
-@center centered line
+@center ce--ntered line
 
 @verbatiminclude simplest.texi
 

@@ -1,3 +1,13 @@
+2008-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use the global formatting state in definitions
+	argument formatting.
+	Correct the max_columns count with @columnfractions.
+	* texi2html.pl, texi2html.init: handle @: with punctuation
+	character.
+	* examples/docbook.init: new backend for docbook to produce 
+	docbook like makeinfo --docbook.
+
 2008-08-08  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use relative file names for hrefs for misc 
@@ -13,7 +23,7 @@
 	commands.
 	Set rightly (dir) as up node for Top, even if there are no automatic
 	directions.
-	region lines are kept if may be reparsed in the last pass if in
+	region lines are kept to be reparsed in the last pass if in
 	%region_formats_kept.
 	Give also the prototypes lengths for multitables.
 	@-commands in stop_paragraph_command close paragraphs.

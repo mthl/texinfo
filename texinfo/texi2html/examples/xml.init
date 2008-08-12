@@ -2,11 +2,10 @@ $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">';
 $USE_MENU_DIRECTIONS = 0;
 $USE_UP_FOR_ADJACENT_NODES = 0;
-#$IGNORE_PREAMBLE_TEXT = 1;
 $USE_NUMERIC_ENTITY = 0;
 $USE_SETFILENAME = 1;
-$IGNORE_BEFORE_SETFILENAME = 1;
 @EXPAND = ('xml');
+$USE_ISO = 0;
 
 my $setfilename_seen = 0;
 sub xml_has_setfilename()
@@ -18,6 +17,11 @@ sub xml_has_setfilename()
 
 push @Texi2HTML::Config::command_handler_process, \&xml_has_setfilename;
 
+$colon_command_punctuation_characters{'.'} = '&period;';
+$colon_command_punctuation_characters{':'} = '&colon;';
+$colon_command_punctuation_characters{'?'} = '&quest;';
+$colon_command_punctuation_characters{'!'} = '&excl;';
+
 $simple_map{'*'} = '&linebreak;';
 $simple_map{' '} = '&space;';
 $simple_map{"\t"} = '&space;';
@@ -25,17 +29,30 @@ $simple_map{"\n"} = '&space;';
 $simple_map{'.'} = '&eosperiod;';
 $simple_map{'!'} = '&eosexcl;';
 $simple_map{'?'} = '&eosquest;';
-$things_map{l} = '\l';
-$things_map{L} = '\L';
+
+%simple_map_pre = %simple_map;
+
+# FIXME right?
+$things_map{'l'} = '/l';
+$things_map{'L'} = '/L';
 $things_map{'enddots'} = '&enddots;';
-$things_map{'equiv'} = '==';
-$things_map{'point'} = '-!-';
+$things_map{'dots'} = '&dots;';
+# FIXME &equiv;
+#$things_map{'equiv'} = '==';
 $things_map{'minus'} = '&minus;';
+$things_map{'result'} = '&rArr;';
+$things_map{'bullet'} = '&bullet;';
+$things_map{'copyright'} = '&copyright;';
+$things_map{'registeredsymbol'} = '&registered;';
+$things_map{'arrow'} = '&rarr;';
 $things_map{'TeX'} = '&tex;';
 $things_map{'LaTeX'} = '&latex;';
 
+%pre_map = %things_map;
+
 $stop_paragraph_command{'caption'} = 1;
 $stop_paragraph_command{'shortcaption'} = 1;
+
 $format_map{'copying'} = '';
 $format_map{'titlepage'} = 'titlepage';
 $format_map{'documentdescription'} = 'documentdescription';
@@ -48,7 +65,7 @@ foreach my $region ('titlepage', 'documentdescription', 'copying')
 
 foreach my $style (keys(%style_map))
 {
-    next if grep {$style eq $_} ('asis', 'w', 'tieaccent', 'dotless', keys(%unicode_accents));
+    next if grep {$style eq $_} ('asis', 'ctrl', 'w', 'tieaccent', 'dotless',  keys(%unicode_accents));
     if (!exists($style_map{$style}->{'args'}) or (scalar(@{$style_map{$style}->{'args'}}) eq 1 and $style_map{$style}->{'args'}->[0] eq 'code'))
     {
         $style_map{$style}->{'attribute'} = $style;
@@ -69,13 +86,18 @@ delete $iso_symbols{'`'};
 delete $iso_symbols{"'"};
 delete $style_map{'verb'}->{'attribute'};
 $style_map{'indicateurl'}->{'attribute'} = 'url';
-$style_map{'w'}->{'begin'} = '<!-- /@w -->';
+$style_map{'w'}->{'end'} = '<!-- /@w -->';
 $style_map{'='}->{'function'} = \&xml_macron;
 $style_map{'email'}->{'function'} = \&xml_email;
 $style_map{'titlefont'}->{'function'} = \&xml_titlefont;
 $style_map{'math'}->{'function'} = \&xml_math;
 $style_map{'uref'}->{'function'} = \&xml_uref;
 $style_map{'url'}->{'function'} = \&xml_uref;
+$style_map{'t'}->{'attribute'} = 'tt';
+# FIXME
+delete $special_accents{'ringaccent'};
+
+%style_map_pre = %style_map;
 
 sub xml_macron($$)
 {
@@ -113,7 +135,7 @@ sub xml_uref($$)
     $text = main::normalise_space($text);
     my $result = "<uref><urefurl>$url</urefurl>";
     $result .= "<urefdesc>$text</urefdesc>" if ($text ne '');
-    $result .= "<urefreplacement>$text</urefreplacement>" if ($text ne '');
+    $result .= "<urefreplacement>$replacement</urefreplacement>" if ($replacement ne '');
     return $result.'</uref>';
 }
 
@@ -201,6 +223,7 @@ $caption_shortcaption_command = \&xml_caption_shortcaption_command;
 $normal_text = \&xml_normal_text;
 $paragraph_style_command = \&xml_paragraph_style_command;
 $raw = \&xml_raw;
+$cartouche = \&xml_cartouche;
 
 $print_Top = \&xml_print_Top;
 $print_Top_footer = \&xml_print_Top_footer;
@@ -635,14 +658,17 @@ sub xml_image($$$$$$$$$$$)
     $width = '' if (!defined($width));
     $height = '' if (!defined($height));
 
-    return "<inlineimage width=\"$width\" height=\"$height\" name=\"". &$protect_text($base)."\" extension=\"$extension\"><alttext>$alt</alttext></inlineimage>";
+    my $tag = 'inlineimage';
+    $tag = 'image' if ($preformatted);
+
+    return "<$tag width=\"$width\" height=\"$height\" name=\"". &$protect_text($base)."\" extension=\"$extension\"><alttext>$alt</alttext></$tag>";
 }
 
 sub xml_sp($$)
 {
    my $number = shift;
    my $preformatted = shift;
-   return "<sp number=\"$number\"></sp>\n";
+   return "<sp lines=\"$number\"></sp>\n";
 }
 
 sub xml_quotation($$$)
@@ -650,7 +676,7 @@ sub xml_quotation($$$)
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
-    return '<quotation>' . $text . "</quotation>\n";
+    return "<quotation>\n" . $text . "</quotation>\n";
 }
 
 sub xml_format_list_item_texi($$$$)
@@ -663,7 +689,7 @@ sub xml_format_list_item_texi($$$$)
     return (undef, 0);
 }
 
-sub xml_list_item($$$$$$$)
+sub xml_list_item($$$$$$$$$)
 {
     my $text = shift;
     my $format = shift;
@@ -672,6 +698,8 @@ sub xml_list_item($$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+    my $prepended = shift;
+    my $prepended_formatted = shift;
 
     return '<item>' . $text . "</item>\n";
 }
@@ -686,6 +714,8 @@ sub xml_row($$;$$)
     my $macro = shift;
     my $columnfractions = shift;
     my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
 
     my $result = '';
     if ($macro eq 'headitem')
@@ -715,6 +745,8 @@ sub xml_cell($$;$$)
     my $row_macro = shift;
     my $columnfractions = shift;
     my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
 
     return "<entry>" . $text . '</entry>';
 }
@@ -725,25 +757,35 @@ sub xml_table_list($$$$$$$$$)
     my $text = shift;
     my $command = shift;
     my $formatted_command = shift;
-    my $prepended = shift;
 # enumerate
     my $item_nr = shift;
     my $enumerate_style = shift;
+# itemize
+    my $prepended = shift;
+    my $prepended_formatted = shift;
 # multitable
     my $columnfractions = shift;
     my $prototype_row = shift;
     my $prototype_lengths = shift;
-#    my $number = shift;
+    my $number = shift;
     
     $result = "<$format_command>";
     if ($format_command eq 'itemize')
     {
-        my $itemfunction = $prepended;
-        $itemfunction = $formatted_command if (!defined($itemfunction) or
-            $itemfunction eq '');
+        my $itemfunction;
+        $prepended_formatted =~ s/^\s*// if (defined($prepended_formatted));
+        if (defined($formatted_command) and $formatted_command ne '')
+        {
+            $itemfunction = $formatted_command;
+            $itemfunction .= " $prepended_formatted" if (defined($prepended_formatted) and $prepended_formatted ne '');
+        }
+        elsif (defined($prepended_formatted))
+        {
+            $itemfunction = $prepended_formatted;
+        }
         $itemfunction = "&bullet;" if (!defined($itemfunction) or 
             $itemfunction eq '');
-        $result .=  "<itemfunction>$itemfunction</itemfunction>\n";
+        $result .=  "<itemfunction>$itemfunction</itemfunction>";
     }
     elsif ($format_command eq 'enumerate')
     {
@@ -827,7 +869,7 @@ sub xml_def_line($$$$$$$$$$$$$$$)
    my $original_command = shift;
 
    my $result = "<definitionterm><indexterm index=\""
-    .$main::index_prefix_to_name{$style}."\">$class_name</indexterm>\n";
+    .$main::index_prefix_to_name{$style}."\">$class_name</indexterm>";
 
    my %arguments = ( 'prepared_category' => $category_prepared,
          'category' => $category,
@@ -843,7 +885,7 @@ sub xml_def_line($$$$$$$$$$$$$$$)
    foreach my $mandatory_arg (@{$def_format_xml{$command}})
    {
        my $elem = $mandatory_arg->[0];
-       $result .= "<def$elem>$arguments{$mandatory_arg->[1]}</def$elem>\n";
+       $result .= "<def$elem>$arguments{$mandatory_arg->[1]}</def$elem>";
    }
 
    my $params = '';
@@ -913,7 +955,7 @@ sub xml_any_ref($$)
     if ($type eq 'inforef')
     {
         $result .= "<inforef><inforefnodename>$args->[0]</inforefnodename>";
-        $result .= "<inforefinfoname>$args->[1]</inforefinfoname>" if ($args->[1] ne '');
+        $result .= "<inforefrefname>$args->[1]</inforefrefname>" if ($args->[1] ne '');
         $result .= "<inforefinfoname>$args->[2]</inforefinfoname></inforef>"
     }
     else
@@ -990,7 +1032,10 @@ sub xml_table_item($$$$$$$$$)
     #print STDERR "$text | $format | $command | $formatted_command | $text_formatted | $item_cmd \n";
     if ($format =~ /^(v|f)/)
     {
-        $result .= "<indexterm index=\"$main::index_prefix_to_name{$1}\">$text</indexterm>";
+        my $index_prefix = $1;
+        $indexterm = $text;
+        $indexterm =~ s/^\s*//;
+        $result .= "<indexterm index=\"$main::index_prefix_to_name{$index_prefix}\">$indexterm</indexterm>";
     }
     $result .= $formatted_command . $text_item ."</tableterm>\n";
     return $result;
@@ -1055,14 +1100,6 @@ sub xml_float($$$$$)
     $result .= "<floattype>$style</floattype>\n";
     $result .= "<floatpos></floatpos>\n";
     $result .= $text;
-#    if (defined($caption) and  $caption ne '')
-#    {
-#       $result .= "<caption>$caption</caption>\n";
-#    }
-#    if (defined($shortcaption) and  $shortcaption ne '')
-#    {
-#       $result .= "<shortcaption>$shortcaption</shortcaption>\n";
-#    }
     return $result."</float>\n";
 }
 
@@ -1114,6 +1151,13 @@ sub xml_raw($$)
         main::echo_warn ("Raw style $style not handled");
         return &$protect_text($text);
     }
+}
+
+sub xml_cartouche($$)
+{
+    my $text = shift;
+
+    return "<cartouche>$text</cartouche>";
 }
 
 sub xml_noop
