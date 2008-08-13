@@ -17,7 +17,7 @@ Menu comment
 Menu comment
 ``simple-double--three---four----''@*
 
-* subsection:: 
+* subsection ``simple-double--three---four----'':: 
 * subsubsection::
 @end detailmenu
 
@@ -30,7 +30,7 @@ Other comment
 Menu comment
 ``simple-double--three---four----''@*
 
-* subsection:: 
+* subsection ``simple-double--three---four----'':: 
 * subsubsection::
 @end detailmenu
 * chapter4::
@@ -48,11 +48,11 @@ Menu comment
 @section A section
 
 @menu
-* subsection:: 
+* subsection ``simple-double--three---four----'':: 
 @end menu
 
-@node subsection
-@subsection subsection
+@node subsection ``simple-double--three---four----''
+@subsection subsection ``simple-double--three---four----''
 
 @menu
 * subsubsection::

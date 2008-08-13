@@ -72,11 +72,11 @@ menus.texi(,72) @node s--ect@comma{}ion
 menus.texi(,73) @section A section
 menus.texi(,74) 
 menus.texi(,75) @menu
-menus.texi(,76) * subsection:: 
+menus.texi(,76) * subsection ``simple-double--three---four----'':: 
 menus.texi(,77) @end menu
 menus.texi(,78) 
-menus.texi(,79) @node subsection
-menus.texi(,80) @subsection subsection
+menus.texi(,79) @node subsection ``simple-double--three---four----''
+menus.texi(,80) @subsection subsection ``simple-double--three---four----''
 menus.texi(,81) 
 menus.texi(,82) @menu
 menus.texi(,83) @example

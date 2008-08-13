@@ -69,12 +69,12 @@
 ../formatting/test_refs.texi(,70) * local node::
 ../formatting/test_refs.texi(,71) @end menu
 ../formatting/test_refs.texi(,72) 
-../formatting/test_refs.texi(,73) @node !_"#$%&'()*+-./;<=>?[\]^_`|~,local   node,other nodes,Top
+../formatting/test_refs.texi(,73) @node !_"#$%&'()*+-./;<=>?[\]^_`|~,local   node,other nodes, other nodes
 ../formatting/test_refs.texi(,74) @example
 ../formatting/test_refs.texi(,75) id: _0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
 ../formatting/test_refs.texi(,76) @end example
 ../formatting/test_refs.texi(,77) 
-../formatting/test_refs.texi(,78) @node  local   node,,!_"#$%&'()*+-./;<=>?[\]^_`|~,Top
+../formatting/test_refs.texi(,78) @node  local   node,,!_"#$%&'()*+-./;<=>?[\]^_`|~,other nodes
 ../formatting/test_refs.texi(,79) @example
 ../formatting/test_refs.texi(,80) id: local-node
 ../formatting/test_refs.texi(,81) @end example

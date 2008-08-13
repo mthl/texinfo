@@ -73,11 +73,11 @@ Menu comment
 @section A section
 
 @menu
-* subsection:: 
+* subsection ``simple-double--three---four----'':: 
 @end menu
 
-@node subsection
-@subsection subsection
+@node subsection ``simple-double--three---four----''
+@subsection subsection ``simple-double--three---four----''
 
 @menu
 @example

@@ -1,3 +1,12 @@
+2008-08-13  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't mess the relative working directory by
+	removing most of it (report from Reinhold).
+	If the --out argument is a directory, and not splitting, this
+	is considered to be the out directory and the out file is the
+	manual name.
+	* Tests/*: enhance and correct the test suite.
+
 2008-08-09  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use the global formatting state in definitions
@@ -2410,18 +2419,18 @@
 	setlocale is used in case of tests to avoid change in ordering of 
 	indices while testing against a reference file
 	footnotes refs and image handled by parse_line, which calls a 
-        sub routine (do_footnote, do_ref or do_image).
-        for footnotes, _$doc_num instead of $docu_doc
+	sub routine (do_footnote, do_ref or do_image).
+	for footnotes, _$doc_num instead of $docu_doc
 	appended tp keep track of the file of the footnote, such that it 
 	is easier to match. 
 	instead of <!--::${section}::--> added before printindex, _$sec_num 
 	is appended to printindex, to keep track of the
 	section number.
-        images extention is taken from the @image tag if available
-        everything which was splitted accross pass2, pass3 and pass4 is
-        now done in pass2.
-        in pass3 only very little cleaning is done, pass4 is removed.
-        
+	images extention is taken from the @image tag if available
+	everything which was splitted accross pass2, pass3 and pass4 is
+	now done in pass2.
+	in pass3 only very little cleaning is done, pass4 is removed.
+
 2003-02-21  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl: added handling of overbar accent @= is transformed

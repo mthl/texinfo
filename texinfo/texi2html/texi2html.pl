@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.217 2008-08-12 15:13:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.218 2008-08-13 13:05:28 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2966,6 +2966,13 @@ if ($docu_rdir ne '')
     my $docu_path = $docu_rdir;
     $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
     my @result = ();
+    # this code simplify the paths. The cwd is absolute, while in the 
+    # document path there may be some .., a .. is removed with the 
+    # previous path element, such that something like
+    # /cwd/directory/../somewhere/
+    # leads to
+    # /cwd/somewhere/
+    # with directory/.. removed
     foreach my $element (split /\//, File::Spec->canonpath($docu_path))
     {
         if ($element eq '')
@@ -2992,8 +2999,11 @@ if ($docu_rdir ne '')
             push @result, $element;
         }
     }
+#print STDERR "@result\n";
     $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
-    $path_to_working_dir =~ s|.*/||;
+    # this should not be needed given what canonpath does
+    $path_to_working_dir =~ s:/*$::;
+#print STDERR "$path_to_working_dir\n";
     $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
 }
 
@@ -3018,8 +3028,11 @@ else
 {
     if ($Texi2HTML::Config::OUT)
     {
-        $docu_doc = $Texi2HTML::Config::OUT;
-        $docu_doc =~ s|.*/||;
+        my $out_file = $Texi2HTML::Config::OUT;
+        $out_file =~ s|.*/||;
+        $docu_doc = $out_file if ($out_file !~ /^\s*$/);
+#        $docu_doc = $Texi2HTML::Config::OUT;
+#        $docu_doc =~ s|.*/||;
     }
     if (defined $Texi2HTML::Config::element_file_name)
     {
@@ -3093,6 +3106,14 @@ if (!defined($docu_toc_frame))
 {
     $docu_toc_frame  = "${docu_name}_toc_frame";
     $docu_toc_frame .= ".$docu_ext" if (defined($docu_ext));
+}
+
+if ($T2H_VERBOSE)
+{
+   print STDERR "# Files and directories:\n";
+   print STDERR "# rdir($docu_rdir) path_to_working_dir($path_to_working_dir)\n";
+   print STDERR "# doc($docu_doc) top($docu_top) toc($docu_toc) stoc($docu_stoc)\n";
+   print STDERR "# foot($docu_foot) about($docu_about) frame($docu_toc) toc_frame($docu_toc_frame)\n";
 }
 
 $docu_doc_file = "$docu_rdir$docu_doc"; 

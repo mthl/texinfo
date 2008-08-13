@@ -8,7 +8,7 @@
 
 Menu comment
 
-* chapter2:description.   Chapter 2
+* description:chapter2.   Chapter 2
 @end menu
 
 @macro mymacro
@@ -17,6 +17,8 @@ Menu comment
 >
 "
 &
+'
+`
 
 ``simple-double--three---four----''@*
 code: @code{``simple-double--three---four----''} @*
@@ -41,24 +43,12 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@'@{e@} @'{e}
 @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
 @@dotless@{i@} @dotless{i}
-@@dotless@{ij@} @dotless{ij}
+@@dotless@{j@} @dotless{j}
 @@`@{@@=E@} @`{@=E} 
 @@l@{@} @l{}
 @@,@{@@'C@} @,{@'C}
 @@,c @,c
 @@,c@@"u @,c@"u @*
-
-Somehow invalid use of @@,:@*
-@@, @,
-@*
-@@,@@"u @,@"u
-
-Invalid use of @@':@*
-@@' @'
-@*
-@@'@@"u @'@"u
-
-@@dotless@{truc@} @dotless{truc}
 
 @@* @*
 @@ followed by a space
@@ -77,11 +67,16 @@ Invalid use of @@':@*
 @code{@@@}} @}
 @code{@@@{} @{
 @code{@@/} @/
-@code{@@#} @#
+
+foo vs.@: bar. 
+colon :@:And something else.
+semi colon ;@:.
+And ? ?@:.
+Now ! !@:@@
+but , ,@:
 
 @@TeX @TeX{}
 @@LaTeX @LaTeX{}
-@c @br{}
 @@bullet @bullet{}
 @@copyright @copyright{}
 @@dots @dots{}
@@ -130,12 +125,8 @@ Invalid use of @@':@*
 @@leq @leq{}
 @@geq @geq{}
 
-@@TeX, but without brace @TeX
-
-@code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
+@code{@@acronym@{--a,an accronym@}} @acronym{--a,an accronym}
 @code{@@acronym@{--a@}} @acronym{--a}
-@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
-@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
 @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
 @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
 @code{@@asis@{--a@}} @asis{--a}
@@ -155,7 +146,7 @@ Invalid use of @@':@*
 @code{@@i@{--a@}} @i{--a}
 @code{@@kbd@{--a@}} @kbd{--a}
 @code{@@key@{--a@}} @key{--a}
-@code{@@math@{--a@}} @math{--a@minus{} {\frac{1}{2}}}
+@code{@@math@{--a @{\\frac@{1@}@{2@}@} @@minus@{@}@}} @math{--a {\\frac{1}{2}} @minus{}}
 @code{@@option@{--a@}} @option{--a}
 @code{@@r@{--a@}} @r{--a}
 @code{@@samp@{--a@}} @samp{--a}
@@ -177,7 +168,7 @@ Invalid use of @@':@*
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
-@code{@@w@{--a@}} @w{--a}
+@code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}
@@ -196,8 +187,6 @@ Invalid use of @@':@*
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@code{@@dotless@{--a@}} @dotless{--a}
-@code{@@dotless@{a@}} @dotless{a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -208,15 +197,8 @@ Invalid use of @@':@*
 @code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
 @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-@code{@@image@{f-ile,,,alt@@verb@{:jk _" %@:@}@}} @image{f-ile,,,alt@verb{:jk _" %@:}}
-@code{@@image@{,1--xt@}} @image{,1--xt}
-@code{@@image@{,,2--xt@}} @image{,,2--xt}
-@code{@@image@{,,,3--xt@}} @image{,,,3--xt}
-@code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
-@code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
 @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
 
-@sp
 @sp 2
 
 @code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
@@ -225,8 +207,60 @@ After clickstyle @result{}
 @code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
 @clickstyle @arrow
 
+@quotation 
+A quot---ation
+@end quotation
+
+@quotation Note
+A Note
+@end quotation
+
+@quotation note
+A note
+@end quotation
+
+@quotation Caution
+Caution
+@end quotation
+
+@quotation Important
+Important
+@end quotation
+
+@quotation Tip
+a Tip
+@end quotation
+
+@quotation Warning
+a Warning.
+@end quotation
+
+@quotation something @'e @TeX{}
+The something @'e @TeX{} is here.
+@end quotation
+
+@quotation @@ at the end of line @
+A @@ at the end of the @@quotation line.
+@end quotation
+
+@quotation something, other thing
+something, other thing
+@end quotation
+
+@quotation Note, the note
+Note, the note
+@end quotation
+
 @quotation
-a q--uotation
+@end quotation
+
+@quotation Empty
+@end quotation
+
+@quotation @asis{}
+@end quotation
+
+@quotation @*
 @end quotation
 
 @itemize
@@ -249,11 +283,11 @@ a q--uotation
 @item e--mph item
 @end itemize
 
-@itemize @emph after emph
+@itemize @emph{after emph}
 @item e--mph item
 @end itemize
 
-@itemize @bullet a--n itemize line
+@itemize @bullet{} a--n itemize line
 @item i--tem 1
 @item i--tem 2
 @end itemize
@@ -267,6 +301,10 @@ a q--uotation
 @item mu--ltitable item @tab multitable tab
 @item mu--ltitable item 2 @tab multitable tab 2
 @item lone mu--ltitable item
+@end multitable
+
+@multitable {truc} {bidule}
+@item truc @tab bidule
 @end multitable
 
 @example
@@ -327,18 +365,10 @@ def--fn
 @deffnx{} {bidule machin}
 @deffnx{truc} machin
 @deffnx{truc} { }
+@deffnx{truc} followed by a comment
+@c comment
 @deffnx{truc}
 @deffnx{} {}
-@deffnx {truc} followed by a comment
-@c comment
-@deffnx truc machin bidule chose and }
-@deffnx truc machin bidule chose and } after
-@deffnx truc machin bidule chose and {
-@deffnx truc machin bidule chose and { and after
-Various deff lines
-@deffnx {truc} after a deff item
-@c comment
-text in def item for second def item
 @deffnx {truc} a b c d e @b{f g} {h i}
 @deffnx {truc} deffnx before end deffn
 @end deffn
@@ -348,6 +378,12 @@ text in def item for second def item
 
 @deffn empty deffn with deffnx
 @deffnx empty deffnx
+@end deffn
+
+@deffn fset @var{i} a g
+@deffnx {cmde} truc {}
+@c comment
+text in def item for second def item
 @end deffn
 
 @defvr c--ategory d--efvr_name
@@ -422,55 +458,52 @@ d--efmethod
 d--eftypemethod
 @end deftypemethod
 
-@code{@@xref@{c---hapter@@@@, cross r---ef name@@@@, t---itle@@@@, file n---ame@@@@, ma---nual@@@@@}} @xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}
+@code{@@xref@{c---hapter@@@@, cross r---ef name@@@@, t---itle@@@@, file n---ame@@@@, ma---nual@@@@@}} @xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}.
 @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
 @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
 @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
 
 @code{@@ref@{chapter@}} @ref{chapter}
-@code{@@ref@{node@}} @ref{node}
-@code{@@ref@{,cross ref name@}} @ref{,cross ref name}
-@code{@@ref@{,,title@}} @ref{,,title}
-@code{@@ref@{,,,file name@}} @ref{,,,file name}
-@code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+@code{@@xref@{chapter@}} @xref{chapter}.
+@code{@@pxref@{chapter@}} @pxref{chapter}
+@code{@@ref@{s--ect@@comma@{@}ion@}} @ref{s--ect@comma{}ion}
+
+@code{@@ref@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
+ref, a comma@@comma@{@} in title, a comma@@comma@{@} in file, a @@comma@{@} in manual name @}}
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+
 @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
 @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
 @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
 @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-@code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-@code{@@ref@{node,,title@}} @ref{node,,title}
-@code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-@code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
 @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
 @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
 @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-@code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-@code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-@code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
 @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
 @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-@code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-@code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
 @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-@code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
 @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
 @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-@code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-@code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
 @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-@code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
 @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-@code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-@code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
-@code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
-@code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
-@code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
-@code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
-@code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
-@code{@@ref@{,,title,file name@}} @ref{,,title,file name}
-@code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
-@code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
-@code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+
+
+@code{@@ref@{(pman)anode,cross ref name@}} @ref{(pman)anode,cross ref name}
+@code{@@ref@{(pman)anode,,title@}} @ref{(pman)anode,,title}
+@code{@@ref@{(pman)anode,,,file name@}} @ref{(pman)anode,,,file name}
+@code{@@ref@{(pman)anode,,,,manual@}} @ref{(pman)anode,,,,manual}
+@code{@@ref@{(pman)anode,cross ref name,title,@}} @ref{(pman)anode,cross ref name,title,}
+@code{@@ref@{(pman)anode,cross ref name,,file name@}} @ref{(pman)anode,cross ref name,,file name}
+@code{@@ref@{(pman)anode,cross ref name,,,manual@}} @ref{(pman)anode,cross ref name,,,manual}
+@code{@@ref@{(pman)anode,cross ref name,title,file name@}} @ref{(pman)anode,cross ref name,title,file name}
+@code{@@ref@{(pman)anode,cross ref name,title,,manual@}} @ref{(pman)anode,cross ref name,title,,manual}
+@code{@@ref@{(pman)anode,cross ref name,title, file name, manual@}} @ref{(pman)anode,cross ref name,title, file name, manual}
+@code{@@ref@{(pman)anode,,title,file name@}} @ref{(pman)anode,,title,file name}
+@code{@@ref@{(pman)anode,,title,,manual@}} @ref{(pman)anode,,title,,manual}
+@code{@@ref@{(pman)anode,,title, file name, manual@}} @ref{(pman)anode,,title, file name, manual}
+@code{@@ref@{(pman)anode,,,file name,manual@}} @ref{(pman)anode,,,file name,manual}
+
 
 @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
 @code{@@inforef@{chapter@}} @inforef{chapter}
@@ -480,18 +513,13 @@ d--eftypemethod
 @code{@@inforef@{node@}} @inforef{node}
 @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
 @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-@code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
-@code{@@inforef@{,,file name@}} @inforef{,,file name}
-@code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
-@code{@@inforef@{@}} @inforef{}
 @code{@@inforef@{chapter, cross ref name, file name, spurious arg@}} @inforef{chapter, cross ref name, file name, spurious arg}
 
-@code{@@ref@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
-ref, a comma@@comma@{@} in title, a comma@@comma@{@} in file, a @@comma@{@} in manual name @}}
-@ref{s--ect@comma{}ion, a @comma{} in cross
-ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+@code{@@inforef@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
+ref, a comma@@comma@{@} in file@}}
+@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}
 
-@code{@@ref@{s--ect@@comma@{@}ion@}} @ref{s--ect@comma{}ion}
 
 @table @bullet
 @item a
@@ -524,9 +552,155 @@ f--lushright
 
 @verbatiminclude simplest.texi
 
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+@end tex
+
+@docbook
+docbook
+@end docbook
+
+@majorheading majorheading
+
+@chapheading chapheading
+
+@heading heading
+
+@subheading subheading
+
+@subsubheading subsubheading
+
+@c makeinfo cannot handle that
+@ifset texi2html
+
+@code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
+@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
+@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+
+@code{@@math@{--a@@minus@{@} @{\\frac@{1@}@{2@}@}@}} @math{--a@minus{} {\\frac{1}{2}}}
+
+@code{@@image@{f-ile,,,alt@@verb@{:jk _" %@:@}@}} @image{f-ile,,,alt@verb{:jk _" %@:}}
+@code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
+@code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+
+@set invalid
+@end ifset
+
+
+@c invalid texinfo
+@ifset invalid
+
+Somehow invalid use of @@,:@*
+@@, @,
+@*
+@@,@@"u @,@"u
+
+Invalid use of @@':@*
+@@' @'
+@*
+@@'@@"u @'@"u
+
+@c only i or j as arg
+@@dotless@{truc@} @dotless{truc}
+@@dotless@{ij@} @dotless{ij}
+@code{@@dotless@{--a@}} @dotless{--a}
+@code{@@dotless@{a@}} @dotless{a}
+
+@c braces missing
+@@TeX, but without brace @TeX
+
+@c unknown command
+@code{@@#} @#
+
+@c no arg
+@code{@@w@{--a@}} @w{--a}
+
+@c no file
+@code{@@image@{,1--xt@}} @image{,1--xt}
+@code{@@image@{,,2--xt@}} @image{,,2--xt}
+@code{@@image@{,,,3--xt@}} @image{,,,3--xt}
+
+@sp
+
+@c braces missing
+@itemize @emph after emph
+@item e--mph item
+@end itemize
+
+@c braces missing
+@itemize @bullet a--n itemize line
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@c deffnx after deff lines
+@deffn fun
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+@deffnx {truc} followed by a comment
+@c comment
+Various deff lines
+@deffnx {truc} after a deff item
+@end deffn
+
+@c node is non existent, or missing first arg
+@code{@@ref@{node@}} @ref{node}
+
+@code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+@code{@@ref@{,,title@}} @ref{,,title}
+@code{@@ref@{,,,file name@}} @ref{,,,file name}
+@code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+@code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+@code{@@ref@{node,,title@}} @ref{node,,title}
+@code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+@code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+@code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+@code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+@code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+@code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+@code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+@code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+@code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+@code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+@code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+@code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+@code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+@code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+@code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+@code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+@code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+@code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+@code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+@code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+@code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+@code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+@code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+
+@code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+@code{@@inforef@{,,file name@}} @inforef{,,file name}
+@code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+@code{@@inforef@{@}} @inforef{}
+
+@end ifset
+
 @end macro
 
 @copying
+In copying
 @mymacro{}
 @end copying
 
@@ -536,13 +710,20 @@ f--lushright
 @subtitle subtitle 2 --a
 @author author1 --a
 @author author2 --a
+In titlepage
 @mymacro
 
+Insercopying in titlepage
 @insertcopying
 @end titlepage
 
+Insertcopying in normal text
+@insertcopying
+
+Normal text
 @mymacro{}
 
+In example.
 @example
 @mymacro{}
 @end example

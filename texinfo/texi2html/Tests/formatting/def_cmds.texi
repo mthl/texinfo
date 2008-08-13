@@ -278,4 +278,70 @@ deffn with @}
 @deftp
 @end deftp
 
+@c deffn
+@deffn @var{A1} @var{A2} @var{A3} @var{A4}
+@end deffn
+
+@deffn @code{A1} @code{A2} @code{A3} @code{A4}
+@end deffn
+
+@c defvr
+@defvr @var{A1} @var{A2} @var{A3} @var{A4}
+@end defvr
+
+@defvr @code{A1} @code{A2} @code{A3} @code{A4}
+@end defvr
+
+@c deftypefn
+@deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypefn
+
+@deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftypefn
+
+@c deftypevr
+@deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypevr
+
+@deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+@end deftypevr
+
+@c deftp
+@deftp @var{A1} @var{A2} @var{A3} @var{A4}
+@end deftp
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4}
+@end deftp
+
+@c defcv
+@defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defcv
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftp
+
+@c deftypecv
+@deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypecv
+
+@deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+@end deftypecv
+
+@c defop
+@defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defop
+
+@defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end defop
+
+@c deftypeop
+@deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypeop
+
+@deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+@end deftypeop
+
+@printindex vr
+@printindex fn
+
 @bye

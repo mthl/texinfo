@@ -16,7 +16,7 @@ detailmenus.texi(,16)
 detailmenus.texi(,17) Menu comment
 detailmenus.texi(,18) ``simple-double--three---four----''@*
 detailmenus.texi(,19) 
-detailmenus.texi(,20) * subsection:: 
+detailmenus.texi(,20) * subsection ``simple-double--three---four----'':: 
 detailmenus.texi(,21) * subsubsection::
 detailmenus.texi(,22) @end detailmenu
 detailmenus.texi(,23) 
@@ -29,7 +29,7 @@ detailmenus.texi(,29)
 detailmenus.texi(,30) Menu comment
 detailmenus.texi(,31) ``simple-double--three---four----''@*
 detailmenus.texi(,32) 
-detailmenus.texi(,33) * subsection:: 
+detailmenus.texi(,33) * subsection ``simple-double--three---four----'':: 
 detailmenus.texi(,34) * subsubsection::
 detailmenus.texi(,35) @end detailmenu
 detailmenus.texi(,36) * chapter4::
@@ -47,11 +47,11 @@ detailmenus.texi(,47) @node s--ect@comma{}ion
 detailmenus.texi(,48) @section A section
 detailmenus.texi(,49) 
 detailmenus.texi(,50) @menu
-detailmenus.texi(,51) * subsection:: 
+detailmenus.texi(,51) * subsection ``simple-double--three---four----'':: 
 detailmenus.texi(,52) @end menu
 detailmenus.texi(,53) 
-detailmenus.texi(,54) @node subsection
-detailmenus.texi(,55) @subsection subsection
+detailmenus.texi(,54) @node subsection ``simple-double--three---four----''
+detailmenus.texi(,55) @subsection subsection ``simple-double--three---four----''
 detailmenus.texi(,56) 
 detailmenus.texi(,57) @menu
 detailmenus.texi(,58) * subsubsection::

@@ -17,6 +17,8 @@ node in first but not the first...
 * first::
 * node1::
 * node inexistant in menu:: non existing
+* node1:description.  Description and node reversed
+* description:node1.  Right description and node
 * (info)::
 @end menu
 
