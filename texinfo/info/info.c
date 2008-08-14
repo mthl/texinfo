@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.32 2008-06-28 08:09:08 gray Exp $
+   $Id: info.c,v 1.33 2008-08-14 17:36:13 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -641,8 +641,13 @@ Any remaining arguments are treated as the names of menu\n\
 items relative to the initial node visited."));
 
   puts (_("\n\
+For a summary of key bindings, type h within Info."));
+
+  puts (_("\n\
 Examples:\n\
   info                       show top-level dir menu\n\
+  info info                  show the general manual for Info readers\n\
+  info info-stnd             show the manual specific to this Info program\n\
   info emacs                 start at emacs node from top-level dir\n\
   info emacs buffers         start at buffers node within emacs manual\n\
   info --show-options emacs  start at node with emacs' command line options\n\

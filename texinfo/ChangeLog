@@ -1,3 +1,8 @@
+2008-08-14  Karl Berry  <karl@gnu.org>
+
+	* info/info.c (info_short_help): mention Info manuals and the h
+	key within the program.
+
 2008-08-10  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (absolute_filenames): preserve even non-directories
