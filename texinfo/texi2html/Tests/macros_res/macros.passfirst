@@ -22,14 +22,14 @@ macros.texi(,22)      now a bad accent    @`
 macros.texi(,23)  at the end of line
 macros.texi(,24) 
 macros.texi(,25) The file included:
-./file.texi(,1) content of included file with arg2: \arg2\
+file.texi(,1) content of included file with arg2: \arg2\
 macros.texi(,27) File has been included.
 macros.texi(,28) 
 macros.texi(,34) 
 macros.texi(macro1,37) Right. result of a macro with @samp{first arg
 macros.texi(macro1,37) 
 macros.texi(macro1,37) no ?} and 
-./file.texi(,1) content of included file with arg2: \arg2\
+file.texi(,1) content of included file with arg2: \arg2\
 macros.texi(macro1,37) second arg
 macros.texi(,38) Now define macro2
 macros.texi(,43) Call macro2

@@ -1,29 +1,29 @@
-../contents/double_contents.texi(,2) 
-../contents/double_contents.texi(,3) @setfilename double_contents.info
-../contents/double_contents.texi(,4) 
-../contents/double_contents.texi(,5) @contents
-../contents/double_contents.texi(,6) 
-../contents/double_contents.texi(,7) @node Top
-../contents/double_contents.texi(,8) @top Double contents
-../contents/double_contents.texi(,9) 
-../contents/double_contents.texi(,10) Double contents.
-../contents/double_contents.texi(,11) 
-../contents/double_contents.texi(,12) @menu 
-../contents/double_contents.texi(,13) * chapter::
-../contents/double_contents.texi(,14) @end menu
-../contents/double_contents.texi(,15) 
-../contents/double_contents.texi(,16) @node chapter
-../contents/double_contents.texi(,17) @chapter Chapter 1
-../contents/double_contents.texi(,18) 
-../contents/double_contents.texi(,19) @contents
-../contents/double_contents.texi(,20) The chapter
-../contents/double_contents.texi(,21) 
-../contents/double_contents.texi(,22) @menu
-../contents/double_contents.texi(,23) * section::
-../contents/double_contents.texi(,24) @end menu
-../contents/double_contents.texi(,25) 
-../contents/double_contents.texi(,26) @node section
-../contents/double_contents.texi(,27) @section section with contents
-../contents/double_contents.texi(,28) @contents
-../contents/double_contents.texi(,29) 
-../contents/double_contents.texi(,30) @bye
+double_contents.texi(,2) 
+double_contents.texi(,3) @setfilename double_contents.info
+double_contents.texi(,4) 
+double_contents.texi(,5) @contents
+double_contents.texi(,6) 
+double_contents.texi(,7) @node Top
+double_contents.texi(,8) @top Double contents
+double_contents.texi(,9) 
+double_contents.texi(,10) Double contents.
+double_contents.texi(,11) 
+double_contents.texi(,12) @menu 
+double_contents.texi(,13) * chapter::
+double_contents.texi(,14) @end menu
+double_contents.texi(,15) 
+double_contents.texi(,16) @node chapter
+double_contents.texi(,17) @chapter Chapter 1
+double_contents.texi(,18) 
+double_contents.texi(,19) @contents
+double_contents.texi(,20) The chapter
+double_contents.texi(,21) 
+double_contents.texi(,22) @menu
+double_contents.texi(,23) * section::
+double_contents.texi(,24) @end menu
+double_contents.texi(,25) 
+double_contents.texi(,26) @node section
+double_contents.texi(,27) @section section with contents
+double_contents.texi(,28) @contents
+double_contents.texi(,29) 
+double_contents.texi(,30) @bye

@@ -1,24 +1,24 @@
-../contents/double_contents_setcontentsaftertitlepage.texi(,2) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,3) @setfilename double_contents_setcontentsaftertitlepage.info
-../contents/double_contents_setcontentsaftertitlepage.texi(,4) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,5) @contents
-../contents/double_contents_setcontentsaftertitlepage.texi(,6) @setcontentsaftertitlepage
-../contents/double_contents_setcontentsaftertitlepage.texi(,7) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,8) @node Top
-../contents/double_contents_setcontentsaftertitlepage.texi(,9) @top Double contents
-../contents/double_contents_setcontentsaftertitlepage.texi(,10) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,11) Double contents.
-../contents/double_contents_setcontentsaftertitlepage.texi(,12) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,16) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,17) @node chapter
-../contents/double_contents_setcontentsaftertitlepage.texi(,18) @chapter Chapter 1
-../contents/double_contents_setcontentsaftertitlepage.texi(,19) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,20) @contents
-../contents/double_contents_setcontentsaftertitlepage.texi(,21) The chapter
-../contents/double_contents_setcontentsaftertitlepage.texi(,22) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,26) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,27) @node section
-../contents/double_contents_setcontentsaftertitlepage.texi(,28) @section section with contents
-../contents/double_contents_setcontentsaftertitlepage.texi(,29) @contents
-../contents/double_contents_setcontentsaftertitlepage.texi(,30) 
-../contents/double_contents_setcontentsaftertitlepage.texi(,31) @bye
+double_contents_setcontentsaftertitlepage.texi(,2) 
+double_contents_setcontentsaftertitlepage.texi(,3) @setfilename double_contents_setcontentsaftertitlepage.info
+double_contents_setcontentsaftertitlepage.texi(,4) 
+double_contents_setcontentsaftertitlepage.texi(,5) @contents
+double_contents_setcontentsaftertitlepage.texi(,6) @setcontentsaftertitlepage
+double_contents_setcontentsaftertitlepage.texi(,7) 
+double_contents_setcontentsaftertitlepage.texi(,8) @node Top
+double_contents_setcontentsaftertitlepage.texi(,9) @top Double contents
+double_contents_setcontentsaftertitlepage.texi(,10) 
+double_contents_setcontentsaftertitlepage.texi(,11) Double contents.
+double_contents_setcontentsaftertitlepage.texi(,12) 
+double_contents_setcontentsaftertitlepage.texi(,16) 
+double_contents_setcontentsaftertitlepage.texi(,17) @node chapter
+double_contents_setcontentsaftertitlepage.texi(,18) @chapter Chapter 1
+double_contents_setcontentsaftertitlepage.texi(,19) 
+double_contents_setcontentsaftertitlepage.texi(,20) @contents
+double_contents_setcontentsaftertitlepage.texi(,21) The chapter
+double_contents_setcontentsaftertitlepage.texi(,22) 
+double_contents_setcontentsaftertitlepage.texi(,26) 
+double_contents_setcontentsaftertitlepage.texi(,27) @node section
+double_contents_setcontentsaftertitlepage.texi(,28) @section section with contents
+double_contents_setcontentsaftertitlepage.texi(,29) @contents
+double_contents_setcontentsaftertitlepage.texi(,30) 
+double_contents_setcontentsaftertitlepage.texi(,31) @bye

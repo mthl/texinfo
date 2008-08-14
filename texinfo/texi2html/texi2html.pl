@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.218 2008-08-13 13:05:28 pertusus Exp $
+# $Id: texi2html.pl,v 1.219 2008-08-14 16:32:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1290,14 +1290,15 @@ sub echo_warn($;$);
 # all_files:   if true collect all the files with that name, otherwise stop
 #              at first match.
 # directories: a reference on a array containing a list of directories to
-#              search the file in. default is \@texi2html_config_dirs.
+#              search the file in. default is 
+#              @Texi2HTML::Config::CONF_DIRS, @texi2html_config_dirs.
 sub locate_init_file($;$$)
 {
     my $file = shift;
     my $all_files = shift;
     my $directories = shift;
 
-    $directories = \@texi2html_config_dirs if !defined($directories);
+    $directories = [ @Texi2HTML::Config::CONF_DIRS, @texi2html_config_dirs ] if !defined($directories);
 
     if ($file =~ /^\//)
     {
@@ -2493,6 +2494,7 @@ $T2H_OPTIONS -> {'help'} =
 # this avoids getOptions defining twice 'help' and 'version'.
 $T2H_OBSOLETE_OPTIONS->{'help'} = 0;
 $T2H_OBSOLETE_OPTIONS->{'version'} = 0;
+$T2H_OBSOLETE_OPTIONS->{'verbose'} = 0;
 
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
@@ -2649,7 +2651,6 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 # retro compatibility for $Texi2HTML::Config::EXPAND
 push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Config::EXPAND);
 
-unshift @texi2html_config_dirs, @Texi2HTML::Config::CONF_DIRS;
 # correct %Texi2HTML::Config::texi_formats_map based on command line and init
 # variables
 $Texi2HTML::Config::texi_formats_map{'menu'} = 1 if ($Texi2HTML::Config::SHOW_MENU);
@@ -7378,7 +7379,12 @@ sub dump_texi($$;$$)
     {
         my $number_information = '';
         my $chomped_line = $line;
-        $number_information = "$numbers->[$index]->{'file_name'}($numbers->[$index]->{'macro'},$numbers->[$index]->{'line_nr'}) " if (defined($numbers));
+        if (defined($numbers))
+        {
+           my $basefile = $numbers->[$index]->{'file_name'};
+           $basefile =~ s|.*/||;
+           $number_information = "${basefile}($numbers->[$index]->{'macro'},$numbers->[$index]->{'line_nr'}) ";
+        }
         print DMPTEXI "${number_information}$line";
         $index++ if (chomp($chomped_line));
     }

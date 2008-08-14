@@ -1,29 +1,29 @@
-../contents/contents_in_middle_chapter.texi(,2) 
-../contents/contents_in_middle_chapter.texi(,3) @setfilename contents_in_middle_chapter.info
-../contents/contents_in_middle_chapter.texi(,4) 
-../contents/contents_in_middle_chapter.texi(,5) 
-../contents/contents_in_middle_chapter.texi(,6) @node Top
-../contents/contents_in_middle_chapter.texi(,7) @top Contents in chapter
-../contents/contents_in_middle_chapter.texi(,8) 
-../contents/contents_in_middle_chapter.texi(,9) Content in chapter.
-../contents/contents_in_middle_chapter.texi(,10) 
-../contents/contents_in_middle_chapter.texi(,11) @menu 
-../contents/contents_in_middle_chapter.texi(,12) * chapter::
-../contents/contents_in_middle_chapter.texi(,13) @end menu
-../contents/contents_in_middle_chapter.texi(,14) 
-../contents/contents_in_middle_chapter.texi(,15) @node chapter
-../contents/contents_in_middle_chapter.texi(,16) @chapter Chapter 1
-../contents/contents_in_middle_chapter.texi(,17) 
-../contents/contents_in_middle_chapter.texi(,18) The chapter with contents
-../contents/contents_in_middle_chapter.texi(,19) @contents
-../contents/contents_in_middle_chapter.texi(,20) 
-../contents/contents_in_middle_chapter.texi(,21) @menu
-../contents/contents_in_middle_chapter.texi(,22) * section::
-../contents/contents_in_middle_chapter.texi(,23) @end menu
-../contents/contents_in_middle_chapter.texi(,24) 
-../contents/contents_in_middle_chapter.texi(,25) @node section
-../contents/contents_in_middle_chapter.texi(,26) @section section
-../contents/contents_in_middle_chapter.texi(,27) 
-../contents/contents_in_middle_chapter.texi(,28) Section.
-../contents/contents_in_middle_chapter.texi(,29) 
-../contents/contents_in_middle_chapter.texi(,30) @bye
+contents_in_middle_chapter.texi(,2) 
+contents_in_middle_chapter.texi(,3) @setfilename contents_in_middle_chapter.info
+contents_in_middle_chapter.texi(,4) 
+contents_in_middle_chapter.texi(,5) 
+contents_in_middle_chapter.texi(,6) @node Top
+contents_in_middle_chapter.texi(,7) @top Contents in chapter
+contents_in_middle_chapter.texi(,8) 
+contents_in_middle_chapter.texi(,9) Content in chapter.
+contents_in_middle_chapter.texi(,10) 
+contents_in_middle_chapter.texi(,11) @menu 
+contents_in_middle_chapter.texi(,12) * chapter::
+contents_in_middle_chapter.texi(,13) @end menu
+contents_in_middle_chapter.texi(,14) 
+contents_in_middle_chapter.texi(,15) @node chapter
+contents_in_middle_chapter.texi(,16) @chapter Chapter 1
+contents_in_middle_chapter.texi(,17) 
+contents_in_middle_chapter.texi(,18) The chapter with contents
+contents_in_middle_chapter.texi(,19) @contents
+contents_in_middle_chapter.texi(,20) 
+contents_in_middle_chapter.texi(,21) @menu
+contents_in_middle_chapter.texi(,22) * section::
+contents_in_middle_chapter.texi(,23) @end menu
+contents_in_middle_chapter.texi(,24) 
+contents_in_middle_chapter.texi(,25) @node section
+contents_in_middle_chapter.texi(,26) @section section
+contents_in_middle_chapter.texi(,27) 
+contents_in_middle_chapter.texi(,28) Section.
+contents_in_middle_chapter.texi(,29) 
+contents_in_middle_chapter.texi(,30) @bye

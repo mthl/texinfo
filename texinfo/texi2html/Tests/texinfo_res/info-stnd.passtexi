@@ -1,10 +1,10 @@
 info-stnd.texi(,2) @comment Id: info-stnd.texi,v 1.1 2003/02/03 16:10:29 pertusus Exp $
 info-stnd.texi(,3) @comment %**start of header
 info-stnd.texi(,4) @setfilename info-stnd.info
-./version-stnd.texi(,1) @set UPDATED 23 March 2002
-./version-stnd.texi(,2) @set UPDATED-MONTH March 2002
-./version-stnd.texi(,3) @set EDITION 4.2
-./version-stnd.texi(,4) @set VERSION 4.2
+version-stnd.texi(,1) @set UPDATED 23 March 2002
+version-stnd.texi(,2) @set UPDATED-MONTH March 2002
+version-stnd.texi(,3) @set EDITION 4.2
+version-stnd.texi(,4) @set VERSION 4.2
 info-stnd.texi(,6) @settitle GNU Info 4.2
 info-stnd.texi(,7) @syncodeindex vr cp
 info-stnd.texi(,8) @syncodeindex fn cp
@@ -2133,409 +2133,409 @@ info-stnd.texi(,2180) @menu
 info-stnd.texi(,2181) * GNU Free Documentation License::  License for copying this manual.
 info-stnd.texi(,2182) @end menu
 info-stnd.texi(,2183) 
-./fdl.texi(,1) 
-./fdl.texi(,2) @node GNU Free Documentation License
-./fdl.texi(,3) @appendixsec GNU Free Documentation License
-./fdl.texi(,4) 
-./fdl.texi(,5) @cindex FDL, GNU Free Documentation License
-./fdl.texi(,6) @center Version 1.1, March 2000
-./fdl.texi(,7) 
-./fdl.texi(,8) @display
-./fdl.texi(,9) Copyright @copyright{} 2000 Free Software Foundation, Inc.
-./fdl.texi(,10) 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
-./fdl.texi(,11) 
-./fdl.texi(,12) Everyone is permitted to copy and distribute verbatim copies
-./fdl.texi(,13) of this license document, but changing it is not allowed.
-./fdl.texi(,14) @end display
-./fdl.texi(,15) 
-./fdl.texi(,16) @enumerate 0
-./fdl.texi(,17) @item
-./fdl.texi(,18) PREAMBLE
-./fdl.texi(,19) 
-./fdl.texi(,20) The purpose of this License is to make a manual, textbook, or other
-./fdl.texi(,21) written document @dfn{free} in the sense of freedom: to assure everyone
-./fdl.texi(,22) the effective freedom to copy and redistribute it, with or without
-./fdl.texi(,23) modifying it, either commercially or noncommercially.  Secondarily,
-./fdl.texi(,24) this License preserves for the author and publisher a way to get
-./fdl.texi(,25) credit for their work, while not being considered responsible for
-./fdl.texi(,26) modifications made by others.
-./fdl.texi(,27) 
-./fdl.texi(,28) This License is a kind of ``copyleft'', which means that derivative
-./fdl.texi(,29) works of the document must themselves be free in the same sense.  It
-./fdl.texi(,30) complements the GNU General Public License, which is a copyleft
-./fdl.texi(,31) license designed for free software.
-./fdl.texi(,32) 
-./fdl.texi(,33) We have designed this License in order to use it for manuals for free
-./fdl.texi(,34) software, because free software needs free documentation: a free
-./fdl.texi(,35) program should come with manuals providing the same freedoms that the
-./fdl.texi(,36) software does.  But this License is not limited to software manuals;
-./fdl.texi(,37) it can be used for any textual work, regardless of subject matter or
-./fdl.texi(,38) whether it is published as a printed book.  We recommend this License
-./fdl.texi(,39) principally for works whose purpose is instruction or reference.
-./fdl.texi(,40) 
-./fdl.texi(,41) @item
-./fdl.texi(,42) APPLICABILITY AND DEFINITIONS
-./fdl.texi(,43) 
-./fdl.texi(,44) This License applies to any manual or other work that contains a
-./fdl.texi(,45) notice placed by the copyright holder saying it can be distributed
-./fdl.texi(,46) under the terms of this License.  The ``Document'', below, refers to any
-./fdl.texi(,47) such manual or work.  Any member of the public is a licensee, and is
-./fdl.texi(,48) addressed as ``you''.
-./fdl.texi(,49) 
-./fdl.texi(,50) A ``Modified Version'' of the Document means any work containing the
-./fdl.texi(,51) Document or a portion of it, either copied verbatim, or with
-./fdl.texi(,52) modifications and/or translated into another language.
-./fdl.texi(,53) 
-./fdl.texi(,54) A ``Secondary Section'' is a named appendix or a front-matter section of
-./fdl.texi(,55) the Document that deals exclusively with the relationship of the
-./fdl.texi(,56) publishers or authors of the Document to the Document's overall subject
-./fdl.texi(,57) (or to related matters) and contains nothing that could fall directly
-./fdl.texi(,58) within that overall subject.  (For example, if the Document is in part a
-./fdl.texi(,59) textbook of mathematics, a Secondary Section may not explain any
-./fdl.texi(,60) mathematics.)  The relationship could be a matter of historical
-./fdl.texi(,61) connection with the subject or with related matters, or of legal,
-./fdl.texi(,62) commercial, philosophical, ethical or political position regarding
-./fdl.texi(,63) them.
-./fdl.texi(,64) 
-./fdl.texi(,65) The ``Invariant Sections'' are certain Secondary Sections whose titles
-./fdl.texi(,66) are designated, as being those of Invariant Sections, in the notice
-./fdl.texi(,67) that says that the Document is released under this License.
-./fdl.texi(,68) 
-./fdl.texi(,69) The ``Cover Texts'' are certain short passages of text that are listed,
-./fdl.texi(,70) as Front-Cover Texts or Back-Cover Texts, in the notice that says that
-./fdl.texi(,71) the Document is released under this License.
-./fdl.texi(,72) 
-./fdl.texi(,73) A ``Transparent'' copy of the Document means a machine-readable copy,
-./fdl.texi(,74) represented in a format whose specification is available to the
-./fdl.texi(,75) general public, whose contents can be viewed and edited directly and
-./fdl.texi(,76) straightforwardly with generic text editors or (for images composed of
-./fdl.texi(,77) pixels) generic paint programs or (for drawings) some widely available
-./fdl.texi(,78) drawing editor, and that is suitable for input to text formatters or
-./fdl.texi(,79) for automatic translation to a variety of formats suitable for input
-./fdl.texi(,80) to text formatters.  A copy made in an otherwise Transparent file
-./fdl.texi(,81) format whose markup has been designed to thwart or discourage
-./fdl.texi(,82) subsequent modification by readers is not Transparent.  A copy that is
-./fdl.texi(,83) not ``Transparent'' is called ``Opaque''.
-./fdl.texi(,84) 
-./fdl.texi(,85) Examples of suitable formats for Transparent copies include plain
-./fdl.texi(,86) @sc{ascii} without markup, Texinfo input format, La@TeX{} input format,
-./fdl.texi(,87) @acronym{SGML} or @acronym{XML} using a publicly available
-./fdl.texi(,88) @acronym{DTD}, and standard-conforming simple @acronym{HTML} designed
-./fdl.texi(,89) for human modification.  Opaque formats include PostScript,
-./fdl.texi(,90) @acronym{PDF}, proprietary formats that can be read and edited only by
-./fdl.texi(,91) proprietary word processors, @acronym{SGML} or @acronym{XML} for which
-./fdl.texi(,92) the @acronym{DTD} and/or processing tools are not generally available,
-./fdl.texi(,93) and the machine-generated @acronym{HTML} produced by some word
-./fdl.texi(,94) processors for output purposes only.
-./fdl.texi(,95) 
-./fdl.texi(,96) The ``Title Page'' means, for a printed book, the title page itself,
-./fdl.texi(,97) plus such following pages as are needed to hold, legibly, the material
-./fdl.texi(,98) this License requires to appear in the title page.  For works in
-./fdl.texi(,99) formats which do not have any title page as such, ``Title Page'' means
-./fdl.texi(,100) the text near the most prominent appearance of the work's title,
-./fdl.texi(,101) preceding the beginning of the body of the text.
-./fdl.texi(,102) 
-./fdl.texi(,103) @item
-./fdl.texi(,104) VERBATIM COPYING
-./fdl.texi(,105) 
-./fdl.texi(,106) You may copy and distribute the Document in any medium, either
-./fdl.texi(,107) commercially or noncommercially, provided that this License, the
-./fdl.texi(,108) copyright notices, and the license notice saying this License applies
-./fdl.texi(,109) to the Document are reproduced in all copies, and that you add no other
-./fdl.texi(,110) conditions whatsoever to those of this License.  You may not use
-./fdl.texi(,111) technical measures to obstruct or control the reading or further
-./fdl.texi(,112) copying of the copies you make or distribute.  However, you may accept
-./fdl.texi(,113) compensation in exchange for copies.  If you distribute a large enough
-./fdl.texi(,114) number of copies you must also follow the conditions in section 3.
-./fdl.texi(,115) 
-./fdl.texi(,116) You may also lend copies, under the same conditions stated above, and
-./fdl.texi(,117) you may publicly display copies.
-./fdl.texi(,118) 
-./fdl.texi(,119) @item
-./fdl.texi(,120) COPYING IN QUANTITY
-./fdl.texi(,121) 
-./fdl.texi(,122) If you publish printed copies of the Document numbering more than 100,
-./fdl.texi(,123) and the Document's license notice requires Cover Texts, you must enclose
-./fdl.texi(,124) the copies in covers that carry, clearly and legibly, all these Cover
-./fdl.texi(,125) Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
-./fdl.texi(,126) the back cover.  Both covers must also clearly and legibly identify
-./fdl.texi(,127) you as the publisher of these copies.  The front cover must present
-./fdl.texi(,128) the full title with all words of the title equally prominent and
-./fdl.texi(,129) visible.  You may add other material on the covers in addition.
-./fdl.texi(,130) Copying with changes limited to the covers, as long as they preserve
-./fdl.texi(,131) the title of the Document and satisfy these conditions, can be treated
-./fdl.texi(,132) as verbatim copying in other respects.
-./fdl.texi(,133) 
-./fdl.texi(,134) If the required texts for either cover are too voluminous to fit
-./fdl.texi(,135) legibly, you should put the first ones listed (as many as fit
-./fdl.texi(,136) reasonably) on the actual cover, and continue the rest onto adjacent
-./fdl.texi(,137) pages.
-./fdl.texi(,138) 
-./fdl.texi(,139) If you publish or distribute Opaque copies of the Document numbering
-./fdl.texi(,140) more than 100, you must either include a machine-readable Transparent
-./fdl.texi(,141) copy along with each Opaque copy, or state in or with each Opaque copy
-./fdl.texi(,142) a publicly-accessible computer-network location containing a complete
-./fdl.texi(,143) Transparent copy of the Document, free of added material, which the
-./fdl.texi(,144) general network-using public has access to download anonymously at no
-./fdl.texi(,145) charge using public-standard network protocols.  If you use the latter
-./fdl.texi(,146) option, you must take reasonably prudent steps, when you begin
-./fdl.texi(,147) distribution of Opaque copies in quantity, to ensure that this
-./fdl.texi(,148) Transparent copy will remain thus accessible at the stated location
-./fdl.texi(,149) until at least one year after the last time you distribute an Opaque
-./fdl.texi(,150) copy (directly or through your agents or retailers) of that edition to
-./fdl.texi(,151) the public.
-./fdl.texi(,152) 
-./fdl.texi(,153) It is requested, but not required, that you contact the authors of the
-./fdl.texi(,154) Document well before redistributing any large number of copies, to give
-./fdl.texi(,155) them a chance to provide you with an updated version of the Document.
-./fdl.texi(,156) 
-./fdl.texi(,157) @item
-./fdl.texi(,158) MODIFICATIONS
-./fdl.texi(,159) 
-./fdl.texi(,160) You may copy and distribute a Modified Version of the Document under
-./fdl.texi(,161) the conditions of sections 2 and 3 above, provided that you release
-./fdl.texi(,162) the Modified Version under precisely this License, with the Modified
-./fdl.texi(,163) Version filling the role of the Document, thus licensing distribution
-./fdl.texi(,164) and modification of the Modified Version to whoever possesses a copy
-./fdl.texi(,165) of it.  In addition, you must do these things in the Modified Version:
-./fdl.texi(,166) 
-./fdl.texi(,167) @enumerate A
-./fdl.texi(,168) @item
-./fdl.texi(,169) Use in the Title Page (and on the covers, if any) a title distinct
-./fdl.texi(,170) from that of the Document, and from those of previous versions
-./fdl.texi(,171) (which should, if there were any, be listed in the History section
-./fdl.texi(,172) of the Document).  You may use the same title as a previous version
-./fdl.texi(,173) if the original publisher of that version gives permission.
-./fdl.texi(,174) 
-./fdl.texi(,175) @item
-./fdl.texi(,176) List on the Title Page, as authors, one or more persons or entities
-./fdl.texi(,177) responsible for authorship of the modifications in the Modified
-./fdl.texi(,178) Version, together with at least five of the principal authors of the
-./fdl.texi(,179) Document (all of its principal authors, if it has less than five).
-./fdl.texi(,180) 
-./fdl.texi(,181) @item
-./fdl.texi(,182) State on the Title page the name of the publisher of the
-./fdl.texi(,183) Modified Version, as the publisher.
-./fdl.texi(,184) 
-./fdl.texi(,185) @item
-./fdl.texi(,186) Preserve all the copyright notices of the Document.
-./fdl.texi(,187) 
-./fdl.texi(,188) @item
-./fdl.texi(,189) Add an appropriate copyright notice for your modifications
-./fdl.texi(,190) adjacent to the other copyright notices.
-./fdl.texi(,191) 
-./fdl.texi(,192) @item
-./fdl.texi(,193) Include, immediately after the copyright notices, a license notice
-./fdl.texi(,194) giving the public permission to use the Modified Version under the
-./fdl.texi(,195) terms of this License, in the form shown in the Addendum below.
-./fdl.texi(,196) 
-./fdl.texi(,197) @item
-./fdl.texi(,198) Preserve in that license notice the full lists of Invariant Sections
-./fdl.texi(,199) and required Cover Texts given in the Document's license notice.
-./fdl.texi(,200) 
-./fdl.texi(,201) @item
-./fdl.texi(,202) Include an unaltered copy of this License.
-./fdl.texi(,203) 
-./fdl.texi(,204) @item
-./fdl.texi(,205) Preserve the section entitled ``History'', and its title, and add to
-./fdl.texi(,206) it an item stating at least the title, year, new authors, and
-./fdl.texi(,207) publisher of the Modified Version as given on the Title Page.  If
-./fdl.texi(,208) there is no section entitled ``History'' in the Document, create one
-./fdl.texi(,209) stating the title, year, authors, and publisher of the Document as
-./fdl.texi(,210) given on its Title Page, then add an item describing the Modified
-./fdl.texi(,211) Version as stated in the previous sentence.
-./fdl.texi(,212) 
-./fdl.texi(,213) @item
-./fdl.texi(,214) Preserve the network location, if any, given in the Document for
-./fdl.texi(,215) public access to a Transparent copy of the Document, and likewise
-./fdl.texi(,216) the network locations given in the Document for previous versions
-./fdl.texi(,217) it was based on.  These may be placed in the ``History'' section.
-./fdl.texi(,218) You may omit a network location for a work that was published at
-./fdl.texi(,219) least four years before the Document itself, or if the original
-./fdl.texi(,220) publisher of the version it refers to gives permission.
-./fdl.texi(,221) 
-./fdl.texi(,222) @item
-./fdl.texi(,223) In any section entitled ``Acknowledgments'' or ``Dedications'',
-./fdl.texi(,224) preserve the section's title, and preserve in the section all the
-./fdl.texi(,225) substance and tone of each of the contributor acknowledgments
-./fdl.texi(,226) and/or dedications given therein.
-./fdl.texi(,227) 
-./fdl.texi(,228) @item
-./fdl.texi(,229) Preserve all the Invariant Sections of the Document,
-./fdl.texi(,230) unaltered in their text and in their titles.  Section numbers
-./fdl.texi(,231) or the equivalent are not considered part of the section titles.
-./fdl.texi(,232) 
-./fdl.texi(,233) @item
-./fdl.texi(,234) Delete any section entitled ``Endorsements''.  Such a section
-./fdl.texi(,235) may not be included in the Modified Version.
-./fdl.texi(,236) 
-./fdl.texi(,237) @item
-./fdl.texi(,238) Do not retitle any existing section as ``Endorsements''
-./fdl.texi(,239) or to conflict in title with any Invariant Section.
-./fdl.texi(,240) @end enumerate
-./fdl.texi(,241) 
-./fdl.texi(,242) If the Modified Version includes new front-matter sections or
-./fdl.texi(,243) appendices that qualify as Secondary Sections and contain no material
-./fdl.texi(,244) copied from the Document, you may at your option designate some or all
-./fdl.texi(,245) of these sections as invariant.  To do this, add their titles to the
-./fdl.texi(,246) list of Invariant Sections in the Modified Version's license notice.
-./fdl.texi(,247) These titles must be distinct from any other section titles.
-./fdl.texi(,248) 
-./fdl.texi(,249) You may add a section entitled ``Endorsements'', provided it contains
-./fdl.texi(,250) nothing but endorsements of your Modified Version by various
-./fdl.texi(,251) parties---for example, statements of peer review or that the text has
-./fdl.texi(,252) been approved by an organization as the authoritative definition of a
-./fdl.texi(,253) standard.
-./fdl.texi(,254) 
-./fdl.texi(,255) You may add a passage of up to five words as a Front-Cover Text, and a
-./fdl.texi(,256) passage of up to 25 words as a Back-Cover Text, to the end of the list
-./fdl.texi(,257) of Cover Texts in the Modified Version.  Only one passage of
-./fdl.texi(,258) Front-Cover Text and one of Back-Cover Text may be added by (or
-./fdl.texi(,259) through arrangements made by) any one entity.  If the Document already
-./fdl.texi(,260) includes a cover text for the same cover, previously added by you or
-./fdl.texi(,261) by arrangement made by the same entity you are acting on behalf of,
-./fdl.texi(,262) you may not add another; but you may replace the old one, on explicit
-./fdl.texi(,263) permission from the previous publisher that added the old one.
-./fdl.texi(,264) 
-./fdl.texi(,265) The author(s) and publisher(s) of the Document do not by this License
-./fdl.texi(,266) give permission to use their names for publicity for or to assert or
-./fdl.texi(,267) imply endorsement of any Modified Version.
-./fdl.texi(,268) 
-./fdl.texi(,269) @item
-./fdl.texi(,270) COMBINING DOCUMENTS
-./fdl.texi(,271) 
-./fdl.texi(,272) You may combine the Document with other documents released under this
-./fdl.texi(,273) License, under the terms defined in section 4 above for modified
-./fdl.texi(,274) versions, provided that you include in the combination all of the
-./fdl.texi(,275) Invariant Sections of all of the original documents, unmodified, and
-./fdl.texi(,276) list them all as Invariant Sections of your combined work in its
-./fdl.texi(,277) license notice.
-./fdl.texi(,278) 
-./fdl.texi(,279) The combined work need only contain one copy of this License, and
-./fdl.texi(,280) multiple identical Invariant Sections may be replaced with a single
-./fdl.texi(,281) copy.  If there are multiple Invariant Sections with the same name but
-./fdl.texi(,282) different contents, make the title of each such section unique by
-./fdl.texi(,283) adding at the end of it, in parentheses, the name of the original
-./fdl.texi(,284) author or publisher of that section if known, or else a unique number.
-./fdl.texi(,285) Make the same adjustment to the section titles in the list of
-./fdl.texi(,286) Invariant Sections in the license notice of the combined work.
-./fdl.texi(,287) 
-./fdl.texi(,288) In the combination, you must combine any sections entitled ``History''
-./fdl.texi(,289) in the various original documents, forming one section entitled
-./fdl.texi(,290) ``History''; likewise combine any sections entitled ``Acknowledgments'',
-./fdl.texi(,291) and any sections entitled ``Dedications''.  You must delete all sections
-./fdl.texi(,292) entitled ``Endorsements.''
-./fdl.texi(,293) 
-./fdl.texi(,294) @item
-./fdl.texi(,295) COLLECTIONS OF DOCUMENTS
-./fdl.texi(,296) 
-./fdl.texi(,297) You may make a collection consisting of the Document and other documents
-./fdl.texi(,298) released under this License, and replace the individual copies of this
-./fdl.texi(,299) License in the various documents with a single copy that is included in
-./fdl.texi(,300) the collection, provided that you follow the rules of this License for
-./fdl.texi(,301) verbatim copying of each of the documents in all other respects.
-./fdl.texi(,302) 
-./fdl.texi(,303) You may extract a single document from such a collection, and distribute
-./fdl.texi(,304) it individually under this License, provided you insert a copy of this
-./fdl.texi(,305) License into the extracted document, and follow this License in all
-./fdl.texi(,306) other respects regarding verbatim copying of that document.
-./fdl.texi(,307) 
-./fdl.texi(,308) @item
-./fdl.texi(,309) AGGREGATION WITH INDEPENDENT WORKS
-./fdl.texi(,310) 
-./fdl.texi(,311) A compilation of the Document or its derivatives with other separate
-./fdl.texi(,312) and independent documents or works, in or on a volume of a storage or
-./fdl.texi(,313) distribution medium, does not as a whole count as a Modified Version
-./fdl.texi(,314) of the Document, provided no compilation copyright is claimed for the
-./fdl.texi(,315) compilation.  Such a compilation is called an ``aggregate'', and this
-./fdl.texi(,316) License does not apply to the other self-contained works thus compiled
-./fdl.texi(,317) with the Document, on account of their being thus compiled, if they
-./fdl.texi(,318) are not themselves derivative works of the Document.
-./fdl.texi(,319) 
-./fdl.texi(,320) If the Cover Text requirement of section 3 is applicable to these
-./fdl.texi(,321) copies of the Document, then if the Document is less than one quarter
-./fdl.texi(,322) of the entire aggregate, the Document's Cover Texts may be placed on
-./fdl.texi(,323) covers that surround only the Document within the aggregate.
-./fdl.texi(,324) Otherwise they must appear on covers around the whole aggregate.
-./fdl.texi(,325) 
-./fdl.texi(,326) @item
-./fdl.texi(,327) TRANSLATION
-./fdl.texi(,328) 
-./fdl.texi(,329) Translation is considered a kind of modification, so you may
-./fdl.texi(,330) distribute translations of the Document under the terms of section 4.
-./fdl.texi(,331) Replacing Invariant Sections with translations requires special
-./fdl.texi(,332) permission from their copyright holders, but you may include
-./fdl.texi(,333) translations of some or all Invariant Sections in addition to the
-./fdl.texi(,334) original versions of these Invariant Sections.  You may include a
-./fdl.texi(,335) translation of this License provided that you also include the
-./fdl.texi(,336) original English version of this License.  In case of a disagreement
-./fdl.texi(,337) between the translation and the original English version of this
-./fdl.texi(,338) License, the original English version will prevail.
-./fdl.texi(,339) 
-./fdl.texi(,340) @item
-./fdl.texi(,341) TERMINATION
-./fdl.texi(,342) 
-./fdl.texi(,343) You may not copy, modify, sublicense, or distribute the Document except
-./fdl.texi(,344) as expressly provided for under this License.  Any other attempt to
-./fdl.texi(,345) copy, modify, sublicense or distribute the Document is void, and will
-./fdl.texi(,346) automatically terminate your rights under this License.  However,
-./fdl.texi(,347) parties who have received copies, or rights, from you under this
-./fdl.texi(,348) License will not have their licenses terminated so long as such
-./fdl.texi(,349) parties remain in full compliance.
-./fdl.texi(,350) 
-./fdl.texi(,351) @item
-./fdl.texi(,352) FUTURE REVISIONS OF THIS LICENSE
-./fdl.texi(,353) 
-./fdl.texi(,354) The Free Software Foundation may publish new, revised versions
-./fdl.texi(,355) of the GNU Free Documentation License from time to time.  Such new
-./fdl.texi(,356) versions will be similar in spirit to the present version, but may
-./fdl.texi(,357) differ in detail to address new problems or concerns.  See
-./fdl.texi(,358) @uref{http://www.gnu.org/copyleft/}.
-./fdl.texi(,359) 
-./fdl.texi(,360) Each version of the License is given a distinguishing version number.
-./fdl.texi(,361) If the Document specifies that a particular numbered version of this
-./fdl.texi(,362) License ``or any later version'' applies to it, you have the option of
-./fdl.texi(,363) following the terms and conditions either of that specified version or
-./fdl.texi(,364) of any later version that has been published (not as a draft) by the
-./fdl.texi(,365) Free Software Foundation.  If the Document does not specify a version
-./fdl.texi(,366) number of this License, you may choose any version ever published (not
-./fdl.texi(,367) as a draft) by the Free Software Foundation.
-./fdl.texi(,368) @end enumerate
-./fdl.texi(,369) 
-./fdl.texi(,370) @page
-./fdl.texi(,371) @appendixsubsec ADDENDUM: How to use this License for your documents
-./fdl.texi(,372) 
-./fdl.texi(,373) To use this License in a document you have written, include a copy of
-./fdl.texi(,374) the License in the document and put the following copyright and
-./fdl.texi(,375) license notices just after the title page:
-./fdl.texi(,376) 
-./fdl.texi(,377) @smallexample
-./fdl.texi(,378) @group
-./fdl.texi(,379)   Copyright (C)  @var{year}  @var{your name}.
-./fdl.texi(,380)   Permission is granted to copy, distribute and/or modify this document
-./fdl.texi(,381)   under the terms of the GNU Free Documentation License, Version 1.1
-./fdl.texi(,382)   or any later version published by the Free Software Foundation;
-./fdl.texi(,383)   with the Invariant Sections being @var{list their titles}, with the
-./fdl.texi(,384)   Front-Cover Texts being @var{list}, and with the Back-Cover Texts being @var{list}.
-./fdl.texi(,385)   A copy of the license is included in the section entitled ``GNU
-./fdl.texi(,386)   Free Documentation License''.
-./fdl.texi(,387) @end group
-./fdl.texi(,388) @end smallexample
-./fdl.texi(,389) 
-./fdl.texi(,390) If you have no Invariant Sections, write ``with no Invariant Sections''
-./fdl.texi(,391) instead of saying which ones are invariant.  If you have no
-./fdl.texi(,392) Front-Cover Texts, write ``no Front-Cover Texts'' instead of
-./fdl.texi(,393) ``Front-Cover Texts being @var{list}''; likewise for Back-Cover Texts.
-./fdl.texi(,394) 
-./fdl.texi(,395) If your document contains nontrivial examples of program code, we
-./fdl.texi(,396) recommend releasing these examples in parallel under your choice of
-./fdl.texi(,397) free software license, such as the GNU General Public License,
-./fdl.texi(,398) to permit their use in free software.
-./fdl.texi(,399) 
-./fdl.texi(,400) @c Local Variables:
-./fdl.texi(,401) @c ispell-local-pdict: "ispell-dict"
-./fdl.texi(,402) @c End:
-./fdl.texi(,403) 
+fdl.texi(,1) 
+fdl.texi(,2) @node GNU Free Documentation License
+fdl.texi(,3) @appendixsec GNU Free Documentation License
+fdl.texi(,4) 
+fdl.texi(,5) @cindex FDL, GNU Free Documentation License
+fdl.texi(,6) @center Version 1.1, March 2000
+fdl.texi(,7) 
+fdl.texi(,8) @display
+fdl.texi(,9) Copyright @copyright{} 2000 Free Software Foundation, Inc.
+fdl.texi(,10) 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
+fdl.texi(,11) 
+fdl.texi(,12) Everyone is permitted to copy and distribute verbatim copies
+fdl.texi(,13) of this license document, but changing it is not allowed.
+fdl.texi(,14) @end display
+fdl.texi(,15) 
+fdl.texi(,16) @enumerate 0
+fdl.texi(,17) @item
+fdl.texi(,18) PREAMBLE
+fdl.texi(,19) 
+fdl.texi(,20) The purpose of this License is to make a manual, textbook, or other
+fdl.texi(,21) written document @dfn{free} in the sense of freedom: to assure everyone
+fdl.texi(,22) the effective freedom to copy and redistribute it, with or without
+fdl.texi(,23) modifying it, either commercially or noncommercially.  Secondarily,
+fdl.texi(,24) this License preserves for the author and publisher a way to get
+fdl.texi(,25) credit for their work, while not being considered responsible for
+fdl.texi(,26) modifications made by others.
+fdl.texi(,27) 
+fdl.texi(,28) This License is a kind of ``copyleft'', which means that derivative
+fdl.texi(,29) works of the document must themselves be free in the same sense.  It
+fdl.texi(,30) complements the GNU General Public License, which is a copyleft
+fdl.texi(,31) license designed for free software.
+fdl.texi(,32) 
+fdl.texi(,33) We have designed this License in order to use it for manuals for free
+fdl.texi(,34) software, because free software needs free documentation: a free
+fdl.texi(,35) program should come with manuals providing the same freedoms that the
+fdl.texi(,36) software does.  But this License is not limited to software manuals;
+fdl.texi(,37) it can be used for any textual work, regardless of subject matter or
+fdl.texi(,38) whether it is published as a printed book.  We recommend this License
+fdl.texi(,39) principally for works whose purpose is instruction or reference.
+fdl.texi(,40) 
+fdl.texi(,41) @item
+fdl.texi(,42) APPLICABILITY AND DEFINITIONS
+fdl.texi(,43) 
+fdl.texi(,44) This License applies to any manual or other work that contains a
+fdl.texi(,45) notice placed by the copyright holder saying it can be distributed
+fdl.texi(,46) under the terms of this License.  The ``Document'', below, refers to any
+fdl.texi(,47) such manual or work.  Any member of the public is a licensee, and is
+fdl.texi(,48) addressed as ``you''.
+fdl.texi(,49) 
+fdl.texi(,50) A ``Modified Version'' of the Document means any work containing the
+fdl.texi(,51) Document or a portion of it, either copied verbatim, or with
+fdl.texi(,52) modifications and/or translated into another language.
+fdl.texi(,53) 
+fdl.texi(,54) A ``Secondary Section'' is a named appendix or a front-matter section of
+fdl.texi(,55) the Document that deals exclusively with the relationship of the
+fdl.texi(,56) publishers or authors of the Document to the Document's overall subject
+fdl.texi(,57) (or to related matters) and contains nothing that could fall directly
+fdl.texi(,58) within that overall subject.  (For example, if the Document is in part a
+fdl.texi(,59) textbook of mathematics, a Secondary Section may not explain any
+fdl.texi(,60) mathematics.)  The relationship could be a matter of historical
+fdl.texi(,61) connection with the subject or with related matters, or of legal,
+fdl.texi(,62) commercial, philosophical, ethical or political position regarding
+fdl.texi(,63) them.
+fdl.texi(,64) 
+fdl.texi(,65) The ``Invariant Sections'' are certain Secondary Sections whose titles
+fdl.texi(,66) are designated, as being those of Invariant Sections, in the notice
+fdl.texi(,67) that says that the Document is released under this License.
+fdl.texi(,68) 
+fdl.texi(,69) The ``Cover Texts'' are certain short passages of text that are listed,
+fdl.texi(,70) as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+fdl.texi(,71) the Document is released under this License.
+fdl.texi(,72) 
+fdl.texi(,73) A ``Transparent'' copy of the Document means a machine-readable copy,
+fdl.texi(,74) represented in a format whose specification is available to the
+fdl.texi(,75) general public, whose contents can be viewed and edited directly and
+fdl.texi(,76) straightforwardly with generic text editors or (for images composed of
+fdl.texi(,77) pixels) generic paint programs or (for drawings) some widely available
+fdl.texi(,78) drawing editor, and that is suitable for input to text formatters or
+fdl.texi(,79) for automatic translation to a variety of formats suitable for input
+fdl.texi(,80) to text formatters.  A copy made in an otherwise Transparent file
+fdl.texi(,81) format whose markup has been designed to thwart or discourage
+fdl.texi(,82) subsequent modification by readers is not Transparent.  A copy that is
+fdl.texi(,83) not ``Transparent'' is called ``Opaque''.
+fdl.texi(,84) 
+fdl.texi(,85) Examples of suitable formats for Transparent copies include plain
+fdl.texi(,86) @sc{ascii} without markup, Texinfo input format, La@TeX{} input format,
+fdl.texi(,87) @acronym{SGML} or @acronym{XML} using a publicly available
+fdl.texi(,88) @acronym{DTD}, and standard-conforming simple @acronym{HTML} designed
+fdl.texi(,89) for human modification.  Opaque formats include PostScript,
+fdl.texi(,90) @acronym{PDF}, proprietary formats that can be read and edited only by
+fdl.texi(,91) proprietary word processors, @acronym{SGML} or @acronym{XML} for which
+fdl.texi(,92) the @acronym{DTD} and/or processing tools are not generally available,
+fdl.texi(,93) and the machine-generated @acronym{HTML} produced by some word
+fdl.texi(,94) processors for output purposes only.
+fdl.texi(,95) 
+fdl.texi(,96) The ``Title Page'' means, for a printed book, the title page itself,
+fdl.texi(,97) plus such following pages as are needed to hold, legibly, the material
+fdl.texi(,98) this License requires to appear in the title page.  For works in
+fdl.texi(,99) formats which do not have any title page as such, ``Title Page'' means
+fdl.texi(,100) the text near the most prominent appearance of the work's title,
+fdl.texi(,101) preceding the beginning of the body of the text.
+fdl.texi(,102) 
+fdl.texi(,103) @item
+fdl.texi(,104) VERBATIM COPYING
+fdl.texi(,105) 
+fdl.texi(,106) You may copy and distribute the Document in any medium, either
+fdl.texi(,107) commercially or noncommercially, provided that this License, the
+fdl.texi(,108) copyright notices, and the license notice saying this License applies
+fdl.texi(,109) to the Document are reproduced in all copies, and that you add no other
+fdl.texi(,110) conditions whatsoever to those of this License.  You may not use
+fdl.texi(,111) technical measures to obstruct or control the reading or further
+fdl.texi(,112) copying of the copies you make or distribute.  However, you may accept
+fdl.texi(,113) compensation in exchange for copies.  If you distribute a large enough
+fdl.texi(,114) number of copies you must also follow the conditions in section 3.
+fdl.texi(,115) 
+fdl.texi(,116) You may also lend copies, under the same conditions stated above, and
+fdl.texi(,117) you may publicly display copies.
+fdl.texi(,118) 
+fdl.texi(,119) @item
+fdl.texi(,120) COPYING IN QUANTITY
+fdl.texi(,121) 
+fdl.texi(,122) If you publish printed copies of the Document numbering more than 100,
+fdl.texi(,123) and the Document's license notice requires Cover Texts, you must enclose
+fdl.texi(,124) the copies in covers that carry, clearly and legibly, all these Cover
+fdl.texi(,125) Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+fdl.texi(,126) the back cover.  Both covers must also clearly and legibly identify
+fdl.texi(,127) you as the publisher of these copies.  The front cover must present
+fdl.texi(,128) the full title with all words of the title equally prominent and
+fdl.texi(,129) visible.  You may add other material on the covers in addition.
+fdl.texi(,130) Copying with changes limited to the covers, as long as they preserve
+fdl.texi(,131) the title of the Document and satisfy these conditions, can be treated
+fdl.texi(,132) as verbatim copying in other respects.
+fdl.texi(,133) 
+fdl.texi(,134) If the required texts for either cover are too voluminous to fit
+fdl.texi(,135) legibly, you should put the first ones listed (as many as fit
+fdl.texi(,136) reasonably) on the actual cover, and continue the rest onto adjacent
+fdl.texi(,137) pages.
+fdl.texi(,138) 
+fdl.texi(,139) If you publish or distribute Opaque copies of the Document numbering
+fdl.texi(,140) more than 100, you must either include a machine-readable Transparent
+fdl.texi(,141) copy along with each Opaque copy, or state in or with each Opaque copy
+fdl.texi(,142) a publicly-accessible computer-network location containing a complete
+fdl.texi(,143) Transparent copy of the Document, free of added material, which the
+fdl.texi(,144) general network-using public has access to download anonymously at no
+fdl.texi(,145) charge using public-standard network protocols.  If you use the latter
+fdl.texi(,146) option, you must take reasonably prudent steps, when you begin
+fdl.texi(,147) distribution of Opaque copies in quantity, to ensure that this
+fdl.texi(,148) Transparent copy will remain thus accessible at the stated location
+fdl.texi(,149) until at least one year after the last time you distribute an Opaque
+fdl.texi(,150) copy (directly or through your agents or retailers) of that edition to
+fdl.texi(,151) the public.
+fdl.texi(,152) 
+fdl.texi(,153) It is requested, but not required, that you contact the authors of the
+fdl.texi(,154) Document well before redistributing any large number of copies, to give
+fdl.texi(,155) them a chance to provide you with an updated version of the Document.
+fdl.texi(,156) 
+fdl.texi(,157) @item
+fdl.texi(,158) MODIFICATIONS
+fdl.texi(,159) 
+fdl.texi(,160) You may copy and distribute a Modified Version of the Document under
+fdl.texi(,161) the conditions of sections 2 and 3 above, provided that you release
+fdl.texi(,162) the Modified Version under precisely this License, with the Modified
+fdl.texi(,163) Version filling the role of the Document, thus licensing distribution
+fdl.texi(,164) and modification of the Modified Version to whoever possesses a copy
+fdl.texi(,165) of it.  In addition, you must do these things in the Modified Version:
+fdl.texi(,166) 
+fdl.texi(,167) @enumerate A
+fdl.texi(,168) @item
+fdl.texi(,169) Use in the Title Page (and on the covers, if any) a title distinct
+fdl.texi(,170) from that of the Document, and from those of previous versions
+fdl.texi(,171) (which should, if there were any, be listed in the History section
+fdl.texi(,172) of the Document).  You may use the same title as a previous version
+fdl.texi(,173) if the original publisher of that version gives permission.
+fdl.texi(,174) 
+fdl.texi(,175) @item
+fdl.texi(,176) List on the Title Page, as authors, one or more persons or entities
+fdl.texi(,177) responsible for authorship of the modifications in the Modified
+fdl.texi(,178) Version, together with at least five of the principal authors of the
+fdl.texi(,179) Document (all of its principal authors, if it has less than five).
+fdl.texi(,180) 
+fdl.texi(,181) @item
+fdl.texi(,182) State on the Title page the name of the publisher of the
+fdl.texi(,183) Modified Version, as the publisher.
+fdl.texi(,184) 
+fdl.texi(,185) @item
+fdl.texi(,186) Preserve all the copyright notices of the Document.
+fdl.texi(,187) 
+fdl.texi(,188) @item
+fdl.texi(,189) Add an appropriate copyright notice for your modifications
+fdl.texi(,190) adjacent to the other copyright notices.
+fdl.texi(,191) 
+fdl.texi(,192) @item
+fdl.texi(,193) Include, immediately after the copyright notices, a license notice
+fdl.texi(,194) giving the public permission to use the Modified Version under the
+fdl.texi(,195) terms of this License, in the form shown in the Addendum below.
+fdl.texi(,196) 
+fdl.texi(,197) @item
+fdl.texi(,198) Preserve in that license notice the full lists of Invariant Sections
+fdl.texi(,199) and required Cover Texts given in the Document's license notice.
+fdl.texi(,200) 
+fdl.texi(,201) @item
+fdl.texi(,202) Include an unaltered copy of this License.
+fdl.texi(,203) 
+fdl.texi(,204) @item
+fdl.texi(,205) Preserve the section entitled ``History'', and its title, and add to
+fdl.texi(,206) it an item stating at least the title, year, new authors, and
+fdl.texi(,207) publisher of the Modified Version as given on the Title Page.  If
+fdl.texi(,208) there is no section entitled ``History'' in the Document, create one
+fdl.texi(,209) stating the title, year, authors, and publisher of the Document as
+fdl.texi(,210) given on its Title Page, then add an item describing the Modified
+fdl.texi(,211) Version as stated in the previous sentence.
+fdl.texi(,212) 
+fdl.texi(,213) @item
+fdl.texi(,214) Preserve the network location, if any, given in the Document for
+fdl.texi(,215) public access to a Transparent copy of the Document, and likewise
+fdl.texi(,216) the network locations given in the Document for previous versions
+fdl.texi(,217) it was based on.  These may be placed in the ``History'' section.
+fdl.texi(,218) You may omit a network location for a work that was published at
+fdl.texi(,219) least four years before the Document itself, or if the original
+fdl.texi(,220) publisher of the version it refers to gives permission.
+fdl.texi(,221) 
+fdl.texi(,222) @item
+fdl.texi(,223) In any section entitled ``Acknowledgments'' or ``Dedications'',
+fdl.texi(,224) preserve the section's title, and preserve in the section all the
+fdl.texi(,225) substance and tone of each of the contributor acknowledgments
+fdl.texi(,226) and/or dedications given therein.
+fdl.texi(,227) 
+fdl.texi(,228) @item
+fdl.texi(,229) Preserve all the Invariant Sections of the Document,
+fdl.texi(,230) unaltered in their text and in their titles.  Section numbers
+fdl.texi(,231) or the equivalent are not considered part of the section titles.
+fdl.texi(,232) 
+fdl.texi(,233) @item
+fdl.texi(,234) Delete any section entitled ``Endorsements''.  Such a section
+fdl.texi(,235) may not be included in the Modified Version.
+fdl.texi(,236) 
+fdl.texi(,237) @item
+fdl.texi(,238) Do not retitle any existing section as ``Endorsements''
+fdl.texi(,239) or to conflict in title with any Invariant Section.
+fdl.texi(,240) @end enumerate
+fdl.texi(,241) 
+fdl.texi(,242) If the Modified Version includes new front-matter sections or
+fdl.texi(,243) appendices that qualify as Secondary Sections and contain no material
+fdl.texi(,244) copied from the Document, you may at your option designate some or all
+fdl.texi(,245) of these sections as invariant.  To do this, add their titles to the
+fdl.texi(,246) list of Invariant Sections in the Modified Version's license notice.
+fdl.texi(,247) These titles must be distinct from any other section titles.
+fdl.texi(,248) 
+fdl.texi(,249) You may add a section entitled ``Endorsements'', provided it contains
+fdl.texi(,250) nothing but endorsements of your Modified Version by various
+fdl.texi(,251) parties---for example, statements of peer review or that the text has
+fdl.texi(,252) been approved by an organization as the authoritative definition of a
+fdl.texi(,253) standard.
+fdl.texi(,254) 
+fdl.texi(,255) You may add a passage of up to five words as a Front-Cover Text, and a
+fdl.texi(,256) passage of up to 25 words as a Back-Cover Text, to the end of the list
+fdl.texi(,257) of Cover Texts in the Modified Version.  Only one passage of
+fdl.texi(,258) Front-Cover Text and one of Back-Cover Text may be added by (or
+fdl.texi(,259) through arrangements made by) any one entity.  If the Document already
+fdl.texi(,260) includes a cover text for the same cover, previously added by you or
+fdl.texi(,261) by arrangement made by the same entity you are acting on behalf of,
+fdl.texi(,262) you may not add another; but you may replace the old one, on explicit
+fdl.texi(,263) permission from the previous publisher that added the old one.
+fdl.texi(,264) 
+fdl.texi(,265) The author(s) and publisher(s) of the Document do not by this License
+fdl.texi(,266) give permission to use their names for publicity for or to assert or
+fdl.texi(,267) imply endorsement of any Modified Version.
+fdl.texi(,268) 
+fdl.texi(,269) @item
+fdl.texi(,270) COMBINING DOCUMENTS
+fdl.texi(,271) 
+fdl.texi(,272) You may combine the Document with other documents released under this
+fdl.texi(,273) License, under the terms defined in section 4 above for modified
+fdl.texi(,274) versions, provided that you include in the combination all of the
+fdl.texi(,275) Invariant Sections of all of the original documents, unmodified, and
+fdl.texi(,276) list them all as Invariant Sections of your combined work in its
+fdl.texi(,277) license notice.
+fdl.texi(,278) 
+fdl.texi(,279) The combined work need only contain one copy of this License, and
+fdl.texi(,280) multiple identical Invariant Sections may be replaced with a single
+fdl.texi(,281) copy.  If there are multiple Invariant Sections with the same name but
+fdl.texi(,282) different contents, make the title of each such section unique by
+fdl.texi(,283) adding at the end of it, in parentheses, the name of the original
+fdl.texi(,284) author or publisher of that section if known, or else a unique number.
+fdl.texi(,285) Make the same adjustment to the section titles in the list of
+fdl.texi(,286) Invariant Sections in the license notice of the combined work.
+fdl.texi(,287) 
+fdl.texi(,288) In the combination, you must combine any sections entitled ``History''
+fdl.texi(,289) in the various original documents, forming one section entitled
+fdl.texi(,290) ``History''; likewise combine any sections entitled ``Acknowledgments'',
+fdl.texi(,291) and any sections entitled ``Dedications''.  You must delete all sections
+fdl.texi(,292) entitled ``Endorsements.''
+fdl.texi(,293) 
+fdl.texi(,294) @item
+fdl.texi(,295) COLLECTIONS OF DOCUMENTS
+fdl.texi(,296) 
+fdl.texi(,297) You may make a collection consisting of the Document and other documents
+fdl.texi(,298) released under this License, and replace the individual copies of this
+fdl.texi(,299) License in the various documents with a single copy that is included in
+fdl.texi(,300) the collection, provided that you follow the rules of this License for
+fdl.texi(,301) verbatim copying of each of the documents in all other respects.
+fdl.texi(,302) 
+fdl.texi(,303) You may extract a single document from such a collection, and distribute
+fdl.texi(,304) it individually under this License, provided you insert a copy of this
+fdl.texi(,305) License into the extracted document, and follow this License in all
+fdl.texi(,306) other respects regarding verbatim copying of that document.
+fdl.texi(,307) 
+fdl.texi(,308) @item
+fdl.texi(,309) AGGREGATION WITH INDEPENDENT WORKS
+fdl.texi(,310) 
+fdl.texi(,311) A compilation of the Document or its derivatives with other separate
+fdl.texi(,312) and independent documents or works, in or on a volume of a storage or
+fdl.texi(,313) distribution medium, does not as a whole count as a Modified Version
+fdl.texi(,314) of the Document, provided no compilation copyright is claimed for the
+fdl.texi(,315) compilation.  Such a compilation is called an ``aggregate'', and this
+fdl.texi(,316) License does not apply to the other self-contained works thus compiled
+fdl.texi(,317) with the Document, on account of their being thus compiled, if they
+fdl.texi(,318) are not themselves derivative works of the Document.
+fdl.texi(,319) 
+fdl.texi(,320) If the Cover Text requirement of section 3 is applicable to these
+fdl.texi(,321) copies of the Document, then if the Document is less than one quarter
+fdl.texi(,322) of the entire aggregate, the Document's Cover Texts may be placed on
+fdl.texi(,323) covers that surround only the Document within the aggregate.
+fdl.texi(,324) Otherwise they must appear on covers around the whole aggregate.
+fdl.texi(,325) 
+fdl.texi(,326) @item
+fdl.texi(,327) TRANSLATION
+fdl.texi(,328) 
+fdl.texi(,329) Translation is considered a kind of modification, so you may
+fdl.texi(,330) distribute translations of the Document under the terms of section 4.
+fdl.texi(,331) Replacing Invariant Sections with translations requires special
+fdl.texi(,332) permission from their copyright holders, but you may include
+fdl.texi(,333) translations of some or all Invariant Sections in addition to the
+fdl.texi(,334) original versions of these Invariant Sections.  You may include a
+fdl.texi(,335) translation of this License provided that you also include the
+fdl.texi(,336) original English version of this License.  In case of a disagreement
+fdl.texi(,337) between the translation and the original English version of this
+fdl.texi(,338) License, the original English version will prevail.
+fdl.texi(,339) 
+fdl.texi(,340) @item
+fdl.texi(,341) TERMINATION
+fdl.texi(,342) 
+fdl.texi(,343) You may not copy, modify, sublicense, or distribute the Document except
+fdl.texi(,344) as expressly provided for under this License.  Any other attempt to
+fdl.texi(,345) copy, modify, sublicense or distribute the Document is void, and will
+fdl.texi(,346) automatically terminate your rights under this License.  However,
+fdl.texi(,347) parties who have received copies, or rights, from you under this
+fdl.texi(,348) License will not have their licenses terminated so long as such
+fdl.texi(,349) parties remain in full compliance.
+fdl.texi(,350) 
+fdl.texi(,351) @item
+fdl.texi(,352) FUTURE REVISIONS OF THIS LICENSE
+fdl.texi(,353) 
+fdl.texi(,354) The Free Software Foundation may publish new, revised versions
+fdl.texi(,355) of the GNU Free Documentation License from time to time.  Such new
+fdl.texi(,356) versions will be similar in spirit to the present version, but may
+fdl.texi(,357) differ in detail to address new problems or concerns.  See
+fdl.texi(,358) @uref{http://www.gnu.org/copyleft/}.
+fdl.texi(,359) 
+fdl.texi(,360) Each version of the License is given a distinguishing version number.
+fdl.texi(,361) If the Document specifies that a particular numbered version of this
+fdl.texi(,362) License ``or any later version'' applies to it, you have the option of
+fdl.texi(,363) following the terms and conditions either of that specified version or
+fdl.texi(,364) of any later version that has been published (not as a draft) by the
+fdl.texi(,365) Free Software Foundation.  If the Document does not specify a version
+fdl.texi(,366) number of this License, you may choose any version ever published (not
+fdl.texi(,367) as a draft) by the Free Software Foundation.
+fdl.texi(,368) @end enumerate
+fdl.texi(,369) 
+fdl.texi(,370) @page
+fdl.texi(,371) @appendixsubsec ADDENDUM: How to use this License for your documents
+fdl.texi(,372) 
+fdl.texi(,373) To use this License in a document you have written, include a copy of
+fdl.texi(,374) the License in the document and put the following copyright and
+fdl.texi(,375) license notices just after the title page:
+fdl.texi(,376) 
+fdl.texi(,377) @smallexample
+fdl.texi(,378) @group
+fdl.texi(,379)   Copyright (C)  @var{year}  @var{your name}.
+fdl.texi(,380)   Permission is granted to copy, distribute and/or modify this document
+fdl.texi(,381)   under the terms of the GNU Free Documentation License, Version 1.1
+fdl.texi(,382)   or any later version published by the Free Software Foundation;
+fdl.texi(,383)   with the Invariant Sections being @var{list their titles}, with the
+fdl.texi(,384)   Front-Cover Texts being @var{list}, and with the Back-Cover Texts being @var{list}.
+fdl.texi(,385)   A copy of the license is included in the section entitled ``GNU
+fdl.texi(,386)   Free Documentation License''.
+fdl.texi(,387) @end group
+fdl.texi(,388) @end smallexample
+fdl.texi(,389) 
+fdl.texi(,390) If you have no Invariant Sections, write ``with no Invariant Sections''
+fdl.texi(,391) instead of saying which ones are invariant.  If you have no
+fdl.texi(,392) Front-Cover Texts, write ``no Front-Cover Texts'' instead of
+fdl.texi(,393) ``Front-Cover Texts being @var{list}''; likewise for Back-Cover Texts.
+fdl.texi(,394) 
+fdl.texi(,395) If your document contains nontrivial examples of program code, we
+fdl.texi(,396) recommend releasing these examples in parallel under your choice of
+fdl.texi(,397) free software license, such as the GNU General Public License,
+fdl.texi(,398) to permit their use in free software.
+fdl.texi(,399) 
+fdl.texi(,400) @c Local Variables:
+fdl.texi(,401) @c ispell-local-pdict: "ispell-dict"
+fdl.texi(,402) @c End:
+fdl.texi(,403) 
 info-stnd.texi(,2185) 
 info-stnd.texi(,2186) 
 info-stnd.texi(,2187) @node Index

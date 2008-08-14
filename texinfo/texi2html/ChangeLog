@@ -1,3 +1,9 @@
+2008-08-14  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: only use the basename when dumping texi.
+	Really use what is in Texi2HTML::Config::CONF_DIRS, including
+	during command line arguments parsing.
+
 2008-08-13  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't mess the relative working directory by

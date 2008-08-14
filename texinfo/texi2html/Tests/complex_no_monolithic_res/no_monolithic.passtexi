@@ -1,24 +1,24 @@
-../no_monolithic/no_monolithic.texi(,2) 
-../no_monolithic/no_monolithic.texi(,3) @setfilename no_monolithic.info
-../no_monolithic/no_monolithic.texi(,4) 
-../no_monolithic/no_monolithic.texi(,5) @node Top
-../no_monolithic/no_monolithic.texi(,6) @top Not monolithic
-../no_monolithic/no_monolithic.texi(,7) 
-../no_monolithic/no_monolithic.texi(,8) Not monolitic manual@footnote{my footnote}.
-../no_monolithic/no_monolithic.texi(,9) 
-../no_monolithic/no_monolithic.texi(,10) @cindex top
-../no_monolithic/no_monolithic.texi(,11) 
-../no_monolithic/no_monolithic.texi(,12) @menu
-../no_monolithic/no_monolithic.texi(,13) * chapter::
-../no_monolithic/no_monolithic.texi(,14) @end menu
-../no_monolithic/no_monolithic.texi(,15) 
-../no_monolithic/no_monolithic.texi(,16) @node chapter
-../no_monolithic/no_monolithic.texi(,17) @chapter Chapter
-../no_monolithic/no_monolithic.texi(,18) 
-../no_monolithic/no_monolithic.texi(,19) Chapter.
-../no_monolithic/no_monolithic.texi(,20) 
-../no_monolithic/no_monolithic.texi(,21) @contents
-../no_monolithic/no_monolithic.texi(,22) @shortcontents
-../no_monolithic/no_monolithic.texi(,23) 
-../no_monolithic/no_monolithic.texi(,24) @printindex cp
-../no_monolithic/no_monolithic.texi(,25) @bye
+no_monolithic.texi(,2) 
+no_monolithic.texi(,3) @setfilename no_monolithic.info
+no_monolithic.texi(,4) 
+no_monolithic.texi(,5) @node Top
+no_monolithic.texi(,6) @top Not monolithic
+no_monolithic.texi(,7) 
+no_monolithic.texi(,8) Not monolitic manual@footnote{my footnote}.
+no_monolithic.texi(,9) 
+no_monolithic.texi(,10) @cindex top
+no_monolithic.texi(,11) 
+no_monolithic.texi(,12) @menu
+no_monolithic.texi(,13) * chapter::
+no_monolithic.texi(,14) @end menu
+no_monolithic.texi(,15) 
+no_monolithic.texi(,16) @node chapter
+no_monolithic.texi(,17) @chapter Chapter
+no_monolithic.texi(,18) 
+no_monolithic.texi(,19) Chapter.
+no_monolithic.texi(,20) 
+no_monolithic.texi(,21) @contents
+no_monolithic.texi(,22) @shortcontents
+no_monolithic.texi(,23) 
+no_monolithic.texi(,24) @printindex cp
+no_monolithic.texi(,25) @bye

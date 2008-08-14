@@ -17,27 +17,27 @@ raiselowersections.texi(,19) @set do-top
 raiselowersections.texi(,20) 
 raiselowersections.texi(,21) @lowersections
 raiselowersections.texi(,22) 
-./section_file.texi(,1) \input texinfo @c -*-texinfo-*-
-./section_file.texi(,2) 
-./section_file.texi(,11) 
-./section_file.texi(,12) @node Chapter in included file
-./section_file.texi(,13) @chapter Chapter in included file
-./section_file.texi(,14) 
-./section_file.texi(,15) @menu
-./section_file.texi(,16) * Section::
-./section_file.texi(,17) @end menu
-./section_file.texi(,18) 
-./section_file.texi(,19) @node Section
-./section_file.texi(,20) @section Section
-./section_file.texi(,21) 
-./section_file.texi(,22) @menu
-./section_file.texi(,23) * Subsection::
-./section_file.texi(,24) @end menu
-./section_file.texi(,25) 
-./section_file.texi(,26) @node Subsection
-./section_file.texi(,27) @subsection Subsection
-./section_file.texi(,28) 
-./section_file.texi(,37) 
+section_file.texi(,1) \input texinfo @c -*-texinfo-*-
+section_file.texi(,2) 
+section_file.texi(,11) 
+section_file.texi(,12) @node Chapter in included file
+section_file.texi(,13) @chapter Chapter in included file
+section_file.texi(,14) 
+section_file.texi(,15) @menu
+section_file.texi(,16) * Section::
+section_file.texi(,17) @end menu
+section_file.texi(,18) 
+section_file.texi(,19) @node Section
+section_file.texi(,20) @section Section
+section_file.texi(,21) 
+section_file.texi(,22) @menu
+section_file.texi(,23) * Subsection::
+section_file.texi(,24) @end menu
+section_file.texi(,25) 
+section_file.texi(,26) @node Subsection
+section_file.texi(,27) @subsection Subsection
+section_file.texi(,28) 
+section_file.texi(,37) 
 raiselowersections.texi(,26) @raisesections
 raiselowersections.texi(,27) 
 raiselowersections.texi(,28) @clear do-top 

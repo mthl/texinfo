@@ -35,10 +35,10 @@ cvs.texinfo(,69) @c to injury, and I'm not aware of them helping to fix
 cvs.texinfo(,70) @c the overfull hboxes at all.
 cvs.texinfo(,71) @finalout
 cvs.texinfo(,72) 
-./version.texi(,1) @set UPDATED 7 August 2003
-./version.texi(,2) @set UPDATED-MONTH August 2003
-./version.texi(,3) @set EDITION 1.12.1.1
-./version.texi(,4) @set VERSION 1.12.1.1
+version.texi(,1) @set UPDATED 7 August 2003
+version.texi(,2) @set UPDATED-MONTH August 2003
+version.texi(,3) @set EDITION 1.12.1.1
+version.texi(,4) @set VERSION 1.12.1.1
 cvs.texinfo(,74) @settitle CVS---Concurrent Versions System v1.12.1.1
 cvs.texinfo(,75) @setchapternewpage odd
 cvs.texinfo(,76) 
