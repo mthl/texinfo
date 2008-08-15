@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.120 2008-05-20 17:30:52 karl Exp $
+   $Id: makeinfo.c,v 1.121 2008-08-15 22:14:44 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -2374,7 +2374,7 @@ remember_brace_1 (COMMAND_FUNCTION (*proc), int position)
   BRACE_ELEMENT *new = xmalloc (sizeof (BRACE_ELEMENT));
   new->next = brace_stack;
   new->proc = proc;
-  new->command = command ? xstrdup (command) : "";
+  new->command = xstrdup (command ? command : "");
   new->pos = position;
   new->line = line_number;
   new->in_fixed_width_font = in_fixed_width_font;

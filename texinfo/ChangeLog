@@ -1,3 +1,9 @@
+2008-08-15  Ben Pfaff  <blp@cs.stanford.edu>  (tiny change)
+
+	* makeinfo/makeinfo.c (remember_brace_1): always xstrdup.
+	Avoids seg fault on input of {x}@y, e.g., makeinfo texinfo.tex.
+	Sent 14 Aug 2008 21:35:19.
+
 2008-08-14  Karl Berry  <karl@gnu.org>
 
 	* info/info.c (info_short_help): mention Info manuals and the h
