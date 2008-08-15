@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2008-05-26 18:13+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -411,8 +411,17 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+#, fuzzy
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -431,7 +440,7 @@ msgstr ""
 "  info -f ./foo.info         pokazanie pliku ./foo.info bez szukania w "
 "katalogu"
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -444,72 +453,72 @@ msgstr ""
 "bug-texinfo@gnu.org, a ogólne pytania i dyskusjê na help-texinfo@gnu.org.\n"
 "Strona domowa texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `%s'."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Nie mo¿na znale¼æ wêz³a `(%s)%s'."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "Nie mo¿na znale¼æ okna!"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "Kropka nie wystêpuje w wê¼le z tego okna!"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "Nie mo¿na usun±æ ostatniego okna."
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "Brak menu w tym wê¼le."
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "Brak przypisów w tym wê¼le."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "Brak odsy³aczy w tym wê¼le."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Brak wska¼nika `%s' dla tego wêz³a."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Nieznane polecenie Info `%c'; `?' przywo³uje pomoc."
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Typ terminala `%s' nie jest wystarczaj±cy do uruchomienia Info."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "To ju¿ jest ostatnia strona tego wêz³a."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "To ju¿ jest pierwsza strona tego wêz³a."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "Tylko jedno okno."
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "Wynikowe okno by³oby zbyt ma³e."
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Za ma³o miejsca na okno pomocy, proszê usun±æ okno."
 

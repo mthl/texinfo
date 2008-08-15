@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2008-06-24 09:39+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -401,8 +401,17 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+#, fuzzy
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -418,7 +427,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  将整个手册页输出至 out.txt\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是查找目录"
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -431,72 +440,72 @@ msgstr ""
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "无法找到节点“%s”。"
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 

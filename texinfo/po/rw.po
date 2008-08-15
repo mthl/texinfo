@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -416,8 +416,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -425,7 +433,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -435,82 +443,82 @@ msgid ""
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr "org."
 
-#: info/info.c:686
+#: info/info.c:691
 #, fuzzy, c-format
 msgid "Cannot find node `%s'."
 msgstr "Gushaka"
 
-#: info/info.c:687
+#: info/info.c:692
 #, fuzzy, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Gushaka"
 
-#: info/info.c:688
+#: info/info.c:693
 #, fuzzy
 msgid "Cannot find a window!"
 msgstr "Gushaka a Idirishya"
 
-#: info/info.c:689
+#: info/info.c:694
 #, fuzzy
 msgid "Point doesn't appear within this window's node!"
 msgstr "Kugaragara muri iyi"
 
-#: info/info.c:690
+#: info/info.c:695
 #, fuzzy
 msgid "Cannot delete the last window."
 msgstr "Gusiba i Iheruka Idirishya"
 
-#: info/info.c:691
+#: info/info.c:696
 #, fuzzy
 msgid "No menu in this node."
 msgstr "Ibikubiyemo in iyi"
 
-#: info/info.c:692
+#: info/info.c:697
 #, fuzzy
 msgid "No footnotes in this node."
 msgstr "Ubusobanuro mpezarupapuro in iyi"
 
-#: info/info.c:693
+#: info/info.c:698
 #, fuzzy
 msgid "No cross references in this node."
 msgstr "Kwambukiranya Indango in iyi"
 
-#: info/info.c:694
+#: info/info.c:699
 #, fuzzy, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Mweretsi kugirango iyi"
 
-#: info/info.c:695
+#: info/info.c:700
 #, fuzzy, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Komandi: kugirango Ifashayobora"
 
-#: info/info.c:696
+#: info/info.c:701
 #, fuzzy, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Ubwoko ni OYA Cyiza Kuri Gukoresha"
 
-#: info/info.c:697
+#: info/info.c:702
 #, fuzzy
 msgid "You are already at the last page of this node."
 msgstr "ku i Iheruka Ipaji Bya iyi"
 
-#: info/info.c:698
+#: info/info.c:703
 #, fuzzy
 msgid "You are already at the first page of this node."
 msgstr "ku i Itangira Ipaji Bya iyi"
 
-#: info/info.c:699
+#: info/info.c:704
 #, fuzzy
 msgid "Only one window."
 msgstr "Idirishya"
 
-#: info/info.c:700
+#: info/info.c:705
 #, fuzzy
 msgid "Resulting window would be too small."
 msgstr "Idirishya Gitoya"
 
-#: info/info.c:701
+#: info/info.c:706
 #, fuzzy
 msgid "Not enough room for a help window, please delete a window."
 msgstr "kugirango a Ifashayobora Idirishya Gusiba a Idirishya"

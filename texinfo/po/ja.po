@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -369,8 +369,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -378,7 +386,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -391,72 +399,72 @@ msgstr ""
 "Email によるバグレポートは bug-texinfo@gnu.org、\n"
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "`%s' ノードが見つかりません。"
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "`(%s)%s' ノードが見つかりません"
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "ウィンドウが見つかりません"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "このウィンドウノード内にポイントが現れません！"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "最後のウィンドウは削除できません"
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "このノードにメニューはありません。"
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "このノードに脚注はありません。"
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "このノードに相互参照はありません。"
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "このノードの `%s' ポインタがありません。"
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知の Info コマンド `%c' -- `?' でヘルプを見てください。"
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "端末タイプ `%s' は Info を動かせるほど利口ではありません"
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "ここはもう、このノードの最終ページです。"
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "ここはもう、このノードの最初のページです。"
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "唯一のウィンドウ。"
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "結果ウィンドウが小さすぎる様です"
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "ヘルプウィンドウ用の場所が足りません、ウィンドウを一つ削除してください。"

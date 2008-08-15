@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2002-04-26 13:49-MET+DST (UTC+2)\n"
 "Last-Translator: Mirsad Todorovac <mtodorov_69@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -374,8 +374,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -383,7 +391,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -397,72 +405,72 @@ msgstr ""
 "Texinfo matièna stranica: http://www.gnu.org/software/texinfo/\n"
 "Pitanja i kritike glede translacije slati na adresu lokalizacija@linux.hr."
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Ne mogu naæi èvor `%s'."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Ne mogu naæi èvor `(%s)%s'."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "Ne mogu naæi prozor!"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "Toèka se ne nalazi unutar èvora ovog prozora!"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "Ne mogu dokinuti zadnji prozor."
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "Nema menija u ovom èvoru."
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "Nema fusnota u ovom èvoru."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "Nema unakrsnih referenci u ovom èvoru."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Nema `%s' pokazivaèa za ovaj èvor."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Nepoznata Info naredba `%c'; poku¹ajte `?' za pomoæ."
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Terminal tipa `%s' nema dovoljno sposobnosti da izvodi Info."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "Veæ se nalazite na zadnjoj stranici ovog èvora."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "Veæ se nalazite na prvoj stranici ovog èvora."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "Samo jedan prozor."
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "Nastali prozor bi bio premalen."
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nema dovoljno mjesta za prozor za pomoæ, molimo dokinite jedan prozor."
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -368,8 +368,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -377,7 +385,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 #, fuzzy
 msgid ""
@@ -390,72 +398,72 @@ msgstr ""
 "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "找不到 `%s' 節點."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "找不到 `(%s)%s' 節點."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "找不到分隔視窗!"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "游標位置不在本分隔視窗的節點內!"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "無法刪除上一個分隔視窗."
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "本節點沒有選單."
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "本節點沒有註腳."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "本節點沒有交互參照."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "本節點沒有 `%s' pointer."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令 `%c'; 試試 `?' 以取得求助資訊."
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "終端機類型 `%s' 無法支援執行 Info 所需的需求."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "您已在本節點的最後一頁."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "您已在本節點的第一頁."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "只有一個分隔視窗."
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "產生的分隔視窗會太小."
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "剩下的空間太小, 無法容納求助分隔視窗, 請刪除一個分隔視窗."
 

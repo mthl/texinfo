@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -374,8 +374,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -383,7 +391,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -397,77 +405,77 @@ msgstr ""
 "címre küldhetők.\n"
 "Texinfo honlap: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "A(z) „%s“ oldal nem található."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "A(z) „(%s)%s“ oldal nem található."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "Nem található ablak!"
 
 # ATNEZNI LM
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "A pont nem jelenik meg az ablakon látható oldalon!"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "Az utolsó ablak nem törölhető!"
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "Nincs menü ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "Nincs lábjegyezet ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "Ez az oldal nem tartalmaz kereszthivatkozást."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Nincs „%s“ utalás ezen az oldalon."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Ismeretlen Info parancs: „%c“. A „?“ súg."
 
 # smart = okos vagy smart = modern vagy smart = fejlett ? LM
 # sztem fejlett: sas
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "A „%s“ termináltípus nem elég fejlett az Info futtatásához."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "Ön már az oldal utolsó lapját látja."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "Ön már az oldal legelső lapját látja."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "Csak egy ablak."
 
@@ -475,13 +483,13 @@ msgstr "Csak egy ablak."
 # vagy
 # resulting window = létrejövő/keletkező ablak
 # LM
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "Az eredményablak túl kicsi lenne."
 
 # tegez/magáz LM
 # ha lehet, legjobb elkerülni, például be kell zárni egy ablakot, amúgy itt: talán egy kicsit jobb a magázás, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nincs elég hely súgóablakhoz, kérem zárjon be egy ablakot!."
 

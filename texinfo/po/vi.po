@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2008-05-24 16:21+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -413,8 +413,17 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+#, fuzzy
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -433,7 +442,7 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin « ./foo.info », không tìm kiếm "
 "thư mục"
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -446,72 +455,72 @@ msgstr ""
 "và gửi câu hỏi chung, thảo luận v.v. cho <help-texinfo@gnu.org>.\n"
 "Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Không tìm thấy nút thông tin « %s »."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Không tìm thấy nút thông tin « (%s)%s »."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "Không tìm thấy cửa sổ."
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện bên trong cái nút thông tin của cửa sổ này."
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "Không thể xóa cửa sổ cuối cùng."
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "Không có trình đơn trong nút thông tin này."
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "Không có cước chú trong nút thông tin này."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "Không có tham chiếu chéo trong nút thông tin này."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Không có con trỏ « %s » cho nút thông tin này."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Không nhận ra lệnh Info « %c »: hãy thử lệnh « ? » để xem trợ giúp."
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Thiết bị cuối kiểu « %s » không đủ khéo để chạy Info."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "Bạn ở trang cuối cùng của nút thông tin này."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "Bạn ở trang đầu tiên của nút thông tin này."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "Chỉ một cửa sổ."
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "Cửa sổ kết quả quá nhỏ."
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 

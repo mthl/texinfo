@@ -1,3 +1,7 @@
+2008-08-16  Karl Berry  <karl@tug.org>
+
+	* pretest 4.12.94.
+
 2008-08-15  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_thumbpdf): needs $in_dir on the filename.

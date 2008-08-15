@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -416,8 +416,17 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+#, fuzzy
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -433,7 +442,7 @@ msgstr ""
 "  info --subnodes -o ut.txt emacs  dumpa hela manualen till ut.txt\n"
 "  info -f ./foo.info         visa filen ./foo.info, sök inte i katalogen"
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -447,72 +456,72 @@ msgstr ""
 "och synpunkter på översättningen till sv@li.org.\n"
 "Hemsida för texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Kan inte hitta noden \"%s\"."
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Kan inte hitta noden \"(%s)%s\"."
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "Kan inte hitta ett fönster!"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "Punkten finns inte inom detta fönsters nod!"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr "Kan inte ta bort det sista fönstret."
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr "Ingen meny i denna nod."
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr "Inga fotnoter i denna nod."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr "Inga korsreferenser i denna nod."
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Ingen \"%s\"-pekare för denna nod."
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Okänt Info-kommando \"%c\". Prova \"?\" för hjälp."
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Terminaltypen \"%s\" är inte tillräckligt smart för att köra Info."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr "Du är redan på sista sidan för denna nod."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr "Du är redan på första sidan för denna nod."
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr "Endast ett fönster."
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr "Resulterande fönstret skulle bli för litet."
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Inte tillräckligt med utrymme för ett hjälpfönster, ta bort ett fönster."

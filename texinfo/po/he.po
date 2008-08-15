@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-07-27 00:59+0200\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -370,8 +370,16 @@ msgstr ""
 #: info/info.c:643
 msgid ""
 "\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+
+#: info/info.c:646
+msgid ""
+"\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
 "  info emacs buffers         start at buffers node within emacs manual\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
@@ -379,7 +387,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:652 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -392,72 +400,72 @@ msgstr ""
 "               .help-texinfo@gnu.org-ל ןוידל םיאשונו תויללכ תולאשו\n"
 "         .http://www.gnu.org/software/texinfo/ :Texinfo לש תיבה ףד"
 
-#: info/info.c:686
+#: info/info.c:691
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr ".האצמנ אל `%s' הקסיפ"
 
-#: info/info.c:687
+#: info/info.c:692
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr ".האצמנ אל `%s' ץבוקב `%s' הקסיפ"
 
-#: info/info.c:688
+#: info/info.c:693
 msgid "Cannot find a window!"
 msgstr "!ןולח ףא אצמנ אל"
 
-#: info/info.c:689
+#: info/info.c:694
 msgid "Point doesn't appear within this window's node!"
 msgstr "!הז ןולחב תגצומה הקסיפב אצמנ וניא ןמסה"
 
-#: info/info.c:690
+#: info/info.c:695
 msgid "Cannot delete the last window."
 msgstr ".דיחי ןולח קוחמל ןתינ אל"
 
-#: info/info.c:691
+#: info/info.c:696
 msgid "No menu in this node."
 msgstr ".םיטירפת ןיא וז הקסיפב"
 
-#: info/info.c:692
+#: info/info.c:697
 msgid "No footnotes in this node."
 msgstr ".םיילוש תורעה ןיא וז הקסיפב"
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "No cross references in this node."
 msgstr ".םירושיק ןיא וז הקסיפב"
 
-#: info/info.c:694
+#: info/info.c:699
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr ".%sל היינפה ןיא וז הקסיפב"
 
-#: info/info.c:695
+#: info/info.c:700
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr ".הרזע תלבקל `?' הסנ ;Info-ל תרכומ הניא `%c' הדוקפ"
 
-#: info/info.c:696
+#: info/info.c:701
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr ".Info ץירהל ידכ ויד ללכושמ וניא `%s' גוסמ גצ"
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "You are already at the last page of this node."
 msgstr ".וז הקסיפ לש ןורחאה דומעב רבכ ה/תא"
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "You are already at the first page of this node."
 msgstr ".וז הקסיפ לש ןושארה דומעב רבכ ה/תא"
 
-#: info/info.c:699
+#: info/info.c:704
 msgid "Only one window."
 msgstr ".דחא ןולח קר םייק"
 
-#: info/info.c:700
+#: info/info.c:705
 msgid "Resulting window would be too small."
 msgstr ".ידמ רתוי ןטק היה ןולחה"
 
-#: info/info.c:701
+#: info/info.c:706
 msgid "Not enough room for a help window, please delete a window."
 msgstr ".והשלכ ןולח קוחמל אנ ;הרזע ןולח גיצהל םוקמ קיפסמ ןיא"
 
